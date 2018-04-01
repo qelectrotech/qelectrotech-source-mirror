@@ -744,17 +744,17 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="432"/>
         <source>Couleur secondaire :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Secundaire kleur</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="447"/>
         <source>px</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">px</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="471"/>
         <source>Taille de trait :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lijndikte :</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="350"/>
@@ -1540,7 +1540,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="27"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Type</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="35"/>
@@ -1590,7 +1590,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="142"/>
         <source>Valeurs</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Waarden</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="103"/>
@@ -2511,12 +2511,12 @@ Het veld &quot;Increment&quot; is nu niet van belang.
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished">Automatische benaming</translation>
+        <translation type="unfinished">Automatische naamgeving</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="41"/>
         <source>Auto Naming Pattern:</source>
-        <translation type="unfinished">Automatisch benamingspatroon :</translation>
+        <translation type="unfinished">Automatisch naamgevingspatroon :</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="72"/>
@@ -2541,7 +2541,7 @@ You can also assign any other titleblock variable
 that you create. Text and number inputs are
  also available.</source>
         <translation type="unfinished">U kunt de volgende variabelen in uw formule gebruiken:
- -%prefix: Standaard elementprefix
+ -%prefix: Standaard elementvoorvoegsel
  -%l: Elementrij
  -%c: Elementkolom
  -%F: Bladnaam
@@ -3267,7 +3267,7 @@ Teksten en nummers zijn ook beschikbaar.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="84"/>
         <source>Reports de folio</source>
-        <translation type="unfinished">Bladreferentie</translation>
+        <translation type="unfinished">Bladoverzicht</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="85"/>
@@ -3516,7 +3516,7 @@ Teksten en nummers zijn ook beschikbaar.</translation>
         <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="48"/>
         <source>Champ de texte dynamique</source>
         <comment>element part name</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dynamisch tekstveld</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="418"/>
@@ -3561,7 +3561,7 @@ Teksten en nummers zijn ook beschikbaar.</translation>
     <message>
         <location filename="../sources/editor/graphicspart/parttext.cpp" line="256"/>
         <source>Déplacer un texte</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tekstveld verplaatsen</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/parttext.cpp" line="317"/>
@@ -3823,12 +3823,12 @@ Wilt u de wijzigingen opslaan?</translation>
         <location filename="../sources/projectview.cpp" line="752"/>
         <source>Nettoyer le projet</source>
         <comment>window title</comment>
-        <translation>Schoon project</translation>
+        <translation type="unfinished">Project opschonen</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="784"/>
         <source>Ajouter un folio</source>
-        <translation type="unfinished">Voeg een blad toe</translation>
+        <translation type="unfinished">Blad toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="798"/>
@@ -3879,27 +3879,27 @@ Wilt u de wijzigingen opslaan?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="312"/>
         <source>Description textuelle</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Beschrijving</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="313"/>
         <source>Numéro d&apos;article</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Artikelnummer</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="315"/>
         <source>Numéro de commande</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Commandonummer</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="316"/>
         <source>Fournisseur</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Leverancier</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="319"/>
         <source>Numéro interne</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Intern nummer</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="320"/>
@@ -4358,7 +4358,7 @@ Opties :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="306"/>
         <source>Mode Visualisation</source>
-        <translation type="unfinished">Verplaatsen</translation>
+        <translation type="unfinished">Weergavemodus</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="307"/>
@@ -4386,7 +4386,7 @@ Opties :
         <location filename="../sources/qetdiagrameditor.cpp" line="326"/>
         <source>Ferme le projet courant</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sluit het huidige project</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="327"/>
@@ -4513,7 +4513,7 @@ Opties :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2201"/>
         <source>Error launching qet_tb_generator plugin</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Fout bij het laden van de qet_tb_generator plugin</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2202"/>
@@ -4545,7 +4545,34 @@ python -m pip install --upgrade qet_tb_generator
 &gt;&gt; Update on macOSX 
  pip3 install --upgrade qet_tb_generator 
 </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Installatie van de qet_tb_generator plugin:
+Ga naar https://pypi.python.org/pypi/qet-tb-generator/
+
+Vereist python 3.5 of hoger.
+&gt;&gt; Eerste installatie onder Linux
+1. Controleer of je pip3 geinstalleerd hebt: pip3 --version
+Installeer indien nodig met: sudo apt-get install python3-pip
+2. Installeer het programma: sudo pip3 install qet_tb_generator
+3. Start het programma: qet_tb_generator
+&gt;&gt; Updaten onder Linux
+sudo pip3 install --upgrade qet_tb_generator 
+
+&gt;&gt; Eerste installatie onder Windows
+1. Installeer, indien nodig, python 3.5 of hoger 
+ Ga naar https://www.python.org/downloads/ 
+2. pip install qet_tb_generator
+&gt;&gt; Updaten onder Windows
+python -m pip install --upgrade qet_tb_generator
+&gt;&gt;Start het script in een terminal in de volgende map: 
+ C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts 
+
+&gt;&gt; Eerste installatie onder macOSX 
+1. Installeer, indien nodig, python 3.5 of hoger 
+ Ga naar https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674 
+2. pip3 install qet_tb_generator 
+&gt;&gt; Updaten onder macOSX 
+ pip3 install --upgrade qet_tb_generator 
+</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="259"/>
@@ -4583,7 +4610,7 @@ python -m pip install --upgrade qet_tb_generator
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="403"/>
         <source>Pas de zoom</source>
-        <translation type="unfinished">Herstel zoom</translation>
+        <translation type="unfinished">Geen zoom</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="356"/>
@@ -4850,7 +4877,7 @@ python -m pip install --upgrade qet_tb_generator
         <location filename="../sources/qetdiagrameditor.cpp" line="245"/>
         <source>Annule l&apos;action précédente</source>
         <comment>status bar tip</comment>
-        <translation>Annuleer laatste actie</translation>
+        <translation type="unfinished">Maak de laatste actie ongedaan</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="246"/>
@@ -4862,7 +4889,7 @@ python -m pip install --upgrade qet_tb_generator
         <location filename="../sources/qetdiagrameditor.cpp" line="257"/>
         <source>Transfère les éléments sélectionnés dans le presse-papier</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished">Plaatst geselecteerde elementen op het klembord</translation>
+        <translation type="unfinished">Plaats geselecteerde elementen op het klembord</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="258"/>
@@ -4874,13 +4901,13 @@ python -m pip install --upgrade qet_tb_generator
         <location filename="../sources/qetdiagrameditor.cpp" line="390"/>
         <source>Désélectionne les éléments sélectionnés et sélectionne les éléments non sélectionnés</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished">Selectie elementen omkeren</translation>
+        <translation type="unfinished">Selectie van elementen omkeren</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="369"/>
         <source>Retrouve l&apos;élément sélectionné dans le panel</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished">Vind het geselecteerde element in het paneel</translation>
+        <translation type="unfinished">Toon het geselecteerde element in het paneel</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="459"/>
@@ -5235,7 +5262,7 @@ python -m pip install --upgrade qet_tb_generator
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="262"/>
         <source>Pas de zoom</source>
-        <translation>Herstel zoom</translation>
+        <translation type="unfinished">Geen zoom</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="266"/>
@@ -5722,7 +5749,7 @@ de voorwaarden zijn ongeldig</translation>
         <location filename="../sources/qetmainwindow.cpp" line="102"/>
         <location filename="../sources/qetmainwindow.cpp" line="105"/>
         <source>Télécharger une nouvelle version (dev)</source>
-        <translation type="unfinished">Downloadt een nieuwe (dev) versie</translation>
+        <translation type="unfinished">Een nieuwe (dev) versie downloaden</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="85"/>
@@ -5808,7 +5835,7 @@ de voorwaarden zijn ongeldig</translation>
         <location filename="../sources/qetmainwindow.cpp" line="224"/>
         <source>Afficher</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Weergave panelen en werkbalken</translation>
+        <translation type="unfinished">Weergave van panelen en werkbalken</translation>
     </message>
 </context>
 <context>
@@ -7366,7 +7393,7 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="702"/>
         <source>une polyligne</source>
-        <translation type="unfinished">een samengestelde</translation>
+        <translation type="unfinished">een polylijn</translation>
     </message>
 </context>
 <context>
@@ -8238,13 +8265,13 @@ De andere velden zijn nu niet van belang.</translation>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="126"/>
         <source>Relatif au total</source>
         <comment>a percentage of the total width</comment>
-        <translation type="unfinished">Relatief ten opzichte van het totaal</translation>
+        <translation type="unfinished">Relatief ten opzichte van de totale breedte</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="127"/>
         <source>Relatif au restant</source>
         <comment>a percentage of what remains from the total width</comment>
-        <translation type="unfinished">Relatief ten opzichte van het resterende</translation>
+        <translation type="unfinished">Relatief ten opzichte van de resterende breedte</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="167"/>
@@ -8420,7 +8447,7 @@ De volgende variabelen zijn te gebruiken:
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="376"/>
         <source>Localisation</source>
-        <translation type="unfinished">Locatie</translation>
+        <translation type="unfinished">Locatie :</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="362"/>
@@ -8607,7 +8634,7 @@ Door associatie van de naam &quot;volta&quot; met de waarde &quot;1745&quot; wor
         <location filename="../sources/titleblock/templatedeleter.cpp" line="58"/>
         <source>Supprimer le modèle de cartouche ?</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Verwijderen titelbloksjabloon?</translation>
+        <translation type="unfinished">Titelbloksjabloon verwijderen?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatedeleter.cpp" line="60"/>
@@ -9019,7 +9046,7 @@ Maximale afmeting : %2px
 %l : Het rijnummer
 %c : Het kolomnummer
 %M : De machine
-%LM : De locatie</translation>
+%LM : De locatie </translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="205"/>
