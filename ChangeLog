@@ -8,11 +8,13 @@
 * Element editor : element informations (manufacturer, reference etc...) can be created directly from the element editor. For that go to the widget "Element Property"
 * Element editor : it is no longer required to have a text field, for save the edited element.
 * Element editor : improve the behavior with the arrow keys (depending to the current selection : nothing / one / several).
+* Element editor and diagram editor : context menu display only enabled actions
 * Fix crash occurred by the conductor and shape "ghost".
 * Dissociate fonts policy and size for independent text item and for summarry pages (foliolist), add a 2 button in config page for open Qfontdialog widget and choose policy for independent text item
 Possiblility to overide defaut settings by adding in QElectroTech.conf
 * Basic shape add new CustomDashLine style with Dash Pattern (<< 10 << 10 );
-* improve High-DPI support on Windows plateform.
+* improve High-DPI support on Windows and Linux plateform.
+* QetGraphicsItem, remove the function applyRotation and rotateBy, and use instead the native function of QGraphicsItem : setRotation
 * DXF export : fix some double items in dxf file.
 * DXF export : add some colors for basic shapes inside dxf.
 * 
