@@ -3893,7 +3893,7 @@ Wilt u de wijzigingen opslaan?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="315"/>
         <source>Numéro de commande</source>
-        <translation>Commandonummer</translation>
+        <translation>Bestelnummer</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="316"/>
@@ -3908,7 +3908,7 @@ Wilt u de wijzigingen opslaan?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="320"/>
         <source>Localisation</source>
-        <translation>Plaats</translation>
+        <translation>Locatie</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="321"/>
@@ -4045,7 +4045,7 @@ Wilt u de wijzigingen opslaan?</translation>
         <location filename="../sources/qetapp.cpp" line="101"/>
         <source>Chargement... Initialisation du cache des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
-        <translation>Laden... Initialisatie van de cache van de elementencollectie</translation>
+        <translation>Laden... Initialisatie van de elementencollectie-cache</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="110"/>
@@ -4100,7 +4100,7 @@ Wilt u de wijzigingen opslaan?</translation>
         <location filename="../sources/qetapp.cpp" line="373"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s title block templates collection</comment>
-        <translation>Gebruiker titelbloksjablonen</translation>
+        <translation>Mijn titelbloksjablonen</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="889"/>
@@ -4362,7 +4362,7 @@ Opties :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="306"/>
         <source>Mode Visualisation</source>
-        <translation>Weergavemodus</translation>
+        <translation>Verschuiven</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="307"/>
@@ -5032,7 +5032,7 @@ python -m pip install --upgrade qet_tb_generator
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1680"/>
         <source>Active le projet « %1 »</source>
-        <translation>Activeert project « %1 »</translation>
+        <translation>Activeer project « %1 »</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2141"/>
@@ -5066,13 +5066,13 @@ python -m pip install --upgrade qet_tb_generator
         <location filename="../sources/qetdiagrameditor.cpp" line="470"/>
         <source>Active le projet suivant</source>
         <comment>status bar tip</comment>
-        <translation>Activeert volgend project</translation>
+        <translation>Activeer volgend project</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="471"/>
         <source>Active le projet précédent</source>
         <comment>status bar tip</comment>
-        <translation>Activeert vorig project</translation>
+        <translation>Activeer vorig project</translation>
     </message>
 </context>
 <context>
@@ -5130,32 +5130,32 @@ python -m pip install --upgrade qet_tb_generator
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="281"/>
         <source>Ajouter une ligne</source>
-        <translation>Voeg lijn toe</translation>
+        <translation>Lijn toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="283"/>
         <source>Ajouter une ellipse</source>
-        <translation>Voeg ellips toe</translation>
+        <translation>Ellips toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="284"/>
         <source>Ajouter un polygone</source>
-        <translation>Voeg veelhoek toe</translation>
+        <translation>Veelhoek toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="285"/>
         <source>Ajouter du texte</source>
-        <translation>Voeg tekst toe</translation>
+        <translation>Tekst toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="286"/>
         <source>Ajouter un arc de cercle</source>
-        <translation>Voeg cirkelboog toe</translation>
+        <translation>Cirkelboog toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="287"/>
         <source>Ajouter une borne</source>
-        <translation>Voeg terminal toe</translation>
+        <translation>Terminal toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="174"/>
@@ -5383,12 +5383,23 @@ Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory
 &gt;&gt; Install on macOSX
 Put DXFtoQET.app binary on /Users/user_name/.qet/ directory 
 </source>
-        <translation></translation>
+        <translation>Installate van de DXFtoQET plugin
+Ga naar https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+
+&gt;&gt; Installatie onder Linux
+Plaats de DXFtoQET binary in /home/user_name/.qet/ directory
+maak het executable : chmod +x ./DXFtoQET
+&gt;&gt; Installatie onder Windows
+Plaats de DXFtoQET.exe binary in C:\Users\user_name\AppData\Roaming\qet\ directory 
+
+&gt;&gt; Installatie onder macOSX
+Plaats de DXFtoQET.app binary in /Users/user_name/.qet/ directory 
+</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="288"/>
         <source>Ajouter un champ texte dynamique</source>
-        <translation></translation>
+        <translation>Dynamisch tekstveld toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="356"/>
@@ -5541,7 +5552,7 @@ Put DXFtoQET.app binary on /Users/user_name/.qet/ directory
         <location filename="../sources/editor/qetelementeditor.cpp" line="1500"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
-        <translation>Alleen lezen</translation>
+        <translation>Alleen lezen versie</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="823"/>
@@ -5635,7 +5646,7 @@ de voorwaarden zijn ongeldig</translation>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1114"/>
         <source>Vous avez efffectué des modifications sur cet élément. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l&apos;élément ?</source>
         <comment>dialog content</comment>
-        <translation>Dit element is gewijzigd. Als u herlaad gaan de wijzigingen verloren! Wilt u herladen?</translation>
+        <translation>Dit element is gewijzigd. Als u herlaadt gaan de wijzigingen verloren! Wilt u herladen?</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1212"/>
@@ -5659,7 +5670,7 @@ de voorwaarden zijn ongeldig</translation>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1255"/>
         <source>Voulez-vous enregistrer l&apos;élément %1 ?</source>
         <comment>dialog content - %1 is an element name</comment>
-        <translation>Wilt u element: %1 opslaan?</translation>
+        <translation>Wilt u element: %1 opslaan ?</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1475"/>
@@ -5737,7 +5748,7 @@ de voorwaarden zijn ongeldig</translation>
         <location filename="../sources/qetmainwindow.cpp" line="81"/>
         <source>Affiche des informations sur QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation>Toont informatie over QElectroTech</translation>
+        <translation>Toon informatie over QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="84"/>
@@ -5794,7 +5805,7 @@ de voorwaarden zijn ongeldig</translation>
         <location filename="../sources/qetmainwindow.cpp" line="127"/>
         <source>Affiche des informations sur la bibliothèque Qt</source>
         <comment>status bar tip</comment>
-        <translation>Toont informatie over Qt bibliotheek</translation>
+        <translation>Toon informatie over Qt bibliotheek</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="135"/>
@@ -5817,7 +5828,7 @@ de voorwaarden zijn ongeldig</translation>
         <location filename="../sources/qetmainwindow.cpp" line="206"/>
         <source>Affiche QElectroTech en mode fenêtré</source>
         <comment>status bar tip</comment>
-        <translation>Toont QElectroTech in venstermodus</translation>
+        <translation>Toon QElectroTech in venstermodus</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="208"/>
@@ -5828,7 +5839,7 @@ de voorwaarden zijn ongeldig</translation>
         <location filename="../sources/qetmainwindow.cpp" line="210"/>
         <source>Affiche QElectroTech en mode plein écran</source>
         <comment>status bar tip</comment>
-        <translation>Toont QElectroTech in volledig scherm modus</translation>
+        <translation>Toon QElectroTech in volledig scherm modus</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="212"/>
@@ -7206,7 +7217,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramfoliolist.cpp" line="268"/>
         <location filename="../sources/nomenclature.cpp" line="119"/>
         <source>Localisation</source>
-        <translation>Plaats</translation>
+        <translation>Locatie</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="120"/>
@@ -7221,7 +7232,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="119"/>
         <source>Collection utilisateur</source>
-        <translation>Gebruikerscollectie</translation>
+        <translation>Mijn collectie</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="121"/>
@@ -7686,7 +7697,7 @@ De andere velden zijn nu niet van belang.</translation>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="59"/>
         <source>Tiret custom</source>
-        <translation>Streep (gebruiker)</translation>
+        <translation>Streep (aangepast)</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="101"/>
@@ -8452,7 +8463,7 @@ De volgende variabelen zijn te gebruiken:
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="376"/>
         <source>Localisation</source>
-        <translation>Plaats</translation>
+        <translation>Locatie</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="362"/>
@@ -8462,7 +8473,7 @@ De volgende variabelen zijn te gebruiken:
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="399"/>
         <source>Personnalisées</source>
-        <translation>Gebruiker</translation>
+        <translation>Gepersonaliseerd</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="407"/>
