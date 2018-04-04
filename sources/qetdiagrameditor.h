@@ -64,7 +64,7 @@ class QETDiagramEditor : public QETMainWindow {
 		void                 closeEvent        (QCloseEvent *) override;
 		QList<ProjectView *> openedProjects    () const;
 		void                 addProjectView    (ProjectView *);
-		bool                 openAndAddProject (const QString &, bool = true, bool = true);
+		bool                 openAndAddProject (const QString &, bool = true);
 		QList<QString>       editedFiles       () const;
 		ProjectView         *viewForFile       (const QString &) const;
 		ProjectView         *acessCurrentProject ();

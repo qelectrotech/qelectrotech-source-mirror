@@ -47,6 +47,7 @@
 #include "undocommand/rotateselectioncommand.h"
 #include "rotatetextscommand.h"
 #include "diagramcommands.h"
+#include "dialogwaiting.h"
 
 #include <QMessageBox>
 #include <QStandardPaths>
@@ -114,7 +115,7 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	{
 			//So we open this files
 		foreach(QString file, files)
-			if (openAndAddProject(file, false))
+			if (openAndAddProject(file))
 				++ opened_projects;
 	}
 
@@ -857,33 +858,39 @@ bool QETDiagramEditor::closeCurrentProject() {
 	Ouvre un projet depuis un fichier et l'ajoute a cet editeur
 	@param filepath Chemin du projet a ouvrir
 	@param interactive true pour afficher des messages a l'utilisateur, false sinon
-	@param update_panel Whether the elements panel should be warned this
-	project has been added. Defaults to true.
 	@return true si l'ouverture a reussi, false sinon
 */
-bool QETDiagramEditor::openAndAddProject(const QString &filepath, bool interactive, bool update_panel) {
+bool QETDiagramEditor::openAndAddProject(const QString &filepath, bool interactive)
+{
 	if (filepath.isEmpty()) return(false);
 	
 	QFileInfo filepath_info(filepath);
-	// verifie que le projet n'est pas deja ouvert dans un editeur
-	QString my_filepath = filepath_info.canonicalFilePath();
-	if (QETDiagramEditor *diagram_editor = QETApp::diagramEditorForFile(filepath)) {
-		if (diagram_editor == this) {
-			if (ProjectView *project_view = viewForFile(filepath)) {
+
+		//Check if project is not open in another editor
+	if (QETDiagramEditor *diagram_editor = QETApp::diagramEditorForFile(filepath))
+	{
+		if (diagram_editor == this)
+		{
+			if (ProjectView *project_view = viewForFile(filepath))
+			{
 				activateWidget(project_view);
 				show();
 				activateWindow();
 			}
 			return(false);
-		} else {
-			// demande a l'autre editeur d'afficher le fichier
+		}
+		else
+		{
+				//Ask to the other editor to display the file
 			return(diagram_editor -> openAndAddProject(filepath));
 		}
 	}
 	
-	// check the file exists
-	if (!filepath_info.exists()) {
-		if (interactive) {
+		// check the file exists
+	if (!filepath_info.exists())
+	{
+		if (interactive)
+		{
 			QET::QetMessageBox::critical(
 				this,
 				tr("Impossible d'ouvrir le fichier", "message box title"),
@@ -896,8 +903,9 @@ bool QETDiagramEditor::openAndAddProject(const QString &filepath, bool interacti
 		return(false);
 	}
 	
-	// verifie que le fichier est accessible en lecture
-	if (!filepath_info.isReadable()) {
+		//Check if file readable
+	if (!filepath_info.isReadable())
+	{
 		if (interactive) {
 			QET::QetMessageBox::critical(
 				this,
@@ -910,8 +918,9 @@ bool QETDiagramEditor::openAndAddProject(const QString &filepath, bool interacti
 		return(false);
 	}
 	
-	// gere le fait que le fichier puisse etre en lecture seule
-	if (!filepath_info.isWritable()) {
+		//Check if file is read only
+	if (!filepath_info.isWritable())
+	{
 		if (interactive) {
 			QET::QetMessageBox::warning(
 				this,
@@ -923,10 +932,14 @@ bool QETDiagramEditor::openAndAddProject(const QString &filepath, bool interacti
 		}
 	}
 	
-	// cree le projet a partir du fichier
+		//Create the project
+	DialogWaiting::instance(this);
+	
 	QETProject *project = new QETProject(filepath);
-	if (project -> state() != QETProject::Ok) {
-		if (interactive && project -> state() != QETProject::FileOpenDiscard) {
+	if (project -> state() != QETProject::Ok)
+	{
+		if (interactive && project -> state() != QETProject::FileOpenDiscard)
+		{
 			QET::QetMessageBox::warning(
 				this,
 				tr("Échec de l'ouverture du projet", "message box title"),
@@ -940,16 +953,14 @@ bool QETDiagramEditor::openAndAddProject(const QString &filepath, bool interacti
 			);
 		}
 		delete project;
+		DialogWaiting::dropInstance();
 		return(false);
 	}
 
-	// a ce stade, l'ouverture du fichier a reussi
-	// on l'ajoute a la liste des fichiers recents
 	QETApp::projectsRecentFiles() -> fileWasOpened(filepath);
-	// ... et on l'ajoute dans l'application
-	// Note: we require the panel not to be updated when the project is added
-	// because it will update itself as soon as it becomes visible
-	return(addProject(project), update_panel);
+	addProject(project);
+	DialogWaiting::dropInstance();
+	return true;
 }
 
 /**

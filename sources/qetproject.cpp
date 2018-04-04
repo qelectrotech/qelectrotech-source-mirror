@@ -1247,17 +1247,29 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 	
 	//@TODO try to solve a weird bug (dialog is black) since port to Qt5 with the DialogWaiting
 	//show DialogWaiting
-	DialogWaiting* dlgWaiting = new DialogWaiting();
-	dlgWaiting -> setModal(true);
-	dlgWaiting -> show();
-	dlgWaiting -> setTitle( tr("<b>Ouverture du projet en cours...</b>") );
+	DialogWaiting *dlgWaiting = nullptr;
+	if(DialogWaiting::hasInstance())
+	{
+		dlgWaiting = DialogWaiting::instance();
+		dlgWaiting -> setModal(true);
+		dlgWaiting -> show();
+		dlgWaiting -> setTitle( tr("<p align=\"center\">"
+								   "<b>Ouverture du projet en cours...</b><br/>"
+								   "Création des folios"
+								   "</p>"));
+	}
 	
 		//Search the diagrams in the project
 	QDomNodeList diagram_nodes = xml_project.elementsByTagName("diagram");
-	dlgWaiting->setProgressBarRange(0, diagram_nodes.length());
+	
+	if(dlgWaiting)
+		dlgWaiting->setProgressBarRange(0, diagram_nodes.length()*3);
+	
 	for (int i = 0 ; i < diagram_nodes.length() ; ++ i)
 	{
-		dlgWaiting->setProgressBar(i+1);
+		if(dlgWaiting)
+			dlgWaiting->setProgressBar(i+1);
+		
 		if (diagram_nodes.at(i).isElement())
 		{
 			QDomElement diagram_xml_element = diagram_nodes.at(i).toElement();
@@ -1265,7 +1277,9 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 			bool diagram_loading = diagram -> initFromXml(diagram_xml_element);
 			if (diagram_loading)
 			{
-				dlgWaiting->setDetail( diagram->title() );
+				if(dlgWaiting)
+					dlgWaiting->setDetail( diagram->title() );
+				
 					//Get the attribute "order" of the diagram
 				int diagram_order = -1;
 				if (!QET::attributeIsAnInteger(diagram_xml_element, "order", &diagram_order)) diagram_order = 500000;
@@ -1284,10 +1298,22 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 
 		//Initialise links between elements in this project
 		//and refresh the text of conductor
-	foreach (Diagram *d, diagrams())
+	if(dlgWaiting)
+	{
+		dlgWaiting->setTitle( tr("<p align=\"center\">"
+								 "<b>Ouverture du projet en cours...</b><br/>"
+								 "Mise en place des références croisées"
+								 "</p>"));
+	}
+	for(Diagram *d : diagrams())
+	{
+		if(dlgWaiting)
+		{
+			dlgWaiting->setProgressBar(dlgWaiting->progressBarValue()+1);
+			dlgWaiting->setDetail(d->title());
+		}
 		d->refreshContents();
-
-	delete dlgWaiting;
+	}
 }
 
 /**

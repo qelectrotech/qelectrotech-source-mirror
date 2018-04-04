@@ -33,6 +33,7 @@
 #include "projectpropertiesdialog.h"
 #include "xmlelementcollection.h"
 #include "autoNum/assignvariables.h"
+#include "dialogwaiting.h"
 
 /**
 	Constructeur
@@ -844,12 +845,29 @@ void ProjectView::initLayout() {
  * We create a diagram view for each diagram,
  * and add it to the project view.
  */
-void ProjectView::loadDiagrams() {
+void ProjectView::loadDiagrams()
+{
 	if (!m_project) return;
 
 	setDisplayFallbackWidget(m_project -> diagrams().isEmpty());
 
-	foreach(Diagram *diagram, m_project -> diagrams()) {
+	DialogWaiting *dialog = nullptr;
+	if(DialogWaiting::hasInstance())
+	{
+		dialog = DialogWaiting::instance();
+		dialog->setTitle( tr("<p align=\"center\">"
+												"<b>Ouverture du projet en cours...</b><br/>"
+												"Création des onglets de folio :"
+												"</p>"));
+	}
+	for(Diagram *diagram : m_project->diagrams())
+	{
+		if(dialog)
+		{
+			dialog->setDetail(diagram->title());
+			dialog->setProgressBar(dialog->progressBarValue()+1);
+		}
+		
 		DiagramView *sv = new DiagramView(diagram);
 		addDiagram(sv);
 	}

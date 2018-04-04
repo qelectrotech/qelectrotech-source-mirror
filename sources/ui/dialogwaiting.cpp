@@ -20,6 +20,8 @@
 #include "ui_dialogwaiting.h"
 #include <QPushButton>
 
+
+DialogWaiting *DialogWaiting::m_static_dialog = nullptr;
 /**
  * @brief DialogWaiting::DialogWaiting
  * @param parent
@@ -70,8 +72,7 @@ void DialogWaiting::setProgressBarRange(int min, int max){
  * @param val is the string of action
  */
 void DialogWaiting::setTitle(const QString& val){
-	QString title="<b> "+val+" </b>";
-	ui->labelTitle->setText(title);
+	ui->labelTitle->setText(val);
 }
 
 /**
@@ -80,5 +81,14 @@ void DialogWaiting::setTitle(const QString& val){
  */
 void DialogWaiting::setDetail(const QString& val){
 	ui->label_detail->setText(val);
+}
+
+/**
+ * @brief DialogWaiting::progressBarValue
+ * @return The current vcalue of the progress bar
+ */
+int DialogWaiting::progressBarValue() const
+{
+	ui->progressBar->value();
 }
 

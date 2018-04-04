@@ -20,6 +20,7 @@
 #define DIALOGWAITING_H
 
 #include <QDialog>
+#include <QMutex>
 
 namespace Ui {
 	class DialogWaiting;
@@ -28,19 +29,56 @@ namespace Ui {
 class DialogWaiting : public QDialog
 {
 	Q_OBJECT
-
-public:
-	explicit DialogWaiting(QWidget *parent = nullptr);
-	~DialogWaiting() override;
-
-	void setProgressBar(int val);
-	void setProgressBarRange(int min, int max);
-	void setProgressReset();
-	void setTitle(const QString& val);
-	void setDetail(const QString& val);
-
+	public:
+		static DialogWaiting* instance(QWidget *parent = nullptr)
+		{
+			static QMutex mutex;
+			if(!m_static_dialog)
+			{
+				mutex.lock();
+				if(!m_static_dialog)
+					m_static_dialog = new DialogWaiting(parent);
+				mutex.unlock();
+			}
+			return m_static_dialog;
+		}
+		
+		static bool hasInstance()
+		{
+			if(m_static_dialog == nullptr)
+				return false;
+			else
+				return true;
+		}
+		
+		static void dropInstance()
+		{
+			static QMutex mutex;
+			if(m_static_dialog)
+			{
+				mutex.lock();
+				m_static_dialog->deleteLater();
+				m_static_dialog = nullptr;
+				mutex.unlock();
+			}
+		}
 	private:
-	Ui::DialogWaiting *ui;
+		static DialogWaiting *m_static_dialog;
+	
+
+	public:
+		explicit DialogWaiting(QWidget *parent = nullptr);
+		~DialogWaiting() override;
+	
+		void setProgressBar(int val);
+		void setProgressBarRange(int min, int max);
+		void setProgressReset();
+		void setTitle(const QString& val);
+		void setDetail(const QString& val);
+		int progressBarValue() const;
+	
+	private:
+		Ui::DialogWaiting *ui;
 };
 
 #endif // DIALOGWAITING_H
