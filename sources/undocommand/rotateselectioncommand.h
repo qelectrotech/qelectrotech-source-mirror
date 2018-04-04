@@ -22,11 +22,8 @@
 #include <QPointer>
 
 class Diagram;
-class Element;
-class QGraphicsObject;
-class ElementTextItemGroup;
-class DiagramTextItem;
-class DiagramImageItem;
+class ConductorTextItem;
+class QPropertyUndoCommand;
 
 /**
  * @brief The RotateSelectionCommand class
@@ -45,11 +42,9 @@ class RotateSelectionCommand : public QUndoCommand
 		Diagram *m_diagram =nullptr;
 		qreal m_angle;
 		
-		QList<QPointer<Element>> m_element;
-		QList<QPointer<DiagramImageItem>> m_image;
-		QList<QPointer<ElementTextItemGroup>> m_group;
-		QList<QPointer<DiagramTextItem>> m_text;
-		QHash<DiagramTextItem *, bool> m_rotate_by_user;
+		QList<QPointer<ConductorTextItem>> m_cond_text;
+		QHash<ConductorTextItem *, bool> m_rotate_by_user;
+		QList<QPropertyUndoCommand*> m_undo;
 		
 };
 

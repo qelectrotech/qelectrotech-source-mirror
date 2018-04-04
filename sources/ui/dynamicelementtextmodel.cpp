@@ -542,7 +542,7 @@ QUndoCommand *DynamicElementTextModel::undoForEditedGroup(ElementTextItemGroup *
 	if(group->rotation() != rotation)
 	{
 		QPropertyUndoCommand *qpuc = new QPropertyUndoCommand(group, "rotation", QVariant(group->rotation()), QVariant(rotation), undo);
-		qpuc->enableAnimation();
+		qpuc->setAnimated(true, false);
 	}
 	
 	int v_adjustment = group_qsi->child(adjust_grp_row,1)->data(Qt::EditRole).toInt();

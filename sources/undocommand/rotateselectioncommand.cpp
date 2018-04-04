@@ -25,6 +25,7 @@
 #include "diagram.h"
 #include "conductor.h"
 #include "qet.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
 
 #include <QGraphicsItem>
 
@@ -42,30 +43,40 @@ m_angle(angle)
 			switch (item->type())
 			{
 				case Element::Type:
-					m_element << static_cast<Element *>(item);
+					m_undo << new QPropertyUndoCommand(item->toGraphicsObject(), "rotation", QVariant(item->rotation()), QVariant(item->rotation()+angle), this);
 					break;
 				case ConductorTextItem::Type:
-					m_text << static_cast<DiagramTextItem *>(item);
+				{
+					m_cond_text << static_cast<ConductorTextItem *>(item);
+					m_undo << new QPropertyUndoCommand(item->toGraphicsObject(), "rotation", QVariant(item->rotation()), QVariant(item->rotation()+angle), this);
+				}
 					break;
 				case IndependentTextItem::Type:
-					m_text << static_cast<DiagramTextItem *>(item);
+					m_undo << new QPropertyUndoCommand(item->toGraphicsObject(), "rotation", QVariant(item->rotation()), QVariant(item->rotation()+angle), this);
 					break;
 				case DynamicElementTextItem::Type:
+				{
 					if(item->parentItem() && !item->parentItem()->isSelected())
-						m_text << static_cast<DiagramTextItem *>(item);
+						m_undo << new QPropertyUndoCommand(item->toGraphicsObject(), "rotation", QVariant(item->rotation()), QVariant(item->rotation()+angle), this);
+				}
 					break;
 				case QGraphicsItemGroup::Type:
+				{
 					if(ElementTextItemGroup *grp = dynamic_cast<ElementTextItemGroup *>(item))
 						if(grp->parentElement() && !grp->parentElement()->isSelected())
-							m_group << grp;
+							m_undo << new QPropertyUndoCommand(grp, "rotation", QVariant(item->rotation()), QVariant(item->rotation()+angle), this);
+				}
 					break;
 				case DiagramImageItem::Type:
-					m_image << static_cast<DiagramImageItem *>(item);
+					m_undo << new QPropertyUndoCommand(item->toGraphicsObject(), "rotation", QVariant(item->rotation()), QVariant(item->rotation()+angle), this);
 					break;
 				default:
 					break;
 			}
 		}
+		
+		for (QPropertyUndoCommand *undo : m_undo)
+			undo->setAnimated(true, false);
 	}
 }
 
@@ -75,33 +86,14 @@ m_angle(angle)
 void RotateSelectionCommand::undo()
 {
 	m_diagram->showMe();
+	QUndoCommand::undo();
 	
-	for(QPointer<Element> elmt : m_element)
-		if(elmt)
-			elmt.data()->setRotation(elmt.data()->rotation() - m_angle);
-	for(QPointer<DiagramTextItem> text : m_text)
+	for(QPointer<ConductorTextItem> cti : m_cond_text)
 	{
-		if(text)
-		{
-			if(text.data()->type() == ConductorTextItem::Type)
-			{
-				ConductorTextItem *cti = static_cast<ConductorTextItem *>(text.data());
-				cti->forceRotateByUser(m_rotate_by_user.value(text.data()));
-				if(cti->wasRotateByUser())
-					cti->setRotation(cti->rotation() - m_angle);
-				else
-					cti->parentConductor()->calculateTextItemPosition();
-			}
-			else
-				text.data()->setRotation(text.data()->rotation() - m_angle);
-		}
+		cti->forceRotateByUser(m_rotate_by_user.value(cti.data()));
+		if(!cti->wasRotateByUser())
+			cti->parentConductor()->calculateTextItemPosition();
 	}
-	for(QPointer<DiagramImageItem> image : m_image)
-		if(image)
-			image.data()->setRotation(image.data()->rotation() - m_angle);
-	for(QPointer<ElementTextItemGroup> group : m_group)
-		if(group)
-			group.data()->setRotation(group.data()->rotation() - m_angle);
 }
 
 /**
@@ -110,29 +102,13 @@ void RotateSelectionCommand::undo()
 void RotateSelectionCommand::redo()
 {
 	m_diagram->showMe();
+	QUndoCommand::redo();
 	
-	for(QPointer<Element> elmt : m_element)
-		if(elmt)
-			elmt.data()->setRotation(elmt.data()->rotation() + m_angle);
-	for(QPointer<DiagramTextItem> text : m_text)
-	{
-		if(text)
+		for(QPointer<ConductorTextItem> cti : m_cond_text)
 		{
-			if(text.data()->type() == ConductorTextItem::Type)
-			{
-				ConductorTextItem *cti = static_cast<ConductorTextItem *>(text.data());
-				m_rotate_by_user.insert(text.data(), cti->wasRotateByUser());
-				cti->forceRotateByUser(true);
-			}
-			text.data()->setRotation(text.data()->rotation() + m_angle);
+			m_rotate_by_user.insert(cti, cti->wasRotateByUser());
+			cti->forceRotateByUser(true);
 		}
-	}
-	for(QPointer<DiagramImageItem> image : m_image)
-		if(image)
-			image.data()->setRotation(image.data()->rotation() + m_angle);
-	for(QPointer<ElementTextItemGroup> group : m_group)
-		if(group)
-			group.data()->setRotation(group.data()->rotation() + m_angle);
 }
 
 /**
@@ -141,10 +117,8 @@ void RotateSelectionCommand::redo()
  */
 bool RotateSelectionCommand::isValid()
 {
-	if(m_element.size()) return true;
-	if(m_image.size())   return true;
-	if(m_group.size())   return true;
-	if(m_text.size())    return true;
-	
-	return false;
+	if(childCount())
+		return true;
+	else
+		return false;
 }
