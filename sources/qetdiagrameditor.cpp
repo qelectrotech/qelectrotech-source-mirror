@@ -1279,16 +1279,22 @@ void QETDiagramEditor::rowColumnGroupTriggered(QAction *action)
 	QString value = action->data().toString();
 	DiagramView *dv = currentDiagram();
 
-	if (!dv || value.isEmpty()) return;
+	if (!dv || value.isEmpty() || dv->diagram()->isReadOnly()) return;
 
+	Diagram *d = dv->diagram();
+	BorderProperties old_bp = d->border_and_titleblock.exportBorder();
+	BorderProperties new_bp = d->border_and_titleblock.exportBorder();
+	
 	if (value == "add_column")
-		dv->addColumn();
+		new_bp.columns_count += 1;
 	else if (value == "remove_column")
-		dv->removeColumn();
+		new_bp.columns_count -= 1;
 	else if (value == "add_row")
-		dv->addRow();
+		new_bp.rows_count += 1;
 	else if (value == "remove_row")
-		dv->removeRow();
+		new_bp.rows_count -= 1;
+	
+	d->undoStack().push(new ChangeBorderCommand(d, old_bp, new_bp));
 }
 
 /**
@@ -1408,7 +1414,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 	m_find_element->setEnabled(selected_elements_count == 1);
 	
 		//Action that need items (elements, conductors, texts...) selected, to be enabled
-	bool copiable_items  = dv->hasCopiableItems();
+	bool copiable_items  = dc.hasCopiableItems();
 	bool deletable_items = dc.hasDeletableItems();
 	m_cut              -> setEnabled(!ro && copiable_items);
 	m_copy             -> setEnabled(copiable_items);

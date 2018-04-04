@@ -539,7 +539,7 @@ void DiagramView::keyPressEvent(QKeyEvent *e)
 			current_project->changeTabDown();
 			return;
 		case Qt::Key_Home:
-			if (!hasTextItems()) {
+			if (dc.selectedTexts().isEmpty()) {
 				if (
 					qgraphicsitem_cast<IndependentTextItem *>(m_diagram->focusItem()) ||
 					qgraphicsitem_cast<ConductorTextItem *>(m_diagram->focusItem()) ||
@@ -551,7 +551,7 @@ void DiagramView::keyPressEvent(QKeyEvent *e)
 			}
 			else break;
 		case Qt::Key_End:
-			if (!hasTextItems()) {
+			if (dc.selectedTexts().isEmpty()) {
 				if (
 					qgraphicsitem_cast<IndependentTextItem *>(m_diagram->focusItem()) ||
 					qgraphicsitem_cast<ConductorTextItem *>(m_diagram->focusItem()) ||
@@ -705,84 +705,6 @@ QString DiagramView::title() const {
  */
 void DiagramView::editDiagramProperties() {
 	DiagramPropertiesDialog::diagramPropertiesDialog(m_diagram, diagramEditor());
-}
-
-/**
-	@return true s'il y a des items selectionnes sur le schema et que ceux-ci
-	peuvent etre copies dans le presse-papier, false sinon
-*/
-bool DiagramView::hasCopiableItems() {
-	foreach(QGraphicsItem *qgi, m_diagram -> selectedItems()) {
-		if (
-			qgraphicsitem_cast<Element *>(qgi) ||
-			qgraphicsitem_cast<IndependentTextItem *>(qgi) ||
-			qgraphicsitem_cast<QetShapeItem *>(qgi) ||
-			qgraphicsitem_cast<DiagramImageItem *>(qgi)
-		) {
-			return(true);
-		}
-	}
-	return(false);
-}
-
-/**
-	@return true if there is any Text Item selected
-*/
-bool DiagramView::hasTextItems() {
-	foreach(QGraphicsItem *qgi, m_diagram -> selectedItems()) {
-		if (
-			qgraphicsitem_cast<IndependentTextItem *>(qgi) ||
-			qgraphicsitem_cast<ConductorTextItem *>(qgi) ||
-			qgraphicsitem_cast<DiagramTextItem *>(qgi)
-		) {
-			return(true);
-		}
-	}
-	return(false);
-}
-
-/**
-	Ajoute une colonne au schema.
-*/
-void DiagramView::addColumn() {
-	if (m_diagram -> isReadOnly()) return;
-	BorderProperties old_bp = m_diagram -> border_and_titleblock.exportBorder();
-	BorderProperties new_bp = m_diagram -> border_and_titleblock.exportBorder();
-	new_bp.columns_count += 1;
-	m_diagram -> undoStack().push(new ChangeBorderCommand(m_diagram, old_bp, new_bp));
-}
-
-/**
-	Enleve une colonne au schema.
-*/
-void DiagramView::removeColumn() {
-	if (m_diagram -> isReadOnly()) return;
-	BorderProperties old_bp = m_diagram -> border_and_titleblock.exportBorder();
-	BorderProperties new_bp = m_diagram -> border_and_titleblock.exportBorder();
-	new_bp.columns_count -= 1;
-	m_diagram -> undoStack().push(new ChangeBorderCommand(m_diagram, old_bp, new_bp));
-}
-
-/**
-	Agrandit le schema en hauteur
-*/
-void DiagramView::addRow() {
-	if (m_diagram -> isReadOnly()) return;
-	BorderProperties old_bp = m_diagram -> border_and_titleblock.exportBorder();
-	BorderProperties new_bp = m_diagram -> border_and_titleblock.exportBorder();
-	new_bp.rows_count += 1;
-	m_diagram -> undoStack().push(new ChangeBorderCommand(m_diagram, old_bp, new_bp));
-}
-
-/**
-	Retrecit le schema en hauteur
-*/
-void DiagramView::removeRow() {
-	if (m_diagram -> isReadOnly()) return;
-	BorderProperties old_bp = m_diagram -> border_and_titleblock.exportBorder();
-	BorderProperties new_bp = m_diagram -> border_and_titleblock.exportBorder();
-	new_bp.rows_count -= 1;
-	m_diagram -> undoStack().push(new ChangeBorderCommand(m_diagram, old_bp, new_bp));
 }
 
 /**

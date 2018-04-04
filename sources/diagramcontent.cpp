@@ -198,6 +198,20 @@ bool DiagramContent::hasDeletableItems() const
 }
 
 /**
+ * @brief DiagramContent::hasCopiableItems
+ * @return true if this diagram content have copiable items.
+ */
+bool DiagramContent::hasCopiableItems() const
+{
+	if(!m_images.isEmpty())      return true;
+	if(!m_shapes.isEmpty())      return true;
+	if(!m_elements.isEmpty())    return true;
+	if(!m_text_fields.isEmpty()) return true;
+	
+	return false;
+}
+
+/**
  * @brief DiagramContent::clear
  * Remove all items from the diagram content
  */

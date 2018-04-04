@@ -60,14 +60,8 @@ class DiagramView : public QGraphicsView
 	public:
 		QString title() const;
 		void editDiagramProperties();
-		void addColumn();
-		void removeColumn();
-		void addRow();
-		void removeRow();
 		Diagram *diagram() { return(m_diagram); }
 		QETDiagramEditor *diagramEditor() const;
-		bool hasCopiableItems();
-		bool hasTextItems();
 		void editSelection();
 		void setEventInterface (DVEventInterface *event_interface);
 	
