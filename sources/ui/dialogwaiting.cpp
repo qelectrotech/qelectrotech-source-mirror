@@ -89,6 +89,6 @@ void DialogWaiting::setDetail(const QString& val){
  */
 int DialogWaiting::progressBarValue() const
 {
-	ui->progressBar->value();
+	return ui->progressBar->value();
 }
 
