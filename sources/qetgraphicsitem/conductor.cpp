@@ -1020,7 +1020,13 @@ QDomElement Conductor::toXml(QDomDocument &dom_document, QHash<Terminal *, int> 
 	
 		// Export the properties and text
 	m_properties. toXml(dom_element);
-	m_text_item -> toXml(dom_element);
+	if(m_text_item->wasMovedByUser())
+	{
+		dom_element.setAttribute("userx", QString::number(m_text_item->pos().x()));
+		dom_element.setAttribute("usery", QString::number(m_text_item->pos().y()));
+	}
+	if(m_text_item->wasRotateByUser())
+		dom_element.setAttribute("rotation", QString::number(m_text_item->rotation()));
 
 	return(dom_element);
 }

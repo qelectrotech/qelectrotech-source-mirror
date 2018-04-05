@@ -123,7 +123,11 @@ void ElementsPanel::panelContentChange() {
 	@param project Projet a inserer dans le panel d'elements
 	@return Le QTreeWidgetItem insere le plus haut
 */
-QTreeWidgetItem *ElementsPanel::addProject(QETProject *project) {
+QTreeWidgetItem *ElementsPanel::addProject(QETProject *project, QTreeWidgetItem *parent_item, PanelOptions options)
+{
+	Q_UNUSED(parent_item)
+	Q_UNUSED(options)
+	
 	bool first_add = (first_reload_ || !projects_to_display_.contains(project));
 	
 	// create the QTreeWidgetItem representing the project

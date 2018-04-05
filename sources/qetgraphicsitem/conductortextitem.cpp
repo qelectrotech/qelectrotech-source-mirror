@@ -79,22 +79,6 @@ void ConductorTextItem::fromXml(const QDomElement &e) {
 }
 
 /**
- * @brief ConductorTextItem::toXml
- * Export the properties of this text in the attribute of the xml element given in parameter
- * The properties exported are position and rotation (only if moved or rotate by user)
- * @param xml
- */
-void ConductorTextItem::toXml(QDomElement &xml) const {
-	if (moved_by_user_) {
-		xml.setAttribute("userx", QString("%1").arg(pos().x()));
-		xml.setAttribute("usery", QString("%1").arg(pos().y()));
-	}
-	if (rotate_by_user_) {
-		xml.setAttribute("rotation", QString("%1").arg(rotation()));
-	}
-}
-
-/**
 	@return true si ce champ de texte a ete explictement deplace par
 	l'utilisateur, false sinon
 */

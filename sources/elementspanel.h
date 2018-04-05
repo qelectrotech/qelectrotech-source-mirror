@@ -74,9 +74,9 @@ class ElementsPanel : public GenericPanel {
 	void panelContentChange();
 	
 	private:
-	virtual QTreeWidgetItem *addProject   (QETProject *);
-	QTreeWidgetItem *updateTemplatesCollectionItem(QTreeWidgetItem *, TitleBlockTemplatesCollection *, PanelOptions = AddAllChild, bool = false) override;
-	QTreeWidgetItem *updateTemplateItem        (QTreeWidgetItem *, const TitleBlockTemplateLocation &,  PanelOptions, bool = false) override;
+		QTreeWidgetItem *addProject   (QETProject *, QTreeWidgetItem * = nullptr, PanelOptions = AddAllChild) override;
+		QTreeWidgetItem *updateTemplatesCollectionItem(QTreeWidgetItem *, TitleBlockTemplatesCollection *, PanelOptions = AddAllChild, bool = false) override;
+		QTreeWidgetItem *updateTemplateItem        (QTreeWidgetItem *, const TitleBlockTemplateLocation &,  PanelOptions, bool = false) override;
 	
 	// attributes
 	private:

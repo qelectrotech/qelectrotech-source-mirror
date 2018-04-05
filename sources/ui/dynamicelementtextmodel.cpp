@@ -1255,6 +1255,7 @@ void DynamicElementTextModel::updateDataFromText(DynamicElementTextItem *deti, V
 			qsi->child(width_txt_row,1)->setData(deti->textWidth(), Qt::EditRole);
 			break;
 		}
+	default:break;
 	}
 	
 	m_block_dataChanged = false;
@@ -1296,6 +1297,7 @@ void DynamicElementTextModel::updateDataFromGroup(ElementTextItemGroup *group, D
 			enableGroupRotation(group);
 			break;
 		}
+		default:break;
 	}
 	
 	m_block_dataChanged = false;
@@ -1540,6 +1542,7 @@ bool DynamicTextItemDelegate::eventFilter(QObject *object, QEvent *event)
 				emit commitData(sb); break;
 			case QEvent::Wheel:
 				emit commitData(sb); break;
+			default:break;
 		}
 		return true;
 	}

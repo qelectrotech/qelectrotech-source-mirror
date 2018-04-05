@@ -290,7 +290,7 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
  * @param t, type used
  */
 void NumPartEditorW::setCurrentIndex(NumPartEditorW::type t) {
-	int i;
+	int i=-1;
 	if (t == unit)
 		i = ui->type_cb->findText(tr("Chiffre 1"));
 	else if (t == unitfolio)

@@ -648,6 +648,7 @@ bool CustomElement::parsePolygon(QDomElement &e, QPainter &qp, bool addtolist) {
 	@return true si l'analyse reussit, false sinon
 */
 bool CustomElement::parseText(QDomElement &e, QPainter &qp, bool addtolist) {
+	Q_UNUSED(addtolist);
 	qreal pos_x, pos_y;
 	int size;
 	if (

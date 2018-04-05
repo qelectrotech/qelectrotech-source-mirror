@@ -78,11 +78,11 @@
 
 QT_BEGIN_NAMESPACE
 
-static const char RichTextDialogGroupC[] = "RichTextDialog";
-static const char GeometryKeyC[] = "Geometry";
-static const char TabKeyC[] = "Tab";
+//static const char RichTextDialogGroupC[] = "RichTextDialog";
+//static const char GeometryKeyC[] = "Geometry";
+//static const char TabKeyC[] = "Tab";
 
-const bool simplifyRichTextDefault = true;
+//const bool simplifyRichTextDefault = true;
 
 namespace qdesigner_internal {
 	// Richtext simplification filter helpers: Elements to be discarded

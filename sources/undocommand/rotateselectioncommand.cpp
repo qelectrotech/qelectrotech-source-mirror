@@ -31,8 +31,7 @@
 
 RotateSelectionCommand::RotateSelectionCommand(Diagram *diagram, qreal angle, QUndoCommand *parent) :
 QUndoCommand(parent),
-m_diagram(diagram),
-m_angle(angle)
+m_diagram(diagram)
 {
 	setText(QObject::tr("Pivoter la selection"));
 	

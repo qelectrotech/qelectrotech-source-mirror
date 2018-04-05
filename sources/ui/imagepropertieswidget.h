@@ -42,7 +42,7 @@ class ImagePropertiesWidget : public PropertiesEditorWidget
 		void apply() override;
 		void reset() override;
 		bool setLiveEdit(bool live_edit) override;
-		QUndoCommand* associatedUndo();
+		QUndoCommand* associatedUndo() const override;
 
 	private:
 		void updateUi() override;

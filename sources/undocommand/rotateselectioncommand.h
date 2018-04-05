@@ -40,7 +40,6 @@ class RotateSelectionCommand : public QUndoCommand
 	
 	private:
 		Diagram *m_diagram =nullptr;
-		qreal m_angle;
 		
 		QList<QPointer<ConductorTextItem>> m_cond_text;
 		QHash<ConductorTextItem *, bool> m_rotate_by_user;

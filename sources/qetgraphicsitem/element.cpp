@@ -356,12 +356,6 @@ bool Element::valideXml(QDomElement &e) {
  */
 bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool handle_inputs_rotation)
 {
-	QDomDocument doc = e.ownerDocument();
-	QDomElement root = doc.documentElement();
-	double saved_version = -1;
-	if(root.tagName() == "project")
-		saved_version = root.attribute("version", "-1").toDouble();
-		
 	/*
 		les bornes vont maintenant etre recensees pour associer leurs id a leur adresse reelle
 		ce recensement servira lors de la mise en place des fils
@@ -776,7 +770,7 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
         //Dynamic texts
     QDomElement dyn_text = document.createElement("dynamic_texts");
     for (DynamicElementTextItem *deti : m_dynamic_text_list)
-        dyn_text.appendChild(deti->toXml(document));
+		dyn_text.appendChild(deti->toXml(document));
 	
 	QDomElement texts_group = document.createElement("texts_groups");
 	

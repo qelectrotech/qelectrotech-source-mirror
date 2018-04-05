@@ -75,7 +75,7 @@ void CrossRefItem::init()
 {
 	if(!m_element->diagram())
 	{
-		qDebug() << "CrossRefItem constructor", "element is not in a diagram";
+		qDebug() << "CrossRefItem constructor" << "element is not in a diagram";
 		return;
 	}
 	
@@ -253,6 +253,7 @@ bool CrossRefItem::sceneEvent(QEvent *event)
 			case QEvent::GraphicsSceneMouseDoubleClick:
 				mouseDoubleClickEvent(static_cast<QGraphicsSceneMouseEvent *>(event));
 				break;
+			default:break;
 		}
 		return true;
 	}

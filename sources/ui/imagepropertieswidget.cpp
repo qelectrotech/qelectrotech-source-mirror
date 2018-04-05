@@ -130,7 +130,7 @@ bool ImagePropertiesWidget::setLiveEdit(bool live_edit)
  * @return the change in an undo command (ItemResizerCommand).
  * If there is no change return nullptr
  */
-QUndoCommand* ImagePropertiesWidget::associatedUndo()
+QUndoCommand* ImagePropertiesWidget::associatedUndo() const
 {
 
 	qreal value = ui->m_scale_slider->value();

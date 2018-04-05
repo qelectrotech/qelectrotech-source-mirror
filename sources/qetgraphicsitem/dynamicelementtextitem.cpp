@@ -963,7 +963,7 @@ void DynamicElementTextItem::clearFormulaConnection()
 
 void DynamicElementTextItem::updateReportFormulaConnection()
 {
-	if(!m_parent_element.data()->linkType() & Element::AllReport)
+	if(!(m_parent_element.data()->linkType() & Element::AllReport))
 		return;
 	
 	removeConnectionForReportFormula(m_report_formula);
@@ -977,7 +977,7 @@ void DynamicElementTextItem::updateReportFormulaConnection()
  */
 void DynamicElementTextItem::updateReportText()
 {
-	if(!m_parent_element.data()->linkType() & Element::AllReport)
+	if(!(m_parent_element.data()->linkType() & Element::AllReport))
 		return;
 	
 	if (m_text_from == ElementInfo && m_info_name == "label" && m_other_report)

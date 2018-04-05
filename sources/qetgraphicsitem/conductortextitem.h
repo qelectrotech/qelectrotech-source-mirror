@@ -42,7 +42,6 @@ class ConductorTextItem : public DiagramTextItem
         enum { Type = UserType + 1006 };
         Conductor *parentConductor() const;
         void fromXml(const QDomElement &) override;
-        virtual void toXml  (QDomElement &xml) const;
         int type() const override { return Type; }
         virtual bool wasMovedByUser() const;
         virtual bool wasRotateByUser() const;

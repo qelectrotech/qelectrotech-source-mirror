@@ -687,9 +687,9 @@ void QETTitleBlockTemplateEditor::updateEditorTitle() {
 void QETTitleBlockTemplateEditor::updateActions() {
 	save_ -> setEnabled(!read_only_);
 	
-	bool can_merge;
-	bool can_split;
-	int count;
+	bool can_merge = true;
+	bool can_split = true;
+	int count = 0;
 	if (!read_only_) {
 		template_edition_area_view_ -> analyzeSelectedCells(&can_merge, &can_split, &count);
 	}
