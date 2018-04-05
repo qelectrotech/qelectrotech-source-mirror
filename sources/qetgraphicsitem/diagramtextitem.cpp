@@ -286,7 +286,7 @@ void DiagramTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 
 		//This is first move, we signal it to parent diagram
 		if(diagram_ && m_first_move)
-			diagram_ -> beginMoveElements(this);
+			diagram_->elementsMover().beginMovement(diagram_, this);
 
 		QPointF old_pos = pos();
 
@@ -297,7 +297,7 @@ void DiagramTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 
 		//Update the actual movement for other selected item
 		if (diagram_)
-			diagram_ -> continueMoveElements(pos() - old_pos);
+			diagram_->elementsMover().continueMovement(pos() - old_pos);
 	}
 
 	else event -> ignore();
@@ -312,7 +312,7 @@ void DiagramTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 void DiagramTextItem::mouseReleaseEvent (QGraphicsSceneMouseEvent *event) {
 	//Signal to diagram movement is finish
 	if (diagram())
-		diagram() -> endMoveElements();
+		diagram()->elementsMover().endMovement();
 
 	if (!(event -> modifiers() & Qt::ControlModifier))
 		QGraphicsTextItem::mouseReleaseEvent(event);

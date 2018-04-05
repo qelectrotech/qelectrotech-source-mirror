@@ -24,14 +24,12 @@
 #include "diagramcommands.h"
 #include "diagramcontent.h"
 #include "diagramposition.h"
-#include "elementsmover.h"
 #include "exportdialog.h"
 #include "qetgraphicsitem/ghostelement.h"
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qetgraphicsitem/diagramimageitem.h"
 #include "qetgraphicsitem/qetshapeitem.h"
 #include "terminal.h"
-#include "elementtextsmover.h"
 #include "diagrameventinterface.h"
 #include "qetapp.h"
 #include "elementcollectionhandler.h"
@@ -81,10 +79,6 @@ Diagram::Diagram(QETProject *project) :
 	QPen pen(Qt::NoBrush, 1.5, Qt::DashLine);
 	pen.setColor(Qt::black);
 	conductor_setter_ -> setPen(pen);
-	
-		//Init object for manage movement
-	elements_mover_      = new ElementsMover();
-	m_element_texts_mover = new ElementTextsMover();
 
 	connect(&border_and_titleblock, SIGNAL(needTitleBlockTemplate(const QString &)), this, SLOT(setTitleBlockTemplate(const QString &)));
 	connect(&border_and_titleblock, SIGNAL(diagramTitleChanged(const QString &)),    this, SLOT(titleChanged(const QString &)));
@@ -110,10 +104,6 @@ Diagram::~Diagram()
 	delete qgi_manager_;
         // remove of conductor setter
 	delete conductor_setter_;
-	
-        // delete of object for manage movement
-	delete elements_mover_;
-	delete m_element_texts_mover;
 
 	if (m_event_interface)
         delete m_event_interface;
@@ -345,8 +335,8 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 				
 				if (!movement.isNull() && !focusItem())
 				{
-					beginMoveElements();
-					continueMoveElements(movement);
+					m_elements_mover.beginMovement(this);
+					m_elements_mover.continueMovement(movement);
 					event->accept();
 					return;
 				}
@@ -402,7 +392,7 @@ void Diagram::keyReleaseEvent(QKeyEvent *e)
 			 e -> key() == Qt::Key_Up   || e -> key() == Qt::Key_Down)  &&
 			!e -> isAutoRepeat()
 		) {
-			endMoveElements();
+			m_elements_mover.endMovement();
 			e -> accept();
 			transmit_event = false;
 		}
@@ -1438,56 +1428,12 @@ QList <Conductor *> Diagram::conductors() const {
 	return (cnd_list);
 }
 
-/**
-	Initialise un deplacement d'elements, conducteurs et champs de texte sur le
-	schema.
-	@param driver_item Item deplace par la souris et ne necessitant donc pas
-	d'etre deplace lors des appels a continueMovement.
-	@see ElementsMover
-*/
-int Diagram::beginMoveElements(QGraphicsItem *driver_item) {
-	return(elements_mover_ -> beginMovement(this, driver_item));
+ElementsMover &Diagram::elementsMover() {
+	return m_elements_mover;
 }
 
-/**
-	Prend en compte un mouvement composant un deplacement d'elements,
-	conducteurs et champs de texte
-	@param movement mouvement a ajouter au deplacement en cours
-	@see ElementsMover
-*/
-void Diagram::continueMoveElements(const QPointF &movement) {
-	elements_mover_ -> continueMovement(movement);
-}
-
-/**
-	Finalise un deplacement d'elements, conducteurs et champs de texte
-	@see ElementsMover
-*/
-void Diagram::endMoveElements() {
-	elements_mover_ -> endMovement();
-}
-
-/**
-	Initialise un deplacement d'ElementTextItems
-	@param driver_item Item deplace par la souris et ne necessitant donc pas
-	d'etre deplace lors des appels a continueMovement.
-	@see ElementTextsMover
-*/
-int Diagram::beginMoveElementTexts(QGraphicsItem *driver_item) {
-	return(m_element_texts_mover -> beginMovement(this, driver_item));
-}
-
-void Diagram::continueMoveElementTexts(QGraphicsSceneMouseEvent *event)
-{
-	m_element_texts_mover->continueMovement(event);
-}
-
-/**
-	Finalise un deplacement d'ElementTextItems
-	@see ElementTextsMover
-*/
-void Diagram::endMoveElementTexts() {
-	m_element_texts_mover -> endMovement();
+ElementTextsMover &Diagram::elementTextsMover() {
+	return m_element_texts_mover;
 }
 
 /**

@@ -490,7 +490,7 @@ void ElementTextItemGroup::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 	if((event->buttons() & Qt::LeftButton) && (flags() & ItemIsMovable))
 	{
 		if(diagram() && m_first_move)
-			diagram()->beginMoveElementTexts(this);
+			diagram()->elementTextsMover().beginMovement(diagram(), this);
 		
 		if(m_first_move)
 		{
@@ -508,7 +508,7 @@ void ElementTextItemGroup::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 		event->modifiers() == Qt::ControlModifier ? setPos(new_pos) : setPos(Diagram::snapToGrid(new_pos));
 		
 		if(diagram())
-			diagram()->continueMoveElementTexts(event);
+			diagram()->elementTextsMover().continueMovement(event);
 	} else {
 		event->ignore();
 	}
@@ -525,7 +525,7 @@ void ElementTextItemGroup::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
 	if(diagram())
 	{
-		diagram()->endMoveElementTexts();
+		diagram()->elementTextsMover().endMovement();
 		if(parentElement())
 			parentElement()->setHighlighted(false);
 	}

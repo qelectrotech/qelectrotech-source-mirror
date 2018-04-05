@@ -106,7 +106,7 @@ void QetGraphicsItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 		//Item is moving
 		if(diagram() && first_move_) {
 			//It's the first movement, we signal it to parent diagram
-			diagram() -> beginMoveElements(this);
+			diagram()->elementsMover().beginMovement(diagram(), this);
 		}
 
 		//we apply the mouse movement
@@ -122,7 +122,7 @@ void QetGraphicsItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 		if (diagram()) {
 			//we signal the real movement apply to diagram,
 			//who he apply to other selected item
-			diagram() -> continueMoveElements(effective_movement);
+			diagram()->elementsMover().continueMovement(effective_movement);
 		}
 	} else e -> ignore();
 
@@ -135,7 +135,8 @@ void QetGraphicsItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
  * @param e
  */
 void QetGraphicsItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
-	if (diagram()) diagram() -> endMoveElements();
+	if (diagram())
+		diagram()->elementsMover().endMovement();
 
 	if (!(e -> modifiers() & Qt::ControlModifier))
 		QGraphicsItem::mouseReleaseEvent(e);

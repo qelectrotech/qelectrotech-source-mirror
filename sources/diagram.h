@@ -27,6 +27,8 @@
 #include "numerotationcontext.h"
 #include "qetproject.h"
 #include "properties/xrefproperties.h"
+#include "elementsmover.h"
+#include "elementtextsmover.h"
 
 class Conductor;
 class CustomElement;
@@ -35,11 +37,9 @@ class DiagramPosition;
 class DiagramTextItem;
 class Element;
 class ElementsLocation;
-class ElementsMover;
 class QETProject;
 class Terminal;
 class DiagramImageItem;
-class ElementTextsMover;
 class DiagramEventInterface;
 
 /**
@@ -92,8 +92,8 @@ class Diagram : public QGraphicsScene
 
 	private:
 		QGraphicsLineItem *conductor_setter_;
-		ElementsMover     *elements_mover_;
-		ElementTextsMover *m_element_texts_mover;
+		ElementsMover     m_elements_mover;
+		ElementTextsMover m_element_texts_mover;
 		QGIManager        *qgi_manager_;
 		QETProject        *m_project;
 
@@ -190,12 +190,8 @@ class Diagram : public QGraphicsScene
 		QSet<Conductor *> selectedConductors() const;
 		DiagramContent content() const;
 		bool canRotateSelection() const;
-		int  beginMoveElements(QGraphicsItem * = nullptr);
-		void continueMoveElements(const QPointF &);
-		void endMoveElements();
-		int  beginMoveElementTexts(QGraphicsItem * = nullptr);
-		void continueMoveElementTexts(QGraphicsSceneMouseEvent *event);
-		void endMoveElementTexts();
+		ElementsMover &elementsMover();
+		ElementTextsMover &elementTextsMover();
 		bool usesElement(const ElementsLocation &);
 		bool usesTitleBlockTemplate(const QString &);
 		
