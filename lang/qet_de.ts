@@ -598,7 +598,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="81"/>
         <source>Afficher un texte de potentiel par folio. </source>
-        <translation>Nur eine Potenzialbeschriftung je Folie anzeigen.</translation>
+        <translation>Nur eine Potenzialbeschriftung je Folie anzeigen. </translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="182"/>
@@ -668,7 +668,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="202"/>
         <source>Rotation du texte de conducteur :</source>
-        <translation>Orientierung der Leiterbeschriftung: </translation>
+        <translation>Orientierung der Leiterbeschriftung:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="240"/>
@@ -1127,7 +1127,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="228"/>
         <source>Largeur</source>
-        <translation type="unfinished"></translation>
+        <translation>Breite</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="459"/>
@@ -1147,7 +1147,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="481"/>
         <source>Modifier la largeur d&apos;un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Breite eines Bauteiltexts ändern</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="493"/>
@@ -1198,7 +1198,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="631"/>
         <source>Maintenir en bas de page</source>
-        <translation type="unfinished"></translation>
+        <translation>Am unteren Rand der Folie platzieren</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="910"/>
@@ -1288,7 +1288,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="172"/>
         <source>Largeur</source>
-        <translation type="unfinished"></translation>
+        <translation>Breite</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="182"/>
@@ -1339,17 +1339,17 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="235"/>
         <source>Modifier la largeur d&apos;un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Breite eines Bauteiltexts ändern</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="249"/>
         <source>Modifier l&apos;information d&apos;un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Text eines Textfelds ändern</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="277"/>
         <source>Modifier la source de texte, d&apos;un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Quelle eines Texts ändern</translation>
     </message>
 </context>
 <context>
@@ -1391,7 +1391,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
         <location filename="../sources/qetgraphicsitem/element.cpp" line="631"/>
         <location filename="../sources/qetgraphicsitem/element.cpp" line="681"/>
         <source>Label + commentaire</source>
-        <translation type="unfinished"></translation>
+        <translation>BMK + Kommentar</translation>
     </message>
 </context>
 <context>
@@ -1549,7 +1549,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="35"/>
         <source>Type de base :</source>
-        <translation>Grundtyp: </translation>
+        <translation>Grundtyp:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="47"/>
@@ -1715,7 +1715,8 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="364"/>
         <source>Rotation : %1°
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Drehung: %1°
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="365"/>
@@ -1754,7 +1755,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="215"/>
         <source>Déplacer une primitive</source>
-        <translation type="unfinished">Stammfunktion verschieben</translation>
+        <translation>Stammfunktion verschieben</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="660"/>
@@ -1838,7 +1839,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="106"/>
         <source>Nom interne : </source>
-        <translation>Interner Name:</translation>
+        <translation>Interner Name: </translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="117"/>
@@ -1960,7 +1961,8 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
         <source>Êtes-vous sûr  de vouloir supprimer cet élément ?
 </source>
         <comment>message box content</comment>
-        <translation>Möchten Sie wirklich dieses Bauteil löschen?</translation>
+        <translation>Möchten Sie wirklich dieses Bauteil löschen?
+</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="356"/>
@@ -2180,12 +2182,12 @@ Alle Bauteile und Unterordner von diesem Ordner werden ebenso gelöscht.</transl
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="50"/>
         <source>Centre : </source>
-        <translation>Mittelpunkt:</translation>
+        <translation>Mittelpunkt: </translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="55"/>
         <source>Diamètres : </source>
-        <translation>Durchmesser:</translation>
+        <translation>Durchmesser: </translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="56"/>
@@ -3622,14 +3624,16 @@ Wählen Sie die anzuwendenden Eigenschaften für das neue Potenzial.</translatio
         <location filename="../sources/ui/potentialselectordialog.cpp" line="239"/>
         <source>
 Fonction : %1</source>
-        <translation>Funktionstext: %1</translation>
+        <translation>
+Funktionstext: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="229"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="241"/>
         <source>
 Tension/protocole : %1</source>
-        <translation>Spannung / Protokoll: %1</translation>
+        <translation>
+Spannung / Protokoll: %1</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/potentialselectordialog.cpp" line="218"/>
@@ -4129,6 +4133,7 @@ Voulez-vous enregistrer les modifications ?</source>
 
 </source>
         <translation> [Optionen] [Datei]...
+
 </translation>
     </message>
     <message>
@@ -4152,25 +4157,29 @@ Verfügbare Optionen:
         <location filename="../sources/qetapp.cpp" line="1667"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
-        <translation>  --common-elements-dir=DIR     Setzt Pfad zur Bauteilsammlung</translation>
+        <translation>  --common-elements-dir=DIR     Setzt Pfad zur Bauteilsammlung
+</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1670"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
-        <translation>  --common-tbt-dir=DIR          Pfad zur Zeichnungskopf-Sammlung setzen</translation>
+        <translation>  --common-tbt-dir=DIR          Pfad zur Zeichnungskopf-Sammlung setzen
+</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1673"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
-        <translation>  --config-dir=DIR              Setzt Pfad zur Konfiguration</translation>
+        <translation>  --config-dir=DIR              Setzt Pfad zur Konfiguration
+</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1675"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
-        <translation>  --lang-dir=DIR                Setzt Pfad zu den Sprachdateien</translation>
+        <translation>  --lang-dir=DIR                Setzt Pfad zu den Sprachdateien
+</translation>
     </message>
 </context>
 <context>
@@ -5601,7 +5610,8 @@ Im Terminal, Datei ausführbar machen: chmod +x ./DXFtoQET
 Binäre Datei DXFtoQET.exe in Ordner C:\Users\user_name\AppData\Roaming\qet\ verschieben
 
 &gt;&gt; Installation auf macOSX
-Binäre Datei DXFtoQET.app in Ordner /Users/user_name/.qet/ verschieben </translation>
+Binäre Datei DXFtoQET.app in Ordner /Users/user_name/.qet/ verschieben 
+</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1093"/>
@@ -6401,7 +6411,8 @@ Que désirez vous faire ?</source>
         <translation>Zulässige Zeichen sind:
  - Zahlen [0-9]
  - Kleinbuchstaben [a-z]
- - Strich [-], Unterstrich [_] und Punkt [.]</translation>
+ - Strich [-], Unterstrich [_] und Punkt [.]
+</translation>
     </message>
 </context>
 <context>
@@ -7170,7 +7181,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="114"/>
         <source>Reference Fabricant</source>
-        <translation type="unfinished"></translation>
+        <translation>Artikelnummer</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="115"/>
@@ -7396,12 +7407,12 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="50"/>
         <source>Coin supérieur gauche : </source>
-        <translation>Obere linke Ecke:</translation>
+        <translation>Obere linke Ecke: </translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="55"/>
         <source>Dimensions : </source>
-        <translation>Abmessungen:</translation>
+        <translation>Abmessungen: </translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="56"/>
@@ -7759,7 +7770,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.h" line="48"/>
         <source>Éditer les propriétés d&apos;une primitive </source>
-        <translation>Stammfunktioneigenschaften bearbeiten</translation>
+        <translation>Stammfunktioneigenschaften bearbeiten </translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="123"/>
@@ -8027,12 +8038,12 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="110"/>
         <source>Style : </source>
-        <translation>Stil:</translation>
+        <translation>Stil: </translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="113"/>
         <source>Épaisseur : </source>
-        <translation>Dicke:</translation>
+        <translation>Dicke: </translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="105"/>
@@ -8156,7 +8167,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="47"/>
         <source>Angle de rotation : </source>
-        <translation>Drehwinkel:</translation>
+        <translation>Drehwinkel: </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="55"/>
@@ -8176,17 +8187,17 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="65"/>
         <source>Taille : </source>
-        <translation>Größe:</translation>
+        <translation>Größe: </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="70"/>
         <source>Couleur : </source>
-        <translation>Farbe:</translation>
+        <translation>Farbe: </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="77"/>
         <source>Texte : </source>
-        <translation>Text:</translation>
+        <translation>Text: </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="139"/>
@@ -8515,7 +8526,7 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="78"/>
         <source>horizontal :</source>
-        <translation>Horizontal: </translation>
+        <translation>Horizontal:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="80"/>
@@ -8535,7 +8546,7 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="86"/>
         <source>vertical :</source>
-        <translation>Vertikal: </translation>
+        <translation>Vertikal:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="88"/>
@@ -8936,12 +8947,12 @@ Maximale Länge: %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="26"/>
         <source>Représentation:</source>
-        <translation>Darstellung: </translation>
+        <translation>Darstellung:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="34"/>
         <source>Positionner :</source>
-        <translation>Position: </translation>
+        <translation>Position:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="48"/>
@@ -9013,7 +9024,7 @@ Maximale Länge: %2px
 %l: Zeilennummer
 %c: Spaltennummer
 %M: Anlage
-%LM: Ort</translation>
+%LM: Ort </translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="205"/>
@@ -9028,17 +9039,17 @@ Maximale Länge: %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="220"/>
         <source>Préfixe des contacts de puissance :</source>
-        <translation>Präfix für Leistungskontakte: </translation>
+        <translation>Präfix für Leistungskontakte:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="227"/>
         <source>Préfixe des contacts temporisés :</source>
-        <translation>Präfix für zeitverzögerte Kontakte: </translation>
+        <translation>Präfix für zeitverzögerte Kontakte:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="240"/>
         <source>Préfixe des contacts inverseurs :</source>
-        <translation>Präfix für Wechslerkontakte: </translation>
+        <translation>Präfix für Wechslerkontakte:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="94"/>
@@ -9086,7 +9097,7 @@ Maximale Länge: %2px
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="32"/>
         <source>Projet : </source>
-        <translation>Projekt:</translation>
+        <translation>Projekt: </translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="60"/>
