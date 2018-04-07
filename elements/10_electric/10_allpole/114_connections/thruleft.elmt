@@ -1,21 +1,25 @@
-<definition width="30" version="0.3" hotspot_x="16" hotspot_y="5" height="20" type="element" orientation="dyyy">
+<definition hotspot_y="4" height="20" hotspot_x="17" type="element" width="30" link_type="terminal" orientation="dyyy" version="0.70">
+    <uuid uuid="{9e88368e-1b20-4a56-8941-5d17a4cce2d4}"/>
     <names>
-        <name lang="ar">ربط يسار</name>
+        <name lang="cs">Levé spojení</name>
         <name lang="ru">Справа налево</name>
-        <name lang="en">Thru left</name>
-        <name lang="it">Collegamento sinistro</name>
         <name lang="fr">Liaison gauche</name>
+        <name lang="en">Thru left</name>
+        <name lang="ar">ربط يسار</name>
+        <name lang="it">Collegamento sinistro</name>
         <name lang="pl">Połączenie 4</name>
         <name lang="es">A la izquierda</name>
-        <name lang="cs">Levé spojení</name>
     </names>
+    <elementInformations/>
     <informations></informations>
     <description>
-        <input x="1.5" y="3.55" size="1" rotate="true" text="_"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="0" y2="0" x2="-6"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="5" x2="0"/>
-        <terminal x="4" y="0" orientation="e"/>
-        <terminal x="-10" y="0" orientation="w"/>
-        <terminal x="0" y="10" orientation="s"/>
+        <dynamic_text font_size="1" rotation="0" uuid="{5ff9bef8-b6a8-4cf8-ba82-4dabe7b1820f}" text_width="-1" frame="false" text_from="UserText" z="1" x="1.5" y="-1.45">
+            <text>_</text>
+        </dynamic_text>
+        <line x1="0" length1="1.5" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" y2="0" end1="none" antialias="false" x2="-6"/>
+        <line x1="0" length1="1.5" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" y2="5" end1="none" antialias="false" x2="0"/>
+        <terminal x="4" orientation="e" y="0"/>
+        <terminal x="-10" orientation="w" y="0"/>
+        <terminal x="0" orientation="s" y="10"/>
     </description>
 </definition>

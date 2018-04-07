@@ -1,22 +1,26 @@
-<definition width="40" version="0.3" hotspot_x="19" hotspot_y="5" height="20" type="element" orientation="dyyy">
+<definition link_type="terminal" width="30" hotspot_x="14" orientation="dyyy" height="20" version="0.70" hotspot_y="4" type="element">
+    <uuid uuid="{6e40fff3-691c-4622-b9aa-4ff930a5b981}"/>
     <names>
-        <name lang="ar">ربط يمين</name>
-        <name lang="ru">Слева направо</name>
         <name lang="en">Thru right</name>
-        <name lang="it">Collegamento destro</name>
-        <name lang="fr">Liaison droite</name>
-        <name lang="pl">Połączenie 5</name>
-        <name lang="es">A la derecha</name>
+        <name lang="ru">Слева направо</name>
         <name lang="cs">Pravé spojení</name>
+        <name lang="fr">Liaison droite</name>
+        <name lang="it">Collegamento destro</name>
+        <name lang="es">A la derecha</name>
+        <name lang="ar">ربط يمين</name>
+        <name lang="pl">Połączenie 5</name>
     </names>
+    <elementInformations/>
     <informations></informations>
     <description>
-        <input x="5.5" y="4.55" size="1" rotate="true" text="_"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="-6"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="5" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="6" y2="6" x2="0"/>
-        <terminal x="0" y="10" orientation="s"/>
-        <terminal x="-10" y="0" orientation="w"/>
-        <terminal x="10" y="0" orientation="e"/>
+        <dynamic_text text_width="-1" y="-0.45" rotation="0" uuid="{ab829572-e7d6-4e5c-9c6e-a0852fea788e}" x="5.5" frame="false" text_from="UserText" font_size="1" z="1">
+            <text>_</text>
+        </dynamic_text>
+        <line antialias="false" x1="0" y1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" end1="none" y2="0" length2="1.5" x2="-6"/>
+        <line antialias="false" x1="0" y1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" end1="none" y2="5" length2="1.5" x2="0"/>
+        <line antialias="false" x1="6" y1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" end1="none" y2="6" length2="1.5" x2="0"/>
+        <terminal orientation="s" y="10" x="0"/>
+        <terminal orientation="w" y="0" x="-10"/>
+        <terminal orientation="e" y="0" x="10"/>
     </description>
 </definition>

@@ -1,17 +1,21 @@
-<definition width="20" version="0.3" hotspot_x="9" hotspot_y="10" height="20" type="element" orientation="dyyy">
+<definition hotspot_y="7" width="20" orientation="dyyy" type="element" height="20" version="0.70" hotspot_x="11" link_type="terminal">
+    <uuid uuid="{2d505b61-db0f-4784-9b9c-189366058272}"/>
     <names>
-        <name lang="ar">ركن</name>
-        <name lang="ru">Угол</name>
-        <name lang="en">Corner</name>
-        <name lang="it">Angolo</name>
-        <name lang="fr">Coin</name>
-        <name lang="pl">Narożnik</name>
         <name lang="es">Esquina</name>
+        <name lang="en">Corner</name>
         <name lang="cs">Roh</name>
+        <name lang="fr">Coin</name>
+        <name lang="ru">Угол</name>
+        <name lang="pl">Narożnik</name>
+        <name lang="ar">ركن</name>
+        <name lang="it">Angolo</name>
     </names>
+    <elementInformations/>
     <informations></informations>
     <description>
-        <input x="-0.5" y="-0.45" size="1" rotate="true" text="_"/>
+        <dynamic_text rotation="0" x="-0.5" y="-5.45" uuid="{9b8dd22d-096a-4989-b6f7-1de9e0339f53}" font_size="1" z="1" frame="false" text_from="UserText" text_width="-1">
+            <text>_</text>
+        </dynamic_text>
         <terminal x="0" y="4" orientation="s"/>
         <terminal x="-4" y="0" orientation="w"/>
     </description>

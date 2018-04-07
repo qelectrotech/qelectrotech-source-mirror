@@ -1,21 +1,25 @@
-<definition width="20" version="0.3" hotspot_x="9" hotspot_y="17" height="30" type="element" orientation="dyyy">
+<definition height="20" link_type="terminal" hotspot_x="9" width="20" orientation="dyyy" hotspot_y="9" version="0.70" type="element">
+    <uuid uuid="{8c0d3e9c-dc37-41d7-bfd5-fe4dbf8dc4fb}"/>
     <names>
-        <name lang="ar">صليب</name>
         <name lang="ru">Пересечение</name>
-        <name lang="en">Cross</name>
-        <name lang="it">Croce</name>
-        <name lang="fr">Croix</name>
-        <name lang="pl">Połączenie 2</name>
-        <name lang="es">Cruzar</name>
         <name lang="cs">Kříž</name>
+        <name lang="pl">Połączenie 2</name>
+        <name lang="it">Croce</name>
+        <name lang="es">Cruzar</name>
+        <name lang="en">Cross</name>
+        <name lang="ar">صليب</name>
+        <name lang="fr">Croix</name>
     </names>
+    <elementInformations/>
     <informations></informations>
     <description>
-        <circle x="-1" y="-1" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2"/>
-        <input x="-0.5" y="-4.45" size="1" rotate="true" text="_"/>
-        <terminal x="4" y="0" orientation="e"/>
-        <terminal x="0" y="4" orientation="s"/>
-        <terminal x="0" y="-4" orientation="n"/>
-        <terminal x="-4" y="0" orientation="w"/>
+        <circle y="-1" style="line-style:normal;line-weight:normal;filling:black;color:black" x="-1" antialias="true" diameter="2"/>
+        <dynamic_text uuid="{fc5c039b-1fca-40d9-a6ff-a9e1775de38b}" text_width="-1" frame="false" y="-9.45" font_size="1" x="-0.5" z="2" rotation="0" text_from="UserText">
+            <text>_</text>
+        </dynamic_text>
+        <terminal y="0" orientation="e" x="4"/>
+        <terminal y="4" orientation="s" x="0"/>
+        <terminal y="-4" orientation="n" x="0"/>
+        <terminal y="0" orientation="w" x="-4"/>
     </description>
 </definition>
