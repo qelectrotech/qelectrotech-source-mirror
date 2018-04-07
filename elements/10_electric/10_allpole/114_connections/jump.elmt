@@ -1,18 +1,22 @@
-<definition width="20" version="0.3" hotspot_x="6" hotspot_y="17" height="30" type="element" orientation="dyyy">
+<definition width="10" hotspot_y="14" hotspot_x="5" height="30" link_type="terminal" orientation="dyyy" version="0.70" type="element">
+    <uuid uuid="{b5abb4c2-455d-45ff-95f2-328521f4e2e1}"/>
     <names>
-        <name lang="ar">قفز</name>
-        <name lang="ru">Перемычка</name>
         <name lang="en">Jump</name>
-        <name lang="it">Salto</name>
         <name lang="fr">Saut</name>
-        <name lang="pl">Brak połączenia</name>
-        <name lang="es">Puente</name>
+        <name lang="ar">قفز</name>
         <name lang="cs">Skok</name>
+        <name lang="it">Salto</name>
+        <name lang="pl">Brak połączenia</name>
+        <name lang="ru">Перемычка</name>
+        <name lang="es">Puente</name>
     </names>
+    <elementInformations/>
     <informations></informations>
     <description>
-        <arc width="6" x="-3" y="-3" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <input x="1.5" y="-6.45" size="1" rotate="true" text="_"/>
+        <arc x="-3" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="6" start="90" y="-3" height="6" angle="-180"/>
+        <dynamic_text font_size="1" x="1.5" text_from="UserText" z="2" y="-11.45" rotation="0" uuid="{1a3e4d91-15cc-424b-99d0-25930d779fb6}" frame="false" text_width="-1">
+            <text>_</text>
+        </dynamic_text>
         <terminal x="0" y="-7" orientation="n"/>
         <terminal x="0" y="7" orientation="s"/>
     </description>
