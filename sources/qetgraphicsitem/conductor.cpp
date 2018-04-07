@@ -1538,12 +1538,14 @@ void Conductor::displayedTextChanged()
  * part of the returned QSet.
  * @param all_diagram : if true search in all diagram of the project,
  * false search only in the parent diagram of this conductor
- * @param t_list, a list of terminal already cheched for the serach of potential.
+ * @param t_list, a list of terminal already found for this potential.
  * @return  a QSet of conductor at the same potential.
  */
-QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram, QList <Terminal *> *t_list) {
+QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram, QList <Terminal *> *t_list)
+{
 	bool declar_t_list = false;
-	if (t_list == nullptr) {
+	if (t_list == nullptr)
+	{
 		declar_t_list = true;
 		t_list = new QList <Terminal *>;
 	}
@@ -1552,23 +1554,29 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram, 
 	QList <Terminal *> this_terminal;
 	this_terminal << terminal1 << terminal2;
 
-	// Return all conductor of terminal 1 and 2
-	foreach (Terminal *terminal, this_terminal) {
-		if (!t_list -> contains(terminal)) {
-			t_list -> append(terminal);
-			QList <Conductor *> other_conductors_list_t = terminal -> conductors();
+		// Return all conductors of terminal 1 and 2
+	for (Terminal *terminal : this_terminal)
+	{
+		if (!t_list->contains(terminal))
+		{
+			t_list->append(terminal);
+			QList <Conductor *> other_conductors_list_t = terminal->conductors();
 
-			//get terminal share the same potential of @terminal, of parent element
-			Terminal *t1_bis = relatedPotentialTerminal(terminal, all_diagram);
-			if (t1_bis && !t_list->contains(t1_bis)) {
-				t_list -> append(t1_bis);
-				other_conductors_list_t += t1_bis->conductors();
+				//Get the other terminals of the parent element of @terminal, who share the same potential
+				//This is use for element type "folio report" and "terminal element"
+			for (Terminal *t : relatedPotentialTerminal(terminal, all_diagram))
+			{
+				if (!t_list->contains(t))
+				{
+					t_list -> append(t);
+					other_conductors_list_t += t->conductors();
+				}
 			}
 
 			other_conductors_list_t.removeAll(this);
-			// Research the conductors connected to conductors already found
-			foreach (Conductor *c, other_conductors_list_t) {
-				other_conductors += c -> relatedPotentialConductors(all_diagram, t_list);
+				//Get the conductors at the same potential for each conductors of other_conductors_list_t
+			for (Conductor *c : other_conductors_list_t) {
+				other_conductors += c->relatedPotentialConductors(all_diagram, t_list);
 			}
 			other_conductors += other_conductors_list_t.toSet();
 		}
