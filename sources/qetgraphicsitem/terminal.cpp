@@ -765,24 +765,27 @@ Element *Terminal::parentElement() const {
  * @param t terminal to start search
  * @param all_diagram :if true return all related terminal,
  * false return only terminal in the same diagram of @t
- * @return
+ * @return the list of terminal at the same potential
  */
-Terminal * relatedPotentialTerminal (const Terminal *terminal, const bool all_diagram) {
-	// If terminal parent element is a folio report.
-	if (all_diagram && terminal -> parentElement() -> linkType() & Element::AllReport) {
+QList<Terminal *> relatedPotentialTerminal (const Terminal *terminal, const bool all_diagram)
+{
+		// If terminal parent element is a folio report.
+	if (all_diagram && terminal -> parentElement() -> linkType() & Element::AllReport)
+	{
 		QList <Element *> elmt_list = terminal -> parentElement() -> linkedElements();
-		if (!elmt_list.isEmpty()) {
-			return (elmt_list.first() -> terminals().first());
+		if (!elmt_list.isEmpty())
+		{
+			return (elmt_list.first()->terminals());
 		}
 	}
-	// If terminal parent element is a Terminal element.
-	else if (terminal -> parentElement() -> linkType() & Element::Terminale) {
-		QList <Terminal *> terminals = terminal -> parentElement() -> terminals();
-		terminals.removeAll(const_cast<Terminal *> (terminal));
-		if (!terminals.isEmpty())
-			return terminals.first();
+		// If terminal parent element is a Terminal element.
+	else if (terminal -> parentElement() -> linkType() & Element::Terminale)
+	{
+		QList <Terminal *> terminals = terminal->parentElement()->terminals();
+		terminals.removeAll(const_cast<Terminal *>(terminal));
+		return terminals;
 	}
 
-	return nullptr;
+	return QList<Terminal *>();
 }
 
