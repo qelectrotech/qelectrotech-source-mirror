@@ -1886,7 +1886,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="141"/>
         <source>Ouvrir le dossier correspondant</source>
-        <translation>Open de bestandsmap</translation>
+        <translation>Bestandsmap openen</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="142"/>
