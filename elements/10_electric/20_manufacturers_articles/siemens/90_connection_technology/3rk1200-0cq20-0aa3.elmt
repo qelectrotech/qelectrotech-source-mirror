@@ -1,0 +1,114 @@
+<definition hotspot_y="45" link_type="simple" height="410" hotspot_x="44" version="0.70" orientation="dyyy" type="element" width="170">
+    <uuid uuid="{36ea8b29-72eb-4217-adfe-7cf8ecd8d9c0}"/>
+    <names>
+        <name lang="fr">3RK1200-0CQ20-0AA3</name>
+        <name lang="en">3RK1200-0CQ20-0AA3</name>
+    </names>
+    <elementInformations/>
+    <informations>JLG</informations>
+    <description>
+        <arc angle="-360" height="45" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-22.5" y="57.5" start="90" antialias="true" width="45"/>
+        <arc angle="-360" height="45" style="line-style:normal;line-weight:normal;filling:none;color:black" x="57.5" y="-22.5" start="90" antialias="true" width="45"/>
+        <arc angle="-360" height="45" style="line-style:normal;line-weight:normal;filling:none;color:black" x="57.5" y="137.5" start="90" antialias="true" width="45"/>
+        <arc angle="-360" height="45" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-22.5" y="217.5" start="90" antialias="true" width="45"/>
+        <arc angle="-348" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-20" y="60" start="-51" antialias="true" width="40"/>
+        <text size="4" x="112" y="2" text="3"/>
+        <arc angle="-348" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" x="60" y="140" start="129" antialias="true" width="40"/>
+        <arc angle="-348" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" x="60" y="-20" start="-51" antialias="true" width="40"/>
+        <arc angle="-348" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-20" y="220" start="129" antialias="true" width="40"/>
+        <text size="4" x="-7" y="71" text="4"/>
+        <text size="4" x="85" y="174" text="4"/>
+        <text size="4" x="73" y="-9" text="4"/>
+        <text size="4" x="5" y="254" text="4"/>
+        <text size="4" x="-35" y="82" text="3"/>
+        <text size="4" x="12" y="76" text="1"/>
+        <text size="4" x="66" y="167" text="1"/>
+        <text size="4" x="92" y="-4" text="1"/>
+        <text size="4" x="-14" y="247" text="1"/>
+        <text size="4" x="4" y="93" text="2"/>
+        <text size="4" x="84" y="13" text="2"/>
+        <text size="4" x="-8" y="232" text="2"/>
+        <text size="4" x="72" y="152" text="2"/>
+        <text size="4" x="10" y="235" text="3"/>
+        <text size="4" x="90" y="155" text="3"/>
+        <text size="4" x="-12" y="88" text="3"/>
+        <text size="4" x="68" y="8" text="3"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="77.5" y="-2.5" antialias="true" diameter="5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="77.5" y="157.5" antialias="true" diameter="5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2.5" y="77.5" antialias="true" diameter="5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2.5" y="237.5" antialias="true" diameter="5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="77.5" y="147.5" antialias="true" diameter="5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2.5" y="67.5" antialias="true" diameter="5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2.5" y="227.5" antialias="true" diameter="5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="77.5" y="-12.5" antialias="true" diameter="5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="87.5" y="157.5" antialias="true" diameter="5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="87.5" y="-2.5" antialias="true" diameter="5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="7.5" y="77.5" antialias="true" diameter="5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="7.5" y="237.5" antialias="true" diameter="5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2.5" y="87.5" antialias="true" diameter="5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2.5" y="247.5" antialias="true" diameter="5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="77.5" y="167.5" antialias="true" diameter="5"/>
+        <text size="4" x="112" y="161" text="3"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="77.5" y="7.5" antialias="true" diameter="5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-12.5" y="77.5" antialias="true" diameter="5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="67.5" y="-2.5" antialias="true" diameter="5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-12.5" y="237.5" antialias="true" diameter="5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="67.5" y="157.5" antialias="true" diameter="5"/>
+        <arc angle="-180" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" x="92" y="12" start="225" antialias="true" width="4"/>
+        <arc angle="-180" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-16" y="224" start="46" antialias="true" width="4"/>
+        <arc angle="-180" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" x="12" y="92" start="225" antialias="true" width="4"/>
+        <arc angle="-180" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" x="64" y="144" start="46" antialias="true" width="4"/>
+        <text size="4" x="-35" y="242" text="3"/>
+        <text size="4" x="112" y="-18" text="4"/>
+        <text size="4" x="-35" y="222" text="1"/>
+        <text size="4" x="112" y="141" text="4"/>
+        <text size="4" x="-34" y="62" text="1"/>
+        <text size="4" x="-35" y="261" text="4"/>
+        <text size="4" x="112" y="21" text="1"/>
+        <text size="4" x="-35" y="101" text="4"/>
+        <text size="4" x="112" y="181" text="1"/>
+        <line end2="none" y1="-40" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="40" y2="280" length2="1.5" x1="40" antialias="false"/>
+        <rect height="400" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-40" y="-40" antialias="false" width="160"/>
+        <rect height="80" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-40" y="40" antialias="false" width="160"/>
+        <rect height="80" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-40" y="200" antialias="false" width="160"/>
+        <rect height="60" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-40" y="50" antialias="false" width="10"/>
+        <rect height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-40" y="70" antialias="false" width="10"/>
+        <rect height="60" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-40" y="210" antialias="false" width="10"/>
+        <rect height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-40" y="230" antialias="false" width="10"/>
+        <rect height="60" style="line-style:normal;line-weight:normal;filling:none;color:black" x="110" y="-30" antialias="false" width="10"/>
+        <rect height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" x="110" y="-10" antialias="false" width="10"/>
+        <rect height="60" style="line-style:normal;line-weight:normal;filling:none;color:black" x="110" y="130" antialias="false" width="10"/>
+        <rect height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" x="110" y="150" antialias="false" width="10"/>
+        <dynamic_text rotation="0" uuid="{285810a2-cf02-4ea2-b25d-e6748d7e8620}" text_width="-1" x="122" text_from="ElementInfo" y="-70" font_size="9" z="78" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text rotation="0" uuid="{4a3a924c-f2a3-498a-8672-3f64d0ac79f3}" text_width="-1" x="-30" text_from="UserText" y="300" font_size="9" z="79" frame="false">
+            <text>3RK1200-0CQ20-0AA3</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" uuid="{70da00ca-00f7-47ac-920a-fac8f859c656}" text_width="-1" x="39" text_from="UserText" y="-40" font_size="8" z="80" frame="false">
+            <text>IN1</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" uuid="{b08b94fa-395d-448a-aeca-b0f79d757ea3}" text_width="-1" x="15" text_from="UserText" y="39" font_size="8" z="81" frame="false">
+            <text>IN2</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" uuid="{8480ce6e-df88-4ee0-9309-91f1801411d6}" text_width="-1" x="40" text_from="UserText" y="120" font_size="8" z="82" frame="false">
+            <text>IN3</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" uuid="{fb67ef74-b18d-4e0c-84fe-09ba99c1ad1b}" text_width="-1" x="15" text_from="UserText" y="200" font_size="8" z="83" frame="false">
+            <text>IN4</text>
+        </dynamic_text>
+        <terminal x="-40" orientation="w" y="220"/>
+        <terminal x="120" orientation="e" y="160"/>
+        <terminal x="-40" orientation="w" y="60"/>
+        <terminal x="120" orientation="e" y="20"/>
+        <terminal x="-40" orientation="w" y="240"/>
+        <terminal x="120" orientation="e" y="180"/>
+        <terminal x="120" orientation="e" y="-20"/>
+        <terminal x="-40" orientation="w" y="100"/>
+        <terminal x="-40" orientation="w" y="260"/>
+        <terminal x="-40" orientation="w" y="80"/>
+        <terminal x="120" orientation="e" y="140"/>
+        <terminal x="120" orientation="e" y="0"/>
+    </description>
+</definition>
