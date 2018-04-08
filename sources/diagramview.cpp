@@ -44,6 +44,7 @@
 #include "qetshapeitem.h"
 #include "undocommand/deleteqgraphicsitemcommand.h"
 #include "dynamicelementtextitem.h"
+#include "multipastedialog.h"
 
 /**
 	Constructeur
@@ -86,6 +87,12 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 	m_context_menu = new QMenu(this);
 	m_paste_here = new QAction(QET::Icons::EditPaste, tr("Coller ici", "context menu action"), this);
 	connect(m_paste_here, SIGNAL(triggered()), this, SLOT(pasteHere()));
+	
+	m_multi_paste = new QAction(QET::Icons::EditPaste, tr("Collage multiple"), this);
+	connect(m_multi_paste, &QAction::triggered, [this]() {
+		MultiPasteDialog d(this->m_diagram, this);
+		d.exec();
+	});
 
 	connect(m_diagram, SIGNAL(showDiagram(Diagram*)), this, SIGNAL(showDiagram(Diagram*)));
 	connect(m_diagram, SIGNAL(selectionChanged()), this, SIGNAL(selectionChanged()));
@@ -1061,6 +1068,7 @@ void DiagramView::contextMenuEvent(QContextMenuEvent *e) {
 		} else {
 			m_context_menu -> addAction(qde -> m_cut);
 			m_context_menu -> addAction(qde -> m_copy);
+			m_context_menu->addAction(m_multi_paste);
 			m_context_menu -> addSeparator();
 			m_context_menu -> addAction(qde -> m_conductor_reset);
 			m_context_menu -> addSeparator();

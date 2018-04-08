@@ -265,6 +265,51 @@ int DiagramContent::removeNonMovableItems()
 	return count_;
 }
 
+DiagramContent &DiagramContent::operator+=(const DiagramContent &other)
+{
+	for(Element *elmt : other.m_elements)
+		if(!m_elements.contains(elmt))
+			m_elements << elmt;
+	
+	for(IndependentTextItem *iti : other.m_text_fields)
+		if(!m_text_fields.contains(iti))
+			m_text_fields << iti;
+	
+	for(DiagramImageItem *dii : other.m_images)
+		if(!m_images.contains(dii))
+			m_images << dii;
+	
+	for(QetShapeItem *qsi : other.m_shapes)
+		if(!m_shapes.contains(qsi))
+			m_shapes << qsi;
+	
+	for(Conductor *c : other.m_conductors_to_update)
+		if(!m_conductors_to_update.contains(c))
+			m_conductors_to_update << c;
+	
+	for(Conductor *c : other.m_conductors_to_move)
+		if(!m_conductors_to_move.contains(c))
+			m_conductors_to_move << c;
+	
+	for(Conductor *c : other.m_other_conductors)
+		if(!m_other_conductors.contains(c))
+			m_other_conductors << c;
+	
+	for(DynamicElementTextItem *deti : other.m_element_texts)
+		if(!m_element_texts.contains(deti))
+			m_element_texts << deti;
+	
+	for(ElementTextItemGroup *etig : other.m_texts_groups)
+		if(!m_texts_groups.contains(etig))
+			m_texts_groups << etig;
+	
+	for(QGraphicsItem *qgi : other.m_selected_items)
+		if(!m_selected_items.contains(qgi))
+			m_selected_items << qgi;
+	
+	return *this;
+}
+
 /**
  * @brief DiagramContent::items
  * @param filter

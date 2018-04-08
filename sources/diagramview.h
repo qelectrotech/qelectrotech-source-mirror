@@ -53,6 +53,7 @@ class DiagramView : public QGraphicsView
 		DVEventInterface *m_event_interface = nullptr;
 		QMenu            *m_context_menu = nullptr;
 		QAction          *m_paste_here = nullptr;
+		QAction			 *m_multi_paste = nullptr;
 		QPoint            m_paste_here_pos;
 		QPointF           m_rubber_band_origin;
 		bool              m_fresh_focus_in,
