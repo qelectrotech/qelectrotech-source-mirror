@@ -916,7 +916,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/diagramview.cpp" line="91"/>
         <source>Collage multiple</source>
-        <translation type="unfinished"></translation>
+        <translation>Meervoudig plakken</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="702"/>
@@ -2076,7 +2076,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
         <location filename="../sources/elementspanel.cpp" line="204"/>
         <source>Ceci est la collection de cartouches fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Dit is de titelbloksjablonencollectie van QElectroTech. Deze zijn niet te wijzigen, wel te kopieren.</translation>
+        <translation>Dit is de titelbloksjablonencollectie van QElectroTech. Deze zijn niet te wijzigen, wel te kopiëren.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="211"/>
@@ -2390,7 +2390,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="183"/>
         <source>Conserver les couleurs des conducteurs</source>
-        <translation>Behoud geleiderkleuren</translation>
+        <translation>Teken gekleurde geleiders</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="167"/>
@@ -2600,7 +2600,7 @@ Teksten en nummers zijn ook beschikbaar.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="274"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre. Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
-        <translation>Elk element kan informatie bevatten over auteurs, licentie, en andere informatie. Geef standaardwaarde voor tekstveld voor nieuwe elementen hieronder:</translation>
+        <translation>Elk element kan informatie bevatten over auteurs, licentie, en andere informatie. Geef hieronder de standaardwaarde van het tekstveld voor nieuwe elementen:</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="336"/>
@@ -2620,7 +2620,7 @@ Teksten en nummers zijn ook beschikbaar.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="252"/>
         <source>Ne pas conserver les labels des éléments lors des copier coller</source>
-        <translation>Vergeet elementlabels bij kopieren/plakken</translation>
+        <translation>Vergeet elementlabels bij kopiëren/plakken</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="254"/>
@@ -3223,33 +3223,33 @@ Teksten en nummers zijn ook beschikbaar.</translation>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="14"/>
         <source>Collage multiple</source>
-        <translation type="unfinished"></translation>
+        <translation>Meervoudig plakken</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="22"/>
         <source>Décalage</source>
-        <translation type="unfinished"></translation>
+        <translation>Tussenafstand</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="29"/>
         <location filename="../sources/ui/multipastedialog.ui" line="51"/>
         <source>px</source>
-        <translation type="unfinished"></translation>
+        <translation>px</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="32"/>
         <source>x:  </source>
-        <translation type="unfinished"></translation>
+        <translation>x:  </translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="54"/>
         <source>y:  </source>
-        <translation type="unfinished"></translation>
+        <translation>y:  </translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="77"/>
         <source>Nombre de copie</source>
-        <translation type="unfinished"></translation>
+        <translation>Aantal kopieën</translation>
     </message>
 </context>
 <context>
@@ -4265,7 +4265,7 @@ Opties :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="251"/>
         <source>Cop&amp;ier</source>
-        <translation>K&amp;opieren</translation>
+        <translation>K&amp;opiëren</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="250"/>
@@ -5749,7 +5749,7 @@ de voorwaarden zijn ongeldig</translation>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="151"/>
         <source>Cop&amp;ier</source>
-        <translation>&amp;Kopieren</translation>
+        <translation>&amp;Kopiëren</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="152"/>
@@ -6118,7 +6118,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetproject.cpp" line="1303"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Mise en place des références croisées&lt;/p&gt;</source>
-        <translation type="unfinished">Bewerk&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Openen van huidig project...&lt;/b&gt;&lt;br/&gt;Genereren van kruisverwijzingen&lt;/p&gt;</translation>
+        <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Openen van huidig project...&lt;/b&gt;&lt;br/&gt;Genereren van kruisverwijzingen&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -6271,7 +6271,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="342"/>
         <source>Cop&amp;ier</source>
         <comment>menu entry</comment>
-        <translation>K&amp;opieren</translation>
+        <translation>K&amp;opiëren</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="343"/>
@@ -6699,7 +6699,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/editorcommands.cpp" line="270"/>
         <source>ajout %1</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">: %1 toevoegen</translation>
+        <translation>: %1 toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="318"/>
@@ -7551,7 +7551,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %LM: Location
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation>U kunt een eigen formule voor bladreferenties definieren met behulp van de volgende variabelen:
+        <translation>U kunt een eigen formule voor bladreferenties definiëren met behulp van de volgende variabelen:
 %f : Het bladnummer
 %F : Het bladlabel
 %M : De machine
@@ -8530,7 +8530,7 @@ De volgende variabelen zijn te gebruiken:
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="407"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation>Hier kunt u variabele / waarde associaties voor in het titelblok definieren. Bijv. :
+        <translation>Hier kunt u variabele / waarde associaties voor in het titelblok definiëren. Bijv. :
 Door associatie van de naam &quot;volta&quot; met de waarde &quot;1745&quot; wordt in het titelblok %{volta} door 1745 vervangen.</translation>
     </message>
 </context>
@@ -9107,7 +9107,7 @@ Maximale afmeting : %2px
 %c : le numéro de colonne
 %M: Installation 
 %LM: Localisation </source>
-        <translation>Stel labeltekst samen met behulp van de volgende variabelen :
+        <translation>Stel de labeltekst samen met behulp van de volgende variabelen :
 %f : Het bladnummer
 %F : Het bladlabel
 %l : Het rijnummer
