@@ -902,41 +902,46 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
 <context>
     <name>DiagramView</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="87"/>
+        <location filename="../sources/diagramview.cpp" line="88"/>
         <source>Coller ici</source>
         <comment>context menu action</comment>
         <translation>Hier plakken</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="61"/>
+        <location filename="../sources/diagramview.cpp" line="62"/>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
         <translation>In dit gebied kunt u schema&apos;s maken door het toevoegen van elementen en deze met geleiders met elkaar te verbinden. Tevens kunt u onafhankelijk hiervan teksten plaatsen.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="695"/>
+        <location filename="../sources/diagramview.cpp" line="91"/>
+        <source>Collage multiple</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="702"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>Naamloos</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="821"/>
+        <location filename="../sources/diagramview.cpp" line="828"/>
         <source>Propriétés de la sélection</source>
         <translation>Selectie-eigenschappen</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="823"/>
+        <location filename="../sources/diagramview.cpp" line="830"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translation>De selectie bevat %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="861"/>
+        <location filename="../sources/diagramview.cpp" line="868"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Kies de nieuwe kleur voor deze geleider</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="880"/>
+        <location filename="../sources/diagramview.cpp" line="887"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>Eigenschappen van een geleider wijzigen</translation>
@@ -3211,6 +3216,40 @@ Teksten en nummers zijn ook beschikbaar.</translation>
         <location filename="../sources/ui/masterpropertieswidget.h" line="55"/>
         <source>Référence croisée (maître)</source>
         <translation>Kruisverwijzing (verwijzer)</translation>
+    </message>
+</context>
+<context>
+    <name>MultiPasteDialog</name>
+    <message>
+        <location filename="../sources/ui/multipastedialog.ui" line="14"/>
+        <source>Collage multiple</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/multipastedialog.ui" line="22"/>
+        <source>Décalage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/multipastedialog.ui" line="29"/>
+        <location filename="../sources/ui/multipastedialog.ui" line="51"/>
+        <source>px</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/multipastedialog.ui" line="32"/>
+        <source>x:  </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/multipastedialog.ui" line="54"/>
+        <source>y:  </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/multipastedialog.ui" line="77"/>
+        <source>Nombre de copie</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

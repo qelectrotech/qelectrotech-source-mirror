@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="ar_SA">
+<TS version="2.1" language="ar_SA">
 <context>
     <name>AboutQET</name>
     <message>
@@ -912,42 +912,47 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>DiagramView</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="61"/>
+        <location filename="../sources/diagramview.cpp" line="62"/>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
         <translation>في هذه المنطقة تحتفظون بمخططاتكم للإضافة إليها عناصر أخرى و لوضع موصلات بين أطرافها. كما يُمكنكم إضافة نصوص مستقلّة.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="87"/>
+        <location filename="../sources/diagramview.cpp" line="88"/>
         <source>Coller ici</source>
         <comment>context menu action</comment>
         <translation>لصق هنا</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="695"/>
+        <location filename="../sources/diagramview.cpp" line="91"/>
+        <source>Collage multiple</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="702"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>بدون عنوان</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="821"/>
+        <location filename="../sources/diagramview.cpp" line="828"/>
         <source>Propriétés de la sélection</source>
         <translation>خصائص التحديد</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="823"/>
+        <location filename="../sources/diagramview.cpp" line="830"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translatorcomment> %1.سرد الكائنات المحددة</translatorcomment>
         <translation>يحتوي التحديد t %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="861"/>
+        <location filename="../sources/diagramview.cpp" line="868"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>إختيار اللون الجديد لهذا الموصل</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="880"/>
+        <location filename="../sources/diagramview.cpp" line="887"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>تغيير خاصيات موصل</translation>
@@ -3237,6 +3242,40 @@ that you create. Text and number inputs are
         <location filename="../sources/ui/masterpropertieswidget.h" line="55"/>
         <source>Référence croisée (maître)</source>
         <translation>مرجع متقاطع  (متبوع)</translation>
+    </message>
+</context>
+<context>
+    <name>MultiPasteDialog</name>
+    <message>
+        <location filename="../sources/ui/multipastedialog.ui" line="14"/>
+        <source>Collage multiple</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/multipastedialog.ui" line="22"/>
+        <source>Décalage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/multipastedialog.ui" line="29"/>
+        <location filename="../sources/ui/multipastedialog.ui" line="51"/>
+        <source>px</source>
+        <translation type="unfinished">px بيكسل</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/multipastedialog.ui" line="32"/>
+        <source>x:  </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/multipastedialog.ui" line="54"/>
+        <source>y:  </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/multipastedialog.ui" line="77"/>
+        <source>Nombre de copie</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6738,6 +6777,11 @@ Que désirez vous faire ?</source>
         <source>%n image(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
