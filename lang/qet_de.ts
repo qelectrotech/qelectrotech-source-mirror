@@ -920,7 +920,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/diagramview.cpp" line="91"/>
         <source>Collage multiple</source>
-        <translation type="unfinished"></translation>
+        <translation>Mehrfach einfügen</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="702"/>
@@ -3217,33 +3217,33 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="14"/>
         <source>Collage multiple</source>
-        <translation type="unfinished"></translation>
+        <translation>Mehrfach einfügen</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="22"/>
         <source>Décalage</source>
-        <translation type="unfinished"></translation>
+        <translation>Versatz</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="29"/>
         <location filename="../sources/ui/multipastedialog.ui" line="51"/>
         <source>px</source>
-        <translation type="unfinished">px</translation>
+        <translation>px</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="32"/>
         <source>x:  </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="54"/>
         <source>y:  </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="77"/>
         <source>Nombre de copie</source>
-        <translation type="unfinished"></translation>
+        <translation>Anzahl Kopien</translation>
     </message>
 </context>
 <context>
