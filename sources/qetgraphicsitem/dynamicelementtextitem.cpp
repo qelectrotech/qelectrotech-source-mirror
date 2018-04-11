@@ -882,7 +882,10 @@ void DynamicElementTextItem::setConnectionForReportFormula(const QString &formul
 	}
 	
 	if (other_diagram && (string.contains("%f") || string.contains("%id")))
+	{
 		connect(other_diagram->project(), &QETProject::projectDiagramsOrderChanged, this, &DynamicElementTextItem::updateReportText);
+		connect(other_diagram->project(), &QETProject::diagramRemoved, this, &DynamicElementTextItem::updateReportText);
+	}
 	if (string.contains("%l"))
 		connect(other_elmt, &Element::yChanged, this, &DynamicElementTextItem::updateReportText);
 	if (string.contains("%c"))
@@ -945,7 +948,10 @@ void DynamicElementTextItem::setupFormulaConnection()
 		}
 		
 		if (diagram && (formula.contains("%f") || formula.contains("%id")))
+		{
 			m_formula_connection << connect(diagram->project(), &QETProject::projectDiagramsOrderChanged, this, &DynamicElementTextItem::updateLabel);
+			m_formula_connection << connect(diagram->project(), &QETProject::diagramRemoved, this, &DynamicElementTextItem::updateLabel);
+		}
 		if (formula.contains("%l"))
 			m_formula_connection << connect(element, &Element::yChanged, this, &DynamicElementTextItem::updateLabel);
 		if (formula.contains("%c"))
@@ -979,6 +985,8 @@ void DynamicElementTextItem::updateReportText()
 {
 	if(!(m_parent_element.data()->linkType() & Element::AllReport))
 		return;
+	if(!m_other_report)
+		setPlainText("_");
 	
 	if (m_text_from == ElementInfo && m_info_name == "label" && m_other_report)
 	{
