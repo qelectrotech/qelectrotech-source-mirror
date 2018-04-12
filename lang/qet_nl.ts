@@ -3309,7 +3309,7 @@ Teksten en nummers zijn ook beschikbaar.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="84"/>
         <source>Reports de folio</source>
-        <translation>Bladoverzicht</translation>
+        <translation>Bladreferenties</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="85"/>
@@ -4874,7 +4874,7 @@ python -m pip install --upgrade qet_tb_generator
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="358"/>
         <source>Orienter les textes</source>
-        <translation>Kies tekstorientatie</translation>
+        <translation>Kies tekstoriëntatie</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="359"/>
