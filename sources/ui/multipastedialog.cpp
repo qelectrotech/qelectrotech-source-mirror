@@ -80,6 +80,7 @@ void MultiPasteDialog::on_m_button_box_accepted()
 		QUndoCommand *undo = new QUndoCommand(tr("Multi-collage"));
 		new PasteDiagramCommand(m_diagram, m_pasted_content, undo);
 		
+			//Auto-connection
 		if(ui->m_auto_connection_cb->isChecked())
 		{
 			for(Element *elmt : m_pasted_content.m_elements)
@@ -102,6 +103,33 @@ void MultiPasteDialog::on_m_button_box_accepted()
 		}
 		
 		m_diagram->undoStack().push(undo);
+		
+			//Set up the label of element
+			//Instead of use the current autonum of project,
+			//we try to fetch the same formula of the pasted element, in the several autonum of the project
+			//for apply the good formula for each elements
+		if(ui->m_auto_num_cb->isChecked())
+		{
+			for(Element *elmt : m_pasted_content.m_elements)
+			{
+				QString formula = elmt->elementInformations()["formula"].toString();
+				if(!formula.isEmpty())
+				{
+					QHash <QString, NumerotationContext> autonums = m_diagram->project()->elementAutoNum();
+					QHashIterator<QString, NumerotationContext> hash_iterator(autonums);
+					
+					while(hash_iterator.hasNext())
+					{
+						hash_iterator.next();
+						if(autonum::numerotationContextToFormula(hash_iterator.value()) == formula)
+						{
+							m_diagram->project()->setCurrrentElementAutonum(hash_iterator.key());
+							elmt->setUpFormula();
+						}
+					}
+				}
+			}
+		}
 		m_diagram->adjustSceneRect();
 		m_accept = true;
 	}

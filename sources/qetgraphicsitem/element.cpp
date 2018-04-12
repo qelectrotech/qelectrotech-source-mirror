@@ -1182,6 +1182,7 @@ void Element::setUpFormula(bool code_letter)
 		NumerotationContext nc = diagram()->project()->elementAutoNum(element_currentAutoNum);
 		NumerotationContextCommands ncc (nc);
 		
+		m_autoNum_seq.clear();
 		autonum::setSequential(formula, m_autoNum_seq, nc, diagram(), element_currentAutoNum);
 		diagram()->project()->addElementAutoNum(element_currentAutoNum, ncc.next());
 

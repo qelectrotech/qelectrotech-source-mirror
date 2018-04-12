@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>261</width>
-    <height>110</height>
+    <height>136</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -91,6 +91,13 @@
     <widget class="QCheckBox" name="m_auto_connection_cb">
      <property name="text">
       <string>Auto-connection</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="m_auto_num_cb">
+     <property name="text">
+      <string>Auto-numérotation des éléments (experimental)</string>
      </property>
     </widget>
    </item>

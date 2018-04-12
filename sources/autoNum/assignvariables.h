@@ -44,6 +44,7 @@ namespace autonum
 
 			QDomElement toXml(QDomDocument &document, QString tag_name = QString("sequentialNumbers")) const;
 			void fromXml(const QDomElement &element);
+			void clear();
 
 			QStringList unit;
 			QStringList unit_folio;

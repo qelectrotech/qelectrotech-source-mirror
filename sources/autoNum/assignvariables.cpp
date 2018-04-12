@@ -138,6 +138,17 @@ namespace autonum
 		from = element.firstChildElement("hundredFolio");
 		hundred_folio = from.text().split(";");
 	}
+	
+		//Clear this sequence
+	void sequentialNumbers::clear()
+	{
+		unit.clear();
+		unit_folio.clear();
+		ten.clear();
+		ten_folio.clear();
+		hundred.clear();
+		hundred_folio.clear();
+	}
 
 	/**
 	 * @brief AssignVariables::formulaToLabel
