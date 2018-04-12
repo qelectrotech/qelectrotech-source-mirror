@@ -819,7 +819,7 @@ void DiagramView::editSelectionProperties()
 			selection.conductors().first()->editProperty();
 		// edit element
 		else if (selection.m_elements.size())
-			selection.m_elements.toList().first() -> editProperty();
+			selection.m_elements.first() -> editProperty();
 	}
 
 	else {

@@ -276,8 +276,8 @@ void QETDiagramEditor::setUpActions()
 	m_grey_background -> setCheckable (true);
 	connect (m_grey_background, &QAction::triggered, [this](bool checked) {
 		Diagram::background_color = checked ? Qt::darkGray : Qt::white;
-		if (this->currentDiagram() &&  this->currentDiagram()->diagram())
-			this->currentDiagram()->diagram()->update();
+		if (this->currentDiagramView() &&  this->currentDiagramView()->diagram())
+			this->currentDiagramView()->diagram()->update();
 	});
 
 	m_draw_grid = new QAction ( QET::Icons::Grid, tr("Afficher la grille"), this);
@@ -984,7 +984,7 @@ bool QETDiagramEditor::addProject(QETProject *project, bool update_panel) {
 	// met a jour le panel d'elements
 	if (update_panel) {
 		pa -> elementsPanel().projectWasOpened(project);
-		if (currentDiagram() != nullptr)
+		if (currentDiagramView() != nullptr)
 		m_autonumbering_dock->setProject(project, project_view);
 	}
 	
@@ -1026,7 +1026,7 @@ ProjectView *QETDiagramEditor::currentProjectView() const {
 	@return Le schema actuellement edite (= l'onglet ouvert dans le projet
 	courant) ou 0 s'il n'y en a pas
 */
-DiagramView *QETDiagramEditor::currentDiagram() const {
+DiagramView *QETDiagramEditor::currentDiagramView() const {
 	if (ProjectView *project_view = currentProjectView()) {
 		return(project_view -> currentDiagram());
 	}
@@ -1041,11 +1041,11 @@ DiagramView *QETDiagramEditor::currentDiagram() const {
 */
 Element *QETDiagramEditor::currentElement() const
 {
-	DiagramView *dv = currentDiagram();
+	DiagramView *dv = currentDiagramView();
 	if (!dv)
 		return(nullptr);
 	
-	QList<Element *> selected_elements = DiagramContent(dv->diagram()).m_elements.toList();
+	QList<Element *> selected_elements = DiagramContent(dv->diagram()).m_elements;
 	if (selected_elements.count() != 1)
 		return(nullptr);
 	
@@ -1150,27 +1150,27 @@ void QETDiagramEditor::activateWidget(QWidget *widget) {
 	Effectue l'action "couper" sur le schema en cours
 */
 void QETDiagramEditor::slot_cut() {
-	if(currentDiagram()) currentDiagram() -> cut();
+	if(currentDiagramView()) currentDiagramView() -> cut();
 }
 
 /**
 	Effectue l'action "copier" sur le diagram en cours
 */
 void QETDiagramEditor::slot_copy() {
-	if(currentDiagram()) currentDiagram() -> copy();
+	if(currentDiagramView()) currentDiagramView() -> copy();
 }
 
 /**
 	Effectue l'action "coller" sur le schema en cours
 */
 void QETDiagramEditor::slot_paste() {
-	if(currentDiagram()) currentDiagram() -> paste();
+	if(currentDiagramView()) currentDiagramView() -> paste();
 }
 
 void QETDiagramEditor::zoomGroupTriggered(QAction *action)
 {
 	QString value = action->data().toString();
-	DiagramView *dv = currentDiagram();
+	DiagramView *dv = currentDiagramView();
 
 	if (!dv || value.isEmpty()) return;
 
@@ -1194,7 +1194,7 @@ void QETDiagramEditor::zoomGroupTriggered(QAction *action)
 void QETDiagramEditor::selectGroupTriggered(QAction *action)
 {
 	QString value = action->data().toString();
-	DiagramView *dv = currentDiagram();
+	DiagramView *dv = currentDiagramView();
 
 	if (!dv || value.isEmpty()) return;
 
@@ -1216,9 +1216,9 @@ void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 {
 	QString value = action->data().toString();
 
-	if (Q_UNLIKELY (!currentDiagram() || !currentDiagram()->diagram() || value.isEmpty())) return;
+	if (Q_UNLIKELY (!currentDiagramView() || !currentDiagramView()->diagram() || value.isEmpty())) return;
 
-	Diagram *d = currentDiagram()->diagram();
+	Diagram *d = currentDiagramView()->diagram();
 	DiagramEventInterface *diagram_event = nullptr;
 
 	if (value == "line")
@@ -1259,7 +1259,7 @@ void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 void QETDiagramEditor::selectionGroupTriggered(QAction *action)
 {
 	QString value = action->data().toString();
-	DiagramView *dv = currentDiagram();
+	DiagramView *dv = currentDiagramView();
 	Diagram *diagram = dv->diagram();
 	DiagramContent dc(diagram);
 
@@ -1288,7 +1288,7 @@ void QETDiagramEditor::selectionGroupTriggered(QAction *action)
 void QETDiagramEditor::rowColumnGroupTriggered(QAction *action)
 {
 	QString value = action->data().toString();
-	DiagramView *dv = currentDiagram();
+	DiagramView *dv = currentDiagramView();
 
 	if (!dv || value.isEmpty() || dv->diagram()->isReadOnly()) return;
 
@@ -1336,7 +1336,7 @@ void QETDiagramEditor::slot_setVisualisationMode()
  */
 void QETDiagramEditor::slot_updateActions()
 {
-	DiagramView *dv = currentDiagram();
+	DiagramView *dv = currentDiagramView();
 	ProjectView *pv = currentProjectView();
 
 	bool opened_project = pv;
@@ -1377,7 +1377,7 @@ void QETDiagramEditor::slot_updateActions()
 void QETDiagramEditor::slot_updateAutoNumDock() {
 	if ( workspace.subWindowList().indexOf(workspace.activeSubWindow()) != activeSubWindowIndex) {
 			activeSubWindowIndex = workspace.subWindowList().indexOf(workspace.activeSubWindow());
-			if (currentProjectView() != nullptr && currentDiagram() != nullptr) {
+			if (currentProjectView() != nullptr && currentDiagramView() != nullptr) {
 				m_autonumbering_dock->setProject(currentProjectView()->project(),currentProjectView());
 			}
 	}
@@ -1400,7 +1400,7 @@ void QETDiagramEditor::slot_updateUndoStack()
  */
 void QETDiagramEditor::slot_updateComplexActions()
 {
-	DiagramView *dv = currentDiagram();
+	DiagramView *dv = currentDiagramView();
 	if(!dv)
 	{
 		QList <QAction *> action_list;
@@ -1493,7 +1493,7 @@ void QETDiagramEditor::slot_updateComplexActions()
  */
 void QETDiagramEditor::slot_updateModeActions()
 {
-	DiagramView *dv = currentDiagram();
+	DiagramView *dv = currentDiagramView();
 	
 	if (!dv)
 		grp_visu_sel -> setEnabled(false);
@@ -1528,7 +1528,7 @@ void QETDiagramEditor::slot_updateModeActions()
 	Gere les actions ayant besoin du presse-papier
 */
 void QETDiagramEditor::slot_updatePasteAction() {
-	DiagramView *dv = currentDiagram();
+	DiagramView *dv = currentDiagramView();
 	bool editable_diagram = (dv && !dv -> diagram() -> isReadOnly());
 	
 	// pour coller, il faut un schema ouvert et un schema dans le presse-papier
@@ -1738,7 +1738,7 @@ void QETDiagramEditor::editDiagramProperties(Diagram *diagram) {
 	Edite les proprietes des objets selectionnes
 */
 void QETDiagramEditor::editSelectionProperties() {
-	if (DiagramView *dv = currentDiagram()) {
+	if (DiagramView *dv = currentDiagramView()) {
 		dv -> editSelectionProperties();
 	}
 }
@@ -1747,7 +1747,7 @@ void QETDiagramEditor::editSelectionProperties() {
 	Reinitialise les conducteurs selectionnes
 */
 void QETDiagramEditor::slot_resetConductors() {
-	if (DiagramView *dv = currentDiagram()) {
+	if (DiagramView *dv = currentDiagramView()) {
 		dv -> resetConductors();
 	}
 }
@@ -2179,7 +2179,7 @@ void QETDiagramEditor::selectionChanged()
 {
 	slot_updateComplexActions();
 
-	DiagramView *dv = currentDiagram();
+	DiagramView *dv = currentDiagramView();
 	if (dv && dv->diagram())
 		m_selection_properties_editor->setDiagram(dv->diagram());
 }

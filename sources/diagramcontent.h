@@ -64,7 +64,7 @@ class DiagramContent
 			SelectedOnly = 512
 		};
 		
-		QSet<Element *> m_elements;
+		QList<Element *> m_elements;
 		QSet<IndependentTextItem *> m_text_fields;
 		QSet<DiagramImageItem *> m_images;
 		QSet<QetShapeItem *> m_shapes;

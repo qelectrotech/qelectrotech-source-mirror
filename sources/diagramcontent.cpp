@@ -238,10 +238,10 @@ int DiagramContent::removeNonMovableItems()
 {
 	int count_ = 0;
 	
-	const QSet<Element *> elements_set = m_elements;
+	const QList<Element *> elements_set = m_elements;
 	for(Element *elmt : elements_set) {
 		if (!elmt->isMovable()) {
-			m_elements.remove(elmt);
+			m_elements.removeAll(elmt);
 			++count_;
 		}
 	}

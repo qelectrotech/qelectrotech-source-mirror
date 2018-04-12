@@ -94,7 +94,7 @@ void PasteDiagramCommand::redo()
 		first_redo = false;
 
 			//this is the first paste, we do some actions for the new element
-		const QList <Element *> elmts_list = content.m_elements.toList();
+		const QList <Element *> elmts_list = content.m_elements;
 		for (Element *e : elmts_list)
 		{
 				//make new uuid, because old uuid are the uuid of the copied element

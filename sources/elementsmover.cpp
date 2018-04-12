@@ -143,7 +143,7 @@ void ElementsMover::endMovement()
 		m_moved_content.items(dc::Elements).size() == 1 &&
 		diagram_ -> project() -> autoConductor())
 	{
-		Element *elmt = m_moved_content.m_elements.toList().first();
+		Element *elmt = m_moved_content.m_elements.first();
 
 		int acc = elmt->AlignedFreeTerminals().size();
 

@@ -2,6 +2,8 @@
 #include "ui_multipastedialog.h"
 #include "diagram.h"
 #include "diagramcommands.h"
+#include "element.h"
+#include "conductorautonumerotation.h"
 
 MultiPasteDialog::MultiPasteDialog(Diagram *diagram, QWidget *parent) :
 	QDialog(parent),
@@ -74,7 +76,32 @@ void MultiPasteDialog::on_m_button_box_accepted()
     if(m_pasted_content.count())
 	{
 		m_diagram->clearSelection();
-		m_diagram->undoStack().push(new PasteDiagramCommand(m_diagram, m_pasted_content));
+		
+		QUndoCommand *undo = new QUndoCommand(tr("Multi-collage"));
+		new PasteDiagramCommand(m_diagram, m_pasted_content, undo);
+		
+		if(ui->m_auto_connection_cb->isChecked())
+		{
+			for(Element *elmt : m_pasted_content.m_elements)
+			{
+				while (!elmt->AlignedFreeTerminals().isEmpty())
+				{
+					QPair <Terminal *, Terminal *> pair = elmt->AlignedFreeTerminals().takeFirst();
+			
+					Conductor *conductor = new Conductor(pair.first, pair.second);
+					new AddItemCommand<Conductor *>(conductor, m_diagram, QPointF(), undo);
+			
+						//Autonum the new conductor, the undo command associated for this, have for parent undo_object
+					ConductorAutoNumerotation can  (conductor, m_diagram, undo);
+					can.numerate();
+					if (m_diagram->freezeNewConductors() || m_diagram->project()->isFreezeNewConductors()) {
+						conductor->setFreezeLabel(true);
+					}
+				}
+			}
+		}
+		
+		m_diagram->undoStack().push(undo);
 		m_diagram->adjustSceneRect();
 		m_accept = true;
 	}

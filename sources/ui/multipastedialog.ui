@@ -88,6 +88,13 @@
     </layout>
    </item>
    <item>
+    <widget class="QCheckBox" name="m_auto_connection_cb">
+     <property name="text">
+      <string>Auto-connection</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
