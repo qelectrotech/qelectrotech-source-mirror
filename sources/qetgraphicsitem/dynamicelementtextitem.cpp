@@ -985,15 +985,20 @@ void DynamicElementTextItem::updateReportText()
 {
 	if(!(m_parent_element.data()->linkType() & Element::AllReport))
 		return;
-	if(!m_other_report)
-		setPlainText("_");
 	
-	if (m_text_from == ElementInfo && m_info_name == "label" && m_other_report)
+	if (m_text_from == ElementInfo && m_info_name == "label")
 	{
-		Element *elmt = m_other_report.data();
-		QString label = m_report_formula;
-		label = autonum::AssignVariables::formulaToLabel(label, elmt->rSequenceStruct(), elmt->diagram(), elmt);
-		setPlainText(label);
+		if(m_other_report)
+		{
+			Element *elmt = m_other_report.data();
+			QString label = m_report_formula;
+			label = autonum::AssignVariables::formulaToLabel(label, elmt->rSequenceStruct(), elmt->diagram(), elmt);
+			setPlainText(label);
+		}
+		else
+		{
+			setPlainText("");
+		}
 	}
 	else if (m_text_from == CompositeText) {
 		setPlainText(reportReplacedCompositeText());
