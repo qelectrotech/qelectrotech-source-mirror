@@ -157,11 +157,8 @@ bool ElementInfoWidget::event(QEvent *event)
  */
 void ElementInfoWidget::enableLiveEdit()
 {
-	foreach (ElementInfoPartWidget *eipw, m_eipw_list)
-	{
+	for (ElementInfoPartWidget *eipw : m_eipw_list)
 		connect(eipw, &ElementInfoPartWidget::textChanged, this, &ElementInfoWidget::apply);
-		connect(eipw, &ElementInfoPartWidget::showClicked, this, &ElementInfoWidget::apply);
-	}
 }
 
 /**
@@ -170,11 +167,8 @@ void ElementInfoWidget::enableLiveEdit()
  */
 void ElementInfoWidget::disableLiveEdit()
 {
-	foreach (ElementInfoPartWidget *eipw, m_eipw_list)
-	{
+	for (ElementInfoPartWidget *eipw : m_eipw_list)
 		disconnect(eipw, &ElementInfoPartWidget::textChanged, this, &ElementInfoWidget::apply);
-		disconnect(eipw, &ElementInfoPartWidget::showClicked, this, &ElementInfoWidget::apply);
-	}
 }
 
 /**
@@ -219,23 +213,14 @@ void ElementInfoWidget::updateUi()
 	if (m_live_edit) disableLiveEdit();
 
 	DiagramContext element_info = m_element->elementInformations();
-	foreach (ElementInfoPartWidget *eipw, m_eipw_list)
-	{
-
+	
+	for (ElementInfoPartWidget *eipw : m_eipw_list) {
 		eipw -> setText (element_info[eipw->key()].toString());
-		eipw -> setShow (element_info.keyMustShow(eipw->key()));
-
-			//If the current eipw is for label or comment and the text is empty
-			//we force the checkbox to ckecked
-		if (eipw -> key() == "label" || eipw -> key() == "comment" || eipw -> key() == "location" ) {
-			if (element_info[eipw->key()].toString().isEmpty())
-				eipw->setShow(true);
-		}
-		else //< for other eipw we hide the checkbox
-			eipw->setHideShow(true);
 	}
 
-	if (m_live_edit) enableLiveEdit();
+	if (m_live_edit) {
+		enableLiveEdit();
+	}
 }
 
 /**
@@ -246,9 +231,11 @@ DiagramContext ElementInfoWidget::currentInfo() const
 {
 	DiagramContext info_;
 
-	foreach (ElementInfoPartWidget *eipw, m_eipw_list)
-		if (!eipw->text().isEmpty()) //add value only if they're something to store
-			info_.addValue(eipw->key(), eipw->text(), eipw->mustShow());
+	for (ElementInfoPartWidget *eipw : m_eipw_list) {
+		if (!eipw->text().isEmpty()) { //add value only if they're something to store
+			info_.addValue(eipw->key(), eipw->text());
+		}
+	}
 
 	return info_;
 }

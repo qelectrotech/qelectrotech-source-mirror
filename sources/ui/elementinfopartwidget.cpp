@@ -33,11 +33,9 @@ ElementInfoPartWidget::ElementInfoPartWidget(QString key, QString translated_key
 {
 	ui->setupUi(this);
 	ui->label_->setText(translated_key);
-	if(key == "label") ui->checkBox->setChecked(true);
 
 	connect(ui->line_edit, &QLineEdit::textEdited,  this, &ElementInfoPartWidget::textEdited);
 	connect(ui->line_edit, &QLineEdit::textChanged, this, &ElementInfoPartWidget::textChanged);
-	connect(ui->checkBox,  &QCheckBox::clicked,     this, &ElementInfoPartWidget::showClicked);
 }
 
 /**
@@ -64,32 +62,6 @@ void ElementInfoPartWidget::setText(const QString &txt) {
  */
 QString ElementInfoPartWidget::text() const {
 	return (ui->line_edit->text());
-}
-
-/**
- * @brief ElementInfoPartWidget::mustShow
- * @return return true if the value must be show, else false
- */
-bool ElementInfoPartWidget::mustShow() const  {
-	return (ui->checkBox->isChecked());
-}
-
-/**
- * @brief ElementInfoPartWidget::setShow
- * Check or not the ckeck box
- * @param s true-> checked
- */
-void ElementInfoPartWidget::setShow(const bool &s) {
-	ui->checkBox->setChecked(s);
-}
-
-/**
- * @brief ElementInfoPartWidget::setHideShow
- * Hide or not the check box
- * @param hide true -> hidden
- */
-void ElementInfoPartWidget::setHideShow(const bool &hide) {
-	ui -> checkBox -> setHidden(hide);
 }
 
 /**

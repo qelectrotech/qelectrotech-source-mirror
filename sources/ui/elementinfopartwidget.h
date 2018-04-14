@@ -36,9 +36,6 @@ class ElementInfoPartWidget : public QWidget
 		QString key         () const {return key_;}
 		void    setText     (const QString &);
 		QString text        () const;
-		bool    mustShow    () const;
-		void    setShow     (const bool &);
-		void    setHideShow (const bool &);
 		void    setFocusTolineEdit();
 		void    setEnabled(bool e);
 		void    setDisabled(bool d);
@@ -46,7 +43,6 @@ class ElementInfoPartWidget : public QWidget
 	signals:
 		void textEdited  (const QString & text);
 		void textChanged (const QString & text);
-		void showClicked (bool checked);
 
 	//ATTRIBUTES
 	private:
