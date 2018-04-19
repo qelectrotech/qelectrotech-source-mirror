@@ -194,7 +194,17 @@ void ElementScene::keyPressEvent(QKeyEvent *event)
 	}
 	
 	if(selectedItems().size() == 1)
-	{	
+	{
+		if(selectedItems().first()->type() == PartText::Type)
+		{
+			PartText *t = static_cast<PartText *>(selectedItems().first());
+			if(t->textInteractionFlags() & Qt::TextEditorInteraction)
+			{
+				QGraphicsScene::keyPressEvent(event);
+				return;
+			}
+		}
+		
 		QGraphicsObject *qgo = selectedItems().first()->toGraphicsObject();
 		if(qgo)
 		{
