@@ -1,0 +1,56 @@
+<definition orientation="dyyy" height="110" type="element" width="60" hotspot_y="8" version="0.70" hotspot_x="7" link_type="simple">
+    <uuid uuid="{5db69389-0b66-454b-850c-a7c8fd4d1cbe}"/>
+    <names>
+        <name lang="fr">cTRON 08 petit</name>
+        <name lang="en">cTRON 08 small</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="9" x="10.5" y="56.5" antialias="true"/>
+        <text size="2" text="K3" x="17" y="41"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="9" x="10.5" y="77.5" antialias="true"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="9" x="28.5" y="56.5" antialias="true"/>
+        <text size="2" text="K2" x="10" y="41"/>
+        <arc style="line-style:normal;line-weight:thin;filling:none;color:black" angle="175.563" start="4.375" x="33.1519" height="0.219862" width="0.465283" y="38.1099" antialias="true"/>
+        <arc style="line-style:normal;line-weight:thin;filling:none;color:black" angle="175.563" start="4.375" x="32.6867" height="0.219862" width="0.465283" y="38.1099" antialias="true"/>
+        <arc style="line-style:normal;line-weight:thin;filling:none;color:black" angle="175.563" start="4.375" x="33.6172" height="0.219862" width="0.465283" y="38.1099" antialias="true"/>
+        <text size="2" text="K4" x="24" y="41"/>
+        <text size="2" text="K1" x="3" y="41"/>
+        <arc style="line-style:normal;line-weight:thin;filling:none;color:black" angle="90" start="0" x="31.7561" height="1.09931" width="2.32641" y="40.1986" antialias="true"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" length1="1.5" end1="none" y1="40.1986" x1="32.8612" end2="none" x2="31.6979" y2="40.1986" antialias="false"/>
+        <arc style="line-style:normal;line-weight:thin;filling:none;color:black" angle="185.625" start="84.3125" x="31.349" height="0.549654" width="0.697924" y="39.649" antialias="true"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" length1="1.5" end1="none" y1="39.649" x1="31.6979" end2="none" x2="32.7448" y2="39.649" antialias="false"/>
+        <arc style="line-style:normal;line-weight:thin;filling:none;color:black" angle="90" start="270" x="32.6285" height="0.219862" width="0.232641" y="39.4291" antialias="true"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" length1="1.5" end1="none" y1="39.539" x1="32.8612" end2="none" x2="32.2795" y2="38.7695" antialias="false"/>
+        <arc style="line-style:normal;line-weight:thin;filling:none;color:black" angle="89.8125" start="30" x="31.8724" height="0.329793" width="0.407123" y="38.6596" antialias="true"/>
+        <arc style="line-style:normal;line-weight:thin;filling:none;color:black" angle="122.938" start="4.375" x="32.1051" height="0.549654" width="0.581606" y="38" antialias="true"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" length1="1.5" end1="none" y1="38.2199" x1="33.6172" end2="none" x2="33.908" y2="38.6596" antialias="false"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" length1="1.5" end1="none" y1="38.2199" x1="33.1519" end2="none" x2="33.4427" y2="38.7146" antialias="false"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" length1="1.5" end1="none" y1="38.2199" x1="32.6867" end2="none" x2="32.9774" y2="38.7695" antialias="false"/>
+        <arc style="line-style:normal;line-weight:thin;filling:none;color:black" angle="169.25" start="117.813" x="31" height="0.384758" width="0.465283" y="38.6596" antialias="true"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" length1="1.5" end1="none" y1="39.0443" x1="31.2908" end2="none" x2="31.9306" y2="38.7146" antialias="false"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" length1="1.5" end1="none" y1="38.055" x1="32.2213" end2="none" x2="31.1745" y2="38.6596" antialias="false"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" length1="1.5" end1="none" y1="38.2199" x1="34.0825" end2="none" x2="35.2457" y2="39.8688" antialias="false"/>
+        <text size="3" text="JUMO" x="3" y="5"/>
+        <text size="3" text="cTRON 08" x="17" y="5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="0" height="96" width="48" y="0" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:black;color:black" x="2" height="28" width="44" y="7" antialias="false"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" length1="1.5" end1="none" y1="1" x1="4" end2="none" x2="13" y2="1" antialias="false"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" length1="1.5" end1="none" y1="6" x1="4" end2="none" x2="13" y2="6" antialias="false"/>
+        <arc style="line-style:normal;line-weight:thin;filling:none;color:black" angle="180" start="90" x="2" height="5" width="4" y="1" antialias="true"/>
+        <arc style="line-style:normal;line-weight:thin;filling:none;color:black" angle="180" start="270" x="11" height="5" width="4" y="1" antialias="true"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" x3="46" y1="94" x1="2" y3="45" x4="2" x2="46" y4="48" y2="94" antialias="true"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="9" x="28.5" y="77.5" antialias="true"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" x3="39" y1="41" x1="37" y3="39" x4="40" x2="38" y4="39" y2="41" antialias="false"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="3" x="42" y="38.5" antialias="false"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" x3="45" y1="38.5" x1="43.5" y3="40" x2="43.5" y2="40" antialias="false"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" x3="15" y1="59" x1="12" y3="64" x2="18" y2="59" antialias="true"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" x3="33" y1="63" x1="30" y3="58" x2="36" y2="63" antialias="true"/>
+        <text size="6" text="P" x="13" y="85"/>
+        <text size="2" text="EXIT" x="29.3" y="81.5"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" length1="1.5" end1="none" y1="81" x1="36" end2="none" x2="31" y2="85" antialias="true"/>
+        <text size="2" text="F" x="34" y="85"/>
+        <terminal orientation="n" x="0" y="0"/>
+    </description>
+</definition>

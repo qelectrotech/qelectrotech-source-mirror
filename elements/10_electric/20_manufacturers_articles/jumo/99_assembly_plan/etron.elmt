@@ -1,0 +1,43 @@
+<definition orientation="dyyy" version="0.70" height="100" hotspot_x="8" hotspot_y="6" type="element" link_type="simple" width="40">
+    <uuid uuid="{b9736638-064a-4ede-975f-b95f476d2849}"/>
+    <names>
+        <name lang="fr">eTRON t</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <rect x="0" height="90" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="0" width="25"/>
+        <circle x="5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="4" y="60"/>
+        <circle x="16" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="4" y="51"/>
+        <circle x="14" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="4" y="82"/>
+        <circle x="8" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="4" y="4"/>
+        <circle x="8" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="4" y="82"/>
+        <circle x="8" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="4" y="72"/>
+        <circle x="2" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="4" y="82"/>
+        <line end1="none" end2="none" antialias="true" y1="85" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="83" length1="1.5" x2="17" length2="1.5" x1="15"/>
+        <circle x="2" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="4" y="72"/>
+        <circle x="2" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="4" y="4"/>
+        <line end1="none" end2="none" antialias="true" y1="75" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="73" length1="1.5" x2="5" length2="1.5" x1="3"/>
+        <line end1="none" end2="none" antialias="true" y1="85" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="83" length1="1.5" x2="5" length2="1.5" x1="3"/>
+        <line end1="none" end2="none" antialias="true" y1="7" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="5" length1="1.5" x2="5" length2="1.5" x1="3"/>
+        <line end1="none" end2="none" antialias="true" y1="75" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="73" length1="1.5" x2="11" length2="1.5" x1="9"/>
+        <line end1="none" end2="none" antialias="true" y1="85" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="83" length1="1.5" x2="11" length2="1.5" x1="9"/>
+        <line end1="none" end2="none" antialias="true" y1="7" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="5" length1="1.5" x2="11" length2="1.5" x1="9"/>
+        <rect x="0" height="45" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="22" width="25"/>
+        <rect x="4" height="8" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y="28" width="17"/>
+        <circle x="3.5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="5" y="38.5"/>
+        <text x="10" y="42" text="K1" size="3"/>
+        <circle x="16" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="4" y="60"/>
+        <text x="6.3" y="63.2" text="P" size="2"/>
+        <polygon y3="54" antialias="true" y1="52" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="54" x3="19" x2="17" x1="18"/>
+        <polygon y3="61" antialias="true" y1="63" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="61" x3="19" x2="17" x1="18"/>
+        <line end1="none" end2="none" antialias="false" y1="78" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="78" length1="1.5" x2="25" length2="1.5" x1="0"/>
+        <text x="3" y="26" text="JUMO" size="2"/>
+        <line end1="none" end2="none" antialias="false" y1="23" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="23" length1="1.5" x2="9" length2="1.5" x1="4"/>
+        <line end1="none" end2="none" antialias="false" y1="27" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="27" length1="1.5" x2="9" length2="1.5" x1="4"/>
+        <arc x="2" start="90" angle="180" height="4" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" y="23" width="4"/>
+        <arc x="7" start="270" angle="180" height="4" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" y="23" width="4"/>
+        <text x="11.5" y="26" text="eTRON t" size="2"/>
+        <terminal x="0" orientation="n" y="0"/>
+    </description>
+</definition>
