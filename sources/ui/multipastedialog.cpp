@@ -4,6 +4,7 @@
 #include "diagramcommands.h"
 #include "element.h"
 #include "conductorautonumerotation.h"
+#include <QSettings>
 
 MultiPasteDialog::MultiPasteDialog(Diagram *diagram, QWidget *parent) :
 	QDialog(parent),
@@ -75,6 +76,17 @@ void MultiPasteDialog::on_m_button_box_accepted()
 {
     if(m_pasted_content.count())
 	{
+		QSettings settings;
+		bool erase_label = settings.value("diagramcommands/erase-label-on-copy", true).toBool();
+			//Ensure when 'auto_num' is checked, the settings 'save_label' is to true.
+			//Because in the class PasteDiagramCommand, if the settings 'save_label' is to false,
+			//the function redo of PasteDiagramCommand, clear the formula and the label of the pasted element
+			//and so the auto_num below do nothing (there is not a formula to compare)
+		if(ui->m_auto_num_cb->isChecked())
+			settings.setValue("diagramcommands/erase-label-on-copy", false);
+		
+		
+		
 		m_diagram->clearSelection();
 		
 		QUndoCommand *undo = new QUndoCommand(tr("Multi-collage"));
@@ -132,5 +144,6 @@ void MultiPasteDialog::on_m_button_box_accepted()
 		}
 		m_diagram->adjustSceneRect();
 		m_accept = true;
+		settings.setValue("diagramcommands/erase-label-on-copy", erase_label);
 	}
 }

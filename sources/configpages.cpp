@@ -237,7 +237,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	bool tabbed = settings.value("diagrameditor/viewmode", "tabbed") == "tabbed";
 	bool zoom_out_folio = settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool();
 	bool use_trackpad = settings.value("diagramview/gestures", false).toBool();
-	bool save_label_paste = settings.value("diagramcommands/save-label", true).toBool();
+	bool save_label_paste = settings.value("diagramcommands/erase-label-on-copy", true).toBool();
 	bool panel_folio = settings.value("genericpanel/folio", true).toBool();
 	bool highlight_integrated_elements = settings.value("diagrameditor/highlight-integrated-elements", true).toBool();
 	bool terminal_exportlist = settings.value("nomenclature-exportlist", true).toBool();
@@ -386,7 +386,7 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue("diagrameditor/highlight-integrated-elements", highlight_integrated_elements_ -> isChecked());
 	settings.setValue("elementeditor/default-informations", default_element_infos_textfield_ -> toPlainText());
 	settings.setValue("diagramview/gestures", use_trackpad_ -> isChecked());
-	settings.setValue("diagramcommands/save-label", save_label_paste_ -> isChecked());
+	settings.setValue("diagramcommands/erase-label-on-copy", save_label_paste_ -> isChecked());
 	settings.setValue("diagrameditor/zoom-out-beyond-of-folio", m_zoom_out_beyond_folio->isChecked());
 	settings.setValue("genericpanel/folio",folio_panel_->isChecked());
 	settings.setValue("nomenclature/terminal-exportlist",terminal_exportlist_->isChecked());

@@ -100,7 +100,7 @@ void PasteDiagramCommand::redo()
 				//make new uuid, because old uuid are the uuid of the copied element
 			e -> newUuid();
 
-			if (settings.value("diagramcommands/save-label", true).toBool())
+			if (settings.value("diagramcommands/erase-label-on-copy", true).toBool())
 			{
 					//Reset the information about the label, the comment and location
 				e -> rElementInformations().addValue("formula", "");

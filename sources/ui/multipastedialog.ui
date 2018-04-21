@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>261</width>
-    <height>136</height>
+    <width>304</width>
+    <height>162</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -90,14 +90,14 @@
    <item>
     <widget class="QCheckBox" name="m_auto_connection_cb">
      <property name="text">
-      <string>Auto-connection</string>
+      <string>Auto-connexion</string>
      </property>
     </widget>
    </item>
    <item>
     <widget class="QCheckBox" name="m_auto_num_cb">
      <property name="text">
-      <string>Auto-numérotation des éléments (experimental)</string>
+      <string>Auto-numérotation des éléments</string>
      </property>
     </widget>
    </item>
