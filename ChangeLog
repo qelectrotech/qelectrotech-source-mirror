@@ -8,6 +8,7 @@
 * Element editor : element informations (manufacturer, reference etc...) can be created directly from the element editor. For that go to the widget "Element Property"
 * Element editor : it is no longer required to have a text field, for save the edited element.
 * Element editor : improve the behavior with the arrow keys (depending to the current selection : nothing / one / several).
+* Bug fix : element editor, part text can't be edited directly.
 * Element editor and diagram editor : context menu display only enabled actions
 * Fix crash occurred by the conductor and shape "ghost".
 * Dissociate fonts policy and size for independent text item and for summarry pages (foliolist), add a 2 button in config page for open Qfontdialog widget and choose policy for independent text item
@@ -22,6 +23,7 @@ Possiblility to overide defaut settings by adding in QElectroTech.conf
 When the search function is searching in a terminal element, they search only for the first terminal found, no matter if the terminal element have more than two terminals.
 So the list of conductors at the same potential is missing some conductors.
 This commit fix it, now the search function search for every terminals of a terminal element.
+* Diagram editor : add new action in the context menu : multiple paste, check box for autonum the pasted element.
 
 
 
