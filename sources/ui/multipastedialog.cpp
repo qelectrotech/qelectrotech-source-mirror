@@ -1,3 +1,20 @@
+/*
+	Copyright 2006-2018 The QElectroTech team
+	This file is part of QElectroTech.
+
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
+
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+*/
 #include "multipastedialog.h"
 #include "ui_multipastedialog.h"
 #include "diagram.h"
@@ -76,6 +93,8 @@ void MultiPasteDialog::on_m_button_box_accepted()
 {
     if(m_pasted_content.count())
 	{
+		m_diagram->undoStack().beginMacro(tr("Multi-collage"));
+		
 		QSettings settings;
 		bool erase_label = settings.value("diagramcommands/erase-label-on-copy", true).toBool();
 			//Ensure when 'auto_num' is checked, the settings 'save_label' is to true.
@@ -88,9 +107,7 @@ void MultiPasteDialog::on_m_button_box_accepted()
 		
 		
 		m_diagram->clearSelection();
-		
-		QUndoCommand *undo = new QUndoCommand(tr("Multi-collage"));
-		new PasteDiagramCommand(m_diagram, m_pasted_content, undo);
+		m_diagram->undoStack().push(new PasteDiagramCommand(m_diagram, m_pasted_content));
 		
 			//Auto-connection
 		if(ui->m_auto_connection_cb->isChecked())
@@ -102,10 +119,10 @@ void MultiPasteDialog::on_m_button_box_accepted()
 					QPair <Terminal *, Terminal *> pair = elmt->AlignedFreeTerminals().takeFirst();
 			
 					Conductor *conductor = new Conductor(pair.first, pair.second);
-					new AddItemCommand<Conductor *>(conductor, m_diagram, QPointF(), undo);
+					m_diagram->undoStack().push(new AddItemCommand<Conductor *>(conductor, m_diagram, QPointF()));
 			
 						//Autonum the new conductor, the undo command associated for this, have for parent undo_object
-					ConductorAutoNumerotation can  (conductor, m_diagram, undo);
+					ConductorAutoNumerotation can  (conductor, m_diagram);
 					can.numerate();
 					if (m_diagram->freezeNewConductors() || m_diagram->project()->isFreezeNewConductors()) {
 						conductor->setFreezeLabel(true);
@@ -113,8 +130,6 @@ void MultiPasteDialog::on_m_button_box_accepted()
 				}
 			}
 		}
-		
-		m_diagram->undoStack().push(undo);
 		
 			//Set up the label of element
 			//Instead of use the current autonum of project,
@@ -142,8 +157,39 @@ void MultiPasteDialog::on_m_button_box_accepted()
 				}
 			}
 		}
+			//Like elements, we compare formula of pasted conductor with the autonums available in the project.
+		if(ui->m_auto_num_cond_cb->isChecked())
+		{
+			for(Conductor *c : m_pasted_content.conductors())
+			{
+				QString formula = c->properties().m_formula;
+				if(!formula.isEmpty())
+				{
+					QHash <QString, NumerotationContext> autonums = m_diagram->project()->conductorAutoNum();
+					QHashIterator <QString, NumerotationContext> hash_iterator(autonums);
+					
+					while (hash_iterator.hasNext())
+					{
+						hash_iterator.next();
+						if(autonum::numerotationContextToFormula(hash_iterator.value()) == formula)
+						{
+							m_diagram->project()->setCurrentConductorAutoNum(hash_iterator.key());
+							c->rSequenceNum().clear();
+							ConductorAutoNumerotation can(c, m_diagram);
+							can.numerate();
+							if (m_diagram->freezeNewConductors() || m_diagram->project()->isFreezeNewConductors())
+							{
+								c->setFreezeLabel(true);
+							}
+						}
+					}
+				}
+			}
+		}
+		
 		m_diagram->adjustSceneRect();
 		m_accept = true;
 		settings.setValue("diagramcommands/erase-label-on-copy", erase_label);
+		m_diagram->undoStack().endMacro();
 	}
 }

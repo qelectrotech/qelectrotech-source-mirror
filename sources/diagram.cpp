@@ -1000,7 +1000,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 	// remplissage des listes facultatives
 	if (content_ptr) {
 		content_ptr -> m_elements         = added_elements;
-		content_ptr -> m_conductors_to_move = added_conductors.toSet();
+		content_ptr -> m_conductors_to_move = added_conductors;
 		content_ptr -> m_text_fields       = added_texts.toSet();
 		content_ptr -> m_images			= added_images.toSet();
 		content_ptr -> m_shapes			= added_shapes.toSet();

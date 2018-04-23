@@ -81,9 +81,9 @@ DiagramContent::DiagramContent(Diagram *diagram) :
 					other_terminal = conductor->terminal1;
 
 					//If the two elements of conductor are movable
-				if (m_elements.contains(other_terminal -> parentElement()))
+				if (m_elements.contains(other_terminal -> parentElement()) && !m_conductors_to_move.contains(conductor))
 					m_conductors_to_move << conductor;
-				else
+				else if (!m_conductors_to_update.contains(conductor))
 					m_conductors_to_update << conductor;
 			}
 		}
@@ -160,16 +160,18 @@ QList<ElementTextItemGroup *> DiagramContent::selectedTextsGroup() const
  */
 QList<Conductor *> DiagramContent::conductors(int filter) const
 {
-	QSet<Conductor *> result;
+	QList<Conductor *> result;
 	if (filter & ConductorsToMove)   result += m_conductors_to_move;
 	if (filter & ConductorsToUpdate) result += m_conductors_to_update;
 	if (filter & OtherConductors)    result += m_other_conductors;
 	if (filter & SelectedOnly) {
-		for(Conductor *conductor : result) {
-			if (!conductor->isSelected()) result.remove(conductor);
+		for(Conductor *conductor : result)
+		{
+			if (!conductor->isSelected())
+				result.removeAll(conductor);
 		}
 	}
-	return(result.toList());
+	return(result);
 }
 
 /**

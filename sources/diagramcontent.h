@@ -68,9 +68,9 @@ class DiagramContent
 		QSet<IndependentTextItem *> m_text_fields;
 		QSet<DiagramImageItem *> m_images;
 		QSet<QetShapeItem *> m_shapes;
-		QSet<Conductor *> m_conductors_to_update;
-		QSet<Conductor *> m_conductors_to_move;
-		QSet<Conductor *> m_other_conductors;
+		QList<Conductor *> m_conductors_to_update;
+		QList<Conductor *> m_conductors_to_move;
+		QList<Conductor *> m_other_conductors;
 		QSet<DynamicElementTextItem *> m_element_texts;
 		QSet<ElementTextItemGroup *> m_texts_groups;
 		QList<QGraphicsItem *> m_selected_items;

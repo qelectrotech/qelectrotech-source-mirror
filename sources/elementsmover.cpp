@@ -194,4 +194,5 @@ void ElementsMover::endMovement()
 	
 		// There is no movement in progress now
 	movement_running_ = false;
+	m_moved_content.clear();
 }

@@ -102,6 +102,13 @@
     </widget>
    </item>
    <item>
+    <widget class="QCheckBox" name="m_auto_num_cond_cb">
+     <property name="text">
+      <string>Auto-numérotation des conducteurs</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>

@@ -109,7 +109,7 @@ void PasteDiagramCommand::redo()
 				e -> rElementInformations().addValue("location", "");
 				
 					//Reset the text of conductors
-				const QList <Conductor *> conductors_list = content.m_conductors_to_move.toList();
+				const QList <Conductor *> conductors_list = content.m_conductors_to_move;
 				for (Conductor *c : conductors_list)
 				{
 					ConductorProperties cp = c -> properties();
