@@ -47,6 +47,7 @@ class MultiPasteDialog : public QDialog
 		QPointF m_origin;
 		QDomDocument m_document;
 		bool m_accept = false;
+		QList<DiagramContent> m_pasted_content_list;
 };
 
 #endif // MULTIPASTEDIALOG_H
