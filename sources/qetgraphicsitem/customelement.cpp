@@ -249,10 +249,19 @@ QList<Terminal *> CustomElement::terminals() const {
 	return(m_terminals);
 }
 
-/// @return la liste des conducteurs rattaches a cet element
-QList<Conductor *> CustomElement::conductors() const {
+/**
+ * @brief CustomElement::conductors
+ * @return The list of conductor docked to this element
+ * the list is sorted according to the position of the terminal where the conductor is docked
+ * from top to bottom, and left to right.
+ */
+QList<Conductor *> CustomElement::conductors() const
+{
 	QList<Conductor *> conductors;
-	foreach(Terminal *t, m_terminals) conductors << t -> conductors();
+	
+	for(Terminal *t : m_terminals)
+		conductors << t -> conductors();
+	
 	return(conductors);
 }
 
@@ -803,6 +812,16 @@ Terminal *CustomElement::parseTerminal(QDomElement &e) {
 	Terminal *new_terminal = new Terminal(terminalx, terminaly, terminalo, this);
 	new_terminal -> setZValue(420); // valeur arbitraire pour maintenir les bornes au-dessus des champs de texte
 	m_terminals << new_terminal;
+	
+		//Sort from top to bottom and left to rigth
+	std::sort(m_terminals.begin(), m_terminals.end(), [](Terminal *a, Terminal *b)
+	{
+		if(a->dockConductor().y() == b->dockConductor().y())
+			return (a->dockConductor().x() < b->dockConductor().x());
+		else
+			return (a->dockConductor().y() < b->dockConductor().y());
+	});
+	
 	return(new_terminal);
 }
 

@@ -72,6 +72,7 @@ void MultiPasteDialog::updatePreview()
 		}
 	}
 	m_pasted_content.clear();
+	m_pasted_content_list.clear();
 	
 	QPointF offset(ui->m_x_sb->value(), ui->m_y_sb->value());
 	QPointF pos = m_origin+offset;
@@ -82,6 +83,7 @@ void MultiPasteDialog::updatePreview()
 		m_diagram->fromXml(m_document, pos, false, &dc);
 		
 		m_pasted_content += dc;
+		m_pasted_content_list << dc;
 		pos += offset;
 	}
 	
@@ -109,77 +111,94 @@ void MultiPasteDialog::on_m_button_box_accepted()
 		m_diagram->clearSelection();
 		m_diagram->undoStack().push(new PasteDiagramCommand(m_diagram, m_pasted_content));
 		
-			//Auto-connection
-		if(ui->m_auto_connection_cb->isChecked())
+		for(DiagramContent dc : m_pasted_content_list)
 		{
-			for(Element *elmt : m_pasted_content.m_elements)
+			QList<Element *> pasted_elements = dc.m_elements;
+				//Sort the list element by there pos (top -> bottom)
+			std::sort(pasted_elements.begin(), pasted_elements.end(), [](Element *a, Element *b){return (a->pos().y() < b->pos().y());});
+				
+				//Auto-connection
+			if(ui->m_auto_connection_cb->isChecked())
 			{
-				while (!elmt->AlignedFreeTerminals().isEmpty())
+				for(Element *elmt : pasted_elements)
 				{
-					QPair <Terminal *, Terminal *> pair = elmt->AlignedFreeTerminals().takeFirst();
-			
-					Conductor *conductor = new Conductor(pair.first, pair.second);
-					m_diagram->undoStack().push(new AddItemCommand<Conductor *>(conductor, m_diagram, QPointF()));
-			
-						//Autonum the new conductor, the undo command associated for this, have for parent undo_object
-					ConductorAutoNumerotation can  (conductor, m_diagram);
-					can.numerate();
-					if (m_diagram->freezeNewConductors() || m_diagram->project()->isFreezeNewConductors()) {
-						conductor->setFreezeLabel(true);
-					}
-				}
-			}
-		}
-		
-			//Set up the label of element
-			//Instead of use the current autonum of project,
-			//we try to fetch the same formula of the pasted element, in the several autonum of the project
-			//for apply the good formula for each elements
-		if(ui->m_auto_num_cb->isChecked())
-		{
-			for(Element *elmt : m_pasted_content.m_elements)
-			{
-				QString formula = elmt->elementInformations()["formula"].toString();
-				if(!formula.isEmpty())
-				{
-					QHash <QString, NumerotationContext> autonums = m_diagram->project()->elementAutoNum();
-					QHashIterator<QString, NumerotationContext> hash_iterator(autonums);
-					
-					while(hash_iterator.hasNext())
+					while (!elmt->AlignedFreeTerminals().isEmpty())
 					{
-						hash_iterator.next();
-						if(autonum::numerotationContextToFormula(hash_iterator.value()) == formula)
-						{
-							m_diagram->project()->setCurrrentElementAutonum(hash_iterator.key());
-							elmt->setUpFormula();
+						QPair <Terminal *, Terminal *> pair = elmt->AlignedFreeTerminals().takeFirst();
+						
+						Conductor *conductor = new Conductor(pair.first, pair.second);
+						m_diagram->undoStack().push(new AddItemCommand<Conductor *>(conductor, m_diagram, QPointF()));
+						
+						//Autonum the new conductor, the undo command associated for this, have for parent undo_object
+						ConductorAutoNumerotation can  (conductor, m_diagram);
+						can.numerate();
+						if (m_diagram->freezeNewConductors() || m_diagram->project()->isFreezeNewConductors()) {
+							conductor->setFreezeLabel(true);
 						}
 					}
 				}
 			}
-		}
-			//Like elements, we compare formula of pasted conductor with the autonums available in the project.
-		if(ui->m_auto_num_cond_cb->isChecked())
-		{
-			for(Conductor *c : m_pasted_content.conductors())
+			
+				//Set up the label of element
+				//Instead of use the current autonum of project,
+				//we try to fetch the same formula of the pasted element, in the several autonum of the project
+				//for apply the good formula for each elements
+			if(ui->m_auto_num_cb->isChecked())
 			{
-				QString formula = c->properties().m_formula;
-				if(!formula.isEmpty())
+				for(Element *elmt : pasted_elements)
 				{
-					QHash <QString, NumerotationContext> autonums = m_diagram->project()->conductorAutoNum();
-					QHashIterator <QString, NumerotationContext> hash_iterator(autonums);
-					
-					while (hash_iterator.hasNext())
+					QString formula = elmt->elementInformations()["formula"].toString();
+					if(!formula.isEmpty())
 					{
-						hash_iterator.next();
-						if(autonum::numerotationContextToFormula(hash_iterator.value()) == formula)
+						QHash <QString, NumerotationContext> autonums = m_diagram->project()->elementAutoNum();
+						QHashIterator<QString, NumerotationContext> hash_iterator(autonums);
+						
+						while(hash_iterator.hasNext())
 						{
-							m_diagram->project()->setCurrentConductorAutoNum(hash_iterator.key());
-							c->rSequenceNum().clear();
-							ConductorAutoNumerotation can(c, m_diagram);
-							can.numerate();
-							if (m_diagram->freezeNewConductors() || m_diagram->project()->isFreezeNewConductors())
+							hash_iterator.next();
+							if(autonum::numerotationContextToFormula(hash_iterator.value()) == formula)
 							{
-								c->setFreezeLabel(true);
+								m_diagram->project()->setCurrrentElementAutonum(hash_iterator.key());
+								elmt->setUpFormula();
+							}
+						}
+					}
+				}
+			}
+				//Like elements, we compare formula of pasted conductor with the autonums available in the project.
+			if(ui->m_auto_num_cond_cb->isChecked())
+			{		
+					//This list is to ensure we not numerate twice the same conductor
+				QList<Conductor *> numerated;
+					//Start with the element at top
+				for(Element *elmt : pasted_elements)
+				{
+					for(Conductor *c : elmt->conductors())
+					{
+						if(numerated.contains(c))
+							continue;
+						else
+							numerated << c;
+						QString formula = c->properties().m_formula;
+						if(!formula.isEmpty())
+						{
+							QHash <QString, NumerotationContext> autonums = m_diagram->project()->conductorAutoNum();
+							QHashIterator <QString, NumerotationContext> hash_iterator(autonums);
+							
+							while (hash_iterator.hasNext())
+							{
+								hash_iterator.next();
+								if(autonum::numerotationContextToFormula(hash_iterator.value()) == formula)
+								{
+									m_diagram->project()->setCurrentConductorAutoNum(hash_iterator.key());
+									c->rSequenceNum().clear();
+									ConductorAutoNumerotation can(c, m_diagram);
+									can.numerate();
+									if (m_diagram->freezeNewConductors() || m_diagram->project()->isFreezeNewConductors())
+									{
+										c->setFreezeLabel(true);
+									}
+								}
 							}
 						}
 					}
