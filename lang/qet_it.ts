@@ -529,13 +529,13 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1513"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1557"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>Modifica le proprietà di un conduttore</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1518"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1562"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
         <translation>Modifica le proprietà di più conduttori</translation>
@@ -599,17 +599,7 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
         <translation>Testo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="182"/>
-        <source>Vertical</source>
-        <translation>Verticale</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="192"/>
-        <source>Horizontal</source>
-        <translation>Orizzontale</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="217"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="225"/>
         <source>Unifilaire</source>
         <translation>Unifilare</translation>
     </message>
@@ -634,35 +624,60 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
         <translation>abilitare l&apos;opzione di un solo testo per potenziale</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="273"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="183"/>
+        <source>Horizontal en haut</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="188"/>
+        <source>Horizontal en bas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="197"/>
+        <source>Vertical à gauche</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="202"/>
+        <source>Vertical à droite</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="210"/>
+        <source>Position et rotation du texte de conducteur :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="281"/>
         <source>phase</source>
         <translation>fase</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="215"/>
+        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="219"/>
         <source>Trait plein</source>
         <comment>conductor style: solid line</comment>
         <translation>Linea continua</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="216"/>
+        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="220"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
         <translation>Linea tratteggiata</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="217"/>
+        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="221"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
         <translation>Punto e linea</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="310"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="318"/>
         <source>terre</source>
         <translation>terra</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="259"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="267"/>
         <source>neutre</source>
         <translation>neutro</translation>
     </message>
@@ -692,91 +707,86 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
         <translation>Modifica la numerazione</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="202"/>
-        <source>Rotation du texte de conducteur :</source>
-        <translation>Rotazione del testo del conduttore:</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="240"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="284"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="248"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="292"/>
         <source>Nombre de phase</source>
         <translation>Numero di fasi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="256"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="264"/>
         <source>Neutre</source>
         <translation>Neutro</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="270"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="278"/>
         <source>Phase</source>
         <translation>Fasi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="297"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="305"/>
         <source>Protective Earth Neutral</source>
         <translation>Neutro con funzione di terra (sistema TN-C)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="300"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="308"/>
         <source>PEN</source>
         <translation>PEN</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="307"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="315"/>
         <source>Terre</source>
         <translation>Terra</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="321"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="329"/>
         <source>TextLabel</source>
         <translation>Etichetta</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="360"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="370"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="443"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="453"/>
         <source>Style du conducteur</source>
         <translation>Stile del conduttore</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="409"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="436"/>
         <source>size:</source>
         <translation>Spessore:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="432"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="358"/>
         <source>Couleur secondaire :</source>
         <translation>Colore secondario:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="447"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="373"/>
         <source>px</source>
         <translation>px</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="471"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="397"/>
         <source>Taille de trait :</source>
         <translation>Dimensione del tratto:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="350"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="377"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="407"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="417"/>
         <source>Couleur du conducteur</source>
         <translation>Colore del conduttore</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="344"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="352"/>
         <source>Apparence</source>
         <translation>Aspetto</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="353"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="464"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="390"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="410"/>
         <source>Couleur :</source>
         <translation>Colore:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="363"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="446"/>
         <source>Style :</source>
         <translation>Stile:</translation>
     </message>
@@ -1518,11 +1528,6 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
         <source>TextLabel</source>
         <translation>Testo</translation>
     </message>
-    <message>
-        <location filename="../sources/ui/elementinfopartwidget.ui" line="57"/>
-        <source>Visible</source>
-        <translation>Visibile</translation>
-    </message>
 </context>
 <context>
     <name>ElementInfoWidget</name>
@@ -1756,28 +1761,28 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
 <context>
     <name>ElementScene</name>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="215"/>
+        <location filename="../sources/editor/elementscene.cpp" line="225"/>
         <source>Déplacer une primitive</source>
         <translation>Spostare una primitiva</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="660"/>
+        <location filename="../sources/editor/elementscene.cpp" line="670"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <comment>window title</comment>
         <translation>Modificare le informazioni sull&apos;autore</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="664"/>
+        <location filename="../sources/editor/elementscene.cpp" line="674"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
         <translation>Usare questo campo per specificare l&apos;autore dell&apos;elemento, la sua licenza, o qualunque altra informazione utile.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="727"/>
+        <location filename="../sources/editor/elementscene.cpp" line="737"/>
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
         <translation>Inserire il nome dell&apos;elemento in più lingue.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="723"/>
+        <location filename="../sources/editor/elementscene.cpp" line="733"/>
         <source>Éditer les noms</source>
         <comment>window title</comment>
         <translation>Modificare i nomi</translation>
@@ -3248,6 +3253,26 @@ che si crea. Si possono anche inserire caratteri alfanumerici.</translation>
         <location filename="../sources/ui/multipastedialog.ui" line="77"/>
         <source>Nombre de copie</source>
         <translation>Numero di copie</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/multipastedialog.ui" line="93"/>
+        <source>Auto-connexion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/multipastedialog.ui" line="100"/>
+        <source>Auto-numérotation des éléments</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/multipastedialog.ui" line="107"/>
+        <source>Auto-numérotation des conducteurs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/multipastedialog.cpp" line="98"/>
+        <source>Multi-collage</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

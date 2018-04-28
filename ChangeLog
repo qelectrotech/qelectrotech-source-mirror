@@ -24,6 +24,8 @@ When the search function is searching in a terminal element, they search only fo
 So the list of conductors at the same potential is missing some conductors.
 This commit fix it, now the search function search for every terminals of a terminal element.
 * Diagram editor : add new action in the context menu : multiple paste, check box for autonum the pasted element.
+Multipaste : improve the conductor autonum, conductors are numerated from top to bottom, and left to right.
+Text of conductor can be placed at top/bottom/left/right of conductor, and text never overlaps the conductor.
 
 
 
