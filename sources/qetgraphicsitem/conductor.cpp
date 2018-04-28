@@ -1324,7 +1324,6 @@ void Conductor::calculateTextItemPosition()
 		{
 			if(rotation == Qt::Vertical)
 			{
-				qWarning() << "v";
 				if(m_properties.m_vertical_alignment == Qt::AlignRight)
 					m_text_item->setX(m_text_item->x()+1);
 				else if (m_properties.m_vertical_alignment == Qt::AlignLeft)

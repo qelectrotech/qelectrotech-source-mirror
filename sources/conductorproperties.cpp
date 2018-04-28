@@ -392,8 +392,8 @@ void ConductorProperties::fromSettings(QSettings &settings, const QString &prefi
 	horiz_rotate_text    = settings.value((prefix + "horizrotatetext"), "0").toDouble();
 	
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
-	m_horizontal_alignment = Qt::Alignment(me.keyToValue(settings.value((prefix + "horizontal-alignment", "AlignBottom")).toString().toStdString().data()));
-	m_vertical_alignment = Qt::Alignment(me.keyToValue(settings.value((prefix + "vertical-alignment", "AlignRight")).toString().toStdString().data()));
+	m_horizontal_alignment = Qt::Alignment(me.keyToValue(settings.value(prefix + "horizontal-alignment", "AlignBottom").toString().toStdString().data()));
+	m_vertical_alignment = Qt::Alignment(me.keyToValue(settings.value(prefix + "vertical-alignment", "AlignRight").toString().toStdString().data()));
 	
 	readStyle(settings.value(prefix + "style").toString());
 }
