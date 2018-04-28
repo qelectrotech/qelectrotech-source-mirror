@@ -94,6 +94,8 @@ void ConductorPropertiesWidget::setProperties(const ConductorProperties &propert
 	ui->m_phase_cb              -> setChecked (m_properties.singleLineProperties.phasesCount());
 	ui->m_phase_slider          -> setValue   (m_properties.singleLineProperties.phasesCount());
 
+	ui->m_horiz_cb->setCurrentIndex(m_properties.m_horizontal_alignment == Qt::AlignTop? 0 : 1);
+	ui->m_verti_cb->setCurrentIndex(m_properties.m_vertical_alignment == Qt::AlignLeft? 0 : 1);
 	m_verti_select -> setValue (m_properties.verti_rotate_text);
 	m_horiz_select -> setValue (m_properties.horiz_rotate_text);
 
@@ -126,6 +128,8 @@ ConductorProperties ConductorPropertiesWidget::properties() const
 	properties_.m_one_text_per_folio    = ui -> m_one_text_per_folio_cb -> isChecked();
 	properties_.verti_rotate_text       = m_verti_select -> value();
 	properties_.horiz_rotate_text       = m_horiz_select -> value();
+	properties_.m_vertical_alignment    = ui->m_verti_cb->currentIndex() == 0? Qt::AlignLeft : Qt::AlignRight;
+	properties_.m_horizontal_alignment  = ui->m_horiz_cb->currentIndex() == 0? Qt::AlignTop : Qt::AlignBottom;
 
 	properties_.singleLineProperties.hasGround  = ui -> m_earth_cb -> isChecked();
 	properties_.singleLineProperties.hasNeutral = ui -> m_neutral_cb -> isChecked();
@@ -208,9 +212,9 @@ QPushButton *ConductorPropertiesWidget::editAutonumPushButton() const
  */
 void ConductorPropertiesWidget::initWidget() {
 	m_verti_select = QETApp::createTextOrientationSpinBoxWidget();
-	ui -> m_text_angle_gl -> addWidget(m_verti_select, 2, 0,  Qt::AlignHCenter);
+	ui -> m_text_angle_gl -> addWidget(m_verti_select, 2, 0, Qt::AlignHCenter);
 	m_horiz_select = QETApp::createTextOrientationSpinBoxWidget();
-	ui -> m_text_angle_gl -> addWidget(m_horiz_select, 2, 1,  Qt::AlignHCenter);
+	ui -> m_text_angle_gl -> addWidget(m_horiz_select, 2, 1, Qt::AlignHCenter);
 
 	ui -> m_line_style_cb -> addItem(tr("Trait plein", "conductor style: solid line"), QPen(Qt::SolidLine));
 	ui -> m_line_style_cb -> addItem(tr("Trait en pointillés", "conductor style: dashed line"), QPen(Qt::DashLine));

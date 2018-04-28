@@ -268,6 +268,10 @@ void ConductorProperties::toXml(QDomElement &e) const
 	e.setAttribute("vertirotatetext", QString::number(verti_rotate_text));
 	e.setAttribute("horizrotatetext", QString::number(horiz_rotate_text));
 	
+	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
+	e.setAttribute("horizontal-alignment", me.valueToKey(m_horizontal_alignment));
+	e.setAttribute("vertical-alignment", me.valueToKey(m_vertical_alignment));
+	
 	QString conductor_style = writeStyle();
 	if (!conductor_style.isEmpty())
 		e.setAttribute("style", conductor_style);
@@ -315,6 +319,10 @@ void ConductorProperties::fromXml(QDomElement &e)
 	m_one_text_per_folio = e.attribute("onetextperfolio", QString::number(0)).toInt();
 	verti_rotate_text    = e.attribute("vertirotatetext").toDouble();
 	horiz_rotate_text    = e.attribute("horizrotatetext").toDouble();
+	
+	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
+	m_horizontal_alignment = Qt::Alignment(me.keyToValue(e.attribute("horizontal-alignment", "AlignBottom").toStdString().data()));
+	m_vertical_alignment = Qt::Alignment(me.keyToValue(e.attribute("vertical-alignment", "AlignRight").toStdString().data()));
 
 		//Keep retrocompatible with version older than 0,4
 		//If the propertie @type is simple (removed since QET 0,4), we set text no visible.
@@ -344,6 +352,11 @@ void ConductorProperties::toSettings(QSettings &settings, const QString &prefix)
 	settings.setValue(prefix + "onetextperfolio", m_one_text_per_folio);
 	settings.setValue(prefix + "vertirotatetext", QString::number(verti_rotate_text));
 	settings.setValue(prefix + "horizrotatetext", QString::number(horiz_rotate_text));
+	
+	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
+	settings.setValue(prefix + "horizontal-alignment", me.valueToKey(m_horizontal_alignment));
+	settings.setValue(prefix + "vertical-alignment", me.valueToKey(m_vertical_alignment));
+
 	singleLineProperties.toSettings(settings, prefix);
 }
 
@@ -377,7 +390,11 @@ void ConductorProperties::fromSettings(QSettings &settings, const QString &prefi
 	m_one_text_per_folio = settings.value(prefix + "onetextperfolio", false).toBool();
 	verti_rotate_text    = settings.value((prefix + "vertirotatetext"), "270").toDouble();
 	horiz_rotate_text    = settings.value((prefix + "horizrotatetext"), "0").toDouble();
-
+	
+	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
+	m_horizontal_alignment = Qt::Alignment(me.keyToValue(settings.value((prefix + "horizontal-alignment", "AlignBottom")).toString().toStdString().data()));
+	m_vertical_alignment = Qt::Alignment(me.keyToValue(settings.value((prefix + "vertical-alignment", "AlignRight")).toString().toStdString().data()));
+	
 	readStyle(settings.value(prefix + "style").toString());
 }
 
@@ -431,6 +448,8 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 		m_one_text_per_folio = cp.m_one_text_per_folio;
 		verti_rotate_text    = cp.verti_rotate_text;
 		horiz_rotate_text    = cp.horiz_rotate_text;
+		m_vertical_alignment = cp.m_vertical_alignment;
+		m_horizontal_alignment = cp.m_horizontal_alignment;
 
 		return;
 	}
@@ -441,6 +460,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 	QString s_value;
 	int i_value;
 	double d_value;
+	Qt::Alignment align_value;
 	
 		//Color
 	c_value = clist.first().color;
@@ -595,6 +615,28 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 	if (equal)
 		horiz_rotate_text = d_value;
 	equal = true;
+	
+		//Text alignment for horizontal conducor
+	align_value = clist.first().m_horizontal_alignment;
+	for(ConductorProperties cp : clist)
+	{
+		if (cp.m_horizontal_alignment != align_value)
+			equal = false;
+	}
+	if (equal)
+		m_horizontal_alignment = align_value;
+	equal = true;
+	
+		//Text alignment for vertical conducor
+	align_value = clist.first().m_vertical_alignment;
+	for(ConductorProperties cp : clist)
+	{
+		if (cp.m_vertical_alignment != align_value)
+			equal = false;
+	}
+	if (equal)
+		m_vertical_alignment = align_value;
+	equal = true;
 }
 
 /**
@@ -635,7 +677,9 @@ bool ConductorProperties::operator==(const ConductorProperties &other) const
 		other.verti_rotate_text == verti_rotate_text &&\
 		other.horiz_rotate_text == horiz_rotate_text &&\
 		other.singleLineProperties == singleLineProperties &&\
-		other.m_one_text_per_folio == m_one_text_per_folio
+		other.m_one_text_per_folio == m_one_text_per_folio &&\
+		other.m_horizontal_alignment == m_horizontal_alignment &&\
+		other.m_vertical_alignment == m_vertical_alignment
 	);
 }
 

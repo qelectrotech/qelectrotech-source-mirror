@@ -1181,13 +1181,14 @@ ConductorSegment *Conductor::middleSegment() {
  * @param flag : flag is used to know if text pos is near of
  * a vertical or horizontal conductor segment.
  */
-QPointF Conductor::posForText(Qt::Orientations &flag) {
+QPointF Conductor::posForText(Qt::Orientations &flag)
+{
 
 	ConductorSegment *segment      = segments;
 	bool all_segment_is_vertical   = true;
 	bool all_segment_is_horizontal = true;
 
-	//Go to first segement
+		//Go to first segement
 	while (!segment->isFirstSegment()) {
 		segment = segment->previousSegment();
 	}
@@ -1196,17 +1197,22 @@ QPointF Conductor::posForText(Qt::Orientations &flag) {
 	QPointF p1 = segment -> firstPoint(); //<First point of conductor
 	ConductorSegment *biggest_segment = segment; //<biggest segment: contain the longest segment of conductor.
 
-	if (segment -> firstPoint().x() != segment -> secondPoint().x()) all_segment_is_vertical   = false;
-	if (segment -> firstPoint().y() != segment -> secondPoint().y()) all_segment_is_horizontal = false;
+	if (segment -> firstPoint().x() != segment -> secondPoint().x())
+		all_segment_is_vertical   = false;
+	if (segment -> firstPoint().y() != segment -> secondPoint().y())
+		all_segment_is_horizontal = false;
 
-	while (segment -> hasNextSegment()) {
+	while (segment -> hasNextSegment())
+	{
 		segment = segment -> nextSegment();
 
-		if (segment -> firstPoint().x() != segment -> secondPoint().x()) all_segment_is_vertical   = false;
-		if (segment -> firstPoint().y() != segment -> secondPoint().y()) all_segment_is_horizontal = false;
+		if (segment -> firstPoint().x() != segment -> secondPoint().x())
+			all_segment_is_vertical   = false;
+		if (segment -> firstPoint().y() != segment -> secondPoint().y())
+			all_segment_is_horizontal = false;
 
-		//We must to compare length segment, but they can be negative
-		//so we multiply by -1 to make it positive.
+			//We must to compare length segment, but they can be negative
+			//so we multiply by -1 to make it positive.
 		int saved = biggest_segment -> length();
 		if (saved < 0) saved *= -1;
 		int curent = segment->length();
@@ -1246,57 +1252,96 @@ QPointF Conductor::posForText(Qt::Orientations &flag) {
  * otherwise, move conductor at the middle of the longest segment of conductor.
  * If text was moved by user, this function do nothing, except check if text is near conductor.
  */
-void Conductor::calculateTextItemPosition() {
-	if (!m_text_item || !diagram() || m_properties.type != ConductorProperties::Multi) return;
+void Conductor::calculateTextItemPosition()
+{
+	if (!m_text_item || !diagram() || m_properties.type != ConductorProperties::Multi)
+		return;
 
 	if (diagram() -> defaultConductorProperties.m_one_text_per_folio == true &&
-		relatedPotentialConductors(false).size() > 0) {
+		relatedPotentialConductors(false).size() > 0)
+	{
 
 		Conductor *longuest_conductor = longuestConductorInPotential(this);
 
-		//The longuest conductor isn't this conductor
-		//we call calculateTextItemPosition of the longuest conductor
-		if(longuest_conductor != this) {
+			//The longuest conductor isn't this conductor
+			//we call calculateTextItemPosition of the longuest conductor
+		if(longuest_conductor != this)
+		{
 			longuest_conductor -> calculateTextItemPosition();
 			return;
 		}
 
-		//At this point this conductor is the longuest conductor we hide all text of conductor_list
+			//At this point this conductor is the longuest conductor we hide all text of conductor_list
 		foreach (Conductor *c, relatedPotentialConductors(false)) {
 					c -> textItem() -> setVisible(false);
-			}
-		//Make sure text item is visible
+		}
+			//Make sure text item is visible
 		m_text_item -> setVisible(true);
 	}
 
-	//position
-	if (m_text_item -> wasMovedByUser()) {
-		//Text field was moved by user :
-		//we check if text field is yet  near the conductor
+		//position
+	if (m_text_item -> wasMovedByUser())
+	{
+			//Text field was moved by user :
+			//we check if text field is yet  near the conductor
 		QPointF text_item_pos = m_text_item -> pos();
 		QPainterPath near_shape = nearShape();
 		if (!near_shape.contains(text_item_pos)) {
 			m_text_item -> setPos(movePointIntoPolygon(text_item_pos, near_shape));
 		}
-	} else {
-		//Position and rotation of text is calculated.
+	}
+	else
+	{
+			//Position and rotation of text is calculated.
 		Qt::Orientations rotation;
 		QPointF text_pos = posForText(rotation);
 
-		if (!m_text_item -> wasRotateByUser()) {
+		if (!m_text_item -> wasRotateByUser())
+		{
 			rotation == Qt::Vertical ? m_text_item -> setRotation(m_properties.verti_rotate_text):
 									   m_text_item -> setRotation(m_properties.horiz_rotate_text);
 		}
-
-		//Adjust the position of text if his rotation
-		//is 0° or 270°, to be exactly centered to the conductor
+		
+			//Adjust the position of text if his rotation
+			//is 0° or 270°, to be exactly centered to the conductor
 		if (m_text_item -> rotation() == 0)
+		{
 			text_pos.rx() -= m_text_item -> boundingRect().width()/2;
+			if(m_properties.m_horizontal_alignment == Qt::AlignTop)
+				text_pos.ry() -= m_text_item->boundingRect().height();
+		}
 		else if (m_text_item -> rotation() == 270)
+		{
 			text_pos.ry() += m_text_item -> boundingRect().width()/2;
-
-		//Finaly set the position of text
+			if(m_properties.m_vertical_alignment == Qt::AlignLeft)
+				text_pos.rx() -= m_text_item->boundingRect().height();
+		}
+		
 		m_text_item -> setPos(text_pos);
+		
+			//Ensure text item don't collide with this conductor
+		while (m_text_item->collidesWithItem(this))
+		{
+			if(rotation == Qt::Vertical)
+			{
+				qWarning() << "v";
+				if(m_properties.m_vertical_alignment == Qt::AlignRight)
+					m_text_item->setX(m_text_item->x()+1);
+				else if (m_properties.m_vertical_alignment == Qt::AlignLeft)
+					m_text_item->setX(m_text_item->x()-1);
+				else
+					return; //avoid infinite loop
+			}
+			else if (rotation == Qt::Horizontal)
+			{
+				if(m_properties.m_horizontal_alignment == Qt::AlignTop)
+					m_text_item->setY(m_text_item->y()-1);
+				else if (m_properties.m_horizontal_alignment == Qt::AlignBottom)
+					m_text_item->setY(m_text_item->y()+1);
+				else
+					return; //avoid infinite loop
+			}
+		}
 	}
 }
 

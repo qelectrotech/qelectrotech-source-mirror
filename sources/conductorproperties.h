@@ -97,6 +97,9 @@ class ConductorProperties
 				m_one_text_per_folio,
 				m_bicolor = false;
 		
+		Qt::Alignment m_horizontal_alignment = Qt::AlignBottom,
+					  m_vertical_alignment = Qt::AlignRight;
+		
 		Qt::PenStyle style;
 		
 		SingleLineProperties singleLineProperties;
