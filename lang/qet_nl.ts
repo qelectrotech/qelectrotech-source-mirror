@@ -626,27 +626,27 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="183"/>
         <source>Horizontal en haut</source>
-        <translation type="unfinished"></translation>
+        <translation>Boven horizontaal</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="188"/>
         <source>Horizontal en bas</source>
-        <translation type="unfinished"></translation>
+        <translation>Onder horizontaal</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="197"/>
         <source>Vertical à gauche</source>
-        <translation type="unfinished"></translation>
+        <translation>Links verticaal</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="202"/>
         <source>Vertical à droite</source>
-        <translation type="unfinished"></translation>
+        <translation>Rechts verticaal</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="210"/>
         <source>Position et rotation du texte de conducteur :</source>
-        <translation type="unfinished"></translation>
+        <translation>Plaats en rotatie van de geleidertekst :</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="281"/>
@@ -3228,7 +3228,7 @@ Teksten en nummers zijn ook beschikbaar.</translation>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="14"/>
         <source>Collage multiple</source>
-        <translation>Meervoudig plakken</translation>
+        <translation>Meervoudig kopiëren</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="22"/>
@@ -3259,22 +3259,22 @@ Teksten en nummers zijn ook beschikbaar.</translation>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="93"/>
         <source>Auto-connexion</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatisch verbinden</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="100"/>
         <source>Auto-numérotation des éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatische elementnummering</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="107"/>
         <source>Auto-numérotation des conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatische geleidernummering</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.cpp" line="98"/>
         <source>Multi-collage</source>
-        <translation type="unfinished"></translation>
+        <translation>Meervoudig kopiëren</translation>
     </message>
 </context>
 <context>
