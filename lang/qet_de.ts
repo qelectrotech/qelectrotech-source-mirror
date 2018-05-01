@@ -712,27 +712,27 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="183"/>
         <source>Horizontal en haut</source>
-        <translation type="unfinished"></translation>
+        <translation>Waagerecht oben</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="188"/>
         <source>Horizontal en bas</source>
-        <translation type="unfinished"></translation>
+        <translation>Waagerecht unten</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="197"/>
         <source>Vertical à gauche</source>
-        <translation type="unfinished"></translation>
+        <translation>Vertikal links</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="202"/>
         <source>Vertical à droite</source>
-        <translation type="unfinished"></translation>
+        <translation>Vertikal rechts</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="210"/>
         <source>Position et rotation du texte de conducteur :</source>
-        <translation type="unfinished"></translation>
+        <translation>Position und Drehung der Leiterbeschriftung</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="358"/>
@@ -3253,22 +3253,22 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="93"/>
         <source>Auto-connexion</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatische Leiterverbindung</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="100"/>
         <source>Auto-numérotation des éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Auto-Nummerierung der Bauteile</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="107"/>
         <source>Auto-numérotation des conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Auto-Nummerierung der Leiter</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.cpp" line="98"/>
         <source>Multi-collage</source>
-        <translation type="unfinished"></translation>
+        <translation>Mehrfach einfügen</translation>
     </message>
 </context>
 <context>
