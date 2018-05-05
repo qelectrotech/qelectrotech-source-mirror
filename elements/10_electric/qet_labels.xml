@@ -102,10 +102,10 @@
     <category name="380_signaling&amp;operating">
       <category name="01_human_machine_interface"></category>
       <category name="11_optical_signaling">
-        <prefix>H</prefix>
+        <prefix>P</prefix>
       </category>
       <category name="12_acoustic_signaling">
-        <prefix>H</prefix>
+        <prefix>P</prefix>
       </category>
       <category name="20_push_buttons">
         <prefix>S</prefix>
