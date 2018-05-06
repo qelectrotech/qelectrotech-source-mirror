@@ -926,7 +926,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/diagramview.cpp" line="91"/>
         <source>Collage multiple</source>
-        <translation>Meervoudig plakken</translation>
+        <translation>Meervoudig kopiëren</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="702"/>
