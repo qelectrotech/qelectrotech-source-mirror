@@ -97,6 +97,22 @@ QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
 	QMetaEnum me = textFromMetaEnum();
 	root_element.setAttribute("text_from", me.valueToKey(m_text_from));
 	
+	me = QMetaEnum::fromType<Qt::Alignment>();
+	if(this->alignment() &Qt::AlignRight)
+		root_element.setAttribute("Halignment", me.valueToKey(Qt::AlignRight));
+	else if(this->alignment() &Qt::AlignLeft)
+		root_element.setAttribute("Halignment", me.valueToKey(Qt::AlignLeft));
+	else if(this->alignment() &Qt::AlignHCenter)
+		root_element.setAttribute("Halignment", me.valueToKey(Qt::AlignHCenter));
+	
+	if(this->alignment() &Qt::AlignBottom)
+		root_element.setAttribute("Valignment", me.valueToKey(Qt::AlignBottom));
+	else if(this->alignment() & Qt::AlignTop)
+		root_element.setAttribute("Valignment", me.valueToKey(Qt::AlignTop));
+	else if(this->alignment() &Qt::AlignVCenter)
+		root_element.setAttribute("Valignment", me.valueToKey(Qt::AlignVCenter));
+	
+	
     QDomElement dom_text = dom_doc.createElement("text");
     dom_text.appendChild(dom_doc.createTextNode(toPlainText()));
     root_element.appendChild(dom_text);
@@ -140,8 +156,6 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 		return;
 	}
 	
-	QGraphicsTextItem::setPos(dom_elmt.attribute("x", QString::number(0)).toDouble(),
-							  dom_elmt.attribute("y", QString::number(0)).toDouble());
 	QGraphicsTextItem::setRotation(dom_elmt.attribute("rotation", QString::number(0)).toDouble());
 	setFont(QETApp::diagramTextsFont(dom_elmt.attribute("font_size", QString::number(9)).toInt()));
 	m_uuid = QUuid(dom_elmt.attribute("uuid", QUuid::createUuid().toString()));
@@ -151,6 +165,12 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 		//Text from
 	QMetaEnum me = textFromMetaEnum();
 	setTextFrom(DynamicElementTextItem::TextFrom(me.keyToValue(dom_elmt.attribute("text_from").toStdString().data())));
+	
+	me = QMetaEnum::fromType<Qt::Alignment>();
+	if(dom_elmt.hasAttribute("Halignment"))
+		setAlignment(Qt::Alignment(me.keyToValue(dom_elmt.attribute("Halignment").toStdString().data())));
+	if(dom_elmt.hasAttribute(("Valignment")))
+		setAlignment(Qt::Alignment(me.keyToValue(dom_elmt.attribute("Valignment").toStdString().data())) | this->alignment());
 
 		//Text
     QDomElement dom_text = dom_elmt.firstChildElement("text");
@@ -174,6 +194,9 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 	
 		//Force the update of the displayed text
 	setTextFrom(m_text_from);
+	
+	QGraphicsTextItem::setPos(dom_elmt.attribute("x", QString::number(0)).toDouble(),
+							  dom_elmt.attribute("y", QString::number(0)).toDouble());
 }
 
 /**
@@ -1291,6 +1314,8 @@ void DynamicElementTextItem::updateXref()
 
 void DynamicElementTextItem::setPlainText(const QString &text)
 {
+	prepareAlignment();
+	
 	DiagramTextItem::setPlainText(text);
 	
 		//User define a text width
@@ -1305,6 +1330,8 @@ void DynamicElementTextItem::setPlainText(const QString &text)
 			}
 		}
 	}
+	
+	finishAlignment();
 	
 	if(m_Xref_item)
 		m_Xref_item->autoPos();
@@ -1323,4 +1350,3 @@ void DynamicElementTextItem::setTextWidth(qreal width)
 	m_text_width = width;
 	emit textWidthChanged(width);
 }
-

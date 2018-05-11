@@ -130,6 +130,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		void conductorPropertiesChanged();
 		QString reportReplacedCompositeText() const;
 		void zoomToLinkedElement();
+
 		
 	private:
 		QPointer <Element> m_parent_element,

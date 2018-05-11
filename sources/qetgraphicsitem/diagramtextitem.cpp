@@ -171,6 +171,17 @@ QColor DiagramTextItem::color() const {
 	return defaultTextColor();
 }
 
+void DiagramTextItem::setAlignment(const Qt::Alignment &alignment)
+{
+	m_alignment = alignment;
+	emit alignmentChanged(alignment);
+}
+
+Qt::Alignment DiagramTextItem::alignment() const
+{
+	return m_alignment;
+}
+
 /**
  * @brief DiagramTextItem::paint
  * Draw this text field. This method draw the text by calling QGraphicsTextItem::paint.
@@ -326,6 +337,46 @@ void DiagramTextItem::mouseReleaseEvent (QGraphicsSceneMouseEvent *event) {
 */
 void DiagramTextItem::applyRotation(const qreal &angle) {
 	setRotation(QET::correctAngle(rotation()+angle));
+}
+
+/**
+ * @brief DiagramTextItem::prepareAlignment
+ * Call this function before changing the bounding rect of this text.
+ */
+void DiagramTextItem::prepareAlignment()
+{
+	m_alignment_rect = mapToParent(boundingRect()).boundingRect();
+}
+
+/**
+ * @brief DiagramTextItem::finishAlignment
+ * Call this function after changing the bouding rect of this text
+ * to set the position of this text according the alignment property.
+ */
+void DiagramTextItem::finishAlignment()
+{
+	if(m_block_alignment)
+		return;
+	
+	QPointF pos = this->pos();
+
+	if(m_alignment &Qt::AlignRight)
+		pos.setX(m_alignment_rect.right() - boundingRect().width());
+	else if(m_alignment &Qt::AlignHCenter)
+	{
+		qreal x = m_alignment_rect.x() + (m_alignment_rect.width()/2);
+		pos.setX(x - boundingRect().width()/2);
+	}
+	
+	if(m_alignment &Qt::AlignBottom)
+		pos.setY(m_alignment_rect.bottom() - boundingRect().height());
+	else if(m_alignment &Qt::AlignVCenter)
+	{
+		qreal y = m_alignment_rect.y() + (m_alignment_rect.height()/2);
+		pos.setY(y - boundingRect().height()/2);
+	}
+	
+	setPos(pos);
 }
 
 /**

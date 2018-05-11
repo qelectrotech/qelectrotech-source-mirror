@@ -33,6 +33,7 @@
 #include "qeticons.h"
 #include "diagram.h"
 #include "addelementtextcommand.h"
+#include "alignmenttextdialog.h"
 
 int src_txt_row   = 0;
 int usr_txt_row   = 1;
@@ -45,6 +46,7 @@ int width_txt_row = 7;
 int x_txt_row     = 8;
 int y_txt_row     = 9;
 int rot_txt_row   = 10;
+int align_txt_row = 11;
 
 int align_grp_row  = 0;
 int rot_grp_row    = 1;
@@ -277,6 +279,19 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(DynamicElementTextI
 		qsi_list.clear();;
 		qsi_list << rot << rot_a;
 		qsi->appendRow(qsi_list);
+		
+			//Alignment
+		QStandardItem *alignment = new QStandardItem(tr("Alignement"));
+		alignment->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+		
+		QStandardItem *alignmenta = new QStandardItem(tr("Éditer"));
+		alignmenta->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
+		alignmenta->setData(DynamicElementTextModel::txtAlignment, Qt::UserRole+1);
+		alignmenta->setData(QVariant::fromValue(deti->alignment()), Qt::UserRole+2);
+		
+		qsi_list.clear();
+		qsi_list << alignment << alignmenta;
+		qsi->appendRow(qsi_list);
 	}
 	
 	
@@ -449,6 +464,13 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(DynamicElementTextItem 
 		QString composite_text = text_qsi->child(compo_txt_row,1)->data(Qt::UserRole+2).toString();
 		if(composite_text != deti->compositeText())
 			new QPropertyUndoCommand(deti, "compositeText", QVariant(deti->compositeText()), QVariant(composite_text), undo);
+	}
+	
+	Qt::Alignment alignment = text_qsi->child(align_txt_row, 1)->data(Qt::UserRole+2).value<Qt::Alignment>();
+	if (alignment != deti->alignment())
+	{
+		QPropertyUndoCommand *quc = new QPropertyUndoCommand(deti, "alignment", QVariant(deti->alignment()), QVariant(alignment), undo);
+		quc->setText(tr("Modifier l'alignement d'un texte d'élément"));
 	}
 	
 	int fs = text_qsi->child(size_txt_row,1)->data(Qt::EditRole).toInt();
@@ -1368,6 +1390,22 @@ QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOpti
 			cted->setObjectName("composite_text");
 			return cted;
 		}
+		case DynamicElementTextModel::txtAlignment:
+		{
+			const DynamicElementTextModel *detm = static_cast<const DynamicElementTextModel *>(index.model());
+			QStandardItem *qsi = detm->itemFromIndex(index);
+			
+			if(!qsi)
+				break;
+			
+			DynamicElementTextItem *deti = detm->textFromIndex(index);
+			if(!deti)
+				break;
+			
+			AlignmentTextDialog *atd = new AlignmentTextDialog(deti, parent);
+			atd->setObjectName("alignment_text");
+			return atd;
+		}
 		case DynamicElementTextModel::size:
 		{
 			QSpinBox *sb = new QSpinBox(parent);
@@ -1498,6 +1536,19 @@ void DynamicTextItemDelegate::setModelData(QWidget *editor, QAbstractItemModel *
 					
 					qsi->setData(assigned_text, Qt::DisplayRole);
 					qsi->setData(edited_text, Qt::UserRole+2);
+					return;
+				}
+			}
+		}
+		else if (editor->objectName() == "alignment_text")
+		{	
+			if(QStandardItemModel *qsim = dynamic_cast<QStandardItemModel *>(model))
+			{
+				if(QStandardItem *qsi = qsim->itemFromIndex(index))
+				{
+					AlignmentTextDialog *atd = static_cast<AlignmentTextDialog *>(editor);
+					Qt::Alignment align = atd->alignment();
+					qsi->setData(QVariant::fromValue(align), Qt::UserRole+2);
 					return;
 				}
 			}

@@ -551,7 +551,14 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	   !m_element_informations.value("label").toString().isEmpty())
 		dc.addValue("label", m_element_informations.value("label"));
 	
+		//We must to block the update of the alignment when load the information
+		//otherwise the pos of the text will not be the same as it was at save time.
+	for(DynamicElementTextItem *deti : m_dynamic_text_list)
+		deti->m_block_alignment = true;
 	setElementInformations(dc);
+	for(DynamicElementTextItem *deti : m_dynamic_text_list)
+		deti->m_block_alignment = false;
+	
 	
 	/**
 	  During the devel of the version 0.7, the "old text" was replaced by the dynamic element text item.

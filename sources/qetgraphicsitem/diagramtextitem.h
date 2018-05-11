@@ -35,10 +35,14 @@ class DiagramTextItem : public QGraphicsTextItem
     
     Q_PROPERTY(int fontSize READ fontSize WRITE setFontSize NOTIFY fontSizeChanged)
     Q_PROPERTY(QColor color READ color WRITE setColor NOTIFY colorChanged)
+	Q_PROPERTY(Qt::Alignment alignment READ alignment WRITE setAlignment NOTIFY alignmentChanged)
 	
 	signals:
 		void fontSizeChanged(int size);
 		void colorChanged(QColor color);
+		void alignmentChanged(Qt::Alignment alignment);
+		void diagramTextChanged(DiagramTextItem *, const QString &, const QString &);
+		void textEdited(const QString &old_str, const QString &new_str);
 
 	public:
 		DiagramTextItem(QGraphicsItem * = nullptr);
@@ -68,6 +72,10 @@ class DiagramTextItem : public QGraphicsTextItem
         QColor color() const;
         
 		void setNoEditable(bool e = true) {m_no_editable = e;}
+		
+		void setAlignment(const Qt::Alignment &alignment);
+		Qt::Alignment alignment() const;
+		bool m_block_alignment = false;
 
 	protected:
 		void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *) override;
@@ -84,10 +92,9 @@ class DiagramTextItem : public QGraphicsTextItem
 		void hoverMoveEvent(QGraphicsSceneHoverEvent *) override;
 
 		virtual void applyRotation(const qreal &);
+		void prepareAlignment();
+		void finishAlignment();
 
-	signals:
-		void diagramTextChanged(DiagramTextItem *, const QString &, const QString &);
-		void textEdited(const QString &old_str, const QString &new_str);
 	
 	protected:
 		bool m_mouse_hover = false,
@@ -98,5 +105,9 @@ class DiagramTextItem : public QGraphicsTextItem
 				m_previous_text;
 		
 		QPointF m_mouse_to_origin_movement;
+		
+	private:
+		QRectF m_alignment_rect;
+		Qt::Alignment m_alignment = (Qt::AlignTop | Qt::AlignLeft);
 };
 #endif
