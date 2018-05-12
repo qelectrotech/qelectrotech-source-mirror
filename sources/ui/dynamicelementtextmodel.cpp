@@ -466,13 +466,6 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(DynamicElementTextItem 
 			new QPropertyUndoCommand(deti, "compositeText", QVariant(deti->compositeText()), QVariant(composite_text), undo);
 	}
 	
-	Qt::Alignment alignment = text_qsi->child(align_txt_row, 1)->data(Qt::UserRole+2).value<Qt::Alignment>();
-	if (alignment != deti->alignment())
-	{
-		QPropertyUndoCommand *quc = new QPropertyUndoCommand(deti, "alignment", QVariant(deti->alignment()), QVariant(alignment), undo);
-		quc->setText(tr("Modifier l'alignement d'un texte d'élément"));
-	}
-	
 	int fs = text_qsi->child(size_txt_row,1)->data(Qt::EditRole).toInt();
 	if (fs != deti->fontSize())
 	{
@@ -525,6 +518,17 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(DynamicElementTextItem 
 			QPropertyUndoCommand *quc = new QPropertyUndoCommand(deti, "rotation", QVariant(deti->rotation()), QVariant(rot), undo);
 			quc->setAnimated(true, false);
 			quc->setText(tr("Pivoter un texte d'élément"));
+		}
+	}
+		
+		//When text is in a groupe, they're isn't item for alignment of the text
+	if(text_qsi->child(align_txt_row, 1))
+	{
+		Qt::Alignment alignment = text_qsi->child(align_txt_row, 1)->data(Qt::UserRole+2).value<Qt::Alignment>();
+		if (alignment != deti->alignment())
+		{
+			QPropertyUndoCommand *quc = new QPropertyUndoCommand(deti, "alignment", QVariant(deti->alignment()), QVariant(alignment), undo);
+			quc->setText(tr("Modifier l'alignement d'un texte d'élément"));
 		}
 	}
 	
