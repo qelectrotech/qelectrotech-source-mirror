@@ -272,7 +272,7 @@
     <message>
         <location filename="../sources/ui/alignmenttextdialog.ui" line="26"/>
         <source>Alignement du texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Justere tekst</translation>
     </message>
 </context>
 <context>
@@ -1153,12 +1153,12 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="287"/>
         <source>Éditer</source>
-        <translation type="unfinished"></translation>
+        <translation>Redigere</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="473"/>
         <source>Modifier l&apos;alignement d&apos;un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Ændre justering af symboltekst</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="481"/>
