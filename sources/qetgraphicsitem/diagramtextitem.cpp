@@ -345,38 +345,52 @@ void DiagramTextItem::applyRotation(const qreal &angle) {
  */
 void DiagramTextItem::prepareAlignment()
 {
-	m_alignment_rect = mapToParent(boundingRect()).boundingRect();
+	m_alignment_rect = boundingRect();
 }
 
 /**
  * @brief DiagramTextItem::finishAlignment
  * Call this function after changing the bouding rect of this text
- * to set the position of this text according the alignment property.
+ * to set the position of this text according to the alignment property.
  */
 void DiagramTextItem::finishAlignment()
 {
 	if(m_block_alignment)
 		return;
 	
-	QPointF pos = this->pos();
+	QTransform transform;
+	transform.rotate(this->rotation());
+	qreal x,xa, y,ya;
+	x=xa=0;
+	y=ya=0;
 
 	if(m_alignment &Qt::AlignRight)
-		pos.setX(m_alignment_rect.right() - boundingRect().width());
+	{
+		x = m_alignment_rect.right();
+		xa = boundingRect().right();
+	}
 	else if(m_alignment &Qt::AlignHCenter)
 	{
-		qreal x = m_alignment_rect.x() + (m_alignment_rect.width()/2);
-		pos.setX(x - boundingRect().width()/2);
+		x = m_alignment_rect.center().x();
+		xa = boundingRect().center().x();
 	}
 	
 	if(m_alignment &Qt::AlignBottom)
-		pos.setY(m_alignment_rect.bottom() - boundingRect().height());
+	{
+		y = m_alignment_rect.bottom();
+		ya = boundingRect().bottom();
+	}
 	else if(m_alignment &Qt::AlignVCenter)
 	{
-		qreal y = m_alignment_rect.y() + (m_alignment_rect.height()/2);
-		pos.setY(y - boundingRect().height()/2);
+		y = m_alignment_rect.center().y();
+		ya = boundingRect().center().y();
 	}
+
+	QPointF p = transform.map(QPointF(x,y));
+	QPointF pa = transform.map(QPointF(xa,ya));
+	QPointF diff = pa-p;
 	
-	setPos(pos);
+	setPos(this->pos() - diff);
 }
 
 /**

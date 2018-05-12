@@ -1314,6 +1314,9 @@ void DynamicElementTextItem::updateXref()
 
 void DynamicElementTextItem::setPlainText(const QString &text)
 {
+	if(toPlainText() == text)
+		return;
+	
 	prepareAlignment();
 	
 	DiagramTextItem::setPlainText(text);
