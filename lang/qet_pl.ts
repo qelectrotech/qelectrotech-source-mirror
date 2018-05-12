@@ -272,7 +272,7 @@
     <message>
         <location filename="../sources/ui/alignmenttextdialog.ui" line="26"/>
         <source>Alignement du texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyrównanie tekstu</translation>
     </message>
 </context>
 <context>
@@ -634,27 +634,27 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="183"/>
         <source>Horizontal en haut</source>
-        <translation type="unfinished"></translation>
+        <translation>Poziomo u góry</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="188"/>
         <source>Horizontal en bas</source>
-        <translation type="unfinished"></translation>
+        <translation>Poziomo na dole</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="197"/>
         <source>Vertical à gauche</source>
-        <translation type="unfinished"></translation>
+        <translation>Pionowo po lewej</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="202"/>
         <source>Vertical à droite</source>
-        <translation type="unfinished"></translation>
+        <translation>Pionowo po prawej</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="210"/>
         <source>Position et rotation du texte de conducteur :</source>
-        <translation type="unfinished"></translation>
+        <translation>Położenie i obrót tekstu przewodu:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="281"/>
@@ -1154,12 +1154,12 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="287"/>
         <source>Éditer</source>
-        <translation type="unfinished"></translation>
+        <translation>Edytor</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="473"/>
         <source>Modifier l&apos;alignement d&apos;un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Zmiana wyrównania tekstu elementu</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="481"/>
@@ -3281,22 +3281,22 @@ Litery i cyfry mogą być używane.</translation>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="93"/>
         <source>Auto-connexion</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatyczne połączenia</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="100"/>
         <source>Auto-numérotation des éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatyczna numeracja elementów</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="107"/>
         <source>Auto-numérotation des conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatyczna numeracja przewodów</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.cpp" line="98"/>
         <source>Multi-collage</source>
-        <translation type="unfinished"></translation>
+        <translation>Kolaż wielokrotny</translation>
     </message>
 </context>
 <context>
