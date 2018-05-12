@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="ar_SA">
+<TS version="2.1" language="ar_SA">
 <context>
     <name>AboutQET</name>
     <message>
@@ -271,6 +271,14 @@
         <location filename="../sources/richtext/ui_addlinkdialog.h" line="106"/>
         <source>URL:</source>
         <translation>عنوان الموقع: </translation>
+    </message>
+</context>
+<context>
+    <name>AlignmentTextDialog</name>
+    <message>
+        <location filename="../sources/ui/alignmenttextdialog.ui" line="26"/>
+        <source>Alignement du texte</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1087,176 +1095,187 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>DynamicElementTextModel</name>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="59"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="61"/>
         <source>Propriété</source>
         <translation>خاصية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="60"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="62"/>
         <source>Valeur</source>
         <translation>قيمة</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="129"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="131"/>
         <source>Source du texte</source>
         <translation>مصدر النصّ</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="133"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="428"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="435"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1061"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1194"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="135"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="443"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="450"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1083"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1216"/>
         <source>Texte utilisateur</source>
         <translation>نصّ المستخدم</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="134"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="430"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="441"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1066"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1195"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="136"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="445"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="456"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1088"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1217"/>
         <source>Information de l&apos;élément</source>
         <translation>معلومة العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="135"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="169"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="432"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="137"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="171"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="447"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1196"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="462"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1218"/>
         <source>Texte composé</source>
         <translation>نصّ مُركّب</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="144"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="146"/>
         <source>Texte</source>
         <translation>نص</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="156"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="158"/>
         <source>Information</source>
         <translation>معلومة</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="176"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="178"/>
         <source>Mon texte composé</source>
         <translation>نصّي المُركّب</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="187"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="189"/>
         <source>Taille</source>
         <translation>حجم</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="228"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="230"/>
         <source>Largeur</source>
         <translation>عرض</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="459"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="287"/>
+        <source>Éditer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="473"/>
+        <source>Modifier l&apos;alignement d&apos;un texte d&apos;élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="481"/>
         <source>Modifier la taille d&apos;un texte d&apos;élément</source>
         <translation>تعديل حجم نصّ العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="466"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="488"/>
         <source>Modifier la couleur d&apos;un texte d&apos;élément</source>
         <translation>تعديل لون نصّ العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="473"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="495"/>
         <source>Modifier le cadre d&apos;un texte d&apos;élément</source>
         <translation>تغيير إطار نصّ العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="481"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="503"/>
         <source>Modifier la largeur d&apos;un texte d&apos;élément</source>
         <translation>تغيير عرض نصّ عنصر</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="493"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="515"/>
         <source>Déplacer un texte d&apos;élément</source>
         <translation>تحريك نص عنصر</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="505"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="527"/>
         <source>Pivoter un texte d&apos;élément</source>
         <translation>دوران نصّ العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="526"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="548"/>
         <source>Éditer un groupe de textes</source>
         <translation>تحرير مجموعة نصوص</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="534"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="594"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1278"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="556"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="616"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1300"/>
         <source>Gauche</source>
         <translation>يسار</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="536"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="595"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1279"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="558"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="617"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1301"/>
         <source>Droite</source>
         <translation>يمين</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="538"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="596"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1280"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="560"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="618"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1302"/>
         <source>Centre</source>
         <translation>مركز</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="589"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="284"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="611"/>
         <source>Alignement</source>
         <translation>مُحاذاة</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="619"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="641"/>
         <source>Ajustement vertical</source>
         <translation>تعديل عمودي</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="631"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="653"/>
         <source>Maintenir en bas de page</source>
         <translation>احتفظ في أسفل الصفحة</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="910"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="932"/>
         <source>Déplacer un texte dans un autre groupe</source>
         <translation>تحريك نصّ في مجموعة أخرى</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="200"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="202"/>
         <source>Couleur</source>
         <translation>لون</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="214"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="216"/>
         <source>Cadre</source>
         <translation>إطار</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="243"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="245"/>
         <source>Position X</source>
         <translation>موضع X</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="256"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="258"/>
         <source>Position Y</source>
         <translation>موضع Y</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="269"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="607"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="271"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="629"/>
         <source>Rotation</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="420"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="435"/>
         <source>Éditer un texte d&apos;élément</source>
         <translation>دوران</translation>
     </message>
@@ -1379,32 +1398,32 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>DynamicTextItemDelegate</name>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1324"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1346"/>
         <source>Texte utilisateur</source>
         <translation>نصّ المستخدم</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1325"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1347"/>
         <source>Information de l&apos;élément</source>
         <translation>معلومة العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1326"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1348"/>
         <source>Texte composé</source>
         <translation>نصّ مُركّب</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1417"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1455"/>
         <source>Gauche</source>
         <translation>يسار</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1418"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1456"/>
         <source>Centre</source>
         <translation>مركز</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1419"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1457"/>
         <source>Droite</source>
         <translation>يمين</translation>
     </message>
@@ -1412,8 +1431,8 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>Element</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="625"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="675"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="632"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="682"/>
         <source>Label + commentaire</source>
         <translation>مُلصق + تعليق</translation>
     </message>
@@ -6802,6 +6821,11 @@ Que désirez vous faire ?</source>
         <source>%n image(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
