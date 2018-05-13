@@ -41,6 +41,7 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 	Q_PROPERTY(int fontSize READ fontSize WRITE setFontSize NOTIFY fontSizeChanged)
 	Q_PROPERTY(bool frame READ frame WRITE setFrame NOTIFY frameChanged)
 	Q_PROPERTY(qreal textWidth READ textWidth WRITE setTextWidth NOTIFY textWidthChanged)
+	Q_PROPERTY(Qt::Alignment alignment READ alignment WRITE setAlignment NOTIFY alignmentChanged)
 	
 	public:
 			///PROPERTY
@@ -57,6 +58,7 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 		void fontSizeChanged(int size);
 		void frameChanged(bool frame);
 		void textWidthChanged(qreal width);
+		void alignmentChanged(Qt::Alignment alignment);
 	
 	public:
 		PartDynamicTextField(QETElementEditor *editor, QGraphicsItem *parent = nullptr);
@@ -92,6 +94,8 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 		bool frame() const;
 		void setTextWidth(qreal width);
 		void setPlainText(const QString &text);
+		void setAlignment(Qt::Alignment alignment);
+		Qt::Alignment alignment() const;
 		
 	protected:
 		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
@@ -103,6 +107,9 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 	private:
 		void elementInfoChanged();
 		
+		void prepareAlignment();
+		void finishAlignment();
+		
 	private:
 		QPointF m_origine_pos,
 				m_saved_point;
@@ -112,8 +119,11 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 		DynamicElementTextItem::TextFrom m_text_from = DynamicElementTextItem::UserText;
 		QUuid m_uuid;
 		bool m_frame = false,
-			 m_first_add = true;
+			 m_first_add = true,
+			 m_block_alignment = false;
 		qreal m_text_width = -1;
+		Qt::Alignment m_alignment = Qt::AlignTop|Qt::AlignLeft;
+		QRectF m_alignment_rect;
 };
 
 #endif // PARTDYNAMICTEXTFIELD_H

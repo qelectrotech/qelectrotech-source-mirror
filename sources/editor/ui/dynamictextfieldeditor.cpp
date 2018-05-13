@@ -23,6 +23,7 @@
 #include "qetelementeditor.h"
 #include "qetapp.h"
 #include "compositetexteditdialog.h"
+#include "alignmenttextdialog.h"
 
 #include <QPointer>
 #include <QGraphicsItem>
@@ -290,5 +291,18 @@ void DynamicTextFieldEditor::on_m_composite_text_pb_clicked()
 			QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_text_field.data(), "compositeText", m_text_field.data()->compositeText(), ctd.plainText());
 			undoStack().push(undo);
 		}
+	}
+}
+
+void DynamicTextFieldEditor::on_m_alignment_pb_clicked()
+{
+    AlignmentTextDialog atd(m_text_field.data()->alignment(), this);
+	atd.exec();
+
+	if(atd.alignment() != m_text_field.data()->alignment())
+	{
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_text_field.data(), "alignment", QVariant(m_text_field.data()->alignment()), QVariant(atd.alignment()));
+		undo->setText(tr("Modifier l'alignement d'un champ texte"));
+		undoStack().push(undo);
 	}
 }

@@ -19,30 +19,29 @@
 #include "ui_alignmenttextdialog.h"
 #include "dynamicelementtextitem.h"
 
-AlignmentTextDialog::AlignmentTextDialog(DynamicElementTextItem *text, QWidget *parent) :
+AlignmentTextDialog::AlignmentTextDialog(Qt::Alignment alignment, QWidget *parent) :
 	QDialog(parent),
 	ui(new Ui::AlignmentTextDialog)
 {
 	ui->setupUi(this);
 	
-	Qt::Alignment align = text->alignment();
-	if(align == (Qt::AlignTop|Qt::AlignLeft))
+	if(alignment == (Qt::AlignTop|Qt::AlignLeft))
 		ui->top_left->setChecked(true);
-	else if(align == (Qt::AlignTop|Qt::AlignHCenter))
+	else if(alignment == (Qt::AlignTop|Qt::AlignHCenter))
 		ui->top->setChecked(true);
-	else if(align == (Qt::AlignTop|Qt::AlignRight))
+	else if(alignment == (Qt::AlignTop|Qt::AlignRight))
 		ui->top_right->setChecked(true);
-	else if(align == (Qt::AlignVCenter|Qt::AlignLeft))
+	else if(alignment == (Qt::AlignVCenter|Qt::AlignLeft))
 		ui->left->setChecked(true);
-	else if(align == Qt::AlignCenter)
+	else if(alignment == Qt::AlignCenter)
 		ui->center->setChecked(true);
-	else if(align == (Qt::AlignVCenter|Qt::AlignRight))
+	else if(alignment == (Qt::AlignVCenter|Qt::AlignRight))
 		ui->right->setChecked(true);
-	else if(align == (Qt::AlignBottom|Qt::AlignLeft))
+	else if(alignment == (Qt::AlignBottom|Qt::AlignLeft))
 		ui->bottom_left->setChecked(true);
-	else if(align == (Qt::AlignBottom|Qt::AlignHCenter))
+	else if(alignment == (Qt::AlignBottom|Qt::AlignHCenter))
 		ui->bottom->setChecked(true);
-	else if(align == (Qt::AlignBottom|Qt::AlignRight))
+	else if(alignment == (Qt::AlignBottom|Qt::AlignRight))
 		ui->bottom_right->setChecked(true);
 }
 
@@ -81,7 +80,7 @@ Qt::Alignment AlignmentTextDialog::alignment() const
 
 bool AlignmentTextDialog::event(QEvent *event)
 {
-		//Little hack to set focus to a radio button
+		//Little hack when this dialog is called from a QAbstractItemModel, to set focus to a radio button
 		//if we not do that, when the user click on the title bar (for move the dialog) or try to resize the dialog,
 		//the dialog lose focus and close.
 	if(event->type() == QEvent::Show && m_first_show)

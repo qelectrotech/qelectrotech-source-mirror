@@ -1406,7 +1406,7 @@ QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOpti
 			if(!deti)
 				break;
 			
-			AlignmentTextDialog *atd = new AlignmentTextDialog(deti, parent);
+			AlignmentTextDialog *atd = new AlignmentTextDialog(deti->alignment(), parent);
 			atd->setObjectName("alignment_text");
 			return atd;
 		}

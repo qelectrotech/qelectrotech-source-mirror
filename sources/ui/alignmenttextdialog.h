@@ -20,8 +20,6 @@
 
 #include <QDialog>
 
-class DynamicElementTextItem;
-
 namespace Ui {
 	class AlignmentTextDialog;
 }
@@ -31,7 +29,7 @@ class AlignmentTextDialog : public QDialog
 	Q_OBJECT
 	
 	public:
-		explicit AlignmentTextDialog(DynamicElementTextItem *text, QWidget *parent = nullptr);
+		explicit AlignmentTextDialog(Qt::Alignment alignment, QWidget *parent = nullptr);
 		~AlignmentTextDialog();
 	
 		Qt::Alignment alignment() const;

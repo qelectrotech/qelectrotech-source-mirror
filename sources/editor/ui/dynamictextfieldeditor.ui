@@ -196,6 +196,13 @@
         </property>
        </widget>
       </item>
+      <item row="1" column="6">
+       <widget class="QPushButton" name="m_alignment_pb">
+        <property name="text">
+         <string>Alignement</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>

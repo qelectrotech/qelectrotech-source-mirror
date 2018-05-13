@@ -99,6 +99,21 @@ const QDomElement PartDynamicTextField::toXml(QDomDocument &dom_doc) const
 	QMetaEnum me = DynamicElementTextItem::textFromMetaEnum();
 	root_element.setAttribute("text_from", me.valueToKey(m_text_from));
 	
+	me = QMetaEnum::fromType<Qt::Alignment>();
+	if(this->alignment() &Qt::AlignRight)
+		root_element.setAttribute("Halignment", me.valueToKey(Qt::AlignRight));
+	else if(this->alignment() &Qt::AlignLeft)
+		root_element.setAttribute("Halignment", me.valueToKey(Qt::AlignLeft));
+	else if(this->alignment() &Qt::AlignHCenter)
+		root_element.setAttribute("Halignment", me.valueToKey(Qt::AlignHCenter));
+	
+	if(this->alignment() &Qt::AlignBottom)
+		root_element.setAttribute("Valignment", me.valueToKey(Qt::AlignBottom));
+	else if(this->alignment() & Qt::AlignTop)
+		root_element.setAttribute("Valignment", me.valueToKey(Qt::AlignTop));
+	else if(this->alignment() &Qt::AlignVCenter)
+		root_element.setAttribute("Valignment", me.valueToKey(Qt::AlignVCenter));
+	
     QDomElement dom_text = dom_doc.createElement("text");
     dom_text.appendChild(dom_doc.createTextNode(toPlainText()));
     root_element.appendChild(dom_text);
@@ -152,13 +167,21 @@ void PartDynamicTextField::fromXml(const QDomElement &dom_elmt)
 	
 	QMetaEnum me = DynamicElementTextItem::textFromMetaEnum();
 	m_text_from = DynamicElementTextItem::TextFrom(me.keyToValue(dom_elmt.attribute("text_from").toStdString().data()));
+	
+	me = QMetaEnum::fromType<Qt::Alignment>();
+	if(dom_elmt.hasAttribute("Halignment"))
+		setAlignment(Qt::Alignment(me.keyToValue(dom_elmt.attribute("Halignment").toStdString().data())));
+	if(dom_elmt.hasAttribute(("Valignment")))
+		setAlignment(Qt::Alignment(me.keyToValue(dom_elmt.attribute("Valignment").toStdString().data())) | this->alignment());
 
 		//Text
     QDomElement dom_text = dom_elmt.firstChildElement("text");
 	if (!dom_text.isNull())
 	{
 		m_text = dom_text.text();
+		m_block_alignment = true;
 		setPlainText(m_text);
+		m_block_alignment = false;
 	}
 	
 		//Info name
@@ -363,6 +386,10 @@ void PartDynamicTextField::setTextWidth(qreal width)
 
 void PartDynamicTextField::setPlainText(const QString &text)
 {
+	if(toPlainText() == text)
+		return;
+	
+	prepareAlignment();
 	QGraphicsTextItem::setPlainText(text);
 	
 		//User define a text width
@@ -377,6 +404,17 @@ void PartDynamicTextField::setPlainText(const QString &text)
 			}
 		}
 	}
+	finishAlignment();
+}
+
+void PartDynamicTextField::setAlignment(Qt::Alignment alignment)
+{
+	m_alignment = alignment;
+	emit alignmentChanged(m_alignment);
+}
+
+Qt::Alignment PartDynamicTextField::alignment() const {
+	return m_alignment;
 }
 
 /**
@@ -508,4 +546,49 @@ void PartDynamicTextField::elementInfoChanged()
 		setPlainText(elementScene()->elementInformation().value(m_info_name).toString());
 	else if (m_text_from == DynamicElementTextItem::CompositeText && elementScene())
 		setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, elementScene()->elementInformation()));
+}
+
+void PartDynamicTextField::prepareAlignment()
+{
+	m_alignment_rect = boundingRect();
+}
+
+void PartDynamicTextField::finishAlignment()
+{
+	if(m_block_alignment)
+		return;
+	
+	QTransform transform;
+	transform.rotate(this->rotation());
+	qreal x,xa, y,ya;
+	x=xa=0;
+	y=ya=0;
+
+	if(m_alignment &Qt::AlignRight)
+	{
+		x = m_alignment_rect.right();
+		xa = boundingRect().right();
+	}
+	else if(m_alignment &Qt::AlignHCenter)
+	{
+		x = m_alignment_rect.center().x();
+		xa = boundingRect().center().x();
+	}
+	
+	if(m_alignment &Qt::AlignBottom)
+	{
+		y = m_alignment_rect.bottom();
+		ya = boundingRect().bottom();
+	}
+	else if(m_alignment &Qt::AlignVCenter)
+	{
+		y = m_alignment_rect.center().y();
+		ya = boundingRect().center().y();
+	}
+
+	QPointF p = transform.map(QPointF(x,y));
+	QPointF pa = transform.map(QPointF(xa,ya));
+	QPointF diff = pa-p;
+	
+	setPos(this->pos() - diff);
 }
