@@ -273,7 +273,7 @@
     <message>
         <location filename="../sources/ui/alignmenttextdialog.ui" line="26"/>
         <source>Alignement du texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Textausrichtung</translation>
     </message>
 </context>
 <context>
@@ -1157,12 +1157,12 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="287"/>
         <source>Éditer</source>
-        <translation type="unfinished"></translation>
+        <translation>Bearbeiten</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="531"/>
         <source>Modifier l&apos;alignement d&apos;un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Ausrichtung eines Bauteiltexts ändern</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="474"/>
@@ -1334,7 +1334,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="202"/>
         <source>Alignement</source>
-        <translation type="unfinished">Ausrichtung</translation>
+        <translation>Ausrichtung</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="142"/>
@@ -1395,7 +1395,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="305"/>
         <source>Modifier l&apos;alignement d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Ausrichtung eines Textfelds ändern</translation>
     </message>
 </context>
 <context>
