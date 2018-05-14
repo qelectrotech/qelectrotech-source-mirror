@@ -1113,8 +1113,8 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="135"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="443"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="450"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1083"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1216"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1087"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1220"/>
         <source>Texte utilisateur</source>
         <translation>نصّ المستخدم</translation>
     </message>
@@ -1122,8 +1122,8 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="136"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="445"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="456"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1088"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1217"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1092"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1221"/>
         <source>Information de l&apos;élément</source>
         <translation>معلومة العنصر</translation>
     </message>
@@ -1132,7 +1132,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="171"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="447"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="462"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1218"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1222"/>
         <source>Texte composé</source>
         <translation>نصّ مُركّب</translation>
     </message>
@@ -1167,84 +1167,84 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="473"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="531"/>
         <source>Modifier l&apos;alignement d&apos;un texte d&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="481"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="474"/>
         <source>Modifier la taille d&apos;un texte d&apos;élément</source>
         <translation>تعديل حجم نصّ العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="488"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="481"/>
         <source>Modifier la couleur d&apos;un texte d&apos;élément</source>
         <translation>تعديل لون نصّ العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="495"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="488"/>
         <source>Modifier le cadre d&apos;un texte d&apos;élément</source>
         <translation>تغيير إطار نصّ العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="503"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="496"/>
         <source>Modifier la largeur d&apos;un texte d&apos;élément</source>
         <translation>تغيير عرض نصّ عنصر</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="515"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="508"/>
         <source>Déplacer un texte d&apos;élément</source>
         <translation>تحريك نص عنصر</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="527"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="520"/>
         <source>Pivoter un texte d&apos;élément</source>
         <translation>دوران نصّ العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="548"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="552"/>
         <source>Éditer un groupe de textes</source>
         <translation>تحرير مجموعة نصوص</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="556"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="616"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1300"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="560"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="620"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1304"/>
         <source>Gauche</source>
         <translation>يسار</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="558"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="617"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1301"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="562"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="621"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1305"/>
         <source>Droite</source>
         <translation>يمين</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="560"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="618"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1302"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="564"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="622"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1306"/>
         <source>Centre</source>
         <translation>مركز</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="284"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="611"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="615"/>
         <source>Alignement</source>
         <translation>مُحاذاة</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="641"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="645"/>
         <source>Ajustement vertical</source>
         <translation>تعديل عمودي</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="653"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="657"/>
         <source>Maintenir en bas de page</source>
         <translation>احتفظ في أسفل الصفحة</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="932"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="936"/>
         <source>Déplacer un texte dans un autre groupe</source>
         <translation>تحريك نصّ في مجموعة أخرى</translation>
     </message>
@@ -1270,7 +1270,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="271"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="629"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="633"/>
         <source>Rotation</source>
         <translation></translation>
     </message>
@@ -1339,91 +1339,101 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <translation>Y</translation>
     </message>
     <message>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="202"/>
+        <source>Alignement</source>
+        <translation type="unfinished">مُحاذاة</translation>
+    </message>
+    <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="142"/>
         <source>Rotation</source>
         <translation>دوران</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="167"/>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="175"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="168"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="176"/>
         <source>Déplacer un champ texte</source>
         <translation>تحريك حقل نصّي</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="183"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="184"/>
         <source>Pivoter un champ texte</source>
         <translation>دوران حقل نصّي</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="191"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="192"/>
         <source>Modifier le texte d&apos;un champ texte</source>
         <translation>تعديل محتوى حقل نصّي</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="198"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="199"/>
         <source>Modifier la taille d&apos;un champ texte</source>
         <translation>تعديل حجم حقل نصّي</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="205"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="206"/>
         <source>Couleur du texte</source>
         <translation>لون النصّ</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="210"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="211"/>
         <source>Modifier la couleur d&apos;un champ texte</source>
         <translation>تعديل لون حقل نصّي</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="223"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="224"/>
         <source>Modifier le cadre d&apos;un champ texte</source>
         <translation>تعديل إطار حقل نصّي</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="235"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="236"/>
         <source>Modifier la largeur d&apos;un texte</source>
         <translation>تغيير عرض النصّ</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="249"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="250"/>
         <source>Modifier l&apos;information d&apos;un texte</source>
         <translation>تغيير معلومة نصّ</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="277"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="278"/>
         <source>Modifier la source de texte, d&apos;un texte</source>
         <translation>تغيير مصدر نصّ, لنصّ</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="305"/>
+        <source>Modifier l&apos;alignement d&apos;un champ texte</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>DynamicTextItemDelegate</name>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1346"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1350"/>
         <source>Texte utilisateur</source>
         <translation>نصّ المستخدم</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1347"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1351"/>
         <source>Information de l&apos;élément</source>
         <translation>معلومة العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1348"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1352"/>
         <source>Texte composé</source>
         <translation>نصّ مُركّب</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1455"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1459"/>
         <source>Gauche</source>
         <translation>يسار</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1456"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1460"/>
         <source>Centre</source>
         <translation>مركز</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1457"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1461"/>
         <source>Droite</source>
         <translation>يمين</translation>
     </message>
@@ -3631,7 +3641,7 @@ that you create. Text and number inputs are
         <translation>حقل نصّي ديناميكي</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="418"/>
+        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="456"/>
         <source>Déplacer un champ texte</source>
         <translation>تحريك حقل نصّي</translation>
     </message>
