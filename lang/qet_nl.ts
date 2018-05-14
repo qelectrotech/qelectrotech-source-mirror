@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="nl">
+<TS version="2.0" language="nl">
 <context>
     <name>AboutQET</name>
     <message>
@@ -1335,7 +1335,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="202"/>
         <source>Alignement</source>
-        <translation type="unfinished">Uitlijning</translation>
+        <translation>Uitlijning</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="168"/>
@@ -1391,7 +1391,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="305"/>
         <source>Modifier l&apos;alignement d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Uitlijning van een tekstveld wijzigen</translation>
     </message>
 </context>
 <context>
