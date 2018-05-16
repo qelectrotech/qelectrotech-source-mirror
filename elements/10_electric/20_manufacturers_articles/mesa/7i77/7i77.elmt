@@ -1,0 +1,138 @@
+<definition hotspot_x="45" hotspot_y="235" type="element" orientation="dyyy" height="290" version="0.60" width="480" link_type="terminal">
+    <uuid uuid="{c3747fee-c4bd-44e3-b2f3-b96b3496ccf4}"/>
+    <names>
+        <name lang="en">7i77_CONFIG</name>
+    </names>
+    <informations></informations>
+    <description>
+        <text text="TB2" x="240" y="-115" size="9"/>
+        <text text="TB5" x="180" y="43" size="9"/>
+        <text text="+5V" x="2" y="-200" size="5"/>
+        <text text="TB4" x="119" y="43" size="9"/>
+        <text text="TB6" x="239" y="43" size="9"/>
+        <text text="TB1" x="0" y="-214" size="9"/>
+        <text text="TB3" x="69" y="43" size="9"/>
+        <text text="/QA2" x="74" y="-149" size="4"/>
+        <rect antialias="false" x="390" y="-210" style="line-style:normal;line-weight:hight;filling:none;color:black" height="80" width="20"/>
+        <input text="L" tagg="none" x="254" y="-221" size="7" rotate="true"/>
+        <rect antialias="false" x="240" y="-50" style="line-style:normal;line-weight:hight;filling:none;color:black" height="80" width="20"/>
+        <rect antialias="false" x="240" y="-210" style="line-style:normal;line-weight:hight;filling:none;color:black" height="80" width="20"/>
+        <text text="AOUT1" x="182" y="-38" size="4"/>
+        <rect antialias="false" x="120" y="-210" style="line-style:normal;line-weight:hight;filling:none;color:black" height="80" width="20"/>
+        <text text="/IDX0" x="75" y="-34" size="4"/>
+        <text text="W1:" x="240" y="-217" size="7"/>
+        <text text="QB0" x="75" y="-4" size="4"/>
+        <rect antialias="false" x="180" y="-130" style="line-style:normal;line-weight:hight;filling:none;color:black" height="40" width="20"/>
+        <rect antialias="false" x="320" y="-210" style="line-style:normal;line-weight:hight;filling:none;color:black" height="80" width="20"/>
+        <text text="/QA0" x="75" y="11" size="4"/>
+        <rect antialias="false" x="180" y="-90" style="line-style:normal;line-weight:hight;filling:none;color:black" height="40" width="20"/>
+        <text text="AOUT0" x="182" y="3" size="4"/>
+        <text text="/QA5" x="124" y="-148" size="4"/>
+        <rect antialias="false" x="180" y="-50" style="line-style:normal;line-weight:hight;filling:none;color:black" height="40" width="20"/>
+        <text text="0V" x="75" y="4" size="4"/>
+        <rect antialias="false" x="180" y="-10" style="line-style:normal;line-weight:hight;filling:none;color:black" height="40" width="20"/>
+        <text text="AOUT5" x="182" y="-197" size="4"/>
+        <rect antialias="false" x="180" y="-210" style="line-style:normal;line-weight:hight;filling:none;color:black" height="40" width="20"/>
+        <text text="+24V" x="241" y="-135" size="5"/>
+        <text text="AOUT2" x="182" y="-78" size="4"/>
+        <text text="/QA1" x="74" y="-69" size="4"/>
+        <text text="BR" x="242" y="-36" size="4"/>
+        <text text="0V" x="5" y="-183" size="5"/>
+        <text text="/QA4" x="124" y="-67" size="4"/>
+        <text text="+5V" x="75" y="-19" size="4"/>
+        <text text="GR/WH" x="242" y="-4" size="4"/>
+        <text text="0V" x="182" y="10" size="4"/>
+        <text text="EN0-" x="182" y="25" size="4"/>
+        <text text="EN0+" x="182" y="18" size="4"/>
+        <text text="AOUT4" x="182" y="-158" size="4"/>
+        <text text="/QB0" x="75" y="-12" size="4"/>
+        <text text="/QA3" x="124" y="11" size="4"/>
+        <text text="IDX0" x="75" y="-26" size="4"/>
+        <text text="AOUT3" x="182" y="-118" size="4"/>
+        <rect antialias="false" x="70" y="-50" style="line-style:normal;line-weight:hight;filling:none;color:black" height="80" width="20"/>
+        <rect antialias="false" x="70" y="-130" style="line-style:normal;line-weight:hight;filling:none;color:black" height="80" width="20"/>
+        <rect antialias="false" x="70" y="-210" style="line-style:normal;line-weight:hight;filling:none;color:black" height="80" width="20"/>
+        <rect antialias="false" x="120" y="-130" style="line-style:normal;line-weight:hight;filling:none;color:black" height="80" width="20"/>
+        <rect antialias="false" x="120" y="-50" style="line-style:normal;line-weight:hight;filling:none;color:black" height="80" width="20"/>
+        <text text="0V" x="124" y="4" size="4"/>
+        <text text="0V" x="74" y="-76" size="4"/>
+        <text text="0V" x="124" y="-74" size="4"/>
+        <text text="ENSP+" x="182" y="-183" size="4"/>
+        <text text="0V" x="124" y="-155" size="4"/>
+        <text text="OR" x="242" y="-12" size="4"/>
+        <text text="EN1+" x="182" y="-23" size="4"/>
+        <text text="0V" x="74" y="-156" size="4"/>
+        <text text="EN2+" x="182" y="-63" size="4"/>
+        <text text="EN4+" x="182" y="-143" size="4"/>
+        <text text="BL" x="242" y="20" size="4"/>
+        <text text="EN3+" x="182" y="-104" size="4"/>
+        <text text="EN4-" x="182" y="-135" size="4"/>
+        <text text="OR/WH" x="242" y="-20" size="4"/>
+        <text text="QB4" x="124" y="-82" size="4"/>
+        <text text="BL/WH" x="242" y="12" size="4"/>
+        <text text="QB1" x="74" y="-84" size="4"/>
+        <text text="QB3" x="124" y="-4" size="4"/>
+        <text text="QB2" x="74" y="-164" size="4"/>
+        <text text="QB5" x="124" y="-163" size="4"/>
+        <text text="EN3-" x="182" y="-96" size="4"/>
+        <text text="EN2-" x="182" y="-55" size="4"/>
+        <text text="EN1-" x="182" y="-15" size="4"/>
+        <text text="ENSP-" x="182" y="-176" size="4"/>
+        <text text="0V" x="182" y="-151" size="4"/>
+        <text text="0V" x="182" y="-31" size="4"/>
+        <text text="/QB2" x="74" y="-172" size="4"/>
+        <text text="0V" x="182" y="-111" size="4"/>
+        <text text="0V" x="182" y="-190" size="4"/>
+        <text text="GR" x="242" y="4" size="4"/>
+        <text text="0V" x="182" y="-71" size="4"/>
+        <text text="/QB4" x="124" y="-90" size="4"/>
+        <text text="BR/WH" x="242" y="-28" size="4"/>
+        <text text="/QB5" x="124" y="-171" size="4"/>
+        <text text="/QB1" x="74" y="-92" size="4"/>
+        <text text="/QB3" x="124" y="-12" size="4"/>
+        <text text="+5V" x="124" y="-97" size="4"/>
+        <text text="+5V" x="124" y="-178" size="4"/>
+        <text text="+5V" x="74" y="-179" size="4"/>
+        <text text="+5V" x="124" y="-19" size="4"/>
+        <text text="+5V" x="74" y="-99" size="4"/>
+        <text text="IDX1" x="74" y="-106" size="4"/>
+        <text text="IDX2" x="74" y="-186" size="4"/>
+        <text text="IDX5" x="124" y="-185" size="4"/>
+        <text text="IDX3" x="124" y="-26" size="4"/>
+        <text text="IDX4" x="124" y="-104" size="4"/>
+        <text text="/IDX3" x="124" y="-34" size="4"/>
+        <text text="/IDX5" x="124" y="-193" size="4"/>
+        <text text="/IDX4" x="124" y="-112" size="4"/>
+        <text text="/IDX1" x="74" y="-114" size="4"/>
+        <text text="/IDX2" x="74" y="-194" size="4"/>
+        <text text="QA2" x="74" y="-141" size="4"/>
+        <text text="QA3" x="124" y="19" size="4"/>
+        <text text="QA1" x="74" y="-61" size="4"/>
+        <text text="QA5" x="124" y="-140" size="4"/>
+        <text text="QA4" x="124" y="-59" size="4"/>
+        <rect antialias="false" x="0" y="-210" style="line-style:normal;line-weight:hight;filling:none;color:black" height="30" width="17"/>
+        <rect antialias="false" x="-40" y="-150" style="line-style:normal;line-weight:normal;filling:none;color:black" height="120" width="40"/>
+        <rect antialias="false" x="-40" y="-140" style="line-style:dotted;line-weight:normal;filling:none;color:black" height="100" width="20"/>
+        <text text="OUT 0..7" x="404" y="-144" size="9" rotation="270"/>
+        <text text="IN 16..31" x="335" y="-25" size="9" rotation="270"/>
+        <text text="OUT 8..15" x="334" y="-140" size="9" rotation="270"/>
+        <rect antialias="false" x="180" y="-170" style="line-style:normal;line-weight:hight;filling:none;color:black" height="40" width="20"/>
+        <rect antialias="false" x="320" y="-130" style="line-style:normal;line-weight:hight;filling:none;color:black" height="160" width="20"/>
+        <rect antialias="false" x="390" y="-130" style="line-style:normal;line-weight:hight;filling:none;color:black" height="160" width="20"/>
+        <text text="MESA" x="-10" y="10" size="9"/>
+        <input text="_" tagg="label" x="450" y="-230" size="9" rotate="true"/>
+        <rect antialias="false" x="-30" y="-230" style="line-style:normal;line-weight:eleve;filling:none;color:black" height="280" width="460"/>
+        <text text="7i77" x="-10" y="30" size="11"/>
+        <text text="IN 0..15" x="405" y="-30" size="9" rotation="270"/>
+        <text text="0V" x="246" y="-198" size="5"/>
+        <text text="W5:" x="-20" y="-163" size="7"/>
+        <input text="R" tagg="none" x="-5" y="-167" size="7" rotate="true"/>
+        <text text="QA0" x="75" y="19" size="4"/>
+        <text text="TB8" x="390" y="42" size="9"/>
+        <text text="TB7" x="320" y="42" size="9"/>
+        <terminal orientation="e" x="265" y="-137"/>
+        <terminal orientation="e" x="21" y="-204"/>
+        <terminal orientation="e" x="265" y="-200"/>
+        <terminal orientation="e" x="21" y="-185"/>
+    </description>
+</definition>

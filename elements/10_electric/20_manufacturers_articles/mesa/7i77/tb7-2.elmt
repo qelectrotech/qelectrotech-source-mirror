@@ -1,0 +1,57 @@
+<definition hotspot_x="194" hotspot_y="47" type="element" orientation="dyyy" height="110" version="0.60" width="730" link_type="simple">
+    <uuid uuid="{ab0a1c78-8026-432e-a736-36c62d6a5795}"/>
+    <names>
+        <name lang="en">TB7_FIELD_IO Part 2</name>
+    </names>
+    <informations></informations>
+    <description>
+        <polygon antialias="true" y1="57" y2="10" y3="7" x1="-183.25" y4="7" x2="-183.25" y5="4" x3="-188.25" y6="-41" style="line-style:normal;line-weight:thin;filling:none;color:black" x4="-178.25" x5="-183.25" x6="-183.25" closed="false"/>
+        <input text="/" tagg="none" x="-224" y="6" size="9" rotate="true"/>
+        <input text="/" tagg="none" x="536.75" y="6" size="9" rotate="true"/>
+        <polygon antialias="true" y1="57" y2="10" y3="7" x1="524.75" y4="7" x2="524.75" y5="4" x3="519.75" y6="-41" style="line-style:normal;line-weight:thin;filling:none;color:black" x4="529.75" x5="524.75" x6="524.75" closed="false"/>
+        <line antialias="false" end1="none" end2="none" y1="-36" y2="-36" length1="1.5" x1="-183" length2="1.5" x2="-108.25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input text="TB7-2" tagg="label" x="536.75" y="-28" size="9" rotate="true"/>
+        <input text="I24" tagg="none" x="-115" y="-14" size="7" rotate="true"/>
+        <line antialias="false" end1="none" end2="none" y1="-36" y2="-36" length1="1.5" x1="377.75" length2="1.5" x2="451.75" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" end1="none" end2="none" y1="-36" y2="-36" length1="1.5" x1="297.75" length2="1.5" x2="371.75" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" end1="none" end2="none" y1="-36" y2="-36" length1="1.5" x1="217.75" length2="1.5" x2="291.75" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" end1="none" end2="none" y1="-36" y2="-36" length1="1.5" x1="137.75" length2="1.5" x2="211.75" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" end1="none" end2="none" y1="-36" y2="-36" length1="1.5" x1="57.75" length2="1.5" x2="131.75" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" end1="none" end2="none" y1="-36" y2="-36" length1="1.5" x1="-22.25" length2="1.5" x2="51.75" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" end1="none" end2="none" y1="-36" y2="-36" length1="1.5" x1="-102.25" length2="1.5" x2="-28.25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input text="I31" tagg="none" x="445" y="-13.5" size="7" rotate="true"/>
+        <input text="I30" tagg="none" x="365" y="-13.5" size="7" rotate="true"/>
+        <input text="I29" tagg="none" x="285" y="-13.5" size="7" rotate="true"/>
+        <input text="I28" tagg="none" x="205" y="-13.5" size="7" rotate="true"/>
+        <input text="I27" tagg="none" x="124" y="-14" size="7" rotate="true"/>
+        <input text="I26" tagg="none" x="42.75" y="-15" size="7" rotate="true"/>
+        <input text="I25" tagg="none" x="-34" y="-14" size="7" rotate="true"/>
+        <input text="13" tagg="none" x="207" y="-27" size="5" rotate="true"/>
+        <input text="12" tagg="none" x="127" y="-27" size="5" rotate="true"/>
+        <input text="11" tagg="none" x="47" y="-27" size="5" rotate="true"/>
+        <input text="10" tagg="none" x="-34" y="-27" size="5" rotate="true"/>
+        <input text="9" tagg="none" x="-111.25" y="-27" size="5" rotate="true"/>
+        <input text="16" tagg="none" x="447" y="-27" size="5" rotate="true"/>
+        <input text="15" tagg="none" x="367" y="-27" size="5" rotate="true"/>
+        <input text="14" tagg="none" x="287" y="-27" size="5" rotate="true"/>
+        <circle antialias="true" diameter="5" x="132.25" y="-38.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="true" diameter="5" x="52.25" y="-38.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="true" diameter="5" x="-27.75" y="-38.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="true" diameter="5" x="-107.75" y="-38.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="true" diameter="5" x="452.25" y="-38.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="true" diameter="5" x="372.25" y="-38.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="true" diameter="5" x="292.25" y="-38.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="true" diameter="5" x="212.25" y="-38.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input text="MESA 7I77-TB7   part 2 of 3" tagg="none" x="-180" y="35" size="9" rotate="true"/>
+        <line antialias="false" end1="none" end2="none" y1="-36" y2="-36" length1="1.5" x1="524.75" length2="1.5" x2="457.75" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" end1="none" end2="none" y1="52" y2="52" length1="1.5" x1="-183.25" length2="1.5" x2="524.75" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="n" x="54.75" y="-39"/>
+        <terminal orientation="n" x="134.75" y="-39"/>
+        <terminal orientation="n" x="374.75" y="-39"/>
+        <terminal orientation="n" x="-105.25" y="-39"/>
+        <terminal orientation="n" x="454.75" y="-39"/>
+        <terminal orientation="n" x="214.75" y="-39"/>
+        <terminal orientation="n" x="-25.25" y="-39"/>
+        <terminal orientation="n" x="294.75" y="-39"/>
+    </description>
+</definition>
