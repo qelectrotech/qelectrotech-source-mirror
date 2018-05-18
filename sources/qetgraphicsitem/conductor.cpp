@@ -73,8 +73,6 @@ class ConductorXmlRetroCompatibility
  * @param p2 : second terminal of this conductor.
  */
 Conductor::Conductor(Terminal *p1, Terminal* p2) :
-	QObject(),
-	QGraphicsPathItem(nullptr),
 	terminal1(p1),
 	terminal2(p2),
 	m_mouse_over(false),
@@ -167,7 +165,7 @@ void Conductor::updatePath(const QRectF &rect) {
 	else
 		generateConductorPath(p1, terminal1 -> orientation(), p2, terminal2 -> orientation());
 	calculateTextItemPosition();
-	QGraphicsPathItem::update(rect);
+	QGraphicsObject::update(rect);
 }
 
 /**
@@ -608,7 +606,7 @@ void Conductor::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
  */
 void Conductor::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-	QGraphicsPathItem::mousePressEvent(event);
+	QGraphicsObject::mousePressEvent(event);
 	
 	if (event->modifiers() & Qt::ControlModifier)
 		setSelected(!isSelected());
@@ -621,7 +619,7 @@ void Conductor::mousePressEvent(QGraphicsSceneMouseEvent *event)
 void Conductor::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (!(event -> modifiers() & Qt::ControlModifier))
-		QGraphicsPathItem::mouseReleaseEvent(event);
+		QGraphicsObject::mouseReleaseEvent(event);
 }
 
 /**
@@ -684,7 +682,7 @@ QVariant Conductor::itemChange(GraphicsItemChange change, const QVariant &value)
 		adjusteHandlerPos();
 	}
 	
-	return(QGraphicsPathItem::itemChange(change, value));
+	return(QGraphicsObject::itemChange(change, value));
 }
 
 /**
@@ -1443,6 +1441,21 @@ void Conductor::refreshText()
 	}
 }
 
+void Conductor::setPath(const QPainterPath &path)
+{
+	if(path == m_path)
+		return;
+	
+	prepareGeometryChange();
+	m_path = path;
+	update();
+}
+
+QPainterPath Conductor::path() const
+{
+	return m_path;
+}
+
 /**
  * @brief Conductor::setPropertiesToPotential
  * @param properties
@@ -1723,8 +1736,10 @@ QList<QPointF> Conductor::junctions() const {
 		// determine si le point est une bifurcation ou non
 		bool is_bend = false;
 		Qt::Corner current_bend_type = Qt::TopLeftCorner;
-		foreach(ConductorBend cb, bends_list) {
-			if (cb.first == point) {
+		foreach(ConductorBend cb, bends_list)
+		{
+			if (cb.first == point)
+			{
 				is_bend = true;
 				current_bend_type = cb.second;
 				break;
@@ -1735,22 +1750,28 @@ QList<QPointF> Conductor::junctions() const {
 		
 		bool is_junction = false;
 		QPointF scene_point = mapToScene(point);
-		foreach(Conductor *c, other_conductors) {
-			// exprime le point dans les coordonnees de l'autre conducteur
+		foreach(Conductor *c, other_conductors)
+		{
+				// exprime le point dans les coordonnees de l'autre conducteur
 			QPointF conductor_point = c -> mapFromScene(scene_point);
-			// recupere les segments de l'autre conducteur
+				// recupere les segments de l'autre conducteur
 			QList<ConductorSegment *> c_segments = c -> segmentsList();
-			if (c_segments.isEmpty()) continue;
-			// parcoure les segments a la recherche d'un point commun
-			for (int j = 0 ; j < c_segments.count() ; ++ j) {
+			if (c_segments.isEmpty())
+				continue;
+				// parcoure les segments a la recherche d'un point commun
+			for (int j = 0 ; j < c_segments.count() ; ++ j)
+			{
 				ConductorSegment *segment = c_segments[j];
-				// un point commun a ete trouve sur ce segment
-				if (isContained(conductor_point, segment -> firstPoint(), segment -> secondPoint())) {
+					// un point commun a ete trouve sur ce segment
+				if (isContained(conductor_point, segment -> firstPoint(), segment -> secondPoint()))
+				{
 					is_junction = true;
 					// ce point commun ne doit pas etre une bifurcation identique a celle-ci
 					QList<ConductorBend> other_conductor_bends = c -> bends();
-					foreach(ConductorBend cb, other_conductor_bends) {
-						if (cb.first == conductor_point && cb.second == current_bend_type) {
+					foreach(ConductorBend cb, other_conductor_bends)
+					{
+						if (cb.first == conductor_point && cb.second == current_bend_type)
+						{
 							is_junction = false;
 						}
 					}

@@ -39,7 +39,7 @@ typedef QHash<Qt::Corner, ConductorProfile> ConductorProfilesGroup;
 	This class represents a conductor, i.e. a wire between two element
 	terminals.
 */
-class Conductor : public QObject, public QGraphicsPathItem
+class Conductor : public QGraphicsObject
 {
 	Q_OBJECT
 
@@ -90,6 +90,8 @@ class Conductor : public QObject, public QGraphicsPathItem
 		ConductorSegment *middleSegment();
 		QPointF posForText(Qt::Orientations &flag);
 		void refreshText();
+		void setPath(const QPainterPath &path);
+		QPainterPath path() const;
 
 	public:
 		static bool valideXml (QDomElement &);
@@ -181,6 +183,7 @@ class Conductor : public QObject, public QGraphicsPathItem
 		static QPen conductor_pen;
 		static QBrush conductor_brush;
 		static bool pen_and_brush_initialized;
+		QPainterPath m_path;
 	
 	private:
 		void segmentsToPath();
