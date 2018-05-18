@@ -152,7 +152,9 @@ QPointF DiagramTextItem::mapMovementFromParent(const QPointF &movement) const {
 
 void DiagramTextItem::setFontSize(int s)
 {
+	prepareAlignment();
     setFont(QETApp::diagramTextsFont(s));
+	finishAlignment();
 	emit fontSizeChanged(s);
 }
 

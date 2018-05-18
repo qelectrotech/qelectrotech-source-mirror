@@ -351,8 +351,11 @@ QColor PartDynamicTextField::color() const {
  * @brief PartDynamicTextField::setFontSize
  * @param s
  */
-void PartDynamicTextField::setFontSize(int s) {
+void PartDynamicTextField::setFontSize(int s)
+{
+	prepareAlignment();
 	setFont(QETApp::diagramTextsFont(s));
+	finishAlignment();
 	emit fontSizeChanged(s);
 }
 
