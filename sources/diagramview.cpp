@@ -1068,7 +1068,7 @@ void DiagramView::contextMenuEvent(QContextMenuEvent *e) {
 		} else {
 			m_context_menu -> addAction(qde -> m_cut);
 			m_context_menu -> addAction(qde -> m_copy);
-			m_context_menu->addAction(m_multi_paste);
+			m_context_menu -> addAction(m_multi_paste);
 			m_context_menu -> addSeparator();
 			m_context_menu -> addAction(qde -> m_conductor_reset);
 			m_context_menu -> addSeparator();

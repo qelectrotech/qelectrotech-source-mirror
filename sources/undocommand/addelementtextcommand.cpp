@@ -86,7 +86,31 @@ AddTextsGroupCommand::AddTextsGroupCommand(Element *element, QDomElement dom_ele
 	m_element(element),
 	m_dom_element(dom_element)
 {
-		setText(QObject::tr("Ajouter un groupe de textes d'élément"));
+	setText(QObject::tr("Ajouter un groupe de textes d'élément"));
+}
+
+/**
+ * @brief AddTextsGroupCommand::AddTextsGroupCommand
+ * @param element : The element to add a new group
+ * @param texts_list : a list of texts to add to the created group (texts must be child of element)
+ * @param parent : parent undo
+ */
+AddTextsGroupCommand::AddTextsGroupCommand(Element *element, QString groupe_name, QList<DynamicElementTextItem *> texts_list, QUndoCommand *parent) :
+	QUndoCommand(parent),
+	m_element(element),
+	m_name(groupe_name)
+{
+	for(DynamicElementTextItem *deti : texts_list)
+	{
+		deti->setSelected(false);
+		if(deti->parentElement() == element)
+		{
+			m_deti_list << deti;
+			deti->setSelected(false);
+		}
+	}
+	
+	setText(QObject::tr("Grouper des textes d'élément"));
 }
 
 /**
@@ -117,6 +141,11 @@ void AddTextsGroupCommand::redo()
 					//Then the next time redo is called, the texts will be added to the group
 				m_deti_list = m_group.data()->texts();
 				m_group.data()->updateAlignment();
+			}
+			else
+			{
+				for(DynamicElementTextItem *deti : m_deti_list)
+					m_element.data()->addTextToGroup(deti, m_group.data());
 			}
 			m_first_undo = false;
 		}

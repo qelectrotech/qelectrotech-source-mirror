@@ -48,6 +48,7 @@
 #include "rotatetextscommand.h"
 #include "diagramcommands.h"
 #include "dialogwaiting.h"
+#include "addelementtextcommand.h"
 
 #include <QMessageBox>
 #include <QStandardPaths>
@@ -358,6 +359,7 @@ void QETDiagramEditor::setUpActions()
     m_rotate_texts      = m_selection_actions_group.addAction( QET::Icons::ObjectRotateRight, tr("Orienter les textes")       );
     m_find_element      = m_selection_actions_group.addAction( QET::Icons::ZoomDraw,          tr("Retrouver dans le panel")   );
     m_edit_selection    = m_selection_actions_group.addAction( QET::Icons::ElementEdit,       tr("Éditer l'item sélectionné") );
+	m_group_selected_texts = m_selection_actions_group.addAction(QET::Icons::textGroup,       tr("Grouper les textes séléctionné"));
 
 	m_delete_selection -> setShortcut( QKeySequence::Delete);
 	m_rotate_selection -> setShortcut( QKeySequence( tr("Space")		) );
@@ -374,6 +376,7 @@ void QETDiagramEditor::setUpActions()
 	m_rotate_texts     ->setData("rotate_selected_text");
 	m_find_element     ->setData("find_selected_element");
 	m_edit_selection   ->setData("edit_selected_element");
+	m_group_selected_texts ->setData("group_selected_texts");
 
 	connect(&m_selection_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::selectionGroupTriggered);
 
@@ -1283,6 +1286,14 @@ void QETDiagramEditor::selectionGroupTriggered(QAction *action)
 		findElementInPanel(currentCustomElement()->location());
 	else if (value == "edit_selected_element")
 		dv->editSelection();
+	else if (value == "group_selected_texts")
+	{
+		QList<DynamicElementTextItem *> deti_list = dc.m_element_texts.toList();
+		if(deti_list.size() <= 1)
+			return;
+		
+		diagram->undoStack().push(new AddTextsGroupCommand(deti_list.first()->parentElement(), tr("Groupe"), deti_list));
+	}
 }
 
 void QETDiagramEditor::rowColumnGroupTriggered(QAction *action)
@@ -1404,7 +1415,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 	if(!dv)
 	{
 		QList <QAction *> action_list;
-		action_list << m_conductor_reset << m_find_element << m_cut << m_copy << m_delete_selection << m_rotate_selection << m_edit_selection;
+		action_list << m_conductor_reset << m_find_element << m_cut << m_copy << m_delete_selection << m_rotate_selection << m_edit_selection << m_group_selected_texts;
 		for(QAction *action : action_list)
 			action->setEnabled(false);
 		
@@ -1439,6 +1450,22 @@ void QETDiagramEditor::slot_updateComplexActions()
 	int selected_conductor_texts   = 0; for(DiagramTextItem *dti : texts) {if(dti->type() == ConductorTextItem::Type) selected_conductor_texts++;}
 	int selected_dynamic_elmt_text = 0; for(DiagramTextItem *dti : texts) {if(dti->type() == DynamicElementTextItem::Type) selected_dynamic_elmt_text++;}
 	m_rotate_texts->setEnabled(!ro && (selected_texts || groups.size()));
+	
+		//Action that need only element text selected
+	QList<DynamicElementTextItem *> deti_list = dc.m_element_texts.toList();
+	if(deti_list.size() > 1 && dc.count() == deti_list.count())
+	{
+		Element *elmt = deti_list.first()->parentElement();
+		bool ok = true;
+		for(DynamicElementTextItem *deti : deti_list)
+		{
+			if(elmt != deti->parentElement())
+				ok = false;
+		}
+		m_group_selected_texts->setEnabled(!ro && ok);
+	}
+	else
+		m_group_selected_texts->setDisabled(true);
 
 		// actions need only one editable item
 	int selected_image = dc.count(DiagramContent::Images);
@@ -2183,18 +2210,6 @@ void QETDiagramEditor::selectionChanged()
 	if (dv && dv->diagram())
 		m_selection_properties_editor->setDiagram(dv->diagram());
 }
-
-///**
-// * @brief QETDiagramEditor::activeUndoStackCleanChanged
-// * Enable the QAction save_file when @clean is set to false
-// * @clean at true do nothing;
-// * @param clean
-// */
-//void QETDiagramEditor::activeUndoStackCleanChanged(bool clean) {
-//	if (!clean) {
-//		//save_file -> setEnabled(true);
-//	}
-//}
 
 
 /**

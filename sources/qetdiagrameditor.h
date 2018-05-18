@@ -156,7 +156,6 @@ class QETDiagramEditor : public QETMainWindow {
 
 	private slots:
 		void selectionChanged();
-		//void activeUndoStackCleanChanged (bool clean);
 
 		// attributes
 	private:
@@ -211,6 +210,7 @@ class QETDiagramEditor : public QETMainWindow {
 		QAction *m_rotate_selection;				///< Rotate selected elements and text items by 90 degrees
 		QAction *m_rotate_texts;					///< Direct selected text items to a specific angle
 		QAction *m_find_element;					///< Find the selected element in the panel
+		QAction *m_group_selected_texts = nullptr;
 
 		QActionGroup m_file_actions_group; ///Actions related to file (open, close, save...)
 		QAction *m_close_file;			   ///< Close current project file
