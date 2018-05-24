@@ -29,6 +29,10 @@
 #include "recentfiles.h"
 #include "qeticons.h"
 #include "templatescollection.h"
+#include "generalconfigurationpage.h"
+#include "qetmessagebox.h"
+#include "projectview.h"
+
 #include <cstdlib>
 #include <iostream>
 #define QUOTE(x) STRINGIFY(x)
@@ -46,13 +50,13 @@ QString QETApp::common_tbt_dir_ = QString();
 QString QETApp::config_dir = QString();
 #endif
 QString QETApp::lang_dir = QString();
-TitleBlockTemplatesFilesCollection *QETApp::common_tbt_collection_;
-TitleBlockTemplatesFilesCollection *QETApp::custom_tbt_collection_;
+TitleBlockTemplatesFilesCollection *QETApp::m_common_tbt_collection;
+TitleBlockTemplatesFilesCollection *QETApp::m_custom_tbt_collection;
 ElementsCollectionCache *QETApp::collections_cache_ = nullptr;
 QMap<uint, QETProject *> QETApp::registered_projects_ = QMap<uint, QETProject *>();
 uint QETApp::next_project_id = 0;
-RecentFiles *QETApp::projects_recent_files_ = nullptr;
-RecentFiles *QETApp::elements_recent_files_ = nullptr;
+RecentFiles *QETApp::m_projects_recent_files = nullptr;
+RecentFiles *QETApp::m_elements_recent_files = nullptr;
 TitleBlockTemplate *QETApp::default_titleblock_template_ = nullptr;
 
 /**
@@ -62,7 +66,7 @@ TitleBlockTemplate *QETApp::default_titleblock_template_ = nullptr;
 */
 QETApp::QETApp(int &argc, char **argv) :
 	QETSingleApplication(argc, argv, QString("qelectrotech-" + QETApp::userName())),
-	splash_screen_(nullptr),
+	m_splash_screen(nullptr),
 	non_interactive_execution_(false)
 {
 	parseArguments();
@@ -114,20 +118,43 @@ QETApp::QETApp(int &argc, char **argv) :
 		openFiles(qet_arguments_);
 	}
 	buildSystemTrayMenu();
-	splash_screen_ -> hide();
+	m_splash_screen -> hide();
+	
+	checkBackupFiles();
 }
 
-/// Destructeur
-QETApp::~QETApp() {
-	elements_recent_files_ -> save();
-	projects_recent_files_ -> save();
-	delete splash_screen_;
-	delete elements_recent_files_;
-	delete projects_recent_files_;
-	delete qsti;
-	if (custom_tbt_collection_) delete custom_tbt_collection_;
-	if (common_tbt_collection_) delete common_tbt_collection_;
+/**
+ * @brief QETApp::~QETApp
+ */
+QETApp::~QETApp()
+{
+	m_elements_recent_files->save();
+	m_projects_recent_files->save();
+	
+	delete m_splash_screen;
+	delete m_elements_recent_files;
+	delete m_projects_recent_files;
+	delete m_qsti;
+	
+	if (m_custom_tbt_collection)
+		delete m_custom_tbt_collection;
+	if (m_common_tbt_collection)
+		delete m_common_tbt_collection;
+	
 	ElementFactory::dropInstance();
+	
+		//Delete all backup files
+	QDir dir(configDir() + "backup");
+	if(dir.exists())
+	{
+		QStringList extension_filter("*.qet");
+		QStringList list = dir.entryList(extension_filter);
+		for(QString str : list)
+		{
+			QFile file(dir.path() + "/" + str);
+			file.remove();
+		}
+	}
 }
 
 /**
@@ -197,7 +224,7 @@ void QETApp::systray(QSystemTrayIcon::ActivationReason reason) {
 		case QSystemTrayIcon::Context:
 			// affichage du menu
 			buildSystemTrayMenu();
-			qsti -> contextMenu() -> show();
+			m_qsti -> contextMenu() -> show();
 			break;
 		case QSystemTrayIcon::DoubleClick:
 		case QSystemTrayIcon::Trigger:
@@ -354,13 +381,13 @@ QString QETApp::elementInfoToVar(const QString &info)
 	by QElecrotTech
 */
 TitleBlockTemplatesFilesCollection *QETApp::commonTitleBlockTemplatesCollection() {
-	if (!common_tbt_collection_) {
-		common_tbt_collection_ = new TitleBlockTemplatesFilesCollection(QETApp::commonTitleBlockTemplatesDir());
-		common_tbt_collection_ -> setTitle(tr("Cartouches QET", "title of the title block templates collection provided by QElectroTech"));
-		common_tbt_collection_ -> setProtocol(QETAPP_COMMON_TBT_PROTOCOL);
-		common_tbt_collection_ -> setCollection(QET::QetCollection::Common);
+	if (!m_common_tbt_collection) {
+		m_common_tbt_collection = new TitleBlockTemplatesFilesCollection(QETApp::commonTitleBlockTemplatesDir());
+		m_common_tbt_collection -> setTitle(tr("Cartouches QET", "title of the title block templates collection provided by QElectroTech"));
+		m_common_tbt_collection -> setProtocol(QETAPP_COMMON_TBT_PROTOCOL);
+		m_common_tbt_collection -> setCollection(QET::QetCollection::Common);
 	}
-	return(common_tbt_collection_);
+	return(m_common_tbt_collection);
 }
 
 /**
@@ -368,13 +395,13 @@ TitleBlockTemplatesFilesCollection *QETApp::commonTitleBlockTemplatesCollection(
 	by the end user
 */
 TitleBlockTemplatesFilesCollection *QETApp::customTitleBlockTemplatesCollection() {
-	if (!custom_tbt_collection_) {
-		custom_tbt_collection_ = new TitleBlockTemplatesFilesCollection(QETApp::customTitleBlockTemplatesDir());
-		custom_tbt_collection_ -> setTitle(tr("Cartouches utilisateur", "title of the user's title block templates collection"));
-		custom_tbt_collection_ -> setProtocol(QETAPP_CUSTOM_TBT_PROTOCOL);
-		custom_tbt_collection_ -> setCollection(QET::QetCollection::Custom);
+	if (!m_custom_tbt_collection) {
+		m_custom_tbt_collection = new TitleBlockTemplatesFilesCollection(QETApp::customTitleBlockTemplatesDir());
+		m_custom_tbt_collection -> setTitle(tr("Cartouches utilisateur", "title of the user's title block templates collection"));
+		m_custom_tbt_collection -> setProtocol(QETAPP_CUSTOM_TBT_PROTOCOL);
+		m_custom_tbt_collection -> setCollection(QET::QetCollection::Custom);
 	}
-	return(custom_tbt_collection_);
+	return(m_custom_tbt_collection);
 }
 
 /**
@@ -384,8 +411,8 @@ TitleBlockTemplatesFilesCollection *QETApp::customTitleBlockTemplatesCollection(
 QList<TitleBlockTemplatesCollection *> QETApp::availableTitleBlockTemplatesCollections() {
 	QList<TitleBlockTemplatesCollection *> collections_list;
 
-	collections_list << common_tbt_collection_;
-	collections_list << custom_tbt_collection_;
+	collections_list << m_common_tbt_collection;
+	collections_list << m_custom_tbt_collection;
 
 	foreach(QETProject *opened_project, registered_projects_) {
 		collections_list << opened_project -> embeddedTitleBlockTemplatesCollection();
@@ -400,9 +427,9 @@ QList<TitleBlockTemplatesCollection *> QETApp::availableTitleBlockTemplatesColle
 */
 TitleBlockTemplatesCollection *QETApp::titleBlockTemplatesCollection(const QString &protocol) {
 	if (protocol == QETAPP_COMMON_TBT_PROTOCOL) {
-		return(common_tbt_collection_);
+		return(m_common_tbt_collection);
 	} else if (protocol == QETAPP_CUSTOM_TBT_PROTOCOL) {
-		return(custom_tbt_collection_);
+		return(m_custom_tbt_collection);
 	} else {
 		QETProject *project = QETApp::projectFromString(protocol);
 		if (project) {
@@ -938,7 +965,7 @@ QList<QETElementEditor *> QETApp::elementEditors(QETProject *project) {
 	Nettoie certaines choses avant que l'application ne quitte
 */
 void QETApp::cleanup() {
-	qsti -> hide();
+	m_qsti -> hide();
 }
 
 /**
@@ -970,14 +997,14 @@ template <class T> void QETApp::setMainWindowsVisible(bool visible) {
 	@return La liste des fichiers recents pour les projets
 */
 RecentFiles *QETApp::projectsRecentFiles() {
-	return(projects_recent_files_);
+	return(m_projects_recent_files);
 }
 
 /**
 	@return La liste des fichiers recents pour les elements
 */
 RecentFiles *QETApp::elementsRecentFiles() {
-	return(elements_recent_files_);
+	return(m_elements_recent_files);
 }
 
 /**
@@ -1403,8 +1430,8 @@ void QETApp::parseArguments() {
 */
 void QETApp::initSplashScreen() {
 	if (non_interactive_execution_) return;
-	splash_screen_ = new QSplashScreen(QPixmap(":/ico/splash.png"));
-	splash_screen_ -> show();
+	m_splash_screen = new QSplashScreen(QPixmap(":/ico/splash.png"));
+	m_splash_screen -> show();
 	setSplashScreenStep(tr("Chargement...", "splash screen caption"));
 }
 
@@ -1414,9 +1441,9 @@ void QETApp::initSplashScreen() {
 	rien.
 */
 void QETApp::setSplashScreenStep(const QString &message) {
-	if (!splash_screen_) return;
+	if (!m_splash_screen) return;
 	if (!message.isEmpty()) {
-		splash_screen_ -> showMessage(message, Qt::AlignBottom | Qt::AlignLeft);
+		m_splash_screen -> showMessage(message, Qt::AlignBottom | Qt::AlignLeft);
 	}
 	processEvents();
 }
@@ -1460,10 +1487,10 @@ void QETApp::initConfiguration() {
 
 	// fichiers recents
 	// note : les icones doivent etre initialisees avant ces instructions (qui creent des menus en interne)
-	projects_recent_files_ = new RecentFiles("projects");
-	projects_recent_files_ -> setIconForFiles(QET::Icons::ProjectFile);
-	elements_recent_files_ = new RecentFiles("elements");
-	elements_recent_files_ -> setIconForFiles(QET::Icons::Element);
+	m_projects_recent_files = new RecentFiles("projects");
+	m_projects_recent_files -> setIconForFiles(QET::Icons::ProjectFile);
+	m_elements_recent_files = new RecentFiles("elements");
+	m_elements_recent_files -> setIconForFiles(QET::Icons::Element);
 }
 
 /**
@@ -1503,11 +1530,11 @@ void QETApp::initSystemTray() {
 	connect(new_element,      SIGNAL(triggered()), this, SLOT(newElementEditor()));
 
 	// initialisation de l'icone du systray
-	qsti = new QSystemTrayIcon(QET::Icons::QETLogo, this);
-	qsti -> setToolTip(tr("QElectroTech", "systray icon tooltip"));
-	connect(qsti, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(systray(QSystemTrayIcon::ActivationReason)));
-	qsti -> setContextMenu(menu_systray);
-	qsti -> show();
+	m_qsti = new QSystemTrayIcon(QET::Icons::QETLogo, this);
+	m_qsti -> setToolTip(tr("QElectroTech", "systray icon tooltip"));
+	connect(m_qsti, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(systray(QSystemTrayIcon::ActivationReason)));
+	m_qsti -> setContextMenu(menu_systray);
+	m_qsti -> show();
 }
 
 /**
@@ -1602,6 +1629,82 @@ void QETApp::buildSystemTrayMenu() {
 	// ajoute le bouton quitter au menu
 	menu_systray -> addSeparator();
 	menu_systray -> addAction(quitter_qet);
+}
+
+/**
+ * @brief QETApp::checkBackupFiles
+ * Check for backup files.
+ * If backup was found, open a dialog and ask user what to do.
+ */
+void QETApp::checkBackupFiles()
+{
+		//Delete all backup files
+	QDir dir(configDir() + "backup");
+	if(dir.exists())
+	{
+		QStringList extension_filter("*.qet");
+		QStringList list = dir.entryList(extension_filter);
+		if(list.isEmpty())
+			return;
+		
+		QString text;
+		if(list.size() == 1)
+			text.append(tr("<b>Le fichier de restauration suivant a été trouvé,<br>"
+						   "Voulez-vous l'ouvrir ?</b><br>"));
+		else
+			text.append(tr("<b>Les fichiers de restauration suivant on été trouvé,<br>"
+						   "Voulez-vous les ouvrir ?</b><br>"));
+		for(QString name : list)
+			text.append("<br>" + name);
+		
+		if (QET::QetMessageBox::question(nullptr, tr("Fichier de restauration"), text, QMessageBox::Ok|QMessageBox::Cancel) == QMessageBox::Ok)
+		{
+			QStringList files_list;
+			for(QString str : list)
+				files_list << dir.path() + "/" + str;
+			
+			QList<QETDiagramEditor *> diagrams_editors = diagramEditors();
+		
+				//If there is opened editors, we find those who are visible
+			if (diagrams_editors.count())
+			{
+				QList<QETDiagramEditor *> visible_diagrams_editors;
+				for(QETDiagramEditor *de : diagrams_editors) {
+					if (de->isVisible())
+						visible_diagrams_editors << de;
+				}
+		
+					//We take the first visible, or the first one
+				QETDiagramEditor *de_open;
+				if (visible_diagrams_editors.count()) {
+					de_open = visible_diagrams_editors.first();
+				}
+				else
+				{
+					de_open = diagrams_editors.first();
+					de_open -> setVisible(true);
+				}
+		
+				for(QString file : files_list) {
+					de_open -> openAndAddProject(file);
+				}
+			}
+			else {
+				new QETDiagramEditor(files_list);
+			}
+			
+				//Because the file was open from backup, we remove the file path of each project opened,
+				//for avoid user to save in the backup directory
+			for(QETDiagramEditor *editor : diagramEditors())
+			{
+				for(ProjectView *pv : editor->openedProjects())
+				{
+					if(files_list.contains(pv->project()->filePath()))
+						pv->project()->setFilePath(QString());
+				}
+			}
+		}
+	}
 }
 
 /// Met a jour les booleens concernant l'etat des fenetres

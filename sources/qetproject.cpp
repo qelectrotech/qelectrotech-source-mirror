@@ -32,8 +32,10 @@
 #include "numerotationcontextcommands.h"
 #include "assignvariables.h"
 
-
+#include <QTimer>
 #include <QStandardPaths>
+
+static int BACKUP_INTERVAL = 300000; //interval in ms of backup
 
 /**
 	Constructeur par defaut - cree un schema contenant une collection
@@ -63,8 +65,26 @@ QETProject::QETProject(int diagrams, QObject *parent) :
 
 	setupTitleBlockTemplatesCollection();
 
-	undo_stack_ = new QUndoStack();
-	connect(undo_stack_, SIGNAL(cleanChanged(bool)), this, SLOT(undoStackChanged(bool)));
+	m_undo_stack = new QUndoStack();
+	connect(m_undo_stack, SIGNAL(cleanChanged(bool)), this, SLOT(undoStackChanged(bool)));
+	
+	m_save_backup_timer.setInterval(BACKUP_INTERVAL);
+	connect(&m_save_backup_timer, &QTimer::timeout, this, &QETProject::writeBackup);
+	m_save_backup_timer.start();
+	
+	QSettings settings;
+	int autosave_interval = settings.value("diagrameditor/autosave-interval", 0).toInt();
+	if(autosave_interval > 0)
+	{
+		int ms = autosave_interval*60*1000;
+		m_autosave_timer.setInterval(ms);
+		connect(&m_autosave_timer, &QTimer::timeout, [this]()
+		{
+			if(!this->m_file_path.isEmpty())
+				this->write();
+		});
+		m_autosave_timer.start();
+	}
 }
 
 /**
@@ -111,8 +131,27 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 		setReadOnly(true);
 	}
 
-	undo_stack_ = new QUndoStack();
-	connect(undo_stack_, SIGNAL(cleanChanged(bool)), this, SLOT(undoStackChanged(bool)));
+	m_undo_stack = new QUndoStack();
+	connect(m_undo_stack, SIGNAL(cleanChanged(bool)), this, SLOT(undoStackChanged(bool)));
+	
+	m_save_backup_timer.setInterval(BACKUP_INTERVAL);
+	connect(&m_save_backup_timer, &QTimer::timeout, this, &QETProject::writeBackup);
+	m_save_backup_timer.start();
+	writeBackup();
+	
+	QSettings settings;
+	int autosave_interval = settings.value("diagrameditor/autosave-interval", 0).toInt();
+	if(autosave_interval > 0)
+	{
+		int ms = autosave_interval*60*1000;
+		m_autosave_timer.setInterval(ms);
+		connect(&m_autosave_timer, &QTimer::timeout, [this]()
+		{
+			if(!this->m_file_path.isEmpty())
+				this->write();
+		});
+		m_autosave_timer.start();
+	}
 }
 
 /**
@@ -122,7 +161,18 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 QETProject::~QETProject()
 {
 	qDeleteAll(m_diagrams_list);
-	delete undo_stack_;
+	delete m_undo_stack;
+	
+		//Project is closed without crash, we can safely remove the backup file.
+	if (!m_file_path.isEmpty())
+	{
+		QDir dir(QETApp::configDir() + "/backup");
+		if(!dir.exists())
+			return;
+		
+		QString project_name = m_file_path.split("/").last();
+		dir.remove(project_name);
+	}
 }
 
 /**
@@ -187,7 +237,7 @@ TitleBlockTemplatesProjectCollection *QETProject::embeddedTitleBlockTemplatesCol
 	@return le chemin du fichier dans lequel ce projet est enregistre
 */
 QString QETProject::filePath() {
-	return(file_path_);
+	return(m_file_path);
 }
 
 /**
@@ -195,15 +245,15 @@ QString QETProject::filePath() {
 	@param filepath Nouveau chemin de fichier
 */
 void QETProject::setFilePath(const QString &filepath) {
-	file_path_ = filepath;
+	m_file_path = filepath;
 	
 	// le chemin a change : on reevalue la necessite du mode lecture seule
-	QFileInfo file_path_info(file_path_);
+	QFileInfo file_path_info(m_file_path);
 	if (file_path_info.isWritable()) {
 		setReadOnly(false);
 	}
 	
-	emit(projectFilePathChanged(this, file_path_));
+	emit(projectFilePathChanged(this, m_file_path));
 	emit(projectInformationsChanged(this));
 }
 
@@ -214,10 +264,10 @@ void QETProject::setFilePath(const QString &filepath) {
 */
 QString QETProject::currentDir() const {
 	QString current_directory;
-	if (file_path_.isEmpty()) {
+	if (m_file_path.isEmpty()) {
 		current_directory = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
 	} else {
-		current_directory = QFileInfo(file_path_).absoluteDir().absolutePath();
+		current_directory = QFileInfo(m_file_path).absoluteDir().absolutePath();
 	}
 	return(current_directory);
 }
@@ -240,14 +290,14 @@ QString QETProject::pathNameTitle() const {
 				"Projet « %1 : %2»",
 				"displayed title for a ProjectView - %1 is the project title, -%2 is the project path"
 			)
-		).arg(project_title_).arg (file_path_);
-	} else if (!file_path_.isEmpty()) {
+		).arg(project_title_).arg (m_file_path);
+	} else if (!m_file_path.isEmpty()) {
 		final_title = QString(
 			tr(
 				"Projet %1",
 				"displayed title for a title-less project - %1 is the file name"
 			)
-		).arg(QFileInfo(file_path_).completeBaseName());
+		).arg(QFileInfo(m_file_path).completeBaseName());
 	} else {
 		final_title = QString(
 			tr(
@@ -800,12 +850,12 @@ bool QETProject::close() {
 QETResult QETProject::write()
 {
 		// this operation requires a filepath
-	if (file_path_.isEmpty())
+	if (m_file_path.isEmpty())
 		return(QString("unable to save project to file: no filepath was specified"));
 
 		// if the project was opened read-only and the file is still non-writable, do not save the project
-	if (isReadOnly() && !QFileInfo(file_path_).isWritable())
-		return(QString("the file %1 was opened read-only and thus will not be written").arg(file_path_));
+	if (isReadOnly() && !QFileInfo(m_file_path).isWritable())
+		return(QString("the file %1 was opened read-only and thus will not be written").arg(m_file_path));
 
 
 		//Get the project in xml
@@ -813,7 +863,7 @@ QETResult QETProject::write()
 	xml_project.appendChild(xml_project.importNode(toXml().documentElement(), true));
 
 	QString error_message;
-	if (!QET::writeXmlFile(xml_project, file_path_, &error_message)) return(error_message);
+	if (!QET::writeXmlFile(xml_project, m_file_path, &error_message)) return(error_message);
 
 	setModified(false);
 	return(QETResult());
@@ -823,7 +873,7 @@ QETResult QETProject::write()
 	@return true si le projet est en mode readonly, false sinon
 */
 bool QETProject::isReadOnly() const {
-	return(read_only_ && read_only_file_path_ == file_path_);
+	return(read_only_ && read_only_file_path_ == m_file_path);
 }
 
 /**
@@ -836,7 +886,7 @@ void QETProject::setReadOnly(bool read_only)
 	if (read_only_ != read_only)
 	{
 			//keep the file to which this project is read-only
-		read_only_file_path_ = file_path_;
+		read_only_file_path_ = m_file_path;
 		read_only_ = read_only;
 		emit(readOnlyChanged(this, read_only));
 	}
@@ -1598,6 +1648,30 @@ NamesList QETProject::namesListForIntegrationCategory() {
 }
 
 /**
+ * @brief QETProject::writeBackup
+ * Write a backup file of this project, in the case that QET crash
+ */
+void QETProject::writeBackup()
+{
+	if(m_file_path.isEmpty())
+		return;
+	
+	QDir dir(QETApp::configDir() + "/backup");
+	if(!dir.exists())
+	{
+		dir.cdUp();
+		dir.mkdir("backup");
+		dir.cd("backup");
+	}
+	
+	QDomDocument xml_project;
+	xml_project.appendChild(xml_project.importNode(toXml().documentElement(), true));
+	
+	QString project_name = m_file_path.split("/").last();
+	QET::writeXmlFile(xml_project, dir.absoluteFilePath(project_name));
+}
+
+/**
 	@return true if project options (title, project-wide properties, settings
 	for new diagrams, diagrams order...) were modified, false otherwise.
 */
@@ -1634,7 +1708,7 @@ void QETProject::setProjectProperties(const DiagramContext &context) {
 bool QETProject::projectWasModified() {
 
 	if ( projectOptionsWereModified()    ||
-		 !undo_stack_ -> isClean()       ||
+		 !m_undo_stack -> isClean()       ||
 		 titleblocks_.templates().count() )
 		return(true);
 	

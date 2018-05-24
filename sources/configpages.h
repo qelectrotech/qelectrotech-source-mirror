@@ -70,60 +70,6 @@ public slots:
 };
 
 /**
-	This configuration page enables users to specify various options,most of
-	them applying to the whole application.
-*/
-class GeneralConfigurationPage : public ConfigPage {
-	Q_OBJECT
-	// constructors, destructor
-	public:
-	GeneralConfigurationPage(QWidget * = nullptr);
-	~GeneralConfigurationPage() override;
-	private:
-	GeneralConfigurationPage(const GeneralConfigurationPage &);
-	
-	// methods
-	public:
-	void applyConf() override;
-	QString title() const override;
-	QIcon icon() const override;
-
-	private:
-	void fillLang(QSettings &);
-	
-public slots:
-	void setFont();
-	void setFoliolistFont();
-	
-	// attributes
-	private:
-	QLabel *title_label_;
-	QFrame *horiz_line_;
-	QGroupBox *appearance_;
-	QCheckBox *use_system_colors_;
-	QCheckBox *use_trackpad_;
-	QCheckBox *save_label_paste_;
-	QCheckBox *folio_panel_;
-	QCheckBox *terminal_exportlist_;
-	QGroupBox *projects_view_mode_;
-	QRadioButton *windowed_mode_;
-	QRadioButton *tabbed_mode_;
-	QCheckBox *m_zoom_out_beyond_folio;
-	QLabel *warning_view_mode_;
-	QGroupBox *elements_management_;
-	QCheckBox *highlight_integrated_elements_;
-	QLabel    *default_element_infos_label_;
-	QTextEdit *default_element_infos_textfield_;
-	QGroupBox *lang_group_box;
-	QComboBox *lang_combo_box;
-	QLabel *lang_label;
-	QLabel *font_label;
-	QPushButton *fontButton;
-	QLabel *foliolist_font_label;
-	QPushButton *foliolist_fontButton;
-};
-
-/**
 	This configuration page enables users to set default export options.
 */
 class ExportConfigPage : public ConfigPage {

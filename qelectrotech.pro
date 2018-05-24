@@ -89,11 +89,17 @@ INCLUDEPATH += sources \
                sources/ElementsCollection \
                sources/ElementsCollection/ui \
                sources/autoNum \
-               sources/autoNum/ui
+               sources/autoNum/ui \
+               sources/ui/configpage
 
 
 # Fichiers sources
-HEADERS += $$files(sources/*.h) $$files(sources/ui/*.h) $$files(sources/editor/*.h) $$files(sources/titleblock/*.h) $$files(sources/richtext/*.h) $$files(sources/qetgraphicsitem/*.h) $$files(sources/factory/*.h) \
+HEADERS += $$files(sources/*.h) $$files(sources/ui/*.h) \
+           $$files(sources/editor/*.h) \
+           $$files(sources/titleblock/*.h) \
+           $$files(sources/richtext/*.h) \
+           $$files(sources/qetgraphicsitem/*.h) \
+           $$files(sources/factory/*.h) \
            $$files(sources/properties/*.h) \
            $$files(sources/editor/ui/*.h) \
            $$files(sources/editor/esevent/*.h) \
@@ -104,9 +110,16 @@ HEADERS += $$files(sources/*.h) $$files(sources/ui/*.h) $$files(sources/editor/*
            $$files(sources/ElementsCollection/*.h) \
            $$files(sources/ElementsCollection/ui/*.h) \
            $$files(sources/autoNum/*.h) \
-           $$files(sources/autoNum/ui/*.h)
+           $$files(sources/autoNum/ui/*.h) \
+           $$files(sources/ui/configpage/*.h)
 
-SOURCES += $$files(sources/*.cpp) $$files(sources/editor/*.cpp) $$files(sources/titleblock/*.cpp) $$files(sources/richtext/*.cpp) $$files(sources/ui/*.cpp) $$files(sources/qetgraphicsitem/*.cpp) $$files(sources/factory/*.cpp) \
+SOURCES += $$files(sources/*.cpp) \
+           $$files(sources/editor/*.cpp) \
+           $$files(sources/titleblock/*.cpp) \
+           $$files(sources/richtext/*.cpp) \
+           $$files(sources/ui/*.cpp) \
+           $$files(sources/qetgraphicsitem/*.cpp) \
+           $$files(sources/factory/*.cpp) \
            $$files(sources/properties/*.cpp) \
            $$files(sources/editor/ui/*.cpp) \
            $$files(sources/editor/esevent/*.cpp) \
@@ -117,7 +130,8 @@ SOURCES += $$files(sources/*.cpp) $$files(sources/editor/*.cpp) $$files(sources/
            $$files(sources/ElementsCollection/*.cpp) \
            $$files(sources/ElementsCollection/ui/*.cpp) \
            $$files(sources/autoNum/*.cpp) \
-           $$files(sources/autoNum/ui/*.cpp)
+           $$files(sources/autoNum/ui/*.cpp) \
+           $$files(sources/ui/configpage/*.cpp)
 
 # Liste des fichiers qui seront incorpores au binaire en tant que ressources Qt
 RESOURCES += qelectrotech.qrc
@@ -136,7 +150,8 @@ FORMS += $$files(sources/richtext/*.ui) \
          $$files(sources/ui/*.ui) \
          $$files(sources/editor/ui/*.ui) \
          $$files(sources/ElementsCollection/ui/*.ui) \
-         $$files(sources/autoNum/ui/*.ui)
+         $$files(sources/autoNum/ui/*.ui) \
+         $$files(sources/ui/configpage/*.ui)
 
 UI_SOURCES_DIR = sources/ui/
 UI_HEADERS_DIR = sources/ui/

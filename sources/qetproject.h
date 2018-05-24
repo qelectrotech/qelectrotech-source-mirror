@@ -34,6 +34,7 @@ class MoveTitleBlockTemplatesHandler;
 class NumerotationContext;
 class QUndoStack;
 class XmlElementCollection;
+class QTimer;
 
 /**
 	This class represents a QET project. Typically saved as a .qet file, it
@@ -55,7 +56,6 @@ class QETProject : public QObject
 	
 	private:
 		QETProject(const QETProject &);
-		void init ();
 	
 		// enums
 	public:
@@ -163,7 +163,7 @@ class QETProject : public QObject
 		bool projectOptionsWereModified();
 		DiagramContext projectProperties();
 		void setProjectProperties(const DiagramContext &);
-		QUndoStack* undoStack() {return undo_stack_;}
+		QUndoStack* undoStack() {return m_undo_stack;}
 	
 	public slots:
 		Diagram *addNewDiagram();
@@ -204,7 +204,6 @@ class QETProject : public QObject
 	
 	private:
 		void setupTitleBlockTemplatesCollection();
-
 		void readProjectXml(QDomDocument &xml_project);
 		void readDiagramsXml(QDomDocument &xml_project);
 		void readElementsCollectionXml(QDomDocument &xml_project);
@@ -215,11 +214,12 @@ class QETProject : public QObject
 		void writeDefaultPropertiesXml(QDomElement &);
 		void addDiagram(Diagram *);
 		NamesList namesListForIntegrationCategory();
+		void writeBackup();
 	
 	// attributes
 	private:
 			/// File path this project is saved to
-		QString file_path_;
+		QString m_file_path;
 			/// Current state of the project
 		ProjectState state_;
 			/// Diagrams carried by the project
@@ -249,7 +249,7 @@ class QETProject : public QObject
 			/// project-wide variables that will be made available to child diagrams
 		DiagramContext project_properties_;
 			/// undo stack for this project
-		QUndoStack *undo_stack_;
+		QUndoStack *m_undo_stack;
 			/// Conductor auto numerotation
 		QHash <QString, NumerotationContext> m_conductor_autonum;//Title and NumContext hash
 		QString m_current_conductor_autonum;
@@ -264,6 +264,8 @@ class QETProject : public QObject
 		XmlElementCollection *m_elements_collection;
 		bool m_freeze_new_elements;
 		bool m_freeze_new_conductors;
+		QTimer m_save_backup_timer,
+			   m_autosave_timer;
 };
 
 Q_DECLARE_METATYPE(QETProject *)
