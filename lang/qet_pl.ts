@@ -280,7 +280,7 @@
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="53"/>
         <source>Centre : </source>
-        <translation>Środek:</translation>
+        <translation>Środek: </translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="58"/>
@@ -791,7 +791,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="390"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="410"/>
         <source>Couleur :</source>
-        <translation>Kolor: </translation>
+        <translation>Kolor:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="446"/>
@@ -1331,7 +1331,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="202"/>
         <source>Alignement</source>
-        <translation type="unfinished">Wyrównanie</translation>
+        <translation>Wyrównanie</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="142"/>
@@ -1392,7 +1392,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="305"/>
         <source>Modifier l&apos;alignement d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Zmiana wyrównania pola tekstowego</translation>
     </message>
 </context>
 <context>
@@ -1733,43 +1733,50 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="358"/>
         <source>Nom : %1
 </source>
-        <translation>Nazwa: %1</translation>
+        <translation>Nazwa: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="361"/>
         <source>Folio : %1
 </source>
-        <translation>Arkusz: %1</translation>
+        <translation>Arkusz: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="363"/>
         <source>Position : %1
 </source>
-        <translation>Pozycja: %1</translation>
+        <translation>Pozycja: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="364"/>
         <source>Rotation : %1°
 </source>
-        <translation>Obrót: %1°</translation>
+        <translation>Obrót: %1°
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="365"/>
         <source>Dimensions : %1*%2
 </source>
-        <translation>Wymiary: %1*%2</translation>
+        <translation>Wymiary: %1*%2
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="366"/>
         <source>Bornes : %1
 </source>
-        <translation>Zacisk: %1</translation>
+        <translation>Zacisk: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="369"/>
         <source>Emplacement : %1
 </source>
-        <translation>Położenie: %1</translation>
+        <translation>Położenie: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="388"/>
@@ -1822,7 +1829,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="106"/>
         <source>Nom interne : </source>
-        <translation>Nazwa wewnętrzna:</translation>
+        <translation>Nazwa wewnętrzna: </translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="41"/>
@@ -1994,7 +2001,8 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
         <source>Êtes-vous sûr  de vouloir supprimer cet élément ?
 </source>
         <comment>message box content</comment>
-        <translation>Czy na pewno chcesz usunąć ten element?</translation>
+        <translation>Czy na pewno chcesz usunąć ten element?
+</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="356"/>
@@ -2217,7 +2225,7 @@ Wszystkie elementy i podkatalogi znajdujące się w tym katalogu zostaną usuni�
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="50"/>
         <source>Centre : </source>
-        <translation>Środek:</translation>
+        <translation>Środek: </translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="55"/>
@@ -2461,7 +2469,7 @@ Wszystkie elementy i podkatalogi znajdujące się w tym katalogu zostaną usuni�
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="107"/>
         <source> Options de numérotation</source>
-        <translation>Opcje numeracji</translation>
+        <translation> Opcje numeracji</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="132"/>
@@ -4680,7 +4688,8 @@ python -m pip install --upgrade qet_tb_generator
  Odwiedź https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674 
 2. Zainstaluj pip3 qet_tb_generator 
 &gt;&gt; Aktualizacja na macOSX 
- pip3 install --upgrade qet_tb_generator </translation>
+ pip3 install --upgrade qet_tb_generator 
+</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="260"/>
@@ -7537,12 +7546,12 @@ Czy chcesz ją zastąpić ?</translation>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="50"/>
         <source>Coin supérieur gauche : </source>
-        <translation>Lewy górny róg:</translation>
+        <translation>Lewy górny róg: </translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="55"/>
         <source>Dimensions : </source>
-        <translation>Wymiary:</translation>
+        <translation>Wymiary: </translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="56"/>
@@ -8273,7 +8282,7 @@ Pole &quot;Inkrementacja&quot; nie jest używane.</translation>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="52"/>
         <source>Position : </source>
-        <translation>Pozycja:</translation>
+        <translation>Pozycja: </translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="55"/>
@@ -8323,7 +8332,7 @@ Pole &quot;Inkrementacja&quot; nie jest używane.</translation>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="55"/>
         <source>Position : </source>
-        <translation>Pozycja:</translation>
+        <translation>Pozycja: </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="58"/>
@@ -8770,7 +8779,8 @@ skojarzenie nazwy &quot;volta&quot; i wartości &quot;1745&quot; spowoduje zast�
         <source>Êtes-vous sûr  de vouloir supprimer ce modèle de cartouche (%1) ?
 </source>
         <comment>message box content</comment>
-        <translation>Czy na pewno chcesz usunąć ten szablon tabliczki rysunkowej (%1)?</translation>
+        <translation>Czy na pewno chcesz usunąć ten szablon tabliczki rysunkowej (%1)?
+</translation>
     </message>
 </context>
 <context>
@@ -9049,14 +9059,16 @@ Longueur maximale : %2px
 </source>
         <comment>tooltip showing the minimum and/or maximum width of the edited template</comment>
         <translation>Długość minimalna: %1px
-Długość maksymalna: %2px</translation>
+Długość maksymalna: %2px
+</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="940"/>
         <source>Longueur minimale : %1px
 </source>
         <comment>tooltip showing the minimum width of the edited template</comment>
-        <translation>Szerokość minimalna: %1px</translation>
+        <translation>Szerokość minimalna: %1px
+</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="995"/>
