@@ -81,7 +81,7 @@
       <item row="1" column="0">
        <widget class="QRadioButton" name="m_use_tab_mode_rb">
         <property name="text">
-         <string>Utilisé des onglets (appliqué au proc&amp;hain lancement de QElectroTech)</string>
+         <string>Utiliser des onglets (appliqué au proc&amp;hain lancement de QElectroTech)</string>
         </property>
        </widget>
       </item>
