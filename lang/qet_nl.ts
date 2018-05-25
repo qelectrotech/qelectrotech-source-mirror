@@ -4341,7 +4341,7 @@ Opties :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="629"/>
         <source>Affiche ou non le panel d&apos;appareils</source>
-        <translation>Toon of verberg het elementenpaneel</translation>
+        <translation>Toon of verberg het projectenpaneel</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="339"/>
@@ -4538,7 +4538,7 @@ Opties :
         <location filename="../sources/qetdiagrameditor.cpp" line="329"/>
         <source>Enregistre le projet courant et tous ses folios</source>
         <comment>status bar tip</comment>
-        <translation>Sla het huidige project en alle bladen op</translation>
+        <translation>Sla het huidige project en alle schemabladen op</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="330"/>
@@ -4574,13 +4574,13 @@ Opties :
         <location filename="../sources/qetdiagrameditor.cpp" line="346"/>
         <source>Agrandit le folio en hauteur</source>
         <comment>status bar tip</comment>
-        <translation>Vergroot de bladhoogte</translation>
+        <translation>Voeg een rij toe aan het blad</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="347"/>
         <source>Rétrécit le folio en hauteur</source>
         <comment>status bar tip</comment>
-        <translation>Verklein de bladhoogte</translation>
+        <translation>Verwijder een rij van het blad</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="362"/>
@@ -4591,7 +4591,7 @@ Opties :
         <location filename="../sources/qetdiagrameditor.cpp" line="369"/>
         <source>Enlève les éléments sélectionnés du folio</source>
         <comment>status bar tip</comment>
-        <translation>Verwijder geselecteerde elementen van het blad</translation>
+        <translation>Verwijder de geselecteerde elementen van het blad</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="392"/>
@@ -4620,7 +4620,7 @@ Opties :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="418"/>
         <source>Adapte le zoom de façon à afficher tout le contenu du folio indépendamment du cadre</source>
-        <translation>Pas de zoom aan zodat alle inhoud op het blad onafhankelijk van het kader wordt getoond</translation>
+        <translation>Pas de zoom aan zodat de inhoud onafhankelijk van het kader wordt getoond</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="419"/>
@@ -4746,12 +4746,12 @@ python -m pip install --upgrade qet_tb_generator
         <location filename="../sources/qetdiagrameditor.cpp" line="470"/>
         <source>Permet de visualiser le folio sans pouvoir le modifier</source>
         <comment>status bar tip</comment>
-        <translation>Blad alleen bekijken toegestaan zonder te wijzigen</translation>
+        <translation>De inhoud van het blad verschuiven</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="522"/>
         <source>Outils</source>
-        <translation>Gereedschappen</translation>
+        <translation>Hoofdwerkbalk</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="316"/>
@@ -5027,7 +5027,7 @@ python -m pip install --upgrade qet_tb_generator
         <location filename="../sources/qetdiagrameditor.cpp" line="462"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation>Sluiten QElectroTech</translation>
+        <translation>Sluit QElectroTech volledig af</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="247"/>
@@ -5039,19 +5039,19 @@ python -m pip install --upgrade qet_tb_generator
         <location filename="../sources/qetdiagrameditor.cpp" line="248"/>
         <source>Restaure l&apos;action annulée</source>
         <comment>status bar tip</comment>
-        <translation>Doe laatste actie opnieuw</translation>
+        <translation>Doe de laatste actie opnieuw</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="259"/>
         <source>Transfère les éléments sélectionnés dans le presse-papier</source>
         <comment>status bar tip</comment>
-        <translation>Plaats geselecteerde elementen op het klembord</translation>
+        <translation>Verplaats de geselecteerde elementen naar het klembord</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="260"/>
         <source>Copie les éléments sélectionnés dans le presse-papier</source>
         <comment>status bar tip</comment>
-        <translation>Kopieert geselecteerde elementen naar het klembord</translation>
+        <translation>Kopieer de geselecteerde elementen naar het klembord</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="394"/>
@@ -5069,7 +5069,7 @@ python -m pip install --upgrade qet_tb_generator
         <location filename="../sources/qetdiagrameditor.cpp" line="463"/>
         <source>Recalcule les chemins des conducteurs sans tenir compte des modifications</source>
         <comment>status bar tip</comment>
-        <translation>Teken geleiders opnieuw, verwerp wijzigingen</translation>
+        <translation>Teken alle geleiders opnieuw en verwerp alle wijzigingen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="270"/>
@@ -5121,7 +5121,7 @@ python -m pip install --upgrade qet_tb_generator
         <location filename="../sources/qetdiagrameditor.cpp" line="469"/>
         <source>Permet de sélectionner les éléments</source>
         <comment>status bar tip</comment>
-        <translation>Toestaan van selectie van elementen</translation>
+        <translation>Selecteren van elementen toestaan</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="557"/>
@@ -5889,7 +5889,7 @@ de voorwaarden zijn ongeldig</translation>
         <location filename="../sources/qetmainwindow.cpp" line="58"/>
         <source>Permet de régler différents paramètres de QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation>Parameters voor QElectroTech instellen</translation>
+        <translation>QElectroTech instellen</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="80"/>
