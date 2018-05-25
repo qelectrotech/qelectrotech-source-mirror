@@ -2,25 +2,25 @@
 
 
 * Element editor : 
-* element informations (manufacturer, reference etc...) can be created directly from the element editor. For that go to the widget "Element Property"
-* it is no longer required to have a text field, for save the edited element.
-* improve the behavior with the arrow keys (depending to the current selection  (nothing / one / several).
-* context menu display only enabled actions.
+* Element informations (manufacturer, reference etc...) can be created directly from the element editor. For that go to the widget "Element Property"
+* It is no longer required to have a text field, for save the edited element.
+* Improve the behavior with the arrow keys (depending to the current selection  (nothing / one / several).
+* Context menu display only enabled actions.
 * Add new feature -> alignment.
-* alignment of text field can be edited.
+* Alignment of text field can be edited.
 
 * Diagram editor : 
-* conductors can now be drawn with two colors.
+* Conductors can now be drawn with two colors.
 * The code for the resize handles has been almost completely redesigned.
 * Dissociate fonts policy and size for independent text item and for summarry pages (foliolist), add a 2 button in config page for open Qfontdialog widget and choose policy for independent text item
 Possiblility to overide defaut settings by adding in QElectroTech.conf
 * Basic shape add new CustomDashLine style with Dash Pattern (<< 10 << 10 );
 * It is now possible to add a text field to an element directly from the diagram.
 * Element text item with are now converted to dynamic element text item.
-* element editor, part text can't be edited directly.
+* Element editor, part text can't be edited directly.
 * User can export / import the configuration of the texts and texts group of an element.
-* context menu display only enabled actions.
-* add new action in the context menu, multiple paste, check box for autonum the pasted element.
+* Context menu display only enabled actions.
+* Add new action in the context menu, multiple paste, check box for autonum the pasted element.
 * Multipaste -> improve the conductor autonum, conductors are numerated from top to bottom, and left to right.
 * Text of conductor can be placed at top/bottom/left/right of conductor, and text never overlaps the conductor.
 * Function for search conductor at the same potential.
@@ -28,17 +28,24 @@ When the search function is searching in a terminal element, they search only fo
 So the list of conductors at the same potential is missing some conductors.
 This commit fix it, now the search function search for every terminals of a terminal element.
 * Add new feature -> alignment.
-* alignment of text field can be edited.
+* Alignment of text field can be edited.
+* Add new context menu action "group the selected texts".
+
+
+
+* QET create a backup file, use to restore the project when a crash occur.
+* User can enable and edit autosave timer.
 
 
 
 * QetGraphicsItem, remove the function applyRotation and rotateBy, and use instead the native function of QGraphicsItem : setRotation
+* Conductor is an herited class of QGraphicsObject, instead of QObject and QGraphicsPathItem
 
 
 * DXF export : fix some double items in dxf file.
 * DXF export : add some colors for basic shapes inside dxf.
 
-* improve High-DPI support on Windows and Linux plateform.
+* Improve High-DPI support on Windows and Linux plateform.
 
 * Bug fix : 
 * Fix compilation warning (clang and gcc).
@@ -46,6 +53,7 @@ This commit fix it, now the search function search for every terminals of a term
 * Fix element text item alignment work well when text rotation != 0.
 * Fix crash when the properties of a element text item group
 * Fix crash occurred by the conductor and shape "ghost".
+* Fix element text alignment work also when font size change.
 
 
 
