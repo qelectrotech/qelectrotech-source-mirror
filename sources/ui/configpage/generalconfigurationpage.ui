@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>827</width>
-    <height>662</height>
+    <width>916</width>
+    <height>747</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -60,7 +60,7 @@
       <item row="7" column="0">
        <widget class="QLabel" name="label">
         <property name="text">
-         <string>Interval de la sauvegarde automatique (appliqué au prochain lancement de QElectroTech)</string>
+         <string>Sauvegarde automatique des projets (appliqué au prochain lancement de QElectroTech)</string>
         </property>
        </widget>
       </item>
