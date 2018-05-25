@@ -2618,18 +2618,18 @@ Tekst og nummer inddata er også tilgængelig.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="122"/>
         <source>Désactivé</source>
-        <translation type="unfinished"></translation>
+        <translation>Deaktiverer</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="125"/>
         <source> min</source>
         <comment>minute</comment>
-        <translation type="unfinished"></translation>
+        <translation> min.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="132"/>
         <source>Utiliser des fenêtres (appliqué au prochain lancement de &amp;QElectroTech)</source>
-        <translation type="unfinished"></translation>
+        <translation>Brug vinduer (kræver genstart af &amp;QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="146"/>
@@ -2639,18 +2639,19 @@ Tekst og nummer inddata er også tilgængelig.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="175"/>
         <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
-        <translation type="unfinished">Vis senest integrerede symboler i panelet</translation>
+        <translation>Vis senest integrerede symboler i panelet</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="182"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre.
 Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
-        <translation type="unfinished"></translation>
+        <translation>Hvert symbol indeholder oplysninger om forfattere, licens og andre oplysninger, som anses for nyttige i et frit felt.
+Her kan standardværdien angives for dette felt for de oprettede symboler:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="205"/>
         <source>Appliqué au prochain lancement de QElectroTech</source>
-        <translation type="unfinished"></translation>
+        <translation>Kræver genstart af QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="112"/>
@@ -2660,22 +2661,22 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="20"/>
         <source>Général</source>
-        <translation type="unfinished">Generelt</translation>
+        <translation>Generelt</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="63"/>
         <source>Sauvegarde automatique des projets (appliqué au prochain lancement de QElectroTech)</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatisk backup af projekter (kræver genstart af QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="84"/>
         <source>Utiliser des onglets (appliqué au proc&amp;hain lancement de QElectroTech)</source>
-        <translation type="unfinished"></translation>
+        <translation>Brug faneblade (kræver genstart af QElectroTec&amp;h)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="105"/>
@@ -4114,17 +4115,18 @@ Sletningen kan ikke fortrydes.</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="1652"/>
         <source>&lt;b&gt;Le fichier de restauration suivant a été trouvé,&lt;br&gt;Voulez-vous l&apos;ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Følgende gendannelsesfil er fundet,&lt;br&gt;skal den åbnes?&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1655"/>
         <source>&lt;b&gt;Les fichiers de restauration suivant on été trouvé,&lt;br&gt;Voulez-vous les ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>&lt;b&gt;Følgende gendannede filer fundet,&lt;br&gt;skal de åbnes?&lt;/b&gt;&lt;br&gt;</translatorcomment>
+        <translation>&lt;b&gt;Les fichiers de restauration suivant on été trouvé,&lt;br&gt;Voulez-vous les ouvrir ?&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1660"/>
         <source>Fichier de restauration</source>
-        <translation type="unfinished"></translation>
+        <translation>Gendanne fil</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1763"/>
@@ -4586,7 +4588,7 @@ Kommandovalg:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="362"/>
         <source>Grouper les textes séléctionné</source>
-        <translation type="unfinished"></translation>
+        <translation>Gruppere valgte tekste</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="369"/>
@@ -4665,7 +4667,7 @@ Kommandovalg:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1295"/>
         <source>Groupe</source>
-        <translation type="unfinished"></translation>
+        <translation>Gruppe</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2233"/>
@@ -7439,7 +7441,7 @@ Hvad skal ske?</translation>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="113"/>
         <source>Grouper des textes d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Gruppere symboltekste</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="176"/>
