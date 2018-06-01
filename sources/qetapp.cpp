@@ -150,10 +150,7 @@ QETApp::~QETApp()
 		QStringList extension_filter("*.qet");
 		QStringList list = dir.entryList(extension_filter);
 		for(QString str : list)
-		{
-			QFile file(dir.path() + "/" + str);
-			file.remove();
-		}
+			dir.remove(str);
 	}
 }
 
@@ -1644,6 +1641,15 @@ void QETApp::checkBackupFiles()
 	{
 		QStringList extension_filter("*.qet");
 		QStringList list = dir.entryList(extension_filter);
+		
+			//Remove from the list, the backup file of registred project
+		for(QETProject *project : registeredProjects().values())
+			if(!project->filePath().isEmpty())
+			{
+				QFileInfo info(project->filePath());
+				list.removeOne(info.fileName());
+			}
+		
 		if(list.isEmpty())
 			return;
 		

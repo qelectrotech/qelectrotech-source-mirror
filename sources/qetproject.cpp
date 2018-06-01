@@ -166,12 +166,13 @@ QETProject::~QETProject()
 		//Project is closed without crash, we can safely remove the backup file.
 	if (!m_file_path.isEmpty())
 	{
-		QDir dir(QETApp::configDir() + "/backup");
+		QDir dir(QETApp::configDir() + "backup");
 		if(!dir.exists())
 			return;
 		
-		QString project_name = m_file_path.split("/").last();
-		dir.remove(project_name);
+		QFileInfo info(m_file_path);
+		if(info.exists())
+			dir.remove(info.fileName());
 	}
 }
 
@@ -1656,7 +1657,7 @@ void QETProject::writeBackup()
 	if(m_file_path.isEmpty())
 		return;
 	
-	QDir dir(QETApp::configDir() + "/backup");
+	QDir dir(QETApp::configDir() + "backup");
 	if(!dir.exists())
 	{
 		dir.cdUp();
@@ -1664,11 +1665,13 @@ void QETProject::writeBackup()
 		dir.cd("backup");
 	}
 	
-	QDomDocument xml_project;
-	xml_project.appendChild(xml_project.importNode(toXml().documentElement(), true));
-	
-	QString project_name = m_file_path.split("/").last();
-	QET::writeXmlFile(xml_project, dir.absoluteFilePath(project_name));
+	QFileInfo info(m_file_path);
+	if(info.exists())
+	{
+		QDomDocument xml_project;
+		xml_project.appendChild(xml_project.importNode(toXml().documentElement(), true));
+		QET::writeXmlFile(xml_project, dir.absoluteFilePath(info.fileName()));
+	}	
 }
 
 /**
