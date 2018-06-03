@@ -103,10 +103,12 @@ void PasteDiagramCommand::redo()
 			if (settings.value("diagramcommands/erase-label-on-copy", true).toBool())
 			{
 					//Reset the information about the label, the comment and location
-				e -> rElementInformations().addValue("formula", "");
-				e -> rElementInformations().addValue("label", "");
-				e -> rElementInformations().addValue("comment", "");
-				e -> rElementInformations().addValue("location", "");
+				DiagramContext dc = e->elementInformations();
+				dc.addValue("formula", "");
+				dc.addValue("label", "");
+				dc.addValue("comment", "");
+				dc.addValue("location", "");
+				e->setElementInformations(dc);
 				
 					//Reset the text of conductors
 				const QList <Conductor *> conductors_list = content.m_conductors_to_move;

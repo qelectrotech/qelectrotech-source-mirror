@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2017 The QElectroTech Team
 	This file is part of QElectroTech.
 	
@@ -129,7 +129,6 @@ class Element : public QetGraphicsItem
 		//METHODS related to information
 	public:
 		DiagramContext  elementInformations    ()const              {return m_element_informations;}
-		DiagramContext& rElementInformations   ()                   {return m_element_informations;}
 		virtual void    setElementInformations (DiagramContext dc);
 		DiagramContext  kindInformations       () const             {return m_kind_informations;}	//@kind_information_ is used to store more information
 																									//about the herited class like contactelement for know
