@@ -939,7 +939,7 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
     <message>
         <location filename="../sources/diagramview.cpp" line="91"/>
         <source>Collage multiple</source>
-        <translation type="unfinished">Collage múltiple</translation>
+        <translation>Collage múltiple</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="702"/>
@@ -1336,7 +1336,7 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="202"/>
         <source>Alignement</source>
-        <translation type="unfinished">Alineación</translation>
+        <translation>Alineación</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="142"/>
@@ -1398,7 +1398,7 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="305"/>
         <source>Modifier l&apos;alignement d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Modificar la alineación de un campo de texto</translation>
     </message>
 </context>
 <context>
@@ -2632,18 +2632,18 @@ Las entradas de texto y números
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="122"/>
         <source>Désactivé</source>
-        <translation type="unfinished"></translation>
+        <translation>Desactivado</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="125"/>
         <source> min</source>
         <comment>minute</comment>
-        <translation type="unfinished"></translation>
+        <translation> minuto</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="132"/>
         <source>Utiliser des fenêtres (appliqué au prochain lancement de &amp;QElectroTech)</source>
-        <translation type="unfinished"></translation>
+        <translation>Uso de ventanas (aplica en el próximo lanzamiento de &amp;QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="146"/>
@@ -2653,18 +2653,19 @@ Las entradas de texto y números
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="175"/>
         <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
-        <translation type="unfinished">Resalta los elementos recién integrados en el panel</translation>
+        <translation>Resalta los elementos recién integrados en el panel</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="182"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre.
 Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
-        <translation type="unfinished"></translation>
+        <translation>Cada elemento incorpora información sobre sus autores, su licencia, o cualquier otra información que considere útil en un campo libre.
+Aquí puede especificar el valor predeterminado de este campo para los elementos que creará:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="205"/>
         <source>Appliqué au prochain lancement de QElectroTech</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplica en el proximo lanzamiento de Qelectrotech</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="105"/>
@@ -2674,22 +2675,22 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formulario</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="20"/>
         <source>Général</source>
-        <translation type="unfinished">General</translation>
+        <translation>General</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="63"/>
         <source>Sauvegarde automatique des projets (appliqué au prochain lancement de QElectroTech)</source>
-        <translation type="unfinished"></translation>
+        <translation>Copia de seguridad automática de los proyectos (aplica en el próximo lanzamiento de QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="84"/>
         <source>Utiliser des onglets (appliqué au proc&amp;hain lancement de QElectroTech)</source>
-        <translation type="unfinished"></translation>
+        <translation>Usar pestañas (aplica en el proximo lanzamiento de &amp;Qelectrotech)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="169"/>
@@ -3306,7 +3307,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="22"/>
         <source>Décalage</source>
-        <translation type="unfinished">Desfase</translation>
+        <translation>Desfase</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="29"/>
@@ -3347,7 +3348,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/multipastedialog.cpp" line="98"/>
         <source>Multi-collage</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Multii-collage</translation>
     </message>
 </context>
 <context>
@@ -4156,17 +4157,17 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="1652"/>
         <source>&lt;b&gt;Le fichier de restauration suivant a été trouvé,&lt;br&gt;Voulez-vous l&apos;ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Se ha encontrado el siguiente archivo de restauración,&lt;br&gt;¿deseas abrirlo?&lt;/br&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1655"/>
         <source>&lt;b&gt;Les fichiers de restauration suivant on été trouvé,&lt;br&gt;Voulez-vous les ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Se encontraron los siguientes archivos de restauración,&lt;br&gt;¿deseas abrirlos?&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1660"/>
         <source>Fichier de restauration</source>
-        <translation type="unfinished"></translation>
+        <translation>Archivo de restauración</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1763"/>
@@ -4539,7 +4540,7 @@ Opciones disponibles:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="362"/>
         <source>Grouper les textes séléctionné</source>
-        <translation type="unfinished"></translation>
+        <translation>Grupo de textos seleccionados</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="369"/>
@@ -4565,7 +4566,7 @@ Opciones disponibles:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1295"/>
         <source>Groupe</source>
-        <translation type="unfinished"></translation>
+        <translation>Grupo</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2233"/>
@@ -7455,7 +7456,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="113"/>
         <source>Grouper des textes d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Grupo de textos del elemento</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="176"/>
