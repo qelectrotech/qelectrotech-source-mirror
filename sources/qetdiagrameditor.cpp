@@ -1358,6 +1358,7 @@ void QETDiagramEditor::slot_updateActions()
 	save_file        -> setEnabled(opened_project);
 	save_file_as     -> setEnabled(opened_project);
 	prj_edit_prop    -> setEnabled(opened_project);
+	prj_terminalBloc -> setEnabled(opened_project);
 	prj_add_diagram  -> setEnabled(editable_project);
 	prj_del_diagram  -> setEnabled(editable_project);
 	prj_clean        -> setEnabled(editable_project);
@@ -2224,9 +2225,9 @@ QProcess *process = new QProcess(qApp);
 //process->start("qet_tb_generator");
 
 #ifdef Q_OS_MAC
-success = process->startDetached("/Library/Frameworks/Python.framework/Versions/3.5/bin/qet_tb_generator");
+success = process->startDetached("/Library/Frameworks/Python.framework/Versions/3.5/bin/qet_tb_generator", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
 #else
-success = process->startDetached("qet_tb_generator");
+success = process->startDetached("qet_tb_generator", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
 #endif
 if ( !success ) {
 QMessageBox::warning(nullptr,
