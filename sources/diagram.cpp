@@ -310,8 +310,8 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 					case Qt::Key_Left:
 						for (Element *item : dc.m_elements)
 						{
-							left_position = item->mapRectFromScene(item->boundingRect()).x();
-							if (left_position >= this->sceneRect().left() - item->boundingRect().width())
+							left_position = item->sceneBoundingRect().x();
+							if(left_position <= 5)
 								return;
 						}
 						movement = QPointF(-xGrid, 0.0);
@@ -322,8 +322,8 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 					case Qt::Key_Up:
 						for(Element *item : dc.m_elements)
 						{
-							top_position = item->mapRectFromScene(item->boundingRect()).y();
-							if (top_position >= this->sceneRect().top() - item->boundingRect().height())
+							top_position = item->sceneBoundingRect().y();
+							if(top_position <= 5)
 								return;
 						}
 						movement = QPointF(0.0, -yGrid);
