@@ -1985,13 +1985,13 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="183"/>
         <source>chargement</source>
-        <translation>hente</translation>
+        <translation>indlæser</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="344"/>
         <source>Supprimer l&apos;élément ?</source>
         <comment>message box title</comment>
-        <translation>Slet symbol?</translation>
+        <translation>Slette symbol?</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="345"/>
@@ -2005,7 +2005,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="356"/>
         <source>Suppression de l&apos;élément</source>
         <comment>message box title</comment>
-        <translation>Slet symbol</translation>
+        <translation>Slette symbol</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="357"/>
@@ -2017,7 +2017,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="376"/>
         <source>Supprimer le dossier?</source>
         <comment>message box title</comment>
-        <translation>Slet mappe?</translation>
+        <translation>Slette mappe?</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="377"/>
@@ -2025,7 +2025,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
 Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</source>
         <comment>message box content</comment>
         <translation>Skal mappen slettes?
-Alle elementer og fil indhold bliver slettet.</translation>
+Alle symboler og fil indhold bliver slettet.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="390"/>
@@ -3420,7 +3420,7 @@ Her kan standardværdien angives for dette felt for de oprettede symboler:</tran
     <message>
         <location filename="../sources/newelementwizard.cpp" line="109"/>
         <source>nouvel_element</source>
-        <translation>nyt_element</translation>
+        <translation>nyt_symbol</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="44"/>
@@ -3431,7 +3431,7 @@ Her kan standardværdien angives for dette felt for de oprettede symboler:</tran
         <location filename="../sources/newelementwizard.cpp" line="43"/>
         <source>Créer un nouvel élément : Assistant</source>
         <comment>window title</comment>
-        <translation>Opret nyt element: Guide</translation>
+        <translation>Opret nyt symbol: Guide</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="79"/>
@@ -4188,7 +4188,7 @@ Kommandovalg:
         <location filename="../sources/qetapp.cpp" line="1770"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
-        <translation>  --common-elements-dir=DIR     Angiv mappe for element samling
+        <translation>  --common-elements-dir=DIR     Angiv mappe for symbol samling
 </translation>
     </message>
     <message>
@@ -4344,7 +4344,7 @@ Kommandovalg:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="629"/>
         <source>Affiche ou non le panel d&apos;appareils</source>
-        <translation>Vis eller skjul Element panel</translation>
+        <translation>Vise eller skjule symbol panel</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="339"/>
@@ -5921,7 +5921,7 @@ betingelser ikke gyldig</translation>
         <location filename="../sources/qetmainwindow.cpp" line="102"/>
         <location filename="../sources/qetmainwindow.cpp" line="105"/>
         <source>Télécharger une nouvelle version (dev)</source>
-        <translation>Hent en ny version (udvikling)</translation>
+        <translation>Hente ny version (udvikling)</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="85"/>
