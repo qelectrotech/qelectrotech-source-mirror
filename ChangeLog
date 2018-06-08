@@ -30,6 +30,9 @@ This commit fix it, now the search function search for every terminals of a term
 * Add new feature -> alignment.
 * Alignment of text field can be edited.
 * Add new context menu action "group the selected texts".
+* Improve for new qet_tb_generator plug-in : add the full path of the current project as
+an argument when calling the plug-in from QET if a project is open. 
+If not a file dialog is showed to select the QET project.
 
 
 
@@ -54,8 +57,11 @@ This commit fix it, now the search function search for every terminals of a term
 * Fix crash when the properties of a element text item group
 * Fix crash occurred by the conductor and shape "ghost".
 * Fix element text alignment work also when font size change.
-
-
+* fix :
+1- When open a .qet by double click on it, QET ask user for open the backup file, of this .qet.
+2- On windows, if user open a project from the recent files menu, when close QET the file is deleted ￼  user lose her work.
+clear the element texts when paste an element with the option "Do not store the labels of items in the copy paste" enabled.
+* elements can't be moved up and left, when there rotation are different than 0.
 
 
 
