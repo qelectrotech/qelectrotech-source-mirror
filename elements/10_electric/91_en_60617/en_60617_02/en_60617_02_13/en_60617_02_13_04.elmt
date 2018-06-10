@@ -2,6 +2,7 @@
     <uuid uuid="{f0f4e724-d257-4420-91ab-51ad382fbd97}"/>
     <names>
         <name lang="fr">Commande rotative</name>
+        <name lang="es">Accionado por giro</name>
         <name lang="de">Betätigung durch Drehen </name>
     </names>
     <informations>Author: The QElectroTech team

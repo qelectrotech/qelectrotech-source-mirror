@@ -1,10 +1,9 @@
 <definition hotspot_x="14" version="0.70" orientation="dyyy" height="10" hotspot_y="4" width="30" type="element" link_type="simple">
     <uuid uuid="{d73903a0-ca13-4932-a9ab-5b5b8a2e155a}"/>
     <names>
-        <name lang="fr">Impression et perforation simultanées sur la
-même bande</name>
-        <name lang="de">gleichzeitiges Bedrucken und Lochen von
-Streifen</name>
+        <name lang="fr">Impression et perforation simultanées sur la même bande</name>
+        <name lang="es">Impresión y perforación simultáneas en la misma cinta</name>
+        <name lang="de">gleichzeitiges Bedrucken und Lochen von Streifen</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

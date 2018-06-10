@@ -1,10 +1,9 @@
 <definition hotspot_x="14" version="0.70" orientation="dyyy" height="10" hotspot_y="4" width="30" type="element" link_type="simple">
     <uuid uuid="{3195ba60-e7cc-4848-bdb7-c478b2cc6695}"/>
     <names>
-        <name lang="fr">Perforation de bande ou utilisation de bande
-perforée</name>
-        <name lang="de">Lochen von Streifen oder Verwendung von
-Lochstreifen</name>
+        <name lang="fr">Perforation de bande ou utilisation de bande perforée</name>
+        <name lang="es">Perforación de la cinta o uso de cinta perforada</name>
+        <name lang="de">Lochen von Streifen oder Verwendung von Lochstreifen</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

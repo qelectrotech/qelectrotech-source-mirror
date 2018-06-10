@@ -2,6 +2,7 @@
     <uuid uuid="{e07c1aea-49df-4b9f-b472-8f801ba67cb8}"/>
     <names>
         <name lang="fr">Commande par levier</name>
+        <name lang="es">Accionado por palanca</name>
         <name lang="de">Betätigung durch Hebel</name>
     </names>
     <informations>Author: The QElectroTech team

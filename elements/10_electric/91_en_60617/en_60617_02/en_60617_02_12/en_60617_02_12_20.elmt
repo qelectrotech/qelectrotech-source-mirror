@@ -2,6 +2,7 @@
     <uuid uuid="{a2c8b5ae-754e-4dac-92be-36d8fa756b36}"/>
     <names>
         <name lang="fr">Frein</name>
+        <name lang="es">Freno</name>
         <name lang="de">Bremse</name>
     </names>
     <informations>Author: The QElectroTech team

@@ -2,6 +2,7 @@
     <uuid uuid="{27e6ed0b-2c94-468a-97a0-bde41ab792b4}"/>
     <names>
         <name lang="fr">Emission</name>
+        <name lang="es">Emision</name>
         <name lang="de">Senden</name>
     </names>
     <informations>Author: The QElectroTech team

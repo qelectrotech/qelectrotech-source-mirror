@@ -2,6 +2,7 @@
     <uuid uuid="{3a40fd6e-9b58-4707-9943-eb0594de484b}"/>
     <names>
         <name lang="fr">Effet thermique</name>
+        <name lang="es">Efecto térmico</name>
         <name lang="de">thermische Wirkung</name>
     </names>
     <informations>Author: The QElectroTech team

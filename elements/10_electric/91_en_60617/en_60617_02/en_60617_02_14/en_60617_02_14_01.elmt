@@ -2,6 +2,7 @@
     <uuid uuid="{1c0bf4c3-44c4-4bbe-a788-27b625e1eabd}"/>
     <names>
         <name lang="fr">Actionné par le niveau d'un liquide</name>
+        <name lang="es">Accionado por el nivel de liquido</name>
         <name lang="de">ausgelöst durch Flüssigkeitspegel</name>
     </names>
     <informations>Author: The QElectroTech team

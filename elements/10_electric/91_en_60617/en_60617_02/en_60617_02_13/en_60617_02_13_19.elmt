@@ -2,6 +2,7 @@
     <uuid uuid="{f43ad5b8-94c8-4ef8-8c8e-c69962cd5271}"/>
     <names>
         <name lang="fr">Commande par came et galet</name>
+        <name lang="es">Accionado por leva y rodillo</name>
         <name lang="de">Betätigung durch Nocken und Rolle</name>
     </names>
     <informations>Author: The QElectroTech team

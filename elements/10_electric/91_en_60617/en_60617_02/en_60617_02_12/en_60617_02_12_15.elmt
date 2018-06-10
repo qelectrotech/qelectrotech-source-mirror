@@ -2,6 +2,7 @@
     <uuid uuid="{1bf21b3e-ca59-4b1c-b252-a8b98b531674}"/>
     <names>
         <name lang="fr">Dispositif de blocage engagé</name>
+        <name lang="es">Dispositvo de bloqueo, ocupado movimiento a la izquierda bloqueado</name>
         <name lang="de">Blockiereinrichtung, verklinkt</name>
     </names>
     <informations>Author: The QElectroTech team

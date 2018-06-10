@@ -2,6 +2,7 @@
     <uuid uuid="{fc21f89a-9c00-4106-8b5f-6d2e32191ab9}"/>
     <names>
         <name lang="fr">Commande par horloge électrique</name>
+        <name lang="es">Accionado por reloj</name>
         <name lang="de">Betätigung durch Uhr</name>
     </names>
     <informations>Author: The QElectroTech team

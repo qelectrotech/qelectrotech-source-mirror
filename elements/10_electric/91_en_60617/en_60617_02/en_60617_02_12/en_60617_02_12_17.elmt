@@ -2,6 +2,7 @@
     <uuid uuid="{1e6f1ab2-df58-48ac-97ed-81d7d6aab1d9}"/>
     <names>
         <name lang="fr">Accouplement mécanique débrayé</name>
+        <name lang="es">Acoplamiento mecánico, liberado</name>
         <name lang="de">Kupplung, gelöst</name>
     </names>
     <informations>Author: The QElectroTech team

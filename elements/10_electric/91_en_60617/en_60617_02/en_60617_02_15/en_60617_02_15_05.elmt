@@ -2,6 +2,7 @@
     <uuid uuid="{9b290419-a69f-47a5-8b22-b8753ee4adc6}"/>
     <names>
         <name lang="fr">Equipotentialité</name>
+        <name lang="es">Equipotential</name>
         <name lang="de">Äquipotentia</name>
     </names>
     <informations>Author: The QElectroTech team

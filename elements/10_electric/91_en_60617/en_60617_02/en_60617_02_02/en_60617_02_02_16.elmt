@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Conducteur médian</name>
         <name lang="de">Mittelleiter </name>
+        <name lang="es">Medio</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

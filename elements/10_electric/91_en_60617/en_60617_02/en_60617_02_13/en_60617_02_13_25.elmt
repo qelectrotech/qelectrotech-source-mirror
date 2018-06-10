@@ -2,6 +2,7 @@
     <uuid uuid="{476978ab-ba49-445d-9e4e-14a1cf0e2a83}"/>
     <names>
         <name lang="fr">Actionné par un dispositif thermique</name>
+        <name lang="es">Accionado por dispositivo térmico</name>
         <name lang="de">ausgelöst durch thermischen Effekt z.B.:
 Überstromschutz</name>
     </names>

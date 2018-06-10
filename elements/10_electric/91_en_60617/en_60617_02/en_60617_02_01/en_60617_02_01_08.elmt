@@ -1,10 +1,9 @@
 <definition version="0.70" width="30" hotspot_x="15" type="element" link_type="simple" height="40" orientation="dyyy" hotspot_y="20">
     <uuid uuid="{633e58a3-61e4-4a71-9387-b6ea0b141233}"/>
     <names>
-        <name lang="de">Schutz gegen direkten Kontakt, nicht
-beabsichtigt</name>
-        <name lang="fr">Protection contre le contact direct non
-intentionnel</name>
+        <name lang="de">Schutz gegen direkten Kontakt, nicht beabsichtigt</name>
+        <name lang="fr">Protection contre le contact direct non intentionnel</name>
+        <name lang="es">Protección contra el contacto directo no intencional</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

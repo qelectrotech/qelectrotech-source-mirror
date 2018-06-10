@@ -1,12 +1,9 @@
 <definition version="0.70" width="20" hotspot_x="10" type="element" link_type="simple" height="20" orientation="dyyy" hotspot_y="10">
     <uuid uuid="{1dc3f121-5674-4234-a170-02293a704e41}"/>
     <names>
-        <name lang="de">bidirektionale kreisförmige Bewegung
-bidirektionale Drehung
-bidirektionales Drehmoment</name>
-        <name lang="fr">Mouvement circulaire bidirectionnel
-Rotation bidirectionnelle
-Couple bidirectionnel</name>
+        <name lang="de">bidirektionale kreisförmige Bewegung bidirektionale Drehung bidirektionales Drehmoment</name>
+        <name lang="es">Par bidireccional de rotación bidireccional Rotación bidireccional</name>
+        <name lang="fr">Mouvement circulaire bidirectionnel Rotation bidirectionnelle Couple bidirectionnel</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

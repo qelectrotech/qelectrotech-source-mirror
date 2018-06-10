@@ -2,6 +2,7 @@
     <uuid uuid="{5041cee5-c296-491d-b19b-31081c8806f2}"/>
     <names>
         <name lang="fr">Effet semi-conducteur</name>
+        <name lang="es">Efecto semiconductor</name>
         <name lang="de">Halbleitereffekt</name>
     </names>
     <informations>Author: The QElectroTech team

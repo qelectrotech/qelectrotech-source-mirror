@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Actionneur manuel protégé contre une
 opération non intentionnelle</name>
+        <name lang="es">Accionado manual, protegido por una operación no intencional</name>
         <name lang="de">Handantrieb mit beschränktem Zugriff</name>
     </names>
     <informations>Author: The QElectroTech team

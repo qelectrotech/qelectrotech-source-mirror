@@ -2,6 +2,7 @@
     <uuid uuid="{f1297490-28ea-489e-8637-b7b5dfba9923}"/>
     <names>
         <name lang="fr">Frein desserré</name>
+        <name lang="es">Motor eléctrico con freno liberado</name>
         <name lang="de">Bremse gelöst</name>
     </names>
     <informations>Author: The QElectroTech team

@@ -2,6 +2,7 @@
     <uuid uuid="{75f4f150-7c5c-42dc-89a4-65dbedb3144d}"/>
     <names>
         <name lang="fr">Terre sans bruit</name>
+        <name lang="es">Tierra de bajo voltaje</name>
         <name lang="de">fremdspannungsarme Erde</name>
     </names>
     <informations>Author: The QElectroTech team

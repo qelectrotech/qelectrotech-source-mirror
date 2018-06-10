@@ -2,6 +2,7 @@
     <uuid uuid="{844d5793-1630-4cf9-b04f-762ddecd219a}"/>
     <names>
         <name lang="fr">Commande par pédale</name>
+        <name lang="es">Accionado por pedal</name>
         <name lang="de">Betätigung durch Pedal</name>
     </names>
     <informations>Author: The QElectroTech team

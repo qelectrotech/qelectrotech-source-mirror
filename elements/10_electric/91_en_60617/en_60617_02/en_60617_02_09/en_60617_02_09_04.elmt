@@ -1,10 +1,9 @@
 <definition hotspot_x="25" version="0.70" orientation="dyyy" height="20" hotspot_y="15" width="50" type="element" link_type="simple">
     <uuid uuid="{5430b28e-7878-446a-bce5-39cc59777f0a}"/>
     <names>
-        <name lang="fr">Rayonnement électromagnétique, non ionisant,
-bidirectionnel, par exemple rada</name>
-        <name lang="de">elektromagnetische Strahlung, nicht
-ionisierend, bidirektional, z.B.:: Rada</name>
+        <name lang="fr">Rayonnement électromagnétique, non ionisant, bidirectionnel, par exemple rada</name>
+        <name lang="es">Radiación electromagnética, no ionizante, bidireccional, por ejemplo radar</name>
+        <name lang="de">elektromagnetische Strahlung, nicht ionisierend, bidirektional, z.B.:: Rada</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

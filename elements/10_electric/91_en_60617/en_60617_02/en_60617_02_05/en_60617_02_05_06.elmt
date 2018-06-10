@@ -2,6 +2,7 @@
     <uuid uuid="{6dd64888-e0fb-427c-b249-79cb9ff8e43c}"/>
     <names>
         <name lang="fr">Transit de l'énergie issue des barres</name>
+        <name lang="es">Tránsito de energía de barras</name>
         <name lang="de">Energiefluß von der Sammelschiene weg</name>
     </names>
     <informations>Author: The QElectroTech team

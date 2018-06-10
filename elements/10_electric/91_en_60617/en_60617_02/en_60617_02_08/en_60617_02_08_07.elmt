@@ -2,6 +2,7 @@
     <uuid uuid="{855a74bf-de57-4f35-981c-c53106ad10f3}"/>
     <names>
         <name lang="fr">Effet de couplage avec séparation électrique</name>
+        <name lang="es">Efecto de acoplamiento con separación eléctrica</name>
         <name lang="de">Koppeleffekt mit elektrischer Schutztrennung</name>
     </names>
     <informations>Author: The QElectroTech team

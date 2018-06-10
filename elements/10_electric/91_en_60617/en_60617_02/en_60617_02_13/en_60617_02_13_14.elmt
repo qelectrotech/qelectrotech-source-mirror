@@ -2,6 +2,7 @@
     <uuid uuid="{cd117373-801a-410d-bd10-948cf03d0f9e}"/>
     <names>
         <name lang="fr">Commande par manivelle</name>
+        <name lang="es">Accionado por manibela</name>
         <name lang="de">Betätigung durch Kurbel</name>
     </names>
     <informations>Author: The QElectroTech team

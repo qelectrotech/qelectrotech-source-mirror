@@ -1,10 +1,9 @@
 <definition version="0.70" width="30" hotspot_x="14" type="element" link_type="simple" height="20" orientation="dyyy" hotspot_y="13">
     <uuid uuid="{fe56f0c5-d8af-487d-a78c-b1b098c8f8b8}"/>
     <names>
-        <name lang="de">Wechselstrom, verschiedene
-Frequenzbereiche</name>
-        <name lang="fr">Courant alternatif, différentes bandes de
-fréquences</name>
+        <name lang="de">Wechselstrom, verschiedene Frequenzbereiche</name>
+        <name lang="fr">Courant alternatif, différentes bandes de fréquences</name>
+        <name lang="es">Corriente alterna trifásica</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

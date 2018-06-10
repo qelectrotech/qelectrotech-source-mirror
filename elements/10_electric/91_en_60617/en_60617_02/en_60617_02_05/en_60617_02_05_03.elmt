@@ -1,13 +1,9 @@
 <definition type="element" width="30" height="10" version="0.70" hotspot_x="15" hotspot_y="5" orientation="dyyy" link_type="simple">
     <uuid uuid="{5b0643b8-58d2-42d1-8670-40a8c92d75e3}"/>
     <names>
-        <name lang="fr">Propagations non simultanées dans les deux
-sens
-Emission et réception alternées</name>
-        <name lang="de">Ausbreitung in beide Richtungen, nicht
-gleichzeitig
-abwechselnd Senden und Empfangen
-(halbduplex)</name>
+        <name lang="fr">Propagations non simultanées dans les deux sens Emission et réception alternées</name>
+        <name lang="es">Propagación no simultánea en ambas direcciones Transmisión y recepción alternativas</name>
+        <name lang="de">Ausbreitung in beide Richtungen, nicht gleichzeitig abwechselnd Senden und Empfangen (halbduplex)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

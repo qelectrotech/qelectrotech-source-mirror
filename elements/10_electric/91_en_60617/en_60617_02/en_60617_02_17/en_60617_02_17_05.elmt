@@ -2,6 +2,7 @@
     <uuid uuid="{f60e93f6-ebf9-4c74-93f8-62381735a914}"/>
     <names>
         <name lang="fr">Indicateur de point de contrôle</name>
+        <name lang="es">Punto de control</name>
         <name lang="de">Prüfpunkthinweis</name>
     </names>
     <informations>Author: The QElectroTech team

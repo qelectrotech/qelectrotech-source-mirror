@@ -3,6 +3,7 @@
     <names>
         <name lang="de">Halbleiter</name>
         <name lang="fr">Semi-conducteur</name>
+        <name lang="es">Semiconductor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

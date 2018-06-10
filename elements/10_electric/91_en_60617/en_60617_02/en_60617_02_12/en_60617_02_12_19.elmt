@@ -2,6 +2,7 @@
     <uuid uuid="{662fbf1e-62a1-4369-af53-1cd92cc8fd64}"/>
     <names>
         <name lang="fr">Accouplement mécanique embrayé</name>
+        <name lang="es">Dispositivo de acoplamiento unidireccional</name>
         <name lang="de">Kupplung, gekuppelt</name>
     </names>
     <informations>Author: The QElectroTech team

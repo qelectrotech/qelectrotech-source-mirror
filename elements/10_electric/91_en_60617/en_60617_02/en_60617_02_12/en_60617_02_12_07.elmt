@@ -3,6 +3,7 @@
     <names>
         <name lang="fr">Retour automatique</name>
         <name lang="de">selbsttätiger Rückgang</name>
+        <name lang="es">Retorno automático (sentido de la flecha)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -2,6 +2,7 @@
     <uuid uuid="{bc6e4879-01cd-491a-8dd5-a025c953247e}"/>
     <names>
         <name lang="fr">Fonction échelon positive</name>
+        <name lang="es">Función de paso positivo</name>
         <name lang="de">positive Schrittfunktion</name>
     </names>
     <informations>Author: The QElectroTech team

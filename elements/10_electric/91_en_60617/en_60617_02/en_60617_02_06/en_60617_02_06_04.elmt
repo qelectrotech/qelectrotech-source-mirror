@@ -1,10 +1,11 @@
 <definition orientation="dyyy" version="0.70" width="20" type="element" hotspot_y="14" link_type="simple" hotspot_x="8" height="20">
     <uuid uuid="{f3c9863c-db9e-4c64-9692-5fd14fc4fec5}"/>
     <names>
-        <name lang="fr">Actionné lorsque la grandeur caractéristique est
-égale à zéro</name>
+            <name lang="fr">Actionné lorsque la grandeur caractéristique est
+    égale à zéro</name>
         <name lang="de">auslösend, wenn der Wert der
 charakteristischen Größe gleich Null ist</name>
+        <name lang="es">Operado cuando la cantidad característica es igual a cero</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

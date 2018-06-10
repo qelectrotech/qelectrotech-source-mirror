@@ -1,12 +1,9 @@
 <definition version="0.70" width="20" hotspot_x="9" type="element" link_type="simple" height="20" orientation="dyyy" hotspot_y="10">
     <uuid uuid="{1fe99a36-46a5-4bf3-9fd3-f22a782803b0}"/>
     <names>
-        <name lang="de">einfachgerichtete kreisförmige Bewegung
-einfachgerichtete Drehung
-einfachgerichtetes Drehmoment</name>
-        <name lang="fr">Mouvement circulaire unidirectionnel
-Rotation unidirectionnelle
-Couple unidirectionnel</name>
+        <name lang="de">einfachgerichtete kreisförmige Bewegung einfachgerichtete Drehung einfachgerichtetes Drehmoment</name>
+        <name lang="es">Movimiento circular unidireccional Rotación unidireccional Par unidireccional</name>
+        <name lang="fr">Mouvement circulaire unidirectionnel Rotation unidirectionnelle Couple unidirectionnel</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

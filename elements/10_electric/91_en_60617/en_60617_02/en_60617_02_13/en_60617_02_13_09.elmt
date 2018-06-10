@@ -2,6 +2,7 @@
     <uuid uuid="{8ed642df-b9a8-4333-917c-71538b2adc13}"/>
     <names>
         <name lang="fr">Commande par volant</name>
+        <name lang="es">Accionado por volante</name>
         <name lang="de">Betätigung durch Handrad</name>
     </names>
     <informations>Author: The QElectroTech team

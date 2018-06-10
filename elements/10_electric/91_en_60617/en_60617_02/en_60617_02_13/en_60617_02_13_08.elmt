@@ -2,6 +2,7 @@
     <uuid uuid="{f23693cf-1ee3-48ca-b65e-282a2f28484d}"/>
     <names>
         <name lang="fr">Actionneur d'urgence, type «coup de poing»</name>
+        <name lang="es">Accionado por energia mecánica almacenada</name>
         <name lang="de">Notschalter, Typ "Pilz-Notdrucktaster"</name>
     </names>
     <informations>Author: The QElectroTech team

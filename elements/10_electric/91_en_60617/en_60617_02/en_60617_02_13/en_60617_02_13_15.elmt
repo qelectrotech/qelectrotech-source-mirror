@@ -2,6 +2,7 @@
     <uuid uuid="{9c7fbd32-cc73-4517-b70f-e2b225bd5635}"/>
     <names>
         <name lang="fr">Commande par galet</name>
+        <name lang="es">Accionado por rodillo</name>
         <name lang="de">Betätigung durch Rolle</name>
     </names>
     <informations>Author: The QElectroTech team

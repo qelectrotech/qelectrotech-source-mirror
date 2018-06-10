@@ -2,6 +2,7 @@
     <uuid uuid="{ff988394-f762-4a79-8550-7a46c15c728a}"/>
     <names>
         <name lang="fr">Actionneur à semi-conducteur</name>
+        <name lang="es">Accionado por semiconductores</name>
         <name lang="de">Halbleiterantrieb</name>
     </names>
     <informations>Author: The QElectroTech team

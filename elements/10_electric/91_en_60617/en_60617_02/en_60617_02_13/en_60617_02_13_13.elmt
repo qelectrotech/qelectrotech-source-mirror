@@ -2,6 +2,7 @@
     <uuid uuid="{801729e0-cd3c-4adc-b653-64a723360ad0}"/>
     <names>
         <name lang="fr">Commande par clef</name>
+        <name lang="es">Accionado por llave</name>
         <name lang="de">Betätigung durch Schlüssel </name>
     </names>
     <informations>Author: The QElectroTech team

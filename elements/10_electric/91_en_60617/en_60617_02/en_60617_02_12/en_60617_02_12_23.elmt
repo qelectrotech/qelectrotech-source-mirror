@@ -2,6 +2,7 @@
     <uuid uuid="{482f3f0b-cebf-49cd-a3a0-33eda73baae4}"/>
     <names>
         <name lang="fr">Engrenage</name>
+        <name lang="es">Engranajes</name>
         <name lang="de">Getriebe</name>
     </names>
     <informations>Author: The QElectroTech team

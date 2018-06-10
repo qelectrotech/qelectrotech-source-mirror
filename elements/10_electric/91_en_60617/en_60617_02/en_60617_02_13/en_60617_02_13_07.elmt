@@ -2,6 +2,7 @@
     <uuid uuid="{c0ac2f5e-c04b-4755-8752-17e02111e62f}"/>
     <names>
         <name lang="fr">Commande par effleurement</name>
+        <name lang="es">Accionado por dispositivo térmico</name>
         <name lang="de">Betätigung durch Berühren</name>
     </names>
     <informations>Author: The QElectroTech team

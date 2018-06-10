@@ -2,6 +2,7 @@
     <uuid uuid="{afe370b8-8988-44c7-8254-6613c032af4d}"/>
     <names>
         <name lang="fr">Commande manuelle amovible</name>
+        <name lang="es">Accionado por mango extraíble</name>
         <name lang="de">Betätigung durch abnehmbaren Griff</name>
     </names>
     <informations>Author: The QElectroTech team

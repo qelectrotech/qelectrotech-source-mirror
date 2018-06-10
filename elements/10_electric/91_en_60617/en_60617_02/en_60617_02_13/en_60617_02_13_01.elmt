@@ -2,6 +2,7 @@
     <uuid uuid="{1dd720de-9d9a-4e84-8c2a-f41ad3e0acd2}"/>
     <names>
         <name lang="fr">Actionneur manuel, symbole général</name>
+        <name lang="es">Accionado manual, simbolo general</name>
         <name lang="de">Handantrieb</name>
     </names>
     <informations>Author: The QElectroTech team

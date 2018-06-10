@@ -2,6 +2,7 @@
     <uuid uuid="{8d5cec9e-78e0-4839-a213-279e8a663472}"/>
     <names>
         <name lang="fr">Commande par tirette</name>
+        <name lang="es">Accionado por halamiento</name>
         <name lang="de">Betätigung durch Ziehen</name>
     </names>
     <informations>Author: The QElectroTech team

@@ -2,6 +2,7 @@
     <uuid uuid="{6bce70ca-75fa-47c6-ab46-db10c884c99f}"/>
     <names>
         <name lang="fr">Impulsion de courant alternatif</name>
+        <name lang="es">Impulso de corriente alterna</name>
         <name lang="de">Wechselstrom-Impuls</name>
     </names>
     <informations>Author: The QElectroTech team

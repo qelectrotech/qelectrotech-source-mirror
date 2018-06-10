@@ -2,6 +2,7 @@
     <uuid uuid="{f08d3519-b54a-4ec1-956b-71c326a7aed2}"/>
     <names>
         <name lang="fr">Temporisation</name>
+        <name lang="es">Tiempo de espera</name>
         <name lang="de">Verzögerung</name>
     </names>
     <informations>Author: The QElectroTech team

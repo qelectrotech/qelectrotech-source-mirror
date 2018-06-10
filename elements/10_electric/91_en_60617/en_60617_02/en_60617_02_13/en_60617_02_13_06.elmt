@@ -2,6 +2,7 @@
     <uuid uuid="{339ce204-2233-4a39-9558-3d66c2436d9b}"/>
     <names>
         <name lang="fr">Commande par effet de proximité</name>
+        <name lang="es">Accionado por dispositivo electromagnético</name>
         <name lang="de">Betätigung durch Annähern</name>
     </names>
     <informations>Author: The QElectroTech team

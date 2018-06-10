@@ -1,12 +1,9 @@
 <definition hotspot_x="17" version="0.70" orientation="dyyy" height="20" hotspot_y="17" width="20" type="element" link_type="simple">
     <uuid uuid="{259cbd68-fd30-4318-8083-b55fc31468b9}"/>
     <names>
-        <name lang="fr">Rayonnement électromagnétique non ionisant,
-par exemple ondes radioélectriques ou lumière
-visible</name>
-        <name lang="de">elektromagnetische Strahlung, nicht
-ionisierend, z.B.:: Radiowellen oder sichtbares
-Licht</name>
+        <name lang="fr">Rayonnement électromagnétique non ionisant, par exemple ondes radioélectriques ou lumière visible</name>
+        <name lang="es">Radiación electromagnética no ionizante, p. Ej. Ondas de radio o luz visible</name>
+        <name lang="de">elektromagnetische Strahlung, nicht ionisierend, z.B.:: Radiowellen oder sichtbares Licht</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -2,6 +2,7 @@
     <uuid uuid="{2acf818e-2db5-4885-b3f1-57fbb1db5d41}"/>
     <names>
         <name lang="fr">Transit de l'énergie dans les deux sens</name>
+        <name lang="es">Tránsito de energía en ambas direcciones</name>
         <name lang="de">Energiefluß, bidirektional</name>
     </names>
     <informations>Author: The QElectroTech team

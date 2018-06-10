@@ -2,6 +2,7 @@
     <uuid uuid="{945048be-2a49-4e12-929c-592723b9bf64}"/>
     <names>
         <name lang="fr">Fonction échelon négative</name>
+        <name lang="es">Función de paso negativo</name>
         <name lang="de">negative Schrittfunktion</name>
     </names>
     <informations>Author: The QElectroTech team

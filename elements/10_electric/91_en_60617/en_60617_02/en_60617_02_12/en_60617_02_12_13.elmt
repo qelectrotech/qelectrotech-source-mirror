@@ -2,6 +2,7 @@
     <uuid uuid="{0ea0515a-e8b2-4ff9-9416-5a0944e30e52}"/>
     <names>
         <name lang="fr">Dispositif d`accrochage engagé</name>
+        <name lang="es">Dispositivo de encerrojamiento, ocupado</name>
         <name lang="de">Sperre, verklinkt</name>
     </names>
     <informations>Author: The QElectroTech team

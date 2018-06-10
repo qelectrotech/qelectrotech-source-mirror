@@ -2,6 +2,7 @@
     <uuid uuid="{9dc13e47-c0b9-4660-8a5e-2ef19c6078ab}"/>
     <names>
         <name lang="fr">Rayonnement ionisant</name>
+        <name lang="es">Radiación ionizante</name>
         <name lang="de">ionisierende Strahlung </name>
     </names>
     <informations>Author: The QElectroTech team

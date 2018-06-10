@@ -2,6 +2,7 @@
     <uuid uuid="{af574fa2-6057-48dc-8816-06267364c636}"/>
     <names>
         <name lang="fr">Contact mobile (par exemple glissant)</name>
+        <name lang="es">contacto móvil (por ejemplo: contacto deslizante)</name>
         <name lang="de">bewegbarer Kontakt (z.B.: Schleifkontakt)</name>
     </names>
     <informations>Author: The QElectroTech team

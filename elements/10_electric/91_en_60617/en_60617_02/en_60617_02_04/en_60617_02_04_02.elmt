@@ -1,10 +1,9 @@
 <definition version="0.70" width="20" hotspot_x="10" type="element" link_type="simple" height="10" orientation="dyyy" hotspot_y="5">
     <uuid uuid="{07d72cf9-f01e-40a5-b769-f5aac85f5848}"/>
     <names>
-        <name lang="de">bidirektionale Kraft
-bidirektionale geradlinige Bewegung</name>
-        <name lang="fr">Effort bidirectionnel
-Mouvement rectilinéaire bidirectionnel</name>
+        <name lang="de">bidirektionale Kraft bidirektionale geradlinige Bewegung</name>
+        <name lang="es">Esfuerzo bidireccional Movimiento rectilíneo bidireccional</name>
+        <name lang="fr">Effort bidirectionnel Mouvement rectilinéaire bidirectionnel</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -2,6 +2,7 @@
     <uuid uuid="{85b1d9c4-659c-49de-abcc-b067e93a62b0}"/>
     <names>
         <name lang="fr">Impression sur page</name>
+        <name lang="es">Imprimir en la página</name>
         <name lang="de">Drucken auf Blatt</name>
     </names>
     <informations>Author: The QElectroTech team

@@ -2,6 +2,7 @@
     <uuid uuid="{c3c8ee62-90d1-40cf-82d8-1cbcc7cdc57f}"/>
     <names>
         <name lang="fr">Dispositif de blocage</name>
+        <name lang="es">Dispositivo de bloqueo</name>
         <name lang="de">Blockiereinrichtung</name>
     </names>
     <informations>Author: The QElectroTech team

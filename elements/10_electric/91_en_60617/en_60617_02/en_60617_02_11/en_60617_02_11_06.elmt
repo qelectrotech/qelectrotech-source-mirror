@@ -2,6 +2,7 @@
     <uuid uuid="{6442efa5-38e1-454b-a502-879d5a03d501}"/>
     <names>
         <name lang="fr">Télécopie</name>
+        <name lang="es">fax</name>
         <name lang="de">Fernkopieren</name>
     </names>
     <informations>Author: The QElectroTech team

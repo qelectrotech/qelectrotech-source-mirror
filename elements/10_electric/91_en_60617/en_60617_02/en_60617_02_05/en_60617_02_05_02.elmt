@@ -1,11 +1,9 @@
 <definition type="element" width="30" height="10" version="0.70" hotspot_x="15" hotspot_y="5" orientation="dyyy" link_type="simple">
     <uuid uuid="{5fc0c1c9-2d75-4548-a75f-3e79c411cf5d}"/>
     <names>
-        <name lang="fr">Propagations simultanées dans les deux sens
-Emission et réception simultanées</name>
-        <name lang="de">gleichzeitige Ausbreitung in beide Richtungen
-gleichzeitiges Senden und Empfangen
-(vollduplex)</name>
+        <name lang="fr">Propagations simultanées dans les deux sens Emission et réception simultanées</name>
+        <name lang="es">Propagación simultánea en ambas direcciones Transmisión y recepción simultáneas</name>
+        <name lang="de">gleichzeitige Ausbreitung in beide Richtungen gleichzeitiges Senden und Empfangen (vollduplex)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

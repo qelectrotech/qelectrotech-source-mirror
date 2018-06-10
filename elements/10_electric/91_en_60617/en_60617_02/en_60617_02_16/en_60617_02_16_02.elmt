@@ -2,6 +2,7 @@
     <uuid uuid="{3bd16745-0110-4b61-9bd2-b6e6ba40d1fa}"/>
     <names>
         <name lang="de">ideale Spannungsquelle</name>
+        <name lang="es">Fuente de voltaje ideal</name>
         <name lang="fr">Source idéale de tension</name>
     </names>
     <informations>Author: The QElectroTech team

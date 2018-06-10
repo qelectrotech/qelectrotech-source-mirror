@@ -2,6 +2,7 @@
     <uuid uuid="{c32d2f30-9896-4de4-9576-dc0b3a62d6d4}"/>
     <names>
         <name lang="fr">Commande par came</name>
+        <name lang="es">Accionado por levas</name>
         <name lang="de">Betätigung durch Nocken</name>
     </names>
     <informations>Author: The QElectroTech team

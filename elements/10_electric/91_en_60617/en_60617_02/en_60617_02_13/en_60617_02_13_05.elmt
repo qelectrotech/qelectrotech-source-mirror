@@ -2,6 +2,7 @@
     <uuid uuid="{317ce57c-13fe-48cf-a24a-49653a0e2101}"/>
     <names>
         <name lang="fr">Commande par poussoir</name>
+        <name lang="es">Accionado por presión manual</name>
         <name lang="de">Betätigung durch Drücken</name>
     </names>
     <informations>Author: The QElectroTech team

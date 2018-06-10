@@ -2,6 +2,7 @@
     <uuid uuid="{426cd82b-535e-4351-9f15-6b48becb8d66}"/>
     <names>
         <name lang="fr">Commande par moteur électrique</name>
+        <name lang="es">Accionado por un motor electrico</name>
         <name lang="de">Betätigung durch elektrischen Motor</name>
     </names>
     <informations>Author: The QElectroTech team

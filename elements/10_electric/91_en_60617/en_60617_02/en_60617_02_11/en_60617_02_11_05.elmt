@@ -2,6 +2,7 @@
     <uuid uuid="{52a895c2-b8cc-4a19-a1e5-0f4ec9454643}"/>
     <names>
         <name lang="fr">Clavier</name>
+        <name lang="es">teclado</name>
         <name lang="de">Tastatur </name>
     </names>
     <informations>Author: The QElectroTech team

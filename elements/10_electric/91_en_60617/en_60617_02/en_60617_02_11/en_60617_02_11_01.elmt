@@ -2,6 +2,7 @@
     <uuid uuid="{5efeb305-fbfc-4f1b-9f1c-af4d4650557d}"/>
     <names>
         <name lang="fr">Impression sur Bande</name>
+        <name lang="es">Impresión de banda</name>
         <name lang="de">Drucken auf einen Streifen </name>
     </names>
     <informations>Author: The QElectroTech team

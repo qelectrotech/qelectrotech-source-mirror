@@ -1,10 +1,9 @@
 <definition orientation="dyyy" version="0.70" width="40" type="element" hotspot_y="21" link_type="simple" hotspot_x="25" height="40">
     <uuid uuid="{c094c079-4cf4-48f4-b84c-75cf0cb591a3}"/>
     <names>
-        <name lang="fr">Masse
-Châssis</name>
-        <name lang="de">Masse
-Gehäuse</name>
+        <name lang="fr">Masse Châssis</name>
+        <name lang="es">Tierra de chasis</name>
+        <name lang="de">Masse Gehäuse</name>
         <name lang="en">Frame, chassis</name>
     </names>
     <informations>Author: The QElectroTech team
