@@ -33,7 +33,7 @@ This commit fix it, now the search function search for every terminals of a term
 * Improve for new qet_tb_generator plug-in : add the full path of the current project as
 an argument when calling the plug-in from QET if a project is open. 
 If not a file dialog is showed to select the QET project.
-
+* Add 4 tools for edit the depth (Z value) of items.
 
 
 * QET create a backup file, use to restore the project when a crash occur.
