@@ -205,6 +205,7 @@ class QETDiagramEditor : public QETMainWindow {
 	public:
 		QActionGroup m_row_column_actions_group; /// Action related to add/remove rows/column in diagram
 		QActionGroup m_selection_actions_group; ///Action related to edit a selected item
+		QActionGroup *m_depth_action_group = nullptr;
 	private:
 		QAction *m_delete_selection;				///< Delete selection
 		QAction *m_rotate_selection;				///< Rotate selected elements and text items by 90 degrees
@@ -219,22 +220,25 @@ class QETDiagramEditor : public QETMainWindow {
 
 		QMdiArea workspace;
 		QSignalMapper windowMapper;
-		/// Directory to use for file dialogs such as File > save
+			/// Directory to use for file dialogs such as File > save
 		QDir open_dialog_dir;
-		/// Dock for the elements panel
+			/// Dock for the elements panel
 		QDockWidget *qdw_pa;
 		QDockWidget *m_qdw_elmt_collection;
 		ElementsCollectionWidget *m_element_collection_widget;
-		/// Dock for the undo list
+			/// Dock for the undo list
 		QDockWidget *qdw_undo;
 		DiagramPropertiesEditorDockWidget *m_selection_properties_editor;
-		/// Elements panel
+			/// Elements panel
 		ElementsPanelWidget *pa;
 		QMenu *windows_menu;
-		QToolBar *main_bar;
-		QToolBar *view_bar;
-		QToolBar *diagram_bar;
-		QToolBar *m_add_item_toolBar;
+		
+		QToolBar *main_tool_bar       = nullptr,
+				 *view_tool_bar       = nullptr,
+				 *diagram_tool_bar    = nullptr,
+				 *m_add_item_tool_bar = nullptr,
+				 *m_depth_tool_bar    = nullptr;
+		
 		QUndoGroup undo_group;
 		// AutoNumbering Selection Dock
 		AutoNumberingDockWidget *m_autonumbering_dock;

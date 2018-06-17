@@ -44,6 +44,12 @@ QetShapeItem::QetShapeItem(QPointF p1, QPointF p2, ShapeType type, QGraphicsItem
     setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemSendsGeometryChanges);
 	setAcceptHoverEvents(true);
 	m_pen.setStyle(Qt::DashLine);
+		//ensure handlers are always above this item
+	connect(this, &QetShapeItem::zChanged, [this]()
+	{
+		for(QetGraphicsHandlerItem *qghi : m_handler_vector)
+			qghi->setZValue(this->zValue()+1);
+	});
 
 }
 
@@ -356,6 +362,7 @@ QVariant QetShapeItem::itemChange(QGraphicsItem::GraphicsItemChange change, cons
 
                 for(QetGraphicsHandlerItem *handler : m_handler_vector)
 				{
+					handler->setZValue(this->zValue()+1);
 					handler->setColor(Qt::blue);
                     scene()->addItem(handler);
 					handler->installSceneEventFilter(this);
@@ -614,6 +621,7 @@ bool QetShapeItem::fromXml(const QDomElement &e)
 	else
 		foreach(QDomElement de, QET::findInDomElement(e, "points", "point"))
 			m_polygon << QPointF(de.attribute("x", nullptr).toDouble(), de.attribute("y", nullptr).toDouble());
+	setZValue(e.attribute("z", QString::number(this->zValue())).toDouble());
 
 	return (true);
 }
@@ -656,6 +664,7 @@ QDomElement QetShapeItem::toXml(QDomDocument &document) const
 		}
 		result.appendChild(points);
 	}
+	result.setAttribute("z", QString::number(this->zValue()));
 
 	return(result);
 }

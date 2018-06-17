@@ -421,6 +421,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 		//Position and selection.
 		//We directly call setPos from QGraphicsObject, because QetGraphicsItem will snap to grid
 	QGraphicsObject::setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
+	setZValue(e.attribute("z", QString::number(this->zValue())).toDouble());
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 	
 	// orientation
@@ -724,9 +725,10 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 		element.appendChild(seq);
 	
 	// position, selection et orientation
-	element.setAttribute("x", QString("%1").arg(pos().x()));
-	element.setAttribute("y", QString("%1").arg(pos().y()));
-	element.setAttribute("orientation", QString("%1").arg(orientation()));
+	element.setAttribute("x", QString::number(pos().x()));
+	element.setAttribute("y", QString::number(pos().y()));
+	element.setAttribute("z", QString::number(this->zValue()));
+	element.setAttribute("orientation", QString::number(orientation()));
 	
 	/* recupere le premier id a utiliser pour les bornes de cet element */
 	int id_terminal = 0;

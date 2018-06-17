@@ -38,6 +38,7 @@
 #include "dynamicelementtextitem.h"
 #include "elementtextitemgroup.h"
 #include "undocommand/addelementtextcommand.h"
+#include "QPropertyUndoCommand/qpropertyundocommand.h"
 
 const int   Diagram::xGrid  = 10;
 const int   Diagram::yGrid  = 10;
@@ -1266,6 +1267,62 @@ void Diagram::loadFolioSeqHash(QHash<QString, QStringList> *hash, QString title,
 				j++;
 			}
 		}
+}
+
+/**
+ * @brief Diagram::changeZValue
+ * Change the Z value of the current selected item, according to @option
+ */
+void Diagram::changeZValue(QET::DepthOption option)
+{
+	DiagramContent dc(this);
+	QUndoCommand *undo = new QUndoCommand(tr("Modifier la profondeur"));
+	QList<QGraphicsItem *> l = dc.items(DiagramContent::SelectedOnly | \
+											 DiagramContent::Elements | \
+											 DiagramContent::Shapes | \
+											 DiagramContent::Images);
+	QList<QGraphicsObject *> list;
+	for(QGraphicsItem *item : l)
+		list << item->toGraphicsObject();
+	
+	qreal maxz=0,
+		  minz=0;
+	for(QGraphicsItem *item : this->items())
+	{
+		qreal z = item->zValue();
+		if(z >= Terminal::Z-2)
+			continue;
+		maxz = std::max(maxz,z);
+		minz = std::min(minz,z);	
+	}
+	
+	if(option == QET::Raise)
+	{
+		for(QGraphicsObject *qgo : list)
+			if(qgo->zValue() < (Terminal::Z-2))	//Ensure item is always below terminal
+				new QPropertyUndoCommand(qgo, "z", qgo->zValue(), qgo->zValue()+1, undo);
+	}
+	else if(option == QET::Lower)
+	{
+		for(QGraphicsObject *qgo : list)
+			if(qgo->zValue() < (Terminal::Z-2))	//Ensure item is always below terminal
+				new QPropertyUndoCommand(qgo, "z", qgo->zValue(), qgo->zValue()-1, undo);
+	}
+	else if (option == QET::BringForward)
+	{
+		for(QGraphicsObject *qgo : list)
+				new QPropertyUndoCommand(qgo, "z", qgo->zValue(), maxz+1, undo);
+	}
+	else if(option == QET::SendBackward)
+	{
+		for(QGraphicsObject *qgo : list)
+				new QPropertyUndoCommand(qgo, "z", qgo->zValue(), minz-1, undo);
+	}
+	
+	if(undo->childCount())
+		this->undoStack().push(undo);
+	else
+		delete undo;
 }
 
 /**

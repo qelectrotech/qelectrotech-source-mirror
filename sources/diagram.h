@@ -212,7 +212,7 @@ class Diagram : public QGraphicsScene
 			//methods related to insertion and loading of folio sequential
 		void insertFolioSeqHash (QHash<QString, QStringList> *hash, QString title, QString seq, NumerotationContext *nc);
 		void loadFolioSeqHash (QHash<QString, QStringList> *hash, QString title, QString seq, NumerotationContext *nc);
-
+		void changeZValue(QET::DepthOption option);
 
 	public slots:
 		void adjustSceneRect ();

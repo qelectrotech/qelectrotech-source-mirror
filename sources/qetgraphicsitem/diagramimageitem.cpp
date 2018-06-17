@@ -124,19 +124,27 @@ QString DiagramImageItem::name() const {
 }
 
 /**
-	Load the image from this xml element
-	@param e xml element that define an image
-*/
-bool DiagramImageItem::fromXml(const QDomElement &e) {
-	if (e.tagName() != "image") return (false);
+ * @brief DiagramImageItem::fromXml
+ * Load this image fro xml elemebt @e
+ * @param e
+ * @return true if succesfully load.
+ */
+bool DiagramImageItem::fromXml(const QDomElement &e)
+{
+	if (e.tagName() != "image") {
+		return (false);
+	}
+	
 	QDomNode image_node = e.firstChild();
-	if (!image_node.isText()) return (false);
+	if (!image_node.isText()) {
+		return (false);
+	}
 
-	//load xml image to QByteArray
+		//load xml image to QByteArray
 	QByteArray array;
 	array = QByteArray::fromBase64(e.text().toLatin1());
 
-	//Set QPixmap from the @array
+		//Set QPixmap from the @array
 	QPixmap pixmap;
 	pixmap.loadFromData(array);
 	setPixmap(pixmap);
@@ -145,6 +153,7 @@ bool DiagramImageItem::fromXml(const QDomElement &e) {
 	setRotation(e.attribute("rotation").toDouble());
 		//We directly call setPos from QGraphicsObject, because QetGraphicsItem will snap to grid
 	QGraphicsObject::setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
+	setZValue(e.attribute("z", QString::number(this->zValue())).toDouble());
 	is_movable_ = (e.attribute("is_movable").toInt());
 
 	return (true);
@@ -157,10 +166,11 @@ bool DiagramImageItem::fromXml(const QDomElement &e) {
 QDomElement DiagramImageItem::toXml(QDomDocument &document) const {
 	QDomElement result = document.createElement("image");
 	//write some attribute
-	result.setAttribute("x", QString("%1").arg(pos().x()));
-	result.setAttribute("y", QString("%1").arg(pos().y()));
-	result.setAttribute("rotation", QString("%1").arg(QET::correctAngle(rotation())));
-	result.setAttribute("size", QString("%1").arg(scale()));
+	result.setAttribute("x", QString::number(pos().x()));
+	result.setAttribute("y", QString::number(pos().y()));
+	result.setAttribute("z", QString::number(this->zValue()));
+	result.setAttribute("rotation", QString::number(QET::correctAngle(rotation())));
+	result.setAttribute("size", QString::number(scale()));
 	result.setAttribute("is_movable", bool(is_movable_));
 
 	//write the pixmap in the xml element after he was been transformed to base64

@@ -28,6 +28,7 @@ QColor Terminal::allowedColor      = QColor(Qt::darkGreen);
 QColor Terminal::warningColor      = QColor("#ff8000");
 QColor Terminal::forbiddenColor    = QColor(Qt::red);
 const qreal Terminal::terminalSize = 4.0;
+const qreal Terminal::Z = 1000;
 
 /**
 	Methode privee pour initialiser la borne.
@@ -68,6 +69,7 @@ void Terminal::init(QPointF pf, Qet::Orientation o, QString number, QString name
 	setAcceptedMouseButtons(Qt::LeftButton);
 	hovered_ = false;
 	setToolTip(QObject::tr("Borne", "tooltip"));
+	setZValue(Z);
 }
 
 /**

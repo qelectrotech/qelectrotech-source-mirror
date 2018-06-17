@@ -30,6 +30,14 @@ namespace QET {
 	const QString displayedVersion = "0.70-dev";
 	QString license();
 	
+		/// List the various kind of changes for the zValue
+	enum DepthOption {
+		BringForward, ///< Bring item to the foreground so they have the highest zValue
+		Raise,        ///< Raise item one layer above their current one; zValues are incremented
+		Lower,        ///< Send item one layer below their current one; zValues are decremented
+		SendBackward  ///< Send item to the background so they have the lowest zValue
+	};
+	
 	/// Oriented movements
 	enum OrientedMovement {
 		ToNorth,
@@ -164,6 +172,8 @@ namespace QET {
 	QPointF graphicsSceneEventPos(QEvent *);
 	bool eachStrIsEqual (const QStringList &qsl);
 }
+
+Q_DECLARE_METATYPE(QET::DepthOption)
 
 class Qet : public QObject {
 	Q_OBJECT

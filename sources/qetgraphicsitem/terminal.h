@@ -89,21 +89,21 @@ class Terminal : public QGraphicsObject
 	void mouseMoveEvent   (QGraphicsSceneMouseEvent *) override;
 	void mouseReleaseEvent(QGraphicsSceneMouseEvent *) override;
 	
-	// attributes
+		// attributes
 	public:
-	enum { Type = UserType + 1002 };
-	/// terminal length
-	static const qreal terminalSize;
-	
-	// Various static colors used for hover effects
-	/// default color
-	static QColor neutralColor;
-	/// color for legal actions
-	static QColor allowedColor;
-	/// color for allowed but fuzzy or not recommended  actions
-	static QColor warningColor;
-	/// color for forbidden actions
-	static QColor forbiddenColor;
+		enum { Type = UserType + 1002 };
+
+		static const qreal terminalSize;
+		static const qreal Z;
+			// Various static colors used for hover effects
+			/// default color
+		static QColor neutralColor;
+			/// color for legal actions
+		static QColor allowedColor;
+			/// color for allowed but fuzzy or not recommended  actions
+		static QColor warningColor;
+			/// color for forbidden actions
+		static QColor forbiddenColor;
 	
 	private:
 		bool               m_draw_help_line;

@@ -810,7 +810,6 @@ Terminal *CustomElement::parseTerminal(QDomElement &e) {
 	else if (e.attribute("orientation") == "w") terminalo = Qet::West;
 	else return(nullptr);
 	Terminal *new_terminal = new Terminal(terminalx, terminaly, terminalo, this);
-	new_terminal -> setZValue(420); // valeur arbitraire pour maintenir les bornes au-dessus des champs de texte
 	m_terminals << new_terminal;
 	
 		//Sort from top to bottom and left to rigth

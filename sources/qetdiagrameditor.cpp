@@ -513,56 +513,84 @@ void QETDiagramEditor::setUpActions()
 	connect(prev_window,        SIGNAL(triggered()), &workspace, SLOT(activatePreviousSubWindow()) );
 	connect(m_conductor_reset,    SIGNAL(triggered()), this,       SLOT(slot_resetConductors())      );
 	connect(infos_diagram,      SIGNAL(triggered()), this,       SLOT(editCurrentDiagramProperties()));
+	
+		//Depth action
+	m_depth_action_group = new QActionGroup(this);
+	
+	QAction *edit_forward  = new QAction(QET::Icons::BringForward, tr("Amener au premier plan"), m_depth_action_group);	
+	QAction *edit_raise    = new QAction(QET::Icons::Raise,        tr("Rapprocher"),             m_depth_action_group);
+	QAction *edit_lower    = new QAction(QET::Icons::Lower,        tr("Éloigner"),               m_depth_action_group);
+	QAction *edit_backward = new QAction(QET::Icons::SendBackward, tr("Envoyer au fond"),        m_depth_action_group);
+	
+	edit_raise   ->setShortcut(QKeySequence(tr("Ctrl+Shift+Up")));
+	edit_lower   ->setShortcut(QKeySequence(tr("Ctrl+Shift+Down")));
+	edit_backward->setShortcut(QKeySequence(tr("Ctrl+Shift+End")));
+	edit_forward ->setShortcut(QKeySequence(tr("Ctrl+Shift+Home")));
+	
+	edit_forward ->setData(QET::BringForward);
+	edit_raise   ->setData(QET::Raise);
+	edit_lower   ->setData(QET::Lower);
+	edit_backward->setData(QET::SendBackward);
+	m_depth_action_group->setDisabled(true);
+	
+	connect(m_depth_action_group, &QActionGroup::triggered, [this](QAction *action) {
+		this->currentDiagramView()->diagram()->changeZValue(action->data().value<QET::DepthOption>());
+	});
 }
 
 /**
  * @brief QETDiagramEditor::setUpToolBar
  */
-void QETDiagramEditor::setUpToolBar() {
-	main_bar = new QToolBar(tr("Outils"), this);
-	main_bar -> setObjectName("toolbar");
+void QETDiagramEditor::setUpToolBar()
+{
+	main_tool_bar = new QToolBar(tr("Outils"), this);
+	main_tool_bar -> setObjectName("toolbar");
 
-	view_bar = new QToolBar(tr("Affichage"), this);
-	view_bar -> setObjectName("display");
+	view_tool_bar = new QToolBar(tr("Affichage"), this);
+	view_tool_bar -> setObjectName("display");
 
-	diagram_bar = new QToolBar(tr("Schéma"), this);
-	diagram_bar -> setObjectName("diagram");
+	diagram_tool_bar = new QToolBar(tr("Schéma"), this);
+	diagram_tool_bar -> setObjectName("diagram");
 
-	main_bar -> addActions(m_file_actions_group.actions());
-	main_bar -> addAction(print);
-	main_bar -> addSeparator();
-	main_bar -> addAction(undo);
-	main_bar -> addAction(redo);
-	main_bar -> addSeparator();
-	main_bar -> addAction(m_cut);
-	main_bar -> addAction(m_copy);
-	main_bar -> addAction(paste);
-	main_bar -> addSeparator();
-	main_bar -> addAction(m_delete_selection);
-	main_bar -> addAction(m_rotate_selection);
+	main_tool_bar -> addActions(m_file_actions_group.actions());
+	main_tool_bar -> addAction(print);
+	main_tool_bar -> addSeparator();
+	main_tool_bar -> addAction(undo);
+	main_tool_bar -> addAction(redo);
+	main_tool_bar -> addSeparator();
+	main_tool_bar -> addAction(m_cut);
+	main_tool_bar -> addAction(m_copy);
+	main_tool_bar -> addAction(paste);
+	main_tool_bar -> addSeparator();
+	main_tool_bar -> addAction(m_delete_selection);
+	main_tool_bar -> addAction(m_rotate_selection);
 
 	// Modes selection / visualisation et zoom
-	view_bar -> addAction(mode_selection);
-	view_bar -> addAction(mode_visualise);
-	view_bar -> addSeparator();
-	view_bar -> addAction(m_draw_grid);
-	view_bar -> addAction (m_grey_background);
-	view_bar -> addSeparator();
-	view_bar -> addActions(m_zoom_action_toolBar);
+	view_tool_bar -> addAction(mode_selection);
+	view_tool_bar -> addAction(mode_visualise);
+	view_tool_bar -> addSeparator();
+	view_tool_bar -> addAction(m_draw_grid);
+	view_tool_bar -> addAction (m_grey_background);
+	view_tool_bar -> addSeparator();
+	view_tool_bar -> addActions(m_zoom_action_toolBar);
 
-	diagram_bar -> addAction (infos_diagram);
-	diagram_bar -> addAction (m_conductor_reset);
-	diagram_bar -> addAction (m_auto_conductor);
+	diagram_tool_bar -> addAction (infos_diagram);
+	diagram_tool_bar -> addAction (m_conductor_reset);
+	diagram_tool_bar -> addAction (m_auto_conductor);
 
-	m_add_item_toolBar = new QToolBar(tr("Ajouter"), this);
-	m_add_item_toolBar->setObjectName("adding");
-	m_add_item_toolBar->addActions(m_add_item_actions_group.actions());
+	m_add_item_tool_bar = new QToolBar(tr("Ajouter"), this);
+	m_add_item_tool_bar->setObjectName("adding");
+	m_add_item_tool_bar->addActions(m_add_item_actions_group.actions());
+	
+	m_depth_tool_bar = new QToolBar(tr("Profondeur", "toolbar title"));
+	m_depth_tool_bar->setObjectName("diagram_depth_toolbar");
+	m_depth_tool_bar->addActions(m_depth_action_group->actions());
 
-	// ajout de la barre d'outils a la fenetre principale
-	addToolBar(Qt::TopToolBarArea, main_bar);
-	addToolBar(Qt::TopToolBarArea, view_bar);
-	addToolBar(Qt::TopToolBarArea, diagram_bar);
-	addToolBar(Qt::TopToolBarArea, m_add_item_toolBar);
+	addToolBar(Qt::TopToolBarArea, main_tool_bar);
+	addToolBar(Qt::TopToolBarArea, view_tool_bar);
+	addToolBar(Qt::TopToolBarArea, diagram_tool_bar);
+	addToolBar(Qt::TopToolBarArea, m_add_item_tool_bar);
+	addToolBar(Qt::TopToolBarArea, m_depth_tool_bar);
 }
 
 /**
@@ -612,6 +640,8 @@ void QETDiagramEditor::setUpMenu() {
 	menu_edition -> addSeparator();
 	menu_edition -> addAction(infos_diagram);
 	menu_edition -> addActions(m_row_column_actions_group.actions());
+	menu_edition -> addSeparator();
+	menu_edition -> addActions(m_depth_action_group->actions());
 
 	// menu Projet
 	menu_project -> addAction(prj_edit_prop);
@@ -623,9 +653,9 @@ void QETDiagramEditor::setUpMenu() {
 	menu_project -> addAction(prj_nomenclature);
 	menu_project -> addAction(prj_terminalBloc);
 
-	main_bar         -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils principale"));
-	view_bar         -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils Affichage"));
-	diagram_bar      -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils Schéma"));
+	main_tool_bar         -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils principale"));
+	view_tool_bar         -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils Affichage"));
+	diagram_tool_bar      -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils Schéma"));
 	qdw_pa           -> toggleViewAction() -> setStatusTip(tr("Affiche ou non le panel d'appareils"));
 	qdw_undo         -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la liste des modifications"));
 	
@@ -1513,6 +1543,13 @@ void QETDiagramEditor::slot_updateComplexActions()
 		m_edit_selection -> setIcon(QET::Icons::ElementEdit);
 		m_edit_selection -> setEnabled(false);
 	}
+	
+		//Actions for edit Z value
+	QList<QGraphicsItem *> list = dc.items(DiagramContent::SelectedOnly | \
+											 DiagramContent::Elements | \
+											 DiagramContent::Shapes | \
+											 DiagramContent::Images);
+	m_depth_action_group->setEnabled(list.isEmpty()? false : true);
 }
 
 /**
