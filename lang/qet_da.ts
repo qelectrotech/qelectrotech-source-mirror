@@ -812,7 +812,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/diagram.cpp" line="1279"/>
         <source>Modifier la profondeur</source>
-        <translation type="unfinished"></translation>
+        <translation>Diagram</translation>
     </message>
 </context>
 <context>
@@ -4675,48 +4675,48 @@ Kommandovalg:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="520"/>
         <source>Amener au premier plan</source>
-        <translation type="unfinished">Flyt forrest</translation>
+        <translation>Flytte forrest</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="521"/>
         <source>Rapprocher</source>
-        <translation type="unfinished">Flyt fremad</translation>
+        <translation>Flytte fremad</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="522"/>
         <source>Éloigner</source>
-        <translation type="unfinished">Flyt bagud</translation>
+        <translation>Flytte bagud</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="523"/>
         <source>Envoyer au fond</source>
-        <translation type="unfinished">Flyt bagerst</translation>
+        <translation>Flytte bagerst</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="525"/>
         <source>Ctrl+Shift+Up</source>
-        <translation type="unfinished">Ctrl+Skift+Op</translation>
+        <translation>Ctrl+Skift+Op</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="526"/>
         <source>Ctrl+Shift+Down</source>
-        <translation type="unfinished">Ctrl+Skift+Ned</translation>
+        <translation>Ctrl+Skift+Ned</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="527"/>
         <source>Ctrl+Shift+End</source>
-        <translation type="unfinished">Ctrl+Skift+End</translation>
+        <translation>Ctrl+Skift+End</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="528"/>
         <source>Ctrl+Shift+Home</source>
-        <translation type="unfinished">Ctrl+Skift+Hjem</translation>
+        <translation>Ctrl+Skift+Hjem</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="585"/>
         <source>Profondeur</source>
         <comment>toolbar title</comment>
-        <translation type="unfinished">Placeringsniveau</translation>
+        <translation>Placeringsniveau</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1325"/>
