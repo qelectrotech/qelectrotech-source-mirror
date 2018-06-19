@@ -817,7 +817,7 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
     <message>
         <location filename="../sources/diagram.cpp" line="1279"/>
         <source>Modifier la profondeur</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar la profundidad</translation>
     </message>
 </context>
 <context>
@@ -3310,7 +3310,7 @@ Aquí puede especificar el valor predeterminado de este campo para los elementos
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="14"/>
         <source>Collage multiple</source>
-        <translation type="unfinished">Collage múltiple</translation>
+        <translation>Collage múltiple</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="22"/>
@@ -3356,7 +3356,7 @@ Aquí puede especificar el valor predeterminado de este campo para los elementos
     <message>
         <location filename="../sources/ui/multipastedialog.cpp" line="98"/>
         <source>Multi-collage</source>
-        <translation type="unfinished">Multii-collage</translation>
+        <translation>Multi-collage</translation>
     </message>
 </context>
 <context>
@@ -4574,48 +4574,48 @@ Opciones disponibles:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="520"/>
         <source>Amener au premier plan</source>
-        <translation type="unfinished">Poner en primer plano</translation>
+        <translation>Poner en primer plano</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="521"/>
         <source>Rapprocher</source>
-        <translation type="unfinished">Acercar</translation>
+        <translation>Acercar</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="522"/>
         <source>Éloigner</source>
-        <translation type="unfinished">Alejar</translation>
+        <translation>Alejar</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="523"/>
         <source>Envoyer au fond</source>
-        <translation type="unfinished">Poner en el fondo</translation>
+        <translation>Poner en el fondo</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="525"/>
         <source>Ctrl+Shift+Up</source>
-        <translation type="unfinished">Ctrl+Shift+Árriba</translation>
+        <translation>Ctrl+Shift+Árriba</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="526"/>
         <source>Ctrl+Shift+Down</source>
-        <translation type="unfinished">Ctrl+Shift+Abajo</translation>
+        <translation>Ctrl+Shift+Abajo</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="527"/>
         <source>Ctrl+Shift+End</source>
-        <translation type="unfinished">Ctrl+Shift+End</translation>
+        <translation>Ctrl+Shift+Fin</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="528"/>
         <source>Ctrl+Shift+Home</source>
-        <translation type="unfinished">Ctrl+Shift+Home</translation>
+        <translation>Ctrl+Shift+Inicio</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="585"/>
         <source>Profondeur</source>
         <comment>toolbar title</comment>
-        <translation type="unfinished">Profundidad</translation>
+        <translation>Profundidad</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1325"/>
