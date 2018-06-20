@@ -760,38 +760,6 @@ void ElementScene::slot_editNames() {
 }
 
 /**
-	Amene les elements selectionnes au premier plan
-*/
-void ElementScene::slot_bringForward() {
-	undoStack().push(new ChangeZValueCommand(this, ChangeZValueCommand::BringForward));
-	emit(partsZValueChanged());
-}
-
-/**
-	Remonte les elements selectionnes d'un plan
-*/
-void ElementScene::slot_raise() {
-	undoStack().push(new ChangeZValueCommand(this, ChangeZValueCommand::Raise));
-	emit(partsZValueChanged());
-}
-
-/**
-	Descend les elements selectionnes d'un plan
-*/
-void ElementScene::slot_lower() {
-	undoStack().push(new ChangeZValueCommand(this, ChangeZValueCommand::Lower));
-	emit(partsZValueChanged());
-}
-
-/**
-	Envoie les elements selectionnes au fond
-*/
-void ElementScene::slot_sendBackward() {
-	undoStack().push(new ChangeZValueCommand(this, ChangeZValueCommand::SendBackward));
-	emit(partsZValueChanged());
-}
-
-/**
 	@return the list of primitives currently present on the scene.
 */
 QList<CustomElementPart *> ElementScene::primitives() const {

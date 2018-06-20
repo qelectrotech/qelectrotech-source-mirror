@@ -152,10 +152,6 @@ class ElementScene : public QGraphicsScene
 		void slot_editNames();
 		void slot_editAuthorInformations();
 		void slot_editProperties();
-		void slot_bringForward();
-		void slot_raise();
-		void slot_lower();
-		void slot_sendBackward();
 		void managePrimitivesGroups();
 		void stackAction(ElementEditionCommand *);
 	

@@ -343,11 +343,11 @@ void ChangeNamesCommand::redo() {
 */
 ChangeZValueCommand::ChangeZValueCommand(
 	ElementScene *elmt,
-	ChangeZValueCommand::Option o,
+	QET::DepthOption o,
 	QUndoCommand *parent
 ) :
 	ElementEditionCommand(elmt, nullptr, parent),
-	option(o)
+	m_option(o)
 {
 	// retrieve all primitives but terminals
 	QList<QGraphicsItem *> items_list = m_scene -> zItems(ElementScene::SortByZValue | ElementScene::SelectedOrNot);
@@ -356,16 +356,16 @@ ChangeZValueCommand::ChangeZValueCommand(
 	foreach(QGraphicsItem *qgi, items_list) undo_hash.insert(qgi, qgi -> zValue());
 	
 	// choisit le nom en fonction du traitement
-	if (option == BringForward) {
+	if (m_option == QET::BringForward) {
 		setText(QObject::tr("amener au premier plan", "undo caption"));
 		applyBringForward(items_list);
-	} else if (option == Raise) {
+	} else if (m_option == QET::Raise) {
 		setText(QObject::tr("rapprocher", "undo caption"));
 		applyRaise(items_list);
-	} else if (option == Lower) {
+	} else if (m_option == QET::Lower) {
 		setText(QObject::tr("éloigner", "undo caption"));
 		applyLower(items_list);
-	} else if (option == SendBackward) {
+	} else if (m_option == QET::SendBackward) {
 		setText(QObject::tr("envoyer au fond", "undo caption"));
 		applySendBackward(items_list);
 	}

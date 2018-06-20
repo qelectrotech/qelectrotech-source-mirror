@@ -80,7 +80,7 @@ class QETElementEditor : public QETMainWindow {
 	/// toolbars
 	QToolBar *parts_toolbar, *main_toolbar, *view_toolbar, *depth_toolbar, *element_toolbar;
 	/// Action group
-	QActionGroup *parts, *m_zoom_ag, *m_depth_ag;
+	QActionGroup *parts, *m_zoom_ag, *m_depth_action_group;
 	/// minimum window title
 	QString min_title;
 	/// filename of the currently edited element

@@ -19,6 +19,8 @@
 #define _QET_H
 #include <QtXml>
 #include <QObject>
+
+class QActionGroup;
 /**
 	This file provides useful functions and enums that may be used from
 	anywhere else within the QElectroTech application.
@@ -155,7 +157,6 @@ namespace QET {
 	QList<QDomElement> findInDomElement(const QDomElement &, const QString &);
 	QList<QDomElement> findInDomElement(const QDomElement &, const QString &, const QString &);
 	QList<QChar> forbiddenCharacters();
-	QString forbiddenCharactersString(bool = false);
 	QString stringToFileName(const QString &);
 	QString escapeSpaces(const QString &);
 	QString unescapeSpaces(const QString &);
@@ -164,13 +165,11 @@ namespace QET {
 	QString diagramAreaToString(const QET::DiagramArea &);
 	QET::DiagramArea diagramAreaFromString(const QString &);
 	qreal round(qreal, qreal);
-	QPointF roundPoint(const QPointF &, qreal);
 	qreal correctAngle(const qreal &);
 	bool compareCanonicalFilePaths(const QString &, const QString &);
-	QString titleBlockColumnLengthToString(const TitleBlockColumnLength  &);
 	bool writeXmlFile(QDomDocument &xml_doc, const QString &filepath, QString * error_message= nullptr);
-	QPointF graphicsSceneEventPos(QEvent *);
 	bool eachStrIsEqual (const QStringList &qsl);
+	QActionGroup *depthActionGroup(QObject *parent = nullptr);
 }
 
 Q_DECLARE_METATYPE(QET::DepthOption)

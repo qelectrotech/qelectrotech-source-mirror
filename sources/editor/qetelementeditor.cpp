@@ -27,6 +27,7 @@
 #include "recentfiles.h"
 #include "qeticons.h"
 #include "qetmessagebox.h"
+#include "editorcommands.h"
 
 // editeurs de primitives
 #include "arceditor.h"
@@ -224,30 +225,17 @@ void QETElementEditor::setupActions() {
 	connect(edit_author,     SIGNAL(triggered()), m_elmt_scene, SLOT(slot_editAuthorInformations()));
 	connect(m_edit_properties, SIGNAL(triggered()), m_elmt_scene, SLOT(slot_editProperties()));
 
-
-	/*
-	 * Action related to change depth of primitive
-	 */
-	m_depth_ag = new QActionGroup(this);
-
-	QAction *edit_forward  = new QAction(QET::Icons::BringForward, tr("Amener au premier plan"), m_depth_ag);
-	QAction *edit_raise    = new QAction(QET::Icons::Raise,        tr("Rapprocher"),             m_depth_ag);
-	QAction *edit_lower    = new QAction(QET::Icons::Lower,        tr("Éloigner"),            m_depth_ag);
-	QAction *edit_backward = new QAction(QET::Icons::SendBackward, tr("Envoyer au fond"),        m_depth_ag);
-
-	edit_raise    -> setShortcut(QKeySequence(tr("Ctrl+Shift+Up")));
-	edit_lower    -> setShortcut(QKeySequence(tr("Ctrl+Shift+Down")));
-	edit_backward -> setShortcut(QKeySequence(tr("Ctrl+Shift+End")));
-	edit_forward  -> setShortcut(QKeySequence(tr("Ctrl+Shift+Home")));
-
-	connect(edit_forward,  SIGNAL(triggered()), m_elmt_scene, SLOT(slot_bringForward() ));
-	connect(edit_raise,    SIGNAL(triggered()), m_elmt_scene, SLOT(slot_raise()        ));
-	connect(edit_lower,    SIGNAL(triggered()), m_elmt_scene, SLOT(slot_lower()        ));
-	connect(edit_backward, SIGNAL(triggered()), m_elmt_scene, SLOT(slot_sendBackward() ));
-
+		//Action related to change depth of primitive
+	m_depth_action_group = QET::depthActionGroup(this);
+	
+	connect(m_depth_action_group, &QActionGroup::triggered, [this](QAction *action) {
+		this->elementScene()->undoStack().push(new ChangeZValueCommand(this->elementScene(), action->data().value<QET::DepthOption>()));
+		emit(this->elementScene()->partsZValueChanged());
+	});
+	
 	depth_toolbar = addToolBar(tr("Profondeur", "toolbar title"));
 	depth_toolbar -> setObjectName("depth_toolbar");
-	depth_toolbar -> addActions(m_depth_ag -> actions());
+	depth_toolbar -> addActions(m_depth_action_group -> actions());
 	addToolBar(Qt::TopToolBarArea, depth_toolbar);
 
 
@@ -402,7 +390,7 @@ void QETElementEditor::setupMenus() {
 	edit_menu -> addAction(edit_author);
 	edit_menu -> addAction(m_edit_properties);
 	edit_menu -> addSeparator();
-	edit_menu -> addActions(m_depth_ag -> actions());
+	edit_menu -> addActions(m_depth_action_group -> actions());
 
 	display_menu -> addActions(m_zoom_ag -> actions());
 	
@@ -432,7 +420,7 @@ void QETElementEditor::contextMenu(QPoint p)
 		menu.addAction(paste_in_area);
 		menu.addMenu(paste_from_menu);
 		menu.addSeparator();
-		menu.addActions(m_depth_ag -> actions());
+		menu.addActions(m_depth_action_group -> actions());
 		
 			//Remove from the context menu the actions which are disabled.
 		const QList<QAction *>actions = menu.actions();
@@ -467,7 +455,7 @@ void QETElementEditor::slot_updateMenus() {
 	cut             -> setEnabled(selected_items);
 	copy            -> setEnabled(selected_items);
 	edit_delete     -> setEnabled(selected_items);
-	foreach (QAction *action, m_depth_ag -> actions())
+	foreach (QAction *action, m_depth_action_group -> actions())
 		action->setEnabled(selected_items);
 	
 	// actions dependant du contenu du presse-papiers

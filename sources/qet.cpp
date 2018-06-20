@@ -16,8 +16,11 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qet.h"
+#include "qeticons.h"
+
 #include <limits>
 #include <QGraphicsSceneContextMenuEvent>
+#include <QAction>
 
 /**
 	Permet de convertir une chaine de caracteres ("n", "s", "e" ou "w")
@@ -494,13 +497,6 @@ qreal QET::round(qreal x, qreal epsilon) {
 }
 
 /**
-	Round the coordinates of \a p to the nearest multiple of \a epsilon.
-*/
-QPointF QET::roundPoint(const QPointF &p, qreal epsilon) {
-	return(QPointF(QET::round(p.x(), epsilon), QET::round(p.y(), epsilon)));
-}
-
-/**
 	@param angle Un angle quelconque
 	@return l'angle passe en parametre, mais ramene entre -360.0 + 360.0 degres
 */
@@ -532,19 +528,6 @@ bool QET::compareCanonicalFilePaths(const QString &first, const QString &second)
 #endif
 	
 	return(first_canonical_path == second_canonical_path);
-}
-
-/**
-	@param icl an TitleBlockColumnLength object
-	@see TitleBlockColumnLength
-	@return a string describing the type of this TitleBlockColumnLength object
-*/
-QString QET::titleBlockColumnLengthToString(const TitleBlockColumnLength  &icl) {
-	QString type_str;
-	if (icl== Absolute) type_str = "absolute";
-	else if (icl == RelativeToTotalLength) type_str = "relative to total";
-	else if (icl == RelativeToRemainingLength) type_str = "relative to remaining";
-	return(type_str);
 }
 
 /**
@@ -580,62 +563,6 @@ bool QET::writeXmlFile(QDomDocument &xml_doc, const QString &filepath, QString *
 	file.close();
 	
 	return(true);
-}
-
-/**
-	@return the scene position where \a event occurred, provided it is
-	QGraphicsScene-related event; otherwise, this function returns a null
-	QPointF.
-*/
-QPointF QET::graphicsSceneEventPos(QEvent *event) {
-	QPointF event_scene_pos;
-	if (event -> type() < QEvent::GraphicsSceneContextMenu) return(event_scene_pos);
-	if (event -> type() > QEvent::GraphicsSceneWheel) return(event_scene_pos);
-	
-	switch (event -> type()) {
-		case QEvent::GraphicsSceneContextMenu: {
-			QGraphicsSceneContextMenuEvent *qgs_event = static_cast<QGraphicsSceneContextMenuEvent *>(event);
-			event_scene_pos = qgs_event -> scenePos();
-			break;
-		}
-		case QEvent::GraphicsSceneDragEnter:
-		case QEvent::GraphicsSceneDragLeave:
-		case QEvent::GraphicsSceneDragMove:
-		case QEvent::GraphicsSceneDrop: {
-			QGraphicsSceneDragDropEvent *qgs_event = static_cast<QGraphicsSceneDragDropEvent *>(event);
-			event_scene_pos = qgs_event -> scenePos();
-			break;
-		}
-		case QEvent::GraphicsSceneHelp: {
-			QGraphicsSceneHelpEvent *qgs_event = static_cast<QGraphicsSceneHelpEvent *>(event);
-			event_scene_pos = qgs_event -> scenePos();
-			break;
-		}
-		
-		case QEvent::GraphicsSceneHoverEnter:
-		case QEvent::GraphicsSceneHoverLeave:
-		case QEvent::GraphicsSceneHoverMove: {
-			QGraphicsSceneHoverEvent *qgs_event = static_cast<QGraphicsSceneHoverEvent *>(event);
-			event_scene_pos = qgs_event -> scenePos();
-			break;
-		}
-		case QEvent::GraphicsSceneMouseDoubleClick:
-		case QEvent::GraphicsSceneMouseMove:
-		case QEvent::GraphicsSceneMousePress:
-		case QEvent::GraphicsSceneMouseRelease: {
-			QGraphicsSceneMouseEvent *qgs_event = static_cast<QGraphicsSceneMouseEvent *>(event);
-			event_scene_pos = qgs_event -> scenePos();
-			break;
-		}
-		case QEvent::GraphicsSceneWheel: {
-			QGraphicsSceneWheelEvent *qgs_event = static_cast<QGraphicsSceneWheelEvent *>(event);
-			event_scene_pos = qgs_event -> scenePos();
-			break;
-		}
-		default:
-			break;
-	}
-	return(event_scene_pos);
 }
 
 /**
@@ -689,4 +616,32 @@ QET::QetCollection QET::qetCollectionFromString(const QString &str)
 		return QetCollection::Embedded;
 	else
 		return QetCollection::Common;
+}
+
+/**
+ * @brief QET::depthActionGroup
+ * @param parent
+ * @return an action group which contain 4 actions (forward, raise, lower, backward)
+ * already made with icon, shortcut and data (see QET::DepthOption)
+ */
+QActionGroup *QET::depthActionGroup(QObject *parent)
+{
+	QActionGroup *action_group = new QActionGroup(parent);
+
+	QAction *edit_forward  = new QAction(QET::Icons::BringForward, QObject::tr("Amener au premier plan"), action_group);	
+	QAction *edit_raise    = new QAction(QET::Icons::Raise,        QObject::tr("Rapprocher"),             action_group);
+	QAction *edit_lower    = new QAction(QET::Icons::Lower,        QObject::tr("Éloigner"),               action_group);
+	QAction *edit_backward = new QAction(QET::Icons::SendBackward, QObject::tr("Envoyer au fond"),        action_group);
+	
+	edit_raise   ->setShortcut(QKeySequence(QObject::tr("Ctrl+Shift+Up")));
+	edit_lower   ->setShortcut(QKeySequence(QObject::tr("Ctrl+Shift+Down")));
+	edit_backward->setShortcut(QKeySequence(QObject::tr("Ctrl+Shift+End")));
+	edit_forward ->setShortcut(QKeySequence(QObject::tr("Ctrl+Shift+Home")));
+	
+	edit_forward ->setData(QET::BringForward);
+	edit_raise   ->setData(QET::Raise);
+	edit_lower   ->setData(QET::Lower);
+	edit_backward->setData(QET::SendBackward);
+	
+	return action_group;
 }

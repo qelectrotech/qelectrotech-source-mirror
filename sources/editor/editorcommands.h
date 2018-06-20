@@ -197,17 +197,11 @@ class ChangeNamesCommand : public ElementEditionCommand {
 	This command changes the zValue of a set of primitives when editing an
 	electrical element.
 */
-class ChangeZValueCommand : public ElementEditionCommand {
-	// constructors, destructor
+class ChangeZValueCommand : public ElementEditionCommand
+{
+		// constructors, destructor
 	public:
-	/// List the various kind of changes for the zValue
-	enum Option {
-		BringForward, ///< Bring primitives to the foreground so they have the highest zValue
-		Raise,        ///< Raise primitives one layer above their current one; zValues are incremented
-		Lower,        ///< Send primitives one layer below their current one; zValues are decremented
-		SendBackward  ///< Send primitives to the background so they have the lowest zValue
-	};
-	ChangeZValueCommand(ElementScene *, Option, QUndoCommand * = nullptr);
+	ChangeZValueCommand(ElementScene *, QET::DepthOption , QUndoCommand * = nullptr);
 	~ChangeZValueCommand() override;
 	private:
 	ChangeZValueCommand(const ChangeZValueCommand &);
@@ -230,7 +224,7 @@ class ChangeZValueCommand : public ElementEditionCommand {
 	/// associates impacted primitives with their new zValues
 	QHash<QGraphicsItem *, qreal> redo_hash;
 	/// kind of treatment to apply
-	Option option;
+	QET::DepthOption m_option;
 };
 
 /**
