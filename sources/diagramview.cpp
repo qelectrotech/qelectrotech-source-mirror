@@ -798,45 +798,6 @@ void DiagramView::applyReadOnly() {
 }
 
 /**
- * @brief DiagramView::editSelectionProperties
- * Edit the properties of the selected items
- */
-void DiagramView::editSelectionProperties()
-{
-		// get selection
-	DiagramContent selection(m_diagram);
-
-	// if selection contains nothing return
-	int selected_items_count = selection.count(DiagramContent::All | DiagramContent::SelectedOnly);
-	if (!selected_items_count) return;
-
-	// if selection contains one item and this item can be editable, edit this item with an appropriate dialog
-	if (selected_items_count == 1 && selection.items(DiagramContent::Elements |
-													 DiagramContent::AnyConductor |
-													 DiagramContent::SelectedOnly).size()) {
-		// edit conductor
-		if (selection.conductors(DiagramContent::AnyConductor | DiagramContent::SelectedOnly).size())
-			selection.conductors().first()->editProperty();
-		// edit element
-		else if (selection.m_elements.size())
-			selection.m_elements.first() -> editProperty();
-	}
-
-	else {
-		QET::QetMessageBox::information(
-			this,
-			tr("Propriétés de la sélection"),
-			QString(
-				tr(
-					"La sélection contient %1.",
-					"%1 is a sentence listing the selected objects"
-				)
-			).arg(selection.sentence(DiagramContent::All | DiagramContent::SelectedOnly))
-		);
-	}
-}
-
-/**
  * @brief DiagramView::editSelectedConductorColor
  * Edit the color of the selected conductor; does nothing if multiple conductors are selected
  */
@@ -1063,7 +1024,7 @@ void DiagramView::contextMenuEvent(QContextMenuEvent *e) {
 			m_paste_here -> setEnabled(Diagram::clipboardMayContainDiagram());
 			m_context_menu -> addAction(m_paste_here);
 			m_context_menu -> addSeparator();
-			m_context_menu -> addAction(qde -> infos_diagram);
+			m_context_menu -> addAction(qde -> m_edit_diagram_properties);
 			m_context_menu -> addActions(qde -> m_row_column_actions_group.actions());
 		} else {
 			m_context_menu -> addAction(qde -> m_cut);
@@ -1073,6 +1034,8 @@ void DiagramView::contextMenuEvent(QContextMenuEvent *e) {
 			m_context_menu -> addAction(qde -> m_conductor_reset);
 			m_context_menu -> addSeparator();
 			m_context_menu -> addActions(qde -> m_selection_actions_group.actions());
+			m_context_menu -> addSeparator();
+			m_context_menu -> addActions(qde->m_depth_action_group->actions());
 		}
 		
 			//Remove from the context menu the actions which are disabled.

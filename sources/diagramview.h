@@ -125,7 +125,6 @@ class DiagramView : public QGraphicsView
 		void pasteHere();
 		void adjustSceneRect();
 		void updateWindowTitle();
-		void editSelectionProperties();
 		void editSelectedConductorColor();
 		void editConductorColor(Conductor *);
 		void resetConductors();
