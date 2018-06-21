@@ -465,6 +465,26 @@ void ElementTextItemGroup::setRotation(qreal angle)
 	emit rotationChanged(angle);
 }
 
+void ElementTextItemGroup::setPos(const QPointF &pos)
+{
+	QPointF old_pos = this->pos();
+	QGraphicsItemGroup::setPos(pos);
+	if (old_pos.x() != this->pos().x())
+		emit xChanged();
+	if (old_pos.y() != this->pos().y())
+		emit yChanged();
+}
+
+void ElementTextItemGroup::setPos(qreal x, qreal y)
+{
+	QPointF old_pos = this->pos();
+	QGraphicsItemGroup::setPos(x,y);
+	if (old_pos.x() != this->pos().x())
+		emit xChanged();
+	if (old_pos.y() != this->pos().y())
+		emit yChanged();
+}
+
 /**
  * @brief ElementTextItemGroup::mousePressEvent
  * @param event

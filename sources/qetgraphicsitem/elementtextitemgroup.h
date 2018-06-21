@@ -50,6 +50,8 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 		void alignmentChanged(Qt::Alignment);
 		void nameChanged(QString);
 		void holdToBottomPageChanged(bool);
+		void xChanged();
+		void yChanged();
 	
 	public:
 		ElementTextItemGroup(const QString &name, Element *parent);
@@ -78,6 +80,8 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 		void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 		QRectF boundingRect() const override;
 		void setRotation(qreal angle);
+		void setPos(const QPointF &pos);
+		void setPos(qreal x, qreal y);
 		
 	protected:
 		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;

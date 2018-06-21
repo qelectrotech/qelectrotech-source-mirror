@@ -50,6 +50,7 @@ class DynamicElementTextModel : public QStandardItemModel
 			rotation,
 			textWidth,
 			grpAlignment,
+			grpPos,
 			grpRotation,
 			grpVAdjust,
 			grpName,
@@ -89,7 +90,7 @@ class DynamicElementTextModel : public QStandardItemModel
 		void addTextToGroup(DynamicElementTextItem *deti, ElementTextItemGroup *group);
 		void removeTextFromGroup(DynamicElementTextItem *deti, ElementTextItemGroup *group);
 		void enableSourceText(DynamicElementTextItem *deti, DynamicElementTextItem::TextFrom tf );
-		void enableGroupRotation(ElementTextItemGroup *group);
+		void enableGroupRotationAndPos(ElementTextItemGroup *group);
         void itemDataChanged(QStandardItem *qsi);
 		void setConnection(DynamicElementTextItem *deti, bool set);
 		void setConnection(ElementTextItemGroup *group, bool set);
