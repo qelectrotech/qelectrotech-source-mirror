@@ -32,6 +32,13 @@ namespace QET {
 	const QString displayedVersion = "0.70-dev";
 	QString license();
 	
+		//Describe the current state of a graphic item
+	enum GraphicsItemState {
+		GIOK,				 ///<General state
+		GIBuildingFromXml, ///<Item is currently building from a xml description (element)
+		GILoadingFromXml	 ///<Item is loading her properties from a xml description.
+	};
+	
 		/// List the various kind of changes for the zValue
 	enum DepthOption {
 		BringForward, ///< Bring item to the foreground so they have the highest zValue

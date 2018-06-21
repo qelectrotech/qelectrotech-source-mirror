@@ -88,11 +88,14 @@ CustomElement::CustomElement(const ElementsLocation &location, QGraphicsItem *qg
 		- 8 : Aucune partie du dessin n'a pu etre chargee
 	@return true si le chargement a reussi, false sinon
 */
-bool CustomElement::buildFromXml(const QDomElement &xml_def_elmt, int *state) {
+bool CustomElement::buildFromXml(const QDomElement &xml_def_elmt, int *state)
+{
+	m_state = QET::GIBuildingFromXml;
 
 	if (xml_def_elmt.tagName() != "definition" || xml_def_elmt.attribute("type") != "element")
 	{
 		if (state) *state = 4;
+		m_state = QET::GIOK;
 		return(false);
 	}
 
@@ -121,6 +124,7 @@ bool CustomElement::buildFromXml(const QDomElement &xml_def_elmt, int *state) {
 		!validOrientationAttribute(xml_def_elmt)
 	) {
 		if (state) *state = 5;
+		m_state = QET::GIOK;
 		return(false);
 	}
 
@@ -131,6 +135,7 @@ bool CustomElement::buildFromXml(const QDomElement &xml_def_elmt, int *state) {
 	if (xml_def_elmt.firstChild().isNull())
 	{
 		if (state) *state = 6;
+		m_state = QET::GIOK;
 		return(false);
 	}
 
@@ -203,7 +208,7 @@ bool CustomElement::buildFromXml(const QDomElement &xml_def_elmt, int *state) {
 				{
 					if (state)
 						*state = 7;
-					
+					m_state = QET::GIOK;
 					return(false);
 				}
 			}
@@ -220,14 +225,14 @@ bool CustomElement::buildFromXml(const QDomElement &xml_def_elmt, int *state) {
 	{
 		if (state)
 			*state = 8;
-		
+		m_state = QET::GIOK;
 		return(false);
 	}
 	else
 	{
 		if (state)
 			*state = 0;
-		
+		m_state = QET::GIOK;
 		return(true);
 	}
 }

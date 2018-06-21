@@ -356,6 +356,7 @@ bool Element::valideXml(QDomElement &e) {
  */
 bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool handle_inputs_rotation)
 {
+	m_state = QET::GILoadingFromXml;
 	/*
 		les bornes vont maintenant etre recensees pour associer leurs id a leur adresse reelle
 		ce recensement servira lors de la mise en place des fils
@@ -383,13 +384,20 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 		}
 	}
 	
-	if (terminals_non_trouvees > 0) {
+	if (terminals_non_trouvees > 0)
+	{
+		m_state = QET::GIOK;
 		return(false);
-	} else {
+	} 
+	else
+	{
 		// verifie que les associations id / adr n'entrent pas en conflit avec table_id_adr
-		foreach(int id_trouve, priv_id_adr.keys()) {
-			if (table_id_adr.contains(id_trouve)) {
+		foreach(int id_trouve, priv_id_adr.keys())
+		{
+			if (table_id_adr.contains(id_trouve))
+			{
 				// cet element possede un id qui est deja reference (= conflit)
+				m_state = QET::GIOK;
 				return(false);
 			}
 		}
@@ -597,7 +605,10 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 							//Create the comment item
 						DynamicElementTextItem *comment_text = nullptr;
 						if (m_link_type !=PreviousReport || m_link_type !=NextReport)
+						{
+							m_state = QET::GIOK;
 							return(true);
+						}
 						if(!comment.isEmpty() && c)
 						{
 							comment_text = new DynamicElementTextItem(this);
@@ -613,7 +624,10 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 							//create the location item
 						DynamicElementTextItem *location_text = nullptr;
 						if (m_link_type !=PreviousReport || m_link_type !=NextReport)
+						{
+							m_state = QET::GIOK;
 							return(true);
+						}
 						if(!location.isEmpty() && lo)
 						{
 							location_text = new DynamicElementTextItem(this);
@@ -628,7 +642,10 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 						
 						QPointF pos = deti->pos();
 						if (m_link_type !=PreviousReport || m_link_type !=NextReport)
+						{
+							m_state = QET::GIOK;
 							return(true);
+						}
 							//Create the group
 						ElementTextItemGroup *group = addTextGroup(tr("Label + commentaire"));
 						addTextToGroup(deti, group);
@@ -691,7 +708,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 			}
 		}
 	}
-    
+    m_state = QET::GIOK;
 	return(true);
 }
 

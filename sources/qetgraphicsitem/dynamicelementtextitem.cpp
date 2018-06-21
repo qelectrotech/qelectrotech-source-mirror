@@ -1314,31 +1314,43 @@ void DynamicElementTextItem::updateXref()
 
 void DynamicElementTextItem::setPlainText(const QString &text)
 {
-	if(toPlainText() == text)
+	if (toPlainText() == text)
 		return;
 	
-	prepareAlignment();
+	bool update_alignment = true;
+	if (diagram() && (diagram()->project()->state() == QETProject::ProjectParsingRunning))
+		update_alignment = false;
+	if (m_parent_element.data()->state() == QET::GIBuildingFromXml ||
+		m_parent_element.data()->state() == QET::GILoadingFromXml)
+		update_alignment = false;
+	
+	if (update_alignment) {
+		prepareAlignment();
+	}
 	
 	DiagramTextItem::setPlainText(text);
 	
 		//User define a text width
-	if(m_text_width > 0)
+	if (m_text_width > 0)
 	{
-		if(document()->size().width() > m_text_width)
+		if (document()->size().width() > m_text_width)
 		{
 			document()->setTextWidth(m_text_width);
-			if(document()->size().width() > m_text_width)
+			if (document()->size().width() > m_text_width)
 			{
 				document()->setTextWidth(document()->idealWidth());
 			}
 		}
 	}
 	
-	finishAlignment();
+	if (update_alignment) {
+		finishAlignment();
+	}
 	
-	if(m_Xref_item)
+	if (m_Xref_item) {
 		m_Xref_item->autoPos();
-	else if(m_slave_Xref_item)
+	}
+	else if (m_slave_Xref_item)
 	{
 		QRectF r = boundingRect();
 		QPointF pos(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,
