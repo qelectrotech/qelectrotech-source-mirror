@@ -65,6 +65,14 @@ void QetGraphicsItem::setPos(qreal x, qreal y) {
 }
 
 /**
+ * @brief QetGraphicsItem::state
+ * @return the current state of this item 
+ */
+QET::GraphicsItemState QetGraphicsItem::state() const {
+	return m_state;
+}
+
+/**
  * @brief QetGraphicsItem::mousePressEvent
  *handle the mouse click
  * @param e

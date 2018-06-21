@@ -19,6 +19,7 @@
 #define QETGRAPHICSITEM_H
 
 #include <QGraphicsObject>
+#include "qet.h"
 
 class Diagram;
 
@@ -41,6 +42,8 @@ class QetGraphicsItem : public QGraphicsObject
 
 		virtual void     editProperty  ()      {}
 		virtual QString  name       ()const {return QString("");}
+		
+		QET::GraphicsItemState state() const;
 
 		//protected method
 	protected:
@@ -54,6 +57,7 @@ class QetGraphicsItem : public QGraphicsObject
 		bool first_move_;
 		bool snap_to_grid_;
 		QPointF mouse_to_origin_movement_;
+		QET::GraphicsItemState m_state = QET:: GIOK;
 
 };
 
