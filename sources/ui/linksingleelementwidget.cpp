@@ -219,9 +219,19 @@ void LinkSingleElementWidget::buildTree()
 		{
 			QStringList search_list;
 			QStringList str_list;
-			str_list << elmt->elementInformations()["label"].toString();
-			if (!str_list.last().isEmpty())
+			
+			QString formula = elmt->elementInformations()["formula"].toString();
+			if(!formula.isEmpty())
+			{
+				str_list << autonum::AssignVariables::formulaToLabel(formula, elmt->rSequenceStruct(), elmt->diagram(), elmt);
 				search_list << str_list.last();
+			}
+			else
+			{
+				str_list << elmt->elementInformations()["label"].toString();
+				if(!str_list.last().isEmpty())
+					search_list << str_list.last();
+			}
 			
 			str_list << elmt->elementInformations()["comment"].toString();
 			if (!str_list.last().isEmpty())
