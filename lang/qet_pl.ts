@@ -812,7 +812,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
     <message>
         <location filename="../sources/diagram.cpp" line="1279"/>
         <source>Modifier la profondeur</source>
-        <translation type="unfinished"></translation>
+        <translation>Zmiana głębokości</translation>
     </message>
 </context>
 <context>
@@ -2635,18 +2635,18 @@ Litery i cyfry mogą być używane.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="122"/>
         <source>Désactivé</source>
-        <translation type="unfinished"></translation>
+        <translation>Dezaktywuj</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="125"/>
         <source> min</source>
         <comment>minute</comment>
-        <translation type="unfinished"></translation>
+        <translation> min</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="132"/>
         <source>Utiliser des fenêtres (appliqué au prochain lancement de &amp;QElectroTech)</source>
-        <translation type="unfinished"></translation>
+        <translation>Użyj okien (Zastosowanie przy kolejnym uruchomieniu &amp;QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="146"/>
@@ -2656,18 +2656,19 @@ Litery i cyfry mogą być używane.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="175"/>
         <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
-        <translation type="unfinished">Wyróżnij w panelu elementy wstawiane jako nowe</translation>
+        <translation>Wyróżnij w panelu elementy wstawiane jako nowe</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="182"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre.
 Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
-        <translation type="unfinished"></translation>
+        <translation>Każdy element posiada puste pole, przeznaczone na informacje o autorze, licencji i inne informacje, które uznasza za istotne
+Tutaj możesz określić domyślną zawartość tego pola:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="205"/>
         <source>Appliqué au prochain lancement de QElectroTech</source>
-        <translation type="unfinished"></translation>
+        <translation>Zmiany zostaną wdrożone przy kolejnym uruchomieniu QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="105"/>
@@ -2677,22 +2678,22 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="20"/>
         <source>Général</source>
-        <translation type="unfinished">Ogólne</translation>
+        <translation>Ogólne</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="63"/>
         <source>Sauvegarde automatique des projets (appliqué au prochain lancement de QElectroTech)</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatyczne tworzenie kopii zapasowych projektu (zmiany zostaną wdrożone przy kolejnym uruchomieniu QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="84"/>
         <source>Utiliser des onglets (appliqué au proc&amp;hain lancement de QElectroTech)</source>
-        <translation type="unfinished"></translation>
+        <translation>Użyj zakładek (zmiany zostaną wdrożone przy kolejnym uruc&amp;homieniu QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="169"/>
@@ -4143,17 +4144,17 @@ Czy chcesz zapisać zmiany?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="1658"/>
         <source>&lt;b&gt;Le fichier de restauration suivant a été trouvé,&lt;br&gt;Voulez-vous l&apos;ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Znaleziono następujący plik przywracania,&lt;br&gt;Czy chcesz go otworzyć?&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1661"/>
         <source>&lt;b&gt;Les fichiers de restauration suivant on été trouvé,&lt;br&gt;Voulez-vous les ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Znaleziono następujące pliki przywracania,&lt;br&gt;Czy chcesz je otworzyć?&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1666"/>
         <source>Fichier de restauration</source>
-        <translation type="unfinished"></translation>
+        <translation>Przywróć plik</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1769"/>
@@ -4605,7 +4606,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="362"/>
         <source>Grouper les textes séléctionné</source>
-        <translation type="unfinished"></translation>
+        <translation>Grupuj wybrane teksty</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="369"/>
@@ -4684,53 +4685,53 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="520"/>
         <source>Amener au premier plan</source>
-        <translation type="unfinished">Przenieś na wierzch</translation>
+        <translation>Przenieś na wierzch</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="521"/>
         <source>Rapprocher</source>
-        <translation type="unfinished">Przenieś wyżej</translation>
+        <translation>Przenieś wyżej</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="522"/>
         <source>Éloigner</source>
-        <translation type="unfinished">Przenieś niżej</translation>
+        <translation>Przenieś niżej</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="523"/>
         <source>Envoyer au fond</source>
-        <translation type="unfinished">Przenieś na spód</translation>
+        <translation>Przenieś na spód</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="525"/>
         <source>Ctrl+Shift+Up</source>
-        <translation type="unfinished">Ctrl+Shift+Up</translation>
+        <translation>Ctrl+Shift+Up</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="526"/>
         <source>Ctrl+Shift+Down</source>
-        <translation type="unfinished">Ctrl+Shift+Down</translation>
+        <translation>Ctrl+Shift+Down</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="527"/>
         <source>Ctrl+Shift+End</source>
-        <translation type="unfinished">Ctrl+Shift+End</translation>
+        <translation>Ctrl+Shift+End</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="528"/>
         <source>Ctrl+Shift+Home</source>
-        <translation type="unfinished">Ctrl+Shift+Home</translation>
+        <translation>Ctrl+Shift+Home</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="585"/>
         <source>Profondeur</source>
         <comment>toolbar title</comment>
-        <translation type="unfinished">Głębokość</translation>
+        <translation>Głębokość</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1325"/>
         <source>Groupe</source>
-        <translation type="unfinished"></translation>
+        <translation>Grupa</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2282"/>
@@ -7511,7 +7512,7 @@ Co chcesz zrobić?</translation>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="113"/>
         <source>Grouper des textes d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Teksty elementów grupy</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="176"/>
