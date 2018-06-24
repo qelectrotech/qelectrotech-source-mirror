@@ -30,6 +30,10 @@ This commit fix it, now the search function search for every terminals of a term
 * Add new feature -> alignment.
 * Alignment of text field can be edited.
 * Add new context menu action "group the selected texts".
+* Widget used to edit text item group can edit the pos of the group.
+* Element text item group can now be framed.
+
+
 * Improve for new qet_tb_generator plug-in : add the full path of the current project as
 an argument when calling the plug-in from QET if a project is open. 
 If not a file dialog is showed to select the QET project.
@@ -43,6 +47,7 @@ If not a file dialog is showed to select the QET project.
 
 * QetGraphicsItem, remove the function applyRotation and rotateBy, and use instead the native function of QGraphicsItem : setRotation
 * Conductor is an herited class of QGraphicsObject, instead of QObject and QGraphicsPathItem
+* Clean (and reduce the size) the class QETDiagramEditor, mostly by replacing the connection syntax "signal -> slot" by "signal -> lambda".
 
 
 * DXF export : fix some double items in dxf file.
@@ -62,7 +67,8 @@ If not a file dialog is showed to select the QET project.
 2- On windows, if user open a project from the recent files menu, when close QET the file is deleted ￼  user lose her work.
 clear the element texts when paste an element with the option "Do not store the labels of items in the copy paste" enabled.
 * elements can't be moved up and left, when there rotation are different than 0.
-
+* minor fix : slave link dialog doesn't display the good label, when the label of master element is build from formula.
+* Fix : in some condition, dynamic text are not at the same position when open a project.
 
 
 
