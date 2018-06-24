@@ -272,7 +272,7 @@
     <message>
         <location filename="../sources/ui/alignmenttextdialog.ui" line="26"/>
         <source>Alignement du texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Στοίχιση κειμένου</translation>
     </message>
 </context>
 <context>
@@ -448,7 +448,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="63"/>
         <source>Built</source>
-        <translation type="unfinished"></translation>
+        <translation>Δομή</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="184"/>
@@ -629,27 +629,27 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="183"/>
         <source>Horizontal en haut</source>
-        <translation type="unfinished"></translation>
+        <translation>Οριζόντια πάνω</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="188"/>
         <source>Horizontal en bas</source>
-        <translation type="unfinished"></translation>
+        <translation>Οριζόντια κάτω</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="197"/>
         <source>Vertical à gauche</source>
-        <translation type="unfinished"></translation>
+        <translation>Κάθετα αριστερά</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="202"/>
         <source>Vertical à droite</source>
-        <translation type="unfinished"></translation>
+        <translation>Κάθετα δεξιά</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="210"/>
         <source>Position et rotation du texte de conducteur :</source>
-        <translation type="unfinished"></translation>
+        <translation>Θέση και περιστροφή του κειμένου αγωγού</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="281"/>
@@ -807,7 +807,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/diagram.cpp" line="1279"/>
         <source>Modifier la profondeur</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετατροπή του βάθους</translation>
     </message>
 </context>
 <context>
@@ -937,7 +937,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/diagramview.cpp" line="91"/>
         <source>Collage multiple</source>
-        <translation type="unfinished"></translation>
+        <translation>Πολλαπλή επικόλληση</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="702"/>
@@ -1011,7 +1011,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="22"/>
         <source>Exporter l&apos;actuelle configuration des textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Εξαγωγή της τρέχουσας διαμόρφωσης κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="25"/>
@@ -1025,7 +1025,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="36"/>
         <source>Importer une configuration de texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Εισαγωγή διαμόρφωσης κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="63"/>
@@ -1145,12 +1145,12 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="290"/>
         <source>Éditer</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="534"/>
         <source>Modifier l&apos;alignement d&apos;un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία της στοίχισης  ενός κειμένου στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="477"/>
@@ -1325,7 +1325,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="202"/>
         <source>Alignement</source>
-        <translation type="unfinished">Στοίχιση</translation>
+        <translation>Στοίχιση</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="142"/>
@@ -1376,7 +1376,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="250"/>
         <source>Modifier l&apos;information d&apos;un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία των πληροφοριών ενος κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="278"/>
@@ -1386,7 +1386,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="305"/>
         <source>Modifier l&apos;alignement d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία της στοίχισης  ενός πεδίου κειμένου</translation>
     </message>
 </context>
 <context>
@@ -2519,7 +2519,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="14"/>
         <source>Assistant de formule</source>
-        <translation type="unfinished"></translation>
+        <translation>Οδηγός τύπων</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="20"/>
@@ -2529,7 +2529,7 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="27"/>
         <source>Formule</source>
-        <translation type="unfinished"></translation>
+        <translation>Τύπος</translation>
     </message>
 </context>
 <context>
@@ -2547,12 +2547,12 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="72"/>
         <source>Insert Formula Here e.g.: %prefix%l%c</source>
-        <translation type="unfinished"></translation>
+        <translation>Εισαγωγή Τύπου Εδώ πχ: %prefix%l%c</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="53"/>
         <source>Formula:</source>
-        <translation type="unfinished"></translation>
+        <translation>Τύπος</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="98"/>
@@ -2566,7 +2566,16 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
 You can also assign any other titleblock variable 
 that you create. Text and number inputs are
  also available.</source>
-        <translation type="unfinished"></translation>
+        <translation>Μπορείς να χρησιμοποιήσεις τις παρακάτω μεταβλητές στον τύπο σου:
+ -%prefix: Προεπιλεγμένο πρόθεμα στοιχείου
+ -%l: Γραμμή στοιχείου
+ -%c: Στήλη στοιχείου
+ -%F: Όνομα σελίδας
+ -%f ή %id: Αναγνωριστικό σελίδας
+ -%total: Σύνολο σελίδων
+Μπορείς επίσης να αντιστοιχίσεις οποιαδήποτε άλλη μεταβλητή πινακίδας
+που δημιούργησες. Η εισαγωγή κειμένου και αριθμών είναι
+  επίσης διαθέσιμη.</translation>
     </message>
 </context>
 <context>
@@ -2594,18 +2603,18 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="122"/>
         <source>Désactivé</source>
-        <translation type="unfinished"></translation>
+        <translation>Απενεργοποιημένο</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="125"/>
         <source> min</source>
         <comment>minute</comment>
-        <translation type="unfinished"></translation>
+        <translation> λεπτά</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="132"/>
         <source>Utiliser des fenêtres (appliqué au prochain lancement de &amp;QElectroTech)</source>
-        <translation type="unfinished"></translation>
+        <translation>Χρήση παραθύρων (εφαρμογή στην επόμενη εκκίνηση του &amp;QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="146"/>
@@ -2615,7 +2624,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="175"/>
         <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
-        <translation type="unfinished">Επισήμανση των προσφάτως ενσωματωμένων στοιχείων στον πίνακα</translation>
+        <translation>Επισήμανση των προσφάτως ενσωματωμένων στοιχείων στον πίνακα</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="182"/>
@@ -2626,32 +2635,32 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="205"/>
         <source>Appliqué au prochain lancement de QElectroTech</source>
-        <translation type="unfinished"></translation>
+        <translation>Εφαρμογή στην επόμενη εκκίνηση του QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="105"/>
         <source>Police des champs de texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Γραμματοσειρά πεδίων κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Φόρμα</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="20"/>
         <source>Général</source>
-        <translation type="unfinished"></translation>
+        <translation>Γενικά</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="63"/>
         <source>Sauvegarde automatique des projets (appliqué au prochain lancement de QElectroTech)</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτόματη δημιουργία αντιγράφων ασφαλείας των έργων (εφαρμοζόμενη στην επόμενη εκκίνηση του QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="84"/>
         <source>Utiliser des onglets (appliqué au proc&amp;hain lancement de QElectroTech)</source>
-        <translation type="unfinished"></translation>
+        <translation>Χρήση καρτελών (εφαρμογή στην επόμενη εκκίνηση του &amp;QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="169"/>
@@ -2666,12 +2675,12 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="77"/>
         <source>Ne pas conserver les labels des éléments lors des copier coller</source>
-        <translation type="unfinished"></translation>
+        <translation>Μη αποθήκευση των ετικετών κατά την αντιγραφή επικόλληση</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="112"/>
         <source>Exporter les bornes dans la nomenclature</source>
-        <translation type="unfinished"></translation>
+        <translation>Εξαγωγή των ακροδεκτών στον κατάλογο εξαρτημάτων</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="139"/>
@@ -3151,7 +3160,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="47"/>
         <source>Enregistrer la disposition</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποθήκευση διάταξης</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="182"/>
@@ -3247,7 +3256,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="59"/>
         <source>Enregistrer la disposition</source>
-        <translation type="unfinished"></translation>
+        <translation>Αποθήκευση διάταξης</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.h" line="55"/>
@@ -3260,53 +3269,53 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="14"/>
         <source>Collage multiple</source>
-        <translation type="unfinished"></translation>
+        <translation>Πολλαπλή επικόλληση</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="22"/>
         <source>Décalage</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετατόπιση</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="29"/>
         <location filename="../sources/ui/multipastedialog.ui" line="51"/>
         <source>px</source>
-        <translation type="unfinished"></translation>
+        <translation>πξ</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="32"/>
         <source>x:  </source>
-        <translation type="unfinished"></translation>
+        <translation>χ:  </translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="54"/>
         <source>y:  </source>
-        <translation type="unfinished"></translation>
+        <translation>ψ:  </translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="77"/>
         <source>Nombre de copie</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριθμός αντιγράφων</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="93"/>
         <source>Auto-connexion</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτόματη σύνδεση</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="100"/>
         <source>Auto-numérotation des éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτόματη αρίθμηση των στοιχείων</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="107"/>
         <source>Auto-numérotation des conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτόματη αρίθμηση των αγωγών</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.cpp" line="98"/>
         <source>Multi-collage</source>
-        <translation type="unfinished"></translation>
+        <translation>Πολλαπλή επικόλληση</translation>
     </message>
 </context>
 <context>
@@ -3595,7 +3604,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="204"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="321"/>
         <source>Element Prefix</source>
-        <translation type="unfinished"></translation>
+        <translation>Πρόθεμα στοιχείου</translation>
     </message>
 </context>
 <context>
@@ -3789,7 +3798,7 @@ Les variables suivantes sont incompatibles :
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="262"/>
         <source>Management</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαχείριση</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="266"/>
@@ -3949,7 +3958,7 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/projectview.cpp" line="858"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Création des onglets de folio :&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Άνοιγμα του έργου ...&lt;/b&gt;&lt;br/&gt;Δημιουργία καρτελών σελίδων :&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="894"/>
@@ -4095,17 +4104,17 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="1658"/>
         <source>&lt;b&gt;Le fichier de restauration suivant a été trouvé,&lt;br&gt;Voulez-vous l&apos;ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Βρέθηκε το παρακάτω αρχείο επαναφοράς,&lt;br&gt;Θέλεις να ανοιχτεί;&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1661"/>
         <source>&lt;b&gt;Les fichiers de restauration suivant on été trouvé,&lt;br&gt;Voulez-vous les ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Βρέθηκαν τα παρακάτω αρχεία επαναφοράς,&lt;br&gt;Θέλεις να ανοιχτούν;&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1666"/>
         <source>Fichier de restauration</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρχεία επαναφοράς</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1769"/>
@@ -4997,7 +5006,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="515"/>
         <source>Grouper les textes séléctionné</source>
-        <translation type="unfinished"></translation>
+        <translation>Ομαδοποίηση επιλεγμένων κειμένων</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="522"/>
@@ -5077,17 +5086,17 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="656"/>
         <source>Profondeur</source>
         <comment>toolbar title</comment>
-        <translation type="unfinished">Βάθος</translation>
+        <translation>Βάθος</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1345"/>
         <source>Groupe</source>
-        <translation type="unfinished"></translation>
+        <translation>Ομάδα</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2197"/>
         <source>Error launching qet_tb_generator plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Σφάλμα εκκίνησης του προσθέτου qet_tb_generator</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2198"/>
@@ -6116,7 +6125,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetproject.cpp" line="1307"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Création des folios&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Άνοιγμα του έργου...&lt;/b&gt;&lt;br/&gt;Δημιουργία των σελίδων&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1354"/>
@@ -6743,42 +6752,42 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qet.cpp" line="631"/>
         <source>Amener au premier plan</source>
-        <translation type="unfinished">Μετακίνηση εμπρός</translation>
+        <translation>Μετακίνηση εμπρός</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="632"/>
         <source>Rapprocher</source>
-        <translation type="unfinished">Ανύψωση</translation>
+        <translation>Ανύψωση</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="633"/>
         <source>Éloigner</source>
-        <translation type="unfinished">Χαμήλωμα</translation>
+        <translation>Χαμήλωμα</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="634"/>
         <source>Envoyer au fond</source>
-        <translation type="unfinished">Μετακίνηση πίσω</translation>
+        <translation>Μετακίνηση πίσω</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="636"/>
         <source>Ctrl+Shift+Up</source>
-        <translation type="unfinished">Ctrl+Shift+Πάνω</translation>
+        <translation>Ctrl+Shift+Πάνω</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="637"/>
         <source>Ctrl+Shift+Down</source>
-        <translation type="unfinished">Ctrl+Shift+Κάτω</translation>
+        <translation>Ctrl+Shift+Κάτω</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="638"/>
         <source>Ctrl+Shift+End</source>
-        <translation type="unfinished">Ctrl+Shift+End</translation>
+        <translation>Ctrl+Shift+End</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="639"/>
         <source>Ctrl+Shift+Home</source>
-        <translation type="unfinished">Ctrl+Shift+Home</translation>
+        <translation>Ctrl+Shift+Home</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/terminal.cpp" line="71"/>
@@ -7366,17 +7375,17 @@ Que désirez vous faire ?</source>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="75"/>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="89"/>
         <source>Ajouter un groupe de textes d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη ομάδας κειμένων στοιχείων</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="113"/>
         <source>Grouper des textes d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Ομαδοποίηση κειμένων στοιχείων</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="176"/>
         <source>Supprimer un groupe de textes d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαγραφή ομάδας κειμένων στοιχείων</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="225"/>
@@ -7396,7 +7405,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/undocommand/rotateselectioncommand.cpp" line="36"/>
         <source>Pivoter la selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Περιστροφή της επιλογής</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="59"/>
@@ -7423,18 +7432,19 @@ Que désirez vous faire ?</source>
         <location filename="../sources/elementtextpattern.cpp" line="62"/>
         <location filename="../sources/elementtextpattern.cpp" line="143"/>
         <source>Configuration de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαμόρφωση των κειμένων</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="63"/>
         <source>Une configuration de textes nommé &lt;&lt; %1 &gt;&gt; existe déjà.
 Voulez-vous la remplacer ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Μια διαμόρφωση κειμένου με όνομα &lt;&lt; %1 &gt;&gt; υπάρχει ήδη.
+Θέλεις να αντικατασταθεί;</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="82"/>
         <source>Nom de la configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Όνομα διαμόρφωσης</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="83"/>
@@ -7449,7 +7459,7 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="168"/>
         <source>Séléctionner une configuration de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Επέλεξε μια διαμόρφωση κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="169"/>
@@ -7459,7 +7469,7 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="236"/>
         <source>Importer la configuration de texte : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Εισαγωγή της διαμόρφωσης κειμένου :%1</translation>
     </message>
 </context>
 <context>
@@ -7760,7 +7770,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="59"/>
         <source>Tiret custom</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσαρμοσμένη διακεκομμένη</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="101"/>
@@ -9073,7 +9083,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="92"/>
         <source>Affiche&amp;r en contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμφάνιση επαφών</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="99"/>
