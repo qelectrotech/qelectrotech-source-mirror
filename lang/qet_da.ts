@@ -6818,42 +6818,42 @@ Hvad skal ske?</translation>
     <message>
         <location filename="../sources/qet.cpp" line="631"/>
         <source>Amener au premier plan</source>
-        <translation type="unfinished"></translation>
+        <translation>Flyt forrest</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="632"/>
         <source>Rapprocher</source>
-        <translation type="unfinished"></translation>
+        <translation>Flyt fremad</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="633"/>
         <source>Éloigner</source>
-        <translation type="unfinished"></translation>
+        <translation>Flyt bagud</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="634"/>
         <source>Envoyer au fond</source>
-        <translation type="unfinished"></translation>
+        <translation>Flyt bagerst</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="636"/>
         <source>Ctrl+Shift+Up</source>
-        <translation type="unfinished">Ctrl+Skift+Op</translation>
+        <translation>Ctrl+Skift+Op</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="637"/>
         <source>Ctrl+Shift+Down</source>
-        <translation type="unfinished">Ctrl+Skift+Ned</translation>
+        <translation>Ctrl+Skift+Ned</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="638"/>
         <source>Ctrl+Shift+End</source>
-        <translation type="unfinished">Ctrl+Skift+End</translation>
+        <translation>Ctrl+Skift+End</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="639"/>
         <source>Ctrl+Shift+Home</source>
-        <translation type="unfinished">Ctrl+Skift+Hjem</translation>
+        <translation>Ctrl+Skift+Hjem</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/terminal.cpp" line="71"/>
