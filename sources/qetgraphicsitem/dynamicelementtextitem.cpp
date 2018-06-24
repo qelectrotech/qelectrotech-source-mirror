@@ -635,7 +635,6 @@ void DynamicElementTextItem::paint(QPainter *painter, const QStyleOptionGraphics
 	if (m_frame)
 	{
 		painter->save();
-		
 		painter->setFont(QETApp::diagramTextsFont(fontSize()));
 		
 			//Adjust the thickness according to the font size, 
@@ -653,24 +652,9 @@ void DynamicElementTextItem::paint(QPainter *painter, const QStyleOptionGraphics
 		painter->setPen(pen);
 		painter->setRenderHint(QPainter::Antialiasing);
 		
-			//Get the bounding rectangle of the text
-		QSizeF size = document()->size();
-		size.setWidth(document()->idealWidth());
-			//Remove the margin. Size is exactly the bounding rect of the text
-		size.rheight() -= document()->documentMargin()*2;
-		size.rwidth() -= document()->documentMargin()*2;
-			//Add a little margin only for a better visual;
-		size.rheight() += 2;
-		size.rwidth() += 2;
-		
-			//The pos of the rect
-		QPointF pos = boundingRect().center();
-		pos.rx() -= size.width()/2;
-		pos.ry() -= size.height()/2;
-		
 			//Adjust the rounding of the rectangle according to the size of the font
 		qreal ro = (qreal)fontSize()/3;
-		painter->drawRoundedRect(QRectF(pos, size), ro, ro);
+		painter->drawRoundedRect(frameRect(), ro, ro);
 		
 		painter->restore();
 	}

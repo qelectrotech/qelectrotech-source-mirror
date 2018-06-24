@@ -185,6 +185,30 @@ Qt::Alignment DiagramTextItem::alignment() const
 }
 
 /**
+ * @brief DiagramTextItem::frameRect
+ * @return the rect used to draw a frame around this text
+ */
+QRectF DiagramTextItem::frameRect() const
+{	
+		//Get the bounding rectangle of the text
+	QSizeF size = document()->size();
+	size.setWidth(document()->idealWidth());
+		//Remove the margin. Size is exactly the bounding rect of the text
+	size.rheight() -= document()->documentMargin()*2;
+	size.rwidth() -= document()->documentMargin()*2;
+		//Add a little margin only for a better visual;
+	size.rheight() += 2;
+	size.rwidth() += 2;
+	
+		//The pos of the rect
+	QPointF pos = boundingRect().center();
+	pos.rx() -= size.width()/2;
+	pos.ry() -= size.height()/2;
+	
+	return QRectF(pos, size);
+}
+
+/**
  * @brief DiagramTextItem::paint
  * Draw this text field. This method draw the text by calling QGraphicsTextItem::paint.
  * If text is hovered, this method draw the bounding rect in grey

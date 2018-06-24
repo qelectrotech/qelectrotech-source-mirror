@@ -42,6 +42,7 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 	Q_PROPERTY(Qt::Alignment alignment READ alignment WRITE setAlignment NOTIFY alignmentChanged)
 	Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
 	Q_PROPERTY(bool holdToBottomPage READ holdToBottomPage WRITE setHoldToBottomPage NOTIFY holdToBottomPageChanged)
+	Q_PROPERTY(bool frame READ frame WRITE setFrame NOTIFY frameChanged)
 	
 	public:
 	signals:
@@ -52,6 +53,7 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 		void holdToBottomPageChanged(bool);
 		void xChanged();
 		void yChanged();
+		void frameChanged(bool frame);
 	
 	public:
 		ElementTextItemGroup(const QString &name, Element *parent);
@@ -69,6 +71,8 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 		QString name() const {return m_name;}
 		void setHoldToBottomPage(bool hold);
 		bool holdToBottomPage() const {return m_hold_to_bottom_of_page;}
+		void setFrame(const bool frame);
+		bool frame() const;
 		QList<DynamicElementTextItem *> texts() const;
 		Diagram *diagram() const;
 		Element *parentElement() const;
@@ -102,7 +106,8 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 		QString m_name;
 		bool m_first_move = true,
 			 m_hold_to_bottom_of_page = false,
-			 m_block_alignment_update = false;
+			 m_block_alignment_update = false,
+			 m_frame = false;
 		QPointF m_initial_position;
 		int m_vertical_adjustment = 0;
 		CrossRefItem *m_Xref_item = nullptr;

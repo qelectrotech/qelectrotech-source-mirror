@@ -298,6 +298,17 @@ void ElementTextItemGroup::setHoldToBottomPage(bool hold)
 	emit holdToBottomPageChanged(hold);
 }
 
+void ElementTextItemGroup::setFrame(const bool frame)
+{
+	m_frame = frame;
+	update();
+	emit frameChanged(m_frame);
+}
+
+bool ElementTextItemGroup::frame() const {
+	return m_frame;
+}
+
 /**
  * @brief ElementTextItemGroup::texts
  * @return Every texts in this group
@@ -356,6 +367,7 @@ QDomElement ElementTextItemGroup::toXml(QDomDocument &dom_document) const
 	
 	dom_element.setAttribute("rotation", this->rotation());
 	dom_element.setAttribute("vertical_adjustment", m_vertical_adjustment);
+	dom_element.setAttribute("frame", m_frame? "true" : "false");
 	
 	dom_element.setAttribute("hold_to_bottom_page", m_hold_to_bottom_of_page == true ? "true" : "false");
 	
@@ -392,6 +404,7 @@ void ElementTextItemGroup::fromXml(QDomElement &dom_element)
 	
 	setRotation(dom_element.attribute("rotation", QString::number(0)).toDouble());
 	setVerticalAdjustment(dom_element.attribute("vertical_adjustment").toInt());
+	setFrame(dom_element.attribute("frame", "false") == "true"? true : false);
 	
 	QString hold = dom_element.attribute("hold_to_bottom_page", "false");
 	setHoldToBottomPage(hold == "true" ? true : false);
@@ -435,6 +448,36 @@ void ElementTextItemGroup::paint(QPainter *painter, const QStyleOptionGraphicsIt
 		painter->setPen(t);
 		painter->drawRoundRect(boundingRect().adjusted(1, 1, -1, -1), 10, 10);
 		
+		painter->restore();
+	}
+	if(m_frame)
+	{		
+		int font_size = 1;
+		QRectF rect;
+		for(DynamicElementTextItem *deti : this->texts())
+		{
+			font_size = std::max(font_size, deti->fontSize());
+			rect = rect.united(mapFromItem(deti, deti->frameRect()).boundingRect());
+		}
+		
+			//Adjust the thickness according to the font size
+		qreal w=0.3;
+		if (font_size >= 5)
+		{
+			w = (qreal)font_size*0.1;
+			if(w > 2.5)
+				w = 2.5;
+		}
+		
+		painter->save();
+		QPen pen;
+		pen.setWidthF(w);
+		painter->setPen(pen);
+		painter->setRenderHint(QPainter::Antialiasing);
+		
+			//Adjust the rounding of the rectangle according to the size of the font
+		qreal ro = (qreal)font_size/3;
+		painter->drawRoundedRect(rect, ro, ro);
 		painter->restore();
 	}
 }

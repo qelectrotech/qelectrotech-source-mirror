@@ -76,6 +76,8 @@ class DiagramTextItem : public QGraphicsTextItem
 		void setAlignment(const Qt::Alignment &alignment);
 		Qt::Alignment alignment() const;
 		bool m_block_alignment = false;
+		
+		QRectF frameRect() const;
 
 	protected:
 		void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *) override;

@@ -53,7 +53,8 @@ int x_grp_row              = 1;
 int y_grp_row              = 2;
 int rot_grp_row            = 3;
 int adjust_grp_row         = 4;
-int hold_to_bottom_grp_row = 5;
+int frame_grp_row          = 5;
+int hold_to_bottom_grp_row = 6;
 
 DynamicElementTextModel::DynamicElementTextModel(Element *element, QObject *parent) :
 	QStandardItemModel(parent),
@@ -566,19 +567,23 @@ QUndoCommand *DynamicElementTextModel::undoForEditedGroup(ElementTextItemGroup *
 	else if((alignment == tr("Centre")) && (group->alignment() != Qt::AlignVCenter))
 		new QPropertyUndoCommand(group, "alignment", QVariant(group->alignment()), QVariant(Qt::AlignVCenter), undo);
 	
-	QPointF pos(group_qsi->child(x_grp_row,1)->data(Qt::EditRole).toDouble(),
-				group_qsi->child(y_grp_row,1)->data(Qt::EditRole).toDouble());
-	if(group->pos() != pos)
-	{
-		QPropertyUndoCommand *qpuc = new QPropertyUndoCommand(group, "pos", QVariant(group->pos()), QVariant(pos), undo);
-		qpuc->setAnimated(true, false);
-	}
 	
-	qreal rotation = group_qsi->child(rot_grp_row,1)->data(Qt::EditRole).toDouble();
-	if(group->rotation() != rotation)
+	if (group_qsi->child(hold_to_bottom_grp_row, 1)->checkState() == Qt::Unchecked)
 	{
-		QPropertyUndoCommand *qpuc = new QPropertyUndoCommand(group, "rotation", QVariant(group->rotation()), QVariant(rotation), undo);
-		qpuc->setAnimated(true, false);
+		QPointF pos(group_qsi->child(x_grp_row,1)->data(Qt::EditRole).toDouble(),
+					group_qsi->child(y_grp_row,1)->data(Qt::EditRole).toDouble());
+		if(group->pos() != pos)
+		{
+			QPropertyUndoCommand *qpuc = new QPropertyUndoCommand(group, "pos", QVariant(group->pos()), QVariant(pos), undo);
+			qpuc->setAnimated(true, false);
+		}
+		
+		qreal rotation = group_qsi->child(rot_grp_row,1)->data(Qt::EditRole).toDouble();
+		if(group->rotation() != rotation)
+		{
+			QPropertyUndoCommand *qpuc = new QPropertyUndoCommand(group, "rotation", QVariant(group->rotation()), QVariant(rotation), undo);
+			qpuc->setAnimated(true, false);
+		}
 	}
 	
 	int v_adjustment = group_qsi->child(adjust_grp_row,1)->data(Qt::EditRole).toInt();
@@ -592,8 +597,11 @@ QUndoCommand *DynamicElementTextModel::undoForEditedGroup(ElementTextItemGroup *
 	bool hold_to_bottom = group_qsi->child(hold_to_bottom_grp_row, 1)->checkState() == Qt::Checked? true : false;
 	if(group->holdToBottomPage() != hold_to_bottom)
 		new QPropertyUndoCommand(group, "holdToBottomPage", QVariant(group->holdToBottomPage()), QVariant(hold_to_bottom), undo);
-		
 	
+	bool frame_ = group_qsi->child(frame_grp_row, 1)->checkState() == Qt::Checked? true : false;
+	if(group->frame() != frame_)
+		new QPropertyUndoCommand(group, "frame", QVariant(group->frame()), QVariant(frame_), undo);
+		
 	return undo;
 }
 
@@ -688,6 +696,20 @@ void DynamicElementTextModel::addGroup(ElementTextItemGroup *group)
 	qsi_list.clear();
 	qsi_list << v_adj << v_adj_a;
 	grp->appendRow(qsi_list);
+	
+		//Frame
+	QStandardItem *frame_ = new QStandardItem(tr("Cadre"));
+	frame_->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable);
+	
+	QStandardItem *frame_a = new QStandardItem;
+	frame_a->setCheckable(true);
+	frame_a->setCheckState(group->frame()? Qt::Checked : Qt::Unchecked);
+	frame_a->setData(DynamicElementTextModel::grpFrame, Qt::UserRole+1);
+	frame_a->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsUserCheckable);
+	qsi_list.clear();
+	qsi_list << frame_ << frame_a;
+	grp->appendRow(qsi_list);
+	
 	
 		//Hold to the bottom of the page
 	QStandardItem *hold_bottom = new QStandardItem(tr("Maintenir en bas de page"));
@@ -1233,6 +1255,7 @@ void DynamicElementTextModel::setConnection(ElementTextItemGroup *group, bool se
 		connection_list << connect(group, &ElementTextItemGroup::holdToBottomPageChanged, [group, this]() {this->updateDataFromGroup(group, grpHoldBottom);});
 		connection_list << connect(group, &ElementTextItemGroup::xChanged, [group, this]() {this->updateDataFromGroup(group, grpPos);});
 		connection_list << connect(group, &ElementTextItemGroup::yChanged, [group, this]() {this->updateDataFromGroup(group, grpPos);});
+		connection_list << connect(group, &ElementTextItemGroup::frameChanged, [group, this]() {this->updateDataFromGroup(group, grpFrame);});
 		
 		m_hash_group_connect.insert(group, connection_list);
 	}
@@ -1373,6 +1396,9 @@ void DynamicElementTextModel::updateDataFromGroup(ElementTextItemGroup *group, D
 			enableGroupRotationAndPos(group);
 			break;
 		}
+		case grpFrame:
+			qsi->child(frame_grp_row, 1)->setCheckState(group->frame()? Qt::Checked : Qt::Unchecked);
+			break;
 		default:break;
 	}
 	
