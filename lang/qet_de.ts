@@ -6844,42 +6844,42 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qet.cpp" line="631"/>
         <source>Amener au premier plan</source>
-        <translation type="unfinished">Im Vordergrund</translation>
+        <translation>Im Vordergrund</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="632"/>
         <source>Rapprocher</source>
-        <translation type="unfinished">Eine Ebene vor</translation>
+        <translation>Eine Ebene vor</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="633"/>
         <source>Éloigner</source>
-        <translation type="unfinished">Eine Ebene zurück</translation>
+        <translation>Eine Ebene zurück</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="634"/>
         <source>Envoyer au fond</source>
-        <translation type="unfinished">Im Hintergrund</translation>
+        <translation>Im Hintergrund</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="636"/>
         <source>Ctrl+Shift+Up</source>
-        <translation type="unfinished">Strg+Umschalt+oben</translation>
+        <translation>Strg+Umschalt+oben</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="637"/>
         <source>Ctrl+Shift+Down</source>
-        <translation type="unfinished">Strg+Umschalt+unten</translation>
+        <translation>Strg+Umschalt+unten</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="638"/>
         <source>Ctrl+Shift+End</source>
-        <translation type="unfinished">Strg+Umschalt+Ende</translation>
+        <translation>Strg+Umschalt+Ende</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="639"/>
         <source>Ctrl+Shift+Home</source>
-        <translation type="unfinished">Strg+Umschalt+Pos1</translation>
+        <translation>Strg+Umschalt+Pos1</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/terminal.cpp" line="71"/>
