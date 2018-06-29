@@ -780,7 +780,7 @@ void Conductor::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsSce
 	if (m_moving_segment)
 	{
 			//Snap the mouse pos to grid
-		QPointF pos_ = Diagram::snapToGrid(mapFromItem(qghi, event->pos()));
+		QPointF pos_ = Diagram::snapToGrid(mapFromScene(event->scenePos()));
 		
 			//Position of the last point
 		QPointF p = m_moved_segment -> middle();

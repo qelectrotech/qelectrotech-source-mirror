@@ -25,18 +25,19 @@
  */
 QetGraphicsHandlerItem::QetGraphicsHandlerItem(qreal size) :
     m_size(size)
-{}
+{
+	setFlag(QGraphicsItem::ItemIgnoresTransformations);
+	
+	m_handler_rect.setRect(0-m_size/2, 0-m_size/2, m_size, m_size);
+	m_br.setRect(-1-m_size/2, -1-m_size/2, m_size+2, m_size+2);
+}
 
 /**
  * @brief QetGraphicsHandlerItem::boundingRect
  * @return 
  */
-QRectF QetGraphicsHandlerItem::boundingRect() const
-{
-    qreal rect_size = m_size * m_previous_zoom_factor;
-    QRectF rect(0-rect_size/2, 0-rect_size/2, rect_size, rect_size);
-    rect.adjust(-0.1, -0.1, 0.1, 0.1);
-	return rect;
+QRectF QetGraphicsHandlerItem::boundingRect() const {
+	return m_br;
 }
 
 /**
@@ -60,23 +61,13 @@ void QetGraphicsHandlerItem::paint(QPainter *painter, const QStyleOptionGraphics
     Q_UNUSED(option);
     Q_UNUSED(widget);
 
-    qreal zoom_factor = 1.0/painter->transform().m11();
-    if(zoom_factor != m_previous_zoom_factor)
-    {
-        prepareGeometryChange();
-        m_previous_zoom_factor = zoom_factor;
-    }
-
-    qreal rect_size = m_size * m_previous_zoom_factor;
-    QRectF rect(0-rect_size/2, 0-rect_size/2, rect_size, rect_size);
-
     painter->save();
     painter->setBrush(QBrush(m_color));
     QPen pen(QBrush(m_color), 2, Qt::SolidLine, Qt::SquareCap, Qt::MiterJoin);
 	pen.setCosmetic(true);
     painter->setPen(pen);
 	painter->setRenderHint(QPainter::Antialiasing, true);
-    painter->drawEllipse(rect);
+    painter->drawEllipse(m_handler_rect);
 	painter->restore();
 }
 

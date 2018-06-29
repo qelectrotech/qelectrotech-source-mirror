@@ -19,6 +19,7 @@
 #define QETGRAPHICSHANDLERITEM_H
 
 #include <QGraphicsItem>
+#include <QPen>
 
 /**
  * @brief The QetGraphicsHandlerItem class
@@ -42,9 +43,11 @@ class QetGraphicsHandlerItem : public QGraphicsItem
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 
     private:
-        qreal m_size,
-              m_previous_zoom_factor = 1;
+		QRectF m_handler_rect,
+			   m_br;
+        qreal m_size;
 		QColor m_color;
+		QPen m_pen;
 		
 	public:
 		static QVector<QetGraphicsHandlerItem *> handlerForPoint(const QVector<QPointF> &points, int size = 10);
