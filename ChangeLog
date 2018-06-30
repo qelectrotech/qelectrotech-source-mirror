@@ -8,6 +8,7 @@
 * Context menu display only enabled actions.
 * Add new feature -> alignment.
 * Alignment of text field can be edited.
+* Add two new actions in context menu for insert or remove point of a selected polygon.
 
 * Diagram editor : 
 * Conductors can now be drawn with two colors.

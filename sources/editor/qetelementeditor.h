@@ -92,25 +92,25 @@ class QETElementEditor : public QETMainWindow {
 	
 	// methods
 	public:
-	void setNames(const NamesList &);
-	void setLocation(const ElementsLocation &);
-	ElementsLocation location() const;
-	void setFileName(const QString &);
-	QString fileName() const;
-	void setReadOnly(bool);
-	bool isReadOnly() const;
-	void fromFile(const QString &);
-	void fromLocation(const ElementsLocation &);
-	bool toFile(const QString &);
-	bool toLocation(const ElementsLocation &location);
-	bool isEditing(const ElementsLocation &);
-	bool isEditing(const QString &);
-	ElementScene *elementScene() const;
-	void readSettings();
-	void writeSettings();
-	static QPointF pasteOffset();
-	static QString getOpenElementFileName(QWidget * = nullptr, const QString & = QString());
-	void contextMenu(QPoint p);
+		void setNames(const NamesList &);
+		void setLocation(const ElementsLocation &);
+		ElementsLocation location() const;
+		void setFileName(const QString &);
+		QString fileName() const;
+		void setReadOnly(bool);
+		bool isReadOnly() const;
+		void fromFile(const QString &);
+		void fromLocation(const ElementsLocation &);
+		bool toFile(const QString &);
+		bool toLocation(const ElementsLocation &location);
+		bool isEditing(const ElementsLocation &);
+		bool isEditing(const QString &);
+		ElementScene *elementScene() const;
+		void readSettings();
+		void writeSettings();
+		static QPointF pasteOffset();
+		static QString getOpenElementFileName(QWidget * = nullptr, const QString & = QString());
+		void contextMenu(QPoint p, QList<QAction *> actions = QList<QAction*>());
 
 	signals:
 		void saveToLocation(ElementsLocation loc);

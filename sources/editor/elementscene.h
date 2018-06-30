@@ -91,6 +91,7 @@ class ElementScene : public QGraphicsScene
 		void setEventInterface (ESEventInterface *event_interface);
 		void clearEventInterface();
 		void setBehavior (ElementScene::Behavior);
+		ElementScene::Behavior behavior() const;
 		QPointF snapToGrid(QPointF point);
 		void setNames(const NamesList &);
 		NamesList names() const;

@@ -424,14 +424,6 @@ void CustomElementGraphicPart::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 	QGraphicsObject::hoverEnterEvent(event);
 }
 
-void CustomElementGraphicPart::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
-{
-	if (isSelected())
-		setCursor(Qt::OpenHandCursor);
-
-	QGraphicsObject::hoverMoveEvent(event);
-}
-
 /**
  * @brief CustomElementGraphicPart::hoverLeaveEvent
  * Reimplemented from QGraphicsObject.
@@ -441,7 +433,6 @@ void CustomElementGraphicPart::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
 void CustomElementGraphicPart::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
 {
 	m_hovered = false;
-	unsetCursor();
 	QGraphicsObject::hoverLeaveEvent(event);
 }
 

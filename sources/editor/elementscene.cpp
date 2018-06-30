@@ -240,6 +240,10 @@ void ElementScene::keyPressEvent(QKeyEvent *event)
  */
 void ElementScene::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 {
+	QGraphicsScene::contextMenuEvent(event);
+	if(event->isAccepted())
+		return;
+	
 	if (m_behavior == ElementScene::Normal)
 		m_element_editor -> contextMenu(event->screenPos());
 }
@@ -302,9 +306,12 @@ void ElementScene::clearEventInterface()
  * Modifie the current behavior of this scene
  * @param b
  */
-void ElementScene::setBehavior(ElementScene::Behavior b)
-{
+void ElementScene::setBehavior(ElementScene::Behavior b) {
 	m_behavior = b;
+}
+
+ElementScene::Behavior ElementScene::behavior() const {
+	return m_behavior;
 }
 
 /**

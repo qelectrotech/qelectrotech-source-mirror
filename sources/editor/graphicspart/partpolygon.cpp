@@ -19,6 +19,8 @@
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "elementscene.h"
 #include "QetGraphicsItemModeler/qetgraphicshandleritem.h"
+#include "qetelementeditor.h"
+#include "qeticons.h"
 
 
 /**
@@ -31,7 +33,14 @@ PartPolygon::PartPolygon(QETElementEditor *editor, QGraphicsItem *parent) :
 	CustomElementGraphicPart(editor, parent),
 	m_closed(false),
 	m_undo_command(nullptr)
-{}
+{
+	m_insert_point = new QAction(tr("Ajouter un point"), this);
+	m_insert_point->setIcon(QET::Icons::Add);
+	connect(m_insert_point, &QAction::triggered, this, &PartPolygon::insertPoint);
+	m_remove_point = new QAction(tr("Supprimer ce point"), this);
+	m_remove_point->setIcon(QET::Icons::Remove);
+	connect(m_remove_point, &QAction::triggered, this, &PartPolygon::removePoint);
+}
 
 /**
  * @brief PartPolygon::~PartPolygon
@@ -327,6 +336,30 @@ bool PartPolygon::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 	return false;
 }
 
+void PartPolygon::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
+{
+	m_context_menu_pos = event->pos();
+	event->ignore();
+	if (isSelected() && elementScene() && (elementScene()->behavior() == ElementScene::Normal))
+	{
+		QList<QAction *> list;
+		list << m_insert_point;
+		if (m_handler_vector.count() > 2)
+		{
+			for (QetGraphicsHandlerItem *qghi : m_handler_vector)
+			{
+				if (qghi->contains(qghi->mapFromScene(event->scenePos())))
+				{
+					list << m_remove_point;
+					break;
+				}
+			}
+		}
+		elementScene()->editor()->contextMenu(event->screenPos(), list);
+		event->accept();
+	}
+}
+
 /**
  * @brief PartPolygon::adjusteHandlerPos
  */
@@ -340,6 +373,12 @@ void PartPolygon::adjusteHandlerPos()
 		QVector <QPointF> points_vector = mapToScene(m_polygon);
 		for (int i = 0 ; i < points_vector.size() ; ++i)
 			m_handler_vector.at(i)->setPos(points_vector.at(i));
+	}
+	else
+	{
+		qDeleteAll(m_handler_vector);
+		m_handler_vector.clear();
+		addHandler();
 	}
 }
 
@@ -436,6 +475,95 @@ void PartPolygon::removeHandler()
 		qDeleteAll(m_handler_vector);
 		m_handler_vector.clear();
 	}
+}
+
+/**
+ * @brief PartPolygon::insertPoint
+ * Insert a point in this polygone
+ */
+void PartPolygon::insertPoint()
+{	
+	qreal max_angle = 0;
+	int index = 0;
+	
+	for (int i=1 ; i<m_polygon.size() ; i++)
+	{
+		QPointF A = m_polygon.at(i-1);
+		QPointF B = m_polygon.at(i);
+		QLineF line_a(A, m_context_menu_pos);
+		QLineF line_b(m_context_menu_pos, B);
+		qreal angle = line_a.angleTo(line_b);
+		if(angle<180)
+			angle = 360-angle;
+
+		if (i==1)
+		{
+			max_angle = angle;
+			index=i;
+		}
+		if (angle > max_angle)
+		{
+			max_angle = angle;
+			index=i;
+		}
+	}
+		//Special case when polygon is close
+	if (m_closed)
+	{
+		QLineF line_a(m_polygon.last(), m_context_menu_pos);
+		QLineF line_b(m_context_menu_pos, m_polygon.first());
+		
+		qreal angle = line_a.angleTo(line_b);
+		if (angle<180)
+			angle = 360-angle;
+
+		if (angle > max_angle)
+		{
+			max_angle = angle;
+			index=m_polygon.size();
+		}
+	}
+	
+	QPolygonF polygon = this->polygon();
+	polygon.insert(index, elementScene()->snapToGrid(m_context_menu_pos));
+	
+		//Wrap the undo for avoid to merge the undo commands when user add several points.
+	QUndoCommand *undo = new QUndoCommand(tr("Ajouter un point à un polygone"));
+	new QPropertyUndoCommand(this, "polygon", this->polygon(), polygon, undo);
+	elementScene()->undoStack().push(undo);
+}
+
+/**
+ * @brief PartPolygon::removePoint
+ * remove a point on this polygon
+ */
+void PartPolygon::removePoint()
+{
+	if (m_handler_vector.size() == 2)
+		return;
+	
+	QPointF point = mapToScene(m_context_menu_pos);
+	int index = -1;
+	for (int i=0 ; i<m_handler_vector.size() ; i++)
+	{
+		QetGraphicsHandlerItem *qghi = m_handler_vector.at(i);
+		if (qghi->contains(qghi->mapFromScene(point)))
+		{
+			index = i;
+			break;
+		}
+	}
+	if (index > -1 && index<m_handler_vector.count())
+	{
+		QPolygonF polygon = this->polygon();
+		polygon.removeAt(index);
+		
+			//Wrap the undo for avoid to merge the undo commands when user add several points.
+		QUndoCommand *undo = new QUndoCommand(tr("Supprimer un point d'un polygone"));
+		new QPropertyUndoCommand(this, "polygon", this->polygon(), polygon, undo);
+		elementScene()->undoStack().push(undo);
+	}
+	
 }
 
 /**

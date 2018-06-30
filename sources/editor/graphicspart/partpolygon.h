@@ -23,6 +23,7 @@
 
 class QPropertyUndoCommand;
 class QetGraphicsHandlerItem;
+class QAction;
 
 /**
  * @brief The PartPolygon class
@@ -86,6 +87,7 @@ class PartPolygon : public CustomElementGraphicPart
 	protected:
 		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
 		bool sceneEventFilter(QGraphicsItem *watched, QEvent *event) override;
+		void contextMenuEvent(QGraphicsSceneContextMenuEvent *event) override;
 	
 	private:
 		void adjusteHandlerPos();
@@ -96,6 +98,8 @@ class PartPolygon : public CustomElementGraphicPart
 		
 		void addHandler();
 		void removeHandler();
+		void insertPoint();
+		void removePoint();
 		
 		
 		bool m_closed;
@@ -104,5 +108,8 @@ class PartPolygon : public CustomElementGraphicPart
 		QPropertyUndoCommand *m_undo_command;
 		int m_vector_index = -1;
 		QVector<QetGraphicsHandlerItem *> m_handler_vector;
+		QAction *m_insert_point,
+				*m_remove_point;
+		QPointF m_context_menu_pos;
 };
 #endif
