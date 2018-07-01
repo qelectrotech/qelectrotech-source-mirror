@@ -25,6 +25,7 @@
 class QDomElement;
 class QDomDocument;
 class QetGraphicsHandlerItem;
+class QAction;
 
 /**
  * @brief The QetShapeItem class
@@ -83,7 +84,7 @@ class QetShapeItem : public QetGraphicsItem
 		bool setRect    (const QRectF &rect);
 		QPolygonF polygon() const {return m_polygon;}
 		bool setPolygon (const QPolygonF &polygon);
-		bool isClosed() const {return m_close;}
+		bool isClosed() const {return m_closed;}
 		void setClosed (bool close);
 
 			//Methods available for polygon shape
@@ -101,10 +102,14 @@ class QetShapeItem : public QetGraphicsItem
 		void mouseReleaseEvent (QGraphicsSceneMouseEvent *event) override;
         QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
         bool sceneEventFilter(QGraphicsItem *watched, QEvent *event) override;
+		void contextMenuEvent(QGraphicsSceneContextMenuEvent *event) override;
 
 	private:
 		void switchResizeMode();
+		void addHandler();
 		void adjusteHandlerPos();
+		void insertPoint();
+		void removePoint();
 		
 		void handlerMousePressEvent   (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
 		void handlerMouseMoveEvent    (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
@@ -115,12 +120,18 @@ class QetShapeItem : public QetGraphicsItem
 		ShapeType	 m_shapeType;
 		QPen		 m_pen;
 		QBrush       m_brush;
-		QPointF		 m_P1, m_P2, m_old_P1, m_old_P2;
+		QPointF		 m_P1,
+					 m_P2,
+					 m_old_P1,
+					 m_old_P2,
+					 m_context_menu_pos;
 		QPolygonF	 m_polygon, m_old_polygon;
 		bool		 m_hovered;
 		int			 m_vector_index;
-		bool m_close = false;
+		bool m_closed = false;
 		int m_resize_mode = 1;
         QVector<QetGraphicsHandlerItem *> m_handler_vector;
+		QAction *m_insert_point,
+				*m_remove_point;
 };
 #endif // QETSHAPEITEM_H

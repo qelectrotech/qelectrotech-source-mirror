@@ -83,8 +83,7 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 	updateWindowTitle();
 	m_diagram->loadElmtFolioSeq();
 	m_diagram->loadCndFolioSeq();
-
-	m_context_menu = new QMenu(this);
+	
 	m_paste_here = new QAction(QET::Icons::EditPaste, tr("Coller ici", "context menu action"), this);
 	connect(m_paste_here, SIGNAL(triggered()), this, SLOT(pasteHere()));
 	
@@ -1008,47 +1007,85 @@ void DiagramView::setEventInterface(DVEventInterface *event_interface)
 }
 
 /**
-	Gere le menu contextuel
-	@param e Evenement decrivant la demande de menu contextuel
-*/
-void DiagramView::contextMenuEvent(QContextMenuEvent *e) {
-	if (QGraphicsItem *qgi = m_diagram -> itemAt(mapToScene(e -> pos()), transform())) {
-		if (!qgi -> isSelected()) m_diagram -> clearSelection();
-		qgi -> setSelected(true);
-	}
-
-	if (QETDiagramEditor *qde = diagramEditor()) {
-		m_context_menu -> clear();
-		if (m_diagram -> selectedItems().isEmpty()) {
-			m_paste_here_pos = e -> pos();
-			m_paste_here -> setEnabled(Diagram::clipboardMayContainDiagram());
-			m_context_menu -> addAction(m_paste_here);
-			m_context_menu -> addSeparator();
-			m_context_menu -> addAction(qde -> m_edit_diagram_properties);
-			m_context_menu -> addActions(qde -> m_row_column_actions_group.actions());
-		} else {
-			m_context_menu -> addAction(qde -> m_cut);
-			m_context_menu -> addAction(qde -> m_copy);
-			m_context_menu -> addAction(m_multi_paste);
-			m_context_menu -> addSeparator();
-			m_context_menu -> addAction(qde -> m_conductor_reset);
-			m_context_menu -> addSeparator();
-			m_context_menu -> addActions(qde -> m_selection_actions_group.actions());
-			m_context_menu -> addSeparator();
-			m_context_menu -> addActions(qde->m_depth_action_group->actions());
+ * @brief DiagramView::contextMenuActions
+ * @return a list of actions currently available for a context menu.
+ * 
+ */
+QList<QAction *> DiagramView::contextMenuActions() const
+{
+	QList<QAction *> list;
+	if (QETDiagramEditor *qde = diagramEditor())
+	{
+		if (m_diagram->selectedItems().isEmpty())
+		{
+			list << m_paste_here;
+			list << new QAction;
+			list.last()->setSeparator(true);
+			list << qde->m_edit_diagram_properties;
+			list << qde->m_row_column_actions_group.actions();
+		}
+		else
+		{
+			list << qde->m_cut;
+			list << qde->m_copy;
+			list << m_multi_paste;
+			list << new QAction();
+			list.last()->setSeparator(true);
+			list << qde->m_conductor_reset;
+			list << new QAction();
+			list.last()->setSeparator(true);
+			list << qde->m_selection_actions_group.actions();
+			list << new QAction();
+			list.last()->setSeparator(true);
+			list << qde->m_depth_action_group->actions();
 		}
 		
 			//Remove from the context menu the actions which are disabled.
-		const QList<QAction *> actions = m_context_menu->actions();
+		const QList<QAction *> actions = list;
 		for(QAction *action : actions)
 		{
-			if(!action->isEnabled())
-				m_context_menu->removeAction(action);
+			if (!action->isEnabled()) {
+				list.removeAll(action);
+			}
+		}
+	}
+	
+	return list;
+}
+
+/**
+ * @brief DiagramView::contextMenuEvent
+ * @param e
+ */
+void DiagramView::contextMenuEvent(QContextMenuEvent *e)
+{
+	QGraphicsView::contextMenuEvent(e);
+	if(e->isAccepted())
+		return;
+	
+	if (QGraphicsItem *qgi = m_diagram->itemAt(mapToScene(e->pos()), transform()))
+	{
+		if (!qgi -> isSelected()) {
+			m_diagram->clearSelection();
 		}
 		
-		m_context_menu -> popup(e -> globalPos());
+		qgi->setSelected(true);
 	}
-	e -> accept();
+	
+	if (m_diagram->selectedItems().isEmpty())
+	{
+		m_paste_here_pos = e->pos();
+		m_paste_here->setEnabled(Diagram::clipboardMayContainDiagram());
+	}
+
+	QList <QAction *> list = contextMenuActions();
+	if(!list.isEmpty())
+	{
+		QMenu *context_menu = new QMenu(this);
+		context_menu->addActions(list);
+		context_menu->popup(e->globalPos());
+		e->accept();
+	}
 }
 
 /**

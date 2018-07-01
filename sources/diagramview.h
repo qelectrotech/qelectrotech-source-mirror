@@ -27,7 +27,6 @@ class Conductor;
 class Diagram;
 class QETDiagramEditor;
 class DVEventInterface;
-class QMenu;
 class QInputEvent;
 class QGestureEvent;
 
@@ -51,7 +50,6 @@ class DiagramView : public QGraphicsView
 
 		Diagram          *m_diagram = nullptr;
 		DVEventInterface *m_event_interface = nullptr;
-		QMenu            *m_context_menu = nullptr;
 		QAction          *m_paste_here = nullptr;
 		QAction			 *m_multi_paste = nullptr;
 		QPoint            m_paste_here_pos;
@@ -65,6 +63,7 @@ class DiagramView : public QGraphicsView
 		QETDiagramEditor *diagramEditor() const;
 		void editSelection();
 		void setEventInterface (DVEventInterface *event_interface);
+		QList<QAction *> contextMenuActions() const;
 	
 	protected:
 		void mouseDoubleClickEvent(QMouseEvent *) override;

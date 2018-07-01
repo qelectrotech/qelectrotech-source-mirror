@@ -24,6 +24,8 @@
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 #include "qetxml.h"
+#include "diagramview.h"
+#include "qeticons.h"
 
 /**
  * @brief QetShapeItem::QetShapeItem
@@ -50,6 +52,13 @@ QetShapeItem::QetShapeItem(QPointF p1, QPointF p2, ShapeType type, QGraphicsItem
 		for(QetGraphicsHandlerItem *qghi : m_handler_vector)
 			qghi->setZValue(this->zValue()+1);
 	});
+	
+	m_insert_point = new QAction(tr("Ajouter un point"), this);
+	m_insert_point->setIcon(QET::Icons::Add);
+	connect(m_insert_point, &QAction::triggered, this, &QetShapeItem::insertPoint);
+	m_remove_point = new QAction(tr("Supprimer ce point"), this);
+	m_remove_point->setIcon(QET::Icons::Remove);
+	connect(m_remove_point, &QAction::triggered, this, &QetShapeItem::removePoint);
 
 }
 
@@ -164,10 +173,10 @@ bool QetShapeItem::setPolygon(const QPolygonF &polygon)
  */
 void QetShapeItem::setClosed(bool close)
 {
-	if (m_shapeType == Polygon && close != m_close)
+	if (m_shapeType == Polygon && close != m_closed)
 	{
 		prepareGeometryChange();
-		m_close = close;
+		m_closed = close;
 		emit closeChanged();
 	}
 }
@@ -244,7 +253,7 @@ QPainterPath QetShapeItem::shape() const
 			break;
 		case Polygon:
 			path.addPolygon(m_polygon);
-			if (m_close) {
+			if (m_closed) {
 				path.closeSubpath();
 			}
 			break;
@@ -294,7 +303,7 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
         case Line:      painter->drawLine(QLineF(m_P1, m_P2)); break;
         case Rectangle: painter->drawRect(QRectF(m_P1, m_P2)); break;
         case Ellipse:   painter->drawEllipse(QRectF(m_P1, m_P2)); break;
-        case Polygon:   m_close ? painter->drawPolygon(m_polygon) : painter->drawPolyline(m_polygon); break;
+        case Polygon:   m_closed ? painter->drawPolygon(m_polygon) : painter->drawPolyline(m_polygon); break;
     }
     
     painter->restore();
@@ -345,29 +354,8 @@ QVariant QetShapeItem::itemChange(QGraphicsItem::GraphicsItemChange change, cons
 {
     if (change == ItemSelectedHasChanged)
     {
-        if (value.toBool() == true) //If this is selected, wa add handlers.
-        {
-            QVector <QPointF> points_vector;
-            switch (m_shapeType)
-            {
-                case Line:      points_vector << m_P1 << m_P2; break;
-                case Rectangle: points_vector = QetGraphicsHandlerUtility::pointsForRect(QRectF(m_P1, m_P2)); break;
-                case Ellipse:   points_vector = QetGraphicsHandlerUtility::pointsForRect(QRectF(m_P1, m_P2)); break;
-                case Polygon:   points_vector = m_polygon; break;
-            }
-
-            if(!points_vector.isEmpty() && scene())
-            {
-                m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapToScene(points_vector));
-
-                for(QetGraphicsHandlerItem *handler : m_handler_vector)
-				{
-					handler->setZValue(this->zValue()+1);
-					handler->setColor(Qt::blue);
-                    scene()->addItem(handler);
-					handler->installSceneEventFilter(this);
-				}
-            }
+        if (value.toBool() == true) { //If this is selected, wa add handlers.
+			addHandler();
         }
         else //Else this is deselected, we remove handlers
         {
@@ -434,6 +422,65 @@ bool QetShapeItem::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 }
 
 /**
+ * @brief QetShapeItem::contextMenuEvent
+ * @param event
+ */
+void QetShapeItem::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
+{
+	m_context_menu_pos = event->pos();
+	
+	if (m_shapeType == QetShapeItem::Polygon)
+	{
+		if (diagram()->selectedItems().isEmpty()) {
+			this->setSelected(true);
+		}
+		
+		if (isSelected() && scene()->selectedItems().size() == 1)
+		{
+			if (diagram())
+			{
+				DiagramView *d_view = nullptr;
+				for (QGraphicsView *view : diagram()->views())
+				{
+					if (view->isActiveWindow())
+					{
+						d_view = dynamic_cast<DiagramView *>(view);
+						if (d_view)
+							continue;
+					}
+				}
+				
+				if (d_view)
+				{
+					QScopedPointer<QMenu> menu(new QMenu());
+					menu.data()->addAction(m_insert_point);
+					
+					if (m_handler_vector.count() > 2)
+					{
+						for (QetGraphicsHandlerItem *qghi : m_handler_vector)
+						{
+							if (qghi->contains(qghi->mapFromScene(event->scenePos())))
+							{
+								menu.data()->addAction(m_remove_point);
+								break;
+							}
+						}
+					}
+					
+					menu.data()->addSeparator();
+					menu.data()->addActions(d_view->contextMenuActions());
+					menu.data()->exec(event->screenPos());
+					event->accept();
+					return;
+				}
+			}
+		}
+	}
+	
+	QetGraphicsItem::contextMenuEvent(event);
+}
+
+/**
  * @brief QetShapeItem::switchResizeMode
  */
 void QetShapeItem::switchResizeMode()
@@ -451,6 +498,34 @@ void QetShapeItem::switchResizeMode()
 			m_resize_mode = 1;
 			for (QetGraphicsHandlerItem *qghi : m_handler_vector)
 				qghi->setColor(Qt::blue);
+		}
+	}
+}
+
+void QetShapeItem::addHandler()
+{
+	if (m_handler_vector.isEmpty())
+	{
+		QVector <QPointF> points_vector;
+		switch (m_shapeType)
+		{
+			case Line:      points_vector << m_P1 << m_P2; break;
+			case Rectangle: points_vector = QetGraphicsHandlerUtility::pointsForRect(QRectF(m_P1, m_P2)); break;
+			case Ellipse:   points_vector = QetGraphicsHandlerUtility::pointsForRect(QRectF(m_P1, m_P2)); break;
+			case Polygon:   points_vector = m_polygon; break;
+		}
+		
+		if(!points_vector.isEmpty() && scene())
+		{
+			m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapToScene(points_vector));
+			
+			for(QetGraphicsHandlerItem *handler : m_handler_vector)
+			{
+				handler->setZValue(this->zValue()+1);
+				handler->setColor(Qt::blue);
+				scene()->addItem(handler);
+				handler->installSceneEventFilter(this);
+			}
 		}
 	}
 }
@@ -475,6 +550,101 @@ void QetShapeItem::adjusteHandlerPos()
 		points_vector = mapToScene(points_vector);
 		for (int i = 0 ; i < points_vector.size() ; ++i)
 			m_handler_vector.at(i)->setPos(points_vector.at(i));
+	}
+	else
+	{
+		qDeleteAll(m_handler_vector);
+		m_handler_vector.clear();
+		addHandler();
+	}
+}
+
+void QetShapeItem::insertPoint()
+{
+	if (m_shapeType != QetShapeItem::Polygon) {
+		return;
+	}
+	
+	qreal max_angle = 0;
+	int index = 0;
+	
+	for (int i=1 ; i<m_polygon.size() ; i++)
+	{
+		QPointF A = m_polygon.at(i-1);
+		QPointF B = m_polygon.at(i);
+		QLineF line_a(A, m_context_menu_pos);
+		QLineF line_b(m_context_menu_pos, B);
+		qreal angle = line_a.angleTo(line_b);
+		if(angle<180)
+			angle = 360-angle;
+
+		if (i==1)
+		{
+			max_angle = angle;
+			index=i;
+		}
+		if (angle > max_angle)
+		{
+			max_angle = angle;
+			index=i;
+		}
+	}
+		//Special case when polygon is close
+	if (m_closed)
+	{
+		QLineF line_a(m_polygon.last(), m_context_menu_pos);
+		QLineF line_b(m_context_menu_pos, m_polygon.first());
+		
+		qreal angle = line_a.angleTo(line_b);
+		if (angle<180)
+			angle = 360-angle;
+
+		if (angle > max_angle)
+		{
+			max_angle = angle;
+			index=m_polygon.size();
+		}
+	}
+	
+	QPolygonF polygon = this->polygon();
+	polygon.insert(index, Diagram::snapToGrid(m_context_menu_pos));
+	
+		//Wrap the undo for avoid to merge the undo commands when user add several points.
+	QUndoCommand *undo = new QUndoCommand(tr("Ajouter un point à un polygone"));
+	new QPropertyUndoCommand(this, "polygon", this->polygon(), polygon, undo);
+	diagram()->undoStack().push(undo);
+}
+
+void QetShapeItem::removePoint()
+{
+	if (m_shapeType != QetShapeItem::Polygon) {
+		return;
+	}
+	
+	if (m_handler_vector.size() == 2) {
+		return;
+	}
+	
+	QPointF point = mapToScene(m_context_menu_pos);
+	int index = -1;
+	for (int i=0 ; i<m_handler_vector.size() ; i++)
+	{
+		QetGraphicsHandlerItem *qghi = m_handler_vector.at(i);
+		if (qghi->contains(qghi->mapFromScene(point)))
+		{
+			index = i;
+			break;
+		}
+	}
+	if (index > -1 && index<m_handler_vector.count())
+	{
+		QPolygonF polygon = this->polygon();
+		polygon.removeAt(index);
+		
+			//Wrap the undo for avoid to merge the undo commands when user add several points.
+		QUndoCommand *undo = new QUndoCommand(tr("Supprimer un point d'un polygone"));
+		new QPropertyUndoCommand(this, "polygon", this->polygon(), polygon, undo);
+		diagram()->undoStack().push(undo);
 	}
 }
 
@@ -588,7 +758,7 @@ bool QetShapeItem::fromXml(const QDomElement &e)
 	if (e.tagName() != "shape") return (false);
 
 	is_movable_ = (e.attribute("is_movable").toInt());
-	m_close = e.attribute("closed", "0").toInt();
+	m_closed = e.attribute("closed", "0").toInt();
 	m_pen = QETXML::penFromXml(e.firstChildElement("pen"));
 	m_brush = QETXML::brushFromXml(e.firstChildElement("brush"));
 
@@ -642,7 +812,7 @@ QDomElement QetShapeItem::toXml(QDomDocument &document) const
 	result.appendChild(QETXML::penToXml(document, m_pen));
 	result.appendChild(QETXML::brushToXml(document, m_brush));
 	result.setAttribute("is_movable", bool(is_movable_));
-	result.setAttribute("closed", bool(m_close));
+	result.setAttribute("closed", bool(m_closed));
 
 	if (m_shapeType != Polygon)
 	{
