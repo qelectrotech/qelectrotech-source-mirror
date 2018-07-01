@@ -802,7 +802,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
 <context>
     <name>CustomElementGraphicPart</name>
     <message>
-        <location filename="../sources/editor/graphicspart/customelementgraphicpart.cpp" line="472"/>
+        <location filename="../sources/editor/graphicspart/customelementgraphicpart.cpp" line="463"/>
         <source>Déplacer une primitive</source>
         <translation>Flyt til oprindelig</translation>
     </message>
@@ -928,7 +928,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
 <context>
     <name>DiagramView</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="88"/>
+        <location filename="../sources/diagramview.cpp" line="87"/>
         <source>Coller ici</source>
         <comment>context menu action</comment>
         <translation>Indsæt her</translation>
@@ -940,23 +940,23 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <translation>Område hvor diagrammer designes ved at tilføje symboler og leder mellem klemmer. Det er også muligt at tilføje selvstændige tekster.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="91"/>
+        <location filename="../sources/diagramview.cpp" line="90"/>
         <source>Collage multiple</source>
         <translation>Flere sammensætninger</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="702"/>
+        <location filename="../sources/diagramview.cpp" line="701"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>Ikke navngivet</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="829"/>
+        <location filename="../sources/diagramview.cpp" line="828"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Vælg ny farve til leder</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="848"/>
+        <location filename="../sources/diagramview.cpp" line="847"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>Ændre leder egenskab</translation>
@@ -1795,23 +1795,23 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <translation>Flyt til oprindelig</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="670"/>
+        <location filename="../sources/editor/elementscene.cpp" line="677"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <comment>window title</comment>
         <translation>Rediger forfatter informationer</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="674"/>
+        <location filename="../sources/editor/elementscene.cpp" line="681"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
         <translation>Feltet kan bruges til symbol forfatter, licens eller andre relevante informationer.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="737"/>
+        <location filename="../sources/editor/elementscene.cpp" line="744"/>
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
         <translation>Angiv symbol navn på flere sprog.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="733"/>
+        <location filename="../sources/editor/elementscene.cpp" line="740"/>
         <source>Éditer les noms</source>
         <comment>window title</comment>
         <translation>Rediger navne</translation>
@@ -3666,9 +3666,29 @@ Her kan standardværdien angives for dette felt for de oprettede symboler:</tran
 <context>
     <name>PartPolygon</name>
     <message>
-        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="357"/>
+        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="37"/>
+        <source>Ajouter un point</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="40"/>
+        <source>Supprimer ce point</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="396"/>
         <source>Modifier un polygone</source>
         <translation>Ændre flerkant</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="531"/>
+        <source>Ajouter un point à un polygone</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="562"/>
+        <source>Supprimer un point d&apos;un polygone</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5340,7 +5360,7 @@ python -m pip install --upgrade qet_tb_generator
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="697"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="701"/>
         <source>&lt;br&gt;En l&apos;absence de borne, l&apos;élément ne pourra être relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
         <comment>warning description</comment>
         <translation>&lt;br&gt;Ved mangel af klemme kan symbol forbindes til andre symboler via leder.</translation>
@@ -5351,7 +5371,7 @@ python -m pip install --upgrade qet_tb_generator
         <translation>Ctrl+E</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="535"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="539"/>
         <source>Aucune modification</source>
         <translation>Ingen ændring</translation>
     </message>
@@ -5517,44 +5537,44 @@ python -m pip install --upgrade qet_tb_generator
         <translation>Indsæt fra...</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="478"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="482"/>
         <source>[Modifié]</source>
         <comment>window title tag</comment>
         <translation>[ændret]</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="480"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="484"/>
         <source> [lecture seule]</source>
         <comment>window title tag</comment>
         <translation> [skrivebeskyttet]</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="519"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="523"/>
         <source>Informations</source>
         <comment>dock title</comment>
         <translation>Informationer</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="528"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="532"/>
         <source>Annulations</source>
         <comment>dock title</comment>
         <translatorcomment>Funktion beskrivende oversættelse</translatorcomment>
         <translation>Redigeringshistorik</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="546"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="550"/>
         <source>Parties</source>
         <comment>dock title</comment>
         <translation>Dele</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="558"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="562"/>
         <source>Éditeur d&apos;éléments</source>
         <comment>status bar message</comment>
         <translation>Symbol redigering</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="671"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="675"/>
         <source>%n partie(s) sélectionnée(s).</source>
         <translation>
             <numerusform>%n del valgt.</numerusform>
@@ -5562,24 +5582,24 @@ python -m pip install --upgrade qet_tb_generator
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="696"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="700"/>
         <source>Absence de borne</source>
         <comment>warning title</comment>
         <translation>Mangler klemme</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="718"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="722"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les reports de folio doivent posséder une seul borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Verifier que l&apos;élément ne possède qu&apos;une seul borne</source>
         <translation>&lt;br&gt; &lt;b&gt;Fejl&lt;/ b&gt;:&lt;br&gt;Ark rapport skal have én klemme&lt;br&gt; &lt;b&gt;Løsning&lt;/ b&gt;:&lt;br&gt;Kontroller symbol kun har én klemme</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="728"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="732"/>
         <source>La vérification de cet élément a généré</source>
         <comment>message box content</comment>
         <translation>Efterprøvning af symbol har genereret</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="731"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="735"/>
         <source> %n erreur(s)</source>
         <comment>errors</comment>
         <translation>
@@ -5588,12 +5608,12 @@ python -m pip install --upgrade qet_tb_generator
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="736"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="740"/>
         <source> et</source>
         <translation> og</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="738"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="742"/>
         <source> %n avertissment(s)</source>
         <comment>warnings</comment>
         <translation>
@@ -5602,12 +5622,12 @@ python -m pip install --upgrade qet_tb_generator
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="754"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="758"/>
         <source>Erreurs</source>
         <translation>Fejl</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="717"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="721"/>
         <source>Absence de borne</source>
         <translation>Mangler klemme</translation>
     </message>
@@ -5617,67 +5637,67 @@ python -m pip install --upgrade qet_tb_generator
         <translation>&amp;Start udvidelsesmodul for DXF konvertering</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="747"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="751"/>
         <source>&lt;b&gt;%1&lt;/b&gt; : %2</source>
         <comment>warning title: warning description</comment>
         <translation>&lt;b&gt;%1&lt;/b&gt;: %2</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="775"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="779"/>
         <source>Le fichier %1 n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>Fil %1 findes ikke.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="783"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1514"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="787"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1518"/>
         <source>Impossible d&apos;ouvrir le fichier %1.</source>
         <comment>message box content</comment>
         <translation>Kan ikke åbne filen %1.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="792"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1518"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="796"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1522"/>
         <source>Ce fichier n&apos;est pas un document XML valide</source>
         <comment>message box content</comment>
         <translation>Fil er ikke gyldigt XML dokument</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="798"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1524"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="802"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1528"/>
         <source>Erreur</source>
         <comment>toolbar title</comment>
         <translation>Fejl</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="810"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1488"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="814"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1492"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
         <translation>Skrivebeskyttet</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="811"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1489"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="815"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1493"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.</source>
         <comment>message box content</comment>
         <translation>Fil åbnes skrivebeskyttet. Kontroller fil rettigheder.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="841"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="864"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="845"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="868"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Fejl</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="842"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="846"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box content</comment>
         <translation>Kan ikke skrive til fil</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="865"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="869"/>
         <source>Impossible d&apos;enregistrer l&apos;élément</source>
         <comment>message box content</comment>
         <translation>Kan ikke gemme symbol</translation>
@@ -5710,109 +5730,109 @@ Gem DXFtoQET.app binær kode i /Users/user_name/.qet/ mappen
 </translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1081"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1085"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
         <translation>Kan ikke åbne fil</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1083"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1087"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
         <translation>Fil %1 findes ikke.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1153"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1183"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1226"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1157"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1187"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1230"/>
         <source>Echec de l&apos;enregistrement</source>
         <translation>Gem mislykkedes</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1153"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1183"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1226"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1157"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1187"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1230"/>
         <source>L&apos;enregistrement à échoué,
 les conditions requises ne sont pas valides</source>
         <translation>Gem mislykkedes,
 betingelser ikke gyldig</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1342"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1346"/>
         <source>Trop de primitives, liste non générée.</source>
         <translation>For mange dele, liste genereres ikke.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1441"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1445"/>
         <source>Ouvrir un fichier</source>
         <comment>dialog title</comment>
         <translation>Åbn fil</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1443"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1447"/>
         <source>Éléments QElectroTech (*.elmt);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening an element file</comment>
         <translation>QElectroTech symboler (*.elmt);;XML filer (*.xml);;Alle filer (*)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1101"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1105"/>
         <source>Recharger l&apos;élément</source>
         <comment>dialog title</comment>
         <translation>Genindlæs symbol</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="756"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="760"/>
         <source>Avertissements</source>
         <translation>Advarsler</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1102"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1106"/>
         <source>Vous avez efffectué des modifications sur cet élément. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l&apos;élément ?</source>
         <comment>dialog content</comment>
         <translation>Symbol er ændret. Ved genindlæs vil ændringer gå tabt. Genindlæs symbol?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1200"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1204"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation>Gem som</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1202"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1206"/>
         <source>Éléments QElectroTech (*.elmt)</source>
         <comment>filetypes allowed when saving an element file</comment>
         <translation>QElectroTech symboler (*.elmt)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1241"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1245"/>
         <source>Enregistrer l&apos;élément en cours ?</source>
         <comment>dialog title</comment>
         <translation>Gem nuværende symbol?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1243"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1247"/>
         <source>Voulez-vous enregistrer l&apos;élément %1 ?</source>
         <comment>dialog content - %1 is an element name</comment>
         <translation>Gem symbol %1?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1463"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1470"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1544"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1551"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1467"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1474"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1548"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1555"/>
         <source>Élément inexistant.</source>
         <comment>message box title</comment>
         <translation>Ikke eksisterende symbol.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1471"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1552"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1475"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1556"/>
         <source>L&apos;élément n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>Symbol findes ikke.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1464"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1545"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1468"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1549"/>
         <source>Le chemin virtuel choisi ne correspond pas à un élément.</source>
         <comment>message box content</comment>
         <translation>Valgt virtuel sti svarer ikke til et symbol.</translation>
@@ -6731,7 +6751,7 @@ Hvad skal ske?</translation>
         <translation>streg</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partpolygon.h" line="61"/>
+        <location filename="../sources/editor/graphicspart/partpolygon.h" line="62"/>
         <source>polygone</source>
         <comment>element part name</comment>
         <translation>flerkant</translation>
@@ -7556,32 +7576,52 @@ Vil du erstatte den?</translation>
 <context>
     <name>QetShapeItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="712"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="882"/>
         <source>une shape</source>
         <translation>en figur</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="708"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="878"/>
         <source>une ligne</source>
         <translation>streg</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="574"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="56"/>
+        <source>Ajouter un point</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="59"/>
+        <source>Supprimer ce point</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="613"/>
+        <source>Ajouter un point à un polygone</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="645"/>
+        <source>Supprimer un point d&apos;un polygone</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="744"/>
         <source>Modifier %1</source>
         <translation>Ændre %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="709"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="879"/>
         <source>un rectangle</source>
         <translation>rektangel</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="710"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="880"/>
         <source>une éllipse</source>
         <translation>cirkel</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="711"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="881"/>
         <source>une polyligne</source>
         <translation>en flerkant</translation>
     </message>
@@ -8796,11 +8836,11 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
-        <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{machine} : nom du groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation dans le groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation>Som standard er følgende variabler tilgængelige: &lt;ul&gt;&lt;li&gt;%{author}: Ark forfatter&lt;/li&gt;&lt;li&gt;%{date}: Ark dato&lt;/li&gt;&lt;li&gt;%{title}: Ark titel&lt;/li&gt;&lt;li&gt;%{filename}: projekt fil navn&lt;/li&gt;&lt;li&gt;%{machine}: funktionel gruppenavn i projekt&lt;/li&gt;&lt;li&gt;%{locmach}: placeringsnavn for funktionel gruppe i projekt&lt;/li&gt;&lt;li&gt;%{indexrev}: revisionsindeks for ark&lt;/li&gt;&lt;li&gt;%{version}: software version&lt;/li&gt;&lt;li&gt;%{folio}: ark betegnelser&lt;/li&gt;&lt;li&gt;%{folio-id}: ark placering i projekt&lt;/li&gt;&lt;li&gt;%{folio-total}: samlet antal ark i projekt&lt;/li&gt;&lt;/ul&gt;</translation>
+        <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{machine} : nom du groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation dans le groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;/ul&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="456"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="457"/>
         <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
         <translation>Titelblok celler har en værdi og eventuel en etiket. Begge kan oversættes til andre sprog. &lt;br/&gt;Dette er en titelblok &lt;em&gt;skabelon&lt;/em&gt; der redigeres i og det bør undgåes at indtaste fast tekst: brug istedet indsæt af variabler %{variable-name}, som vil blive erstattet af passende værdier fra arket.</translation>
     </message>
