@@ -3668,12 +3668,12 @@ Her kan standardværdien angives for dette felt for de oprettede symboler:</tran
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="37"/>
         <source>Ajouter un point</source>
-        <translation type="unfinished"></translation>
+        <translation>Tilføje et punkt</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="40"/>
         <source>Supprimer ce point</source>
-        <translation type="unfinished"></translation>
+        <translation>Slette et punkt</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="396"/>
@@ -3683,12 +3683,12 @@ Her kan standardværdien angives for dette felt for de oprettede symboler:</tran
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="531"/>
         <source>Ajouter un point à un polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Tilføje et punkt til en flerkant</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="562"/>
         <source>Supprimer un point d&apos;un polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Slette et punkt i en flerkant</translation>
     </message>
 </context>
 <context>
@@ -7588,22 +7588,22 @@ Vil du erstatte den?</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="56"/>
         <source>Ajouter un point</source>
-        <translation type="unfinished"></translation>
+        <translation>Tilføje et punkt</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="59"/>
         <source>Supprimer ce point</source>
-        <translation type="unfinished"></translation>
+        <translation>Slette et punkt</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="613"/>
         <source>Ajouter un point à un polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Tilføje et punkt til en flerkant</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="645"/>
         <source>Supprimer un point d&apos;un polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Slette et punkt i en flerkant</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="744"/>
@@ -8837,7 +8837,7 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{machine} : nom du groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation dans le groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Som standard er følgende variabler tilgængelige:&lt;ul&gt;&lt;li&gt;%{author}: ark forfatter&lt;/li&gt;&lt;li&gt;%{date}: ark dato&lt;/li&gt;&lt;li&gt;%{title}: ark titel&lt;/li&gt;&lt;li&gt;%{filename}: projekt filnavn&lt;/li&gt;&lt;li&gt;%{machine}: projekt funktionel gruppenavn&lt;/li&gt;&lt;li&gt;%locmach}: placering i funktionel gruppenavn&lt;/li&gt;&lt;li&gt;%{indexrev}: ark revisionsindeks&lt;/li&gt;&lt;li&gt;%{version} : program version&lt;/li&gt;&lt;li&gt;%{folio}: ark oplysninger&lt;/li&gt;&lt;li&gt;%{folio-id} : ark placering i projekt&lt;/li&gt;&lt;li&gt;%{folio-total}: antal arkiprojekt&lt;/li&gt;&lt;li&gt;%{projecttitle}: projekt titel&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="457"/>
