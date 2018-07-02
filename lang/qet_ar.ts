@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ar_SA">
+<TS version="2.0" language="ar_SA">
 <context>
     <name>AboutQET</name>
     <message>
@@ -3694,12 +3694,12 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="37"/>
         <source>Ajouter un point</source>
-        <translation type="unfinished"></translation>
+        <translation>إضافة نقطة</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="40"/>
         <source>Supprimer ce point</source>
-        <translation type="unfinished"></translation>
+        <translation>حذف هذه النقطة</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="396"/>
@@ -3709,12 +3709,12 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="531"/>
         <source>Ajouter un point à un polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>إضافة نقطة لمتعدد الأضلع</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="562"/>
         <source>Supprimer un point d&apos;un polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>حذف نقطةمن متغددالأضلع</translation>
     </message>
 </context>
 <context>
@@ -6870,11 +6870,6 @@ Que désirez vous faire ?</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
             <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -6923,42 +6918,42 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qet.cpp" line="631"/>
         <source>Amener au premier plan</source>
-        <translation type="unfinished">إحضار إلى المقدمة</translation>
+        <translation>إحضار إلى المقدمة</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="632"/>
         <source>Rapprocher</source>
-        <translation type="unfinished">تقريب</translation>
+        <translation>تقريب</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="633"/>
         <source>Éloigner</source>
-        <translation type="unfinished">إبعاد</translation>
+        <translation>إبعاد</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="634"/>
         <source>Envoyer au fond</source>
-        <translation type="unfinished">إرسال للخلف</translation>
+        <translation>إرسال للخلف</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="636"/>
         <source>Ctrl+Shift+Up</source>
-        <translation type="unfinished">Ctrl+Shift+Up</translation>
+        <translation>Ctrl+Shift+Up</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="637"/>
         <source>Ctrl+Shift+Down</source>
-        <translation type="unfinished">Ctrl+Shift+Down</translation>
+        <translation>Ctrl+Shift+Down</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="638"/>
         <source>Ctrl+Shift+End</source>
-        <translation type="unfinished">Ctrl+Shift+End</translation>
+        <translation>Ctrl+Shift+End</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="639"/>
         <source>Ctrl+Shift+Home</source>
-        <translation type="unfinished">Ctrl+Shift+Home</translation>
+        <translation>Ctrl+Shift+Home</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/terminal.cpp" line="71"/>
@@ -7642,22 +7637,22 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="56"/>
         <source>Ajouter un point</source>
-        <translation type="unfinished"></translation>
+        <translation>إضافة نقطة</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="59"/>
         <source>Supprimer ce point</source>
-        <translation type="unfinished"></translation>
+        <translation>حذف هذه النقطة</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="613"/>
         <source>Ajouter un point à un polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>إضافة نقطة لمتعدد الأضلع</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="645"/>
         <source>Supprimer un point d&apos;un polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>حذف نقطة من متغددالأضلع</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="744"/>
@@ -8890,7 +8885,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{machine} : nom du groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation dans le groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>توجد المتغيرات التالية افتراضيا :&lt;ul&gt;&lt;li&gt;%{author} : مؤلف الصفحة&lt;/li&gt;&lt;li&gt;%{date} :تاريخ الصفحة&lt;/li&gt;&lt;li&gt;%{title} : عنوان الصفحة &lt;/li&gt;&lt;li&gt;%{filename} :اسم ملف المشروع&lt;/li&gt;&lt;li&gt;%{machine} : اسم المجموعة الوظيفية للمشروع &lt;/li&gt;&lt;li&gt;%{locmach} : اسم الموضع في المجموعة الوظيفية للمشروع&lt;/li&gt;&lt;li&gt;%{indexrev} :مؤشر مراجعة الصفحة&lt;/li&gt;&lt;li&gt;%{version} : نسخة البرنامج&lt;/li&gt;&lt;li&gt;%{folio} :المؤشرات النسبية للصفحة&lt;/li&gt;&lt;li&gt;%{folio-id} :موضع الصفحة في المشروع&lt;/li&gt;&lt;li&gt;%{folio-total} :العدد الكلي للصفحات في المشروع&lt;/li&gt;&lt;li&gt;%{projecttitle} : عنوان المشروع&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="457"/>
