@@ -56,6 +56,7 @@ class DiagramView : public QGraphicsView
 		QPointF           m_rubber_band_origin;
 		bool              m_fresh_focus_in,
 						  m_first_activation = true;
+		QList<QAction *>  m_separators;
 	public:
 		QString title() const;
 		void editDiagramProperties();

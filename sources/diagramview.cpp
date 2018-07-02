@@ -92,6 +92,13 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 		MultiPasteDialog d(this->m_diagram, this);
 		d.exec();
 	});
+	
+		//setup three separators, to be use in context menu
+	for(int i=0 ; i<3 ; ++i)
+	{
+		m_separators << new QAction(this);
+		m_separators.last()->setSeparator(true);
+	}
 
 	connect(m_diagram, SIGNAL(showDiagram(Diagram*)), this, SIGNAL(showDiagram(Diagram*)));
 	connect(m_diagram, SIGNAL(selectionChanged()), this, SIGNAL(selectionChanged()));
@@ -1019,8 +1026,7 @@ QList<QAction *> DiagramView::contextMenuActions() const
 		if (m_diagram->selectedItems().isEmpty())
 		{
 			list << m_paste_here;
-			list << new QAction;
-			list.last()->setSeparator(true);
+			list << m_separators.at(0);
 			list << qde->m_edit_diagram_properties;
 			list << qde->m_row_column_actions_group.actions();
 		}
@@ -1029,14 +1035,11 @@ QList<QAction *> DiagramView::contextMenuActions() const
 			list << qde->m_cut;
 			list << qde->m_copy;
 			list << m_multi_paste;
-			list << new QAction();
-			list.last()->setSeparator(true);
+			list << m_separators.at(0);
 			list << qde->m_conductor_reset;
-			list << new QAction();
-			list.last()->setSeparator(true);
+			list << m_separators.at(1);
 			list << qde->m_selection_actions_group.actions();
-			list << new QAction();
-			list.last()->setSeparator(true);
+			list << m_separators.at(2);
 			list << qde->m_depth_action_group->actions();
 		}
 		
