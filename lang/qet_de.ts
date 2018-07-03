@@ -3662,12 +3662,12 @@ Hier unten kann der Standardwert dieses Textfeldes für Ihre eigenen Bauteile de
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="37"/>
         <source>Ajouter un point</source>
-        <translation type="unfinished"></translation>
+        <translation>Punkt einfügen</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="40"/>
         <source>Supprimer ce point</source>
-        <translation type="unfinished"></translation>
+        <translation>Punkt löschen</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="396"/>
@@ -3677,12 +3677,12 @@ Hier unten kann der Standardwert dieses Textfeldes für Ihre eigenen Bauteile de
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="531"/>
         <source>Ajouter un point à un polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Punkt einem Polygon hinzufügen</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="562"/>
         <source>Supprimer un point d&apos;un polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Punkt eines Polygons löschen</translation>
     </message>
 </context>
 <context>
@@ -7572,22 +7572,22 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="56"/>
         <source>Ajouter un point</source>
-        <translation type="unfinished"></translation>
+        <translation>Punkt einfügen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="59"/>
         <source>Supprimer ce point</source>
-        <translation type="unfinished"></translation>
+        <translation>Dieser Punkt löschen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="613"/>
         <source>Ajouter un point à un polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Punkt einem Polygon hinzufügen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="645"/>
         <source>Supprimer un point d&apos;un polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Punkt eines Polygons löschen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="744"/>
@@ -8806,7 +8806,7 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{machine} : nom du groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation dans le groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Standardmäßig sind folgende Variablen verfügbar:&lt;ul&gt;&lt;li&gt;%{author}: Bearbeiter&lt;/li&gt;&lt;li&gt;%{date}: Datum&lt;/li&gt;&lt;li&gt;%{title}: Folientitel&lt;/li&gt;&lt;li&gt;%{filename}: Dateiname des Projekts&lt;/li&gt;&lt;li&gt;%{machine}: Anlagenkennzeichen&lt;/li&gt;&lt;li&gt;%{locmach}: Ortskennzeichen&lt;/li&gt;&lt;li&gt;%{indexrev}: Revisionsindex&lt;/li&gt;&lt;li&gt;%{version}: Software Versionsnummer&lt;/li&gt;&lt;li&gt;%{folio}: Foliennummer (manuel festgelegt)&lt;/li&gt;&lt;li&gt;%{folio-id}: Foliennummer (automatisch festgelegt)&lt;/li&gt;&lt;li&gt;%{folio-total}: gesamte Folienanzahl im Projekt&lt;/li&gt;&lt;li&gt;%{projecttitle}: Projekttitel&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="457"/>
