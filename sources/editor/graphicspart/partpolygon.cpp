@@ -21,6 +21,7 @@
 #include "QetGraphicsItemModeler/qetgraphicshandleritem.h"
 #include "qetelementeditor.h"
 #include "qeticons.h"
+#include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 
 
 /**
@@ -482,55 +483,16 @@ void PartPolygon::removeHandler()
  * Insert a point in this polygone
  */
 void PartPolygon::insertPoint()
-{	
-	qreal max_angle = 0;
-	int index = 0;
+{
+	QPolygonF new_polygon = QetGraphicsHandlerUtility::polygonForInsertPoint(m_polygon, m_closed, elementScene()->snapToGrid(m_context_menu_pos));
 	
-	for (int i=1 ; i<m_polygon.size() ; i++)
+	if(new_polygon != m_polygon)
 	{
-		QPointF A = m_polygon.at(i-1);
-		QPointF B = m_polygon.at(i);
-		QLineF line_a(A, m_context_menu_pos);
-		QLineF line_b(m_context_menu_pos, B);
-		qreal angle = line_a.angleTo(line_b);
-		if(angle<180)
-			angle = 360-angle;
-
-		if (i==1)
-		{
-			max_angle = angle;
-			index=i;
-		}
-		if (angle > max_angle)
-		{
-			max_angle = angle;
-			index=i;
-		}
+			//Wrap the undo for avoid to merge the undo commands when user add several points.
+		QUndoCommand *undo = new QUndoCommand(tr("Ajouter un point à un polygone"));
+		new QPropertyUndoCommand(this, "polygon", m_polygon, new_polygon, undo);
+		elementScene()->undoStack().push(undo);
 	}
-		//Special case when polygon is close
-	if (m_closed)
-	{
-		QLineF line_a(m_polygon.last(), m_context_menu_pos);
-		QLineF line_b(m_context_menu_pos, m_polygon.first());
-		
-		qreal angle = line_a.angleTo(line_b);
-		if (angle<180)
-			angle = 360-angle;
-
-		if (angle > max_angle)
-		{
-			max_angle = angle;
-			index=m_polygon.size();
-		}
-	}
-	
-	QPolygonF polygon = this->polygon();
-	polygon.insert(index, elementScene()->snapToGrid(m_context_menu_pos));
-	
-		//Wrap the undo for avoid to merge the undo commands when user add several points.
-	QUndoCommand *undo = new QUndoCommand(tr("Ajouter un point à un polygone"));
-	new QPropertyUndoCommand(this, "polygon", this->polygon(), polygon, undo);
-	elementScene()->undoStack().push(undo);
 }
 
 /**

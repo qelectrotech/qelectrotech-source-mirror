@@ -186,3 +186,58 @@ QLineF QetGraphicsHandlerUtility::lineForPosAtIndex(const QLineF &old_line, cons
 	index == 0 ? line.setP1(pos) : line.setP2(pos);
 	return line;
 }
+
+/**
+ * @brief QetGraphicsHandlerUtility::polygonForInsertPoint
+ * @param old_polygon : the polygon which we insert a new point. 
+ * @param closed : polygon is closed or not
+ * @param pos : the pos where the new point must be added
+ * @return the new polygon
+ */
+QPolygonF QetGraphicsHandlerUtility::polygonForInsertPoint(const QPolygonF &old_polygon, bool closed, const QPointF &pos)
+{
+	qreal max_angle = 0;
+	int index = 0;
+	
+	for (int i=1 ; i<old_polygon.size() ; i++)
+	{
+		QPointF A = old_polygon.at(i-1);
+		QPointF B = old_polygon.at(i);
+		QLineF line_a(A, pos);
+		QLineF line_b(pos, B);
+		qreal angle = line_a.angleTo(line_b);
+		if(angle<180)
+			angle = 360-angle;
+		
+		if (i==1)
+		{
+			max_angle = angle;
+			index=i;
+		}
+		if (angle > max_angle)
+		{
+			max_angle = angle;
+			index=i;
+		}
+	}
+		//Special case when polygon is close
+	if (closed)
+	{
+		QLineF line_a(old_polygon.last(), pos);
+		QLineF line_b(pos, old_polygon.first());
+		
+		qreal angle = line_a.angleTo(line_b);
+		if (angle<180)
+			angle = 360-angle;
+		
+		if (angle > max_angle)
+		{
+			max_angle = angle;
+			index=old_polygon.size();
+		}
+	}
+	
+	QPolygonF polygon = old_polygon;
+	polygon.insert(index, pos);
+	return polygon;
+}

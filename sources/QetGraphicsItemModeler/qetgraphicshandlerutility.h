@@ -21,6 +21,7 @@
 #include <QRectF>
 #include <QLineF>
 #include <QColor>
+#include <QPolygonF>
 
 class QPainter;
 
@@ -39,6 +40,7 @@ class QetGraphicsHandlerUtility
 		static QRectF rectForPosAtIndex (const QRectF &old_rect, const QPointF &pos, int index);
 		static QRectF mirrorRectForPosAtIndex (const QRectF &old_rect, const QPointF &pos, int index);
 		static QLineF lineForPosAtIndex (const QLineF &old_line, const QPointF &pos, int index);
+		static QPolygonF polygonForInsertPoint(const QPolygonF &old_polygon, bool closed, const QPointF &pos);
 };
 
 #endif // QETGRAPHICSHANDLERUTILITY_H

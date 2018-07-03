@@ -291,7 +291,7 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 	{
 		painter->save();
 		QColor color(Qt::darkBlue);
-		color.setAlpha(25);
+		color.setAlpha(50);
 		painter -> setBrush (QBrush (color));
 		painter -> setPen   (Qt::NoPen);
 		painter -> drawPath (shape());
@@ -561,58 +561,18 @@ void QetShapeItem::adjusteHandlerPos()
 
 void QetShapeItem::insertPoint()
 {
-	if (m_shapeType != QetShapeItem::Polygon) {
-		return;
-	}
-	
-	qreal max_angle = 0;
-	int index = 0;
-	
-	for (int i=1 ; i<m_polygon.size() ; i++)
+	if (m_shapeType == QetShapeItem::Polygon)
 	{
-		QPointF A = m_polygon.at(i-1);
-		QPointF B = m_polygon.at(i);
-		QLineF line_a(A, m_context_menu_pos);
-		QLineF line_b(m_context_menu_pos, B);
-		qreal angle = line_a.angleTo(line_b);
-		if(angle<180)
-			angle = 360-angle;
-
-		if (i==1)
-		{
-			max_angle = angle;
-			index=i;
-		}
-		if (angle > max_angle)
-		{
-			max_angle = angle;
-			index=i;
-		}
-	}
-		//Special case when polygon is close
-	if (m_closed)
-	{
-		QLineF line_a(m_polygon.last(), m_context_menu_pos);
-		QLineF line_b(m_context_menu_pos, m_polygon.first());
+		QPolygonF new_polygon = QetGraphicsHandlerUtility::polygonForInsertPoint(this->polygon(), m_closed, Diagram::snapToGrid(m_context_menu_pos));
 		
-		qreal angle = line_a.angleTo(line_b);
-		if (angle<180)
-			angle = 360-angle;
-
-		if (angle > max_angle)
+		if(new_polygon != m_polygon)
 		{
-			max_angle = angle;
-			index=m_polygon.size();
+				//Wrap the undo for avoid to merge the undo commands when user add several points.
+			QUndoCommand *undo = new QUndoCommand(tr("Ajouter un point à un polygone"));
+			new QPropertyUndoCommand(this, "polygon", m_polygon, new_polygon, undo);
+			diagram()->undoStack().push(undo);
 		}
 	}
-	
-	QPolygonF polygon = this->polygon();
-	polygon.insert(index, Diagram::snapToGrid(m_context_menu_pos));
-	
-		//Wrap the undo for avoid to merge the undo commands when user add several points.
-	QUndoCommand *undo = new QUndoCommand(tr("Ajouter un point à un polygone"));
-	new QPropertyUndoCommand(this, "polygon", this->polygon(), polygon, undo);
-	diagram()->undoStack().push(undo);
 }
 
 void QetShapeItem::removePoint()
