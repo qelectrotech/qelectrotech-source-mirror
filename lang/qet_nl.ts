@@ -3668,12 +3668,12 @@ Hier kunt u de standaardtekst hiervoor opgeven voor nieuwe elementen :</translat
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="37"/>
         <source>Ajouter un point</source>
-        <translation type="unfinished"></translation>
+        <translation>Een punt toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="40"/>
         <source>Supprimer ce point</source>
-        <translation type="unfinished"></translation>
+        <translation>Punt verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="396"/>
@@ -3683,12 +3683,12 @@ Hier kunt u de standaardtekst hiervoor opgeven voor nieuwe elementen :</translat
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="531"/>
         <source>Ajouter un point à un polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Punt aan een veelhoek toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="562"/>
         <source>Supprimer un point d&apos;un polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Punt van een veelhoek verwijderen</translation>
     </message>
 </context>
 <context>
@@ -7582,22 +7582,22 @@ Wilt u deze vervangen ?</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="56"/>
         <source>Ajouter un point</source>
-        <translation type="unfinished"></translation>
+        <translation>Een punt toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="59"/>
         <source>Supprimer ce point</source>
-        <translation type="unfinished"></translation>
+        <translation>Punt verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="613"/>
         <source>Ajouter un point à un polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Punt aan een veelhoek toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="645"/>
         <source>Supprimer un point d&apos;un polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Punt van een veelhoek verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="744"/>
@@ -8832,7 +8832,7 @@ Door associatie van de naam &quot;volta&quot; met de waarde &quot;1745&quot; wor
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{machine} : nom du groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation dans le groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Standaard zijn de volgende variabelen beschikbaar:&lt;ul&gt;&lt;li&gt;%{author} : auteur van het schemablad&lt;/li&gt;&lt;li&gt;%{date} : datum van het schemablad&lt;/li&gt;&lt;li&gt;%{title} : naam van het schemablad&lt;/li&gt;&lt;li&gt;%{filename} : bestandsnaam van het project&lt;/li&gt;&lt;li&gt;%{machine} : functionele groep binnen het project&lt;/li&gt;&lt;li&gt;%{locmach} : locatie van de functionele groep binnen het project&lt;/li&gt;&lt;li&gt;%{indexrev} : revisie-index van het schemablad&lt;/li&gt;&lt;li&gt;%{version} : versie van het schema&lt;/li&gt;&lt;li&gt;%{folio} : relatieve aanduidingen op het schemablad&lt;/li&gt;&lt;li&gt;%{folio-id} : plaats van het schemablad in het project&lt;/li&gt;&lt;li&gt;%{folio-total} : totaal aantal schemabladen in het project&lt;/li&gt;&lt;li&gt;%{projecttitle} : projectnaam&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="457"/>
