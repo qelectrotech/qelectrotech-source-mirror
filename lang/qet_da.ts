@@ -438,7 +438,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="61"/>
         <source>Under Development</source>
-        <translation>Under edvikling</translation>
+        <translation>Under udvikling</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="62"/>
@@ -1442,7 +1442,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <location filename="../sources/elementdialog.cpp" line="62"/>
         <source>Ouvrir un élément</source>
         <comment>dialog title</comment>
-        <translation>Åbn symbol</translation>
+        <translation>Åbne symbol</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="63"/>
@@ -1466,7 +1466,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <location filename="../sources/elementdialog.cpp" line="70"/>
         <source>Ouvrir une catégorie</source>
         <comment>dialog title</comment>
-        <translation>Åbn kategori</translation>
+        <translation>Åbne kategori</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="71"/>
@@ -1925,7 +1925,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="141"/>
         <source>Ouvrir le dossier correspondant</source>
-        <translation>Åbn mappen</translation>
+        <translation>Åbne mappe</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="142"/>
@@ -2131,7 +2131,7 @@ Alle symboler og fil indhold bliver slettet.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="46"/>
         <source>Ouvrir le dossier correspondant</source>
-        <translation>Åbn mappe</translation>
+        <translation>Åbne mappe</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="47"/>
@@ -4424,7 +4424,7 @@ Kommandovalg:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="673"/>
         <source>&amp;Édition</source>
-        <translation>&amp;Rediger</translation>
+        <translation>&amp;Redigere</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="493"/>
@@ -4527,7 +4527,7 @@ Kommandovalg:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="436"/>
         <source>Mode Visualisation</source>
-        <translation>Vis</translation>
+        <translation>Vise</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="415"/>
@@ -4549,7 +4549,7 @@ Kommandovalg:
         <location filename="../sources/qetdiagrameditor.cpp" line="476"/>
         <source>Ouvre un projet existant</source>
         <comment>status bar tip</comment>
-        <translation>Åbn eksisterende projekt</translation>
+        <translation>Åbne eksisterende projekt</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="477"/>
@@ -4790,7 +4790,7 @@ python -m pip install --upgrade qet_tb_generator
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="889"/>
         <source>Ouvrir un fichier</source>
-        <translation>Åbn fil</translation>
+        <translation>Åbne fil</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="560"/>
@@ -4860,22 +4860,22 @@ python -m pip install --upgrade qet_tb_generator
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="727"/>
         <source>Affiche ou non la barre d&apos;outils principale</source>
-        <translation>Vis eller skjul værktøjslinje</translation>
+        <translation>Vise eller skjule værktøjslinje</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="728"/>
         <source>Affiche ou non la barre d&apos;outils Affichage</source>
-        <translation>Vis eller skjul værktøjslinjen Vis</translation>
+        <translation>Vise eller skjule værktøjslinjen Vise</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="729"/>
         <source>Affiche ou non la barre d&apos;outils Schéma</source>
-        <translation>Vis eller værktøjslinjen Diagram</translation>
+        <translation>Vise eller skjule værktøjslinjen Diagram</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="620"/>
         <source>Affichage</source>
-        <translation>Vis</translation>
+        <translation>Vise</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="623"/>
@@ -4895,7 +4895,7 @@ python -m pip install --upgrade qet_tb_generator
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="731"/>
         <source>Affiche ou non la liste des modifications</source>
-        <translation>Vis eller skjul gendan liste</translation>
+        <translation>Vise eller skjule gendan liste</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="514"/>
@@ -5139,13 +5139,13 @@ python -m pip install --upgrade qet_tb_generator
         <location filename="../sources/qetdiagrameditor.cpp" line="406"/>
         <source>Présente les différents projets ouverts dans des sous-fenêtres</source>
         <comment>status bar tip</comment>
-        <translation>Vis åbne projekter i vinduer</translation>
+        <translation>Vise åbne projekter i vinduer</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="401"/>
         <source>Présente les différents projets ouverts des onglets</source>
         <comment>status bar tip</comment>
-        <translation>Vis åbne projekter i faneblade</translation>
+        <translation>Vise åbne projekter i faneblade</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="425"/>
@@ -5413,7 +5413,7 @@ python -m pip install --upgrade qet_tb_generator
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="142"/>
         <source>&amp;Ouvrir depuis un fichier</source>
-        <translation>&amp;Åbn fra fil</translation>
+        <translation>&amp;Åbne fra fil</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="146"/>
@@ -5477,7 +5477,7 @@ python -m pip install --upgrade qet_tb_generator
         <location filename="../sources/editor/qetelementeditor.cpp" line="299"/>
         <source>Affichage</source>
         <comment>toolbar title</comment>
-        <translation>Vis</translation>
+        <translation>Vise</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="301"/>
@@ -5519,7 +5519,7 @@ python -m pip install --upgrade qet_tb_generator
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="346"/>
         <source>Afficha&amp;ge</source>
-        <translation>&amp;Vis</translation>
+        <translation>&amp;Vise</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="347"/>
@@ -5765,7 +5765,7 @@ betingelser ikke gyldig</translation>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1445"/>
         <source>Ouvrir un fichier</source>
         <comment>dialog title</comment>
-        <translation>Åbn fil</translation>
+        <translation>Åbne fil</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1447"/>
@@ -5890,7 +5890,7 @@ betingelser ikke gyldig</translation>
         <location filename="../sources/qetmainwindow.cpp" line="81"/>
         <source>Affiche des informations sur QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation>Viser informationer om QElectroTech</translation>
+        <translation>Viser information om QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="84"/>
@@ -5947,7 +5947,7 @@ betingelser ikke gyldig</translation>
         <location filename="../sources/qetmainwindow.cpp" line="127"/>
         <source>Affiche des informations sur la bibliothèque Qt</source>
         <comment>status bar tip</comment>
-        <translation>Viser informationer om Qt biblioteket</translation>
+        <translation>Viser information om Qt biblioteket</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="135"/>
@@ -6266,7 +6266,7 @@ Hvad skal ske?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="334"/>
         <source>Ouvrir depuis un fichier</source>
         <comment>menu entry</comment>
-        <translation>Åbn fra fil</translation>
+        <translation>Åbne fra fil</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="335"/>
@@ -6452,7 +6452,7 @@ Hvad skal ske?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="406"/>
         <source>Afficha&amp;ge</source>
         <comment>menu title</comment>
-        <translation>&amp;Vis</translation>
+        <translation>&amp;Vise</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="445"/>
@@ -6470,7 +6470,7 @@ Hvad skal ske?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="462"/>
         <source>Affichage</source>
         <comment>toolbar title</comment>
-        <translation>Vis</translation>
+        <translation>Vise</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="481"/>
@@ -6525,13 +6525,13 @@ Hvad skal ske?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="751"/>
         <source>Ouvrir un modèle</source>
         <comment>File &gt; open dialog window title</comment>
-        <translation>Åbn skabelon</translation>
+        <translation>Åbne skabelon</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="770"/>
         <source>Ouvrir un fichier</source>
         <comment>dialog title</comment>
-        <translation>Åbn fil</translation>
+        <translation>Åbne fil</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="772"/>
