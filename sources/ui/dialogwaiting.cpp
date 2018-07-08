@@ -65,6 +65,7 @@ void DialogWaiting::setProgressReset(){
  */
 void DialogWaiting::setProgressBarRange(int min, int max){
 	ui->progressBar->setRange(min,max);
+	ui->progressBar->setFormat(QObject::tr("%p% effectué (%v sur %m)"));
 }
 
 /**

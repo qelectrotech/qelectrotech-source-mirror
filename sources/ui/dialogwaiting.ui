@@ -78,9 +78,6 @@
          <property name="value">
           <number>0</number>
          </property>
-         <property name="format">
-          <string> %p% (%v sur %m)</string>
-         </property>
         </widget>
        </item>
       </layout>
