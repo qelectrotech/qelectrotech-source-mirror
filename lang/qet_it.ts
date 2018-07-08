@@ -3668,12 +3668,12 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="37"/>
         <source>Ajouter un point</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungere un punto</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="40"/>
         <source>Supprimer ce point</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliminare la pagina corrente</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="396"/>
@@ -3683,12 +3683,12 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="531"/>
         <source>Ajouter un point à un polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungere un punto ad un poligono</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="562"/>
         <source>Supprimer un point d&apos;un polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Eleminare un punto ad un poligono</translation>
     </message>
 </context>
 <context>
@@ -6825,42 +6825,42 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/qet.cpp" line="631"/>
         <source>Amener au premier plan</source>
-        <translation type="unfinished">Porta in primo piano</translation>
+        <translation>Portare in primo piano</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="632"/>
         <source>Rapprocher</source>
-        <translation type="unfinished"></translation>
+        <translation>Alzare</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="633"/>
         <source>Éloigner</source>
-        <translation type="unfinished">Abbassa</translation>
+        <translation>Abbassa</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="634"/>
         <source>Envoyer au fond</source>
-        <translation type="unfinished">Metti sullo sfondo</translation>
+        <translation>Metti sullo sfondo</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="636"/>
         <source>Ctrl+Shift+Up</source>
-        <translation type="unfinished">Ctrl+Shift+Up</translation>
+        <translation>Ctrl+Shift+Up</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="637"/>
         <source>Ctrl+Shift+Down</source>
-        <translation type="unfinished">Ctrl+Shift+Down</translation>
+        <translation>Ctrl+Shift+Down</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="638"/>
         <source>Ctrl+Shift+End</source>
-        <translation type="unfinished">Ctrl+Shift+End</translation>
+        <translation>Ctrl+Shift+End</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="639"/>
         <source>Ctrl+Shift+Home</source>
-        <translation type="unfinished">Ctrl+Shift+Home</translation>
+        <translation>Ctrl+Shift+Home</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/terminal.cpp" line="71"/>
@@ -7575,22 +7575,22 @@ Sostituirla con questa?</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="56"/>
         <source>Ajouter un point</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungere un punto</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="59"/>
         <source>Supprimer ce point</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliminare il punto corrente</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="613"/>
         <source>Ajouter un point à un polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungere un punto ad un poligono</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="645"/>
         <source>Supprimer un point d&apos;un polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliminare un punto ad un poligono</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="744"/>
@@ -8822,7 +8822,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{machine} : nom du groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation dans le groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Per impostazione predefinita, sono disponibili le seguenti variabili: &lt;ul&gt; &lt;li&gt;% {author}: autore della pagina &lt;/ li&gt; &lt;li&gt;% {date}: data del folio &lt;/ li&gt; &lt;li&gt;% {title}: nome della pagina &lt;/ li&gt; &lt;li&gt;% {nome file}: nome file progetto &lt;/ li&gt; &lt;li&gt;% {machine}: nome gruppo funzionale del progetto &lt;/ li&gt; &lt;li&gt;% {locmach}: nome della posizione nel gruppo funzionale del progetto &lt;/ li&gt; &lt;li&gt;% {indexrev}: indice di revisione del folio &lt;/ li&gt; &lt;li&gt;% {versione}: versione del software &lt;/ li&gt; &lt;li&gt;% {folio}: informazioni sul folio &lt;/ li&gt; &lt;li&gt;% {folio-id}: posizione folio nel progetto &lt;/ li&gt; &lt;li&gt;% {folio-totale}: numero totale di folio nel progetto &lt; / li&gt; &lt;li&gt;% {projecttitle}: titolo del progetto &lt;/ li&gt; &lt;/ ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="457"/>
