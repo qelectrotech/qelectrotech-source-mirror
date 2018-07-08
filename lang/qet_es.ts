@@ -950,18 +950,18 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
         <translation>Collage múltiple</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="701"/>
+        <location filename="../sources/diagramview.cpp" line="708"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>Sin titulo</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="828"/>
+        <location filename="../sources/diagramview.cpp" line="835"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Elegir el nuevo color de este conductor</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="847"/>
+        <location filename="../sources/diagramview.cpp" line="854"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>Modificar las propiedades de un conductor</translation>
@@ -988,12 +988,7 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
         <translation>Titulo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dialogwaiting.ui" line="82"/>
-        <source> %p% (%v sur %m)</source>
-        <translation> %p% (%v de %m)</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/dialogwaiting.ui" line="91"/>
+        <location filename="../sources/ui/dialogwaiting.ui" line="88"/>
         <source>TextLabel</source>
         <translation>Etiqueta de texto</translation>
     </message>
@@ -3685,27 +3680,27 @@ Para ello, asocia los códigos ISO 639-1 de idiomas (ejemplo &quot;fr&quot; por 
 <context>
     <name>PartPolygon</name>
     <message>
-        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="37"/>
+        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="38"/>
         <source>Ajouter un point</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="40"/>
+        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="41"/>
         <source>Supprimer ce point</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="396"/>
+        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="397"/>
         <source>Modifier un polygone</source>
         <translation>Editar un polígono</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="531"/>
+        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="492"/>
         <source>Ajouter un point à un polygone</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="562"/>
+        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="524"/>
         <source>Supprimer un point d&apos;un polygone</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7574,6 +7569,11 @@ Voulez-vous la remplacer ?</source>
         <source>Importer la configuration de texte : %1</source>
         <translation>Importar la configuración de texto : %1</translation>
     </message>
+    <message>
+        <location filename="../sources/ui/dialogwaiting.cpp" line="68"/>
+        <source>%p% effectué (%v sur %m)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QTextOrientationWidget</name>
@@ -7593,12 +7593,12 @@ Voulez-vous la remplacer ?</source>
 <context>
     <name>QetShapeItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="882"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="842"/>
         <source>une shape</source>
         <translation>una forma</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="878"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="838"/>
         <source>une ligne</source>
         <translation>una línea</translation>
     </message>
@@ -7613,32 +7613,32 @@ Voulez-vous la remplacer ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="613"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="571"/>
         <source>Ajouter un point à un polygone</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="645"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="605"/>
         <source>Supprimer un point d&apos;un polygone</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="744"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="704"/>
         <source>Modifier %1</source>
         <translation>Editar %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="879"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="839"/>
         <source>un rectangle</source>
         <translation>un rectángulo</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="880"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="840"/>
         <source>une éllipse</source>
         <translation>una elipse</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="881"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="841"/>
         <source>une polyligne</source>
         <translation>un polígono</translation>
     </message>

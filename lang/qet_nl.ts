@@ -945,18 +945,18 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
         <translation>Meervoudig kopiëren</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="701"/>
+        <location filename="../sources/diagramview.cpp" line="708"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>Naamloos</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="828"/>
+        <location filename="../sources/diagramview.cpp" line="835"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Kies de nieuwe kleur voor deze geleider</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="847"/>
+        <location filename="../sources/diagramview.cpp" line="854"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>Eigenschappen van een geleider wijzigen</translation>
@@ -983,12 +983,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
         <translation>Naam</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dialogwaiting.ui" line="82"/>
-        <source> %p% (%v sur %m)</source>
-        <translation> %p% (%v van %m)</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/dialogwaiting.ui" line="91"/>
+        <location filename="../sources/ui/dialogwaiting.ui" line="88"/>
         <source>TextLabel</source>
         <translation>Tekstlabel</translation>
     </message>
@@ -3666,27 +3661,27 @@ Hier kunt u de standaardtekst hiervoor opgeven voor nieuwe elementen :</translat
 <context>
     <name>PartPolygon</name>
     <message>
-        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="37"/>
+        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="38"/>
         <source>Ajouter un point</source>
         <translation>Een punt toevoegen</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="40"/>
+        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="41"/>
         <source>Supprimer ce point</source>
         <translation>Punt verwijderen</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="396"/>
+        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="397"/>
         <source>Modifier un polygone</source>
         <translation>Veelhoek wijzigen</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="531"/>
+        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="492"/>
         <source>Ajouter un point à un polygone</source>
         <translation>Punt aan een veelhoek toevoegen</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="562"/>
+        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="524"/>
         <source>Supprimer un point d&apos;un polygone</source>
         <translation>Punt van een veelhoek verwijderen</translation>
     </message>
@@ -7551,6 +7546,11 @@ Wilt u deze vervangen ?</translation>
         <comment>window title</comment>
         <translation>Oriëntatie van de geselecteerde teksten</translation>
     </message>
+    <message>
+        <location filename="../sources/ui/dialogwaiting.cpp" line="68"/>
+        <source>%p% effectué (%v sur %m)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QTextOrientationWidget</name>
@@ -7570,12 +7570,12 @@ Wilt u deze vervangen ?</translation>
 <context>
     <name>QetShapeItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="882"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="842"/>
         <source>une shape</source>
         <translation>een vrije vorm</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="878"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="838"/>
         <source>une ligne</source>
         <translation>een lijn</translation>
     </message>
@@ -7590,32 +7590,32 @@ Wilt u deze vervangen ?</translation>
         <translation>Punt verwijderen</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="613"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="571"/>
         <source>Ajouter un point à un polygone</source>
         <translation>Punt aan een veelhoek toevoegen</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="645"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="605"/>
         <source>Supprimer un point d&apos;un polygone</source>
         <translation>Punt van een veelhoek verwijderen</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="744"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="704"/>
         <source>Modifier %1</source>
         <translation>Wijzig %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="879"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="839"/>
         <source>un rectangle</source>
         <translation>een rechthoek</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="880"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="840"/>
         <source>une éllipse</source>
         <translation>een ellips</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="881"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="841"/>
         <source>une polyligne</source>
         <translation>een polylijn</translation>
     </message>
