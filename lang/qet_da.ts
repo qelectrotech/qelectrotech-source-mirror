@@ -7555,7 +7555,7 @@ Vil du erstatte den?</translation>
     <message>
         <location filename="../sources/ui/dialogwaiting.cpp" line="68"/>
         <source>%p% effectué (%v sur %m)</source>
-        <translation type="unfinished"></translation>
+        <translation>%p% indlæst (%v af %m)</translation>
     </message>
 </context>
 <context>
