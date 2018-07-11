@@ -365,7 +365,7 @@ void PartArc::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsScene
 		setRect(QetGraphicsHandlerUtility::mirrorRectForPosAtIndex(m_rect, new_pos, m_vector_index));
 	else
 	{
-		QLineF line(m_rect.center(), mapFromItem(qghi, event->pos()));
+		QLineF line(m_rect.center(), mapFromScene(event->scenePos()));
 		prepareGeometryChange();
 
 		if (m_vector_index == 0) {
