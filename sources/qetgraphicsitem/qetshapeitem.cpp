@@ -159,7 +159,9 @@ bool QetShapeItem::setRect(const QRectF &rect)
  */
 bool QetShapeItem::setPolygon(const QPolygonF &polygon)
 {
-	if (Q_UNLIKELY(m_shapeType != Polygon)) return false;
+	if (Q_UNLIKELY(m_shapeType != Polygon)) {
+		return false;
+	}
 	prepareGeometryChange();
 	m_polygon = polygon;
 	adjusteHandlerPos();
@@ -179,6 +181,22 @@ void QetShapeItem::setClosed(bool close)
 		m_closed = close;
 		emit closeChanged();
 	}
+}
+
+void QetShapeItem::setXRadius(qreal X)
+{
+	m_xRadius = X;
+	update();
+	adjusteHandlerPos();
+	emit XRadiusChanged();
+}
+
+void QetShapeItem::setYRadius(qreal Y)
+{
+	m_yRadius = Y;
+	update();
+	adjusteHandlerPos();
+	emit YRadiusChanged();
 }
 
 /**
@@ -246,7 +264,7 @@ QPainterPath QetShapeItem::shape() const
 			path.lineTo(m_P2);                   
 			break;
 		case Rectangle: 
-			path.addRect(QRectF(m_P1, m_P2));
+			path.addRoundedRect(QRectF(m_P1, m_P2), m_xRadius, m_yRadius, Qt::RelativeSize);
 			break;
 		case Ellipse:
 			path.addEllipse(QRectF(m_P1, m_P2));
@@ -301,7 +319,7 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
     switch (m_shapeType)
     {
         case Line:      painter->drawLine(QLineF(m_P1, m_P2)); break;
-        case Rectangle: painter->drawRect(QRectF(m_P1, m_P2)); break;
+        case Rectangle: painter->drawRoundedRect(QRectF(m_P1, m_P2), m_xRadius, m_yRadius, Qt::RelativeSize); break;
         case Ellipse:   painter->drawEllipse(QRectF(m_P1, m_P2)); break;
         case Polygon:   m_closed ? painter->drawPolygon(m_polygon) : painter->drawPolyline(m_polygon); break;
     }
@@ -331,17 +349,16 @@ void QetShapeItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
 	QetGraphicsItem::hoverLeaveEvent(event);
 }
 
-/**
- * @brief QetShapeItem::mouseReleaseEvent
- * Handle mouse release event
- * @param event
- */
-void QetShapeItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+void QetShapeItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-	if (event->buttonDownPos(Qt::LeftButton) == event->pos())
+	event->ignore();
+	if (event->button() == Qt::LeftButton) {
 		switchResizeMode();
-
-    QetGraphicsItem::mouseReleaseEvent(event);
+		event->accept();
+	}
+	else {
+		QetGraphicsItem::mousePressEvent(event);
+	}
 }
 
 /**
@@ -364,10 +381,10 @@ QVariant QetShapeItem::itemChange(QGraphicsItem::GraphicsItemChange change, cons
                 qDeleteAll(m_handler_vector);
                 m_handler_vector.clear();
             }
+			m_resize_mode = 1;
         }
     }
-    else if (change == ItemPositionHasChanged)
-    {
+    else if (change == ItemPositionHasChanged) {
 		adjusteHandlerPos();
     }
 	else if (change == ItemSceneHasChanged)
@@ -485,7 +502,24 @@ void QetShapeItem::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
  */
 void QetShapeItem::switchResizeMode()
 {
-	if (m_shapeType & (Rectangle | Ellipse))
+	if (m_shapeType == Ellipse)
+	{
+		if (m_resize_mode == 1)
+		{
+			m_resize_mode = 2;
+			for (QetGraphicsHandlerItem *qghi : m_handler_vector) {
+				qghi->setColor(Qt::darkGreen);
+			}
+		}
+		else
+		{
+			m_resize_mode = 1;
+			for (QetGraphicsHandlerItem *qghi : m_handler_vector) {
+				qghi->setColor(Qt::blue);
+			}
+		}
+	}
+	else if (m_shapeType == Rectangle)
 	{
 		if (m_resize_mode == 1)
 		{
@@ -493,11 +527,26 @@ void QetShapeItem::switchResizeMode()
 			for (QetGraphicsHandlerItem *qghi : m_handler_vector)
 				qghi->setColor(Qt::darkGreen);
 		}
-		else
+		else if (m_resize_mode == 2)
+		{
+			m_resize_mode = 3;
+			qDeleteAll(m_handler_vector);
+			m_handler_vector.clear();
+			addHandler();
+			for (QetGraphicsHandlerItem *qghi : m_handler_vector) {
+				qghi->setColor(Qt::magenta);
+			}
+		}
+		else if (m_resize_mode == 3)
 		{
 			m_resize_mode = 1;
-			for (QetGraphicsHandlerItem *qghi : m_handler_vector)
+			qDeleteAll(m_handler_vector);
+			m_handler_vector.clear();
+			addHandler();
+			for (QetGraphicsHandlerItem *qghi : m_handler_vector) {
 				qghi->setColor(Qt::blue);
+			}
+			
 		}
 	}
 }
@@ -509,10 +558,23 @@ void QetShapeItem::addHandler()
 		QVector <QPointF> points_vector;
 		switch (m_shapeType)
 		{
-			case Line:      points_vector << m_P1 << m_P2; break;
-			case Rectangle: points_vector = QetGraphicsHandlerUtility::pointsForRect(QRectF(m_P1, m_P2)); break;
-			case Ellipse:   points_vector = QetGraphicsHandlerUtility::pointsForRect(QRectF(m_P1, m_P2)); break;
-			case Polygon:   points_vector = m_polygon; break;
+			case Line:
+				points_vector << m_P1 << m_P2;
+				break;
+			case Rectangle:
+				if (m_resize_mode == 3) {
+					points_vector = QetGraphicsHandlerUtility::pointForRadiusRect(QRectF(m_P1, m_P2), m_xRadius, m_yRadius);
+				}
+				else {
+					points_vector = QetGraphicsHandlerUtility::pointsForRect(QRectF(m_P1, m_P2));
+				}
+				break;
+			case Ellipse:
+				points_vector = QetGraphicsHandlerUtility::pointsForRect(QRectF(m_P1, m_P2));
+				break;
+			case Polygon:
+				points_vector = m_polygon;
+				break;
 		}
 		
 		if(!points_vector.isEmpty() && scene())
@@ -536,13 +598,34 @@ void QetShapeItem::addHandler()
  */
 void QetShapeItem::adjusteHandlerPos()
 {
+	if (m_handler_vector.isEmpty()) {
+		return;
+	}
+	
 	QVector <QPointF> points_vector;
 	switch (m_shapeType)
 	{
-		case Line:      points_vector << m_P1 << m_P2; break;
-		case Rectangle: points_vector = QetGraphicsHandlerUtility::pointsForRect(QRectF(m_P1, m_P2)); break;
-		case Ellipse:   points_vector = QetGraphicsHandlerUtility::pointsForRect(QRectF(m_P1, m_P2)); break;
-		case Polygon:   points_vector = m_polygon; break;
+		case Line: {
+			points_vector << m_P1 << m_P2;
+			break;
+		}
+		case Rectangle: {
+			if (m_resize_mode != 3) {
+				points_vector = QetGraphicsHandlerUtility::pointsForRect(QRectF(m_P1, m_P2));
+			}
+			else {
+				points_vector = QetGraphicsHandlerUtility::pointForRadiusRect(QRectF(m_P1, m_P2), m_xRadius, m_yRadius);
+			}
+			break;
+		}
+		case Ellipse: {
+			points_vector = QetGraphicsHandlerUtility::pointsForRect(QRectF(m_P1, m_P2));
+			break;
+		}
+		case Polygon: {
+			points_vector = m_polygon;
+			break;
+		}
 	}
 	
 	if (m_handler_vector.size() == points_vector.size())
@@ -621,6 +704,11 @@ void QetShapeItem::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphic
 	m_old_P1 = m_P1;
 	m_old_P2 = m_P2;
 	m_old_polygon = m_polygon;
+	m_old_xRadius = m_xRadius;
+	m_old_yRadius = m_yRadius;
+	if(m_xRadius == 0 && m_yRadius == 0) {
+		m_modifie_radius_equaly = true;
+	}
 }
 
 /**
@@ -650,8 +738,23 @@ void QetShapeItem::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphics
 				setRect(QetGraphicsHandlerUtility::rectForPosAtIndex(QRectF(m_P1, m_P2), new_pos, m_vector_index));
 				break;
 			}
-			else {
+			else if (m_resize_mode == 2) {
 				setRect(QetGraphicsHandlerUtility::mirrorRectForPosAtIndex(QRectF(m_P1, m_P2), new_pos, m_vector_index));
+				break;
+			}
+			else {
+				qreal radius = QetGraphicsHandlerUtility::radiusForPosAtIndex(QRectF(m_P1, m_P2), new_pos, m_vector_index);
+				if(m_modifie_radius_equaly) {
+					setXRadius(radius);
+					setYRadius(radius);
+				}
+				else if(m_vector_index == 0) {
+					setXRadius(radius);
+				}
+				else {
+					setYRadius(radius);
+				}
+				adjusteHandlerPos();
 				break;
 			}
 		case Ellipse:
@@ -682,19 +785,42 @@ void QetShapeItem::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraph
 	Q_UNUSED(qghi);
 	Q_UNUSED(event);
 	
+	m_modifie_radius_equaly = false;
+	
 	if (diagram())
 	{
 		QPropertyUndoCommand *undo = nullptr;
-		if ((m_shapeType & (Line | Rectangle | Ellipse)) && (m_P1 != m_old_P1 || m_P2 != m_old_P2))
+		if ((m_shapeType & (Line | Rectangle | Ellipse)) && ((m_P1 != m_old_P1 || m_P2 != m_old_P2) ||
+															 (m_old_xRadius != XRadius() || m_old_yRadius != m_yRadius))
+			)
 		{
 			switch(m_shapeType)
 			{
-				case Line:      undo = new QPropertyUndoCommand(this, "line",QLineF(m_old_P1, m_old_P2), QLineF(m_P1, m_P2)); break;
-				case Rectangle: undo = new QPropertyUndoCommand(this, "rect",QRectF(m_old_P1, m_old_P2), QRectF(m_P1, m_P2)); break;
-				case Ellipse:   undo = new QPropertyUndoCommand(this, "rect",QRectF(m_old_P1, m_old_P2), QRectF(m_P1, m_P2)); break;
+				case Line: {
+					undo = new QPropertyUndoCommand(this, "line",QLineF(m_old_P1, m_old_P2), QLineF(m_P1, m_P2));
+					break;
+				}
+				case Rectangle: {
+					if (m_resize_mode == 1 || m_resize_mode == 2) {
+						undo = new QPropertyUndoCommand(this, "rect",QRectF(m_old_P1, m_old_P2), QRectF(m_P1, m_P2).normalized());
+					}
+					else if (m_resize_mode == 3)
+					{
+						undo = new QPropertyUndoCommand(this, "xRadius", m_old_xRadius, m_xRadius);
+						QPropertyUndoCommand *undo_ = new QPropertyUndoCommand(this, "yRadius", m_old_yRadius, m_yRadius, undo);
+						undo_->setAnimated();
+					}
+					break;
+				}
+				case Ellipse: {
+					undo = new QPropertyUndoCommand(this, "rect",QRectF(m_old_P1, m_old_P2), QRectF(m_P1, m_P2).normalized());
+					break;
+				}
 				case Polygon: break;
 			}
-			if (undo) undo->enableAnimation();
+			if (undo) {
+				undo->setAnimated(true, false);
+			}
 		}
 		else if (m_shapeType == Polygon && (m_polygon != m_old_polygon))
 			undo = new QPropertyUndoCommand(this, "polygon", m_old_polygon, m_polygon);

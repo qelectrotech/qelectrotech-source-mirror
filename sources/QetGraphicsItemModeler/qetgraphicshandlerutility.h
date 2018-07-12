@@ -41,6 +41,9 @@ class QetGraphicsHandlerUtility
 		static QRectF mirrorRectForPosAtIndex (const QRectF &old_rect, const QPointF &pos, int index);
 		static QLineF lineForPosAtIndex (const QLineF &old_line, const QPointF &pos, int index);
 		static QPolygonF polygonForInsertPoint(const QPolygonF &old_polygon, bool closed, const QPointF &pos);
+		static QVector <QPointF> pointForRadiusRect (const QRectF &rect, qreal xRadius, qreal yRadius, Qt::SizeMode mode = Qt::AbsoluteSize);
+		static qreal radiusForPosAtIndex (const QRectF &rect, const QPointF &pos, int index, Qt::SizeMode mode = Qt::AbsoluteSize);
+		static qreal percentageInRange(qreal min, qreal max, qreal value);
 };
 
 #endif // QETGRAPHICSHANDLERUTILITY_H

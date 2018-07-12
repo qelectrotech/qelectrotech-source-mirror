@@ -16,8 +16,6 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetgraphicshandlerutility.h"
-//#include <QVector>
-//#include <QPointF>
 #include <QPainterPath>
 
 
@@ -241,3 +239,80 @@ QPolygonF QetGraphicsHandlerUtility::polygonForInsertPoint(const QPolygonF &old_
 	polygon.insert(index, pos);
 	return polygon;
 }
+
+/**
+ * @brief QetGraphicsHandlerUtility::pointForRadiusRect
+ * @param rect the rectangle.
+ * @param xRadius : x radius
+ * @param yRadius : y radius
+ * @param mode : absolute or relative size: NOTE this argument is not used, this function always compute with relative size.
+ * @return the points of x and y radius of a rounded rect.
+ * The points are always based on the top right corner of the rect.
+ * the first point of vector is X the second Y
+ */
+#include <QDebug>
+QVector<QPointF> QetGraphicsHandlerUtility::pointForRadiusRect(const QRectF &rect, qreal xRadius, qreal yRadius, Qt::SizeMode mode)
+{
+	Q_UNUSED(mode)
+	QVector<QPointF> v;
+	
+	qreal half_width = rect.width()/2;
+	qreal x_percent = std::min(xRadius, 100.00)/100;
+	QPointF X(rect.right() - half_width*x_percent,
+			  rect.top());
+	v << X;
+	
+	qreal half_height = rect.height()/2;
+	qreal y_percent = std::min(yRadius, 100.00)/100;
+	QPointF Y(rect.right(),
+			  rect.top()+ half_height*y_percent);
+	v << Y;
+	
+	return v;
+}
+
+/**
+ * @brief QetGraphicsHandlerUtility::radiusForPosAtIndex
+ * @param rect the rectangle
+ * @param pos : the pos of the new radius
+ * @param index : index of radius  0=X 1=Y
+ * @param mode
+ * @return 
+ */
+qreal QetGraphicsHandlerUtility::radiusForPosAtIndex(const QRectF &rect, const QPointF &pos, int index, Qt::SizeMode mode)
+{
+	Q_UNUSED(mode)
+	
+	if(index == 0) //X
+	{
+		if (pos.x() < rect.center().x()) {
+			return 100;
+		}
+		else if (pos.x() > rect.right()) {
+			return 0;
+		}
+		else {
+			return (100 - percentageInRange(rect.center().x(), rect.right(), pos.x()));
+		}
+	}
+	else if (index == 1) //Y
+	{
+		if (pos.y() < rect.top()) {
+			return 0;
+		}
+		else if (pos.y() > rect.center().y()) {
+			return 100;
+		}
+		else {
+			return percentageInRange(rect.top(), rect.center().y(), pos.y());
+		}
+	}
+	else {
+		return 0;
+	}
+}
+
+qreal QetGraphicsHandlerUtility::percentageInRange(qreal min, qreal max, qreal value) {
+	return ((value - min) * 100) / (max - min);
+}
+

@@ -36,18 +36,23 @@ class QetShapeItem : public QetGraphicsItem
 {
 	Q_OBJECT
 
-		Q_PROPERTY(QPen pen READ pen WRITE setPen NOTIFY penChanged)
-		Q_PROPERTY(QBrush brush READ brush WRITE setBrush NOTIFY brushChanged)
-		Q_PROPERTY(QRectF rect READ rect WRITE setRect)
-		Q_PROPERTY(QLineF line READ line WRITE setLine)
-		Q_PROPERTY(QPolygonF polygon READ polygon WRITE setPolygon)
-		Q_PROPERTY(bool close READ isClosed WRITE setClosed NOTIFY closeChanged)
+	Q_PROPERTY(QPen pen READ pen WRITE setPen NOTIFY penChanged)
+	Q_PROPERTY(QBrush brush READ brush WRITE setBrush NOTIFY brushChanged)
+	Q_PROPERTY(QRectF rect READ rect WRITE setRect)
+	Q_PROPERTY(QLineF line READ line WRITE setLine)
+	Q_PROPERTY(QPolygonF polygon READ polygon WRITE setPolygon)
+	Q_PROPERTY(bool close READ isClosed WRITE setClosed NOTIFY closeChanged)
+	Q_PROPERTY(qreal xRadius READ XRadius WRITE setXRadius NOTIFY XRadiusChanged)
+	Q_PROPERTY(qreal yRadius READ YRadius WRITE setYRadius NOTIFY YRadiusChanged)
 
 	signals:
 		void penChanged();
 		void brushChanged();
 		void closeChanged();
-
+		void XRadiusChanged();
+		void YRadiusChanged();
+		
+		
 	public:
 		Q_ENUMS(ShapeType)
 		enum ShapeType {Line	  =1,
@@ -86,6 +91,10 @@ class QetShapeItem : public QetGraphicsItem
 		bool setPolygon (const QPolygonF &polygon);
 		bool isClosed() const {return m_closed;}
 		void setClosed (bool close);
+		qreal XRadius() const {return m_xRadius;}
+		void setXRadius(qreal X);
+		qreal YRadius() const {return m_yRadius;}
+		void setYRadius(qreal Y);
 
 			//Methods available for polygon shape
 		int  pointsCount  () const;
@@ -99,7 +108,7 @@ class QetShapeItem : public QetGraphicsItem
 		void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 		void hoverEnterEvent   (QGraphicsSceneHoverEvent *event) override;
 		void hoverLeaveEvent   (QGraphicsSceneHoverEvent *event) override;
-		void mouseReleaseEvent (QGraphicsSceneMouseEvent *event) override;
+		void mousePressEvent   (QGraphicsSceneMouseEvent *event) override;
         QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
         bool sceneEventFilter(QGraphicsItem *watched, QEvent *event) override;
 		void contextMenuEvent(QGraphicsSceneContextMenuEvent *event) override;
@@ -128,10 +137,15 @@ class QetShapeItem : public QetGraphicsItem
 		QPolygonF	 m_polygon, m_old_polygon;
 		bool		 m_hovered;
 		int			 m_vector_index;
-		bool m_closed = false;
+		bool m_closed = false,
+			 m_modifie_radius_equaly = false;
 		int m_resize_mode = 1;
         QVector<QetGraphicsHandlerItem *> m_handler_vector;
 		QAction *m_insert_point,
 				*m_remove_point;
+		qreal m_xRadius = 0,
+			  m_yRadius = 0,
+			  m_old_xRadius,
+			  m_old_yRadius;
 };
 #endif // QETSHAPEITEM_H

@@ -82,6 +82,9 @@ bool DiagramEventAddShape::mousePressEvent(QGraphicsSceneMouseEvent *event)
 		if (m_shape_type != QetShapeItem::Polygon)
 		{
 			m_shape_item->setP2 (pos);
+			if(m_shape_item->shapeType() == QetShapeItem::Rectangle || m_shape_item->shapeType() == QetShapeItem::Ellipse) {
+				m_shape_item->setRect(m_shape_item->rect().normalized());
+			}
 			m_diagram->undoStack().push (new AddItemCommand<QetShapeItem *> (m_shape_item, m_diagram));
 			m_shape_item = nullptr; //< set to nullptr for create new shape at next left clic
 		}
