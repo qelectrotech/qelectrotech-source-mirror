@@ -264,7 +264,7 @@ QPainterPath QetShapeItem::shape() const
 			path.lineTo(m_P2);                   
 			break;
 		case Rectangle: 
-			path.addRoundedRect(QRectF(m_P1, m_P2), m_xRadius, m_yRadius, Qt::RelativeSize);
+			path.addRoundedRect(QRectF(m_P1, m_P2), m_xRadius, m_yRadius);
 			break;
 		case Ellipse:
 			path.addEllipse(QRectF(m_P1, m_P2));
@@ -319,7 +319,7 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
     switch (m_shapeType)
     {
         case Line:      painter->drawLine(QLineF(m_P1, m_P2)); break;
-        case Rectangle: painter->drawRoundedRect(QRectF(m_P1, m_P2), m_xRadius, m_yRadius, Qt::RelativeSize); break;
+        case Rectangle: painter->drawRoundedRect(QRectF(m_P1, m_P2), m_xRadius, m_yRadius); break;
         case Ellipse:   painter->drawEllipse(QRectF(m_P1, m_P2)); break;
         case Polygon:   m_closed ? painter->drawPolygon(m_polygon) : painter->drawPolyline(m_polygon); break;
     }
@@ -352,12 +352,11 @@ void QetShapeItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
 void QetShapeItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
 	event->ignore();
+	QetGraphicsItem::mousePressEvent(event);
+	
 	if (event->button() == Qt::LeftButton) {
 		switchResizeMode();
 		event->accept();
-	}
-	else {
-		QetGraphicsItem::mousePressEvent(event);
 	}
 }
 
@@ -873,10 +872,18 @@ bool QetShapeItem::fromXml(const QDomElement &e)
 		m_P1.setY(e.attribute("y1", nullptr).toDouble());
 		m_P2.setX(e.attribute("x2", nullptr).toDouble());
 		m_P2.setY(e.attribute("y2", nullptr).toDouble());
+		
+		if (m_shapeType == Rectangle)
+		{
+			setXRadius(e.attribute("rx", "0").toDouble());
+			setYRadius(e.attribute("ry", "0").toDouble());
+		}
 	}
-	else
-		foreach(QDomElement de, QET::findInDomElement(e, "points", "point"))
+	else {
+		for(QDomElement de : QET::findInDomElement(e, "points", "point")) {
 			m_polygon << QPointF(de.attribute("x", nullptr).toDouble(), de.attribute("y", nullptr).toDouble());
+		}
+	}
 	setZValue(e.attribute("z", QString::number(this->zValue())).toDouble());
 
 	return (true);
@@ -906,11 +913,28 @@ QDomElement QetShapeItem::toXml(QDomDocument &document) const
 		result.setAttribute("y1", QString::number(mapToScene(m_P1).y()));
 		result.setAttribute("x2", QString::number(mapToScene(m_P2).x()));
 		result.setAttribute("y2", QString::number(mapToScene(m_P2).y()));
+		
+		if (m_shapeType == Rectangle)
+		{
+			QRectF rect(m_P1, m_P2);
+			rect = rect.normalized();
+			qreal x = m_xRadius;
+			if (x > rect.width()/2) {
+				x = rect.width()/2;
+			}
+			qreal y = m_yRadius;
+			if (y > rect.height()/2) {
+				y = rect.height()/2;
+			}
+			
+			result.setAttribute("rx", QString::number(m_xRadius));
+			result.setAttribute("ry", QString::number(m_yRadius));
+		}
 	}
 	else
 	{
 		QDomElement points = document.createElement("points");
-		foreach(QPointF p, m_polygon)
+		for (QPointF p : m_polygon)
 		{
 			QDomElement point = document.createElement("point");
 			QPointF pf = mapToScene(p);

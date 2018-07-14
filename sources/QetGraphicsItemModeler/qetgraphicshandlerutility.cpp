@@ -250,23 +250,34 @@ QPolygonF QetGraphicsHandlerUtility::polygonForInsertPoint(const QPolygonF &old_
  * The points are always based on the top right corner of the rect.
  * the first point of vector is X the second Y
  */
-#include <QDebug>
 QVector<QPointF> QetGraphicsHandlerUtility::pointForRadiusRect(const QRectF &rect, qreal xRadius, qreal yRadius, Qt::SizeMode mode)
 {
-	Q_UNUSED(mode)
 	QVector<QPointF> v;
 	
-	qreal half_width = rect.width()/2;
-	qreal x_percent = std::min(xRadius, 100.00)/100;
-	QPointF X(rect.right() - half_width*x_percent,
-			  rect.top());
-	v << X;
-	
-	qreal half_height = rect.height()/2;
-	qreal y_percent = std::min(yRadius, 100.00)/100;
-	QPointF Y(rect.right(),
-			  rect.top()+ half_height*y_percent);
-	v << Y;
+	if(mode == Qt::AbsoluteSize)
+	{
+		QPointF X = rect.topRight();
+		X.rx() -= xRadius;
+		v << X;
+		
+		QPointF Y = rect.topRight();
+		Y.ry() += yRadius;
+		v << Y;
+	}
+	else
+	{
+		qreal half_width = rect.width()/2;
+		qreal x_percent = std::min(xRadius, 100.00)/100;
+		QPointF X(rect.right() - half_width*x_percent,
+				  rect.top());
+		v << X;
+		
+		qreal half_height = rect.height()/2;
+		qreal y_percent = std::min(yRadius, 100.00)/100;
+		QPointF Y(rect.right(),
+				  rect.top()+ half_height*y_percent);
+		v << Y;
+	}
 	
 	return v;
 }
@@ -281,34 +292,67 @@ QVector<QPointF> QetGraphicsHandlerUtility::pointForRadiusRect(const QRectF &rec
  */
 qreal QetGraphicsHandlerUtility::radiusForPosAtIndex(const QRectF &rect, const QPointF &pos, int index, Qt::SizeMode mode)
 {
-	Q_UNUSED(mode)
-	
-	if(index == 0) //X
+	if (mode == Qt::AbsoluteSize)
 	{
-		if (pos.x() < rect.center().x()) {
-			return 100;
+		if (index == 0)
+		{
+			QPointF tr = rect.topRight();
+			qreal x = tr.x() - pos.x();
+			if (x < 0) {
+				x = 0;
+			}
+			else if (x > rect.width()/2) {
+				x = rect.width()/2;
+			}
+			
+			return x;
 		}
-		else if (pos.x() > rect.right()) {
-			return 0;
+		else if (index == 1)
+		{
+			QPointF tr = rect.topRight();
+			qreal y = pos.y() - tr.y();
+			if (y < 0) {
+				y = 0;
+			}
+			else if (y > rect.height()/2) {
+				y = rect.height()/2;
+			}
+
+			return y;
 		}
 		else {
-			return (100 - percentageInRange(rect.center().x(), rect.right(), pos.x()));
-		}
-	}
-	else if (index == 1) //Y
-	{
-		if (pos.y() < rect.top()) {
 			return 0;
 		}
-		else if (pos.y() > rect.center().y()) {
-			return 100;
+	}
+	else
+	{
+		if(index == 0) //X
+		{
+			if (pos.x() < rect.center().x()) {
+				return 100;
+			}
+			else if (pos.x() > rect.right()) {
+				return 0;
+			}
+			else {
+				return (100 - percentageInRange(rect.center().x(), rect.right(), pos.x()));
+			}
+		}
+		else if (index == 1) //Y
+		{
+			if (pos.y() < rect.top()) {
+				return 0;
+			}
+			else if (pos.y() > rect.center().y()) {
+				return 100;
+			}
+			else {
+				return percentageInRange(rect.top(), rect.center().y(), pos.y());
+			}
 		}
 		else {
-			return percentageInRange(rect.top(), rect.center().y(), pos.y());
+			return 0;
 		}
-	}
-	else {
-		return 0;
 	}
 }
 
