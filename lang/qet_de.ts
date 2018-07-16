@@ -7539,7 +7539,7 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../sources/ui/dialogwaiting.cpp" line="68"/>
         <source>%p% effectué (%v sur %m)</source>
-        <translation type="unfinished"></translation>
+        <translation>%p% erledigt (%v von %m)</translation>
     </message>
 </context>
 <context>
