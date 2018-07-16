@@ -1978,18 +1978,13 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <translation>Søg</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="183"/>
-        <source>chargement</source>
-        <translation>indlæser</translation>
-    </message>
-    <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="344"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="345"/>
         <source>Supprimer l&apos;élément ?</source>
         <comment>message box title</comment>
         <translation>Slette symbol?</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="345"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="346"/>
         <source>Êtes-vous sûr  de vouloir supprimer cet élément ?
 </source>
         <comment>message box content</comment>
@@ -1997,25 +1992,25 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
 </translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="356"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="357"/>
         <source>Suppression de l&apos;élément</source>
         <comment>message box title</comment>
         <translation>Slette symbol</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="357"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="358"/>
         <source>La suppression de l&apos;élément a échoué.</source>
         <comment>message box content</comment>
         <translation>Slet symbol mislykkedes.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="376"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="377"/>
         <source>Supprimer le dossier?</source>
         <comment>message box title</comment>
         <translation>Slette mappe?</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="377"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="378"/>
         <source>Êtes-vous sûr  de vouloir supprimer le dossier ?
 Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</source>
         <comment>message box content</comment>
@@ -2023,24 +2018,24 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
 Alle symboler og fil indhold bliver slettet.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="390"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="391"/>
         <source>Suppression du dossier</source>
         <comment>message box title</comment>
         <translation>Slet mappe</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="391"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="392"/>
         <source>La suppression du dossier a échoué.</source>
         <comment>message box content</comment>
         <translation>Slet mappe mislykkedes.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="515"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="516"/>
         <source>Le dossier %1 contient</source>
         <translation>Mappe %1 indeholder</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="516"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="517"/>
         <source>%n élément(s), répartie(s)</source>
         <translation>
             <numerusform>%n symbol fordelt</numerusform>
@@ -2048,7 +2043,7 @@ Alle symboler og fil indhold bliver slettet.</translation>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="517"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="518"/>
         <source>dans %n dossier(s).</source>
         <translation>
             <numerusform>i %n mappe.</numerusform>
@@ -2056,17 +2051,17 @@ Alle symboler og fil indhold bliver slettet.</translation>
         </translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="518"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="519"/>
         <source>Chemin de la collection :  %1</source>
         <translation>Samlingens sti: %1</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="521"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="522"/>
         <source>Chemin dans le système de fichiers :  %1</source>
         <translation>Sti i filsystemet: %1</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="524"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="525"/>
         <source>Propriété du dossier %1</source>
         <translation>Mappe egenskab %1</translation>
     </message>
@@ -7557,6 +7552,11 @@ Vil du erstatte den?</translation>
         <source>%p% effectué (%v sur %m)</source>
         <translation>%p% indlæst (%v af %m)</translation>
     </message>
+    <message>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="183"/>
+        <source>chargement %p% (%v sur %m)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QTextOrientationWidget</name>
@@ -7576,12 +7576,12 @@ Vil du erstatte den?</translation>
 <context>
     <name>QetShapeItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="842"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="992"/>
         <source>une shape</source>
         <translation>en figur</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="838"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="988"/>
         <source>une ligne</source>
         <translation>streg</translation>
     </message>
@@ -7596,32 +7596,32 @@ Vil du erstatte den?</translation>
         <translation>Slette et punkt</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="571"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="653"/>
         <source>Ajouter un point à un polygone</source>
         <translation>Tilføje et punkt til en flerkant</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="605"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="687"/>
         <source>Supprimer un point d&apos;un polygone</source>
         <translation>Slette et punkt i en flerkant</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="704"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="829"/>
         <source>Modifier %1</source>
         <translation>Ændre %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="839"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="989"/>
         <source>un rectangle</source>
         <translation>rektangel</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="840"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="990"/>
         <source>une éllipse</source>
         <translation>cirkel</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="841"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="991"/>
         <source>une polyligne</source>
         <translation>en flerkant</translation>
     </message>

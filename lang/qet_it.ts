@@ -1978,43 +1978,38 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
         <translation>Cercare</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="183"/>
-        <source>chargement</source>
-        <translation>caricamento</translation>
-    </message>
-    <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="344"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="345"/>
         <source>Supprimer l&apos;élément ?</source>
         <comment>message box title</comment>
         <translation>Cancellare l&apos;elemento?</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="345"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="346"/>
         <source>Êtes-vous sûr  de vouloir supprimer cet élément ?
 </source>
         <comment>message box content</comment>
         <translation>Si è sicuri di voler eliminare questo elemento?</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="356"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="357"/>
         <source>Suppression de l&apos;élément</source>
         <comment>message box title</comment>
         <translation>Cancellazione elemento</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="357"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="358"/>
         <source>La suppression de l&apos;élément a échoué.</source>
         <comment>message box content</comment>
         <translation>La cancellazione dell&apos;elemento è fallita.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="376"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="377"/>
         <source>Supprimer le dossier?</source>
         <comment>message box title</comment>
         <translation>Eliminare la cartella?</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="377"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="378"/>
         <source>Êtes-vous sûr  de vouloir supprimer le dossier ?
 Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</source>
         <comment>message box content</comment>
@@ -2022,24 +2017,24 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
 Tutti gli elementi e le sotto-cartelle presenti in essa saranno cancellate.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="390"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="391"/>
         <source>Suppression du dossier</source>
         <comment>message box title</comment>
         <translation>Cancellazione della cartella</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="391"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="392"/>
         <source>La suppression du dossier a échoué.</source>
         <comment>message box content</comment>
         <translation>La cancellazione della cartella è fallita.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="515"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="516"/>
         <source>Le dossier %1 contient</source>
         <translation>La cartella %1 contiene</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="516"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="517"/>
         <source>%n élément(s), répartie(s)</source>
         <translation>
             <numerusform>%n elemento, riparato</numerusform>
@@ -2047,7 +2042,7 @@ Tutti gli elementi e le sotto-cartelle presenti in essa saranno cancellate.</tra
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="517"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="518"/>
         <source>dans %n dossier(s).</source>
         <translation>
             <numerusform>in %n directory.</numerusform>
@@ -2055,17 +2050,17 @@ Tutti gli elementi e le sotto-cartelle presenti in essa saranno cancellate.</tra
         </translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="518"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="519"/>
         <source>Chemin de la collection :  %1</source>
         <translation>Percorso della collezione:  %1</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="521"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="522"/>
         <source>Chemin dans le système de fichiers :  %1</source>
         <translation>Percorso nel file system:  %1</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="524"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="525"/>
         <source>Propriété du dossier %1</source>
         <translation>Proprietà della cartella %1</translation>
     </message>
@@ -7544,6 +7539,11 @@ Sostituirla con questa?</translation>
         <source>%p% effectué (%v sur %m)</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="183"/>
+        <source>chargement %p% (%v sur %m)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QTextOrientationWidget</name>
@@ -7563,12 +7563,12 @@ Sostituirla con questa?</translation>
 <context>
     <name>QetShapeItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="842"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="992"/>
         <source>une shape</source>
         <translation>una forma</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="838"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="988"/>
         <source>une ligne</source>
         <translation>una linea</translation>
     </message>
@@ -7583,32 +7583,32 @@ Sostituirla con questa?</translation>
         <translation>Eliminare il punto corrente</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="571"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="653"/>
         <source>Ajouter un point à un polygone</source>
         <translation>Aggiungere un punto ad un poligono</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="605"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="687"/>
         <source>Supprimer un point d&apos;un polygone</source>
         <translation>Eliminare un punto ad un poligono</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="704"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="829"/>
         <source>Modifier %1</source>
         <translation>Modifica %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="839"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="989"/>
         <source>un rectangle</source>
         <translation>un rettangolo</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="840"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="990"/>
         <source>une éllipse</source>
         <translation>un&apos;ellisse</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="841"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="991"/>
         <source>une polyligne</source>
         <translation>un poligono</translation>
     </message>

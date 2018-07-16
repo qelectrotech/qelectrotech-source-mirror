@@ -1977,43 +1977,38 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
         <translation>Hledat</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="183"/>
-        <source>chargement</source>
-        <translation>nahrávání</translation>
-    </message>
-    <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="344"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="345"/>
         <source>Supprimer l&apos;élément ?</source>
         <comment>message box title</comment>
         <translation>Smazat prvek?</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="345"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="346"/>
         <source>Êtes-vous sûr  de vouloir supprimer cet élément ?
 </source>
         <comment>message box content</comment>
         <translation>Jste si jistý, že chcete smazat tento prvek?</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="356"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="357"/>
         <source>Suppression de l&apos;élément</source>
         <comment>message box title</comment>
         <translation>Smazání prvku</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="357"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="358"/>
         <source>La suppression de l&apos;élément a échoué.</source>
         <comment>message box content</comment>
         <translation>Prvek se nepodařilo smazat.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="376"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="377"/>
         <source>Supprimer le dossier?</source>
         <comment>message box title</comment>
         <translation>Smazat složku?</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="377"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="378"/>
         <source>Êtes-vous sûr  de vouloir supprimer le dossier ?
 Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</source>
         <comment>message box content</comment>
@@ -2021,24 +2016,24 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
 Všechny prvky a složky obsažené v této složce budou smazány.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="390"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="391"/>
         <source>Suppression du dossier</source>
         <comment>message box title</comment>
         <translation>Smazání složky</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="391"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="392"/>
         <source>La suppression du dossier a échoué.</source>
         <comment>message box content</comment>
         <translation>Složku se nepodařilo smazat.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="515"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="516"/>
         <source>Le dossier %1 contient</source>
         <translation>Složka %1 obsahuje</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="516"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="517"/>
         <source>%n élément(s), répartie(s)</source>
         <translation>
             <numerusform>%n prvek, část</numerusform>
@@ -2047,7 +2042,7 @@ Všechny prvky a složky obsažené v této složce budou smazány.</translation
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="517"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="518"/>
         <source>dans %n dossier(s).</source>
         <translation>
             <numerusform>v %n složce.</numerusform>
@@ -2056,17 +2051,17 @@ Všechny prvky a složky obsažené v této složce budou smazány.</translation
         </translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="518"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="519"/>
         <source>Chemin de la collection :  %1</source>
         <translation>Cesta ke sbírce: %1</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="521"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="522"/>
         <source>Chemin dans le système de fichiers :  %1</source>
         <translation>Cesta v souborovém systému: %1</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="524"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="525"/>
         <source>Propriété du dossier %1</source>
         <translation>Vlastnosti složky %1</translation>
     </message>
@@ -7560,6 +7555,11 @@ Chcete je nahradit?</translation>
         <source>%p% effectué (%v sur %m)</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="183"/>
+        <source>chargement %p% (%v sur %m)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QTextOrientationWidget</name>
@@ -7579,12 +7579,12 @@ Chcete je nahradit?</translation>
 <context>
     <name>QetShapeItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="842"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="992"/>
         <source>une shape</source>
         <translation>tvar</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="838"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="988"/>
         <source>une ligne</source>
         <translation>čára</translation>
     </message>
@@ -7599,32 +7599,32 @@ Chcete je nahradit?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="571"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="653"/>
         <source>Ajouter un point à un polygone</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="605"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="687"/>
         <source>Supprimer un point d&apos;un polygone</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="704"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="829"/>
         <source>Modifier %1</source>
         <translation>Upravit %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="839"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="989"/>
         <source>un rectangle</source>
         <translation>obdélník</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="840"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="990"/>
         <source>une éllipse</source>
         <translation>elipsa</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="841"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="991"/>
         <source>une polyligne</source>
         <translation>mnohoúhelník</translation>
     </message>
