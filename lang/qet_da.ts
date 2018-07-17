@@ -7555,7 +7555,7 @@ Vil du erstatte den?</translation>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="183"/>
         <source>chargement %p% (%v sur %m)</source>
-        <translation type="unfinished"></translation>
+        <translation>indlæst %p% (%v af %m)</translation>
     </message>
 </context>
 <context>
