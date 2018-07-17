@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2017 The QElectroTech Team
+	Copyright 2006-2018 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -15,47 +15,46 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef RECTANGLE_EDITOR_H
-#define RECTANGLE_EDITOR_H
+#ifndef RECTANGLEEDITOR_H
+#define RECTANGLEEDITOR_H
 
 #include "elementitemeditor.h"
+#include <QWidget>
 
-class PartRectangle;
 class StyleEditor;
-class QDoubleSpinBox;
+class PartRectangle;
+
+namespace Ui {
+	class RectangleEditor;
+}
 
 /**
-	This class provides a widget to edit rectangles within the element editor.
-*/
+ * @brief The RectangleEditor class
+ * This class provides a widget to edit rectangles within the element editor.
+ */
 class RectangleEditor : public ElementItemEditor
 {
 	Q_OBJECT
-
-		// constructors, destructor
-	public:
-		RectangleEditor(QETElementEditor *, PartRectangle * = nullptr, QWidget * = nullptr);
-		~RectangleEditor() override;
-	private:
-		RectangleEditor(const RectangleEditor &);
 	
-		// attributes
-	private:
-		PartRectangle *part;
-		StyleEditor *style_;
-		QDoubleSpinBox *x, *y, *w, *h;
-		bool m_locked;
-	
-		// methods
 	public:
-		bool setPart(CustomElementPart *) override;
+		explicit RectangleEditor(QETElementEditor *editor, PartRectangle *rect = nullptr, QWidget *parent = nullptr);
+		~RectangleEditor();
+	
+		bool setPart(CustomElementPart *part) override;
 		CustomElementPart *currentPart() const override;
 		QPointF editedTopLeft () const;
 	
 	public slots:
 		void updateForm() override;
+	private:
 		void editingFinished();
+		void activeConnections(bool active);
 	
 	private:
-		void activeConnections(bool);
+		bool m_locked = false;
+		StyleEditor *m_style;
+		PartRectangle *m_part;
+		Ui::RectangleEditor *ui;
 };
-#endif
+
+#endif // RECTANGLEEDITOR_H

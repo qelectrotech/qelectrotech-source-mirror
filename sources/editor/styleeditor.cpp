@@ -118,7 +118,6 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 
 	main_layout -> addSpacing(10);
 	main_layout -> addWidget(new QLabel("<u>" + tr("Géométrie :") + "</u> "));
-	main_layout -> addStretch();
 	setLayout(main_layout);
 }
 

@@ -60,6 +60,7 @@ EllipseEditor::EllipseEditor(QETElementEditor *editor, PartEllipse *ellipse, QWi
 	
 	v_layout -> addWidget(style_);
 	v_layout -> addLayout(grid);
+	v_layout->addStretch();
 	
 	activeConnections(true);
 	updateForm();

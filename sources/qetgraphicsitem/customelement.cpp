@@ -462,13 +462,16 @@ bool CustomElement::parseLine(QDomElement &e, QPainter &qp, bool addtolist) {
 	@param qp Le QPainter a utiliser pour dessiner l'element perso
 	@return true si l'analyse reussit, false sinon
 */
-bool CustomElement::parseRect(QDomElement &e, QPainter &qp, bool addtolist) {
+bool CustomElement::parseRect(QDomElement &e, QPainter &qp, bool addtolist)
+{
 	// verifie la presence des attributs obligatoires
-	qreal rect_x, rect_y, rect_w, rect_h;
+	qreal rect_x, rect_y, rect_w, rect_h, rect_rx, rect_ry;
 	if (!QET::attributeIsAReal(e, QString("x"),       &rect_x))  return(false);
 	if (!QET::attributeIsAReal(e, QString("y"),       &rect_y))  return(false);
 	if (!QET::attributeIsAReal(e, QString("width"),   &rect_w))  return(false);
 	if (!QET::attributeIsAReal(e, QString("height"),  &rect_h))  return(false);
+	rect_rx = e.attribute("rx", "0").toDouble();
+	rect_ry = e.attribute("ry", "0").toDouble();
 
 	if (addtolist){
 		//Add rectangle to the list
@@ -484,7 +487,7 @@ bool CustomElement::parseRect(QDomElement &e, QPainter &qp, bool addtolist) {
 	p.setJoinStyle(Qt::MiterJoin);
 	qp.setPen(p);
 
-	qp.drawRect(QRectF(rect_x, rect_y, rect_w, rect_h));
+	qp.drawRoundedRect(QRectF(rect_x, rect_y, rect_w, rect_h), rect_rx, rect_ry);
 	qp.restore();
 	return(true);
 }

@@ -50,6 +50,7 @@ PolygonEditor::PolygonEditor(QETElementEditor *editor, PartPolygon *p, QWidget *
 	layout -> addWidget(new QLabel(tr("Points du polygone :")));
 	layout -> addWidget(&points_list);
 	layout -> addWidget(&close_polygon);
+	layout->addStretch();
 	
 	updateForm();
 }

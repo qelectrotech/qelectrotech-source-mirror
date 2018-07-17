@@ -28,16 +28,13 @@
  * @param parent parent item
  */
 PartRectangle::PartRectangle(QETElementEditor *editor, QGraphicsItem *parent) :
-	CustomElementGraphicPart(editor, parent),
-	m_undo_command(nullptr)
+	CustomElementGraphicPart(editor, parent)
 {}
 
 /**
  * @brief PartRectangle::~PartRectangle
  */
-PartRectangle::~PartRectangle()
-{
-	if(m_undo_command) delete m_undo_command;
+PartRectangle::~PartRectangle() {
 	removeHandler();
 }
 
@@ -64,8 +61,8 @@ void PartRectangle::paint(QPainter *painter, const QStyleOptionGraphicsItem *opt
 	if (!rect().width() || !rect().height())
 		t.setWidth(0);
 	
-	painter -> setPen(t);
-	painter -> drawRect(rect());
+	painter->setPen(t);
+	painter->drawRoundedRect(m_rect, m_xRadius, m_yRadius);
 
 	if (m_hovered)
 		drawShadowShape(painter);
@@ -88,6 +85,20 @@ const QDomElement PartRectangle::toXml(QDomDocument &xml_document) const
 	xml_element.setAttribute("y", QString("%1").arg(top_left.y()));
 	xml_element.setAttribute("width",  QString("%1").arg(m_rect.width()));
 	xml_element.setAttribute("height", QString("%1").arg(m_rect.height()));
+	
+	QRectF rect = m_rect.normalized();
+	qreal x = m_xRadius;
+	if (x > rect.width()/2) {
+		x = rect.width()/2;
+	}
+	qreal y = m_yRadius;
+	if (y > rect.height()/2) {
+		y = rect.height()/2;
+	}
+	
+	xml_element.setAttribute("rx", QString::number(m_xRadius));
+	xml_element.setAttribute("ry", QString::number(m_yRadius));
+	
 	stylesToXml(xml_element);
 	return(xml_element);
 }
@@ -107,6 +118,8 @@ void PartRectangle::fromXml(const QDomElement &qde)
 									 qde.attribute("height", "0").toDouble()));
 
 	setRect(rect.normalized());
+	setXRadius(qde.attribute("rx", "0").toDouble());
+	setYRadius(qde.attribute("ry", "0").toDouble());
 }
 
 /**
@@ -129,6 +142,22 @@ void PartRectangle::setRect(const QRectF &rect)
 	m_rect = rect;
 	adjusteHandlerPos();
 	emit rectChanged();
+}
+
+void PartRectangle::setXRadius(qreal X)
+{
+	m_xRadius = X;
+	update();
+	adjusteHandlerPos();
+	emit XRadiusChanged();
+}
+
+void PartRectangle::setYRadius(qreal Y)
+{
+	m_yRadius = Y;
+	update();
+	adjusteHandlerPos();
+	emit YRadiusChanged();
 }
 
 /**
@@ -157,7 +186,7 @@ QPointF PartRectangle::sceneTopLeft() const {
 QPainterPath PartRectangle::shape() const
 {
 	QPainterPath shape;
-	shape.addRect(m_rect);
+	shape.addRoundedRect(m_rect, m_xRadius, m_yRadius);
 
 	QPainterPathStroker pps;
 	pps.setWidth(m_hovered? penWeight()+SHADOWS_HEIGHT : penWeight());
@@ -169,7 +198,7 @@ QPainterPath PartRectangle::shape() const
 QPainterPath PartRectangle::shadowShape() const
 {
 	QPainterPath shape;
-	shape.addRect(m_rect);
+	shape.addRoundedRect(m_rect, m_xRadius, m_yRadius);
 
 	QPainterPathStroker pps;
 	pps.setWidth(penWeight());
@@ -333,11 +362,25 @@ void PartRectangle::switchResizeMode()
 		for (QetGraphicsHandlerItem *qghi : m_handler_vector)
 			qghi->setColor(Qt::darkGreen);
 	}
-	else
+	else if (m_resize_mode == 2)
+	{
+		m_resize_mode = 3;
+		qDeleteAll(m_handler_vector);
+		m_handler_vector.clear();
+		addHandler();
+		for (QetGraphicsHandlerItem *qghi : m_handler_vector) {
+			qghi->setColor(Qt::magenta);
+		}
+	}
+	else if (m_resize_mode == 3)
 	{
 		m_resize_mode = 1;
-		for (QetGraphicsHandlerItem *qghi : m_handler_vector)
+		qDeleteAll(m_handler_vector);
+		m_handler_vector.clear();
+		addHandler();
+		for (QetGraphicsHandlerItem *qghi : m_handler_vector) {
 			qghi->setColor(Qt::blue);
+		}
 	}
 }
 
@@ -346,16 +389,30 @@ void PartRectangle::switchResizeMode()
  */
 void PartRectangle::adjusteHandlerPos()
 {
-	if (m_handler_vector.isEmpty())
+	if (m_handler_vector.isEmpty()) {
 		return;
+	}
 	
-	QVector <QPointF> points_vector = QetGraphicsHandlerUtility::pointsForRect(m_rect);
+	QVector <QPointF> points_vector;
+	
+	if(m_resize_mode != 3) {
+		points_vector = QetGraphicsHandlerUtility::pointsForRect(m_rect);
+	}
+	else {
+		points_vector = QetGraphicsHandlerUtility::pointForRadiusRect(m_rect, m_xRadius, m_yRadius);
+	}
 	
 	if (m_handler_vector.size() == points_vector.size())
 	{
 		points_vector = mapToScene(points_vector);
 		for (int i = 0 ; i < points_vector.size() ; ++i)
 			m_handler_vector.at(i)->setPos(points_vector.at(i));
+	}
+	else
+	{
+		qDeleteAll(m_handler_vector);
+		m_handler_vector.clear();
+		addHandler();
 	}
 }
 
@@ -366,13 +423,15 @@ void PartRectangle::adjusteHandlerPos()
  */
 void PartRectangle::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
-	Q_UNUSED(qghi);
-	Q_UNUSED(event);
-
-	m_undo_command = new QPropertyUndoCommand(this, "rect", QVariant(m_rect));
-	m_undo_command->setText(tr("Modifier un rectangle"));
-	m_undo_command->enableAnimation();
-	return;	
+	Q_UNUSED(qghi)
+	Q_UNUSED(event)
+	
+	m_old_rect = m_rect;
+	m_old_xRadius = m_xRadius;
+	m_old_yRadius = m_yRadius;
+	if(m_xRadius == 0 && m_yRadius == 0) {
+		m_modifie_radius_equaly = true;
+	}
 }
 
 /**
@@ -382,7 +441,7 @@ void PartRectangle::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphi
  */
 void PartRectangle::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
-	Q_UNUSED(qghi);
+	Q_UNUSED(qghi)
 	
 	QPointF new_pos = event->scenePos();
 	if (event->modifiers() != Qt::ControlModifier)
@@ -391,20 +450,48 @@ void PartRectangle::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphic
 	
 	if (m_resize_mode == 1)
 		setRect(QetGraphicsHandlerUtility::rectForPosAtIndex(m_rect, new_pos, m_vector_index));
-	else
+	else if (m_resize_mode == 2)
 		setRect(QetGraphicsHandlerUtility::mirrorRectForPosAtIndex(m_rect, new_pos, m_vector_index));
+	else
+	{
+		qreal radius = QetGraphicsHandlerUtility::radiusForPosAtIndex(m_rect, new_pos, m_vector_index);
+		if(m_modifie_radius_equaly) {
+			setXRadius(radius);
+			setYRadius(radius);
+		}
+		else if(m_vector_index == 0) {
+			setXRadius(radius);
+		}
+		else {
+			setYRadius(radius);
+		}
+	}
 	
 	adjusteHandlerPos();
 }
 
 void PartRectangle::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
-	Q_UNUSED(qghi);
-	Q_UNUSED(event);
+	Q_UNUSED(qghi)
+	Q_UNUSED(event)
 	
-	m_undo_command->setNewValue(QVariant(m_rect));
-	elementScene()->undoStack().push(m_undo_command);
-	m_undo_command = nullptr;
+	m_modifie_radius_equaly = false;
+	
+	QUndoCommand *undo = new QUndoCommand("Modifier un rectangle");
+	if (m_old_rect != m_rect) {
+		QPropertyUndoCommand *u = new QPropertyUndoCommand(this, "rect", QVariant(m_old_rect.normalized()), QVariant(m_rect.normalized()), undo);
+		u->setAnimated(true, false);
+	}
+	if (m_old_xRadius != m_xRadius) {
+		QPropertyUndoCommand *u = new QPropertyUndoCommand(this, "xRadius", QVariant(m_old_xRadius), QVariant(m_xRadius), undo);
+		u->setAnimated();
+	}
+	if (m_old_yRadius != m_yRadius) {
+		QPropertyUndoCommand *u = new QPropertyUndoCommand(this, "yRadius", QVariant(m_old_yRadius), QVariant(m_yRadius), undo);
+		u->setAnimated();
+	}
+	
+	elementScene()->undoStack().push(undo);
 	m_vector_index = -1;
 }
 
@@ -427,14 +514,20 @@ void PartRectangle::sceneSelectionChanged()
 void PartRectangle::addHandler()
 {
 	if (m_handler_vector.isEmpty() && scene())
-	{		
-		m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapToScene(QetGraphicsHandlerUtility::pointsForRect(m_rect)));
+	{	
+		if (m_resize_mode != 3) {
+			m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapToScene(QetGraphicsHandlerUtility::pointsForRect(m_rect)));
+		}
+		else {
+			m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapToScene(QetGraphicsHandlerUtility::pointForRadiusRect(m_rect, m_xRadius, m_yRadius)));
+		}
 		
-		for(QetGraphicsHandlerItem *handler : m_handler_vector)
+		for (QetGraphicsHandlerItem *handler : m_handler_vector)
 		{
-			QColor color = Qt::blue;
-			if (m_resize_mode == 2)
-				color = Qt::darkGreen;
+			QColor color;
+			if(m_resize_mode == 1)       {color = Qt::blue;}
+			else if (m_resize_mode == 2) {color = Qt::darkGreen;}
+			else                         {color = Qt::magenta;}
 			
 			handler->setColor(color);
 			scene()->addItem(handler);

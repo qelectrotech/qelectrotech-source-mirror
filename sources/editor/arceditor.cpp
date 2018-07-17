@@ -67,6 +67,7 @@ ArcEditor::ArcEditor(QETElementEditor *editor, PartArc *arc, QWidget *parent) :
 	
 	v_layout -> addWidget(style_);
 	v_layout -> addLayout(grid);
+	v_layout->addStretch();
 	
 	updateForm();
 	

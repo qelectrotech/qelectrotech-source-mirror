@@ -486,29 +486,30 @@ void QETElementEditor::slot_updateTitle() {
 }
 
 /**
-	Met en place l'interface
-*/
-void QETElementEditor::setupInterface() {
-	// editeur
+ * @brief QETElementEditor::setupInterface
+ */
+void QETElementEditor::setupInterface()
+{
+		// editeur
 	m_elmt_scene = new ElementScene(this, this);
 	m_view = new ElementView(m_elmt_scene, this);
 	slot_setRubberBandToView();
 	setCentralWidget(m_view);
 	
-	// widget par defaut dans le QDockWidget
+		// widget par defaut dans le QDockWidget
 	m_default_informations = new QLabel();
 	
-	// ScrollArea pour accueillir un widget d'edition (change a la volee)
-	m_tools_dock_scroll_area = new QScrollArea();
-	m_tools_dock_scroll_area -> setFrameStyle(QFrame::NoFrame);
-	m_tools_dock_scroll_area -> setAlignment(Qt::AlignHCenter|Qt::AlignTop);
+		// ScrollArea pour accueillir un widget d'edition (change a la volee)
+//	m_tools_dock_scroll_area = new QScrollArea();
+//	m_tools_dock_scroll_area -> setFrameStyle(QFrame::NoFrame);
+//	m_tools_dock_scroll_area -> setAlignment(Qt::AlignHCenter|Qt::AlignTop);
 	
-	// Pile de widgets pour accueillir les deux widgets precedents
+		// Pile de widgets pour accueillir les deux widgets precedents
 	m_tools_dock_stack = new QStackedWidget();
 	m_tools_dock_stack -> insertWidget(0, m_default_informations);
-	m_tools_dock_stack -> insertWidget(1, m_tools_dock_scroll_area);
+//	m_tools_dock_stack -> insertWidget(1, m_tools_dock_scroll_area);
 	
-	// widgets d'editions pour les parties
+		// widgets d'editions pour les parties
 	m_editors["arc"]       = new ArcEditor(this);
 	m_editors["ellipse"]   = new EllipseEditor(this);
 	m_editors["line"]      = new LineEditor(this);
@@ -609,7 +610,7 @@ void QETElementEditor::slot_updateInformations()
 		QGraphicsItem *qgi = selected_qgis.first();
 		if (CustomElementPart *selection = dynamic_cast<CustomElementPart *>(qgi))
 		{
-			if (QWidget *widget = m_tools_dock_scroll_area->widget())
+			if (QWidget *widget = m_tools_dock_stack->widget(1))
 			{
 				if (ElementItemEditor *editor = dynamic_cast<ElementItemEditor *>(widget))
 				{
@@ -627,7 +628,7 @@ void QETElementEditor::slot_updateInformations()
 		if (CustomElementPart *selection = dynamic_cast<CustomElementPart *>(qgi))
 		{
 				//The current editor already edit the selected part
-			if (QWidget *widget = m_tools_dock_scroll_area->widget())
+			if (QWidget *widget = m_tools_dock_stack->widget(1))
 				if (ElementItemEditor *editor = dynamic_cast<ElementItemEditor *>(widget))
 					if(editor->currentPart() == selection)
 						return;
@@ -640,7 +641,7 @@ void QETElementEditor::slot_updateInformations()
 			{
 				if (selection_editor->setPart(selection))
 				{
-					m_tools_dock_scroll_area -> setWidget(selection_editor);
+					m_tools_dock_stack->insertWidget(1, selection_editor);
 					m_tools_dock_stack -> setCurrentIndex(1);
 				}
 				else
@@ -659,7 +660,7 @@ void QETElementEditor::slot_updateInformations()
 		{
 			if (selection_editor -> setParts(cep_list))
 			{
-				m_tools_dock_scroll_area -> setWidget(selection_editor);
+				m_tools_dock_stack->insertWidget(1, selection_editor);
 				m_tools_dock_stack -> setCurrentIndex(1);
 			}
 			else
@@ -1267,7 +1268,9 @@ bool QETElementEditor::canClose() {
 	@return le widget enleve, ou 0 s'il n'y avait pas de widget a enlever
 */
 QWidget *QETElementEditor::clearToolsDock() {
-	if (QWidget *previous_widget = m_tools_dock_scroll_area -> takeWidget()) {
+	if (QWidget *previous_widget = m_tools_dock_stack->widget(1))
+	{
+		m_tools_dock_stack->removeWidget(previous_widget);
 		previous_widget -> setParent(nullptr);
 		previous_widget -> hide();
 		return(previous_widget);
@@ -1574,7 +1577,7 @@ void QETElementEditor::updateCurrentPartEditor() {
 	if (!m_tools_dock_stack -> currentIndex()) return;
 	
 	// s'il y a un widget d'edition affiche, on le met a jour
-	if (ElementItemEditor *current_editor = dynamic_cast<ElementItemEditor *>(m_tools_dock_scroll_area -> widget())) {
+	if (ElementItemEditor *current_editor = dynamic_cast<ElementItemEditor *>(m_tools_dock_stack->widget(1))) {
 		current_editor -> updateForm();
 	}
 }

@@ -84,6 +84,7 @@ LineEditor::LineEditor(QETElementEditor *editor, PartLine *line, QWidget *parent
 	v_layout -> addWidget(style_);
 	v_layout -> addLayout(grid);
 	v_layout -> addLayout(grid2);
+	v_layout->addStretch();
 	updateForm();
 }
 

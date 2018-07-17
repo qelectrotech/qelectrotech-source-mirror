@@ -17,7 +17,6 @@
 */
 #ifndef CUSTOM_ELEMENT_EDITOR_H
 #define CUSTOM_ELEMENT_EDITOR_H
-#include <QtWidgets>
 #include "qetmainwindow.h"
 #include "qet.h"
 #include "elementscene.h"
@@ -62,8 +61,6 @@ class QETElementEditor : public QETMainWindow {
 	QLabel *m_default_informations;
 	/// Hash associating primitive names with their matching edition widget
 	QHash<QString, ElementItemEditor *> m_editors;
-	/// ScrollArea for the tools_dock DockWidget
-	QScrollArea *m_tools_dock_scroll_area;
 	/// container for the undo list
 	QDockWidget *m_undo_dock;
 	/// Container for the list of existing primitives
