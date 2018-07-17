@@ -9,6 +9,8 @@
 * Add new feature -> alignment.
 * Alignment of text field can be edited.
 * Add two new actions in context menu for insert or remove point of a selected polygon.
+* Rectangle can have rounded corner.
+
 
 * Diagram editor : 
 * Conductors can now be drawn with two colors.
@@ -34,6 +36,7 @@ This commit fix it, now the search function search for every terminals of a term
 * Widget used to edit text item group can edit the pos of the group.
 * Element text item group can now be framed.
 * Add two new actions in context menu for insert or remove point of a selected polygon.
+* QETshapeItem rectangle can have rounded corner.
 
 
 * Improve for new qet_tb_generator plug-in : add the full path of the current project as
