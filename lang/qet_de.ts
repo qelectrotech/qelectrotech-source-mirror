@@ -7539,7 +7539,7 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="183"/>
         <source>chargement %p% (%v sur %m)</source>
-        <translation type="unfinished"></translation>
+        <translation>Laden %p% (%v von %m)</translation>
     </message>
 </context>
 <context>
