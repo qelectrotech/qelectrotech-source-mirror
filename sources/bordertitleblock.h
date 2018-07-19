@@ -153,7 +153,7 @@ class BorderTitleBlock : public QObject
 		btb_folio_ = folio;
 		emit (titleBlockFolioChanged(folio));
 	}
-	void setFolioData(int, int, QString = nullptr, const DiagramContext & = DiagramContext());
+	void setFolioData(int, int, const QString& = nullptr, const DiagramContext & = DiagramContext());
 	/// @param author the new value of the "File" field
 	void setMachine(const QString &machine) { btb_machine_ = machine; }
 	void setLocMach(const QString &locmach) { btb_locmach_ = locmach; }

@@ -119,8 +119,8 @@ void DiagramFolioList::drawBackground(QPainter *p, const QRectF &r)
  * @param qp Qpainter to use
  * @param row_rect rectangle where we must draw the new row
  */
-void DiagramFolioList::fillRow(QPainter *qp, const QRectF &row_rect, QString author, QString title,
-							   QString folio, QString machine, QString loc, QString indexrev, QString date)
+void DiagramFolioList::fillRow(QPainter *qp, const QRectF &row_rect, const QString& author, const QString& title,
+							   const QString& folio, const QString& machine, const QString& loc, const QString& indexrev, const QString& date)
 {
 	qreal x = row_rect.topLeft().x();
 	qreal y = row_rect.topLeft().y();

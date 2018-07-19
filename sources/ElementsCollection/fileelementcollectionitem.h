@@ -33,7 +33,7 @@ class FileElementCollectionItem : public ElementCollectionItem
 		enum { Type = UserType+2 };
 		int type() const override { return Type;}
 
-		bool setRootPath(QString path, bool set_data = true, bool hide_element = false);
+		bool setRootPath(const QString& path, bool set_data = true, bool hide_element = false);
 		QString fileSystemPath() const;
 		QString dirPath() const;
 
@@ -54,7 +54,7 @@ class FileElementCollectionItem : public ElementCollectionItem
 
 
 	private:
-		void setPathName(QString path_name, bool set_data = true, bool hide_element = false);
+		void setPathName(const QString& path_name, bool set_data = true, bool hide_element = false);
 		void populate(bool set_data = true, bool hide_element = false);
 
 	private:

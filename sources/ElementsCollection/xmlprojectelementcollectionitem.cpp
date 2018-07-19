@@ -259,7 +259,7 @@ void XmlProjectElementCollectionItem::populate(bool set_data, bool hide_element)
  * @param project : the parent project of managed collection
  * @param set_data : if true, call setUpData for every child of this item
  */
-void XmlProjectElementCollectionItem::setXmlElement(QDomElement element, QETProject *project, bool set_data, bool hide_element)
+void XmlProjectElementCollectionItem::setXmlElement(const QDomElement& element, QETProject *project, bool set_data, bool hide_element)
 {
 	m_dom_element = element;
 	m_project = project;

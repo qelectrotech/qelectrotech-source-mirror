@@ -48,8 +48,8 @@ class ECHSFileToFile : public ECHStrategy
 		ElementsLocation copy() override;
 
     private:
-		ElementsLocation copyDirectory(ElementsLocation &source, ElementsLocation &destination, QString rename = QString());
-		ElementsLocation copyElement(ElementsLocation &source, ElementsLocation &destination, QString rename = QString());
+		ElementsLocation copyDirectory(ElementsLocation &source, ElementsLocation &destination, const QString& rename = QString());
+		ElementsLocation copyElement(ElementsLocation &source, ElementsLocation &destination, const QString& rename = QString());
 };
 
 /**
@@ -63,8 +63,8 @@ class ECHSXmlToFile : public ECHStrategy
 		ElementsLocation copy() override;
 
 	private:
-		ElementsLocation copyDirectory(ElementsLocation &source, ElementsLocation &destination, QString rename = QString());
-		ElementsLocation copyElement(ElementsLocation &source, ElementsLocation &destination, QString rename = QString());
+		ElementsLocation copyDirectory(ElementsLocation &source, ElementsLocation &destination, const QString& rename = QString());
+		ElementsLocation copyElement(ElementsLocation &source, ElementsLocation &destination, const QString& rename = QString());
 };
 
 /**

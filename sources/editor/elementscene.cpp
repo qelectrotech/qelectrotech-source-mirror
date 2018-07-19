@@ -580,7 +580,7 @@ QETElementEditor* ElementScene::editor() const {
 	return m_element_editor;
 }
 
-void ElementScene::setElementInfo(DiagramContext dc)
+void ElementScene::setElementInfo(const DiagramContext& dc)
 {
 	if(m_elmt_information != dc)
 	{

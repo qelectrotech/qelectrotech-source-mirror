@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "terminal.h"
+
+#include <utility>
 #include "diagram.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/conductor.h"
@@ -55,9 +57,9 @@ void Terminal::init(QPointF pf, Qet::Orientation o, QString number, QString name
 		default        : dock_elmt_ += QPointF(0, -Terminal::terminalSize);
 	}
 	// Number of terminal
-	number_terminal_ = number;
+	number_terminal_ = std::move(number);
 	// Name of terminal
-	name_terminal_ = name;
+	name_terminal_ = std::move(name);
 	name_terminal_hidden = hiddenName;
 	// par defaut : pas de conducteur
 	
@@ -127,7 +129,7 @@ Terminal::Terminal(QPointF pf, Qet::Orientation o, QString num, QString name, bo
 	parent_element_  (e),
 	hovered_color_   (Terminal::neutralColor)
 {
-	init(pf, o, num, name, hiddenName);
+	init(pf, o, std::move(num), std::move(name), hiddenName);
 }
 
 /**
@@ -168,7 +170,7 @@ Qet::Orientation Terminal::orientation() const {
  * @param number
  */
 void Terminal::setNumber(QString number) {
-	number_terminal_ = number;
+	number_terminal_ = std::move(number);
 }
 
 /**
@@ -176,7 +178,7 @@ void Terminal::setNumber(QString number) {
  * @param name
  */
 void Terminal::setName(QString name, bool hiddenName) {
-	name_terminal_ = name;
+	name_terminal_ = std::move(name);
 	name_terminal_hidden = hiddenName;
 }
 

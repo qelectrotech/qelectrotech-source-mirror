@@ -87,7 +87,7 @@ void RotateSelectionCommand::undo()
 	m_diagram->showMe();
 	QUndoCommand::undo();
 	
-	for(QPointer<ConductorTextItem> cti : m_cond_text)
+	for(const QPointer<ConductorTextItem>& cti : m_cond_text)
 	{
 		cti->forceRotateByUser(m_rotate_by_user.value(cti.data()));
 		if(!cti->wasRotateByUser())
@@ -103,7 +103,7 @@ void RotateSelectionCommand::redo()
 	m_diagram->showMe();
 	QUndoCommand::redo();
 	
-		for(QPointer<ConductorTextItem> cti : m_cond_text)
+		for(const QPointer<ConductorTextItem>& cti : m_cond_text)
 		{
 			m_rotate_by_user.insert(cti, cti->wasRotateByUser());
 			cti->forceRotateByUser(true);

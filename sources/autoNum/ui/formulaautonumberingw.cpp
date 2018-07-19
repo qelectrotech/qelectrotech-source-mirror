@@ -20,6 +20,7 @@
 #include <QMessageBox>
 #include <QPushButton>
 #include <QtWidgets>
+#include <utility>
 
 /**
  * Constructor
@@ -45,7 +46,7 @@ FormulaAutonumberingW::~FormulaAutonumberingW()
  * @brief FormulaAutonumberingW::setContext
  * @param formula to be inserted into context
  */
-void FormulaAutonumberingW::setContext(QString formula) {
+void FormulaAutonumberingW::setContext(const QString& formula) {
 	ui->m_formula_le->insert(formula);
 }
 
@@ -70,5 +71,5 @@ QString FormulaAutonumberingW::formula() {
  * Update Apply Button
  */
 void FormulaAutonumberingW::on_m_formula_le_textChanged(QString text) {
-	emit (textChanged(text));
+	emit (textChanged(std::move(text)));
 }

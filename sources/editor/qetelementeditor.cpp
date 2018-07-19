@@ -55,6 +55,7 @@
 #include <QFileDialog>
 #include <QFile>
 #include <QModelIndex>
+#include <utility>
 
 /*
 	Nombre maximum de primitives affichees par la "liste des parties"
@@ -408,7 +409,7 @@ void QETElementEditor::setupMenus() {
 void QETElementEditor::contextMenu(QPoint p, QList<QAction *> actions)
 {
 		QMenu menu(this);
-		menu.addActions(actions);
+		menu.addActions(std::move(actions));
 		menu.addSeparator();
 		menu.addAction(undo);
 		menu.addAction(redo);

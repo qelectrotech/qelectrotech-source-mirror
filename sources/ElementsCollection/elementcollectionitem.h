@@ -46,7 +46,7 @@ class ElementCollectionItem : public QStandardItem
 		virtual void clearData();
 
 		ElementCollectionItem *lastItemForPath(const QString &path, QString &no_found_path);
-		ElementCollectionItem *childWithCollectionName(QString name) const;
+		ElementCollectionItem *childWithCollectionName(const QString& name) const;
 		QList<QStandardItem *> directChilds() const;
 		int rowForInsertItem(const QString &name);
 		ElementCollectionItem *itemAtPath(const QString &path);

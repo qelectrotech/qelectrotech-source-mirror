@@ -162,7 +162,7 @@ ImportElementTextPattern::ImportElementTextPattern(Element *elmt):
  * @param ok
  * @return 
  */
-QString ImportElementTextPattern::getName(QStringList list, bool &ok) const
+QString ImportElementTextPattern::getName(const QStringList& list, bool &ok) const
 {
 	return QInputDialog::getItem(parentWidget(),
 								 QObject::tr("Séléctionner une configuration de textes"),
@@ -221,7 +221,7 @@ void ImportElementTextPattern::apply(QString name) const
 	
 		//In each group of the xml description, replace the original uuids, by the news created upper. 
 	QList <QDomElement> groups = QET::findInDomElement(root, "texts_groups", "texts_group");
-	for(QDomElement group : groups)
+	for(const QDomElement& group : groups)
 	{
 		for(QDomElement text : QET::findInDomElement(group, "texts", "text"))
 		{
@@ -236,14 +236,14 @@ void ImportElementTextPattern::apply(QString name) const
 	undo_stack.beginMacro(QObject::tr("Importer la configuration de texte : %1").arg(name.remove(".xml")));
 	
 		//Add the texts to element
-	for(QDomElement text : texts)
+	for(const QDomElement& text : texts)
 	{
 		DynamicElementTextItem *deti = new DynamicElementTextItem(m_element);
 		undo_stack.push(new AddElementTextCommand(m_element, deti));
 		deti->fromXml(text);
 	}
 		//Add the groups to element
-	for(QDomElement xml_group : groups)
+	for(const QDomElement& xml_group : groups)
 		undo_stack.push(new AddTextsGroupCommand(m_element, xml_group));
 	
 	undo_stack.endMacro();

@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include <QPainter>
+#include <utility>
 #include "titleblocktemplate.h"
 #include "titleblocktemplaterenderer.h"
 #include "bordertitleblock.h"
@@ -408,7 +409,7 @@ void BorderTitleBlock::displayBorder(bool db) {
  * Set Page (Folio) Auto Num
  */
 void BorderTitleBlock::slot_setAutoPageNum(QString pageAutoNum) {
-	btb_auto_page_num_=pageAutoNum;
+	btb_auto_page_num_=std::move(pageAutoNum);
 }
 
 /**
@@ -735,7 +736,7 @@ QString BorderTitleBlock::incrementLetters(const QString &string) {
 	@param total nombre total de schemas dans le projet
 	@param project_properties Project-wide properties, to be merged with diagram-wide ones.
 */
-void BorderTitleBlock::setFolioData(int index, int total, QString autonum, const DiagramContext &project_properties) {
+void BorderTitleBlock::setFolioData(int index, int total, const QString& autonum, const DiagramContext &project_properties) {
 	if (index < 1 || total < 1 || index > total) return;
 	
 	// memorise les informations

@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2017 The QElectroTech Team
 	This file is part of QElectroTech.
 	
@@ -729,7 +729,7 @@ QDomDocument Diagram::toXml(bool whole_content) {
 + * @param hash to retrieve content with content
 + * @param sequential type
 + */
-void Diagram::folioSequentialsToXml(QHash<QString, QStringList> *hash, QDomElement *domElement, QString seq_type, QString type, QDomDocument *doc) {
+void Diagram::folioSequentialsToXml(QHash<QString, QStringList> *hash, QDomElement *domElement, const QString& seq_type, const QString& type, QDomDocument *doc) {
 	QHash<QString, QStringList>::iterator i;
 	for (i = hash->begin(); i != hash->end(); i++) {
 		QDomElement folioseq = doc->createElement(type);
@@ -795,7 +795,7 @@ bool Diagram::initFromXml(QDomElement &document, QPointF position, bool consider
 	@return true si l'import a reussi, false sinon
 */
 bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_informations, DiagramContent *content_ptr) {
-	QDomElement root = document;
+	const QDomElement& root = document;
 	// The first element must be a diagram
 	if (root.tagName() != "diagram") return(false);
 	
@@ -1019,7 +1019,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
  * @param seq type
  * @param type of sequential
  */
-void Diagram::folioSequentialsFromXml(const QDomElement &root, QHash<QString, QStringList>* hash, QString folioSeq, QString seq, QString type, QString autonumFolioSeqType) {
+void Diagram::folioSequentialsFromXml(const QDomElement &root, QHash<QString, QStringList>* hash, const QString& folioSeq, const QString& seq, const QString& type, const QString& autonumFolioSeqType) {
 	foreach (QDomElement folioSeqAutoNum, QET::findInDomElement(root, autonumFolioSeqType, folioSeq)) {
 		for(QDomElement folioseq = folioSeqAutoNum.firstChildElement(type); !folioseq.isNull(); folioseq = folioseq.nextSiblingElement(type)) {
 			QString title = folioseq.attribute("title");
@@ -1236,7 +1236,7 @@ void Diagram::updateLabels()
  * @param type to be treated
  * @param Numerotation Context to be manipulated
  */
-void Diagram::insertFolioSeqHash(QHash<QString, QStringList> *hash, QString title, QString type, NumerotationContext *nc) {
+void Diagram::insertFolioSeqHash(QHash<QString, QStringList> *hash, const QString& title, const QString& type, NumerotationContext *nc) {
 	QStringList max;
 	for (int i = 0; i < nc->size(); i++) {
 		if (nc->itemAt(i).at(0) == type) {
@@ -1257,7 +1257,7 @@ void Diagram::insertFolioSeqHash(QHash<QString, QStringList> *hash, QString titl
  * @param type to be treated
  * @param Numerotation Context to be manipulated
  */
-void Diagram::loadFolioSeqHash(QHash<QString, QStringList> *hash, QString title, QString type, NumerotationContext *nc) {
+void Diagram::loadFolioSeqHash(QHash<QString, QStringList> *hash, const QString& title, const QString& type, NumerotationContext *nc) {
 		int j = 0;
 		for (int i = 0; i < nc->size(); i++) {
 			if (nc->itemAt(i).at(0) == type) {

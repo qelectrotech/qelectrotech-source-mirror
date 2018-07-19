@@ -18,7 +18,7 @@
 #include "reportpropertiewidget.h"
 #include "ui_reportpropertiewidget.h"
 
-ReportPropertieWidget::ReportPropertieWidget(QString value, QWidget *parent) :
+ReportPropertieWidget::ReportPropertieWidget(const QString& value, QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::ReportPropertieWidget)
 {
@@ -35,7 +35,7 @@ void ReportPropertieWidget::toSettings(QSettings &settings, const QString &prefi
 	settings.setValue(prefix + "label", ui->line_edit->text());
 }
 
-void ReportPropertieWidget::setReportProperties(QString label) {
+void ReportPropertieWidget::setReportProperties(const QString& label) {
 	ui->line_edit->setText(label);
 }
 

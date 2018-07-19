@@ -42,7 +42,7 @@ class DynamicTextFieldEditor : public ElementItemEditor
 		void updateForm() override;
 		
 	private:
-		void setColorPushButton(QColor color);
+		void setColorPushButton(const QColor& color);
 		void fillInfoComboBox();
 	
 	private slots:

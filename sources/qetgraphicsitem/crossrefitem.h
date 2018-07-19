@@ -91,7 +91,7 @@ class CrossRefItem : public QGraphicsObject
 		void drawAsContacts		(QPainter &painter);
 		QRectF drawContact			(QPainter &painter, int flags, Element *elmt);
 		void fillCrossRef			(QPainter &painter);
-		void AddExtraInfo			(QPainter &painter, QString);
+		void AddExtraInfo			(QPainter &painter, const QString&);
 		QList<Element *> NOElements() const;
 		QList<Element *> NCElements() const;
 

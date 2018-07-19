@@ -68,7 +68,7 @@ class DiagramTextItem : public QGraphicsTextItem
 		void setFontSize(int s);
         int fontSize()const;
         
-        void setColor(QColor color);
+        void setColor(const QColor& color);
         QColor color() const;
         
 		void setNoEditable(bool e = true) {m_no_editable = e;}

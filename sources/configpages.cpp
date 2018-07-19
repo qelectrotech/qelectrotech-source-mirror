@@ -30,6 +30,7 @@
 #include <QFontDialog>
 #include <QFont>
 #include <QSizePolicy>
+#include <utility>
 
 /**
  * @brief NewDiagramPage::NewDiagramPage
@@ -203,7 +204,7 @@ void NewDiagramPage::changeToAutoFolioTab(){
  * Set temporary TBP to use in auto folio num
  */
 void NewDiagramPage::setFolioAutonum(QString autoNum){
-	TitleBlockProperties tbptemp = ipw->propertiesAutoNum(autoNum);
+	TitleBlockProperties tbptemp = ipw->propertiesAutoNum(std::move(autoNum));
 	ipw->setProperties(tbptemp);
 	applyConf();
 }

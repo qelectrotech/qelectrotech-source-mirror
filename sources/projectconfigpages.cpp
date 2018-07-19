@@ -344,7 +344,7 @@ void ProjectAutoNumConfigPage::buildConnections()
  * Display the current selected context for conductor
  * @param str, key of context stored in project
  */
-void ProjectAutoNumConfigPage::updateContextConductor(QString str) {
+void ProjectAutoNumConfigPage::updateContextConductor(const QString& str) {
 	if (str == tr("Nom de la nouvelle numérotation")) m_saw_conductor -> setContext(NumerotationContext());
 	else m_saw_conductor ->setContext(m_project->conductorAutoNum(str));
 }
@@ -354,7 +354,7 @@ void ProjectAutoNumConfigPage::updateContextConductor(QString str) {
  * Display the current selected context for folio
  * @param str, key of context stored in project
  */
-void ProjectAutoNumConfigPage::updateContextFolio(QString str) {
+void ProjectAutoNumConfigPage::updateContextFolio(const QString& str) {
 	if (str == tr("Nom de la nouvelle numérotation")) m_saw_folio -> setContext(NumerotationContext());
 	else m_saw_folio ->setContext(m_project->folioAutoNum(str));
 }
@@ -364,7 +364,7 @@ void ProjectAutoNumConfigPage::updateContextFolio(QString str) {
  * Display the current selected context for element
  * @param str, key of context stored in project
  */
-void ProjectAutoNumConfigPage::updateContextElement(QString str)
+void ProjectAutoNumConfigPage::updateContextElement(const QString& str)
 {
 	if (str == tr("Nom de la nouvelle numérotation"))
 	{

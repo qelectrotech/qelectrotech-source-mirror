@@ -38,7 +38,7 @@ class LinkElementCommand : public QUndoCommand
 
 		static bool isLinkable (Element *element_a, Element *element_b, bool already_linked = false);
 
-		void setLink (QList<Element *> element_list);
+		void setLink (const QList<Element *>& element_list);
 		void setLink (Element *element_);
 		void unlink  (QList<Element *> element_list);
 		void unlinkAll ();

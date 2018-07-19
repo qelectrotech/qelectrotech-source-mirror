@@ -41,7 +41,7 @@ class ConductorXmlRetroCompatibility
 {
 		friend class Conductor;
 
-		static void loadSequential(const QDomElement &dom_element, QString seq, QStringList* list)
+		static void loadSequential(const QDomElement &dom_element, const QString& seq, QStringList* list)
 		{
 			int i = 0;
 			while (!dom_element.attribute(seq + QString::number(i+1)).isEmpty())
@@ -939,7 +939,7 @@ QList<QPointF> Conductor::segmentsToPoints() const {
 	Regenere les segments de ce conducteur a partir de la liste de points passee en parametre
 	@param points_list Liste de points a utiliser pour generer les segments
 */
-void Conductor::pointsToSegments(QList<QPointF> points_list) {
+void Conductor::pointsToSegments(const QList<QPointF>& points_list) {
 	// supprime les segments actuels
 	deleteSegments();
 	
@@ -1667,7 +1667,7 @@ void Conductor::editProperty() {
 	ConductorPropertiesDialog::PropertiesDialog(this, diagramEditor());
 }
 
-void Conductor::setSequenceNum(autonum::sequentialNumbers sn)
+void Conductor::setSequenceNum(const autonum::sequentialNumbers& sn)
 {
 	m_autoNum_seq = sn;
 	refreshText();

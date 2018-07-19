@@ -880,7 +880,7 @@ bool QetShapeItem::fromXml(const QDomElement &e)
 		}
 	}
 	else {
-		for(QDomElement de : QET::findInDomElement(e, "points", "point")) {
+		for(const QDomElement& de : QET::findInDomElement(e, "points", "point")) {
 			m_polygon << QPointF(de.attribute("x", nullptr).toDouble(), de.attribute("y", nullptr).toDouble());
 		}
 	}

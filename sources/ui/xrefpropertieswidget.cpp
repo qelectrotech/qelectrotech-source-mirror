@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "xrefpropertieswidget.h"
+
+#include <utility>
 #include "ui_xrefpropertieswidget.h"
 #include "qdebug.h"
 
@@ -28,7 +30,7 @@
 XRefPropertiesWidget::XRefPropertiesWidget(QHash <QString, XRefProperties> properties, QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::XRefPropertiesWidget),
-	m_properties(properties)
+	m_properties(std::move(properties))
 {
 	ui->setupUi(this);
 	buildUi();

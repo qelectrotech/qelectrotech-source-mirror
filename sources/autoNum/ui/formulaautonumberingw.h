@@ -41,7 +41,7 @@ class FormulaAutonumberingW : public QWidget
 		explicit FormulaAutonumberingW(QWidget *parent = nullptr);
 		~FormulaAutonumberingW() override;
 		QString formula();
-		void setContext(QString);
+		void setContext(const QString&);
 		void clearContext();
 		Ui::FormulaAutonumberingW *ui;
 

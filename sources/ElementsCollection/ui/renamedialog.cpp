@@ -16,12 +16,14 @@
     along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "renamedialog.h"
+
+#include <utility>
 #include "ui_renamedialog.h"
 
 RenameDialog::RenameDialog(QString path, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::RenameDialog),
-    m_path(path)
+    m_path(std::move(path))
 {
     ui->setupUi(this);
     m_name = m_path.split("/").last();

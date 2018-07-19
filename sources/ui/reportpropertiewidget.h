@@ -31,10 +31,10 @@ class ReportPropertieWidget : public QWidget
 	Q_OBJECT
 
 	public:
-	explicit ReportPropertieWidget(QString value, QWidget *parent = nullptr);
+	explicit ReportPropertieWidget(const QString& value, QWidget *parent = nullptr);
 	~ReportPropertieWidget() override;
 	void toSettings (QSettings &settings, const QString &prefix);
-	void setReportProperties (QString label);
+	void setReportProperties (const QString& label);
 	QString ReportProperties () const;
 
 	private:

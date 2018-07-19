@@ -40,7 +40,7 @@ class RotateTextsCommand : public QUndoCommand
 		
 	private:
 		void openDialog();
-		void setupAnimation(QObject *target, const QByteArray &propertyName, const QVariant start, const QVariant end);
+		void setupAnimation(QObject *target, const QByteArray &propertyName, const QVariant& start, const QVariant& end);
 		
 	private:
 		QPointer<Diagram> m_diagram;

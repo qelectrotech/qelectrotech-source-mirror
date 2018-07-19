@@ -83,7 +83,7 @@ void ElementEditionCommand::setElementView(ElementView *view) {
 */
 DeletePartsCommand::DeletePartsCommand(
 	ElementScene *scene,
-	const QList<QGraphicsItem *> parts,
+	const QList<QGraphicsItem *>& parts,
 	QUndoCommand *parent
 ) :
 	ElementEditionCommand(QObject::tr("suppression", "undo caption"), scene, nullptr, parent),
@@ -201,7 +201,7 @@ void PastePartsCommand::setOffset(int old_offset_pc, const QPointF &old_start_tl
 */
 CutPartsCommand::CutPartsCommand(
 	ElementScene *scene,
-	const QList<QGraphicsItem *> parts,
+	const QList<QGraphicsItem *>& parts,
 	QUndoCommand *parent
 ) :
 	DeletePartsCommand(scene, parts, parent)
@@ -224,7 +224,7 @@ CutPartsCommand::~CutPartsCommand() {
 MovePartsCommand::MovePartsCommand(
 	const QPointF &m,
 	ElementScene *scene,
-	const QList<QGraphicsItem *> parts,
+	const QList<QGraphicsItem *>& parts,
 	QUndoCommand *parent
 ) :
 	ElementEditionCommand(QObject::tr("déplacement", "undo caption"), scene, nullptr, parent),
@@ -593,7 +593,7 @@ void ScalePartsCommand::adjustText() {
  * @param context: new info about type.
  * @param parent: parent undo
  */
-ChangePropertiesCommand::ChangePropertiesCommand(ElementScene *scene, QString type, DiagramContext info, DiagramContext elmt_info, QUndoCommand *parent) :
+ChangePropertiesCommand::ChangePropertiesCommand(ElementScene *scene, const QString& type, const DiagramContext& info, const DiagramContext& elmt_info, QUndoCommand *parent) :
 	ElementEditionCommand(scene, nullptr, parent)
 {
 	m_type << scene->m_elmt_type << type;

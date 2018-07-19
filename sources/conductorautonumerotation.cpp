@@ -56,7 +56,7 @@ void ConductorAutoNumerotation::numerate() {
  * @brief ConductorAutoNumerotation::applyText
  * apply the text @t to @conductor_ and all conductors at the same potential
  */
-void ConductorAutoNumerotation::applyText(QString t)
+void ConductorAutoNumerotation::applyText(const QString& t)
 {
 	if (!m_conductor) return;
 

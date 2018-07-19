@@ -174,7 +174,7 @@ QTreeWidgetItem *ElementsPanel::updateTemplateItem(QTreeWidgetItem *tb_template_
 /**
 	@return true if \a item matches the  filter, false otherwise
 */
-bool ElementsPanel::matchesFilter(const QTreeWidgetItem *item, QString filter) const {
+bool ElementsPanel::matchesFilter(const QTreeWidgetItem *item, const QString& filter) const {
 	if (!item) return(false);
 	
 	// no filter => we consider the item matches

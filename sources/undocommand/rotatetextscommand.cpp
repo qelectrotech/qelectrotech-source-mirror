@@ -138,7 +138,7 @@ void RotateTextsCommand::openDialog()
 #endif
 }
 
-void RotateTextsCommand::setupAnimation(QObject *target, const QByteArray &propertyName, const QVariant start, const QVariant end)
+void RotateTextsCommand::setupAnimation(QObject *target, const QByteArray &propertyName, const QVariant& start, const QVariant& end)
 {
 	if(m_anim_group == nullptr)
 		m_anim_group = new QParallelAnimationGroup();

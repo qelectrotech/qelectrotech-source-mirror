@@ -32,17 +32,17 @@ FormulaAssistantDialog::~FormulaAssistantDialog()
 	delete ui;
 }
 
-void FormulaAssistantDialog::setForbiddenVariables(QStringList list)
+void FormulaAssistantDialog::setForbiddenVariables(const QStringList& list)
 {
 	m_rx.setPattern(list.join("|"));
 }
 
-void FormulaAssistantDialog::setText(QString text)
+void FormulaAssistantDialog::setText(const QString& text)
 {
 	ui->m_label->setText(text);
 }
 
-void FormulaAssistantDialog::setFormula(QString text)
+void FormulaAssistantDialog::setFormula(const QString& text)
 {
 	ui->m_line_edit->setText(text);
 }

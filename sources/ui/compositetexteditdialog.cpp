@@ -1,4 +1,6 @@
 #include "compositetexteditdialog.h"
+
+#include <utility>
 #include "ui_compositetexteditdialog.h"
 #include "dynamicelementtextitem.h"
 #include "element.h"
@@ -24,7 +26,7 @@ CompositeTextEditDialog::CompositeTextEditDialog(QString text, QWidget *parent) 
 	ui(new Ui::CompositeTextEditDialog)
 {
 	ui->setupUi(this);
-	m_default_text = text;
+	m_default_text = std::move(text);
 	ui->m_plain_text_edit->setPlainText(m_default_text);
 #if QT_VERSION >= 0x050300
 	ui->m_plain_text_edit->setPlaceholderText(tr("Entrée votre texte composé ici, en vous aidant des variables disponible"));
@@ -65,10 +67,10 @@ void CompositeTextEditDialog::setUpComboBox()
 		//We use a QMap because the keys of the map are sorted, then no matter the curent local,
 		//the value of the combo box are always alphabetically sorted
 	QMap <QString, QString> info_map;
-	for(QString str : qstrl) {
+	for(const QString& str : qstrl) {
 		info_map.insert(QETApp::elementTranslatedInfoKey(str), QETApp::elementInfoToVar(str));
 	}
-	for(QString key : info_map.keys()) {
+	for(const QString& key : info_map.keys()) {
 		ui->m_info_cb->addItem(key, info_map.value(key));
 	}
 }

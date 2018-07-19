@@ -153,8 +153,8 @@ class Diagram : public QGraphicsScene
 		bool initFromXml(QDomElement &, QPointF = QPointF(), bool = true, DiagramContent * = nullptr);
 		bool fromXml(QDomDocument &, QPointF = QPointF(), bool = true, DiagramContent * = nullptr);
 		bool fromXml(QDomElement &, QPointF = QPointF(), bool = true, DiagramContent * = nullptr);
-		void folioSequentialsToXml(QHash<QString, QStringList>*, QDomElement *, QString, QString, QDomDocument *);
-		void folioSequentialsFromXml(const QDomElement&, QHash<QString, QStringList>*, QString, QString, QString, QString);
+		void folioSequentialsToXml(QHash<QString, QStringList>*, QDomElement *, const QString&, const QString&, QDomDocument *);
+		void folioSequentialsFromXml(const QDomElement&, QHash<QString, QStringList>*, const QString&, const QString&, const QString&, const QString&);
 	
 		void refreshContents();
 	
@@ -210,8 +210,8 @@ class Diagram : public QGraphicsScene
 		bool freezeNewConductors();
 	
 			//methods related to insertion and loading of folio sequential
-		void insertFolioSeqHash (QHash<QString, QStringList> *hash, QString title, QString seq, NumerotationContext *nc);
-		void loadFolioSeqHash (QHash<QString, QStringList> *hash, QString title, QString seq, NumerotationContext *nc);
+		void insertFolioSeqHash (QHash<QString, QStringList> *hash, const QString& title, const QString& seq, NumerotationContext *nc);
+		void loadFolioSeqHash (QHash<QString, QStringList> *hash, const QString& title, const QString& seq, NumerotationContext *nc);
 		void changeZValue(QET::DepthOption option);
 
 	public slots:

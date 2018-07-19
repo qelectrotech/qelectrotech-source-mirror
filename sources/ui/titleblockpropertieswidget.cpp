@@ -22,6 +22,7 @@
 #include "titleblocktemplate.h"
 #include "qetapp.h"
 #include <QMenu>
+#include <utility>
 
 /**
  * @brief TitleBlockPropertiesWidget::TitleBlockPropertiesWidget
@@ -221,7 +222,7 @@ TitleBlockProperties TitleBlockPropertiesWidget::propertiesAutoNum(QString autoN
 
 	prop.context = m_dcw -> context();
 
-	prop.auto_page_num = autoNum;
+	prop.auto_page_num = std::move(autoNum);
 
 	return prop;
 }

@@ -195,7 +195,7 @@ bool QET::orthogonalProjection(const QPointF &point, const QLineF &line, QPointF
 	@param entier Pointeur facultatif vers un entier
 	@return true si l'attribut est bien un entier, false sinon
 */
-bool QET::attributeIsAnInteger(const QDomElement &e, QString nom_attribut, int *entier) {
+bool QET::attributeIsAnInteger(const QDomElement &e, const QString& nom_attribut, int *entier) {
 	// verifie la presence de l'attribut
 	if (!e.hasAttribute(nom_attribut)) return(false);
 	// verifie la validite de l'attribut
@@ -214,7 +214,7 @@ bool QET::attributeIsAnInteger(const QDomElement &e, QString nom_attribut, int *
 	@param reel Pointeur facultatif vers un double
 	@return true si l'attribut est bien un reel, false sinon
 */
-bool QET::attributeIsAReal(const QDomElement &e, QString nom_attribut, qreal *reel) {
+bool QET::attributeIsAReal(const QDomElement &e, const QString& nom_attribut, qreal *reel) {
 	// verifie la presence de l'attribut
 	if (!e.hasAttribute(nom_attribut)) return(false);
 	// verifie la validite de l'attribut

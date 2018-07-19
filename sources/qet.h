@@ -158,8 +158,8 @@ namespace QET {
 	
 	bool lineContainsPoint(const QLineF &, const QPointF &);
 	bool orthogonalProjection(const QPointF &, const QLineF &, QPointF * = nullptr);
-	bool attributeIsAnInteger(const QDomElement &, QString , int * = nullptr);
-	bool attributeIsAReal(const QDomElement &, QString , qreal * = nullptr);
+	bool attributeIsAnInteger(const QDomElement &, const QString& , int * = nullptr);
+	bool attributeIsAReal(const QDomElement &, const QString& , qreal * = nullptr);
 	QString ElementsAndConductorsSentence(int, int, int = 0, int = 0, int = 0, int = 0);
 	QList<QDomElement> findInDomElement(const QDomElement &, const QString &);
 	QList<QDomElement> findInDomElement(const QDomElement &, const QString &, const QString &);

@@ -76,7 +76,7 @@ ElementsLocation ECHSFileToFile::copy()
 		return copyDirectory(m_source, m_destination, rename);
 }
 
-ElementsLocation ECHSFileToFile::copyDirectory(ElementsLocation &source, ElementsLocation &destination, QString rename)
+ElementsLocation ECHSFileToFile::copyDirectory(ElementsLocation &source, ElementsLocation &destination, const QString& rename)
 {
     QDir source_dir(source.fileSystemPath());
     QDir destination_dir(destination.fileSystemPath());
@@ -130,7 +130,7 @@ ElementsLocation ECHSFileToFile::copyDirectory(ElementsLocation &source, Element
 	return ElementsLocation();
 }
 
-ElementsLocation ECHSFileToFile::copyElement(ElementsLocation &source, ElementsLocation &destination, QString rename)
+ElementsLocation ECHSFileToFile::copyElement(ElementsLocation &source, ElementsLocation &destination, const QString& rename)
 {
     QString new_elmt_name = rename.isEmpty() ? source.fileName() : rename;
     bool rb = QFile::copy(source.fileSystemPath(), destination.fileSystemPath() + "/" + new_elmt_name);
@@ -184,7 +184,7 @@ ElementsLocation ECHSXmlToFile::copy()
 		return copyDirectory(m_source, m_destination, rename);
 }
 
-ElementsLocation ECHSXmlToFile::copyDirectory(ElementsLocation &source, ElementsLocation &destination, QString rename)
+ElementsLocation ECHSXmlToFile::copyDirectory(ElementsLocation &source, ElementsLocation &destination, const QString& rename)
 {
 	QDir destination_dir(destination.fileSystemPath());
 
@@ -231,7 +231,7 @@ ElementsLocation ECHSXmlToFile::copyDirectory(ElementsLocation &source, Elements
 	return ElementsLocation();
 }
 
-ElementsLocation ECHSXmlToFile::copyElement(ElementsLocation &source, ElementsLocation &destination, QString rename)
+ElementsLocation ECHSXmlToFile::copyElement(ElementsLocation &source, ElementsLocation &destination, const QString& rename)
 {	
 	if (!(destination.exist() && source.exist())) return ElementsLocation();
 

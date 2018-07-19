@@ -56,13 +56,13 @@ class DiagramPrintDialog : public QWidget
 	private:
 	void buildPrintTypeDialog();
 	void buildDialog();
-	void saveReloadDiagramParameters(Diagram *, const ExportProperties, bool);
+	void saveReloadDiagramParameters(Diagram *, const ExportProperties&, bool);
 	void savePageSetupForCurrentPrinter();
 	void loadPageSetupForCurrentPrinter();
 	QString settingsSectionName(const QPrinter *);
 	
 	private slots:
-	void print(const QList<Diagram *> &, bool, const ExportProperties);
+	void print(const QList<Diagram *> &, bool, const ExportProperties&);
 	void printDiagram(Diagram *, bool, const ExportProperties &, QPainter *, QPrinter * = nullptr);
 	void updatePrintTypeDialog();
 	void acceptPrintTypeDialog();

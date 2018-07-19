@@ -154,7 +154,7 @@ void ElementPropertiesEditorWidget::populateTree()
 {
 	QStringList keys{"label", "comment", "description", "designation", "manufacturer", "manufacturer-reference", "provider", "machine-manufacturer-reference"};
 	
-	for(QString key : keys)
+	for(const QString& key : keys)
 	{
 		QTreeWidgetItem *qtwi = new QTreeWidgetItem(ui->m_tree);
 		qtwi->setFlags(Qt::ItemIsEnabled | Qt::ItemIsEditable);

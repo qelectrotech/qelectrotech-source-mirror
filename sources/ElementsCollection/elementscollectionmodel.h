@@ -45,7 +45,7 @@ class ElementsCollectionModel : public QStandardItemModel
 
 		void addCommonCollection(bool set_data = true);
 		void addCustomCollection(bool set_data = true);
-		void addLocation(ElementsLocation location);
+		void addLocation(const ElementsLocation& location);
 
 		void addProject(QETProject *project, bool set_data = true);
 		void removeProject(QETProject *project);
@@ -64,9 +64,9 @@ class ElementsCollectionModel : public QStandardItemModel
 		void loadingProgressValue(int);
 
 	private:
-		void elementIntegratedToCollection (QString path);
-		void itemRemovedFromCollection (QString path);
-		void updateItem (QString path);
+		void elementIntegratedToCollection (const QString& path);
+		void itemRemovedFromCollection (const QString& path);
+		void updateItem (const QString& path);
 
 	private:
 		QList <QETProject *> m_project_list;

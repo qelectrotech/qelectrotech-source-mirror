@@ -120,7 +120,7 @@ class ElementScene : public QGraphicsScene
 		void cut();
 		void copy();
 		QETElementEditor* editor() const;
-		void setElementInfo(DiagramContext dc);
+		void setElementInfo(const DiagramContext& dc);
 	
 	protected:
 		void mouseMoveEvent         (QGraphicsSceneMouseEvent *) override;

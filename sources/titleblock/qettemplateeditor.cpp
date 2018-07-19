@@ -615,7 +615,7 @@ void QETTitleBlockTemplateEditor::writeSettings()
 	Update various things when user changes the selected cells.
 	@param selected_cells List of selected cells.
 */
-void QETTitleBlockTemplateEditor::selectedCellsChanged(QList<TitleBlockCell *> selected_cells) {
+void QETTitleBlockTemplateEditor::selectedCellsChanged(const QList<TitleBlockCell *>& selected_cells) {
 	if (selected_cells.count() == 1) {
 		template_cell_editor_widget_ -> edit(selected_cells.at(0));
 		template_cell_editor_widget_ -> setVisible(true);

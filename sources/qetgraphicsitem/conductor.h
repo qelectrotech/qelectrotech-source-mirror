@@ -121,7 +121,7 @@ class Conductor : public QGraphicsObject
 
 		autonum::sequentialNumbers sequenceNum () const {return m_autoNum_seq;}
 		autonum::sequentialNumbers& rSequenceNum()      {return m_autoNum_seq;}
-		void setSequenceNum(autonum::sequentialNumbers sn);
+		void setSequenceNum(const autonum::sequentialNumbers& sn);
 
 	private:
 		void setUpConnectionForFormula(QString old_formula, QString new_formula);
@@ -194,7 +194,7 @@ class Conductor : public QGraphicsObject
 		QList<QPointF> segmentsToPoints() const;
 		QList<ConductorBend> bends() const;
 		QList<QPointF> junctions() const;
-		void pointsToSegments(QList<QPointF>);
+		void pointsToSegments(const QList<QPointF>&);
 		Qt::Corner currentPathType() const;
 		void deleteSegments();
 		static int getCoeff(const qreal &, const qreal &);

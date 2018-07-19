@@ -286,7 +286,7 @@ void ElementsCollectionModel::addCustomCollection(bool set_data)
  * If the location is already managed by this model, do nothing.
  * @param location
  */
-void ElementsCollectionModel::addLocation(ElementsLocation location)
+void ElementsCollectionModel::addLocation(const ElementsLocation& location)
 {
 	QModelIndex index = indexFromLocation(location);
 	if (index.isValid())
@@ -504,7 +504,7 @@ QModelIndex ElementsCollectionModel::indexFromLocation(const ElementsLocation &l
  * this method create and display the new element
  * @param path -The path of the new element in the embedded collection of a project
  */
-void ElementsCollectionModel::elementIntegratedToCollection(QString path)
+void ElementsCollectionModel::elementIntegratedToCollection(const QString& path)
 {
 	QObject *object = sender();
 	XmlElementCollection *collection = static_cast<XmlElementCollection *> (object);
@@ -537,7 +537,7 @@ void ElementsCollectionModel::elementIntegratedToCollection(QString path)
  * This method must be called by a signal, to get a sender.
  * @param path
  */
-void ElementsCollectionModel::itemRemovedFromCollection(QString path)
+void ElementsCollectionModel::itemRemovedFromCollection(const QString& path)
 {
 	QObject *object = sender();
 	XmlElementCollection *collection = static_cast<XmlElementCollection *> (object);
@@ -565,7 +565,7 @@ void ElementsCollectionModel::itemRemovedFromCollection(QString path)
  * Update the item at path
  * @param path
  */
-void ElementsCollectionModel::updateItem(QString path)
+void ElementsCollectionModel::updateItem(const QString& path)
 {
 	QObject *object = sender();
 	XmlElementCollection *collection = static_cast<XmlElementCollection *> (object);

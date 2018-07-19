@@ -52,7 +52,7 @@ class AddTextsGroupCommand : public QUndoCommand
 {
 	public:
 		AddTextsGroupCommand(Element *element, QString groupe_name, QUndoCommand *parent = nullptr);
-		AddTextsGroupCommand(Element *element, QDomElement dom_element, QUndoCommand *parent = nullptr);
+		AddTextsGroupCommand(Element *element, const QDomElement& dom_element, QUndoCommand *parent = nullptr);
 		AddTextsGroupCommand(Element *element, QString groupe_name, QList<DynamicElementTextItem *> texts_list, QUndoCommand *parent = nullptr);
 		~AddTextsGroupCommand() override;
 		

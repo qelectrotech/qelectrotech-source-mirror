@@ -71,7 +71,7 @@ ElementCollectionItem *ElementCollectionItem::lastItemForPath(const QString &pat
  * @param name
  * @return
  */
-ElementCollectionItem *ElementCollectionItem::childWithCollectionName(QString name) const
+ElementCollectionItem *ElementCollectionItem::childWithCollectionName(const QString& name) const
 {
 	rowCount();
 	foreach (QStandardItem *qsi, directChilds()) {

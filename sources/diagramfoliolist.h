@@ -37,7 +37,7 @@ class DiagramFolioList : public Diagram
 	void drawBackground(QPainter *, const QRectF &) override;
 
 	private:
-	void fillRow(QPainter *, const QRectF &, QString, QString, QString, QString, QString, QString, QString);
+	void fillRow(QPainter *, const QRectF &, const QString&, const QString&, const QString&, const QString&, const QString&, const QString&, const QString&);
 	void buildGrid(QPainter *, const QRectF &, int, int, qreal[]);
 	void fillHeader(QPainter *, const QRectF &);
 

@@ -30,18 +30,18 @@ class QFile;
  */
 namespace QETXML
 {
-    QDomElement penToXml(QDomDocument &parent_document, QPen pen);
+    QDomElement penToXml(QDomDocument &parent_document, const QPen& pen);
     QPen penFromXml (const QDomElement &element);
 
-	QDomElement brushToXml (QDomDocument &parent_document, QBrush brush);
+	QDomElement brushToXml (QDomDocument &parent_document, const QBrush& brush);
 	QBrush brushFromXml (const QDomElement &element);
 
-	QDomElement fileSystemDirToXmlCollectionDir (QDomDocument &document, const QDir &dir, QString rename = QString());
-	QDomElement fileSystemElementToXmlCollectionElement (QDomDocument &document, QFile &file, QString rename = QString());
+	QDomElement fileSystemDirToXmlCollectionDir (QDomDocument &document, const QDir &dir, const QString& rename = QString());
+	QDomElement fileSystemElementToXmlCollectionElement (QDomDocument &document, QFile &file, const QString& rename = QString());
 
 	bool writeXmlFile(const QDomDocument &xml_document, const QString &file_path, QString *error_message = nullptr);
 
-	QDomElement textToDomElement (QDomDocument &document, QString tag_name, QString value);
+	QDomElement textToDomElement (QDomDocument &document, const QString& tag_name, const QString& value);
 }
 
 #endif // QETXML_H

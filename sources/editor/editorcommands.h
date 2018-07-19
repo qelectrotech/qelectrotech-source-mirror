@@ -60,7 +60,7 @@ class ElementEditionCommand : public QUndoCommand
 class DeletePartsCommand : public ElementEditionCommand {
 	// constructors, destructor
 	public:
-	DeletePartsCommand(ElementScene *, const QList<QGraphicsItem *>, QUndoCommand * = nullptr);
+	DeletePartsCommand(ElementScene *, const QList<QGraphicsItem *>&, QUndoCommand * = nullptr);
 	~DeletePartsCommand() override;
 	private:
 	DeletePartsCommand(const DeletePartsCommand &);
@@ -113,7 +113,7 @@ class PastePartsCommand : public ElementEditionCommand {
 class CutPartsCommand : public DeletePartsCommand {
 	// constructors, destructor
 	public:
-	CutPartsCommand(ElementScene *, const QList<QGraphicsItem *>, QUndoCommand * = nullptr);
+	CutPartsCommand(ElementScene *, const QList<QGraphicsItem *>&, QUndoCommand * = nullptr);
 	~CutPartsCommand() override;
 	private:
 	CutPartsCommand(const CutPartsCommand &);
@@ -125,7 +125,7 @@ class CutPartsCommand : public DeletePartsCommand {
 class MovePartsCommand : public ElementEditionCommand {
 	// constructors, destructor
 	public:
-	MovePartsCommand(const QPointF &, ElementScene *, const QList<QGraphicsItem *>, QUndoCommand * = nullptr);
+	MovePartsCommand(const QPointF &, ElementScene *, const QList<QGraphicsItem *>&, QUndoCommand * = nullptr);
 	~MovePartsCommand() override;
 	private:
 	MovePartsCommand(const MovePartsCommand &);
@@ -290,7 +290,7 @@ class ScalePartsCommand : public ElementEditionCommand {
 
 class ChangePropertiesCommand : public ElementEditionCommand {
 	public:
-	ChangePropertiesCommand (ElementScene *scene, QString type, DiagramContext info, DiagramContext elmt_info, QUndoCommand *parent=nullptr);
+	ChangePropertiesCommand (ElementScene *scene, const QString& type, const DiagramContext& info, const DiagramContext& elmt_info, QUndoCommand *parent=nullptr);
 	~ChangePropertiesCommand () override;
 
 	void undo() override;

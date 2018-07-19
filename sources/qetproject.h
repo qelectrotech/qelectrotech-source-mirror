@@ -103,27 +103,27 @@ class QETProject : public QObject
 
 		XRefProperties					defaultXRefProperties (const QString &type) const {return m_default_xref_properties[type];}
 		QHash <QString, XRefProperties> defaultXRefProperties() const					  {return m_default_xref_properties;}
-		void setDefaultXRefProperties(const QString type, const XRefProperties &properties);
+		void setDefaultXRefProperties(const QString& type, const XRefProperties &properties);
 		void setDefaultXRefProperties(QHash <QString, XRefProperties> hash);
 
 		QHash <QString, NumerotationContext> conductorAutoNum() const;
 		QHash <QString, NumerotationContext> elementAutoNum() const;
 		QHash <QString, NumerotationContext> folioAutoNum() const;
-		void addConductorAutoNum (QString key, NumerotationContext context);
-		void addElementAutoNum (QString key, NumerotationContext context);
-		void addFolioAutoNum     (QString key, NumerotationContext context);
-		void removeConductorAutoNum (QString key);
-		void removeElementAutoNum (QString key);
-		void removeFolioAutoNum (QString key);
+		void addConductorAutoNum (const QString& key, const NumerotationContext& context);
+		void addElementAutoNum (const QString& key, const NumerotationContext& context);
+		void addFolioAutoNum     (const QString& key, const NumerotationContext& context);
+		void removeConductorAutoNum (const QString& key);
+		void removeElementAutoNum (const QString& key);
+		void removeFolioAutoNum (const QString& key);
 		NumerotationContext conductorAutoNum(const QString &key) const;
 		NumerotationContext folioAutoNum(const QString &key)     const;
 		NumerotationContext elementAutoNum(const QString &key);
 
-		QString conductorAutoNumFormula(const QString key) const; //returns Formula
+		QString conductorAutoNumFormula(const QString& key) const; //returns Formula
 		QString conductorCurrentAutoNum() const;
 		void setCurrentConductorAutoNum(QString autoNum);
 
-		QString elementAutoNumFormula(const QString key) const;
+		QString elementAutoNumFormula(const QString& key) const;
 		QString elementAutoNumCurrentFormula() const;
 		QString elementCurrentAutoNum() const;
 		void setCurrrentElementAutonum(QString autoNum);
@@ -146,7 +146,7 @@ class QETProject : public QObject
 		void setAutoConductor (bool ac);
 		void setAutoElement (bool ae);
 		void autoFolioNumberingNewFolios ();
-		void autoFolioNumberingSelectedFolios(int, int, QString);
+		void autoFolioNumberingSelectedFolios(int, int, const QString&);
 
 		QDomDocument toXml();
 		bool close();

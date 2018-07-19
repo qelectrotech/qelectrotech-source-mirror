@@ -33,9 +33,9 @@ class FormulaAssistantDialog : public QDialog
 		FormulaAssistantDialog(QWidget *parent = nullptr);
 		~FormulaAssistantDialog() override;
 		
-		void setForbiddenVariables(QStringList list);
-		void setText(QString text);
-		void setFormula(QString text);
+		void setForbiddenVariables(const QStringList& list);
+		void setText(const QString& text);
+		void setFormula(const QString& text);
 		QString formula() const;
 		
 	private slots:

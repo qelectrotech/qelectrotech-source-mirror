@@ -283,7 +283,7 @@ void MoveElementsCommand::move(const QPointF &actual_movement)
  * @param start value at start
  * @param end value at end
  */
-void MoveElementsCommand::setupAnimation(QObject *target, const QByteArray &propertyName, const QVariant start, const QVariant end) {
+void MoveElementsCommand::setupAnimation(QObject *target, const QByteArray &propertyName, const QVariant& start, const QVariant& end) {
 	//create animation group if not yet.
 	if (m_anim_group == nullptr) m_anim_group = new QParallelAnimationGroup();
 	QPropertyAnimation *animation = new QPropertyAnimation(target, propertyName);

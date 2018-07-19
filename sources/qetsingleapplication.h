@@ -28,7 +28,7 @@ class QETSingleApplication : public QApplication {
 	Q_OBJECT
 	// constructors, destructor
 	public:
-	QETSingleApplication(int &, char **, const QString);
+	QETSingleApplication(int &, char **, const QString&);
 	~QETSingleApplication() override;
 	
 	private:

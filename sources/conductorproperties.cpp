@@ -17,6 +17,7 @@
 */
 #include "conductorproperties.h"
 #include <QPainter>
+#include <utility>
 
 /**
 	Constructeur par defaut
@@ -426,7 +427,7 @@ void ConductorProperties::setText(QString text) {
  */
 void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> list)
 {
-	const QList<ConductorProperties> clist = list;
+	const QList<ConductorProperties> clist = std::move(list);
 	
 	if (clist.isEmpty())
 		return;

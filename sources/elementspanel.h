@@ -68,7 +68,7 @@ class ElementsPanel : public GenericPanel {
 	protected:
 	void startDrag(Qt::DropActions) override;
 	void startTitleBlockTemplateDrag(const TitleBlockTemplateLocation &);
-	bool matchesFilter(const QTreeWidgetItem *, QString) const;
+	bool matchesFilter(const QTreeWidgetItem *, const QString&) const;
 	
 	protected slots:
 	void panelContentChange();

@@ -51,7 +51,7 @@ class XmlProjectElementCollectionItem : public ElementCollectionItem
 
 	private:
 		void populate(bool set_data = true, bool hide_element = false);
-		void setXmlElement(QDomElement element, QETProject *project, bool set_data = true, bool hide_element = false);
+		void setXmlElement(const QDomElement& element, QETProject *project, bool set_data = true, bool hide_element = false);
 
 	private:
 		QETProject *m_project = nullptr;

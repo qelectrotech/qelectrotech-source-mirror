@@ -18,6 +18,7 @@
 #include "qetgraphicshandleritem.h"
 #include <QPainter>
 #include <QDebug>
+#include <utility>
 
 /**
  * @brief QetGraphicsHandlerItem::QetGraphicsHandlerItem
@@ -46,7 +47,7 @@ QRectF QetGraphicsHandlerItem::boundingRect() const {
  */
 void QetGraphicsHandlerItem::setColor(QColor color)
 {
-	m_color = color;
+	m_color = std::move(color);
 	update();
 }
 

@@ -566,7 +566,7 @@ void ElementsCollectionWidget::reload()
  * Update or add the item represented by location to m_model
  * @param location
  */
-void ElementsCollectionWidget::locationWasSaved(ElementsLocation location)
+void ElementsCollectionWidget::locationWasSaved(const ElementsLocation& location)
 {
 		//Because this method update an item in the model, location must
 		//represente an existing element (in file system of project)

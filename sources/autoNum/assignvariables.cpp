@@ -24,6 +24,7 @@
 
 #include <QVariant>
 #include <QStringList>
+#include <utility>
 
 namespace autonum
 {
@@ -88,7 +89,7 @@ namespace autonum
 	 * @param tag_name : the tag name used for the QDomElement.
 	 * @return A QDomElement, if this sequential have no value, the returned QDomELement is empty
 	 */
-	QDomElement sequentialNumbers::toXml(QDomDocument &document, QString tag_name) const
+	QDomElement sequentialNumbers::toXml(QDomDocument &document, const QString& tag_name) const
 	{
 		QDomElement element = document.createElement(tag_name);
 
@@ -161,7 +162,7 @@ namespace autonum
 	 */
 	QString AssignVariables::formulaToLabel(QString formula, sequentialNumbers &seqStruct, Diagram *diagram, const Element *elmt)
 	{
-		AssignVariables av(formula, seqStruct, diagram, elmt);
+		AssignVariables av(std::move(formula), seqStruct, diagram, elmt);
 		seqStruct = av.m_seq_struct;
 		return av.m_assigned_label;
 	}
@@ -193,7 +194,7 @@ namespace autonum
 		return str;
 	}
 
-	AssignVariables::AssignVariables(QString formula, sequentialNumbers seqStruct , Diagram *diagram, const Element *elmt):
+	AssignVariables::AssignVariables(const QString& formula, const sequentialNumbers& seqStruct , Diagram *diagram, const Element *elmt):
 	m_diagram(diagram),
 	m_arg_formula(formula),
 	m_assigned_label(formula),
@@ -293,7 +294,7 @@ namespace autonum
 	 * @param context : numerotation context to retrieve value
 	 * @param type : type of sequential (unit, unitfolio, ten, tenfolio, hundred, hundredfolio)
 	 */
-	void setSequentialToList(QStringList &list, NumerotationContext &context, QString type)
+	void setSequentialToList(QStringList &list, NumerotationContext &context, const QString& type)
 	{
 		for (int i = 0; i < context.size(); i++)
 		{
@@ -317,7 +318,7 @@ namespace autonum
 	 * @param hash : hash to have values inserted
 	 * @param autoNumName : name to use as key of hash
 	 */
-	void setFolioSequentialToHash(QStringList &list, QHash<QString, QStringList> &hash, QString autoNumName)
+	void setFolioSequentialToHash(QStringList &list, QHash<QString, QStringList> &hash, const QString& autoNumName)
 	{
 		if (hash.isEmpty() || !hash.contains(autoNumName))
 		{
@@ -354,7 +355,7 @@ namespace autonum
 	 * to keep up to date the current sequential of folio.
 	 * @param hashKey : the hash key used to store the sequential for folio type.
 	 */
-	void setSequential(QString label, sequentialNumbers &seqStruct, NumerotationContext &context, Diagram *diagram, QString hashKey)
+	void setSequential(const QString& label, sequentialNumbers &seqStruct, NumerotationContext &context, Diagram *diagram, const QString& hashKey)
 	{
 		if (!context.isEmpty())
 		{

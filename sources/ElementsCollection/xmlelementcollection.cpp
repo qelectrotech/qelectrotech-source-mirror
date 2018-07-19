@@ -462,7 +462,7 @@ bool XmlElementCollection::addElementDefinition(const QString &dir_path, const Q
  * @return True if element is removed and emit the signal elementRemoved.
  * else false.
  */
-bool XmlElementCollection::removeElement(QString path)
+bool XmlElementCollection::removeElement(const QString& path)
 {
 	QDomElement elmt = element(path);
 
@@ -486,7 +486,7 @@ bool XmlElementCollection::removeElement(QString path)
  * @param deep_copy : if true copy all childs of source (only if source is directory)
  * @return the ElementLocation that represent the copy, if copy failed return a null ElementLocation
  */
-ElementsLocation XmlElementCollection::copy(ElementsLocation &source, ElementsLocation &destination, QString rename, bool deep_copy)
+ElementsLocation XmlElementCollection::copy(ElementsLocation &source, ElementsLocation &destination, const QString& rename, bool deep_copy)
 {
 	if (!(source.exist() && destination.isDirectory() && destination.isProject() && destination.projectCollection() == this))
 		return ElementsLocation();
@@ -520,7 +520,7 @@ bool XmlElementCollection::exist(const QString &path) const
  * @param name_list : translation of the directorie name.
  * @return true if creation success, if directorie already exist return true.
  */
-bool XmlElementCollection::createDir(QString path, QString name, const NamesList &name_list)
+bool XmlElementCollection::createDir(const QString& path, const QString& name, const NamesList &name_list)
 {
 	QString new_dir_path = path + "/" + name;
 
@@ -552,7 +552,7 @@ bool XmlElementCollection::createDir(QString path, QString name, const NamesList
  * @return true if successfuly removed and emit directoryRemoved(QString),
  * else false.
  */
-bool XmlElementCollection::removeDir(QString path)
+bool XmlElementCollection::removeDir(const QString& path)
 {
 	QDomElement dir = directory(path);
 	if (!dir.isNull()) {
@@ -670,7 +670,7 @@ void XmlElementCollection::cleanUnusedDirectory()
  * @param deep_copy :if true copy all childs of source
  * @return the ElementLocation that represent the copy, if copy failed return a null ElementLocation
  */
-ElementsLocation XmlElementCollection::copyDirectory(ElementsLocation &source, ElementsLocation &destination, QString rename, bool deep_copy)
+ElementsLocation XmlElementCollection::copyDirectory(ElementsLocation &source, ElementsLocation &destination, const QString& rename, bool deep_copy)
 {
 	QString new_dir_name = rename.isEmpty() ? source.fileName() : rename;
 
@@ -757,7 +757,7 @@ ElementsLocation XmlElementCollection::copyDirectory(ElementsLocation &source, E
  * @param rename : rename the copy with @rename else use the name of source
  * @return The ElementsLocation of the copy
  */
-ElementsLocation XmlElementCollection::copyElement(ElementsLocation &source, ElementsLocation &destination, QString rename)
+ElementsLocation XmlElementCollection::copyElement(ElementsLocation &source, ElementsLocation &destination, const QString& rename)
 {
 	QString new_elmt_name = rename.isEmpty() ? source.fileName() : rename;
 

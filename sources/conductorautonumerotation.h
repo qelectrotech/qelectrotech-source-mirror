@@ -32,7 +32,7 @@ class ConductorAutoNumerotation
 
 			//methods
 		void        numerate       ();
-		void        applyText      (QString);
+		void        applyText      (const QString&);
 
 	private:
 			//methods

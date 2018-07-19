@@ -20,6 +20,7 @@
 #include "conductor.h"
 #include "diagramcommands.h"
 #include <QtDebug>
+#include <utility>
 #include "elementprovider.h"
 #include "diagramposition.h"
 #include "terminal.h"
@@ -35,7 +36,7 @@ class ElementXmlRetroCompatibility
 {
 	friend class Element;
 
-	static void loadSequential(const QDomElement &dom_element, QString seq, QStringList* list)
+	static void loadSequential(const QDomElement &dom_element, const QString& seq, QStringList* list)
 	{
 		int i = 0;
 		while (!dom_element.attribute(seq + QString::number(i+1)).isEmpty())
@@ -451,7 +452,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 		//************************//
 		//***Dynamic texts item***//
 		//************************//
-    for (QDomElement qde : QET::findInDomElement(e, "dynamic_texts", DynamicElementTextItem::xmlTaggName()))
+    for (const QDomElement& qde : QET::findInDomElement(e, "dynamic_texts", DynamicElementTextItem::xmlTaggName()))
     {
         DynamicElementTextItem *deti = new DynamicElementTextItem(this);
         addDynamicTextItem(deti);
@@ -471,7 +472,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	
 	for (DynamicElementTextItem *deti : conv_deti_list)
 	{
-		for(QDomElement dom_input : dom_inputs)
+		for(const QDomElement& dom_input : dom_inputs)
 		{
 				//we use the same method used in ElementTextItem::fromXml to compar and know if the input dom element is for one of the text stored.
 				//The comparaison is made from the text position : if the position of the text is the same as the position stored in 'input' dom element
@@ -1235,7 +1236,7 @@ QString Element::getPrefix() const{
  * set Element Prefix
  */
 void Element::setPrefix(QString prefix) {
-	m_prefix = prefix;
+	m_prefix = std::move(prefix);
 }
 
 /**

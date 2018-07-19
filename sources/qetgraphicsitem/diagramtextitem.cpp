@@ -163,7 +163,7 @@ int DiagramTextItem::fontSize() const
     return font().pointSize();
 }
 
-void DiagramTextItem::setColor(QColor color)
+void DiagramTextItem::setColor(const QColor& color)
 {
     setDefaultTextColor(color);
 	emit colorChanged(color);

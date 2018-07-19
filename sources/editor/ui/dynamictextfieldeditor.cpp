@@ -45,7 +45,7 @@ DynamicTextFieldEditor::~DynamicTextFieldEditor()
 {
 	delete ui;
 	if(!m_connection_list.isEmpty())
-		for(QMetaObject::Connection con : m_connection_list)
+		for(const QMetaObject::Connection& con : m_connection_list)
 			disconnect(con);
 }
 
@@ -59,7 +59,7 @@ bool DynamicTextFieldEditor::setPart(CustomElementPart *part)
 {
 		//Remove previous connection
 	if(!m_connection_list.isEmpty())
-		for(QMetaObject::Connection con : m_connection_list)
+		for(const QMetaObject::Connection& con : m_connection_list)
 			disconnect(con);
 	
 	QGraphicsItem *qgi = part->toItem();
@@ -129,7 +129,7 @@ void DynamicTextFieldEditor::updateForm()
 	}
 }
 
-void DynamicTextFieldEditor::setColorPushButton(QColor color)
+void DynamicTextFieldEditor::setColorPushButton(const QColor& color)
 {
 	QPalette palette;
 	palette.setColor(QPalette::Button, color);
@@ -155,10 +155,10 @@ void DynamicTextFieldEditor::fillInfoComboBox()
 		//We use a QMap because the keys of the map are sorted, then no matter the curent local,
 		//the value of the combo box are always alphabetically sorted
 	QMap <QString, QString> info_map;
-	for(QString str : strl)
+	for(const QString& str : strl)
 		info_map.insert(QETApp::elementTranslatedInfoKey(str), str);
 
-	for (QString key : info_map.keys())
+	for (const QString& key : info_map.keys())
 		ui->m_elmt_info_cb->addItem(key, info_map.value(key));
 }
 

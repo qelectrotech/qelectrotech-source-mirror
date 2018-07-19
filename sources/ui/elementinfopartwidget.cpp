@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementinfopartwidget.h"
+
+#include <utility>
 #include "ui_elementinfopartwidget.h"
 
 
@@ -26,10 +28,10 @@
  * @param translated_key the string key translated
  * @param parent parent widget
  */
-ElementInfoPartWidget::ElementInfoPartWidget(QString key, QString translated_key, QWidget *parent):
+ElementInfoPartWidget::ElementInfoPartWidget(QString key, const QString& translated_key, QWidget *parent):
 	QWidget(parent),
 	ui(new Ui::ElementInfoPartWidget),
-	key_(key)
+	key_(std::move(key))
 {
 	ui->setupUi(this);
 	ui->label_->setText(translated_key);

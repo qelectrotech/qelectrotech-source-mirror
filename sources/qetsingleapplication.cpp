@@ -26,7 +26,7 @@ const int QETSingleApplication::timeout_ = 10000;
 	@param argv Tableau des arguments passes au programme par le systeme
 	@param unique_key Cle unique
 */
-QETSingleApplication::QETSingleApplication(int &argc, char **argv, const QString unique_key) :
+QETSingleApplication::QETSingleApplication(int &argc, char **argv, const QString& unique_key) :
 	QApplication(argc, argv),
 	unique_key_(unique_key)
 {

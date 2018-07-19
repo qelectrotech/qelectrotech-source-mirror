@@ -96,7 +96,7 @@ void CrossRefItem::init()
  */
 void CrossRefItem::setUpConnection()
 {
-	for(QMetaObject::Connection c : m_update_connection)
+	for(const QMetaObject::Connection& c : m_update_connection)
 		disconnect(c);
 	
 	m_update_connection.clear();
@@ -369,7 +369,7 @@ void CrossRefItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
 
 void CrossRefItem::linkedChanged()
 {
-	for(QMetaObject::Connection c : m_slave_connection)
+	for(const QMetaObject::Connection& c : m_slave_connection)
 		disconnect(c);
 	
 	m_slave_connection.clear();
@@ -781,7 +781,7 @@ void CrossRefItem::fillCrossRef(QPainter &painter)
  * @param painter painter to use for draw the text
  * @param type type of Info do be draw e.g. comment, location.
  */
-void CrossRefItem::AddExtraInfo(QPainter &painter, QString type)
+void CrossRefItem::AddExtraInfo(QPainter &painter, const QString& type)
 {
 	QString text = autonum::AssignVariables::formulaToLabel(m_element -> elementInformations()[type].toString(), m_element->rSequenceStruct(), m_element->diagram(), m_element);
 	bool must_show  = m_element -> elementInformations().keyMustShow(type);

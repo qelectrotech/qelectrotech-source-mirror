@@ -21,6 +21,7 @@
 #include "elementtextitemgroup.h"
 
 #include <QGraphicsScene>
+#include <utility>
 
 
 /************************
@@ -70,7 +71,7 @@ void AddElementTextCommand::redo()
 AddTextsGroupCommand::AddTextsGroupCommand(Element *element, QString groupe_name, QUndoCommand *parent) :
 	QUndoCommand(parent),
 	m_element(element),
-	m_name(groupe_name)
+	m_name(std::move(groupe_name))
 {
 	setText(QObject::tr("Ajouter un groupe de textes d'élément"));
 }
@@ -81,7 +82,7 @@ AddTextsGroupCommand::AddTextsGroupCommand(Element *element, QString groupe_name
  * @param dom_element : the first time the group is created, we call the function fromXml of the group, and give @dom_element has argument.
  * @param parent : parent undo
  */
-AddTextsGroupCommand::AddTextsGroupCommand(Element *element, QDomElement dom_element, QUndoCommand *parent) :
+AddTextsGroupCommand::AddTextsGroupCommand(Element *element, const QDomElement& dom_element, QUndoCommand *parent) :
 	QUndoCommand(parent),
 	m_element(element),
 	m_dom_element(dom_element)
@@ -98,7 +99,7 @@ AddTextsGroupCommand::AddTextsGroupCommand(Element *element, QDomElement dom_ele
 AddTextsGroupCommand::AddTextsGroupCommand(Element *element, QString groupe_name, QList<DynamicElementTextItem *> texts_list, QUndoCommand *parent) :
 	QUndoCommand(parent),
 	m_element(element),
-	m_name(groupe_name)
+	m_name(std::move(groupe_name))
 {
 	for(DynamicElementTextItem *deti : texts_list)
 	{
@@ -188,7 +189,7 @@ void RemoveTextsGroupCommand::undo()
 	{
 		m_element.data()->addTextGroup(m_group.data());
 		
-		for(QPointer<DynamicElementTextItem> p : m_text_list)
+		for(const QPointer<DynamicElementTextItem>& p : m_text_list)
 			if(p)
 				m_element.data()->addTextToGroup(p.data(), m_group.data());
 	}
@@ -198,7 +199,7 @@ void RemoveTextsGroupCommand::redo()
 {
 	if(m_element && m_group)
 	{
-		for(QPointer<DynamicElementTextItem> p : m_text_list)
+		for(const QPointer<DynamicElementTextItem>& p : m_text_list)
 			if(p)
 				m_element.data()->removeTextFromGroup(p.data(), m_group.data());
 		

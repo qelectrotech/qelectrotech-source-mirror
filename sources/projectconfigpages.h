@@ -136,13 +136,13 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 	private:
 		void buildConnections();
 	private slots:
-		void updateContextConductor(QString);//conductor
+		void updateContextConductor(const QString&);//conductor
 		void saveContextConductor();
 		void removeContextConductor();
-		void updateContextFolio(QString);//folio
+		void updateContextFolio(const QString&);//folio
 		void saveContextFolio();
 		void removeContextFolio();
-		void updateContextElement(QString);//element
+		void updateContextElement(const QString&);//element
 		void saveContextElement();
 		void removeContextElement();
 

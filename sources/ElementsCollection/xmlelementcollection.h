@@ -50,11 +50,11 @@ class XmlElementCollection : public QObject
 		QDomElement directory(const QString &path) const;
 		QString addElement (ElementsLocation &location);
 		bool addElementDefinition (const QString &dir_path, const QString &elmt_name, const QDomElement &xml_definition);
-		bool removeElement(QString path);
-		ElementsLocation copy (ElementsLocation &source, ElementsLocation &destination, QString rename = QString(), bool deep_copy = true);
+		bool removeElement(const QString& path);
+		ElementsLocation copy (ElementsLocation &source, ElementsLocation &destination, const QString& rename = QString(), bool deep_copy = true);
 		bool exist (const QString &path) const;
-		bool createDir (QString path, QString name, const NamesList &name_list);
-		bool removeDir (QString path);
+		bool createDir (const QString& path, const QString& name, const NamesList &name_list);
+		bool removeDir (const QString& path);
 
 		QList <ElementsLocation> elementsLocation (QDomElement dom_element = QDomElement(), bool childs = true) const;
 		ElementsLocation domToLocation(QDomElement dom_element) const;
@@ -63,8 +63,8 @@ class XmlElementCollection : public QObject
 		void cleanUnusedDirectory();
 
 	private:
-		ElementsLocation copyDirectory(ElementsLocation &source, ElementsLocation &destination, QString rename = QString(), bool deep_copy = true);
-		ElementsLocation copyElement(ElementsLocation &source, ElementsLocation &destination, QString rename = QString());
+		ElementsLocation copyDirectory(ElementsLocation &source, ElementsLocation &destination, const QString& rename = QString(), bool deep_copy = true);
+		ElementsLocation copyElement(ElementsLocation &source, ElementsLocation &destination, const QString& rename = QString());
 
 	signals:
 			/**

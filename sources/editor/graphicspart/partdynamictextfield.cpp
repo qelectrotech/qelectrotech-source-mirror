@@ -333,7 +333,7 @@ QString PartDynamicTextField::compositeText() const{
  * @brief PartDynamicTextField::setColor
  * @param color set text color to color
  */
-void PartDynamicTextField::setColor(QColor color)
+void PartDynamicTextField::setColor(const QColor& color)
 {
 	setDefaultTextColor(color);
 	emit colorChanged(color);

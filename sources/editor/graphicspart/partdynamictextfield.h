@@ -86,7 +86,7 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 		QString infoName() const;
 		void setCompositeText(const QString &text);
 		QString compositeText() const;
-		void setColor(QColor color);
+		void setColor(const QColor& color);
         QColor color() const;
 		void setFontSize(int s);
         int fontSize()const;

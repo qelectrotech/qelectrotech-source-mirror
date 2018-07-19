@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "numerotationcontext.h"
+
+#include <utility>
 #include "qet.h"
 
 /**
@@ -130,7 +132,7 @@ bool NumerotationContext::keyIsNumber(const QString &type) const {
  * @brief NumerotationContext::toXml
  * Save the numerotation context in a QDomElement under the element name @str
  */
-QDomElement NumerotationContext::toXml(QDomDocument &d, QString str) {
+QDomElement NumerotationContext::toXml(QDomDocument &d, const QString& str) {
 	QDomElement num_auto = d.createElement(str);
 	for (int i=0; i<content_.size(); ++i) {
 		QStringList strl = itemAt(i);
@@ -166,7 +168,7 @@ void NumerotationContext::fromXml(QDomElement &e) {
 void NumerotationContext::replaceValue(int index, QString content) {
 	QString sep = "|";
 	QString type = content_[index].split("|").at(0);
-	QString value = content;
+	const QString& value = std::move(content);
 	QString increase = content_[index].split("|").at(2);
 	QString initvalue = content_[index].split("|").at(3);
 	content_[index].replace(content_[index], type + "|" + value + "|" + increase + "|" + initvalue);

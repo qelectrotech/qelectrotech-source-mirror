@@ -104,7 +104,7 @@ class QETTitleBlockTemplateEditor : public QETMainWindow {
 	public slots:
 	void readSettings();
 	void writeSettings();
-	void selectedCellsChanged(QList<TitleBlockCell *>);
+	void selectedCellsChanged(const QList<TitleBlockCell *>&);
 	void duplicateCurrentLocation();
 	bool edit(const TitleBlockTemplateLocation &);
 	bool edit(QETProject *, const QString &);

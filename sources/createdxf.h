@@ -28,11 +28,11 @@ class Createdxf
     public:
     Createdxf();
     ~Createdxf();
-	static void dxfBegin (QString);
-	static void dxfEnd(QString);
+	static void dxfBegin (const QString&);
+	static void dxfEnd(const QString&);
     // you can add more functions to create more drawings.
-	static void drawCircle(QString,double,double,double,int);
-	static void drawArc(QString,double x,double y,double rad,double startAngle,double endAngle,int color);
+	static void drawCircle(const QString&,double,double,double,int);
+	static void drawArc(const QString&,double x,double y,double rad,double startAngle,double endAngle,int color);
 	static void drawDonut(QString,double,double,double,int);
 
 	static void drawArcEllipse (const QString &file_path, qreal x, qreal y, qreal w, qreal h, qreal startAngle, qreal spanAngle, qreal hotspot_x, qreal hotspot_y, qreal rotation_angle, const int &colorcode);
@@ -45,8 +45,8 @@ class Createdxf
 	static void drawLine(const QString &filapath,double,double,double,double, const int &clorcode);
 	static void drawLine(const QString &filepath, const QLineF &line,const int &colorcode);
 
-	static void drawText(QString,QString,double,double,double,double,int);
-	static void drawTextAligned(QString fileName, QString text,double x, double y, double height, double rotation, double oblique,int hAlign, int vAlign, double xAlign, int colour, bool leftAlign = false, float scale = 0);
+	static void drawText(const QString&,const QString&,double,double,double,double,int);
+	static void drawTextAligned(const QString& fileName, const QString& text,double x, double y, double height, double rotation, double oblique,int hAlign, int vAlign, double xAlign, int colour, bool leftAlign = false, float scale = 0);
 
 
     static int getcolorCode (const long red, const long green, const long blue);

@@ -1226,7 +1226,7 @@ void DynamicElementTextModel::setConnection(DynamicElementTextItem *deti, bool s
 		if(!m_hash_text_connect.keys().contains(deti))
 			return;
 		
-		for (QMetaObject::Connection con : m_hash_text_connect.value(deti))
+		for (const QMetaObject::Connection& con : m_hash_text_connect.value(deti))
 			disconnect(con);
 		
 		m_hash_text_connect.remove(deti);
@@ -1264,7 +1264,7 @@ void DynamicElementTextModel::setConnection(ElementTextItemGroup *group, bool se
 		if(!m_hash_group_connect.keys().contains(group))
 			return;
 		
-		for (QMetaObject::Connection con : m_hash_group_connect.value(group))
+		for (const QMetaObject::Connection& con : m_hash_group_connect.value(group))
 			disconnect(con);
 		
 		m_hash_group_connect.remove(group);
@@ -1443,13 +1443,13 @@ QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOpti
 				//We use a QMap because the keys of the map are sorted, then no matter the curent local,
 				//the value of the combo box are always alphabetically sorted
 			QMap <QString, QString> info_map;
-			for(QString str : availableInfo(deti)) {
+			for(const QString& str : availableInfo(deti)) {
 				info_map.insert(QETApp::elementTranslatedInfoKey(str), str);
 			}
 			
 			QComboBox *qcb = new QComboBox(parent);
 			qcb->setObjectName("info_text");
-			for (QString key : info_map.keys()) {
+			for (const QString& key : info_map.keys()) {
 				qcb->addItem(key, info_map.value(key));
 			}
 			return qcb;
@@ -1733,7 +1733,7 @@ QStringList DynamicTextItemDelegate::availableInfo(DynamicElementTextItem *deti)
 		info_list.removeAll("formula"); //No need to have formula
 		DiagramContext dc = elmt->elementInformations();
 		
-		for(QString info : info_list)
+		for(const QString& info : info_list)
 		{
 			if(dc.contains(info))
 				qstrl << info;

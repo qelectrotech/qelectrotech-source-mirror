@@ -129,7 +129,7 @@ bool LinkElementCommand::isLinkable(Element *element_a, Element *element_b, bool
  * This method do several check to know if element can be linked or not.
  * @param element_list
  */
-void LinkElementCommand::setLink(QList<Element *> element_list)
+void LinkElementCommand::setLink(const QList<Element *>& element_list)
 {
 	m_linked_after.clear();
 	setUpNewLink(element_list, true);

@@ -352,7 +352,7 @@ void DiagramPrintDialog::browseFilePrintTypeDialog() {
 	ou non
 	@param options Options de rendu
 */
-void DiagramPrintDialog::print(const QList<Diagram *> &diagrams, bool fit_page, const ExportProperties options) {
+void DiagramPrintDialog::print(const QList<Diagram *> &diagrams, bool fit_page, const ExportProperties& options) {
 	//qDebug() << "Demande d'impression de " << diagrams.count() << "schemas.";
 #if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
     #ifdef Q_OS_WIN
@@ -516,7 +516,7 @@ void DiagramPrintDialog::printDiagram(Diagram *diagram, bool fit_page, const Exp
 	@param save true pour memoriser les parametres du schema et appliquer ceux
 	definis dans options, false pour restaurer les parametres
 */
-void DiagramPrintDialog::saveReloadDiagramParameters(Diagram *diagram, const ExportProperties options, bool save) {
+void DiagramPrintDialog::saveReloadDiagramParameters(Diagram *diagram, const ExportProperties& options, bool save) {
 	static ExportProperties state_exportProperties;
 	
 	if (save) {

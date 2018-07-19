@@ -28,6 +28,7 @@
 
 #include <QPainter>
 #include <QGraphicsSceneMouseEvent>
+#include <utility>
 
 bool sorting(QGraphicsItem *qgia, QGraphicsItem *qgib)
 {
@@ -253,7 +254,7 @@ void ElementTextItemGroup::setVerticalAdjustment(int v)
  */
 void ElementTextItemGroup::setName(QString name)
 {
-	m_name = name;
+	m_name = std::move(name);
 	emit nameChanged(m_name);
 }
 
@@ -412,7 +413,7 @@ void ElementTextItemGroup::fromXml(QDomElement &dom_element)
 	if(parentElement())
 	{
 		m_block_alignment_update = true;
-		for(QDomElement text : QET::findInDomElement(dom_element, "texts", "text"))
+		for(const QDomElement& text : QET::findInDomElement(dom_element, "texts", "text"))
 		{
 			DynamicElementTextItem *deti = nullptr;
 			QUuid uuid(text.attribute("uuid"));

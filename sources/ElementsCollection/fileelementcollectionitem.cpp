@@ -37,7 +37,7 @@ FileElementCollectionItem::FileElementCollectionItem()
  * @param path
  * @return true if path exist.
  */
-bool FileElementCollectionItem::setRootPath(QString path, bool set_data, bool hide_element)
+bool FileElementCollectionItem::setRootPath(const QString& path, bool set_data, bool hide_element)
 {
 	QDir dir(path);
 	if (dir.exists()) {
@@ -278,7 +278,7 @@ void FileElementCollectionItem::setUpIcon()
  * For create a new file collection see setRootPath.
  * @param path_name
  */
-void FileElementCollectionItem::setPathName(QString path_name, bool set_data, bool hide_element)
+void FileElementCollectionItem::setPathName(const QString& path_name, bool set_data, bool hide_element)
 {
 	m_path = path_name;
 

@@ -34,6 +34,7 @@
 
 #include <QTimer>
 #include <QStandardPaths>
+#include <utility>
 
 static int BACKUP_INTERVAL = 300000; //interval in ms of backup
 
@@ -445,7 +446,7 @@ void QETProject::setDefaultReportProperties(const QString &properties)
 	emit reportPropertiesChanged(old, properties);
 }
 
-void QETProject::setDefaultXRefProperties(const QString type, const XRefProperties &properties) {
+void QETProject::setDefaultXRefProperties(const QString& type, const XRefProperties &properties) {
 	m_default_xref_properties.insert(type, properties);
 	emit XRefPropertiesChanged();
 }
@@ -477,7 +478,7 @@ QHash <QString, NumerotationContext> QETProject::elementAutoNum() const {
  * @param element autonum title
  * @return Formula of element autonum stored in element autonum
  */
-QString QETProject::elementAutoNumFormula (QString key) const
+QString QETProject::elementAutoNumFormula (const QString& key) const
 {
 	if (m_element_autonum.contains(key)) {
 		return autonum::numerotationContextToFormula(m_element_autonum[key]);
@@ -507,7 +508,7 @@ QString QETProject::elementCurrentAutoNum () const {
  * @param autoNum : set the current element autonum to @autonum
  */
 void QETProject::setCurrrentElementAutonum(QString autoNum) {
-	m_current_element_autonum = autoNum;
+	m_current_element_autonum = std::move(autoNum);
 }
 
 /**
@@ -515,7 +516,7 @@ void QETProject::setCurrrentElementAutonum(QString autoNum) {
  * @param conductor autonum title
  * @return Formula of element autonum stored in conductor autonum
  */
-QString QETProject::conductorAutoNumFormula (QString key) const
+QString QETProject::conductorAutoNumFormula (const QString& key) const
 {
 	if (m_conductor_autonum.contains(key))
 		return autonum::numerotationContextToFormula(m_conductor_autonum.value(key));
@@ -536,7 +537,7 @@ QString QETProject::conductorCurrentAutoNum () const {
  * @param autoNum set the current conductor autonum to @autonum
  */
 void QETProject::setCurrentConductorAutoNum(QString autoNum) {
-	m_current_conductor_autonum = autoNum;
+	m_current_conductor_autonum = std::move(autoNum);
 }
 
 /**
@@ -554,7 +555,7 @@ QHash <QString, NumerotationContext> QETProject::folioAutoNum() const {
  * @param key
  * @param context
  */
-void QETProject::addConductorAutoNum(QString key, NumerotationContext context) {
+void QETProject::addConductorAutoNum(const QString& key, const NumerotationContext& context) {
 	m_conductor_autonum.insert(key, context);
 }
 
@@ -565,7 +566,7 @@ void QETProject::addConductorAutoNum(QString key, NumerotationContext context) {
  * @param key
  * @param context
  */
-void QETProject::addElementAutoNum(QString key, NumerotationContext context)
+void QETProject::addElementAutoNum(const QString& key, const NumerotationContext& context)
 {
 	m_element_autonum.insert(key, context);
 	emit elementAutoNumAdded(key);
@@ -578,7 +579,7 @@ void QETProject::addElementAutoNum(QString key, NumerotationContext context)
  * @param key
  * @param context
  */
-void QETProject::addFolioAutoNum(QString key, NumerotationContext context) {
+void QETProject::addFolioAutoNum(const QString& key, const NumerotationContext& context) {
 	m_folio_autonum.insert(key, context);
 }
 
@@ -587,7 +588,7 @@ void QETProject::addFolioAutoNum(QString key, NumerotationContext context) {
  * Remove Conductor Numerotation Context stored with key
  * @param key
  */
-void QETProject::removeConductorAutoNum(QString key) {
+void QETProject::removeConductorAutoNum(const QString& key) {
 	m_conductor_autonum.remove(key);
 }
 
@@ -596,7 +597,7 @@ void QETProject::removeConductorAutoNum(QString key) {
  * Remove Element Numerotation Context stored with key
  * @param key
  */
-void QETProject::removeElementAutoNum(QString key)
+void QETProject::removeElementAutoNum(const QString& key)
 {
 	m_element_autonum.remove(key);
 	emit elementAutoNumRemoved(key);
@@ -607,7 +608,7 @@ void QETProject::removeElementAutoNum(QString key)
  * Remove Folio Numerotation Context stored with key
  * @param key
  */
-void QETProject::removeFolioAutoNum(QString key) {
+void QETProject::removeFolioAutoNum(const QString& key) {
 	m_folio_autonum.remove(key);
 }
 
@@ -760,7 +761,7 @@ void QETProject::autoFolioNumberingNewFolios(){
  * @param autonum used, index from selected tabs "from" and "to"
  * rename folios with selected autonum
  */
-void QETProject::autoFolioNumberingSelectedFolios(int from, int to, QString autonum){
+void QETProject::autoFolioNumberingSelectedFolios(int from, int to, const QString& autonum){
 	int total_folio = m_diagrams_list.count();
 	DiagramContext project_wide_properties = project_properties_;
 	for (int i=from; i<=to; i++) {

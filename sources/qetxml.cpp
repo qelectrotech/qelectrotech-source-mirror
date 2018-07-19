@@ -27,7 +27,7 @@
  * @param pen : the pen to store
  * @return : A QDomElement with the attribute stored. The tagName of QDomeElement is "pen".
  */
-QDomElement QETXML::penToXml(QDomDocument &parent_document,QPen pen)
+QDomElement QETXML::penToXml(QDomDocument &parent_document,const QPen& pen)
 {
 	QDomElement element = parent_document.createElement("pen");
 
@@ -88,7 +88,7 @@ QPen QETXML::penFromXml(const QDomElement &element)
  * @param brush : the brush to store
  * @return A QDomElement with the attribute stored. The tagName of QDomeElement is "brush".
  */
-QDomElement QETXML::brushToXml(QDomDocument &parent_document, QBrush brush)
+QDomElement QETXML::brushToXml(QDomDocument &parent_document, const QBrush& brush)
 {
 	QDomElement element = parent_document.createElement("brush");
 
@@ -162,7 +162,7 @@ QBrush QETXML::brushFromXml(const QDomElement &element)
  * @return A file system directory converted to a QDomElement directory ready to be inserted into a XmlElementCollection.
  * If the QDomElement can't be created, return a null QDomElement.
  */
-QDomElement QETXML::fileSystemDirToXmlCollectionDir(QDomDocument &document, const QDir &dir, QString rename)
+QDomElement QETXML::fileSystemDirToXmlCollectionDir(QDomDocument &document, const QDir &dir, const QString& rename)
 {
 	if (!dir.exists()) return QDomElement();
 
@@ -200,7 +200,7 @@ QDomElement QETXML::fileSystemDirToXmlCollectionDir(QDomDocument &document, cons
  * @return A file system element converted to a QDomElement ready to be inserted into a XmlElementCollection
  * If the QDomElement can't be created, return a null QDomElement
  */
-QDomElement QETXML::fileSystemElementToXmlCollectionElement(QDomDocument &document, QFile &file, QString rename)
+QDomElement QETXML::fileSystemElementToXmlCollectionElement(QDomDocument &document, QFile &file, const QString& rename)
 {
 	if (file.exists() && file.open(QIODevice::ReadOnly | QIODevice::Text))
 	{
@@ -266,7 +266,7 @@ bool QETXML::writeXmlFile(const QDomDocument &xml_document, const QString &file_
  * @param value
  * @return
  */
-QDomElement QETXML::textToDomElement(QDomDocument &document, QString tag_name, QString value)
+QDomElement QETXML::textToDomElement(QDomDocument &document, const QString& tag_name, const QString& value)
 {
 	QDomElement element = document.createElement(tag_name);
 	QDomText text = document.createTextNode(value);

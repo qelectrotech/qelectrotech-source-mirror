@@ -23,7 +23,7 @@
 #include "conductor.h"
 #include "dynamicelementtextitem.h"
 
-ReportElement::ReportElement(const ElementsLocation &location, QString link_type,QGraphicsItem *qgi, int *state) :
+ReportElement::ReportElement(const ElementsLocation &location, const QString& link_type,QGraphicsItem *qgi, int *state) :
 	CustomElement(location, qgi, state)
 {
 	link_type == "next_report"? m_link_type=NextReport : m_link_type=PreviousReport;

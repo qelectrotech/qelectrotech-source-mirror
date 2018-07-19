@@ -81,7 +81,7 @@ class ElementsCollectionWidget : public QWidget
 		void reload();
 
 	private:
-		void locationWasSaved(ElementsLocation location);
+		void locationWasSaved(const ElementsLocation& location);
 
 
 	private:

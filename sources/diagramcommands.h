@@ -138,7 +138,7 @@ class MoveElementsCommand : public QUndoCommand {
 		virtual void move(const QPointF &);
 
 	private:
-		void setupAnimation (QObject * target, const QByteArray &propertyName, const QVariant start, const QVariant end);
+		void setupAnimation (QObject * target, const QByteArray &propertyName, const QVariant& start, const QVariant& end);
 	
 	// attributes
 	private:

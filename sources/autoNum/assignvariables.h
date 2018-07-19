@@ -42,7 +42,7 @@ namespace autonum
 			bool operator== (const sequentialNumbers &other) const;
 			bool operator!= (const sequentialNumbers &other) const;
 
-			QDomElement toXml(QDomDocument &document, QString tag_name = QString("sequentialNumbers")) const;
+			QDomElement toXml(QDomDocument &document, const QString& tag_name = QString("sequentialNumbers")) const;
 			void fromXml(const QDomElement &element);
 			void clear();
 
@@ -66,7 +66,7 @@ namespace autonum
 			static QString replaceVariable (const QString &formula, const DiagramContext &dc);
 
 		private:
-			AssignVariables(QString formula, sequentialNumbers seqStruct , Diagram *diagram, const Element *elmt = nullptr);
+			AssignVariables(const QString& formula, const sequentialNumbers& seqStruct , Diagram *diagram, const Element *elmt = nullptr);
 			void assignTitleBlockVar();
 			void assignProjectVar();
 			void assignSequence();
@@ -78,9 +78,9 @@ namespace autonum
 			const Element *m_element = nullptr;
 	};
 
-	void setSequentialToList(QStringList &list, NumerotationContext &nc, QString type);
-	void setFolioSequentialToHash(QStringList &list, QHash<QString, QStringList> &hash, QString autoNumName);
-	void setSequential(QString label, autonum::sequentialNumbers &seqStruct, NumerotationContext &context, Diagram *diagram, QString hashKey);
+	void setSequentialToList(QStringList &list, NumerotationContext &nc, const QString& type);
+	void setFolioSequentialToHash(QStringList &list, QHash<QString, QStringList> &hash, const QString& autoNumName);
+	void setSequential(const QString& label, autonum::sequentialNumbers &seqStruct, NumerotationContext &context, Diagram *diagram, const QString& hashKey);
 	QString numerotationContextToFormula(const NumerotationContext &nc);
 	QString elementPrefixForLocation(const ElementsLocation &location);
 }

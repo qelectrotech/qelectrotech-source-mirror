@@ -30,7 +30,7 @@ class ReportElement : public CustomElement
 	Q_OBJECT
 
 	public :
-		explicit ReportElement(const ElementsLocation &,QString link_type, QGraphicsItem * = nullptr, int * = nullptr);
+		explicit ReportElement(const ElementsLocation &,const QString& link_type, QGraphicsItem * = nullptr, int * = nullptr);
 		~ReportElement() override;
 		void linkToElement(Element *) override;
 		void unlinkAllElements() override;

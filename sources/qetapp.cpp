@@ -149,7 +149,7 @@ QETApp::~QETApp()
 	{
 		QStringList extension_filter("*.qet");
 		QStringList list = dir.entryList(extension_filter);
-		for(QString str : list)
+		for(const QString& str : list)
 			dir.remove(str);
 	}
 }
@@ -1660,13 +1660,13 @@ void QETApp::checkBackupFiles()
 		else
 			text.append(tr("<b>Les fichiers de restauration suivant on été trouvé,<br>"
 						   "Voulez-vous les ouvrir ?</b><br>"));
-		for(QString name : list)
+		for(const QString& name : list)
 			text.append("<br>" + name);
 		
 		if (QET::QetMessageBox::question(nullptr, tr("Fichier de restauration"), text, QMessageBox::Ok|QMessageBox::Cancel) == QMessageBox::Ok)
 		{
 			QStringList files_list;
-			for(QString str : list)
+			for(const QString& str : list)
 				files_list << dir.path() + "/" + str;
 			
 			QList<QETDiagramEditor *> diagrams_editors = diagramEditors();
@@ -1691,7 +1691,7 @@ void QETApp::checkBackupFiles()
 					de_open -> setVisible(true);
 				}
 		
-				for(QString file : files_list) {
+				for(const QString& file : files_list) {
 					de_open -> openAndAddProject(file);
 				}
 			}

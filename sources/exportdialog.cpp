@@ -19,6 +19,7 @@
 #include <QSvgGenerator>
 #include <cmath>
 #include <QtXml>
+#include <utility>
 #include "qeticons.h"
 #include "qetmessagebox.h"
 #include "exportpropertieswidget.h"
@@ -649,7 +650,7 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
     saveReloadDiagramParameters(diagram, false);
 }
 
-void ExportDialog::fillRow(QString file_path, const QRectF &row_rect, QString author, QString title,
+void ExportDialog::fillRow(const QString& file_path, const QRectF &row_rect, QString author, const QString& title,
 							   QString folio, QString date)
 {
 	qreal x = row_rect.bottomLeft().x();
@@ -660,7 +661,7 @@ void ExportDialog::fillRow(QString file_path, const QRectF &row_rect, QString au
 	qreal height = row_rect.height() * Createdxf::yScale *0.7;
 	y += height*0.2;
 
-	Createdxf::drawTextAligned(file_path, folio,
+	Createdxf::drawTextAligned(file_path, std::move(folio),
 							   x + 0.02*DiagramFolioList::colWidths[0]*row_rect.width()*Createdxf::xScale, y, height, 0, 0, 5, 0,
 							   x + 0.95*DiagramFolioList::colWidths[0]*row_rect.width()*Createdxf::xScale, 0);
 
@@ -676,12 +677,12 @@ void ExportDialog::fillRow(QString file_path, const QRectF &row_rect, QString au
 								   x + 0.02*DiagramFolioList::colWidths[1]*row_rect.width()*Createdxf::xScale, 0, true);
 
 	x += DiagramFolioList::colWidths[1]*row_rect.width()*Createdxf::xScale;
-	Createdxf::drawTextAligned(file_path, author,
+	Createdxf::drawTextAligned(file_path, std::move(author),
 							   x + 0.02*DiagramFolioList::colWidths[2]*row_rect.width()*Createdxf::xScale, y, height, 0, 0, 5, 0,
 							   x + 3.02*DiagramFolioList::colWidths[2]*row_rect.width()*Createdxf::xScale, 0);
 
 	x += DiagramFolioList::colWidths[2]*row_rect.width()*Createdxf::xScale;
-	Createdxf::drawTextAligned(file_path, date,
+	Createdxf::drawTextAligned(file_path, std::move(date),
 							   x + 0.02*DiagramFolioList::colWidths[3]*row_rect.width()*Createdxf::xScale, y, height, 0, 0, 5, 0,
 							   x + 5.02*DiagramFolioList::colWidths[3]*row_rect.width()*Createdxf::xScale, 0);
 }
