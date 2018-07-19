@@ -417,7 +417,7 @@ static QAction *createCheckableAction(const QIcon &icon, const QString &text,
                                       QObject *receiver, const char *slot,
                                       QObject *parent = nullptr)
 {
-    QAction *result = new QAction(parent);
+    auto *result = new QAction(parent);
     result->setIcon(icon);
     result->setText(text);
     result->setCheckable(true);
@@ -471,7 +471,7 @@ RichTextEditorToolBar::RichTextEditorToolBar(RichTextEditor *editor,
 
     // Left, center, right and justified alignment buttons
 
-    QActionGroup *alignment_group = new QActionGroup(this);
+    auto *alignment_group = new QActionGroup(this);
     connect(alignment_group, SIGNAL(triggered(QAction*)),
                              SLOT(alignmentActionTriggered(QAction*)));
 
@@ -767,12 +767,12 @@ RichTextEditorDialog::RichTextEditorDialog(QWidget *parent)  :
     tool_bar->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
 
     QWidget *rich_edit = new QWidget;
-    QVBoxLayout *rich_edit_layout = new QVBoxLayout(rich_edit);
+    auto *rich_edit_layout = new QVBoxLayout(rich_edit);
     rich_edit_layout->addWidget(tool_bar);
     rich_edit_layout->addWidget(m_editor);
 
     QWidget *plain_edit = new QWidget;
-    QVBoxLayout *plain_edit_layout = new QVBoxLayout(plain_edit);
+    auto *plain_edit_layout = new QVBoxLayout(plain_edit);
     plain_edit_layout->addWidget(m_text_edit);
 
     m_tab_widget->setTabPosition(QTabWidget::South);
@@ -789,7 +789,7 @@ RichTextEditorDialog::RichTextEditorDialog(QWidget *parent)  :
     connect(buttonBox, SIGNAL(accepted()), this, SLOT(on_buttonBox_accepted()));
     connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
 
-    QVBoxLayout *layout = new QVBoxLayout(this);
+    auto *layout = new QVBoxLayout(this);
     layout->addWidget(m_tab_widget);
     layout->addWidget(buttonBox);
 

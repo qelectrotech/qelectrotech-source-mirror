@@ -102,7 +102,7 @@ QString XmlProjectElementCollectionItem::embeddedPath() const
 	if (isCollectionRoot())
 		return "embed://";
 	else if (parent()){
-		XmlProjectElementCollectionItem *xpeci = static_cast<XmlProjectElementCollectionItem *>(parent());
+		auto *xpeci = static_cast<XmlProjectElementCollectionItem *>(parent());
 
 		if (xpeci->isCollectionRoot())
 			return xpeci->embeddedPath() + name();
@@ -143,7 +143,7 @@ void XmlProjectElementCollectionItem::addChildAtPath(const QString &collection_n
 
 	while (!child_element.isNull()) {
 		if (child_element.attribute("name") == collection_name) {
-			XmlProjectElementCollectionItem *xpeci = new XmlProjectElementCollectionItem ();
+			auto *xpeci = new XmlProjectElementCollectionItem ();
 			insertRow(rowForInsertItem(collection_name), xpeci);
 			xpeci->setXmlElement(child_element, m_project);
 			xpeci->setUpData();
@@ -229,7 +229,7 @@ void XmlProjectElementCollectionItem::populate(bool set_data, bool hide_element)
 
 	foreach (QDomElement element, dom_category)
 	{
-		XmlProjectElementCollectionItem *xpeci = new XmlProjectElementCollectionItem();
+		auto *xpeci = new XmlProjectElementCollectionItem();
 		appendRow(xpeci);
 		xpeci->setXmlElement(element, m_project, set_data, hide_element);
 		if (set_data)
@@ -244,7 +244,7 @@ void XmlProjectElementCollectionItem::populate(bool set_data, bool hide_element)
 
 	foreach (QDomElement element, dom_elements)
 	{
-		XmlProjectElementCollectionItem *xpeci = new XmlProjectElementCollectionItem();
+		auto *xpeci = new XmlProjectElementCollectionItem();
 		appendRow(xpeci);
 		xpeci->setXmlElement(element, m_project, set_data);
 		if (set_data)

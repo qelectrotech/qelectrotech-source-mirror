@@ -205,7 +205,7 @@ void ConductorTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 			
 			if (!applied_movement.isNull()) {
 				//Create an undo object
-				MoveConductorsTextsCommand *undo_object = new MoveConductorsTextsCommand(diagram_ptr);
+				auto *undo_object = new MoveConductorsTextsCommand(diagram_ptr);
 				undo_object -> addTextMovement(this, before_mov_pos_, pos(), moved_by_user_);
 
 				moved_by_user_ = true;

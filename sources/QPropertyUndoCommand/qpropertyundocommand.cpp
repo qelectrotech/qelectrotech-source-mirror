@@ -100,7 +100,7 @@ void QPropertyUndoCommand::setAnimated(bool animate, bool first_time)
 bool QPropertyUndoCommand::mergeWith(const QUndoCommand *other)
 {
 	if (id() != other->id() || other->childCount()) return false;
-	QPropertyUndoCommand const *undo = static_cast<const QPropertyUndoCommand *>(other);
+	auto const *undo = static_cast<const QPropertyUndoCommand *>(other);
 	if (m_object != undo->m_object || m_property_name != undo->m_property_name) return false;
 	m_new_value = undo->m_new_value;
 	return true;

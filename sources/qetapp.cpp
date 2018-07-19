@@ -440,7 +440,7 @@ TitleBlockTemplatesCollection *QETApp::titleBlockTemplatesCollection(const QStri
 	@return le nom de l'utilisateur courant
 */
 QString QETApp::userName() {
-	QProcess * process = new QProcess();
+	auto * process = new QProcess();
 	QString str;
 #ifndef Q_OS_WIN32
 	// return(QString(getenv("USER")));
@@ -907,7 +907,7 @@ QList<QETTitleBlockTemplateEditor *> QETApp::titleBlockTemplateEditors(QETProjec
 	@see QTextOrientationSpinBoxWidget
 */
 QTextOrientationSpinBoxWidget *QETApp::createTextOrientationSpinBoxWidget() {
-	QTextOrientationSpinBoxWidget *widget = new QTextOrientationSpinBoxWidget();
+	auto *widget = new QTextOrientationSpinBoxWidget();
 	widget -> orientationWidget() -> setFont(QETApp::diagramTextsFont());
 	widget -> orientationWidget() -> setUsableTexts(QList<QString>()
 		<< QETApp::tr("Q",            "Single-letter example text - translate length, not meaning")
@@ -924,7 +924,7 @@ QTextOrientationSpinBoxWidget *QETApp::createTextOrientationSpinBoxWidget() {
 */
 TitleBlockTemplate *QETApp::defaultTitleBlockTemplate() {
 	if (!QETApp::default_titleblock_template_) {
-		TitleBlockTemplate *titleblock_template = new TitleBlockTemplate(QETApp::instance());
+		auto *titleblock_template = new TitleBlockTemplate(QETApp::instance());
 		if (titleblock_template -> loadFromXmlFile(":/titleblocks/default.titleblock")) {
 			QETApp::default_titleblock_template_ = titleblock_template;
 		}
@@ -1034,7 +1034,7 @@ void QETApp::setMainWindowVisible(QMainWindow *window, bool visible) {
 	@param window fenetre a afficher / cacher
 */
 void QETApp::invertMainWindowVisibility(QWidget *window) {
-	if (QMainWindow *w = qobject_cast<QMainWindow *>(window)) setMainWindowVisible(w, !w -> isVisible());
+	if (auto *w = qobject_cast<QMainWindow *>(window)) setMainWindowVisible(w, !w -> isVisible());
 }
 
 /**
@@ -1206,7 +1206,7 @@ void QETApp::openElementFiles(const QStringList &files_list) {
 		}
 		if (!already_opened_in_existing_element_editor) {
 			// ce fichier n'est ouvert dans aucun editeur
-			QETElementEditor *element_editor = new QETElementEditor();
+			auto *element_editor = new QETElementEditor();
 			element_editor -> fromFile(element_file);
 		}
 	}
@@ -1238,7 +1238,7 @@ void QETApp::openElementLocations(const QList<ElementsLocation> &locations_list)
 		}
 		if (!already_opened_in_existing_element_editor) {
 			// cet emplacement n'est ouvert dans aucun editeur
-			QETElementEditor *element_editor = new QETElementEditor();
+			auto *element_editor = new QETElementEditor();
 			element_editor -> fromLocation(element_location);
 		}
 	}
@@ -1253,7 +1253,7 @@ void QETApp::openElementLocations(const QList<ElementsLocation> &locations_list)
 	@see QETTitleBlockTemplateEditor::setOpenForDuplication()
 */
 void QETApp::openTitleBlockTemplate(const TitleBlockTemplateLocation &location, bool duplicate) {
-	QETTitleBlockTemplateEditor *qet_template_editor = new QETTitleBlockTemplateEditor();
+	auto *qet_template_editor = new QETTitleBlockTemplateEditor();
 	qet_template_editor -> setOpenForDuplication(duplicate);
 	qet_template_editor -> edit(location);
 	qet_template_editor -> show();
@@ -1264,7 +1264,7 @@ void QETApp::openTitleBlockTemplate(const TitleBlockTemplateLocation &location, 
 	@param filepath Path of the .titleblock file to be opened
 */
 void QETApp::openTitleBlockTemplate(const QString &filepath) {
-	QETTitleBlockTemplateEditor *qet_template_editor = new QETTitleBlockTemplateEditor();
+	auto *qet_template_editor = new QETTitleBlockTemplateEditor();
 	qet_template_editor -> edit(filepath);
 	qet_template_editor -> show();
 }

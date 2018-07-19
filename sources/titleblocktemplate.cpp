@@ -167,7 +167,7 @@ void TitleBlockTemplate::exportCellToXml(TitleBlockCell *cell, QDomElement &xml_
 	cells are duplicated too and associated with their parent template).
 */
 TitleBlockTemplate *TitleBlockTemplate::clone() const {
-	TitleBlockTemplate *copy = new TitleBlockTemplate();
+	auto *copy = new TitleBlockTemplate();
 	copy -> name_ = name_;
 	copy -> information_ = information_;
 	
@@ -1030,7 +1030,7 @@ bool TitleBlockTemplate::addLogo(const QString &logo_name, QByteArray *logo_data
 	// we can now create our image object from the byte array
 	if (logo_type == "svg") {
 		// SVG format is handled by the QSvgRenderer class
-		QSvgRenderer *svg = new QSvgRenderer();
+		auto *svg = new QSvgRenderer();
 		if (!svg -> load(*logo_data)) {
 			return(false);
 		}

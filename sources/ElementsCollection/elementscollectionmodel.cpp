@@ -68,9 +68,9 @@ QMimeData *ElementsCollectionModel::mimeData(const QModelIndexList &indexes) con
 	QModelIndex index = indexes.first();
 	if (index.isValid())
 	{
-		ElementCollectionItem *item = static_cast<ElementCollectionItem*>(itemFromIndex(index));
+		auto *item = static_cast<ElementCollectionItem*>(itemFromIndex(index));
 
-		QMimeData *mime_data = new QMimeData();
+		auto *mime_data = new QMimeData();
 		mime_data->setText(item->collectionPath());
 
 		if (item->isElement())
@@ -120,7 +120,7 @@ bool ElementsCollectionModel::canDropMimeData(const QMimeData *data, Qt::DropAct
 		if (static_cast<FileElementCollectionItem *>(qsi)->isCommonCollection())
 			return false;
 
-	ElementCollectionItem *eci = static_cast<ElementCollectionItem *>(qsi);
+	auto *eci = static_cast<ElementCollectionItem *>(qsi);
 
 	if (data->hasFormat("application/x-qet-element-uri") || data->hasFormat("application/x-qet-category-uri"))
 	{
@@ -156,7 +156,7 @@ bool ElementsCollectionModel::dropMimeData(const QMimeData *data, Qt::DropAction
 
 	if (qsi->type() == FileElementCollectionItem::Type)
 	{
-		FileElementCollectionItem *feci = static_cast<FileElementCollectionItem *>(qsi);
+		auto *feci = static_cast<FileElementCollectionItem *>(qsi);
 
 		if (feci->isCommonCollection())
 			return false;
@@ -185,7 +185,7 @@ bool ElementsCollectionModel::dropMimeData(const QMimeData *data, Qt::DropAction
 		return false;
 	}
 	else if (qsi->type() == XmlProjectElementCollectionItem::Type) {
-		XmlProjectElementCollectionItem *xpeci = static_cast<XmlProjectElementCollectionItem*>(qsi);
+		auto *xpeci = static_cast<XmlProjectElementCollectionItem*>(qsi);
 
 		if (xpeci->isElement() && xpeci->parent() && xpeci->parent()->type() == XmlProjectElementCollectionItem::Type)
 			xpeci = static_cast<XmlProjectElementCollectionItem *>(xpeci->parent());
@@ -254,7 +254,7 @@ void ElementsCollectionModel::loadCollections(bool common_collection, bool custo
  */
 void ElementsCollectionModel::addCommonCollection(bool set_data)
 {
-	FileElementCollectionItem *feci = new FileElementCollectionItem();
+	auto *feci = new FileElementCollectionItem();
 	if (feci->setRootPath(QETApp::commonElementsDirN(), set_data, m_hide_element)) {
 		invisibleRootItem()->appendRow(feci);
 		if (set_data)
@@ -270,7 +270,7 @@ void ElementsCollectionModel::addCommonCollection(bool set_data)
  */
 void ElementsCollectionModel::addCustomCollection(bool set_data)
 {
-	FileElementCollectionItem *feci = new FileElementCollectionItem();
+	auto *feci = new FileElementCollectionItem();
 	if (feci->setRootPath(QETApp::customElementsDirN(), set_data, m_hide_element)) {
 		invisibleRootItem()->appendRow(feci);
 		if (set_data)
@@ -313,7 +313,7 @@ void ElementsCollectionModel::addLocation(const ElementsLocation& location)
 		foreach(ElementCollectionItem *eci, child_list) {
 
 			if (eci->type() == FileElementCollectionItem::Type) {
-				FileElementCollectionItem *feci = static_cast<FileElementCollectionItem *>(eci);
+				auto *feci = static_cast<FileElementCollectionItem *>(eci);
 
 				if (feci->isCustomCollection()) {
 					last_item = feci->lastItemForPath(location.collectionPath(false), collection_name);
@@ -341,7 +341,7 @@ void ElementsCollectionModel::addProject(QETProject *project, bool set_data)
 
 	m_project_list.append(project);
 	int row = m_project_list.indexOf(project);
-	XmlProjectElementCollectionItem *xpeci = new XmlProjectElementCollectionItem();
+	auto *xpeci = new XmlProjectElementCollectionItem();
 	m_project_hash.insert(project, xpeci);
 
 	xpeci->setProject(project, set_data);
@@ -419,7 +419,7 @@ QList <ElementCollectionItem *> ElementsCollectionModel::items() const
 	QList <ElementCollectionItem *> list;
 
 	for (int i=0 ; i<rowCount() ; i++) {
-		ElementCollectionItem *eci = static_cast<ElementCollectionItem *>(item(i));
+		auto *eci = static_cast<ElementCollectionItem *>(item(i));
 		list.append(eci);
 		list.append(eci->items());
 	}
@@ -478,7 +478,7 @@ QModelIndex ElementsCollectionModel::indexFromLocation(const ElementsLocation &l
 			ElementCollectionItem *match_eci = nullptr;
 
 			if (eci->type() == FileElementCollectionItem::Type) {
-				if (FileElementCollectionItem *feci = static_cast<FileElementCollectionItem *>(eci)) {
+				if (auto *feci = static_cast<FileElementCollectionItem *>(eci)) {
 					if ( (location.isCommonCollection() && feci->isCommonCollection()) ||
 						 (location.isCustomCollection() && !feci->isCommonCollection()) ) {
 						match_eci = feci->itemAtPath(location.collectionPath(false));
@@ -486,7 +486,7 @@ QModelIndex ElementsCollectionModel::indexFromLocation(const ElementsLocation &l
 				}
 			}
 			else if (eci->type() == XmlProjectElementCollectionItem::Type) {
-				if (XmlProjectElementCollectionItem *xpeci = static_cast<XmlProjectElementCollectionItem *>(eci)) {
+				if (auto *xpeci = static_cast<XmlProjectElementCollectionItem *>(eci)) {
 					match_eci = xpeci->itemAtPath(location.collectionPath(false));
 				}
 			}
@@ -507,7 +507,7 @@ QModelIndex ElementsCollectionModel::indexFromLocation(const ElementsLocation &l
 void ElementsCollectionModel::elementIntegratedToCollection(const QString& path)
 {
 	QObject *object = sender();
-	XmlElementCollection *collection = static_cast<XmlElementCollection *> (object);
+	auto *collection = static_cast<XmlElementCollection *> (object);
 	if (!collection)
 		return;
 
@@ -540,7 +540,7 @@ void ElementsCollectionModel::elementIntegratedToCollection(const QString& path)
 void ElementsCollectionModel::itemRemovedFromCollection(const QString& path)
 {
 	QObject *object = sender();
-	XmlElementCollection *collection = static_cast<XmlElementCollection *> (object);
+	auto *collection = static_cast<XmlElementCollection *> (object);
 	if (!collection)
 		return;
 
@@ -568,7 +568,7 @@ void ElementsCollectionModel::itemRemovedFromCollection(const QString& path)
 void ElementsCollectionModel::updateItem(const QString& path)
 {
 	QObject *object = sender();
-	XmlElementCollection *collection = static_cast<XmlElementCollection *> (object);
+	auto *collection = static_cast<XmlElementCollection *> (object);
 	if (!collection)
 		return;
 

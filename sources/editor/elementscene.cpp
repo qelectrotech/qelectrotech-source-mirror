@@ -416,7 +416,7 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 	{
 			//If the export concerns only the selection, the not selected part is ignored
 		if (!all_parts && !qgi -> isSelected()) continue;
-		if (CustomElementPart *ce = dynamic_cast<CustomElementPart *>(qgi))
+		if (auto *ce = dynamic_cast<CustomElementPart *>(qgi))
 		{
 			if (ce -> isUseless()) continue;
 			description.appendChild(ce -> toXml(xml_document));
@@ -492,7 +492,7 @@ QRectF ElementScene::elementSceneGeometricRect() const{
 		if (qgi->type() == ElementPrimitiveDecorator::Type) continue;
 		if (qgi->type() == QGraphicsRectItem::Type) continue;
 		if (qgi->type() == PartDynamicTextField::Type) continue;
-		if (CustomElementPart *cep = dynamic_cast <CustomElementPart*> (qgi)) {
+		if (auto *cep = dynamic_cast <CustomElementPart*> (qgi)) {
 			esgr |= cep -> sceneGeometricRect();
 		}
 	}
@@ -675,7 +675,7 @@ void ElementScene::slot_editAuthorInformations() {
 #endif
 	dialog_author.setMinimumSize(400, 260);
 	dialog_author.setWindowTitle(tr("Éditer les informations sur l'auteur", "window title"));
-	QVBoxLayout *dialog_layout = new QVBoxLayout(&dialog_author);
+	auto *dialog_layout = new QVBoxLayout(&dialog_author);
 	
 	// ajoute un champ explicatif au dialogue
 	QLabel *information_label = new QLabel(tr("Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l'élément, sa licence, ou tout autre renseignement que vous jugerez utile."));
@@ -684,7 +684,7 @@ void ElementScene::slot_editAuthorInformations() {
 	dialog_layout -> addWidget(information_label);
 	
 	// ajoute un QTextEdit au dialogue
-	QTextEdit *text_field = new QTextEdit();
+	auto *text_field = new QTextEdit();
 	text_field -> setAcceptRichText(false);
 	text_field -> setPlainText(informations());
 	text_field -> setReadOnly(is_read_only);
@@ -738,7 +738,7 @@ void ElementScene::slot_editNames() {
 	dialog.setModal(true);
 	dialog.setMinimumSize(400, 330);
 	dialog.setWindowTitle(tr("Éditer les noms", "window title"));
-	QVBoxLayout *dialog_layout = new QVBoxLayout(&dialog);
+	auto *dialog_layout = new QVBoxLayout(&dialog);
 	
 	// ajoute un champ explicatif au dialogue
 	QLabel *information_label = new QLabel(tr("Vous pouvez spécifier le nom de l'élément dans plusieurs langues."));
@@ -747,7 +747,7 @@ void ElementScene::slot_editNames() {
 	dialog_layout -> addWidget(information_label);
 	
 	// ajoute un NamesListWidget au dialogue
-	NamesListWidget *names_widget = new NamesListWidget();
+	auto *names_widget = new NamesListWidget();
 	names_widget -> setNames(m_names_list);
 	names_widget -> setReadOnly(is_read_only);
 	dialog_layout -> addWidget(names_widget);
@@ -772,7 +772,7 @@ void ElementScene::slot_editNames() {
 QList<CustomElementPart *> ElementScene::primitives() const {
 	QList<CustomElementPart *> primitives_list;
 	foreach (QGraphicsItem *item, items()) {
-		if (CustomElementPart *primitive = dynamic_cast<CustomElementPart *>(item)) {
+		if (auto *primitive = dynamic_cast<CustomElementPart *>(item)) {
 			primitives_list << primitive;
 		}
 	}
@@ -1001,7 +1001,7 @@ ElementContent ElementScene::loadContent(const QDomDocument &xml_document)
 				else if (qde.tagName() == "input") cep = pdtf = new PartDynamicTextField(m_element_editor);
 				else continue;
 				
-				if (QGraphicsItem *qgi = dynamic_cast<QGraphicsItem *>(cep))
+				if (auto *qgi = dynamic_cast<QGraphicsItem *>(cep))
 				{
 					if (!qgi->zValue())
 						qgi->setZValue(z++);
@@ -1180,7 +1180,7 @@ void ElementScene::stackAction(ElementEditionCommand *command) {
 	
 	if (!command -> elementView()) {
 		foreach (QGraphicsView *view, views()) {
-			if (ElementView *element_view = dynamic_cast<ElementView *>(view)) {
+			if (auto *element_view = dynamic_cast<ElementView *>(view)) {
 				command -> setElementView(element_view);
 				break;
 			}

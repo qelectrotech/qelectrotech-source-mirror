@@ -230,7 +230,7 @@ void DiagramEventAddElement::addElement()
 	{
 		QPair <Terminal *, Terminal *> pair = element -> AlignedFreeTerminals().takeFirst();
 
-		Conductor *conductor = new Conductor(pair.first, pair.second);
+		auto *conductor = new Conductor(pair.first, pair.second);
 		new AddItemCommand<Conductor *>(conductor, m_diagram, QPointF(), undo_object);
 
 			//Autonum the new conductor, the undo command associated for this, have for parent undo_object

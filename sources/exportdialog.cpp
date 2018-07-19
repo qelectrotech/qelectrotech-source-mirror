@@ -71,7 +71,7 @@ ExportDialog::ExportDialog(QETProject *project, QWidget *parent) : QDialog(paren
 	
 	// disposition des elements
 
-	QHBoxLayout *hLayout = new QHBoxLayout();
+	auto *hLayout = new QHBoxLayout();
 	hLayout -> addWidget(new QLabel(tr("Choisissez les folios que vous désirez exporter ainsi que leurs dimensions :")));
 	selectAll   = new QPushButton();
 	deSelectAll = new QPushButton();
@@ -83,7 +83,7 @@ ExportDialog::ExportDialog(QETProject *project, QWidget *parent) : QDialog(paren
 	connect(deSelectAll, SIGNAL(clicked()),            this, SLOT(slot_deSelectAllClicked()));
 
 
-	QVBoxLayout *layout = new QVBoxLayout(this);
+	auto *layout = new QVBoxLayout(this);
 	layout -> addLayout(hLayout);
 	layout -> addWidget(initDiagramsListPart(), 1);
 	layout -> addWidget(epw);
@@ -177,7 +177,7 @@ QWidget *ExportDialog::initDiagramsListPart() {
 	QWidget *widget_diagrams_list = new QWidget();
 	widget_diagrams_list -> setLayout(diagrams_list_layout_);
 	
-	QScrollArea *scroll_diagrams_list = new QScrollArea();
+	auto *scroll_diagrams_list = new QScrollArea();
 	scroll_diagrams_list -> setWidget(widget_diagrams_list);
 	
 	return(scroll_diagrams_list);
@@ -426,7 +426,7 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 	//QList<QRectF *> list_ellipses;
 	QList <QetShapeItem *> list_shapes;
 
-	DiagramFolioList *ptr = dynamic_cast<DiagramFolioList *>(diagram);
+	auto *ptr = dynamic_cast<DiagramFolioList *>(diagram);
 	if (ptr) {
 		list_lines = ptr -> lines();
 		list_rectangles = ptr -> rectangles();
@@ -469,15 +469,15 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 	} else {
 		// Determine les elements a "XMLiser"
 		foreach(QGraphicsItem *qgi, diagram -> items()) {
-			if (Element *elmt = qgraphicsitem_cast<Element *>(qgi)) {
+			if (auto *elmt = qgraphicsitem_cast<Element *>(qgi)) {
 				list_elements << elmt;
-			} else if (Conductor *f = qgraphicsitem_cast<Conductor *>(qgi)) {
+			} else if (auto *f = qgraphicsitem_cast<Conductor *>(qgi)) {
 				list_conductors << f;
-			} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(qgi)) {
+			} else if (auto *iti = qgraphicsitem_cast<IndependentTextItem *>(qgi)) {
 				list_texts << iti;
-			} else if (DiagramImageItem *dii = qgraphicsitem_cast<DiagramImageItem *>(qgi)) {
+			} else if (auto *dii = qgraphicsitem_cast<DiagramImageItem *>(qgi)) {
 				list_images << dii;
-			} else if (QetShapeItem *dii = qgraphicsitem_cast<QetShapeItem *>(qgi)) {
+			} else if (auto *dii = qgraphicsitem_cast<QetShapeItem *>(qgi)) {
 				list_shapes << dii;
 			}
 		}
@@ -909,14 +909,14 @@ void ExportDialog::slot_previewDiagram(int diagram_id) {
 	preview_dialog.setWindowTitle(tr("Aperçu"));
 	preview_dialog.setWindowState(preview_dialog.windowState() | Qt::WindowMaximized);
 	
-	QGraphicsScene *preview_scene = new QGraphicsScene();
+	auto *preview_scene = new QGraphicsScene();
 	preview_scene -> setBackgroundBrush(Qt::lightGray);
-	QGraphicsView *preview_view = new QGraphicsView(preview_scene);
+	auto *preview_view = new QGraphicsView(preview_scene);
 	preview_view -> setDragMode(QGraphicsView::ScrollHandDrag);
 	QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Ok);
 	connect(buttons, SIGNAL(accepted()), &preview_dialog, SLOT(accept()));
 	
-	QVBoxLayout *vboxlayout1 = new QVBoxLayout();
+	auto *vboxlayout1 = new QVBoxLayout();
 	vboxlayout1 -> addWidget(preview_view);
 	vboxlayout1 -> addWidget(buttons);
 	preview_dialog.setLayout(vboxlayout1);
@@ -1050,7 +1050,7 @@ ExportDialog::ExportDiagramLine::~ExportDiagramLine() {
 	taille d'un schema avant son export.
 */
 QBoxLayout *ExportDialog::ExportDiagramLine::sizeLayout() {
-	QHBoxLayout *layout = new QHBoxLayout();
+	auto *layout = new QHBoxLayout();
 	layout -> addWidget(width);
 	layout -> addWidget(x_label);
 	layout -> addWidget(height);

@@ -140,7 +140,7 @@ QList<TitleBlockCell *> TitleBlockTemplateView::cut() {
 	QList<TitleBlockCell *> copied_cells = copy();
 	
 	if (!copied_cells.isEmpty()) {
-		CutTemplateCellsCommand *cut_command = new CutTemplateCellsCommand(tbtemplate_);
+		auto *cut_command = new CutTemplateCellsCommand(tbtemplate_);
 		cut_command -> setCutCells(copied_cells);
 		requestGridModification(cut_command);
 	}
@@ -247,7 +247,7 @@ void TitleBlockTemplateView::paste() {
 	// change num_row and num_col attributes of pasted cells so they get positionned relatively to selected_cell
 	normalizeCells(pasted_cells, erased_cell -> num_row, erased_cell -> num_col);
 	
-	PasteTemplateCellsCommand *paste_command = new PasteTemplateCellsCommand(tbtemplate_);
+	auto *paste_command = new PasteTemplateCellsCommand(tbtemplate_);
 	foreach (TitleBlockCell cell, pasted_cells) {
 		TitleBlockCell *erased_cell = tbtemplate_ -> cell(cell.num_row, cell.num_col);
 		if (!erased_cell) continue;
@@ -334,7 +334,7 @@ void TitleBlockTemplateView::editColumn(HelperCell *cell) {
 	dialog.setValue(dimension_before);
 	int user_answer = dialog.exec();
 	if (!read_only_ && user_answer == QDialog::Accepted) {
-		ModifyTemplateDimension *command = new ModifyTemplateDimension(tbtemplate_);
+		auto *command = new ModifyTemplateDimension(tbtemplate_);
 		command -> setType(false);
 		command -> setIndex(index);
 		command -> setDimensionBefore(dimension_before);
@@ -360,7 +360,7 @@ void TitleBlockTemplateView::editRow(HelperCell *cell) {
 	dialog.setValue(dimension_before);
 	int user_answer = dialog.exec();
 	if (!read_only_ && user_answer == QDialog::Accepted) {
-		ModifyTemplateDimension *command = new ModifyTemplateDimension(tbtemplate_);
+		auto *command = new ModifyTemplateDimension(tbtemplate_);
 		command -> setType(true);
 		command -> setIndex(index);
 		command -> setDimensionBefore(dimension_before);
@@ -394,7 +394,7 @@ void TitleBlockTemplateView::mergeSelectedCells() {
 	// retrieve the selected cells
 	TitleBlockTemplateCellsSet selected_cells = selectedCellsSet();
 	
-	MergeCellsCommand *merge_command = new MergeCellsCommand(selected_cells, tbtemplate_);
+	auto *merge_command = new MergeCellsCommand(selected_cells, tbtemplate_);
 	if (merge_command -> isValid()) requestGridModification(merge_command);
 }
 
@@ -405,7 +405,7 @@ void TitleBlockTemplateView::splitSelectedCell() {
 	// retrieve the selected cells
 	TitleBlockTemplateCellsSet selected_cells = selectedCellsSet();
 	
-	SplitCellsCommand *split_command = new SplitCellsCommand(selected_cells, tbtemplate_);
+	auto *split_command = new SplitCellsCommand(selected_cells, tbtemplate_);
 	if (split_command -> isValid()) requestGridModification(split_command);
 }
 
@@ -578,7 +578,7 @@ void TitleBlockTemplateView::applyColumnsWidths(bool animate) {
 			// no animation on first call
 			tbgrid_ -> setColumnFixedWidth(COL_OFFSET + i, widths.at(i));
 		} else {
-			GridLayoutAnimation *animation = new GridLayoutAnimation(tbgrid_, form_);
+			auto *animation = new GridLayoutAnimation(tbgrid_, form_);
 			animation -> setIndex(COL_OFFSET + i);
 			animation -> setActsOnRows(false);
 			animation -> setStartValue(QVariant(tbgrid_ -> columnMinimumWidth(COL_OFFSET + i)));
@@ -643,7 +643,7 @@ void TitleBlockTemplateView::applyRowsHeights(bool animate) {
 			// no animation on first call
 			tbgrid_ -> setRowFixedHeight(ROW_OFFSET + i, heights.at(i));
 		} else {
-			GridLayoutAnimation *animation = new GridLayoutAnimation(tbgrid_, form_);
+			auto *animation = new GridLayoutAnimation(tbgrid_, form_);
 			animation -> setIndex(ROW_OFFSET + i);
 			animation -> setActsOnRows(true);
 			animation -> setStartValue(QVariant(tbgrid_ -> rowMinimumHeight(ROW_OFFSET + i)));
@@ -665,7 +665,7 @@ void TitleBlockTemplateView::updateRowsHelperCells() {
 	int row_count = tbtemplate_ -> rowsCount();
 	QList<int> heights = tbtemplate_ -> rowsHeights();
 	for (int i = 0 ; i < row_count ; ++ i) {
-		HelperCell *current_row_cell = static_cast<HelperCell *>(tbgrid_ -> itemAt(ROW_OFFSET + i, 0));
+		auto *current_row_cell = static_cast<HelperCell *>(tbgrid_ -> itemAt(ROW_OFFSET + i, 0));
 		if (current_row_cell) {
 			current_row_cell -> setType(QET::Absolute); // rows always have absolute heights
 			current_row_cell -> setLabel(QString(tr("%1px", "format displayed in rows helper cells")).arg(heights.at(i)));
@@ -680,7 +680,7 @@ void TitleBlockTemplateView::updateColumnsHelperCells() {
 	int col_count = tbtemplate_ -> columnsCount();
 	for (int i = 0 ; i < col_count ; ++ i) {
 		TitleBlockDimension current_col_dim = tbtemplate_ -> columnDimension(i);
-		HelperCell *current_col_cell = static_cast<HelperCell *>(tbgrid_ -> itemAt(1, COL_OFFSET + i));
+		auto *current_col_cell = static_cast<HelperCell *>(tbgrid_ -> itemAt(1, COL_OFFSET + i));
 		if (current_col_cell) {
 			current_col_cell -> setType(current_col_dim.type);
 			current_col_cell -> setLabel(current_col_dim.toString());
@@ -714,7 +714,7 @@ void TitleBlockTemplateView::addCells() {
 	// we add one cell per column to show their respective width
 	for (int i = 0 ; i < col_count ; ++ i) {
 		TitleBlockDimension current_col_dim = tbtemplate_ -> columnDimension(i);
-		HelperCell *current_col_cell = new HelperCell();
+		auto *current_col_cell = new HelperCell();
 		current_col_cell -> setType(current_col_dim.type);
 		current_col_cell -> setLabel(current_col_dim.toString());
 		current_col_cell -> setActions(columnsActions());
@@ -728,7 +728,7 @@ void TitleBlockTemplateView::addCells() {
 	// we add one cell per row to show their respective height
 	QList<int> heights = tbtemplate_ -> rowsHeights();
 	for (int i = 0 ; i < row_count ; ++ i) {
-		HelperCell *current_row_cell = new HelperCell();
+		auto *current_row_cell = new HelperCell();
 		current_row_cell -> setType(QET::Absolute); // rows always have absolute heights
 		current_row_cell -> setLabel(QString(tr("%1px")).arg(heights.at(i)));
 		current_row_cell -> orientation = Qt::Vertical;
@@ -744,7 +744,7 @@ void TitleBlockTemplateView::addCells() {
 		for (int j = 0 ; j < row_count ; ++ j) {
 			TitleBlockCell *cell = tbtemplate_ -> cell(j, i);
 			if (cell -> spanner_cell) continue;
-			TitleBlockTemplateVisualCell *cell_item = new TitleBlockTemplateVisualCell();
+			auto *cell_item = new TitleBlockTemplateVisualCell();
 			cell_item -> setTemplateCell(tbtemplate_, cell);
 			
 			int row_span = 0, col_span = 0;
@@ -768,7 +768,7 @@ void TitleBlockTemplateView::refresh() {
 	for (int i = 0 ; i < col_count ; ++ i) {
 		for (int j = 0 ; j < row_count ; ++ j) {
 			if (QGraphicsLayoutItem *item = tbgrid_ -> itemAt(ROW_OFFSET + j, COL_OFFSET + i)) {
-				if (QGraphicsItem *qgi = dynamic_cast<QGraphicsItem *>(item)) {
+				if (auto *qgi = dynamic_cast<QGraphicsItem *>(item)) {
 					qgi -> update();
 				}
 			}
@@ -800,7 +800,7 @@ void TitleBlockTemplateView::fillWithEmptyCells() {
 	for (int i = 0 ; i < col_count ; ++ i) {
 		for (int j = 0 ; j < row_count ; ++ j) {
 			if (tbgrid_ -> itemAt(ROW_OFFSET + j, COL_OFFSET + i)) continue;
-			TitleBlockTemplateVisualCell *cell_item = new TitleBlockTemplateVisualCell();
+			auto *cell_item = new TitleBlockTemplateVisualCell();
 			if (TitleBlockCell *target_cell = tbtemplate_ -> cell(j, i)) {
 				qDebug() << Q_FUNC_INFO << "target_cell" << target_cell;
 				cell_item -> setTemplateCell(tbtemplate_, target_cell);
@@ -1057,7 +1057,7 @@ void TitleBlockTemplateView::removeItem(QGraphicsLayoutItem *item) {
 TitleBlockTemplateCellsSet TitleBlockTemplateView::makeCellsSetFromGraphicsItems(const QList<QGraphicsItem *> &items) const {
 	TitleBlockTemplateCellsSet set(this);
 	foreach (QGraphicsItem *item, items) {
-		if (TitleBlockTemplateVisualCell *cell_view = dynamic_cast<TitleBlockTemplateVisualCell *>(item)) {
+		if (auto *cell_view = dynamic_cast<TitleBlockTemplateVisualCell *>(item)) {
 			if (cell_view -> cell() && cell_view -> cell() -> num_row != -1) {
 				set << cell_view;
 			}

@@ -179,8 +179,8 @@ void ProjectMainConfigPage::initWidgets() {
 	Initialize the layout of this page.
 */
 void ProjectMainConfigPage::initLayout() {
-	QVBoxLayout *main_layout0 = new QVBoxLayout();
-	QHBoxLayout *title_layout0 = new QHBoxLayout();
+	auto *main_layout0 = new QVBoxLayout();
+	auto *title_layout0 = new QHBoxLayout();
 	title_layout0 -> addWidget(title_label_);
 	title_layout0 -> addWidget(title_value_);
 	main_layout0 -> addLayout(title_layout0);
@@ -255,7 +255,7 @@ void ProjectAutoNumConfigPage::applyProjectConf() {}
  */
 void ProjectAutoNumConfigPage::initWidgets()
 {
-	QTabWidget *tab_widget = new QTabWidget(this);
+	auto *tab_widget = new QTabWidget(this);
 	
 		//Management tab
 	m_amw = new AutoNumberingManagementW(project());
@@ -277,7 +277,7 @@ void ProjectAutoNumConfigPage::initWidgets()
 	m_faw = new FolioAutonumberingW(project());
 	tab_widget->addTab(m_faw, tr("Folio autonumérotation"));
 	
-	QHBoxLayout *main_layout = new QHBoxLayout();
+	auto *main_layout = new QHBoxLayout();
 	main_layout->addWidget(tab_widget);
 	setLayout(main_layout);
 }

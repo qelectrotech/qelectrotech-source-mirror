@@ -126,7 +126,7 @@ void MultiPasteDialog::on_m_button_box_accepted()
 					{
 						QPair <Terminal *, Terminal *> pair = elmt->AlignedFreeTerminals().takeFirst();
 						
-						Conductor *conductor = new Conductor(pair.first, pair.second);
+						auto *conductor = new Conductor(pair.first, pair.second);
 						m_diagram->undoStack().push(new AddItemCommand<Conductor *>(conductor, m_diagram, QPointF()));
 						
 						//Autonum the new conductor, the undo command associated for this, have for parent undo_object

@@ -99,7 +99,7 @@ ElementsLocation ElementsCategoryEditor::createdLocation() const
  */
 void ElementsCategoryEditor::setUpWidget()
 {
-	QVBoxLayout *editor_layout = new QVBoxLayout();
+	auto *editor_layout = new QVBoxLayout();
 	setLayout(editor_layout);
 	
 	m_names_list = new NamesListWidget();
@@ -109,7 +109,7 @@ void ElementsCategoryEditor::setUpWidget()
 	m_buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	connect(m_buttons, SIGNAL(rejected()), this, SLOT(reject()));
 	
-	QHBoxLayout *internal_name_layout = new QHBoxLayout();
+	auto *internal_name_layout = new QHBoxLayout();
 	internal_name_layout -> addWidget(m_file_name);
 	internal_name_layout -> addWidget(m_file_line_edit);
 	

@@ -260,7 +260,7 @@ void MoveElementsCommand::move(const QPointF &actual_movement)
 			setupAnimation(qgi->toGraphicsObject(), "pos", qgi->pos(), qgi->pos() + actual_movement);
 		else if(qgi->type() == QGraphicsItemGroup::Type) //ElementTextItemGroup is a QObject but not a QGraphicsObject
 		{
-			if(ElementTextItemGroup *etig = dynamic_cast<ElementTextItemGroup *>(qgi))
+			if(auto *etig = dynamic_cast<ElementTextItemGroup *>(qgi))
 				setupAnimation(etig, "pos", etig->pos(), etig->pos() + actual_movement);
 		}
 		else qgi -> setPos(qgi->pos() + actual_movement);
@@ -286,7 +286,7 @@ void MoveElementsCommand::move(const QPointF &actual_movement)
 void MoveElementsCommand::setupAnimation(QObject *target, const QByteArray &propertyName, const QVariant& start, const QVariant& end) {
 	//create animation group if not yet.
 	if (m_anim_group == nullptr) m_anim_group = new QParallelAnimationGroup();
-	QPropertyAnimation *animation = new QPropertyAnimation(target, propertyName);
+	auto *animation = new QPropertyAnimation(target, propertyName);
 	animation->setDuration(300);
 	animation->setStartValue(start);
 	animation->setEndValue(end);

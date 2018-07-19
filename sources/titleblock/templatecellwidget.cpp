@@ -96,11 +96,11 @@ void TitleBlockTemplateCellWidget::initWidgets() {
 	font_adjust_input_ = new QCheckBox(tr("Ajuster la taille de police si besoin"));
 	
 	// layout
-	QHBoxLayout *label_edition = new QHBoxLayout();
+	auto *label_edition = new QHBoxLayout();
 	label_edition -> addWidget(label_input_);
 	label_edition -> addWidget(label_edit_);
 	
-	QHBoxLayout *value_edition = new QHBoxLayout();
+	auto *value_edition = new QHBoxLayout();
 	value_edition -> addWidget(value_input_);
 	value_edition -> addWidget(value_edit_);
 	
@@ -375,7 +375,7 @@ bool TitleBlockTemplateCellWidget::isReadOnly() const {
 	@param title Title of the dialog window
 */
 void TitleBlockTemplateCellWidget::editTranslatableValue(NamesList &names, const QString &attribute, const QString &title) const {
-	NamesListWidget *names_widget = new NamesListWidget();
+	auto *names_widget = new NamesListWidget();
 	names_widget -> setNames(names);
 	QDialogButtonBox * buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	
@@ -386,7 +386,7 @@ void TitleBlockTemplateCellWidget::editTranslatableValue(NamesList &names, const
 	QLabel *def_var_label = new QLabel(defaultVariablesString());
 	def_var_label -> setTextFormat(Qt::RichText);
 	
-	QVBoxLayout *editor_layout = new QVBoxLayout();
+	auto *editor_layout = new QVBoxLayout();
 	editor_layout -> addWidget(information);
 	editor_layout -> addWidget(names_widget);
 	editor_layout -> addWidget(def_var_label);
@@ -416,7 +416,7 @@ void TitleBlockTemplateCellWidget::emitModification(const QString &attribute, co
 	// avoid creating a QUndoCommand object when no modification was actually done
 	if (edited_cell_ -> attribute(attribute) == new_value) return;
 	
-	ModifyTitleBlockCellCommand *command = new ModifyTitleBlockCellCommand(edited_cell_);
+	auto *command = new ModifyTitleBlockCellCommand(edited_cell_);
 	command -> addModification(attribute, new_value);
 	command -> setText(
 		tr("Édition d'une cellule : %1", "label of and undo command when editing a cell")

@@ -145,10 +145,10 @@ void TitleBlockDimensionWidget::initWidgets() {
 	Initialize the layout of the dialog.
 */
 void TitleBlockDimensionWidget::initLayouts() {
-	QHBoxLayout *hlayout0 = new QHBoxLayout();
+	auto *hlayout0 = new QHBoxLayout();
 	hlayout0 -> addWidget(spinbox_label_);
 	hlayout0 -> addWidget(spinbox_);
-	QVBoxLayout *vlayout0 = new QVBoxLayout();
+	auto *vlayout0 = new QVBoxLayout();
 	vlayout0 -> addLayout(hlayout0);
 	if (complete_) {
 		vlayout0 -> addWidget(absolute_button_);

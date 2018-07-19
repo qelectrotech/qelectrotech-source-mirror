@@ -73,9 +73,9 @@ NewDiagramPage::NewDiagramPage(QETProject *project, QWidget *parent, ProjectProp
 	connect(ipw,SIGNAL(openAutoNumFolioEditor(QString)),this,SLOT(changeToAutoFolioTab()));
 
 	// main tab widget
-	QTabWidget *tab_widget      = new QTabWidget(this);
+	auto *tab_widget      = new QTabWidget(this);
 	QWidget *diagram_widget     = new QWidget();
-	QVBoxLayout *diagram_layout = new QVBoxLayout(diagram_widget);
+	auto *diagram_layout = new QVBoxLayout(diagram_widget);
 
 	diagram_layout -> addWidget(bpw);
 	diagram_layout -> addWidget(ipw);
@@ -85,7 +85,7 @@ NewDiagramPage::NewDiagramPage(QETProject *project, QWidget *parent, ProjectProp
 	tab_widget -> addTab (rpw,            tr("Reports de folio"));
 	tab_widget -> addTab (xrefpw,         tr("Références croisées"));
 
-	QVBoxLayout *vlayout1 = new QVBoxLayout();
+	auto *vlayout1 = new QVBoxLayout();
 	vlayout1->addWidget(tab_widget);
 
 	setLayout(vlayout1);
@@ -235,7 +235,7 @@ ExportConfigPage::ExportConfigPage(QWidget *parent) : ConfigPage(parent) {
 	epw = new ExportPropertiesWidget(ExportProperties::defaultExportProperties());
 	
 	// layout vertical contenant le titre, une ligne horizontale et epw
-	QVBoxLayout *vlayout1 = new QVBoxLayout();
+	auto *vlayout1 = new QVBoxLayout();
 	
 	QLabel *title = new QLabel(this -> title());
 	vlayout1 -> addWidget(title);
@@ -283,7 +283,7 @@ PrintConfigPage::PrintConfigPage(QWidget *parent) : ConfigPage(parent) {
 	epw -> setPrintingMode(true);
 	
 	// layout vertical contenant le titre, une ligne horizontale et epw
-	QVBoxLayout *vlayout1 = new QVBoxLayout();
+	auto *vlayout1 = new QVBoxLayout();
 	
 	QLabel *title = new QLabel(this -> title());
 	vlayout1 -> addWidget(title);

@@ -408,7 +408,7 @@ bool QetShapeItem::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 		//Watched must be an handler
 	if(watched->type() == QetGraphicsHandlerItem::Type)
 	{
-		QetGraphicsHandlerItem *qghi = qgraphicsitem_cast<QetGraphicsHandlerItem *>(watched);
+		auto *qghi = qgraphicsitem_cast<QetGraphicsHandlerItem *>(watched);
 		
 		if(m_handler_vector.contains(qghi)) //Handler must be in m_vector_index, then we can start resize
 		{

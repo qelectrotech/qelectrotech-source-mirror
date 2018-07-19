@@ -228,7 +228,7 @@ void DynamicTextFieldEditor::on_m_frame_cb_clicked()
 
 void DynamicTextFieldEditor::on_m_width_sb_editingFinished()
 {
-    qreal width = (qreal)ui->m_width_sb->value();
+    auto width = (qreal)ui->m_width_sb->value();
 	
 	if(width != m_text_field.data()->textWidth())
 	{

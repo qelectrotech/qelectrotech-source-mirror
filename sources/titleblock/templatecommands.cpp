@@ -55,7 +55,7 @@ int ModifyTitleBlockCellCommand::id() const {
 	@return true on success, false otherwise
 */
 bool ModifyTitleBlockCellCommand::mergeWith(const QUndoCommand *command) {
-	const ModifyTitleBlockCellCommand *other = static_cast<const ModifyTitleBlockCellCommand *>(command);
+	const auto *other = static_cast<const ModifyTitleBlockCellCommand *>(command);
 	if (other) {
 		if (other -> modified_cell_ == modified_cell_) {
 			if (other -> new_values_.keys() == new_values_.keys()) {
@@ -226,7 +226,7 @@ ModifyTemplateGridCommand *ModifyTemplateGridCommand::addRow(TitleBlockTemplate 
 	if (!tbtemplate) return(nullptr);
 	
 	// create the command itself
-	ModifyTemplateGridCommand *add_row_command = new ModifyTemplateGridCommand(tbtemplate);
+	auto *add_row_command = new ModifyTemplateGridCommand(tbtemplate);
 	add_row_command -> setInsertion(true);
 	add_row_command -> setType(true);
 	add_row_command -> setCells(tbtemplate -> createRow());
@@ -247,7 +247,7 @@ ModifyTemplateGridCommand *ModifyTemplateGridCommand::addColumn(TitleBlockTempla
 	if (!tbtemplate) return(nullptr);
 	
 	// create the command itself
-	ModifyTemplateGridCommand *add_column_command = new ModifyTemplateGridCommand(tbtemplate);
+	auto *add_column_command = new ModifyTemplateGridCommand(tbtemplate);
 	add_column_command -> setInsertion(true);
 	add_column_command -> setType(false);
 	add_column_command -> setCells(tbtemplate -> createColumn());
@@ -268,7 +268,7 @@ ModifyTemplateGridCommand *ModifyTemplateGridCommand::deleteRow(TitleBlockTempla
 	if (!tbtemplate) return(nullptr);
 	
 	// create the command itself
-	ModifyTemplateGridCommand *del_row_command = new ModifyTemplateGridCommand(tbtemplate);
+	auto *del_row_command = new ModifyTemplateGridCommand(tbtemplate);
 	del_row_command -> setInsertion(false);
 	del_row_command -> setType(true);
 	del_row_command -> setIndex(index);
@@ -287,7 +287,7 @@ ModifyTemplateGridCommand *ModifyTemplateGridCommand::deleteColumn(TitleBlockTem
 	if (!tbtemplate) return(nullptr);
 	
 	// create the command itself
-	ModifyTemplateGridCommand *del_column_command = new ModifyTemplateGridCommand(tbtemplate);
+	auto *del_column_command = new ModifyTemplateGridCommand(tbtemplate);
 	del_column_command -> setInsertion(false);
 	del_column_command -> setType(false);
 	del_column_command -> setIndex(index);

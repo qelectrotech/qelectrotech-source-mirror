@@ -537,7 +537,7 @@ void QETElementEditor::setupInterface()
 	m_undo_dock -> setFeatures(QDockWidget::AllDockWidgetFeatures);
 	m_undo_dock -> setMinimumWidth(290);
 	addDockWidget(Qt::RightDockWidgetArea, m_undo_dock);
-	QUndoView* undo_view = new QUndoView(&(m_elmt_scene -> undoStack()), this);
+	auto* undo_view = new QUndoView(&(m_elmt_scene -> undoStack()), this);
 	undo_view -> setEmptyLabel(tr("Aucune modification"));
 	m_undo_dock -> setWidget(undo_view);
 	
@@ -596,7 +596,7 @@ void QETElementEditor::slot_updateInformations()
 		style_editable = true;
 		foreach (QGraphicsItem *qgi, selected_qgis)
 		{
-			if (CustomElementPart *cep = dynamic_cast<CustomElementPart *>(qgi))
+			if (auto *cep = dynamic_cast<CustomElementPart *>(qgi))
 				cep_list << cep;
 			else
 				style_editable = false;
@@ -609,11 +609,11 @@ void QETElementEditor::slot_updateInformations()
 	if(selected_qgis.size() == 1)
 	{
 		QGraphicsItem *qgi = selected_qgis.first();
-		if (CustomElementPart *selection = dynamic_cast<CustomElementPart *>(qgi))
+		if (auto *selection = dynamic_cast<CustomElementPart *>(qgi))
 		{
 			if (QWidget *widget = m_tools_dock_stack->widget(1))
 			{
-				if (ElementItemEditor *editor = dynamic_cast<ElementItemEditor *>(widget))
+				if (auto *editor = dynamic_cast<ElementItemEditor *>(widget))
 				{
 					if(editor->currentPart() == selection)
 						return;
@@ -626,11 +626,11 @@ void QETElementEditor::slot_updateInformations()
 	if (selected_qgis.size() == 1)
 	{
 		QGraphicsItem *qgi = selected_qgis.first();
-		if (CustomElementPart *selection = dynamic_cast<CustomElementPart *>(qgi))
+		if (auto *selection = dynamic_cast<CustomElementPart *>(qgi))
 		{
 				//The current editor already edit the selected part
 			if (QWidget *widget = m_tools_dock_stack->widget(1))
-				if (ElementItemEditor *editor = dynamic_cast<ElementItemEditor *>(widget))
+				if (auto *editor = dynamic_cast<ElementItemEditor *>(widget))
 					if(editor->currentPart() == selection)
 						return;
 			
@@ -1065,7 +1065,7 @@ QString program = (QDir::homePath() + "/.qet/DXFtoQET.app");
 QString program = (QDir::homePath() + "/.qet/DXFtoQET");
 #endif
 QStringList arguments;
-QProcess *DXF = new QProcess(qApp);
+auto *DXF = new QProcess(qApp);
 DXF->start(program,arguments);
 
 }
@@ -1336,9 +1336,9 @@ void QETElementEditor::slot_createPartsList() {
 	if (qgis.count() <= QET_MAX_PARTS_IN_ELEMENT_EDITOR_LIST) {
 		for (int j = qgis.count() - 1 ; j >= 0 ; -- j) {
 			QGraphicsItem *qgi = qgis[j];
-			if (CustomElementPart *cep = dynamic_cast<CustomElementPart *>(qgi)) {
+			if (auto *cep = dynamic_cast<CustomElementPart *>(qgi)) {
 				QString part_desc = cep -> name();
-				QListWidgetItem *qlwi = new QListWidgetItem(part_desc);
+				auto *qlwi = new QListWidgetItem(part_desc);
 				QVariant v;
 				v.setValue<QGraphicsItem *>(qgi);
 				qlwi -> setData(42, v);
@@ -1382,7 +1382,7 @@ void QETElementEditor::slot_updateSelectionFromPartsList() {
 	m_parts_list -> blockSignals(true);
 	for (int i = 0 ; i < m_parts_list -> count() ; ++ i) {
 		QListWidgetItem *qlwi = m_parts_list -> item(i);
-		QGraphicsItem *qgi = qlwi -> data(42).value<QGraphicsItem *>();
+		auto *qgi = qlwi -> data(42).value<QGraphicsItem *>();
 		if (qgi) {
 			qgi -> setSelected(qlwi -> isSelected());
 		}
@@ -1578,7 +1578,7 @@ void QETElementEditor::updateCurrentPartEditor() {
 	if (!m_tools_dock_stack -> currentIndex()) return;
 	
 	// s'il y a un widget d'edition affiche, on le met a jour
-	if (ElementItemEditor *current_editor = dynamic_cast<ElementItemEditor *>(m_tools_dock_stack->widget(1))) {
+	if (auto *current_editor = dynamic_cast<ElementItemEditor *>(m_tools_dock_stack->widget(1))) {
 		current_editor -> updateForm();
 	}
 }

@@ -24,7 +24,7 @@
 	@param parent QWidget parent de la liste de noms
 */
 NamesListWidget::NamesListWidget(QWidget *parent) : QWidget(parent), read_only(false) {
-	QVBoxLayout *names_list_layout = new QVBoxLayout();
+	auto *names_list_layout = new QVBoxLayout();
 	setLayout(names_list_layout);
 	
 	tree_names = new QTreeWidget();
@@ -70,7 +70,7 @@ NamesListWidget::~NamesListWidget() {
 void NamesListWidget::addLine() {
 	clean();
 	if (read_only) return;
-	QTreeWidgetItem *qtwi = new QTreeWidgetItem();
+	auto *qtwi = new QTreeWidgetItem();
 	qtwi -> setFlags(Qt::ItemIsEditable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
 	tree_names -> addTopLevelItem(qtwi);
  	tree_names -> setCurrentItem(qtwi);
@@ -137,7 +137,7 @@ void NamesListWidget::setNames(const NamesList &provided_names) {
 		QString value = provided_names[lang];
 		QStringList values;
 		values << lang << value;
-		QTreeWidgetItem *qtwi = new QTreeWidgetItem(values);
+		auto *qtwi = new QTreeWidgetItem(values);
 		if (!read_only) qtwi -> setFlags(Qt::ItemIsEditable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
 		tree_names -> addTopLevelItem(qtwi);
 		tree_names -> sortItems(0, Qt::AscendingOrder);

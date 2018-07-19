@@ -45,7 +45,7 @@ PolygonEditor::PolygonEditor(QETElementEditor *editor, PartPolygon *p, QWidget *
 	updateForm();
 	
 	// layout
-	QVBoxLayout *layout = new QVBoxLayout(this);
+	auto *layout = new QVBoxLayout(this);
 	layout -> addWidget(style_);
 	layout -> addWidget(new QLabel(tr("Points du polygone :")));
 	layout -> addWidget(&points_list);
@@ -106,7 +106,7 @@ void PolygonEditor::updateForm() {
 		point = part -> mapToScene(point);
 		QStringList qsl;
 		qsl << QString("%1").arg(point.x()) << QString("%1").arg(point.y());
-		QTreeWidgetItem *qtwi = new QTreeWidgetItem(qsl);
+		auto *qtwi = new QTreeWidgetItem(qsl);
 		qtwi -> setFlags(Qt::ItemIsEnabled | Qt::ItemIsEditable | Qt::ItemIsSelectable);
 		points_list.addTopLevelItem(qtwi);
 	}
@@ -135,7 +135,7 @@ bool PolygonEditor::setPart(CustomElementPart *new_part)
 		style_ -> setPart(nullptr);
 		return(true);
 	}
-	if (PartPolygon *part_polygon = dynamic_cast<PartPolygon *>(new_part))
+	if (auto *part_polygon = dynamic_cast<PartPolygon *>(new_part))
 	{
 		if (part == part_polygon) return true;
 		if (part)

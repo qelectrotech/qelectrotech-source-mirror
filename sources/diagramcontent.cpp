@@ -44,11 +44,11 @@ DiagramContent::DiagramContent(Diagram *diagram) :
 		//Get the selected items
 	for (QGraphicsItem *item : m_selected_items)
 	{
-		if (Element *elmt = qgraphicsitem_cast<Element *>(item))
+		if (auto *elmt = qgraphicsitem_cast<Element *>(item))
 			m_elements << elmt;
-		else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(item))
+		else if (auto *iti = qgraphicsitem_cast<IndependentTextItem *>(item))
 			m_text_fields << iti;
-		else if (Conductor *c = qgraphicsitem_cast<Conductor *>(item))
+		else if (auto *c = qgraphicsitem_cast<Conductor *>(item))
 		{
 				//Get the isolated selected conductor (= not movable, but deletable)
 			if (!c->terminal1->parentItem()->isSelected() &&\
@@ -56,14 +56,14 @@ DiagramContent::DiagramContent(Diagram *diagram) :
 				m_other_conductors << c;
 			}
 		}
-		else if (DiagramImageItem *dii = qgraphicsitem_cast<DiagramImageItem *>(item))
+		else if (auto *dii = qgraphicsitem_cast<DiagramImageItem *>(item))
 			m_images << dii;
-		else if (QetShapeItem *dsi = qgraphicsitem_cast<QetShapeItem *>(item))
+		else if (auto *dsi = qgraphicsitem_cast<QetShapeItem *>(item))
 			m_shapes << dsi;
-		else if (DynamicElementTextItem *deti = qgraphicsitem_cast<DynamicElementTextItem *>(item))
+		else if (auto *deti = qgraphicsitem_cast<DynamicElementTextItem *>(item))
 			m_element_texts << deti;
-		else if (QGraphicsItemGroup *group = qgraphicsitem_cast<QGraphicsItemGroup *>(item))
-			if(ElementTextItemGroup *etig = dynamic_cast<ElementTextItemGroup *>(group))
+		else if (auto *group = qgraphicsitem_cast<QGraphicsItemGroup *>(item))
+			if(auto *etig = dynamic_cast<ElementTextItemGroup *>(group))
 				m_texts_groups << etig;
 	}
 	
@@ -147,7 +147,7 @@ QList<ElementTextItemGroup *> DiagramContent::selectedTextsGroup() const
 	
 	for(QGraphicsItem *qgi : m_selected_items)
 		if(qgi->type() == QGraphicsItemGroup::Type)
-			if(ElementTextItemGroup *grp = dynamic_cast<ElementTextItemGroup *>(qgi))
+			if(auto *grp = dynamic_cast<ElementTextItemGroup *>(qgi))
 				groups << grp;
 	
 	return groups;

@@ -370,7 +370,7 @@ bool CustomElement::parseLine(QDomElement &e, QPainter &qp, bool addtolist) {
 
 	if (addtolist){
 	//Add line to the list
-		QLineF *newLine = new QLineF(line);
+		auto *newLine = new QLineF(line);
 		m_lines << newLine;
 	}
 
@@ -475,7 +475,7 @@ bool CustomElement::parseRect(QDomElement &e, QPainter &qp, bool addtolist)
 
 	if (addtolist){
 		//Add rectangle to the list
-		QRectF *rect = new QRectF(rect_x, rect_y, rect_w, rect_h);
+		auto *rect = new QRectF(rect_x, rect_y, rect_w, rect_h);
 		m_rectangles << rect;
 	}
 
@@ -516,7 +516,7 @@ bool CustomElement::parseCircle(QDomElement &e, QPainter &qp, bool addtolist) {
 
 	if (addtolist){
 		// Add circle to list
-		QRectF *circle = new QRectF(circle_bounding_rect);
+		auto *circle = new QRectF(circle_bounding_rect);
 		m_circles << circle;
 	}
 
@@ -549,7 +549,7 @@ bool CustomElement::parseEllipse(QDomElement &e, QPainter &qp, bool addtolist) {
 	setPainterStyle(e, qp);
 
 	if (addtolist){
-		QVector<qreal> *arc = new QVector<qreal>;
+		auto *arc = new QVector<qreal>;
 		arc -> push_back(ellipse_x);
 		arc -> push_back(ellipse_y);
 		arc -> push_back(ellipse_l);
@@ -592,7 +592,7 @@ bool CustomElement::parseArc(QDomElement &e, QPainter &qp, bool addtolist) {
 	setPainterStyle(e, qp);
 
 	if (addtolist){
-		QVector<qreal> *arc = new QVector<qreal>;
+		auto *arc = new QVector<qreal>;
 		arc -> push_back(arc_x);
 		arc -> push_back(arc_y);
 		arc -> push_back(arc_l);
@@ -647,7 +647,7 @@ bool CustomElement::parsePolygon(QDomElement &e, QPainter &qp, bool addtolist) {
 	}
 	if (addtolist){
 		// Add to list of polygons.
-		QVector<QPointF> *poly = new QVector<QPointF>(points);
+		auto *poly = new QVector<QPointF>(points);
 		m_polygons << poly;
 	}
 
@@ -743,7 +743,7 @@ bool CustomElement::parseInput(QDomElement &dom_element) {
 	) return(false);
 	else
 	{
-		DynamicElementTextItem *deti = new DynamicElementTextItem(this);
+		auto *deti = new DynamicElementTextItem(this);
 		deti->setText(dom_element.attribute("text", "_"));
 		deti->setFontSize(dom_element.attribute("size", QString::number(9)).toInt());
 		deti->setRotation(dom_element.attribute("rotation", QString::number(0)).toDouble());
@@ -782,7 +782,7 @@ bool CustomElement::parseInput(QDomElement &dom_element) {
  */
 DynamicElementTextItem *CustomElement::parseDynamicText(QDomElement &dom_element)
 {
-	DynamicElementTextItem *deti = new DynamicElementTextItem(this);
+	auto *deti = new DynamicElementTextItem(this);
 		//Because the xml description of a .elmt file is the same as how a dynamic text field is save to xml in a .qet file
 		//wa call fromXml, we just change the tagg name (.elmt = dynamic_text, .qet = dynamic_elmt_text)
 		//and the uuid (because the uuid, is the uuid of the descritpion and not the uuid of instantiated dynamic text field)
@@ -817,7 +817,7 @@ Terminal *CustomElement::parseTerminal(QDomElement &e) {
 	else if (e.attribute("orientation") == "e") terminalo = Qet::East;
 	else if (e.attribute("orientation") == "w") terminalo = Qet::West;
 	else return(nullptr);
-	Terminal *new_terminal = new Terminal(terminalx, terminaly, terminalo, this);
+	auto *new_terminal = new Terminal(terminalx, terminaly, terminalo, this);
 	m_terminals << new_terminal;
 	
 		//Sort from top to bottom and left to rigth

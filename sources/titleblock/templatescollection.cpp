@@ -199,7 +199,7 @@ TitleBlockTemplate *TitleBlockTemplatesProjectCollection::getTemplate(const QStr
 	}
 	
 	// Ok, we have its XML description, we have to generate a TitleBlockTemplate object
-	TitleBlockTemplate *titleblock_template = new TitleBlockTemplate(this);
+	auto *titleblock_template = new TitleBlockTemplate(this);
 	if (titleblock_template -> loadFromXmlElement(titleblock_templates_xml_[template_name])) {
 		titleblock_templates_.insert(template_name, titleblock_template);
 		return(titleblock_template);
@@ -403,7 +403,7 @@ QStringList TitleBlockTemplatesFilesCollection::templates() {
 TitleBlockTemplate *TitleBlockTemplatesFilesCollection::getTemplate(const QString &template_name) {
 	if (!templates().contains(template_name)) return(nullptr);
 	
-	TitleBlockTemplate *tbtemplate = new TitleBlockTemplate();
+	auto *tbtemplate = new TitleBlockTemplate();
 	QString tbt_file_path = path(template_name);
 	
 	bool loading = tbtemplate -> loadFromXmlFile(tbt_file_path);
@@ -431,7 +431,7 @@ QDomElement TitleBlockTemplatesFilesCollection::getTemplateXmlDescription(const 
 		return(QDomElement());
 	}
 	
-	QDomDocument *xml_document = new QDomDocument();
+	auto *xml_document = new QDomDocument();
 	bool xml_parsing = xml_document -> setContent(&xml_file);
 	if (!xml_parsing) {
 		delete xml_document;

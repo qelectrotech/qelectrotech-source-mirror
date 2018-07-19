@@ -78,7 +78,7 @@ Element::Element(QGraphicsItem *parent) :
 	connect(this, &Element::rotationChanged, [this]() {
 		for(QGraphicsItem *qgi : childItems())
 		{
-			if (Terminal *t = qgraphicsitem_cast<Terminal *>(qgi))
+			if (auto *t = qgraphicsitem_cast<Terminal *>(qgi))
 				t->updateConductor();
 		}
 	});
@@ -96,7 +96,7 @@ void Element::editProperty()
 {
 	if (diagram() && !diagram()->isReadOnly())
 	{
-		ElementPropertiesWidget *epw = new ElementPropertiesWidget(this);
+		auto *epw = new ElementPropertiesWidget(this);
 		PropertiesEditorDialog dialog(epw, QApplication::activeWindow());
 		connect(epw, &ElementPropertiesWidget::findEditClicked, &dialog, &QDialog::reject);
 			//Must be windowModal, else when user do a drag and drop
@@ -370,7 +370,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 	QHash<int, Terminal *> priv_id_adr;
 	int terminals_non_trouvees = 0;
 	foreach(QGraphicsItem *qgi, childItems()) {
-		if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) {
+		if (auto *p = qgraphicsitem_cast<Terminal *>(qgi)) {
 			bool terminal_trouvee = false;
 			foreach(QDomElement qde, liste_terminals) {
 				if (p -> fromXml(qde)) {
@@ -454,7 +454,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 		//************************//
     for (const QDomElement& qde : QET::findInDomElement(e, "dynamic_texts", DynamicElementTextItem::xmlTaggName()))
     {
-        DynamicElementTextItem *deti = new DynamicElementTextItem(this);
+        auto *deti = new DynamicElementTextItem(this);
         addDynamicTextItem(deti);
         deti->fromXml(qde);
     }
@@ -856,7 +856,7 @@ void Element::addDynamicTextItem(DynamicElementTextItem *deti)
 	}
     else
     {
-        DynamicElementTextItem *text = new DynamicElementTextItem(this);
+        auto *text = new DynamicElementTextItem(this);
         m_dynamic_text_list.append(text);
 		emit textAdded(text);
     }
@@ -911,7 +911,7 @@ ElementTextItemGroup *Element::addTextGroup(const QString &name)
 {
 	if(m_texts_group.isEmpty())
 	{
-		ElementTextItemGroup *group = new ElementTextItemGroup(name, this);
+		auto *group = new ElementTextItemGroup(name, this);
 		m_texts_group << group;
 		emit textsGroupAdded(group);
 		return group;
@@ -927,7 +927,7 @@ ElementTextItemGroup *Element::addTextGroup(const QString &name)
 	}
 	
 		//Create the group
-	ElementTextItemGroup *group = new ElementTextItemGroup(rename, this);
+	auto *group = new ElementTextItemGroup(rename, this);
 	m_texts_group << group;
 	emit textsGroupAdded(group);
 	return group;
@@ -966,7 +966,7 @@ void Element::removeTextGroup(ElementTextItemGroup *group)
 	{
 		if(qgi->type() == DynamicElementTextItem::Type)
 		{
-			DynamicElementTextItem *deti = static_cast<DynamicElementTextItem *>(qgi);
+			auto *deti = static_cast<DynamicElementTextItem *>(qgi);
 			removeTextFromGroup(deti, group);
 		}
 	}

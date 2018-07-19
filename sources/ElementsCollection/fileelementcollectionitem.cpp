@@ -58,7 +58,7 @@ QString FileElementCollectionItem::fileSystemPath() const
 	if (isCollectionRoot())
 		return m_path;
 
-	FileElementCollectionItem *feci = static_cast<FileElementCollectionItem *> (parent());
+	auto *feci = static_cast<FileElementCollectionItem *> (parent());
 	if (feci)
 		return feci->fileSystemPath() + "/" + m_path;
 	else
@@ -172,7 +172,7 @@ QString FileElementCollectionItem::collectionPath() const
 			return "custom://";
 	}
 	else if (parent() && parent()->type() == FileElementCollectionItem::Type) {
-		ElementCollectionItem *eci = static_cast<ElementCollectionItem*>(parent());
+		auto *eci = static_cast<ElementCollectionItem*>(parent());
 		if (eci->isCollectionRoot())
 			return eci->collectionPath() + m_path;
 		else
@@ -222,7 +222,7 @@ void FileElementCollectionItem::addChildAtPath(const QString &collection_name)
 	if (collection_name.isEmpty())
 		return;
 
-	FileElementCollectionItem *feci = new FileElementCollectionItem();
+	auto *feci = new FileElementCollectionItem();
 	insertRow(rowForInsertItem(collection_name), feci);
 	feci->setPathName(collection_name);
 	feci->setUpData();
@@ -299,7 +299,7 @@ void FileElementCollectionItem::populate(bool set_data, bool hide_element)
 		//Get all directory in this directory.
 	foreach(QString str, dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::Name))
 	{
-		FileElementCollectionItem *feci = new FileElementCollectionItem();
+		auto *feci = new FileElementCollectionItem();
 		appendRow(feci);
 		feci->setPathName(str, set_data, hide_element);
 		if (set_data)
@@ -313,7 +313,7 @@ void FileElementCollectionItem::populate(bool set_data, bool hide_element)
 	dir.setNameFilters(QStringList() << "*.elmt");
 	foreach(QString str, dir.entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name))
 	{
-		FileElementCollectionItem *feci = new FileElementCollectionItem();
+		auto *feci = new FileElementCollectionItem();
 		appendRow(feci);
 		feci->setPathName(str, set_data);
 		if (set_data)

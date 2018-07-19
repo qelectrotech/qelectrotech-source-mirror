@@ -157,7 +157,7 @@ void LinkSingleElementWidget::apply()
  */
 QUndoCommand *LinkSingleElementWidget::associatedUndo() const
 {
-	LinkElementCommand *undo = new LinkElementCommand(m_element);
+	auto *undo = new LinkElementCommand(m_element);
 
 	if (m_element_to_link || m_unlink)
 	{
@@ -257,7 +257,7 @@ void LinkSingleElementWidget::buildTree()
 				qDebug() << "In method void LinkSingleElementWidget::updateUi(), provided element must be in a diagram";
 			}
 			
-			QTreeWidgetItem *qtwi = new QTreeWidgetItem(ui->m_tree_widget, str_list);
+			auto *qtwi = new QTreeWidgetItem(ui->m_tree_widget, str_list);
 			m_qtwi_elmt_hash.insert(qtwi, elmt);
 			m_qtwi_strl_hash.insert(qtwi, search_list);
 		}
@@ -311,7 +311,7 @@ void LinkSingleElementWidget::buildTree()
 				qDebug() << "In method void LinkSingleElementWidget::updateUi(), provided element must be in a diagram";
 			}
 			
-			QTreeWidgetItem *qtwi = new QTreeWidgetItem(ui->m_tree_widget, str_list);
+			auto *qtwi = new QTreeWidgetItem(ui->m_tree_widget, str_list);
 			m_qtwi_elmt_hash.insert(qtwi, elmt);
 			m_qtwi_strl_hash.insert(qtwi, search_list);
 		}
@@ -381,7 +381,7 @@ void LinkSingleElementWidget::setUpCompleter()
 	foreach(QStringList strl , m_qtwi_strl_hash.values())
 		search.append(strl);
 	
-	QCompleter *c = new QCompleter(search, ui->m_search_field);
+	auto *c = new QCompleter(search, ui->m_search_field);
 	c->setCaseSensitivity(Qt::CaseInsensitive);
 	ui->m_search_field->setCompleter(c);
 }

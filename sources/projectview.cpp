@@ -348,7 +348,7 @@ void ProjectView::addNewDiagram() {
 	if (m_project -> isReadOnly()) return;
 
 	Diagram *new_diagram = m_project -> addNewDiagram();
-	DiagramView *new_diagram_view = new DiagramView(new_diagram);
+	auto *new_diagram_view = new DiagramView(new_diagram);
 	addDiagram(new_diagram_view);
 
 	if (m_project -> diagrams().size() % 58 == 1 && m_project -> getFolioSheetsQuantity() != 0)
@@ -365,7 +365,7 @@ void ProjectView::addNewDiagramFolioList() {
 	int i = 1; //< Each new diagram is added  to the end of the project.
 			   //< We use @i to move the folio list at second position in the project
 	foreach (Diagram *d, m_project -> addNewDiagramFolioList()) {
-		DiagramView *new_diagram_view = new DiagramView(d);
+		auto *new_diagram_view = new DiagramView(d);
 		addDiagram(new_diagram_view);
 		showDiagram(new_diagram_view);
 		m_tab->tabBar()->moveTab(diagram_views().size()-1, i);
@@ -751,7 +751,7 @@ int ProjectView::cleanProject() {
 #endif
 
 	clean_dialog.setWindowTitle(tr("Nettoyer le projet", "window title"));
-	QVBoxLayout *clean_dialog_layout = new QVBoxLayout();
+	auto *clean_dialog_layout = new QVBoxLayout();
 	clean_dialog_layout -> addWidget(clean_tbt);
 	clean_dialog_layout -> addWidget(clean_elements);
 	clean_dialog_layout -> addWidget(clean_categories);
@@ -807,7 +807,7 @@ void ProjectView::initWidgets() {
 	m_tab = new QTabWidget(this);
 	m_tab -> setMovable(true);
 
-	QToolButton *add_new_diagram_button = new QToolButton;
+	auto *add_new_diagram_button = new QToolButton;
 	add_new_diagram_button -> setDefaultAction(add_new_diagram_);
 	add_new_diagram_button -> setAutoRaise(true);
 	m_tab -> setCornerWidget(add_new_diagram_button, Qt::TopRightCorner);
@@ -824,7 +824,7 @@ void ProjectView::initWidgets() {
 	Initialize layout for this widget.
 */
 void ProjectView::initLayout() {
-	QVBoxLayout *fallback_widget_layout_ = new QVBoxLayout(fallback_widget_);
+	auto *fallback_widget_layout_ = new QVBoxLayout(fallback_widget_);
 	fallback_widget_layout_ -> addWidget(fallback_label_);
 
 	layout_ = new QVBoxLayout(this);
@@ -868,7 +868,7 @@ void ProjectView::loadDiagrams()
 			dialog->setProgressBar(dialog->progressBarValue()+1);
 		}
 		
-		DiagramView *sv = new DiagramView(diagram);
+		auto *sv = new DiagramView(diagram);
 		addDiagram(sv);
 	}
 

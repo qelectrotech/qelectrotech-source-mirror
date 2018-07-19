@@ -118,14 +118,14 @@ void ExportPropertiesWidget::slot_chooseADirectory() {
 */
 void ExportPropertiesWidget::build() {
 	// le dialogue est un empilement vertical d'elements
-	QVBoxLayout *vboxLayout = new QVBoxLayout();
+	auto *vboxLayout = new QVBoxLayout();
 	vboxLayout -> setContentsMargins(0, 0, 0, 0);
 	
 	/* le dialogue comprend une ligne permettant d'indiquer un chemin de dossier (hboxLayout) */
-	QHBoxLayout *hboxLayout = new QHBoxLayout();
+	auto *hboxLayout = new QHBoxLayout();
 	dirpath_label = new QLabel(tr("Dossier cible :"), this);
 	dirpath = new QLineEdit(this);
-	QCompleter *completer = new QCompleter(this);
+	auto *completer = new QCompleter(this);
 	completer -> setModel(new QDirModel(completer));
 	dirpath -> setCompleter(completer);
 	button_browse = new QPushButton(tr("Parcourir"), this);
@@ -137,7 +137,7 @@ void ExportPropertiesWidget::build() {
 	vboxLayout -> addLayout(hboxLayout);
 	
 	/* une ligne permettant de choisir le format (hboxLayout1) */
-	QHBoxLayout *hboxLayout1 = new QHBoxLayout();
+	auto *hboxLayout1 = new QHBoxLayout();
 	format_label = new QLabel(tr("Format :"), this);
 	hboxLayout1 -> addWidget(format_label);
 	hboxLayout1 -> addWidget(format = new QComboBox(this));
@@ -152,7 +152,7 @@ void ExportPropertiesWidget::build() {
 	
 	/* un cadre permettant de specifier les options de l'image finale */
 	QGroupBox *groupbox_options = new QGroupBox(tr("Options de rendu", "groupbox title"));
-	QGridLayout *optionshlayout = new QGridLayout(groupbox_options);
+	auto *optionshlayout = new QGridLayout(groupbox_options);
 	
 	// Choix de la zone du schema a exporter
 	exported_content_choices = new QButtonGroup(groupbox_options);

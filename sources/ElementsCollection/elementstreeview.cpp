@@ -50,8 +50,8 @@ void ElementsTreeView::startDrag(Qt::DropActions supportedActions)
 		return;
 	}
 
-	if (QStandardItemModel *qsim = static_cast<QStandardItemModel *>(model())) {
-		if (ElementCollectionItem *eci = static_cast<ElementCollectionItem *>(qsim->itemFromIndex(index))) {
+	if (auto *qsim = static_cast<QStandardItemModel *>(model())) {
+		if (auto *eci = static_cast<ElementCollectionItem *>(qsim->itemFromIndex(index))) {
 			ElementsLocation loc (eci->collectionPath());
 			if (loc.exist()) {
 				startElementDrag(loc);
@@ -72,10 +72,10 @@ void ElementsTreeView::startElementDrag(const ElementsLocation &location)
 	if (!location.exist())
 		return;
 
-	QDrag *drag = new QDrag(this);
+	auto *drag = new QDrag(this);
 
 	QString location_str = location.toString();
-	QMimeData *mime_data = new QMimeData();
+	auto *mime_data = new QMimeData();
 	mime_data->setText(location_str);
 
 	if (location.isDirectory())

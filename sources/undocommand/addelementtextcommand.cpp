@@ -349,7 +349,7 @@ bool AlignmentTextsGroupCommand::mergeWith(const QUndoCommand *other)
 	if (id() != other->id() || other->childCount())
 		return false;
 	
-	AlignmentTextsGroupCommand const *undo = static_cast<const AlignmentTextsGroupCommand *>(other);
+	auto const *undo = static_cast<const AlignmentTextsGroupCommand *>(other);
 	if (m_group != undo->m_group)
 		return false;
 	

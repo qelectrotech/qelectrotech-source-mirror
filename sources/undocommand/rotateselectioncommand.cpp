@@ -61,7 +61,7 @@ m_diagram(diagram)
 					break;
 				case QGraphicsItemGroup::Type:
 				{
-					if(ElementTextItemGroup *grp = dynamic_cast<ElementTextItemGroup *>(item))
+					if(auto *grp = dynamic_cast<ElementTextItemGroup *>(item))
 						if(grp->parentElement() && !grp->parentElement()->isSelected())
 							m_undo << new QPropertyUndoCommand(grp, "rotation", QVariant(item->rotation()), QVariant(item->rotation()+angle), this);
 				}

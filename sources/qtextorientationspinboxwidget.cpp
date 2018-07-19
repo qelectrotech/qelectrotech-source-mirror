@@ -117,7 +117,7 @@ void QTextOrientationSpinBoxWidget::build() {
 	connect(spin_box_, SIGNAL(editingFinished()), this, SLOT(emitChangeSignals()));
 	
 	// dispose les widgets : le QTextOrientationWidget a gauche, le SpinBox a droite
-	QHBoxLayout *main_layout = new QHBoxLayout();
+	auto *main_layout = new QHBoxLayout();
 	main_layout -> addWidget(orientation_widget_);
 	main_layout -> addWidget(spin_box_);
 	main_layout -> addStretch();

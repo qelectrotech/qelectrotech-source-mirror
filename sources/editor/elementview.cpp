@@ -296,7 +296,7 @@ ElementContent ElementView::paste(const QDomDocument &xml_document, const QPoint
 	// si quelque chose a effectivement ete ajoute au schema, on cree un objet d'annulation
 	if (content_pasted.count()) {
 		m_scene -> clearSelection();
-		PastePartsCommand *undo_object = new PastePartsCommand(this, content_pasted);
+		auto *undo_object = new PastePartsCommand(this, content_pasted);
 		m_scene -> undoStack().push(undo_object);
 	}
 	return(content_pasted);
@@ -343,7 +343,7 @@ ElementContent ElementView::pasteWithOffset(const QDomDocument &xml_document) {
 	// si quelque chose a effectivement ete ajoute au schema, on cree un objet d'annulation
 	if (content_pasted.count()) {
 		m_scene -> clearSelection();
-		PastePartsCommand *undo_object = new PastePartsCommand(this, content_pasted);
+		auto *undo_object = new PastePartsCommand(this, content_pasted);
 		undo_object -> setOffset(offset_paste_count_ - 1, old_start_top_left_corner, offset_paste_count_, start_top_left_corner_);
 		m_scene -> undoStack().push(undo_object);
 	}
@@ -446,7 +446,7 @@ bool ElementView::event(QEvent *e) {
  */
 bool ElementView::gestureEvent(QGestureEvent *event){
 	if (QGesture *gesture = event->gesture(Qt::PinchGesture)) {
-		QPinchGesture *pinch = static_cast<QPinchGesture *>(gesture);
+		auto *pinch = static_cast<QPinchGesture *>(gesture);
 		if (pinch->changeFlags() & QPinchGesture::ScaleFactorChanged){
 			qreal value = gesture->property("scaleFactor").toReal();
 			if (value > 1){
@@ -515,9 +515,9 @@ void ElementView::drawBackground(QPainter *p, const QRectF &r) {
 		qreal limite_x = r.x() + r.width();
 		qreal limite_y = r.y() + r.height();
 		
-		int g_x = (int)ceil(r.x());
+		auto g_x = (int)ceil(r.x());
 		while (g_x % drawn_x_grid) ++ g_x;
-		int g_y = (int)ceil(r.y());
+		auto g_y = (int)ceil(r.y());
 		while (g_y % drawn_y_grid) ++ g_y;
 		
 		for (int gx = g_x ; gx < limite_x ; gx += drawn_x_grid) {

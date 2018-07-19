@@ -227,7 +227,7 @@ void DiagramView::handleTitleBlockDrop(QDropEvent *e) {
 		QString integrated_template_name = tbt_loc.name();
 		if (mustIntegrateTitleBlockTemplate(tbt_loc))
 		{
-			IntegrationMoveTitleBlockTemplatesHandler *handler = new IntegrationMoveTitleBlockTemplatesHandler(this);
+			auto *handler = new IntegrationMoveTitleBlockTemplatesHandler(this);
 			//QString error_message;
 			integrated_template_name = m_diagram->project()->integrateTitleBlockTemplate(tbt_loc, handler);
 
@@ -507,7 +507,7 @@ bool DiagramView::gestureEvent(QGestureEvent *event)
 {
 	if (QGesture *gesture = event->gesture(Qt::PinchGesture))
 	{
-		QPinchGesture *pinch = static_cast<QPinchGesture *>(gesture);
+		auto *pinch = static_cast<QPinchGesture *>(gesture);
 		if (pinch->changeFlags() & QPinchGesture::ScaleFactorChanged)
 		{
 			qreal value = gesture->property("scaleFactor").toReal();
@@ -831,7 +831,7 @@ void DiagramView::editConductorColor(Conductor *edited_conductor)
 	ConductorProperties initial_properties = edited_conductor -> properties();
 
 		// prepare a color dialog showing the initial conductor color
-	QColorDialog *color_dialog = new QColorDialog(this);
+	auto *color_dialog = new QColorDialog(this);
 	color_dialog -> setWindowTitle(tr("Choisir la nouvelle couleur de ce conducteur"));
 #ifdef Q_OS_MAC
 	color_dialog -> setWindowFlags(Qt::Sheet);
@@ -850,7 +850,7 @@ void DiagramView::editConductorColor(Conductor *edited_conductor)
 			initial_properties.color = new_color;
 			new_value.setValue(initial_properties);
 
-			QPropertyUndoCommand *undo = new QPropertyUndoCommand(edited_conductor, "properties", old_value, new_value);
+			auto *undo = new QPropertyUndoCommand(edited_conductor, "properties", old_value, new_value);
 			undo->setText(tr("Modifier les propriétés d'un conducteur", "undo caption"));
 			diagram() -> undoStack().push(undo);
 		}
@@ -958,11 +958,11 @@ bool DiagramView::isCtrlShifting(QInputEvent *e) {
 	// note: QInputEvent::modifiers and QKeyEvent::modifiers() do not return the
 	// same values, hence the casts
 	if (e -> type() == QEvent::KeyPress || e -> type() == QEvent::KeyRelease) {
-		if (QKeyEvent *ke = static_cast<QKeyEvent *>(e)) {
+		if (auto *ke = static_cast<QKeyEvent *>(e)) {
 			result = (ke -> modifiers() == (Qt::ControlModifier | Qt::ShiftModifier));
 		}
 	} else if (e -> type() >= QEvent::MouseButtonPress && e -> type() <= QEvent::MouseMove) {
-		if (QMouseEvent *me = static_cast<QMouseEvent *>(e)) {
+		if (auto *me = static_cast<QMouseEvent *>(e)) {
 			result = (me -> modifiers() == (Qt::ControlModifier | Qt::ShiftModifier));
 		}
 	}
@@ -992,11 +992,11 @@ void DiagramView::editSelection() {
 		//We use dynamic_cast instead of qgraphicsitem_cast for QetGraphicsItem
 		//because they haven't got they own type().
 		//Use qgraphicsitem_cast will have weird behavior for this class.
-	if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(item))
+	if (auto *iti = qgraphicsitem_cast<IndependentTextItem *>(item))
 		iti -> edit();
-	else if (QetGraphicsItem *qgi = dynamic_cast<QetGraphicsItem *> (item))
+	else if (auto *qgi = dynamic_cast<QetGraphicsItem *> (item))
 		qgi -> editProperty();
-	else if (Conductor *c = qgraphicsitem_cast<Conductor *>(item))
+	else if (auto *c = qgraphicsitem_cast<Conductor *>(item))
 		c -> editProperty();
 }
 
@@ -1084,7 +1084,7 @@ void DiagramView::contextMenuEvent(QContextMenuEvent *e)
 	QList <QAction *> list = contextMenuActions();
 	if(!list.isEmpty())
 	{
-		QMenu *context_menu = new QMenu(this);
+		auto *context_menu = new QMenu(this);
 		context_menu->addActions(list);
 		context_menu->popup(e->globalPos());
 		e->accept();

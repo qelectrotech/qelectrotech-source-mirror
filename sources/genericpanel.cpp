@@ -579,7 +579,7 @@ void GenericPanel::projectDiagramsOrderChanged(QETProject *project, int from, in
 		QTreeWidgetItem *qtwi_diagram = qtwi_project -> child(i);
 		if (!qtwi_diagram) continue;
 
-		Diagram *diagram = valueForItem<Diagram *>(qtwi_diagram);
+		auto *diagram = valueForItem<Diagram *>(qtwi_diagram);
 		if (diagram)
 			updateDiagramItem(qtwi_diagram, diagram);
 	}
@@ -665,7 +665,7 @@ QIcon GenericPanel::defaultIcon(QET::ItemType type) {
 	@return the create QTreeWidgetItem
 */
 QTreeWidgetItem *GenericPanel::makeItem(QET::ItemType type, QTreeWidgetItem *parent, const QString &label, const QIcon &icon) {
-	QTreeWidgetItem *qtwi = new QTreeWidgetItem(parent, type);
+	auto *qtwi = new QTreeWidgetItem(parent, type);
 	qtwi -> setText(0, label.isEmpty() ? defaultText(type) : label);
 	qtwi -> setIcon(0, icon.isNull() ? defaultIcon(type) : icon);
 	return(qtwi);
@@ -745,7 +745,7 @@ template<typename T>
 void GenericPanel::removeObsoleteItems(const QList<T> &expected_items, QTreeWidgetItem *item, QET::ItemType type, bool recursive) {
 	// remove items not found in expected_items
 	foreach (QTreeWidgetItem *child_item, childItems(item, type, recursive)) {
-		T child_value = valueForItem<T>(child_item);
+		auto child_value = valueForItem<T>(child_item);
 		if (!expected_items.contains(child_value)) {
 			deleteItem(child_item);
 		}

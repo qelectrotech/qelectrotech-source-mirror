@@ -98,11 +98,11 @@ void ElementsPanel::startDrag(Qt::DropActions supportedActions) {
 void ElementsPanel::startTitleBlockTemplateDrag(const TitleBlockTemplateLocation &location) {
 	QString location_string = location.toString();
 	
-	QMimeData *mime_data = new QMimeData();
+	auto *mime_data = new QMimeData();
 	mime_data -> setText(location_string);
 	mime_data -> setData("application/x-qet-titleblock-uri", location_string.toLatin1());
 	
-	QDrag *drag = new QDrag(this);
+	auto *drag = new QDrag(this);
 	drag -> setMimeData(mime_data);
 	drag -> setPixmap(QET::Icons::TitleBlock.pixmap(22, 16));
 	drag -> start(Qt::CopyAction);
@@ -232,10 +232,10 @@ void ElementsPanel::reload(bool reload_collections) {
 void ElementsPanel::slot_doubleClick(QTreeWidgetItem *qtwi, int) {
 	int qtwi_type = qtwi -> type();
 	if (qtwi_type == QET::Project) {
-		QETProject *project = valueForItem<QETProject *>(qtwi);
+		auto *project = valueForItem<QETProject *>(qtwi);
 		emit(requestForProject(project));
 	} else if (qtwi_type == QET::Diagram) {
-		Diagram *diagram = valueForItem<Diagram *>(qtwi);
+		auto *diagram = valueForItem<Diagram *>(qtwi);
 		emit(requestForDiagram(diagram));
 	} else if (qtwi_type == QET::TitleBlockTemplate) {
 		TitleBlockTemplateLocation tbt = valueForItem<TitleBlockTemplateLocation>(qtwi);

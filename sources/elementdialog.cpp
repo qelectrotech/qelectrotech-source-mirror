@@ -53,7 +53,7 @@ void ElementDialog::setUpWidget()
 	setWindowFlags(Qt::Sheet);
 #endif
 
-	QVBoxLayout *layout = new QVBoxLayout(this);
+	auto *layout = new QVBoxLayout(this);
 
 	QString title_, label_;
 	switch (m_mode)
@@ -142,7 +142,7 @@ void ElementDialog::setUpConnection()
  */
 void ElementDialog::indexClicked(const QModelIndex &index)
 {
-	ElementCollectionItem *eci = static_cast<ElementCollectionItem*> (m_model->itemFromIndex(index));
+	auto *eci = static_cast<ElementCollectionItem*> (m_model->itemFromIndex(index));
 	m_location = ElementsLocation(eci->collectionPath());
 	checkCurrentLocation();
 }
@@ -300,7 +300,7 @@ ElementsLocation ElementDialog::getSaveElementLocation(QWidget *parentWidget) {
  */
 ElementsLocation ElementDialog::execConfiguredDialog(int mode, QWidget *parentWidget)
 {
-	ElementDialog *element_dialog = new ElementDialog(mode, parentWidget);
+	auto *element_dialog = new ElementDialog(mode, parentWidget);
 	element_dialog->exec();
 	ElementsLocation location = element_dialog->location();
 	delete element_dialog;

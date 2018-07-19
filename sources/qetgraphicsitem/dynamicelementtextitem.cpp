@@ -218,7 +218,7 @@ ElementTextItemGroup *DynamicElementTextItem::parentGroup() const
 {
 	if(parentItem())
 	{
-		if(ElementTextItemGroup *grp = dynamic_cast<ElementTextItemGroup *>(parentItem()))
+		if(auto *grp = dynamic_cast<ElementTextItemGroup *>(parentItem()))
 		   return grp;
 	}
 	

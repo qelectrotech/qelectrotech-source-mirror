@@ -28,8 +28,8 @@
  * @param parent : parent widget of this dialog
  */
 ProjectPropertiesDialog::ProjectPropertiesDialog(QETProject *project, QWidget *parent) {
-    NewDiagramPage *newDiagramPage = new NewDiagramPage(project,parent,this);
-    ProjectAutoNumConfigPage *projectAutoNumConfigPage = new ProjectAutoNumConfigPage (project);
+    auto *newDiagramPage = new NewDiagramPage(project,parent,this);
+    auto *projectAutoNumConfigPage = new ProjectAutoNumConfigPage (project);
 	m_properties_dialog = new ConfigDialog (parent);
 	m_properties_dialog -> setWindowTitle(QObject::tr("Propriétés du projet", "window title"));
 	m_properties_dialog -> addPage(new ProjectMainConfigPage       (project));
@@ -72,6 +72,6 @@ void ProjectPropertiesDialog::setCurrentPage(ProjectPropertiesDialog::Page p) {
  * Change the current displayed tab to folio tab.
  */
 void ProjectPropertiesDialog::changeToFolio() {
-	ProjectAutoNumConfigPage *autoNumPage = static_cast <ProjectAutoNumConfigPage*>(m_properties_dialog->pages.at(2));
+	auto *autoNumPage = static_cast <ProjectAutoNumConfigPage*>(m_properties_dialog->pages.at(2));
 	autoNumPage->changeToTab(3);
 }

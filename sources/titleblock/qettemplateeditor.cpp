@@ -246,7 +246,7 @@ bool QETTitleBlockTemplateEditor::edit(QETProject *project, const QString &templ
 */
 bool QETTitleBlockTemplateEditor::edit(const QString &file_path) {
 	// get title block template object from the file, edit it
-	TitleBlockTemplate *tbt = new TitleBlockTemplate();
+	auto *tbt = new TitleBlockTemplate();
 	bool loading = tbt -> loadFromXmlFile(file_path);
 	if (!loading) {
 		/// TODO the file opening failed, warn the user?
@@ -301,7 +301,7 @@ void QETTitleBlockTemplateEditor::editLogos() {
 		logo_manager_ -> layout() -> setContentsMargins(0, 0, 0, 0);
 		QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Close);
 		
-		QVBoxLayout *vlayout0 = new QVBoxLayout();
+		auto *vlayout0 = new QVBoxLayout();
 		vlayout0 -> addWidget(logo_manager_);
 		vlayout0 -> addWidget(buttons);
 		
@@ -320,7 +320,7 @@ void QETTitleBlockTemplateEditor::editLogos() {
 	Launch a new title block template editor.
 */
 void QETTitleBlockTemplateEditor::newTemplate() {
-	QETTitleBlockTemplateEditor *qet_template_editor = new QETTitleBlockTemplateEditor();
+	auto *qet_template_editor = new QETTitleBlockTemplateEditor();
 	qet_template_editor -> edit(TitleBlockTemplateLocation());
 	qet_template_editor -> show();
 }
@@ -882,7 +882,7 @@ TitleBlockTemplateLocation QETTitleBlockTemplateEditor::getTitleBlockTemplateLoc
 	}
 	QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	
-	QVBoxLayout *dialog_layout = new QVBoxLayout();
+	auto *dialog_layout = new QVBoxLayout();
 	dialog_layout -> addWidget(widget);
 	dialog_layout -> addWidget(buttons);
 	
@@ -932,7 +932,7 @@ void QETTitleBlockTemplateEditor::editTemplateInformation() {
 #endif
 	dialog_author.setMinimumSize(400, 260);
 	dialog_author.setWindowTitle(tr("Éditer les informations complémentaires", "window title"));
-	QVBoxLayout *dialog_layout = new QVBoxLayout(&dialog_author);
+	auto *dialog_layout = new QVBoxLayout(&dialog_author);
 	
 	// explanation label
 	QLabel *information_label = new QLabel(tr("Vous pouvez utiliser ce champ libre pour mentionner les auteurs du cartouche, sa licence, ou tout autre renseignement que vous jugerez utile."));
@@ -941,7 +941,7 @@ void QETTitleBlockTemplateEditor::editTemplateInformation() {
 	dialog_layout -> addWidget(information_label);
 	
 	// add a QTextEdit to the dialog
-	QTextEdit *text_field = new QTextEdit();
+	auto *text_field = new QTextEdit();
 	text_field -> setAcceptRichText(false);
 	text_field -> setPlainText(tb_template_ -> information());
 	text_field -> setReadOnly(read_only_);

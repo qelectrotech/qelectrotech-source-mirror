@@ -238,7 +238,7 @@ void ImportElementTextPattern::apply(QString name) const
 		//Add the texts to element
 	for(const QDomElement& text : texts)
 	{
-		DynamicElementTextItem *deti = new DynamicElementTextItem(m_element);
+		auto *deti = new DynamicElementTextItem(m_element);
 		undo_stack.push(new AddElementTextCommand(m_element, deti));
 		deti->fromXml(text);
 	}

@@ -156,7 +156,7 @@ void ElementPropertiesEditorWidget::populateTree()
 	
 	for(const QString& key : keys)
 	{
-		QTreeWidgetItem *qtwi = new QTreeWidgetItem(ui->m_tree);
+		auto *qtwi = new QTreeWidgetItem(ui->m_tree);
 		qtwi->setFlags(Qt::ItemIsEnabled | Qt::ItemIsEditable);
 		qtwi->setData(0, Qt::DisplayRole, QETApp::elementTranslatedInfoKey(key));
 		qtwi->setData(0, Qt::UserRole, key);

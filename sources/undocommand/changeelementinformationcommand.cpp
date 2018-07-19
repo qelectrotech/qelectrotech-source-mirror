@@ -38,7 +38,7 @@ ChangeElementInformationCommand::ChangeElementInformationCommand(Element *elmt, 
 bool ChangeElementInformationCommand::mergeWith(const QUndoCommand *other)
 {
 	if (id() != other->id()) return false;
-	ChangeElementInformationCommand const *undo = static_cast<const ChangeElementInformationCommand*>(other);
+	auto const *undo = static_cast<const ChangeElementInformationCommand*>(other);
 	if (m_element != undo->m_element) return false;
 	m_new_info = undo->m_new_info;
 	return true;

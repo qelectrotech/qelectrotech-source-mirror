@@ -242,7 +242,7 @@ void ElementsCollectionWidget::customContextMenu(const QPoint &point)
 	if (eci->type() == FileElementCollectionItem::Type)
 	{
 		add_open_dir = true;
-		FileElementCollectionItem *feci = static_cast<FileElementCollectionItem*>(eci);
+		auto *feci = static_cast<FileElementCollectionItem*>(eci);
 		if (!feci->isCommonCollection())
 		{
 			if (feci->isDir())
@@ -261,7 +261,7 @@ void ElementsCollectionWidget::customContextMenu(const QPoint &point)
 	}
 	if (eci->type() == XmlProjectElementCollectionItem::Type)
 	{
-		XmlProjectElementCollectionItem *xpeci = static_cast<XmlProjectElementCollectionItem *>(eci);
+		auto *xpeci = static_cast<XmlProjectElementCollectionItem *>(eci);
 		if (xpeci->isCollectionRoot())
 			add_open_dir = true;
 	}
@@ -404,7 +404,7 @@ void ElementsCollectionWidget::editDirectory()
 
 	if (eci->type() != FileElementCollectionItem::Type) return;
 
-	FileElementCollectionItem *feci = static_cast<FileElementCollectionItem*>(eci);
+	auto *feci = static_cast<FileElementCollectionItem*>(eci);
 	if(feci->isCommonCollection()) return;
 
 	ElementsLocation location(feci->collectionPath());
@@ -424,7 +424,7 @@ void ElementsCollectionWidget::newDirectory()
 
 	if (eci->type() != FileElementCollectionItem::Type) return;
 
-	FileElementCollectionItem *feci = static_cast<FileElementCollectionItem*>(eci);
+	auto *feci = static_cast<FileElementCollectionItem*>(eci);
 	if(feci->isCommonCollection()) return;
 
 	ElementsLocation location(feci->collectionPath());
@@ -445,7 +445,7 @@ void ElementsCollectionWidget::newElement()
 		return;
 	}
 
-	FileElementCollectionItem *feci = static_cast<FileElementCollectionItem*>(eci);
+	auto *feci = static_cast<FileElementCollectionItem*>(eci);
 	if(feci->isCommonCollection()) {
 		return;
 	}
@@ -533,7 +533,7 @@ void ElementsCollectionWidget::dirProperties()
 void ElementsCollectionWidget::reload()
 {
 	m_progress_bar->show();
-	ElementsCollectionModel *new_model = new ElementsCollectionModel(m_tree_view);
+	auto *new_model = new ElementsCollectionModel(m_tree_view);
 
 	QList <QETProject *> project_list;
 	project_list.append(m_waiting_project);
