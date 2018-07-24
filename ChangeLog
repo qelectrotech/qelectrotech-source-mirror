@@ -7,6 +7,7 @@ When the search function is searching in a terminal element, they search only fo
 So the list of conductors at the same potential is missing some conductors.
 This commit fix it, now the search function search for every terminals of a terminal element 
 * Backport commit 5311, 5312 : elements connections change propertie to terminal, fixed by commit svn 5307 
+* GCC 8.1 fix
 
 
 
