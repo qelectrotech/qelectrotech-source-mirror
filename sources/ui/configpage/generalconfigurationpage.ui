@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>916</width>
-    <height>747</height>
+    <width>827</width>
+    <height>779</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -38,6 +38,64 @@
        <widget class="QCheckBox" name="m_use_system_color_cb">
         <property name="text">
          <string>Utiliser les couleurs du système</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_5">
+     <property name="title">
+      <string>Collections d'éléments</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_8">
+        <property name="text">
+         <string>Chemin de la collection utilisateur</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>Chemin de la collection commune</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="m_common_elmt_path_cb">
+        <item>
+         <property name="text">
+          <string>Par defaut</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Parcourir...</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QComboBox" name="m_custom_elmt_path_cb">
+        <item>
+         <property name="text">
+          <string>Par defaut</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Parcourir...</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>(Recharger les collections d'éléments pour appliquer les changements)</string>
         </property>
        </widget>
       </item>

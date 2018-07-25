@@ -61,6 +61,24 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_highlight_integrated_elements->setChecked(settings.value("diagrameditor/highlight-integrated-elements", true).toBool());
 	ui->m_default_elements_info->setPlainText(settings.value("elementeditor/default-informations", "").toString());
 	
+	QString path = settings.value("elements-collections/common-collection-path", "default").toString();
+	if (path != "default")
+	{
+		ui->m_common_elmt_path_cb->blockSignals(true);
+		ui->m_common_elmt_path_cb->setCurrentIndex(1);
+		ui->m_common_elmt_path_cb->setItemData(1, path, Qt::DisplayRole);
+		ui->m_common_elmt_path_cb->blockSignals(false);
+	}
+
+	path = settings.value("elements-collections/custom-collection-path", "default").toString();
+	if (path != "default")
+	{
+		ui->m_custom_elmt_path_cb->blockSignals(true);
+		ui->m_custom_elmt_path_cb->setCurrentIndex(1);
+		ui->m_custom_elmt_path_cb->setItemData(1, path, Qt::DisplayRole);
+		ui->m_custom_elmt_path_cb->blockSignals(false);
+	}
+	
 	fillLang();
 }
 
@@ -97,6 +115,28 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue("genericpanel/folio",ui->m_use_folio_label->isChecked());
 	settings.setValue("nomenclature/terminal-exportlist",ui->m_export_terminal->isChecked());
 	settings.setValue("diagrameditor/autosave-interval", ui->m_autosave_sb->value());
+	
+	if (ui->m_common_elmt_path_cb->currentIndex() == 1)
+	{
+		QString path = ui->m_common_elmt_path_cb->currentText();
+		QDir dir(path);
+		settings.setValue("elements-collections/common-collection-path",
+						  dir.exists() ? path : "default");
+	}
+	else {
+		settings.setValue("elements-collections/common-collection-path", "default");
+	}
+	
+	if (ui->m_custom_elmt_path_cb->currentIndex() == 1)
+	{
+		QString path = ui->m_custom_elmt_path_cb->currentText();
+		QDir dir(path);
+		settings.setValue("elements-collections/custom-collection-path",
+						  dir.exists() ? path : "default");
+	}
+	else {
+		settings.setValue("elements-collections/custom-collection-path", "default");
+	}
 }
 
 /**
@@ -200,5 +240,34 @@ void GeneralConfigurationPage::on_m_folio_list_pb_clicked()
                             settings.value("foliolistsize").toString() + " (" +
                             settings.value("folioliststyle").toString() + ")";
         ui->m_folio_list_pb->setText(fontInfos);
+	}
+}
+
+#include <QFileDialog>
+void GeneralConfigurationPage::on_m_common_elmt_path_cb_currentIndexChanged(int index)
+{
+    if (index == 1)
+	{
+		QString path = QFileDialog::getExistingDirectory(this, tr("Chemin de la collection commune"), QDir::homePath());
+		if (!path.isEmpty()) {
+			ui->m_common_elmt_path_cb->setItemData(1, path, Qt::DisplayRole);
+		}
+		else {
+			ui->m_common_elmt_path_cb->setCurrentIndex(0);
+		}
+	}
+}
+
+void GeneralConfigurationPage::on_m_custom_elmt_path_cb_currentIndexChanged(int index)
+{
+    if (index == 1)
+	{
+		QString path = QFileDialog::getExistingDirectory(this, tr("Chemin de la collection utilisateur"), QDir::homePath());
+		if (!path.isEmpty()) {
+			ui->m_custom_elmt_path_cb->setItemData(1, path, Qt::DisplayRole);
+		}
+		else {
+			ui->m_custom_elmt_path_cb->setCurrentIndex(0);
+		}
 	}
 }

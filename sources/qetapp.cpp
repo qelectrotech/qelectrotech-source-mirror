@@ -59,6 +59,7 @@ RecentFiles *QETApp::m_projects_recent_files = nullptr;
 RecentFiles *QETApp::m_elements_recent_files = nullptr;
 TitleBlockTemplate *QETApp::default_titleblock_template_ = nullptr;
 
+
 /**
 	Constructeur
 	@param argc Nombre d'arguments passes a l'application
@@ -455,12 +456,23 @@ QString QETApp::userName() {
 #endif
 }
 
+
 /**
-	Renvoie le dossier des elements communs, c-a-d le chemin du dossier dans
-	lequel QET doit chercher les definitions XML des elements de la collection QET.
-	@return Le chemin du dossier des elements communs
-*/
-QString QETApp::commonElementsDir() {
+ * @brief QETApp::commonElementsDir
+ * @return the dir path of the common elements collection.
+ */
+QString QETApp::commonElementsDir()
+{
+	QSettings settings;
+	QString path = settings.value("elements-collections/common-collection-path", "default").toString();
+	if (path != "default" && !path.isEmpty())
+	{
+		QDir dir(path);
+		if (dir.exists()) {
+			return path;
+		}
+	}
+	
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 	if (common_elements_dir != QString()) return(common_elements_dir);
 #endif
@@ -479,12 +491,21 @@ QString QETApp::commonElementsDir() {
 }
 
 /**
-	Renvoie le dossier des elements de l'utilisateur, c-a-d le chemin du dossier
-	dans lequel QET chercher les definitions XML des elements propres a
-	l'utilisateur.
-	@return Le chemin du dossier des elements persos
-*/
-QString QETApp::customElementsDir() {
+ * @brief QETApp::customElementsDir
+ * @return the dir path of user elements collection
+ */
+QString QETApp::customElementsDir()
+{
+	QSettings settings;
+	QString path = settings.value("elements-collections/custom-collection-path", "default").toString();
+	if (path != "default" && !path.isEmpty())
+	{
+		QDir dir(path);
+		if (dir.exists()) {
+			return path;
+		}
+	}
+	
 	return(configDir() + "elements/");
 }
 
