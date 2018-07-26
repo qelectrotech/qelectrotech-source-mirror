@@ -2598,36 +2598,36 @@ Tekst og nummer inddata er også tilgængelig.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="50"/>
         <source>Collections d&apos;éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Samling af symboler</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="56"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="265"/>
         <source>Chemin de la collection utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translation>Sti til brugertilpasset samling</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="63"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="251"/>
         <source>Chemin de la collection commune</source>
-        <translation type="unfinished"></translation>
+        <translation>Sti til fælles samling</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="71"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="85"/>
         <source>Par defaut</source>
-        <translation type="unfinished"></translation>
+        <translation>Standard</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="76"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="90"/>
         <source>Parcourir...</source>
-        <translation type="unfinished"></translation>
+        <translation>Gennemse...</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="98"/>
         <source>(Recharger les collections d&apos;éléments pour appliquer les changements)</source>
-        <translation type="unfinished"></translation>
+        <translation>(Genindlæs symbol samling for at anvende ændringer)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="108"/>
@@ -7657,17 +7657,17 @@ Vil du erstatte den?</translation>
     <message>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="42"/>
         <source>Dimensions :</source>
-        <translation type="unfinished"></translation>
+        <translation>Størrelse:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="49"/>
         <source>y</source>
-        <translation type="unfinished">y</translation>
+        <translation>y</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="86"/>
         <source>Coin supérieur gauche :</source>
-        <translation type="unfinished"></translation>
+        <translation>Øverste venstre hjørne:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="93"/>
@@ -7678,12 +7678,12 @@ Vil du erstatte den?</translation>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="103"/>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="133"/>
         <source>Arrondi :</source>
-        <translation type="unfinished"></translation>
+        <translation>Afrunde hjørner:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="113"/>
         <source>x</source>
-        <translation type="unfinished">x</translation>
+        <translation>x</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="32"/>
