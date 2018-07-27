@@ -463,6 +463,7 @@ QString QETApp::userName() {
  */
 QString QETApp::commonElementsDir()
 {
+#ifndef Q_OS_MAC
 	QSettings settings;
 	QString path = settings.value("elements-collections/common-collection-path", "default").toString();
 	if (path != "default" && !path.isEmpty())
@@ -472,7 +473,8 @@ QString QETApp::commonElementsDir()
 			return path;
 		}
 	}
-	
+#endif
+
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 	if (common_elements_dir != QString()) return(common_elements_dir);
 #endif
@@ -496,6 +498,7 @@ QString QETApp::commonElementsDir()
  */
 QString QETApp::customElementsDir()
 {
+#ifndef Q_OS_MAC
 	QSettings settings;
 	QString path = settings.value("elements-collections/custom-collection-path", "default").toString();
 	if (path != "default" && !path.isEmpty())
@@ -505,7 +508,7 @@ QString QETApp::customElementsDir()
 			return path;
 		}
 	}
-	
+#endif
 	return(configDir() + "elements/");
 }
 
