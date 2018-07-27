@@ -386,7 +386,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="156"/>
         <source>Update Policy</source>
-        <translation>Opdater retningslinjer</translation>
+        <translation>Opdatere retningslinjer</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="171"/>
@@ -398,7 +398,7 @@
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="275"/>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="353"/>
         <source>Only New</source>
-        <translation>Kun ny</translation>
+        <translation>Ny</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="178"/>
@@ -412,7 +412,7 @@
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="307"/>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="383"/>
         <source>Disable</source>
-        <translation>Deaktiver</translation>
+        <translation>Deaktivere</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="246"/>
@@ -423,7 +423,7 @@
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="198"/>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="291"/>
         <source>Only Existent</source>
-        <translation>Kun eksisterende</translation>
+        <translation>Eksisterende</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="346"/>
@@ -466,9 +466,9 @@
 Note: These options DO NOT allow or block Auto Numberings, only their Update Policy.</source>
         <translation>I denne menu kan man angive om autonummereringer skal opdateres eller ej. For symbol autonummerering er der 4 muligheder for opdaterings retningslinjer:
 -Begge: ny og eksisterende symbol etiketter bliver opdateret. Dette er standardindstillingen.
--Opdater kun ny: kun ny oprettede symboler bliver opdateret. Eksisterende symbol etiketter vil blive fastfrosset.
--Opdater kun eksisterende: kun eksisterende symboler bliver opdateret. Nye symboler bliver tildelt deres formel men vil ikke opdatere når de først er oprettet.
--Deaktiver: ny og eksisterende symbol etiketter bliver ikke opdateret. Dette gælder også for nye ark.
+-Opdatere kun ny: kun ny oprettede symboler bliver opdateret. Eksisterende symbol etiketter vil blive fastfrosset.
+-Opdatere kun eksisterende: kun eksisterende symboler bliver opdateret. Nye symboler bliver tildelt deres formel men vil ikke opdatere når de først er oprettet.
+-Deaktivere: ny og eksisterende symbol etiketter bliver ikke opdateret. Dette gælder også for nye ark.
 Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun deres opdaterings retningslinjer.</translation>
     </message>
 </context>
@@ -2642,7 +2642,7 @@ Tekst og nummer inddata er også tilgængelig.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="180"/>
         <source>Désactivé</source>
-        <translation>Deaktiverer</translation>
+        <translation>Deaktiveret</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="183"/>
@@ -4801,7 +4801,7 @@ python -m pip install --upgrade qet_tb_generator
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="465"/>
         <source>&amp;Ouvrir</source>
-        <translation>&amp;Åbn</translation>
+        <translation>&amp;Åbne</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="889"/>
@@ -4943,7 +4943,7 @@ python -m pip install --upgrade qet_tb_generator
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="686"/>
         <source>&amp;Récemment ouverts</source>
-        <translation>&amp;Senest åbnede</translation>
+        <translation>&amp;Seneste åbnet</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="814"/>
@@ -5283,7 +5283,7 @@ python -m pip install --upgrade qet_tb_generator
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="142"/>
         <source>&amp;Ouvrir</source>
-        <translation>&amp;Åbn</translation>
+        <translation>&amp;Åbne</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="145"/>
@@ -5545,7 +5545,7 @@ python -m pip install --upgrade qet_tb_generator
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="359"/>
         <source>&amp;Récemment ouverts</source>
-        <translation>&amp;Senest åbnede</translation>
+        <translation>&amp;Seneste åbnet</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="370"/>
@@ -5669,7 +5669,7 @@ python -m pip install --upgrade qet_tb_generator
         <location filename="../sources/editor/qetelementeditor.cpp" line="1522"/>
         <source>Impossible d&apos;ouvrir le fichier %1.</source>
         <comment>message box content</comment>
-        <translation>Kan ikke åbne filen %1.</translation>
+        <translation>Kan ikke åbne fil %1.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="798"/>
@@ -6173,7 +6173,7 @@ betingelser ikke gyldig</translation>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
-        <translation>Dokumentet er gemt med en nyere version af QElectroTech. Det er muligt at åbningen af alle eller nogle objekter vil mislykkes.
+        <translation>Dokumentet er gemt med en nyere version af QElectroTech. Det er muligt at åbning af alle eller nogle objekter vil mislykkes.
 Hvad skal ske?</translation>
     </message>
     <message>
@@ -6276,7 +6276,7 @@ Hvad skal ske?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="333"/>
         <source>&amp;Ouvrir</source>
         <comment>menu entry</comment>
-        <translation>&amp;Åbn</translation>
+        <translation>&amp;Åbne</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="334"/>
