@@ -80,6 +80,12 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	}
 	
 	fillLang();
+	
+#ifdef Q_OS_MACOS
+	ui->m_common_elmt_path_cb ->setDisabled(true);
+	ui->m_custom_elmt_path_cb ->setDisabled(true);
+#endif
+	
 }
 
 GeneralConfigurationPage::~GeneralConfigurationPage()
