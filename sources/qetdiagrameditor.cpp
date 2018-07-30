@@ -184,7 +184,7 @@ void QETDiagramEditor::setUpElementsCollectionWidget()
  */
 void QETDiagramEditor::setUpUndoStack() {
 
-	auto *undo_view = new QUndoView(&undo_group, this);
+	QUndoView *undo_view = new QUndoView(&undo_group, this);
 
 	undo_view -> setEmptyLabel (tr("Aucune modification"));
 	undo_view -> setStatusTip  (tr("Cliquez sur une action pour revenir en arrière dans l'édition de votre schéma", "Status tip"));
@@ -849,7 +849,7 @@ void QETDiagramEditor::saveAs() {
  */
 bool QETDiagramEditor::newProject() {
 	// create new project without diagram
-	auto *new_project = new QETProject(0);
+	QETProject *new_project = new QETProject(0);
 	
 	// Set default properties for new diagram
 	new_project -> setDefaultBorderProperties	  (BorderProperties::    defaultProperties());
@@ -1009,7 +1009,7 @@ bool QETDiagramEditor::openAndAddProject(const QString &filepath, bool interacti
 		//Create the project
 	DialogWaiting::instance(this);
 	
-	auto *project = new QETProject(filepath);
+	QETProject *project = new QETProject(filepath);
 	if (project -> state() != QETProject::Ok)
 	{
 		if (interactive && project -> state() != QETProject::FileOpenDiscard)
@@ -1048,7 +1048,7 @@ bool QETDiagramEditor::addProject(QETProject *project, bool update_panel) {
 	QETApp::registerProject(project);
 	
 	// cree un ProjectView pour visualiser le projet
-	auto *project_view = new ProjectView(project);
+	ProjectView *project_view = new ProjectView(project);
 	addProjectView(project_view);
 
 	undo_group.addStack(project -> undoStack());
@@ -1072,7 +1072,7 @@ QList<ProjectView *> QETDiagramEditor::openedProjects() const {
 	QList<ProjectView *> result;
 	QList<QMdiSubWindow *> window_list(m_workspace.subWindowList());
 	foreach(QMdiSubWindow *window, window_list) {
-		if (auto *project_view = qobject_cast<ProjectView *>(window -> widget())) {
+		if (ProjectView *project_view = qobject_cast<ProjectView *>(window -> widget())) {
 			result << project_view;
 		}
 	}
@@ -1090,7 +1090,7 @@ ProjectView *QETDiagramEditor::currentProjectView() const {
 	QWidget *current_widget = current_window -> widget();
 	if (!current_widget) return(nullptr);
 	
-	if (auto *project_view = qobject_cast<ProjectView *>(current_widget)) {
+	if (ProjectView *project_view = qobject_cast<ProjectView *>(current_widget)) {
 		return(project_view);
 	}
 	return(nullptr);
@@ -1284,7 +1284,7 @@ void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 		diagram_event = new DiagramEventAddShape (d, QetShapeItem::Polygon);
 	else if (value == "image")
 	{
-		auto *deai = new DiagramEventAddImage(d);
+		DiagramEventAddImage *deai = new DiagramEventAddImage(d);
 		if (deai->isNull())
 		{
 			delete deai;
@@ -1326,7 +1326,7 @@ void QETDiagramEditor::selectionGroupTriggered(QAction *action)
 	}
 	else if (value == "rotate_selection")
 	{
-		auto *c = new RotateSelectionCommand(diagram);
+		RotateSelectionCommand *c = new RotateSelectionCommand(diagram);
 		if(c->isValid())
 			diagram->undoStack().push(c);
 	}
@@ -1697,7 +1697,7 @@ ProjectView *QETDiagramEditor::acessCurrentProject (){
 	QWidget *current_widget = current_window -> widget();
 	if (!current_widget) return(nullptr);
 
-	if (auto *project_view = qobject_cast<ProjectView *>(current_widget)) {
+	if (ProjectView *project_view = qobject_cast<ProjectView *>(current_widget)) {
 	return(project_view);
 	}
 	return(nullptr);
@@ -1752,7 +1752,7 @@ void QETDiagramEditor::slot_updateWindowsMenu() {
 	m_previous_window    -> setEnabled(windows.count() > 1);
 	
 	if (!windows.isEmpty()) windows_menu -> addSeparator();
-	auto *windows_actions = new QActionGroup(this);
+	QActionGroup *windows_actions = new QActionGroup(this);
 	foreach(ProjectView *project_view, windows) {
 		QString pv_title = project_view -> windowTitle();
 		QAction *action  = windows_menu -> addAction(pv_title);
@@ -2072,7 +2072,7 @@ void QETDiagramEditor::removeDiagramFromProject() {
 			  // remove one (last) folio sheet.
 			} else if (current_project -> diagram_views().size() % 58 == 0) {
 				foreach (DiagramView *diag, current_project -> diagram_views()) {
-					auto *ptr = dynamic_cast<DiagramFolioList *>(diag -> diagram());
+					DiagramFolioList *ptr = dynamic_cast<DiagramFolioList *>(diag -> diagram());
 					if (ptr && ptr -> getId() == current_project -> project() -> getFolioSheetsQuantity() - 1) {
 						current_project -> removeDiagram(diag);
 					}
@@ -2170,7 +2170,7 @@ void QETDiagramEditor::selectionChanged()
 void QETDiagramEditor::generateTerminalBlock()
 {
 	bool success;
-	auto *process = new QProcess(qApp);
+	QProcess *process = new QProcess(qApp);
 	
 		// If launched under control:
 		//connect(process, SIGNAL(errorOcurred(int error)), this, SLOT(slot_generateTerminalBlock_error()));

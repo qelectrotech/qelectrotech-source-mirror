@@ -74,11 +74,11 @@ void NewElementWizard::preselectedLocation(const ElementsLocation &location)
  */
 QWizardPage *NewElementWizard::buildStep1()
 {
-	auto *page = new QWizardPage();
+	QWizardPage *page = new QWizardPage();
 	page -> setProperty("WizardState", Category);
 	page -> setTitle(tr("Étape 1/3 : Catégorie parente", "wizard page title"));
 	page -> setSubTitle(tr("Sélectionnez une catégorie dans laquelle enregistrer le nouvel élément.", "wizard page subtitle"));
-	auto *layout = new QVBoxLayout();
+	QVBoxLayout *layout = new QVBoxLayout();
 
 	m_tree_view = new QTreeView(this);
 
@@ -100,11 +100,11 @@ QWizardPage *NewElementWizard::buildStep1()
  * @return
  */
 QWizardPage *NewElementWizard::buildStep2() {
-	auto *page = new QWizardPage();
+	QWizardPage *page = new QWizardPage();
 	page -> setProperty("WizardState", Filename);
 	page -> setTitle(tr("Étape 2/3 : Nom du fichier", "wizard page title"));
 	page -> setSubTitle(tr("Indiquez le nom du fichier dans lequel enregistrer le nouvel élément.", "wizard page subtitle"));
-	auto *layout = new QVBoxLayout();
+	QVBoxLayout *layout = new QVBoxLayout();
 	
 	m_qle_filename = new QFileNameEdit(tr("nouvel_element"));
 	m_qle_filename -> selectAll();
@@ -124,11 +124,11 @@ QWizardPage *NewElementWizard::buildStep2() {
  * @return
  */
 QWizardPage *NewElementWizard::buildStep3() {
-	auto *page = new QWizardPage();
+	QWizardPage *page = new QWizardPage();
 	page -> setProperty("WizardState", Names);
 	page -> setTitle(tr("Étape 3/3 : Noms de l'élément", "wizard page title"));
 	page -> setSubTitle(tr("Indiquez le ou les noms de l'élément.", "wizard page subtitle"));
-	auto *layout = new QVBoxLayout();
+	QVBoxLayout *layout = new QVBoxLayout();
 	
 	m_names_list = new NamesListWidget();
 	NamesList hash_name;
@@ -170,7 +170,7 @@ bool NewElementWizard::validStep1()
 	QModelIndex index = m_tree_view->currentIndex();
 	if (index.isValid()) {
 
-		auto *eci = static_cast<ElementCollectionItem*>(m_model->itemFromIndex(index));
+		ElementCollectionItem *eci = static_cast<ElementCollectionItem*>(m_model->itemFromIndex(index));
 		if (eci && eci->isDir()) {
 			ElementsLocation loc(eci->collectionPath());
 			if (loc.exist()) {
@@ -226,7 +226,7 @@ bool NewElementWizard::validStep2() {
  * Lauch an element editor for create the new element
  */
 void NewElementWizard::createNewElement() {
-	auto *edit_new_element = new QETElementEditor(parentWidget());
+	QETElementEditor *edit_new_element = new QETElementEditor(parentWidget());
 	edit_new_element -> setNames(m_names_list -> names());
 
 	ElementsLocation loc_ = m_chosen_location;

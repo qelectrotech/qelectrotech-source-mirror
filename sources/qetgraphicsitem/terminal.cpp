@@ -150,7 +150,7 @@ Terminal::~Terminal() {
 	@return L'orientation actuelle de la Terminal.
 */
 Qet::Orientation Terminal::orientation() const {
-	if (auto *elt = qgraphicsitem_cast<Element *>(parentItem())) {
+	if (Element *elt = qgraphicsitem_cast<Element *>(parentItem())) {
 		// orientations actuelle et par defaut de l'element
 		int ori_cur = elt -> orientation();
 		if (ori_cur == 0) return(ori_);
@@ -431,7 +431,7 @@ Terminal* Terminal::alignedWithTerminal() const
 	QList <Terminal *>  available_terminals;
 	foreach (QGraphicsItem *qgi, qgi_list)
 	{
-		if (auto *tt = qgraphicsitem_cast <Terminal *> (qgi))
+		if (Terminal *tt = qgraphicsitem_cast <Terminal *> (qgi))
 		{
 				//Call QET::lineContainsPoint to be sure the line intersect
 				//the dock point and not an other part of terminal
@@ -539,7 +539,7 @@ void Terminal::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	// sinon on prend le deuxieme element de la liste et on verifie s'il s'agit d'une borne
 	QGraphicsItem *qgi = qgis.at(1);
 	// si le qgi est une borne...
-	auto *other_terminal = qgraphicsitem_cast<Terminal *>(qgi);
+	Terminal *other_terminal = qgraphicsitem_cast<Terminal *>(qgi);
 	if (!other_terminal) return;
 	previous_terminal_ = other_terminal;
 	
@@ -576,7 +576,7 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 	if (!qgi) return;
 
 		//Element must be a terminal
-	auto *other_terminal = qgraphicsitem_cast<Terminal *>(qgi);
+	Terminal *other_terminal = qgraphicsitem_cast<Terminal *>(qgi);
 	if (!other_terminal) return;
 
 	other_terminal -> hovered_color_ = neutralColor;
@@ -586,7 +586,7 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 	if (!canBeLinkedTo(other_terminal)) return;
 
 		//Create conductor
-	auto *new_conductor = new Conductor(this, other_terminal);
+	Conductor *new_conductor = new Conductor(this, other_terminal);
 
 		//Get all conductors at the same potential of new conductors
 	QSet <Conductor *> conductors_list = new_conductor->relatedPotentialConductors();
@@ -606,7 +606,7 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 	}
 
 
-	auto *undo = new QUndoCommand();
+	QUndoCommand *undo = new QUndoCommand();
 	QUndoCommand *aic = new AddItemCommand<Conductor *>(new_conductor, diagram(), QPointF(), undo);
 	undo->setText(aic->text());
 

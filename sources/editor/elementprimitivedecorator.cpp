@@ -122,7 +122,7 @@ void ElementPrimitiveDecorator::setItems(const QList<QGraphicsItem *> &items)
 	QList<CustomElementPart *> primitives;
 	for(QGraphicsItem *item : items)
 	{
-		if (auto *part_item = dynamic_cast<CustomElementPart *>(item))
+		if (CustomElementPart *part_item = dynamic_cast<CustomElementPart *>(item))
 		{
 			primitives << part_item;
 		}
@@ -143,7 +143,7 @@ QList<CustomElementPart *> ElementPrimitiveDecorator::items() const {
 QList<QGraphicsItem *> ElementPrimitiveDecorator::graphicsItems() const {
 	QList<QGraphicsItem *> list;
 	foreach (CustomElementPart *part_item, decorated_items_) {
-		if (auto *item = dynamic_cast<QGraphicsItem *>(part_item)) {
+		if (QGraphicsItem *item = dynamic_cast<QGraphicsItem *>(part_item)) {
 			list << item;
 		}
 	}
@@ -555,7 +555,7 @@ void ElementPrimitiveDecorator::handlerMouseReleaseEvent(QetGraphicsHandlerItem 
 	ElementEditionCommand *command = nullptr;
 	if (current_operation_square_ > QET::NoOperation)
 	{
-		auto *scale_command = new ScalePartsCommand();
+		ScalePartsCommand *scale_command = new ScalePartsCommand();
 		scale_command -> setScaledPrimitives(items());
 		scale_command -> setTransformation(
 					mapToScene(original_bounding_rect_).boundingRect(),
@@ -717,7 +717,7 @@ bool ElementPrimitiveDecorator::sceneEventFilter(QGraphicsItem *watched, QEvent 
 	//Watched must be an handler
 	if(watched->type() == QetGraphicsHandlerItem::Type)
 	{
-		auto *qghi = qgraphicsitem_cast<QetGraphicsHandlerItem *>(watched);
+		QetGraphicsHandlerItem *qghi = qgraphicsitem_cast<QetGraphicsHandlerItem *>(watched);
 		
 		if(m_handler_vector.contains(qghi)) //Handler must be in m_vector_index, then we can start resize
 		{

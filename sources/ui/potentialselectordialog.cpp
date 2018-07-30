@@ -240,8 +240,8 @@ void PotentialSelectorDialog::buildWidget()
 	if(!cp2.m_tension_protocol.isEmpty())
 		text2.append(tr("\nTension/protocole : %1").arg(cp2.m_tension_protocol));
 			
-	auto *rb1 = new QRadioButton(text1, this);
-	auto *rb2 = new QRadioButton(text2, this);
+	QRadioButton *rb1 = new QRadioButton(text1, this);
+	QRadioButton *rb2 = new QRadioButton(text2, this);
 
 	connect(rb1, &QRadioButton::toggled, [this](bool t)
 	{

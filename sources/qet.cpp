@@ -626,7 +626,7 @@ QET::QetCollection QET::qetCollectionFromString(const QString &str)
  */
 QActionGroup *QET::depthActionGroup(QObject *parent)
 {
-	auto *action_group = new QActionGroup(parent);
+	QActionGroup *action_group = new QActionGroup(parent);
 
 	QAction *edit_forward  = new QAction(QET::Icons::BringForward, QObject::tr("Amener au premier plan"), action_group);	
 	QAction *edit_raise    = new QAction(QET::Icons::Raise,        QObject::tr("Rapprocher"),             action_group);

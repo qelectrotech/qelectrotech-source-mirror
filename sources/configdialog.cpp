@@ -41,11 +41,11 @@ ConfigDialog::ConfigDialog(QWidget *parent) : QDialog(parent) {
 	buttons = new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel);
 	
 	// layouts
-	auto *hlayout1 = new QHBoxLayout();
+	QHBoxLayout *hlayout1 = new QHBoxLayout();
 	hlayout1 -> addWidget(pages_list);
 	hlayout1 -> addWidget(pages_widget);
 	
-	auto *vlayout1 = new QVBoxLayout();
+	QVBoxLayout *vlayout1 = new QVBoxLayout();
 	vlayout1 -> addLayout(hlayout1);
 	vlayout1 -> addWidget(buttons);
 	setLayout(vlayout1);
@@ -80,7 +80,7 @@ void ConfigDialog::buildPagesList() {
 	Add the \a page ConfigPage to this configuration dialog.
 */
 void ConfigDialog::addPageToList(ConfigPage *page) {
-	auto *new_button = new QListWidgetItem(pages_list);
+	QListWidgetItem *new_button = new QListWidgetItem(pages_list);
 	new_button -> setIcon(page -> icon());
 	new_button -> setText(page -> title());
 	new_button -> setTextAlignment(Qt::AlignHCenter);

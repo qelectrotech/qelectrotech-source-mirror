@@ -48,7 +48,7 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
     setWindowTitle(tr("Propriétés du folio", "window title"));
 
 	//Border widget
-	auto *border_infos = new BorderPropertiesWidget(border, this);
+	BorderPropertiesWidget *border_infos = new BorderPropertiesWidget(border, this);
 	border_infos -> setReadOnly(diagram_is_read_only);
 
 	//Title block widget
@@ -78,7 +78,7 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 	connect(&boutons, SIGNAL(accepted()), this, SLOT(accept()));
 	connect(&boutons, SIGNAL(rejected()), this, SLOT(reject()));
 	
-	auto *glayout = new QGridLayout;
+	QGridLayout *glayout = new QGridLayout;
 	glayout->addWidget(border_infos,0,0);
 	glayout->addWidget(titleblock_infos, 1, 0);
 	glayout->addWidget(m_cpw, 0, 1, 0, 1);

@@ -40,7 +40,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	if(tabbed)
 		ui->m_use_tab_mode_rb->setChecked(true);
 	else
-		ui->m_use_windows_mode_rb->setChecked(true);
+	ui->m_use_windows_mode_rb->setChecked(true);
 	ui->m_zoom_out_beyond_folio->setChecked(settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool());
 	ui->m_use_gesture_trackpad->setChecked(settings.value("diagramview/gestures", false).toBool());
 	ui->m_save_label_paste->setChecked(settings.value("diagramcommands/erase-label-on-copy", true).toBool());
@@ -81,10 +81,9 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	
 	fillLang();
 	
-#ifdef Q_OS_MACOS
+	   //@todo: fix me " Load time from elements is very slow " -> Disable dialog buttons for define the file system path of the common and custom elements 
 	ui->m_common_elmt_path_cb ->setDisabled(true);
 	ui->m_custom_elmt_path_cb ->setDisabled(true);
-#endif
 	
 }
 

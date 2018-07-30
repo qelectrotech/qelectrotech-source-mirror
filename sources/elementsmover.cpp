@@ -128,7 +128,7 @@ void ElementsMover::endMovement()
 	if (!movement_running_) return;
 
 		//empty command to be used has parent of commands below
-	auto *undo_object = new QUndoCommand();
+	QUndoCommand *undo_object = new QUndoCommand();
 
 		//Create undo move if there is a movement
 	if (!current_movement_.isNull()) {
@@ -151,7 +151,7 @@ void ElementsMover::endMovement()
 		{
 			QPair <Terminal *, Terminal *> pair = elmt -> AlignedFreeTerminals().takeFirst();
 
-			auto *conductor = new Conductor(pair.first, pair.second);
+			Conductor *conductor = new Conductor(pair.first, pair.second);
 
 				//Create an undo object for each new auto conductor, with undo_object for parent
 			new AddItemCommand<Conductor *>(conductor, diagram_, QPointF(), undo_object);

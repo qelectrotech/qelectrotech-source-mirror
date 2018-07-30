@@ -127,7 +127,7 @@ void DiagramPropertiesEditorDockWidget::selectionChanged()
 		}
 		case DynamicElementTextItem::Type:
 		{
-			auto *deti = static_cast<DynamicElementTextItem *>(item);
+			DynamicElementTextItem *deti = static_cast<DynamicElementTextItem *>(item);
 			
 				//For dynamic element text, we open the element editor to edit it
 				//If we already edit an element, just update the editor with a new element
@@ -144,7 +144,7 @@ void DiagramPropertiesEditorDockWidget::selectionChanged()
 		}
 		case QGraphicsItemGroup::Type:
 		{
-			if(auto *group = dynamic_cast<ElementTextItemGroup *>(item))
+			if(ElementTextItemGroup *group = dynamic_cast<ElementTextItemGroup *>(item))
 			{
 					//For element text item group, we open the element editor to edit it
 					//If we already edit an element, just update the editor with a new element

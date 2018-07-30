@@ -62,8 +62,8 @@ void diagramselection::load_TableDiagram() {
 	
 	// List Diagrams
 	for(int i=0,j=0; i<list_diagram_.count(); i++,j++){
-		auto *item_Name  = new QTableWidgetItem();
-		auto *item_State = new QTableWidgetItem();
+		QTableWidgetItem *item_Name  = new QTableWidgetItem();
+		QTableWidgetItem *item_State = new QTableWidgetItem();
 
 		QString diagram_title = list_diagram_.at(i) -> title();
         if (diagram_title.isEmpty()) diagram_title = tr("Folio sans titre");

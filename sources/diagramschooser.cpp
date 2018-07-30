@@ -164,7 +164,7 @@ void DiagramsChooser::updateList() {
 		QString diagram_title = diagram -> title();
         if (diagram_title.isEmpty()) diagram_title = tr("Folio sans titre");
 		
-		auto *checkbox = new QCheckBox(diagram_title);
+		QCheckBox *checkbox = new QCheckBox(diagram_title);
 		checkbox -> setSizePolicy(QSizePolicy(QSizePolicy::Preferred, QSizePolicy::Maximum));
 		checkbox -> setChecked(selected_diagrams.contains(diagram));
 		connect(checkbox, SIGNAL(toggled(bool)), this, SIGNAL(selectionChanged()));

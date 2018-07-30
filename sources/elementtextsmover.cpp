@@ -119,7 +119,7 @@ void ElementTextsMover::endMovement()
 	
 	for (QGraphicsItem *qgi : m_items_hash.keys())
 	{
-		if(auto *object = dynamic_cast<QObject *>(qgi))
+		if(QObject *object = dynamic_cast<QObject *>(qgi))
 		{
 			QPropertyUndoCommand *child_undo = new QPropertyUndoCommand(object, "pos", m_items_hash.value(qgi), qgi->pos(), undo);
 			child_undo->enableAnimation();

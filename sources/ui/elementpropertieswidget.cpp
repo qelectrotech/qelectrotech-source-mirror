@@ -84,7 +84,7 @@ ElementPropertiesWidget::ElementPropertiesWidget(ElementTextItemGroup *group, QW
 {
 	if(group->parentItem() && group->parentItem()->type() == Element::Type)
 	{
-		auto *elmt = static_cast<Element *>(group->parentItem());
+		Element *elmt = static_cast<Element *>(group->parentItem());
 		m_diagram = elmt->diagram();
 		buildGui();
 		setTextsGroup(group);
@@ -133,7 +133,7 @@ void ElementPropertiesWidget::setDynamicText(DynamicElementTextItem *text)
 		{
 			if (QString(aepew->metaObject()->className()) == "DynamicElementTextItemEditor")
 			{
-				auto *detie = static_cast<DynamicElementTextItemEditor *>(aepew);
+				DynamicElementTextItemEditor *detie = static_cast<DynamicElementTextItemEditor *>(aepew);
 				m_tab->setCurrentWidget(detie);
 				detie->setCurrentText(text);
 			}
@@ -156,7 +156,7 @@ void ElementPropertiesWidget::setTextsGroup(ElementTextItemGroup *group)
 		{
 			if (QString(aepew->metaObject()->className()) == "DynamicElementTextItemEditor")
 			{
-				auto *detie = static_cast<DynamicElementTextItemEditor *>(aepew);
+				DynamicElementTextItemEditor *detie = static_cast<DynamicElementTextItemEditor *>(aepew);
 				m_tab->setCurrentWidget(detie);
 				detie->setCurrentGroup(group);
 			}
@@ -216,7 +216,7 @@ bool ElementPropertiesWidget::setLiveEdit(bool live_edit)
  */
 void ElementPropertiesWidget::findInPanel()
 {
-	auto *custom_element = qobject_cast<CustomElement *>(m_element);
+	CustomElement *custom_element = qobject_cast<CustomElement *>(m_element);
 	if (custom_element && m_diagram)
 	{
 		m_diagram->findElementRequired(custom_element->location());
@@ -230,7 +230,7 @@ void ElementPropertiesWidget::findInPanel()
  */
 void ElementPropertiesWidget::editElement()
 {
-	auto *custom_element = qobject_cast<CustomElement *>(m_element);
+	CustomElement *custom_element = qobject_cast<CustomElement *>(m_element);
 	if (custom_element && m_diagram)
 	{
 		m_diagram->findElementRequired(custom_element->location());
@@ -246,7 +246,7 @@ void ElementPropertiesWidget::editElement()
 void ElementPropertiesWidget::buildGui()
 {
 	m_tab = new QTabWidget(this);
-	auto *main_layout = new QVBoxLayout(this);
+	QVBoxLayout *main_layout = new QVBoxLayout(this);
 	main_layout -> addWidget(m_tab);
 	setLayout(main_layout);
 }
@@ -342,8 +342,8 @@ void ElementPropertiesWidget::addGeneralWidget()
  */
 QWidget *ElementPropertiesWidget::generalWidget()
 {
-	auto *custom_element = qobject_cast<CustomElement *>(m_element);
-	auto  *ghost_element  = qobject_cast<GhostElement  *>(m_element);
+	CustomElement *custom_element = qobject_cast<CustomElement *>(m_element);
+	GhostElement  *ghost_element  = qobject_cast<GhostElement  *>(m_element);
 
 	// type de l'element
 	QString description_string;
@@ -371,7 +371,7 @@ QWidget *ElementPropertiesWidget::generalWidget()
 
 		// widget himself
 	QWidget *general_widget = new QWidget (m_tab);
-	auto *vlayout_ = new QVBoxLayout (general_widget);
+	QVBoxLayout *vlayout_ = new QVBoxLayout (general_widget);
 	general_widget -> setLayout(vlayout_);
 
 		//widget for the text
@@ -389,7 +389,7 @@ QWidget *ElementPropertiesWidget::generalWidget()
 	connect(find_in_panel, SIGNAL(clicked()), this, SLOT(findInPanel()));
 	QPushButton *edit_element = new QPushButton(QET::Icons::ElementEdit, tr("Éditer l'élément"), general_widget);
 	connect(edit_element, SIGNAL(clicked()), this, SLOT(editElement()));
-    auto *hlayout_ = new QHBoxLayout;
+    QHBoxLayout *hlayout_ = new QHBoxLayout;
 	hlayout_->addWidget(find_in_panel);
 	hlayout_->addWidget(edit_element);
 	vlayout_->addLayout(hlayout_);

@@ -673,8 +673,8 @@ DiagramPosition BorderTitleBlock::convertPosition(const QPointF &pos)
 		return (DiagramPosition("", 0));
 
 	QPointF relative_pos = pos - insideBorderRect().topLeft();
-	auto row_number    = int(ceil(relative_pos.x() / columnsWidth()));
-	auto column_number = int(ceil(relative_pos.y() / rowsHeight()));
+	int row_number    = int(ceil(relative_pos.x() / columnsWidth()));
+	int column_number = int(ceil(relative_pos.y() / rowsHeight()));
 	
 	QString letter = "A";
 	for (int i = 1 ; i < column_number ; ++ i)

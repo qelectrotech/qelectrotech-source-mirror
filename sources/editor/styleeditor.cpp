@@ -98,7 +98,7 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	
 	main_layout -> addWidget(new QLabel("<u>" + tr("Apparence :") + "</u> "));
 	
-	auto *color_layout = new QHBoxLayout();
+	QHBoxLayout *color_layout = new QHBoxLayout();
 	color_layout -> addWidget(new QLabel(tr("Contour :")), 0, Qt::AlignRight);
 	color_layout -> addWidget(outline_color);
 	color_layout -> addSpacing(10);
@@ -106,7 +106,7 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	color_layout -> addWidget(filling_color);
 	main_layout -> addLayout(color_layout);
 	
-	auto *style_layout = new QHBoxLayout();
+	QHBoxLayout *style_layout = new QHBoxLayout();
 	style_layout -> addWidget(new QLabel(tr("Style : ")), 0, Qt::AlignRight);
 	style_layout -> addWidget(line_style);
 	style_layout -> addSpacing(10);
@@ -205,7 +205,7 @@ bool StyleEditor::setPart(CustomElementPart *new_part) {
 		return(true);
 	}
 
-	if (auto *part_graphic = dynamic_cast<CustomElementGraphicPart *>(new_part))
+	if (CustomElementGraphicPart *part_graphic = dynamic_cast<CustomElementGraphicPart *>(new_part))
 	{
 		part = part_graphic;
 		updateForm();
@@ -237,7 +237,7 @@ bool StyleEditor::setParts(QList<CustomElementPart *> part_list)
 
 	foreach (CustomElementPart *cep, part_list)
 	{
-		if (auto *cegp = dynamic_cast<CustomElementGraphicPart *>(cep))
+		if (CustomElementGraphicPart *cegp = dynamic_cast<CustomElementGraphicPart *>(cep))
 			m_part_list << cegp;
 		else
 			return false;

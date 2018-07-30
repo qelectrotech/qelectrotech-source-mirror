@@ -75,7 +75,7 @@ ElementCollectionItem *ElementCollectionItem::childWithCollectionName(const QStr
 {
 	rowCount();
 	foreach (QStandardItem *qsi, directChilds()) {
-		auto *eci = static_cast<ElementCollectionItem *>(qsi);
+		ElementCollectionItem *eci = static_cast<ElementCollectionItem *>(qsi);
 		if (eci->name() == name)
 			return eci;
 	}
@@ -167,7 +167,7 @@ QList<ElementCollectionItem *> ElementCollectionItem::elementsDirectChild() cons
 	QList <ElementCollectionItem *> element_child;
 
 	foreach (QStandardItem *qsi, directChilds()) {
-		auto *eci = static_cast<ElementCollectionItem *>(qsi);
+		ElementCollectionItem *eci = static_cast<ElementCollectionItem *>(qsi);
 		if (eci->isElement())
 			element_child.append(eci);
 	}
@@ -184,7 +184,7 @@ QList<ElementCollectionItem *> ElementCollectionItem::directoriesDirectChild() c
 	QList <ElementCollectionItem *> dir_child;
 
 	foreach (QStandardItem *qsi, directChilds()) {
-		auto *eci = static_cast<ElementCollectionItem *>(qsi);
+		ElementCollectionItem *eci = static_cast<ElementCollectionItem *>(qsi);
 		if (eci->isDir())
 			dir_child.append(eci);
 	}
@@ -231,7 +231,7 @@ QList<ElementCollectionItem *> ElementCollectionItem::items() const
 	QList <ElementCollectionItem *> list;
 
 	for (int i=0 ; i<rowCount() ; i++) {
-		auto *eci = static_cast<ElementCollectionItem *>(child(i));
+		ElementCollectionItem *eci = static_cast<ElementCollectionItem *>(child(i));
 		list.append(eci);
 		list.append(eci->items());
 	}

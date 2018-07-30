@@ -62,7 +62,7 @@ LineEditor::LineEditor(QETElementEditor *editor, PartLine *line, QWidget *parent
 	end1_length = new QDoubleSpinBox();
 	end2_length = new QDoubleSpinBox();
 	
-	auto *grid = new QGridLayout();
+	QGridLayout *grid = new QGridLayout();
 	grid -> addWidget(new QLabel("x1"),        0, 0);
 	grid -> addWidget(x1,                      0, 1);
 	grid -> addWidget(new QLabel("y1"),        0, 2);
@@ -72,7 +72,7 @@ LineEditor::LineEditor(QETElementEditor *editor, PartLine *line, QWidget *parent
 	grid -> addWidget(new QLabel("y2"),        1, 2);
 	grid -> addWidget(y2,                      1, 3);
 	
-	auto *grid2 = new QGridLayout();
+	QGridLayout *grid2 = new QGridLayout();
 	grid2 -> addWidget(new QLabel(tr("Fin 1")), 0, 0);
 	grid2 -> addWidget(end1_type,               0, 1);
 	grid2 -> addWidget(end1_length,             0, 2);
@@ -80,7 +80,7 @@ LineEditor::LineEditor(QETElementEditor *editor, PartLine *line, QWidget *parent
 	grid2 -> addWidget(end2_type,               1, 1);
 	grid2 -> addWidget(end2_length,             1, 2);
 	
-	auto *v_layout = new QVBoxLayout(this);
+	QVBoxLayout *v_layout = new QVBoxLayout(this);
 	v_layout -> addWidget(style_);
 	v_layout -> addLayout(grid);
 	v_layout -> addLayout(grid2);
@@ -115,7 +115,7 @@ bool LineEditor::setPart(CustomElementPart *new_part)
 		style_ -> setPart(nullptr);
 		return(true);
 	}
-	if (auto *part_line = dynamic_cast<PartLine *>(new_part))
+	if (PartLine *part_line = dynamic_cast<PartLine *>(new_part))
 	{
 		if (part == part_line) return true;
 		if (part)

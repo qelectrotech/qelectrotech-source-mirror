@@ -236,16 +236,16 @@ void DiagramFolioList::buildGrid(QPainter *qp, const QRectF &rect, int rows, int
 	qreal y0 = tablesSpacing + rect.topLeft().y();
 
 	for (int i = 0; i < tables; ++i) {
-		auto *tableRect = new QRectF(x0, y0, tableWidth, rect.height() - 2*tablesSpacing);
+		QRectF *tableRect = new QRectF(x0, y0, tableWidth, rect.height() - 2*tablesSpacing);
 		qp->drawRect(*tableRect);
 		list_rectangles_.push_back(tableRect);
 		for (int j = 1; j < rows; ++j) {
-			auto *line = new QLineF(x0, y0 + j*rowHeight, x0 + tableWidth,y0 + j*rowHeight);
+			QLineF *line = new QLineF(x0, y0 + j*rowHeight, x0 + tableWidth,y0 + j*rowHeight);
 			qp->drawLine(*line);
 			list_lines_.push_back(line);
 		}
 		for (int j = 0; j < cols-1; ++j) {
-			auto *line = new QLineF(x0 + colWidths[j]*tableWidth, y0, x0 + colWidths[j]*tableWidth,y0 + rows*rowHeight);
+			QLineF *line = new QLineF(x0 + colWidths[j]*tableWidth, y0, x0 + colWidths[j]*tableWidth,y0 + rows*rowHeight);
 			qp->drawLine(*line);
 			list_lines_.push_back(line);
 			x0 += colWidths[j]*tableWidth;

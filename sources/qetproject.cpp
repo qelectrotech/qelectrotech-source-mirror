@@ -817,7 +817,7 @@ QDomDocument QETProject::toXml() {
 	for(Diagram *diagram : diagrams_list)
 	{
 		// Write the diagram to XML only if it is not of type DiagramFolioList.
-		auto *ptr = dynamic_cast<DiagramFolioList *>(diagram);
+		DiagramFolioList *ptr = dynamic_cast<DiagramFolioList *>(diagram);
 		if ( !ptr )
 		{
 			qDebug() << qPrintable(QString("QETProject::toXml() : exporting diagram \"%1\"").arg(diagram -> title())) << "[" << diagram << "]";
@@ -1099,7 +1099,7 @@ Diagram *QETProject::addNewDiagram() {
 	if (isReadOnly()) return(nullptr);
 	
 	// cree un nouveau schema
-	auto *diagram = new Diagram(this);
+	Diagram *diagram = new Diagram(this);
 	
 	// lui transmet les parametres par defaut
 	diagram -> border_and_titleblock.importBorder(defaultBorderProperties());
@@ -1325,7 +1325,7 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 		if (diagram_nodes.at(i).isElement())
 		{
 			QDomElement diagram_xml_element = diagram_nodes.at(i).toElement();
-			auto *diagram = new Diagram(this);
+			Diagram *diagram = new Diagram(this);
 			bool diagram_loading = diagram -> initFromXml(diagram_xml_element);
 			if (diagram_loading)
 			{

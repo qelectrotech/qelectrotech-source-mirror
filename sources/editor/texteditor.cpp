@@ -51,33 +51,33 @@ TextEditor::TextEditor(QETElementEditor *editor, PartText *text, QWidget *parent
 	qle_x -> setRange(-5000, 5000);
 	qle_y -> setRange(-5000, 5000);
 	
-	auto *main_layout = new QVBoxLayout();
+	QVBoxLayout *main_layout = new QVBoxLayout();
 	main_layout -> addWidget(new QLabel(tr("Position : ")));
 	
-	auto *position = new QHBoxLayout();
+	QHBoxLayout *position = new QHBoxLayout();
 	position -> addWidget(new QLabel(tr("x : ")));
 	position -> addWidget(qle_x                 );
 	position -> addWidget(new QLabel(tr("y : ")));
 	position -> addWidget(qle_y                 );
 	main_layout -> addLayout(position);
 	
-	auto *fs = new QHBoxLayout();
+	QHBoxLayout *fs = new QHBoxLayout();
 	fs -> addWidget(new QLabel(tr("Taille : ")));
 	fs -> addWidget(font_size);
 	main_layout -> addLayout(fs);
 	
-	auto *color_layout = new QHBoxLayout();
+	QHBoxLayout *color_layout = new QHBoxLayout();
 	color_layout -> addWidget(new QLabel(tr("Couleur : ")));
 	color_layout -> addWidget(black_color_);
 	color_layout -> addWidget(white_color_);
 	color_layout -> addStretch();
 	main_layout -> addLayout(color_layout);
 	
-	auto *t = new QHBoxLayout();
+	QHBoxLayout *t = new QHBoxLayout();
 	t -> addWidget(new QLabel(tr("Texte : ")));
 	t -> addWidget(qle_text);
 	
-	auto *rotation_angle_layout = new QHBoxLayout();
+	QHBoxLayout *rotation_angle_layout = new QHBoxLayout();
 	rotation_angle_layout -> addWidget(rotation_angle_label);
 	rotation_angle_layout -> addWidget(rotation_angle_);
 	
@@ -110,7 +110,7 @@ bool TextEditor::setPart(CustomElementPart *new_part)
 		part = nullptr;
 		return(true);
 	}
-	if (auto *part_text = dynamic_cast<PartText *>(new_part))
+	if (PartText *part_text = dynamic_cast<PartText *>(new_part))
 	{
 		if (part == part_text) return true;
 		part = part_text;

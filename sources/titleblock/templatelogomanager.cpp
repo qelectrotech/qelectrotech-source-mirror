@@ -154,7 +154,7 @@ void TitleBlockTemplateLogoManager::fillView() {
 				current_icon = QIcon(*svg_pixmap);
 			}
 		}
-		auto *qlwi = new QListWidgetItem(current_icon, logo_name);
+		QListWidgetItem *qlwi = new QListWidgetItem(current_icon, logo_name);
 		qlwi -> setTextAlignment(Qt::AlignBottom | Qt::AlignHCenter);
 		logos_view_ -> insertItem(0, qlwi);
 	}
@@ -192,18 +192,18 @@ QString TitleBlockTemplateLogoManager::confirmLogoName(const QString &initial_na
 			rd_label = new QLabel();
 			rd_label -> setWordWrap(true);
 			rd_input = new QLineEdit();
-			auto *rd_buttons = new QDialogButtonBox();
+			QDialogButtonBox *rd_buttons = new QDialogButtonBox();
 			QPushButton *replace_button = rd_buttons -> addButton(tr("Remplacer"), QDialogButtonBox::YesRole);
 			QPushButton *rename_button  = rd_buttons -> addButton(tr("Renommer"),  QDialogButtonBox::NoRole);
 			QPushButton *cancel_button  = rd_buttons -> addButton(QDialogButtonBox::Cancel);
 			
-			auto *rd_vlayout0 = new QVBoxLayout();
+			QVBoxLayout *rd_vlayout0 = new QVBoxLayout();
 			rd_vlayout0 -> addWidget(rd_label);
 			rd_vlayout0 -> addWidget(rd_input);
 			rd_vlayout0 -> addWidget(rd_buttons);
 			rename_dialog -> setLayout(rd_vlayout0);
 			
-			auto *signal_mapper = new QSignalMapper(rename_dialog);
+			QSignalMapper *signal_mapper = new QSignalMapper(rename_dialog);
 			signal_mapper -> setMapping(replace_button, QDialogButtonBox::YesRole);
 			signal_mapper -> setMapping(rename_button,  QDialogButtonBox::NoRole);
 			signal_mapper -> setMapping(cancel_button,  QDialogButtonBox::RejectRole);

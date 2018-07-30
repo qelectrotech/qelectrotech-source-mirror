@@ -42,10 +42,10 @@ QET::Action ImportElementDialog::action() const
 
 void ImportElementDialog::setUpWidget()
 {
-	auto *button_group = new QButtonGroup(this);
+	QButtonGroup *button_group = new QButtonGroup(this);
 	button_group->addButton(ui->m_use_actual_rd);
 	button_group->addButton(ui->m_use_drop_rb);
-	auto *button_group_drop = new QButtonGroup(this);
+	QButtonGroup *button_group_drop = new QButtonGroup(this);
 	button_group_drop->addButton(ui->m_erase_actual_rb);
 	button_group_drop->addButton(ui->m_use_both_rb);
 

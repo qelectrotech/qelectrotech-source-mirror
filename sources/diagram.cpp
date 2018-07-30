@@ -159,9 +159,9 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 		qreal limite_x = rect.x() + rect.width();
 		qreal limite_y = rect.y() + rect.height();
 		
-		auto g_x = (int)ceil(rect.x());
+		int g_x = (int)ceil(rect.x());
 		while (g_x % xGrid) ++ g_x;
-		auto g_y = (int)ceil(rect.y());
+		int g_y = (int)ceil(rect.y());
 		while (g_y % yGrid) ++ g_y;
 		
 		QPolygon points;
@@ -649,23 +649,23 @@ QDomDocument Diagram::toXml(bool whole_content) {
 	;
 	// Determine les elements a "XMLiser"
 	foreach(QGraphicsItem *qgi, list_items) {
-		if (auto *elmt = qgraphicsitem_cast<Element *>(qgi)) {
+		if (Element *elmt = qgraphicsitem_cast<Element *>(qgi)) {
 			if (whole_content) list_elements << elmt;
 			else if (elmt -> isSelected()) list_elements << elmt;
-		} else if (auto *f = qgraphicsitem_cast<Conductor *>(qgi)) {
+		} else if (Conductor *f = qgraphicsitem_cast<Conductor *>(qgi)) {
 			if (whole_content) list_conductors << f;
 			// lorsqu'on n'exporte pas tout le diagram, il faut retirer les conducteurs non selectionnes
 			// et pour l'instant, les conducteurs non selectionnes sont les conducteurs dont un des elements n'est pas selectionne
 			else if (f -> terminal1 -> parentItem() -> isSelected() && f -> terminal2 -> parentItem() -> isSelected()) {
 				list_conductors << f;
 			}
-		} else if (auto *iti = qgraphicsitem_cast<IndependentTextItem *>(qgi)) {
+		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(qgi)) {
 			if (whole_content) list_texts << iti;
 			else if (iti -> isSelected()) list_texts << iti;
-		} else if (auto *dii = qgraphicsitem_cast<DiagramImageItem *>(qgi)) {
+		} else if (DiagramImageItem *dii = qgraphicsitem_cast<DiagramImageItem *>(qgi)) {
 			if (whole_content) list_images << dii;
 			else if (dii -> isSelected()) list_images << dii;
-		} else if (auto *dsi = qgraphicsitem_cast<QetShapeItem *>(qgi)) {
+		} else if (QetShapeItem *dsi = qgraphicsitem_cast<QetShapeItem *>(qgi)) {
 			if (whole_content) list_shapes << dsi;
 			else if (dsi -> isSelected()) list_shapes << dsi;
 		}
@@ -920,7 +920,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 	// Load text
 	QList<IndependentTextItem *> added_texts;
 	foreach (QDomElement text_xml, QET::findInDomElement(root, "inputs", "input")) {
-		auto *iti = new IndependentTextItem();
+		IndependentTextItem *iti = new IndependentTextItem();
 		iti -> fromXml(text_xml);
 		addItem(iti);
 		added_texts << iti;
@@ -929,7 +929,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 	// Load image
 	QList<DiagramImageItem *> added_images;
 	foreach (QDomElement image_xml, QET::findInDomElement(root, "images", "image")) {
-		auto *dii = new DiagramImageItem ();
+		DiagramImageItem *dii = new DiagramImageItem ();
 		dii -> fromXml(image_xml);
 		addItem(dii);
 		added_images << dii;
@@ -959,7 +959,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 			Terminal *p2 = table_adr_id.value(id_p2);
 			if (p1 != p2)
 			{
-				auto *c = new Conductor(p1, p2);
+				Conductor *c = new Conductor(p1, p2);
 				if (c->isValid())
 				{
 					addItem(c);
@@ -1069,7 +1069,7 @@ void Diagram::addItem(QGraphicsItem *item)
 	{
 		case Conductor::Type:
 		{
-			auto *conductor = static_cast<Conductor *>(item);
+			Conductor *conductor = static_cast<Conductor *>(item);
 			conductor->terminal1->addConductor(conductor);
 			conductor->terminal2->addConductor(conductor);
 			conductor->calculateTextItemPosition();
@@ -1078,7 +1078,7 @@ void Diagram::addItem(QGraphicsItem *item)
 
 		case IndependentTextItem::Type:
 		{
-			const auto *text = static_cast<const IndependentTextItem *>(item);
+			const IndependentTextItem *text = static_cast<const IndependentTextItem *>(item);
 			connect(text, &IndependentTextItem::diagramTextChanged, this, &Diagram::diagramTextChanged);
 		}
 	}
@@ -1098,13 +1098,13 @@ void Diagram::removeItem(QGraphicsItem *item)
 	{
 		case Element::Type:
 		{
-			auto *elmt = static_cast<Element*>(item);
+			Element *elmt = static_cast<Element*>(item);
 			elmt->unlinkAllElements();
 		}
 			break;
 		case Conductor::Type:
 		{
-			auto *conductor = static_cast<Conductor *>(item);
+			Conductor *conductor = static_cast<Conductor *>(item);
 			conductor->terminal1->removeConductor(conductor);
 			conductor->terminal2->removeConductor(conductor);
 		}
@@ -1112,7 +1112,7 @@ void Diagram::removeItem(QGraphicsItem *item)
 
 		case IndependentTextItem::Type:
 		{
-			const auto *text = static_cast<const IndependentTextItem *>(item);
+			const IndependentTextItem *text = static_cast<const IndependentTextItem *>(item);
 			disconnect(text, &IndependentTextItem::diagramTextChanged, this, &Diagram::diagramTextChanged);
 		}
 	}
@@ -1456,7 +1456,7 @@ QString Diagram::title() const {
 QList<CustomElement *> Diagram::customElements() const {
 	QList<CustomElement *> elements_list;
 	foreach(QGraphicsItem *qgi, items()) {
-		if (auto *elmt = qgraphicsitem_cast<CustomElement *>(qgi)) {
+		if (CustomElement *elmt = qgraphicsitem_cast<CustomElement *>(qgi)) {
 			elements_list << elmt;
 		}
 	}
@@ -1466,7 +1466,7 @@ QList<CustomElement *> Diagram::customElements() const {
 QList <Element *> Diagram::elements() const {
 	QList<Element *> element_list;
 	foreach (QGraphicsItem *qgi, items()) {
-		if (auto *elmt = qgraphicsitem_cast<Element *>(qgi))
+		if (Element *elmt = qgraphicsitem_cast<Element *>(qgi))
 			element_list <<elmt;
 	}
 	return (element_list);
@@ -1479,7 +1479,7 @@ QList <Element *> Diagram::elements() const {
 QList <Conductor *> Diagram::conductors() const {
 	QList<Conductor *> cnd_list;
 	foreach (QGraphicsItem *qgi, items()) {
-		if (auto *cnd = qgraphicsitem_cast<Conductor *>(qgi))
+		if (Conductor *cnd = qgraphicsitem_cast<Conductor *>(qgi))
 			cnd_list <<cnd;
 	}
 	return (cnd_list);
@@ -1662,7 +1662,7 @@ QPointF Diagram::snapToGrid(const QPointF &p)
 */
 void Diagram::setDrawTerminals(bool dt) {
 	foreach(QGraphicsItem *qgi, items()) {
-		if (auto *t = qgraphicsitem_cast<Terminal *>(qgi)) {
+		if (Terminal *t = qgraphicsitem_cast<Terminal *>(qgi)) {
 			t -> setVisible(dt);
 		}
 	}
@@ -1683,7 +1683,7 @@ void Diagram::setDrawColoredConductors(bool dcc) {
 QSet<Conductor *> Diagram::selectedConductors() const {
 	QSet<Conductor *> conductors_set;
 	foreach(QGraphicsItem *qgi, selectedItems()) {
-		if (auto *c = qgraphicsitem_cast<Conductor *>(qgi)) {
+		if (Conductor *c = qgraphicsitem_cast<Conductor *>(qgi)) {
 			conductors_set << c;
 		}
 	}
@@ -1761,11 +1761,11 @@ bool Diagram::isReadOnly() const
 DiagramContent Diagram::content() const {
 	DiagramContent dc;
 	foreach(QGraphicsItem *qgi, items()) {
-		if (auto *e = qgraphicsitem_cast<Element *>(qgi)) {
+		if (Element *e = qgraphicsitem_cast<Element *>(qgi)) {
 			dc.m_elements << e;
-		} else if (auto *iti = qgraphicsitem_cast<IndependentTextItem *>(qgi)) {
+		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(qgi)) {
 			dc.m_text_fields << iti;
-		} else if (auto *c = qgraphicsitem_cast<Conductor *>(qgi)) {
+		} else if (Conductor *c = qgraphicsitem_cast<Conductor *>(qgi)) {
 			dc.m_conductors_to_move << c;
 		}
 	}

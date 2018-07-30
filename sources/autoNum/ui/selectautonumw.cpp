@@ -94,7 +94,7 @@ void SelectAutonumW::setContext(const NumerotationContext &context) {
 	}
 	else {
 		for (int i=0; i<m_context.size(); ++i) { //build with the content of @context
-			auto *part= new NumPartEditorW(m_context, i, m_edited_type, this);
+			NumPartEditorW *part= new NumPartEditorW(m_context, i, m_edited_type, this);
 			connect (part, SIGNAL(changed()), this, SLOT(applyEnable()));
 			num_part_list_ << part;
 			ui -> editor_layout -> addWidget(part);
@@ -125,7 +125,7 @@ NumerotationContext SelectAutonumW::toNumContext() const {
 void SelectAutonumW::on_add_button_clicked()
 {
 	applyEnable(false);
-	auto *part = new NumPartEditorW(m_edited_type, this);
+	NumPartEditorW *part = new NumPartEditorW(m_edited_type, this);
 	connect (part, SIGNAL(changed()), this, SLOT(applyEnable()));
 	num_part_list_ << part;
 	ui -> editor_layout -> addWidget(part);

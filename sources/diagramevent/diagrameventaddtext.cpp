@@ -45,7 +45,7 @@ bool DiagramEventAddText::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton)
     {
-        auto *text = new IndependentTextItem();
+        IndependentTextItem *text = new IndependentTextItem();
         m_diagram -> undoStack().push(new AddItemCommand<IndependentTextItem *>(text, m_diagram, event->scenePos()));
         text->setTextInteractionFlags(Qt::TextEditorInteraction);
         text->setFocus(Qt::MouseFocusReason);

@@ -66,7 +66,7 @@ void ElementTextItemGroup::addToGroup(QGraphicsItem *item)
 		QGraphicsItemGroup::addToGroup(item);
 		updateAlignment();
 		
-		auto *deti = qgraphicsitem_cast<DynamicElementTextItem *>(item);
+		DynamicElementTextItem *deti = qgraphicsitem_cast<DynamicElementTextItem *>(item);
 		connect(deti, &DynamicElementTextItem::fontSizeChanged,      this, &ElementTextItemGroup::updateAlignment);
 		connect(deti, &DynamicElementTextItem::textChanged,          this, &ElementTextItemGroup::updateAlignment);
 		connect(deti, &DynamicElementTextItem::textFromChanged,      this, &ElementTextItemGroup::updateAlignment);
@@ -96,7 +96,7 @@ void ElementTextItemGroup::removeFromGroup(QGraphicsItem *item)
 	item->setFlag(QGraphicsItem::ItemIsSelectable, true);
 	updateAlignment();
 	
-	if(auto *deti = qgraphicsitem_cast<DynamicElementTextItem *>(item))
+	if(DynamicElementTextItem *deti = qgraphicsitem_cast<DynamicElementTextItem *>(item))
 	{
 		disconnect(deti, &DynamicElementTextItem::fontSizeChanged,      this, &ElementTextItemGroup::updateAlignment);
 		disconnect(deti, &DynamicElementTextItem::textChanged,          this, &ElementTextItemGroup::updateAlignment);
@@ -780,7 +780,7 @@ void ElementTextItemGroup::autoPos()
 		if(!diagram())
 			return;
 		
-		auto *master = static_cast<MasterElement *>(m_parent_element);
+		MasterElement *master = static_cast<MasterElement *>(m_parent_element);
 		XRefProperties xrp = diagram()->project()->defaultXRefProperties(master->kindInformations()["type"].toString());
 		if(xrp.snapTo() == XRefProperties::Bottom)
 		{

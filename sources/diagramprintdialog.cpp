@@ -187,7 +187,7 @@ int DiagramPrintDialog::horizontalPagesCount(Diagram *diagram, const ExportPrope
 	QRect printable_area = fullpage ? printer_ -> paperRect() : printer_ -> pageRect();
 	QRect diagram_rect = diagramRect(diagram, options);
 	
-	auto h_pages_count = int(ceil(qreal(diagram_rect.width()) / qreal(printable_area.width())));
+	int h_pages_count = int(ceil(qreal(diagram_rect.width()) / qreal(printable_area.width())));
 	return(h_pages_count);
 }
 
@@ -203,7 +203,7 @@ int DiagramPrintDialog::verticalPagesCount(Diagram *diagram, const ExportPropert
 	QRect printable_area = fullpage ? printer_ -> paperRect() : printer_ -> pageRect();
 	QRect diagram_rect = diagramRect(diagram, options);
 	
-	auto v_pages_count = int(ceil(qreal(diagram_rect.height()) / qreal(printable_area.height())));
+	int v_pages_count = int(ceil(qreal(diagram_rect.height()) / qreal(printable_area.height())));
 	return(v_pages_count);
 }
 

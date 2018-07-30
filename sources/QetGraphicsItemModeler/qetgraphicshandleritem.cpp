@@ -82,7 +82,7 @@ QVector<QetGraphicsHandlerItem *> QetGraphicsHandlerItem::handlerForPoint(const 
     QVector <QetGraphicsHandlerItem *> list_;
     for (QPointF point : points)
     {
-        auto *qghi = new QetGraphicsHandlerItem(size);
+        QetGraphicsHandlerItem *qghi = new QetGraphicsHandlerItem(size);
         qghi->setPos(point);
         list_ << qghi;
     }

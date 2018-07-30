@@ -68,7 +68,7 @@ void ConductorPropertiesDialog::PropertiesDialog(Conductor *conductor, QWidget *
 	old_value.setValue(conductor->properties());
 	new_value.setValue(cpd.properties());
 
-	auto *undo = new QPropertyUndoCommand(conductor, "properties", old_value, new_value);
+	QPropertyUndoCommand *undo = new QPropertyUndoCommand(conductor, "properties", old_value, new_value);
 	undo->setText(tr("Modifier les propriétés d'un conducteur", "undo caption"));
 
 	if (!conductor->relatedPotentialConductors().isEmpty() && cpd.applyAll())

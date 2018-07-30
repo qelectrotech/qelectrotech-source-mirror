@@ -48,17 +48,17 @@ TerminalEditor::TerminalEditor(QETElementEditor *editor, PartTerminal *term, QWi
 	orientation -> addItem(QET::Icons::South, tr("Sud"),   Qet::South);
 	orientation -> addItem(QET::Icons::West,  tr("Ouest"), Qet::West);
 	
-	auto *main_layout = new QVBoxLayout();
+	QVBoxLayout *main_layout = new QVBoxLayout();
 	main_layout -> addWidget(new QLabel(tr("Position : ")));
 	
-	auto *position = new QHBoxLayout();
+	QHBoxLayout *position = new QHBoxLayout();
 	position -> addWidget(new QLabel(tr("x : ")));
 	position -> addWidget(qle_x                 );
 	position -> addWidget(new QLabel(tr("y : ")));
 	position -> addWidget(qle_y                 );
 	main_layout -> addLayout(position);
 	
-	auto *ori = new QHBoxLayout();
+	QHBoxLayout *ori = new QHBoxLayout();
 	ori -> addWidget(new QLabel(tr("Orientation : ")));
 	ori -> addWidget(orientation                     );
 	main_layout -> addLayout(ori);
@@ -91,7 +91,7 @@ bool TerminalEditor::setPart(CustomElementPart *new_part)
 		part = nullptr;
 		return(true);
 	}
-	if (auto *part_terminal = dynamic_cast<PartTerminal *>(new_part))
+	if (PartTerminal *part_terminal = dynamic_cast<PartTerminal *>(new_part))
 	{
 		if(part == part_terminal) return true;
 		if (part)

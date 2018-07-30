@@ -44,9 +44,9 @@ EllipseEditor::EllipseEditor(QETElementEditor *editor, PartEllipse *ellipse, QWi
 	h->setRange(-5000, 5000);
 	v->setRange(-5000, 5000);
 	
-	auto *v_layout = new QVBoxLayout(this);
+	QVBoxLayout *v_layout = new QVBoxLayout(this);
 	
-	auto *grid = new QGridLayout();
+	QGridLayout *grid = new QGridLayout();
 	grid -> addWidget(new QLabel(tr("Centre : ")),       0, 0);
 	grid -> addWidget(new QLabel("x"),                   1, 0, Qt::AlignRight);
 	grid -> addWidget(x,                                 1, 1);
@@ -88,7 +88,7 @@ bool EllipseEditor::setPart(CustomElementPart *new_part)
 		style_ -> setPart(nullptr);
 		return(true);
 	}
-	if (auto *part_ellipse = dynamic_cast<PartEllipse *>(new_part))
+	if (PartEllipse *part_ellipse = dynamic_cast<PartEllipse *>(new_part))
 	{
 		if (part == part_ellipse) return true;
 		if (part)

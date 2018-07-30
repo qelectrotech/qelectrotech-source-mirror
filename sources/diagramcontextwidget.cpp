@@ -183,7 +183,7 @@ void DiagramContextWidget::initWidgets() {
 	Initialize the layout of this widget.
 */
 void DiagramContextWidget::initLayout() {
-	auto *vlayout0 = new QVBoxLayout();
+	QVBoxLayout *vlayout0 = new QVBoxLayout();
 	vlayout0 -> setContentsMargins(0, 0, 0, 0);
 	vlayout0 -> addWidget(format_label);
 	vlayout0 -> addWidget(table_);

@@ -99,7 +99,7 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	);
 	
 	// disposition verticale
-	auto *vlayout = new QVBoxLayout(this);
+	QVBoxLayout *vlayout = new QVBoxLayout(this);
 	vlayout -> setMargin(0);
 	vlayout -> setSpacing(0);
 	vlayout -> addWidget(filter_textfield);

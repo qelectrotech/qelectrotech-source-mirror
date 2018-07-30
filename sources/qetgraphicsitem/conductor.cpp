@@ -696,7 +696,7 @@ bool Conductor::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 		//Watched must be an handler
 	if(watched->type() == QetGraphicsHandlerItem::Type)
 	{
-		auto *qghi = qgraphicsitem_cast<QetGraphicsHandlerItem *>(watched);
+		QetGraphicsHandlerItem *qghi = qgraphicsitem_cast<QetGraphicsHandlerItem *>(watched);
 		
 		if(m_handler_vector.contains(qghi)) //Handler must be in m_vector_index, then we can start resize
 		{
@@ -1352,7 +1352,7 @@ void Conductor::saveProfile(bool undo) {
 	conductor_profiles[current_path_type].fromConductor(this);
 	Diagram *dia = diagram();
 	if (undo && dia) {
-		auto *undo_object = new ChangeConductorCommand(
+		ChangeConductorCommand *undo_object = new ChangeConductorCommand(
 			this,
 			old_profile,
 			conductor_profiles[current_path_type],

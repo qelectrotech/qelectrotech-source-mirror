@@ -43,7 +43,7 @@ m_diagram(diagram)
 		texts_list << dti;
 		if(dti->type() == ConductorTextItem::Type)
 		{
-			auto *cti = static_cast<ConductorTextItem *>(dti);
+			ConductorTextItem *cti = static_cast<ConductorTextItem *>(dti);
 			m_cond_texts.insert(cti, cti->wasRotateByUser());
 		}
 	}
@@ -143,7 +143,7 @@ void RotateTextsCommand::setupAnimation(QObject *target, const QByteArray &prope
 	if(m_anim_group == nullptr)
 		m_anim_group = new QParallelAnimationGroup();
 	
-	auto *animation = new QPropertyAnimation(target, propertyName);
+	QPropertyAnimation *animation = new QPropertyAnimation(target, propertyName);
 	animation->setDuration(300);
 	animation->setStartValue(start);
 	animation->setEndValue(end);

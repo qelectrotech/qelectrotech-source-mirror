@@ -86,7 +86,7 @@ void DynamicElementTextItemEditor::apply()
 
 		if (undo->childCount() == 1)
 		{
-			auto *quc = new QPropertyUndoCommand(static_cast<const QPropertyUndoCommand *>(undo->child(0)));
+			QPropertyUndoCommand *quc = new QPropertyUndoCommand(static_cast<const QPropertyUndoCommand *>(undo->child(0)));
 			if (quc->text().isEmpty())
 				quc->setText(undo->text());
 			undo_list << quc;
@@ -105,7 +105,7 @@ void DynamicElementTextItemEditor::apply()
 		
 		if (undo->childCount() == 1)
 		{
-			auto *quc = new QPropertyUndoCommand(static_cast<const QPropertyUndoCommand *>(undo->child(0)));
+			QPropertyUndoCommand *quc = new QPropertyUndoCommand(static_cast<const QPropertyUndoCommand *>(undo->child(0)));
 			if (quc->text().isEmpty())
 				quc->setText(undo->text());
 			undo_list << quc;
@@ -201,7 +201,7 @@ void DynamicElementTextItemEditor::on_m_add_text_clicked()
     if (!m_element)
         return;
 	
-    auto *deti = new DynamicElementTextItem(m_element);
+    DynamicElementTextItem *deti = new DynamicElementTextItem(m_element);
 	if (m_element->diagram())
 	{
 		m_element->diagram()->undoStack().push(new AddElementTextCommand(m_element, deti));

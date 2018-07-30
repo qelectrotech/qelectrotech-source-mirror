@@ -40,7 +40,7 @@ AboutQET::AboutQET(QWidget *parent) :
 	setModal(true);
 
 
-	auto *tabs = new QTabWidget();
+	QTabWidget *tabs = new QTabWidget();
 	tabs -> addTab(aboutTab(),        tr("À &propos",          "tab title"));
 	tabs -> addTab(authorsTab(),      tr("A&uteurs",           "tab title"));
 	tabs -> addTab(translatorsTab(),  tr("&Traducteurs",       "tab title"));
@@ -52,11 +52,11 @@ AboutQET::AboutQET(QWidget *parent) :
 	connect(buttons, SIGNAL(accepted()), this, SLOT(accept()));
 	connect(buttons, SIGNAL(rejected()), this, SLOT(accept()));
 	
-	auto *vlayout = new QVBoxLayout(this);
+	QVBoxLayout *vlayout = new QVBoxLayout(this);
 	vlayout->addWidget(tabs);
 	vlayout->addWidget(buttons);
 	
-	auto* scrollArea = new QScrollArea(this);
+	QScrollArea* scrollArea = new QScrollArea(this);
 		scrollArea->setWidgetResizable(true);
 		scrollArea->setFixedSize (590, 590);
 		scrollArea->setWidget(tabs);
@@ -135,7 +135,7 @@ QWidget *AboutQET::authorsTab() const {
 	authors -> setTextFormat(Qt::RichText);
 
 	QWidget *authors_widget = new QWidget();
-	auto *authors_layout = new QHBoxLayout(authors_widget);
+	QHBoxLayout *authors_layout = new QHBoxLayout(authors_widget);
 	authors_layout -> addWidget(authors, 0, Qt::AlignCenter);
 	return(authors_widget);
 }
@@ -175,7 +175,7 @@ QWidget *AboutQET::translatorsTab() const {
 	translators -> setTextFormat(Qt::RichText);
 	
 	QWidget *translators_widget = new QWidget();
-	auto *translators_layout = new QHBoxLayout(translators_widget);
+	QHBoxLayout *translators_layout = new QHBoxLayout(translators_widget);
 	translators_layout -> addWidget(translators, 0, Qt::AlignCenter);
 	return(translators_widget);
 }
@@ -207,7 +207,7 @@ QWidget *AboutQET::contributorsTab() const {
 	contributors -> setTextFormat(Qt::RichText);
 	
 	QWidget *contributors_widget = new QWidget();
-	auto *contributors_layout = new QHBoxLayout(contributors_widget);
+	QHBoxLayout *contributors_layout = new QHBoxLayout(contributors_widget);
 	contributors_layout -> addWidget(contributors, 0, Qt::AlignCenter);
 	return(contributors_widget);
 }
@@ -221,12 +221,12 @@ QWidget *AboutQET::licenseTab() const {
 	QLabel *title_license = new QLabel(tr("Ce programme est sous licence GNU/GPL."));
 	
 	// Text of the GNU/GPL in a scrollable text box not editable
-	auto *text_license = new QTextEdit();
+	QTextEdit *text_license = new QTextEdit();
 	text_license -> setPlainText(QET::license());
 	text_license -> setReadOnly(true);
 	
 	// All in a vertical arrangement
-	auto *license_layout = new QVBoxLayout();
+	QVBoxLayout *license_layout = new QVBoxLayout();
 	license_layout -> addWidget(title_license);
 	license_layout -> addWidget(text_license);
 	license -> setLayout(license_layout);

@@ -138,7 +138,7 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(DynamicElementTextI
 	if (deti->textFrom() == DynamicElementTextItem::UserText) title = tr("Texte utilisateur");
 	else if (deti->textFrom() == DynamicElementTextItem::ElementInfo) title = tr("Information de l'élément");
 	else title =  tr("Texte composé");
-    auto *srca = new QStandardItem(title);
+    QStandardItem *srca = new QStandardItem(title);
     srca->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
     srca->setData(textFrom, Qt::UserRole+1);
     
@@ -192,7 +192,7 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(DynamicElementTextI
 	QStandardItem *size = new QStandardItem(tr("Taille"));
     size->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
     
-    auto *siza = new QStandardItem();
+    QStandardItem *siza = new QStandardItem();
     siza->setData(deti->fontSize(), Qt::EditRole);
     siza->setData(DynamicElementTextModel::size, Qt::UserRole+1);
     siza->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
@@ -205,7 +205,7 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(DynamicElementTextI
     QStandardItem *color = new QStandardItem(tr("Couleur"));
     color->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
     
-    auto *colora = new QStandardItem;
+    QStandardItem *colora = new QStandardItem;
     colora->setData(deti->color(), Qt::ForegroundRole);
     colora->setData(deti->color(), Qt::EditRole);
     colora->setData(DynamicElementTextModel::color, Qt::UserRole+1);
@@ -219,7 +219,7 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(DynamicElementTextI
 	QStandardItem *frame = new QStandardItem(tr("Cadre"));
 	frame->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 	
-	auto *frame_a = new QStandardItem;
+	QStandardItem *frame_a = new QStandardItem;
 	frame_a->setCheckable(true);
 	frame_a->setCheckState(deti->frame()? Qt::Checked : Qt::Unchecked);
 	frame_a->setData(DynamicElementTextModel::frame, Qt::UserRole+1);
@@ -233,7 +233,7 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(DynamicElementTextI
 	QStandardItem *width = new QStandardItem(tr("Largeur"));
 	width->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 	
-	auto *width_a = new QStandardItem;
+	QStandardItem *width_a = new QStandardItem;
 	width_a->setData(deti->textWidth(), Qt::EditRole);
 	width_a->setData(DynamicElementTextModel::textWidth, Qt::UserRole+1);
 	width_a->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
@@ -248,7 +248,7 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(DynamicElementTextI
 		QStandardItem *x_pos = new QStandardItem(tr("Position X"));
 		x_pos->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 		
-		auto *x_pos_a = new QStandardItem;
+		QStandardItem *x_pos_a = new QStandardItem;
 		x_pos_a->setData(deti->pos().x(), Qt::EditRole);
 		x_pos_a->setData(DynamicElementTextModel::pos, Qt::UserRole+1);
 		x_pos_a->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
@@ -261,7 +261,7 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(DynamicElementTextI
 		QStandardItem *y_pos = new QStandardItem(tr("Position Y"));
 		y_pos->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 		
-		auto *y_pos_a = new QStandardItem;
+		QStandardItem *y_pos_a = new QStandardItem;
 		y_pos_a->setData(deti->pos().y(), Qt::EditRole);
 		y_pos_a->setData(DynamicElementTextModel::pos, Qt::UserRole+1);
 		y_pos_a->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
@@ -274,7 +274,7 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(DynamicElementTextI
 		QStandardItem *rot = new QStandardItem(tr("Rotation"));
 		rot->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 		
-		auto *rot_a = new QStandardItem;
+		QStandardItem *rot_a = new QStandardItem;
 		rot_a->setData(deti->rotation(), Qt::EditRole);
 		rot_a->setData(DynamicElementTextModel::rotation, Qt::UserRole+1);
 		rot_a->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
@@ -299,7 +299,7 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(DynamicElementTextI
 	
 	
 	qsi_list.clear();
-	auto *empty_qsi = new QStandardItem(0);
+	QStandardItem *empty_qsi = new QStandardItem(0);
 	empty_qsi->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 	qsi_list << qsi << empty_qsi;
 	
@@ -620,7 +620,7 @@ void DynamicElementTextModel::addGroup(ElementTextItemGroup *group)
 	grp->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsDropEnabled | Qt::ItemIsEditable);
 	grp->setIcon(QET::Icons::textGroup);
 	
-	auto *empty_qsi = new QStandardItem(0);
+	QStandardItem *empty_qsi = new QStandardItem(0);
 	empty_qsi->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 	
 	QList<QStandardItem *> qsi_list;
@@ -640,7 +640,7 @@ void DynamicElementTextModel::addGroup(ElementTextItemGroup *group)
 		case Qt::AlignVCenter: text = tr("Centre"); break;
 		default: break;}
 	
-	auto *alignment_a = new QStandardItem(text);
+	QStandardItem *alignment_a = new QStandardItem(text);
 	alignment_a->setData(DynamicElementTextModel::grpAlignment, Qt::UserRole+1);
 	alignment_a->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
 	qsi_list.clear();
@@ -651,7 +651,7 @@ void DynamicElementTextModel::addGroup(ElementTextItemGroup *group)
 	QStandardItem *x_pos = new QStandardItem(tr("Position X"));
 	x_pos->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 	
-	auto *x_pos_a = new QStandardItem;
+	QStandardItem *x_pos_a = new QStandardItem;
 	x_pos_a->setData(group->pos().x(), Qt::EditRole);
 	x_pos_a->setData(DynamicElementTextModel::grpPos, Qt::UserRole+1);
 	x_pos_a->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
@@ -664,7 +664,7 @@ void DynamicElementTextModel::addGroup(ElementTextItemGroup *group)
 	QStandardItem *y_pos = new QStandardItem(tr("Position Y"));
 	y_pos->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 	
-	auto *y_pos_a = new QStandardItem;
+	QStandardItem *y_pos_a = new QStandardItem;
 	y_pos_a->setData(group->pos().y(), Qt::EditRole);
 	y_pos_a->setData(DynamicElementTextModel::grpPos, Qt::UserRole+1);
 	y_pos_a->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
@@ -677,7 +677,7 @@ void DynamicElementTextModel::addGroup(ElementTextItemGroup *group)
 	QStandardItem *rot = new QStandardItem(tr("Rotation"));
 	rot->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 	
-	auto *rot_a = new QStandardItem;
+	QStandardItem *rot_a = new QStandardItem;
 	rot_a->setData(group->rotation(), Qt::EditRole);
 	rot_a->setData(DynamicElementTextModel::grpRotation, Qt::UserRole+1);
 	rot_a->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
@@ -689,7 +689,7 @@ void DynamicElementTextModel::addGroup(ElementTextItemGroup *group)
 	QStandardItem *v_adj = new QStandardItem(tr("Ajustement vertical"));
 	v_adj->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable);
 	
-	auto *v_adj_a = new QStandardItem;
+	QStandardItem *v_adj_a = new QStandardItem;
 	v_adj_a->setData(group->verticalAdjustment(), Qt::EditRole);
 	v_adj_a->setData(DynamicElementTextModel::grpVAdjust, Qt::UserRole+1);
 	v_adj_a->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
@@ -701,7 +701,7 @@ void DynamicElementTextModel::addGroup(ElementTextItemGroup *group)
 	QStandardItem *frame_ = new QStandardItem(tr("Cadre"));
 	frame_->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable);
 	
-	auto *frame_a = new QStandardItem;
+	QStandardItem *frame_a = new QStandardItem;
 	frame_a->setCheckable(true);
 	frame_a->setCheckState(group->frame()? Qt::Checked : Qt::Unchecked);
 	frame_a->setData(DynamicElementTextModel::grpFrame, Qt::UserRole+1);
@@ -715,7 +715,7 @@ void DynamicElementTextModel::addGroup(ElementTextItemGroup *group)
 	QStandardItem *hold_bottom = new QStandardItem(tr("Maintenir en bas de page"));
 	hold_bottom->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable);
 	
-	auto *hold_bottom_a = new QStandardItem();
+	QStandardItem *hold_bottom_a = new QStandardItem();
 	hold_bottom_a->setCheckable(true);
 	hold_bottom_a->setCheckState(group->holdToBottomPage() ? Qt::Checked : Qt::Unchecked);
 	hold_bottom_a->setData(DynamicElementTextModel::grpHoldBottom, Qt::UserRole+1);
@@ -1046,7 +1046,7 @@ QMimeData *DynamicElementTextModel::mimeData(const QModelIndexList &indexes) con
 			DynamicElementTextItem *deti = m_texts_list.key(item);
 			if(deti)
 			{
-				auto *mime_data = new QMimeData();
+				QMimeData *mime_data = new QMimeData();
 				mime_data->setText(deti->uuid().toString());
 				mime_data->setData("application/x-qet-element-text-uuid", deti->uuid().toString().toLatin1());
 				return mime_data;
@@ -1421,7 +1421,7 @@ QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOpti
 	{
 		case DynamicElementTextModel::textFrom:
 		{
-			auto *qcb = new QComboBox(parent);
+			QComboBox *qcb = new QComboBox(parent);
 			qcb->setObjectName("text_from");
 			qcb->addItem(tr("Texte utilisateur"));
 			qcb->addItem(tr("Information de l'élément"));
@@ -1430,7 +1430,7 @@ QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOpti
 		}
 		case DynamicElementTextModel::infoText:
 		{
-			const auto *detm = static_cast<const DynamicElementTextModel *>(index.model());
+			const DynamicElementTextModel *detm = static_cast<const DynamicElementTextModel *>(index.model());
 			QStandardItem *qsi = detm->itemFromIndex(index);
 			
 			if(!qsi)
@@ -1447,7 +1447,7 @@ QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOpti
 				info_map.insert(QETApp::elementTranslatedInfoKey(str), str);
 			}
 			
-			auto *qcb = new QComboBox(parent);
+			QComboBox *qcb = new QComboBox(parent);
 			qcb->setObjectName("info_text");
 			for (const QString& key : info_map.keys()) {
 				qcb->addItem(key, info_map.value(key));
@@ -1456,7 +1456,7 @@ QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOpti
 		}
 		case DynamicElementTextModel::compositeText:
 		{
-			const auto *detm = static_cast<const DynamicElementTextModel *>(index.model());
+			const DynamicElementTextModel *detm = static_cast<const DynamicElementTextModel *>(index.model());
 			QStandardItem *qsi = detm->itemFromIndex(index);
 			
 			if(!qsi)
@@ -1466,13 +1466,13 @@ QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOpti
 			if(!deti)
 				break;
 			
-			auto *cted = new CompositeTextEditDialog(deti, parent);
+			CompositeTextEditDialog *cted = new CompositeTextEditDialog(deti, parent);
 			cted->setObjectName("composite_text");
 			return cted;
 		}
 		case DynamicElementTextModel::txtAlignment:
 		{
-			const auto *detm = static_cast<const DynamicElementTextModel *>(index.model());
+			const DynamicElementTextModel *detm = static_cast<const DynamicElementTextModel *>(index.model());
 			QStandardItem *qsi = detm->itemFromIndex(index);
 			
 			if(!qsi)
@@ -1488,7 +1488,7 @@ QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOpti
 		}
 		case DynamicElementTextModel::size:
 		{
-			auto *sb = new QSpinBox(parent);
+			QSpinBox *sb = new QSpinBox(parent);
 			sb->setObjectName("font_size");
 			sb->setFrame(false);
 			return sb;
@@ -1501,7 +1501,7 @@ QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOpti
 		}
 		case DynamicElementTextModel::pos:
 		{
-			auto *sb = new QSpinBox(parent);
+			QSpinBox *sb = new QSpinBox(parent);
 			sb->setObjectName("pos_dialog");
 			sb->setRange(-1000,10000);
 			sb->setFrame(false);
@@ -1510,7 +1510,7 @@ QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOpti
 		}
 		case DynamicElementTextModel::rotation:
 		{
-			auto *sb = new QSpinBox(parent);
+			QSpinBox *sb = new QSpinBox(parent);
 			sb->setObjectName("rot_spinbox");
 			sb->setRange(0, 359);
 			sb->setWrapping(true);
@@ -1520,7 +1520,7 @@ QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOpti
 		}
 		case DynamicElementTextModel::textWidth:
 		{
-			auto *sb = new QSpinBox(parent);
+			QSpinBox *sb = new QSpinBox(parent);
 			sb->setObjectName("width_spinbox");
 			sb->setRange(-1, 500);
 			sb->setFrame(false);
@@ -1529,7 +1529,7 @@ QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOpti
 		}
 		case DynamicElementTextModel::grpAlignment:
 		{
-			auto *qcb = new QComboBox(parent);
+			QComboBox *qcb = new QComboBox(parent);
 			qcb->setFrame(false);
 			qcb->setObjectName("group_alignment");
 			qcb->addItem(tr("Gauche"));
@@ -1539,7 +1539,7 @@ QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOpti
 		}
 		case DynamicElementTextModel::grpPos:
 		{
-			auto *sb = new QSpinBox(parent);
+			QSpinBox *sb = new QSpinBox(parent);
 			sb->setObjectName("group_pos");
 			sb->setRange(-1000,10000);
 			sb->setFrame(false);
@@ -1548,7 +1548,7 @@ QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOpti
 		}
 		case DynamicElementTextModel::grpRotation:
 		{
-			auto *sb = new QSpinBox(parent);
+			QSpinBox *sb = new QSpinBox(parent);
 			sb->setObjectName("group_rotation");
 			sb->setRange(0, 359);
 			sb->setWrapping(true);
@@ -1558,7 +1558,7 @@ QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOpti
 		}
 		case DynamicElementTextModel::grpVAdjust:
 		{
-			auto *sb = new QSpinBox(parent);
+			QSpinBox *sb = new QSpinBox(parent);
 			sb->setObjectName("group_v_adjustment");
 			sb->setRange(-20, 20);
 			sb->setFrame(false);
@@ -1575,11 +1575,11 @@ void DynamicTextItemDelegate::setModelData(QWidget *editor, QAbstractItemModel *
 	{
 		if(editor->objectName() == "color_dialog")
 		{
-			if (auto *qsim = dynamic_cast<QStandardItemModel *>(model))
+			if (QStandardItemModel *qsim = dynamic_cast<QStandardItemModel *>(model))
 			{
 				if(QStandardItem *qsi = qsim->itemFromIndex(index))
 				{
-					auto *cd = static_cast<QColorDialog *> (editor);
+					QColorDialog *cd = static_cast<QColorDialog *> (editor);
 					qsi->setData(cd->selectedColor(), Qt::EditRole);
 					qsi->setData(cd->selectedColor(), Qt::ForegroundRole);
 					return;
@@ -1589,11 +1589,11 @@ void DynamicTextItemDelegate::setModelData(QWidget *editor, QAbstractItemModel *
 		}
 		else if (editor->objectName() == "info_text")
 		{
-			if (auto *qsim = dynamic_cast<QStandardItemModel *>(model))
+			if (QStandardItemModel *qsim = dynamic_cast<QStandardItemModel *>(model))
 			{
 				if(QStandardItem *qsi = qsim->itemFromIndex(index))
 				{
-					auto *cb = static_cast<QComboBox *>(editor);
+					QComboBox *cb = static_cast<QComboBox *>(editor);
 					qsi->setData(cb->currentText(), Qt::DisplayRole);
 					qsi->setData(cb->currentData(), Qt::UserRole+2);
 					return;
@@ -1603,17 +1603,17 @@ void DynamicTextItemDelegate::setModelData(QWidget *editor, QAbstractItemModel *
 		}
 		else if (editor->objectName() == "composite_text")
 		{
-			if (auto *qsim = dynamic_cast<QStandardItemModel *>(model))
+			if (QStandardItemModel *qsim = dynamic_cast<QStandardItemModel *>(model))
 			{
 				if(QStandardItem *qsi = qsim->itemFromIndex(index))
 				{
 					
-					auto *cted = static_cast<CompositeTextEditDialog *>(editor);
+					CompositeTextEditDialog *cted = static_cast<CompositeTextEditDialog *>(editor);
 					
 					QString edited_text = cted->plainText();
 					QString assigned_text;
 					
-					const auto *detm = static_cast<const DynamicElementTextModel *>(index.model());
+					const DynamicElementTextModel *detm = static_cast<const DynamicElementTextModel *>(index.model());
 					DynamicElementTextItem *deti = detm->textFromIndex(index);
 					if(deti)
 					{
@@ -1631,11 +1631,11 @@ void DynamicTextItemDelegate::setModelData(QWidget *editor, QAbstractItemModel *
 		}
 		else if (editor->objectName() == "alignment_text")
 		{	
-			if(auto *qsim = dynamic_cast<QStandardItemModel *>(model))
+			if(QStandardItemModel *qsim = dynamic_cast<QStandardItemModel *>(model))
 			{
 				if(QStandardItem *qsi = qsim->itemFromIndex(index))
 				{
-					auto *atd = static_cast<AlignmentTextDialog *>(editor);
+					AlignmentTextDialog *atd = static_cast<AlignmentTextDialog *>(editor);
 					Qt::Alignment align = atd->alignment();
 					qsi->setData(QVariant::fromValue(align), Qt::UserRole+2);
 					return;
@@ -1644,11 +1644,11 @@ void DynamicTextItemDelegate::setModelData(QWidget *editor, QAbstractItemModel *
 		}
 		else if (editor->objectName() == "group_alignment")
 		{
-			if(auto *qsim = dynamic_cast<QStandardItemModel *>(model))
+			if(QStandardItemModel *qsim = dynamic_cast<QStandardItemModel *>(model))
 			{
 				if(QStandardItem *qsi = qsim->itemFromIndex(index))
 				{
-					auto *cb = static_cast<QComboBox *>(editor);
+					QComboBox *cb = static_cast<QComboBox *>(editor);
 					qsi->setData(cb->currentText(), Qt::DisplayRole);
 				}
 			}
@@ -1671,7 +1671,7 @@ bool DynamicTextItemDelegate::eventFilter(QObject *object, QEvent *event)
 	{
 		object->event(event);
 		
-		auto *sb = static_cast<QSpinBox *>(object);
+		QSpinBox *sb = static_cast<QSpinBox *>(object);
 		switch (event->type()) {
 			case QEvent::KeyPress:
 				emit commitData(sb); break;
@@ -1691,7 +1691,7 @@ bool DynamicTextItemDelegate::eventFilter(QObject *object, QEvent *event)
 		//Like the hack above, change the current index of the combobox, apply the change immediately, no need to lose focus or press enter.
 	if((object->objectName() == "text_from" || object->objectName() == "info_text" || object->objectName() == "group_alignment") && event->type() == QEvent::FocusIn)
 	{
-		auto *qcb = static_cast<QComboBox *>(object);
+		QComboBox *qcb = static_cast<QComboBox *>(object);
 		connect(qcb, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), [this,qcb](){emit commitData(qcb);});
 	}
 	

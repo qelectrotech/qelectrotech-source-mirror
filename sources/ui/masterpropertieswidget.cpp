@@ -196,7 +196,7 @@ QUndoCommand* MasterPropertiesWidget::associatedUndo() const
 			return nullptr;
 	}
 
-	auto *undo = new LinkElementCommand(m_element);
+	LinkElementCommand *undo = new LinkElementCommand(m_element);
 
 	if (to_link.isEmpty())
 		undo->unlinkAll();
@@ -239,7 +239,7 @@ void MasterPropertiesWidget::updateUi()
 	const QList<Element *> free_list = elmt_prov.freeElement(Element::Slave);
 	for(Element *elmt : free_list)
 	{
-		auto *qtwi = new QTreeWidgetItem(ui->m_free_tree_widget);
+		QTreeWidgetItem *qtwi = new QTreeWidgetItem(ui->m_free_tree_widget);
 		qtwi->setIcon(0, elmt->pixmap());
 		
 		if(settings.value("genericpanel/folio", false).toBool())
@@ -267,7 +267,7 @@ void MasterPropertiesWidget::updateUi()
 	const QList<Element *> link_list = m_element->linkedElements();
 	for(Element *elmt : link_list)
 	{
-		auto *qtwi = new QTreeWidgetItem(ui->m_link_tree_widget);
+		QTreeWidgetItem *qtwi = new QTreeWidgetItem(ui->m_link_tree_widget);
 		qtwi->setIcon(0, elmt->pixmap());
 		
 		if(settings.value("genericpanel/folio", false).toBool())

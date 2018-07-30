@@ -45,7 +45,7 @@ LinkElementCommand::LinkElementCommand(Element *element_, QUndoCommand *parent):
 bool LinkElementCommand::mergeWith(const QUndoCommand *other)
 {
 	if (id() != other->id() || other->childCount()) return false;
-	auto const *undo = static_cast<const LinkElementCommand *> (other);
+	LinkElementCommand const *undo = static_cast<const LinkElementCommand *> (other);
 	if (m_element != undo->m_element) return false;
 	m_linked_after = undo->m_linked_after;
 	return true;

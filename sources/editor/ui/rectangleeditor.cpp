@@ -68,7 +68,7 @@ bool RectangleEditor::setPart(CustomElementPart *part)
 		return(true);
 	}
 
-	if (auto *part_rectangle = dynamic_cast<PartRectangle *>(part))
+	if (PartRectangle *part_rectangle = dynamic_cast<PartRectangle *>(part))
 	{
 		if (m_part == part_rectangle) {
 			return true;
@@ -147,7 +147,7 @@ void RectangleEditor::editingFinished()
 	}
 	m_locked = true;
 
-	auto *undo = new QUndoCommand();
+	QUndoCommand *undo = new QUndoCommand();
 	undo->setText(tr("Modifier un rectangle"));
 	
 	QRectF rect(editedTopLeft(), QSizeF(ui->m_width_sb->value(), ui->m_height_sb->value()));

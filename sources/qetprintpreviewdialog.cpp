@@ -392,7 +392,7 @@ void QETPrintPreviewDialog::setPrintOptionsVisible(bool display) {
 void QETPrintPreviewDialog::updateZoomList() {
 	// recupere le zooom courant
 	qreal current_zoom = preview_ -> zoomFactor();
-	auto current_zoom_is_not_null = bool(int(current_zoom * 100.0));
+	bool current_zoom_is_not_null = bool(int(current_zoom * 100.0));
 	
 	// liste des zooms par defaut
 	QList<qreal> zooms_real;
