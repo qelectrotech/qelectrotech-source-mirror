@@ -86,6 +86,7 @@ class QETApp : public QETSingleApplication
 		static QString customElementsDir();
 		static QString commonElementsDirN();
 		static QString customElementsDirN();
+		static void resetUserElementsDir();
 		static QString commonTitleBlockTemplatesDir();
 		static QString customTitleBlockTemplatesDir();
 		static bool registerProject(QETProject *);
@@ -185,6 +186,8 @@ class QETApp : public QETSingleApplication
 		static RecentFiles *m_projects_recent_files;
 		static RecentFiles *m_elements_recent_files;
 		static TitleBlockTemplate *default_titleblock_template_;
+		static QString m_user_common_elements_dir;
+		static QString m_user_custom_elements_dir;
 	
 	public slots:
 		void systray(QSystemTrayIcon::ActivationReason);

@@ -79,12 +79,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 		ui->m_custom_elmt_path_cb->blockSignals(false);
 	}
 	
-	fillLang();
-	
-	   //@todo: fix me " Load time from elements is very slow " -> Disable dialog buttons for define the file system path of the common and custom elements 
-	ui->m_common_elmt_path_cb ->setDisabled(true);
-	ui->m_custom_elmt_path_cb ->setDisabled(true);
-	
+	fillLang();	
 }
 
 GeneralConfigurationPage::~GeneralConfigurationPage()
@@ -121,6 +116,7 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue("nomenclature/terminal-exportlist",ui->m_export_terminal->isChecked());
 	settings.setValue("diagrameditor/autosave-interval", ui->m_autosave_sb->value());
 	
+	QString path = settings.value("elements-collections/common-collection-path").toString();
 	if (ui->m_common_elmt_path_cb->currentIndex() == 1)
 	{
 		QString path = ui->m_common_elmt_path_cb->currentText();
@@ -131,7 +127,11 @@ void GeneralConfigurationPage::applyConf()
 	else {
 		settings.setValue("elements-collections/common-collection-path", "default");
 	}
+	if (path != settings.value("elements-collections/common-collection-path").toString()) {
+		QETApp::resetUserElementsDir();
+	}
 	
+	path = settings.value("elements-collections/custom-collection-path").toString();
 	if (ui->m_custom_elmt_path_cb->currentIndex() == 1)
 	{
 		QString path = ui->m_custom_elmt_path_cb->currentText();
@@ -141,6 +141,9 @@ void GeneralConfigurationPage::applyConf()
 	}
 	else {
 		settings.setValue("elements-collections/custom-collection-path", "default");
+	}
+	if (path != settings.value("elements-collections/custom-collection-path").toString()) {
+		QETApp::resetUserElementsDir();
 	}
 }
 

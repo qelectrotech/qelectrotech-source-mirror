@@ -58,6 +58,8 @@ uint QETApp::next_project_id = 0;
 RecentFiles *QETApp::m_projects_recent_files = nullptr;
 RecentFiles *QETApp::m_elements_recent_files = nullptr;
 TitleBlockTemplate *QETApp::default_titleblock_template_ = nullptr;
+QString QETApp::m_user_common_elements_dir = QString();
+QString QETApp::m_user_custom_elements_dir = QString();
 
 
 /**
@@ -463,17 +465,26 @@ QString QETApp::userName() {
  */
 QString QETApp::commonElementsDir()
 {
-	//@todo: fix me " Load time from elements is very slow "
-	
-//	QSettings settings;
-//	QString path = settings.value("elements-collections/common-collection-path", "default").toString();
-//	if (path != "default" && !path.isEmpty())
-//	{
-//		QDir dir(path);
-//		if (dir.exists()) {
-//			return path;
-//		}
-//	}
+	if (m_user_common_elements_dir.isEmpty())
+	{
+		QSettings settings;
+		QString path = settings.value("elements-collections/common-collection-path", "default").toString();
+		if (path != "default" && !path.isEmpty())
+		{
+			QDir dir(path);
+			if (dir.exists())
+			{
+				m_user_common_elements_dir = path;
+				return m_user_common_elements_dir;
+			}
+		}
+		else {
+			m_user_common_elements_dir = "default";
+		}
+	}
+	else if (m_user_common_elements_dir != "default") {
+		return m_user_common_elements_dir;
+	}
 	
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 	if (common_elements_dir != QString()) return(common_elements_dir);
@@ -498,17 +509,26 @@ QString QETApp::commonElementsDir()
  */
 QString QETApp::customElementsDir()
 {
-	//@todo: fix me " Load time from elements is very slow "
-
-//	QSettings settings;
-//	QString path = settings.value("elements-collections/custom-collection-path", "default").toString();
-//	if (path != "default" && !path.isEmpty())
-//	{
-//		QDir dir(path);
-//		if (dir.exists()) {
-//			return path;
-//		}
-//	}
+	if (m_user_custom_elements_dir.isEmpty())
+	{
+        QSettings settings;
+        QString path = settings.value("elements-collections/custom-collection-path", "default").toString();
+        if (path != "default" && !path.isEmpty())
+        {
+                QDir dir(path);
+                if (dir.exists())
+				{
+					m_user_custom_elements_dir = path;
+					return m_user_custom_elements_dir;
+                }
+        }
+		else {
+			m_user_custom_elements_dir = "default";
+		}
+	}
+	else if (m_user_custom_elements_dir != "default") {
+		return m_user_custom_elements_dir;
+	}
 	
 	return(configDir() + "elements/");
 }
@@ -535,6 +555,17 @@ QString QETApp::customElementsDirN()
 	QString path = customElementsDir();
 	if (path.endsWith("/")) path.remove(path.length()-1, 1);
 	return path;
+}
+
+/**
+ * @brief QETApp::resetUserElementsDir
+ * Reset the path of the user common and custom elements dir.
+ * Use this function when the user path (common and/or custom) change.
+ */
+void QETApp::resetUserElementsDir()
+{
+	m_user_common_elements_dir.clear();
+	m_user_custom_elements_dir.clear();
 }
 
 /**
