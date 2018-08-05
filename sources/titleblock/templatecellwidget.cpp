@@ -446,6 +446,7 @@ QString TitleBlockTemplateCellWidget::defaultVariablesString() const {
 		"<li>%{folio-total} : nombre total de folios dans le projet</li>"
 		"<li>%{projecttitle} : titre du projet</li>"
 		"<li>%{projectpath} : chemin du projet</li>"
+		"<li>%{projectfilename} : nom du fichier</li>"
 		"</ul>"
 	);
 	return(def_var_string);

@@ -1731,6 +1731,7 @@ void QETProject::updateDiagramsFolioData() {
 	DiagramContext project_wide_properties = project_properties_;
 	project_wide_properties.addValue("projecttitle", title());
 	project_wide_properties.addValue("projectpath", filePath());
+	project_wide_properties.addValue("projectfilename", QFileInfo( filePath()).baseName());
 	
 	for (int i = 0 ; i < total_folio ; ++ i) {
 		QString title = m_diagrams_list[i] -> title();
