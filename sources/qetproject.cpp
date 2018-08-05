@@ -257,6 +257,7 @@ void QETProject::setFilePath(const QString &filepath) {
 	
 	emit(projectFilePathChanged(this, m_file_path));
 	emit(projectInformationsChanged(this));
+	updateDiagramsFolioData();
 }
 
 /**
@@ -1729,6 +1730,7 @@ void QETProject::updateDiagramsFolioData() {
 	
 	DiagramContext project_wide_properties = project_properties_;
 	project_wide_properties.addValue("projecttitle", title());
+	project_wide_properties.addValue("projectpath", filePath());
 	
 	for (int i = 0 ; i < total_folio ; ++ i) {
 		QString title = m_diagrams_list[i] -> title();
