@@ -254,9 +254,10 @@ void QETProject::setFilePath(const QString &filepath) {
 	if (file_path_info.isWritable()) {
 		setReadOnly(false);
 	}
-	
+	//'%saveddate' and '%savedtime' title block variables should be updated after file save as dialog is confirmed, before file is saved.
 	project_properties_.addValue("saveddate", QDate::currentDate().toString("yyyy-MM-dd"));
 	project_properties_.addValue("savedtime", QDateTime::currentDateTime().toString("HH:mm"));
+	
 	
 	
 	emit(projectFilePathChanged(this, m_file_path));
@@ -871,7 +872,16 @@ QETResult QETProject::write()
 
 	QString error_message;
 	if (!QET::writeXmlFile(xml_project, m_file_path, &error_message)) return(error_message);
-
+	
+	//'%saveddate' and '%savedtime' title block variables should be updated after file save dialog is confirmed, before file is saved.
+	project_properties_.addValue("saveddate", QDate::currentDate().toString("yyyy-MM-dd"));
+	project_properties_.addValue("savedtime", QDateTime::currentDateTime().toString("HH:mm"));
+	
+	
+ 	
+ 	emit(projectInformationsChanged(this));
+ 	updateDiagramsFolioData();
+ 	
 	setModified(false);
 	return(QETResult());
 }
@@ -1735,7 +1745,7 @@ void QETProject::updateDiagramsFolioData() {
 	DiagramContext project_wide_properties = project_properties_;
 	project_wide_properties.addValue("projecttitle", title());
 	project_wide_properties.addValue("projectpath", filePath());
-	project_wide_properties.addValue("projectfilename", QFileInfo( filePath()).baseName());
+	project_wide_properties.addValue("projectfilename", QFileInfo(filePath()).baseName());
 	
 	for (int i = 0 ; i < total_folio ; ++ i) {
 		QString title = m_diagrams_list[i] -> title();
