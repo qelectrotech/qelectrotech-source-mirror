@@ -449,6 +449,8 @@ QString TitleBlockTemplateCellWidget::defaultVariablesString() const {
 		"<li>%{projectfilename} : nom du fichier</li>"
 		"<li>%{saveddate} : date d'enregistrement du fichier</li>"
 		"<li>%{savedtime} : heure d'enregistrement du fichier</li>"
+		"<li>%{savedfilename} : nom du fichier enregistré</li>"
+		"<li>%{savedfilepath} : chemin du fichier enregistré</li>"
 		"</ul>"
 	);
 	return(def_var_string);

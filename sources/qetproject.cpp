@@ -254,9 +254,11 @@ void QETProject::setFilePath(const QString &filepath) {
 	if (file_path_info.isWritable()) {
 		setReadOnly(false);
 	}
-	//'%saveddate' and '%savedtime' title block variables should be updated after file save as dialog is confirmed, before file is saved.
+	//title block variables should be updated after file save as dialog is confirmed, before file is saved.
 	project_properties_.addValue("saveddate", QDate::currentDate().toString("yyyy-MM-dd"));
 	project_properties_.addValue("savedtime", QDateTime::currentDateTime().toString("HH:mm"));
+	project_properties_.addValue("savedfilename", QFileInfo(filePath()).baseName());
+	project_properties_.addValue("savedfilepath", filePath());
 	
 	
 	
@@ -873,9 +875,12 @@ QETResult QETProject::write()
 	QString error_message;
 	if (!QET::writeXmlFile(xml_project, m_file_path, &error_message)) return(error_message);
 	
-	//'%saveddate' and '%savedtime' title block variables should be updated after file save dialog is confirmed, before file is saved.
+	//title block variables should be updated after file save dialog is confirmed, before file is saved.
 	project_properties_.addValue("saveddate", QDate::currentDate().toString("yyyy-MM-dd"));
 	project_properties_.addValue("savedtime", QDateTime::currentDateTime().toString("HH:mm"));
+	project_properties_.addValue("savedfilename", QFileInfo(filePath()).baseName());
+	project_properties_.addValue("savedfilepath", filePath());
+	
 	
 	
  	
