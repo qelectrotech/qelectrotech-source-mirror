@@ -6179,7 +6179,7 @@ wymagane warunki nie zostały spełnione</translation>
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1247"/>
+        <location filename="../sources/qetproject.cpp" line="1261"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
@@ -6187,59 +6187,59 @@ Que désirez vous faire ?</source>
 Co chcesz zrobić?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1246"/>
+        <location filename="../sources/qetproject.cpp" line="1260"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation>Uwaga</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="292"/>
+        <location filename="../sources/qetproject.cpp" line="297"/>
         <source>Projet « %1 : %2»</source>
         <comment>displayed title for a ProjectView - %1 is the project title, -%2 is the project path</comment>
         <translation>Projekt « %1 : %2»</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="299"/>
+        <location filename="../sources/qetproject.cpp" line="304"/>
         <source>Projet %1</source>
         <comment>displayed title for a title-less project - %1 is the file name</comment>
         <translation>Projekt %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="306"/>
+        <location filename="../sources/qetproject.cpp" line="311"/>
         <source>Projet sans titre</source>
         <comment>displayed title for a project-less, file-less project</comment>
         <translation>Projekt bez tytułu</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="315"/>
+        <location filename="../sources/qetproject.cpp" line="320"/>
         <source>%1 [lecture seule]</source>
         <comment>displayed title for a read-only project - %1 is a displayable title</comment>
         <translation>%1 [tylko do odczytu]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="323"/>
+        <location filename="../sources/qetproject.cpp" line="328"/>
         <source>%1 [modifié]</source>
         <comment>displayed title for a modified project - %1 is a displayable title</comment>
         <translation>%1 [zmieniony]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1038"/>
+        <location filename="../sources/qetproject.cpp" line="1052"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
         <translation>Wystąpił błąd podczas integracji szablonu.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1140"/>
+        <location filename="../sources/qetproject.cpp" line="1154"/>
         <source>Liste des Folios</source>
         <translation>Lista Arkuszy</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1309"/>
+        <location filename="../sources/qetproject.cpp" line="1323"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Création des folios&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Otwieranie projektu trwa...&lt;/b&gt;&lt;br/&gt;Tworzenie arkusza&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1356"/>
+        <location filename="../sources/qetproject.cpp" line="1370"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Mise en place des références croisées&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Otwieranie projektu trwa...&lt;/b&gt;&lt;br/&gt;Konfiguracja odsyłaczy&lt;/p&gt;</translation>
     </message>
@@ -8890,11 +8890,11 @@ skojarzenie nazwy &quot;volta&quot; i wartości &quot;1745&quot; spowoduje zast�
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
-        <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{machine} : nom du groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation dans le groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;/ul&gt;</source>
+        <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{machine} : nom du groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation dans le groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;/ul&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="459"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="461"/>
         <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
         <translation>Zawartość komórki tabliczki rysunkowej może być opcjonalnie poprzedzona etykietą. Obie mogą być przetłumaczone na kilka języków.&lt;br/&gt;Aktualnie edytujesz &lt;em&gt;szablon&lt;/em&gt; tabliczki rysunkowej, nie należy wprowadzać bezpośrednio surowych danych zamiast zmiennych w postaci %{nazwa-zmiennej}, która następnie zostanie zastąpiona przez odpowiednie wartości dla arkusza.</translation>
     </message>

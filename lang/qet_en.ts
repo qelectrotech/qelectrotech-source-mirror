@@ -6117,66 +6117,66 @@ the conditions are not valid</translation>
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1247"/>
+        <location filename="../sources/qetproject.cpp" line="1261"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
         <translation>This document appears to have been saved with a newer version of QElectroTech. All or a part of its opening may fail. What do you wish to do?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1246"/>
+        <location filename="../sources/qetproject.cpp" line="1260"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation>Warning</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="292"/>
+        <location filename="../sources/qetproject.cpp" line="297"/>
         <source>Projet « %1 : %2»</source>
         <comment>displayed title for a ProjectView - %1 is the project title, -%2 is the project path</comment>
         <translation>Project « %1 : %2»</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="299"/>
+        <location filename="../sources/qetproject.cpp" line="304"/>
         <source>Projet %1</source>
         <comment>displayed title for a title-less project - %1 is the file name</comment>
         <translation>Project %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="306"/>
+        <location filename="../sources/qetproject.cpp" line="311"/>
         <source>Projet sans titre</source>
         <comment>displayed title for a project-less, file-less project</comment>
         <translation>Untitled project</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="315"/>
+        <location filename="../sources/qetproject.cpp" line="320"/>
         <source>%1 [lecture seule]</source>
         <comment>displayed title for a read-only project - %1 is a displayable title</comment>
         <translation>%1 [read-only]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="323"/>
+        <location filename="../sources/qetproject.cpp" line="328"/>
         <source>%1 [modifié]</source>
         <comment>displayed title for a modified project - %1 is a displayable title</comment>
         <translation>%1 [modified]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1038"/>
+        <location filename="../sources/qetproject.cpp" line="1052"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
         <translation>An error occured during the template integration.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1140"/>
+        <location filename="../sources/qetproject.cpp" line="1154"/>
         <source>Liste des Folios</source>
         <translation>List of Folios</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1309"/>
+        <location filename="../sources/qetproject.cpp" line="1323"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Création des folios&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Opening the project ...&lt;/b&gt;&lt;br/&gt;Creation of folios&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1356"/>
+        <location filename="../sources/qetproject.cpp" line="1370"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Mise en place des références croisées&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Opening the project ...&lt;/b&gt;&lt;br/&gt;Setting up cross references&lt;/p&gt;</translation>
     </message>
@@ -8823,11 +8823,11 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
-        <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{machine} : nom du groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation dans le groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation>By default, the following variables are available: &lt;ul&gt; &lt;li&gt;% {author}: folio author &lt;/li&gt; &lt;li&gt;% {date}: folio date &lt;/li&gt; &lt;li&gt;% {title}: folio title &lt;/li&gt; &lt;li&gt;% {filename}: project file name &lt;/li&gt; &lt;li&gt;% {machine}: project functional group name &lt;/li&gt; &lt;li&gt;% {locmach}: name of the location in the project functional group &lt;/li&gt; &lt;li&gt;% {indexrev}: folio revision index &lt;/li&gt; &lt;li&gt;% {version}: software version &lt;/li&gt; &lt;li&gt;% {folio}: folio information &lt;/li&gt; &lt;li&gt;% {folio-id}: folio position in the project &lt;/li&gt; &lt;li&gt;% {folio-total}: total number of folios in the project &lt;/li&gt; &lt;li&gt;% {projecttitle}: project title &lt;/li&gt; &lt;li&gt;% {projectpath}: project path &lt;/li&gt; &lt;li&gt;% {projectfilename}: file name &lt;/li&gt; &lt;/ul&gt;</translation>
+        <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{machine} : nom du groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation dans le groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;/ul&gt;</source>
+        <translation>By default, the following variables are available: &lt;ul&gt; &lt;li&gt;% {author}: folio author &lt;/li&gt;&lt;li&gt;% {date}: folio date &lt;/li&gt;&lt;li&gt;% {title}: folio title &lt;/li&gt;&lt;li&gt;% {file name}: project file name &lt;/li&gt;&lt;li&gt;% {machine}: project functional group name &lt;/li&gt;&lt;li&gt;% {locmach }: name of the location in the project functional group &lt;/li&gt;&lt;li&gt;% {indexrev}: folio revision index &lt;/li&gt;&lt;li&gt;% {version}: software version &lt;/li&gt;&lt;li &gt;% {folio}: indications close to the folio &lt;/li&gt;&lt;li&gt;% {folio-id}: position of the folio in the project &lt;/li&gt;&lt;li&gt;% {folio-total}: total number of folios in the project &lt;/li&gt;&lt;li&gt;% {projecttitle}: project title &lt;/li&gt;&lt;li&gt;% {projectpath}: project path &lt;/li&gt;&lt;li&gt;% {project file name}: file name &lt;/li&gt;&lt;li&gt;% {saveddate}: file save date &lt;/li&gt;&lt;li&gt;% {savedtime}: file save time &lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="459"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="461"/>
         <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
         <translation>Each cell of a title block displays a value, optionally preceded by a label. Both can be translated to several languages.&lt;br/&gt;Since what you are currently editing is a title block &lt;em&gt;template&lt;/em&gt;, avoid entering raw data directly: prefer inserting variables like %{variable-name}, which will be replaced afterwards with adequate values in the folio.</translation>
     </message>
