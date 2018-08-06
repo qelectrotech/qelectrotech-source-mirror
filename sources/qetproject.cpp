@@ -255,6 +255,10 @@ void QETProject::setFilePath(const QString &filepath) {
 		setReadOnly(false);
 	}
 	
+	project_properties_.addValue("saveddate", QDate::currentDate().toString("yyyy-MM-dd"));
+	project_properties_.addValue("savedtime", QDateTime::currentDateTime().toString("HH:mm"));
+	
+	
 	emit(projectFilePathChanged(this, m_file_path));
 	emit(projectInformationsChanged(this));
 	updateDiagramsFolioData();
