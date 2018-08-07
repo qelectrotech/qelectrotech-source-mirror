@@ -320,7 +320,8 @@ QStringList QETApp::elementInfoKeys()
 			  << "auxiliary2"
 			  << "machine-manufacturer-reference"
 			  << "location"
-			  << "function";
+			  << "function"
+			  << "tension-protocol";
 	return info_list;
 }
 
