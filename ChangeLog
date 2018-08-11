@@ -6,16 +6,16 @@
 * It is no longer required to have a text field, for save the edited element.
 * Improve the behavior with the arrow keys (depending to the current selection  (nothing / one / several).
 * Context menu display only enabled actions.
-* Add new feature -> alignment.
+* Added new feature -> alignment.
 * Alignment of text field can be edited.
-* Add two new actions in context menu for insert or remove point of a selected polygon.
+* Added two new actions in context menu for insert or remove point of a selected polygon.
 * Rectangle can have rounded corner.
 
 
 * Diagram editor : 
 * Conductors can now be drawn with two colors.
 * The code for the resize handles has been almost completely redesigned.
-* Dissociate fonts policy and size for independent text item and for summarry pages (foliolist), add a 2 button in config page for open Qfontdialog widget and choose policy for independent text item
+* Dissociate fonts policy and size for independent text item and for summarry pages (foliolist), added a 2 button in config page for open Qfontdialog widget and choose policy for independent text item
 Possiblility to overide defaut settings by adding in QElectroTech.conf
 * Basic shape add new CustomDashLine style with Dash Pattern (<< 10 << 10 );
 * It is now possible to add a text field to an element directly from the diagram.
@@ -23,26 +23,34 @@ Possiblility to overide defaut settings by adding in QElectroTech.conf
 * Element editor, part text can't be edited directly.
 * User can export / import the configuration of the texts and texts group of an element.
 * Context menu display only enabled actions.
-* Add new action in the context menu, multiple paste, check box for autonum the pasted element.
+* Added new action in the context menu, multiple paste, check box for autonum the pasted element.
 * Multipaste -> improve the conductor autonum, conductors are numerated from top to bottom, and left to right.
 * Text of conductor can be placed at top/bottom/left/right of conductor, and text never overlaps the conductor.
 * Function for search conductor at the same potential.
 When the search function is searching in a terminal element, they search only for the first terminal found, no matter if the terminal element have more than two terminals.
 So the list of conductors at the same potential is missing some conductors.
 This commit fix it, now the search function search for every terminals of a terminal element.
-* Add new feature -> alignment.
+* Added new feature -> alignment.
 * Alignment of text field can be edited.
-* Add new context menu action "group the selected texts".
+* Added new context menu action "group the selected texts".
 * Widget used to edit text item group can edit the pos of the group.
 * Element text item group can now be framed.
-* Add two new actions in context menu for insert or remove point of a selected polygon.
+* Added two new actions in context menu for insert or remove point of a selected polygon.
 * QETshapeItem rectangle can have rounded corner.
+* let user define the file system path of the common and custom elements collections.
 
 
-* Improve for new qet_tb_generator plug-in : add the full path of the current project as
+* Title block editor : 
+Added new title block variables %projectpath, %projectfilename.
+Added new title block variables : "%saveddate, %savedtime, %savedfilename and %savedfilepath" they variables should be updated after file save or save as dialog is confirmed,
+before file is saved.
+
+
+
+* Improve for new qet_tb_generator plug-in : added the full path of the current project as
 an argument when calling the plug-in from QET if a project is open. 
 If not a file dialog is showed to select the QET project.
-* Add 4 tools for edit the depth (Z value) of items.
+* Added 4 tools for edit the depth (Z value) of items.
 
 
 * QET create a backup file, use to restore the project when a crash occur.
