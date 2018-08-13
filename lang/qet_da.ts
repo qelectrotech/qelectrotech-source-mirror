@@ -502,7 +502,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="55"/>
         <source>Lignes :</source>
-        <translation>Linje:</translation>
+        <translation>Linjer:</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="14"/>
@@ -702,7 +702,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="81"/>
         <source>Afficher un texte de potentiel par folio. </source>
-        <translation>Vis potentiale tekst på ark. </translation>
+        <translation>Vis potentiale tekst på ark</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="151"/>
@@ -2301,7 +2301,7 @@ Alle symboler og fil indhold bliver slettet.</translation>
         <location filename="../sources/exportdialog.cpp" line="60"/>
         <source>Exporter les folios du projet</source>
         <comment>window title</comment>
-        <translation>Eksporter projekt ark</translation>
+        <translation>Eksportere projekt ark</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="75"/>
@@ -2354,7 +2354,7 @@ Alle symboler og fil indhold bliver slettet.</translation>
         <location filename="../sources/exportpropertieswidget.cpp" line="108"/>
         <source>Exporter dans le dossier</source>
         <comment>dialog title</comment>
-        <translation>Eksporter til mappe</translation>
+        <translation>Eksportere til mappe</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="126"/>
@@ -2405,12 +2405,12 @@ Alle symboler og fil indhold bliver slettet.</translation>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="159"/>
         <source>Exporter entièrement le folio</source>
-        <translation>Eksporter alle ark</translation>
+        <translation>Eksportere alle ark</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="162"/>
         <source>Exporter seulement les éléments</source>
-        <translation>Eksporter kun symboler</translation>
+        <translation>Eksportere kun symboler</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="183"/>
@@ -2653,7 +2653,7 @@ Tekst og nummer inddata er også tilgængelig.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="190"/>
         <source>Utiliser des fenêtres (appliqué au prochain lancement de &amp;QElectroTech)</source>
-        <translation>Brug vinduer (kræver genstart af &amp;QElectroTech)</translation>
+        <translation>Brug vinduer (kræver &amp;QElectroTech genstart)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="204"/>
@@ -2663,7 +2663,7 @@ Tekst og nummer inddata er også tilgængelig.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="233"/>
         <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
-        <translation>Vis senest integrerede symboler i panelet</translation>
+        <translation>Vis seneste integrerede symboler i panelet</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="240"/>
@@ -2675,12 +2675,12 @@ Her kan standardværdien angives for dette felt for de oprettede symboler:</tran
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="263"/>
         <source>Appliqué au prochain lancement de QElectroTech</source>
-        <translation>Kræver genstart af QElectroTech</translation>
+        <translation>Kræver QElectroTech genstart</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="170"/>
         <source>Exporter les bornes dans la nomenclature</source>
-        <translation>Eksporter terminaler i BOM</translation>
+        <translation>Eksportere klemmerækker i BOM</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="14"/>
@@ -2695,12 +2695,12 @@ Her kan standardværdien angives for dette felt for de oprettede symboler:</tran
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="121"/>
         <source>Sauvegarde automatique des projets (appliqué au prochain lancement de QElectroTech)</source>
-        <translation>Automatisk backup af projekter (kræver genstart af QElectroTech)</translation>
+        <translation>Automatisk projekt sikkerhedskopi (kræver QElectroTech genstart)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="142"/>
         <source>Utiliser des onglets (appliqué au proc&amp;hain lancement de QElectroTech)</source>
-        <translation>Brug faneblade (kræver genstart af QElectroTec&amp;h)</translation>
+        <translation>Brug faneblade (kræver QElectroTec&amp;h genstart)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="163"/>
@@ -4538,7 +4538,7 @@ Kommandovalg:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="396"/>
         <source>Lancer le plugin de creation de bornier</source>
-        <translation>Start udvidelsesmodul for opret klemrække</translation>
+        <translation>Start udvidelsesmodul opret klemmerække</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="436"/>
@@ -4692,7 +4692,7 @@ Kommandovalg:
         <location filename="../sources/qetdiagrameditor.cpp" line="236"/>
         <source>Exporte le folio courant dans un autre format</source>
         <comment>status bar tip</comment>
-        <translation>Eksporter nuværende ark til andet format</translation>
+        <translation>Eksportere nuværende ark til andet format</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="247"/>
@@ -5143,7 +5143,7 @@ python -m pip install --upgrade qet_tb_generator
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="389"/>
         <source>Exporter une nomenclature</source>
-        <translation>Eksporter BOM</translation>
+        <translation>Eksportere BOM</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="573"/>
@@ -6595,7 +6595,7 @@ Hvad skal ske?</translation>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1039"/>
         <source>Exporter vers le presse-papier</source>
-        <translation>Eksporter til udklipsholder</translation>
+        <translation>Eksportere til udklipsholder</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="342"/>
@@ -8966,7 +8966,7 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="90"/>
         <source>Exporter ce logo</source>
-        <translation>Eksporter logo</translation>
+        <translation>Eksportere logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="91"/>
