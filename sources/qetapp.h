@@ -21,8 +21,8 @@
 #include <QTranslator>
 #include <QSystemTrayIcon>
 #include <QPalette>
+#include <QByteArray>
 
-#include "qetsingleapplication.h"
 #include "elementslocation.h"
 #include "templatelocation.h"
 #include "qetarguments.h"
@@ -50,12 +50,12 @@ class RecentFiles;
 /**
 	This class represents the QElectroTech application.
 */
-class QETApp : public QETSingleApplication
+class QETApp : public QObject
 {
 	Q_OBJECT
 		// constructors, destructor
 	public:
-		QETApp(int &, char **);
+		QETApp();
 		~QETApp() override;
 	
 	private:
@@ -81,7 +81,6 @@ class QETApp : public QETSingleApplication
 		static QList<TitleBlockTemplatesCollection *> availableTitleBlockTemplatesCollections();
 		static TitleBlockTemplatesCollection *titleBlockTemplatesCollection(const QString &);
 		
-		static QString userName();
 		static QString commonElementsDir();
 		static QString customElementsDir();
 		static QString commonElementsDirN();
@@ -148,6 +147,7 @@ class QETApp : public QETSingleApplication
 	
 		// attributes
 	private:
+		static QETApp *m_qetapp;
 		QTranslator qtTranslator;
 		QTranslator qetTranslator;
 		QSystemTrayIcon *m_qsti;
@@ -207,7 +207,6 @@ class QETApp : public QETSingleApplication
 		void useSystemPalette(bool);
 		void quitQET();
 		void checkRemainingWindows();
-		void messageReceived(const QString &);
 		void openFiles(const QETArguments &);
 		void openProjectFiles(const QStringList &);
 		void openElementFiles(const QStringList &);
@@ -217,9 +216,7 @@ class QETApp : public QETSingleApplication
 		void openTitleBlockTemplateFiles(const QStringList &);
 		void configureQET();
 		void aboutQET();
-	
-	private slots:
-		void cleanup();
+		void receiveMessage(int instanceId, QByteArray message);
 	
 	private:
 		template <class T> QList<T *> detectWindows() const;

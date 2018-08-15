@@ -70,6 +70,8 @@ DEFINES += QET_ALLOW_OVERRIDE_CD_OPTION
 include(sources/PropertiesEditor/PropertiesEditor.pri)
 include(sources/QetGraphicsItemModeler/QetGraphicsItemModeler.pri)
 include(sources/QPropertyUndoCommand/QPropertyUndoCommand.pri)
+include(SingleApplication/singleapplication.pri)
+DEFINES += QAPPLICATION_CLASS=QApplication
 
 TEMPLATE = app
 DEPENDPATH += .

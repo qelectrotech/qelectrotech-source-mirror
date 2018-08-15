@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetapp.h"
+#include "singleapplication.h"
+#include "qet.h"
 
 /**
  * @brief main
@@ -37,5 +39,21 @@ int main(int argc, char **argv)
 #else
     qputenv("QT_DEVICE_PIXEL_RATIO", QByteArray("auto"));
 #endif
-	return(QETApp(argc, argv).exec());
+	
+	SingleApplication app(argc, argv);
+	
+	if (app.isSecondary())
+	{
+		QStringList strl = app.arguments();
+			//Remove the first argument, it's the binary file
+		strl.takeFirst();
+		QString message = "launched-with-args: " + QET::joinWithSpaces(strl);
+		app.sendMessage(message.toUtf8());
+		return 0;
+	}
+	
+	QETApp qetapp;
+	QObject::connect(&app, &SingleApplication::receivedMessage, &qetapp, &QETApp::receiveMessage);
+	
+	return app.exec();
 }

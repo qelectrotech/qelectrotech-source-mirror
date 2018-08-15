@@ -60,50 +60,28 @@ RecentFiles *QETApp::m_elements_recent_files = nullptr;
 TitleBlockTemplate *QETApp::default_titleblock_template_ = nullptr;
 QString QETApp::m_user_common_elements_dir = QString();
 QString QETApp::m_user_custom_elements_dir = QString();
+QETApp *QETApp::m_qetapp = nullptr;
 
 
 /**
-	Constructeur
-	@param argc Nombre d'arguments passes a l'application
-	@param argv Arguments passes a l'application
-*/
-QETApp::QETApp(int &argc, char **argv) :
-	QETSingleApplication(argc, argv, QString("qelectrotech-" + QETApp::userName())),
+ * @brief QETApp::QETApp
+ */
+QETApp::QETApp() :
 	m_splash_screen(nullptr),
 	non_interactive_execution_(false)
 {
+	m_qetapp = this;
 	parseArguments();
 	initConfiguration();
 	initLanguage();
 	QET::Icons::initIcons();
 	initStyle();
-
-	if (!non_interactive_execution_ && isRunning()) {
-		// envoie les arguments a l'instance deja existante
-		non_interactive_execution_ = sendMessage(
-			"launched-with-args: " +
-			QET::joinWithSpaces(QStringList(qet_arguments_.arguments()))
-		);
-	}
-
-	if (non_interactive_execution_) {
-		std::exit(EXIT_SUCCESS);
-	}
-
 	initSplashScreen();
 	initSystemTray();
 
-	// prise en compte des messages des autres instances
-	connect(this, SIGNAL(messageAvailable(QString)), this, SLOT(messageReceived(const QString&)));
-
-	// nettoyage avant de quitter l'application
-	connect(this, SIGNAL(aboutToQuit()), this, SLOT(cleanup()));
-
-	// connexion pour le signalmapper
 	connect(&signal_map, SIGNAL(mapped(QWidget *)), this, SLOT(invertMainWindowVisibility(QWidget *)));
-
-	setQuitOnLastWindowClosed(false);
-	connect(this, SIGNAL(lastWindowClosed()), this, SLOT(checkRemainingWindows()));
+	qApp->setQuitOnLastWindowClosed(false);
+	connect(qApp, &QApplication::lastWindowClosed, this, &QETApp::checkRemainingWindows);
 
 	setSplashScreenStep(tr("Chargement... Initialisation du cache des collections d'éléments", "splash screen caption"));
 	if (!collections_cache_) {
@@ -112,14 +90,16 @@ QETApp::QETApp(int &argc, char **argv) :
 		collections_cache_->setLocale(langFromSetting());
 	}
 
-	// on ouvre soit les fichiers passes en parametre soit un nouvel editeur de projet
-	if (qet_arguments_.files().isEmpty()) {
+	if (qet_arguments_.files().isEmpty())
+	{
 		setSplashScreenStep(tr("Chargement... Éditeur de schéma", "splash screen caption"));
 		new QETDiagramEditor();
-	} else {
+	} else
+	{
 		setSplashScreenStep(tr("Chargement... Ouverture des fichiers", "splash screen caption"));
 		openFiles(qet_arguments_);
 	}
+	
 	buildSystemTrayMenu();
 	m_splash_screen -> hide();
 	
@@ -160,8 +140,9 @@ QETApp::~QETApp()
 /**
 	@return l'instance de la QETApp
 */
-QETApp *QETApp::instance() {
-	return(static_cast<QETApp *>(qApp));
+QETApp *QETApp::instance()
+{
+	return m_qetapp;
 }
 
 /**
@@ -176,7 +157,7 @@ void QETApp::setLanguage(const QString &desired_language) {
 	if (!qtTranslator.load("qt_" + desired_language, qt_l10n_path)) {
 		qtTranslator.load("qt_" + desired_language, languages_path);
 	}
-	installTranslator(&qtTranslator);
+	qApp->installTranslator(&qtTranslator);
 
 	// charge les traductions pour l'application QET
 	if (!qetTranslator.load("qet_" + desired_language, languages_path)) {
@@ -186,7 +167,7 @@ void QETApp::setLanguage(const QString &desired_language) {
 			qetTranslator.load("qet_en", languages_path);
 		}
 	}
-	installTranslator(&qetTranslator);
+	qApp->installTranslator(&qetTranslator);
 
 	QString ltr_special_string = tr(
 		"LTR",
@@ -211,7 +192,7 @@ QString QETApp::langFromSetting()
 	Switches the application to the provided layout.
 */
 void QETApp::switchLayout(Qt::LayoutDirection direction) {
-	setLayoutDirection(direction);
+	qApp->setLayoutDirection(direction);
 }
 
 /**
@@ -439,26 +420,6 @@ TitleBlockTemplatesCollection *QETApp::titleBlockTemplatesCollection(const QStri
 	}
 	return(nullptr);
 }
-
-/**
-	@return le nom de l'utilisateur courant
-*/
-QString QETApp::userName() {
-	QProcess * process = new QProcess();
-	QString str;
-#ifndef Q_OS_WIN32
-	// return(QString(getenv("USER")));
-	str = (process->processEnvironment()).value("USER", "UNKNOWN");
-	delete process;
-	return(str);
-#else
-	// return(QString(getenv("USERNAME")));
-	str = (process->processEnvironment()).value("USERNAME", "UNKNOWN");
-	delete process;
-	return(str);
-#endif
-}
-
 
 /**
  * @brief QETApp::commonElementsDir
@@ -1015,11 +976,18 @@ QList<QETElementEditor *> QETApp::elementEditors(QETProject *project) {
 	return(editors);
 }
 
-/**
-	Nettoie certaines choses avant que l'application ne quitte
-*/
-void QETApp::cleanup() {
-	m_qsti -> hide();
+void QETApp::receiveMessage(int instanceId, QByteArray message)
+{
+	Q_UNUSED(instanceId);
+	
+	QString str(message);
+	
+	if (str.startsWith("launched-with-args: "))
+	{
+		QString my_message(str.mid(20));
+		QStringList args_list = QET::splitWithSpaces(my_message);
+		openFiles(QETArguments(args_list));
+	}
 }
 
 /**
@@ -1028,7 +996,7 @@ void QETApp::cleanup() {
 */
 template <class T> QList<T *> QETApp::detectWindows() const {
 	QList<T *> windows;
-	foreach(QWidget *widget, topLevelWidgets()) {
+	foreach(QWidget *widget, qApp->topLevelWidgets()) {
 		if (!widget -> isWindow()) continue;
 		if (T *window = qobject_cast<T *>(widget)) {
 			windows << window;
@@ -1118,8 +1086,8 @@ if defined(Q_OS_WIN)
 */
 void QETApp::useSystemPalette(bool use) {
 	if (use) {
-		setPalette(initial_palette_);
-		setStyleSheet(
+		qApp->setPalette(initial_palette_);
+		qApp->setStyleSheet(
 					"QTabBar::tab:!selected { background-color: transparent; }"
 					"QAbstractScrollArea#mdiarea {"
 					"background-color -> setPalette(initial_palette_);"
@@ -1129,7 +1097,7 @@ void QETApp::useSystemPalette(bool use) {
 		QFile file(configDir() + "style.css");
 		file.open(QFile::ReadOnly);
 		QString styleSheet = QLatin1String(file.readAll());
-		setStyleSheet(styleSheet);
+		qApp->setStyleSheet(styleSheet);
 		file.close();
 	}
 }
@@ -1140,7 +1108,7 @@ void QETApp::useSystemPalette(bool use) {
 */
 void QETApp::quitQET() {
 	if (closeEveryEditor()) {
-		quit();
+		qApp->quit();
 	}
 }
 
@@ -1158,23 +1126,10 @@ void QETApp::checkRemainingWindows() {
 		QTimer::singleShot(500, this, SLOT(checkRemainingWindows()));
 	} else {
 		if (!diagramEditors().count() && !elementEditors().count()) {
-			quit();
+			qApp->quit();
 		}
 	}
 	sleep = !sleep;
-}
-
-/**
-	Gere les messages recus
-	@param message Message recu
-*/
-void QETApp::messageReceived(const QString &message) {
-	if (message.startsWith("launched-with-args: ")) {
-		QString my_message(message.mid(20));
-		// les arguments sont separes par des espaces non echappes
-		QStringList args_list = QET::splitWithSpaces(my_message);
-		openFiles(QETArguments(args_list));
-	}
 }
 
 /**
@@ -1371,7 +1326,7 @@ void QETApp::openTitleBlockTemplateFiles(const QStringList &files_list) {
 */
 void QETApp::configureQET() {
 	// determine le widget parent a utiliser pour le dialogue
-	QWidget *parent_widget = activeWindow();
+	QWidget *parent_widget = qApp->activeWindow();
 
 	// cree le dialogue
 	ConfigDialog cd;
@@ -1399,7 +1354,7 @@ void QETApp::configureQET() {
  */
 void QETApp::aboutQET()
 {
-	AboutQET aq(activeWindow());
+	AboutQET aq(qApp->activeWindow());
 	
 #ifdef Q_OS_MACOS
 	aq.setWindowFlags(Qt::Sheet);
@@ -1413,7 +1368,7 @@ void QETApp::aboutQET()
 */
 QList<QWidget *> QETApp::floatingToolbarsAndDocksForMainWindow(QMainWindow *window) const {
 	QList<QWidget *> widgets;
-	foreach(QWidget *qw, topLevelWidgets()) {
+	foreach(QWidget *qw, qApp->topLevelWidgets()) {
 		if (!qw -> isWindow()) continue;
 		if (qobject_cast<QToolBar *>(qw) || qobject_cast<QDockWidget *>(qw)) {
 			if (qw -> parent() == window) widgets << qw;
@@ -1436,7 +1391,7 @@ QList<QWidget *> QETApp::floatingToolbarsAndDocksForMainWindow(QMainWindow *wind
 */
 void QETApp::parseArguments() {
 	// recupere les arguments
-	QList<QString> arguments_list(arguments());
+	QList<QString> arguments_list(qApp->arguments());
 
 	// enleve le premier argument : il s'agit du fichier binaire
 	arguments_list.takeFirst();
@@ -1499,7 +1454,7 @@ void QETApp::setSplashScreenStep(const QString &message) {
 	if (!message.isEmpty()) {
 		m_splash_screen -> showMessage(message, Qt::AlignBottom | Qt::AlignLeft);
 	}
-	processEvents();
+	qApp->processEvents();
 }
 
 /**
@@ -1514,7 +1469,7 @@ void QETApp::initLanguage() {
  * Setup the gui style
  */
 void QETApp::initStyle() {
-	initial_palette_ = palette();
+	initial_palette_ = qApp->palette();
 
 	//Apply or not the system style
 	QSettings settings;
@@ -1823,7 +1778,7 @@ bool QETApp::event(QEvent *e) {
 */
 void QETApp::printHelp() {
 	QString help(
-		tr("Usage : ") + QFileInfo(applicationFilePath()).fileName() + tr(" [options] [fichier]...\n\n") +
+		tr("Usage : ") + QFileInfo(qApp->applicationFilePath()).fileName() + tr(" [options] [fichier]...\n\n") +
 		tr("QElectroTech, une application de réalisation de schémas électriques.\n\n"
 		"Options disponibles : \n"
 		"  --help                        Afficher l'aide sur les options\n"
