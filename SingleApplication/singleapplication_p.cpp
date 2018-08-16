@@ -110,8 +110,7 @@ void SingleApplicationPrivate::genBlockServerName()
         } else {
             appData.addData( QStandardPaths::standardLocations( QStandardPaths::HomeLocation ).join("").toUtf8() );
         }
-#endif
-#ifdef Q_OS_UNIX
+#else
         QProcess process;
         process.start( "whoami" );
         if( process.waitForFinished( 100 ) &&
