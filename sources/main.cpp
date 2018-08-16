@@ -53,6 +53,7 @@ int main(int argc, char **argv)
 	}
 	
 	QETApp qetapp;
+	QETApp::instance()->installEventFilter(&qetapp);
 	QObject::connect(&app, &SingleApplication::receivedMessage, &qetapp, &QETApp::receiveMessage);
 	
 	return app.exec();
