@@ -1798,7 +1798,7 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="225"/>
         <source>Déplacer une primitive</source>
-        <translation type="unfinished">Mover una primitiva</translation>
+        <translation>Mover una primitiva</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="677"/>
@@ -2612,36 +2612,36 @@ Las entradas de texto y números
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="50"/>
         <source>Collections d&apos;éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Colección de elementos</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="56"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="273"/>
         <source>Chemin de la collection utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translation>Ruta de la colección de usuario</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="63"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="259"/>
         <source>Chemin de la collection commune</source>
-        <translation type="unfinished"></translation>
+        <translation>Ruta de la colección común</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="71"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="85"/>
         <source>Par defaut</source>
-        <translation type="unfinished"></translation>
+        <translation>Por defecto</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="76"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="90"/>
         <source>Parcourir...</source>
-        <translation type="unfinished"></translation>
+        <translation>Navegar...</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="98"/>
         <source>(Recharger les collections d&apos;éléments pour appliquer les changements)</source>
-        <translation type="unfinished"></translation>
+        <translation>(Actualizar las colecciones de elementos para aplicar cambios)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="108"/>
@@ -7675,17 +7675,17 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="42"/>
         <source>Dimensions :</source>
-        <translation type="unfinished"></translation>
+        <translation>Dimensiones:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="49"/>
         <source>y</source>
-        <translation type="unfinished">y</translation>
+        <translation>y</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="86"/>
         <source>Coin supérieur gauche :</source>
-        <translation type="unfinished"></translation>
+        <translation>Esquina superior izquierda:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="93"/>
@@ -7696,12 +7696,12 @@ Voulez-vous la remplacer ?</source>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="103"/>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="133"/>
         <source>Arrondi :</source>
-        <translation type="unfinished"></translation>
+        <translation>Redondeado:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="113"/>
         <source>x</source>
-        <translation type="unfinished">x</translation>
+        <translation>x</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="32"/>
@@ -8898,7 +8898,7 @@ asociar el nombre de &quot;volta&quot; y el valor &quot;1745&quot; reemplazara %
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{machine} : nom du groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation dans le groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="463"/>
