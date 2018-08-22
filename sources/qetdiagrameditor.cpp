@@ -1387,6 +1387,7 @@ void QETDiagramEditor::slot_updateActions()
 	m_save_file_as     -> setEnabled(opened_project);
 	m_project_edit_properties    -> setEnabled(opened_project);
 	//prj_terminalBloc -> setEnabled(opened_project);
+	m_rotate_texts -> setEnabled(editable_project);
 	m_project_add_diagram  -> setEnabled(editable_project);
 	m_remove_diagram_from_project  -> setEnabled(editable_project);
 	m_clean_project        -> setEnabled(editable_project);
