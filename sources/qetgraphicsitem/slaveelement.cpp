@@ -30,7 +30,7 @@
  * @param state int used to know if the creation of element have error
  */
 SlaveElement::SlaveElement(const ElementsLocation &location, QGraphicsItem *qgi, int *state) :
-	CustomElement(location, qgi, state)
+	Element(location, qgi, state)
 {
 	m_xref_item = nullptr;
 	m_link_type = Slave;

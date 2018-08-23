@@ -18,7 +18,7 @@
 #ifndef SIMPLEELEMENT_H
 #define SIMPLEELEMENT_H
 
-#include "customelement.h"
+#include "element.h"
 
 class QETProject;
 
@@ -26,7 +26,7 @@ class QETProject;
  * @brief The SimpleElement class
  *this class represente a simple element with no specific attribute
  */
-class SimpleElement : public CustomElement {
+class SimpleElement : public Element {
 
 	Q_OBJECT
 

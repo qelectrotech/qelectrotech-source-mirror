@@ -20,7 +20,6 @@
 #include "elementinfowidget.h"
 #include "masterpropertieswidget.h"
 #include "linksingleelementwidget.h"
-#include "ghostelement.h"
 #include "diagram.h"
 #include "diagramposition.h"
 #include "qeticons.h"
@@ -216,10 +215,9 @@ bool ElementPropertiesWidget::setLiveEdit(bool live_edit)
  */
 void ElementPropertiesWidget::findInPanel()
 {
-	CustomElement *custom_element = qobject_cast<CustomElement *>(m_element);
-	if (custom_element && m_diagram)
+	if (m_element && m_diagram)
 	{
-		m_diagram->findElementRequired(custom_element->location());
+		m_diagram->findElementRequired(m_element.data()->location());
 		emit findEditClicked();
 	}
 }
@@ -230,11 +228,10 @@ void ElementPropertiesWidget::findInPanel()
  */
 void ElementPropertiesWidget::editElement()
 {
-	CustomElement *custom_element = qobject_cast<CustomElement *>(m_element);
-	if (custom_element && m_diagram)
+	if (m_element && m_diagram)
 	{
-		m_diagram->findElementRequired(custom_element->location());
-		m_diagram->editElementRequired(custom_element->location());
+		m_diagram->findElementRequired(m_element.data()->location());
+		m_diagram->editElementRequired(m_element.data()->location());
 		emit findEditClicked();
 	}
 }
@@ -342,19 +339,9 @@ void ElementPropertiesWidget::addGeneralWidget()
  */
 QWidget *ElementPropertiesWidget::generalWidget()
 {
-	CustomElement *custom_element = qobject_cast<CustomElement *>(m_element);
-	GhostElement  *ghost_element  = qobject_cast<GhostElement  *>(m_element);
+	QString description_string(tr("Élement\n"));
 
-	// type de l'element
-	QString description_string;
-	if (ghost_element) {
-		description_string += tr("Élément manquant");
-	} else {
-		description_string += tr("Élément");
-	}
-	description_string += "\n";
-
-	// some element characteristic
+		// some element characteristic
 	description_string += QString(tr("Nom : %1\n")).arg(m_element -> name());
 	int folio_index = m_diagram -> folioIndex();
 	if (folio_index != -1) {
@@ -364,10 +351,7 @@ QWidget *ElementPropertiesWidget::generalWidget()
 	description_string += QString(tr("Rotation : %1°\n")).arg(m_element.data()->rotation());
 	description_string += QString(tr("Dimensions : %1*%2\n")).arg(m_element -> size().width()).arg(m_element -> size().height());
 	description_string += QString(tr("Bornes : %1\n")).arg(m_element -> terminals().count());
-
-	if (custom_element) {
-		description_string += QString(tr("Emplacement : %1\n")).arg(custom_element -> location().toString());
-	}
+	description_string += QString(tr("Emplacement : %1\n")).arg(m_element.data()->location().toString());
 
 		// widget himself
 	QWidget *general_widget = new QWidget (m_tab);
@@ -399,12 +383,10 @@ QWidget *ElementPropertiesWidget::generalWidget()
 	int margin = vlayout_->contentsMargins().left() + vlayout_->contentsMargins().right();
 	int widht_ = vlayout_->minimumSize().width()-margin;
 
-	if (pixmap.size().width() > widht_ || pixmap.size().height() > widht_)
-	{
+	if (pixmap.size().width() > widht_ || pixmap.size().height() > widht_) {
 		pix->setPixmap(m_element->pixmap().scaled (widht_, widht_, Qt::KeepAspectRatio, Qt::SmoothTransformation));
 	}
-	else
-	{
+	else {
 		pix->setPixmap(pixmap);
 	}
 

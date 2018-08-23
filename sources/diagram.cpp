@@ -18,14 +18,12 @@
 #include <math.h>
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/conductortextitem.h"
-#include "qetgraphicsitem/customelement.h"
 #include "factory/elementfactory.h"
 #include "diagram.h"
 #include "diagramcommands.h"
 #include "diagramcontent.h"
 #include "diagramposition.h"
 #include "exportdialog.h"
-#include "qetgraphicsitem/ghostelement.h"
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qetgraphicsitem/diagramimageitem.h"
 #include "qetgraphicsitem/qetshapeitem.h"
@@ -900,9 +898,6 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 			QString debug_message = QString("Diagram::fromXml() : Le chargement de la description de l'element %1 a echoue avec le code d'erreur %2").arg(element_location.path()).arg(state);
 			qDebug() << qPrintable(debug_message);
 			delete nvel_elmt;
-			
-			qDebug() << "Diagram::fromXml() : Utilisation d'un GhostElement en lieu et place de cet element.";
-			nvel_elmt = new GhostElement(element_location);
 		}
 		
 		addItem(nvel_elmt);
@@ -1450,19 +1445,6 @@ QString Diagram::title() const {
 	return(border_and_titleblock.title());
 }
 
-/**
-	@return la liste des elements de ce schema
-*/
-QList<CustomElement *> Diagram::customElements() const {
-	QList<CustomElement *> elements_list;
-	foreach(QGraphicsItem *qgi, items()) {
-		if (CustomElement *elmt = qgraphicsitem_cast<CustomElement *>(qgi)) {
-			elements_list << elmt;
-		}
-	}
-	return(elements_list);
-}
-
 QList <Element *> Diagram::elements() const {
 	QList<Element *> element_list;
 	foreach (QGraphicsItem *qgi, items()) {
@@ -1498,8 +1480,9 @@ ElementTextsMover &Diagram::elementTextsMover() {
 	@param location Emplacement d'un element
 	@return true si l'element location est utilise sur ce schema, false sinon
 */
-bool Diagram::usesElement(const ElementsLocation &location) {
-	foreach(CustomElement *element, customElements()) {
+bool Diagram::usesElement(const ElementsLocation &location)
+{
+	for(Element *element : elements()) {
 		if (element -> location() == location) {
 			return(true);
 		}

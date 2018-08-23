@@ -38,7 +38,7 @@ class DynamicElementTextItem : public DiagramTextItem
 {
 	friend class DynamicTextItemDelegate;
 	friend class CompositeTextEditDialog;
-	friend class CustomElement;
+	friend class Element;
 	
     Q_OBJECT
     

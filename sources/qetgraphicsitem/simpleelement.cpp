@@ -26,7 +26,7 @@
  * @param state
  */
 SimpleElement::SimpleElement(const ElementsLocation &location, QGraphicsItem *qgi, int *state) :
-	CustomElement(location, qgi, state)
+	Element(location, qgi, state)
 {
 	m_link_type = Simple;
 }
@@ -43,5 +43,5 @@ SimpleElement::~SimpleElement() {}
  * call update label for setup it.
  */
 void SimpleElement::initLink(QETProject *project) {
-	CustomElement::initLink(project);
+	Element::initLink(project);
 }

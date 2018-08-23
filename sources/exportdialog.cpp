@@ -28,12 +28,12 @@
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/diagramtextitem.h"
 #include "qetgraphicsitem/conductortextitem.h"
-#include "qetgraphicsitem/customelement.h"
-#include "qetgraphicsitem/ghostelement.h"
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qetgraphicsitem/diagramimageitem.h"
 #include "qetgraphicsitem/qetshapeitem.h"
 #include "diagramfoliolist.h"
+#include "elementpicturefactory.h"
+#include "element.h"
 
 /**
 	Constructeur
@@ -496,27 +496,29 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 		qreal hotspot_x = (elem_pos_x) * Createdxf::xScale;
 		qreal hotspot_y = Createdxf::sheetHeight - (elem_pos_y) * Createdxf::yScale;
 
-		QList<QLineF *> elmt_line = elmt -> lines();
-		foreach(QLineF *line, elmt_line) {
-			qreal x1 = (elem_pos_x + line -> p1().x()) * Createdxf::xScale;
-			qreal y1 = Createdxf::sheetHeight - (elem_pos_y + line -> p1().y()) * Createdxf::yScale;
+		ElementPictureFactory::primitives primitives = ElementPictureFactory::instance()->getPrimitives(elmt->location());
+		
+		for (QLineF line : primitives.m_lines)
+		{
+			qreal x1 = (elem_pos_x + line.p1().x()) * Createdxf::xScale;
+			qreal y1 = Createdxf::sheetHeight - (elem_pos_y + line.p1().y()) * Createdxf::yScale;
 			QPointF transformed_point = rotation_transformed(x1, y1, hotspot_x, hotspot_y, rotation_angle);
 			x1 = transformed_point.x();
 			y1 = transformed_point.y();
-			qreal x2 = (elem_pos_x + line -> p2().x()) * Createdxf::xScale;
-			qreal y2 = Createdxf::sheetHeight - (elem_pos_y + line -> p2().y()) * Createdxf::yScale;
+			qreal x2 = (elem_pos_x + line.p2().x()) * Createdxf::xScale;
+			qreal y2 = Createdxf::sheetHeight - (elem_pos_y + line.p2().y()) * Createdxf::yScale;
 			transformed_point = rotation_transformed(x2, y2, hotspot_x, hotspot_y, rotation_angle);
 			x2 = transformed_point.x();
 			y2 = transformed_point.y();
 			Createdxf::drawLine(file_path, x1, y1, x2, y2, 0);
 		}
 
-		QList<QRectF *> elmt_rectangle = elmt -> rectangles();
-		foreach(QRectF *rect, elmt_rectangle) {
-			qreal x1 = (elem_pos_x + rect -> bottomLeft().x()) * Createdxf::xScale;
-			qreal y1 = Createdxf::sheetHeight - (elem_pos_y + rect -> bottomLeft().y()) * Createdxf::yScale;
-			qreal w = rect -> width() * Createdxf::xScale;
-			qreal h = rect -> height() * Createdxf::yScale;
+		for (QRectF rect : primitives.m_rectangles)
+		{
+			qreal x1 = (elem_pos_x + rect.bottomLeft().x()) * Createdxf::xScale;
+			qreal y1 = Createdxf::sheetHeight - (elem_pos_y + rect.bottomLeft().y()) * Createdxf::yScale;
+			qreal w = rect.width() * Createdxf::xScale;
+			qreal h = rect.height() * Createdxf::yScale;
 			// opposite corner
 			qreal x2 = x1 + w;
 			qreal y2 = y1 + h;
@@ -533,29 +535,29 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 			Createdxf::drawRectangle(file_path, bottom_left_x, bottom_left_y, w, h, 0);
 		}
 
-		QList<QRectF *> elmt_circle = elmt -> circles();
-		foreach(QRectF *circle_rect, elmt_circle) {
-			qreal x1 = (elem_pos_x + circle_rect ->center().x()) * Createdxf::xScale;
-			qreal y1 = Createdxf::sheetHeight - (elem_pos_y + circle_rect -> center().y()) * Createdxf::yScale;
-			qreal r = circle_rect -> width() * Createdxf::xScale / 2;
+		for (QRectF circle_rect : primitives.m_circles)
+		{
+			qreal x1 = (elem_pos_x + circle_rect.center().x()) * Createdxf::xScale;
+			qreal y1 = Createdxf::sheetHeight - (elem_pos_y + circle_rect.center().y()) * Createdxf::yScale;
+			qreal r = circle_rect.width() * Createdxf::xScale / 2;
 			QPointF transformed_point = rotation_transformed(x1, y1, hotspot_x, hotspot_y, rotation_angle);
 			x1 = transformed_point.x();
 			y1 = transformed_point.y();
 			Createdxf::drawCircle(file_path, r, x1, y1, 0);
 		}
 
-		QList<QVector<QPointF> *> elmt_polygon = elmt -> polygons();
-		foreach(QVector<QPointF> *polygon, elmt_polygon) {
-			if (polygon -> size() == 0)
+		for (QVector<QPointF> polygon : primitives.m_polygons)
+		{
+			if (polygon.size() == 0)
 				continue;
-			qreal x1 = (elem_pos_x + polygon -> at(0).x()) * Createdxf::xScale;
-			qreal y1 = Createdxf::sheetHeight - (elem_pos_y + polygon -> at(0).y()) * Createdxf::yScale;
+			qreal x1 = (elem_pos_x + polygon.at(0).x()) * Createdxf::xScale;
+			qreal y1 = Createdxf::sheetHeight - (elem_pos_y + polygon.at(0).y()) * Createdxf::yScale;
 			QPointF transformed_point = rotation_transformed(x1, y1, hotspot_x, hotspot_y, rotation_angle);
 			x1 = transformed_point.x();
 			y1 = transformed_point.y();
-			for (int i = 1; i < polygon -> size(); ++i ) {
-				qreal x2 = (elem_pos_x + polygon -> at(i).x()) * Createdxf::xScale;
-				qreal y2 = Createdxf::sheetHeight - (elem_pos_y + polygon -> at(i).y()) * Createdxf::yScale;
+			for (int i = 1; i < polygon.size(); ++i ) {
+				qreal x2 = (elem_pos_x + polygon.at(i).x()) * Createdxf::xScale;
+				qreal y2 = Createdxf::sheetHeight - (elem_pos_y + polygon.at(i).y()) * Createdxf::yScale;
 				QPointF transformed_point = rotation_transformed(x2, y2, hotspot_x, hotspot_y, rotation_angle);
 				x2 = transformed_point.x();
 				y2 = transformed_point.y();
@@ -566,16 +568,16 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 		}
 
 		// Draw arcs and ellipses
-		QList<QVector<qreal> *> elmt_arc = elmt -> arcs();
-		foreach(QVector<qreal> *arc, elmt_arc) {
-			if (arc -> size() == 0)
+		for (QVector<qreal> arc : primitives.m_arcs)
+		{
+			if (arc.size() == 0)
 				continue;
-			qreal x = (elem_pos_x + arc -> at(0)) * Createdxf::xScale;
-			qreal y = Createdxf::sheetHeight - (elem_pos_y + arc -> at(1)) * Createdxf::yScale;
-			qreal w = arc -> at(2) * Createdxf::xScale;
-			qreal h = arc -> at(3) * Createdxf::yScale;
-			qreal startAngle = arc -> at(4);
-			qreal spanAngle = arc -> at(5);
+			qreal x = (elem_pos_x + arc.at(0)) * Createdxf::xScale;
+			qreal y = Createdxf::sheetHeight - (elem_pos_y + arc.at(1)) * Createdxf::yScale;
+			qreal w = arc.at(2) * Createdxf::xScale;
+			qreal h = arc.at(3) * Createdxf::yScale;
+			qreal startAngle = arc.at(4);
+			qreal spanAngle = arc .at(5);
 			Createdxf::drawArcEllipse(file_path, x, y, w, h, startAngle, spanAngle, hotspot_x, hotspot_y, rotation_angle, 0);
 		}
 	}

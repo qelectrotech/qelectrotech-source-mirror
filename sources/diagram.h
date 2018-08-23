@@ -184,7 +184,6 @@ class Diagram : public QGraphicsScene
 		
 		bool isEmpty() const;
 	
-		QList<CustomElement *> customElements() const;
 		QList<Element *> elements() const;
 		QList<Conductor *> conductors() const;
 		QSet<Conductor *> selectedConductors() const;

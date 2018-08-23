@@ -84,7 +84,6 @@ class QETDiagramEditor : public QETMainWindow
 		ProjectView *currentProjectView() const;
 		DiagramView *currentDiagramView() const;
 		Element *currentElement() const;
-		CustomElement * currentCustomElement() const;
 		ProjectView *findProject(DiagramView *) const;
 		ProjectView *findProject(Diagram *) const;
 		ProjectView *findProject(QETProject *) const;

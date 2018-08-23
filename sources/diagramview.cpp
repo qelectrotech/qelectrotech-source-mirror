@@ -17,8 +17,6 @@
 */
 #include "diagramview.h"
 #include "diagram.h"
-#include "qetgraphicsitem/customelement.h"
-#include "qetgraphicsitem/ghostelement.h"
 #include "qetgraphicsitem/conductor.h"
 #include "diagramcommands.h"
 #include "diagramposition.h"

@@ -26,7 +26,7 @@
  * @param state int used to know if the creation of element have error
  */
 TerminalElement::TerminalElement(const ElementsLocation &location, QGraphicsItem *qgi, int *state) :
-	CustomElement(location, qgi, state)
+	Element(location, qgi, state)
 {m_link_type = Terminale;}
 
 TerminalElement::~TerminalElement() {}
@@ -36,6 +36,6 @@ TerminalElement::~TerminalElement() {}
  * @param project
  */
 void TerminalElement::initLink(QETProject *project) {
-	CustomElement::initLink(project);
+	Element::initLink(project);
 }
 

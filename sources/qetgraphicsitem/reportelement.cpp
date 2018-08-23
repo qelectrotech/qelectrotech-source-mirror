@@ -24,7 +24,7 @@
 #include "dynamicelementtextitem.h"
 
 ReportElement::ReportElement(const ElementsLocation &location, const QString& link_type,QGraphicsItem *qgi, int *state) :
-	CustomElement(location, qgi, state)
+	Element(location, qgi, state)
 {
 	link_type == "next_report"? m_link_type=NextReport : m_link_type=PreviousReport;
 	link_type == "next_report"? m_inverse_report=PreviousReport : m_inverse_report=NextReport;

@@ -18,7 +18,7 @@
 #ifndef MASTERELEMENT_H
 #define MASTERELEMENT_H
 
-#include "customelement.h"
+#include "element.h"
 
 class CrossRefItem;
 
@@ -28,7 +28,7 @@ class CrossRefItem;
  * to be a master element. Master element can be linked with slave element
  * and display a cross ref item for know with what other element he is linked
  */
-class MasterElement : public CustomElement
+class MasterElement : public Element
 {
 	Q_OBJECT
 	

@@ -18,11 +18,12 @@
 #ifndef TERMINALELEMENT_H
 #define TERMINALELEMENT_H
 
-#include "customelement.h"
+
+#include "element.h"
 
 class QETProject;
 
-class TerminalElement : public CustomElement
+class TerminalElement : public Element
 {
 		Q_OBJECT
 	public:

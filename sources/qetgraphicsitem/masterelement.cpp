@@ -30,7 +30,7 @@
  * @param state int used to know if the creation of element have error
  */
 MasterElement::MasterElement(const ElementsLocation &location, QGraphicsItem *qgi, int *state) :
-	CustomElement(location, qgi, state)
+	Element(location, qgi, state)
 {
 	m_link_type = Element::Master;
 }
@@ -109,7 +109,7 @@ void MasterElement::unlinkElement(Element *elmt)
  */
 void MasterElement::initLink(QETProject *project) {
 	//Create the link with other element if needed
-	CustomElement::initLink(project);
+	Element::initLink(project);
 }
 
 /**
@@ -132,7 +132,7 @@ QVariant MasterElement::itemChange(QGraphicsItem::GraphicsItemChange change, con
 		m_first_scene_change = false;
 		connect(diagram()->project(), &QETProject::XRefPropertiesChanged, this, &MasterElement::xrefPropertiesChanged);
 	}
-	return CustomElement::itemChange(change, value);
+	return Element::itemChange(change, value);
 }
 
 void MasterElement::xrefPropertiesChanged()

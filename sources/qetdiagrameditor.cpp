@@ -23,7 +23,6 @@
 #include "qetgraphicsitem/element.h"
 #include "elementspanelwidget.h"
 #include "conductorpropertieswidget.h"
-#include "qetgraphicsitem/customelement.h"
 #include "qetproject.h"
 #include "projectview.h"
 #include "recentfiles.h"
@@ -1127,17 +1126,6 @@ Element *QETDiagramEditor::currentElement() const
 }
 
 /**
-	@return the selected element in the current diagram view, or 0 if:
-	  * no diagram is being viewed in this editor.
-	  * no element is selected
-	  * more than one element is selected
-	  * the selected element is not a custom element
-*/
-CustomElement *QETDiagramEditor::currentCustomElement() const {
-	return(dynamic_cast<CustomElement *>(currentElement()));
-}
-
-/**
 	Cette methode permet de retrouver le projet contenant un schema donne.
 	@param diagram_view Schema dont il faut retrouver
 	@return la vue sur le projet contenant ce schema ou 0 s'il n'y en a pas
@@ -1332,8 +1320,8 @@ void QETDiagramEditor::selectionGroupTriggered(QAction *action)
 	}
 	else if (value == "rotate_selected_text")
 		diagram->undoStack().push(new RotateTextsCommand(diagram));
-	else if (value == "find_selected_element" && currentCustomElement())
-		findElementInPanel(currentCustomElement()->location());
+	else if (value == "find_selected_element" && currentElement())
+		findElementInPanel(currentElement()->location());
 	else if (value == "edit_selected_element")
 		dv->editSelection();
 	else if (value == "group_selected_texts")
@@ -2117,7 +2105,7 @@ void QETDiagramEditor::editElementInEditor(const ElementsLocation &location) {
 	diagram view.
 */
 void QETDiagramEditor::editSelectedElementInEditor() {
-	if (CustomElement *selected_element = currentCustomElement()) {
+	if (Element *selected_element = currentElement()) {
 		editElementInEditor(selected_element -> location());
 	}
 }

@@ -32,6 +32,7 @@
 #include "generalconfigurationpage.h"
 #include "qetmessagebox.h"
 #include "projectview.h"
+#include "elementpicturefactory.h"
 
 #include <cstdlib>
 #include <iostream>
@@ -125,6 +126,7 @@ QETApp::~QETApp()
 		delete m_common_tbt_collection;
 	
 	ElementFactory::dropInstance();
+	ElementPictureFactory::dropInstance();
 	
 		//Delete all backup files
 	QDir dir(configDir() + "backup");

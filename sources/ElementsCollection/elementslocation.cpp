@@ -20,9 +20,10 @@
 #include "xmlelementcollection.h"
 #include "qetproject.h"
 #include "elementscollectioncache.h"
-#include "elementfactory.h"
+#include "elementpicturefactory.h"
 #include "element.h"
 #include "qetxml.h"
+#include <QPicture>
 
 // make this class usable with QVariant
 int ElementsLocation::MetaTypeId = qRegisterMetaType<ElementsLocation>("ElementsLocation");
@@ -645,14 +646,8 @@ QIcon ElementsLocation::icon() const
 		if (cache->fetchElement(loc))
 			return QIcon(cache->pixmap());
 	}
-	else
-	{
-		ElementFactory *factory = ElementFactory::Instance();
-		int state;
-		Element *elmt = factory->createElement(*this, nullptr, &state);
-
-		if (state == 0)
-			return QIcon(elmt->pixmap());
+	else {
+		return QIcon(ElementPictureFactory::instance()->pixmap(*this));
 	}
 
 	return QIcon();
@@ -664,21 +659,9 @@ QIcon ElementsLocation::icon() const
  */
 QString ElementsLocation::name() const
 {
-//	if (!m_project)
-//	{
-//		ElementsCollectionCache *cache = QETApp::collectionCache();
-//		ElementsLocation loc(*this); //Make a copy of this to keep this method const
-//		if (cache->fetchElement(loc))
-//			return cache->name();
-//		else
-//			return QString();
-//	}
-//	else
-//	{
-		NamesList nl;
-		nl.fromXml(xml());
-		return nl.name(fileName());
-//	}
+	NamesList nl;
+	nl.fromXml(xml());
+	return nl.name(fileName());
 }
 
 /**
