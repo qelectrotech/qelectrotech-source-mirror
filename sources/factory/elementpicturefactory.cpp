@@ -45,6 +45,11 @@ void ElementPictureFactory::getPictures(const ElementsLocation &location, QPictu
 	}
 	
 	QUuid uuid = location.uuid();
+	if(Q_UNLIKELY(uuid.isNull()))
+	{
+		build(location, &picture, &low_picture);
+		return;
+	}
 	
 	if(m_pictures_H.keys().contains(uuid))
 	{
@@ -70,6 +75,7 @@ void ElementPictureFactory::getPictures(const ElementsLocation &location, QPictu
 QPixmap ElementPictureFactory::pixmap(const ElementsLocation &location)
 {
 	QUuid uuid = location.uuid();
+	
 	if (m_pixmap_H.contains(uuid)) {
 		return m_pixmap_H.value(uuid);
 	}
@@ -95,7 +101,9 @@ QPixmap ElementPictureFactory::pixmap(const ElementsLocation &location)
 		painter.translate(hsx, hsy);
 		painter.drawPicture(0, 0, m_pictures_H.value(uuid));
 		
-		m_pixmap_H.insert(uuid, pix);
+		if (!uuid.isNull()) {
+			m_pixmap_H.insert(uuid, pix);
+		}
 		return pix;
 	}
 	
@@ -116,8 +124,17 @@ ElementPictureFactory::primitives ElementPictureFactory::getPrimitives(const Ele
 	return m_primitives_H.value(location.uuid());
 }
 
-
-bool ElementPictureFactory::build(const ElementsLocation &location)
+/**
+ * @brief ElementPictureFactory::build
+ * Build the picture from location.
+ * @param location
+ * @param picture
+ * @param low_picture
+ * if @picture and/or @low_picture are not null this function draw on it and don't store it.
+ * if null, this function create a QPicture for normal and low zoom, draw on it and store it in m_pictures_H and m_low_pictures_H
+ * @return 
+ */
+bool ElementPictureFactory::build(const ElementsLocation &location, QPicture *picture, QPicture *low_picture)
 {
 	QDomElement dom = location.xml();
 	
@@ -146,26 +163,36 @@ bool ElementPictureFactory::build(const ElementsLocation &location)
 		return(false);
 	}
 	
-	QPicture pic;
-	QPicture low_pic;
-	primitives primitives_;
-	
-	m_pictures_H.insert(location.uuid(), pic);
-	m_low_pictures_H.insert(location.uuid(), low_pic);
-	m_primitives_H.insert(location.uuid(), primitives_);
-	
 	QPainter painter;
-	painter.begin(&pic);
+	QPicture pic;
+	primitives primitives_;
+	if (picture) {
+		painter.begin(picture);
+	}
+	else {
+		m_pictures_H.insert(location.uuid(), pic);
+		m_primitives_H.insert(location.uuid(), primitives_);
+		painter.begin(&pic);
+	}
 	painter.setRenderHint(QPainter::Antialiasing,         true);
 	painter.setRenderHint(QPainter::TextAntialiasing,     true);
 	painter.setRenderHint(QPainter::SmoothPixmapTransform,true);
-
+	
 	
 	QPainter low_painter;
-	low_painter.begin(&low_pic);
+	QPicture low_pic;
+	if (low_picture) {
+		low_painter.begin(low_picture);
+	}
+	else {
+		m_low_pictures_H.insert(location.uuid(), low_pic);
+		m_primitives_H.insert(location.uuid(), primitives_);
+		low_painter.begin(&low_pic);
+	}
 	low_painter.setRenderHint(QPainter::Antialiasing,         true);
 	low_painter.setRenderHint(QPainter::TextAntialiasing,     true);
 	low_painter.setRenderHint(QPainter::SmoothPixmapTransform,true);
+	
 	QPen tmp;
 	tmp.setWidthF(1.0); //Vaudoo line to take into account the setCosmetic - don't remove
 	tmp.setCosmetic(true);
