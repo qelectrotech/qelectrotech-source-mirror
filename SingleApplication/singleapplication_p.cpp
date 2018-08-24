@@ -261,7 +261,7 @@ void SingleApplicationPrivate::slotConnectionEstablished()
     if( nextConnSocket->waitForReadyRead( 100 ) ) {
         // read the fields in same order and format as written
         QDataStream headerStream(nextConnSocket);
-        headerStream.setVersion( QDataStream::Qt_5_6 );
+        headerStream.setVersion( QDataStream::Qt_5_5 );
 
         // Read the header to know the message length
         quint64 msgLen = 0;
@@ -271,7 +271,7 @@ void SingleApplicationPrivate::slotConnectionEstablished()
            // Read the message body
            QByteArray msgBytes = nextConnSocket->read(msgLen);
            QDataStream readStream(msgBytes);
-           readStream.setVersion( QDataStream::Qt_5_6 );
+           readStream.setVersion( QDataStream::Qt_5_5 );
 
            // server name
            QByteArray latin1Name;
