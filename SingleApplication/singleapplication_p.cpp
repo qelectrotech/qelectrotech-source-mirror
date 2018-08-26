@@ -207,7 +207,7 @@ void SingleApplicationPrivate::connectToPrimary( int msecs, ConnectionType conne
         // Notify the parent that a new instance had been started;
         QByteArray initMsg;
         QDataStream writeStream(&initMsg, QIODevice::WriteOnly);
-        writeStream.setVersion(QDataStream::Qt_5_6);
+        writeStream.setVersion(QDataStream::Qt_5_5);
         writeStream << blockServerName.toLatin1();
         writeStream << static_cast<quint8>(connectionType);
         writeStream << instanceNumber;
@@ -217,7 +217,7 @@ void SingleApplicationPrivate::connectToPrimary( int msecs, ConnectionType conne
         // The header indicates the message length that follows
         QByteArray header;
         QDataStream headerStream(&header, QIODevice::WriteOnly);
-        headerStream.setVersion(QDataStream::Qt_5_6);
+        headerStream.setVersion(QDataStream::Qt_5_5);
         headerStream << static_cast <quint64>( initMsg.length() );
 
         socket->write( header );
