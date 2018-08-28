@@ -4440,7 +4440,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="262"/>
         <source>Annuler</source>
-        <translation>Abbrechen</translation>
+        <translation>Rückgängig</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="267"/>
