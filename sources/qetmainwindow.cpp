@@ -84,7 +84,7 @@ void QETMainWindow::initCommonActions() {
 	manual_online_ = new QAction(QET::Icons::QETManual, tr("Manuel en ligne"), this);
 	manual_online_ -> setStatusTip(tr("Lance le navigateur par défaut vers le manuel en ligne de QElectroTech", "status bar tip"));
 	
-	connect(manual_online_, &QAction::triggered, [this](bool) {
+	connect(manual_online_, &QAction::triggered, [](bool) {
 	QString link = "http://download.tuxfamily.org/qet/joshua/html/QET.html";
 	QDesktopServices::openUrl(QUrl(link));
 	});
@@ -94,7 +94,7 @@ void QETMainWindow::initCommonActions() {
 	youtube_ = new QAction(QET::Icons::QETVideo, tr("Chaine Youtube"), this);
 	youtube_ -> setStatusTip(tr("Lance le navigateur par défaut vers la chaine Youtube de QElectroTech", "status bar tip"));
 	
-	connect(youtube_, &QAction::triggered, [this](bool) {
+	connect(youtube_, &QAction::triggered, [](bool) {
 	QString link = "https://www.youtube.com/user/scorpio8101/videos";
 	QDesktopServices::openUrl(QUrl(link));
 	});
@@ -105,12 +105,12 @@ void QETMainWindow::initCommonActions() {
 	upgrade_M = new QAction(QET::Icons::QETDownload, tr("Télécharger une nouvelle version (dev)"), this);
 	upgrade_M -> setStatusTip(tr("Lance le navigateur par défaut vers le dépot Nightly en ligne de QElectroTech", "status bar tip"));
 	
-	connect(upgrade_, &QAction::triggered, [this](bool) {
+	connect(upgrade_, &QAction::triggered, [](bool) {
 	QString link = "https://qelectrotech.org/download_windows_QET.html";
 	QDesktopServices::openUrl(QUrl(link));
 	});
 	
-	connect(upgrade_M, &QAction::triggered, [this](bool) {
+	connect(upgrade_M, &QAction::triggered, [](bool) {
 	QString link = "https://qelectrotech.org/download_mac_QET.html";
 	QDesktopServices::openUrl(QUrl(link));
 	});
@@ -118,7 +118,7 @@ void QETMainWindow::initCommonActions() {
 	donate_ = new QAction(QET::Icons::QETDonate, tr("Soutenir le projet par un don"), this);
 	donate_ -> setStatusTip(tr("Soutenir le projet QElectroTech par un don", "status bar tip"));
 	
-	connect(donate_, &QAction::triggered, [this](bool) {
+	connect(donate_, &QAction::triggered, [](bool) {
 	QString link = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZZHC9D7C3MDPC";
 	QDesktopServices::openUrl(QUrl(link));
 	});
