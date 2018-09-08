@@ -1716,7 +1716,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="342"/>
         <source>Élement
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Symbol</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="345"/>
