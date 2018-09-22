@@ -193,13 +193,15 @@ namespace autonum
 
 		return str;
 	}
-
+	QSettings settings;
+	
 	AssignVariables::AssignVariables(const QString& formula, const sequentialNumbers& seqStruct , Diagram *diagram, const Element *elmt):
 	m_diagram(diagram),
 	m_arg_formula(formula),
 	m_assigned_label(formula),
 	m_seq_struct(seqStruct),
 	m_element(elmt)
+	
 	{
 		if (m_diagram)
 		{
@@ -210,10 +212,14 @@ namespace autonum
 			m_assigned_label.replace("%M",  m_diagram -> border_and_titleblock.machine());
 			m_assigned_label.replace("%LM", m_diagram -> border_and_titleblock.locmach());
 
-
+	
 			if (m_element)
 			{
+			if (settings.value("border-columns_0", true).toBool()){
+				m_assigned_label.replace("%c", QString::number(m_diagram->convertPosition(m_element->scenePos()).number() - 1));
+				}else{
 				m_assigned_label.replace("%c", QString::number(m_diagram->convertPosition(m_element->scenePos()).number()));
+				}
 				m_assigned_label.replace("%l", m_diagram->convertPosition(m_element->scenePos()).letter());
 				m_assigned_label.replace("%prefix", m_element->getPrefix());
 			}

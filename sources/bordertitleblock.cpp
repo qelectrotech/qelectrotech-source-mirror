@@ -437,6 +437,8 @@ void BorderTitleBlock::draw(QPainter *painter)
 	painter -> setPen(pen);
 	painter -> setBrush(Qt::NoBrush);
 	
+	QSettings settings;
+	
 		//Draw the borer
 	if (display_border_) painter -> drawRect(diagram_rect_);
 	
@@ -464,7 +466,11 @@ void BorderTitleBlock::draw(QPainter *painter)
 				columns_header_height_
 			);
 			painter -> drawRect(numbered_rectangle);
+			if (settings.value("border-columns_0", true).toBool()){
+			painter -> drawText(numbered_rectangle, Qt::AlignVCenter | Qt::AlignCenter, QString("%1").arg(i - 1));
+			}else{
 			painter -> drawText(numbered_rectangle, Qt::AlignVCenter | Qt::AlignCenter, QString("%1").arg(i));
+			}
 		}
 	}
 	
@@ -530,6 +536,8 @@ void BorderTitleBlock::drawDxf(int width, int height, bool keep_aspect_ratio, QS
 		);
 	}
 
+	QSettings settings;
+	
 	// dessine la numerotation des colonnes
 	if (display_border_ &&
 		display_columns_) {
@@ -541,8 +549,13 @@ void BorderTitleBlock::drawDxf(int width, int height, bool keep_aspect_ratio, QS
 			double recWidth = columns_width_;
 			double recHeight = columns_header_height_;
 			Createdxf::drawRectangle(file_path, xCoord, yCoord, recWidth, recHeight, color);
+			if (settings.value("border-columns_0", true).toBool()){
+			Createdxf::drawTextAligned(file_path, QString::number(i - 1), xCoord,
+									   yCoord + recHeight*0.5, recHeight*0.7, 0, 0, 1, 2, xCoord+recWidth/2, color, 0);
+			}else{
 			Createdxf::drawTextAligned(file_path, QString::number(i), xCoord,
 									   yCoord + recHeight*0.5, recHeight*0.7, 0, 0, 1, 2, xCoord+recWidth/2, color, 0);
+			}
 		}
 	}
 
