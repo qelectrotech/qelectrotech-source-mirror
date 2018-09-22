@@ -1716,7 +1716,8 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="342"/>
         <source>Élement
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Element
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="345"/>
@@ -2660,7 +2661,7 @@ Teksten en nummers zijn ook beschikbaar.</translation>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="224"/>
         <source>Activer la numérotation à partir de 0 pour la colonne des cartouches au lieu de 1</source>
         <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Activeer titelbloknummering vanaf 0 in plaats van 1</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="234"/>
@@ -8869,7 +8870,7 @@ Door associatie van de naam &quot;volta&quot; met de waarde &quot;1745&quot; wor
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{machine} : nom du groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation dans le groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Standaard zijn de volgende variabelen beschikbaar :&lt;ul&gt;&lt;li&gt;%{author} : auteur van het schemablad&lt;/li&gt;&lt;li&gt;%{date} : datum van het schemablad&lt;/li&gt;&lt;li&gt;%{title} : naam van het schemablad&lt;/li&gt;&lt;li&gt;%{filename} : bestandsnaam van het project&lt;/li&gt;&lt;li&gt;%{machine} : naam van de functionele groep van het project&lt;/li&gt;&lt;li&gt;%{locmach} : naam van de locatie in de functionele groep van het project&lt;/li&gt;&lt;li&gt;%{indexrev} : revisie-index van het schemablad&lt;/li&gt;&lt;li&gt;%{version} : versie van het schemablad&lt;/li&gt;&lt;li&gt;%{folio} : relatieve aanduidingen van het schemablad&lt;/li&gt;&lt;li&gt;%{folio-id} : plaats van het schemablad in het project&lt;/li&gt;&lt;li&gt;%{folio-total} : totaal aantal schemabladen in het project&lt;/li&gt;&lt;li&gt;%{projecttitle} : projectnaam&lt;/li&gt;&lt;li&gt;%{projectpath} : pad van het project&lt;/li&gt;&lt;li&gt;%{projectfilename} : bestandsnaam&lt;/li&gt;&lt;li&gt;%{saveddate} : datum van laatste bestandswijziging&lt;/li&gt;&lt;li&gt;%{savedtime} : tijd van de laatste bestandswijziging&lt;/li&gt;&lt;li&gt;%{savedfilename} : bestandsnaam van de laatste bestandswijziging&lt;/li&gt;&lt;li&gt;%{savedfilepath} : pad van de laatste bestandswijziging&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="463"/>
