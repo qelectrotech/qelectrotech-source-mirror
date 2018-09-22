@@ -2660,7 +2660,7 @@ Tekst og nummer inddata er også tilgængelig.</translation>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="224"/>
         <source>Activer la numérotation à partir de 0 pour la colonne des cartouches au lieu de 1</source>
         <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Start nummerering fra 0, for kolonnen af titelblokke, i stedet for 1</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="240"/>
