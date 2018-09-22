@@ -193,7 +193,7 @@ namespace autonum
 
 		return str;
 	}
-	QSettings settings;
+	
 	
 	AssignVariables::AssignVariables(const QString& formula, const sequentialNumbers& seqStruct , Diagram *diagram, const Element *elmt):
 	m_diagram(diagram),
@@ -212,7 +212,7 @@ namespace autonum
 			m_assigned_label.replace("%M",  m_diagram -> border_and_titleblock.machine());
 			m_assigned_label.replace("%LM", m_diagram -> border_and_titleblock.locmach());
 
-	
+	QSettings settings;
 			if (m_element)
 			{
 			if (settings.value("border-columns_0", true).toBool()){
