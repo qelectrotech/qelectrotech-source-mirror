@@ -2594,7 +2594,7 @@ Tekst og nummer inddata er også tilgængelig.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="231"/>
         <source>Elements</source>
-        <translation type="unfinished"></translation>
+        <translation>Symboler</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="243"/>
@@ -2610,7 +2610,7 @@ Tekst og nummer inddata er også tilgængelig.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="387"/>
         <source>Langage</source>
-        <translation type="unfinished"></translation>
+        <translation>Sprog</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="274"/>
