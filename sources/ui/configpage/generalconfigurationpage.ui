@@ -384,7 +384,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
      </widget>
      <widget class="QWidget" name="tab_6">
       <attribute name="title">
-       <string>Language</string>
+       <string>Langage</string>
       </attribute>
       <widget class="QGroupBox" name="groupBox_4">
        <property name="geometry">
