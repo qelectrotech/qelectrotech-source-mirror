@@ -79,7 +79,7 @@ MasterPropertiesWidget::MasterPropertiesWidget(Element *elmt, QWidget *parent) :
 	QHeaderView *qhv = ui->m_free_tree_widget->header();
 	qhv->setContextMenuPolicy(Qt::CustomContextMenu);
 	connect(qhv, &QHeaderView::customContextMenuRequested, this, &MasterPropertiesWidget::headerCustomContextMenuRequested);
-	connect(m_save_header_state, &QAction::triggered, [this, qhv]()
+	connect(m_save_header_state, &QAction::triggered, [qhv]()
 	{
 		QByteArray qba = qhv->saveState();
 		QSettings settings;

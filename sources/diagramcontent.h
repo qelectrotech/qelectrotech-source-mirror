@@ -44,7 +44,7 @@ class DiagramContent
 {
 	public:
 		DiagramContent();
-		DiagramContent(Diagram *diagram);
+		DiagramContent(Diagram *diagram, bool selected = true);
 		DiagramContent(const DiagramContent &);
 		~DiagramContent();
 		
@@ -71,6 +71,7 @@ class DiagramContent
 		QList<Conductor *> m_conductors_to_update;
 		QList<Conductor *> m_conductors_to_move;
 		QList<Conductor *> m_other_conductors;
+		QList<Conductor *> m_potential_conductors;
 		QSet<DynamicElementTextItem *> m_element_texts;
 		QSet<ElementTextItemGroup *> m_texts_groups;
 		QList<QGraphicsItem *> m_selected_items;
@@ -87,6 +88,7 @@ class DiagramContent
 		int removeNonMovableItems();
 		
 		DiagramContent& operator+=(const DiagramContent& other);
+		bool potentialIsManaged(QList<Conductor *>conductors);
 };
 QDebug &operator<<(QDebug, DiagramContent &);
 #endif

@@ -37,12 +37,20 @@ DiagramContent::DiagramContent() {}
  * @brief DiagramContent::DiagramContent
  * Constructor
  * @param diagram : Construct a diagramContent and fill it with the selected item of @diagram
+ * @param selected : this diagramcontent get only selected items if true.
  */
-DiagramContent::DiagramContent(Diagram *diagram) :
+DiagramContent::DiagramContent(Diagram *diagram, bool selected) :
 	m_selected_items(diagram->selectedItems())
 {
-		//Get the selected items
-	for (QGraphicsItem *item : m_selected_items)
+	QList <QGraphicsItem *> item_list;
+	if (selected) {
+		item_list = m_selected_items;
+	} else {
+		item_list = diagram->items();
+	}
+
+	
+	for (QGraphicsItem *item : item_list)
 	{
 		if (Element *elmt = qgraphicsitem_cast<Element *>(item))
 			m_elements << elmt;
@@ -55,6 +63,15 @@ DiagramContent::DiagramContent(Diagram *diagram) :
 				!c->terminal2->parentItem()->isSelected()) {
 				m_other_conductors << c;
 			}
+			
+			if (m_potential_conductors.isEmpty()) {
+				m_potential_conductors << c;
+			}
+			else
+			{
+				if (!potentialIsManaged(c->relatedPotentialConductors(true).toList()))
+					m_potential_conductors << c;
+			}
 		}
 		else if (DiagramImageItem *dii = qgraphicsitem_cast<DiagramImageItem *>(item))
 			m_images << dii;
@@ -66,6 +83,7 @@ DiagramContent::DiagramContent(Diagram *diagram) :
 			if(ElementTextItemGroup *etig = dynamic_cast<ElementTextItemGroup *>(group))
 				m_texts_groups << etig;
 	}
+		
 	
 		//For each selected element, we determine if conductors must be moved or updated.
 	for(Element *elmt : m_elements)
@@ -103,16 +121,14 @@ DiagramContent::DiagramContent(const DiagramContent &other) :
 	m_conductors_to_update(other.m_conductors_to_update),
 	m_conductors_to_move(other.m_conductors_to_move),
 	m_other_conductors(other.m_other_conductors),
+	m_potential_conductors(other.m_potential_conductors),
 	m_element_texts(other.m_element_texts),
 	m_texts_groups(other.m_texts_groups),
 	m_selected_items(other.m_selected_items)
 {}
 
-/**
- * @brief DiagramContent::~DiagramContent
- */
-DiagramContent::~DiagramContent() {}
-
+DiagramContent::~DiagramContent()
+{}
 
 /**
  * @brief DiagramContent::selectedTexts
@@ -309,7 +325,34 @@ DiagramContent &DiagramContent::operator+=(const DiagramContent &other)
 		if(!m_selected_items.contains(qgi))
 			m_selected_items << qgi;
 	
+	for (Conductor *c : other.m_potential_conductors)
+	{
+		QList<Conductor *> c_list = c->relatedPotentialConductors(true).toList();
+		c_list << c;
+		if (!potentialIsManaged(c_list)) {
+			m_potential_conductors << c;
+		}
+	}
+	
 	return *this;
+}
+
+/**
+ * @brief DiagramContent::potentialIsManaged
+ * @param conductors a list of conductors at the same potential.
+ * @return true, if m_potential_conductors already have a conductor of this potential.
+ */
+bool DiagramContent::potentialIsManaged(QList<Conductor *> conductors)
+{
+	bool b = false;
+	
+	for (Conductor *c : conductors)
+	{
+		if (m_potential_conductors.contains(c))
+			b = true;
+	}
+	
+	return b;
 }
 
 /**

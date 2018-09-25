@@ -25,6 +25,7 @@
 #include <QUndoGroup>
 
 #include "qetmainwindow.h"
+#include "searchandreplacewidget.h"
 
 class QMdiSubWindow;
 class QETProject;
@@ -63,8 +64,8 @@ class QETDiagramEditor : public QETMainWindow
 		bool                 openAndAddProject (const QString &, bool = true);
 		QList<QString>       editedFiles       () const;
 		ProjectView         *viewForFile       (const QString &) const;
-		ProjectView         *acessCurrentProject ();
-		DiagramView         *acessCurrentDiagramView ();
+		ProjectView *currentProjectView() const;
+		QETProject *currentProject() const;
 		bool drawGrid() const;
 		
 	protected:
@@ -81,7 +82,6 @@ class QETDiagramEditor : public QETMainWindow
 		void setUpMenu          ();
 		
 		bool addProject(QETProject *, bool = true);
-		ProjectView *currentProjectView() const;
 		DiagramView *currentDiagramView() const;
 		Element *currentElement() const;
 		ProjectView *findProject(DiagramView *) const;
@@ -197,6 +197,7 @@ class QETDiagramEditor : public QETMainWindow
 		QAction *m_close_file;			   ///< Close current project file
 		QAction *m_save_file;				   ///< Save current project
 		QAction *m_save_file_as;			   ///< Save current project as a specific file
+		QAction *m_find = nullptr;
 
 		QMdiArea m_workspace;
 		QSignalMapper windowMapper;
@@ -221,5 +222,6 @@ class QETDiagramEditor : public QETMainWindow
 		AutoNumberingDockWidget *m_autonumbering_dock;
 		int activeSubWindowIndex;
 		bool m_first_show = true;
+		SearchAndReplaceWidget m_search_and_replace_widget;
 };
 #endif

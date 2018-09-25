@@ -92,7 +92,9 @@ INCLUDEPATH += sources \
                sources/ElementsCollection/ui \
                sources/autoNum \
                sources/autoNum/ui \
-               sources/ui/configpage
+               sources/ui/configpage \
+			   sources/SearchAndReplace \
+			   sources/SearchAndReplace/ui
 
 
 # Fichiers sources
@@ -113,7 +115,9 @@ HEADERS += $$files(sources/*.h) $$files(sources/ui/*.h) \
            $$files(sources/ElementsCollection/ui/*.h) \
            $$files(sources/autoNum/*.h) \
            $$files(sources/autoNum/ui/*.h) \
-           $$files(sources/ui/configpage/*.h)
+           $$files(sources/ui/configpage/*.h) \
+           $$files(sources/SearchAndReplace/*.h) \
+		   $$files(sources/SearchAndReplace/ui/*.h)
 
 SOURCES += $$files(sources/*.cpp) \
            $$files(sources/editor/*.cpp) \
@@ -133,7 +137,9 @@ SOURCES += $$files(sources/*.cpp) \
            $$files(sources/ElementsCollection/ui/*.cpp) \
            $$files(sources/autoNum/*.cpp) \
            $$files(sources/autoNum/ui/*.cpp) \
-           $$files(sources/ui/configpage/*.cpp)
+           $$files(sources/ui/configpage/*.cpp) \
+		   $$files(sources/SearchAndReplace/*.cpp) \
+		   $$files(sources/SearchAndReplace/ui/*.cpp)
 
 # Liste des fichiers qui seront incorpores au binaire en tant que ressources Qt
 RESOURCES += qelectrotech.qrc
@@ -153,7 +159,8 @@ FORMS += $$files(sources/richtext/*.ui) \
          $$files(sources/editor/ui/*.ui) \
          $$files(sources/ElementsCollection/ui/*.ui) \
          $$files(sources/autoNum/ui/*.ui) \
-         $$files(sources/ui/configpage/*.ui)
+         $$files(sources/ui/configpage/*.ui) \
+		 $$files(sources/SearchAndReplace/ui/*.ui)
 
 UI_SOURCES_DIR = sources/ui/
 UI_HEADERS_DIR = sources/ui/

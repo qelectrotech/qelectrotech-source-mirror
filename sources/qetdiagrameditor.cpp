@@ -72,8 +72,15 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	open_dialog_dir            (QStandardPaths::writableLocation(QStandardPaths::DesktopLocation))
 {
 	activeSubWindowIndex = 0;
-	//Setup the mdi area at center of application
-	setCentralWidget(&m_workspace);
+	
+	QSplitter *splitter_ = new QSplitter(this);
+	splitter_->setChildrenCollapsible(false);
+	splitter_->setOrientation(Qt::Vertical);
+	splitter_->addWidget(&m_workspace);
+	splitter_->addWidget(&m_search_and_replace_widget);
+	m_search_and_replace_widget.setHidden(true);
+	m_search_and_replace_widget.setEditor(this);
+	setCentralWidget(splitter_);
 	
 		//Set object name to be retrieved by the stylesheets
 	m_workspace.setBackground(QBrush(Qt::NoBrush));
@@ -606,6 +613,12 @@ void QETDiagramEditor::setUpActions()
 	connect(m_depth_action_group, &QActionGroup::triggered, [this](QAction *action) {
 		this->currentDiagramView()->diagram()->changeZValue(action->data().value<QET::DepthOption>());
 	});
+	
+	m_find = new QAction(tr("Chercher"), this);
+	m_find->setShortcut(QKeySequence::Find);
+	connect(m_find, &QAction::triggered, [this]() {
+		this->m_search_and_replace_widget.setHidden(!m_search_and_replace_widget.isHidden());
+	});
 }
 
 /**
@@ -712,6 +725,8 @@ void QETDiagramEditor::setUpMenu() {
 	menu_edition -> addActions(m_row_column_actions_group.actions());
 	menu_edition -> addSeparator();
 	menu_edition -> addActions(m_depth_action_group->actions());
+	menu_edition -> addSeparator();
+	menu_edition -> addAction(m_find);
 
 	// menu Projet
 	menu_project -> addAction(m_project_edit_properties);
@@ -1093,6 +1108,22 @@ ProjectView *QETDiagramEditor::currentProjectView() const {
 		return(project_view);
 	}
 	return(nullptr);
+}
+
+/**
+ * @brief QETDiagramEditor::currentProject
+ * @return the current edited project.
+ * This function can return nullptr.
+ */
+QETProject *QETDiagramEditor::currentProject() const
+{
+	ProjectView *view = currentProjectView();
+	if (view) {
+		return view->project();
+	}
+	else {
+		return nullptr;
+	}
 }
 
 /**
@@ -1676,39 +1707,11 @@ ProjectView *QETDiagramEditor::viewForFile(const QString &filepath) const {
 }
 
 /**
- * @brief QETDiagramEditor::acessCurrentProject
- * Retrieve current Project open in diagram editor
- */
-ProjectView *QETDiagramEditor::acessCurrentProject (){
-	QMdiSubWindow *current_window = m_workspace.activeSubWindow();
-	if (!current_window) return(nullptr);
-
-	QWidget *current_widget = current_window -> widget();
-	if (!current_widget) return(nullptr);
-
-	if (ProjectView *project_view = qobject_cast<ProjectView *>(current_widget)) {
-	return(project_view);
-	}
-	return(nullptr);
-}
-
-/**
  * @brief QETDiagramEditor::drawGrid
  * @return true if the grid of folio must be displayed
  */
 bool QETDiagramEditor::drawGrid() const {
 	return m_draw_grid->isChecked();
-}
-
-/**
- * @brief QETDiagramEditor::acessCurrentDiagramView
- * Retrieve current DiagramView used in diagram editor
- */
-DiagramView *QETDiagramEditor::acessCurrentDiagramView () {
-	if (ProjectView *project_view = currentProjectView()) {
-		return(project_view -> currentDiagram());
-	}
-	return(nullptr);
 }
 
 /**

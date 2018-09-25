@@ -539,7 +539,7 @@ void DiagramView::keyPressEvent(QKeyEvent *e)
 	if (m_event_interface && m_event_interface->keyPressEvent(e))
 		return;
 	
-	ProjectView *current_project = this->diagramEditor()->acessCurrentProject();
+	ProjectView *current_project = this->diagramEditor()->currentProjectView();
 	DiagramContent dc(m_diagram);
 	switch(e -> key())
 	{
