@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1000</width>
-    <height>850</height>
+    <height>750</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -61,32 +61,6 @@
         <string>Utiliser des onglets (appliqué au proc&amp;hain lancement de QElectroTech)</string>
        </property>
       </widget>
-      <widget class="QCheckBox" name="m_use_gesture_trackpad">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>180</y>
-         <width>535</width>
-         <height>24</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Utiliser les gestes du pavé tactile</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="m_zoom_out_beyond_folio">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>220</y>
-         <width>535</width>
-         <height>24</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Autoriser le dézoom au delà du folio</string>
-       </property>
-      </widget>
       <widget class="QCheckBox" name="m_use_system_color_cb">
        <property name="geometry">
         <rect>
@@ -115,7 +89,63 @@
        <property name="frameShadow">
         <enum>QFrame::Raised</enum>
        </property>
+       <widget class="Line" name="line">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>50</y>
+          <width>971</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+       <widget class="Line" name="line_2">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>140</y>
+          <width>971</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="m_zoom_out_beyond_folio">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>200</y>
+          <width>535</width>
+          <height>24</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Autoriser le dézoom au delà du folio</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="m_use_gesture_trackpad">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>160</y>
+          <width>535</width>
+          <height>24</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Utiliser les gestes du pavé tactile</string>
+        </property>
+       </widget>
       </widget>
+      <zorder>frame</zorder>
+      <zorder>m_use_windows_mode_rb</zorder>
+      <zorder>m_use_tab_mode_rb</zorder>
+      <zorder>m_use_system_color_cb</zorder>
      </widget>
      <widget class="QWidget" name="tab_4">
       <attribute name="title">
@@ -252,7 +282,7 @@
         <property name="geometry">
          <rect>
           <x>480</x>
-          <y>110</y>
+          <y>120</y>
           <width>431</width>
           <height>18</height>
          </rect>
@@ -278,7 +308,7 @@
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>80</y>
+          <y>90</y>
           <width>208</width>
           <height>18</height>
          </rect>
@@ -293,7 +323,7 @@
           <x>470</x>
           <y>80</y>
           <width>481</width>
-          <height>26</height>
+          <height>31</height>
          </rect>
         </property>
         <item>
@@ -311,9 +341,9 @@
         <property name="geometry">
          <rect>
           <x>470</x>
-          <y>50</y>
+          <y>45</y>
           <width>481</width>
-          <height>26</height>
+          <height>31</height>
          </rect>
         </property>
         <item>
@@ -331,9 +361,9 @@
       <widget class="QGroupBox" name="groupBox_3">
        <property name="geometry">
         <rect>
-         <x>10</x>
+         <x>0</x>
          <y>180</y>
-         <width>961</width>
+         <width>971</width>
          <height>271</height>
         </rect>
        </property>
@@ -407,7 +437,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
           <x>50</x>
           <y>40</y>
           <width>141</width>
-          <height>26</height>
+          <height>31</height>
          </rect>
         </property>
        </widget>
@@ -431,13 +461,24 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
   </layout>
  </widget>
  <tabstops>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>m_use_system_color_cb</tabstop>
+  <tabstop>m_use_windows_mode_rb</tabstop>
+  <tabstop>m_use_tab_mode_rb</tabstop>
+  <tabstop>m_use_gesture_trackpad</tabstop>
+  <tabstop>m_zoom_out_beyond_folio</tabstop>
+  <tabstop>m_save_label_paste</tabstop>
+  <tabstop>m_use_folio_label</tabstop>
+  <tabstop>m_export_terminal</tabstop>
+  <tabstop>m_border_0</tabstop>
+  <tabstop>m_autosave_sb</tabstop>
   <tabstop>m_font_pb</tabstop>
   <tabstop>m_folio_list_pb</tabstop>
-  <tabstop>m_use_folio_label</tabstop>
-  <tabstop>m_autosave_sb</tabstop>
-  <tabstop>m_border_0</tabstop>
-  <tabstop>m_save_label_paste</tabstop>
-  <tabstop>m_export_terminal</tabstop>
+  <tabstop>m_common_elmt_path_cb</tabstop>
+  <tabstop>m_custom_elmt_path_cb</tabstop>
+  <tabstop>m_highlight_integrated_elements</tabstop>
+  <tabstop>m_default_elements_info</tabstop>
+  <tabstop>m_lang_cb</tabstop>
  </tabstops>
  <resources/>
  <connections/>
