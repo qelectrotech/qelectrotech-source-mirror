@@ -5156,7 +5156,7 @@ python -m pip install --upgrade di qet_tb_generator
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="617"/>
         <source>Chercher</source>
-        <translation type="unfinished"></translation>
+        <translation>Cerca</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="664"/>
@@ -7758,127 +7758,127 @@ Creare un testo utilizzando le variabili seguenti:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Modulo</translation>
+        <translation>Modulo</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="32"/>
         <source>Aller à la correspondance suivante</source>
-        <translation type="unfinished"></translation>
+        <translation>Vai alla corrispondenza seguente</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="67"/>
         <source>Aller à la correspondance précédente</source>
-        <translation type="unfinished"></translation>
+        <translation>Vai alla corrispondenza precedente</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="84"/>
         <source>Quitter</source>
-        <translation type="unfinished"></translation>
+        <translation>Esci</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="110"/>
         <source>Remplacer :</source>
-        <translation type="unfinished"></translation>
+        <translation>Sostituisci:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="130"/>
         <source>Remplacer la correspondance séléctionner</source>
-        <translation type="unfinished"></translation>
+        <translation>Sostituisci la corrispondenza selezionata</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="133"/>
         <source>Remplacer</source>
-        <translation type="unfinished">Sostituire</translation>
+        <translation>Sostituisci</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="140"/>
         <source>Remplacer les correspondances coché</source>
-        <translation type="unfinished"></translation>
+        <translation>Sostituisci la corrispondenza selezionata</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="143"/>
         <source>Tout remplacer</source>
-        <translation type="unfinished"></translation>
+        <translation>Sostituisci tutto</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="150"/>
         <source>Mode :</source>
-        <translation type="unfinished"></translation>
+        <translation>Modalità:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="158"/>
         <source>Texte brut</source>
-        <translation type="unfinished"></translation>
+        <translation>Testo grezzo</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="163"/>
         <source>Mots entiers</source>
-        <translation type="unfinished"></translation>
+        <translation>Parole intere</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="178"/>
         <source>Chercher :</source>
-        <translation type="unfinished"></translation>
+        <translation>Carca:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="187"/>
         <source>Avancé</source>
-        <translation type="unfinished"></translation>
+        <translation>Prossimo</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="128"/>
         <source>Correspondance :</source>
-        <translation type="unfinished"></translation>
+        <translation>Corrispondenza</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="134"/>
         <source>Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Pagine</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="140"/>
         <source>Champs texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Campi di testo</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="146"/>
         <source>Elements</source>
-        <translation type="unfinished">Elementi</translation>
+        <translation>Elementi</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="151"/>
         <source>Elements simple</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementi semplici</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="157"/>
         <source>Elements maître</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementi master</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="162"/>
         <source>Elements esclave</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementi slave</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="167"/>
         <source>Elements report de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Riferimenti di pagina</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="172"/>
         <source>Elements bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Morsettiere</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="179"/>
         <source>Conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Conduttori</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="299"/>
         <source>Inconnue</source>
-        <translation type="unfinished"></translation>
+        <translation>Sconosciuto</translation>
     </message>
 </context>
 <context>
