@@ -5163,7 +5163,7 @@ python -m pip install --upgrade qet_tb_generator
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="617"/>
         <source>Chercher</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoeken</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="664"/>
@@ -7765,127 +7765,127 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoeken en vervangen</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="32"/>
         <source>Aller à la correspondance suivante</source>
-        <translation type="unfinished"></translation>
+        <translation>Ga naar het volgende resultaat</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="67"/>
         <source>Aller à la correspondance précédente</source>
-        <translation type="unfinished"></translation>
+        <translation>Ga naar het vorige resultaat</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="84"/>
         <source>Quitter</source>
-        <translation type="unfinished"></translation>
+        <translation>Afsluiten</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="110"/>
         <source>Remplacer :</source>
-        <translation type="unfinished"></translation>
+        <translation>Vervangen :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="130"/>
         <source>Remplacer la correspondance séléctionner</source>
-        <translation type="unfinished"></translation>
+        <translation>Vervang de overeenkomstige selectie</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="133"/>
         <source>Remplacer</source>
-        <translation type="unfinished">Vervang</translation>
+        <translation>Vervangen</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="140"/>
         <source>Remplacer les correspondances coché</source>
-        <translation type="unfinished"></translation>
+        <translation>Vervang de aangevinkte selectie</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="143"/>
         <source>Tout remplacer</source>
-        <translation type="unfinished"></translation>
+        <translation>Vervang alles</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="150"/>
         <source>Mode :</source>
-        <translation type="unfinished"></translation>
+        <translation>Mode :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="158"/>
         <source>Texte brut</source>
-        <translation type="unfinished"></translation>
+        <translation>Platte tekst</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="163"/>
         <source>Mots entiers</source>
-        <translation type="unfinished"></translation>
+        <translation>Hele woorden</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="178"/>
         <source>Chercher :</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoeken :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="187"/>
         <source>Avancé</source>
-        <translation type="unfinished"></translation>
+        <translation>Volgende</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="128"/>
         <source>Correspondance :</source>
-        <translation type="unfinished"></translation>
+        <translation>Overeenkomst :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="134"/>
         <source>Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Bladen</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="140"/>
         <source>Champs texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstvelden</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="146"/>
         <source>Elements</source>
-        <translation type="unfinished">Elementen</translation>
+        <translation>Elementen</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="151"/>
         <source>Elements simple</source>
-        <translation type="unfinished"></translation>
+        <translation>Enkelvoudige elementen</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="157"/>
         <source>Elements maître</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijzende elementen</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="162"/>
         <source>Elements esclave</source>
-        <translation type="unfinished"></translation>
+        <translation>Doelelementen</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="167"/>
         <source>Elements report de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Bladenoverzichtselementen</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="172"/>
         <source>Elements bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminal-elementen</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="179"/>
         <source>Conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Geleiders</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="299"/>
         <source>Inconnue</source>
-        <translation type="unfinished"></translation>
+        <translation>Onbekende</translation>
     </message>
 </context>
 <context>
