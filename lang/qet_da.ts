@@ -5166,7 +5166,7 @@ python -m pip install --upgrade qet_tb_generator
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="617"/>
         <source>Chercher</source>
-        <translation type="unfinished"></translation>
+        <translation>Søge</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="664"/>
@@ -7771,127 +7771,128 @@ Opret tekst ved hjælp af følgende variabler:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="32"/>
         <source>Aller à la correspondance suivante</source>
-        <translation type="unfinished"></translation>
+        <translation>Gå til næste</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="67"/>
         <source>Aller à la correspondance précédente</source>
-        <translation type="unfinished"></translation>
+        <translation>Gå til forrige</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="84"/>
         <source>Quitter</source>
-        <translation type="unfinished"></translation>
+        <translation>Afslutte</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="110"/>
         <source>Remplacer :</source>
-        <translation type="unfinished"></translation>
+        <translation>Erstatte:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="130"/>
         <source>Remplacer la correspondance séléctionner</source>
-        <translation type="unfinished"></translation>
+        <translation>Erstatte den valgte</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="133"/>
         <source>Remplacer</source>
-        <translation type="unfinished">Erstat</translation>
+        <translation>Erstatte</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="140"/>
         <source>Remplacer les correspondances coché</source>
-        <translation type="unfinished"></translation>
+        <translation>Erstat valgte</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="143"/>
         <source>Tout remplacer</source>
-        <translation type="unfinished"></translation>
+        <translation>Erstatte alle</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="150"/>
         <source>Mode :</source>
-        <translation type="unfinished"></translation>
+        <translation>Tilstand:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="158"/>
         <source>Texte brut</source>
-        <translation type="unfinished"></translation>
+        <translation>Almindelig tekst</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="163"/>
         <source>Mots entiers</source>
-        <translation type="unfinished"></translation>
+        <translation>Hele ord</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="178"/>
         <source>Chercher :</source>
-        <translation type="unfinished"></translation>
+        <translation>Søge:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="187"/>
         <source>Avancé</source>
-        <translation type="unfinished"></translation>
+        <translation>Videre</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="128"/>
         <source>Correspondance :</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Mangler en sigende oversættelse</translatorcomment>
+        <translation>Korrespondance:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="134"/>
         <source>Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Ark</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="140"/>
         <source>Champs texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstfelter</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="146"/>
         <source>Elements</source>
-        <translation type="unfinished">Symboler</translation>
+        <translation>Symboler</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="151"/>
         <source>Elements simple</source>
-        <translation type="unfinished"></translation>
+        <translation>Simple symboler</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="157"/>
         <source>Elements maître</source>
-        <translation type="unfinished"></translation>
+        <translation>Overordnet symbol</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="162"/>
         <source>Elements esclave</source>
-        <translation type="unfinished"></translation>
+        <translation>Underordnet symbol</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="167"/>
         <source>Elements report de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Ark rapport symboler</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="172"/>
         <source>Elements bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemme symboler</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="179"/>
         <source>Conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Leder</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="299"/>
         <source>Inconnue</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukendt</translation>
     </message>
 </context>
 <context>
