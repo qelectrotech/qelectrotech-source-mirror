@@ -1376,7 +1376,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="278"/>
         <source>Modifier la source de texte, d&apos;un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία της πηγής του κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="305"/>
@@ -2580,7 +2580,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="273"/>
         <source>Elements</source>
-        <translation type="unfinished"></translation>
+        <translation>Στοιχεία</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="285"/>
@@ -2596,7 +2596,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="429"/>
         <source>Langage</source>
-        <translation type="unfinished"></translation>
+        <translation>Γλώσσα</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="316"/>
@@ -2614,12 +2614,12 @@ that you create. Text and number inputs are
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="348"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="368"/>
         <source>Parcourir...</source>
-        <translation type="unfinished"></translation>
+        <translation>Πλοήγηση</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="303"/>
         <source>(Recharger les collections d&apos;éléments pour appliquer les changements)</source>
-        <translation type="unfinished"></translation>
+        <translation>(Επαναφόρτωση των συλλογών στοιχείων για να ισχύσουν οι αλλαγές)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="164"/>
@@ -3783,9 +3783,9 @@ Tension/protocole : %1</source>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="218"/>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="231"/>
         <source>%n conducteurs composent le potentiel suivant :</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n αγωγός δημιουργεί το παρακάτω δυναμικό:</numerusform>
+            <numerusform>%n αγωγοί δημιουργούν το παρακάτω δυναμικό:</numerusform>
         </translation>
     </message>
     <message>
@@ -4855,7 +4855,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="617"/>
         <source>Chercher</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναζήτηση</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="664"/>
@@ -5164,7 +5164,34 @@ python -m pip install --upgrade qet_tb_generator
 &gt;&gt; Update on macOSX 
  pip3 install --upgrade qet_tb_generator 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Για να εγκαταστήσετε το πρόσθετο qet_tb_generator
+Επισκευτείτε το: https://pypi.python.org/pypi/qet-tb-generator/
+
+Απαιτεί python 3.5 ή νεότερο.
+&gt;&gt; Πρώτη εγκατάσταση στο Linux
+1. ελεγξτε αν έχετε το pip3 εγκατεστημένο: pip3 --version
+Αν όχι, εγκαταστήστε με: sudo apt-get install python3-pip
+2. Εγκαταστήστε το πρόγραμμα: sudo pip3 install qet_tb_generator
+3. Εκτελέστε το πρόγραμμα: qet_tb_generator
+&gt;&gt; Ενημέρωση στο Linux
+sudo pip3 install --upgrade qet_tb_generator 
+
+&gt;&gt; Πρώτη εγκατάσταση σε Windows
+1. Εγκαταστήστε εαν απαιτείται, python 3.5 ή νεότερο 
+ Επισκευτείτε το https://www.python.org/downloads/ 
+2. pip install qet_tb_generator
+&gt;&gt; Ενημέρωση στα Windows
+python -m pip install --upgrade qet_tb_generator
+&gt;&gt;ο χρήστης νπορεί να τρέξει σε ένα τερματικό το script σε αυτόν τον κατάλογο 
+ C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts 
+
+&gt;&gt; Πρώτη εγκατάσταση σε macOSX 
+1. Εγκαταστήστε εαν απαιτείται, python 3.5 ή νεότερο 
+ Επισκευτείτε το https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674 
+2. pip3 install qet_tb_generator 
+&gt;&gt; Ενημέρωση σε macOSX 
+ pip3 install --upgrade qet_tb_generator 
+</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="289"/>
@@ -7331,7 +7358,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="114"/>
         <source>Reference Fabricant</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναφορά Κατασκευαστή</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="115"/>
@@ -7699,7 +7726,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Φόρμα</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="32"/>
@@ -7714,12 +7741,12 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="84"/>
         <source>Quitter</source>
-        <translation type="unfinished"></translation>
+        <translation>Τερματισμός</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="110"/>
         <source>Remplacer :</source>
-        <translation type="unfinished"></translation>
+        <translation>Αντικατάσταση</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="130"/>
@@ -7729,7 +7756,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="133"/>
         <source>Remplacer</source>
-        <translation type="unfinished">Αντικατάσταση</translation>
+        <translation>Αντικατάσταση</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="140"/>
@@ -7739,7 +7766,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="143"/>
         <source>Tout remplacer</source>
-        <translation type="unfinished"></translation>
+        <translation>Αντικατάσταση όλων</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="150"/>
@@ -7749,17 +7776,17 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="158"/>
         <source>Texte brut</source>
-        <translation type="unfinished"></translation>
+        <translation>Απλό κείμενο</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="163"/>
         <source>Mots entiers</source>
-        <translation type="unfinished"></translation>
+        <translation>Ολόκληρες λέξεις</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="178"/>
         <source>Chercher :</source>
-        <translation type="unfinished"></translation>
+        <translation>Αναζήτηση</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="187"/>
@@ -7774,32 +7801,32 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="134"/>
         <source>Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Σελίδες</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="140"/>
         <source>Champs texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Πεδία κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="146"/>
         <source>Elements</source>
-        <translation type="unfinished"></translation>
+        <translation>Στοιχεία</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="151"/>
         <source>Elements simple</source>
-        <translation type="unfinished"></translation>
+        <translation>Απλά στοιχεία</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="157"/>
         <source>Elements maître</source>
-        <translation type="unfinished"></translation>
+        <translation>Κύρια στοιχεία</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="162"/>
         <source>Elements esclave</source>
-        <translation type="unfinished"></translation>
+        <translation>Βοηθητικά στοιχεία</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="167"/>
@@ -7809,17 +7836,17 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="172"/>
         <source>Elements bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Στοιχεία ακροδέκτη</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="179"/>
         <source>Conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Αγωγοί</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="299"/>
         <source>Inconnue</source>
-        <translation type="unfinished"></translation>
+        <translation>Άγνωστο</translation>
     </message>
 </context>
 <context>
