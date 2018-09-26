@@ -7723,12 +7723,12 @@ Create your own text by helping you of the following variables :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="32"/>
         <source>Aller à la correspondance suivante</source>
-        <translation>Go to the next correspondence</translation>
+        <translation>Go to the next match</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="67"/>
         <source>Aller à la correspondance précédente</source>
-        <translation>Go to previous correspondence</translation>
+        <translation>Go to previous match</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="84"/>
@@ -7778,7 +7778,7 @@ Create your own text by helping you of the following variables :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="178"/>
         <source>Chercher :</source>
-        <translation>Search :</translation>
+        <translation>Find :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="187"/>
