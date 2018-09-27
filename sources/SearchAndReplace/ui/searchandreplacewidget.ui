@@ -35,8 +35,8 @@
       <string/>
      </property>
      <property name="icon">
-      <iconset theme="arrow-down-double">
-       <normaloff>.</normaloff>.</iconset>
+      <iconset resource="../../../qelectrotech.qrc">
+       <normaloff>:/ico/16x16/go-bottom.png</normaloff>:/ico/16x16/go-bottom.png</iconset>
      </property>
      <property name="flat">
       <bool>false</bool>
@@ -70,8 +70,8 @@
       <string/>
      </property>
      <property name="icon">
-      <iconset theme="arrow-up-double">
-       <normaloff>.</normaloff>.</iconset>
+      <iconset resource="../../../qelectrotech.qrc">
+       <normaloff>:/ico/16x16/go-top.png</normaloff>:/ico/16x16/go-top.png</iconset>
      </property>
      <property name="flat">
       <bool>false</bool>
@@ -87,8 +87,8 @@
       <string/>
      </property>
      <property name="icon">
-      <iconset theme="window-close">
-       <normaloff>.</normaloff>.</iconset>
+      <iconset resource="../../../qelectrotech.qrc">
+       <normaloff>:/ico/16x16/window-close.svg</normaloff>:/ico/16x16/window-close.svg</iconset>
      </property>
      <property name="flat">
       <bool>false</bool>
@@ -219,11 +219,15 @@
    </item>
    <item row="0" column="6">
     <widget class="QPushButton" name="m_reload_pb">
+     <property name="toolTip">
+      <string>Actualiser</string>
+     </property>
      <property name="text">
       <string/>
      </property>
      <property name="icon">
-      <iconset theme="view-refresh"/>
+      <iconset resource="../../../qelectrotech.qrc">
+       <normaloff>:/ico/16x16/view-refresh.png</normaloff>:/ico/16x16/view-refresh.png</iconset>
      </property>
     </widget>
    </item>

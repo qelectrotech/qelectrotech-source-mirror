@@ -585,5 +585,6 @@
         <file>ico/16x16/edit-select-invert.png</file>
         <file>ico/16x16/edit-select-none.png</file>
         <file>ico/16x16/transform-rotate.png</file>
+        <file>ico/16x16/window-close.svg</file>
     </qresource>
 </RCC>
