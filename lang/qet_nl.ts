@@ -7770,12 +7770,12 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="32"/>
         <source>Aller à la correspondance suivante</source>
-        <translation>Ga naar het volgende resultaat</translation>
+        <translation>Volgend zoekresultaat</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="67"/>
         <source>Aller à la correspondance précédente</source>
-        <translation>Ga naar het vorige resultaat</translation>
+        <translation>Vorig zoekresultaat</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="84"/>
@@ -7790,17 +7790,17 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="130"/>
         <source>Remplacer la correspondance séléctionner</source>
-        <translation>Vervang de overeenkomstige selectie</translation>
+        <translation>Vervang de gevonden tekst alleen hier</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="133"/>
         <source>Remplacer</source>
-        <translation>Vervangen</translation>
+        <translation>Vervang</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="140"/>
         <source>Remplacer les correspondances coché</source>
-        <translation>Vervang de aangevinkte selectie</translation>
+        <translation>Vervang de gevonden tekst overal</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="143"/>
@@ -7810,7 +7810,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="150"/>
         <source>Mode :</source>
-        <translation>Mode :</translation>
+        <translation>Zoekmodus :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="158"/>
@@ -7830,7 +7830,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="187"/>
         <source>Avancé</source>
-        <translation>Volgende</translation>
+        <translation>Uitgebreid zoeken</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="128"/>
