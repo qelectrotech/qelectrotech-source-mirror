@@ -219,6 +219,10 @@ namespace QET {
 		extern QIcon super;
 		extern QIcon sub;
 		extern QIcon textGroup;
+		extern QIcon ElementMaster;
+		extern QIcon ElementSlave;
+		extern QIcon FolioXrefComing;
+		extern QIcon ElementTerminal;
 	}
 }
 #endif

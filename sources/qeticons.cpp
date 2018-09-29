@@ -211,6 +211,10 @@ namespace QET {
 		QIcon super;
 		QIcon sub;
 		QIcon textGroup;
+		QIcon ElementMaster;
+		QIcon ElementSlave;
+		QIcon FolioXrefComing;
+		QIcon ElementTerminal;
 	}
 }
 
@@ -239,6 +243,7 @@ void QET::Icons::initIcons() {
 	Autoconnect         .addFile(":/ico/22x22/autoconnect.png");
 	BringForward        .addFile(":/ico/22x22/bring_forward.png");
     Cancel              .addFile(":/ico/16x16/item-cancel.png");
+	Conductor           .addFile(":/ico/16x16/conductor.png");
     ConductorEdit       .addFile(":/ico/16x16/conductor-edit.png");
     ConductorSettings   .addFile(":/ico/16x16/conductor-reset.png");
     ConductorSettings   .addFile(":/ico/22x22/conductor2.png");
@@ -518,4 +523,8 @@ void QET::Icons::initIcons() {
     sub                 .addFile(":/ico/22x22/format-text-subscript.png");
     super               .addFile(":/ico/22x22/format-text-superscript.png");
 	textGroup           .addFile(":/ico/16x16/object-group.png");
+	ElementMaster       .addFile(":/ico/16x16/element-master.png");
+	ElementSlave        .addFile(":/ico/16x16/element-slave.png");
+	FolioXrefComing     .addFile(":/ico/16x16/folio-ref-coming.png");
+	ElementTerminal     .addFile(":/ico/16x16/terminal.png");
 }

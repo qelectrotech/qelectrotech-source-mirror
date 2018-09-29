@@ -155,27 +155,31 @@ void SearchAndReplaceWidget::setUpTreeItems()
 	
 	m_master_elmt_qtwi= new QTreeWidgetItem(m_elements_qtwi);
 	m_master_elmt_qtwi->setText(0, tr("Elements maître"));
+	m_master_elmt_qtwi->setIcon(0, QET::Icons::ElementMaster);
 	m_master_elmt_qtwi->setCheckState(0, Qt::Checked);
 	m_qtwi_elmts.append(m_master_elmt_qtwi);
 	
 	m_slave_elmt_qtwi = new QTreeWidgetItem(m_elements_qtwi);
 	m_slave_elmt_qtwi->setText(0, tr("Elements esclave"));
+	m_slave_elmt_qtwi->setIcon(0, QET::Icons::ElementSlave);
 	m_slave_elmt_qtwi->setCheckState(0, Qt::Checked);
 	m_qtwi_elmts.append(m_slave_elmt_qtwi);
 	
 	m_report_elmt_qtwi = new QTreeWidgetItem(m_elements_qtwi);
 	m_report_elmt_qtwi->setText(0, tr("Elements report de folio"));
+	m_report_elmt_qtwi->setIcon(0, QET::Icons::FolioXrefComing);
 	m_report_elmt_qtwi->setCheckState(0, Qt::Checked);
 	m_qtwi_elmts.append(m_report_elmt_qtwi);
 	
 	m_terminal_elmt_qtwi = new QTreeWidgetItem(m_elements_qtwi);
 	m_terminal_elmt_qtwi->setText(0, tr("Elements bornier"));
+	m_terminal_elmt_qtwi->setIcon(0, QET::Icons::ElementTerminal);
 	m_terminal_elmt_qtwi->setCheckState(0, Qt::Checked);
 	m_qtwi_elmts.append(m_terminal_elmt_qtwi);
 	m_category_qtwi.append(m_qtwi_elmts);
 	
 	m_conductor_qtwi = new QTreeWidgetItem(m_root_qtwi);
-	m_conductor_qtwi->setIcon(0, QET::Icons::ConductorSettings);
+	m_conductor_qtwi->setIcon(0, QET::Icons::Conductor);
 	m_conductor_qtwi->setText(0, tr("Conducteurs"));
 	m_conductor_qtwi->setCheckState(0, Qt::Checked);
 	m_category_qtwi.append(m_conductor_qtwi);
