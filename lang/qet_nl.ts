@@ -7870,12 +7870,12 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="167"/>
         <source>Elements report de folio</source>
-        <translation>Bladenoverzichtselementen</translation>
+        <translation>Bladverwijzingslabels</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="172"/>
         <source>Elements bornier</source>
-        <translation>Terminal-elementen</translation>
+        <translation>Terminals</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="179"/>
