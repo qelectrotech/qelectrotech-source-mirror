@@ -586,5 +586,10 @@
         <file>ico/16x16/edit-select-none.png</file>
         <file>ico/16x16/transform-rotate.png</file>
         <file>ico/16x16/window-close.svg</file>
+        <file>ico/16x16/conductor.png</file>
+        <file>ico/16x16/element-master.png</file>
+        <file>ico/16x16/element-slave.png</file>
+        <file>ico/16x16/folio-ref-coming.png</file>
+        <file>ico/16x16/terminal.png</file>
     </qresource>
 </RCC>
