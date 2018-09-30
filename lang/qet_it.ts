@@ -2956,17 +2956,17 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
     <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished">Finestra di dialogo</translation>
+        <translation>Finestra di dialogo</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="20"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>Testo dell&apos;etichetta</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="30"/>
         <source>Écraser les textes existants</source>
-        <translation type="unfinished"></translation>
+        <translation>Cancellare i testi esistenti</translation>
     </message>
 </context>
 <context>
@@ -7846,7 +7846,7 @@ Creare un testo utilizzando le variabili seguenti:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="226"/>
         <source>Actualiser</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiornare</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="128"/>
