@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2017 The QElectroTech Team
+	Copyright 2006-2018 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -23,6 +23,8 @@
 #include "elementtextitemgroup.h"
 #include "addelementtextcommand.h"
 #include "diagram.h"
+#include "importelementtextpatterndialog.h"
+#include "deleteqgraphicsitemcommand.h"
 
 #include <QDir>
 #include <QInputDialog>
@@ -122,7 +124,6 @@ QDomDocument ExportElementTextPattern::xmlConf() const
 //*******************//
 //******IMPORT*******//
 //*******************//
-
 ImportElementTextPattern::ImportElementTextPattern(Element *elmt):
 	m_element(elmt)
 {
@@ -146,14 +147,15 @@ ImportElementTextPattern::ImportElementTextPattern(Element *elmt):
 	}
 	
 	bool ok=false;
+	bool erase = false;
 		//Remove the .xml extention of the files
 	result.replaceInStrings(".xml", "");
-	QString name = getName(result, ok);
+	QString name = getName(result, &ok, &erase);
 	
 	if(!ok || name.isEmpty())
 		return;
 	else
-		apply(name);
+		apply(name, erase);
 }
 
 /**
@@ -162,15 +164,14 @@ ImportElementTextPattern::ImportElementTextPattern(Element *elmt):
  * @param ok
  * @return 
  */
-QString ImportElementTextPattern::getName(const QStringList& list, bool &ok) const
+QString ImportElementTextPattern::getName(const QStringList& list, bool *ok, bool *erase) const
 {
-	return QInputDialog::getItem(parentWidget(),
-								 QObject::tr("Séléctionner une configuration de textes"),
-								 QObject::tr("Séléctionner la configuration de textes à ajouter à l'élément"),
-								 list,
-								 0,
-								 false,
-								 &ok);
+	return ImportElementTextPatternDialog::getItem(parentWidget(),
+												   QObject::tr("Séléctionner une configuration de textes"),
+												   QObject::tr("Séléctionner la configuration de textes à ajouter à l'élément"),
+												   list,
+												   ok,
+												   erase);
 }
 
 QWidget *ImportElementTextPattern::parentWidget() const
@@ -182,12 +183,14 @@ QWidget *ImportElementTextPattern::parentWidget() const
 	return parent;
 }
 
+
 /**
  * @brief ImportElementTextPattern::apply
  * Apply the user choice
  * @param name : the name of the selected pattern
+ * @param erase : erase the existing texts and groups of element.
  */
-void ImportElementTextPattern::apply(QString name) const
+void ImportElementTextPattern::apply(QString name, bool erase) const
 {
 	if(!name.endsWith(".xml"))
 		name.append(".xml");
@@ -234,6 +237,20 @@ void ImportElementTextPattern::apply(QString name) const
 	
 	QUndoStack &undo_stack = m_element->diagram()->undoStack();
 	undo_stack.beginMacro(QObject::tr("Importer la configuration de texte : %1").arg(name.remove(".xml")));
+	
+		//erase existing texts and groups
+	if (erase)
+	{
+		for (ElementTextItemGroup *group : m_element->textGroups()) {
+			undo_stack.push(new RemoveTextsGroupCommand(m_element, group));
+		}
+		for (DynamicElementTextItem *deti : m_element->dynamicTextItems())
+		{
+			DiagramContent dc;
+			dc.m_element_texts << deti;
+			undo_stack.push(new DeleteQGraphicsItemCommand(m_element->diagram(), dc));
+		}
+	}
 	
 		//Add the texts to element
 	for(const QDomElement& text : texts)

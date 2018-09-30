@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2017 The QElectroTech Team
+	Copyright 2006-2018 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -45,9 +45,9 @@ class ImportElementTextPattern
 		ImportElementTextPattern(Element *elmt);
 		
 	private:
-		QString getName(const QStringList& list, bool &ok) const;
+		QString getName(const QStringList& list, bool *ok, bool *erase) const;
 		QWidget *parentWidget() const;
-		void apply(QString name) const;
+		void apply(QString name, bool erase = false) const;
 		
 	private:
 		Element *m_element = nullptr;
