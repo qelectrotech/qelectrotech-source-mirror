@@ -2952,6 +2952,24 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
     </message>
 </context>
 <context>
+    <name>ImportElementTextPatternDialog</name>
+    <message>
+        <location filename="../sources/ui/importelementtextpatterndialog.ui" line="14"/>
+        <source>Dialog</source>
+        <translation type="unfinished">Finestra di dialogo</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/importelementtextpatterndialog.ui" line="20"/>
+        <source>TextLabel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/importelementtextpatterndialog.ui" line="30"/>
+        <source>Écraser les textes existants</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>IntegrationMoveTitleBlockTemplatesHandler</name>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="45"/>
@@ -7518,45 +7536,45 @@ Cosa vuoi fare?</translation>
         <translation>Ruotare i testi selezionati</translation>
     </message>
     <message>
-        <location filename="../sources/elementtextpattern.cpp" line="62"/>
-        <location filename="../sources/elementtextpattern.cpp" line="143"/>
+        <location filename="../sources/elementtextpattern.cpp" line="64"/>
+        <location filename="../sources/elementtextpattern.cpp" line="144"/>
         <source>Configuration de textes</source>
         <translation>Configurazione dei testi</translation>
     </message>
     <message>
-        <location filename="../sources/elementtextpattern.cpp" line="63"/>
+        <location filename="../sources/elementtextpattern.cpp" line="65"/>
         <source>Une configuration de textes nommé &lt;&lt; %1 &gt;&gt; existe déjà.
 Voulez-vous la remplacer ?</source>
         <translation>Una configurazione di testi denominata &lt;&lt; %1 &gt;&gt; esiste già.
 Sostituirla con questa?</translation>
     </message>
     <message>
-        <location filename="../sources/elementtextpattern.cpp" line="82"/>
+        <location filename="../sources/elementtextpattern.cpp" line="84"/>
         <source>Nom de la configuration</source>
         <translation>Nome della configurazione</translation>
     </message>
     <message>
-        <location filename="../sources/elementtextpattern.cpp" line="83"/>
+        <location filename="../sources/elementtextpattern.cpp" line="85"/>
         <source>Entrer le nom de la configuration à créer</source>
         <translation>Inserire il nome della configurazione da creare</translation>
     </message>
     <message>
-        <location filename="../sources/elementtextpattern.cpp" line="144"/>
+        <location filename="../sources/elementtextpattern.cpp" line="145"/>
         <source>Aucune configuration de textes existante.</source>
         <translation>Non esiste nessuna configurazione dei testi.</translation>
     </message>
     <message>
-        <location filename="../sources/elementtextpattern.cpp" line="168"/>
+        <location filename="../sources/elementtextpattern.cpp" line="170"/>
         <source>Séléctionner une configuration de textes</source>
         <translation>Selezionare una configurazione dei testi</translation>
     </message>
     <message>
-        <location filename="../sources/elementtextpattern.cpp" line="169"/>
+        <location filename="../sources/elementtextpattern.cpp" line="171"/>
         <source>Séléctionner la configuration de textes à ajouter à l&apos;élément</source>
         <translation>Selezionare la configurazione dei testi da aggiungere all&apos;elemento</translation>
     </message>
     <message>
-        <location filename="../sources/elementtextpattern.cpp" line="236"/>
+        <location filename="../sources/elementtextpattern.cpp" line="239"/>
         <source>Importer la configuration de texte : %1</source>
         <translation>Importare la configurazione del testo : %1</translation>
     </message>
@@ -7766,64 +7784,69 @@ Creare un testo utilizzando le variabili seguenti:
         <translation>Vai alla corrispondenza seguente</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="67"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="70"/>
         <source>Aller à la correspondance précédente</source>
         <translation>Vai alla corrispondenza precedente</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="84"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="87"/>
         <source>Quitter</source>
         <translation>Esci</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="110"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="113"/>
         <source>Remplacer :</source>
         <translation>Sostituisci:</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="130"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="133"/>
         <source>Remplacer la correspondance séléctionner</source>
         <translation>Sostituisci la corrispondenza selezionata</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="133"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="136"/>
         <source>Remplacer</source>
         <translation>Sostituisci</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="140"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="143"/>
         <source>Remplacer les correspondances coché</source>
         <translation>Sostituisci la corrispondenza selezionata</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="143"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="146"/>
         <source>Tout remplacer</source>
         <translation>Sostituisci tutto</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="150"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="153"/>
         <source>Mode :</source>
         <translation>Modalità:</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="158"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="161"/>
         <source>Texte brut</source>
         <translation>Testo grezzo</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="163"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="166"/>
         <source>Mots entiers</source>
         <translation>Parole intere</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="178"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="181"/>
         <source>Chercher :</source>
         <translation>Carca:</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="187"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="190"/>
         <source>Avancé</source>
         <translation>Prossimo</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="226"/>
+        <source>Actualiser</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="128"/>
@@ -7856,27 +7879,27 @@ Creare un testo utilizzando le variabili seguenti:
         <translation>Elementi master</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="162"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="163"/>
         <source>Elements esclave</source>
         <translation>Elementi slave</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="167"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="169"/>
         <source>Elements report de folio</source>
         <translation>Riferimenti di pagina</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="172"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="175"/>
         <source>Elements bornier</source>
         <translation>Morsettiere</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="179"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="183"/>
         <source>Conducteurs</source>
         <translation>Conduttori</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="299"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="303"/>
         <source>Inconnue</source>
         <translation>Sconosciuto</translation>
     </message>
