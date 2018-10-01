@@ -2957,17 +2957,17 @@ Her kan standardværdien angives for dette felt for de oprettede symboler:</tran
     <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished">Dialogboks</translation>
+        <translation>Dialogboks</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="20"/>
         <source>TextLabel</source>
-        <translation type="unfinished">Tekst etiket</translation>
+        <translation>Tekst etiket</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="30"/>
         <source>Écraser les textes existants</source>
-        <translation type="unfinished"></translation>
+        <translation>Overskriv eksisterende tekster</translation>
     </message>
 </context>
 <context>
@@ -7859,7 +7859,7 @@ Opret tekst ved hjælp af følgende variabler:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="226"/>
         <source>Actualiser</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualisere</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="128"/>
