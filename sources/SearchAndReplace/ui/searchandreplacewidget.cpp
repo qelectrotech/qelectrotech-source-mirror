@@ -25,6 +25,8 @@
 #include "independenttextitem.h"
 #include "conductor.h"
 
+#include <QSettings>
+
 /**
  * @brief SearchAndReplaceWidget::SearchAndReplaceWidget
  * Constructor
@@ -86,6 +88,9 @@ bool SearchAndReplaceWidget::event(QEvent *event)
 void SearchAndReplaceWidget::clear()
 {
 	disconnect(ui->m_tree_widget, &QTreeWidget::itemChanged, this, &SearchAndReplaceWidget::itemChanged);
+	
+	qDeleteAll(m_diagram_hash.keys());
+	m_diagram_hash.clear();
 	
 	qDeleteAll(m_element_hash.keys());
 	m_element_hash.clear();
@@ -224,7 +229,23 @@ void SearchAndReplaceWidget::fillItemsList()
 
 	
 	DiagramContent dc;
-	for (Diagram *diagram : project_->diagrams()) {
+	for (Diagram *diagram : project_->diagrams())
+	{
+		QString str;
+		
+		QSettings settings;
+		if (settings.value("genericpanel/folio", true).toBool()) {
+			str = diagram->border_and_titleblock.finalfolio();
+		} else {
+			str = QString::number(diagram->folioIndex());
+		}
+		
+		str.append(" " + diagram->title());
+		
+		QTreeWidgetItem *qtwi = new QTreeWidgetItem(m_folio_qtwi);
+		qtwi->setText(0, str);
+		qtwi->setCheckState(0, Qt::Checked);
+		m_diagram_hash.insert(qtwi, QPointer<Diagram>(diagram));
 		dc += DiagramContent(diagram, false);
 	}
 	
@@ -565,7 +586,14 @@ void SearchAndReplaceWidget::on_m_tree_widget_itemDoubleClicked(QTreeWidgetItem 
 {
     Q_UNUSED(column);
 	
-	if (m_element_hash.keys().contains(item))
+	if (m_diagram_hash.keys().contains(item))
+	{
+		QPointer<Diagram> diagram = m_diagram_hash.value(item);
+		if(diagram) {
+			diagram.data()->showMe();
+		}
+	}
+	else if (m_element_hash.keys().contains(item))
 	{
 		QPointer<Element> elmt = m_element_hash.value(item);
 		if (elmt) {

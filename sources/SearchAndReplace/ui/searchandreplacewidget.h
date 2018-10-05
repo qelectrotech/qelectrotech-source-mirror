@@ -87,6 +87,7 @@ class SearchAndReplaceWidget : public QWidget
 		QHash<QTreeWidgetItem *, QPointer <Conductor>> m_conductor_hash;
 		QPointer<Element> m_highlighted_element;
 		QPointer<QGraphicsObject> m_last_selected;
+		QHash<QTreeWidgetItem *, QPointer <Diagram>> m_diagram_hash;
 };
 
 #endif // SEARCHANDREPLACEWIDGET_H
