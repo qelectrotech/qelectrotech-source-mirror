@@ -898,6 +898,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 			QString debug_message = QString("Diagram::fromXml() : Le chargement de la description de l'element %1 a echoue avec le code d'erreur %2").arg(element_location.path()).arg(state);
 			qDebug() << qPrintable(debug_message);
 			delete nvel_elmt;
+			continue;
 		}
 		
 		addItem(nvel_elmt);
