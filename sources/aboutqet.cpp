@@ -167,6 +167,7 @@ QWidget *AboutQET::translatorsTab() const {
 	addAuthor(translators, "Ronny Desmedt",                             "r.desmedt@live.be",              tr("Traduction en flamand"));
 	addAuthor(translators, "OSS au2mation",                             "OSSau2mation@OSSau2mation.dk",   tr("Traduction en danois"));
 	addAuthor(translators, "Hilario Silveira",                          "hilario@soliton.com.br",         tr("Traduction en brézilien"));
+	addAuthor(translators, "Aziz Karabudak",                            "aziz.karabudak@argevi.com",      tr("Traduction en Turc"));
 
 
 
@@ -190,6 +191,7 @@ QWidget *AboutQET::contributorsTab() const {
 	addAuthor(contributors, "David Geiger",        "david.david@mageialinux-online.org",  tr("Paquets Mageia"));
 	addAuthor(contributors, "Laurent Trinques",    "scorpio@qelectrotech.org",            tr("Paquets Debian"));
 	addAuthor(contributors, "Denis Briand",        "debian@denis-briand.fr",              tr("Paquets Debian"));
+	addAuthor(contributors, "W. Martin Borgert",   "debacle@debian.org",                  tr("Paquets Debian"));
 	addAuthor(contributors, "Markos Chandras",     "hwoarang@gentoo.org.",                tr("Paquets Gentoo"));
 	addAuthor(contributors, "Mbit",                "",                                    tr("Paquets Gentoo"));
 	addAuthor(contributors, "Elbert",              "",                                    tr("Paquets OS/2"));
