@@ -177,7 +177,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="170"/>
         <source>Traduction en Turc</source>
-        <translation type="unfinished"></translation>
+        <translation>Übersetzung ins Türkische</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="190"/>
@@ -2843,7 +2843,7 @@ Hier unten kann der Standardwert dieses Textfeldes für Ihre eigenen Bauteile de
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="197"/>
         <source>Turc</source>
-        <translation type="unfinished"></translation>
+        <translation>Türkisch</translation>
     </message>
 </context>
 <context>
