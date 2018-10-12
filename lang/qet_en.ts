@@ -4,7 +4,7 @@
 <context>
     <name>AboutQET</name>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="221"/>
+        <location filename="../sources/aboutqet.cpp" line="223"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>This program is under the GNU/GPL license.</translation>
     </message>
@@ -83,8 +83,8 @@
         <location filename="../sources/aboutqet.cpp" line="125"/>
         <location filename="../sources/aboutqet.cpp" line="126"/>
         <location filename="../sources/aboutqet.cpp" line="129"/>
-        <location filename="../sources/aboutqet.cpp" line="200"/>
         <location filename="../sources/aboutqet.cpp" line="202"/>
+        <location filename="../sources/aboutqet.cpp" line="204"/>
         <source>Développement</source>
         <translation>Development</translation>
     </message>
@@ -179,53 +179,58 @@
         <translation>Brazilian translation</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="189"/>
+        <location filename="../sources/aboutqet.cpp" line="170"/>
+        <source>Traduction en Turc</source>
+        <translation>Turkish translation</translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="190"/>
         <source>Paquets Fedora et Red Hat</source>
         <translation>Fedora and Red Hat packages</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="190"/>
+        <location filename="../sources/aboutqet.cpp" line="191"/>
         <source>Paquets Mageia</source>
         <translation>Mageia packages</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="193"/>
-        <location filename="../sources/aboutqet.cpp" line="194"/>
+        <location filename="../sources/aboutqet.cpp" line="195"/>
+        <location filename="../sources/aboutqet.cpp" line="196"/>
         <source>Paquets Gentoo</source>
         <translation>Gentoo packages</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="195"/>
+        <location filename="../sources/aboutqet.cpp" line="197"/>
         <source>Paquets OS/2</source>
         <translation>OS/2 packages</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="196"/>
+        <location filename="../sources/aboutqet.cpp" line="198"/>
         <source>Paquets FreeBSD</source>
         <translation>FreeBSD packages</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="197"/>
+        <location filename="../sources/aboutqet.cpp" line="199"/>
         <source>Paquets MAC OS X</source>
         <translation>MAC OS X packages</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="198"/>
+        <location filename="../sources/aboutqet.cpp" line="200"/>
         <source>Paquets Archlinux AUR</source>
         <translation>Archlinux AUR packages</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="201"/>
+        <location filename="../sources/aboutqet.cpp" line="203"/>
         <source>Documentation</source>
         <translation>Documentation</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="203"/>
+        <location filename="../sources/aboutqet.cpp" line="205"/>
         <source>Collection d&apos;éléments</source>
         <translation>Collection of elements</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="204"/>
+        <location filename="../sources/aboutqet.cpp" line="206"/>
         <source>Python plugin qet-tb-generator</source>
         <translation></translation>
     </message>
@@ -235,13 +240,14 @@
         <translation>DXF converter</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="191"/>
         <location filename="../sources/aboutqet.cpp" line="192"/>
+        <location filename="../sources/aboutqet.cpp" line="193"/>
+        <location filename="../sources/aboutqet.cpp" line="194"/>
         <source>Paquets Debian</source>
         <translation>Debian packages</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="199"/>
+        <location filename="../sources/aboutqet.cpp" line="201"/>
         <source>Icônes</source>
         <translation>Icons</translation>
     </message>
@@ -810,7 +816,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
 <context>
     <name>Diagram</name>
     <message>
-        <location filename="../sources/diagram.cpp" line="1274"/>
+        <location filename="../sources/diagram.cpp" line="1275"/>
         <source>Modifier la profondeur</source>
         <translation>Change the depth</translation>
     </message>
@@ -2596,7 +2602,7 @@ that you create. Text and number inputs are
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="329"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="275"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="276"/>
         <source>Chemin de la collection utilisateur</source>
         <translation>User Collection Path</translation>
     </message>
@@ -2607,7 +2613,7 @@ that you create. Text and number inputs are
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="316"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="261"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="262"/>
         <source>Chemin de la collection commune</source>
         <translation>Path of the common collection</translation>
     </message>
@@ -2831,6 +2837,11 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="196"/>
         <source>Belgique-Flemish</source>
         <translation>Belgium-Flemish</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="197"/>
+        <source>Turc</source>
+        <translation>Turkish</translation>
     </message>
 </context>
 <context>
@@ -7809,57 +7820,57 @@ Create your own text by helping you of the following variables :
         <translation>Actualize</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="128"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="133"/>
         <source>Correspondance :</source>
         <translation>Correspondence:</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="134"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="139"/>
         <source>Folios</source>
         <translation>Folios</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="140"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="145"/>
         <source>Champs texte</source>
         <translation>Text fields</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="146"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="151"/>
         <source>Elements</source>
         <translation>Elements</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="151"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="156"/>
         <source>Elements simple</source>
         <translation>Simple elements</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="157"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="162"/>
         <source>Elements maître</source>
         <translation>Master element</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="163"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="168"/>
         <source>Elements esclave</source>
         <translation>Slave element</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="169"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="174"/>
         <source>Elements report de folio</source>
         <translation>Elements report folio</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="175"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="180"/>
         <source>Elements bornier</source>
         <translation>Terminal elements</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="183"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="188"/>
         <source>Conducteurs</source>
         <translation>Conductors</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="303"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="324"/>
         <source>Inconnue</source>
         <translation>Unknown</translation>
     </message>
