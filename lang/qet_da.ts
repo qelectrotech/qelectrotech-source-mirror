@@ -181,7 +181,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="170"/>
         <source>Traduction en Turc</source>
-        <translation type="unfinished"></translation>
+        <translation>Tyrkisk oversættelse</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="190"/>
@@ -2849,7 +2849,7 @@ Her kan standardværdien angives for dette felt for de oprettede symboler:</tran
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="197"/>
         <source>Turc</source>
-        <translation type="unfinished"></translation>
+        <translation>Tyrkisk</translation>
     </message>
 </context>
 <context>
