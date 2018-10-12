@@ -62,6 +62,10 @@ XmlElementCollection::XmlElementCollection(QETProject *project) :
 	names.addName("ca", "Elements importats");
 	names.addName("ro", "Elemente importate");
 	names.addName("tr", QString(turkish_data, 12));
+	names.addName("da", "Importerede elementer");
+	names.addName("hr", "Uvezeni elementi");
+	names.addName("sl", "Uvoženi elementi");
+	
 
 	import.appendChild(names.toXml(m_dom_document));
 }
