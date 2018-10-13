@@ -4190,7 +4190,7 @@ Sletningen kan ikke fortrydes.</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="1783"/>
         <source>Usage : </source>
-        <translation>Anvender: </translation>
+        <translation>Brug: </translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1784"/>
@@ -4785,7 +4785,7 @@ sudo pip3 install --upgrade qet_tb_generator
 1. Installere, hvis krævet, python 3.5 eller derover 
  Gå til https://www.python.org/downloads/ 
 2. pip install qet_tb_generator
-&gt;&gt; Opdatere på  Windows
+&gt;&gt; Opdatere på Windows
 python -m pip install --upgrade qet_tb_generator
 &gt;&gt;bruger kan i en terminal køre dette skript i mappen 
  C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts 
@@ -7156,7 +7156,7 @@ Hvad skal ske?</translation>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="160"/>
         <source>Image Files (*.png *.jpg  *.jpeg *.bmp *.svg)</source>
-        <translation>Billedfiler (*.png *.jpg  *.jpeg *.bmp *.svg)</translation>
+        <translation>Billedfiler (*.png *.jpg *.jpeg *.bmp *.svg)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="167"/>
