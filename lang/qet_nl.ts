@@ -181,7 +181,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="170"/>
         <source>Traduction en Turc</source>
-        <translation type="unfinished"></translation>
+        <translation>Turkse vertaling</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="190"/>
@@ -2850,7 +2850,7 @@ Hier kunt u de standaardtekst hiervoor opgeven voor nieuwe elementen :</translat
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="197"/>
         <source>Turc</source>
-        <translation type="unfinished"></translation>
+        <translation>Turks</translation>
     </message>
 </context>
 <context>
