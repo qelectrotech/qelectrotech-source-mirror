@@ -22,6 +22,7 @@
 #include "diagramcommands.h"
 #include "projectpropertiesdialog.h"
 #include "diagram.h"
+#include "changetitleblockcommand.h"
 
 /**
  * @brief DiagramPropertiesDialog::DiagramPropertiesDialog

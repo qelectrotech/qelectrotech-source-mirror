@@ -20,8 +20,10 @@
 
 #include <QWidget>
 #include <QTreeWidgetItemIterator>
+
 #include "element.h"
 #include "independenttextitem.h"
+#include "searchandreplaceworker.h"
 
 class QTreeWidgetItem;
 
@@ -57,6 +59,7 @@ class SearchAndReplaceWidget : public QWidget
 		void itemChanged(QTreeWidgetItem *item, int column);
 		void setChildCheckState(QTreeWidgetItem *item, Qt::CheckState check, bool deep = true);
 		void updateParentCheckState(QTreeWidgetItem *item, bool all_parents = true);
+		void activateNextChecked();
 		
 	private slots:
 		void on_m_quit_button_clicked();
@@ -66,8 +69,11 @@ class SearchAndReplaceWidget : public QWidget
 		void on_m_tree_widget_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
 		void on_m_next_pb_clicked();
 		void on_m_previous_pb_clicked();
+		void on_m_folio_pb_clicked();
+		void on_m_replace_pb_clicked();
+		void on_m_replace_all_pb_clicked();
 		
-	private:
+		private:
 		Ui::SearchAndReplaceWidget *ui;
 		QETDiagramEditor *m_editor;
 		QTreeWidgetItem *m_root_qtwi          = nullptr,
@@ -88,6 +94,7 @@ class SearchAndReplaceWidget : public QWidget
 		QPointer<Element> m_highlighted_element;
 		QPointer<QGraphicsObject> m_last_selected;
 		QHash<QTreeWidgetItem *, QPointer <Diagram>> m_diagram_hash;
+		SearchAndReplaceWorker m_worker;
 };
 
 #endif // SEARCHANDREPLACEWIDGET_H

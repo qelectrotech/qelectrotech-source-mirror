@@ -24,6 +24,7 @@
 #include "element.h"
 #include "independenttextitem.h"
 #include "conductor.h"
+#include "replacefoliowidget.h"
 
 #include <QSettings>
 
@@ -202,8 +203,9 @@ void SearchAndReplaceWidget::setHideAdvanced(bool hide) const
 	ui->m_advanced_pb   ->setChecked(!hide);
 	ui->m_replace       ->setHidden(hide);
 	ui->m_replace_le    ->setHidden(hide);
-	ui->m_mode          ->setHidden(hide);
-	ui->m_mode_cb       ->setHidden(hide);
+	ui->m_folio_pb      ->setHidden(hide);
+	ui->m_element_pb    ->setHidden(hide);
+	ui->m_conductor_pb  ->setHidden(hide);
 	ui->m_tree_widget   ->setHidden(hide);
 	ui->m_replace_pb    ->setHidden(hide);
 	ui->m_replace_all_pb->setHidden(hide);
@@ -574,6 +576,22 @@ void SearchAndReplaceWidget::updateParentCheckState(QTreeWidgetItem *item, bool 
 	}
 }
 
+/**
+ * @brief SearchAndReplaceWidget::activateNextChecked
+ * Activate the next checked (and visible) item
+ */
+void SearchAndReplaceWidget::activateNextChecked()
+{
+		//Next button is disabled, so there is not a next item.
+	if (!ui->m_next_pb->isEnabled())
+		return;
+	
+	do {
+		on_m_next_pb_clicked();
+	} while ((ui->m_tree_widget->currentItem()->checkState(0) != Qt::Checked) &&
+			  ui->m_next_pb->isEnabled());
+}
+
 void SearchAndReplaceWidget::on_m_quit_button_clicked() {
     this->setHidden(true);
 }
@@ -675,6 +693,11 @@ void SearchAndReplaceWidget::on_m_tree_widget_currentItemChanged(QTreeWidgetItem
 	}
 	
 	updateNextPreviousButtons();
+	if (current->checkState(0) == Qt::Checked && !m_category_qtwi.contains(current)) {
+		ui->m_replace_pb->setEnabled(true);
+	} else {
+		ui->m_replace_pb->setDisabled(true);
+	}
 }
 
 void SearchAndReplaceWidget::on_m_next_pb_clicked()
@@ -719,4 +742,70 @@ void SearchAndReplaceWidget::on_m_previous_pb_clicked()
 	ui->m_tree_widget->setCurrentItem(item);
 	ui->m_tree_widget->scrollToItem(item);
 	on_m_tree_widget_itemDoubleClicked(item, 0);
+}
+
+void SearchAndReplaceWidget::on_m_folio_pb_clicked()
+{
+	ReplaceFolioDialog *dialog = new ReplaceFolioDialog(this);
+	dialog->setTitleBlockProperties(m_worker.m_titleblock_properties);
+	
+	int result = dialog->exec();
+	if (result == QDialogButtonBox::AcceptRole)
+	{
+		QString text = ui->m_folio_pb->text();
+		if (!text.endsWith(tr(" [Édité]"))) {
+			text.append(tr(" [Édité]"));
+		}
+		ui->m_folio_pb->setText(text);
+		m_worker.m_titleblock_properties = dialog->titleBlockProperties();
+	}
+	else if (result == QDialogButtonBox::ResetRole)
+	{
+		QString text = ui->m_folio_pb->text();
+		if (text.endsWith(tr(" [Édité]"))) {
+			text.remove(tr(" [Édité]"));
+		}
+		ui->m_folio_pb->setText(text);
+		m_worker.m_titleblock_properties = TitleBlockProperties();
+	}
+}
+
+void SearchAndReplaceWidget::on_m_replace_pb_clicked()
+{
+	QTreeWidgetItem *qtwi = ui->m_tree_widget->currentItem();	
+	if(!qtwi) {
+		return;
+	}
+	if (!m_category_qtwi.contains(qtwi) && qtwi->checkState(0) == Qt::Checked)
+	{
+		if (ui->m_folio_pb->text().endsWith(tr(" [Édité]")) &&
+			m_diagram_hash.keys().contains(qtwi))
+		{
+			QPointer<Diagram> d = m_diagram_hash.value(qtwi);
+			if (d) {
+				m_worker.replaceDiagram(d.data());
+			}
+		}
+	}
+	activateNextChecked();
+	ui->m_replace_pb->setEnabled(ui->m_next_pb->isEnabled());
+}
+
+void SearchAndReplaceWidget::on_m_replace_all_pb_clicked()
+{
+    if (ui->m_folio_pb->text().endsWith(tr(" [Édité]")))
+	{
+		QList <Diagram *> d;
+		for (QTreeWidgetItem *qtwi : m_diagram_hash.keys())
+		{
+			if (!qtwi->isHidden() && qtwi->checkState(0) == Qt::Checked)
+			{
+				QPointer <Diagram> p = m_diagram_hash.value(qtwi);
+				if (p) {
+					d.append(p.data());
+				}
+			}
+		}
+		m_worker.replaceDiagram(d);
+	}
 }

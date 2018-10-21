@@ -21,6 +21,21 @@
 #include <algorithm>
 
 /**
+ * @brief DiagramContext::add
+ * Add all value of @other to this.
+ * If a key already exist, the value is replaced.
+ * If a key doesn't exist, she will be added.
+ * All other keys of this context, which are not present in @other, stay unchanged.
+ * @param other
+ */
+void DiagramContext::add(DiagramContext other)
+{
+	for (QString key : other.keys()) {
+		addValue(key, other.value(key));
+	}
+}
+
+/**
 	@return a list containing all the keys in the context object.
 */
 QList<QString> DiagramContext::keys(DiagramContext::KeyOrder order) const

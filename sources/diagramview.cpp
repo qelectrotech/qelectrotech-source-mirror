@@ -43,6 +43,7 @@
 #include "undocommand/deleteqgraphicsitemcommand.h"
 #include "dynamicelementtextitem.h"
 #include "multipastedialog.h"
+#include "changetitleblockcommand.h"
 
 /**
 	Constructeur

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2017 The QElectroTech Team
+	Copyright 2006-2018 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -526,44 +526,6 @@ void ResetConductorCommand::redo() {
 		c -> textItem() -> forceRotateByUser (false);
 		c -> setProfiles(ConductorProfilesGroup());
 	}
-}
-
-/**
-	Constructeur
-	@param d Schema dont on modifie le cartouche
-	@param old_ip Anciennes proprietes du cartouche
-	@param new_ip Nouvelles proprietes du cartouche
-	@param parent QUndoCommand parent
-*/
-ChangeTitleBlockCommand::ChangeTitleBlockCommand(
-	Diagram *d,
-	const TitleBlockProperties &old_ip,
-	const TitleBlockProperties &new_ip,
-	QUndoCommand *parent
-) :
-	QUndoCommand(QObject::tr("modifier le cartouche", "undo caption"), parent),
-	diagram(d),
-	old_titleblock(old_ip),
-	new_titleblock(new_ip)
-{
-}
-
-/// Destructeur
-ChangeTitleBlockCommand::~ChangeTitleBlockCommand() {
-}
-
-/// Annule la modification de cartouche
-void ChangeTitleBlockCommand::undo() {
-	diagram -> showMe();
-	diagram -> border_and_titleblock.importTitleBlock(old_titleblock);
-	diagram -> invalidate(diagram -> border_and_titleblock.borderAndTitleBlockRect());
-}
-
-/// Refait la modification de cartouche
-void ChangeTitleBlockCommand::redo() {
-	diagram -> showMe();
-	diagram -> border_and_titleblock.importTitleBlock(new_titleblock);
-	diagram -> invalidate(diagram -> border_and_titleblock.borderAndTitleBlockRect());
 }
 
 /**

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2017 The QElectroTech Team
+	Copyright 2006-2018 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -21,7 +21,6 @@
 #include "borderproperties.h"
 #include "qetgraphicsitem/conductor.h"
 #include "diagramcontent.h"
-#include "titleblockproperties.h"
 #include "qet.h"
 #include "qetgraphicsitem/qetshapeitem.h"
 #include "conductorprofile.h"
@@ -273,31 +272,7 @@ class ResetConductorCommand : public QUndoCommand {
 	Diagram *diagram;
 };
 
-/**
-	This command changes the title block properties for a particular diagram.
-*/
-class ChangeTitleBlockCommand : public QUndoCommand {
-	// constructors, destructor
-	public:
-	ChangeTitleBlockCommand(Diagram *, const TitleBlockProperties &, const TitleBlockProperties &, QUndoCommand * = nullptr);
-	~ChangeTitleBlockCommand() override;
-	private:
-	ChangeTitleBlockCommand(const ChangeTitleBlockCommand &);
-	
-	// methods
-	public:
-	void undo() override;
-	void redo() override;
-	
-	// attributes
-	private:
-	/// modified diagram
-	Diagram *diagram;
-	/// properties before the change
-	TitleBlockProperties old_titleblock;
-	/// properties after the change
-	TitleBlockProperties new_titleblock;
-};
+
 
 /**
 	This command changes the border properties of a particular diagram.

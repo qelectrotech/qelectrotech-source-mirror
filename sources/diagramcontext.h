@@ -56,6 +56,7 @@ class DiagramContext
 			DecreasingLength
 		};
 	
+		void add(DiagramContext other);
 		QList<QString> keys(KeyOrder = None) const;
 		bool contains(const QString &) const;
 		const QVariant operator[](const QString &) const;
