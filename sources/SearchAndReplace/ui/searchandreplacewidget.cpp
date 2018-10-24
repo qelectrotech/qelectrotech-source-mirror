@@ -246,6 +246,7 @@ void SearchAndReplaceWidget::fillItemsList()
 		
 		QTreeWidgetItem *qtwi = new QTreeWidgetItem(m_folio_qtwi);
 		qtwi->setText(0, str);
+		qtwi->setData(0, Qt::UserRole, searchTerms(diagram));
 		qtwi->setCheckState(0, Qt::Checked);
 		m_diagram_hash.insert(qtwi, QPointer<Diagram>(diagram));
 		dc += DiagramContent(diagram, false);
@@ -356,11 +357,21 @@ void SearchAndReplaceWidget::search()
 		}
 		
 		bool match = false;
-		for(QTreeWidgetItem *qtwi : ui->m_tree_widget->findItems(str, Qt::MatchContains | Qt::MatchRecursive))
+		for (QTreeWidgetItem *qtwi : ui->m_tree_widget->findItems(str, Qt::MatchContains | Qt::MatchRecursive)) //Search in all items
 		{
 			match = true;
 			qtwi->setHidden(false);
 			setVisibleAllParents(qtwi);
+		}
+		for (QTreeWidgetItem *qtwi : m_diagram_hash.keys()) //Search for diagrams items
+		{
+			QStringList list = qtwi->data(0, Qt::UserRole).toStringList();
+			if (!list.filter(str, Qt::CaseInsensitive).isEmpty())
+			{
+				match = true;
+				qtwi->setHidden(false);
+				setVisibleAllParents(qtwi);
+			}
 		}
 		
 		QPalette background = ui->m_search_le->palette();
@@ -589,7 +600,31 @@ void SearchAndReplaceWidget::activateNextChecked()
 	do {
 		on_m_next_pb_clicked();
 	} while ((ui->m_tree_widget->currentItem()->checkState(0) != Qt::Checked) &&
-			  ui->m_next_pb->isEnabled());
+			 ui->m_next_pb->isEnabled());
+}
+
+/**
+ * @brief SearchAndReplaceWidget::searchTerms
+ * @param diagram
+ * @return All QStrings use as terms for search.
+ */
+QStringList SearchAndReplaceWidget::searchTerms(Diagram *diagram) const
+{
+	QStringList list;
+	TitleBlockProperties prop = diagram->border_and_titleblock.exportTitleBlock();
+	list.append(prop.title);
+	list.append(prop.author);
+	list.append(prop.filename);
+	list.append(prop.machine);
+	list.append(prop.locmach);
+	list.append(prop.indexrev);
+	list.append(prop.folio);
+	list.append(prop.date.toString());
+	for (QString key : prop.context.keys()) {
+		list.append(prop.context.value(key).toString());
+	}
+	
+	return list;
 }
 
 void SearchAndReplaceWidget::on_m_quit_button_clicked() {
@@ -693,6 +728,10 @@ void SearchAndReplaceWidget::on_m_tree_widget_currentItemChanged(QTreeWidgetItem
 	}
 	
 	updateNextPreviousButtons();
+	if (!current) {
+		return;
+	}
+	
 	if (current->checkState(0) == Qt::Checked && !m_category_qtwi.contains(current)) {
 		ui->m_replace_pb->setEnabled(true);
 	} else {
