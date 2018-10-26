@@ -824,21 +824,25 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
 <context>
     <name>DiagramContextWidget</name>
     <message>
-        <location filename="../sources/diagramcontextwidget.cpp" line="142"/>
+        <location filename="../sources/ui/diagramcontextwidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished">Formulář</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/diagramcontextwidget.ui" line="20"/>
+        <location filename="../sources/ui/diagramcontextwidget.cpp" line="155"/>
         <source>Les noms ne peuvent contenir que des lettres minuscules, des chiffres et des tirets.</source>
         <translation>Názvy mohou obsahovat pouze malá písmena, číslice a spojovací čárky.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcontextwidget.cpp" line="176"/>
+        <location filename="../sources/ui/diagramcontextwidget.ui" line="50"/>
         <source>Nom</source>
-        <comment>table header</comment>
-        <translation>Název</translation>
+        <translation type="unfinished">Název</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcontextwidget.cpp" line="176"/>
+        <location filename="../sources/ui/diagramcontextwidget.ui" line="55"/>
         <source>Valeur</source>
-        <comment>table header</comment>
-        <translation>Hodnota</translation>
+        <translation type="unfinished">Hodnota</translation>
     </message>
 </context>
 <context>
@@ -917,7 +921,7 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
 <context>
     <name>DiagramPropertiesDialog</name>
     <message>
-        <location filename="../sources/ui/diagrampropertiesdialog.cpp" line="48"/>
+        <location filename="../sources/ui/diagrampropertiesdialog.cpp" line="49"/>
         <source>Propriétés du folio</source>
         <comment>window title</comment>
         <translation>Vlastnosti listu</translation>
@@ -934,35 +938,35 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
 <context>
     <name>DiagramView</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="85"/>
+        <location filename="../sources/diagramview.cpp" line="86"/>
         <source>Coller ici</source>
         <comment>context menu action</comment>
         <translation>Vložit zde</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="60"/>
+        <location filename="../sources/diagramview.cpp" line="61"/>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
         <translation>Toto je oblast, ve které plodíte své výkresy přidáváním prvků a umísťováním vodičů mezi jejich svorkami (koncovkami). Také můžete přidat nezávislé texty.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="88"/>
+        <location filename="../sources/diagramview.cpp" line="89"/>
         <source>Collage multiple</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="706"/>
+        <location filename="../sources/diagramview.cpp" line="707"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>Bez názvu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="833"/>
+        <location filename="../sources/diagramview.cpp" line="834"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Vybrat novou barvu pro tento vodič</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="852"/>
+        <location filename="../sources/diagramview.cpp" line="853"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>Upravit vlastnosti vodiče</translation>
@@ -1002,7 +1006,7 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
         <translation>Text</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="50"/>
+        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="53"/>
         <source>Éditer un texte d&apos;élément</source>
         <translation>Upravit text prvku</translation>
     </message>
@@ -2610,7 +2614,7 @@ textu a čísel.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="329"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="276"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="309"/>
         <source>Chemin de la collection utilisateur</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2620,8 +2624,28 @@ textu a čísel.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="473"/>
+        <source>Textes dynamiques</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="497"/>
+        <source>Rotation des textes dynamiques</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="533"/>
+        <source>Police des textes dynamiques</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="559"/>
+        <source>Longueur des textes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="316"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="262"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="295"/>
         <source>Chemin de la collection commune</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2741,113 +2765,113 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <translation>Písmo textových polí shrnujících stran</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="157"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="167"/>
         <source>Général</source>
         <comment>configuration page title</comment>
         <translation>Obecné</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="174"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="184"/>
         <source>Système</source>
         <translation>Systém</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="178"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="188"/>
         <source>Arabe</source>
         <translation>Arabský</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="179"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="189"/>
         <source>Brézilien</source>
         <translation>Brazilština</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="180"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="190"/>
         <source>Catalan</source>
         <translation>Katalánský</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="181"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="191"/>
         <source>Tchèque</source>
         <translation>Český</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="182"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="192"/>
         <source>Allemand</source>
         <translation>Německý</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="183"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="193"/>
         <source>Danois</source>
         <translation>Dánský</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="184"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="194"/>
         <source>Grec</source>
         <translation>Řecký</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="185"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="195"/>
         <source>Anglais</source>
         <translation>Anglický</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="186"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="196"/>
         <source>Espagnol</source>
         <translation>Španělský</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="187"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="197"/>
         <source>Français</source>
         <translation>Francouzský</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="188"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="198"/>
         <source>Croate</source>
         <translation>Chorvatský</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="189"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="199"/>
         <source>Italien</source>
         <translation>Italský</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="190"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="200"/>
         <source>Polonais</source>
         <translation>Polský</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="191"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="201"/>
         <source>Portugais</source>
         <translation>Portugalský</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="192"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="202"/>
         <source>Roumains</source>
         <translation>Rumunský</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="193"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="203"/>
         <source>Russe</source>
         <translation>Ruský</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="194"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="204"/>
         <source>Slovène</source>
         <translation>Slovinský</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="195"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="205"/>
         <source>Pays-Bas</source>
         <translation>Nizozemský</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="196"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="206"/>
         <source>Belgique-Flemish</source>
         <translation>Belgický vlámský</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="197"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="207"/>
         <source>Turc</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3683,13 +3707,13 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
 <context>
     <name>PartDynamicTextField</name>
     <message>
-        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="48"/>
+        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="52"/>
         <source>Champ de texte dynamique</source>
         <comment>element part name</comment>
         <translation>Dynamické textové pole</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="459"/>
+        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="464"/>
         <source>Déplacer un champ texte</source>
         <translation>Přesunout textové pole</translation>
     </message>
@@ -4093,115 +4117,115 @@ Chcete uložit změny?</translation>
         <translation>Napětí/Protokol</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1515"/>
+        <location filename="../sources/qetapp.cpp" line="1547"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Ukončit</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1516"/>
+        <location filename="../sources/qetapp.cpp" line="1548"/>
         <source>&amp;Masquer</source>
         <translation>&amp;Skrýt</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1517"/>
+        <location filename="../sources/qetapp.cpp" line="1549"/>
         <source>&amp;Restaurer</source>
         <translation>&amp;Ukázat</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1518"/>
+        <location filename="../sources/qetapp.cpp" line="1550"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>&amp;Skrýt všechny editory výkresů</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1519"/>
+        <location filename="../sources/qetapp.cpp" line="1551"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>&amp;Ukázat všechny editory výkresů</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1520"/>
+        <location filename="../sources/qetapp.cpp" line="1552"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Skrýt všechny editory prvků</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1521"/>
+        <location filename="../sources/qetapp.cpp" line="1553"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Ukázat všechny editory prvků</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1522"/>
+        <location filename="../sources/qetapp.cpp" line="1554"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Skrýt všechny editory záhlaví výkresu</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1523"/>
+        <location filename="../sources/qetapp.cpp" line="1555"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Ukázat všechny editory záhlaví výkresu</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1524"/>
+        <location filename="../sources/qetapp.cpp" line="1556"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>&amp;Nový editor výkresu</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1525"/>
+        <location filename="../sources/qetapp.cpp" line="1557"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>&amp;Nový editor prvku</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1527"/>
+        <location filename="../sources/qetapp.cpp" line="1559"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>Uzavřít QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1528"/>
+        <location filename="../sources/qetapp.cpp" line="1560"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>Zmenší QElectroTech do systémové oblasti panelu</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1529"/>
+        <location filename="../sources/qetapp.cpp" line="1561"/>
         <source>Restaurer QElectroTech</source>
         <translation>Ukázat QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1614"/>
+        <location filename="../sources/qetapp.cpp" line="1646"/>
         <source>Éditeurs de schémas</source>
         <translation>Editory výkresů</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1623"/>
+        <location filename="../sources/qetapp.cpp" line="1655"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>Editory prvků</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1633"/>
+        <location filename="../sources/qetapp.cpp" line="1665"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
         <translation>Editory záhlaví výkresu</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1672"/>
+        <location filename="../sources/qetapp.cpp" line="1704"/>
         <source>&lt;b&gt;Le fichier de restauration suivant a été trouvé,&lt;br&gt;Voulez-vous l&apos;ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1675"/>
+        <location filename="../sources/qetapp.cpp" line="1707"/>
         <source>&lt;b&gt;Les fichiers de restauration suivant on été trouvé,&lt;br&gt;Voulez-vous les ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1680"/>
+        <location filename="../sources/qetapp.cpp" line="1712"/>
         <source>Fichier de restauration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1783"/>
+        <location filename="../sources/qetapp.cpp" line="1815"/>
         <source>Usage : </source>
         <translation>Použití: </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1784"/>
+        <location filename="../sources/qetapp.cpp" line="1816"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -4218,7 +4242,7 @@ Dostupné volby:
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1783"/>
+        <location filename="../sources/qetapp.cpp" line="1815"/>
         <source> [options] [fichier]...
 
 </source>
@@ -4242,28 +4266,28 @@ Dostupné volby:
         <translation>Pomocný blok 2</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1790"/>
+        <location filename="../sources/qetapp.cpp" line="1822"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=DIR     Stanovit adresář pro sbírku s prvky
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1793"/>
+        <location filename="../sources/qetapp.cpp" line="1825"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
         <translation>  --common-tbt-dir=DIR          Stanovit adresář pro sbírku se vzory záhlaví výkresů
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1796"/>
+        <location filename="../sources/qetapp.cpp" line="1828"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=DIR              Stanovit adresář s nastavením
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1798"/>
+        <location filename="../sources/qetapp.cpp" line="1830"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=DIR                Stanovit adresář s jazykovými soubory
@@ -4331,61 +4355,61 @@ Dostupné volby:
         <translation>Vlastní záhlaví výkresů</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="933"/>
+        <location filename="../sources/qetapp.cpp" line="965"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="934"/>
+        <location filename="../sources/qetapp.cpp" line="966"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation>QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="935"/>
+        <location filename="../sources/qetapp.cpp" line="967"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Výkres</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="936"/>
+        <location filename="../sources/qetapp.cpp" line="968"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Elektrický</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="937"/>
+        <location filename="../sources/qetapp.cpp" line="969"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1335"/>
+        <location filename="../sources/qetapp.cpp" line="1367"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
         <translation>Nastavit QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1446"/>
+        <location filename="../sources/qetapp.cpp" line="1478"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>Nahrává se...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1511"/>
+        <location filename="../sources/qetapp.cpp" line="1543"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>Nahrává se... Ikona v systémové oblasti panelu</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1513"/>
+        <location filename="../sources/qetapp.cpp" line="1545"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1545"/>
+        <location filename="../sources/qetapp.cpp" line="1577"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
@@ -6690,13 +6714,13 @@ Co chcete dělat?</translation>
         <translation>Nastavit znovu %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="544"/>
+        <location filename="../sources/undocommand/changetitleblockcommand.cpp" line="35"/>
         <source>modifier le cartouche</source>
         <comment>undo caption</comment>
         <translation>upravit záhlaví výkresu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="577"/>
+        <location filename="../sources/diagramcommands.cpp" line="539"/>
         <source>modifier les dimensions du folio</source>
         <comment>undo caption</comment>
         <translation>upravit rozměry listu</translation>
@@ -7173,7 +7197,7 @@ Co chcete dělat?</translation>
         <translation>Obrázek nelze nahrát.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.h" line="51"/>
+        <location filename="../sources/diagramcommands.h" line="50"/>
         <source>Ajouter </source>
         <translation>Přidat</translation>
     </message>
@@ -7615,6 +7639,11 @@ Chcete je nahradit?</translation>
         <source>chargement %p% (%v sur %m)</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="54"/>
+        <source>Chercher remplacer les propriétés de folio</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QTextOrientationWidget</name>
@@ -7767,6 +7796,161 @@ Chcete je nahradit?</translation>
     </message>
 </context>
 <context>
+    <name>ReplaceFolioWidget</name>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished">Formulář</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="45"/>
+        <source>Principales</source>
+        <translation type="unfinished">Hlavní</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="53"/>
+        <source>Indice Rev</source>
+        <translation type="unfinished">Index Rev</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="60"/>
+        <source>Localisation</source>
+        <translation type="unfinished">Umístění</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="67"/>
+        <source>Fichier :</source>
+        <translation type="unfinished">Soubor:</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="74"/>
+        <source>Disponible en tant que %title pour les modèles de cartouches</source>
+        <translation type="unfinished">Dostupné jako %title pro vzory záhlaví výkresů</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="77"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="87"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="121"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="131"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="207"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="217"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="227"/>
+        <source>Non modifier</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="84"/>
+        <source>Disponible en tant que %author pour les modèles de cartouches</source>
+        <translation type="unfinished">Dostupné jako %author pro vzory záhlaví výkresů</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="94"/>
+        <source>Auteur :</source>
+        <translation type="unfinished">Autor:</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="101"/>
+        <source>Date :</source>
+        <translation type="unfinished">Datum:</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="111"/>
+        <source>Installation :</source>
+        <translation type="unfinished">Instalace:</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="118"/>
+        <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
+        <translation type="unfinished">Dostupné jako %indexrev pro vzory záhlaví výkresů</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="128"/>
+        <source>Disponible en tant que %filename pour les modèles de cartouches</source>
+        <translation type="unfinished">Dostupné jako %filename pro vzory záhlaví výkresů</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="141"/>
+        <source>Folio :</source>
+        <translation type="unfinished">List:</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="150"/>
+        <source>Pas de date</source>
+        <translation type="unfinished">Žádné datum</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="157"/>
+        <source>Disponible en tant que %date pour les modèles de cartouches</source>
+        <translation type="unfinished">Dostupné jako %date pro vzory záhlaví výkresů</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="170"/>
+        <source>Date fixe :</source>
+        <translation type="unfinished">Pevné datum:</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="177"/>
+        <source>Appliquer la date actuelle</source>
+        <translation type="unfinished">Použít nynější datum</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="191"/>
+        <source>Non &amp;modifier</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="200"/>
+        <source>Disponible en tant que %folio pour les modèles de cartouches
+Les variables suivantes sont utilisables :
+- %id : numéro du folio courant dans le projet 
+- %total : nombre total de folios dans le projet 
+- %autonum : Folio Auto Numeration</source>
+        <translation type="unfinished">Dostupné jako %folio pro vzory záhlaví výkresů
+Používají se následující proměnné:
+-%id: nynější počet listů v projektu
+-%total: celkový počet listů v projektu
+-%autonum: automatické číslování listů</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="214"/>
+        <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
+        <translation type="unfinished">Dostupné jako %locmach pro vzory záhlaví výkresů</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="224"/>
+        <source>Disponible en tant que %machine pour les modèles de cartouches</source>
+        <translation type="unfinished">Dostupné jako %machine pro vzory záhlaví výkresů</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="234"/>
+        <source>Titre :</source>
+        <translation type="unfinished">Název:</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="241"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="251"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="261"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="271"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="281"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="291"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="301"/>
+        <source>Supprimer ce texte</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="327"/>
+        <source>Personnalisées</source>
+        <translation type="unfinished">Vlastní</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="335"/>
+        <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
+associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
+        <translation type="unfinished">Zde můžete stanovit vaše vlastní přiřazení název/hodnota, takže s nimi bude záhlaví výkresu počítat. Příklad:
+Přiřazení názvu volta a hodnoty 1745 nahradí v záhlaví výkresu %{volta} číslicí 1745.</translation>
+    </message>
+</context>
+<context>
     <name>ReportPropertieWidget</name>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="14"/>
@@ -7806,128 +7990,143 @@ Vytvořte svůj vlastní text s pomocí následujících proměnných:
         <translation type="unfinished">Formulář</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="32"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="46"/>
         <source>Aller à la correspondance suivante</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="70"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="107"/>
         <source>Aller à la correspondance précédente</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="87"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="137"/>
         <source>Quitter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="113"/>
-        <source>Remplacer :</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="133"/>
-        <source>Remplacer la correspondance séléctionner</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="136"/>
-        <source>Remplacer</source>
-        <translation type="unfinished">Nahradit</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="143"/>
-        <source>Remplacer les correspondances coché</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="146"/>
-        <source>Tout remplacer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="153"/>
-        <source>Mode :</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="161"/>
-        <source>Texte brut</source>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="156"/>
+        <source>Champ texte de folio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="166"/>
-        <source>Mots entiers</source>
+        <source>Folio</source>
+        <translation type="unfinished">List</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="190"/>
+        <source>Élément</source>
+        <translation type="unfinished">Prvek</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="200"/>
+        <source>Conducteur</source>
+        <translation type="unfinished">Vodič</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="207"/>
+        <source>Remplacer :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="181"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="232"/>
+        <source>Remplacer la correspondance séléctionner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="235"/>
+        <source>Remplacer</source>
+        <translation type="unfinished">Nahradit</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="242"/>
+        <source>Remplacer les correspondances coché</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="245"/>
+        <source>Tout remplacer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="180"/>
         <source>Chercher :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="190"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="63"/>
         <source>Avancé</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="226"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="32"/>
         <source>Actualiser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="133"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="134"/>
         <source>Correspondance :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="139"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="140"/>
         <source>Folios</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="145"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="146"/>
         <source>Champs texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="151"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="152"/>
         <source>Elements</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="156"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="157"/>
         <source>Elements simple</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="162"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="163"/>
         <source>Elements maître</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="168"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="169"/>
         <source>Elements esclave</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="174"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="175"/>
         <source>Elements report de folio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="180"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="181"/>
         <source>Elements bornier</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="188"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="189"/>
         <source>Conducteurs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="324"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="327"/>
         <source>Inconnue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="795"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="796"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="804"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="805"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="820"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="835"/>
+        <source> [Édité]</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
