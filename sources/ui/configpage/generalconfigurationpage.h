@@ -39,6 +39,7 @@ class GeneralConfigurationPage : public ConfigPage
 	
 	private slots:
 		void on_m_font_pb_clicked();
+		void on_m_dynamic_font_pb_clicked();
 		void on_m_folio_list_pb_clicked();
 		void on_m_common_elmt_path_cb_currentIndexChanged(int index);
 		void on_m_custom_elmt_path_cb_currentIndexChanged(int index);

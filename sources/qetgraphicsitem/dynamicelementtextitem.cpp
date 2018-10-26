@@ -39,9 +39,12 @@ DynamicElementTextItem::DynamicElementTextItem(Element *parent_element) :
 	m_parent_element(parent_element),
 	m_uuid(QUuid::createUuid())
 {
-	setFont(QETApp::diagramTextsFont(9));
+	setFont(QETApp::dynamicTextsItemFont());
 	setText(tr("Texte"));
-    setParentItem(parent_element);
+	setParentItem(parent_element);
+	QSettings settings;
+	setRotation(settings.value("dynamic_rotation", 0).toInt());
+	setTextWidth(settings.value("dynamic_with", 0).toInt());
 	connect(this, &DynamicElementTextItem::textEdited, [this](const QString &old_str, const QString &new_str)
 	{
 		if(this->m_parent_element && this->m_parent_element->diagram())
@@ -91,6 +94,7 @@ QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
 	root_element.setAttribute("rotation", QString::number(QET::correctAngle(rotation())));
 	root_element.setAttribute("font_size", font().pointSize());
 	root_element.setAttribute("uuid", m_uuid.toString());
+	root_element.setAttribute("dynamicitemfont", font().family());
 	root_element.setAttribute("frame", m_frame? "true" : "false");
 	root_element.setAttribute("text_width", QString::number(m_text_width));
 	
@@ -113,9 +117,9 @@ QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
 		root_element.setAttribute("Valignment", me.valueToKey(Qt::AlignVCenter));
 	
 	
-    QDomElement dom_text = dom_doc.createElement("text");
-    dom_text.appendChild(dom_doc.createTextNode(toPlainText()));
-    root_element.appendChild(dom_text);
+	QDomElement dom_text = dom_doc.createElement("text");
+	dom_text.appendChild(dom_doc.createTextNode(toPlainText()));
+	root_element.appendChild(dom_text);
 	
 		//Info name
 	if(!m_info_name.isEmpty())
@@ -140,8 +144,8 @@ QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
 		dom_color.appendChild(dom_doc.createTextNode(color().name()));
 		root_element.appendChild(dom_color);
 	}
-    
-    return root_element;
+	
+	return root_element;
 }
 
 /**
@@ -173,7 +177,7 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 		setAlignment(Qt::Alignment(me.keyToValue(dom_elmt.attribute("Valignment").toStdString().data())) | this->alignment());
 
 		//Text
-    QDomElement dom_text = dom_elmt.firstChildElement("text");
+	QDomElement dom_text = dom_elmt.firstChildElement("text");
 	if (!dom_text.isNull())
 		setText(dom_text.text());
 	
@@ -635,7 +639,7 @@ void DynamicElementTextItem::paint(QPainter *painter, const QStyleOptionGraphics
 	if (m_frame)
 	{
 		painter->save();
-		painter->setFont(QETApp::diagramTextsFont(fontSize()));
+		painter->setFont(QETApp::dynamicTextsItemFont(fontSize()));
 		
 			//Adjust the thickness according to the font size, 
 		qreal w=0.3;

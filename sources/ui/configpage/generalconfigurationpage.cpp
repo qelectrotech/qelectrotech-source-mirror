@@ -54,10 +54,18 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
                         settings.value("diagramitemstyle").toString() + ")";
 	ui->m_font_pb->setText(fontInfos);
 	
+	QString dynamicfontInfos = settings.value("dynamicitemfont").toString() + " " +
+                        settings.value("dynamicitemsize").toString() + " (" +
+                        settings.value("dynamicitemstyle").toString() + ")";
+	ui->m_dynamic_font_pb->setText(dynamicfontInfos);
+	
 	QString foliolistfontInfos = settings.value("foliolistfont").toString() + " " +
                         settings.value("foliolistsize").toString() + " (" +
                         settings.value("folioliststyle").toString() + ")";
 	ui->m_folio_list_pb->setText(foliolistfontInfos);
+	
+	ui->m_rotation->setValue(settings.value("dynamic_rotation", 0).toInt());
+	ui->m_text_width_sb->setValue(settings.value("dynamic_with", 0).toInt());
 	
 	ui->m_highlight_integrated_elements->setChecked(settings.value("diagrameditor/highlight-integrated-elements", true).toBool());
 	ui->m_default_elements_info->setPlainText(settings.value("elementeditor/default-informations", "").toString());
@@ -117,6 +125,8 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue("nomenclature/terminal-exportlist",ui->m_export_terminal->isChecked());
 	settings.setValue("border-columns_0",ui->m_border_0->isChecked());
 	settings.setValue("diagrameditor/autosave-interval", ui->m_autosave_sb->value());
+	settings.setValue("dynamic_rotation", ui->m_rotation->value());
+	settings.setValue("dynamic_with", ui->m_text_width_sb->value());
 	
 	QString path = settings.value("elements-collections/common-collection-path").toString();
 	if (ui->m_common_elmt_path_cb->currentIndex() == 1)
@@ -233,6 +243,29 @@ void GeneralConfigurationPage::on_m_font_pb_clicked()
 }
 
 /**
+ * @brief GeneralConfigurationPage::m_dynamic_font_pb_clicked
+ *  Apply font to config
+ */
+void GeneralConfigurationPage::on_m_dynamic_font_pb_clicked()
+{
+	bool ok;
+	QSettings settings;
+	QFont font = QFontDialog::getFont(&ok, QFont("Sans Serif", 9), this);
+	if (ok)
+	{
+		settings.setValue("dynamicitemfont", font.family());
+		settings.setValue("dynamicitemsize", font.pointSize());
+		settings.setValue("dynamicitemweight", font.weight());
+		settings.setValue("dynamicitemstyle", font.styleName());
+		QString fontInfos = settings.value("dynamicitemfont").toString() + " " +
+                            settings.value("dynamicitemsize").toString() + " (" +
+                            settings.value("dynamicitemstyle").toString() + ")";
+        ui->m_dynamic_font_pb->setText(fontInfos);
+	}
+}
+
+
+/**
  * @brief GeneralConfigurationPage::on_m_folio_list_pb_clicked
  * Apply font to summary pages
  */
@@ -282,3 +315,4 @@ void GeneralConfigurationPage::on_m_custom_elmt_path_cb_currentIndexChanged(int 
 		}
 	}
 }
+

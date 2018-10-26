@@ -851,11 +851,43 @@ QFont QETApp::diagramTextsItemFont(qreal size)
 	return(diagram_texts_item_font);
 }
 /**
+ * @brief QETApp::dynamicTextsFont
+ * the font for to use when add a dynamic texte
+ * @param size
+ * @return 
+ */
+ 
+ 
+ QFont QETApp::dynamicTextsItemFont(qreal size)
+{
+	QSettings settings;
+
+		//Font to use
+	QString dynamic_texts_item_family = settings.value("dynamicitemfont", "Sans Serif").toString();
+	qreal dynamic_texts_item_size     = settings.value("dynamicitemsize", 9.0).toDouble();
+	qreal dynamic_texts_item_weight   = settings.value("dynamicitemweight").toDouble();
+	QString dynamic_texts_item_style  = settings.value("dynamicitemstyle", "normal").toString();
+	
+	if (size != -1.0) {
+		dynamic_texts_item_size = size;
+	}
+	QFont dynamic_texts_item_font = QFont(dynamic_texts_item_family);
+	dynamic_texts_item_font.setPointSizeF(dynamic_texts_item_size);
+	dynamic_texts_item_font.setWeight(dynamic_texts_item_weight);
+	dynamic_texts_item_font.setStyleName(dynamic_texts_item_style);
+	if (dynamic_texts_item_size <= 4.0) {
+		dynamic_texts_item_font.setWeight(QFont::Light);
+	}
+	return(dynamic_texts_item_font);
+}
+/**
  * @brief QETApp::foliolistTextsFont
  * the font for to use in summary pages
  * @param size
  * @return 
  */
+ 
+ 
 QFont QETApp::foliolistTextsFont(qreal size)
 {
 	QSettings settings;

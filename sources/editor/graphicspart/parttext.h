@@ -62,7 +62,7 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 	// Size value
 	Q_PROPERTY(qreal size READ size WRITE setSize)
 		qreal size () const {return font().pointSize();}
-		void setSize (qreal s) {setFont(QETApp::diagramTextsFont(s));}
+		void setSize (qreal s) {setFont(QETApp::dynamicTextsItemFont(s));}
 	// Real size value
 	Q_PROPERTY(qreal real_size READ realSize WRITE setRealSize)
 		qreal realSize() const {return real_font_size_;}
