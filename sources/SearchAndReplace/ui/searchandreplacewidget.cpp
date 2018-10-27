@@ -225,9 +225,13 @@ void SearchAndReplaceWidget::fillItemsList()
 	m_element_hash.clear();
 	
 	QETProject *project_ = m_editor->currentProject();
-	if (!project_) {
+	if (!project_)
+	{
+		ui->m_replace_all_pb->setDisabled(true);
 		return;
 	}
+	ui->m_replace_all_pb->setEnabled(true);
+	connect(project_, &QETProject::destroyed, this, &SearchAndReplaceWidget::on_m_reload_pb_clicked);
 
 	
 	DiagramContent dc;
