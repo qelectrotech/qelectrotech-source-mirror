@@ -826,7 +826,7 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Modulo</translation>
+        <translation>Modulo</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="20"/>
@@ -837,12 +837,12 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="50"/>
         <source>Nom</source>
-        <translation type="unfinished">Nome</translation>
+        <translation>Nome</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="55"/>
         <source>Valeur</source>
-        <translation type="unfinished">Valore</translation>
+        <translation>Valore</translation>
     </message>
 </context>
 <context>
@@ -2623,22 +2623,22 @@ che si crea. Si possono anche inserire caratteri alfanumerici.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="473"/>
         <source>Textes dynamiques</source>
-        <translation type="unfinished"></translation>
+        <translation>Testi dinamici</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="497"/>
         <source>Rotation des textes dynamiques</source>
-        <translation type="unfinished"></translation>
+        <translation>Rotazione dei testi dinamici</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="533"/>
         <source>Police des textes dynamiques</source>
-        <translation type="unfinished"></translation>
+        <translation>Gestione dei testi dinamici</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="559"/>
         <source>Longueur des textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Lunghezza dei testi</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="316"/>
@@ -7626,7 +7626,7 @@ Sostituirla con questa?</translation>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="54"/>
         <source>Chercher remplacer les propriétés de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Cerca e sostituisci le proprietà della pagina</translation>
     </message>
 </context>
 <context>
@@ -7784,32 +7784,32 @@ Sostituirla con questa?</translation>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Modulo</translation>
+        <translation>Modulo</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="45"/>
         <source>Principales</source>
-        <translation type="unfinished">Principale</translation>
+        <translation>Principali</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="53"/>
         <source>Indice Rev</source>
-        <translation type="unfinished">Indice-Rev</translation>
+        <translation>Indice Rev.</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="60"/>
         <source>Localisation</source>
-        <translation type="unfinished">Posizione</translation>
+        <translation>Posizione</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="67"/>
         <source>Fichier :</source>
-        <translation type="unfinished">File:</translation>
+        <translation>File:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="74"/>
         <source>Disponible en tant que %title pour les modèles de cartouches</source>
-        <translation type="unfinished">Disponibile come %title per i modelli di cartiglio</translation>
+        <translation>Disponibile come %title per i modelli di cartiglio</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="77"/>
@@ -7820,67 +7820,67 @@ Sostituirla con questa?</translation>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="217"/>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="227"/>
         <source>Non modifier</source>
-        <translation type="unfinished"></translation>
+        <translation>Non modificato</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="84"/>
         <source>Disponible en tant que %author pour les modèles de cartouches</source>
-        <translation type="unfinished">Disponibile come %author per i modelli di cartiglio</translation>
+        <translation>Disponibile come %author per i modelli di cartiglio</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="94"/>
         <source>Auteur :</source>
-        <translation type="unfinished">Autore: </translation>
+        <translation>Autore: </translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="101"/>
         <source>Date :</source>
-        <translation type="unfinished">Data:</translation>
+        <translation>Data:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="111"/>
         <source>Installation :</source>
-        <translation type="unfinished">Installazione</translation>
+        <translation>Installazione:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="118"/>
         <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
-        <translation type="unfinished">Disponibile come %indexrev per i modelli di cartigli</translation>
+        <translation>Disponibile come %indexrev per i modelli di cartiglio</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="128"/>
         <source>Disponible en tant que %filename pour les modèles de cartouches</source>
-        <translation type="unfinished">Disponibile come %filename per i modelli di cartiglio</translation>
+        <translation>Disponibile come %filename per i modelli di cartiglio</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="141"/>
         <source>Folio :</source>
-        <translation type="unfinished">Pagina: </translation>
+        <translation>Pagina: </translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="150"/>
         <source>Pas de date</source>
-        <translation type="unfinished">Nessuna data</translation>
+        <translation>Nessuna data</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="157"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
-        <translation type="unfinished">Disponibile come %date per i modelli di cartiglio</translation>
+        <translation>Disponibile come %date per i modelli di cartiglio</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="170"/>
         <source>Date fixe :</source>
-        <translation type="unfinished">Data fissa: </translation>
+        <translation>Data fissa</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="177"/>
         <source>Appliquer la date actuelle</source>
-        <translation type="unfinished">Applica la data corrente</translation>
+        <translation>Applica la data corrente</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="191"/>
         <source>Non &amp;modifier</source>
-        <translation type="unfinished"></translation>
+        <translation>Non modificato</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="200"/>
@@ -7889,7 +7889,7 @@ Les variables suivantes sont utilisables :
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
-        <translation type="unfinished">Nel campo Pagina, dei modelli di cartiglio
+        <translation>Nel campo Pagina, dei modelli di cartiglio
 si possono utilizzare le seguenti variabili:
 - %id : Numero di pagina corrente nel progetto 
 - %total : Numero di pagine totali nel progetto 
@@ -7898,17 +7898,17 @@ si possono utilizzare le seguenti variabili:
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="214"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
-        <translation type="unfinished">Disponibile come %locmach per i modelli di cartigli</translation>
+        <translation>Disponibile come %locmach per i modelli di cartigli0</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="224"/>
         <source>Disponible en tant que %machine pour les modèles de cartouches</source>
-        <translation type="unfinished">Disponibile come %machine per i modelli di cartigli</translation>
+        <translation>Disponibile come %machine per i modelli di cartiglio</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="234"/>
         <source>Titre :</source>
-        <translation type="unfinished">Titolo:</translation>
+        <translation>Titolo:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="241"/>
@@ -7919,18 +7919,18 @@ si possono utilizzare le seguenti variabili:
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="291"/>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="301"/>
         <source>Supprimer ce texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Cancella questo testo</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="327"/>
         <source>Personnalisées</source>
-        <translation type="unfinished">Personalizzazioni</translation>
+        <translation>Personalizzazioni</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="335"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation type="unfinished">È possibile definire delle associazioni nome/valore personalizzate da utilizzare nel cartiglio. Esempio: associando il nome &quot;volta&quot; al valore &quot;1745&quot; invece di %{volta} apparirà il numero 1745 nel cartiglio.</translation>
+        <translation>È possibile definire delle associazioni nome/valore personalizzate da utilizzare nel cartiglio. Esempio: associando il nome &quot;volta&quot; al valore &quot;1745&quot; invece di %{volta} apparirà il numero 1745 nel cartiglio.</translation>
     </message>
 </context>
 <context>
@@ -7990,22 +7990,22 @@ Creare un testo utilizzando le variabili seguenti:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="156"/>
         <source>Champ texte de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Campo di testo della pagina</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="166"/>
         <source>Folio</source>
-        <translation type="unfinished">Pagina</translation>
+        <translation>Pagina</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="190"/>
         <source>Élément</source>
-        <translation type="unfinished">Elementi</translation>
+        <translation>Elemento</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="200"/>
         <source>Conducteur</source>
-        <translation type="unfinished">Conduttore</translation>
+        <translation>Conduttore</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="207"/>
@@ -8110,7 +8110,7 @@ Creare un testo utilizzando le variabili seguenti:
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="820"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="835"/>
         <source> [Édité]</source>
-        <translation type="unfinished"></translation>
+        <translation> [Modificato]</translation>
     </message>
 </context>
 <context>
