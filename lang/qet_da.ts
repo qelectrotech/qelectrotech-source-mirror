@@ -826,7 +826,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="20"/>
@@ -837,12 +837,12 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="50"/>
         <source>Nom</source>
-        <translation type="unfinished">Navn</translation>
+        <translation>Navn</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="55"/>
         <source>Valeur</source>
-        <translation type="unfinished">Værdi</translation>
+        <translation>Værdi</translation>
     </message>
 </context>
 <context>
@@ -2625,22 +2625,22 @@ Tekst og nummer inddata er også tilgængelig.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="473"/>
         <source>Textes dynamiques</source>
-        <translation type="unfinished"></translation>
+        <translation>Dynamiske tekster</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="497"/>
         <source>Rotation des textes dynamiques</source>
-        <translation type="unfinished"></translation>
+        <translation>Roterende dynamiske tekster</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="533"/>
         <source>Police des textes dynamiques</source>
-        <translation type="unfinished"></translation>
+        <translation>Dynamiske tekster skrifttype</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="559"/>
         <source>Longueur des textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstlængde</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="316"/>
@@ -7639,7 +7639,7 @@ Vil du erstatte den?</translation>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="54"/>
         <source>Chercher remplacer les propriétés de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Søge og erstatte ark egenskaber</translation>
     </message>
 </context>
 <context>
@@ -7797,32 +7797,32 @@ Vil du erstatte den?</translation>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="45"/>
         <source>Principales</source>
-        <translation type="unfinished">Forside</translation>
+        <translation>Forside</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="53"/>
         <source>Indice Rev</source>
-        <translation type="unfinished">Revision indeks</translation>
+        <translation>Revision indeks</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="60"/>
         <source>Localisation</source>
-        <translation type="unfinished">Placering</translation>
+        <translation>Placering</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="67"/>
         <source>Fichier :</source>
-        <translation type="unfinished">Fil:</translation>
+        <translation>Fil:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="74"/>
         <source>Disponible en tant que %title pour les modèles de cartouches</source>
-        <translation type="unfinished">Tilgængelig som %title for titelblok skabeloner</translation>
+        <translation>Tilgængelig som %title for titelblok skabeloner</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="77"/>
@@ -7833,67 +7833,67 @@ Vil du erstatte den?</translation>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="217"/>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="227"/>
         <source>Non modifier</source>
-        <translation type="unfinished"></translation>
+        <translation>Uændret</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="84"/>
         <source>Disponible en tant que %author pour les modèles de cartouches</source>
-        <translation type="unfinished">Tilgængelig som %author for titelblok skabeloner</translation>
+        <translation>Tilgængelig som %author for titelblok skabeloner</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="94"/>
         <source>Auteur :</source>
-        <translation type="unfinished">Forfatter:</translation>
+        <translation>Forfatter:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="101"/>
         <source>Date :</source>
-        <translation type="unfinished">Dato:</translation>
+        <translation>Dato:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="111"/>
         <source>Installation :</source>
-        <translation type="unfinished">Installeret:</translation>
+        <translation>Installeret:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="118"/>
         <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
-        <translation type="unfinished">Tilgængelig som %indexrev for titelblok skabeloner</translation>
+        <translation>Tilgængelig som %indexrev for titelblok skabeloner</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="128"/>
         <source>Disponible en tant que %filename pour les modèles de cartouches</source>
-        <translation type="unfinished">Tilgængelig som %filename for titelblok skabeloner</translation>
+        <translation>Tilgængelig som %filename for titelblok skabeloner</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="141"/>
         <source>Folio :</source>
-        <translation type="unfinished">Ark:</translation>
+        <translation>Ark:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="150"/>
         <source>Pas de date</source>
-        <translation type="unfinished">Ingen dato</translation>
+        <translation>Ingen dato</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="157"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
-        <translation type="unfinished">Tilgængelig som %date for titelblok skabeloner</translation>
+        <translation>Tilgængelig som %date for titelblok skabeloner</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="170"/>
         <source>Date fixe :</source>
-        <translation type="unfinished">Fast dato:</translation>
+        <translation>Fast dato:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="177"/>
         <source>Appliquer la date actuelle</source>
-        <translation type="unfinished">Anvend dags dato</translation>
+        <translation>Anvend dags dato</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="191"/>
         <source>Non &amp;modifier</source>
-        <translation type="unfinished"></translation>
+        <translation>U&amp;ændret</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="200"/>
@@ -7902,7 +7902,7 @@ Les variables suivantes sont utilisables :
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
-        <translation type="unfinished">Tilgængelig som %folio for titelblokke
+        <translation>Tilgængelig som %folio for titelblokke
 Følgende variabler kan bruges:
 - %id : aktuel ark nummer i projektet
 - %total : antal ark i projektet
@@ -7911,17 +7911,17 @@ Følgende variabler kan bruges:
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="214"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
-        <translation type="unfinished">Tilgængelig som %locmach for titelblok skabeloner</translation>
+        <translation>Tilgængelig som %locmach for titelblok skabeloner</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="224"/>
         <source>Disponible en tant que %machine pour les modèles de cartouches</source>
-        <translation type="unfinished">Tilgængelig som %machine for titelblok skabeloner</translation>
+        <translation>Tilgængelig som %machine for titelblok skabeloner</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="234"/>
         <source>Titre :</source>
-        <translation type="unfinished">Titel:</translation>
+        <translation>Titel:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="241"/>
@@ -7932,18 +7932,18 @@ Følgende variabler kan bruges:
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="291"/>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="301"/>
         <source>Supprimer ce texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Slette tekst</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="327"/>
         <source>Personnalisées</source>
-        <translation type="unfinished">Brugertilpasset</translation>
+        <translation>Brugertilpasset</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="335"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation type="unfinished">Definér brugertilpasset navne/værdier for titelblok.
+        <translation>Definér brugertilpasset navne/værdier for titelblok.
 Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{volta} med 1745 i titelblok.</translation>
     </message>
 </context>
@@ -8004,22 +8004,22 @@ Opret tekst ved hjælp af følgende variabler:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="156"/>
         <source>Champ texte de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Ark tekstfelt</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="166"/>
         <source>Folio</source>
-        <translation type="unfinished">Ark</translation>
+        <translation>Ark</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="190"/>
         <source>Élément</source>
-        <translation type="unfinished">Symbol</translation>
+        <translation>Symbol</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="200"/>
         <source>Conducteur</source>
-        <translation type="unfinished">Leder</translation>
+        <translation>Leder</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="207"/>
@@ -8125,7 +8125,7 @@ Opret tekst ved hjælp af følgende variabler:
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="820"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="835"/>
         <source> [Édité]</source>
-        <translation type="unfinished"></translation>
+        <translation> [Redigeret]</translation>
     </message>
 </context>
 <context>
