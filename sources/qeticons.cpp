@@ -192,6 +192,7 @@ namespace QET {
 		QIcon es;
 		QIcon fr;
 		QIcon hr;
+		QIcon hu;
 		QIcon it;
 		QIcon pl;
 		QIcon pt;
@@ -510,6 +511,7 @@ void QET::Icons::initIcons() {
 	es                  .addFile(":/ico/24x16/es.png");
 	fr                  .addFile(":/ico/24x16/fr.png");
 	hr                  .addFile(":/ico/24x16/hr.png");
+	hu                  .addFile(":/ico/24x16/hu.png");
 	it                  .addFile(":/ico/24x16/it.png");
 	pl                  .addFile(":/ico/24x16/pl.png");
 	pt                  .addFile(":/ico/24x16/pt.png");
