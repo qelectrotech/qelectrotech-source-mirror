@@ -125,7 +125,7 @@ void QETMainWindow::initCommonActions() {
 	
 	about_qt_ = new QAction(QET::Icons::QtLogo,  tr("À propos de &Qt"), this);
 	about_qt_ -> setStatusTip(tr("Affiche des informations sur la bibliothèque Qt", "status bar tip"));
-	connect(about_qt_, SIGNAL(triggered()), qet_app, SLOT(aboutQt()));
+	connect(about_qt_, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
 }
 
 /**
