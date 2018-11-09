@@ -61,6 +61,7 @@ class SearchAndReplaceWidget : public QWidget
 		void updateParentCheckState(QTreeWidgetItem *item, bool all_parents = true);
 		void activateNextChecked();
 		QStringList searchTerms(Diagram *diagram) const;
+		QStringList searchTerms(Element *element) const;
 		
 	private slots:
 		void on_m_quit_button_clicked();
@@ -73,6 +74,7 @@ class SearchAndReplaceWidget : public QWidget
 		void on_m_folio_pb_clicked();
 		void on_m_replace_pb_clicked();
 		void on_m_replace_all_pb_clicked();
+		void on_m_element_pb_clicked();
 		
 		private:
 		Ui::SearchAndReplaceWidget *ui;

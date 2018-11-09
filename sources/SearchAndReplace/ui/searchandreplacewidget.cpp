@@ -25,6 +25,8 @@
 #include "independenttextitem.h"
 #include "conductor.h"
 #include "replacefoliowidget.h"
+#include "replaceelementdialog.h"
+#include "qetapp.h"
 
 #include <QSettings>
 
@@ -331,6 +333,7 @@ void SearchAndReplaceWidget::addElement(Element *element)
 		str = tr("Inconnue");
 	qtwi->setText(0, str);
 	qtwi->setCheckState(0, Qt::Checked);
+	qtwi->setData(0, Qt::UserRole, searchTerms(element));
 }
 
 /**
@@ -367,7 +370,10 @@ void SearchAndReplaceWidget::search()
 			qtwi->setHidden(false);
 			setVisibleAllParents(qtwi);
 		}
-		for (QTreeWidgetItem *qtwi : m_diagram_hash.keys()) //Search for diagrams items
+		
+		QList<QTreeWidgetItem *> qtwi_list = m_diagram_hash.keys();
+		qtwi_list.append(m_element_hash.keys());
+		for (QTreeWidgetItem *qtwi : qtwi_list)
 		{
 			QStringList list = qtwi->data(0, Qt::UserRole).toStringList();
 			if (!list.filter(str, Qt::CaseInsensitive).isEmpty())
@@ -631,6 +637,26 @@ QStringList SearchAndReplaceWidget::searchTerms(Diagram *diagram) const
 	return list;
 }
 
+/**
+ * @brief SearchAndReplaceWidget::searchTerms
+ * @param element
+ * @return All QString use as terms for search
+ */
+QStringList SearchAndReplaceWidget::searchTerms(Element *element) const
+{
+	QStringList list;
+	DiagramContext context = element->elementInformations();
+	for (QString key : QETApp::elementInfoKeys())
+	{
+		QString str = context.value(key).toString();
+		if (!str.isEmpty()) {
+			list.append(str);
+		}
+	}
+	
+	return list;
+}
+
 void SearchAndReplaceWidget::on_m_quit_button_clicked() {
     this->setHidden(true);
 }
@@ -813,6 +839,10 @@ void SearchAndReplaceWidget::on_m_folio_pb_clicked()
 	}
 }
 
+/**
+ * @brief SearchAndReplaceWidget::on_m_replace_pb_clicked
+ * Replace the current selection
+ */
 void SearchAndReplaceWidget::on_m_replace_pb_clicked()
 {
 	QTreeWidgetItem *qtwi = ui->m_tree_widget->currentItem();	
@@ -829,26 +859,86 @@ void SearchAndReplaceWidget::on_m_replace_pb_clicked()
 				m_worker.replaceDiagram(d.data());
 			}
 		}
+		else if (ui->m_element_pb->text().endsWith(tr(" [Édité]")) &&
+				 m_element_hash.keys().contains(qtwi))
+		{
+			QPointer<Element> e = m_element_hash.value(qtwi);
+			if (e) {
+				m_worker.replaceElement(e.data());
+			}
+		}
 	}
 	activateNextChecked();
 	ui->m_replace_pb->setEnabled(ui->m_next_pb->isEnabled());
 }
 
+/**
+ * @brief SearchAndReplaceWidget::on_m_replace_all_pb_clicked
+ * Replace all checked item
+ */
 void SearchAndReplaceWidget::on_m_replace_all_pb_clicked()
 {
     if (ui->m_folio_pb->text().endsWith(tr(" [Édité]")))
 	{
-		QList <Diagram *> d;
+		QList <Diagram *> diagram_list;
 		for (QTreeWidgetItem *qtwi : m_diagram_hash.keys())
 		{
 			if (!qtwi->isHidden() && qtwi->checkState(0) == Qt::Checked)
 			{
 				QPointer <Diagram> p = m_diagram_hash.value(qtwi);
 				if (p) {
-					d.append(p.data());
+					diagram_list.append(p.data());
 				}
 			}
 		}
-		m_worker.replaceDiagram(d);
+		m_worker.replaceDiagram(diagram_list);
+	}
+	if (ui->m_element_pb->text().endsWith(tr(" [Édité]")))
+	{
+		QList <Element *> element_list;
+		for (QTreeWidgetItem *qtwi : m_element_hash.keys())
+		{
+			if (!qtwi->isHidden() && qtwi->checkState(0) == Qt::Checked)
+			{
+				QPointer <Element> p = m_element_hash.value(qtwi);
+				if (p) {
+					element_list.append(p.data());
+				}
+			}
+		}
+		m_worker.replaceElement(element_list);
+	}
+	
+		//Change was made, we reload the panel
+		//and search again to keep up to date the tree widget
+		//and the match item of search
+	QString txt = ui->m_search_le->text();
+	on_m_reload_pb_clicked();
+	ui->m_search_le->setText(txt);
+	search();
+}
+
+void SearchAndReplaceWidget::on_m_element_pb_clicked()
+{
+	ReplaceElementDialog *dialog = new ReplaceElementDialog(m_worker.m_element_context, this);
+	
+	int result = dialog->exec();
+	if (result == QDialogButtonBox::AcceptRole)
+	{
+		QString text = ui->m_element_pb->text();
+		if (!text.endsWith(tr(" [Édité]"))) {
+			text.append(tr(" [Édité]"));
+		}
+		ui->m_element_pb->setText(text);
+		m_worker.m_element_context = dialog->context();
+	}
+	else if (result == QDialogButtonBox::ResetRole)
+	{
+		QString text = ui->m_element_pb->text();
+		if (text.endsWith(tr(" [Édité]"))) {
+			text.remove(tr(" [Édité]"));
+		}
+		ui->m_element_pb->setText(text);
+		m_worker.m_element_context = DiagramContext();
 	}
 }

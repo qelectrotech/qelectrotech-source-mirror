@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2017 The QElectroTech Team
+	Copyright 2006-2018 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -39,13 +39,19 @@ class ElementInfoPartWidget : public QWidget
 		void    setFocusTolineEdit();
 		void    setEnabled(bool e);
 		void    setDisabled(bool d);
+		void setEraseTextVisible (bool visible);
+		void setEraseTextChecked (bool check);
+		Qt::CheckState EraseTextCheckState ()const;
 
 	signals:
 		void textEdited  (const QString & text);
 		void textChanged (const QString & text);
 
 	//ATTRIBUTES
-	private:
+		private slots:
+		void on_m_erase_text_clicked();
+		
+		private:
 		Ui::ElementInfoPartWidget *ui;
 		QString key_;
 };

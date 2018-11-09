@@ -18,6 +18,9 @@
 #include "searchandreplaceworker.h"
 #include "diagram.h"
 #include "changetitleblockcommand.h"
+#include "changeelementinformationcommand.h"
+#include "element.h"
+#include "qetapp.h"
 
 SearchAndReplaceWorker::SearchAndReplaceWorker()
 {}
@@ -137,4 +140,68 @@ void SearchAndReplaceWorker::replaceDiagram(Diagram *diagram)
 	QList<Diagram *> list;
 	list.append(diagram);
 	replaceDiagram(list);
+}
+
+/**
+ * @brief SearchAndReplaceWorker::replaceElement
+ * Replace all properties of each elements in @list
+ * All element must belong to the same project, if not this function do nothing.
+ * All change are made through a undo command append to undo list of the project.
+ * @param list
+ */
+void SearchAndReplaceWorker::replaceElement(QList<Element *> list)
+{
+	if (list.isEmpty() || !list.first()->diagram()) {
+		return;
+	}
+	
+	QETProject *project_ = list.first()->diagram()->project();
+	for (Element *elmt : list)
+	{
+		if (elmt->diagram()) {
+			if (elmt->diagram()->project() != project_) {
+				return;
+			}
+		}
+	}
+	
+	project_->undoStack()->beginMacro(QObject::tr("Chercher remplacer les propriétés d'éléments"));
+	for (Element *elmt : list)
+	{
+			//We apply change only for master, slave, and terminal element.
+		if (elmt->linkType() == Element::Master ||
+			elmt->linkType() == Element::Simple ||
+			elmt->linkType() == Element::Terminale)
+		{
+			DiagramContext old_context;
+			DiagramContext new_context =  old_context = elmt->elementInformations();
+			for (QString key : QETApp::elementInfoKeys())
+			{
+				QString value = m_element_context.value(key).toString();
+				if (value.isEmpty()) {
+					continue;
+				}
+				
+				if (value == eraseText()) {
+					new_context.addValue(key, QString());
+				} else {
+					new_context.addValue(key, value);
+				}
+			}
+			
+			if (old_context != new_context)
+			{
+				ChangeElementInformationCommand *undo = new ChangeElementInformationCommand(elmt, old_context, new_context);
+				project_->undoStack()->push(undo);
+			}
+		}
+	}
+	project_->undoStack()->endMacro();
+}
+
+void SearchAndReplaceWorker::replaceElement(Element *element)
+{
+	QList<Element *>list;
+	list.append(element);
+	replaceElement(list);
 }

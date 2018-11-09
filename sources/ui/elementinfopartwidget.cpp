@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2017 The QElectroTech Team
+	Copyright 2006-2018 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -19,6 +19,7 @@
 
 #include <utility>
 #include "ui_elementinfopartwidget.h"
+#include "searchandreplaceworker.h"
 
 
 /**
@@ -35,6 +36,7 @@ ElementInfoPartWidget::ElementInfoPartWidget(QString key, const QString& transla
 {
 	ui->setupUi(this);
 	ui->label_->setText(translated_key);
+	ui->m_erase_text->setVisible(false);
 
 	connect(ui->line_edit, &QLineEdit::textEdited,  this, &ElementInfoPartWidget::textEdited);
 	connect(ui->line_edit, &QLineEdit::textChanged, this, &ElementInfoPartWidget::textChanged);
@@ -54,8 +56,13 @@ ElementInfoPartWidget::~ElementInfoPartWidget()
  * Set text to line edit
  * @param txt
  */
-void ElementInfoPartWidget::setText(const QString &txt) {
-	ui->line_edit->setText(txt);
+void ElementInfoPartWidget::setText(const QString &txt)
+{
+	if (txt == SearchAndReplaceWorker::eraseText()) {
+		ui->m_erase_text->setChecked(true);
+	} else {
+		ui->line_edit->setText(txt);
+	}
 }
 
 /**
@@ -79,8 +86,7 @@ void ElementInfoPartWidget::setFocusTolineEdit() {
  * enable the line edit
  * @param e
  */
-void ElementInfoPartWidget::setEnabled(bool e)
-{
+void ElementInfoPartWidget::setEnabled(bool e) {
 	ui->line_edit->setEnabled(e);
 }
 
@@ -89,7 +95,36 @@ void ElementInfoPartWidget::setEnabled(bool e)
  * disable the line edit
  * @param d
  */
-void ElementInfoPartWidget::setDisabled(bool d)
-{
+void ElementInfoPartWidget::setDisabled(bool d) {
 	ui->line_edit->setDisabled(d);
+}
+
+/**
+ * @brief ElementInfoPartWidget::setEraseTextVisible
+ * @param visible
+ */
+void ElementInfoPartWidget::setEraseTextVisible(bool visible) {
+	ui->m_erase_text->setVisible(visible);
+}
+
+/**
+ * @brief ElementInfoPartWidget::setEraseTextChecked
+ * @param check
+ */
+void ElementInfoPartWidget::setEraseTextChecked(bool check) {
+	ui->m_erase_text->setChecked(check);
+}
+
+/**
+ * @brief ElementInfoPartWidget::EraseTextCheckState
+ * @return 
+ */
+Qt::CheckState ElementInfoPartWidget::EraseTextCheckState() const {
+	return ui->m_erase_text->checkState();
+}
+
+void ElementInfoPartWidget::on_m_erase_text_clicked()
+{
+    ui->line_edit->setText(ui->m_erase_text->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
+	ui->line_edit->setDisabled(ui->m_erase_text->isChecked());
 }

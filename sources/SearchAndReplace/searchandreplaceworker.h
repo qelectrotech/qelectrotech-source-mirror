@@ -23,6 +23,7 @@
 #include "titleblockproperties.h"
 
 class Diagram;
+class Element;
 
 /**
  * @brief The SearchAndReplaceWorker class
@@ -36,12 +37,15 @@ class SearchAndReplaceWorker
 		void clear();
 		void replaceDiagram(QList <Diagram *> diagram_list);
 		void replaceDiagram(Diagram *diagram);
+		void replaceElement(QList <Element *> list);
+		void replaceElement(Element *element);
 		
 		static QString eraseText() {return QString("XXXXXXXXXXXXXXXXXXX");}
 		static QDate eraseDate() {return QDate(1900, 1, 1);}
 		
 	private:
 		TitleBlockProperties m_titleblock_properties;
+		DiagramContext m_element_context;
 		
 		friend class SearchAndReplaceWidget;
 };

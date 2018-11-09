@@ -184,7 +184,7 @@
      <item row="1" column="4">
       <widget class="QPushButton" name="m_element_pb">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="text">
         <string>Élément</string>
