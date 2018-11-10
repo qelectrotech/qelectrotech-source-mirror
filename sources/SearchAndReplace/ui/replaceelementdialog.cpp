@@ -80,6 +80,7 @@ void ReplaceElementDialog::buildWidget()
 	{
 		ElementInfoPartWidget *eipw = new ElementInfoPartWidget(str, QETApp::elementTranslatedInfoKey(str), this);
 		eipw->setEraseTextVisible(true);
+		eipw->setPlaceHolderText(tr("Non modifier"));
 		ui->m_scroll_layout->addWidget(eipw);
 		m_eipw_list << eipw;
 	}

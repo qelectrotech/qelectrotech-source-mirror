@@ -74,6 +74,14 @@ QString ElementInfoPartWidget::text() const {
 }
 
 /**
+ * @brief ElementInfoPartWidget::setPlaceHolderText
+ * @param text
+ */
+void ElementInfoPartWidget::setPlaceHolderText(const QString &text) {
+	ui->line_edit->setPlaceholderText(text);
+}
+
+/**
  * @brief ElementInfoPartWidget::setFocusTolineEdit
  * Set the focus to the line edit
  */

@@ -36,6 +36,7 @@ class ElementInfoPartWidget : public QWidget
 		QString key         () const {return key_;}
 		void    setText     (const QString &);
 		QString text        () const;
+		void setPlaceHolderText (const QString &text);
 		void    setFocusTolineEdit();
 		void    setEnabled(bool e);
 		void    setDisabled(bool d);
