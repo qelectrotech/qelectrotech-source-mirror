@@ -867,6 +867,16 @@ void SearchAndReplaceWidget::on_m_replace_pb_clicked()
 				m_worker.replaceElement(e.data());
 			}
 		}
+		else if (!ui->m_replace_le->text().isEmpty() &&
+				 m_text_hash.keys().contains(qtwi))
+		{
+			m_worker.m_indi_text = ui->m_replace_le->text();
+			QPointer<IndependentTextItem> t = m_text_hash.value(qtwi);
+			if (t) {
+				m_worker.replaceIndiText(t.data());
+			}
+			
+		}
 	}
 	activateNextChecked();
 	ui->m_replace_pb->setEnabled(ui->m_next_pb->isEnabled());
@@ -878,6 +888,7 @@ void SearchAndReplaceWidget::on_m_replace_pb_clicked()
  */
 void SearchAndReplaceWidget::on_m_replace_all_pb_clicked()
 {
+		//Replace folio
     if (ui->m_folio_pb->text().endsWith(tr(" [Édité]")))
 	{
 		QList <Diagram *> diagram_list;
@@ -893,6 +904,7 @@ void SearchAndReplaceWidget::on_m_replace_all_pb_clicked()
 		}
 		m_worker.replaceDiagram(diagram_list);
 	}
+		//Replace text
 	if (ui->m_element_pb->text().endsWith(tr(" [Édité]")))
 	{
 		QList <Element *> element_list;
@@ -907,6 +919,23 @@ void SearchAndReplaceWidget::on_m_replace_all_pb_clicked()
 			}
 		}
 		m_worker.replaceElement(element_list);
+	}
+		//Replace indi text
+	if (!ui->m_replace_le->text().isEmpty())
+	{
+		QList <IndependentTextItem*> text_list;
+		for(QTreeWidgetItem *qtwi : m_text_hash.keys())
+		{
+			if (!qtwi->isHidden() && qtwi->checkState(0) == Qt::Checked)
+			{
+				QPointer<IndependentTextItem> t = m_text_hash.value(qtwi);
+				if (t) {
+					text_list.append(t.data());
+				}
+			}
+		}
+		m_worker.m_indi_text = ui->m_replace_le->text();
+		m_worker.replaceIndiText(text_list );
 	}
 	
 		//Change was made, we reload the panel

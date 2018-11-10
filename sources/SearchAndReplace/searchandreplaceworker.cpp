@@ -21,6 +21,9 @@
 #include "changeelementinformationcommand.h"
 #include "element.h"
 #include "qetapp.h"
+#include "independenttextitem.h"
+#include "diagramcommands.h"
+
 
 SearchAndReplaceWorker::SearchAndReplaceWorker()
 {}
@@ -204,4 +207,40 @@ void SearchAndReplaceWorker::replaceElement(Element *element)
 	QList<Element *>list;
 	list.append(element);
 	replaceElement(list);
+}
+
+/**
+ * @brief SearchAndReplaceWorker::replaceIndiText
+ * Replace all displayed text of independent text of @list
+ * Each must belong to the same project, if not this function do nothing
+ * @param list
+ */
+void SearchAndReplaceWorker::replaceIndiText(QList<IndependentTextItem *> list)
+{
+	if (list.isEmpty() || !list.first()->diagram()) {
+		return;
+	}
+	QETProject *project_ = list.first()->diagram()->project();
+	for (IndependentTextItem *text : list) {
+		if (!text->diagram() ||
+			text->diagram()->project() != project_) {
+			return;
+		}
+	}
+	
+	project_->undoStack()->beginMacro(QObject::tr("Chercher remplacer des textes independant"));
+	for (IndependentTextItem *text : list)
+	{
+		QString before = text->toPlainText();
+		text->setPlainText(m_indi_text);
+		project_->undoStack()->push(new ChangeDiagramTextCommand(text, before, m_indi_text));
+	}
+	project_->undoStack()->endMacro();
+}
+
+void SearchAndReplaceWorker::replaceIndiText(IndependentTextItem *text)
+{
+	QList<IndependentTextItem *>list;
+	list.append(text);
+	replaceIndiText(list);
 }

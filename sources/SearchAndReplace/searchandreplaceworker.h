@@ -24,6 +24,7 @@
 
 class Diagram;
 class Element;
+class IndependentTextItem;
 
 /**
  * @brief The SearchAndReplaceWorker class
@@ -39,6 +40,8 @@ class SearchAndReplaceWorker
 		void replaceDiagram(Diagram *diagram);
 		void replaceElement(QList <Element *> list);
 		void replaceElement(Element *element);
+		void replaceIndiText(QList<IndependentTextItem *> list);
+		void replaceIndiText(IndependentTextItem *text);
 		
 		static QString eraseText() {return QString("XXXXXXXXXXXXXXXXXXX");}
 		static QDate eraseDate() {return QDate(1900, 1, 1);}
@@ -46,6 +49,7 @@ class SearchAndReplaceWorker
 	private:
 		TitleBlockProperties m_titleblock_properties;
 		DiagramContext m_element_context;
+		QString m_indi_text;
 		
 		friend class SearchAndReplaceWidget;
 };
