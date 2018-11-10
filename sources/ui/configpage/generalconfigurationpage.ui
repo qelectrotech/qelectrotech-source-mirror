@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
-    <height>600</height>
+    <width>998</width>
+    <height>500</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -41,544 +41,411 @@
       </size>
      </property>
      <property name="currentIndex">
-      <number>4</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab_3">
       <attribute name="title">
        <string>Apparence</string>
       </attribute>
-      <widget class="QRadioButton" name="m_use_windows_mode_rb">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>100</y>
-         <width>535</width>
-         <height>24</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Utiliser des fenêtres (appliqué au prochain lancement de &amp;QElectroTech)</string>
-       </property>
-      </widget>
-      <widget class="QRadioButton" name="m_use_tab_mode_rb">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>140</y>
-         <width>535</width>
-         <height>24</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Utiliser des onglets (appliqué au proc&amp;hain lancement de QElectroTech)</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="m_use_system_color_cb">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>60</y>
-         <width>937</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Utiliser les couleurs du système</string>
-       </property>
-      </widget>
-      <widget class="QFrame" name="frame">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>29</y>
-         <width>971</width>
-         <height>261</height>
-        </rect>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <widget class="Line" name="line">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>50</y>
-          <width>971</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-       <widget class="Line" name="line_2">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>140</y>
-          <width>971</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="m_zoom_out_beyond_folio">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>200</y>
-          <width>535</width>
-          <height>24</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Autoriser le dézoom au delà du folio</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="m_use_gesture_trackpad">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>160</y>
-          <width>535</width>
-          <height>24</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Utiliser les gestes du pavé tactile</string>
-        </property>
-       </widget>
-      </widget>
-      <zorder>frame</zorder>
-      <zorder>m_use_windows_mode_rb</zorder>
-      <zorder>m_use_tab_mode_rb</zorder>
-      <zorder>m_use_system_color_cb</zorder>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QCheckBox" name="m_use_system_color_cb">
+         <property name="text">
+          <string>Utiliser les couleurs du système</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="Line" name="line">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="m_use_gesture_trackpad">
+         <property name="text">
+          <string>Utiliser les gestes du pavé tactile</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="m_zoom_out_beyond_folio">
+         <property name="text">
+          <string>Autoriser le dézoom au delà du folio</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="Line" name="line_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="m_use_windows_mode_rb">
+         <property name="text">
+          <string>Utiliser des fenêtres (appliqué au prochain lancement de &amp;QElectroTech)</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="m_use_tab_mode_rb">
+         <property name="text">
+          <string>Utiliser des onglets (appliqué au proc&amp;hain lancement de QElectroTech)</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="tab_4">
       <attribute name="title">
        <string>Projets</string>
       </attribute>
-      <widget class="QGroupBox" name="groupBox_2">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>20</y>
-         <width>971</width>
-         <height>391</height>
-        </rect>
-       </property>
-       <property name="title">
-        <string/>
-       </property>
-       <layout class="QGridLayout" name="gridLayout">
-        <item row="3" column="0" colspan="2">
-         <widget class="QCheckBox" name="m_border_0">
-          <property name="text">
-           <string extracomment="Choix de l'increment de depart 1 ou 0">Activer la numérotation à partir de 0 pour la colonne des cartouches au lieu de 1</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="1">
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="1" column="0">
-         <widget class="QCheckBox" name="m_use_folio_label">
-          <property name="text">
-           <string>Utiliser les labels de folio à la place de leurs ID</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="2">
-         <widget class="QSpinBox" name="m_autosave_sb">
-          <property name="frame">
-           <bool>true</bool>
-          </property>
-          <property name="specialValueText">
-           <string>Désactivé</string>
-          </property>
-          <property name="suffix">
-           <string comment="minute"> min</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QCheckBox" name="m_save_label_paste">
-          <property name="text">
-           <string>Ne pas conserver les labels des éléments lors des copier coller</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QCheckBox" name="m_export_terminal">
-          <property name="text">
-           <string>Exporter les bornes dans la nomenclature</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="0">
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>Sauvegarde automatique des projets (appliqué au prochain lancement de QElectroTech)</string>
-          </property>
-         </widget>
-        </item>
-        <item row="6" column="2">
-         <widget class="QPushButton" name="m_folio_list_pb">
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="2">
-         <widget class="QPushButton" name="m_font_pb">
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item row="6" column="0">
-         <widget class="QLabel" name="label_3">
-          <property name="text">
-           <string>Police des champs textes des pages sommaires</string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="0">
-         <widget class="QLabel" name="label_2">
-          <property name="text">
-           <string>Police des champs de texte</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="4" column="1">
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="0">
+        <widget class="QCheckBox" name="m_use_folio_label">
+         <property name="text">
+          <string>Utiliser les labels de folio à la place de leurs ID</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QCheckBox" name="m_border_0">
+         <property name="text">
+          <string extracomment="Choix de l'increment de depart 1 ou 0">Activer la numérotation à partir de 0 pour la colonne des cartouches au lieu de 1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QCheckBox" name="m_save_label_paste">
+         <property name="text">
+          <string>Ne pas conserver les labels des éléments lors des copier coller</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Police des champs textes des pages sommaires</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="2">
+        <widget class="QPushButton" name="m_folio_list_pb">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="2">
+        <widget class="QPushButton" name="m_font_pb">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Sauvegarde automatique des projets (appliqué au prochain lancement de QElectroTech)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QCheckBox" name="m_export_terminal">
+         <property name="text">
+          <string>Exporter les bornes dans la nomenclature</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Police des champs de texte</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2">
+        <widget class="QSpinBox" name="m_autosave_sb">
+         <property name="frame">
+          <bool>true</bool>
+         </property>
+         <property name="specialValueText">
+          <string>Désactivé</string>
+         </property>
+         <property name="suffix">
+          <string comment="minute"> min</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="tab_5">
       <attribute name="title">
        <string>Elements</string>
       </attribute>
-      <widget class="QGroupBox" name="groupBox_5">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>20</y>
-         <width>971</width>
-         <height>141</height>
-        </rect>
-       </property>
-       <property name="title">
-        <string>Collections d'éléments</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-       </property>
-       <property name="flat">
-        <bool>false</bool>
-       </property>
-       <widget class="QLabel" name="label_9">
-        <property name="geometry">
-         <rect>
-          <x>480</x>
-          <y>120</y>
-          <width>431</width>
-          <height>18</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>(Recharger les collections d'éléments pour appliquer les changements)</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_7">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>50</y>
-          <width>207</width>
-          <height>18</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Chemin de la collection commune</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_8">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>90</y>
-          <width>208</width>
-          <height>18</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Chemin de la collection utilisateur</string>
-        </property>
-       </widget>
-       <widget class="QComboBox" name="m_custom_elmt_path_cb">
-        <property name="geometry">
-         <rect>
-          <x>470</x>
-          <y>80</y>
-          <width>481</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <item>
-         <property name="text">
-          <string>Par defaut</string>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QGroupBox" name="groupBox_5">
+         <property name="title">
+          <string>Collections d'éléments</string>
          </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Parcourir...</string>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
          </property>
-        </item>
-       </widget>
-       <widget class="QComboBox" name="m_common_elmt_path_cb">
-        <property name="geometry">
-         <rect>
-          <x>470</x>
-          <y>45</y>
-          <width>481</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <item>
-         <property name="text">
-          <string>Par defaut</string>
+         <property name="flat">
+          <bool>false</bool>
          </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Parcourir...</string>
+         <layout class="QGridLayout" name="gridLayout">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_7">
+            <property name="text">
+             <string>Chemin de la collection commune</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QComboBox" name="m_common_elmt_path_cb">
+            <item>
+             <property name="text">
+              <string>Par defaut</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Parcourir...</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_8">
+            <property name="text">
+             <string>Chemin de la collection utilisateur</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QComboBox" name="m_custom_elmt_path_cb">
+            <item>
+             <property name="text">
+              <string>Par defaut</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Parcourir...</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLabel" name="label_9">
+            <property name="text">
+             <string>(Recharger les collections d'éléments pour appliquer les changements)</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_3">
+         <property name="title">
+          <string>Gestion des éléments</string>
          </property>
-        </item>
-       </widget>
-      </widget>
-      <widget class="QGroupBox" name="groupBox_3">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>180</y>
-         <width>971</width>
-         <height>271</height>
-        </rect>
-       </property>
-       <property name="title">
-        <string>Gestion des éléments</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-       </property>
-       <widget class="QCheckBox" name="m_highlight_integrated_elements">
-        <property name="geometry">
-         <rect>
-          <x>12</x>
-          <y>33</y>
-          <width>422</width>
-          <height>24</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Mettre en valeur dans le panel les éléments fraîchement intégrés</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_4">
-        <property name="geometry">
-         <rect>
-          <x>12</x>
-          <y>63</y>
-          <width>888</width>
-          <height>36</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre.
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <widget class="QCheckBox" name="m_highlight_integrated_elements">
+            <property name="text">
+             <string>Mettre en valeur dans le panel les éléments fraîchement intégrés</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_4">
+            <property name="text">
+             <string>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre.
 Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</string>
-        </property>
-       </widget>
-       <widget class="QTextEdit" name="m_default_elements_info">
-        <property name="geometry">
-         <rect>
-          <x>12</x>
-          <y>105</y>
-          <width>941</width>
-          <height>131</height>
-         </rect>
-        </property>
-       </widget>
-      </widget>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTextEdit" name="m_default_elements_info"/>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="tab_6">
       <attribute name="title">
        <string>Langage</string>
       </attribute>
-      <widget class="QGroupBox" name="groupBox_4">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>20</y>
-         <width>971</width>
-         <height>91</height>
-        </rect>
-       </property>
-       <property name="title">
-        <string/>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignJustify|Qt::AlignVCenter</set>
-       </property>
-       <widget class="QComboBox" name="m_lang_cb">
-        <property name="geometry">
-         <rect>
-          <x>50</x>
-          <y>40</y>
-          <width>141</width>
-          <height>31</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_6">
-        <property name="geometry">
-         <rect>
-          <x>330</x>
-          <y>40</y>
-          <width>300</width>
-          <height>18</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Appliqué au prochain lancement de QElectroTech</string>
-        </property>
-       </widget>
-      </widget>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="0" column="0">
+        <widget class="QComboBox" name="m_lang_cb"/>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>Appliqué au prochain lancement de QElectroTech</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>421</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="2">
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="tab">
       <attribute name="title">
        <string>Textes dynamiques</string>
       </attribute>
-      <widget class="QGroupBox" name="groupBox6">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>20</y>
-         <width>971</width>
-         <height>391</height>
-        </rect>
-       </property>
-       <property name="title">
-        <string/>
-       </property>
-       <widget class="QLabel" name="label_11">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>100</y>
-          <width>535</width>
-          <height>27</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Rotation des textes dynamiques</string>
-        </property>
-       </widget>
-       <widget class="QSpinBox" name="m_rotation">
-        <property name="geometry">
-         <rect>
-          <x>850</x>
-          <y>110</y>
-          <width>87</width>
-          <height>27</height>
-         </rect>
-        </property>
-        <property name="maximum">
-         <number>360</number>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="m_dynamic_font_pb">
-        <property name="geometry">
-         <rect>
-          <x>804</x>
-          <y>60</y>
-          <width>141</width>
-          <height>34</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_12">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>60</y>
-          <width>535</width>
-          <height>26</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Police des textes dynamiques</string>
-        </property>
-       </widget>
-       <widget class="QSpinBox" name="m_text_width_sb">
-        <property name="geometry">
-         <rect>
-          <x>850</x>
-          <y>150</y>
-          <width>91</width>
-          <height>32</height>
-         </rect>
-        </property>
-        <property name="minimum">
-         <number>-1</number>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_5">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>150</y>
-          <width>211</width>
-          <height>18</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Longueur des textes</string>
-        </property>
-       </widget>
-      </widget>
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_11">
+         <property name="text">
+          <string>Rotation des textes dynamiques</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>Longueur des textes</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QSpinBox" name="m_text_width_sb">
+         <property name="minimum">
+          <number>-1</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QSpinBox" name="m_rotation">
+         <property name="maximum">
+          <number>360</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_12">
+         <property name="text">
+          <string>Police des textes dynamiques</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QPushButton" name="m_dynamic_font_pb"/>
+       </item>
+       <item row="3" column="0">
+        <spacer name="verticalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="1">
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
      </widget>
     </widget>
    </item>
   </layout>
  </widget>
  <tabstops>
-  <tabstop>tabWidget</tabstop>
   <tabstop>m_use_system_color_cb</tabstop>
   <tabstop>m_use_windows_mode_rb</tabstop>
   <tabstop>m_use_tab_mode_rb</tabstop>
   <tabstop>m_use_gesture_trackpad</tabstop>
   <tabstop>m_zoom_out_beyond_folio</tabstop>
-  <tabstop>m_save_label_paste</tabstop>
-  <tabstop>m_use_folio_label</tabstop>
-  <tabstop>m_export_terminal</tabstop>
-  <tabstop>m_border_0</tabstop>
-  <tabstop>m_autosave_sb</tabstop>
-  <tabstop>m_font_pb</tabstop>
-  <tabstop>m_folio_list_pb</tabstop>
   <tabstop>m_common_elmt_path_cb</tabstop>
   <tabstop>m_custom_elmt_path_cb</tabstop>
   <tabstop>m_highlight_integrated_elements</tabstop>
