@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2017 The QElectroTech Team
+	Copyright 2006-2018 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -24,11 +24,10 @@
 #include "dynamicelementtextitem.h"
 
 ReportElement::ReportElement(const ElementsLocation &location, const QString& link_type,QGraphicsItem *qgi, int *state) :
-	Element(location, qgi, state)
-{
-	link_type == "next_report"? m_link_type=NextReport : m_link_type=PreviousReport;
-	link_type == "next_report"? m_inverse_report=PreviousReport : m_inverse_report=NextReport;
-}
+	Element(location, qgi, state,
+			link_type == "next_report"? Element::NextReport : Element::PreviousReport),
+	m_inverse_report(link_type == "next_report"? Element::PreviousReport : Element::NextReport)
+{}
 
 /**
  * @brief ReportElement::~ReportElement

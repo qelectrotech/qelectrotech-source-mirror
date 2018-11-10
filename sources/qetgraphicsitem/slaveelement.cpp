@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2017 The QElectroTech Team
+	Copyright 2006-2018 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -30,10 +30,9 @@
  * @param state int used to know if the creation of element have error
  */
 SlaveElement::SlaveElement(const ElementsLocation &location, QGraphicsItem *qgi, int *state) :
-	Element(location, qgi, state)
+	Element(location, qgi, state, Element::Slave)
 {
 	m_xref_item = nullptr;
-	m_link_type = Slave;
 }
 
 /**

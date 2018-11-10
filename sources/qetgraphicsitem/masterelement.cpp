@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2017 The QElectroTech Team
+	Copyright 2006-2018 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -30,10 +30,8 @@
  * @param state int used to know if the creation of element have error
  */
 MasterElement::MasterElement(const ElementsLocation &location, QGraphicsItem *qgi, int *state) :
-	Element(location, qgi, state)
-{
-	m_link_type = Element::Master;
-}
+	Element(location, qgi, state, Element::Master)
+{}
 
 /**
  * @brief MasterElement::~MasterElement

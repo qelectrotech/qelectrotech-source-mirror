@@ -1,5 +1,5 @@
 ﻿/*
-	Copyright 2006-2017 The QElectroTech Team
+	Copyright 2006-2018 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -42,10 +42,20 @@ class Element : public QetGraphicsItem
 	friend class DiagramEventAddElement;
 	
 	Q_OBJECT
-	
-		// constructors, destructor
 	public:
-		Element(const ElementsLocation &location, QGraphicsItem * = nullptr, int *state = nullptr);
+			/**
+			 * @brief The kind enum
+			 * Used to know the kind of this element (master, slave, report ect...)
+			 */
+		enum kind {Simple = 1,
+				   NextReport = 2,
+				   PreviousReport = 4,
+				   AllReport = 6,
+				   Master = 8,
+				   Slave = 16,
+				   Terminale = 32};
+
+		Element(const ElementsLocation &location, QGraphicsItem * = nullptr, int *state = nullptr, Element::kind link_type = Element::Simple);
 		~Element() override;
 	private:
 		Element(const Element &);
@@ -58,18 +68,6 @@ class Element : public QetGraphicsItem
 			 */
 		enum { Type = UserType + 1000 };
 		int type() const override { return Type; }
-
-			/**
-			 * @brief The kind enum
-			 * Used to know the kind of this element (master, slave, report ect...)
-			 */
-		enum kind {Simple = 1,
-				   NextReport = 2,
-				   PreviousReport = 4,
-				   AllReport = 6,
-				   Master = 8,
-				   Slave = 16,
-				   Terminale = 32};
 		
 	signals:
 		void linkedElementChanged(); //This signal is emited when the linked elements with this element change
@@ -173,7 +171,7 @@ class Element : public QetGraphicsItem
 		QList <Element *> connected_elements;
 		QList <QUuid>     tmp_uuids_link;
 		QUuid             m_uuid;
-		kind              m_link_type;
+		kind              m_link_type = Element::Simple;
 		
 			//ATTRIBUTES related to informations
 		DiagramContext m_element_informations, m_kind_informations;

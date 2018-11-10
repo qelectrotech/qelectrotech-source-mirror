@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2017 The QElectroTech Team
+	Copyright 2006-2018 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -69,8 +69,9 @@ class ElementXmlRetroCompatibility
  * @param parent, parent graphics item
  * @param state, state of the instanciation
  */
-Element::Element(const ElementsLocation &location, QGraphicsItem *parent, int *state) :
+Element::Element(const ElementsLocation &location, QGraphicsItem *parent, int *state, kind link_type) :
 	QetGraphicsItem(parent),
+	m_link_type (link_type),
 	m_location (location)
 {
 	if(! (location.isElement() && location.exist()))
@@ -94,7 +95,6 @@ Element::Element(const ElementsLocation &location, QGraphicsItem *parent, int *s
 	}
 	
 	setPrefix(autonum::elementPrefixForLocation(location));
-	m_link_type = Simple;
 	m_uuid = QUuid::createUuid();
 	setZValue(10);
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
