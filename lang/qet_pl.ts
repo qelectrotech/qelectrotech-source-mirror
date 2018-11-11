@@ -181,7 +181,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="170"/>
         <source>Traduction en Turc</source>
-        <translation type="unfinished"></translation>
+        <translation>Tłumaczenie na turecki</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="190"/>
@@ -826,7 +826,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="20"/>
@@ -837,12 +837,12 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="50"/>
         <source>Nom</source>
-        <translation type="unfinished">Nazwa</translation>
+        <translation>Nazwa</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="55"/>
         <source>Valeur</source>
-        <translation type="unfinished">Wartość</translation>
+        <translation>Wartość</translation>
     </message>
 </context>
 <context>
@@ -2635,22 +2635,22 @@ Litery i cyfry mogą być używane.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="473"/>
         <source>Textes dynamiques</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst dynamiczny</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="497"/>
         <source>Rotation des textes dynamiques</source>
-        <translation type="unfinished"></translation>
+        <translation>Obrót tekstu dynamicznego</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="533"/>
         <source>Police des textes dynamiques</source>
-        <translation type="unfinished"></translation>
+        <translation>Czcionka tekstu dynamicznego</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="559"/>
         <source>Longueur des textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Wielkość tekstu</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="316"/>
@@ -2883,7 +2883,7 @@ Tutaj możesz określić domyślną zawartość tego pola:</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="207"/>
         <source>Turc</source>
-        <translation type="unfinished"></translation>
+        <translation>Turecki</translation>
     </message>
 </context>
 <context>
@@ -3002,17 +3002,17 @@ Tutaj możesz określić domyślną zawartość tego pola:</translation>
     <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished">Dialog</translation>
+        <translation>Dialog</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="20"/>
         <source>TextLabel</source>
-        <translation type="unfinished">Etykieta</translation>
+        <translation>Etykieta</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="30"/>
         <source>Écraser les textes existants</source>
-        <translation type="unfinished"></translation>
+        <translation>Zastąp istniejące teksty</translation>
     </message>
 </context>
 <context>
@@ -5228,7 +5228,7 @@ python -m pip install --upgrade qet_tb_generator
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="617"/>
         <source>Chercher</source>
-        <translation type="unfinished"></translation>
+        <translation>Szukaj</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="664"/>
@@ -7658,7 +7658,7 @@ Czy chcesz ją zastąpić ?</translation>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="54"/>
         <source>Chercher remplacer les propriétés de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Znajdź zmiany właściwości arkusza</translation>
     </message>
 </context>
 <context>
@@ -7817,32 +7817,32 @@ Czy chcesz ją zastąpić ?</translation>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="45"/>
         <source>Principales</source>
-        <translation type="unfinished">Podstawowe</translation>
+        <translation>Podstawowe</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="53"/>
         <source>Indice Rev</source>
-        <translation type="unfinished">Oznaczenie Rew</translation>
+        <translation>Oznaczenie Rew</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="60"/>
         <source>Localisation</source>
-        <translation type="unfinished">Lokalizacja</translation>
+        <translation>Lokalizacja</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="67"/>
         <source>Fichier :</source>
-        <translation type="unfinished">Plik:</translation>
+        <translation>Plik:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="74"/>
         <source>Disponible en tant que %title pour les modèles de cartouches</source>
-        <translation type="unfinished">Dostępne jako %title dla szablonów tabliczek rysunkowych</translation>
+        <translation>Dostępne jako %title dla szablonów tabliczek rysunkowych</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="77"/>
@@ -7853,67 +7853,67 @@ Czy chcesz ją zastąpić ?</translation>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="217"/>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="227"/>
         <source>Non modifier</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie zmieniaj</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="84"/>
         <source>Disponible en tant que %author pour les modèles de cartouches</source>
-        <translation type="unfinished">Dostępne jako %author dla szablonów tabliczek rysunkowych</translation>
+        <translation>Dostępne jako %author dla szablonów tabliczek rysunkowych</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="94"/>
         <source>Auteur :</source>
-        <translation type="unfinished">Autor:</translation>
+        <translation>Autor:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="101"/>
         <source>Date :</source>
-        <translation type="unfinished">Data:</translation>
+        <translation>Data:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="111"/>
         <source>Installation :</source>
-        <translation type="unfinished">Instalacja:</translation>
+        <translation>Instalacja:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="118"/>
         <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
-        <translation type="unfinished">Dostępny dla %indexrev szablonów tabliczek rysunkowych</translation>
+        <translation>Dostępny dla %indexrev szablonów tabliczek rysunkowych</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="128"/>
         <source>Disponible en tant que %filename pour les modèles de cartouches</source>
-        <translation type="unfinished">Dostępne jako %filename dla szablonów tabliczek rysunkowych</translation>
+        <translation>Dostępne jako %filename dla szablonów tabliczek rysunkowych</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="141"/>
         <source>Folio :</source>
-        <translation type="unfinished">Arkusz:</translation>
+        <translation>Arkusz:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="150"/>
         <source>Pas de date</source>
-        <translation type="unfinished">Brak daty</translation>
+        <translation>Brak daty</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="157"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
-        <translation type="unfinished">Dostępne jako %date dla szablonów tabliczek rysunkowych</translation>
+        <translation>Dostępne jako %date dla szablonów tabliczek rysunkowych</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="170"/>
         <source>Date fixe :</source>
-        <translation type="unfinished">Ustalona data:</translation>
+        <translation>Ustalona data:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="177"/>
         <source>Appliquer la date actuelle</source>
-        <translation type="unfinished">Zastosuj aktualną datę</translation>
+        <translation>Zastosuj aktualną datę</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="191"/>
         <source>Non &amp;modifier</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie &amp;zmieniaj</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="200"/>
@@ -7922,7 +7922,7 @@ Les variables suivantes sont utilisables :
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
-        <translation type="unfinished">Dostępny jako %folio dla szablonów tabliczek rysunkowych
+        <translation>Dostępny jako %folio dla szablonów tabliczek rysunkowych
 Les variables suivantes sont utilisables :
 - %id: numer bieżącego arkusza w projekcie 
 - %total: łączna liczba arkuszy w projekcie 
@@ -7931,17 +7931,17 @@ Les variables suivantes sont utilisables :
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="214"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
-        <translation type="unfinished">Dostępny dla %locmach szablonów tabliczek rysunkowych</translation>
+        <translation>Dostępny dla %locmach szablonów tabliczek rysunkowych</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="224"/>
         <source>Disponible en tant que %machine pour les modèles de cartouches</source>
-        <translation type="unfinished">Dostępny dla %machine szablonów tabliczek rysunkowych</translation>
+        <translation>Dostępny dla %machine szablonów tabliczek rysunkowych</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="234"/>
         <source>Titre :</source>
-        <translation type="unfinished">Tytuł:</translation>
+        <translation>Tytuł:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="241"/>
@@ -7952,18 +7952,18 @@ Les variables suivantes sont utilisables :
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="291"/>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="301"/>
         <source>Supprimer ce texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Usuń tekst</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="327"/>
         <source>Personnalisées</source>
-        <translation type="unfinished">Personalizacja</translation>
+        <translation>Personalizacja</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="335"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation type="unfinished">Tutaj możesz zdefiniować własne skojarzenia nazy/wartości dla twojej tabliczki rysunkowej. Przykład:
+        <translation>Tutaj możesz zdefiniować własne skojarzenia nazy/wartości dla twojej tabliczki rysunkowej. Przykład:
 skojarzenie nazwy &quot;volta&quot; i wartości &quot;1745&quot; spowoduje zastąpienie nazwy %{volta} przez wartość 1745 w tabliczce rysunkowej.</translation>
     </message>
 </context>
@@ -8004,137 +8004,139 @@ Stwórz własny tekst używając następujących zmiennych:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="46"/>
         <source>Aller à la correspondance suivante</source>
-        <translation type="unfinished"></translation>
+        <translation>Przejdź do następnego wyniku</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="107"/>
         <source>Aller à la correspondance précédente</source>
-        <translation type="unfinished"></translation>
+        <translation>Przejdź do poprzedniego wyniku</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="137"/>
         <source>Quitter</source>
-        <translation type="unfinished"></translation>
+        <translation>Zakończ</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="156"/>
         <source>Champ texte de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Pole tekstowe arkusza</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="166"/>
         <source>Folio</source>
-        <translation type="unfinished">Arkusz</translation>
+        <translation>Arkusz</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="190"/>
         <source>Élément</source>
-        <translation type="unfinished">Element</translation>
+        <translation>Element</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="200"/>
         <source>Conducteur</source>
-        <translation type="unfinished">Przewód</translation>
+        <translation>Przewód</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="207"/>
         <source>Remplacer :</source>
-        <translation type="unfinished"></translation>
+        <translation>Zastąp</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="232"/>
         <source>Remplacer la correspondance séléctionner</source>
-        <translation type="unfinished"></translation>
+        <translation>Zastąp zaznaczony wynik</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="235"/>
         <source>Remplacer</source>
-        <translation type="unfinished">Zastąp</translation>
+        <translation>Zastąp</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="242"/>
         <source>Remplacer les correspondances coché</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>niepewne</translatorcomment>
+        <translation>Zastąp wynik sprawdzenia</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="245"/>
         <source>Tout remplacer</source>
-        <translation type="unfinished"></translation>
+        <translation>Zmień wszystko</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="180"/>
         <source>Chercher :</source>
-        <translation type="unfinished"></translation>
+        <translation>Znajdź:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="63"/>
         <source>Avancé</source>
-        <translation type="unfinished"></translation>
+        <translation>Zaawansowane</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="32"/>
         <source>Actualiser</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualizuj</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="134"/>
         <source>Correspondance :</source>
-        <translation type="unfinished"></translation>
+        <translation>Wynik:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="140"/>
         <source>Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Arkusze</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="146"/>
         <source>Champs texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Pole tekstowe</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="152"/>
         <source>Elements</source>
-        <translation type="unfinished">Elementy</translation>
+        <translation>Elementy</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="157"/>
         <source>Elements simple</source>
-        <translation type="unfinished"></translation>
+        <translation>Proste elementy</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="163"/>
         <source>Elements maître</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>niepewne</translatorcomment>
+        <translation>Elementy nadrzędne</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="169"/>
         <source>Elements esclave</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementy podrzędne</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="175"/>
         <source>Elements report de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementy - odsyłacze do arkuszy</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="181"/>
         <source>Elements bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementy - zaciski</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="189"/>
         <source>Conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Przewody</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="327"/>
         <source>Inconnue</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieznane</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="795"/>
@@ -8144,7 +8146,7 @@ Stwórz własny tekst używając następujących zmiennych:
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="820"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="835"/>
         <source> [Édité]</source>
-        <translation type="unfinished"></translation>
+        <translation> [Edytowany]</translation>
     </message>
 </context>
 <context>
