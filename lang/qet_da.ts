@@ -6,7 +6,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="223"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
-        <translation>Dette program er udgivet under GNU/GPL licens.</translation>
+        <translation>Dette program er licenseret under GNU / GPL.</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="123"/>
@@ -1565,7 +1565,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="61"/>
         <source>Supprimer ce texte</source>
-        <translation type="unfinished">Slette tekst</translation>
+        <translation>Slette tekst</translation>
     </message>
 </context>
 <context>
@@ -2883,7 +2883,7 @@ Her kan standardværdien angives for dette felt for de oprettede symboler:</tran
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="208"/>
         <source>Hongrois</source>
-        <translation type="unfinished"></translation>
+        <translation>Ungarsk</translation>
     </message>
 </context>
 <context>
@@ -7654,12 +7654,12 @@ Vil du erstatte den?</translation>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="171"/>
         <source>Chercher remplacer les propriétés d&apos;éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Søge og erstatte symbol egenskaber</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="231"/>
         <source>Chercher remplacer des textes independant</source>
-        <translation type="unfinished"></translation>
+        <translation>Søge og erstatte uafhængige tekster</translation>
     </message>
 </context>
 <context>
@@ -7817,7 +7817,7 @@ Vil du erstatte den?</translation>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceelementdialog.cpp" line="83"/>
         <source>Non modifier</source>
-        <translation type="unfinished">Uændret</translation>
+        <translation>Uændret</translation>
     </message>
 </context>
 <context>
