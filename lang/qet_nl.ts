@@ -1565,7 +1565,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="61"/>
         <source>Supprimer ce texte</source>
-        <translation type="unfinished">Deze tekst verwijderen</translation>
+        <translation>Deze tekst verwijderen</translation>
     </message>
 </context>
 <context>
@@ -2884,7 +2884,7 @@ Hier kunt u de standaardtekst hiervoor opgeven voor nieuwe elementen :</translat
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="208"/>
         <source>Hongrois</source>
-        <translation type="unfinished"></translation>
+        <translation>Hongaars</translation>
     </message>
 </context>
 <context>
@@ -6652,7 +6652,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1041"/>
         <source>Exporter vers le presse-papier</source>
-        <translation>Exporteer naar het klembord</translation>
+        <translation>Naar klembord exporteren</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="342"/>
@@ -7649,12 +7649,12 @@ Wilt u deze vervangen ?</translation>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="171"/>
         <source>Chercher remplacer les propriétés d&apos;éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementeigenschappen zoeken en vervangen</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="231"/>
         <source>Chercher remplacer des textes independant</source>
-        <translation type="unfinished"></translation>
+        <translation>Opzichzelfstaande teksten zoeken en vervangen</translation>
     </message>
 </context>
 <context>
@@ -7812,7 +7812,7 @@ Wilt u deze vervangen ?</translation>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceelementdialog.cpp" line="83"/>
         <source>Non modifier</source>
-        <translation type="unfinished">Ongewijzigd</translation>
+        <translation>Ongewijzigd</translation>
     </message>
 </context>
 <context>
