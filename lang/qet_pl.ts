@@ -1560,9 +1560,14 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
         <translation>Forma</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfopartwidget.ui" line="47"/>
+        <location filename="../sources/ui/elementinfopartwidget.ui" line="54"/>
         <source>TextLabel</source>
         <translation>Etykieta</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementinfopartwidget.ui" line="61"/>
+        <source>Supprimer ce texte</source>
+        <translation type="unfinished">Usuń tekst</translation>
     </message>
 </context>
 <context>
@@ -2607,130 +2612,130 @@ Litery i cyfry mogą być używane.</translation>
         <translation>Wygląd</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="86"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="54"/>
         <source>Utiliser les couleurs du système</source>
         <translation>Użyj kolorów systemu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="273"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="226"/>
         <source>Elements</source>
         <translation>Elementy</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="285"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="232"/>
         <source>Collections d&apos;éléments</source>
         <translation>Kolekcja elementów</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="329"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="309"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="265"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="310"/>
         <source>Chemin de la collection utilisateur</source>
         <translation>Ścieżka do kolekcji użytkownika</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="429"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="327"/>
         <source>Langage</source>
         <translation>Język</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="473"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="370"/>
         <source>Textes dynamiques</source>
         <translation>Tekst dynamiczny</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="497"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="376"/>
         <source>Rotation des textes dynamiques</source>
         <translation>Obrót tekstu dynamicznego</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="533"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="404"/>
         <source>Police des textes dynamiques</source>
         <translation>Czcionka tekstu dynamicznego</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="559"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="383"/>
         <source>Longueur des textes</source>
         <translation>Wielkość tekstu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="316"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="295"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="244"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="296"/>
         <source>Chemin de la collection commune</source>
         <translation>Ścieżka do kolekcji wspólnej</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="343"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="363"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="252"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="273"/>
         <source>Par defaut</source>
         <translation>Domyślne</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="348"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="368"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="257"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="278"/>
         <source>Parcourir...</source>
         <translation>Przeglądaj...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="303"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="286"/>
         <source>(Recharger les collections d&apos;éléments pour appliquer les changements)</source>
         <translation>(ponownie załaduj kolekcję elementów aby wprowadzić zmainy)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="164"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="117"/>
         <source>Projets</source>
         <translation>Projekty</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="153"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="68"/>
         <source>Utiliser les gestes du pavé tactile</source>
         <translation>Użyj gestów gładzika</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="212"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="202"/>
         <source>Désactivé</source>
         <translation>Dezaktywuj</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="215"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="205"/>
         <source> min</source>
         <comment>minute</comment>
         <translation> min</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="60"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="89"/>
         <source>Utiliser des fenêtres (appliqué au prochain lancement de &amp;QElectroTech)</source>
         <translation>Użyj okien (Zastosowanie przy kolejnym uruchomieniu &amp;QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="202"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="136"/>
         <source>Utiliser les labels de folio à la place de leurs ID</source>
         <translation>Użyj ID zamiast etykiet arkuszy</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="182"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="143"/>
         <source>Activer la numérotation à partir de 0 pour la colonne des cartouches au lieu de 1</source>
         <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
         <translation>Włącz numerowanie od 0 dla kolumny tabliczki rysunkowej zamiast 1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="398"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="305"/>
         <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
         <translation>Wyróżnij w panelu elementy wstawiane jako nowe</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="411"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="312"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre.
 Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
         <translation>Każdy element posiada puste pole, przeznaczone na informacje o autorze, licencji i inne informacje, które uznasza za istotne
 Tutaj możesz określić domyślną zawartość tego pola:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="466"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="336"/>
         <source>Appliqué au prochain lancement de QElectroTech</source>
         <translation>Zmiany zostaną wdrożone przy kolejnym uruchomieniu QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="264"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="192"/>
         <source>Police des champs de texte</source>
         <translation>Czcionka pola tekstowego</translation>
     </message>
@@ -2740,37 +2745,37 @@ Tutaj możesz określić domyślną zawartość tego pola:</translation>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="236"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="178"/>
         <source>Sauvegarde automatique des projets (appliqué au prochain lancement de QElectroTech)</source>
         <translation>Automatyczne tworzenie kopii zapasowych projektu (zmiany zostaną wdrożone przy kolejnym uruchomieniu QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="73"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="96"/>
         <source>Utiliser des onglets (appliqué au proc&amp;hain lancement de QElectroTech)</source>
         <translation>Użyj zakładek (zmiany zostaną wdrożone przy kolejnym uruc&amp;homieniu QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="383"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="296"/>
         <source>Gestion des éléments</source>
         <translation>Zarządzanie elementami</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="222"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="150"/>
         <source>Ne pas conserver les labels des éléments lors des copier coller</source>
         <translation>Nie przechowuj etykiet elementów podczas wklejania kopii</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="229"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="185"/>
         <source>Exporter les bornes dans la nomenclature</source>
         <translation>Ekspotr oznaczeń zacisków do dokumentacji</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="140"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="75"/>
         <source>Autoriser le dézoom au delà du folio</source>
         <translation>Pozwól na powiększenie poza arkusz</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="257"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="157"/>
         <source>Police des champs textes des pages sommaires</source>
         <translation>Czcionka pól tekstowych spisu arkuszy</translation>
     </message>
@@ -2884,6 +2889,11 @@ Tutaj możesz określić domyślną zawartość tego pola:</translation>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="207"/>
         <source>Turc</source>
         <translation>Turecki</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="208"/>
+        <source>Hongrois</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -7656,9 +7666,19 @@ Czy chcesz ją zastąpić ?</translation>
         <translation>ładowanie %p% (%v sur %m)</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="54"/>
+        <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="60"/>
         <source>Chercher remplacer les propriétés de folio</source>
         <translation>Znajdź zmiany właściwości arkusza</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="171"/>
+        <source>Chercher remplacer les propriétés d&apos;éléments</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="231"/>
+        <source>Chercher remplacer des textes independant</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -7810,6 +7830,14 @@ Czy chcesz ją zastąpić ?</translation>
         <location filename="../sources/ElementsCollection/ui/renamedialog.cpp" line="31"/>
         <source>L&apos;élément « %1 » existe déjà. Que souhaitez-vous faire ?</source>
         <translation>L&apos;element « %1 » już istnieje. Co chcesz zrobić?</translation>
+    </message>
+</context>
+<context>
+    <name>ReplaceElementDialog</name>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceelementdialog.cpp" line="83"/>
+        <source>Non modifier</source>
+        <translation type="unfinished">Nie zmieniaj</translation>
     </message>
 </context>
 <context>
@@ -8057,13 +8085,13 @@ Stwórz własny tekst używając następujących zmiennych:
         <translation>Zastąp</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="242"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="245"/>
         <source>Remplacer les correspondances coché</source>
         <translatorcomment>niepewne</translatorcomment>
         <translation>Zastąp wynik sprawdzenia</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="245"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="248"/>
         <source>Tout remplacer</source>
         <translation>Zmień wszystko</translation>
     </message>
@@ -8083,68 +8111,74 @@ Stwórz własny tekst używając następujących zmiennych:
         <translation>Aktualizuj</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="134"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="136"/>
         <source>Correspondance :</source>
         <translation>Wynik:</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="140"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="142"/>
         <source>Folios</source>
         <translation>Arkusze</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="146"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="148"/>
         <source>Champs texte</source>
         <translation>Pole tekstowe</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="152"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="154"/>
         <source>Elements</source>
         <translation>Elementy</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="157"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="159"/>
         <source>Elements simple</source>
         <translation>Proste elementy</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="163"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="165"/>
         <source>Elements maître</source>
         <translatorcomment>niepewne</translatorcomment>
         <translation>Elementy nadrzędne</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="169"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="171"/>
         <source>Elements esclave</source>
         <translation>Elementy podrzędne</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="175"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="177"/>
         <source>Elements report de folio</source>
         <translation>Elementy - odsyłacze do arkuszy</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="181"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="183"/>
         <source>Elements bornier</source>
         <translation>Elementy - zaciski</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="189"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="191"/>
         <source>Conducteurs</source>
         <translation>Przewody</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="327"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="333"/>
         <source>Inconnue</source>
         <translation>Nieznane</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="795"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="796"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="804"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="805"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="820"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="825"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="826"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="834"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="835"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="854"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="862"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="892"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="908"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="958"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="959"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="967"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="968"/>
         <source> [Édité]</source>
         <translation> [Edytowany]</translation>
     </message>
