@@ -1565,7 +1565,7 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="61"/>
         <source>Supprimer ce texte</source>
-        <translation type="unfinished">Cancella questo testo</translation>
+        <translation>Cancella questo testo</translation>
     </message>
 </context>
 <context>
@@ -2882,7 +2882,7 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="208"/>
         <source>Hongrois</source>
-        <translation type="unfinished"></translation>
+        <translation>Ungherese</translation>
     </message>
 </context>
 <context>
@@ -7641,12 +7641,12 @@ Sostituirla con questa?</translation>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="171"/>
         <source>Chercher remplacer les propriétés d&apos;éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Cerca e sostituisci le proprietà degli elementi</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="231"/>
         <source>Chercher remplacer des textes independant</source>
-        <translation type="unfinished"></translation>
+        <translation>Cerca e sostituisci dei testi indipendenti</translation>
     </message>
 </context>
 <context>
@@ -7804,7 +7804,7 @@ Sostituirla con questa?</translation>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceelementdialog.cpp" line="83"/>
         <source>Non modifier</source>
-        <translation type="unfinished">Non modificato</translation>
+        <translation>Non modificato</translation>
     </message>
 </context>
 <context>
