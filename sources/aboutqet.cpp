@@ -34,7 +34,7 @@ AboutQET::AboutQET(QWidget *parent) :
 	QDialog(parent)
 {
 	setWindowTitle(tr("À propos de QElectrotech", "window title"));
-	setFixedSize (700, 600);
+	setFixedSize (1200, 600);
 	//setMinimumHeight(600);
 	//setMinimumWidth(600);
 	setModal(true);
@@ -58,7 +58,7 @@ AboutQET::AboutQET(QWidget *parent) :
 	
 	QScrollArea* scrollArea = new QScrollArea(this);
 		scrollArea->setWidgetResizable(true);
-		scrollArea->setFixedSize (590, 590);
+		scrollArea->setFixedSize (1090, 590);
 		scrollArea->setWidget(tabs);
 }
 
