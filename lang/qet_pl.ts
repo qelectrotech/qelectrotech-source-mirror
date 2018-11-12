@@ -1567,7 +1567,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="61"/>
         <source>Supprimer ce texte</source>
-        <translation type="unfinished">Usuń tekst</translation>
+        <translation>Usuń tekst</translation>
     </message>
 </context>
 <context>
@@ -2893,7 +2893,7 @@ Tutaj możesz określić domyślną zawartość tego pola:</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="208"/>
         <source>Hongrois</source>
-        <translation type="unfinished"></translation>
+        <translation>Węgierski</translation>
     </message>
 </context>
 <context>
@@ -7668,17 +7668,17 @@ Czy chcesz ją zastąpić ?</translation>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="60"/>
         <source>Chercher remplacer les propriétés de folio</source>
-        <translation>Znajdź zmiany właściwości arkusza</translation>
+        <translation>Znajdź zmiany właściwościach arkusza</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="171"/>
         <source>Chercher remplacer les propriétés d&apos;éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Znajdź zmiany właściwościach elementów</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="231"/>
         <source>Chercher remplacer des textes independant</source>
-        <translation type="unfinished"></translation>
+        <translation>Znajdź zmiany w niezależnych tekstach</translation>
     </message>
 </context>
 <context>
@@ -7837,7 +7837,7 @@ Czy chcesz ją zastąpić ?</translation>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceelementdialog.cpp" line="83"/>
         <source>Non modifier</source>
-        <translation type="unfinished">Nie zmieniaj</translation>
+        <translation>Nie zmieniaj</translation>
     </message>
 </context>
 <context>
