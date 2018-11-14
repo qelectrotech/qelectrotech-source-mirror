@@ -90,6 +90,7 @@ QString nomenclature::getNomenclature()
     ""+ QObject::tr("D001") +";"      //:Don't translate this text!    //ID for qet designation
     ""+ QObject::tr("E001") +";"      //:Don't translate this text!    //ID for position of element on the folio
     ""+ QObject::tr("F001") +";"      //:Don't translate this text!    //ID for label of element
+    ""+ QObject::tr("F002") +";"      //:Don't translate this text!    //ID for label formula of element
     ""+ QObject::tr("G001") +";"      //:Don't translate this text!    //ID for order number
     ""+ QObject::tr("H001") +";"      //:Don't translate this text!    //ID for article description
     ""+ QObject::tr("I001") +";"      //:Don't translate this text!    //ID for comment
@@ -107,6 +108,7 @@ QString nomenclature::getNomenclature()
 	""+ QObject::tr("Désignation qet") +";"
 	""+ QObject::tr("Position") +";"
 	""+ QObject::tr("Label") +";"
+	""+ QObject::tr("Formule du label") +";"
 	""+ QObject::tr("Désignation") +";"
 	""+ QObject::tr("Description") +";"
 	""+ QObject::tr("Commentaire") +";"
@@ -165,6 +167,7 @@ QString nomenclature::getElementInfo(Element *elmt) {
 	info += elmt -> name() + ";";
 	info += elmt-> diagram()-> convertPosition(elmt -> scenePos()).toString() + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["label"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
+	info += autonum::AssignVariables::formulaToLabel(elmt_info["formula"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["designation"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["description"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["comment"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
