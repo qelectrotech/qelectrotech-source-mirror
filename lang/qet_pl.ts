@@ -2640,7 +2640,7 @@ Litery i cyfry mogą być używane.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="370"/>
         <source>Textes dynamiques</source>
-        <translation>Tekst dynamiczny</translation>
+        <translation>Teksty dynamiczne</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="376"/>
@@ -7372,7 +7372,7 @@ Co chcesz zrobić?</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="93"/>
         <source>F002</source>
-        <translation type="unfinished">F002</translation>
+        <translation>F002</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="94"/>
@@ -7462,7 +7462,7 @@ Co chcesz zrobić?</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="111"/>
         <source>Formule du label</source>
-        <translation type="unfinished"></translation>
+        <translation>Formuła etykiety</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="112"/>
@@ -8082,7 +8082,7 @@ Stwórz własny tekst używając następujących zmiennych:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="207"/>
         <source>Remplacer :</source>
-        <translation>Zastąp</translation>
+        <translation>Zastąp:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="232"/>
