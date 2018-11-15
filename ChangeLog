@@ -15,7 +15,8 @@
 * Diagram editor : 
 * Conductors can now be drawn with two colors.
 * The code for the resize handles has been almost completely redesigned.
-* Dissociate fonts policy and size for independent text item and for summarry pages (foliolist), added a 2 button in config page for open Qfontdialog widget and choose policy for independent text item
+* Dissociate fonts policy and size for independent text item and for summarry pages (foliolist), added a 2 button in config page for open Qfontdialog widget and choose policy for independent text item.
+* Add in config page a Qfontdialog widget for change dynamic text size, orientation angle and text length by default.
 Possiblility to overide defaut settings by adding in QElectroTech.conf
 * Basic shape add new CustomDashLine style with Dash Pattern (<< 10 << 10 );
 * It is now possible to add a text field to an element directly from the diagram.
@@ -37,11 +38,14 @@ This commit fix it, now the search function search for every terminals of a term
 * Element text item group can now be framed.
 * Added two new actions in context menu for insert or remove point of a selected polygon.
 * QETshapeItem rectangle can have rounded corner.
-* let user define the file system path of the common and custom elements collections.
+* Add in config the possibility to start the numbering of the columns of titleblocks at 0.
+* Add new function Search and replace widget Crtl +F
+Diagram properties, Element properties, Independent text item can be changed (and mass changed) through the search and replace widget.
+
 
 
 * Title block editor : 
-Added new title block variables %projectpath, %projectfilename.
+Added new title block variables %projectpath, %projectfilename, %projecttitle.
 Added new title block variables : "%saveddate, %savedtime, %savedfilename and %savedfilepath" they variables should be updated after file save or save as dialog is confirmed,
 before file is saved.
 
@@ -55,7 +59,7 @@ If not a file dialog is showed to select the QET project.
 
 * QET create a backup file, use to restore the project when a crash occur.
 * User can enable and edit autosave timer.
-
+* let user define the file system path of the common and custom elements collections.
 
 
 * QetGraphicsItem, remove the function applyRotation and rotateBy, and use instead the native function of QGraphicsItem : setRotation
