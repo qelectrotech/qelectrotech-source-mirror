@@ -7064,142 +7064,152 @@ O que você deseja fazer?</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="93"/>
+        <source>F002</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="94"/>
         <source>G001</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="94"/>
+        <location filename="../sources/nomenclature.cpp" line="95"/>
         <source>H001</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="95"/>
+        <location filename="../sources/nomenclature.cpp" line="96"/>
         <source>I001</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="96"/>
+        <location filename="../sources/nomenclature.cpp" line="97"/>
         <source>J001</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="97"/>
+        <location filename="../sources/nomenclature.cpp" line="98"/>
         <source>K001</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="98"/>
+        <location filename="../sources/nomenclature.cpp" line="99"/>
         <source>L001</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="99"/>
+        <location filename="../sources/nomenclature.cpp" line="100"/>
         <source>M001</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="100"/>
+        <location filename="../sources/nomenclature.cpp" line="101"/>
         <source>M002</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="101"/>
+        <location filename="../sources/nomenclature.cpp" line="102"/>
         <source>N001</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="102"/>
+        <location filename="../sources/nomenclature.cpp" line="103"/>
         <source>O001</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="103"/>
+        <location filename="../sources/nomenclature.cpp" line="104"/>
         <source>P001</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="104"/>
+        <location filename="../sources/nomenclature.cpp" line="105"/>
         <source>N° de folio</source>
         <translation>N° da página</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="105"/>
+        <location filename="../sources/nomenclature.cpp" line="106"/>
         <source>Titre de folio</source>
         <translation>Título da página</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="106"/>
+        <location filename="../sources/nomenclature.cpp" line="107"/>
         <source>Label de folio</source>
         <translation>Legenda da página</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="107"/>
+        <location filename="../sources/nomenclature.cpp" line="108"/>
         <source>Désignation qet</source>
         <translation>Designação qet</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="108"/>
+        <location filename="../sources/nomenclature.cpp" line="109"/>
         <source>Position</source>
         <translation>Posição</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="109"/>
+        <location filename="../sources/nomenclature.cpp" line="110"/>
         <source>Label</source>
         <translation>Legenda</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="110"/>
+        <location filename="../sources/nomenclature.cpp" line="111"/>
+        <source>Formule du label</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="112"/>
         <source>Désignation</source>
         <translation>Designação</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="111"/>
+        <location filename="../sources/nomenclature.cpp" line="113"/>
         <source>Description</source>
         <translation>Descrição</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="112"/>
+        <location filename="../sources/nomenclature.cpp" line="114"/>
         <source>Commentaire</source>
         <translation>Comentário</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="113"/>
+        <location filename="../sources/nomenclature.cpp" line="115"/>
         <source>Fabricant</source>
         <translation>Fabricante</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="114"/>
+        <location filename="../sources/nomenclature.cpp" line="116"/>
         <source>Reference Fabricant</source>
         <translation>Referência do fabricante</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="115"/>
+        <location filename="../sources/nomenclature.cpp" line="117"/>
         <source>Fournisseur</source>
         <translation>Fornecedor</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="116"/>
+        <location filename="../sources/nomenclature.cpp" line="118"/>
         <source>Bloc auxiliaire 1</source>
         <translation>Bloco auxiliar 1</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="117"/>
+        <location filename="../sources/nomenclature.cpp" line="119"/>
         <source>Bloc auxiliaire 2</source>
         <translation>Bloco auxiliar 2</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="118"/>
+        <location filename="../sources/nomenclature.cpp" line="120"/>
         <source>Machine-reference</source>
         <translation>Referência da máquina</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="268"/>
-        <location filename="../sources/nomenclature.cpp" line="119"/>
+        <location filename="../sources/nomenclature.cpp" line="121"/>
         <source>Localisation</source>
         <translation>Localização</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="120"/>
+        <location filename="../sources/nomenclature.cpp" line="122"/>
         <source>Fonction</source>
         <translation>Função</translation>
     </message>

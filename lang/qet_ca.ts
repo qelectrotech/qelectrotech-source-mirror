@@ -7299,142 +7299,152 @@ Què vol fer?</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="93"/>
-        <source>G001</source>
+        <source>F002</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="94"/>
-        <source>H001</source>
+        <source>G001</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="95"/>
-        <source>I001</source>
+        <source>H001</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="96"/>
-        <source>J001</source>
+        <source>I001</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="97"/>
-        <source>K001</source>
+        <source>J001</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="98"/>
-        <source>L001</source>
+        <source>K001</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="99"/>
-        <source>M001</source>
+        <source>L001</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="100"/>
-        <source>M002</source>
+        <source>M001</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="101"/>
-        <source>N001</source>
+        <source>M002</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="102"/>
-        <source>O001</source>
+        <source>N001</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="103"/>
-        <source>P001</source>
+        <source>O001</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="104"/>
+        <source>P001</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="105"/>
         <source>N° de folio</source>
         <translation>Núm. de full</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="105"/>
+        <location filename="../sources/nomenclature.cpp" line="106"/>
         <source>Titre de folio</source>
         <translation>Títol del full</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="106"/>
+        <location filename="../sources/nomenclature.cpp" line="107"/>
         <source>Label de folio</source>
         <translation>Etiqueta del full</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="107"/>
+        <location filename="../sources/nomenclature.cpp" line="108"/>
         <source>Désignation qet</source>
         <translation>Designació qet</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="108"/>
+        <location filename="../sources/nomenclature.cpp" line="109"/>
         <source>Position</source>
         <translation>Posició</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="109"/>
+        <location filename="../sources/nomenclature.cpp" line="110"/>
         <source>Label</source>
         <translation>Etiqueta</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="110"/>
-        <source>Désignation</source>
-        <translation>Designació</translation>
-    </message>
-    <message>
         <location filename="../sources/nomenclature.cpp" line="111"/>
-        <source>Description</source>
+        <source>Formule du label</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="112"/>
+        <source>Désignation</source>
+        <translation>Designació</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="113"/>
+        <source>Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="114"/>
         <source>Commentaire</source>
         <translation>Comentari</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="113"/>
+        <location filename="../sources/nomenclature.cpp" line="115"/>
         <source>Fabricant</source>
         <translation>Fabricant</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="114"/>
+        <location filename="../sources/nomenclature.cpp" line="116"/>
         <source>Reference Fabricant</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="115"/>
+        <location filename="../sources/nomenclature.cpp" line="117"/>
         <source>Fournisseur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="116"/>
+        <location filename="../sources/nomenclature.cpp" line="118"/>
         <source>Bloc auxiliaire 1</source>
         <translation>Bloc auxiliar 1</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="117"/>
+        <location filename="../sources/nomenclature.cpp" line="119"/>
         <source>Bloc auxiliaire 2</source>
         <translation>Bloc auxiliar 2</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="118"/>
+        <location filename="../sources/nomenclature.cpp" line="120"/>
         <source>Machine-reference</source>
         <translation>Referència de la màquina</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="268"/>
-        <location filename="../sources/nomenclature.cpp" line="119"/>
+        <location filename="../sources/nomenclature.cpp" line="121"/>
         <source>Localisation</source>
         <translation>Localització</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="120"/>
+        <location filename="../sources/nomenclature.cpp" line="122"/>
         <source>Fonction</source>
         <translation>Funció</translation>
     </message>
