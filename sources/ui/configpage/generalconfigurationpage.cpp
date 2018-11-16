@@ -65,7 +65,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_folio_list_pb->setText(foliolistfontInfos);
 	
 	ui->m_rotation->setValue(settings.value("dynamic_rotation", 0).toInt());
-	ui->m_text_width_sb->setValue(settings.value("dynamic_with", 0).toInt());
+	ui->m_text_width_sb->setValue(settings.value("dynamic_with", -1).toInt());
 	
 	ui->m_highlight_integrated_elements->setChecked(settings.value("diagrameditor/highlight-integrated-elements", true).toBool());
 	ui->m_default_elements_info->setPlainText(settings.value("elementeditor/default-informations", "").toString());
