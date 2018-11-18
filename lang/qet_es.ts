@@ -515,7 +515,7 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
         <location filename="../sources/ui/borderpropertieswidget.ui" line="14"/>
         <source>Form</source>
         <translatorcomment>Formulario</translatorcomment>
-        <translation>Forma</translation>
+        <translation>Formulario</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="20"/>
@@ -701,13 +701,12 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translatorcomment>Formulario</translatorcomment>
-        <translation>Forma</translation>
+        <translation>Formulario</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="137"/>
         <source>Formule du texte :</source>
-        <translation>Texto de la fórmula:</translation>
+        <translation>Fórmula del texto:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="81"/>
@@ -1021,7 +1020,7 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="14"/>
         <source>Form</source>
-        <translation>Forma</translation>
+        <translation>Formulario</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="22"/>
@@ -1562,7 +1561,7 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="20"/>
         <source>Form</source>
-        <translation>Forma</translation>
+        <translation>Formulario</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="54"/>
@@ -1580,7 +1579,7 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
     <message>
         <location filename="../sources/ui/elementinfowidget.ui" line="26"/>
         <source>Form</source>
-        <translation>Forma</translation>
+        <translation>Formulario</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.h" line="50"/>
@@ -2468,7 +2467,7 @@ Se eliminarán todos los elementos y carpetas contenidas en esta carpeta.</trans
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="26"/>
         <source>Form</source>
-        <translation>Forma</translation>
+        <translation>Formulario</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="78"/>
@@ -2568,7 +2567,7 @@ El campos &quot;Incrementación&quot; no se utiliza.
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="26"/>
         <source>Form</source>
-        <translation>Forma</translation>
+        <translation>Formulario</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="41"/>
@@ -2958,7 +2957,7 @@ Aquí puede especificar el valor predeterminado de este campo para los elementos
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Forma</translation>
+        <translation>Formulario</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="23"/>
@@ -3177,7 +3176,7 @@ Aquí puede especificar el valor predeterminado de este campo para los elementos
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Forma</translation>
+        <translation>Formulario</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="56"/>
@@ -3298,7 +3297,7 @@ Aquí puede especificar el valor predeterminado de este campo para los elementos
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="20"/>
         <source>Form</source>
-        <translation>Forma</translation>
+        <translation>Formulario</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="46"/>
@@ -3607,7 +3606,7 @@ Para ello, asocia los códigos ISO 639-1 de idiomas (ejemplo &quot;fr&quot; por 
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.ui" line="14"/>
         <source>Form</source>
-        <translation>Forma</translation>
+        <translation>Formulario</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="86"/>
@@ -8009,7 +8008,7 @@ asociar el nombre de &quot;volta&quot; y el valor &quot;1745&quot; reemplazara %
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Forma</translation>
+        <translation>Formulario</translation>
     </message>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="20"/>
@@ -8061,7 +8060,7 @@ Crear su propio texto, con las siguientes variables:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="156"/>
         <source>Champ texte de folio</source>
-        <translation>Reemplazar:</translation>
+        <translation>Campo de texto del folio</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="133"/>
@@ -8180,7 +8179,7 @@ Crear su propio texto, con las siguientes variables:
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="20"/>
         <source>Form</source>
-        <translation>Forma</translation>
+        <translation>Formulario</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="133"/>
@@ -8321,7 +8320,7 @@ Los otros campos no se utilizan.</translation>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Forma</translation>
+        <translation>Formulario</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="20"/>
@@ -9005,7 +9004,7 @@ Los otros campos no se utilizan.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="26"/>
         <source>Form</source>
-        <translation>Forma</translation>
+        <translation>Formulario</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="251"/>
@@ -9642,7 +9641,7 @@ Ancho máximo : %2xp
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="6"/>
         <source>Form</source>
-        <translation>Forma</translation>
+        <translation>Formulario</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="14"/>
@@ -9787,7 +9786,7 @@ Ancho máximo : %2xp
     <message>
         <location filename="../sources/ui/diagramselection.ui" line="14"/>
         <source>Form</source>
-        <translation>Forma</translation>
+        <translation>Formulario</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.ui" line="22"/>
