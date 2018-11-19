@@ -7341,7 +7341,7 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="93"/>
         <source>F002</source>
-        <translation type="unfinished">F002</translation>
+        <translation>F002</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="94"/>
@@ -7431,7 +7431,7 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="111"/>
         <source>Formule du label</source>
-        <translation type="unfinished"></translation>
+        <translation>Formula dell&apos;etichetta</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="112"/>
