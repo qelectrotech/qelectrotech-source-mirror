@@ -8,6 +8,7 @@
         <name lang="nl">Terugstroombeveiliging</name>
         <name lang="ar">صمام منع إرتجاع "يمين"</name>
         <name lang="fr">Disconnecteur "droite"</name>
+        <name lang="es">Seccionador "derecha"</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

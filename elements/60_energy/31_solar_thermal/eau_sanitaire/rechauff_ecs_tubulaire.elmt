@@ -8,6 +8,8 @@
         <name lang="nl">tank met pijpwisselaar</name>
         <name lang="ar">سخّان أنبوبي</name>
         <name lang="fr">réchauffeur ECS tubulaire</name>
+        <name lang="es">Calentador tubular ECS</name>
+
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

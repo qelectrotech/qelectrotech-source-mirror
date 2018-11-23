@@ -8,6 +8,7 @@
         <name lang="nl">Terugstroombeveiliging</name>
         <name lang="ar">صمّام منع تسريب</name>
         <name lang="fr">Disconnecteur</name>
+        <name lang="es">Desconectador</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -8,6 +8,7 @@
         <name lang="nl">Boiler elektrisch</name>
         <name lang="ar">صهريج كهربائي</name>
         <name lang="fr">Ballon electrique ECS "droite"</name>
+        <name lang="es">Tanque electrico ECS 1</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

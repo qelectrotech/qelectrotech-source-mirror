@@ -8,6 +8,7 @@
         <name lang="nl">Tapkraan</name>
         <name lang="ar">حنفية ماء</name>
         <name lang="fr">robinet puisage ECS</name>
+        <name lang="es">Válvula de extracción ECS</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

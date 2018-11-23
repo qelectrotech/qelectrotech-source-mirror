@@ -8,6 +8,7 @@
         <name lang="nl">Tank met wisselaar</name>
         <name lang="ar">سخّان ECS</name>
         <name lang="fr">Réchauffeur ECS</name>
+        <name lang="es">Calentador ECS</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

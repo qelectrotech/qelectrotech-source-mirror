@@ -8,6 +8,7 @@
         <name lang="nl">Mengklep thermostatisch</name>
         <name lang="ar">صمّام خلط ترموستاتي ECS</name>
         <name lang="fr">Mitigeur thermostatique ECS</name>
+        <name lang="es">Válvula termostática de mezcla ECS</name>
     </names>
     <informations>Le mitigeur thermostatique posé en sortie de ballon permet de distribuer l'eau chaude sanitaire à une température constante.</informations>
     <description>

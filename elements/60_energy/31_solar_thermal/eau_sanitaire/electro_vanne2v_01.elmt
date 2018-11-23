@@ -8,6 +8,7 @@
         <name lang="nl">Elketrische klep sanitair 2</name>
         <name lang="ar">صمّام كهربائي 2V "صحي"</name>
         <name lang="fr">Electro-vanne 2V "sanitaire"</name>
+        <name lang="es">Solenoide 2V  "salud "</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

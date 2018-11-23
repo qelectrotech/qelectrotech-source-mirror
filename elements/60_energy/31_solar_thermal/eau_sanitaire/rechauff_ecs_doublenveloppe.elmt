@@ -8,6 +8,8 @@
         <name lang="nl">Tank met interne tank wisselaar</name>
         <name lang="ar">سخّان ECS  بغلاف مزدوج</name>
         <name lang="fr">Réchauffeur ECS double enveloppe</name>
+        <name lang="es">Calentador ECS con doble cubierta</name>
+
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

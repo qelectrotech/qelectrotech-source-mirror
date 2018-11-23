@@ -8,5 +8,6 @@
         <name lang="pl">CWU ciepła woda użytkowa</name>
         <name lang="it">ACS acqua calda sanitaria</name>
         <name lang="nl">Warm water sanitair</name>
+        <name lang="es">Agua caliente ECS</name>
     </names>
 </qet-directory>
