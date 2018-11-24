@@ -161,7 +161,9 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 	}
 	
 	QGraphicsTextItem::setRotation(dom_elmt.attribute("rotation", QString::number(0)).toDouble());
-	setFont(QETApp::diagramTextsFont(dom_elmt.attribute("font_size", QString::number(9)).toInt()));
+	QFont font_(dom_elmt.attribute("dynamicitemfont", font().family()),
+				dom_elmt.attribute("font_size", QString::number(9)).toInt());
+	setFont(font_);
 	m_uuid = QUuid(dom_elmt.attribute("uuid", QUuid::createUuid().toString()));
 	setFrame(dom_elmt.attribute("frame", "false") == "true"? true : false);
 	setTextWidth(dom_elmt.attribute("text_width", QString::number(-1)).toDouble());
