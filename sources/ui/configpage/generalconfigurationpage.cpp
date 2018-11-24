@@ -54,7 +54,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
                         settings.value("diagramitemstyle").toString() + ")";
 	ui->m_font_pb->setText(fontInfos);
 	
-	QString dynamicfontInfos = settings.value("dynamicitemfont").toString() + " " +
+	QString dynamicfontInfos = settings.value("font_family").toString() + " " +
                         settings.value("dynamicitemsize").toString() + " (" +
                         settings.value("dynamicitemstyle").toString() + ")";
 	ui->m_dynamic_font_pb->setText(dynamicfontInfos);
@@ -254,11 +254,11 @@ void GeneralConfigurationPage::on_m_dynamic_font_pb_clicked()
 	QFont font = QFontDialog::getFont(&ok, QFont("Sans Serif", 9), this);
 	if (ok)
 	{
-		settings.setValue("dynamicitemfont", font.family());
+		settings.setValue("font_family", font.family());
 		settings.setValue("dynamicitemsize", font.pointSize());
 		settings.setValue("dynamicitemweight", font.weight());
 		settings.setValue("dynamicitemstyle", font.styleName());
-		QString fontInfos = settings.value("dynamicitemfont").toString() + " " +
+		QString fontInfos = settings.value("font_family").toString() + " " +
                             settings.value("dynamicitemsize").toString() + " (" +
                             settings.value("dynamicitemstyle").toString() + ")";
         ui->m_dynamic_font_pb->setText(fontInfos);

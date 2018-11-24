@@ -95,7 +95,7 @@ const QDomElement PartDynamicTextField::toXml(QDomDocument &dom_doc) const
 	root_element.setAttribute("z", QString::number(zValue()));
 	root_element.setAttribute("rotation", QString::number(QET::correctAngle(rotation())));
 	root_element.setAttribute("font_size", font().pointSize());
-	root_element.setAttribute("dynamicitemfont", (QETApp::dynamicTextsItemFont().family()));
+	root_element.setAttribute("font_family", (QETApp::dynamicTextsItemFont().family()));
 	root_element.setAttribute("uuid", m_uuid.toString());
 	root_element.setAttribute("frame", m_frame? "true" : "false");
 	root_element.setAttribute("text_width", QString::number(m_text_width));

@@ -94,7 +94,7 @@ QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
 	root_element.setAttribute("rotation", QString::number(QET::correctAngle(rotation())));
 	root_element.setAttribute("font_size", font().pointSize());
 	root_element.setAttribute("uuid", m_uuid.toString());
-	root_element.setAttribute("dynamicitemfont", font().family());
+	root_element.setAttribute("font_family", font().family());
 	root_element.setAttribute("frame", m_frame? "true" : "false");
 	root_element.setAttribute("text_width", QString::number(m_text_width));
 	
@@ -161,7 +161,7 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 	}
 	
 	QGraphicsTextItem::setRotation(dom_elmt.attribute("rotation", QString::number(0)).toDouble());
-	QFont font_(dom_elmt.attribute("dynamicitemfont", font().family()),
+	QFont font_(dom_elmt.attribute("font_family", font().family()),
 				dom_elmt.attribute("font_size", QString::number(9)).toInt());
 	setFont(font_);
 	m_uuid = QUuid(dom_elmt.attribute("uuid", QUuid::createUuid().toString()));

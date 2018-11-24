@@ -863,7 +863,7 @@ QFont QETApp::diagramTextsItemFont(qreal size)
 	QSettings settings;
 
 		//Font to use
-	QString dynamic_texts_item_family = settings.value("dynamicitemfont", "Sans Serif").toString();
+	QString dynamic_texts_item_family = settings.value("font_family", "Sans Serif").toString();
 	qreal dynamic_texts_item_size     = settings.value("dynamicitemsize", 9.0).toDouble();
 	qreal dynamic_texts_item_weight   = settings.value("dynamicitemweight").toDouble();
 	QString dynamic_texts_item_style  = settings.value("dynamicitemstyle", "normal").toString();
