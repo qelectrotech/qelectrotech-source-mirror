@@ -564,7 +564,7 @@ QString QETApp::customTitleBlockTemplatesDir() {
 		if (m_user_custom_tbt_dir.isEmpty())
 	{
 			QSettings settings;
-			QString path = settings.value("elements-collections/custom-tbt-collection-path", "default").toString();
+			QString path = settings.value("elements-collections/custom-tbt-path", "default").toString();
 			if (path != "default" && !path.isEmpty())
 			{
 				QDir dir(path);

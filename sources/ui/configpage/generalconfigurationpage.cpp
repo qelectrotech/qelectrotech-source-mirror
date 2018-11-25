@@ -167,18 +167,19 @@ void GeneralConfigurationPage::applyConf()
 	if (path != settings.value("elements-collections/custom-collection-path").toString()) {
 		QETApp::resetUserElementsDir();
 	}
-	path = settings.value("elements-collections/custom-tbt-collection-path").toString();
+	
+	path = settings.value("elements-collections/custom-tbt-path").toString();
 	if (ui->m_custom_tbt_path_cb->currentIndex() == 1)
 	{
 		QString path = ui->m_custom_tbt_path_cb->currentText();
 		QDir dir(path);
-		settings.setValue("elements-collections/custom-tbt-collection-path",
+		settings.setValue("elements-collections/custom-tbt-path",
 						  dir.exists() ? path : "default");
 	}
 	else {
-		settings.setValue("elements-collections/custom-tbt-collection-path", "default");
+		settings.setValue("elements-collections/custom-tbt-path", "default");
 	}
-	if (path != settings.value("elements-collections/custom-tbt-collection-path").toString()) {
+	if (path != settings.value("elements-collections/custom-tbt-path").toString()) {
 		QETApp::resetUserElementsDir();
 	}
 }
