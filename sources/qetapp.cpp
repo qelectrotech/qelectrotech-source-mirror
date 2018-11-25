@@ -61,6 +61,7 @@ RecentFiles *QETApp::m_elements_recent_files = nullptr;
 TitleBlockTemplate *QETApp::default_titleblock_template_ = nullptr;
 QString QETApp::m_user_common_elements_dir = QString();
 QString QETApp::m_user_custom_elements_dir = QString();
+QString QETApp::m_user_custom_tbt_dir = QString();
 QETApp *QETApp::m_qetapp = nullptr;
 
 
@@ -559,6 +560,27 @@ QString QETApp::commonTitleBlockTemplatesDir() {
 	templates collection.
 */
 QString QETApp::customTitleBlockTemplatesDir() {
+		if (m_user_custom_tbt_dir.isEmpty())
+	{
+			QSettings settings;
+			QString path = settings.value("elements-collections/custom-tbt-collection-path", "default").toString();
+			if (path != "default" && !path.isEmpty())
+			{
+				QDir dir(path);
+				if (dir.exists())
+				{
+					m_user_custom_tbt_dir = path;
+					return m_user_custom_tbt_dir;
+				}
+			}
+		else {
+			m_user_custom_tbt_dir = "default";
+		}
+	}
+	else if (m_user_custom_tbt_dir != "default") {
+		return m_user_custom_tbt_dir;
+	}
+	
 	return(configDir() + "titleblocks/");
 }
 

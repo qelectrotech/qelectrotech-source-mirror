@@ -41,7 +41,7 @@
       </size>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="tab_3">
       <attribute name="title">
@@ -238,14 +238,14 @@
           <bool>false</bool>
          </property>
          <layout class="QGridLayout" name="gridLayout">
-          <item row="0" column="0">
+          <item row="1" column="0">
            <widget class="QLabel" name="label_7">
             <property name="text">
              <string>Chemin de la collection commune</string>
             </property>
            </widget>
           </item>
-          <item row="0" column="1">
+          <item row="1" column="1">
            <widget class="QComboBox" name="m_common_elmt_path_cb">
             <item>
              <property name="text">
@@ -259,14 +259,14 @@
             </item>
            </widget>
           </item>
-          <item row="1" column="0">
+          <item row="2" column="0">
            <widget class="QLabel" name="label_8">
             <property name="text">
              <string>Chemin de la collection utilisateur</string>
             </property>
            </widget>
           </item>
-          <item row="1" column="1">
+          <item row="2" column="1">
            <widget class="QComboBox" name="m_custom_elmt_path_cb">
             <item>
              <property name="text">
@@ -280,10 +280,31 @@
             </item>
            </widget>
           </item>
-          <item row="2" column="1">
+          <item row="3" column="1">
+           <widget class="QComboBox" name="m_custom_tbt_path_cb">
+            <item>
+             <property name="text">
+              <string>Par defaut</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Parcourir...</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="4" column="1">
            <widget class="QLabel" name="label_9">
             <property name="text">
              <string>(Recharger les collections d'éléments pour appliquer les changements)</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_10">
+            <property name="text">
+             <string>Chemin des cartouches utilisateur</string>
             </property>
            </widget>
           </item>
@@ -315,7 +336,14 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
            </widget>
           </item>
           <item>
-           <widget class="QTextEdit" name="m_default_elements_info"/>
+           <widget class="QTextEdit" name="m_default_elements_info">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>50</height>
+             </size>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>

@@ -189,6 +189,7 @@ class QETApp : public QObject
 		static TitleBlockTemplate *default_titleblock_template_;
 		static QString m_user_common_elements_dir;
 		static QString m_user_custom_elements_dir;
+		static QString m_user_custom_tbt_dir;
 	
 	public slots:
 		void systray(QSystemTrayIcon::ActivationReason);
