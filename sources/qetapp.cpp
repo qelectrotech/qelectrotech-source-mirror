@@ -531,6 +531,7 @@ void QETApp::resetUserElementsDir()
 {
 	m_user_common_elements_dir.clear();
 	m_user_custom_elements_dir.clear();
+	m_user_custom_tbt_dir.clear();
 }
 
 /**
