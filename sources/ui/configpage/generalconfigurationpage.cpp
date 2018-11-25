@@ -345,7 +345,7 @@ void GeneralConfigurationPage::on_m_custom_tbt_path_cb_currentIndexChanged(int i
 {
     if (index == 1)
 	{
-		QString path = QFileDialog::getExistingDirectory(this, tr("Chemin de la collection utilisateur"), QDir::homePath());
+		QString path = QFileDialog::getExistingDirectory(this, tr("Chemin des cartouches utilisateur"), QDir::homePath());
 		if (!path.isEmpty()) {
 			ui->m_custom_tbt_path_cb->setItemData(1, path, Qt::DisplayRole);
 		}
