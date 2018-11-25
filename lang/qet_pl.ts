@@ -2636,7 +2636,7 @@ Litery i cyfry mogą być używane.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="307"/>
         <source>Chemin des cartouches utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translation>Ścieżka do tabliczek rysunkowych użytkownika</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="355"/>
