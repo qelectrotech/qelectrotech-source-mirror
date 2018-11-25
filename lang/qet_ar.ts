@@ -2643,55 +2643,63 @@ that you create. Text and number inputs are
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="265"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="310"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="334"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="348"/>
         <source>Chemin de la collection utilisateur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="327"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="307"/>
+        <source>Chemin des cartouches utilisateur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="355"/>
         <source>Langage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="370"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="398"/>
         <source>Textes dynamiques</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="376"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="404"/>
         <source>Rotation des textes dynamiques</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="404"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="432"/>
         <source>Police des textes dynamiques</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="383"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="411"/>
         <source>Longueur des textes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="244"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="296"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="320"/>
         <source>Chemin de la collection commune</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="252"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="273"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="287"/>
         <source>Par defaut</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="257"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="278"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="292"/>
         <source>Parcourir...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="286"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="300"/>
         <source>(Recharger les collections d&apos;éléments pour appliquer les changements)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2734,19 +2742,19 @@ that you create. Text and number inputs are
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="305"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="326"/>
         <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
         <translation>إبراز العناصر المُدمجة حديثا في اللوحة</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="312"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="333"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre.
 Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
         <translation>ضمّن لكل عنصر معلومات حول مؤلفيه أو ترخيصه أو أي معلومات أخرى تراها مفيدة في حقل مجاني.
 يمكنك هنا تحديد القيمة الافتراضية لهذا الحقل للعناصر التي ستقوم بإنشائها:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="336"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="364"/>
         <source>Appliqué au prochain lancement de QElectroTech</source>
         <translation>يُطبّق عند الإطلاق التالي لـ QElectroTech</translation>
     </message>
@@ -2776,7 +2784,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <translation>خط الحقول النصيّة</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="296"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="317"/>
         <source>Gestion des éléments</source>
         <translation>إدارة العناصر</translation>
     </message>
@@ -2796,118 +2804,118 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <translation>خطّ الحقول النصيّة للصفحات المُلخصة</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="167"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="191"/>
         <source>Général</source>
         <comment>configuration page title</comment>
         <translation>عام</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="184"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="208"/>
         <source>Système</source>
         <translation>النظام</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="188"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="212"/>
         <source>Arabe</source>
         <translation>العربية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="189"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="213"/>
         <source>Brézilien</source>
         <translation>البرازيلي</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="190"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="214"/>
         <source>Catalan</source>
         <translation>الكتالونية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="191"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="215"/>
         <source>Tchèque</source>
         <translation>التشيكية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="192"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="216"/>
         <source>Allemand</source>
         <translation>الألمانية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="193"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="217"/>
         <source>Danois</source>
         <translation>دنماركية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="194"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="218"/>
         <source>Grec</source>
         <translation>اليونانية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="195"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="219"/>
         <source>Anglais</source>
         <translation>الإنجليزية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="196"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="220"/>
         <source>Espagnol</source>
         <translation>الإسبانية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="197"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="221"/>
         <source>Français</source>
         <translation>الفرنسية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="198"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="222"/>
         <source>Croate</source>
         <translation>الكرواتية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="199"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="223"/>
         <source>Italien</source>
         <translation>الإيطالية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="200"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="224"/>
         <source>Polonais</source>
         <translation>البولندية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="201"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="225"/>
         <source>Portugais</source>
         <translation>البرتغالية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="202"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="226"/>
         <source>Roumains</source>
         <translation>الرومانية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="203"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="227"/>
         <source>Russe</source>
         <translation>الروسية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="204"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="228"/>
         <source>Slovène</source>
         <translation>السلوفينية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="205"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="229"/>
         <source>Pays-Bas</source>
         <translation>هولندا</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="206"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="230"/>
         <source>Belgique-Flemish</source>
         <translation>بلجيكا- فلامون</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="207"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="231"/>
         <source>Turc</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="208"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="232"/>
         <source>Hongrois</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4119,288 +4127,288 @@ Voulez-vous enregistrer les modifications ?</source>
 <context>
     <name>QETApp</name>
     <message>
-        <location filename="../sources/qetapp.cpp" line="87"/>
+        <location filename="../sources/qetapp.cpp" line="88"/>
         <source>Chargement... Initialisation du cache des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
         <translation>تحميل ... تهيئة ذاكرة  التخزين المؤقت لأصناف العناصر </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="96"/>
+        <location filename="../sources/qetapp.cpp" line="97"/>
         <source>Chargement... Éditeur de schéma</source>
         <comment>splash screen caption</comment>
         <translation>تحميل ... مُحرّر مُخطط</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="100"/>
+        <location filename="../sources/qetapp.cpp" line="101"/>
         <source>Chargement... Ouverture des fichiers</source>
         <comment>splash screen caption</comment>
         <translation>تحميل ... فتح الملفات</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="174"/>
+        <location filename="../sources/qetapp.cpp" line="175"/>
         <source>LTR</source>
         <comment>Translate this string to RTL if you are translating to a Right-to-Left language, else translate to LTR</comment>
         <translation>RTL</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="320"/>
+        <location filename="../sources/qetapp.cpp" line="321"/>
         <source>formule du label</source>
         <translation>صيغة العلامة</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="321"/>
+        <location filename="../sources/qetapp.cpp" line="322"/>
         <source>Label</source>
         <translation>علامة</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="322"/>
+        <location filename="../sources/qetapp.cpp" line="323"/>
         <source>Commentaire</source>
         <translation>تعليق</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="325"/>
+        <location filename="../sources/qetapp.cpp" line="326"/>
         <source>Fabricant</source>
         <translation>مُصنّع</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="328"/>
+        <location filename="../sources/qetapp.cpp" line="329"/>
         <source>Bloc auxiliaire 1</source>
         <translation>كتلة إضافية 1</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="329"/>
+        <location filename="../sources/qetapp.cpp" line="330"/>
         <source>Bloc auxiliaire 2</source>
         <translation>كتلة إضافية 2</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="323"/>
+        <location filename="../sources/qetapp.cpp" line="324"/>
         <source>Description textuelle</source>
         <translation>وصف نصّي</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="324"/>
+        <location filename="../sources/qetapp.cpp" line="325"/>
         <source>Numéro d&apos;article</source>
         <translation>رقم البند</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="326"/>
+        <location filename="../sources/qetapp.cpp" line="327"/>
         <source>Numéro de commande</source>
         <translation>رقم الطلب</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="327"/>
+        <location filename="../sources/qetapp.cpp" line="328"/>
         <source>Fournisseur</source>
         <translation>المزود</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="330"/>
+        <location filename="../sources/qetapp.cpp" line="331"/>
         <source>Numéro interne</source>
         <translation>رقم داخلي</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="331"/>
+        <location filename="../sources/qetapp.cpp" line="332"/>
         <source>Localisation</source>
         <translation>تحديد موقع</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="332"/>
+        <location filename="../sources/qetapp.cpp" line="333"/>
         <source>Fonction</source>
         <translation>وظيفة</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="333"/>
+        <location filename="../sources/qetapp.cpp" line="334"/>
         <source>Tension / Protocole</source>
         <translation>جهد / بروتوكول</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="370"/>
+        <location filename="../sources/qetapp.cpp" line="371"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates collection provided by QElectroTech</comment>
         <translation>إطارات تعريف QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="384"/>
+        <location filename="../sources/qetapp.cpp" line="385"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s title block templates collection</comment>
         <translation>إطارات تعريف المستعمل</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="965"/>
+        <location filename="../sources/qetapp.cpp" line="987"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="966"/>
+        <location filename="../sources/qetapp.cpp" line="988"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation>QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="967"/>
+        <location filename="../sources/qetapp.cpp" line="989"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>مخطط</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="968"/>
+        <location filename="../sources/qetapp.cpp" line="990"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>كهربائي</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="969"/>
+        <location filename="../sources/qetapp.cpp" line="991"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1367"/>
+        <location filename="../sources/qetapp.cpp" line="1389"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
         <translation>إعدادات برنامج QElectrotech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1478"/>
+        <location filename="../sources/qetapp.cpp" line="1500"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>تحميل ...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1543"/>
+        <location filename="../sources/qetapp.cpp" line="1565"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>تحميل ...ايقونة systray</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1545"/>
+        <location filename="../sources/qetapp.cpp" line="1567"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1547"/>
+        <location filename="../sources/qetapp.cpp" line="1569"/>
         <source>&amp;Quitter</source>
         <translation>&amp;إنهاء</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1548"/>
+        <location filename="../sources/qetapp.cpp" line="1570"/>
         <source>&amp;Masquer</source>
         <translation>&amp;حجب</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1549"/>
+        <location filename="../sources/qetapp.cpp" line="1571"/>
         <source>&amp;Restaurer</source>
         <translation>ا&amp;سترجاع</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1550"/>
+        <location filename="../sources/qetapp.cpp" line="1572"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>&amp;حجب كلّ محرري المخططات</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1551"/>
+        <location filename="../sources/qetapp.cpp" line="1573"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>&amp;استرجاع كل محرري المخطط</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1552"/>
+        <location filename="../sources/qetapp.cpp" line="1574"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>&amp;احجب كلّ محرري العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1553"/>
+        <location filename="../sources/qetapp.cpp" line="1575"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>&amp;استرجع كلّ محرري العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1554"/>
+        <location filename="../sources/qetapp.cpp" line="1576"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;احجب كلّ محرري إطار التعريف</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1555"/>
+        <location filename="../sources/qetapp.cpp" line="1577"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;استرجع كلّ محرري إطار التعريف</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1556"/>
+        <location filename="../sources/qetapp.cpp" line="1578"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>&amp;محرر تخطييط جديد</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1557"/>
+        <location filename="../sources/qetapp.cpp" line="1579"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>&amp;محرّر عنصر جديد</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1559"/>
+        <location filename="../sources/qetapp.cpp" line="1581"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>إغلاق تطبيق QElectrotech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1560"/>
+        <location filename="../sources/qetapp.cpp" line="1582"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>خفض QElectrotech في  systray</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1561"/>
+        <location filename="../sources/qetapp.cpp" line="1583"/>
         <source>Restaurer QElectroTech</source>
         <translation>إسترجاع QElectrotech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1577"/>
+        <location filename="../sources/qetapp.cpp" line="1599"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1646"/>
+        <location filename="../sources/qetapp.cpp" line="1668"/>
         <source>Éditeurs de schémas</source>
         <translation>محرري المخططات</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1655"/>
+        <location filename="../sources/qetapp.cpp" line="1677"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>محرري العناصر</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1665"/>
+        <location filename="../sources/qetapp.cpp" line="1687"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
         <translation>محرري إطار التعريف</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1704"/>
+        <location filename="../sources/qetapp.cpp" line="1726"/>
         <source>&lt;b&gt;Le fichier de restauration suivant a été trouvé,&lt;br&gt;Voulez-vous l&apos;ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;الملف التالي مُستعاد,&lt;br&gt;هل تريد فتحه ?&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1707"/>
+        <location filename="../sources/qetapp.cpp" line="1729"/>
         <source>&lt;b&gt;Les fichiers de restauration suivant on été trouvé,&lt;br&gt;Voulez-vous les ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;تمّ استعادة الملفات التالية,&lt;br&gt;هل تريد فتحها ?&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1712"/>
+        <location filename="../sources/qetapp.cpp" line="1734"/>
         <source>Fichier de restauration</source>
         <translation>استعادة الملف</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1815"/>
+        <location filename="../sources/qetapp.cpp" line="1837"/>
         <source>Usage : </source>
         <translation>إستعمال :</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1815"/>
+        <location filename="../sources/qetapp.cpp" line="1837"/>
         <source> [options] [fichier]...
 
 </source>
         <translation>[خيارات] [ rملف]...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1816"/>
+        <location filename="../sources/qetapp.cpp" line="1838"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -4416,26 +4424,26 @@ Options disponibles :
 - الترخيص ......................... عرض الترخيص</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1822"/>
+        <location filename="../sources/qetapp.cpp" line="1844"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=DIR    عرّف مجلد صنف العناصر
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1825"/>
+        <location filename="../sources/qetapp.cpp" line="1847"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
         <translation>  --common-tbt-dir=DIR         عرّف مجلد مجموعة نماذج إطارات التعريف</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1828"/>
+        <location filename="../sources/qetapp.cpp" line="1850"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=DIR             عرّف مجلد الإعدادات</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1830"/>
+        <location filename="../sources/qetapp.cpp" line="1852"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=DIR               عرّف المجلد المحتوي على ملفات اللغة</translation>
