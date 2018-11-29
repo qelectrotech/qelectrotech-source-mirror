@@ -888,7 +888,7 @@ QPainterPath Conductor::shape() const
 QPainterPath Conductor::nearShape() const
 {
 	QPainterPathStroker pps;
-	pps.setWidth(120);
+	pps.setWidth(1300);
 	pps.setJoinStyle(conductor_pen.joinStyle());
 	return pps.createStroke(path());
 }
