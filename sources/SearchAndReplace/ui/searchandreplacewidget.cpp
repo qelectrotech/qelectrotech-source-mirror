@@ -202,15 +202,18 @@ void SearchAndReplaceWidget::setUpTreeItems()
  */
 void SearchAndReplaceWidget::setHideAdvanced(bool hide) const
 {
-	ui->m_advanced_pb   ->setChecked(!hide);
-	ui->m_replace       ->setHidden(hide);
-	ui->m_replace_le    ->setHidden(hide);
-	ui->m_folio_pb      ->setHidden(hide);
-	ui->m_element_pb    ->setHidden(hide);
-	ui->m_conductor_pb  ->setHidden(hide);
-	ui->m_tree_widget   ->setHidden(hide);
-	ui->m_replace_pb    ->setHidden(hide);
-	ui->m_replace_all_pb->setHidden(hide);
+	ui->m_advanced_pb      ->setChecked(!hide);
+	ui->m_replace          ->setHidden(hide);
+	ui->m_replace_le       ->setHidden(hide);
+	ui->m_folio_pb         ->setHidden(hide);
+	ui->m_element_pb       ->setHidden(hide);
+	ui->m_conductor_pb     ->setHidden(hide);
+	ui->m_tree_widget      ->setHidden(hide);
+	ui->m_replace_pb       ->setHidden(hide);
+	ui->m_replace_all_pb   ->setHidden(hide);
+	ui->m_mode             ->setHidden(hide);
+	ui->m_mode_cb          ->setHidden(hide);
+	ui->m_case_sensitive_cb->setHidden(hide);
 	QSize size = ui->m_v_spacer->sizeHint();
 	ui->m_v_spacer->changeSize(size.width(), size.height(), QSizePolicy::Minimum, hide ? QSizePolicy::Expanding : QSizePolicy::Ignored);
 }
@@ -274,6 +277,7 @@ void SearchAndReplaceWidget::fillItemsList()
 		QTreeWidgetItem *qtwi = new QTreeWidgetItem(m_indi_text_qtwi);
 		qtwi->setText(0, iti->toPlainText());
 		qtwi->setCheckState(0, Qt::Checked);
+		qtwi->setData(0, Qt::UserRole, iti->toPlainText());
 		m_text_hash.insert(qtwi, QPointer<IndependentTextItem>(iti));
 	}
 	m_indi_text_qtwi->sortChildren(0, Qt::AscendingOrder);
@@ -364,19 +368,49 @@ void SearchAndReplaceWidget::search()
 		}
 		
 		bool match = false;
-		for (QTreeWidgetItem *qtwi : ui->m_tree_widget->findItems(str, Qt::MatchContains | Qt::MatchRecursive)) //Search in all items
+		Qt::MatchFlags flags;
+			
+			//Search on the text displayed at column 0 of each item
+		if (ui->m_mode_cb->currentIndex() == 0) {
+			flags = Qt::MatchContains | Qt::MatchRecursive; //Contain string
+		} else {
+			flags = Qt::MatchFixedString | Qt::MatchRecursive; //entire word
+		}
+		if (ui->m_case_sensitive_cb->isChecked()) {
+			flags = flags | Qt::MatchCaseSensitive;
+		}
+		for (QTreeWidgetItem *qtwi : ui->m_tree_widget->findItems(str, flags))
 		{
 			match = true;
 			qtwi->setHidden(false);
 			setVisibleAllParents(qtwi);
 		}
 		
-		QList<QTreeWidgetItem *> qtwi_list = m_diagram_hash.keys();
+			//Extended search,
+			//on each string stored in column 0 with role : UserRole
+		QList<QTreeWidgetItem *> qtwi_list;
+		qtwi_list.append(m_diagram_hash.keys());
 		qtwi_list.append(m_element_hash.keys());
+		qtwi_list.append(m_text_hash.keys());
 		for (QTreeWidgetItem *qtwi : qtwi_list)
 		{
 			QStringList list = qtwi->data(0, Qt::UserRole).toStringList();
-			if (!list.filter(str, Qt::CaseInsensitive).isEmpty())
+			
+			if(ui->m_mode_cb->currentIndex() == 0)
+			{
+					//Contain string
+				list = list.filter(str, ui->m_case_sensitive_cb->isChecked()? Qt::CaseSensitive : Qt::CaseInsensitive);
+			}
+			else
+			{
+					//entire word
+				QRegularExpression rx("\\b" + str + "\\b");
+				if (!ui->m_case_sensitive_cb->isChecked()) {
+					rx.setPatternOptions(QRegularExpression::CaseInsensitiveOption);
+				}
+				list = list.filter(rx);
+			}
+			if (!list.isEmpty())
 			{
 				match = true;
 				qtwi->setHidden(false);
@@ -970,4 +1004,26 @@ void SearchAndReplaceWidget::on_m_element_pb_clicked()
 		ui->m_element_pb->setText(text);
 		m_worker.m_element_context = DiagramContext();
 	}
+}
+
+/**
+ * @brief SearchAndReplaceWidget::on_m_mode_cb_currentIndexChanged
+ * Update the search when user change mode.
+ * @param index
+ */
+void SearchAndReplaceWidget::on_m_mode_cb_currentIndexChanged(int index)
+{
+	Q_UNUSED(index);	
+	search();
+}
+
+/**
+ * @brief SearchAndReplaceWidget::on_m_case_sensitive_cb_stateChanged
+ * Update the search when change the case sensitive
+ * @param arg1
+ */
+void SearchAndReplaceWidget::on_m_case_sensitive_cb_stateChanged(int arg1)
+{
+    Q_UNUSED(arg1);
+	search();
 }

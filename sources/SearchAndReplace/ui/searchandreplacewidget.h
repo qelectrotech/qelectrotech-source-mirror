@@ -75,6 +75,8 @@ class SearchAndReplaceWidget : public QWidget
 		void on_m_replace_pb_clicked();
 		void on_m_replace_all_pb_clicked();
 		void on_m_element_pb_clicked();
+		void on_m_mode_cb_currentIndexChanged(int index);
+		void on_m_case_sensitive_cb_stateChanged(int arg1);
 		
 		private:
 		Ui::SearchAndReplaceWidget *ui;

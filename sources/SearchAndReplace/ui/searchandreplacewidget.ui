@@ -150,25 +150,35 @@
    </item>
    <item row="0" column="3" rowspan="3">
     <layout class="QGridLayout" name="gridLayout">
-     <item row="1" column="1" colspan="2">
-      <widget class="QLineEdit" name="m_replace_le">
-       <property name="placeholderText">
-        <string>Champ texte de folio</string>
+     <item row="1" column="0">
+      <widget class="QLabel" name="m_replace">
+       <property name="text">
+        <string>Remplacer :</string>
        </property>
+      </widget>
+     </item>
+     <item row="0" column="1" colspan="6">
+      <widget class="QLineEdit" name="m_search_le">
        <property name="clearButtonEnabled">
         <bool>true</bool>
        </property>
       </widget>
      </item>
-     <item row="1" column="3">
-      <widget class="QPushButton" name="m_folio_pb">
+     <item row="1" column="5">
+      <widget class="QPushButton" name="m_element_pb">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
        <property name="text">
-        <string>Folio</string>
+        <string>Élément</string>
        </property>
       </widget>
      </item>
-     <item row="0" column="1" colspan="5">
-      <widget class="QLineEdit" name="m_search_le">
+     <item row="1" column="1" colspan="3">
+      <widget class="QLineEdit" name="m_replace_le">
+       <property name="placeholderText">
+        <string>Champ texte de folio</string>
+       </property>
        <property name="clearButtonEnabled">
         <bool>true</bool>
        </property>
@@ -181,17 +191,7 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="4">
-      <widget class="QPushButton" name="m_element_pb">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="text">
-        <string>Élément</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="5">
+     <item row="1" column="6">
       <widget class="QPushButton" name="m_conductor_pb">
        <property name="enabled">
         <bool>false</bool>
@@ -201,14 +201,38 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="m_replace">
+     <item row="2" column="0">
+      <widget class="QLabel" name="m_mode">
        <property name="text">
-        <string>Remplacer :</string>
+        <string>Mode :</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="4">
+      <widget class="QPushButton" name="m_folio_pb">
+       <property name="text">
+        <string>Folio</string>
        </property>
       </widget>
      </item>
      <item row="2" column="1">
+      <widget class="QComboBox" name="m_mode_cb">
+       <property name="frame">
+        <bool>true</bool>
+       </property>
+       <item>
+        <property name="text">
+         <string>Texte brut</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Mots entiers</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="2" column="3">
       <spacer name="horizontalSpacer">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -220,6 +244,13 @@
         </size>
        </property>
       </spacer>
+     </item>
+     <item row="2" column="2">
+      <widget class="QCheckBox" name="m_case_sensitive_cb">
+       <property name="text">
+        <string>Sensible à la casse</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
