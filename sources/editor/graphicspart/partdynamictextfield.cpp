@@ -34,7 +34,7 @@ PartDynamicTextField::PartDynamicTextField(QETElementEditor *editor, QGraphicsIt
 	setFont(QETApp::dynamicTextsItemFont());
 	QSettings settings;
 	setRotation(settings.value("dynamic_rotation", 0).toInt());
-	setTextWidth(settings.value("dynamic_with", 0).toInt());
+	setTextWidth(settings.value("dynamic_with", -1).toInt());
 	setText("_");
 	setTextFrom(DynamicElementTextItem::UserText);
 	setFlags(QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemSendsGeometryChanges | QGraphicsItem::ItemIsMovable);
