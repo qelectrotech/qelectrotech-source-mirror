@@ -303,6 +303,7 @@ QStringList QETApp::elementInfoKeys()
 			  << "auxiliary1"
 			  << "auxiliary2"
 			  << "machine-manufacturer-reference"
+			  << "function-group"
 			  << "location"
 			  << "function"
 			  << "tension-protocol";
@@ -329,6 +330,7 @@ QString QETApp::elementTranslatedInfoKey(const QString &info)
 	else if (info == "auxiliary1") return tr("Bloc auxiliaire 1");
 	else if (info == "auxiliary2") return tr("Bloc auxiliaire 2");
 	else if (info == "machine-manufacturer-reference") return tr("Numéro interne");
+	else if (info == "function-group") return tr("Groupe fonctionnel");
 	else if (info == "location") return tr("Localisation");
 	else if (info == "function") return tr("Fonction");
 	else if (info == "tension-protocol") return tr("Tension / Protocole");
@@ -354,6 +356,7 @@ QString QETApp::elementInfoToVar(const QString &info)
 	else if (info == "auxiliary1")                     return QString("%{auxiliary1}");
 	else if (info == "auxiliary2")                     return QString("%{auxiliary2}");
 	else if (info == "machine-manufacturer-reference") return QString("%{machine-manufacturer-reference}");
+	else if (info == "function-group"                  ) return QString("%{function-group}");
 	else if (info == "location")                       return QString("%{location}");
 	else if (info == "function")                       return QString("%{function}");
 	else if (info == "tension-protocol")               return QString("%{tension-protocol}");

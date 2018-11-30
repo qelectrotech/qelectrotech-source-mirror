@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>421</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -32,14 +32,7 @@
         <item>
          <widget class="QLabel" name="label_">
           <property name="text">
-           <string>Vous pouvez définir un label personnalisé pour les reports de folio.
-Créer votre propre texte en vous aidant des variables suivantes :
-%f : le numéro de folio 
-%F: le label de folio
-%M:  Machine 
-%LM: Location
-%l : le numéro de ligne
-%c : le numéro de colonne</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Vous pouvez définir un label personnalisé pour les reports de folio.&lt;/p&gt;&lt;p&gt;Créer votre propre texte en vous aidant des variables suivantes :&lt;/p&gt;&lt;p&gt;%f : le numéro de folio &lt;/p&gt;&lt;p&gt;%F: le label de folio&lt;/p&gt;&lt;p&gt;%M:  Machine &lt;/p&gt;&lt;p&gt;%FG: Groupe fonctionnel&lt;/p&gt;&lt;p&gt;%LM: Location&lt;/p&gt;&lt;p&gt;%l : le numéro de ligne&lt;/p&gt;&lt;p&gt;%c : le numéro de colonne&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="scaledContents">
            <bool>false</bool>

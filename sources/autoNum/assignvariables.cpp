@@ -187,6 +187,7 @@ namespace autonum
 		str.replace("%{auxiliary1}", dc.value("auxiliary1").toString());
 		str.replace("%{auxiliary2}", dc.value("auxiliary2").toString());
 		str.replace("%{machine-manufacturer-reference}", dc.value("machine-manufacturer-reference").toString());
+		str.replace("%{function-group}", dc.value("function-group").toString());
 		str.replace("%{location}", dc.value("location").toString());
 		str.replace("%{function}", dc.value("function").toString());
 		str.replace("%{void}", QString());
@@ -210,6 +211,7 @@ namespace autonum
 			m_assigned_label.replace("%id",    QString::number(m_diagram->folioIndex()+1));
 			m_assigned_label.replace("%total", QString::number(m_diagram->border_and_titleblock.folioTotal()));
 			m_assigned_label.replace("%M",  m_diagram -> border_and_titleblock.machine());
+			m_assigned_label.replace("%FG",m_diagram ->border_and_titleblock.funcgroup());
 			m_assigned_label.replace("%LM", m_diagram -> border_and_titleblock.locmach());
 
 	QSettings settings;
@@ -425,6 +427,9 @@ namespace autonum
 			}
 			else if (type == "machine") {
 				formula.append("%M");
+			}
+			else if (type == "funcgroup") {
+				formula.append("%FG");
 			}
 			else if (type == "locmach") {
 				formula.append("%LM");

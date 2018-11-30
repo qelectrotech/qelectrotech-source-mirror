@@ -100,6 +100,7 @@ QString nomenclature::getNomenclature()
     ""+ QObject::tr("M001") +";"      //:Don't translate this text!    //ID for auxiliary field 1
     ""+ QObject::tr("M002") +";"      //:Don't translate this text!    //ID for auciliary field 2
     ""+ QObject::tr("N001")+";"       //:Don't translate this text!    //ID for internal number
+    ""+ QObject::tr("N002")+";"       //:Don't translate this text!    //ID for Function group
     ""+ QObject::tr("O001")+";"       //:Don't translate this text!    //ID for location
     ""+ QObject::tr("P001") +"\n";    //:Don't translate this text!    //ID for function
     data += QObject::tr("N° de folio") +";"
@@ -118,6 +119,7 @@ QString nomenclature::getNomenclature()
 	""+ QObject::tr("Bloc auxiliaire 1") +";"
 	""+ QObject::tr("Bloc auxiliaire 2") +";"
 	""+ QObject::tr("Machine-reference") +";"
+	""+ QObject::tr("Function-group") +";"
 	""+ QObject::tr("Localisation") +";"
 	""+ QObject::tr("Fonction") +"\n";
 
@@ -177,6 +179,7 @@ QString nomenclature::getElementInfo(Element *elmt) {
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["auxiliary1"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["auxiliary2"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["machine-manufacturer-reference"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
+	info += autonum::AssignVariables::formulaToLabel(elmt_info["function-group"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["location"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["function"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + "\n";
 

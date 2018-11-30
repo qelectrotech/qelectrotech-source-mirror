@@ -55,6 +55,7 @@ class TitleBlockProperties {
 	QDate date;               ///< Date (displayed by the default template)
 	QString filename;         ///< Filename (displayed by the default template)
 	QString machine;          ///< Machine (displayed by the default template)
+	QString funcgroup;        ///< Function group (displayed by the default template)
 	QString locmach;              ///< Location(displayed by the default template)
 	QString indexrev;         ///< Revision Index (displayed by the default template)
 	QString version;          ///< Version (displayed by the default template)

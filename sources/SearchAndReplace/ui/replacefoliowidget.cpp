@@ -47,6 +47,7 @@ TitleBlockProperties ReplaceFolioWidget::titleBlockProperties() const
 	prop.author   = ui->m_author_le->text();
 	prop.filename = ui->m_file_le  ->text();
 	prop.machine  = ui->m_mach     ->text();
+	prop.funcgroup= ui->m_group_f  ->text();
 	prop.locmach  = ui->m_loc      ->text();
 	prop.indexrev = ui->m_indice   ->text();
 	prop.folio    = ui->m_folio_le ->text();
@@ -79,6 +80,7 @@ void ReplaceFolioWidget::setTitleBlockProperties(const TitleBlockProperties &pro
 	ui->m_author_le->setText (properties.author);
 	ui->m_file_le  ->setText (properties.filename);
 	ui->m_mach     ->setText (properties.machine);
+	ui->m_group_f  ->setText (properties.funcgroup);
 	ui->m_loc      ->setText (properties.locmach);
 	ui->m_indice   ->setText (properties.indexrev);
 	ui->m_folio_le ->setText (properties.folio);
@@ -167,6 +169,11 @@ void ReplaceFolioWidget::on_m_mach_cb_clicked() {
 	ui->m_mach->setDisabled(ui->m_mach_cb->isChecked());
 }
 
+void ReplaceFolioWidget::on_m_group_f_cb_clicked() {
+    ui->m_group_f->setText(ui->m_group_f_cb->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
+	ui->m_group_f->setDisabled(ui->m_group_f_cb->isChecked());
+}
+
 void ReplaceFolioWidget::on_m_loc_cb_clicked() {
     ui->m_loc->setText(ui->m_loc_cb->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
 	ui->m_loc->setDisabled(ui->m_loc_cb->isChecked());
@@ -176,3 +183,5 @@ void ReplaceFolioWidget::on_m_indice_cb_clicked() {
     ui->m_indice->setText(ui->m_indice_cb->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
 	ui->m_indice->setDisabled(ui->m_indice_cb->isChecked());
 }
+
+

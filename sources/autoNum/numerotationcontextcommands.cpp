@@ -128,6 +128,11 @@ void NumerotationContextCommands::setNumStrategy(const QString &str) {
 		strategy_ = new MachineNum (diagram_);
 		return;
 	}
+	
+	else if (str=="funcgroup"){
+		strategy_ = new FuncgroupNum (diagram_);
+		return;
+	}
 	else if (str=="locmach"){
 		strategy_ = new LocmachNum (diagram_);
 		return;
@@ -525,6 +530,39 @@ NumerotationContext MachineNum::next (const NumerotationContext &nc, const int i
  * @return the previous NumerotationContext nc at posiiton i
  */
 NumerotationContext MachineNum::previous(const NumerotationContext &nc, const int i) const {
+	return (nextString(nc, i));
+}
+
+
+/**
+ * Constructor
+ */
+FuncgroupNum::FuncgroupNum (Diagram *d):
+	NumStrategy (d)
+{}
+
+/**
+ * @brief FuncgroupNum::toRepresentedString
+ * @return the represented string of folio
+ */
+QString FuncgroupNum::toRepresentedString(const QString str) const {
+	Q_UNUSED(str);
+	return "%FG";
+}
+
+/**
+ * @brief FuncgroupNum::next
+ * @return the next NumerotationContext nc at position i
+ */
+NumerotationContext FuncgroupNum::next (const NumerotationContext &nc, const int i) const {
+	return (nextString(nc, i));
+}
+
+/**
+ * @brief FuncgroupNum::previous
+ * @return the previous NumerotationContext nc at posiiton i
+ */
+NumerotationContext FuncgroupNum::previous(const NumerotationContext &nc, const int i) const {
 	return (nextString(nc, i));
 }
 

@@ -41,6 +41,7 @@
  * auxiliary1                     -> auxiliary 1 of element
  * auxiliary2                     -> auxiliary 2 of element
  * machine-manufacturer-reference -> reference of the manufacturer machine
+ * function-group                 -> Function group
  * provider                       -> the provider of the element
  * function                       -> the function of element
  * location                       -> the location of the element

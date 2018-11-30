@@ -101,7 +101,7 @@ QStringList NumerotationContext::itemAt(const int i) const {
  * @return all type use to numerotation
  */
 QString NumerotationContext::validRegExpNum () const {
-	return ("unit|unitfolio|ten|tenfolio|hundred|hundredfolio|string|idfolio|folio|machine|locmach|elementline|elementcolumn|elementprefix");
+	return ("unit|unitfolio|ten|tenfolio|hundred|hundredfolio|string|idfolio|folio|machine|funcgroup|locmach|elementline|elementcolumn|elementprefix");
 }
 
 /**
