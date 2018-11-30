@@ -8,6 +8,7 @@
         <name lang="nl">type A wisselaar indirect + heetwatertank</name>
         <name lang="ar">A تبادل غير مباشر / بالون ECS</name>
         <name lang="fr">A échange indirect / ballon ecs</name>
+        <name lang="es">A intercambio indirecto /tanque DHW</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -8,6 +8,8 @@
         <name lang="nl">type A wisselaar indirect</name>
         <name lang="ar">تبادل غير مباشر</name>
         <name lang="fr">A échange indirecte</name>
+        <name lang="es">A intercambio indirecto</name>
+
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
