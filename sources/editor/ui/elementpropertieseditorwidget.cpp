@@ -180,9 +180,9 @@ void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
 		m_kind_info.addValue("type", ui -> m_master_type_cb -> itemData(ui -> m_master_type_cb -> currentIndex()));
 	}
 	
-	for (QTreeWidgetItem *qtwi : ui->m_tree->invisibleRootItem()->takeChildren())
-		if(!qtwi->text(1).isEmpty())
-			m_elmt_info.addValue(qtwi->data(0, Qt::UserRole).toString(), qtwi->text(1));
+	for (QTreeWidgetItem *qtwi : ui->m_tree->invisibleRootItem()->takeChildren()) {
+		m_elmt_info.addValue(qtwi->data(0, Qt::UserRole).toString(), qtwi->text(1));
+	}
 	
 	this->close();
 }
