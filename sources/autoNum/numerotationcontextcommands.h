@@ -150,15 +150,6 @@ class MachineNum: public NumStrategy
 	NumerotationContext previous (const NumerotationContext &, const int) const override;
 };
 
-class FuncgroupNum: public NumStrategy
-{
-	public:
-	FuncgroupNum (Diagram *);
-	QString toRepresentedString(const QString) const override;
-	NumerotationContext next     (const NumerotationContext &, const int) const override;
-	NumerotationContext previous (const NumerotationContext &, const int) const override;
-};
-
 class LocmachNum: public NumStrategy
 {
 	public:

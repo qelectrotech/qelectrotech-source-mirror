@@ -2,14 +2,6 @@
 <ui version="4.0">
  <class>XRefPropertiesWidget</class>
  <widget class="QWidget" name="XRefPropertiesWidget">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>459</width>
-    <height>662</height>
-   </rect>
-  </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
@@ -195,7 +187,6 @@
 %l : le numéro de ligne
 %c : le numéro de colonne
 %M: Installation 
-%FG: Groupe fonctionnel  
 %LM: Localisation </string>
              </property>
             </widget>

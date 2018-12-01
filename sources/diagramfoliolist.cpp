@@ -19,7 +19,7 @@
 #include <QPainter>
 #include "qetapp.h"
 
-qreal DiagramFolioList::colWidths[8] = {0.05, 0.40, 0.10, 0.10, 0.10, 0.05, 0.10, 0.10};
+qreal DiagramFolioList::colWidths[7] = {0.05, 0.50, 0.10, 0.10, 0.05, 0.10, 0.10};
 
 /**
  * @brief DiagramFolioList::DiagramFolioList
@@ -94,7 +94,6 @@ void DiagramFolioList::drawBackground(QPainter *p, const QRectF &r)
 				diagram_list[i] -> title(),
 				diagram_list[i] -> border_and_titleblock.finalfolio(),
 				diagram_list[i] -> border_and_titleblock.machine(),
-				diagram_list[i] -> border_and_titleblock.funcgroup(),
 				diagram_list[i] -> border_and_titleblock.locmach(),
 				diagram_list[i] -> border_and_titleblock.indexrev(),
 				diagram_list[i] -> border_and_titleblock.date().toString(Qt::SystemLocaleShortDate));
@@ -103,7 +102,6 @@ void DiagramFolioList::drawBackground(QPainter *p, const QRectF &r)
 				diagram_list[i] -> title(),
 				QString::number(diagram_list[i] ->folioIndex()+1),
 				diagram_list[i] -> border_and_titleblock.machine(),
-				diagram_list[i] -> border_and_titleblock.funcgroup(),
 				diagram_list[i] -> border_and_titleblock.locmach(),
 				diagram_list[i] -> border_and_titleblock.indexrev(),
 				diagram_list[i] -> border_and_titleblock.date().toString(Qt::SystemLocaleShortDate));
@@ -122,7 +120,7 @@ void DiagramFolioList::drawBackground(QPainter *p, const QRectF &r)
  * @param row_rect rectangle where we must draw the new row
  */
 void DiagramFolioList::fillRow(QPainter *qp, const QRectF &row_rect, const QString& author, const QString& title,
-							   const QString& folio, const QString& machine, const QString& funcgroup, const QString& loc, const QString& indexrev, const QString& date)
+							   const QString& folio, const QString& machine, const QString& loc, const QString& indexrev, const QString& date)
 {
 	qreal x = row_rect.topLeft().x();
 	qreal y = row_rect.topLeft().y();
@@ -176,50 +174,42 @@ void DiagramFolioList::fillRow(QPainter *qp, const QRectF &row_rect, const QStri
 	qp -> drawText(QRectF(x, y, colWidths[3]*row_rect.width(), row_rect.height()), Qt::AlignCenter, machine);
 	x += colWidths[2]*row_rect.width();
 	
-	if (origFontMetrics.width(funcgroup) > 0.95*colWidths[3]*row_rect.width())
-		workingFont.setPointSizeF(origFontSize * 0.95*colWidths[3]*row_rect.width() / origFontMetrics.width(funcgroup));
+	
+	if (origFontMetrics.width(loc) > 0.95*colWidths[3]*row_rect.width())
+		workingFont.setPointSizeF(origFontSize * 0.95*colWidths[3]*row_rect.width() / origFontMetrics.width(loc));
 	else
 		workingFont.setPointSizeF(origFontSize);
 	qp -> setFont(workingFont);
-	qp -> drawText(QRectF(x, y, colWidths[3]*row_rect.width(), row_rect.height()), Qt::AlignCenter, funcgroup);
+	qp -> drawText(QRectF(x, y, colWidths[3]*row_rect.width(), row_rect.height()), Qt::AlignCenter, loc);
 	x += colWidths[3]*row_rect.width();
 	
 	
-	if (origFontMetrics.width(loc) > 0.95*colWidths[4]*row_rect.width())
-		workingFont.setPointSizeF(origFontSize * 0.95*colWidths[4]*row_rect.width() / origFontMetrics.width(loc));
+	if (origFontMetrics.width(indexrev) > 0.95*colWidths[4]*row_rect.width())
+		workingFont.setPointSizeF(origFontSize * 0.95*colWidths[4]*row_rect.width() / origFontMetrics.width(indexrev));
 	else
 		workingFont.setPointSizeF(origFontSize);
 	qp -> setFont(workingFont);
-	qp -> drawText(QRectF(x, y, colWidths[4]*row_rect.width(), row_rect.height()), Qt::AlignCenter, loc);
+	qp -> drawText(QRectF(x, y, colWidths[4]*row_rect.width(), row_rect.height()), Qt::AlignCenter, indexrev);
 	x += colWidths[4]*row_rect.width();
-	
-	
-	if (origFontMetrics.width(indexrev) > 0.95*colWidths[5]*row_rect.width())
-		workingFont.setPointSizeF(origFontSize * 0.95*colWidths[5]*row_rect.width() / origFontMetrics.width(indexrev));
-	else
-		workingFont.setPointSizeF(origFontSize);
-	qp -> setFont(workingFont);
-	qp -> drawText(QRectF(x, y, colWidths[5]*row_rect.width(), row_rect.height()), Qt::AlignCenter, indexrev);
-	x += colWidths[5]*row_rect.width();
 	
 	
 	
 
-	if (origFontMetrics.width(author) > 0.95*colWidths[6]*row_rect.width())
-		workingFont.setPointSizeF(origFontSize * 0.95*colWidths[6]*row_rect.width() / origFontMetrics.width(author));
+	if (origFontMetrics.width(author) > 0.95*colWidths[5]*row_rect.width())
+		workingFont.setPointSizeF(origFontSize * 0.95*colWidths[5]*row_rect.width() / origFontMetrics.width(author));
 	else
 		workingFont.setPointSizeF(origFontSize);
 	qp -> setFont(workingFont);
 	qp -> drawText(QRectF(x, y, colWidths[6]*row_rect.width(), row_rect.height()), Qt::AlignCenter, author);
-	x += colWidths[6]*row_rect.width();
+	x += colWidths[5]*row_rect.width();
 	
 
-	if (origFontMetrics.width(date) > 0.95*colWidths[7]*row_rect.width())
-		workingFont.setPointSizeF(origFontSize * 0.95*colWidths[7]*row_rect.width() / origFontMetrics.width(date));
+	if (origFontMetrics.width(date) > 0.95*colWidths[6]*row_rect.width())
+		workingFont.setPointSizeF(origFontSize * 0.95*colWidths[6]*row_rect.width() / origFontMetrics.width(date));
 	else
 		workingFont.setPointSizeF(origFontSize);
 	qp -> setFont(workingFont);
-	qp -> drawText(QRectF(x, y, colWidths[7]*row_rect.width(), row_rect.height()), Qt::AlignCenter, date);
+	qp -> drawText(QRectF(x, y, colWidths[6]*row_rect.width(), row_rect.height()), Qt::AlignCenter, date);
 }
 
 void DiagramFolioList::buildGrid(QPainter *qp, const QRectF &rect, int rows, int tables, qreal colWidths[])
@@ -230,7 +220,7 @@ void DiagramFolioList::buildGrid(QPainter *qp, const QRectF &rect, int rows, int
 	list_rectangles_.clear();
 
     qreal sum = 0;
-    for (int i = 0; i < 8; i++ )
+    for (int i = 0; i < 7; i++ )
         sum += colWidths[i];
     if ( sum < 0.99 || sum > 1.01 ) {
         qDebug() << "Invalid input: Column widths do not sum to 1";
@@ -240,7 +230,7 @@ void DiagramFolioList::buildGrid(QPainter *qp, const QRectF &rect, int rows, int
     qreal tablesSpacing = rect.height() * 0.02;
 	qreal tableWidth = (rect.width() - tablesSpacing*(tables+1) ) / tables;
 	qreal rowHeight = (rect.height() - 2*tablesSpacing) / rows;
-	int cols = 8;//colWidths.size();
+	int cols = 7;//colWidths.size();
 
 	qreal x0 = tablesSpacing + rect.topLeft().x();
 	qreal y0 = tablesSpacing + rect.topLeft().y();
@@ -275,13 +265,12 @@ void DiagramFolioList::fillHeader(QPainter *qp, const QRectF &row_RectF) {
 	QString titleTranslatable(QObject::tr("Titre"));
 	QString folioTranslatable(QObject::tr("Folio"));
 	QString machineTranslatable(QObject::tr("Installation"));
-	QString funcgroupTranslatable(QObject::tr("Groupe fonctionnel"));
 	QString locTranslatable(QObject::tr("Localisation"));
 	QString indexrevTranslatable(QObject::tr("Rev"));
 	QString dateTranslatable(QObject::tr("Date"));
 
 	qp->save();
 	qp->setFont(QETApp::diagramTextsFont(13));
-	fillRow(qp, row_RectF, authorTranslatable, titleTranslatable, folioTranslatable, machineTranslatable, funcgroupTranslatable, locTranslatable, indexrevTranslatable, dateTranslatable);
+	fillRow(qp, row_RectF, authorTranslatable, titleTranslatable, folioTranslatable, machineTranslatable, locTranslatable, indexrevTranslatable, dateTranslatable);
 	qp->restore();
 }

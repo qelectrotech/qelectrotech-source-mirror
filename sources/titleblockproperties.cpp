@@ -48,7 +48,6 @@ bool TitleBlockProperties::operator==(const TitleBlockProperties &ip) {
 		ip.date == date &&\
 		ip.filename == filename &&\
 		ip.machine == machine &&\
-		ip.funcgroup == funcgroup &&\
 		ip.locmach == locmach &&\
 		ip.indexrev == indexrev &&\
 		ip.version == version &&\
@@ -79,7 +78,6 @@ void TitleBlockProperties::toXml(QDomElement &e) const {
 	e.setAttribute("title",    title);
 	e.setAttribute("filename", filename);
 	e.setAttribute("machine", machine);
-	e.setAttribute("funcgroup", funcgroup);
 	e.setAttribute("locmach", locmach);
 	e.setAttribute("indexrev",indexrev);
 	e.setAttribute("version", version);
@@ -110,7 +108,6 @@ void TitleBlockProperties::fromXml(const QDomElement &e) {
 	if (e.hasAttribute("title"))       title    = e.attribute("title");
 	if (e.hasAttribute("filename"))    filename = e.attribute("filename");
 	if (e.hasAttribute("machine"))    machine   = e.attribute("machine");
-	if (e.hasAttribute("funcgroup"))  funcgroup = e.attribute("funcgroup");
 	if (e.hasAttribute("locmach"))     locmach  = e.attribute("locmach");
 	if (e.hasAttribute("indexrev"))   indexrev  = e.attribute("indexrev");
 	if (e.hasAttribute("version"))    version   = e.attribute("version");
@@ -144,7 +141,6 @@ void TitleBlockProperties::toSettings(QSettings &settings, const QString &prefix
 	settings.setValue(prefix + "author",   author);
 	settings.setValue(prefix + "filename", filename);
 	settings.setValue(prefix + "machine", machine);
-	settings.setValue(prefix + "funcgroup", funcgroup);
 	settings.setValue(prefix + "locmach", locmach);
 	settings.setValue(prefix + "indexrev", indexrev);
 	settings.setValue(prefix + "version", version);
@@ -167,7 +163,6 @@ void TitleBlockProperties::fromSettings(QSettings &settings, const QString &pref
 	author   = settings.value(prefix + "author").toString();
 	filename = settings.value(prefix + "filename").toString();
 	machine  = settings.value(prefix + "machine").toString();
-	funcgroup= settings.value(prefix + "funcgroup").toString();
 	locmach  = settings.value(prefix + "locmach").toString();
 	indexrev = settings.value(prefix + "indexrev").toString();
 	version  = settings.value(prefix + "version").toString();

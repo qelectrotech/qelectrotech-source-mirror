@@ -94,13 +94,6 @@ void SearchAndReplaceWorker::replaceDiagram(QList<Diagram *> diagram_list)
 			} else {
 				new_properties.machine = m_titleblock_properties.machine;
 			}
-		}if (!m_titleblock_properties.funcgroup.isEmpty())
-		{
-			if (m_titleblock_properties.funcgroup == eraseText()) {
-				new_properties.funcgroup.clear();
-			} else {
-				new_properties.funcgroup = m_titleblock_properties.funcgroup;
-			}
 		}
 		if (!m_titleblock_properties.locmach.isEmpty())
 		{

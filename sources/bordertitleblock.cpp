@@ -242,8 +242,7 @@ TitleBlockProperties BorderTitleBlock::exportTitleBlock() {
 	ip.title = title();
 	ip.filename = fileName();
 	ip.machine = machine();
-	ip.funcgroup = funcgroup();
-	ip.locmach = locmach();	
+	ip.locmach = locmach();
 	ip.indexrev = indexrev();
 	ip.version = version();
 	ip.folio = folio();
@@ -266,7 +265,6 @@ void BorderTitleBlock::importTitleBlock(const TitleBlockProperties &ip) {
 	setTitle(ip.title);
 	setFileName(ip.filename);
 	setMachine(ip.machine);
-	setFuncgroup(ip.funcgroup);
 	setLocMach(ip.locmach);
 	setIndicerev(ip.indexrev);
 	setVersion(QET::displayedVersion);
@@ -718,7 +716,6 @@ void BorderTitleBlock::updateDiagramContextForTitleBlock(const DiagramContext &i
 	context.addValue("title",       btb_title_);
 	context.addValue("filename",    btb_filename_);
 	context.addValue("machine",     btb_machine_);
-	context.addValue("funcgroup",   btb_funcgroup_);
 	context.addValue("locmach",     btb_locmach_);
 	context.addValue("indexrev",    btb_indexrev_);
 	context.addValue("version",     btb_version_);

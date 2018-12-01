@@ -48,15 +48,10 @@ class ReplaceFolioWidget : public QWidget
 		void on_m_file_cb_clicked();
 		void on_m_folio_cb_clicked();
 		void on_m_mach_cb_clicked();
-		void on_m_group_f_cb_clicked();
 		void on_m_loc_cb_clicked();
 		void on_m_indice_cb_clicked();
 		
-		
-		
-		
-		
-		private:
+	private:
 		Ui::ReplaceFolioWidget *ui;
 		DiagramContextWidget *m_diagram_context_widget = nullptr;
 		

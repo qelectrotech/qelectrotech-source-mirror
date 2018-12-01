@@ -101,8 +101,6 @@ class BorderTitleBlock : public QObject
 	QString machine() const { return(btb_machine_); }
 	/// @return the value of the title block "Locmach" field
 	QString locmach() const { return(btb_locmach_); }
-	/// @return the value of the title block "Funcgroup" field
-	QString funcgroup() const { return(btb_funcgroup_); }
 	/// @return the value of the revision index block "Folio" field
 	QString indexrev() const { return(btb_indexrev_); }
 	
@@ -158,7 +156,6 @@ class BorderTitleBlock : public QObject
 	void setFolioData(int, int, const QString& = nullptr, const DiagramContext & = DiagramContext());
 	/// @param author the new value of the "File" field
 	void setMachine(const QString &machine) { btb_machine_ = machine; }
-	void setFuncgroup(const QString &funcgroup) { btb_locmach_ = funcgroup; }
 	void setLocMach(const QString &locmach) { btb_locmach_ = locmach; }
 	void setIndicerev(const QString &indexrev){ btb_indexrev_ = indexrev; }
 	void setFileName(const QString &filename) { btb_filename_ = filename; }
@@ -241,7 +238,6 @@ class BorderTitleBlock : public QObject
 		QString btb_title_;
 		QString btb_folio_;
 		QString btb_machine_;
-		QString btb_funcgroup_;
 		QString btb_locmach_;
 		QString btb_indexrev_;
 		QString btb_final_folio_;

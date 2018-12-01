@@ -84,7 +84,7 @@
           </property>
           <item>
            <property name="text">
-            <string notr="true"/>
+            <string notr="true"> </string>
            </property>
            <property name="icon">
             <iconset resource="../../qelectrotech.qrc">
@@ -93,7 +93,7 @@
           </item>
           <item>
            <property name="text">
-            <string notr="true"/>
+            <string notr="true"> </string>
            </property>
            <property name="icon">
             <iconset resource="../../qelectrotech.qrc">
@@ -220,7 +220,7 @@
             <item row="9" column="1">
              <widget class="QLabel" name="label_12">
               <property name="text">
-               <string>Indice Rev:</string>
+               <string>Indice Rev</string>
               </property>
              </widget>
             </item>
@@ -373,19 +373,9 @@ Les variables suivantes sont utilisables :
             <item row="8" column="1">
              <widget class="QLabel" name="label_11">
               <property name="text">
-               <string>Localisation:</string>
+               <string>Localisation</string>
               </property>
              </widget>
-            </item>
-            <item row="7" column="1">
-             <widget class="QLabel" name="label">
-              <property name="text">
-               <string>Groupe fonctionnel:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="7" column="3">
-             <widget class="QLineEdit" name="m_group_f"/>
             </item>
            </layout>
           </item>
