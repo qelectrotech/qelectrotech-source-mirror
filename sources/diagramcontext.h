@@ -38,6 +38,8 @@
  * comment                        -> a little comment wich can be displayed in the folio
  * manufacturer                   -> the manufacturer of the element
  * manufacturer-reference         -> the manufacturer reference of the element
+ * quantity                       -> quantity of the element
+ * unity                          -> unity of the element
  * auxiliary1                     -> auxiliary 1 of element
  * auxiliary2                     -> auxiliary 2 of element
  * machine-manufacturer-reference -> reference of the manufacturer machine

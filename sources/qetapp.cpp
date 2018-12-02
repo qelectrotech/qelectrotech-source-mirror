@@ -300,6 +300,8 @@ QStringList QETApp::elementInfoKeys()
 			  << "manufacturer"
 			  << "manufacturer-reference"
 			  << "provider"
+			  << "quantity"
+			  << "unity"
 			  << "auxiliary1"
 			  << "auxiliary2"
 			  << "machine-manufacturer-reference"
@@ -326,6 +328,8 @@ QString QETApp::elementTranslatedInfoKey(const QString &info)
 	else if (info == "manufacturer") return tr("Fabricant");
 	else if (info == "manufacturer-reference") return tr("Numéro de commande");
 	else if (info == "provider") return tr("Fournisseur");
+	else if (info == "quantity") return tr("Quantité");
+	else if (info == "unity") return tr("Unité");
 	else if (info == "auxiliary1") return tr("Bloc auxiliaire 1");
 	else if (info == "auxiliary2") return tr("Bloc auxiliaire 2");
 	else if (info == "machine-manufacturer-reference") return tr("Numéro interne");
@@ -351,6 +355,8 @@ QString QETApp::elementInfoToVar(const QString &info)
 	else if (info == "manufacturer")                   return QString("%{manufacturer}");
 	else if (info == "manufacturer-reference")         return QString("%{manufacturer-reference}");
 	else if (info == "provider")                       return QString("%{provider}");
+	else if (info == "quantity")                       return QString("%{quantity}");
+	else if (info == "unity")                          return QString("%{unity}");
 	else if (info == "auxiliary1")                     return QString("%{auxiliary1}");
 	else if (info == "auxiliary2")                     return QString("%{auxiliary2}");
 	else if (info == "machine-manufacturer-reference") return QString("%{machine-manufacturer-reference}");

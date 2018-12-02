@@ -184,6 +184,8 @@ namespace autonum
 		str.replace("%{manufacturer}", dc.value("manufacturer").toString());
 		str.replace("%{manufacturer-reference}", dc.value("manufacturer-reference").toString());
 		str.replace("%{provider}", dc.value("provider").toString());
+		str.replace("%{quantity}", dc.value("quantity").toString());
+		str.replace("%{unity}", dc.value("unity").toString());
 		str.replace("%{auxiliary1}", dc.value("auxiliary1").toString());
 		str.replace("%{auxiliary2}", dc.value("auxiliary2").toString());
 		str.replace("%{machine-manufacturer-reference}", dc.value("machine-manufacturer-reference").toString());

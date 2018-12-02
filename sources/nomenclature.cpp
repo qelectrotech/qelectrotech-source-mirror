@@ -96,7 +96,9 @@ QString nomenclature::getNomenclature()
     ""+ QObject::tr("I001") +";"      //:Don't translate this text!    //ID for comment
     ""+ QObject::tr("J001") +";"      //:Don't translate this text!    //ID for manufacturer
     ""+ QObject::tr("K001") +";"      //:Don't translate this text!    //ID for article number
-    ""+ QObject::tr("L001") +";"      //:Don't translate this text!    //ID for supplier
+    ""+ QObject::tr("L001") +";"      //:Don't translate this text!    //ID for quantity
+    ""+ QObject::tr("L002") +";"      //:Don't translate this text!    //ID for Unity
+    ""+ QObject::tr("L003") +";"      //:Don't translate this text!    //ID for supplier
     ""+ QObject::tr("M001") +";"      //:Don't translate this text!    //ID for auxiliary field 1
     ""+ QObject::tr("M002") +";"      //:Don't translate this text!    //ID for auciliary field 2
     ""+ QObject::tr("N001")+";"       //:Don't translate this text!    //ID for internal number
@@ -115,6 +117,8 @@ QString nomenclature::getNomenclature()
 	""+ QObject::tr("Fabricant") +";"
 	""+ QObject::tr("Reference Fabricant") +";"
 	""+ QObject::tr("Fournisseur") +";"
+	""+ QObject::tr("Quantité") +";"
+	""+ QObject::tr("Unité") +";"
 	""+ QObject::tr("Bloc auxiliaire 1") +";"
 	""+ QObject::tr("Bloc auxiliaire 2") +";"
 	""+ QObject::tr("Machine-reference") +";"
@@ -174,6 +178,8 @@ QString nomenclature::getElementInfo(Element *elmt) {
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["manufacturer"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["manufacturer-reference"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["provider"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
+	info += autonum::AssignVariables::formulaToLabel(elmt_info["quantity"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
+	info += autonum::AssignVariables::formulaToLabel(elmt_info["unity"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["auxiliary1"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["auxiliary2"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["machine-manufacturer-reference"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
