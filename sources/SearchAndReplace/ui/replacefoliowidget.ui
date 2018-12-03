@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>449</width>
-    <height>389</height>
+    <width>710</width>
+    <height>705</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -74,7 +74,7 @@
             <string>Disponible en tant que %title pour les modèles de cartouches</string>
            </property>
            <property name="placeholderText">
-            <string>Non modifier</string>
+            <string>Ne pas modifier</string>
            </property>
           </widget>
          </item>
@@ -84,7 +84,7 @@
             <string>Disponible en tant que %author pour les modèles de cartouches</string>
            </property>
            <property name="placeholderText">
-            <string>Non modifier</string>
+            <string>Ne pas modifier</string>
            </property>
           </widget>
          </item>
@@ -118,7 +118,7 @@
             <string>Disponible en tant que %indexrev pour les modèles de cartouches</string>
            </property>
            <property name="placeholderText">
-            <string>Non modifier</string>
+            <string>Ne pas modifier</string>
            </property>
           </widget>
          </item>
@@ -128,7 +128,7 @@
             <string>Disponible en tant que %filename pour les modèles de cartouches</string>
            </property>
            <property name="placeholderText">
-            <string>Non modifier</string>
+            <string>Ne pas modifier</string>
            </property>
           </widget>
          </item>
@@ -188,7 +188,7 @@
            <item row="0" column="0">
             <widget class="QRadioButton" name="m_unchanged_date">
              <property name="text">
-              <string>Non &amp;modifier</string>
+              <string>Ne pas modifier</string>
              </property>
             </widget>
            </item>
@@ -204,7 +204,7 @@ Les variables suivantes sont utilisables :
 - %autonum : Folio Auto Numeration</string>
            </property>
            <property name="placeholderText">
-            <string>Non modifier</string>
+            <string>Ne pas modifier</string>
            </property>
           </widget>
          </item>
@@ -214,7 +214,7 @@ Les variables suivantes sont utilisables :
             <string>Disponible en tant que %locmach pour les modèles de cartouches</string>
            </property>
            <property name="placeholderText">
-            <string>Non modifier</string>
+            <string>Ne pas modifier</string>
            </property>
           </widget>
          </item>
@@ -224,7 +224,7 @@ Les variables suivantes sont utilisables :
             <string>Disponible en tant que %machine pour les modèles de cartouches</string>
            </property>
            <property name="placeholderText">
-            <string>Non modifier</string>
+            <string>Ne pas modifier</string>
            </property>
           </widget>
          </item>

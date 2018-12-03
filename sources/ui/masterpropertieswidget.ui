@@ -68,6 +68,11 @@
      <attribute name="headerStretchLastSection">
       <bool>true</bool>
      </attribute>
+     <column>
+      <property name="text">
+       <string notr="true">1</string>
+      </property>
+     </column>
     </widget>
    </item>
    <item row="1" column="2" colspan="3">
@@ -105,6 +110,11 @@
      <attribute name="headerStretchLastSection">
       <bool>true</bool>
      </attribute>
+     <column>
+      <property name="text">
+       <string notr="true">1</string>
+      </property>
+     </column>
     </widget>
    </item>
    <item row="0" column="2">
@@ -120,7 +130,7 @@
    <item row="2" column="3">
     <widget class="QPushButton" name="unlink_button">
      <property name="toolTip">
-      <string>Délier l'élément séléctionné</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Délier l'élément sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="text">
       <string/>
@@ -134,7 +144,7 @@
    <item row="2" column="4">
     <widget class="QPushButton" name="link_button">
      <property name="toolTip">
-      <string>Lier l'élément séléctionné</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Lier l'élément sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="text">
       <string/>

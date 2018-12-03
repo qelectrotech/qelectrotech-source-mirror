@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>334</width>
+    <width>388</width>
     <height>335</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Autonumerotation Séléction</string>
+   <string>Sélection numérotation auto</string>
   </property>
   <widget class="QWidget" name="dockWidgetContents">
    <layout class="QGridLayout" name="gridLayout">

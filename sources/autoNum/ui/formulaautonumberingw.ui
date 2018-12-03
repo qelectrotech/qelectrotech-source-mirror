@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>370</width>
-    <height>305</height>
+    <width>716</width>
+    <height>531</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -38,7 +38,7 @@
       </sizepolicy>
      </property>
      <property name="title">
-      <string>Auto Naming Pattern:</string>
+      <string>Dénomination automatique :</string>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
@@ -50,7 +50,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>Formula:</string>
+         <string>Formule</string>
         </property>
        </widget>
       </item>

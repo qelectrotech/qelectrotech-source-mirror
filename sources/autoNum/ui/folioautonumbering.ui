@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>460</width>
-    <height>358</height>
+    <width>1082</width>
+    <height>515</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -75,7 +75,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>C&amp;réer de nouveaux Folios</string>
+           <string>C&amp;réer de nouveaux folios</string>
           </property>
          </widget>
         </item>
@@ -88,7 +88,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>NumAuto des folios séléctionnés</string>
+           <string>Numérotation automatique des folios sélectionnés</string>
           </property>
          </widget>
         </item>
@@ -129,7 +129,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>Nouveaux Folios</string>
+           <string>Nouveaux folios</string>
           </property>
          </widget>
         </item>

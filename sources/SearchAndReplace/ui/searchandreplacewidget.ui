@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>897</width>
+    <width>1556</width>
     <height>596</height>
    </rect>
   </property>
@@ -60,7 +60,7 @@
    <item row="0" column="7">
     <widget class="QPushButton" name="m_advanced_pb">
      <property name="toolTip">
-      <string>Avancé</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Afficher les options avancées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="text">
       <string/>
@@ -260,7 +260,7 @@
       <bool>false</bool>
      </property>
      <property name="toolTip">
-      <string>Remplacer la correspondance séléctionner</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer la correspondance sélectionnée&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="text">
       <string>Remplacer</string>
@@ -273,7 +273,7 @@
       <bool>false</bool>
      </property>
      <property name="toolTip">
-      <string>Remplacer les correspondances coché</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer les correspondances cochées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="text">
       <string>Tout remplacer</string>

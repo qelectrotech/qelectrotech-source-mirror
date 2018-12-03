@@ -323,9 +323,9 @@ QStringList QETApp::elementInfoKeys()
  */
 QString QETApp::elementTranslatedInfoKey(const QString &info)
 {
-	if (info == "formula") return tr("formule du label");
+    if (info == "formula") return tr("Formule du label");
 	else if (info == "label") return tr("Label");
-	else if (info == "group-function") return tr("Groupe fonctionnel");
+    else if (info == "group-function") return tr("Installation");
 	else if (info == "location") return tr("Localisation");
 	
 	else if (info == "comment") return tr("Commentaire");

@@ -151,36 +151,36 @@ void SearchAndReplaceWidget::setUpTreeItems()
 	
 	m_elements_qtwi = new QTreeWidgetItem(m_root_qtwi);
 	m_elements_qtwi->setIcon(0, QET::Icons::Element);
-	m_elements_qtwi->setText(0, tr("Elements"));
+    m_elements_qtwi->setText(0, tr("Eléments"));
 	m_elements_qtwi->setCheckState(0, Qt::Checked);
 	m_category_qtwi.append(m_elements_qtwi);
 	
 	m_simple_elmt_qtwi = new QTreeWidgetItem(m_elements_qtwi);
-	m_simple_elmt_qtwi->setText(0, tr("Elements simple"));
+    m_simple_elmt_qtwi->setText(0, tr("Eléments simple"));
 	m_simple_elmt_qtwi->setIcon(0, QET::Icons::Element);
 	m_simple_elmt_qtwi->setCheckState(0, Qt::Checked);
 	m_qtwi_elmts.append(m_simple_elmt_qtwi);
 	
 	m_master_elmt_qtwi= new QTreeWidgetItem(m_elements_qtwi);
-	m_master_elmt_qtwi->setText(0, tr("Elements maître"));
+    m_master_elmt_qtwi->setText(0, tr("Eléments maître"));
 	m_master_elmt_qtwi->setIcon(0, QET::Icons::ElementMaster);
 	m_master_elmt_qtwi->setCheckState(0, Qt::Checked);
 	m_qtwi_elmts.append(m_master_elmt_qtwi);
 	
 	m_slave_elmt_qtwi = new QTreeWidgetItem(m_elements_qtwi);
-	m_slave_elmt_qtwi->setText(0, tr("Elements esclave"));
+    m_slave_elmt_qtwi->setText(0, tr("Eléments esclave"));
 	m_slave_elmt_qtwi->setIcon(0, QET::Icons::ElementSlave);
 	m_slave_elmt_qtwi->setCheckState(0, Qt::Checked);
 	m_qtwi_elmts.append(m_slave_elmt_qtwi);
 	
 	m_report_elmt_qtwi = new QTreeWidgetItem(m_elements_qtwi);
-	m_report_elmt_qtwi->setText(0, tr("Elements report de folio"));
+    m_report_elmt_qtwi->setText(0, tr("Eléments report de folio"));
 	m_report_elmt_qtwi->setIcon(0, QET::Icons::FolioXrefComing);
 	m_report_elmt_qtwi->setCheckState(0, Qt::Checked);
 	m_qtwi_elmts.append(m_report_elmt_qtwi);
 	
 	m_terminal_elmt_qtwi = new QTreeWidgetItem(m_elements_qtwi);
-	m_terminal_elmt_qtwi->setText(0, tr("Elements bornier"));
+    m_terminal_elmt_qtwi->setText(0, tr("Eléments bornier"));
 	m_terminal_elmt_qtwi->setIcon(0, QET::Icons::ElementTerminal);
 	m_terminal_elmt_qtwi->setCheckState(0, Qt::Checked);
 	m_qtwi_elmts.append(m_terminal_elmt_qtwi);
@@ -856,8 +856,8 @@ void SearchAndReplaceWidget::on_m_folio_pb_clicked()
 	if (result == QDialogButtonBox::AcceptRole)
 	{
 		QString text = ui->m_folio_pb->text();
-		if (!text.endsWith(tr(" [Édité]"))) {
-			text.append(tr(" [Édité]"));
+        if (!text.endsWith(tr(" [édité]"))) {
+            text.append(tr(" [édité]"));
 		}
 		ui->m_folio_pb->setText(text);
 		m_worker.m_titleblock_properties = dialog->titleBlockProperties();
@@ -865,8 +865,8 @@ void SearchAndReplaceWidget::on_m_folio_pb_clicked()
 	else if (result == QDialogButtonBox::ResetRole)
 	{
 		QString text = ui->m_folio_pb->text();
-		if (text.endsWith(tr(" [Édité]"))) {
-			text.remove(tr(" [Édité]"));
+        if (text.endsWith(tr(" [édité]"))) {
+            text.remove(tr(" [édité]"));
 		}
 		ui->m_folio_pb->setText(text);
 		m_worker.m_titleblock_properties = TitleBlockProperties();
@@ -885,7 +885,7 @@ void SearchAndReplaceWidget::on_m_replace_pb_clicked()
 	}
 	if (!m_category_qtwi.contains(qtwi) && qtwi->checkState(0) == Qt::Checked)
 	{
-		if (ui->m_folio_pb->text().endsWith(tr(" [Édité]")) &&
+        if (ui->m_folio_pb->text().endsWith(tr(" [édité]")) &&
 			m_diagram_hash.keys().contains(qtwi))
 		{
 			QPointer<Diagram> d = m_diagram_hash.value(qtwi);
@@ -893,7 +893,7 @@ void SearchAndReplaceWidget::on_m_replace_pb_clicked()
 				m_worker.replaceDiagram(d.data());
 			}
 		}
-		else if (ui->m_element_pb->text().endsWith(tr(" [Édité]")) &&
+        else if (ui->m_element_pb->text().endsWith(tr(" [édité]")) &&
 				 m_element_hash.keys().contains(qtwi))
 		{
 			QPointer<Element> e = m_element_hash.value(qtwi);
@@ -923,7 +923,7 @@ void SearchAndReplaceWidget::on_m_replace_pb_clicked()
 void SearchAndReplaceWidget::on_m_replace_all_pb_clicked()
 {
 		//Replace folio
-    if (ui->m_folio_pb->text().endsWith(tr(" [Édité]")))
+    if (ui->m_folio_pb->text().endsWith(tr(" [édité]")))
 	{
 		QList <Diagram *> diagram_list;
 		for (QTreeWidgetItem *qtwi : m_diagram_hash.keys())
@@ -939,7 +939,7 @@ void SearchAndReplaceWidget::on_m_replace_all_pb_clicked()
 		m_worker.replaceDiagram(diagram_list);
 	}
 		//Replace text
-	if (ui->m_element_pb->text().endsWith(tr(" [Édité]")))
+    if (ui->m_element_pb->text().endsWith(tr(" [édité]")))
 	{
 		QList <Element *> element_list;
 		for (QTreeWidgetItem *qtwi : m_element_hash.keys())
@@ -989,8 +989,8 @@ void SearchAndReplaceWidget::on_m_element_pb_clicked()
 	if (result == QDialogButtonBox::AcceptRole)
 	{
 		QString text = ui->m_element_pb->text();
-		if (!text.endsWith(tr(" [Édité]"))) {
-			text.append(tr(" [Édité]"));
+        if (!text.endsWith(tr(" [édité]"))) {
+            text.append(tr(" [édité]"));
 		}
 		ui->m_element_pb->setText(text);
 		m_worker.m_element_context = dialog->context();
@@ -998,8 +998,8 @@ void SearchAndReplaceWidget::on_m_element_pb_clicked()
 	else if (result == QDialogButtonBox::ResetRole)
 	{
 		QString text = ui->m_element_pb->text();
-		if (text.endsWith(tr(" [Édité]"))) {
-			text.remove(tr(" [Édité]"));
+        if (text.endsWith(tr(" [édité]"))) {
+            text.remove(tr(" [édité]"));
 		}
 		ui->m_element_pb->setText(text);
 		m_worker.m_element_context = DiagramContext();

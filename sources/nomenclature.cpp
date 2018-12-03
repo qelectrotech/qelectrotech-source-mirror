@@ -93,15 +93,15 @@ QString nomenclature::getNomenclature()
     ""+ QObject::tr("F002") +";"      //:Don't translate this text!    //ID for label formula of element
     ""+ QObject::tr("G001") +";"      //:Don't translate this text!    //ID for order number
     ""+ QObject::tr("H001") +";"      //:Don't translate this text!    //ID for article description
-    ""+ QObject::tr("H002") +";"      //:Don't translate this text!    //ID for group function description
+    ""+ QObject::tr("H002") +";"      //:Don't translate this text!    //ID for plant
     ""+ QObject::tr("I001") +";"      //:Don't translate this text!    //ID for comment
     ""+ QObject::tr("J001") +";"      //:Don't translate this text!    //ID for manufacturer
     ""+ QObject::tr("K001") +";"      //:Don't translate this text!    //ID for article number
     ""+ QObject::tr("L001") +";"      //:Don't translate this text!    //ID for quantity
-    ""+ QObject::tr("L002") +";"      //:Don't translate this text!    //ID for Unity
+    ""+ QObject::tr("L002") +";"      //:Don't translate this text!    //ID for unity
     ""+ QObject::tr("L003") +";"      //:Don't translate this text!    //ID for supplier
     ""+ QObject::tr("M001") +";"      //:Don't translate this text!    //ID for auxiliary field 1
-    ""+ QObject::tr("M002") +";"      //:Don't translate this text!    //ID for auciliary field 2
+    ""+ QObject::tr("M002") +";"      //:Don't translate this text!    //ID for auxiliary field 2
     ""+ QObject::tr("N001")+";"       //:Don't translate this text!    //ID for internal number
     ""+ QObject::tr("O001")+";"       //:Don't translate this text!    //ID for location
     ""+ QObject::tr("P001") +"\n";    //:Don't translate this text!    //ID for function
@@ -114,7 +114,7 @@ QString nomenclature::getNomenclature()
 	""+ QObject::tr("Formule du label") +";"
 	""+ QObject::tr("Désignation") +";"
 	""+ QObject::tr("Description") +";"
-	""+ QObject::tr("Groupe fonctionnel") +";"
+    ""+ QObject::tr("Installation") +";"
 	""+ QObject::tr("Commentaire") +";"
 	""+ QObject::tr("Fabricant") +";"
 	""+ QObject::tr("Numéro de commande") +";"

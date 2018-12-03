@@ -232,7 +232,7 @@ ProjectAutoNumConfigPage::ProjectAutoNumConfigPage (QETProject *project, QWidget
  * @return
  */
 QString ProjectAutoNumConfigPage::title() const {
-	return tr("Auto numerotation");
+    return tr("Numérotation auto");
 }
 
 /**
@@ -263,19 +263,19 @@ void ProjectAutoNumConfigPage::initWidgets()
 	
 		//Conductor tab
 	m_saw_conductor = new SelectAutonumW(1);
-	tab_widget->addTab(m_saw_conductor, tr("Conducteur"));
+    tab_widget->addTab(m_saw_conductor, tr("Conducteurs"));
 	
 		//Element tab
 	m_saw_element = new SelectAutonumW(0);
-	tab_widget->addTab(m_saw_element, tr("Element"));
+    tab_widget->addTab(m_saw_element, tr("Eléments"));
 	
 		//Folio Tab
 	m_saw_folio = new SelectAutonumW(2);
-	tab_widget->addTab(m_saw_folio, tr("Folio"));
+    tab_widget->addTab(m_saw_folio, tr("Folios"));
 	
 		//AutoNumbering Tab
 	m_faw = new FolioAutonumberingW(project());
-	tab_widget->addTab(m_faw, tr("Folio autonumérotation"));
+    tab_widget->addTab(m_faw, tr("Numérotation auto des folios"));
 	
 	QHBoxLayout *main_layout = new QHBoxLayout();
 	main_layout->addWidget(tab_widget);
