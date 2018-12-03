@@ -178,6 +178,7 @@ namespace autonum
 	{
 		QString str = formula;
 		str.replace("%{label}", dc.value("label").toString());
+		str.replace("%{group-function}", dc.value("group-function").toString());
 		str.replace("%{comment}", dc.value("comment").toString());
 		str.replace("%{description}", dc.value("description").toString());
 		str.replace("%{designation}", dc.value("designation").toString());

@@ -93,6 +93,7 @@ QString nomenclature::getNomenclature()
     ""+ QObject::tr("F002") +";"      //:Don't translate this text!    //ID for label formula of element
     ""+ QObject::tr("G001") +";"      //:Don't translate this text!    //ID for order number
     ""+ QObject::tr("H001") +";"      //:Don't translate this text!    //ID for article description
+    ""+ QObject::tr("H002") +";"      //:Don't translate this text!    //ID for group function description
     ""+ QObject::tr("I001") +";"      //:Don't translate this text!    //ID for comment
     ""+ QObject::tr("J001") +";"      //:Don't translate this text!    //ID for manufacturer
     ""+ QObject::tr("K001") +";"      //:Don't translate this text!    //ID for article number
@@ -113,15 +114,16 @@ QString nomenclature::getNomenclature()
 	""+ QObject::tr("Formule du label") +";"
 	""+ QObject::tr("Désignation") +";"
 	""+ QObject::tr("Description") +";"
+	""+ QObject::tr("Groupe fonctionnel") +";"
 	""+ QObject::tr("Commentaire") +";"
 	""+ QObject::tr("Fabricant") +";"
-	""+ QObject::tr("Reference Fabricant") +";"
+	""+ QObject::tr("Numéro de commande") +";"
 	""+ QObject::tr("Fournisseur") +";"
 	""+ QObject::tr("Quantité") +";"
 	""+ QObject::tr("Unité") +";"
 	""+ QObject::tr("Bloc auxiliaire 1") +";"
 	""+ QObject::tr("Bloc auxiliaire 2") +";"
-	""+ QObject::tr("Machine-reference") +";"
+	""+ QObject::tr("Numéro interne") +";"
 	""+ QObject::tr("Localisation") +";"
 	""+ QObject::tr("Fonction") +"\n";
 
@@ -174,6 +176,7 @@ QString nomenclature::getElementInfo(Element *elmt) {
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["formula"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["designation"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["description"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
+	info += autonum::AssignVariables::formulaToLabel(elmt_info["group-function"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["comment"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["manufacturer"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["manufacturer-reference"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";

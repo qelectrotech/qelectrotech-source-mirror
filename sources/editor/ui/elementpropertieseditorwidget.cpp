@@ -152,7 +152,7 @@ void ElementPropertiesEditorWidget::updateTree()
  */
 void ElementPropertiesEditorWidget::populateTree()
 {
-	QStringList keys{"label", "comment", "description", "designation", "manufacturer", "manufacturer-reference", "provider", "quantity", "unity", "machine-manufacturer-reference"};
+	QStringList keys{"label", "group-function", "comment", "description", "designation", "manufacturer", "manufacturer-reference", "provider", "quantity", "unity", "machine-manufacturer-reference"};
 	
 	for(const QString& key : keys)
 	{

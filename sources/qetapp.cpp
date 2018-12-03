@@ -294,20 +294,23 @@ QStringList QETApp::elementInfoKeys()
 	QStringList info_list;
 	info_list << "formula"
 			  << "label"
+			  << "group-function"
+			  << "location"
+			  
 			  << "comment"
+			  << "function"
+			  << "tension-protocol"
+			  << "auxiliary1"
+			  << "auxiliary2"
+			  
 			  << "description"
 			  << "designation"
 			  << "manufacturer"
 			  << "manufacturer-reference"
+			  << "machine-manufacturer-reference"
 			  << "provider"
 			  << "quantity"
-			  << "unity"
-			  << "auxiliary1"
-			  << "auxiliary2"
-			  << "machine-manufacturer-reference"
-			  << "location"
-			  << "function"
-			  << "tension-protocol";
+			  << "unity";
 	return info_list;
 }
 
@@ -322,20 +325,27 @@ QString QETApp::elementTranslatedInfoKey(const QString &info)
 {
 	if (info == "formula") return tr("formule du label");
 	else if (info == "label") return tr("Label");
+	else if (info == "group-function") return tr("Groupe fonctionnel");
+	else if (info == "location") return tr("Localisation");
+	
 	else if (info == "comment") return tr("Commentaire");
+	else if (info == "function") return tr("Fonction");
+	else if (info == "tension-protocol") return tr("Tension / Protocole");
+	else if (info == "auxiliary1") return tr("Bloc auxiliaire 1");
+	else if (info == "auxiliary2") return tr("Bloc auxiliaire 2");
+	
 	else if (info == "description") return tr("Description textuelle");
 	else if (info == "designation") return tr("Numéro d'article");
 	else if (info == "manufacturer") return tr("Fabricant");
 	else if (info == "manufacturer-reference") return tr("Numéro de commande");
+	else if (info == "machine-manufacturer-reference") return tr("Numéro interne");
 	else if (info == "provider") return tr("Fournisseur");
 	else if (info == "quantity") return tr("Quantité");
 	else if (info == "unity") return tr("Unité");
-	else if (info == "auxiliary1") return tr("Bloc auxiliaire 1");
-	else if (info == "auxiliary2") return tr("Bloc auxiliaire 2");
-	else if (info == "machine-manufacturer-reference") return tr("Numéro interne");
-	else if (info == "location") return tr("Localisation");
-	else if (info == "function") return tr("Fonction");
-	else if (info == "tension-protocol") return tr("Tension / Protocole");
+	
+	
+	
+	
 	return (info);
 }
 
@@ -349,6 +359,7 @@ QString QETApp::elementInfoToVar(const QString &info)
 {
 	if (info == "formula")                             return QString("%{formula}");
 	else if (info == "label")                          return QString("%{label}");
+	else if (info == "group-function")                  return QString("%{group-function}");
 	else if (info == "comment")                        return QString("%{comment}");
 	else if (info == "description")                    return QString("%{description}");
 	else if (info == "designation")                    return QString("%{designation}");
