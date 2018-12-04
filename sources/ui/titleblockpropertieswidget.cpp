@@ -36,8 +36,8 @@ TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(const TitleBlockPropertie
 	ui(new Ui::TitleBlockPropertiesWidget)
 {
 	ui->setupUi(this);
-    	initDialog(current_date, project);
-    	setProperties(titleblock);
+	initDialog(current_date, project);
+	setProperties(titleblock);
 }
 
 /**
@@ -53,7 +53,7 @@ TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(TitleBlockTemplatesCollec
 	ui(new Ui::TitleBlockPropertiesWidget)
 {
 	ui->setupUi(this);
-    initDialog(current_date,project);
+	initDialog(current_date,project);
 	addCollection(tbt_collection);
 	updateTemplateList();
 	setProperties(titleblock);
@@ -96,7 +96,7 @@ void TitleBlockPropertiesWidget::setProperties(const TitleBlockProperties &prope
 	ui -> m_title_le  -> setText (properties.title);
 	ui -> m_author_le -> setText (properties.author);
 	ui -> m_file_le   -> setText (properties.filename);
-    ui -> m_plant      -> setText (properties.plant);
+	ui -> m_plant      -> setText (properties.plant);
 	ui -> m_loc   -> setText (properties.locmach);
 	ui -> m_indice    -> setText (properties.indexrev);
 	ui -> m_folio_le  -> setText (properties.folio);
@@ -154,7 +154,7 @@ TitleBlockProperties TitleBlockPropertiesWidget::properties() const {
 	prop.title    = ui -> m_title_le  -> text();
 	prop.author   = ui -> m_author_le -> text();
 	prop.filename = ui -> m_file_le   -> text();
-    prop.plant  = ui -> m_plant      -> text();
+	prop.plant  = ui -> m_plant      -> text();
 	prop.locmach  = ui -> m_loc   -> text();
 	prop.indexrev = ui -> m_indice    -> text();
 	prop.folio    = ui -> m_folio_le  -> text();
@@ -181,7 +181,7 @@ TitleBlockProperties TitleBlockPropertiesWidget::properties() const {
 
 	prop.context = m_dcw -> context();
 
-    prop.auto_page_num = ui->auto_page_cb->currentText();
+	prop.auto_page_num = ui->auto_page_cb->currentText();
 
 	return prop;
 }
@@ -195,7 +195,7 @@ TitleBlockProperties TitleBlockPropertiesWidget::propertiesAutoNum(QString autoN
 	prop.title    = ui -> m_title_le  -> text();
 	prop.author   = ui -> m_author_le -> text();
 	prop.filename = ui -> m_file_le   -> text();
-    prop.plant    = ui -> m_plant      -> text();
+	prop.plant    = ui -> m_plant      -> text();
 	prop.locmach  = ui -> m_loc       -> text();
 	prop.indexrev = ui -> m_indice    -> text();
 	prop.folio    = "%autonum";
@@ -294,7 +294,7 @@ void TitleBlockPropertiesWidget::initDialog(const bool &current_date,  QETProjec
 	ui -> m_current_date_rb -> setVisible(current_date);
 
 	m_tbt_edit = new QAction(tr("Éditer ce modèle", "menu entry"), this);
-    m_tbt_duplicate = new QAction(tr("Dupliquer et éditer ce modèle", "menu entry"), this);
+	m_tbt_duplicate = new QAction(tr("Dupliquer et éditer ce modèle", "menu entry"), this);
 
 	connect(m_tbt_edit, SIGNAL(triggered()), this, SLOT(editCurrentTitleBlockTemplate()));
 	connect(m_tbt_duplicate, SIGNAL(triggered()), this, SLOT(duplicateCurrentTitleBlockTemplate()));
@@ -429,7 +429,7 @@ void TitleBlockPropertiesWidget::on_m_date_now_pb_clicked() {
 void TitleBlockPropertiesWidget::on_m_edit_autofolionum_pb_clicked() {
     emit openAutoNumFolioEditor(ui->auto_page_cb->currentText());
 	if (ui->auto_page_cb->currentText()!=tr("Créer un Folio Numérotation Auto"))
-    {
+	{
 		//still to implement: load current auto folio num settings
-    }
+	}
 }

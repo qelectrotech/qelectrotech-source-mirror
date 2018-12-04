@@ -46,7 +46,7 @@ TitleBlockProperties ReplaceFolioWidget::titleBlockProperties() const
 	prop.title    = ui->m_title_le ->text();
 	prop.author   = ui->m_author_le->text();
 	prop.filename = ui->m_file_le  ->text();
-    prop.plant  = ui->m_plant     ->text();
+	prop.plant  = ui->m_plant     ->text();
 	prop.locmach  = ui->m_loc      ->text();
 	prop.indexrev = ui->m_indice   ->text();
 	prop.folio    = ui->m_folio_le ->text();
@@ -78,7 +78,7 @@ void ReplaceFolioWidget::setTitleBlockProperties(const TitleBlockProperties &pro
 	ui->m_title_le ->setText (properties.title);
 	ui->m_author_le->setText (properties.author);
 	ui->m_file_le  ->setText (properties.filename);
-    ui->m_plant     ->setText (properties.plant);
+	ui->m_plant     ->setText (properties.plant);
 	ui->m_loc      ->setText (properties.locmach);
 	ui->m_indice   ->setText (properties.indexrev);
 	ui->m_folio_le ->setText (properties.folio);
@@ -148,31 +148,31 @@ void ReplaceFolioWidget::on_m_title_cb_clicked() {
 }
 
 void ReplaceFolioWidget::on_m_author_cb_clicked() {
-    ui->m_author_le->setText(ui->m_author_cb->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
+	ui->m_author_le->setText(ui->m_author_cb->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
 	ui->m_author_le->setDisabled(ui->m_author_cb->isChecked());
 }
 
 void ReplaceFolioWidget::on_m_file_cb_clicked() {
-    ui->m_file_le->setText(ui->m_file_cb->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
+	ui->m_file_le->setText(ui->m_file_cb->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
 	ui->m_file_le->setDisabled(ui->m_file_cb->isChecked());
 }
 
 void ReplaceFolioWidget::on_m_folio_cb_clicked() {
-    ui->m_folio_le->setText(ui->m_folio_cb->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
+	ui->m_folio_le->setText(ui->m_folio_cb->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
 	ui->m_folio_le->setDisabled(ui->m_folio_cb->isChecked());
 }
 
 void ReplaceFolioWidget::on_m_plant_cb_clicked() {
-    ui->m_plant->setText(ui->m_plant_cb->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
-    ui->m_plant->setDisabled(ui->m_plant_cb->isChecked());
+	ui->m_plant->setText(ui->m_plant_cb->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
+	ui->m_plant->setDisabled(ui->m_plant_cb->isChecked());
 }
 
 void ReplaceFolioWidget::on_m_loc_cb_clicked() {
-    ui->m_loc->setText(ui->m_loc_cb->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
+	ui->m_loc->setText(ui->m_loc_cb->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
 	ui->m_loc->setDisabled(ui->m_loc_cb->isChecked());
 }
 
 void ReplaceFolioWidget::on_m_indice_cb_clicked() {
-    ui->m_indice->setText(ui->m_indice_cb->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
+	ui->m_indice->setText(ui->m_indice_cb->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
 	ui->m_indice->setDisabled(ui->m_indice_cb->isChecked());
 }

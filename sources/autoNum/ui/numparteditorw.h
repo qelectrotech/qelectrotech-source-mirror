@@ -42,7 +42,7 @@ class NumPartEditorW : public QWidget
 		~NumPartEditorW() override;
 
 		enum type {unit,unitfolio,ten,tenfolio, hundred, hundredfolio,
-                   string,idfolio,folio,plant,locmach,
+				   string,idfolio,folio,plant,locmach,
 				   elementline,elementcolumn,elementprefix,
 				  };
 		NumerotationContext toNumContext();

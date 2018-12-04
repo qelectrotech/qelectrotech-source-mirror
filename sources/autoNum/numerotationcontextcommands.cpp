@@ -124,8 +124,8 @@ void NumerotationContextCommands::setNumStrategy(const QString &str) {
 		strategy_ = new FolioNum (diagram_);
 		return;
 	}
-    else if (str=="plant"){
-        strategy_ = new PlantNum (diagram_);
+	else if (str=="plant"){
+		strategy_ = new PlantNum (diagram_);
 		return;
 	}
 	else if (str=="locmach"){

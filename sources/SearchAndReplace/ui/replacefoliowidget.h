@@ -47,7 +47,7 @@ class ReplaceFolioWidget : public QWidget
 		void on_m_author_cb_clicked();
 		void on_m_file_cb_clicked();
 		void on_m_folio_cb_clicked();
-        void on_m_plant_cb_clicked();
+		void on_m_plant_cb_clicked();
 		void on_m_loc_cb_clicked();
 		void on_m_indice_cb_clicked();
 		

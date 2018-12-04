@@ -107,14 +107,14 @@ QString nomenclature::getNomenclature()
     ""+ QObject::tr("P001") +"\n";    //:Don't translate this text!    //ID for function
     data += QObject::tr("Position du folio") +";"
 	""+ QObject::tr("Titre de folio") +";"
-    ""+ QObject::tr("Numéro de folio") +";"
+	""+ QObject::tr("Numéro de folio") +";"
 	""+ QObject::tr("Désignation qet") +";"
 	""+ QObject::tr("Position") +";"
 	""+ QObject::tr("Label") +";"
 	""+ QObject::tr("Formule du label") +";"
 	""+ QObject::tr("Désignation") +";"
 	""+ QObject::tr("Description") +";"
-    ""+ QObject::tr("Installation") +";"
+	""+ QObject::tr("Installation") +";"
 	""+ QObject::tr("Commentaire") +";"
 	""+ QObject::tr("Fabricant") +";"
 	""+ QObject::tr("Numéro de commande") +";"
@@ -176,11 +176,11 @@ QString nomenclature::getElementInfo(Element *elmt) {
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["formula"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["designation"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["description"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
-    info += autonum::AssignVariables::formulaToLabel(elmt_info["plant"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
+	info += autonum::AssignVariables::formulaToLabel(elmt_info["plant"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["comment"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["manufacturer"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["manufacturer-reference"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
-    info += autonum::AssignVariables::formulaToLabel(elmt_info["supplier"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
+	info += autonum::AssignVariables::formulaToLabel(elmt_info["supplier"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["quantity"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["unity"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["auxiliary1"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";

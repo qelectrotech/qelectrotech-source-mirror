@@ -58,7 +58,7 @@ NumPartEditorW::NumPartEditorW (NumerotationContext &context, int i, int type, Q
 		else if (strl.at(0)=="string") setType(NumPartEditorW::string);
 		else if (strl.at(0)=="idfolio") setType(NumPartEditorW::idfolio);
 		else if (strl.at(0)=="folio") setType(NumPartEditorW::folio);
-        else if (strl.at(0)=="plant") setType(NumPartEditorW::plant);
+		else if (strl.at(0)=="plant") setType(NumPartEditorW::plant);
 		else if (strl.at(0)=="locmach") setType(NumPartEditorW::locmach);
 		else if (strl.at(0)=="elementline") setType(NumPartEditorW::elementline);
 		else if (strl.at(0)=="elementcolumn") setType(NumPartEditorW::elementcolumn);
@@ -91,12 +91,12 @@ void NumPartEditorW::setVisibleItems()
 	{
 		items	<< tr("Chiffre 1") << tr("Chiffre 1 - Folio") << tr("Chiffre 01")
 				<< tr("Chiffre 01 - Folio") << tr("Chiffre 001") << tr("Chiffre 001 - Folio")
-                << tr("Texte") << tr("N° folio") << tr("Folio") << tr("Installation") << tr("Locmach");
+				<< tr("Texte") << tr("N° folio") << tr("Folio") << tr("Installation") << tr("Locmach");
 	}
 	else
 		items << tr("Chiffre 1") << tr("Chiffre 1 - Folio") << tr("Chiffre 01")
 			  << tr("Chiffre 01 - Folio") << tr("Chiffre 001") << tr("Chiffre 001 - Folio")
-              << tr("Texte") << tr("N° folio") << tr("Folio") << tr("Installation") << tr("Locmach")
+			  << tr("Texte") << tr("N° folio") << tr("Folio") << tr("Installation") << tr("Locmach")
 			  << tr("Element Line") << tr("Element Column") << tr("Element Prefix");
 	ui->type_cb->insertItems(0,items);
 }
@@ -136,8 +136,8 @@ NumerotationContext NumPartEditorW::toNumContext() {
 		case folio:
 			type_str = "folio";
 			break;
-        case plant:
-            type_str = "plant";
+		case plant:
+			type_str = "plant";
 			break;
 		case locmach:
 			type_str = "locmach";
@@ -164,7 +164,7 @@ NumerotationContext NumPartEditorW::toNumContext() {
  * @return true if value field isn't empty or if type is folio
  */
 bool NumPartEditorW::isValid() {
-    if (type_ == folio || type_ == idfolio || type_ == elementline || type_ == plant || type_ == locmach ||
+	if (type_ == folio || type_ == idfolio || type_ == elementline || type_ == plant || type_ == locmach ||
 		type_ == elementcolumn || type_ == elementprefix) {return true;}
 	else if(ui -> value_field -> text().isEmpty()) {return false;}
 	else return true;
@@ -193,8 +193,8 @@ void NumPartEditorW::on_type_cb_activated(int) {
 		setType(idfolio);
 	else if (ui->type_cb->currentText() == tr("Folio"))
 		setType(folio);
-    else if (ui->type_cb->currentText() == tr("Installation"))
-        setType(plant);
+	else if (ui->type_cb->currentText() == tr("Installation"))
+		setType(plant);
 	else if (ui->type_cb->currentText() == tr("Locmach"))
 		setType(locmach);
 	else if (ui->type_cb->currentText() == tr("Element Line"))
@@ -234,7 +234,7 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 	//if @t is a numeric type and preview type @type_ isn't a numeric type
 	//or @fnum is true, we set numeric behavior
 	if ( ((t==unit || t==unitfolio || t==ten || t==tenfolio || t==hundred || t==hundredfolio) &&
-          (type_==string || type_==folio || type_==plant || type_==locmach ||type_==idfolio ||
+		  (type_==string || type_==folio || type_==plant || type_==locmach ||type_==idfolio ||
 		   type_==elementcolumn || type_==elementline || type_==elementprefix))
 		 || fnum) {
 		ui -> value_field -> clear();
@@ -244,7 +244,7 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 		ui -> increase_spinBox -> setValue(1);
 	}
 	//@t isn't a numeric type
-    else if (t == string || t == folio || t == idfolio || t == elementline || t == plant || t == locmach ||
+	else if (t == string || t == folio || t == idfolio || t == elementline || t == plant || t == locmach ||
 			 t == elementcolumn || t == elementprefix) {
 		ui -> value_field -> clear();
 		ui -> increase_spinBox -> setDisabled(true);
@@ -256,7 +256,7 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 			ui -> value_field -> setDisabled(true);
 			ui -> increase_spinBox -> setDisabled(true);
 		}
-        else if (t==plant) {
+		else if (t==plant) {
 			ui -> value_field -> setDisabled(true);
 			ui -> increase_spinBox -> setDisabled(true);
 		}
@@ -309,8 +309,8 @@ void NumPartEditorW::setCurrentIndex(NumPartEditorW::type t) {
 		i = ui->type_cb->findText(tr("N° folio"));
 	else if (t == folio)
 		i = ui->type_cb->findText(tr("Folio"));
-    else if (t == plant)
-        i = ui->type_cb->findText(tr("Installation"));
+	else if (t == plant)
+		i = ui->type_cb->findText(tr("Installation"));
 	else if (t == locmach)
 		i = ui->type_cb->findText(tr("Locmach"));
 	else if (t == elementline)

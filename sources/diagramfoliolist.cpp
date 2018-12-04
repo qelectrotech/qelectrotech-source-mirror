@@ -93,7 +93,7 @@ void DiagramFolioList::drawBackground(QPainter *p, const QRectF &r)
 		fillRow(p, row_rect, diagram_list[i] -> border_and_titleblock.author(),
 				diagram_list[i] -> title(),
 				diagram_list[i] -> border_and_titleblock.finalfolio(),
-                diagram_list[i] -> border_and_titleblock.plant(),
+				diagram_list[i] -> border_and_titleblock.plant(),
 				diagram_list[i] -> border_and_titleblock.locmach(),
 				diagram_list[i] -> border_and_titleblock.indexrev(),
 				diagram_list[i] -> border_and_titleblock.date().toString(Qt::SystemLocaleShortDate));
@@ -101,7 +101,7 @@ void DiagramFolioList::drawBackground(QPainter *p, const QRectF &r)
 			fillRow(p, row_rect, diagram_list[i] -> border_and_titleblock.author(),
 				diagram_list[i] -> title(),
 				QString::number(diagram_list[i] ->folioIndex()+1),
-                diagram_list[i] -> border_and_titleblock.plant(),
+				diagram_list[i] -> border_and_titleblock.plant(),
 				diagram_list[i] -> border_and_titleblock.locmach(),
 				diagram_list[i] -> border_and_titleblock.indexrev(),
 				diagram_list[i] -> border_and_titleblock.date().toString(Qt::SystemLocaleShortDate));
@@ -120,7 +120,7 @@ void DiagramFolioList::drawBackground(QPainter *p, const QRectF &r)
  * @param row_rect rectangle where we must draw the new row
  */
 void DiagramFolioList::fillRow(QPainter *qp, const QRectF &row_rect, const QString& author, const QString& title,
-                               const QString& folio, const QString& plant, const QString& loc, const QString& indexrev, const QString& date)
+							   const QString& folio, const QString& plant, const QString& loc, const QString& indexrev, const QString& date)
 {
 	qreal x = row_rect.topLeft().x();
 	qreal y = row_rect.topLeft().y();
@@ -166,12 +166,12 @@ void DiagramFolioList::fillRow(QPainter *qp, const QRectF &row_rect, const QStri
 	x += colWidths[1]*row_rect.width();
 	
 	
-    if (origFontMetrics.width(plant) > 0.95*colWidths[2]*row_rect.width())
-        workingFont.setPointSizeF(origFontSize * 0.95*colWidths[2]*row_rect.width() / origFontMetrics.width(plant));
+	if (origFontMetrics.width(plant) > 0.95*colWidths[2]*row_rect.width())
+		workingFont.setPointSizeF(origFontSize * 0.95*colWidths[2]*row_rect.width() / origFontMetrics.width(plant));
 	else
 		workingFont.setPointSizeF(origFontSize);
 	qp -> setFont(workingFont);
-    qp -> drawText(QRectF(x, y, colWidths[3]*row_rect.width(), row_rect.height()), Qt::AlignCenter, plant);
+	qp -> drawText(QRectF(x, y, colWidths[3]*row_rect.width(), row_rect.height()), Qt::AlignCenter, plant);
 	x += colWidths[2]*row_rect.width();
 	
 	
@@ -219,15 +219,15 @@ void DiagramFolioList::buildGrid(QPainter *qp, const QRectF &rect, int rows, int
 	qDeleteAll (list_rectangles_);
 	list_rectangles_.clear();
 
-    qreal sum = 0;
-    for (int i = 0; i < 7; i++ )
-        sum += colWidths[i];
-    if ( sum < 0.99 || sum > 1.01 ) {
-        qDebug() << "Invalid input: Column widths do not sum to 1";
-        return;
-    }
+	qreal sum = 0;
+	for (int i = 0; i < 7; i++ )
+		sum += colWidths[i];
+	if ( sum < 0.99 || sum > 1.01 ) {
+		qDebug() << "Invalid input: Column widths do not sum to 1";
+		return;
+	}
 
-    qreal tablesSpacing = rect.height() * 0.02;
+	qreal tablesSpacing = rect.height() * 0.02;
 	qreal tableWidth = (rect.width() - tablesSpacing*(tables+1) ) / tables;
 	qreal rowHeight = (rect.height() - 2*tablesSpacing) / rows;
 	int cols = 7;//colWidths.size();
@@ -264,13 +264,13 @@ void DiagramFolioList::fillHeader(QPainter *qp, const QRectF &row_RectF) {
 	QString authorTranslatable(QObject::tr("Auteur"));
 	QString titleTranslatable(QObject::tr("Titre"));
 	QString folioTranslatable(QObject::tr("Folio"));
-    QString plantTranslatable(QObject::tr("Installation"));
+	QString plantTranslatable(QObject::tr("Installation"));
 	QString locTranslatable(QObject::tr("Localisation"));
 	QString indexrevTranslatable(QObject::tr("Rev"));
 	QString dateTranslatable(QObject::tr("Date"));
 
 	qp->save();
 	qp->setFont(QETApp::diagramTextsFont(13));
-    fillRow(qp, row_RectF, authorTranslatable, titleTranslatable, folioTranslatable, plantTranslatable, locTranslatable, indexrevTranslatable, dateTranslatable);
+	fillRow(qp, row_RectF, authorTranslatable, titleTranslatable, folioTranslatable, plantTranslatable, locTranslatable, indexrevTranslatable, dateTranslatable);
 	qp->restore();
 }

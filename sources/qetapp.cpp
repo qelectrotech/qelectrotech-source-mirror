@@ -294,7 +294,7 @@ QStringList QETApp::elementInfoKeys()
 	QStringList info_list;
 	info_list << "formula"
 			  << "label"
-              << "plant"
+			  << "plant"
 			  << "location"
 			  
 			  << "comment"
@@ -308,7 +308,7 @@ QStringList QETApp::elementInfoKeys()
 			  << "manufacturer"
 			  << "manufacturer-reference"
 			  << "machine-manufacturer-reference"
-              << "supplier"
+			  << "supplier"
 			  << "quantity"
 			  << "unity";
 	return info_list;
@@ -323,9 +323,9 @@ QStringList QETApp::elementInfoKeys()
  */
 QString QETApp::elementTranslatedInfoKey(const QString &info)
 {
-    if (info == "formula") return tr("Formule du label");
+	if (info == "formula") return tr("Formule du label");
 	else if (info == "label") return tr("Label");
-    else if (info == "plant") return tr("Installation");
+	else if (info == "plant") return tr("Installation");
 	else if (info == "location") return tr("Localisation");
 	
 	else if (info == "comment") return tr("Commentaire");
@@ -339,7 +339,7 @@ QString QETApp::elementTranslatedInfoKey(const QString &info)
 	else if (info == "manufacturer") return tr("Fabricant");
 	else if (info == "manufacturer-reference") return tr("Numéro de commande");
 	else if (info == "machine-manufacturer-reference") return tr("Numéro interne");
-    else if (info == "supplier") return tr("Fournisseur");
+	else if (info == "supplier") return tr("Fournisseur");
 	else if (info == "quantity") return tr("Quantité");
 	else if (info == "unity") return tr("Unité");
 	
@@ -359,13 +359,13 @@ QString QETApp::elementInfoToVar(const QString &info)
 {
 	if (info == "formula")                             return QString("%{formula}");
 	else if (info == "label")                          return QString("%{label}");
-    else if (info == "plant")                          return QString("%{plant}");
+	else if (info == "plant")                          return QString("%{plant}");
 	else if (info == "comment")                        return QString("%{comment}");
 	else if (info == "description")                    return QString("%{description}");
 	else if (info == "designation")                    return QString("%{designation}");
 	else if (info == "manufacturer")                   return QString("%{manufacturer}");
 	else if (info == "manufacturer-reference")         return QString("%{manufacturer-reference}");
-    else if (info == "supplier")                       return QString("%{supplier}");
+	else if (info == "supplier")                       return QString("%{supplier}");
 	else if (info == "quantity")                       return QString("%{quantity}");
 	else if (info == "unity")                          return QString("%{unity}");
 	else if (info == "auxiliary1")                     return QString("%{auxiliary1}");
@@ -493,17 +493,17 @@ QString QETApp::customElementsDir()
 {
 	if (m_user_custom_elements_dir.isEmpty())
 	{
-        QSettings settings;
-        QString path = settings.value("elements-collections/custom-collection-path", "default").toString();
-        if (path != "default" && !path.isEmpty())
-        {
-                QDir dir(path);
-                if (dir.exists())
+		QSettings settings;
+		QString path = settings.value("elements-collections/custom-collection-path", "default").toString();
+		if (path != "default" && !path.isEmpty())
+		{
+			QDir dir(path);
+			if (dir.exists())
 				{
 					m_user_custom_elements_dir = path;
 					return m_user_custom_elements_dir;
-                }
-        }
+			}
+		}
 		else {
 			m_user_custom_elements_dir = "default";
 		}

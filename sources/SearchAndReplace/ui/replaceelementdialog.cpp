@@ -61,7 +61,7 @@ void ReplaceElementDialog::setContext(DiagramContext context)
 DiagramContext ReplaceElementDialog::context() const
 {
 	DiagramContext context;
-	for (ElementInfoPartWidget *eipw : m_eipw_list) {		
+	for (ElementInfoPartWidget *eipw : m_eipw_list) {
 		context.addValue(eipw->key(), eipw->text());
 	}
 	
@@ -80,7 +80,7 @@ void ReplaceElementDialog::buildWidget()
 	{
 		ElementInfoPartWidget *eipw = new ElementInfoPartWidget(str, QETApp::elementTranslatedInfoKey(str), this);
 		eipw->setEraseTextVisible(true);
-        eipw->setPlaceHolderText(tr("Ne pas modifier"));
+		eipw->setPlaceHolderText(tr("Ne pas modifier"));
 		ui->m_scroll_layout->addWidget(eipw);
 		m_eipw_list << eipw;
 	}

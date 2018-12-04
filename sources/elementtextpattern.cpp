@@ -62,7 +62,7 @@ ExportElementTextPattern::ExportElementTextPattern(Element *elmt) :
 	{
 		bool r = QMessageBox::question(parentWidget(),
 									   QObject::tr("Configuration de textes"),
-                                       QObject::tr("Une configuration de textes nommée << %1 >> existe déjà.\n"
+									   QObject::tr("Une configuration de textes nommée << %1 >> existe déjà.\n"
 												   "Voulez-vous la remplacer ?").arg(m_name));
 		
 		if(r == false)

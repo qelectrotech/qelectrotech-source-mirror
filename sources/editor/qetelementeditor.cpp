@@ -741,7 +741,7 @@ bool QETElementEditor::checkElement()
 		if (errors.size())
 			dialog_message += QString (tr(" et"));
 
-        dialog_message += QString (tr(" %n avertissement(s)", "warnings", warnings.size()));
+		dialog_message += QString (tr(" %n avertissement(s)", "warnings", warnings.size()));
 	}
 	dialog_message += " :";
 

@@ -97,8 +97,8 @@ class BorderTitleBlock : public QObject
 	QString folio() const { return(btb_folio_); }
 	/// @return the value of the title block "Folio" field as displayed
 	QString finalfolio() const { return(btb_final_folio_); }
-    /// @return the value of the title block "Plant" field
-    QString plant() const { return(btb_plant_); }
+	/// @return the value of the title block "Plant" field
+	QString plant() const { return(btb_plant_); }
 	/// @return the value of the title block "Locmach" field
 	QString locmach() const { return(btb_locmach_); }
 	/// @return the value of the revision index block "Folio" field
@@ -155,7 +155,7 @@ class BorderTitleBlock : public QObject
 	}
 	void setFolioData(int, int, const QString& = nullptr, const DiagramContext & = DiagramContext());
 	/// @param author the new value of the "File" field
-    void setPlant(const QString &plant) { btb_plant_ = plant; }
+	void setPlant(const QString &plant) { btb_plant_ = plant; }
 	void setLocMach(const QString &locmach) { btb_locmach_ = locmach; }
 	void setIndicerev(const QString &indexrev){ btb_indexrev_ = indexrev; }
 	void setFileName(const QString &filename) { btb_filename_ = filename; }
@@ -237,7 +237,7 @@ class BorderTitleBlock : public QObject
 		QDate   btb_date_;
 		QString btb_title_;
 		QString btb_folio_;
-        QString btb_plant_;
+		QString btb_plant_;
 		QString btb_locmach_;
 		QString btb_indexrev_;
 		QString btb_final_folio_;

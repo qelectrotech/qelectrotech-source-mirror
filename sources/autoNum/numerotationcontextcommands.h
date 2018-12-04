@@ -144,7 +144,7 @@ class FolioNum: public NumStrategy
 class PlantNum: public NumStrategy
 {
 	public:
-    PlantNum (Diagram *);
+	PlantNum (Diagram *);
 	QString toRepresentedString(const QString) const override;
 	NumerotationContext next     (const NumerotationContext &, const int) const override;
 	NumerotationContext previous (const NumerotationContext &, const int) const override;
