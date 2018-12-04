@@ -324,8 +324,8 @@
     <name>AutoNumberingDockWidget</name>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="14"/>
-        <source>Autonumerotation Séléction</source>
-        <translation>تحديد ترقيم آلي</translation>
+        <source>Sélection numérotation auto</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="34"/>
@@ -766,15 +766,15 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <translation>علامة نصيّة</translation>
     </message>
     <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="436"/>
+        <source>Taille :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="443"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="453"/>
         <source>Style du conducteur</source>
         <translation>نوع الموصل</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="436"/>
-        <source>size:</source>
-        <translation>مقاس :</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="358"/>
@@ -2482,19 +2482,24 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
         <translation>شكل</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="78"/>
-        <source>C&amp;réer de nouveaux Folios</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="107"/>
         <source> Options de numérotation</source>
         <translation>خيارات الترقيم</translation>
     </message>
     <message>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="78"/>
+        <source>C&amp;réer de nouveaux folios</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="91"/>
+        <source>Numérotation automatique des folios sélectionnés</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="132"/>
-        <source>Nouveaux Folios</source>
-        <translation>صفحات جديدة</translation>
+        <source>Nouveaux folios</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="174"/>
@@ -2512,11 +2517,6 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
         <translation>تحديد:</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="91"/>
-        <source>NumAuto des folios séléctionnés</source>
-        <translation>ترقيم آلي للصفحات المُحدّدة</translation>
-    </message>
-    <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="40"/>
         <source>Numérotation automatique de Folio :</source>
         <translation>ترقيم آلي للصفحة :</translation>
@@ -2529,30 +2529,20 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.cpp" line="174"/>
-        <source>C&apos;est ici que vous pouvez définir la manière dont sera numéroté les nouveaux folios.
+        <source>C&apos;est ici que vous pouvez définir la manière dont seront numérotés les nouveaux folios.
 -Une numérotation est composée d&apos;une variable minimum.
 -Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.
--Une variable de numérotation comprant: un type, une valeur et une incrémentation.
+-Une variable de numérotation comprend : un type, une valeur et une incrémentation.
 
--les types &quot;Chiffre 1&quot;, &quot;Chiffre 01&quot; et &quot;Chiffre 001&quot;, représente un type numérique définie dans le champs &quot;Valeur&quot;, qui s&apos;incrémente à chaque nouveau folio de la valeur du champ &quot;Incrémentation&quot;.
--&quot;Chiffre 01&quot; et &quot;Chiffre 001&quot;, sont respectivement représenté sur le schéma par deux et trois digits minimum.
-Si le chiffre définie dans le champs Valeur posséde moins de digits que le type choisit,celui-ci sera précédé par un ou deux 0 afin de respecter son type.
+-les types &quot;Chiffre 1&quot;, &quot;Chiffre 01&quot; et &quot;Chiffre 001&quot;, représentent un type numérique défini dans le champ &quot;Valeur&quot;, qui s&apos;incrémente à chaque nouveau folio de la valeur du champ &quot;Incrémentation&quot;.
+-&quot;Chiffre 01&quot; et &quot;Chiffre 001&quot;, sont respectivement représentés sur le schéma par deux et trois digits minimum.
+Si le chiffre défini dans le champ Valeur possède moins de digits que le type choisi,celui-ci sera précédé par un ou deux 0 afin de respecter son type.
 
 -Le type &quot;Texte&quot;, représente un texte fixe.
-Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
+Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation>هنا, يُمكنك تحديد الطريقة التي سيقع بها ترقيم الصفحات الجديدة.
-- الترقيم يحتوي على مُتغيّر في الحدّ الأدنى.
-يُمكنك- إضافة أو حذف مُتغيّر ترقيم باستخدام + أو -.
-- يتكوّن مُتغيّر الترقيم من : صنف, قيمة وتزايد.
-- الأصناف &quot; الرقم 1&quot; و &quot;الرقم 01&quot; و &quot;الرقم 001&quot; يُمثلون الصنف الرقمي المعرّف في الحقل &quot; قيمة &quot; والذي يتزايد مع كلّ صفحة مُضافة في القل &quot; تزايد &quot;.
-- &quot; الرقم 01 &quot; و الرقم &quot;001 &quot; يُمثلون تباعا على المُخطط, الرقم ببعددين أو بثلاث أعداد على الأقلّ.
-إذا كان الرقم المُحدّد في حقل القيمة أقلّ من النوع المُختار, يسبق ذلك إضافة صفر أو صفران لإحترام الصنف.
-
--الصنف &quot; نص &quot; يُمثّل نصّا ثابتا.
-حقل &quot; تزايد &quot; غير مستخدم في هذه الحالة.
-</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2582,18 +2572,18 @@ Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="41"/>
-        <source>Auto Naming Pattern:</source>
-        <translation>نمط تسمية تلقائي:</translation>
+        <source>Dénomination automatique :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="53"/>
+        <source>Formule</source>
+        <translation type="unfinished">صيغة</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="72"/>
         <source>Insert Formula Here e.g.: %prefix%l%c</source>
         <translation>إدراج صيغة على سبيل المثال:  %بداية%l%c</translation>
-    </message>
-    <message>
-        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="53"/>
-        <source>Formula:</source>
-        <translation>صيغة:</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="98"/>
@@ -2632,24 +2622,12 @@ that you create. Text and number inputs are
         <translation>استعمل ألوان النظام</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="226"/>
-        <source>Elements</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="232"/>
-        <source>Collections d&apos;éléments</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="265"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="334"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="348"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="335"/>
         <source>Chemin de la collection utilisateur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="307"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="349"/>
         <source>Chemin des cartouches utilisateur</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2679,8 +2657,7 @@ that you create. Text and number inputs are
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="244"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="320"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="321"/>
         <source>Chemin de la collection commune</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2714,6 +2691,17 @@ that you create. Text and number inputs are
         <translation>استخدم إيماءات لوحة اللمس</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="136"/>
+        <source>Utiliser les numéros de folio à la place de leur position dans le projet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="143"/>
+        <source>Numéroter les colonnes de cartouche à partir de 0 (1 sinon)</source>
+        <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="202"/>
         <source>Désactivé</source>
         <translation>مُعطّل</translation>
@@ -2729,17 +2717,6 @@ that you create. Text and number inputs are
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="89"/>
         <source>Utiliser des fenêtres (appliqué au prochain lancement de &amp;QElectroTech)</source>
         <translation>استخم نوافذ ) يُطبّق عند الإطلاق التالي لـ &amp;QElectroTech)</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="136"/>
-        <source>Utiliser les labels de folio à la place de leurs ID</source>
-        <translation>تستخدم علامات الأوراق مكان تعريفاتها ID</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="143"/>
-        <source>Activer la numérotation à partir de 0 pour la colonne des cartouches au lieu de 1</source>
-        <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="326"/>
@@ -2784,6 +2761,31 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <translation>خط الحقول النصيّة</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="226"/>
+        <source>Collections</source>
+        <translation type="unfinished">مجموعات</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="232"/>
+        <source>Accès aux collections</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="244"/>
+        <source>Répertoire de la collection commune</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="265"/>
+        <source>Répertoire de la collection utilisateur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="307"/>
+        <source>Répertoire des cartouches utilisateur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="317"/>
         <source>Gestion des éléments</source>
         <translation>إدارة العناصر</translation>
@@ -2804,118 +2806,118 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <translation>خطّ الحقول النصيّة للصفحات المُلخصة</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="191"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="192"/>
         <source>Général</source>
         <comment>configuration page title</comment>
         <translation>عام</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="208"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="209"/>
         <source>Système</source>
         <translation>النظام</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="212"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="213"/>
         <source>Arabe</source>
         <translation>العربية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="213"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="214"/>
         <source>Brézilien</source>
         <translation>البرازيلي</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="214"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="215"/>
         <source>Catalan</source>
         <translation>الكتالونية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="215"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="216"/>
         <source>Tchèque</source>
         <translation>التشيكية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="216"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="217"/>
         <source>Allemand</source>
         <translation>الألمانية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="217"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="218"/>
         <source>Danois</source>
         <translation>دنماركية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="218"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="219"/>
         <source>Grec</source>
         <translation>اليونانية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="219"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="220"/>
         <source>Anglais</source>
         <translation>الإنجليزية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="220"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="221"/>
         <source>Espagnol</source>
         <translation>الإسبانية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="221"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="222"/>
         <source>Français</source>
         <translation>الفرنسية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="222"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="223"/>
         <source>Croate</source>
         <translation>الكرواتية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="223"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="224"/>
         <source>Italien</source>
         <translation>الإيطالية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="224"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="225"/>
         <source>Polonais</source>
         <translation>البولندية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="225"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="226"/>
         <source>Portugais</source>
         <translation>البرتغالية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="226"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="227"/>
         <source>Roumains</source>
         <translation>الرومانية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="227"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="228"/>
         <source>Russe</source>
         <translation>الروسية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="228"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="229"/>
         <source>Slovène</source>
         <translation>السلوفينية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="229"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="230"/>
         <source>Pays-Bas</source>
         <translation>هولندا</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="230"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="231"/>
         <source>Belgique-Flemish</source>
         <translation>بلجيكا- فلامون</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="231"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="232"/>
         <source>Turc</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="232"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="233"/>
         <source>Hongrois</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3316,17 +3318,17 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <translation>شكل</translation>
     </message>
     <message>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="133"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Délier l&apos;élément sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="147"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Lier l&apos;élément sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="123"/>
-        <source>Délier l&apos;élément séléctionné</source>
-        <translation>فكّ ارتباط العنصر المُحدّد</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="137"/>
-        <source>Lier l&apos;élément séléctionné</source>
-        <translation>ربط العنصر المُحدّد</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="113"/>
         <source>Éléments disponibles</source>
         <translation>عناصر مُتوفرة</translation>
     </message>
@@ -3702,18 +3704,18 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="94"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="99"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="196"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="313"/>
-        <source>Machine</source>
-        <translation>آلة</translation>
-    </message>
-    <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="94"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="99"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="198"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="315"/>
         <source>Locmach</source>
         <translation>Locmach</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="94"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="99"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="196"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="313"/>
+        <source>Installation</source>
+        <translation type="unfinished">تركيب</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="100"/>
@@ -3935,8 +3937,8 @@ Les variables suivantes sont incompatibles :
     <name>ProjectAutoNumConfigPage</name>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="235"/>
-        <source>Auto numerotation</source>
-        <translation>ترقيم آلي</translation>
+        <source>Numérotation auto</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="262"/>
@@ -3945,23 +3947,23 @@ Les variables suivantes sont incompatibles :
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="266"/>
-        <source>Conducteur</source>
-        <translation>موصل</translation>
+        <source>Conducteurs</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="270"/>
-        <source>Element</source>
-        <translation>عنصر</translation>
+        <source>Eléments</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="274"/>
-        <source>Folio</source>
-        <translation>صفحة</translation>
+        <source>Folios</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="278"/>
-        <source>Folio autonumérotation</source>
-        <translation>صفحة ترقيم آلي</translation>
+        <source>Numérotation auto des folios</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="389"/>
@@ -4120,8 +4122,8 @@ Voulez-vous enregistrer les modifications ?</source>
     <name>PropertiesEditorDockWidget</name>
     <message>
         <location filename="../sources/PropertiesEditor/propertieseditordockwidget.ui" line="14"/>
-        <source>Propriété de la séléction</source>
-        <translation>خصائص التحديد</translation>
+        <source>Propriétés de la sélection</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4151,264 +4153,279 @@ Voulez-vous enregistrer les modifications ?</source>
         <translation>RTL</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="321"/>
-        <source>formule du label</source>
-        <translation>صيغة العلامة</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="322"/>
+        <location filename="../sources/qetapp.cpp" line="327"/>
         <source>Label</source>
         <translation>علامة</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="323"/>
+        <location filename="../sources/qetapp.cpp" line="331"/>
         <source>Commentaire</source>
         <translation>تعليق</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="326"/>
+        <location filename="../sources/qetapp.cpp" line="339"/>
         <source>Fabricant</source>
         <translation>مُصنّع</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="329"/>
+        <location filename="../sources/qetapp.cpp" line="334"/>
         <source>Bloc auxiliaire 1</source>
         <translation>كتلة إضافية 1</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="330"/>
+        <location filename="../sources/qetapp.cpp" line="335"/>
         <source>Bloc auxiliaire 2</source>
         <translation>كتلة إضافية 2</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="324"/>
+        <location filename="../sources/qetapp.cpp" line="337"/>
         <source>Description textuelle</source>
         <translation>وصف نصّي</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="325"/>
+        <location filename="../sources/qetapp.cpp" line="338"/>
         <source>Numéro d&apos;article</source>
         <translation>رقم البند</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="327"/>
+        <location filename="../sources/qetapp.cpp" line="340"/>
         <source>Numéro de commande</source>
         <translation>رقم الطلب</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="328"/>
+        <location filename="../sources/qetapp.cpp" line="342"/>
         <source>Fournisseur</source>
         <translation>المزود</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="331"/>
+        <location filename="../sources/qetapp.cpp" line="341"/>
         <source>Numéro interne</source>
         <translation>رقم داخلي</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="332"/>
+        <location filename="../sources/qetapp.cpp" line="326"/>
+        <source>Formule du label</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="328"/>
+        <source>Installation</source>
+        <translation type="unfinished">تركيب</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="329"/>
         <source>Localisation</source>
         <translation>تحديد موقع</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="333"/>
+        <location filename="../sources/qetapp.cpp" line="332"/>
         <source>Fonction</source>
         <translation>وظيفة</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="334"/>
+        <location filename="../sources/qetapp.cpp" line="333"/>
         <source>Tension / Protocole</source>
         <translation>جهد / بروتوكول</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="371"/>
+        <location filename="../sources/qetapp.cpp" line="343"/>
+        <source>Quantité</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="344"/>
+        <source>Unité</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="388"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates collection provided by QElectroTech</comment>
         <translation>إطارات تعريف QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="385"/>
+        <location filename="../sources/qetapp.cpp" line="402"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s title block templates collection</comment>
         <translation>إطارات تعريف المستعمل</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="987"/>
+        <location filename="../sources/qetapp.cpp" line="1005"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="988"/>
+        <location filename="../sources/qetapp.cpp" line="1006"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation>QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="989"/>
+        <location filename="../sources/qetapp.cpp" line="1007"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>مخطط</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="990"/>
+        <location filename="../sources/qetapp.cpp" line="1008"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>كهربائي</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="991"/>
+        <location filename="../sources/qetapp.cpp" line="1009"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1389"/>
+        <location filename="../sources/qetapp.cpp" line="1407"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
         <translation>إعدادات برنامج QElectrotech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1500"/>
+        <location filename="../sources/qetapp.cpp" line="1518"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>تحميل ...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1565"/>
+        <location filename="../sources/qetapp.cpp" line="1583"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>تحميل ...ايقونة systray</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1567"/>
+        <location filename="../sources/qetapp.cpp" line="1585"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1569"/>
+        <location filename="../sources/qetapp.cpp" line="1587"/>
         <source>&amp;Quitter</source>
         <translation>&amp;إنهاء</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1570"/>
+        <location filename="../sources/qetapp.cpp" line="1588"/>
         <source>&amp;Masquer</source>
         <translation>&amp;حجب</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1571"/>
+        <location filename="../sources/qetapp.cpp" line="1589"/>
         <source>&amp;Restaurer</source>
         <translation>ا&amp;سترجاع</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1572"/>
+        <location filename="../sources/qetapp.cpp" line="1590"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>&amp;حجب كلّ محرري المخططات</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1573"/>
+        <location filename="../sources/qetapp.cpp" line="1591"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>&amp;استرجاع كل محرري المخطط</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1574"/>
+        <location filename="../sources/qetapp.cpp" line="1592"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>&amp;احجب كلّ محرري العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1575"/>
+        <location filename="../sources/qetapp.cpp" line="1593"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>&amp;استرجع كلّ محرري العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1576"/>
+        <location filename="../sources/qetapp.cpp" line="1594"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;احجب كلّ محرري إطار التعريف</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1577"/>
+        <location filename="../sources/qetapp.cpp" line="1595"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;استرجع كلّ محرري إطار التعريف</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1578"/>
+        <location filename="../sources/qetapp.cpp" line="1596"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>&amp;محرر تخطييط جديد</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1579"/>
+        <location filename="../sources/qetapp.cpp" line="1597"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>&amp;محرّر عنصر جديد</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1581"/>
+        <location filename="../sources/qetapp.cpp" line="1599"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>إغلاق تطبيق QElectrotech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1582"/>
+        <location filename="../sources/qetapp.cpp" line="1600"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>خفض QElectrotech في  systray</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1583"/>
+        <location filename="../sources/qetapp.cpp" line="1601"/>
         <source>Restaurer QElectroTech</source>
         <translation>إسترجاع QElectrotech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1599"/>
+        <location filename="../sources/qetapp.cpp" line="1617"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1668"/>
+        <location filename="../sources/qetapp.cpp" line="1686"/>
         <source>Éditeurs de schémas</source>
         <translation>محرري المخططات</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1677"/>
+        <location filename="../sources/qetapp.cpp" line="1695"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>محرري العناصر</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1687"/>
+        <location filename="../sources/qetapp.cpp" line="1705"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
         <translation>محرري إطار التعريف</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1726"/>
+        <location filename="../sources/qetapp.cpp" line="1744"/>
         <source>&lt;b&gt;Le fichier de restauration suivant a été trouvé,&lt;br&gt;Voulez-vous l&apos;ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;الملف التالي مُستعاد,&lt;br&gt;هل تريد فتحه ?&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1729"/>
+        <location filename="../sources/qetapp.cpp" line="1747"/>
         <source>&lt;b&gt;Les fichiers de restauration suivant on été trouvé,&lt;br&gt;Voulez-vous les ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;تمّ استعادة الملفات التالية,&lt;br&gt;هل تريد فتحها ?&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1734"/>
+        <location filename="../sources/qetapp.cpp" line="1752"/>
         <source>Fichier de restauration</source>
         <translation>استعادة الملف</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1837"/>
+        <location filename="../sources/qetapp.cpp" line="1855"/>
         <source>Usage : </source>
         <translation>إستعمال :</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1837"/>
+        <location filename="../sources/qetapp.cpp" line="1855"/>
         <source> [options] [fichier]...
 
 </source>
         <translation>[خيارات] [ rملف]...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1838"/>
+        <location filename="../sources/qetapp.cpp" line="1856"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -4424,26 +4441,26 @@ Options disponibles :
 - الترخيص ......................... عرض الترخيص</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1844"/>
+        <location filename="../sources/qetapp.cpp" line="1862"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=DIR    عرّف مجلد صنف العناصر
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1847"/>
+        <location filename="../sources/qetapp.cpp" line="1865"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
         <translation>  --common-tbt-dir=DIR         عرّف مجلد مجموعة نماذج إطارات التعريف</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1850"/>
+        <location filename="../sources/qetapp.cpp" line="1868"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=DIR             عرّف مجلد الإعدادات</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1852"/>
+        <location filename="../sources/qetapp.cpp" line="1870"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=DIR               عرّف المجلد المحتوي على ملفات اللغة</translation>
@@ -4588,11 +4605,6 @@ Options disponibles :
         <translation>حذف الصفحة</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="402"/>
-        <source>Lancer le plugin de creation de bornier</source>
-        <translation>إطلاق البرنامج المُساعد لإنشاء كتلة طرفية</translation>
-    </message>
-    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="481"/>
         <source>Crée un nouveau projet</source>
         <comment>status bar tip</comment>
@@ -4659,11 +4671,6 @@ Options disponibles :
         <translation>تقليص ارتفاع الصفحة</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="521"/>
-        <source>Grouper les textes séléctionné</source>
-        <translation>تجميع النصوص المُحدّدة</translation>
-    </message>
-    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="528"/>
         <source>Enlève les éléments sélectionnés du folio</source>
         <comment>status bar tip</comment>
@@ -4683,11 +4690,6 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
         <source>Inverser la sélection</source>
         <translation>اعكس التحديد</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="617"/>
-        <source>Chercher</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="668"/>
@@ -5183,6 +5185,11 @@ install qet_tb_generator
         <translation>يُنظم النوافذ على هيئة فسيفساء</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="402"/>
+        <source>Lancer le plugin de création de borniers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="426"/>
         <source>Dispose les fenêtres en cascade</source>
         <comment>status bar tip</comment>
@@ -5199,6 +5206,16 @@ install qet_tb_generator
         <source>Active le projet précédent</source>
         <comment>status bar tip</comment>
         <translation>تفعيل المشروع السابق</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="521"/>
+        <source>Grouper les textes sélectionnés</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="617"/>
+        <source>Chercher/remplacer</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="684"/>
@@ -5756,19 +5773,6 @@ install qet_tb_generator
         <source> et</source>
         <translation> و</translation>
     </message>
-    <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="744"/>
-        <source> %n avertissment(s)</source>
-        <comment>warnings</comment>
-        <translation>
-            <numerusform> %n تنبيهات</numerusform>
-            <numerusform> %n تنبيه</numerusform>
-            <numerusform> %n تنبيهان</numerusform>
-            <numerusform> %n بعض التنبيهات</numerusform>
-            <numerusform> %n تنبيهات</numerusform>
-            <numerusform> %n تنبيها</numerusform>
-        </translation>
-    </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="753"/>
         <source>&lt;b&gt;%1&lt;/b&gt; : %2</source>
@@ -5871,6 +5875,19 @@ Put DXFtoQET.app binary on /Users/user_name/.qet/ directory
 &gt;&gt; تثبيت على macOSX
 وضع  DXFtoQET.app binary on /Users/user_name/.qet/ directory 
 </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/editor/qetelementeditor.cpp" line="744"/>
+        <source> %n avertissement(s)</source>
+        <comment>warnings</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1087"/>
@@ -7222,6 +7239,7 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="267"/>
+        <location filename="../sources/nomenclature.cpp" line="117"/>
         <source>Installation</source>
         <translation>تركيب</translation>
     </message>
@@ -7426,137 +7444,162 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="96"/>
+        <source>H002</source>
+        <translation type="unfinished">H002</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="97"/>
         <source>I001</source>
         <translation>I001</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="97"/>
+        <location filename="../sources/nomenclature.cpp" line="98"/>
         <source>J001</source>
         <translation>J001</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="98"/>
+        <location filename="../sources/nomenclature.cpp" line="99"/>
         <source>K001</source>
         <translation>K001</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="99"/>
+        <location filename="../sources/nomenclature.cpp" line="100"/>
         <source>L001</source>
         <translation>L001</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="100"/>
+        <location filename="../sources/nomenclature.cpp" line="101"/>
+        <source>L002</source>
+        <translation type="unfinished">L002</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="102"/>
+        <source>L003</source>
+        <translation type="unfinished">L003</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="103"/>
         <source>M001</source>
         <translation>M001</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="101"/>
+        <location filename="../sources/nomenclature.cpp" line="104"/>
         <source>M002</source>
         <translation>M002</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="102"/>
+        <location filename="../sources/nomenclature.cpp" line="105"/>
         <source>N001</source>
         <translation>N001</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="103"/>
+        <location filename="../sources/nomenclature.cpp" line="106"/>
         <source>O001</source>
         <translation>O001</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="104"/>
+        <location filename="../sources/nomenclature.cpp" line="107"/>
         <source>P001</source>
         <translation>P001</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="105"/>
-        <source>N° de folio</source>
-        <translation>رقم الصفحة </translation>
+        <location filename="../sources/nomenclature.cpp" line="108"/>
+        <source>Position du folio</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="106"/>
+        <location filename="../sources/nomenclature.cpp" line="110"/>
+        <source>Numéro de folio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="120"/>
+        <source>Numéro de commande</source>
+        <translation type="unfinished">رقم الطلب</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="126"/>
+        <source>Numéro interne</source>
+        <translation type="unfinished">رقم داخلي</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="109"/>
         <source>Titre de folio</source>
         <translation>عنوان الصفحة</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="107"/>
-        <source>Label de folio</source>
-        <translation>علامة صفحة</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="108"/>
+        <location filename="../sources/nomenclature.cpp" line="111"/>
         <source>Désignation qet</source>
         <translation>تعيين qet</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="109"/>
+        <location filename="../sources/nomenclature.cpp" line="112"/>
         <source>Position</source>
         <translation>موضع</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="110"/>
+        <location filename="../sources/nomenclature.cpp" line="113"/>
         <source>Label</source>
         <translation>علامة</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="111"/>
+        <location filename="../sources/nomenclature.cpp" line="114"/>
         <source>Formule du label</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="112"/>
+        <location filename="../sources/nomenclature.cpp" line="115"/>
         <source>Désignation</source>
         <translation>تعيين</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="113"/>
+        <location filename="../sources/nomenclature.cpp" line="116"/>
         <source>Description</source>
         <translation>توصيف</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="114"/>
+        <location filename="../sources/nomenclature.cpp" line="118"/>
         <source>Commentaire</source>
         <translation>تعليق</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="115"/>
+        <location filename="../sources/nomenclature.cpp" line="119"/>
         <source>Fabricant</source>
         <translation>مُصنّع</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="116"/>
-        <source>Reference Fabricant</source>
-        <translation>مرجع المصنّع</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="117"/>
+        <location filename="../sources/nomenclature.cpp" line="121"/>
         <source>Fournisseur</source>
         <translation>مزود</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="118"/>
+        <location filename="../sources/nomenclature.cpp" line="122"/>
+        <source>Quantité</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="123"/>
+        <source>Unité</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="124"/>
         <source>Bloc auxiliaire 1</source>
         <translation>كتلة إضافية 1</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="119"/>
+        <location filename="../sources/nomenclature.cpp" line="125"/>
         <source>Bloc auxiliaire 2</source>
         <translation>كتلة إضافية 2</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="120"/>
-        <source>Machine-reference</source>
-        <translation>مرجع الآلة</translation>
-    </message>
-    <message>
         <location filename="../sources/diagramfoliolist.cpp" line="268"/>
-        <location filename="../sources/nomenclature.cpp" line="121"/>
+        <location filename="../sources/nomenclature.cpp" line="127"/>
         <source>Localisation</source>
         <translation>تحديد موقع</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="122"/>
+        <location filename="../sources/nomenclature.cpp" line="128"/>
         <source>Fonction</source>
         <translation>وظيفة</translation>
     </message>
@@ -7673,10 +7716,9 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="65"/>
-        <source>Une configuration de textes nommé &lt;&lt; %1 &gt;&gt; existe déjà.
+        <source>Une configuration de textes nommée &lt;&lt; %1 &gt;&gt; existe déjà.
 Voulez-vous la remplacer ?</source>
-        <translation>تكوين نصوص بمسمّى  &lt;&lt; %1 &gt;&gt; موجود.
-هل تريد استبداله ؟</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="84"/>
@@ -7695,13 +7737,13 @@ Voulez-vous la remplacer ?</source>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="170"/>
-        <source>Séléctionner une configuration de textes</source>
-        <translation>تحديد تكوين نصوص</translation>
+        <source>Sélectionner une configuration de textes</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="171"/>
-        <source>Séléctionner la configuration de textes à ajouter à l&apos;élément</source>
-        <translation>تحديد تكوين النصوص المراد إضافته للعنصر</translation>
+        <source>Sélectionner la configuration de textes à ajouter à l&apos;élément</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="239"/>
@@ -7720,17 +7762,17 @@ Voulez-vous la remplacer ?</source>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="60"/>
-        <source>Chercher remplacer les propriétés de folio</source>
+        <source>Chercher/remplacer les propriétés de folio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="171"/>
-        <source>Chercher remplacer les propriétés d&apos;éléments</source>
+        <source>Chercher/remplacer les propriétés d&apos;éléments</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="231"/>
-        <source>Chercher remplacer des textes independant</source>
+        <source>Chercher/remplacer des textes independants</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -7888,7 +7930,7 @@ Voulez-vous la remplacer ?</source>
     <name>ReplaceElementDialog</name>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceelementdialog.cpp" line="83"/>
-        <source>Non modifier</source>
+        <source>Ne pas modifier</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -7929,10 +7971,11 @@ Voulez-vous la remplacer ?</source>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="87"/>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="121"/>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="131"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="191"/>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="207"/>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="217"/>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="227"/>
-        <source>Non modifier</source>
+        <source>Ne pas modifier</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7991,8 +8034,8 @@ Voulez-vous la remplacer ?</source>
         <translation type="unfinished">تطبيق التاريخ الحالي</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="191"/>
-        <source>Non &amp;modifier</source>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="224"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disponible en tant que %plant pour les modèles de cartouches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -8012,11 +8055,6 @@ Les variables suivantes sont utilisables :
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="214"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
         <translation type="unfinished">مُتاح كـ %locmach بالنسبة نماذج الاطارات </translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="224"/>
-        <source>Disponible en tant que %machine pour les modèles de cartouches</source>
-        <translation type="unfinished">متاح كـ % آلة بالنسبة لنماذج الاطارات</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="234"/>
@@ -8063,20 +8101,13 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <location filename="../sources/ui/reportpropertiewidget.ui" line="35"/>
         <source>Vous pouvez définir un label personnalisé pour les reports de folio.
 Créer votre propre texte en vous aidant des variables suivantes :
-%f : le numéro de folio 
-%F: le label de folio
-%M:  Machine 
-%LM: Location
+%f : la position du folio dans le projet 
+%F : le numéro de folio
+%M :  l&apos;installation
+%LM : la localisation
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation>يمكنك تحديد تصنيف مخصص لتقارير الورقة.
-إنشاء النص الخاص بك باستخدام المتغيرات التالية:
-%f: رقم الورقة
-%F: تسمية الورقة
-%M: آلة
-%LM: الموقع
-%l: رقم السطر
-%c: رقم العمود</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -8092,6 +8123,11 @@ Créer votre propre texte en vous aidant des variables suivantes :
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="63"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Afficher les options avancées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="107"/>
         <source>Aller à la correspondance précédente</source>
         <translation type="unfinished"></translation>
@@ -8102,58 +8138,88 @@ Créer votre propre texte en vous aidant des variables suivantes :
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="156"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="173"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les éléments&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="183"/>
         <source>Champ texte de folio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="166"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="203"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les conducteurs&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="213"/>
+        <source>Mode :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="220"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les folios&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="223"/>
         <source>Folio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="190"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="234"/>
+        <source>Texte brut</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="239"/>
+        <source>Mots entiers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="260"/>
+        <source>Sensible à la casse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="272"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer la correspondance sélectionnée&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="285"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer les correspondances cochées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="176"/>
         <source>Élément</source>
         <translation type="unfinished">العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="200"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="206"/>
         <source>Conducteur</source>
         <translation type="unfinished">موصل</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="207"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="156"/>
         <source>Remplacer :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="232"/>
-        <source>Remplacer la correspondance séléctionner</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="235"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="275"/>
         <source>Remplacer</source>
         <translation type="unfinished">تعويض</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="245"/>
-        <source>Remplacer les correspondances coché</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="248"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="288"/>
         <source>Tout remplacer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="180"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="193"/>
         <source>Chercher :</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="63"/>
-        <source>Avancé</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -8178,32 +8244,48 @@ Créer votre propre texte en vous aidant des variables suivantes :
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="154"/>
-        <source>Elements</source>
+        <source>Eléments</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="159"/>
-        <source>Elements simple</source>
+        <source>Eléments simple</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="165"/>
-        <source>Elements maître</source>
+        <source>Eléments maître</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="171"/>
-        <source>Elements esclave</source>
+        <source>Eléments esclave</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="177"/>
-        <source>Elements report de folio</source>
+        <source>Eléments report de folio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="183"/>
-        <source>Elements bornier</source>
+        <source>Eléments bornier</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="859"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="860"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="868"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="869"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="888"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="896"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="926"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="942"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="992"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="993"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1001"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1002"/>
+        <source> [édité]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -8212,24 +8294,8 @@ Créer votre propre texte en vous aidant des variables suivantes :
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="333"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="337"/>
         <source>Inconnue</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="825"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="826"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="834"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="835"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="854"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="862"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="892"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="908"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="958"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="959"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="967"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="968"/>
-        <source> [Édité]</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -8303,50 +8369,34 @@ Créer votre propre texte en vous aidant des variables suivantes :
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="188"/>
-        <source>C&apos;est ici que vous pouvez définir la manière dont sera numéroté les nouveaux folios.
+        <source>C&apos;est ici que vous pouvez définir la manière dont seront numérotés les nouveaux folios.
 -Une numérotation est composée d&apos;une variable minimum.
 -Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.
--Une variable de numérotation comprant: un type, une valeur et une incrémentation.
+-Une variable de numérotation comprend : un type, une valeur et une incrémentation.
 
--les types &quot;Chiffre 1&quot;, &quot;Chiffre 01&quot; et &quot;Chiffre 001&quot;, représente un type numérique définie dans le champs &quot;Valeur&quot;, qui s&apos;incrémente à chaque nouveau folio de la valeur du champ &quot;Incrémentation&quot;.
--&quot;Chiffre 01&quot; et &quot;Chiffre 001&quot;, sont respectivement représenté sur le schéma par deux et trois digits minimum.
-Si le chiffre définie dans le champs Valeur posséde moins de digits que le type choisit,celui-ci sera précédé par un ou deux 0 afin de respecter son type.
+-les types &quot;Chiffre 1&quot;, &quot;Chiffre 01&quot; et &quot;Chiffre 001&quot;, représentent un type numérique défini dans le champ &quot;Valeur&quot;, qui s&apos;incrémente à chaque nouveau folio de la valeur du champ &quot;Incrémentation&quot;.
+-&quot;Chiffre 01&quot; et &quot;Chiffre 001&quot;, sont respectivement représentés sur le schéma par deux et trois digits minimum.
+Si le chiffre défini dans le champ Valeur possède moins de digits que le type choisi,celui-ci sera précédé par un ou deux 0 afin de respecter son type.
 
 -Le type &quot;Texte&quot;, représente un texte fixe.
-Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
+Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation>هنا, يُمكنك تحديد الطريقة التي سيقع بها ترقيم الصفحات الجديدة.
-- الترقيم يحتوي على مُتغيّر في الحدّ الأدنى.
-يُمكنك- إضافة أو حذف مُتغيّر ترقيم باستخدام + أو -.
-- يتكوّن مُتغيّر الترقيم من : صنف, قيمة وتزايد.
-- الأصناف &quot; الرقم 1&quot; و &quot;الرقم 01&quot; و &quot;الرقم 001&quot; يُمثلون الصنف الرقمي المعرّف في الحقل &quot; قيمة &quot; والذي يتزايد مع كلّ صفحة مُضافة في القل &quot; تزايد &quot;.
-- &quot; الرقم 01 &quot; و الرقم &quot;001 &quot; يُمثلون تباعا على المُخطط, الرقم ببعددين أو بثلاث أعداد على الأقلّ.
-إذا كان الرقم المُحدّد في حقل القيمة أقلّ من النوع المُختار, يسبق ذلك إضافة صفر أو صفران لإحترام الصنف.
-
--الصنف &quot; نص &quot; يُمثّل نصّا ثابتا.
-حقل &quot; تزايد &quot; غير مستخدم في هذه الحالة.
-</translation>
-    </message>
-    <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="206"/>
-        <source>Conducteur Autonumérotation</source>
-        <comment>title window</comment>
-        <translation>ترقيم آلي للموصل</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="207"/>
-        <source>C&apos;est ici que vous pouvez définir la manière dont sera numéroté les nouveaux conducteurs.
+        <source>C&apos;est ici que vous pouvez définir la manière dont seront numérotés les nouveaux conducteurs.
 -Une numérotation est composée d&apos;une variable minimum.
 -Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.
--Une variable de numérotation comprant: un type, une valeur et une incrémentation.
+-Une variable de numérotation comprend : un type, une valeur et une incrémentation.
 
--les types &quot;Chiffre 1&quot;, &quot;Chiffre 01&quot; et &quot;Chiffre 001&quot;, représente un type numérique définie dans le champs &quot;Valeur&quot;, qui s&apos;incrémente à chaque nouveau conducteur de la valeur du champ &quot;Incrémentation&quot;.
--&quot;Chiffre 01&quot; et &quot;Chiffre 001&quot;, sont respectivement représenté sur le schéma par deux et trois digits minimum.
-Si le chiffre définie dans le champs Valeur posséde moins de digits que le type choisit,celui-ci sera précédé par un ou deux 0 afin de respecter son type.
+-les types &quot;Chiffre 1&quot;, &quot;Chiffre 01&quot; et &quot;Chiffre 001&quot;, représentent un type numérique défini dans le champ &quot;Valeur&quot;, qui s&apos;incrémente à chaque nouveau conducteur de la valeur du champ &quot;Incrémentation&quot;.
+-&quot;Chiffre 01&quot; et &quot;Chiffre 001&quot;, sont respectivement représentés sur le schéma par deux et trois digits minimum.
+Si le chiffre défini dans le champ Valeur possède moins de digits que le type choisi,celui-ci sera précédé par un ou deux 0 afin de respecter son type.
 
 -Le type &quot;Texte&quot;, représente un texte fixe.
-Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
+Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 
 -Le type &quot;N° folio&quot; représente le n° du folio en cours.
 Les autres champs ne sont pas utilisés.
@@ -8354,23 +8404,13 @@ Les autres champs ne sont pas utilisés.
 -Le type &quot;Folio&quot; représente le nom du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the conductor autonumerotation</comment>
-        <translation>هنا, يُمكنك تحديد الطريقة التي سيقع بها ترقيم الصفحات الجديدة.
-- الترقيم يحتوي على مُتغيّر في الحدّ الأدنى.
-يُمكنك- إضافة أو حذف مُتغيّر ترقيم باستخدام + أو -.
-- يتكوّن مُتغيّر الترقيم من : صنف, قيمة وتزايد.
-
-- الأصناف &quot; الرقم 1&quot; و &quot;الرقم 01&quot; و &quot;الرقم 001&quot; يُمثلون الصنف الرقمي المعرّف في الحقل &quot; قيمة &quot; والذي يتزايد مع كلّ صفحة مُضافة في القل &quot; تزايد &quot;.
-- &quot; الرقم 01 &quot; و الرقم &quot;001 &quot; يُمثلون تباعا على المُخطط, الرقم ببعددين أو بثلاث أعداد على الأقلّ.
-إذا كان الرقم المُحدّد في حقل القيمة أقلّ من النوع المُختار, يسبق ذلك إضافة صفر أو صفران لإحترام الصنف.
-
--الصنف &quot; نص &quot; يُمثّل نصّا ثابتا.
-حقل &quot; تزايد &quot; غير مستخدم في هذه الحالة.
-
-الصنف &quot;  رقم الصغحة &quot; يُمثّل رقم الصفحة الحالية.
-الحقول الأخرى غير مستخدمة.
-
-الصنف &quot; صفحة &quot; يُمثّل إسم الصفحة الحالية.
-الحقول الأخرى غير مستخدمة.</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="206"/>
+        <source>Conducteur Autonumérotation</source>
+        <comment>title window</comment>
+        <translation>ترقيم آلي للموصل</translation>
     </message>
 </context>
 <context>
@@ -9038,9 +9078,9 @@ Les autres champs ne sont pas utilisés.</source>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="297"/>
-        <source>Dupliquer et editer ce modèle</source>
+        <source>Dupliquer et éditer ce modèle</source>
         <comment>menu entry</comment>
-        <translation>تكرار و تحرير هذا النموذج</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="302"/>
@@ -9064,37 +9104,47 @@ Les autres champs ne sont pas utilisés.</source>
         <translation>شكل</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="251"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="258"/>
         <source>Folio :</source>
         <translation>صفحة :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="216"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="223"/>
         <source>Auteur :</source>
         <translation>المؤلف :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="272"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="230"/>
+        <source>Indice Rev:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="244"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disponible en tant que %plant pour les modèles de cartouches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="279"/>
         <source>Disponible en tant que %filename pour les modèles de cartouches</source>
         <translation>مُتاح كـ %filename بالنسبة لنماذج إطارات التعريف</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="281"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="288"/>
         <source>Pas de date</source>
         <translation>بدون تاريخ</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="288"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="295"/>
         <source>Date courante</source>
         <translation>التارخ الجاري</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="295"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="302"/>
         <source>Appliquer la date actuelle</source>
         <translation>تطبيق التاريخ الحالي</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="161"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="168"/>
         <source>Principales</source>
         <translation>أساسية</translation>
     </message>
@@ -9104,32 +9154,22 @@ Les autres champs ne sont pas utilisés.</source>
         <translation>معلومات إطارات التعريف</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="223"/>
-        <source>Indice Rev</source>
-        <translation>مُؤشر Rev</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="230"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="237"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
         <translation>مُتاح كـ %locmach بالنسبة نماذج الاطارات </translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="237"/>
-        <source>Disponible en tant que %machine pour les modèles de cartouches</source>
-        <translation>متاح كـ % آلة بالنسبة لنماذج الاطارات</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="309"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="316"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
         <translation>مُتاح كـ  %date بالنسبة لنماذج إطارات التعريف</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="322"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="329"/>
         <source>Date fixe :</source>
         <translation>تاريخ ثابت :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="331"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="338"/>
         <source>Disponible en tant que %folio pour les modèles de cartouches
 Les variables suivantes sont utilisables :
 - %id : numéro du folio courant dans le projet 
@@ -9142,62 +9182,62 @@ Les variables suivantes sont utilisables :
 -%ترقيم آلي :ترقيم آلي للصفحة</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="342"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="349"/>
         <source>Titre :</source>
         <translation>العنوان :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="77"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="84"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Affiche le cartouche en bas (horizontalement) ou à droite (verticalement) du folio.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;عرض إطار التعريف في الأسفل  (أفقيا) أو إلى اليمين (عموديا) من الصفحة .&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="258"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="265"/>
         <source>Fichier :</source>
         <translation>ملف :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="169"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="176"/>
         <source>Date :</source>
         <translation>التاريخ :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="265"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="272"/>
         <source>Disponible en tant que %author pour les modèles de cartouches</source>
         <translation>مُتاح كـ %author بالنسبة لنماذج إطارات التعريف</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="244"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="251"/>
         <source>Disponible en tant que %title pour les modèles de cartouches</source>
         <translation>مُتاح كـ  %title بالنسبة لنماذج إطارات التعريف</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="355"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="362"/>
         <source>Page Num:</source>
         <translation>صفحة ترقيم :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="369"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="376"/>
         <source>Installation :</source>
         <translation>تركيب :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="376"/>
-        <source>Localisation</source>
-        <translation>تحديد موقع</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="362"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="369"/>
         <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
         <translation>مُتااح كـ % Revمؤشر بالنسبة لنماذج إطارات التعريف</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="399"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="383"/>
+        <source>Localisation:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="406"/>
         <source>Personnalisées</source>
         <translation>مُخصّص</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="407"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="414"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
         <translation>بالإمكان تعريف الارتباطات الخاصة بكم أسماء /قيّم لكي تُؤخذ في الإعتبار بالنسبة لإطار التعريف . مثال:
@@ -9344,7 +9384,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
-        <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{machine} : nom du groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation dans le groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
+        <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

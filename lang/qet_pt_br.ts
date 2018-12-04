@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="pt_BR" sourcelanguage="fr_FR">
+<TS version="2.1" language="pt_BR" sourcelanguage="fr_FR">
 <context>
     <name>AboutQET</name>
     <message>
@@ -318,8 +318,8 @@
     <name>AutoNumberingDockWidget</name>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="14"/>
-        <source>Autonumerotation Séléction</source>
-        <translation>Seleção de Autonumeração</translation>
+        <source>Sélection numérotation auto</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="34"/>
@@ -731,6 +731,11 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
         <translation>Côr:</translation>
     </message>
     <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="436"/>
+        <source>Taille :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="443"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="453"/>
         <source>Style du conducteur</source>
@@ -740,11 +745,6 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="446"/>
         <source>Style :</source>
         <translation>Estilo:</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="436"/>
-        <source>size:</source>
-        <translation>tamanho:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="183"/>
@@ -2457,19 +2457,24 @@ Todos os elementos e as sub pastas contidas nesta pasta serão excluídos.</tran
         <translation>Formulário</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="78"/>
-        <source>C&amp;réer de nouveaux Folios</source>
-        <translation>C&amp;riar novas páginas</translation>
-    </message>
-    <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="107"/>
         <source> Options de numérotation</source>
         <translation> Opções de numeração</translation>
     </message>
     <message>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="78"/>
+        <source>C&amp;réer de nouveaux folios</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="91"/>
+        <source>Numérotation automatique des folios sélectionnés</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="132"/>
-        <source>Nouveaux Folios</source>
-        <translation>Novas páginas</translation>
+        <source>Nouveaux folios</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="174"/>
@@ -2487,11 +2492,6 @@ Todos os elementos e as sub pastas contidas nesta pasta serão excluídos.</tran
         <translation>Seleção:</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="91"/>
-        <source>NumAuto des folios séléctionnés</source>
-        <translation>Autonumeração das páginas selecionadas</translation>
-    </message>
-    <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="40"/>
         <source>Numérotation automatique de Folio :</source>
         <translation>Autonumeração da página:</translation>
@@ -2504,31 +2504,20 @@ Todos os elementos e as sub pastas contidas nesta pasta serão excluídos.</tran
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.cpp" line="174"/>
-        <source>C&apos;est ici que vous pouvez définir la manière dont sera numéroté les nouveaux folios.
+        <source>C&apos;est ici que vous pouvez définir la manière dont seront numérotés les nouveaux folios.
 -Une numérotation est composée d&apos;une variable minimum.
 -Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.
--Une variable de numérotation comprant: un type, une valeur et une incrémentation.
+-Une variable de numérotation comprend : un type, une valeur et une incrémentation.
 
--les types &quot;Chiffre 1&quot;, &quot;Chiffre 01&quot; et &quot;Chiffre 001&quot;, représente un type numérique définie dans le champs &quot;Valeur&quot;, qui s&apos;incrémente à chaque nouveau folio de la valeur du champ &quot;Incrémentation&quot;.
--&quot;Chiffre 01&quot; et &quot;Chiffre 001&quot;, sont respectivement représenté sur le schéma par deux et trois digits minimum.
-Si le chiffre définie dans le champs Valeur posséde moins de digits que le type choisit,celui-ci sera précédé par un ou deux 0 afin de respecter son type.
+-les types &quot;Chiffre 1&quot;, &quot;Chiffre 01&quot; et &quot;Chiffre 001&quot;, représentent un type numérique défini dans le champ &quot;Valeur&quot;, qui s&apos;incrémente à chaque nouveau folio de la valeur du champ &quot;Incrémentation&quot;.
+-&quot;Chiffre 01&quot; et &quot;Chiffre 001&quot;, sont respectivement représentés sur le schéma par deux et trois digits minimum.
+Si le chiffre défini dans le champ Valeur possède moins de digits que le type choisi,celui-ci sera précédé par un ou deux 0 afin de respecter son type.
 
 -Le type &quot;Texte&quot;, représente un texte fixe.
-Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
+Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation>É aqui que você pode definir como as novas páginas serão numeradas.
--A numeração é composta por uma variável mínima.
--Você pode adicionar ou excluir uma variável de numeração através dos botões - e +.
-- Uma variável numérica incluindo: Um tipo, um valor e uma incrementação.
-
-- Os tipos &quot;Dígito 1&quot;, &quot;Dígito 01&quot; e &quot;Dígito 001&quot; representam um tipo numérico definido no campo &quot;Valor&quot;, que é incrementado para cada nova página pelo valor do campo &quot;Incrementação&quot;.
-- &quot;Dígito 01&quot; e &quot;Dígito 001&quot;, respectivamente, são representados no diagrama por dois e três dígitos no mínimo.
-Se o dígito definido no campo Valor tiver menos dígitos do que o tipo escolhido, ele será precedido por um ou dois 0s.
-
--Tipo &quot;Texto&quot;, representa um texto fixo.
-O campo &quot;Incrementação&quot; não é usado.
-</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2558,18 +2547,18 @@ O campo &quot;Incrementação&quot; não é usado.
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="41"/>
-        <source>Auto Naming Pattern:</source>
-        <translation>Padrão de Autonomeação:</translation>
+        <source>Dénomination automatique :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="53"/>
+        <source>Formule</source>
+        <translation type="unfinished">Fórmula</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="72"/>
         <source>Insert Formula Here e.g.: %prefix%l%c</source>
         <translation>Inserir fórmula aqui, por exemplo : %prefixo%l%c</translation>
-    </message>
-    <message>
-        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="53"/>
-        <source>Formula:</source>
-        <translation>Fórmula:</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="98"/>
@@ -2613,6 +2602,17 @@ que você cria. Entradas de texto e números
         <translation>Projetos</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="136"/>
+        <source>Utiliser les numéros de folio à la place de leur position dans le projet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="143"/>
+        <source>Numéroter les colonnes de cartouche à partir de 0 (1 sinon)</source>
+        <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="178"/>
         <source>Sauvegarde automatique des projets (appliqué au prochain lancement de QElectroTech)</source>
         <translation>Backup automático de projetos (aplicado no próximo lançamento do QElectroTech)</translation>
@@ -2631,11 +2631,6 @@ que você cria. Entradas de texto e números
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="150"/>
         <source>Ne pas conserver les labels des éléments lors des copier coller</source>
         <translation>Não manter rótulos de elementos ao copiar e colar</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="136"/>
-        <source>Utiliser les labels de folio à la place de leurs ID</source>
-        <translation>Use rótulos da página em vez de seus IDs</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="185"/>
@@ -2658,36 +2653,31 @@ que você cria. Entradas de texto e números
         <translation>Formulário</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="232"/>
-        <source>Collections d&apos;éléments</source>
-        <translation>Coleções de elementos</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="265"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="310"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="335"/>
         <source>Chemin de la collection utilisateur</source>
         <translation>Endereço de usuário coletados</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="244"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="296"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="321"/>
         <source>Chemin de la collection commune</source>
         <translation>Endereço de coletados comuns</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="252"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="273"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="287"/>
         <source>Par defaut</source>
         <translation>Por padrão</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="257"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="278"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="292"/>
         <source>Parcourir...</source>
         <translation>Viagem...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="286"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="300"/>
         <source>(Recharger les collections d&apos;éléments pour appliquer les changements)</source>
         <translation>(Recarregue as coleções dos elementos para aplicar as mudanças)</translation>
     </message>
@@ -2713,179 +2703,197 @@ que você cria. Entradas de texto e números
         <translation>Use de janelas (aplicado no próximo lançamento do &amp;QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="143"/>
-        <source>Activer la numérotation à partir de 0 pour la colonne des cartouches au lieu de 1</source>
-        <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
-        <translatorcomment>Escolha da incrementação a partir de 1 ou 0</translatorcomment>
-        <translation>Ativar a discagem de 0 para a coluna do cartucho, em vez de 1</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="226"/>
-        <source>Elements</source>
-        <translation>Elementos</translation>
+        <source>Collections</source>
+        <translation type="unfinished">Coleções</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="296"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="232"/>
+        <source>Accès aux collections</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="244"/>
+        <source>Répertoire de la collection commune</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="265"/>
+        <source>Répertoire de la collection utilisateur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="307"/>
+        <source>Répertoire des cartouches utilisateur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="317"/>
         <source>Gestion des éléments</source>
         <translation>Gestão de elementos</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="305"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="326"/>
         <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
         <translation>Destacar no painel os elementos recém integrados</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="312"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="333"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre.
 Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
         <translation>Cada elemento inclui informações sobre seus autores, licença ou qualquer outra informação que você considera útil em um campo livre.
 Aqui você pode especificar o valor padrão deste campo para os itens que você irá criar :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="327"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="355"/>
         <source>Langage</source>
         <translation>Idioma</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="336"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="364"/>
         <source>Appliqué au prochain lancement de QElectroTech</source>
         <translation>Aplicado ao próximo lançamento do QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="370"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="398"/>
         <source>Textes dynamiques</source>
         <translation>Textos dinâmicos</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="376"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="404"/>
         <source>Rotation des textes dynamiques</source>
         <translation>Rotação de textos dynâmicos</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="404"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="432"/>
         <source>Police des textes dynamiques</source>
         <translation>Fonte de textos dinâmicos </translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="383"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="411"/>
         <source>Longueur des textes</source>
         <translation>Comprimento de textos</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="167"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="192"/>
         <source>Général</source>
         <comment>configuration page title</comment>
         <translation>Geral</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="184"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="209"/>
         <source>Système</source>
         <translation>Sistema</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="188"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="213"/>
         <source>Arabe</source>
         <translation>Árabe</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="189"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="214"/>
         <source>Brézilien</source>
         <translation>Português BR</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="190"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="215"/>
         <source>Catalan</source>
         <translation>Catalão</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="191"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="216"/>
         <source>Tchèque</source>
         <translation>Checo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="192"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="217"/>
         <source>Allemand</source>
         <translation>Alemão</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="193"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="218"/>
         <source>Danois</source>
         <translation>Dinamarquês</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="194"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="219"/>
         <source>Grec</source>
         <translation>Grego</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="195"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="220"/>
         <source>Anglais</source>
         <translation>Inglês</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="196"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="221"/>
         <source>Espagnol</source>
         <translation>Espanhol</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="197"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="222"/>
         <source>Français</source>
         <translation>Francês</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="198"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="223"/>
         <source>Croate</source>
         <translation>Croata</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="199"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="224"/>
         <source>Italien</source>
         <translation>Italiano</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="200"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="225"/>
         <source>Polonais</source>
         <translation>Polonês</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="201"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="226"/>
         <source>Portugais</source>
         <translation>Português</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="202"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="227"/>
         <source>Roumains</source>
         <translation>Romeno</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="203"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="228"/>
         <source>Russe</source>
         <translation>Russo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="204"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="229"/>
         <source>Slovène</source>
         <translation>Sloveno</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="205"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="230"/>
         <source>Pays-Bas</source>
         <translation>Holandês</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="206"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="231"/>
         <source>Belgique-Flemish</source>
         <translation>Belgo-Flamengo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="207"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="232"/>
         <source>Turc</source>
         <translation>Turco</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="208"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="233"/>
         <source>Hongrois</source>
         <translation>Húngaro</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="349"/>
+        <source>Chemin des cartouches utilisateur</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3284,17 +3292,17 @@ Aqui você pode especificar o valor padrão deste campo para os itens que você 
         <translation>Formulário</translation>
     </message>
     <message>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="133"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Délier l&apos;élément sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="147"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Lier l&apos;élément sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="123"/>
-        <source>Délier l&apos;élément séléctionné</source>
-        <translation>Desvincular o elemento selecionado</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="137"/>
-        <source>Lier l&apos;élément séléctionné</source>
-        <translation>Vincular o elemento selecionado</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="113"/>
         <source>Éléments disponibles</source>
         <translation>Elementos disponíveis</translation>
     </message>
@@ -3670,18 +3678,18 @@ Aqui você pode especificar o valor padrão deste campo para os itens que você 
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="94"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="99"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="196"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="313"/>
-        <source>Machine</source>
-        <translation>Máquina</translation>
-    </message>
-    <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="94"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="99"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="198"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="315"/>
         <source>Locmach</source>
         <translation>LocalMaq</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="94"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="99"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="196"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="313"/>
+        <source>Installation</source>
+        <translation type="unfinished">Instalação</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="100"/>
@@ -3906,8 +3914,28 @@ As seguintes variáveis ​​são incompatíveis:
     <name>ProjectAutoNumConfigPage</name>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="235"/>
-        <source>Auto numerotation</source>
-        <translation>Autonumeração</translation>
+        <source>Numérotation auto</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/projectconfigpages.cpp" line="266"/>
+        <source>Conducteurs</source>
+        <translation type="unfinished">Condutores</translation>
+    </message>
+    <message>
+        <location filename="../sources/projectconfigpages.cpp" line="270"/>
+        <source>Eléments</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/projectconfigpages.cpp" line="274"/>
+        <source>Folios</source>
+        <translation type="unfinished">Páginas</translation>
+    </message>
+    <message>
+        <location filename="../sources/projectconfigpages.cpp" line="278"/>
+        <source>Numérotation auto des folios</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="348"/>
@@ -3926,26 +3954,6 @@ As seguintes variáveis ​​são incompatíveis:
         <location filename="../sources/projectconfigpages.cpp" line="262"/>
         <source>Management</source>
         <translation>Gestão</translation>
-    </message>
-    <message>
-        <location filename="../sources/projectconfigpages.cpp" line="266"/>
-        <source>Conducteur</source>
-        <translation>Condutor</translation>
-    </message>
-    <message>
-        <location filename="../sources/projectconfigpages.cpp" line="270"/>
-        <source>Element</source>
-        <translation>Elemento</translation>
-    </message>
-    <message>
-        <location filename="../sources/projectconfigpages.cpp" line="274"/>
-        <source>Folio</source>
-        <translation>Página</translation>
-    </message>
-    <message>
-        <location filename="../sources/projectconfigpages.cpp" line="278"/>
-        <source>Folio autonumérotation</source>
-        <translation>Autonumeração da página</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="389"/>
@@ -4091,93 +4099,98 @@ Você deseja salvar as alterações ?</translation>
     <name>PropertiesEditorDockWidget</name>
     <message>
         <location filename="../sources/PropertiesEditor/propertieseditordockwidget.ui" line="14"/>
-        <source>Propriété de la séléction</source>
-        <translation>Propriedade da seleção</translation>
+        <source>Propriétés de la sélection</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>QETApp</name>
     <message>
-        <location filename="../sources/qetapp.cpp" line="87"/>
+        <location filename="../sources/qetapp.cpp" line="88"/>
         <source>Chargement... Initialisation du cache des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
         <translation>Carregando... Inicialização do cache das coleções de elementos</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="96"/>
+        <location filename="../sources/qetapp.cpp" line="97"/>
         <source>Chargement... Éditeur de schéma</source>
         <comment>splash screen caption</comment>
         <translation>Carregando... Editor de esquema</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="100"/>
+        <location filename="../sources/qetapp.cpp" line="101"/>
         <source>Chargement... Ouverture des fichiers</source>
         <comment>splash screen caption</comment>
         <translation>Carregando... Abertura de arquivos</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="174"/>
+        <location filename="../sources/qetapp.cpp" line="175"/>
         <source>LTR</source>
         <comment>Translate this string to RTL if you are translating to a Right-to-Left language, else translate to LTR</comment>
         <translation>LTR</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="320"/>
-        <source>formule du label</source>
-        <translation>Fórmula da Legenda</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="321"/>
+        <location filename="../sources/qetapp.cpp" line="327"/>
         <source>Label</source>
         <translation>Legenda</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="322"/>
+        <location filename="../sources/qetapp.cpp" line="331"/>
         <source>Commentaire</source>
         <translation>Comentário</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="325"/>
+        <location filename="../sources/qetapp.cpp" line="339"/>
         <source>Fabricant</source>
         <translation>Fabricante</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="328"/>
+        <location filename="../sources/qetapp.cpp" line="334"/>
         <source>Bloc auxiliaire 1</source>
         <translation>Bloco auxiliar 1</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="329"/>
+        <location filename="../sources/qetapp.cpp" line="335"/>
         <source>Bloc auxiliaire 2</source>
         <translation>Bloco auxiliar 2</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="323"/>
+        <location filename="../sources/qetapp.cpp" line="337"/>
         <source>Description textuelle</source>
         <translation>Descrição textual</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="324"/>
+        <location filename="../sources/qetapp.cpp" line="338"/>
         <source>Numéro d&apos;article</source>
         <translation>Número do artigo</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="326"/>
+        <location filename="../sources/qetapp.cpp" line="340"/>
         <source>Numéro de commande</source>
         <translation>Número do pedido</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="327"/>
+        <location filename="../sources/qetapp.cpp" line="342"/>
         <source>Fournisseur</source>
         <translation>Fornecedor</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="330"/>
+        <location filename="../sources/qetapp.cpp" line="341"/>
         <source>Numéro interne</source>
         <translation>Número interno</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="331"/>
+        <location filename="../sources/qetapp.cpp" line="326"/>
+        <source>Formule du label</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="328"/>
+        <source>Installation</source>
+        <translation type="unfinished">Instalação</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="329"/>
         <source>Localisation</source>
         <translation>Localização</translation>
     </message>
@@ -4192,187 +4205,197 @@ Você deseja salvar as alterações ?</translation>
         <translation>Tensão / Protocólo</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="370"/>
+        <location filename="../sources/qetapp.cpp" line="343"/>
+        <source>Quantité</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="344"/>
+        <source>Unité</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="388"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates collection provided by QElectroTech</comment>
         <translation>Blocos de título do QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="384"/>
+        <location filename="../sources/qetapp.cpp" line="402"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s title block templates collection</comment>
         <translation>Blocos de título do usuário</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="965"/>
+        <location filename="../sources/qetapp.cpp" line="1005"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="966"/>
+        <location filename="../sources/qetapp.cpp" line="1006"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation>QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="967"/>
+        <location filename="../sources/qetapp.cpp" line="1007"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Esquema</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="968"/>
+        <location filename="../sources/qetapp.cpp" line="1008"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Elétrico</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="969"/>
+        <location filename="../sources/qetapp.cpp" line="1009"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1367"/>
+        <location filename="../sources/qetapp.cpp" line="1407"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
         <translation>Configurar  o QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1478"/>
+        <location filename="../sources/qetapp.cpp" line="1518"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>Carregando...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1543"/>
+        <location filename="../sources/qetapp.cpp" line="1583"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>Carregando... Ícone da bandeja do sistema</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1545"/>
+        <location filename="../sources/qetapp.cpp" line="1585"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1547"/>
+        <location filename="../sources/qetapp.cpp" line="1587"/>
         <source>&amp;Quitter</source>
         <translation>Sai&amp;r</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1548"/>
+        <location filename="../sources/qetapp.cpp" line="1588"/>
         <source>&amp;Masquer</source>
         <translation>&amp;Esconder</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1549"/>
+        <location filename="../sources/qetapp.cpp" line="1589"/>
         <source>&amp;Restaurer</source>
         <translation>&amp;Mostrar</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1550"/>
+        <location filename="../sources/qetapp.cpp" line="1590"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>&amp;Esconder todos os editores de esquema</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1551"/>
+        <location filename="../sources/qetapp.cpp" line="1591"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>&amp;Mostrar todos os editores de esquemas</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1552"/>
+        <location filename="../sources/qetapp.cpp" line="1592"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Esconder os editores de elementos</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1553"/>
+        <location filename="../sources/qetapp.cpp" line="1593"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Mostrar todos os editores de elementos</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1554"/>
+        <location filename="../sources/qetapp.cpp" line="1594"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Esconder todos os editores de blocos de título</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1555"/>
+        <location filename="../sources/qetapp.cpp" line="1595"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Mostrar todos os editores de blocos de título</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1556"/>
+        <location filename="../sources/qetapp.cpp" line="1596"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>&amp;Novo editor de esquemas</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1557"/>
+        <location filename="../sources/qetapp.cpp" line="1597"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>&amp;Novo editor de elementos</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1559"/>
+        <location filename="../sources/qetapp.cpp" line="1599"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>Fechar o aplicativo QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1560"/>
+        <location filename="../sources/qetapp.cpp" line="1600"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>Minimizar QElectroTech para a bandeja do sistema</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1561"/>
+        <location filename="../sources/qetapp.cpp" line="1601"/>
         <source>Restaurer QElectroTech</source>
         <translation>Restaurar QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1577"/>
+        <location filename="../sources/qetapp.cpp" line="1617"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1646"/>
+        <location filename="../sources/qetapp.cpp" line="1686"/>
         <source>Éditeurs de schémas</source>
         <translation>Editores de esquemas</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1655"/>
+        <location filename="../sources/qetapp.cpp" line="1695"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>Editores de elementos</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1665"/>
+        <location filename="../sources/qetapp.cpp" line="1705"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
         <translation>Editores de blocos de título</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1704"/>
+        <location filename="../sources/qetapp.cpp" line="1744"/>
         <source>&lt;b&gt;Le fichier de restauration suivant a été trouvé,&lt;br&gt;Voulez-vous l&apos;ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;O arquivo de restauração a seguir foi encontrado,&lt;br&gt;Deseja abri-lo ?&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1707"/>
+        <location filename="../sources/qetapp.cpp" line="1747"/>
         <source>&lt;b&gt;Les fichiers de restauration suivant on été trouvé,&lt;br&gt;Voulez-vous les ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;Os arquivos de restauração a seguir foi encontrados,&lt;br&gt;Deseja abri-los ?&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1712"/>
+        <location filename="../sources/qetapp.cpp" line="1752"/>
         <source>Fichier de restauration</source>
         <translation>Restaurar o arquivo</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1815"/>
+        <location filename="../sources/qetapp.cpp" line="1855"/>
         <source>Usage : </source>
         <translation>Utilização: </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1815"/>
+        <location filename="../sources/qetapp.cpp" line="1855"/>
         <source> [options] [fichier]...
 
 </source>
@@ -4381,7 +4404,7 @@ Você deseja salvar as alterações ?</translation>
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1816"/>
+        <location filename="../sources/qetapp.cpp" line="1856"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -4398,28 +4421,28 @@ Opções disponíveis:
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1822"/>
+        <location filename="../sources/qetapp.cpp" line="1862"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=DIR     Define a pasta da coleção de elementos
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1825"/>
+        <location filename="../sources/qetapp.cpp" line="1865"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
         <translation>  --common-tbt-dir=DIR          Definir a pasta da coleção de modelos de blocos de título
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1828"/>
+        <location filename="../sources/qetapp.cpp" line="1868"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=DIR              Define a pasta de configuração
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1830"/>
+        <location filename="../sources/qetapp.cpp" line="1870"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=DIR                Define a pasta dos arquivos de idioma
@@ -4629,11 +4652,6 @@ Opções disponíveis:
         <translation>Exportar uma lista de materiais</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="402"/>
-        <source>Lancer le plugin de creation de bornier</source>
-        <translation>Iniciar o plugin : Criador de régua de bornes</translation>
-    </message>
-    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="406"/>
         <source>en utilisant des onglets</source>
         <translation>Usando abas</translation>
@@ -4657,6 +4675,11 @@ Opções disponíveis:
         <location filename="../sources/qetdiagrameditor.cpp" line="421"/>
         <source>&amp;Mosaïque</source>
         <translation>&amp;Mosaico</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="402"/>
+        <source>Lancer le plugin de création de borniers</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="425"/>
@@ -4798,11 +4821,6 @@ Opções disponíveis:
         <location filename="../sources/qetdiagrameditor.cpp" line="520"/>
         <source>Éditer l&apos;item sélectionné</source>
         <translation>Editar o item selecionado</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="521"/>
-        <source>Grouper les textes séléctionné</source>
-        <translation>Agrupar textos selecionados</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="524"/>
@@ -5075,9 +5093,14 @@ Opções disponíveis:
         <translation>Ativa o projeto anterior</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="521"/>
+        <source>Grouper les textes sélectionnés</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="617"/>
-        <source>Chercher</source>
-        <translation>Procurar</translation>
+        <source>Chercher/remplacer</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="629"/>
@@ -5726,15 +5749,6 @@ No prompt : python -m pip install --upgrade qet_tb_generator
         <source> et</source>
         <translation> e</translation>
     </message>
-    <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="744"/>
-        <source> %n avertissment(s)</source>
-        <comment>warnings</comment>
-        <translation>
-            <numerusform> %n aviso</numerusform>
-            <numerusform> %n avisos</numerusform>
-        </translation>
-    </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="753"/>
         <source>&lt;b&gt;%1&lt;/b&gt; : %2</source>
@@ -5837,6 +5851,15 @@ Coloque o binário DXFtoQET.exe no diretório C: \ Users \ nome_do_usuário \ Ap
 &gt;&gt; Instalar no macOSX
 Coloque o binário DXFtoQET.app no ​​diretório /Users/user_name/.qet/ 
 </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/editor/qetelementeditor.cpp" line="744"/>
+        <source> %n avertissement(s)</source>
+        <comment>warnings</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1087"/>
@@ -6769,6 +6792,7 @@ O que você deseja fazer?</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="267"/>
+        <location filename="../sources/nomenclature.cpp" line="117"/>
         <source>Installation</source>
         <translation>Instalação</translation>
     </message>
@@ -7064,142 +7088,177 @@ O que você deseja fazer?</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="93"/>
+        <source>F002</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="94"/>
         <source>G001</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="94"/>
+        <location filename="../sources/nomenclature.cpp" line="95"/>
         <source>H001</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="95"/>
+        <location filename="../sources/nomenclature.cpp" line="96"/>
+        <source>H002</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="97"/>
         <source>I001</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="96"/>
+        <location filename="../sources/nomenclature.cpp" line="98"/>
         <source>J001</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="97"/>
+        <location filename="../sources/nomenclature.cpp" line="99"/>
         <source>K001</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="98"/>
+        <location filename="../sources/nomenclature.cpp" line="100"/>
         <source>L001</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="99"/>
+        <location filename="../sources/nomenclature.cpp" line="101"/>
+        <source>L002</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="102"/>
+        <source>L003</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="103"/>
         <source>M001</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="100"/>
+        <location filename="../sources/nomenclature.cpp" line="104"/>
         <source>M002</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="101"/>
+        <location filename="../sources/nomenclature.cpp" line="105"/>
         <source>N001</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="102"/>
+        <location filename="../sources/nomenclature.cpp" line="106"/>
         <source>O001</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="103"/>
+        <location filename="../sources/nomenclature.cpp" line="107"/>
         <source>P001</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="104"/>
-        <source>N° de folio</source>
-        <translation>N° da página</translation>
+        <location filename="../sources/nomenclature.cpp" line="108"/>
+        <source>Position du folio</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="105"/>
+        <location filename="../sources/nomenclature.cpp" line="110"/>
+        <source>Numéro de folio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="120"/>
+        <source>Numéro de commande</source>
+        <translation type="unfinished">Número do pedido</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="126"/>
+        <source>Numéro interne</source>
+        <translation type="unfinished">Número interno</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="109"/>
         <source>Titre de folio</source>
         <translation>Título da página</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="106"/>
-        <source>Label de folio</source>
-        <translation>Legenda da página</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="107"/>
+        <location filename="../sources/nomenclature.cpp" line="111"/>
         <source>Désignation qet</source>
         <translation>Designação qet</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="108"/>
+        <location filename="../sources/nomenclature.cpp" line="112"/>
         <source>Position</source>
         <translation>Posição</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="109"/>
+        <location filename="../sources/nomenclature.cpp" line="113"/>
         <source>Label</source>
         <translation>Legenda</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="110"/>
+        <location filename="../sources/nomenclature.cpp" line="114"/>
+        <source>Formule du label</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="115"/>
         <source>Désignation</source>
         <translation>Designação</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="111"/>
+        <location filename="../sources/nomenclature.cpp" line="116"/>
         <source>Description</source>
         <translation>Descrição</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="112"/>
+        <location filename="../sources/nomenclature.cpp" line="118"/>
         <source>Commentaire</source>
         <translation>Comentário</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="113"/>
+        <location filename="../sources/nomenclature.cpp" line="119"/>
         <source>Fabricant</source>
         <translation>Fabricante</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="114"/>
-        <source>Reference Fabricant</source>
-        <translation>Referência do fabricante</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="115"/>
+        <location filename="../sources/nomenclature.cpp" line="121"/>
         <source>Fournisseur</source>
         <translation>Fornecedor</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="116"/>
+        <location filename="../sources/nomenclature.cpp" line="122"/>
+        <source>Quantité</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="123"/>
+        <source>Unité</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="124"/>
         <source>Bloc auxiliaire 1</source>
         <translation>Bloco auxiliar 1</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="117"/>
+        <location filename="../sources/nomenclature.cpp" line="125"/>
         <source>Bloc auxiliaire 2</source>
         <translation>Bloco auxiliar 2</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="118"/>
-        <source>Machine-reference</source>
-        <translation>Referência da máquina</translation>
-    </message>
-    <message>
         <location filename="../sources/diagramfoliolist.cpp" line="268"/>
-        <location filename="../sources/nomenclature.cpp" line="119"/>
+        <location filename="../sources/nomenclature.cpp" line="127"/>
         <source>Localisation</source>
         <translation>Localização</translation>
     </message>
     <message>
-        <location filename="../sources/nomenclature.cpp" line="120"/>
+        <location filename="../sources/nomenclature.cpp" line="128"/>
         <source>Fonction</source>
         <translation>Função</translation>
     </message>
@@ -7596,10 +7655,9 @@ O que você deseja fazer?</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="65"/>
-        <source>Une configuration de textes nommé &lt;&lt; %1 &gt;&gt; existe déjà.
+        <source>Une configuration de textes nommée &lt;&lt; %1 &gt;&gt; existe déjà.
 Voulez-vous la remplacer ?</source>
-        <translation>Uma configuração de texto chamada &lt;&lt; %1 &gt;&gt; já existe.
-Você quer substituí-lo ?</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="84"/>
@@ -7618,13 +7676,13 @@ Você quer substituí-lo ?</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="170"/>
-        <source>Séléctionner une configuration de textes</source>
-        <translation>Selecione uma configuração de texto</translation>
+        <source>Sélectionner une configuration de textes</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="171"/>
-        <source>Séléctionner la configuration de textes à ajouter à l&apos;élément</source>
-        <translation>Selecione a configuração de texto para adicionar ao elemento</translation>
+        <source>Sélectionner la configuration de textes à ajouter à l&apos;élément</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="239"/>
@@ -7643,18 +7701,18 @@ Você quer substituí-lo ?</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="60"/>
-        <source>Chercher remplacer les propriétés de folio</source>
-        <translation>Localizar e substituir as propriedades do folio</translation>
+        <source>Chercher/remplacer les propriétés de folio</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="171"/>
-        <source>Chercher remplacer les propriétés d&apos;éléments</source>
-        <translation>Localizar e substituir as propriedades de elementos</translation>
+        <source>Chercher/remplacer les propriétés d&apos;éléments</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="231"/>
-        <source>Chercher remplacer des textes independant</source>
-        <translation>Localizar e substituir as propriedades de textos independentes </translation>
+        <source>Chercher/remplacer des textes independants</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -7812,9 +7870,8 @@ Você quer substituí-lo ?</translation>
     <name>ReplaceElementDialog</name>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceelementdialog.cpp" line="83"/>
-        <source>Non modifier</source>
-        <translatorcomment>Pode ser entendido como não modificado</translatorcomment>
-        <translation>Não modifique</translation>
+        <source>Ne pas modifier</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -7854,11 +7911,12 @@ Você quer substituí-lo ?</translation>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="87"/>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="121"/>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="131"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="191"/>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="207"/>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="217"/>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="227"/>
-        <source>Non modifier</source>
-        <translation>Não modificar</translation>
+        <source>Ne pas modifier</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="84"/>
@@ -7916,9 +7974,9 @@ Você quer substituí-lo ?</translation>
         <translation>Aplicar a data atual</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="191"/>
-        <source>Non &amp;modifier</source>
-        <translation>Não &amp;modificar</translation>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="224"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disponible en tant que %plant pour les modèles de cartouches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="200"/>
@@ -7937,11 +7995,6 @@ As seguintes variáveis ​​são utilizáveis:
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="214"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
         <translation>Disponível como %LocalMaq para modelos de bloco de título</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="224"/>
-        <source>Disponible en tant que %machine pour les modèles de cartouches</source>
-        <translation>Disponível como %Máquina para modelos de bloco de título</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="234"/>
@@ -7988,20 +8041,13 @@ associar o nome &quot;variável_personalizada&quot; e o valor &quot;1745&quot; v
         <location filename="../sources/ui/reportpropertiewidget.ui" line="35"/>
         <source>Vous pouvez définir un label personnalisé pour les reports de folio.
 Créer votre propre texte en vous aidant des variables suivantes :
-%f : le numéro de folio 
-%F: le label de folio
-%M:  Machine 
-%LM: Location
+%f : la position du folio dans le projet 
+%F : le numéro de folio
+%M :  l&apos;installation
+%LM : la localisation
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation>Você pode definir uma legenda personalizada para relatórios da página.
-Crie seu próprio texto usando as seguintes variáveis:
-% f: O número do página
-% F: A legenda da página
-% M: Máquina
-% LM: Localização
-% l: O número da linha
-% c: O número da coluna</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -8017,6 +8063,11 @@ Crie seu próprio texto usando as seguintes variáveis:
         <translation>Ir para a próxima aba</translation>
     </message>
     <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="63"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Afficher les options avancées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="107"/>
         <source>Aller à la correspondance précédente</source>
         <translation>Ir para aba anterior</translation>
@@ -8027,59 +8078,89 @@ Crie seu próprio texto usando as seguintes variáveis:
         <translation>Sair</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="156"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="173"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les éléments&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="183"/>
         <source>Champ texte de folio</source>
         <translation>Campo de texto em página</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="166"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="203"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les conducteurs&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="213"/>
+        <source>Mode :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="220"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les folios&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="223"/>
         <source>Folio</source>
         <translation>Página</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="190"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="234"/>
+        <source>Texte brut</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="239"/>
+        <source>Mots entiers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="260"/>
+        <source>Sensible à la casse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="272"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer la correspondance sélectionnée&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="285"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer les correspondances cochées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="176"/>
         <source>Élément</source>
         <translation>Elemento</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="200"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="206"/>
         <source>Conducteur</source>
         <translation>Condutor</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="207"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="156"/>
         <source>Remplacer :</source>
         <translation>Substituir :</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="232"/>
-        <source>Remplacer la correspondance séléctionner</source>
-        <translation>Substituir a correspondência selecionada</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="235"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="275"/>
         <source>Remplacer</source>
         <translation>Substituir</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="245"/>
-        <source>Remplacer les correspondances coché</source>
-        <translation>Substituir correspondências verificadas</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="248"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="288"/>
         <source>Tout remplacer</source>
         <translation>Substituir tudo</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="180"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="193"/>
         <source>Chercher :</source>
         <translation>Procurar :</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="63"/>
-        <source>Avancé</source>
-        <translation>Avançar</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="32"/>
@@ -8103,33 +8184,49 @@ Crie seu próprio texto usando as seguintes variáveis:
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="154"/>
-        <source>Elements</source>
-        <translation>Elementos</translation>
+        <source>Eléments</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="159"/>
-        <source>Elements simple</source>
-        <translation>Elementos simples</translation>
+        <source>Eléments simple</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="165"/>
-        <source>Elements maître</source>
-        <translation>Elementos mestres</translation>
+        <source>Eléments maître</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="171"/>
-        <source>Elements esclave</source>
-        <translation>Elementso escravos</translation>
+        <source>Eléments esclave</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="177"/>
-        <source>Elements report de folio</source>
-        <translation>Elementos relatados na página</translation>
+        <source>Eléments report de folio</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="183"/>
-        <source>Elements bornier</source>
-        <translation>Elementos terminais</translation>
+        <source>Eléments bornier</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="859"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="860"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="868"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="869"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="888"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="896"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="926"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="942"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="992"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="993"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1001"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1002"/>
+        <source> [édité]</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="191"/>
@@ -8137,25 +8234,9 @@ Crie seu próprio texto usando as seguintes variáveis:
         <translation>Condutores</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="333"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="337"/>
         <source>Inconnue</source>
         <translation>Desconhecido</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="825"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="826"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="834"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="835"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="854"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="862"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="892"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="908"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="958"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="959"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="967"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="968"/>
-        <source> [Édité]</source>
-        <translation> [Editado]</translation>
     </message>
 </context>
 <context>
@@ -8228,51 +8309,34 @@ Crie seu próprio texto usando as seguintes variáveis:
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="188"/>
-        <source>C&apos;est ici que vous pouvez définir la manière dont sera numéroté les nouveaux folios.
+        <source>C&apos;est ici que vous pouvez définir la manière dont seront numérotés les nouveaux folios.
 -Une numérotation est composée d&apos;une variable minimum.
 -Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.
--Une variable de numérotation comprant: un type, une valeur et une incrémentation.
+-Une variable de numérotation comprend : un type, une valeur et une incrémentation.
 
--les types &quot;Chiffre 1&quot;, &quot;Chiffre 01&quot; et &quot;Chiffre 001&quot;, représente un type numérique définie dans le champs &quot;Valeur&quot;, qui s&apos;incrémente à chaque nouveau folio de la valeur du champ &quot;Incrémentation&quot;.
--&quot;Chiffre 01&quot; et &quot;Chiffre 001&quot;, sont respectivement représenté sur le schéma par deux et trois digits minimum.
-Si le chiffre définie dans le champs Valeur posséde moins de digits que le type choisit,celui-ci sera précédé par un ou deux 0 afin de respecter son type.
+-les types &quot;Chiffre 1&quot;, &quot;Chiffre 01&quot; et &quot;Chiffre 001&quot;, représentent un type numérique défini dans le champ &quot;Valeur&quot;, qui s&apos;incrémente à chaque nouveau folio de la valeur du champ &quot;Incrémentation&quot;.
+-&quot;Chiffre 01&quot; et &quot;Chiffre 001&quot;, sont respectivement représentés sur le schéma par deux et trois digits minimum.
+Si le chiffre défini dans le champ Valeur possède moins de digits que le type choisi,celui-ci sera précédé par un ou deux 0 afin de respecter son type.
 
 -Le type &quot;Texte&quot;, représente un texte fixe.
-Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
+Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation>É aqui que você pode definir como as novas páginas serão numeradas.
--A numeração é composta por uma variável mínima.
--Você pode adicionar ou excluir uma variável através dos botões - e +.
-- Uma variável numérica incluindo: um tipo, um valor e uma incrementação.
-
-- Os tipos &quot;Dígito 1&quot;, &quot;Dígito 01&quot; e &quot;Dígito 001&quot; representam um tipo numérico definido no campo &quot;Valor&quot;, que é incrementado para cada nova página pelo valor do campo &quot;Incrementação&quot;.
-- &quot;Dígito 01&quot; e &quot;Dígito 001&quot;, respectivamente, são representados no diagrama por dois e três dígitos no mínimo.
-Se o dígito definido no campo Valor tiver menos dígitos do que o tipo escolhido, ele será precedido por um ou dois 0s.para respeitar seu tipo.
-
--Tipo &quot;Texto&quot;, representa um texto fixo.
-O campo &quot;Incrementação&quot; não é usado.
-</translation>
-    </message>
-    <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="206"/>
-        <source>Conducteur Autonumérotation</source>
-        <comment>title window</comment>
-        <translation>Autonumeração do Contutor</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="207"/>
-        <source>C&apos;est ici que vous pouvez définir la manière dont sera numéroté les nouveaux conducteurs.
+        <source>C&apos;est ici que vous pouvez définir la manière dont seront numérotés les nouveaux conducteurs.
 -Une numérotation est composée d&apos;une variable minimum.
 -Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.
--Une variable de numérotation comprant: un type, une valeur et une incrémentation.
+-Une variable de numérotation comprend : un type, une valeur et une incrémentation.
 
--les types &quot;Chiffre 1&quot;, &quot;Chiffre 01&quot; et &quot;Chiffre 001&quot;, représente un type numérique définie dans le champs &quot;Valeur&quot;, qui s&apos;incrémente à chaque nouveau conducteur de la valeur du champ &quot;Incrémentation&quot;.
--&quot;Chiffre 01&quot; et &quot;Chiffre 001&quot;, sont respectivement représenté sur le schéma par deux et trois digits minimum.
-Si le chiffre définie dans le champs Valeur posséde moins de digits que le type choisit,celui-ci sera précédé par un ou deux 0 afin de respecter son type.
+-les types &quot;Chiffre 1&quot;, &quot;Chiffre 01&quot; et &quot;Chiffre 001&quot;, représentent un type numérique défini dans le champ &quot;Valeur&quot;, qui s&apos;incrémente à chaque nouveau conducteur de la valeur du champ &quot;Incrémentation&quot;.
+-&quot;Chiffre 01&quot; et &quot;Chiffre 001&quot;, sont respectivement représentés sur le schéma par deux et trois digits minimum.
+Si le chiffre défini dans le champ Valeur possède moins de digits que le type choisi,celui-ci sera précédé par un ou deux 0 afin de respecter son type.
 
 -Le type &quot;Texte&quot;, représente un texte fixe.
-Le champs &quot;Incrémentation&quot; n&apos;est pas utilisé.
+Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 
 -Le type &quot;N° folio&quot; représente le n° du folio en cours.
 Les autres champs ne sont pas utilisés.
@@ -8280,23 +8344,13 @@ Les autres champs ne sont pas utilisés.
 -Le type &quot;Folio&quot; représente le nom du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the conductor autonumerotation</comment>
-        <translation>É aqui que você pode definir como os novos condutores serão numerados.
--A numeração é composta por uma variável mínima.
--Você pode adicionar ou excluir uma variável através dos botões - e +.
-- Uma variável numérica incluindo: um tipo, um valor e uma incrementação.
-
--Os tipos &quot;Dígito 1&quot;, &quot;Dígito 01&quot; e &quot;Dígito 001&quot; representam um tipo numérico definido no campo &quot;Valor&quot;, que incrementa cada novo driver pelo valor do campo &quot;Incrementação&quot;.
-- &quot;Dígito 01&quot; e &quot;Dígito 001&quot;, respectivamente, são representados no diagrama por dois e três dígitos no mínimo.
-Se o dígito definido no campo Valor tiver menos dígitos do que o tipo escolhido, ele será precedido por um ou dois 0s para respeitar seu tipo.
-
--Tipo &quot;Texto&quot;, representa um texto fixo.
-O campo &quot;Incrementação&quot; não é usado.
-
--O tipo &quot;Nº da página&quot; representa o número da página atual.
-Os outros campos não são usados.
-
--O tipo &quot;Página&quot; representa o nome da página atual.
-Os outros campos não são usados.</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="206"/>
+        <source>Conducteur Autonumérotation</source>
+        <comment>title window</comment>
+        <translation>Autonumeração do Contutor</translation>
     </message>
 </context>
 <context>
@@ -8967,97 +9021,97 @@ Os outros campos não são usados.</translation>
         <translation>Modelo:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="161"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="168"/>
         <source>Principales</source>
         <translation>Principais</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="216"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="223"/>
         <source>Auteur :</source>
         <translation>Autor:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="223"/>
-        <source>Indice Rev</source>
-        <translation>Índice de Revisão</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="230"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="237"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
         <translation>Disponível como %LocalMaq para modelos de bloco de título</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="237"/>
-        <source>Disponible en tant que %machine pour les modèles de cartouches</source>
-        <translation>Disponível como %Máquina para modelos de bloco de título</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="281"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="288"/>
         <source>Pas de date</source>
         <translation>Sem data</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="288"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="295"/>
         <source>Date courante</source>
         <translation>Data atual</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="295"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="302"/>
         <source>Appliquer la date actuelle</source>
         <translation>Aplicar a data atual</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="309"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="316"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
         <translation>Disponível como %Data para os modelos de bloco de título</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="322"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="329"/>
         <source>Date fixe :</source>
         <translation>Data fixa:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="169"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="176"/>
         <source>Date :</source>
         <translation>Data:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="258"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="265"/>
         <source>Fichier :</source>
         <translation>Arquivo:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="244"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="251"/>
         <source>Disponible en tant que %title pour les modèles de cartouches</source>
         <translation>Disponível como %título para os modelos de bloco de título</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="342"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="349"/>
         <source>Titre :</source>
         <translation>Título:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="265"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="272"/>
         <source>Disponible en tant que %author pour les modèles de cartouches</source>
         <translation>Disponível como %autor para os modelos de bloco de título</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="251"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="258"/>
         <source>Folio :</source>
         <translation>Página:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="272"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="279"/>
         <source>Disponible en tant que %filename pour les modèles de cartouches</source>
         <translation>Disponível como %Nomedoarquivo para os modelos de bloco de título</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="77"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="84"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Affiche le cartouche en bas (horizontalement) ou à droite (verticalement) du folio.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Exibir o bloco de título em baixo (horizontalmente) ou à direita (verticalmente) da página.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="331"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="230"/>
+        <source>Indice Rev:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="244"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disponible en tant que %plant pour les modèles de cartouches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="338"/>
         <source>Disponible en tant que %folio pour les modèles de cartouches
 Les variables suivantes sont utilisables :
 - %id : numéro du folio courant dans le projet 
@@ -9070,32 +9124,32 @@ As seguintes variáveis ​​são utilizáveis:
 -% autonum: Autonumeração da página</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="355"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="362"/>
         <source>Page Num:</source>
         <translation>Nº Pág:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="369"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="376"/>
         <source>Installation :</source>
         <translation>Instalação :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="376"/>
-        <source>Localisation</source>
-        <translation>Localização</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="362"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="369"/>
         <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
         <translation>Disponível como %Índicerev para modelos de blocos de título</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="399"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="383"/>
+        <source>Localisation:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="406"/>
         <source>Personnalisées</source>
         <translation>Personalizados</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="407"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="414"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
         <translation>Você pode definir aqui as suas próprias associações de nomes/valores para que sejam levados em conta pelo bloco de título. Exemplo:
@@ -9109,9 +9163,9 @@ associar o nome &quot;variável_personalizada&quot; e o valor &quot;1745&quot; v
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="297"/>
-        <source>Dupliquer et editer ce modèle</source>
+        <source>Dupliquer et éditer ce modèle</source>
         <comment>menu entry</comment>
-        <translation>Duplicar e editar este modelo</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="302"/>
@@ -9282,8 +9336,8 @@ associar o nome &quot;variável_personalizada&quot; e o valor &quot;1745&quot; v
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
-        <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{machine} : nom du groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation dans le groupe fonctionnel du projet&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation>Por padrão, as seguintes variáveis estão disponíveis:&lt;ul&gt;&lt;li&gt;%{author} : autor da pagina&lt;/li&gt;&lt;li&gt;%{date} : data da pagina&lt;/li&gt;&lt;li&gt;%{title} : título da página&lt;/li&gt;&lt;li&gt;%{filename} : nome do arquivo do projeto&lt;/li&gt;&lt;li&gt;%{machine} : nome do grupo funcional do projeto&lt;/li&gt;&lt;li&gt;%{locmach} : nome da localização do grupo funcional do projeto&lt;/li&gt;&lt;li&gt;%{indexrev} : índice de revisão da página&lt;/li&gt;&lt;li&gt;%{version} : versão do software&lt;/li&gt;&lt;li&gt;%{folio} : indicações relativas à página&lt;/li&gt;&lt;li&gt;%{folio-id} : posição da página dentro do projeto&lt;/li&gt;&lt;li&gt;%{folio-total} : nome total das páginas dentro do projeto&lt;/li&gt;&lt;li&gt;{projecttitle} : título do projeto&lt;/li&gt;&lt;li&gt;%{projectpath} : caminho do projeto&lt;/li&gt;&lt;li&gt;%{projectfilename} : nome do projeto&lt;/li&gt;&lt;li&gt;%{saveddate} : data que o projeto foi salvo&lt;/li&gt;&lt;li&gt;%{savedtime} : hora que foi salvo o projeto&lt;/li&gt;&lt;li&gt;%{savedfilename} : nome que foi salvo ao projeto&lt;/li&gt;&lt;li&gt;%{savedfilepath} : local que foi salvo o projeto&lt;/li&gt;&lt;/ul&gt;</translation>
+        <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="463"/>
