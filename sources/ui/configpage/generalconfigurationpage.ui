@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>998</width>
-    <height>500</height>
+    <width>1958</width>
+    <height>1438</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -133,14 +133,14 @@
        <item row="1" column="0">
         <widget class="QCheckBox" name="m_use_folio_label">
          <property name="text">
-          <string>Utiliser les labels de folio à la place de leurs ID</string>
+          <string>Utiliser les numéros de folio à la place de leur position dans le projet</string>
          </property>
         </widget>
        </item>
        <item row="3" column="0">
         <widget class="QCheckBox" name="m_border_0">
          <property name="text">
-          <string extracomment="Choix de l'increment de depart 1 ou 0">Activer la numérotation à partir de 0 pour la colonne des cartouches au lieu de 1</string>
+          <string extracomment="Choix de l'increment de depart 1 ou 0">Numéroter les colonnes de cartouche à partir de 0 (1 sinon)</string>
          </property>
         </widget>
        </item>
@@ -223,13 +223,13 @@
      </widget>
      <widget class="QWidget" name="tab_5">
       <attribute name="title">
-       <string>Elements</string>
+       <string>Collections</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
         <widget class="QGroupBox" name="groupBox_5">
          <property name="title">
-          <string>Collections d'éléments</string>
+          <string>Accès aux collections</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -241,7 +241,7 @@
           <item row="1" column="0">
            <widget class="QLabel" name="label_7">
             <property name="text">
-             <string>Chemin de la collection commune</string>
+             <string>Répertoire de la collection commune</string>
             </property>
            </widget>
           </item>
@@ -262,7 +262,7 @@
           <item row="2" column="0">
            <widget class="QLabel" name="label_8">
             <property name="text">
-             <string>Chemin de la collection utilisateur</string>
+             <string>Répertoire de la collection utilisateur</string>
             </property>
            </widget>
           </item>
@@ -304,7 +304,7 @@
           <item row="3" column="0">
            <widget class="QLabel" name="label_10">
             <property name="text">
-             <string>Chemin des cartouches utilisateur</string>
+             <string>Répertoire des cartouches utilisateur</string>
             </property>
            </widget>
           </item>

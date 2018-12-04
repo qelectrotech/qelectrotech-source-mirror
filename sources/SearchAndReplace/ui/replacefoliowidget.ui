@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>710</width>
+    <width>744</width>
     <height>705</height>
    </rect>
   </property>
@@ -219,9 +219,9 @@ Les variables suivantes sont utilisables :
           </widget>
          </item>
          <item row="6" column="3">
-          <widget class="QLineEdit" name="m_mach">
+          <widget class="QLineEdit" name="m_plant">
            <property name="toolTip">
-            <string>Disponible en tant que %machine pour les modèles de cartouches</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disponible en tant que %plant pour les modèles de cartouches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="placeholderText">
             <string>Ne pas modifier</string>
@@ -276,7 +276,7 @@ Les variables suivantes sont utilisables :
           </widget>
          </item>
          <item row="6" column="4">
-          <widget class="QCheckBox" name="m_mach_cb">
+          <widget class="QCheckBox" name="m_plant_cb">
            <property name="toolTip">
             <string>Supprimer ce texte</string>
            </property>

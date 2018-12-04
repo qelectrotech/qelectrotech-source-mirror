@@ -57,7 +57,7 @@ void SearchAndReplaceWorker::replaceDiagram(QList<Diagram *> diagram_list)
 	}
 	
 	QUndoStack *us = project->undoStack();
-	us->beginMacro(QObject::tr("Chercher remplacer les propriétés de folio"));
+    us->beginMacro(QObject::tr("Chercher/remplacer les propriétés de folio"));
 	for (Diagram *d : diagram_list)
 	{
 		TitleBlockProperties old_propertie = d->border_and_titleblock.exportTitleBlock();
@@ -87,12 +87,12 @@ void SearchAndReplaceWorker::replaceDiagram(QList<Diagram *> diagram_list)
 				new_properties.filename = m_titleblock_properties.filename;
 			}
 		}
-		if (!m_titleblock_properties.machine.isEmpty())
+        if (!m_titleblock_properties.plant.isEmpty())
 		{
-			if (m_titleblock_properties.machine == eraseText()) {
-				new_properties.machine.clear();
+            if (m_titleblock_properties.plant == eraseText()) {
+                new_properties.plant.clear();
 			} else {
-				new_properties.machine = m_titleblock_properties.machine;
+                new_properties.plant = m_titleblock_properties.plant;
 			}
 		}
 		if (!m_titleblock_properties.locmach.isEmpty())
@@ -168,7 +168,7 @@ void SearchAndReplaceWorker::replaceElement(QList<Element *> list)
 		}
 	}
 	
-	project_->undoStack()->beginMacro(QObject::tr("Chercher remplacer les propriétés d'éléments"));
+    project_->undoStack()->beginMacro(QObject::tr("Chercher/remplacer les propriétés d'éléments"));
 	for (Element *elmt : list)
 	{
 			//We apply change only for master, slave, and terminal element.
@@ -228,7 +228,7 @@ void SearchAndReplaceWorker::replaceIndiText(QList<IndependentTextItem *> list)
 		}
 	}
 	
-	project_->undoStack()->beginMacro(QObject::tr("Chercher remplacer des textes independant"));
+    project_->undoStack()->beginMacro(QObject::tr("Chercher/remplacer des textes independants"));
 	for (IndependentTextItem *text : list)
 	{
 		QString before = text->toPlainText();

@@ -399,7 +399,7 @@ void QETDiagramEditor::setUpActions()
 	});
 	
 		//Lauch the plugin of terminal generator
-	m_project_terminalBloc = new QAction(QET::Icons::TerminalStrip, tr("Lancer le plugin de creation de bornier"), this);
+    m_project_terminalBloc = new QAction(QET::Icons::TerminalStrip, tr("Lancer le plugin de création de borniers"), this);
 	connect(m_project_terminalBloc, &QAction::triggered, this, &QETDiagramEditor::generateTerminalBlock);
 	
 		//MDI view style
@@ -614,7 +614,7 @@ void QETDiagramEditor::setUpActions()
 		this->currentDiagramView()->diagram()->changeZValue(action->data().value<QET::DepthOption>());
 	});
 	
-	m_find = new QAction(tr("Chercher"), this);
+    m_find = new QAction(tr("Chercher/remplacer"), this);
 	m_find->setShortcut(QKeySequence::Find);
 	connect(m_find, &QAction::triggered, [this]() {
 		this->m_search_and_replace_widget.setHidden(!m_search_and_replace_widget.isHidden());

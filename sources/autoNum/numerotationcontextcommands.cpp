@@ -124,8 +124,8 @@ void NumerotationContextCommands::setNumStrategy(const QString &str) {
 		strategy_ = new FolioNum (diagram_);
 		return;
 	}
-	else if (str=="machine"){
-		strategy_ = new MachineNum (diagram_);
+    else if (str=="plant"){
+        strategy_ = new PlantNum (diagram_);
 		return;
 	}
 	else if (str=="locmach"){
@@ -499,32 +499,32 @@ NumerotationContext FolioNum::previous(const NumerotationContext &nc, const int 
 /**
  * Constructor
  */
-MachineNum::MachineNum (Diagram *d):
+PlantNum::PlantNum (Diagram *d):
 	NumStrategy (d)
 {}
 
 /**
- * @brief MachineNum::toRepresentedString
+ * @brief PlantNum::toRepresentedString
  * @return the represented string of folio
  */
-QString MachineNum::toRepresentedString(const QString str) const {
+QString PlantNum::toRepresentedString(const QString str) const {
 	Q_UNUSED(str);
 	return "%M";
 }
 
 /**
- * @brief MachineNum::next
+ * @brief PlantNum::next
  * @return the next NumerotationContext nc at position i
  */
-NumerotationContext MachineNum::next (const NumerotationContext &nc, const int i) const {
+NumerotationContext PlantNum::next (const NumerotationContext &nc, const int i) const {
 	return (nextString(nc, i));
 }
 
 /**
- * @brief MachineNum::previous
+ * @brief PlantNum::previous
  * @return the previous NumerotationContext nc at posiiton i
  */
-NumerotationContext MachineNum::previous(const NumerotationContext &nc, const int i) const {
+NumerotationContext PlantNum::previous(const NumerotationContext &nc, const int i) const {
 	return (nextString(nc, i));
 }
 

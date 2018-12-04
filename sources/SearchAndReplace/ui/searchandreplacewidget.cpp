@@ -659,7 +659,7 @@ QStringList SearchAndReplaceWidget::searchTerms(Diagram *diagram) const
 	list.append(prop.title);
 	list.append(prop.author);
 	list.append(prop.filename);
-	list.append(prop.machine);
+    list.append(prop.plant);
 	list.append(prop.locmach);
 	list.append(prop.indexrev);
 	list.append(prop.folio);

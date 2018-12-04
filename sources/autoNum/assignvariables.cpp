@@ -178,13 +178,13 @@ namespace autonum
 	{
 		QString str = formula;
 		str.replace("%{label}", dc.value("label").toString());
-		str.replace("%{group-function}", dc.value("group-function").toString());
+        str.replace("%{plant}", dc.value("plant").toString());
 		str.replace("%{comment}", dc.value("comment").toString());
 		str.replace("%{description}", dc.value("description").toString());
 		str.replace("%{designation}", dc.value("designation").toString());
 		str.replace("%{manufacturer}", dc.value("manufacturer").toString());
 		str.replace("%{manufacturer-reference}", dc.value("manufacturer-reference").toString());
-		str.replace("%{provider}", dc.value("provider").toString());
+        str.replace("%{supplier}", dc.value("supplier").toString());
 		str.replace("%{quantity}", dc.value("quantity").toString());
 		str.replace("%{unity}", dc.value("unity").toString());
 		str.replace("%{auxiliary1}", dc.value("auxiliary1").toString());
@@ -212,7 +212,7 @@ namespace autonum
 			m_assigned_label.replace("%f",     QString::number(m_diagram->folioIndex()+1));
 			m_assigned_label.replace("%id",    QString::number(m_diagram->folioIndex()+1));
 			m_assigned_label.replace("%total", QString::number(m_diagram->border_and_titleblock.folioTotal()));
-			m_assigned_label.replace("%M",  m_diagram -> border_and_titleblock.machine());
+            m_assigned_label.replace("%M",  m_diagram -> border_and_titleblock.plant());
 			m_assigned_label.replace("%LM", m_diagram -> border_and_titleblock.locmach());
 
 	QSettings settings;
@@ -426,7 +426,7 @@ namespace autonum
 			else if (type == "folio") {
 				formula.append("%F");
 			}
-			else if (type == "machine") {
+            else if (type == "plant") {
 				formula.append("%M");
 			}
 			else if (type == "locmach") {

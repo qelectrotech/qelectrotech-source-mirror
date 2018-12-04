@@ -35,7 +35,7 @@
  * formula                        -> formula used to create the label (formula is make with variable)
  * designation                    -> exhaustive comment used to explain what the element does.
  * description                    -> exhaustive description used to explain what the element does.
- * group-function                  -> the group function of element
+ * plant                          -> the plant assigned to the element
  * comment                        -> a little comment wich can be displayed in the folio
  * manufacturer                   -> the manufacturer of the element
  * manufacturer-reference         -> the manufacturer reference of the element
@@ -43,10 +43,10 @@
  * unity                          -> unity of the element
  * auxiliary1                     -> auxiliary 1 of element
  * auxiliary2                     -> auxiliary 2 of element
- * machine-manufacturer-reference -> reference of the manufacturer machine
- * provider                       -> the provider of the element
+ * machine-manufacturer-reference -> reference of the machine manufacturer
+ * supplier                       -> the supplier of the element
  * function                       -> the function of element
- * location                       -> the location of the element
+ * location                       -> the location assigned to the element
  * frozenLabel                    -> label locked at a given time
  *
  */

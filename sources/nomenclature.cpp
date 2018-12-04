@@ -60,7 +60,7 @@ bool nomenclature::saveToCSVFile()
 			if(!QFile::remove ( filename ) ){
 				QMessageBox::critical(this->m_parent, QObject::tr("Erreur"),
 									  QObject::tr("Impossible de remplacer le fichier!\n\n")+
-									  "Destination: "+filename+"\n");
+                                      "Destination : "+filename+"\n");
 				return false;
 			}	
 		}
@@ -84,9 +84,9 @@ QString nomenclature::getNomenclature()
 {
 	//Process...
 	QString data = QObject::tr("NOMENCLATURE : ") + m_project -> title() + "\n\n";
-    data += QObject::tr("A001") +";"  //:Don't translate this text!    //ID for folio number
+    data += QObject::tr("A001") +";"  //:Don't translate this text!    //ID for folio position in project
     ""+ QObject::tr("B001") +";"      //:Don't translate this text!    //ID for folio title
-    ""+ QObject::tr("C001") +";"      //:Don't translate this text!    //ID for folio label
+    ""+ QObject::tr("C001") +";"      //:Don't translate this text!    //ID for folio number
     ""+ QObject::tr("D001") +";"      //:Don't translate this text!    //ID for qet designation
     ""+ QObject::tr("E001") +";"      //:Don't translate this text!    //ID for position of element on the folio
     ""+ QObject::tr("F001") +";"      //:Don't translate this text!    //ID for label of element
@@ -105,9 +105,9 @@ QString nomenclature::getNomenclature()
     ""+ QObject::tr("N001")+";"       //:Don't translate this text!    //ID for internal number
     ""+ QObject::tr("O001")+";"       //:Don't translate this text!    //ID for location
     ""+ QObject::tr("P001") +"\n";    //:Don't translate this text!    //ID for function
-    data += QObject::tr("N° de folio") +";"
+    data += QObject::tr("Position du folio") +";"
 	""+ QObject::tr("Titre de folio") +";"
-	""+ QObject::tr("Label de folio") +";"
+    ""+ QObject::tr("Numéro de folio") +";"
 	""+ QObject::tr("Désignation qet") +";"
 	""+ QObject::tr("Position") +";"
 	""+ QObject::tr("Label") +";"
@@ -176,11 +176,11 @@ QString nomenclature::getElementInfo(Element *elmt) {
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["formula"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["designation"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["description"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
-	info += autonum::AssignVariables::formulaToLabel(elmt_info["group-function"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
+    info += autonum::AssignVariables::formulaToLabel(elmt_info["plant"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["comment"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["manufacturer"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["manufacturer-reference"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
-	info += autonum::AssignVariables::formulaToLabel(elmt_info["provider"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
+    info += autonum::AssignVariables::formulaToLabel(elmt_info["supplier"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["quantity"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["unity"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["auxiliary1"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";

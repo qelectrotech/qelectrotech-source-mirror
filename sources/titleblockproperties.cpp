@@ -47,7 +47,7 @@ bool TitleBlockProperties::operator==(const TitleBlockProperties &ip) {
 		ip.author == author &&\
 		ip.date == date &&\
 		ip.filename == filename &&\
-		ip.machine == machine &&\
+        ip.plant == plant &&\
 		ip.locmach == locmach &&\
 		ip.indexrev == indexrev &&\
 		ip.version == version &&\
@@ -77,7 +77,7 @@ void TitleBlockProperties::toXml(QDomElement &e) const {
 	e.setAttribute("author",   author);
 	e.setAttribute("title",    title);
 	e.setAttribute("filename", filename);
-	e.setAttribute("machine", machine);
+    e.setAttribute("plant", plant);
 	e.setAttribute("locmach", locmach);
 	e.setAttribute("indexrev",indexrev);
 	e.setAttribute("version", version);
@@ -107,10 +107,10 @@ void TitleBlockProperties::fromXml(const QDomElement &e) {
 	if (e.hasAttribute("author"))      author   = e.attribute("author");
 	if (e.hasAttribute("title"))       title    = e.attribute("title");
 	if (e.hasAttribute("filename"))    filename = e.attribute("filename");
-	if (e.hasAttribute("machine"))    machine   = e.attribute("machine");
+    if (e.hasAttribute("plant"))       plant   = e.attribute("plant");
 	if (e.hasAttribute("locmach"))     locmach  = e.attribute("locmach");
-	if (e.hasAttribute("indexrev"))   indexrev  = e.attribute("indexrev");
-	if (e.hasAttribute("version"))    version   = e.attribute("version");
+    if (e.hasAttribute("indexrev"))    indexrev  = e.attribute("indexrev");
+    if (e.hasAttribute("version"))     version   = e.attribute("version");
 	if (e.hasAttribute("folio"))       folio    = e.attribute("folio");
 	if (e.hasAttribute("auto_page_num")) auto_page_num = e.attribute("auto_page_num");
 	if (e.hasAttribute("date"))        setDateFromString(e.attribute("date"));
@@ -140,7 +140,7 @@ void TitleBlockProperties::toSettings(QSettings &settings, const QString &prefix
 	settings.setValue(prefix + "title",    title);
 	settings.setValue(prefix + "author",   author);
 	settings.setValue(prefix + "filename", filename);
-	settings.setValue(prefix + "machine", machine);
+    settings.setValue(prefix + "plant", plant);
 	settings.setValue(prefix + "locmach", locmach);
 	settings.setValue(prefix + "indexrev", indexrev);
 	settings.setValue(prefix + "version", version);
@@ -162,7 +162,7 @@ void TitleBlockProperties::fromSettings(QSettings &settings, const QString &pref
 	title    = settings.value(prefix + "title").toString();
 	author   = settings.value(prefix + "author").toString();
 	filename = settings.value(prefix + "filename").toString();
-	machine  = settings.value(prefix + "machine").toString();
+    plant    = settings.value(prefix + "plant").toString();
 	locmach  = settings.value(prefix + "locmach").toString();
 	indexrev = settings.value(prefix + "indexrev").toString();
 	version  = settings.value(prefix + "version").toString();

@@ -96,7 +96,7 @@ void TitleBlockPropertiesWidget::setProperties(const TitleBlockProperties &prope
 	ui -> m_title_le  -> setText (properties.title);
 	ui -> m_author_le -> setText (properties.author);
 	ui -> m_file_le   -> setText (properties.filename);
-	ui -> m_mach      -> setText (properties.machine);
+    ui -> m_plant      -> setText (properties.plant);
 	ui -> m_loc   -> setText (properties.locmach);
 	ui -> m_indice    -> setText (properties.indexrev);
 	ui -> m_folio_le  -> setText (properties.folio);
@@ -154,7 +154,7 @@ TitleBlockProperties TitleBlockPropertiesWidget::properties() const {
 	prop.title    = ui -> m_title_le  -> text();
 	prop.author   = ui -> m_author_le -> text();
 	prop.filename = ui -> m_file_le   -> text();
-	prop.machine  = ui -> m_mach      -> text();
+    prop.plant  = ui -> m_plant      -> text();
 	prop.locmach  = ui -> m_loc   -> text();
 	prop.indexrev = ui -> m_indice    -> text();
 	prop.folio    = ui -> m_folio_le  -> text();
@@ -195,7 +195,7 @@ TitleBlockProperties TitleBlockPropertiesWidget::propertiesAutoNum(QString autoN
 	prop.title    = ui -> m_title_le  -> text();
 	prop.author   = ui -> m_author_le -> text();
 	prop.filename = ui -> m_file_le   -> text();
-	prop.machine  = ui -> m_mach      -> text();
+    prop.plant    = ui -> m_plant      -> text();
 	prop.locmach  = ui -> m_loc       -> text();
 	prop.indexrev = ui -> m_indice    -> text();
 	prop.folio    = "%autonum";
@@ -294,7 +294,7 @@ void TitleBlockPropertiesWidget::initDialog(const bool &current_date,  QETProjec
 	ui -> m_current_date_rb -> setVisible(current_date);
 
 	m_tbt_edit = new QAction(tr("Éditer ce modèle", "menu entry"), this);
-	m_tbt_duplicate = new QAction(tr("Dupliquer et editer ce modèle", "menu entry"), this);
+    m_tbt_duplicate = new QAction(tr("Dupliquer et éditer ce modèle", "menu entry"), this);
 
 	connect(m_tbt_edit, SIGNAL(triggered()), this, SLOT(editCurrentTitleBlockTemplate()));
 	connect(m_tbt_duplicate, SIGNAL(triggered()), this, SLOT(duplicateCurrentTitleBlockTemplate()));

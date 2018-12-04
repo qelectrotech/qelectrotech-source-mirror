@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>783</width>
+    <height>1175</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -34,10 +34,10 @@
           <property name="text">
            <string>Vous pouvez définir un label personnalisé pour les reports de folio.
 Créer votre propre texte en vous aidant des variables suivantes :
-%f : le numéro de folio 
-%F: le label de folio
-%M:  Machine 
-%LM: Location
+%f : la position du folio dans le projet 
+%F : le numéro de folio
+%M :  l'installation
+%LM : la localisation
 %l : le numéro de ligne
 %c : le numéro de colonne</string>
           </property>
