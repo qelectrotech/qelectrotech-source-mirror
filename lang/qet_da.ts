@@ -2517,7 +2517,18 @@ Si le chiffre défini dans le champ Valeur possède moins de digits que le type 
 Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation></translation>
+        <translatorcomment>Maskin oversat ikke verificeret</translatorcomment>
+        <translation>Her kan du definere, hvordan de nye folier bliver nummereret.
+-A nummerering består af en minimumsvariabel.
+-Du kan tilføje eller slette en opkaldsvariabel via knapperne - og +.
+En nummereringsvariabel indbefatter: en type, en værdi og et trin.
+
+-typene &quot;Ciffer 1&quot;, &quot;Ciffer 01&quot; og &quot;Ciffer 001&quot; repræsenterer en numerisk type, der er defineret i feltet &quot;Værdi&quot;, som øger hver nye folio med værdien af &quot;Incrementation&quot; -feltet.
+- &quot;Ciffer 01&quot; og &quot;Ciffer 001&quot; er henholdsvis repræsenteret på diagrammet med to og tre cifre minimum.
+Hvis det ciffer, der er defineret i feltet Værdi, har færre cifre end den valgte type, bliver den forud for en eller to 0&apos;er for at respektere dens type.
+
+-Type &quot;Tekst&quot;, repræsenterer en fast tekst.
+Feltet &quot;Incrementation&quot; anvendes ikke.</translation>
     </message>
 </context>
 <context>
@@ -8051,7 +8062,14 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %LM : la localisation
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>Brugerdefineret etiket til ark rapporter.
+Opret tekst ved hjælp af følgende variabler:
+%f: ark nummer
+%F: ark etiket
+%M: installering
+%LM: placering 
+%l: linje nummer
+%c: kolonne nummer</translation>
     </message>
 </context>
 <context>
@@ -8069,7 +8087,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="63"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Afficher les options avancées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Vis avancerede indstillinger&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="107"/>
@@ -8084,7 +8102,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="173"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les éléments&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Definere egenskaber som skal erstattes i symboler&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="183"/>
@@ -8094,17 +8112,17 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="203"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les conducteurs&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Definere egenskaber som skal erstattes i ledere&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="213"/>
         <source>Mode :</source>
-        <translation type="unfinished"></translation>
+        <translation>Tilstand:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="220"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les folios&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Definere egenskaber som skal erstattes i ark&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="223"/>
@@ -8114,27 +8132,27 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="234"/>
         <source>Texte brut</source>
-        <translation type="unfinished"></translation>
+        <translation>Normal tekst</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="239"/>
         <source>Mots entiers</source>
-        <translation type="unfinished"></translation>
+        <translation>Hele ord</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="260"/>
         <source>Sensible à la casse</source>
-        <translation type="unfinished"></translation>
+        <translation>Versal følsom</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="272"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer la correspondance sélectionnée&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Erstatte det valgte&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="285"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer les correspondances cochées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Erstatte markerede&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="176"/>
@@ -8190,32 +8208,32 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="154"/>
         <source>Eléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Symboler</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="159"/>
         <source>Eléments simple</source>
-        <translation type="unfinished"></translation>
+        <translation>Simple symboler</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="165"/>
         <source>Eléments maître</source>
-        <translation type="unfinished"></translation>
+        <translation>Overordnet symbol</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="171"/>
         <source>Eléments esclave</source>
-        <translation type="unfinished"></translation>
+        <translation>Underordnet symbol</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="177"/>
         <source>Eléments report de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Symboler ark rapport</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="183"/>
         <source>Eléments bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminal symboler</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="859"/>
@@ -8231,7 +8249,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1001"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1002"/>
         <source> [édité]</source>
-        <translation type="unfinished"></translation>
+        <translation> [redigeret]</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="191"/>
@@ -8327,7 +8345,18 @@ Si le chiffre défini dans le champ Valeur possède moins de digits que le type 
 Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Maskin oversat ikke verificeret</translatorcomment>
+        <translation>Her kan du definere, hvordan de nye folier bliver nummereret.
+-A nummerering består af en minimumsvariabel.
+-Du kan tilføje eller slette en opkaldsvariabel via knapperne - og +.
+En nummereringsvariabel indbefatter: en type, en værdi og et trin.
+
+-typene &quot;Ciffer 1&quot;, &quot;Ciffer 01&quot; og &quot;Ciffer 001&quot; repræsenterer en numerisk type, der er defineret i feltet &quot;Værdi&quot;, som øger hver nye folio med værdien af &quot;Incrementation&quot; -feltet.
+- &quot;Ciffer 01&quot; og &quot;Ciffer 001&quot; er henholdsvis repræsenteret på diagrammet med to og tre cifre minimum.
+Hvis det ciffer, der er defineret i feltet Værdi, har færre cifre end den valgte type, bliver den forud for en eller to 0&apos;er for at respektere dens type.
+
+-Type &quot;Tekst&quot;, repræsenterer en fast tekst.
+Feltet &quot;Incrementation&quot; anvendes ikke.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="207"/>
@@ -8349,7 +8378,24 @@ Les autres champs ne sont pas utilisés.
 -Le type &quot;Folio&quot; représente le nom du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the conductor autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Maskin oversat ikke verificeret</translatorcomment>
+        <translation>Her kan du definere, hvordan nye drivere bliver nummereret.
+-A nummerering består af en minimumsvariabel.
+-Du kan tilføje eller slette en opkaldsvariabel via knapperne - og +.
+En nummereringsvariabel indbefatter: en type, en værdi og et trin.
+
+&quot;Digit 1&quot;, &quot;Digit 01&quot; og &quot;Digit 001&quot; -typerne repræsenterer en numerisk type, der er defineret i feltet &quot;Værdi&quot;, som øges til hver ny driver ved værdien af ​​feltet &quot;Inkrementation&quot;.
+- &quot;Ciffer 01&quot; og &quot;Ciffer 001&quot; er henholdsvis repræsenteret på diagrammet med to og tre cifre minimum.
+Hvis det ciffer, der er defineret i feltet Værdi, har færre cifre end den valgte type, bliver den forud for en eller to 0&apos;er for at respektere dens type.
+
+-Type &quot;Tekst&quot;, repræsenterer en fast tekst.
+Feltet &quot;Incrementation&quot; anvendes ikke.
+
+-Folio-typen repræsenterer nummeret på den aktuelle folio.
+De andre felter anvendes ikke.
+
+-Typen &quot;Folio&quot; repræsenterer navnet på den aktuelle folio.
+De andre felter anvendes ikke.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="206"/>
@@ -9025,7 +9071,7 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="297"/>
         <source>Dupliquer et éditer ce modèle</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Duplikere og redigere model</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="302"/>
@@ -9061,12 +9107,12 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="230"/>
         <source>Indice Rev:</source>
-        <translation type="unfinished"></translation>
+        <translation>Revision indeks:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="244"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disponible en tant que %plant pour les modèles de cartouches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Fåes som %plant til titelblok skabeloner&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="279"/>
