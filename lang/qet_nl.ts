@@ -8217,7 +8217,7 @@ Maak uw aangepaste label met behulp van de volgende variabelen:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="171"/>
         <source>Eléments esclave</source>
-        <translation type="unfinished"></translation>
+        <translation>Doelelementen</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="177"/>
@@ -8339,7 +8339,17 @@ Si le chiffre défini dans le champ Valeur possède moins de digits que le type 
 Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hier kunt u de automatische nummering van nieuwe bladen definieren.
+-Een automatische nummering bestaat uit minimaal één variabele.
+-U kunt hier variabelen toevoegen of verwijderen met de knoppen - en +.
+-Een variable bestaat uit : een type, een waarde en een increment.
+-De typen &quot;Cijfer 1:, &quot;Cijfer 01&quot; en &quot;Cijfer 001&quot; representeren een numeriek type in het veld &quot;Waarde&quot; dat elk bladnummer met de waarde in het veld &quot;Increment&quot; ophoogt.
+-Cijfer 01&quot; en &quot;Cijfer 001&quot; representeren bladnummers met 2 respectievelijk 3 cijfers.
+Als het getal in het veld &quot;Waarde&quot; uit minder cijfers bestaat dan het gekozen type wordt dit afhankelijk van dit type voorafgegaan door één of twee nullen.
+
+-Het type &quot;Tekst&quot; representeert een vaste tekst.
+Het veld &quot;Waarde&quot; heeft nu geen betekenis.
+</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="207"/>
@@ -8361,7 +8371,22 @@ Les autres champs ne sont pas utilisés.
 -Le type &quot;Folio&quot; représente le nom du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the conductor autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hier kunt u de automatische nummering van nieuwe geleiders definieren.
+-Een automatische nummering bestaat uit minimaal één variabele.
+-U kunt hier variabelen toevoegen of verwijderen met de knoppen - en +.
+-Een variable bestaat uit : een type, een waarde en een increment.
+-De typen &quot;Cijfer 1:, &quot;Cijfer 01&quot; en &quot;Cijfer 001&quot; representeren een numeriek type in het veld &quot;Waarde&quot; dat elk geleidernummer met de waarde in het veld &quot;Increment&quot; ophoogt.
+-Cijfer 01&quot; en &quot;Cijfer 001&quot; representeren geleidernummers met 2 respectievelijk 3 cijfers.
+Als het getal in het veld &quot;Waarde&quot; uit minder cijfers bestaat dan het gekozen type wordt dit afhankelijk van dit type voorafgegaan door één of twee nullen.
+
+-Het type &quot;Tekst&quot; representeert een vaste tekst.
+Het veld &quot;Waarde&quot; heeft nu geen betekenis.
+
+-Het type &quot;Bladnummer&quot; representeert het huidige bladnummer
+De andere velden hebben geen betekenis.
+
+-Le type &quot;Blad&quot; representeert de huidige bladnaam.
+De andere velden hebben geen betekenis.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="206"/>
@@ -9342,7 +9367,7 @@ Door associatie van de naam &quot;volta&quot; met de waarde &quot;1745&quot; wor
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Standaard zijn de volgende variabelen beschikbaar :&lt;ul&gt;&lt;li&gt;%{author} : auteur van het blad&lt;/li&gt;&lt;li&gt;%{date} : datum van het blad&lt;/li&gt;&lt;li&gt;%{title} : bladnaam&lt;/li&gt;&lt;li&gt;%{filename} : bestandsnaam van het project&lt;/li&gt;&lt;li&gt;%{plant} : naam van de installatie (=) waar het blad deel van uitmaakt&lt;/li&gt;&lt;li&gt;%{locmach} : naam van de locatie (+) waar het blad zich bevindt&lt;/li&gt;&lt;li&gt;%{indexrev} : revisie-index van het blad&lt;/li&gt;&lt;li&gt;%{version} : bestandsversie&lt;/li&gt;&lt;li&gt;%{folio} : bladnummer&lt;/li&gt;&lt;li&gt;%{folio-id} : plaats van het blad in het project&lt;/li&gt;&lt;li&gt;%{folio-total} : totaal aantal bladen in het project&lt;/li&gt;&lt;li&gt;%{projecttitle} : projectnaam&lt;/li&gt;&lt;li&gt;%{projectpath} : pad van het project&lt;/li&gt;&lt;li&gt;%{projectfilename} : bestandsnaam&lt;/li&gt;&lt;li&gt;%{saveddate} : datum wanneer het bestand is aangemaakt&lt;/li&gt;&lt;li&gt;%{savedtime} : tijd wanneer het bestand is aangemaakt&lt;/li&gt;&lt;li&gt;%{savedfilename} : naam van het opgeslagen bestand &lt;/li&gt;&lt;li&gt;%{savedfilepath} : pad van het opgeslagen bestand&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="463"/>
