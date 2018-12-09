@@ -57,62 +57,13 @@ void SearchAndReplaceWorker::replaceDiagram(QList<Diagram *> diagram_list)
 		TitleBlockProperties old_propertie = d->border_and_titleblock.exportTitleBlock();
 		TitleBlockProperties new_properties = old_propertie;
 		
-		if (!m_titleblock_properties.title.isEmpty())
-		{
-			if (m_titleblock_properties.title == eraseText()) {
-				new_properties.title.clear();
-			} else {
-				new_properties.title = m_titleblock_properties.title;
-			}
-		}
-		if (!m_titleblock_properties.author.isEmpty())
-		{
-			if (m_titleblock_properties.author == eraseText()) {
-				new_properties.author.clear();
-			} else {
-				new_properties.author = m_titleblock_properties.author;
-			}
-		}
-		if (!m_titleblock_properties.filename.isEmpty())
-		{
-			if (m_titleblock_properties.filename == eraseText()) {
-				new_properties.filename.clear();
-			} else {
-				new_properties.filename = m_titleblock_properties.filename;
-			}
-		}
-		if (!m_titleblock_properties.plant.isEmpty())
-		{
-			if (m_titleblock_properties.plant == eraseText()) {
-				new_properties.plant.clear();
-			} else {
-				new_properties.plant = m_titleblock_properties.plant;
-			}
-		}
-		if (!m_titleblock_properties.locmach.isEmpty())
-		{
-			if (m_titleblock_properties.locmach == eraseText()) {
-				new_properties.locmach.clear();
-			} else {
-				new_properties.locmach = m_titleblock_properties.locmach;
-			}
-		}
-		if (!m_titleblock_properties.indexrev.isEmpty())
-		{
-			if (m_titleblock_properties.indexrev == eraseText()) {
-				new_properties.indexrev.clear();
-			} else {
-				new_properties.indexrev = m_titleblock_properties.indexrev;
-			}
-		}
-		if (!m_titleblock_properties.folio.isEmpty())
-		{
-			if (m_titleblock_properties.folio == eraseText()) {
-				new_properties.folio.clear();
-			} else {
-				new_properties.folio = m_titleblock_properties.folio;
-			}
-		}
+		new_properties.title = applyChange(new_properties.title, m_titleblock_properties.title);
+		new_properties.author = applyChange(new_properties.author, m_titleblock_properties.author);
+		new_properties.filename = applyChange(new_properties.filename, m_titleblock_properties.filename);
+		new_properties.plant = applyChange(new_properties.plant, m_titleblock_properties.plant);
+		new_properties.locmach = applyChange(new_properties.locmach, m_titleblock_properties.locmach);
+		new_properties.indexrev = applyChange(new_properties.indexrev, m_titleblock_properties.indexrev);
+		new_properties.folio = applyChange(new_properties.folio, m_titleblock_properties.folio);
 
 		if (m_titleblock_properties.date.isValid())
 		{
@@ -174,16 +125,8 @@ void SearchAndReplaceWorker::replaceElement(QList<Element *> list)
 			DiagramContext new_context =  old_context = elmt->elementInformations();
 			for (QString key : QETApp::elementInfoKeys())
 			{
-				QString value = m_element_context.value(key).toString();
-				if (value.isEmpty()) {
-					continue;
-				}
-				
-				if (value == eraseText()) {
-					new_context.addValue(key, QString());
-				} else {
-					new_context.addValue(key, value);
-				}
+				new_context.addValue(key, applyChange(old_context.value(key).toString(),
+													  m_element_context.value(key).toString()));
 			}
 			
 			if (old_context != new_context)
