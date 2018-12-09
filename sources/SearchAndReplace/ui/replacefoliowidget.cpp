@@ -22,6 +22,8 @@
 
 #include <QDialogButtonBox>
 
+typedef SearchAndReplaceWorker sarw;
+
 ReplaceFolioWidget::ReplaceFolioWidget(QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::ReplaceFolioWidget)
@@ -75,13 +77,13 @@ TitleBlockProperties ReplaceFolioWidget::titleBlockProperties() const
  */
 void ReplaceFolioWidget::setTitleBlockProperties(const TitleBlockProperties &properties)
 {
-	ui->m_title_le ->setText (properties.title);
-	ui->m_author_le->setText (properties.author);
-	ui->m_file_le  ->setText (properties.filename);
-	ui->m_plant     ->setText (properties.plant);
-	ui->m_loc      ->setText (properties.locmach);
-	ui->m_indice   ->setText (properties.indexrev);
-	ui->m_folio_le ->setText (properties.folio);
+	sarw::setupLineEdit(ui->m_title_le, ui->m_title_cb, properties.title);
+	sarw::setupLineEdit(ui->m_author_le, ui->m_author_cb, properties.author);
+	sarw::setupLineEdit(ui->m_file_le, ui->m_file_cb, properties.filename);
+	sarw::setupLineEdit(ui->m_plant, ui->m_plant_cb, properties.plant);
+	sarw::setupLineEdit(ui->m_loc, ui->m_loc_cb, properties.locmach);
+	sarw::setupLineEdit(ui->m_indice, ui->m_indice_cb, properties.indexrev);
+	sarw::setupLineEdit(ui->m_folio_le, ui->m_folio_cb, properties.folio);
 
 		//About date	
 	ui->m_date_now_pb->setDisabled(true);

@@ -21,6 +21,7 @@
 #include "ui_elementinfopartwidget.h"
 #include "searchandreplaceworker.h"
 
+typedef SearchAndReplaceWorker sarw;
 
 /**
  * @brief ElementInfoPartWidget::ElementInfoPartWidget
@@ -58,8 +59,8 @@ ElementInfoPartWidget::~ElementInfoPartWidget()
  */
 void ElementInfoPartWidget::setText(const QString &txt)
 {
-	if (txt == SearchAndReplaceWorker::eraseText()) {
-		ui->m_erase_text->setChecked(true);
+	if (m_show_erase) {
+		sarw::setupLineEdit(ui->line_edit, ui->m_erase_text, txt);
 	} else {
 		ui->line_edit->setText(txt);
 	}
@@ -113,6 +114,7 @@ void ElementInfoPartWidget::setDisabled(bool d) {
  */
 void ElementInfoPartWidget::setEraseTextVisible(bool visible) {
 	ui->m_erase_text->setVisible(visible);
+	m_show_erase = visible;
 }
 
 /**

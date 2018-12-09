@@ -48,13 +48,14 @@ class ElementInfoPartWidget : public QWidget
 		void textEdited  (const QString & text);
 		void textChanged (const QString & text);
 
-	//ATTRIBUTES
-		private slots:
+		//ATTRIBUTES
+	private slots:
 		void on_m_erase_text_clicked();
 		
-		private:
+	private:
 		Ui::ElementInfoPartWidget *ui;
 		QString key_;
+		bool m_show_erase = false;
 };
 
 #endif // ELEMENTINFOPARTWIDGET_H

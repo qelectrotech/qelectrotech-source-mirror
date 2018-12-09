@@ -47,10 +47,8 @@ void ReplaceElementDialog::setContext(DiagramContext context)
 {
 	m_context = context;
 	
-	for (ElementInfoPartWidget *eipw : m_eipw_list)
-	{
+	for (ElementInfoPartWidget *eipw : m_eipw_list) {
 		eipw->setText(m_context[eipw->key()].toString());
-		eipw->setEraseTextChecked(false);
 	}
 }
 

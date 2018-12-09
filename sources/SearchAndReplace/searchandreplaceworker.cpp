@@ -236,7 +236,7 @@ void SearchAndReplaceWorker::replaceConductor(Conductor *conductor)
  * With search and replace, when the variable to edit is a text,
  * the editor is always the same no matter if it is for a folio, element or conductor.
  * The editor is a QLineEdit to edit the text and checkbox to erase the text if checked.
- * This function fill the editor
+ * This function fill the editor, from the current string
  * @param l
  * @param cb
  * @param str
@@ -245,6 +245,7 @@ void SearchAndReplaceWorker::setupLineEdit(QLineEdit *l, QCheckBox *cb, QString 
 {
 	l->setText(str);
 	cb->setChecked(str == eraseText() ? true : false);
+	l->setDisabled(str == eraseText() ? true : false);
 }
 
 ConductorProperties SearchAndReplaceWorker::invalidConductorProperties()
