@@ -1,0 +1,753 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ReplaceConductorDialog</class>
+ <widget class="QDialog" name="ReplaceConductorDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>636</width>
+    <height>523</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>Type</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QGroupBox" name="m_multi_gb">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="title">
+          <string>&amp;Multifilaire</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <layout class="QGridLayout" name="gridLayout" columnstretch="0,1,0,0,0,0">
+          <item row="7" column="1">
+           <widget class="QComboBox" name="m_horizontal_align_cb">
+            <item>
+             <property name="text">
+              <string>Inchanger</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>En haut</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>En bas</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="7" column="0">
+           <widget class="QLabel" name="label_8">
+            <property name="text">
+             <string>Texte sur conducteur horizontal :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1" colspan="4">
+           <widget class="QLineEdit" name="m_formula_le">
+            <property name="placeholderText">
+             <string>Non modifier</string>
+            </property>
+            <property name="clearButtonEnabled">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="label_5">
+            <property name="text">
+             <string>Tension / protocol :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1" colspan="4">
+           <widget class="QLineEdit" name="m_function_le">
+            <property name="placeholderText">
+             <string>Non modifier</string>
+            </property>
+            <property name="clearButtonEnabled">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="5">
+           <widget class="QCheckBox" name="m_erase_text_cb">
+            <property name="toolTip">
+             <string>Supprimer ce texte</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_4">
+            <property name="text">
+             <string>Fonction :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>Formule du texte :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="4">
+           <widget class="QCheckBox" name="m_show_text">
+            <property name="toolTip">
+             <string>Texte visible</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="2">
+           <widget class="QLabel" name="label_9">
+            <property name="text">
+             <string>Angle :</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1" colspan="4">
+           <widget class="QLineEdit" name="m_tension_protocol_le">
+            <property name="placeholderText">
+             <string>Non modifier</string>
+            </property>
+            <property name="clearButtonEnabled">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" colspan="4">
+           <widget class="QSpinBox" name="m_text_size_sb">
+            <property name="specialValueText">
+             <string>Inchanger</string>
+            </property>
+            <property name="accelerated">
+             <bool>false</bool>
+            </property>
+            <property name="minimum">
+             <number>2</number>
+            </property>
+            <property name="value">
+             <number>2</number>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="label_6">
+            <property name="text">
+             <string>Texte sur conducteur vertical :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>Taille du texte :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>Texte :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="5">
+           <widget class="QCheckBox" name="m_erase_tension_protocol_cb">
+            <property name="toolTip">
+             <string>Supprimer ce texte</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="5">
+           <widget class="QCheckBox" name="m_erase_function_cb">
+            <property name="toolTip">
+             <string>Supprimer ce texte</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QComboBox" name="m_vertical_align_cb">
+            <item>
+             <property name="text">
+              <string>Inchanger</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>À gauche</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>À droite</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="2" column="5">
+           <widget class="QCheckBox" name="m_erase_formula_cb">
+            <property name="toolTip">
+             <string>Supprimer ce texte</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="2">
+           <widget class="QLabel" name="label_7">
+            <property name="text">
+             <string>Angle :</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="3" colspan="2">
+           <widget class="QSpinBox" name="m_vertical_angle_sb">
+            <property name="wrapping">
+             <bool>true</bool>
+            </property>
+            <property name="specialValueText">
+             <string>Inchanger</string>
+            </property>
+            <property name="suffix">
+             <string>°</string>
+            </property>
+            <property name="prefix">
+             <string/>
+            </property>
+            <property name="minimum">
+             <number>-1</number>
+            </property>
+            <property name="maximum">
+             <number>359</number>
+            </property>
+            <property name="value">
+             <number>-1</number>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="3" colspan="2">
+           <widget class="QSpinBox" name="m_horizontal_angle_sb">
+            <property name="wrapping">
+             <bool>true</bool>
+            </property>
+            <property name="specialValueText">
+             <string>Inchanger</string>
+            </property>
+            <property name="suffix">
+             <string>°</string>
+            </property>
+            <property name="minimum">
+             <number>-1</number>
+            </property>
+            <property name="maximum">
+             <number>359</number>
+            </property>
+            <property name="value">
+             <number>-1</number>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1" colspan="3">
+           <widget class="QLineEdit" name="m_text_le">
+            <property name="placeholderText">
+             <string>Non modifier</string>
+            </property>
+            <property name="clearButtonEnabled">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="m_singlewire_gb">
+         <property name="title">
+          <string>Unifilaire</string>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_5">
+          <item row="1" column="2">
+           <widget class="QCheckBox" name="m_pen_cb">
+            <property name="toolTip">
+             <string>Protective Earth Neutral</string>
+            </property>
+            <property name="text">
+             <string>PEN</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QCheckBox" name="m_phase_cb">
+            <property name="toolTip">
+             <string>Phase</string>
+            </property>
+            <property name="text">
+             <string>phase</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../../../qelectrotech.qrc">
+              <normaloff>:/ico/16x16/phase.png</normaloff>:/ico/16x16/phase.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="3">
+           <widget class="QSpinBox" name="m_phase_sb">
+            <property name="toolTip">
+             <string>Nombre de phase</string>
+            </property>
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>3</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QCheckBox" name="m_neutral_cb">
+            <property name="toolTip">
+             <string>Neutre</string>
+            </property>
+            <property name="text">
+             <string>neutre</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../../../qelectrotech.qrc">
+              <normaloff>:/ico/16x16/neutral.png</normaloff>:/ico/16x16/neutral.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2">
+           <widget class="QSlider" name="m_phase_slider">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="toolTip">
+             <string>Nombre de phase</string>
+            </property>
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>3</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QCheckBox" name="m_earth_cb">
+            <property name="toolTip">
+             <string>Terre</string>
+            </property>
+            <property name="text">
+             <string>terre</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../../../qelectrotech.qrc">
+              <normaloff>:/ico/16x16/ground.png</normaloff>:/ico/16x16/ground.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" rowspan="3">
+           <widget class="QLabel" name="m_preview_label">
+            <property name="text">
+             <string>TextLabel</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QPushButton" name="m_update_preview_pb">
+            <property name="text">
+             <string>PushButton</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="widget">
+      <attribute name="title">
+       <string>Apparence</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_2" columnstretch="0,0,1,0">
+       <item row="2" column="1">
+        <widget class="QLabel" name="label_13">
+         <property name="text">
+          <string>Taille :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="label_10">
+         <property name="text">
+          <string>Couleur :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QPushButton" name="m_color_pb">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLabel" name="label_11">
+         <property name="text">
+          <string>Style :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QCheckBox" name="m_mod_color_cb">
+         <property name="toolTip">
+          <string>Modifier</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1" colspan="3">
+        <widget class="QGroupBox" name="m_second_color_gb">
+         <property name="title">
+          <string>Couleur secondaire :</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_3" columnstretch="0,1,0">
+          <item row="0" column="1">
+           <widget class="QPushButton" name="m_color_2_pb">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_14">
+            <property name="text">
+             <string>Taille de trait :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_12">
+            <property name="text">
+             <string>Couleur :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QCheckBox" name="m_mod_color_2_cb">
+            <property name="toolTip">
+             <string>Modifier</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" colspan="2">
+           <widget class="QSpinBox" name="m_color_2_dash_size_sb">
+            <property name="specialValueText">
+             <string>Inchanger</string>
+            </property>
+            <property name="suffix">
+             <string>px</string>
+            </property>
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="value">
+             <number>1</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="2" column="2" colspan="2">
+        <widget class="QDoubleSpinBox" name="m_cond_size_sb">
+         <property name="specialValueText">
+          <string>Inchanger</string>
+         </property>
+         <property name="minimum">
+          <double>0.200000000000000</double>
+         </property>
+         <property name="singleStep">
+          <double>0.200000000000000</double>
+         </property>
+         <property name="value">
+          <double>0.200000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2" colspan="2">
+        <widget class="QComboBox" name="m_line_style_cb"/>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="m_button_box">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok|QDialogButtonBox::Reset</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../../../qelectrotech.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>m_mod_color_cb</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_color_pb</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>605</x>
+     <y>57</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>328</x>
+     <y>58</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_earth_cb</sender>
+   <signal>clicked()</signal>
+   <receiver>m_update_preview_pb</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>243</x>
+     <y>372</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>392</x>
+     <y>373</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_neutral_cb</sender>
+   <signal>clicked()</signal>
+   <receiver>m_update_preview_pb</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>243</x>
+     <y>404</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>392</x>
+     <y>373</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_phase_cb</sender>
+   <signal>clicked()</signal>
+   <receiver>m_update_preview_pb</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>243</x>
+     <y>434</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>392</x>
+     <y>373</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_pen_cb</sender>
+   <signal>clicked()</signal>
+   <receiver>m_update_preview_pb</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>392</x>
+     <y>404</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>392</x>
+     <y>373</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_phase_slider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>m_update_preview_pb</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>392</x>
+     <y>434</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>392</x>
+     <y>373</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_phase_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>m_update_preview_pb</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>540</x>
+     <y>435</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>392</x>
+     <y>373</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_phase_slider</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>m_phase_sb</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>392</x>
+     <y>434</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>540</x>
+     <y>435</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_phase_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>m_phase_slider</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>540</x>
+     <y>435</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>392</x>
+     <y>434</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_mod_color_2_cb</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_color_2_pb</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>597</x>
+     <y>200</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>341</x>
+     <y>201</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

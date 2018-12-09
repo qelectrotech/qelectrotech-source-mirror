@@ -27,6 +27,7 @@
 #include "replacefoliowidget.h"
 #include "replaceelementdialog.h"
 #include "qetapp.h"
+#include "replaceconductordialog.h"
 
 #include <QSettings>
 
@@ -911,6 +912,14 @@ void SearchAndReplaceWidget::on_m_replace_pb_clicked()
 			}
 			
 		}
+		else if (ui->m_conductor_pb->text().endsWith(tr(" [édité]")) &&
+				 m_conductor_hash.keys().contains(qtwi))
+		{
+			QPointer<Conductor> c = m_conductor_hash.value(qtwi);
+			if (c) {
+				m_worker.replaceConductor(c.data());
+			}
+		}
 	}
 	activateNextChecked();
 	ui->m_replace_pb->setEnabled(ui->m_next_pb->isEnabled());
@@ -972,6 +981,23 @@ void SearchAndReplaceWidget::on_m_replace_all_pb_clicked()
 		m_worker.replaceIndiText(text_list );
 	}
 	
+		//Replace conductor
+	if (ui->m_conductor_pb->text().endsWith(tr(" [édité]")))
+	{
+		QList <Conductor *> conductor_list;
+		for (QTreeWidgetItem *qtwi : m_conductor_hash.keys())
+		{
+			if (!qtwi->isHidden() && qtwi->checkState(0) == Qt::Checked)
+			{
+				QPointer <Conductor> c = m_conductor_hash.value(qtwi);
+				if (c) {
+					conductor_list.append(c.data());
+				}
+			}
+		}
+		m_worker.replaceConductor(conductor_list);
+	}
+	
 		//Change was made, we reload the panel
 		//and search again to keep up to date the tree widget
 		//and the match item of search
@@ -1026,4 +1052,33 @@ void SearchAndReplaceWidget::on_m_case_sensitive_cb_stateChanged(int arg1)
 {
 	Q_UNUSED(arg1);
 	search();
+}
+
+/**
+ * @brief SearchAndReplaceWidget::on_m_conductor_pb_clicked
+ * Open a dialog to edit the condutor properties
+ */
+void SearchAndReplaceWidget::on_m_conductor_pb_clicked()
+{
+    ReplaceConductorDialog *dialog = new ReplaceConductorDialog(m_worker.m_conductor_properties, this);
+	int result = dialog->exec();
+	
+	if (result == QDialogButtonBox::AcceptRole)
+	{
+		QString text = ui->m_conductor_pb->text();
+		if (!text.endsWith(tr(" [édité]"))) {
+			text.append(tr(" [édité]"));
+		}
+		ui->m_conductor_pb->setText(text);
+		m_worker.m_conductor_properties = dialog->properties();
+	}
+	else if (result == QDialogButtonBox::ResetRole)
+	{
+		QString text = ui->m_conductor_pb->text();
+		if (text.endsWith(tr(" [édité]"))) {
+			text.remove(tr(" [édité]"));
+		}
+		ui->m_conductor_pb->setText(text);
+		m_worker.m_conductor_properties = m_worker.invalidConductorProperties();
+	}
 }

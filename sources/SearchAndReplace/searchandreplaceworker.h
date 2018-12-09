@@ -21,10 +21,14 @@
 #include <QDate>
 
 #include "titleblockproperties.h"
+#include "conductorproperties.h"
 
 class Diagram;
 class Element;
 class IndependentTextItem;
+class Conductor;
+class QLineEdit;
+class QCheckBox;
 
 /**
  * @brief The SearchAndReplaceWorker class
@@ -35,21 +39,28 @@ class SearchAndReplaceWorker
 	public:
 		SearchAndReplaceWorker();
 		
-		void clear();
 		void replaceDiagram(QList <Diagram *> diagram_list);
 		void replaceDiagram(Diagram *diagram);
 		void replaceElement(QList <Element *> list);
 		void replaceElement(Element *element);
 		void replaceIndiText(QList<IndependentTextItem *> list);
 		void replaceIndiText(IndependentTextItem *text);
+		void replaceConductor(QList <Conductor *> list);
+		void replaceConductor(Conductor *conductor);
 		
 		static QString eraseText() {return QString("XXXXXXXXXXXXXXXXXXX");}
 		static QDate eraseDate() {return QDate(1900, 1, 1);}
+		static void setupLineEdit(QLineEdit *l, QCheckBox *cb, QString str);
+		static ConductorProperties invalidConductorProperties();
+		
+		static ConductorProperties applyChange(const ConductorProperties &original, const ConductorProperties &change);
+		static QString applyChange(const QString &original, const QString &change);
 		
 	private:
 		TitleBlockProperties m_titleblock_properties;
 		DiagramContext m_element_context;
 		QString m_indi_text;
+		ConductorProperties m_conductor_properties;
 		
 		friend class SearchAndReplaceWidget;
 };
