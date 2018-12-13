@@ -135,7 +135,24 @@ ElementsLocation ECHSFileToFile::copyElement(ElementsLocation &source, ElementsL
     QString new_elmt_name = rename.isEmpty() ? source.fileName() : rename;
     bool rb = QFile::copy(source.fileSystemPath(), destination.fileSystemPath() + "/" + new_elmt_name);
     if (rb)
+	{
+#ifdef Q_OS_WIN
+			//On windows when user drag and drop an element from the common elements collection
+			//to the custom elements collection, the element file stay in read only mode, and so
+			//user can't save the element
+		extern Q_CORE_EXPORT int qt_ntfs_permission_lookup;
+		qt_ntfs_permission_lookup++;
+		QFile file(destination.fileSystemPath() + "/" + new_elmt_name);
+		if (!file.isWritable()) {
+			if (!file.setPermissions(file.permissions() | QFileDevice::WriteUser)) {
+				qDebug() << "Failed to change file permission of : " << QFileInfo(file).canonicalFilePath() \
+						 << " in ECHSFileToFile::copyElement";
+			}
+		}
+		qt_ntfs_permission_lookup--;
+#endif
 		return ElementsLocation (destination.fileSystemPath() + "/" + new_elmt_name);
+	}
     else
 		return ElementsLocation();
 }
