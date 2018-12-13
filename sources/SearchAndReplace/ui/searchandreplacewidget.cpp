@@ -288,6 +288,7 @@ void SearchAndReplaceWidget::fillItemsList()
 		QTreeWidgetItem *qtwi = new QTreeWidgetItem(m_conductor_qtwi);
 		qtwi->setText(0, c->properties().text);
 		qtwi->setCheckState(0, Qt::Checked);
+		qtwi->setData(0, Qt::UserRole, searchTerms(c));
 		m_conductor_hash.insert(qtwi, QPointer<Conductor>(c));
 	}
 	m_conductor_qtwi->sortChildren(0, Qt::AscendingOrder);
@@ -369,23 +370,6 @@ void SearchAndReplaceWidget::search()
 		}
 		
 		bool match = false;
-		Qt::MatchFlags flags;
-			
-			//Search on the text displayed at column 0 of each item
-		if (ui->m_mode_cb->currentIndex() == 0) {
-			flags = Qt::MatchContains | Qt::MatchRecursive; //Contain string
-		} else {
-			flags = Qt::MatchFixedString | Qt::MatchRecursive; //entire word
-		}
-		if (ui->m_case_sensitive_cb->isChecked()) {
-			flags = flags | Qt::MatchCaseSensitive;
-		}
-		for (QTreeWidgetItem *qtwi : ui->m_tree_widget->findItems(str, flags))
-		{
-			match = true;
-			qtwi->setHidden(false);
-			setVisibleAllParents(qtwi);
-		}
 		
 			//Extended search,
 			//on each string stored in column 0 with role : UserRole
@@ -393,6 +377,7 @@ void SearchAndReplaceWidget::search()
 		qtwi_list.append(m_diagram_hash.keys());
 		qtwi_list.append(m_element_hash.keys());
 		qtwi_list.append(m_text_hash.keys());
+		qtwi_list.append(m_conductor_hash.keys());
 		for (QTreeWidgetItem *qtwi : qtwi_list)
 		{
 			QStringList list = qtwi->data(0, Qt::UserRole).toStringList();
@@ -653,7 +638,7 @@ void SearchAndReplaceWidget::activateNextChecked()
  * @param diagram
  * @return All QStrings use as terms for search.
  */
-QStringList SearchAndReplaceWidget::searchTerms(Diagram *diagram) const
+QStringList SearchAndReplaceWidget::searchTerms(Diagram *diagram)
 {
 	QStringList list;
 	TitleBlockProperties prop = diagram->border_and_titleblock.exportTitleBlock();
@@ -677,7 +662,7 @@ QStringList SearchAndReplaceWidget::searchTerms(Diagram *diagram) const
  * @param element
  * @return All QString use as terms for search
  */
-QStringList SearchAndReplaceWidget::searchTerms(Element *element) const
+QStringList SearchAndReplaceWidget::searchTerms(Element *element)
 {
 	QStringList list;
 	DiagramContext context = element->elementInformations();
@@ -688,6 +673,23 @@ QStringList SearchAndReplaceWidget::searchTerms(Element *element) const
 			list.append(str);
 		}
 	}
+	
+	return list;
+}
+
+/**
+ * @brief SearchAndReplaceWidget::searchTerms
+ * @param conductor
+ * @return all QString use as terms for search.
+ */
+QStringList SearchAndReplaceWidget::searchTerms(Conductor *conductor)
+{
+	QStringList list;
+	ConductorProperties properties = conductor->properties();
+	
+	list.append(properties.text);
+	list.append(properties.m_function);
+	list.append(properties.m_tension_protocol);
 	
 	return list;
 }

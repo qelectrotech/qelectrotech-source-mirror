@@ -60,8 +60,10 @@ class SearchAndReplaceWidget : public QWidget
 		void setChildCheckState(QTreeWidgetItem *item, Qt::CheckState check, bool deep = true);
 		void updateParentCheckState(QTreeWidgetItem *item, bool all_parents = true);
 		void activateNextChecked();
-		QStringList searchTerms(Diagram *diagram) const;
-		QStringList searchTerms(Element *element) const;
+		static QStringList searchTerms(Diagram *diagram);
+		static QStringList searchTerms(Element *element);
+		static QStringList searchTerms(Conductor *conductor);
+		static QStringList searchTerms(QString str);
 		
 	private slots:
 		void on_m_quit_button_clicked();
