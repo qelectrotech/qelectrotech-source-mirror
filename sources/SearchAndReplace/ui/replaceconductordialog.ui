@@ -6,12 +6,9 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>636</width>
+    <width>568</width>
     <height>523</height>
    </rect>
-  </property>
-  <property name="windowTitle">
-   <string>Dialog</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -43,7 +40,7 @@
            <widget class="QComboBox" name="m_horizontal_align_cb">
             <item>
              <property name="text">
-              <string>Inchanger</string>
+              <string>Ne pas modifier</string>
              </property>
             </item>
             <item>
@@ -68,7 +65,7 @@
           <item row="2" column="1" colspan="4">
            <widget class="QLineEdit" name="m_formula_le">
             <property name="placeholderText">
-             <string>Non modifier</string>
+             <string>Ne pas modifier</string>
             </property>
             <property name="clearButtonEnabled">
              <bool>true</bool>
@@ -85,7 +82,7 @@
           <item row="4" column="1" colspan="4">
            <widget class="QLineEdit" name="m_function_le">
             <property name="placeholderText">
-             <string>Non modifier</string>
+             <string>Ne pas modifier</string>
             </property>
             <property name="clearButtonEnabled">
              <bool>true</bool>
@@ -139,7 +136,7 @@
           <item row="5" column="1" colspan="4">
            <widget class="QLineEdit" name="m_tension_protocol_le">
             <property name="placeholderText">
-             <string>Non modifier</string>
+             <string>Ne pas modifier</string>
             </property>
             <property name="clearButtonEnabled">
              <bool>true</bool>
@@ -149,7 +146,7 @@
           <item row="1" column="1" colspan="4">
            <widget class="QSpinBox" name="m_text_size_sb">
             <property name="specialValueText">
-             <string>Inchanger</string>
+             <string>Ne pas modifier</string>
             </property>
             <property name="accelerated">
              <bool>false</bool>
@@ -205,9 +202,12 @@
           </item>
           <item row="6" column="1">
            <widget class="QComboBox" name="m_vertical_align_cb">
+            <property name="currentText">
+             <string>Ne pas modifier</string>
+            </property>
             <item>
              <property name="text">
-              <string>Inchanger</string>
+              <string>Ne pas modifier</string>
              </property>
             </item>
             <item>
@@ -248,7 +248,7 @@
              <bool>true</bool>
             </property>
             <property name="specialValueText">
-             <string>Inchanger</string>
+             <string>Ne pas modifier</string>
             </property>
             <property name="suffix">
              <string>°</string>
@@ -273,7 +273,7 @@
              <bool>true</bool>
             </property>
             <property name="specialValueText">
-             <string>Inchanger</string>
+             <string>Ne pas modifier</string>
             </property>
             <property name="suffix">
              <string>°</string>
@@ -292,7 +292,7 @@
           <item row="3" column="1" colspan="3">
            <widget class="QLineEdit" name="m_text_le">
             <property name="placeholderText">
-             <string>Non modifier</string>
+             <string>Ne pas modifier</string>
             </property>
             <property name="clearButtonEnabled">
              <bool>true</bool>
@@ -534,7 +534,7 @@
           <item row="1" column="1" colspan="2">
            <widget class="QSpinBox" name="m_color_2_dash_size_sb">
             <property name="specialValueText">
-             <string>Inchanger</string>
+             <string>Ne pas modifier</string>
             </property>
             <property name="suffix">
              <string>px</string>
@@ -553,7 +553,7 @@
        <item row="2" column="2" colspan="2">
         <widget class="QDoubleSpinBox" name="m_cond_size_sb">
          <property name="specialValueText">
-          <string>Inchanger</string>
+          <string>Ne pas modifier</string>
          </property>
          <property name="minimum">
           <double>0.200000000000000</double>

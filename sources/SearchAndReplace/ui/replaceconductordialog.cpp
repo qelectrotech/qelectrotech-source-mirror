@@ -177,7 +177,7 @@ void ReplaceConductorDialog::initWidget()
 	
 	ui->m_update_preview_pb->setHidden(true);
 	
-	ui->m_line_style_cb->addItem(tr("Inchanger"), QPen(Qt::NoPen));
+	ui->m_line_style_cb->addItem(tr("Ne pas modifier"), QPen(Qt::NoPen));
 	ui->m_line_style_cb->addItem(tr("Trait plein", "conductor style: solid line"), QPen(Qt::SolidLine));
 	ui->m_line_style_cb->addItem(tr("Trait en pointillés", "conductor style: dashed line"), QPen(Qt::DashLine));
 	ui->m_line_style_cb->addItem(tr("Traits et points", "conductor style: dashed and dotted line"), QPen(Qt::DashDotLine));
