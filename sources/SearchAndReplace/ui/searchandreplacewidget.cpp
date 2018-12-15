@@ -212,11 +212,8 @@ void SearchAndReplaceWidget::setHideAdvanced(bool hide) const
 	ui->m_tree_widget      ->setHidden(hide);
 	ui->m_replace_pb       ->setHidden(hide);
 	ui->m_replace_all_pb   ->setHidden(hide);
-	ui->m_mode             ->setHidden(hide);
 	ui->m_mode_cb          ->setHidden(hide);
 	ui->m_case_sensitive_cb->setHidden(hide);
-	QSize size = ui->m_v_spacer->sizeHint();
-	ui->m_v_spacer->changeSize(size.width(), size.height(), QSizePolicy::Minimum, hide ? QSizePolicy::Expanding : QSizePolicy::Ignored);
 }
 
 /**

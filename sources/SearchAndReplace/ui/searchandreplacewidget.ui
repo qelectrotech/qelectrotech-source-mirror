@@ -6,41 +6,66 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1556</width>
-    <height>596</height>
+    <width>970</width>
+    <height>436</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout_2" rowstretch="0,0,0,0,1,0">
-   <property name="leftMargin">
-    <number>0</number>
-   </property>
-   <property name="topMargin">
-    <number>0</number>
-   </property>
-   <property name="rightMargin">
-    <number>0</number>
-   </property>
-   <property name="bottomMargin">
-    <number>0</number>
-   </property>
-   <item row="0" column="6">
-    <widget class="QPushButton" name="m_reload_pb">
+  <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,1" columnstretch="0,0,1,0,0,0,0,0,0,0,0,0">
+   <item row="0" column="0">
+    <widget class="QPushButton" name="m_quit_button">
      <property name="toolTip">
-      <string>Actualiser</string>
+      <string>Quitter</string>
      </property>
      <property name="text">
       <string/>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>:/ico/16x16/view-refresh.png</normaloff>:/ico/16x16/view-refresh.png</iconset>
+      <iconset resource="../../../qelectrotech.qrc">
+       <normaloff>:/ico/16x16/window-close.svg</normaloff>:/ico/16x16/window-close.svg</iconset>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
      </property>
     </widget>
    </item>
-   <item row="0" column="4">
+   <item row="0" column="1">
+    <widget class="QLabel" name="m_search">
+     <property name="text">
+      <string>Chercher :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="6">
+    <widget class="QComboBox" name="m_mode_cb">
+     <property name="toolTip">
+      <string>Mode</string>
+     </property>
+     <property name="frame">
+      <bool>true</bool>
+     </property>
+     <item>
+      <property name="text">
+       <string>Texte brut</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Mots entiers</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="0" column="7">
+    <widget class="QCheckBox" name="m_case_sensitive_cb">
+     <property name="text">
+      <string>Sensible à la casse</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="8">
     <widget class="QPushButton" name="m_next_pb">
      <property name="toolTip">
       <string>Aller à la correspondance suivante</string>
@@ -49,15 +74,49 @@
       <string/>
      </property>
      <property name="icon">
-      <iconset>
+      <iconset resource="../../../qelectrotech.qrc">
        <normaloff>:/ico/16x16/go-bottom.png</normaloff>:/ico/16x16/go-bottom.png</iconset>
      </property>
      <property name="flat">
-      <bool>false</bool>
+      <bool>true</bool>
      </property>
     </widget>
    </item>
-   <item row="0" column="7">
+   <item row="0" column="9">
+    <widget class="QPushButton" name="m_previous_pb">
+     <property name="toolTip">
+      <string>Aller à la correspondance précédente</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="../../../qelectrotech.qrc">
+       <normaloff>:/ico/16x16/go-top.png</normaloff>:/ico/16x16/go-top.png</iconset>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="10">
+    <widget class="QPushButton" name="m_reload_pb">
+     <property name="toolTip">
+      <string>Actualiser</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="../../../qelectrotech.qrc">
+       <normaloff>:/ico/16x16/view-refresh.png</normaloff>:/ico/16x16/view-refresh.png</iconset>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="11">
     <widget class="QPushButton" name="m_advanced_pb">
      <property name="toolTip">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Afficher les options avancées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -66,7 +125,7 @@
       <string/>
      </property>
      <property name="icon">
-      <iconset>
+      <iconset resource="../../../qelectrotech.qrc">
        <normaloff>:/ico/16x16/configure-toolbars.png</normaloff>:/ico/16x16/configure-toolbars.png</iconset>
      </property>
      <property name="checkable">
@@ -76,11 +135,94 @@
       <bool>false</bool>
      </property>
      <property name="flat">
-      <bool>false</bool>
+      <bool>true</bool>
      </property>
     </widget>
    </item>
-   <item row="4" column="0" colspan="8">
+   <item row="1" column="1">
+    <widget class="QLabel" name="m_replace">
+     <property name="text">
+      <string>Remplacer :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QLineEdit" name="m_replace_le">
+     <property name="placeholderText">
+      <string>Champ texte de folio</string>
+     </property>
+     <property name="clearButtonEnabled">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="QPushButton" name="m_folio_pb">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les folios&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="text">
+      <string>Folio</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="4">
+    <widget class="QPushButton" name="m_element_pb">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les éléments&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="text">
+      <string>Élément</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="5">
+    <widget class="QPushButton" name="m_conductor_pb">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les conducteurs&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="text">
+      <string>Conducteur</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="8" colspan="2">
+    <widget class="QPushButton" name="m_replace_pb">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer la correspondance sélectionnée&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="text">
+      <string>Remplacer</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="10" colspan="2">
+    <widget class="QPushButton" name="m_replace_all_pb">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer les correspondances cochées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="text">
+      <string>Tout remplacer</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2" colspan="4">
+    <widget class="QLineEdit" name="m_search_le">
+     <property name="clearButtonEnabled">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="12">
     <widget class="QTreeWidget" name="m_tree_widget">
      <property name="uniformRowHeights">
       <bool>true</bool>
@@ -101,193 +243,10 @@
      </column>
     </widget>
    </item>
-   <item row="0" column="5">
-    <widget class="QPushButton" name="m_previous_pb">
-     <property name="toolTip">
-      <string>Aller à la correspondance précédente</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset>
-       <normaloff>:/ico/16x16/go-top.png</normaloff>:/ico/16x16/go-top.png</iconset>
-     </property>
-     <property name="flat">
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0">
-    <spacer name="m_v_spacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>0</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="0" column="0">
-    <widget class="QPushButton" name="m_quit_button">
-     <property name="toolTip">
-      <string>Quitter</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset>
-       <normaloff>:/ico/16x16/window-close.svg</normaloff>:/ico/16x16/window-close.svg</iconset>
-     </property>
-     <property name="flat">
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="3" rowspan="3">
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="1" column="0">
-      <widget class="QLabel" name="m_replace">
-       <property name="text">
-        <string>Remplacer :</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1" colspan="6">
-      <widget class="QLineEdit" name="m_search_le">
-       <property name="clearButtonEnabled">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="5">
-      <widget class="QPushButton" name="m_element_pb">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les éléments&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="text">
-        <string>Élément</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1" colspan="3">
-      <widget class="QLineEdit" name="m_replace_le">
-       <property name="placeholderText">
-        <string>Champ texte de folio</string>
-       </property>
-       <property name="clearButtonEnabled">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="m_search">
-       <property name="text">
-        <string>Chercher :</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="6">
-      <widget class="QPushButton" name="m_conductor_pb">
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les conducteurs&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="text">
-        <string>Conducteur</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="m_mode">
-       <property name="text">
-        <string>Mode :</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="4">
-      <widget class="QPushButton" name="m_folio_pb">
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les folios&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="text">
-        <string>Folio</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="QComboBox" name="m_mode_cb">
-       <property name="frame">
-        <bool>true</bool>
-       </property>
-       <item>
-        <property name="text">
-         <string>Texte brut</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Mots entiers</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-     <item row="2" column="3">
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="2" column="2">
-      <widget class="QCheckBox" name="m_case_sensitive_cb">
-       <property name="text">
-        <string>Sensible à la casse</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="2" column="4" colspan="2">
-    <widget class="QPushButton" name="m_replace_pb">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer la correspondance sélectionnée&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="text">
-      <string>Remplacer</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="6" colspan="2">
-    <widget class="QPushButton" name="m_replace_all_pb">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer les correspondances cochées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="text">
-      <string>Tout remplacer</string>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../../qelectrotech.qrc"/>
+ </resources>
  <connections/>
 </ui>
