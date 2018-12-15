@@ -7637,17 +7637,22 @@ Voulez-vous la remplacer ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="60"/>
+        <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="54"/>
         <source>Chercher/remplacer les propriétés de folio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="171"/>
-        <source>Chercher/remplacer les propriétés d&apos;éléments</source>
+        <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="116"/>
+        <source>Chercher/remplacer les propriétés d&apos;éléments.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="231"/>
+        <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="206"/>
+        <source>Chercher/remplacer les propriétés de conducteurs.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="168"/>
         <source>Chercher/remplacer des textes independants</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7803,9 +7808,240 @@ Voulez-vous la remplacer ?</source>
     </message>
 </context>
 <context>
+    <name>ReplaceConductorDialog</name>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="21"/>
+        <source>Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="30"/>
+        <source>&amp;Multifilaire</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="43"/>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="68"/>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="85"/>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="139"/>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="149"/>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="206"/>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="210"/>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="251"/>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="276"/>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="295"/>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="537"/>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="556"/>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="180"/>
+        <source>Ne pas modifier</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="48"/>
+        <source>En haut</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="53"/>
+        <source>En bas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="61"/>
+        <source>Texte sur conducteur horizontal :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="78"/>
+        <source>Tension / protocol :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="95"/>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="186"/>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="196"/>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="228"/>
+        <source>Supprimer ce texte</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="105"/>
+        <source>Fonction :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="112"/>
+        <source>Formule du texte :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="119"/>
+        <source>Texte visible</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="129"/>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="238"/>
+        <source>Angle :</source>
+        <translation type="unfinished">Kut:</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="165"/>
+        <source>Texte sur conducteur vertical :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="172"/>
+        <source>Taille du texte :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="179"/>
+        <source>Texte :</source>
+        <translation type="unfinished">Tekst:</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="215"/>
+        <source>À gauche</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="220"/>
+        <source>À droite</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="254"/>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="279"/>
+        <source>°</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="308"/>
+        <source>Unifilaire</source>
+        <translation type="unfinished">Jednofazno</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="323"/>
+        <source>Protective Earth Neutral</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="326"/>
+        <source>PEN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="333"/>
+        <source>Phase</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="336"/>
+        <source>phase</source>
+        <translation type="unfinished">faza</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="347"/>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="380"/>
+        <source>Nombre de phase</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="360"/>
+        <source>Neutre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="363"/>
+        <source>neutre</source>
+        <translation type="unfinished">nula</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="396"/>
+        <source>Terre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="399"/>
+        <source>terre</source>
+        <translation type="unfinished">uzemljenje</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="410"/>
+        <source>TextLabel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="420"/>
+        <source>PushButton</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="431"/>
+        <source>Apparence</source>
+        <translation type="unfinished">Izgled</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="437"/>
+        <source>Taille :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="444"/>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="520"/>
+        <source>Couleur :</source>
+        <translation type="unfinished">Boje:</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="474"/>
+        <source>Style :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="481"/>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="527"/>
+        <source>Modifier</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="491"/>
+        <source>Couleur secondaire :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="513"/>
+        <source>Taille de trait :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="540"/>
+        <source>px</source>
+        <translation type="unfinished">px</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="181"/>
+        <source>Trait plein</source>
+        <comment>conductor style: solid line</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="182"/>
+        <source>Trait en pointillés</source>
+        <comment>conductor style: dashed line</comment>
+        <translation type="unfinished">Isprekidane linije</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="183"/>
+        <source>Traits et points</source>
+        <comment>conductor style: dashed and dotted line</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ReplaceElementDialog</name>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replaceelementdialog.cpp" line="83"/>
+        <location filename="../sources/SearchAndReplace/ui/replaceelementdialog.cpp" line="81"/>
         <source>Ne pas modifier</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7989,157 +8225,157 @@ Créer votre propre texte en vous aidant des variables suivantes :
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="46"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="71"/>
         <source>Aller à la correspondance suivante</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="63"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="122"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Afficher les options avancées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="107"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="88"/>
         <source>Aller à la correspondance précédente</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="137"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="20"/>
         <source>Quitter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="173"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="175"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les éléments&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="183"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="152"/>
         <source>Champ texte de folio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="203"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="185"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les conducteurs&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="213"/>
-        <source>Mode :</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="220"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="162"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les folios&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="223"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="165"/>
         <source>Folio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="234"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="51"/>
         <source>Texte brut</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="239"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="44"/>
+        <source>Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="56"/>
         <source>Mots entiers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="260"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="64"/>
         <source>Sensible à la casse</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="272"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="198"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer la correspondance sélectionnée&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="285"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="211"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer les correspondances cochées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="176"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="178"/>
         <source>Élément</source>
         <translation type="unfinished">Element</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="206"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="188"/>
         <source>Conducteur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="156"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="145"/>
         <source>Remplacer :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="275"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="201"/>
         <source>Remplacer</source>
         <translation type="unfinished">Zamijeni</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="288"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="214"/>
         <source>Tout remplacer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="193"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="37"/>
         <source>Chercher :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="32"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="105"/>
         <source>Actualiser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="136"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="137"/>
         <source>Correspondance :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="142"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="143"/>
         <source>Folios</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="148"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="149"/>
         <source>Champs texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="154"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="155"/>
         <source>Eléments</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="159"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="160"/>
         <source>Eléments simple</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="165"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="166"/>
         <source>Eléments maître</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="171"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="172"/>
         <source>Eléments esclave</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="177"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="178"/>
         <source>Eléments report de folio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="183"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="184"/>
         <source>Eléments bornier</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8150,22 +8386,28 @@ Créer votre propre texte en vous aidant des variables suivantes :
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="869"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="888"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="896"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="926"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="942"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="992"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="993"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1001"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1002"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="914"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="934"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="950"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="984"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1017"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1018"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1026"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1027"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1068"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1069"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1077"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1078"/>
         <source> [édité]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="191"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="192"/>
         <source>Conducteurs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="337"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="336"/>
         <source>Inconnue</source>
         <translation type="unfinished"></translation>
     </message>
