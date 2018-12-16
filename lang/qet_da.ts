@@ -7723,12 +7723,12 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="116"/>
         <source>Chercher/remplacer les propriétés d&apos;éléments.</source>
-        <translation type="unfinished"></translation>
+        <translation>Søge/erstatte symbol egenskaber.</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="206"/>
         <source>Chercher/remplacer les propriétés de conducteurs.</source>
-        <translation type="unfinished"></translation>
+        <translation>Søge/erstatte ledere egenskaber.</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="168"/>
@@ -7891,12 +7891,12 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="21"/>
         <source>Type</source>
-        <translation type="unfinished">Type</translation>
+        <translation>Type</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="30"/>
         <source>&amp;Multifilaire</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Flere leder</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="43"/>
@@ -7913,27 +7913,27 @@ Voulez-vous la remplacer ?</source>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="556"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="180"/>
         <source>Ne pas modifier</source>
-        <translation type="unfinished">Ikke ændret</translation>
+        <translation>Ikke ændret</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="48"/>
         <source>En haut</source>
-        <translation type="unfinished"></translation>
+        <translation>Top</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="53"/>
         <source>En bas</source>
-        <translation type="unfinished"></translation>
+        <translation>Bund</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="61"/>
         <source>Texte sur conducteur horizontal :</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst på vandret leder:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="78"/>
         <source>Tension / protocol :</source>
-        <translation type="unfinished"></translation>
+        <translation>Spænding / protokol:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="95"/>
@@ -7941,180 +7941,180 @@ Voulez-vous la remplacer ?</source>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="196"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="228"/>
         <source>Supprimer ce texte</source>
-        <translation type="unfinished">Slette tekst</translation>
+        <translation>Slette tekst</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="105"/>
         <source>Fonction :</source>
-        <translation type="unfinished">Funktion:</translation>
+        <translation>Funktion:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="112"/>
         <source>Formule du texte :</source>
-        <translation type="unfinished">Formel tekst:</translation>
+        <translation>Formel tekst:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="119"/>
         <source>Texte visible</source>
-        <translation type="unfinished">Synlig tekst</translation>
+        <translation>Synlig tekst</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="129"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="238"/>
         <source>Angle :</source>
-        <translation type="unfinished">Vinkel:</translation>
+        <translation>Vinkel:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="165"/>
         <source>Texte sur conducteur vertical :</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst på lodret leder:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="172"/>
         <source>Taille du texte :</source>
-        <translation type="unfinished">Tekststørrelse:</translation>
+        <translation>Tekststørrelse:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="179"/>
         <source>Texte :</source>
-        <translation type="unfinished">Tekst:</translation>
+        <translation>Tekst:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="215"/>
         <source>À gauche</source>
-        <translation type="unfinished"></translation>
+        <translation>Venstre</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="220"/>
         <source>À droite</source>
-        <translation type="unfinished"></translation>
+        <translation>Højre</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="254"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="279"/>
         <source>°</source>
-        <translation type="unfinished"></translation>
+        <translation>°</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="308"/>
         <source>Unifilaire</source>
-        <translation type="unfinished">Enkelt leder</translation>
+        <translation>Enkelt leder</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="323"/>
         <source>Protective Earth Neutral</source>
-        <translation type="unfinished">Beskyttende Jord Neutral</translation>
+        <translation>Beskyttende Jord Neutral</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="326"/>
         <source>PEN</source>
-        <translation type="unfinished">PEN</translation>
+        <translation>PEN</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="333"/>
         <source>Phase</source>
-        <translation type="unfinished">Fase</translation>
+        <translation>Fase</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="336"/>
         <source>phase</source>
-        <translation type="unfinished">fase</translation>
+        <translation>fase</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="347"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="380"/>
         <source>Nombre de phase</source>
-        <translation type="unfinished">Fase nummer</translation>
+        <translation>Fase nummer</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="360"/>
         <source>Neutre</source>
-        <translation type="unfinished">Neutral</translation>
+        <translation>Neutral</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="363"/>
         <source>neutre</source>
-        <translation type="unfinished">neutral</translation>
+        <translation>neutral</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="396"/>
         <source>Terre</source>
-        <translation type="unfinished">Jord</translation>
+        <translation>Jord</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="399"/>
         <source>terre</source>
-        <translation type="unfinished">jord</translation>
+        <translation>jord</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="410"/>
         <source>TextLabel</source>
-        <translation type="unfinished">Tekst etiket</translation>
+        <translation>Tekst etiket</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="420"/>
         <source>PushButton</source>
-        <translation type="unfinished"></translation>
+        <translation>Trykknap</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="431"/>
         <source>Apparence</source>
-        <translation type="unfinished">Udseende</translation>
+        <translation>Udseende</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="437"/>
         <source>Taille :</source>
-        <translation type="unfinished">Størrelse:</translation>
+        <translation>Størrelse:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="444"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="520"/>
         <source>Couleur :</source>
-        <translation type="unfinished">Farve:</translation>
+        <translation>Farve:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="474"/>
         <source>Style :</source>
-        <translation type="unfinished">Typografi:</translation>
+        <translation>Typografi:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="481"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="527"/>
         <source>Modifier</source>
-        <translation type="unfinished"></translation>
+        <translation>Ændre</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="491"/>
         <source>Couleur secondaire :</source>
-        <translation type="unfinished">Sekundær farve:</translation>
+        <translation>Sekundær farve:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="513"/>
         <source>Taille de trait :</source>
-        <translation type="unfinished">Størrelse på funktion:</translation>
+        <translation>Størrelse på funktion:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="540"/>
         <source>px</source>
-        <translation type="unfinished">piksel</translation>
+        <translation>piksel</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="181"/>
         <source>Trait plein</source>
         <comment>conductor style: solid line</comment>
-        <translation type="unfinished">Fuld streg</translation>
+        <translation>Fuld streg</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="182"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
-        <translation type="unfinished">Stiplet streg</translation>
+        <translation>Stiplet streg</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="183"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
-        <translation type="unfinished">Stiplet streg og punkt</translation>
+        <translation>Stiplet streg og punkt</translation>
     </message>
 </context>
 <context>
@@ -8368,7 +8368,7 @@ Opret tekst ved hjælp af følgende variabler:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="44"/>
         <source>Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Tilstand</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="56"/>
