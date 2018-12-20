@@ -8,6 +8,7 @@
         <name lang="nl">plaat warmtewisselaar</name>
         <name lang="ar">لوحة مبادل حراري</name>
         <name lang="fr">Echangeur à Plaques</name>
+        <name lang="es">Intercambiador de placas</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

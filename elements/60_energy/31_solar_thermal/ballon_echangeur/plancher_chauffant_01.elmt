@@ -8,6 +8,7 @@
         <name lang="nl">Vloer verwarming</name>
         <name lang="ar">سخّان تحت أرضي</name>
         <name lang="fr">Plancher Chauffant</name>
+        <name lang="es">Piso calentado</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
