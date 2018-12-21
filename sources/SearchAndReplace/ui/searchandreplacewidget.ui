@@ -13,7 +13,14 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,1" columnstretch="0,0,1,0,0,0,0,0,0,0,0,0">
+  <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,1" columnstretch="0,0,1,0,0,0,0,0,0,0,0,0,0">
+   <item row="0" column="1">
+    <widget class="QLabel" name="m_search">
+     <property name="text">
+      <string>Chercher :</string>
+     </property>
+    </widget>
+   </item>
    <item row="0" column="0">
     <widget class="QPushButton" name="m_quit_button">
      <property name="toolTip">
@@ -31,14 +38,7 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="1">
-    <widget class="QLabel" name="m_search">
-     <property name="text">
-      <string>Chercher :</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="6">
+   <item row="0" column="7">
     <widget class="QComboBox" name="m_mode_cb">
      <property name="toolTip">
       <string>Mode</string>
@@ -58,14 +58,21 @@
      </item>
     </widget>
    </item>
-   <item row="0" column="7">
+   <item row="0" column="8">
     <widget class="QCheckBox" name="m_case_sensitive_cb">
      <property name="text">
       <string>Sensible à la casse</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="8">
+   <item row="1" column="1">
+    <widget class="QLabel" name="m_replace">
+     <property name="text">
+      <string>Remplacer :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="9">
     <widget class="QPushButton" name="m_next_pb">
      <property name="toolTip">
       <string>Aller à la correspondance suivante</string>
@@ -82,7 +89,7 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="9">
+   <item row="0" column="10">
     <widget class="QPushButton" name="m_previous_pb">
      <property name="toolTip">
       <string>Aller à la correspondance précédente</string>
@@ -99,24 +106,7 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="10">
-    <widget class="QPushButton" name="m_reload_pb">
-     <property name="toolTip">
-      <string>Actualiser</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset resource="../../../qelectrotech.qrc">
-       <normaloff>:/ico/16x16/view-refresh.png</normaloff>:/ico/16x16/view-refresh.png</iconset>
-     </property>
-     <property name="flat">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="11">
+   <item row="0" column="12">
     <widget class="QPushButton" name="m_advanced_pb">
      <property name="toolTip">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Afficher les options avancées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -139,10 +129,20 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
-    <widget class="QLabel" name="m_replace">
+   <item row="0" column="11">
+    <widget class="QPushButton" name="m_reload_pb">
+     <property name="toolTip">
+      <string>Actualiser</string>
+     </property>
      <property name="text">
-      <string>Remplacer :</string>
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="../../../qelectrotech.qrc">
+       <normaloff>:/ico/16x16/view-refresh.png</normaloff>:/ico/16x16/view-refresh.png</iconset>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
      </property>
     </widget>
    </item>
@@ -189,7 +189,7 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="8" colspan="2">
+   <item row="1" column="9" colspan="2">
     <widget class="QPushButton" name="m_replace_pb">
      <property name="enabled">
       <bool>false</bool>
@@ -202,7 +202,7 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="10" colspan="2">
+   <item row="1" column="11" colspan="2">
     <widget class="QPushButton" name="m_replace_all_pb">
      <property name="enabled">
       <bool>false</bool>
@@ -215,14 +215,7 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="2" colspan="4">
-    <widget class="QLineEdit" name="m_search_le">
-     <property name="clearButtonEnabled">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" colspan="12">
+   <item row="2" column="0" colspan="13">
     <widget class="QTreeWidget" name="m_tree_widget">
      <property name="uniformRowHeights">
       <bool>true</bool>
@@ -241,6 +234,20 @@
        <string notr="true">1</string>
       </property>
      </column>
+    </widget>
+   </item>
+   <item row="1" column="6">
+    <widget class="QPushButton" name="m_advanced_replace_pb">
+     <property name="text">
+      <string>avancé</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2" colspan="5">
+    <widget class="QLineEdit" name="m_search_le">
+     <property name="clearButtonEnabled">
+      <bool>true</bool>
+     </property>
     </widget>
    </item>
   </layout>

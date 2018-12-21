@@ -379,6 +379,72 @@ QString QETApp::elementInfoToVar(const QString &info)
 }
 
 /**
+ * @brief QETApp::conductorInfoKeys
+ * @return the conductor information keys
+ */
+QStringList QETApp::conductorInfoKeys()
+{
+	QStringList keys;
+	keys.append("formula");
+	keys.append("text");
+	keys.append("function");
+	keys.append("tension/protocol");
+	
+	return keys;
+}
+
+/**
+ * @brief QETApp::conductorTranslatedInfoKey
+ * @param key
+ * @return the translated information key given by @key
+ * If @key don't match, return an empty string
+ */
+QString QETApp::conductorTranslatedInfoKey(const QString &key)
+{
+	if      (key == "formula")           return tr("Formule du texte");
+	else if (key == "text")              return tr("Texte");
+	else if (key == "function")          return tr("Fonction");
+	else if (key ==  "tension/protocol") return tr("Tension / Protocole");
+	return QString();
+}
+
+/**
+ * @brief QETApp::diagramInfoKeys
+ * @return the diagram default information keys
+ */
+QStringList QETApp::diagramInfoKeys()
+{
+	QStringList list;
+	list.append("title");
+	list.append("author");
+	list.append("filename");
+	list.append("folio");
+	list.append("plant");
+	list.append("locmach");
+	list.append("indexrev");
+	
+	return list;
+}
+
+/**
+ * @brief QETApp::diagramTranslatedInfoKey
+ * @param key
+ * @return the translated information key given by @key
+ * If @key don't match, return an empty string
+ */
+QString QETApp::diagramTranslatedInfoKey(const QString &key)
+{
+	if      (key == "title")    return tr("Titre");
+	else if (key == "author")   return tr("Auteur");
+	else if (key == "filename") return tr("Fichier");
+	else if (key == "folio")    return tr("Folio");
+	else if (key == "plant")    return tr("Installation");
+	else if (key == "locmach")  return tr("Localisation");
+	else if (key == "indexrev") return tr("Indice Rev");
+	else return QString();
+}
+
+/**
 	@return the common title block templates collection, i.e. the one provided
 	by QElecrotTech
 */

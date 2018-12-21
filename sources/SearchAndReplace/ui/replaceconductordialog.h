@@ -57,7 +57,7 @@ class ReplaceConductorDialog : public QDialog
 		void on_m_color_pb_clicked();
 		void on_m_color_2_pb_clicked();
 		
-		private:
+	private:
 		Ui::ReplaceConductorDialog *ui;
 		ConductorProperties m_properties;
 };

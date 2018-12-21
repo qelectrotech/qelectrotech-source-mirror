@@ -76,6 +76,12 @@ class QETApp : public QObject
 		static QString elementTranslatedInfoKey(const QString &);
 		static QString elementInfoToVar(const QString &info);
 		
+		static QStringList conductorInfoKeys();
+		static QString conductorTranslatedInfoKey(const QString &key);
+		
+		static QStringList diagramInfoKeys();
+		static QString diagramTranslatedInfoKey(const QString &key);
+		
 		static TitleBlockTemplatesFilesCollection *commonTitleBlockTemplatesCollection();
 		static TitleBlockTemplatesFilesCollection *customTitleBlockTemplatesCollection();
 		static QList<TitleBlockTemplatesCollection *> availableTitleBlockTemplatesCollections();

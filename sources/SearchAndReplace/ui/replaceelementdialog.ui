@@ -27,8 +27,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>280</width>
-        <height>351</height>
+        <width>284</width>
+        <height>346</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="m_scroll_layout"/>
@@ -48,38 +48,5 @@
   </layout>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>m_button_box</sender>
-   <signal>accepted()</signal>
-   <receiver>ReplaceElementDialog</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>157</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>m_button_box</sender>
-   <signal>rejected()</signal>
-   <receiver>ReplaceElementDialog</receiver>
-   <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>286</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

@@ -28,6 +28,7 @@
 #include "replaceelementdialog.h"
 #include "qetapp.h"
 #include "replaceconductordialog.h"
+#include "replaceadvanceddialog.h"
 
 #include <QSettings>
 
@@ -214,6 +215,7 @@ void SearchAndReplaceWidget::setHideAdvanced(bool hide) const
 	ui->m_replace_all_pb   ->setHidden(hide);
 	ui->m_mode_cb          ->setHidden(hide);
 	ui->m_case_sensitive_cb->setHidden(hide);
+	ui->m_advanced_replace_pb->setHidden(hide);
 }
 
 /**
@@ -631,6 +633,94 @@ void SearchAndReplaceWidget::activateNextChecked()
 }
 
 /**
+ * @brief SearchAndReplaceWidget::selectedDiagram
+ * @return The list of visible and selected diagram in the tree widget
+ */
+QList<Diagram *> SearchAndReplaceWidget::selectedDiagram() const
+{
+	QList <Diagram *> diagram_list;
+	
+	for (QTreeWidgetItem *qtwi : m_diagram_hash.keys())
+	{
+		if (!qtwi->isHidden() && qtwi->checkState(0) == Qt::Checked)
+		{
+			QPointer <Diagram> p = m_diagram_hash.value(qtwi);
+			if (p) {
+				diagram_list.append(p.data());
+			}
+		}
+	}
+	
+	return diagram_list;
+}
+
+/**
+ * @brief SearchAndReplaceWidget::selectedElement
+ * @return The list of visible and selected element in the tree widget
+ */
+QList<Element *> SearchAndReplaceWidget::selectedElement() const
+{
+	QList <Element *> element_list;
+	
+	for (QTreeWidgetItem *qtwi : m_element_hash.keys())
+	{
+		if (!qtwi->isHidden() && qtwi->checkState(0) == Qt::Checked)
+		{
+			QPointer <Element> p = m_element_hash.value(qtwi);
+			if (p) {
+				element_list.append(p.data());
+			}
+		}
+	}
+	
+	return element_list;
+}
+
+/**
+ * @brief SearchAndReplaceWidget::selectedConductor
+ * @return The list of visible and selected conductor in the tree widget
+ */
+QList<Conductor *> SearchAndReplaceWidget::selectedConductor() const
+{
+	QList <Conductor *> conductor_list;
+	
+	for (QTreeWidgetItem *qtwi : m_conductor_hash.keys())
+	{
+		if (!qtwi->isHidden() && qtwi->checkState(0) == Qt::Checked)
+		{
+			QPointer <Conductor> c = m_conductor_hash.value(qtwi);
+			if (c) {
+				conductor_list.append(c.data());
+			}
+		}
+	}
+	
+	return conductor_list;
+}
+
+/**
+ * @brief SearchAndReplaceWidget::selectedText
+ * @return The list of visible and selected independant text in the tree widget
+ */
+QList<IndependentTextItem *> SearchAndReplaceWidget::selectedText() const
+{
+	QList <IndependentTextItem *> text_list;
+	
+	for(QTreeWidgetItem *qtwi : m_text_hash.keys())
+	{
+		if (!qtwi->isHidden() && qtwi->checkState(0) == Qt::Checked)
+		{
+			QPointer<IndependentTextItem> t = m_text_hash.value(qtwi);
+			if (t) {
+				text_list.append(t.data());
+			}
+		}
+	}
+	
+	return text_list;
+}
+
+/**
  * @brief SearchAndReplaceWidget::searchTerms
  * @param diagram
  * @return All QStrings use as terms for search.
@@ -919,7 +1009,48 @@ void SearchAndReplaceWidget::on_m_replace_pb_clicked()
 				m_worker.replaceConductor(c.data());
 			}
 		}
+		
+			//Replace advanced
+		if (ui->m_advanced_replace_pb->text().endsWith(tr(" [édité]")))
+		{
+			QList <Diagram *>dl;
+			QList <Element *>el;
+			QList <IndependentTextItem *>tl;
+			QList <Conductor *>cl;
+			
+			if (m_diagram_hash.keys().contains(qtwi))
+			{
+				QPointer<Diagram> d = m_diagram_hash.value(qtwi);
+				if (d) {
+					dl.append(d.data());
+				}
+			}
+			else if (m_element_hash.keys().contains(qtwi))
+			{
+				QPointer<Element> e = m_element_hash.value(qtwi);
+				if (e) {
+					el.append(e.data());
+				}
+			}
+			else if (m_text_hash.keys().contains(qtwi))
+			{
+				QPointer<IndependentTextItem> t = m_text_hash.value(qtwi);
+				if (t) {
+					tl.append(t.data());
+				}
+			}
+			else if (m_conductor_hash.keys().contains(qtwi))
+			{
+				QPointer<Conductor> c = m_conductor_hash.value(qtwi);
+				if (c) {
+					cl.append(c.data());
+				}
+			}
+			
+			m_worker.replaceAdvanced(dl, el, tl, cl);
+		}
 	}
+	
 	activateNextChecked();
 	ui->m_replace_pb->setEnabled(ui->m_next_pb->isEnabled());
 }
@@ -930,72 +1061,23 @@ void SearchAndReplaceWidget::on_m_replace_pb_clicked()
  */
 void SearchAndReplaceWidget::on_m_replace_all_pb_clicked()
 {
-		//Replace folio
-	if (ui->m_folio_pb->text().endsWith(tr(" [édité]")))
-	{
-		QList <Diagram *> diagram_list;
-		for (QTreeWidgetItem *qtwi : m_diagram_hash.keys())
-		{
-			if (!qtwi->isHidden() && qtwi->checkState(0) == Qt::Checked)
-			{
-				QPointer <Diagram> p = m_diagram_hash.value(qtwi);
-				if (p) {
-					diagram_list.append(p.data());
-				}
-			}
-		}
-		m_worker.replaceDiagram(diagram_list);
+	if (ui->m_folio_pb->text().endsWith(tr(" [édité]"))) {
+		m_worker.replaceDiagram(selectedDiagram());
 	}
-		//Replace text
-	if (ui->m_element_pb->text().endsWith(tr(" [édité]")))
-	{
-		QList <Element *> element_list;
-		for (QTreeWidgetItem *qtwi : m_element_hash.keys())
-		{
-			if (!qtwi->isHidden() && qtwi->checkState(0) == Qt::Checked)
-			{
-				QPointer <Element> p = m_element_hash.value(qtwi);
-				if (p) {
-					element_list.append(p.data());
-				}
-			}
-		}
-		m_worker.replaceElement(element_list);
+	if (ui->m_element_pb->text().endsWith(tr(" [édité]"))) {
+		m_worker.replaceElement(selectedElement());
 	}
-		//Replace indi text
-	if (!ui->m_replace_le->text().isEmpty())
-	{
-		QList <IndependentTextItem*> text_list;
-		for(QTreeWidgetItem *qtwi : m_text_hash.keys())
-		{
-			if (!qtwi->isHidden() && qtwi->checkState(0) == Qt::Checked)
-			{
-				QPointer<IndependentTextItem> t = m_text_hash.value(qtwi);
-				if (t) {
-					text_list.append(t.data());
-				}
-			}
-		}
+	if (!ui->m_replace_le->text().isEmpty()) {
 		m_worker.m_indi_text = ui->m_replace_le->text();
-		m_worker.replaceIndiText(text_list );
+		m_worker.replaceIndiText(selectedText() );
 	}
-	
-		//Replace conductor
-	if (ui->m_conductor_pb->text().endsWith(tr(" [édité]")))
-	{
-		QList <Conductor *> conductor_list;
-		for (QTreeWidgetItem *qtwi : m_conductor_hash.keys())
-		{
-			if (!qtwi->isHidden() && qtwi->checkState(0) == Qt::Checked)
-			{
-				QPointer <Conductor> c = m_conductor_hash.value(qtwi);
-				if (c) {
-					conductor_list.append(c.data());
-				}
-			}
-		}
-		m_worker.replaceConductor(conductor_list);
+	if (ui->m_conductor_pb->text().endsWith(tr(" [édité]"))) {
+		m_worker.replaceConductor(selectedConductor());
 	}
+	if (ui->m_advanced_replace_pb->text().endsWith(tr(" [édité]"))) {
+
+		m_worker.replaceAdvanced(selectedDiagram(), selectedElement(), selectedText(), selectedConductor());
+	}	
 	
 		//Change was made, we reload the panel
 		//and search again to keep up to date the tree widget
@@ -1079,5 +1161,34 @@ void SearchAndReplaceWidget::on_m_conductor_pb_clicked()
 		}
 		ui->m_conductor_pb->setText(text);
 		m_worker.m_conductor_properties = m_worker.invalidConductorProperties();
+	}
+}
+
+/**
+ * @brief SearchAndReplaceWidget::on_m_advanced_replace_pb_clicked
+ * Open the advanced editor.
+ */
+void SearchAndReplaceWidget::on_m_advanced_replace_pb_clicked()
+{
+	replaceAdvancedDialog *dialog = new replaceAdvancedDialog(m_worker.m_advanced_struct, this);
+	int result = dialog->exec();
+	
+	if (result == QDialogButtonBox::AcceptRole)
+	{
+		QString text = ui->m_advanced_replace_pb->text();
+		if (!text.endsWith(tr(" [édité]"))) {
+			text.append(tr(" [édité]"));
+		}
+		ui->m_advanced_replace_pb->setText(text);
+		m_worker.m_advanced_struct = dialog->advancedStruct();
+	}
+	else if (result == QDialogButtonBox::ResetRole)
+	{
+		QString text = ui->m_advanced_replace_pb->text();
+		if (text.endsWith(tr(" [édité]"))) {
+			text.remove(tr(" [édité]"));
+		}
+		ui->m_advanced_replace_pb->setText(text);
+		m_worker.m_advanced_struct = advancedReplaceStruct();
 	}
 }

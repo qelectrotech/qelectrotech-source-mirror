@@ -60,6 +60,11 @@ class SearchAndReplaceWidget : public QWidget
 		void setChildCheckState(QTreeWidgetItem *item, Qt::CheckState check, bool deep = true);
 		void updateParentCheckState(QTreeWidgetItem *item, bool all_parents = true);
 		void activateNextChecked();
+		QList<Diagram *> selectedDiagram() const;
+		QList<Element *> selectedElement() const;
+		QList<Conductor *> selectedConductor() const;
+		QList<IndependentTextItem *> selectedText() const;
+		
 		static QStringList searchTerms(Diagram *diagram);
 		static QStringList searchTerms(Element *element);
 		static QStringList searchTerms(Conductor *conductor);
@@ -80,8 +85,9 @@ class SearchAndReplaceWidget : public QWidget
 		void on_m_mode_cb_currentIndexChanged(int index);
 		void on_m_case_sensitive_cb_stateChanged(int arg1);
 		void on_m_conductor_pb_clicked();
+		void on_m_advanced_replace_pb_clicked();
 		
-		private:
+	private:
 		Ui::SearchAndReplaceWidget *ui;
 		QETDiagramEditor *m_editor;
 		QTreeWidgetItem *m_root_qtwi          = nullptr,

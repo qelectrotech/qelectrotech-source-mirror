@@ -30,6 +30,19 @@ class Conductor;
 class QLineEdit;
 class QCheckBox;
 
+struct advancedReplaceStruct
+{
+		//Who :
+		// 0 == diagram
+		// 1 == element
+		// 2 == conductor
+		// 3 == independant text
+	int who = -1;
+	QString what;
+	QString search;
+	QString replace;
+};
+
 /**
  * @brief The SearchAndReplaceWorker class
  * This class is the worker use to change properties when use the search and replace function of QET
@@ -47,6 +60,8 @@ class SearchAndReplaceWorker
 		void replaceIndiText(IndependentTextItem *text);
 		void replaceConductor(QList <Conductor *> list);
 		void replaceConductor(Conductor *conductor);
+		void replaceAdvanced (QList<Diagram *> diagrams = QList<Diagram *>(), QList<Element *> elements = QList<Element *>(),\
+							  QList<IndependentTextItem *> texts = QList<IndependentTextItem *>(), QList<Conductor *> conductors = QList<Conductor *>());
 		
 		static QString eraseText() {return QString("XXXXXXXXXXXXXXXXXXX");}
 		static QDate eraseDate() {return QDate(1900, 1, 1);}
@@ -57,10 +72,15 @@ class SearchAndReplaceWorker
 		static QString applyChange(const QString &original, const QString &change);
 		
 	private:
+		TitleBlockProperties replaceAdvanced (Diagram *diagram);
+		DiagramContext       replaceAdvanced (Element *element);
+		ConductorProperties  replaceAdvanced (Conductor *conductor);
+		
 		TitleBlockProperties m_titleblock_properties;
 		DiagramContext m_element_context;
 		QString m_indi_text;
 		ConductorProperties m_conductor_properties;
+		advancedReplaceStruct m_advanced_struct;
 		
 		friend class SearchAndReplaceWidget;
 };

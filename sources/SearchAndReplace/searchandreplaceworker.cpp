@@ -232,6 +232,122 @@ void SearchAndReplaceWorker::replaceConductor(Conductor *conductor)
 }
 
 /**
+ * @brief SearchAndReplaceWorker::replaceAdvanced
+ * Apply the change of text according to the current advancedStruct
+ * All items in the 4 list must belong to the same QETProject,
+ * if not this function do nothing
+ * @param d
+ * @param e
+ * @param t
+ * @param c
+ */
+void SearchAndReplaceWorker::replaceAdvanced(QList<Diagram *> diagrams, QList<Element *> elements, QList<IndependentTextItem *> texts, QList<Conductor *> conductors)
+{
+	QETProject *project_ = nullptr;
+	
+		//Some test to check if a least one list have one item
+		//and if all items belong to the same project
+	if (!diagrams.isEmpty()) {
+		project_ = diagrams.first()->project();
+	} else if (!elements.isEmpty() && elements.first()->diagram()) {
+		project_ = elements.first()->diagram()->project();
+	} else if (!texts.isEmpty() && texts.first()->diagram()) {
+		project_ = texts.first()->diagram()->project();
+	} else if (!conductors.isEmpty() && conductors.first()->diagram()) {
+		project_ = conductors.first()->diagram()->project();
+	} else {
+		return;
+	}
+	
+	for (Diagram *dd : diagrams) {
+		if (dd->project() != project_) {
+			return;
+		}
+	}
+	for (Element *elmt : elements) {
+		if (!elmt->diagram() || elmt->diagram()->project() != project_) {
+			return;
+		}
+	}
+	for (IndependentTextItem *text : texts) {
+		if (!text->diagram() || text->diagram()->project() != project_) {
+			return;
+		}
+	}
+	for (Conductor *cc : conductors) {
+		if (!cc->diagram() || cc->diagram()->project() != project_) {
+			return;
+		}
+	}
+		//The end of the test
+	
+	int who = m_advanced_struct.who;
+	if (who == -1) {
+		return;
+	}
+	
+	project_->undoStack()->beginMacro(QObject::tr("Rechercher / remplacer avancé"));
+	if (who == 0)
+	{
+		for (Diagram *diagram : diagrams)
+		{
+			TitleBlockProperties old_properties = diagram->border_and_titleblock.exportTitleBlock();
+			TitleBlockProperties new_properties = replaceAdvanced(diagram);
+			if (old_properties != new_properties) {
+				project_->undoStack()->push(new ChangeTitleBlockCommand(diagram, old_properties, new_properties));
+			}
+		}
+	}
+	else if (who == 1)
+	{
+		for (Element *element : elements)
+		{
+			DiagramContext old_context = element->elementInformations();
+			DiagramContext new_context = replaceAdvanced(element);
+			if (old_context != new_context) {
+				project_->undoStack()->push(new ChangeElementInformationCommand(element, old_context, new_context));
+			}
+		}
+	}
+	else if (who == 2)
+	{
+		for (Conductor *conductor : conductors)
+		{
+			ConductorProperties old_properties = conductor->properties();
+			ConductorProperties new_properties = replaceAdvanced(conductor);
+			if (old_properties != new_properties)
+			{
+				QSet <Conductor *> potential_conductors = conductor->relatedPotentialConductors(true);
+				potential_conductors << conductor;
+				
+				for (Conductor *c : potential_conductors)
+				{
+					QVariant old_value, new_value;
+					old_value.setValue(c->properties());
+					new_value.setValue(new_properties);
+					project_->undoStack()->push(new QPropertyUndoCommand(c, "properties", old_value, new_value));
+				}
+			}
+		}
+	}
+	else if (who == 3)
+	{
+		for (IndependentTextItem *text : texts)
+		{
+			QRegularExpression rx(m_advanced_struct.search);
+			QString replace = m_advanced_struct.replace;
+			QString after = text->toPlainText();
+			after = after.replace(rx, replace);
+			
+			if (after != text->toPlainText()) {
+				project_->undoStack()->push(new ChangeDiagramTextCommand(text, text->toPlainText(), after));
+			}
+		}
+	}
+	project_->undoStack()->endMacro();
+}
+
+/**
  * @brief SearchAndReplaceWorker::setupLineEdit
  * With search and replace, when the variable to edit is a text,
  * the editor is always the same no matter if it is for a folio, element or conductor.
@@ -312,4 +428,80 @@ QString SearchAndReplaceWorker::applyChange(const QString &original, const QStri
 	if (change.isEmpty())           {return original;}
 	else if (change == eraseText()) {return QString();}
 	else                            {return change;}
+}
+
+/**
+ * @brief SearchAndReplaceWorker::replaceAdvanced
+ * @param diagram
+ * @return the titleblock properties with the change applied,
+ * according to the state of @m_advanced_struct
+ */
+TitleBlockProperties SearchAndReplaceWorker::replaceAdvanced(Diagram *diagram)
+{
+	TitleBlockProperties p = diagram->border_and_titleblock.exportTitleBlock();
+	
+	if (m_advanced_struct.who == 0)
+	{
+		QRegularExpression rx(m_advanced_struct.search);
+		QString replace = m_advanced_struct.replace;
+		QString what = m_advanced_struct.what;
+		if (what == "title") {p.title = p.title.replace(rx, replace);}
+		else if (what == "author") {p.author = p.author.replace(rx, replace);}
+		else if (what == "filename") {p.filename = p.filename.replace(rx, replace);}
+		else if (what == "folio") {p.folio = p.folio.replace(rx, replace);}
+		else if (what == "plant") {p.plant = p.plant.replace(rx, replace);}
+		else if (what == "locmach") {p.locmach = p.locmach.replace(rx, replace);}
+		else if (what == "indexrev") {p.indexrev = p.indexrev.replace(rx, replace);}
+	}
+	return p;
+}
+
+/**
+ * @brief SearchAndReplaceWorker::replaceAdvanced
+ * @param element
+ * @return The diagram context with the change applied,
+ * according to the state of @m_advanced_struct
+ */
+DiagramContext SearchAndReplaceWorker::replaceAdvanced(Element *element)
+{
+	DiagramContext context = element->elementInformations();
+	
+	if (m_advanced_struct.who == 1)
+	{
+		QString what = m_advanced_struct.what;
+		if (context.contains(what))
+		{
+			QRegularExpression rx(m_advanced_struct.search);
+			QString replace = m_advanced_struct.replace;
+			QString value = context[what].toString();
+			context.addValue(what, value.replace(rx, replace));
+		}
+	}
+	
+	return context;
+}
+
+/**
+ * @brief SearchAndReplaceWorker::replaceAdvanced
+ * @param conductor
+ * @return the conductor properties with the change applied,
+ * according to the state of @m_advanced_struct
+ */
+ConductorProperties SearchAndReplaceWorker::replaceAdvanced(Conductor *conductor)
+{
+	ConductorProperties properties = conductor->properties();
+	
+	if (m_advanced_struct.who == 2)
+	{
+		QRegularExpression rx(m_advanced_struct.search);
+		QString what = m_advanced_struct.what;
+		QString replace = m_advanced_struct.replace;
+		
+		if (what == "formula")               {properties.m_formula.replace(rx, replace);}
+		else if (what == "text")             {properties.text.replace(rx, replace);}
+		else if (what == "function")         {properties.m_function.replace(rx, replace);}
+		else if (what == "tension/protocol") {properties.m_tension_protocol.replace(rx, replace);}
+	}
+	
+	return properties;
 }

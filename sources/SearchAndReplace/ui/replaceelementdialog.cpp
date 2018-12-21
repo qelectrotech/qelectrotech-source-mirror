@@ -68,9 +68,7 @@ DiagramContext ReplaceElementDialog::context() const
 
 void ReplaceElementDialog::buildWidget()
 {
-	ui->m_button_box->disconnect();
-	connect(ui->m_button_box, &QDialogButtonBox::clicked, [this](QAbstractButton *button_)
-	{
+	connect(ui->m_button_box, &QDialogButtonBox::clicked, [this](QAbstractButton *button_) {
 		this->done(ui->m_button_box->buttonRole(button_));
 	});
 	
