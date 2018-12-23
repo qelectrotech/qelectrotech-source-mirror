@@ -85,7 +85,8 @@ clear the element texts when paste an element with the option "Do not store the 
 * elements can't be moved up and left, when there rotation are different than 0.
 * minor fix : slave link dialog doesn't display the good label, when the label of master element is build from formula.
 * Fix : in some condition, dynamic text are not at the same position when open a project.
-
+* On windows when user drag and drop an element from the common elements collection to the custom elements collection,
+the element file stay in read only mode, and so user can't save the element
 
 
 

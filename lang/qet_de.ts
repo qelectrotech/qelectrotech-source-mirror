@@ -4189,21 +4189,25 @@ Voulez-vous enregistrer les modifications ?</source>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="328"/>
+        <location filename="../sources/qetapp.cpp" line="441"/>
         <source>Installation</source>
         <translation type="unfinished">Anlage</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="329"/>
+        <location filename="../sources/qetapp.cpp" line="442"/>
         <source>Localisation</source>
         <translation>Ort</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="332"/>
+        <location filename="../sources/qetapp.cpp" line="406"/>
         <source>Fonction</source>
         <translation>Funktionstext</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="333"/>
+        <location filename="../sources/qetapp.cpp" line="407"/>
         <source>Tension / Protocole</source>
         <translation>Spannung/Protokoll</translation>
     </message>
@@ -4218,187 +4222,222 @@ Voulez-vous enregistrer les modifications ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="388"/>
+        <location filename="../sources/qetapp.cpp" line="404"/>
+        <source>Formule du texte</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="405"/>
+        <source>Texte</source>
+        <translation type="unfinished">Text</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="437"/>
+        <source>Titre</source>
+        <translation type="unfinished">Titel</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="438"/>
+        <source>Auteur</source>
+        <translation type="unfinished">Bearbeiter</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="439"/>
+        <source>Fichier</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="440"/>
+        <source>Folio</source>
+        <translation type="unfinished">Folie</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="443"/>
+        <source>Indice Rev</source>
+        <translation type="unfinished">Revisionsindex</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="454"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates collection provided by QElectroTech</comment>
         <translation>QET-Zeichnungsköpfe</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="402"/>
+        <location filename="../sources/qetapp.cpp" line="468"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s title block templates collection</comment>
         <translation>Benutzer-Zeichnungsköpfe</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1005"/>
+        <location filename="../sources/qetapp.cpp" line="1071"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1006"/>
+        <location filename="../sources/qetapp.cpp" line="1072"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation>QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1007"/>
+        <location filename="../sources/qetapp.cpp" line="1073"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Folie</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1008"/>
+        <location filename="../sources/qetapp.cpp" line="1074"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Elektrik</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1009"/>
+        <location filename="../sources/qetapp.cpp" line="1075"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1407"/>
+        <location filename="../sources/qetapp.cpp" line="1473"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
         <translation>QElectroTech Einstellungen</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1518"/>
+        <location filename="../sources/qetapp.cpp" line="1584"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>Lade...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1583"/>
+        <location filename="../sources/qetapp.cpp" line="1649"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>Lade... Symbole des Systemsbenachrichtigungsfelds</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1585"/>
+        <location filename="../sources/qetapp.cpp" line="1651"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1587"/>
+        <location filename="../sources/qetapp.cpp" line="1653"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Beenden</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1588"/>
+        <location filename="../sources/qetapp.cpp" line="1654"/>
         <source>&amp;Masquer</source>
         <translation>&amp;Verstecken</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1589"/>
+        <location filename="../sources/qetapp.cpp" line="1655"/>
         <source>&amp;Restaurer</source>
         <translation>&amp;Zeigen</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1590"/>
+        <location filename="../sources/qetapp.cpp" line="1656"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>&amp;Verstecke alle Schaltplaneditoren</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1591"/>
+        <location filename="../sources/qetapp.cpp" line="1657"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>&amp;Zeige alle Schaltplaneditoren</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1592"/>
+        <location filename="../sources/qetapp.cpp" line="1658"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Verstecke alle Bauteileditoren</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1593"/>
+        <location filename="../sources/qetapp.cpp" line="1659"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Zeige alle Bauteileditoren</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1594"/>
+        <location filename="../sources/qetapp.cpp" line="1660"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Verstecke alle Zeichnungskopf-Editoren</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1595"/>
+        <location filename="../sources/qetapp.cpp" line="1661"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Zeige alle Zeichnungskopf-Editoren</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1596"/>
+        <location filename="../sources/qetapp.cpp" line="1662"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>&amp;Neuer Schaltplaneditor</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1597"/>
+        <location filename="../sources/qetapp.cpp" line="1663"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>&amp;Neuer Bauteileditor</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1599"/>
+        <location filename="../sources/qetapp.cpp" line="1665"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>Anwendung QElectroTech schließen</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1600"/>
+        <location filename="../sources/qetapp.cpp" line="1666"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>QElectroTech in Systembenachrichtigungsfeld minimieren</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1601"/>
+        <location filename="../sources/qetapp.cpp" line="1667"/>
         <source>Restaurer QElectroTech</source>
         <translation>QElectroTech wiederherstellen</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1617"/>
+        <location filename="../sources/qetapp.cpp" line="1683"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1686"/>
+        <location filename="../sources/qetapp.cpp" line="1752"/>
         <source>Éditeurs de schémas</source>
         <translation>Schaltplaneditor</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1695"/>
+        <location filename="../sources/qetapp.cpp" line="1761"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>Bauteileditor</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1705"/>
+        <location filename="../sources/qetapp.cpp" line="1771"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
         <translation>Zeichnungskopf-Editor</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1744"/>
+        <location filename="../sources/qetapp.cpp" line="1810"/>
         <source>&lt;b&gt;Le fichier de restauration suivant a été trouvé,&lt;br&gt;Voulez-vous l&apos;ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;Die folgende Sicherungsdatei wurde gefunden,&lt;br&gt;Möchten Sie sie öffnen?&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1747"/>
+        <location filename="../sources/qetapp.cpp" line="1813"/>
         <source>&lt;b&gt;Les fichiers de restauration suivant on été trouvé,&lt;br&gt;Voulez-vous les ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;Die folgenden Sicherungsdateien wurden gefunden,&lt;br&gt;Möchten Sie sie öffnen?&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1752"/>
+        <location filename="../sources/qetapp.cpp" line="1818"/>
         <source>Fichier de restauration</source>
         <translation>Sicherungsdatei</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1855"/>
+        <location filename="../sources/qetapp.cpp" line="1921"/>
         <source>Usage : </source>
         <translation>Verwendung: </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1855"/>
+        <location filename="../sources/qetapp.cpp" line="1921"/>
         <source> [options] [fichier]...
 
 </source>
@@ -4407,7 +4446,7 @@ Voulez-vous enregistrer les modifications ?</source>
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1856"/>
+        <location filename="../sources/qetapp.cpp" line="1922"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -4424,28 +4463,28 @@ Verfügbare Optionen:
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1862"/>
+        <location filename="../sources/qetapp.cpp" line="1928"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=DIR     Setzt Pfad zur Bauteilsammlung
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1865"/>
+        <location filename="../sources/qetapp.cpp" line="1931"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
         <translation>  --common-tbt-dir=DIR          Pfad zur Zeichnungskopf-Sammlung setzen
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1868"/>
+        <location filename="../sources/qetapp.cpp" line="1934"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=DIR              Setzt Pfad zur Konfiguration
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1870"/>
+        <location filename="../sources/qetapp.cpp" line="1936"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=DIR                Setzt Pfad zu den Sprachdateien
@@ -7716,6 +7755,11 @@ Voulez-vous la remplacer ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="289"/>
+        <source>Rechercher / remplacer avancé</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="168"/>
         <source>Chercher/remplacer des textes independants</source>
         <translation type="unfinished"></translation>
@@ -8105,7 +8149,7 @@ Voulez-vous la remplacer ?</source>
 <context>
     <name>ReplaceElementDialog</name>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replaceelementdialog.cpp" line="81"/>
+        <location filename="../sources/SearchAndReplace/ui/replaceelementdialog.cpp" line="79"/>
         <source>Ne pas modifier</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8294,22 +8338,22 @@ Créer votre propre texte en vous aidant des variables suivantes :
         <translation>Form</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="71"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="78"/>
         <source>Aller à la correspondance suivante</source>
         <translation>Zur nächsten Übereinstimmung gehen</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="122"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="112"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Afficher les options avancées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="88"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="95"/>
         <source>Aller à la correspondance précédente</source>
         <translation>Zur vorherigen Übereinstimmung gehen</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="20"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="27"/>
         <source>Quitter</source>
         <translation>Beenden</translation>
     </message>
@@ -8369,6 +8413,11 @@ Créer votre propre texte en vous aidant des variables suivantes :
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="242"/>
+        <source>avancé</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="178"/>
         <source>Élément</source>
         <translation>Bauteil</translation>
@@ -8379,7 +8428,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
         <translation>Leiter</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="145"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="71"/>
         <source>Remplacer :</source>
         <translation>Ersetzen:</translation>
     </message>
@@ -8394,89 +8443,95 @@ Créer votre propre texte en vous aidant des variables suivantes :
         <translation>Alles ersetzen</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="37"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="20"/>
         <source>Chercher :</source>
         <translation>Suchen:</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="105"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="135"/>
         <source>Actualiser</source>
         <translation>Aktualisieren</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="137"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="138"/>
         <source>Correspondance :</source>
         <translation>Übereinstimmung:</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="143"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="144"/>
         <source>Folios</source>
         <translation>Folien</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="149"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="150"/>
         <source>Champs texte</source>
         <translation>Textfelder</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="155"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="156"/>
         <source>Eléments</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="160"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="161"/>
         <source>Eléments simple</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="166"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="167"/>
         <source>Eléments maître</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="172"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="173"/>
         <source>Eléments esclave</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="178"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="179"/>
         <source>Eléments report de folio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="184"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="185"/>
         <source>Eléments bornier</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="859"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="860"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="868"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="869"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="888"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="896"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="914"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="934"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="949"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="950"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="984"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1017"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1018"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1026"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1027"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1068"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1069"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="958"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="959"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="978"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="986"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1004"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1014"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1064"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1067"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1074"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1077"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1078"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1099"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1100"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1108"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1109"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1150"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1151"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1159"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1160"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1179"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1180"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1188"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1189"/>
         <source> [édité]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="192"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="193"/>
         <source>Conducteurs</source>
         <translation>Leiter</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="336"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="338"/>
         <source>Inconnue</source>
         <translation>Unbekannt</translation>
     </message>
@@ -10226,6 +10281,59 @@ Maximale Länge: %2px
         <location filename="../sources/richtext/richtexteditor.cpp" line="542"/>
         <source>Simplify Rich Text</source>
         <translation>Simplify Rich Text</translation>
+    </message>
+</context>
+<context>
+    <name>replaceAdvancedDialog</name>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="14"/>
+        <source>Rechercher/Remplacer avancé</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="27"/>
+        <source>par :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="34"/>
+        <source>Remplacer :</source>
+        <translation type="unfinished">Ersetzen:</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="51"/>
+        <source>Qui :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="58"/>
+        <source>Texte ou expression régulière</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="69"/>
+        <source>Folio</source>
+        <translation type="unfinished">Folie</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="74"/>
+        <source>Élément</source>
+        <translation type="unfinished">Bauteil</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="79"/>
+        <source>Conducteur</source>
+        <translation type="unfinished">Leiter</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="84"/>
+        <source>Texte indépendant</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="92"/>
+        <source>Quoi :</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
