@@ -108,6 +108,12 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>m_search_le</tabstop>
+  <tabstop>m_replace_le</tabstop>
+  <tabstop>m_who_cb</tabstop>
+  <tabstop>m_what_cb</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
