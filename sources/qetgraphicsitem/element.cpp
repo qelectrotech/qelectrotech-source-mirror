@@ -1181,7 +1181,9 @@ void Element::removeDynamicTextItem(DynamicElementTextItem *deti)
 
 /**
  * @brief Element::dynamicTextItems
- * @return all dynamic text items of this element
+ * @return all dynamic text items of this element directly child of this element.
+ * Texts in text-groups belonging to this element are not returned by this function.
+ * @see ElementTextItemGroup::texts
  */
 QList<DynamicElementTextItem *> Element::dynamicTextItems() const {
 	return m_dynamic_text_list;

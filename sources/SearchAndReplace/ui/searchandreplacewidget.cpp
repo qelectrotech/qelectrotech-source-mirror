@@ -29,6 +29,8 @@
 #include "qetapp.h"
 #include "replaceconductordialog.h"
 #include "replaceadvanceddialog.h"
+#include "dynamicelementtextitem.h"
+#include "elementtextitemgroup.h"
 
 #include <QSettings>
 
@@ -758,6 +760,23 @@ QStringList SearchAndReplaceWidget::searchTerms(Element *element)
 		QString str = context.value(key).toString();
 		if (!str.isEmpty()) {
 			list.append(str);
+		}
+	}
+	
+	for (DynamicElementTextItem *deti : element->dynamicTextItems())
+	{
+		if (deti->textFrom() == DynamicElementTextItem::UserText || deti->textFrom() == DynamicElementTextItem::CompositeText) {
+			list.append(deti->toPlainText());
+		}
+	}
+	for (ElementTextItemGroup *group : element->textGroups())
+	{
+		list.append(group->name());
+		
+		for (DynamicElementTextItem *deti : group->texts()) {
+			if (deti->textFrom() == DynamicElementTextItem::UserText || deti->textFrom() == DynamicElementTextItem::CompositeText) {
+				list.append(deti->toPlainText());
+			}
 		}
 	}
 	
