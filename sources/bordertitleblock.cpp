@@ -697,6 +697,45 @@ DiagramPosition BorderTitleBlock::convertPosition(const QPointF &pos)
 }
 
 /**
+ * @brief BorderTitleBlock::setAuthor
+ * @param author the new value of the "Author" field
+ */
+void BorderTitleBlock::setAuthor(const QString &author) {
+	btb_author_ = author;
+}
+
+/**
+ * @brief BorderTitleBlock::setDate
+ * @param date the new value of the "Date" field
+ */
+void BorderTitleBlock::setDate(const QDate &date) {
+	btb_date_ = date;
+}
+
+/**
+ * @brief BorderTitleBlock::setTitle
+ * @param title the new value of the "Title" field
+ */
+void BorderTitleBlock::setTitle(const QString &title)
+{
+	if (btb_title_ != title)
+	{
+		btb_title_ = title;
+		emit(diagramTitleChanged(title));
+	}
+}
+
+/**
+ * @brief BorderTitleBlock::setFolio
+ * @param folio the new value of the "Folio" field
+ */
+void BorderTitleBlock::setFolio(const QString &folio)
+{
+	btb_folio_ = folio;
+	emit (titleBlockFolioChanged(folio));
+}
+
+/**
 	Update the informations given to the titleblock template by regenerating a
 	DiagramContext object.
 	@param initial_context Base diagram context that will be overridden by
@@ -723,6 +762,8 @@ void BorderTitleBlock::updateDiagramContextForTitleBlock(const DiagramContext &i
 	context.addValue("folio-id",    folio_index_);
 	context.addValue("folio-total", folio_total_);
 	context.addValue("auto_page_num", btb_auto_page_num_);
+	context.addValue("previous-folio-num", m_previous_folio_num);
+	context.addValue("next-folio-num", m_next_folio_num);
 	
 	titleblock_template_renderer_ -> setContext(context);
 }
@@ -768,4 +809,76 @@ void BorderTitleBlock::setFolioData(int index, int total, const QString& autonum
 
 
 	updateDiagramContextForTitleBlock(project_properties);
+}
+
+/**
+ * @brief BorderTitleBlock::setPlant
+ * @param plant the new value of the "plant" field
+ */
+void BorderTitleBlock::setPlant(const QString &plant) {
+	btb_plant_ = plant;
+}
+
+/**
+ * @brief BorderTitleBlock::setLocMach
+ * @param locmach the new value of the "locmach" field
+ */
+void BorderTitleBlock::setLocMach(const QString &locmach) {
+	btb_locmach_ = locmach;
+}
+
+/**
+ * @brief BorderTitleBlock::setIndicerev
+ * @param indexrev the new value of the "indexrev" field
+ */
+void BorderTitleBlock::setIndicerev(const QString &indexrev) {
+	btb_indexrev_ = indexrev;
+}
+
+/**
+ * @brief BorderTitleBlock::setFileName
+ * @param filename the new value of the "filename" field
+ */
+void BorderTitleBlock::setFileName(const QString &filename) {
+	btb_filename_ = filename;
+}
+
+/**
+ * @brief BorderTitleBlock::setVersion
+ * @param version the new value of the "version" field
+ */
+void BorderTitleBlock::setVersion(const QString &version) {
+	btb_version_ = version;
+}
+
+/**
+ * @brief BorderTitleBlock::setAutoPageNum
+ * @param auto_page_num the new value of the "auto_page_num" field
+ */
+void BorderTitleBlock::setAutoPageNum(const QString &auto_page_num) {
+	btb_auto_page_num_ = auto_page_num;
+}
+
+/**
+ * @brief BorderTitleBlock::setPreviousFolioNum
+ * @param previous the new value of the "previous-folio-num" field
+ */
+void BorderTitleBlock::setPreviousFolioNum(const QString &previous)
+{
+	m_previous_folio_num = previous;
+	DiagramContext context = titleblock_template_renderer_->context();
+	context.addValue("previous-folio-num", m_previous_folio_num);
+	titleblock_template_renderer_->setContext(context);
+}
+
+/**
+ * @brief BorderTitleBlock::setNextFolioNum
+ * @param next the new value of the "next-folio-num" field
+ */
+void BorderTitleBlock::setNextFolioNum(const QString &next)
+{
+	m_next_folio_num = next;
+	DiagramContext context = titleblock_template_renderer_->context();
+	context.addValue("next-folio-num", m_next_folio_num);
+	titleblock_template_renderer_->setContext(context);
 }

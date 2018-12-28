@@ -1744,7 +1744,8 @@ bool QETProject::projectWasModified() {
 	Indique a chaque schema du projet quel est son numero de folio et combien de
 	folio le projet contient.
 */
-void QETProject::updateDiagramsFolioData() {
+void QETProject::updateDiagramsFolioData()
+{
 	int total_folio = m_diagrams_list.count();
 	
 	DiagramContext project_wide_properties = project_properties_;
@@ -1752,19 +1753,38 @@ void QETProject::updateDiagramsFolioData() {
 	project_wide_properties.addValue("projectpath", filePath());
 	project_wide_properties.addValue("projectfilename", QFileInfo(filePath()).baseName());
 	
-	for (int i = 0 ; i < total_folio ; ++ i) {
-		QString title = m_diagrams_list[i] -> title();
+	for (int i = 0 ; i < total_folio ; ++ i)
+	{
 		QString autopagenum = m_diagrams_list[i]->border_and_titleblock.autoPageNum();
 		NumerotationContext nC = folioAutoNum(autopagenum);
 		NumerotationContextCommands nCC = NumerotationContextCommands(nC);
-		if((m_diagrams_list[i]->border_and_titleblock.folio().contains("%autonum"))&&(!autopagenum.isNull())){
+		
+		if ((m_diagrams_list[i]->border_and_titleblock.folio().contains("%autonum")) && 
+			(!autopagenum.isNull()))
+		{
 			m_diagrams_list[i] -> border_and_titleblock.setFolioData(i + 1, total_folio, nCC.toRepresentedString(), project_wide_properties);
 			m_diagrams_list[i]->project()->addFolioAutoNum(autopagenum,nCC.next());
 		}
-		else{
-		m_diagrams_list[i] -> border_and_titleblock.setFolioData(i + 1, total_folio, nullptr, project_wide_properties);
+		else {
+			m_diagrams_list[i] -> border_and_titleblock.setFolioData(i + 1, total_folio, nullptr, project_wide_properties);
 		}
-		m_diagrams_list[i] -> update();
+		
+		if (i > 0)
+		{
+			m_diagrams_list.at(i)->border_and_titleblock.setPreviousFolioNum(m_diagrams_list.at(i-1)->border_and_titleblock.finalfolio());
+			m_diagrams_list.at(i-1)->border_and_titleblock.setNextFolioNum(m_diagrams_list.at(i)->border_and_titleblock.finalfolio());
+			
+			if (i == total_folio-1) {
+				m_diagrams_list.at(i)->border_and_titleblock.setNextFolioNum(QString());
+			}
+		}
+		else {
+			m_diagrams_list.at(i)->border_and_titleblock.setPreviousFolioNum(QString());
+		}
+	}
+	
+	for (Diagram *d : m_diagrams_list) {
+		d->update();
 	}
 }
 

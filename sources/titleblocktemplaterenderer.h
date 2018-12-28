@@ -19,31 +19,38 @@
 #define TITLEBLOCK_TEMPLATE_RENDERER_H
 #include <QPicture>
 #include "diagramcontext.h"
+
 class TitleBlockTemplate;
-class TitleBlockTemplateRenderer : public QObject {
+
+class TitleBlockTemplateRenderer : public QObject
+{
 	Q_OBJECT
 	
 	public:
-	TitleBlockTemplateRenderer(QObject * = nullptr);
-	~TitleBlockTemplateRenderer() override;
-	const TitleBlockTemplate *titleBlockTemplate() const;
-	void setTitleBlockTemplate(const TitleBlockTemplate *);
-	void setContext(const DiagramContext &context);
-	int height() const;
-	void render(QPainter *, int);
-	void renderDxf(QRectF &, int, QString &, int);
-	void invalidateRenderedTemplate();
-	void setUseCache(bool);
-	bool useCache() const;
+		TitleBlockTemplateRenderer(QObject * = nullptr);
+		~TitleBlockTemplateRenderer() override;
+		
+		const TitleBlockTemplate *titleBlockTemplate() const;
+		void setTitleBlockTemplate(const TitleBlockTemplate *);
+		
+		void setContext(const DiagramContext &context);
+		DiagramContext context()const;
+		
+		int height() const;
+		void render(QPainter *, int);
+		void renderDxf(QRectF &, int, QString &, int);
+		void invalidateRenderedTemplate();
+		void setUseCache(bool);
+		bool useCache() const;
 	
 	private:
-	void renderToQPicture(int);
+		void renderToQPicture(int);
 	
 	private:
-	const TitleBlockTemplate *titleblock_template_;
-	bool use_cache_;
-	QPicture rendered_template_;
-	DiagramContext context_;
-	int last_known_titleblock_width_;
+		const TitleBlockTemplate *m_titleblock_template;
+		bool m_use_cache;
+		QPicture m_rendered_template;
+		DiagramContext m_context;
+		int m_last_known_titleblock_width;
 };
 #endif

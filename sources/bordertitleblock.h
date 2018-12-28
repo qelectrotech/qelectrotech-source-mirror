@@ -86,149 +86,131 @@ class BorderTitleBlock : public QObject
 		QRectF outsideBorderRect() const;
 		QRectF insideBorderRect() const;
 	
-	// methods to get title block basic data
-	/// @return the value of the title block "Author" field
-	QString author() const { return(btb_author_); }
-	/// @return the value of the title block "Date" field
-	QDate date() const { return(btb_date_); }
-	/// @return the value of the title block "Title" field
-	QString title() const { return(btb_title_); }
-	/// @return the value of the title block "Folio" field
-	QString folio() const { return(btb_folio_); }
-	/// @return the value of the title block "Folio" field as displayed
-	QString finalfolio() const { return(btb_final_folio_); }
-	/// @return the value of the title block "Plant" field
-	QString plant() const { return(btb_plant_); }
-	/// @return the value of the title block "Locmach" field
-	QString locmach() const { return(btb_locmach_); }
-	/// @return the value of the revision index block "Folio" field
-	QString indexrev() const { return(btb_indexrev_); }
+			// methods to get title block basic data
+			/// @return the value of the title block "Author" field
+		QString author() const { return(btb_author_); }
+			/// @return the value of the title block "Date" field
+		QDate date() const { return(btb_date_); }
+			/// @return the value of the title block "Title" field
+		QString title() const { return(btb_title_); }
+			/// @return the value of the title block "Folio" field
+		QString folio() const { return(btb_folio_); }
+			/// @return the value of the title block "Folio" field as displayed
+		QString finalfolio() const { return(btb_final_folio_); }
+			/// @return the value of the title block "Plant" field
+		QString plant() const { return(btb_plant_); }
+			/// @return the value of the title block "Locmach" field
+		QString locmach() const { return(btb_locmach_); }
+			/// @return the value of the revision index block "Folio" field
+		QString indexrev() const { return(btb_indexrev_); }
+			/// @return the value of the title block "File" field
+		QString fileName() const { return(btb_filename_); }
+			/// @return the value of the title block Additional Fields
+		QString version() const { return(btb_version_); }
+			/// @return the value of the title block Additional Fields
+		DiagramContext additionalFields() const { return (additional_fields_); }
+			/// @return the value of the title block
+		QString autoPageNum() const { return(btb_auto_page_num_); }
+			/// @return the value of the total number of folios
+		int folioTotal() const { return(folio_total_);}
 	
-	/// @return the value of the title block "File" field
-	QString fileName() const { return(btb_filename_); }
-	/// @return the value of the title block Additional Fields
-	QString version() const { return(btb_version_); }
-	/// @return the value of the title block Additional Fields
-	DiagramContext additionalFields() const { return (additional_fields_); }
-	/// @return the value of the title block
-	QString autoPageNum() const { return(btb_auto_page_num_); }
-	/// @return the value of the total number of folios
-	int folioTotal() const { return(folio_total_);}
-
-	// methods to get display options
-	/// @return true si le cartouche est affiche, false sinon
-	bool titleBlockIsDisplayed() const { return(display_titleblock_); }
-	/// @return true si les entetes des colonnes sont affiches, false sinon
-	bool columnsAreDisplayed() const { return(display_columns_); }
-	/// @return true si les entetes des lignes sont affiches, false sinon
-	bool rowsAreDisplayed() const { return(display_rows_); }
-	/// @return true si la bordure est affichee, false sinon
-	bool borderIsDisplayed() const { return(display_border_); }
-	
-	// methods to set dimensions
-	void setColumnsCount(int);
-	void setRowsCount(int);
-	void setColumnsWidth(const qreal &);
-	void setRowsHeight(const qreal &);
-	void setColumnsHeaderHeight(const qreal &);
-	void setRowsHeaderWidth(const qreal &);
-	void setDiagramHeight(const qreal &);
-	
-	DiagramPosition convertPosition(const QPointF &);
-	
-	// methods to set title block basic data
-	/// @param author the new value of the "Author" field
-	void setAuthor(const QString &author) { btb_author_ = author; }
-	/// @param author the new value of the "Date" field
-	void setDate(const QDate &date) { btb_date_ = date; }
-	/// @param author the new value of the "Title" field
-	void setTitle(const QString &title) {
-		if (btb_title_ != title) {
-			btb_title_ = title;
-			emit(diagramTitleChanged(title));
-		}
-	}
-	/// @param author the new value of the "Folio" field
-	void setFolio(const QString &folio) {
-		btb_folio_ = folio;
-		emit (titleBlockFolioChanged(folio));
-	}
-	void setFolioData(int, int, const QString& = nullptr, const DiagramContext & = DiagramContext());
-	/// @param author the new value of the "File" field
-	void setPlant(const QString &plant) { btb_plant_ = plant; }
-	void setLocMach(const QString &locmach) { btb_locmach_ = locmach; }
-	void setIndicerev(const QString &indexrev){ btb_indexrev_ = indexrev; }
-	void setFileName(const QString &filename) { btb_filename_ = filename; }
-	/// @param author the new value of the "Version" field
-	void setVersion(const QString &version) { btb_version_ = version; }
-	/// @param author the new value of the "Auto Page Num" field	
-	void setAutoPageNum(const QString &auto_page_num) { btb_auto_page_num_ = auto_page_num;}
-	
-	void titleBlockToXml(QDomElement &);
-	void titleBlockFromXml(const QDomElement &);
-	void borderToXml(QDomElement &);
-	void borderFromXml(const QDomElement &);
-	
-	TitleBlockProperties exportTitleBlock();
-	void importTitleBlock(const TitleBlockProperties &);
-	BorderProperties exportBorder();
-	void importBorder(const BorderProperties &);
-	
-	const TitleBlockTemplate *titleBlockTemplate();
-	void setTitleBlockTemplate(const TitleBlockTemplate *);
-	QString titleBlockTemplateName() const;
-	
+			// methods to get display options
+			/// @return true si le cartouche est affiche, false sinon
+		bool titleBlockIsDisplayed() const { return(display_titleblock_); }
+			/// @return true si les entetes des colonnes sont affiches, false sinon
+		bool columnsAreDisplayed() const { return(display_columns_); }
+			/// @return true si les entetes des lignes sont affiches, false sinon
+		bool rowsAreDisplayed() const { return(display_rows_); }
+			/// @return true si la bordure est affichee, false sinon
+		bool borderIsDisplayed() const { return(display_border_); }
+		
+			// methods to set dimensions
+		void setColumnsCount(int);
+		void setRowsCount(int);
+		void setColumnsWidth(const qreal &);
+		void setRowsHeight(const qreal &);
+		void setColumnsHeaderHeight(const qreal &);
+		void setRowsHeaderWidth(const qreal &);
+		void setDiagramHeight(const qreal &);
+		
+		DiagramPosition convertPosition(const QPointF &);
+		
+			// methods to set title block basic data
+		void setAuthor(const QString &author);
+		void setDate(const QDate &date);
+		void setTitle(const QString &title);
+		void setFolio(const QString &folio);
+		void setFolioData(int, int, const QString& = nullptr, const DiagramContext & = DiagramContext());
+		void setPlant(const QString &plant);
+		void setLocMach(const QString &locmach);
+		void setIndicerev(const QString &indexrev);
+		void setFileName(const QString &filename);
+		void setVersion(const QString &version);
+		void setAutoPageNum(const QString &auto_page_num);
+		void setPreviousFolioNum(const QString &previous);
+		void setNextFolioNum(const QString &next);
+		
+		void titleBlockToXml(QDomElement &);
+		void titleBlockFromXml(const QDomElement &);
+		void borderToXml(QDomElement &);
+		void borderFromXml(const QDomElement &);
+		
+		TitleBlockProperties exportTitleBlock();
+		void importTitleBlock(const TitleBlockProperties &);
+		BorderProperties exportBorder();
+		void importBorder(const BorderProperties &);
+		
+		const TitleBlockTemplate *titleBlockTemplate();
+		void setTitleBlockTemplate(const TitleBlockTemplate *);
+		QString titleBlockTemplateName() const;
+		
 	public slots:
-	void titleBlockTemplateChanged(const QString &);
-	void titleBlockTemplateRemoved(const QString &, const TitleBlockTemplate * = nullptr);
-	
-	// methods to set display options
-	void displayTitleBlock(bool);
-	void displayColumns(bool);
-	void displayRows(bool);
-	void displayBorder(bool);
-	void slot_setAutoPageNum (QString);
+		void titleBlockTemplateChanged(const QString &);
+		void titleBlockTemplateRemoved(const QString &, const TitleBlockTemplate * = nullptr);
+		
+			// methods to set display options
+		void displayTitleBlock(bool);
+		void displayColumns(bool);
+		void displayRows(bool);
+		void displayBorder(bool);
+		void slot_setAutoPageNum (QString);
 	
 	private:
-	void updateRectangles();
-	void updateDiagramContextForTitleBlock(const DiagramContext & = DiagramContext());
-	QString incrementLetters(const QString &);
+		void updateRectangles();
+		void updateDiagramContextForTitleBlock(const DiagramContext & = DiagramContext());
+		QString incrementLetters(const QString &);
 	
-	signals:
-	/**
-		Signal emitted after the border has changed
-		@param old_border Former border
-		@param new_border New border
-	*/
-	void borderChanged(QRectF old_border, QRectF new_border);
-	/**
-		Signal emitted after display options have changed
-	*/
-	void displayChanged();
-	
-	/**
-		Signal emitted after the title has changed
-	*/
-	void diagramTitleChanged(const QString &);
-
-	/**
-	 @brief titleBlockFolioChanged
-		Signal emitted after Folio has changed
-	*/
-	void titleBlockFolioChanged(const QString &);
-	
-	/**
-		Signal emitted when the title block requires its data to be updated in order
-		to generate the folio field.
-	*/
-	void needFolioData();
-	
-	/**
-		Signal emitted when this object needs to set a specific title block
-		template. This object cannot handle the job since it does not know of
-		its parent project.
-	*/
-	void needTitleBlockTemplate(const QString &);
+		signals:
+			/**
+				Signal emitted after the border has changed
+				@param old_border Former border
+				@param new_border New border
+			*/
+		void borderChanged(QRectF old_border, QRectF new_border);
+			/**
+				Signal emitted after display options have changed
+			*/
+		void displayChanged();
+			/**
+				Signal emitted after the title has changed
+			*/
+		void diagramTitleChanged(const QString &);
+			/**
+			 @brief titleBlockFolioChanged
+				Signal emitted after Folio has changed
+			*/
+		void titleBlockFolioChanged(const QString &);
+			/**
+				Signal emitted when the title block requires its data to be updated in order
+				to generate the folio field.
+			*/
+		void needFolioData();
+			/**
+				Signal emitted when this object needs to set a specific title block
+				template. This object cannot handle the job since it does not know of
+				its parent project.
+			*/
+		void needTitleBlockTemplate(const QString &);
 	
 		// attributes
 	private:
@@ -248,25 +230,27 @@ class BorderTitleBlock : public QObject
 		QString btb_version_;
 		DiagramContext additional_fields_;
 		Qt::Edge m_edge;
+		QString m_next_folio_num,
+				m_previous_folio_num;
 	
-		// border dimensions (rows and columns)
-		// columns: number and dimensions
+			// border dimensions (rows and columns)
+			// columns: number and dimensions
 		int columns_count_;
 		qreal columns_width_;
 		qreal columns_header_height_;
 	
-		// rows: number and dimensions
+			// rows: number and dimensions
 		int rows_count_;
 		qreal rows_height_;
 		qreal rows_header_width_;
 	
-		// title block dimensions
+			// title block dimensions
 		qreal titleblock_height_;
 	
-		// rectangles used for drawing operations
+			// rectangles used for drawing operations
 		QRectF diagram_rect_;
 	
-		// display options
+			// display options
 		bool display_titleblock_;
 		bool display_columns_;
 		bool display_rows_;

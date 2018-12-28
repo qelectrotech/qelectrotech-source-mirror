@@ -7,9 +7,9 @@
 */
 TitleBlockTemplateRenderer::TitleBlockTemplateRenderer(QObject *parent) :
 	QObject(parent),
-	titleblock_template_(nullptr),
-	use_cache_(true),
-	last_known_titleblock_width_(-1)
+	m_titleblock_template(nullptr),
+	m_use_cache(true),
+	m_last_known_titleblock_width(-1)
 {
 }
 
@@ -23,25 +23,34 @@ TitleBlockTemplateRenderer::~TitleBlockTemplateRenderer() {
 	@return the titleblock template used for the rendering
 */
 const TitleBlockTemplate *TitleBlockTemplateRenderer::titleBlockTemplate() const {
-	return(titleblock_template_);
+	return(m_titleblock_template);
 }
 
 /**
 	@param titleblock_template TitleBlock template to render.
 */
 void TitleBlockTemplateRenderer::setTitleBlockTemplate(const TitleBlockTemplate *titleblock_template) {
-	if (titleblock_template != titleblock_template_) {
-		titleblock_template_ = titleblock_template;
+	if (titleblock_template != m_titleblock_template) {
+		m_titleblock_template = titleblock_template;
 		invalidateRenderedTemplate();
 	}
 }
 
 /**
-	@param context Diagram Context to use when rendering the titleblock
-*/
+ * @brief TitleBlockTemplateRenderer::setContext
+ * @param context : Context to use when rendering the titleblock
+ */
 void TitleBlockTemplateRenderer::setContext(const DiagramContext &context) {
-	context_ = context;
+	m_context = context;
 	invalidateRenderedTemplate();
+}
+
+/**
+ * @brief TitleBlockTemplateRenderer::context
+ * @return the current diagram context use when render the titleblock
+ */
+DiagramContext TitleBlockTemplateRenderer::context() const {
+	return  m_context;
 }
 
 /**
@@ -50,8 +59,8 @@ void TitleBlockTemplateRenderer::setContext(const DiagramContext &context) {
 	@see TitleBlockTemplate::height()
 */
 int TitleBlockTemplateRenderer::height() const {
-	if (!titleblock_template_) return(-1);
-	return(titleblock_template_ -> height());
+	if (!m_titleblock_template) return(-1);
+	return(m_titleblock_template -> height());
 }
 
 /**
@@ -60,26 +69,26 @@ int TitleBlockTemplateRenderer::height() const {
 	@param titleblock_width The total width of the titleblock to render
 */
 void TitleBlockTemplateRenderer::render(QPainter *provided_painter, int titleblock_width) {
-	if (!titleblock_template_) return;
+	if (!m_titleblock_template) return;
 	
-	if (use_cache_) {
+	if (m_use_cache) {
 		// Do we really need to calculate all this again?
-		if (titleblock_width != last_known_titleblock_width_ || rendered_template_.isNull()) {
+		if (titleblock_width != m_last_known_titleblock_width || m_rendered_template.isNull()) {
 			renderToQPicture(titleblock_width);
 		}
 		
 		provided_painter -> save();
-		rendered_template_.play(provided_painter);
+		m_rendered_template.play(provided_painter);
 		provided_painter -> restore();
 	} else {
-		titleblock_template_ -> render(*provided_painter, context_, titleblock_width);
+		m_titleblock_template -> render(*provided_painter, m_context, titleblock_width);
 	}
 }
 
 
 void TitleBlockTemplateRenderer::renderDxf(QRectF &title_block_rect, int titleblock_width, QString &file_path, int color) {
-	if (!titleblock_template_) return;
-	titleblock_template_ -> renderDxf(title_block_rect, context_, titleblock_width, file_path, color);
+	if (!m_titleblock_template) return;
+	m_titleblock_template -> renderDxf(title_block_rect, m_context, titleblock_width, file_path, color);
 }
 
 /**
@@ -87,15 +96,15 @@ void TitleBlockTemplateRenderer::renderDxf(QRectF &title_block_rect, int titlebl
 	@param titleblock_width Width of the titleblock to render
 */
 void TitleBlockTemplateRenderer::renderToQPicture(int titleblock_width) {
-	if (!titleblock_template_) return;
+	if (!m_titleblock_template) return;
 	
 	// we render the template on our internal QPicture
-	QPainter painter(&rendered_template_);
+	QPainter painter(&m_rendered_template);
 	
-	titleblock_template_ -> render(painter, context_, titleblock_width);
+	m_titleblock_template -> render(painter, m_context, titleblock_width);
 	
 	// memorize the last known width
-	last_known_titleblock_width_ = titleblock_width;
+	m_last_known_titleblock_width = titleblock_width;
 }
 
 /**
@@ -103,7 +112,7 @@ void TitleBlockTemplateRenderer::renderToQPicture(int titleblock_width) {
 	QPicture.
 */
 void TitleBlockTemplateRenderer::invalidateRenderedTemplate() {
-	rendered_template_ = QPicture();
+	m_rendered_template = QPicture();
 }
 
 /**
@@ -111,7 +120,7 @@ void TitleBlockTemplateRenderer::invalidateRenderedTemplate() {
 	false otherwise.
 */
 void TitleBlockTemplateRenderer::setUseCache(bool use_cache) {
-	use_cache_ = use_cache;
+	m_use_cache = use_cache;
 }
 
 /**
@@ -119,6 +128,6 @@ void TitleBlockTemplateRenderer::setUseCache(bool use_cache) {
 	otherwise.
 */
 bool TitleBlockTemplateRenderer::useCache() const {
-	return(use_cache_);
+	return(m_use_cache);
 }
 
