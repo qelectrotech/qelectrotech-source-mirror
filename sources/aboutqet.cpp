@@ -168,6 +168,7 @@ QWidget *AboutQET::translatorsTab() const {
 	addAuthor(translators, "OSS au2mation",                             "OSSau2mation@OSSau2mation.dk",   tr("Traduction en danois"));
 	addAuthor(translators, "Hilario Silveira",                          "hilario@soliton.com.br",         tr("Traduction en brézilien"));
 	addAuthor(translators, "Aziz Karabudak",                            "aziz.karabudak@argevi.com",      tr("Traduction en Turc"));
+	addAuthor(translators, "Gábor Gubányi",                             "gubanyig@gmail.com",             tr("Traduction en hongrois"));
 
 
 
