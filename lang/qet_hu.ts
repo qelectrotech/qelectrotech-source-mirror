@@ -170,7 +170,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="170"/>
         <source>Traduction en Turc</source>
-        <translation type="unfinished"></translation>
+        <translation>Török fordító</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="190"/>
@@ -321,7 +321,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="14"/>
         <source>Sélection numérotation auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatikus számozás kiválasztása</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="34"/>
@@ -742,7 +742,7 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="436"/>
         <source>Taille :</source>
-        <translation type="unfinished"></translation>
+        <translation>Méret :</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="443"/>
@@ -835,7 +835,7 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Űrlap</translation>
+        <translation>Űrlap</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="20"/>
@@ -846,12 +846,12 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="50"/>
         <source>Nom</source>
-        <translation type="unfinished">Név</translation>
+        <translation>Név</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="55"/>
         <source>Valeur</source>
-        <translation type="unfinished">Érték</translation>
+        <translation>Érték</translation>
     </message>
 </context>
 <context>
@@ -1575,7 +1575,7 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="61"/>
         <source>Supprimer ce texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Ennek a szövegnek a törlése</translation>
     </message>
 </context>
 <context>
@@ -2473,17 +2473,17 @@ Az összes elem és fájl a mappában törölve lesz.</translation>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="78"/>
         <source>C&amp;réer de nouveaux folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Új &amp;tervlap létrehozása</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="91"/>
         <source>Numérotation automatique des folios sélectionnés</source>
-        <translation type="unfinished"></translation>
+        <translation>A kijelölt tervlapok automatikus számozása</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="132"/>
         <source>Nouveaux folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Új tervlap</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="174"/>
@@ -2526,7 +2526,18 @@ Si le chiffre défini dans le champ Valeur possède moins de digits que le type 
 Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ezen a helyen tudod meghatározni, hogyan lesznek az új tervlapok számozva.
+A számozás minimális változóból áll.
+- Hozzá lehet adni, vagy törölni számozási változót a (–) és a (+) gombokon keresztül.
+A számozási változó tartalmaz: egy típust, egy értéket és egy növekményt.
+
+- típusok „Számjegy 1”, „Számjegy 01”, és „Számjegy 001”; amik megjelölik a meghatározott szám típust az „Érték” mezőben (a vezető nullák tekintetében), milyen növekménnyel fog minden egyes új szám „Növekedni”
+- „Számjegy 01”; és ;„Számjegy 001”;, külön-külön mutatják a vezető nullákat a terven, kettő és legkevesebb három számjegyű formában.
+Ha az érték mezőben előírt szám kevesebb számjegyű a választott típusnál, akkor kettő vagy három 0-val ki fog egészülni, hogy azonos legyen a kiválasztott típussal.
+
+-Típus „szöveg”; egy állandó karakter(sorozat).
+A „;Növekedés”; mező nincs használva.
+</translation>
     </message>
 </context>
 <context>
@@ -2557,12 +2568,12 @@ Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="41"/>
         <source>Dénomination automatique :</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatikus elnevezés :</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="53"/>
         <source>Formule</source>
-        <translation type="unfinished">Formula</translation>
+        <translation>Képlet</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="72"/>
@@ -2612,13 +2623,13 @@ Szöveg és szám szintén bevihető.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="136"/>
         <source>Utiliser les numéros de folio à la place de leur position dans le projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Tervlap számok használata a projekben elfoglalt pozíciójuk helyett</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="143"/>
         <source>Numéroter les colonnes de cartouche à partir de 0 (1 sinon)</source>
         <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>A tervlap oszlopainak számozása 0-tól (különben 1-től)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="178"/>
@@ -2628,42 +2639,42 @@ Szöveg és szám szintén bevihető.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="226"/>
         <source>Collections</source>
-        <translation type="unfinished">Gyűjtemény</translation>
+        <translation>Gyűjtemény</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="232"/>
         <source>Accès aux collections</source>
-        <translation type="unfinished"></translation>
+        <translation>Hozzáférés a gyűjteményhez</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="244"/>
         <source>Répertoire de la collection commune</source>
-        <translation type="unfinished"></translation>
+        <translation>Közös gyűjtemény könyvtár</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="307"/>
         <source>Répertoire des cartouches utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translation>Felhasználói szövegmezők könytára</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="398"/>
         <source>Textes dynamiques</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="404"/>
         <source>Rotation des textes dynamiques</source>
-        <translation type="unfinished"></translation>
+        <translation>Dinamikus szöveg forgatása</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="411"/>
         <source>Longueur des textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Szöveg hosssza</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="432"/>
         <source>Police des textes dynamiques</source>
-        <translation type="unfinished"></translation>
+        <translation>Dinamikus szöveg betűtípusa</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="96"/>
@@ -2727,7 +2738,7 @@ Szöveg és szám szintén bevihető.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="265"/>
         <source>Répertoire de la collection utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translation>Felhasználói gyűjtemény könyvtára</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="300"/>
@@ -2891,17 +2902,17 @@ A szövegmező alapértelmezett értékének meghatározása az új elemek alá 
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="232"/>
         <source>Turc</source>
-        <translation type="unfinished"></translation>
+        <translation>Török</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="233"/>
         <source>Hongrois</source>
-        <translation type="unfinished"></translation>
+        <translation>Magyar</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="349"/>
         <source>Chemin des cartouches utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translation>Felhasználói szövegmező elérési útvonala</translation>
     </message>
 </context>
 <context>
@@ -2934,7 +2945,7 @@ A szövegmező alapértelmezett értékének meghatározása az új elemek alá 
     <message>
         <location filename="../sources/genericpanel.cpp" line="386"/>
         <source>Modèles de cartouche</source>
-        <translation>Címblokk minták</translation>
+        <translation>Szövegmező minták</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="469"/>
@@ -3302,12 +3313,12 @@ A szövegmező alapértelmezett értékének meghatározása az új elemek alá 
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="133"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Délier l&apos;élément sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A kiválasztott elem szétválasztása&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="147"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Lier l&apos;élément sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A kiválasztott elemek összekapcsolása&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="123"/>
@@ -3697,7 +3708,7 @@ A szövegmező alapértelmezett értékének meghatározása az új elemek alá 
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="196"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="313"/>
         <source>Installation</source>
-        <translation type="unfinished">Beépítés</translation>
+        <translation>Beépítés</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="100"/>
@@ -3921,27 +3932,27 @@ Az összeférhetetlen változók a következők:
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="235"/>
         <source>Numérotation auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatikus számozás</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="266"/>
         <source>Conducteurs</source>
-        <translation type="unfinished">Vezetékek</translation>
+        <translation>Vezetékek</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="270"/>
         <source>Eléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Elemek</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="274"/>
         <source>Folios</source>
-        <translation type="unfinished">Tervlap</translation>
+        <translation>Tervlapok</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="278"/>
         <source>Numérotation auto des folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Tervlap automatikus számozása</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="348"/>
@@ -4106,7 +4117,7 @@ Akarod menteni a változásokat?</translation>
     <message>
         <location filename="../sources/PropertiesEditor/propertieseditordockwidget.ui" line="14"/>
         <source>Propriétés de la sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>Kiválasztási tulajdonságok</translation>
     </message>
 </context>
 <context>
@@ -4188,13 +4199,13 @@ Akarod menteni a változásokat?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="326"/>
         <source>Formule du label</source>
-        <translation type="unfinished"></translation>
+        <translation>Címke képlet</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="328"/>
         <location filename="../sources/qetapp.cpp" line="441"/>
         <source>Installation</source>
-        <translation type="unfinished">Beépítés</translation>
+        <translation>Beépítés</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="329"/>
@@ -4217,47 +4228,47 @@ Akarod menteni a változásokat?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="343"/>
         <source>Quantité</source>
-        <translation type="unfinished"></translation>
+        <translation>Mennyiség</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="344"/>
         <source>Unité</source>
-        <translation type="unfinished"></translation>
+        <translation>Egység</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="404"/>
         <source>Formule du texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Szöveg képlet</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="405"/>
         <source>Texte</source>
-        <translation type="unfinished">Szöveg</translation>
+        <translation>Szöveg</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="437"/>
         <source>Titre</source>
-        <translation type="unfinished">Cím</translation>
+        <translation>Cím</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="438"/>
         <source>Auteur</source>
-        <translation type="unfinished">Szerző</translation>
+        <translation>Szerző</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="439"/>
         <source>Fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Fájl</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="440"/>
         <source>Folio</source>
-        <translation type="unfinished">Tervlap</translation>
+        <translation>Tervlap</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="443"/>
         <source>Indice Rev</source>
-        <translation type="unfinished">Revízió</translation>
+        <translation>Revízió</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="454"/>
@@ -4364,13 +4375,13 @@ Akarod menteni a változásokat?</translation>
         <location filename="../sources/qetapp.cpp" line="1660"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
-        <translation>&amp;Elrejti a címblokk minta szerkesztőt</translation>
+        <translation>&amp;Elrejti a szövegmező sablon szerkesztőt</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1661"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
-        <translation>&amp;Megjeleníti a címblokk minta szerkesztőt</translation>
+        <translation>&amp;Megjeleníti a szövegmező sablon szerkesztőt</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1662"/>
@@ -4417,7 +4428,7 @@ Akarod menteni a változásokat?</translation>
         <location filename="../sources/qetapp.cpp" line="1771"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
-        <translation>Címblokk minta szerkesztők</translation>
+        <translation>Szövegmező sablon szerkesztők</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1810"/>
@@ -4476,7 +4487,7 @@ Elérhető lehetőségek:
         <location filename="../sources/qetapp.cpp" line="1931"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
-        <translation>  --common-tbt-dir=DIR          Meghatározza a címblokk minták gyűjtőkönyvtárát
+        <translation>  --common-tbt-dir=DIR          Meghatározza a szövegmező-sablonok gyűjtemény-könyvtárát
 </translation>
     </message>
     <message>
@@ -4648,7 +4659,7 @@ Elérhető lehetőségek:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="402"/>
         <source>Lancer le plugin de création de borniers</source>
-        <translation type="unfinished"></translation>
+        <translation>Elindítja a sorkapocsterv generáló beépülő modult</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="406"/>
@@ -4818,7 +4829,7 @@ Elérhető lehetőségek:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="617"/>
         <source>Chercher/remplacer</source>
-        <translation type="unfinished"></translation>
+        <translation>Keresés / csere</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="668"/>
@@ -4907,7 +4918,7 @@ pip3install –upgrade qet_tb_generator
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="521"/>
         <source>Grouper les textes sélectionnés</source>
-        <translation type="unfinished"></translation>
+        <translation>Kiválasztott szövegek csoportosítása</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="526"/>
@@ -5900,8 +5911,8 @@ Helyezd a DXFtoQET.app fájlt a /Users/user_name/.qet/ könyvtárba
         <location filename="../sources/editor/qetelementeditor.cpp" line="744"/>
         <source> %n avertissement(s)</source>
         <comment>warnings</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform> %n Figyelmeztetés</numerusform>
         </translation>
     </message>
     <message>
@@ -7406,7 +7417,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="93"/>
         <source>F002</source>
-        <translation type="unfinished">F002</translation>
+        <translation>F002</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="94"/>
@@ -7421,7 +7432,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="96"/>
         <source>H002</source>
-        <translation type="unfinished">H002</translation>
+        <translation>H002</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="97"/>
@@ -7446,12 +7457,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="101"/>
         <source>L002</source>
-        <translation type="unfinished">L002</translation>
+        <translation>L002</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="102"/>
         <source>L003</source>
-        <translation type="unfinished">L003</translation>
+        <translation>L003</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="103"/>
@@ -7481,22 +7492,22 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="108"/>
         <source>Position du folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Tervlap pozíció</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="110"/>
         <source>Numéro de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Tervlap szám</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="120"/>
         <source>Numéro de commande</source>
-        <translation type="unfinished">Rendelési szám</translation>
+        <translation>Rendelési szám</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="126"/>
         <source>Numéro interne</source>
-        <translation type="unfinished">Belső szám</translation>
+        <translation>Belső szám</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="109"/>
@@ -7521,7 +7532,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="114"/>
         <source>Formule du label</source>
-        <translation type="unfinished"></translation>
+        <translation>Címke képlet</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="115"/>
@@ -7551,12 +7562,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="122"/>
         <source>Quantité</source>
-        <translation type="unfinished"></translation>
+        <translation>Mennyiség</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="123"/>
         <source>Unité</source>
-        <translation type="unfinished"></translation>
+        <translation>Egység</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="124"/>
@@ -7689,7 +7700,8 @@ Que désirez vous faire ?</source>
         <location filename="../sources/elementtextpattern.cpp" line="65"/>
         <source>Une configuration de textes nommée &lt;&lt; %1 &gt;&gt; existe déjà.
 Voulez-vous la remplacer ?</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;&lt;%1 &gt;&gt; nevezetű szövegbeállítás már létezik.
+Cserélni akarod?</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="84"/>
@@ -7709,12 +7721,12 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="170"/>
         <source>Sélectionner une configuration de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Szöveg beállítás kiválasztása</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="171"/>
         <source>Sélectionner la configuration de textes à ajouter à l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Válaszd ki az elemhez hozzáadni kívánt szövegbeállítást</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="239"/>
@@ -7734,27 +7746,27 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="54"/>
         <source>Chercher/remplacer les propriétés de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Keresés / csere tervlap tulajdonságok</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="116"/>
         <source>Chercher/remplacer les propriétés d&apos;éléments.</source>
-        <translation type="unfinished"></translation>
+        <translation>Keresés / csere elem tulajdonságok.</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="168"/>
         <source>Chercher/remplacer des textes independants</source>
-        <translation type="unfinished"></translation>
+        <translation>Keresés / csere független szövegek</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="206"/>
         <source>Chercher/remplacer les propriétés de conducteurs.</source>
-        <translation type="unfinished"></translation>
+        <translation>Keresés / csere vezeték tulajdonságok.</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="289"/>
         <source>Rechercher / remplacer avancé</source>
-        <translation type="unfinished"></translation>
+        <translation>Keresés / csere haladó beállítások</translation>
     </message>
 </context>
 <context>
@@ -7912,12 +7924,12 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="21"/>
         <source>Type</source>
-        <translation type="unfinished">Típus</translation>
+        <translation>Típus</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="30"/>
         <source>&amp;Multifilaire</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Többvonalas</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="43"/>
@@ -7934,27 +7946,27 @@ Voulez-vous la remplacer ?</source>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="556"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="180"/>
         <source>Ne pas modifier</source>
-        <translation type="unfinished"></translation>
+        <translation>Ne módosítsa</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="48"/>
         <source>En haut</source>
-        <translation type="unfinished"></translation>
+        <translation>Fel</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="53"/>
         <source>En bas</source>
-        <translation type="unfinished"></translation>
+        <translation>Lent</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="61"/>
         <source>Texte sur conducteur horizontal :</source>
-        <translation type="unfinished"></translation>
+        <translation>Szöveg a vízszintes vezetőn :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="78"/>
         <source>Tension / protocol :</source>
-        <translation type="unfinished"></translation>
+        <translation>Feszültség / egyezményes felhasználás :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="95"/>
@@ -7962,180 +7974,180 @@ Voulez-vous la remplacer ?</source>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="196"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="228"/>
         <source>Supprimer ce texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Ennek a szövegnek a törlése</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="105"/>
         <source>Fonction :</source>
-        <translation type="unfinished">Funkció :</translation>
+        <translation>Funkció :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="112"/>
         <source>Formule du texte :</source>
-        <translation type="unfinished">Szöveg formátuma :</translation>
+        <translation>Szöveg képlet :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="119"/>
         <source>Texte visible</source>
-        <translation type="unfinished">Szöveg látható</translation>
+        <translation>Szöveg látható</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="129"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="238"/>
         <source>Angle :</source>
-        <translation type="unfinished">Szög :</translation>
+        <translation>Szög :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="165"/>
         <source>Texte sur conducteur vertical :</source>
-        <translation type="unfinished"></translation>
+        <translation>Szöveg a függőleges vezetőn :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="172"/>
         <source>Taille du texte :</source>
-        <translation type="unfinished">Szöveg méret :</translation>
+        <translation>Szöveg méret :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="179"/>
         <source>Texte :</source>
-        <translation type="unfinished"></translation>
+        <translation>Szöveg :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="215"/>
         <source>À gauche</source>
-        <translation type="unfinished"></translation>
+        <translation>Balra</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="220"/>
         <source>À droite</source>
-        <translation type="unfinished"></translation>
+        <translation>Jobbra</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="254"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="279"/>
         <source>°</source>
-        <translation type="unfinished"></translation>
+        <translation>°</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="308"/>
         <source>Unifilaire</source>
-        <translation type="unfinished">Egyesített vezetők</translation>
+        <translation>Egyvonalas</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="323"/>
         <source>Protective Earth Neutral</source>
-        <translation type="unfinished">Védő Föld Nulla</translation>
+        <translation>Védő Föld Nulla</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="326"/>
         <source>PEN</source>
-        <translation type="unfinished">PEN</translation>
+        <translation>PEN</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="333"/>
         <source>Phase</source>
-        <translation type="unfinished">Fázis</translation>
+        <translation>Fázis</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="336"/>
         <source>phase</source>
-        <translation type="unfinished">fázis</translation>
+        <translation>fázis</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="347"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="380"/>
         <source>Nombre de phase</source>
-        <translation type="unfinished">Fázisok száma</translation>
+        <translation>Fázisok száma</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="360"/>
         <source>Neutre</source>
-        <translation type="unfinished">Nulla</translation>
+        <translation>Nulla</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="363"/>
         <source>neutre</source>
-        <translation type="unfinished">nulla</translation>
+        <translation>nulla</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="396"/>
         <source>Terre</source>
-        <translation type="unfinished">Föld</translation>
+        <translation>Föld</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="399"/>
         <source>terre</source>
-        <translation type="unfinished">föld</translation>
+        <translation>föld</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="410"/>
         <source>TextLabel</source>
-        <translation type="unfinished">Szövegcímke</translation>
+        <translation>Szövegcímke</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="420"/>
         <source>PushButton</source>
-        <translation type="unfinished"></translation>
+        <translation>Nyomógomb</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="431"/>
         <source>Apparence</source>
-        <translation type="unfinished">Megjelenés</translation>
+        <translation>Megjelenés</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="437"/>
         <source>Taille :</source>
-        <translation type="unfinished"></translation>
+        <translation>Méret :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="444"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="520"/>
         <source>Couleur :</source>
-        <translation type="unfinished">Szín :</translation>
+        <translation>Szín :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="474"/>
         <source>Style :</source>
-        <translation type="unfinished">Stílus :</translation>
+        <translation>Stílus :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="481"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="527"/>
         <source>Modifier</source>
-        <translation type="unfinished"></translation>
+        <translation>Szerkesztés</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="491"/>
         <source>Couleur secondaire :</source>
-        <translation type="unfinished">Másodlagos szín :</translation>
+        <translation>Másodlagos szín :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="513"/>
         <source>Taille de trait :</source>
-        <translation type="unfinished">Vonalméret :</translation>
+        <translation>Vonalméret :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="540"/>
         <source>px</source>
-        <translation type="unfinished"></translation>
+        <translation>pixel</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="181"/>
         <source>Trait plein</source>
         <comment>conductor style: solid line</comment>
-        <translation type="unfinished">egyenes vonal</translation>
+        <translation>egyenes vonal</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="182"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
-        <translation type="unfinished">szagatott vonal</translation>
+        <translation>szagatott vonal</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="183"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
-        <translation type="unfinished">Szagatott pontvonal</translation>
+        <translation>Szagatott pontvonal</translation>
     </message>
 </context>
 <context>
@@ -8143,7 +8155,7 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceelementdialog.cpp" line="79"/>
         <source>Ne pas modifier</source>
-        <translation type="unfinished"></translation>
+        <translation>Ne módosítsa</translation>
     </message>
 </context>
 <context>
@@ -8151,32 +8163,32 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Űrlap</translation>
+        <translation>Űrlap</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="45"/>
         <source>Principales</source>
-        <translation type="unfinished">Fő</translation>
+        <translation>Fő</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="53"/>
         <source>Indice Rev</source>
-        <translation type="unfinished">Revízió</translation>
+        <translation>Revízió</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="60"/>
         <source>Localisation</source>
-        <translation type="unfinished"></translation>
+        <translation>Elhelyezkedés</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="67"/>
         <source>Fichier :</source>
-        <translation type="unfinished">Fájl:</translation>
+        <translation>Fájl:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="74"/>
         <source>Disponible en tant que %title pour les modèles de cartouches</source>
-        <translation type="unfinished">Elérhető mint változat %title a szövegmezőhöz</translation>
+        <translation>Elérhető, mint változat %cím a szövegmezőhöz</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="77"/>
@@ -8188,62 +8200,62 @@ Voulez-vous la remplacer ?</source>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="217"/>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="227"/>
         <source>Ne pas modifier</source>
-        <translation type="unfinished"></translation>
+        <translation>Ne módosítsa</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="84"/>
         <source>Disponible en tant que %author pour les modèles de cartouches</source>
-        <translation type="unfinished">Elérhető mint változat %author a szövegmezőhöz</translation>
+        <translation>Elérhető, mint változat %szerző a szövegmezőhöz</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="94"/>
         <source>Auteur :</source>
-        <translation type="unfinished">Szerző:</translation>
+        <translation>Szerző:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="101"/>
         <source>Date :</source>
-        <translation type="unfinished">Dátum:</translation>
+        <translation>Dátum:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="111"/>
         <source>Installation :</source>
-        <translation type="unfinished">Beépítés:</translation>
+        <translation>Beépítés:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="118"/>
         <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
-        <translation type="unfinished">Elérhető mint változat %indexrev a szövegmezőhöz</translation>
+        <translation>Elérhető, mint változat %revízió a szövegmezőhöz</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="128"/>
         <source>Disponible en tant que %filename pour les modèles de cartouches</source>
-        <translation type="unfinished">Elérhető mint változat %filename a szövegmezőhöz</translation>
+        <translation>Elérhető, mint változat %fájlnév a szövegmezőhöz</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="141"/>
         <source>Folio :</source>
-        <translation type="unfinished">Tervlap:</translation>
+        <translation>Tervlap:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="150"/>
         <source>Pas de date</source>
-        <translation type="unfinished">Nincs dátum</translation>
+        <translation>Nincs dátum</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="157"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
-        <translation type="unfinished">Elérhető mint változat %date a szövegmezőhöz</translation>
+        <translation>Elérhető, mint változat %dátum a szövegmezőhöz</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="170"/>
         <source>Date fixe :</source>
-        <translation type="unfinished">Rögzített dátum:</translation>
+        <translation>Rögzített dátum:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="177"/>
         <source>Appliquer la date actuelle</source>
-        <translation type="unfinished">Jelenlegi dátum beállítása</translation>
+        <translation>Jelenlegi dátum beállítása</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="200"/>
@@ -8252,7 +8264,7 @@ Les variables suivantes sont utilisables :
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
-        <translation type="unfinished">Elérhető, mint %folio szövegmező modellekhez
+        <translation>Elérhető, mint %tervlap szövegmező modellekhez
 A következő változatok használhatók:
 -%id: jelenlegi tervlapszám a projektben
 -%total: összes tervlapszám a projektben
@@ -8261,17 +8273,17 @@ A következő változatok használhatók:
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="214"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
-        <translation type="unfinished">Elérhető mint változat %locmach a szövegmezőhöz</translation>
+        <translation>Elérhető, mint változat %elhelyezkedés a szövegmezőhöz</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="224"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disponible en tant que %plant pour les modèles de cartouches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Elérhető, mint változat %berendezés a szövegmezőhöz&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="234"/>
         <source>Titre :</source>
-        <translation type="unfinished">Cím:</translation>
+        <translation>Cím:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="241"/>
@@ -8282,18 +8294,18 @@ A következő változatok használhatók:
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="291"/>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="301"/>
         <source>Supprimer ce texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Ennek a szövegnek a törlése</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="327"/>
         <source>Personnalisées</source>
-        <translation type="unfinished">Testre szabás</translation>
+        <translation>Testre szabás</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="335"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation type="unfinished">Itt adhatod meg saját neved/értéket társítást, tehát a szövegmező őket veszi figyelembe. Például: társítjuk a „volta” nevet a „1745” számmal, akkor a %{volta} cserélve lesz a 1745-tel a szövegmezőben.</translation>
+        <translation>Itt adhatod meg saját neved/értéket társítást, tehát a szövegmező őket veszi figyelembe. Például: társítjuk a „volta” nevet a „1745” számmal, akkor a %{volta} cserélve lesz a 1745-tel a szövegmezőben.</translation>
     </message>
 </context>
 <context>
@@ -8318,7 +8330,14 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %LM : la localisation
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>Meg tudod határozni mit tartalmazzon a tervlap jegyzőkönyv.
+Hozd létre saját szövegedet a következő változók használatával:
+% f: a tervlap pozíciója a projektben
+% F: a tervlap száma
+% M: a beépítés
+% LM: az elhelyezkedés
+% l: a sor száma
+% c: az oszlop száma</translation>
     </message>
 </context>
 <context>
@@ -8331,12 +8350,12 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="44"/>
         <source>Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Mód</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="64"/>
         <source>Sensible à la casse</source>
-        <translation type="unfinished"></translation>
+        <translation>Kis és nagybetű érzékenység</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="78"/>
@@ -8351,57 +8370,57 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="112"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Afficher les options avancées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Láthatóvá teszi a haladó beállításokat&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="152"/>
         <source>Champ texte de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Tervlap szövegmező</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="162"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les folios&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A tervlapokon cserélendő tulajdonságok meghatározása&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="165"/>
         <source>Folio</source>
-        <translation type="unfinished">Tervlap</translation>
+        <translation>Tervlap</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="175"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les éléments&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Az elemekben cserélendő tulajdonságok meghatározása&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="178"/>
         <source>Élément</source>
-        <translation type="unfinished">Elem</translation>
+        <translation>Elem</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="185"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les conducteurs&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Az vezetőkben cserélendő tulajdonságok meghatározása&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="188"/>
         <source>Conducteur</source>
-        <translation type="unfinished">Vezeték</translation>
+        <translation>Vezeték</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="198"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer la correspondance sélectionnée&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A kiválasztott megegyezők cseréje&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="211"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer les correspondances cochées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Az ellenőrzött megegyezők cseréje&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="242"/>
         <source>avancé</source>
-        <translation type="unfinished"></translation>
+        <translation>Haladó</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="27"/>
@@ -8461,32 +8480,32 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="158"/>
         <source>Eléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Elemek</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="163"/>
         <source>Eléments simple</source>
-        <translation type="unfinished"></translation>
+        <translation>Egyszerű elemek</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="169"/>
         <source>Eléments maître</source>
-        <translation type="unfinished"></translation>
+        <translation>Mester elemek</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="175"/>
         <source>Eléments esclave</source>
-        <translation type="unfinished"></translation>
+        <translation>Alárendelt elemek</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="181"/>
         <source>Eléments report de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Tervlap hivatkozás elemek</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="187"/>
         <source>Eléments bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Csatlakozó elemek</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="968"/>
@@ -8514,7 +8533,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1207"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1208"/>
         <source> [édité]</source>
-        <translation type="unfinished"></translation>
+        <translation> [szerkesztett)</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="195"/>
@@ -8610,7 +8629,18 @@ Si le chiffre défini dans le champ Valeur possède moins de digits que le type 
 Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ezen a helyen tudod beállítani, hogyan lesznek az új tervlapok számozva.
+-A számozás minimális változókból áll össze.
+- Hozzá lehet adni, vagy törölni számozási változót a (–) és a (+) gombokon keresztül.
+-A számozási változó tartalmaz: egy típust, egy értéket és egy növekményt.
+
+- típusok „Számjegy 1”, „01 Számjegy”, and „001 Számjegy”; amik megjelölik a meghatározott szám típust az „Érték” mezőben (a vezető nullák tekintetében), milyen növekménnyel fog minden egyes új szám „Növekedni”
+- „Számjegy 01 ”; és ;„Számjegy 001 ”;, külön-külön mutatják a vezető nullákat a terven, kettő és legkevesebb három számjegyű formában.
+Ha az érték mezőben előírt szám kevesebb számjegyű a választott típusnál, akkor kettő vagy három 0-val ki fog egészülni, hogy azonos legyen a kiválasztott típussal.
+
+-A típus „Szöveg” típusa, egy állandó karakter(sorozat).
+A „;Növekedés”; mező nincs használva.
+</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="207"/>
@@ -8632,7 +8662,23 @@ Les autres champs ne sont pas utilisés.
 -Le type &quot;Folio&quot; représente le nom du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the conductor autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ezen a helyen tudod beállítani, hogyan lesznek az új vezetékek számozva.
+-A számozás minimális változókból áll össze.
+- Hozzá lehet adni, vagy törölni számozási változót a (–) és a (+) gombokon keresztül.
+-A számozási változó tartalmaz: egy típust, egy értéket és egy növekményt.
+
+- típusok „Számjegy 1”, „01 Számjegy”, and „001 Szám”; amik megjelölik a meghatározott szám típust az „Érték” mezőben (a vezető nullák tekintetében), milyen növekménnyel fog minden egyes új szám „Növekedni”
+- „01 Számjegy”; és ;„ 001 Számjegy”;, külön-külön mutatják a vezető nullákat a terven, kettő és legkevesebb három számjegyű formában.
+Ha az érték mezőben előírt szám kevesebb számjegyű a választott típusnál, akkor kettő vagy három 0-val ki fog egészülni, hogy azonos legyen a kiválasztott típussal.
+
+-A típus „Szöveg” típusa, egy állandó karakter(sorozat).
+A „;Növekedés”; mező nincs használva.
+
+-A típus „tervlap” képviseli az aktuális tervlap számát.
+A többi mező nincs használva.
+
+-A típus „Tervlap” képviseli az aktuális tervlap nevét.
+A többi mező nincs használva.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="206"/>
@@ -9321,7 +9367,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="237"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
-        <translation>Elérhető mint változat %locmach a szövegmezőhöz</translation>
+        <translation>Elérhető, mint változat %locmach a szövegmezőhöz</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="288"/>
@@ -9341,7 +9387,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="316"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
-        <translation>Elérhető mint változat %date a szövegmezőhöz</translation>
+        <translation>Elérhető, mint változat %dátum a szövegmezőhöz</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="329"/>
@@ -9361,7 +9407,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="251"/>
         <source>Disponible en tant que %title pour les modèles de cartouches</source>
-        <translation>Elérhető mint változat %title a szövegmezőhöz</translation>
+        <translation>Elérhető, mint változat %cím a szövegmezőhöz</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="349"/>
@@ -9371,7 +9417,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="272"/>
         <source>Disponible en tant que %author pour les modèles de cartouches</source>
-        <translation>Elérhető mint változat %author a szövegmezőhöz</translation>
+        <translation>Elérhető, mint változat %szerző a szövegmezőhöz</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="258"/>
@@ -9381,7 +9427,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="279"/>
         <source>Disponible en tant que %filename pour les modèles de cartouches</source>
-        <translation>Elérhető mint változat %filename a szövegmezőhöz</translation>
+        <translation>Elérhető, mint változat %fájlnév a szövegmezőhöz</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="84"/>
@@ -9391,12 +9437,12 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="230"/>
         <source>Indice Rev:</source>
-        <translation type="unfinished"></translation>
+        <translation>Revízió:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="244"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disponible en tant que %plant pour les modèles de cartouches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Elérhető, mint változat %berendezés a szövegmezőhöz&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="338"/>
@@ -9405,7 +9451,7 @@ Les variables suivantes sont utilisables :
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
-        <translation>Elérhető, mint %folio szövegmező modellekhez
+        <translation>Elérhető, mint %tervlap szövegmező modellekhez
 A következő változatok használhatók:
 -%id: jelenlegi tervlapszám a projektben
 -%total: összes tervlapszám a projektben
@@ -9424,12 +9470,12 @@ A következő változatok használhatók:
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="369"/>
         <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
-        <translation>Elérhető mint változat %indexrev a szövegmezőhöz</translation>
+        <translation>Elérhető, mint változat %revízió a szövegmezőhöz</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="383"/>
         <source>Localisation:</source>
-        <translation type="unfinished"></translation>
+        <translation>Elhelyezkedés :</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="406"/>
@@ -9452,7 +9498,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="297"/>
         <source>Dupliquer et éditer ce modèle</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ennek a sablonnak a duplikálása és szerkesztése</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="302"/>
@@ -9624,12 +9670,12 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : numéro du folio précédent&lt;/li&gt;&lt;li&gt;%{next-folio-num} : numéro du folio suivant&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Alapértelmezés szerint, a következő változók érhetők el:&lt;ul&gt;&lt;li&gt;%{author}: tervlap szerzője&lt;/li&gt;&lt;li&gt;%{date}: tervlap dátuma&lt;/li&gt;&lt;li&gt;%{title}: tervlap címe&lt;/li&gt;&lt;li&gt;%{filename}: projekt fájl címe&lt;/li&gt;&lt;li&gt;%{plant}: a beépítés neve(=) amelyben a tervlap elhelyezkedik&lt;/li&gt;&lt;li&gt;%{locmach}: elhelyezkedés neve(+) amelyben a tervlap&lt;/li&gt;&lt;li&gt;%{indexrev} : tervlap revízió jelzőszáma&lt;/li&gt;&lt;li&gt;%{version}: szoftver verzió&lt;/li&gt;&lt;li&gt;%{folio}: tervlap szám&lt;/li&gt;&lt;li&gt;%{folio-id}: tervlap pozíciója a projektben&lt;/li&gt;&lt;li&gt;%{folio-total }: az összes tervlap száma a projektben&lt;/li&gt;&lt;li&gt;%{previous-folio-num}: előző tervlap száma&lt;/li&gt;&lt;li&gt;%{next-folio-num}: a következő tervlap száma&lt;/li&gt;&lt;li&gt;% {projecttitle}: projekt címe&lt;/li&gt;&lt;li&gt;%{projectpath}: projekt elérési útvonal&lt;/li&gt;&lt;li&gt;%{projectfilename}: projekt fájl név&lt;/li&gt;&lt;li&gt;%{saveddate}: fájl mentésének dátuma&lt;/li&gt;&lt;li&gt;%{savedtime}: fájl mentésének időpontja&lt;/li&gt;&lt;li&gt;%{savedfilename}: fájl név mentett fájl&lt;/li&gt;&lt;li&gt;%{savedfilepath}: mentett fájl elérési útvonala&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="465"/>
         <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
-        <translation>A szövegmező minden cellája egy érték, esetenként egy címkével előtte. Mindkettő lefordítható több nyelvre.&lt;br/&gt;Mivel jelenleg egy szövegmezőt szerkesztesz &lt;em&gt;template&lt;/em&gt; kerüld el a nyers adatok közvetlen beírását, részesítsük előnyben a változók használatát, mint %{variable-name}, amelyek később cserélve lesznek egy megfelelő értékkel a tervlapon.</translation>
+        <translation>A szövegmező minden cellája egy érték, esetenként egy címkével előtte. Mindkettő lefordítható több nyelvre.&lt;br/&gt;Mivel jelenleg egy szövegmezőt szerkesztesz &lt;em&gt;template&lt;/em&gt; kerüld el a nyers adatok közvetlen beírását, részesítsük előnyben a változók használatát, mint %{változó név}, amelyek később cserélve lesznek egy megfelelő értékkel a tervlapon.</translation>
     </message>
 </context>
 <context>
@@ -10279,52 +10325,52 @@ Maximális hossz : %2px
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="14"/>
         <source>Rechercher/Remplacer avancé</source>
-        <translation type="unfinished"></translation>
+        <translation>Keresés / csere haladó beállítások</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="27"/>
         <source>par :</source>
-        <translation type="unfinished"></translation>
+        <translation>által :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="34"/>
         <source>Remplacer :</source>
-        <translation type="unfinished">Kicserél :</translation>
+        <translation>Kicserél :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="51"/>
         <source>Qui :</source>
-        <translation type="unfinished"></translation>
+        <translation>Ki :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="58"/>
         <source>Texte ou expression régulière</source>
-        <translation type="unfinished"></translation>
+        <translation>Szöveg, vagy szabályos kifejezés</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="69"/>
         <source>Folio</source>
-        <translation type="unfinished">Tervlap</translation>
+        <translation>Tervlap</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="74"/>
         <source>Élément</source>
-        <translation type="unfinished">Elem</translation>
+        <translation>Elem</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="79"/>
         <source>Conducteur</source>
-        <translation type="unfinished">Vezeték</translation>
+        <translation>Vezeték</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="84"/>
         <source>Texte indépendant</source>
-        <translation type="unfinished"></translation>
+        <translation>Független szöveg</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="92"/>
         <source>Quoi :</source>
-        <translation type="unfinished"></translation>
+        <translation>Mi :</translation>
     </message>
 </context>
 </TS>
