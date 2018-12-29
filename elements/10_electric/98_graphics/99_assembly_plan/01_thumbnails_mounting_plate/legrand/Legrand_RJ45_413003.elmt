@@ -1,0 +1,25 @@
+<definition orientation="dyyy" version="0.5" type="element" link_type="simple" hotspot_x="5" hotspot_y="5" width="50" height="210">
+    <uuid uuid="{bc01e22c-48d1-4538-bc9a-deb08d0675bf}"/>
+    <names>
+        <name lang="fr">rj45</name>
+    </names>
+    <informations>Alexandre Dis</informations>
+    <description>
+        <input tagg="label" x="3" rotate="true" text="_" y="-9.45" size="9"/>
+        <rect x="0" antialias="false" width="40" height="200" style="line-style:normal;line-weight:thin;filling:none;color:black" y="0"/>
+        <rect x="0" antialias="false" width="40" height="100" style="line-style:normal;line-weight:thin;filling:none;color:black" y="50"/>
+        <line length1="1" y1="83" antialias="false" y2="83" end2="none" x1="0" length2="1.5" x2="40" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" y1="83" antialias="false" y2="83" end2="none" x1="0" length2="1.5" x2="20" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect x="8" antialias="false" width="25" height="25" style="line-style:dotted;line-weight:normal;filling:white;color:purple" y="88"/>
+        <text x="10" text="Legrand" y="146" size="3"/>
+        <line length1="1.5" y1="74" antialias="false" y2="75" end2="none" x1="38" length2="1.5" x2="38" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <polygon y1="120" y3="144" antialias="false" y2="144" x1="4" closed="false" x2="4" x3="6" style="line-style:normal;line-weight:normal;filling:none;color:purple"/>
+        <polygon y1="144" antialias="false" y2="144" x1="6" closed="false" x2="8" style="line-style:normal;line-weight:normal;filling:none;color:purple"/>
+        <line length1="1.5" y1="144" antialias="false" y2="144" end2="none" x1="24" length2="1.5" x2="36" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:purple"/>
+        <rect x="5" antialias="false" width="30" height="25" style="line-style:normal;line-weight:normal;filling:cyan;color:cyan" y="55"/>
+        <rect x="10" antialias="false" width="9" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black" y="120"/>
+        <line length1="1.5" y1="125" antialias="false" y2="129" end2="none" x1="10" length2="1.5" x2="13" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" y1="129" antialias="false" y2="125" end2="none" x1="16" length2="1.5" x2="19" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="26" text="413003" y="157" size="2"/>
+    </description>
+</definition>

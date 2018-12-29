@@ -1,0 +1,54 @@
+<definition version="0.5" orientation="dyyy" hotspot_y="4" link_type="simple" hotspot_x="5" width="90" type="element" height="210">
+    <uuid uuid="{26b1ad08-11fb-4bcf-a8b4-f0ca043c2d76}"/>
+    <names>
+        <name lang="en">Siemens 2-Poles Circuit Breaker 205SY6220-7</name>
+    </names>
+    <informations>Mickael Pouliquen
+mickael.pouliquen@gmail.com</informations>
+    <description>
+        <rect antialias="false" x="0" y="0" style="line-style:normal;line-weight:thin;filling:white;color:black" width="80" height="200"/>
+        <text text="1" x="23" size="5" y="65"/>
+        <rect antialias="false" x="58" y="100" style="line-style:normal;line-weight:thin;filling:red;color:black" width="10" height="5"/>
+        <rect antialias="false" x="55" y="123" style="line-style:normal;line-weight:normal;filling:black;color:black" width="10" height="17"/>
+        <rect antialias="false" x="16" y="123" style="line-style:normal;line-weight:normal;filling:black;color:black" width="10" height="17"/>
+        <circle antialias="true" diameter="10" x="55" y="177" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="MCB" x="1" size="3" y="70"/>
+        <line end1="none" length2="1.5" antialias="false" y1="180" length1="1.5" x2="62" y2="184" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="58"/>
+        <text text="SIEMENS" x="1" size="5" y="58"/>
+        <line end1="none" length2="1.5" antialias="false" y1="180" length1="1.5" x2="58" y2="184" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="62"/>
+        <text text="C20" x="1" size="5" y="78"/>
+        <line end1="none" length2="1.5" antialias="false" y1="180" length1="1.5" x2="60" y2="184" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="60"/>
+        <circle antialias="true" diameter="10" x="16" y="176" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text text="5SY62" x="1" size="3" y="63"/>
+        <line end1="none" length2="1.5" antialias="false" y1="182" length1="1.5" x2="62" y2="182" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="58"/>
+        <circle antialias="true" diameter="10" x="55" y="15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" length2="1.5" antialias="false" y1="18" length1="1.5" x2="62" y2="22" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="58"/>
+        <line end1="none" length2="1.5" antialias="false" y1="179" length1="1.5" x2="23" y2="183" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="19"/>
+        <line end1="none" length2="1.5" antialias="false" y1="179" length1="1.5" x2="19" y2="183" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="23"/>
+        <line end1="none" length2="1.5" antialias="false" y1="18" length1="1.5" x2="58" y2="22" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="62"/>
+        <line end1="none" length2="1.5" antialias="false" y1="179" length1="1.5" x2="21" y2="183" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="21"/>
+        <line end1="none" length2="1.5" antialias="false" y1="18" length1="1.5" x2="60" y2="22" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="60"/>
+        <line end1="none" length2="1.5" antialias="false" y1="181" length1="1.5" x2="23" y2="181" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="19"/>
+        <circle antialias="true" diameter="10" x="15" y="15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" length2="1.5" antialias="false" y1="150" length1="1.5" x2="40" y2="200" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="40"/>
+        <line end1="none" length2="1.5" antialias="false" y1="20" length1="1.5" x2="62" y2="20" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="58"/>
+        <line end1="none" length2="1.5" antialias="false" y1="18" length1="1.5" x2="22" y2="22" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="18"/>
+        <rect antialias="false" x="0" y="50" style="line-style:normal;line-weight:thin;filling:none;color:black" width="80" height="100"/>
+        <line end1="none" length2="1.5" antialias="false" y1="18" length1="1.5" x2="18" y2="22" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="22"/>
+        <line end1="none" length2="1.5" antialias="false" y1="18" length1="1.5" x2="20" y2="22" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="20"/>
+        <line end1="none" length2="1.5" antialias="false" y1="20" length1="1.5" x2="22" y2="20" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="18"/>
+        <text text="0" x="23" size="5" y="78"/>
+        <input text="_" x="0" size="9" rotate="true" y="-20" tagg="label"/>
+        <input text="_" x="50" size="9" rotate="true" y="190" tagg="none"/>
+        <input text="_" x="10" size="9" rotate="true" y="190" tagg="none"/>
+        <line end1="none" length2="1.5" antialias="false" y1="0" length1="1.5" x2="40" y2="50" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="40"/>
+        <rect antialias="false" x="0" y="50" style="line-style:normal;line-weight:thin;filling:none;color:black" width="80" height="30"/>
+        <rect antialias="false" x="8" y="110" style="line-style:normal;line-weight:normal;filling:black;color:black" width="66" height="12"/>
+        <line end1="none" length2="1.5" antialias="false" y1="67" length1="1.5" x2="25" y2="72" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="25"/>
+        <rect antialias="false" x="25" y="100" style="line-style:normal;line-weight:thin;filling:red;color:black" width="10" height="5"/>
+        <terminal x="60" orientation="s" y="200"/>
+        <terminal x="20" orientation="n" y="0"/>
+        <terminal x="60" orientation="n" y="0"/>
+        <terminal x="20" orientation="s" y="200"/>
+    </description>
+</definition>

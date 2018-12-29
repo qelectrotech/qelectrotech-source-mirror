@@ -1,0 +1,83 @@
+<definition orientation="dyyy" version="0.5" type="element" link_type="simple" hotspot_x="5" hotspot_y="5" width="170" height="210">
+    <uuid uuid="{5513674c-abbd-44f9-8e43-47efbb4047ba}"/>
+    <names>
+        <name lang="fr">5WG1-125-1AB22 - Power Supply 640mA</name>
+    </names>
+    <informations>Alexandre Dis&#xd;
+</informations>
+    <description>
+        <rect x="0" antialias="false" width="160" height="200" style="line-style:normal;line-weight:thin;filling:white;color:black" y="0"/>
+        <text x="132" text="Reset" y="66" size="3"/>
+        <ellipse x="113" antialias="false" width="6" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" y="40"/>
+        <ellipse x="33" antialias="false" width="6" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" y="40"/>
+        <ellipse x="97" antialias="false" width="6" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" y="40"/>
+        <ellipse x="81" antialias="false" width="6" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" y="40"/>
+        <ellipse x="41" antialias="false" width="6" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" y="150"/>
+        <circle x="137" antialias="false" diameter="6" style="line-style:normal;line-weight:normal;filling:none;color:black" y="92"/>
+        <ellipse x="49" antialias="false" width="6" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" y="40"/>
+        <rect x="113" antialias="false" width="6" height="4.5" style="line-style:normal;line-weight:normal;filling:white;color:white" y="40"/>
+        <rect x="97" antialias="false" width="6" height="4.5" style="line-style:normal;line-weight:normal;filling:white;color:white" y="40"/>
+        <ellipse x="89" antialias="false" width="6" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" y="150"/>
+        <ellipse x="65" antialias="false" width="6" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" y="40"/>
+        <ellipse x="105" antialias="false" width="6" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" y="40"/>
+        <rect x="65" antialias="false" width="6" height="4.5" style="line-style:normal;line-weight:normal;filling:white;color:white" y="40"/>
+        <rect x="33" antialias="false" width="6" height="4.5" style="line-style:normal;line-weight:normal;filling:white;color:white" y="40"/>
+        <ellipse x="121" antialias="false" width="6" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" y="150"/>
+        <circle x="137" antialias="false" diameter="6" style="line-style:normal;line-weight:normal;filling:none;color:black" y="112"/>
+        <ellipse x="105" antialias="false" width="6" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" y="150"/>
+        <rect x="81" antialias="false" width="6" height="4.5" style="line-style:normal;line-weight:normal;filling:white;color:white" y="40"/>
+        <rect x="105" antialias="false" width="6" height="4.5" style="line-style:normal;line-weight:normal;filling:white;color:white" y="40"/>
+        <text x="123" text="N" y="171" size="6"/>
+        <rect x="49" antialias="false" width="6" height="4.5" style="line-style:normal;line-weight:normal;filling:white;color:white" y="40"/>
+        <ellipse x="41" antialias="false" width="6" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" y="40"/>
+        <rect x="121" antialias="false" width="10" height="15" style="line-style:normal;line-weight:thin;filling:yellow;color:black" y="0"/>
+        <ellipse x="73" antialias="false" width="6" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" y="150"/>
+        <ellipse x="73" antialias="false" width="6" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" y="40"/>
+        <rect x="73" antialias="false" width="6" height="4.5" style="line-style:normal;line-weight:normal;filling:white;color:white" y="40"/>
+        <rect x="41" antialias="false" width="6" height="4.5" style="line-style:normal;line-weight:normal;filling:white;color:white" y="40"/>
+        <rect x="131" antialias="false" width="10" height="15" style="line-style:normal;line-weight:thin;filling:white;color:black" y="0"/>
+        <rect x="121" antialias="false" width="6" height="4.5" style="line-style:normal;line-weight:normal;filling:white;color:white" y="156"/>
+        <ellipse x="57" antialias="false" width="6" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" y="40"/>
+        <text x="133" text="-" y="29" size="9"/>
+        <ellipse x="89" antialias="false" width="6" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" y="40"/>
+        <rect x="105" antialias="false" width="6" height="4.5" style="line-style:normal;line-weight:normal;filling:white;color:white" y="156"/>
+        <rect x="57" antialias="false" width="6" height="4.5" style="line-style:normal;line-weight:normal;filling:white;color:white" y="40"/>
+        <text x="119" text="+" y="29" size="9"/>
+        <rect x="89" antialias="false" width="6" height="4.5" style="line-style:normal;line-weight:normal;filling:white;color:white" y="40"/>
+        <ellipse x="57" antialias="false" width="6" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" y="150"/>
+        <input tagg="label" x="3" rotate="true" text="_" y="-9.45" size="9"/>
+        <ellipse x="113" antialias="false" width="6" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" y="150"/>
+        <text x="4" text="ABB" y="58" size="5" color="white"/>
+        <rect x="73" antialias="false" width="6" height="4.5" style="line-style:normal;line-weight:normal;filling:white;color:white" y="156"/>
+        <rect x="41" antialias="false" width="6" height="4.5" style="line-style:normal;line-weight:normal;filling:white;color:white" y="156"/>
+        <input tagg="none" x="8" rotate="true" text="_" y="133.5" size="7"/>
+        <rect x="89" antialias="false" width="6" height="4.5" style="line-style:normal;line-weight:normal;filling:white;color:white" y="156"/>
+        <rect x="19" antialias="false" width="10" height="15" style="line-style:normal;line-weight:thin;filling:red;color:black" y="0"/>
+        <rect x="57" antialias="false" width="6" height="3.5" style="line-style:normal;line-weight:normal;filling:white;color:white" y="156"/>
+        <rect x="113" antialias="false" width="6" height="4.5" style="line-style:normal;line-weight:normal;filling:white;color:white" y="156"/>
+        <rect x="0" antialias="false" width="160" height="110.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y="45"/>
+        <ellipse x="81" antialias="false" width="6" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" y="150"/>
+        <rect x="29" antialias="false" width="10" height="15" style="line-style:normal;line-weight:thin;filling:black;color:black" y="0"/>
+        <text x="31" text="-" y="29" size="9"/>
+        <text x="18" text="+" y="29" size="9"/>
+        <text x="8" text="KNX" y="154" size="4"/>
+        <rect x="81" antialias="false" width="6" height="4.5" style="line-style:normal;line-weight:normal;filling:white;color:white" y="156"/>
+        <ellipse x="65" antialias="false" width="6" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" y="150"/>
+        <ellipse x="97" antialias="false" width="6" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" y="150"/>
+        <circle x="137" antialias="false" diameter="6" style="line-style:normal;line-weight:normal;filling:none;color:black" y="72"/>
+        <rect x="97" antialias="false" width="6" height="4.5" style="line-style:normal;line-weight:normal;filling:white;color:white" y="156"/>
+        <rect x="65" antialias="false" width="30" height="15" style="line-style:normal;line-weight:normal;filling:gray;color:black" y="10"/>
+        <rect x="105" antialias="false" width="55" height="25" style="line-style:normal;line-weight:normal;filling:none;color:black" y="175"/>
+        <rect x="65" antialias="false" width="6" height="4.5" style="line-style:normal;line-weight:normal;filling:white;color:white" y="156"/>
+        <text x="110" text="L" y="171" size="6"/>
+        <ellipse x="129" antialias="false" width="6" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" y="150"/>
+        <text x="10" text="Siemens" y="60" size="5"/>
+        <rect x="129" antialias="false" width="6" height="4.5" style="line-style:normal;line-weight:normal;filling:white;color:white" y="156"/>
+        <ellipse x="121" antialias="false" width="6" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" y="40"/>
+        <rect x="121" antialias="false" width="6" height="4.5" style="line-style:normal;line-weight:normal;filling:white;color:white" y="40"/>
+        <ellipse x="49" antialias="false" width="6" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" y="150"/>
+        <rect x="49" antialias="false" width="6" height="4.5" style="line-style:normal;line-weight:normal;filling:white;color:white" y="156"/>
+        <text x="10" text="5WG1-125-1AB22" y="71" size="3"/>
+        <text x="10" text="Power Supply 640mA" y="80" size="3"/>
+    </description>
+</definition>

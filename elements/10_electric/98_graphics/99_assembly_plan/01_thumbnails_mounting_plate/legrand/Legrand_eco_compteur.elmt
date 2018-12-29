@@ -1,0 +1,24 @@
+<definition width="250" version="0.3" hotspot_x="5" hotspot_y="26" height="230" type="element" orientation="dyyy">
+    <names>
+        <name lang="fr">Legrand eco compteur</name>
+    </names>
+    <informations>Alexandre DIS&#xd;
+</informations>
+    <description>
+        <rect width="23" x="172" y="9" antialias="false" height="14" style="line-style:normal;line-weight:normal;filling:green;color:black"/>
+        <rect width="23" x="100" y="10" antialias="false" height="14" style="line-style:normal;line-weight:normal;filling:green;color:black"/>
+        <rect width="23" x="135" y="10" antialias="false" height="14" style="line-style:normal;line-weight:normal;filling:green;color:black"/>
+        <rect width="240" x="0" y="0" antialias="false" height="200" style="line-style:normal;line-weight:thin;filling:white;color:black"/>
+        <input x="3" y="-9.45" size="9" rotate="true" text="_"/>
+        <rect width="240" x="0" y="39" antialias="false" height="127" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="115" x="13" y="62" antialias="false" height="84" style="line-style:normal;line-weight:normal;filling:blue;color:black"/>
+        <circle x="139" y="75" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="61"/>
+        <rect width="23" x="206" y="9" antialias="false" height="14" style="line-style:normal;line-weight:normal;filling:green;color:black"/>
+        <ellipse width="18" x="211" y="94" antialias="true" height="19" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="43" x="6" y="0" antialias="false" height="26" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:red;color:red" y1="155" x1="47.6538" y2="155" x2="231.119"/>
+        <text x="17" y="157" size="5" text="Legrand"/>
+        <ellipse width="33" x="154" y="89" antialias="true" height="34" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <ellipse width="18" x="162" y="96" antialias="true" height="19" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+    </description>
+</definition>

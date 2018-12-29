@@ -1,0 +1,44 @@
+<definition hotspot_y="5" height="210" width="90" orientation="dyyy" link_type="simple" hotspot_x="6" version="0.5" type="element">
+    <uuid uuid="{de18812d-33e4-44da-9c42-4ccba84ecfce}"/>
+    <names>
+        <name lang="fr">5WG1-148-1AB22 - IP Interface</name>
+    </names>
+    <informations>Alexandre Dis</informations>
+    <description>
+        <rect x="0" style="line-style:normal;line-weight:thin;filling:white;color:black" height="200" width="80" y="0" antialias="false"/>
+        <rect x="63" style="line-style:normal;line-weight:thin;filling:yellow;color:black" height="15" width="10" y="185" antialias="false"/>
+        <rect x="53" style="line-style:normal;line-weight:thin;filling:white;color:black" height="15" width="10" y="185" antialias="false"/>
+        <text x="54" size="9" text="-" y="184"/>
+        <text x="60" size="9" text="+" y="184"/>
+        <input x="3" tagg="label" size="9" text="_" rotate="true" y="-9.45"/>
+        <text color="white" x="-1" size="5" text="ABB" y="53"/>
+        <input x="8" tagg="none" size="7" text="_" rotate="true" y="133.5"/>
+        <rect x="18" style="line-style:normal;line-weight:thin;filling:red;color:black" height="15" width="10" y="185" antialias="false"/>
+        <rect x="0" style="line-style:normal;line-weight:thin;filling:none;color:black" height="110.5" width="80" y="45" antialias="false"/>
+        <rect x="8" style="line-style:normal;line-weight:thin;filling:black;color:black" height="15" width="10" y="185" antialias="false"/>
+        <text x="10" size="9" text="-" y="182"/>
+        <text x="17" size="9" text="+" y="182"/>
+        <text x="8" size="4" text="KNX EIB" y="154"/>
+        <text x="5" size="5" text="Siemens" y="55"/>
+        <text x="5" size="3" text="5WG1-148-1AB22" y="63"/>
+        <text x="5" size="3" text="IP Interface" y="70"/>
+        <circle diameter="6" x="24" style="line-style:normal;line-weight:normal;filling:none;color:black" y="119" antialias="false"/>
+        <circle diameter="6" x="24" style="line-style:normal;line-weight:normal;filling:none;color:black" y="79" antialias="false"/>
+        <rect x="22" style="line-style:normal;line-weight:normal;filling:none;color:black" height="50" width="10" y="77" antialias="false"/>
+        <circle diameter="6" x="54" style="line-style:normal;line-weight:normal;filling:none;color:black" y="99" antialias="false"/>
+        <circle diameter="6" x="54" style="line-style:normal;line-weight:normal;filling:none;color:black" y="119" antialias="false"/>
+        <circle diameter="6" x="54" style="line-style:normal;line-weight:normal;filling:none;color:black" y="79" antialias="false"/>
+        <rect x="52" style="line-style:normal;line-weight:normal;filling:none;color:black" height="50" width="10" y="77" antialias="false"/>
+        <line y1="7" x1="29" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="36" length2="1.5" end1="none" x2="29" antialias="false" length1="1.5"/>
+        <line y1="37" x1="29" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="37" length2="1.5" end1="none" x2="19" antialias="false" length1="1.5"/>
+        <line y1="36" x1="19" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="27" length2="1.5" end1="none" x2="19" antialias="false" length1="1.5"/>
+        <line y1="27" x1="19" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="22" length2="1.5" end1="none" x2="14" antialias="false" length1="1.5"/>
+        <line y1="22" x1="14" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="7" length2="1.5" end1="none" x2="14" antialias="false" length1="1.5"/>
+        <line y1="0" x1="40" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" y2="45" length2="1.5" end1="none" x2="40" antialias="false" length1="1.5"/>
+        <text x="42" size="2" text="Link" y="83"/>
+        <text x="45" size="2" text="Rx" y="103"/>
+        <text x="46" size="2" text="Tx" y="124"/>
+        <text x="4" size="2" text="Opération" y="83"/>
+        <text x="11" size="2" text="Line" y="124"/>
+    </description>
+</definition>
