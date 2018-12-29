@@ -385,6 +385,7 @@ void TitleBlockTemplateCellWidget::editTranslatableValue(NamesList &names, const
 	
 	QLabel *def_var_label = new QLabel(defaultVariablesString());
 	def_var_label -> setTextFormat(Qt::RichText);
+	def_var_label -> setTextInteractionFlags(Qt::TextSelectableByMouse);
 	
 	QVBoxLayout *editor_layout = new QVBoxLayout();
 	editor_layout -> addWidget(information);
