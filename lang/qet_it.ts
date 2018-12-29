@@ -8463,85 +8463,85 @@ Creare il proprio testo utilizzando le seguenti variabili:
         <translation>Aggiornare</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="138"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="140"/>
         <source>Correspondance :</source>
         <translation>Corrispondenza</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="144"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="146"/>
         <source>Folios</source>
         <translation>Pagine</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="150"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="152"/>
         <source>Champs texte</source>
         <translation>Campi di testo</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="156"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="158"/>
         <source>Eléments</source>
         <translation>Elementi</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="161"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="163"/>
         <source>Eléments simple</source>
         <translation>Elementi semplici</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="167"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="169"/>
         <source>Eléments maître</source>
         <translation>Elementi Master</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="173"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="175"/>
         <source>Eléments esclave</source>
         <translation>Elementi slave</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="179"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="181"/>
         <source>Eléments report de folio</source>
         <translation>Riferimenti di pagina</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="185"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="187"/>
         <source>Eléments bornier</source>
         <translation>Morsettiere</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="949"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="950"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="958"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="959"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="968"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="969"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="977"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="978"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="986"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1004"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1014"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1064"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1067"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1074"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1077"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1099"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1100"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1108"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1109"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1150"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1151"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1159"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1160"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="997"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1005"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1023"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1033"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1083"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1086"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1093"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1096"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1118"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1119"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1127"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1128"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1169"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1170"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1178"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1179"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1180"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1188"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1189"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1198"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1199"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1207"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1208"/>
         <source> [édité]</source>
         <translation> [modificato]</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="193"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="195"/>
         <source>Conducteurs</source>
         <translation>Conduttori</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="338"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="340"/>
         <source>Inconnue</source>
         <translation>Sconosciuto</translation>
     </message>
@@ -9656,11 +9656,11 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
-        <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation>Per impostazione predefinita, sono disponibili le seguenti variabili: &lt;ul&gt; &lt;li&gt;%{author}: autore della pagina&lt;/ li&gt; &lt;li&gt;%{date}: data della pagina&lt;/ li&gt; &lt;li&gt;%{title}: nome pagina&lt;/ li&gt; &lt;li&gt;%{filename}: nome file progetto &lt;/ li&gt; &lt;li&gt;%{plant}: nome dell&apos;installazione (=) dove si trova la pagina&lt;/ li&gt; &lt;li&gt;%{locmach}: nome della posizione (+) in cui si trova la pgina&lt;/ li&gt; &lt;li&gt;%{indexrev}: revisione dell&apos;indice della pagina&lt;/ li&gt; &lt;li&gt;%{version}: versione del programma&lt;/ li&gt; &lt;li&gt;% {folio}: numero pagina&lt;/ li&gt; &lt;li&gt;% {folio-id}: posizione pagina nel progetto&lt;/ li&gt; &lt;li&gt;% {folio-total}: numero totale di pagine nel progetto&lt;/ li&gt; &lt;li&gt;% {projecttitle}: titolo del progetto &lt;/ li&gt; &lt;li&gt;% {projectpath}: percorso del progetto&lt;/ li&gt; &lt;li&gt;% {projectfilename} : nome file&lt;/ li&gt; &lt;li&gt;% {saveddate}: data di salvataggio del file &lt;/ li&gt; &lt;li&gt;% {savedtime}: ora di salvataggio del file&lt;/ li&gt; &lt;li&gt;% {savedfilename}: nome file salvato &lt;/ li&gt; &lt;li&gt;% {savefilepath}: percorso file salvato &lt;/ li&gt; &lt;/ ul&gt;</translation>
+        <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : numéro du folio précédent&lt;/li&gt;&lt;li&gt;%{next-folio-num} : numéro du folio suivant&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="463"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="465"/>
         <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
         <translation>Ogni cella di un cartiglio visualizza un valore, eventualmente preceduto da un&apos;etichetta. Entrambi possono essere tradotti in diverse lingue. &lt;br/&gt; Quello che si sta modificando è un &lt;em&gt;modello&lt;/ em&gt; di cartiglio, non si può inserire direttamenti del testo, ma si utilizza una variabile nel formato %{nome_variabile}, che sarà poi sostituito dai valori appropriati nella pagina.</translation>
     </message>
