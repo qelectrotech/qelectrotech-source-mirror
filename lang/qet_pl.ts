@@ -2757,22 +2757,22 @@ Tutaj możesz określić domyślną zawartość tego pola:</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="232"/>
         <source>Accès aux collections</source>
-        <translation type="unfinished"></translation>
+        <translation>Dostęp do kolekcji</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="244"/>
         <source>Répertoire de la collection commune</source>
-        <translation type="unfinished"></translation>
+        <translation>Katalog kolekcji wspólnej</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="265"/>
         <source>Répertoire de la collection utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translation>Katalog kolekcji użytkownika</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="307"/>
         <source>Répertoire des cartouches utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translation>Katalog tabliczek rysunkowych użytkownika</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="317"/>
@@ -3314,12 +3314,12 @@ Tutaj możesz określić domyślną zawartość tego pola:</translation>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="133"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Délier l&apos;élément sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Usuń połączenia zaznaczonego elementu&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="147"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Lier l&apos;élément sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Połącz zaznaczone elementy&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="46"/>
@@ -3679,7 +3679,7 @@ Tutaj możesz określić domyślną zawartość tego pola:</translation>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="196"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="313"/>
         <source>Installation</source>
-        <translation type="unfinished">Instalacja</translation>
+        <translation>Instalacja</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="100"/>
@@ -3938,7 +3938,7 @@ Poniższe zmienne są zgodne:
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="235"/>
         <source>Numérotation auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatyczna numeracja</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="262"/>
@@ -3948,22 +3948,22 @@ Poniższe zmienne są zgodne:
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="266"/>
         <source>Conducteurs</source>
-        <translation type="unfinished">Przewody</translation>
+        <translation>Przewody</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="270"/>
         <source>Eléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementy</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="274"/>
         <source>Folios</source>
-        <translation type="unfinished">Arkusze</translation>
+        <translation>Arkusze</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="278"/>
         <source>Numérotation auto des folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatyczna numeracja arkuszy</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="389"/>
@@ -4123,7 +4123,7 @@ Czy chcesz zapisać zmiany?</translation>
     <message>
         <location filename="../sources/PropertiesEditor/propertieseditordockwidget.ui" line="14"/>
         <source>Propriétés de la sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>Właściwości zaznaczenia</translation>
     </message>
 </context>
 <context>
@@ -4157,13 +4157,13 @@ Czy chcesz zapisać zmiany?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="326"/>
         <source>Formule du label</source>
-        <translation type="unfinished">Formuła etykiety</translation>
+        <translation>Formuła etykiety</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="328"/>
         <location filename="../sources/qetapp.cpp" line="441"/>
         <source>Installation</source>
-        <translation type="unfinished">Instalacja</translation>
+        <translation>Instalacja</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="333"/>
@@ -4174,47 +4174,47 @@ Czy chcesz zapisać zmiany?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="343"/>
         <source>Quantité</source>
-        <translation type="unfinished"></translation>
+        <translation>Ilość</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="344"/>
         <source>Unité</source>
-        <translation type="unfinished"></translation>
+        <translation>Jednostka</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="404"/>
         <source>Formule du texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Formuła tekstu</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="405"/>
         <source>Texte</source>
-        <translation type="unfinished">Tekst</translation>
+        <translation>Tekst</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="437"/>
         <source>Titre</source>
-        <translation type="unfinished">Tytuł</translation>
+        <translation>Tytuł</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="438"/>
         <source>Auteur</source>
-        <translation type="unfinished">Autor</translation>
+        <translation>Autor</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="439"/>
         <source>Fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Plik</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="440"/>
         <source>Folio</source>
-        <translation type="unfinished">Arkusz</translation>
+        <translation>Arkusz</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="443"/>
         <source>Indice Rev</source>
-        <translation type="unfinished">Oznaczenie Rew</translation>
+        <translation>Oznaczenie Rew</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1653"/>
@@ -4690,7 +4690,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="402"/>
         <source>Lancer le plugin de création de borniers</source>
-        <translation type="unfinished"></translation>
+        <translation>Wtyczka do tworzenia listw zaciskowych</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="470"/>
@@ -5063,7 +5063,7 @@ python -m pip install --upgrade qet_tb_generator
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="521"/>
         <source>Grouper les textes sélectionnés</source>
-        <translation type="unfinished"></translation>
+        <translation>Grupowanie zaznaczonych tekstów</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="529"/>
@@ -5080,7 +5080,7 @@ python -m pip install --upgrade qet_tb_generator
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="617"/>
         <source>Chercher/remplacer</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyszukaj/Zastąp</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="686"/>
@@ -5793,10 +5793,11 @@ python -m pip install --upgrade qet_tb_generator
         <location filename="../sources/editor/qetelementeditor.cpp" line="744"/>
         <source> %n avertissement(s)</source>
         <comment>warnings</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translatorcomment> %n ostrzeżeń</translatorcomment>
+        <translation>
+            <numerusform> %n ostrzeżenie(a)</numerusform>
+            <numerusform> %n ostrzeżenie</numerusform>
+            <numerusform> %n ostrzeżenia</numerusform>
         </translation>
     </message>
     <message>
@@ -7462,7 +7463,7 @@ Co chcesz zrobić?</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="96"/>
         <source>H002</source>
-        <translation type="unfinished">H002</translation>
+        <translation>H002</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="97"/>
@@ -7487,12 +7488,12 @@ Co chcesz zrobić?</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="101"/>
         <source>L002</source>
-        <translation type="unfinished">L002</translation>
+        <translation>L002</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="102"/>
         <source>L003</source>
-        <translation type="unfinished">L003</translation>
+        <translation>L003</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="103"/>
@@ -7522,22 +7523,22 @@ Co chcesz zrobić?</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="108"/>
         <source>Position du folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Pozycja arkusza</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="110"/>
         <source>Numéro de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Numer arkusza</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="120"/>
         <source>Numéro de commande</source>
-        <translation type="unfinished">Numer zlecenia</translation>
+        <translation>Numer zlecenia</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="126"/>
         <source>Numéro interne</source>
-        <translation type="unfinished">Numer wewnętrzny</translation>
+        <translation>Numer wewnętrzny</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="109"/>
@@ -7592,12 +7593,12 @@ Co chcesz zrobić?</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="122"/>
         <source>Quantité</source>
-        <translation type="unfinished"></translation>
+        <translation>Ilość</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="123"/>
         <source>Unité</source>
-        <translation type="unfinished"></translation>
+        <translation>Jednostka</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="124"/>
