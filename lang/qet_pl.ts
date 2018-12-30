@@ -5080,7 +5080,7 @@ python -m pip install --upgrade qet_tb_generator
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="617"/>
         <source>Chercher/remplacer</source>
-        <translation>Wyszukaj/Zastąp</translation>
+        <translation>Znajdź/zastąp</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="686"/>
@@ -7733,7 +7733,8 @@ Co chcesz zrobić?</translation>
         <location filename="../sources/elementtextpattern.cpp" line="65"/>
         <source>Une configuration de textes nommée &lt;&lt; %1 &gt;&gt; existe déjà.
 Voulez-vous la remplacer ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Konfiguracja tekstów o nazwie &lt;&lt; %1 &gt;&gt; już istnieje.
+Czy chcesz ją zastąpić?</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="84"/>
@@ -7753,12 +7754,12 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="170"/>
         <source>Sélectionner une configuration de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Wybór konfigurcji tekstów</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="171"/>
         <source>Sélectionner la configuration de textes à ajouter à l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Wybór konfiguracji tekstów dodawanych do elementów</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="239"/>
@@ -7778,27 +7779,27 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="54"/>
         <source>Chercher/remplacer les propriétés de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Znajdź/zmień właściwości arkuszy</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="116"/>
         <source>Chercher/remplacer les propriétés d&apos;éléments.</source>
-        <translation type="unfinished"></translation>
+        <translation>Znajdź/zmień właściwości elementów.</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="206"/>
         <source>Chercher/remplacer les propriétés de conducteurs.</source>
-        <translation type="unfinished"></translation>
+        <translation>Znajdź/zmień właściwości przewodów.</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="289"/>
         <source>Rechercher / remplacer avancé</source>
-        <translation type="unfinished"></translation>
+        <translation>Zaawansowane wyszukiwanie/zmiana</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="168"/>
         <source>Chercher/remplacer des textes independants</source>
-        <translation type="unfinished"></translation>
+        <translation>Znajdź/zmień właściwości tekstów niezależnych</translation>
     </message>
 </context>
 <context>
@@ -7957,12 +7958,12 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="21"/>
         <source>Type</source>
-        <translation type="unfinished">Typ</translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="30"/>
         <source>&amp;Multifilaire</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Wieloliniowy</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="43"/>
@@ -7979,27 +7980,27 @@ Voulez-vous la remplacer ?</source>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="556"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="180"/>
         <source>Ne pas modifier</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie modyfikuj</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="48"/>
         <source>En haut</source>
-        <translation type="unfinished"></translation>
+        <translation>Powyżej</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="53"/>
         <source>En bas</source>
-        <translation type="unfinished"></translation>
+        <translation>Poniżej</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="61"/>
         <source>Texte sur conducteur horizontal :</source>
-        <translation type="unfinished"></translation>
+        <translation>Teksty przewodów poziomych:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="78"/>
         <source>Tension / protocol :</source>
-        <translation type="unfinished"></translation>
+        <translation>Napięcie/protokoł:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="95"/>
@@ -8007,180 +8008,180 @@ Voulez-vous la remplacer ?</source>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="196"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="228"/>
         <source>Supprimer ce texte</source>
-        <translation type="unfinished">Usuń tekst</translation>
+        <translation>Usuń tekst</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="105"/>
         <source>Fonction :</source>
-        <translation type="unfinished">Funkcja:</translation>
+        <translation>Funkcja:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="112"/>
         <source>Formule du texte :</source>
-        <translation type="unfinished">Formuła tekstu:</translation>
+        <translation>Formuła tekstu:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="119"/>
         <source>Texte visible</source>
-        <translation type="unfinished">Tekst widoczny</translation>
+        <translation>Tekst widoczny</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="129"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="238"/>
         <source>Angle :</source>
-        <translation type="unfinished">Kąt:</translation>
+        <translation>Kąt:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="165"/>
         <source>Texte sur conducteur vertical :</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst przewodów pionowych</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="172"/>
         <source>Taille du texte :</source>
-        <translation type="unfinished">Rozmiar tekstu:</translation>
+        <translation>Rozmiar tekstu:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="179"/>
         <source>Texte :</source>
-        <translation type="unfinished">Tekst:</translation>
+        <translation>Tekst:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="215"/>
         <source>À gauche</source>
-        <translation type="unfinished"></translation>
+        <translation>Po lewej</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="220"/>
         <source>À droite</source>
-        <translation type="unfinished"></translation>
+        <translation>Po prawej</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="254"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="279"/>
         <source>°</source>
-        <translation type="unfinished"></translation>
+        <translation>°</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="308"/>
         <source>Unifilaire</source>
-        <translation type="unfinished">Jednoliniowy</translation>
+        <translation>Jednoliniowy</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="323"/>
         <source>Protective Earth Neutral</source>
-        <translation type="unfinished">Ochronno-neutralny</translation>
+        <translation>Ochronno-neutralny</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="326"/>
         <source>PEN</source>
-        <translation type="unfinished">PEN</translation>
+        <translation>PEN</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="333"/>
         <source>Phase</source>
-        <translation type="unfinished">Fazowy</translation>
+        <translation>Fazowy</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="336"/>
         <source>phase</source>
-        <translation type="unfinished">fazowy</translation>
+        <translation>fazowy</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="347"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="380"/>
         <source>Nombre de phase</source>
-        <translation type="unfinished">Ilość przewodów fazowych</translation>
+        <translation>Ilość przewodów fazowych</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="360"/>
         <source>Neutre</source>
-        <translation type="unfinished">Neutralny</translation>
+        <translation>Neutralny</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="363"/>
         <source>neutre</source>
-        <translation type="unfinished">neutralny</translation>
+        <translation>neutralny</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="396"/>
         <source>Terre</source>
-        <translation type="unfinished">Ochronny</translation>
+        <translation>Ochronny</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="399"/>
         <source>terre</source>
-        <translation type="unfinished">ochronny</translation>
+        <translation>ochronny</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="410"/>
         <source>TextLabel</source>
-        <translation type="unfinished">Etykieta</translation>
+        <translation>Etykieta</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="420"/>
         <source>PushButton</source>
-        <translation type="unfinished"></translation>
+        <translation>Przycisk</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="431"/>
         <source>Apparence</source>
-        <translation type="unfinished">Wygląd</translation>
+        <translation>Wygląd</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="437"/>
         <source>Taille :</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozmiar:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="444"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="520"/>
         <source>Couleur :</source>
-        <translation type="unfinished">Kolor:</translation>
+        <translation>Kolor:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="474"/>
         <source>Style :</source>
-        <translation type="unfinished">Typ:</translation>
+        <translation>Typ:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="481"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="527"/>
         <source>Modifier</source>
-        <translation type="unfinished"></translation>
+        <translation>Zmiana</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="491"/>
         <source>Couleur secondaire :</source>
-        <translation type="unfinished">Drugi kolor:</translation>
+        <translation>Drugi kolor:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="513"/>
         <source>Taille de trait :</source>
-        <translation type="unfinished">Rozmiar linii:</translation>
+        <translation>Rozmiar linii:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="540"/>
         <source>px</source>
-        <translation type="unfinished">px</translation>
+        <translation>px</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="181"/>
         <source>Trait plein</source>
         <comment>conductor style: solid line</comment>
-        <translation type="unfinished">Ciągła</translation>
+        <translation>Ciągła</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="182"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
-        <translation type="unfinished">Kreskowa</translation>
+        <translation>Kreskowa</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="183"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
-        <translation type="unfinished">Kreskowo-kropkowa</translation>
+        <translation>Kreskowo-kropkowa</translation>
     </message>
 </context>
 <context>
@@ -8188,7 +8189,7 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceelementdialog.cpp" line="79"/>
         <source>Ne pas modifier</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie modyfikuj</translation>
     </message>
 </context>
 <context>
@@ -8233,7 +8234,7 @@ Voulez-vous la remplacer ?</source>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="217"/>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="227"/>
         <source>Ne pas modifier</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie modyfikuj</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="84"/>
