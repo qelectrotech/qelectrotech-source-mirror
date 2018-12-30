@@ -319,7 +319,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="14"/>
         <source>Sélection numérotation auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Wybór automatycznej numeracji</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="34"/>
@@ -759,7 +759,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="436"/>
         <source>Taille :</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozmiar:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="443"/>
@@ -2471,17 +2471,17 @@ Wszystkie elementy i podkatalogi znajdujące się w tym katalogu zostaną usuni�
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="78"/>
         <source>C&amp;réer de nouveaux folios</source>
-        <translation type="unfinished"></translation>
+        <translation>T&amp;wórz nowy arkusz</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="91"/>
         <source>Numérotation automatique des folios sélectionnés</source>
-        <translation type="unfinished"></translation>
+        <translation>Numeruj automatycznei zaznaczone arkusze</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="132"/>
         <source>Nouveaux folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Nowy arkusz</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="174"/>
@@ -2526,7 +2526,18 @@ Si le chiffre défini dans le champ Valeur possède moins de digits que le type 
 Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tutaj możesz zdefiniować w jaki sposób będą numerowane nowe arkusze.
+- Każdy numer składa się z minimum jednej zmiennej.
+- Można dodawać i usuwać zmienne numeru za pomocą przycisków + i -.
+- Każda zmienna określa: typ, wartość i inkrementację.
+
+- Typ numeracji &quot;Numer 1&quot;, &quot;Numer 01&quot;, &quot;Numer 001&quot; oznacza ilość cyfr w numerze dla pola &quot;Wartość&quot;, która zwiększy się dla każdego nowego arkusza o wartość określoną w polu &quot;Inkrementacja&quot;.
+- &quot;Numer 01&quot; i &quot;Numer 001&quot; oznacza odpowiednio dwie lub trzy cyfry w schemacie
+Jeżeli numer określony w polu &quot;Wartość&quot; składa się z mniejszej ilości cyfr niż zostało to określone w polu &quot;Typ&quot;, cyfry zostaną poprzedzone jednym lub dwoma zerami dla zachowania zgodności typu.
+
+- Typ &quot;Tekst&quot; oznacza tekst, który nie podlega zmianom.
+Pole &quot;Inkrementacja&quot; nie jest używane.
+</translation>
     </message>
 </context>
 <context>
@@ -2557,12 +2568,12 @@ Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="41"/>
         <source>Dénomination automatique :</source>
-        <translation type="unfinished"></translation>
+        <translation>Miano automatyczne:</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="53"/>
         <source>Formule</source>
-        <translation type="unfinished">Formuła</translation>
+        <translation>Formuła</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="72"/>
@@ -2677,13 +2688,13 @@ Litery i cyfry mogą być używane.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="136"/>
         <source>Utiliser les numéros de folio à la place de leur position dans le projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Użyj numerów arkuszy zamiast ich pozycji w projekcie</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="143"/>
         <source>Numéroter les colonnes de cartouche à partir de 0 (1 sinon)</source>
         <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Numeruj kolumny tabliczki rysunkowej zaczynając od 0 (1 przy braku zaznaczenia)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="202"/>
@@ -2741,7 +2752,7 @@ Tutaj możesz określić domyślną zawartość tego pola:</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="226"/>
         <source>Collections</source>
-        <translation type="unfinished">Kolekcje</translation>
+        <translation>Kolekcje</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="232"/>
