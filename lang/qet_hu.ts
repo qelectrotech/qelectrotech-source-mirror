@@ -54,7 +54,7 @@
         <location filename="../sources/aboutqet.cpp" line="103"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.</source>
         <comment>about tab, description line</comment>
-        <translation>QElectroTech,egy alkalmazás elektromos tervek készítéséhez.</translation>
+        <translation>QElectroTech, egy alkalmazás elektromos tervek készítéséhez.</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="109"/>
@@ -244,7 +244,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="206"/>
         <source>Python plugin qet-tb-generator</source>
-        <translation>Pyton plugin sorkapocs generátor</translation>
+        <translation>Pyton beépülő modul sorkapocs generátor</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="223"/>
@@ -287,7 +287,7 @@
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="53"/>
         <source>Centre : </source>
-        <translation>Közép : </translation>
+        <translation>Középre : </translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="58"/>
@@ -669,7 +669,7 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="225"/>
         <source>Unifilaire</source>
-        <translation>Egyesített vezetők</translation>
+        <translation>Egyvonalas</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="248"/>
@@ -1226,7 +1226,7 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="640"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1374"/>
         <source>Centre</source>
-        <translation>Közép</translation>
+        <translation>Középre</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="287"/>
@@ -2593,7 +2593,7 @@ You can also assign any other titleblock variable
 that you create. Text and number inputs are
  also available.</source>
         <translation>A következő variációkat tudod használni a saját formuládban:
- -%prefix: alapértelmezett Elem prefixum
+ -%prefix: alapértelmezett Elem prefixuma
  -%l: Elem pozíció sora
  -%c: Elem pozíció oszlopa
  -%F: Tervlap neve
@@ -2659,7 +2659,7 @@ Szöveg és szám szintén bevihető.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="398"/>
         <source>Textes dynamiques</source>
-        <translation></translation>
+        <translation>Dinamukus szövegek</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="404"/>
@@ -3459,7 +3459,7 @@ A szövegmező alapértelmezett értékének meghatározása az új elemek alá 
         <location filename="../sources/nameslistwidget.cpp" line="37"/>
         <source>Cette liste vous permet de saisir un court texte de façon à ce qu&apos;il soit traduisible dans d&apos;autres langues. Pour ce faire, elle associe des codes ISO 639-1 de langues (ex. : &quot;fr&quot; pour français) aux traductions du texte en question dans ces mêmes langues.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation></translation>
+        <translation>Ez a lista lehetővé teszi rövidített szövegek beírását, így lefordítható más nyelvekre is. Ennek megvalósításához, társítja az ISO 639-1 nyelvi kódokat (pl.:  „en”-t az angolal) a bevitt szöveggel azonos nyelvek fordításaival.</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="47"/>
@@ -3470,7 +3470,7 @@ A szövegmező alapértelmezett értékének meghatározása az új elemek alá 
         <location filename="../sources/nameslistwidget.cpp" line="49"/>
         <source>Ce bouton permet d&apos;ajouter une association langue / traduction dans la liste ci-dessus.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation></translation>
+        <translation>Ez a gomb hozzáad egy nyelvet/fordítást társítva a fenti listával.</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="88"/>
@@ -3565,7 +3565,7 @@ A szövegmező alapértelmezett értékének meghatározása az új elemek alá 
     <message>
         <location filename="../sources/newelementwizard.cpp" line="111"/>
         <source>Vous n&apos;êtes pas obligé de préciser l&apos;extension *.elmt. Elle sera ajoutée automatiquement.</source>
-        <translation>Nem kell afájlnév után a kiterjesztést megadni. (*.elmt) Automatikusan hozzáadásra kerül.</translation>
+        <translation>Nem kell a fájlnév után a kiterjesztést megadni. (*.elmt) Automatikusan hozzáadásra kerül.</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="129"/>
@@ -5517,7 +5517,7 @@ pip3install –upgrade qet_tb_generator
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="160"/>
         <source>Éditer le nom et les traductions de l&apos;élément</source>
-        <translation>Az elem nevének és információinak szerkesztése</translation>
+        <translation>Az elem nevének és fordításának szerkesztése</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="161"/>
@@ -8332,12 +8332,12 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %c : le numéro de colonne</source>
         <translation>Meg tudod határozni mit tartalmazzon a tervlap jegyzőkönyv.
 Hozd létre saját szövegedet a következő változók használatával:
-% f: a tervlap pozíciója a projektben
-% F: a tervlap száma
-% M: a beépítés
-% LM: az elhelyezkedés
-% l: a sor száma
-% c: az oszlop száma</translation>
+%f: a tervlap pozíciója a projektben
+%F: a tervlap száma
+%M: a beépítés
+%LM: az elhelyezkedés
+%l: a sor száma
+%c: az oszlop száma</translation>
     </message>
 </context>
 <context>
@@ -8415,7 +8415,7 @@ Hozd létre saját szövegedet a következő változók használatával:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="211"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer les correspondances cochées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Az ellenőrzött megegyezők cseréje&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A megjelölt megegyezések cseréje&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="242"/>
@@ -8460,7 +8460,7 @@ Hozd létre saját szövegedet a következő változók használatával:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="135"/>
         <source>Actualiser</source>
-        <translation>Megvalósítás</translation>
+        <translation>Frissítés</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="140"/>
@@ -9608,7 +9608,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="81"/>
         <source>Centré</source>
-        <translation>Közép</translation>
+        <translation>Középre</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="82"/>
@@ -10029,7 +10029,7 @@ Maximális hossz : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="48"/>
         <source>XRef Vertical Offset:</source>
-        <translation>Kereszthivatkozás függőleges eltolás:</translation>
+        <translation>Kereszthivatkozás függőleges eltolása :</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="55"/>
@@ -10092,11 +10092,11 @@ Maximális hossz : %2px
 %LM: Localisation </source>
         <translation>Hozd létre saját szövegedet az alábbi változók segítségével :
 %f : a tervlap száma 
-% F: a tervlap címkéje
-% l : a sor száma
-% c : az oszlop száma
-% M: Berendezés 
-% LM: Elhelyezkedés </translation>
+%F: a tervlap címkéje
+%l : a sor száma
+%c : az oszlop száma
+%M: Berendezés 
+%LM: Elhelyezkedés </translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="205"/>
@@ -10330,7 +10330,7 @@ Maximális hossz : %2px
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="27"/>
         <source>par :</source>
-        <translation>által :</translation>
+        <translation>Erre :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="34"/>
@@ -10340,7 +10340,7 @@ Maximális hossz : %2px
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="51"/>
         <source>Qui :</source>
-        <translation>Ki :</translation>
+        <translation>Kategória :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="58"/>
@@ -10370,7 +10370,7 @@ Maximális hossz : %2px
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="92"/>
         <source>Quoi :</source>
-        <translation>Mi :</translation>
+        <translation>Adatai :</translation>
     </message>
 </context>
 </TS>
