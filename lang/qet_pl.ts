@@ -8665,7 +8665,18 @@ Si le chiffre défini dans le champ Valeur possède moins de digits que le type 
 Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tutaj możesz zdefiniować w jaki sposób będą numerowane nowe arkusze.
+- Każdy numer składa się z minimum jednej zmiennej.
+- Można dodawać i usuwać zmienne numeru za pomocą przycisków + i -.
+- Każda zmienna określa: typ, wartość i inkrementację.
+
+- Typ numeracji &quot;Numer 1&quot;, &quot;Numer 01&quot;, &quot;Numer 001&quot; oznacza ilość cyfr w numerze dla pola &quot;Wartość&quot;, która zwiększy się dla każdego nowego arkusza o wartość określoną w polu &quot;Inkrementacja&quot;.
+- &quot;Numer 01&quot; i &quot;Numer 001&quot; oznacza odpowiednio dwie lub trzy cyfry w schemacie
+Jeżeli numer określony w polu &quot;Wartość&quot; składa się z mniejszej ilości cyfr niż zostało to określone w polu &quot;Typ&quot;, cyfry zostaną poprzedzone jednym lub dwoma zerami dla zachowania zgodności typu.
+
+- Typ &quot;Tekst&quot; oznacza tekst, który nie podlega zmianom.
+Pole &quot;Inkrementacja&quot; nie jest używane.
+</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="207"/>
@@ -8687,7 +8698,17 @@ Les autres champs ne sont pas utilisés.
 -Le type &quot;Folio&quot; représente le nom du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the conductor autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tutaj możesz zdefiniować w jaki sposób będą numerowane nowe przewody.
+- Każdy numer składa się z minimum jednej zmiennej.
+- Można dodawać i usuwać zmienne numeru za pomocą przycisków + i -.
+- Każda zmienna określa: typ, wartość i inkrementację.
+
+- Typ numeracji &quot;Numer 1&quot;, &quot;Numer 01&quot;, &quot;Numer 001&quot; oznacza ilość cyfr w numerze dla pola &quot;Wartość&quot;, która zwiększy się dla każdego nowego przewodu o wartość określoną w polu &quot;Inkrementacja&quot;.
+- &quot;Numer 01&quot; i &quot;Numer 001&quot; oznacza odpowiednio dwie lub trzy cyfry w schemacie
+Jeżeli numer określony w polu &quot;Wartość&quot; składa się z mniejszej ilości cyfr niż zostało to określone w polu &quot;Typ&quot;, cyfry zostaną poprzedzone jednym lub dwoma zerami dla zachowania zgodności typu.
+
+- Typ &quot;Tekst&quot; oznacza tekst, który nie podlega zmianom.
+Pole &quot;Inkrementacja&quot; nie jest używane.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="206"/>
@@ -9363,7 +9384,7 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="297"/>
         <source>Dupliquer et éditer ce modèle</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Powiel i edytuj szablon</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="302"/>
@@ -9399,12 +9420,12 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="230"/>
         <source>Indice Rev:</source>
-        <translation type="unfinished"></translation>
+        <translation>Znacznik Rew.:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="244"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disponible en tant que %plant pour les modèles de cartouches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dostępne jako %plant dla szablonów tabliczek rysunkowych&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="279"/>
@@ -9512,7 +9533,7 @@ Les variables suivantes sont utilisables :
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="383"/>
         <source>Localisation:</source>
-        <translation type="unfinished"></translation>
+        <translation>Lokalizacja:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="406"/>
@@ -10334,52 +10355,53 @@ Długość maksymalna: %2px
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="14"/>
         <source>Rechercher/Remplacer avancé</source>
-        <translation type="unfinished"></translation>
+        <translation>Zaawansowane wyszukiwanie/zmiana</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="27"/>
         <source>par :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">przez:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="34"/>
         <source>Remplacer :</source>
-        <translation type="unfinished">Zastąp:</translation>
+        <translation>Zastąp:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="51"/>
         <source>Qui :</source>
-        <translation type="unfinished"></translation>
+        <translation>Co:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="58"/>
         <source>Texte ou expression régulière</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst lub wyrażenie regularne</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="69"/>
         <source>Folio</source>
-        <translation type="unfinished">Arkusz</translation>
+        <translation>Arkusz</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="74"/>
         <source>Élément</source>
-        <translation type="unfinished">Element</translation>
+        <translation>Element</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="79"/>
         <source>Conducteur</source>
-        <translation type="unfinished">Przewód</translation>
+        <translation>Przewód</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="84"/>
         <source>Texte indépendant</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst niezależny</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="92"/>
         <source>Quoi :</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>tłumaczenie niepewne</translatorcomment>
+        <translation>Na:</translation>
     </message>
 </context>
 </TS>
