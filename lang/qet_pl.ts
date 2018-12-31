@@ -9689,7 +9689,7 @@ skojarzenie nazwy &quot;volta&quot; i wartości &quot;1745&quot; spowoduje zast�
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : numéro du folio précédent&lt;/li&gt;&lt;li&gt;%{next-folio-num} : numéro du folio suivant&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Domyślnie dostępne są następujące zmienne:&lt;ul&gt;&lt;li&gt;%{author}: autor arkusza&lt;/li&gt;&lt;li&gt;%{date}: data arkusza&lt;/li&gt;&lt;li&gt;%{title}: tytuł arkusza&lt;/li&gt;&lt;li&gt;%{filename}: nazwa pliku projektu&lt;/li&gt;&lt;li&gt;%{plant}: nazwa instalacji (=),  której dotyczy arkusz&lt;/li&gt;&lt;li&gt;%{locmach}: nazwa lokalizacji (+), której dotyczy arkusz&lt;/li&gt;&lt;li&gt;%{indexrev}: wskaźnik wersji arkusza&lt;/li&gt;&lt;li&gt;%{version}: wersja oprogramowania&lt;/li&gt;&lt;li&gt;%{folio}: numer arkusza&lt;/li&gt;&lt;li&gt;%{folio-id}: pozycja arkusza w projekcie&lt;/li&gt;&lt;li&gt;%{folio-total}: całkowita ilość arkuszy w projekcie&lt;/li&gt;&lt;li&gt;%{previous-folio-num}: numer poprzedniego arkusza&lt;/li&gt;&lt;li&gt;%{next-folio-num}: numer następnego arkusza&lt;/li&gt;&lt;li&gt;%{projecttitle}: tytuł projektu&lt;/li&gt;&lt;li&gt;%{projectpath}: ścieżka do projektu&lt;/li&gt;&lt;li&gt;%{projectfilename}: nazwa pliku&lt;/li&gt;&lt;li&gt;%{saveddate}: data utworzenia pliku&lt;/li&gt;&lt;li&gt;%{savedtime}: godzina utworzenia pliku&lt;/li&gt;&lt;li&gt;%{savedfilename}: nazwa utworzonego pliku&lt;/li&gt;&lt;li&gt;%{savedfilepath}: ścieżka do utworzonego pliku&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="465"/>
@@ -10360,7 +10360,7 @@ Długość maksymalna: %2px
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="27"/>
         <source>par :</source>
-        <translation type="unfinished">przez:</translation>
+        <translation>przez:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="34"/>
