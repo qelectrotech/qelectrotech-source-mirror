@@ -4168,37 +4168,37 @@ Salvare le modifiche?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="404"/>
         <source>Formule du texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Formula del testo</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="405"/>
         <source>Texte</source>
-        <translation type="unfinished">Testo</translation>
+        <translation>Testo</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="437"/>
         <source>Titre</source>
-        <translation type="unfinished">Titolo</translation>
+        <translation>Titolo</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="438"/>
         <source>Auteur</source>
-        <translation type="unfinished">Autore</translation>
+        <translation>Autore</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="439"/>
         <source>Fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>File</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="440"/>
         <source>Folio</source>
-        <translation type="unfinished">Pagina</translation>
+        <translation>Pagina</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="443"/>
         <source>Indice Rev</source>
-        <translation type="unfinished">Indice Rev.</translation>
+        <translation>Indice Rev</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1653"/>
@@ -7761,7 +7761,7 @@ La si vuole sostituire?</translation>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="289"/>
         <source>Rechercher / remplacer avancé</source>
-        <translation type="unfinished"></translation>
+        <translation>Trova/sostituisci avanzato</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="168"/>
@@ -8425,7 +8425,7 @@ Creare il proprio testo utilizzando le seguenti variabili:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="242"/>
         <source>avancé</source>
-        <translation type="unfinished"></translation>
+        <translation>avanzato</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="178"/>
@@ -9657,7 +9657,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : numéro du folio précédent&lt;/li&gt;&lt;li&gt;%{next-folio-num} : numéro du folio suivant&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Per impostazione predefinita, sono disponibili le seguenti variabili: &lt;ul&gt; &lt;li&gt;% {author}: autore pagina &lt;/ li&gt; &lt;li&gt;% {date}: data della pagina &lt;/ li&gt; &lt;li&gt;% {title}: titolo pagina &lt;/ li&gt; &lt;li&gt;% {filename}: nome file progetto &lt;/ li&gt; &lt;li&gt;% {iplant}: nome dell&apos;installazione (=) in cui si trova la pagina &lt;/ li&gt; &lt;li&gt;% {locmach}: nome della posizione (+) in cui si trova la pagina &lt;/ li&gt; &lt;li&gt;% {indexrev}: revisione dell&apos;indice della pagina &lt;/ li&gt; &lt;li&gt;% {version}: versione software &lt;/ li&gt; &lt;li&gt;% {folio}: numero pagina &lt;/ li&gt; &lt;li&gt;% {folio-id}: posizione pagina nel progetto &lt;/ li&gt; &lt;li&gt;% {folio-total }: numero totale di pagine nel progetto &lt;/ li&gt; &lt;li&gt;% {previous-folio-num}: numero della pagina precedente &lt;/ li&gt; &lt;li&gt;% {next-folio-num}: numero della pagina seguente &lt; / li&gt; &lt;li&gt;% {projecttitle}: titolo del progetto &lt;/ li&gt; &lt;li&gt;% {projectpath}: percorso del progetto &lt;/ li&gt; &lt;li&gt;% {projectfilename}: nome del file &lt;/ li&gt; &lt;li &gt;% {saveddate}: data di salvataggio del file &lt;/ li&gt; &lt;li&gt;% {savedtime}: ora di salvataggio del file &lt;/ li&gt; &lt;li&gt;% {savedfilename}: nome del file salvato &lt;/ li&gt; &lt;li&gt;% {savedfilepath}: percorso file salvato &lt;/ li&gt; &lt;/ ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="465"/>
@@ -10320,52 +10320,52 @@ Lunghezza massima : %2px</translation>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="14"/>
         <source>Rechercher/Remplacer avancé</source>
-        <translation type="unfinished"></translation>
+        <translation>Trova/sostituisci avanzato</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="27"/>
         <source>par :</source>
-        <translation type="unfinished"></translation>
+        <translation>Con:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="34"/>
         <source>Remplacer :</source>
-        <translation type="unfinished">Sostituisci:</translation>
+        <translation>Sostituisci:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="51"/>
         <source>Qui :</source>
-        <translation type="unfinished"></translation>
+        <translation>Chi:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="58"/>
         <source>Texte ou expression régulière</source>
-        <translation type="unfinished"></translation>
+        <translation>testo o espressione regolare</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="69"/>
         <source>Folio</source>
-        <translation type="unfinished">Pagina</translation>
+        <translation>Pagina</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="74"/>
         <source>Élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Elemento</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="79"/>
         <source>Conducteur</source>
-        <translation type="unfinished">Conduttore</translation>
+        <translation>Conduttore</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="84"/>
         <source>Texte indépendant</source>
-        <translation type="unfinished"></translation>
+        <translation>Testo indipendente</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="92"/>
         <source>Quoi :</source>
-        <translation type="unfinished"></translation>
+        <translation>Cosa:</translation>
     </message>
 </context>
 </TS>
