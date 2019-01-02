@@ -3442,12 +3442,12 @@ Hier kunt u de standaardtekst hiervoor opgeven voor nieuwe elementen :</translat
     <message>
         <location filename="../sources/NameList/ui/namelistdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished">Naam wijzigen</translation>
+        <translation>Dialoog</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistdialog.cpp" line="66"/>
         <source>Variables de cartouche</source>
-        <translation type="unfinished"></translation>
+        <translation>Titelblokvariabelen</translation>
     </message>
 </context>
 <context>
@@ -3455,27 +3455,27 @@ Hier kunt u de standaardtekst hiervoor opgeven voor nieuwe elementen :</translat
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Namenlijst</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="21"/>
         <source>Langue</source>
-        <translation type="unfinished">Taal</translation>
+        <translation>Taal</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="26"/>
         <source>Texte</source>
-        <translation type="unfinished">Tekst</translation>
+        <translation>Tekst</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="36"/>
         <source>Ajouter une ligne</source>
-        <translation type="unfinished"></translation>
+        <translation>Regel toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="48"/>
         <source>Copier dans le presse papier</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopieer naar het klembord</translation>
     </message>
 </context>
 <context>
@@ -7785,77 +7785,77 @@ Wilt u deze vervangen ?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="65"/>
         <source>Fichier</source>
-        <translation type="unfinished">Bestand</translation>
+        <translation>Bestand</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="66"/>
         <source>Installation (=)</source>
-        <translation type="unfinished"></translation>
+        <translation>Installatie (=)</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="67"/>
         <source>Localisation (+)</source>
-        <translation type="unfinished"></translation>
+        <translation>Locatie (+)</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="68"/>
         <source>Indice de révision</source>
-        <translation type="unfinished"></translation>
+        <translation>Reviesie-index</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="69"/>
         <source>Version de QElectroTech</source>
-        <translation type="unfinished"></translation>
+        <translation>Versie van QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="72"/>
         <source>Nombre de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Bladnummer</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="73"/>
         <source>Numéro du folio précédent</source>
-        <translation type="unfinished"></translation>
+        <translation>Vorig bladnummer</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="74"/>
         <source>Numéro du folio suivant</source>
-        <translation type="unfinished"></translation>
+        <translation>Volgend bladnummer</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="75"/>
         <source>Titre du projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Projectnaam</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="76"/>
         <source>Chemin du fichier du projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Pad van het projectbestand</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="77"/>
         <source>Nom du fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestandsnaam</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="78"/>
         <source>Date d&apos;enregistrement du fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Datum bestand opgeslagen</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="79"/>
         <source>Heure d&apos;enregistrement du fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Tijd bestand opgeslagen</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="80"/>
         <source>Nom du fichier enregistré</source>
-        <translation type="unfinished"></translation>
+        <translation>Naam van opgeslagen bestand</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="81"/>
         <source>Chemin du fichier enregistré</source>
-        <translation type="unfinished"></translation>
+        <translation>Pad van opgeslagen bestand</translation>
     </message>
 </context>
 <context>
