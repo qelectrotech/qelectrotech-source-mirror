@@ -4,7 +4,7 @@
 <context>
     <name>AboutQET</name>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="223"/>
+        <location filename="../sources/aboutqet.cpp" line="224"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>This program is under the GNU/GPL license.</translation>
     </message>
@@ -83,8 +83,8 @@
         <location filename="../sources/aboutqet.cpp" line="125"/>
         <location filename="../sources/aboutqet.cpp" line="126"/>
         <location filename="../sources/aboutqet.cpp" line="129"/>
-        <location filename="../sources/aboutqet.cpp" line="202"/>
-        <location filename="../sources/aboutqet.cpp" line="204"/>
+        <location filename="../sources/aboutqet.cpp" line="203"/>
+        <location filename="../sources/aboutqet.cpp" line="205"/>
         <source>Développement</source>
         <translation>Development</translation>
     </message>
@@ -184,53 +184,58 @@
         <translation>Turkish translation</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="190"/>
+        <location filename="../sources/aboutqet.cpp" line="171"/>
+        <source>Traduction en hongrois</source>
+        <translation>Hungarian translation</translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="191"/>
         <source>Paquets Fedora et Red Hat</source>
         <translation>Fedora and Red Hat packages</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="191"/>
+        <location filename="../sources/aboutqet.cpp" line="192"/>
         <source>Paquets Mageia</source>
         <translation>Mageia packages</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="195"/>
         <location filename="../sources/aboutqet.cpp" line="196"/>
+        <location filename="../sources/aboutqet.cpp" line="197"/>
         <source>Paquets Gentoo</source>
         <translation>Gentoo packages</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="197"/>
+        <location filename="../sources/aboutqet.cpp" line="198"/>
         <source>Paquets OS/2</source>
         <translation>OS/2 packages</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="198"/>
+        <location filename="../sources/aboutqet.cpp" line="199"/>
         <source>Paquets FreeBSD</source>
         <translation>FreeBSD packages</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="199"/>
+        <location filename="../sources/aboutqet.cpp" line="200"/>
         <source>Paquets MAC OS X</source>
         <translation>MAC OS X packages</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="200"/>
+        <location filename="../sources/aboutqet.cpp" line="201"/>
         <source>Paquets Archlinux AUR</source>
         <translation>Archlinux AUR packages</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="203"/>
+        <location filename="../sources/aboutqet.cpp" line="204"/>
         <source>Documentation</source>
         <translation>Documentation</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="205"/>
+        <location filename="../sources/aboutqet.cpp" line="206"/>
         <source>Collection d&apos;éléments</source>
         <translation>Collection of elements</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="206"/>
+        <location filename="../sources/aboutqet.cpp" line="207"/>
         <source>Python plugin qet-tb-generator</source>
         <translation></translation>
     </message>
@@ -240,14 +245,14 @@
         <translation>DXF converter</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="192"/>
         <location filename="../sources/aboutqet.cpp" line="193"/>
         <location filename="../sources/aboutqet.cpp" line="194"/>
+        <location filename="../sources/aboutqet.cpp" line="195"/>
         <source>Paquets Debian</source>
         <translation>Debian packages</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="201"/>
+        <location filename="../sources/aboutqet.cpp" line="202"/>
         <source>Icônes</source>
         <translation>Icons</translation>
     </message>
@@ -1797,23 +1802,23 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
 <context>
     <name>ElementScene</name>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="225"/>
+        <location filename="../sources/editor/elementscene.cpp" line="226"/>
         <source>Déplacer une primitive</source>
         <translation>Move a primitive</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="677"/>
+        <location filename="../sources/editor/elementscene.cpp" line="678"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <comment>window title</comment>
         <translation>Edit author information</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="681"/>
+        <location filename="../sources/editor/elementscene.cpp" line="682"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
         <translation>You can use this field to specify the authors of this element, its license, or any other information you may find useful.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="744"/>
+        <location filename="../sources/editor/elementscene.cpp" line="742"/>
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
         <translation>You may enter the element name in several languages.</translation>
     </message>
@@ -1827,101 +1832,101 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
 <context>
     <name>ElementsCategoryEditor</name>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="117"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="122"/>
         <source>Vous pouvez spécifier un nom par langue pour la catégorie.</source>
         <translation>You can add a name per language for the category.</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="106"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="111"/>
         <source>Nom interne : </source>
         <translation>Internal name : </translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="41"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="46"/>
         <source>L&apos;item n&apos;est pas une catégorie</source>
         <comment>message box title</comment>
         <translation>The item is not a category</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="42"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="47"/>
         <source>L&apos;item demandé n&apos;est pas une categrie. Abandon.</source>
         <comment>message box content</comment>
         <translation>The item requested is not a category. Abort.</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="48"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="53"/>
         <source>Catégorie inexistante</source>
         <comment>message box title</comment>
         <translation>Non-existent category</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="49"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="54"/>
         <source>La catégorie demandée n&apos;existe pas. Abandon.</source>
         <comment>message box content</comment>
         <translation>The required category does not exist. Giving up.</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="54"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="59"/>
         <source>Éditer une catégorie</source>
         <comment>window title</comment>
         <translation>Edit category</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="61"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="66"/>
         <source>Créer une nouvelle catégorie</source>
         <comment>window title</comment>
         <translation>Add a new category</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="65"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="70"/>
         <source>Nom de la nouvelle catégorie</source>
         <comment>default name when creating a new category</comment>
         <translation>Name of the new category</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="73"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="78"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
         <translation>Read only edition</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="74"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="79"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cette catégorie. Elle sera donc ouverte en lecture seule.</source>
         <comment>message box content</comment>
         <translation>You are not allowed to modify this category. Thus it will be edited read-only.</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="140"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="145"/>
         <source>Nom interne manquant</source>
         <comment>message box title</comment>
         <translation>Missing internal name</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="141"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="146"/>
         <source>Vous devez spécifier un nom interne.</source>
         <comment>message box content</comment>
         <translation>You must provide an internal name.</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="153"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="158"/>
         <source>Nom interne déjà utilisé</source>
         <comment>message box title</comment>
         <translation>Internal name already used</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="154"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="159"/>
         <source>Le nom interne que vous avez choisi est déjà utilisé par une catégorie existante. Veuillez en choisir un autre.</source>
         <comment>message box content</comment>
         <translation>The internal name you chose is already used by another category. Please choose another one.</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="165"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="170"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="166"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="171"/>
         <source>Impossible de créer la catégorie</source>
         <comment>message box content</comment>
         <translation>Unable to create the category</translation>
@@ -3427,45 +3432,44 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     </message>
 </context>
 <context>
-    <name>NamesListWidget</name>
+    <name>NameListDialog</name>
     <message>
-        <location filename="../sources/nameslistwidget.cpp" line="34"/>
+        <location filename="../sources/NameList/ui/namelistdialog.ui" line="14"/>
+        <source>Dialog</source>
+        <translation>Dialog</translation>
+    </message>
+    <message>
+        <location filename="../sources/NameList/ui/namelistdialog.cpp" line="66"/>
+        <source>Variables de cartouche</source>
+        <translation>Title block variables</translation>
+    </message>
+</context>
+<context>
+    <name>NameListWidget</name>
+    <message>
+        <location filename="../sources/NameList/ui/namelistwidget.ui" line="14"/>
+        <source>Form</source>
+        <translation>Form</translation>
+    </message>
+    <message>
+        <location filename="../sources/NameList/ui/namelistwidget.ui" line="21"/>
         <source>Langue</source>
         <translation>Language</translation>
     </message>
     <message>
-        <location filename="../sources/nameslistwidget.cpp" line="34"/>
+        <location filename="../sources/NameList/ui/namelistwidget.ui" line="26"/>
         <source>Texte</source>
         <translation>Text</translation>
     </message>
     <message>
-        <location filename="../sources/nameslistwidget.cpp" line="37"/>
-        <source>Cette liste vous permet de saisir un court texte de façon à ce qu&apos;il soit traduisible dans d&apos;autres langues. Pour ce faire, elle associe des codes ISO 639-1 de langues (ex. : &quot;fr&quot; pour français) aux traductions du texte en question dans ces mêmes langues.</source>
-        <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>This list enables you to enter a short text so it can be translated to other languages. To achieve this, it associates ISO 639-1 language codes (e.g. &quot;en&quot; for English) with translations of the input text to these same languages.</translation>
-    </message>
-    <message>
-        <location filename="../sources/nameslistwidget.cpp" line="47"/>
+        <location filename="../sources/NameList/ui/namelistwidget.ui" line="36"/>
         <source>Ajouter une ligne</source>
         <translation>Add a line</translation>
     </message>
     <message>
-        <location filename="../sources/nameslistwidget.cpp" line="49"/>
-        <source>Ce bouton permet d&apos;ajouter une association langue / traduction dans la liste ci-dessus.</source>
-        <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>This button adds a language/translation association to the above list.</translation>
-    </message>
-    <message>
-        <location filename="../sources/nameslistwidget.cpp" line="88"/>
-        <source>Il doit y avoir au moins un nom.</source>
-        <comment>message box title</comment>
-        <translation>There must be at least one name.</translation>
-    </message>
-    <message>
-        <location filename="../sources/nameslistwidget.cpp" line="89"/>
-        <source>Vous devez entrer au moins un nom.</source>
-        <comment>message box content</comment>
-        <translation>You must enter at least one name.</translation>
+        <location filename="../sources/NameList/ui/namelistwidget.ui" line="48"/>
+        <source>Copier dans le presse papier</source>
+        <translation>Copy to clipboard</translation>
     </message>
 </context>
 <context>
@@ -3569,27 +3573,27 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <translation>New element name</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="185"/>
-        <location filename="../sources/newelementwizard.cpp" line="202"/>
-        <location filename="../sources/newelementwizard.cpp" line="215"/>
+        <location filename="../sources/newelementwizard.cpp" line="193"/>
+        <location filename="../sources/newelementwizard.cpp" line="210"/>
+        <location filename="../sources/newelementwizard.cpp" line="223"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="186"/>
+        <location filename="../sources/newelementwizard.cpp" line="194"/>
         <source>Vous devez sélectionner une catégorie.</source>
         <comment>message box content</comment>
         <translation>You must select a category.</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="203"/>
+        <location filename="../sources/newelementwizard.cpp" line="211"/>
         <source>Vous devez entrer un nom de fichier</source>
         <comment>message box content</comment>
         <translation>You must enter a filename</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="216"/>
+        <location filename="../sources/newelementwizard.cpp" line="224"/>
         <source>Un élément portant le même nom existe déjà</source>
         <translation>An element with the same name already exists</translation>
     </message>
@@ -7169,11 +7173,13 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="264"/>
+        <location filename="../sources/qetinformation.cpp" line="62"/>
         <source>Auteur</source>
         <translation>Author</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="265"/>
+        <location filename="../sources/qetinformation.cpp" line="64"/>
         <source>Titre</source>
         <translation>Title</translation>
     </message>
@@ -7195,6 +7201,7 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="270"/>
+        <location filename="../sources/qetinformation.cpp" line="63"/>
         <source>Date</source>
         <translation>Date</translation>
     </message>
@@ -7450,11 +7457,13 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="108"/>
+        <location filename="../sources/qetinformation.cpp" line="71"/>
         <source>Position du folio</source>
         <translation>Folio position</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="110"/>
+        <location filename="../sources/qetinformation.cpp" line="70"/>
         <source>Numéro de folio</source>
         <translation>Folio number</translation>
     </message>
@@ -7727,6 +7736,81 @@ Do you want to replace it ?</translation>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="168"/>
         <source>Chercher/remplacer des textes independants</source>
         <translation>Search / replace independent texts</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="65"/>
+        <source>Fichier</source>
+        <translation>File</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="66"/>
+        <source>Installation (=)</source>
+        <translation>Plant (=)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="67"/>
+        <source>Localisation (+)</source>
+        <translation>Location (+)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="68"/>
+        <source>Indice de révision</source>
+        <translation>Revision index</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="69"/>
+        <source>Version de QElectroTech</source>
+        <translation>Version of QElectroTech</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="72"/>
+        <source>Nombre de folio</source>
+        <translation>Number of folios</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="73"/>
+        <source>Numéro du folio précédent</source>
+        <translation>Number of the previous folio</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="74"/>
+        <source>Numéro du folio suivant</source>
+        <translation>Next folio number</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="75"/>
+        <source>Titre du projet</source>
+        <translation>Project title</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="76"/>
+        <source>Chemin du fichier du projet</source>
+        <translation>Project file path</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="77"/>
+        <source>Nom du fichier</source>
+        <translation>File name</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="78"/>
+        <source>Date d&apos;enregistrement du fichier</source>
+        <translation>File saving date</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="79"/>
+        <source>Heure d&apos;enregistrement du fichier</source>
+        <translation>File saving time</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="80"/>
+        <source>Nom du fichier enregistré</source>
+        <translation>Name of the saved file</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="81"/>
+        <source>Chemin du fichier enregistré</source>
+        <translation>Saved file path</translation>
     </message>
 </context>
 <context>
@@ -9495,145 +9579,145 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
 <context>
     <name>TitleBlockTemplateCellWidget</name>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="49"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="51"/>
         <source>Type de cellule :</source>
         <translation>Cell type:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="51"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="53"/>
         <source>Vide</source>
         <translation>Empty</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="52"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="54"/>
         <source>Texte</source>
         <translation>Text</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="53"/>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="63"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="55"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="65"/>
         <source>Logo</source>
         <translation>Logo</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="60"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="62"/>
         <source>Attention : les bordures des cellules vides n&apos;apparaissent pas lors du rendu final sur le folio.</source>
         <translation>Warning: the edges of empty cells do not appear in the final render the folio.</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="65"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="67"/>
         <source>Aucun logo</source>
         <translation>No logo</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="66"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="68"/>
         <source>Gérer les logos</source>
         <translation>Manage logos</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="56"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="58"/>
         <source>Nom :</source>
         <translation>Name:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="69"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="71"/>
         <source>Afficher un label :</source>
         <translation>Display a label:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="72"/>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="76"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="74"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="78"/>
         <source>Editer</source>
         <translation>Edit</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="73"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="75"/>
         <source>Texte :</source>
         <translation>Text:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="77"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="79"/>
         <source>Alignement :</source>
         <translation>Alignment:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="78"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="80"/>
         <source>horizontal :</source>
         <translation>horizontal:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="80"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="82"/>
         <source>Gauche</source>
         <translation>Left</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="81"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="83"/>
         <source>Centré</source>
         <translation>Center</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="82"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="84"/>
         <source>Droite</source>
         <translation>Right</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="86"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="88"/>
         <source>vertical :</source>
         <translation>vertical:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="88"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="90"/>
         <source>Haut</source>
         <translation>Top</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="89"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="91"/>
         <source>Milieu</source>
         <translation>Middle</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="90"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="92"/>
         <source>Bas</source>
         <translation>Bottom</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="94"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="96"/>
         <source>Police :</source>
         <translation>Font:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="96"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="98"/>
         <source>Ajuster la taille de police si besoin</source>
         <translation>Adjust font size if needed</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="248"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="250"/>
         <source>Label de cette cellule</source>
         <translation>Label for this cell</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="258"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="260"/>
         <source>Valeur de cette cellule</source>
         <translation>Value for this cell</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="423"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : numéro du folio précédent&lt;/li&gt;&lt;li&gt;%{next-folio-num} : numéro du folio suivant&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
         <translation>By default, the following variables are available :&lt;ul&gt;&lt;li&gt;%{author}: folio author&lt;/li&gt;&lt;li&gt;%{date}: folio date &lt;/li&gt;&lt;li&gt;%{title}: folio title &lt;/li&gt;&lt;li&gt;%{filename}: project file name&lt;/li&gt;&lt;li&gt;%{plant}: name of the installation (=) in which the folio is located&lt;/li&gt;&lt;li&gt;%{locmach}: name of the location (+) in which the folio&lt;/li&gt;&lt;li&gt;%{indexrev} : index revision of the folio&lt;/li&gt;&lt;li&gt;%{version}: software version&lt;/li&gt;&lt;li&gt;%{folio}: folio number&lt;/li&gt;&lt;li&gt;%{folio-id}: folio position in the project&lt;/li&gt;&lt;li&gt;%{folio-total }: total number of folios in the project&lt;/li&gt;&lt;li&gt;%{previous-folio-num}: number of the previous folio&lt;/li&gt;&lt;li&gt;%{next-folio-num}: number of the following folio&lt;/li&gt;&lt;li&gt;% {projecttitle}: project title&lt;/li&gt;&lt;li&gt;%{projectpath}: project path&lt;/li&gt;&lt;li&gt;%{projectfilename}: file name&lt;/li&gt;&lt;li&gt;%{saveddate}: file saving date&lt;/li&gt;&lt;li&gt;%{savedtime}: file saving time &lt;/li&gt;&lt;li&gt;%{savedfilename}: file name saved file&lt;/li&gt;&lt;li&gt;%{savedfilepath}: saved file path&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="465"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="455"/>
         <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
         <translation>Each cell of a title block displays a value, optionally preceded by a label. Both can be translated to several languages.&lt;br/&gt;Since what you are currently editing is a title block &lt;em&gt;template&lt;/em&gt;, avoid entering raw data directly: prefer inserting variables like %{variable-name}, which will be replaced afterwards with adequate values in the folio.</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="305"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="307"/>
         <source>Aucun logo</source>
         <comment>text displayed in the combo box when a template has no logo</comment>
         <translation>No logo</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="422"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="412"/>
         <source>Édition d&apos;une cellule : %1</source>
         <comment>label of and undo command when editing a cell</comment>
         <translation>Cell edition: %1</translation>

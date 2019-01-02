@@ -4,7 +4,7 @@
 <context>
     <name>AboutQET</name>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="223"/>
+        <location filename="../sources/aboutqet.cpp" line="224"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>Dette program er licenseret under GNU / GPL.</translation>
     </message>
@@ -83,8 +83,8 @@
         <location filename="../sources/aboutqet.cpp" line="125"/>
         <location filename="../sources/aboutqet.cpp" line="126"/>
         <location filename="../sources/aboutqet.cpp" line="129"/>
-        <location filename="../sources/aboutqet.cpp" line="202"/>
-        <location filename="../sources/aboutqet.cpp" line="204"/>
+        <location filename="../sources/aboutqet.cpp" line="203"/>
+        <location filename="../sources/aboutqet.cpp" line="205"/>
         <source>Développement</source>
         <translation>Udvikling</translation>
     </message>
@@ -184,53 +184,58 @@
         <translation>Tyrkisk oversættelse</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="190"/>
+        <location filename="../sources/aboutqet.cpp" line="171"/>
+        <source>Traduction en hongrois</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="191"/>
         <source>Paquets Fedora et Red Hat</source>
         <translation>Fedora og Red Hat pakker</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="191"/>
+        <location filename="../sources/aboutqet.cpp" line="192"/>
         <source>Paquets Mageia</source>
         <translation>Mageia pakker</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="195"/>
         <location filename="../sources/aboutqet.cpp" line="196"/>
+        <location filename="../sources/aboutqet.cpp" line="197"/>
         <source>Paquets Gentoo</source>
         <translation>Gentoo pakker</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="197"/>
+        <location filename="../sources/aboutqet.cpp" line="198"/>
         <source>Paquets OS/2</source>
         <translation>OS/2 pakker</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="198"/>
+        <location filename="../sources/aboutqet.cpp" line="199"/>
         <source>Paquets FreeBSD</source>
         <translation>FreeBSD pakker</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="199"/>
+        <location filename="../sources/aboutqet.cpp" line="200"/>
         <source>Paquets MAC OS X</source>
         <translation>MAC OS X pakker</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="200"/>
+        <location filename="../sources/aboutqet.cpp" line="201"/>
         <source>Paquets Archlinux AUR</source>
         <translation>Archlinux AUR pakker</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="203"/>
+        <location filename="../sources/aboutqet.cpp" line="204"/>
         <source>Documentation</source>
         <translation>Dokumentation</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="205"/>
+        <location filename="../sources/aboutqet.cpp" line="206"/>
         <source>Collection d&apos;éléments</source>
         <translation>Samling af symboler</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="206"/>
+        <location filename="../sources/aboutqet.cpp" line="207"/>
         <source>Python plugin qet-tb-generator</source>
         <translation>Python udvidelsesmodul qet-tb-generator</translation>
     </message>
@@ -240,14 +245,14 @@
         <translation>DXF konverter</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="192"/>
         <location filename="../sources/aboutqet.cpp" line="193"/>
         <location filename="../sources/aboutqet.cpp" line="194"/>
+        <location filename="../sources/aboutqet.cpp" line="195"/>
         <source>Paquets Debian</source>
         <translation>Debian pakker</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="201"/>
+        <location filename="../sources/aboutqet.cpp" line="202"/>
         <source>Icônes</source>
         <translation>Ikoner</translation>
     </message>
@@ -1796,23 +1801,23 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
 <context>
     <name>ElementScene</name>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="225"/>
+        <location filename="../sources/editor/elementscene.cpp" line="226"/>
         <source>Déplacer une primitive</source>
         <translation>Flyt til oprindelig</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="677"/>
+        <location filename="../sources/editor/elementscene.cpp" line="678"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <comment>window title</comment>
         <translation>Rediger forfatter informationer</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="681"/>
+        <location filename="../sources/editor/elementscene.cpp" line="682"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
         <translation>Feltet kan bruges til symbol forfatter, licens eller andre relevante informationer.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="744"/>
+        <location filename="../sources/editor/elementscene.cpp" line="742"/>
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
         <translation>Angiv symbol navn på flere sprog.</translation>
     </message>
@@ -1826,101 +1831,101 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
 <context>
     <name>ElementsCategoryEditor</name>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="117"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="122"/>
         <source>Vous pouvez spécifier un nom par langue pour la catégorie.</source>
         <translation>Tilføj navn pr. sprog til kategorien.</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="106"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="111"/>
         <source>Nom interne : </source>
         <translation>Internt navn: </translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="41"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="46"/>
         <source>L&apos;item n&apos;est pas une catégorie</source>
         <comment>message box title</comment>
         <translation>Emnet er ikke en kategori</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="42"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="47"/>
         <source>L&apos;item demandé n&apos;est pas une categrie. Abandon.</source>
         <comment>message box content</comment>
         <translation>Anmodet emne er ikke en kategori. Afbryd.</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="48"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="53"/>
         <source>Catégorie inexistante</source>
         <comment>message box title</comment>
         <translation>Ikke eksisterende kategori</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="49"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="54"/>
         <source>La catégorie demandée n&apos;existe pas. Abandon.</source>
         <comment>message box content</comment>
         <translation>Kategori findes ikke. Afbryder.</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="54"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="59"/>
         <source>Éditer une catégorie</source>
         <comment>window title</comment>
         <translation>Rediger kategori</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="61"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="66"/>
         <source>Créer une nouvelle catégorie</source>
         <comment>window title</comment>
         <translation>Opret ny kategori</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="65"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="70"/>
         <source>Nom de la nouvelle catégorie</source>
         <comment>default name when creating a new category</comment>
         <translation>Navngiv kategori</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="73"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="78"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
         <translation>Åbnes skrivebeskyttet</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="74"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="79"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cette catégorie. Elle sera donc ouverte en lecture seule.</source>
         <comment>message box content</comment>
         <translation>Ændre rettigheder for kategori er ugyldig, åbnes skrivebeskyttet.</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="140"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="145"/>
         <source>Nom interne manquant</source>
         <comment>message box title</comment>
         <translation>Mangler internt navn</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="141"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="146"/>
         <source>Vous devez spécifier un nom interne.</source>
         <comment>message box content</comment>
         <translation>Angiv internt navn.</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="153"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="158"/>
         <source>Nom interne déjà utilisé</source>
         <comment>message box title</comment>
         <translation>Internt navn allerede brugt</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="154"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="159"/>
         <source>Le nom interne que vous avez choisi est déjà utilisé par une catégorie existante. Veuillez en choisir un autre.</source>
         <comment>message box content</comment>
         <translation>Internt navn bruges af eksisterende kategori. Vælg et andet.</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="165"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="170"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Fejl</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="166"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="171"/>
         <source>Impossible de créer la catégorie</source>
         <comment>message box content</comment>
         <translation>Kan ikke oprette kategori</translation>
@@ -3435,45 +3440,44 @@ Her kan standardværdien angives for dette felt for de oprettede symboler:</tran
     </message>
 </context>
 <context>
-    <name>NamesListWidget</name>
+    <name>NameListDialog</name>
     <message>
-        <location filename="../sources/nameslistwidget.cpp" line="34"/>
+        <location filename="../sources/NameList/ui/namelistdialog.ui" line="14"/>
+        <source>Dialog</source>
+        <translation type="unfinished">Dialogboks</translation>
+    </message>
+    <message>
+        <location filename="../sources/NameList/ui/namelistdialog.cpp" line="66"/>
+        <source>Variables de cartouche</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>NameListWidget</name>
+    <message>
+        <location filename="../sources/NameList/ui/namelistwidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/NameList/ui/namelistwidget.ui" line="21"/>
         <source>Langue</source>
-        <translation>Sprog</translation>
+        <translation type="unfinished">Sprog</translation>
     </message>
     <message>
-        <location filename="../sources/nameslistwidget.cpp" line="34"/>
+        <location filename="../sources/NameList/ui/namelistwidget.ui" line="26"/>
         <source>Texte</source>
-        <translation>Tekst</translation>
+        <translation type="unfinished">Tekst</translation>
     </message>
     <message>
-        <location filename="../sources/nameslistwidget.cpp" line="37"/>
-        <source>Cette liste vous permet de saisir un court texte de façon à ce qu&apos;il soit traduisible dans d&apos;autres langues. Pour ce faire, elle associe des codes ISO 639-1 de langues (ex. : &quot;fr&quot; pour français) aux traductions du texte en question dans ces mêmes langues.</source>
-        <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Denne liste giver mulighed for at indtaste en kort tekst, så det er oversat til andre sprog. For at gøre dette kombineres ISO 639-1 sprogkoder (f.eks. &quot;da&quot; for dansk) med tekst oversættelser af teksten, til disse sprog.</translation>
-    </message>
-    <message>
-        <location filename="../sources/nameslistwidget.cpp" line="47"/>
+        <location filename="../sources/NameList/ui/namelistwidget.ui" line="36"/>
         <source>Ajouter une ligne</source>
-        <translation>Tilføj linje</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/nameslistwidget.cpp" line="49"/>
-        <source>Ce bouton permet d&apos;ajouter une association langue / traduction dans la liste ci-dessus.</source>
-        <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Tilføj sprog kombination / oversættelse i ovenstående liste.</translation>
-    </message>
-    <message>
-        <location filename="../sources/nameslistwidget.cpp" line="88"/>
-        <source>Il doit y avoir au moins un nom.</source>
-        <comment>message box title</comment>
-        <translation>Der skal være mindst ét navn.</translation>
-    </message>
-    <message>
-        <location filename="../sources/nameslistwidget.cpp" line="89"/>
-        <source>Vous devez entrer au moins un nom.</source>
-        <comment>message box content</comment>
-        <translation>Indtast mindst ét navn.</translation>
+        <location filename="../sources/NameList/ui/namelistwidget.ui" line="48"/>
+        <source>Copier dans le presse papier</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3577,27 +3581,27 @@ Her kan standardværdien angives for dette felt for de oprettede symboler:</tran
         <translation>Nyt symbol navn</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="185"/>
-        <location filename="../sources/newelementwizard.cpp" line="202"/>
-        <location filename="../sources/newelementwizard.cpp" line="215"/>
+        <location filename="../sources/newelementwizard.cpp" line="193"/>
+        <location filename="../sources/newelementwizard.cpp" line="210"/>
+        <location filename="../sources/newelementwizard.cpp" line="223"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Fejl</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="186"/>
+        <location filename="../sources/newelementwizard.cpp" line="194"/>
         <source>Vous devez sélectionner une catégorie.</source>
         <comment>message box content</comment>
         <translation>Vælg kategori.</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="203"/>
+        <location filename="../sources/newelementwizard.cpp" line="211"/>
         <source>Vous devez entrer un nom de fichier</source>
         <comment>message box content</comment>
         <translation>Indtast filnavn</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="216"/>
+        <location filename="../sources/newelementwizard.cpp" line="224"/>
         <source>Un élément portant le même nom existe déjà</source>
         <translation>Symbol med samme navn findes allerede</translation>
     </message>
@@ -7221,11 +7225,13 @@ Hvad skal ske?</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="264"/>
+        <location filename="../sources/qetinformation.cpp" line="62"/>
         <source>Auteur</source>
         <translation>Forfatter</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="265"/>
+        <location filename="../sources/qetinformation.cpp" line="64"/>
         <source>Titre</source>
         <translation>Titel</translation>
     </message>
@@ -7247,6 +7253,7 @@ Hvad skal ske?</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="270"/>
+        <location filename="../sources/qetinformation.cpp" line="63"/>
         <source>Date</source>
         <translation>Dato</translation>
     </message>
@@ -7502,11 +7509,13 @@ Hvad skal ske?</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="108"/>
+        <location filename="../sources/qetinformation.cpp" line="71"/>
         <source>Position du folio</source>
         <translation>Ark placering</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="110"/>
+        <location filename="../sources/qetinformation.cpp" line="70"/>
         <source>Numéro de folio</source>
         <translation>Ark nummer</translation>
     </message>
@@ -7778,6 +7787,81 @@ Voulez-vous la remplacer ?</source>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="168"/>
         <source>Chercher/remplacer des textes independants</source>
         <translation>Søge/erstatte uafhængige tekste</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="65"/>
+        <source>Fichier</source>
+        <translation type="unfinished">Filer</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="66"/>
+        <source>Installation (=)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="67"/>
+        <source>Localisation (+)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="68"/>
+        <source>Indice de révision</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="69"/>
+        <source>Version de QElectroTech</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="72"/>
+        <source>Nombre de folio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="73"/>
+        <source>Numéro du folio précédent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="74"/>
+        <source>Numéro du folio suivant</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="75"/>
+        <source>Titre du projet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="76"/>
+        <source>Chemin du fichier du projet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="77"/>
+        <source>Nom du fichier</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="78"/>
+        <source>Date d&apos;enregistrement du fichier</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="79"/>
+        <source>Heure d&apos;enregistrement du fichier</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="80"/>
+        <source>Nom du fichier enregistré</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="81"/>
+        <source>Chemin du fichier enregistré</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -9549,145 +9633,145 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
 <context>
     <name>TitleBlockTemplateCellWidget</name>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="49"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="51"/>
         <source>Type de cellule :</source>
         <translation>Celletype:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="51"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="53"/>
         <source>Vide</source>
         <translation>Tom</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="52"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="54"/>
         <source>Texte</source>
         <translation>Tekst</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="53"/>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="63"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="55"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="65"/>
         <source>Logo</source>
         <translation>Logo</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="60"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="62"/>
         <source>Attention : les bordures des cellules vides n&apos;apparaissent pas lors du rendu final sur le folio.</source>
         <translation>Advarsel: kanter på tomme celler vises ikke i arkets endelig præsentation.</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="65"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="67"/>
         <source>Aucun logo</source>
         <translation>Ingen logo</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="66"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="68"/>
         <source>Gérer les logos</source>
         <translation>Rediger logo</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="56"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="58"/>
         <source>Nom :</source>
         <translation>Navn:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="69"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="71"/>
         <source>Afficher un label :</source>
         <translation>Vis etiket:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="72"/>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="76"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="74"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="78"/>
         <source>Editer</source>
         <translation>Rediger</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="73"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="75"/>
         <source>Texte :</source>
         <translation>Tekst:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="77"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="79"/>
         <source>Alignement :</source>
         <translation>Juster:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="78"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="80"/>
         <source>horizontal :</source>
         <translation>Vandret:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="80"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="82"/>
         <source>Gauche</source>
         <translation>Venstre</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="81"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="83"/>
         <source>Centré</source>
         <translation>Centrer</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="82"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="84"/>
         <source>Droite</source>
         <translation>Højre</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="86"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="88"/>
         <source>vertical :</source>
         <translation>Lodret:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="88"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="90"/>
         <source>Haut</source>
         <translation>Top</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="89"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="91"/>
         <source>Milieu</source>
         <translation>Midten</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="90"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="92"/>
         <source>Bas</source>
         <translation>Bund</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="94"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="96"/>
         <source>Police :</source>
         <translation>Skrifttype:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="96"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="98"/>
         <source>Ajuster la taille de police si besoin</source>
         <translation>Juster størrelse hvis nødvendigt</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="248"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="250"/>
         <source>Label de cette cellule</source>
         <translation>Celle etiket</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="258"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="260"/>
         <source>Valeur de cette cellule</source>
         <translation>Celle værdi</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="423"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : numéro du folio précédent&lt;/li&gt;&lt;li&gt;%{next-folio-num} : numéro du folio suivant&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
         <translation>Som standard er følgende variabler tilgængelige:&lt;ul&gt;&lt;li&gt;%{author}: ark forfatter&lt;/li&gt;&lt;li&gt;%{date}: ark dato&lt;/li&gt;&lt;li&gt;%{title}: ark titel&lt;/li&gt;&lt;li&gt;%{filename}: projekt filnavn&lt;/li&gt;&lt;li&gt;%{plant}: navn på installation (=) hvor ark er placeret&lt;/li&gt;	&lt;li&gt;%{locmach}: nanv på placering (+) hvor ark er placeret&lt;/li&gt;&lt;li&gt;%{indexrev}: ark revision indeks&lt;/li&gt;&lt;li&gt;%{version}: software version&lt;/li&gt;&lt;li&gt;%{folio}: ark nummer&lt;/li&gt;&lt;li&gt;%{folio-id}: ark position i projekt&lt;/li&gt;&lt;li&gt;%{folio-total}: antal ark i projekt&lt;/li&gt;&lt;li&gt;%{previous-folio-num}: nummer på forrige ark&lt;/li&gt;&lt;li&gt;%{next-folio-num}: nummer på næste ark&lt;/li&gt;	&lt;li&gt;%{projecttitle}: projekt titel&lt;/li&gt;&lt;li&gt;%{projectpath}: projekt sti&lt;/li&gt;&lt;li&gt;%{projectfilename}: filnavn&lt;/li&gt;&lt;li&gt;%{saveddate}: fil gemt dato&lt;/li&gt;&lt;li&gt;%{savedtime}: fil gemt tidspunkt&lt;/li&gt;&lt;li&gt;%{savedfilename}: gemt filnavn&lt;/li&gt;&lt;li&gt;%{savedfilepath}: gemt fil sti&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="465"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="455"/>
         <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
         <translation>Titelblok celler har en værdi og eventuel en etiket. Begge kan oversættes til andre sprog. &lt;br/&gt;Dette er en titelblok &lt;em&gt;skabelon&lt;/em&gt; der redigeres i og det bør undgåes at indtaste fast tekst: brug istedet indsæt af variabler %{variable-name}, som vil blive erstattet af passende værdier fra arket.</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="305"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="307"/>
         <source>Aucun logo</source>
         <comment>text displayed in the combo box when a template has no logo</comment>
         <translation>Ingen logo</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="422"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="412"/>
         <source>Édition d&apos;une cellule : %1</source>
         <comment>label of and undo command when editing a cell</comment>
         <translation>Rediger celle: %1</translation>
