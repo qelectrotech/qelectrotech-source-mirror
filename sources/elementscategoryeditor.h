@@ -21,7 +21,7 @@
 #include <QDialog>
 #include "elementslocation.h"
 
-class NamesListWidget;
+class NameListWidget;
 class QFileNameEdit;
 class QDialogButtonBox;
 class QLabel;
@@ -45,7 +45,7 @@ class ElementsCategoryEditor : public QDialog
 	
 	private:
 		QDialogButtonBox *m_buttons;
-		NamesListWidget *m_names_list;
+		NameListWidget *m_names_list;
 		QLabel *m_file_name;
 		QFileNameEdit *m_file_line_edit;
 		bool m_edit_mode;

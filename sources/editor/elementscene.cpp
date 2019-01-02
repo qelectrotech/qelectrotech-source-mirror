@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2017 The QElectroTech Team
+	Copyright 2006-2018 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -28,12 +28,13 @@
 #include "partarc.h"
 #include "editorcommands.h"
 #include "elementcontent.h"
-#include "nameslist.h"
 #include "ui/elementpropertieseditorwidget.h"
 #include "eseventinterface.h"
 #include "QetGraphicsItemModeler/qetgraphicshandleritem.h"
 #include "partdynamictextfield.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include "namelistdialog.h"
+#include "namelistwidget.h"
 
 #include <algorithm>
 #include <QKeyEvent>
@@ -725,44 +726,31 @@ void  ElementScene::slot_editProperties()
 }
 
 /**
-	Lance un dialogue pour editer les noms de cet element
-*/
-void ElementScene::slot_editNames() {
+ * @brief ElementScene::slot_editNames
+ * Launch a dialog for edit the names of the edited element
+ */
+void ElementScene::slot_editNames()
+{
 	bool is_read_only = m_element_editor && m_element_editor -> isReadOnly();
 	
-	// cree un dialogue
-	QDialog dialog(m_element_editor);
-#ifdef Q_OS_MAC
-	dialog.setWindowFlags(Qt::Sheet);
-#endif
-	dialog.setModal(true);
-	dialog.setMinimumSize(400, 330);
-	dialog.setWindowTitle(tr("Éditer les noms", "window title"));
-	QVBoxLayout *dialog_layout = new QVBoxLayout(&dialog);
+	NameListDialog dialog_(m_element_editor);
 	
-	// ajoute un champ explicatif au dialogue
-	QLabel *information_label = new QLabel(tr("Vous pouvez spécifier le nom de l'élément dans plusieurs langues."));
-	information_label -> setAlignment(Qt::AlignJustify | Qt::AlignVCenter);
-	information_label -> setWordWrap(true);
-	dialog_layout -> addWidget(information_label);
+	dialog_.setModal(true);
+	dialog_.setMinimumSize(400, 330);
+	dialog_.setWindowTitle(tr("Éditer les noms", "window title"));
 	
-	// ajoute un NamesListWidget au dialogue
-	NamesListWidget *names_widget = new NamesListWidget();
-	names_widget -> setNames(m_names_list);
-	names_widget -> setReadOnly(is_read_only);
-	dialog_layout -> addWidget(names_widget);
+	dialog_.setInformationText(tr("Vous pouvez spécifier le nom de l'élément dans plusieurs langues."));
 	
-	// ajoute deux boutons au dialogue
-	QDialogButtonBox *dialog_buttons = new QDialogButtonBox(is_read_only ? QDialogButtonBox::Ok : QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
-	dialog_layout -> addWidget(dialog_buttons);
-	connect(dialog_buttons, SIGNAL(accepted()),     names_widget, SLOT(check()));
-	connect(names_widget,   SIGNAL(inputChecked()), &dialog,      SLOT(accept()));
-	connect(dialog_buttons, SIGNAL(rejected()),     &dialog,      SLOT(reject()));
+	NameListWidget *nlw_ = dialog_.namelistWidget();
+	nlw_->setNames(m_names_list);
+	nlw_->setReadOnly(is_read_only);
 	
-	// lance le dialogue
-	if (dialog.exec() == QDialog::Accepted && !is_read_only) {
-		NamesList new_names(names_widget -> names());
-		if (new_names != m_names_list) undoStack().push(new ChangeNamesCommand(this, m_names_list, new_names));
+	if (dialog_.exec() == QDialog::Accepted && !is_read_only && !nlw_->isEmpty())
+	{
+		NamesList new_names = nlw_->names();
+		if (new_names != m_names_list) {
+			undoStack().push(new ChangeNamesCommand(this, m_names_list, new_names));
+		}
 	}
 }
 

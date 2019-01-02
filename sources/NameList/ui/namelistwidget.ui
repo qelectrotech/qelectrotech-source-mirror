@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>NameListWidget</class>
+ <widget class="QWidget" name="NameListWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTreeWidget" name="m_tree">
+     <column>
+      <property name="text">
+       <string>Langue</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Texte</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="m_add_line_pb">
+       <property name="text">
+        <string>Ajouter une ligne</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../../../qelectrotech.qrc">
+         <normaloff>:/ico/16x16/list-add.png</normaloff>:/ico/16x16/list-add.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="m_clipboard_cb">
+       <item>
+        <property name="text">
+         <string>Copier dans le presse papier</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../../../qelectrotech.qrc">
+          <normaloff>:/ico/16x16/edit-paste.png</normaloff>:/ico/16x16/edit-paste.png</iconset>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../../../qelectrotech.qrc"/>
+ </resources>
+ <connections/>
+</ui>

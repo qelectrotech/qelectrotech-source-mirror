@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "newelementwizard.h"
-#include "nameslistwidget.h"
+#include "namelistwidget.h"
 #include "qetelementeditor.h"
 #include "qfilenameedit.h"
 #include "qetmessagebox.h"
@@ -130,7 +130,7 @@ QWizardPage *NewElementWizard::buildStep3() {
 	page -> setSubTitle(tr("Indiquez le ou les noms de l'élément.", "wizard page subtitle"));
 	QVBoxLayout *layout = new QVBoxLayout();
 	
-	m_names_list = new NamesListWidget();
+	m_names_list = new NameListWidget(this);
 	NamesList hash_name;
 	hash_name.addName(QLocale::system().name().left(2), tr("Nom du nouvel élément", "default name when creating a new element"));
 	m_names_list -> setNames(hash_name);
@@ -144,14 +144,22 @@ QWizardPage *NewElementWizard::buildStep3() {
  * @brief NewElementWizard::validateCurrentPage
  * @return true if the current step is valid
  */
-bool NewElementWizard::validateCurrentPage() {
+bool NewElementWizard::validateCurrentPage()
+{
 	WizardState wizard_state = static_cast<WizardState>(currentPage() -> property("WizardState").toInt());
-	if      (wizard_state == Category) return(validStep1());
-	else if (wizard_state == Filename) return(validStep2());
-	else if (wizard_state == Names) {
-		// must have one name minimum
-		if (m_names_list -> checkOneName())
+	
+	if (wizard_state == Category) {
+		return(validStep1());
+	}
+	else if (wizard_state == Filename) {
+		return(validStep2());
+	}
+	else if (wizard_state == Names)
+	{
+			// must have one name minimum
+		if (!m_names_list->isEmpty()) {
 			createNewElement();
+		}
 		return true;
 	}
 	else return(true);

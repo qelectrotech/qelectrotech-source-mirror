@@ -16,11 +16,16 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementscategoryeditor.h"
-#include "nameslistwidget.h"
 #include "qet.h"
 #include "qfilenameedit.h"
 #include "qetmessagebox.h"
 #include "elementcollectionhandler.h"
+#include "namelistwidget.h"
+
+#include <QDialogButtonBox>
+#include <QVBoxLayout>
+#include <QLabel>
+#include <QHBoxLayout>
 
 /**
  * @brief ElementsCategoryEditor::ElementsCategoryEditor
@@ -102,7 +107,7 @@ void ElementsCategoryEditor::setUpWidget()
 	QVBoxLayout *editor_layout = new QVBoxLayout();
 	setLayout(editor_layout);
 	
-	m_names_list = new NamesListWidget();
+	m_names_list = new NameListWidget(this);
 	m_file_name = new QLabel(tr("Nom interne : "));
 	m_file_line_edit = new QFileNameEdit();
 	
@@ -130,7 +135,7 @@ void ElementsCategoryEditor::acceptCreation()
 	}
 	
 		//there must be at least one name
-	if (!m_names_list -> checkOneName()) {
+	if (m_names_list->isEmpty()) {
 		return;
 	}
 	
@@ -181,7 +186,7 @@ void ElementsCategoryEditor::acceptUpdate()
 	}
 	
 		//There must be at least one name
-	if (!m_names_list -> checkOneName()) {
+	if (m_names_list->isEmpty()) {
 		return;
 	}
 	

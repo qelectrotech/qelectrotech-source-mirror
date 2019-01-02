@@ -21,7 +21,7 @@
 #include <QWizard>
 #include "elementslocation.h"
 
-class NamesListWidget;
+class NameListWidget;
 class QFileNameEdit;
 class QTreeView;
 class ElementsCollectionModel;
@@ -53,7 +53,7 @@ class NewElementWizard : public QWizard
 	private:
 		enum WizardState { Category, Filename, Names };
 		QFileNameEdit *m_qle_filename;
-		NamesListWidget *m_names_list;
+		NameListWidget *m_names_list;
 		QString m_chosen_file;
 		QTreeView *m_tree_view = nullptr;
 		ElementsLocation m_chosen_location;

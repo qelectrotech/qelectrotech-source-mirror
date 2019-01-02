@@ -18,10 +18,12 @@
 #include "templatecellwidget.h"
 #include "titleblockcell.h"
 #include "nameslist.h"
-#include "nameslistwidget.h"
 #include "titleblocktemplate.h"
 #include "templatecommands.h"
 #include "qeticons.h"
+#include "namelistdialog.h"
+#include "namelistwidget.h"
+#include "qetinformation.h"
 
 /**
 	Constructor
@@ -374,33 +376,20 @@ bool TitleBlockTemplateCellWidget::isReadOnly() const {
 	@param attribute Name of the edited cell attribute
 	@param title Title of the dialog window
 */
-void TitleBlockTemplateCellWidget::editTranslatableValue(NamesList &names, const QString &attribute, const QString &title) const {
-	NamesListWidget *names_widget = new NamesListWidget();
-	names_widget -> setNames(names);
-	QDialogButtonBox * buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+void TitleBlockTemplateCellWidget::editTranslatableValue(NamesList &names, const QString &attribute, const QString &title) const
+{	
+	NameListDialog dialog_;
+
+	dialog_.setWindowTitle(title);
+	dialog_.setInformationText(labelValueInformationString());
+	dialog_.setHelpText(defaultVariablesString());
 	
-	QLabel *information = new QLabel(labelValueInformationString());
-	information -> setTextFormat(Qt::RichText);
-	information -> setWordWrap(true);
+	NameListWidget *nlw_ = dialog_.namelistWidget();
+	nlw_->setNames(names);
+	nlw_->setClipboardValue(QETInformation::titleblockTranslatedKeyHashVar());
 	
-	QLabel *def_var_label = new QLabel(defaultVariablesString());
-	def_var_label -> setTextFormat(Qt::RichText);
-	def_var_label -> setTextInteractionFlags(Qt::TextSelectableByMouse);
-	
-	QVBoxLayout *editor_layout = new QVBoxLayout();
-	editor_layout -> addWidget(information);
-	editor_layout -> addWidget(names_widget);
-	editor_layout -> addWidget(def_var_label);
-	editor_layout -> addWidget(buttons);
-	
-	QDialog edit_dialog;
-	edit_dialog.setWindowTitle(title);
-	connect(buttons, SIGNAL(rejected()), &edit_dialog, SLOT(reject()));
-	connect(buttons, SIGNAL(accepted()), &edit_dialog, SLOT(accept()));
-	edit_dialog.setLayout(editor_layout);
-	if (edit_dialog.exec() == QDialog::Accepted) {
-		emitModification(attribute, qVariantFromValue(names_widget -> names()));
-		
+	if(dialog_.exec() == QDialog::Accepted) {
+		emitModification(attribute, qVariantFromValue(nlw_->names()));
 	}
 }
 

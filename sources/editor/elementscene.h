@@ -19,10 +19,10 @@
 #define ELEMENT_SCENE_H
 #include <QtWidgets>
 #include <QtXml>
-#include "nameslistwidget.h"
 #include "qgimanager.h"
 #include "elementcontent.h"
 #include "diagramcontext.h"
+#include "nameslist.h"
 
 class CustomElementPart;
 class ElementEditionCommand;
