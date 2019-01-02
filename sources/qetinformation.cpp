@@ -90,27 +90,27 @@ QString QETInformation::titleblockTranslatedInfoKey(const QString &info)
  */
 QString QETInformation::titleblockInfoKeysToVar(const QString &info)
 {
-	if      (info == "author")             return QString("%author");
-	else if (info == "date")               return QString("%date");
-	else if (info == "title")              return QString("%title");
-	else if (info == "filename")           return QString("%filename");
-	else if (info == "plant")              return QString("%plant");
-	else if (info == "locmach")            return QString("%locmach");
-	else if (info == "indexrev")           return QString("%indexrev");
-	else if (info == "version")            return QString("%version");
-	else if (info == "folio")              return QString("%folio");
-	else if (info == "folio-id")           return QString("%folio-id");
-	else if (info == "folio-total")        return QString("%folio-total");
-	else if (info == "previous-folio-num") return QString("%previous-folio-num");
-	else if (info == "next-folio-num")     return QString("%next-folio-num");
-	else if (info == "projecttitle")       return QString("%projecttitle");
-	else if (info == "projectpath")        return QString("%projectpath");
-	else if (info == "projectfilename")    return QString("%projectfilename");
-	else if (info == "saveddate")          return QString("%saveddate");
-	else if (info == "savedtime")          return QString("%savedtime");
-	else if (info == "savedfilename")      return QString("%savedfilename");
-	else if (info == "savedfilepath")      return QString("%savedfilepath");
-	else return QString("%void");
+	if      (info == "author")             return QString("%{author}");
+	else if (info == "date")               return QString("%{date}");
+	else if (info == "title")              return QString("%{title}");
+	else if (info == "filename")           return QString("%{filename}");
+	else if (info == "plant")              return QString("%{plant}");
+	else if (info == "locmach")            return QString("%{locmach}");
+	else if (info == "indexrev")           return QString("%{indexrev}");
+	else if (info == "version")            return QString("%{version}");
+	else if (info == "folio")              return QString("%{folio}");
+	else if (info == "folio-id")           return QString("%{folio-id}");
+	else if (info == "folio-total")        return QString("%{folio-total}");
+	else if (info == "previous-folio-num") return QString("%{previous-folio-num}");
+	else if (info == "next-folio-num")     return QString("%{next-folio-num}");
+	else if (info == "projecttitle")       return QString("%{projecttitle}");
+	else if (info == "projectpath")        return QString("%{projectpath}");
+	else if (info == "projectfilename")    return QString("%{projectfilename}");
+	else if (info == "saveddate")          return QString("%{saveddate}");
+	else if (info == "savedtime")          return QString("%{savedtime}");
+	else if (info == "savedfilename")      return QString("%{savedfilename}");
+	else if (info == "savedfilepath")      return QString("%{savedfilepath}");
+	else return QString("%{void");
 }
 
 /**
