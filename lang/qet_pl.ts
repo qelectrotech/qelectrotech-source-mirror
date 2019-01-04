@@ -10444,12 +10444,12 @@ Długość maksymalna: %2px
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="27"/>
         <source>par :</source>
-        <translation>przez:</translation>
+        <translation>na:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="34"/>
         <source>Remplacer :</source>
-        <translation>Zastąp:</translation>
+        <translation>Zmień:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="51"/>
@@ -10485,7 +10485,7 @@ Długość maksymalna: %2px
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="92"/>
         <source>Quoi :</source>
         <translatorcomment>tłumaczenie niepewne</translatorcomment>
-        <translation>Na:</translation>
+        <translation>Dane:</translation>
     </message>
 </context>
 </TS>
