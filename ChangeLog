@@ -1,7 +1,7 @@
 ====== ChangeLog from 0.6 to 0.7 ======
 
 
-* Element editor : 
+* Element editor :
 * Element informations (manufacturer, reference etc...) can be created directly from the element editor. For that go to the widget "Element Property"
 * It is no longer required to have a text field, for save the edited element.
 * Improve the behavior with the arrow keys (depending to the current selection  (nothing / one / several).
@@ -12,7 +12,7 @@
 * Rectangle can have rounded corner.
 
 
-* Diagram editor : 
+* Diagram editor :
 * Conductors can now be drawn with two colors.
 * Improve High-DPI support on Windows and Linux plateform.
 * The code for the resize handles has been almost completely redesigned.
@@ -40,11 +40,12 @@ This commit fix it, now the search function search for every terminals of a term
 * QETshapeItem rectangle can have rounded corner.
 * Add in config the possibility to start the numbering of the columns of titleblocks at 0.
 * Add new function Search and replace widget Crtl +F
-Diagram properties, Element properties, Independent text item can be changed (and mass changed) through the search and replace widget.
+* Diagram properties, Element properties, Independent text item can be changed (and mass changed) through the search and replace widget.
 * Added 4 tools for edit the depth (Z value) of items.
+* Element panel : elements can be searched by their name but also with by all their informations.
 
 
-* Title block editor : 
+* Title block editor :
 Added new title block variables %projectpath, %projectfilename, %projecttitle, previous-folio-num and next-folio-num
 "%saveddate, %savedtime, %savedfilename and %savedfilepath" they variables should be updated after file save or save as dialog is confirmed,
 before file is saved.
@@ -52,7 +53,7 @@ before file is saved.
 
 
 * Improve for new qet_tb_generator plug-in : added the full path of the current project as
-an argument when calling the plug-in from QET if a project is open. 
+an argument when calling the plug-in from QET if a project is open.
 If not a file dialog is showed to select the QET project.
 
 
@@ -71,7 +72,7 @@ If not a file dialog is showed to select the QET project.
 * DXF export : add some colors for basic shapes inside dxf.
 
 
-* Bug fix : 
+* Bug fix :
 * Fix compilation warning (clang and gcc).
 
 * Fix element text item alignment work well when text rotation != 0.
@@ -110,7 +111,7 @@ In the official collection, there are now 4106 elements, and 539 categoris for a
 * In the panel left split the view into ￼a several docks.
 * ￼High-DPI support (Qt 5.6.0)
 * new python plugin to generate terminal block.
-* Windows packages are now created on a Debian operating system using cross-compilation and targeted to make executable binary files for these operating systems. 
+* Windows packages are now created on a Debian operating system using cross-compilation and targeted to make executable binary files for these operating systems.
 This technical evolution allows a significant time saving during the creation of the packages. And we can provide also in the same time Windows XP and Vista packages by cross-compil with Qt 5.7.1 environment
 * The Mac OS X executable binary files are created on a virtual environment, moved compiler to latest LLVM clan version, improved dmg packages with added Info.plist.
 * An annoying memory leak has been found and solved. Afters hours of use, some users noticed that the RAM consumption growed steadily, up to 10GB or more. This problem is now solved.
@@ -166,29 +167,29 @@ Qet detects the Windows version and applies the appropriate graphic style, depen
 
 
 ====== ChangeLog from 0.3 rc to 0.3 ======
-First, the collection of symbols has made a big step forward, with about 1560 new elements. 
-There are now symbols for pneumatics, hydraulics, process, solar, cold, etc. Considerable effort has been done to organize the collection in a better way. 
+First, the collection of symbols has made a big step forward, with about 1560 new elements.
+There are now symbols for pneumatics, hydraulics, process, solar, cold, etc. Considerable effort has been done to organize the collection in a better way.
 We hope that the new organisation is clearer for all. We would like to thank all the contributors who send us symbols.
 
 =====-Element Editor: =====
-Considerable work has be done to replace the manual defining zone of the symbol, aka hotspot.And fix bugs, It is now automatic. You do not have to care about it anymore. 
-Primary colors have been added for the drawing shapes. 
+Considerable work has be done to replace the manual defining zone of the symbol, aka hotspot.And fix bugs, It is now automatic. You do not have to care about it anymore.
+Primary colors have been added for the drawing shapes.
 A contextual menu (right click) has been added. So, you can now work more quickly with symbols. It is also more user-friendly.
 
 ====== ChangeLog from v0.3 rc ======
 
 =====-Element Editor: =====
-* Replacing checkboxes with lists of colors. 
+* Replacing checkboxes with lists of colors.
 * Removed the manual hotspot, it is now automatic and you do not have to worry.
 Officially Collection: a large classification work on the structure was realized. It should be clear to everyone.
 The collection is enriched with 1711 items in 286 categories (ie 1997 files)
 
 =====-Schema Editor:=====
-* Added import image, image rotation, image resizing and saving the file in the project. 
-(Double click on the image called a widget and cursor that reduce or enlarge the selected image.) 
+* Added import image, image rotation, image resizing and saving the file in the project.
+(Double click on the image called a widget and cursor that reduce or enlarge the selected image.)
 NB: Following the "edit image" entry will also be added in the right click menu.
 * F5 keyboard shortcut can recharge symbol collections.
-Some bugs have been resolved, and the translation status continues to grow. 
+Some bugs have been resolved, and the translation status continues to grow.
 
 
 ======ChangeLog from v0.3 beta ======

@@ -240,7 +240,20 @@ void FileElementCollectionItem::setUpData()
 	if (isDir())
 		setFlags(Qt::ItemIsSelectable | Qt::ItemIsDragEnabled | Qt::ItemIsDropEnabled | Qt::ItemIsEnabled);
 	else
+	{
 		setFlags(Qt::ItemIsSelectable | Qt::ItemIsDragEnabled | Qt::ItemIsEnabled);
+		
+			//Set the local name and all informations of the element
+			//in the data Qt::UserRole+1, these data will be use for search.
+		ElementsLocation location(collectionPath());
+		DiagramContext context = location.elementInformations();
+		QStringList search_list;
+		for (QString key : context.keys()) {
+			search_list.append(context.value(key).toString());
+		}
+		search_list.append(localName());
+		setData(search_list.join(" "));
+	}
 
 	setToolTip(collectionPath());
 }

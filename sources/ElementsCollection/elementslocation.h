@@ -19,6 +19,7 @@
 #define ELEMENTS_LOCATION_H
 
 #include "nameslist.h"
+#include "diagramcontext.h"
 #include <QString>
 #include <QIcon>
 
@@ -77,6 +78,7 @@ class ElementsLocation
 		QIcon icon() const;
 		QString name() const;
 		QString fileName() const;
+		DiagramContext elementInformations() const;
 	
 	private:
 		QString m_collection_path;

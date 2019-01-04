@@ -624,7 +624,7 @@ void ElementsCollectionWidget::search()
 	QModelIndexList match_index;
 	foreach (QString txt, text_list) {
 		match_index << m_model->match(m_showed_index.isValid() ? m_model->index(0,0,m_showed_index) : m_model->index(0,0),
-									  Qt::DisplayRole, QVariant(txt), -1, Qt::MatchContains | Qt::MatchRecursive);
+									  Qt::UserRole+1, QVariant(txt), -1, Qt::MatchContains | Qt::MatchRecursive);
 	}
 
 	foreach(QModelIndex index, match_index)

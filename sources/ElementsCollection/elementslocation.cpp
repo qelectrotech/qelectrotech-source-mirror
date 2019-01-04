@@ -682,6 +682,23 @@ QString ElementsLocation::fileName() const
 }
 
 /**
+ * @brief ElementsLocation::elementInformations
+ * @return the element information of the element represented by this location.
+ * If the location is a directory, the returned diagram context is empty
+ */
+DiagramContext ElementsLocation::elementInformations() const
+{
+	DiagramContext context;
+	if (isDirectory()) {
+		return context;
+	}
+	
+	QDomElement dom = this->xml().firstChildElement("elementInformations");
+	context.fromXml(dom, "elementInformation");
+	return  context;
+}
+
+/**
 	@param location A standard element location
 	@return a hash identifying this location
 */

@@ -34,6 +34,7 @@ void ElementCollectionItem::clearData()
 	setText(QString());
 	setToolTip(QString());
 	setIcon(QIcon());
+	setData(QString());
 }
 
 /**
