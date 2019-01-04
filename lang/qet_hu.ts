@@ -175,7 +175,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="171"/>
         <source>Traduction en hongrois</source>
-        <translation type="unfinished"></translation>
+        <translation>Magyar Fordító</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="191"/>
@@ -804,7 +804,7 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="219"/>
         <source>Trait plein</source>
         <comment>conductor style: solid line</comment>
-        <translation>egyenes vonal</translation>
+        <translation>Folyamatos vonal</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="220"/>
@@ -3453,12 +3453,12 @@ A szövegmező alapértelmezett értékének meghatározása az új elemek alá 
     <message>
         <location filename="../sources/NameList/ui/namelistdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished">Dialógus</translation>
+        <translation>Párbeszédablak</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistdialog.cpp" line="66"/>
         <source>Variables de cartouche</source>
-        <translation type="unfinished"></translation>
+        <translation>Szövegmező változói</translation>
     </message>
 </context>
 <context>
@@ -3466,27 +3466,27 @@ A szövegmező alapértelmezett értékének meghatározása az új elemek alá 
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Űrlap</translation>
+        <translation>Űrlap</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="21"/>
         <source>Langue</source>
-        <translation type="unfinished">Nyelv</translation>
+        <translation>Nyelv</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="26"/>
         <source>Texte</source>
-        <translation type="unfinished">Szöveg</translation>
+        <translation>Szöveg</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="36"/>
         <source>Ajouter une ligne</source>
-        <translation type="unfinished"></translation>
+        <translation>Vonal hozzáadása</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="48"/>
         <source>Copier dans le presse papier</source>
-        <translation type="unfinished"></translation>
+        <translation>Vágólapra másolás</translation>
     </message>
 </context>
 <context>
@@ -7780,77 +7780,77 @@ Cserélni akarod?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="65"/>
         <source>Fichier</source>
-        <translation type="unfinished">Fájl</translation>
+        <translation>Fájl</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="66"/>
         <source>Installation (=)</source>
-        <translation type="unfinished"></translation>
+        <translation>Beépítés (=)</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="67"/>
         <source>Localisation (+)</source>
-        <translation type="unfinished"></translation>
+        <translation>Elhelyezkedés (+)</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="68"/>
         <source>Indice de révision</source>
-        <translation type="unfinished"></translation>
+        <translation>Revízió jezése</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="69"/>
         <source>Version de QElectroTech</source>
-        <translation type="unfinished"></translation>
+        <translation>A QElectroTech verziója</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="72"/>
         <source>Nombre de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Tervlap száma</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="73"/>
         <source>Numéro du folio précédent</source>
-        <translation type="unfinished"></translation>
+        <translation>Előző tervlap száma</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="74"/>
         <source>Numéro du folio suivant</source>
-        <translation type="unfinished"></translation>
+        <translation>Következő tervlap száma</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="75"/>
         <source>Titre du projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekt címe</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="76"/>
         <source>Chemin du fichier du projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Projektfájl elérési útvonala</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="77"/>
         <source>Nom du fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Fáljnév</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="78"/>
         <source>Date d&apos;enregistrement du fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Fájl mentés dátuma</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="79"/>
         <source>Heure d&apos;enregistrement du fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Fájl mentés időpontja</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="80"/>
         <source>Nom du fichier enregistré</source>
-        <translation type="unfinished"></translation>
+        <translation>A mentett fájl neve</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="81"/>
         <source>Chemin du fichier enregistré</source>
-        <translation type="unfinished"></translation>
+        <translation>A mentett fájl elérési útvonala</translation>
     </message>
 </context>
 <context>
@@ -8219,7 +8219,7 @@ Cserélni akarod?</translation>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="181"/>
         <source>Trait plein</source>
         <comment>conductor style: solid line</comment>
-        <translation>egyenes vonal</translation>
+        <translation>Folyamatos vonal</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="182"/>
