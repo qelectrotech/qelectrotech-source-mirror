@@ -6,7 +6,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="224"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
-        <translation>Dit programma is vrijgegeven onder de GNU / GPL licentie.</translation>
+        <translation>Dit programma is uitgebracht onder de GNU / GPL licentie.</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="123"/>
@@ -186,7 +186,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="171"/>
         <source>Traduction en hongrois</source>
-        <translation type="unfinished"></translation>
+        <translation>Hongaarse vertaling</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="191"/>
@@ -937,7 +937,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="56"/>
         <source>Maintenir ctrl pour un déplacement libre</source>
-        <translation>Houd CTRL ingedrukt om te verschuiven</translation>
+        <translation>Houdt de CTRL ingedrukt om te verschuiven</translation>
     </message>
 </context>
 <context>
@@ -1055,7 +1055,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="91"/>
         <source>Supprimer la sélection</source>
-        <translation>Verwijderen van selectie</translation>
+        <translation>Selectie verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="129"/>
@@ -1320,7 +1320,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="128"/>
         <source>cadre</source>
-        <translation>kader</translation>
+        <translation>Kader</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="142"/>
@@ -2129,7 +2129,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
         <location filename="../sources/elementspanel.cpp" line="212"/>
         <source>Ceci est votre collection personnelle de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Dit is de eigen collectie van titelbloksjablonen; gebruik deze voor het toevoegen,verwijderen en wijzigen van uw eigen titelbloksjablonen.</translation>
+        <translation>Dit is uw persoonlijke collectie van titelbloksjablonen; gebruik deze voor het toevoegen,verwijderen en wijzigen van uw eigen titelbloksjablonen.</translation>
     </message>
 </context>
 <context>
@@ -3025,7 +3025,7 @@ Hier kunt u de standaardtekst hiervoor opgeven voor nieuwe elementen :</translat
     <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>Naam wijzigen</translation>
+        <translation>Importeren elementtekst</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="20"/>
@@ -3186,7 +3186,7 @@ Hier kunt u de standaardtekst hiervoor opgeven voor nieuwe elementen :</translat
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="56"/>
         <source>Cet élément est déjà lié</source>
-        <translation>Dit element is verbonden</translation>
+        <translation>Dit element is al verbonden</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="63"/>
@@ -3302,7 +3302,7 @@ Hier kunt u de standaardtekst hiervoor opgeven voor nieuwe elementen :</translat
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="20"/>
         <source>Form</source>
-        <translation>Kruisverwijzingseigenschappen</translation>
+        <translation>Verwijzingen</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="133"/>
@@ -3355,7 +3355,7 @@ Hier kunt u de standaardtekst hiervoor opgeven voor nieuwe elementen :</translat
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="55"/>
         <source>Lier l&apos;élément</source>
-        <translation>Verbinding met element maken</translation>
+        <translation>Element verbinden</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="56"/>
@@ -3388,7 +3388,7 @@ Hier kunt u de standaardtekst hiervoor opgeven voor nieuwe elementen :</translat
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="14"/>
         <source>Collage multiple</source>
-        <translation>Meervoudig kopiëren</translation>
+        <translation>Meervoudig plakken</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="22"/>
@@ -3442,7 +3442,7 @@ Hier kunt u de standaardtekst hiervoor opgeven voor nieuwe elementen :</translat
     <message>
         <location filename="../sources/NameList/ui/namelistdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>Dialoog</translation>
+        <translation>Namenlijst</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistdialog.cpp" line="66"/>
@@ -4367,7 +4367,7 @@ Wilt u de wijzigingen opslaan?</translation>
         <location filename="../sources/qetapp.cpp" line="97"/>
         <source>Chargement... Éditeur de schéma</source>
         <comment>splash screen caption</comment>
-        <translation>Laden...Schemabewerkingsvenster</translation>
+        <translation>Laden... Schemabewerker</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="101"/>
@@ -6359,7 +6359,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetproject.cpp" line="1328"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Création des folios&lt;/p&gt;</source>
-        <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Openen van huidig project...&lt;/b&gt;&lt;br/&gt;Genereren van bladen&lt;/p&gt;</translation>
+        <translation type="unfinished">&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Openen van project...&lt;/b&gt;&lt;br/&gt;Genereren van bladen&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1375"/>
@@ -7755,7 +7755,7 @@ Wilt u deze vervangen ?</translation>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="183"/>
         <source>chargement %p% (%v sur %m)</source>
-        <translation>Laden %p% (%v.van %m)</translation>
+        <translation>Laden %p% (%v van %m)</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="54"/>
