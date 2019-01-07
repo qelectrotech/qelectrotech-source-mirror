@@ -175,7 +175,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="171"/>
         <source>Traduction en hongrois</source>
-        <translation>Magyar Fordító</translation>
+        <translation>Magyar fordító</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="191"/>
@@ -4574,7 +4574,7 @@ Elérhető lehetőségek:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="279"/>
         <source>Co&amp;uper</source>
-        <translation>&amp;Kivágás</translation>
+        <translation>Ki&amp;vágás</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="280"/>
@@ -5481,7 +5481,7 @@ pip3install –upgrade qet_tb_generator
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="152"/>
         <source>Co&amp;uper</source>
-        <translation></translation>
+        <translation>Ki&amp;vágás</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="153"/>
@@ -6449,7 +6449,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="341"/>
         <source>Co&amp;uper</source>
         <comment>menu entry</comment>
-        <translation>K&amp;ivágás</translation>
+        <translation>Ki&amp;vágás</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="342"/>
