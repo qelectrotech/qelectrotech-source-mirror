@@ -810,7 +810,7 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="220"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
-        <translation>szagatott vonal</translation>
+        <translation>Szagatott vonal</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="221"/>
@@ -3481,7 +3481,7 @@ A szövegmező alapértelmezett értékének meghatározása az új elemek alá 
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="36"/>
         <source>Ajouter une ligne</source>
-        <translation>Vonal hozzáadása</translation>
+        <translation>Sor hozzáadása</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="48"/>
@@ -8225,13 +8225,13 @@ Cserélni akarod?</translation>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="182"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
-        <translation>szagatott vonal</translation>
+        <translation>Szagatott vonal</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="183"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
-        <translation>Szagatott pontvonal</translation>
+        <translation>Szaggatott pontvonal</translation>
     </message>
 </context>
 <context>
@@ -8806,7 +8806,7 @@ A többi mező nincs használva.</translation>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="49"/>
         <source>Traits et points</source>
-        <translation>Szagatott pontvonal</translation>
+        <translation>Szaggatott pontvonal</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="54"/>
@@ -9053,7 +9053,7 @@ A többi mező nincs használva.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="59"/>
         <source>Traits et points</source>
         <comment>element part line style</comment>
-        <translation>Szagatott pontvonal</translation>
+        <translation>Szaggatott pontvonal</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="64"/>
