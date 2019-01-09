@@ -23,14 +23,19 @@
 
 class Diagram;
 class ElementTextItemGroup;
+class Terminal;
 
 class DeleteQGraphicsItemCommand : public QUndoCommand
 {
 	public:
 		DeleteQGraphicsItemCommand(Diagram *diagram, const DiagramContent &content, QUndoCommand * parent = nullptr);
 		~DeleteQGraphicsItemCommand() override;
+		
 	private:
 		DeleteQGraphicsItemCommand(const DeleteQGraphicsItemCommand &);
+		
+		void setPotentialsOfRemovedElements();
+		Terminal *terminalInSamePotential(Terminal *terminal, Conductor *conductor_to_exclude);
 
 	public:
 		void undo() override;
@@ -43,6 +48,7 @@ class DeleteQGraphicsItemCommand : public QUndoCommand
 		QHash <Element *, QList<Element *> > m_link_hash; /// keep linked element for each removed element linked to other element.
 		QHash <DynamicElementTextItem *, Element *> m_elmt_text_hash; /// Keep the parent element of each deleted dynamic element text item
 		QHash <DynamicElementTextItem *, ElementTextItemGroup *> m_grp_texts_hash; ///Keep the parent group of each deleted element text item
+		QList <QPair<Terminal *, Terminal *>> m_connected_terminals;
 };
 
 #endif // DELETEQGRAPHICSITEMCOMMAND_H
