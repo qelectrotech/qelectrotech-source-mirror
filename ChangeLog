@@ -31,6 +31,9 @@
 When the search function is searching in a terminal element, they search only for the first terminal found, no matter if the terminal element have more than two terminals.
 So the list of conductors at the same potential is missing some conductors.
 This commit fix it, now the search function search for every terminals of a terminal element.
+* When remove an element with several conductors connected to the same terminal, the electrical potential is partially or totally destroyed.
+This commit fix it : When element is removed one or several conductors are created (if needed) to conserve the electrical potential.
+
 * Added new feature -> alignment.
 * Alignment of text field can be edited.
 * Added new context menu action "group the selected texts".
@@ -49,6 +52,7 @@ This commit fix it, now the search function search for every terminals of a term
 Added new title block variables %projectpath, %projectfilename, %projecttitle, previous-folio-num and next-folio-num
 "%saveddate, %savedtime, %savedfilename and %savedfilepath" they variables should be updated after file save or save as dialog is confirmed,
 before file is saved.
+* NameList widget : add a combo box for easily paste texts, like the variables for title block.
 
 
 
