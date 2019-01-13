@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2017 The QElectroTech Team
+	Copyright 2006-2019 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -260,4 +260,9 @@ void ShapeGraphicsItemPropertiesWidget::on_m_brush_color_pb_clicked()
 		setBrushColorButton(color);
 	if (m_live_edit)
 		apply();
+}
+
+void ShapeGraphicsItemPropertiesWidget::on_m_brush_style_cb_currentIndexChanged(int index)
+{
+    
 }
