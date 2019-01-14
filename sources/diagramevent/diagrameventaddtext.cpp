@@ -39,9 +39,8 @@ DiagramEventAddText::~DiagramEventAddText()
 /**
  * @brief DiagramEventAddText::mousePressEvent
  * @param event : event of mouse press event.
- * @return : true if this event is handled, otherwise false
  */
-bool DiagramEventAddText::mousePressEvent(QGraphicsSceneMouseEvent *event)
+void DiagramEventAddText::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton)
     {
@@ -50,7 +49,6 @@ bool DiagramEventAddText::mousePressEvent(QGraphicsSceneMouseEvent *event)
         text->setTextInteractionFlags(Qt::TextEditorInteraction);
         text->setFocus(Qt::MouseFocusReason);
         emit finish();
-        return true;
+		event->setAccepted(true);
     }
-    return false;
 }

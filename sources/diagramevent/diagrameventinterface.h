@@ -27,19 +27,16 @@ class Diagram;
 
 /**
  * @brief The DiagramEventInterface class
- * Each method return a bool: True if the methode do something else return false.
- * Each method of DVEventInterface return false;
  * isRunning() return true if action is running (do something). By default return false.
  *
  * ##USE DiagramEventInterface##
  * This class is the basic interface for manage event on a diagram.
  * To create a behavior for event diagram, we need to herite this class.
  * This interface work like this :
- * You need to create an interface and call diagram::setEventInterface(*your_interface).
+ * You need to create an interface and call diagram::setEventInterface(pointer_of_your_interface).
  * When a diagram get an event (mouse or key) if they have an event interface,
- * they send the event to the interface (for exemple mousePressEvent).
- * If the interface do something with this event, you need to return true to signal the diagram you work with this event.
- * (if you do nothing by defaut the interface return false, so diagram do nothing)
+ * they send the event (with the status accepted to false) to the interface (for exemple mousePressEvent).
+ * If the interface do something with this event, you need to set to true the accepted status of the event, then diagram do nothing.
  * When the interface job is done, we need to emit the signal finish(), the diagram use this signal to delete the interface.
  * Be carreful with the destructor, diagram can at any time (even if interface is still running) delete the interface,
  * the bool m_abort is here for that at destruction time.
@@ -52,13 +49,13 @@ class DiagramEventInterface : public QObject
 	public:
 		DiagramEventInterface(Diagram *diagram);
 		~DiagramEventInterface() override = 0;
-		virtual bool mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event);
-		virtual bool mousePressEvent       (QGraphicsSceneMouseEvent *event);
-		virtual bool mouseMoveEvent        (QGraphicsSceneMouseEvent *event);
-		virtual bool mouseReleaseEvent     (QGraphicsSceneMouseEvent *event);
-		virtual bool wheelEvent            (QGraphicsSceneWheelEvent *event);
-		virtual bool keyPressEvent         (QKeyEvent *event);
-		virtual bool keyReleaseEvent       (QKeyEvent *event);
+		virtual void mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event);
+		virtual void mousePressEvent       (QGraphicsSceneMouseEvent *event);
+		virtual void mouseMoveEvent        (QGraphicsSceneMouseEvent *event);
+		virtual void mouseReleaseEvent     (QGraphicsSceneMouseEvent *event);
+		virtual void wheelEvent            (QGraphicsSceneWheelEvent *event);
+		virtual void keyPressEvent         (QKeyEvent *event);
+		virtual void keyReleaseEvent       (QKeyEvent *event);
 		virtual bool isRunning () const;
 		virtual void init();
 

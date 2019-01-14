@@ -1319,7 +1319,7 @@ void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 	if (diagram_event)
 	{
 		d->setEventInterface(diagram_event);
-		connect(diagram_event, &DiagramEventInterface::finish, [action](){action->setChecked(false);});
+		connect(diagram_event, &DiagramEventInterface::destroyed, [action]() {action->setChecked(false);});
 	}
 }
 

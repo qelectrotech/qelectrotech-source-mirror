@@ -33,10 +33,10 @@ class DiagramEventAddShape : public DiagramEventInterface
 		DiagramEventAddShape(Diagram *diagram, QetShapeItem::ShapeType shape_type);
 
 		~DiagramEventAddShape() override;
-		bool mousePressEvent       (QGraphicsSceneMouseEvent *event) override;
-		bool mouseMoveEvent        (QGraphicsSceneMouseEvent *event) override;
-		bool mouseReleaseEvent     (QGraphicsSceneMouseEvent *event) override;
-		bool mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event) override;
+		void mousePressEvent       (QGraphicsSceneMouseEvent *event) override;
+		void mouseMoveEvent        (QGraphicsSceneMouseEvent *event) override;
+		void mouseReleaseEvent     (QGraphicsSceneMouseEvent *event) override;
+		void mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event) override;
 		void init() override;
 
 	private:

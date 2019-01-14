@@ -67,37 +67,35 @@ DiagramEventAddElement::~DiagramEventAddElement()
 /**
  * @brief DiagramEventAddElement::mouseMoveEvent
  * Move the element to new pos of mouse
+ * the event is always accepted
  * @param event
- * @return always true
  */
-bool DiagramEventAddElement::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+void DiagramEventAddElement::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
-	if (m_element)
-		m_element -> setPos(Diagram::snapToGrid(event->scenePos()));
-
-	return true;
+	if (m_element) {
+		m_element->setPos(Diagram::snapToGrid(event->scenePos()));
+	}
+	event->setAccepted(true);
 }
 
 /**
  * @brief DiagramEventAddElement::mousePressEvent
  * Do nothing, but return true for not transit the event to other thing in diagram.
+ * the event is always accepted
  * @param event
- * @return always true
  */
-bool DiagramEventAddElement::mousePressEvent(QGraphicsSceneMouseEvent *event)
-{
-	Q_UNUSED(event);
-	return true;
+void DiagramEventAddElement::mousePressEvent(QGraphicsSceneMouseEvent *event) {
+	event->setAccepted(true);
 }
 
 /**
  * @brief DiagramEventAddElement::mouseReleaseEvent
  * Right button finish this event (isRunning = false) and emit finish.
  * Left button add an element to diagram
+ * the event is always accepted
  * @param event
- * @return  always true
  */
-bool DiagramEventAddElement::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+void DiagramEventAddElement::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (m_element)
 	{
@@ -114,16 +112,16 @@ bool DiagramEventAddElement::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 		}
 	}
 
-	return true;
+	event->setAccepted(true);
 }
 
 /**
  * @brief DiagramEventAddElement::mouseDoubleClickEvent
  * If mouse left double clic, finish this event (isRunning = false) and emit finish
+ * the event is always accepted
  * @param event
- * @return always true
  */
-bool DiagramEventAddElement::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
+void DiagramEventAddElement::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (m_element && (event -> button() == Qt::LeftButton))
 	{
@@ -132,8 +130,8 @@ bool DiagramEventAddElement::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *eve
 		m_running = false;
 		emit finish();
 	}
-
-	return true;
+	
+	event->setAccepted(true);
 }
 
 /**
@@ -141,17 +139,17 @@ bool DiagramEventAddElement::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *eve
  * Press space key rotate the element to 90° (return true)
  * else  call DiagramEventInterface::keyPressEvent(event), and return the value.
  * @param event
- * @return
  */
-bool DiagramEventAddElement::keyPressEvent(QKeyEvent *event)
+void DiagramEventAddElement::keyPressEvent(QKeyEvent *event)
 {
 	if (m_element && event->key() == Qt::Key_Space)
 	{
 		m_element->setRotation(m_element->rotation() + 90);
-		return true;
+		event->setAccepted(true);
 	}
-
-	return DiagramEventInterface::keyPressEvent(event);
+	else {
+		DiagramEventInterface::keyPressEvent(event);
+	}
 }
 
 /**

@@ -57,15 +57,17 @@ DiagramEventAddShape::~DiagramEventAddShape()
  * @brief DiagramEventAddShape::mousePressEvent
  * Action when mouse is pressed
  * @param event : event of mouse press
- * @return : true if this event is managed, otherwise false
  */
-bool DiagramEventAddShape::mousePressEvent(QGraphicsSceneMouseEvent *event)
+void DiagramEventAddShape::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-	if (Q_UNLIKELY(m_diagram->isReadOnly())) return false;
+	if (Q_UNLIKELY(m_diagram->isReadOnly())) {
+		return;
+	}
 
 	QPointF pos = event->scenePos();
-	if (event->modifiers() != Qt::ControlModifier)
+	if (event->modifiers() != Qt::ControlModifier) {
 		pos = Diagram::snapToGrid(pos);
+	}
 
 		//Action for left mouse click
 	if (event->button() == Qt::LeftButton)
@@ -75,14 +77,15 @@ bool DiagramEventAddShape::mousePressEvent(QGraphicsSceneMouseEvent *event)
 		{
 			m_shape_item = new QetShapeItem(pos, pos, m_shape_type);
 			m_diagram->addItem (m_shape_item);
-			return true;
+			event->setAccepted(true);
+			return;
 		}
 
 			//If current item isn't a polyline, add it with an undo command
 		if (m_shape_type != QetShapeItem::Polygon)
 		{
 			m_shape_item->setP2 (pos);
-			if(m_shape_item->shapeType() == QetShapeItem::Rectangle || m_shape_item->shapeType() == QetShapeItem::Ellipse) {
+			if (m_shape_item->shapeType() == QetShapeItem::Rectangle || m_shape_item->shapeType() == QetShapeItem::Ellipse) {
 				m_shape_item->setRect(m_shape_item->rect().normalized());
 			}
 			m_diagram->undoStack().push (new AddItemCommand<QetShapeItem *> (m_shape_item, m_diagram));
@@ -94,46 +97,42 @@ bool DiagramEventAddShape::mousePressEvent(QGraphicsSceneMouseEvent *event)
 			m_shape_item->setNextPoint (pos);
 		}
 
-		return true;
+		event->setAccepted(true);
+		return;
 	}
 
-	if (event->button() == Qt::RightButton)
-		return true;
-
-	return false;
-
+	if (event->button() == Qt::RightButton) {
+		event->setAccepted(true);
+	}
 }
 
 /**
  * @brief DiagramEventAddShape::mouseMoveEvent
  * Action when mouse move
  * @param event : event of mouse move
- * @return : true if this event is managed, otherwise false
  */
-bool DiagramEventAddShape::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+void DiagramEventAddShape::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
 	updateHelpCross(event->scenePos());
 
 	if (m_shape_item && event->buttons() == Qt::NoButton)
 	{
 		QPointF pos = event->scenePos();
-		if (event->modifiers() != Qt::ControlModifier)
+		if (event->modifiers() != Qt::ControlModifier) {
 			pos = Diagram::snapToGrid(pos);
+		}
 
 		m_shape_item->setP2 (pos);
-		return true;
+		event->setAccepted(true);
 	}
-
-	return false;
 }
 
 /**
  * @brief DiagramEventAddShape::mouseReleaseEvent
  * Action when mouse button is released
  * @param event : event of mouse release
- * @return : true if this event is managed, otherwise false
  */
-bool DiagramEventAddShape::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+void DiagramEventAddShape::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (event->button() == Qt::RightButton)
 	{
@@ -150,33 +149,32 @@ bool DiagramEventAddShape::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 					pos = Diagram::snapToGrid(pos);
 
 				m_shape_item->setP2(pos); //Set the new last point under the cursor
-				return true;
+				event->setAccepted(true);
+				return;
 			}
 
 				//For other case, we remove item from scene
 			m_diagram->removeItem(m_shape_item);
 			delete m_shape_item;
 			m_shape_item = nullptr;
-			return true;
+			event->setAccepted(true);
+			return;
 		}
 
 			//Else (no shape), we set to false the running status
 			//for indicate to the owner of this event that everything is done
 		m_running = false;
 		emit finish();
-		return true;
+		event->setAccepted(true);
 	}
-
-	return false;
 }
 
 /**
  * @brief DiagramEventAddShape::mouseDoubleClickEvent
  * Action when mouse button is double clicked
  * @param event : event of mouse double click
- * @return : true if this event is managed, otherwise false
  */
-bool DiagramEventAddShape::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
+void DiagramEventAddShape::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 {
 		//If current item is a polyline, add it with an undo command
 	if (m_shape_item && m_shape_type == QetShapeItem::Polygon && event->button() == Qt::LeftButton)
@@ -186,10 +184,8 @@ bool DiagramEventAddShape::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event
 		m_shape_item->removePoints();
 		m_diagram->undoStack().push (new AddItemCommand<QetShapeItem *> (m_shape_item, m_diagram));
 		m_shape_item = nullptr; //< set to nullptr for create new shape at next left clic
-		return true;
+		event->setAccepted(true);
 	}
-
-	return false;
 }
 
 void DiagramEventAddShape::init()

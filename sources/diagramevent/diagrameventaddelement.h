@@ -36,11 +36,11 @@ class DiagramEventAddElement : public DiagramEventInterface
 		DiagramEventAddElement(ElementsLocation &location, Diagram *diagram, QPointF pos = QPointF(0,0));
 		~DiagramEventAddElement() override;
 
-		bool mouseMoveEvent        (QGraphicsSceneMouseEvent *event) override;
-		bool mousePressEvent       (QGraphicsSceneMouseEvent *event) override;
-		bool mouseReleaseEvent     (QGraphicsSceneMouseEvent *event) override;
-		bool mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event) override;
-		bool keyPressEvent (QKeyEvent *event) override;
+		void mouseMoveEvent        (QGraphicsSceneMouseEvent *event) override;
+		void mousePressEvent       (QGraphicsSceneMouseEvent *event) override;
+		void mouseReleaseEvent     (QGraphicsSceneMouseEvent *event) override;
+		void mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event) override;
+		void keyPressEvent (QKeyEvent *event) override;
 		void init() override;
 
 	private:

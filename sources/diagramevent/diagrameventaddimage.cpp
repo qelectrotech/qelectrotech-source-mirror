@@ -53,9 +53,8 @@ DiagramEventAddImage::~DiagramEventAddImage()
  * @brief DiagramEventAddImage::mousePressEvent
  * Action when mouse is pressed
  * @param event : event of mouse pressed
- * @return : true if this event is handled, otherwise false
  */
-bool DiagramEventAddImage::mousePressEvent(QGraphicsSceneMouseEvent *event)
+void DiagramEventAddImage::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     if (m_image && event -> button() == Qt::LeftButton)
     {
@@ -64,46 +63,46 @@ bool DiagramEventAddImage::mousePressEvent(QGraphicsSceneMouseEvent *event)
         pos.ry() -= m_image->boundingRect().height()/2;
         m_diagram -> undoStack().push (new AddItemCommand<DiagramImageItem *>(m_image, m_diagram, pos));
 
-        foreach (QGraphicsView *view, m_diagram->views())
+		for (QGraphicsView *view : m_diagram->views()) {
             view->setContextMenuPolicy((Qt::DefaultContextMenu));
+		}
 
         m_running = false;
         emit finish();
-        return true;
+		event->setAccepted(true);
     }
-
-    if (m_image && event -> button() == Qt::RightButton)
+    else if (m_image && event -> button() == Qt::RightButton)
     {
 			m_image->setRotation(m_image->rotation() + 90);
-            return true;
+            event->setAccepted(true);
     }
-
-    return false;
 }
 
 /**
  * @brief DiagramEventAddImage::mouseMoveEvent
  * Action when mouse move
  * @param event : event of mouse move
- * @return : true if this event is handled, otherwise false
  */
-bool DiagramEventAddImage::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+void DiagramEventAddImage::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
-    if (!m_image || event -> buttons() != Qt::NoButton) return false;
+	if (!m_image || event->buttons() != Qt::NoButton) {
+		return;
+	};
 
     QPointF pos = event->scenePos();
 
     if (!m_is_added)
     {
-        foreach (QGraphicsView *view, m_diagram->views())
+		for (QGraphicsView *view : m_diagram->views()) {
             view->setContextMenuPolicy((Qt::NoContextMenu));
+		}
 
-        m_diagram -> addItem(m_image);
+        m_diagram->addItem(m_image);
         m_is_added = true;
     }
 
-    m_image -> setPos(pos - m_image -> boundingRect().center());
-    return true;
+    m_image->setPos(pos - m_image->boundingRect().center());
+    event->setAccepted(true);
 }
 
 /**
@@ -111,30 +110,29 @@ bool DiagramEventAddImage::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
  * This method is only use to overwrite double click.
  * When double click, image propertie dialog isn't open.
  * @param event : event of mouse double click.
- * @return : true if this event is handled, otherwise false
  */
-bool DiagramEventAddImage::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
-{
-    Q_UNUSED(event);
-    return true;
+void DiagramEventAddImage::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
+	event->setAccepted(true);
 }
 
 /**
  * @brief DiagramEventAddImage::wheelEvent
  * Action when mouse wheel is rotate
  * @param event: evet of mouse wheel
- * @return : true if this event is handled, otherwise false
  */
-bool DiagramEventAddImage::wheelEvent(QGraphicsSceneWheelEvent *event)
+void DiagramEventAddImage::wheelEvent(QGraphicsSceneWheelEvent *event)
 {
-    if (!m_is_added || !m_image || event -> modifiers() != Qt::CTRL) return false;
+	if (!m_is_added || !m_image || event -> modifiers() != Qt::CTRL) {
+		return;
+	}
 
     qreal scaling = m_image->scale();
     event->delta() > 1? scaling += 0.01 : scaling -= 0.01;
-    if (scaling>0.01 && scaling <= 2)
+	if (scaling>0.01 && scaling <= 2) {
             m_image->setScale(scaling);
+	}
 
-    return true;
+    event->setAccepted(true);
 }
 
 /**

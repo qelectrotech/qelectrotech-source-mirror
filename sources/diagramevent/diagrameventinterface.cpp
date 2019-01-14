@@ -31,50 +31,44 @@ DiagramEventInterface::DiagramEventInterface(Diagram *diagram) :
 
 DiagramEventInterface::~DiagramEventInterface() {};
 
-bool DiagramEventInterface::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
+void DiagramEventInterface::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 	Q_UNUSED (event);
-	return false;
 }
 
-bool DiagramEventInterface::mousePressEvent(QGraphicsSceneMouseEvent *event) {
+void DiagramEventInterface::mousePressEvent(QGraphicsSceneMouseEvent *event) {
 	Q_UNUSED (event);
-	return false;
 }
 
-bool DiagramEventInterface::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
+void DiagramEventInterface::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 	Q_UNUSED (event);
-	return false;
 }
 
-bool DiagramEventInterface::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
+void DiagramEventInterface::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
 	Q_UNUSED (event);
-	return false;
 }
 
-bool DiagramEventInterface::wheelEvent(QGraphicsSceneWheelEvent *event) {
+void DiagramEventInterface::wheelEvent(QGraphicsSceneWheelEvent *event) {
 	Q_UNUSED (event);
-	return false;
 }
 
 /**
  * @brief DiagramEventInterface::keyPressEvent
  * By default, press escape key abort the curent action
  * @param event
- * @return
  */
-bool DiagramEventInterface::keyPressEvent(QKeyEvent *event) {
-	if (event->key() == Qt::Key_Escape) {
+void DiagramEventInterface::keyPressEvent(QKeyEvent *event)
+{
+	if (event->key() == Qt::Key_Escape)
+	{
 		m_running = false;
 		m_abort = true;
 		emit finish();
-		return true;
+		event->setAccepted(true);
 	}
-	return false;
 }
 
-bool DiagramEventInterface::keyReleaseEvent(QKeyEvent *event) {
+void DiagramEventInterface::keyReleaseEvent(QKeyEvent *event){
 	Q_UNUSED (event);
-	return false;
 }
 
 bool DiagramEventInterface::isRunning() const {

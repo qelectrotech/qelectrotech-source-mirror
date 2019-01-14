@@ -182,15 +182,14 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
  */
 void Diagram::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 {
-	if (m_event_interface)
-		if(m_event_interface->mouseDoubleClickEvent(event))
-		{
-			if(!m_event_interface->isRunning())
-			{
-				delete m_event_interface; m_event_interface = nullptr;
-			}
+	event->setAccepted(false);
+	
+	if (m_event_interface) {
+		m_event_interface->mouseDoubleClickEvent(event);
+		if (event->isAccepted()) {
 			return;
 		}
+	}
 
 	QGraphicsScene::mouseDoubleClickEvent(event);
 }
@@ -202,15 +201,14 @@ void Diagram::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
  */
 void Diagram::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-	if (m_event_interface)
-		if(m_event_interface->mousePressEvent(event))
-		{
-			if(!m_event_interface->isRunning())
-			{
-				delete m_event_interface; m_event_interface = nullptr;
-			}
+	event->setAccepted(false);
+	
+	if (m_event_interface) {
+		m_event_interface->mousePressEvent(event);
+		if (event->isAccepted()) {
 			return;
 		}
+	}
 
 	QGraphicsScene::mousePressEvent(event);
 }
@@ -222,15 +220,14 @@ void Diagram::mousePressEvent(QGraphicsSceneMouseEvent *event)
  */
 void Diagram::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
-	if (m_event_interface)
-		if(m_event_interface->mouseMoveEvent(event))
-		{
-			if(!m_event_interface->isRunning())
-			{
-				delete m_event_interface; m_event_interface = nullptr;
-			}
+	event->setAccepted(false);
+	
+	if (m_event_interface) {
+		m_event_interface->mouseMoveEvent(event);
+		if (event->isAccepted()) {
 			return;
 		}
+	}
 
 	QGraphicsScene::mouseMoveEvent(event);
 }
@@ -242,15 +239,14 @@ void Diagram::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
  */
 void Diagram::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
-	if (m_event_interface)
-		if(m_event_interface->mouseReleaseEvent(event))
-		{
-			if(!m_event_interface->isRunning())
-			{
-				delete m_event_interface; m_event_interface = nullptr;
-			}
+	event->setAccepted(false);
+	
+	if (m_event_interface) {
+		m_event_interface->mouseReleaseEvent(event);
+		if (event->isAccepted()) {
 			return;
 		}
+	}
 
 	QGraphicsScene::mouseReleaseEvent(event);
 }
@@ -262,15 +258,14 @@ void Diagram::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
  */
 void Diagram::wheelEvent(QGraphicsSceneWheelEvent *event)
 {
-	if (m_event_interface)
-		if(m_event_interface->wheelEvent(event))
-		{
-			if(!m_event_interface->isRunning())
-			{
-				delete m_event_interface; m_event_interface = nullptr;
-			}
+	event->setAccepted(false);
+	
+	if (m_event_interface) {
+		m_event_interface->wheelEvent(event);
+		if (event->isAccepted()) {
 			return;
 		}
+	}
 
 	QGraphicsScene::wheelEvent(event);
 }
@@ -283,15 +278,14 @@ void Diagram::wheelEvent(QGraphicsSceneWheelEvent *event)
  */
 void Diagram::keyPressEvent(QKeyEvent *event)
 {
-	if (m_event_interface)
-		if(m_event_interface->keyPressEvent(event))
-		{
-			if(!m_event_interface->isRunning())
-			{
-				delete m_event_interface; m_event_interface = nullptr;
-			}
+	event->setAccepted(false);
+	
+	if (m_event_interface) {
+		m_event_interface->keyPressEvent(event);
+		if (event->isAccepted()) {
 			return;
 		}
+	}
 	
 	if (!isReadOnly())
 	{
@@ -373,15 +367,14 @@ void Diagram::keyPressEvent(QKeyEvent *event)
  */
 void Diagram::keyReleaseEvent(QKeyEvent *e)
 {
-	if (m_event_interface)
-		if(m_event_interface->keyReleaseEvent(e))
-		{
-			if(!m_event_interface->isRunning())
-			{
-				delete m_event_interface; m_event_interface = nullptr;
-			}
+	e->setAccepted(false);
+	
+	if (m_event_interface) {
+		m_event_interface->keyReleaseEvent(e);
+		if (e->isAccepted()) {
 			return;
 		}
+	}
 	
 	bool transmit_event = true;
 	if (!isReadOnly()) {
@@ -417,6 +410,12 @@ void Diagram::setEventInterface(DiagramEventInterface *event_interface)
 		event_interface -> init();
 	}
 	m_event_interface = event_interface;
+	
+	connect(m_event_interface, &DiagramEventInterface::finish, [this]()
+	{
+		delete this->m_event_interface;
+		this->m_event_interface = nullptr;
+	});
 }
 
 /**
