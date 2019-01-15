@@ -6359,7 +6359,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetproject.cpp" line="1328"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Création des folios&lt;/p&gt;</source>
-        <translation type="unfinished">&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Openen van project...&lt;/b&gt;&lt;br/&gt;Genereren van bladen&lt;/p&gt;</translation>
+        <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Openen van project...&lt;/b&gt;&lt;br/&gt;Tekenenen van schemabladen&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1375"/>
@@ -7750,7 +7750,7 @@ Wilt u deze vervangen ?</translation>
     <message>
         <location filename="../sources/ui/dialogwaiting.cpp" line="68"/>
         <source>%p% effectué (%v sur %m)</source>
-        <translation>%p% gedaan.(%v van %m)</translation>
+        <translation>%p% gedaan (%v van %m)</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="183"/>
