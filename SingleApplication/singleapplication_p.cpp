@@ -385,7 +385,8 @@ void SingleApplicationPrivate::readInitMessageBody( QLocalSocket *sock )
     }
 
     if (sock->bytesAvailable() > 0) {
-        Q_EMIT this->slotDataAvailable( sock, instanceId );
+			//This line crash
+        //Q_EMIT this->slotDataAvailable( sock, instanceId );
     }
 }
 
