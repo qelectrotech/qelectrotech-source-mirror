@@ -40,7 +40,7 @@ int main(int argc, char **argv)
     qputenv("QT_DEVICE_PIXEL_RATIO", QByteArray("auto"));
 #endif
 	
-	SingleApplication app(argc, argv);
+	SingleApplication app(argc, argv, true);
 	
 	if (app.isSecondary())
 	{
