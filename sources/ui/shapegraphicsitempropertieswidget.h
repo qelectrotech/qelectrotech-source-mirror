@@ -58,7 +58,7 @@ class ShapeGraphicsItemPropertiesWidget : public PropertiesEditorWidget
 		void on_m_color_pb_clicked();
 		void on_m_brush_color_pb_clicked();
 
-		void on_m_brush_style_cb_currentIndexChanged(int index);
+		
 		
 		private:
 		Ui::ShapeGraphicsItemPropertiesWidget *ui;

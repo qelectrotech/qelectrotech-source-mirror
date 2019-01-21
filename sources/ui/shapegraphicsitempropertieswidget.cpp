@@ -262,7 +262,4 @@ void ShapeGraphicsItemPropertiesWidget::on_m_brush_color_pb_clicked()
 		apply();
 }
 
-void ShapeGraphicsItemPropertiesWidget::on_m_brush_style_cb_currentIndexChanged(int index)
-{
-    
-}
+
