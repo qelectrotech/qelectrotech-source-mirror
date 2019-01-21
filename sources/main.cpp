@@ -44,10 +44,11 @@ int main(int argc, char **argv)
 	
 	if (app.isSecondary())
 	{
-		QStringList strl = app.arguments();
+		QStringList arg_list = app.arguments();
 			//Remove the first argument, it's the binary file
-		strl.takeFirst();
-		QString message = "launched-with-args: " + QET::joinWithSpaces(strl);
+		arg_list.takeFirst();
+		QETArguments qetarg(arg_list);
+		QString message = "launched-with-args: " + QET::joinWithSpaces(QStringList(qetarg.arguments()));
 		app.sendMessage(message.toUtf8());
 		return 0;
 	}
