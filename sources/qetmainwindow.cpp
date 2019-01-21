@@ -85,7 +85,7 @@ void QETMainWindow::initCommonActions() {
 	manual_online_ -> setStatusTip(tr("Lance le navigateur par défaut vers le manuel en ligne de QElectroTech", "status bar tip"));
 	
 	connect(manual_online_, &QAction::triggered, [](bool) {
-	QString link = "http://download.tuxfamily.org/qet/joshua/html/QET.html";
+	QString link = "https://download.tuxfamily.org/qet/manual_0.7/build/index.html";
 	QDesktopServices::openUrl(QUrl(link));
 	});
 	
