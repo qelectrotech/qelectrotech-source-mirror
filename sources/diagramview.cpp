@@ -409,8 +409,15 @@ void DiagramView::mousePressEvent(QMouseEvent *e)
 		//Start drag view when hold the middle button
 	if (e->button() == Qt::MidButton)
 	{
-		m_rubber_band_origin = e->pos();
+		m_drag_last_pos = e->pos();
 		viewport()->setCursor(Qt::ClosedHandCursor);
+	}
+	else if (e->button() == Qt::LeftButton &&
+			 e->modifiers() == Qt::CTRL)
+	{
+		m_free_rubberbanding = true;
+		m_free_rubberband = QPolygon();
+		QGraphicsView::mousePressEvent(e);
 	}
 
 	else QGraphicsView::mousePressEvent(e);
@@ -429,11 +436,49 @@ void DiagramView::mouseMoveEvent(QMouseEvent *e)
 	{
 		QScrollBar *h = horizontalScrollBar();
 		QScrollBar *v = verticalScrollBar();
-		QPointF pos = m_rubber_band_origin - e -> pos();
-		m_rubber_band_origin = e -> pos();
+		QPointF pos = m_drag_last_pos - e -> pos();
+		m_drag_last_pos = e -> pos();
 		h -> setValue(h -> value() + pos.x());
 		v -> setValue(v -> value() + pos.y());
 		adjustSceneRect();
+	}
+	else if (m_free_rubberbanding)
+	{
+			//Update old free rubberband
+		if (viewportUpdateMode() != QGraphicsView::NoViewportUpdate && !m_free_rubberband.isEmpty())
+		{
+			if (viewportUpdateMode() != QGraphicsView::FullViewportUpdate) {
+				viewport()->update(m_free_rubberband.boundingRect().toRect());
+			}
+			else {
+				update();
+			}
+		}
+		
+			//Stop polygon rubberbanding if user has let go of all buttons (even
+			//if we didn't get the release events)
+		if (!e->buttons()) {
+			m_free_rubberbanding = false;
+			m_free_rubberband = QPolygon();
+			return;
+		}
+		m_free_rubberband.append(mapToScene(e->pos()));
+		emit freeRubberBandChanged(m_free_rubberband);
+		
+		if (viewportUpdateMode() != QGraphicsView::NoViewportUpdate)
+		{
+			if (viewportUpdateMode() != QGraphicsView::FullViewportUpdate) {
+				viewport()->update(mapFromScene(m_free_rubberband.boundingRect()));
+			}
+			else {
+				update();
+			}
+		}
+		
+			//Set the new selection area
+		QPainterPath selection_area;
+		selection_area.addPolygon(m_free_rubberband);
+		m_diagram->setSelectionArea(selection_area);
 	}
 
 	else QGraphicsView::mouseMoveEvent(e);
@@ -447,10 +492,28 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e)
 {
 	if (m_event_interface && m_event_interface->mouseReleaseEvent(e)) return;
 
-	//Stop drag view
-	if (e -> button() == Qt::MidButton) viewport()->setCursor(Qt::ArrowCursor);
-
-	else QGraphicsView::mouseReleaseEvent(e);
+		//Stop drag view
+	if (e -> button() == Qt::MidButton) {
+		viewport()->setCursor(Qt::ArrowCursor);
+	}
+	else if (m_free_rubberbanding && !e->buttons())
+	{
+		if (viewportUpdateMode() != QGraphicsView::NoViewportUpdate)
+		{
+			if (viewportUpdateMode() != QGraphicsView::FullViewportUpdate) {
+				QRectF r(mapFromScene(m_free_rubberband).boundingRect());
+				r.adjust(-5, -5, 5, 5);
+				viewport()->update(r.toRect());
+			} else {
+				update();
+			}
+		}
+		m_free_rubberbanding = false;
+		m_free_rubberband = QPolygon();
+		emit freeRubberBandChanged(m_free_rubberband);
+	}
+	else
+		QGraphicsView::mouseReleaseEvent(e);
 }
 
 /**
@@ -909,8 +972,8 @@ bool DiagramView::event(QEvent *e) {
 	if (e->type() == QEvent::Gesture)
 		return gestureEvent(static_cast<QGestureEvent *>(e));
 
-	// fait en sorte que les raccourcis clavier arrivent prioritairement sur la
-	// vue plutot que de remonter vers les QMenu / QAction
+		// fait en sorte que les raccourcis clavier arrivent prioritairement sur la
+		// vue plutot que de remonter vers les QMenu / QAction
 	if (
 		e -> type() == QEvent::ShortcutOverride &&
 		selectedItemHasFocus()
@@ -919,6 +982,25 @@ bool DiagramView::event(QEvent *e) {
 		return(true);
 	}
 	return(QGraphicsView::event(e));
+}
+
+void DiagramView::paintEvent(QPaintEvent *event)
+{
+	QGraphicsView::paintEvent(event);
+	
+	if (m_free_rubberbanding && m_free_rubberband.count() >= 3)
+	{
+		QPainter painter(viewport());
+		painter.setRenderHint(QPainter::Antialiasing);
+		QPen pen(Qt::darkGreen);
+		pen.setWidth(1);
+		painter.setPen(pen);
+		QColor color(Qt::darkGreen);
+		color.setAlpha(50);
+		QBrush brush(color);
+		painter.setBrush(brush);
+		painter.drawPolygon(mapFromScene(m_free_rubberband));
+	}
 }
 
 /**

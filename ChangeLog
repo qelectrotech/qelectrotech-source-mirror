@@ -46,6 +46,7 @@ This commit fix it : When element is removed one or several conductors are creat
 * Diagram properties, Element properties, Independent text item can be changed (and mass changed) through the search and replace widget.
 * Added 4 tools for edit the depth (Z value) of items.
 * Element panel : elements can be searched by their name but also with by all their informations.
+* New free selection style.
 
 
 * Title block editor :

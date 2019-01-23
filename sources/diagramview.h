@@ -53,10 +53,14 @@ class DiagramView : public QGraphicsView
 		QAction          *m_paste_here = nullptr;
 		QAction			 *m_multi_paste = nullptr;
 		QPoint            m_paste_here_pos;
-		QPointF           m_rubber_band_origin;
+		QPointF           m_drag_last_pos;
 		bool              m_fresh_focus_in,
 						  m_first_activation = true;
 		QList<QAction *>  m_separators;
+		QPolygonF m_free_rubberband;
+		bool m_free_rubberbanding = false;
+		
+		
 	public:
 		QString title() const;
 		void editDiagramProperties();
@@ -74,18 +78,20 @@ class DiagramView : public QGraphicsView
 		void keyPressEvent(QKeyEvent *) override;
 		void keyReleaseEvent(QKeyEvent *) override;
 		bool event(QEvent *) override;
-		virtual bool switchToVisualisationModeIfNeeded(QInputEvent *e);
-		virtual bool switchToSelectionModeIfNeeded(QInputEvent *e);
-		virtual bool isCtrlShifting(QInputEvent *);
-		virtual bool selectedItemHasFocus();
-	
-	private:
+		void paintEvent(QPaintEvent *event) override;
 		void mousePressEvent(QMouseEvent *) override;
 		void mouseMoveEvent(QMouseEvent *) override;
 		void mouseReleaseEvent(QMouseEvent *) override;
 		void dragEnterEvent(QDragEnterEvent *) override;
 		void dragMoveEvent(QDragMoveEvent *) override;
 		void dropEvent(QDropEvent *) override;
+		
+		virtual bool switchToVisualisationModeIfNeeded(QInputEvent *e);
+		virtual bool switchToSelectionModeIfNeeded(QInputEvent *e);
+		virtual bool isCtrlShifting(QInputEvent *);
+		virtual bool selectedItemHasFocus();
+	
+	private:
 		void handleElementDrop(QDropEvent *);
 		void handleTitleBlockDrop(QDropEvent *);
 		void handleTextDrop(QDropEvent *);
@@ -108,6 +114,9 @@ class DiagramView : public QGraphicsView
 		void editElementRequired(const ElementsLocation &);
 			/// Signal emmitted when diagram must be show
 		void showDiagram (Diagram *);
+			/// Signal emmtted when free rubberband changed.
+			/// When free rubberband selection ends this signal will be emitted with null value.
+		void freeRubberBandChanged(QPolygonF polygon);
 	
 	public slots:
 		void selectNothing();
