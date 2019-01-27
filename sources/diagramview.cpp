@@ -44,6 +44,7 @@
 #include "dynamicelementtextitem.h"
 #include "multipastedialog.h"
 #include "changetitleblockcommand.h"
+#include "conductorcreator.h"
 
 /**
 	Constructeur
@@ -448,7 +449,7 @@ void DiagramView::mouseMoveEvent(QMouseEvent *e)
 		if (viewportUpdateMode() != QGraphicsView::NoViewportUpdate && !m_free_rubberband.isEmpty())
 		{
 			if (viewportUpdateMode() != QGraphicsView::FullViewportUpdate) {
-				viewport()->update(m_free_rubberband.boundingRect().toRect());
+				viewport()->update(m_free_rubberband.boundingRect().toRect().adjusted(-10,-10,10,10));
 			}
 			else {
 				update();
@@ -468,7 +469,7 @@ void DiagramView::mouseMoveEvent(QMouseEvent *e)
 		if (viewportUpdateMode() != QGraphicsView::NoViewportUpdate)
 		{
 			if (viewportUpdateMode() != QGraphicsView::FullViewportUpdate) {
-				viewport()->update(mapFromScene(m_free_rubberband.boundingRect()));
+				viewport()->update(mapFromScene(m_free_rubberband.boundingRect().adjusted(-10,-10,10,10)));
 			}
 			else {
 				update();
@@ -493,24 +494,43 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e)
 	if (m_event_interface && m_event_interface->mouseReleaseEvent(e)) return;
 
 		//Stop drag view
-	if (e -> button() == Qt::MidButton) {
+	if (e -> button() == Qt::MidButton)
+	{
 		viewport()->setCursor(Qt::ArrowCursor);
 	}
 	else if (m_free_rubberbanding && !e->buttons())
 	{
 		if (viewportUpdateMode() != QGraphicsView::NoViewportUpdate)
 		{
-			if (viewportUpdateMode() != QGraphicsView::FullViewportUpdate) {
+			if (viewportUpdateMode() != QGraphicsView::FullViewportUpdate)
+			{
 				QRectF r(mapFromScene(m_free_rubberband).boundingRect());
-				r.adjust(-5, -5, 5, 5);
+				r.adjust(-10, -10, 10, 10);
 				viewport()->update(r.toRect());
-			} else {
+			}
+			else
+			{
 				update();
 			}
 		}
+		
+			//Popup a menu with an action to create conductors between
+			//all selected terminals.
+		QAction *act = new QAction(tr("Connecter les bornes sélectionné"), this);
+		QPolygonF polygon_ = m_free_rubberband;
+		connect(act, &QAction::triggered, [this, polygon_]()
+		{
+			ConductorCreator::create(m_diagram, polygon_);
+			diagram()->clearSelection();
+		});
+		QMenu *menu = new QMenu(this);
+		menu->addAction(act);
+		menu->popup(e->globalPos());
+		
 		m_free_rubberbanding = false;
 		m_free_rubberband = QPolygon();
 		emit freeRubberBandChanged(m_free_rubberband);
+		e->accept();
 	}
 	else
 		QGraphicsView::mouseReleaseEvent(e);
@@ -984,6 +1004,11 @@ bool DiagramView::event(QEvent *e) {
 	return(QGraphicsView::event(e));
 }
 
+/**
+ * @brief DiagramView::paintEvent
+ * Reimplemented from QGraphicsView
+ * @param event
+ */
 void DiagramView::paintEvent(QPaintEvent *event)
 {
 	QGraphicsView::paintEvent(event);

@@ -96,7 +96,8 @@ INCLUDEPATH += sources \
 			   sources/SearchAndReplace \
 			   sources/SearchAndReplace/ui \
 			   sources/NameList \
-			   sources/NameList/ui
+			   sources/NameList/ui \
+			   sources/utils
 
 
 # Fichiers sources
@@ -121,7 +122,8 @@ HEADERS += $$files(sources/*.h) $$files(sources/ui/*.h) \
            $$files(sources/SearchAndReplace/*.h) \
 		   $$files(sources/SearchAndReplace/ui/*.h) \
 		   $$files(sources/NameList/*.h) \
-		   $$files(sources/NameList/ui/*.h)
+		   $$files(sources/NameList/ui/*.h) \
+		   $$files(sources/utils/*.h)
 
 SOURCES += $$files(sources/*.cpp) \
            $$files(sources/editor/*.cpp) \
@@ -145,8 +147,9 @@ SOURCES += $$files(sources/*.cpp) \
 		   $$files(sources/SearchAndReplace/*.cpp) \
 		   $$files(sources/SearchAndReplace/ui/*.cpp) \
 		   $$files(sources/NameList/*.cpp) \
-		   $$files(sources/NameList/ui/*.cpp)
-
+		   $$files(sources/NameList/ui/*.cpp) \
+		   $$files(sources/utils/*.cpp)
+    
 # Liste des fichiers qui seront incorpores au binaire en tant que ressources Qt
 RESOURCES += qelectrotech.qrc
 

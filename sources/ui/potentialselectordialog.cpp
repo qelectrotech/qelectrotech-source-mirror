@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2017 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -164,6 +164,51 @@ class LinkReportPotentialSelector : public AbstractPotentialSelector
 };
 
 //### END PRIVATE CLASS ###//
+
+
+ConductorProperties PotentialSelectorDialog::chosenProperties(QList<ConductorProperties> list, QWidget *widget)
+{
+	if (list.isEmpty()) {
+		return ConductorProperties() ;
+	} else if (list.size() == 1) {
+		return list.first();
+	}
+	
+	QDialog dialog(widget);
+	QVBoxLayout layout(widget);
+	dialog.setLayout(&layout);
+	QLabel label(tr("Veuillez choisir un potentiel électrique de la liste \n"
+					"à utiliser pour le nouveau potentiel"));
+	layout.addWidget(&label);
+	
+	QHash <QRadioButton *, ConductorProperties> H;
+	for (ConductorProperties cp : list)
+	{
+		QString text;
+		if(!cp.text.isEmpty())
+			text.append(tr("\nNuméro : %1").arg(cp.text));
+		if(!cp.m_function.isEmpty())
+			text.append(tr("\nFonction : %1").arg(cp.m_function));
+		if(!cp.m_tension_protocol.isEmpty())
+			text.append(tr("\nTension/protocole : %1").arg(cp.m_tension_protocol));
+		
+		QRadioButton *b = new QRadioButton(text, &dialog);
+		layout.addWidget(b);
+		H.insert(b, cp);
+	}
+	QDialogButtonBox *button_box = new QDialogButtonBox(QDialogButtonBox::Ok, &dialog);
+	layout.addWidget(button_box);
+	connect(button_box, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+	
+	dialog.exec();
+	for (QRadioButton *b : H.keys()) {
+		if(b->isChecked()) {
+			return H.value(b);
+		}
+	}
+	
+	return ConductorProperties();
+}
 
 /**
  * @brief PotentialSelectorDialog::PotentialSelectorDialog

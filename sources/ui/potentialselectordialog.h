@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2017 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -53,15 +53,22 @@ namespace Ui {
  * as parent of the undo command that describe the changes.
  * If @parent_undo is null, the created undo-command is push to the undo stack of the parent diagram of a conductor in potential.
  * else we apply the change without a QUndoCommand.
+ * 
+ * the static function chosenProperties, open a dialog who ask user to make a choice between the given
+ * properties
  */
 class PotentialSelectorDialog : public QDialog
 {
         Q_OBJECT
+	
+	public:
+		static ConductorProperties chosenProperties(QList<ConductorProperties> list, QWidget *parent = nullptr);
 
     public:
 		explicit PotentialSelectorDialog(Conductor *conductor, QUndoCommand *parent_undo = nullptr, QWidget *parent = nullptr);
 		explicit PotentialSelectorDialog(Element *report, QUndoCommand *parent_undo = nullptr, QWidget *parent = nullptr);
         ~PotentialSelectorDialog() override;
+	
 
 	private slots:
 		void on_buttonBox_accepted();
