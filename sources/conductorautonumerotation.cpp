@@ -100,6 +100,30 @@ void ConductorAutoNumerotation::applyText(const QString& t)
 }
 
 /**
+ * @brief ConductorAutoNumerotation::newProperties
+ * Create a new properties according to the current autonum rule of diagram
+ * @param d
+ * @param cp
+ * @param seq
+ */
+void ConductorAutoNumerotation::newProperties(Diagram *diagram, ConductorProperties &cp, autonum::sequentialNumbers &seq)
+{	
+	NumerotationContext context = diagram->project()->conductorAutoNum(diagram->conductorsAutonumName());
+	if (context.isEmpty()) {
+		return;
+	}
+
+	QString autoNum_name = diagram->project()->conductorCurrentAutoNum();
+	QString formula = autonum::numerotationContextToFormula(context);
+	cp.m_formula = formula;
+
+	autonum::setSequential(formula, seq, context, diagram, autoNum_name);
+
+	NumerotationContextCommands ncc (context, diagram);
+	diagram->project()->addConductorAutoNum(autoNum_name, ncc.next());
+}
+
+/**
  * @brief ConductorAutoNumerotation::numeratePotential
  * Numerate a conductor on an existing potential
  */

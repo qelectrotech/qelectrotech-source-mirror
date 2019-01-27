@@ -19,10 +19,12 @@
 #define CONDUCTORAUTONUMEROTATION_H
 
 #include <QList>
+#include "assignvariables.h"
 
 class Diagram;
 class Conductor;
 class QUndoCommand;
+class ConductorProperties;
 
 class ConductorAutoNumerotation
 {
@@ -33,6 +35,7 @@ class ConductorAutoNumerotation
 			//methods
 		void        numerate       ();
 		void        applyText      (const QString&);
+		static void newProperties(Diagram *diagram, ConductorProperties &cp, autonum::sequentialNumbers &seq);
 
 	private:
 			//methods
