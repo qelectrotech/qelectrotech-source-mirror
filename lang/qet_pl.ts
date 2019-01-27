@@ -821,7 +821,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
 <context>
     <name>Diagram</name>
     <message>
-        <location filename="../sources/diagram.cpp" line="1275"/>
+        <location filename="../sources/diagram.cpp" line="1274"/>
         <source>Modifier la profondeur</source>
         <translation>Zmiana głębokości</translation>
     </message>
@@ -853,7 +853,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
 <context>
     <name>DiagramEventAddElement</name>
     <message>
-        <location filename="../sources/diagramevent/diagrameventaddelement.cpp" line="226"/>
+        <location filename="../sources/diagramevent/diagrameventaddelement.cpp" line="224"/>
         <source>Ajouter %1</source>
         <translation>Wstawianie %1</translation>
     </message>
@@ -943,36 +943,41 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
 <context>
     <name>DiagramView</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="86"/>
+        <location filename="../sources/diagramview.cpp" line="87"/>
         <source>Coller ici</source>
         <comment>context menu action</comment>
         <translation>Wklej tutaj</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="61"/>
+        <location filename="../sources/diagramview.cpp" line="62"/>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
         <translation>Obszar do tworzenia schematów, poprzez wstawienie elementów i przyłączenie przewodów. Możliwe jest również niezależne wstawianie tekstów.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="89"/>
+        <location filename="../sources/diagramview.cpp" line="90"/>
         <source>Collage multiple</source>
         <translatorcomment>niepewne</translatorcomment>
         <translation>Kolaż wielokrotny</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="707"/>
+        <location filename="../sources/diagramview.cpp" line="519"/>
+        <source>Connecter les bornes sélectionnées</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="790"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>Bez tytułu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="834"/>
+        <location filename="../sources/diagramview.cpp" line="917"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Wybierz nowy kolor przewodu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="853"/>
+        <location filename="../sources/diagramview.cpp" line="936"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>zmiana właściwości przewodu</translation>
@@ -3484,7 +3489,7 @@ Tutaj możesz określić domyślną zawartość tego pola:</translation>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="36"/>
         <source>Ajouter une ligne</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Wstaw linię</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="48"/>
@@ -3877,24 +3882,26 @@ Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
 Wybierz właściwości i zastosuj nowy potencjał..</translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="227"/>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="239"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="191"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="272"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="284"/>
         <source>
 Fonction : %1</source>
         <translation>
 Funkcja: %1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="229"/>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="241"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="193"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="274"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="286"/>
         <source>
 Tension/protocole : %1</source>
         <translation>
 Napięcie/protokół: %1</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="218"/>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="231"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="263"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="276"/>
         <source>%n conducteurs composent le potentiel suivant :</source>
         <translation>
             <numerusform>%n przewód ma następujący potencjał:</numerusform>
@@ -3903,21 +3910,28 @@ Napięcie/protokół: %1</translation>
         </translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="225"/>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="237"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="189"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="270"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="282"/>
         <source>
 Numéro : %1</source>
         <translation>
 Numer: %1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="294"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="180"/>
+        <source>Veuillez choisir un potentiel électrique de la liste 
+à utiliser pour le nouveau potentiel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="339"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
         <translation>zmiana właściwości kilku przewodów</translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="330"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="375"/>
         <source>La formule du nouveau potentiel contient des variables incompatibles avec les reports de folio.
 Veuillez saisir une formule compatible pour ce potentiel.
 Les variables suivantes sont incompatibles :
@@ -6775,7 +6789,7 @@ Co chcesz zrobić?</translation>
         <translation>przewód</translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/deleteqgraphicsitemcommand.cpp" line="73"/>
+        <location filename="../sources/undocommand/deleteqgraphicsitemcommand.cpp" line="77"/>
         <source>supprimer %1</source>
         <comment>undo caption - %1 is a sentence listing the removed content</comment>
         <translation>usunięcie %1</translation>
@@ -7284,23 +7298,23 @@ Co chcesz zrobić?</translation>
         <translation>Właściwości projektu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="160"/>
+        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="158"/>
         <source>Selectionner une image...</source>
         <translation>Wybierz obraz...</translation>
     </message>
     <message>
-        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="160"/>
+        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="158"/>
         <source>Image Files (*.png *.jpg  *.jpeg *.bmp *.svg)</source>
         <translation>Pliki graficzne (*.png *.jpg  *.jpeg *.bmp *.svg)</translation>
     </message>
     <message>
-        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="167"/>
+        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="165"/>
         <location filename="../sources/nomenclature.cpp" line="61"/>
         <source>Erreur</source>
         <translation>Błąd</translation>
     </message>
     <message>
-        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="167"/>
+        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="165"/>
         <source>Impossible de charger l&apos;image.</source>
         <translation>Nie można załadować obrazu.</translation>
     </message>
@@ -7883,6 +7897,11 @@ Czy chcesz ją zastąpić?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="81"/>
         <source>Chemin du fichier enregistré</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/utils/conductorcreator.cpp" line="46"/>
+        <source>Création de conducteurs</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
