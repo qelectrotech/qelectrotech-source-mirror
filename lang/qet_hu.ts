@@ -956,7 +956,7 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
         <location filename="../sources/diagramview.cpp" line="62"/>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
-        <translation></translation>
+        <translation>Ez az a hely, ahol a rajzokat elemek hozzáadásával és csatlakozókhoz illesztésével tervezi meg. Lehetőséget kínál független szövegek hozzáadására is.</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="87"/>
@@ -972,7 +972,7 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
     <message>
         <location filename="../sources/diagramview.cpp" line="519"/>
         <source>Connecter les bornes sélectionnées</source>
-        <translation type="unfinished"></translation>
+        <translation>A kiválasztott csatlakozások összekötése</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="790"/>
@@ -3898,7 +3898,7 @@ Szám : %1</translation>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="180"/>
         <source>Veuillez choisir un potentiel électrique de la liste 
 à utiliser pour le nouveau potentiel</source>
-        <translation type="unfinished"></translation>
+        <translation>Kérlek válassz ki a listából egy elektromos potenciált, az új potenciál számára.</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="191"/>
@@ -7869,7 +7869,7 @@ Cserélni akarod?</translation>
     <message>
         <location filename="../sources/utils/conductorcreator.cpp" line="46"/>
         <source>Création de conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Vezetékek létrehozása</translation>
     </message>
 </context>
 <context>
