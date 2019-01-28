@@ -962,7 +962,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/diagramview.cpp" line="519"/>
         <source>Connecter les bornes sélectionnées</source>
-        <translation type="unfinished"></translation>
+        <translation>Tilslutte valgte terminaler</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="790"/>
@@ -3891,7 +3891,8 @@ Nummer: %1</translation>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="180"/>
         <source>Veuillez choisir un potentiel électrique de la liste 
 à utiliser pour le nouveau potentiel</source>
-        <translation type="unfinished"></translation>
+        <translation>Vælg elektrisk potentiale fra liste
+som bruges til det ny potentiale</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="191"/>
@@ -7880,7 +7881,7 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/utils/conductorcreator.cpp" line="46"/>
         <source>Création de conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Oprette ledere</translation>
     </message>
 </context>
 <context>
