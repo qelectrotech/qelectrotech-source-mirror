@@ -962,7 +962,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/diagramview.cpp" line="519"/>
         <source>Connecter les bornes sélectionnées</source>
-        <translation type="unfinished"></translation>
+        <translation>Geselecteerde terminals verbinden</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="790"/>
@@ -3889,7 +3889,8 @@ Nummer : %1</translation>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="180"/>
         <source>Veuillez choisir un potentiel électrique de la liste 
 à utiliser pour le nouveau potentiel</source>
-        <translation type="unfinished"></translation>
+        <translation>Kies alstublieft een electrisch potentiaal van de lijst
+om als nieuw potentiaal te gebruiken</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="191"/>
@@ -7874,7 +7875,7 @@ Wilt u deze vervangen ?</translation>
     <message>
         <location filename="../sources/utils/conductorcreator.cpp" line="46"/>
         <source>Création de conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Geleiders maken</translation>
     </message>
 </context>
 <context>
