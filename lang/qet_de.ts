@@ -966,7 +966,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/diagramview.cpp" line="519"/>
         <source>Connecter les bornes sélectionnées</source>
-        <translation type="unfinished"></translation>
+        <translation>Markierte Anschlüsse verbinden</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="790"/>
@@ -3914,7 +3914,7 @@ Nummer: %1</translation>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="180"/>
         <source>Veuillez choisir un potentiel électrique de la liste 
 à utiliser pour le nouveau potentiel</source>
-        <translation type="unfinished"></translation>
+        <translation>Dem neuen Potenzial ein Bestehendes aus der Liste zuweisen</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="339"/>
@@ -7782,12 +7782,12 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="116"/>
         <source>Chercher/remplacer les propriétés d&apos;éléments.</source>
-        <translation>Bauteileigenschaften suchen/ersetzen</translation>
+        <translation>Bauteileigenschaften suchen/ersetzen.</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="206"/>
         <source>Chercher/remplacer les propriétés de conducteurs.</source>
-        <translation>Leitereigenschaften suchen/ersetzen</translation>
+        <translation>Leitereigenschaften suchen/ersetzen.</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="289"/>
@@ -7877,7 +7877,7 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../sources/utils/conductorcreator.cpp" line="46"/>
         <source>Création de conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Leiter erstellen</translation>
     </message>
 </context>
 <context>
