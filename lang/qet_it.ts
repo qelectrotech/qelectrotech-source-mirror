@@ -974,7 +974,7 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
     <message>
         <location filename="../sources/diagramview.cpp" line="519"/>
         <source>Connecter les bornes sélectionnées</source>
-        <translation type="unfinished"></translation>
+        <translation>Collegare i morsetti selezionati</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="917"/>
@@ -3907,7 +3907,8 @@ Numero - %1</translation>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="180"/>
         <source>Veuillez choisir un potentiel électrique de la liste 
 à utiliser pour le nouveau potentiel</source>
-        <translation type="unfinished"></translation>
+        <translation>Scegliere un potenziale elettrico dall&apos;elenco 
+da utilizzare per il nuovo potenziale</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="339"/>
@@ -7869,7 +7870,7 @@ La si vuole sostituire?</translation>
     <message>
         <location filename="../sources/utils/conductorcreator.cpp" line="46"/>
         <source>Création de conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Creazione dei conduttori</translation>
     </message>
 </context>
 <context>
