@@ -7873,37 +7873,37 @@ Czy chcesz ją zastąpić?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="76"/>
         <source>Chemin du fichier du projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Ścieżka do pliku projektu</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="77"/>
         <source>Nom du fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Nazwa pliku</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="78"/>
         <source>Date d&apos;enregistrement du fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Data zapisania pliku</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="79"/>
         <source>Heure d&apos;enregistrement du fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Godzina zapisania pliku</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="80"/>
         <source>Nom du fichier enregistré</source>
-        <translation type="unfinished"></translation>
+        <translation>Nazwa pliku zapisanego</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="81"/>
         <source>Chemin du fichier enregistré</source>
-        <translation type="unfinished"></translation>
+        <translation>Ścieżka do zapisanego pliku</translation>
     </message>
     <message>
         <location filename="../sources/utils/conductorcreator.cpp" line="46"/>
         <source>Création de conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Tworzenie przewodów</translation>
     </message>
 </context>
 <context>
