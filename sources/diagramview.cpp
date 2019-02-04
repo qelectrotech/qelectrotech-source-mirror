@@ -414,7 +414,7 @@ void DiagramView::mousePressEvent(QMouseEvent *e)
 		viewport()->setCursor(Qt::ClosedHandCursor);
 	}
 	else if (e->button() == Qt::LeftButton &&
-			 e->modifiers() == Qt::CTRL)
+			 e->modifiers() == Qt::SHIFT)
 	{
 		m_free_rubberbanding = true;
 		m_free_rubberband = QPolygon();
