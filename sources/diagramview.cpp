@@ -540,18 +540,21 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e)
 			}
 		}
 		
-			//Popup a menu with an action to create conductors between
-			//all selected terminals.
-		QAction *act = new QAction(tr("Connecter les bornes sélectionné"), this);
-		QPolygonF polygon_ = m_free_rubberband;
-		connect(act, &QAction::triggered, [this, polygon_]()
+		if (m_free_rubberband.count() > 3)
 		{
-			ConductorCreator::create(m_diagram, polygon_);
-			diagram()->clearSelection();
-		});
-		QMenu *menu = new QMenu(this);
-		menu->addAction(act);
-		menu->popup(e->globalPos());
+				//Popup a menu with an action to create conductors between
+				//all selected terminals.
+			QAction *act = new QAction(tr("Connecter les bornes sélectionné"), this);
+			QPolygonF polygon_ = m_free_rubberband;
+			connect(act, &QAction::triggered, [this, polygon_]()
+			{
+				ConductorCreator::create(m_diagram, polygon_);
+				diagram()->clearSelection();
+			});
+			QMenu *menu = new QMenu(this);
+			menu->addAction(act);
+			menu->popup(e->globalPos());
+		}
 		
 		m_free_rubberbanding = false;
 		m_free_rubberband = QPolygon();
