@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2017 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -47,16 +47,16 @@ class QetGraphicsItem : public QGraphicsObject
 
 		//protected method
 	protected:
-		void mousePressEvent(QGraphicsSceneMouseEvent *e) override;
-		void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *e) override;
-		void mouseMoveEvent(QGraphicsSceneMouseEvent *e) override;
-		void mouseReleaseEvent(QGraphicsSceneMouseEvent *e) override;
+		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
+		void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) override;
+		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
+		void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
 
 	protected:
 		bool is_movable_;
-		bool first_move_;
+		bool m_first_move;
 		bool snap_to_grid_;
-		QPointF mouse_to_origin_movement_;
+		QPointF m_mouse_to_origin_movement;
 		QET::GraphicsItemState m_state = QET:: GIOK;
 
 };

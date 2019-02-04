@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2017 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@
 QetGraphicsItem::QetGraphicsItem(QGraphicsItem *parent):
 	QGraphicsObject(parent),
 	is_movable_(true),
-	first_move_(true),
+	m_first_move(true),
 	snap_to_grid_(true)
 {}
 
@@ -75,66 +75,71 @@ QET::GraphicsItemState QetGraphicsItem::state() const {
 /**
  * @brief QetGraphicsItem::mousePressEvent
  *handle the mouse click
- * @param e
+ * @param event
  */
-void QetGraphicsItem::mousePressEvent(QGraphicsSceneMouseEvent *e)
+void QetGraphicsItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-	if (e -> button() == Qt::LeftButton)
+	if (event->button() == Qt::LeftButton)
 	{
-			//Disable views context menu
-		if (scene())
-			foreach (QGraphicsView *view, scene()->views())
-				view->setContextMenuPolicy(Qt::NoContextMenu);
-
-		first_move_ = true;
-		if (e -> modifiers() & Qt::ControlModifier)
+		m_first_move = true;
+		if (event->modifiers() & Qt::ControlModifier) {
 			setSelected(!isSelected());
+		}
 	}
 
-	QGraphicsItem::mousePressEvent(e);
+	QGraphicsItem::mousePressEvent(event);
 }
 
 /**
  * @brief QetGraphicsItem::mouseDoubleClickEvent
  *handle the mouse double click
- * @param e
+ * @param event
  */
-void QetGraphicsItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *e) {
-	Q_UNUSED (e);
+void QetGraphicsItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
+{
 	editProperty();
+	event->accept();
 }
 
 /**
  * @brief QetGraphicsItem::mouseMoveEvent
  *handle mouse movement
- * @param e
+ * @param event
  */
-void QetGraphicsItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
-	if (isSelected() && e -> buttons() & Qt::LeftButton) {
-		//Item is moving
-		if(diagram() && first_move_) {
-			//It's the first movement, we signal it to parent diagram
+void QetGraphicsItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (isSelected() && event->buttons() & Qt::LeftButton)
+	{
+			//Item is moving
+		if(diagram() && m_first_move) {
+				//It's the first movement, we signal it to parent diagram
 			diagram()->elementsMover().beginMovement(diagram(), this);
 		}
 
-		//we apply the mouse movement
+			//we apply the mouse movement
 		QPointF old_pos = pos();
-		if (first_move_) {
-			mouse_to_origin_movement_ = old_pos - e -> buttonDownScenePos(Qt::LeftButton);
+		if (m_first_move) {
+			m_mouse_to_origin_movement = old_pos - event -> buttonDownScenePos(Qt::LeftButton);
 		}
-		QPointF expected_pos = e -> scenePos() + mouse_to_origin_movement_;
+		QPointF expected_pos = event->scenePos() + m_mouse_to_origin_movement;
 		setPos(expected_pos); // setPos() will snap the expected position to the grid
 
-		//we calcul the real movement apply by setPos()
+			//we calcul the real movement apply by setPos()
 		QPointF effective_movement = pos() - old_pos;
 		if (diagram()) {
-			//we signal the real movement apply to diagram,
-			//who he apply to other selected item
+				//we signal the real movement apply to diagram,
+				//who he apply to other selected item
 			diagram()->elementsMover().continueMovement(effective_movement);
 		}
-	} else e -> ignore();
+		event->accept();
+	}
+	else {
+		event->ignore();
+	}
 
-	if (first_move_) first_move_ = false;
+	if (m_first_move) {
+		m_first_move = false;
+	}
 }
 
 /**
@@ -142,16 +147,10 @@ void QetGraphicsItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
  *handle mouse release click
  * @param e
  */
-void QetGraphicsItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
-	if (diagram())
+void QetGraphicsItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (diagram()) {
 		diagram()->elementsMover().endMovement();
-
-	if (!(e -> modifiers() & Qt::ControlModifier))
-		QGraphicsItem::mouseReleaseEvent(e);
-
-		//Enable views context menu
-	if (e -> button() == Qt::LeftButton)
-		if (scene())
-			foreach (QGraphicsView *view, scene()->views())
-				view -> setContextMenuPolicy(Qt::DefaultContextMenu);
+		event->accept();
+	}
 }

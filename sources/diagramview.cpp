@@ -399,6 +399,8 @@ void DiagramView::pasteHere() {
 */
 void DiagramView::mousePressEvent(QMouseEvent *e)
 {
+	e->ignore();
+	
 	if (m_fresh_focus_in)
 	{
 		switchToVisualisationModeIfNeeded(e);
@@ -412,16 +414,40 @@ void DiagramView::mousePressEvent(QMouseEvent *e)
 	{
 		m_drag_last_pos = e->pos();
 		viewport()->setCursor(Qt::ClosedHandCursor);
+		e->accept();
+		return;
 	}
-	else if (e->button() == Qt::LeftButton &&
-			 e->modifiers() == Qt::SHIFT)
+	
+		//There is a good luck that user want to do a free selection
+		//In this case we temporally disable the dragmode because if the QGraphicsScene don't accept the event,
+		//and the drag mode is set to rubberbanddrag, the QGraphicsView start rubber band drag, and accept the event.
+	if (e->button() == Qt::LeftButton &&
+		e->modifiers() == Qt::CTRL)
+	{
+		QGraphicsView::DragMode dm = dragMode();
+		setDragMode(QGraphicsView::NoDrag);
+		QGraphicsView::mousePressEvent(e);
+		setDragMode(dm);
+	} else {
+		QGraphicsView::mousePressEvent(e);
+	}
+			
+	if (e->isAccepted()) {
+		return;
+	}
+	
+	if (e->button() == Qt::LeftButton &&
+			 e->modifiers() == Qt::CTRL)
 	{
 		m_free_rubberbanding = true;
 		m_free_rubberband = QPolygon();
-		QGraphicsView::mousePressEvent(e);
+		e->accept();
+		return;
 	}
-
-	else QGraphicsView::mousePressEvent(e);
+	
+	if (!e->isAccepted()) {
+		QGraphicsView::mousePressEvent(e);
+	}	
 }
 
 /**
@@ -516,7 +542,7 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e)
 		
 			//Popup a menu with an action to create conductors between
 			//all selected terminals.
-		QAction *act = new QAction(tr("Connecter les bornes sélectionnées"), this);
+		QAction *act = new QAction(tr("Connecter les bornes sélectionné"), this);
 		QPolygonF polygon_ = m_free_rubberband;
 		connect(act, &QAction::triggered, [this, polygon_]()
 		{
