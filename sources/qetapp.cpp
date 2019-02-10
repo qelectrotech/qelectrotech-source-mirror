@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2017 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -479,8 +479,8 @@ TitleBlockTemplatesFilesCollection *QETApp::customTitleBlockTemplatesCollection(
 QList<TitleBlockTemplatesCollection *> QETApp::availableTitleBlockTemplatesCollections() {
 	QList<TitleBlockTemplatesCollection *> collections_list;
 
-	collections_list << m_common_tbt_collection;
-	collections_list << m_custom_tbt_collection;
+	collections_list << commonTitleBlockTemplatesCollection();
+	collections_list << customTitleBlockTemplatesCollection();
 
 	foreach(QETProject *opened_project, registered_projects_) {
 		collections_list << opened_project -> embeddedTitleBlockTemplatesCollection();
