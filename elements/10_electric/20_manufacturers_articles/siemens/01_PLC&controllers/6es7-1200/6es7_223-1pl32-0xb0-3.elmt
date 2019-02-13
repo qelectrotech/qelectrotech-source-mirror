@@ -1,0 +1,94 @@
+<definition version="0.70" width="780" hotspot_y="50" hotspot_x="180" height="110" type="element" link_type="simple" orientation="dyyy">
+    <uuid uuid="{859a0658-7c26-4211-a95c-068ec58d7f6e}"/>
+    <names>
+        <name lang="en">6ES7 223-1PL32-0XB0 (part 3/4)</name>
+    </names>
+    <elementInformations/>
+    <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="-72.4999" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5" y="45.5" antialias="true"/>
+        <dynamic_text Halignment="AlignLeft" x="243" z="1" text_width="-1" font_family="Sans Serif" font_size="7" rotation="0" y="5" text_from="UserText" Valignment="AlignTop" frame="false" uuid="{4c08c73f-284d-4b55-8a70-94b8ddbff966}">
+            <text>24 V DC OUTPUTS</text>
+        </dynamic_text>
+        <circle x="-152.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5" y="45.5" antialias="true"/>
+        <dynamic_text Halignment="AlignLeft" x="562" z="2" text_width="-1" font_family="Sans Serif" font_size="7" rotation="0" y="29" text_from="UserText" Valignment="AlignTop" frame="false" uuid="{7f70ae47-1f2f-4f3c-b8f2-786dd4457731}">
+            <text>.7</text>
+        </dynamic_text>
+        <dynamic_text Halignment="AlignLeft" x="482" z="3" text_width="-1" font_family="Sans Serif" font_size="7" rotation="0" y="29" text_from="UserText" Valignment="AlignTop" frame="false" uuid="{f1cca0e7-c2c0-4147-bc48-b4fd7e8a6c56}">
+            <text>.6</text>
+        </dynamic_text>
+        <dynamic_text Halignment="AlignLeft" x="-4" z="4" text_width="-1" font_family="Sans Serif" font_size="7" rotation="0" y="17" text_from="UserText" Valignment="AlignTop" frame="false" uuid="{e1f352f2-4a1d-4078-8d4b-e1918ba3c163}">
+            <text>DQ a</text>
+        </dynamic_text>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="48" x2="567" y1="48" x1="493" end1="none" length2="1.5" end2="none" antialias="false"/>
+        <polygon closed="false" y6="53" style="line-style:normal;line-weight:thin;filling:none;color:black" x4="-176" y2="0" y5="6" x2="-171" y1="-44" y4="3" x1="-171" y3="3" x5="-171" x3="-166" antialias="true" x6="-171"/>
+        <circle x="567.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5" y="45.5" antialias="true"/>
+        <dynamic_text Halignment="AlignLeft" x="-169" z="8" text_width="-1" font_family="Sans Serif" font_size="9" rotation="0" y="-8" text_from="UserText" Valignment="AlignTop" frame="false" uuid="{d29f817b-6701-4d6a-aed5-2417cf02c238}">
+            <text>/</text>
+        </dynamic_text>
+        <dynamic_text Halignment="AlignLeft" x="596" z="9" text_width="-1" font_family="Sans Serif" font_size="9" rotation="0" y="-7" text_from="UserText" Valignment="AlignTop" frame="false" uuid="{6c8ea586-15a5-428f-8ef8-a16d856ef18a}">
+            <text>/</text>
+        </dynamic_text>
+        <polygon closed="false" y6="54" style="line-style:normal;line-weight:thin;filling:none;color:black" x4="585" y2="0" y5="6" x2="590" y1="-44" y4="3" x1="590" y3="3" x5="590" x3="595" antialias="true" x6="590"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="48" x2="487" y1="48" x1="413" end1="none" length2="1.5" end2="none" antialias="false"/>
+        <circle x="487.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5" y="45.5" antialias="true"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="48" x2="7" y1="48" x1="-67" end1="none" length2="1.5" end2="none" antialias="false"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="48" x2="590" y1="48" x1="573" end1="none" length2="1.5" end2="none" antialias="false"/>
+        <dynamic_text Halignment="AlignLeft" x="-158" z="15" text_width="-1" font_family="Sans Serif" font_size="7" rotation="0" y="29" text_from="UserText" Valignment="AlignTop" frame="false" uuid="{7571f62b-80bf-4bab-9f01-0fdae6f8b1bf}">
+            <text>1L</text>
+        </dynamic_text>
+        <dynamic_text Halignment="AlignLeft" x="2" z="16" text_width="-1" font_family="Sans Serif" font_size="7" rotation="0" y="29" text_from="UserText" Valignment="AlignTop" frame="false" uuid="{7571f62b-80bf-4bab-9f01-0fdae6f8b1bf}">
+            <text>.1</text>
+        </dynamic_text>
+        <dynamic_text Halignment="AlignLeft" x="402" z="17" text_width="-1" font_family="Sans Serif" font_size="7" rotation="0" y="29" text_from="UserText" Valignment="AlignTop" frame="false" uuid="{0a45f332-e7b2-4156-9eaa-0dd6a4f7e491}">
+            <text>.5</text>
+        </dynamic_text>
+        <dynamic_text Halignment="AlignLeft" x="322" z="18" text_width="-1" font_family="Sans Serif" font_size="7" rotation="0" y="29" text_from="UserText" Valignment="AlignTop" frame="false" uuid="{b96f50ea-0f45-4bf7-97b2-8e3604d211b0}">
+            <text>.4</text>
+        </dynamic_text>
+        <dynamic_text Halignment="AlignLeft" x="242" z="19" text_width="-1" font_family="Sans Serif" font_size="7" rotation="0" y="29" text_from="UserText" Valignment="AlignTop" frame="false" uuid="{bc4417e3-2351-475a-8c57-dd17d5d10566}">
+            <text>2L</text>
+        </dynamic_text>
+        <dynamic_text Halignment="AlignLeft" x="162" z="20" text_width="-1" font_family="Sans Serif" font_size="7" rotation="0" y="29" text_from="UserText" Valignment="AlignTop" frame="false" uuid="{a617e83b-feeb-402f-9756-d84e4c6cbde1}">
+            <text>.3</text>
+        </dynamic_text>
+        <dynamic_text Halignment="AlignLeft" x="82" z="21" text_width="-1" font_family="Sans Serif" font_size="7" rotation="0" y="29" text_from="UserText" Valignment="AlignTop" frame="false" uuid="{81e52bc9-9784-45f6-a0d4-adae01be79f9}">
+            <text>.2</text>
+        </dynamic_text>
+        <dynamic_text Halignment="AlignLeft" x="-78" z="22" text_width="-1" font_family="Sans Serif" font_size="7" rotation="0" y="29" text_from="UserText" Valignment="AlignTop" frame="false" uuid="{81e52bc9-9784-45f6-a0d4-adae01be79f9}">
+            <text>.0</text>
+        </dynamic_text>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="48" x2="407" y1="48" x1="333" end1="none" length2="1.5" end2="none" antialias="false"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="48" x2="327" y1="48" x1="253" end1="none" length2="1.5" end2="none" antialias="false"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="48" x2="247" y1="48" x1="173" end1="none" length2="1.5" end2="none" antialias="false"/>
+        <circle x="407.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5" y="45.5" antialias="true"/>
+        <circle x="327.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5" y="45.5" antialias="true"/>
+        <circle x="247.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5" y="45.5" antialias="true"/>
+        <circle x="167.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5" y="45.5" antialias="true"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="48" x2="167" y1="48" x1="93" end1="none" length2="1.5" end2="none" antialias="false"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="48" x2="87" y1="48" x1="13" end1="none" length2="1.5" end2="none" antialias="false"/>
+        <circle x="87.5001" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5" y="45.5" antialias="true"/>
+        <circle x="7.50007" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5" y="45.5" antialias="true"/>
+        <dynamic_text Halignment="AlignLeft" x="0" z="34" text_width="-1" font_family="Sans Serif" font_size="9" rotation="0" y="-36.5" text_from="UserText" Valignment="AlignTop" frame="false" uuid="{575af444-63dd-4406-99ad-235daef4a034}">
+            <text> 6ES7 223-1PL32-0XB0  DC/DC   part 3 of 4</text>
+        </dynamic_text>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-40" x2="590" y1="-40" x1="-172" end1="none" length2="1.5" end2="none" antialias="false"/>
+        <dynamic_text Halignment="AlignLeft" x="592" z="36" text_width="-1" font_family="Sans Serif" font_size="9" rotation="0" y="-38" text_from="ElementInfo" Valignment="AlignTop" frame="false" uuid="{f527504a-6225-4f06-8e87-9f7dd202612d}">
+            <text/>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black" x4="580" y2="20" y5="40" x2="-160" y1="40" y4="40" x1="-160" y3="20" x5="580" x3="580" antialias="false"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="48" x2="-147" y1="48" x1="-73" end1="none" length2="1.5" end2="none" antialias="false"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="48" x2="-172" y1="48" x1="-153" end1="none" length2="1.5" end2="none" antialias="false"/>
+        <terminal x="-70" y="51" orientation="s"/>
+        <terminal x="-150" y="51" orientation="s"/>
+        <terminal x="330" y="51" orientation="s"/>
+        <terminal x="490" y="51" orientation="s"/>
+        <terminal x="250" y="51" orientation="s"/>
+        <terminal x="570" y="51" orientation="s"/>
+        <terminal x="410" y="51" orientation="s"/>
+        <terminal x="10" y="51" orientation="s"/>
+        <terminal x="170" y="51" orientation="s"/>
+        <terminal x="90" y="51" orientation="s"/>
+    </description>
+</definition>

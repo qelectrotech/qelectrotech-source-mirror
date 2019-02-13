@@ -1,0 +1,54 @@
+<definition version="0.70" type="element" link_type="simple" height="130" hotspot_x="205" hotspot_y="63" orientation="dyyy" width="410">
+    <uuid uuid="{2d92b5ad-0445-4839-a1c4-9a547531b5ae}"/>
+    <names>
+        <name lang="ar">SM1234 6ES7234-4HE32-0XB0</name>
+        <name lang="cs">SM1234 6ES7234-4HE32-0XB0</name>
+        <name lang="pl">SM1234 6ES7234-4HE32-0XB0</name>
+        <name lang="fr">6ES7 234-4HE32-0XB0 (part 2/2)</name>
+        <name lang="pt">SM1234 6ES7234-4HE32-0XB0</name>
+        <name lang="en">SM1234 6ES7234-4HE32-0XB0</name>
+    </names>
+    <elementInformations/>
+    <informations/>
+    <description>
+        <line length2="1.5" x2="-19.5" y2="57" y1="57" length1="1.5" x1="-36.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line length2="1.5" x2="-99.5" y2="57" y1="57" length1="1.5" x1="-116.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line length2="1.5" x2="-99.5" y2="56" y1="29" length1="1.5" x1="-99.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line length2="1.5" x2="-19.5" y2="56" y1="29" length1="1.5" x1="-19.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <text text="1M" y="50" size="6" x="-86"/>
+        <text text="1" y="50" size="6" x="-42"/>
+        <circle diameter="5" y="54.5" x="-42.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <circle diameter="5" y="54.5" x="-82.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <text text="0M" y="50" size="6" x="-166"/>
+        <line length2="1.5" x2="-20" y2="29" y1="29" length1="1.5" x1="-100" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line length2="1.5" x2="-3" y2="57" y1="57" length1="1.5" x1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <text text="6ES7 234-4HE32-0XB0 part 2 of 2" y="-40" size="8" x="-180"/>
+        <text text="ANALOG OUTPUTS" y="20" size="8" x="-140"/>
+        <line length2="1.5" x2="-83" y2="57" y1="57" length1="1.5" x1="-100" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line length2="1.5" x2="-43" y2="57" y1="57" length1="1.5" x1="-77" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <text text="0" y="50" size="6" x="-122"/>
+        <line length2="1.5" x2="-180" y2="56" y1="29" length1="1.5" x1="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line length2="1.5" x2="-200" y2="-18" y1="-58" length1="1.5" x1="-200" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <circle diameter="5" y="54.5" x="-122.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <circle diameter="5" y="54.5" x="-162.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <line length2="1.5" x2="-100" y2="29" y1="29" length1="1.5" x1="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line length2="1.5" x2="-101" y2="-58" y1="-58" length1="1.5" x1="-199" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line length2="1.5" x2="-101" y2="-18" y1="-18" length1="1.5" x1="-200" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <dynamic_text font_family="Sans Serif" frame="false" Valignment="AlignTop" text_width="-1" rotation="0" y="-47" z="78" font_size="9" x="-239" Halignment="AlignLeft" uuid="{321831ee-3eb8-4058-bbc3-4a60f4c8e92b}" text_from="ElementInfo">
+            <text/>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line length2="1.5" x2="-163" y2="57" y1="57" length1="1.5" x1="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line length2="1.5" x2="-123" y2="57" y1="57" length1="1.5" x1="-157" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line length2="1.5" x2="200" y2="-58" y1="-58" length1="1.5" x1="-101" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line length2="1.5" x2="200" y2="-18" y1="-18" length1="1.5" x1="-100" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line length2="1.5" x2="-200" y2="57" y1="-20" length1="1.5" x1="-200" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line length2="1.5" x2="-180" y2="57" y1="57" length1="1.5" x1="-200" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line length2="1.5" x2="200" y2="56" y1="-58" length1="1.5" x1="200" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <line length2="1.5" x2="200" y2="57" y1="57" length1="1.5" x1="-3" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" end2="none" antialias="false"/>
+        <terminal y="60" x="-160" orientation="s"/>
+        <terminal y="60" x="-120" orientation="s"/>
+        <terminal y="60" x="-40" orientation="s"/>
+        <terminal y="60" x="-80" orientation="s"/>
+    </description>
+</definition>
