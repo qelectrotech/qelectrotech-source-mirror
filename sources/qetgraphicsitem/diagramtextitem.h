@@ -36,12 +36,13 @@ class DiagramTextItem : public QGraphicsTextItem
     Q_PROPERTY(int fontSize READ fontSize WRITE setFontSize NOTIFY fontSizeChanged)
     Q_PROPERTY(QColor color READ color WRITE setColor NOTIFY colorChanged)
 	Q_PROPERTY(Qt::Alignment alignment READ alignment WRITE setAlignment NOTIFY alignmentChanged)
+	Q_PROPERTY(QString plainText READ toPlainText WRITE setPlainText)
+	
 	
 	signals:
 		void fontSizeChanged(int size);
 		void colorChanged(QColor color);
 		void alignmentChanged(Qt::Alignment alignment);
-		void diagramTextChanged(DiagramTextItem *, const QString &, const QString &);
 		void textEdited(const QString &old_str, const QString &new_str);
 
 	public:
@@ -78,6 +79,10 @@ class DiagramTextItem : public QGraphicsTextItem
 		bool m_block_alignment = false;
 		
 		QRectF frameRect() const;
+		
+		void setHtml(const QString &text);
+		void setPlainText(const QString &text);
+		bool isHtml() const;
 
 	protected:
 		void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *) override;
@@ -101,7 +106,8 @@ class DiagramTextItem : public QGraphicsTextItem
 	protected:
 		bool m_mouse_hover = false,
 			 m_first_move = true,
-		     m_no_editable;
+		     m_no_editable,
+			 m_is_html = false;
 
 		QString m_previous_html_text,
 				m_previous_text;

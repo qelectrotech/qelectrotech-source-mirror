@@ -24,30 +24,26 @@
 	This class represents an independent text field on a particular diagram.
 	It may be moved, edited, and rotated.
 */
-class IndependentTextItem : public DiagramTextItem {
+class IndependentTextItem : public DiagramTextItem
+{
 	Q_OBJECT
-	// constructors, destructor
+		
+		// constructors, destructor
 	public:
-	IndependentTextItem();
-	IndependentTextItem(const QString &);
-	~IndependentTextItem() override;
+		IndependentTextItem();
+		IndependentTextItem(const QString &);
+		~IndependentTextItem() override;
 	
-	// attributes
+		// attributes
 	public:
-	enum { Type = UserType + 1005 };
-	
-	// methods
-	public:
-	/**
-		Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into an
-		IndependentTextItem.
-		@return le type de QGraphicsItem
-	*/
-	int type() const override { return Type; }
-	void fromXml(const QDomElement &) override;
-	QDomElement toXml(QDomDocument &) const override;
-	
-	private:
-	QPointF mouse_to_origin_movement_;
+		enum { Type = UserType + 1005 };
+		int type() const override { return Type; }
+		
+		void fromXml(const QDomElement &) override;
+		QDomElement toXml(QDomDocument &) const override;
+		
+	protected:
+		void focusOutEvent(QFocusEvent *event) override;
+		
 };
 #endif

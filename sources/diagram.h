@@ -216,7 +216,6 @@ class Diagram : public QGraphicsScene
 	public slots:
 		void adjustSceneRect ();
 		void titleChanged(const QString &);
-		void diagramTextChanged(DiagramTextItem *, const QString &, const QString &);
 		void titleBlockTemplateChanged(const QString &);
 		void titleBlockTemplateRemoved(const QString &, const QString & = QString());
 		void setTitleBlockTemplate(const QString &);

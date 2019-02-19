@@ -1068,14 +1068,9 @@ void Diagram::addItem(QGraphicsItem *item)
 			conductor->terminal1->addConductor(conductor);
 			conductor->terminal2->addConductor(conductor);
 			conductor->calculateTextItemPosition();
-		}
 			break;
-
-		case IndependentTextItem::Type:
-		{
-			const IndependentTextItem *text = static_cast<const IndependentTextItem *>(item);
-			connect(text, &IndependentTextItem::diagramTextChanged, this, &Diagram::diagramTextChanged);
 		}
+		default: {break;}
 	}
 }
 
@@ -1095,21 +1090,16 @@ void Diagram::removeItem(QGraphicsItem *item)
 		{
 			Element *elmt = static_cast<Element*>(item);
 			elmt->unlinkAllElements();
-		}
 			break;
+		}
 		case Conductor::Type:
 		{
 			Conductor *conductor = static_cast<Conductor *>(item);
 			conductor->terminal1->removeConductor(conductor);
 			conductor->terminal2->removeConductor(conductor);
-		}
 			break;
-
-		case IndependentTextItem::Type:
-		{
-			const IndependentTextItem *text = static_cast<const IndependentTextItem *>(item);
-			disconnect(text, &IndependentTextItem::diagramTextChanged, this, &Diagram::diagramTextChanged);
 		}
+		default: {break;}
 	}
 
 	QGraphicsScene::removeItem(item);
@@ -1117,17 +1107,6 @@ void Diagram::removeItem(QGraphicsItem *item)
 
 void Diagram::titleChanged(const QString &title) {
 	emit(diagramTitleChanged(this, title));
-}
-
-/**
-	Gere le fait qu'un texte du schema ait ete modifie
-	@param text_item Texte modifie
-	@param old_text Ancien texte
-	@param new_text Nouveau texte
-*/
-void Diagram::diagramTextChanged(DiagramTextItem *text_item, const QString &old_text, const QString &new_text) {
-	if (!text_item) return;
-	undoStack().push(new ChangeDiagramTextCommand(text_item, old_text, new_text));
 }
 
 /**

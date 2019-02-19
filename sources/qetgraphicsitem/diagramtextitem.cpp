@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2013 QElectroTech Team
+	Copyright 2006-2019 QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -210,6 +210,22 @@ QRectF DiagramTextItem::frameRect() const
 	return QRectF(pos, size);
 }
 
+void DiagramTextItem::setHtml(const QString &text)
+{
+	QGraphicsTextItem::setHtml(text);
+	m_is_html = true;
+}
+
+void DiagramTextItem::setPlainText(const QString &text)
+{
+	QGraphicsTextItem::setPlainText(text);
+	m_is_html = false;
+}
+
+bool DiagramTextItem::isHtml() const {
+	return m_is_html;
+}
+
 /**
  * @brief DiagramTextItem::paint
  * Draw this text field. This method draw the text by calling QGraphicsTextItem::paint.
@@ -267,8 +283,6 @@ void DiagramTextItem::focusOutEvent(QFocusEvent *event)
 {
 	QGraphicsTextItem::focusOutEvent(event);
 
-	if (toHtml() != m_previous_html_text)
-		emit(diagramTextChanged(this, m_previous_html_text, toHtml()));
 	if(toPlainText() != m_previous_text)
 		emit textEdited(m_previous_text, toPlainText());
 	
@@ -303,13 +317,14 @@ void DiagramTextItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
  * @brief DiagramTextItem::mousePressEvent
  * @param event
  */
-void DiagramTextItem::mousePressEvent (QGraphicsSceneMouseEvent *event) {
-	m_first_move = true;
-	if (event -> modifiers() & Qt::ControlModifier) {
-		setSelected(!isSelected());
+void DiagramTextItem::mousePressEvent (QGraphicsSceneMouseEvent *event)
+{
+	if (event->button() == Qt::LeftButton)
+	{
+		m_first_move = true;
+			//Save the pos of item at the beggining of the movement
+		m_mouse_to_origin_movement = pos() - event->scenePos();
 	}
-	//Save the pos of item at the beggining of the movement
-	m_mouse_to_origin_movement = pos() - event->scenePos();
 	QGraphicsTextItem::mousePressEvent(event);
 }
 
@@ -348,13 +363,25 @@ void DiagramTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
  * @brief DiagramTextItem::mouseReleaseEvent
  * @param event
  */
-void DiagramTextItem::mouseReleaseEvent (QGraphicsSceneMouseEvent *event) {
-	//Signal to diagram movement is finish
-	if (diagram())
+void DiagramTextItem::mouseReleaseEvent (QGraphicsSceneMouseEvent *event)
+{
+		//Signal to diagram movement is finish
+	if (diagram() && (event->button() == Qt::LeftButton))
+	{
 		diagram()->elementsMover().endMovement();
-
-	if (!(event -> modifiers() & Qt::ControlModifier))
+		event->accept();
+		if (event->buttonDownScenePos(Qt::LeftButton) != event->scenePos()) {
+			return;
+		}
+	}
+	if (event->modifiers() & Qt::ControlModifier && (event->button() == Qt::LeftButton))
+	{
+		setSelected(!isSelected());
+		event->accept();
+	}
+	else {
 		QGraphicsTextItem::mouseReleaseEvent(event);
+	}	
 }
 
 /**
@@ -459,7 +486,6 @@ void DiagramTextItem::hoverEnterEvent(QGraphicsSceneHoverEvent *e) {
 */
 void DiagramTextItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *e) {
 	Q_UNUSED(e);
-	//qDebug() << "Leave mouse over";
 	m_mouse_hover = false;
 	update();
 }

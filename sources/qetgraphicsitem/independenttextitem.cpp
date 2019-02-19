@@ -17,6 +17,8 @@
 */
 #include "independenttextitem.h"
 #include "qet.h"
+#include "diagram.h"
+#include "diagramcommands.h"
 #include <QDomElement>
 
 /**
@@ -56,13 +58,21 @@ void IndependentTextItem::fromXml(const QDomElement &e) {
 	@param document Le document XML a utiliser
 	@return L'element XML representant ce champ de texte
 */
-QDomElement IndependentTextItem::toXml(QDomDocument &document) const {
+QDomElement IndependentTextItem::toXml(QDomDocument &document) const
+{
 	QDomElement result = document.createElement("input");
 	result.setAttribute("x", QString("%1").arg(pos().x()));
 	result.setAttribute("y", QString("%1").arg(pos().y()));
 	result.setAttribute("text", toHtml());
-	if (rotation()) {
-		result.setAttribute("rotation", QString::number(QET::correctAngle(rotation())));
-	}
+	result.setAttribute("rotation", QString::number(QET::correctAngle(rotation())));
+	
 	return(result);
+}
+
+void IndependentTextItem::focusOutEvent(QFocusEvent *event)
+{
+	DiagramTextItem::focusOutEvent(event);
+	if (diagram() && (m_previous_html_text != this->toHtml())) {
+		diagram()->undoStack().push(new ChangeDiagramTextCommand(this, m_previous_html_text, this->toHtml()));
+	}
 }

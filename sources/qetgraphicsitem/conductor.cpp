@@ -119,7 +119,7 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	
 		// Add the text field
 	m_text_item = new ConductorTextItem(m_properties.text, this);
-	connect(m_text_item, &ConductorTextItem::diagramTextChanged, this, &Conductor::displayedTextChanged);
+	connect(m_text_item, &ConductorTextItem::textEdited, this, &Conductor::displayedTextChanged);
 
 		//Set the default conductor properties.
 	if (p1->diagram())

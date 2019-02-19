@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2019 The QElectroTech Team
+	Copyright 2006-2017 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -25,6 +25,8 @@
 #include "shapegraphicsitempropertieswidget.h"
 #include "dynamicelementtextitem.h"
 #include "elementtextitemgroup.h"
+#include "independenttextitem.h"
+#include "inditextpropertieswidget.h"
 
 /**
  * @brief DiagramPropertiesEditorDockWidget::DiagramPropertiesEditorDockWidget
@@ -91,7 +93,7 @@ void DiagramPropertiesEditorDockWidget::selectionChanged()
 
 	switch (type_)
 	{
-		case Element::Type:
+		case Element::Type: //1000
 		{
 				//We already edit an element, just update the editor with a new element
 			if (m_edited_qgi_type == type_)
@@ -105,14 +107,27 @@ void DiagramPropertiesEditorDockWidget::selectionChanged()
 			addEditor(new ElementPropertiesWidget(static_cast<Element*>(item), this));
 			break;
 		}
-		case DiagramImageItem::Type:
+		case IndependentTextItem::Type: //1005
+		{
+			if (m_edited_qgi_type == type_)
+			{
+				static_cast<IndiTextPropertiesWidget*>(editors().first())->setText(static_cast<IndependentTextItem*>(item));
+				return;
+			}
+			
+			clear();
+			m_edited_qgi_type = type_;
+			addEditor(new IndiTextPropertiesWidget(static_cast<IndependentTextItem*>(item), this));
+			break;
+		}
+		case DiagramImageItem::Type: //1007
 		{
 			clear();
 			m_edited_qgi_type = type_;
 			addEditor(new ImagePropertiesWidget(static_cast<DiagramImageItem*>(item), this));
 			break;
 		}
-		case QetShapeItem::Type:
+		case QetShapeItem::Type: //1008
 		{
 			if (m_edited_qgi_type == type_)
 			{
@@ -125,7 +140,7 @@ void DiagramPropertiesEditorDockWidget::selectionChanged()
 			addEditor(new ShapeGraphicsItemPropertiesWidget(static_cast<QetShapeItem*>(item), this));
 			break;
 		}
-		case DynamicElementTextItem::Type:
+		case DynamicElementTextItem::Type: //1010
 		{
 			DynamicElementTextItem *deti = static_cast<DynamicElementTextItem *>(item);
 			
