@@ -227,7 +227,7 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 						if (!parent_undo) {
 							parent_undo = new QUndoCommand(tr("Pivoter plusieurs champs texte"));
 						}
-						QPropertyUndoCommand *qpuc = new QPropertyUndoCommand(piti.data(), "rotation", QVariant(m_text->rotation()), QVariant(ui->m_angle_sb->value()), parent_undo);
+						QPropertyUndoCommand *qpuc = new QPropertyUndoCommand(piti.data(), "rotation", QVariant(piti->rotation()), QVariant(ui->m_angle_sb->value()), parent_undo);
 						qpuc->setAnimated(true, false);
 					}
 				}
@@ -242,7 +242,7 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 						if (!parent_undo) {
 							parent_undo = new QUndoCommand(tr("Modifier la taille de plusieurs champs texte"));
 						}
-						QPropertyUndoCommand *qpuc = new QPropertyUndoCommand(piti.data(), "fontSize", m_text->fontSize(), ui->m_size_sb->value(), parent_undo);
+						QPropertyUndoCommand *qpuc = new QPropertyUndoCommand(piti.data(), "fontSize", QVariant(piti->fontSize()), QVariant(ui->m_size_sb->value()), parent_undo);
 						qpuc->setAnimated(true, false);
 					}
 				}
