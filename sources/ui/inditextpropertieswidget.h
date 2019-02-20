@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2019 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -28,7 +28,7 @@ namespace Ui {
 
 /**
  * @brief The IndiTextPropertiesWidget class
- * This widget is used to edit the properties of an independent text item
+ * This widget is used to edit the properties of one or several independent text item
  */
 class IndiTextPropertiesWidget : public PropertiesEditorWidget
 {
@@ -36,15 +36,18 @@ class IndiTextPropertiesWidget : public PropertiesEditorWidget
 	
 	public:
 		IndiTextPropertiesWidget(IndependentTextItem *text = nullptr, QWidget *parent = nullptr);
+		IndiTextPropertiesWidget(QList <IndependentTextItem *> text_list, QWidget *parent = nullptr);
 		~IndiTextPropertiesWidget() override;
 		void setText (IndependentTextItem *text);
+		void setText (QList<IndependentTextItem *> text_list);
 		
 		void apply() override;
 		bool setLiveEdit(bool live_edit) override;
 		QUndoCommand* associatedUndo() const override;
 		
 	private slots:
-		void on_m_advanced_editor_pb_clicked();
+		void on_m_advanced_editor_pb_clicked();	
+		void on_m_break_html_pb_clicked();
 		
 	private:
 		void setUpEditConnection();
@@ -53,6 +56,7 @@ class IndiTextPropertiesWidget : public PropertiesEditorWidget
 	private:
 		Ui::IndiTextPropertiesWidget *ui;
 		QPointer <IndependentTextItem> m_text;
+		QList <QPointer<IndependentTextItem>> m_text_list;
 		QList <QMetaObject::Connection> m_connect_list,
 										m_edit_connection;
 };

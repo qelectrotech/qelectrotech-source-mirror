@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2017 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -80,12 +80,30 @@ void DiagramPropertiesEditorDockWidget::setDiagram(Diagram *diagram)
 void DiagramPropertiesEditorDockWidget::selectionChanged()
 {
 	if (!m_diagram) return;
-		//This editor can edit only one item.
-	if (m_diagram->selectedItems().size() != 1)
+	
+	int count_ = m_diagram->selectedItems().size();
+	
+		//The editor widget can only edit one item
+		//or several items of the same type
+	if (count_ != 1)
 	{
-		clear();
-		m_edited_qgi_type = -1;
-		return;
+		if (count_ == 0) {
+			clear();
+			m_edited_qgi_type = -1;
+			return;
+		}
+		
+		const QList<QGraphicsItem *> list_ = m_diagram->selectedItems();
+		int type_ = list_.first()->type();
+		for (QGraphicsItem *qgi : list_)
+		{
+			if (qgi->type() != type_)
+			{
+				clear();
+				m_edited_qgi_type = -1;
+				return;
+			}
+		}
 	}
 
 	QGraphicsItem *item = m_diagram->selectedItems().first();
@@ -95,6 +113,12 @@ void DiagramPropertiesEditorDockWidget::selectionChanged()
 	{
 		case Element::Type: //1000
 		{
+			if (count_ > 1)
+			{
+				clear();
+				m_edited_qgi_type = -1;
+				return;
+			}
 				//We already edit an element, just update the editor with a new element
 			if (m_edited_qgi_type == type_)
 			{
@@ -109,19 +133,31 @@ void DiagramPropertiesEditorDockWidget::selectionChanged()
 		}
 		case IndependentTextItem::Type: //1005
 		{
+			QList<IndependentTextItem *> text_list;
+			for (QGraphicsItem *qgi : m_diagram->selectedItems()) {
+				text_list.append(static_cast<IndependentTextItem*>(qgi));
+			}
+			
 			if (m_edited_qgi_type == type_)
 			{
-				static_cast<IndiTextPropertiesWidget*>(editors().first())->setText(static_cast<IndependentTextItem*>(item));
+				static_cast<IndiTextPropertiesWidget*>(editors().first())->setText(text_list);
 				return;
 			}
 			
 			clear();
 			m_edited_qgi_type = type_;
-			addEditor(new IndiTextPropertiesWidget(static_cast<IndependentTextItem*>(item), this));
+			addEditor(new IndiTextPropertiesWidget(text_list, this));
 			break;
 		}
 		case DiagramImageItem::Type: //1007
 		{
+			if (count_ > 1)
+			{
+				clear();
+				m_edited_qgi_type = -1;
+				return;
+			}
+			
 			clear();
 			m_edited_qgi_type = type_;
 			addEditor(new ImagePropertiesWidget(static_cast<DiagramImageItem*>(item), this));
@@ -129,6 +165,13 @@ void DiagramPropertiesEditorDockWidget::selectionChanged()
 		}
 		case QetShapeItem::Type: //1008
 		{
+			if (count_ > 1)
+			{
+				clear();
+				m_edited_qgi_type = -1;
+				return;
+			}
+			
 			if (m_edited_qgi_type == type_)
 			{
 				static_cast<ShapeGraphicsItemPropertiesWidget*>(editors().first())->setItem(static_cast<QetShapeItem*>(item));
@@ -142,6 +185,13 @@ void DiagramPropertiesEditorDockWidget::selectionChanged()
 		}
 		case DynamicElementTextItem::Type: //1010
 		{
+			if (count_ > 1)
+			{
+				clear();
+				m_edited_qgi_type = -1;
+				return;
+			}
+			
 			DynamicElementTextItem *deti = static_cast<DynamicElementTextItem *>(item);
 			
 				//For dynamic element text, we open the element editor to edit it
@@ -159,6 +209,13 @@ void DiagramPropertiesEditorDockWidget::selectionChanged()
 		}
 		case QGraphicsItemGroup::Type:
 		{
+			if (count_ > 1)
+			{
+				clear();
+				m_edited_qgi_type = -1;
+				return;
+			}
+			
 			if(ElementTextItemGroup *group = dynamic_cast<ElementTextItemGroup *>(item))
 			{
 					//For element text item group, we open the element editor to edit it
@@ -180,8 +237,9 @@ void DiagramPropertiesEditorDockWidget::selectionChanged()
 			clear();
 	}
 
-	foreach (PropertiesEditorWidget *pew, editors())
+	for (PropertiesEditorWidget *pew : editors()) {
 		pew->setLiveEdit(true);
+	}
 }
 
 /**
