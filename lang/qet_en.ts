@@ -821,7 +821,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
 <context>
     <name>Diagram</name>
     <message>
-        <location filename="../sources/diagram.cpp" line="1274"/>
+        <location filename="../sources/diagram.cpp" line="1253"/>
         <source>Modifier la profondeur</source>
         <translation>Change the depth</translation>
     </message>
@@ -960,23 +960,23 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <translation>Multiple paste</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="519"/>
+        <location filename="../sources/diagramview.cpp" line="547"/>
         <source>Connecter les bornes sélectionnées</source>
         <translation>Connect the selected terminals</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="790"/>
+        <location filename="../sources/diagramview.cpp" line="819"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>Untitled</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="917"/>
+        <location filename="../sources/diagramview.cpp" line="946"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Choose the new color for this conductor</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="936"/>
+        <location filename="../sources/diagramview.cpp" line="965"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>Edit conductor properties</translation>
@@ -3035,6 +3035,103 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="30"/>
         <source>Écraser les textes existants</source>
         <translation>Erase existing texts</translation>
+    </message>
+</context>
+<context>
+    <name>IndiTextPropertiesWidget</name>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="14"/>
+        <source>Form</source>
+        <translation>Form</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="20"/>
+        <source>X :</source>
+        <translation>X :</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="30"/>
+        <source>Éditeur avancé</source>
+        <translation>Advanced Editor</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="37"/>
+        <source>Taille :</source>
+        <translation>Size :</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="47"/>
+        <source>Angle :</source>
+        <translation>Angle:</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="57"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="93"/>
+        <source>px</source>
+        <translation>px</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="109"/>
+        <source>°</source>
+        <translation>°</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="122"/>
+        <source>Y :</source>
+        <translation>Y :</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="132"/>
+        <source>Texte</source>
+        <translation>Text</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="139"/>
+        <source>Le contenu et la taille du texte ne peuvent être modifié car formaté en html.
+Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
+        <translation>The contents and the size of the text can not be modified because formatted in html.
+Please use the advanced editor for this.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="153"/>
+        <source>Cliquez ici pour annuler le formatage html</source>
+        <translation>Click here to cancel html formatting</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="179"/>
+        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="184"/>
+        <source>Déplacer un champ texte</source>
+        <translation>Move a text field</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="189"/>
+        <source>Pivoter un champ texte</source>
+        <translation>Rotate a text field</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="193"/>
+        <source>Modifier un champ texte</source>
+        <translation>Edit the text field</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="198"/>
+        <source>Modifier la taille d&apos;un champ texte</source>
+        <translation>Change the size of a text field</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="228"/>
+        <source>Pivoter plusieurs champs texte</source>
+        <translation>Rotate multiple text fields</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="243"/>
+        <source>Modifier la taille de plusieurs champs texte</source>
+        <translation>Change the size of multiple text fields</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="256"/>
+        <source>Modifier les propriétés d&apos;un texte</source>
+        <translation>Modify the properties of a text</translation>
     </message>
 </context>
 <context>
