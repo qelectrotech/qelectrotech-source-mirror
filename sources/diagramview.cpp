@@ -544,7 +544,7 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e)
 		{
 				//Popup a menu with an action to create conductors between
 				//all selected terminals.
-			QAction *act = new QAction(tr("Connecter les bornes sélectionné"), this);
+			QAction *act = new QAction(tr("Connecter les bornes sélectionnées"), this);
 			QPolygonF polygon_ = m_free_rubberband;
 			connect(act, &QAction::triggered, [this, polygon_]()
 			{
