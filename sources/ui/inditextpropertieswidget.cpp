@@ -253,7 +253,7 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 		//In mode not live edit, only one text can be edited
 	else if (m_text_list.isEmpty())
 	{
-		QUndoCommand *undo = new QUndoCommand(tr("Modifier les propriétées d'un texte"));
+		QUndoCommand *undo = new QUndoCommand(tr("Modifier les propriétés d'un texte"));
 		if(ui->m_x_sb->value() != m_text->pos().x()) {
 			new QPropertyUndoCommand(m_text.data(), "x", QVariant(m_text->pos().x()), QVariant(ui->m_x_sb->value()), undo);
 		}
