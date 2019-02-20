@@ -352,9 +352,17 @@ void IndiTextPropertiesWidget::updateUi()
 			}
 		}
 		ui->m_angle_sb->setValue(angle_equal ? rotation_ : 0);
+		
+		bool valid_ = true;
+		for (QPointer<IndependentTextItem> piti : m_text_list) {
+			if (piti->isHtml()) {
+				valid_ = false;
+			}
+		}
+		ui->m_size_sb->setEnabled(valid_);
 		ui->m_size_sb->setValue(size_equal ? size_ : 0);
 		ui->m_label->setVisible(false);
-		ui->m_break_html_pb->setVisible(false);
+		ui->m_break_html_pb->setVisible(true);
 	}
 
 	
@@ -373,9 +381,12 @@ void IndiTextPropertiesWidget::on_m_advanced_editor_pb_clicked() {
 
 void IndiTextPropertiesWidget::on_m_break_html_pb_clicked()
 {
-    if (m_text)
-	{
+    if (m_text) {
 		m_text->setPlainText(m_text->toPlainText());
-		updateUi();
 	}
+	for (QPointer<IndependentTextItem> piti : m_text_list) {
+		piti->setPlainText(piti->toPlainText());
+	}
+	
+	updateUi();
 }
