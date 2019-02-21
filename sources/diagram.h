@@ -73,12 +73,17 @@ class Diagram : public QGraphicsScene
 		/// Diagram dimensions and title block
 		BorderTitleBlock border_and_titleblock;
 		/// abscissa grid step size
-		static const int xGrid;
+		static int xGrid;
 		/// ordinate grid step size
-		static const int yGrid;
+		static int yGrid;
+		/// Key grid x step size
+		static int xKeyGrid;
+		/// Key grid y step size
+		static int yKeyGrid;
 		/// margin around the diagram
 		static const qreal margin;
 		/// background color of diagram
+
 		static QColor background_color;
 		/// Hash containing max values for folio sequential autonums in this diagram
 		QHash <QString, QStringList> m_elmt_unitfolio_max;

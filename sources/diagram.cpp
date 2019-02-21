@@ -38,8 +38,10 @@
 #include "undocommand/addelementtextcommand.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 
-const int   Diagram::xGrid  = 10;
-const int   Diagram::yGrid  = 10;
+int Diagram::xGrid  = 10;
+int Diagram::yGrid  = 10;
+int Diagram::xKeyGrid = 10;
+int Diagram::yKeyGrid = 10;
 const qreal Diagram::margin = 5.0;
 
 // static variable to keep track of present background color of the diagram.
@@ -150,6 +152,8 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 
 			//If user allow zoom out beyond of folio, we draw grid outside of border.
 		QSettings settings;
+		int xGrid = settings.value("DiagramEditor_xGrid_sb", Diagram::xGrid).toInt();
+		int yGrid = settings.value("DiagramEditor_yGrid_sb", Diagram::yGrid).toInt();
 		QRectF rect = settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool() ?
 						  r :
 						  border_and_titleblock.insideBorderRect().intersected(r);
@@ -278,6 +282,10 @@ void Diagram::wheelEvent(QGraphicsSceneWheelEvent *event)
  */
 void Diagram::keyPressEvent(QKeyEvent *event)
 {
+	QSettings settings;
+	int xKeyGrid = settings.value("DiagramEditor_xKeyGrid_sb", Diagram::xKeyGrid).toInt();
+	int yKeyGrid = settings.value("DiagramEditor_yKeyGrid_sb", Diagram::yKeyGrid).toInt();
+
 	event->setAccepted(false);
 	
 	if (m_event_interface) {
@@ -295,7 +303,7 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 		DiagramContent dc(this);
 		if (!dc.items(DiagramContent::All).isEmpty())
 		{
-				//Move item with the keyborb arrow
+				//Move item with the keyboard arrow
 			if(event->modifiers() == Qt::NoModifier)
 			{
 				switch(event->key())
@@ -307,10 +315,10 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 							if(left_position <= 5)
 								return;
 						}
-						movement = QPointF(-xGrid, 0.0);
+						movement = QPointF(-xKeyGrid, 0.0);
 						break;
 					case Qt::Key_Right:
-						movement = QPointF(+xGrid, 0.0);
+						movement = QPointF(+xKeyGrid, 0.0);
 						break;
 					case Qt::Key_Up:
 						for(Element *item : dc.m_elements)
@@ -319,10 +327,10 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 							if(top_position <= 5)
 								return;
 						}
-						movement = QPointF(0.0, -yGrid);
+						movement = QPointF(0.0, -yKeyGrid);
 						break;
 					case Qt::Key_Down:
-						movement = QPointF(0.0, +yGrid);
+						movement = QPointF(0.0, +yKeyGrid);
 						break;
 				}
 				
