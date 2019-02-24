@@ -464,15 +464,15 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="Grid">
+     <widget class="QWidget" name="GrilleClavier">
       <attribute name="title">
-       <string>Grille</string>
+       <string>Grille + Clavier</string>
       </attribute>
       <widget class="QLabel" name="Label_Diagram_xGrid">
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>10</y>
+         <x>90</x>
+         <y>50</y>
          <width>191</width>
          <height>30</height>
         </rect>
@@ -484,8 +484,8 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
       <widget class="QLabel" name="Label_Diagram_yGrid">
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>50</y>
+         <x>90</x>
+         <y>90</y>
          <width>191</width>
          <height>30</height>
         </rect>
@@ -497,8 +497,8 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
       <widget class="QSpinBox" name="DiagramEditor_xGrid_sb">
        <property name="geometry">
         <rect>
-         <x>350</x>
-         <y>10</y>
+         <x>540</x>
+         <y>50</y>
          <width>55</width>
          <height>30</height>
         </rect>
@@ -519,8 +519,8 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
       <widget class="QSpinBox" name="DiagramEditor_yGrid_sb">
        <property name="geometry">
         <rect>
-         <x>350</x>
-         <y>50</y>
+         <x>540</x>
+         <y>90</y>
          <width>55</width>
          <height>30</height>
         </rect>
@@ -538,21 +538,21 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
       <widget class="QLabel" name="Label_Diagram_Key_xGrid">
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>180</y>
-         <width>321</width>
+         <x>90</x>
+         <y>280</y>
+         <width>431</width>
          <height>30</height>
         </rect>
        </property>
        <property name="text">
-        <string>DiagramEditor Key Left/Right  xGrid</string>
+        <string>DiagramEditor (touche :   gauche / droite)  xGrid</string>
        </property>
       </widget>
       <widget class="QSpinBox" name="DiagramEditor_xKeyGrid_sb">
        <property name="geometry">
         <rect>
-         <x>350</x>
-         <y>180</y>
+         <x>540</x>
+         <y>280</y>
          <width>55</width>
          <height>30</height>
         </rect>
@@ -573,21 +573,21 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
       <widget class="QLabel" name="Label_Diagram_Key_yGrid">
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>220</y>
-         <width>321</width>
+         <x>90</x>
+         <y>320</y>
+         <width>431</width>
          <height>30</height>
         </rect>
        </property>
        <property name="text">
-        <string>DiagramEditor Key Up/Down  yGrid</string>
+        <string>DiagramEditor (touche :   haut / bas)  yGrid</string>
        </property>
       </widget>
       <widget class="QSpinBox" name="DiagramEditor_yKeyGrid_sb">
        <property name="geometry">
         <rect>
-         <x>350</x>
-         <y>220</y>
+         <x>540</x>
+         <y>320</y>
          <width>55</width>
          <height>30</height>
         </rect>
@@ -603,6 +603,128 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
        </property>
        <property name="value">
         <number>10</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="Label_Grid">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>20</y>
+         <width>121</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Grille : 1 - 30</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="Label_Keys">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>240</y>
+         <width>281</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Déplacement au clavier : 1 - 30</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="Label_Keys_ALT">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>360</y>
+         <width>421</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Déplacement au clavier avec la touche ALT : 1 - 9</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="Label_Diagram_Key_xGrid_ALT">
+       <property name="geometry">
+        <rect>
+         <x>90</x>
+         <y>400</y>
+         <width>431</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>DiagramEditor (touche :   gauche / droite ) xGrid</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="Label_Diagram_Key_yGrid_ALT">
+       <property name="geometry">
+        <rect>
+         <x>90</x>
+         <y>440</y>
+         <width>431</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>DiagramEditor (touche :  haut / bas)  yGrid</string>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="DiagramEditor_xKeyGridFine_sb">
+       <property name="geometry">
+        <rect>
+         <x>540</x>
+         <y>400</y>
+         <width>55</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>9</number>
+       </property>
+       <property name="singleStep">
+        <number>1</number>
+       </property>
+       <property name="value">
+        <number>1</number>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="DiagramEditor_yKeyGridFine_sb">
+       <property name="geometry">
+        <rect>
+         <x>540</x>
+         <y>440</y>
+         <width>55</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>9</number>
+       </property>
+       <property name="singleStep">
+        <number>1</number>
+       </property>
+       <property name="value">
+        <number>1</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="Label_Grid_Tip">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>130</y>
+         <width>481</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>La Grille doite etre active pour pouvoir voir les modifications.</string>
        </property>
       </widget>
      </widget>

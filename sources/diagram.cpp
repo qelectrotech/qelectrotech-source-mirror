@@ -42,6 +42,8 @@ int Diagram::xGrid  = 10;
 int Diagram::yGrid  = 10;
 int Diagram::xKeyGrid = 10;
 int Diagram::yKeyGrid = 10;
+int Diagram::xKeyGridFine = 1;
+int Diagram::yKeyGridFine = 1;
 const qreal Diagram::margin = 5.0;
 
 // static variable to keep track of present background color of the diagram.
@@ -285,7 +287,8 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 	QSettings settings;
 	int xKeyGrid = settings.value("DiagramEditor_xKeyGrid_sb", Diagram::xKeyGrid).toInt();
 	int yKeyGrid = settings.value("DiagramEditor_yKeyGrid_sb", Diagram::yKeyGrid).toInt();
-
+    int xKeyGridFine = settings.value("DiagramEditor_xKeyGridFine_sb", Diagram::xKeyGridFine).toInt();
+    int yKeyGridFine = settings.value("DiagramEditor_yKeyGridFine_sb", Diagram::yKeyGridFine).toInt();
 	event->setAccepted(false);
 	
 	if (m_event_interface) {
@@ -342,7 +345,46 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 					return;
 				}
 			}
-			else if(event->modifiers() == Qt::ControlModifier)
+            else if(event->modifiers() == Qt::AltModifier)
+
+                        {
+                            switch(event->key())
+                            {
+                                case Qt::Key_Left:
+                                    for (Element *item : dc.m_elements)
+                                    {
+                                        left_position = item->sceneBoundingRect().x();
+                                        if(left_position <= 5)
+                                            return;
+                                    }
+                                    movement = QPointF(-xKeyGridFine, 0.0);
+                                    break;
+                                case Qt::Key_Right:
+                                    movement = QPointF(+xKeyGridFine, 0.0);
+                                    break;
+                                case Qt::Key_Up:
+                                    for(Element *item : dc.m_elements)
+                                    {
+                                        top_position = item->sceneBoundingRect().y();
+                                        if(top_position <= 5)
+                                            return;
+                                    }
+                                    movement = QPointF(0.0, -yKeyGridFine);
+                                    break;
+                                case Qt::Key_Down:
+                                    movement = QPointF(0.0, +yKeyGridFine);
+                                    break;
+                            }
+
+                            if (!movement.isNull() && !focusItem())
+                            {
+                                m_elements_mover.beginMovement(this);
+                                m_elements_mover.continueMovement(movement);
+                                event->accept();
+                                return;
+                            }
+                        }
+            else if(event->modifiers() == Qt::ControlModifier)
 			{
 				//Adjust the alignment of a texts group
 				if(selectedItems().size() == 1 && selectedItems().first()->type() == QGraphicsItemGroup::Type)

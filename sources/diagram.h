@@ -80,6 +80,10 @@ class Diagram : public QGraphicsScene
 		static int xKeyGrid;
 		/// Key grid y step size
 		static int yKeyGrid;
+        /// Key grid fine x step size
+        static int xKeyGridFine;
+        /// Key grid fine y step size
+        static int yKeyGridFine;
 		/// margin around the diagram
 		static const qreal margin;
 		/// background color of diagram
