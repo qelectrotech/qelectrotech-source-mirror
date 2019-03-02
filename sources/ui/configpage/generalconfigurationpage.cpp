@@ -35,12 +35,12 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	
 	QSettings settings;
 	
-	ui->DiagramEditor_xGrid_sb->setValue(settings.value("DiagramEditor_xGrid_sb", 10).toInt());
-	ui->DiagramEditor_yGrid_sb->setValue(settings.value("DiagramEditor_yGrid_sb", 10).toInt());
-	ui->DiagramEditor_xKeyGrid_sb->setValue(settings.value("DiagramEditor_xKeyGrid_sb", 10).toInt());
-	ui->DiagramEditor_yKeyGrid_sb->setValue(settings.value("DiagramEditor_yKeyGrid_sb", 10).toInt());
-    ui->DiagramEditor_xKeyGridFine_sb->setValue(settings.value("DiagramEditor_xKeyGridFine_sb", 1).toInt());
-    ui->DiagramEditor_yKeyGridFine_sb->setValue(settings.value("DiagramEditor_yKeyGridFine_sb", 1).toInt());
+	ui->DiagramEditor_xGrid_sb->setValue(settings.value("diagrameditor/Xgrid", 10).toInt());
+	ui->DiagramEditor_yGrid_sb->setValue(settings.value("diagrameditor/Ygrid", 10).toInt());
+	ui->DiagramEditor_xKeyGrid_sb->setValue(settings.value("diagrameditor/key_Xgrid", 10).toInt());
+	ui->DiagramEditor_yKeyGrid_sb->setValue(settings.value("diagrameditor/key_Ygrid", 10).toInt());
+	ui->DiagramEditor_xKeyGridFine_sb->setValue(settings.value("diagrameditor/key_fine_Xgrid", 1).toInt());
+	ui->DiagramEditor_yKeyGridFine_sb->setValue(settings.value("diagrameditor/key_fine_Ygrid", 1).toInt());
     ui->m_use_system_color_cb->setChecked(settings.value("usesystemcolors", "true").toBool());
 	bool tabbed = settings.value("diagrameditor/viewmode", "tabbed") == "tabbed";
 	if(tabbed)
@@ -143,12 +143,12 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue("diagrameditor/autosave-interval", ui->m_autosave_sb->value());
 	settings.setValue("dynamic_rotation", ui->m_rotation->value());
 	settings.setValue("dynamic_with", ui->m_text_width_sb->value());
-	settings.setValue("DiagramEditor_xGrid_sb", ui->DiagramEditor_xGrid_sb->value());
-	settings.setValue("DiagramEditor_yGrid_sb", ui->DiagramEditor_yGrid_sb->value());
-	settings.setValue("DiagramEditor_xKeyGrid_sb", ui->DiagramEditor_xKeyGrid_sb->value());
-	settings.setValue("DiagramEditor_yKeyGrid_sb", ui->DiagramEditor_yKeyGrid_sb->value());
-    settings.setValue("DiagramEditor_xKeyGridFine_sb", ui->DiagramEditor_xKeyGridFine_sb->value());
-    settings.setValue("DiagramEditor_yKeyGridFine_sb", ui->DiagramEditor_yKeyGridFine_sb->value());
+	settings.setValue("diagrameditor/Xgrid", ui->DiagramEditor_xGrid_sb->value());
+	settings.setValue("diagrameditor/Ygrid", ui->DiagramEditor_yGrid_sb->value());
+	settings.setValue("diagrameditor/key_Xgrid", ui->DiagramEditor_xKeyGrid_sb->value());
+	settings.setValue("diagrameditor/key_Ygrid", ui->DiagramEditor_yKeyGrid_sb->value());
+	settings.setValue("diagrameditor/key_fine_Xgrid", ui->DiagramEditor_xKeyGridFine_sb->value());
+	settings.setValue("diagrameditor/key_fine_Ygrid", ui->DiagramEditor_yKeyGridFine_sb->value());
 
 	QString path = settings.value("elements-collections/common-collection-path").toString();
 	if (ui->m_common_elmt_path_cb->currentIndex() == 1)
