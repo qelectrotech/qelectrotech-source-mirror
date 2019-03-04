@@ -7942,7 +7942,7 @@ Do you want to replace it ?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="74"/>
         <source>Numéro du folio suivant</source>
-        <translation>Next folio number</translation>
+        <translation>Number of the following folio</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="75"/>
