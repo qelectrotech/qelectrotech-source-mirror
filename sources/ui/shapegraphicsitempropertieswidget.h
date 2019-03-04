@@ -36,9 +36,11 @@ class ShapeGraphicsItemPropertiesWidget : public PropertiesEditorWidget
 
 	public:
 		explicit ShapeGraphicsItemPropertiesWidget(QetShapeItem *item, QWidget *parent = nullptr);
+		ShapeGraphicsItemPropertiesWidget(QList<QetShapeItem *> items_list, QWidget *parent =nullptr);
 		~ShapeGraphicsItemPropertiesWidget() override;
 
 		void setItem(QetShapeItem *shape);
+		void setItems(QList<QetShapeItem *> shapes_list);
 
 	public slots:
 		void apply() override;
@@ -52,6 +54,7 @@ class ShapeGraphicsItemPropertiesWidget : public PropertiesEditorWidget
 	private:
 		void setPenColorButton(const QColor &color);
 		void setBrushColorButton(const QColor &color);
+		void setUpEditConnection();
 
 	private slots:
 		void on_m_lock_pos_cb_clicked();
@@ -63,6 +66,9 @@ class ShapeGraphicsItemPropertiesWidget : public PropertiesEditorWidget
 		private:
 		Ui::ShapeGraphicsItemPropertiesWidget *ui;
 		QetShapeItem *m_shape;
+		QList <QPointer<QetShapeItem>> m_shapes_list;
+		QList <QMetaObject::Connection> m_connect_list,
+										m_edit_connection;
 };
 
 #endif // SHAPEGRAPHICSITEMPROPERTIESWIDGET_H

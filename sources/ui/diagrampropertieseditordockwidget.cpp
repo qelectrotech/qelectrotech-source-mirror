@@ -165,16 +165,14 @@ void DiagramPropertiesEditorDockWidget::selectionChanged()
 		}
 		case QetShapeItem::Type: //1008
 		{
-			if (count_ > 1)
-			{
-				clear();
-				m_edited_qgi_type = -1;
-				return;
+			QList<QetShapeItem *> shapes_list;
+			for (QGraphicsItem *qgi : m_diagram->selectedItems()) {
+				shapes_list.append(static_cast<QetShapeItem*>(qgi));
 			}
-			
+
 			if (m_edited_qgi_type == type_)
 			{
-				static_cast<ShapeGraphicsItemPropertiesWidget*>(editors().first())->setItem(static_cast<QetShapeItem*>(item));
+				static_cast<ShapeGraphicsItemPropertiesWidget*>(editors().first())->setItems(shapes_list);
 				return;
 			}
 
