@@ -380,6 +380,7 @@ void ShapeGraphicsItemPropertiesWidget::updateUi()
 		ui->m_style_cb->setCurrentIndex(static_cast<int>(m_shape->pen().style()) - 1);
 		ui->m_size_dsb ->setValue(m_shape->pen().widthF());
 		setPenColorButton(m_shape->pen().color());
+		ui->m_color_kpb->setColor(m_shape->pen().color());
 
 		//Brush
 		if (m_shape->shapeType() == QetShapeItem::Polygon)
@@ -424,6 +425,7 @@ void ShapeGraphicsItemPropertiesWidget::updateUi()
 			}
 		}
 		setPenColorButton(same ? pc : QColor());
+		ui->m_color_kpb->setColor(same ? pc : QColor());
 
 			//Brush
 		ui->m_filling_gb->setVisible(true);
@@ -584,3 +586,14 @@ void ShapeGraphicsItemPropertiesWidget::on_m_brush_color_pb_clicked()
 }
 
 
+
+void ShapeGraphicsItemPropertiesWidget::on_m_color_kpb_changed(const QColor &newColor)
+{
+	if (newColor.isValid())
+	{
+		setPenColorButton(newColor);
+		if (m_live_edit) {
+			apply();
+		}
+	}
+}

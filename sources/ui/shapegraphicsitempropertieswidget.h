@@ -63,6 +63,8 @@ class ShapeGraphicsItemPropertiesWidget : public PropertiesEditorWidget
 
 		
 		
+		void on_m_color_kpb_changed(const QColor &newColor);
+
 		private:
 		Ui::ShapeGraphicsItemPropertiesWidget *ui;
 		QetShapeItem *m_shape;
