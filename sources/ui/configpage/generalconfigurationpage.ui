@@ -6,40 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>998</width>
-    <height>500</height>
+    <width>893</width>
+    <height>481</height>
    </rect>
-  </property>
-  <property name="sizePolicy">
-   <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
-  </property>
-  <property name="minimumSize">
-   <size>
-    <width>0</width>
-    <height>500</height>
-   </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_3">
-   <item>
+  <layout class="QGridLayout" name="gridLayout_5">
+   <item row="0" column="0">
     <widget class="QTabWidget" name="tabWidget">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>980</width>
-       <height>500</height>
-      </size>
-     </property>
      <property name="currentIndex">
       <number>0</number>
      </property>
@@ -474,16 +450,21 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
          <property name="title">
           <string>Grille : 1 - 30</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout_5">
-          <item row="0" column="0">
-           <widget class="QLabel" name="Label_Diagram_xGrid">
-            <property name="text">
-             <string>DiagramEditor xGrid</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+         <property name="checkable">
+          <bool>false</bool>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_6">
+          <item row="0" column="2">
            <widget class="QSpinBox" name="DiagramEditor_xGrid_sb">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>0</height>
+             </size>
+            </property>
             <property name="minimum">
              <number>1</number>
             </property>
@@ -498,8 +479,28 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
             </property>
            </widget>
           </item>
-          <item row="1" column="1">
+          <item row="1" column="0">
+           <widget class="QLabel" name="Label_Diagram_yGrid">
+            <property name="text">
+             <string>DiagramEditor yGrid</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="Label_Grid_Tip">
+            <property name="text">
+             <string>La Grille doite etre active pour pouvoir voir les modifications.</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
            <widget class="QSpinBox" name="DiagramEditor_yGrid_sb">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>0</height>
+             </size>
+            </property>
             <property name="minimum">
              <number>1</number>
             </property>
@@ -511,22 +512,15 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="Label_Diagram_yGrid">
+          <item row="0" column="0">
+           <widget class="QLabel" name="Label_Diagram_xGrid">
             <property name="text">
-             <string>DiagramEditor yGrid</string>
+             <string>DiagramEditor xGrid</string>
             </property>
            </widget>
           </item>
-          <item row="2" column="0" colspan="2">
-           <widget class="QLabel" name="Label_Grid_Tip">
-            <property name="text">
-             <string>La Grille doite etre active pour pouvoir voir les modifications.</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="2">
-           <spacer name="horizontalSpacer_4">
+          <item row="0" column="1">
+           <spacer name="horizontalSpacer_6">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -547,6 +541,50 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
           <string>Déplacement au clavier : 1 - 30</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_10">
+          <item row="0" column="2">
+           <widget class="QSpinBox" name="DiagramEditor_xKeyGrid_sb">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>30</number>
+            </property>
+            <property name="singleStep">
+             <number>1</number>
+            </property>
+            <property name="value">
+             <number>10</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QSpinBox" name="DiagramEditor_yKeyGrid_sb">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>30</number>
+            </property>
+            <property name="singleStep">
+             <number>1</number>
+            </property>
+            <property name="value">
+             <number>10</number>
+            </property>
+           </widget>
+          </item>
           <item row="0" column="0">
            <widget class="QLabel" name="Label_Diagram_Key_xGrid">
             <property name="text">
@@ -562,38 +600,6 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QSpinBox" name="DiagramEditor_xKeyGrid_sb">
-            <property name="minimum">
-             <number>1</number>
-            </property>
-            <property name="maximum">
-             <number>30</number>
-            </property>
-            <property name="singleStep">
-             <number>1</number>
-            </property>
-            <property name="value">
-             <number>10</number>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QSpinBox" name="DiagramEditor_yKeyGrid_sb">
-            <property name="minimum">
-             <number>1</number>
-            </property>
-            <property name="maximum">
-             <number>30</number>
-            </property>
-            <property name="singleStep">
-             <number>1</number>
-            </property>
-            <property name="value">
-             <number>10</number>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="2">
            <spacer name="horizontalSpacer_5">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -622,8 +628,14 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
             </property>
            </widget>
           </item>
-          <item row="0" column="2">
-           <widget class="QSpinBox" name="DiagramEditor_xKeyGridFine_sb">
+          <item row="1" column="3">
+           <widget class="QSpinBox" name="DiagramEditor_yKeyGridFine_sb">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>0</height>
+             </size>
+            </property>
             <property name="minimum">
              <number>1</number>
             </property>
@@ -645,8 +657,14 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
             </property>
            </widget>
           </item>
-          <item row="1" column="2">
-           <widget class="QSpinBox" name="DiagramEditor_yKeyGridFine_sb">
+          <item row="0" column="3">
+           <widget class="QSpinBox" name="DiagramEditor_xKeyGridFine_sb">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>0</height>
+             </size>
+            </property>
             <property name="minimum">
              <number>1</number>
             </property>
@@ -661,8 +679,8 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
             </property>
            </widget>
           </item>
-          <item row="0" column="3">
-           <spacer name="horizontalSpacer_6">
+          <item row="0" column="2">
+           <spacer name="horizontalSpacer_4">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>

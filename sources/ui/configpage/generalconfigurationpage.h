@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2019 The QElectroTech Team
 	This file is part of QElectroTech.
 	
@@ -30,8 +30,8 @@ class GeneralConfigurationPage : public ConfigPage
 	Q_OBJECT
 	
 	public:
-		explicit GeneralConfigurationPage(QWidget *parent = 0);
-		~GeneralConfigurationPage();
+		explicit GeneralConfigurationPage(QWidget *parent = nullptr);
+		~GeneralConfigurationPage() override;
 	
 		virtual void applyConf() override;
 		virtual QString title() const override;
@@ -50,7 +50,7 @@ class GeneralConfigurationPage : public ConfigPage
 		
 		
 		
-		private:
+	private:
 		void fillLang();
 	
 	private:

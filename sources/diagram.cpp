@@ -154,8 +154,8 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 
 			//If user allow zoom out beyond of folio, we draw grid outside of border.
 		QSettings settings;
-		int xGrid = settings.value("DiagramEditor_xGrid_sb", Diagram::xGrid).toInt();
-		int yGrid = settings.value("DiagramEditor_yGrid_sb", Diagram::yGrid).toInt();
+		int xGrid = settings.value("diagrameditor/Xgrid", Diagram::xGrid).toInt();
+		int yGrid = settings.value("diagrameditor/Ygrid", Diagram::yGrid).toInt();
 		QRectF rect = settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool() ?
 						  r :
 						  border_and_titleblock.insideBorderRect().intersected(r);
@@ -285,10 +285,10 @@ void Diagram::wheelEvent(QGraphicsSceneWheelEvent *event)
 void Diagram::keyPressEvent(QKeyEvent *event)
 {
 	QSettings settings;
-	int xKeyGrid = settings.value("DiagramEditor_xKeyGrid_sb", Diagram::xKeyGrid).toInt();
-	int yKeyGrid = settings.value("DiagramEditor_yKeyGrid_sb", Diagram::yKeyGrid).toInt();
-    int xKeyGridFine = settings.value("DiagramEditor_xKeyGridFine_sb", Diagram::xKeyGridFine).toInt();
-    int yKeyGridFine = settings.value("DiagramEditor_yKeyGridFine_sb", Diagram::yKeyGridFine).toInt();
+	int xKeyGrid = settings.value("diagrameditor/key_Xgrid", Diagram::xKeyGrid).toInt();
+	int yKeyGrid = settings.value("diagrameditor/key_Ygrid", Diagram::yKeyGrid).toInt();
+	int xKeyGridFine = settings.value("iagrameditor/key_fine_Xgrid", Diagram::xKeyGridFine).toInt();
+	int yKeyGridFine = settings.value("diagrameditor/key_fine_Ygrid", Diagram::yKeyGridFine).toInt();
 	event->setAccepted(false);
 	
 	if (m_event_interface) {
