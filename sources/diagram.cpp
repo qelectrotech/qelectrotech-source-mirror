@@ -287,7 +287,7 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 	QSettings settings;
 	int xKeyGrid = settings.value("diagrameditor/key_Xgrid", Diagram::xKeyGrid).toInt();
 	int yKeyGrid = settings.value("diagrameditor/key_Ygrid", Diagram::yKeyGrid).toInt();
-	int xKeyGridFine = settings.value("iagrameditor/key_fine_Xgrid", Diagram::xKeyGridFine).toInt();
+	int xKeyGridFine = settings.value("diagrameditor/key_fine_Xgrid", Diagram::xKeyGridFine).toInt();
 	int yKeyGridFine = settings.value("diagrameditor/key_fine_Ygrid", Diagram::yKeyGridFine).toInt();
 	event->setAccepted(false);
 	
