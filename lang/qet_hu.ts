@@ -2739,7 +2739,7 @@ Szöveg és szám szintén bevihető.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="644"/>
         <source>DiagramEditor (touche :  haut / bas)  yGrid</source>
-        <translation></translation>
+        <translation>Sémaszerkesztő (billentyű: fel / le) yRács</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="96"/>
