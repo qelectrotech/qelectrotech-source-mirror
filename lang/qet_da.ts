@@ -2797,12 +2797,12 @@ Her kan standardværdien angives for dette felt for de oprettede symboler:</tran
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="481"/>
         <source>DiagramEditor xGrid</source>
-        <translation type="unfinished"></translation>
+        <translation>Diagram redigering x gitter</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="517"/>
         <source>DiagramEditor yGrid</source>
-        <translation type="unfinished"></translation>
+        <translation>Diagram redigering y gitter</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="524"/>
@@ -2817,12 +2817,12 @@ Her kan standardværdien angives for dette felt for de oprettede symboler:</tran
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="553"/>
         <source>DiagramEditor (touche :   gauche / droite)  xGrid</source>
-        <translation type="unfinished">DiagramEditor (nøgle: venstre/højre)  xGrid</translation>
+        <translation>Diagram redigering (taste: venstre/højre) x-gitter</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="560"/>
         <source>DiagramEditor (touche :   haut / bas)  yGrid</source>
-        <translation type="unfinished">DiagramEditor (nøgle: op/ned)  yGrid</translation>
+        <translation>Diagram redigering (taste: op/ned) y-gitter</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="615"/>
@@ -2832,12 +2832,12 @@ Her kan standardværdien angives for dette felt for de oprettede symboler:</tran
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="621"/>
         <source>DiagramEditor (touche :   gauche / droite ) xGrid</source>
-        <translation type="unfinished">DiagramEditor (nøgle: venstre/højre) xGrid</translation>
+        <translation>Diagram redigering (taste: venstre/højre) x-gitter</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="644"/>
         <source>DiagramEditor (touche :  haut / bas)  yGrid</source>
-        <translation type="unfinished">DiagramEditor (nøgle: op/ned) xGrid</translation>
+        <translation>Diagram redigering (taste: op/ned) x-gitter</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="150"/>
