@@ -19,6 +19,7 @@
 #define DIAGRAM_TEXT_ITEM_H
 
 #include <QGraphicsTextItem>
+#include <QFont>
 
 class Diagram;
 class QDomElement;
@@ -37,6 +38,7 @@ class DiagramTextItem : public QGraphicsTextItem
     Q_PROPERTY(QColor color READ color WRITE setColor NOTIFY colorChanged)
 	Q_PROPERTY(Qt::Alignment alignment READ alignment WRITE setAlignment NOTIFY alignmentChanged)
 	Q_PROPERTY(QString plainText READ toPlainText WRITE setPlainText)
+	Q_PROPERTY(QFont font READ font WRITE setFont NOTIFY fontChanged)
 	
 	
 	signals:
@@ -44,6 +46,7 @@ class DiagramTextItem : public QGraphicsTextItem
 		void colorChanged(QColor color);
 		void alignmentChanged(Qt::Alignment alignment);
 		void textEdited(const QString &old_str, const QString &new_str);
+		void fontChanged(QFont font);
 
 	public:
 		DiagramTextItem(QGraphicsItem * = nullptr);
@@ -68,6 +71,8 @@ class DiagramTextItem : public QGraphicsTextItem
 
 		void setFontSize(int s);
         int fontSize()const;
+
+		void setFont(const QFont &font);
         
         void setColor(const QColor& color);
         QColor color() const;

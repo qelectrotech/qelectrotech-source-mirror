@@ -162,7 +162,21 @@ void DiagramTextItem::setFontSize(int s)
 
 int DiagramTextItem::fontSize() const
 {
-    return font().pointSize();
+	return font().pointSize();
+}
+
+void DiagramTextItem::setFont(const QFont &font)
+{
+	if (this->font() == font) {
+		return;
+	}
+	else
+	{
+		prepareAlignment();
+		QGraphicsTextItem::setFont(font);
+		finishAlignment();
+		emit fontChanged(font);
+	}
 }
 
 void DiagramTextItem::setColor(const QColor& color)

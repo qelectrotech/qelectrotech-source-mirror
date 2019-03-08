@@ -92,12 +92,10 @@ QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
 	root_element.setAttribute("x", QString::number(pos().x()));
 	root_element.setAttribute("y", QString::number(pos().y()));
 	root_element.setAttribute("rotation", QString::number(QET::correctAngle(rotation())));
-	root_element.setAttribute("font_size", font().pointSize());
 	root_element.setAttribute("uuid", m_uuid.toString());
-	root_element.setAttribute("font_family", font().family());
-	root_element.setAttribute("dynamicitemstyle", font().styleName());
 	root_element.setAttribute("frame", m_frame? "true" : "false");
 	root_element.setAttribute("text_width", QString::number(m_text_width));
+	root_element.setAttribute("font", font().toString());
 	
 	QMetaEnum me = textFromMetaEnum();
 	root_element.setAttribute("text_from", me.valueToKey(m_text_from));
@@ -162,10 +160,21 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 	}
 	
 	QGraphicsTextItem::setRotation(dom_elmt.attribute("rotation", QString::number(0)).toDouble());
-	QFont font_(dom_elmt.attribute("font_family", font().family()),
-				dom_elmt.attribute("font_size", QString::number(9)).toInt());
-	font_.setStyleName(dom_elmt.attribute("dynamicitemstyle", font().styleName()));
-	setFont(font_);
+
+	if (dom_elmt.hasAttribute("font"))
+	{
+		QFont font;
+		font.fromString(dom_elmt.attribute("font"));
+		setFont(font);
+	}
+	else	//Retrocompatibility during the 0.7 dev because the font property was added lately. TODO remove this part in futur
+	{
+		QFont font_(dom_elmt.attribute("font_family", font().family()),
+					dom_elmt.attribute("font_size", QString::number(9)).toInt());
+		font_.setStyleName(dom_elmt.attribute("dynamicitemstyle", font().styleName()));
+		setFont(font_);
+	}
+
 	m_uuid = QUuid(dom_elmt.attribute("uuid", QUuid::createUuid().toString()));
 	setFrame(dom_elmt.attribute("frame", "false") == "true"? true : false);
 	setTextWidth(dom_elmt.attribute("text_width", QString::number(-1)).toDouble());
@@ -643,13 +652,13 @@ void DynamicElementTextItem::paint(QPainter *painter, const QStyleOptionGraphics
 	if (m_frame)
 	{
 		painter->save();
-		painter->setFont(QETApp::dynamicTextsItemFont(fontSize()));
+		painter->setFont(QETApp::dynamicTextsItemFont(font().pointSize()));
 		
 			//Adjust the thickness according to the font size, 
 		qreal w=0.3;
-		if(fontSize() >= 5)
+		if(font().pointSize() >= 5)
 		{
-			w = (qreal)fontSize()*0.1;
+			w = font().pointSizeF()*0.1;
 			if(w > 2.5)
 				w = 2.5;
 		}
@@ -659,9 +668,9 @@ void DynamicElementTextItem::paint(QPainter *painter, const QStyleOptionGraphics
 		pen.setWidthF(w);
 		painter->setPen(pen);
 		painter->setRenderHint(QPainter::Antialiasing);
-		
+
 			//Adjust the rounding of the rectangle according to the size of the font
-		qreal ro = (qreal)fontSize()/3;
+		qreal ro = font().pointSizeF()/3;
 		painter->drawRoundedRect(frameRect(), ro, ro);
 		
 		painter->restore();

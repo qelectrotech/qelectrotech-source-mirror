@@ -35,26 +35,27 @@
 #include "addelementtextcommand.h"
 #include "alignmenttextdialog.h"
 
-int src_txt_row   = 0;
-int usr_txt_row   = 1;
-int info_txt_row  = 2;
-int compo_txt_row = 3;
-int size_txt_row  = 4;
-int color_txt_row = 5;
-int frame_txt_row = 6;
-int width_txt_row = 7;
-int x_txt_row     = 8;
-int y_txt_row     = 9;
-int rot_txt_row   = 10;
-int align_txt_row = 11;
+static int src_txt_row   = 0;
+static int usr_txt_row   = 1;
+static int info_txt_row  = 2;
+static int compo_txt_row = 3;
+static int size_txt_row  = 4;
+static int font_txt_row  = 5;
+static int color_txt_row = 6;
+static int frame_txt_row = 7;
+static int width_txt_row = 8;
+static int x_txt_row     = 9;
+static int y_txt_row     = 10;
+static int rot_txt_row   = 11;
+static int align_txt_row = 12;
 
-int align_grp_row          = 0;
-int x_grp_row              = 1;
-int y_grp_row              = 2;
-int rot_grp_row            = 3;
-int adjust_grp_row         = 4;
-int frame_grp_row          = 5;
-int hold_to_bottom_grp_row = 6;
+static int align_grp_row          = 0;
+static int x_grp_row              = 1;
+static int y_grp_row              = 2;
+static int rot_grp_row            = 3;
+static int adjust_grp_row         = 4;
+static int frame_grp_row          = 5;
+static int hold_to_bottom_grp_row = 6;
 
 DynamicElementTextModel::DynamicElementTextModel(Element *element, QObject *parent) :
 	QStandardItemModel(parent),
@@ -114,7 +115,7 @@ bool DynamicElementTextModel::indexIsInGroup(const QModelIndex &index) const
 /**
  * @brief DynamicElementTextModel::itemsForText
  * @param deti
- * @return The items for the text @deti, if the text@deti is already managed by this model
+ * @return The items for the text @deti, if the text @deti is already managed by this model
  * the returned list is empty
  * The returned items haven't got the same number of childs if the text is in a group or not.
  */
@@ -193,12 +194,27 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(DynamicElementTextI
     size->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
     
     QStandardItem *siza = new QStandardItem();
-    siza->setData(deti->fontSize(), Qt::EditRole);
+	siza->setData(deti->font().pointSize(), Qt::EditRole);
     siza->setData(DynamicElementTextModel::size, Qt::UserRole+1);
     siza->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
     
     qsi_list.clear();
     qsi_list << size << siza;
+	qsi->appendRow(qsi_list);
+
+		//Font
+	QStandardItem *font = new QStandardItem(tr("Police"));
+	font->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+
+	QStandardItem *fonta = new QStandardItem();
+	fonta->setFont(deti->font());
+	fonta->setData(deti->font().family(), Qt::EditRole);
+	fonta->setData(DynamicElementTextModel::font, Qt::UserRole+1);
+	fonta->setData(deti->font(), Qt::UserRole+2);
+	fonta->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable);
+
+	qsi_list.clear();
+	qsi_list << font << fonta;
 	qsi->appendRow(qsi_list);
 
         //Color
@@ -470,11 +486,18 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(DynamicElementTextItem 
 	}
 	
 	int fs = text_qsi->child(size_txt_row,1)->data(Qt::EditRole).toInt();
-	if (fs != deti->fontSize())
+	if (fs != deti->font().pointSize())
 	{
-		QPropertyUndoCommand *quc = new QPropertyUndoCommand(deti, "fontSize", QVariant(deti->fontSize()), QVariant(fs), undo);
+		QPropertyUndoCommand *quc = new QPropertyUndoCommand(deti, "fontSize", QVariant(deti->font().pointSize()), QVariant(fs), undo);
 		quc->setAnimated(true, false);
 		quc->setText(tr("Modifier la taille d'un texte d'élément"));
+	}
+
+	QFont font = text_qsi->child(font_txt_row, 1)->data(Qt::UserRole+2).value<QFont>();
+	if (font != deti->font())
+	{
+		QPropertyUndoCommand *quc = new QPropertyUndoCommand(deti, "font", QVariant(deti->font()), QVariant(font), undo);
+		quc->setText(tr("Modifier la police d'un texte d'élément"));
 	}
 	
 	QColor color = text_qsi->child(color_txt_row,1)->data(Qt::EditRole).value<QColor>();
@@ -1209,7 +1232,7 @@ void DynamicElementTextModel::setConnection(DynamicElementTextItem *deti, bool s
 		
 		QList<QMetaObject::Connection> connection_list;
 		connection_list << connect(deti, &DynamicElementTextItem::colorChanged,    [deti,this](){this->updateDataFromText(deti, color);});
-		connection_list << connect(deti, &DynamicElementTextItem::fontSizeChanged, [deti,this](){this->updateDataFromText(deti, size);});
+		connection_list << connect(deti, &DynamicElementTextItem::fontChanged,     [deti,this](){this->updateDataFromText(deti, font);});
 		connection_list << connect(deti, &DynamicElementTextItem::textFromChanged, [deti,this](){this->updateDataFromText(deti, textFrom);});
 		connection_list << connect(deti, &DynamicElementTextItem::textChanged,     [deti,this](){this->updateDataFromText(deti, userText);});
 		connection_list << connect(deti, &DynamicElementTextItem::infoNameChanged, [deti,this](){this->updateDataFromText(deti, infoText);});
@@ -1317,8 +1340,17 @@ void DynamicElementTextModel::updateDataFromText(DynamicElementTextItem *deti, V
 			break;
 		}
 		case size:
-			qsi->child(size_txt_row,1)->setData(deti->fontSize(), Qt::EditRole);
+			//qsi->child(size_txt_row,1)->setData(deti->fontSize(), Qt::EditRole);
 			break;
+		case font:
+		{
+			QFont f(deti->font());
+			qsi->child(font_txt_row,1)->setFont(f);
+			qsi->child(font_txt_row,1)->setData(f.family(), Qt::EditRole);
+			qsi->child(font_txt_row,1)->setData(f, Qt::UserRole+2);
+			qsi->child(size_txt_row,1)->setData(f.pointSize(), Qt::EditRole);
+			break;
+		}
 		case color:
 		{
 			qsi->child(color_txt_row,1)->setData(deti->color(), Qt::EditRole);
@@ -1380,6 +1412,7 @@ void DynamicElementTextModel::updateDataFromGroup(ElementTextItemGroup *group, D
 		{
 			qsi->child(x_grp_row,1)->setData(group->pos().x(), Qt::EditRole);
 			qsi->child(y_grp_row,1)->setData(group->pos().y(), Qt::EditRole);
+			break;
 		}
 		case grpRotation:
 			qsi->child(rot_grp_row,1)->setData(group->rotation(), Qt::EditRole);
@@ -1493,9 +1526,15 @@ QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOpti
 			sb->setFrame(false);
 			return sb;
 		}
+		case DynamicElementTextModel::font:
+		{
+			QFontDialog *fd = new QFontDialog(index.data(Qt::UserRole+2).value<QFont>(), parent);
+			fd->setObjectName("font_dialog");
+			return fd;
+		}
 		case DynamicElementTextModel::color:
 		{
-			QColorDialog *cd = new QColorDialog(index.data(Qt::EditRole).value<QColor>());
+			QColorDialog *cd = new QColorDialog(index.data(Qt::EditRole).value<QColor>(), parent);
 			cd->setObjectName("color_dialog");
 			return cd;
 		}
@@ -1573,15 +1612,41 @@ void DynamicTextItemDelegate::setModelData(QWidget *editor, QAbstractItemModel *
 {
 	if (index.isValid())
 	{
-		if(editor->objectName() == "color_dialog")
+		if (editor->objectName() == "font_dialog")
+		{
+			if (QStandardItemModel *qsim = dynamic_cast<QStandardItemModel *>(model))
+			{
+				if(QStandardItem *qsi = qsim->itemFromIndex(index))
+				{
+					QFontDialog *fd = static_cast<QFontDialog *>(editor);
+					if (fd->result() == QDialog::Accepted)
+					{
+						//qsi->setData(fd->selectedFont().family(), Qt::EditRole);
+						//qsi->setData(fd->selectedFont(), Qt::UserRole+2);
+						/**For unknow reason, call selectedFont doesn't work,
+						 * (always return the same font, no matter what you select)
+						 * Instead we use curentFont
+						 **/
+						qsi->setData(fd->currentFont().family(), Qt::EditRole);
+						qsi->setData(fd->currentFont(), Qt::UserRole+2);
+						qsi->setFont(fd->currentFont());
+					}
+					return;
+				}
+			}
+		}
+		else if(editor->objectName() == "color_dialog")
 		{
 			if (QStandardItemModel *qsim = dynamic_cast<QStandardItemModel *>(model))
 			{
 				if(QStandardItem *qsi = qsim->itemFromIndex(index))
 				{
 					QColorDialog *cd = static_cast<QColorDialog *> (editor);
-					qsi->setData(cd->selectedColor(), Qt::EditRole);
-					qsi->setData(cd->selectedColor(), Qt::ForegroundRole);
+					if (cd->result() == QDialog::Accepted)
+					{
+						qsi->setData(cd->selectedColor(), Qt::EditRole);
+						qsi->setData(cd->selectedColor(), Qt::ForegroundRole);
+					}
 					return;
 				}
 				

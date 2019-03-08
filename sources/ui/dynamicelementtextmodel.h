@@ -44,6 +44,7 @@ class DynamicElementTextModel : public QStandardItemModel
 			compositeText,
 			txtAlignment,
             size,
+			font,
             color,
 			pos,
 			frame,
