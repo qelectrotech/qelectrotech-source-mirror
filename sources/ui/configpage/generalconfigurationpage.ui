@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>893</width>
-    <height>481</height>
+    <width>689</width>
+    <height>484</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -62,14 +62,14 @@
        <item>
         <widget class="QRadioButton" name="m_use_windows_mode_rb">
          <property name="text">
-          <string>Utiliser des fenêtres (appliqué au prochain lancement de &amp;QElectroTech)</string>
+          <string>Utiliser des fen&amp;êtres (appliqué au prochain lancement de QElectroTech)</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QRadioButton" name="m_use_tab_mode_rb">
          <property name="text">
-          <string>Utiliser des onglets (appliqué au proc&amp;hain lancement de QElectroTech)</string>
+          <string>Utiliser des onglets (appliqué au prochain lance&amp;ment de QElectroTech)</string>
          </property>
         </widget>
        </item>
@@ -93,6 +93,13 @@
        <string>Projets</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_2">
+       <item row="2" column="0">
+        <widget class="QCheckBox" name="m_export_terminal">
+         <property name="text">
+          <string>Exporter les bornes dans la nomenclature</string>
+         </property>
+        </widget>
+       </item>
        <item row="4" column="1">
         <spacer name="horizontalSpacer">
          <property name="orientation">
@@ -106,48 +113,6 @@
          </property>
         </spacer>
        </item>
-       <item row="1" column="0">
-        <widget class="QCheckBox" name="m_use_folio_label">
-         <property name="text">
-          <string>Utiliser les numéros de folio à la place de leur position dans le projet</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QCheckBox" name="m_border_0">
-         <property name="text">
-          <string extracomment="Choix de l'increment de depart 1 ou 0">Numéroter les colonnes de cartouche à partir de 0 (1 sinon)</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0">
-        <widget class="QCheckBox" name="m_save_label_paste">
-         <property name="text">
-          <string>Ne pas conserver les labels des éléments lors des copier coller</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="0">
-        <widget class="QLabel" name="label_3">
-         <property name="text">
-          <string>Police des champs textes des pages sommaires</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="2">
-        <widget class="QPushButton" name="m_folio_list_pb">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="2">
-        <widget class="QPushButton" name="m_font_pb">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
        <item row="4" column="0">
         <widget class="QLabel" name="label">
          <property name="text">
@@ -155,17 +120,10 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="0">
-        <widget class="QCheckBox" name="m_export_terminal">
+       <item row="3" column="0">
+        <widget class="QCheckBox" name="m_border_0">
          <property name="text">
-          <string>Exporter les bornes dans la nomenclature</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="0">
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string>Police des champs de texte</string>
+          <string extracomment="Choix de l'increment de depart 1 ou 0">Numéroter les colonnes de cartouche à partir de 0 (1 sinon)</string>
          </property>
         </widget>
        </item>
@@ -182,7 +140,21 @@
          </property>
         </widget>
        </item>
-       <item row="7" column="0">
+       <item row="0" column="0">
+        <widget class="QCheckBox" name="m_save_label_paste">
+         <property name="text">
+          <string>Ne pas conserver les labels des éléments lors des copier coller</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QCheckBox" name="m_use_folio_label">
+         <property name="text">
+          <string>Utiliser les numéros de folio à la place de leur position dans le projet</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
         <spacer name="verticalSpacer_2">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -309,6 +281,12 @@
              <string>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre.
 Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</string>
             </property>
+            <property name="scaledContents">
+             <bool>false</bool>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
            </widget>
           </item>
           <item>
@@ -371,48 +349,215 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
      </widget>
      <widget class="QWidget" name="tab">
       <attribute name="title">
-       <string>Textes dynamiques</string>
+       <string>Textes</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_4">
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_11">
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QLabel" name="label_15">
          <property name="text">
-          <string>Rotation des textes dynamiques</string>
+          <string>Vous pouvez définire ici l'apparence par defaut des differents textes de QElectroTech</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_5">
-         <property name="text">
-          <string>Longueur des textes</string>
+       <item>
+        <widget class="Line" name="line_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
          </property>
         </widget>
        </item>
-       <item row="2" column="2">
-        <widget class="QSpinBox" name="m_text_width_sb">
-         <property name="minimum">
-          <number>-1</number>
+       <item>
+        <widget class="QGroupBox" name="groupBox_6">
+         <property name="title">
+          <string>Textes d'éléments</string>
          </property>
+         <layout class="QGridLayout" name="gridLayout_4">
+          <item row="2" column="2">
+           <widget class="QSpinBox" name="m_dyn_text_width_sb">
+            <property name="minimum">
+             <number>-1</number>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_12">
+            <property name="text">
+             <string>Police :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QSpinBox" name="m_dyn_text_rotation_sb">
+            <property name="wrapping">
+             <bool>true</bool>
+            </property>
+            <property name="suffix">
+             <string>°</string>
+            </property>
+            <property name="maximum">
+             <number>360</number>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_5">
+            <property name="text">
+             <string>Longueur :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QPushButton" name="m_dyn_text_font_pb"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_11">
+            <property name="text">
+             <string>Rotation :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
         </widget>
        </item>
-       <item row="1" column="2">
-        <widget class="QSpinBox" name="m_rotation">
-         <property name="maximum">
-          <number>360</number>
+       <item>
+        <widget class="QGroupBox" name="groupBox_7">
+         <property name="title">
+          <string>Textes indépendants</string>
          </property>
+         <layout class="QGridLayout" name="gridLayout_7">
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_14">
+            <property name="text">
+             <string>Rotation :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_13">
+            <property name="text">
+             <string>Police :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QSpinBox" name="m_indi_text_rotation_sb">
+            <property name="suffix">
+             <string>°</string>
+            </property>
+            <property name="maximum">
+             <number>360</number>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QPushButton" name="m_indi_text_font_pb">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <spacer name="horizontalSpacer_7">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
         </widget>
        </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_12">
-         <property name="text">
-          <string>Police des textes dynamiques</string>
+       <item>
+        <widget class="QGroupBox" name="groupBox_8">
+         <property name="title">
+          <string>Pages de sommaire</string>
          </property>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QLabel" name="label_16">
+            <property name="text">
+             <string>Police :</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_8">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="m_folio_list_pb">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
-       <item row="0" column="2">
-        <widget class="QPushButton" name="m_dynamic_font_pb"/>
+       <item>
+        <widget class="QGroupBox" name="groupBox_9">
+         <property name="title">
+          <string>Autres textes</string>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>Police :</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_9">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="m_font_pb">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
        </item>
-       <item row="3" column="0">
+       <item>
         <spacer name="verticalSpacer_4">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -421,19 +566,6 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
           <size>
            <width>20</width>
            <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="0" column="1">
-        <spacer name="horizontalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
           </size>
          </property>
         </spacer>
@@ -725,9 +857,9 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
   <tabstop>m_highlight_integrated_elements</tabstop>
   <tabstop>m_default_elements_info</tabstop>
   <tabstop>m_lang_cb</tabstop>
-  <tabstop>m_dynamic_font_pb</tabstop>
-  <tabstop>m_rotation</tabstop>
-  <tabstop>m_text_width_sb</tabstop>
+  <tabstop>m_dyn_text_font_pb</tabstop>
+  <tabstop>m_dyn_text_rotation_sb</tabstop>
+  <tabstop>m_dyn_text_width_sb</tabstop>
  </tabstops>
  <resources/>
  <connections/>

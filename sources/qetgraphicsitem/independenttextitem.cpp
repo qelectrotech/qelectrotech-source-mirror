@@ -19,7 +19,10 @@
 #include "qet.h"
 #include "diagram.h"
 #include "diagramcommands.h"
+#include "qetapp.h"
+
 #include <QDomElement>
+#include <QSettings>
 
 /**
 	Constructeur
@@ -27,7 +30,11 @@
 */
 IndependentTextItem::IndependentTextItem() :
 	DiagramTextItem(nullptr)
-{}
+{
+	setFont(QETApp::indiTextsItemFont());
+	QSettings settings;
+	setRotation(settings.value("diagrameditor/independent_text_rotation", 0).toInt());
+}
 
 /**
 	Constructeur

@@ -22,6 +22,7 @@
 
 #include <QSettings>
 #include <QFontDialog>
+#include <QFileDialog>
 
 /**
  * @brief GeneralConfigurationPage::GeneralConfigurationPage
@@ -59,19 +60,40 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
                         settings.value("diagramitemsize").toString() + " (" +
                         settings.value("diagramitemstyle").toString() + ")";
 	ui->m_font_pb->setText(fontInfos);
-	
-	QString dynamicfontInfos = settings.value("font_family").toString() + " " +
-                        settings.value("dynamicitemsize").toString() + " (" +
-                        settings.value("dynamicitemstyle").toString() + ")";
-	ui->m_dynamic_font_pb->setText(dynamicfontInfos);
+
 	
 	QString foliolistfontInfos = settings.value("foliolistfont").toString() + " " +
                         settings.value("foliolistsize").toString() + " (" +
                         settings.value("folioliststyle").toString() + ")";
 	ui->m_folio_list_pb->setText(foliolistfontInfos);
 	
-	ui->m_rotation->setValue(settings.value("dynamic_rotation", 0).toInt());
-	ui->m_text_width_sb->setValue(settings.value("dynamic_with", -1).toInt());
+
+		//Dynamic element text item
+	ui->m_dyn_text_rotation_sb->setValue(settings.value("diagrameditor/dynamic_text_rotation", 0).toInt());
+	ui->m_dyn_text_width_sb->setValue(settings.value("diagrameditor/dynamic_text_width", -1).toInt());
+	if (settings.contains("diagrameditor/dynamic_text_font"))
+	{
+		QFont font;
+		font.fromString(settings.value("diagrameditor/dynamic_text_font").toString());
+
+		QString fontInfos = font.family() + " " +
+				QString::number(font.pointSize()) + " (" +
+				font.styleName() + ")";
+		ui->m_dyn_text_font_pb->setText(fontInfos);
+	}
+
+		//Independent text item
+	ui->m_indi_text_rotation_sb->setValue(settings.value("diagrameditor/independent_text_rotation",0).toInt());
+	if (settings.contains("diagrameditor/independent_text_font"))
+	{
+		QFont font;
+		font.fromString(settings.value("diagrameditor/independent_text_font").toString());
+
+		QString fontInfos = font.family() + " " +
+							QString::number(font.pointSize()) + " (" +
+							font.styleName() + ")";
+		ui->m_indi_text_font_pb->setText(fontInfos);
+	}
 	
 	ui->m_highlight_integrated_elements->setChecked(settings.value("diagrameditor/highlight-integrated-elements", true).toBool());
 	ui->m_default_elements_info->setPlainText(settings.value("elementeditor/default-informations", "").toString());
@@ -120,36 +142,52 @@ void GeneralConfigurationPage::applyConf()
 {
 	QSettings settings;
 	
+		//GLOBAL
 	bool was_using_system_colors = settings.value("usesystemcolors", "true").toBool();
 	bool must_use_system_colors  = ui->m_use_system_color_cb->isChecked();
 	settings.setValue("usesystemcolors", must_use_system_colors);
 	if (was_using_system_colors != must_use_system_colors) {
 		QETApp::instance()->useSystemPalette(must_use_system_colors);
 	}
-
+	settings.setValue("border-columns_0",ui->m_border_0->isChecked());
 	settings.setValue("lang", ui->m_lang_cb->itemData(ui->m_lang_cb->currentIndex()).toString());
+
+		//ELEMENT EDITOR
+	settings.setValue("elementeditor/default-informations", ui->m_default_elements_info->toPlainText());
+
+		//DIAGRAM VIEW
+	settings.setValue("diagramview/gestures", ui->m_use_gesture_trackpad->isChecked());
+
+		//DIAGRAM COMMAND
+	settings.setValue("diagramcommands/erase-label-on-copy", ui->m_save_label_paste->isChecked());
+
+		//GENERIC PANEL
+	settings.setValue("genericpanel/folio",ui->m_use_folio_label->isChecked());
+
+		//NOMENCLATURE
+	settings.setValue("nomenclature/terminal-exportlist",ui->m_export_terminal->isChecked());
+
 	
+		//DIAGRAM EDITOR
 	QString view_mode = ui->m_use_tab_mode_rb->isChecked() ? "tabbed" : "windowed";
 	settings.setValue("diagrameditor/viewmode", view_mode) ;
-	
 	settings.setValue("diagrameditor/highlight-integrated-elements", ui->m_highlight_integrated_elements->isChecked());
-	settings.setValue("elementeditor/default-informations", ui->m_default_elements_info->toPlainText());
-	settings.setValue("diagramview/gestures", ui->m_use_gesture_trackpad->isChecked());
-	settings.setValue("diagramcommands/erase-label-on-copy", ui->m_save_label_paste->isChecked());
 	settings.setValue("diagrameditor/zoom-out-beyond-of-folio", ui->m_zoom_out_beyond_folio->isChecked());
-	settings.setValue("genericpanel/folio",ui->m_use_folio_label->isChecked());
-	settings.setValue("nomenclature/terminal-exportlist",ui->m_export_terminal->isChecked());
-	settings.setValue("border-columns_0",ui->m_border_0->isChecked());
 	settings.setValue("diagrameditor/autosave-interval", ui->m_autosave_sb->value());
-	settings.setValue("dynamic_rotation", ui->m_rotation->value());
-	settings.setValue("dynamic_with", ui->m_text_width_sb->value());
+		//Grid step and key navigation
 	settings.setValue("diagrameditor/Xgrid", ui->DiagramEditor_xGrid_sb->value());
 	settings.setValue("diagrameditor/Ygrid", ui->DiagramEditor_yGrid_sb->value());
 	settings.setValue("diagrameditor/key_Xgrid", ui->DiagramEditor_xKeyGrid_sb->value());
 	settings.setValue("diagrameditor/key_Ygrid", ui->DiagramEditor_yKeyGrid_sb->value());
 	settings.setValue("diagrameditor/key_fine_Xgrid", ui->DiagramEditor_xKeyGridFine_sb->value());
 	settings.setValue("diagrameditor/key_fine_Ygrid", ui->DiagramEditor_yKeyGridFine_sb->value());
+		//Dynamic text item
+	settings.setValue("diagrameditor/dynamic_text_rotation", ui->m_dyn_text_rotation_sb->value());
+	settings.setValue("diagrameditor/dynamic_text_width", ui->m_dyn_text_width_sb->value());
+		//Independent text item
+	settings.setValue("diagrameditor/independent_text_rotation", ui->m_indi_text_rotation_sb->value());
 
+		//ELEMENTS COLLECTION
 	QString path = settings.value("elements-collections/common-collection-path").toString();
 	if (ui->m_common_elmt_path_cb->currentIndex() == 1)
 	{
@@ -281,24 +319,21 @@ void GeneralConfigurationPage::on_m_font_pb_clicked()
 }
 
 /**
- * @brief GeneralConfigurationPage::m_dynamic_font_pb_clicked
+ * @brief GeneralConfigurationPage::m_dyn_text_font_pb_clicked
  *  Apply font to config
  */
-void GeneralConfigurationPage::on_m_dynamic_font_pb_clicked()
+void GeneralConfigurationPage::on_m_dyn_text_font_pb_clicked()
 {
 	bool ok;
 	QSettings settings;
 	QFont font = QFontDialog::getFont(&ok, QFont("Sans Serif", 9), this);
 	if (ok)
 	{
-		settings.setValue("font_family", font.family());
-		settings.setValue("dynamicitemsize", font.pointSize());
-		settings.setValue("dynamicitemweight", font.weight());
-		settings.setValue("dynamicitemstyle", font.styleName());
-		QString fontInfos = settings.value("font_family").toString() + " " +
-                            settings.value("dynamicitemsize").toString() + " (" +
-                            settings.value("dynamicitemstyle").toString() + ")";
-        ui->m_dynamic_font_pb->setText(fontInfos);
+		settings.setValue("diagrameditor/dynamic_text_font", font.toString());
+		QString fontInfos = font.family() + " " +
+							QString::number(font.pointSize()) + " (" +
+							font.styleName() + ")";
+		ui->m_dyn_text_font_pb->setText(fontInfos);
 	}
 }
 
@@ -325,7 +360,6 @@ void GeneralConfigurationPage::on_m_folio_list_pb_clicked()
 	}
 }
 
-#include <QFileDialog>
 void GeneralConfigurationPage::on_m_common_elmt_path_cb_currentIndexChanged(int index)
 {
     if (index == 1)
@@ -369,3 +403,17 @@ void GeneralConfigurationPage::on_m_custom_tbt_path_cb_currentIndexChanged(int i
 }
 
 
+void GeneralConfigurationPage::on_m_indi_text_font_pb_clicked()
+{
+	bool ok;
+	QSettings settings;
+	QFont font = QFontDialog::getFont(&ok, QFont("Sans Serif", 9), this);
+	if (ok)
+	{
+		settings.setValue("diagrameditor/independent_text_font", font.toString());
+		QString fontInfos = font.family() + " " +
+							QString::number(font.pointSize()) + " (" +
+							font.styleName() + ")";
+		ui->m_indi_text_font_pb->setText(fontInfos);
+	}
+}

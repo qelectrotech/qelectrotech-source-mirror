@@ -958,42 +958,30 @@ QFont QETApp::diagramTextsItemFont(qreal size)
 }
 /**
  * @brief QETApp::dynamicTextsFont
- * the font for to use when add a dynamic texte
+ * the defaukt font of dynamic element text item
  * @param size
  * @return 
  */
- 
- 
  QFont QETApp::dynamicTextsItemFont(qreal size)
 {
 	QSettings settings;
-
 		//Font to use
-	QString dynamic_texts_item_family = settings.value("font_family", "Sans Serif").toString();
-	qreal dynamic_texts_item_size     = settings.value("dynamicitemsize", 9.0).toDouble();
-	qreal dynamic_texts_item_weight   = settings.value("dynamicitemweight").toDouble();
-	QString dynamic_texts_item_style  = settings.value("dynamicitemstyle", "normal").toString();
-	
-	if (size != -1.0) {
-		dynamic_texts_item_size = size;
+	QFont font_ = diagramTextsItemFont();
+	if (settings.contains("diagrameditor/dynamic_text_font")) {
+		font_.fromString(settings.value("diagrameditor/dynamic_text_font").toString());
 	}
-	QFont dynamic_texts_item_font = QFont(dynamic_texts_item_family);
-	dynamic_texts_item_font.setPointSizeF(dynamic_texts_item_size);
-	dynamic_texts_item_font.setWeight(dynamic_texts_item_weight);
-	dynamic_texts_item_font.setStyleName(dynamic_texts_item_style);
-	if (dynamic_texts_item_size <= 4.0) {
-		dynamic_texts_item_font.setWeight(QFont::Light);
+	if (size > 0) {
+		font_.setPointSizeF(size);
 	}
-	return(dynamic_texts_item_font);
+	return(font_);
 }
+
 /**
  * @brief QETApp::foliolistTextsFont
  * the font for to use in summary pages
  * @param size
  * @return 
  */
- 
- 
 QFont QETApp::foliolistTextsFont(qreal size)
 {
 	QSettings settings;
@@ -1011,6 +999,26 @@ QFont QETApp::foliolistTextsFont(qreal size)
 		foliolist_texts_font.setWeight(QFont::Light);
 	}
 	return(foliolist_texts_font);
+}
+
+/**
+ * @brief QETApp::indiTextsItemFont
+ * The default font to use for independent text item
+ * @param size
+ * @return
+ */
+QFont QETApp::indiTextsItemFont(qreal size)
+{
+	QSettings settings;
+		//Font to use
+	QFont font_ = diagramTextsItemFont();
+	if (settings.contains("diagrameditor/independent_text_font")) {
+		font_.fromString(settings.value("diagrameditor/independent_text_font").toString());
+	}
+	if (size > 0) {
+		font_.setPointSizeF(size);
+	}
+	return(font_);
 }
 
 

@@ -43,8 +43,8 @@ DynamicElementTextItem::DynamicElementTextItem(Element *parent_element) :
 	setText(tr("Texte"));
 	setParentItem(parent_element);
 	QSettings settings;
-	setRotation(settings.value("dynamic_rotation", 0).toInt());
-	setTextWidth(settings.value("dynamic_with", -1).toInt());
+	setRotation(settings.value("dynamic_text_rotation", 0).toInt());
+	setTextWidth(settings.value("dynamic_text_widht", -1).toInt());
 	connect(this, &DynamicElementTextItem::textEdited, [this](const QString &old_str, const QString &new_str)
 	{
 		if(this->m_parent_element && this->m_parent_element->diagram())
@@ -53,7 +53,6 @@ DynamicElementTextItem::DynamicElementTextItem(Element *parent_element) :
 			undo->setText(tr("Éditer un texte d'élément"));
 			this->m_parent_element->diagram()->undoStack().push(undo);
 		}
-		
 	});
 	
 		//Option when text is displayed in multiple line
