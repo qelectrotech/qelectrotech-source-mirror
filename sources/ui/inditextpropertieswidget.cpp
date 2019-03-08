@@ -76,7 +76,7 @@ void IndiTextPropertiesWidget::setText(IndependentTextItem *text)
 	m_connect_list << connect(m_text.data(), &IndependentTextItem::xChanged, this, &IndiTextPropertiesWidget::updateUi);
 	m_connect_list << connect(m_text.data(), &IndependentTextItem::yChanged, this, &IndiTextPropertiesWidget::updateUi);
 	m_connect_list << connect(m_text.data(), &IndependentTextItem::rotationChanged, this, &IndiTextPropertiesWidget::updateUi);
-	m_connect_list << connect(m_text.data(), &IndependentTextItem::fontSizeChanged, this, &IndiTextPropertiesWidget::updateUi);
+	m_connect_list << connect(m_text.data(), &IndependentTextItem::fontChanged, this, &IndiTextPropertiesWidget::updateUi);
 	m_connect_list << connect(m_text.data(), &IndependentTextItem::textEdited, this, &IndiTextPropertiesWidget::updateUi);
 
 	updateUi();
@@ -192,9 +192,10 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 				undo = new QPropertyUndoCommand(m_text.data(), "plainText", m_text->toPlainText(), ui->m_line_edit->text());
 				undo->setText(tr("Modifier un champ texte"));
 			}
-			if (ui->m_size_sb->value() != m_text->fontSize()) {
-				undo = new QPropertyUndoCommand(m_text.data(), "fontSize", m_text->fontSize(), ui->m_size_sb->value());
-				undo->setAnimated(true, false);
+			if (ui->m_size_sb->value() != m_text->font().pointSize()) {
+				QFont font = m_text->font();
+				font.setPointSize(ui->m_size_sb->value());
+				undo = new QPropertyUndoCommand(m_text.data(), "font", m_text->font(), font);
 				undo->setText(tr("Modifier la taille d'un champ texte"));
 			}
 			
@@ -206,13 +207,13 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 			bool size_equal = true;
 			bool angle_equal = true;
 			qreal rotation_ = m_text_list.first()->rotation();
-			int size_ = m_text_list.first()->fontSize();
+			int size_ = m_text_list.first()->font().pointSize();
 			for (QPointer<IndependentTextItem> piti : m_text_list)
 			{
 				if (piti->rotation() != rotation_) {
 					angle_equal = false;
 				}
-				if (piti->fontSize() != size_) {
+				if (piti->font().pointSize() != size_) {
 					size_equal = false;
 				}
 			}
@@ -242,7 +243,9 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 						if (!parent_undo) {
 							parent_undo = new QUndoCommand(tr("Modifier la taille de plusieurs champs texte"));
 						}
-						QPropertyUndoCommand *qpuc = new QPropertyUndoCommand(piti.data(), "fontSize", QVariant(piti->fontSize()), QVariant(ui->m_size_sb->value()), parent_undo);
+						QFont font = piti->font();
+						font.setPointSize(ui->m_size_sb->value());
+						QPropertyUndoCommand *qpuc = new QPropertyUndoCommand(piti.data(), "font", QVariant(piti->font()), QVariant(font), parent_undo);
 						qpuc->setAnimated(true, false);
 					}
 				}
@@ -266,8 +269,11 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 		if (ui->m_line_edit->text() != m_text->toPlainText()) {
 			new ChangeDiagramTextCommand(m_text.data(), m_text->toHtml(), ui->m_line_edit->text(), undo);
 		}
-		if (ui->m_size_sb->value() != m_text->fontSize()) {
-			new QPropertyUndoCommand(m_text.data(), "fontSize", m_text->fontSize(), ui->m_size_sb->value(), undo);
+		if (ui->m_size_sb->value() != m_text->font().pointSize())
+		{
+			QFont font = m_text->font();
+			font.setPointSize(ui->m_size_sb->value());
+			new QPropertyUndoCommand(m_text.data(), "font", m_text->font(), font, undo);
 		}
 		
 		if (undo->childCount()) {
@@ -329,7 +335,7 @@ void IndiTextPropertiesWidget::updateUi()
 		ui->m_y_sb->setValue(m_text->pos().y());
 		ui->m_line_edit->setText(m_text->toPlainText());
 		ui->m_angle_sb->setValue(m_text->rotation());
-		ui->m_size_sb->setValue(m_text->fontSize());
+		ui->m_size_sb->setValue(m_text->font().pointSize());
 		
 		ui->m_line_edit->setDisabled(m_text->isHtml() ? true : false);
 		ui->m_size_sb->setDisabled(m_text->isHtml() ? true : false);
@@ -341,13 +347,13 @@ void IndiTextPropertiesWidget::updateUi()
 		bool size_equal = true;
 		bool angle_equal = true;
 		qreal rotation_ = m_text_list.first()->rotation();
-		int size_ = m_text_list.first()->fontSize();
+		int size_ = m_text_list.first()->font().pointSize();
 		for (QPointer<IndependentTextItem> piti : m_text_list)
 		{
 			if (piti->rotation() != rotation_) {
 				angle_equal = false;
 			}
-			if (piti->fontSize() != size_) {
+			if (piti->font().pointSize() != size_) {
 				size_equal = false;
 			}
 		}

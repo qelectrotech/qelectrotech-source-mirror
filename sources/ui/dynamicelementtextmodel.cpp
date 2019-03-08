@@ -488,8 +488,9 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(DynamicElementTextItem 
 	int fs = text_qsi->child(size_txt_row,1)->data(Qt::EditRole).toInt();
 	if (fs != deti->font().pointSize())
 	{
-		QPropertyUndoCommand *quc = new QPropertyUndoCommand(deti, "fontSize", QVariant(deti->font().pointSize()), QVariant(fs), undo);
-		quc->setAnimated(true, false);
+		QFont font = deti->font();
+		font.setPointSize(fs);
+		QPropertyUndoCommand *quc = new QPropertyUndoCommand(deti, "font", QVariant(deti->font()), QVariant(font), undo);
 		quc->setText(tr("Modifier la taille d'un texte d'élément"));
 	}
 

@@ -34,7 +34,6 @@ class DiagramTextItem : public QGraphicsTextItem
 {
 	Q_OBJECT
     
-    Q_PROPERTY(int fontSize READ fontSize WRITE setFontSize NOTIFY fontSizeChanged)
     Q_PROPERTY(QColor color READ color WRITE setColor NOTIFY colorChanged)
 	Q_PROPERTY(Qt::Alignment alignment READ alignment WRITE setAlignment NOTIFY alignmentChanged)
 	Q_PROPERTY(QString plainText READ toPlainText WRITE setPlainText)
@@ -42,7 +41,6 @@ class DiagramTextItem : public QGraphicsTextItem
 	
 	
 	signals:
-		void fontSizeChanged(int size);
 		void colorChanged(QColor color);
 		void alignmentChanged(Qt::Alignment alignment);
 		void textEdited(const QString &old_str, const QString &new_str);
@@ -68,9 +66,6 @@ class DiagramTextItem : public QGraphicsTextItem
 		QPointF mapMovementFromScene  (const QPointF &) const;
 		QPointF mapMovementToParent   (const QPointF &) const;
 		QPointF mapMovementFromParent (const QPointF &) const;
-
-		void setFontSize(int s);
-        int fontSize()const;
 
 		void setFont(const QFont &font);
         

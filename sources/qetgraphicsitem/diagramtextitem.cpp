@@ -150,21 +150,6 @@ QPointF DiagramTextItem::mapMovementFromParent(const QPointF &movement) const {
 	return(local_movement_point - local_origin);
 }
 
-void DiagramTextItem::setFontSize(int s)
-{
-	prepareAlignment();
-	QFont font_ = font();
-	font_.setPointSize(s);
-    setFont(font_);
-	finishAlignment();
-	emit fontSizeChanged(s);
-}
-
-int DiagramTextItem::fontSize() const
-{
-	return font().pointSize();
-}
-
 void DiagramTextItem::setFont(const QFont &font)
 {
 	if (this->font() == font) {

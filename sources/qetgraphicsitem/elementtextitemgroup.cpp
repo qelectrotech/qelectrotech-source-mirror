@@ -67,7 +67,7 @@ void ElementTextItemGroup::addToGroup(QGraphicsItem *item)
 		updateAlignment();
 		
 		DynamicElementTextItem *deti = qgraphicsitem_cast<DynamicElementTextItem *>(item);
-		connect(deti, &DynamicElementTextItem::fontSizeChanged,      this, &ElementTextItemGroup::updateAlignment);
+		connect(deti, &DynamicElementTextItem::fontChanged,      this, &ElementTextItemGroup::updateAlignment);
 		connect(deti, &DynamicElementTextItem::textChanged,          this, &ElementTextItemGroup::updateAlignment);
 		connect(deti, &DynamicElementTextItem::textFromChanged,      this, &ElementTextItemGroup::updateAlignment);
 		connect(deti, &DynamicElementTextItem::infoNameChanged,      this, &ElementTextItemGroup::updateAlignment);
@@ -98,7 +98,7 @@ void ElementTextItemGroup::removeFromGroup(QGraphicsItem *item)
 	
 	if(DynamicElementTextItem *deti = qgraphicsitem_cast<DynamicElementTextItem *>(item))
 	{
-		disconnect(deti, &DynamicElementTextItem::fontSizeChanged,      this, &ElementTextItemGroup::updateAlignment);
+		disconnect(deti, &DynamicElementTextItem::fontChanged,      this, &ElementTextItemGroup::updateAlignment);
 		disconnect(deti, &DynamicElementTextItem::textChanged,          this, &ElementTextItemGroup::updateAlignment);
 		disconnect(deti, &DynamicElementTextItem::textFromChanged,      this, &ElementTextItemGroup::updateAlignment);
 		disconnect(deti, &DynamicElementTextItem::infoNameChanged,      this, &ElementTextItemGroup::updateAlignment);
@@ -453,11 +453,11 @@ void ElementTextItemGroup::paint(QPainter *painter, const QStyleOptionGraphicsIt
 	}
 	if(m_frame)
 	{		
-		int font_size = 1;
+		qreal font_size = 1;
 		QRectF rect;
 		for(DynamicElementTextItem *deti : this->texts())
 		{
-			font_size = std::max(font_size, deti->fontSize());
+			font_size = std::max(font_size, deti->font().pointSizeF());
 			rect = rect.united(mapFromItem(deti, deti->frameRect()).boundingRect());
 		}
 		
@@ -465,7 +465,7 @@ void ElementTextItemGroup::paint(QPainter *painter, const QStyleOptionGraphicsIt
 		qreal w=0.3;
 		if (font_size >= 5)
 		{
-			w = (qreal)font_size*0.1;
+			w = font_size*0.1;
 			if(w > 2.5)
 				w = 2.5;
 		}
@@ -477,7 +477,7 @@ void ElementTextItemGroup::paint(QPainter *painter, const QStyleOptionGraphicsIt
 		painter->setRenderHint(QPainter::Antialiasing);
 		
 			//Adjust the rounding of the rectangle according to the size of the font
-		qreal ro = (qreal)font_size/3;
+		qreal ro = font_size/3;
 		painter->drawRoundedRect(rect, ro, ro);
 		painter->restore();
 	}

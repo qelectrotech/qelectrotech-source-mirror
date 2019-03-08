@@ -511,7 +511,9 @@ bool Element::parseInput(const QDomElement &dom_element)
 	{
 		DynamicElementTextItem *deti = new DynamicElementTextItem(this);
 		deti->setText(dom_element.attribute("text", "_"));
-		deti->setFontSize(dom_element.attribute("size", QString::number(9)).toInt());
+		QFont font = deti->font();
+		font.setPointSize(dom_element.attribute("size", QString::number(9)).toInt());
+		deti->setFont(font);
 		deti->setRotation(dom_element.attribute("rotation", QString::number(0)).toDouble());
 
 		if(dom_element.attribute("tagg", "none") != "none")
@@ -903,7 +905,9 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 							comment_text = new DynamicElementTextItem(this);
 							comment_text->setTextFrom(DynamicElementTextItem::ElementInfo);
 							comment_text->setInfoName("comment");
-							comment_text->setFontSize(6);
+							QFont font = comment_text->font();
+							font.setPointSize(6);
+							comment_text->setFont(font);
 							comment_text->setFrame(true);
 							if(comment_text->toPlainText().count() > 17)
 								comment_text->setTextWidth(80);
@@ -922,7 +926,9 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 							location_text = new DynamicElementTextItem(this);
 							location_text->setTextFrom(DynamicElementTextItem::ElementInfo);
 							location_text->setInfoName("location");
-							location_text->setFontSize(6);
+							QFont font = location_text->font();
+							font.setPointSize(6);
+							location_text->setFont(font);
 							if(location_text->toPlainText().count() > 17)
 								location_text->setTextWidth(80);
 							location_text->setPos(deti->x(), deti->y()+20); //+20 is arbitrary, location_text must be below deti and comment
@@ -966,7 +972,9 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 					comment_text = new DynamicElementTextItem(this);
 					comment_text->setTextFrom(DynamicElementTextItem::ElementInfo);
 					comment_text->setInfoName("comment");
-					comment_text->setFontSize(6);
+					QFont font = comment_text->font();
+					font.setPointSize(6);
+					comment_text->setFont(font);
 					comment_text->setFrame(true);
 					comment_text->setTextWidth(80);
 					addDynamicTextItem(comment_text);
@@ -978,7 +986,9 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 					location_text = new DynamicElementTextItem(this);
 					location_text->setTextFrom(DynamicElementTextItem::ElementInfo);
 					location_text->setInfoName("location");
-					location_text->setFontSize(6);
+					QFont font = location_text->font();
+					font.setPointSize(6);
+					location_text->setFont(font);
 					location_text->setTextWidth(80);
 					if(comment_text)
 						location_text->setPos(comment_text->x(), comment_text->y()+10); //+10 is arbitrary, location_text must be below the comment
