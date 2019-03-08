@@ -198,6 +198,11 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 				undo = new QPropertyUndoCommand(m_text.data(), "font", m_text->font(), font);
 				undo->setText(tr("Modifier la taille d'un champ texte"));
 			}
+			if (m_font_is_selected &&
+				m_selected_font != m_text->font()) {
+				undo = new QPropertyUndoCommand(m_text.data(), "font", m_text->font(), m_selected_font);
+				undo->setText(tr("Modifier la police d'un champ texte"));
+			}
 			
 			return undo;
 		}
@@ -206,8 +211,10 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 			QUndoCommand *parent_undo = nullptr;
 			bool size_equal = true;
 			bool angle_equal = true;
+			bool font_equal = true;
 			qreal rotation_ = m_text_list.first()->rotation();
 			int size_ = m_text_list.first()->font().pointSize();
+			QFont font_ = m_text_list.first()->font();
 			for (QPointer<IndependentTextItem> piti : m_text_list)
 			{
 				if (piti->rotation() != rotation_) {
@@ -215,6 +222,9 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 				}
 				if (piti->font().pointSize() != size_) {
 					size_equal = false;
+				}
+				if (piti->font() != font_) {
+					font_equal = false;
 				}
 			}
 				
@@ -245,8 +255,21 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 						}
 						QFont font = piti->font();
 						font.setPointSize(ui->m_size_sb->value());
-						QPropertyUndoCommand *qpuc = new QPropertyUndoCommand(piti.data(), "font", QVariant(piti->font()), QVariant(font), parent_undo);
-						qpuc->setAnimated(true, false);
+						new QPropertyUndoCommand(piti.data(), "font", QVariant(piti->font()), QVariant(font), parent_undo);
+					}
+				}
+			}
+			else if ((m_font_is_selected && !font_equal) ||
+					 (m_font_is_selected && (font_equal && (m_selected_font != font_))))
+			{
+				for (QPointer<IndependentTextItem> piti : m_text_list)
+				{
+					if (piti)
+					{
+						if (!parent_undo) {
+							parent_undo = new QUndoCommand(tr("Modifier la police de plusieurs champs texte"));
+						}
+						new QPropertyUndoCommand(piti.data(), "font", piti->font(), m_selected_font, parent_undo);
 					}
 				}
 			}
@@ -274,6 +297,9 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 			QFont font = m_text->font();
 			font.setPointSize(ui->m_size_sb->value());
 			new QPropertyUndoCommand(m_text.data(), "font", m_text->font(), font, undo);
+		}
+		if (m_font_is_selected && m_selected_font != m_text->font()) {
+			new QPropertyUndoCommand(m_text.data(), "font", m_text->font(), m_selected_font, undo);
 		}
 		
 		if (undo->childCount()) {
@@ -305,7 +331,11 @@ void IndiTextPropertiesWidget::setUpEditConnection()
 		m_edit_connection << connect(ui->m_line_edit, &QLineEdit::textEdited, this, &IndiTextPropertiesWidget::apply);
 	}
 	m_edit_connection << connect(ui->m_angle_sb, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, &IndiTextPropertiesWidget::apply);
-	m_edit_connection << connect(ui->m_size_sb, QOverload<int>::of(&QSpinBox::valueChanged), this, &IndiTextPropertiesWidget::apply);
+	m_edit_connection << connect(ui->m_size_sb, QOverload<int>::of(&QSpinBox::valueChanged), [this]()
+	{
+		this->m_selected_font.setPointSize(ui->m_size_sb->value());
+		this->apply();
+	});
 }
 
 /**
@@ -341,13 +371,18 @@ void IndiTextPropertiesWidget::updateUi()
 		ui->m_size_sb->setDisabled(m_text->isHtml() ? true : false);
 		ui->m_label->setVisible(m_text->isHtml() ? true : false);
 		ui->m_break_html_pb->setVisible(m_text->isHtml() ? true : false);
+		ui->m_font_pb->setDisabled(m_text->isHtml() ? true : false);
+		ui->m_font_pb->setText(m_text->isHtml() ? tr("Police") : m_text->font().family());
 	}
 	else
 	{
 		bool size_equal = true;
 		bool angle_equal = true;
+		bool font_equal = true;
 		qreal rotation_ = m_text_list.first()->rotation();
 		int size_ = m_text_list.first()->font().pointSize();
+		QFont font_ = m_text_list.first()->font();
+
 		for (QPointer<IndependentTextItem> piti : m_text_list)
 		{
 			if (piti->rotation() != rotation_) {
@@ -355,6 +390,9 @@ void IndiTextPropertiesWidget::updateUi()
 			}
 			if (piti->font().pointSize() != size_) {
 				size_equal = false;
+			}
+			if (piti->font() != font_) {
+				font_equal = false;
 			}
 		}
 		ui->m_angle_sb->setValue(angle_equal ? rotation_ : 0);
@@ -365,6 +403,8 @@ void IndiTextPropertiesWidget::updateUi()
 				valid_ = false;
 			}
 		}
+		ui->m_font_pb->setEnabled(valid_);
+		ui->m_font_pb->setText(font_equal ? font_.family() : tr("Police"));
 		ui->m_size_sb->setEnabled(valid_);
 		ui->m_size_sb->setValue(size_equal ? size_ : 0);
 		ui->m_label->setVisible(false);
@@ -395,4 +435,23 @@ void IndiTextPropertiesWidget::on_m_break_html_pb_clicked()
 	}
 	
 	updateUi();
+}
+
+void IndiTextPropertiesWidget::on_m_font_pb_clicked()
+{
+	if (!m_text && m_text_list.isEmpty()) {
+		return;
+	}
+	bool ok;
+	QFont font = m_text ? m_text->font() : m_text_list.first()->font();
+	m_selected_font = QFontDialog::getFont(&ok, font, this);
+	if (ok) {
+		m_font_is_selected = true;
+		ui->m_font_pb->setText(font.family());
+		ui->m_size_sb->setValue(font.pointSize());
+		apply();
+	} else {
+		ui->m_font_pb->setText(tr("Police"));
+		m_font_is_selected = false;
+	}
 }

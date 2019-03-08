@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>288</width>
-    <height>251</height>
+    <width>340</width>
+    <height>296</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -126,17 +126,10 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="0" colspan="4">
-    <widget class="QLineEdit" name="m_line_edit">
-     <property name="placeholderText">
-      <string>Texte</string>
-     </property>
-    </widget>
-   </item>
    <item row="4" column="0" colspan="4">
     <widget class="QLabel" name="m_label">
      <property name="text">
-      <string>Le contenu et la taille du texte ne peuvent être modifié car formaté en html.
+      <string>Le contenu, la taille et la police du texte ne peuvent être modifié car formaté en html.
 Veuillez utiliser l'éditeur avancé pour cela.</string>
      </property>
      <property name="scaledContents">
@@ -151,6 +144,20 @@ Veuillez utiliser l'éditeur avancé pour cela.</string>
     <widget class="QPushButton" name="m_break_html_pb">
      <property name="text">
       <string>Cliquez ici pour annuler le formatage html</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="3">
+    <widget class="QLineEdit" name="m_line_edit">
+     <property name="placeholderText">
+      <string>Texte</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="3">
+    <widget class="QPushButton" name="m_font_pb">
+     <property name="text">
+      <string>Police</string>
      </property>
     </widget>
    </item>

@@ -48,8 +48,9 @@ class IndiTextPropertiesWidget : public PropertiesEditorWidget
 	private slots:
 		void on_m_advanced_editor_pb_clicked();	
 		void on_m_break_html_pb_clicked();
-		
-	private:
+		void on_m_font_pb_clicked();
+
+		private:
 		void setUpEditConnection();
 		void updateUi() override;
 		
@@ -59,6 +60,8 @@ class IndiTextPropertiesWidget : public PropertiesEditorWidget
 		QList <QPointer<IndependentTextItem>> m_text_list;
 		QList <QMetaObject::Connection> m_connect_list,
 										m_edit_connection;
+		QFont m_selected_font;
+		bool m_font_is_selected = false;
 };
 
 #endif // INDITEXTPROPERTIESWIDGET_H

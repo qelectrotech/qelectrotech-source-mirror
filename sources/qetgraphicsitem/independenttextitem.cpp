@@ -52,6 +52,12 @@ void IndependentTextItem::fromXml(const QDomElement &e) {
 	setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
 	setHtml(e.attribute("text"));
 	setRotation(e.attribute("rotation").toDouble());
+	if (e.hasAttribute("font"))
+	{
+		QFont font;
+		font.fromString(e.attribute("font"));
+		setFont(font);
+	}
 }
 
 /**
@@ -65,6 +71,7 @@ QDomElement IndependentTextItem::toXml(QDomDocument &document) const
 	result.setAttribute("y", QString("%1").arg(pos().y()));
 	result.setAttribute("text", toHtml());
 	result.setAttribute("rotation", QString::number(QET::correctAngle(rotation())));
+	result.setAttribute("font", font().toString());
 	
 	return(result);
 }
