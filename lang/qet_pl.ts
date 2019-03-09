@@ -449,17 +449,17 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="61"/>
         <source>Under Development</source>
-        <translation>W budowie</translation>
+        <translation>Projektowany</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="62"/>
         <source>Installing</source>
-        <translation>Instalacja</translation>
+        <translation>Wykonawczy</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="63"/>
         <source>Built</source>
-        <translation>Budowanie</translation>
+        <translation>Powykonawczy</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="184"/>
@@ -958,7 +958,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
         <location filename="../sources/diagramview.cpp" line="90"/>
         <source>Collage multiple</source>
         <translatorcomment>niepewne</translatorcomment>
-        <translation>Kolaż wielokrotny</translation>
+        <translation>Kopiuj wielokrotnie</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="547"/>
