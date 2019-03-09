@@ -1160,7 +1160,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="206"/>
         <source>Police</source>
-        <translation type="unfinished"></translation>
+        <translation>Lettertype</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="221"/>
@@ -1209,7 +1209,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="501"/>
         <source>Modifier la police d&apos;un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Het lettertype van een elementtekst wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="558"/>
@@ -2745,7 +2745,7 @@ Hier kunt u de standaardtekst hiervoor opgeven voor nieuwe elementen :</translat
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="358"/>
         <source>Vous pouvez définir ici l&apos;apparence par defaut des differents textes de QElectroTech</source>
-        <translation type="unfinished"></translation>
+        <translation>Hier kunt u de standaardweergave van verschillende QElectroTech-teksten instellen</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="577"/>
@@ -2770,22 +2770,22 @@ Hier kunt u de standaardtekst hiervoor opgeven voor nieuwe elementen :</translat
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="65"/>
         <source>Utiliser des fen&amp;êtres (appliqué au prochain lancement de QElectroTech)</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruik ven&amp;sters (wordt toegepast na het opnieuw starten van QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="72"/>
         <source>Utiliser des onglets (appliqué au prochain lance&amp;ment de QElectroTech)</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruik tabs (wordt toegepast na het opnieuw opstarten van QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="352"/>
         <source>Textes</source>
-        <translation type="unfinished">Teksten</translation>
+        <translation>Teksten</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="372"/>
         <source>Textes d&apos;éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementteksten</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="385"/>
@@ -2793,39 +2793,39 @@ Hier kunt u de standaardtekst hiervoor opgeven voor nieuwe elementen :</translat
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="497"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="533"/>
         <source>Police :</source>
-        <translation type="unfinished">Lettertype:</translation>
+        <translation>Lettertype:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="395"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="458"/>
         <source>°</source>
-        <translation type="unfinished">°</translation>
+        <translation>°</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="405"/>
         <source>Longueur :</source>
-        <translation type="unfinished"></translation>
+        <translation>Grootte :</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="415"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="444"/>
         <source>Rotation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Rotatie :</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="438"/>
         <source>Textes indépendants</source>
-        <translation type="unfinished"></translation>
+        <translation>Losse teksten</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="491"/>
         <source>Pages de sommaire</source>
-        <translation type="unfinished"></translation>
+        <translation>Overzichtspagina</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="527"/>
         <source>Autres textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Andere teksten</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="624"/>
@@ -3180,7 +3180,8 @@ Hier kunt u de standaardtekst hiervoor opgeven voor nieuwe elementen :</translat
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="132"/>
         <source>Le contenu, la taille et la police du texte ne peuvent être modifié car formaté en html.
 Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
-        <translation type="unfinished"></translation>
+        <translation>De inhoud, de grootte en het lettertype van een tekst kan in html-weergave niet worden gewijzigd.
+Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="153"/>
@@ -3193,7 +3194,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="407"/>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="454"/>
         <source>Police</source>
-        <translation type="unfinished"></translation>
+        <translation>Lettertype</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="146"/>
@@ -3224,7 +3225,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="204"/>
         <source>Modifier la police d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzigen van het lettertype van een tekstveld</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="239"/>
@@ -3239,7 +3240,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="270"/>
         <source>Modifier la police de plusieurs champs texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzigen van het lettertype van meerdere tekstvelden</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="282"/>
@@ -9177,12 +9178,12 @@ De andere velden hebben geen betekenis.</translation>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="274"/>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="306"/>
         <source>Modifier une forme simple</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzigen van een eenvoudige vorm</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="318"/>
         <source>Modifier les propriétés d&apos;une forme simple</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzigen van de eigenschappen van een eenvoudige vorm</translation>
     </message>
 </context>
 <context>
