@@ -33,8 +33,8 @@ PartDynamicTextField::PartDynamicTextField(QETElementEditor *editor, QGraphicsIt
 	setDefaultTextColor(Qt::black);
 	setFont(QETApp::dynamicTextsItemFont());
 	QSettings settings;
-	setRotation(settings.value("dynamic_rotation", 0).toInt());
-	setTextWidth(settings.value("dynamic_with", -1).toInt());
+	setRotation(settings.value("diagrameditor/dynamic_text_rotation", 0).toInt());
+	setTextWidth(settings.value("diagrameditor/dynamic_text_width", -1).toInt());
 	setText("_");
 	setTextFrom(DynamicElementTextItem::UserText);
 	setFlags(QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemSendsGeometryChanges | QGraphicsItem::ItemIsMovable);
@@ -94,8 +94,7 @@ const QDomElement PartDynamicTextField::toXml(QDomDocument &dom_doc) const
 	root_element.setAttribute("y", QString::number(pos().y()));
 	root_element.setAttribute("z", QString::number(zValue()));
 	root_element.setAttribute("rotation", QString::number(QET::correctAngle(rotation())));
-	root_element.setAttribute("font_size", font().pointSize());
-	root_element.setAttribute("font_family", (QETApp::dynamicTextsItemFont().family()));
+	root_element.setAttribute("font", font().toString());
 	root_element.setAttribute("uuid", m_uuid.toString());
 	root_element.setAttribute("frame", m_frame? "true" : "false");
 	root_element.setAttribute("text_width", QString::number(m_text_width));
@@ -165,7 +164,16 @@ void PartDynamicTextField::fromXml(const QDomElement &dom_elmt)
 							  dom_elmt.attribute("y", QString::number(0)).toDouble());
 	setZValue(dom_elmt.attribute("z", QString::number(zValue())).toDouble());
 	QGraphicsTextItem::setRotation(dom_elmt.attribute("rotation", QString::number(0)).toDouble());
-	setFont(QETApp::diagramTextsFont(dom_elmt.attribute("font_size", QString::number(9)).toInt()));
+
+	if (dom_elmt.hasAttribute("font"))
+	{
+		QFont font_;
+		font_.fromString(dom_elmt.attribute("font"));
+		setFont(font_);
+	} else {	//Keep compatibility TODO remove in futur
+		setFont(QETApp::dynamicTextsItemFont(9));
+	}
+
 	m_uuid = QUuid(dom_elmt.attribute("uuid", QUuid::createUuid().toString()));
 	setFrame(dom_elmt.attribute("frame", "false") == "true"? true : false);
 	setTextWidth(dom_elmt.attribute("text_width", QString::number(-1)).toDouble());
@@ -352,22 +360,6 @@ QColor PartDynamicTextField::color() const {
 	return defaultTextColor();
 }
 
-/**
- * @brief PartDynamicTextField::setFontSize
- * @param s
- */
-void PartDynamicTextField::setFontSize(int s)
-{
-	prepareAlignment();
-	setFont(QETApp::dynamicTextsItemFont(s));
-	finishAlignment();
-	emit fontSizeChanged(s);
-}
-
-int PartDynamicTextField::fontSize() const {
-	return font().pointSize();
-}
-
 void PartDynamicTextField::setFrame(bool frame)
 {
 	m_frame = frame;
@@ -423,6 +415,17 @@ void PartDynamicTextField::setAlignment(Qt::Alignment alignment)
 
 Qt::Alignment PartDynamicTextField::alignment() const {
 	return m_alignment;
+}
+
+void PartDynamicTextField::setFont(const QFont &font)
+{
+	if (font == this->font()) {
+		return;
+	}
+	prepareAlignment();
+	QGraphicsTextItem::setFont(font);
+	finishAlignment();
+	emit fontChanged(font);
 }
 
 /**
@@ -501,13 +504,13 @@ void PartDynamicTextField::paint(QPainter *painter, const QStyleOptionGraphicsIt
 	if (m_frame)
 	{
 		painter->save();
-		painter->setFont(QETApp::dynamicTextsItemFont(fontSize()));
+		painter->setFont(this->font());
 		
 			//Adjust the thickness according to the font size, 
 		qreal w=0.3;
-		if(fontSize() >= 5)
+		if(this->font().pointSize() >= 5)
 		{
-			w = (qreal)fontSize()*0.1;
+			w = this->font().pointSizeF()*0.1;
 			if(w > 2.5)
 				w = 2.5;
 		}
@@ -534,7 +537,7 @@ void PartDynamicTextField::paint(QPainter *painter, const QStyleOptionGraphicsIt
 		pos.ry() -= size.height()/2;
 		
 			//Adjust the rounding of the rectangle according to the size of the font
-		qreal ro = (qreal)fontSize()/3;
+		qreal ro = this->font().pointSizeF()/3;
 		painter->drawRoundedRect(QRectF(pos, size), ro, ro);
 		
 		painter->restore();

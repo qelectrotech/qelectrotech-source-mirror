@@ -470,13 +470,8 @@ void ElementPictureFactory::parsePolygon(const QDomElement &dom, QPainter &paint
 void ElementPictureFactory::parseText(const QDomElement &dom, QPainter &painter, ElementPictureFactory::primitives &prim) const
 {
 	Q_UNUSED(prim);
-	
-	qreal pos_x, pos_y;
-	int size;
-	if (!QET::attributeIsAReal(dom, "x", &pos_x) ||\
-		!QET::attributeIsAReal(dom, "y", &pos_y) ||\
-		!QET::attributeIsAnInteger(dom, "size", &size) ||\
-		!dom.hasAttribute("text")) {
+
+	if (dom.tagName() != "text") {
 		return;
 	}
 
@@ -484,23 +479,25 @@ void ElementPictureFactory::parseText(const QDomElement &dom, QPainter &painter,
 	setPainterStyle(dom, painter);
 
 		//Get the font and metric
-	QFont used_font = QETApp::diagramTextsFont(size);
-	QFontMetrics qfm(used_font);
-	QColor text_color = (dom.attribute("color") != "white"? Qt::black : Qt::white);
+	QFont font_;
+	if (dom.hasAttribute("size")) {
+		font_ = QETApp::diagramTextsFont(dom.attribute("size").toDouble());
+	}
+	else if (dom.hasAttribute("font")) {
+		font_.fromString(dom.attribute("font"));
+	}
+
+	QColor text_color(dom.attribute("color", "#000000"));
 
 		//Instanciate a QTextDocument (like the QGraphicsTextItem class)
 		//for generate the graphics rendering of the text
 	QTextDocument text_document;
-	text_document.setDefaultFont(used_font);
+	text_document.setDefaultFont(font_);
 	text_document.setPlainText(dom.attribute("text"));
 
 	painter.setTransform(QTransform(), false);
-	painter.translate(pos_x, pos_y);
-
-	qreal default_rotation_angle = 0.0;
-	if (QET::attributeIsAReal(dom, "rotation", &default_rotation_angle)) {
-		painter.rotate(default_rotation_angle);
-	}
+	painter.translate(dom.attribute("x").toDouble(), dom.attribute("y").toDouble());
+	painter.rotate(dom.attribute("rotation", "0").toDouble());
 
 	/*
 		Deplace le systeme de coordonnees du QPainter pour effectuer le rendu au
@@ -508,6 +505,7 @@ void ElementPictureFactory::parseText(const QDomElement &dom, QPainter &painter,
 		determiner le coin superieur gauche du texte alors que la position
 		indiquee correspond a la baseline.
 	*/
+	QFontMetrics qfm(font_);
 	QPointF qpainter_offset(0.0, -qfm.ascent());
 
 		//adjusts the offset by the margin of the text document

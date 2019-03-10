@@ -38,10 +38,10 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 	Q_PROPERTY(QString infoName READ infoName WRITE setInfoName NOTIFY infoNameChanged)
 	Q_PROPERTY(QString compositeText READ compositeText WRITE setCompositeText NOTIFY compositeTextChanged)
 	Q_PROPERTY(QColor color READ color WRITE setColor NOTIFY colorChanged)
-	Q_PROPERTY(int fontSize READ fontSize WRITE setFontSize NOTIFY fontSizeChanged)
 	Q_PROPERTY(bool frame READ frame WRITE setFrame NOTIFY frameChanged)
 	Q_PROPERTY(qreal textWidth READ textWidth WRITE setTextWidth NOTIFY textWidthChanged)
 	Q_PROPERTY(Qt::Alignment alignment READ alignment WRITE setAlignment NOTIFY alignmentChanged)
+	Q_PROPERTY(QFont font READ font WRITE setFont NOTIFY fontChanged)
 	
 	public:
 			///PROPERTY
@@ -55,10 +55,10 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 		void infoNameChanged(QString info);
 		void compositeTextChanged(QString text);
 		void colorChanged(QColor color);
-		void fontSizeChanged(int size);
 		void frameChanged(bool frame);
 		void textWidthChanged(qreal width);
 		void alignmentChanged(Qt::Alignment alignment);
+		void fontChanged(QFont font);
 	
 	public:
 		PartDynamicTextField(QETElementEditor *editor, QGraphicsItem *parent = nullptr);
@@ -88,14 +88,13 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 		QString compositeText() const;
 		void setColor(const QColor& color);
         QColor color() const;
-		void setFontSize(int s);
-        int fontSize()const;
 		void setFrame(bool frame);
 		bool frame() const;
 		void setTextWidth(qreal width);
 		void setPlainText(const QString &text);
 		void setAlignment(Qt::Alignment alignment);
 		Qt::Alignment alignment() const;
+		void setFont(const QFont &font);
 		
 	protected:
 		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;

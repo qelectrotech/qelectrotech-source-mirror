@@ -73,7 +73,7 @@ bool DynamicTextFieldEditor::setPart(CustomElementPart *part)
 	
 		//Setup the connection
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::colorChanged,    [this](){this->updateForm();});
-	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::fontSizeChanged, [this](){this->updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::fontChanged, [this](){this->updateForm();});
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::taggChanged,     [this](){this->updateForm();});
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::textFromChanged, [this](){this->updateForm();});
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::textChanged,     [this](){this->updateForm();});
@@ -104,9 +104,10 @@ void DynamicTextFieldEditor::updateForm()
 		ui->m_rotation_sb->setValue(QET::correctAngle(m_text_field.data()->rotation()));
 		ui->m_frame_cb->setChecked(m_text_field.data()->frame());
 		ui->m_user_text_le->setText(m_text_field.data()->text());
-		ui->m_size_sb->setValue(m_text_field.data()->fontSize());
+		ui->m_size_sb->setValue(m_text_field.data()->font().pointSize());
 		setColorPushButton(m_text_field.data()->color());
 		ui->m_width_sb->setValue(m_text_field.data()->textWidth());
+		ui->m_font_pb->setText(m_text_field->font().family());
 		
 		switch (m_text_field.data()->textFrom())
 		{
@@ -117,12 +118,10 @@ void DynamicTextFieldEditor::updateForm()
 			{
 				ui->m_text_from_cb->setCurrentIndex(1);
 				ui->m_elmt_info_cb->setCurrentIndex(ui->m_elmt_info_cb->findData(m_text_field.data()->infoName()));
-			}
 				break;
+			}
 			case DynamicElementTextItem::CompositeText:
 				ui->m_text_from_cb->setCurrentIndex(2);
-			default:
-				break;
 		}
 
 		on_m_text_from_cb_activated(ui->m_text_from_cb->currentIndex()); //For enable the good widget
@@ -195,9 +194,10 @@ void DynamicTextFieldEditor::on_m_user_text_le_editingFinished()
 
 void DynamicTextFieldEditor::on_m_size_sb_editingFinished()
 {
-	QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_text_field, "fontSize", m_text_field.data()->fontSize(), ui->m_size_sb->value());
-	undo->setText(tr("Modifier la taille d'un champ texte"));
-	undo->enableAnimation(true);
+	QFont font_ = m_text_field->font();
+	font_.setPointSize(ui->m_size_sb->value());
+	QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_text_field, "font", m_text_field.data()->font(), font_);
+	undo->setText(tr("Modifier la police d'un champ texte"));
 	undoStack().push(undo);
 }
 
@@ -303,6 +303,21 @@ void DynamicTextFieldEditor::on_m_alignment_pb_clicked()
 	{
 		QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_text_field.data(), "alignment", QVariant(m_text_field.data()->alignment()), QVariant(atd.alignment()));
 		undo->setText(tr("Modifier l'alignement d'un champ texte"));
+		undoStack().push(undo);
+	}
+}
+
+void DynamicTextFieldEditor::on_m_font_pb_clicked()
+{
+	bool ok;
+	QFont font_ = QFontDialog::getFont(&ok, m_text_field->font(), this);
+	if (ok && font_ != this->font())
+	{
+		ui->m_font_pb->setText(font_.family());
+		ui->m_size_sb->setValue(font_.pointSize());
+
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_text_field.data(), "font", m_text_field->font(), font_);
+		undo->setText(tr("Modifier la police d'un champ texte"));
 		undoStack().push(undo);
 	}
 }

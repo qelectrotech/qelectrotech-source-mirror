@@ -26,53 +26,55 @@ class ElementPrimitiveDecorator;
 	This class represents an static text primitive which may be used to compose
 	the drawing of an electrical element within the element editor.
 */
-class PartText : public QGraphicsTextItem, public CustomElementPart {
+class PartText : public QGraphicsTextItem, public CustomElementPart
+{
 	Q_OBJECT
+
+	Q_PROPERTY(qreal real_size READ realSize WRITE setRealSize)
+	Q_PROPERTY(QColor color READ defaultTextColor WRITE setDefaultTextColor NOTIFY colorChanged)
+	Q_PROPERTY(QString text READ toPlainText WRITE setPlainText NOTIFY plainTextChanged)
+	Q_PROPERTY(QFont font READ font WRITE setFont NOTIFY fontChanged)
+
+	signals:
+		void fontChanged(const QFont &font);
+		void colorChanged(const QColor &color);
+		void plainTextChanged(const QString &text);
 	
-	// constructors, destructor
+		// constructors, destructor
 	public:
-    PartText(QETElementEditor *, QGraphicsItem * = nullptr);
-	~PartText() override;
+		PartText(QETElementEditor *, QGraphicsItem * = nullptr);
+		~PartText() override;
 	
 	private:
-	PartText(const PartText &);
+		PartText(const PartText &);
 	
-	// methods
+		// methods
 	public:
-	enum { Type = UserType + 1107 };
-	/**
-		Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a
-		PartText.
-		@return the QGraphicsItem type
-	*/
-	int type() const override { return Type; }
-	QString name() const override { return(QObject::tr("texte", "element part name")); }
-	QString xmlName() const override { return(QString("text")); }
-	void fromXml(const QDomElement &) override;
-	const QDomElement toXml(QDomDocument &) const override;
-	void setRotation(qreal angle) {(QGraphicsObject::setRotation(QET::correctAngle(angle)));}
-	bool isUseless() const override;
-	QRectF sceneGeometricRect() const override;
-	void startUserTransformation(const QRectF &) override;
-	void handleUserTransformation(const QRectF &, const QRectF &) override;
+		enum { Type = UserType + 1107 };
+		/**
+			Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a
+			PartText.
+			@return the QGraphicsItem type
+		*/
+		int type() const override { return Type; }
+		QString name() const override { return(QObject::tr("texte", "element part name")); }
+		QString xmlName() const override { return(QString("text")); }
+		void fromXml(const QDomElement &) override;
+		const QDomElement toXml(QDomDocument &) const override;
+		void setRotation(qreal angle) {(QGraphicsObject::setRotation(QET::correctAngle(angle)));}
+		bool isUseless() const override;
+		QRectF sceneGeometricRect() const override;
+		void startUserTransformation(const QRectF &) override;
+		void handleUserTransformation(const QRectF &, const QRectF &) override;
 
-	///PROPERTY
-	void setProperty(const char *name, const QVariant &value) override {QGraphicsTextItem::setProperty(name, value);}
-	QVariant property(const char *name) const override {return QGraphicsTextItem::property(name);}
-	// Size value
-	Q_PROPERTY(qreal size READ size WRITE setSize)
-		qreal size () const {return font().pointSize();}
-		void setSize (qreal s) {setFont(QETApp::dynamicTextsItemFont(s));}
-	// Real size value
-	Q_PROPERTY(qreal real_size READ realSize WRITE setRealSize)
+		void setProperty(const char *name, const QVariant &value) override {QGraphicsTextItem::setProperty(name, value);}
+		QVariant property(const char *name) const override {return QGraphicsTextItem::property(name);}
+
 		qreal realSize() const {return real_font_size_;}
 		void setRealSize(qreal rs) {real_font_size_ = rs;}
-	// Color value (true = black , false = white)
-	Q_PROPERTY(bool color READ isBlack WRITE setBlack)
-		bool isBlack() const {return defaultTextColor() == Qt::black;}
-		void setBlack(bool b) {setDefaultTextColor(b ? Qt::black : Qt::white);}
-	// displayed string
-	Q_PROPERTY(QString text READ toPlainText WRITE setPlainText)
+		void setDefaultTextColor(const QColor &color);
+		void setPlainText(const QString &text);
+		void setFont(const QFont &font);
 	
 	public slots:
         void adjustItemPosition(int = 0);

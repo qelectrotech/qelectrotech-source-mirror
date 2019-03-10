@@ -55,24 +55,32 @@ PartText::~PartText() {
 	Importe les proprietes d'un texte statique depuis un element XML
 	@param xml_element Element XML a lire
 */
-void PartText::fromXml(const QDomElement &xml_element) {
+void PartText::fromXml(const QDomElement &xml_element)
+{
 	bool ok;
-	int font_size = xml_element.attribute("size").toInt(&ok);
-	if (!ok || font_size < 1) font_size = 20;
-	
-	setBlack(xml_element.attribute("color") != "white");
-	setProperty("size" , font_size);
-	setPlainText(xml_element.attribute("text"));
-	
-	qreal default_rotation_angle = 0.0;
-	if (QET::attributeIsAReal(xml_element, "rotation", &default_rotation_angle)) {
-		setRotation(default_rotation_angle);
+
+	if (xml_element.hasAttribute("size"))
+	{
+		int font_size = xml_element.attribute("size").toInt(&ok);
+		if (!ok || font_size < 1) {
+			font_size = 20;
+		}
+		QFont font_ = this->font();
+		font_.setPointSize(font_size);
+		setFont(font_);
+	}
+	else if (xml_element.hasAttribute("font"))
+	{
+		QFont font_;
+		font_.fromString(xml_element.attribute("font"));
+		setFont(font_);
 	}
 	
-	setPos(
-		xml_element.attribute("x").toDouble(),
-		xml_element.attribute("y").toDouble()
-	);
+	setDefaultTextColor(QColor(xml_element.attribute("color", "#000000")));
+	setPlainText(xml_element.attribute("text"));
+	setPos(xml_element.attribute("x").toDouble(),
+		   xml_element.attribute("y").toDouble());
+	setRotation(xml_element.attribute("rotation", QString::number(0)).toDouble());
 }
 
 /**
@@ -80,19 +88,17 @@ void PartText::fromXml(const QDomElement &xml_element) {
 	@param xml_document Document XML a utiliser pour creer l'element XML
 	@return un element XML decrivant le texte statique
 */
-const QDomElement PartText::toXml(QDomDocument &xml_document) const {
-	QDomElement xml_element = xml_document.createElement("text");
-	xml_element.setAttribute("x", QString("%1").arg(pos().x()));
-	xml_element.setAttribute("y", QString("%1").arg(pos().y()));
+const QDomElement PartText::toXml(QDomDocument &xml_document) const
+{
+	QDomElement xml_element = xml_document.createElement(xmlName());
+
+	xml_element.setAttribute("x", QString::number(pos().x()));
+	xml_element.setAttribute("y", QString::number(pos().y()));
 	xml_element.setAttribute("text", toPlainText());
-	xml_element.setAttribute("size", font().pointSize());
-	// angle de rotation du champ de texte
-	if (rotation()) {
-		xml_element.setAttribute("rotation", QString("%1").arg(rotation()));
-	}
-	if (!isBlack()) {
-		xml_element.setAttribute("color", "white");
-	}
+	xml_element.setAttribute("font", font().toString());
+	xml_element.setAttribute("rotation", QString::number(rotation()));
+	xml_element.setAttribute("color", defaultTextColor().name());
+
 	return(xml_element);
 }
 
@@ -226,6 +232,33 @@ void PartText::handleUserTransformation(const QRectF &initial_selection_rect, co
 	qreal sy = new_selection_rect.height() / initial_selection_rect.height();
 	qreal new_font_size = saved_font_size_ * sy;
 	setProperty("real_size", qMax(1, qRound(new_font_size)));
+}
+
+void PartText::setDefaultTextColor(const QColor &color)
+{
+	if (color != this->defaultTextColor())
+	{
+		QGraphicsTextItem::setDefaultTextColor(color);
+		emit colorChanged(color);
+	}
+}
+
+void PartText::setPlainText(const QString &text)
+{
+	if (text != this->toPlainText())
+	{
+		QGraphicsTextItem::setPlainText(text);
+		emit plainTextChanged(text);
+	}
+}
+
+void PartText::setFont(const QFont &font)
+{
+	if (font != this->font())
+	{
+		QGraphicsTextItem::setFont(font);
+		emit fontChanged(font);
+	}
 }
 
 

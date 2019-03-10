@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>299</width>
-    <height>332</height>
+    <width>344</width>
+    <height>285</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -76,12 +76,9 @@
    <item row="6" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>Taille</string>
+      <string>Police</string>
      </property>
     </widget>
-   </item>
-   <item row="6" column="1" colspan="2">
-    <widget class="QSpinBox" name="m_size_sb"/>
    </item>
    <item row="2" column="0">
     <widget class="QLabel" name="label_4">
@@ -204,6 +201,16 @@
        </widget>
       </item>
      </layout>
+    </widget>
+   </item>
+   <item row="6" column="1">
+    <widget class="QSpinBox" name="m_size_sb"/>
+   </item>
+   <item row="6" column="2">
+    <widget class="QPushButton" name="m_font_pb">
+     <property name="text">
+      <string/>
+     </property>
     </widget>
    </item>
   </layout>

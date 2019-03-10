@@ -58,8 +58,9 @@ class DynamicTextFieldEditor : public ElementItemEditor
 		void on_m_text_from_cb_activated(int index);
 		void on_m_composite_text_pb_clicked();
 		void on_m_alignment_pb_clicked();
-		
-		private:
+		void on_m_font_pb_clicked();
+
+	private:
 		Ui::DynamicTextFieldEditor *ui;
 		QPointer<PartDynamicTextField> m_text_field;
 		QList<QMetaObject::Connection> m_connection_list;
