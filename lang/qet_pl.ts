@@ -557,7 +557,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
         <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1577"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation>zmiana właściwości kilku przewodów</translation>
+        <translation>zmiana właściwości wielu przewodów</translation>
     </message>
 </context>
 <context>
@@ -582,7 +582,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
         <location filename="../sources/ui/conductorpropertiesdialog.cpp" line="76"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation>zmiana właściwości kilku przewodów</translation>
+        <translation>zmiana właściwości wielu przewodów</translation>
     </message>
 </context>
 <context>
@@ -1161,7 +1161,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="206"/>
         <source>Police</source>
-        <translation>Porządek</translation>
+        <translation>Organizacja</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="249"/>
@@ -1176,7 +1176,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="501"/>
         <source>Modifier la police d&apos;un texte d&apos;élément</source>
-        <translation>Zmiana rozmiaru tekstu elementu</translation>
+        <translation>Zmiana organizacji tekstu elementu</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="558"/>
@@ -3193,7 +3193,7 @@ Tutaj możesz określić domyślną zawartość tego pola:</translation>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="132"/>
         <source>Le contenu, la taille et la police du texte ne peuvent être modifié car formaté en html.
 Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
-        <translation>Zawartość, rozmiar i czcionka tekstu nie mogą być modyfikowane, ponieważ są sformatowane w html.
+        <translation>Zawartość, rozmiar i organizacja tekstu nie mogą być modyfikowane, ponieważ są sformatowane w html.
 Użyj do tego zaawansowanego edytora.</translation>
     </message>
     <message>
@@ -4135,7 +4135,7 @@ aby używać nowy potencjał</translation>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="339"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation>zmiana właściwości kilku przewodów</translation>
+        <translation>zmiana właściwości wielu przewodów</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="375"/>
@@ -7586,7 +7586,7 @@ Co chcesz zrobić?</translation>
         <location filename="../sources/conductorautonumerotation.cpp" line="86"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation>zmiana właściwości kilku przewodów</translation>
+        <translation>zmiana właściwości wielu przewodów</translation>
     </message>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="139"/>
@@ -8821,7 +8821,7 @@ Stwórz własny tekst używając następujących zmiennych:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="152"/>
         <source>Champs texte</source>
-        <translation>Pole tekstowe</translation>
+        <translation>Pola tekstowe</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="158"/>
