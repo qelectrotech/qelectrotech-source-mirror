@@ -1302,17 +1302,12 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
         <translation>Formulário</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="128"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="125"/>
         <source>cadre</source>
         <translation>Quadro</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="79"/>
-        <source>Taille</source>
-        <translation>Tamanho</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="89"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="86"/>
         <source>Source du texte</source>
         <translation>Fonte de texto</translation>
     </message>
@@ -1338,50 +1333,56 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
         <translation>Composição de textos</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="152"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="79"/>
+        <source>Police</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="149"/>
         <source>X</source>
         <translation>X</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="172"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="169"/>
         <source>Largeur</source>
         <translation>Largura</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="182"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="179"/>
         <source>Y</source>
         <translation>Y</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="202"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="199"/>
         <source>Alignement</source>
         <translation>Alinhamento</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="142"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="139"/>
         <source>Rotation</source>
         <translation>Rotação</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="168"/>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="176"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="167"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="175"/>
         <source>Déplacer un champ texte</source>
         <translation>Mover um campo de texto</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="184"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="183"/>
         <source>Pivoter un champ texte</source>
         <translation>Girar um campo de texto</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="192"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="191"/>
         <source>Modifier le texte d&apos;un champ texte</source>
         <translation>Editar o texto de um campo de texto</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="199"/>
-        <source>Modifier la taille d&apos;un champ texte</source>
-        <translation>Editar o tamanho de um campo do texto</translation>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="200"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="320"/>
+        <source>Modifier la police d&apos;un champ texte</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="206"/>
@@ -3946,7 +3947,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <translation>Campo de texto dinâmico</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="464"/>
+        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="467"/>
         <source>Déplacer un champ texte</source>
         <translation>Mover um campo de texto</translation>
     </message>
@@ -3998,12 +3999,12 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
 <context>
     <name>PartText</name>
     <message>
-        <location filename="../sources/editor/graphicspart/parttext.cpp" line="256"/>
+        <location filename="../sources/editor/graphicspart/parttext.cpp" line="289"/>
         <source>Déplacer un texte</source>
         <translation>Mover um texto</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/parttext.cpp" line="317"/>
+        <location filename="../sources/editor/graphicspart/parttext.cpp" line="350"/>
         <source>Modifier un champ texte</source>
         <translation>Editar um campo de texto</translation>
     </message>
@@ -7230,7 +7231,7 @@ O que você deseja fazer?</translation>
         <translation>T</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/parttext.h" line="49"/>
+        <location filename="../sources/editor/graphicspart/parttext.h" line="60"/>
         <source>texte</source>
         <comment>element part name</comment>
         <translation>texto</translation>
@@ -9507,76 +9508,71 @@ Les autres champs ne sont pas utilisés.</source>
 <context>
     <name>TextEditor</name>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="41"/>
-        <source>Noir</source>
-        <comment>element text part color</comment>
-        <translation>Preto</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/texteditor.cpp" line="42"/>
-        <source>Blanc</source>
-        <comment>element text part color</comment>
-        <translation>Branco</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/texteditor.cpp" line="47"/>
-        <source>Angle de rotation : </source>
-        <translation>Ângulo de rotação: </translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/texteditor.cpp" line="55"/>
-        <source>Position : </source>
-        <translation>Posição: </translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/texteditor.cpp" line="58"/>
-        <source>x : </source>
-        <translation>x: </translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/texteditor.cpp" line="60"/>
-        <source>y : </source>
-        <translation>y: </translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/texteditor.cpp" line="65"/>
-        <source>Taille : </source>
-        <translation>Tamanho: </translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/texteditor.cpp" line="70"/>
-        <source>Couleur : </source>
-        <translation>Côr: </translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/texteditor.cpp" line="77"/>
-        <source>Texte : </source>
-        <translation>Texto: </translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/texteditor.cpp" line="139"/>
+        <location filename="../sources/editor/ui/texteditor.cpp" line="142"/>
         <source>Modifier le contenu d&apos;un champ texte</source>
         <translation>Editar o conteúdo de um campo de texto</translation>
     </message>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="154"/>
-        <source>Modifier la taille d&apos;un champ texte</source>
-        <translation>Editar o tamanho de um campo de texto</translation>
+        <location filename="../sources/editor/ui/texteditor.cpp" line="173"/>
+        <source>Pivoter un champ texte</source>
+        <translation type="unfinished">Girar um campo de texto</translation>
     </message>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="170"/>
-        <source>Modifier la couleur d&apos;un champ texte</source>
-        <translation>Editar a cor de um campo de texto</translation>
+        <location filename="../sources/editor/ui/texteditor.cpp" line="185"/>
+        <location filename="../sources/editor/ui/texteditor.cpp" line="207"/>
+        <source>Modifier la police d&apos;un texte</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="184"/>
-        <source>Modifier l&apos;angle d&apos;un champ texte</source>
-        <translation>Editar o ângulo de um campo de texto</translation>
+        <location filename="../sources/editor/ui/texteditor.cpp" line="221"/>
+        <source>Modifier la couleur d&apos;un texte</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/texteditor.cpp" line="199"/>
+        <location filename="../sources/editor/ui/texteditor.cpp" line="152"/>
+        <location filename="../sources/editor/ui/texteditor.cpp" line="163"/>
         <source>Déplacer un champ texte</source>
         <translation>Mover um campo de texto</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/texteditor.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished">Formulário</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/texteditor.ui" line="30"/>
+        <source>Y :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/texteditor.ui" line="37"/>
+        <source>Police :</source>
+        <translation type="unfinished">Fonte:</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/texteditor.ui" line="47"/>
+        <source>°</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/texteditor.ui" line="57"/>
+        <source>Rotation :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/texteditor.ui" line="74"/>
+        <source>X :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/texteditor.ui" line="84"/>
+        <source>Entrer votre texte ici</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/texteditor.ui" line="97"/>
+        <source>Couleur :</source>
+        <translation type="unfinished">Côr:</translation>
     </message>
 </context>
 <context>
