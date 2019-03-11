@@ -186,7 +186,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="171"/>
         <source>Traduction en hongrois</source>
-        <translation type="unfinished"></translation>
+        <translation>Ουγγρική μετάφραση</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="191"/>
@@ -957,7 +957,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/diagramview.cpp" line="547"/>
         <source>Connecter les bornes sélectionnées</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύνδεση των επιλεγμένων ακροδεκτών</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="819"/>
@@ -1155,7 +1155,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="206"/>
         <source>Police</source>
-        <translation type="unfinished"></translation>
+        <translation>Γραμματοσειρά</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="249"/>
@@ -1170,7 +1170,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="501"/>
         <source>Modifier la police d&apos;un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία της γραμματοσειράς ενός κειμένου στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="558"/>
@@ -1330,7 +1330,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="79"/>
         <source>Police</source>
-        <translation type="unfinished"></translation>
+        <translation>Γραμματοσειρά</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="149"/>
@@ -1377,7 +1377,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="200"/>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="320"/>
         <source>Modifier la police d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία της γραμματοσειράς ενός πλαισίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="206"/>
@@ -1815,7 +1815,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="226"/>
         <source>Déplacer une primitive</source>
-        <translation type="unfinished">Μετακίνηση ενός ακροδέκτη</translation>
+        <translation>Μετακίνηση ενός πρωτέυοντος</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="678"/>
@@ -2621,7 +2621,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="395"/>
         <source>Chemin des cartouches utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαδρομή των πινακίδων χρήστη</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="309"/>
@@ -2718,22 +2718,22 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="180"/>
         <source>Accès aux collections</source>
-        <translation type="unfinished"></translation>
+        <translation>Πρόσβαση σε συλλογές</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="192"/>
         <source>Répertoire de la collection commune</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατάλογος της κοινής συλλογής</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="213"/>
         <source>Répertoire de la collection utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατάλογος της συλλογής χρήστη</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="255"/>
         <source>Répertoire des cartouches utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translation>Κατάλογος των πινακίδων χρήστη</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="265"/>
@@ -2743,17 +2743,17 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="358"/>
         <source>Vous pouvez définir ici l&apos;apparence par defaut des differents textes de QElectroTech</source>
-        <translation type="unfinished"></translation>
+        <translation>Εδώ μπορείτε να ορίσετε την προεπιλεγμένη εμφάνιση των διαφόρων κειμένων του QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="577"/>
         <source>Grille + Clavier</source>
-        <translation type="unfinished"></translation>
+        <translation>Δικτύωμα + Πληκτρολόγιο</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="583"/>
         <source>Grille : 1 - 30</source>
-        <translation type="unfinished"></translation>
+        <translation>Δικτύωμα: 1 - 30</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="650"/>
@@ -2768,22 +2768,22 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="65"/>
         <source>Utiliser des fen&amp;êtres (appliqué au prochain lancement de QElectroTech)</source>
-        <translation type="unfinished"></translation>
+        <translation>Χρήση Παραθύρων (Εφαρμογή στην επόμενη εκκίνηση του QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="72"/>
         <source>Utiliser des onglets (appliqué au prochain lance&amp;ment de QElectroTech)</source>
-        <translation type="unfinished"></translation>
+        <translation>Χρήση Καρτελών (Εφαρμογή στην επόμενη εκκίνηση του QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="352"/>
         <source>Textes</source>
-        <translation type="unfinished">Κείμενα</translation>
+        <translation>Κείμενα</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="372"/>
         <source>Textes d&apos;éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Κείμενα στοιχείων</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="385"/>
@@ -2791,49 +2791,49 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="497"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="533"/>
         <source>Police :</source>
-        <translation type="unfinished">Γραμματοσειρά:</translation>
+        <translation>Γραμματοσειρά:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="395"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="458"/>
         <source>°</source>
-        <translation type="unfinished">°</translation>
+        <translation>°</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="405"/>
         <source>Longueur :</source>
-        <translation type="unfinished"></translation>
+        <translation>Μήκος:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="415"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="444"/>
         <source>Rotation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Περιστροφή:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="438"/>
         <source>Textes indépendants</source>
-        <translation type="unfinished"></translation>
+        <translation>Ανεξάρτητα κείμενα</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="491"/>
         <source>Pages de sommaire</source>
-        <translation type="unfinished"></translation>
+        <translation>Συνοπτικές σελίδες</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="527"/>
         <source>Autres textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Άλλα Κείμενα</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="624"/>
         <source>La Grille doite etre active pour pouvoir voir les modifications.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το δικτύωμα πρέπει να είναι ενεργό για να δείτε τις αλλαγές.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="673"/>
         <source>Déplacement au clavier : 1 - 30</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση πληκτρολογίου: 1 - 30</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="723"/>
@@ -2848,7 +2848,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="753"/>
         <source>Déplacement au clavier avec la touche ALT : 1 - 9</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετακίνηση πληκτρολογίου με το πλήκτρο ALT: 1 - 9</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="759"/>
@@ -3126,43 +3126,43 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Φόρμα</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="20"/>
         <source>X :</source>
-        <translation type="unfinished"></translation>
+        <translation>X :</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="30"/>
         <source>Éditeur avancé</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύνθετος επεξεργαστής</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="37"/>
         <source>Taille :</source>
-        <translation type="unfinished">Μέγεθος:</translation>
+        <translation>Μέγεθος:</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="47"/>
         <source>Angle :</source>
-        <translation type="unfinished">Γωνία:</translation>
+        <translation>Γωνία:</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="57"/>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="93"/>
         <source>px</source>
-        <translation type="unfinished"></translation>
+        <translation>πξ</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="109"/>
         <source>°</source>
-        <translation type="unfinished">°</translation>
+        <translation>°</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="122"/>
         <source>Y :</source>
-        <translation type="unfinished"></translation>
+        <translation>Y :</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="132"/>
@@ -3173,7 +3173,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="153"/>
         <source>Texte</source>
-        <translation type="unfinished">Κείμενο</translation>
+        <translation>Κείμενο</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="160"/>
@@ -3181,7 +3181,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="407"/>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="454"/>
         <source>Police</source>
-        <translation type="unfinished"></translation>
+        <translation>Γραμματοσειρά</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="146"/>
@@ -3192,47 +3192,47 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="179"/>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="184"/>
         <source>Déplacer un champ texte</source>
-        <translation type="unfinished">Μετακίνηση ενός πεδίου κειμένου</translation>
+        <translation>Μετακίνηση ενός πεδίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="189"/>
         <source>Pivoter un champ texte</source>
-        <translation type="unfinished">Περιστροφή ενός πεδίου κειμένου</translation>
+        <translation>Περιστροφή ενός πεδίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="193"/>
         <source>Modifier un champ texte</source>
-        <translation type="unfinished">Επεξεργασία πεδίου κειμένου</translation>
+        <translation>Επεξεργασία πεδίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="199"/>
         <source>Modifier la taille d&apos;un champ texte</source>
-        <translation type="unfinished">Επεξεργασία του μεγέθους ενός πεδίου κειμένου</translation>
+        <translation>Επεξεργασία του μεγέθους ενός πεδίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="204"/>
         <source>Modifier la police d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία της γραμματοσειράς ενός πεδίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="239"/>
         <source>Pivoter plusieurs champs texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Περιστροφή πολλαπλών πεδίων κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="254"/>
         <source>Modifier la taille de plusieurs champs texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία μεγέθους πολλαπλών πεδίων κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="270"/>
         <source>Modifier la police de plusieurs champs texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία της γραμματοσειράς πολλαπλών πεδίων κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="282"/>
         <source>Modifier les propriétés d&apos;un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία των ιδιοτήτων ενος κειμένου</translation>
     </message>
 </context>
 <context>
@@ -3640,12 +3640,12 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/NameList/ui/namelistdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished">Διάλογος</translation>
+        <translation>Διάλογος</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistdialog.cpp" line="66"/>
         <source>Variables de cartouche</source>
-        <translation type="unfinished"></translation>
+        <translation>Μεταβλητές πινακίδας</translation>
     </message>
 </context>
 <context>
@@ -3653,27 +3653,27 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Φόρμα</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="21"/>
         <source>Langue</source>
-        <translation type="unfinished">Γλώσσα</translation>
+        <translation>Γλώσσα</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="26"/>
         <source>Texte</source>
-        <translation type="unfinished">Κείμενο</translation>
+        <translation>Κείμενο</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="36"/>
         <source>Ajouter une ligne</source>
-        <translation type="unfinished">Προσθήκη γραμμής</translation>
+        <translation>Προσθήκη γραμμής</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="48"/>
         <source>Copier dans le presse papier</source>
-        <translation type="unfinished"></translation>
+        <translation>Αντιγραφή στο πρόχειρο</translation>
     </message>
 </context>
 <context>
@@ -7973,7 +7973,7 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/qetinformation.cpp" line="65"/>
         <source>Fichier</source>
-        <translation type="unfinished">Αρχείο</translation>
+        <translation>Αρχείο</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="66"/>
@@ -7993,27 +7993,27 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/qetinformation.cpp" line="69"/>
         <source>Version de QElectroTech</source>
-        <translation type="unfinished"></translation>
+        <translation>Έκδοση του QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="72"/>
         <source>Nombre de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριθμός Σελίδων</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="73"/>
         <source>Numéro du folio précédent</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριθμός προηγούμενης σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="74"/>
         <source>Numéro du folio suivant</source>
-        <translation type="unfinished"></translation>
+        <translation>Αριθμός επόμενης σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="75"/>
         <source>Titre du projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Τίτλος έργου</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="76"/>
@@ -8023,7 +8023,7 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/qetinformation.cpp" line="77"/>
         <source>Nom du fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Όνομα αρχείου</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="78"/>
@@ -8038,7 +8038,7 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/qetinformation.cpp" line="80"/>
         <source>Nom du fichier enregistré</source>
-        <translation type="unfinished"></translation>
+        <translation>Όνομα του αποθηκευμένου αρχείου</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="81"/>
@@ -8696,7 +8696,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="242"/>
         <source>avancé</source>
-        <translation type="unfinished"></translation>
+        <translation>Σύνθετο</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="178"/>
@@ -9488,18 +9488,18 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="173"/>
         <source>Pivoter un champ texte</source>
-        <translation type="unfinished">Περιστροφή ενός πεδίου κειμένου</translation>
+        <translation>Περιστροφή ενός πεδίου κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="185"/>
         <location filename="../sources/editor/ui/texteditor.cpp" line="207"/>
         <source>Modifier la police d&apos;un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία της γραμματοσειράς ενός κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="221"/>
         <source>Modifier la couleur d&apos;un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία του χρώματος ενός κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="152"/>
@@ -9510,32 +9510,32 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="30"/>
         <source>Y :</source>
-        <translation type="unfinished"></translation>
+        <translation>Y :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="37"/>
         <source>Police :</source>
-        <translation type="unfinished">Γραμματοσειρά:</translation>
+        <translation>Γραμματοσειρά:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="47"/>
         <source>°</source>
-        <translation type="unfinished">°</translation>
+        <translation>°</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="57"/>
         <source>Rotation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Περιστροφή:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="74"/>
         <source>X :</source>
-        <translation type="unfinished"></translation>
+        <translation>X :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="84"/>
@@ -9545,7 +9545,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="97"/>
         <source>Couleur :</source>
-        <translation type="unfinished">Χρώμα:</translation>
+        <translation>Χρώμα:</translation>
     </message>
 </context>
 <context>
