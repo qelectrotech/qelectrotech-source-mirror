@@ -1161,7 +1161,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="206"/>
         <source>Police</source>
-        <translation>Organizacja</translation>
+        <translation>Atrybuty</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="249"/>
@@ -1176,7 +1176,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="501"/>
         <source>Modifier la police d&apos;un texte d&apos;élément</source>
-        <translation>Zmiana organizacji tekstu elementu</translation>
+        <translation>Zmiana atrybutów tekstu elementu</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="558"/>
@@ -1336,7 +1336,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="79"/>
         <source>Police</source>
-        <translation type="unfinished">Organizacja</translation>
+        <translation>Atrybuty</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="149"/>
@@ -1383,7 +1383,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="200"/>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="320"/>
         <source>Modifier la police d&apos;un champ texte</source>
-        <translation type="unfinished">Zmiana organizacji pola tekstowego</translation>
+        <translation>Zmiana atrybutów pola tekstowego</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="206"/>
@@ -2816,7 +2816,7 @@ Tutaj możesz określić domyślną zawartość tego pola:</translation>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="497"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="533"/>
         <source>Police :</source>
-        <translation>Organizacja:</translation>
+        <translation>Atrybuty:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="395"/>
@@ -2864,12 +2864,12 @@ Tutaj możesz określić domyślną zawartość tego pola:</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="723"/>
         <source>DiagramEditor (touche :   gauche / droite)  xGrid</source>
-        <translation>Edytor schematów (klawisz:   lewy / prawy) xGrid</translation>
+        <translation>Edytor schematów (klawisz:   lewo/prawo) xGrid</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="730"/>
         <source>DiagramEditor (touche :   haut / bas)  yGrid</source>
-        <translation>Edytor schematów (klawisz:   góra / dół) yGrid</translation>
+        <translation>Edytor schematów (klawisz:   góra/dół) yGrid</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="753"/>
@@ -2879,12 +2879,12 @@ Tutaj możesz określić domyślną zawartość tego pola:</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="759"/>
         <source>DiagramEditor (touche :   gauche / droite ) xGrid</source>
-        <translation>Edytor schematów (klawisz:   lewy / prawy) xGrid</translation>
+        <translation>Edytor schematów (klawisz:   lewo/prawo) xGrid</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="788"/>
         <source>DiagramEditor (touche :  haut / bas)  yGrid</source>
-        <translation>Edytor schematów (klawisz:   góra / dół) yGrid</translation>
+        <translation>Edytor schematów (klawisz:   góra/dół) yGrid</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="146"/>
@@ -3194,7 +3194,7 @@ Tutaj możesz określić domyślną zawartość tego pola:</translation>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="132"/>
         <source>Le contenu, la taille et la police du texte ne peuvent être modifié car formaté en html.
 Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
-        <translation>Zawartość, rozmiar i organizacja tekstu nie mogą być modyfikowane, ponieważ są sformatowane w html.
+        <translation>Zawartość, rozmiar i atrybuty tekstu nie mogą być modyfikowane, ponieważ są sformatowane w html.
 Użyj do tego zaawansowanego edytora.</translation>
     </message>
     <message>
@@ -3208,7 +3208,7 @@ Użyj do tego zaawansowanego edytora.</translation>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="407"/>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="454"/>
         <source>Police</source>
-        <translation>Organizacja</translation>
+        <translation>Atrybuty</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="146"/>
@@ -3239,7 +3239,7 @@ Użyj do tego zaawansowanego edytora.</translation>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="204"/>
         <source>Modifier la police d&apos;un champ texte</source>
-        <translation>Zmiana organizacji pola tekstowego</translation>
+        <translation>Zmiana atrybutów pola tekstowego</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="239"/>
@@ -3254,7 +3254,7 @@ Użyj do tego zaawansowanego edytora.</translation>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="270"/>
         <source>Modifier la police de plusieurs champs texte</source>
-        <translation>Zmiana organizacji wielu pól tekstowych</translation>
+        <translation>Zmiana atrybutów wielu pól tekstowych</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="282"/>
@@ -9586,18 +9586,18 @@ Pole &quot;Inkrementacja&quot; nie jest używane.</translation>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="173"/>
         <source>Pivoter un champ texte</source>
-        <translation type="unfinished">Obrót pola tekstowego</translation>
+        <translation>Obrót pola tekstowego</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="185"/>
         <location filename="../sources/editor/ui/texteditor.cpp" line="207"/>
         <source>Modifier la police d&apos;un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Zmiana atrybutów tekstu</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="221"/>
         <source>Modifier la couleur d&apos;un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Zmiana koloru tekstu</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="152"/>
@@ -9608,42 +9608,42 @@ Pole &quot;Inkrementacja&quot; nie jest używane.</translation>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formuła</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="30"/>
         <source>Y :</source>
-        <translation type="unfinished">Y:</translation>
+        <translation>Y:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="37"/>
         <source>Police :</source>
-        <translation type="unfinished">Organizacja:</translation>
+        <translation>Atrybuty:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="47"/>
         <source>°</source>
-        <translation type="unfinished">°</translation>
+        <translation>°</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="57"/>
         <source>Rotation :</source>
-        <translation type="unfinished">Obrót:</translation>
+        <translation>Obrót:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="74"/>
         <source>X :</source>
-        <translation type="unfinished">X:</translation>
+        <translation>X:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="84"/>
         <source>Entrer votre texte ici</source>
-        <translation type="unfinished"></translation>
+        <translation>Tutaj określ swój tekst</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="97"/>
         <source>Couleur :</source>
-        <translation type="unfinished">Kolor:</translation>
+        <translation>Kolor:</translation>
     </message>
 </context>
 <context>
@@ -9987,7 +9987,7 @@ skojarzenie nazwy &quot;volta&quot; i wartości &quot;1745&quot; spowoduje zast�
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="96"/>
         <source>Police :</source>
-        <translation>Organizacja:</translation>
+        <translation>Atrybuty:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="98"/>
