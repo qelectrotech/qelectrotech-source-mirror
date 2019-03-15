@@ -184,7 +184,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 				new_pen.setStyle( Qt::CustomDashLine );
 			}
 				//painter.setPen( new_pen );
-			new_pen.setColor(ui->m_color_pb->palette().color(QPalette::Button));
+			new_pen.setColor(ui->m_color_kpb->color());
 
 			if (new_pen != old_pen)
 			{
@@ -195,7 +195,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 			QBrush old_brush = m_shape->brush();
 			QBrush new_brush = old_brush;
 			new_brush.setStyle(Qt::BrushStyle(ui->m_brush_style_cb->currentIndex()));
-			new_brush.setColor(ui->m_brush_color_pb->palette().color(QPalette::Button));
+			new_brush.setColor(ui->m_brush_color_kpb->color());
 
 			if (new_brush != old_brush)
 			{
@@ -257,7 +257,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 				}
 			}
 
-			QColor c =ui->m_color_pb->palette().color(QPalette::Button);
+			QColor c =ui->m_color_kpb->color();
 			if (c != QPalette().color(QPalette::Button) && shape_->pen().color() != c)
 			{
 				for (QPointer<QetShapeItem> qsi : m_shapes_list)
@@ -289,7 +289,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 				}
 			}
 
-			c = ui->m_brush_color_pb->palette().color(QPalette::Button);
+			c = ui->m_brush_color_kpb->color();
 			if (c != QPalette().color(QPalette::Button) && shape_->brush().color() != c)
 			{
 				for (QPointer<QetShapeItem> qsi : m_shapes_list)
@@ -327,7 +327,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 			new_pen.setStyle( Qt::CustomDashLine );
 		}
 			//painter.setPen( new_pen );
-		new_pen.setColor(ui->m_color_pb->palette().color(QPalette::Button));
+		new_pen.setColor(ui->m_color_kpb->color());
 
 		if (new_pen != old_pen) {
 			new QPropertyUndoCommand(m_shape, "pen", old_pen, new_pen, undo);
@@ -336,7 +336,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 		QBrush old_brush = m_shape->brush();
 		QBrush new_brush = old_brush;
 		new_brush.setStyle(Qt::BrushStyle(ui->m_brush_style_cb->currentIndex()));
-		new_brush.setColor(ui->m_brush_color_pb->palette().color(QPalette::Button));
+		new_brush.setColor(ui->m_brush_color_kpb->color());
 
 		if (new_brush != old_brush) {
 			new QPropertyUndoCommand(m_shape, "brush", old_brush, new_brush, undo);
@@ -379,7 +379,7 @@ void ShapeGraphicsItemPropertiesWidget::updateUi()
 		//Pen
 		ui->m_style_cb->setCurrentIndex(static_cast<int>(m_shape->pen().style()) - 1);
 		ui->m_size_dsb ->setValue(m_shape->pen().widthF());
-		setPenColorButton(m_shape->pen().color());
+		ui->m_color_kpb->setColor(m_shape->pen().color());
 		ui->m_color_kpb->setColor(m_shape->pen().color());
 
 		//Brush
@@ -387,7 +387,7 @@ void ShapeGraphicsItemPropertiesWidget::updateUi()
 			ui->m_filling_gb->setVisible(m_shape->isClosed());
 
 		ui->m_brush_style_cb->setCurrentIndex(static_cast<int>(m_shape->brush().style()));
-		setBrushColorButton(m_shape->brush().color());
+		ui->m_brush_color_kpb->setColor(m_shape->brush().color());
 
 		ui->m_lock_pos_cb->setChecked(!m_shape->isMovable());
 		ui->m_close_polygon->setChecked(m_shape->isClosed());
@@ -424,7 +424,6 @@ void ShapeGraphicsItemPropertiesWidget::updateUi()
 				break;
 			}
 		}
-		setPenColorButton(same ? pc : QColor());
 		ui->m_color_kpb->setColor(same ? pc : QColor());
 
 			//Brush
@@ -448,7 +447,7 @@ void ShapeGraphicsItemPropertiesWidget::updateUi()
 				break;
 			}
 		}
-		setBrushColorButton(same ? bc : QColor());
+		ui->m_brush_color_kpb->setColor(same ? bc : QColor());
 
 		ui->m_lock_pos_cb->setChecked(false);
 		ui->m_close_polygon->setChecked(false);
@@ -480,36 +479,6 @@ bool ShapeGraphicsItemPropertiesWidget::setLiveEdit(bool live_edit)
 		m_edit_connection.clear();
 	}
 	return true;
-}
-
-/**
- * @brief ShapeGraphicsItemPropertiesWidget::setPenColorButton
- * Set the color of pen push button to the current color of the shape pen
- * @param color
- */
-void ShapeGraphicsItemPropertiesWidget::setPenColorButton(const QColor &color)
-{
-	if (!color.isValid()) {
-		ui->m_color_pb->setStyleSheet("");
-		return;
-	}
-
-	ui->m_color_pb->setStyleSheet(QString("background-color : %1").arg(color.name()));
-}
-
-/**
- * @brief ShapeGraphicsItemPropertiesWidget::setBrushColorButton
- * Set the color of brush push button to the current color of shape brush
- * @param color
- */
-void ShapeGraphicsItemPropertiesWidget::setBrushColorButton(const QColor &color)
-{
-	if (!color.isValid()) {
-		ui->m_brush_color_pb->setStyleSheet("");
-		return;
-	}
-
-	ui->m_brush_color_pb->setStyleSheet(QString("background-color : %1").arg(color.name()));
 }
 
 /**
@@ -546,54 +515,16 @@ void ShapeGraphicsItemPropertiesWidget::on_m_lock_pos_cb_clicked()
 	}
 }
 
-/**
- * @brief ShapeGraphicsItemPropertiesWidget::on_m_color_pb_clicked
- * Pen color button was clicked, we open a QColorDialog for select the color to apply to the shape pen.
- */
-void ShapeGraphicsItemPropertiesWidget::on_m_color_pb_clicked()
-{
-	if (!m_shape && m_shapes_list.isEmpty()) {
-		return;
-	}
-	QetShapeItem *shape_ = m_shape ? m_shape : m_shapes_list.first().data();
-	QColor color = QColorDialog::getColor(shape_->pen().color(), this);
-	if (color.isValid()) {
-		setPenColorButton(color);
-	}
-	if (m_live_edit) {
-		apply();
-	}
-}
-
-/**
- * @brief ShapeGraphicsItemPropertiesWidget::on_m_brush_color_pb_clicked
- * Brush color button was clicked, we open a QColorDialog for select the color to apply to the shape brush.
- */
-void ShapeGraphicsItemPropertiesWidget::on_m_brush_color_pb_clicked()
-{
-	if (!m_shape && m_shapes_list.isEmpty()) {
-		return;
-	}
-	QetShapeItem *shape_ = m_shape ? m_shape : m_shapes_list.first().data();
-
-	QColor color = QColorDialog::getColor(shape_->brush().color(), this);
-	if (color.isValid()) {
-		setBrushColorButton(color);
-	}
-	if (m_live_edit) {
-		apply();
-	}
-}
-
-
-
 void ShapeGraphicsItemPropertiesWidget::on_m_color_kpb_changed(const QColor &newColor)
 {
-	if (newColor.isValid())
-	{
-		setPenColorButton(newColor);
-		if (m_live_edit) {
-			apply();
-		}
+	if(newColor.isValid() && m_live_edit) {
+		apply();
+	}
+}
+
+void ShapeGraphicsItemPropertiesWidget::on_m_brush_color_kpb_changed(const QColor &newColor)
+{
+	if(newColor.isValid() && m_live_edit) {
+		apply();
 	}
 }

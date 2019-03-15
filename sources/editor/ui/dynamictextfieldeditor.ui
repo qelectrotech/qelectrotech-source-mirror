@@ -40,13 +40,6 @@
      </property>
     </widget>
    </item>
-   <item row="7" column="1" colspan="2">
-    <widget class="QPushButton" name="m_color_pb">
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
    <item row="8" column="1">
     <spacer name="verticalSpacer">
      <property name="orientation">
@@ -213,8 +206,18 @@
      </property>
     </widget>
    </item>
+   <item row="7" column="1" colspan="2">
+    <widget class="KColorButton" name="m_color_kpb"/>
+   </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>KColorButton</class>
+   <extends>QPushButton</extends>
+   <header>kcolorbutton.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

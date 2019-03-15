@@ -105,7 +105,7 @@ void DynamicTextFieldEditor::updateForm()
 		ui->m_frame_cb->setChecked(m_text_field.data()->frame());
 		ui->m_user_text_le->setText(m_text_field.data()->text());
 		ui->m_size_sb->setValue(m_text_field.data()->font().pointSize());
-		setColorPushButton(m_text_field.data()->color());
+		ui->m_color_kpb->setColor(m_text_field.data()->color());
 		ui->m_width_sb->setValue(m_text_field.data()->textWidth());
 		ui->m_font_pb->setText(m_text_field->font().family());
 		
@@ -126,13 +126,6 @@ void DynamicTextFieldEditor::updateForm()
 
 		on_m_text_from_cb_activated(ui->m_text_from_cb->currentIndex()); //For enable the good widget
 	}
-}
-
-void DynamicTextFieldEditor::setColorPushButton(const QColor& color)
-{
-	QPalette palette;
-	palette.setColor(QPalette::Button, color);
-	ui->m_color_pb->setStyleSheet(QString("background-color: %1; min-height: 1.5em; border-style: outset; border-width: 2px; border-color: gray; border-radius: 4px;").arg(color.name()));
 }
 
 /**
@@ -199,19 +192,6 @@ void DynamicTextFieldEditor::on_m_size_sb_editingFinished()
 	QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_text_field, "font", m_text_field.data()->font(), font_);
 	undo->setText(tr("Modifier la police d'un champ texte"));
 	undoStack().push(undo);
-}
-
-void DynamicTextFieldEditor::on_m_color_pb_clicked()
-{
-    QColor color = QColorDialog::getColor(m_text_field.data()->color(), this, tr("Couleur du texte"));
-	
-	if(color.isValid() && color != m_text_field.data()->color())
-	{
-		QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_text_field, "color", m_text_field.data()->color(), color);
-		undo->setText(tr("Modifier la couleur d'un champ texte"));
-		undoStack().push(undo);
-		setColorPushButton(m_text_field.data()->color());
-	}
 }
 
 void DynamicTextFieldEditor::on_m_frame_cb_clicked()
@@ -318,6 +298,16 @@ void DynamicTextFieldEditor::on_m_font_pb_clicked()
 
 		QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_text_field.data(), "font", m_text_field->font(), font_);
 		undo->setText(tr("Modifier la police d'un champ texte"));
+		undoStack().push(undo);
+	}
+}
+
+void DynamicTextFieldEditor::on_m_color_kpb_changed(const QColor &newColor)
+{
+	if(newColor.isValid() && newColor != m_text_field.data()->color())
+	{
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_text_field, "color", m_text_field.data()->color(), newColor);
+		undo->setText(tr("Modifier la couleur d'un champ texte"));
 		undoStack().push(undo);
 	}
 }

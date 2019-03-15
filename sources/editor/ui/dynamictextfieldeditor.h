@@ -35,14 +35,13 @@ class DynamicTextFieldEditor : public ElementItemEditor
 	
 	public:
 		explicit DynamicTextFieldEditor(QETElementEditor *editor, PartDynamicTextField *text_field = nullptr, QWidget *parent = nullptr);
-		~DynamicTextFieldEditor();
+		~DynamicTextFieldEditor() override;
 	
 		bool setPart(CustomElementPart *part) override;
 		CustomElementPart *currentPart() const override;
 		void updateForm() override;
 		
 	private:
-		void setColorPushButton(const QColor& color);
 		void fillInfoComboBox();
 	
 	private slots:
@@ -50,8 +49,7 @@ class DynamicTextFieldEditor : public ElementItemEditor
 		void on_m_y_sb_editingFinished();
 		void on_m_rotation_sb_editingFinished();
 		void on_m_user_text_le_editingFinished();
-		void on_m_size_sb_editingFinished();
-		void on_m_color_pb_clicked();	
+		void on_m_size_sb_editingFinished();	
 		void on_m_frame_cb_clicked();
 		void on_m_width_sb_editingFinished();
 		void on_m_elmt_info_cb_activated(const QString &arg1);
@@ -60,7 +58,9 @@ class DynamicTextFieldEditor : public ElementItemEditor
 		void on_m_alignment_pb_clicked();
 		void on_m_font_pb_clicked();
 
-	private:
+		void on_m_color_kpb_changed(const QColor &newColor);
+
+		private:
 		Ui::DynamicTextFieldEditor *ui;
 		QPointer<PartDynamicTextField> m_text_field;
 		QList<QMetaObject::Connection> m_connection_list;

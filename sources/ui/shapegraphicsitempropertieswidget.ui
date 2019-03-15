@@ -20,17 +20,17 @@
       <string>Trait</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>Épaisseur</string>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="0">
        <widget class="QLabel" name="label">
         <property name="text">
          <string>Type</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Épaisseur</string>
         </property>
        </widget>
       </item>
@@ -42,16 +42,9 @@
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QPushButton" name="m_color_pb">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2">
        <widget class="KColorButton" name="m_color_kpb"/>
       </item>
-      <item row="1" column="1" colspan="2">
+      <item row="1" column="1">
        <widget class="QDoubleSpinBox" name="m_size_dsb">
         <property name="maximumSize">
          <size>
@@ -85,7 +78,7 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="1" colspan="2">
+      <item row="0" column="1">
        <widget class="QComboBox" name="m_style_cb">
         <item>
          <property name="text">
@@ -128,13 +121,6 @@
       <string>Remplissage</string>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0">
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>Style</string>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="1">
        <widget class="QComboBox" name="m_brush_style_cb">
         <item>
@@ -214,6 +200,13 @@
         </item>
        </widget>
       </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Style</string>
+        </property>
+       </widget>
+      </item>
       <item row="1" column="0">
        <widget class="QLabel" name="label_5">
         <property name="text">
@@ -222,11 +215,7 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QPushButton" name="m_brush_color_pb">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
+       <widget class="KColorButton" name="m_brush_color_kpb"/>
       </item>
      </layout>
     </widget>

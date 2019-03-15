@@ -73,8 +73,6 @@ void ConductorPropertiesWidget::setProperties(const ConductorProperties &propert
 	
 	m_properties = properties;
 
-	setColorButton(m_properties.color);
-	setColorButton2(m_properties.m_color_2);
 	int index = ui -> m_line_style_cb -> findData(QPen(m_properties.style));
 	if (index != -1) ui -> m_line_style_cb -> setCurrentIndex(index);
 
@@ -93,6 +91,8 @@ void ConductorPropertiesWidget::setProperties(const ConductorProperties &propert
 	ui->m_pen_cb                -> setChecked (m_properties.singleLineProperties.isPen());
 	ui->m_phase_cb              -> setChecked (m_properties.singleLineProperties.phasesCount());
 	ui->m_phase_slider          -> setValue   (m_properties.singleLineProperties.phasesCount());
+	ui->m_color_kpb             -> setColor(m_properties.color);
+	ui->m_color_2_kpb           -> setColor(m_properties.m_color_2);
 
 	ui->m_horiz_cb->setCurrentIndex(m_properties.m_horizontal_alignment == Qt::AlignTop? 0 : 1);
 	ui->m_verti_cb->setCurrentIndex(m_properties.m_vertical_alignment == Qt::AlignLeft? 0 : 1);
@@ -113,9 +113,9 @@ ConductorProperties ConductorPropertiesWidget::properties() const
 	if (ui -> m_multiwires_gb  -> isChecked()) properties_.type = ConductorProperties::Multi;
 	else if (ui -> m_singlewire_gb -> isChecked()) properties_.type = ConductorProperties::Single;
 
-	properties_.color                   = ui -> m_color_pb->palette().color(QPalette::Button);
+	properties_.color                   = ui -> m_color_kpb->color();
 	properties_.m_bicolor               = ui->m_color_2_gb->isChecked();
-	properties_.m_color_2               = ui->m_color_2_pb->palette().color(QPalette::Button);
+	properties_.m_color_2               = ui->m_color_2_kpb->color();
 	properties_.m_dash_size             = ui->m_dash_size_sb->value();
 	properties_.style                   = ui -> m_line_style_cb->itemData(ui->m_line_style_cb->currentIndex()).value<QPen>().style();
 	properties_.m_formula               = ui->m_formula_le->text();
@@ -293,39 +293,6 @@ void ConductorPropertiesWidget::on_m_neutral_cb_toggled(bool checked) {
 }
 
 /**
- * @brief ConductorPropertiesWidget::on_m_color_pb_clicked
- * Open a color dialog, for choose the color of conductor
- */
-void ConductorPropertiesWidget::on_m_color_pb_clicked() {
-	QColor color = QColorDialog::getColor(m_properties.color, this);
-	if (color.isValid())
-		setColorButton(color);
-}
-
-/**
- * @brief ConductorPropertiesWidget::setColorButton
- * Set m_color_pb to @color
- * @param color
- */
-void ConductorPropertiesWidget::setColorButton(const QColor &color){
-	QPalette palette;
-	palette.setColor(QPalette::Button, color);
-	ui -> m_color_pb -> setStyleSheet(QString("background-color: %1; min-height: 1.5em; border-style: outset; border-width: 2px; border-color: gray; border-radius: 4px;").arg(color.name()));
-}
-
-/**
- * @brief ConductorPropertiesWidget::setColorButton2
- * Set m_color_2_pb to @color
- * @param color
- */
-void ConductorPropertiesWidget::setColorButton2(const QColor &color)
-{
-	QPalette palette;
-	palette.setColor(QPalette::Button, color);
-	ui->m_color_2_pb->setStyleSheet(QString("background-color: %1; min-height: 1.5em; border-style: outset; border-width: 2px; border-color: gray; border-radius: 4px;").arg(color.name()));
-}
-
-/**
  * @brief ConductorPropertiesWidget::on_m_update_preview_pb_clicked
  * Update the preview of single line.
  * m_update_preview_pb is a no used button and hidden, his role is only
@@ -334,15 +301,4 @@ void ConductorPropertiesWidget::setColorButton2(const QColor &color)
  */
 void ConductorPropertiesWidget::on_m_update_preview_pb_clicked() {
 	updatePreview();
-}
-
-/**
- * @brief ConductorPropertiesWidget::on_m_color_2_pb_clicked
- * Open a color dialog, for choose the second color of conductor
- */
-void ConductorPropertiesWidget::on_m_color_2_pb_clicked()
-{
-	QColor color = QColorDialog::getColor(m_properties.m_color_2, this);
-	if (color.isValid())
-		setColorButton2(color);
 }
