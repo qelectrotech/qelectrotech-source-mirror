@@ -402,21 +402,14 @@ void ConductorProperties::fromSettings(QSettings &settings, const QString &prefi
 /**
 	@param t type du conducteur
 */
-QString ConductorProperties::typeToString(ConductorType t) {
-	switch(t) {
+QString ConductorProperties::typeToString(ConductorType t)
+{
+	switch(t)
+	{
 		case Single: return("single");
 		case Multi:  return("multi");
-		default: return(QString());
 	}
-}
-
-/**
- * @brief ConductorProperties::setText
- * This method sets the current conductor text
- * @param text to be setted
- */
-void ConductorProperties::setText(QString text) {
-	text = text;
+	return QString();
 }
 
 /**
