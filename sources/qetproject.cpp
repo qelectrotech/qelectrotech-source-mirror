@@ -35,57 +35,21 @@
 #include <QTimer>
 #include <QStandardPaths>
 #include <utility>
+#include <KAutoSaveFile>
 
-static int BACKUP_INTERVAL = 300000; //interval in ms of backup
+static int BACKUP_INTERVAL = 120000; //interval in ms of backup = 2min
 
 /**
-	Constructeur par defaut - cree un schema contenant une collection
-	d'elements vide et un schema vide.
-	@param diagrams Nombre de nouveaux schemas a ajouter a ce nouveau projet
-	@param parent QObject parent
-*/
-QETProject::QETProject(int diagrams, QObject *parent) :
+ * @brief QETProject::QETProject
+ * Create a empty project
+ * @param parent
+ */
+QETProject::QETProject(QObject *parent) :
 	QObject              (parent),
-	project_qet_version_ (-1    ),
-	modified_            (false ),
-	read_only_           (false ),
-	titleblocks_         (this  ),
-	folioSheetsQuantity  (0     ),
-	m_auto_conductor     (true  ),
-	m_elements_collection (nullptr),
-	m_freeze_new_elements (false),
-	m_freeze_new_conductors (false)
+	m_titleblocks_collection(this)
 {
-	// 0 a n schema(s) vide(s)
-	int diagrams_count = qMax(0, diagrams);
-	for (int i = 0 ; i < diagrams_count ; ++ i) {
-		addNewDiagram();
-	}
-
 	m_elements_collection = new XmlElementCollection(this);
-
-	setupTitleBlockTemplatesCollection();
-
-	m_undo_stack = new QUndoStack();
-	connect(m_undo_stack, SIGNAL(cleanChanged(bool)), this, SLOT(undoStackChanged(bool)));
-	
-	m_save_backup_timer.setInterval(BACKUP_INTERVAL);
-	connect(&m_save_backup_timer, &QTimer::timeout, this, &QETProject::writeBackup);
-	m_save_backup_timer.start();
-	
-	QSettings settings;
-	int autosave_interval = settings.value("diagrameditor/autosave-interval", 0).toInt();
-	if(autosave_interval > 0)
-	{
-		int ms = autosave_interval*60*1000;
-		m_autosave_timer.setInterval(ms);
-		connect(&m_autosave_timer, &QTimer::timeout, [this]()
-		{
-			if(!this->m_file_path.isEmpty())
-				this->write();
-		});
-		m_autosave_timer.start();
-	}
+	init();
 }
 
 /**
@@ -96,50 +60,74 @@ QETProject::QETProject(int diagrams, QObject *parent) :
  */
 QETProject::QETProject(const QString &path, QObject *parent) :
 	QObject              (parent),
-	project_qet_version_ (-1    ),
-	modified_            (false ),
-	read_only_           (false ),
-	titleblocks_         (this  ),
-	folioSheetsQuantity  (0     ),
-	m_auto_conductor     (true  ),
-	m_elements_collection (nullptr)
+	m_titleblocks_collection(this)
 {
-		//Open the file
-	QFile project_file(path);
-	if (!project_file.open(QIODevice::ReadOnly | QIODevice::Text))
-	{
-		state_ = FileOpenFailed;
-		return;
-	}
-	setFilePath(path);
-	
-		//Extract the content of the xml
-	QDomDocument xml_project;
-	if (!xml_project.setContent(&project_file))
-	{
-		state_ = XmlParsingFailed;
+	QFile file(path);
+	m_state = openFile(&file);
+	if (m_state != ProjectState::Ok) {
 		return;
 	}
 
-		//Build the project from the xml
-	readProjectXml(xml_project);
-	
-	setupTitleBlockTemplatesCollection();
-	
-	// passe le projet en lecture seule si le fichier l'est
-	QFileInfo project_file_info(path);
-	if (!project_file_info.isWritable()) {
-		setReadOnly(true);
-	}
+	init();
+}
 
-	m_undo_stack = new QUndoStack();
+/**
+ * @brief QETProject::QETProject
+ * @param backup : backup file to open, QETProject take ownership of backup.
+ * @param parent : parent QObject
+ */
+QETProject::QETProject(KAutoSaveFile *backup, QObject *parent) :
+	QObject              (parent),
+	m_titleblocks_collection(this)
+{
+	m_state = openFile(backup);
+		//Failed to open from the backup, try to open the crashed
+	if (m_state != ProjectState::Ok)
+	{
+		QFile file(backup->managedFile().path());
+		m_state = openFile(&file);
+		if(m_state != ProjectState::Ok)
+		{
+			backup->open(QIODevice::ReadWrite);
+			delete backup;
+			return;
+		}
+	}
+		//Set the real path, instead of the path of the backup.
+	setFilePath(backup->managedFile().path());
+	delete  backup;
+
+		//Set the project to read only mode if the file it.
+	QFileInfo fi(m_file_path);
+	setReadOnly(!fi.isWritable());
+
+	init();
+}
+
+/**
+ * @brief QETProject::~QETProject
+ * Destructor
+ */
+QETProject::~QETProject() {
+	qDeleteAll(m_diagrams_list);
+}
+
+/**
+ * @brief QETProject::init
+ */
+void QETProject::init()
+{
+	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::changed, this, &QETProject::updateDiagramsTitleBlockTemplate);
+	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::aboutToRemove, this, &QETProject::removeDiagramsTitleBlockTemplate);
+
+	m_undo_stack = new QUndoStack(this);
 	connect(m_undo_stack, SIGNAL(cleanChanged(bool)), this, SLOT(undoStackChanged(bool)));
-	
+
 	m_save_backup_timer.setInterval(BACKUP_INTERVAL);
 	connect(&m_save_backup_timer, &QTimer::timeout, this, &QETProject::writeBackup);
 	m_save_backup_timer.start();
 	writeBackup();
-	
+
 	QSettings settings;
 	int autosave_interval = settings.value("diagrameditor/autosave-interval", 0).toInt();
 	if(autosave_interval > 0)
@@ -156,25 +144,39 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 }
 
 /**
- * @brief QETProject::~QETProject
- * Destructor
+ * @brief QETProject::openFile
+ * @param file
+ * @return
  */
-QETProject::~QETProject()
+QETProject::ProjectState QETProject::openFile(QFile *file)
 {
-	qDeleteAll(m_diagrams_list);
-	delete m_undo_stack;
-	
-		//Project is closed without crash, we can safely remove the backup file.
-	if (!m_file_path.isEmpty())
-	{
-		QDir dir(QETApp::configDir() + "backup");
-		if(!dir.exists())
-			return;
-		
-		QFileInfo info(m_file_path);
-		if(info.exists())
-			dir.remove(info.fileName());
+	bool opened_here = file->isOpen() ? false : true;
+	if (!file->isOpen() && !file->open(QIODevice::ReadOnly | QIODevice::Text)) {
+		return FileOpenFailed;
 	}
+	QFileInfo fi(*file);
+	setFilePath(fi.absoluteFilePath());
+
+		//Extract the content of the xml
+	QDomDocument xml_project;
+	if (!xml_project.setContent(file))
+	{
+		if(opened_here) {
+			file->close();
+		}
+		return XmlParsingFailed;
+	}
+
+		//Build the project from the xml
+	readProjectXml(xml_project);
+
+	if (!fi.isWritable()) {
+		setReadOnly(true);
+	}
+	if(opened_here) {
+		file->close();
+	}
+	return ProjectState::Ok;
 }
 
 /**
@@ -183,7 +185,7 @@ QETProject::~QETProject()
 	@see ProjectState
 */
 QETProject::ProjectState QETProject::state() const {
-	return(state_);
+	return(m_state);
 }
 
 /**
@@ -191,7 +193,7 @@ QETProject::ProjectState QETProject::state() const {
 	@return folio Sheets Quantity.
 */
 int QETProject::getFolioSheetsQuantity() const {
-	return(folioSheetsQuantity);
+	return(m_folio_sheets_quantity);
 }
 
 /**
@@ -199,7 +201,7 @@ int QETProject::getFolioSheetsQuantity() const {
 	@param New value of quantity to be set.
 */
 void QETProject::setFolioSheetsQuantity(int quantity) {
-	folioSheetsQuantity = quantity;
+	m_folio_sheets_quantity = quantity;
 }
 
 /**
@@ -232,7 +234,7 @@ XmlElementCollection *QETProject::embeddedElementCollection() const {
 	@return the title block templates collection enbeedded within this project
 */
 TitleBlockTemplatesProjectCollection *QETProject::embeddedTitleBlockTemplatesCollection() {
-	return(&titleblocks_);
+	return(&m_titleblocks_collection);
 }
 
 /**
@@ -243,22 +245,40 @@ QString QETProject::filePath() {
 }
 
 /**
-	Change le chemin du fichier dans lequel ce projet est enregistre
-	@param filepath Nouveau chemin de fichier
-*/
-void QETProject::setFilePath(const QString &filepath) {
+ * @brief QETProject::setFilePath
+ * Set the filepath of this project file
+ * Set a file path also create a backup file according to the path.
+ * If a previous path was set, the previous backup file is deleted and a new one
+ * is created according to the path.
+ * @param filepath
+ */
+void QETProject::setFilePath(const QString &filepath)
+{
+	if (filepath == m_file_path) {
+		return;
+	}
+
+	if (m_backup_file)
+	{
+		delete m_backup_file;
+		m_backup_file = nullptr;
+	}
+	QUrl url_(filepath);
+	m_backup_file = new KAutoSaveFile(url_, this);
+	if (!m_backup_file->open(QIODevice::WriteOnly)) {
+		delete m_backup_file;
+		m_backup_file = nullptr;
+	}
 	m_file_path = filepath;
 	
-	// le chemin a change : on reevalue la necessite du mode lecture seule
-	QFileInfo file_path_info(m_file_path);
-	if (file_path_info.isWritable()) {
-		setReadOnly(false);
-	}
-	//title block variables should be updated after file save as dialog is confirmed, before file is saved.
-	project_properties_.addValue("saveddate", QDate::currentDate().toString("yyyy-MM-dd"));
-	project_properties_.addValue("savedtime", QDateTime::currentDateTime().toString("HH:mm"));
-	project_properties_.addValue("savedfilename", QFileInfo(filePath()).baseName());
-	project_properties_.addValue("savedfilepath", filePath());
+	QFileInfo fi(m_file_path);
+	setReadOnly(!fi.isWritable());
+
+		//title block variables should be updated after file save as dialog is confirmed, before file is saved.
+	m_project_properties.addValue("saveddate", QDate::currentDate().toString("yyyy-MM-dd"));
+	m_project_properties.addValue("savedtime", QDateTime::currentDateTime().toString("HH:mm"));
+	m_project_properties.addValue("savedfilename", QFileInfo(filePath()).baseName());
+	m_project_properties.addValue("savedfilepath", filePath());
 	
 	
 	
@@ -325,7 +345,7 @@ QString QETProject::pathNameTitle() const {
 			)
 		).arg(final_title);
 	}
-	if (modified_) {
+	if (m_modified) {
 		final_title = QString(
 			tr(
 				"%1 [modifié]",
@@ -350,7 +370,7 @@ QString QETProject::title() const {
 	depuis un fichier, cette methode retourne -1.
 */
 qreal QETProject::declaredQElectroTechVersion() {
-	return(project_qet_version_);
+	return(m_project_qet_version);
 }
 
 /**
@@ -771,7 +791,7 @@ void QETProject::autoFolioNumberingNewFolios(){
  */
 void QETProject::autoFolioNumberingSelectedFolios(int from, int to, const QString& autonum){
 	int total_folio = m_diagrams_list.count();
-	DiagramContext project_wide_properties = project_properties_;
+	DiagramContext project_wide_properties = m_project_properties;
 	for (int i=from; i<=to; i++) {
 		QString title = m_diagrams_list[i] -> title();
 		NumerotationContext nC = folioAutoNum(autonum);
@@ -794,14 +814,14 @@ QDomDocument QETProject::toXml() {
 	project_root.setAttribute("title", project_title_);
 
 	// write the present value of folioSheetsQuantity to XML.
-	project_root.setAttribute("folioSheetQuantity", QString::number(folioSheetsQuantity));
+	project_root.setAttribute("folioSheetQuantity", QString::number(m_folio_sheets_quantity));
 	xml_doc.appendChild(project_root);
 	
 	// titleblock templates, if any
-	if (titleblocks_.templates().count()) {
+	if (m_titleblocks_collection.templates().count()) {
 		QDomElement titleblocktemplates_elmt = xml_doc.createElement("titleblocktemplates");
-		foreach (QString template_name, titleblocks_.templates()) {
-			QDomElement e = titleblocks_.getTemplateXmlDescription(template_name);
+		foreach (QString template_name, m_titleblocks_collection.templates()) {
+			QDomElement e = m_titleblocks_collection.getTemplateXmlDescription(template_name);
 			titleblocktemplates_elmt.appendChild(xml_doc.importNode(e, true));
 		}
 		project_root.appendChild(titleblocktemplates_elmt);
@@ -876,10 +896,10 @@ QETResult QETProject::write()
 	if (!QET::writeXmlFile(xml_project, m_file_path, &error_message)) return(error_message);
 	
 	//title block variables should be updated after file save dialog is confirmed, before file is saved.
-	project_properties_.addValue("saveddate", QDate::currentDate().toString(Qt::SystemLocaleShortDate));
-	project_properties_.addValue("savedtime", QDateTime::currentDateTime().toString("HH:mm"));
-	project_properties_.addValue("savedfilename", QFileInfo(filePath()).baseName());
-	project_properties_.addValue("savedfilepath", filePath());
+	m_project_properties.addValue("saveddate", QDate::currentDate().toString(Qt::SystemLocaleShortDate));
+	m_project_properties.addValue("savedtime", QDateTime::currentDateTime().toString("HH:mm"));
+	m_project_properties.addValue("savedfilename", QFileInfo(filePath()).baseName());
+	m_project_properties.addValue("savedfilepath", filePath());
 	
 	
 	
@@ -895,7 +915,7 @@ QETResult QETProject::write()
 	@return true si le projet est en mode readonly, false sinon
 */
 bool QETProject::isReadOnly() const {
-	return(read_only_ && read_only_file_path_ == m_file_path);
+	return(m_read_only && read_only_file_path_ == m_file_path);
 }
 
 /**
@@ -905,11 +925,11 @@ bool QETProject::isReadOnly() const {
  */
 void QETProject::setReadOnly(bool read_only)
 {
-	if (read_only_ != read_only)
+	if (m_read_only != read_only)
 	{
 			//keep the file to which this project is read-only
 		read_only_file_path_ = m_file_path;
-		read_only_ = read_only;
+		m_read_only = read_only;
 		emit(readOnlyChanged(this, read_only));
 	}
 }
@@ -1032,11 +1052,11 @@ ElementsLocation QETProject::importElement(ElementsLocation &location)
 	@return the name of the template after integration, or an empty QString if a problem occurred.
 */
 QString QETProject::integrateTitleBlockTemplate(const TitleBlockTemplateLocation &src_tbt, MoveTitleBlockTemplatesHandler *handler) {
-	TitleBlockTemplateLocation dst_tbt(src_tbt.name(), &titleblocks_);
+	TitleBlockTemplateLocation dst_tbt(src_tbt.name(), &m_titleblocks_collection);
 	
 	// check whether a TBT having the same name already exists within this project
 	QString target_name = dst_tbt.name();
-	while (titleblocks_.templates().contains(target_name))
+	while (m_titleblocks_collection.templates().contains(target_name))
 	{
 		QET::Action action = handler -> templateAlreadyExists(src_tbt, dst_tbt);
 		if (action == QET::Retry) {
@@ -1052,7 +1072,7 @@ QString QETProject::integrateTitleBlockTemplate(const TitleBlockTemplateLocation
 		}
 	}
 	
-	if (!titleblocks_.setTemplateXmlDescription(target_name, src_tbt.getTemplateXmlDescription()))
+	if (!m_titleblocks_collection.setTemplateXmlDescription(target_name, src_tbt.getTemplateXmlDescription()))
 	{
 		handler -> errorWithATemplate(src_tbt, tr("Une erreur s'est produite durant l'intégration du modèle.", "error message"));
 		target_name = QString();
@@ -1213,30 +1233,11 @@ void QETProject::diagramOrderChanged(int old_index, int new_index) {
 	Mark this project as modified and emit the projectModified() signal.
 */
 void QETProject::setModified(bool modified) {
-	if (modified_ != modified) {
-		modified_ = modified;
-		emit(projectModified(this, modified_));
+	if (m_modified != modified) {
+		m_modified = modified;
+		emit(projectModified(this, m_modified));
 		emit(projectInformationsChanged(this));
 	}
-}
-
-/**
-	Set up signals/slots connections related to the title block templates
-	collection.
-*/
-void QETProject::setupTitleBlockTemplatesCollection() {
-	connect(
-		&titleblocks_,
-		SIGNAL(changed(TitleBlockTemplatesCollection *, const QString &)),
-		this,
-		SLOT(updateDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *, const QString &))
-	);
-	connect(
-		&titleblocks_,
-		SIGNAL(aboutToRemove(TitleBlockTemplatesCollection *, const QString &)),
-		this,
-		SLOT(removeDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *, const QString &))
-	);
 }
 
 /**
@@ -1247,7 +1248,7 @@ void QETProject::setupTitleBlockTemplatesCollection() {
 void QETProject::readProjectXml(QDomDocument &xml_project)
 {
 	QDomElement root_elmt = xml_project.documentElement();
-	state_ = ProjectParsingRunning;
+	m_state = ProjectParsingRunning;
 	
 		//The roots of the xml document must be a "project" element
 	if (root_elmt.tagName() == "project")
@@ -1256,9 +1257,9 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		if (root_elmt.hasAttribute("version"))
 		{
 			bool conv_ok;
-			project_qet_version_ = root_elmt.attribute("version").toDouble(&conv_ok);
+			m_project_qet_version = root_elmt.attribute("version").toDouble(&conv_ok);
 
-			if (conv_ok && QET::version.toDouble() < project_qet_version_)
+			if (conv_ok && QET::version.toDouble() < m_project_qet_version)
 			{
 				int ret = QET::QetMessageBox::warning(
 							  nullptr,
@@ -1276,7 +1277,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 				
 				if (ret == QMessageBox::Cancel)
 				{
-					state_ = FileOpenDiscard;
+					m_state = FileOpenDiscard;
 					return;
 				}
 			}
@@ -1285,7 +1286,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	}
 	else
 	{
-		state_ = ProjectParsingFailed;
+		m_state = ProjectParsingFailed;
 	}
 	
 		//Load the project-wide properties
@@ -1293,7 +1294,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		//Load the default properties for the new diagrams
 	readDefaultPropertiesXml(xml_project);
 		//load the embedded titleblock templates
-	titleblocks_.fromXml(xml_project.documentElement());
+	m_titleblocks_collection.fromXml(xml_project.documentElement());
 		//Load the embedded elements collection
 	readElementsCollectionXml(xml_project);
 		//Load the diagrams
@@ -1304,7 +1305,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	if (root_elmt.attribute("folioSheetQuantity","0").toInt())
 		addNewDiagramFolioList();
 	
-	state_ = Ok;
+	m_state = Ok;
 }
 
 /**
@@ -1422,7 +1423,7 @@ void QETProject::readElementsCollectionXml(QDomDocument &xml_project)
 void QETProject::readProjectPropertiesXml(QDomDocument &xml_project)
 {
 	foreach (QDomElement e, QET::findInDomElement(xml_project.documentElement(), "properties"))
-		project_properties_.fromXml(e);
+		m_project_properties.fromXml(e);
 }
 
 /**
@@ -1523,7 +1524,7 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 	Export project properties under the \a xml_element XML element.
 */
 void QETProject::writeProjectPropertiesXml(QDomElement &xml_element) {
-	project_properties_.toXml(xml_element);
+	m_project_properties.toXml(xml_element);
 }
 
 /**
@@ -1675,24 +1676,14 @@ NamesList QETProject::namesListForIntegrationCategory() {
  */
 void QETProject::writeBackup()
 {
-	if(m_file_path.isEmpty())
+	if (!m_backup_file ||
+		(!m_backup_file->isOpen() && !m_backup_file->open(QIODevice::ReadWrite))) {
 		return;
-	
-	QDir dir(QETApp::configDir() + "backup");
-	if(!dir.exists())
-	{
-		dir.cdUp();
-		dir.mkdir("backup");
-		dir.cd("backup");
 	}
-	
-	QFileInfo info(m_file_path);
-	if(info.exists())
-	{
-		QDomDocument xml_project;
-		xml_project.appendChild(xml_project.importNode(toXml().documentElement(), true));
-		QET::writeXmlFile(xml_project, dir.absoluteFilePath(info.fileName()));
-	}	
+
+	QDomDocument xml_project;
+	xml_project.appendChild(xml_project.importNode(toXml().documentElement(), true));
+	QET::writeToFile(xml_project, m_backup_file);
 }
 
 /**
@@ -1702,21 +1693,21 @@ void QETProject::writeBackup()
 bool QETProject::projectOptionsWereModified() {
 	// unlike similar methods, this method does not compare the content against
 	// expected values; instead, we just check whether we have been set as modified.
-	return(modified_);
+	return(m_modified);
 }
 
 /**
 	@return the project-wide properties made available to child diagrams.
 */
 DiagramContext QETProject::projectProperties() {
-	return(project_properties_);
+	return(m_project_properties);
 }
 
 /**
 	Use \a context as project-wide properties made available to child diagrams.
 */
 void QETProject::setProjectProperties(const DiagramContext &context) {
-	project_properties_ = context;
+	m_project_properties = context;
 	updateDiagramsFolioData();
 }
 
@@ -1733,7 +1724,7 @@ bool QETProject::projectWasModified() {
 
 	if ( projectOptionsWereModified()    ||
 		 !m_undo_stack -> isClean()       ||
-		 titleblocks_.templates().count() )
+		 m_titleblocks_collection.templates().count() )
 		return(true);
 	
 	else
@@ -1748,7 +1739,7 @@ void QETProject::updateDiagramsFolioData()
 {
 	int total_folio = m_diagrams_list.count();
 	
-	DiagramContext project_wide_properties = project_properties_;
+	DiagramContext project_wide_properties = m_project_properties;
 	project_wide_properties.addValue("projecttitle", title());
 	project_wide_properties.addValue("projectpath", filePath());
 	project_wide_properties.addValue("projectfilename", QFileInfo(filePath()).baseName());

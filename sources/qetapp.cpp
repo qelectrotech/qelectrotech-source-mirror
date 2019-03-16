@@ -41,6 +41,8 @@
 #include <QProcessEnvironment>
 #include "factory/elementfactory.h"
 
+#include <KAutoSaveFile>
+
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 QString QETApp::common_elements_dir = QString();
 #endif
@@ -128,16 +130,6 @@ QETApp::~QETApp()
 	
 	ElementFactory::dropInstance();
 	ElementPictureFactory::dropInstance();
-	
-		//Delete all backup files
-	QDir dir(configDir() + "backup");
-	if(dir.exists())
-	{
-		QStringList extension_filter("*.qet");
-		QStringList list = dir.entryList(extension_filter);
-		for(const QString& str : list)
-			dir.remove(str);
-	}
 }
 
 /**
@@ -1795,80 +1787,45 @@ void QETApp::buildSystemTrayMenu() {
  */
 void QETApp::checkBackupFiles()
 {
-		//Delete all backup files
-	QDir dir(configDir() + "backup");
-	if(dir.exists())
+	QList<KAutoSaveFile *> stale_files = KAutoSaveFile::allStaleFiles();
+	if (stale_files.isEmpty()) {
+		return;
+	}
+
+	QString text;
+	if(stale_files.size() == 1) {
+		text.append(tr("<b>Le fichier de restauration suivant a été trouvé,<br>"
+					   "Voulez-vous l'ouvrir ?</b><br>"));
+	} else {
+		text.append(tr("<b>Les fichiers de restauration suivant on été trouvé,<br>"
+					   "Voulez-vous les ouvrir ?</b><br>"));
+	}
+	for(const KAutoSaveFile *kasf : stale_files) {
+		text.append("<br>" + kasf->managedFile().path());
+	}
+
+		//Open backup file
+	if (QET::QetMessageBox::question(nullptr, tr("Fichier de restauration"), text, QMessageBox::Ok|QMessageBox::Cancel) == QMessageBox::Ok)
 	{
-		QStringList extension_filter("*.qet");
-		QStringList list = dir.entryList(extension_filter);
-		
-			//Remove from the list, the backup file of registred project
-		for(QETProject *project : registeredProjects().values())
-			if(!project->filePath().isEmpty())
-			{
-				QFileInfo info(project->filePath());
-				list.removeOne(info.fileName());
-			}
-		
-		if(list.isEmpty())
-			return;
-		
-		QString text;
-		if(list.size() == 1)
-			text.append(tr("<b>Le fichier de restauration suivant a été trouvé,<br>"
-						   "Voulez-vous l'ouvrir ?</b><br>"));
-		else
-			text.append(tr("<b>Les fichiers de restauration suivant on été trouvé,<br>"
-						   "Voulez-vous les ouvrir ?</b><br>"));
-		for(const QString& name : list)
-			text.append("<br>" + name);
-		
-		if (QET::QetMessageBox::question(nullptr, tr("Fichier de restauration"), text, QMessageBox::Ok|QMessageBox::Cancel) == QMessageBox::Ok)
+			//If there is opened editors, we find those who are visible
+		if (diagramEditors().count())
 		{
-			QStringList files_list;
-			for(const QString& str : list)
-				files_list << dir.path() + "/" + str;
-			
-			QList<QETDiagramEditor *> diagrams_editors = diagramEditors();
-		
-				//If there is opened editors, we find those who are visible
-			if (diagrams_editors.count())
-			{
-				QList<QETDiagramEditor *> visible_diagrams_editors;
-				for(QETDiagramEditor *de : diagrams_editors) {
-					if (de->isVisible())
-						visible_diagrams_editors << de;
-				}
-		
-					//We take the first visible, or the first one
-				QETDiagramEditor *de_open;
-				if (visible_diagrams_editors.count()) {
-					de_open = visible_diagrams_editors.first();
-				}
-				else
-				{
-					de_open = diagrams_editors.first();
-					de_open -> setVisible(true);
-				}
-		
-				for(const QString& file : files_list) {
-					de_open -> openAndAddProject(file);
-				}
-			}
-			else {
-				new QETDiagramEditor(files_list);
-			}
-			
-				//Because the file was open from backup, we remove the file path of each project opened,
-				//for avoid user to save in the backup directory
-			for(QETDiagramEditor *editor : diagramEditors())
-			{
-				for(ProjectView *pv : editor->openedProjects())
-				{
-					if(files_list.contains(pv->project()->filePath()))
-						pv->project()->setFilePath(QString());
-				}
-			}
+			diagramEditors().first()->setVisible(true);
+			diagramEditors().first()->openBackupFiles(stale_files);
+		}
+		else
+		{
+			QETDiagramEditor *editor = new QETDiagramEditor();
+			editor->openBackupFiles(stale_files);
+		}
+	}
+	else //Clear backup file
+	{
+			//Remove the stale files
+		for (KAutoSaveFile *stale : stale_files)
+		{
+			stale->open(QIODevice::ReadWrite);
+			delete stale;
 		}
 	}
 }

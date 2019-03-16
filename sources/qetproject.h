@@ -35,6 +35,7 @@ class NumerotationContext;
 class QUndoStack;
 class XmlElementCollection;
 class QTimer;
+class KAutoSaveFile;
 
 /**
 	This class represents a QET project. Typically saved as a .qet file, it
@@ -45,31 +46,28 @@ class QTimer;
 class QETProject : public QObject
 {
 		Q_OBJECT
+	public :
+		//This enum lists possible states for a particular project.
+		enum ProjectState {
+			Ok                    = 0, /// no error
+			FileOpenFailed        = 1, /// file opening failed
+			XmlParsingFailed      = 2, /// XML parsing failed
+			ProjectParsingRunning = 3, /// the XML content is currently being processed
+			ProjectParsingFailed  = 4, /// the parsing of the XML content failed
+			FileOpenDiscard       = 5  /// the user cancelled the file opening
+		};
 
 		Q_PROPERTY(bool autoConductor READ autoConductor WRITE setAutoConductor)
 	
 		// constructors, destructor
 	public:
-		QETProject (int = 1, QObject * = nullptr);
-		QETProject (const QString &, QObject * = nullptr);
+		QETProject (QObject *parent = nullptr);
+		QETProject (const QString &path, QObject * = nullptr);
+		QETProject (KAutoSaveFile *backup, QObject *parent=nullptr);
 		~QETProject() override;
-	
+
 	private:
 		QETProject(const QETProject &);
-	
-		// enums
-	public:
-	/**
-		This enum lists possible states for a particular project.
-	*/
-	enum ProjectState {
-		Ok                    = 0, /// no error
-		FileOpenFailed        = 1, /// file opening failed
-		XmlParsingFailed      = 2, /// XML parsing failed
-		ProjectParsingRunning = 3, /// the XML content is currently being processed
-		ProjectParsingFailed  = 4, /// the parsing of the XML content failed
-		FileOpenDiscard       = 5  /// the user cancelled the file opening
-	};
 	
 		// methods
 	public:
@@ -203,7 +201,6 @@ class QETProject : public QObject
 		void undoStackChanged (bool a) {if (!a) setModified(true);}
 	
 	private:
-		void setupTitleBlockTemplatesCollection();
 		void readProjectXml(QDomDocument &xml_project);
 		void readDiagramsXml(QDomDocument &xml_project);
 		void readElementsCollectionXml(QDomDocument &xml_project);
@@ -215,23 +212,25 @@ class QETProject : public QObject
 		void addDiagram(Diagram *);
 		NamesList namesListForIntegrationCategory();
 		void writeBackup();
+		void init();
+		ProjectState openFile(QFile *file);
 	
 	// attributes
 	private:
 			/// File path this project is saved to
 		QString m_file_path;
 			/// Current state of the project
-		ProjectState state_;
+		ProjectState m_state;
 			/// Diagrams carried by the project
 		QList<Diagram *> m_diagrams_list;
 			/// Project title
 		QString project_title_;
 			/// QElectroTech version declared in the XML document at opening time
-		qreal project_qet_version_;
+		qreal m_project_qet_version = -1;
 			/// Whether options were modified
-		bool modified_;
+		bool m_modified = false;
 			/// Whether the project is read only
-		bool read_only_;
+		bool m_read_only = false;
 			/// Filepath for which this project is considered read only
 		QString read_only_file_path_;
 			/// Default dimensions and properties for new diagrams created within the project
@@ -245,9 +244,9 @@ class QETProject : public QObject
 			/// Default xref properties
 		QHash <QString, XRefProperties> m_default_xref_properties;
 			/// Embedded title block templates collection
-		TitleBlockTemplatesProjectCollection titleblocks_;
+		TitleBlockTemplatesProjectCollection m_titleblocks_collection;
 			/// project-wide variables that will be made available to child diagrams
-		DiagramContext project_properties_;
+		DiagramContext m_project_properties;
 			/// undo stack for this project
 		QUndoStack *m_undo_stack;
 			/// Conductor auto numerotation
@@ -259,13 +258,14 @@ class QETProject : public QObject
 		QHash <QString, NumerotationContext> m_element_autonum; //Title and NumContext hash
 		QString m_current_element_autonum;
 			/// Folio List Sheets quantity for this project.
-		int folioSheetsQuantity;
-		bool m_auto_conductor;
-		XmlElementCollection *m_elements_collection;
-		bool m_freeze_new_elements;
-		bool m_freeze_new_conductors;
+		int m_folio_sheets_quantity = 0;
+		bool m_auto_conductor = true;
+		XmlElementCollection *m_elements_collection = nullptr;
+		bool m_freeze_new_elements = false;
+		bool m_freeze_new_conductors = false;
 		QTimer m_save_backup_timer,
 			   m_autosave_timer;
+		KAutoSaveFile *m_backup_file = nullptr;
 };
 
 Q_DECLARE_METATYPE(QETProject *)

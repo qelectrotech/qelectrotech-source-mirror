@@ -51,6 +51,7 @@
 
 #include <QMessageBox>
 #include <QStandardPaths>
+#include <KAutoSaveFile>
 
 #include "elementscollectionmodel.h"
 
@@ -863,7 +864,7 @@ void QETDiagramEditor::saveAs() {
  */
 bool QETDiagramEditor::newProject() {
 	// create new project without diagram
-	QETProject *new_project = new QETProject(0);
+	QETProject *new_project = new QETProject(this);
 	
 	// Set default properties for new diagram
 	new_project -> setDefaultBorderProperties	  (BorderProperties::    defaultProperties());
@@ -1712,6 +1713,34 @@ ProjectView *QETDiagramEditor::viewForFile(const QString &filepath) const {
  */
 bool QETDiagramEditor::drawGrid() const {
 	return m_draw_grid->isChecked();
+}
+
+/**
+ * @brief QETDiagramEditor::openBackupFiles
+ * @param backup_files
+ */
+void QETDiagramEditor::openBackupFiles(QList<KAutoSaveFile *> backup_files)
+{
+	for (KAutoSaveFile *file : backup_files)
+	{
+			//Create the project
+		DialogWaiting::instance(this);
+
+		QETProject *project = new QETProject(file, this);
+		if (project->state() != QETProject::Ok)
+		{
+			if (project -> state() != QETProject::FileOpenDiscard)
+			{
+				QET::QetMessageBox::warning(this, tr("Échec de l'ouverture du projet", "message box title"),
+											QString(tr("Une erreur est survenue lors de l'ouverture du fichier %1.",
+													   "message box content")).arg(file->managedFile().fileName()));
+			}
+			delete project;
+			DialogWaiting::dropInstance();
+		}
+		addProject(project);
+		DialogWaiting::dropInstance();
+	}
 }
 
 /**

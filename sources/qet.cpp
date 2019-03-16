@@ -21,6 +21,7 @@
 #include <limits>
 #include <QGraphicsSceneContextMenuEvent>
 #include <QAction>
+#include <QFileInfo>
 
 /**
 	Permet de convertir une chaine de caracteres ("n", "s", "e" ou "w")
@@ -644,4 +645,37 @@ QActionGroup *QET::depthActionGroup(QObject *parent)
 	edit_backward->setData(QET::SendBackward);
 	
 	return action_group;
+}
+
+bool QET::writeToFile(QDomDocument &xml_doc, QFile *file, QString *error_message)
+{
+	bool opened_here = file->isOpen() ? false : true;
+
+	if (!file->isOpen())
+	{
+		bool open_ = file->open(QIODevice::WriteOnly);
+		if (!open_)
+		{
+			if (error_message)
+			{
+				QFileInfo info_(*file);
+				*error_message = QString(
+							QObject::tr("Impossible d'ouvrir le fichier %1 en écriture, erreur %2 rencontrée.",
+										"error message when attempting to write an XML file")
+				).arg(info_.absoluteFilePath()).arg(file->error());
+			}
+			return false;
+		}
+	}
+
+	QTextStream out(file);
+	out.seek(0);
+	out.setCodec("UTF-8");
+	out.setGenerateByteOrderMark(false);
+	out << xml_doc.toString(4);
+	if (opened_here) {
+		file->close();
+	}
+
+	return(true);
 }

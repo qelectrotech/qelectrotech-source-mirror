@@ -160,7 +160,7 @@ RESOURCES += qelectrotech.qrc
 TRANSLATIONS += lang/qet_en.ts lang/qet_es.ts lang/qet_fr.ts lang/qet_ru.ts lang/qet_pt.ts lang/qet_cs.ts lang/qet_pl.ts lang/qet_de.ts lang/qet_ro.ts lang/qet_it.ts lang/qet_el.ts lang/qet_nl.ts lang/qet_be.ts
 
 # Modules Qt utilises par l'application
-QT += xml svg network sql widgets printsupport concurrent KWidgetsAddons
+QT += xml svg network sql widgets printsupport concurrent KWidgetsAddons KCoreAddons
 
 # UI DESIGNER FILES AND GENERATION SOURCES FILES
 FORMS += $$files(sources/richtext/*.ui) \
