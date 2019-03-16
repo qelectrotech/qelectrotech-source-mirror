@@ -24,6 +24,8 @@
 #include "independenttextitem.h"
 #include "diagramimageitem.h"
 #include "conductorautonumerotation.h"
+#include "dynamicelementtextitem.h"
+#include "elementtextitemgroup.h"
 
 /**
  * @brief ElementsMover::ElementsMover Constructor
@@ -60,22 +62,38 @@ bool ElementsMover::isReady() const {
  * @param driver_item item moved by mouse and don't be moved by Element mover
  * @return the numbers of items to be moved or -1 if movement can't be init.
  */
-int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item) {
-	// They must be no movement in progress
+int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item)
+{
+		// They must be no movement in progress
 	if (movement_running_) return(-1);
 	
-	// Be sure we have diagram to work
+		// Be sure we have diagram to work
 	if (!diagram) return(-1);
 	diagram_ = diagram;
 	
-	// Take count of driver item
+		// Take count of driver item
 	m_movement_driver = driver_item;
 	
-	// At the beginning of movement, move is NULL
+		// At the beginning of movement, move is NULL
 	current_movement_ = QPointF(0.0, 0.0);
 	
 	m_moved_content = DiagramContent(diagram);
 	m_moved_content.removeNonMovableItems();
+
+		//Remove element text, if the parent element is selected.
+	QList<DynamicElementTextItem *> deti_list = m_moved_content.m_element_texts.toList();
+	for(DynamicElementTextItem *deti : deti_list) {
+		if(m_moved_content.m_elements.contains(deti->parentElement())) {
+			m_moved_content.m_element_texts.remove(deti);
+		}
+	}
+
+	QList<ElementTextItemGroup *> etig_list = m_moved_content.m_texts_groups.toList();
+	for(ElementTextItemGroup *etig : etig_list) {
+		if (m_moved_content.m_elements.contains(etig->parentElement())) {
+			m_moved_content.m_texts_groups.remove(etig);
+		}
+	}
 
 	if (!m_moved_content.count()) return(-1);
 	
@@ -98,7 +116,7 @@ void ElementsMover::continueMovement(const QPointF &movement) {
 
 	//Move every movable item, except conductor
 	typedef DiagramContent dc;
-	for (QGraphicsItem *qgi : m_moved_content.items(dc::Elements | dc::TextFields | dc::Images | dc::Shapes))
+	for (QGraphicsItem *qgi : m_moved_content.items(dc::Elements | dc::TextFields | dc::Images | dc::Shapes | dc::ElementTextFields | dc::TextGroup))
 	{
 		if (qgi == m_movement_driver)
 			continue;

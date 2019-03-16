@@ -89,6 +89,7 @@ class DiagramContent
 		
 		DiagramContent& operator+=(const DiagramContent& other);
 		bool potentialIsManaged(QList<Conductor *>conductors);
+		bool hasTextEditing();
 };
 QDebug &operator<<(QDebug, DiagramContent &);
 #endif

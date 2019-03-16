@@ -703,22 +703,22 @@ void DiagramView::keyPressEvent(QKeyEvent *e)
 		}
 			break;
 		case Qt::Key_Up: {
-			if(!(dc.items(DiagramContent::All).isEmpty()))
+			if(!dc.items(DiagramContent::All).isEmpty() && !dc.hasTextEditing())
 				scrollOnMovement(e);
 		}
 			break;
 		case Qt::Key_Down: {
-			if(!(dc.items(DiagramContent::All).isEmpty()))
+			if(!dc.items(DiagramContent::All).isEmpty() && !dc.hasTextEditing())
 				scrollOnMovement(e);
 		}
 			break;
 		case Qt::Key_Left: {
-			if(!(dc.items(DiagramContent::All).isEmpty()))
+			if(!dc.items(DiagramContent::All).isEmpty() && !dc.hasTextEditing())
 				scrollOnMovement(e);
 		}
 			break;
 		case Qt::Key_Right: {
-			if(!(dc.items(DiagramContent::All).isEmpty()))
+			if(!dc.items(DiagramContent::All).isEmpty() && !dc.hasTextEditing())
 				scrollOnMovement(e);
 		}
 			break;

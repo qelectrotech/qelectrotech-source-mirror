@@ -356,6 +356,21 @@ bool DiagramContent::potentialIsManaged(QList<Conductor *> conductors)
 }
 
 /**
+ * @brief DiagramContent::hasTextEditing
+ * @return true if handle a text currently in editing intercation
+ */
+bool DiagramContent::hasTextEditing()
+{
+	for (DiagramTextItem *dti : selectedTexts()) {
+		if (dti->textInteractionFlags() == Qt::TextEditorInteraction) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+/**
  * @brief DiagramContent::items
  * @param filter
  * @return The items of this diagram content according to @filter

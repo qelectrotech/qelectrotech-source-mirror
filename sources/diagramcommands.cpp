@@ -191,7 +191,8 @@ MoveElementsCommand::MoveElementsCommand(
 		DiagramContent::ConductorsToUpdate |
 		DiagramContent::ConductorsToMove |
 		DiagramContent::Images |
-		DiagramContent::Shapes
+		DiagramContent::Shapes |
+		DiagramContent::ElementTextFields
 	);
 	
 	setText(
@@ -248,7 +249,7 @@ void MoveElementsCommand::move(const QPointF &actual_movement)
 	typedef DiagramContent dc;
 
 		//Move every movable items, except conductor
-	for (QGraphicsItem *qgi : content_to_move.items(dc::Elements | dc::TextFields | dc::Images | dc::Shapes | dc::TextGroup))
+	for (QGraphicsItem *qgi : content_to_move.items(dc::Elements | dc::TextFields | dc::Images | dc::Shapes | dc::TextGroup | dc::ElementTextFields))
 	{
 			//If curent item have parent, and parent item is in content_to_move
 			//we don't apply movement to this item, because this item will be moved by is parent.
