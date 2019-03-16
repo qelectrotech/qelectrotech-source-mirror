@@ -34,6 +34,7 @@
 #include "diagramfoliolist.h"
 #include "elementpicturefactory.h"
 #include "element.h"
+#include "dynamicelementtextitem.h"
 
 /**
 	Constructeur
@@ -479,6 +480,8 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 				list_images << dii;
 			} else if (QetShapeItem *dii = qgraphicsitem_cast<QetShapeItem *>(qgi)) {
 				list_shapes << dii;
+			} else if (DynamicElementTextItem *deti = qgraphicsitem_cast<DynamicElementTextItem *>(qgi)) {
+				list_texts << deti;
 			}
 		}
 	}
@@ -486,8 +489,8 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 	foreach (QetShapeItem *qsi, list_shapes) qsi->toDXF(file_path, qsi->pen());
 
 	//Draw elements
-	foreach(Element *elmt, list_elements) {
-
+	foreach(Element *elmt, list_elements)
+	{
 		double rotation_angle = elmt -> orientation() * 90;
 
 		qreal elem_pos_x = elmt -> pos().x();
@@ -627,8 +630,8 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 		if (fontSize < 0)
 			fontSize = dti -> font().pixelSize();
 		fontSize *= Createdxf::yScale;
-		qreal x = (dti -> pos().x()) * Createdxf::xScale;
-		qreal y = Createdxf::sheetHeight - (dti -> pos().y() * Createdxf::yScale) - fontSize*1.05;
+		qreal x = (dti->scenePos().x()) * Createdxf::xScale;
+		qreal y = Createdxf::sheetHeight - (dti->scenePos().y() * Createdxf::yScale) - fontSize*1.05;
 		QStringList lines = dti -> toPlainText().split('\n');
 		foreach (QString line, lines) {
 			qreal angle = 360 - (dti -> rotation());

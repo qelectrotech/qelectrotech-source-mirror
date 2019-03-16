@@ -170,8 +170,6 @@ bool ElementPictureFactory::build(const ElementsLocation &location, QPicture *pi
 		painter.begin(picture);
 	}
 	else {
-		m_pictures_H.insert(location.uuid(), pic);
-		m_primitives_H.insert(location.uuid(), primitives_);
 		painter.begin(&pic);
 	}
 	painter.setRenderHint(QPainter::Antialiasing,         true);
@@ -185,8 +183,6 @@ bool ElementPictureFactory::build(const ElementsLocation &location, QPicture *pi
 		low_painter.begin(low_picture);
 	}
 	else {
-		m_low_pictures_H.insert(location.uuid(), low_pic);
-		m_primitives_H.insert(location.uuid(), primitives_);
 		low_painter.begin(&low_pic);
 	}
 	low_painter.setRenderHint(QPainter::Antialiasing,         true);
@@ -225,6 +221,15 @@ bool ElementPictureFactory::build(const ElementsLocation &location, QPicture *pi
 		//End of the drawing
 	painter.end();
 	low_painter.end();
+
+	if (!picture) {
+		m_pictures_H.insert(location.uuid(), pic);
+		m_primitives_H.insert(location.uuid(), primitives_);
+	}
+	if (!low_picture) {
+		m_low_pictures_H.insert(location.uuid(), low_pic);
+		m_primitives_H.insert(location.uuid(), primitives_);
+	}
 	return true;
 }
 
