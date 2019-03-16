@@ -664,7 +664,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="30"/>
         <source>&amp;Multifilaire</source>
-        <translation type="unfinished">&amp;Mehrpolig</translation>
+        <translation>&amp;Mehrpolig</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="151"/>
@@ -5410,7 +5410,7 @@ Verfügbare Optionen:
         <location filename="../sources/qetdiagrameditor.cpp" line="1735"/>
         <source>Une erreur est survenue lors de l&apos;ouverture du fichier %1.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ein Fehler ist beim Öffnen der Datei %1 aufgetretten.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1781"/>
