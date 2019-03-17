@@ -713,7 +713,7 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="30"/>
         <source>&amp;Multifilaire</source>
-        <translation type="unfinished">&amp;Wieloliniowy</translation>
+        <translation>&amp;Wieloliniowy</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="151"/>
@@ -5597,7 +5597,7 @@ python -m pip install --upgrade qet_tb_generator
         <location filename="../sources/qetdiagrameditor.cpp" line="1735"/>
         <source>Une erreur est survenue lors de l&apos;ouverture du fichier %1.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Wystąpił błąd podczas otwierania pliku %1.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1781"/>
