@@ -401,8 +401,6 @@ void ExportDialog::generateSvg(Diagram *diagram, int width, int height, bool kee
 void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool keep_aspect_ratio, QString &file_path) {
     saveReloadDiagramParameters(diagram, true);
 
-	project_ -> setFilePath(file_path);
-
 	width  -= 2*Diagram::margin;
 	height -= 2*Diagram::margin;
 
