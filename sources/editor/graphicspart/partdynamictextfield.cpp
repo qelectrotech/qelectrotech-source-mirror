@@ -23,7 +23,6 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QFont>
 #include <QColor>
-#include <QMatrix>
 
 PartDynamicTextField::PartDynamicTextField(QETElementEditor *editor, QGraphicsItem *parent) :
 	QGraphicsTextItem(parent),
@@ -240,16 +239,16 @@ void PartDynamicTextField::fromTextFieldXml(const QDomElement &dom_element)
 	
 	//the origin transformation point of PartDynamicTextField is the top left corner, no matter the font size
 	//The origin transformation point of PartTextField is the middle of left edge, and so by definition, change with the size of the font
-	//We need to use a QMatrix to find the pos of this text from the saved pos of text item 
-	QMatrix matrix;
+	//We need to use a QTransform to find the pos of this text from the saved pos of text item
+	QTransform transform;
 	//First make the rotation
-	matrix.rotate(dom_element.attribute("rotation", "0").toDouble());
-	QPointF pos = matrix.map(QPointF(0, -boundingRect().height()/2));
-	matrix.reset();
+	transform.rotate(dom_element.attribute("rotation", "0").toDouble());
+	QPointF pos = transform.map(QPointF(0, -boundingRect().height()/2));
+	transform.reset();
 	//Second translate to the pos
-	matrix.translate(dom_element.attribute("x", QString::number(0)).toDouble(),
+	transform.translate(dom_element.attribute("x", QString::number(0)).toDouble(),
 					 dom_element.attribute("y", QString::number(0)).toDouble());
-	QGraphicsTextItem::setPos(matrix.map(pos));
+	QGraphicsTextItem::setPos(transform.map(pos));
 }
 
 /**

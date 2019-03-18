@@ -19,7 +19,6 @@
 #include "diagram.h"
 #include "conductor.h"
 #include "diagramcommands.h"
-#include <QtDebug>
 #include <utility>
 #include "elementprovider.h"
 #include "diagramposition.h"
@@ -524,17 +523,17 @@ bool Element::parseInput(const QDomElement &dom_element)
 		
 			//the origin transformation point of PartDynamicTextField is the top left corner, no matter the font size
 			//The origin transformation point of ElementTextItem is the middle of left edge, and so by definition, change with the size of the font
-			//We need to use a QMatrix to find the pos of this text from the saved pos of text item 
-		QMatrix matrix;
+			//We need to use a QTransform to find the pos of this text from the saved pos of text item
+		QTransform transform;
 			//First make the rotation
-		matrix.rotate(dom_element.attribute("rotation", "0").toDouble());
-		QPointF pos = matrix.map(QPointF(0, -deti->boundingRect().height()/2));
-		matrix.reset();
+		transform.rotate(dom_element.attribute("rotation", "0").toDouble());
+		QPointF pos = transform.map(QPointF(0, -deti->boundingRect().height()/2));
+		transform.reset();
 			//Second translate to the pos
 		QPointF p(dom_element.attribute("x", QString::number(0)).toDouble(),
 				  dom_element.attribute("y", QString::number(0)).toDouble());
-		matrix.translate(p.x(), p.y());
-		deti->setPos(matrix.map(pos));
+		transform.translate(p.x(), p.y());
+		deti->setPos(transform.map(pos));
 		m_converted_text_from_xml_description.insert(deti, p);
 		return true;
 	}
@@ -790,19 +789,19 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 				
 					//the origin transformation point of PartDynamicTextField is the top left corner, no matter the font size
 					//The origin transformation point of PartTextField is the middle of left edge, and so by definition, change with the size of the font
-					//We need to use a QMatrix to find the pos of this text from the saved pos of text item
+					//We need to use a QTransform to find the pos of this text from the saved pos of text item
 				
 				deti->setPos(xml_pos);
 				deti->setRotation(rotation);
 				
-				QMatrix matrix;
+				QTransform transform;
 					//First make the rotation
-				matrix.rotate(rotation);
-				QPointF pos = matrix.map(QPointF(0, -deti->boundingRect().height()/2));
-				matrix.reset();
+				transform.rotate(rotation);
+				QPointF pos = transform.map(QPointF(0, -deti->boundingRect().height()/2));
+				transform.reset();
 					//Second translate to the pos
-				matrix.translate(xml_pos.x(), xml_pos.y());
-				deti->setPos(matrix.map(pos));
+				transform.translate(xml_pos.x(), xml_pos.y());
+				deti->setPos(transform.map(pos));
 				
 					//dom_input and deti matched we remove the dom_input from @inputs list,
 					//to avoid unnecessary checking made below
