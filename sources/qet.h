@@ -182,37 +182,41 @@ namespace QET {
 
 Q_DECLARE_METATYPE(QET::DepthOption)
 
-class Qet : public QObject {
+class Qet : public QObject
+{
 	Q_OBJECT
+
 	public:
-	///This enum lists the various available endings for line primitives when drawing an electrical element.
-	Q_ENUMS(EndType)
-	enum EndType {
-		None,      ///< Regular line
-		Simple,    ///< Base-less triangle
-		Triangle,  ///< Triangle
-		Circle,    ///< Circle
-		Diamond    ///< Diamond
-	};
-	static QString endTypeToString(const Qet::EndType &);
-	static Qet::EndType endTypeFromString(const QString &);
+			///This enum lists the various available endings for line primitives when drawing an electrical element.
+		enum EndType {
+			None,      ///< Regular line
+			Simple,    ///< Base-less triangle
+			Triangle,  ///< Triangle
+			Circle,    ///< Circle
+			Diamond    ///< Diamond
+		};
+		Q_ENUM (EndType)
 
-	/// Orientation (used for electrical elements and their terminals)
-	Q_ENUMS(Orientation)
-	enum Orientation {North,
-					  East,
-					  South,
-					  West};
-	static Qet::Orientation nextOrientation(Qet::Orientation);
-	static Qet::Orientation previousOrientation(Qet::Orientation);
+		static QString endTypeToString(const Qet::EndType &);
+		static Qet::EndType endTypeFromString(const QString &);
 
-	static Qet::Orientation orientationFromString (const QString &);
-	static QString          orientationToString   (Qet::Orientation);
+			/// Orientation (used for electrical elements and their terminals)
+		enum Orientation {North,
+						  East,
+						  South,
+						  West};
+		Q_ENUM (Orientation)
 
-	static bool surLeMemeAxe (Qet::Orientation, Qet::Orientation);
-	static bool isOpposed    (Qet::Orientation a, Qet::Orientation b);
-	static bool isHorizontal (Qet::Orientation);
-	static bool isVertical   (Qet::Orientation);
+		static Qet::Orientation nextOrientation(Qet::Orientation);
+		static Qet::Orientation previousOrientation(Qet::Orientation);
+
+		static Qet::Orientation orientationFromString (const QString &);
+		static QString          orientationToString   (Qet::Orientation);
+
+		static bool surLeMemeAxe (Qet::Orientation, Qet::Orientation);
+		static bool isOpposed    (Qet::Orientation a, Qet::Orientation b);
+		static bool isHorizontal (Qet::Orientation);
+		static bool isVertical   (Qet::Orientation);
 };
 
 #endif

@@ -54,11 +54,11 @@ class QetShapeItem : public QetGraphicsItem
 		
 		
 	public:
-		Q_ENUMS(ShapeType)
 		enum ShapeType {Line	  =1,
 						Rectangle =2,
 						Ellipse	  =4,
 						Polygon   =8 };
+		Q_ENUM (ShapeType)
 
 		enum { Type = UserType + 1008 };
 

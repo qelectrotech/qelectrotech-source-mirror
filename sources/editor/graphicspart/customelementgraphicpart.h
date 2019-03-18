@@ -36,12 +36,6 @@ class CustomElementGraphicPart : public QGraphicsObject, public CustomElementPar
 
 		Q_OBJECT
 
-			//Made this Q_ENUMS to be used by the Q_PROPERTY system.
-		Q_ENUMS (LineStyle)
-		Q_ENUMS (LineWeight)
-		Q_ENUMS (Filling)
-		Q_ENUMS (Color)
-
 		Q_PROPERTY(LineStyle line_style   READ lineStyle   WRITE setLineStyle)
 		Q_PROPERTY(LineWeight line_weight READ lineWeight  WRITE setLineWeight)
 		Q_PROPERTY(Filling filling        READ filling     WRITE setFilling)
@@ -51,16 +45,20 @@ class CustomElementGraphicPart : public QGraphicsObject, public CustomElementPar
 	public:
 			//Line style
 		enum LineStyle {NormalStyle, DashedStyle, DottedStyle, DashdottedStyle};
+		Q_ENUM (LineStyle)
 
 			//Line weight : invisible, 0px, 1px, 2px, 5px
 		enum LineWeight {NoneWeight, ThinWeight, NormalWeight, UltraWeight, BigWeight};
+		Q_ENUM (LineWeight)
 
 			//Filling color of the part : NoneFilling -> No filling (i.e. transparent)
 		enum Filling { NoneFilling, BlackFilling, WhiteFilling, GreenFilling, RedFilling, BlueFilling, GrayFilling, BrunFilling, YellowFilling, CyanFilling, MagentaFilling, LightgrayFilling, OrangeFilling, PurpleFilling, HorFilling, VerFilling, BdiagFilling, FdiagFilling};
+		Q_ENUM (Filling)
 
 			//Line color
 		enum Color {BlackColor, WhiteColor, GreenColor, RedColor, BlueColor, GrayColor, BrunColor, YellowColor, CyanColor, MagentaColor, LightgrayColor, OrangeColor, PurpleColor, NoneColor};
-	
+		Q_ENUM (Color)
+
 		// constructors, destructor
 	public:
 

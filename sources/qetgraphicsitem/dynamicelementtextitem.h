@@ -50,12 +50,13 @@ class DynamicElementTextItem : public DiagramTextItem
 	Q_PROPERTY(qreal textWidth READ textWidth WRITE setTextWidth NOTIFY textWidthChanged)
 	
 	public:
-		Q_ENUMS(TextFrom)
+
 		enum TextFrom {
 			UserText,
 			ElementInfo,
 			CompositeText
 		};
+		Q_ENUM (TextFrom)
 		enum {Type = UserType + 1010};
 		int type() const override {return Type;}
 		
