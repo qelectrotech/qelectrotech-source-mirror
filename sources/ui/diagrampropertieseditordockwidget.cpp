@@ -178,7 +178,7 @@ void DiagramPropertiesEditorDockWidget::selectionChanged()
 
 			clear();
 			m_edited_qgi_type = type_;
-			addEditor(new ShapeGraphicsItemPropertiesWidget(static_cast<QetShapeItem*>(item), this));
+			addEditor(new ShapeGraphicsItemPropertiesWidget(shapes_list, this));
 			break;
 		}
 		case DynamicElementTextItem::Type: //1010
