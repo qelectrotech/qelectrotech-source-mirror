@@ -713,7 +713,7 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="30"/>
         <source>&amp;Multifilaire</source>
-        <translation type="unfinished">&amp;Multifilare</translation>
+        <translation>&amp;Multifilare</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="151"/>
@@ -5577,7 +5577,7 @@ python -m pip install --upgrade di qet_tb_generator
         <location filename="../sources/qetdiagrameditor.cpp" line="1735"/>
         <source>Une erreur est survenue lors de l&apos;ouverture du fichier %1.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Si è verificato un errore all&apos;apertura del file %1.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1781"/>
