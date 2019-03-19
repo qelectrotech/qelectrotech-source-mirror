@@ -207,7 +207,6 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(DynamicElementTextI
 	font->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 
 	QStandardItem *fonta = new QStandardItem();
-	fonta->setFont(deti->font());
 	fonta->setData(deti->font().family(), Qt::EditRole);
 	fonta->setData(DynamicElementTextModel::font, Qt::UserRole+1);
 	fonta->setData(deti->font(), Qt::UserRole+2);
@@ -1346,7 +1345,6 @@ void DynamicElementTextModel::updateDataFromText(DynamicElementTextItem *deti, V
 		case font:
 		{
 			QFont f(deti->font());
-			qsi->child(font_txt_row,1)->setFont(f);
 			qsi->child(font_txt_row,1)->setData(f.family(), Qt::EditRole);
 			qsi->child(font_txt_row,1)->setData(f, Qt::UserRole+2);
 			qsi->child(size_txt_row,1)->setData(f.pointSize(), Qt::EditRole);
@@ -1630,7 +1628,6 @@ void DynamicTextItemDelegate::setModelData(QWidget *editor, QAbstractItemModel *
 						 **/
 						qsi->setData(fd->currentFont().family(), Qt::EditRole);
 						qsi->setData(fd->currentFont(), Qt::UserRole+2);
-						qsi->setFont(fd->currentFont());
 					}
 					return;
 				}
