@@ -1527,9 +1527,16 @@ QWidget *DynamicTextItemDelegate::createEditor(QWidget *parent, const QStyleOpti
 		}
 		case DynamicElementTextModel::font:
 		{
-			QFontDialog *fd = new QFontDialog(index.data(Qt::UserRole+2).value<QFont>(), parent);
-			fd->setObjectName("font_dialog");
-			return fd;
+			bool ok;
+			QFont font = QFontDialog::getFont(&ok, index.data(Qt::UserRole+2).value<QFont>(), parent);
+			QWidget *w = new QWidget(parent);
+			if (ok)
+			{
+				w->setFont(font);
+				w->setProperty("ok", ok);
+			}
+			w->setObjectName("font_dialog");
+			return w;
 		}
 		case DynamicElementTextModel::color:
 		{
@@ -1617,17 +1624,10 @@ void DynamicTextItemDelegate::setModelData(QWidget *editor, QAbstractItemModel *
 			{
 				if(QStandardItem *qsi = qsim->itemFromIndex(index))
 				{
-					QFontDialog *fd = static_cast<QFontDialog *>(editor);
-					if (fd->result() == QDialog::Accepted)
+					if (editor->property("ok").toBool() == true)
 					{
-						//qsi->setData(fd->selectedFont().family(), Qt::EditRole);
-						//qsi->setData(fd->selectedFont(), Qt::UserRole+2);
-						/**For unknow reason, call selectedFont doesn't work,
-						 * (always return the same font, no matter what you select)
-						 * Instead we use curentFont
-						 **/
-						qsi->setData(fd->currentFont().family(), Qt::EditRole);
-						qsi->setData(fd->currentFont(), Qt::UserRole+2);
+						qsi->setData(editor->font().family(), Qt::EditRole);
+						qsi->setData(editor->font(), Qt::UserRole+2);
 					}
 					return;
 				}
