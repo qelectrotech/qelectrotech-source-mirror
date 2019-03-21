@@ -97,7 +97,6 @@ class Diagram : public QGraphicsScene
 		QHash <QString, QStringList> m_cnd_unitfolio_max;
 		QHash <QString, QStringList> m_cnd_tenfolio_max;
 		QHash <QString, QStringList> m_cnd_hundredfolio_max;
-		bool item_paste;
 
 	private:
 		QGraphicsLineItem *conductor_setter_;

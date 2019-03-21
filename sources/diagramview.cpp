@@ -358,11 +358,11 @@ void DiagramView::copy() {
 }
 
 /**
-	Importe les elements contenus dans le presse-papier dans le schema
-	@param pos coin superieur gauche (en coordonnees de la scene) du rectangle
-	englobant le contenu colle
-	@param clipboard_mode Type de presse-papier a prendre en compte
-*/
+ * @brief DiagramView::paste
+ * Import the element stored in the clipboard to the diagram.
+ * @param pos : top left corner of the bounding rect of imported elements
+ * @param clipboard_mode
+ */
 void DiagramView::paste(const QPointF &pos, QClipboard::Mode clipboard_mode) {
 	if (!isInteractive() || m_diagram -> isReadOnly()) return;
 
@@ -372,18 +372,16 @@ void DiagramView::paste(const QPointF &pos, QClipboard::Mode clipboard_mode) {
 	QDomDocument document_xml;
 	if (!document_xml.setContent(texte_presse_papier)) return;
 
-	// objet pour recuperer le contenu ajoute au schema par le coller
 	DiagramContent content_pasted;
-	this->diagram()->item_paste = true;
-	m_diagram -> fromXml(document_xml, pos, false, &content_pasted);
+	m_diagram->fromXml(document_xml, pos, false, &content_pasted);
 
-	// si quelque chose a effectivement ete ajoute au schema, on cree un objet d'annulation
-	if (content_pasted.count()) {
+		//If something was really added to diagram, we create an undo object.
+	if (content_pasted.count())
+	{
 		m_diagram -> clearSelection();
 		m_diagram -> undoStack().push(new PasteDiagramCommand(m_diagram, content_pasted));
 		adjustSceneRect();
 	}
-	this->diagram()->item_paste = false;
 }
 
 /**

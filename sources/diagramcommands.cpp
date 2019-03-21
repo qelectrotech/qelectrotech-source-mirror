@@ -124,11 +124,8 @@ void PasteDiagramCommand::redo()
 	else
 	{
 		const QList <QGraphicsItem *> qgis_list = content.items(filter);
-		for (QGraphicsItem *item : qgis_list)
-		{
-			diagram->item_paste = true;
+		for (QGraphicsItem *item : qgis_list) {
 			diagram->addItem(item);
-			diagram->item_paste = false;
 		}
 	}
 
