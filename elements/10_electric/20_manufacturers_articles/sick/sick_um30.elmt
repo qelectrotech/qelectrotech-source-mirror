@@ -1,0 +1,62 @@
+<definition type="element" width="180" version="0.70" orientation="dyyy" link_type="terminal" hotspot_y="7" hotspot_x="55" height="70">
+    <uuid uuid="{da065862-a109-4dca-8e0c-c9dd9b4aa1d4}"/>
+    <names>
+        <name lang="hu">SICK UM30</name>
+        <name lang="en">SICK UM30</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">Sick</elementInformation>
+        <elementInformation show="1" name="label">SICK UM 30</elementInformation>
+    </elementInformations>
+    <informations>dessine</informations>
+    <description>
+        <text y="16" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" x="-3" text="3" rotation="0"/>
+        <text y="16" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" x="37" text="5" rotation="0"/>
+        <text y="16" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" x="17" text="2" rotation="0"/>
+        <circle y="-2" x="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4" antialias="false"/>
+        <circle y="-2" x="18" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4" antialias="false"/>
+        <circle y="-2" x="-22" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4" antialias="false"/>
+        <circle y="-2" x="38" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4" antialias="false"/>
+        <text y="16" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" x="-23" text="4" rotation="0"/>
+        <line x1="105" y1="27" length2="1.5" x2="105" style="line-style:normal;line-weight:normal;filling:black;color:black" end2="none" end1="none" length1="1.5" y2="31" antialias="false"/>
+        <text y="47" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" x="3" text="blu M" rotation="270"/>
+        <text y="47" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" x="23" text="wht QA" rotation="270"/>
+        <text y="47" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" x="-17" text="blk Q/Q" rotation="270"/>
+        <line x1="61" y1="39" length2="1.5" x2="61" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" length1="1.5" y2="55" antialias="false"/>
+        <line x1="57" y1="39" length2="1.5" x2="57" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" length1="1.5" y2="55" antialias="false"/>
+        <text y="47" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" x="42" text="gry sync" rotation="270"/>
+        <circle y="27" x="93" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="4" antialias="false"/>
+        <line x1="105" y1="31" length2="1.5" x2="110" style="line-style:normal;line-weight:normal;filling:black;color:black" end2="none" end1="none" length1="1.5" y2="29" antialias="false"/>
+        <line x1="105" y1="27" length2="1.5" x2="110" style="line-style:normal;line-weight:normal;filling:black;color:black" end2="none" end1="none" length1="1.5" y2="29" antialias="false"/>
+        <circle y="-2" x="-42" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4" antialias="false"/>
+        <text y="16" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" x="-43" text="1" rotation="0"/>
+        <polygon x1="59" y1="37" y4="47" x3="59" closed="false" x2="49" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="57" x4="69" y5="37" x5="59" y2="47" antialias="true"/>
+        <text y="46" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" x="-38" text="brn L+" rotation="270"/>
+        <text y="57" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" x="77" text="SICK UM30" rotation="0"/>
+        <line x1="-24" y1="20" length2="1.5" x2="-24" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" length1="1.5" y2="24" antialias="false"/>
+        <rect y="5" ry="0" width="50" x="65" style="line-style:normal;line-weight:normal;filling:none;color:black" height="30" antialias="false" rx="0"/>
+        <text y="19" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" x="75" text="Display" rotation="0"/>
+        <line x1="75" y1="27" length2="1.5" x2="75" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" length1="1.5" y2="31" antialias="false"/>
+        <line x1="75" y1="31" length2="1.5" x2="70" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" length1="1.5" y2="29" antialias="false"/>
+        <line x1="75" y1="27" length2="1.5" x2="70" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" length1="1.5" y2="29" antialias="false"/>
+        <circle y="27" x="83" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="4" antialias="false"/>
+        <dynamic_text y="-27" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normál" z="31" Halignment="AlignLeft" text_width="-1" frame="false" x="76" text_from="ElementInfo" rotation="0" uuid="{ec387740-65e4-4835-a47a-bcf1b1928638}" Valignment="AlignTop">
+            <text>SICK UM 30</text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x1="-50" y1="0" length2="1.5" x2="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" length1="1.5" y2="60" antialias="false"/>
+        <line x1="-50" y1="60" length2="1.5" x2="120" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" length1="1.5" y2="60" antialias="false"/>
+        <line x1="120" y1="60" length2="1.5" x2="120" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" length1="1.5" y2="0" antialias="false"/>
+        <line x1="120" y1="0" length2="1.5" x2="42" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" length1="1.5" y2="0" antialias="false"/>
+        <line x1="38" y1="0" length2="1.5" x2="22" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" length1="1.5" y2="0" antialias="false"/>
+        <line x1="18" y1="0" length2="1.5" x2="2" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" length1="1.5" y2="0" antialias="false"/>
+        <line x1="-2" y1="0" length2="1.5" x2="-18" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" length1="1.5" y2="0" antialias="false"/>
+        <line x1="-50" y1="0" length2="1.5" x2="-42" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" length1="1.5" y2="0" antialias="false"/>
+        <line x1="-38" y1="0" length2="1.5" x2="-22" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" length1="1.5" y2="0" antialias="false"/>
+        <terminal y="-3" orientation="n" x="-20"/>
+        <terminal y="-3" orientation="n" x="20"/>
+        <terminal y="-3" orientation="n" x="-40"/>
+        <terminal y="-3" orientation="n" x="40"/>
+        <terminal y="-3" orientation="n" x="0"/>
+    </description>
+</definition>

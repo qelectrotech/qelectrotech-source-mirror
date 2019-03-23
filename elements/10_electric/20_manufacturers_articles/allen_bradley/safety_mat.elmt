@@ -1,0 +1,33 @@
+<definition type="element" width="90" version="0.70" orientation="dyyy" link_type="simple" hotspot_y="89" hotspot_x="45" height="180">
+    <uuid uuid="{fb4ff763-2822-41be-9907-5942de29994f}"/>
+    <names>
+        <name lang="hu">440F M biztonsági szőnyeg</name>
+        <name lang="en">440F M safety mat</name>
+    </names>
+    <elementInformations/>
+    <informations>dessine</informations>
+    <description>
+        <rect y="-65" ry="0" width="6" x="17" style="line-style:normal;line-weight:normal;filling:black;color:black" height="130" antialias="false" rx="0"/>
+        <rect y="-80" ry="0" width="80" x="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" height="160" antialias="false" rx="0"/>
+        <text y="75" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" x="31" text="black" rotation="270"/>
+        <text y="-55" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" x="31" text="black" rotation="270"/>
+        <text y="75" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" x="-25" text="white" rotation="270"/>
+        <rect y="-65" ry="0" width="6" x="-23" style="line-style:normal;line-weight:normal;filling:black;color:black" height="130" antialias="false" rx="0"/>
+        <line x1="-20" y1="-80" length2="1.5" x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" length1="1.5" y2="-65" antialias="false"/>
+        <dynamic_text y="-80" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normál" z="8" Halignment="AlignLeft" text_width="-1" frame="false" x="45" text_from="UserText" rotation="0" uuid="{3947690c-b9c1-4a72-9d96-86e9b166c6e9}" Valignment="AlignTop">
+            <text>_</text>
+        </dynamic_text>
+        <line x1="20" y1="-80" length2="1.5" x2="20" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" length1="1.5" y2="-65" antialias="false"/>
+        <line x1="20" y1="80" length2="1.5" x2="20" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" length1="1.5" y2="65" antialias="false"/>
+        <line x1="-20" y1="80" length2="1.5" x2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" length1="1.5" y2="65" antialias="false"/>
+        <text y="-55" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" x="-25" text="white" rotation="270"/>
+        <text y="35" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" x="-30" text="Allen Bradley 440F M" rotation="270"/>
+        <line x1="-20" y1="0" length2="1.5" x2="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" length1="1.5" y2="0" antialias="false"/>
+        <line x1="-6" y1="0" length2="1.5" x2="7" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" length1="1.5" y2="-5" antialias="false"/>
+        <line x1="7" y1="0" length2="1.5" x2="17" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" length1="1.5" y2="0" antialias="false"/>
+        <terminal y="85" orientation="s" x="20"/>
+        <terminal y="85" orientation="s" x="-20"/>
+        <terminal y="-85" orientation="n" x="-20"/>
+        <terminal y="-85" orientation="n" x="20"/>
+    </description>
+</definition>

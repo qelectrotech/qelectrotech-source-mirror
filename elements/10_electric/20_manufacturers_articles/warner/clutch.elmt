@@ -1,0 +1,71 @@
+<definition version="0.70" height="70" type="element" width="170" hotspot_x="55" hotspot_y="47" link_type="master" orientation="dyyy">
+    <uuid uuid="{01b4a251-cb18-4892-a7a6-0961aa13dabd}"/>
+    <names>
+        <name lang="it">Freno elettromagnetico</name>
+        <name lang="nl">Rem elektromagnetisch</name>
+        <name lang="el">Μαγνητικό φρένο</name>
+        <name lang="ar">مكبح مغناطيسي</name>
+        <name lang="hu">Warner CBC 140-5 vezérlő</name>
+        <name lang="cs">Elektromagnetická brzda</name>
+        <name lang="en">Clutch Electromagnetic Controller</name>
+        <name lang="fr">Frein magnetique Moteur</name>
+        <name lang="de">Bremse elektromagnetisch</name>
+        <name lang="pl">Prostownik do hamulca</name>
+    </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">commutator</kindInformation>
+    </kindInformations>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="17.5" antialias="true" diameter="5" y="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text size="6" x="-2" text="1 wave" y="-5"/>
+        <circle x="57.5" antialias="true" diameter="5" y="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="77.5" antialias="true" diameter="5" y="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text size="7" x="43" text="Off" y="-3"/>
+        <text size="6" x="80" text="Brake" y="-4"/>
+        <circle x="37.5" antialias="true" diameter="5" y="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text size="6" x="58" text="6" y="14"/>
+        <circle x="97.5" antialias="true" diameter="5" y="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="43" length1="1.5" x1="57" y1="0" length2="1.5" end2="none" antialias="false" y2="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text size="6" x="18" text="4" y="14"/>
+        <text size="6" x="78" text="7" y="14"/>
+        <text size="6" x="98" text="8" y="14"/>
+        <line x2="83" length1="1.5" x1="97" y1="0" length2="1.5" end2="none" antialias="false" y2="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text size="6" x="38" text="5" y="14"/>
+        <circle x="-42.5" antialias="true" diameter="5" y="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="63" length1="1.5" x1="77" y1="0" length2="1.5" end2="none" antialias="false" y2="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-2.5" antialias="true" diameter="5" y="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="23" length1="1.5" x1="37" y1="0" length2="1.5" end2="none" antialias="false" y2="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="3" length1="1.5" x1="17" y1="0" length2="1.5" end2="none" antialias="false" y2="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="-37" length1="1.5" x1="-23" y1="0" length2="1.5" end2="none" antialias="false" y2="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="103" length1="1.5" x1="110" y1="0" length2="1.5" end2="none" antialias="false" y2="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text size="6" x="-22" text="2" y="14"/>
+        <line x2="-17" length1="1.5" x1="-3" y1="0" length2="1.5" end2="none" antialias="false" y2="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text size="6" x="-2" text="3" y="14"/>
+        <dynamic_text font_size="6" font_family="Sans Serif" text_width="-1" frame="false" z="26" x="-50" uuid="{a8dcb871-d17c-425e-84d9-716bb0471f42}" Valignment="AlignTop" rotation="0" text_from="ElementInfo" y="-41" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x2="110" length1="1.5" x1="110" y1="0" length2="1.5" end2="none" antialias="false" y2="-40" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="-50" length1="1.5" x1="110" y1="-40" length2="1.5" end2="none" antialias="false" y2="-40" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="-50" length1="1.5" x1="-43" y1="0" length2="1.5" end2="none" antialias="false" y2="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="-50" length1="1.5" x1="-50" y1="-40" length2="1.5" end2="none" antialias="false" y2="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-22.5" antialias="true" diameter="5" y="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text size="6" x="-42" text="1" y="14"/>
+        <text size="9" x="-21" text="Warner CBC 140-5" y="-28"/>
+        <text size="6" x="78" text="Clutch/" y="-11"/>
+        <text size="7" x="43" text="On/" y="-13"/>
+        <text size="6" x="-2" text="2 wave" y="-12"/>
+        <text size="6" x="-41" text="Supply" y="-5"/>
+        <terminal x="80" orientation="s" y="2"/>
+        <terminal x="100" orientation="s" y="2"/>
+        <terminal x="-20" orientation="s" y="2"/>
+        <terminal x="0" orientation="s" y="2"/>
+        <terminal x="20" orientation="s" y="2"/>
+        <terminal x="-40" orientation="s" y="2"/>
+        <terminal x="40" orientation="s" y="2"/>
+        <terminal x="60" orientation="s" y="2"/>
+    </description>
+</definition>

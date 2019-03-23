@@ -1,0 +1,57 @@
+<definition width="210" hotspot_y="133" link_type="simple" height="190" hotspot_x="180" type="element" orientation="dyyy" version="0.70">
+    <uuid uuid="{30287476-dda2-4308-82f8-2f0678bf07c8}"/>
+    <names>
+        <name lang="hu">TTA Weidmüller</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <text text="26" size="6" x="-18" y="-78"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-63.66" y="38.31" antialias="false" diameter="7"/>
+        <text text="25" size="6" x="-18" y="-38"/>
+        <text text="43" size="6" x="-65" y="35"/>
+        <text text="0-10V" size="7" x="-50" y="50"/>
+        <text text="GND" size="7" x="-140" y="50"/>
+        <text text="0V" size="7" x="3.88745" y="-5.62529"/>
+        <text text="+24V" size="7" x="2" y="-88"/>
+        <text text="24" size="6" x="-18" y="3"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-3.55386" y="-3.46682" antialias="false" diameter="7"/>
+        <text text="11" size="6" x="-145" y="-115"/>
+        <text text="PE" size="7" x="3.63745" y="-50.8536"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-123.332" y3="41.7614" x4="-171.282" x3="-0.0636791" x1="-171.282" y1="-123.332" antialias="false" x2="-0.0636791" y4="41.7614"/>
+        <text text="12" size="6" x="-165" y="-5"/>
+        <text text="13" size="6" x="-165" y="-45"/>
+        <text text="output" size="6" x="-96.3577" y="1.50188"/>
+        <text text="input" size="6" x="-110" y="-55"/>
+        <text text="power" size="6" x="-43.0557" y="-28.7736" rotation="270"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-113.47" y="38.31" antialias="false" diameter="7"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-3.56618" y="-83.5006" antialias="false" diameter="7"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-174.78" y="-3.48461" antialias="false" diameter="7"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-174.78" y="-43.29" antialias="false" diameter="7"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-3.59337" y="-43.5236" antialias="false" diameter="7"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-72.828" y3="-87.996" x4="-102.27" closed="false" x3="-119.606" x1="-73.3775" y1="-72.828" y5="-103.164" antialias="true" x5="-38.7058" x2="-102.27" y4="-103.164"/>
+        <rect width="17.3358" height="45.5038" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-159.082" y="-107.854" antialias="false"/>
+        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-119" x1="-150" y1="-108" antialias="false" x2="-150" length1="1.5"/>
+        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-65.5492" x1="-141.374" y1="-65.7334" antialias="true" x2="-119.916" length1="1.5"/>
+        <input text="Weidmüller TTA" tagg="label" rotate="true" size="8" x="-125" y="-115"/>
+        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-40.1786" x1="-167.497" y1="-40.1846" antialias="false" x2="-150.036" length1="1.5"/>
+        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="41.7614" x1="-0.0636791" y1="-123.332" antialias="false" x2="-171.282" length1="1.5"/>
+        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="41.7614" x1="-87.8129" y1="-38.7216" antialias="false" x2="-0.0636791" length1="1.5"/>
+        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-65.3181" x1="-119.704" y1="-37.2776" antialias="false" x2="-119.72" length1="1.5"/>
+        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0.0988467" x1="-119.916" y1="-36.6579" antialias="false" x2="-154.715" length1="1.5"/>
+        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0.0134446" x1="-155" y1="0" antialias="false" x2="-167.649" length1="1.5"/>
+        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-66" x1="-135" y1="-69" antialias="false" x2="-141" length1="1.5"/>
+        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-65.5492" x1="-135" y1="-62" antialias="false" x2="-141.178" length1="1.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-153.38" y="-126.83" antialias="false" diameter="7"/>
+        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-40.7853" x1="-149.879" y1="-61.4219" antialias="false" x2="-149.879" length1="1.5"/>
+        <text text="42" size="6" x="-114" y="35"/>
+        <terminal x="4" y="0" orientation="e"/>
+        <terminal x="-176" y="-40" orientation="w"/>
+        <terminal x="4" y="-80" orientation="e"/>
+        <terminal x="5" y="-40" orientation="e"/>
+        <terminal x="-60" y="46" orientation="s"/>
+        <terminal x="-110" y="46" orientation="s"/>
+        <terminal x="-175" y="0" orientation="w"/>
+        <terminal x="-150" y="-128" orientation="n"/>
+    </description>
+</definition>
