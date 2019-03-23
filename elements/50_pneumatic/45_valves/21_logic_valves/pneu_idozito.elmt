@@ -1,0 +1,34 @@
+<definition type="element" width="60" version="0.70" orientation="dyyy" link_type="simple" hotspot_y="45" hotspot_x="30" height="80">
+    <uuid uuid="{9c1f65ae-44f8-4fe6-a0c0-4fa7698942a9}"/>
+    <names>
+        <name lang="hu">pneu időzítő</name>
+        <name lang="en">pneumatic timer</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <dynamic_text y="-47" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normál" z="1" Halignment="AlignLeft" text_width="-1" frame="false" x="8" text_from="ElementInfo" rotation="0" uuid="{c7fe176a-401d-4fd6-ab54-84b1ec282477}" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text y="23" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" x="15" text="1" rotation="0"/>
+        <line x1="10" y1="24" length2="1.5" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" length1="1.5" y2="10" antialias="false"/>
+        <text y="23" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" x="-19" text="2" rotation="0"/>
+        <text y="-4" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" x="13" text="t1" rotation="0"/>
+        <text y="-26" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" x="-7" text="3" rotation="0"/>
+        <line x1="0" y1="-36" length2="1.5" x2="0" style="line-style:normal;line-weight:normal;filling:black;color:black" end2="none" end1="none" length1="1.5" y2="-24" antialias="false"/>
+        <line x1="24" y1="10" length2="1.5" x2="-24" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" length1="1.5" y2="10" antialias="false"/>
+        <line x1="-24" y1="-24" length2="1.5" x2="24" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" length1="1.5" y2="-24" antialias="false"/>
+        <line x1="-24" y1="10" length2="1.5" x2="-24" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" length1="1.5" y2="-23.55" antialias="false"/>
+        <line x1="24" y1="-23.55" length2="1.5" x2="24" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" length1="1.5" y2="10" antialias="false"/>
+        <line x1="16" y1="2" length2="1.5" x2="-17" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" length1="1.5" y2="2" antialias="false"/>
+        <line x1="-10" y1="24" length2="1.5" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" length1="1.5" y2="10" antialias="false"/>
+        <line x1="-17" y1="-1" length2="1.5" x2="-17" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" length1="1.5" y2="5" antialias="false"/>
+        <line x1="17" y1="-1" length2="1.5" x2="17" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" end1="none" length1="1.5" y2="5" antialias="false"/>
+        <line x1="-10" y1="6" length2="1.5" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="simple" end1="none" length1="1.5" y2="-4" antialias="false"/>
+        <text y="-4" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" x="-20" text="t0" rotation="0"/>
+        <terminal y="25" orientation="s" x="10"/>
+        <terminal y="-37" orientation="n" x="0"/>
+        <terminal y="25" orientation="s" x="-10"/>
+    </description>
+</definition>

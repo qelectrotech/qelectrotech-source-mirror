@@ -1,0 +1,34 @@
+<definition hotspot_y="33" width="90" type="element" hotspot_x="44" height="60" version="0.70" link_type="simple" orientation="dyyy">
+    <uuid uuid="{4112c2f9-0664-499f-b4a9-b8293ef6b75d}"/>
+    <names>
+        <name lang="hu">NON logikai szelep</name>
+        <name lang="en">NON pneumatic valve</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <line length1="1.5" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-26.025" end1="none" y2="-11.025" antialias="false" x2="0" end2="none" length2="1.5"/>
+        <dynamic_text Valignment="AlignTop" x="1" uuid="{8397c9cb-2f64-4d22-8a46-edc83bd7c5c2}" text_width="-1" z="2" font_size="9" font_family="Sans Serif" y="-31.475" rotation="0" frame="false" text_from="ElementInfo" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line length1="1.5" x1="16" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11.025" end1="none" y2="-4.025" antialias="false" x2="16" end2="none" length2="1.5"/>
+        <rect x="-25" width="50" style="line-style:normal;line-weight:normal;filling:none;color:black" height="30" y="-11.025" antialias="false" rx="0" ry="0"/>
+        <line length1="1.5" x1="16" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11.975" end1="none" y2="18.975" antialias="false" x2="16" end2="none" length2="1.5"/>
+        <line length1="1.5" x1="-16" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11.025" end1="none" y2="-4.025" antialias="false" x2="-16" end2="none" length2="1.5"/>
+        <line length1="1.5" x1="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11.975" end1="none" y2="18.975" antialias="false" x2="-15" end2="none" length2="1.5"/>
+        <line length1="1.5" x1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3.975" end1="none" y2="3.975" antialias="false" x2="20" end2="none" length2="1.5"/>
+        <line length1="1.5" x1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6.025" end1="none" y2="13.975" antialias="false" x2="20" end2="none" length2="1.5"/>
+        <line length1="1.5" x1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6.025" end1="none" y2="13.975" antialias="false" x2="-20" end2="none" length2="1.5"/>
+        <line length1="1.5" x1="25" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3.975" end1="none" y2="3.975" antialias="false" x2="40" end2="none" length2="1.5"/>
+        <line length1="1.5" x1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3.975" end1="none" y2="3.975" antialias="false" x2="-25" end2="none" length2="1.5"/>
+        <circle diameter="8" x="26" style="line-style:normal;line-weight:normal;filling:white;color:black" y="0" antialias="false"/>
+        <text x="-36" size="9" text="1" y="20"/>
+        <text x="7" size="9" text="2" y="-13"/>
+        <text x="29" size="9" text="1" y="20"/>
+        <text x="-3" size="9" text="&amp;" y="16"/>
+        <terminal x="-40" y="3.975" orientation="w"/>
+        <terminal x="40" y="3.975" orientation="e"/>
+        <terminal x="0" y="-26.025" orientation="n"/>
+    </description>
+</definition>

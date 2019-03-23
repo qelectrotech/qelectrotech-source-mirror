@@ -1,0 +1,33 @@
+<definition hotspot_y="69" width="70" type="element" hotspot_x="35" height="90" version="0.70" link_type="simple" orientation="dyyy">
+    <uuid uuid="{23c4829c-1128-4928-8ace-c86b74fdf219}"/>
+    <names>
+        <name lang="hu">E/P vezérlőszelep 4-20 mA</name>
+        <name lang="en">E/P control valve 4-20 mA</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text x="-16" size="7" text="4-20mA" y="-33"/>
+        <dynamic_text Valignment="AlignTop" x="-60" uuid="{51f290f7-eb6d-418c-b86c-47e4bb2bf40a}" text_width="-1" z="2" font_size="9" font_family="Sans Serif" y="-51" rotation="0" frame="false" text_from="ElementInfo" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect x="-20" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black" height="23.8231" y="-42" antialias="false" rx="0" ry="0"/>
+        <text x="-7" size="8" text="E-P" y="-20"/>
+        <line length1="2.5" x1="2" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17.5409" end1="none" y2="-1.54752" antialias="false" x2="2" end2="none" length2="1.5"/>
+        <line length1="1.5" x1="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17.5409" end1="none" y2="-1.54752" antialias="false" x2="-2" end2="none" length2="1.5"/>
+        <polygon x1="30" y5="18" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="30" y1="18" y4="18" y2="0.229531" y3="-17.5409" antialias="true" x2="0" x5="30" x3="30"/>
+        <polygon x1="0" y5="0.229531" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="0" y1="0.229531" y4="0.229531" y2="-17.5409" y3="18" antialias="true" x2="-30" x5="0" x3="-30"/>
+        <arc x="-16" width="32" angle="90" style="line-style:normal;line-weight:normal;filling:none;color:black" height="26" y="-66" antialias="true" start="90"/>
+        <arc x="-16" width="32" angle="90" style="line-style:normal;line-weight:normal;filling:none;color:black" height="26" y="-66" antialias="true" start="0"/>
+        <line length1="1.5" x1="-16" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-52" end1="none" y2="-52" antialias="false" x2="16" end2="none" length2="1.5"/>
+        <line length1="1.5" x1="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-42" end1="none" y2="-52" antialias="false" x2="-2" end2="none" length2="1.5"/>
+        <line length1="1.5" x1="2" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-42" end1="none" y2="-52" antialias="false" x2="2" end2="none" length2="1.5"/>
+        <line length1="1.5" x1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" end1="none" y2="-30" antialias="false" x2="-25" end2="none" length2="1.5"/>
+        <line length1="1.5" x1="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" end1="none" y2="-60" antialias="false" x2="-25" end2="none" length2="1.5"/>
+        <line length1="1.5" x1="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-60" end1="none" y2="-60" antialias="false" x2="-14" end2="none" length2="1.5"/>
+        <terminal x="25" y="-40" orientation="e"/>
+        <terminal x="25" y="-20" orientation="e"/>
+    </description>
+</definition>
