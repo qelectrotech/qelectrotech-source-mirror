@@ -1,0 +1,59 @@
+<definition type="element" width="190" version="0.70" orientation="dyyy" link_type="master" hotspot_y="59" hotspot_x="95" height="70">
+    <uuid uuid="{33901561-5ea2-4b0c-a7b8-ec64331b13d2}"/>
+    <names>
+        <name lang="hu">Eurotherm 2408i</name>
+        <name lang="en">Eurotherm 2408i</name>
+    </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">commutator</kindInformation>
+    </kindInformations>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <rect y="-5" ry="0" width="6" x="77" style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" antialias="false" rx="0"/>
+        <text y="-7" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" x="58" text="3A" rotation="0"/>
+        <rect y="-5" ry="0" width="6" x="-73" style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" antialias="false" rx="0"/>
+        <rect y="-5" ry="0" width="6" x="-13" style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" antialias="false" rx="0"/>
+        <rect y="-5" ry="0" width="6" x="-63" style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" antialias="false" rx="0"/>
+        <rect y="-5" ry="0" width="6" x="-33" style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" antialias="false" rx="0"/>
+        <rect y="-5" ry="0" width="6" x="-23" style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" antialias="false" rx="0"/>
+        <rect y="-5" ry="0" width="6" x="27" style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" antialias="false" rx="0"/>
+        <rect y="-5" ry="0" width="6" x="7" style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" antialias="false" rx="0"/>
+        <rect y="-5" ry="0" width="6" x="57" style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" antialias="false" rx="0"/>
+        <text y="-7" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" x="-72" text="2A" rotation="0"/>
+        <text y="-39" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" x="-62" text="+" rotation="0"/>
+        <text y="-7" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" x="-32" text="1B" rotation="0"/>
+        <rect y="-5" ry="0" width="6" x="-83" style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" antialias="false" rx="0"/>
+        <text y="-39" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" x="-51" text="-" rotation="0"/>
+        <text y="-7" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" x="28" text="V+" rotation="0"/>
+        <text y="-7" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" x="78" text="3B" rotation="0"/>
+        <text y="-7" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" x="-22" text="1A" rotation="0"/>
+        <text y="-7" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" x="8" text="V-" rotation="0"/>
+        <rect y="-50" ry="0" width="180" x="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" height="50" antialias="false" rx="0"/>
+        <text y="-7" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" x="-62" text="2C" rotation="0"/>
+        <text y="-7" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" x="-12" text="1C" rotation="0"/>
+        <text y="-7" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" x="-82" text="2B" rotation="0"/>
+        <rect y="-50" ry="0" width="6" x="-73" style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" antialias="false" rx="0"/>
+        <rect y="-50" ry="0" width="6" x="-63" style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" antialias="false" rx="0"/>
+        <rect y="-50" ry="0" width="6" x="-53" style="line-style:normal;line-weight:normal;filling:none;color:black" height="5" antialias="false" rx="0"/>
+        <text y="-34" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" x="-10" text="EUROTHERM 2408i" rotation="0"/>
+        <text y="-39" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" x="-73" text="PE" rotation="0"/>
+        <dynamic_text y="-71" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="29" Halignment="AlignLeft" text_width="-1" frame="false" x="50" text_from="ElementInfo" rotation="0" uuid="{51722643-4a87-437e-af45-995e9436d51f}" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal y="2" orientation="s" x="-70"/>
+        <terminal y="2" orientation="s" x="-80"/>
+        <terminal y="2" orientation="s" x="10"/>
+        <terminal y="-52" orientation="n" x="-60"/>
+        <terminal y="-52" orientation="n" x="-50"/>
+        <terminal y="2" orientation="s" x="-10"/>
+        <terminal y="2" orientation="s" x="-60"/>
+        <terminal y="-52" orientation="n" x="-70"/>
+        <terminal y="2" orientation="s" x="-20"/>
+        <terminal y="2" orientation="s" x="30"/>
+        <terminal y="2" orientation="s" x="80"/>
+        <terminal y="2" orientation="s" x="-30"/>
+        <terminal y="2" orientation="s" x="60"/>
+    </description>
+</definition>

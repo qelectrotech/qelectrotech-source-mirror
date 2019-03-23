@@ -1,0 +1,40 @@
+<definition width="160" hotspot_y="39" link_type="simple" height="90" hotspot_x="75" type="element" orientation="dyyy" version="0.70">
+    <uuid uuid="{41132875-b04d-4c5b-82fe-76e8eff17c7d}"/>
+    <names>
+        <name lang="hu">Rexroth nyomáskapcsoló LDC</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <text text="2" size="5" x="8" y="37.1972"/>
+        <text text="3" size="5" x="-42" y="37.1972"/>
+        <text text="4" size="5" x="48" y="37.1972"/>
+        <text text="L-" size="7" x="-41" y="23.1972"/>
+        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="33" x1="68" y1="28" antialias="false" x2="68" length1="1.5"/>
+        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="43.1972" x1="74" y1="43.1972" antialias="false" x2="80" length1="1.5"/>
+        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="43.1972" x1="-36.5" y1="43.1972" antialias="false" x2="-24.5" length1="1.5"/>
+        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="43.1972" x1="13.5" y1="43.1972" antialias="false" x2="25.5" length1="1.5"/>
+        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="43.1972" x1="34.5" y1="43.1972" antialias="false" x2="46.5" length1="1.5"/>
+        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="43.1972" x1="54" y1="43.1972" antialias="false" x2="66" length1="1.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-63.606" y="39.5916" antialias="true" diameter="7.2111"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="46.3945" y="39.5917" antialias="true" diameter="7.2111"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="6.39445" y="39.5917" antialias="true" diameter="7.2111"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-43.6056" y="39.5917" antialias="true" diameter="7.2111"/>
+        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="43.1972" x1="-70" y1="43.1972" antialias="false" x2="-64" length1="1.5"/>
+        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="43.1972" x1="-56" y1="43.1972" antialias="false" x2="-44" length1="1.5"/>
+        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="43.1972" x1="-16" y1="43.1972" antialias="false" x2="6" length1="1.5"/>
+        <text text="L+" size="7" x="-65" y="23.1972"/>
+        <text text="1" size="5" x="-62" y="37.1972"/>
+        <text text="REXROTH 0821 100 103" size="7" x="-60" y="-25"/>
+        <input text="_" tagg="label" rotate="true" size="10" x="-70" y="0"/>
+        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="28" x1="-3" y1="28" antialias="false" x2="68" length1="1.5"/>
+        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="33" x1="-3" y1="28" antialias="false" x2="-3" length1="1.5"/>
+        <rect width="85" height="35" style="line-style:normal;line-weight:normal;filling:gray;color:black" x="-10" y="-11.8028" antialias="false"/>
+        <text text="LCD display" size="7" x="8" y="7.19723"/>
+        <rect width="150" height="80" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-70" y="-36.8028" antialias="false"/>
+        <terminal x="50" y="46.1972" orientation="s"/>
+        <terminal x="-40" y="46.1972" orientation="s"/>
+        <terminal x="10" y="46.1972" orientation="s"/>
+        <terminal x="-60" y="46.1972" orientation="s"/>
+    </description>
+</definition>
