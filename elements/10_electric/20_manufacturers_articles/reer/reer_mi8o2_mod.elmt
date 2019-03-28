@@ -1,0 +1,63 @@
+<definition height="270" version="0.60" hotspot_x="35" link_type="simple" width="70" orientation="dyyy" hotspot_y="136" type="element">
+    <uuid uuid="{3792efc6-0b36-4353-9beb-8d53f96793ab}"/>
+    <names>
+        <name lang="de">REER MI8O2</name>
+        <name lang="en">REER MI8O2</name>
+        <name lang="fr">REER MI8O2</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect height="6" x="0" width="6" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-105"/>
+        <text x="-10" size="3" text="SEL" y="-70"/>
+        <rect height="6" x="0" width="6" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y="64"/>
+        <rect height="6" x="18" width="6" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-33"/>
+        <rect height="6" x="0" width="6" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-18"/>
+        <rect height="6" x="18" width="6" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-18"/>
+        <rect height="6" x="18" width="6" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y="12"/>
+        <rect height="6" x="18" width="6" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-3"/>
+        <rect height="6" x="0" width="6" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y="12"/>
+        <rect height="6" x="0" width="6" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-3"/>
+        <rect height="6" x="0" width="6" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y="44"/>
+        <rect height="6" x="0" width="6" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-33"/>
+        <text x="-10" size="10" text="MI8O2" y="-50"/>
+        <text x="21" size="3" text="1" y="-75"/>
+        <text x="1" size="3" text="0" y="-75"/>
+        <text x="-12" size="3" text="FAIL" y="-85"/>
+        <text x="0" size="3" text="ON" y="-106"/>
+        <text x="20" size="3" text="EXT" y="-91"/>
+        <text x="1" size="3" text="IN" y="-91"/>
+        <text x="-28" size="11" text="MOSAIC" y="125"/>
+        <text x="-15" size="12" text="REER" y="-115"/>
+        <text x="-10" size="5" text="IN" y="-28"/>
+        <rect height="6" x="0" width="6" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y="84"/>
+        <text x="1" size="5" text="7" y="11"/>
+        <rect height="6" x="20" width="6" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-74"/>
+        <rect height="6" x="0" width="6" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-74"/>
+        <text x="1" size="5" text="1" y="-34"/>
+        <text x="1" size="5" text="3" y="-19"/>
+        <text x="19" size="5" text="6" y="-4"/>
+        <rect height="6" x="18" width="6" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y="44"/>
+        <text x="19" size="5" text="8" y="11"/>
+        <text x="19" size="5" text="4" y="-19"/>
+        <text x="1" size="5" text="5" y="-4"/>
+        <rect height="6" x="18" width="6" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y="84"/>
+        <rect height="6" x="18" width="6" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y="64"/>
+        <text x="19" size="5" text="2" y="-34"/>
+        <text x="-26" size="5" text="STATUS" y="90"/>
+        <text x="-21" size="5" text="CLEAR" y="70"/>
+        <text x="-20" size="5" text="OSSD" y="50"/>
+        <text x="1" size="5" text="1" y="83"/>
+        <text x="1" size="5" text="1" y="63"/>
+        <text x="1" size="5" text="1" y="43"/>
+        <text x="19" size="5" text="2" y="63"/>
+        <text x="19" size="5" text="2" y="83"/>
+        <text x="19" size="5" text="2" y="43"/>
+        <rect height="6" x="20" width="6" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-90"/>
+        <input x="-30" rotate="true" size="8" tagg="label" text="_" y="30"/>
+        <text x="20" size="3" text="RUN" y="-106"/>
+        <rect height="6" x="0" width="6" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-90"/>
+        <rect height="6" x="20" width="6" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-105"/>
+        <rect height="260" x="-30" width="60" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-130"/>
+    </description>
+</definition>

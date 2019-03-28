@@ -1,0 +1,90 @@
+<definition orientation="dyyy" version="0.70" hotspot_x="55" type="element" hotspot_y="54" link_type="master" height="100" width="250">
+    <uuid uuid="{171cdc3b-9c5d-4479-a9fb-350c5f3d211e}"/>
+    <names>
+        <name lang="fr">Reer_mi12t8</name>
+    </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">protection</kindInformation>
+    </kindInformations>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="20" color="#000000" x="22" text="INPUT8" rotation="270"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="20" color="#000000" x="-18" text="INPUT6" rotation="270"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="20" color="#000000" x="2" text="INPUT7" rotation="270"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="20" color="#000000" x="42" text="OUT_TEST5" rotation="270"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="20" color="#000000" x="62" text="OUT_TEST6" rotation="270"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="20" color="#000000" x="82" text="OUT_TEST7" rotation="270"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="20" color="#000000" x="102" text="OUT_TEST8" rotation="270"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="20" color="#000000" x="122" text="INPUT9" rotation="270"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="20" color="#000000" x="142" text="INPUT10" rotation="270"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="20" color="#000000" x="162" text="INPUT11" rotation="270"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="20" color="#000000" x="182" text="INPUT12" rotation="270"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-13" color="#000000" x="40" text="INPUT1" rotation="270"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-35" color="#000000" x="-42" text="1" rotation="0"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-35" color="#000000" x="118" text="9" rotation="0"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-35" color="#000000" x="78" text="7" rotation="0"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="30" color="#000000" x="-45" text="13" rotation="0"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-35" color="#000000" x="55" text="6" rotation="0"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-13" color="#000000" x="80" text="INPUT3" rotation="270"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-13" color="#000000" x="120" text="OUT_TEST1" rotation="270"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-13" color="#000000" x="0" text="MAST_EN2" rotation="270"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-13" color="#000000" x="20" text="0V" rotation="270"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-35" color="#000000" x="136" text="10" rotation="0"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-13" color="#000000" x="100" text="INPUT4" rotation="270"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-13" color="#000000" x="160" text="OUT_TEST3" rotation="270"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-13" color="#000000" x="140" text="OUT_TEST2" rotation="270"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-13" color="#000000" x="60" text="INPUT2" rotation="270"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-13" color="#000000" x="-20" text="MAST_EN1" rotation="270"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-13" color="#000000" x="180" text="OUT_TEST4" rotation="270"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-35" color="#000000" x="35" text="5" rotation="0"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="20" color="#000000" x="-38" text="INPUT5" rotation="270"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="30" color="#000000" x="74" text="19" rotation="0"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-35" color="#000000" x="175" text="12" rotation="0"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-35" color="#000000" x="17" text="4" rotation="0"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="30" color="#000000" x="154" text="23" rotation="0"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="30" color="#000000" x="134" text="22" rotation="0"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-35" color="#000000" x="-2" text="3" rotation="0"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="30" color="#000000" x="174" text="24" rotation="0"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-35" color="#000000" x="-23" text="2" rotation="0"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="30" color="#000000" x="114" text="21" rotation="0"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-35" color="#000000" x="155" text="11" rotation="0"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="30" color="#000000" x="34" text="17" rotation="0"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="30" color="#000000" x="14" text="16" rotation="0"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="30" color="#000000" x="-6" text="15" rotation="0"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="30" color="#000000" x="54" text="18" rotation="0"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="30" color="#000000" x="94" text="20" rotation="0"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="30" color="#000000" x="-26" text="14" rotation="0"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-35" color="#000000" x="98" text="8" rotation="0"/>
+        <rect rx="0" y="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-50" ry="0" height="90" width="240" antialias="false"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-13" color="#000000" x="-40" text="24V DC" rotation="270"/>
+        <dynamic_text text_width="-1" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-18.5" x="40" uuid="{415b7ddd-61dd-4e15-81ad-a3690a9fbbdb}" Halignment="AlignLeft" rotation="0" frame="false" z="50" text_from="ElementInfo" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal orientation="s" y="40" x="0"/>
+        <terminal orientation="s" y="40" x="-40"/>
+        <terminal orientation="s" y="40" x="80"/>
+        <terminal orientation="s" y="40" x="40"/>
+        <terminal orientation="s" y="40" x="60"/>
+        <terminal orientation="s" y="40" x="20"/>
+        <terminal orientation="s" y="40" x="-20"/>
+        <terminal orientation="s" y="40" x="140"/>
+        <terminal orientation="s" y="40" x="100"/>
+        <terminal orientation="s" y="40" x="180"/>
+        <terminal orientation="s" y="40" x="120"/>
+        <terminal orientation="s" y="40" x="160"/>
+        <terminal orientation="n" y="-50" x="-20"/>
+        <terminal orientation="n" y="-50" x="0"/>
+        <terminal orientation="n" y="-50" x="40"/>
+        <terminal orientation="n" y="-50" x="-40"/>
+        <terminal orientation="n" y="-50" x="20"/>
+        <terminal orientation="n" y="-50" x="60"/>
+        <terminal orientation="n" y="-50" x="80"/>
+        <terminal orientation="n" y="-50" x="180"/>
+        <terminal orientation="n" y="-50" x="120"/>
+        <terminal orientation="n" y="-50" x="140"/>
+        <terminal orientation="n" y="-50" x="160"/>
+        <terminal orientation="n" y="-50" x="100"/>
+    </description>
+</definition>

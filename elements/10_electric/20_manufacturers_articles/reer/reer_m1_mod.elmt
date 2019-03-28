@@ -1,0 +1,62 @@
+<definition hotspot_x="35" hotspot_y="136" orientation="dyyy" height="270" type="element" width="70" version="0.60" link_type="simple">
+    <uuid uuid="{557ebb1f-3f48-4310-b4ed-fa390012c013}"/>
+    <names>
+        <name lang="en">REER M1</name>
+        <name lang="de">REER M1</name>
+        <name lang="fr">REER M1</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect y="-105" antialias="false" height="6" x="0" style="line-style:normal;line-weight:thin;filling:none;color:black" width="6"/>
+        <rect y="64" antialias="false" height="6" x="0" style="line-style:normal;line-weight:thin;filling:none;color:black" width="6"/>
+        <rect y="-33" antialias="false" height="6" x="18" style="line-style:normal;line-weight:thin;filling:none;color:black" width="6"/>
+        <rect y="-18" antialias="false" height="6" x="0" style="line-style:normal;line-weight:thin;filling:none;color:black" width="6"/>
+        <rect y="-18" antialias="false" height="6" x="18" style="line-style:normal;line-weight:thin;filling:none;color:black" width="6"/>
+        <rect y="12" antialias="false" height="6" x="18" style="line-style:normal;line-weight:thin;filling:none;color:black" width="6"/>
+        <rect y="-3" antialias="false" height="6" x="18" style="line-style:normal;line-weight:thin;filling:none;color:black" width="6"/>
+        <rect y="12" antialias="false" height="6" x="0" style="line-style:normal;line-weight:thin;filling:none;color:black" width="6"/>
+        <rect y="-3" antialias="false" height="6" x="0" style="line-style:normal;line-weight:thin;filling:none;color:black" width="6"/>
+        <rect y="44" antialias="false" height="6" x="0" style="line-style:normal;line-weight:thin;filling:none;color:black" width="6"/>
+        <rect y="-33" antialias="false" height="6" x="0" style="line-style:normal;line-weight:thin;filling:none;color:black" width="6"/>
+        <text y="-50" x="5" size="10" text="M1"/>
+        <text y="-75" x="19" size="3" text="ENA"/>
+        <text y="-75" x="-1" size="3" text="COM"/>
+        <text y="-85" x="-12" size="3" text="FAIL"/>
+        <text y="-106" x="0" size="3" text="ON"/>
+        <text y="-91" x="20" size="3" text="EXT"/>
+        <text y="-91" x="1" size="3" text="IN"/>
+        <text y="125" x="-28" size="11" text="MOSAIC"/>
+        <text y="-115" x="-15" size="12" text="REER"/>
+        <text y="-28" x="-10" size="5" text="IN"/>
+        <rect y="84" antialias="false" height="6" x="0" style="line-style:normal;line-weight:thin;filling:none;color:black" width="6"/>
+        <text y="11" x="1" size="5" text="7"/>
+        <rect y="-74" antialias="false" height="6" x="20" style="line-style:normal;line-weight:thin;filling:none;color:black" width="6"/>
+        <rect y="-74" antialias="false" height="6" x="0" style="line-style:normal;line-weight:thin;filling:none;color:black" width="6"/>
+        <text y="-37" x="1" size="5" text="1"/>
+        <text y="-19" x="1" size="5" text="3"/>
+        <text y="-4" x="19" size="5" text="6"/>
+        <rect y="44" antialias="false" height="6" x="18" style="line-style:normal;line-weight:thin;filling:none;color:black" width="6"/>
+        <text y="11" x="19" size="5" text="8"/>
+        <text y="-19" x="19" size="5" text="4"/>
+        <text y="-4" x="1" size="5" text="5"/>
+        <rect y="84" antialias="false" height="6" x="18" style="line-style:normal;line-weight:thin;filling:none;color:black" width="6"/>
+        <rect y="64" antialias="false" height="6" x="18" style="line-style:normal;line-weight:thin;filling:none;color:black" width="6"/>
+        <text y="-34" x="19" size="5" text="2"/>
+        <text y="90" x="-26" size="5" text="STATUS"/>
+        <text y="70" x="-21" size="5" text="CLEAR"/>
+        <text y="50" x="-20" size="5" text="OSSD"/>
+        <text y="83" x="1" size="5" text="1"/>
+        <text y="63" x="1" size="5" text="1"/>
+        <text y="43" x="1" size="5" text="1"/>
+        <text y="63" x="19" size="5" text="2"/>
+        <text y="83" x="19" size="5" text="2"/>
+        <text y="43" x="19" size="5" text="2"/>
+        <rect y="-90" antialias="false" height="6" x="20" style="line-style:normal;line-weight:thin;filling:none;color:black" width="6"/>
+        <input rotate="true" y="-35" x="-18" size="8" text="_" tagg="label" rotation="270"/>
+        <text y="-106" x="20" size="3" text="RUN"/>
+        <rect y="-90" antialias="false" height="6" x="0" style="line-style:normal;line-weight:thin;filling:none;color:black" width="6"/>
+        <rect y="-105" antialias="false" height="6" x="20" style="line-style:normal;line-weight:thin;filling:none;color:black" width="6"/>
+        <rect y="-130" antialias="false" height="260" x="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" width="60"/>
+    </description>
+</definition>
