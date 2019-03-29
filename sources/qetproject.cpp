@@ -272,7 +272,9 @@ void QETProject::setFilePath(const QString &filepath)
 	m_file_path = filepath;
 	
 	QFileInfo fi(m_file_path);
-	setReadOnly(!fi.isWritable());
+	if (fi.isWritable()) {
+		setReadOnly(false);
+	}
 
 		//title block variables should be updated after file save as dialog is confirmed, before file is saved.
 	m_project_properties.addValue("saveddate", QDate::currentDate().toString("yyyy-MM-dd"));
@@ -887,7 +889,6 @@ QETResult QETProject::write()
 	if (isReadOnly() && !QFileInfo(m_file_path).isWritable())
 		return(QString("the file %1 was opened read-only and thus will not be written").arg(m_file_path));
 
-
 		//Get the project in xml
 	QDomDocument xml_project;
 	xml_project.appendChild(xml_project.importNode(toXml().documentElement(), true));
@@ -900,9 +901,6 @@ QETResult QETProject::write()
 	m_project_properties.addValue("savedtime", QDateTime::currentDateTime().toString("HH:mm"));
 	m_project_properties.addValue("savedfilename", QFileInfo(filePath()).baseName());
 	m_project_properties.addValue("savedfilepath", filePath());
-	
-	
-	
  	
  	emit(projectInformationsChanged(this));
  	updateDiagramsFolioData();
