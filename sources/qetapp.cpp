@@ -1788,6 +1788,17 @@ void QETApp::buildSystemTrayMenu() {
 void QETApp::checkBackupFiles()
 {
 	QList<KAutoSaveFile *> stale_files = KAutoSaveFile::allStaleFiles();
+
+		//Remove from the list @stale_files, the stales file of opened project
+	const QList<KAutoSaveFile *> sf = stale_files;
+	for (KAutoSaveFile *kasf : sf) {
+		for (QETProject *project : registeredProjects().values()) {
+			if (kasf->managedFile() == QUrl(project->filePath())) {
+				stale_files.removeOne(kasf);
+			}
+		}
+	}
+
 	if (stale_files.isEmpty()) {
 		return;
 	}
