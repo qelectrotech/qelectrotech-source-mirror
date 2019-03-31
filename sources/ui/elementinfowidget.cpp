@@ -238,11 +238,11 @@ DiagramContext ElementInfoWidget::currentInfo() const
 		{
 			QString txt = eipw->text();
 				//Replace html line feed
-			txt.replace("&#xa", " "); //hexa
-			txt.replace("&#10", " "); //decimal
+			txt.replace("&#xa;", " "); //hexa
+			txt.replace("&#10;", " "); //decimal
 				//Replace html carriage return
-			txt.replace("&#xd", " "); //hexa
-			txt.replace("&#13", " "); //decimal
+			txt.replace("&#xd;", " "); //hexa
+			txt.replace("&#13;", " "); //decimal
 			info_.addValue(eipw->key(), txt);
 		}
 	}

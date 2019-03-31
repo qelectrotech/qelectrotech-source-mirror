@@ -61,7 +61,6 @@ ElementPropertiesEditorWidget::ElementPropertiesEditorWidget(QString &basic_type
 	ui->setupUi(this);
 	setUpInterface();
 	upDateInterface();
-	qDebug() << "const";
 }
 
 /**
@@ -180,8 +179,17 @@ void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
 		m_kind_info.addValue("type", ui -> m_master_type_cb -> itemData(ui -> m_master_type_cb -> currentIndex()));
 	}
 	
-	for (QTreeWidgetItem *qtwi : ui->m_tree->invisibleRootItem()->takeChildren()) {
-		m_elmt_info.addValue(qtwi->data(0, Qt::UserRole).toString(), qtwi->text(1));
+	for (QTreeWidgetItem *qtwi : ui->m_tree->invisibleRootItem()->takeChildren())
+	{
+		QString txt = qtwi->text(1);
+			//Replace html line feed
+		txt.replace("&#xa;", " "); //hexa
+		txt.replace("&#10;", " "); //decimal
+			//Replace html carriage return
+		txt.replace("&#xd;", " "); //hexa
+		txt.replace("&#13;", " "); //decimal
+
+		m_elmt_info.addValue(qtwi->data(0, Qt::UserRole).toString(), txt);
 	}
 	
 	this->close();
