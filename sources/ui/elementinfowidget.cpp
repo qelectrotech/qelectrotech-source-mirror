@@ -237,12 +237,9 @@ DiagramContext ElementInfoWidget::currentInfo() const
 		if (!eipw->text().isEmpty())
 		{
 			QString txt = eipw->text();
-				//Replace html line feed
-			txt.replace("&#xa;", " "); //hexa
-			txt.replace("&#10;", " "); //decimal
-				//Replace html carriage return
-			txt.replace("&#xd;", " "); //hexa
-			txt.replace("&#13;", " "); //decimal
+				//remove line feed and carriage return
+			txt.remove("\r");
+			txt.remove("\n");
 			info_.addValue(eipw->key(), txt);
 		}
 	}

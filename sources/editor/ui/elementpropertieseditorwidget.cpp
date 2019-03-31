@@ -182,12 +182,9 @@ void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
 	for (QTreeWidgetItem *qtwi : ui->m_tree->invisibleRootItem()->takeChildren())
 	{
 		QString txt = qtwi->text(1);
-			//Replace html line feed
-		txt.replace("&#xa;", " "); //hexa
-		txt.replace("&#10;", " "); //decimal
-			//Replace html carriage return
-		txt.replace("&#xd;", " "); //hexa
-		txt.replace("&#13;", " "); //decimal
+			//remove line feed and carriage return
+		txt.remove("\r");
+		txt.remove("\n");
 
 		m_elmt_info.addValue(qtwi->data(0, Qt::UserRole).toString(), txt);
 	}
