@@ -231,9 +231,19 @@ DiagramContext ElementInfoWidget::currentInfo() const
 {
 	DiagramContext info_;
 
-	for (ElementInfoPartWidget *eipw : m_eipw_list) {
-		if (!eipw->text().isEmpty()) { //add value only if they're something to store
-			info_.addValue(eipw->key(), eipw->text());
+	for (ElementInfoPartWidget *eipw : m_eipw_list)
+	{
+			//add value only if they're something to store
+		if (!eipw->text().isEmpty())
+		{
+			QString txt = eipw->text();
+				//Replace html line feed
+			txt.replace("&#xa", " "); //hexa
+			txt.replace("&#10", " "); //decimal
+				//Replace html carriage return
+			txt.replace("&#xd", " "); //hexa
+			txt.replace("&#13", " "); //decimal
+			info_.addValue(eipw->key(), txt);
 		}
 	}
 
