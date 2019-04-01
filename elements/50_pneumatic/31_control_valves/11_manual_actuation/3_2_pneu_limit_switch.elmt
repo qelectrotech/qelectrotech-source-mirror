@@ -1,0 +1,44 @@
+<definition orientation="dyyy" height="70" version="0.70" width="100" link_type="simple" type="element" hotspot_x="65" hotspot_y="48">
+    <uuid uuid="{d45e179e-0f4e-462a-b922-d817b84a25ae}"/>
+    <names>
+        <name lang="hu">3/2 pneu végállás kapcsoló alaphelyzetben zárt</name>
+        <name lang="en">3/2 way pneumatic limit switch close at rest</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <dynamic_text uuid="{65d619b2-86eb-4bd4-ba94-e0804a52f551}" Valignment="AlignTop" y="-51.75" text_width="-1" z="1" rotation="0" Halignment="AlignLeft" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" frame="false" text_from="ElementInfo" x="-31.5">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text y="10" color="#000000" rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0" text="3" x="13"/>
+        <text y="10" color="#000000" rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0" text="1" x="-9"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="17.5" end1="none" end2="none" y2="-24.75" length1="1.5" antialias="false" x1="-30.5" y1="-24.75"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-30.5" end1="none" end2="none" y2="-0.75" length1="1.5" antialias="false" x1="17.5" y1="-0.75"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-16" end1="none" end2="none" y2="-7" length1="1.5" antialias="false" x1="-10" y1="-7"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-30.5" end1="none" end2="none" y2="-15.75" length1="1.5" antialias="false" x1="-48.5" y1="-15.75"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-30.5" end1="none" end2="none" y2="-9.69622" length1="1.5" antialias="false" x1="-48.5" y1="-9.69622"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-30.5" end1="none" end2="none" y2="-24.75" length1="1.5" antialias="false" x1="-30.5" y1="-0.75"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-13" end1="none" end2="none" y2="-1" length1="1.5" antialias="false" x1="-13" y1="-7"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-6.5" end1="none" end2="none" y2="-0.75" length1="1.5" antialias="false" x1="-6.5" y1="-24.75"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" end1="none" end2="none" y2="-0.75" length1="1.5" antialias="false" x1="0" y1="-6.75"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="3" end1="none" end2="none" y2="-6.75" length1="1.5" antialias="false" x1="-3" y1="-6.75"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="30.5" end1="none" end2="none" y2="-0.75" length1="1.5" antialias="true" x1="28.5" y1="-12.75"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="17.5" end1="none" end2="none" y2="-24.75" length1="1.5" antialias="false" x1="17.5" y1="-0.75"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="28.5" end1="none" end2="none" y2="-12.75" length1="1.5" antialias="true" x1="25.5" y1="-0.75"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="25.5" end1="none" end2="none" y2="-0.75" length1="1.5" antialias="true" x1="23.5" y1="-12.75"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="23.5" end1="none" end2="none" y2="-12.75" length1="1.5" antialias="true" x1="20.5" y1="-0.75"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="20.5" end1="none" end2="none" y2="-0.75" length1="1.5" antialias="true" x1="18.5" y1="-12.75"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="32.5" end1="none" end2="none" y2="-6.75" length1="1.5" antialias="true" x1="30.5" y1="-0.75"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="18.5" end1="none" end2="none" y2="-12.75" length1="1.5" antialias="true" x1="17.5" y1="-6.75"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:black;color:black" x2="-24.5" end1="triangle" end2="triangle" y2="-23.75" length1="1.5" antialias="false" x1="-24.5" y1="-1.75"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" end1="none" end2="none" y2="11.25" length1="1.5" antialias="false" x1="0" y1="-0.75"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:black;color:black" x2="-0.5" end1="triangle" end2="triangle" y2="-23.75" length1="1.5" antialias="true" x1="10.5" y1="-1.75"/>
+        <circle diameter="14" y="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-62"/>
+        <circle diameter="4" y="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-57"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" end1="none" end2="none" y2="-25" length1="1.5" antialias="false" x1="0" y1="-35"/>
+        <text y="-29" color="#000000" rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0" text="2" x="5"/>
+        <terminal y="-40" orientation="n" x="0"/>
+        <terminal y="12" orientation="s" x="0"/>
+    </description>
+</definition>

@@ -1,0 +1,16 @@
+<definition link_type="simple" type="element" width="110" hotspot_y="5" version="0.70" hotspot_x="5" height="60" orientation="dyyy">
+    <uuid uuid="{d16f4069-596e-4c27-aa1c-fae8b3debe26}"/>
+    <names>
+        <name lang="en">Wiring duct 30mm</name>
+        <name lang="fr">Rail de câblage</name>
+        <name lang="de">Verdrahtungskanal 30mm</name>
+        <name lang="cs">Potrubí elektrického vedení 30 mm</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <rect antialias="false" rx="0" width="100" y="0" style="line-style:normal;line-weight:normal;filling:orange;color:none" ry="0" x="0" height="50"/>
+        <rect antialias="false" rx="0" width="100" y="43" style="line-style:normal;line-weight:normal;filling:black;color:none" ry="0" x="0" height="1"/>
+        <rect antialias="false" rx="0" width="100" y="6" style="line-style:normal;line-weight:normal;filling:black;color:none" ry="0" x="0" height="1"/>
+    </description>
+</definition>
