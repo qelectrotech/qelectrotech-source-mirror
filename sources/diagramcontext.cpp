@@ -205,6 +205,6 @@ bool DiagramContext::stringLongerThan(const QString &a, const QString &b) {
 	@return true if that key is acceptable, false otherwise
 */
 bool DiagramContext::keyIsAcceptable(const QString &key) const {
-	static QRegExp re(DiagramContext::validKeyRegExp());
+	QRegExp re(DiagramContext::validKeyRegExp());
 	return(re.exactMatch(key));
 }
