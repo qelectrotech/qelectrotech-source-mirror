@@ -1,0 +1,51 @@
+<definition height="90" hotspot_y="46" link_type="simple" hotspot_x="305" version="0.70" width="610" type="element" orientation="dyyy">
+    <uuid uuid="{36d9d3f2-cd0c-4592-81c8-5c3cb2c80be3}"/>
+    <names>
+        <name lang="fr">1734-IB2</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="designation">1734-IB2</elementInformation>
+        <elementInformation show="1" name="manufacturer">Allen-Bradley</elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect height="80" x="-300" y="-40" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="600" rx="0"/>
+        <text rotation="0" x="276" text="7&#xa;V" y="-25" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text rotation="0" x="-126" text=" 2&#xa;NC" y="-25" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text rotation="0" x="-46" text=" 3&#xa;NC" y="-25" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text rotation="0" x="37" text="4&#xa;C" y="-25" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text rotation="0" x="117" text="5&#xa;C" y="-25" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text rotation="0" x="-208" text="  1&#xa;In 1" y="-25" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text rotation="0" x="196" text="6&#xa;V" y="-25" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <circle diameter="5" x="37.5" y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="false"/>
+        <circle diameter="5" x="-202.5" y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="false"/>
+        <circle diameter="5" x="-122.5" y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="false"/>
+        <circle diameter="5" x="197.5" y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="false"/>
+        <circle diameter="5" x="117.5" y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="false"/>
+        <circle diameter="5" x="277.5" y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="false"/>
+        <circle diameter="5" x="-42.5" y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="false"/>
+        <dynamic_text Valignment="AlignTop" frame="false" text_width="-1" rotation="0" x="238" y="17" z="16" font="DejaVu Sans,9,-1,5,50,0,0,0,0,0" text_from="UserText" uuid="{e3351e30-0d38-418c-b097-dcac10ffc8dd}" Halignment="AlignLeft">
+            <text>1734-IB2</text>
+        </dynamic_text>
+        <circle diameter="5" x="-282.5" y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="false"/>
+        <text rotation="0" x="-288" text="  0&#xa;In 0" y="-25" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <terminal x="-40" y="-40" orientation="n"/>
+        <terminal x="280" y="-40" orientation="n"/>
+        <terminal x="-280" y="-40" orientation="n"/>
+        <terminal x="120" y="-40" orientation="n"/>
+        <terminal x="-120" y="-40" orientation="n"/>
+        <terminal x="-200" y="-40" orientation="n"/>
+        <terminal x="40" y="-40" orientation="n"/>
+        <terminal x="200" y="-40" orientation="n"/>
+    </description>
+</definition>
