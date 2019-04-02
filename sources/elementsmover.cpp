@@ -124,13 +124,21 @@ void ElementsMover::continueMovement(const QPointF &movement) {
 	}
 	
 	// Move some conductors
-	foreach(Conductor *conductor, m_moved_content.m_conductors_to_move) {
-		conductor -> setPos(conductor -> pos() + movement);
-	}
-	
-	// Recalcul the path of other conductors
-	foreach(Conductor *conductor, m_moved_content.m_conductors_to_update) {
-		conductor -> updatePath();
+	QList<Conductor *> c_list;
+	c_list.append(m_moved_content.m_conductors_to_move);
+	c_list.append(m_moved_content.m_conductors_to_update);
+
+	for (Conductor *c : c_list)
+	{
+			//Due to a weird behavior, we must to ensure that the position of the conductor is to (0,0).
+			//If not, in some unknown case the function QGraphicsScene::itemsBoundingRect() return a rectangle
+			//that take in acount the pos() of the conductor, even if the bounding rect returned by the conductor is not in the pos().
+			//For the user this situation appear when the top right of the folio is not at the top right of the graphicsview,
+			//but displaced to the right and/or bottom.
+		if (c->pos() != QPointF(0,0)) {
+			c->setPos(0,0);
+		}
+		c->updatePath();
 	}
 }
 
