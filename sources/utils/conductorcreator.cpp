@@ -23,6 +23,7 @@
 #include "potentialselectordialog.h"
 #include "diagramcommands.h"
 #include "conductorautonumerotation.h"
+#include "element.h"
 
 #include <QPolygonF>
 
@@ -158,6 +159,13 @@ QList<Conductor *> ConductorCreator::existingPotential()
 				} else if (m_terminals_list.contains(c->terminal2)) {
 					t_exclude.append(c->terminal2);
 				}
+			}
+		}
+		else if (t->parentElement()->linkType() & Element::AllReport && !t->parentElement()->isFree())
+		{
+			Element *linked_report = t->parentElement()->linkedElements().first();
+			if (!linked_report->conductors().isEmpty()) {
+				c_list.append(linked_report->conductors().first());
 			}
 		}
 	}
