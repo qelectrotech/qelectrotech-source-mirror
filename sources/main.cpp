@@ -18,6 +18,32 @@
 #include "qetapp.h"
 #include "singleapplication.h"
 #include "qet.h"
+#include <QFileOpenEvent>
+
+class MacOSXOpenEvent : public QObject
+{
+		Q_OBJECT
+
+	public:
+		MacOSXOpenEvent(QObject *parent = nullptr) :
+			QObject(parent)
+		{}
+
+		~MacOSXOpenEvent(){}
+
+		bool eventFilter(QObject *obj, QEvent *event)
+		{
+			if (event->type() == QEvent::FileOpen)
+			{
+				SingleApplication *app = dynamic_cast<SingleApplication *>(obj);
+				QFileOpenEvent *open_event = static_cast<QFileOpenEvent*>(event);
+				QString message = "launched-with-args: " + open_event->file();
+				app->sendMessage(message.toUtf8());
+				return true;
+			}
+			return false;
+		}
+};
 
 /**
  * @brief main
@@ -41,6 +67,12 @@ int main(int argc, char **argv)
 #endif
 	
 	SingleApplication app(argc, argv, true);
+#ifdef Q_OS_MACOS
+		//Handle the opening of QET when user double click on a .qet .elmt .tbt file
+		//or drop these same files to the QET icon of the dock
+	MacOSXOpenEvent open_event;
+	app.installEventFilter(open_event);
+#endif
 	
 	if (app.isSecondary())
 	{
@@ -59,3 +91,4 @@ int main(int argc, char **argv)
 	
 	return app.exec();
 }
+
