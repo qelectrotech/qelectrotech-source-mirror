@@ -1,0 +1,42 @@
+<definition type="element" link_type="simple" height="80" orientation="dyyy" width="100" hotspot_y="39" hotspot_x="50" version="0.60">
+    <uuid uuid="{2b1d409f-9a77-4321-9ffc-d5c472b21bbe}"/>
+    <names>
+        <name lang="fr">Alimentation AC/DC 2080-PS120-240VAC</name>
+    </names>
+    <informations>EN 60617: 06-14-03</informations>
+    <description>
+        <text size="5" text="AC ~" x="-28" y="-7"/>
+        <circle antialias="false" diameter="5" x="27.5" y="-32.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text size="6" text="-" x="9" y="24"/>
+        <text size="6" text="-" x="29" y="24"/>
+        <text size="6" text="L" x="-32" y="-19"/>
+        <line y2="30" length2="1.5" antialias="false" length1="1.5" end1="none" end2="none" x2="27" x1="13" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30"/>
+        <text size="5" text="24 VDC" x="6" y="12"/>
+        <line y2="30" length2="1.5" antialias="false" length1="1.5" end1="none" end2="none" x2="7" x1="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30"/>
+        <line y2="30" length2="1.5" antialias="false" length1="1.5" end1="none" end2="none" x2="-13" x1="-27" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30"/>
+        <text size="6" text="+" x="-12" y="24"/>
+        <text size="6" text="N" x="-3" y="-20"/>
+        <circle antialias="false" diameter="5" x="-2.5" y="-32.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text size="6" text="PE" x="25" y="-19"/>
+        <circle antialias="false" diameter="5" x="-32.5" y="27.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="false" diameter="5" x="27.5" y="27.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="false" diameter="5" x="-12.5" y="27.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="false" diameter="5" x="7.5" y="27.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input size="9" text="_" x="-80" y="-20.5" rotate="true" tagg="label"/>
+        <text size="6" text="+" x="-32" y="24"/>
+        <polygon y2="30" x3="-45" antialias="false" x4="-33" y5="-29.8785" x5="-33" y4="-29.8785" x2="-45" closed="false" x1="-33" x6="-33" y6="-29.8785" y3="-29.8785" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30"/>
+        <polygon y2="-30.1383" x3="45" antialias="false" x4="33" y5="30" x5="33" y4="30" x2="45" closed="false" x1="33" x6="33" y6="30" y3="30" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30.1383"/>
+        <line y2="-30" length2="1.5" antialias="false" length1="1.5" end1="none" end2="none" x2="-3" x1="-27" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30"/>
+        <line y2="-30" length2="1.5" antialias="false" length1="1.5" end1="none" end2="none" x2="27" x1="3" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30"/>
+        <rect antialias="false" height="30" x="-30" width="60" y="-15" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line y2="15" length2="1.5" antialias="false" length1="1.5" end1="none" end2="none" x2="-30" x1="30" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-15"/>
+        <circle antialias="false" diameter="5" x="-32.5" y="-32.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="n" x="30" y="-33"/>
+        <terminal orientation="s" x="30" y="33"/>
+        <terminal orientation="s" x="10" y="33"/>
+        <terminal orientation="s" x="-10" y="33"/>
+        <terminal orientation="s" x="-30" y="33"/>
+        <terminal orientation="n" x="-30" y="-33"/>
+        <terminal orientation="n" x="0" y="-33"/>
+    </description>
+</definition>
