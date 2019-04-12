@@ -353,9 +353,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 			return nullptr;
 		}
 	}
-	else {
-		return nullptr;
-	}
+	return nullptr;
 }
 
 /**
