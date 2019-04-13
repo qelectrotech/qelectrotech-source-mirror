@@ -77,6 +77,7 @@ If not a file dialog is showed to select the QET project.
 * QetGraphicsItem, remove the function applyRotation and rotateBy, and use instead the native function of QGraphicsItem : setRotation
 * Conductor is an herited class of QGraphicsObject, instead of QObject and QGraphicsPathItem
 * Clean (and reduce the size) the class QETDiagramEditor, mostly by replacing the connection syntax "signal -> slot" by "signal -> lambda".
+* Replace deprecated QMatrix by QTransform.
 
 
 * DXF export : fix some double items in dxf file.
@@ -102,8 +103,9 @@ the element file stay in read only mode, and so user can't save the element
 * Improvement : minimize the unwanted gap of the top right folio of the view (see https://qelectrotech.org/forum/viewtopic.php?pid=9379#p9379)
 * Fix: bug 168
 * Fix : when create multiple conductors with the free hand selection, the checking of existing potentiel don't search trought a folio report.
-* Fix:  DXF export
-
+* Fix:  DXF export.
+* Minor fix : remove from the element information the html hexadecimal and decimal characters of line feed and carriage return.
+* fix : in the diagram editor, when we select several shapes at the same time, the properties widget only apply the change to one shape.
 
 
 
@@ -380,10 +382,5 @@ Le dialogue "Exporter" (pour générer un fichier image d'un schéma) a égaleme
   * Affinage du constructeur de la classe QETApp
   * Moins d'avertissements à la compilation (testé avec gcc 4.3)
   * Moins d'inclusions non pertinentes
-<<<<<<< .mine
-  * Nettoyage du trunk : déplacement des sources dans un sous-répertoire
+
   
-||||||| .r5705
-  * Nettoyage du trunk : déplacement des sources dans un sous-répertoire
-=======
-  * Nettoyage du trunk : déplacement des sources dans un sous-répertoire>>>>>>> .r5719
