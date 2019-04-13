@@ -1,32 +1,29 @@
-<definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="50" type="element" orientation="dyyy">
-<uuid uuid="{C7BB71E9-DA4F-498D-801B-464A13F85A61}"/><names>
-        <name lang="ar">مُنبّه</name>
-        <name lang="de">Warnhupe</name>
-        <name lang="ru">Горн</name>
-        <name lang="pt">Buzina</name>
-        <name lang="el">Κόρνα</name>
-        <name lang="en">Horn</name>
-        <name lang="it">Tromba</name>
-        <name lang="fr">Avertisseur</name>
+<definition height="50" hotspot_y="24" version="0.60" width="50" type="element" hotspot_x="10" orientation="dyyy" link_type="simple">
+    <uuid uuid="{b9c6cdc5-159d-458d-95b1-1eb8c4685dd3}"/>
+    <names>
         <name lang="pl">Buczek</name>
-        <name lang="es">Corneta</name>
-        <name lang="cs">Houkačka</name>
         <name lang="nl">Toeter</name>
+        <name lang="el">Κόρνα</name>
+        <name lang="pt">Buzina</name>
+        <name lang="fr">Avertisseur</name>
+        <name lang="it">Tromba</name>
+        <name lang="de">Warnhupe</name>
+        <name lang="cs">Houkačka</name>
+        <name lang="en">Horn</name>
+        <name lang="ru">Горн</name>
+        <name lang="es">Bocina</name>
+        <name lang="ar">مُنبّه</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon x4="10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-5" x1="10" y2="0" x2="40" y3="-20" x3="30" y4="-15"/>
-        <input x="45" y="-7" size="9" text="_" tagg="label"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="10" y2="2" x2="-2"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="-10" y2="-20" x2="-10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-22" x1="10" y2="2" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-22" x1="-2" y2="2" x2="-2"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-22" x1="-2" y2="-22" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-10" y2="-20" x2="-2"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-10" y2="0" x2="-10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-10" y2="0" x2="-2"/>
-        <terminal x="-10" y="10" orientation="s"/>
-        <terminal x="-10" y="-30" orientation="n"/>
+        <polygon y1="5" closed="false" y4="-5" antialias="true" y2="10" y3="-10" x1="6" x3="26" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="36" x4="6"/>
+        <input y="3" x="41" tagg="label" size="9" text="_"/>
+        <line length1="1.5" y1="12" antialias="false" y2="12" end1="none" x1="6" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-6" end2="none"/>
+        <line length1="1.5" y1="-12" antialias="false" y2="12" end1="none" x1="6" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="6" end2="none"/>
+        <line length1="1.5" y1="-12" antialias="false" y2="12" end1="none" x1="-6" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-6" end2="none"/>
+        <line length1="1.5" y1="-12" antialias="false" y2="-12" end1="none" x1="-6" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="6" end2="none"/>
+        <terminal y="16" x="0" orientation="s"/>
+        <terminal y="-16" x="0" orientation="n"/>
     </description>
 </definition>
