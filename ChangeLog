@@ -47,6 +47,8 @@ This commit fix it : When element is removed one or several conductors are creat
 * Added 4 tools for edit the depth (Z value) of items.
 * Element panel : elements can be searched by their name but also with by all their informations.
 * New free selection style.
+* Diagram editor : dock used to edit the shape item, can now edit several items in the same time.
+* Dynamic element text item : The font of the dynamic texts can be individually be setted.
 
 
 * Title block editor :
@@ -54,6 +56,9 @@ Added new title block variables %projectpath, %projectfilename, %projecttitle, p
 "%saveddate, %savedtime, %savedfilename and %savedfilepath" they variables should be updated after file save or save as dialog is confirmed,
 before file is saved.
 * NameList widget : add a combo box for easily paste texts, like the variables for title block.
+*  The font of the dynamic text field can be edited.
+* The font of the static text field can be edited.
+* The color of the static text field can be edited.
 
 
 
@@ -64,6 +69,7 @@ If not a file dialog is showed to select the QET project.
 
 
 * QET create a backup file, use to restore the project when a crash occur.
+* Use KAutoSaveFile for the backup system, instead of home made function.
 * User can enable and edit autosave timer.
 * let user define the file system path of the common,custom elements collections, and custom title blocks template.
 
@@ -93,7 +99,10 @@ clear the element texts when paste an element with the option "Do not store the 
 * Fix : in some condition, dynamic text are not at the same position when open a project.
 * On windows when user drag and drop an element from the common elements collection to the custom elements collection,
 the element file stay in read only mode, and so user can't save the element
-
+* Improvement : minimize the unwanted gap of the top right folio of the view (see https://qelectrotech.org/forum/viewtopic.php?pid=9379#p9379)
+* Fix: bug 168
+* Fix : when create multiple conductors with the free hand selection, the checking of existing potentiel don't search trought a folio report.
+* Fix:  DXF export
 
 
 
@@ -371,4 +380,10 @@ Le dialogue "Exporter" (pour générer un fichier image d'un schéma) a égaleme
   * Affinage du constructeur de la classe QETApp
   * Moins d'avertissements à la compilation (testé avec gcc 4.3)
   * Moins d'inclusions non pertinentes
+<<<<<<< .mine
   * Nettoyage du trunk : déplacement des sources dans un sous-répertoire
+  
+||||||| .r5705
+  * Nettoyage du trunk : déplacement des sources dans un sous-répertoire
+=======
+  * Nettoyage du trunk : déplacement des sources dans un sous-répertoire>>>>>>> .r5719
