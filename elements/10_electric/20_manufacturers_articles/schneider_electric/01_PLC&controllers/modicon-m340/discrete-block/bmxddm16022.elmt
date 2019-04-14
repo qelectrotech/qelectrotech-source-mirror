@@ -1,0 +1,137 @@
+<definition orientation="dyyy" hotspot_y="125" link_type="simple" width="70" height="250" type="element" hotspot_x="44" version="0.70">
+    <uuid uuid="{29dc94a8-bbc5-4fb7-8c2b-fc7bc83b0126}"/>
+    <names>
+        <name lang="en">BMXDDM16022</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: The QElectroTech team
+     License: see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version: V2.0
+
+</informations>
+    <description>
+        <ellipse x="-23.2357" style="line-style:normal;line-weight:thin;filling:black;color:black" width="4.26471" y="57.8255" height="5.13" antialias="false"/>
+        <arc x="-21.3378" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="8.6514" y="68.1" height="13.8273" start="270" antialias="true"/>
+        <ellipse x="-23.2357" style="line-style:normal;line-weight:thin;filling:black;color:black" width="4.26471" y="4.8155" height="5.13" antialias="false"/>
+        <line x1="-26.0111" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-26.0111" y1="-37.9345" end1="none" end2="none" y2="95.4455" antialias="false" length1="1.5" length2="1.5"/>
+        <ellipse x="-23.2357" style="line-style:normal;line-weight:thin;filling:black;color:black" width="4.26471" y="85.1855" height="5.13" antialias="false"/>
+        <ellipse x="-23.2357" style="line-style:normal;line-weight:thin;filling:black;color:black" width="4.26471" y="31.3205" height="5.13" antialias="false"/>
+        <ellipse x="-23.2357" style="line-style:normal;line-weight:thin;filling:black;color:black" width="4.26471" y="-21.6895" height="5.13" antialias="false"/>
+        <arc x="-21.3378" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="8.6514" y="-38.9183" height="13.8273" start="270" antialias="true"/>
+        <arc x="-21.3378" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="8.6514" y="14.5909" height="13.8272" start="270" antialias="true"/>
+        <ellipse x="-23.2357" style="line-style:normal;line-weight:thin;filling:black;color:black" width="4.26471" y="45.0005" height="5.13" antialias="false"/>
+        <ellipse x="-23.2357" style="line-style:normal;line-weight:thin;filling:black;color:black" width="4.26471" y="-8.0095" height="5.13" antialias="false"/>
+        <ellipse x="-23.2357" style="line-style:normal;line-weight:thin;filling:black;color:black" width="4.26471" y="-34.5145" height="5.13" antialias="false"/>
+        <ellipse x="-23.2357" style="line-style:normal;line-weight:thin;filling:black;color:black" width="4.26471" y="18.4955" height="5.13" antialias="false"/>
+        <ellipse x="-23.2357" style="line-style:normal;line-weight:thin;filling:black;color:black" width="4.26471" y="71.5055" height="5.13" antialias="false"/>
+        <arc x="-6.43514" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="7.92464" y="46.8365" height="13.6117" start="180" antialias="true"/>
+        <arc x="-6.43514" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="7.92464" y="6.71778" height="13.6117" start="180" antialias="true"/>
+        <arc x="-6.43514" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="7.92464" y="-32.2039" height="13.6117" start="180" antialias="true"/>
+        <ellipse x="-0.42289" style="line-style:normal;line-weight:thin;filling:black;color:black" width="4.26471" y="50.9855" height="5.13" antialias="false"/>
+        <line x1="-2.55524" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="6.68496" y1="86.8955" end1="none" end2="none" y2="86.8955" antialias="false" length1="1.5" length2="1.5"/>
+        <ellipse x="-25.3003" style="line-style:normal;line-weight:normal;filling:none;color:black" width="7.10784" y="-49.0495" height="8.55" antialias="false"/>
+        <line x1="-26.0111" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-16.7709" y1="-37.9345" end1="none" end2="none" y2="-37.9345" antialias="false" length1="1.5" length2="1.5"/>
+        <ellipse x="-1.13367" style="line-style:normal;line-weight:normal;filling:none;color:black" width="7.10784" y="91.1705" height="8.55" antialias="false"/>
+        <ellipse x="-0.42289" style="line-style:normal;line-weight:thin;filling:black;color:black" width="4.26471" y="-2.0245" height="5.13" antialias="false"/>
+        <line x1="-26.0111" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-16.7709" y1="95.4455" end1="none" end2="none" y2="95.4455" antialias="false" length1="1.5" length2="1.5"/>
+        <arc x="-21.3378" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="8.6514" y="41.3456" height="13.8272" start="270" antialias="true"/>
+        <arc x="-6.43514" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="7.92464" y="20.2579" height="13.6117" start="180" antialias="true"/>
+        <arc x="-21.3378" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="8.6514" y="-12.1637" height="13.8272" start="270" antialias="true"/>
+        <arc x="-6.43514" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="7.92464" y="60.3765" height="13.6117" start="180" antialias="true"/>
+        <arc x="-6.43514" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="7.92464" y="-19.8608" height="13.6117" start="180" antialias="true"/>
+        <arc x="-21.3378" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="8.6514" y="-37.7213" height="13.8272" start="0" antialias="true"/>
+        <ellipse x="-0.42289" style="line-style:normal;line-weight:thin;filling:black;color:black" width="4.26471" y="78.3455" height="5.13" antialias="false"/>
+        <ellipse x="-0.42289" style="line-style:normal;line-weight:thin;filling:black;color:black" width="4.26471" y="24.4805" height="5.13" antialias="false"/>
+        <ellipse x="-0.42289" style="line-style:normal;line-weight:thin;filling:black;color:black" width="4.26471" y="-28.5295" height="5.13" antialias="false"/>
+        <arc x="-6.43514" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="7.92464" y="73.4865" height="13.6117" start="180" antialias="true"/>
+        <arc x="-6.43514" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="7.92464" y="33.368" height="13.6117" start="180" antialias="true"/>
+        <arc x="-21.3378" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="8.6514" y="68.1" height="13.8273" start="0" antialias="true"/>
+        <arc x="-21.3378" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="8.6514" y="14.5909" height="13.8272" start="0" antialias="true"/>
+        <arc x="-6.43514" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="7.92464" y="-6.7506" height="13.6117" start="180" antialias="true"/>
+        <arc x="-6.43514" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="7.92464" y="-45.6723" height="13.6117" start="180" antialias="true"/>
+        <arc x="-21.3378" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="8.6514" y="-25.541" height="13.8272" start="270" antialias="true"/>
+        <ellipse x="-0.42289" style="line-style:normal;line-weight:thin;filling:black;color:black" width="4.26471" y="38.1605" height="5.13" antialias="false"/>
+        <ellipse x="-0.42289" style="line-style:normal;line-weight:thin;filling:black;color:black" width="4.26471" y="-14.8495" height="5.13" antialias="false"/>
+        <text x="-36.6729" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-80.6845" text="16" rotation="0" color="#000000"/>
+        <ellipse x="-0.42289" style="line-style:normal;line-weight:thin;filling:black;color:black" width="4.26471" y="-41.3545" height="5.13" antialias="false"/>
+        <arc x="-21.3378" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="8.6514" y="41.3456" height="13.8272" start="0" antialias="true"/>
+        <arc x="-21.3378" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="8.6514" y="-12.1637" height="13.8272" start="0" antialias="true"/>
+        <arc x="-21.3378" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="8.6514" y="-25.541" height="13.8272" start="0" antialias="true"/>
+        <ellipse x="-0.42289" style="line-style:normal;line-weight:thin;filling:black;color:black" width="4.26471" y="11.6555" height="5.13" antialias="false"/>
+        <ellipse x="-0.42289" style="line-style:normal;line-weight:thin;filling:black;color:black" width="4.26471" y="64.6655" height="5.13" antialias="false"/>
+        <arc x="-6.43514" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="7.92464" y="33.4398" height="13.6117" start="90" antialias="true"/>
+        <arc x="-6.43514" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="7.92464" y="-45.6005" height="13.6117" start="90" antialias="true"/>
+        <arc x="-6.43514" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="7.92464" y="-6.67895" height="13.6117" start="90" antialias="true"/>
+        <arc x="-6.43514" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="7.92464" y="73.5584" height="13.6117" start="90" antialias="true"/>
+        <arc x="-21.3378" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="8.6514" y="54.7229" height="13.8273" start="270" antialias="true"/>
+        <arc x="-6.43514" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="7.92464" y="20.3295" height="13.6117" start="90" antialias="true"/>
+        <arc x="-21.3378" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="8.6514" y="1.21364" height="13.8272" start="270" antialias="true"/>
+        <arc x="-6.43514" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="7.92464" y="60.4482" height="13.6117" start="90" antialias="true"/>
+        <arc x="-6.43514" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="7.92464" y="-18.5921" height="13.6117" start="90" antialias="true"/>
+        <arc x="-6.43514" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="7.92464" y="6.7895" height="13.6117" start="90" antialias="true"/>
+        <arc x="-6.43514" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="7.92464" y="46.9082" height="13.6117" start="90" antialias="true"/>
+        <arc x="-21.3378" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="8.6514" y="1.21364" height="13.8272" start="0" antialias="true"/>
+        <arc x="-6.43514" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="7.92464" y="-32.1323" height="13.6117" start="90" antialias="true"/>
+        <arc x="-21.3378" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="8.6514" y="54.7229" height="13.8273" start="0" antialias="true"/>
+        <arc x="-21.3378" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="8.6514" y="27.9682" height="13.8272" start="270" antialias="true"/>
+        <arc x="-21.3378" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="8.6514" y="81.4774" height="13.8272" start="270" antialias="true"/>
+        <text x="-36.6729" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-88.3795" text="08" rotation="0" color="#000000"/>
+        <arc x="-21.3378" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="8.6514" y="27.9682" height="13.8272" start="0" antialias="true"/>
+        <arc x="-21.3378" angle="90" style="line-style:normal;line-weight:thin;filling:none;color:black" width="8.6514" y="81.4774" height="13.8272" start="0" antialias="true"/>
+        <text x="13.082" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-95.2195" text="07" rotation="0" color="#000000"/>
+        <text x="5.97417" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-95.2195" text="06" rotation="0" color="#000000"/>
+        <text x="-36.6729" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-72.9895" text="24" rotation="0" color="#000000"/>
+        <text x="-1.13367" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-95.2195" text="05" rotation="0" color="#000000"/>
+        <text x="-8.24156" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-95.2195" text="04" rotation="0" color="#000000"/>
+        <text x="-15.3494" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-95.2195" text="03" rotation="0" color="#000000"/>
+        <text x="-29.565" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-95.2195" text="01" rotation="0" color="#000000"/>
+        <text x="-36.6729" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-95.2195" text="00" rotation="0" color="#000000"/>
+        <text x="-22.4572" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-95.2195" text="02" rotation="0" color="#000000"/>
+        <text x="-22.4572" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-88.3795" text="10" rotation="0" color="#000000"/>
+        <text x="-22.4572" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-80.6845" text="18" rotation="0" color="#000000"/>
+        <text x="-22" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-73" text="26" rotation="0" color="#000000"/>
+        <text x="-29.565" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-72.9895" text="25" rotation="0" color="#000000"/>
+        <text x="-29.565" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-88.3795" text="09" rotation="0" color="#000000"/>
+        <text x="-29.565" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-80.6845" text="17" rotation="0" color="#000000"/>
+        <text x="-15.3494" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-88.3795" text="11" rotation="0" color="#000000"/>
+        <text x="-15.3494" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-72.9895" text="27" rotation="0" color="#000000"/>
+        <text x="-15.3494" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-80.6845" text="19" rotation="0" color="#000000"/>
+        <text x="-8.24156" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-88.3795" text="12" rotation="0" color="#000000"/>
+        <text x="-8.24156" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-80.6845" text="20" rotation="0" color="#000000"/>
+        <text x="-8.24156" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-72.9895" text="28" rotation="0" color="#000000"/>
+        <text x="-1.13367" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-72.9895" text="29" rotation="0" color="#000000"/>
+        <text x="-1.13367" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-80.6845" text="21" rotation="0" color="#000000"/>
+        <text x="-1.13367" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-88.3795" text="13" rotation="0" color="#000000"/>
+        <text x="5.97417" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-88.3795" text="14" rotation="0" color="#000000"/>
+        <text x="5.97417" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-80.6845" text="22" rotation="0" color="#000000"/>
+        <ellipse x="-38.0945" style="line-style:normal;line-weight:thin;filling:green;color:black" width="5.68627" y="-110.182" height="6.84" antialias="false"/>
+        <text x="5.97417" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-72.9895" text="30" rotation="0" color="#000000"/>
+        <text x="13.082" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-80.6845" text="23" rotation="0" color="#000000"/>
+        <text x="13.082" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-88.3795" text="15" rotation="0" color="#000000"/>
+        <ellipse x="-9.30773" style="line-style:normal;line-weight:thin;filling:red;color:black" width="5.68627" y="-110.182" height="6.84" antialias="false"/>
+        <text x="13.082" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-72.9895" text="31" rotation="0" color="#000000"/>
+        <ellipse x="-23.5234" style="line-style:normal;line-weight:thin;filling:red;color:black" width="5.68627" y="-110.182" height="6.84" antialias="false"/>
+        <line x1="-37.3837" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-33.1189" y1="-108.9" end1="none" end2="none" y2="-104.624" antialias="false" length1="1.5" length2="1.5"/>
+        <line x1="-22.8126" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-18.5479" y1="-108.9" end1="none" end2="none" y2="-104.624" antialias="false" length1="1.5" length2="1.5"/>
+        <line x1="-37.3837" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-33.1189" y1="-104.624" end1="none" end2="none" y2="-108.9" antialias="false" length1="1.5" length2="1.5"/>
+        <line x1="-22.8126" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-18.5479" y1="-104.624" end1="none" end2="none" y2="-108.9" antialias="false" length1="1.5" length2="1.5"/>
+        <text x="-31.6974" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-104.624" text="RUN" rotation="0" color="#000000"/>
+        <text x="-17.1263" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-104.624" text="ERR" rotation="0" color="#000000"/>
+        <line x1="-40.2268" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-40.2268" y1="119.385" end1="none" end2="none" y2="-120.014" antialias="false" length1="1.5" length2="1.5"/>
+        <line x1="-8.59692" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-4.33221" y1="-108.9" end1="none" end2="none" y2="-104.624" antialias="false" length1="1.5" length2="1.5"/>
+        <line x1="-8.59692" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-4.33221" y1="-104.624" end1="none" end2="none" y2="-108.9" antialias="false" length1="1.5" length2="1.5"/>
+        <text x="-2.55524" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-104.624" text="I\O" rotation="0" color="#000000"/>
+        <line x1="20.1899" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-40.2268" y1="119.385" end1="none" end2="none" y2="119.385" antialias="false" length1="1.5" length2="1.5"/>
+        <line x1="-40.2268" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="20.1899" y1="-120.014" end1="none" end2="none" y2="-120.014" antialias="false" length1="1.5" length2="1.5"/>
+        <line x1="20.1899" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="20.1899" y1="119.385" end1="none" end2="none" y2="-120.014" antialias="false" length1="1.5" length2="1.5"/>
+        <line x1="18.7683" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-38.8053" y1="-68.7145" end1="none" end2="none" y2="-68.7145" antialias="false" length1="1.5" length2="1.5"/>
+        <text x="-11" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-114" text="BMXDDM16022" rotation="0" color="#000000"/>
+        <rect x="-11.7955" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="31.9853" y="-120.014" height="8.55" antialias="false" rx="0"/>
+        <line x1="-38.8053" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-38.8053" y1="-68.7145" end1="none" end2="none" y2="-120.014" antialias="false" length1="1.5" length2="1.5"/>
+        <line x1="18.7683" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="18.7683" y1="-111.465" end1="none" end2="none" y2="-68.7145" antialias="false" length1="1.5" length2="1.5"/>
+        <rect x="-27.4327" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="35.5393" y="-51.6145" height="153.9" antialias="false" rx="0"/>
+        <line x1="6.68496" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="6.68496" y1="-45.6295" end1="none" end2="none" y2="86.8955" antialias="false" length1="1.5" length2="1.5"/>
+        <line x1="-2.55524" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="6.68496" y1="-45.6295" end1="none" end2="none" y2="-45.6295" antialias="false" length1="1.5" length2="1.5"/>
+    </description>
+</definition>

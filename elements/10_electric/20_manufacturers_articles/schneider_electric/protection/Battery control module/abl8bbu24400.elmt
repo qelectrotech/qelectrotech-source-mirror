@@ -1,0 +1,45 @@
+<definition hotspot_y="154" orientation="dyyy" link_type="master" version="0.70" width="80" height="310" type="element" hotspot_x="34">
+    <uuid uuid="{d37d99ed-8749-4316-9413-88a451a86014}"/>
+    <names>
+        <name lang="en">ABL8BBU24400</name>
+    </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">coil</kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1"></elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="designation" show="1"></elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+    </elementInformations>
+    <informations>EN 60617: 06-14-03</informations>
+    <description>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="6" x="-27.98" y="-42.75"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="6" x="-27.98" y="57.25"/>
+        <text x="-20" size="5" y="-37" text="IN+"/>
+        <text x="-20" size="5" y="63" text="BAT-"/>
+        <text x="-20" size="5" y="133" text="BAT+"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="6" x="32.06" y="37.25"/>
+        <text x="11" size="5" y="-28" text="OUT+"/>
+        <text x="12" size="5" y="42" text="OUT-"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="6" x="-27.94" y="127.25"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="6" x="33.06" y="-32.75"/>
+        <text x="-20" size="5" y="-107" text="IN-"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="6" x="-27.98" y="-112.75"/>
+        <text x="-18" size="5" y="-133" text="ABL8BBU24400"/>
+        <rect rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="70" x="-29.445" height="300" y="-149" ry="0"/>
+        <terminal orientation="w" x="-29" y="60"/>
+        <terminal orientation="w" x="-30" y="-40"/>
+        <terminal orientation="w" x="-30" y="-110"/>
+        <terminal orientation="w" x="-29" y="130"/>
+        <terminal orientation="e" x="40" y="40"/>
+        <terminal orientation="e" x="40" y="-30"/>
+    </description>
+</definition>

@@ -1,0 +1,94 @@
+<definition link_type="simple" width="80" type="element" height="250" hotspot_x="26" version="0.70" orientation="dyyy" hotspot_y="125">
+    <uuid uuid="{e259f5da-f375-4858-991c-4ee38256274e}"/>
+    <names>
+        <name lang="en">BMXNOE0100</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: The QElectroTech team
+     License: see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version: V2.0
+
+</informations>
+    <description>
+        <text color="#000000" x="8.91316" rotation="0" y="68.1" text="Reset" font="Sans Serif,4,-1,5,50,0,0,0,0,0"/>
+        <dynamic_text text_width="-1" z="2" Valignment="AlignTop" x="-0.973731" rotation="0" Halignment="AlignLeft" y="33.8053" font="Sans Serif,9,-1,5,50,0,0,0,0,0,Regular" frame="false" text_from="ElementInfo" uuid="{94ae2273-a478-4149-80fd-0521d276125b}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text text_width="-1" z="2" Valignment="AlignTop" x="-1.68252" rotation="0" Halignment="AlignLeft" y="-2.10475" font="Sans Serif,9,-1,5,50,0,0,0,0,0,Regular" frame="false" text_from="ElementInfo" uuid="{94ae2273-a478-4149-80fd-0521d276125b}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon y1="18.8" x3="27.2006" y3="21.365" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="16.235" y4="18.8" x2="27.2006" closed="false" x1="20.1128" antialias="false" x4="20.1128"/>
+        <ellipse width="9.21422" style="line-style:normal;line-weight:normal;filling:none;color:black" height="11.115" x="9.41772" y="71.0925" antialias="false"/>
+        <ellipse width="5.6703" style="line-style:normal;line-weight:normal;filling:none;color:black" height="6.84" x="11.1897" y="73.23" antialias="false"/>
+        <ellipse width="5.6703" style="line-style:normal;line-weight:thin;filling:green;color:black" height="6.84" x="-17.8706" y="-87.0825" antialias="false"/>
+        <ellipse width="5.6703" style="line-style:normal;line-weight:thin;filling:green;color:black" height="6.84" x="-17.8706" y="-110.168" antialias="false"/>
+        <ellipse width="5.6703" style="line-style:normal;line-weight:thin;filling:red;color:black" height="6.84" x="12.8115" y="-110.168" antialias="false"/>
+        <ellipse width="5.6703" style="line-style:normal;line-weight:thin;filling:red;color:black" height="6.84" x="-2.78185" y="-110.168" antialias="false"/>
+        <polygon y1="-47.89" x3="-4.40367" y3="-39.34" style="line-style:normal;line-weight:normal;filling:blue;color:black" y2="-47.89" y4="-47.89" x2="-2.27729" closed="false" x1="-6.53" antialias="false" x4="-6.53"/>
+        <text color="#000000" x="9.53619" rotation="0" y="-63" text="Eth.MAC Address :" font="Sans Serif,3,-1,5,50,0,0,0,0,0"/>
+        <line y1="-108.885" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-104.61" x2="-12.9091" end2="none" x1="-17.1618" antialias="false"/>
+        <line y1="-108.885" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-104.61" x2="2.17967" end2="none" x1="-2.07306" antialias="false"/>
+        <line y1="-85.8" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-81.525" x2="-12.9091" end2="none" x1="-17.1618" antialias="false"/>
+        <line y1="-81.525" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-85.8" x2="-12.9091" end2="none" x1="-17.1618" antialias="false"/>
+        <line y1="-104.61" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-108.885" x2="-12.9091" end2="none" x1="-17.1618" antialias="false"/>
+        <line y1="-104.61" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-108.885" x2="2.17967" end2="none" x1="-2.07306" antialias="false"/>
+        <ellipse width="5.6703" style="line-style:normal;line-weight:thin;filling:red;color:black" height="6.84" x="12.8115" y="-94.7775" antialias="false"/>
+        <ellipse width="5.6703" style="line-style:normal;line-weight:thin;filling:green;color:black" height="6.84" x="12.8115" y="-87.0825" antialias="false"/>
+        <text color="#000000" x="-10.9329" rotation="0" y="-104.61" text="RUN" font="Sans Serif,3,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" x="-10.9329" rotation="0" y="-81.525" text="ETH.ACT" font="Sans Serif,3,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" x="4.15587" rotation="0" y="-104.61" text="ERR" font="Sans Serif,3,-1,5,50,0,0,0,0,0"/>
+        <ellipse width="5.6703" style="line-style:normal;line-weight:thin;filling:green;color:black" height="6.84" x="12.8115" y="-79.3875" antialias="false"/>
+        <line y1="119.4" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-120" x2="-19.997" end2="none" x1="-19.997" antialias="false"/>
+        <line y1="-85.8" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-81.525" x2="17.773" end2="none" x1="13.5203" antialias="false"/>
+        <line y1="-78.105" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-73.83" x2="17.773" end2="none" x1="13.5203" antialias="false"/>
+        <rect rx="0" width="2.83516" ry="0" style="line-style:normal;line-weight:thin;filling:none;color:black" x="14.4424" height="1.71" y="11.96" antialias="false"/>
+        <line y1="-108.885" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-104.61" x2="17.773" end2="none" x1="13.5203" antialias="false"/>
+        <line y1="-93.495" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-89.22" x2="17.773" end2="none" x1="13.5203" antialias="false"/>
+        <line y1="-73.83" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-78.105" x2="17.773" end2="none" x1="13.5203" antialias="false"/>
+        <line y1="-89.22" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-93.495" x2="17.773" end2="none" x1="13.5203" antialias="false"/>
+        <line y1="-104.61" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-108.885" x2="17.773" end2="none" x1="13.5203" antialias="false"/>
+        <line y1="-81.525" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-85.8" x2="17.773" end2="none" x1="13.5203" antialias="false"/>
+        <line y1="17.0748" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="19.655" x2="5.93696" end2="none" x1="5.93696" antialias="false"/>
+        <text color="#000000" x="20.6082" rotation="0" y="-104.61" text="I\O" font="Sans Serif,3,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" x="20.6082" rotation="0" y="-73.83" text="ETH.100" font="Sans Serif,3,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" x="20.6082" rotation="0" y="-81.525" text="ETH.SYS" font="Sans Serif,3,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" x="20.2538" rotation="0" y="-89.125" text="CARD.ERR" font="Sans Serif,3,-1,5,50,0,0,0,0,0"/>
+        <line y1="23.075" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="23.93" x2="12.316" end2="none" x1="12.316" antialias="false"/>
+        <line y1="23.075" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="23.93" x2="11.6073" end2="none" x1="11.6073" antialias="false"/>
+        <line y1="14.4908" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="17.0729" x2="7.35454" end2="none" x1="7.35454" antialias="false"/>
+        <line y1="14.4908" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="17.0729" x2="12.316" end2="none" x1="12.316" antialias="false"/>
+        <line y1="17.0729" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="19.655" x2="13.7336" end2="none" x1="13.7336" antialias="false"/>
+        <line y1="19.655" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="19.655" x2="15.1512" end2="none" x1="4.51938" antialias="false"/>
+        <line y1="20.51" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="20.51" x2="4.51938" end2="none" x1="15.1512" antialias="false"/>
+        <line y1="19.655" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="23.93" x2="4.51938" end2="none" x1="4.51938" antialias="false"/>
+        <line y1="19.655" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="23.93" x2="15.1512" end2="none" x1="15.1512" antialias="false"/>
+        <line y1="119.4" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="119.4" x2="-19.997" end2="none" x1="40.25" antialias="false"/>
+        <line y1="23.93" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="23.93" x2="15.1512" end2="none" x1="4.51938" antialias="false"/>
+        <line y1="22.22" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="23.93" x2="6.64575" end2="none" x1="6.64575" antialias="false"/>
+        <line y1="22.22" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="23.93" x2="13.0248" end2="none" x1="13.0248" antialias="false"/>
+        <line y1="23.075" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="23.93" x2="7.35454" end2="none" x1="7.35454" antialias="false"/>
+        <line y1="23.075" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="23.93" x2="8.06332" end2="none" x1="8.06332" antialias="false"/>
+        <line y1="-120" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-120" x2="40.25" end2="none" x1="-19.997" antialias="false"/>
+        <line y1="23.075" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="23.93" x2="8.77211" end2="none" x1="8.77211" antialias="false"/>
+        <line y1="23.075" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="23.93" x2="9.4809" end2="none" x1="9.4809" antialias="false"/>
+        <line y1="23.075" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="23.93" x2="10.1897" end2="none" x1="10.1897" antialias="false"/>
+        <line y1="23.075" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="23.93" x2="10.8985" end2="none" x1="10.8985" antialias="false"/>
+        <line y1="119.4" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-120" x2="40.25" end2="none" x1="40.25" antialias="false"/>
+        <line y1="14.525" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="14.525" x2="12.316" end2="none" x1="7.35454" antialias="false"/>
+        <line y1="-68.7" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-68.7" x2="-18.5794" end2="none" x1="38.8324" antialias="false"/>
+        <line y1="17.09" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="17.09" x2="7.35454" end2="none" x1="5.93696" antialias="false"/>
+        <line y1="17.09" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="17.09" x2="13.7336" end2="none" x1="12.316" antialias="false"/>
+        <rect rx="0" width="14.8846" ry="0" style="line-style:normal;line-weight:thin;filling:none;color:black" x="2.39301" height="15.39" y="11.96" antialias="false"/>
+        <rect rx="0" width="2.83516" ry="0" style="line-style:normal;line-weight:thin;filling:none;color:black" x="2.39301" height="1.71" y="11.96" antialias="false"/>
+        <text color="#000000" x="10.7392" rotation="0" y="-113.16" text="BMXNOE0100" font="Sans Serif,3,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" x="0.97543" rotation="0" y="32.48" text="Ethernet 1" font="Sans Serif,4,-1,5,50,0,0,0,0,0"/>
+        <rect rx="0" width="31.8955" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="8.35454" height="8.55" y="-120" antialias="false"/>
+        <line y1="-68.7" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-120" x2="-18.5794" end2="none" x1="-18.5794" antialias="false"/>
+        <line y1="-111.45" end1="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-68.7" x2="38.8324" end2="none" x1="38.8324" antialias="false"/>
+        <polygon y1="27.35" x8="-7.94761" y3="-41.05" x4="-7.94761" x6="-0.859713" x2="-15.0355" x5="-7.94761" x3="-15.0355" y7="27.35" x1="-7.94761" closed="false" y5="-49.6" y2="27.35" y4="-41.05" x7="-0.859713" y8="27.35" y6="-49.6" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <terminal x="10" y="10" orientation="n"/>
+    </description>
+</definition>

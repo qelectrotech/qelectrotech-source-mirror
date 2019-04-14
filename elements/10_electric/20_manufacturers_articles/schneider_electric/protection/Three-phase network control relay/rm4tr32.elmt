@@ -1,0 +1,52 @@
+<definition version="0.70" width="80" type="element" height="70" hotspot_x="40" hotspot_y="42" link_type="master" orientation="dyyy">
+    <uuid uuid="{8a733b9f-9af8-4c7c-9814-d92567f8e6b0}"/>
+    <names>
+        <name lang="en">rm4tr32</name>
+    </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">coil</kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation name="designation" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+    </elementInformations>
+    <informations>EN 60617: 06-14-03</informations>
+    <description>
+        <line x2="-23" antialias="false" end1="none" y2="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-35" length1="1.5" end2="none" x1="-35" length2="1.5"/>
+        <text text="L1" x="-23" y="-25" size="5"/>
+        <line x2="-35" antialias="false" end1="none" y2="25" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-35" length1="1.5" end2="none" x1="-35" length2="1.5"/>
+        <text text="L2" x="-3" y="-25" size="5"/>
+        <circle antialias="false" diameter="5" x="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-37.5"/>
+        <text text="L3" x="17" y="-25" size="5"/>
+        <circle antialias="false" diameter="5" x="17.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-37.5"/>
+        <line x2="-3" antialias="false" end1="none" y2="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-35" length1="1.5" end2="none" x1="-17" length2="1.5"/>
+        <line x2="17" antialias="false" end1="none" y2="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-35" length1="1.5" end2="none" x1="3" length2="1.5"/>
+        <circle antialias="false" diameter="5" x="-22.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-37.5"/>
+        <arc start="269" antialias="true" width="19" height="17" x="-12.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-8.5" angle="80"/>
+        <line x2="-15" antialias="false" end1="none" y2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" length1="1.5" end2="none" x1="0" length2="1.5"/>
+        <line x2="15" antialias="false" end1="none" y2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" length1="1.5" end2="none" x1="-15" length2="1.5"/>
+        <line x2="15" antialias="false" end1="none" y2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" length1="1.5" end2="none" x1="0" length2="1.5"/>
+        <dynamic_text z="15" text_from="ElementInfo" rotation="0" font_family="Sans Serif" frame="false" x="-70" y="-31.5" uuid="{85582e89-73b3-4546-9679-65627c778223}" Valignment="AlignTop" font_size="9" Halignment="AlignLeft" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text text="Schneider Electric " x="-21" y="18" size="4"/>
+        <text text="RM4TR32" x="-11" y="23" size="4"/>
+        <line x2="35" antialias="false" end1="none" y2="-35" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-35" length1="1.5" end2="none" x1="23" length2="1.5"/>
+        <line x2="35" antialias="false" end1="none" y2="25" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-35" length1="1.5" end2="none" x1="35" length2="1.5"/>
+        <line x2="35" antialias="false" end1="none" y2="25" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="25" length1="1.5" end2="none" x1="-35" length2="1.5"/>
+        <text text="208...440V 50/60Hz" x="-23" y="-19" size="4"/>
+        <terminal x="-20" orientation="n" y="-38"/>
+        <terminal x="20" orientation="n" y="-38"/>
+        <terminal x="0" orientation="n" y="-38"/>
+    </description>
+</definition>
