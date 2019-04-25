@@ -1,0 +1,44 @@
+<definition width="50" type="element" version="0.70" hotspot_y="24" orientation="dyyy" hotspot_x="33" height="50" link_type="master">
+    <uuid uuid="{c1d17128-3672-44b5-a1dd-946af2444d6b}"/>
+    <names>
+        <name lang="fr">Relais temporisé</name>
+        <name lang="en">Timed relay</name>
+    </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">coil</kindInformation>
+    </kindInformations>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line y2="-8" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="-20" y1="-20" x2="-20" end1="none" end2="none" antialias="false" length2="1.5"/>
+        <rect width="44" x="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-8" height="16" ry="0" antialias="false" rx="0"/>
+        <line y2="-8" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="0" y1="-20" x2="0" end1="none" end2="none" antialias="false" length2="1.5"/>
+        <dynamic_text x="-2" Valignment="AlignTop" y="6" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_from="UserText" rotation="0" Halignment="AlignLeft" frame="false" uuid="{7c9456fd-7999-4382-b8ca-364e7f56f26b}" text_width="-1" z="3">
+            <text>A2</text>
+        </dynamic_text>
+        <dynamic_text x="-22" Valignment="AlignTop" y="-20" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_from="UserText" rotation="0" Halignment="AlignLeft" frame="false" uuid="{1b2f4273-3fdf-4db0-a089-24ffa51e26a2}" text_width="-1" z="4">
+            <text>Y</text>
+        </dynamic_text>
+        <dynamic_text x="-2" Valignment="AlignTop" y="-20" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_from="UserText" rotation="0" Halignment="AlignLeft" frame="false" uuid="{1b2f4273-3fdf-4db0-a089-24ffa51e26a2}" text_width="-1" z="4">
+            <text>A1</text>
+        </dynamic_text>
+        <dynamic_text x="20" Valignment="AlignTop" y="-15" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="ElementInfo" rotation="0" Halignment="AlignLeft" frame="false" uuid="{f4995b5d-50c3-44ed-bf88-0a296ff5f89e}" text_width="-1" z="6">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line y2="20" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="0" y1="8" x2="0" end1="none" end2="none" antialias="false" length2="1.5"/>
+        <line y2="8" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="-22" y1="-8" x2="-22" end1="none" end2="none" antialias="false" length2="1.5"/>
+        <line y2="8" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="-14" y1="-8" x2="-14" end1="none" end2="none" antialias="false" length2="1.5"/>
+        <line y2="-8" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="-22" y1="8" x2="-14" end1="none" end2="none" antialias="false" length2="1.5"/>
+        <line y2="8" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="-22" y1="-8" x2="-14" end1="none" end2="none" antialias="false" length2="1.5"/>
+        <dynamic_text x="20" Valignment="AlignTop" y="5" font="Sans Serif,7,-1,5,0,0,0,0,0,0,normal" text_from="ElementInfo" rotation="0" Halignment="AlignLeft" frame="false" uuid="{2213004b-dac5-4b09-a030-bf2ff66456bd}" text_width="-1" z="12">
+            <text></text>
+            <info_name>comment</info_name>
+        </dynamic_text>
+        <rect width="8" x="-30" style="line-style:normal;line-weight:normal;filling:black;color:black" y="-8" height="16" ry="0" antialias="false" rx="0"/>
+        <terminal x="-20" orientation="n" y="-20"/>
+        <terminal x="0" orientation="s" y="20"/>
+        <terminal x="0" orientation="n" y="-20"/>
+    </description>
+</definition>

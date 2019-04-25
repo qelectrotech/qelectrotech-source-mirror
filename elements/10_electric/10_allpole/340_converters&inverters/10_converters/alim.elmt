@@ -1,0 +1,47 @@
+<definition type="element" link_type="simple" width="70" height="60" hotspot_y="49" orientation="dyyy" hotspot_x="36" version="0.70">
+    <uuid uuid="{2bb4a252-1a7f-4893-b3bb-8a1c298d19a3}"/>
+    <names>
+        <name lang="pl">Zasilacz</name>
+        <name lang="nl">Gelijkrichter AC1/DC</name>
+        <name lang="en">Rectiﬁer</name>
+        <name lang="it">Raddrizzatore AC/DC</name>
+        <name lang="be">Gelijkrichter AC1/DC</name>
+        <name lang="fr">Redresseur AC/DC</name>
+        <name lang="de">Netzteil AC/DC</name>
+        <name lang="ar">موحد محكوم</name>
+        <name lang="el">Ανορθωτής</name>
+        <name lang="cs">Proudový zdroj</name>
+        <name lang="es">Rectificador</name>
+    </names>
+    <elementInformations/>
+    <informations>EN 60617: 06-14-03</informations>
+    <description>
+        <line x1="10" antialias="false" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x2="20" end2="none" y2="-13" end1="none"/>
+        <line x1="10" antialias="false" length1="1.5" length2="1.5" style="line-style:dotted;line-weight:normal;filling:none;color:black" y1="-15" x2="22" end2="none" y2="-15" end1="none"/>
+        <rect antialias="false" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-40" width="60" rx="0" height="40" x="-30"/>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{6b3b16fb-bd4b-4639-9469-076599faeba7}" Halignment="AlignLeft" y="-35.45" rotation="0" text_from="ElementInfo" z="2" Valignment="AlignTop" text_width="-1" x="33" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x1="-12" antialias="false" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x2="-8" end2="none" y2="-4" end1="none"/>
+        <line x1="8" antialias="false" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x2="12" end2="none" y2="-4" end1="none"/>
+        <line x1="-30" antialias="true" length1="0" length2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x2="30" end2="simple" y2="-40" end1="simple"/>
+        <arc angle="-175" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-35.5" width="5" height="5" start="0" x="-19.5"/>
+        <arc angle="-175" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-35.5" width="5" height="5" start="180" x="-24.5"/>
+        <line x1="-25" antialias="false" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x2="-14" end2="none" y2="-28" end1="none"/>
+        <line x1="10" antialias="false" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" x2="10" end2="none" y2="-2" end1="none"/>
+        <line x1="-10" antialias="false" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-45" x2="-10" end2="none" y2="-40" end1="none"/>
+        <line x1="10" antialias="false" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-45" x2="10" end2="none" y2="-40" end1="none"/>
+        <line x1="-10" antialias="false" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x2="-10" end2="none" y2="5" end1="none"/>
+        <line x1="10" antialias="false" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x2="10" end2="none" y2="5" end1="none"/>
+        <dynamic_text font="Sans Serif,7,-1,5,0,0,0,0,0,0,normal" uuid="{8420c46b-909b-49f8-8bba-fc9aeea69895}" Halignment="AlignLeft" y="-20" rotation="0" text_from="ElementInfo" z="16" Valignment="AlignTop" text_width="-1" x="35" frame="false">
+            <text></text>
+            <info_name>comment</info_name>
+        </dynamic_text>
+        <terminal y="-20" orientation="w" x="-30"/>
+        <terminal y="-45" orientation="n" x="-10"/>
+        <terminal y="-45" orientation="n" x="10"/>
+        <terminal y="5" orientation="s" x="10"/>
+        <terminal y="5" orientation="s" x="-10"/>
+    </description>
+</definition>

@@ -1,0 +1,38 @@
+<definition height="50" link_type="slave" version="0.70" hotspot_y="24" orientation="dyyy" width="40" type="element" hotspot_x="33">
+    <uuid uuid="{e7b66dbd-a6cb-4907-87b2-eda3b4bc3b45}"/>
+    <names>
+        <name lang="en">Timed switch rest </name>
+        <name lang="fr">Inverseur temporisé repos</name>
+    </names>
+    <kindInformations>
+        <kindInformation show="1" name="number">1</kindInformation>
+        <kindInformation show="1" name="state">SW</kindInformation>
+        <kindInformation show="1" name="type">delayOff</kindInformation>
+    </kindInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon antialias="true" y3="20" x3="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10" y1="-10" x2="0" x1="-15" closed="false"/>
+        <dynamic_text rotation="0" Halignment="AlignLeft" Valignment="AlignTop" uuid="{8e84a620-7969-4787-96bc-ad321e686495}" y="-14" text_width="-1" z="2" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="13" frame="false" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="2" end1="none" length1="1.5" end2="none" y1="2" x2="-8" x1="-20" length2="1.5"/>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-10" end1="none" length1="1.5" end2="none" y1="-20" x2="0" x1="0" length2="1.5"/>
+        <polygon antialias="false" y3="-8" x3="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-8" y1="-20" x2="-20" x1="-20" closed="false"/>
+        <dynamic_text rotation="0" Halignment="AlignLeft" Valignment="AlignTop" uuid="{2b486564-141b-4d6b-b567-70313ba791b1}" y="-28" text_width="-1" z="5" font="Sans Serif,4,-1,5,0,0,0,0,0,0,normal" x="-3" frame="false" text_from="UserText">
+            <text>18</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" Halignment="AlignLeft" Valignment="AlignTop" uuid="{2b486564-141b-4d6b-b567-70313ba791b1}" y="10" text_width="-1" z="5" font="Sans Serif,4,-1,5,0,0,0,0,0,0,normal" x="-2" frame="false" text_from="UserText">
+            <text>15</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" Halignment="AlignLeft" Valignment="AlignTop" uuid="{2b486564-141b-4d6b-b567-70313ba791b1}" y="-28" text_width="-1" z="5" font="Sans Serif,4,-1,5,0,0,0,0,0,0,normal" x="-22" frame="false" text_from="UserText">
+            <text>16</text>
+        </dynamic_text>
+        <line antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="0" end1="none" length1="1.5" end2="none" y1="0" x2="-8" x1="-20" length2="1.5"/>
+        <arc height="8" antialias="true" y="-2.95082" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-27.6503" angle="180" start="270" width="8"/>
+        <terminal y="20" x="0" orientation="s"/>
+        <terminal y="-20" x="-20" orientation="n"/>
+        <terminal y="-20" x="0" orientation="n"/>
+    </description>
+</definition>
