@@ -1,0 +1,39 @@
+<definition link_type="master" hotspot_x="51" type="element" width="60" height="50" hotspot_y="24" version="0.70" orientation="dyyy">
+    <uuid uuid="{1efb43f5-78b4-401d-8031-581442217549}"/>
+    <names>
+        <name lang="fr">Interrupteur sectionneur biphasé</name>
+        <name lang="es">Seccionador 2P mando de palanca</name>
+    </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">protection</kindInformation>
+    </kindInformations>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon y3="20" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x3="0" y2="10" closed="false" antialias="true" x1="-5" x2="0"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-42" antialias="true" y="10" diameter="4"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-22" antialias="true" y="-12" diameter="4"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2" antialias="true" y="-12" diameter="4"/>
+        <polygon y3="20" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x3="0" y2="10" closed="false" antialias="true" x1="-5" x2="0"/>
+        <polygon y3="20" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x3="-20" y2="10" closed="false" antialias="true" x1="-25" x2="-20"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" y2="-12" antialias="false" x1="0" end1="none" length2="1.5" x2="0" end2="none"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" y2="-12" antialias="false" x1="2" end1="none" length2="1.5" x2="-2" end2="none"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" y2="-12" antialias="false" x1="-20" end1="none" length2="1.5" x2="-20" end2="none"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" y2="-12" antialias="false" x1="-18" end1="none" length2="1.5" x2="-22" end2="none"/>
+        <line length1="1.5" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="0" y2="0" antialias="false" x1="-4" end1="none" length2="1.5" x2="-40" end2="none"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" y2="-10" antialias="false" x1="-40" end1="none" length2="1.5" x2="-45" end2="none"/>
+        <dynamic_text Valignment="AlignTop" rotation="0" Halignment="AlignLeft" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_width="-1" text_from="ElementInfo" uuid="{620b15e0-0261-49ea-a770-4bc5f7c1444e}" frame="false" x="8" y="-32" z="18">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" rotation="0" Halignment="AlignLeft" font="Sans Serif,7,-1,5,0,0,0,0,0,0,normal" text_width="-1" text_from="ElementInfo" uuid="{61e061f0-9168-437d-86a6-72874b562b56}" frame="false" x="4" y="-8" z="19">
+            <text></text>
+            <info_name>comment</info_name>
+        </dynamic_text>
+        <terminal x="-20" y="20" orientation="s"/>
+        <terminal x="0" y="20" orientation="s"/>
+        <terminal x="0" y="-20" orientation="n"/>
+        <terminal x="-20" y="-20" orientation="n"/>
+    </description>
+</definition>
