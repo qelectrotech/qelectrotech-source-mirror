@@ -1,0 +1,19 @@
+<definition height="70" link_type="simple" version="0.70" type="element" width="30" hotspot_x="15" hotspot_y="35" orientation="dyyy">
+    <uuid uuid="{34180239-8a1b-42b0-9f0f-a9eed0270184}"/>
+    <names>
+        <name lang="en">TSXTLYEX_A</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: The QElectroTech team
+     License: see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version: V2.0
+
+</informations>
+    <description>
+        <rect height="66" x="-10" style="line-style:normal;line-weight:normal;filling:gray;color:black" width="20" y="-33" ry="0" antialias="false" rx="0"/>
+        <line y2="-10" y1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10" end1="none" end2="none" x1="-10" length1="1.5" length2="1.5" antialias="false"/>
+        <text size="9" text="A" x="-4" y="-13"/>
+        <text size="9" text="B" x="-4" y="21" color="white"/>
+    </description>
+</definition>

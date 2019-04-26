@@ -1,0 +1,185 @@
+<definition version="0.70" type="element" width="1020" link_type="simple" hotspot_x="55" orientation="dyyy" hotspot_y="15" height="110">
+    <uuid uuid="{95b64da3-b7b4-45bf-a7da-1896fc4d3707}"/>
+    <names>
+        <name lang="en">bmxddo_4</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <text size="6" x="938" y="63" text="A3"/>
+        <text size="6" x="588" y="63" text="B6"/>
+        <text size="6" x="638" y="63" text="A6"/>
+        <text size="6" x="688" y="63" text="B5"/>
+        <text size="6" x="188" y="63" text="B10"/>
+        <text size="6" x="238" y="63" text="A10"/>
+        <text size="6" x="738" y="63" text="A5"/>
+        <text size="6" x="788" y="64" text="B4"/>
+        <text size="6" x="838" y="63" text="A4"/>
+        <text size="6" x="538" y="63" text="A7"/>
+        <text size="6" x="488" y="63" text="B7"/>
+        <text size="6" x="888" y="63" text="B3"/>
+        <text size="6" x="388" y="64" text="B8"/>
+        <text size="6" x="338" y="63" text="A9"/>
+        <text size="6" x="438" y="63" text="A8"/>
+        <text size="6" x="288" y="63" text="B9"/>
+        <text size="6" x="324" y="32" text="Q51"/>
+        <text size="6" x="673" y="31" text="Q58"/>
+        <text size="6" x="575" y="31" text="Q56"/>
+        <text size="6" x="622" y="30" text="Q57"/>
+        <text size="6" x="924" y="31" text="Q63"/>
+        <text size="6" x="174" y="32" text="Q48"/>
+        <text size="6" x="274" y="32" text="Q50"/>
+        <text size="6" x="224" y="32" text="Q49"/>
+        <text size="6" x="724" y="31" text="Q59"/>
+        <dynamic_text font_family="Sans Serif" Halignment="AlignLeft" Valignment="AlignTop" z="26" font_size="7" frame="false" x="29" uuid="{f1a8ebf2-dc4a-4a49-a545-e4a6b5fdf5df}" y="64" text_width="-1" rotation="0" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text font_family="Sans Serif" Halignment="AlignLeft" Valignment="AlignTop" z="26" font_size="7" frame="false" x="210" uuid="{f1a8ebf2-dc4a-4a49-a545-e4a6b5fdf5df}" y="64" text_width="-1" rotation="0" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text size="6" x="775" y="31" text="Q60"/>
+        <text size="6" x="824" y="31" text="Q61"/>
+        <text size="6" x="128" y="48" text="A2"/>
+        <text size="6" x="875" y="31" text="Q62"/>
+        <text size="6" x="373" y="31" text="Q52"/>
+        <text size="6" x="524" y="31" text="Q55"/>
+        <text size="6" x="423" y="30" text="Q53"/>
+        <text size="6" x="475" y="31" text="Q54"/>
+        <arc angle="180" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" x="526" start="180" antialias="true" y="39" height="10"/>
+        <arc angle="180" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" x="576" start="180" antialias="true" y="39" height="10"/>
+        <arc angle="180" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" x="476" start="180" antialias="true" y="39" height="10"/>
+        <arc angle="180" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" x="626" start="180" antialias="true" y="39" height="10"/>
+        <arc angle="180" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" x="426" start="180" antialias="true" y="39" height="10"/>
+        <arc angle="180" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" x="376" start="180" antialias="true" y="39" height="10"/>
+        <text size="6" x="87" y="48" text="A1"/>
+        <arc angle="180" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" x="876" start="180" antialias="true" y="39" height="10"/>
+        <arc angle="180" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" x="726" start="180" antialias="true" y="39" height="10"/>
+        <arc angle="180" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" x="776" start="180" antialias="true" y="39" height="10"/>
+        <arc angle="180" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" x="826" start="180" antialias="true" y="39" height="10"/>
+        <arc angle="180" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" x="676" start="180" antialias="true" y="39" height="10"/>
+        <arc angle="180" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" x="926" start="180" antialias="true" y="39" height="10"/>
+        <arc angle="180" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" x="326" start="180" antialias="true" y="39" height="10"/>
+        <arc angle="180" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" x="276" start="180" antialias="true" y="39" height="10"/>
+        <arc angle="180" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" x="226" start="180" antialias="true" y="39" height="10"/>
+        <arc angle="180" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" x="176" start="180" antialias="true" y="39" height="10"/>
+        <line x1="630" y2="45" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="35" end1="none" antialias="false" x2="630"/>
+        <line x1="830" y2="45" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="35" end1="none" antialias="false" x2="830"/>
+        <line x1="230" y2="45" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="35" end1="none" antialias="false" x2="230"/>
+        <line x1="780" y2="45" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="35" end1="none" antialias="false" x2="780"/>
+        <dynamic_text font_family="Sans Serif" Halignment="AlignLeft" Valignment="AlignTop" z="55" font_size="9" frame="false" x="390" uuid="{d438a679-5857-4a79-a5bf-0c8b2f12de07}" y="-5" text_width="-1" rotation="0" text_from="UserText">
+            <text>BMXDDO6402K (channel 48-63)   A-connector (right)</text>
+        </dynamic_text>
+        <line x1="680" y2="45" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="35" end1="none" antialias="false" x2="680"/>
+        <line x1="730" y2="45" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="35" end1="none" antialias="false" x2="730"/>
+        <line x1="580" y2="45" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="35" end1="none" antialias="false" x2="580"/>
+        <line x1="280" y2="45" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="35" end1="none" antialias="false" x2="280"/>
+        <line x1="530" y2="45" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="35" end1="none" antialias="false" x2="530"/>
+        <line x1="880" y2="45" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="35" end1="none" antialias="false" x2="880"/>
+        <line x1="930" y2="45" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="35" end1="none" antialias="false" x2="930"/>
+        <text size="6" x="-3" y="23" text="B1"/>
+        <line x1="180" y2="45" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="35" end1="none" antialias="false" x2="180"/>
+        <line x1="480" y2="45" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="35" end1="none" antialias="false" x2="480"/>
+        <line x1="380" y2="45" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="35" end1="none" antialias="false" x2="380"/>
+        <line x1="330" y2="45" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="35" end1="none" antialias="false" x2="330"/>
+        <line x1="430" y2="45" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="35" end1="none" antialias="false" x2="430"/>
+        <rect rx="0" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="375" antialias="false" y="55" ry="0" height="10"/>
+        <rect rx="0" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="675" antialias="false" y="55" ry="0" height="10"/>
+        <rect rx="0" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="325" antialias="false" y="55" ry="0" height="10"/>
+        <rect rx="0" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="425" antialias="false" y="55" ry="0" height="10"/>
+        <rect rx="0" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="475" antialias="false" y="55" ry="0" height="10"/>
+        <rect rx="0" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="525" antialias="false" y="55" ry="0" height="10"/>
+        <rect rx="0" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="175" antialias="false" y="55" ry="0" height="10"/>
+        <rect rx="0" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="575" antialias="false" y="55" ry="0" height="10"/>
+        <rect rx="0" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="625" antialias="false" y="55" ry="0" height="10"/>
+        <rect rx="0" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="275" antialias="false" y="55" ry="0" height="10"/>
+        <rect rx="0" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="225" antialias="false" y="55" ry="0" height="10"/>
+        <rect rx="0" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="925" antialias="false" y="55" ry="0" height="10"/>
+        <text size="6" x="370.4" y="66" text="gray" rotation="270"/>
+        <rect rx="0" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="875" antialias="false" y="55" ry="0" height="10"/>
+        <rect rx="0" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="825" antialias="false" y="55" ry="0" height="10"/>
+        <rect rx="0" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="775" antialias="false" y="55" ry="0" height="10"/>
+        <rect rx="0" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="725" antialias="false" y="55" ry="0" height="10"/>
+        <line x1="830" y2="49" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="55" end1="none" antialias="false" x2="830"/>
+        <line x1="780" y2="49" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="55" end1="none" antialias="false" x2="780"/>
+        <line x1="230" y2="49" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="55" end1="none" antialias="false" x2="230"/>
+        <line x1="880" y2="49" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="55" end1="none" antialias="false" x2="880"/>
+        <text size="6" x="37" y="23" text="B2"/>
+        <line x1="330" y2="49" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="55" end1="none" antialias="false" x2="330"/>
+        <line x1="380" y2="49" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="55" end1="none" antialias="false" x2="380"/>
+        <line x1="180" y2="49" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="55" end1="none" antialias="false" x2="180"/>
+        <line x1="680" y2="49" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="55" end1="none" antialias="false" x2="680"/>
+        <line x1="730" y2="49" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="55" end1="none" antialias="false" x2="730"/>
+        <line x1="280" y2="49" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="55" end1="none" antialias="false" x2="280"/>
+        <line x1="530" y2="49" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="55" end1="none" antialias="false" x2="530"/>
+        <line x1="930" y2="49" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="55" end1="none" antialias="false" x2="930"/>
+        <line x1="480" y2="49" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="55" end1="none" antialias="false" x2="480"/>
+        <line x1="430" y2="49" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="55" end1="none" antialias="false" x2="430"/>
+        <line x1="630" y2="49" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="55" end1="none" antialias="false" x2="630"/>
+        <line x1="580" y2="49" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="55" end1="none" antialias="false" x2="580"/>
+        <text size="6" x="110" y="60" text="gray-brown" rotation="270"/>
+        <text size="6" x="71.3" y="59" text="pink-brown" rotation="270"/>
+        <text size="6" x="20.2" y="59" text="white-gray" rotation="270"/>
+        <text size="6" x="-20.9" y="59" text="white-pink" rotation="270"/>
+        <text size="6" x="921.9" y="67" text="yellow-brown" rotation="270"/>
+        <text size="6" x="219.1" y="68" text="brown" rotation="270"/>
+        <text size="6" x="822.7" y="67" text="brown-green" rotation="270"/>
+        <text size="6" x="772.6" y="67" text="white-green" rotation="270"/>
+        <text size="6" x="671.4" y="67" text="gray-pink" rotation="270"/>
+        <text size="6" x="269.2" y="67" text="green" rotation="270"/>
+        <text size="6" x="320" y="66" text="yellow" rotation="270"/>
+        <text size="6" x="420.5" y="67" text="pink" rotation="270"/>
+        <text size="6" x="470" y="67" text="blue" rotation="270"/>
+        <text size="6" x="621.3" y="67" text="violet" rotation="270"/>
+        <text size="6" x="871.8" y="67" text="white-yellow" rotation="270"/>
+        <text size="6" x="571.2" y="67" text="black" rotation="270"/>
+        <text size="6" x="522.1" y="67" text="red" rotation="270"/>
+        <text size="6" x="720.5" y="67" text="red-blue" rotation="270"/>
+        <text size="6" x="113" y="17" text="SPS-"/>
+        <text size="6" x="73" y="17" text="SPS-"/>
+        <text size="6" x="22" y="54" text="SPS+"/>
+        <arc angle="-180" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" x="26" start="180" antialias="true" y="31" height="10"/>
+        <arc angle="180" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" x="116" start="180" antialias="true" y="24" height="10"/>
+        <arc angle="180" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" x="76" start="180" antialias="true" y="24" height="10"/>
+        <text size="6" x="-18" y="54" text="SPS+"/>
+        <line x1="120" y2="30" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" end1="none" antialias="false" x2="120"/>
+        <line x1="80" y2="30" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" end1="none" antialias="false" x2="80"/>
+        <line x1="30" y2="45" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="35" end1="none" antialias="false" x2="30"/>
+        <rect rx="0" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="25" antialias="false" y="15" ry="0" height="10"/>
+        <rect rx="0" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="75" antialias="false" y="40" ry="0" height="10"/>
+        <rect rx="0" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="115" antialias="false" y="40" ry="0" height="10"/>
+        <line x1="30" y2="25" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="31" end1="none" antialias="false" x2="30"/>
+        <line x1="80" y2="34" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" end1="none" antialias="false" x2="80"/>
+        <line x1="120" y2="34" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" end1="none" antialias="false" x2="120"/>
+        <rect rx="0" width="1010" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-50" antialias="false" y="-10" ry="0" height="100"/>
+        <arc angle="-180" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-14" start="180" antialias="true" y="31" height="10"/>
+        <line x1="-10" y2="45" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="35" end1="none" antialias="false" x2="-10"/>
+        <rect rx="0" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-15" antialias="false" y="15" ry="0" height="10"/>
+        <line x1="150" y2="70" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="70" end1="none" antialias="false" x2="960"/>
+        <line x1="-10" y2="25" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="31" end1="none" antialias="false" x2="-10"/>
+        <line x1="150" y2="90" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" end1="none" antialias="false" x2="150"/>
+        <line x1="150" y2="20" end2="none" length2="1.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" end1="none" antialias="false" x2="960"/>
+        <text size="6" x="169" y="67" text="white" rotation="270"/>
+        <terminal orientation="s" x="530" y="60"/>
+        <terminal orientation="s" x="880" y="60"/>
+        <terminal orientation="s" x="780" y="60"/>
+        <terminal orientation="s" x="230" y="60"/>
+        <terminal orientation="s" x="830" y="60"/>
+        <terminal orientation="s" x="180" y="60"/>
+        <terminal orientation="s" x="330" y="60"/>
+        <terminal orientation="s" x="380" y="60"/>
+        <terminal orientation="s" x="730" y="60"/>
+        <terminal orientation="s" x="930" y="60"/>
+        <terminal orientation="s" x="280" y="60"/>
+        <terminal orientation="s" x="680" y="60"/>
+        <terminal orientation="s" x="630" y="60"/>
+        <terminal orientation="s" x="480" y="60"/>
+        <terminal orientation="s" x="430" y="60"/>
+        <terminal orientation="s" x="120" y="45"/>
+        <terminal orientation="s" x="580" y="60"/>
+        <terminal orientation="s" x="80" y="45"/>
+        <terminal orientation="n" x="-10" y="15"/>
+        <terminal orientation="n" x="30" y="15"/>
+    </description>
+</definition>
