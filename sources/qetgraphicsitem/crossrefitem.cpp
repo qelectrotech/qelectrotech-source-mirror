@@ -652,6 +652,7 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
                     QRectF r(10, offset+7.5, 5, 3);
                     painter.drawArc(r, 0, 180*16);
 				}
+
 			}
 		}
 
@@ -671,14 +672,14 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
 		++m_drawed_contacts;
 	}
 
-	//Draw a switch contact
+		//Draw a switch contact
 	else if (flags &SW)
 	{
 		bounding_rect = QRectF(0, offset, 24, 20);
 
-		//draw the NO side
+			//draw the NO side
 		painter.drawLine(0, offset+6, 8, offset+6);
-		//Draw the NC side
+			//Draw the NC side
 		QPointF p1[3] = {
 			QPointF(0, offset+16),
 			QPointF(8, offset+16),
@@ -686,7 +687,7 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
 		};
 		painter.drawPolyline(p1, 3);
 
-		//Draw the common side
+			//Draw the common side
 		QPointF p2[3] = {
 			QPointF(7, offset+14),
 			QPointF(16, offset+11),
@@ -694,17 +695,29 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
 		};
 		painter.drawPolyline(p2, 3);
 
+			//Draw the half ellipse off delay
+		if (flags &Delay)
+		{
+			painter.drawLine(12, offset+13, 12, offset+16);
+			if (flags &DelayOn) {
+				QRectF r(9.5, offset+14, 5, 3);
+				painter.drawArc(r, 180*16, 180*16);
+			}
+			else if (flags &DelayOff) {
+				QRectF r(9.5, offset+16.5, 5, 3);
+				painter.drawArc(r, 0, 180*16);
+			}
+		}
+
 			//Draw position text
 		QRectF text_rect = painter.boundingRect(QRectF(30, offset+5, 5, 10), Qt::AlignLeft | Qt::AlignVCenter, str);
 		painter.drawText(text_rect, Qt::AlignLeft | Qt::AlignVCenter, str);
 		bounding_rect = bounding_rect.united(text_rect);
 
-		if (m_hovered_contacts_map.contains(elmt))
-		{
+		if (m_hovered_contacts_map.contains(elmt)) {
 			m_hovered_contacts_map.insertMulti(elmt, bounding_rect);
 		}
-		else
-		{
+		else {
 			m_hovered_contacts_map.insert(elmt, bounding_rect);
 		}
 
