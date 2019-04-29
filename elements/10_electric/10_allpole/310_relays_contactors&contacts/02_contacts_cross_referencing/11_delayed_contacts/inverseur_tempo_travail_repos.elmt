@@ -7,7 +7,7 @@
     <kindInformations>
         <kindInformation show="1" name="number">1</kindInformation>
         <kindInformation show="1" name="state">SW</kindInformation>
-        <kindInformation show="1" name="type">simple</kindInformation>
+        <kindInformation show="1" name="type">delayOnOff</kindInformation>
     </kindInformations>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

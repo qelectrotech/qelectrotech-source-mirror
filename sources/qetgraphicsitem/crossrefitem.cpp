@@ -552,6 +552,7 @@ void CrossRefItem::drawAsContacts(QPainter &painter)
 				 if (type == "power")    option += Power;
 			else if (type == "delayOn")  option += DelayOn;
 			else if (type == "delayOff") option += DelayOff;
+			else if (type == "delayOnOff") option += DelayOnOff;
 
 			QRectF br = drawContact(painter, option, elmt);
 			bounding_rect = bounding_rect.united(br);
@@ -625,9 +626,9 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
 				painter.drawArc(arc, 0, 180*16);
 		}
 
-		// draw half circle for delay contact
+			// draw half circle for delay contact
 		if(flags &Delay) {
-			// for delay on contact
+				// for delay on contact
 			if (flags &DelayOn) {
 				if (flags &NO) {
                     painter.drawLine(12, offset+8, 12, offset+11);
@@ -640,8 +641,8 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
                     painter.drawArc(r, 180*16, 180*16);
 				}
 			}
-			// for delay off contact
-			else {
+				// for delay off contact
+			else if ( flags &DelayOff){
 				if (flags &NO) {
                     painter.drawLine(12, offset+8, 12, offset+9.5);
                     QRectF r(9.5, offset+9.5, 5, 3);
@@ -653,6 +654,23 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
                     painter.drawArc(r, 0, 180*16);
 				}
 
+			}
+			else {
+					// for delay on contact
+				if (flags &NO) {
+					painter.drawLine(12, offset+8, 12, offset+11);
+					QRectF r(9.5, offset+11.7, 5, 3);
+					painter.drawArc(r, 0, 180*16);
+					QRectF rl(9.5, offset+9, 5, 3);
+					painter.drawArc(rl, 180*16, 180*16);
+				}
+				if (flags &NC) {
+					painter.drawLine(QPointF(12.5, offset+5), QPointF(12.5, offset+8));
+					QRectF r(9.5, offset+10.7, 5, 3);
+					painter.drawArc(r, 0, 180*16);
+					QRectF rl(9.5, offset+8, 5, 3);
+					painter.drawArc(rl, 180*16, 180*16);
+				}
 			}
 		}
 
@@ -706,6 +724,12 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
 			else if (flags &DelayOff) {
 				QRectF r(9.5, offset+16.5, 5, 3);
 				painter.drawArc(r, 0, 180*16);
+			}
+			else if (flags &DelayOnOff) {
+				QRectF r(9.5, offset+14, 5, 3);
+				painter.drawArc(r, 180*16, 180*16);
+				QRectF rr(9.5, offset+17, 5, 3);
+				painter.drawArc(rr, 0, 180*16);
 			}
 		}
 

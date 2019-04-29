@@ -114,6 +114,7 @@ void ElementPropertiesEditorWidget::setUpInterface()
 	ui->m_type_cb->addItem(tr("Puissance"),			QVariant("power"));
 	ui->m_type_cb->addItem(tr("Temporisé travail"), QVariant("delayOn"));
 	ui->m_type_cb->addItem(tr("Temporisé repos"),	QVariant("delayOff"));
+	ui->m_type_cb->addItem(tr("Temporisé travail & repos"), QVariant("delayOnOff"));
 
 		//Master option
 	ui->m_master_type_cb->addItem(tr("Bobine"),				  QVariant("coil"));
