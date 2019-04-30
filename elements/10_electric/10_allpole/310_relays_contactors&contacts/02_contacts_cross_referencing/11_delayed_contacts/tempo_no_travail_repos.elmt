@@ -1,0 +1,28 @@
+<definition type="element" height="50" width="40" orientation="dyyy" hotspot_x="21" hotspot_y="24" link_type="slave" version="0.70">
+    <uuid uuid="{248ac6e9-3f18-4c6e-8f85-914db7ef49c7}"/>
+    <names>
+        <name lang="fr">Contact simple NO (tempo repos et travail)</name>
+        <name lang="en">Simple contact (switch-on and off delay timer)</name>
+    </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">delayOnOff</kindInformation>
+        <kindInformation name="state" show="1">NO</kindInformation>
+        <kindInformation name="number" show="1">1</kindInformation>
+    </kindInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" angle="-180" width="10" x="-14" y="-5" start="90" antialias="true"/>
+        <arc height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" angle="-180" width="10" x="-4" y="-5" start="270" antialias="true"/>
+        <polygon closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="5" y1="-10" antialias="true" x2="10" y2="10" x3="10" y3="20"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" x1="-4" end2="none" length1="1.5" length2="1.5" y1="1.5" antialias="false" x2="7" y2="1.5"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" x1="-4" end2="none" length1="1.5" length2="1.5" y1="-1.5" antialias="false" x2="7" y2="-1.5"/>
+        <dynamic_text Halignment="AlignLeft" rotation="0" x="12.75" text_from="ElementInfo" y="-8" uuid="{ba372a7c-21f3-4e1e-86bb-03e0e24bbb65}" text_width="-1" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" z="5">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="10" end2="none" length1="1.5" length2="1.5" y1="-20" antialias="false" x2="10" y2="-10"/>
+        <terminal x="10" orientation="n" y="-20"/>
+        <terminal x="10" orientation="s" y="20"/>
+    </description>
+</definition>
