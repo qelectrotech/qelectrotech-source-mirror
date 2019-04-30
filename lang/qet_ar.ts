@@ -969,23 +969,23 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <translation>لصق متعدد</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="547"/>
+        <location filename="../sources/diagramview.cpp" line="545"/>
         <source>Connecter les bornes sélectionnées</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="819"/>
+        <location filename="../sources/diagramview.cpp" line="817"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>بدون عنوان</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="946"/>
+        <location filename="../sources/diagramview.cpp" line="944"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>إختيار اللون الجديد لهذا الموصل</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="965"/>
+        <location filename="../sources/diagramview.cpp" line="963"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>تغيير خاصيات موصل</translation>
@@ -1121,28 +1121,28 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="139"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="462"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="469"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1177"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1312"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="461"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="468"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1176"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1311"/>
         <source>Texte utilisateur</source>
         <translation>نصّ المستخدم</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="140"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="464"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="475"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1182"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1313"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="463"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="474"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1181"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1312"/>
         <source>Information de l&apos;élément</source>
         <translation>معلومة العنصر</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="141"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="175"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="466"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="481"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1314"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="465"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="480"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1313"/>
         <source>Texte composé</source>
         <translation>نصّ مُركّب</translation>
     </message>
@@ -1172,133 +1172,133 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="249"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="248"/>
         <source>Largeur</source>
         <translation>عرض</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="306"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="305"/>
         <source>Éditer</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="501"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="500"/>
         <source>Modifier la police d&apos;un texte d&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="558"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="557"/>
         <source>Modifier l&apos;alignement d&apos;un texte d&apos;élément</source>
         <translation>تعديل محاذاة نص عنصر</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="494"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="493"/>
         <source>Modifier la taille d&apos;un texte d&apos;élément</source>
         <translation>تعديل حجم نصّ العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="508"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="507"/>
         <source>Modifier la couleur d&apos;un texte d&apos;élément</source>
         <translation>تعديل لون نصّ العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="515"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="514"/>
         <source>Modifier le cadre d&apos;un texte d&apos;élément</source>
         <translation>تغيير إطار نصّ العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="523"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="522"/>
         <source>Modifier la largeur d&apos;un texte d&apos;élément</source>
         <translation>تغيير عرض نصّ عنصر</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="535"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="534"/>
         <source>Déplacer un texte d&apos;élément</source>
         <translation>تحريك نص عنصر</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="547"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="546"/>
         <source>Pivoter un texte d&apos;élément</source>
         <translation>دوران نصّ العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="579"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="578"/>
         <source>Éditer un groupe de textes</source>
         <translation>تحرير مجموعة نصوص</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="587"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="662"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1405"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="586"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="661"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1403"/>
         <source>Gauche</source>
         <translation>يسار</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="589"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="663"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1406"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="588"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="662"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1404"/>
         <source>Droite</source>
         <translation>يمين</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="591"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="664"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1407"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="590"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="663"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1405"/>
         <source>Centre</source>
         <translation>مركز</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="303"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="657"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="302"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="656"/>
         <source>Alignement</source>
         <translation>مُحاذاة</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="713"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="712"/>
         <source>Ajustement vertical</source>
         <translation>تعديل عمودي</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="739"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="738"/>
         <source>Maintenir en bas de page</source>
         <translation>احتفظ في أسفل الصفحة</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1018"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1017"/>
         <source>Déplacer un texte dans un autre groupe</source>
         <translation>تحريك نصّ في مجموعة أخرى</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="221"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="220"/>
         <source>Couleur</source>
         <translation>لون</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="235"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="725"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="234"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="724"/>
         <source>Cadre</source>
         <translation>إطار</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="264"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="675"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="263"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="674"/>
         <source>Position X</source>
         <translation>موضع X</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="277"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="688"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="276"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="687"/>
         <source>Position Y</source>
         <translation>موضع Y</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="290"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="701"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="289"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="700"/>
         <source>Rotation</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="454"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="453"/>
         <source>Éditer un texte d&apos;élément</source>
         <translation>دوران</translation>
     </message>
@@ -1427,32 +1427,32 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>DynamicTextItemDelegate</name>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1460"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1458"/>
         <source>Texte utilisateur</source>
         <translation>نصّ المستخدم</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1461"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1459"/>
         <source>Information de l&apos;élément</source>
         <translation>معلومة العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1462"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1460"/>
         <source>Texte composé</source>
         <translation>نصّ مُركّب</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1575"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1580"/>
         <source>Gauche</source>
         <translation>يسار</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1576"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1581"/>
         <source>Centre</source>
         <translation>مركز</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1577"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1582"/>
         <source>Droite</source>
         <translation>يمين</translation>
     </message>
@@ -1460,8 +1460,8 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>Element</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="945"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="999"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="944"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="998"/>
         <source>Label + commentaire</source>
         <translation>مُلصق + تعليق</translation>
     </message>
@@ -1682,65 +1682,70 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <translation>قيّم</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="103"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="114"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="102"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="113"/>
         <source>Simple</source>
         <translation>مفردة</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="104"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="103"/>
         <source>Maître</source>
         <translation>قائد</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="105"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="104"/>
         <source>Esclave</source>
         <translation>مُنقاد</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="106"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="105"/>
         <source>Renvoi de folio suivant</source>
         <translation>إحالة للورقة التالية</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="107"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="106"/>
         <source>Renvoi de folio précédent</source>
         <translation>إحالة للورقة السابقة </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="108"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="107"/>
         <source>Bornier</source>
         <translation>نهاية توصيل</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="111"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="110"/>
         <source>Normalement ouvert</source>
         <translation>عادة مفتوح</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="112"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="111"/>
         <source>Normalement fermé</source>
         <translation>عادة مُغلق</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="113"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="112"/>
         <source>Inverseur</source>
         <translation>عاكس</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="115"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="114"/>
         <source>Puissance</source>
         <translation>قدرة</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="116"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="115"/>
         <source>Temporisé travail</source>
         <translation>مُؤقت للتشغيل</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="117"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="116"/>
         <source>Temporisé repos</source>
         <translation>مُؤقت للتوقف</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="117"/>
+        <source>Temporisé travail &amp; repos</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="120"/>
@@ -2290,111 +2295,111 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
 <context>
     <name>ExportDialog</name>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="70"/>
+        <location filename="../sources/exportdialog.cpp" line="71"/>
         <source>Exporter</source>
         <translation>تصدير</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="78"/>
+        <location filename="../sources/exportdialog.cpp" line="79"/>
         <source>Tout cocher</source>
         <translation>وضع علامة على الكلّ</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="79"/>
+        <location filename="../sources/exportdialog.cpp" line="80"/>
         <source>Tout décocher</source>
         <translation>إزالة العلامة عن الكلّ</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="60"/>
+        <location filename="../sources/exportdialog.cpp" line="61"/>
         <source>Exporter les folios du projet</source>
         <comment>window title</comment>
         <translation>تصفية</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="75"/>
+        <location filename="../sources/exportdialog.cpp" line="76"/>
         <source>Choisissez les folios que vous désirez exporter ainsi que leurs dimensions :</source>
         <translation>اختر الصفحات المُراد تصديرها وكذلك مقاساتها :</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="141"/>
+        <location filename="../sources/exportdialog.cpp" line="142"/>
         <source>Titre du folio</source>
         <translation>عنوان الصفحة</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="142"/>
+        <location filename="../sources/exportdialog.cpp" line="143"/>
         <source>Nom de fichier</source>
         <translation>اسم الملف</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="143"/>
+        <location filename="../sources/exportdialog.cpp" line="144"/>
         <source>Dimensions</source>
         <translation>مقاسات</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="436"/>
+        <location filename="../sources/exportdialog.cpp" line="435"/>
         <source>Auteur</source>
         <translation>المؤلف</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="437"/>
-        <location filename="../sources/exportdialog.cpp" line="671"/>
+        <location filename="../sources/exportdialog.cpp" line="436"/>
+        <location filename="../sources/exportdialog.cpp" line="672"/>
         <source>Titre</source>
         <translation>العنوان</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="438"/>
+        <location filename="../sources/exportdialog.cpp" line="437"/>
         <source>Folio</source>
         <translation>ورقة</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="439"/>
+        <location filename="../sources/exportdialog.cpp" line="438"/>
         <source>Date</source>
         <translation>التاريخ</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="735"/>
+        <location filename="../sources/exportdialog.cpp" line="736"/>
         <source>Noms des fichiers cibles</source>
         <comment>message box title</comment>
         <translation>أسماء الملفات المستهدفة</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="736"/>
+        <location filename="../sources/exportdialog.cpp" line="737"/>
         <source>Vous devez entrer un nom de fichier non vide et unique pour chaque folio à exporter.</source>
         <comment>message box content</comment>
         <translation>لا بُدّ من إدخال اسم ملف غير فارغ و وحيد لكلّ صفحة تُصدّرها .</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="751"/>
+        <location filename="../sources/exportdialog.cpp" line="752"/>
         <source>Dossier non spécifié</source>
         <comment>message box title</comment>
         <translation>مجلد غير مُعرّف</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="752"/>
+        <location filename="../sources/exportdialog.cpp" line="753"/>
         <source>Vous devez spécifier le chemin du dossier dans lequel seront enregistrés les fichiers images.</source>
         <comment>message box content</comment>
         <translation>لا بُدّ من تحديد مسار المجلد التي ترغب في تسجيل صورة الملفات فيه .</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="793"/>
+        <location filename="../sources/exportdialog.cpp" line="794"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box title</comment>
         <translation>إستحالة الكتابة في هذا الملف</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="795"/>
+        <location filename="../sources/exportdialog.cpp" line="796"/>
         <source>Il semblerait que vous n&apos;ayez pas les permissions nécessaires pour écrire dans le fichier %1.</source>
         <comment>message box content</comment>
         <translation>يبدو أنّه ليس  لديكم التراخيص اللازمة للكتابة في  الملف %1.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="911"/>
+        <location filename="../sources/exportdialog.cpp" line="912"/>
         <source>Aperçu</source>
         <translation>لمحة</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1015"/>
-        <location filename="../sources/exportdialog.cpp" line="1020"/>
+        <location filename="../sources/exportdialog.cpp" line="1016"/>
+        <location filename="../sources/exportdialog.cpp" line="1021"/>
         <source>px</source>
         <translation>px بيكسل</translation>
     </message>
@@ -3961,13 +3966,13 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
 <context>
     <name>PartDynamicTextField</name>
     <message>
-        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="52"/>
+        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="51"/>
         <source>Champ de texte dynamique</source>
         <comment>element part name</comment>
         <translation>حقل نصّي ديناميكي</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="467"/>
+        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="466"/>
         <source>Déplacer un champ texte</source>
         <translation>تحريك حقل نصّي</translation>
     </message>
@@ -4654,34 +4659,34 @@ Voulez-vous enregistrer les modifications ?</source>
         <translation>محرري إطار التعريف</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1797"/>
+        <location filename="../sources/qetapp.cpp" line="1808"/>
         <source>&lt;b&gt;Le fichier de restauration suivant a été trouvé,&lt;br&gt;Voulez-vous l&apos;ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;الملف التالي مُستعاد,&lt;br&gt;هل تريد فتحه ?&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1800"/>
+        <location filename="../sources/qetapp.cpp" line="1811"/>
         <source>&lt;b&gt;Les fichiers de restauration suivant on été trouvé,&lt;br&gt;Voulez-vous les ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;تمّ استعادة الملفات التالية,&lt;br&gt;هل تريد فتحها ?&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1808"/>
+        <location filename="../sources/qetapp.cpp" line="1819"/>
         <source>Fichier de restauration</source>
         <translation>استعادة الملف</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1886"/>
+        <location filename="../sources/qetapp.cpp" line="1897"/>
         <source>Usage : </source>
         <translation>إستعمال :</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1886"/>
+        <location filename="../sources/qetapp.cpp" line="1897"/>
         <source> [options] [fichier]...
 
 </source>
         <translation>[خيارات] [ rملف]...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1887"/>
+        <location filename="../sources/qetapp.cpp" line="1898"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -4697,26 +4702,26 @@ Options disponibles :
 - الترخيص ......................... عرض الترخيص</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1893"/>
+        <location filename="../sources/qetapp.cpp" line="1904"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=DIR    عرّف مجلد صنف العناصر
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1896"/>
+        <location filename="../sources/qetapp.cpp" line="1907"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
         <translation>  --common-tbt-dir=DIR         عرّف مجلد مجموعة نماذج إطارات التعريف</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1899"/>
+        <location filename="../sources/qetapp.cpp" line="1910"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=DIR             عرّف مجلد الإعدادات</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1901"/>
+        <location filename="../sources/qetapp.cpp" line="1912"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=DIR               عرّف المجلد المحتوي على ملفات اللغة</translation>
@@ -6541,54 +6546,54 @@ les conditions requises ne sont pas valides</source>
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="319"/>
+        <location filename="../sources/qetproject.cpp" line="321"/>
         <source>Projet « %1 : %2»</source>
         <comment>displayed title for a ProjectView - %1 is the project title, -%2 is the project path</comment>
         <translation>مشروع « %1 : %2»</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="326"/>
+        <location filename="../sources/qetproject.cpp" line="328"/>
         <source>Projet %1</source>
         <comment>displayed title for a title-less project - %1 is the file name</comment>
         <translation>مشروع %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="333"/>
+        <location filename="../sources/qetproject.cpp" line="335"/>
         <source>Projet sans titre</source>
         <comment>displayed title for a project-less, file-less project</comment>
         <translation>مشروع بدون عنوان</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="342"/>
+        <location filename="../sources/qetproject.cpp" line="344"/>
         <source>%1 [lecture seule]</source>
         <comment>displayed title for a read-only project - %1 is a displayable title</comment>
         <translation>%1 [قراءة فقط]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="350"/>
+        <location filename="../sources/qetproject.cpp" line="352"/>
         <source>%1 [modifié]</source>
         <comment>displayed title for a modified project - %1 is a displayable title</comment>
         <translation>%1  [مُتغيّر]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1077"/>
+        <location filename="../sources/qetproject.cpp" line="1075"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
         <translation>حدث خطأ أثناء الإدماج.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1179"/>
+        <location filename="../sources/qetproject.cpp" line="1177"/>
         <source>Liste des Folios</source>
         <translation>قائمة الصفحات</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1266"/>
+        <location filename="../sources/qetproject.cpp" line="1264"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation>تنبيه</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1267"/>
+        <location filename="../sources/qetproject.cpp" line="1265"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
@@ -6596,12 +6601,12 @@ Que désirez vous faire ?</source>
 ما تُريد فعله ؟</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1329"/>
+        <location filename="../sources/qetproject.cpp" line="1327"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Création des folios&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;جاري فتح المشروع ...&lt;/b&gt;&lt;br/&gt;إنشاء الصفحات&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1376"/>
+        <location filename="../sources/qetproject.cpp" line="1374"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Mise en place des références croisées&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;جاري فتح المشروع ...&lt;/b&gt;&lt;br/&gt;وضع المرجعيات المتقاطعة&lt;/p&gt;</translation>
     </message>
@@ -6963,7 +6968,7 @@ Que désirez vous faire ?</source>
     <name>QObject</name>
     <message>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="149"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="370"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="369"/>
         <source>Avertissement : l&apos;élément  a été enregistré avec une version ultérieure de QElectroTech.</source>
         <translation>: تحذير حّفظ العنصر بإصدار لاحق من QElectrotech.</translation>
     </message>
@@ -6990,32 +6995,32 @@ Que désirez vous faire ?</source>
         <translation>لصق %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="155"/>
+        <location filename="../sources/diagramcommands.cpp" line="152"/>
         <source>couper %1</source>
         <comment>undo caption - %1 is a sentence listing the content to cut</comment>
         <translation>قطع %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="200"/>
-        <location filename="../sources/diagramcommands.cpp" line="375"/>
+        <location filename="../sources/diagramcommands.cpp" line="197"/>
+        <location filename="../sources/diagramcommands.cpp" line="372"/>
         <source>déplacer %1</source>
         <comment>undo caption - %1 is a sentence listing the moved content</comment>
         <translation>تحريك %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="396"/>
+        <location filename="../sources/diagramcommands.cpp" line="393"/>
         <source>modifier le texte</source>
         <comment>undo caption</comment>
         <translation>تعديل النص</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="440"/>
+        <location filename="../sources/diagramcommands.cpp" line="437"/>
         <source>modifier un conducteur</source>
         <comment>undo caption</comment>
         <translation>تعديل موصل</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="497"/>
+        <location filename="../sources/diagramcommands.cpp" line="494"/>
         <source>Réinitialiser %1</source>
         <comment>undo caption - %1 is a sentence listing the reset content</comment>
         <translation>إعادة تهيئة %1</translation>
@@ -7027,7 +7032,7 @@ Que désirez vous faire ?</source>
         <translation>تعديل اطار التعريف</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="540"/>
+        <location filename="../sources/diagramcommands.cpp" line="537"/>
         <source>modifier les dimensions du folio</source>
         <comment>undo caption</comment>
         <translation>تعديل مقاسات الصفحة</translation>
@@ -7163,32 +7168,32 @@ Que désirez vous faire ?</source>
         <translation>نص</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1002"/>
+        <location filename="../sources/exportdialog.cpp" line="1003"/>
         <source>Folio sans titre</source>
         <translation>صفحة بدون عنوان</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1004"/>
+        <location filename="../sources/exportdialog.cpp" line="1005"/>
         <source>schema</source>
         <translation>مخطط</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1029"/>
+        <location filename="../sources/exportdialog.cpp" line="1030"/>
         <source>Conserver les proportions</source>
         <translation>الإحتفاظ بالأبعاد</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1033"/>
+        <location filename="../sources/exportdialog.cpp" line="1034"/>
         <source>Réinitialiser les dimensions</source>
         <translation>إعادة تهيئة المقاسات</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1037"/>
+        <location filename="../sources/exportdialog.cpp" line="1038"/>
         <source>Aperçu</source>
         <translation>لمحة عامة </translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1041"/>
+        <location filename="../sources/exportdialog.cpp" line="1042"/>
         <source>Exporter vers le presse-papier</source>
         <translation>تصدير نحو الحافظة</translation>
     </message>
@@ -7898,7 +7903,7 @@ Que désirez vous faire ?</source>
         <translation>مجموعة</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/elementsmover.cpp" line="177"/>
+        <location filename="../sources/elementsmover.cpp" line="185"/>
         <source>Ajouter %n conducteur(s)</source>
         <comment>add a numbers of conductor one or more</comment>
         <translation>
@@ -8130,7 +8135,7 @@ Voulez-vous la remplacer ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/utils/conductorcreator.cpp" line="46"/>
+        <location filename="../sources/utils/conductorcreator.cpp" line="47"/>
         <source>Création de conducteurs</source>
         <translation type="unfinished"></translation>
     </message>
