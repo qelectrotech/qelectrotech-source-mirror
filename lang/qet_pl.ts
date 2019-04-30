@@ -1714,17 +1714,17 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="115"/>
         <source>Temporisé travail</source>
-        <translation>Opóźnienie przy uruchamianiu</translation>
+        <translation>Opóźnienie przy wzbudzeniu</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="116"/>
         <source>Temporisé repos</source>
-        <translation>Opóźnienie przy powrocie</translation>
+        <translation>Opóźnienie przy odwzbudzeniu</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="117"/>
         <source>Temporisé travail &amp; repos</source>
-        <translation>Opuźnienie przy uruchamianiu travail &amp; i powrocie</translation>
+        <translation>Opuźnienie przy wzbudzeniu &amp; i odwzbudzeniu</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="120"/>
