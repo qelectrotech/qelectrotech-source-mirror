@@ -1732,7 +1732,7 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="117"/>
         <source>Temporisé travail &amp; repos</source>
-        <translation type="unfinished"></translation>
+        <translation>késleltetve be és ki kapcsoló</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="120"/>
