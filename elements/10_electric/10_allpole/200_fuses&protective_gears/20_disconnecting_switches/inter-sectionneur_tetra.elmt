@@ -1,0 +1,59 @@
+<definition hotspot_x="61" orientation="dyyy" width="100" hotspot_y="23" version="0.70" link_type="master" height="50" type="element">
+    <uuid uuid="{ac09254a-46b6-491f-be79-15e36e8e2173}"/>
+    <names>
+        <name lang="fr">Interrupteur sectionneur tétrapolaire</name>
+        <name lang="en">Four pole switch disconnector</name>
+    </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">protection</kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="manufacturer"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x3="-10" x2="-10" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" antialias="true" x1="-15" y2="11" y3="21"/>
+        <circle diameter="4" y="-11" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="28"/>
+        <circle diameter="4" y="11" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="-52"/>
+        <polygon x3="30" x2="30" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" antialias="true" x1="25" y2="11" y3="21"/>
+        <circle diameter="4" y="-11" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="8"/>
+        <line end2="none" length2="1.5" end1="none" x2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19" length1="1.5" antialias="false" x1="30" y2="-11"/>
+        <circle diameter="4" y="-11" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="-32"/>
+        <line end2="none" length2="1.5" end1="none" x2="28" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11" length1="1.5" antialias="false" x1="32" y2="-11"/>
+        <circle diameter="4" y="-11" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="-12"/>
+        <dynamic_text frame="false" Halignment="AlignLeft" text_from="ElementInfo" y="-7" z="9" uuid="{951a9adc-1e0f-4e24-8137-16b3e55dd9ab}" rotation="0" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1" x="32.75">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line end2="none" length2="1.5" end1="none" x2="-50" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="1" length1="1.5" antialias="false" x1="25" y2="1"/>
+        <polygon x3="-10" x2="-10" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" antialias="true" x1="-15" y2="11" y3="21"/>
+        <polygon x3="10" x2="10" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" antialias="true" x1="5" y2="11" y3="21"/>
+        <polygon x3="-30" x2="-30" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" antialias="true" x1="-35" y2="11" y3="21"/>
+        <line end2="none" length2="1.5" end1="none" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19" length1="1.5" antialias="false" x1="-10" y2="-11"/>
+        <line end2="none" length2="1.5" end1="none" x2="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11" length1="1.5" antialias="false" x1="-8" y2="-11"/>
+        <line end2="none" length2="1.5" end1="none" x2="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19" length1="1.5" antialias="false" x1="-30" y2="-11"/>
+        <line end2="none" length2="1.5" end1="none" x2="-32" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11" length1="1.5" antialias="false" x1="-28" y2="-11"/>
+        <line end2="none" length2="1.5" end1="none" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19" length1="1.5" antialias="false" x1="10" y2="-11"/>
+        <line end2="none" length2="1.5" end1="none" x2="8" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11" length1="1.5" antialias="false" x1="12" y2="-11"/>
+        <line end2="none" length2="1.5" end1="none" x2="-55" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11" length1="1.5" antialias="false" x1="-50" y2="-9"/>
+        <terminal orientation="n" y="-19" x="-10"/>
+        <terminal orientation="n" y="-19" x="30"/>
+        <terminal orientation="s" y="21" x="10"/>
+        <terminal orientation="s" y="21" x="30"/>
+        <terminal orientation="n" y="-19" x="10"/>
+        <terminal orientation="n" y="-19" x="-30"/>
+        <terminal orientation="s" y="21" x="-30"/>
+        <terminal orientation="s" y="21" x="-10"/>
+    </description>
+</definition>
