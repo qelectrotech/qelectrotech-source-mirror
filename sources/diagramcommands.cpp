@@ -409,14 +409,13 @@ void ChangeDiagramTextCommand::undo() {
 	text_item -> setHtml(text_before);
 }
 
-/// refait la modification de texte
-void ChangeDiagramTextCommand::redo() {
+/**
+ * @brief ChangeDiagramTextCommand::redo
+ */
+void ChangeDiagramTextCommand::redo()
+{
 	diagram -> showMe();
-	if (first_redo) {
-		first_redo = false;
-	} else {
-		text_item -> setHtml(text_after);
-	}
+	text_item->setHtml(text_after);
 }
 
 /**
