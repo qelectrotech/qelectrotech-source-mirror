@@ -2,6 +2,8 @@
 <uuid uuid="{6F3638CF-EC95-485D-8D3E-43BEFE36884C}"/><names>
         <name lang="es">Contador de calorías</name>
         <name lang="ca">Comptador calories</name>
+        <name lang="fr">Compteur calories</name>
+        <name lang="en">Calorie counter</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

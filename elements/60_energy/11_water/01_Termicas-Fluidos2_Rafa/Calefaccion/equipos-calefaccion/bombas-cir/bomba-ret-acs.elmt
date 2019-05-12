@@ -4,6 +4,7 @@
         <name lang="en">DHW return pump</name>
         <name lang="ca">Bomba retorn ACS</name>
         <name lang="it">Pompa ritorno ACS</name>
+        <name lang="fr">Pompe bouclage ECS</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

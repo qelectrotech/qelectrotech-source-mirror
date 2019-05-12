@@ -1,28 +1,29 @@
-<definition type="element" height="50" width="30" orientation="dyyy" hotspot_x="19" hotspot_y="24" link_type="slave" version="0.70">
-    <uuid uuid="{21dbd7da-8e11-4988-8297-7a8344dbe626}"/>
+<definition link_type="slave" hotspot_y="24" version="0.70" width="40" type="element" height="50" orientation="dyyy" hotspot_x="29">
+    <uuid uuid="{9bb6f34d-fccd-49a9-9d2b-523eb1e2459f}"/>
     <names>
-        <name lang="fr">Contact simple NF (tempo travai et reposl)</name>
         <name lang="en">Simple contact (NC / switch-on and off delay timer)</name>
+        <name lang="fr">Contact simple NF (tempo travail et repos)</name>
     </names>
     <kindInformations>
-        <kindInformation name="type" show="1">delayOnOff</kindInformation>
-        <kindInformation name="state" show="1">NC</kindInformation>
-        <kindInformation name="number" show="1">1</kindInformation>
+        <kindInformation show="1" name="number">1</kindInformation>
+        <kindInformation show="1" name="type">delayOnOff</kindInformation>
+        <kindInformation show="1" name="state">NC</kindInformation>
     </kindInformations>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="5" y1="-10" antialias="true" x2="0" y2="10" x3="0" y3="20"/>
-        <line style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" x1="-14.8" end2="none" length1="1.5" length2="1.5" y1="1.5" antialias="false" x2="2" y2="1.5"/>
-        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="0" end2="none" length1="1.5" length2="1.5" y1="-9" antialias="false" x2="6" y2="-9"/>
-        <line style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" x1="-14.8" end2="none" length1="1.5" length2="1.5" y1="-1.5" antialias="false" x2="2.5" y2="-1.5"/>
-        <arc height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" angle="-180" width="10" x="-15" y="-5" start="-90" antialias="true"/>
-        <dynamic_text Halignment="AlignLeft" rotation="0" x="7.75" text_from="ElementInfo" y="-8" uuid="{eb70ae75-4571-4a6c-912e-492db81b4a97}" text_width="-1" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" z="6">
+        <polygon x2="0" y2="10" x1="5" y1="-10" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x3="0" y3="20"/>
+        <arc start="90" y="-5" x="-25" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" width="10" angle="-180" height="10"/>
+        <line x2="2" y2="1.5" end1="none" end2="none" x1="-14.8" y1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" length1="1.5"/>
+        <line x2="6" y2="-9" end1="none" end2="none" x1="0" y1="-9" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" length1="1.5"/>
+        <line x2="2.5" y2="-1.5" end1="none" end2="none" x1="-14.8" y1="-1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" length2="1.5" length1="1.5"/>
+        <dynamic_text z="6" y="-12" rotation="0" x="9" text_width="-1" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" uuid="{eb70ae75-4571-4a6c-912e-492db81b4a97}" Halignment="AlignLeft" text_from="ElementInfo">
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>
-        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="0" end2="none" length1="1.5" length2="1.5" y1="-20" antialias="false" x2="0" y2="-10"/>
-        <terminal x="0" orientation="n" y="-20"/>
-        <terminal x="0" orientation="s" y="20"/>
+        <arc start="-90" y="-5" x="-15" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" width="10" angle="-180" height="10"/>
+        <line x2="0" y2="-10" end1="none" end2="none" x1="0" y1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" length1="1.5"/>
+        <terminal y="-20" x="0" orientation="n"/>
+        <terminal y="20" x="0" orientation="s"/>
     </description>
 </definition>
