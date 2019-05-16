@@ -182,6 +182,15 @@ void DiagramEventAddShape::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event
 			//<double clic is used to finish polyline, but they also add two points at the same pos
 			//<(double clic is a double press event), so we remove the last point of polyline
 		m_shape_item->removePoints();
+
+			//If the last is at the same pos of the first point
+			//that mean user want a closed polygon, so we remove the last point and close polygon
+		QPolygonF polygon = m_shape_item->polygon();
+		if (polygon.first() == polygon.last())
+		{
+			m_shape_item->removePoints();
+			m_shape_item->setClosed(true);
+		}
 		m_diagram->undoStack().push (new AddItemCommand<QetShapeItem *> (m_shape_item, m_diagram));
 		m_shape_item = nullptr; //< set to nullptr for create new shape at next left clic
 		event->setAccepted(true);

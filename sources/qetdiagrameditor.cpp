@@ -601,7 +601,7 @@ void QETDiagramEditor::setUpActions()
 	add_rectangle->setData("rectangle");
 	add_ellipse  ->setData("ellipse");
 	add_polyline ->setData("polyline");
-	
+
 	for(QAction *action : m_add_item_actions_group.actions()) {
 		action->setCheckable(true);
 	}
@@ -1300,11 +1300,8 @@ void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 		diagram_event = new DiagramEventAddShape (d, QetShapeItem::Rectangle);
 	else if (value == "ellipse")
 		diagram_event = new DiagramEventAddShape (d, QetShapeItem::Ellipse);
-	else if (value == "polyline") {
+	else if (value == "polyline")
 		diagram_event = new DiagramEventAddShape (d, QetShapeItem::Polygon);
-		setToolTip(tr("Double-click pour terminer la forme"));
-		setToolTipDuration(2000);
-		}
 	else if (value == "image")
 	{
 		DiagramEventAddImage *deai = new DiagramEventAddImage(d);
