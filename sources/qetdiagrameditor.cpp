@@ -1301,7 +1301,13 @@ void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 	else if (value == "ellipse")
 		diagram_event = new DiagramEventAddShape (d, QetShapeItem::Ellipse);
 	else if (value == "polyline")
+	{
 		diagram_event = new DiagramEventAddShape (d, QetShapeItem::Polygon);
+		statusBar()-> showMessage(tr("Double-click pour terminer la forme"));
+		connect(diagram_event, &DiagramEventInterface::destroyed, [this]() {
+		statusBar()->clearMessage();
+		});
+	}
 	else if (value == "image")
 	{
 		DiagramEventAddImage *deai = new DiagramEventAddImage(d);
