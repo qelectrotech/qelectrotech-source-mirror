@@ -595,6 +595,13 @@ void QETDiagramEditor::setUpActions()
 	QAction *add_ellipse   = m_add_item_actions_group.addAction(QET::Icons::PartEllipse,   tr("Ajouter une ellipse"));
 	QAction *add_polyline  = m_add_item_actions_group.addAction(QET::Icons::PartPolygon,   tr("Ajouter une polyligne"));
 
+	add_text     ->setStatusTip(tr("Ajoute un champ de texte sur le folio actuel"));
+	add_image    ->setStatusTip(tr("Ajoute une image sur le folio actuel"));
+	add_line     ->setStatusTip(tr("Ajoute une ligne sur le folio actuel"));
+	add_rectangle->setStatusTip(tr("Ajoute un rectangle sur le folio actuel"));
+	add_ellipse  ->setStatusTip(tr("Ajoute une ellipse sur le folio actuel"));
+	add_polyline ->setStatusTip(tr("Ajoute une polyligne sur le folio actuel"));
+
 	add_text     ->setData("text");
 	add_image    ->setData("image");
 	add_line     ->setData("line");

@@ -633,6 +633,11 @@ QActionGroup *QET::depthActionGroup(QObject *parent)
 	QAction *edit_raise    = new QAction(QET::Icons::Raise,        QObject::tr("Rapprocher"),             action_group);
 	QAction *edit_lower    = new QAction(QET::Icons::Lower,        QObject::tr("Éloigner"),               action_group);
 	QAction *edit_backward = new QAction(QET::Icons::SendBackward, QObject::tr("Envoyer au fond"),        action_group);
+
+	edit_forward ->setStatusTip(QObject::tr("Ramène la ou les sélections au premier plan"));
+	edit_raise   ->setStatusTip(QObject::tr("Rapproche la ou les sélections"));
+	edit_lower   ->setStatusTip(QObject::tr("Éloigne la ou les sélections"));
+	edit_backward->setStatusTip(QObject::tr("Envoie en arrière plan la ou les sélections"));
 	
 	edit_raise   ->setShortcut(QKeySequence(QObject::tr("Ctrl+Shift+Up")));
 	edit_lower   ->setShortcut(QKeySequence(QObject::tr("Ctrl+Shift+Down")));
