@@ -2601,7 +2601,7 @@ A „;Növekedés”; mező nincs használva.
         <translation>Formula beszúrása ide. pl.: %prefix%l%c</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="98"/>
+        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="101"/>
         <source>You can use the following variables to your formula:
  -%prefix: Default Element Prefix
  -%l: Element Line
@@ -5928,137 +5928,142 @@ pip3install –upgrade qet_tb_generator
         <translation>Dinamikus szövegmező hozzáadása</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="291"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="290"/>
+        <source>Double-click pour terminer la forme, Click droit pour annuler le dernier point</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="294"/>
         <source>Parties</source>
         <comment>toolbar title</comment>
         <translation>Alkatrészek</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="298"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="301"/>
         <source>Outils</source>
         <comment>toolbar title</comment>
         <translation>Eszközök</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="300"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="303"/>
         <source>Affichage</source>
         <comment>toolbar title</comment>
         <translation>Megjelenítés</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="302"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="305"/>
         <source>Élément</source>
         <comment>toolbar title</comment>
         <translation>Elem</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="345"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="348"/>
         <source>&amp;Fichier</source>
         <translation>&amp;Fájl</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="346"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="349"/>
         <source>&amp;Édition</source>
         <translation>&amp;Szerkesztés</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="347"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="350"/>
         <source>Afficha&amp;ge</source>
         <translation>&amp;Megjelenítés</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="348"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="351"/>
         <source>O&amp;utils</source>
         <translation>Esz&amp;közök</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="359"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="362"/>
         <source>&amp;Récemment ouverts</source>
         <translation>&amp;Utolsó fájlok</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="370"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="373"/>
         <source>Coller depuis...</source>
         <translation>Beillesztés valamiből...</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="483"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="486"/>
         <source>[Modifié]</source>
         <comment>window title tag</comment>
         <translation>[Megváltozott]</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="485"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="488"/>
         <source> [lecture seule]</source>
         <comment>window title tag</comment>
         <translation> [Csak olvasható]</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="525"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="528"/>
         <source>Informations</source>
         <comment>dock title</comment>
         <translation>Információ</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="534"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="537"/>
         <source>Annulations</source>
         <comment>dock title</comment>
         <translation>Visszavonás</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="541"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="544"/>
         <source>Aucune modification</source>
         <translation>Nincs módosístás</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="552"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="555"/>
         <source>Parties</source>
         <comment>dock title</comment>
         <translation>Alkatrészek</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="564"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="567"/>
         <source>Éditeur d&apos;éléments</source>
         <comment>status bar message</comment>
         <translation>Elemek szerkesztése</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="677"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="680"/>
         <source>%n partie(s) sélectionnée(s).</source>
         <translation>
             <numerusform>%n kiválasztott alkatrész.</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="702"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="705"/>
         <source>Absence de borne</source>
         <comment>warning title</comment>
         <translation>Hiányzó csatlakozó</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="703"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="706"/>
         <source>&lt;br&gt;En l&apos;absence de borne, l&apos;élément ne pourra être relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
         <comment>warning description</comment>
         <translation>&lt;br&gt;Csatlakozó nélkül,az elemet nem lehet csatlakoztatni másik elemhez vezetékkel.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="723"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="726"/>
         <source>Absence de borne</source>
         <translation>Hiányzó csatlakozó</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="724"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="727"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les reports de folio doivent posséder une seul borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Verifier que l&apos;élément ne possède qu&apos;une seul borne</source>
         <translation>&lt;br&gt; &lt;b&gt; Hiba &lt;/ b&gt;: &lt;br&gt; a tervlap hivatkozásnak muszály rendelkeznie kell egy csatlakozással&lt;br&gt; &lt;b&gt; Megoldás &lt;/ b&gt; :&lt;br&gt; Ellenőrízd, hogy az elem csak egy csatlakozással rendelkezik</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="734"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="737"/>
         <source>La vérification de cet élément a généré</source>
         <comment>message box content</comment>
         <translation>Az elem generálásának megerősítése</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="737"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="740"/>
         <source> %n erreur(s)</source>
         <comment>errors</comment>
         <translation>
@@ -6066,82 +6071,82 @@ pip3install –upgrade qet_tb_generator
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="742"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="745"/>
         <source> et</source>
         <translation> és</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="753"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="756"/>
         <source>&lt;b&gt;%1&lt;/b&gt; : %2</source>
         <comment>warning title: warning description</comment>
         <translation>&lt;b&gt;%1&lt;/b&gt; : %2</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="760"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="763"/>
         <source>Erreurs</source>
         <translation>Hiba</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="762"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="765"/>
         <source>Avertissements</source>
         <translation>Figyelmeztetés</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="781"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="784"/>
         <source>Le fichier %1 n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>A %1 fájl nem létezik.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="789"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1522"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="792"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1525"/>
         <source>Impossible d&apos;ouvrir le fichier %1.</source>
         <comment>message box content</comment>
         <translation>Nem lehet a fájlt megnyitni %1.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="798"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1526"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="801"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1529"/>
         <source>Ce fichier n&apos;est pas un document XML valide</source>
         <comment>message box content</comment>
         <translation>Ez a fájl nem egy felhasználható XML dokumentum</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="804"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1532"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="807"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1535"/>
         <source>Erreur</source>
         <comment>toolbar title</comment>
         <translation>Hiba</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="816"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1496"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="819"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1499"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
         <translation>Csak olvasható szerkesztés</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="817"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1497"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="820"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1500"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.</source>
         <comment>message box content</comment>
         <translation>Nem engedélyezet ennek a elemnek a módosítása. Így, csak olvasható módban fog megnyílni.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="847"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="870"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="850"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="873"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Hiba</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="848"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="851"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box content</comment>
         <translation>Nem lehet írni ezt a fájl-t</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="871"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="874"/>
         <source>Impossible d&apos;enregistrer l&apos;élément</source>
         <comment>message box content</comment>
         <translation>Nem lehet a fájlt menteni</translation>
@@ -6173,8 +6178,18 @@ Helyezd a DXFtoQET.exe fájlt a C:\Users\user_name\AppData\Roaming\qet\ könyvt�
 Helyezd a DXFtoQET.app fájlt a /Users/user_name/.qet/ könyvtárba 
 </translation>
     </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="291"/>
+        <source>Ajouter un texte d&apos;élément non éditable dans les schémas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="292"/>
+        <source>Ajouter un texte d&apos;élément pouvant être édité dans les schémas</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="744"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="747"/>
         <source> %n avertissement(s)</source>
         <comment>warnings</comment>
         <translation>
@@ -6182,103 +6197,103 @@ Helyezd a DXFtoQET.app fájlt a /Users/user_name/.qet/ könyvtárba
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1087"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1090"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
         <translation>Nem lehet a fájlt megnyitni</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1089"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1092"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
         <translation>Úgy tűnik %1 fájl amelyiket megpróbáltad megnyitni nem létezik, vagy nem létezik többé.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1107"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1110"/>
         <source>Recharger l&apos;élément</source>
         <comment>dialog title</comment>
         <translation>Elem újratöltése</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1108"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1111"/>
         <source>Vous avez efffectué des modifications sur cet élément. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l&apos;élément ?</source>
         <comment>dialog content</comment>
         <translation>Az elem módosítva lett az utolsó mentés óta. Ha újratöltöd, ezek a változások elvesznek. Biztosan akarod az elem újratöltését?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1159"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1189"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1232"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1162"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1192"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1235"/>
         <source>Echec de l&apos;enregistrement</source>
         <translation>Regisztráció sikertelen</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1159"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1189"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1232"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1162"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1192"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1235"/>
         <source>L&apos;enregistrement à échoué,
 les conditions requises ne sont pas valides</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1206"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1209"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation>Mentés más néven</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1208"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1211"/>
         <source>Éléments QElectroTech (*.elmt)</source>
         <comment>filetypes allowed when saving an element file</comment>
         <translation>QElectroTech elemek (*.elmt)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1247"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1250"/>
         <source>Enregistrer l&apos;élément en cours ?</source>
         <comment>dialog title</comment>
         <translation>Mented a jelenlegi elemet?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1249"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1252"/>
         <source>Voulez-vous enregistrer l&apos;élément %1 ?</source>
         <comment>dialog content - %1 is an element name</comment>
         <translation>Szeretnéd menteni az elemet %1?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1350"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1353"/>
         <source>Trop de primitives, liste non générée.</source>
         <translation>Túl sok alkatrész, a lista nincs feldolgozva.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1449"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1452"/>
         <source>Ouvrir un fichier</source>
         <comment>dialog title</comment>
         <translation>Fájl megnyitása</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1451"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1454"/>
         <source>Éléments QElectroTech (*.elmt);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening an element file</comment>
         <translation>QElectroTech projekt(*.qet);;XML fájlok (*.xml);;minden fájl (*)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1471"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1478"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1552"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1559"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1474"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1481"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1555"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1562"/>
         <source>Élément inexistant.</source>
         <comment>message box title</comment>
         <translation>Nem létező elem.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1479"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1560"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1482"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1563"/>
         <source>L&apos;élément n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>Az elem nem létezik.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1472"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1553"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1475"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1556"/>
         <source>Le chemin virtuel choisi ne correspond pas à un élément.</source>
         <comment>message box content</comment>
         <translation>A kiválasztott virtuális elérési útvonal nem tartozik egy elemhez sem.</translation>
