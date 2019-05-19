@@ -287,6 +287,9 @@ void QETElementEditor::setupActions() {
 	connect(add_terminal,  SIGNAL(triggered()), this, SLOT(addTerminal()  ));
 	connect(add_dynamic_text_field, &QAction::triggered, this, &QETElementEditor::addDynamicTextField);
 
+	add_polygon ->setStatusTip(tr("Double-click pour terminer la forme, Click droit pour annuler le dernier point"));
+	add_text    ->setStatusTip(tr("texte d'élément non editable dans les schémas"));
+	add_dynamic_text_field ->setStatusTip(tr("texte d'élément pouvant etre editer dans les schémas"));
 	
 	parts_toolbar =  addToolBar(tr("Parties", "toolbar title"));
 	parts_toolbar -> setAllowedAreas(Qt::AllToolBarAreas);
