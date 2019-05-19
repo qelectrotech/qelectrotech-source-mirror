@@ -161,6 +161,27 @@ void QETElementEditor::setupActions() {
 	edit_author       = new QAction(QET::Icons::UserInformations,     tr("Éditer les informations sur l'auteur"),      this);
 	m_edit_properties = new QAction(QET::Icons::ElementEdit,          tr("Éditer les propriétés de l'élément"),        this);
 	
+#if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
+	open_dxf -> setStatusTip(tr("To install the plugin DXFtoQET\nVisit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/\n"
+					 "\n"
+					 ">> Install on Windows\n"
+					 "Put DXFtoQET.exe binary on C:\\Users\\user_name\\AppData\\Roaming\\qet\\ directory \n" 
+					   ));
+#elif defined(Q_OS_MAC)
+	open_dxf -> setStatusTip(tr("To install the plugin DXFtoQET\nVisit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/\n"
+					 "\n"
+					 ">> Install on macOSX\n"
+					 "Put DXFtoQET.app binary on /Users/user_name/.qet/ directory \n"
+					  ));
+#else
+	open_dxf -> setStatusTip(tr("To install the plugin DXFtoQET\nVisit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/\n"
+					 "\n"
+					 ">> Install on Linux\n"
+					 "Put DXFtoQET binary on your /home/user_name/.qet/ directory\n"
+					 "make it executable : chmod +x ./DXFtoQET\n"
+					  ));
+#endif
+	
 	open_dxf -> setWhatsThis (tr("To install the plugin DXFtoQET\nVisit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/\n"
 					 "\n"
 					 ">> Install on Linux\n"
@@ -1060,7 +1081,7 @@ void QETElementEditor::openRecentFile(const QString &filepath) {
  */
 void QETElementEditor::slot_openDxf (){
 
-#if defined(Q_OS_WIN32)
+#if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
 QString program = (QDir::homePath() + "/Application Data/qet/DXFtoQET.exe");
 #elif defined(Q_OS_MAC)
 QString program = (QDir::homePath() + "/.qet/DXFtoQET.app");
