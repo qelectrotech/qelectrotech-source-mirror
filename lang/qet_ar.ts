@@ -5005,67 +5005,9 @@ Options disponibles :
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2231"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2232"/>
         <source>Error launching qet_tb_generator plugin</source>
         <translation>حدث خطأ أثناء تشغيل المكون الإضافي qet_tb_generator</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2232"/>
-        <source>To install the plugin qet_tb_generator
-Visit https://pypi.python.org/pypi/qet-tb-generator/
-
-Requires python 3.5 or above.
-&gt;&gt; First install on Linux
-1. check you have pip3 installed: pip3 --version
-If not install with: sudo apt-get install python3-pip
-2. Install the program: sudo pip3 install qet_tb_generator
-3. Run the program: qet_tb_generator
-&gt;&gt; Update on Linux
-sudo pip3 install --upgrade qet_tb_generator 
-
-&gt;&gt; First install on Windows
-1. Install, if required, python 3.5 or above 
- Visit https://www.python.org/downloads/ 
-2. pip install qet_tb_generator
-&gt;&gt; Update on Windows
-python -m pip install --upgrade qet_tb_generator
-&gt;&gt;user could launch in a terminal this script in this directory 
- C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts 
-
-&gt;&gt; First install on macOSX 
-1. Install, if required, python 3.5 or above 
- Visit https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674 
-2. pip3 install qet_tb_generator 
-&gt;&gt; Update on macOSX 
- pip3 install --upgrade qet_tb_generator 
-</source>
-        <translation>لتثبيت qet_tb_generator المساعد
-انتقل إلى https://pypi.python.org/pypi/qet-tb-generator/
-
-يتطلب python 3.5 أو أعلى.
-&gt;&gt; تثبيت أولا على Linux
-1. تحقق لديك pip3 تثبيت: pp3 --version
-إذا لم يتم تثبيت مع: سودو الرابطة بين الحصول على تثبيت python3-PIP
-2. تثبيت البرنامج:  sudo pip3 تثبيت qet_tb_generator
-3. قم بتشغيل البرنامج: qet_tb_generator
-&gt;&gt; تحديث على Linux
- sudo pip3 تثبيت --upgrade qet_tb_generator
-
-&gt;&gt; تثبيت أولا على ويندوز
-1. تثبيت، إذا لزم الأمر،.python 3.5 أو أعلى
- انتقل إلى https://www.python.org/downloads/
-2. بيب تثبيت qet_tb_generator
-&gt;&gt; تحديث على ويندوز
-.python -m PIP install --upgrade qet_tb_generator
-&gt;&gt; يمكن للمستخدم إطلاق في محطة هذا السيناريو في هذا الدليل
- C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts 
-
-&gt;&gt; تثبيت أولا على macOSX
-1. تثبيت، إذا لزم الأمر، .python 3.5 أو أعلى
- تفضل بزيارة https://qelectrotech.org/forum/viewtopic.php؟pid=5674#p5674
-install qet_tb_generator
-&gt;&gt; تحديث على macOSX
- pip3 install --upgrade qet_tb_generator </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="517"/>
@@ -8238,6 +8180,21 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/utils/conductorcreator.cpp" line="47"/>
         <source>Création de conducteurs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2233"/>
+        <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2269"/>
+        <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2300"/>
+        <source>To install the plugin qet_tb_generator&lt;br&gt;Visit : &lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
