@@ -5468,32 +5468,32 @@ Opties :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="598"/>
         <source>Ajoute un champ de texte sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg een tekstveld toe aan het huidige schemablad</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="599"/>
         <source>Ajoute une image sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg een afbeelding toe aan het huidige schemablad</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="600"/>
         <source>Ajoute une ligne sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg een regel toe aan het huidige schemablad</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="601"/>
         <source>Ajoute un rectangle sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg een rechthoek toe aan het huidige schemablad</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="602"/>
         <source>Ajoute une ellipse sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg een ellips toe aan het huidige schemablad</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="603"/>
         <source>Ajoute une polyligne sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg een gesegmenteerde lijn toe aan het huidige schemablad</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
@@ -5526,7 +5526,7 @@ Opties :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1313"/>
         <source>Double-click pour terminer la forme, Click droit pour annuler le dernier point</source>
-        <translation type="unfinished"></translation>
+        <translation>Dubbelklik om het venster te sluiten. Klik rechts om het laatste punt te annuleren</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1549"/>
@@ -5872,7 +5872,12 @@ Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 &gt;&gt; Install on Windows
 Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Ga naar https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+en download de DXFtoQET-plugin
+
+&gt;&gt; Plaats voor installatie onder Windows
+de DXFtoQET.exe binary in C:\Users\user_name\AppData\Roaming\qet\ directory 
+</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="171"/>
@@ -5882,7 +5887,12 @@ Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 &gt;&gt; Install on macOSX
 Put DXFtoQET.app binary on /Users/user_name/.qet/ directory 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Ga naar https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+en download de DXFtoQET-plugin
+
+&gt;&gt; Plaats voor installatie onder MacOSX
+de DXFtoQET.app binary in /Users/user_name/.qet/ directory 
+</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="177"/>
@@ -5893,7 +5903,13 @@ Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 Put DXFtoQET binary on your /home/user_name/.qet/ directory
 make it executable : chmod +x ./DXFtoQET
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Ga naar https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+en download de DXFtoQET-plugin
+
+&gt;&gt; Plaats voor installatie onder Linux
+de DXFtoQET binary in /home/user_name/.qet/ directory
+en maak het uitvoerbaar : chmod +x ./DXFtoQET
+</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="185"/>
@@ -5909,8 +5925,8 @@ Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory
 &gt;&gt; Install on macOSX
 Put DXFtoQET.app binary on /Users/user_name/.qet/ directory 
 </source>
-        <translation>Installate van de DXFtoQET plugin
-Ga naar https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+        <translation>Ga naar https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+en download de DXFtoQET-plugin/
 
 &gt;&gt; Installatie onder Linux
 Plaats de DXFtoQET binary in /home/user_name/.qet/ directory
@@ -5918,8 +5934,8 @@ maak het executable : chmod +x ./DXFtoQET
 &gt;&gt; Installatie onder Windows
 Plaats de DXFtoQET.exe binary in C:\Users\user_name\AppData\Roaming\qet\ directory 
 
-&gt;&gt; Installatie onder macOSX
-Plaats de DXFtoQET.app binary in /Users/user_name/.qet/ directory 
+&gt;&gt; Plaats voor installatie onder MacOSX
+de DXFtoQET.app binary in /Users/user_name/.qet/ directory 
 </translation>
     </message>
     <message>
@@ -5930,7 +5946,7 @@ Plaats de DXFtoQET.app binary in /Users/user_name/.qet/ directory
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="311"/>
         <source>Double-click pour terminer la forme, Click droit pour annuler le dernier point</source>
-        <translation type="unfinished"></translation>
+        <translation>Dubbelklik om het venster te sluiten. Klik rechts om het laatste punt te annuleren</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="369"/>
@@ -6156,12 +6172,12 @@ de voorwaarden zijn ongeldig</translation>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="312"/>
         <source>Ajouter un texte d&apos;élément non éditable dans les schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg een vaste elementtekst in op het schemablad</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="313"/>
         <source>Ajouter un texte d&apos;élément pouvant être édité dans les schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg een te variabele elementtekst in op het schemablad</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/qetelementeditor.cpp" line="768"/>
@@ -7186,22 +7202,22 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qet.cpp" line="637"/>
         <source>Ramène la ou les sélections au premier plan</source>
-        <translation type="unfinished"></translation>
+        <translation>Breng de selectie terug naar de voorgrond</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="638"/>
         <source>Rapproche la ou les sélections</source>
-        <translation type="unfinished"></translation>
+        <translation>Breng de selectie naar voren</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="639"/>
         <source>Éloigne la ou les sélections</source>
-        <translation type="unfinished"></translation>
+        <translation>Breng de selectie naar achteren</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="640"/>
         <source>Envoie en arrière plan la ou les sélections</source>
-        <translation type="unfinished"></translation>
+        <translation>Breng de selectie naar de achtergrond</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="642"/>
@@ -8135,17 +8151,17 @@ Wilt u deze vervangen ?</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2233"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Installatie van de qet_tb_generator&lt;br&gt;Ga naar:&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;vereist Python 3.5 of hoger.&lt;br&gt;&lt;B&gt;&lt;U&gt; Eerste installatie onder Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Installeer indien nodig Python 3.5 of hoger&lt;br&gt; Ga naar :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update onder Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;het script is nu uitvoerbaar in een terminal in directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2269"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Installatie van de qet_tb_generator&lt;br&gt;Ga naar:&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Eerste installatie onder macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Installeer indien nodig Python 3.5 &lt;br&gt; Ga naar :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update onder macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2300"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit : &lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Installatie van de qet_tb_generator plugin&lt;br&gt;Ga naar:&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Vereist Pyhon 3.5 of hoger &lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Eerste installatie onder Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Controleer je pip3 installatie: pip3 --version&lt;br&gt;Indien nodig installeer met: sudo apt-get install python3-pip &lt;br&gt;2. Installeer het programma&lt;br&gt;: sudo pip3 install qet_tb_generatorpip3 install qet_tb_generator&lt;br&gt;3. Voer het programma uit: qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update onder Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
 </context>
 <context>
