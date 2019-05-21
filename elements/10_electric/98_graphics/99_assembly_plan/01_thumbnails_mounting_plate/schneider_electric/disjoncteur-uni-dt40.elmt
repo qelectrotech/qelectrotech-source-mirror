@@ -1,0 +1,67 @@
+<definition width="80" hotspot_y="15" hotspot_x="5" link_type="simple" height="220" version="0.70" type="element" orientation="dyyy">
+    <uuid uuid="{033f2f45-fe86-4315-8cfe-7e2f3ace019f}"/>
+    <names>
+        <name lang="fr">Disjoncteur Uni</name>
+    </names>
+    <elementInformations/>
+    <informations>PFIT 589</informations>
+    <description>
+        <rect width="70" style="line-style:normal;line-weight:thin;filling:white;color:black" ry="0" x="0" rx="0" height="200" antialias="false" y="0"/>
+        <rect width="25" style="line-style:normal;line-weight:normal;filling:black;color:black" ry="0" x="25" rx="0" height="25" antialias="false" y="110"/>
+        <circle diameter="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="15" antialias="true" y="172"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="179" x1="18" x2="22" end2="none" end1="none" length2="1.5" y1="175" antialias="false"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="179" x1="22" x2="18" end2="none" end1="none" length2="1.5" y1="175" antialias="false"/>
+        <line length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="179" x1="20" x2="20" end2="none" end1="none" length2="1.5" y1="175" antialias="false"/>
+        <line length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="177" x1="18" x2="22" end2="none" end1="none" length2="1.5" y1="177" antialias="false"/>
+        <circle diameter="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="56" antialias="true" y="172"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="179" x1="59" x2="63" end2="none" end1="none" length2="1.5" y1="175" antialias="false"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="179" x1="63" x2="59" end2="none" end1="none" length2="1.5" y1="175" antialias="false"/>
+        <line length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="179" x1="61" x2="61" end2="none" end1="none" length2="1.5" y1="175" antialias="false"/>
+        <line length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="177" x1="59" x2="63" end2="none" end1="none" length2="1.5" y1="177" antialias="false"/>
+        <text x="8" text="N" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="170"/>
+        <text x="5" text="Schneider Electric" font="Comic Sans MS,4,-1,5,75,0,0,0,0,0,Gras" rotation="0" color="#00ff00" y="40"/>
+        <dynamic_text text_width="-1" text_from="UserText" x="14" frame="false" z="18" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Gras" uuid="{d7645379-93ce-440b-b684-f434cc8f1048}" rotation="0" Valignment="AlignTop" Halignment="AlignLeft" y="14">
+            <text>_</text>
+            <color>#ff00ff</color>
+        </dynamic_text>
+        <rect width="60" style="line-style:normal;line-weight:normal;filling:black;color:gray" ry="1" x="7" rx="10" height="15" antialias="false" y="136"/>
+        <dynamic_text text_width="-1" text_from="UserText" x="14" frame="false" z="19" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Gras" uuid="{d7645379-93ce-440b-b684-f434cc8f1048}" rotation="0" Valignment="AlignTop" Halignment="AlignLeft" y="180">
+            <text>_</text>
+            <color>#ff00ff</color>
+        </dynamic_text>
+        <circle diameter="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="55" antialias="true" y="8"/>
+        <dynamic_text text_width="-1" text_from="UserText" x="54" frame="false" z="20" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Gras" uuid="{d7645379-93ce-440b-b684-f434cc8f1048}" rotation="0" Valignment="AlignTop" Halignment="AlignLeft" y="14">
+            <text>_</text>
+            <color>#ff00ff</color>
+        </dynamic_text>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="15" x1="58" x2="62" end2="none" end1="none" length2="1.5" y1="11" antialias="false"/>
+        <dynamic_text text_width="-1" text_from="UserText" x="55" frame="false" z="22" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Gras" uuid="{d7645379-93ce-440b-b684-f434cc8f1048}" rotation="0" Valignment="AlignTop" Halignment="AlignLeft" y="178">
+            <text>_</text>
+            <color>#ff00ff</color>
+        </dynamic_text>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="15" x1="62" x2="58" end2="none" end1="none" length2="1.5" y1="11" antialias="false"/>
+        <line length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="15" x1="60" x2="60" end2="none" end1="none" length2="1.5" y1="11" antialias="false"/>
+        <circle diameter="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="15" antialias="true" y="8"/>
+        <line length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="13" x1="58" x2="62" end2="none" end1="none" length2="1.5" y1="13" antialias="false"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="15" x1="18" x2="22" end2="none" end1="none" length2="1.5" y1="11" antialias="false"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="15" x1="22" x2="18" end2="none" end1="none" length2="1.5" y1="11" antialias="false"/>
+        <line length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="15" x1="20" x2="20" end2="none" end1="none" length2="1.5" y1="11" antialias="false"/>
+        <line length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="13" x1="18" x2="22" end2="none" end1="none" length2="1.5" y1="13" antialias="false"/>
+        <text x="7" text="N" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="26"/>
+        <circle diameter="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="15" antialias="false" y="172"/>
+        <dynamic_text text_width="-1" text_from="ElementInfo" x="0" frame="false" z="33" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{eeb31081-e004-424d-b01b-25486a1bddc3}" rotation="0" Valignment="AlignTop" Halignment="AlignLeft" y="-23">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect width="25" style="line-style:normal;line-weight:normal;filling:green;color:black" ry="0" x="25" rx="0" height="10" antialias="false" y="111"/>
+        <text x="27" text="0-OFF" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Gras" rotation="0" color="#ffffff" y="127"/>
+        <text x="5" text="DT40" font="MS Shell Dlg 2,6,-1,5,75,0,0,0,0,0,Gras" rotation="0" color="#000000" y="62"/>
+        <line length1="1.5" style="line-style:normal;line-weight:hight;filling:none;color:gray" y2="151" x1="38" x2="38" end2="none" end1="none" length2="1.5" y1="136" antialias="false"/>
+        <arc width="20" style="line-style:normal;line-weight:eleve;filling:none;color:yellow" x="2" height="20" start="90" antialias="true" y="-12" angle="90"/>
+        <arc width="20" style="line-style:normal;line-weight:eleve;filling:none;color:yellow" x="10" height="20" start="0" antialias="true" y="-12" angle="90"/>
+        <terminal x="20" y="0" orientation="n"/>
+        <terminal x="60" y="0" orientation="n"/>
+        <terminal x="20" y="196" orientation="n"/>
+        <terminal x="60" y="196" orientation="n"/>
+    </description>
+</definition>

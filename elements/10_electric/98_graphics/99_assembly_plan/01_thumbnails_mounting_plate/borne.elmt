@@ -1,0 +1,36 @@
+<definition hotspot_x="15" link_type="simple" orientation="dyyy" hotspot_y="44" version="0.70" height="90" width="30" type="element">
+    <uuid uuid="{f990c83e-ce6e-42d7-bb22-72f41edb0387}"/>
+    <names>
+        <name lang="en">Terminal (feed-through)</name>
+        <name lang="fr">Borne (continuité)</name>
+        <name lang="es">Clema (introducción atravesada)</name>
+        <name lang="de">Klemme (Durchgang)</name>
+        <name lang="pl">Zacisk</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <dynamic_text uuid="{87086c7c-763a-4651-8802-11e909444562}" z="1" text_width="-1" font="MS Shell Dlg 2,9,-1,5,75,0,0,0,0,0,Gras" Halignment="AlignLeft" frame="false" y="12" text_from="UserText" x="-8" rotation="0" Valignment="AlignTop">
+            <text>_</text>
+            <color>#ff00ff</color>
+        </dynamic_text>
+        <circle diameter="7" antialias="true" y="-24.5" x="-3.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="7" antialias="true" y="16.5" x="-3.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="-2" x1="2" y2="22" y1="18" length1="1.5" end1="none" end2="none" antialias="false" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="-2" x1="2" y2="-19" y1="-23" length1="1.5" end1="none" end2="none" antialias="false" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="2" x1="-2" y2="22" y1="18" length1="1.5" end1="none" end2="none" antialias="false" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="2" x1="-2" y2="-19" y1="-23" length1="1.5" end1="none" end2="none" antialias="false" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect rx="0" ry="0" antialias="false" y="-40" height="80" x="-10" width="20" style="line-style:normal;line-weight:hight;filling:none;color:black"/>
+        <line x2="0" x1="0" y2="23" y1="17" length1="1.5" end1="none" end2="none" antialias="false" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x2="0" x1="0" y2="-18" y1="-24" length1="1.5" end1="none" end2="none" antialias="false" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect rx="0" ry="0" antialias="false" y="-12" height="24" x="-8" width="16" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <line x2="3" x1="-3" y2="20" y1="20" length1="1.5" end1="none" end2="none" antialias="false" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x2="3" x1="-3" y2="-21" y1="-21" length1="1.5" end1="none" end2="none" antialias="false" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <dynamic_text uuid="{0a7ec1aa-56f5-4d4e-85fa-f35ad1211760}" z="15" text_width="-1" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Gras" Halignment="AlignLeft" frame="false" y="-41" text_from="UserText" x="-7" rotation="0" Valignment="AlignTop">
+            <text>_</text>
+            <color>#ff00ff</color>
+        </dynamic_text>
+        <terminal orientation="n" y="-40" x="0"/>
+        <terminal orientation="s" y="40" x="0"/>
+    </description>
+</definition>

@@ -1,0 +1,43 @@
+<definition hotspot_x="15" version="0.70" link_type="simple" hotspot_y="44" orientation="dyyy" width="30" type="element" height="90">
+    <uuid uuid="{a53bfb04-5b91-4448-976b-c4cf8c19b175}"/>
+    <names>
+        <name lang="pl">Zacisk uziemiający</name>
+        <name lang="de">Klemme (Erdung)</name>
+        <name lang="es">Clema (Aterrizada)</name>
+        <name lang="fr">Borne (terre)</name>
+        <name lang="en">Terminal (Grounding)</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <circle diameter="5" x="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="27.5" antialias="false"/>
+        <rect x="-8" style="line-style:normal;line-weight:thin;filling:yellow;color:black" ry="0" y="-12" width="16" height="24" antialias="false" rx="0"/>
+        <dynamic_text x="-13" text_from="UserText" z="2" text_width="-1" uuid="{9d2ed0c4-2abf-4590-b4c6-50cd202a949d}" frame="false" Halignment="AlignLeft" y="14" rotation="270" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0">
+            <text></text>
+        </dynamic_text>
+        <line y1="29" y2="31" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" x1="-1" length2="1.5" end2="none" x2="1" antialias="false"/>
+        <line y1="31" y2="29" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" x1="-1" length2="1.5" end2="none" x2="1" antialias="false"/>
+        <rect x="-10" style="line-style:normal;line-weight:hight;filling:none;color:black" ry="0" y="-40" width="20" height="80" antialias="false" rx="0"/>
+        <line y1="28" y2="32" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" length1="1.5" x1="0" length2="1.5" end2="none" x2="0" antialias="false"/>
+        <line y1="25" y2="25" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" length1="1.5" x1="-1" length2="1.5" end2="none" x2="1" antialias="false"/>
+        <line y1="30" y2="30" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" length1="1.5" x1="-2" length2="1.5" end2="none" x2="2" antialias="false"/>
+        <line y1="23" y2="23" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" length1="1.5" x1="-3" length2="1.5" end2="none" x2="3" antialias="false"/>
+        <line y1="21" y2="21" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" length1="1.5" x1="-5" length2="1.5" end2="none" x2="5" antialias="false"/>
+        <line y1="21" y2="16" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" length1="1.5" x1="0" length2="1.5" end2="none" x2="0" antialias="false"/>
+        <line y1="-11" y2="-4" style="line-style:normal;line-weight:normal;filling:none;color:green" end1="none" length1="1.5" x1="0" length2="1.5" end2="none" x2="7" antialias="false"/>
+        <line y1="-11" y2="3" style="line-style:normal;line-weight:normal;filling:none;color:green" end1="none" length1="1.5" x1="-7" length2="1.5" end2="none" x2="7" antialias="false"/>
+        <line y1="-3" y2="11" style="line-style:normal;line-weight:normal;filling:none;color:green" end1="none" length1="1.5" x1="-7" length2="1.5" end2="none" x2="7" antialias="false"/>
+        <line y1="4" y2="11" style="line-style:normal;line-weight:normal;filling:none;color:green" end1="none" length1="1.5" x1="-7" length2="1.5" end2="none" x2="0" antialias="false"/>
+        <circle diameter="5" x="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-33.5" antialias="false"/>
+        <line y1="-32" y2="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" x1="-1" length2="1.5" end2="none" x2="1" antialias="false"/>
+        <line y1="-30" y2="-32" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" x1="-1" length2="1.5" end2="none" x2="1" antialias="false"/>
+        <line y1="-33" y2="-29" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" length1="1.5" x1="0" length2="1.5" end2="none" x2="0" antialias="false"/>
+        <line y1="-31" y2="-31" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" length1="1.5" x1="-2" length2="1.5" end2="none" x2="2" antialias="false"/>
+        <dynamic_text x="-7" text_from="UserText" z="18" text_width="-1" uuid="{7d603595-2e27-4800-8a6e-3475471b23af}" frame="false" Halignment="AlignLeft" y="-38" rotation="0" Valignment="AlignTop" font="MS Shell Dlg 2,6,-1,5,75,0,0,0,0,0,Gras">
+            <text>_</text>
+            <color>#ff00ff</color>
+        </dynamic_text>
+        <terminal x="0" orientation="s" y="40"/>
+        <terminal x="0" orientation="n" y="-40"/>
+    </description>
+</definition>

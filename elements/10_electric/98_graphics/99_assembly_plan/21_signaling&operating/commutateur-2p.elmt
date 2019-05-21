@@ -1,0 +1,44 @@
+<definition orientation="dyyy" version="0.70" link_type="simple" height="70" type="element" hotspot_x="20" width="40" hotspot_y="28">
+    <uuid uuid="{70fab836-df65-4fc9-bf12-1f5acc4695c6}"/>
+    <names>
+        <name lang="el"></name>
+        <name lang="pl"></name>
+        <name lang="it"></name>
+        <name lang="fr">Commut 2P</name>
+        <name lang="nl"></name>
+        <name lang="en"></name>
+        <name lang="ar"></name>
+        <name lang="cs"></name>
+        <name lang="de"></name>
+    </names>
+    <elementInformations/>
+    <informations>PFIT 589</informations>
+    <description>
+        <circle x="-12.5" style="line-style:normal;line-weight:hight;filling:black;color:gray" y="-12.5" diameter="25" antialias="false"/>
+        <text text="14" x="5" rotation="0" y="20" color="#000000" font="Sans Serif,3,-1,5,50,0,0,0,0,0"/>
+        <text text="1" x="10" rotation="0" y="-10" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <circle x="4.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="22.5" diameter="7" antialias="true"/>
+        <line x1="10" y1="24" x2="6" y2="28" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" length1="1.5" end2="none"/>
+        <line x1="6" y1="24" x2="10" y2="28" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" length1="1.5" end2="none"/>
+        <line x1="8" y1="23" x2="8" y2="29" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" antialias="false" length1="1.5" end2="none"/>
+        <line x1="5" y1="26" x2="11" y2="26" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" antialias="false" length1="1.5" end2="none"/>
+        <circle x="-12.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="22.5" diameter="7" antialias="true"/>
+        <line x1="-7" y1="24" x2="-11" y2="28" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" length1="1.5" end2="none"/>
+        <line x1="-11" y1="24" x2="-7" y2="28" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" length1="1.5" end2="none"/>
+        <dynamic_text z="12" text_from="UserText" frame="false" x="10" Valignment="AlignTop" rotation="0" uuid="{0a7ec1aa-56f5-4d4e-85fa-f35ad1211760}" y="9" text_width="-1" Halignment="AlignLeft" font="MS Shell Dlg 2,9,-1,5,75,0,0,0,0,0,Gras">
+            <text>_</text>
+            <color>#ff00ff</color>
+        </dynamic_text>
+        <line x1="-9" y1="23" x2="-9" y2="29" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" antialias="false" length1="1.5" end2="none"/>
+        <dynamic_text z="13" text_from="UserText" frame="false" x="-27" Valignment="AlignTop" rotation="0" uuid="{8fadd307-1947-412a-aa64-234fd56d371c}" y="9" text_width="-1" Halignment="AlignLeft" font="MS Shell Dlg 2,9,-1,5,75,0,0,0,0,0,Gras">
+            <text>_</text>
+            <color>#ff00ff</color>
+        </dynamic_text>
+        <line x1="-12" y1="26" x2="-6" y2="26" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" antialias="false" length1="1.5" end2="none"/>
+        <line x1="-7" y1="-8" x2="2" y2="2" end1="none" style="line-style:normal;line-weight:hight;filling:white;color:white" length2="1.5" antialias="false" length1="1.5" end2="none"/>
+        <text text="0" x="-17" rotation="0" y="-10" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <text text="13" x="-12" rotation="0" y="20" color="#000000" font="Sans Serif,3,-1,5,50,0,0,0,0,0"/>
+        <terminal orientation="s" x="-9" y="35"/>
+        <terminal orientation="s" x="8" y="35"/>
+    </description>
+</definition>

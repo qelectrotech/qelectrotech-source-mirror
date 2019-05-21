@@ -1,0 +1,41 @@
+<definition hotspot_x="9" hotspot_y="19" version="0.70" type="element" height="50" orientation="dyyy" width="30" link_type="simple">
+    <uuid uuid="{2975cdd3-6ec6-48bd-91dc-b870423d6ee8}"/>
+    <names>
+        <name lang="cs"></name>
+        <name lang="pl"></name>
+        <name lang="el"></name>
+        <name lang="en"></name>
+        <name lang="de"></name>
+        <name lang="fr">Voyant Bleu</name>
+        <name lang="it"></name>
+        <name lang="ar"></name>
+        <name lang="nl"></name>
+    </names>
+    <elementInformations/>
+    <informations>PFIT 589</informations>
+    <description>
+        <circle style="line-style:normal;line-weight:hight;filling:blue;color:black" antialias="false" diameter="25" x="-7.5" y="-17.5"/>
+        <line end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-13" antialias="false" x1="-3" x2="14" end1="none" y1="4" length1="1.5" length2="1.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="7" x="9.5" y="12.5"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="18" antialias="false" x1="15" x2="11" end1="none" y1="14" length1="1.5" length2="1.5"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="18" antialias="false" x1="11" x2="15" end1="none" y1="14" length1="1.5" length2="1.5"/>
+        <line end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="19" antialias="false" x1="13" x2="13" end1="none" y1="13" length1="1.5" length2="1.5"/>
+        <line end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="16" antialias="false" x1="10" x2="16" end1="none" y1="16" length1="1.5" length2="1.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="7" x="-7.5" y="12.5"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="18" antialias="false" x1="-2" x2="-6" end1="none" y1="14" length1="1.5" length2="1.5"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="18" antialias="false" x1="-6" x2="-2" end1="none" y1="14" length1="1.5" length2="1.5"/>
+        <line end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="19" antialias="false" x1="-4" x2="-4" end1="none" y1="13" length1="1.5" length2="1.5"/>
+        <line end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="16" antialias="false" x1="-7" x2="-1" end1="none" y1="16" length1="1.5" length2="1.5"/>
+        <line end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="4" antialias="false" x1="-4" x2="13" end1="none" y1="-12" length1="1.5" length2="1.5"/>
+        <dynamic_text Valignment="AlignTop" rotation="0" frame="false" Halignment="AlignLeft" z="15" uuid="{0a7ec1aa-56f5-4d4e-85fa-f35ad1211760}" x="15" text_width="-1" y="-1" font="MS Shell Dlg 2,9,-1,5,75,0,0,0,0,0,Gras" text_from="UserText">
+            <text>_</text>
+            <color>#ff00ff</color>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" rotation="0" frame="false" Halignment="AlignLeft" z="16" uuid="{8fadd307-1947-412a-aa64-234fd56d371c}" x="-22" text_width="-1" y="-1" font="MS Shell Dlg 2,9,-1,5,75,0,0,0,0,0,Gras" text_from="UserText">
+            <text>_</text>
+            <color>#ff00ff</color>
+        </dynamic_text>
+        <terminal x="13" orientation="s" y="25"/>
+        <terminal x="-4" orientation="s" y="25"/>
+    </description>
+</definition>
