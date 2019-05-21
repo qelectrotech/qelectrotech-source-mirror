@@ -2230,7 +2230,7 @@ void QETDiagramEditor::generateTerminalBlock()
 	#if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
 		QMessageBox::warning(nullptr,
 							 tr("Error launching qet_tb_generator plugin"), 
-							 tr("To install the plugin qet_tb_generator"
+							 QObject::tr("To install the plugin qet_tb_generator"
 								 "<br>"
 								 "Visit :"
 								 "<br>"
@@ -2266,7 +2266,7 @@ void QETDiagramEditor::generateTerminalBlock()
 #elif defined(Q_OS_MAC)
 		QMessageBox::warning(nullptr,
 							 tr("Error launching qet_tb_generator plugin"), 
-							 tr("To install the plugin qet_tb_generator"
+							 QObject::tr("To install the plugin qet_tb_generator"
 							 "<br>"
 							 "Visit  :"
 							 "<br>"
@@ -2297,7 +2297,7 @@ void QETDiagramEditor::generateTerminalBlock()
 #else
 		QMessageBox::warning(nullptr,
 							 tr("Error launching qet_tb_generator plugin"), 
-							 tr( "To install the plugin qet_tb_generator"
+							 QObject::tr("To install the plugin qet_tb_generator"
 								 "<br>"
 								 "Visit : "
 								 "<br>"
