@@ -5465,32 +5465,32 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="598"/>
         <source>Ajoute un champ de texte sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiunge un campo di testo sulla pagina corrente</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="599"/>
         <source>Ajoute une image sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiunge un&apos;immagine sulla pagina corrente</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="600"/>
         <source>Ajoute une ligne sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiunge una linea sulla pagina corrente</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="601"/>
         <source>Ajoute un rectangle sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiunge un rettangolo sulla pagina corrente</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="602"/>
         <source>Ajoute une ellipse sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiunge un&apos;ellisse sulla pagina corrente</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="603"/>
         <source>Ajoute une polyligne sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiunge un poligono sulla pagina corrente</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
@@ -5523,7 +5523,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1313"/>
         <source>Double-click pour terminer la forme, Click droit pour annuler le dernier point</source>
-        <translation type="unfinished"></translation>
+        <translation>Fare doppio clic per terminare la forma, clic destro per annullare l&apos;ultimo punto</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1549"/>
@@ -5859,7 +5859,12 @@ Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 &gt;&gt; Install on Windows
 Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Per installare il plugin DXFtoQET
+Visita https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+
+&gt;&gt; Installazione su Windows
+Salvare il file DXFtoQET.exe nella cartella C:\Utenti\nome_utente\AppData\Roaming\qet\ 
+</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="171"/>
@@ -5869,7 +5874,12 @@ Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 &gt;&gt; Install on macOSX
 Put DXFtoQET.app binary on /Users/user_name/.qet/ directory 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Per installare il plugin DXFtoQET
+Visita https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+
+&gt;&gt; Installazione su macOSX
+Salvare il file DXFtoQET.app nella cartella /Utenti/nome_utente\.qet\ 
+</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="177"/>
@@ -5880,7 +5890,13 @@ Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 Put DXFtoQET binary on your /home/user_name/.qet/ directory
 make it executable : chmod +x ./DXFtoQET
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Per installare il plugin DXFtoQET
+Visita https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+
+&gt;&gt; Installazione su Linux
+Salvare il file DXFtoQET.exe nella propria cartella /home/nome_utente/.qet/
+Rendere eseguibile il file con il comando: chmod +x ./DXFtoQET
+</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="298"/>
@@ -5890,7 +5906,7 @@ make it executable : chmod +x ./DXFtoQET
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="311"/>
         <source>Double-click pour terminer la forme, Click droit pour annuler le dernier point</source>
-        <translation type="unfinished"></translation>
+        <translation>Fare doppio clic per terminare la forma, Clic destro per annullare l&apos;ultimo punto</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="369"/>
@@ -6015,12 +6031,12 @@ make it executable : chmod +x ./DXFtoQET
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="312"/>
         <source>Ajouter un texte d&apos;élément non éditable dans les schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungere un testo di elemento non modificabile negli schemi</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="313"/>
         <source>Ajouter un texte d&apos;élément pouvant être édité dans les schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungere un testo di elemento modificabile negli schemi</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/qetelementeditor.cpp" line="768"/>
@@ -7253,22 +7269,22 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/qet.cpp" line="637"/>
         <source>Ramène la ou les sélections au premier plan</source>
-        <translation type="unfinished"></translation>
+        <translation>Porta la(e) selezione(i) in primo piano</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="638"/>
         <source>Rapproche la ou les sélections</source>
-        <translation type="unfinished"></translation>
+        <translation>Sposta in alto la(e) selezione(i)</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="639"/>
         <source>Éloigne la ou les sélections</source>
-        <translation type="unfinished"></translation>
+        <translation>Sposta in basso la(e) selezione(i)</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="640"/>
         <source>Envoie en arrière plan la ou les sélections</source>
-        <translation type="unfinished"></translation>
+        <translation>Porta sullo sfondo la(e) selezione(i)</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="642"/>
@@ -8131,17 +8147,17 @@ La si vuole sostituire?</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2233"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Per installare il plugin qet_tb_generator &lt;br&gt; Visita: &lt;br&gt; &lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt; qet-tb-generator &lt;/a&gt; &lt;br&gt; Richiede python 3.5 o successivo. &lt;br&gt; &lt;B&gt; &lt;U&gt; Prima installazione su Windows &lt;/B&gt; &lt;/U&gt; &lt;br&gt; 1. Installa, se richiesto, python 3.5 o successivo &lt;br&gt; Visita: &lt;br&gt; &lt;a href=&apos;https://www.python.org/downloads/&apos;&gt; python.org &lt;/a&gt; &lt;br&gt; 2. pip install qet_tb_generator &lt;br&gt; &lt;B&gt; &lt;U&gt; Aggiorna su Windows &lt;/B&gt; &lt;/U&gt; &lt;br&gt; python -m pip install --upgrade qet_tb_generator &lt;br&gt; &gt;&gt; l&apos;utente può lanciare in un terminale questo script in questa cartella&lt;br&gt; C: \utenti\XXXX\AppData \Local\Programmi\Python\Python36-32\Scripts   &lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2269"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Per installare il plugin qet_tb_generator &lt;br&gt; Visita: &lt;br&gt; &lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt; qet-tb-generator &lt;/a&gt; &lt;br&gt; &lt;B&gt; &lt;U&gt; Prima installazione su macOSX &lt;/B&gt; &lt;/U&gt; &lt;br&gt; 1. Installa, se necessario, python 3.5 &lt;br&gt; Visita: &lt;br&gt; &lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt; howto &lt;/a&gt; &lt;br&gt; 2 . pip3 install qet_tb_generator &lt;br&gt; &lt;B&gt; &lt;U&gt; Aggiorna su macOSX &lt;/B&gt; &lt;/U&gt; &lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2300"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit : &lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Per installare il plugin qet_tb_generator &lt;br&gt; Visita: &lt;br&gt; &lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt; qet-tb-generator &lt;/a&gt; &lt;br&gt; &lt;br&gt; Richiede Python 3.5 o versione successiva. &lt;br&gt; &lt;br&gt; &lt;B&gt; &lt;U&gt; Prima installazione su Linux &lt;/B&gt; &lt;/U&gt; &lt;br&gt; 1. controlla di aver installato pip3: pip3 --version &lt;br&gt; Se non è presente installa con: sudo apt-get install python3-pip &lt;br&gt; 2. Installa il programma: sudo pip3 install qet_tb_generator &lt;br&gt; 3. Esegui il programma: qet_tb_generator &lt;br&gt; &lt;br&gt; &lt;B&gt; &lt;U&gt; Aggiornamento su Linux &lt;/B&gt; &lt;/U&gt; &lt;br&gt; sudo pip3 install --upgrade qet_tb_generator &lt;br&gt;</translation>
     </message>
 </context>
 <context>
