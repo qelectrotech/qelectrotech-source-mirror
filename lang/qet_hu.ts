@@ -5402,32 +5402,32 @@ Elérhető lehetőségek:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="598"/>
         <source>Ajoute un champ de texte sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Szövegmező hozzáadása a jelenlegi tervlaphoz</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="599"/>
         <source>Ajoute une image sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Kép hozzáadása a jelenlegi tervlaphoz</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="600"/>
         <source>Ajoute une ligne sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Vonal hozzáadása a jelenlegi tervlaphoz</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="601"/>
         <source>Ajoute un rectangle sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Négyszög hozzáadása a jelenlegi tervlaphoz</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="602"/>
         <source>Ajoute une ellipse sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Ellipszis hozzáadása a jelenlegi tervlaphoz</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="603"/>
         <source>Ajoute une polyligne sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Vonallánc hozzáadása a jelenlegi tervlaphoz</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="637"/>
@@ -5569,7 +5569,7 @@ Elérhető lehetőségek:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1313"/>
         <source>Double-click pour terminer la forme, Click droit pour annuler le dernier point</source>
-        <translation type="unfinished"></translation>
+        <translation>Dupla kattintás a forma befejezéséhez, Jobb kattintás az utolsó pont visszavonásához</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1549"/>
@@ -5745,7 +5745,12 @@ Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 &gt;&gt; Install on Windows
 Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>A DXFtoQET beépülő modul telepítése
+Látogass el a https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+
+&gt;&gt; Telepítés Windowson
+Másold a DXFtoQET.exe-fájlt a C:\Users\user_name\AppData\Roaming\qet\ könyvtárba 
+</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="171"/>
@@ -5755,7 +5760,12 @@ Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 &gt;&gt; Install on macOSX
 Put DXFtoQET.app binary on /Users/user_name/.qet/ directory 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>A DXFtoQET beépülő modul telepítése
+Látogass el a https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+
+&gt;&gt; Telepítés macOSX-en
+Másold a DXFtoQET.app ot a /Users/user_name/.qet/ könyvtárba 
+</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="177"/>
@@ -5766,7 +5776,13 @@ Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 Put DXFtoQET binary on your /home/user_name/.qet/ directory
 make it executable : chmod +x ./DXFtoQET
 </source>
-        <translation type="unfinished"></translation>
+        <translation>A DXFtoQET beépülő modul telepítése
+Látogass el a https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+
+&gt;&gt; Telepítés Windowson
+Másold a DXFtoQET fájlt a  Te /home/user_name/.qet/ könyvtáradba
+végrahajtásához : chmod +x ./DXFtoQET
+</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="197"/>
@@ -5903,7 +5919,7 @@ make it executable : chmod +x ./DXFtoQET
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="311"/>
         <source>Double-click pour terminer la forme, Click droit pour annuler le dernier point</source>
-        <translation type="unfinished"></translation>
+        <translation>Dupla kattintás a forma befejezéséhez, Jobb kattintás az utolsó pont visszavonásához</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="315"/>
@@ -6154,12 +6170,12 @@ Helyezd a DXFtoQET.app fájlt a /Users/user_name/.qet/ könyvtárba
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="312"/>
         <source>Ajouter un texte d&apos;élément non éditable dans les schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>Nem szerkeszthető elemszöveg hozzáadása a tervlapokon</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="313"/>
         <source>Ajouter un texte d&apos;élément pouvant être édité dans les schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>Szerkeszthető elemszöveg hozzáadása a tervlapokon</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/qetelementeditor.cpp" line="768"/>
@@ -7425,22 +7441,22 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qet.cpp" line="637"/>
         <source>Ramène la ou les sélections au premier plan</source>
-        <translation type="unfinished"></translation>
+        <translation>A kiválasztás(ok) előre hozása</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="638"/>
         <source>Rapproche la ou les sélections</source>
-        <translation type="unfinished"></translation>
+        <translation>A kiválasztás(ok) közelítése</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="639"/>
         <source>Éloigne la ou les sélections</source>
-        <translation type="unfinished"></translation>
+        <translation>A kiválasztás(ok) távolítása le</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="640"/>
         <source>Envoie en arrière plan la ou les sélections</source>
-        <translation type="unfinished"></translation>
+        <translation>A kiválasztás(ok) hátra küldése</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="642"/>
@@ -8131,17 +8147,17 @@ Cserélni akarod?</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2233"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>A qet_tb_generator beépülő modul telepítésehez&lt;br&gt;Látogass el:&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Szükséges hozzá python 3.5 vagy, magasabb verziója.&lt;br&gt;&lt;B&gt;&lt;U&gt; Első telepítés Windowson&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Python 3.5 vagy, magasabb verziójának telepítése, ha szükséges&lt;br&gt; Látogass el :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. parancssorba gépelve: pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Frissítés Windowson&lt;/B&gt;&lt;/U&gt;&lt;br&gt;parancssorba gépelve: python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;a felhasználó ezt a script-et a terminálban elindíthatja el és ebben a könyvtárban található &lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt; (XXXX a felhasználó neve)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2269"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>A qet_tb_generator beépülő modul telepítésehez&lt;br&gt;Látogass el  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Első telepítés macOSX-n&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Ha szükséges, akkor a  python 3.5 vagy, magasabb verzió telepítése&lt;br&gt; Látogass el :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Frissítés macOSX-n&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2300"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit : &lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>A qet_tb_generator beépülő modul telepítéséhez&lt;br&gt;Látogass el: &lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Szükséges python 3.5 vagy, magasabb verzió.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Első telepítés Linux-on&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. ellenőrízni kell hogy pip3 telepítve van: pip3 --version&lt;br&gt;ha nem, akkor ezzel a parancssal: sudo apt-get install python3-pip&lt;br&gt;2. program telepítése: sudo pip3 install qet_tb_generator&lt;br&gt;3. Program futtatása: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Frissítés Linux-on&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -8204,7 +8220,7 @@ Cserélni akarod?</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="991"/>
         <source>une polyligne</source>
-        <translation>sokszög</translation>
+        <translation>vonallánc</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="992"/>
@@ -9072,7 +9088,7 @@ A többi mező nincs használva.</translation>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="20"/>
         <source>Trait</source>
-        <translation>Cím</translation>
+        <translation>Vonal</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="33"/>
