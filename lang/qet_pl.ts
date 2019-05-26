@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="pl">
+<TS version="2.0" language="pl">
 <context>
     <name>AboutQET</name>
     <message>
@@ -5484,32 +5484,32 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="598"/>
         <source>Ajoute un champ de texte sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Wstaw pole tekstowe do bieżącego arkusza</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="599"/>
         <source>Ajoute une image sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Wstaw obraz do bieżącego arkusza</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="600"/>
         <source>Ajoute une ligne sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Wstaw linię do bieżącego arkusza</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="601"/>
         <source>Ajoute un rectangle sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Wstaw prostokąt do bieżącego arkusza</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="602"/>
         <source>Ajoute une ellipse sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Wstaw elipsę do aktualnego arkusza</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="603"/>
         <source>Ajoute une polyligne sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Wstaw wielokąt do bieżącego arkusza</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
@@ -5542,7 +5542,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1313"/>
         <source>Double-click pour terminer la forme, Click droit pour annuler le dernier point</source>
-        <translation type="unfinished"></translation>
+        <translation>Podwójne kliknięcie zamyka kształt, kliknięcie prawym przyciskiem myszki cofa ostatni punkt</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1549"/>
@@ -5878,7 +5878,11 @@ Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 &gt;&gt; Install on Windows
 Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Aby zainstalować wtyczkę DXFtoQET
+Odwiedź https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+
+&gt;&gt; Instalacja w Windows
+Przenieś DXFtoQET.exe binary do C:\Users\user_name\AppData\Roaming\qet\ directory</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="171"/>
@@ -5888,7 +5892,11 @@ Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 &gt;&gt; Install on macOSX
 Put DXFtoQET.app binary on /Users/user_name/.qet/ directory 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Aby zainstalować wtyczkę DXFtoQET
+Odwiedź https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+
+&gt;&gt; Instalacja w macOSX
+Przenieś DXFtoQET.app binary do /Users/user_name/.qet/ directory</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="177"/>
@@ -5899,7 +5907,12 @@ Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 Put DXFtoQET binary on your /home/user_name/.qet/ directory
 make it executable : chmod +x ./DXFtoQET
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Aby zainstalować wtyczkę DXFtoQET
+Odwiedź https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+
+&gt;&gt; Instalacja w Linux
+Preznieś DXFtoQET binary do twojego /home/user_name/.qet/ directory
+make it executable : chmod +x ./DXFtoQE</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="298"/>
@@ -5909,7 +5922,7 @@ make it executable : chmod +x ./DXFtoQET
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="311"/>
         <source>Double-click pour terminer la forme, Click droit pour annuler le dernier point</source>
-        <translation type="unfinished"></translation>
+        <translation>Kliknij dwukrotnie aby zamknąć kształt, kliknij prawym klawiszem aby cofnąć ostatni punkt</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="369"/>
@@ -6036,12 +6049,12 @@ make it executable : chmod +x ./DXFtoQET
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="312"/>
         <source>Ajouter un texte d&apos;élément non éditable dans les schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>Dodaj nieedytowalny tekst elementu w schematach</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="313"/>
         <source>Ajouter un texte d&apos;élément pouvant être édité dans les schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>Dodaj edytowalny tekst elementu w schematach</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/qetelementeditor.cpp" line="768"/>
@@ -7283,17 +7296,17 @@ Co chcesz zrobić?</translation>
     <message>
         <location filename="../sources/qet.cpp" line="637"/>
         <source>Ramène la ou les sélections au premier plan</source>
-        <translation type="unfinished"></translation>
+        <translation>Przenieś zaznaczone elementy na wierzch</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="638"/>
         <source>Rapproche la ou les sélections</source>
-        <translation type="unfinished"></translation>
+        <translation>Przejdź do zaznaczonego elementu</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="639"/>
         <source>Éloigne la ou les sélections</source>
-        <translation type="unfinished"></translation>
+        <translation>Usuwa zaznaczenie</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="640"/>
