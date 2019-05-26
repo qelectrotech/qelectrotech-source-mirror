@@ -1,0 +1,66 @@
+<definition hotspot_x="5" orientation="dyyy" link_type="simple" width="230" version="0.70" type="element" hotspot_y="5" height="80">
+    <uuid uuid="{4abc17a9-edab-440d-9344-aede907c9451}"/>
+    <names>
+        <name lang="fr">TA-SLIDER160 I/O</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="designation">TA SLIDER 160I/O</elementInformation>
+        <elementInformation show="1" name="manufacturer">IMI Hydronic</elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <text x="55" color="#000000" text="green" y="25" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="270"/>
+        <text x="15" color="#000000" text="brown" y="25" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="270"/>
+        <text x="35" color="#000000" text="white" y="25" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="270"/>
+        <text x="75" color="#000000" text="grey" y="25" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="270"/>
+        <text x="95" color="#000000" text="yellow" y="25" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="270"/>
+        <rect ry="0" x="80" y="30" width="20" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" height="20"/>
+        <rect ry="0" x="40" y="30" width="20" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" height="20"/>
+        <rect ry="0" x="60" y="30" width="20" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" height="20"/>
+        <rect ry="0" x="20" y="30" width="20" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" height="20"/>
+        <rect ry="0" x="0" y="0" width="220" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" height="70"/>
+        <text x="25" color="#000000" text=" 0VAC/VDC" y="30" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="270"/>
+        <text x="67" color="#000000" text=" 0(2).10VDC" y="31" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="270"/>
+        <text x="45" color="#000000" text=" 0(2).10VDC" y="30" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="270"/>
+        <line y2="29" end2="none" length1="1.5" x1="50" y1="5" x2="50" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length2="1.5" antialias="false"/>
+        <text x="28" color="#000000" text="M" y="40" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0"/>
+        <text x="48" color="#000000" text="Yv" y="40" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0"/>
+        <text x="66" color="#000000" text="Xv" y="40" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0"/>
+        <text x="88" color="#000000" text="B" y="40" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0"/>
+        <text x="5" color="#000000" text="L24" y="40" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0"/>
+        <text x="130" color="#000000" text="TA-SLIDER 160 I/O" y="60" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0"/>
+        <rect ry="0" x="0" y="30" width="20" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" height="20"/>
+        <text x="6" color="#000000" text=" 24VAC/VDC" y="30" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="270"/>
+        <line y2="5" end2="none" length1="1.5" x1="10" y1="30" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length2="1.5" antialias="false"/>
+        <line y2="30" end2="none" length1="1.5" x1="30" y1="5" x2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length2="1.5" antialias="false"/>
+        <line y2="30" end2="none" length1="1.5" x1="70" y1="6" x2="70" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length2="1.5" antialias="false"/>
+        <line y2="12" end2="none" length1="1.5" x1="70" y1="10" x2="68" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length2="1.5" antialias="false"/>
+        <line y2="12" end2="none" length1="1.5" x1="70" y1="10" x2="72" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length2="1.5" antialias="false"/>
+        <line y2="10" end2="none" length1="1.5" x1="50" y1="12" x2="52" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length2="1.5" antialias="false"/>
+        <line y2="10" end2="none" length1="1.5" x1="50" y1="12" x2="48" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length2="1.5" antialias="false"/>
+        <line y2="60" end2="none" length1="1.5" x1="30" y1="60" x2="36" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length2="1.5" antialias="false"/>
+        <circle x="36" y="56" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8" antialias="false"/>
+        <line y2="60" end2="none" length1="1.5" x1="50" y1="60" x2="44" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length2="1.5" antialias="false"/>
+        <line y2="62" end2="none" length1="1.5" x1="42" y1="58" x2="38" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length2="1.5" antialias="false"/>
+        <line y2="60" end2="none" length1="1.5" x1="42" y1="58" x2="42" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length2="1.5" antialias="false"/>
+        <line y2="58" end2="none" length1="1.5" x1="42" y1="58" x2="40" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length2="1.5" antialias="false"/>
+        <text x="160" color="#000000" text="IMI TA" y="40" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0"/>
+        <line y2="60" end2="none" length1="1.5" x1="50" y1="50" x2="50" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length2="1.5" antialias="false"/>
+        <line y2="50" end2="none" length1="1.5" x1="30" y1="59" x2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length2="1.5" antialias="false"/>
+        <line y2="5" end2="none" length1="1.5" x1="90" y1="30" x2="90" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length2="1.5" antialias="false"/>
+        <terminal x="10" orientation="n" y="30"/>
+        <terminal x="30" orientation="n" y="30"/>
+        <terminal x="70" orientation="n" y="30"/>
+        <terminal x="50" orientation="n" y="30"/>
+        <terminal x="90" orientation="n" y="30"/>
+    </description>
+</definition>
