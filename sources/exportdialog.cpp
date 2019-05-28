@@ -36,6 +36,8 @@
 #include "element.h"
 #include "dynamicelementtextitem.h"
 
+#include <QGraphicsSimpleTextItem>
+
 /**
 	Constructeur
 	@param project Le projet a exporter
@@ -498,7 +500,42 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 		qreal hotspot_y = Createdxf::sheetHeight - (elem_pos_y) * Createdxf::yScale;
 
 		ElementPictureFactory::primitives primitives = ElementPictureFactory::instance()->getPrimitives(elmt->location());
-		
+
+		for(QGraphicsSimpleTextItem *text : primitives.m_texts)
+		{
+			qreal fontSize = text->font().pointSizeF();
+			if (fontSize < 0) {
+				fontSize = text->font().pixelSize();
+			}
+			fontSize *= Createdxf::yScale;
+			qreal x = elem_pos_x + text->pos().x();
+			qreal y = elem_pos_y + text->pos().y();
+			x *= Createdxf::xScale;
+			y = Createdxf::sheetHeight - (y * Createdxf::yScale);// - fontSize;
+			QPointF transformed_point = rotation_transformed(x, y, hotspot_x, hotspot_y, rotation_angle);
+			x = transformed_point.x();
+			y = transformed_point.y();
+			QStringList lines = text->text().split('\n');
+			y += (fontSize/2) * (lines.count()-1);
+			for (QString line : lines)
+			{
+				qreal angle = 360 - (text->rotation() + rotation_angle);
+				if (line.size() > 0 && line != "_" ) {
+					Createdxf::drawText(file_path, line, x, y, fontSize, angle, 0);
+				}
+				angle += 1080;
+				// coordinates for next line
+				if (int(angle) % 360 == 0) // no rotation
+					y -= fontSize*1.06;
+				else if (int(angle - 180) % 360 == 0) // 180 degrees rotation
+					y += fontSize*1.06;
+				else if (int(angle - 270) % 360 == 0) // 270 degrees rotation
+					x -= fontSize*1.06;
+				else // ((angle - 90) % 360 == 0)  90 degrees rotation
+					x += fontSize*1.06;
+			}
+		}
+
 		for (QLineF line : primitives.m_lines)
 		{
 			qreal x1 = (elem_pos_x + line.p1().x()) * Createdxf::xScale;

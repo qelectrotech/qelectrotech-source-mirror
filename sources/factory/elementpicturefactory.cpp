@@ -27,6 +27,7 @@
 #include <QPicture>
 #include <iostream>
 #include <QAbstractTextDocumentLayout>
+#include <QGraphicsSimpleTextItem>
 
 ElementPictureFactory* ElementPictureFactory::m_factory = nullptr;
 
@@ -122,6 +123,12 @@ ElementPictureFactory::primitives ElementPictureFactory::getPrimitives(const Ele
 		build(location);
 	
 	return m_primitives_H.value(location.uuid());
+}
+
+ElementPictureFactory::~ElementPictureFactory() {
+	for (primitives p : m_primitives_H.values()) {
+		qDeleteAll(p.m_texts);
+	}
 }
 
 /**
@@ -522,6 +529,14 @@ void ElementPictureFactory::parseText(const QDomElement &dom, QPainter &painter,
 	QAbstractTextDocumentLayout::PaintContext ctx;
 	ctx.palette.setColor(QPalette::Text, text_color);
 	text_document.documentLayout() -> draw(&painter, ctx);
+
+		//A very dirty workaround for export this text to dxf
+	QGraphicsSimpleTextItem *qgsti = new QGraphicsSimpleTextItem();
+	qgsti->setText(dom.attribute("text"));
+	qgsti->setFont(font_);
+	qgsti->setPos(dom.attribute("x").toDouble(), dom.attribute("y").toDouble());
+	qgsti->setRotation(dom.attribute("rotation", "0").toDouble());
+	prim.m_texts << qgsti;
 
 	painter.restore();
 }

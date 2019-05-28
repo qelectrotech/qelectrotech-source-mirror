@@ -27,6 +27,7 @@ class QPicture;
 class QUuid;
 class QDomElement;
 class QPainter;
+class QGraphicsSimpleTextItem;
 
 /**
  * @brief The ElementPictureFactory class
@@ -43,6 +44,7 @@ class ElementPictureFactory
 			QList<QRectF> m_circles;
 			QList<QVector<QPointF>> m_polygons;
 			QList<QVector<qreal>> m_arcs;
+			QList<QGraphicsSimpleTextItem*> m_texts;
 		};
 		
 		
@@ -88,7 +90,7 @@ class ElementPictureFactory
 		ElementPictureFactory() {}
 		ElementPictureFactory (const ElementPictureFactory &);
 		ElementPictureFactory operator= (const ElementPictureFactory &);
-		~ElementPictureFactory() {}
+		~ElementPictureFactory();
 		
 		bool build(const ElementsLocation &location, QPicture *picture=nullptr, QPicture *low_picture=nullptr);
 		void parseElement(const QDomElement &dom, QPainter &painter, primitives &prim) const;
