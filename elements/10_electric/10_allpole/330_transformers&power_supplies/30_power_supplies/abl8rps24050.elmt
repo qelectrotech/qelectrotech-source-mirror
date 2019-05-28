@@ -1,0 +1,66 @@
+<definition orientation="dyyy" version="0.70" height="80" hotspot_x="50" link_type="simple" hotspot_y="39" width="100" type="element">
+    <uuid uuid="{c4ecef4b-8696-443d-9548-83590289d1f6}"/>
+    <names>
+        <name lang="es">Fuente de poder AC/DC 3 polos</name>
+        <name lang="de">Netzteil AC/DC 3-polig</name>
+        <name lang="pl">Zasilacz trójfazowy</name>
+        <name lang="fr">ABL8RPS24050</name>
+        <name lang="en">Power supply AC/DC 3 poles</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">ABL8RPS24050</elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">schneider</elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+    </elementInformations>
+    <informations>EN 60617: 06-14-03</informations>
+    <description>
+        <text text="AC 3~" y="-7" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-28"/>
+        <circle diameter="5" y="-32.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="27.5"/>
+        <text text="-" y="24" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="9"/>
+        <text text="-" y="24" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="29"/>
+        <text text="LV" y="-20" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-14"/>
+        <line length1="1.5" y2="30" length2="1.5" end1="none" antialias="false" x1="13" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x2="27" end2="none"/>
+        <text text="DC" y="12" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="18"/>
+        <line length1="1.5" y2="30" length2="1.5" end1="none" antialias="false" x1="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x2="7" end2="none"/>
+        <line length1="1.5" y2="30" length2="1.5" end1="none" antialias="false" x1="-27" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x2="-13" end2="none"/>
+        <text text="+" y="24" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-12"/>
+        <text text="C" y="-20" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="6"/>
+        <circle diameter="5" y="-32.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-12.5"/>
+        <text text="PE" y="-20" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-34"/>
+        <text text="HV" y="-20" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="28"/>
+        <circle diameter="5" y="-32.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="7.5"/>
+        <circle diameter="5" y="27.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-32.5"/>
+        <circle diameter="5" y="27.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="27.5"/>
+        <circle diameter="5" y="27.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-12.5"/>
+        <circle diameter="5" y="27.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="7.5"/>
+        <dynamic_text Valignment="AlignTop" Halignment="AlignLeft" text_width="-1" y="-30" uuid="{85ca85a9-4d65-41f0-bf73-bacf801bfd0e}" text_from="ElementInfo" frame="false" z="20" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-80">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text text="+" y="24" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-32"/>
+        <polygon x3="-45" y2="30" y4="-29.8785" y5="-29.8785" closed="false" x4="-33" y6="-29.8785" x5="-33" x6="-33" antialias="false" x1="-33" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x2="-45" y3="-29.8785"/>
+        <polygon x3="45" y2="-30.1383" y4="30" y5="30" closed="false" x4="33" y6="30" x5="33" x6="33" antialias="false" x1="33" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30.1383" x2="45" y3="30"/>
+        <line length1="1.5" y2="-30" length2="1.5" end1="none" antialias="false" x1="-27" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x2="-13" end2="none"/>
+        <line length1="1.5" y2="-30" length2="1.5" end1="none" antialias="false" x1="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x2="7" end2="none"/>
+        <line length1="1.5" y2="-30" length2="1.5" end1="none" antialias="false" x1="13" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x2="27" end2="none"/>
+        <rect height="30" rx="0" y="-15" width="60" antialias="false" ry="0" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-30"/>
+        <line length1="1.5" y2="15" length2="1.5" end1="none" antialias="false" x1="30" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-15" x2="-30" end2="none"/>
+        <circle diameter="5" y="-32.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-32.5"/>
+        <terminal orientation="n" y="-33" x="-10"/>
+        <terminal orientation="n" y="-33" x="-30"/>
+        <terminal orientation="s" y="33" x="-30"/>
+        <terminal orientation="s" y="33" x="-10"/>
+        <terminal orientation="n" y="-33" x="10"/>
+        <terminal orientation="s" y="33" x="10"/>
+        <terminal orientation="s" y="33" x="30"/>
+        <terminal orientation="n" y="-33" x="30"/>
+    </description>
+</definition>
