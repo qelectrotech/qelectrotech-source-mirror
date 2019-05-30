@@ -60,7 +60,13 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	tbt_edit              = new QAction(QET::Icons::TitleBlock,                tr("Éditer ce modèle"),              this);
 	tbt_remove            = new QAction(QET::Icons::TitleBlock,                tr("Supprimer ce modèle"),              this);
 
-
+ 
+	prj_del_diagram -> setShortcut(QKeySequence(Qt::Key_Delete));
+	prj_move_diagram_up -> setShortcut(QKeySequence(Qt::Key_F3));
+	prj_move_diagram_down -> setShortcut(QKeySequence(Qt::Key_F4));
+	prj_move_diagram_top -> setShortcut(QKeySequence(Qt::Key_F5));
+	
+	
 	// initialise le champ de texte pour filtrer avec une disposition horizontale
 	filter_textfield = new QLineEdit(this);
 	filter_textfield -> setClearButtonEnabled(true);
@@ -406,6 +412,22 @@ void ElementsPanelWidget::keyPressEvent   (QKeyEvent *e) {
 					if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
 						emit(requestForDiagramDeletion(selected_diagram));
 					}
+					break;
+					case Qt::Key_F3:
+					if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
+						emit(requestForDiagramMoveUp(selected_diagram));
+					}
+					break;
+					case Qt::Key_F4:
+					if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
+						emit(requestForDiagramMoveDown(selected_diagram));
+					}
+					break;
+					case Qt::Key_F5:
+					if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
+						emit(requestForDiagramMoveUpTop(selected_diagram));
+					}
+					break;
 				}
 	return;
 }
