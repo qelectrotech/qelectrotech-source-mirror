@@ -206,7 +206,6 @@ void QETElementEditor::setupActions() {
 	open_file         -> setShortcut(tr("Ctrl+Shift+O"));
 	save              -> setShortcut(QKeySequence::Save);
 	save_as_file      -> setShortcut(tr("Ctrl+Shift+S"));
-	reload            -> setShortcut(Qt::Key_F5);
 	quit              -> setShortcut(QKeySequence(tr("Ctrl+Q")));
 	selectall         -> setShortcut(QKeySequence::SelectAll);
 	deselectall       -> setShortcut(QKeySequence(tr("Ctrl+Shift+A")));
