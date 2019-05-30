@@ -504,9 +504,9 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 		for(QGraphicsSimpleTextItem *text : primitives.m_texts)
 		{
 			qreal fontSize = text->font().pointSizeF();
-			if (fontSize < 0) {
+			if (fontSize < 0) 
 				fontSize = text->font().pixelSize();
-			}
+			
 			fontSize *= Createdxf::yScale;
 			qreal x = elem_pos_x + text->pos().x();
 			qreal y = elem_pos_y + text->pos().y();
