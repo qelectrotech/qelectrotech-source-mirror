@@ -1,8 +1,9 @@
 <definition width="80" version="0.4" hotspot_x="38" hotspot_y="23" height="40" link_type="simple" type="element" orientation="dyyy">
-<uuid uuid="{FCAA5EF6-AEA2-4D26-97D9-D15327833706}"/><names>
-        <name lang="es">Intercambiador de tubular</name>
+<uuid uuid="{6BE960DF-79FD-46B5-AB38-0441D6277F10}"/><names>
+        <name lang="es">Intercambiador tubular</name>
         <name lang="en">Tubular exchanger</name>
-        <name lang="ca">Intercambiador tubular</name>
+        <name lang="ca">Intercamviador tubular</name>
+        <name lang="fr">Echangeur tubulaire</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
@@ -24,7 +25,7 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <rect width="1" x="-35" y="7" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-9" x1="35" y2="-3" x2="35"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-14" x1="-24" y2="-14" x2="-18.5"/>
-        <input x="-20" y="0" size="6" rotate="true" text="_" tagg="label"/>
+        <input x="-11" y="2" size="4" rotate="true" text="_" tagg="label"/>
         <terminal x="-20.7" y="-16.1719" orientation="n"/>
         <terminal x="19.45" y="-16.1719" orientation="n"/>
         <terminal x="37" y="-6" orientation="e"/>
