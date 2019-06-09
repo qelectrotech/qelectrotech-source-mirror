@@ -1,6 +1,7 @@
 <definition width="40" version="0.4" hotspot_x="20" hotspot_y="14" height="30" type="element" ic="true" orientation="dyyy">
 <uuid uuid="{FBB1C758-8E0A-486B-A811-3B9A4455A192}"/><names>
         <name lang="es">Flecha roja</name>
+        <name lang="fr">Fléche rouge</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>

@@ -2,6 +2,7 @@
 <uuid uuid="{FF9A4380-14A0-4952-9BD8-31510D87892B}"/><names>
         <name lang="es">Grupo de circulación primario</name>
         <name lang="ca">Grup de circulació primari</name>
+        <name lang="fr">Module hydraulique</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

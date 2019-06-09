@@ -2,7 +2,8 @@
 <uuid uuid="{0F455155-1C70-4550-8385-D880A697893B}"/><names>
         <name lang="es">Filtro piscina</name>
         <name lang="ca">Filtre piscina</name>
-	<name lang="en">Pool filter</name>
+	    <name lang="en">Pool filter</name>
+	    <name lang="fr">Filtre à piscine</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
