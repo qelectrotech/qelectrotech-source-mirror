@@ -1,4 +1,4 @@
-<definition width="20" hotspot_y="14" height="20" hotspot_x="10" version="0.51" orientation="dyyy" link_type="simple" type="element">
+<definition width="20" hotspot_y="14" height="20" hotspot_x="10" version="0.51" orientation="dyyy" link_type="terminal" type="element">
     <uuid uuid="{ff1573e9-b618-45a8-93af-58562f69c9bb}"/>
     <names>
         <name lang="ar">طرف نهائي</name>
