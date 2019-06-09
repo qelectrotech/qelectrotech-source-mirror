@@ -201,6 +201,7 @@ QWidget *AboutQET::contributorsTab() const {
 	addAuthor(contributors, "Chipsterjulien",      "",                                    tr("Paquets Archlinux AUR"));
 	addAuthor(contributors, "Nuno Pinheiro",       "nuno@nuno-icons.com",                 tr("Icônes"));
 	addAuthor(contributors, "Cyril Frausti",       "cyril@qelectrotech.org",              tr("Développement"));
+	addAuthor(contributors, "Fernando Mateu Palou de Comasema", "fdomateu@gmail.com",     tr("Documentation"));
 	addAuthor(contributors, "Arun Kishore Eswara", "eswara.arun@gmail.com",               tr("Documentation"));
 	addAuthor(contributors, "René Negre",          "runsys@qelectrotech.org",             tr("Développement"));
 	addAuthor(contributors, "Nuri",                "nuri@qelectrotech.org",               tr("Collection d'éléments"));
