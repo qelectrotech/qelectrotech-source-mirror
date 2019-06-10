@@ -879,6 +879,7 @@ void ProjectView::loadDiagrams()
 	if (m_project -> getFolioSheetsQuantity()) {
 		for (int i = 0; i < m_project->getFolioSheetsQuantity(); i++)
 		m_tab -> tabBar() -> moveTab(diagram_views().size()-1, + 1);
+		m_project->setModified(false);
 	}
 }
 
