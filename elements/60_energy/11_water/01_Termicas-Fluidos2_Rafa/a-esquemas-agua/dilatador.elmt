@@ -2,7 +2,8 @@
 <uuid uuid="{23859BC7-5D6A-4988-BF38-ADBCBBE23F00}"/><names>
         <name lang="es">Dilatador</name>
         <name lang="ca">Dilatador</name>
-	<name lang="en">Dilator</name>
+         <name lang="en">Dilator</name>
+         <name lang="fr">Manchon de dilatation</name>
     </names>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
