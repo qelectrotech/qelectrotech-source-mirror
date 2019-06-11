@@ -1,0 +1,65 @@
+<definition hotspot_x="22" link_type="simple" width="50" orientation="dyyy" version="0.70" height="100" hotspot_y="50" type="element">
+    <uuid uuid="{9fa84924-03a3-4b4f-9cf4-f4844faa7729}"/>
+    <names>
+        <name lang="en">CCT15225</name>
+        <name lang="nl">CCT15225</name>
+        <name lang="pl">CCT15225</name>
+        <name lang="cs">CCT15225</name>
+        <name lang="fr">CCT15225</name>
+        <name lang="it">CCT15225</name>
+        <name lang="el">CCT15225</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" width="45" y="-46" antialias="false" height="92" rx="0" x="-20"/>
+        <text rotation="0" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="43" text="C1" color="#000000" x="-18"/>
+        <circle style="line-style:normal;line-weight:normal;filling:gray;color:black" y="-42" antialias="true" diameter="4" x="1"/>
+        <circle style="line-style:normal;line-weight:normal;filling:gray;color:black" y="38" antialias="true" diameter="4" x="18"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="9" antialias="true" diameter="4" x="17"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" ry="0" width="26" y="-15" antialias="false" height="20" rx="0" x="-5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="38" antialias="true" diameter="4" x="10"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="38" antialias="true" diameter="4" x="2"/>
+        <text rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="7" text="_" color="#000000" x="4"/>
+        <line y1="40" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="6" end2="none" x1="2" length2="1.5" length1="1.5" y2="40" antialias="false" end1="none"/>
+        <line y1="40" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="14" end2="none" x1="10" length2="1.5" length1="1.5" y2="40" antialias="false" end1="none"/>
+        <line y1="38" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="12" end2="none" x1="12" length2="1.5" length1="1.5" y2="42" antialias="false" end1="none"/>
+        <line y1="38" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="4" end2="none" x1="4" length2="1.5" length1="1.5" y2="42" antialias="false" end1="none"/>
+        <text rotation="0" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-39" text="N" color="#000000" x="14"/>
+        <text rotation="0" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="41" text="3" color="#000000" x="15"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="38" antialias="true" diameter="4" x="-6"/>
+        <line y1="40" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-2" end2="none" x1="-6" length2="1.5" length1="1.5" y2="40" antialias="false" end1="none"/>
+        <text rotation="0" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="41" text="1" color="#000000" x="-1"/>
+        <line y1="38" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-4" end2="none" x1="-4" length2="1.5" length1="1.5" y2="42" antialias="false" end1="none"/>
+        <text rotation="0" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="41" text="2" color="#000000" x="7"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="9" antialias="true" diameter="4" x="3"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="9" antialias="true" diameter="4" x="-4"/>
+        <text rotation="0" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-39" text="L" color="#000000" x="6"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="-42" antialias="true" diameter="4" x="9"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="-42" antialias="true" diameter="4" x="17"/>
+        <line y1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="21" end2="none" x1="17" length2="1.5" length1="1.5" y2="-40" antialias="false" end1="none"/>
+        <line y1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="13" end2="none" x1="9" length2="1.5" length1="1.5" y2="-40" antialias="false" end1="none"/>
+        <line y1="-42" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="11" end2="none" x1="11" length2="1.5" length1="1.5" y2="-38" antialias="false" end1="none"/>
+        <line y1="-42" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="19" end2="none" x1="19" length2="1.5" length1="1.5" y2="-38" antialias="false" end1="none"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="-42" antialias="true" diameter="4" x="-7"/>
+        <line y1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-3" end2="none" x1="-7" length2="1.5" length1="1.5" y2="-40" antialias="false" end1="none"/>
+        <line y1="-42" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-5" end2="none" x1="-5" length2="1.5" length1="1.5" y2="-38" antialias="false" end1="none"/>
+        <text rotation="0" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-39" text="EXT" color="#000000" x="-14"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="9" antialias="true" diameter="4" x="10"/>
+        <text rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="8" text="+" color="#000000" x="10"/>
+        <text rotation="0" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="8" text="OK" color="#000000" x="17"/>
+        <text rotation="0" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="8" text="MENU" color="#000000" x="-5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" width="45" y="-34" antialias="false" height="68" rx="0" x="-20"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" ry="5" width="45" y="-23" antialias="false" height="45" rx="5" x="-20"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" ry="5" width="7" y="-15" antialias="false" height="35" rx="3.5" x="-17"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" ry="0" width="10" y="15" antialias="false" height="3" rx="0" x="-4"/>
+        <text rotation="0" font="Arial,3,-1,5,50,1,0,0,0,0,Italic" y="-17" text="IC Astro 1C" color="#000000" x="6"/>
+        <text rotation="0" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-19" text="Schneider" color="#21ff06" x="-18"/>
+        <text rotation="0" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="-17" text="Electric" color="#21ff06" x="-11"/>
+        <dynamic_text rotation="0" frame="false" text_width="-1" text_from="ElementInfo" z="59" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{d75c566b-9dba-4782-b23b-03d7d00ed656}" Halignment="AlignLeft" Valignment="AlignTop" y="-20" x="-15">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+    </description>
+</definition>
