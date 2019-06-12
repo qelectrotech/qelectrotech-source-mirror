@@ -777,7 +777,8 @@ int ProjectView::cleanProject() {
 			m_project->embeddedElementCollection()->cleanUnusedDirectory();
 		}
 	}
-
+	
+	m_project -> setModified(true);
 	return(clean_count);
 }
 
