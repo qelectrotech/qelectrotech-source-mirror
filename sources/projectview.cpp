@@ -404,6 +404,7 @@ void ProjectView::addDiagram(DiagramView *diagram_view)
 
 		// signal diagram view was added
 	emit(diagramAdded(diagram_view));
+	m_project -> setModified(true);
 }
 
 /**
@@ -443,10 +444,12 @@ void ProjectView::removeDiagram(DiagramView *diagram_view)
 	delete diagram_view;
 
 	emit(diagramRemoved(diagram_view));
-
+	
         //Make definitve the withdrawal
 	m_project -> write();
     updateAllTabsTitle();
+    m_project -> setModified(true);
+
 }
 
 /**
