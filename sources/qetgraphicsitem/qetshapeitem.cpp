@@ -43,9 +43,9 @@ QetShapeItem::QetShapeItem(QPointF p1, QPointF p2, ShapeType type, QGraphicsItem
 	m_hovered(false)
 {
 	if (type == Polygon) m_polygon << m_P1 << m_P2;
-    setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemSendsGeometryChanges);
+	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemSendsGeometryChanges);
 	setAcceptHoverEvents(true);
-	m_pen.setStyle(Qt::DashLine);
+	m_pen.setStyle(Qt::SolidLine);
 		//ensure handlers are always above this item
 	connect(this, &QetShapeItem::zChanged, [this]()
 	{
