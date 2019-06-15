@@ -1,0 +1,50 @@
+<definition hotspot_x="6" type="element" width="20" version="0.70" height="70" orientation="dyyy" link_type="simple" hotspot_y="35">
+    <uuid uuid="{2041feaf-a561-438b-8674-6daf3efabf4d}"/>
+    <names>
+        <name lang="it">Base P2RF 1</name>
+        <name lang="fr">borne6²</name>
+        <name lang="el">Βάση P2RF 1</name>
+        <name lang="cs">Patice P2RF 1</name>
+        <name lang="en">Base P2RF 1</name>
+        <name lang="pl">Podstawa P2RF 1</name>
+        <name lang="nl">Basis P2RF 1</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect y="-29.9255" ry="0" antialias="false" width="8" height="59.85" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="0"/>
+        <line x2="8" length2="1.5" antialias="false" y1="-17" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-17" end2="none" end1="none" x1="0"/>
+        <line x2="4" length2="1.5" antialias="false" y1="-20.4538" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-19.0451" end2="none" end1="none" x1="4"/>
+        <line x2="4" length2="1.5" antialias="false" y1="18.6816" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="20.0905" end2="none" end1="none" x1="4"/>
+        <ellipse y="17.9773" antialias="true" width="4" height="2.81757" style="line-style:normal;line-weight:normal;filling:none;color:black" x="2"/>
+        <ellipse y="-21.1582" antialias="true" width="4" height="2.81757" style="line-style:normal;line-weight:normal;filling:none;color:black" x="2"/>
+        <line x2="5" length2="1.5" antialias="false" y1="19.3861" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="19.3861" end2="none" end1="none" x1="3"/>
+        <line x2="5" length2="1.5" antialias="false" y1="-19.7495" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-19.7495" end2="none" end1="none" x1="3"/>
+        <line x2="8" length2="1.5" antialias="false" y1="-23" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-23" end2="none" end1="none" x1="0"/>
+        <line x2="8" length2="1.5" antialias="false" y1="22.908" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="22.908" end2="none" end1="none" x1="0"/>
+        <line x2="8" length2="1.5" antialias="false" y1="15.475" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="15.475" end2="none" end1="none" x1="0"/>
+        <dynamic_text uuid="{b96ddaf4-2da5-4443-aed8-8933dd2fca18}" y="30.675" text_from="ElementInfo" text_width="-1" z="22" rotation="0" frame="false" Halignment="AlignLeft" font_family="Sans Serif" Valignment="AlignTop" font_size="3" x="-5">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text uuid="{5a5e841d-5c98-4ef6-8f7c-1995270005ce}" y="17" text_from="ElementInfo" text_width="-1" z="23" rotation="270" frame="false" Halignment="AlignLeft" font_family="Sans Serif" Valignment="AlignTop" font_size="6" x="-5">
+            <text></text>
+            <info_name>description</info_name>
+        </dynamic_text>
+        <terminal y="-30.125" orientation="n" x="4"/>
+        <terminal y="29.725" orientation="s" x="4"/>
+    </description>
+</definition>
