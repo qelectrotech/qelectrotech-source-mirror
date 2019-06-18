@@ -38,6 +38,7 @@ apps:
     environment:
         __EGL_VENDOR_LIBRARY_DIRS: $SNAP/usr/share/glvnd/egl_vendor.d
         QT_QPA_PLATFORMTHEME: gtk3
+        DISABLE_WAYLAND: 1
 
 parts:
   desktop-qt5:
