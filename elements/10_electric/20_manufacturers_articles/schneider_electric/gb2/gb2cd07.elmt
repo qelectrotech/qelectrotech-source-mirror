@@ -1,0 +1,58 @@
+<definition hotspot_y="34" link_type="master" height="60" type="element" width="40" orientation="dyyy" hotspot_x="20" version="0.70">
+    <uuid uuid="{7de3fc93-0d6b-4f30-b679-7a1bfb49a72d}"/>
+    <names>
+        <name lang="ar">قاطع ثنائي القطبية - 1 قطب محمي</name>
+        <name lang="en">Circuit-breaker</name>
+        <name lang="de">Leitungsschutzschalter 1P+N</name>
+        <name lang="it">Int. Aut. Magneto-termico 1P+N</name>
+        <name lang="nl">Lastscheider 1P+N</name>
+        <name lang="pl">Wyłącznik</name>
+        <name lang="cs">Dvojpólový jistič 1 pól chránící</name>
+        <name lang="fr">GB2CD07</name>
+        <name lang="es">Disyuntor termico magnetico en polo P+N</name>
+    </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">protection</kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="comment">2A</elementInformation>
+        <elementInformation show="1" name="manufacturer">SCHNEIDER</elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="designation">GB2CD07</elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line y1="3" x2="-10" end2="none" length2="1.5" y2="20" antialias="false" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10"/>
+        <line y1="-10" x2="7" end2="none" length2="1.5" y2="-10" antialias="false" end1="none" length1="1.5" style="line-style:dashed;line-weight:thin;filling:none;color:black" x1="-12"/>
+        <polygon y1="3" x3="-15" x2="-10" y2="0" antialias="true" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="-20" x1="-10"/>
+        <line y1="16" x2="10" end2="none" length2="1.5" y2="20" antialias="false" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10"/>
+        <polygon y1="3" x3="5" x2="10" y2="0" antialias="true" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="-20" x1="10"/>
+        <dynamic_text Halignment="AlignLeft" font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" uuid="{0afdb394-69b7-48fe-b2ce-3abb444ef6b3}" rotation="0" text_width="-1" x="20" Valignment="AlignTop" y="-19" z="6" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <arc height="5" antialias="true" x="6" width="8" angle="-180" start="90" style="line-style:normal;line-weight:normal;filling:none;color:black" y="10.5"/>
+        <line y1="-30" x2="-10" end2="none" length2="1.5" y2="-20" antialias="false" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10"/>
+        <line y1="8" x2="10" end2="none" length2="1.5" y2="10" antialias="false" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10"/>
+        <line y1="8" x2="15" end2="none" length2="1.5" y2="8" antialias="false" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10"/>
+        <line y1="3" x2="15" end2="none" length2="1.5" y2="8" antialias="false" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="15"/>
+        <line y1="-22" x2="-12" end2="none" length2="1.5" y2="-18" antialias="true" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-8"/>
+        <line y1="3" x2="15" end2="none" length2="1.5" y2="3" antialias="false" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10"/>
+        <line y1="-22" x2="-8" end2="none" length2="1.5" y2="-18" antialias="true" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-12"/>
+        <line y1="-30" x2="10" end2="none" length2="1.5" y2="-20" antialias="false" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10"/>
+        <line y1="-22" x2="8" end2="none" length2="1.5" y2="-18" antialias="true" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="12"/>
+        <line y1="-22" x2="12" end2="none" length2="1.5" y2="-18" antialias="true" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="8"/>
+        <terminal x="-10" orientation="n" y="-30"/>
+        <terminal x="10" orientation="s" y="20"/>
+        <terminal x="10" orientation="n" y="-30"/>
+        <terminal x="-10" orientation="s" y="20"/>
+    </description>
+</definition>

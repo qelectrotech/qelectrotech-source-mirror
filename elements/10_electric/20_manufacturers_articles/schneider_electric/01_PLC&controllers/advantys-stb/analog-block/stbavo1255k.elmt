@@ -1,0 +1,90 @@
+<definition orientation="dyyy" hotspot_x="375" link_type="simple" version="0.70" height="100" type="element" hotspot_y="42" width="750">
+    <uuid uuid="{94cde6eb-d371-42e2-a419-16073f93870f}"/>
+    <names>
+        <name lang="fr">STBAVO1255K</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">SCHNEIDER</elementInformation>
+        <elementInformation name="designation" show="1">STBAVO1255K</elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-230" y="-10" rotation="0" color="#000000" text="+24VDC &#xa;alim boucle"/>
+        <text font="MS Shell Dlg 2,7,-1,5,50,0,1,0,0,0,Normal" x="160" y="30" rotation="0" color="#000000" text="RACK B"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-170" y="-10" rotation="0" color="#000000" text="+24VDC &#xa;retour boucle"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-95.442" y="-6.49447" rotation="0" color="#000000" text="/"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-50" y="-10" rotation="0" color="#000000" text="-24VDC &#xa;alim capteur"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="121" y="-10" rotation="0" color="#000000" text="+24VDC &#xa;alim boucle"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="181" y="-10" rotation="0" color="#000000" text="+24VDC &#xa;retour boucle"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-368.548" height="88" y="-33.4606" antialias="false" rx="4.38729" width="737.097" ry="4.38729"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="255.558" y="-6.494" rotation="0" color="#000000" text="/"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="301" y="-10" rotation="0" color="#000000" text="-24VDC &#xa;alim capteur"/>
+        <dynamic_text Valignment="AlignTop" font="Sans Serif,5,-1,5,0,0,0,0,0,0,normal" x="310.41" Halignment="AlignLeft" text_width="-1" y="-26.642" z="4" rotation="0" frame="false" uuid="{7c7078a7-e991-457c-85da-a073997006ed}" text_from="UserText">
+            <text>6</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" font="Sans Serif,5,-1,5,0,0,0,0,0,0,normal" x="190.262" Halignment="AlignLeft" text_width="-1" y="-25.59" z="4" rotation="0" frame="false" uuid="{7c7078a7-e991-457c-85da-a073997006ed}" text_from="UserText">
+            <text>4</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" font="Sans Serif,5,-1,5,0,0,0,0,0,0,normal" x="65.595" Halignment="AlignLeft" text_width="-1" y="-24.874" z="4" rotation="0" frame="false" uuid="{7c7078a7-e991-457c-85da-a073997006ed}" text_from="UserText">
+            <text>2</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" font="Sans Serif,5,-1,5,0,0,0,0,0,0,normal" x="-160.738" Halignment="AlignLeft" text_width="-1" y="-25.5904" z="4" rotation="0" frame="false" uuid="{7c7078a7-e991-457c-85da-a073997006ed}" text_from="UserText">
+            <text>4</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" font="Sans Serif,5,-1,5,0,0,0,0,0,0,normal" x="-40.5904" Halignment="AlignLeft" text_width="-1" y="-26.6421" z="4" rotation="0" frame="false" uuid="{7c7078a7-e991-457c-85da-a073997006ed}" text_from="UserText">
+            <text>6</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" font="Sans Serif,5,-1,5,0,0,0,0,0,0,normal" x="-285.405" Halignment="AlignLeft" text_width="-1" y="-24.8739" z="4" rotation="0" frame="false" uuid="{7c7078a7-e991-457c-85da-a073997006ed}" text_from="UserText">
+            <text>2</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" font="MS Shell Dlg 2,5,-1,5,50,0,0,0,0,0,Normal" x="-224.273" Halignment="AlignLeft" text_width="-1" y="-25.559" z="5" rotation="0" frame="false" uuid="{44ee0ac0-bb93-4979-8297-7cb6b131e896}" text_from="UserText">
+            <text>3</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" font="MS Shell Dlg 2,5,-1,5,50,0,0,0,0,0,Normal" x="7.412" Halignment="AlignLeft" text_width="-1" y="-24.858" z="5" rotation="0" frame="false" uuid="{44ee0ac0-bb93-4979-8297-7cb6b131e896}" text_from="UserText">
+            <text>1</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" font="MS Shell Dlg 2,5,-1,5,50,0,0,0,0,0,Normal" x="126.727" Halignment="AlignLeft" text_width="-1" y="-25.559" z="5" rotation="0" frame="false" uuid="{44ee0ac0-bb93-4979-8297-7cb6b131e896}" text_from="UserText">
+            <text>3</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" font="MS Shell Dlg 2,5,-1,5,50,0,0,0,0,0,Normal" x="251.071" Halignment="AlignLeft" text_width="-1" y="-25.544" z="5" rotation="0" frame="false" uuid="{44ee0ac0-bb93-4979-8297-7cb6b131e896}" text_from="UserText">
+            <text>5</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" font="MS Shell Dlg 2,5,-1,5,50,0,0,0,0,0,Normal" x="-99.9287" Halignment="AlignLeft" text_width="-1" y="-25.544" z="5" rotation="0" frame="false" uuid="{44ee0ac0-bb93-4979-8297-7cb6b131e896}" text_from="UserText">
+            <text>5</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" font="MS Shell Dlg 2,5,-1,5,50,0,0,0,0,0,Normal" x="-343.588" Halignment="AlignLeft" text_width="-1" y="-24.8579" z="5" rotation="0" frame="false" uuid="{44ee0ac0-bb93-4979-8297-7cb6b131e896}" text_from="UserText">
+            <text>1</text>
+        </dynamic_text>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="69.598" y="-6.845" rotation="0" color="#000000" text="/"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-41.4515" y="50.9267" rotation="0" color="#000000" text="STBAVO1255K"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="1" y="-10" rotation="0" color="#000000" text="+24VDC &#xa;alim capteur"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-281.402" y="-6.84502" rotation="0" color="#000000" text="/"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-350" y="-10" rotation="0" color="#000000" text="+24VDC &#xa;alim capteur"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="-11.4515" antialias="false" end1="none" end2="none" y1="-19.0733" length1="1.5" x1="-11.4515" y2="20.9267"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="-351.452" antialias="false" end1="none" end2="none" y1="20.9267" length1="1.5" x1="-11.4515" y2="20.9267"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="-351.452" antialias="false" end1="none" end2="none" y1="-19.0733" length1="1.5" x1="-351.452" y2="20.9267"/>
+        <text font="MS Shell Dlg 2,7,-1,5,50,0,1,0,0,0,Normal" x="-231.452" y="30.9267" rotation="0" color="#000000" text="RACK A"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="348.548" antialias="false" end1="none" end2="none" y1="20.9267" length1="1.5" x1="-11.4515" y2="20.9267"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="348.548" antialias="false" end1="none" end2="none" y1="20.9267" length1="1.5" x1="348.548" y2="-19.0733"/>
+        <terminal orientation="n" x="-338.42" y="-34.5394"/>
+        <terminal orientation="n" x="-94.5784" y="-35.2255"/>
+        <terminal orientation="n" x="-155.515" y="-34.7581"/>
+        <terminal orientation="n" x="-218.886" y="-34.4952"/>
+        <terminal orientation="n" x="-279.985" y="-34.072"/>
+        <terminal orientation="n" x="-35.2845" y="-34.5076"/>
+        <terminal orientation="n" x="12.58" y="-34.539"/>
+        <terminal orientation="n" x="195.485" y="-34.758"/>
+        <terminal orientation="n" x="132.114" y="-34.495"/>
+        <terminal orientation="n" x="71.015" y="-34.072"/>
+        <terminal orientation="n" x="315.716" y="-34.508"/>
+    </description>
+</definition>

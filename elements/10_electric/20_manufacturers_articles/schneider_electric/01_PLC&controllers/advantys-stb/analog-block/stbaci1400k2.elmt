@@ -1,0 +1,90 @@
+<definition orientation="dyyy" hotspot_x="375" link_type="simple" version="0.70" height="100" type="element" hotspot_y="42" width="750">
+    <uuid uuid="{a229240f-2c09-4eab-8cc6-1dfbd8d17d24}"/>
+    <names>
+        <name lang="fr">STBAC1400K</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">SCHNEIDER</elementInformation>
+        <elementInformation name="designation" show="1">STBACI1400K</elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <text font="MS Shell Dlg 2,7,-1,5,50,0,1,0,0,0,Normal" x="160" y="30" rotation="0" color="#000000" text="RACK B"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-40" y="-10" rotation="0" color="#000000" text="COM &#xa;I3 I4"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="311" y="-10" rotation="0" color="#000000" text="COM &#xa;I3 I4"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-100" y="-10" rotation="0" color="#000000" text="I5"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-160" y="-10" rotation="0" color="#000000" text="I4"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-230" y="-10" rotation="0" color="#000000" text="COM &#xa;I1 I2"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="121" y="-10" rotation="0" color="#000000" text="COM &#xa;I1 I2"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="191" y="-10" rotation="0" color="#000000" text="I4"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-368.548" height="88" y="-33.4606" antialias="false" rx="4.38729" width="737.097" ry="4.38729"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="251" y="-10" rotation="0" color="#000000" text="I5"/>
+        <dynamic_text Valignment="AlignTop" font="Sans Serif,5,-1,5,0,0,0,0,0,0,normal" x="190.262" Halignment="AlignLeft" text_width="-1" y="-25.59" z="4" rotation="0" frame="false" uuid="{7c7078a7-e991-457c-85da-a073997006ed}" text_from="UserText">
+            <text>4</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" font="Sans Serif,5,-1,5,0,0,0,0,0,0,normal" x="65.595" Halignment="AlignLeft" text_width="-1" y="-24.874" z="4" rotation="0" frame="false" uuid="{7c7078a7-e991-457c-85da-a073997006ed}" text_from="UserText">
+            <text>2</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" font="Sans Serif,5,-1,5,0,0,0,0,0,0,normal" x="310.41" Halignment="AlignLeft" text_width="-1" y="-26.642" z="4" rotation="0" frame="false" uuid="{7c7078a7-e991-457c-85da-a073997006ed}" text_from="UserText">
+            <text>6</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" font="Sans Serif,5,-1,5,0,0,0,0,0,0,normal" x="-285.405" Halignment="AlignLeft" text_width="-1" y="-24.8739" z="4" rotation="0" frame="false" uuid="{7c7078a7-e991-457c-85da-a073997006ed}" text_from="UserText">
+            <text>2</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" font="Sans Serif,5,-1,5,0,0,0,0,0,0,normal" x="-40.5904" Halignment="AlignLeft" text_width="-1" y="-26.6421" z="4" rotation="0" frame="false" uuid="{7c7078a7-e991-457c-85da-a073997006ed}" text_from="UserText">
+            <text>6</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" font="Sans Serif,5,-1,5,0,0,0,0,0,0,normal" x="-160.738" Halignment="AlignLeft" text_width="-1" y="-25.5904" z="4" rotation="0" frame="false" uuid="{7c7078a7-e991-457c-85da-a073997006ed}" text_from="UserText">
+            <text>4</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" font="MS Shell Dlg 2,5,-1,5,50,0,0,0,0,0,Normal" x="7.412" Halignment="AlignLeft" text_width="-1" y="-24.858" z="5" rotation="0" frame="false" uuid="{44ee0ac0-bb93-4979-8297-7cb6b131e896}" text_from="UserText">
+            <text>1</text>
+        </dynamic_text>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="69.598" y="-6.84502" rotation="0" color="#000000" text="I2"/>
+        <dynamic_text Valignment="AlignTop" font="MS Shell Dlg 2,5,-1,5,50,0,0,0,0,0,Normal" x="-99.9287" Halignment="AlignLeft" text_width="-1" y="-25.544" z="5" rotation="0" frame="false" uuid="{44ee0ac0-bb93-4979-8297-7cb6b131e896}" text_from="UserText">
+            <text>5</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" font="MS Shell Dlg 2,5,-1,5,50,0,0,0,0,0,Normal" x="-343.588" Halignment="AlignLeft" text_width="-1" y="-24.8579" z="5" rotation="0" frame="false" uuid="{44ee0ac0-bb93-4979-8297-7cb6b131e896}" text_from="UserText">
+            <text>1</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" font="MS Shell Dlg 2,5,-1,5,50,0,0,0,0,0,Normal" x="251.071" Halignment="AlignLeft" text_width="-1" y="-25.544" z="5" rotation="0" frame="false" uuid="{44ee0ac0-bb93-4979-8297-7cb6b131e896}" text_from="UserText">
+            <text>5</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" font="MS Shell Dlg 2,5,-1,5,50,0,0,0,0,0,Normal" x="126.727" Halignment="AlignLeft" text_width="-1" y="-25.559" z="5" rotation="0" frame="false" uuid="{44ee0ac0-bb93-4979-8297-7cb6b131e896}" text_from="UserText">
+            <text>3</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" font="MS Shell Dlg 2,5,-1,5,50,0,0,0,0,0,Normal" x="-224.273" Halignment="AlignLeft" text_width="-1" y="-25.559" z="5" rotation="0" frame="false" uuid="{44ee0ac0-bb93-4979-8297-7cb6b131e896}" text_from="UserText">
+            <text>3</text>
+        </dynamic_text>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="10.533" y="-6.72817" rotation="0" color="#000000" text="I1"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-40" y="50" rotation="0" color="#000000" text="STBACI1400K"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-281.402" y="-6.84502" rotation="0" color="#000000" text="I2"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-340.467" y="-6.72817" rotation="0" color="#000000" text="I1"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="-11.4515" antialias="false" end1="none" end2="none" y1="-19.0733" length1="1.5" x1="-11.4515" y2="20.9267"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="-351.452" antialias="false" end1="none" end2="none" y1="20.9267" length1="1.5" x1="-11.4515" y2="20.9267"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="-351.452" antialias="false" end1="none" end2="none" y1="-19.0733" length1="1.5" x1="-351.452" y2="20.9267"/>
+        <text font="MS Shell Dlg 2,7,-1,5,50,0,1,0,0,0,Normal" x="-231.452" y="30.9267" rotation="0" color="#000000" text="RACK A"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="348.548" antialias="false" end1="none" end2="none" y1="20.9267" length1="1.5" x1="-11.4515" y2="20.9267"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" x2="348.548" antialias="false" end1="none" end2="none" y1="20.9267" length1="1.5" x1="348.548" y2="-19.0733"/>
+        <terminal orientation="n" x="71.015" y="-34.072"/>
+        <terminal orientation="n" x="132.114" y="-34.495"/>
+        <terminal orientation="n" x="12.58" y="-34.539"/>
+        <terminal orientation="n" x="195.485" y="-34.758"/>
+        <terminal orientation="n" x="315.716" y="-34.508"/>
+        <terminal orientation="n" x="-338.42" y="-34.5394"/>
+        <terminal orientation="n" x="-94.5784" y="-35.2255"/>
+        <terminal orientation="n" x="-155.515" y="-34.7581"/>
+        <terminal orientation="n" x="-218.886" y="-34.4952"/>
+        <terminal orientation="n" x="-279.985" y="-34.072"/>
+        <terminal orientation="n" x="-35.2845" y="-34.5076"/>
+    </description>
+</definition>

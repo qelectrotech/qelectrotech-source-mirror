@@ -1,0 +1,65 @@
+<definition hotspot_y="35" link_type="master" height="70" type="element" width="70" orientation="dyyy" hotspot_x="31" version="0.70">
+    <uuid uuid="{98c91274-e5d1-42bd-9c3a-6fa36c61a0cb}"/>
+    <names>
+        <name lang="ar">مُلامس قدرة- كونتكتور (NO)</name>
+        <name lang="en">Contact power contactor</name>
+        <name lang="ru">Контакт контактора (НР)</name>
+        <name lang="el">Επαφές ρελέ ισχύος, ανοικτές</name>
+        <name lang="de">Leistungsschliesser 3-polig</name>
+        <name lang="it">3 Contatti NA di potenza</name>
+        <name lang="pt">Interruptor de potência contactor</name>
+        <name lang="nl">Last contact</name>
+        <name lang="pl">Stycznik</name>
+        <name lang="cs">Stykač síly vodivého spojení</name>
+        <name lang="fr">LC1D38BD</name>
+        <name lang="es">Interruptor de potencia contactor</name>
+    </names>
+    <kindInformations>
+        <kindInformation show="1" name="state">NO</kindInformation>
+        <kindInformation show="1" name="type">coil</kindInformation>
+        <kindInformation show="1" name="number">3</kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="comment">38A</elementInformation>
+        <elementInformation show="1" name="manufacturer">SHNEIDER</elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="designation">LC1D38BD</elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" x="5" text="3&#xa;L2" y="-20"/>
+        <text color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" x="25" text="5&#xa;L3" y="-20"/>
+        <text color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" x="4" text="4&#xa;T2" y="19"/>
+        <text color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" x="-16" text="2&#xa;T1" y="19"/>
+        <text color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" x="24" text="6&#xa;T3" y="19"/>
+        <polygon y1="-10" x3="20" x2="20" y2="10" antialias="true" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="20" x1="15"/>
+        <polygon y1="-10" x3="-20" x2="-20" y2="10" antialias="true" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="20" x1="-25"/>
+        <polygon y1="-10" x3="0" x2="0" y2="10" antialias="true" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="20" x1="-5"/>
+        <line y1="-20" x2="-20" end2="none" length2="1.5" y2="-10" antialias="false" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-20"/>
+        <dynamic_text Halignment="AlignLeft" font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" uuid="{2fe56949-b73f-4b1c-a88a-b5d60911519e}" rotation="0" text_width="-1" x="25" Valignment="AlignTop" y="-10" z="10" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <arc height="5" antialias="true" x="-22.5" width="5" angle="-180" start="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-14.5"/>
+        <line y1="-20" x2="0" end2="none" length2="1.5" y2="-10" antialias="false" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0"/>
+        <arc height="5" antialias="true" x="-2.5" width="5" angle="-180" start="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-14.5"/>
+        <line y1="-20" x2="20" end2="none" length2="1.5" y2="-10" antialias="false" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="20"/>
+        <arc height="5" antialias="true" x="17.5" width="5" angle="-180" start="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-14.5"/>
+        <line y1="0" x2="17" end2="none" length2="1.5" y2="0" antialias="false" end1="none" length1="1.5" style="line-style:dashed;line-weight:thin;filling:none;color:black" x1="-23"/>
+        <text color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" x="-16" text="1&#xa;L1" y="-20"/>
+        <terminal x="-20" orientation="n" y="-20"/>
+        <terminal x="-20" orientation="s" y="20"/>
+        <terminal x="0" orientation="n" y="-20"/>
+        <terminal x="0" orientation="s" y="20"/>
+        <terminal x="20" orientation="n" y="-20"/>
+        <terminal x="20" orientation="s" y="20"/>
+    </description>
+</definition>
