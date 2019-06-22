@@ -1792,8 +1792,8 @@ void QETApp::checkBackupFiles()
 		//Remove from the list @stale_files, the stales file of opened project
 	const QList<KAutoSaveFile *> sf = stale_files;
 	for (KAutoSaveFile *kasf : sf) {
-		for (QETProject *project : registeredProjects().values()) {
-			if (kasf->managedFile() == QUrl(project->filePath())) {
+        for (QETProject *project : registeredProjects().values()) {
+            if (kasf->managedFile() == QUrl::fromLocalFile(project->filePath())) {
 				stale_files.removeOne(kasf);
 			}
 		}

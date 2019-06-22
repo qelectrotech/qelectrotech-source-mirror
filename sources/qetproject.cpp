@@ -263,8 +263,8 @@ void QETProject::setFilePath(const QString &filepath)
 		delete m_backup_file;
 		m_backup_file = nullptr;
 	}
-	QUrl url_(filepath);
-	m_backup_file = new KAutoSaveFile(url_, this);
+
+    m_backup_file = new KAutoSaveFile(QUrl::fromLocalFile(filepath), this);
 	if (!m_backup_file->open(QIODevice::WriteOnly)) {
 		delete m_backup_file;
 		m_backup_file = nullptr;
