@@ -13,6 +13,8 @@ confinement: strict
 layout:
   /usr/local/share/qelectrotech:
     bind: $SNAP/usr/local/share/qelectrotech
+  /usr/share/libdrm/amdgpu.ids:
+    bind-file: $SNAP/usr/share/libdrm/amdgpu.ids
 
 plugs:
   gtk-3-themes:
@@ -90,17 +92,16 @@ parts:
     after: [desktop-qt5]
     plugin: python
     python-version: python3
+    source: https://github.com/qelectrotech/qet_tb_generator.git
     stage-packages: 
       - python3-lxml
       - python3-tk
       - libtk8.6
-    python-packages:
-      - qet_tb_generator
 
   dxf-to-qet:
     after: [desktop-qt5]
     plugin: qmake
-    source: svn://svn.tuxfamily.org/svnroot/qet/qet/branches/DXFtoQET3_DB
+    source: https://github.com/qelectrotech/DXFtoQET.git
     build-packages:
       - qtbase5-dev
     override-build: |
