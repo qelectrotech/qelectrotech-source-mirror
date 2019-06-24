@@ -1,0 +1,6 @@
+#!/bin/bash
+
+mkdir -p "$HOME/.qet"
+ln -snf "$SNAP/bin/DXFtoQET" "$HOME/.qet/DXFtoQET"
+
+exec "${@}"

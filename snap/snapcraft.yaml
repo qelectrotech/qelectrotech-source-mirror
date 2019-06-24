@@ -1,0 +1,148 @@
+name: qelectrotech
+title: QElectroTech
+base: core18
+adopt-info: qelectrotech
+summary: Electrical diagram editor
+description: |
+  QElectroTech, or QET in short, is a libre and open source desktop application 
+  to create diagrams and schematics.
+
+grade: devel
+confinement: strict
+
+layout:
+  /usr/local/share/qelectrotech:
+    bind: $SNAP/usr/local/share/qelectrotech
+
+plugs:
+  gtk-3-themes:
+    interface: content
+    target: $SNAP/data-dir/themes
+    default-provider: gtk-common-themes
+  icon-themes:
+    interface: content
+    target: $SNAP/data-dir/icons
+    default-provider: gtk-common-themes
+  sound-themes:
+    interface: content
+    target: $SNAP/data-dir/sounds
+    default-provider: gtk-common-themes
+
+apps:
+  qelectrotech:
+    adapter: full
+    command: usr/local/bin/qelectrotech
+    command-chain:
+      - bin/desktop-launch 
+      - bin/qelectrotech-launch
+    desktop: usr/local/share/applications/qelectrotech.desktop
+    plugs: &plugs [opengl, x11, unity7, wayland, desktop, desktop-legacy, home, removable-media, gsettings, network]
+    environment: &env
+        __EGL_VENDOR_LIBRARY_DIRS: $SNAP/usr/share/glvnd/egl_vendor.d
+        QT_QPA_PLATFORMTHEME: gtk3
+        QT_AUTO_SCREEN_SCALE_FACTOR: 1
+        DISABLE_WAYLAND: 1
+        TCL_LIBRARY: $SNAP/usr/share/tcltk/tcl8.6
+
+  qet-tb-generator:
+    command: desktop-launch $SNAP/bin/qet_tb_generator
+    plugs: *plugs
+    environment: *env
+
+  dxf-to-qet:
+    command: desktop-launch $SNAP/bin/DXFtoQET
+    plugs: *plugs
+    environment: *env
+
+parts:
+  launchers:
+    plugin: dump
+    source: snap/local/launchers
+    organize:
+      '*': bin/
+
+  desktop-qt5:
+    source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
+    source-subdir: qt
+    plugin: make
+    make-parameters: ["FLAVOR=qt5"]
+    build-packages:
+      - build-essential
+      - qtbase5-dev
+      - dpkg-dev
+    stage-packages:
+      - libxkbcommon0
+      - ttf-ubuntu-font-family
+      - dmz-cursor-theme
+      - light-themes
+      - adwaita-icon-theme
+      - gnome-themes-standard
+      - shared-mime-info
+      - libqt5gui5
+      - libgdk-pixbuf2.0-0
+      - libqt5svg5 # for loading icon themes which are svg
+      - try: [appmenu-qt5] # not available on core18
+      - locales-all 
+      - xdg-user-dirs
+      - fcitx-frontend-qt5
+  
+  qet-tb-generator:
+    after: [desktop-qt5]
+    plugin: python
+    python-version: python3
+    stage-packages: 
+      - python3-lxml
+      - python3-tk
+      - libtk8.6
+    python-packages:
+      - qet_tb_generator
+
+  dxf-to-qet:
+    after: [desktop-qt5]
+    plugin: qmake
+    source: svn://svn.tuxfamily.org/svnroot/qet/qet/branches/DXFtoQET3_DB
+    build-packages:
+      - qtbase5-dev
+    override-build: |
+      snapcraftctl build
+      mkdir -p "$SNAPCRAFT_PART_INSTALL/bin"
+      cp DXFtoQET "$SNAPCRAFT_PART_INSTALL/bin/"
+
+  qelectrotech:
+    after: [desktop-qt5]
+    plugin: qmake
+    source: .
+    override-pull: |
+      snapcraftctl pull
+      if [ -d .git ]; then
+        revision=$(git svn find-rev HEAD)
+      else
+        revision=$(svn --xml info | grep revision=\" | tail -1 | cut -d\" -f2)
+      fi
+      version=$(cat sources/qet.h |grep "const QString version" |  cut -d\" -f2 | cut -d\" -f1)
+      tag=$(cat sources/qet.h | grep displayedVersion |  cut -d\" -f2 | cut -d\" -f1)
+      snapcraftctl set-version "$tag~svn$revision"
+    override-stage: |
+      snapcraftctl stage
+      # patch desktop file with correct icon path
+      SED_CMD="sed -i -E s|^Icon=(.*)|Icon=\${SNAP}/usr/local/share/icons/hicolor/128x128/apps/\1.png|g" 
+      $SED_CMD usr/local/share/applications/qelectrotech.desktop
+    build-packages: 
+      - g++
+      - qttools5-dev-tools
+      - libqt5svg5-dev
+      - libkf5widgetsaddons-dev
+      - libkf5coreaddons-dev
+      - git-svn
+    stage-packages: 
+      - qtwayland5
+      - qt5-gtk-platformtheme
+      - libkf5coreaddons5
+      - libkf5widgetsaddons5
+      - libqt5concurrent5
+      - libqt5printsupport5
+      - libqt5sql5
+      - libqt5xml5
+      - libfam0
+      - libqt5sql5-sqlite
+      - libdrm2
