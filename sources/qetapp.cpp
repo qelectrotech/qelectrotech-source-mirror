@@ -1787,13 +1787,17 @@ void QETApp::buildSystemTrayMenu() {
  */
 void QETApp::checkBackupFiles()
 {
-	QList<KAutoSaveFile *> stale_files = KAutoSaveFile::allStaleFiles();
+    QList<KAutoSaveFile *> stale_files = KAutoSaveFile::allStaleFiles();
 
 		//Remove from the list @stale_files, the stales file of opened project
 	const QList<KAutoSaveFile *> sf = stale_files;
-	for (KAutoSaveFile *kasf : sf) {
-        for (QETProject *project : registeredProjects().values()) {
-            if (kasf->managedFile() == QUrl::fromLocalFile(project->filePath())) {
+    for (KAutoSaveFile *kasf : sf)
+    {
+        for (QETProject *project : registeredProjects().values())
+        {
+                //We must to adjust with the flag QUrl::StripTrailingSlash to compar a path formated like the path returned by KAutoSaveFile
+            const QString path = QUrl::fromLocalFile(project->filePath()).adjusted(QUrl::RemoveScheme | QUrl::StripTrailingSlash).path();
+            if (kasf->managedFile() == path) {
 				stale_files.removeOne(kasf);
 			}
 		}
@@ -1811,8 +1815,14 @@ void QETApp::checkBackupFiles()
 		text.append(tr("<b>Les fichiers de restauration suivant on été trouvé,<br>"
 					   "Voulez-vous les ouvrir ?</b><br>"));
 	}
-	for(const KAutoSaveFile *kasf : stale_files) {
-		text.append("<br>" + kasf->managedFile().path());
+    for(const KAutoSaveFile *kasf : stale_files)
+    {
+#ifdef Q_OS_WIN
+        //Remove the first character '/' before the name of the drive
+        text.append("<br>" + kasf->managedFile().path().remove(0,1));
+#else
+        text.append("<br>" + kasf->managedFile().path());
+#endif
 	}
 
 		//Open backup file
