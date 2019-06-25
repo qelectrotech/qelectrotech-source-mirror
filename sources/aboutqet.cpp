@@ -84,7 +84,7 @@ QWidget *AboutQET::titleTab() const {
 	compilation_info += "<br>" "  OS : " +  QString(QSysInfo::kernelType());
 	compilation_info += "  -   " + QString(QSysInfo::currentCpuArchitecture());
 	compilation_info += " -  Version :    " + QString(QSysInfo::prettyProductName());
-	compilation_info += " -  Kernel :     " + QString(QSysInfo::kernelVersion());
+	compilation_info += "</br>" " -  Kernel :     " + QString(QSysInfo::kernelVersion());
 #else
 	compilation_info += "  GCC " + QString(__VERSION__);
 	compilation_info += " - built with Qt " + QString(QT_VERSION_STR);
@@ -93,7 +93,7 @@ QWidget *AboutQET::titleTab() const {
 	compilation_info += "<br>" "  OS : " +  QString(QSysInfo::kernelType());
 	compilation_info += "  -   " + QString(QSysInfo::currentCpuArchitecture());
 	compilation_info += " -  Version :    " + QString(QSysInfo::prettyProductName());
-	compilation_info += " -  Kernel :     " + QString(QSysInfo::kernelVersion());
+	compilation_info += "</br>" " -  Kernel :     " + QString(QSysInfo::kernelVersion());
 #endif
 #endif
 	title -> setAlignment(Qt::AlignCenter);
