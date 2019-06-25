@@ -2,7 +2,7 @@ name: qelectrotech
 title: QElectroTech
 base: core18
 adopt-info: qelectrotech
-license: GPL-2.0-or-later
+license: GPL-2.0
 summary: Electrical diagram editor
 description: |
   QElectroTech, or QET in short, is a libre and open source desktop application 
