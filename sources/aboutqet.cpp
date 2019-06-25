@@ -79,6 +79,8 @@ QWidget *AboutQET::titleTab() const {
 #ifdef __APPLE_CC__
 	compilation_info += "  CLANG " + QString(__clang_version__ );
 	compilation_info += " - built with Qt " + QString(QT_VERSION_STR);
+	compilation_info += " - Date : " + QString(__DATE__);
+	compilation_info += " : " + QString(__TIME__);
 	compilation_info += " - run with Qt "+ QString(qVersion());
 	compilation_info += " using" + QString(" %1 thread(s)").arg(QThread::idealThreadCount());
 	compilation_info += "<br>" "  OS : " +  QString(QSysInfo::kernelType());
@@ -88,6 +90,8 @@ QWidget *AboutQET::titleTab() const {
 #else
 	compilation_info += "  GCC " + QString(__VERSION__);
 	compilation_info += " - built with Qt " + QString(QT_VERSION_STR);
+	compilation_info += " - Date : " + QString(__DATE__);
+	compilation_info += " : " + QString(__TIME__);
 	compilation_info += " - run with Qt "+ QString(qVersion());
 	compilation_info += " using" + QString(" %1 thread(s)").arg(QThread::idealThreadCount());
 	compilation_info += "<br>" "  OS : " +  QString(QSysInfo::kernelType());
