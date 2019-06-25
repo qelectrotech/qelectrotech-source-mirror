@@ -83,6 +83,7 @@ QWidget *AboutQET::titleTab() const {
 	compilation_info += " using" + QString(" %1 thread(s)").arg(QThread::idealThreadCount());
 	compilation_info += "  " + QString(QSysInfo::kernelType());
 	compilation_info += "  " + QString(QSysInfo::currentCpuArchitecture());
+	compilation_info += "  " + QString(QSysInfo::prettyProductName());
 	compilation_info += " Kernel " + QString(QSysInfo::kernelVersion());
 #else
 	compilation_info += "  GCC " + QString(__VERSION__);
