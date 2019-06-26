@@ -8,7 +8,7 @@ description: |
   QElectroTech, or QET in short, is a libre and open source desktop application 
   to create diagrams and schematics.
 
-grade: devel
+grade: stable
 confinement: strict
 
 layout:
@@ -122,8 +122,11 @@ parts:
         revision=$(svn --xml info | grep revision=\" | tail -1 | cut -d\" -f2)
       fi
       version=$(cat sources/qet.h |grep "const QString version" |  cut -d\" -f2 | cut -d\" -f1)
-      tag=$(cat sources/qet.h | grep displayedVersion |  cut -d\" -f2 | cut -d\" -f1)
-      snapcraftctl set-version "$tag~svn$revision"
+      displayed_version=$(cat sources/qet.h | grep displayedVersion |  cut -d\" -f2 | cut -d\" -f1)
+      snap_version="$displayed_version~svn$revision"
+      modified_displayed_version=$snap_version".snap"
+      sed -i -E "s|const QString displayedVersion =.*|const QString displayedVersion =\"$modified_displayed_version\";|" sources/qet.h
+      snapcraftctl set-version "$snap_version"
     override-stage: |
       snapcraftctl stage
       # patch desktop file with correct icon path
@@ -135,7 +138,9 @@ parts:
       - libqt5svg5-dev
       - libkf5widgetsaddons-dev
       - libkf5coreaddons-dev
+      - git
       - git-svn
+      - subversion
     stage-packages: 
       - qtwayland5
       - qt5-gtk-platformtheme
