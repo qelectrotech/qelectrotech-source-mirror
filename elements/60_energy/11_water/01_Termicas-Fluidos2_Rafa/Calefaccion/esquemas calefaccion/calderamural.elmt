@@ -1,18 +1,23 @@
-<definition width="30" version="0.4" hotspot_x="15" hotspot_y="42" height="50" link_type="simple" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{57CA3EC4-013C-4CD1-AFD0-53EE18BC3810}"/><names>
+<definition orientation="dyyy" link_type="simple" height="50" version="0.70" type="element" width="30" hotspot_x="14" hotspot_y="42">
+    <uuid uuid="{e2dc029b-7bb9-4340-bbcb-b656d653021e}"/>
+    <names>
         <name lang="es">Caldera Mural ACS</name>
         <name lang="ca">Caldera Mural ACS</name>
         <name lang="fr">Chaudiére murale</name>
     </names>
+    <elementInformations/>
     <informations></informations>
     <description>
-        <rect width="24.75" x="-13" y="-30.091" antialias="false" height="27.5096" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30.091" x1="-6.8125" y2="-36.9684" x2="-0.625"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-36.9684" x1="1.85" y2="-30.091" x2="6.8"/>
-        <rect width="6.1875" x="-4.75" y="-14.2041" antialias="false" height="2.75096" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <ellipse width="3.3" x="-3.1" y="-8.87355" antialias="true" height="3.3697" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="-9" y="-37.5" size="4" rotate="true" text="_" tagg="label"/>
-        <terminal x="-9.2875" y="0.169453" orientation="s"/>
-        <terminal x="6.8" y="0.169453" orientation="s"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" height="27" x="-12" width="24" ry="0" y="-30" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30.091" length2="1.5" end2="none" y2="-37" length1="1.5" x1="-6.8125" end1="none" x2="-3" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-37" length2="1.5" end2="none" y2="-30" length1="1.5" x1="4" end1="none" x2="7" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" height="3" x="-3" width="6" ry="0" y="-14" antialias="false"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3.3" x="-1.65" y="-8.75" antialias="true"/>
+        <dynamic_text z="6" rotation="0" uuid="{6f5aa2b6-1507-4296-a4c3-36428866de85}" Halignment="AlignLeft" x="-10" y="-44" text_width="-1" font="Sans Serif,4,-1,5,25,0,0,0,0,0" text_from="ElementInfo" frame="false" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal orientation="s" x="10" y="0"/>
+        <terminal orientation="s" x="-10" y="0"/>
     </description>
 </definition>
