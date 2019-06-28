@@ -358,7 +358,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="132"/>
         <source>Ctrl+Shift+P</source>
-        <translation type="unfinished"></translation>
+        <translation>Strg+Umschalt+P</translation>
     </message>
 </context>
 <context>
