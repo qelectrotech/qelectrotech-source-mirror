@@ -22,6 +22,7 @@
 #include <QGraphicsSceneContextMenuEvent>
 #include <QAction>
 #include <QFileInfo>
+#include <QSaveFile>
 
 /**
 	Permet de convertir une chaine de caracteres ("n", "s", "e" ou "w")
@@ -540,30 +541,37 @@ bool QET::compareCanonicalFilePaths(const QString &first, const QString &second)
 	what happened when this function returns false.
 	@return false if an error occurred, true otherwise
 */
-bool QET::writeXmlFile(QDomDocument &xml_doc, const QString &filepath, QString *error_message) {
-	QFile file(filepath);
-	
-	// Note: we do not set QIODevice::Text to avoid generating CRLF end of lines
-	bool file_opening = file.open(QIODevice::WriteOnly);
-	if (!file_opening) {
-		if (error_message) {
-			*error_message = QString(
-				QObject::tr(
-					"Impossible d'ouvrir le fichier %1 en écriture, erreur %2 rencontrée.",
-					"error message when attempting to write an XML file"
-				)
-			).arg(filepath).arg(file.error());
-		}
-		return(false);
-	}
-	
-	QTextStream out(&file);
-	out.setCodec("UTF-8");
-	out.setGenerateByteOrderMark(false);
-	out << xml_doc.toString(4);
-	file.close();
-	
-	return(true);
+bool QET::writeXmlFile(QDomDocument &xml_doc, const QString &filepath, QString *error_message)
+{
+    QSaveFile file(filepath);
+
+        // Note: we do not set QIODevice::Text to avoid generating CRLF end of lines
+    bool file_opening = file.open(QIODevice::WriteOnly);
+    if (!file_opening)
+    {
+        if (error_message)
+        {
+            *error_message = QString(QObject::tr("Impossible d'ouvrir le fichier %1 en écriture, erreur %2 rencontrée.",
+                                                 "error message when attempting to write an XML file")).arg(filepath).arg(file.error());
+        }
+        return(false);
+    }
+
+    QTextStream out(&file);
+    out.setCodec("UTF-8");
+    out.setGenerateByteOrderMark(false);
+    out << xml_doc.toString(4);
+    if  (!file.commit())
+    {
+        if (error_message) {
+            *error_message = QString(QObject::tr("Une erreur est survenue lors de l'écriture du fichier %1, erreur %2 rencontrée.",
+                                                 "error message when attempting to write an XML file")).arg(filepath).arg(file.error());
+        }
+
+        return false;
+    }
+
+    return(true);
 }
 
 /**
