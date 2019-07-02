@@ -76,6 +76,9 @@ QETApp::QETApp() :
 {
 	m_qetapp = this;
 	parseArguments();
+    if (non_interactive_execution_) {
+        std::exit(EXIT_SUCCESS);
+    }
 	initConfiguration();
 	initLanguage();
 	QET::Icons::initIcons();
@@ -105,9 +108,10 @@ QETApp::QETApp() :
 	}
 	
 	buildSystemTrayMenu();
-	if (m_splash_screen) {
-		m_splash_screen -> hide();
-	}
+    if (m_splash_screen) {
+        m_splash_screen -> hide();
+    }
+	
 	checkBackupFiles();
 }
 
