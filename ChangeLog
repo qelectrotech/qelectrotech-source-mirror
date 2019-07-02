@@ -10,6 +10,7 @@
 * Alignment of text field can be edited.
 * Added two new actions in context menu for insert or remove point of a selected polygon.
 * Rectangle can have rounded corner.
+* Polyline: finish the creation of polyline with the last point at the same position of the first point, close the polyline.
 
 
 * Diagram editor :
@@ -50,6 +51,24 @@ This commit fix it : When element is removed one or several conductors are creat
 * Diagram editor : dock used to edit the shape item, can now edit several items in the same time.
 * Dynamic element text item : The font of the dynamic texts can be individually be setted.
 
+* Adding or revoming diagram set project to modified
+* When user cleanning an project, set project to modified
+* Add a shortcut "Ctrl+Shift+P" to quickly open the dialog used for create the auto numbering rules.
+* Add missing StatusTip of some QAction
+
+* When user add a polygon, a message in statusBar show how to finish this shape
+* Polyline: finish the creation of polyline with the last point at the same position of the first point, close the polyline.
+
+
+
+* Plug-in : Add StatusTip instruction for install and launching DXF plugin depending on the operating system
+* when plugin qet-tb-generator"generate terminal blocks and connectors" isn't installed show an QMessageBox instruction now depending on the operating system for install it 
+Add in QMessageBox url encoding/decoding for easy download packages
+
+* Elementspanelwidget: adds keyboard shortcuts to quickly move up, down,or move the targeted folio to the beginning of the project
+F3 MoveUp
+F4 MoveDown
+F5 MoveUpTop
 
 * Title block editor :
 Added new title block variables %projectpath, %projectfilename, %projecttitle, previous-folio-num and next-folio-num
@@ -70,6 +89,7 @@ If not a file dialog is showed to select the QET project.
 
 * QET create a backup file, use to restore the project when a crash occur.
 * Use KAutoSaveFile for the backup system, instead of home made function.
+* Use of QSAveFile instead a QFile.
 * User can enable and edit autosave timer.
 * let user define the file system path of the common,custom elements collections, and custom title blocks template.
 
@@ -106,6 +126,12 @@ the element file stay in read only mode, and so user can't save the element
 * Fix:  DXF export.
 * Minor fix : remove from the element information the html hexadecimal and decimal characters of line feed and carriage return.
 * fix : in the diagram editor, when we select several shapes at the same time, the properties widget only apply the change to one shape.
+* Bug fix : when user load a project which contains summary pages, project was marked modified (summary was created on the fly and moved from the end on second
+position), now the project is no longer marked as amended when user have one or multiples summary pages when loading this project.
+* Static text of element are now exported to dxf
+* Fix Static text size of element exported to dxf
+* Improvement : minimize the unwanted gap of the top right folio of the view
+* Fix : when create multiple conductors with the free hand selection, the checking of existing potentiel don't search trought a folio report.
 
 
 
