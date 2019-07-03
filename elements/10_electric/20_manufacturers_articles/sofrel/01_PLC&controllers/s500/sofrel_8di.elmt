@@ -1,0 +1,69 @@
+<definition hotspot_y="4" orientation="dyyy" hotspot_x="7" width="400" link_type="simple" type="element" height="160" version="0.70">
+    <uuid uuid="{030e1ff6-1fe6-4a78-8817-17ba78343103}"/>
+    <names>
+        <name lang="es">Tarjeta 8DI</name>
+        <name lang="en">Board 8DI</name>
+        <name lang="it">Scheda 8Di</name>
+        <name lang="fr">Carte 8 DI</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="designation" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Sofrel</elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text z="1" x="380.5" y="14.55" rotation="0" uuid="{a1ebbbc9-7cf5-454a-b0fa-22d962a1561a}" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text x="246" color="#000000" y="140" rotation="0" font="Sans Serif,10,-1,5,50,0,0,0,0,0" text="5"/>
+        <text x="278" color="#000000" y="140" rotation="0" font="Sans Serif,10,-1,5,50,0,0,0,0,0" text="6"/>
+        <text x="185" color="#000000" y="140" rotation="0" font="Sans Serif,10,-1,5,50,0,0,0,0,0" text="4"/>
+        <text x="366" color="#000000" y="140" rotation="0" font="Sans Serif,10,-1,5,50,0,0,0,0,0" text="8"/>
+        <text x="338" color="#000000" y="140" rotation="0" font="Sans Serif,10,-1,5,50,0,0,0,0,0" text="7"/>
+        <text x="125" color="#000000" y="140" rotation="0" font="Sans Serif,10,-1,5,50,0,0,0,0,0" text="C"/>
+        <text x="215" color="#000000" y="140" rotation="0" font="Sans Serif,10,-1,5,50,0,0,0,0,0" text="C"/>
+        <text x="306" color="#000000" y="140" rotation="0" font="Sans Serif,10,-1,5,50,0,0,0,0,0" text="C"/>
+        <text x="67" color="#000000" y="140" rotation="0" font="Sans Serif,10,-1,5,50,0,0,0,0,0" text="1"/>
+        <text x="157" color="#000000" y="140" rotation="0" font="Sans Serif,10,-1,5,50,0,0,0,0,0" text="3"/>
+        <text x="96" color="#000000" y="140" rotation="0" font="Sans Serif,10,-1,5,50,0,0,0,0,0" text="2"/>
+        <rect ry="0" x="0" y="0" width="385" height="150" rx="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="280" color="#000000" y="15" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="EMPLACEMENT"/>
+        <line end1="none" end2="none" y1="150" length1="1.5" x2="20" y2="120" length2="1.5" antialias="false" x1="20" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line end1="none" end2="none" y1="150" length1="1.5" x2="115" y2="120" length2="1.5" antialias="false" x1="115" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line end1="none" end2="none" y1="150" length1="1.5" x2="207" y2="120" length2="1.5" antialias="false" x1="207" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <text x="35" color="#000000" y="140" rotation="0" font="Sans Serif,10,-1,5,50,0,0,0,0,0" text="C"/>
+        <line end1="none" end2="none" y1="150" length1="1.5" x2="385" y2="120" length2="1.5" antialias="false" x1="385" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line end1="none" end2="none" y1="150" length1="1.5" x2="296" y2="120" length2="1.5" antialias="false" x1="296" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <text x="118" color="#000000" y="80" rotation="0" font="Sans Serif,25,-1,5,50,0,0,0,0,0" text="CARTE 8 DI"/>
+        <line end1="none" end2="none" y1="20" length1="1.5" x2="270" y2="0" length2="1.5" antialias="false" x1="270" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line end1="none" end2="none" y1="0" length1="1.5" x2="370" y2="20" length2="1.5" antialias="false" x1="370" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line end1="none" end2="none" y1="120" length1="1.5" x2="386" y2="120" length2="1.5" antialias="false" x1="20" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line end1="none" end2="none" y1="20" length1="1.5" x2="385" y2="20" length2="1.5" antialias="false" x1="-1" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <dynamic_text z="27" x="370" y="0" rotation="0" uuid="{03c9655f-539b-46ab-8f40-b86905aa1ec8}" text_width="-1" Halignment="AlignLeft" Valignment="AlignTop" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" frame="false" text_from="UserText">
+            <text>_</text>
+        </dynamic_text>
+        <terminal orientation="s" x="190" y="150"/>
+        <terminal orientation="s" x="40" y="150"/>
+        <terminal orientation="s" x="310" y="150"/>
+        <terminal orientation="s" x="220" y="150"/>
+        <terminal orientation="s" x="160" y="150"/>
+        <terminal orientation="s" x="340" y="150"/>
+        <terminal orientation="s" x="100" y="150"/>
+        <terminal orientation="s" x="250" y="150"/>
+        <terminal orientation="s" x="70" y="150"/>
+        <terminal orientation="s" x="280" y="150"/>
+        <terminal orientation="s" x="370" y="150"/>
+        <terminal orientation="s" x="130" y="150"/>
+    </description>
+</definition>

@@ -1,0 +1,66 @@
+<definition version="0.70" link_type="simple" type="element" orientation="dyyy" height="200" hotspot_y="6" width="80" hotspot_x="4">
+    <uuid uuid="{b960f949-f8e7-42cb-9066-23f0674a5196}"/>
+    <names>
+        <name lang="fr">Sofrel 4 AO</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="designation" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Sofrel</elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <text rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="2A&#xa;" color="#000000" y="140" x="59.5"/>
+        <text rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="3A&#xa;" color="#000000" y="100" x="59.5"/>
+        <rect rx="1" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="40" width="20" y="110" x="50" ry="0"/>
+        <rect rx="1" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="40" width="20" y="70" x="50" ry="0"/>
+        <text rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="2B" color="#000000" y="120" x="59.5"/>
+        <text rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="3B" color="#000000" y="80" x="59.5"/>
+        <text rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="B" color="#000000" y="95" x="5"/>
+        <text rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="B" color="#000000" y="135" x="5"/>
+        <rect rx="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="40" width="50" y="110" x="0" ry="0"/>
+        <rect rx="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="40" width="50" y="70" x="0" ry="0"/>
+        <rect rx="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" width="5" y="75" x="9.5" ry="0"/>
+        <rect rx="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" width="5" y="115" x="9.5" ry="0"/>
+        <text rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="4A" color="#000000" y="60" x="60"/>
+        <text rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="A" color="#000000" y="122" x="5"/>
+        <text rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="A" color="#000000" y="82" x="5"/>
+        <rect rx="0" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" height="10" width="5" y="85" x="9.5" ry="0"/>
+        <rect rx="0" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" height="10" width="5" y="125" x="9.5" ry="0"/>
+        <text rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="1A&#xa;" color="#000000" y="180" x="60"/>
+        <rect rx="1" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="40" width="20" y="30" x="50" ry="0"/>
+        <text rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="4B" color="#000000" y="40" x="60"/>
+        <text rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="B" color="#000000" y="55" x="5.5"/>
+        <rect rx="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="40" width="50" y="30" x="0" ry="0"/>
+        <rect rx="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" width="5" y="35" x="10" ry="0"/>
+        <text rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="A" color="#000000" y="42" x="5.5"/>
+        <rect rx="0" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" height="10" width="4" y="35" x="10" ry="0"/>
+        <rect rx="1" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="40" width="20" y="150" x="50" ry="0"/>
+        <text rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="1B" color="#000000" y="160" x="60"/>
+        <text rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="B" color="#000000" y="175" x="5.5"/>
+        <rect rx="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="40" width="50" y="150" x="0" ry="0"/>
+        <rect rx="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" width="5" y="155" x="10" ry="0"/>
+        <text rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="A" color="#000000" y="162" x="5.5"/>
+        <rect rx="0" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" height="10" width="5" y="165" x="10" ry="0"/>
+        <rect rx="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="30" width="70" y="0" x="0" ry="0"/>
+        <text rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0" text="Réglage sortie" color="#000000" y="7" x="11"/>
+        <text rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0" text="A=0 (4)-20mA" color="#000000" y="19" x="10"/>
+        <text rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0" text="B=0-10V" color="#000000" y="29" x="10"/>
+        <terminal orientation="e" y="60" x="70"/>
+        <terminal orientation="e" y="100" x="70"/>
+        <terminal orientation="e" y="120" x="70"/>
+        <terminal orientation="e" y="160" x="70"/>
+        <terminal orientation="e" y="40" x="70"/>
+        <terminal orientation="e" y="180" x="70"/>
+        <terminal orientation="e" y="80" x="70"/>
+        <terminal orientation="e" y="140" x="70"/>
+    </description>
+</definition>
