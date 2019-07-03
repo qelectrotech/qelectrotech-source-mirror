@@ -132,6 +132,7 @@ position), now the project is no longer marked as amended when user have one or 
 * Fix Static text size of element exported to dxf
 * Improvement : minimize the unwanted gap of the top right folio of the view
 * Fix : when create multiple conductors with the free hand selection, the checking of existing potentiel don't search trought a folio report.
+* Don't display gui when qet is launched with specific argument
 
 
 
