@@ -1,0 +1,73 @@
+<definition width="490" hotspot_x="245" hotspot_y="46" link_type="master" orientation="dyyy" version="0.61" type="element" height="100">
+    <uuid uuid="{8848e23f-a800-46ec-8f0c-08c3a55049ca}"/>
+    <names>
+        <name lang="it">Wago 750-602</name>
+        <name lang="de">Wago 750-602</name>
+        <name lang="pt">Wago 750-602</name>
+        <name lang="el">Wago 750-602</name>
+        <name lang="cs">Wago 750-602</name>
+        <name lang="ar">Wago 750-602</name>
+        <name lang="ru">Wago 750-602</name>
+        <name lang="en">Wago 750-602</name>
+        <name lang="pl">Wago 750-602</name>
+        <name lang="nl">Wago 750-602</name>
+        <name lang="es">Wago 750-602</name>
+        <name lang="fr">Wago 750-602</name>
+    </names>
+    <kindInformations/>
+    <informations>Author: Richard Rondu
+Based on K750-430 from author "RDS for QelectroTech"</informations>
+    <description>
+        <text y="28.513" size="4" x="16.1028" text="-"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length1="1.5" x2="87" antialias="false" x1="85" length2="1.5" y2="24" end1="none" y1="24"/>
+        <text y="29.8883" size="4" x="-173.607" text="NC"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length1="1.5" x2="88" antialias="false" x1="84" length2="1.5" y2="26" end1="none" y1="26"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length1="1.5" x2="89" antialias="false" x1="83" length2="1.5" y2="28" end1="none" y1="28"/>
+        <text y="30" size="4" x="-86" text="+"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length1="1.5" x2="86" antialias="false" x1="86" length2="1.5" y2="31" end1="none" y1="28"/>
+        <rect width="480" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-40" antialias="false" height="80" x="-240"/>
+        <text y="28.4677" size="4" x="-23.9163" text="-"/>
+        <text y="36.0185" size="4" x="84.4907" text="8"/>
+        <text y="36" size="4" x="15.618" text="7"/>
+        <text y="30.0185" size="4" x="-203.774" text="NC"/>
+        <text y="36" size="4" x="64.3395" text="4"/>
+        <text y="36.0956" size="4" x="-171.512" text="5"/>
+        <rect width="53" style="line-style:normal;line-weight:normal;filling:green;color:green" y="-36.917" antialias="false" height="13.9673" x="-224.25"/>
+        <arc width="6" style="line-style:normal;line-weight:normal;filling:none;color:black" y="41" start="-180" antialias="true" angle="-180" height="6" x="-3"/>
+        <text y="30" size="4" x="-116" text="+"/>
+        <text y="-26" size="6" x="-216" text="750-602"/>
+        <arc width="6" style="line-style:normal;line-weight:normal;filling:none;color:black" y="41" start="-180" antialias="true" angle="-180" height="6" x="47"/>
+        <arc width="6" style="line-style:normal;line-weight:normal;filling:none;color:black" y="41" start="-180" antialias="true" angle="-84" height="6" x="-53"/>
+        <arc width="6" style="line-style:normal;line-weight:normal;filling:none;color:black" y="41" start="-180" antialias="true" angle="-180" height="6" x="-53"/>
+        <rect width="12" style="line-style:normal;line-weight:normal;filling:green;color:green" y="-38.95" antialias="false" height="78" x="226.75"/>
+        <rect width="12" style="line-style:normal;line-weight:normal;filling:green;color:green" y="-38.95" antialias="false" height="78" x="-239.25"/>
+        <text y="12.05" size="6" rotation="270" x="236.75" text="K-BUS"/>
+        <text y="12.05" size="6" rotation="270" x="-229.25" text="K-BUS"/>
+        <text y="35.9685" size="4" x="-24.4766" text="3"/>
+        <text y="36.0849" size="4" x="-85.4271" text="6"/>
+        <text y="36" size="4" x="-115.509" text="2"/>
+        <text y="36.2078" size="4" x="-201.547" text="1"/>
+        <input rotate="true" y="-27.5" size="9" tagg="label" x="241" text="_"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length1="1.5" x2="67" antialias="false" x1="65" length2="1.5" y2="24" end1="none" y1="24"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length1="1.5" x2="68" antialias="false" x1="64" length2="1.5" y2="26" end1="none" y1="26"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length1="1.5" x2="69" antialias="false" x1="63" length2="1.5" y2="28" end1="none" y1="28"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" length1="1.5" x2="66" antialias="false" x1="66" length2="1.5" y2="31" end1="none" y1="28"/>
+        <polygon x4="-80" closed="false" x5="-80" style="line-style:normal;line-weight:normal;filling:none;color:green" y4="39" x2="-110" antialias="false" x3="-80" x1="-110" y2="20" y1="39" y3="20" y5="39"/>
+        <polygon closed="false" style="line-style:normal;line-weight:normal;filling:none;color:green" x2="-50" antialias="false" x3="-50" x1="-80" y2="20" y1="20" y3="36"/>
+        <polygon x4="20" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:green" y4="39" x2="-20" antialias="false" x3="20" x1="-20" y2="20" y1="39" y3="20"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:green" end2="none" length1="1.5" x2="0" antialias="false" x1="0" length2="1.5" y2="36" end1="none" y1="20"/>
+        <polygon x4="70" closed="false" x5="70" style="line-style:normal;line-weight:normal;filling:none;color:green" y4="39" x2="90" antialias="false" x3="70" x1="90" y2="20" y1="39" y3="20" y5="39"/>
+        <polygon closed="false" style="line-style:normal;line-weight:normal;filling:none;color:green" x2="50" antialias="false" x3="70" x1="50" y2="20" y1="36" y3="20"/>
+        <terminal y="45" orientation="s" x="-80"/>
+        <terminal y="41" orientation="s" x="0"/>
+        <terminal y="45" orientation="s" x="-110"/>
+        <terminal y="45" orientation="s" x="-200"/>
+        <terminal y="45" orientation="s" x="90"/>
+        <terminal y="45" orientation="s" x="20"/>
+        <terminal y="45" orientation="s" x="70"/>
+        <terminal y="45" orientation="s" x="-170"/>
+        <terminal y="41" orientation="s" x="-50"/>
+        <terminal y="45" orientation="s" x="-20"/>
+        <terminal y="41" orientation="s" x="50"/>
+    </description>
+</definition>

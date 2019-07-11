@@ -1,0 +1,42 @@
+<definition link_type="simple" height="50" orientation="dyyy" hotspot_x="115" version="0.61" width="240" type="element" hotspot_y="22">
+    <uuid uuid="{d432c6a8-7d32-47df-9ddf-8f7d7959862a}"/>
+    <names>
+        <name lang="be">Wago 750-616</name>
+        <name lang="de">Wago 750-616</name>
+        <name lang="it">Wago 750-616</name>
+        <name lang="nl">Wago 750-616</name>
+        <name lang="en">Wago 750-616</name>
+        <name lang="fr">Wago 750-616</name>
+    </names>
+    <informations>Author: Richard Rondu
+Based on 750-881 from author "RDS for QelectroTech"</informations>
+    <description>
+        <polygon x6="-100" y5="20" x9="-5" y4="20" y15="16" x1="-94" y10="16" x2="-94" style="line-style:normal;line-weight:thin;filling:none;color:black" x5="-100" x8="110" x4="-96" x16="-52" y8="20" y2="16" y14="16" y11="16" x3="-96" y3="16" y6="-10" y9="20" x12="-7" x17="-94" x10="-5" y13="20" y12="20" x13="-50" x11="-7" y17="20" y1="20" x7="110" x14="-50" antialias="false" y16="20" x15="-52" y7="-10"/>
+        <arc angle="180" antialias="true" y="17" height="2" width="2" x="-97" style="line-style:normal;line-weight:thin;filling:none;color:black" start="270"/>
+        <rect antialias="false" y="-14" height="4" width="2" x="-52" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <arc angle="180" antialias="true" y="17" height="2" width="2" x="-95" style="line-style:normal;line-weight:thin;filling:none;color:black" start="90"/>
+        <rect antialias="false" y="-14" height="4" width="2" x="-7" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <arc angle="180" antialias="true" y="17" height="2" width="2" x="-8" style="line-style:normal;line-weight:thin;filling:none;color:black" start="270"/>
+        <arc angle="180" antialias="true" y="17" height="2" width="2" x="-6" style="line-style:normal;line-weight:thin;filling:none;color:black" start="90"/>
+        <rect antialias="false" y="-10" height="30" width="16" x="94" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect antialias="false" y="-9" height="28" width="10" x="97" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <polygon y8="-17" y3="-10" y6="-14" x10="120" x19="119" y16="13" y10="3" x1="119" x3="110" x6="114" y4="-10" x2="110" y2="20" x4="120" y11="-6" x12="113" y15="13" x14="116" y9="3" x9="123" y13="8" x18="119" y18="16" x8="123" y7="-17" x11="120" y19="20" y17="16" x5="120" antialias="false" y5="-14" y12="-6" x16="114" x7="114" x17="114" y1="20" x15="116" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" x13="113" y14="8"/>
+        <polygon y8="13" y3="-6" y6="8" x10="-109" x19="-113" y16="-14" y10="16" x1="-113" x3="-110" x6="-106" y4="-6" x2="-110" y2="3" x4="-103" y11="20" x12="-100" y15="-14" x14="-110" y9="16" x9="-104" y13="-10" x18="-113" y18="-17" x8="-104" y7="13" x11="-109" y19="3" y17="-17" x5="-103" antialias="false" y5="8" y12="20" x16="-104" x7="-106" x17="-104" y1="3" x15="-110" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" x13="-100" y14="-10"/>
+        <rect antialias="false" y="17" height="3" width="10" x="-43" style="line-style:normal;line-weight:thin;filling:orange;color:black"/>
+        <rect antialias="false" y="17" height="3" width="10" x="-33" style="line-style:normal;line-weight:thin;filling:orange;color:black"/>
+        <input y="10" size="9" x="140" tagg="label" rotate="true" text="_"/>
+        <rect antialias="false" y="20" height="2" width="4" x="44" style="line-style:normal;line-weight:thin;filling:orange;color:black"/>
+        <rect antialias="false" y="20" height="2" width="4" x="53" style="line-style:normal;line-weight:thin;filling:orange;color:black"/>
+        <rect antialias="false" y="20" height="2" width="4" x="62" style="line-style:normal;line-weight:thin;filling:orange;color:black"/>
+        <rect antialias="false" y="20" height="2" width="4" x="71" style="line-style:normal;line-weight:thin;filling:orange;color:black"/>
+        <rect antialias="false" y="20" height="2" width="4" x="80" style="line-style:normal;line-weight:thin;filling:orange;color:black"/>
+        <rect antialias="false" y="20" height="2" width="4" x="89" style="line-style:normal;line-weight:thin;filling:orange;color:black"/>
+        <arc angle="180" antialias="true" y="17" height="2" width="2" x="-53" style="line-style:normal;line-weight:thin;filling:none;color:black" start="270"/>
+        <arc angle="180" antialias="true" y="17" height="2" width="2" x="-51" style="line-style:normal;line-weight:thin;filling:none;color:black" start="90"/>
+        <rect antialias="false" y="-14" height="4" width="2" x="-96" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect antialias="false" y="-14" height="4" width="6" x="-109" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <rect antialias="false" y="-14" height="4" width="6" x="113" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x6="-22" y5="12" x9="-22" y4="12" x1="-100" y10="-2" x2="-100" style="line-style:normal;line-weight:thin;filling:orange;color:black" x5="-22" x8="94" x4="-44" y8="-10" y2="20" y11="-2" x3="-44" y3="20" y6="20" y9="-10" x12="-44" x10="-22" y13="-10" y12="-10" x13="-100" x11="-44" y1="-10" x7="94" antialias="false" y7="20"/>
+        <text y="-5" rotation="90" size="4" x="-98.693" text="750-616"/>
+    </description>
+</definition>

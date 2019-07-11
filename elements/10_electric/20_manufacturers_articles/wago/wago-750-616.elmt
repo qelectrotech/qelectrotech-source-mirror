@@ -1,0 +1,42 @@
+<definition width="490" hotspot_x="245" hotspot_y="53" link_type="master" orientation="dyyy" version="0.61" type="element" height="100">
+    <uuid uuid="{12f3eddf-6757-4f5d-ada5-6b7ac5fdff41}"/>
+    <names>
+        <name lang="it">Wago 750-616</name>
+        <name lang="de">Wago 750-616</name>
+        <name lang="pt">Wago 750-616</name>
+        <name lang="el">Wago 750-616</name>
+        <name lang="cs">Wago 750-616</name>
+        <name lang="ar">Wago 750-616</name>
+        <name lang="ru">Wago 750-616</name>
+        <name lang="en">Wago 750-616</name>
+        <name lang="pl">Wago 750-616</name>
+        <name lang="nl">Wago 750-616</name>
+        <name lang="es">Wago 750-616</name>
+        <name lang="fr">Wago 750-616</name>
+    </names>
+    <kindInformations/>
+    <informations>Author: Richard Rondu
+Based on K750-430 from author "RDS for QelectroTech"</informations>
+    <description>
+        <rect width="480" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-40" antialias="false" height="80" x="-240"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:green" end2="none" length1="1.5" x2="0" antialias="false" x1="0" length2="1.5" y2="-30" end1="none" y1="-38.9694"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:green" end2="none" length1="1.5" x2="50" antialias="false" x1="50" length2="1.5" y2="-30" end1="none" y1="-39.9694"/>
+        <rect width="53" style="line-style:normal;line-weight:normal;filling:green;color:green" y="-36.917" antialias="false" height="13.9673" x="-224.25"/>
+        <text y="-26" size="6" x="-216" text="750-616"/>
+        <rect width="12" style="line-style:normal;line-weight:normal;filling:green;color:green" y="-38.95" antialias="false" height="78" x="226.75"/>
+        <rect width="12" style="line-style:normal;line-weight:normal;filling:green;color:green" y="-38.95" antialias="false" height="78" x="-239.25"/>
+        <text y="12.05" size="6" rotation="270" x="236.75" text="K-BUS"/>
+        <text y="12.05" size="6" rotation="270" x="-229.25" text="K-BUS"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:green" end2="none" length1="1.5" x2="-50" antialias="false" x1="-50" length2="1.5" y2="-30" end1="none" y1="-39.9694"/>
+        <input rotate="true" y="-27.5" size="9" tagg="label" x="241" text="_"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" x2="-45" antialias="false" x1="-55" length2="1.5" y2="-25" end1="none" y1="-35"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" x2="-45" antialias="false" x1="-55" length2="1.5" y2="-35" end1="none" y1="-25"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" x2="5" antialias="false" x1="-5" length2="1.5" y2="-25" end1="none" y1="-35"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" x2="5" antialias="false" x1="-5" length2="1.5" y2="-35" end1="none" y1="-25"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" x2="55" antialias="false" x1="45" length2="1.5" y2="-25" end1="none" y1="-35"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" x2="55" antialias="false" x1="45" length2="1.5" y2="-35" end1="none" y1="-25"/>
+        <terminal y="-45" orientation="n" x="50"/>
+        <terminal y="-45" orientation="n" x="0"/>
+        <terminal y="-45" orientation="n" x="-50"/>
+    </description>
+</definition>

@@ -1,0 +1,67 @@
+<definition width="490" hotspot_x="35" hotspot_y="49" link_type="master" orientation="dyyy" version="0.61" type="element" height="100">
+    <uuid uuid="{2f9da12c-3e15-4fb8-a81d-f8fed8c25287}"/>
+    <names>
+        <name lang="it">Wago 750-530</name>
+        <name lang="de">Wago 750-530</name>
+        <name lang="pt">Wago 750-530</name>
+        <name lang="el">Wago 750-530</name>
+        <name lang="cs">Wago 750-530</name>
+        <name lang="ar">Wago 750-530</name>
+        <name lang="ru">Wago 750-530</name>
+        <name lang="en">Wago 750-530</name>
+        <name lang="pl">Wago 750-530</name>
+        <name lang="nl">Wago 750-530</name>
+        <name lang="es">Wago 750-530</name>
+        <name lang="fr">Wago 750-530</name>
+    </names>
+    <kindInformations/>
+    <informations>Author: Richard Rondu
+Based on K750-430 from author "RDS for QelectroTech"</informations>
+    <description>
+        <text y="27" size="4" x="375" text="DO8"/>
+        <text y="26.9993" size="4" x="72.7127" text="DO 3"/>
+        <rect width="480" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-40" antialias="false" height="80" x="-30"/>
+        <text y="27" size="4" x="335" text="DO6"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:green" end2="none" length1="1.5" x2="210" antialias="false" x1="210" length2="1.5" y2="38.9669" end1="none" y1="-38.9694"/>
+        <text y="27" size="4" x="35" text="DO 1"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:green" end2="none" length1="1.5" x2="260" antialias="false" x1="260" length2="1.5" y2="37.9669" end1="none" y1="-39.9694"/>
+        <text y="27" size="4" x="275" text="DO4"/>
+        <rect width="53" style="line-style:normal;line-weight:normal;filling:green;color:green" y="-36.917" antialias="false" height="13.9673" x="-14.25"/>
+        <text y="28" size="4" x="235" text="DO2"/>
+        <text y="27" size="4" x="175" text="DO7"/>
+        <arc width="6" style="line-style:normal;line-weight:normal;filling:none;color:black" y="41" start="-180" antialias="true" angle="-180" height="6" x="207"/>
+        <text y="27" size="4" x="135" text="DO5"/>
+        <text y="-26" size="6" x="-6" text="750-530"/>
+        <arc width="6" style="line-style:normal;line-weight:normal;filling:none;color:black" y="41" start="-180" antialias="true" angle="-180" height="6" x="257"/>
+        <arc width="6" style="line-style:normal;line-weight:normal;filling:none;color:black" y="41" start="-180" antialias="true" angle="-84" height="6" x="157"/>
+        <arc width="6" style="line-style:normal;line-weight:normal;filling:none;color:black" y="41" start="-180" antialias="true" angle="-180" height="6" x="157"/>
+        <rect width="12" style="line-style:normal;line-weight:normal;filling:green;color:green" y="-38.95" antialias="false" height="78" x="436.75"/>
+        <rect width="12" style="line-style:normal;line-weight:normal;filling:green;color:green" y="-38.95" antialias="false" height="78" x="-29.25"/>
+        <text y="12.05" size="6" rotation="270" x="446.75" text="K-BUS"/>
+        <text y="12.05" size="6" rotation="270" x="-19.25" text="K-BUS"/>
+        <text y="37" size="4" x="377" text="8"/>
+        <text y="37" size="4" x="338" text="7"/>
+        <text y="37" size="4" x="278" text="6"/>
+        <text y="37" size="4" x="238" text="5"/>
+        <text y="37" size="4" x="177" text="4"/>
+        <text y="37" size="4" x="138" text="3"/>
+        <text y="37" size="4" x="78" text="2"/>
+        <text y="37" size="4" x="38" text="1"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:green" end2="none" length1="1.5" x2="160" antialias="false" x1="160" length2="1.5" y2="37.9669" end1="none" y1="-39.9694"/>
+        <input rotate="true" y="-27.5" size="9" tagg="label" x="451" text="_"/>
+        <terminal y="45" orientation="s" x="180"/>
+        <terminal y="-45" orientation="n" x="260"/>
+        <terminal y="-45" orientation="n" x="210"/>
+        <terminal y="45" orientation="s" x="140"/>
+        <terminal y="45" orientation="s" x="380"/>
+        <terminal y="45" orientation="s" x="340"/>
+        <terminal y="41" orientation="s" x="260"/>
+        <terminal y="45" orientation="s" x="240"/>
+        <terminal y="-45" orientation="n" x="160"/>
+        <terminal y="41" orientation="s" x="160"/>
+        <terminal y="41" orientation="s" x="210"/>
+        <terminal y="45" orientation="s" x="280"/>
+        <terminal y="45" orientation="s" x="80"/>
+        <terminal y="45" orientation="s" x="40"/>
+    </description>
+</definition>
