@@ -1289,9 +1289,22 @@ void DynamicElementTextItem::updateXref()
 					m_slave_Xref_item->setPlainText(xref_label);
 				
 				QRectF r = boundingRect();
-				QPointF pos(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,
-							r.bottom());
-				m_slave_Xref_item->setPos(pos);
+				QPointF pos;
+                //QPointF pos(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top());
+                if(this->alignment() &Qt::AlignBottom)
+                {
+                    pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.bottom());
+                }  
+                else if(this->alignment() &Qt::AlignTop)
+                {
+                     pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top() - m_slave_Xref_item->boundingRect().height());
+                }
+                else
+                {
+                     pos = QPointF(r.left() -  m_slave_Xref_item->boundingRect().width(),r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
+                }
+                m_slave_Xref_item->setPos(pos);          
+               
 				return;
 			}
 		}
@@ -1353,10 +1366,22 @@ void DynamicElementTextItem::setPlainText(const QString &text)
 	else if (m_slave_Xref_item)
 	{
 		QRectF r = boundingRect();
-		QPointF pos(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,
-					r.bottom());
-		m_slave_Xref_item->setPos(pos);
-	}
+        QPointF pos;
+//QPointF pos(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top()); this->alignment() &Qt::AlignBottom
+		 if(this->alignment() &Qt::AlignBottom)
+                {
+                    pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.bottom());
+                }  
+                else if(this->alignment() &Qt::AlignTop)
+                {
+                     pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top()-m_slave_Xref_item->boundingRect().height());
+                }
+                else
+                {
+                     pos = QPointF(r.left() -  m_slave_Xref_item->boundingRect().width(),r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
+                }
+                m_slave_Xref_item->setPos(pos);
+    }
 }
 
 void DynamicElementTextItem::setTextWidth(qreal width)
