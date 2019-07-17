@@ -7267,7 +7267,7 @@ Hvad skal ske?</translation>
         <location filename="../sources/qet.cpp" line="567"/>
         <source>Une erreur est survenue lors de l&apos;écriture du fichier %1, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
-        <translation type="unfinished"></translation>
+        <translation>Der opstod en fejl under skrivning af fil %1, fejl %2 opstod.</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="640"/>
