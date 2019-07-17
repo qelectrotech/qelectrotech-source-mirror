@@ -114,7 +114,7 @@ QWidget *AboutQET::aboutTab() const {
 	QLabel *about = new QLabel(
 		tr("QElectroTech, une application de réalisation de schémas électriques.", "about tab, description line") +
 		"<br><br>" +
-		tr("2006-2017 Les développeurs de QElectroTech", "about tab, developers line") +
+		tr("2006-2019 Les développeurs de QElectroTech", "about tab, developers line") +
 		"<br><br>"
 		"<a href=\"https://qelectrotech.org/\">https://qelectrotech.org/</a>"
 		"<br><br>" +
