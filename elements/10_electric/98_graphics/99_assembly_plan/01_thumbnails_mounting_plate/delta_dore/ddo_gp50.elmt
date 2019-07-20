@@ -2,6 +2,16 @@
     <uuid uuid="{bb56e9aa-e339-4bf6-a451-1afe41429f91}"/>
     <names>
         <name lang="fr">GP50</name>
+        <name lang="en">GP50</name>
+        <name lang="es">GP50</name>
+        <name lang="ca">GP50</name>
+        <name lang="it">GP50</name>
+        <name lang="de">GP50</name>
+        <name lang="de">GP50</name>
+        <name lang="da">GP50</name>
+        <name lang="cs">GP50</name>
+        <name lang="pt">GP50</name>
+        <name lang="pl">GP50</name>
     </names>
     <kindInformations>
         <kindInformation name="state" show="1">NO</kindInformation>
