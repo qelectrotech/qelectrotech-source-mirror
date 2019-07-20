@@ -708,7 +708,7 @@ void QETElementEditor::slot_updateInformations()
 /**
  * @brief QETElementEditor::checkElement
  * Do several check about element.
- * If error is occured return false
+ * If error is occurred return false
  */
 bool QETElementEditor::checkElement()
 {
