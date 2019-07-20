@@ -243,7 +243,7 @@
         <location filename="../sources/aboutqet.cpp" line="117"/>
         <source>2006-2019 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished">2006-2017 QElectroTech udviklere {2006-2019 ?}</translation>
+        <translation>2006-2019 QElectroTech udviklere</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="205"/>
