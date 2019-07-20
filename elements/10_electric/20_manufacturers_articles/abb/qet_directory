@@ -1,6 +1,16 @@
 <qet-directory>
     <names>
         <name lang="en">ABB</name>
-        <name lang="cs">ABB</name>
+        <name lang="es">ABB</name>
+	<name lang="fr">ABB</name>
+	<name lang="ca">ABB</name>
+	<name lang="nl">ABB</name>
+	<name lang="de">ABB</name>
+	<name lang="fi">ABB</name>
+	<name lang="it">ABB</name>
+	<name lang="pl">ABB</name>
+	<name lang="cs">ABB</name>
+	<name lang="pt">ABB</name>
+	<name lang="da">ABB</name>
     </names>
 </qet-directory>
