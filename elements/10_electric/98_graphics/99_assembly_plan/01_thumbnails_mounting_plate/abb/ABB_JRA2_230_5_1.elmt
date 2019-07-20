@@ -1,6 +1,16 @@
 <definition width="330" version="0.3" hotspot_x="5" hotspot_y="26" height="230" type="element" orientation="dyyy">
     <names>
         <name lang="fr">JRA/S8.230.5.1</name>
+        <name lang="ca">JRA/S8.230.5.1</name>
+        <name lang="cs">JRA/S8.230.5.1</name>
+        <name lang="en">JRA/S8.230.5.1</name>
+        <name lang="es">JRA/S8.230.5.1</name>
+        <name lang="de">JRA/S8.230.5.1</name>
+        <name lang="da">JRA/S8.230.5.1</name>
+        <name lang="it">JRA/S8.230.5.1</name>
+        <name lang="fi">JRA/S8.230.5.1</name>
+        <name lang="pl">JRA/S8.230.5.1</name>
+        <name lang="pt">JRA/S8.230.5.1</name>
     </names>
     <informations>Alexandre DIS&#xd;
 </informations>
