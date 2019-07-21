@@ -1,0 +1,94 @@
+<definition orientation="dyyy" version="0.70" height="130" hotspot_x="255" hotspot_y="65" width="510" type="element" link_type="simple">
+    <uuid uuid="{d688bcfe-fea3-4ecc-82d4-2a86d4136fd4}"/>
+    <names>
+        <name lang="pl">RVL 480</name>
+        <name lang="it">RVL 480</name>
+        <name lang="es">RVL 480</name>
+        <name lang="en">RVL 480</name>
+        <name lang="nl">RVL 480</name>
+        <name lang="fr">Régulateur de chauffage RVL 480</name>
+        <name lang="el">RVL 480</name>
+        <name lang="pt">RVL 480</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="designation" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Siemens</elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+    </elementInformations>
+    <informations>S.DEFFAUX</informations>
+    <description>
+        <text text="B71" x="130" rotation="0" y="-40" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <text text="M" x="214" rotation="0" y="-40" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <text text="M" x="55" rotation="0" y="-40" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <text text="H3" x="193.5" rotation="0" y="-40.25" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <text text="H4" x="171.5" rotation="0" y="-40.25" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <text text="M" x="116" rotation="0" y="-40" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <text text="B5" x="94" rotation="0" y="-40" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <line y1="44" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y2="39" end2="none" x1="50" x2="70" length1="1.5"/>
+        <line y1="45" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y2="40" end2="none" x1="-50" x2="-30" length1="1.5"/>
+        <line y1="44" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y2="44" end2="none" x1="70" x2="80" length1="1.5"/>
+        <rect height="120" x="-250" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="500" antialias="false" y="-60" rx="0"/>
+        <line y1="45" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y2="45" end2="none" x1="-30" x2="-20" length1="1.5"/>
+        <line y1="60" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y2="45" end2="none" x1="-20" x2="-20" length1="1.5"/>
+        <text text="B1" x="-75" rotation="0" y="-40" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <line y1="59" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y2="44" end2="none" x1="80" x2="80" length1="1.5"/>
+        <line y1="45" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y2="45" end2="none" x1="-50" x2="-60" length1="1.5"/>
+        <line y1="44" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y2="44" end2="none" x1="50" x2="40" length1="1.5"/>
+        <text text="Ux" x="-4.5" rotation="0" y="-39.45" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <line y1="60" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y2="45" end2="none" x1="-60" x2="-60" length1="1.5"/>
+        <line y1="59" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y2="44" end2="none" x1="40" x2="40" length1="1.5"/>
+        <text text="M" x="-55" rotation="0" y="-40" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <text text="B9" x="-100" rotation="0" y="-40" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <text text="B7" x="33" rotation="0" y="-40" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <line y1="45" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y2="40" end2="none" x1="-150" x2="-130" length1="1.5"/>
+        <line y1="45" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y2="45" end2="none" x1="-130" x2="-120" length1="1.5"/>
+        <line y1="60" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y2="45" end2="none" x1="-120" x2="-120" length1="1.5"/>
+        <line y1="45" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y2="45" end2="none" x1="-150" x2="-160" length1="1.5"/>
+        <line y1="60" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y2="45" end2="none" x1="-160" x2="-160" length1="1.5"/>
+        <text text="N" x="-235" rotation="0" y="50" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text text="L" x="-214" rotation="0" y="50" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text text="MB" x="-210" rotation="0" y="-40" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <text text="DM" x="-230" rotation="0" y="-40" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <text text="A6" x="-180" rotation="0" y="-40" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <text text="MD" x="-160" rotation="0" y="-40" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <text text="F1" x="-180" rotation="0" y="50" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text text="Y1" x="-110" rotation="0" y="50" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text text="F2" x="-80" rotation="0" y="50" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text text="Y2" x="-15" rotation="0" y="50" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text text="F3" x="20" rotation="0" y="50" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text text="Q1" x="85" rotation="0" y="50" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text text="RVL" x="-20" rotation="0" y="-5" color="#000000" font="Sans Serif,15,-1,5,50,0,0,0,0,0"/>
+        <terminal orientation="n" x="-220" y="-60"/>
+        <terminal orientation="n" x="140" y="-60"/>
+        <terminal orientation="n" x="177.5" y="-60.25"/>
+        <terminal orientation="s" x="40" y="60"/>
+        <terminal orientation="s" x="-20" y="60"/>
+        <terminal orientation="n" x="-70" y="-60"/>
+        <terminal orientation="n" x="-90" y="-60"/>
+        <terminal orientation="n" x="-150" y="-60"/>
+        <terminal orientation="s" x="-60" y="60"/>
+        <terminal orientation="n" x="197.5" y="-60.25"/>
+        <terminal orientation="s" x="-120" y="60"/>
+        <terminal orientation="n" x="60" y="-60"/>
+        <terminal orientation="s" x="-230" y="60"/>
+        <terminal orientation="n" x="0" y="-60"/>
+        <terminal orientation="n" x="100" y="-60"/>
+        <terminal orientation="s" x="-160" y="60"/>
+        <terminal orientation="n" x="-200" y="-60"/>
+        <terminal orientation="s" x="80" y="60"/>
+        <terminal orientation="n" x="217.5" y="-60.25"/>
+        <terminal orientation="s" x="-210" y="60"/>
+        <terminal orientation="n" x="-50" y="-60"/>
+        <terminal orientation="n" x="40" y="-60"/>
+        <terminal orientation="n" x="-170" y="-60"/>
+        <terminal orientation="n" x="120" y="-60"/>
+    </description>
+</definition>
