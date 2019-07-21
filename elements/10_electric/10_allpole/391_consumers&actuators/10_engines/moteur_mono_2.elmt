@@ -1,0 +1,26 @@
+<definition orientation="dyyy" type="element" height="50" width="40" link_type="simple" version="0.70" hotspot_x="14" hotspot_y="17">
+    <uuid uuid="{4c8df704-fb5c-4d79-b690-d178a6fdf5bc}"/>
+    <names>
+        <name lang="cs">Jednofázový motor</name>
+        <name lang="es">Motor monofásico</name>
+        <name lang="ru">Однофазный эл. мотор</name>
+        <name lang="pt">Motor monofásico</name>
+        <name lang="en">One-phase engine</name>
+        <name lang="fr">Moteur monophasé</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text font="Sans Serif,18,-1,5,50,0,0,0,0,0" y="21" x="-6" text="M" rotation="0" color="#000000"/>
+        <circle antialias="true" y="-3" diameter="30" x="-10.25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="20" y2="6.75" end2="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y1="-5" x1="20" length1="1.5"/>
+        <line x2="-10" y2="7" end2="none" length2="1.5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y1="-7" x1="-10" length1="1.5"/>
+        <dynamic_text frame="false" font="Sans Serif,6,-1,5,50,0,0,0,0,0" y="7" uuid="{928dba5a-fd90-44a4-835b-b64f7fe1f6a9}" x="19" z="5" Halignment="AlignLeft" Valignment="AlignTop" text_width="-1" text_from="ElementInfo" rotation="0">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal orientation="n" y="-10" x="20"/>
+        <terminal orientation="n" y="-10" x="-10"/>
+    </description>
+</definition>
