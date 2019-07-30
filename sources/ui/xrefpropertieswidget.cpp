@@ -100,6 +100,11 @@ void XRefPropertiesWidget::buildUi()
 	ui -> m_snap_to_cb -> addItem(tr("En bas de page"),					  "bottom");
 	ui -> m_snap_to_cb -> addItem(tr("Sous le label de l'élément"), "label");
 
+    ui -> m_xrefpos_cb -> addItem(tr("Top"),"top");
+    ui -> m_xrefpos_cb -> addItem(tr("Bottom"),"bottom");
+    ui -> m_xrefpos_cb -> addItem(tr("Left"),"left");
+    ui -> m_xrefpos_cb -> addItem(tr("Rigth"),"right");
+    ui -> m_xrefpos_cb -> addItem(tr("Text alignment"),"alignment");                                                
 	m_previous_type_index = ui -> m_type_cb -> currentIndex();
 }
 
@@ -117,6 +122,12 @@ void XRefPropertiesWidget::saveProperties(int index) {
 	if (ui->m_snap_to_cb->itemData(ui->m_snap_to_cb->currentIndex()).toString() == "bottom")
 		 xrp.setSnapTo(XRefProperties::Bottom);
 	else xrp.setSnapTo(XRefProperties::Label);
+
+    if(ui->m_xrefpos_cb->itemData(ui->m_xrefpos_cb->currentIndex()).toString() == "bottom") xrp.setXrefPos(XRefProperties::enXrefPos::PosBottom);
+    else if(ui->m_xrefpos_cb->itemData(ui->m_xrefpos_cb->currentIndex()).toString() == "top") xrp.setXrefPos(XRefProperties::enXrefPos::PosTop);
+    else if(ui->m_xrefpos_cb->itemData(ui->m_xrefpos_cb->currentIndex()).toString() == "left") xrp.setXrefPos(XRefProperties::enXrefPos::PosLeft);
+    else if(ui->m_xrefpos_cb->itemData(ui->m_xrefpos_cb->currentIndex()).toString() == "right") xrp.setXrefPos(XRefProperties::enXrefPos::PosRight);
+    else if(ui->m_xrefpos_cb->itemData(ui->m_xrefpos_cb->currentIndex()).toString() == "alignment") xrp.setXrefPos(XRefProperties::enXrefPos::PosTextAignment);
 	xrp.setShowPowerContac(ui->m_show_power_cb->isChecked());
 	xrp.setPrefix("power",  ui->m_power_prefix_le->text());
 	xrp.setPrefix("delay",  ui->m_delay_prefix_le->text());
@@ -161,6 +172,12 @@ void XRefPropertiesWidget::updateDisplay() {
 		ui->m_snap_to_cb->setCurrentIndex(ui->m_snap_to_cb->findData("label"));
 		ui->m_offset_sb->setEnabled(false);
 	}
+
+    if(xrp.getXrefPos() == XRefProperties::enXrefPos::PosTop) ui->m_xrefpos_cb->setCurrentIndex(ui->m_xrefpos_cb->findData("top"));
+    else if(xrp.getXrefPos() == XRefProperties::enXrefPos::PosLeft) ui->m_xrefpos_cb->setCurrentIndex(ui->m_xrefpos_cb->findData("left"));
+    else if(xrp.getXrefPos() == XRefProperties::enXrefPos::PosRight) ui->m_xrefpos_cb->setCurrentIndex(ui->m_xrefpos_cb->findData("right"));
+    else if(xrp.getXrefPos() == XRefProperties::enXrefPos::PosTextAignment) ui->m_xrefpos_cb->setCurrentIndex(ui->m_xrefpos_cb->findData("alignment"));
+    else if(xrp.getXrefPos() == XRefProperties::enXrefPos::PosBottom) ui->m_xrefpos_cb->setCurrentIndex(ui->m_xrefpos_cb->findData("bottom"));
 	ui->m_show_power_cb->setChecked(xrp.showPowerContact());
 	ui->m_power_prefix_le-> setText(xrp.prefix("power"));
 	ui->m_delay_prefix_le-> setText(xrp.prefix("delay"));

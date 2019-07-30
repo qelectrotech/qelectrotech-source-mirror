@@ -1287,26 +1287,9 @@ void DynamicElementTextItem::updateXref()
 				}
 				else
 					m_slave_Xref_item->setPlainText(xref_label);
-				
-				QRectF r = boundingRect();
-				QPointF pos;
-                //QPointF pos(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top());
-                if(this->alignment() &Qt::AlignBottom)
-                {
-                    pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.bottom());
-                }  
-                else if(this->alignment() &Qt::AlignTop)
-                {
-                     pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top() - m_slave_Xref_item->boundingRect().height());
-                }
-                else
-                {
-                     pos = QPointF(r.left() -  m_slave_Xref_item->boundingRect().width(),r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
-                }
-                m_slave_Xref_item->setPos(pos);          
-               
-				return;
-			}
+                setXref_item(xrp.getXrefPos());
+                return;
+            }
 		}
 	}
 
@@ -1329,7 +1312,8 @@ void DynamicElementTextItem::setPlainText(const QString &text)
 {
 	if (toPlainText() == text)
 		return;
-	
+
+
 	bool update_alignment = true;
 	if (diagram() && (diagram()->project()->state() == QETProject::ProjectParsingRunning))
 		update_alignment = false;
@@ -1365,22 +1349,9 @@ void DynamicElementTextItem::setPlainText(const QString &text)
 	}
 	else if (m_slave_Xref_item)
 	{
-		QRectF r = boundingRect();
-        QPointF pos;
-//QPointF pos(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top()); this->alignment() &Qt::AlignBottom
-		 if(this->alignment() &Qt::AlignBottom)
-                {
-                    pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.bottom());
-                }  
-                else if(this->alignment() &Qt::AlignTop)
-                {
-                     pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top()-m_slave_Xref_item->boundingRect().height());
-                }
-                else
-                {
-                     pos = QPointF(r.left() -  m_slave_Xref_item->boundingRect().width(),r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
-                }
-                m_slave_Xref_item->setPos(pos);
+
+        XRefProperties xrp = diagram()->project()->defaultXRefProperties(m_master_element.data()->kindInformations()["type"].toString());
+        setXref_item(xrp.getXrefPos());
     }
 }
 
@@ -1390,3 +1361,49 @@ void DynamicElementTextItem::setTextWidth(qreal width)
 	m_text_width = width;
 	emit textWidthChanged(width);
 }
+
+void DynamicElementTextItem::setXref_item(XRefProperties::enXrefPos m_exHrefPos)
+{
+    QRectF r = boundingRect();
+    QPointF pos;
+    //QPointF pos(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top());
+    if (m_exHrefPos == XRefProperties::enXrefPos::PosBottom)
+    {
+        pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.bottom());
+    }
+    else if (m_exHrefPos == XRefProperties::enXrefPos::PosTop)
+    {
+         pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top() - m_slave_Xref_item->boundingRect().height());
+    }
+    else if (m_exHrefPos == XRefProperties::enXrefPos::PosLeft)  //
+    {
+         pos = QPointF(r.left() -  m_slave_Xref_item->boundingRect().width(),r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
+    }
+    else if (m_exHrefPos == XRefProperties::enXrefPos::PosRight)  //
+    {
+         pos = QPointF(r.right(),r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
+    }
+    else if (m_exHrefPos == XRefProperties::enXrefPos::PosTextAignment)  //
+    {
+        if(this->alignment() &Qt::AlignBottom)
+        {
+            pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.bottom());
+        }
+        else if(this->alignment() &Qt::AlignTop)
+        {
+            pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top() - m_slave_Xref_item->boundingRect().height());
+        }
+        else if(this->alignment() &Qt::AlignLeft)
+        {
+            pos = QPointF(r.left() -  m_slave_Xref_item->boundingRect().width(),r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
+        }
+        else if(this->alignment() &Qt::AlignRight)
+        {
+            pos = QPointF(r.right() ,r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
+        }
+    }
+    m_slave_Xref_item->setPos(pos);
+
+    return;
+}
+

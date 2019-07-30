@@ -19,6 +19,7 @@
 #define DYNAMICELEMENTTEXTITEM_H
 
 #include "diagramtextitem.h"
+#include "xrefproperties.h"
 #include "element.h"
 #include <QUuid>
 #include <QPointer>
@@ -101,6 +102,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		void updateXref();
 		void setPlainText(const QString &text);
 		void setTextWidth(qreal width);
+        void setXref_item(XRefProperties::enXrefPos m_exHrefPos);
 		
 	protected:
 		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;

@@ -40,6 +40,14 @@ class XRefProperties : public PropertiesInterface
 		Label
 	};
 
+     enum enXrefPos {
+        PosLeft,
+        PosRight,
+        PosTop,
+        PosBottom,
+        PosTextAignment
+    };               
+
 	void toSettings	  (QSettings &settings, const QString = QString()) const override;
 	void fromSettings (const QSettings &settings, const QString = QString()) override;
 	void toXml		  (QDomElement &xml_element) const override;
@@ -59,6 +67,8 @@ class XRefProperties : public PropertiesInterface
 	void setSnapTo (const SnapTo st) {m_snap_to = st;}
 	SnapTo snapTo  () const			 {return m_snap_to;}
 
+    void setXrefPos(const enXrefPos xref) {m_xref_pos = xref;}
+    enXrefPos getXrefPos() const {return m_xref_pos;}                                                              
 	void setPrefix (const QString &key, const QString &value) {m_prefix.insert(key, value);}
 	QString prefix (const QString &key) const {return m_prefix.value(key);}
 
@@ -75,6 +85,7 @@ class XRefProperties : public PropertiesInterface
 	bool m_show_power_ctc;
 	DisplayHas m_display;
 	SnapTo m_snap_to;
+    enXrefPos m_xref_pos;                    
 	QHash <QString, QString> m_prefix;
 	QStringList m_prefix_keys;
 	QString m_master_label;
