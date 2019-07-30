@@ -116,11 +116,7 @@ parts:
     source: .
     override-pull: |
       snapcraftctl pull
-      if ! git describe --dirty; then
-        rc2_parent="a8789f7"
-        git -c user.name="snapcraft" -c user.email="snapcraft@local.build" tag -a "0.7RC2" -m "stand-in tag" "$rc2_parent"
-      fi
-      snap_version=$(git describe --dirty | sed -e 's/-/+git/;y/-/./')
+      snap_version=$(git describe --dirty | sed -e 's/g//;s/-/+git/;y/-/./')
       modified_displayed_version=$snap_version".snap"
       sed -i -E "s|const QString displayedVersion =.*|const QString displayedVersion =\"$modified_displayed_version\";|" sources/qet.h
       snapcraftctl set-version "$snap_version"

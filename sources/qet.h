@@ -27,9 +27,9 @@ class QActionGroup;
 */
 namespace QET {
 	/// QElectroTech version (as string, used to mark projects and elements XML documents)
-	const QString version = "0.70";
+	const QString version = "0.80";
 	/// QElectroTech displayed version
-	const QString displayedVersion = "0.70-RC2";
+	const QString displayedVersion = "0.80-DEV";
 	QString license();
 	
 		//Describe the current state of a graphic item
