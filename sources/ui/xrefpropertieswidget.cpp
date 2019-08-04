@@ -20,6 +20,7 @@
 #include <utility>
 #include "ui_xrefpropertieswidget.h"
 #include "qdebug.h"
+#include <QMetaEnum>
 
 /**
  * @brief XRefPropertiesWidget::XRefPropertiesWidget
@@ -123,11 +124,15 @@ void XRefPropertiesWidget::saveProperties(int index) {
 		 xrp.setSnapTo(XRefProperties::Bottom);
 	else xrp.setSnapTo(XRefProperties::Label);
 
-    if(ui->m_xrefpos_cb->itemData(ui->m_xrefpos_cb->currentIndex()).toString() == "bottom") xrp.setXrefPos(XRefProperties::enXrefPos::PosBottom);
-    else if(ui->m_xrefpos_cb->itemData(ui->m_xrefpos_cb->currentIndex()).toString() == "top") xrp.setXrefPos(XRefProperties::enXrefPos::PosTop);
-    else if(ui->m_xrefpos_cb->itemData(ui->m_xrefpos_cb->currentIndex()).toString() == "left") xrp.setXrefPos(XRefProperties::enXrefPos::PosLeft);
-    else if(ui->m_xrefpos_cb->itemData(ui->m_xrefpos_cb->currentIndex()).toString() == "right") xrp.setXrefPos(XRefProperties::enXrefPos::PosRight);
-    else if(ui->m_xrefpos_cb->itemData(ui->m_xrefpos_cb->currentIndex()).toString() == "alignment") xrp.setXrefPos(XRefProperties::enXrefPos::PosTextAignment);
+
+
+
+
+    if(ui->m_xrefpos_cb->itemData(ui->m_xrefpos_cb->currentIndex()).toString() == "bottom") xrp.setXrefPos(Qt::AlignBottom);
+    else if(ui->m_xrefpos_cb->itemData(ui->m_xrefpos_cb->currentIndex()).toString() == "top") xrp.setXrefPos(Qt::AlignTop);
+    else if(ui->m_xrefpos_cb->itemData(ui->m_xrefpos_cb->currentIndex()).toString() == "left") xrp.setXrefPos(Qt::AlignLeft);
+    else if(ui->m_xrefpos_cb->itemData(ui->m_xrefpos_cb->currentIndex()).toString() == "right") xrp.setXrefPos(Qt::AlignRight);
+    else if(ui->m_xrefpos_cb->itemData(ui->m_xrefpos_cb->currentIndex()).toString() == "alignment") xrp.setXrefPos(Qt::AlignBaseline);
 	xrp.setShowPowerContac(ui->m_show_power_cb->isChecked());
 	xrp.setPrefix("power",  ui->m_power_prefix_le->text());
 	xrp.setPrefix("delay",  ui->m_delay_prefix_le->text());
@@ -173,11 +178,11 @@ void XRefPropertiesWidget::updateDisplay() {
 		ui->m_offset_sb->setEnabled(false);
 	}
 
-    if(xrp.getXrefPos() == XRefProperties::enXrefPos::PosTop) ui->m_xrefpos_cb->setCurrentIndex(ui->m_xrefpos_cb->findData("top"));
-    else if(xrp.getXrefPos() == XRefProperties::enXrefPos::PosLeft) ui->m_xrefpos_cb->setCurrentIndex(ui->m_xrefpos_cb->findData("left"));
-    else if(xrp.getXrefPos() == XRefProperties::enXrefPos::PosRight) ui->m_xrefpos_cb->setCurrentIndex(ui->m_xrefpos_cb->findData("right"));
-    else if(xrp.getXrefPos() == XRefProperties::enXrefPos::PosTextAignment) ui->m_xrefpos_cb->setCurrentIndex(ui->m_xrefpos_cb->findData("alignment"));
-    else if(xrp.getXrefPos() == XRefProperties::enXrefPos::PosBottom) ui->m_xrefpos_cb->setCurrentIndex(ui->m_xrefpos_cb->findData("bottom"));
+    if(xrp.getXrefPos() == Qt::AlignTop) ui->m_xrefpos_cb->setCurrentIndex(ui->m_xrefpos_cb->findData("top"));
+    else if(xrp.getXrefPos() == Qt::AlignLeft) ui->m_xrefpos_cb->setCurrentIndex(ui->m_xrefpos_cb->findData("left"));
+    else if(xrp.getXrefPos() == Qt::AlignRight) ui->m_xrefpos_cb->setCurrentIndex(ui->m_xrefpos_cb->findData("right"));
+    else if(xrp.getXrefPos() == Qt::AlignBaseline) ui->m_xrefpos_cb->setCurrentIndex(ui->m_xrefpos_cb->findData("alignment"));
+    else if(xrp.getXrefPos() == Qt::AlignBottom) ui->m_xrefpos_cb->setCurrentIndex(ui->m_xrefpos_cb->findData("bottom"));
 	ui->m_show_power_cb->setChecked(xrp.showPowerContact());
 	ui->m_power_prefix_le-> setText(xrp.prefix("power"));
 	ui->m_delay_prefix_le-> setText(xrp.prefix("delay"));

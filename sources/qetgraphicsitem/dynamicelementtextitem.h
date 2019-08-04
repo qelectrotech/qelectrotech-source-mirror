@@ -102,7 +102,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		void updateXref();
 		void setPlainText(const QString &text);
 		void setTextWidth(qreal width);
-        void setXref_item(XRefProperties::enXrefPos m_exHrefPos);
+        void setXref_item(Qt::AlignmentFlag m_exHrefPos);
 		
 	protected:
 		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;

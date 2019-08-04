@@ -1362,28 +1362,28 @@ void DynamicElementTextItem::setTextWidth(qreal width)
 	emit textWidthChanged(width);
 }
 
-void DynamicElementTextItem::setXref_item(XRefProperties::enXrefPos m_exHrefPos)
+void DynamicElementTextItem::setXref_item(Qt::AlignmentFlag m_exHrefPos)
 {
     QRectF r = boundingRect();
     QPointF pos;
     //QPointF pos(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top());
-    if (m_exHrefPos == XRefProperties::enXrefPos::PosBottom)
+    if (m_exHrefPos == Qt::AlignBottom)
     {
         pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.bottom());
     }
-    else if (m_exHrefPos == XRefProperties::enXrefPos::PosTop)
+    else if (m_exHrefPos == Qt::AlignTop)
     {
          pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top() - m_slave_Xref_item->boundingRect().height());
     }
-    else if (m_exHrefPos == XRefProperties::enXrefPos::PosLeft)  //
+    else if (m_exHrefPos == Qt::AlignLeft)  //
     {
          pos = QPointF(r.left() -  m_slave_Xref_item->boundingRect().width(),r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
     }
-    else if (m_exHrefPos == XRefProperties::enXrefPos::PosRight)  //
+    else if (m_exHrefPos == Qt::AlignRight)  //
     {
-         pos = QPointF(r.right(),r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
+         pos = QPointF(r.right() ,r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
     }
-    else if (m_exHrefPos == XRefProperties::enXrefPos::PosTextAignment)  //
+    else if (m_exHrefPos == Qt::AlignBaseline)  //
     {
         if(this->alignment() &Qt::AlignBottom)
         {
