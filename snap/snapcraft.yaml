@@ -117,7 +117,7 @@ parts:
     source: .
     override-pull: |
       snapcraftctl pull
-      snap_version=$(git describe --dirty | sed -e 's/g//;s/-/+git/;y/-/./')
+      snap_version=$(git describe --dirty)
       modified_displayed_version=$snap_version".snap"
       sed -i -E "s|const QString displayedVersion =.*|const QString displayedVersion =\"$modified_displayed_version\";|" sources/qet.h
       snapcraftctl set-version "$snap_version"
