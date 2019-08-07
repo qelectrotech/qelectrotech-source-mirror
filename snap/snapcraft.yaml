@@ -88,6 +88,7 @@ parts:
       - locales-all 
       - xdg-user-dirs
       - fcitx-frontend-qt5
+      - cups-bsd # for lpr used for printing in general (needs cups-control)
   
   qet-tb-generator:
     after: [desktop-qt5]
