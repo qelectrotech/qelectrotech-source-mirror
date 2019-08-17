@@ -42,7 +42,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->DiagramEditor_yKeyGrid_sb->setValue(settings.value("diagrameditor/key_Ygrid", 10).toInt());
 	ui->DiagramEditor_xKeyGridFine_sb->setValue(settings.value("diagrameditor/key_fine_Xgrid", 1).toInt());
 	ui->DiagramEditor_yKeyGridFine_sb->setValue(settings.value("diagrameditor/key_fine_Ygrid", 1).toInt());
-    ui->m_use_system_color_cb->setChecked(settings.value("usesystemcolors", "true").toBool());
+	ui->m_use_system_color_cb->setChecked(settings.value("usesystemcolors", "true").toBool());
 	bool tabbed = settings.value("diagrameditor/viewmode", "tabbed") == "tabbed";
 	if(tabbed)
 		ui->m_use_tab_mode_rb->setChecked(true);
@@ -55,7 +55,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_export_terminal->setChecked(settings.value("nomenclature-exportlist", true).toBool());
 	ui->m_border_0->setChecked(settings.value("border-columns_0", false).toBool());
 	ui->m_autosave_sb->setValue(settings.value("diagrameditor/autosave-interval", 0).toInt());
-	ui->m_foliolist_sb->setValue(settings.value("projectview/foliolist_position", 0).toInt());
+	ui->m_foliolist_sb->setValue(settings.value("projectview/foliolist_position", 1).toInt());
 	
 	QString fontInfos = settings.value("diagramitemfont").toString() + " " +
                         settings.value("diagramitemsize").toString() + " (" +
