@@ -55,7 +55,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_export_terminal->setChecked(settings.value("nomenclature-exportlist", true).toBool());
 	ui->m_border_0->setChecked(settings.value("border-columns_0", false).toBool());
 	ui->m_autosave_sb->setValue(settings.value("diagrameditor/autosave-interval", 0).toInt());
-	ui->m_foliolist_sb->setValue(settings.value("projectview/foliolist_position", 1).toInt());
+	ui->m_foliolist_sb->setValue(settings.value("projectview/foliolist_position", 2).toInt());
 	
 	QString fontInfos = settings.value("diagramitemfont").toString() + " " +
                         settings.value("diagramitemsize").toString() + " (" +

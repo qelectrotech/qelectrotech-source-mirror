@@ -363,7 +363,7 @@ void ProjectView::addNewDiagram() {
 void ProjectView::addNewDiagramFolioList() {
 	if (m_project -> isReadOnly()) return;
 	QSettings settings;
-	int i = (settings.value("projectview/foliolist_position").toInt()); //< Each new diagram is added  to the end of the project.
+	int i = (settings.value("projectview/foliolist_position").toInt() -1); //< Each new diagram is added  to the end of the project.
 			   //< We use @i to move the folio list at second position in the project
 	foreach (Diagram *d, m_project -> addNewDiagramFolioList()) {
 		DiagramView *new_diagram_view = new DiagramView(d);
@@ -885,7 +885,7 @@ void ProjectView::loadDiagrams()
 	// If project have the folios list, move it at the beginning of the project
 	if (m_project -> getFolioSheetsQuantity()) {
 		for (int i = 0; i < m_project->getFolioSheetsQuantity(); i++)
-		m_tab -> tabBar() -> moveTab(diagram_views().size()-1, + (settings.value("projectview/foliolist_position").toInt()));
+		m_tab -> tabBar() -> moveTab(diagram_views().size()-1, + (settings.value("projectview/foliolist_position").toInt() -1));
 		m_project->setModified(false);
 	}
 }
