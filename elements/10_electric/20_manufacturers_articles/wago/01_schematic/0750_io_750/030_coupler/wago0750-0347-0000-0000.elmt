@@ -1,0 +1,50 @@
+<definition link_type="simple" height="100" width="730" hotspot_x="366" orientation="dyyy" type="element" hotspot_y="46" version="0.5">
+    <names>
+        <name lang="es">WAGO 750-0347/0000-0000</name>
+        <name lang="de">WAGO 750-0347/0000-0000</name>
+        <name lang="nl">WAGO 750-0347/0000-0000</name>
+        <name lang="el">WAGO 750-0347/0000-0000</name>
+        <name lang="cs">WAGO 750-0347/0000-0000</name>
+        <name lang="en">WAGO 750-0347/0000-0000</name>
+        <name lang="pl">WAGO 750-0347/0000-0000</name>
+        <name lang="it">WAGO 750-0347/0000-0000</name>
+        <name lang="fr">WAGO 750-0347/0000-0000</name>
+        <name lang="ar">WAGO 750-0347/0000-0000</name>
+        <name lang="pt">WAGO 750-0347/0000-0000</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text text="Baudrate:" size="9" x="-224" y="4"/>
+        <input text="1000" tagg="none" size="9" rotate="true" x="-160" y="0"/>
+        <input size="9" rotate="true" y="41" x="220" text="X123" tagg="label"/>
+        <text size="9" y="-22" x="-39" text="0V"/>
+        <text size="9" y="-22" x="-119" text="0V"/>
+        <circle diameter="5" y="-2.5" x="-362.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <line y2="-40" length2="1.5" y1="-40" x2="-283" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" x1="-360" end2="none"/>
+        <line y2="-40" length2="1.5" y1="-40" x2="360" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" x1="-37" end2="none"/>
+        <line y2="-40" length2="1.5" y1="-40" x2="-43" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" x1="-117" end2="none"/>
+        <line y2="-40" length2="1.5" y1="-40" x2="-123" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" x1="-197" end2="none"/>
+        <line y2="-40" length2="1.5" y1="-40" x2="-203" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" x1="-277" end2="none"/>
+        <circle diameter="5" y="-42.5" x="-42.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <circle diameter="5" y="-42.5" x="-122.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <circle diameter="5" y="-42.5" x="-202.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <circle diameter="5" y="-42.5" x="-282.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <line y2="50" length2="1.5" y1="50" x2="360" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" x1="-360" end2="none"/>
+        <line y2="-2.5" length2="1.5" y1="-40" x2="-360" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" x1="-360" end2="none"/>
+        <line y2="50" length2="1.5" y1="2.5" x2="-360" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" x1="-360" end2="none"/>
+        <line y2="50" length2="1.5" y1="-40" x2="360" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" x1="360" end2="none"/>
+        <text size="9" y="45" x="-330" text="WAGO 750-0347/0000-0000"/>
+        <text size="9" y="4" x="-318" text="Node ID:"/>
+        <input size="9" rotate="true" y="0" x="-265" text="1" tagg="none"/>
+        <text size="9" y="-22" x="-199" text="24V"/>
+        <text size="9" y="-22" x="-279" text="24V"/>
+        <text size="9" y="4" x="-355" text="CAN"/>
+        <text size="9" y="45" x="-138" text="CANopen ECO Coupler MCS"/>
+        <terminal y="-40" orientation="n" x="-40"/>
+        <terminal y="0" orientation="w" x="-360"/>
+        <terminal y="-40" orientation="n" x="-200"/>
+        <terminal y="-40" orientation="n" x="-120"/>
+        <terminal y="-40" orientation="n" x="-280"/>
+    </description>
+</definition>

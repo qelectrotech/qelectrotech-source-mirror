@@ -1,0 +1,58 @@
+<definition hotspot_y="55" orientation="dyyy" version="0.70" width="730" type="element" height="110" hotspot_x="364" link_type="simple">
+    <names>
+        <name lang="el">WAGO 750-0627/0000-0000</name>
+        <name lang="pl">WAGO 750-0627/0000-0000</name>
+        <name lang="it">WAGO 750-0627/0000-0000</name>
+        <name lang="de">WAGO 750-0627/0000-0000</name>
+        <name lang="fr">WAGO 750-0627/0000-0000</name>
+        <name lang="nl">WAGO 750-0627/0000-0000</name>
+        <name lang="ar">WAGO 750-0627/0000-0000</name>
+        <name lang="pt">WAGO 750-0627/0000-0000</name>
+        <name lang="cs">WAGO 750-0627/0000-0000</name>
+        <name lang="es">WAGO 750-0627/0000-0000</name>
+        <name lang="en">WAGO 750-0627/0000-0000</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="117.5" antialias="true" y="-42.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="357.5" antialias="true" y="-12.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <line antialias="false" x1="360" end1="none" end2="none" y1="-7" length2="1.5" x2="360" y2="50" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x1="-360" end1="none" end2="none" y1="50" length2="1.5" x2="360" y2="50" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x1="-360" end1="none" end2="none" y1="-40" length2="1.5" x2="-360" y2="50" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x1="360" end1="none" end2="none" y1="-40" length2="1.5" x2="360" y2="-13" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-122.5" antialias="true" y="-42.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="197.5" antialias="true" y="-42.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <text x="-330" y="45" text="WAGO 750-0627/0000-0000" size="9"/>
+        <dynamic_text Valignment="AlignTop" x="220" frame="false" z="8" y="29.5" font_size="9" uuid="{7bba58d8-5876-4db3-aeb0-251da4b88499}" Halignment="AlignLeft" text_width="-1" text_from="ElementInfo" rotation="0">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <circle x="-202.5" antialias="true" y="-42.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <text x="-138" y="45" text="End Module - Bus-Extension" size="9"/>
+        <circle x="277.5" antialias="true" y="-42.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-282.5" antialias="true" y="-42.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="37.5" antialias="true" y="-42.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-42.5" antialias="true" y="-42.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <line antialias="false" x1="-117" end1="none" end2="none" y1="-40" length2="1.5" x2="-43" y2="-40" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x1="123" end1="none" end2="none" y1="-40" length2="1.5" x2="197" y2="-40" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x1="-197" end1="none" end2="none" y1="-40" length2="1.5" x2="-123" y2="-40" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x1="203" end1="none" end2="none" y1="-40" length2="1.5" x2="277" y2="-40" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x1="-277" end1="none" end2="none" y1="-40" length2="1.5" x2="-203" y2="-40" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x1="283" end1="none" end2="none" y1="-40" length2="1.5" x2="360" y2="-40" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x1="-360" end1="none" end2="none" y1="-40" length2="1.5" x2="-283" y2="-40" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x1="-37" end1="none" end2="none" y1="-40" length2="1.5" x2="37" y2="-40" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x1="43" end1="none" end2="none" y1="-40" length2="1.5" x2="117" y2="-40" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-116" y="-42" text="2" size="5"/>
+        <text x="125" y="-42" text="7" size="5"/>
+        <text x="-196" y="-42" text="5" size="5"/>
+        <text x="206" y="-42" text="4" size="5"/>
+        <text x="-276" y="-42" text="1" size="5"/>
+        <text x="286" y="-42" text="8" size="5"/>
+        <text x="-36" y="-42" text="6" size="5"/>
+        <text x="46" y="-42" text="3" size="5"/>
+        <text x="279" y="-7" text="RJ45 Output" size="9"/>
+        <terminal orientation="e" x="360" y="-10"/>
+    </description>
+</definition>

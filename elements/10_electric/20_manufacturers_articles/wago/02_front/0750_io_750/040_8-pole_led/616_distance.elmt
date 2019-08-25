@@ -1,0 +1,44 @@
+<definition link_type="simple" orientation="dyyy" hotspot_x="29" type="element" hotspot_y="180" width="60" version="0.80" height="360">
+    <names>
+        <name lang="de">Distanzklemme</name>
+        <name lang="fr">Distance-Module</name>
+        <name lang="en">Distance-Module</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <polygon x4="14.27" x8="-12.2" x29="19.56" antialias="false" x3="19.56" y25="162.55" y27="164.3" x21="-26.31" x13="-26.31" x2="19.56" x16="-15.73" x11="1.92" x10="1.92" x25="-12.2" y30="169.55" y28="164.3" y19="164.3" y13="-164.55" y21="174.79" x14="-22.79" y5="-164.55" x28="19.56" y29="169.55" style="line-style:normal;line-weight:thin;filling:white;color:black" x17="-15.73" x9="-12.2" x5="14.27" x18="-22.79" y10="-169.8" y14="-164.55" x12="-26.31" y22="174.79" y18="171.3" y24="169.55" x19="-22.79" y20="164.3" y1="-169.8" x22="1.92" x7="1.92" y9="-169.8" y7="-159.3" x23="1.92" x1="26.62" y3="-162.8" x27="1.92" y26="162.55" y2="-169.8" x20="-26.31" y6="-164.55" x30="26.62" y8="-159.3" x24="-12.2" y15="-171.55" x6="1.92" y17="171.3" y4="-162.8" x15="-22.79" y12="-175.05" y11="-175.05" y23="169.55" y16="-171.55" x26="1.92"/>
+        <polygon x4="-10.5" x8="3.9" antialias="false" x3="-13.73" x21="-3.39" x13="18.39" x2="-15.63" x16="5.11" x11="21.41" x10="16.67" y19="61.7" y13="60.85" y21="59.47" x14="14.2" y5="79.89" style="line-style:normal;line-weight:thin;filling:white;color:black" x17="3.26" x9="7.17" x5="-3.11" x18="2" y10="79.89" y14="59.53" x12="21.41" y22="59.47" y18="63.64" y24="61.68" x19="0.67" y20="60.23" y1="63.57" x22="-10.25" x7="2" y9="79.89" y7="75.24" x23="-12.47" x1="-15.63" y3="78.04" y2="75.23" x20="-1.13" y6="78.11" y8="78.03" x24="-14.35" y15="59.53" x6="0.11" y17="61.79" y4="79.89" x15="7.28" y12="64.78" y11="75.2" y23="60.22" y16="60.32"/>
+        <polygon y1="63.29" x4="-13.88" style="line-style:normal;line-weight:thin;filling:white;color:black" y15="58.37" y2="64.46" x5="-10.72" y13="56.81" y4="73.37" y10="63.29" x13="-4.88" y12="58.37" x7="0.23" y16="60.3" y14="56.81" x10="-3.57" y8="66.8" y9="64.46" y11="60.3" x2="-12.34" x3="-13.88" y6="76.5" x9="-1.31" x1="-10.03" x12="-3.3" antialias="false" y3="66.8" y5="76.5" x8="0.23" x16="-10.35" x6="-2.93" x15="-10.35" x14="-8.77" y7="73.37" x11="-3.3"/>
+        <rect x="-12.2" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false" width="12.3" rx="0" ry="0" y="42" height="14"/>
+        <polygon y3="-157.55" y2="-133.06" x2="26.62" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y4="-157.55" x1="-15.73" x4="-15.73" x3="26.62" y1="-133.06"/>
+        <polygon y3="-133.06" y2="-157.55" x2="26.62" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y4="-133.06" x1="-15.73" x4="-15.73" x3="26.62" y1="-157.55"/>
+        <polygon y3="-149.8" y2="-141.06" x2="19.57" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y4="-149.8" x1="-8.66" x4="-8.66" x3="19.57" y1="-141.06"/>
+        <polygon y3="-141.06" y2="-149.8" x2="19.57" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y4="-141.06" x1="-8.66" x4="-8.66" x3="19.57" y1="-149.8"/>
+        <polygon y2="38.36" x2="26.62" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x1="-15.73" closed="false" y1="38.36"/>
+        <polygon y2="-98.08" x2="-15.73" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x1="26.62" closed="false" y1="-98.08"/>
+        <polygon y2="-132.19" x2="26.62" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x1="-15.73" closed="false" y1="-132.19"/>
+        <polygon y3="-138.31" y2="-152.31" x2="24.85" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y4="-138.31" x1="-13.96" x4="-13.96" x3="24.85" y1="-152.31"/>
+        <polygon y3="73.57" y2="41.62" x2="26.44" style="line-style:normal;line-weight:thin;filling:orange;color:black" antialias="false" y4="73.57" x1="21.43" x4="21.43" x3="26.44" y1="41.62"/>
+        <polygon y2="57.06" x2="26.46" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x1="21.42" closed="false" y1="57.06"/>
+        <text x="-15" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="A" color="#000000" y="-128"/>
+        <text x="-15" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="B" color="#000000" y="-112"/>
+        <text x="19" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" text="C" color="#000000" y="-120"/>
+        <text x="18.5781" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" text="D" color="#000000" y="-104"/>
+        <circle x="-13" diameter="12" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y="-128.5"/>
+        <circle x="4.75" diameter="12" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y="-128.5"/>
+        <circle x="4.75" diameter="12" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y="-112.5"/>
+        <circle x="-13" diameter="12" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y="-112.5"/>
+        <polygon y1="-95" x4="20" style="line-style:normal;line-weight:thin;filling:orange;color:black" y2="-95" x5="20" y13="-95" y4="39" y10="78" x13="-15" y12="39" x7="25" x10="-10" y8="161" y9="78" y11="39" x2="25" x3="25" y6="78" x9="-15" x1="-15" x12="-15" antialias="false" y3="39" y5="78" x8="-15" x6="25" y7="161" x11="-10"/>
+        <text x="-9" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" text="750-616" color="#000000" y="157"/>
+        <dynamic_text y="-38" text_from="ElementInfo" Valignment="AlignTop" x="6" frame="false" font="Sans Serif,5,-1,5,25,0,0,0,0,0" uuid="{7e6b9aba-9db0-4037-a375-6029b90c44cb}" Halignment="AlignLeft" z="8" rotation="0" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+    </description>
+</definition>
