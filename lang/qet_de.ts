@@ -225,7 +225,7 @@
         <location filename="../sources/aboutqet.cpp" line="117"/>
         <source>2006-2019 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished">2006-2017 die QElectroTech Entwickler {2006-2019 ?}</translation>
+        <translation>2006-2019 die QElectroTech Entwickler</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="214"/>
@@ -6183,8 +6183,8 @@ Binäre Datei DXFtoQET.app in Ordner /Users/user_name/.qet/ verschieben
         <source> %n avertissement(s)</source>
         <comment>warnings</comment>
         <translation>
-            <numerusform> %n Warnung(en)</numerusform>
-            <numerusform></numerusform>
+            <numerusform> 1 Warnung</numerusform>
+            <numerusform> %n Warnungen</numerusform>
         </translation>
     </message>
     <message>
@@ -7303,7 +7303,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qet.cpp" line="567"/>
         <source>Une erreur est survenue lors de l&apos;écriture du fichier %1, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ein Fehler ist beim Schreiben der Datei %1 aufgetretten. Fehler ist: %2.</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="640"/>
