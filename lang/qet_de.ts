@@ -5456,7 +5456,7 @@ Verfügbare Optionen:
         <location filename="../sources/qetdiagrameditor.cpp" line="1748"/>
         <source>Une erreur est survenue lors de l&apos;ouverture du fichier %1.</source>
         <comment>message box content</comment>
-        <translation>Ein Fehler ist beim Öffnen der Datei %1 aufgetretten.</translation>
+        <translation type="unfinished">Ein Fehler ist beim Öffnen der Datei %1 aufgetreten.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1794"/>
@@ -6608,7 +6608,7 @@ les conditions requises ne sont pas valides</source>
         <location filename="../sources/qetproject.cpp" line="1075"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
-        <translation>Ein Fehler ist beim Einfügen der Vorlage aufgetretten.</translation>
+        <translation>Ein Fehler ist beim Einfügen der Vorlage aufgetreten.</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1177"/>
@@ -7297,13 +7297,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qetxml.cpp" line="245"/>
         <source>Impossible d&apos;ouvrir le fichier %1 en écriture, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
-        <translation>Öffnen der Datei %1 zum Schreiben nicht möglich. Fehler %2 aufgetretten.</translation>
+        <translation>Öffnen der Datei %1 zum Schreiben nicht möglich. Fehler %2 aufgetreten.</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="567"/>
         <source>Une erreur est survenue lors de l&apos;écriture du fichier %1, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
-        <translation>Ein Fehler ist beim Schreiben der Datei %1 aufgetretten. Fehler ist: %2.</translation>
+        <translation>Ein Fehler ist beim Schreiben der Datei %1 aufgetreten. Fehler ist: %2.</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="640"/>
