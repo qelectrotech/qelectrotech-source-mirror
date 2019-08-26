@@ -251,12 +251,23 @@ void ElementPrimitiveDecorator::keyPressEvent(QKeyEvent *e)
 	const qreal movement_length = 1.0;
 	QPointF movement;
 	
+	if (e->modifiers() & Qt::ControlModifier) {
 	switch(e -> key())
+	{
+		case Qt::Key_Left:  movement = QPointF(-movement_length / 10, 0.0); break;
+		case Qt::Key_Right: movement = QPointF(+movement_length / 10, 0.0); break;
+		case Qt::Key_Up:    movement = QPointF(0.0, -movement_length / 10); break;
+		case Qt::Key_Down:  movement = QPointF(0.0, +movement_length / 10); break;
+	}
+	}
+	else {
+		switch(e -> key())
 	{
 		case Qt::Key_Left:  movement = QPointF(-movement_length, 0.0); break;
 		case Qt::Key_Right: movement = QPointF(+movement_length, 0.0); break;
 		case Qt::Key_Up:    movement = QPointF(0.0, -movement_length); break;
 		case Qt::Key_Down:  movement = QPointF(0.0, +movement_length); break;
+	}
 	}
 	if (!movement.isNull() && focusItem() == this)
 	{
