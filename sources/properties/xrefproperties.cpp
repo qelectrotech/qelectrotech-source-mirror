@@ -57,13 +57,6 @@ void XRefProperties::toSettings(QSettings &settings, const QString prefix) const
  
 	QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
     settings.setValue(prefix + "xrefpos",  var.valueToKey(m_xref_pos));
-/*
-    if (m_xref_pos == Qt::AlignTop) settings.setValue(prefix + "xrefpos", "top");
-    else  if (m_xref_pos == Qt::AlignLeft) settings.setValue(prefix + "xrefpos", "left");
-    else  if (m_xref_pos == Qt::AlignRight) settings.setValue(prefix + "xrefpos", "right");
-    else  if (m_xref_pos == Qt::AlignBaseline) settings.setValue(prefix + "xrefpos", "alignment");
-    else  settings.setValue(prefix + "xrefpos", "bottom");
-*/
 
     foreach (QString key, m_prefix.keys()) {
 		settings.setValue(prefix + key + "prefix", m_prefix.value(key));
@@ -89,14 +82,6 @@ void XRefProperties::fromSettings(const QSettings &settings, const QString prefi
 	QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
     m_xref_pos = Qt::AlignmentFlag(var.keyToValue((settings.value(prefix + "xrefpos").toString()).toStdString().data()));
 
-/*
-    QString xrefpos = settings.value(prefix + "xrefpos", "bottom").toString();
-    if(xrefpos == "top") m_xref_pos = Qt::AlignTop;
-    else if(xrefpos == "left") m_xref_pos = Qt::AlignLeft;
-    else if(xrefpos == "right") m_xref_pos = Qt::AlignRight;
-    else if(xrefpos == "alignment") m_xref_pos = Qt::AlignBaseline;
-    else m_xref_pos = Qt::AlignBottom;
-*/
 	foreach (QString key, m_prefix_keys) {
 		m_prefix.insert(key, settings.value(prefix + key + "prefix").toString());
 	}
@@ -119,16 +104,6 @@ void XRefProperties::toXml(QDomElement &xml_element) const {
 	QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
     xml_element.setAttribute("xrefpos",  var.valueToKey(m_xref_pos));
 
-
-/*
-    if (m_xref_pos ==  Qt::AlignTop) xrefpos = "top";
-    if (m_xref_pos ==  Qt::AlignLeft) xrefpos = "left";
-    else if (m_xref_pos ==  Qt::AlignRight) xrefpos = "right";
-    else if (m_xref_pos == Qt::AlignBaseline) xrefpos = "alignment";
-    else xrefpos = "bottom";
-
-    xml_element.setAttribute("xrefpos", xrefpos);
-*/
     int offset = m_offset;
 	xml_element.setAttribute("offset", QString::number(offset));
 	QString master_label = m_master_label;
@@ -161,16 +136,6 @@ void XRefProperties::fromXml(const QDomElement &xml_element) {
 	else
         m_xref_pos = Qt::AlignBottom;
 
-
-
-
-/*
-    if(xrefpos == "top") m_xref_pos =  Qt::AlignTop;
-    else if(xrefpos == "left") m_xref_pos =  Qt::AlignLeft;
-    else if(xrefpos == "right") m_xref_pos =  Qt::AlignRight;
-    else if(xrefpos == "alignment") m_xref_pos = Qt::AlignBaseline;
-    else  m_xref_pos =  Qt::AlignBottom;
-*/
 	m_offset = xml_element.attribute("offset", "0").toInt();
 	m_master_label = xml_element.attribute("master_label", "%f-%l%c");
 	m_slave_label = xml_element.attribute("slave_label","(%f-%l%c)");
