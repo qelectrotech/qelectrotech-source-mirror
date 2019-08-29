@@ -19,6 +19,7 @@
 #include "singleapplication.h"
 #include "qet.h"
 #include "macosxopenevent.h"
+#include <QStyleFactory>
 
 /**
  * @brief main
@@ -47,6 +48,7 @@ int main(int argc, char **argv)
 		//or drop these same files to the QET icon of the dock
 	MacOSXOpenEvent open_event;
 	app.installEventFilter(&open_event);
+	app.setStyle(QStyleFactory::create("Fusion"));
 #endif
 	
 	if (app.isSecondary())
