@@ -1,5 +1,5 @@
 #!/bin/sh
-    # Copyright 2014 The QElectroTech Team
+    # Copyright 2019 The QElectroTech Team
     # This file is part of QElectroTech.
     
     # QElectroTech is free software: you can redistribute it and/or modify
@@ -58,28 +58,35 @@ if [ ! -d $FWPATH/QtGui.framework ] ; then
 fi
 
 
-### subversion ####################################################
+### GIT ####################################################
 
 echo
 echo "______________________________________________________________"
-echo "Run subversion:"
+echo "Run GIT:"
 
 # recupere le numero de la dernière revision
 # Si il y a ':' garde la 2e partie
 # Remplace les lettres par 'rien'
-revAv=$(svnversion | cut -d : -f 2 | tr -d '[:alpha:]')
+#revAv=$(svnversion | cut -d : -f 2 | tr -d '[:alpha:]')
 
 # Fait une mise à jour
-svn up
+git pull
+#git checkout foliolist_position
 
 # recupere le numero de la nouvelle revision
-revAp=$(svnversion | cut -d : -f 2 | tr -d '[:alpha:]')
+
+GITCOMMIT=$(git rev-parse --short HEAD)
+A=$(git rev-list HEAD --count)
+HEAD=$(($A+473))
+
+VERSION=$(cat sources/qet.h | grep "const QString version" |  cut -d\" -f2 | cut -d\" -f1)          #Find version tag in GIT sources/qet.h
+tagName=$(cat sources/qet.h | grep displayedVersion |  cut -d\" -f2 | cut -d\" -f1)                 #Find displayedVersion tag in GIT sources/qet.h
 
 # On recupere le numero de version de l'originale 
 tagName=$(sed -n "s/const QString displayedVersion =\(.*\)/\1/p" sources/qet.h  | cut -d\" -f2 | cut -d\" -f1 )
 
 # Dmg de la dernière revision déjà créé
-if [ -e "packaging/mac-osx/${APPNAME} $tagName r$revAp.dmg" ] ; then
+if [ -e "packaging/mac-osx/${APPNAME} $tagName r$HEAD.dmg" ] ; then
     echo "There are not new updates, make disk image can"
     echo "take a lot of time (5 min). Can you continu?"
     echo  "[y/n]"
@@ -106,7 +113,7 @@ mkdir temp
 cp -Rf "sources/qet.h" "temp/qet.h"
 
 # On modifie l'originale avec le numero de revision du depot svn
-sed -i "" "s/const QString displayedVersion =.*/const QString displayedVersion = \"$tagName r$revAp\";/" sources/qet.h
+sed -i "" "s/const QString displayedVersion =.*/const QString displayedVersion = \"$tagName r$GITCOMMIT\";/" sources/qet.h
 
 # Apres la compilation 
 cleanVerionTag () {
@@ -185,7 +192,7 @@ fi
 cp -R ${current_dir}/misc/Info.plist qelectrotech.app/Contents/
 cp -R ${current_dir}/ico/mac_icon/*.icns qelectrotech.app/Contents/Resources/
 # On rajoute le numero de version pour "cmd + i"
-/usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $tagName r$revAp" "qelectrotech.app/Contents/Info.plist"  # Version number
+/usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $tagName r$HEAD" "qelectrotech.app/Contents/Info.plist"  # Version number
 
 ### copy over frameworks ############################################
 
@@ -259,11 +266,11 @@ echo 'Preparing (removing hold files)... '
 if [ -e "/Volumes/${APPNAME}" ]; then
     hdiutil detach -quiet "/Volumes/${APPNAME}"
 fi
-if [ -e "${APPNAME} $tagName r$revAp.dmg" ] ; then
-    rm -f "${APPNAME} $tagName r$revAp.dmg"
+if [ -e "${APPNAME} $tagName r$HEAD.dmg" ] ; then
+    rm -f "${APPNAME} $tagName r$HEAD.dmg"
 fi
-if [ -e "packaging/mac-osx/${APPNAME} $tagName r$revAp.dmg" ] ; then
-    rm -f "packaging/mac-osx/${APPNAME} $tagName r$revAp.dmg"
+if [ -e "packaging/mac-osx/${APPNAME} $tagName r$HEAD.dmg" ] ; then
+    rm -f "packaging/mac-osx/${APPNAME} $tagName r$HEAD.dmg"
 fi
 if [ -e $imagedir ] ; then
     rm -rf $imagedir
@@ -286,13 +293,13 @@ strip "$imagedir/$APPBIN"
     
 # Creating a disk image from a folder
 echo 'Creating disk image... '
-hdiutil create -quiet -ov -srcfolder $imagedir -format UDBZ -volname "${APPNAME}" "${APPNAME} $tagName r$revAp.dmg"
-hdiutil internet-enable -yes -quiet "${APPNAME} $tagName r$revAp.dmg"
+hdiutil create -quiet -ov -srcfolder $imagedir -format UDBZ -volname "${APPNAME}" "${APPNAME} $tagName r$HEAD.dmg"
+hdiutil internet-enable -yes -quiet "${APPNAME} $tagName r$HEAD.dmg"
 
 # Clean up disk folder
 echo 'Cleaning up... '
-cp -Rf "${APPNAME} $tagName r$revAp.dmg" "packaging/mac-osx/${APPNAME} $tagName r$revAp.dmg"
-rm -f "${APPNAME} $tagName r$revAp.dmg"
+cp -Rf "${APPNAME} $tagName r$HEAD.dmg" "packaging/mac-osx/${APPNAME} $tagName r$HEAD.dmg"
+rm -f "${APPNAME} $tagName r$HEAD.dmg"
 rm -rf $imagedir
 rm -rf $BUNDLE
 
@@ -304,39 +311,39 @@ echo "______________________________________________________________"
 echo "The process of creating deployable application bundle is done."
 echo The disque image is in the folder \'packaging/mac-osx\'.
 # Affiche les mise à jour depuis l'ancienne revision 
-if [ ! $(($revAp - $revAv)) -eq 0 ] ; then
-    echo
-    echo "There are new updates. This numero of revision is $revAp."
-    svn log -l $(($revAp - $revAv))
-else
-    echo
-    echo "There are not new updates. This numero of revision is $revAp."
-fi
-echo
+#if [ ! $(($HEAD - $revAv)) -eq 0 ] ; then
+#    echo
+#    echo "There are new updates. This numero of revision is $HEAD."
+ #   svn log -l $(($HEAD - $revAv))
+#else
+ #   echo
+#    echo "There are not new updates. This numero of revision is $HEAD."
+# fi
+# echo
 
 # La version en local n'est pas conforme à la dernière version svn
-svnversion | grep -q '[MS:]' ; if [ $? -eq 0 ] ; then 
-    echo Please note that the latest \local version is $(svnversion).
-    echo This is not the same version as the deposit. 
-    echo You can use \'svn diff\' to see the differences. 
-    echo And use \'svn revert \<fichier\>\' to delete the difference. 
-    echo To go back, you can use svn update -r 360 
-    echo to go to revision number 360.
-    echo
-fi 
+# svnversion | grep -q '[MS:]' ; if [ $? -eq 0 ] ; then 
+#     echo Please note that the latest \local version is $(svnversion).
+#     echo This is not the same version as the deposit. 
+#     echo You can use \'svn diff\' to see the differences. 
+#     echo And use \'svn revert \<fichier\>\' to delete the difference. 
+#     echo To go back, you can use svn update -r 360 
+#     echo to go to revision number 360.
+#     echo
+#fi 
 
 
 
 #rsync to TF DMG builds
-echo  -e "\033[1;31mWould you like to upload MacOS packages "${APPNAME}"-"$tagName"_"r$revAp.dmg", n/Y?.\033[m"
+echo  -e "\033[1;31mWould you like to upload MacOS packages "${APPNAME}"-"$tagName"_"r$HEAD.dmg", n/Y?.\033[m"
 read a
 if [[ $a == "Y" || $a == "y" ]]; then
-cp -Rf "packaging/mac-osx/${APPNAME} $tagName r$revAp.dmg" /Users/laurent/MAC_OS_X/
-rsync -e ssh -av --delete-after --no-owner --no-g --chmod=g+w --progress  /Users/laurent/MAC_OS_X/ admin@ssh.tuxfamily.org:/home/qet/qet-repository/builds/MAC_OS_X/
+cp -Rf "packaging/mac-osx/${APPNAME} $tagName r$HEAD.dmg" /Users/laurent/MAC_OS_X/
+rsync -e ssh -av --delete-after --no-owner --no-g --chmod=g+w --progress --exclude='.DS_Store' /Users/laurent/MAC_OS_X/ scorpio810@ssh.tuxfamily.org:/home/qet/qet-repository/builds/MAC_OS_X/
 if [ $? != 0 ]; then
 {
-echo "RSYNC ERROR: problem syncing ${APPNAME} $tagName r$revAp.dmg"
-rsync -e ssh -av --delete-after --no-owner --no-g --chmod=g+w --progress  /Users/laurent/MAC_OS_X/ admin@ssh.tuxfamily.org:/home/qet/qet-repository/builds/MAC_OS_X/
+echo "RSYNC ERROR: problem syncing ${APPNAME} $tagName r$HEAD.dmg"
+rsync -e ssh -av --delete-after --no-owner --no-g --chmod=g+w --progress --exclude='.DS_Store' /Users/laurent/MAC_OS_X/ scorpio810@ssh.tuxfamily.org:/home/qet/qet-repository/builds/MAC_OS_X/
 
 } fi
 
