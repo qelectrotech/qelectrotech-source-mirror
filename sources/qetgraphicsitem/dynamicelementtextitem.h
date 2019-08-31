@@ -19,6 +19,7 @@
 #define DYNAMICELEMENTTEXTITEM_H
 
 #include "diagramtextitem.h"
+#include "xrefproperties.h"
 #include "element.h"
 #include <QUuid>
 #include <QPointer>
@@ -90,7 +91,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		void setTextFrom (DynamicElementTextItem::TextFrom text_from);
 		QString text() const;
 		void setText(const QString &text);
-        static QString xmlTaggName() {return QString("dynamic_elmt_text");}
+		static QString xmlTaggName() {return QString("dynamic_elmt_text");}
 		void setInfoName(const QString &info_name);
 		QString infoName() const;
 		void setCompositeText(const QString &text);
@@ -101,6 +102,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		void updateXref();
 		void setPlainText(const QString &text);
 		void setTextWidth(qreal width);
+		void setXref_item(Qt::AlignmentFlag m_exHrefPos);
 		
 	protected:
 		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
