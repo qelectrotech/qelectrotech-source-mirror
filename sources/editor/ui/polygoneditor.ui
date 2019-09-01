@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PolygonEditor</class>
+ <widget class="QWidget" name="PolygonEditor">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="m_main_layout">
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Points du polygone :</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTreeWidget" name="m_points_list_tree">
+     <property name="contextMenuPolicy">
+      <enum>Qt::ActionsContextMenu</enum>
+     </property>
+     <column>
+      <property name="text">
+       <string>X</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Y</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="m_close_polygon_cb">
+     <property name="text">
+      <string>Polygone fermé</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+  <action name="m_add_point_action">
+   <property name="icon">
+    <iconset resource="../../../qelectrotech.qrc">
+     <normaloff>:/ico/16x16/list-add.png</normaloff>:/ico/16x16/list-add.png</iconset>
+   </property>
+   <property name="text">
+    <string>Ajouter un point</string>
+   </property>
+  </action>
+  <action name="m_remove_point_action">
+   <property name="icon">
+    <iconset resource="../../../qelectrotech.qrc">
+     <normaloff>:/ico/16x16/list-remove.png</normaloff>:/ico/16x16/list-remove.png</iconset>
+   </property>
+   <property name="text">
+    <string>Supprimer le point</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="../../../qelectrotech.qrc"/>
+ </resources>
+ <connections/>
+</ui>

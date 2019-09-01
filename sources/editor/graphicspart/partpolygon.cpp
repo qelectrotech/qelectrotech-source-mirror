@@ -254,7 +254,33 @@ void PartPolygon::setClosed(bool close)
 	if (m_closed == close) return;
 	prepareGeometryChange();
 	m_closed = close;
-	emit closedChange();
+    emit closedChange();
+}
+
+/**
+ * @brief PartPolygon::setHandlerColor
+ * Set the handler at pos @pos (in polygon coordinate) to color @color.
+ * @param pos
+ * @param color
+ */
+void PartPolygon::setHandlerColor(QPointF pos, const QColor &color)
+{
+    for (QetGraphicsHandlerItem *qghi : m_handler_vector) {
+        if (qghi->pos() == mapToScene(pos)) {
+            qghi->setColor(color);
+        }
+    }
+}
+
+/**
+ * @brief PartPolygon::resetAllHandlerColor
+ * Reset the color of every handlers
+*/
+void PartPolygon::resetAllHandlerColor()
+{
+    for (QetGraphicsHandlerItem *qghi : m_handler_vector) {
+        qghi->setColor(Qt::blue);
+    }
 }
 
 /**
@@ -518,6 +544,7 @@ void PartPolygon::removePoint()
 	if (index > -1 && index<m_handler_vector.count())
 	{
 		QPolygonF polygon = this->polygon();
+        qDebug() << index;
 		polygon.removeAt(index);
 		
 			//Wrap the undo for avoid to merge the undo commands when user add several points.
