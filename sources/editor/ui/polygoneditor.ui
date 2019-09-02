@@ -61,7 +61,7 @@
      <normaloff>:/ico/16x16/list-remove.png</normaloff>:/ico/16x16/list-remove.png</iconset>
    </property>
    <property name="text">
-    <string>Supprimer le point</string>
+    <string>Supprimer ce point</string>
    </property>
   </action>
  </widget>
