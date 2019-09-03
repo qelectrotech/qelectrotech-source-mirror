@@ -1,0 +1,17 @@
+<definition type="element" height="330" link_type="simple" orientation="dyyy" width="10" hotspot_y="123" version="0.80" hotspot_x="4">
+    <names>
+        <name lang="de">2106-1392</name>
+        <name lang="fr">2106-1392</name>
+        <name lang="en">2106-1392</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <polygon style="line-style:normal;line-weight:thin;filling:orange;color:orange" x4="-1" y1="-117.182" y3="200.695" y4="200.695" x1="-1" antialias="false" x2="2.5" y2="-117.182" x3="2.5"/>
+    </description>
+</definition>

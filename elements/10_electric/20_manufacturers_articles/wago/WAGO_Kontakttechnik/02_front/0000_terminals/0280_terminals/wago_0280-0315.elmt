@@ -1,0 +1,17 @@
+<definition type="element" hotspot_x="5" width="10" hotspot_y="132" link_type="simple" height="270" version="0.80" orientation="dyyy">
+    <names>
+        <name lang="fr">0280-0315 4-L term.-plate orange</name>
+        <name lang="en">0280-0315 4-L term.-plate orange</name>
+        <name lang="de">0280-0315 4-L Abschlussplatte orange</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <polygon y2="-128.5" x4="1.4" x1="-0.9" style="line-style:normal;line-weight:thin;filling:orange;color:orange" antialias="false" x2="-0.9" y1="133.93" y3="-128.5" y4="133.93" x3="1.4"/>
+    </description>
+</definition>

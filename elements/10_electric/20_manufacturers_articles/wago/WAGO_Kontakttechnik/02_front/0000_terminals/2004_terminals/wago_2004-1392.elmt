@@ -1,0 +1,17 @@
+<definition hotspot_y="175" width="10" orientation="dyyy" hotspot_x="4" version="0.80" link_type="simple" height="240" type="element">
+    <names>
+        <name lang="en">2004-1392</name>
+        <name lang="fr">2004-1392</name>
+        <name lang="de">2004-1392</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <polygon y4="59.27" x3="2.5" y1="-170.06" x4="-1" antialias="false" y2="-170.06" y3="59.27" x2="2.5" x1="-1" style="line-style:normal;line-weight:thin;filling:orange;color:orange"/>
+    </description>
+</definition>
