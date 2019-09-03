@@ -320,8 +320,8 @@ QString ProjectView::askUserForFilePath(bool assign) {
 	// if no filepath is provided, return an empty string
 	if (filepath.isEmpty()) return(filepath);
 
-	// if the name does not end with the .qet extension, append it
-	if (!filepath.endsWith(".qet", Qt::CaseInsensitive)) filepath += ".qet";
+//	// if the name does not end with the .qet extension, append it
+//	if (!filepath.endsWith(".qet", Qt::CaseInsensitive)) filepath += ".qet";
 
 	if (assign) {
 		// assign the provided filepath to the currently edited project

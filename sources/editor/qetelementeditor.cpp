@@ -1237,9 +1237,9 @@ bool QETElementEditor::slot_saveAsFile()
 		if (fn.isEmpty())
 			return(false);
 
-			//If the name doesn't end by .elmt, we add it
-		if (!fn.endsWith(".elmt", Qt::CaseInsensitive))
-			fn += ".elmt";
+//			//If the name doesn't end by .elmt, we add it
+//		if (!fn.endsWith(".elmt", Qt::CaseInsensitive))
+//			fn += ".elmt";
 
 		bool result_save = toFile(fn);
 			//If the save success, the filename is keep
