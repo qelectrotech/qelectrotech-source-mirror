@@ -1234,7 +1234,7 @@ void QETApp::useSystemPalette(bool use) {
 		qApp->setPalette(initial_palette_);
 		qApp->setStyleSheet(
 					"QTabBar::tab:!selected { background-color: transparent; }"
-					"QTabBar::tab:selected { background-color: transparent; color: green; }"
+					"QTabBar::tab:selected { background-color: transparent; font: bold; color: black;}"
 					"QAbstractScrollArea#mdiarea {"
 					"background-color -> setPalette(initial_palette_);"
 					"}"
