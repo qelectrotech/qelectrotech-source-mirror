@@ -810,7 +810,11 @@ void ProjectView::initWidgets() {
 	fallback_label_ -> setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
 
 	// initialize tabs
+#ifdef Q_OS_MACOS
+	m_tab = new WheelEnabledTabBar(this);
+#else
 	m_tab = new QTabWidget(this);
+#endif
 	m_tab -> setMovable(true);
 
 	QToolButton *add_new_diagram_button = new QToolButton;

@@ -19,9 +19,50 @@
 #define PROJECT_VIEW_H
 
 #include <QWidget>
+#include <QtWidgets>
+
 
 #include "templatelocation.h"
 #include "qetresult.h"
+
+
+#ifdef Q_OS_MACOS
+class WheelEnabledTabBar : public QTabWidget
+{
+
+    // It works on Mac using arrows keys, button arrows and mouse
+    // Maybe it needs to use only scroll right-left, not up-down
+
+public:
+	WheelEnabledTabBar(QWidget *parent = nullptr)
+//       : QTabBar(parent)
+		: QTabWidget(parent)
+	{}
+
+	double temp_index = 0;
+
+	void wheelEvent(QWheelEvent *event) override
+	{
+		int index = currentIndex();
+		double delta = 0;
+		double scale_factor = 0.005; // Decrease or increase speed of mouse wheel (0.04 = decrease)
+
+		if ((index != -1)  && (event->orientation() == Qt::Horizontal)) {
+			delta = event->delta() * scale_factor; // Read and scale the scroll value
+			if (delta > 0 && (temp_index > -1)) temp_index = temp_index - abs(delta);
+			if (delta < 0 && (temp_index < count())) temp_index = temp_index + abs(delta);
+
+			index = int (temp_index);
+			qDebug() << "index" << index << "temp_index" << temp_index << "  " << event->delta() << delta;
+
+			if (index >= 0 && index < count())
+				setCurrentIndex(index);
+
+//                qDebug() << currentIndex();
+		}
+    }
+};
+#endif
 
 class QETProject;
 class DiagramView;
@@ -30,6 +71,7 @@ class ElementsLocation;
 class QTabWidget;
 class QLabel;
 class QVBoxLayout;
+
 
 /**
 	This class provides a widget displaying the diagrams of a particular
@@ -131,10 +173,17 @@ class ProjectView : public QWidget
 		QVBoxLayout *layout_;
 		QWidget *fallback_widget_;
 		QLabel *fallback_label_;
+
+#ifdef Q_OS_MACOS
+		WheelEnabledTabBar *m_tab; 
+#else
 		QTabWidget *m_tab;
+#endif
+
 		QMap<int, DiagramView *> m_diagram_ids;
 		int m_previous_tab_index = -1;
 		QList<DiagramView *> m_diagram_view_list;
 };
+
 
 #endif
