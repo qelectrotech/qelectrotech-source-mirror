@@ -42,7 +42,7 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 	ConductorProperties  conductors = diagram -> defaultConductorProperties;
 
 	setWindowModality(Qt::WindowModal);
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
 	setWindowFlags(Qt::Sheet);
 #endif
 

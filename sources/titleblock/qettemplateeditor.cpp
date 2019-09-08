@@ -927,7 +927,7 @@ void QETTitleBlockTemplateEditor::editTemplateInformation() {
 	
 	QDialog dialog_author(this);
 	dialog_author.setModal(true);
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
 	dialog_author.setWindowFlags(Qt::Sheet);
 #endif
 	dialog_author.setMinimumSize(400, 260);

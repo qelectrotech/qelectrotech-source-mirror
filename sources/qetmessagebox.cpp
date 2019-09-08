@@ -21,7 +21,7 @@
 	@see Documentation Qt pour QMessageBox::critical
 */
 QMessageBox::StandardButton QET::QetMessageBox::critical   (QWidget *parent, const QString &title, const QString &text, QMessageBox::StandardButtons buttons, QMessageBox::StandardButton defaultButton) {
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
 	QMessageBox message_box(QMessageBox::Critical, title, text, buttons, parent, Qt::Sheet);
 	message_box.setWindowModality(Qt::WindowModal);
 #else
@@ -36,7 +36,7 @@ QMessageBox::StandardButton QET::QetMessageBox::critical   (QWidget *parent, con
 	@see Documentation Qt pour QMessageBox::information
 */
 QMessageBox::StandardButton QET::QetMessageBox::information(QWidget *parent, const QString &title, const QString &text, QMessageBox::StandardButtons buttons, QMessageBox::StandardButton defaultButton) {
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
 	QMessageBox message_box(QMessageBox::Information, title, text, buttons, parent, Qt::Sheet);
 	message_box.setWindowModality(Qt::WindowModal);
 #else
@@ -51,7 +51,7 @@ QMessageBox::StandardButton QET::QetMessageBox::information(QWidget *parent, con
 	@see Documentation Qt pour QMessageBox::question
 */
 QMessageBox::StandardButton QET::QetMessageBox::question   (QWidget *parent, const QString &title, const QString &text, QMessageBox::StandardButtons buttons, QMessageBox::StandardButton defaultButton) {
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
 	QMessageBox message_box(QMessageBox::Question, title, text, buttons, parent, Qt::Sheet);
 	message_box.setWindowModality(Qt::WindowModal);
 #else
@@ -66,7 +66,7 @@ QMessageBox::StandardButton QET::QetMessageBox::question   (QWidget *parent, con
 	@see Documentation Qt pour QMessageBox::warning
 */
 QMessageBox::StandardButton QET::QetMessageBox::warning    (QWidget *parent, const QString &title, const QString &text, QMessageBox::StandardButtons buttons, QMessageBox::StandardButton defaultButton) {
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
 	QMessageBox message_box(QMessageBox::Warning, title, text, buttons, parent, Qt::Sheet);
 	message_box.setWindowModality(Qt::WindowModal);
 #else

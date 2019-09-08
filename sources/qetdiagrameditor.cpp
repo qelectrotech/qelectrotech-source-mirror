@@ -2210,7 +2210,7 @@ void QETDiagramEditor::generateTerminalBlock()
 		//connect(process, SIGNAL(errorOcurred(int error)), this, SLOT(slot_generateTerminalBlock_error()));
 		//process->start("qet_tb_generator");
 	
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
 	if (openedProjects().count()){
 		success = process->startDetached("/Library/Frameworks/Python.framework/Versions/3.5/bin/qet_tb_generator", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
 	}

@@ -688,7 +688,7 @@ void ElementScene::slot_editAuthorInformations() {
 	// cree un dialogue
 	QDialog dialog_author(m_element_editor);
 	dialog_author.setModal(true);
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
 	dialog_author.setWindowFlags(Qt::Sheet);
 #endif
 	dialog_author.setMinimumSize(400, 260);

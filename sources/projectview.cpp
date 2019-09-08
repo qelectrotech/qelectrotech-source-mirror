@@ -664,7 +664,7 @@ void ProjectView::exportProject() {
 	if (!m_project) return;
 
 	ExportDialog ed(m_project, parentWidget());
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
 	ed.setWindowFlags(Qt::Sheet);
 #endif
 	ed.exec();
@@ -751,7 +751,7 @@ int ProjectView::cleanProject() {
 	clean_categories -> setChecked(true);
 
 	QDialog clean_dialog(parentWidget());
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
 	clean_dialog.setWindowFlags(Qt::Sheet);
 #endif
 
@@ -838,7 +838,7 @@ void ProjectView::initLayout() {
 	fallback_widget_layout_ -> addWidget(fallback_label_);
 
 	layout_ = new QVBoxLayout(this);
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
 	layout_ -> setContentsMargins(0, 8, 0, 0);
 #else
 	layout_ -> setContentsMargins(0, 0, 0, 0);

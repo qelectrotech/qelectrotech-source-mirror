@@ -49,7 +49,7 @@ ElementDialog::ElementDialog(uint mode, QWidget *parent) :
 void ElementDialog::setUpWidget()
 {
 	setWindowModality(Qt::WindowModal);
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
 	setWindowFlags(Qt::Sheet);
 #endif
 
