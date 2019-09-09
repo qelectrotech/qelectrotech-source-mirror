@@ -18,8 +18,8 @@ Because index folio is 0 and not 1 we apply -1 in formula to not complicate your
 
 * macOS :
 * Add Fusion style and fix tilesets tab bar size
-* Enable mouse wheel on tilesets tab bar with command keyboard (removed by Qt upstream)
-https://codereview.qt-project.org/gitweb?p=qt/qtbase.git;a=commitdiff;h=ea47d152b35158ba07a55d009f57df0e4c2a048f;hp=08cc9b9991ae9ab51bed5b857b6257401401ff6f
+* Enable mouse wheel on tilesets tab bar with command keyboard, thanks Giovanni.
+(removed by Qt upstream) https://codereview.qt-project.org/gitweb?p=qt/qtbase.git;a=commitdiff;h=ea47d152b35158ba07a55d009f57df0e4c2a048f;hp=08cc9b9991ae9ab51bed5b857b6257401401ff6f
 
 
 
