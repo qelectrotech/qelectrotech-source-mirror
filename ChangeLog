@@ -1,3 +1,75 @@
+====== ChangeLog from 0.7 to 0.8 ======
+
+* Element editor :
+* with Ctrl key you can moving by keyboard primitives selected by 0.1 point instead by 1 points, added the same feature for moving the selected aera.
+* Improve polygon widget editor on elements editor.
+
+* Diagram editor :
+* User can choose now folio list emplacement in project by select position number in settings :
+1 for the first position
+2 for the second position
+etc
+0 for always at the end of project
+Because index folio is 0 and not 1 we apply -1 in formula to not complicate your life..
+
+
+
+
+
+* macOS :
+* Add Fusion style and fix tilesets tab bar size
+* Enable mouse wheel on tilesets tab bar with command keyboard (removed by Qt upstream)
+https://codereview.qt-project.org/gitweb?p=qt/qtbase.git;a=commitdiff;h=ea47d152b35158ba07a55d009f57df0e4c2a048f;hp=08cc9b9991ae9ab51bed5b857b6257401401ff6f
+
+
+
+* For the Flatpak package : remove the file name extension added
+automatically to the saved files even if the user sets an unknown file
+extension for the program.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ====== ChangeLog from 0.6 to 0.7 ======
 
 
