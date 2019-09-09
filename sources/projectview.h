@@ -20,22 +20,17 @@
 
 #include <QWidget>
 #include <QtWidgets>
-
+#include <QTabBar>
 
 #include "templatelocation.h"
 #include "qetresult.h"
 
-
 #ifdef Q_OS_MACOS
+
 class WheelEnabledTabBar : public QTabWidget
 {
-
-    // It works on Mac using arrows keys, button arrows and mouse
-    // Maybe it needs to use only scroll right-left, not up-down
-
 public:
 	WheelEnabledTabBar(QWidget *parent = nullptr)
-//       : QTabBar(parent)
 		: QTabWidget(parent)
 	{}
 
@@ -46,23 +41,25 @@ public:
 		int index = currentIndex();
 		double delta = 0;
 		double scale_factor = 0.005; // Decrease or increase speed of mouse wheel (0.04 = decrease)
+			if (event->modifiers() & Qt::ControlModifier) {
+				if (index != -1) {
+					delta = event->delta() * scale_factor; // Read and scale the scroll value
+					if (delta > 0 && (temp_index > -1)) temp_index = temp_index - abs(delta);
+					if (delta < 0 && (temp_index < count())) temp_index = temp_index + abs(delta);
 
-		if ((index != -1)  && (event->orientation() == Qt::Horizontal)) {
-			delta = event->delta() * scale_factor; // Read and scale the scroll value
-			if (delta > 0 && (temp_index > -1)) temp_index = temp_index - abs(delta);
-			if (delta < 0 && (temp_index < count())) temp_index = temp_index + abs(delta);
+					index = int (temp_index);
+					qDebug() << "index" << index << "temp_index" << temp_index << "  " << event->delta() << delta;
 
-			index = int (temp_index);
-			qDebug() << "index" << index << "temp_index" << temp_index << "  " << event->delta() << delta;
+					if (index >= 0 && index < count())
+						setCurrentIndex(index);
 
-			if (index >= 0 && index < count())
-				setCurrentIndex(index);
-
-//                qDebug() << currentIndex();
-		}
-    }
+					//                qDebug() << currentIndex();
+				}
+			}
+	}
 };
 #endif
+
 
 class QETProject;
 class DiagramView;
