@@ -2786,7 +2786,7 @@ Hier kunt u de standaardtekst hiervoor opgeven voor nieuwe elementen :</translat
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="189"/>
         <source>Position de la liste des folios dans le projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Plaats van de schema-index in het project</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="375"/>
@@ -4033,17 +4033,17 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Veelhoek</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="31"/>
         <source>X</source>
-        <translation type="unfinished">X</translation>
+        <translation>X</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="36"/>
         <source>Y</source>
-        <translation type="unfinished">Y</translation>
+        <translation>Y</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="44"/>
@@ -4053,12 +4053,12 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="55"/>
         <source>Ajouter un point</source>
-        <translation type="unfinished">Een punt toevoegen</translation>
+        <translation>Een punt toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="64"/>
         <source>Supprimer ce point</source>
-        <translation type="unfinished">Punt verwijderen</translation>
+        <translation>Punt verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="20"/>
@@ -4086,12 +4086,12 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.cpp" line="267"/>
         <source>Ajouter un point à un polygone</source>
-        <translation type="unfinished">Punt aan een veelhoek toevoegen</translation>
+        <translation>Punt aan een veelhoek toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.cpp" line="286"/>
         <source>Supprimer un point d&apos;un polygone</source>
-        <translation type="unfinished">Punt van een veelhoek verwijderen</translation>
+        <translation>Punt van een veelhoek verwijderen</translation>
     </message>
 </context>
 <context>
@@ -10493,7 +10493,7 @@ Maximale afmeting : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="90"/>
         <source>XRef slave position</source>
-        <translation type="unfinished"></translation>
+        <translation>XRef doel positie</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="106"/>
@@ -10600,27 +10600,27 @@ Maximale afmeting : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="104"/>
         <source>Top</source>
-        <translation type="unfinished"></translation>
+        <translation>Boven</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="105"/>
         <source>Bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>Onder</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="106"/>
         <source>Left</source>
-        <translation type="unfinished"></translation>
+        <translation>Links</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="107"/>
         <source>Rigth</source>
-        <translation type="unfinished"></translation>
+        <translation>Rechts</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="108"/>
         <source>Text alignment</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstuitlijning</translation>
     </message>
 </context>
 <context>
