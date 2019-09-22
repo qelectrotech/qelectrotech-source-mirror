@@ -1,0 +1,17 @@
+<definition version="0.80" hotspot_x="15" type="element" width="30" height="250" hotspot_y="102" orientation="dyyy" link_type="simple">
+    <names>
+        <name lang="en">769-320</name>
+        <name lang="fr">769-320</name>
+        <name lang="de">769-320</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <polygon style="line-style:normal;line-weight:thin;filling:lightgray;color:lightgray" y2="-97.73" antialias="false" y4="143.92" x3="-1" y3="143.92" y1="-97.73" x4="2.5" x1="2.5" x2="-1"/>
+    </description>
+</definition>

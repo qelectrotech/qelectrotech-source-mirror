@@ -1,0 +1,60 @@
+<definition version="0.80" width="20" hotspot_y="118" type="element" orientation="dyyy" hotspot_x="10" height="190" link_type="simple">
+    <names>
+        <name lang="de">2020-1207</name>
+        <name lang="en">2020-1207</name>
+        <name lang="fr">2020-1207</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <polygon y3="65.87" y4="65.865" y2="-103.865" y1="-103.865" x4="-5.7386" style="line-style:normal;line-weight:thin;filling:green;color:black" x2="6.5114" x1="-5.7386" antialias="false" x3="6.5114"/>
+        <polygon y3="65.87" y4="65.87" y2="-103.86" y1="-103.865" x4="-2.85" style="line-style:normal;line-weight:thin;filling:yellow;color:none" x2="3.3" x1="-2.85" antialias="false" x3="3.3"/>
+        <rect x="3.7114" y="-58.7" ry="0" width="2.8" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" height="4.55" rx="0"/>
+        <rect x="1.4" y="-111.83" ry="0" width="2.75" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" height="8" rx="0"/>
+        <rect x="-5.7386" y="-58.7" ry="0" width="2.8" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" height="4.55" rx="0"/>
+        <polygon closed="false" y2="-107.075" y1="-107.075" style="line-style:normal;line-weight:thin;filling:gray;color:black" x2="1.295" x1="4.095" antialias="false"/>
+        <rect x="4.6114" y="-57.8" ry="0" width="1.9" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" height="2.75" rx="0"/>
+        <rect x="-5.7386" y="-57.8" ry="0" width="1.9" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" height="2.75" rx="0"/>
+        <polygon x9="-3.6386" y2="-59.9" x8="-3.6386" y7="-64.1" x4="-2.9386" x12="6.5114" x11="-1.2886" y10="-91.8" y12="-93.9" x6="-1.2886" x5="-2.9386" x7="-1.2886" antialias="false" y1="-59.9" y11="-93.9" x10="-1.2886" x3="3.7114" y9="-91.8" y8="-64.1" y5="-58.7" style="line-style:normal;line-weight:thin;filling:gray;color:black" y4="-54.2" y6="-58.7" y3="-54.2" x2="3.7114" x1="6.5114"/>
+        <rect x="-4.3876" y="-50.825" ry="0" width="10.1137" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" height="14.7" rx="0"/>
+        <rect x="-3.8927" y="28.075" ry="0" width="8.89411" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" height="10.2" rx="0"/>
+        <circle x="-5.6286" y="40.83" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" diameter="12"/>
+        <rect x="-4.3876" y="-31.925" ry="0" width="10.1137" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" height="14.7" rx="0"/>
+        <line length1="1.5" y2="-27.323" end1="none" length2="1.5" y1="-31.925" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-2.3037" x1="-4.3876" antialias="false"/>
+        <line length1="1.5" y2="-46.223" end1="none" length2="1.5" y1="-50.825" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-2.3037" x1="-4.3876" antialias="false"/>
+        <line length1="1.5" y2="-50.825" end1="none" length2="1.5" y1="-46.225" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="5.7263" x1="3.6483" antialias="false"/>
+        <line length1="1.5" y2="-31.925" end1="none" length2="1.5" y1="-27.325" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="5.7263" x1="3.6483" antialias="false"/>
+        <line length1="1.5" y2="-17.225" end1="none" length2="1.5" y1="-21.745" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="5.7263" x1="3.6483" antialias="false"/>
+        <line length1="1.5" y2="-36.125" end1="none" length2="1.5" y1="-40.645" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="5.7263" x1="3.6483" antialias="false"/>
+        <line length1="1.5" y2="-40.643" end1="none" length2="1.5" y1="-36.125" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-2.3012" x1="-4.3876" antialias="false"/>
+        <line length1="1.5" y2="-21.743" end1="none" length2="1.5" y1="-17.225" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-2.3012" x1="-4.3876" antialias="false"/>
+        <rect x="-2.3087" y="-46.225" ry="0" width="5.95746" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" height="5.6" rx="0"/>
+        <rect x="-2.3087" y="-27.325" ry="0" width="5.95746" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" height="5.6" rx="0"/>
+        <polygon closed="false" y2="-32.025" y1="-32.025" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-5.75" x1="6.4979" antialias="false"/>
+        <polygon closed="false" y2="-36.225" y1="-36.225" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-5.75" x1="6.4979" antialias="false"/>
+        <polygon closed="false" y2="-17.305" y1="-17.305" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-5.75" x1="6.4979" antialias="false"/>
+        <polygon closed="false" y2="-50.935" y1="-50.935" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-5.75" x1="6.4979" antialias="false"/>
+        <polygon closed="false" y2="64.37" y1="64.37" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="6.5114" x1="-5.7386" antialias="false"/>
+        <polygon closed="false" y2="64.22" y1="64.22" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-5.7386" x1="6.5114" antialias="false"/>
+        <polygon closed="false" y2="61.2" y1="61.2" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-5.7386" x1="6.5114" antialias="false"/>
+        <polygon closed="false" y2="-2.34" y1="-2.34" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-5.7386" x1="6.5114" antialias="false"/>
+        <polygon closed="false" y2="12.38" y1="12.38" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-5.7386" x1="6.5114" antialias="false"/>
+        <polygon closed="false" y2="39.37" y1="39.37" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-5.7386" x1="6.5114" antialias="false"/>
+        <polygon closed="false" y2="-5.48" y1="-5.48" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-5.7386" x1="6.5114" antialias="false"/>
+        <polygon closed="false" y2="15.52" y1="15.52" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-5.7386" x1="6.5114" antialias="false"/>
+        <polygon closed="false" y2="26.02" y1="26.02" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-5.7386" x1="6.5114" antialias="false"/>
+        <polygon closed="false" y2="-12.65" y1="-12.65" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="6.5114" x1="-5.7386" antialias="false"/>
+        <polygon closed="false" y2="22.7" y1="22.7" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-5.7386" x1="6.5114" antialias="false"/>
+        <polygon closed="false" y2="-52.03" y1="-52.03" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-5.7386" x1="6.5114" antialias="false"/>
+        <polygon closed="false" y2="-102.6" y1="-102.6" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-5.7386" x1="6.5114" antialias="false"/>
+        <dynamic_text rotation="90" x="9.6" z="192" text_from="ElementInfo" y="2" font="Sans Serif,7,-1,5,0,0,0,0,0,0,normal" uuid="{bfb46e57-9af7-4747-94b6-d152e1ca5f63}" Halignment="AlignHCenter" frame="false" text_width="-1" Valignment="AlignVCenter">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+    </description>
+</definition>

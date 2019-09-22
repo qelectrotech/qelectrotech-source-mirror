@@ -1,0 +1,18 @@
+<definition hotspot_y="10" version="0.80" orientation="dyyy" width="260" height="20" link_type="simple" hotspot_x="12" type="element">
+    <names>
+        <name lang="en">2016-406</name>
+        <name lang="fr">2016-406</name>
+        <name lang="de">2016-406</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <polygon x3="242.84" x4="-8.2" x1="-8.2" x2="242.84" y2="-7.05" y4="7.13" y3="7.13" style="line-style:normal;line-weight:thin;filling:white;color:black" y1="-7.05" antialias="false"/>
+        <text x="103" text="2016-406" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" y="2.3" color="#000000"/>
+    </description>
+</definition>

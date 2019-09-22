@@ -1,0 +1,18 @@
+<definition type="element" orientation="dyyy" version="0.80" width="80" hotspot_y="10" link_type="simple" height="20" hotspot_x="14">
+    <names>
+        <name lang="de">2001-405</name>
+        <name lang="en">2001-405</name>
+        <name lang="fr">2001-405</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <rect style="line-style:normal;line-weight:thin;filling:white;color:black" width="72" antialias="false" rx="0" y="-6" ry="0" height="12" x="-5.7"/>
+        <text rotation="0" text="2001-405" color="#000000" y="2" font="Sans Serif,4,-1,5,50,0,0,0,0,0" x="13"/>
+    </description>
+</definition>

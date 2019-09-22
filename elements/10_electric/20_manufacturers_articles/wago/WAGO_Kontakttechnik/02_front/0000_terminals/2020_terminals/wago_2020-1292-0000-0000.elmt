@@ -1,0 +1,17 @@
+<definition type="element" link_type="simple" height="180" hotspot_y="109" width="10" orientation="dyyy" hotspot_x="4" version="0.80">
+    <names>
+        <name lang="de">2020-1292</name>
+        <name lang="en">2020-1292</name>
+        <name lang="fr">2020-1292</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <polygon x4="-1" x3="2.5" x2="2.5" x1="-1" y2="-103.865" antialias="false" y1="-103.865" style="line-style:normal;line-weight:thin;filling:orange;color:orange" y3="65.865" y4="65.865"/>
+    </description>
+</definition>

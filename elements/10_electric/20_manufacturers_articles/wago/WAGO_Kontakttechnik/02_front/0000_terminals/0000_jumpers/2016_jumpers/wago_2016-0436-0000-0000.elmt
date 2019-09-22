@@ -1,0 +1,19 @@
+<definition height="20" width="260" version="0.80" type="element" hotspot_y="10" orientation="dyyy" hotspot_x="12" link_type="simple">
+    <names>
+        <name lang="en">2016-436</name>
+        <name lang="fr">2016-436</name>
+        <name lang="de">2016-436</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <polygon style="line-style:normal;line-weight:thin;filling:white;color:black" x1="-8.2" x2="242.84" y3="7.13" y4="7.13" antialias="false" x4="-8.2" y1="-7.05" y2="-7.05" x3="242.84"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10.5" x2="10.5" closed="false" y3="-3" y4="3" antialias="false" x4="228" y1="3" y2="-3" x3="228"/>
+        <text text="2016-436" color="#000000" x="103" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="2.3" rotation="0"/>
+    </description>
+</definition>

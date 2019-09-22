@@ -1,0 +1,18 @@
+<definition height="20" hotspot_x="22" hotspot_y="10" version="0.80" link_type="simple" type="element" width="200" orientation="dyyy">
+    <names>
+        <name lang="de">2004-409</name>
+        <name lang="en">2004-409</name>
+        <name lang="fr">2004-409</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <polygon y1="-7.07" x3="175.31" x4="-18.85" antialias="false" y2="-7.07" x1="-18.85" x2="175.31" y4="7.11" style="line-style:normal;line-weight:thin;filling:white;color:black" y3="7.11"/>
+        <text color="#000000" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="2004-409" y="1.9" rotation="0" x="66.5"/>
+    </description>
+</definition>

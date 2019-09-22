@@ -1,0 +1,18 @@
+<definition orientation="dyyy" hotspot_x="16" link_type="simple" type="element" width="40" hotspot_y="10" version="0.80" height="20">
+    <names>
+        <name lang="en">2000-403</name>
+        <name lang="fr">2000-403</name>
+        <name lang="de">2000-403</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <polygon y4="6.74" antialias="false" y3="-6.69" style="line-style:normal;line-weight:thin;filling:white;color:black" x3="21.9" x1="-14.49" y2="-6.69" x2="-14.49" x4="21.9" y1="6.74"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="2.2" text="2000-403" color="#000000" x="-8.0437" rotation="0"/>
+    </description>
+</definition>

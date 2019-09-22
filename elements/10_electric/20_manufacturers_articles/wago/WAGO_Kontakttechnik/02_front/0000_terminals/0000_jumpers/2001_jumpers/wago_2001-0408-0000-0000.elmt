@@ -1,0 +1,18 @@
+<definition version="0.80" hotspot_y="10" link_type="simple" height="20" hotspot_x="16" type="element" width="130" orientation="dyyy">
+    <names>
+        <name lang="fr">2001-408</name>
+        <name lang="de">2001-408</name>
+        <name lang="en">2001-408</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <rect antialias="false" ry="0" height="12" x="-5.7" style="line-style:normal;line-weight:thin;filling:white;color:black" y="-6" width="117" rx="0"/>
+        <text text="2001-408" rotation="0" x="37" y="2" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0"/>
+    </description>
+</definition>

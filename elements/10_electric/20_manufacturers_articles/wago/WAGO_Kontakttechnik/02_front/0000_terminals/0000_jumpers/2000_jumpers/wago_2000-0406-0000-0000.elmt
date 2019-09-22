@@ -1,0 +1,18 @@
+<definition orientation="dyyy" hotspot_x="16" link_type="simple" type="element" width="80" hotspot_y="10" version="0.80" height="20">
+    <names>
+        <name lang="en">2000-406</name>
+        <name lang="fr">2000-406</name>
+        <name lang="de">2000-406</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <polygon y4="6.68" antialias="false" y3="-6.75" style="line-style:normal;line-weight:thin;filling:white;color:black" x3="60.93" x1="-14.49" y2="-6.75" x2="-14.49" x4="60.93" y1="6.68"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="2.1" text="2000-406" color="#000000" x="8.9563" rotation="0"/>
+    </description>
+</definition>

@@ -1,0 +1,18 @@
+<definition hotspot_y="10" orientation="dyyy" hotspot_x="16" version="0.80" type="element" width="200" height="20" link_type="simple">
+    <names>
+        <name lang="en">859-409</name>
+        <name lang="fr">859-409</name>
+        <name lang="de">859-409</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <rect y="-4.75" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:white;color:black" width="187.7" antialias="false" x="-10" height="9.5"/>
+        <text text="859-409" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" y="2" x="74"/>
+    </description>
+</definition>
