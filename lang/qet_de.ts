@@ -2808,7 +2808,7 @@ Hier unten kann der Standardwert dieses Textfeldes für Ihre eigenen Bauteile de
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="189"/>
         <source>Position de la liste des folios dans le projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Position vom Inhaltsverzeichnis im Projekt</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="375"/>
@@ -4039,17 +4039,17 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="31"/>
         <source>X</source>
-        <translation type="unfinished">X</translation>
+        <translation>X</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="36"/>
         <source>Y</source>
-        <translation type="unfinished">Y</translation>
+        <translation>Y</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="44"/>
@@ -4059,12 +4059,12 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="55"/>
         <source>Ajouter un point</source>
-        <translation type="unfinished">Punkt einfügen</translation>
+        <translation>Punkt einfügen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="64"/>
         <source>Supprimer ce point</source>
-        <translation type="unfinished"></translation>
+        <translation>Punkt löschen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="20"/>
@@ -4086,12 +4086,12 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.cpp" line="267"/>
         <source>Ajouter un point à un polygone</source>
-        <translation type="unfinished">Punkt einem Polygon hinzufügen</translation>
+        <translation>Punkt einem Polygon hinzufügen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.cpp" line="286"/>
         <source>Supprimer un point d&apos;un polygone</source>
-        <translation type="unfinished">Punkt eines Polygons löschen</translation>
+        <translation>Punkt eines Polygons löschen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.cpp" line="178"/>
@@ -5486,7 +5486,7 @@ Verfügbare Optionen:
         <location filename="../sources/qetdiagrameditor.cpp" line="1748"/>
         <source>Une erreur est survenue lors de l&apos;ouverture du fichier %1.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Ein Fehler ist beim Öffnen der Datei %1 aufgetreten.</translation>
+        <translation>Ein Fehler ist beim Öffnen der Datei %1 aufgetreten.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1794"/>
@@ -10495,7 +10495,7 @@ Maximale Länge: %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="90"/>
         <source>XRef slave position</source>
-        <translation type="unfinished"></translation>
+        <translation>Position vom Querverweis bei Slave-Bauteilen</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="106"/>
@@ -10602,27 +10602,27 @@ Maximale Länge: %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="104"/>
         <source>Top</source>
-        <translation type="unfinished"></translation>
+        <translation>oben</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="105"/>
         <source>Bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>unten</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="106"/>
         <source>Left</source>
-        <translation type="unfinished"></translation>
+        <translation>links</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="107"/>
         <source>Rigth</source>
-        <translation type="unfinished"></translation>
+        <translation>rechts</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="108"/>
         <source>Text alignment</source>
-        <translation type="unfinished"></translation>
+        <translation>Textausrichtung</translation>
     </message>
 </context>
 <context>
