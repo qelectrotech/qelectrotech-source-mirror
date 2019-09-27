@@ -882,11 +882,14 @@ void ProjectView::loadDiagrams()
 		addDiagram(sv);
 	}
 
-	this->currentDiagram()->diagram()->loadElmtFolioSeq();
-	this->currentDiagram()->diagram()->loadCndFolioSeq();
+    if (DiagramView *dv = currentDiagram())
+    {
+        dv->diagram()->loadElmtFolioSeq();
+        dv->diagram()->loadCndFolioSeq();
+    }
 	
 	QSettings settings;
-	// If project have the folios list, move it at the beginning of the project
+        // If project have the folios list, move it at the beginning of the project
 	if (m_project -> getFolioSheetsQuantity()) {
 		for (int i = 0; i < m_project->getFolioSheetsQuantity(); i++)
 		m_tab -> tabBar() -> moveTab(diagram_views().size()-1, + (settings.value("projectview/foliolist_position").toInt() -1));
