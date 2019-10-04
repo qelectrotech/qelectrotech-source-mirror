@@ -185,6 +185,7 @@ class QETDiagramEditor : public QETMainWindow
 		QAction *m_project_folio_list;    ///< Sommaire des schemas
 		QAction *m_project_nomenclature;   ///< generate nomenclature
 		QAction *m_project_terminalBloc;   ///< generate terminal block
+        QAction *m_project_export_conductor_num; ///<Export the wire num to csv
 		QAction *m_tile_window;        ///< Show MDI subwindows as tile
 		QAction *m_cascade_window;     ///< Show MDI subwindows as cascade
 		QAction *m_previous_window;        ///< Switch to the previous document

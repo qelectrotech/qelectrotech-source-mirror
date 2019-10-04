@@ -48,6 +48,7 @@
 #include "diagramcommands.h"
 #include "dialogwaiting.h"
 #include "addelementtextcommand.h"
+#include "conductornumexport.h"
 
 #include <QMessageBox>
 #include <QStandardPaths>
@@ -402,6 +403,17 @@ void QETDiagramEditor::setUpActions()
 		//Lauch the plugin of terminal generator
 	m_project_terminalBloc = new QAction(QET::Icons::TerminalStrip, tr("Lancer le plugin de création de borniers"), this);
 	connect(m_project_terminalBloc, &QAction::triggered, this, &QETDiagramEditor::generateTerminalBlock);
+
+        //Export conductor num to csv
+    m_project_export_conductor_num = new QAction(QET::Icons::DocumentSpreadsheet, tr("Exporter la liste des noms de conducteurs"), this);
+    connect(m_project_export_conductor_num, &QAction::triggered, [this]() {
+        QETProject *project = this->currentProject();
+        if (project)
+        {
+            ConductorNumExport wne(project, this);
+            wne.toCsv();
+        }
+    });
 	
 		//MDI view style
 	m_tabbed_view_mode = new QAction(tr("en utilisant des onglets"), this);
@@ -744,6 +756,7 @@ void QETDiagramEditor::setUpMenu() {
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_project_folio_list);
 	menu_project -> addAction(m_project_nomenclature);
+    menu_project -> addAction(m_project_export_conductor_num);
 	menu_project -> addAction(m_project_terminalBloc);
 
 	main_tool_bar         -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils principale"));
@@ -1418,7 +1431,8 @@ void QETDiagramEditor::slot_updateActions()
 	m_close_file       -> setEnabled(opened_project);
 	m_save_file        -> setEnabled(opened_project);
 	m_save_file_as     -> setEnabled(opened_project);
-	m_project_edit_properties    -> setEnabled(opened_project);
+    m_project_edit_properties->setEnabled(opened_project);
+    m_project_export_conductor_num->setEnabled(opened_project);
 	//prj_terminalBloc -> setEnabled(opened_project);
 	m_rotate_texts -> setEnabled(editable_project);
 	m_project_add_diagram  -> setEnabled(editable_project);
@@ -1429,7 +1443,6 @@ void QETDiagramEditor::slot_updateActions()
 	m_export_diagram   -> setEnabled(opened_diagram);
 	m_print            -> setEnabled(opened_diagram);
 	m_edit_diagram_properties    -> setEnabled(opened_diagram);
-	m_project_nomenclature -> setEnabled(editable_project);
 	m_zoom_actions_group.      setEnabled(opened_diagram);
 	m_select_actions_group.    setEnabled(opened_diagram);
 	m_add_item_actions_group.  setEnabled(editable_project);
