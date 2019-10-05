@@ -4939,7 +4939,7 @@ Opties :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="408"/>
         <source>Exporter la liste des noms de conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Lijst met namen van geleiders exporteren</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="483"/>
@@ -7703,12 +7703,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="51"/>
         <source>nomenclature_</source>
-        <translation>naamgeving</translation>
+        <translation>naamgeving_</translation>
     </message>
     <message>
         <location filename="../sources/conductornumexport.cpp" line="47"/>
         <source>numero_de_fileries_</source>
-        <translation type="unfinished"></translation>
+        <translation>aantal_draden_</translation>
     </message>
     <message>
         <location filename="../sources/conductornumexport.cpp" line="52"/>
