@@ -5351,7 +5351,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="408"/>
         <source>Exporter la liste des noms de conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Leiterbeschriftungen exportieren</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="439"/>
@@ -7709,7 +7709,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/conductornumexport.cpp" line="47"/>
         <source>numero_de_fileries_</source>
-        <translation type="unfinished"></translation>
+        <translation>Leiterbeschriftungen_</translation>
     </message>
     <message>
         <location filename="../sources/conductornumexport.cpp" line="52"/>
