@@ -60,7 +60,7 @@
         <location filename="../sources/aboutqet.cpp" line="117"/>
         <source>2006-2019 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished">2006-2017 QElectroTech&apos;in geliştiricileri {2006-2019 ?}</translation>
+        <translation>2006-2017 QElectroTech&apos;in geliştiricileri {2006-2019 ?}</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="121"/>
@@ -183,12 +183,12 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="182"/>
         <source>Traduction en Turc</source>
-        <translation type="unfinished"></translation>
+        <translation>Türkçe Çeviri</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="183"/>
         <source>Traduction en hongrois</source>
-        <translation type="unfinished"></translation>
+        <translation>Macarca Çeviri</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="203"/>
@@ -328,7 +328,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="14"/>
         <source>Sélection numérotation auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Otomatik Numaralandırma Seçimi</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="24"/>
@@ -359,7 +359,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="132"/>
         <source>Ctrl+Shift+P</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+P</translation>
     </message>
 </context>
 <context>
@@ -785,12 +785,12 @@ Not: Bu durum &quot;Otomatik Numaralandırma&quot;&apos;ya engel koymaz veya izi
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="30"/>
         <source>&amp;Multifilaire</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Çoklu Hatlı</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="442"/>
         <source>Taille :</source>
-        <translation type="unfinished"></translation>
+        <translation>Boyut :</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="449"/>
@@ -844,7 +844,7 @@ Not: Bu durum &quot;Otomatik Numaralandırma&quot;&apos;ya engel koymaz veya izi
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="20"/>
@@ -855,12 +855,12 @@ Not: Bu durum &quot;Otomatik Numaralandırma&quot;&apos;ya engel koymaz veya izi
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="50"/>
         <source>Nom</source>
-        <translation type="unfinished">İsim</translation>
+        <translation>İsim</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="55"/>
         <source>Valeur</source>
-        <translation type="unfinished"></translation>
+        <translation>Değer</translation>
     </message>
 </context>
 <context>
@@ -977,7 +977,7 @@ Not: Bu durum &quot;Otomatik Numaralandırma&quot;&apos;ya engel koymaz veya izi
     <message>
         <location filename="../sources/diagramview.cpp" line="545"/>
         <source>Connecter les bornes sélectionnées</source>
-        <translation type="unfinished"></translation>
+        <translation>Seçilen bağlantıları bağla</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="817"/>
@@ -1176,7 +1176,7 @@ Not: Bu durum &quot;Otomatik Numaralandırma&quot;&apos;ya engel koymaz veya izi
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="206"/>
         <source>Police</source>
-        <translation type="unfinished"></translation>
+        <translation>Yazı Tipi</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="220"/>
@@ -1237,7 +1237,7 @@ Not: Bu durum &quot;Otomatik Numaralandırma&quot;&apos;ya engel koymaz veya izi
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="500"/>
         <source>Modifier la police d&apos;un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Öğe metninin yazı tipini değiştir</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="507"/>
@@ -1344,7 +1344,7 @@ Not: Bu durum &quot;Otomatik Numaralandırma&quot;&apos;ya engel koymaz veya izi
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="72"/>
         <source>Police</source>
-        <translation type="unfinished"></translation>
+        <translation>Font</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="79"/>
@@ -1402,7 +1402,7 @@ Not: Bu durum &quot;Otomatik Numaralandırma&quot;&apos;ya engel koymaz veya izi
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="193"/>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="300"/>
         <source>Modifier la police d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Öğe metninin yazı tipini değiştir</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="310"/>
@@ -1602,7 +1602,7 @@ Not: Bu durum &quot;Otomatik Numaralandırma&quot;&apos;ya engel koymaz veya izi
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="61"/>
         <source>Supprimer ce texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu metni sil</translation>
     </message>
 </context>
 <context>
@@ -1746,7 +1746,7 @@ Not: Bu durum &quot;Otomatik Numaralandırma&quot;&apos;ya engel koymaz veya izi
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="117"/>
         <source>Temporisé travail &amp; repos</source>
-        <translation type="unfinished"></translation>
+        <translation>Gecikmeli Açılan Kapanan</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="120"/>
@@ -2514,17 +2514,17 @@ Bu klasördeki tüm öğeler ve klasörler silinecek.</translation>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="78"/>
         <source>C&amp;réer de nouveaux folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Y&amp;eni sayfa oluştur</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="91"/>
         <source>Numérotation automatique des folios sélectionnés</source>
-        <translation type="unfinished"></translation>
+        <translation>Otomatik sayfa numaralandırma</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="132"/>
         <source>Nouveaux folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeni Sayfalar</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="107"/>
@@ -2562,7 +2562,17 @@ Si le chiffre défini dans le champ Valeur possède moins de digits que le type 
 Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Yeni sayfaların nasıl numaralandırılacağını burada tanımlayabilirsiniz.
+-Bir numaralandırma asgari bir değişkenden oluşur.
+-Arama değişkenini - ve + düğmeleriyle değiştirebilir veya silebilirsiniz.
+Bir numaralandırma değişkeni şunları içerir: bir tür, bir değer ve bir artış.
+
+-&quot;Hane 1&quot;, &quot;Hane 01&quot; ve &quot;Hane 001&quot; türleri, &quot;Değer&quot; alanında tanımlanmış, her yeni sayfayı &quot;Artırma&quot; alanının değeriyle artıran sayısal bir türü temsil eder.
+-&quot;Hane 01&quot; ve &quot;Hane 001&quot;, diyagramda en az iki ve üç rakamla gösterilir.
+-Değer alanında tanımlanan hane, seçilen türden daha az rakam içeriyorsa, türünün geçerli olmasını sağlamak adına kendisinden önce bir veya iki 0 rakamı gelecektir.
+
+-&quot;Metin&quot; türü, sabit bir metni temsil eder.
+-&quot;Artış&quot; alanı kullanılmaz.</translation>
     </message>
 </context>
 <context>
@@ -2593,12 +2603,12 @@ Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="41"/>
         <source>Dénomination automatique :</source>
-        <translation type="unfinished"></translation>
+        <translation>Otomatik Adlandırma:</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="53"/>
         <source>Formule</source>
-        <translation type="unfinished">Formül</translation>
+        <translation>Formül</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="72"/>
@@ -2692,18 +2702,18 @@ atayabilirsiz. Metin ve sayı girişleri ayrıca mevcut.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="44"/>
         <source>Utiliser les gestes du pavé tactile</source>
-        <translation>#Touchpad hareketlerini kullan</translation>
+        <translation>Touchpad hareketlerini kullan</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="126"/>
         <source>Utiliser les numéros de folio à la place de leur position dans le projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Projedeki pozisyonlarının yerine sayfa numaralandırmasını kullan</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="133"/>
         <source>Numéroter les colonnes de cartouche à partir de 0 (1 sinon)</source>
         <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Başlık bloğunun 0&apos;dan başlayarak sütunlarını numaralandır(Aksi takdirde &quot;1&quot;)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="166"/>
@@ -2730,32 +2740,33 @@ atayabilirsiz. Metin ve sayı girişleri ayrıca mevcut.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="397"/>
         <source>Chemin des cartouches utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>It does not exist in the english translation.</translatorcomment>
+        <translation>Kullanıcı başlık blokları dizini</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="197"/>
         <source>Collections</source>
-        <translation type="unfinished">Kolleksiyonlar</translation>
+        <translation>Koleksiyonlar</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="203"/>
         <source>Accès aux collections</source>
-        <translation type="unfinished"></translation>
+        <translation>Koleksiyonlara Erişim</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="215"/>
         <source>Répertoire de la collection commune</source>
-        <translation type="unfinished"></translation>
+        <translation>Ortak koleksiyon dizini</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="236"/>
         <source>Répertoire de la collection utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translation>Kullanıcı koleksiyon dizini</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="278"/>
         <source>Répertoire des cartouches utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translation>Kullanıcı başlık blokları dizini</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="288"/>
@@ -2777,7 +2788,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="332"/>
         <source>Langage</source>
-        <translation type="unfinished"></translation>
+        <translation>Dil</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="341"/>
@@ -2787,52 +2798,52 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="381"/>
         <source>Vous pouvez définir ici l&apos;apparence par defaut des differents textes de QElectroTech</source>
-        <translation type="unfinished"></translation>
+        <translation>Burada çeşitli metinlerin QElectroTech içinde varsayılan görünümünü tanımlayabilirsiniz</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="600"/>
         <source>Grille + Clavier</source>
-        <translation type="unfinished"></translation>
+        <translation>Izgara + Klavye</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="606"/>
         <source>Grille : 1 - 30</source>
-        <translation type="unfinished"></translation>
+        <translation>Izgara: 1 - 30</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="673"/>
         <source>DiagramEditor xGrid</source>
-        <translation type="unfinished"></translation>
+        <translation>Diyagram Editörü xIzgarası</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="640"/>
         <source>DiagramEditor yGrid</source>
-        <translation type="unfinished"></translation>
+        <translation>Diyagram Editörü yIzgarası</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="65"/>
         <source>Utiliser des fen&amp;êtres (appliqué au prochain lancement de QElectroTech)</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Windows&apos;u kullan (QElectroTech&apos;in bir sonraki başlatılmasında uygulanır)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="72"/>
         <source>Utiliser des onglets (appliqué au prochain lance&amp;ment de QElectroTech)</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sekmeleri kullan (QElectroTech&apos;in bir sonraki başlatılmasında uygulanır)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="189"/>
         <source>Position de la liste des folios dans le projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Projedeki sayfa listesinin görünümü</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="375"/>
         <source>Textes</source>
-        <translation type="unfinished">Metinler</translation>
+        <translation>Metinler</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="395"/>
         <source>Textes d&apos;éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Öğelerin Metinleri</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="408"/>
@@ -2840,74 +2851,74 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="520"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="556"/>
         <source>Police :</source>
-        <translation type="unfinished">Police :</translation>
+        <translation>Yazı Tipi :</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="418"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="481"/>
         <source>°</source>
-        <translation type="unfinished"></translation>
+        <translation>°</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="428"/>
         <source>Longueur :</source>
-        <translation type="unfinished"></translation>
+        <translation>Uzunluk :</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="438"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="467"/>
         <source>Rotation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Dönüş:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="461"/>
         <source>Textes indépendants</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağımsız Metinler</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="514"/>
         <source>Pages de sommaire</source>
-        <translation type="unfinished"></translation>
+        <translation>Özet Sayfalar</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="550"/>
         <source>Autres textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Diğer Metinler</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="647"/>
         <source>La Grille doite etre active pour pouvoir voir les modifications.</source>
-        <translation type="unfinished"></translation>
+        <translation>Değişiklikleri görebilmek için Izgara&apos;nın etkin olması gerekir.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="696"/>
         <source>Déplacement au clavier : 1 - 30</source>
-        <translation type="unfinished"></translation>
+        <translation>Klavye hareketi: 1 - 30</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="746"/>
         <source>DiagramEditor (touche :   gauche / droite)  xGrid</source>
-        <translation type="unfinished"></translation>
+        <translation>Diyagram Editörü (Tuş : Sol / Sağ)  xIzgara</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="753"/>
         <source>DiagramEditor (touche :   haut / bas)  yGrid</source>
-        <translation type="unfinished"></translation>
+        <translation>Diyagram Editörü (Tuş : Yukarı / Aşağı) yIzgarası</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="776"/>
         <source>Déplacement au clavier avec la touche ALT : 1 - 9</source>
-        <translation type="unfinished"></translation>
+        <translation>ALT tuşuyla Klavye hareketi : 1 - 9 </translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="782"/>
         <source>DiagramEditor (touche :   gauche / droite ) xGrid</source>
-        <translation type="unfinished"></translation>
+        <translation>Diyagram Editörü (Tuş : Sol / Sağ)  xIzgara</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="811"/>
         <source>DiagramEditor (touche :  haut / bas)  yGrid</source>
-        <translation type="unfinished"></translation>
+        <translation>Diyagram Editörü (Tuş : Yukarı / Aşağı) yIzgarası</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="244"/>
@@ -3018,12 +3029,12 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="284"/>
         <source>Turc</source>
-        <translation type="unfinished"></translation>
+        <translation>Türkçe</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="285"/>
         <source>Hongrois</source>
-        <translation type="unfinished"></translation>
+        <translation>Macarca</translation>
     </message>
 </context>
 <context>
@@ -3145,17 +3156,17 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished">Diyalog</translation>
+        <translation>Diyalog</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="20"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>Metin Etiketi</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="30"/>
         <source>Écraser les textes existants</source>
-        <translation type="unfinished"></translation>
+        <translation>Varolan metinleri sil</translation>
     </message>
 </context>
 <context>
@@ -3163,54 +3174,55 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="20"/>
         <source>X :</source>
-        <translation type="unfinished"></translation>
+        <translation>X :</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="30"/>
         <source>Éditeur avancé</source>
-        <translation type="unfinished"></translation>
+        <translation>Gelişmiş Editör</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="37"/>
         <source>Taille :</source>
-        <translation type="unfinished"></translation>
+        <translation>Boyut :</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="47"/>
         <source>Angle :</source>
-        <translation type="unfinished">Açı :</translation>
+        <translation>Açı :</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="57"/>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="93"/>
         <source>px</source>
-        <translation type="unfinished">px</translation>
+        <translation>px</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="109"/>
         <source>°</source>
-        <translation type="unfinished"></translation>
+        <translation>°</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="122"/>
         <source>Y :</source>
-        <translation type="unfinished"></translation>
+        <translation>Y :</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="132"/>
         <source>Le contenu, la taille et la police du texte ne peuvent être modifié car formaté en html.
 Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
-        <translation type="unfinished"></translation>
+        <translation>Metin içeriği, boyutu ve yazı tipi html&apos;deki biçimlendirmeler nedeniyle değiştirilemez.
+Lütfen bunun için gelişmiş editörü kullanın.</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="153"/>
         <source>Texte</source>
-        <translation type="unfinished">Metin</translation>
+        <translation>Metin</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="160"/>
@@ -3218,58 +3230,58 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="407"/>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="454"/>
         <source>Police</source>
-        <translation type="unfinished"></translation>
+        <translation>Yazı Tipi</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="146"/>
         <source>Cliquez ici pour annuler le formatage html</source>
-        <translation type="unfinished"></translation>
+        <translation>HTML biçimlendirmeyi iptal et</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="179"/>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="184"/>
         <source>Déplacer un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Metin alanını taşı</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="189"/>
         <source>Pivoter un champ texte</source>
-        <translation type="unfinished">Metin alanını döndür</translation>
+        <translation>Metin alanını döndür</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="193"/>
         <source>Modifier un champ texte</source>
-        <translation type="unfinished">Bir metin alanını düzenle</translation>
+        <translation>Bir metin alanını düzenle</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="199"/>
         <source>Modifier la taille d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Metin alanını boyutunu değiştir</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="204"/>
         <source>Modifier la police d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Metin alanının yazı tipini değiştir</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="239"/>
         <source>Pivoter plusieurs champs texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Birden fazla metin alanını döndür</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="254"/>
         <source>Modifier la taille de plusieurs champs texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Birden fazla metin alanının boyutunu değiştir</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="270"/>
         <source>Modifier la police de plusieurs champs texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Birden fazla metin alanının yazı tipini değiştir</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="282"/>
         <source>Modifier les propriétés d&apos;un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Yazı özelliklerini değiştir</translation>
     </message>
 </context>
 <context>
@@ -3553,12 +3565,12 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="133"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Délier l&apos;élément sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Seçili öğenin bağlantısını kopar&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="147"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Lier l&apos;élément sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Seçili öğenin bağlantısını yap&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="46"/>
@@ -3678,12 +3690,12 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/NameList/ui/namelistdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished">Diyalog</translation>
+        <translation>Diyalog</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistdialog.cpp" line="66"/>
         <source>Variables de cartouche</source>
-        <translation type="unfinished"></translation>
+        <translation>Başlık Bloğu Değişkenleri</translation>
     </message>
 </context>
 <context>
@@ -3691,27 +3703,27 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="21"/>
         <source>Langue</source>
-        <translation type="unfinished">Dil</translation>
+        <translation>Dil</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="26"/>
         <source>Texte</source>
-        <translation type="unfinished">Metin</translation>
+        <translation>Metin</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="36"/>
         <source>Ajouter une ligne</source>
-        <translation type="unfinished"></translation>
+        <translation>Bir çizgi ekle</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="48"/>
         <source>Copier dans le presse papier</source>
-        <translation type="unfinished"></translation>
+        <translation>Pano&apos;ya kopyala</translation>
     </message>
 </context>
 <context>
@@ -3937,7 +3949,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="196"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="313"/>
         <source>Installation</source>
-        <translation type="unfinished">Kurulum</translation>
+        <translation>Kurulum</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="100"/>
@@ -4049,17 +4061,17 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="31"/>
         <source>X</source>
-        <translation type="unfinished">X</translation>
+        <translation>X</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="36"/>
         <source>Y</source>
-        <translation type="unfinished">Y</translation>
+        <translation>Y</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="44"/>
@@ -4069,12 +4081,12 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="55"/>
         <source>Ajouter un point</source>
-        <translation type="unfinished">Bir nokta ekle</translation>
+        <translation>Bir nokta ekle</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="64"/>
         <source>Supprimer ce point</source>
-        <translation type="unfinished">Bu noktayı sil</translation>
+        <translation>Bu noktayı sil</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="20"/>
@@ -4096,12 +4108,12 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.cpp" line="267"/>
         <source>Ajouter un point à un polygone</source>
-        <translation type="unfinished">Poligona bir nokta ekle</translation>
+        <translation>Poligona bir nokta ekle</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.cpp" line="286"/>
         <source>Supprimer un point d&apos;un polygone</source>
-        <translation type="unfinished">Poligondan bir noktayı sil</translation>
+        <translation>Poligondan bir noktayı sil</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.cpp" line="178"/>
@@ -4145,7 +4157,8 @@ Sayı : %1</translation>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="180"/>
         <source>Veuillez choisir un potentiel électrique de la liste 
 à utiliser pour le nouveau potentiel</source>
-        <translation type="unfinished"></translation>
+        <translation>Lütfen yeni bir potansiyel kullanmak için 
+listeden bir elektrik potansiyeli seçin</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="191"/>
@@ -4204,27 +4217,27 @@ Aşağıdaki değişkenler uyumsuz :
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="235"/>
         <source>Numérotation auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Otomatik Numaralandırma</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="266"/>
         <source>Conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>İletkenler</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="270"/>
         <source>Eléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Öğeler</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="274"/>
         <source>Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Sayfalar</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="278"/>
         <source>Numérotation auto des folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Sayfa otomatik numaralandırma</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="348"/>
@@ -4384,7 +4397,7 @@ Değişiklikleri kaydetmek ister misiniz ?</translation>
     <message>
         <location filename="../sources/PropertiesEditor/propertieseditordockwidget.ui" line="14"/>
         <source>Propriétés de la sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>Seçim ayarları</translation>
     </message>
 </context>
 <context>
@@ -4472,13 +4485,13 @@ Değişiklikleri kaydetmek ister misiniz ?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="323"/>
         <source>Formule du label</source>
-        <translation type="unfinished"></translation>
+        <translation>Etiket Formulü</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="325"/>
         <location filename="../sources/qetapp.cpp" line="438"/>
         <source>Installation</source>
-        <translation type="unfinished">Kurulum</translation>
+        <translation>Kurulum</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="329"/>
@@ -4495,47 +4508,47 @@ Değişiklikleri kaydetmek ister misiniz ?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="340"/>
         <source>Quantité</source>
-        <translation type="unfinished"></translation>
+        <translation>Miktar</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="341"/>
         <source>Unité</source>
-        <translation type="unfinished"></translation>
+        <translation>Birim</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="401"/>
         <source>Formule du texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Metin Formülü</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="402"/>
         <source>Texte</source>
-        <translation type="unfinished">Metin</translation>
+        <translation>Metin</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="434"/>
         <source>Titre</source>
-        <translation type="unfinished">Başlık</translation>
+        <translation>Başlık</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="435"/>
         <source>Auteur</source>
-        <translation type="unfinished">Yazar</translation>
+        <translation>Yazar</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="436"/>
         <source>Fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosya</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="437"/>
         <source>Folio</source>
-        <translation type="unfinished">Sayfa</translation>
+        <translation>Sayfa</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="440"/>
         <source>Indice Rev</source>
-        <translation type="unfinished">#Rev Endeksi</translation>
+        <translation>Rev İndeksi</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="451"/>
@@ -4738,9 +4751,9 @@ Options disponibles :
         <translation>QElectroTech, elektrik şemalarının gerçekleştirilmesi uygulaması.
 
 Mevcut seçenekler:
-&#xa0; -help                        Seçenekler hakkında yardım göster
-&#xa0; -v, --version                 Sürümü göster
-&#xa0; --license                     Lisansı göster
+  -help                        Seçenekler hakkında yardım göster
+  -v, --version                 Sürümü göster
+  --license                     Lisansı göster
 </translation>
     </message>
     <message>
@@ -5023,17 +5036,17 @@ Mevcut seçenekler:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="403"/>
         <source>Lancer le plugin de création de borniers</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminal bloğu yaratma eklentisini başlatın</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="522"/>
         <source>Grouper les textes sélectionnés</source>
-        <translation type="unfinished"></translation>
+        <translation>Seçilen metinleri gruplandır</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="625"/>
         <source>Chercher/remplacer</source>
-        <translation type="unfinished"></translation>
+        <translation>Bul / Değiştir</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="407"/>
@@ -5429,32 +5442,32 @@ Mevcut seçenekler:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="598"/>
         <source>Ajoute un champ de texte sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Geçerli sayfaya metin alanı ekle</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="599"/>
         <source>Ajoute une image sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Geçerli sayfaya resim ekle</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="600"/>
         <source>Ajoute une ligne sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Geçerli sayfaya çizgi ekle</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="601"/>
         <source>Ajoute un rectangle sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Geçerli sayfaya dikdörtgen ekler</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="602"/>
         <source>Ajoute une ellipse sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Geçerli sayfaya elips ekle</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="603"/>
         <source>Ajoute une polyligne sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Geçerli sayfaya devamlı çizgi ekle</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="637"/>
@@ -5602,7 +5615,7 @@ Mevcut seçenekler:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1313"/>
         <source>Double-click pour terminer la forme, Click droit pour annuler le dernier point</source>
-        <translation type="unfinished"></translation>
+        <translation>Şekli bitirmek için çift tıkla, sağ tık ile son noktayı iptal et</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1378"/>
@@ -5643,7 +5656,7 @@ Mevcut seçenekler:
         <location filename="../sources/qetdiagrameditor.cpp" line="1748"/>
         <source>Une erreur est survenue lors de l&apos;ouverture du fichier %1.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Dosyayı açarken bir sorun oluştu %1.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1794"/>
@@ -5788,7 +5801,11 @@ Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 &gt;&gt; Install on Windows
 Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>DXFtoQET eklentsini yüklemek için 
+Https://download.tuxfamily.org/qet/builds/dxf_to_elmt/ adresini ziyaret edin.
+
+&gt;&gt; Windows&apos;a yüklemek için
+DXFtoQET.exe ikili dosyasını C: \ Users \ kullanıcı_adı \ AppData \ Roaming \ qet \ dizinine yerleştirin</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="171"/>
@@ -5798,7 +5815,11 @@ Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 &gt;&gt; Install on macOSX
 Put DXFtoQET.app binary on /Users/user_name/.qet/ directory 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>DXFtoQET eklentsini yüklemek için 
+Https://download.tuxfamily.org/qet/builds/dxf_to_elmt/ adresini ziyaret edin.
+
+&gt;&gt; macOSX&apos;e yüklemek için
+DXFtoQET.app ikili dosyasını n /Users/user_name/.qet/ dizinine yerleştirin</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="177"/>
@@ -5809,7 +5830,13 @@ Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 Put DXFtoQET binary on your /home/user_name/.qet/ directory
 make it executable : chmod +x ./DXFtoQET
 </source>
-        <translation type="unfinished"></translation>
+        <translation>DXFtoQET eklentsini yüklemek için 
+Https://download.tuxfamily.org/qet/builds/dxf_to_elmt/ adresini ziyaret edin.
+
+&gt;&gt;Linux&apos;e yüklemek için
+
+DXFtoQET ikili dosyasını /home/user_name/.qet/ dizinine koyun
+ chmod + x ./DXFtoQET komutuyla çalıştırılabilir iznini verin</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="185"/>
@@ -5825,17 +5852,16 @@ Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory
 &gt;&gt; Install on macOSX
 Put DXFtoQET.app binary on /Users/user_name/.qet/ directory 
 </source>
-        <translation>To install the plugin DXFtoQET
-Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+        <translation>DXFtoQET eklentsini yüklemek için 
+Https://download.tuxfamily.org/qet/builds/dxf_to_elmt/ adresini ziyaret edin.
 
-&gt;&gt; Install on Linux
-Put DXFtoQET binary on your /home/user_name/.qet/ directory
-make it executable : chmod +x ./DXFtoQET
-&gt;&gt; Install on Windows
-Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory 
-
-&gt;&gt; Install on macOSX
-Put DXFtoQET.app binary on /Users/user_name/.qet/ directory 
+&gt;&gt;Linux&apos;e yüklemek için
+DXFtoQET ikili dosyasını /home/user_name/.qet/ dizinine koyun
+ chmod + x ./DXFtoQET komutuyla çalıştırılabilir iznini verin
+&gt;&gt; Windows&apos;a yüklemek için
+DXFtoQET.exe ikili dosyasını C: \ Users \ kullanıcı_adı \ AppData \ Roaming \ qet \ dizinine yerleştirin
+&gt;&gt; macOSX&apos;e yüklemek için
+DXFtoQET.app ikili dosyasını n /Users/user_name/.qet/ dizinine yerleştirin
 </translation>
     </message>
     <message>
@@ -5972,17 +5998,17 @@ Put DXFtoQET.app binary on /Users/user_name/.qet/ directory
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="310"/>
         <source>Double-click pour terminer la forme, Click droit pour annuler le dernier point</source>
-        <translation type="unfinished"></translation>
+        <translation>Şekli bitirmek için çift tıkla, sağ tık ile son noktayı iptal et</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="311"/>
         <source>Ajouter un texte d&apos;élément non éditable dans les schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>Diyagramlara düzenlemez bir metin öğesi ekleyin</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="312"/>
         <source>Ajouter un texte d&apos;élément pouvant être édité dans les schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>Diyagramlara düzenlenebilir bir metin öğesi ekleyin</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="314"/>
@@ -6131,8 +6157,8 @@ Put DXFtoQET.app binary on /Users/user_name/.qet/ directory
         <location filename="../sources/editor/qetelementeditor.cpp" line="767"/>
         <source> %n avertissement(s)</source>
         <comment>warnings</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform> %n Uyarılar</numerusform>
         </translation>
     </message>
     <message>
@@ -7017,9 +7043,9 @@ Ne yapmak istersiniz?</translation>
 </source>
         <comment>tooltip content when editing a filename</comment>
         <translation>İzin verilen karakterler:
-&#xa0; - sayılar [0-9]
-&#xa0; - küçük harf [a-z]
-&#xa0; - tire [-], alt çizgi [_] ve nokta [.]
+  - sayılar [0-9]
+  - küçük harf [a-z]
+  - tire [-], alt çizgi [_] ve nokta [.]
 </translation>
     </message>
 </context>
@@ -7386,7 +7412,8 @@ Ne yapmak istersiniz?</translation>
         <location filename="../sources/elementtextpattern.cpp" line="65"/>
         <source>Une configuration de textes nommée &lt;&lt; %1 &gt;&gt; existe déjà.
 Voulez-vous la remplacer ?</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;&lt; %1 &gt;&gt; adında bir metin yapılandırması bulunuyor.
+Değiştirmek ister misiniz?</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="84"/>
@@ -7396,7 +7423,7 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="85"/>
         <source>Entrer le nom de la configuration à créer</source>
-        <translation>Oluşturmak için konfigürasyonun adını girin</translation>
+        <translation>Oluşturmak için yapılandırma adını girin</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="145"/>
@@ -7406,12 +7433,12 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="170"/>
         <source>Sélectionner une configuration de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Bir metin yapılandırması seçin</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="171"/>
         <source>Sélectionner la configuration de textes à ajouter à l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Öğeye eklenecek bir metin yapılandırması seçin</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="239"/>
@@ -7543,7 +7570,7 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="93"/>
         <source>F002</source>
-        <translation type="unfinished">F002</translation>
+        <translation>F002</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="94"/>
@@ -7558,7 +7585,7 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="96"/>
         <source>H002</source>
-        <translation type="unfinished">H002</translation>
+        <translation>H002</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="97"/>
@@ -7583,12 +7610,12 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="101"/>
         <source>L002</source>
-        <translation type="unfinished">L002</translation>
+        <translation>L002</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="102"/>
         <source>L003</source>
-        <translation type="unfinished">L003</translation>
+        <translation>L003</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="103"/>
@@ -7619,23 +7646,23 @@ Voulez-vous la remplacer ?</source>
         <location filename="../sources/nomenclature.cpp" line="108"/>
         <location filename="../sources/qetinformation.cpp" line="71"/>
         <source>Position du folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Sayfa Pozisyonu</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="110"/>
         <location filename="../sources/qetinformation.cpp" line="70"/>
         <source>Numéro de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Sayfa Numarası</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="120"/>
         <source>Numéro de commande</source>
-        <translation type="unfinished">Sipariş numarası</translation>
+        <translation>Sipariş numarası</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="126"/>
         <source>Numéro interne</source>
-        <translation type="unfinished">Dahili Numara</translation>
+        <translation>Dahili Numara</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="109"/>
@@ -7660,7 +7687,7 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="114"/>
         <source>Formule du label</source>
-        <translation type="unfinished"></translation>
+        <translation>Etiket Formülü</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="115"/>
@@ -7690,12 +7717,12 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="122"/>
         <source>Quantité</source>
-        <translation type="unfinished"></translation>
+        <translation>Miktar</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="123"/>
         <source>Unité</source>
-        <translation type="unfinished"></translation>
+        <translation>Birim</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="124"/>
@@ -7782,7 +7809,7 @@ Voulez-vous la remplacer ?</source>
         <location filename="../sources/qet.cpp" line="567"/>
         <source>Une erreur est survenue lors de l&apos;écriture du fichier %1, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1 dosyasını yazarken %2 hatası oluştu.</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="640"/>
@@ -7807,22 +7834,22 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/qet.cpp" line="645"/>
         <source>Ramène la ou les sélections au premier plan</source>
-        <translation type="unfinished"></translation>
+        <translation>Seçileni öne getir</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="646"/>
         <source>Rapproche la ou les sélections</source>
-        <translation type="unfinished"></translation>
+        <translation>Seçileni yakınlaştır</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="647"/>
         <source>Éloigne la ou les sélections</source>
-        <translation type="unfinished"></translation>
+        <translation>Seçileni uzaklaştır</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="648"/>
         <source>Envoie en arrière plan la ou les sélections</source>
-        <translation type="unfinished"></translation>
+        <translation>Seçilenleri arkaya gönder</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="650"/>
@@ -8088,122 +8115,122 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="54"/>
         <source>Chercher/remplacer les propriétés de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Sayfa özelliklerini Bul / Değiştir</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="116"/>
         <source>Chercher/remplacer les propriétés d&apos;éléments.</source>
-        <translation type="unfinished"></translation>
+        <translation>Öğe özelliklerini Bul / Değiştir.</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="206"/>
         <source>Chercher/remplacer les propriétés de conducteurs.</source>
-        <translation type="unfinished"></translation>
+        <translation>İletken özelliklerini Bul / Değiştir.</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="289"/>
         <source>Rechercher / remplacer avancé</source>
-        <translation type="unfinished"></translation>
+        <translation>Gelişmiş Bul / Değiştir</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="168"/>
         <source>Chercher/remplacer des textes independants</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağımsız metinleri Bul / Değiştir</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="65"/>
         <source>Fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosya</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="66"/>
         <source>Installation (=)</source>
-        <translation type="unfinished"></translation>
+        <translation>Kurulum (=)</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="67"/>
         <source>Localisation (+)</source>
-        <translation type="unfinished"></translation>
+        <translation>Konum</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="68"/>
         <source>Indice de révision</source>
-        <translation type="unfinished"></translation>
+        <translation>Revizyon İndeksi</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="69"/>
         <source>Version de QElectroTech</source>
-        <translation type="unfinished"></translation>
+        <translation>QElectroTech Versiyonu</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="72"/>
         <source>Nombre de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Sayfa Sayısı</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="73"/>
         <source>Numéro du folio précédent</source>
-        <translation type="unfinished"></translation>
+        <translation>Önceki Sayfanın sayısı</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="74"/>
         <source>Numéro du folio suivant</source>
-        <translation type="unfinished"></translation>
+        <translation>Sonraki sayfanın sayısı</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="75"/>
         <source>Titre du projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Proje başlığı</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="76"/>
         <source>Chemin du fichier du projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Proje dosya yolu</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="77"/>
         <source>Nom du fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosya adı</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="78"/>
         <source>Date d&apos;enregistrement du fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosya kaydetme tarihi</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="79"/>
         <source>Heure d&apos;enregistrement du fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosya kaydetme zamanı</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="80"/>
         <source>Nom du fichier enregistré</source>
-        <translation type="unfinished"></translation>
+        <translation>Kaydedilmiş dosyanın adı</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="81"/>
         <source>Chemin du fichier enregistré</source>
-        <translation type="unfinished"></translation>
+        <translation>Kaydedilmiş dosya yolu</translation>
     </message>
     <message>
         <location filename="../sources/utils/conductorcreator.cpp" line="47"/>
         <source>Création de conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>İletkenlerin oluşturulması</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2233"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Qet_tb_generator eklentisini yüklemek için &lt;br&gt; Ziyaret Et: &lt;br&gt; &lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt; qet-tb-generator &lt;/a&gt; &lt;br&gt; python 3.5 veya üzeri. &lt;br&gt; &lt;B&gt; &lt;U&gt; İlk önce Windows&apos;a yükleyin &lt;/B&gt; &lt;/U&gt; &lt;br&gt; 1. Gerekirse, python 3.5 veya üstü bir sürüm yükleyin. &lt;br&gt; Ziyaret: &lt;br&gt; &lt;a href=&apos;https://www.python.org/downloads/&apos;&gt; python.org &lt;/a&gt; &lt;br&gt; 2. pip install qet_tb_generator &lt;br&gt; &lt;B&gt; &lt;U&gt; Windows&apos;ta Güncelleme &lt;/B&gt; &lt;/U&gt; &lt;br&gt; python -m pip install --upgrade qet_tb_generator &lt;br&gt; &gt;&gt; kullanıcı bu script&apos;in terminalde  bu dizinde başlatılmasını sağlayabilir &lt;br&gt; C: \ users \ XXXX \ AppData \ Local \ Programs \ Python \ Python36-32 \ Scripts &lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2269"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Qet_tb_generator eklentisini yüklemek için &lt;br&gt; Ziyaret Et: &lt;br&gt; &lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt; qet-tb-generator &lt;/a&gt; &lt;br&gt; &lt; B&gt; &lt;U&gt; Önce macOSX&apos;e yükleyin &lt;/B&gt; &lt;/U&gt; &lt;br&gt; 1. Gerekirse, python 3.5 yükleyin &lt;br&gt; &lt;br&gt;: &lt;br&gt; &lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt; nasıl yapılır &lt;/a&gt; &lt;br&gt; 2 . pip3 kurulum qet_tb_generator &lt;br&gt; &lt;B&gt; &lt;U&gt; macOSX&apos;te güncelleme &lt;/B&gt; &lt;/U&gt; &lt;br&gt; pip3 kurulum - yükseltme qet_tb_generator &lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2300"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit : &lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Qet_tb_generator eklentisini yüklemek için &lt;br&gt; Ziyaret Et: &lt;br&gt; &lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt; qet-tb-generator &lt;/a&gt; &lt;br&gt; &lt; br&gt; python 3.5 veya üstü bir sürüm gerektirir. &lt;br&gt; &lt;br&gt; &lt;B&gt; &lt;U&gt; İlk önce Linux&apos;ta yükleme &lt;/B&gt; &lt;/U&gt; &lt;br&gt; 1. pip3&apos;ün kurulu olup olmadığını kontrol edin: pip3 --version &lt;br&gt; Şununla kurulmazsa: sudo apt-get install python3-pip &lt;br&gt; 2. Programı yükleyin: sudo pip3 qet_tb_generator &lt;br&gt; 3 kurulumu. Programı çalıştırın: qet_tb_generator &lt;br&gt; &lt;br&gt; &lt;B&gt; &lt;U&gt; Linux&apos;ta Güncelleme &lt;/B&gt; &lt;/U&gt; &lt;br&gt; sudo pip3 kurulum - yükseltme qet_tb_generator &lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -8361,12 +8388,12 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="21"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Tür</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="30"/>
         <source>&amp;Multifilaire</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Çoklu Hatlı</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="43"/>
@@ -8383,27 +8410,27 @@ Voulez-vous la remplacer ?</source>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="556"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="180"/>
         <source>Ne pas modifier</source>
-        <translation type="unfinished"></translation>
+        <translation>Değiştirme</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="48"/>
         <source>En haut</source>
-        <translation type="unfinished"></translation>
+        <translation>Yukarı</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="53"/>
         <source>En bas</source>
-        <translation type="unfinished"></translation>
+        <translation>Aşağı</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="61"/>
         <source>Texte sur conducteur horizontal :</source>
-        <translation type="unfinished"></translation>
+        <translation>Metin veya yatay iletken :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="78"/>
         <source>Tension / protocol :</source>
-        <translation type="unfinished"></translation>
+        <translation>Gerilim / Protokol :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="95"/>
@@ -8411,180 +8438,180 @@ Voulez-vous la remplacer ?</source>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="196"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="228"/>
         <source>Supprimer ce texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu metni sil</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="105"/>
         <source>Fonction :</source>
-        <translation type="unfinished">Fonksiyon :</translation>
+        <translation>Fonksiyon :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="112"/>
         <source>Formule du texte :</source>
-        <translation type="unfinished">Metin Formülü :</translation>
+        <translation>Metin Formülü :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="119"/>
         <source>Texte visible</source>
-        <translation type="unfinished">Görünür metin</translation>
+        <translation>Görünür metin</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="129"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="238"/>
         <source>Angle :</source>
-        <translation type="unfinished">Açı :</translation>
+        <translation>Açı :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="165"/>
         <source>Texte sur conducteur vertical :</source>
-        <translation type="unfinished"></translation>
+        <translation>Metin veya dikey iletken :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="172"/>
         <source>Taille du texte :</source>
-        <translation type="unfinished">Metin boyutu :</translation>
+        <translation>Metin boyutu :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="179"/>
         <source>Texte :</source>
-        <translation type="unfinished"></translation>
+        <translation>Metin :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="215"/>
         <source>À gauche</source>
-        <translation type="unfinished"></translation>
+        <translation>Sola doğru</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="220"/>
         <source>À droite</source>
-        <translation type="unfinished"></translation>
+        <translation>Sağa doğru</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="254"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="279"/>
         <source>°</source>
-        <translation type="unfinished"></translation>
+        <translation>°</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="308"/>
         <source>Unifilaire</source>
-        <translation type="unfinished">Tek Hatlı</translation>
+        <translation>Tek Hatlı</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="323"/>
         <source>Protective Earth Neutral</source>
-        <translation type="unfinished">Koruma ve Nötr İletkeni</translation>
+        <translation>Koruyucu Topraklama Nötr</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="326"/>
         <source>PEN</source>
-        <translation type="unfinished">PEN</translation>
+        <translation>PEN</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="333"/>
         <source>Phase</source>
-        <translation type="unfinished">Faz</translation>
+        <translation>Faz</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="336"/>
         <source>phase</source>
-        <translation type="unfinished">faz</translation>
+        <translation>faz</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="347"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="380"/>
         <source>Nombre de phase</source>
-        <translation type="unfinished">Faz sayısı</translation>
+        <translation>Faz sayısı</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="360"/>
         <source>Neutre</source>
-        <translation type="unfinished">Nötr</translation>
+        <translation>Nötr</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="363"/>
         <source>neutre</source>
-        <translation type="unfinished">nötr</translation>
+        <translation>nötr</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="396"/>
         <source>Terre</source>
-        <translation type="unfinished">Toprak</translation>
+        <translation>Toprak</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="399"/>
         <source>terre</source>
-        <translation type="unfinished">toprak</translation>
+        <translation>toprak</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="410"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>MetinEtiketi</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="420"/>
         <source>PushButton</source>
-        <translation type="unfinished"></translation>
+        <translation>Buton</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="431"/>
         <source>Apparence</source>
-        <translation type="unfinished">Görünüm</translation>
+        <translation>Görünüm</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="437"/>
         <source>Taille :</source>
-        <translation type="unfinished"></translation>
+        <translation>Boyut :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="444"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="520"/>
         <source>Couleur :</source>
-        <translation type="unfinished">Renk :</translation>
+        <translation>Renk :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="474"/>
         <source>Style :</source>
-        <translation type="unfinished">Şekil :</translation>
+        <translation>Stil :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="481"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="527"/>
         <source>Modifier</source>
-        <translation type="unfinished"></translation>
+        <translation>Düzenleme</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="491"/>
         <source>Couleur secondaire :</source>
-        <translation type="unfinished">İkincil renk :</translation>
+        <translation>İkincil renk :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="513"/>
         <source>Taille de trait :</source>
-        <translation type="unfinished">Çizgi boyutu :</translation>
+        <translation>Çizgi boyutu :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="540"/>
         <source>px</source>
-        <translation type="unfinished">px</translation>
+        <translation>px</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="181"/>
         <source>Trait plein</source>
         <comment>conductor style: solid line</comment>
-        <translation type="unfinished">Düz çizgi</translation>
+        <translation>Düz çizgi</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="182"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
-        <translation type="unfinished">Kesik çizgi</translation>
+        <translation>Kesik çizgi</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="183"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kesikli ve noktalı çizgi</translation>
     </message>
 </context>
 <context>
@@ -8592,7 +8619,7 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceelementdialog.cpp" line="79"/>
         <source>Ne pas modifier</source>
-        <translation type="unfinished"></translation>
+        <translation>Değiştirme</translation>
     </message>
 </context>
 <context>
@@ -8600,32 +8627,32 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="45"/>
         <source>Principales</source>
-        <translation type="unfinished">Ana</translation>
+        <translation>Ana</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="53"/>
         <source>Indice Rev</source>
-        <translation type="unfinished">#Rev Endeksi</translation>
+        <translation>Rev Endeksi</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="60"/>
         <source>Localisation</source>
-        <translation type="unfinished">Konum</translation>
+        <translation>Konum</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="67"/>
         <source>Fichier :</source>
-        <translation type="unfinished">#Dosya :</translation>
+        <translation>Dosya :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="74"/>
         <source>Disponible en tant que %title pour les modèles de cartouches</source>
-        <translation type="unfinished">Antet şablonları için %başlık olarak mevcuttur</translation>
+        <translation>Antet şablonları için %title değişkeni olarak mevcuttur</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="77"/>
@@ -8637,67 +8664,67 @@ Voulez-vous la remplacer ?</source>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="217"/>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="227"/>
         <source>Ne pas modifier</source>
-        <translation type="unfinished"></translation>
+        <translation>Değiştirmeyin</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="84"/>
         <source>Disponible en tant que %author pour les modèles de cartouches</source>
-        <translation type="unfinished">Antet şablonları için %author olarak mevcuttur</translation>
+        <translation>Antet şablonları için %author değişkeni olarak mevcuttur</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="94"/>
         <source>Auteur :</source>
-        <translation type="unfinished">#Yazar :</translation>
+        <translation>Yazar :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="101"/>
         <source>Date :</source>
-        <translation type="unfinished">#Tarih :</translation>
+        <translation>Tarih :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="111"/>
         <source>Installation :</source>
-        <translation type="unfinished">#Kurulum :</translation>
+        <translation>Kurulum :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="118"/>
         <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
-        <translation type="unfinished">Antet şablonları için %indexrev olarak mevcuttur</translation>
+        <translation>Antet şablonları için %indexrev değişkeni olarak mevcuttur</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="128"/>
         <source>Disponible en tant que %filename pour les modèles de cartouches</source>
-        <translation type="unfinished">Antet şablonları için %filename olarak mevcuttur</translation>
+        <translation>Antet şablonları için %filenameı  değişkeni olarak mevcuttur</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="141"/>
         <source>Folio :</source>
-        <translation type="unfinished">#Sayfa :</translation>
+        <translation>Sayfa :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="150"/>
         <source>Pas de date</source>
-        <translation type="unfinished">#Tarih yok</translation>
+        <translation>Tarih yok</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="157"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
-        <translation type="unfinished">Antet şablonları için %date olarak mevcuttur</translation>
+        <translation>Antet şablonları için %date değişkeni olarak mevcuttur</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="170"/>
         <source>Date fixe :</source>
-        <translation type="unfinished">#Sabit tarih:</translation>
+        <translation>Sabit tarih:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="177"/>
         <source>Appliquer la date actuelle</source>
-        <translation type="unfinished">Geçerli tarihi uygula</translation>
+        <translation>Geçerli tarihi uygula</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="224"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disponible en tant que %plant pour les modèles de cartouches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Antet şablonları için %plant olarak mevcut&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="200"/>
@@ -8706,7 +8733,7 @@ Les variables suivantes sont utilisables :
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
-        <translation type="unfinished">Antet şablonları için %folio olarak kullanılabilir
+        <translation>Antet şablonları için %folio olarak kullanılabilir
 Aşağıdaki değişkenler kullanılabilir:
 -%id : projedeki mevcut sayfanın numarası
 -%total : projedeki toplam sayfa sayısı
@@ -8715,12 +8742,12 @@ Aşağıdaki değişkenler kullanılabilir:
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="214"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
-        <translation type="unfinished">Antet şablonları için %lochmach olarak mevcuttur</translation>
+        <translation>Antet şablonları için %lochmach olarak mevcuttur</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="234"/>
         <source>Titre :</source>
-        <translation type="unfinished">Başlık :</translation>
+        <translation>Başlık :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="241"/>
@@ -8731,18 +8758,18 @@ Aşağıdaki değişkenler kullanılabilir:
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="291"/>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="301"/>
         <source>Supprimer ce texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu metni sil</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="327"/>
         <source>Personnalisées</source>
-        <translation type="unfinished">Özelleştir</translation>
+        <translation>Özelleştir</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="335"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation type="unfinished">Burada, antete işlemek için kendi ad / değer ilişkilerinizi tanımlayabilirsiniz. örnek:
+        <translation>Burada, antete işlemek için kendi ad / değer ilişkilerinizi tanımlayabilirsiniz. örnek:
 &quot;volta&quot; ismini &quot;1745&quot; ile ilişkilendirmek için antette 1745&apos;e kadar%{volta} yerini alacak.</translation>
     </message>
 </context>
@@ -8768,7 +8795,15 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %LM : la localisation
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>Burada sayfa raporlarında kullanılmak üzere özel etiket tanılayabilirsiniz
+
+%f : Projede sayfa pozisyonu 
+%F : Sayfa Numarası
+%M : Kurulum
+%LM : Konum
+%l : Satır Numarası
+%c : Sütün Numarası
+</translation>
     </message>
 </context>
 <context>
@@ -8776,167 +8811,167 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="78"/>
         <source>Aller à la correspondance suivante</source>
-        <translation type="unfinished"></translation>
+        <translation>Bir sonraki eşleşmeye git</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="112"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Afficher les options avancées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Gelişmiş ayarları göster&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="95"/>
         <source>Aller à la correspondance précédente</source>
-        <translation type="unfinished"></translation>
+        <translation>Bir önceki eşleşmeye git</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="27"/>
         <source>Quitter</source>
-        <translation type="unfinished"></translation>
+        <translation>Çıkış</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="175"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les éléments&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Öğelerde değiştirilecek özellikleri tanımla&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="152"/>
         <source>Champ texte de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Sayfa metin alanı</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="185"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les conducteurs&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;İletkenlerde değiştirilecek özellikleri tanımla&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="162"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les folios&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sayfalarda değiştirilecek özellikleri tanımla&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="165"/>
         <source>Folio</source>
-        <translation type="unfinished">Sayfa</translation>
+        <translation>Sayfa</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="51"/>
         <source>Texte brut</source>
-        <translation type="unfinished"></translation>
+        <translation>Sade Metin</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="44"/>
         <source>Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Mod</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="56"/>
         <source>Mots entiers</source>
-        <translation type="unfinished"></translation>
+        <translation>Bütün kelime</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="64"/>
         <source>Sensible à la casse</source>
-        <translation type="unfinished"></translation>
+        <translation>Büyük küçük harf duyarlı</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="198"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer la correspondance sélectionnée&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;Seçilen eşlenmişi değiştir&lt;p&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="211"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer les correspondances cochées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;İşaretli seçilenleri değiştir&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="242"/>
         <source>avancé</source>
-        <translation type="unfinished"></translation>
+        <translation>gelişmiş</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="178"/>
         <source>Élément</source>
-        <translation type="unfinished">Öğe</translation>
+        <translation>Öğe</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="188"/>
         <source>Conducteur</source>
-        <translation type="unfinished">İletken</translation>
+        <translation>İletken</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="71"/>
         <source>Remplacer :</source>
-        <translation type="unfinished"></translation>
+        <translation>Değiştir :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="201"/>
         <source>Remplacer</source>
-        <translation type="unfinished">Değiştir</translation>
+        <translation>Değiştir</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="214"/>
         <source>Tout remplacer</source>
-        <translation type="unfinished"></translation>
+        <translation>Tümünü değiştir</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="20"/>
         <source>Chercher :</source>
-        <translation type="unfinished"></translation>
+        <translation>Bul :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="135"/>
         <source>Actualiser</source>
-        <translation type="unfinished"></translation>
+        <translation>Gerçekleştir</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="140"/>
         <source>Correspondance :</source>
-        <translation type="unfinished"></translation>
+        <translation>Yazışma :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="146"/>
         <source>Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Sayfalar</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="152"/>
         <source>Champs texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Metin alanları</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="158"/>
         <source>Eléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Öğeler</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="163"/>
         <source>Eléments simple</source>
-        <translation type="unfinished"></translation>
+        <translation>Basit Öğeler</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="169"/>
         <source>Eléments maître</source>
-        <translation type="unfinished"></translation>
+        <translation>Ana Öğeler</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="175"/>
         <source>Eléments esclave</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağımlı Öğe</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="181"/>
         <source>Eléments report de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Sayfa referanslı öğeler</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="187"/>
         <source>Eléments bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminal Öğeler</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="968"/>
@@ -8964,17 +8999,17 @@ Créer votre propre texte en vous aidant des variables suivantes :
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1207"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1208"/>
         <source> [édité]</source>
-        <translation type="unfinished"></translation>
+        <translation> [Düzenlenmiş]</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="195"/>
         <source>Conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>İletkenler</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="340"/>
         <source>Inconnue</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilinmeyen</translation>
     </message>
 </context>
 <context>
@@ -9060,7 +9095,19 @@ Si le chiffre défini dans le champ Valeur possède moins de digits que le type 
 Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Yeni sayfaların nasıl numaralandırılacağını burada tanımlayabilirsiniz.
+-Bir numaralandırma en az bir değişkenden oluşur.
+-Arama değişkenini + ve - düğmeleriyle ekleyebilir veya silebilirsiniz.
+Bir numaralandırma değişkeni şunları içerir: bir tür, bir değer ve bir artış.
+
+- &quot;Hane 1&quot;, &quot;Hane 01&quot; ve &quot;Hane 001&quot; türleri, &quot;Değer&quot; alanında tanımlanan ve her yeni sayfayı &quot;Artırma&quot; alanının değeriyle artıran sayısal bir türü temsil eder.
+- &quot;Hane 01&quot; ve &quot;Hane 001&quot;, diyagramda en az iki ve üç rakamla gösterilir.
+Değer alanında tanımlanan hane, seçilen tipten daha az hane içeriyorsa, tanımlanmasına uygun olması için bir veya iki adet 0 hanesi sayıdan önce eklenecektir.
+
+-Type &quot;Metin&quot;, sabit bir metni temsil eder.
+&quot;Artış&quot; alanı kullanılmaz.
+ 
+</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="207"/>
@@ -9082,7 +9129,23 @@ Les autres champs ne sont pas utilisés.
 -Le type &quot;Folio&quot; représente le nom du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the conductor autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Yeni iletkenlerin nasıl numaralandırılacağını burada tanımlayabilirsiniz.
+-Bir numaralandırma en az bir değişkenden oluşur.
+-Arama değişkenini + ve - düğmeleriyle ekleyebilir veya silebilirsiniz.
+Bir numaralandırma değişkeni şunları içerir: bir tür, bir değer ve bir artış.
+
+- &quot;Hane 1&quot;, &quot;Hane 01&quot; ve &quot;Hane 001&quot; türleri, &quot;Değer&quot; alanında tanımlanan ve her yeni sayfayı &quot;Artırma&quot; alanının değeriyle artıran sayısal bir türü temsil eder.
+- &quot;Hane 01&quot; ve &quot;Hane 001&quot;, diyagramda en az iki ve üç rakamla gösterilir.
+Değer alanında tanımlanan hane, seçilen tipten daha az hane içeriyorsa, tanımlanmasına uygun olması için bir veya iki adet 0 hanesi sayıdan önce eklenecektir.
+
+-Type &quot;Metin&quot;, sabit bir metni temsil eder.
+&quot;Artış&quot; alanı kullanılmaz.
+ 
+&quot;Sayfa&quot; türü, geçerli sayfanın numarasını gösterir.
+Diğer alanlar kullanılmaz.
+
+- &quot;Sayfa&quot; türü, geçerli Sayfanın adını gösterir.
+Diğer alanlar kullanılmaz.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="206"/>
@@ -9263,12 +9326,12 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="274"/>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="306"/>
         <source>Modifier une forme simple</source>
-        <translation type="unfinished"></translation>
+        <translation>Basit form2u düzenle</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="318"/>
         <source>Modifier les propriétés d&apos;une forme simple</source>
-        <translation type="unfinished"></translation>
+        <translation>Basit formun özelliklerini düzenle</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.h" line="50"/>
@@ -9648,18 +9711,18 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="173"/>
         <source>Pivoter un champ texte</source>
-        <translation type="unfinished">Metin alanını döndür</translation>
+        <translation>Metin alanını döndür</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="185"/>
         <location filename="../sources/editor/ui/texteditor.cpp" line="207"/>
         <source>Modifier la police d&apos;un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Metin alanının yazı tipini değiştir</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="221"/>
         <source>Modifier la couleur d&apos;un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Metin alanının rengini değiştirme</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="152"/>
@@ -9670,42 +9733,42 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="30"/>
         <source>Y :</source>
-        <translation type="unfinished"></translation>
+        <translation>Y :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="37"/>
         <source>Police :</source>
-        <translation type="unfinished">Police :</translation>
+        <translation>Yazı Tipi :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="47"/>
         <source>°</source>
-        <translation type="unfinished"></translation>
+        <translation>°</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="57"/>
         <source>Rotation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Dönüş:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="74"/>
         <source>X :</source>
-        <translation type="unfinished"></translation>
+        <translation>X :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="84"/>
         <source>Entrer votre texte ici</source>
-        <translation type="unfinished"></translation>
+        <translation>Metni buraya girin</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="97"/>
         <source>Couleur :</source>
-        <translation type="unfinished">Renk :</translation>
+        <translation>Renk :</translation>
     </message>
 </context>
 <context>
@@ -9792,12 +9855,12 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="230"/>
         <source>Indice Rev:</source>
-        <translation type="unfinished"></translation>
+        <translation>Rev İndeksi:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="244"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disponible en tant que %plant pour les modèles de cartouches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Antet şablonları için %plant olarak mevcut&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="251"/>
@@ -9885,7 +9948,7 @@ Aşağıdaki değişkenler kullanılabilir:
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="383"/>
         <source>Localisation:</source>
-        <translation type="unfinished"></translation>
+        <translation>Konum:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="406"/>
@@ -9910,7 +9973,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="297"/>
         <source>Dupliquer et éditer ce modèle</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bu şablonu çoğalt ve düzenle</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="302"/>
@@ -10082,7 +10145,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="423"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : numéro du folio précédent&lt;/li&gt;&lt;li&gt;%{next-folio-num} : numéro du folio suivant&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Varsayılan olarak aşağıdaki değişkenler kullanılabilir :&lt;ul&gt;&lt;li&gt;%{author}: sayfa yazarı &lt;/li&gt;&lt;li&gt;%{date}: sayfa tarihi &lt;/li&gt;&lt;li&gt;%{title}: folio title &lt;/li&gt;&lt;li&gt;%{filename}: proje dosya adı&lt;/li&gt;&lt;li&gt;%{plant}: kurulumun adı (=) sayfanın bulunduğu &lt;/li&gt;&lt;li&gt;%{locmach}: Yerin adı  (+) sayfanın olduğu &lt;/li&gt;&lt;li&gt;%{indexrev} : sayfanın index revizyonu &lt;/li&gt;&lt;li&gt;%{version}: yazılım versiyonu &lt;/li&gt;&lt;li&gt;%{folio}: sayfa numarası &lt;/li&gt;&lt;li&gt;%{folio-id}: projenin sayfa pozisyonu &lt;/li&gt;&lt;li&gt;%{folio-total }: projedeki toplam sayfa sayısı &lt;/li&gt;&lt;li&gt;%{previous-folio-num}: bir önceki sayfanın numarası &lt;/li&gt;&lt;li&gt;%{next-folio-num}: bir sonraki sayfanın numarası &lt;/li&gt;&lt;li&gt;% {projecttitle}: proje başlığı &lt;/li&gt;&lt;li&gt;%{projectpath}: proje yolu &lt;/li&gt;&lt;li&gt;%{projectfilename}:dosya adı &lt;/li&gt;&lt;li&gt;%{saveddate}: dosya kaydedilme tarihi &lt;/li&gt;&lt;li&gt;%{savedtime}: dosya kaydedilme zamanı &lt;/li&gt;&lt;li&gt;%{savedfilename}: kaydedilmiş dosya adı &lt;/li&gt;&lt;li&gt;%{savedfilepath}: kaydedilmiş dosya yolu &lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="455"/>
@@ -10299,7 +10362,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <location filename="../sources/titleblock/templateview.cpp" line="536"/>
         <source>Ajouter une ligne (avant)</source>
         <comment>context menu</comment>
-        <translation>Bir satır ekle (önce)</translation>
+        <translation>Bir hat ekle (önce)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="537"/>
@@ -10461,7 +10524,7 @@ Maksimum uzunluk :%2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="90"/>
         <source>XRef slave position</source>
-        <translation type="unfinished"></translation>
+        <translation>Xref slave pozisyonu</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="106"/>
@@ -10568,27 +10631,27 @@ Maksimum uzunluk :%2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="104"/>
         <source>Top</source>
-        <translation type="unfinished"></translation>
+        <translation>Üst</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="105"/>
         <source>Bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="106"/>
         <source>Left</source>
-        <translation type="unfinished"></translation>
+        <translation>Sol</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="107"/>
         <source>Rigth</source>
-        <translation type="unfinished"></translation>
+        <translation>Sağ</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="108"/>
         <source>Text alignment</source>
-        <translation type="unfinished"></translation>
+        <translation>Metin Hizalama</translation>
     </message>
 </context>
 <context>
@@ -10766,52 +10829,52 @@ Maksimum uzunluk :%2px
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="14"/>
         <source>Rechercher/Remplacer avancé</source>
-        <translation type="unfinished"></translation>
+        <translation>Gelişmiş Bul / Değiştir</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="27"/>
         <source>par :</source>
-        <translation type="unfinished"></translation>
+        <translation>ile :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="34"/>
         <source>Remplacer :</source>
-        <translation type="unfinished"></translation>
+        <translation>Değiştir :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="51"/>
         <source>Qui :</source>
-        <translation type="unfinished"></translation>
+        <translation>Neyi :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="58"/>
         <source>Texte ou expression régulière</source>
-        <translation type="unfinished"></translation>
+        <translation>Metin veya normal ifade</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="69"/>
         <source>Folio</source>
-        <translation type="unfinished">Sayfa</translation>
+        <translation>Sayfa</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="74"/>
         <source>Élément</source>
-        <translation type="unfinished">Öğe</translation>
+        <translation>Öğe</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="79"/>
         <source>Conducteur</source>
-        <translation type="unfinished">İletken</translation>
+        <translation>İletken</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="84"/>
         <source>Texte indépendant</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağımsız Metin</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="92"/>
         <source>Quoi :</source>
-        <translation type="unfinished"></translation>
+        <translation>Ne ile:</translation>
     </message>
 </context>
 </TS>
