@@ -92,7 +92,11 @@ QETApp::QETApp() :
 
 	setSplashScreenStep(tr("Chargement... Initialisation du cache des collections d'éléments", "splash screen caption"));
 	if (!collections_cache_) {
-		QString cache_path = QETApp::configDir() + "/elements_cache.sqlite";
+	#if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
+	QString cache_path = (QDir::homePath() + "/Application Data/qet/elements_cache.sqlite";
+	#else
+	QString cache_path = QETApp::configDir() + "/elements_cache.sqlite";
+	#endif
 		collections_cache_ = new ElementsCollectionCache(cache_path, this);
 		collections_cache_->setLocale(langFromSetting());
 	}
