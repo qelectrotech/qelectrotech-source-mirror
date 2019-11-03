@@ -136,6 +136,7 @@ class Element : public QetGraphicsItem
 		virtual void initLink          (QETProject *);
 		QList<Element *> linkedElements ();
 		virtual kind linkType() const {return m_link_type;} // @return the linkable type
+        QString linkTypeToString() const;
 		void newUuid() {m_uuid = QUuid::createUuid();} 	//create new uuid for this element
 
 	protected:

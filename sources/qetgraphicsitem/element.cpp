@@ -1387,7 +1387,28 @@ void Element::initLink(QETProject *prj)
 	foreach (Element *elmt, ep.fromUuids(tmp_uuids_link)) {
 		elmt->linkToElement(this);
 	}
-	tmp_uuids_link.clear();
+    tmp_uuids_link.clear();
+}
+
+QString Element::linkTypeToString() const
+{
+    switch (m_link_type)
+    {
+        case Simple:
+            return "Simple";
+        case NextReport :
+            return "NextReport";
+        case PreviousReport:
+            return "PreviousReport";
+        case Master:
+            return "Master";
+        case Slave:
+            return "Slave";
+        case Terminale:
+            return "Terminale";
+        default:
+            return "Unknow";
+    }
 }
 
 /**

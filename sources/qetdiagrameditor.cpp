@@ -55,6 +55,7 @@
 #include <KAutoSaveFile>
 
 #include "elementscollectionmodel.h"
+#include "bomexportdialog.h"
 
 
 /**
@@ -392,12 +393,11 @@ void QETDiagramEditor::setUpActions()
 			current_project->addNewDiagramFolioList();
 		}
 	});
-	
 		//Export nomenclature to CSV
 	m_project_nomenclature = new QAction(QET::Icons::DocumentSpreadsheet, tr("Exporter une nomenclature"), this);
 	connect(m_project_nomenclature, &QAction::triggered, [this]() {
-		nomenclature nomencl(currentProjectView()->project(), this);
-		nomencl.saveToCSVFile();
+        BOMExportDialog bom(currentProjectView()->project(), this);
+        bom.exec();
 	});
 	
 		//Lauch the plugin of terminal generator
