@@ -4276,8 +4276,8 @@ Tension/protocole : %1</source>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="276"/>
         <source>%n conducteurs composent le potentiel suivant :</source>
         <translation>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>%n conducteur compose le potentiel suivant :</numerusform>
+            <numerusform>%n conducteurs composent le potentiel suivant :</numerusform>
         </translation>
     </message>
     <message>
@@ -7200,8 +7200,8 @@ Que désirez vous faire ?</source>
         <source>%n texte(s) d&apos;élément</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>%n texte d&apos;élément</numerusform>
+            <numerusform>%n textes d&apos;élément</numerusform>
         </translation>
     </message>
     <message>
@@ -8093,8 +8093,8 @@ Que désirez vous faire ?</source>
         <source>Ajouter %n conducteur(s)</source>
         <comment>add a numbers of conductor one or more</comment>
         <translation>
-            <numerusform>dans %n conducteur</numerusform>
-            <numerusform>dans %n conducteurs</numerusform>
+            <numerusform>Ajouter %n conducteur</numerusform>
+            <numerusform>Ajouter %n conducteurs</numerusform>
         </translation>
     </message>
     <message>
