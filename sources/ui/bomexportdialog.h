@@ -54,7 +54,7 @@ class BOMExportDialog : public QDialog
         void on_m_save_current_conf_pb_clicked();
         void on_m_load_pb_clicked();
 
-private:
+    private:
         void setUpItems();
         QString getBom();
         QString headers() const;

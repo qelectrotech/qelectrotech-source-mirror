@@ -435,5 +435,37 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>m_var_list</sender>
+   <signal>itemDoubleClicked(QListWidgetItem*)</signal>
+   <receiver>m_add_pb</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>165</x>
+     <y>173</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>342</x>
+     <y>158</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_choosen_list</sender>
+   <signal>itemDoubleClicked(QListWidgetItem*)</signal>
+   <receiver>m_remove_pb</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>519</x>
+     <y>173</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>342</x>
+     <y>188</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
 </ui>
