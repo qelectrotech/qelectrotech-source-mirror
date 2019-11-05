@@ -74,8 +74,8 @@
         <location filename="../sources/aboutqet.cpp" line="137"/>
         <location filename="../sources/aboutqet.cpp" line="138"/>
         <location filename="../sources/aboutqet.cpp" line="141"/>
-        <location filename="../sources/aboutqet.cpp" line="215"/>
-        <location filename="../sources/aboutqet.cpp" line="218"/>
+        <location filename="../sources/aboutqet.cpp" line="216"/>
+        <location filename="../sources/aboutqet.cpp" line="219"/>
         <source>Développement</source>
         <translation>Разработка</translation>
     </message>
@@ -172,60 +172,61 @@
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="182"/>
+        <location filename="../sources/aboutqet.cpp" line="183"/>
         <source>Traduction en Turc</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="183"/>
+        <location filename="../sources/aboutqet.cpp" line="184"/>
         <source>Traduction en hongrois</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="203"/>
+        <location filename="../sources/aboutqet.cpp" line="204"/>
         <source>Paquets Fedora et Red Hat</source>
         <translatorcomment>пакеты/архивы?</translatorcomment>
         <translation>Пакеты для Fedora и Red Hat</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="204"/>
+        <location filename="../sources/aboutqet.cpp" line="205"/>
         <source>Paquets Mageia</source>
         <translatorcomment>пакеты/архивы?</translatorcomment>
         <translation>Пакеты для Mageia</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="208"/>
         <location filename="../sources/aboutqet.cpp" line="209"/>
+        <location filename="../sources/aboutqet.cpp" line="210"/>
         <source>Paquets Gentoo</source>
         <translatorcomment>пакеты/архивы?</translatorcomment>
         <translation>Пакеты для Gentoo</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="210"/>
+        <location filename="../sources/aboutqet.cpp" line="211"/>
         <source>Paquets OS/2</source>
         <translatorcomment>пакеты/архивы?</translatorcomment>
         <translation>Пакеты для OS/2</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="211"/>
+        <location filename="../sources/aboutqet.cpp" line="212"/>
         <source>Paquets FreeBSD</source>
         <translatorcomment>пакеты/архивы?</translatorcomment>
         <translation>Пакеты для FreeBSD</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="212"/>
+        <location filename="../sources/aboutqet.cpp" line="213"/>
         <source>Paquets MAC OS X</source>
         <translation>Пакеты для MAC OS X</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="213"/>
+        <location filename="../sources/aboutqet.cpp" line="214"/>
         <source>Paquets Archlinux AUR</source>
         <translatorcomment>пакеты/архивы?</translatorcomment>
         <translation>Пакеты для Archlinux AUR</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="205"/>
         <location filename="../sources/aboutqet.cpp" line="206"/>
         <location filename="../sources/aboutqet.cpp" line="207"/>
+        <location filename="../sources/aboutqet.cpp" line="208"/>
         <source>Paquets Debian</source>
         <translatorcomment>пакеты/архивы?</translatorcomment>
         <translation>Пакеты для Debian</translation>
@@ -237,18 +238,18 @@
         <translation type="unfinished">2006-2016 Разработчики QElectroTech {2006-2017 ?} {2006-2019 ?}</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="214"/>
+        <location filename="../sources/aboutqet.cpp" line="215"/>
         <source>Icônes</source>
         <translation>Значки</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="216"/>
         <location filename="../sources/aboutqet.cpp" line="217"/>
+        <location filename="../sources/aboutqet.cpp" line="218"/>
         <source>Documentation</source>
         <translation>Документация</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="219"/>
+        <location filename="../sources/aboutqet.cpp" line="220"/>
         <source>Collection d&apos;éléments</source>
         <translation>Коллекция элементов</translation>
     </message>
@@ -258,12 +259,17 @@
         <translation>Конвертер DXF</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="220"/>
+        <location filename="../sources/aboutqet.cpp" line="221"/>
         <source>Python plugin qet-tb-generator</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="237"/>
+        <location filename="../sources/aboutqet.cpp" line="222"/>
+        <source>Paquets Snap</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="239"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>Эта программа распространяется на условиях лицкезии GNU/GPL.</translation>
     </message>
@@ -493,6 +499,168 @@
 -Update Only Existent: only existent Elements will be updated. New Elements will be assigned their formula but will not update once created.
 -Disable: both New and Existent Element labels will not be updated. This is valid for new folios as well.
 Note: These options DO NOT allow or block Auto Numberings, only their Update Policy.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>BOMExportDialog</name>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="14"/>
+        <source>Export liste de matériel.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="38"/>
+        <source>Informations disponible</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="48"/>
+        <source>Informations à exporter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="88"/>
+        <source>Monter la sélection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="105"/>
+        <source>Ajouter la sélection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="119"/>
+        <source>Supprimer la sélection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="133"/>
+        <source>Descendre la sélection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="187"/>
+        <source>Type d&apos;éléments</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="196"/>
+        <source>Tous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="206"/>
+        <source>Bornier</source>
+        <translation type="unfinished">Терминальный блок</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="216"/>
+        <source>Bouton et commutateur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="229"/>
+        <source>Mise en page</source>
+        <translation type="unfinished">Макет страницы</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="244"/>
+        <source>Chaque élément portant la même référence sera listé</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="247"/>
+        <source>Formater en tant que nomenclature</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="257"/>
+        <source>Une même référence utilisé par plusieurs éléments ne sera listé qu&apos;une fois</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="260"/>
+        <source>Formater en tant que liste de matériel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="298"/>
+        <source>Ouvrir la configuration sélectionné</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="312"/>
+        <source>Inclure les en-têtes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="335"/>
+        <source>Sauvegarder la configuration actuelle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="367"/>
+        <source>Requête SQL personnalisée</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="377"/>
+        <source>Requête SQL :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="70"/>
+        <source>nomenclature_</source>
+        <translation type="unfinished">документация_</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="74"/>
+        <source>Enregister sous... </source>
+        <translation type="unfinished">Сохранить как ...</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="74"/>
+        <source>Fichiers csv (*.csv)</source>
+        <translation type="unfinished">Файлы csv (*.csv)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="83"/>
+        <source>Erreur</source>
+        <translation type="unfinished">Ошибка</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="84"/>
+        <source>Impossible de remplacer le fichier!
+
+</source>
+        <translation type="unfinished">Невозможно заменить файл!
+
+</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="111"/>
+        <source>Position</source>
+        <translation type="unfinished">Положение</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="111"/>
+        <source>Titre du folio</source>
+        <translation type="unfinished">Названия страниц</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="111"/>
+        <source>Position de folio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="111"/>
+        <source>Numéro de folio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="111"/>
+        <source>Quantité (Numéro d&apos;article)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4382,331 +4550,331 @@ Voulez-vous enregistrer les modifications ?</source>
         <translation>Загрузка...Инициализация кэша коллекций элементов</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="102"/>
+        <location filename="../sources/qetapp.cpp" line="103"/>
         <source>Chargement... Éditeur de schéma</source>
         <comment>splash screen caption</comment>
         <translation>Загрузка... Редактор страниц</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="106"/>
+        <location filename="../sources/qetapp.cpp" line="107"/>
         <source>Chargement... Ouverture des fichiers</source>
         <comment>splash screen caption</comment>
         <translation>Загрузка... Открытие файлов</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="172"/>
+        <location filename="../sources/qetapp.cpp" line="173"/>
         <source>LTR</source>
         <comment>Translate this string to RTL if you are translating to a Right-to-Left language, else translate to LTR</comment>
         <translation>LTR</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="324"/>
+        <location filename="../sources/qetapp.cpp" line="325"/>
         <source>Label</source>
         <translation>Метка</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="328"/>
+        <location filename="../sources/qetapp.cpp" line="329"/>
         <source>Commentaire</source>
         <translation>Аннотация</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="336"/>
+        <location filename="../sources/qetapp.cpp" line="337"/>
         <source>Fabricant</source>
         <translation>Производитель</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="331"/>
+        <location filename="../sources/qetapp.cpp" line="332"/>
         <source>Bloc auxiliaire 1</source>
         <translation>Внешний блок 1</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="332"/>
+        <location filename="../sources/qetapp.cpp" line="333"/>
         <source>Bloc auxiliaire 2</source>
         <translation>Внешний блок 2</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="334"/>
+        <location filename="../sources/qetapp.cpp" line="335"/>
         <source>Description textuelle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="335"/>
+        <location filename="../sources/qetapp.cpp" line="336"/>
         <source>Numéro d&apos;article</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="337"/>
+        <location filename="../sources/qetapp.cpp" line="338"/>
         <source>Numéro de commande</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="339"/>
+        <location filename="../sources/qetapp.cpp" line="340"/>
         <source>Fournisseur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="338"/>
+        <location filename="../sources/qetapp.cpp" line="339"/>
         <source>Numéro interne</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="323"/>
+        <location filename="../sources/qetapp.cpp" line="324"/>
         <source>Formule du label</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="325"/>
-        <location filename="../sources/qetapp.cpp" line="438"/>
-        <source>Installation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="326"/>
         <location filename="../sources/qetapp.cpp" line="439"/>
+        <source>Installation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="327"/>
+        <location filename="../sources/qetapp.cpp" line="440"/>
         <source>Localisation</source>
         <translation>Расположение</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="329"/>
-        <location filename="../sources/qetapp.cpp" line="403"/>
+        <location filename="../sources/qetapp.cpp" line="330"/>
+        <location filename="../sources/qetapp.cpp" line="404"/>
         <source>Fonction</source>
         <translation>Функция</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="330"/>
-        <location filename="../sources/qetapp.cpp" line="404"/>
+        <location filename="../sources/qetapp.cpp" line="331"/>
+        <location filename="../sources/qetapp.cpp" line="405"/>
         <source>Tension / Protocole</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="340"/>
+        <location filename="../sources/qetapp.cpp" line="341"/>
         <source>Quantité</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="341"/>
+        <location filename="../sources/qetapp.cpp" line="342"/>
         <source>Unité</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="401"/>
+        <location filename="../sources/qetapp.cpp" line="402"/>
         <source>Formule du texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="402"/>
+        <location filename="../sources/qetapp.cpp" line="403"/>
         <source>Texte</source>
         <translation type="unfinished">Текст</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="434"/>
+        <location filename="../sources/qetapp.cpp" line="435"/>
         <source>Titre</source>
         <translation type="unfinished">Название</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="435"/>
+        <location filename="../sources/qetapp.cpp" line="436"/>
         <source>Auteur</source>
         <translation type="unfinished">Автор</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="436"/>
+        <location filename="../sources/qetapp.cpp" line="437"/>
         <source>Fichier</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="437"/>
+        <location filename="../sources/qetapp.cpp" line="438"/>
         <source>Folio</source>
         <translation type="unfinished">Страница</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="440"/>
+        <location filename="../sources/qetapp.cpp" line="441"/>
         <source>Indice Rev</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="451"/>
+        <location filename="../sources/qetapp.cpp" line="452"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates collection provided by QElectroTech</comment>
         <translatorcomment>?</translatorcomment>
         <translation>Штампы QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="465"/>
+        <location filename="../sources/qetapp.cpp" line="466"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s title block templates collection</comment>
         <translation>Штампы пользователя</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1079"/>
+        <location filename="../sources/qetapp.cpp" line="1080"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1080"/>
+        <location filename="../sources/qetapp.cpp" line="1081"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation>QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1081"/>
+        <location filename="../sources/qetapp.cpp" line="1082"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Схема</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1082"/>
+        <location filename="../sources/qetapp.cpp" line="1083"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Электрическая</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1083"/>
+        <location filename="../sources/qetapp.cpp" line="1084"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1482"/>
+        <location filename="../sources/qetapp.cpp" line="1483"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
         <translation>Настройка QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1593"/>
+        <location filename="../sources/qetapp.cpp" line="1594"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>Загрузка...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1658"/>
+        <location filename="../sources/qetapp.cpp" line="1659"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>Загрузка...Значок в трее</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1660"/>
+        <location filename="../sources/qetapp.cpp" line="1661"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1662"/>
+        <location filename="../sources/qetapp.cpp" line="1663"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Выход</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1663"/>
+        <location filename="../sources/qetapp.cpp" line="1664"/>
         <source>&amp;Masquer</source>
         <translation>&amp;Скрыть</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1664"/>
+        <location filename="../sources/qetapp.cpp" line="1665"/>
         <source>&amp;Restaurer</source>
         <translation>&amp;Показать</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1665"/>
+        <location filename="../sources/qetapp.cpp" line="1666"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>&amp;Скрыть редактор схем</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1666"/>
+        <location filename="../sources/qetapp.cpp" line="1667"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>&amp;Показать редактор схем</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1667"/>
+        <location filename="../sources/qetapp.cpp" line="1668"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Скрыть редактор элементов</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1668"/>
+        <location filename="../sources/qetapp.cpp" line="1669"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Показать редактор элементов</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1669"/>
+        <location filename="../sources/qetapp.cpp" line="1670"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Скрыть редактор штампов</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1670"/>
+        <location filename="../sources/qetapp.cpp" line="1671"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Показать редактор штампов</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1671"/>
+        <location filename="../sources/qetapp.cpp" line="1672"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>&amp;Новый редактор схем</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1672"/>
+        <location filename="../sources/qetapp.cpp" line="1673"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>&amp;Новый редактор элементов</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1674"/>
+        <location filename="../sources/qetapp.cpp" line="1675"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>Закрыть QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1675"/>
+        <location filename="../sources/qetapp.cpp" line="1676"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>Свернуть QElectroTech в трей</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1676"/>
+        <location filename="../sources/qetapp.cpp" line="1677"/>
         <source>Restaurer QElectroTech</source>
         <translation>Восстановить QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1692"/>
+        <location filename="../sources/qetapp.cpp" line="1693"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1761"/>
+        <location filename="../sources/qetapp.cpp" line="1762"/>
         <source>Éditeurs de schémas</source>
         <translation>Редакторы схем</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1770"/>
+        <location filename="../sources/qetapp.cpp" line="1771"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>Редакторы элементов</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1780"/>
+        <location filename="../sources/qetapp.cpp" line="1781"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
         <translatorcomment>??</translatorcomment>
         <translation>Редакторы штампов</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1821"/>
+        <location filename="../sources/qetapp.cpp" line="1822"/>
         <source>&lt;b&gt;Le fichier de restauration suivant a été trouvé,&lt;br&gt;Voulez-vous l&apos;ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1824"/>
+        <location filename="../sources/qetapp.cpp" line="1825"/>
         <source>&lt;b&gt;Les fichiers de restauration suivant on été trouvé,&lt;br&gt;Voulez-vous les ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1838"/>
+        <location filename="../sources/qetapp.cpp" line="1839"/>
         <source>Fichier de restauration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1916"/>
+        <location filename="../sources/qetapp.cpp" line="1917"/>
         <source>Usage : </source>
         <translation>Использование: </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1916"/>
+        <location filename="../sources/qetapp.cpp" line="1917"/>
         <source> [options] [fichier]...
 
 </source>
@@ -4715,7 +4883,7 @@ Voulez-vous enregistrer les modifications ?</source>
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1917"/>
+        <location filename="../sources/qetapp.cpp" line="1918"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -4732,28 +4900,28 @@ Options disponibles :
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1923"/>
+        <location filename="../sources/qetapp.cpp" line="1924"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=DIR     Задаёт каталог с коллекцией элементов
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1926"/>
+        <location filename="../sources/qetapp.cpp" line="1927"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
         <translation>  --common-tbt-dir=DIR          Задаёт каталог с коллекцией штампов
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1929"/>
+        <location filename="../sources/qetapp.cpp" line="1930"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=DIR              Задаёт каталог конфигураций
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1931"/>
+        <location filename="../sources/qetapp.cpp" line="1932"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=DIR                Задаёт каталог с языковыми файлами
@@ -4763,30 +4931,30 @@ Options disponibles :
 <context>
     <name>QETDiagramEditor</name>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="95"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="96"/>
         <source>QElectroTech</source>
         <comment>window title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="97"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="98"/>
         <source>QElectroTech</source>
         <comment>status bar message</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="201"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="202"/>
         <source>Annulations</source>
         <comment>dock title</comment>
         <translation>История</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="197"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="198"/>
         <source>Aucune modification</source>
         <translation>Нет изменений</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="198"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="199"/>
         <source>Cliquez sur une action pour revenir en arrière dans l&apos;édition de votre schéma</source>
         <comment>Status tip</comment>
         <translation>Выберите действие, чтобы откатить изменения, сделанные в схеме</translation>
@@ -4817,85 +4985,85 @@ Options disponibles :
         <translation>Сохранить как</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="242"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="243"/>
         <source>E&amp;xporter</source>
         <translation>&amp;Экспорт</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="199"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="200"/>
         <source>Ce panneau liste les différentes actions effectuées sur le folio courant. Cliquer sur une action permet de revenir à l&apos;état du schéma juste après son application.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>В этой панели показаны различные изменения на текущей странице. Выбрав изменение вы можете вернуть станицу в состояние сразу после того, как оно произошло.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="253"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="254"/>
         <source>Imprimer</source>
         <translation>Печать</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="264"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="265"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Выход</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="270"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="271"/>
         <source>Annuler</source>
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="275"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="276"/>
         <source>Refaire</source>
         <translation>Повторить</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="281"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="282"/>
         <source>Co&amp;uper</source>
         <translation>&amp;Вырезать</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="282"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="283"/>
         <source>Cop&amp;ier</source>
         <translation>&amp;Копировать</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="283"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="284"/>
         <source>C&amp;oller</source>
         <translation>Вст&amp;авить</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="325"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="326"/>
         <source>Couleur de fond blanc/gris</source>
         <comment>Tool tip of white/grey background button</comment>
         <translation>Цвет фона белый / серый</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="326"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="327"/>
         <source>Affiche la couleur de fond du folio en blanc ou en gris</source>
         <comment>Status tip of white/grey background button</comment>
         <translation>Показывать фон страницы белым или серым</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="335"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="336"/>
         <source>Afficher la grille</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="336"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="337"/>
         <source>Affiche ou masque la grille des folios</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="348"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="349"/>
         <source>Propriétés du folio</source>
         <translation>Свойства страницы</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="366"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="367"/>
         <source>Ajouter un folio</source>
         <translation>Добавить страницу</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="375"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="376"/>
         <source>Supprimer le folio</source>
         <translation>Удалить эту страницу</translation>
     </message>
@@ -5069,7 +5237,7 @@ Options disponibles :
         <translation>Найти в панели</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="307"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="308"/>
         <source>Réinitialiser les conducteurs</source>
         <translation>Восстановить проводник</translation>
     </message>
@@ -5094,17 +5262,17 @@ Options disponibles :
         <translation>Удалить колонку</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="360"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="361"/>
         <source>Propriétés du projet</source>
         <translation>Свойства проекта</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="379"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="380"/>
         <source>Nettoyer le projet</source>
         <translation>Очистить проект</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="389"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="390"/>
         <source>Ajouter un sommaire</source>
         <translation>Добавить заключение</translation>
     </message>
@@ -5224,12 +5392,12 @@ Options disponibles :
         <translation>Добавить ломаную линию</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="243"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="244"/>
         <source>Ctrl+Shift+X</source>
         <translation>Ctrl+Shift+X</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="265"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="266"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
@@ -5249,17 +5417,17 @@ Options disponibles :
         <translation>Ctrl+Пробел</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="308"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="309"/>
         <source>Ctrl+K</source>
         <translation>Ctrl+K</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="349"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="350"/>
         <source>Ctrl+L</source>
         <translation>Ctrl+L</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="367"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="368"/>
         <source>Ctrl+T</source>
         <translation>Ctrl+T</translation>
     </message>
@@ -5325,31 +5493,31 @@ Options disponibles :
         <translation>Ошибка</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="266"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="267"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <comment>status bar tip</comment>
         <translation>Закрывает QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="273"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="274"/>
         <source>Annule l&apos;action précédente</source>
         <comment>status bar tip</comment>
         <translation>Отменяет последнее действие</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="278"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="279"/>
         <source>Restaure l&apos;action annulée</source>
         <comment>status bar tip</comment>
         <translation>Выполняет отменённое действие</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="289"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="290"/>
         <source>Transfère les éléments sélectionnés dans le presse-papier</source>
         <comment>status bar tip</comment>
         <translation>Копирует выделенные элементы в буфер обмена</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="290"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="291"/>
         <source>Copie les éléments sélectionnés dans le presse-papier</source>
         <comment>status bar tip</comment>
         <translation>Копирует выделенные элементы</translation>
@@ -5361,7 +5529,7 @@ Options disponibles :
         <translation>Инвертирует выделение</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="309"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="310"/>
         <source>Recalcule les chemins des conducteurs sans tenir compte des modifications</source>
         <comment>status bar tip</comment>
         <translation>Пересчитывает траекторию проводника игнорируя изменения сделанные пользователем</translation>
@@ -5389,24 +5557,24 @@ Options disponibles :
         <translation>Повернуть выбранный текст на определённый угол</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="316"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="317"/>
         <source>Création automatique de conducteur(s)</source>
         <comment>Tool tip of auto conductor</comment>
         <translation>Автоматическое создание проводников</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="146"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="147"/>
         <source>Projets</source>
         <comment>dock title</comment>
         <translation type="unfinished">Проекты</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="177"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="178"/>
         <source>Collections</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="317"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="318"/>
         <source>Utiliser la création automatique de conducteur(s) quand cela est possible</source>
         <comment>Status tip of auto conductor</comment>
         <translation>Использовать автоматическое создание проводников где возможно</translation>
@@ -5536,25 +5704,25 @@ Options disponibles :
         <translation>Инструменты</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="244"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="245"/>
         <source>Exporte le folio courant dans un autre format</source>
         <comment>status bar tip</comment>
         <translation>Экспортировать текущую страницу в другой формат</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="255"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="256"/>
         <source>Imprime un ou plusieurs folios du projet courant</source>
         <comment>status bar tip</comment>
         <translation>Печатать одну или более страниц текущего проекта</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="291"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="292"/>
         <source>Place les éléments du presse-papier sur le folio</source>
         <comment>status bar tip</comment>
         <translation>Вставляет на страницу элементы из буфера обмена</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="350"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="351"/>
         <source>Édite les propriétés du folio (dimensions, informations du cartouche, propriétés des conducteurs...)</source>
         <comment>status bar tip</comment>
         <translation>Редактирует свойства страницы (размеры, информацию шаблонов, свойства проводников...)</translation>
