@@ -238,7 +238,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="222"/>
         <source>Paquets Snap</source>
-        <translation type="unfinished"></translation>
+        <translation>Snap pakke</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="139"/>
@@ -500,161 +500,161 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="14"/>
         <source>Export liste de matériel.</source>
-        <translation type="unfinished"></translation>
+        <translation>Eksportere materiale liste.</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="38"/>
         <source>Informations disponible</source>
-        <translation type="unfinished"></translation>
+        <translation>Information tilgængelig</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="48"/>
         <source>Informations à exporter</source>
-        <translation type="unfinished"></translation>
+        <translation>Eksportere information</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="88"/>
         <source>Monter la sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>Tilpasse udvalgte</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="105"/>
         <source>Ajouter la sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>Tilføje udvalgte</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="119"/>
         <source>Supprimer la sélection</source>
-        <translation type="unfinished">Fjern valg</translation>
+        <translation>Fjerne udvalgte</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="133"/>
         <source>Descendre la sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>Gå ned i udvalgte</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="187"/>
         <source>Type d&apos;éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Symbol type</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="196"/>
         <source>Tous</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="206"/>
         <source>Bornier</source>
-        <translation type="unfinished">Klemme</translation>
+        <translation>Klemme</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="216"/>
         <source>Bouton et commutateur</source>
-        <translation type="unfinished"></translation>
+        <translation>Trykknap og kontakt</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="229"/>
         <source>Mise en page</source>
-        <translation type="unfinished">Side indstilling</translation>
+        <translation>Side indstilling</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="244"/>
         <source>Chaque élément portant la même référence sera listé</source>
-        <translation type="unfinished"></translation>
+        <translation>Hvert symbol, der har samme henvisning, vil blive vist</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="247"/>
         <source>Formater en tant que nomenclature</source>
-        <translation type="unfinished"></translation>
+        <translation>Formatere som BOM</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="257"/>
         <source>Une même référence utilisé par plusieurs éléments ne sera listé qu&apos;une fois</source>
-        <translation type="unfinished"></translation>
+        <translation>Den samme henvisning, der bruges af flere symboler, vises kun en gang</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="260"/>
         <source>Formater en tant que liste de matériel</source>
-        <translation type="unfinished"></translation>
+        <translation>Formatere som en materiale liste</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="298"/>
         <source>Ouvrir la configuration sélectionné</source>
-        <translation type="unfinished"></translation>
+        <translation>Åbne valgt konfiguration</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="312"/>
         <source>Inclure les en-têtes</source>
-        <translation type="unfinished"></translation>
+        <translation>Medtag overskrifter</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="335"/>
         <source>Sauvegarder la configuration actuelle</source>
-        <translation type="unfinished"></translation>
+        <translation>Gem aktuel konfiguration</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="367"/>
         <source>Requête SQL personnalisée</source>
-        <translation type="unfinished"></translation>
+        <translation>Tilpasset SQL forespørgsel</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="377"/>
         <source>Requête SQL :</source>
-        <translation type="unfinished"></translation>
+        <translation>SQL forespørgsel:</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="70"/>
         <source>nomenclature_</source>
-        <translation type="unfinished">bom_</translation>
+        <translation>BOM_</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="74"/>
         <source>Enregister sous... </source>
-        <translation type="unfinished">Gem som... </translation>
+        <translation>Gem som... </translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="74"/>
         <source>Fichiers csv (*.csv)</source>
-        <translation type="unfinished">CSV filer (*.csv)</translation>
+        <translation>CSV filer (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="83"/>
         <source>Erreur</source>
-        <translation type="unfinished">Fejl</translation>
+        <translation>Fejl</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="84"/>
         <source>Impossible de remplacer le fichier!
 
 </source>
-        <translation type="unfinished">Kan ikke erstatte fil!
+        <translation>Kan ikke erstatte fil!
 
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="111"/>
         <source>Position</source>
-        <translation type="unfinished">Placering</translation>
+        <translation>Placering</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="111"/>
         <source>Titre du folio</source>
-        <translation type="unfinished">Ark titel</translation>
+        <translation>Ark titel</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="111"/>
         <source>Position de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Ark placering</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="111"/>
         <source>Numéro de folio</source>
-        <translation type="unfinished">Ark nummer</translation>
+        <translation>Ark nummer</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="111"/>
         <source>Quantité (Numéro d&apos;article)</source>
-        <translation type="unfinished"></translation>
+        <translation>Mængde (artikelnummer)</translation>
     </message>
 </context>
 <context>
@@ -882,7 +882,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="81"/>
         <source>Afficher un texte de potentiel par folio. </source>
-        <translation>Vis potentiale tekst på ark.</translation>
+        <translation>Vis potentiale tekst på ark. </translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="30"/>
@@ -1925,7 +1925,8 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="342"/>
         <source>Élement
 </source>
-        <translation>Symbol</translation>
+        <translation>Symbol
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="345"/>
@@ -2722,7 +2723,8 @@ En nummereringsvariabel indbefatter: en type, en værdi og et trin.
 Hvis det ciffer, der er defineret i feltet Værdi, har færre cifre end den valgte type, bliver den forud for en eller to 0&apos;er for at respektere dens type.
 
 -Type &quot;Tekst&quot;, repræsenterer en fast tekst.
-Feltet &quot;Incrementation&quot; anvendes ikke.</translation>
+Feltet &quot;Incrementation&quot; anvendes ikke.
+</translation>
     </message>
 </context>
 <context>
@@ -3795,12 +3797,12 @@ Brug avanceret redigering til dette.</translation>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="32"/>
         <source>x:  </source>
-        <translation>x: </translation>
+        <translation>x:  </translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="54"/>
         <source>y:  </source>
-        <translation>y: </translation>
+        <translation>y:  </translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="77"/>
@@ -6080,7 +6082,7 @@ Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory
 Besøg https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 
 &gt;&gt; Installere på Windows
-Placere DXFtoQET.exe i C:\Users\user_name\AppData\Roaming\qet\ mappe
+Placere DXFtoQET.exe i C:\Users\user_name\AppData\Roaming\qet\ mappe 
 </translation>
     </message>
     <message>
@@ -6095,7 +6097,7 @@ Put DXFtoQET.app binary on /Users/user_name/.qet/ directory
 Besøg https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 
 &gt;&gt; Installere på macOSX
-Placere DXFtoQET.app i /Users/user_name/.qet/ mappe
+Placere DXFtoQET.app i /Users/user_name/.qet/ mappe 
 </translation>
     </message>
     <message>
@@ -9178,7 +9180,7 @@ Opret tekst ved hjælp af følgende variabler:
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="20"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="133"/>
@@ -9267,7 +9269,8 @@ En nummereringsvariabel indbefatter: en type, en værdi og et trin.
 Hvis det ciffer, der er defineret i feltet Værdi, har færre cifre end den valgte type, bliver den forud for en eller to 0&apos;er for at respektere dens type.
 
 -Type &quot;Tekst&quot;, repræsenterer en fast tekst.
-Feltet &quot;Incrementation&quot; anvendes ikke.</translation>
+Feltet &quot;Incrementation&quot; anvendes ikke.
+</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="207"/>
