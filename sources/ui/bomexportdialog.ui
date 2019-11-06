@@ -230,7 +230,7 @@
          <item>
           <widget class="QRadioButton" name="m_protection_rb">
            <property name="text">
-            <string> Protection : disjoncteur, sectionneur, relais thermique</string>
+            <string>Organes de protection</string>
            </property>
           </widget>
          </item>
@@ -322,11 +322,14 @@
       </item>
       <item row="0" column="0">
        <widget class="QCheckBox" name="m_include_header_cb">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
         <property name="text">
          <string>Inclure les en-têtes</string>
         </property>
         <property name="checked">
-         <bool>true</bool>
+         <bool>false</bool>
         </property>
        </widget>
       </item>
