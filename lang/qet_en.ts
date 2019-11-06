@@ -553,52 +553,62 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <translation>Button and switch</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="229"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="226"/>
+        <source>Contacteur et relais</source>
+        <translation>Contactor and relay</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="233"/>
+        <source> Protection : disjoncteur, sectionneur, relais thermique</source>
+        <translation> Protection: circuit breaker, disconnector, thermal relay</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="243"/>
         <source>Mise en page</source>
         <translation>Page layout</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="244"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="258"/>
         <source>Chaque élément portant la même référence sera listé</source>
         <translation>Each element bearing the same reference will be listed</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="247"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="261"/>
         <source>Formater en tant que nomenclature</source>
         <translation>Format as a nomenclature</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="257"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="271"/>
         <source>Une même référence utilisé par plusieurs éléments ne sera listé qu&apos;une fois</source>
         <translation>The same reference used by several elements will only be listed once</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="260"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="274"/>
         <source>Formater en tant que liste de matériel</source>
         <translation>Format as a list of materials</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="298"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="312"/>
         <source>Ouvrir la configuration sélectionné</source>
         <translation>Open the selected configuration</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="312"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="326"/>
         <source>Inclure les en-têtes</source>
         <translation>Include headers</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="335"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="349"/>
         <source>Sauvegarder la configuration actuelle</source>
         <translation>Save the current configuration</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="367"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="381"/>
         <source>Requête SQL personnalisée</source>
         <translation>Custom SQL Query</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="377"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="391"/>
         <source>Requête SQL :</source>
         <translation>SQL request  :</translation>
     </message>
