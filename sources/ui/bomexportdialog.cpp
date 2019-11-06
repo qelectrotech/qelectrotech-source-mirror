@@ -475,6 +475,10 @@ QString BOMExportDialog::queryStr() const
         where = " WHERE element_subtype = 'commutator'";
     } else if (ui->m_terminal_rb->isChecked()) {
         where = " WHERE element_type = 'Terminale'";
+    } else if (ui->m_coil_rb->isChecked()) {
+        where = " WHERE element_subtype = 'coil'";
+    } else if (ui->m_protection_rb  ->isChecked()) {
+        where = " WHERE element_subtype = 'protection'";
     }
     QString where_bom;
     if(ui->m_format_as_bom_rb->isChecked())

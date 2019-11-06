@@ -220,6 +220,20 @@
            </property>
           </widget>
          </item>
+         <item>
+          <widget class="QRadioButton" name="m_coil_rb">
+           <property name="text">
+            <string>Contacteur et relais</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="m_protection_rb">
+           <property name="text">
+            <string> Protection : disjoncteur, sectionneur, relais thermique</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </widget>
       </item>
