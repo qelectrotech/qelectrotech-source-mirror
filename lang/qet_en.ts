@@ -504,8 +504,8 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="38"/>
-        <source>Informations disponible</source>
-        <translation>Information available</translation>
+        <source>Informations disponibles</source>
+        <translation>Available information</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="48"/>
@@ -559,8 +559,8 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="233"/>
-        <source> Protection : disjoncteur, sectionneur, relais thermique</source>
-        <translation> Protection: circuit breaker, disconnector, thermal relay</translation>
+        <source>Organes de protection</source>
+        <translation>Protection devices</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="243"/>
@@ -593,22 +593,22 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <translation>Open the selected configuration</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="326"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="329"/>
         <source>Inclure les en-têtes</source>
         <translation>Include headers</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="349"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="352"/>
         <source>Sauvegarder la configuration actuelle</source>
         <translation>Save the current configuration</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="381"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="384"/>
         <source>Requête SQL personnalisée</source>
         <translation>Custom SQL Query</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="391"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="394"/>
         <source>Requête SQL :</source>
         <translation>SQL request  :</translation>
     </message>

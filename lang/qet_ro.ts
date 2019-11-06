@@ -499,7 +499,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="38"/>
-        <source>Informations disponible</source>
+        <source>Informations disponibles</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -554,7 +554,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="233"/>
-        <source> Protection : disjoncteur, sectionneur, relais thermique</source>
+        <source>Organes de protection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -588,22 +588,22 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="326"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="329"/>
         <source>Inclure les en-têtes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="349"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="352"/>
         <source>Sauvegarder la configuration actuelle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="381"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="384"/>
         <source>Requête SQL personnalisée</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="391"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="394"/>
         <source>Requête SQL :</source>
         <translation type="unfinished"></translation>
     </message>

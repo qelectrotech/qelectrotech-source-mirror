@@ -504,8 +504,8 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="38"/>
-        <source>Informations disponible</source>
-        <translation>Information tilgængelig</translation>
+        <source>Informations disponibles</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="48"/>
@@ -559,7 +559,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="233"/>
-        <source> Protection : disjoncteur, sectionneur, relais thermique</source>
+        <source>Organes de protection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -593,22 +593,22 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <translation>Åbne valgt konfiguration</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="326"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="329"/>
         <source>Inclure les en-têtes</source>
         <translation>Medtag overskrifter</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="349"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="352"/>
         <source>Sauvegarder la configuration actuelle</source>
         <translation>Gem aktuel konfiguration</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="381"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="384"/>
         <source>Requête SQL personnalisée</source>
         <translation>Tilpasset SQL forespørgsel</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="391"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="394"/>
         <source>Requête SQL :</source>
         <translation>SQL forespørgsel:</translation>
     </message>
