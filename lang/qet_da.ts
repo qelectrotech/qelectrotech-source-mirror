@@ -505,7 +505,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="38"/>
         <source>Informations disponibles</source>
-        <translation type="unfinished"></translation>
+        <translation>Information tilgængelig</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="48"/>
@@ -555,12 +555,12 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="226"/>
         <source>Contacteur et relais</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontakt og relæ</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="233"/>
         <source>Organes de protection</source>
-        <translation type="unfinished"></translation>
+        <translation>Person beskyttelse</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="243"/>
