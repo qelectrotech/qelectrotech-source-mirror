@@ -426,6 +426,9 @@ QHash<QString, QString> BOMExportDialog::elementInfoToString(Element *elmt) cons
         else if (key == "designation_qty") {
             hash.insert(key, key);
         }
+        else if (key == "label") {
+            hash.insert(key, elmt->actualLabel());
+        }
         else {
             hash.insert(key, elmt->elementInformations()[keys_hash.value(key)].toString());
         }

@@ -100,6 +100,7 @@ class Element : public QetGraphicsItem
 		void freezeLabel(bool freeze);
 		bool isFreezeLabel() const {return m_freeze_label;}
 		void freezeNewAddedElement();
+        QString actualLabel();
 		
 		QString name() const override;
 		ElementsLocation location() const;
