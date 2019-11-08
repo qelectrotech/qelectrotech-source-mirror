@@ -103,9 +103,9 @@ void BOMExportDialog::setUpItems()
 {
     for(QString key : QETApp::elementInfoKeys())
     {
-        auto item = new QListWidgetItem(QETApp::elementTranslatedInfoKey(key), ui->m_var_list);
-        item->setData(Qt::UserRole, key.replace("-", "_")); //We must to replace "-" by "_" because "-" is a sql keyword.
-        item->setData(Qt::UserRole+1, key); //But we store the real key for easily retrieve it in the element information
+		auto item = new QListWidgetItem(QETApp::elementTranslatedInfoKey(key), ui->m_var_list);
+		item->setData(Qt::UserRole+1, key); //We store the real key before replace "-" by "_" to easily retrieve it in the element information
+		item->setData(Qt::UserRole, key.replace("-", "_")); //We must to replace "-" by "_" because "-" is a sql keyword.
     }
     QStringList other_keys({"pos", "folio_title", "folio_pos", "folio_num", "designation_qty"});
     QStringList other_translated({tr("Position"), tr("Titre du folio"), tr("Position de folio"), tr("Numéro de folio"), tr("Quantité (Numéro d'article)")});
@@ -273,7 +273,7 @@ QString BOMExportDialog::headers() const
 bool BOMExportDialog::createDataBase()
 {
         //Create a sqlite data base to sort the bom
-    m_data_base = QSqlDatabase::addDatabase("QSQLITE", "bill_of_material");
+	m_data_base = QSqlDatabase::addDatabase("QSQLITE", "bill_of_material");
     if (!m_data_base.open())
     {
         m_data_base.close();
@@ -421,7 +421,7 @@ QHash<QString, QString> BOMExportDialog::elementInfoToString(Element *elmt) cons
             hash.insert(key, QString::number(elmt->diagram()->folioIndex() + 1));
         }
         else if (key == "folio_num") {
-            hash.insert(key, elmt->diagram()->border_and_titleblock.folio());
+			hash.insert(key, elmt->diagram()->border_and_titleblock.finalfolio());
         }
         else if (key == "designation_qty") {
             hash.insert(key, key);
