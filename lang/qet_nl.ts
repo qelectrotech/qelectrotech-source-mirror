@@ -238,7 +238,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="222"/>
         <source>Paquets Snap</source>
-        <translation type="unfinished"></translation>
+        <translation>Snap-pakketten</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="139"/>
@@ -500,171 +500,171 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="14"/>
         <source>Export liste de matériel.</source>
-        <translation type="unfinished"></translation>
+        <translation>Export materiaallijst.</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="38"/>
         <source>Informations disponibles</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschikbare informatie</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="48"/>
         <source>Informations à exporter</source>
-        <translation type="unfinished"></translation>
+        <translation>Te exporteren informatie</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="88"/>
         <source>Monter la sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>Selectie omhoog verplaatsen</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="105"/>
         <source>Ajouter la sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>Selectie toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="119"/>
         <source>Supprimer la sélection</source>
-        <translation type="unfinished">Selectie verwijderen</translation>
+        <translation>Selectie verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="133"/>
         <source>Descendre la sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>Selectie omlaag verplaatsen</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="187"/>
         <source>Type d&apos;éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementtype</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="196"/>
         <source>Tous</source>
-        <translation type="unfinished"></translation>
+        <translation>Alles</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="206"/>
         <source>Bornier</source>
-        <translation type="unfinished">Terminal</translation>
+        <translation>Terminal</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="216"/>
         <source>Bouton et commutateur</source>
-        <translation type="unfinished"></translation>
+        <translation>Knoppen en bediening</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="226"/>
         <source>Contacteur et relais</source>
-        <translation type="unfinished"></translation>
+        <translation>Contactoren en relais</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="233"/>
         <source>Organes de protection</source>
-        <translation type="unfinished"></translation>
+        <translation>Bedieningsorganen</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="243"/>
         <source>Mise en page</source>
-        <translation type="unfinished">Paginaindeling</translation>
+        <translation>Paginaindeling</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="258"/>
         <source>Chaque élément portant la même référence sera listé</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle elementen met dezelfde referentie worden vermeld</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="261"/>
         <source>Formater en tant que nomenclature</source>
-        <translation type="unfinished"></translation>
+        <translation>Opmaak gelijk aan de naamgeving</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="271"/>
         <source>Une même référence utilisé par plusieurs éléments ne sera listé qu&apos;une fois</source>
-        <translation type="unfinished"></translation>
+        <translation>Referentie door verschillende elementen gebruikt, wordt slechts één keer vermeld</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="274"/>
         <source>Formater en tant que liste de matériel</source>
-        <translation type="unfinished"></translation>
+        <translation>Opmaak gelijk aan de materiaallijst</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="312"/>
         <source>Ouvrir la configuration sélectionné</source>
-        <translation type="unfinished"></translation>
+        <translation>Geselecteerde configuratie openen</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="329"/>
         <source>Inclure les en-têtes</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopregels meenemen</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="352"/>
         <source>Sauvegarder la configuration actuelle</source>
-        <translation type="unfinished"></translation>
+        <translation>Sla de huidige configuratie op</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="384"/>
         <source>Requête SQL personnalisée</source>
-        <translation type="unfinished"></translation>
+        <translation>Persoonlijke SQL-query</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="394"/>
         <source>Requête SQL :</source>
-        <translation type="unfinished"></translation>
+        <translation>SQL-query :</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="70"/>
         <source>nomenclature_</source>
-        <translation type="unfinished">naamgeving_</translation>
+        <translation>naamgeving_</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="74"/>
         <source>Enregister sous... </source>
-        <translation type="unfinished">Opslaan als ... </translation>
+        <translation>Opslaan als ... </translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="74"/>
         <source>Fichiers csv (*.csv)</source>
-        <translation type="unfinished">Bestanden csv (*.csv)</translation>
+        <translation>Bestanden csv (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="83"/>
         <source>Erreur</source>
-        <translation type="unfinished">Fout</translation>
+        <translation>Fout</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="84"/>
         <source>Impossible de remplacer le fichier!
 
 </source>
-        <translation type="unfinished">Kan bestand niet vervangen!
+        <translation>Kan het bestand niet vervangen!
 
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="111"/>
         <source>Position</source>
-        <translation type="unfinished"></translation>
+        <translation>Positie</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="111"/>
         <source>Titre du folio</source>
-        <translation type="unfinished">Bladnaam</translation>
+        <translation>Bladnaam</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="111"/>
         <source>Position de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Plaats van het blad</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="111"/>
         <source>Numéro de folio</source>
-        <translation type="unfinished">Bladnummer</translation>
+        <translation>Bladnummer</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="111"/>
         <source>Quantité (Numéro d&apos;article)</source>
-        <translation type="unfinished"></translation>
+        <translation>Hoeveelheid (Aantal artikelen)</translation>
     </message>
 </context>
 <context>

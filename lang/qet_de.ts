@@ -509,7 +509,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="38"/>
         <source>Informations disponibles</source>
-        <translation type="unfinished"></translation>
+        <translation>Verfügbare Informationen</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="48"/>
@@ -559,12 +559,12 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="226"/>
         <source>Contacteur et relais</source>
-        <translation type="unfinished"></translation>
+        <translation>Schütze und Relais</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="233"/>
         <source>Organes de protection</source>
-        <translation type="unfinished"></translation>
+        <translation>Schutzeinrichtungen</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="243"/>
