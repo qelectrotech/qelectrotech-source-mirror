@@ -183,7 +183,7 @@ class QETDiagramEditor : public QETMainWindow
 		QAction *m_remove_diagram_from_project;    ///< Delete a diagram from the current project
 		QAction *m_clean_project;          ///< Clean the content of the curent project by removing useless items
 		QAction *m_project_folio_list;    ///< Sommaire des schemas
-		QAction *m_project_nomenclature;   ///< generate nomenclature
+		QAction *m_csv_export;   ///< generate nomenclature
 		QAction *m_project_terminalBloc;   ///< generate terminal block
         QAction *m_project_export_conductor_num; ///<Export the wire num to csv
 		QAction *m_tile_window;        ///< Show MDI subwindows as tile

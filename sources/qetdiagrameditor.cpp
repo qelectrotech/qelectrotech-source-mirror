@@ -394,8 +394,8 @@ void QETDiagramEditor::setUpActions()
 		}
 	});
 		//Export nomenclature to CSV
-	m_project_nomenclature = new QAction(QET::Icons::DocumentSpreadsheet, tr("Exporter une nomenclature"), this);
-	connect(m_project_nomenclature, &QAction::triggered, [this]() {
+	m_csv_export = new QAction(QET::Icons::DocumentSpreadsheet, tr("Exporter au format CSV"), this);
+	connect(m_csv_export, &QAction::triggered, [this]() {
         BOMExportDialog bom(currentProjectView()->project(), this);
         bom.exec();
 	});
@@ -755,7 +755,7 @@ void QETDiagramEditor::setUpMenu() {
 	menu_project -> addAction(m_clean_project);
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_project_folio_list);
-	menu_project -> addAction(m_project_nomenclature);
+	menu_project -> addAction(m_csv_export);
     menu_project -> addAction(m_project_export_conductor_num);
 	menu_project -> addAction(m_project_terminalBloc);
 
@@ -1439,7 +1439,7 @@ void QETDiagramEditor::slot_updateActions()
 	m_remove_diagram_from_project  -> setEnabled(editable_project);
 	m_clean_project        -> setEnabled(editable_project);
 	m_project_folio_list  -> setEnabled(opened_project);
-	m_project_nomenclature -> setEnabled(editable_project);
+	m_csv_export -> setEnabled(editable_project);
 	m_export_diagram   -> setEnabled(opened_diagram);
 	m_print            -> setEnabled(opened_diagram);
 	m_edit_diagram_properties    -> setEnabled(opened_diagram);
