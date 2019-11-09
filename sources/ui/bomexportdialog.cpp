@@ -1,4 +1,4 @@
-﻿/*
+ /*
     Copyright 2006-2019 The QElectroTech Team
     This file is part of QElectroTech.
 
@@ -30,6 +30,7 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QJsonDocument>
+#include <QSqlRecord>
 
 /**
  * @brief BOMExportDialog::BOMExportDialog
@@ -42,6 +43,13 @@ BOMExportDialog::BOMExportDialog(QETProject *project, QWidget *parent) :
     m_project(project)
 {
     ui->setupUi(this);
+
+	m_export_info.insert("pos", tr("Position"));
+	m_export_info.insert("folio_title", tr("Titre du folio"));
+	m_export_info.insert("folio_pos", tr("Position de folio"));
+	m_export_info.insert("folio_num", tr("Numéro de folio"));
+	m_export_info.insert("designation_qty", tr("Quantité (Numéro d'article)"));
+
     setUpItems();
     createDataBase();
     fillSavedQuery();
@@ -92,7 +100,44 @@ int BOMExportDialog::exec()
             }
         }
     }
-    return r;
+	return r;
+}
+
+/**
+ * @brief BOMExportDialog::selectedKeys
+ * @return the current keys of selected infos to be exported
+ */
+QStringList BOMExportDialog::selectedKeys() const
+{
+		//Made a string list with the colomns (keys) choosen by the user
+	QStringList keys;
+	int row = 0;
+	while (auto *item = ui->m_choosen_list->item(row))
+	{
+		keys.append(item->data(Qt::UserRole).toString());
+		++row;
+	}
+
+	return keys;
+}
+
+/**
+ * @brief BOMExportDialog::translatedKeys
+ * @param key
+ * @return
+ */
+QString BOMExportDialog::translatedKeys(const QString &key) const
+{
+	if (QETApp::elementInfoKeys().contains(key)) {
+		return QETApp::elementTranslatedInfoKey(key);
+	}
+	else if (m_export_info.keys().contains(key)) {
+		return  m_export_info.value(key);
+	} else {
+		auto str(key);
+		str.replace("_", "-");
+		return  QETApp::elementTranslatedInfoKey(str);
+	}
 }
 
 /**
@@ -107,13 +152,13 @@ void BOMExportDialog::setUpItems()
 		item->setData(Qt::UserRole+1, key); //We store the real key before replace "-" by "_" to easily retrieve it in the element information
 		item->setData(Qt::UserRole, key.replace("-", "_")); //We must to replace "-" by "_" because "-" is a sql keyword.
     }
-    QStringList other_keys({"pos", "folio_title", "folio_pos", "folio_num", "designation_qty"});
-    QStringList other_translated({tr("Position"), tr("Titre du folio"), tr("Position de folio"), tr("Numéro de folio"), tr("Quantité (Numéro d'article)")});
-    for(int i=0 ; i<other_keys.size() ; ++i)
-    {
-        auto item = new QListWidgetItem(other_translated.at(i), ui->m_var_list);
-        item->setData(Qt::UserRole, other_keys.at(i));
-    }
+
+	for (auto key : m_export_info.keys())
+	{
+		auto item = new QListWidgetItem(m_export_info.value(key), ui->m_var_list);
+		item->setData(Qt::UserRole, key);
+		item->setData(Qt::UserRole+1, key);
+	}
 }
 
 /**
@@ -188,6 +233,7 @@ QString BOMExportDialog::getBom()
     QString data; //The string to be returned
     if (ui->m_include_header_cb->isChecked()) {
         data = headers();
+		data += "\n";
     }
 
     QSqlQuery query (queryStr() , m_data_base);
@@ -195,18 +241,29 @@ QString BOMExportDialog::getBom()
         qDebug() << "Query error : " << query.lastError();
     }
 
-    QStringList record;
-    while (query.next())
-    {
-        auto i=0;
-        while (query.value(i).isValid())
-        {
-            record << query.value(i).toString();
-            ++i;
-        }
-        data += record.join(";") + "\n";
-        record.clear();
-    }
+	QStringList record;
+	while (query.next())
+	{
+		if (ui->m_edit_sql_query_cb->isChecked()) //In case of custom query, we only append each value to @record
+		{
+			auto i=0;
+			while (query.value(i).isValid())
+			{
+				record << query.value(i).toString();
+				++i;
+			}
+		}
+		else //In case of query made with the gui, we ensure that returned values are in the same order as list created by user
+		{
+			QSqlRecord sql_record = query.record();
+			for (auto key : selectedKeys()) {
+				record << sql_record.value(key).toString();
+			}
+		}
+
+		data += record.join(";") + "\n";
+		record.clear();
+	}
 
     m_data_base.close();
     return data;
@@ -222,23 +279,14 @@ QString BOMExportDialog::headers() const
 
     if (!ui->m_edit_sql_query_cb->isChecked())
     {
-            //Made a string list with the colomns (keys) choosen by the user
-        QStringList keys;
-        int row = 0;
-        while (auto *item = ui->m_choosen_list->item(row))
-        {
-            keys.append(item->data(Qt::UserRole).toString());
-            ++row;
-        }
+		for (auto key : selectedKeys())
+		{
+			if (!header_string.isEmpty()) {
+				header_string += ";";
+			}
+			header_string += translatedKeys(key);
+		}
 
-
-        for (int i=0 ; i<keys.size() ; i++)
-        {
-            if(!header_string.isEmpty()) {
-                header_string += ";";
-            }
-            header_string += QETApp::elementTranslatedInfoKey(keys.at(i));
-        }
         header_string += "\n";
     }
     else if (!queryStr().isEmpty())     //Try to retreive the header according to the sql query
@@ -289,6 +337,7 @@ bool BOMExportDialog::createDataBase()
         ++row;
     }
     keys << "element_type" << "element_subtype";
+	keys.removeAll("designation_qty");
 
     QString table("CREATE TABLE bom(");
     bool first = true;
@@ -298,14 +347,9 @@ bool BOMExportDialog::createDataBase()
             first = false;
         } else {
             table += ",";
-        }
-        if (string == "designation_qty") {
-            table += string += " INT";
+		}
 
-        } else {
-            table += string += " VARCHAR(512)";
-
-        }
+		table += string += " VARCHAR(512)";
     }
     table += ");";
     m_data_base.exec(table);
@@ -324,14 +368,6 @@ bool BOMExportDialog::createDataBase()
 
     m_insert_query = QSqlQuery(m_data_base);
     m_insert_query.prepare(insert);
-
-    QString update("UPDATE bom SET designation_qty = :bind_qty WHERE designation IS NOT NULL AND designation = :bind_ref");
-    m_update_qty_query = QSqlQuery(m_data_base);
-    m_update_qty_query.prepare(update);
-
-    QString count ("SELECT COUNT(designation) FROM bom WHERE designation = :bind_ref");
-    m_count_ref_query = QSqlQuery(m_data_base);
-    m_count_ref_query.prepare(count);
 
     populateDataBase();
 
@@ -362,31 +398,9 @@ void BOMExportDialog::populateDataBase()
 
             m_insert_query.bindValue(":element_type", elmt->linkTypeToString());
             m_insert_query.bindValue(":element_subtype", elmt->kindInformations()["type"].toString());
-            m_insert_query.bindValue(":designation_qty", 0);
 
             if (!m_insert_query.exec()) {
                 qDebug() << "BOMExportDialog::populateDataBase insert error : " << m_insert_query.lastError();
-            }
-
-            if (!elmt->elementInformations().value("designation").toString().isEmpty())
-            {
-                QString ref = elmt->elementInformations().value("designation").toString();
-                m_count_ref_query.bindValue(":bind_ref", ref);
-                if (m_count_ref_query.exec())
-                {
-                    if (m_count_ref_query.first())
-                    {
-                        int c = m_count_ref_query.value(0).toInt();
-                        m_update_qty_query.bindValue(":bind_ref", ref);
-                        m_update_qty_query.bindValue(":bind_qty", c);
-                        if (!m_update_qty_query.exec()) {
-                            qDebug() << "BOMExportDialog::populateDataBase update qty query error : " << m_insert_query.lastError();
-                        }
-                    }
-                }
-                else {
-                    qDebug() << "BOMExportDialog::populateDataBase count ref query : " << m_count_ref_query.lastError();
-                }
             }
         }
     }
@@ -423,9 +437,6 @@ QHash<QString, QString> BOMExportDialog::elementInfoToString(Element *elmt) cons
         else if (key == "folio_num") {
 			hash.insert(key, elmt->diagram()->border_and_titleblock.finalfolio());
         }
-        else if (key == "designation_qty") {
-            hash.insert(key, key);
-        }
         else if (key == "label") {
             hash.insert(key, elmt->actualLabel());
         }
@@ -448,13 +459,8 @@ QString BOMExportDialog::queryStr() const
         return ui->m_sql_query->text();
     }
         //Made a string list with the colomns (keys) choosen by the user
-    QStringList keys;
-    int row = 0;
-    while (auto *item = ui->m_choosen_list->item(row))
-    {
-        keys.append(item->data(Qt::UserRole).toString());
-        ++row;
-    }
+	QStringList keys = selectedKeys();
+	keys.removeAll("designation_qty");
 
     QString select ="SELECT ";
     QString order_by = " ORDER BY ";
@@ -473,6 +479,7 @@ QString BOMExportDialog::queryStr() const
     }
 
     QString from = " FROM bom";
+	QString count = ui->m_format_as_bom_rb->isChecked() ? QString(", COUNT(*) AS designation_qty ") : QString();
     QString where;
     if (ui->m_button_rb->isChecked()) {
         where = " WHERE element_subtype = 'commutator'";
@@ -495,7 +502,7 @@ QString BOMExportDialog::queryStr() const
     }
 
     QString group_by = ui->m_format_as_bom_rb->isChecked() ? " GROUP BY designation" : "";
-    QString q(select + column + from + where + where_bom + group_by + order_by);
+	QString q(select + column + count + from + where + where_bom + group_by + order_by);
     return q;
 }
 

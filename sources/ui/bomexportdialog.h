@@ -38,7 +38,9 @@ class BOMExportDialog : public QDialog
         explicit BOMExportDialog(QETProject *project, QWidget *parent = nullptr);
         ~BOMExportDialog() override;
 
-        virtual int exec() override;
+		virtual int exec() override;
+		QStringList selectedKeys() const;
+		QString translatedKeys(const QString &key) const;
 
     private slots:
         void on_m_add_pb_clicked();
@@ -70,10 +72,9 @@ class BOMExportDialog : public QDialog
         Ui::BOMExportDialog *ui;
         QETProject *m_project = nullptr;
         QSqlDatabase m_data_base;
-        QSqlQuery m_insert_query,
-                  m_update_qty_query,
-                  m_count_ref_query;
+		QSqlQuery m_insert_query;
         QString   m_custom_query;
+		QHash <QString, QString> m_export_info;
 };
 
 #endif // BOMExportDialog_H
