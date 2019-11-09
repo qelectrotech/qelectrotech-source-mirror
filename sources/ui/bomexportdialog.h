@@ -21,6 +21,7 @@
 #include <QDialog>
 #include <QSqlDatabase>
 #include <QSqlQuery>
+#include <QButtonGroup>
 
 class QListWidgetItem;
 class QETProject;
@@ -48,15 +49,12 @@ class BOMExportDialog : public QDialog
         void on_m_up_pb_clicked();
         void on_m_down_pb_clicked();
         void on_m_save_name_le_textChanged(const QString &arg1);
-        void on_m_all_rb_clicked();
-        void on_m_terminal_rb_clicked();
-        void on_m_button_rb_clicked();
         void on_m_format_as_nomenclature_rb_toggled(bool checked);
         void on_m_edit_sql_query_cb_clicked();
         void on_m_save_current_conf_pb_clicked();
         void on_m_load_pb_clicked();
 
-    private:
+		private:
         void setUpItems();
         QString getBom();
         QString headers() const;
@@ -75,6 +73,7 @@ class BOMExportDialog : public QDialog
 		QSqlQuery m_insert_query;
         QString   m_custom_query;
 		QHash <QString, QString> m_export_info;
+		QButtonGroup m_button_group;
 };
 
 #endif // BOMExportDialog_H

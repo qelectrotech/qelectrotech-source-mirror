@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>685</width>
-    <height>630</height>
+    <width>576</width>
+    <height>715</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -189,9 +189,19 @@
         <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout_3">
-         <item>
-          <widget class="QRadioButton" name="m_all_rb">
+        <layout class="QGridLayout" name="gridLayout_4">
+         <item row="4" column="0">
+          <widget class="QCheckBox" name="m_simple_cb">
+           <property name="text">
+            <string>Simple</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QCheckBox" name="m_all_cb">
            <property name="text">
             <string>Tous</string>
            </property>
@@ -200,78 +210,43 @@
            </property>
           </widget>
          </item>
-         <item>
-          <widget class="QRadioButton" name="m_terminal_rb">
-           <property name="text">
-            <string>Bornier</string>
-           </property>
-           <property name="checked">
-            <bool>false</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="m_button_rb">
-           <property name="text">
-            <string>Bouton et commutateur</string>
-           </property>
-           <property name="checked">
-            <bool>false</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="m_coil_rb">
+         <item row="0" column="1">
+          <widget class="QCheckBox" name="m_coil_cb">
            <property name="text">
             <string>Contacteur et relais</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="m_protection_rb">
-           <property name="text">
-            <string>Organes de protection</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item>
-       <widget class="QGroupBox" name="groupBox_4">
-        <property name="title">
-         <string>Mise en page</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-        </property>
-        <property name="flat">
-         <bool>false</bool>
-        </property>
-        <property name="checkable">
-         <bool>false</bool>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_4">
-         <item>
-          <widget class="QRadioButton" name="m_format_as_nomenclature_rb">
-           <property name="toolTip">
-            <string>Chaque élément portant la même référence sera listé</string>
-           </property>
-           <property name="text">
-            <string>Formater en tant que nomenclature</string>
            </property>
            <property name="checked">
             <bool>true</bool>
            </property>
           </widget>
          </item>
-         <item>
-          <widget class="QRadioButton" name="m_format_as_bom_rb">
-           <property name="toolTip">
-            <string>Une même référence utilisé par plusieurs éléments ne sera listé qu'une fois</string>
-           </property>
+         <item row="1" column="1">
+          <widget class="QCheckBox" name="m_button_cb">
            <property name="text">
-            <string>Formater en tant que liste de matériel</string>
+            <string>Bouton et commutateur</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QCheckBox" name="m_terminal_cb">
+           <property name="text">
+            <string>Bornier</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QCheckBox" name="m_protection_cb">
+           <property name="text">
+            <string>Organes de protection</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -283,6 +258,54 @@
    </item>
    <item>
     <widget class="Line" name="line_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_4">
+     <property name="title">
+      <string>Mise en page</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+     <property name="checkable">
+      <bool>false</bool>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <item>
+       <widget class="QRadioButton" name="m_format_as_nomenclature_rb">
+        <property name="toolTip">
+         <string>Chaque élément portant la même référence sera listé</string>
+        </property>
+        <property name="text">
+         <string>Formater en tant que nomenclature</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="m_format_as_bom_rb">
+        <property name="toolTip">
+         <string>Une même référence utilisé par plusieurs éléments ne sera listé qu'une fois</string>
+        </property>
+        <property name="text">
+         <string>Formater en tant que liste de matériel</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="Line" name="line_4">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>

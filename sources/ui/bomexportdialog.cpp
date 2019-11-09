@@ -1,4 +1,4 @@
- /*
+﻿ /*
     Copyright 2006-2019 The QElectroTech Team
     This file is part of QElectroTech.
 
@@ -49,6 +49,56 @@ BOMExportDialog::BOMExportDialog(QETProject *project, QWidget *parent) :
 	m_export_info.insert("folio_pos", tr("Position de folio"));
 	m_export_info.insert("folio_num", tr("Numéro de folio"));
 	m_export_info.insert("designation_qty", tr("Quantité (Numéro d'article)"));
+
+	m_button_group.setExclusive(false);
+	m_button_group.addButton(ui->m_all_cb, 0);
+	m_button_group.addButton(ui->m_terminal_cb, 1);
+	m_button_group.addButton(ui->m_simple_cb, 2);
+	m_button_group.addButton(ui->m_button_cb, 3);
+	m_button_group.addButton(ui->m_coil_cb, 4);
+	m_button_group.addButton(ui->m_protection_cb, 5);
+	connect(&m_button_group, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::buttonClicked), [this](int id)
+	{
+		auto check_box = static_cast<QCheckBox *>(m_button_group.button(0));
+		if (id == 0)
+		{
+			switch (check_box->checkState()) {
+				case Qt::Checked :
+					for (auto button : m_button_group.buttons()) {
+						button->setChecked(true);
+					}
+					break;
+				case Qt::Unchecked :
+					for (auto button : m_button_group.buttons()) {
+						button->setChecked(false);
+					}
+					break;
+				default: break;
+			}
+		}
+		else
+		{
+			int checked = 0;
+			for (int i=1 ; i<5 ; ++i) {
+				if (m_button_group.button(i)->isChecked()) {++checked;}
+			}
+
+			switch (checked)
+			{
+				case 0 :
+					check_box->setCheckState(Qt::Unchecked);
+					break;
+				case 5:
+					check_box->setCheckState(Qt::Checked);
+					break;
+				default:
+					check_box->setCheckState(Qt::PartiallyChecked);
+					break;
+			}
+		}
+
+		updateQueryLine();
+	});
 
     setUpItems();
     createDataBase();
@@ -481,15 +531,28 @@ QString BOMExportDialog::queryStr() const
     QString from = " FROM bom";
 	QString count = ui->m_format_as_bom_rb->isChecked() ? QString(", COUNT(*) AS designation_qty ") : QString();
     QString where;
-    if (ui->m_button_rb->isChecked()) {
-        where = " WHERE element_subtype = 'commutator'";
-    } else if (ui->m_terminal_rb->isChecked()) {
-        where = " WHERE element_type = 'Terminale'";
-    } else if (ui->m_coil_rb->isChecked()) {
-        where = " WHERE element_subtype = 'coil'";
-    } else if (ui->m_protection_rb  ->isChecked()) {
-        where = " WHERE element_subtype = 'protection'";
-    }
+	if (ui->m_all_cb->checkState() == Qt::PartiallyChecked)
+	{
+		if (ui->m_terminal_cb->isChecked()) {
+			where = " WHERE element_type = 'Terminale'";
+		}
+		if (ui->m_simple_cb->isChecked()) {
+			auto str = where.isEmpty() ? " WHERE element_type = 'Simple'" : " AND element_type = 'Simple'";
+			where += str;
+		}
+		if (ui->m_button_cb->isChecked()) {
+			auto str = where.isEmpty() ? " WHERE element_subtype = 'commutator'" : " AND element_subtype = 'commutator'";
+			where += str;
+		}
+		if (ui->m_coil_cb->isChecked()) {
+			auto str = where.isEmpty() ? " WHERE element_subtype = 'coil'" : " AND element_subtype = 'coil'";
+			where += str;
+		}
+		if (ui->m_protection_cb->isChecked()) {
+			auto str = where.isEmpty() ? " WHERE element_subtype = 'protection'" : " AND element_subtype = 'protection'";
+			where += str;
+		}
+	}
     QString where_bom;
     if(ui->m_format_as_bom_rb->isChecked())
     {
@@ -526,18 +589,6 @@ void BOMExportDialog::fillSavedQuery()
             ui->m_conf_cb->addItem(it.key());
         }
     }
-}
-
-void BOMExportDialog::on_m_all_rb_clicked() {
-    updateQueryLine();
-}
-
-void BOMExportDialog::on_m_terminal_rb_clicked() {
-    updateQueryLine();
-}
-
-void BOMExportDialog::on_m_button_rb_clicked() {
-    updateQueryLine();
 }
 
 void BOMExportDialog::on_m_format_as_nomenclature_rb_toggled(bool checked) {
