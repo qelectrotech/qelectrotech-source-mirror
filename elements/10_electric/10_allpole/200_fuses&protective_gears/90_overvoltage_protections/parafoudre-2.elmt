@@ -1,33 +1,37 @@
-<definition height="60" version="0.5" link_type="simple" width="40" orientation="dyyy" hotspot_x="18" hotspot_y="30" type="element">
-    <uuid uuid="{a091ae1e-5e4f-4afe-a478-25d13dc34e61}"/>
+<definition height="60" hotspot_x="18" hotspot_y="30" orientation="dyyy" link_type="simple" type="element" version="0.80" width="40">
+    <uuid uuid="{2aad9da5-665a-4189-9034-2bd6e1b00386}"/>
     <names>
-        <name lang="de">Blitz-/Überspannungsschutz</name>
-        <name lang="el">Προστασία από υπέρταση</name>
-        <name lang="pl">Ogranicznik przepięć</name>
-        <name lang="ar">حامي من الصواعق</name>
         <name lang="it">Protez. alimentazione</name>
+        <name lang="nl">Overspanning beveiligig</name>
+        <name lang="pl">Ogranicznik przepięć</name>
+        <name lang="de">Blitz-/Überspannungsschutz</name>
+        <name lang="cs">Bleskojistka, ochrana proti nárazu</name>
+        <name lang="ar">حامي من الصواعق</name>
+        <name lang="el">Προστασία από υπέρταση</name>
+        <name lang="fr">Parafoudre</name>
         <name lang="en">Surge protection</name>
         <name lang="es">Protección contra descargas 2</name>
-        <name lang="cs">Bleskojistka, ochrana proti nárazu</name>
-        <name lang="fr">Parafoudre</name>
-        <name lang="nl">Overspanning beveiligig</name>
     </names>
-    <informations>Author: The QElectroTech team
+    <elementInformations/>
+    <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input tagg="label" y="-4.45" size="9" rotate="true" text="_" x="18"/>
-        <text y="-16.6667" size="4" text="N" x="-10"/>
-        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="24" length1="1.5" antialias="false" end2="none" length2="1.5" x2="14" x1="8" end1="none" y2="24"/>
-        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="22" length1="1.5" antialias="false" end2="none" length2="1.5" x2="16" x1="6" end1="none" y2="22"/>
-        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" length1="1.5" antialias="false" end2="none" length2="1.5" x2="18" x1="4" end1="none" y2="20"/>
-        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" length1="1.5" antialias="false" end2="none" length2="1.5" x2="-11" x1="-11" end1="none" y2="-20"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" y="-10" antialias="false" width="30" x="-15"/>
-        <text y="14.3333" size="4" text="T" x="12.5"/>
-        <text y="-16.6667" size="4" text="L1" x="11"/>
-        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" length1="1.5" antialias="false" end2="none" length2="1.5" x2="11" x1="11" end1="none" y2="10"/>
-        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" length1="1.5" antialias="false" end2="none" length2="1.5" x2="10" x1="10" end1="none" y2="-20"/>
-        <terminal y="-21" orientation="n" x="10"/>
-        <terminal y="17" orientation="s" x="11"/>
-        <terminal y="-21" orientation="n" x="-11"/>
+        <dynamic_text z="1" text_from="ElementInfo" rotation="0" text_width="-1" Valignment="AlignTop" frame="false" x="18" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-15.45" uuid="{daef117a-d243-49f7-b089-6a8ffe076f69}" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text rotation="0" x="-10" text="N" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" y="-16.6667"/>
+        <line end1="none" x1="8" x2="14" end2="none" length1="1.5" length2="1.5" antialias="false" y1="24" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="24"/>
+        <line end1="none" x1="6" x2="16" end2="none" length1="1.5" length2="1.5" antialias="false" y1="22" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="22"/>
+        <line end1="none" x1="4" x2="18" end2="none" length1="1.5" length2="1.5" antialias="false" y1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="20"/>
+        <line end1="none" x1="-11" x2="-11" end2="none" length1="1.5" length2="1.5" antialias="false" y1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-20"/>
+        <rect height="20" x="-15" rx="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" y="-10" width="30"/>
+        <text rotation="0" x="10" text="T" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" y="15"/>
+        <text rotation="0" x="11" text="L1" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" y="-16.6667"/>
+        <line end1="none" x1="11" x2="11" end2="none" length1="1.5" length2="1.5" antialias="false" y1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10"/>
+        <line end1="none" x1="10" x2="10" end2="none" length1="1.5" length2="1.5" antialias="false" y1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-20"/>
+        <terminal x="10" orientation="n" y="-21"/>
+        <terminal x="11" orientation="s" y="17"/>
+        <terminal x="-11" orientation="n" y="-21"/>
     </description>
 </definition>

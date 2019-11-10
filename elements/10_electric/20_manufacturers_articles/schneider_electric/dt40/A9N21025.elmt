@@ -1,5 +1,5 @@
 <definition height="70" hotspot_x="19" hotspot_y="40" orientation="dyyy" link_type="master" type="element" version="0.80" width="50">
-    <uuid uuid="{fa8f7c04-d4cb-43a4-a26e-816c505afa36}"/>
+    <uuid uuid="{de3dfee1-d939-4088-8678-47975b309e77}"/>
     <names>
         <name lang="it">Int. Aut. Magneto-termico 1P+N</name>
         <name lang="nl">Lastscheider 1P+N</name>
@@ -23,8 +23,8 @@
         <elementInformation name="unity" show="1"></elementInformation>
         <elementInformation name="manufacturer" show="1">SCHNEIDER</elementInformation>
         <elementInformation name="description" show="1"></elementInformation>
-        <elementInformation name="comment" show="1">2A</elementInformation>
-        <elementInformation name="designation" show="1">A9N21020</elementInformation>
+        <elementInformation name="comment" show="1">16A</elementInformation>
+        <elementInformation name="designation" show="1">A9N21025</elementInformation>
         <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
     </elementInformations>
     <informations>Author: The QElectroTech team
@@ -51,7 +51,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line end1="none" x1="12" x2="8" end2="none" length1="1.5" length2="1.5" antialias="true" y1="-22" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-18"/>
         <line end1="none" x1="8" x2="12" end2="none" length1="1.5" length2="1.5" antialias="true" y1="-22" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-18"/>
         <dynamic_text z="18" text_from="ElementInfo" rotation="0" text_width="-1" Valignment="AlignTop" frame="false" x="15" font="Arial,9,-1,5,50,0,0,0,0,0,Normal" y="-5" uuid="{0e0653ea-01b2-48bb-8668-edd62f7eed33}" Halignment="AlignLeft">
-            <text>2A</text>
+            <text>16A</text>
             <info_name>comment</info_name>
         </dynamic_text>
         <text rotation="0" x="12" text="2" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" y="22"/>
