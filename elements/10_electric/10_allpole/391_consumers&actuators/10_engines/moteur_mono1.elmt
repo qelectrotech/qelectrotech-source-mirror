@@ -1,0 +1,26 @@
+<definition width="50" hotspot_y="48" type="element" orientation="dyyy" height="80" version="0.70" hotspot_x="24" link_type="simple">
+    <uuid uuid="{43b540a9-7762-4675-970b-e86c46ec5345}"/>
+    <names>
+        <name lang="es">Motormonofásico</name>
+        <name lang="en">Motor single phase</name>
+        <name lang="nl">Motor  1fase</name>
+        <name lang="it">Motore monofase</name>
+        <name lang="fr">Moteur monophasé</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x4="15" closed="false" y3="9" y2="9" y1="-36" x3="15" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="20" x1="20" y4="9"/>
+        <polygon closed="false" y3="9" y2="9" y1="-40" x3="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-20" x1="-20"/>
+        <circle y="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="30" x="-15"/>
+        <text y="17" size="9" x="-11" text="1 ~"/>
+        <text y="7" size="8" x="-4" text="M"/>
+        <dynamic_text y="4" uuid="{02168a47-380e-4a8b-94ba-48ae684a0b3d}" font_size="9" z="9" rotation="0" text_from="ElementInfo" Halignment="AlignLeft" x="18" font_family="Sans Serif" Valignment="AlignTop" frame="false" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal y="-40" orientation="n" x="20"/>
+        <terminal y="-40" orientation="n" x="-20"/>
+    </description>
+</definition>
