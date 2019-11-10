@@ -201,6 +201,7 @@ void BOMExportDialog::setUpItems()
 		auto item = new QListWidgetItem(QETApp::elementTranslatedInfoKey(key), ui->m_var_list);
 		item->setData(Qt::UserRole+1, key); //We store the real key before replace "-" by "_" to easily retrieve it in the element information
 		item->setData(Qt::UserRole, key.replace("-", "_")); //We must to replace "-" by "_" because "-" is a sql keyword.
+		m_items_list << item;
     }
 
 	for (auto key : m_export_info.keys())
@@ -208,6 +209,7 @@ void BOMExportDialog::setUpItems()
 		auto item = new QListWidgetItem(m_export_info.value(key), ui->m_var_list);
 		item->setData(Qt::UserRole, key);
 		item->setData(Qt::UserRole+1, key);
+		m_items_list << item;
 	}
 }
 
@@ -592,8 +594,8 @@ void BOMExportDialog::fillSavedQuery()
 }
 
 void BOMExportDialog::on_m_format_as_nomenclature_rb_toggled(bool checked) {
-    Q_UNUSED(checked)
-    updateQueryLine();
+	Q_UNUSED(checked)
+	updateQueryLine();
 }
 
 /**
@@ -605,6 +607,7 @@ void BOMExportDialog::on_m_edit_sql_query_cb_clicked()
     ui->m_sql_query->setEnabled(ui->m_edit_sql_query_cb->isChecked());
     ui->m_info_widget->setDisabled(ui->m_edit_sql_query_cb->isChecked());
     ui->m_parametre_widget->setDisabled(ui->m_edit_sql_query_cb->isChecked());
+	ui->m_format_as_gb->setDisabled(ui->m_edit_sql_query_cb->isChecked());
 
     if (ui->m_edit_sql_query_cb->isChecked() && !m_custom_query.isEmpty())
     {
@@ -639,9 +642,35 @@ void BOMExportDialog::on_m_save_current_conf_pb_clicked()
         }
 
         QVariantMap vm;
-        vm.insert("query", ui->m_sql_query->text());
-        vm.insert("header", ui->m_include_header_cb->isChecked());
-        root_object[ui->m_save_name_le->text()] = QJsonObject::fromVariantMap(vm);
+		vm.insert("user query", ui->m_edit_sql_query_cb->isChecked());
+
+		if (ui->m_edit_sql_query_cb->isChecked()) {
+			vm.insert("query", ui->m_sql_query->text());
+		}
+		else
+		{
+			vm.insert("header", ui->m_include_header_cb->isChecked());
+			vm.insert("format as bill of material", ui->m_format_as_bom_rb->isChecked());
+
+			QJsonArray keys_array;
+			for (auto key : selectedKeys()) {
+				keys_array.append(QJsonValue(key));
+			}
+			vm.insert("selected infos", keys_array);
+
+			QJsonArray selected_elements_array;
+			for (auto button : m_button_group.buttons())
+			{
+				QJsonObject element_type;
+				element_type.insert("checked", button->isChecked());
+				element_type.insert("ID", m_button_group.id(button));
+				selected_elements_array.append(element_type);
+			}
+			vm.insert("selected elements", selected_elements_array);
+		}
+
+		root_object[ui->m_save_name_le->text()] = QJsonObject::fromVariantMap(vm);
+
 
         jsd.setObject(root_object);
         file.resize(0);
@@ -655,25 +684,64 @@ void BOMExportDialog::on_m_save_current_conf_pb_clicked()
  */
 void BOMExportDialog::on_m_load_pb_clicked()
 {
-    auto name = ui->m_conf_cb->currentText();
-    if (name.isEmpty()) {
-        return;
-    }
+	auto name = ui->m_conf_cb->currentText();
+	if (name.isEmpty()) {
+		return;
+	}
 
-    QFile file(QETApp::configDir() + "/bill_of_materials.json");
-    if (file.open(QFile::ReadOnly))
-    {
-        QJsonDocument jsd(QJsonDocument::fromJson(file.readAll()));
-        QJsonObject jso = jsd.object();
+	QFile file(QETApp::configDir() + "/bill_of_materials.json");
+	if (!file.open(QFile::ReadOnly)) {
+		return;
+	}
 
-        auto value = jso.value(name);
-        if (value.isObject())
-        {
-            auto value_object = value.toObject();
-            ui->m_include_header_cb->setChecked(value_object["header"].toBool());
-            ui->m_sql_query->setText(value_object["query"].toString());
-            ui->m_edit_sql_query_cb->setChecked(true);
-            on_m_edit_sql_query_cb_clicked(); //Force to update widgets
-        }
-    }
+	QJsonDocument jsd(QJsonDocument::fromJson(file.readAll()));
+	QJsonObject jso = jsd.object();
+
+	auto value = jso.value(name);
+	if (!value.isObject()) {
+		return;
+	}
+
+	auto value_object = value.toObject();
+	if (value_object["user query"].toBool())
+	{
+		ui->m_edit_sql_query_cb->setChecked(true);
+		ui->m_sql_query->setText(value_object["query"].toString());
+	}
+	else
+	{
+		ui->m_edit_sql_query_cb->setChecked(false);
+		ui->m_include_header_cb->setChecked(value_object["header"].toBool());
+		ui->m_format_as_bom_rb->setChecked(value_object["format as bill of material"].toBool());
+
+
+			//Ugly hack to force to remove all selected infos
+		while (auto item = ui->m_choosen_list->takeItem(0)) {
+			ui->m_var_list->addItem(item);
+		}
+
+		QVariantList vl = value_object["selected infos"].toArray().toVariantList();
+		for (auto variant : vl)
+		{
+			for (auto item : m_items_list)
+			{
+				if (item->data(Qt::UserRole).toString() == variant.toString())
+				{
+					ui->m_var_list->takeItem(ui->m_var_list->row(item));
+					ui->m_choosen_list->addItem(item);
+				}
+			}
+		}
+
+		QJsonArray selected_elements_array = value_object["selected elements"].toArray();
+		for (int id=0 ; id<selected_elements_array.size() ; ++id)
+		{
+			QJsonObject obj = selected_elements_array[id].toObject();
+			m_button_group.button(obj["ID"].toInt())->setChecked(obj["checked"].toBool());
+		}
+
+		updateQueryLine();
+	}
+
+	on_m_edit_sql_query_cb_clicked(); //Force to update dialog
 }

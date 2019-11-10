@@ -264,7 +264,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QGroupBox" name="groupBox_4">
+    <widget class="QGroupBox" name="m_format_as_gb">
      <property name="title">
       <string>Mise en page</string>
      </property>

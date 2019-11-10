@@ -74,6 +74,7 @@ class BOMExportDialog : public QDialog
         QString   m_custom_query;
 		QHash <QString, QString> m_export_info;
 		QButtonGroup m_button_group;
+		QList <QListWidgetItem *> m_items_list;
 };
 
 #endif // BOMExportDialog_H
