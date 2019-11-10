@@ -1,26 +1,29 @@
-<definition type="element" hotspot_y="44" version="0.60" hotspot_x="42" link_type="slave" orientation="dyyy" width="50" height="60">
-    <uuid uuid="{ad62e994-1c20-42c4-8a2f-40519cc56f5c}"/>
+<definition orientation="dyyy" type="element" width="50" height="60" link_type="slave" version="0.80" hotspot_x="42" hotspot_y="44">
+    <uuid uuid="{9856a744-050c-4144-9743-a935fcd245ae}"/>
     <names>
-        <name lang="fr">Contact NO disjoncteur magnéto-thermique GV</name>
         <name lang="es">Contacto de disyuntor termico magnetico NA</name>
+        <name lang="fr">Contact NO disjoncteur magnéto-thermique GV</name>
     </names>
     <kindInformations>
-        <kindInformation name="number" show="1">1</kindInformation>
-        <kindInformation name="state" show="1">NC</kindInformation>
         <kindInformation name="type" show="1">simple</kindInformation>
+        <kindInformation name="number" show="1">1</kindInformation>
+        <kindInformation name="state" show="1">NO</kindInformation>
     </kindInformations>
     <informations></informations>
     <description>
-        <polygon x3="-22" x6="-27" y4="-26" y2="-20" closed="false" x5="-27" y5="-26" y6="-30" x7="-27" x4="-22" x2="-27" y3="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y1="-16" x1="-27" y7="-30"/>
-        <rect y="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-37" width="20" height="28"/>
-        <text y="-5" text="I>" size="9" x="-34"/>
-        <input y="-13.5" text="_" size="8" tagg="label" rotate="true" x="4"/>
-        <line length1="1.5" length2="1.5" y2="-16" end2="none" x2="-17" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-16" x1="-37"/>
-        <line length1="1.5" length2="1.5" y2="-40" end2="none" x2="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-25" x1="0"/>
-        <line length1="1.5" length2="1.5" y2="-25" end2="none" x2="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-5" x1="0"/>
-        <line length1="1.5" length2="1.5" y2="-5" end2="none" x2="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="10" x1="0"/>
-        <line length1="1.5" length2="1.5" y2="-15" end2="none" x2="-7" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y1="-15" x1="-15"/>
-        <terminal y="-40" orientation="n" x="0"/>
-        <terminal y="10" orientation="s" x="0"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x3="-22" y2="-20" y6="-30" y7="-30" closed="false" x5="-27" y5="-26" x2="-27" x4="-22" y1="-16" x6="-27" x7="-27" x1="-27" y4="-26" y3="-20"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" ry="0" rx="0" x="-37" width="20" height="28" y="-30"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="I>" x="-34" rotation="0" y="-5" color="#000000"/>
+        <dynamic_text font="Sans Serif,8,-1,5,50,0,0,0,0,0" x="4" Valignment="AlignTop" rotation="0" text_from="ElementInfo" y="-24.5" Halignment="AlignLeft" uuid="{56a6a9aa-83b0-4fb3-9934-c55a1d9f5d7e}" z="4" frame="false" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y2="-16" end2="none" x2="-17" length2="1.5" y1="-16" end1="none" x1="-37" length1="1.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y2="-40" end2="none" x2="0" length2="1.5" y1="-25" end1="none" x1="0" length1="1.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y2="-25" end2="none" x2="-10" length2="1.5" y1="-5" end1="none" x1="0" length1="1.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y2="-5" end2="none" x2="0" length2="1.5" y1="10" end1="none" x1="0" length1="1.5"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y2="-15" end2="none" x2="-7" length2="1.5" y1="-15" end1="none" x1="-15" length1="1.5"/>
+        <terminal orientation="n" x="0" y="-40"/>
+        <terminal orientation="s" x="0" y="10"/>
     </description>
 </definition>
