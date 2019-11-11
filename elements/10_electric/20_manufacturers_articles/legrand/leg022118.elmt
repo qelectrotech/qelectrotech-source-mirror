@@ -1,0 +1,55 @@
+<definition version="0.80" hotspot_y="30" type="element" height="60" hotspot_x="48" orientation="dyyy" link_type="master" width="60">
+    <uuid uuid="{b291da53-d128-427e-be07-1a72d05bdbf0}"/>
+    <names>
+        <name lang="es">Seccionador 2P mando de palanca</name>
+        <name lang="fr">Interrupteur sectionneur biphasé</name>
+    </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">protection</kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation show="1" name="designation">LEG022118</elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="description">Interrupteur Sectionneur</elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x1="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10" y3="20" antialias="true" closed="false" y1="-10" x3="0" x2="0"/>
+        <circle y="10" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4" antialias="true" x="-42"/>
+        <circle y="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4" antialias="true" x="-22"/>
+        <circle y="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4" antialias="true" x="-2"/>
+        <polygon x1="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10" y3="20" antialias="true" closed="false" y1="-10" x3="0" x2="0"/>
+        <polygon x1="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10" y3="20" antialias="true" closed="false" y1="-10" x3="-20" x2="-20"/>
+        <line length2="1.5" x1="0" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-12" end2="none" antialias="false" y1="-20" x2="0"/>
+        <line length2="1.5" x1="2" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-12" end2="none" antialias="false" y1="-12" x2="-2"/>
+        <line length2="1.5" x1="-20" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-12" end2="none" antialias="false" y1="-20" x2="-20"/>
+        <line length2="1.5" x1="-18" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-12" end2="none" antialias="false" y1="-12" x2="-22"/>
+        <line length2="1.5" x1="-4" length1="1.5" end1="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y2="0" end2="none" antialias="false" y1="0" x2="-40"/>
+        <line length2="1.5" x1="-40" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-10" end2="none" antialias="false" y1="10" x2="-45"/>
+        <text rotation="0" y="-14" text="1" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-17" color="#000000"/>
+        <text rotation="0" y="-14" text="3" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="4" color="#000000"/>
+        <text rotation="0" y="20" text="4" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="2" color="#000000"/>
+        <text rotation="0" y="20" text="2" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-18" color="#000000"/>
+        <dynamic_text rotation="0" uuid="{620b15e0-0261-49ea-a770-4bc5f7c1444e}" text_width="-1" text_from="ElementInfo" y="-10" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" z="18" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="5">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text rotation="0" uuid="{61e061f0-9168-437d-86a6-72874b562b56}" text_width="-1" text_from="ElementInfo" y="5" font="Sans Serif,7,-1,5,0,0,0,0,0,0,normal" z="19" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="5">
+            <text></text>
+            <info_name>comment</info_name>
+        </dynamic_text>
+        <terminal y="20" orientation="s" x="0"/>
+        <terminal y="-20" orientation="n" x="0"/>
+        <terminal y="-20" orientation="n" x="-20"/>
+        <terminal y="20" orientation="s" x="-20"/>
+    </description>
+</definition>

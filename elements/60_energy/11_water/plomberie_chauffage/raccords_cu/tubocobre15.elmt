@@ -1,14 +1,19 @@
-<definition width="60" version="0.4" hotspot_x="25" hotspot_y="10" height="20" link_type="simple" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{B7444DD7-A7FB-403A-93B7-63691884530C}"/><names>
+<definition version="0.80" hotspot_y="9" type="element" height="20" hotspot_x="24" orientation="dyyy" link_type="simple" width="60">
+    <uuid uuid="{f885b4cf-7b39-480d-8925-2279c1c1eba8}"/>
+    <names>
         <name lang="es">Tubo Cu 15</name>
-        <name lang="ca">Tub Cu 15</name>
         <name lang="fr">Tube Cu 15</name>
+        <name lang="ca">Tub Cu 15</name>
     </names>
+    <elementInformations/>
     <informations></informations>
     <description>
-        <rect width="48.8" x="-19.6" y="-5.63888" antialias="false" height="11.6389" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="-5" y="0" size="4" rotate="true" text="Cu15" tagg="label"/>
-        <terminal x="-20.4" y="0.00983577" orientation="w"/>
-        <terminal x="30" y="0.00983577" orientation="e"/>
+        <rect y="-5.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="11" rx="0" ry="0" x="-20" width="50"/>
+        <dynamic_text rotation="0" uuid="{4cfa5c63-5f04-4d8a-a9b1-3befcb31708a}" text_width="-1" text_from="ElementInfo" y="-7" font="Sans Serif,4,-1,5,25,0,0,0,0,0" z="2" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="-5">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal y="0" orientation="w" x="-20"/>
+        <terminal y="0" orientation="e" x="30"/>
     </description>
 </definition>

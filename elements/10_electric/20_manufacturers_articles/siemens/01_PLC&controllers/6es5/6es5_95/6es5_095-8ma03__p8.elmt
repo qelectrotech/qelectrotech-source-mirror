@@ -1,72 +1,131 @@
-<definition width="830" version="0.3" hotspot_x="60" hotspot_y="35" height="110" type="element" orientation="dnnn">
-<uuid uuid="{874A76B1-A28D-4723-84DE-C19CE9F1F1C5}"/><names>
-        <name lang="ar">6ES5 095-8MA03 (part 8/8)</name>
-        <name lang="pt">6ES5 095-8MA03 (parte 8/8)</name>
-        <name lang="el">6ES5 095-8MA03 (μέρος 8/8)</name>
-        <name lang="en">6ES5 095-8MA03 (part 8/8)</name>
-        <name lang="it">6ES5 095-8MA03 (parte 8/8)</name>
+<definition height="110" link_type="simple" width="770" version="0.80" type="element" orientation="dyyy" hotspot_x="17" hotspot_y="39">
+    <uuid uuid="{381b39ca-27c2-4cdf-980b-30c74d987642}"/>
+    <names>
         <name lang="fr">6ES5 095-8MA03 (part 8/8)</name>
         <name lang="pl">6ES5 095-8MA03 (część 8/8)</name>
-        <name lang="es">6ES5 095-8MA03 (parte 8/8)</name>
-        <name lang="cs">6ES5 095-8MA03 (part 8/8)</name>
+        <name lang="el">6ES5 095-8MA03 (μέρος 8/8)</name>
         <name lang="nl">6ES5 095-8MA03 (deel 8/8)</name>
+        <name lang="pt">6ES5 095-8MA03 (parte 8/8)</name>
+        <name lang="cs">6ES5 095-8MA03 (part 8/8)</name>
+        <name lang="en">6ES5 095-8MA03 (part 8/8)</name>
+        <name lang="es">6ES5 095-8MA03 (parte 8/8)</name>
+        <name lang="it">6ES5 095-8MA03 (parte 8/8)</name>
+        <name lang="ar">6ES5 095-8MA03 (part 8/8)</name>
     </names>
+    <elementInformations>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Siemens</elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+    </elementInformations>
     <informations>SIEMENS S5 (digital inputs)</informations>
     <description>
-        <input x="-55" y="15" size="9" rotate="true" text="/"/>
-        <input x="722" y="-6" size="7" rotate="true" text="M"/>
-        <polygon x4="-5" y5="12" x5="-10" y6="-33" x6="-10" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="65" x1="-10" y2="18" x2="-10" y3="15" x3="-15" y4="15"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="750" y2="60" x2="750"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="733" y2="-28" x2="750"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="653" y2="-28" x2="727"/>
-        <input x="723" y="-19.5" size="5" rotate="true" text="20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="573" y2="-28" x2="647"/>
-        <circle x="727.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="493" y2="-28" x2="567"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="413" y2="-28" x2="487"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="333" y2="-28" x2="407"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="253" y2="-28" x2="327"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="173" y2="-28" x2="247"/>
-        <input x="156" y="-6" size="7" rotate="true" text="I33.1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="13" y2="-28" x2="87"/>
-        <input x="636" y="-6" size="7" rotate="true" text="I33.7"/>
-        <input x="555" y="-6" size="7" rotate="true" text="I33.6"/>
-        <input x="476" y="-6" size="7" rotate="true" text="I33.5"/>
-        <input x="396" y="-6" size="7" rotate="true" text="I33.4"/>
-        <input x="316" y="-6" size="7" rotate="true" text="I33.3"/>
-        <input x="236" y="-6" size="7" rotate="true" text="I33.2"/>
-        <input x="162" y="-19.5" size="5" rotate="true" text="13"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="-10" y2="-28" x2="7"/>
-        <input x="642" y="-19.5" size="5" rotate="true" text="19"/>
-        <input x="562" y="-19.5" size="5" rotate="true" text="18"/>
-        <input x="482" y="-19.5" size="5" rotate="true" text="17"/>
-        <input x="402" y="-19.5" size="5" rotate="true" text="16"/>
-        <input x="322" y="-19.5" size="5" rotate="true" text="15"/>
-        <input x="242" y="-19.5" size="5" rotate="true" text="14"/>
-        <circle x="167.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="647.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="567.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="487.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="407.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="327.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="247.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <input x="75" y="-6" size="7" rotate="true" text="I33.0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="93" y2="-28" x2="167"/>
-        <input x="82" y="-19.5" size="5" rotate="true" text="12"/>
-        <input x="2" y="-19.5" size="5" rotate="true" text="11"/>
-        <circle x="87.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="7.49997" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <input x="0" y="45.5" size="9" rotate="true" text="6ES5 095-8MA03   part 8/8"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-10" y2="60" x2="750"/>
-        <input x="751" y="-16" size="9" rotate="true" text="_" tagg="label"/>
-        <terminal x="90" y="-31" orientation="n"/>
-        <terminal x="170" y="-31" orientation="n"/>
-        <terminal x="250" y="-31" orientation="n"/>
-        <terminal x="330" y="-31" orientation="n"/>
-        <terminal x="410" y="-31" orientation="n"/>
-        <terminal x="490" y="-31" orientation="n"/>
-        <terminal x="570" y="-31" orientation="n"/>
-        <terminal x="650" y="-31" orientation="n"/>
-        <terminal x="730" y="-31" orientation="n"/>
+        <dynamic_text text_from="UserText" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" y="4" Valignment="AlignTop" x="-55" z="1" frame="false" uuid="{b6566130-c1a8-40b8-900e-5251b66cf793}" text_width="-1" Halignment="AlignLeft">
+            <text>/</text>
+        </dynamic_text>
+        <dynamic_text text_from="UserText" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="-15.5" Valignment="AlignTop" x="722" z="2" frame="false" uuid="{93e0c053-cfef-42d1-a704-f3754b13ce7f}" text_width="-1" Halignment="AlignLeft">
+            <text>M</text>
+        </dynamic_text>
+        <polygon y3="15" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-10" antialias="true" x6="-10" y2="18" x3="-15" x4="-5" y5="12" closed="false" x5="-10" x1="-10" y1="65" y4="15" y6="-33"/>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="750" length2="1.5" antialias="false" y2="60" x1="750" y1="-28" end2="none"/>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="750" length2="1.5" antialias="false" y2="-28" x1="733" y1="-28" end2="none"/>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="727" length2="1.5" antialias="false" y2="-28" x1="653" y1="-28" end2="none"/>
+        <dynamic_text text_from="UserText" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-27.5" Valignment="AlignTop" x="723" z="7" frame="false" uuid="{382d6752-077f-4f82-8e36-d8f23a7d72b9}" text_width="-1" Halignment="AlignLeft">
+            <text>20</text>
+        </dynamic_text>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="647" length2="1.5" antialias="false" y2="-28" x1="573" y1="-28" end2="none"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-30.5" diameter="5" x="727.5"/>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="567" length2="1.5" antialias="false" y2="-28" x1="493" y1="-28" end2="none"/>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="487" length2="1.5" antialias="false" y2="-28" x1="413" y1="-28" end2="none"/>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="407" length2="1.5" antialias="false" y2="-28" x1="333" y1="-28" end2="none"/>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="327" length2="1.5" antialias="false" y2="-28" x1="253" y1="-28" end2="none"/>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="247" length2="1.5" antialias="false" y2="-28" x1="173" y1="-28" end2="none"/>
+        <dynamic_text text_from="UserText" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="-15.5" Valignment="AlignTop" x="156" z="15" frame="false" uuid="{653d9243-4378-41e2-977d-069c06b6a375}" text_width="-1" Halignment="AlignLeft">
+            <text>I33.1</text>
+        </dynamic_text>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="87" length2="1.5" antialias="false" y2="-28" x1="13" y1="-28" end2="none"/>
+        <dynamic_text text_from="UserText" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="-15.5" Valignment="AlignTop" x="636" z="17" frame="false" uuid="{19e4f653-9065-4ac3-8dc1-7ebb55cc88e5}" text_width="-1" Halignment="AlignLeft">
+            <text>I33.7</text>
+        </dynamic_text>
+        <dynamic_text text_from="UserText" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="-15.5" Valignment="AlignTop" x="555" z="18" frame="false" uuid="{f1885106-2b12-44a9-988e-a323f7ec1987}" text_width="-1" Halignment="AlignLeft">
+            <text>I33.6</text>
+        </dynamic_text>
+        <dynamic_text text_from="UserText" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="-15.5" Valignment="AlignTop" x="476" z="19" frame="false" uuid="{0fd41865-9b82-4014-951f-9f0adbc7f5b5}" text_width="-1" Halignment="AlignLeft">
+            <text>I33.5</text>
+        </dynamic_text>
+        <dynamic_text text_from="UserText" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="-15.5" Valignment="AlignTop" x="396" z="20" frame="false" uuid="{6b7ca99a-21d7-49c8-8100-98203202dd27}" text_width="-1" Halignment="AlignLeft">
+            <text>I33.4</text>
+        </dynamic_text>
+        <dynamic_text text_from="UserText" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="-15.5" Valignment="AlignTop" x="316" z="21" frame="false" uuid="{49c5d48b-40f0-4413-b0b2-6d249fb0cd44}" text_width="-1" Halignment="AlignLeft">
+            <text>I33.3</text>
+        </dynamic_text>
+        <dynamic_text text_from="UserText" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="-15.5" Valignment="AlignTop" x="236" z="22" frame="false" uuid="{5c4ebed9-87aa-4e75-a487-66460481b1b5}" text_width="-1" Halignment="AlignLeft">
+            <text>I33.2</text>
+        </dynamic_text>
+        <dynamic_text text_from="UserText" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-27.5" Valignment="AlignTop" x="162" z="23" frame="false" uuid="{b9d7d170-27ef-4ae2-b02f-562f09593641}" text_width="-1" Halignment="AlignLeft">
+            <text>13</text>
+        </dynamic_text>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="7" length2="1.5" antialias="false" y2="-28" x1="-10" y1="-28" end2="none"/>
+        <dynamic_text text_from="UserText" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-27.5" Valignment="AlignTop" x="642" z="25" frame="false" uuid="{d758e2f1-1d70-41a5-94d7-391012f10453}" text_width="-1" Halignment="AlignLeft">
+            <text>19</text>
+        </dynamic_text>
+        <dynamic_text text_from="UserText" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-27.5" Valignment="AlignTop" x="562" z="26" frame="false" uuid="{b53c5846-ac70-4f14-b440-93f4cc6af638}" text_width="-1" Halignment="AlignLeft">
+            <text>18</text>
+        </dynamic_text>
+        <dynamic_text text_from="UserText" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-27.5" Valignment="AlignTop" x="482" z="27" frame="false" uuid="{22aa2848-d1fc-4c8f-be65-3a97202b1045}" text_width="-1" Halignment="AlignLeft">
+            <text>17</text>
+        </dynamic_text>
+        <dynamic_text text_from="UserText" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-27.5" Valignment="AlignTop" x="402" z="28" frame="false" uuid="{f2f85dc9-c7e5-41ea-8477-6a40334603c2}" text_width="-1" Halignment="AlignLeft">
+            <text>16</text>
+        </dynamic_text>
+        <dynamic_text text_from="UserText" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-27.5" Valignment="AlignTop" x="322" z="29" frame="false" uuid="{8d2cc770-51ef-4c15-acab-f6388fe49e5f}" text_width="-1" Halignment="AlignLeft">
+            <text>15</text>
+        </dynamic_text>
+        <dynamic_text text_from="UserText" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-27.5" Valignment="AlignTop" x="242" z="30" frame="false" uuid="{38ffcd5b-f8c7-4668-821b-8e55440e3b30}" text_width="-1" Halignment="AlignLeft">
+            <text>14</text>
+        </dynamic_text>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-30.5" diameter="5" x="167.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-30.5" diameter="5" x="647.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-30.5" diameter="5" x="567.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-30.5" diameter="5" x="487.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-30.5" diameter="5" x="407.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-30.5" diameter="5" x="327.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-30.5" diameter="5" x="247.5"/>
+        <dynamic_text text_from="UserText" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" y="-15.5" Valignment="AlignTop" x="75" z="38" frame="false" uuid="{720b33ee-76ba-4bf4-8e92-56c5abc82031}" text_width="-1" Halignment="AlignLeft">
+            <text>I33.0</text>
+        </dynamic_text>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="167" length2="1.5" antialias="false" y2="-28" x1="93" y1="-28" end2="none"/>
+        <dynamic_text text_from="UserText" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-27.5" Valignment="AlignTop" x="82" z="40" frame="false" uuid="{0980eba5-e7b0-48de-88a2-7d8b873afef3}" text_width="-1" Halignment="AlignLeft">
+            <text>12</text>
+        </dynamic_text>
+        <dynamic_text text_from="UserText" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-27.5" Valignment="AlignTop" x="2" z="41" frame="false" uuid="{0df7b685-622e-4eeb-91c0-7e4c9c82c77e}" text_width="-1" Halignment="AlignLeft">
+            <text>11</text>
+        </dynamic_text>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-30.5" diameter="5" x="87.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-30.5" diameter="5" x="7.49997"/>
+        <dynamic_text text_from="UserText" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" y="34.5" Valignment="AlignTop" x="0" z="44" frame="false" uuid="{12c651a9-a17e-4a68-820b-84dfeb57b700}" text_width="-1" Halignment="AlignLeft">
+            <text>6ES5 095-8MA03   part 8/8</text>
+        </dynamic_text>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="750" length2="1.5" antialias="false" y2="60" x1="-10" y1="60" end2="none"/>
+        <dynamic_text text_from="ElementInfo" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" y="-27" Valignment="AlignTop" x="751" z="46" frame="false" uuid="{6359f01e-8ee4-4a54-a8b0-68368938897f}" text_width="-1" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal y="-31" x="90" orientation="n"/>
+        <terminal y="-31" x="170" orientation="n"/>
+        <terminal y="-31" x="250" orientation="n"/>
+        <terminal y="-31" x="330" orientation="n"/>
+        <terminal y="-31" x="410" orientation="n"/>
+        <terminal y="-31" x="490" orientation="n"/>
+        <terminal y="-31" x="570" orientation="n"/>
+        <terminal y="-31" x="650" orientation="n"/>
+        <terminal y="-31" x="730" orientation="n"/>
     </description>
 </definition>

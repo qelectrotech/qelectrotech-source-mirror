@@ -1,20 +1,37 @@
-<definition orientation="dyyy" version="0.5" type="element" hotspot_y="39" hotspot_x="25" link_type="simple" width="50" height="80">
-<uuid uuid="{CFCFD9F8-E547-47E0-90C9-60DE7AE88D23}"/><names>
+<definition height="80" link_type="simple" width="50" version="0.80" type="element" orientation="dyyy" hotspot_x="25" hotspot_y="39">
+    <uuid uuid="{7c42e8be-0736-4fce-813a-ebf67d7f5a03}"/>
+    <names>
         <name lang="en">7KT5801</name>
     </names>
-    <informations>https://github.com/jonasstein/qelectrotech-symbols
+    <elementInformations>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Siemens</elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+    </elementInformations>
+    <informations>https://github.com/jonasstein/qelectrotech-symbols&#xd;
 EN 60617</informations>
     <description>
-        <text y="-19" x="-4" text="2+" size="6"/>
-        <circle y="27.5" antialias="false" x="-2.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text y="9" x="-3" text="h" size="9"/>
-        <text y="25" x="-3" text="3-" size="6"/>
-        <input tagg="label" y="-21.5" x="-50" text="_" size="9" rotate="true"/>
-        <circle y="-32.5" antialias="false" x="-2.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <polygon x2="-20" x3="-20" antialias="false" y3="-30" x5="-3" y4="-30" x6="-3" y6="-30" closed="false" y1="30" x4="-3" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="30" x1="-3" y5="-30"/>
-        <polygon x2="20" x3="20" antialias="false" y3="30" x5="3" y4="30" x6="3" y6="30" closed="false" y1="-30" x4="3" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-30" x1="3" y5="30"/>
-        <line x2="20" antialias="false" length1="1.5" end2="none" length2="1.5" end1="none" y1="-10" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-10" x1="-20"/>
-        <terminal orientation="s" y="33" x="0"/>
-        <terminal orientation="n" y="-33" x="0"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" y="-19" x="-4" text="2+"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="27.5" diameter="5" x="-2.5"/>
+        <text color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" y="9" x="-3" text="h"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" y="25" x="-3" text="3-"/>
+        <dynamic_text text_from="ElementInfo" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" y="-32.5" Valignment="AlignTop" x="-50" z="5" frame="false" uuid="{3b636d9d-047a-4040-880c-f19ef0d95fad}" text_width="-1" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-32.5" diameter="5" x="-2.5"/>
+        <polygon y3="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-20" antialias="false" x6="-3" y2="30" x3="-20" x4="-3" y5="-30" closed="false" x5="-3" x1="-3" y1="30" y4="-30" y6="-30"/>
+        <polygon y3="30" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="20" antialias="false" x6="3" y2="-30" x3="20" x4="3" y5="30" closed="false" x5="3" x1="3" y1="-30" y4="30" y6="30"/>
+        <line end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="20" length2="1.5" antialias="false" y2="-10" x1="-20" y1="-10" end2="none"/>
+        <terminal y="33" x="0" orientation="s"/>
+        <terminal y="-33" x="0" orientation="n"/>
     </description>
 </definition>

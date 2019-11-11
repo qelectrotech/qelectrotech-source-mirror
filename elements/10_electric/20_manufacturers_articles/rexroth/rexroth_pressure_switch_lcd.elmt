@@ -1,43 +1,58 @@
-<definition width="160" hotspot_y="82" link_type="simple" height="90" hotspot_x="75" type="element" orientation="dyyy" version="0.70">
-    <uuid uuid="{e5dc8b43-8f7f-4f7b-aa74-31b5588f127e}"/>
+<definition height="90" hotspot_x="75" hotspot_y="82" orientation="dyyy" link_type="simple" version="0.80" type="element" width="160">
+    <uuid uuid="{36296da4-14b3-4048-9500-738da0fbb2a5}"/>
     <names>
-        <name lang="cs">Tlakové čidlo Vegabar 52</name>
-        <name lang="it">Sonda di pressione VEGABAR 52</name>
         <name lang="en">VEGA Pressure Sensor VEGABAR 52 </name>
         <name lang="pl">Czujnik ciśnienia Vegabar 52</name>
+        <name lang="it">Sonda di pressione VEGABAR 52</name>
+        <name lang="cs">Tlakové čidlo Vegabar 52</name>
         <name lang="nl">Druksensor Vegabar 52</name>
         <name lang="fr">VEGA Sonde Pression VEGABAR 52 </name>
     </names>
-    <elementInformations/>
-    <informations>Author: The QElectroTech team
+    <elementInformations>
+        <elementInformation name="manufacturer" show="1">Rexroth</elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="designation" show="1"></elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <text text="3" size="5" x="8" y="-6"/>
-        <text text="2" size="5" x="-42" y="-6"/>
-        <text text="4" size="5" x="28" y="-6"/>
-        <text text="L-" size="7" x="-41" y="-20"/>
-        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-9" x1="76" y1="-14" antialias="false" x2="76" length1="1.5"/>
-        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" x1="74" y1="0" antialias="false" x2="80" length1="1.5"/>
-        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" x1="-36.5" y1="0" antialias="false" x2="-24.5" length1="1.5"/>
-        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" x1="13.5" y1="0" antialias="false" x2="25.5" length1="1.5"/>
-        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" x1="34.5" y1="0" antialias="false" x2="46.5" length1="1.5"/>
-        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" x1="54" y1="0" antialias="false" x2="66" length1="1.5"/>
-        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-63.606" y="-3.6056" antialias="true" diameter="7.2111"/>
-        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="26.3945" y="-3.60555" antialias="true" diameter="7.2111"/>
-        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="6.39445" y="-3.60555" antialias="true" diameter="7.2111"/>
-        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-43.6056" y="-3.60555" antialias="true" diameter="7.2111"/>
-        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" x1="-70" y1="0" antialias="false" x2="-64" length1="1.5"/>
-        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" x1="-56" y1="0" antialias="false" x2="-44" length1="1.5"/>
-        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" x1="-16" y1="0" antialias="false" x2="6" length1="1.5"/>
-        <text text="L+" size="7" x="-65" y="-20"/>
-        <text text="1" size="5" x="-62" y="-6"/>
-        <text text="SMC ISE30A-01-P" size="7" x="-60" y="-64"/>
-        <input text="_" tagg="label" rotate="true" size="10" x="-66" y="-44.5"/>
-        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-15" x1="5" y1="-15" antialias="false" x2="76" length1="1.5"/>
-        <line length2="1.5" end2="none" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-10" x1="5" y1="-15" antialias="false" x2="5" length1="1.5"/>
-        <rect width="85" height="35" style="line-style:normal;line-weight:normal;filling:gray;color:black" x="-10" y="-55" antialias="false"/>
-        <text text="LED display" size="7" x="8" y="-36"/>
-        <rect width="150" height="80" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-70" y="-80" antialias="false"/>
+        <text color="#000000" x="8" y="-6" text="3" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" x="-42" y="-6" text="2" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" x="28" y="-6" text="4" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" x="-41" y="-20" text="L-" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <line length1="1.5" end2="none" x1="76" x2="76" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y2="-9" y1="-14"/>
+        <line length1="1.5" end2="none" x1="74" x2="80" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y2="0" y1="0"/>
+        <line length1="1.5" end2="none" x1="-36.5" x2="-24.5" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y2="0" y1="0"/>
+        <line length1="1.5" end2="none" x1="13.5" x2="25.5" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y2="0" y1="0"/>
+        <line length1="1.5" end2="none" x1="34.5" x2="46.5" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y2="0" y1="0"/>
+        <line length1="1.5" end2="none" x1="54" x2="66" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y2="0" y1="0"/>
+        <circle x="-63.606" y="-3.6056" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.2111" antialias="true"/>
+        <circle x="26.3945" y="-3.60555" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.2111" antialias="true"/>
+        <circle x="6.39445" y="-3.60555" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.2111" antialias="true"/>
+        <circle x="-43.6056" y="-3.60555" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.2111" antialias="true"/>
+        <line length1="1.5" end2="none" x1="-70" x2="-64" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y2="0" y1="0"/>
+        <line length1="1.5" end2="none" x1="-56" x2="-44" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y2="0" y1="0"/>
+        <line length1="1.5" end2="none" x1="-16" x2="6" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y2="0" y1="0"/>
+        <text color="#000000" x="-65" y="-20" text="L+" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" x="-62" y="-6" text="1" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" x="-60" y="-64" text="SMC ISE30A-01-P" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <dynamic_text Halignment="AlignLeft" x="-66" y="-56.5" text_from="ElementInfo" text_width="-1" z="21" rotation="0" Valignment="AlignTop" font="Sans Serif,10,-1,5,50,0,0,0,0,0" frame="false" uuid="{e437a2d7-bb06-45d0-b8cf-1b226480be4e}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line length1="1.5" end2="none" x1="5" x2="76" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y2="-15" y1="-15"/>
+        <line length1="1.5" end2="none" x1="5" x2="5" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y2="-10" y1="-15"/>
+        <rect height="35" rx="0" x="-10" ry="0" y="-55" style="line-style:normal;line-weight:normal;filling:gray;color:black" antialias="false" width="85"/>
+        <text color="#000000" x="8" y="-36" text="LED display" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <rect height="80" rx="0" x="-70" ry="0" y="-80" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="150"/>
         <terminal x="-40" y="3" orientation="s"/>
         <terminal x="30" y="3" orientation="s"/>
         <terminal x="-60" y="3" orientation="s"/>

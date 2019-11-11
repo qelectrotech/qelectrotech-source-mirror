@@ -1,92 +1,152 @@
-<definition type="element" version="0.5" hotspot_y="54" width="290" height="150" orientation="dyyy" link_type="simple" hotspot_x="163">
-    <uuid uuid="{0a6e551c-ab6f-4057-acdb-fdff7558f3a1}"/>
+<definition version="0.80" hotspot_y="54" type="element" height="150" hotspot_x="163" orientation="dyyy" link_type="simple" width="290">
+    <uuid uuid="{2bf96435-a9e3-4530-842b-ff8fde55ec26}"/>
     <names>
-        <name lang="pl">Wit 0.8</name>
-        <name lang="pt">Wit 0.8</name>
-        <name lang="nl">Wit 0.8</name>
-        <name lang="en">WIT 0.8</name>
-        <name lang="it">Wit 0.8</name>
         <name lang="es">Wit 0.8</name>
         <name lang="cs">Wit 0.8</name>
-        <name lang="el">Wit 0.8</name>
         <name lang="fr">WIT 0.8</name>
+        <name lang="nl">Wit 0.8</name>
+        <name lang="el">Wit 0.8</name>
+        <name lang="it">Wit 0.8</name>
+        <name lang="pl">Wit 0.8</name>
+        <name lang="en">WIT 0.8</name>
+        <name lang="pt">Wit 0.8</name>
     </names>
-    <informations>Author: The QElectroTech team
+    <elementInformations>
+        <elementInformation show="1" name="designation">Wit 0.8</elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Wit</elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input tagg="label" y="-19.45" x="132.5" size="9" rotate="true" text="_"/>
-        <rect y="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-159" width="280" antialias="false" height="139"/>
-        <input tagg="none" y="12.5" x="-134" size="9" rotate="true" text="WIT"/>
-        <text y="-10" x="58" size="6" text="DO0.7"/>
-        <text y="-10" x="24" size="6" text="DO0.6"/>
-        <text y="-10" x="-10" size="6" text="DO0.5"/>
-        <text y="-10" x="-47" size="6" text="DO0.4"/>
-        <text y="-10" x="-83" size="6" text="DO0.3"/>
-        <text y="-10" x="-115" size="6" text="DO0.2"/>
-        <text y="-10" x="-151" size="6" text="D00.1"/>
-        <text y="-10" x="93" size="6" text="DO0.8"/>
-        <input tagg="none" y="67.5" x="-14" size="5" rotate="true" text="0V"/>
-        <rect y="76" style="line-style:normal;line-weight:normal;filling:none;color:black" x="3" width="10" antialias="false" height="8"/>
-        <line y1="60" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-159" length2="1.5" antialias="false" y2="60" x2="121"/>
-        <line y1="-20" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-158" length2="1.5" antialias="false" y2="-20" x2="122"/>
-        <input tagg="none" y="31.5" x="-17" size="12" text="CLIP 0.8.0.0 "/>
-        <input tagg="none" y="69.5" x="39" size="5" rotate="true" text="BUS"/>
-        <input tagg="none" y="69.5" x="56" size="5" rotate="true" text="BUS"/>
-        <input tagg="none" y="67.5" x="-2" size="5" rotate="true" text="12V"/>
-        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-140" width="10" antialias="false" height="8"/>
-        <input tagg="none" y="-27.5" x="-157" size="5" rotate="true" text="01"/>
-        <input tagg="none" y="-27.5" x="-74" size="5" rotate="true" text="06"/>
-        <input tagg="none" y="-27.5" x="19" size="5" rotate="true" text="11"/>
-        <input tagg="none" y="-27.5" x="-1" size="5" rotate="true" text="10"/>
-        <input tagg="none" y="-27.5" x="-37" size="5" rotate="true" text="08"/>
-        <input tagg="none" y="-27.5" x="-87" size="5" rotate="true" text="05"/>
-        <input tagg="none" y="-27.5" x="-122" size="5" rotate="true" text="03"/>
-        <input tagg="none" y="-27.5" x="-143" size="5" rotate="true" text="02"/>
-        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-155" width="10" antialias="false" height="8"/>
-        <input tagg="none" y="-27.5" x="-109" size="5" rotate="true" text="04"/>
-        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-105" width="10" antialias="false" height="8"/>
-        <input tagg="none" y="-26.5" x="-53" size="5" rotate="true" text="07"/>
-        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-35" width="10" antialias="false" height="8"/>
-        <input tagg="none" y="-27.5" x="-18" size="5" rotate="true" text="09"/>
-        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-15" width="10" antialias="false" height="8"/>
-        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="0" width="10" antialias="false" height="8"/>
-        <input tagg="none" y="-27.5" x="34" size="5" rotate="true" text="12"/>
-        <input tagg="none" y="-27.5" x="88" size="5" rotate="true" text="15"/>
-        <input tagg="none" y="-27.5" x="53" size="5" rotate="true" text="13"/>
-        <input tagg="none" y="-27.5" x="69" size="5" rotate="true" text="14"/>
-        <input tagg="none" y="-27.5" x="105" size="5" rotate="true" text="16"/>
-        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="91" width="10" antialias="false" height="8"/>
-        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="70" width="10" antialias="false" height="8"/>
-        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="20" width="10" antialias="false" height="8"/>
-        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="35" width="10" antialias="false" height="8"/>
-        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="106" width="10" antialias="false" height="8"/>
-        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="55" width="10" antialias="false" height="8"/>
-        <rect y="76" style="line-style:normal;line-weight:normal;filling:none;color:black" x="46" width="10" antialias="false" height="8"/>
-        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-85" width="10" antialias="false" height="8"/>
-        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-50" width="10" antialias="true" height="8"/>
-        <rect y="76" style="line-style:normal;line-weight:normal;filling:none;color:black" x="61" width="10" antialias="false" height="8"/>
-        <rect y="76" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-10" width="10" antialias="false" height="8"/>
-        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-120" width="10" antialias="false" height="8"/>
-        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-70" width="10" antialias="false" height="8"/>
-        <terminal y="-49" x="-150" orientation="n"/>
-        <terminal y="89" x="66" orientation="s"/>
-        <terminal y="88" x="8" orientation="s"/>
-        <terminal y="88" x="-5" orientation="s"/>
-        <terminal y="88" x="51" orientation="s"/>
-        <terminal y="-49" x="96" orientation="n"/>
-        <terminal y="-49" x="111" orientation="n"/>
-        <terminal y="-49" x="5" orientation="n"/>
-        <terminal y="-49" x="-30" orientation="n"/>
-        <terminal y="-49" x="-10" orientation="n"/>
-        <terminal y="-49" x="-65" orientation="n"/>
-        <terminal y="-49" x="-45" orientation="n"/>
-        <terminal y="-49" x="-100" orientation="n"/>
-        <terminal y="-49" x="-80" orientation="n"/>
-        <terminal y="-49" x="-135" orientation="n"/>
-        <terminal y="-49" x="-115" orientation="n"/>
-        <terminal y="-49" x="60" orientation="n"/>
-        <terminal y="-49" x="40" orientation="n"/>
-        <terminal y="-49" x="25" orientation="n"/>
-        <terminal y="-49" x="75" orientation="n"/>
+        <dynamic_text rotation="0" uuid="{b346e07c-236b-45f6-a922-29b132169dc6}" text_width="-1" text_from="ElementInfo" y="-30.45" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="1" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="132.5">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect y="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="139" rx="0" ry="0" x="-159" width="280"/>
+        <dynamic_text rotation="0" uuid="{5cab02ac-0d65-47b1-9303-c98d02be9d06}" text_width="-1" text_from="UserText" y="1.5" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="3" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="-134">
+            <text>WIT</text>
+        </dynamic_text>
+        <text rotation="0" y="-10" text="DO0.7" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="58" color="#000000"/>
+        <text rotation="0" y="-10" text="DO0.6" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="24" color="#000000"/>
+        <text rotation="0" y="-10" text="DO0.5" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-10" color="#000000"/>
+        <text rotation="0" y="-10" text="DO0.4" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-47" color="#000000"/>
+        <text rotation="0" y="-10" text="DO0.3" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-83" color="#000000"/>
+        <text rotation="0" y="-10" text="DO0.2" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-115" color="#000000"/>
+        <text rotation="0" y="-10" text="D00.1" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="-151" color="#000000"/>
+        <text rotation="0" y="-10" text="DO0.8" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="93" color="#000000"/>
+        <dynamic_text rotation="0" uuid="{0e6234f4-5382-4294-91a7-45e430d0629d}" text_width="-1" text_from="UserText" y="59.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="12" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="-14">
+            <text>0V</text>
+        </dynamic_text>
+        <rect y="76" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="8" rx="0" ry="0" x="3" width="10"/>
+        <line length2="1.5" x1="-159" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="60" end2="none" antialias="false" y1="60" x2="121"/>
+        <line length2="1.5" x1="-158" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-20" end2="none" antialias="false" y1="-20" x2="122"/>
+        <dynamic_text rotation="0" uuid="{19ca7939-8420-4322-b175-ffeeefcb3ec0}" text_width="-1" text_from="UserText" y="18" font="Sans Serif,12,-1,5,50,0,0,0,0,0" z="16" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="-17">
+            <text>CLIP 0.8.0.0 </text>
+        </dynamic_text>
+        <dynamic_text rotation="0" uuid="{ed4b2952-2b36-4e4a-a4c1-e7e2b0c1e874}" text_width="-1" text_from="UserText" y="61.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="17" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="39">
+            <text>BUS</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" uuid="{1faab138-74f2-4a8d-a567-2ce60ca6668c}" text_width="-1" text_from="UserText" y="61.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="18" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="56">
+            <text>BUS</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" uuid="{60a0f2c6-9167-4728-a1cc-95b1fbfd607d}" text_width="-1" text_from="UserText" y="59.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="19" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="-2">
+            <text>12V</text>
+        </dynamic_text>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="8" rx="0" ry="0" x="-140" width="10"/>
+        <dynamic_text rotation="0" uuid="{1cb4a765-92a1-4a07-9792-d2f9f1e4f78a}" text_width="-1" text_from="UserText" y="-35.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="21" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="-157">
+            <text>01</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" uuid="{096cde7c-636d-4313-bb81-c84b6cfd4fd5}" text_width="-1" text_from="UserText" y="-35.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="22" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="-74">
+            <text>06</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" uuid="{263949fa-344b-48ca-8fce-74ef7cc08b9a}" text_width="-1" text_from="UserText" y="-35.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="23" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="19">
+            <text>11</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" uuid="{81e2aa57-01e5-48bc-b768-09b9de92ed59}" text_width="-1" text_from="UserText" y="-35.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="24" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="-1">
+            <text>10</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" uuid="{a080529c-9499-4c65-a37d-7b6e11a19995}" text_width="-1" text_from="UserText" y="-35.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="25" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="-37">
+            <text>08</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" uuid="{862e8de2-0257-4b10-a97e-749295f5d093}" text_width="-1" text_from="UserText" y="-35.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="26" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="-87">
+            <text>05</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" uuid="{1dce6b51-9e66-4403-98d2-465bece57171}" text_width="-1" text_from="UserText" y="-35.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="27" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="-122">
+            <text>03</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" uuid="{b8debfb8-3406-4988-a6f2-7200a078ac4f}" text_width="-1" text_from="UserText" y="-35.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="28" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="-143">
+            <text>02</text>
+        </dynamic_text>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="8" rx="0" ry="0" x="-155" width="10"/>
+        <dynamic_text rotation="0" uuid="{5893fa2d-92a8-4d3e-9966-0f5a8995ec35}" text_width="-1" text_from="UserText" y="-35.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="30" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="-109">
+            <text>04</text>
+        </dynamic_text>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="8" rx="0" ry="0" x="-105" width="10"/>
+        <dynamic_text rotation="0" uuid="{54700b1f-433e-4865-83e7-c4528d793638}" text_width="-1" text_from="UserText" y="-34.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="32" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="-53">
+            <text>07</text>
+        </dynamic_text>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="8" rx="0" ry="0" x="-35" width="10"/>
+        <dynamic_text rotation="0" uuid="{190eedc5-8dc9-4584-8900-ee8f8c6525d9}" text_width="-1" text_from="UserText" y="-35.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="34" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="-18">
+            <text>09</text>
+        </dynamic_text>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="8" rx="0" ry="0" x="-15" width="10"/>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="8" rx="0" ry="0" x="0" width="10"/>
+        <dynamic_text rotation="0" uuid="{86a279fe-f537-4445-8d38-8730fd49ebd7}" text_width="-1" text_from="UserText" y="-35.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="37" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="34">
+            <text>12</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" uuid="{53de107e-e69b-4666-b8a4-3224b2000dfc}" text_width="-1" text_from="UserText" y="-35.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="38" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="88">
+            <text>15</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" uuid="{776e26c3-fec8-4921-9df9-0d04d5d60a3b}" text_width="-1" text_from="UserText" y="-35.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="39" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="53">
+            <text>13</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" uuid="{0cd5c34f-65fd-4ad9-8bff-1a7f918c1bcd}" text_width="-1" text_from="UserText" y="-35.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="40" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="69">
+            <text>14</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" uuid="{810e2c37-1dbd-4dea-9e0e-69c30dd4be80}" text_width="-1" text_from="UserText" y="-35.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="41" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="105">
+            <text>16</text>
+        </dynamic_text>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="8" rx="0" ry="0" x="91" width="10"/>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="8" rx="0" ry="0" x="70" width="10"/>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="8" rx="0" ry="0" x="20" width="10"/>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="8" rx="0" ry="0" x="35" width="10"/>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="8" rx="0" ry="0" x="106" width="10"/>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="8" rx="0" ry="0" x="55" width="10"/>
+        <rect y="76" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="8" rx="0" ry="0" x="46" width="10"/>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="8" rx="0" ry="0" x="-85" width="10"/>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" height="8" rx="0" ry="0" x="-50" width="10"/>
+        <rect y="76" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="8" rx="0" ry="0" x="61" width="10"/>
+        <rect y="76" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="8" rx="0" ry="0" x="-10" width="10"/>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="8" rx="0" ry="0" x="-120" width="10"/>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="8" rx="0" ry="0" x="-70" width="10"/>
+        <terminal y="-49" orientation="n" x="-150"/>
+        <terminal y="89" orientation="s" x="66"/>
+        <terminal y="88" orientation="s" x="8"/>
+        <terminal y="88" orientation="s" x="-5"/>
+        <terminal y="88" orientation="s" x="51"/>
+        <terminal y="-49" orientation="n" x="96"/>
+        <terminal y="-49" orientation="n" x="111"/>
+        <terminal y="-49" orientation="n" x="5"/>
+        <terminal y="-49" orientation="n" x="-30"/>
+        <terminal y="-49" orientation="n" x="-10"/>
+        <terminal y="-49" orientation="n" x="-65"/>
+        <terminal y="-49" orientation="n" x="-45"/>
+        <terminal y="-49" orientation="n" x="-100"/>
+        <terminal y="-49" orientation="n" x="-80"/>
+        <terminal y="-49" orientation="n" x="-135"/>
+        <terminal y="-49" orientation="n" x="-115"/>
+        <terminal y="-49" orientation="n" x="60"/>
+        <terminal y="-49" orientation="n" x="40"/>
+        <terminal y="-49" orientation="n" x="25"/>
+        <terminal y="-49" orientation="n" x="75"/>
     </description>
 </definition>

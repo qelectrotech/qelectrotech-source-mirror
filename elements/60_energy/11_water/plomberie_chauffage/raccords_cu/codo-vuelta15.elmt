@@ -1,23 +1,28 @@
-<definition width="40" hotspot_y="29" hotspot_x="22" type="element" orientation="dyyy" version="0.5" link_type="simple" height="50">
-<uuid uuid="{4367B0AF-9FA2-4658-8544-A1DE8813E778}"/><names>
+<definition version="0.80" hotspot_y="11" type="element" height="50" hotspot_x="13" orientation="dyyy" link_type="simple" width="40">
+    <uuid uuid="{7d03b4b5-b0e0-4c0d-b2d8-96a3851bb34b}"/>
+    <names>
         <name lang="es">Vuelta soldar 15</name>
         <name lang="ca">Volta soldar 15</name>
     </names>
-    <informations>Rafael Ferrando.
+    <elementInformations/>
+    <informations>Rafael Ferrando.&#xd;
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <arc width="17.5" angle="-180" y="-13.0064" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-11.5" start="90" antialias="true" height="17.7475"/>
-        <arc width="2.2" angle="-90" y="-23" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-5" start="90" antialias="true" height="2"/>
-        <arc width="2.2" angle="-90" y="3" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-5" start="90" antialias="true" height="2"/>
-        <arc width="2.2" angle="-90" y="-14" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-5" start="0" antialias="true" height="2"/>
-        <arc width="2.2" angle="-90" y="12" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-5" start="0" antialias="true" height="2"/>
-        <line y1="-21.1044" end1="none" x1="-2.72" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-2.72" antialias="false" y2="-12.887" length2="1.5"/>
-        <arc width="33" angle="-180" y="-21.2883" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-19" start="90" antialias="true" height="34.3113"/>
-        <polygon y1="-23" x3="-9.2" y4="-12" x4="-4.2" x1="-4.2" closed="false" y3="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-9.2" antialias="false" y2="-23"/>
-        <input size="4" text="15" y="-4" tagg="label" x="-5" rotate="true"/>
-        <line y1="4.89565" end1="none" x1="-2.72" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-2.72" antialias="false" y2="13.113" length2="1.5"/>
-        <polygon y1="3" x3="-9.2" y4="14" x4="-4.2" x1="-4.2" closed="false" y3="14" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-9.2" antialias="false" y2="3"/>
-        <terminal y="10" orientation="w" x="-10"/>
-        <terminal y="-20" orientation="w" x="-10"/>
+        <arc y="4.9936" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" antialias="true" height="17.7475" angle="-180" x="-2.5" width="17.5"/>
+        <arc y="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" antialias="true" height="2" angle="-90" x="4" width="2.2"/>
+        <arc y="21" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" antialias="true" height="2" angle="-90" x="4" width="2.2"/>
+        <arc y="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" antialias="true" height="2" angle="-90" x="4" width="2.2"/>
+        <arc y="30" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" antialias="true" height="2" angle="-90" x="4" width="2.2"/>
+        <line length2="1.5" x1="6.28" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="5.113" end2="none" antialias="false" y1="-3.1044" x2="6.28"/>
+        <arc y="-3.2883" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" antialias="true" height="34.3113" angle="-180" x="-10" width="33"/>
+        <polygon x4="4.8" x1="4.8" y4="6" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-5" y3="6" antialias="false" closed="false" y1="-5" x3="-0.2" x2="-0.2"/>
+        <dynamic_text rotation="0" uuid="{a0571dac-be6f-443e-ab81-5f20a5a12aae}" text_width="-1" text_from="ElementInfo" y="7" font="Sans Serif,4,-1,5,25,0,0,0,0,0" z="9" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="4">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line length2="1.5" x1="6.28" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="31.113" end2="none" antialias="false" y1="22.8956" x2="6.28"/>
+        <polygon x4="4.8" x1="4.8" y4="32" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="21" y3="32" antialias="false" closed="false" y1="21" x3="-0.2" x2="-0.2"/>
+        <terminal y="27" orientation="w" x="0"/>
+        <terminal y="0" orientation="w" x="0"/>
     </description>
 </definition>

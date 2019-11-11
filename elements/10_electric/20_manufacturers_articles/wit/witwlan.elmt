@@ -1,49 +1,85 @@
-<definition type="element" version="0.5" hotspot_y="55" width="290" height="150" orientation="dyyy" link_type="simple" hotspot_x="163">
-    <uuid uuid="{03642713-0d94-48ce-892a-e7c10bd44b1f}"/>
+<definition version="0.80" hotspot_y="55" type="element" height="150" hotspot_x="163" orientation="dyyy" link_type="simple" width="290">
+    <uuid uuid="{6c55bbc0-bd8a-498d-8cc2-ea2544ed8a1b}"/>
     <names>
-        <name lang="pl">Wit WLAN</name>
-        <name lang="pt">Wit WLAN</name>
-        <name lang="nl">Wit WLAN</name>
-        <name lang="en">WIT WLAN</name>
-        <name lang="it">Wit WLAN</name>
         <name lang="es">Wit WLAN</name>
         <name lang="cs">Wit WLAN</name>
-        <name lang="el">Wit WLAN</name>
         <name lang="fr">WIT WLAN</name>
+        <name lang="nl">Wit WLAN</name>
+        <name lang="el">Wit WLAN</name>
+        <name lang="it">Wit WLAN</name>
+        <name lang="pl">Wit WLAN</name>
+        <name lang="en">WIT WLAN</name>
+        <name lang="pt">Wit WLAN</name>
     </names>
-    <informations>Author: The QElectroTech team
+    <elementInformations>
+        <elementInformation show="1" name="designation">Wit WLAN</elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Wit</elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input tagg="label" y="-29.45" x="132.5" size="9" rotate="true" text="_"/>
-        <rect y="17" style="line-style:normal;line-weight:normal;filling:none;color:black" x="38" width="25" antialias="false" height="25"/>
-        <input tagg="none" y="3.5" x="-128" size="12" rotate="true" text="WIT "/>
-        <input tagg="none" y="68.5" x="2" size="5" rotate="true" text="0V"/>
-        <rect y="76" style="line-style:normal;line-weight:normal;filling:none;color:black" x="3" width="10" antialias="false" height="8"/>
-        <line y1="60" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-159" length2="1.5" antialias="false" y2="60" x2="121"/>
-        <line y1="-20" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-158" length2="1.5" antialias="false" y2="-20" x2="122"/>
-        <rect y="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-158" width="280" antialias="false" height="139"/>
-        <input tagg="none" y="27.5" x="-31" size="12" text="WLAN"/>
-        <input tagg="none" y="68.5" x="-88" size="5" rotate="true" text=""/>
-        <input tagg="none" y="67.5" x="-84" size="5" rotate="true" text="BUS"/>
-        <input tagg="none" y="68.5" x="-16" size="5" rotate="true" text="12V"/>
-        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-140" width="10" antialias="false" height="8"/>
-        <input tagg="none" y="-27.5" x="-157" size="5" rotate="true" text="01"/>
-        <input tagg="none" y="-27.5" x="-122" size="5" rotate="true" text="03"/>
-        <input tagg="none" y="-27.5" x="-143" size="5" rotate="true" text="02"/>
-        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-155" width="10" antialias="false" height="8"/>
-        <input tagg="none" y="-27.5" x="-109" size="5" rotate="true" text="04"/>
-        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-105" width="10" antialias="false" height="8"/>
-        <rect y="76" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-86" width="10" antialias="false" height="8"/>
-        <rect y="76" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-71" width="10" antialias="false" height="8"/>
-        <rect y="76" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-10" width="10" antialias="false" height="8"/>
-        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-120" width="10" antialias="false" height="8"/>
-        <terminal y="88" x="-66" orientation="s"/>
-        <terminal y="88" x="8" orientation="s"/>
-        <terminal y="88" x="-5" orientation="s"/>
-        <terminal y="88" x="-81" orientation="s"/>
-        <terminal y="-49" x="-150" orientation="n"/>
-        <terminal y="-49" x="-135" orientation="n"/>
-        <terminal y="-49" x="-115" orientation="n"/>
-        <terminal y="-49" x="-100" orientation="n"/>
+        <dynamic_text rotation="0" uuid="{68864740-e0c2-496c-89a2-aa490a25e55e}" text_width="-1" text_from="ElementInfo" y="-40.45" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="1" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="132.5">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect y="17" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="25" rx="0" ry="0" x="38" width="25"/>
+        <dynamic_text rotation="0" uuid="{8c1c6687-26a8-45f8-9bdc-96cc3cdaca00}" text_width="-1" text_from="UserText" y="-10" font="Sans Serif,12,-1,5,50,0,0,0,0,0" z="3" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="-128">
+            <text>WIT </text>
+        </dynamic_text>
+        <dynamic_text rotation="0" uuid="{689968bd-0228-4aac-8e85-c4728247555c}" text_width="-1" text_from="UserText" y="60.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="4" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="2">
+            <text>0V</text>
+        </dynamic_text>
+        <rect y="76" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="8" rx="0" ry="0" x="3" width="10"/>
+        <line length2="1.5" x1="-159" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="60" end2="none" antialias="false" y1="60" x2="121"/>
+        <line length2="1.5" x1="-158" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-20" end2="none" antialias="false" y1="-20" x2="122"/>
+        <rect y="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="139" rx="0" ry="0" x="-158" width="280"/>
+        <dynamic_text rotation="0" uuid="{7d141bdf-befa-4e80-b172-4613b6faf42b}" text_width="-1" text_from="UserText" y="14" font="Sans Serif,12,-1,5,50,0,0,0,0,0" z="9" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="-31">
+            <text>WLAN</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" uuid="{af590f58-9175-4c4e-9580-cfb35d331088}" text_width="-1" text_from="UserText" y="60.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="10" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="-88">
+            <text></text>
+        </dynamic_text>
+        <dynamic_text rotation="0" uuid="{799f76e0-f505-4bf6-bd1b-2b3cc7801bb8}" text_width="-1" text_from="UserText" y="59.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="11" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="-84">
+            <text>BUS</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" uuid="{5716c5ac-ba72-44cb-a337-c99d79b192d1}" text_width="-1" text_from="UserText" y="60.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="12" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="-16">
+            <text>12V</text>
+        </dynamic_text>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="8" rx="0" ry="0" x="-140" width="10"/>
+        <dynamic_text rotation="0" uuid="{5b87f855-1800-4f21-bf24-2f07904f4835}" text_width="-1" text_from="UserText" y="-35.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="14" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="-157">
+            <text>01</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" uuid="{827db4bc-100c-4d74-827f-5b84943f25c7}" text_width="-1" text_from="UserText" y="-35.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="15" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="-122">
+            <text>03</text>
+        </dynamic_text>
+        <dynamic_text rotation="0" uuid="{4b16904d-2dd8-457c-9af3-476066a36698}" text_width="-1" text_from="UserText" y="-35.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="16" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="-143">
+            <text>02</text>
+        </dynamic_text>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="8" rx="0" ry="0" x="-155" width="10"/>
+        <dynamic_text rotation="0" uuid="{8c3f69f6-352c-45bc-be56-4880b13a2c02}" text_width="-1" text_from="UserText" y="-35.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="18" Halignment="AlignLeft" frame="false" Valignment="AlignTop" x="-109">
+            <text>04</text>
+        </dynamic_text>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="8" rx="0" ry="0" x="-105" width="10"/>
+        <rect y="76" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="8" rx="0" ry="0" x="-86" width="10"/>
+        <rect y="76" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="8" rx="0" ry="0" x="-71" width="10"/>
+        <rect y="76" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="8" rx="0" ry="0" x="-10" width="10"/>
+        <rect y="-44" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="8" rx="0" ry="0" x="-120" width="10"/>
+        <terminal y="88" orientation="s" x="-66"/>
+        <terminal y="88" orientation="s" x="8"/>
+        <terminal y="88" orientation="s" x="-5"/>
+        <terminal y="88" orientation="s" x="-81"/>
+        <terminal y="-49" orientation="n" x="-150"/>
+        <terminal y="-49" orientation="n" x="-135"/>
+        <terminal y="-49" orientation="n" x="-115"/>
+        <terminal y="-49" orientation="n" x="-100"/>
     </description>
 </definition>
