@@ -256,7 +256,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="222"/>
         <source>Paquets Snap</source>
-        <translation type="unfinished"></translation>
+        <translation>Beépülő programocsag</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="239"/>
@@ -505,171 +505,171 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="14"/>
         <source>Export liste de matériel.</source>
-        <translation type="unfinished"></translation>
+        <translation>Anyaglista exportálása.</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="38"/>
         <source>Informations disponibles</source>
-        <translation type="unfinished"></translation>
+        <translation>Elérhető információ</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="48"/>
         <source>Informations à exporter</source>
-        <translation type="unfinished"></translation>
+        <translation>Információ az exportáláshoz</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="88"/>
         <source>Monter la sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>felfelé a kiválasztáson</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="105"/>
         <source>Ajouter la sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>Kiválasztás hozzáadása</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="119"/>
         <source>Supprimer la sélection</source>
-        <translation type="unfinished">A kiválasztás törlése</translation>
+        <translation>A kiválasztás törlése</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="133"/>
         <source>Descendre la sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>lefelé a kiválasztáson</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="187"/>
         <source>Type d&apos;éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Elem típusa</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="196"/>
         <source>Tous</source>
-        <translation type="unfinished"></translation>
+        <translation>Összes</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="206"/>
         <source>Bornier</source>
-        <translation type="unfinished">Sorkapocs</translation>
+        <translation>Sorkapocs</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="216"/>
         <source>Bouton et commutateur</source>
-        <translation type="unfinished"></translation>
+        <translation>Nyomógomb és kapcsoló</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="226"/>
         <source>Contacteur et relais</source>
-        <translation type="unfinished"></translation>
+        <translation>Mágneskapcsoló és relé</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="233"/>
         <source>Organes de protection</source>
-        <translation type="unfinished"></translation>
+        <translation>Védelmi eszköz</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="243"/>
         <source>Mise en page</source>
-        <translation type="unfinished">Oldal elrendezés</translation>
+        <translation>Oldal elrendezés</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="258"/>
         <source>Chaque élément portant la même référence sera listé</source>
-        <translation type="unfinished"></translation>
+        <translation>Az összes azonos hivatkozású elem fel lesz sorolva</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="261"/>
         <source>Formater en tant que nomenclature</source>
-        <translation type="unfinished"></translation>
+        <translation>Jegyzék formátum</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="271"/>
         <source>Une même référence utilisé par plusieurs éléments ne sera listé qu&apos;une fois</source>
-        <translation type="unfinished"></translation>
+        <translation>Egyforma hivatkozást használó elemek, csak egyszer kerülnek a listába</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="274"/>
         <source>Formater en tant que liste de matériel</source>
-        <translation type="unfinished"></translation>
+        <translation>Anyaglista formátum</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="312"/>
         <source>Ouvrir la configuration sélectionné</source>
-        <translation type="unfinished"></translation>
+        <translation>A kiválasztott konfiguráció megnyitása</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="329"/>
         <source>Inclure les en-têtes</source>
-        <translation type="unfinished"></translation>
+        <translation>Fejléceket tartalmaz</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="352"/>
         <source>Sauvegarder la configuration actuelle</source>
-        <translation type="unfinished"></translation>
+        <translation>A jelenlegi konfiguráció mentése</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="384"/>
         <source>Requête SQL personnalisée</source>
-        <translation type="unfinished"></translation>
+        <translation>Egyéni SQL lekérdezés</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="394"/>
         <source>Requête SQL :</source>
-        <translation type="unfinished"></translation>
+        <translation>SQL igénylés  :</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="70"/>
         <source>nomenclature_</source>
-        <translation type="unfinished">alkatrész lista_</translation>
+        <translation>alkatrész lista_</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="74"/>
         <source>Enregister sous... </source>
-        <translation type="unfinished">Mentés más néven... </translation>
+        <translation>Mentés más néven... </translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="74"/>
         <source>Fichiers csv (*.csv)</source>
-        <translation type="unfinished">Fájlok csv (*.csv)</translation>
+        <translation>Fájlok csv (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="83"/>
         <source>Erreur</source>
-        <translation type="unfinished">Hiba</translation>
+        <translation>Hiba</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="84"/>
         <source>Impossible de remplacer le fichier!
 
 </source>
-        <translation type="unfinished">Nem lehet a fájlt cserélni!
+        <translation>Nem lehet a fájlt cserélni!
 
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="111"/>
         <source>Position</source>
-        <translation type="unfinished">Pozíció</translation>
+        <translation>Pozíció</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="111"/>
         <source>Titre du folio</source>
-        <translation type="unfinished">Tervlap címe</translation>
+        <translation>Tervlap címe</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="111"/>
         <source>Position de folio</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="111"/>
         <source>Numéro de folio</source>
-        <translation type="unfinished">Tervlap szám</translation>
+        <translation>Tervlap szám</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="111"/>
         <source>Quantité (Numéro d&apos;article)</source>
-        <translation type="unfinished"></translation>
+        <translation>Mennyiség (cikkszám)</translation>
     </message>
 </context>
 <context>
