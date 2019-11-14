@@ -1236,13 +1236,11 @@ if defined(Q_OS_WIN)
 void QETApp::useSystemPalette(bool use) {
 	if (use) {
 		qApp->setPalette(initial_palette_);
-        qApp->setStyleSheet(
-                    "QTabBar::tab:!selected { background-color: transparent; }"
-                    "QTabBar::tab:selected { background-color: transparent; font: bold; color: black;}"
-                    "QAbstractScrollArea#mdiarea {"
-                    "background-color -> setPalette(initial_palette_);"
-                    "}"
-                    );
+		qApp->setStyleSheet(
+					"QAbstractScrollArea#mdiarea {"
+					"background-color -> setPalette(initial_palette_);"
+					"}"
+					);
 	} else {
 		QFile file(configDir() + "style.css");
 		file.open(QFile::ReadOnly);
