@@ -1214,6 +1214,7 @@ void DynamicElementTextModel::itemDataChanged(QStandardItem *qsi)
 		//the first column is use only for display the title of the property, except for the name of texts group
 	if((m_groups_list.values().contains(qsi) || qsi->column() == 1) && !m_block_dataChanged)
 		emit dataChanged();
+    if(deti) deti->updateXref();
 }
 
 /**
