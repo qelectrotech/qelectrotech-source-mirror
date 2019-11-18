@@ -539,7 +539,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="196"/>
         <source>Simples</source>
-        <translation type="unfinished"></translation>
+        <translation>Einfache</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="206"/>
@@ -589,27 +589,27 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="14"/>
         <source>Export CSV</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportieren in CSV Format</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="216"/>
         <source>Contacteurs et relais</source>
-        <translation type="unfinished"></translation>
+        <translation>Schütze und Relais</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="226"/>
         <source>Boutons et commutateurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Bedienelemente</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="236"/>
         <source>Borniers</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemmleisten</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="330"/>
         <source>Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Einstellung</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="366"/>
@@ -5534,7 +5534,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="397"/>
         <source>Exporter au format CSV</source>
-        <translation type="unfinished"></translation>
+        <translation>In CSV Format exportieren</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="408"/>
