@@ -1407,7 +1407,7 @@ QString Element::linkTypeToString() const
         case Terminale:
             return "Terminale";
         default:
-            return "Unknow";
+            return "Unknown";
     }
 }
 

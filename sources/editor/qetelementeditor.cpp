@@ -1145,7 +1145,7 @@ void QETElementEditor::slot_reload()
 /**
  * @brief QETElementEditor::slot_save
  * Save the current editing element.
- * If the filepath or location is unknow, use save_as instead
+ * If the filepath or location is unknown, use save_as instead
  * @return true if save with success
  */
 bool QETElementEditor::slot_save()
