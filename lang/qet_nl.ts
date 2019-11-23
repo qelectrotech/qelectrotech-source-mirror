@@ -535,7 +535,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="196"/>
         <source>Simples</source>
-        <translation type="unfinished"></translation>
+        <translation>Eenvoudige</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="206"/>
@@ -560,7 +560,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="300"/>
         <source>Formater en tant que nomenclature</source>
-        <translation>Opmaak gelijk aan de naamgeving</translation>
+        <translation>Opmaak volgens de naamgeving</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="310"/>
@@ -570,7 +570,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="313"/>
         <source>Formater en tant que liste de matériel</source>
-        <translation>Opmaak gelijk aan de materiaallijst</translation>
+        <translation>Opmaak volgens de materiaallijst</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="339"/>
@@ -585,27 +585,27 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="14"/>
         <source>Export CSV</source>
-        <translation type="unfinished"></translation>
+        <translation>CSV exporteren</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="216"/>
         <source>Contacteurs et relais</source>
-        <translation type="unfinished"></translation>
+        <translation>Contactors en relais</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="226"/>
         <source>Boutons et commutateurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Knoppen en schakelaars</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="236"/>
         <source>Borniers</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemmenstroken</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="330"/>
         <source>Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Configuratie</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="366"/>
@@ -5122,7 +5122,7 @@ Opties :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="397"/>
         <source>Exporter au format CSV</source>
-        <translation type="unfinished"></translation>
+        <translation>Exporteren naar CSV-formaat</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="404"/>
