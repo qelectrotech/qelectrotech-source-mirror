@@ -256,7 +256,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="222"/>
         <source>Paquets Snap</source>
-        <translation>Beépülő programocsag</translation>
+        <translation>Beépülő programcsomag</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="239"/>
