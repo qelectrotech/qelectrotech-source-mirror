@@ -25,6 +25,7 @@
 #include "elementcollectionhandler.h"
 
 #include <QtConcurrent>
+#include <QFutureWatcher>
 
 /**
  * @brief ElementsCollectionModel::ElementsCollectionModel
@@ -241,7 +242,10 @@ void ElementsCollectionModel::loadCollections(bool common_collection, bool custo
 		list.append(projectItems(project));
 	}
 
+QFutureWatcher<void> watcher;
+
 	QFuture<void> futur = QtConcurrent::map(list, setUpData);
+	watcher.setFuture(futur);
 	emit loadingMaxValue(futur.progressMaximum());
 	while (futur.isRunning()) {
 		emit loadingProgressValue(futur.progressValue());
