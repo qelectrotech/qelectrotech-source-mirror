@@ -824,7 +824,7 @@ void ProjectView::initWidgets() {
 
 	connect(m_tab, SIGNAL(currentChanged(int)), this, SLOT(tabChanged(int)));
 	connect(m_tab, SIGNAL(tabBarDoubleClicked(int)), this, SLOT(tabDoubleClicked(int)));
-	connect(m_tab->tabBar(), SIGNAL(tabMoved(int, int)), this, SLOT(tabMoved(int, int)));
+	connect(m_tab->tabBar(), SIGNAL(tabMoved(int, int)), this, SLOT(tabMoved(int, int)), Qt::QueuedConnection);
 
 	fallback_widget_ -> setVisible(false);
 	m_tab -> setVisible(false);
