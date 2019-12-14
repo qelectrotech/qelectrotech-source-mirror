@@ -35,7 +35,12 @@ int main(int argc, char **argv)
 	QCoreApplication::setOrganizationDomain("qelectrotech.org");
 	QCoreApplication::setApplicationName("QElectroTech");
 		//Creation and execution of the application
-
+		//HighDPI
+#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
+    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+#else
+    qputenv("QT_DEVICE_PIXEL_RATIO", QByteArray("auto"));
+#endif
 	SingleApplication app(argc, argv, true);
 #ifdef Q_OS_MACOS
 		//Handle the opening of QET when user double click on a .qet .elmt .tbt file
