@@ -446,12 +446,8 @@ void ProjectView::removeDiagram(DiagramView *diagram_view)
 	delete diagram_view;
 
 	emit(diagramRemoved(diagram_view));
-	
-        //Make definitve the withdrawal
-	m_project -> write();
     updateAllTabsTitle();
     m_project -> setModified(true);
-
 }
 
 /**
