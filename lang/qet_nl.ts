@@ -2866,7 +2866,7 @@ Teksten en nummers zijn ook beschikbaar.</translation>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="133"/>
         <source>Numéroter les colonnes de cartouche à partir de 0 (1 sinon)</source>
         <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
-        <translation>Nummer het stramien vanaf 0 (in plaats van 1)</translation>
+        <translation>Nummer het stramien vanaf 0 (in plaats van vanaf 1)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="143"/>
@@ -2934,7 +2934,7 @@ Hier kunt u de standaardtekst hiervoor opgeven voor nieuwe elementen :</translat
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="341"/>
         <source>Appliqué au prochain lancement de QElectroTech</source>
-        <translation>Toegepast bij opnieuw opstarten van QElectroTech</translation>
+        <translation>Toegepast na herstarten van QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="381"/>
@@ -2949,27 +2949,27 @@ Hier kunt u de standaardtekst hiervoor opgeven voor nieuwe elementen :</translat
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="606"/>
         <source>Grille : 1 - 30</source>
-        <translation>Raster : 1 - 30</translation>
+        <translation>Raster in schemabewerker</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="673"/>
         <source>DiagramEditor xGrid</source>
-        <translation>Schemabewerker xRaster</translation>
+        <translation>In x-richting: (1 - 30)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="640"/>
         <source>DiagramEditor yGrid</source>
-        <translation>Schemabewerker yRaster</translation>
+        <translation>In y-richting: (1 - 30)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="65"/>
         <source>Utiliser des fen&amp;êtres (appliqué au prochain lancement de QElectroTech)</source>
-        <translation>Gebruik ven&amp;sters (wordt toegepast na het opnieuw starten van QElectroTech)</translation>
+        <translation>Gebruik ven&amp;sters (toegepast na herstarten van QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="72"/>
         <source>Utiliser des onglets (appliqué au prochain lance&amp;ment de QElectroTech)</source>
-        <translation>Gebruik tabs (wordt toegepast na het opnieuw &amp;starten van QElectroTech)</translation>
+        <translation>Gebruik tabs (toegepast na he&amp;rstarten van QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="189"/>
@@ -3019,12 +3019,12 @@ Hier kunt u de standaardtekst hiervoor opgeven voor nieuwe elementen :</translat
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="514"/>
         <source>Pages de sommaire</source>
-        <translation>Overzichtspagina</translation>
+        <translation>Overzichtspagina&apos;s</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="550"/>
         <source>Autres textes</source>
-        <translation>Andere teksten</translation>
+        <translation>Overige teksten</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="647"/>
@@ -3034,37 +3034,37 @@ Hier kunt u de standaardtekst hiervoor opgeven voor nieuwe elementen :</translat
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="696"/>
         <source>Déplacement au clavier : 1 - 30</source>
-        <translation>Verplaatsing via toetsenbord : 1 - 30</translation>
+        <translation>Verplaatsing van selectie met pijltjestoetsen</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="746"/>
         <source>DiagramEditor (touche :   gauche / droite)  xGrid</source>
-        <translation>Schemabewerker (Pijltje links / rechts) xRaster</translation>
+        <translation>Pijltje links / rechts in x-richting: (1 - 30)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="753"/>
         <source>DiagramEditor (touche :   haut / bas)  yGrid</source>
-        <translation>Schemabewerker (Pijltje omhoog / omlaag) yRaster</translation>
+        <translation>Pijltje omhoog / omlaag in y-richting: (1 - 30)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="776"/>
         <source>Déplacement au clavier avec la touche ALT : 1 - 9</source>
-        <translation>Verplaatsing via toetsenbord met toets ALT : 1 - 9</translation>
+        <translation>Verplaatsing van selectie met ALT + pijltjestoetsen</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="782"/>
         <source>DiagramEditor (touche :   gauche / droite ) xGrid</source>
-        <translation>Schemabewerker (Pijltje links / rechts) xRaster</translation>
+        <translation>ALT + Pijltje links / rechts in x-richting: (1 - 9)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="811"/>
         <source>DiagramEditor (touche :  haut / bas)  yGrid</source>
-        <translation>Schemabewerker (Pijltje omhoog / omlaag) yRaster</translation>
+        <translation>ALT + Pijltje omhoog / omlaag in  y-richting: (1 - 9)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="119"/>
         <source>Sauvegarde automatique des projets (appliqué au prochain lancement de QElectroTech)</source>
-        <translation>Automatisch backup maken van projecten (toegepast na opnieuw opstarten van QElectroTech)</translation>
+        <translation>Automatisch backup maken van projecten (toegepast na herstarten van QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="99"/>
@@ -4447,7 +4447,7 @@ De volgende variabelen zijn compatibel :
         <location filename="../sources/projectconfigpages.cpp" line="168"/>
         <source>Vous pouvez définir ci-dessous des propriétés personnalisées qui seront disponibles pour tous les folios de ce projet (typiquement pour les cartouches).</source>
         <comment>informative label</comment>
-        <translation>Hieronder kunt u gepersonaliseerde gegevens invoeren die voor op alle bladen beschikbaar zijn (typisch voor in titelblokken).</translation>
+        <translation>Hieronder kunt u eigen gegevens invoeren die voor op alle bladen beschikbaar zijn (typisch voor in titelblokken).</translation>
     </message>
 </context>
 <context>
@@ -10153,14 +10153,14 @@ De volgende variabelen zijn te gebruiken:
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="406"/>
         <source>Personnalisées</source>
-        <translation>Gepersonaliseerd</translation>
+        <translation>Aanvullende gegevens</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="414"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation>Hier kunt u variabele / waarde associaties voor in het titelblok definiëren. Bijv. :
-Door associatie van de naam &quot;volta&quot; met de waarde &quot;1745&quot; wordt in het titelblok %{volta} door 1745 vervangen.</translation>
+        <translation>Hier kunt u variabele / waarde associaties definiëren. Bijvoorbeeld :
+Door de associatie van de naam &quot;volta&quot; met de waarde &quot;1745&quot; wordt in het titelblok %{volta} door 1745 vervangen.</translation>
     </message>
 </context>
 <context>
@@ -10655,7 +10655,7 @@ Maximale afmeting : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="6"/>
         <source>Form</source>
-        <translation>XRef eigenschappen</translation>
+        <translation>Eigenschappen kruisverwijzingen</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="14"/>
@@ -10665,17 +10665,17 @@ Maximale afmeting : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="26"/>
         <source>Représentation:</source>
-        <translation>Weergave :</translation>
+        <translation>Weergave van kruisverwijzingen:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="34"/>
         <source>Positionner :</source>
-        <translation>Positionering :</translation>
+        <translation>Positionering verwijzer:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="48"/>
         <source>XRef Vertical Offset:</source>
-        <translation>XRef plaatsingshoogte:</translation>
+        <translation>Plaatsingshoogte verwijzer:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="55"/>
@@ -10690,12 +10690,12 @@ Maximale afmeting : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="61"/>
         <source>Default - Fit to XRef height</source>
-        <translation>Standaard - Aangepast op XRef hoogte</translation>
+        <translation>Standaard - Helemaal onderaan</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="90"/>
         <source>XRef slave position</source>
-        <translation>XRef doel positie</translation>
+        <translation>Positionering doel</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="106"/>
@@ -10710,7 +10710,7 @@ Maximale afmeting : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="126"/>
         <source>Label des références croisées</source>
-        <translation>Label van kruisverwijzingen</translation>
+        <translation>Formule voor het label van kruisverwijzingen</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="146"/>
