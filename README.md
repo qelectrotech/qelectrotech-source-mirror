@@ -24,7 +24,6 @@ Users who want to test and take benefits from the last software implementations 
 The software is licensed under [GNU/GPL](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html).  
 You are free to use, copy, modify and redistribute it under the terms of the license.
 
-Due to this freedom, we encourage you to download QET only from this website.
 
 Like many other open source softwares, QElectroTech is provided as it is, without any warranty.
 
@@ -35,16 +34,20 @@ The development follows the classical way of free and open source software: the 
 Here are the technical choices made for the software development:
 
 *   Integrated development environment: [Qt Framework](https://www.qt.io/ide/)
-*   Libraries: Qt 5.x and [KF5 Framework](https://github.com/KDE)
+*   Libraries: Qt 5.x
+*   [KF5 Framework](https://github.com/KDE)  
+    [Cmake](https://cmake.org/install/)   
+    [kcoreaddons](https://github.com/KDE/kcoreaddons)   
+    [kwidgetsaddons](https://github.com/KDE/kwidgetsaddons).  
 *   Coding language: [C++](https://en.wikipedia.org/wiki/C%2B%2B)
 *   GUI translations: [Qt Linguist](http://doc.qt.io/qt-5/qtlinguist-index.html)
 *   Version control: [GIT](https://git.tuxfamily.org/qet/qet.git/)
 *   File format for projects, elements and titleblocks: [XML](http://www.w3schools.com/xml/xml_whatis.asp)
 *   Main development platform: [GNU/Linux](http://getgnulinux.org/en/linux/)
 *   Targeted platforms: Windows, GNU/Linux, Mac OS X, BSDs
-*   Forum: [Forum](https://qelectrotech.org/forum/index.php)
-*   Wiki:  [Wiki](https://qelectrotech.org/wiki_new/)
-*   Bugtracker [Mantis](https://qelectrotech.org/bugtracker/my_view_page.php)
+*   [Forum](https://qelectrotech.org/forum/index.php)
+*   [Wiki](https://qelectrotech.org/wiki_new/)
+*   [Mantis_bugtracker](https://qelectrotech.org/bugtracker/my_view_page.php)
 
 If you wish to be informed of the latest developments, browse the [archive](https://listengine.tuxfamily.org/lists.tuxfamily.org/qet/) of the project mailing list where all commits (changes) are registered. This archive is publicly available, you don't need any account to access it.
 
@@ -166,7 +169,7 @@ Nowadays, QET is not only used by many individuals, teachers and students but al
 If you love QElectroTech, you can help developers to buy new hardware to test
 and implement new features. Thanks in advance for your generous donations.
 
-For more information, look [Paypal](https://www.paypal.com/donate/?token=rqf80cP0Ck1F2jn4Y46G7tIPv9bq7x0crXkwt3GZ6OZYG6ihJYi8lZxmmQ8itsFwMUdd1G&country.x=GB&locale.x=GB)  
-or [leetchi.com](https://www.leetchi.com/c/qelectroteck)
+For more information, look at [Paypal](https://www.paypal.com/donate/?token=rqf80cP0Ck1F2jn4Y46G7tIPv9bq7x0crXkwt3GZ6OZYG6ihJYi8lZxmmQ8itsFwMUdd1G&country.x=GB&locale.x=GB)  
+or at [leetchi.com](https://www.leetchi.com/c/qelectroteck)
 
 
