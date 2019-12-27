@@ -42,21 +42,12 @@ Here are the technical choices made for the software development:
 *   File format for projects, elements and titleblocks: [XML](http://www.w3schools.com/xml/xml_whatis.asp)
 *   Main development platform: [GNU/Linux](http://getgnulinux.org/en/linux/)
 *   Targeted platforms: Windows, GNU/Linux, Mac OS X, BSDs
+*   Forum: [Forum](https://qelectrotech.org/forum/index.php)
+*   Wiki:  [Wiki](https://qelectrotech.org/wiki_new/)
+*   Bugtracker [Mantis](https://qelectrotech.org/bugtracker/my_view_page.php)
 
 If you wish to be informed of the latest developments, browse the [archive](https://listengine.tuxfamily.org/lists.tuxfamily.org/qet/) of the project mailing list where all commits (changes) are registered. This archive is publicly available, you don't need any account to access it.
 
-### Story
-
-The QElectroTech project was founded in 2007 by two french students, Xavier and Benoit.  
-Xavier developed the base application itself and made all technical choices about the development.  
-The first version of QET (0.1) was released on 09.03.2008.  
-However, both Xavier and Benoit do not participate anymore in the project since 2013.
-
-Following this period, new developers and contributors took over the project and kept it alive.  
-The development and the many translations are actively maintained.  
-New functionalities and evolutions are planned to make QET ever better.
-
-Nowadays, QET is not only used by many individuals, teachers and students but also by professional electricians and companies all over the world.
 
 # Features
 
@@ -75,9 +66,12 @@ Take advantage of the modern GUI
 Toolbars and panels can be enabled/disabled, moved and displayed the way you want to work.  
 Panels can be stacked on each other (as tabs) or docked on the sides (as docks) or completely separated from the main window (as windows).  
 The GUI can fit to small or big screens, and even to multi-display configurations.
+![](https://download.tuxfamily.org/qet/images-features/0030.png "GUI overview")
+
 
 The GUI of QElectroTech is translated in 19 languages.  
 You only need to restart the application for the new selected language to take effect.
+![](https://download.tuxfamily.org/qet/images-features/0040.png "Lang menu")
 
 Create technical documentation in professional quality
 
@@ -86,43 +80,56 @@ You can set vertical and horizontal headers (printed rulers) individually on and
 
 Titlebocks can be created and edited with the embedded titleblock editor to perfectly suit your needs.  
 Custom variables can be defined to display the informations you wish in the titleblock.
+![](https://download.tuxfamily.org/qet/images-features/0055.png "Titleblock editor")
 
 With only 2 mouse clicks you can add a full automatic generated table of content.  
 Changes in the documentation are updated on the fly.
+![](https://download.tuxfamily.org/qet/images-features/0060.png "Table of content")
 
 Choose from more than 7.000 symbols...
 The embedded QET collection contains a rich library of electric, logic, pneumatic, hydraulic and fluid symbols.  
 The library grows at every new release thanks to an active user community.
+![](https://download.tuxfamily.org/qet/images-features/0070.png "Collections")
 
 ...or create your own collection
 
 The embedded element editor is a nice tool to create your own elements (symbols or anything else).  
 Your own elements are stored in the user collection.
+![](https://download.tuxfamily.org/qet/images-features/0080.png "Element editor")
 
 Quickly find what you need
 
 All collections can quickly be searched with the integrated search engine.  
 Furthermore, the search request can be restricted to the folder of your choice.
+![](https://download.tuxfamily.org/qet/images-features/0090.png "Search engine")
 
 Easily draw complex schematics
 
 To add an element on the drawing area, it only needs a drag & drop from the collection panel.
+![](https://download.tuxfamily.org/qet/images-features/0102.png "Drag and drop")
+
 Elements are automatically connected if they are aligned, or connected from point to point by pulling a conductor with the mouse.
+![](https://download.tuxfamily.org/qet/images-features/0105.png "Conductor connections")
 
 The path of every conductor can be modified by moving its handles with the mouse.
+![](https://download.tuxfamily.org/qet/images-features/0107.png "Conductor handles")
 And of course, you can accurately zoom with the mouse wheel over the drawing area to catch the smallest details.
 
 Link elements together to create cross references
 
 Several types of element can be linked together to display a cross reference text.  
 All types of cross references are automatically updated on the fly, you don't need to think about them if you make changes.
+![](https://download.tuxfamily.org/qet/images-features/0112.png "Cross ref elements")
 To speed up your work, linkable elements are easily searched and shown.
+![](https://download.tuxfamily.org/qet/images-features/0115.png  "Cross ref search")
+
 
 Export informations to a parts list
 Informations of all elements in the project can be exported to a .csv file that can be read and edited by any spreadsheet application.
+![](https://download.tuxfamily.org/qet/images-features/0122.png "Element informations")
 
 This way, you can make your own parts list or bill of material using the full power of a spreadsheet program.
-
+![](https://download.tuxfamily.org/qet/images-features/0125.png "Spreadsheet")
 Print to pdf and/or export your work to images
 
 Your whole documentation or only selected parts of it can be printed to a real printer or to a pdf file.  
@@ -137,5 +144,29 @@ Alternatively, you can export to vector (svg) or pixel (png, jpg, bmp) format im
 *   define some autonum patterns for conductors, symbols and folios
 *   take advantage of the open xml standard of elements and projects to create custom tools
 *   search and replace Widget (Ctrl + F) in entire project
-* ***
+*   conductors num can be exported to csv file.
+*   ***
+
+### Story
+
+The QElectroTech project was founded in 2007 by two french students, Xavier and Benoit.  
+Xavier developed the base application itself and made all technical choices about the development.  
+The first version of QET (0.1) was released on 09.03.2008.  
+However, both Xavier and Benoit do not participate anymore in the project since 2013.
+
+Following this period, new developers and contributors took over the project and kept it alive.  
+The development and the many translations are actively maintained.  
+New functionalities and evolutions are planned to make QET ever better.
+
+Nowadays, QET is not only used by many individuals, teachers and students but also by professional electricians and companies all over the world.
+
+  
+### Donate Money
+
+If you love QElectroTech, you can help developers to buy new hardware to test
+and implement new features. Thanks in advance for your generous donations.
+
+For more information, look [Paypal](https://www.paypal.com/donate/?token=rqf80cP0Ck1F2jn4Y46G7tIPv9bq7x0crXkwt3GZ6OZYG6ihJYi8lZxmmQ8itsFwMUdd1G&country.x=GB&locale.x=GB)  
+or [leetchi.com](https://www.leetchi.com/c/qelectroteck)
+
 
