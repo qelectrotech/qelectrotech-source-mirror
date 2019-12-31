@@ -1,4 +1,7 @@
-# About QElectroTech
+![](logo.png)
+
+
+# QElectroTech
 
 ### What it is
 
