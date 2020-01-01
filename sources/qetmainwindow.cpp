@@ -155,7 +155,7 @@ upgrade_ -> setVisible(true);
 upgrade_ -> setVisible(false);
 #endif
 
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
 upgrade_M -> setVisible(true);
 #else
 upgrade_M -> setVisible(false);

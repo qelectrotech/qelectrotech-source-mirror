@@ -59,6 +59,8 @@ class XRefProperties : public PropertiesInterface
 	void setSnapTo (const SnapTo st) {m_snap_to = st;}
 	SnapTo snapTo  () const			 {return m_snap_to;}
 
+	void setXrefPos(const Qt::AlignmentFlag xref) {m_xref_pos = xref;}
+	Qt::AlignmentFlag getXrefPos() const {return m_xref_pos;}
 	void setPrefix (const QString &key, const QString &value) {m_prefix.insert(key, value);}
 	QString prefix (const QString &key) const {return m_prefix.value(key);}
 
@@ -75,6 +77,7 @@ class XRefProperties : public PropertiesInterface
 	bool m_show_power_ctc;
 	DisplayHas m_display;
 	SnapTo m_snap_to;
+	Qt::AlignmentFlag m_xref_pos;
 	QHash <QString, QString> m_prefix;
 	QStringList m_prefix_keys;
 	QString m_master_label;

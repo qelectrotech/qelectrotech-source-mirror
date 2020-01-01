@@ -1,0 +1,18 @@
+<definition height="20" width="70" hotspot_y="10" hotspot_x="16" type="element" version="0.80" orientation="dyyy" link_type="simple">
+    <names>
+        <name lang="en">2001-404</name>
+        <name lang="fr">2001-404</name>
+        <name lang="de">2001-404</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <rect height="12" width="57" y="-6" x="-5.7" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false"/>
+        <text text="2001-404" rotation="0" y="2" x="5" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0"/>
+    </description>
+</definition>

@@ -1,0 +1,17 @@
+<definition type="element" height="270" link_type="simple" orientation="dyyy" width="10" hotspot_y="133" version="0.80" hotspot_x="4">
+    <names>
+        <name lang="fr">2006-1391 term.-plate orange</name>
+        <name lang="de">2006-1391 Abschluss orange</name>
+        <name lang="en">2006-1391 term.-plate orange</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <polygon style="line-style:normal;line-weight:thin;filling:orange;color:orange" x4="2" y1="130.03" y3="-126.55" y4="130.03" x1="-1.5" antialias="false" x2="-1.5" y2="-126.55" x3="2"/>
+    </description>
+</definition>

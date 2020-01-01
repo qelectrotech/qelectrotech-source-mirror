@@ -121,7 +121,7 @@ void DiagramPrintDialog::exec() {
 	if (printer_choice_ -> isChecked()) {
 		// affichage du dialogue d'impression standard pour parametrer l'imprimante
 		QPrintDialog print_dialog(printer_, parentWidget());
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
 		print_dialog.setWindowFlags(Qt::Sheet);
 #endif
 		print_dialog.setWindowTitle(tr("Options d'impression", "window title"));
@@ -214,7 +214,7 @@ int DiagramPrintDialog::verticalPagesCount(Diagram *diagram, const ExportPropert
 void DiagramPrintDialog::buildPrintTypeDialog() {
 	// initialisation des widgets
 	dialog_           = new QDialog(parentWidget());
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
 	dialog_ -> setWindowFlags(Qt::Sheet);
 #endif
 	

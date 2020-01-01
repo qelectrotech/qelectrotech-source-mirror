@@ -1,0 +1,17 @@
+<definition link_type="simple" orientation="dyyy" height="250" type="element" hotspot_y="137" width="30" version="0.80" hotspot_x="15">
+    <names>
+        <name lang="de">870-118</name>
+        <name lang="fr">870-118</name>
+        <name lang="en">870-118</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <polygon x1="-1" x2="2.5" y4="109.93" x4="-1" y1="-134.17" y2="-134.17" y3="109.93" x3="2.5" antialias="false" style="line-style:normal;line-weight:thin;filling:lightgray;color:lightgray"/>
+    </description>
+</definition>

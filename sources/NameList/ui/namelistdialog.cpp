@@ -30,7 +30,7 @@ NameListDialog::NameListDialog(QWidget *parent) :
 
 	m_namelist_widget = new NameListWidget(this);
 	ui->m_main_layout->insertWidget(1, m_namelist_widget);
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
 	this->setWindowFlags(Qt::Sheet);
 #endif
 }

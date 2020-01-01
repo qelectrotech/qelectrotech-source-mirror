@@ -180,6 +180,7 @@ QWidget *AboutQET::translatorsTab() const {
 	addAuthor(translators, "OSS au2mation",                             "OSSau2mation@OSSau2mation.dk",   tr("Traduction en danois"));
 	addAuthor(translators, "Hilario Silveira",                          "hilario@soliton.com.br",         tr("Traduction en brézilien"));
 	addAuthor(translators, "Aziz Karabudak",                            "aziz.karabudak@argevi.com",      tr("Traduction en Turc"));
+	addAuthor(translators, "Emir Izmiroglu",                            "emirizmiroglu@gmail.com",        tr("Traduction en Turc"));
 	addAuthor(translators, "Gábor Gubányi",                             "gubanyig@gmail.com",             tr("Traduction en hongrois"));
 
 
@@ -218,6 +219,7 @@ QWidget *AboutQET::contributorsTab() const {
 	addAuthor(contributors, "René Negre",          "runsys@qelectrotech.org",             tr("Développement"));
 	addAuthor(contributors, "Nuri",                "nuri@qelectrotech.org",               tr("Collection d'éléments"));
 	addAuthor(contributors, "Raul Roda",           "",                                    tr("Python plugin qet-tb-generator"));
+	addAuthor(contributors, "Maximilian Federle",   "",                                   tr("Paquets Snap"));
 	
 	contributors -> setOpenExternalLinks(true);
 	contributors -> setTextFormat(Qt::RichText);

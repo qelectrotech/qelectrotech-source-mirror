@@ -1,0 +1,17 @@
+<definition type="element" height="320" link_type="simple" orientation="dyyy" width="10" hotspot_y="160" version="0.80" hotspot_x="4">
+    <names>
+        <name lang="de">2010-1391</name>
+        <name lang="fr">2010-1391</name>
+        <name lang="en">2010-1391</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <polygon style="line-style:normal;line-weight:thin;filling:lightgray;color:lightgray" x4="-1" y1="-156.982" y3="156.21" y4="156.21" x1="-1" antialias="false" x2="2.5" y2="-156.982" x3="2.5"/>
+    </description>
+</definition>

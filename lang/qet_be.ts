@@ -4,7 +4,7 @@
 <context>
     <name>AboutQET</name>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="237"/>
+        <location filename="../sources/aboutqet.cpp" line="239"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>Dit programma wordt uitgebracht onder de GNU / GPL licentie.</translation>
     </message>
@@ -77,8 +77,8 @@
         <location filename="../sources/aboutqet.cpp" line="137"/>
         <location filename="../sources/aboutqet.cpp" line="138"/>
         <location filename="../sources/aboutqet.cpp" line="141"/>
-        <location filename="../sources/aboutqet.cpp" line="215"/>
-        <location filename="../sources/aboutqet.cpp" line="218"/>
+        <location filename="../sources/aboutqet.cpp" line="216"/>
+        <location filename="../sources/aboutqet.cpp" line="219"/>
         <source>Développement</source>
         <translation>Ontwikkeling</translation>
     </message>
@@ -174,65 +174,71 @@
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="182"/>
-        <source>Traduction en Turc</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/aboutqet.cpp" line="183"/>
-        <source>Traduction en hongrois</source>
-        <translation type="unfinished"></translation>
+        <source>Traduction en Turc</source>
+        <translation>Turkse vertaling</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="203"/>
+        <location filename="../sources/aboutqet.cpp" line="184"/>
+        <source>Traduction en hongrois</source>
+        <translation>Hongaarse vertaling</translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="204"/>
         <source>Paquets Fedora et Red Hat</source>
         <translation>Fedora and Red Hat pakketten</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="204"/>
+        <location filename="../sources/aboutqet.cpp" line="205"/>
         <source>Paquets Mageia</source>
         <translation>Mageia pakketten</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="208"/>
         <location filename="../sources/aboutqet.cpp" line="209"/>
+        <location filename="../sources/aboutqet.cpp" line="210"/>
         <source>Paquets Gentoo</source>
         <translation>Gentoo pakketten</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="210"/>
+        <location filename="../sources/aboutqet.cpp" line="211"/>
         <source>Paquets OS/2</source>
         <translation>OS/2 pakketten</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="211"/>
+        <location filename="../sources/aboutqet.cpp" line="212"/>
         <source>Paquets FreeBSD</source>
         <translation>FreeBSD pakketten</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="212"/>
+        <location filename="../sources/aboutqet.cpp" line="213"/>
         <source>Paquets MAC OS X</source>
         <translation>MAC OS X pakketten</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="213"/>
+        <location filename="../sources/aboutqet.cpp" line="214"/>
         <source>Paquets Archlinux AUR</source>
         <translation>Archlinux AUR pakketten</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="216"/>
         <location filename="../sources/aboutqet.cpp" line="217"/>
+        <location filename="../sources/aboutqet.cpp" line="218"/>
         <source>Documentation</source>
         <translation>Documentatie</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="219"/>
+        <location filename="../sources/aboutqet.cpp" line="220"/>
         <source>Collection d&apos;éléments</source>
         <translation>Collectie elementen</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="220"/>
+        <location filename="../sources/aboutqet.cpp" line="221"/>
         <source>Python plugin qet-tb-generator</source>
         <translation>Python plugin qet tb generator</translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="222"/>
+        <source>Paquets Snap</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="139"/>
@@ -243,17 +249,17 @@
         <location filename="../sources/aboutqet.cpp" line="117"/>
         <source>2006-2019 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished">2006-2016 De ontwikkelaars van QElectroTech  {2006-2019 ?}</translation>
+        <translation>2006-20196 De ontwikkelaars van QElectroTech  {2006-2019 ?}</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="205"/>
         <location filename="../sources/aboutqet.cpp" line="206"/>
         <location filename="../sources/aboutqet.cpp" line="207"/>
+        <location filename="../sources/aboutqet.cpp" line="208"/>
         <source>Paquets Debian</source>
         <translation>Debian pakketten</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="214"/>
+        <location filename="../sources/aboutqet.cpp" line="215"/>
         <source>Icônes</source>
         <translation>Iconen</translation>
     </message>
@@ -284,7 +290,7 @@
     <message>
         <location filename="../sources/ui/alignmenttextdialog.ui" line="26"/>
         <source>Alignement du texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst uitlijning</translation>
     </message>
 </context>
 <context>
@@ -325,7 +331,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="14"/>
         <source>Sélection numérotation auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecties voor automatisch nummering</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="34"/>
@@ -355,7 +361,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="132"/>
         <source>Ctrl+Shift+P</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+P</translation>
     </message>
 </context>
 <context>
@@ -487,6 +493,188 @@ Alleen Nnieuwe: alleen  voor nieuwe elementen zal worden bijgewerkt. Bestaande E
 -Update Alleen bestaan: alleen bestaan Elements worden bijgewerkt. Nieuwe elementen worden toegewezen Hun doel formule zal niet een keer informatie bijwerken gemaakt.
 -Uitgeschakeld: Zowel nieuwe als bestaande Element labels worden niet bijgewerkt. Dit geldt ook voor nieuwe bladzijden.
 Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen hun beleid aan.</translation>
+    </message>
+</context>
+<context>
+    <name>BOMExportDialog</name>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="38"/>
+        <source>Informations disponibles</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="48"/>
+        <source>Informations à exporter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="88"/>
+        <source>Monter la sélection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="105"/>
+        <source>Ajouter la sélection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="119"/>
+        <source>Supprimer la sélection</source>
+        <translation type="unfinished">Verwijder de selectie</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="133"/>
+        <source>Descendre la sélection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="187"/>
+        <source>Type d&apos;éléments</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="196"/>
+        <source>Simples</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="206"/>
+        <source>Tous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="246"/>
+        <source>Organes de protection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="269"/>
+        <source>Mise en page</source>
+        <translation type="unfinished">Pagina layout</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="297"/>
+        <source>Chaque élément portant la même référence sera listé</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="300"/>
+        <source>Formater en tant que nomenclature</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="310"/>
+        <source>Une même référence utilisé par plusieurs éléments ne sera listé qu&apos;une fois</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="313"/>
+        <source>Formater en tant que liste de matériel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="339"/>
+        <source>Ouvrir la configuration sélectionné</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="287"/>
+        <source>Inclure les en-têtes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="14"/>
+        <source>Export CSV</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="216"/>
+        <source>Contacteurs et relais</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="226"/>
+        <source>Boutons et commutateurs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="236"/>
+        <source>Borniers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="330"/>
+        <source>Configuration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="366"/>
+        <source>Sauvegarder la configuration actuelle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="398"/>
+        <source>Requête SQL personnalisée</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="408"/>
+        <source>Requête SQL :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="128"/>
+        <source>nomenclature_</source>
+        <translation type="unfinished">onderdelenlijst_</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="132"/>
+        <source>Enregister sous... </source>
+        <translation type="unfinished">Bewaren als ...</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="132"/>
+        <source>Fichiers csv (*.csv)</source>
+        <translation type="unfinished">Bestanden csv (*.csv)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="141"/>
+        <source>Erreur</source>
+        <translation type="unfinished">Fout</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="142"/>
+        <source>Impossible de remplacer le fichier!
+
+</source>
+        <translation type="unfinished">Het is onmogelijk om dit bestand te vervangen!
+
+</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="47"/>
+        <source>Position</source>
+        <translation type="unfinished">Positie</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="48"/>
+        <source>Titre du folio</source>
+        <translation type="unfinished">Titel van de schema bladzijde</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="49"/>
+        <source>Position de folio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="50"/>
+        <source>Numéro de folio</source>
+        <translation type="unfinished">Nummer van een schema bladzijde</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="51"/>
+        <source>Quantité (Numéro d&apos;article)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -647,27 +835,27 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="183"/>
         <source>Horizontal en haut</source>
-        <translation type="unfinished"></translation>
+        <translation>Horizontaal boven</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="188"/>
         <source>Horizontal en bas</source>
-        <translation type="unfinished"></translation>
+        <translation>Horizontaal onder</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="197"/>
         <source>Vertical à gauche</source>
-        <translation type="unfinished"></translation>
+        <translation>Verttikaal Links</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="202"/>
         <source>Vertical à droite</source>
-        <translation type="unfinished"></translation>
+        <translation>Vertikaal rechts</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="210"/>
         <source>Position et rotation du texte de conducteur :</source>
-        <translation type="unfinished"></translation>
+        <translation>Positie en rotatie van geleider tekst</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="281"/>
@@ -720,7 +908,7 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="30"/>
         <source>&amp;Multifilaire</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Meeraderig</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="151"/>
@@ -771,7 +959,7 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="442"/>
         <source>Taille :</source>
-        <translation type="unfinished"></translation>
+        <translation>Dikte :</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="449"/>
@@ -829,7 +1017,7 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
     <message>
         <location filename="../sources/diagram.cpp" line="1303"/>
         <source>Modifier la profondeur</source>
-        <translation type="unfinished"></translation>
+        <translation>Diepte aanpassen</translation>
     </message>
 </context>
 <context>
@@ -837,7 +1025,7 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Vorm</translation>
+        <translation>Vorm</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="20"/>
@@ -848,12 +1036,12 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="50"/>
         <source>Nom</source>
-        <translation type="unfinished">Naam</translation>
+        <translation>Naam</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="55"/>
         <source>Valeur</source>
-        <translation type="unfinished">Waarde</translation>
+        <translation>Waarde</translation>
     </message>
 </context>
 <context>
@@ -963,12 +1151,12 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
     <message>
         <location filename="../sources/diagramview.cpp" line="90"/>
         <source>Collage multiple</source>
-        <translation type="unfinished"></translation>
+        <translation>Meermaals plakken</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="545"/>
         <source>Connecter les bornes sélectionnées</source>
-        <translation type="unfinished"></translation>
+        <translation>Verbind de geselecteerde aansluitklemmen</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="817"/>
@@ -1037,7 +1225,7 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="22"/>
         <source>Exporter l&apos;actuelle configuration des textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Exporteer de geselecteerde tekst configuratie</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="25"/>
@@ -1046,27 +1234,27 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="80"/>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="94"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="36"/>
         <source>Importer une configuration de texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Importeer een tekst configuratie</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="63"/>
         <source>Ajouter un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg een tekst toe</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="77"/>
         <source>Ajouter un groupe de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg een groep tekst toe</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="91"/>
         <source>Supprimer la sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder de selectie</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.h" line="41"/>
@@ -1081,22 +1269,22 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="172"/>
         <source>Modifier un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzig een symbool tekst</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="182"/>
         <source>Modifier %1 textes d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzig %1 symbool teksten</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="244"/>
         <source>Nom du groupe</source>
-        <translation type="unfinished"></translation>
+        <translation>Groeps naam</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="244"/>
         <source>Entrer le nom du nouveau groupe</source>
-        <translation type="unfinished"></translation>
+        <translation>Voer naam nieuwe groep in</translation>
     </message>
 </context>
 <context>
@@ -1121,7 +1309,7 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="461"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="468"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1176"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1311"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1312"/>
         <source>Texte utilisateur</source>
         <translation>Tekst gebruiker</translation>
     </message>
@@ -1130,7 +1318,7 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="463"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="474"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1181"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1312"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1313"/>
         <source>Information de l&apos;élément</source>
         <translation>Symbool informatie</translation>
     </message>
@@ -1139,7 +1327,7 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="175"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="465"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="480"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1313"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1314"/>
         <source>Texte composé</source>
         <translation>Samengestelde tekst</translation>
     </message>
@@ -1166,104 +1354,104 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="206"/>
         <source>Police</source>
-        <translation type="unfinished"></translation>
+        <translation>Beleid</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="248"/>
         <source>Largeur</source>
-        <translation type="unfinished"></translation>
+        <translation>Breedte</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="305"/>
         <source>Éditer</source>
-        <translation type="unfinished"></translation>
+        <translation>Bewerken</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="500"/>
         <source>Modifier la police d&apos;un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzig het beleid van een tekst element</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="557"/>
         <source>Modifier l&apos;alignement d&apos;un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzig de uitlijning van een tekst element</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="493"/>
         <source>Modifier la taille d&apos;un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzig de groote van een tekst element</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="507"/>
         <source>Modifier la couleur d&apos;un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzig de kleur van een tekst element</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="514"/>
         <source>Modifier le cadre d&apos;un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzig de omkadering van een tekst element</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="522"/>
         <source>Modifier la largeur d&apos;un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzig de breedte van een tekst</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="534"/>
         <source>Déplacer un texte d&apos;élément</source>
-        <translation type="unfinished">Verplaats de tekst van een element</translation>
+        <translation>Verplaats de tekst van een element</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="546"/>
         <source>Pivoter un texte d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Draai de tekst van een element</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="578"/>
         <source>Éditer un groupe de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Bewerk een groep teksten</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="586"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="661"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1403"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1404"/>
         <source>Gauche</source>
-        <translation type="unfinished">Links</translation>
+        <translation>Links</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="588"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="662"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1404"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1405"/>
         <source>Droite</source>
-        <translation type="unfinished">Rechts</translation>
+        <translation>Rechts</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="590"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="663"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1405"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1406"/>
         <source>Centre</source>
-        <translation type="unfinished"></translation>
+        <translation>Midden</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="302"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="656"/>
         <source>Alignement</source>
-        <translation type="unfinished"></translation>
+        <translation>Uitlijning</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="712"/>
         <source>Ajustement vertical</source>
-        <translation type="unfinished"></translation>
+        <translation>Vertikale uitlijing</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="738"/>
         <source>Maintenir en bas de page</source>
-        <translation type="unfinished"></translation>
+        <translation>Onderaan de bladzijde houden</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1017"/>
         <source>Déplacer un texte dans un autre groupe</source>
-        <translation type="unfinished"></translation>
+        <translation>Verplaat de tekst naar een andere groep</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="220"/>
@@ -1274,25 +1462,25 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="234"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="724"/>
         <source>Cadre</source>
-        <translation type="unfinished"></translation>
+        <translation>Kader</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="263"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="674"/>
         <source>Position X</source>
-        <translation type="unfinished"></translation>
+        <translation>X positie</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="276"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="687"/>
         <source>Position Y</source>
-        <translation type="unfinished"></translation>
+        <translation>Y positie</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="289"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="700"/>
         <source>Rotation</source>
-        <translation type="unfinished">Rotatie</translation>
+        <translation>Rotatie</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="453"/>
@@ -1310,7 +1498,7 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="118"/>
         <source>cadre</source>
-        <translation type="unfinished"></translation>
+        <translation>Kader</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="79"/>
@@ -1341,7 +1529,7 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="72"/>
         <source>Police</source>
-        <translation type="unfinished"></translation>
+        <translation>Beleid</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="142"/>
@@ -1351,7 +1539,7 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="162"/>
         <source>Largeur</source>
-        <translation type="unfinished"></translation>
+        <translation>Breedte</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="172"/>
@@ -1361,7 +1549,7 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="192"/>
         <source>Alignement</source>
-        <translation type="unfinished"></translation>
+        <translation>Uitlijning</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="132"/>
@@ -1372,86 +1560,86 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="160"/>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="168"/>
         <source>Déplacer un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Verplaats een tekstveld</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="176"/>
         <source>Pivoter un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Draai een tekstveld</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="184"/>
         <source>Modifier le texte d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzig de tekst van een tekstveld</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="193"/>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="300"/>
         <source>Modifier la police d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>wijzig het beleid van een tekstveld</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="310"/>
         <source>Modifier la couleur d&apos;un champ texte</source>
-        <translation type="unfinished">Wijzig de kleur van een tekstveld</translation>
+        <translation>Wijzig de kleur van een tekstveld</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="204"/>
         <source>Modifier le cadre d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzig de kader rond een tekstveld</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="216"/>
         <source>Modifier la largeur d&apos;un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzig de breedte van een tekstveld</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="230"/>
         <source>Modifier l&apos;information d&apos;un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzig de informatie van een tekstveld</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="258"/>
         <source>Modifier la source de texte, d&apos;un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzig de born tekst van een tekst</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="285"/>
         <source>Modifier l&apos;alignement d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzig de uitlijning van een tekstveld</translation>
     </message>
 </context>
 <context>
     <name>DynamicTextItemDelegate</name>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1458"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1459"/>
         <source>Texte utilisateur</source>
         <translation>Tekst gebruiker</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1459"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1460"/>
         <source>Information de l&apos;élément</source>
         <translation>Symbool informatie</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1460"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1461"/>
         <source>Texte composé</source>
         <translation>Samengestelde tekst</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1580"/>
-        <source>Gauche</source>
-        <translation type="unfinished">Links</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1581"/>
-        <source>Centre</source>
-        <translation type="unfinished"></translation>
+        <source>Gauche</source>
+        <translation>Links</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1582"/>
+        <source>Centre</source>
+        <translation>Midden</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1583"/>
         <source>Droite</source>
-        <translation type="unfinished">Rechts</translation>
+        <translation>Rechts</translation>
     </message>
 </context>
 <context>
@@ -1460,7 +1648,7 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
         <location filename="../sources/qetgraphicsitem/element.cpp" line="944"/>
         <location filename="../sources/qetgraphicsitem/element.cpp" line="998"/>
         <source>Label + commentaire</source>
-        <translation type="unfinished"></translation>
+        <translation>Etiket + uitleg</translation>
     </message>
 </context>
 <context>
@@ -1587,7 +1775,7 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="61"/>
         <source>Supprimer ce texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder de tekst</translation>
     </message>
 </context>
 <context>
@@ -1648,7 +1836,7 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="100"/>
         <source>Type concret</source>
-        <translation>Type </translation>
+        <translation>Actueel type</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="127"/>
@@ -1729,7 +1917,7 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="117"/>
         <source>Temporisé travail &amp; repos</source>
-        <translation type="unfinished"></translation>
+        <translation>Vertraagd in- en uitschakelen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="120"/>
@@ -1758,7 +1946,8 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="342"/>
         <source>Élement
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Element
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="345"/>
@@ -1785,7 +1974,8 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="351"/>
         <source>Rotation : %1°
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Draaiing %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="352"/>
@@ -1822,28 +2012,28 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
 <context>
     <name>ElementScene</name>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="226"/>
+        <location filename="../sources/editor/elementscene.cpp" line="243"/>
         <source>Déplacer une primitive</source>
-        <translation type="unfinished">Verplaats een basis type</translation>
+        <translation>Verplaats een basis type</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="678"/>
+        <location filename="../sources/editor/elementscene.cpp" line="695"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <comment>window title</comment>
         <translation>Bewerk auteur informatie</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="682"/>
+        <location filename="../sources/editor/elementscene.cpp" line="699"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
         <translation>U kunt deze ruimte gebruiken om de auteurs van het element, de licentie, of enige andere informatie die u van belang acht te vermelden.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="742"/>
+        <location filename="../sources/editor/elementscene.cpp" line="759"/>
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
         <translation>U mag de elementnaam ingeven voor diverse talen.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="740"/>
+        <location filename="../sources/editor/elementscene.cpp" line="757"/>
         <source>Éditer les noms</source>
         <comment>window title</comment>
         <translation>Bewerkende  namen</translation>
@@ -2491,17 +2681,17 @@ Alle elementen in het dossier worden verwijderd.</translation>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="78"/>
         <source>C&amp;réer de nouveaux folios</source>
-        <translation type="unfinished"></translation>
+        <translation>M&amp;aak een nieuwe schema bladzijde</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="91"/>
         <source>Numérotation automatique des folios sélectionnés</source>
-        <translation type="unfinished"></translation>
+        <translation>Gelsecteerde automatisch nummering van de schema bladzijden</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="132"/>
         <source>Nouveaux folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuwe schema baldzijden</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="174"/>
@@ -2544,7 +2734,17 @@ Si le chiffre défini dans le champ Valeur possède moins de digits que le type 
 Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hier kunt u bepalen hoe de nieuwe folio&apos;s worden genummerd.
+-Een nummering bestaat uit een minimale variabele.
+-U kunt een kiesvariabele toevoegen of verwijderen met de knoppen - en +.
+Een nummeringsvariabele bestaat uit: een type, een waarde en een toename.
+
+-de typen &quot;Cijfer 1&quot;, &quot;Cijfer 01&quot; en &quot;Cijfer 001&quot; vertegenwoordigen een numeriek type dat is gedefinieerd in het veld &quot;Waarde&quot;, waarbij elk nieuw folio wordt verhoogd met de waarde van het veld &quot;Verhoging&quot;.
+- &quot;Cijfer 01&quot; en &quot;Cijfer 001&quot; worden in het diagram respectievelijk weergegeven met minimaal twee en drie cijfers.
+Als het cijfer dat is gedefinieerd in het veld Waarde minder cijfers heeft dan het gekozen type, wordt het voorafgegaan door een of twee nullen om het type te respecteren.
+
+-Type &quot;Tekst&quot;, staat voor een vaste tekst.
+Het veld &quot;Verhoging&quot; wordt niet gebruikt.</translation>
     </message>
 </context>
 <context>
@@ -2575,12 +2775,12 @@ Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="41"/>
         <source>Dénomination automatique :</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatisch naamgeving :</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="53"/>
         <source>Formule</source>
-        <translation type="unfinished">Formule</translation>
+        <translation>Formule</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="72"/>
@@ -2624,43 +2824,43 @@ Tkest en cijfers zijn ook beschikbaar
         <translation>Gebruik de systeem kleuren</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="381"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="383"/>
         <source>Chemin de la collection utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translation>Pad naar gebruikers collectie</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="395"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="397"/>
         <source>Chemin des cartouches utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translation>Pad naar gebruikers etiket</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="309"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="332"/>
         <source>Langage</source>
-        <translation type="unfinished"></translation>
+        <translation>Taal</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="367"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="369"/>
         <source>Chemin de la collection commune</source>
-        <translation type="unfinished"></translation>
+        <translation>Pad naar de algemene collectie</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="200"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="221"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="235"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="223"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="244"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="258"/>
         <source>Par defaut</source>
-        <translation type="unfinished"></translation>
+        <translation>Standaard</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="205"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="226"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="240"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="228"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="249"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="263"/>
         <source>Parcourir...</source>
-        <translation type="unfinished"></translation>
+        <translation>Bladeren ...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="248"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="271"/>
         <source>(Recharger les collections d&apos;éléments pour appliquer les changements)</source>
-        <translation type="unfinished"></translation>
+        <translation>(Herlaad elementverzamelingen om wijzigingen toe te passen)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="93"/>
@@ -2673,210 +2873,216 @@ Tkest en cijfers zijn ook beschikbaar
         <translation>Gebruik de gebaren voor touchpad</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="153"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="126"/>
         <source>Utiliser les numéros de folio à la place de leur position dans le projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruik folionummers volgens hun posite in het project </translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="126"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="133"/>
         <source>Numéroter les colonnes de cartouche à partir de 0 (1 sinon)</source>
         <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Nummer de kolomen op de schema bladzijde vanaf 0 (inien niet vanaf 1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="136"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="143"/>
         <source>Désactivé</source>
-        <translation type="unfinished"></translation>
+        <translation>Uitgeschakeld</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="139"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="146"/>
         <source> min</source>
         <comment>minute</comment>
-        <translation type="unfinished"></translation>
+        <translation>Min.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="274"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="297"/>
         <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
-        <translation type="unfinished">Laat nieuw ingevoerde elementen oplichten in het paneel</translation>
+        <translation>Laat nieuw ingevoerde waarden van een  elementen oplichten in het paneel</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="281"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="304"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre.
 Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
-        <translation type="unfinished"></translation>
+        <translation>Elk element bevat informatie over de auteurs, licentie of andere informatie die u nuttig acht in een vrij veld.
+Hier kunt u de standaardwaarde voor dit veld opgeven voor de items die u gaat maken:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="318"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="341"/>
         <source>Appliqué au prochain lancement de QElectroTech</source>
-        <translation type="unfinished"></translation>
+        <translation>Wordt geactiveerd bij de volgende opstart van QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Vorm</translation>
+        <translation>Vorm</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="119"/>
         <source>Sauvegarde automatique des projets (appliqué au prochain lancement de QElectroTech)</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatische back-up van projecten (toegepast bij de volgende opstart van QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="174"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="197"/>
         <source>Collections</source>
-        <translation type="unfinished">Collectie</translation>
+        <translation>Collectie</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="180"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="203"/>
         <source>Accès aux collections</source>
-        <translation type="unfinished"></translation>
+        <translation>Toegang tot de collecties</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="192"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="215"/>
         <source>Répertoire de la collection commune</source>
-        <translation type="unfinished"></translation>
+        <translation>Map voor  de gemeenschappelijke collectie</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="213"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="236"/>
         <source>Répertoire de la collection utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translation>Map voor de gebruikers collectie</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="255"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="278"/>
         <source>Répertoire des cartouches utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translation>Map voor de gebruikers etiketten</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="265"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="288"/>
         <source>Gestion des éléments</source>
         <translation>Beheer de elementen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="358"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="381"/>
         <source>Vous pouvez définir ici l&apos;apparence par defaut des differents textes de QElectroTech</source>
-        <translation type="unfinished"></translation>
+        <translation>Hier kant u de standaardweergave van de verschillende teksten van QElectroTech definiëren</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="577"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="600"/>
         <source>Grille + Clavier</source>
-        <translation type="unfinished"></translation>
+        <translation>Raster + toetsenbord</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="583"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="606"/>
         <source>Grille : 1 - 30</source>
-        <translation type="unfinished"></translation>
+        <translation>Raster : 1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="650"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="673"/>
         <source>DiagramEditor xGrid</source>
-        <translation type="unfinished"></translation>
+        <translation>Schema X raster</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="617"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="640"/>
         <source>DiagramEditor yGrid</source>
-        <translation type="unfinished"></translation>
+        <translation>Schema Y raster</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="65"/>
         <source>Utiliser des fen&amp;êtres (appliqué au prochain lancement de QElectroTech)</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruik ven&amp;sters (toegepast bij de volgende lancering van QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="72"/>
         <source>Utiliser des onglets (appliqué au prochain lance&amp;ment de QElectroTech)</source>
+        <translation>Gebruik tabbladen (toegepast bij de volgende lancering van QElectroTech)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="189"/>
+        <source>Position de la liste des folios dans le projet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="352"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="375"/>
         <source>Textes</source>
-        <translation type="unfinished">Teksten</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="372"/>
-        <source>Textes d&apos;éléments</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="385"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="451"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="497"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="533"/>
-        <source>Police :</source>
-        <translation type="unfinished">Font:</translation>
+        <translation>Teksten</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="395"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="458"/>
+        <source>Textes d&apos;éléments</source>
+        <translation>Tekst elementen</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="408"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="474"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="520"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="556"/>
+        <source>Police :</source>
+        <translation>Lettertype :</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="418"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="481"/>
         <source>°</source>
-        <translation type="unfinished"></translation>
+        <translation>°</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="405"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="428"/>
         <source>Longueur :</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="415"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="444"/>
-        <source>Rotation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Breedte :</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="438"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="467"/>
+        <source>Rotation :</source>
+        <translation>Hoek :</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="461"/>
         <source>Textes indépendants</source>
-        <translation type="unfinished"></translation>
+        <translation>Losse tekst</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="491"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="514"/>
         <source>Pages de sommaire</source>
-        <translation type="unfinished"></translation>
+        <translation>Opsommings bladzijde</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="527"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="550"/>
         <source>Autres textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Andere teksten</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="624"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="647"/>
         <source>La Grille doite etre active pour pouvoir voir les modifications.</source>
-        <translation type="unfinished"></translation>
+        <translation>Het raster moet actief zijn om wijziginge te kunne uitvoeren.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="673"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="696"/>
         <source>Déplacement au clavier : 1 - 30</source>
-        <translation type="unfinished"></translation>
+        <translation>Toetsenbordbeweging: 1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="723"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="746"/>
         <source>DiagramEditor (touche :   gauche / droite)  xGrid</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="730"/>
-        <source>DiagramEditor (touche :   haut / bas)  yGrid</source>
-        <translation type="unfinished"></translation>
+        <translation>Schema (sleutel: links / rechts) x raster</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="753"/>
+        <source>DiagramEditor (touche :   haut / bas)  yGrid</source>
+        <translation>Schema (sleutel: omhoog / omlaag) y raster</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="776"/>
         <source>Déplacement au clavier avec la touche ALT : 1 - 9</source>
-        <translation type="unfinished"></translation>
+        <translation>Totsenbord beweging met ALT : 1-9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="759"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="782"/>
         <source>DiagramEditor (touche :   gauche / droite ) xGrid</source>
-        <translation type="unfinished"></translation>
+        <translation>Schema (sleutel: links / rechts) x raster</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="788"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="811"/>
         <source>DiagramEditor (touche :  haut / bas)  yGrid</source>
-        <translation type="unfinished"></translation>
+        <translation>Schema (sleutel: omhoog / omlaag) y raster</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="146"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="99"/>
         <source>Ne pas conserver les labels des éléments lors des copier coller</source>
         <translation>Bewaar niet de labels van de element bij copy-paste</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="99"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="166"/>
         <source>Exporter les bornes dans la nomenclature</source>
         <translation>Exporteer de klemmen naar de nomenclatuur</translation>
     </message>
@@ -2886,120 +3092,120 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <translation>Uitzomen voorbij het schema kader toestaan</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="242"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="244"/>
         <source>Général</source>
         <comment>configuration page title</comment>
         <translation>Algemeen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="259"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="261"/>
         <source>Système</source>
         <translation>Systeem</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="263"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="265"/>
         <source>Arabe</source>
         <translation>Arabisch</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="264"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="266"/>
         <source>Brézilien</source>
         <translation>Brasiliaans</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="265"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="267"/>
         <source>Catalan</source>
         <translation>Catalaans</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="266"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="268"/>
         <source>Tchèque</source>
         <translation>Tsjechisch</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="267"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="269"/>
         <source>Allemand</source>
         <translation>Duits</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="268"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="270"/>
         <source>Danois</source>
         <translation>Deens</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="269"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="271"/>
         <source>Grec</source>
         <translation>Grieks</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="270"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="272"/>
         <source>Anglais</source>
         <translation>Engels</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="271"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="273"/>
         <source>Espagnol</source>
         <translation>Spaans</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="272"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="274"/>
         <source>Français</source>
         <translation>Frans</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="273"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="275"/>
         <source>Croate</source>
         <translation>Croatisch</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="274"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="276"/>
         <source>Italien</source>
         <translation>Italiaans</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="275"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="277"/>
         <source>Polonais</source>
         <translation>Pools</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="276"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="278"/>
         <source>Portugais</source>
         <translation>Portugees</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="277"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="279"/>
         <source>Roumains</source>
         <translation>Roemeens</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="278"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="280"/>
         <source>Russe</source>
         <translation>Russisch</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="279"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="281"/>
         <source>Slovène</source>
         <translation>Sloveens</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="280"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="282"/>
         <source>Pays-Bas</source>
         <translation>Nederlands</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="281"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="283"/>
         <source>Belgique-Flemish</source>
         <translation>Belgisch nederlands</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="282"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="284"/>
         <source>Turc</source>
-        <translation type="unfinished"></translation>
+        <translation>Turks</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="283"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="285"/>
         <source>Hongrois</source>
-        <translation type="unfinished"></translation>
+        <translation>Hongaars</translation>
     </message>
 </context>
 <context>
@@ -3119,17 +3325,17 @@ Positie vergrendelen</translation>
     <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished">Dialoog</translation>
+        <translation>Dialoog</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="20"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst etiket</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="30"/>
         <source>Écraser les textes existants</source>
-        <translation type="unfinished"></translation>
+        <translation>Overschrijf de bestaande tekst</translation>
     </message>
 </context>
 <context>
@@ -3137,54 +3343,55 @@ Positie vergrendelen</translation>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Vorm</translation>
+        <translation>Vorm</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="20"/>
         <source>X :</source>
-        <translation type="unfinished"></translation>
+        <translation>X :</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="30"/>
         <source>Éditeur avancé</source>
-        <translation type="unfinished"></translation>
+        <translation>Geavanceerde bewerkingen</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="37"/>
         <source>Taille :</source>
-        <translation type="unfinished"></translation>
+        <translation>Breedte :</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="47"/>
         <source>Angle :</source>
-        <translation type="unfinished">Hoek:</translation>
+        <translation>Hoek:</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="57"/>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="93"/>
         <source>px</source>
-        <translation type="unfinished"></translation>
+        <translation>px</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="109"/>
         <source>°</source>
-        <translation type="unfinished"></translation>
+        <translation>°</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="122"/>
         <source>Y :</source>
-        <translation type="unfinished"></translation>
+        <translation>Y :</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="132"/>
         <source>Le contenu, la taille et la police du texte ne peuvent être modifié car formaté en html.
 Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
-        <translation type="unfinished"></translation>
+        <translation>De inhoud, de grootte en het lettertype van de tekst kunnen niet worden gewijzigd omdat ze in HTML zijn opgemaakt.
+Gebruik hiervoor de geavanceerde editor.</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="153"/>
         <source>Texte</source>
-        <translation type="unfinished">Tekst</translation>
+        <translation>Tekst</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="160"/>
@@ -3192,58 +3399,58 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="407"/>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="454"/>
         <source>Police</source>
-        <translation type="unfinished"></translation>
+        <translation>Beleid</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="146"/>
         <source>Cliquez ici pour annuler le formatage html</source>
-        <translation type="unfinished"></translation>
+        <translation>Klik hier om de HTML opmaak te verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="179"/>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="184"/>
         <source>Déplacer un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Verplaats een tekstveld</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="189"/>
         <source>Pivoter un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Draai een tekstveld</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="193"/>
         <source>Modifier un champ texte</source>
-        <translation type="unfinished">Wijzig een tekst</translation>
+        <translation>Wijzig een tekstveld</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="199"/>
         <source>Modifier la taille d&apos;un champ texte</source>
-        <translation type="unfinished">Wijzig de tekst hoogte van een tekstveld</translation>
+        <translation>Wijzig de tekst hoogte van een tekstveld</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="204"/>
         <source>Modifier la police d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzig het lettertype van een tekstveld</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="239"/>
         <source>Pivoter plusieurs champs texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Draai meerde tekstvelden</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="254"/>
         <source>Modifier la taille de plusieurs champs texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzig de breedte van meerdere tekstvelden</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="270"/>
         <source>Modifier la police de plusieurs champs texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzig het letter type van meerde tekstvelden</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="282"/>
         <source>Modifier les propriétés d&apos;un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>wijzig de eigenschappen van een tekst</translation>
     </message>
 </context>
 <context>
@@ -3404,60 +3611,60 @@ Geen toegang tot de bovenliggende categorie</translation>
         <translation>Zoeken</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="420"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="424"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="412"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="416"/>
         <source>Label</source>
         <translation>Etiket</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="420"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="424"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="412"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="416"/>
         <source>Commentaire</source>
         <translation>Commentaar</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="424"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="436"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="416"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="428"/>
         <source>N° de folio</source>
         <translation>Schema bladzijde nummer</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="420"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="432"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="412"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="424"/>
         <source>Label de folio</source>
         <translation>Etiket van de bladzijde</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="420"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="412"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="416"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="424"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="432"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="436"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="428"/>
         <source>Titre de folio</source>
         <translation>Schema titel</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="420"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="412"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="416"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="424"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="432"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="436"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="428"/>
         <source>Position</source>
         <translation>Positie</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="432"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="436"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="424"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="428"/>
         <source>N° de fil</source>
         <translation>Nr geleider</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="432"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="436"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="424"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="428"/>
         <source>Fonction</source>
         <translation>Functie</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="432"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="436"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="424"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="428"/>
         <source>Tension / Protocole</source>
         <translation>Spanning / regels</translation>
     </message>
@@ -3517,12 +3724,12 @@ Geen toegang tot de bovenliggende categorie</translation>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="133"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Délier l&apos;élément sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Defineer het gfeslecteerde element&lt;/p&gt;&lt;/body&gt;&lt;/html</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="147"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Lier l&apos;élément sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Leess het geslecteerde element&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="46"/>
@@ -3598,53 +3805,53 @@ Geen toegang tot de bovenliggende categorie</translation>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="14"/>
         <source>Collage multiple</source>
-        <translation type="unfinished"></translation>
+        <translation>Meervoudig plakken</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="22"/>
         <source>Décalage</source>
-        <translation type="unfinished"></translation>
+        <translation>Uitlijning</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="29"/>
         <location filename="../sources/ui/multipastedialog.ui" line="51"/>
         <source>px</source>
-        <translation type="unfinished"></translation>
+        <translation>px</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="32"/>
         <source>x:  </source>
-        <translation type="unfinished"></translation>
+        <translation>x:</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="54"/>
         <source>y:  </source>
-        <translation type="unfinished"></translation>
+        <translation>y:</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="77"/>
         <source>Nombre de copie</source>
-        <translation type="unfinished"></translation>
+        <translation>Aantal copies</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="93"/>
         <source>Auto-connexion</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatisch verbinden</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="100"/>
         <source>Auto-numérotation des éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatisch nummeren van elementen</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="107"/>
         <source>Auto-numérotation des conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatisch nummeren van geleiders</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.cpp" line="98"/>
         <source>Multi-collage</source>
-        <translation type="unfinished"></translation>
+        <translation>Meervoudig plakken</translation>
     </message>
 </context>
 <context>
@@ -3652,12 +3859,12 @@ Geen toegang tot de bovenliggende categorie</translation>
     <message>
         <location filename="../sources/NameList/ui/namelistdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished">Dialoog</translation>
+        <translation>Dialoog</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistdialog.cpp" line="66"/>
         <source>Variables de cartouche</source>
-        <translation type="unfinished"></translation>
+        <translation>Velden van de etiket</translation>
     </message>
 </context>
 <context>
@@ -3665,27 +3872,27 @@ Geen toegang tot de bovenliggende categorie</translation>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Vorm</translation>
+        <translation>Vorm</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="21"/>
         <source>Langue</source>
-        <translation type="unfinished">Taal</translation>
+        <translation>Taal</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="26"/>
         <source>Texte</source>
-        <translation type="unfinished">Tekst</translation>
+        <translation>Tekst</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="36"/>
         <source>Ajouter une ligne</source>
-        <translation type="unfinished"></translation>
+        <translation>Een lijn toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="48"/>
         <source>Copier dans le presse papier</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopier naar klembord</translation>
     </message>
 </context>
 <context>
@@ -3911,7 +4118,7 @@ Geen toegang tot de bovenliggende categorie</translation>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="196"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="313"/>
         <source>Installation</source>
-        <translation type="unfinished">Installatie</translation>
+        <translation>Installatie</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="100"/>
@@ -3981,27 +4188,27 @@ Geen toegang tot de bovenliggende categorie</translation>
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="38"/>
         <source>Ajouter un point</source>
-        <translation type="unfinished"></translation>
+        <translation>Een punt toevoeggen</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="41"/>
         <source>Supprimer ce point</source>
-        <translation type="unfinished"></translation>
+        <translation>Een punt verwijderen</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="397"/>
+        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="423"/>
         <source>Modifier un polygone</source>
         <translation>Wijzig een polygoon</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="492"/>
+        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="518"/>
         <source>Ajouter un point à un polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Een polygoon toevoegen</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="524"/>
+        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="551"/>
         <source>Supprimer un point d&apos;un polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder een punt op de polygoon</translation>
     </message>
 </context>
 <context>
@@ -4020,42 +4227,67 @@ Geen toegang tot de bovenliggende categorie</translation>
 <context>
     <name>PolygonEditor</name>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="35"/>
+        <location filename="../sources/editor/ui/polygoneditor.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished">Vorm</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/polygoneditor.ui" line="31"/>
+        <source>X</source>
+        <translation type="unfinished">X</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/polygoneditor.ui" line="36"/>
+        <source>Y</source>
+        <translation type="unfinished">Y</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/polygoneditor.ui" line="44"/>
         <source>Polygone fermé</source>
         <translation>Gesloten polygoon</translation>
     </message>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="42"/>
-        <source>x</source>
-        <translation>X</translation>
+        <location filename="../sources/editor/ui/polygoneditor.ui" line="55"/>
+        <source>Ajouter un point</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="42"/>
-        <source>y</source>
-        <translation>Y</translation>
+        <location filename="../sources/editor/ui/polygoneditor.ui" line="64"/>
+        <source>Supprimer ce point</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="50"/>
+        <location filename="../sources/editor/ui/polygoneditor.ui" line="20"/>
         <source>Points du polygone :</source>
         <translation>Polygoon punten:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="78"/>
-        <location filename="../sources/editor/polygoneditor.cpp" line="93"/>
+        <location filename="../sources/editor/ui/polygoneditor.cpp" line="178"/>
+        <location filename="../sources/editor/ui/polygoneditor.cpp" line="206"/>
         <source>Modifier un polygone</source>
         <translation>Wijzig een poligoon</translation>
     </message>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="71"/>
+        <location filename="../sources/editor/ui/polygoneditor.cpp" line="199"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Fout</translation>
     </message>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="71"/>
+        <location filename="../sources/editor/ui/polygoneditor.cpp" line="199"/>
         <source>Le polygone doit comporter au moins deux points.</source>
         <comment>message box content</comment>
         <translation>Een polygoon moet tenminste 2 punten hebben.</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/polygoneditor.cpp" line="267"/>
+        <source>Ajouter un point à un polygone</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/polygoneditor.cpp" line="286"/>
+        <source>Supprimer un point d&apos;un polygone</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4109,7 +4341,8 @@ Numéro : %1</source>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="180"/>
         <source>Veuillez choisir un potentiel électrique de la liste 
 à utiliser pour le nouveau potentiel</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer een elektrisch potentiaal uit de lijst
+te gebruiken vooreen nieuwe potentiaal</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="339"/>
@@ -4143,7 +4376,7 @@ De volgende items zijn niet compatibel :
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="235"/>
         <source>Numérotation auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatisch nummering</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="262"/>
@@ -4153,22 +4386,22 @@ De volgende items zijn niet compatibel :
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="266"/>
         <source>Conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Geleiders</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="270"/>
         <source>Eléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementen</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="274"/>
         <source>Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Schema bladzijden</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="278"/>
         <source>Numérotation auto des folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatisch nummering scshema bladzijden</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="389"/>
@@ -4225,12 +4458,12 @@ De volgende items zijn niet compatibel :
 <context>
     <name>ProjectView</name>
     <message>
-        <location filename="../sources/projectview.cpp" line="743"/>
+        <location filename="../sources/projectview.cpp" line="745"/>
         <source>Supprimer les éléments inutilisés dans le projet</source>
         <translation>Verwijder ongebruikte elementen uit project</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="744"/>
+        <location filename="../sources/projectview.cpp" line="746"/>
         <source>Supprimer les catégories vides</source>
         <translation>Verwijder lege categorieen</translation>
     </message>
@@ -4248,47 +4481,47 @@ Wilt u wijzigingen bewaren?</translation>
         <translation>Project QElectroTech (*.qet)</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="428"/>
+        <location filename="../sources/projectview.cpp" line="430"/>
         <source>Supprimer le folio ?</source>
         <comment>message box title</comment>
         <translation>Verijderen van schema bladzijde ?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="429"/>
+        <location filename="../sources/projectview.cpp" line="431"/>
         <source>Êtes-vous sûr  de vouloir supprimer ce folio du projet ? Ce changement est irréversible.</source>
         <comment>message box content</comment>
         <translation>Bent u zeker dat u deze schema bladzijde wilt verwijderen? deze wijziging kan niet ongedaan gemaakt worden.</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="735"/>
+        <location filename="../sources/projectview.cpp" line="737"/>
         <source>Projet en lecture seule</source>
         <comment>message box title</comment>
         <translation>Alleen lezen project</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="736"/>
+        <location filename="../sources/projectview.cpp" line="738"/>
         <source>Ce projet est en lecture seule. Il n&apos;est donc pas possible de le nettoyer.</source>
         <comment>message box content</comment>
         <translation>Dit project is alleen lezen. en kan dus niet geschoond worden.</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="742"/>
+        <location filename="../sources/projectview.cpp" line="744"/>
         <source>Supprimer les modèles de cartouche inutilisés dans le projet</source>
         <translation>Verwijder ongebruikte sjablonen uit project</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="756"/>
+        <location filename="../sources/projectview.cpp" line="758"/>
         <source>Nettoyer le projet</source>
         <comment>window title</comment>
         <translation>Schoon project</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="789"/>
+        <location filename="../sources/projectview.cpp" line="791"/>
         <source>Ajouter un folio</source>
         <translation>Een schema bladzijde toevoegen</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="803"/>
+        <location filename="../sources/projectview.cpp" line="805"/>
         <source>Ce projet ne contient aucun folio</source>
         <comment>label displayed when a project contains no diagram</comment>
         <translation>Dit project bevat geen enkele schem bladzijde</translation>
@@ -4306,18 +4539,18 @@ Wilt u wijzigingen bewaren?</translation>
         <translation>Geen actief project</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="862"/>
+        <location filename="../sources/projectview.cpp" line="868"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Création des onglets de folio :&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Project open in uitvoering...&lt;/b&gt;&lt;br/&gt;Creatie van de schema bladzijden :&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="899"/>
+        <location filename="../sources/projectview.cpp" line="909"/>
         <source>Projet</source>
         <comment>window title for a project-less ProjectView</comment>
         <translation>Project</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="643"/>
+        <location filename="../sources/projectview.cpp" line="645"/>
         <source>projet</source>
         <comment>string used to generate a filename</comment>
         <translation>Project</translation>
@@ -4328,208 +4561,208 @@ Wilt u wijzigingen bewaren?</translation>
     <message>
         <location filename="../sources/PropertiesEditor/propertieseditordockwidget.ui" line="14"/>
         <source>Propriétés de la sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>eigenschappen van het geslecteerde</translation>
     </message>
 </context>
 <context>
     <name>QETApp</name>
     <message>
-        <location filename="../sources/qetapp.cpp" line="334"/>
+        <location filename="../sources/qetapp.cpp" line="335"/>
         <source>Description textuelle</source>
         <translation>Beschrijvende tekst</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="335"/>
+        <location filename="../sources/qetapp.cpp" line="336"/>
         <source>Numéro d&apos;article</source>
         <translation>Artikel nummer</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="337"/>
+        <location filename="../sources/qetapp.cpp" line="338"/>
         <source>Numéro de commande</source>
         <translation>Bestelnummer</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="339"/>
+        <location filename="../sources/qetapp.cpp" line="340"/>
         <source>Fournisseur</source>
         <translation>Leverancier</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="338"/>
+        <location filename="../sources/qetapp.cpp" line="339"/>
         <source>Numéro interne</source>
         <translation>Intern nummer</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="323"/>
+        <location filename="../sources/qetapp.cpp" line="324"/>
         <source>Formule du label</source>
-        <translation type="unfinished"></translation>
+        <translation>Formule van het etiket</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="325"/>
-        <location filename="../sources/qetapp.cpp" line="438"/>
+        <location filename="../sources/qetapp.cpp" line="326"/>
+        <location filename="../sources/qetapp.cpp" line="439"/>
         <source>Installation</source>
-        <translation type="unfinished">Installatie</translation>
+        <translation>Installatie</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="330"/>
-        <location filename="../sources/qetapp.cpp" line="404"/>
+        <location filename="../sources/qetapp.cpp" line="331"/>
+        <location filename="../sources/qetapp.cpp" line="405"/>
         <source>Tension / Protocole</source>
         <translation>Spanning / net</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="340"/>
-        <source>Quantité</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/qetapp.cpp" line="341"/>
-        <source>Unité</source>
-        <translation type="unfinished"></translation>
+        <source>Quantité</source>
+        <translation>Hoeveelheid</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="401"/>
-        <source>Formule du texte</source>
-        <translation type="unfinished"></translation>
+        <location filename="../sources/qetapp.cpp" line="342"/>
+        <source>Unité</source>
+        <translation>Eenheid</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="402"/>
-        <source>Texte</source>
-        <translation type="unfinished">Tekst</translation>
+        <source>Formule du texte</source>
+        <translation>Tekst formule</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="434"/>
-        <source>Titre</source>
-        <translation type="unfinished">Titel</translation>
+        <location filename="../sources/qetapp.cpp" line="403"/>
+        <source>Texte</source>
+        <translation>Tekst</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="435"/>
-        <source>Auteur</source>
-        <translation type="unfinished">Auteur</translation>
+        <source>Titre</source>
+        <translation>Titel</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="436"/>
-        <source>Fichier</source>
-        <translation type="unfinished"></translation>
+        <source>Auteur</source>
+        <translation>Auteur</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="437"/>
+        <source>Fichier</source>
+        <translation>Map</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="438"/>
         <source>Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Schema bladzijde</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="440"/>
+        <location filename="../sources/qetapp.cpp" line="441"/>
         <source>Indice Rev</source>
-        <translation type="unfinished">Revisie index</translation>
+        <translation>Revisie index</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1658"/>
+        <location filename="../sources/qetapp.cpp" line="1661"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Afsluiten</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1659"/>
+        <location filename="../sources/qetapp.cpp" line="1662"/>
         <source>&amp;Masquer</source>
         <translation>&amp;Verbergen</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1660"/>
+        <location filename="../sources/qetapp.cpp" line="1663"/>
         <source>&amp;Restaurer</source>
         <translation>&amp;Herstellen</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1661"/>
+        <location filename="../sources/qetapp.cpp" line="1664"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>&amp;Verberg alle bewerkingen van het schema</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1662"/>
+        <location filename="../sources/qetapp.cpp" line="1665"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>&amp;Herstellen alle bewerkingen van het schema</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1663"/>
+        <location filename="../sources/qetapp.cpp" line="1666"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Verberg alle bewerkingen van dit element</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1664"/>
+        <location filename="../sources/qetapp.cpp" line="1667"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Herstel alle bewerkingen van dit element</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1665"/>
+        <location filename="../sources/qetapp.cpp" line="1668"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Verberg alle bewerkingen van dit  titel blok sjabloon</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1666"/>
+        <location filename="../sources/qetapp.cpp" line="1669"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Herstel alle bewerkingen van dit  titel blok sjabloon</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1667"/>
+        <location filename="../sources/qetapp.cpp" line="1670"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>&amp;Nieuwe uitgever van het schema</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1668"/>
+        <location filename="../sources/qetapp.cpp" line="1671"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>&amp;Nieuwe uitgever van het element</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1670"/>
+        <location filename="../sources/qetapp.cpp" line="1673"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>Sluit QElectroTech programma</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1671"/>
+        <location filename="../sources/qetapp.cpp" line="1674"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>Verklein QElectroTech naar systray</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1672"/>
+        <location filename="../sources/qetapp.cpp" line="1675"/>
         <source>Restaurer QElectroTech</source>
         <translation>Vergroot QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1757"/>
+        <location filename="../sources/qetapp.cpp" line="1760"/>
         <source>Éditeurs de schémas</source>
         <translation>Bewerk de schema&apos;s</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1766"/>
+        <location filename="../sources/qetapp.cpp" line="1769"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>Bewerk het element</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1776"/>
+        <location filename="../sources/qetapp.cpp" line="1779"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
         <translation>Bewerk het titel blok sjabloon</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1817"/>
-        <source>&lt;b&gt;Le fichier de restauration suivant a été trouvé,&lt;br&gt;Voulez-vous l&apos;ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/qetapp.cpp" line="1820"/>
+        <source>&lt;b&gt;Le fichier de restauration suivant a été trouvé,&lt;br&gt;Voulez-vous l&apos;ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
+        <translation>&lt;b&gt; Het volgende herstelbestand is gevonden, &lt;br&gt; Wilt u het openen? &lt;/ b&gt; &lt;br&gt;</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="1823"/>
         <source>&lt;b&gt;Les fichiers de restauration suivant on été trouvé,&lt;br&gt;Voulez-vous les ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt; De volgende herstelbestanden zijn gevonden, &lt;br&gt; Wilt u ze openen? &lt;/ b&gt; &lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1834"/>
+        <location filename="../sources/qetapp.cpp" line="1837"/>
         <source>Fichier de restauration</source>
-        <translation type="unfinished"></translation>
+        <translation>Herstelde schema&apos;s</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1912"/>
+        <location filename="../sources/qetapp.cpp" line="1915"/>
         <source>Usage : </source>
         <translation>Gebruik: </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1913"/>
+        <location filename="../sources/qetapp.cpp" line="1916"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -4546,7 +4779,7 @@ Beschikbare opties:
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1912"/>
+        <location filename="../sources/qetapp.cpp" line="1915"/>
         <source> [options] [fichier]...
 
 </source>
@@ -4555,42 +4788,42 @@ Beschikbare opties:
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="336"/>
+        <location filename="../sources/qetapp.cpp" line="337"/>
         <source>Fabricant</source>
         <translation>Fabrikant</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="331"/>
+        <location filename="../sources/qetapp.cpp" line="332"/>
         <source>Bloc auxiliaire 1</source>
         <translation>Hulpblok 1</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="332"/>
+        <location filename="../sources/qetapp.cpp" line="333"/>
         <source>Bloc auxiliaire 2</source>
         <translation>Hulpblok 2</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1919"/>
+        <location filename="../sources/qetapp.cpp" line="1922"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --gemeenschappelijke-map voor elementen-=MAP     definieer de elementen collectie map
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1922"/>
+        <location filename="../sources/qetapp.cpp" line="1925"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
         <translation>  --gemeenschappelijke-tbt-map=MAP          Definieer de titel blok sjablonen collectie map</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1925"/>
+        <location filename="../sources/qetapp.cpp" line="1928"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-map=MAP              Definieer configuratie map
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1927"/>
+        <location filename="../sources/qetapp.cpp" line="1930"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --ltaal map=MAP                Definieer de taalbestanden map</translation>
@@ -4602,113 +4835,113 @@ Beschikbare opties:
         <translation>Laden... initialiseer elementen collectie cache </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="102"/>
+        <location filename="../sources/qetapp.cpp" line="103"/>
         <source>Chargement... Éditeur de schéma</source>
         <comment>splash screen caption</comment>
         <translation>Opladen... schema beheer</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="106"/>
+        <location filename="../sources/qetapp.cpp" line="107"/>
         <source>Chargement... Ouverture des fichiers</source>
         <comment>splash screen caption</comment>
         <translation>Laden... Openen van bestanden</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="172"/>
+        <location filename="../sources/qetapp.cpp" line="173"/>
         <source>LTR</source>
         <comment>Translate this string to RTL if you are translating to a Right-to-Left language, else translate to LTR</comment>
         <translation>LTR</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="324"/>
+        <location filename="../sources/qetapp.cpp" line="325"/>
         <source>Label</source>
         <translation>Etiket</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="328"/>
+        <location filename="../sources/qetapp.cpp" line="329"/>
         <source>Commentaire</source>
         <translation>Commentaar</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="326"/>
-        <location filename="../sources/qetapp.cpp" line="439"/>
+        <location filename="../sources/qetapp.cpp" line="327"/>
+        <location filename="../sources/qetapp.cpp" line="440"/>
         <source>Localisation</source>
         <translation>lokalisatie</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="329"/>
-        <location filename="../sources/qetapp.cpp" line="403"/>
+        <location filename="../sources/qetapp.cpp" line="330"/>
+        <location filename="../sources/qetapp.cpp" line="404"/>
         <source>Fonction</source>
         <translation>Functie</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="451"/>
+        <location filename="../sources/qetapp.cpp" line="452"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates collection provided by QElectroTech</comment>
         <translation>QET titel blok sjablonen</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="465"/>
+        <location filename="../sources/qetapp.cpp" line="466"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s title block templates collection</comment>
         <translation>Gebruiker titel blok sjabloon</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1076"/>
+        <location filename="../sources/qetapp.cpp" line="1080"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1077"/>
+        <location filename="../sources/qetapp.cpp" line="1081"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation>QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1078"/>
+        <location filename="../sources/qetapp.cpp" line="1082"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Schema</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1079"/>
+        <location filename="../sources/qetapp.cpp" line="1083"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Electrisch</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1080"/>
+        <location filename="../sources/qetapp.cpp" line="1084"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1478"/>
+        <location filename="../sources/qetapp.cpp" line="1481"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
         <translation>QElectroTech instellen</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1589"/>
+        <location filename="../sources/qetapp.cpp" line="1592"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>Laden ...  </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1654"/>
+        <location filename="../sources/qetapp.cpp" line="1657"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>Laden... Systray icon</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1656"/>
+        <location filename="../sources/qetapp.cpp" line="1659"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1688"/>
+        <location filename="../sources/qetapp.cpp" line="1691"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
@@ -4717,893 +4950,898 @@ Beschikbare opties:
 <context>
     <name>QETDiagramEditor</name>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="695"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="707"/>
         <source>Afficha&amp;ge</source>
         <translation>Weer&amp;gave</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="752"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="765"/>
         <source>Affiche ou non le panel d&apos;appareils</source>
         <translation>Weergeven of verbergen het elementen paneel</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="499"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="511"/>
         <source>Ajouter une colonne</source>
         <translation>Kolom toevoegen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="426"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="438"/>
         <source>&amp;Cascade</source>
         <translation>&amp;Trapsgewijs</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="282"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="284"/>
         <source>C&amp;oller</source>
         <translation>&amp;Plakken</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="281"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="283"/>
         <source>Cop&amp;ier</source>
         <translation>Kop&amp;ieren</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="280"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="282"/>
         <source>Co&amp;uper</source>
         <translation>Kn&amp;ippen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="574"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="586"/>
         <source>Ctrl+0</source>
         <translation>Ctrl+0</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="573"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="585"/>
         <source>Ctrl+9</source>
         <translation>Ctrl+9</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="550"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="562"/>
         <source>Ctrl+I</source>
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="264"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="266"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="242"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="244"/>
         <source>Ctrl+Shift+X</source>
         <translation>Ctrl+Shift+X</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="557"/>
         <source>Désélectionner tout</source>
         <translation>Selecteer niets</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="693"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="705"/>
         <source>&amp;Édition</source>
         <translation>&amp;Bewerken</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="500"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="512"/>
         <source>Enlever une colonne</source>
         <translation>Kolom verwijderen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="473"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="485"/>
         <source>&amp;Enregistrer</source>
         <translation>B&amp;ewaren</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="474"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="486"/>
         <source>Enregistrer sous</source>
         <translation>Alles bewaren</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="241"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="243"/>
         <source>E&amp;xporter</source>
         <translation>E&amp;xporteer</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="697"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="709"/>
         <source>Fe&amp;nêtres</source>
         <translation>Ve&amp;nsters</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="475"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="487"/>
         <source>&amp;Fermer</source>
         <translation>&amp;Sluiten</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="692"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="704"/>
         <source>&amp;Fichier</source>
         <translation>&amp;Bestand</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="252"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="254"/>
         <source>Imprimer</source>
         <translation>Afdrukken</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="546"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="558"/>
         <source>Inverser la sélection</source>
         <translation>Selectie omkeren</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="431"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="443"/>
         <source>Mode Selection</source>
         <translation>Selectie modus</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="198"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="200"/>
         <source>Ce panneau liste les différentes actions effectuées sur le folio courant. Cliquer sur une action permet de revenir à l&apos;état du schéma juste après son application.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Dit paneel bevat de verschillende acties welke toegpast zij op de huidige schema bladzijde. Klikken op één van deze acties brengt het schema terug naar de inhoud juist na het toepassen van deze actie.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="324"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="326"/>
         <source>Couleur de fond blanc/gris</source>
         <comment>Tool tip of white/grey background button</comment>
         <translation>Achtergrond kleur wit of grijs</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="325"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="327"/>
         <source>Affiche la couleur de fond du folio en blanc ou en gris</source>
         <comment>Status tip of white/grey background button</comment>
         <translation>Geef de achtergrond kleur van het schema weer in wit of grijs</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="334"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="336"/>
         <source>Afficher la grille</source>
         <translation>Geef rooster weer</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="335"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="337"/>
         <source>Affiche ou masque la grille des folios</source>
         <translation>Verbergen of weergeven raster op de bladzijden</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="347"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="349"/>
         <source>Propriétés du folio</source>
         <translation>Schema eigenschappen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="365"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="367"/>
         <source>Ajouter un folio</source>
         <translation>Schema bladzijde toevoegen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="374"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="376"/>
         <source>Supprimer le folio</source>
         <translation>Schema baldzijde verwijderen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="443"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="455"/>
         <source>Mode Visualisation</source>
         <translation>Verplaatsen modus</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="422"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="434"/>
         <source>&amp;Mosaïque</source>
         <translation>&amp;Mozaïek</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="403"/>
-        <source>Lancer le plugin de création de borniers</source>
+        <location filename="../sources/qetdiagrameditor.cpp" line="397"/>
+        <source>Exporter au format CSV</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="471"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="404"/>
+        <source>Lancer le plugin de création de borniers</source>
+        <translation>Start de creatie van klemmen</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="408"/>
+        <source>Exporter la liste des noms de conducteurs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="483"/>
         <source>&amp;Nouveau</source>
         <translation>&amp;Nieuw</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="482"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="494"/>
         <source>Crée un nouveau projet</source>
         <comment>status bar tip</comment>
         <translation>Nieuw project aanmaken</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="483"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="495"/>
         <source>Ouvre un projet existant</source>
         <comment>status bar tip</comment>
         <translation>Bestaand project openen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="484"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="496"/>
         <source>Ferme le projet courant</source>
         <comment>status bar tip</comment>
         <translation>Het huidige project sluiten</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="485"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="497"/>
         <source>Enregistre le projet courant et tous ses folios</source>
         <comment>status bar tip</comment>
         <translation>Bewaar het huidige project en al zijn schema bladzijden</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="486"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="498"/>
         <source>Enregistre le projet courant avec un autre nom de fichier</source>
         <comment>status bar tip</comment>
         <translation>Bewaar het huidige project met een andere naam</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="501"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="513"/>
         <source>Ajouter une ligne</source>
         <comment>Add row</comment>
         <translation>Een rij toevoegen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="502"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="514"/>
         <source>Enlever une ligne</source>
         <comment>Remove row</comment>
         <translation>Verwijderen van een rij</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="504"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="516"/>
         <source>Ajoute une colonne au folio</source>
         <comment>status bar tip</comment>
         <translation>Voeg een kolom toe</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="505"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="517"/>
         <source>Enlève une colonne au folio</source>
         <comment>status bar tip</comment>
         <translation>Verwijder een kolom</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="506"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="518"/>
         <source>Agrandit le folio en hauteur</source>
         <comment>status bar tip</comment>
         <translation>Vergroot het schema in de hoogte</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="507"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="519"/>
         <source>Rétrécit le folio en hauteur</source>
         <comment>status bar tip</comment>
         <translation>Verklein het schema in de hoogte</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="529"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="541"/>
         <source>Enlève les éléments sélectionnés du folio</source>
         <comment>status bar tip</comment>
         <translation>Verwijder de geselecteerde elementen van het schema</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="552"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="564"/>
         <source>Sélectionne tous les éléments du folio</source>
         <comment>status bar tip</comment>
         <translation>Selecteer alle elementen op deze schema bladzijde</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="553"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="565"/>
         <source>Désélectionne tous les éléments du folio</source>
         <comment>status bar tip</comment>
         <translation>Selecteer niets op deze schema bladzijde</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="576"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="588"/>
         <source>Agrandit le folio</source>
         <comment>status bar tip</comment>
         <translation>Vergroot  deze schema bladzijde</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="577"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="589"/>
         <source>Rétrécit le folio</source>
         <comment>status bar tip</comment>
         <translation>Verklein deze schema bladzijde</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="578"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="590"/>
         <source>Adapte le zoom de façon à afficher tout le contenu du folio indépendamment du cadre</source>
         <translation>Uitzomen toegestaan buiten het schema kader</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="579"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="591"/>
         <source>Adapte le zoom exactement sur le cadre du folio</source>
         <comment>status bar tip</comment>
         <translation>Pas de zoom waarde aan aan de exacte afmetingen van het schema kader</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="593"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="605"/>
         <source>Ajouter une ligne</source>
         <comment>Draw line</comment>
         <translation>Teken een lijn</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="594"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="606"/>
         <source>Ajouter un rectangle</source>
         <translation>Rechthoek toevoegen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="595"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="607"/>
         <source>Ajouter une ellipse</source>
         <translation>Voeg ellipse toe</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="596"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="608"/>
         <source>Ajouter une polyligne</source>
         <translation>Polylijn toevoegen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="243"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="245"/>
         <source>Exporte le folio courant dans un autre format</source>
         <comment>status bar tip</comment>
         <translation>Exporteer de huidige schemabladzijde naar een ander formaat</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="254"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="256"/>
         <source>Imprime un ou plusieurs folios du projet courant</source>
         <comment>status bar tip</comment>
         <translation>Afdrukken van één of meerdere  schema bladzijden van het huidige project</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="676"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="688"/>
         <source>Profondeur</source>
         <comment>toolbar title</comment>
-        <translation type="unfinished">Diepte</translation>
+        <translation>Diepte</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1378"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1391"/>
         <source>Groupe</source>
-        <translation type="unfinished"></translation>
+        <translation>Groep</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2232"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2245"/>
         <source>Error launching qet_tb_generator plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Fout bij opstarten qet_tb_generator toepassing</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="290"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="292"/>
         <source>Place les éléments du presse-papier sur le folio</source>
         <comment>status bar tip</comment>
         <translation>Plaat elementen op het klembord</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="349"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="351"/>
         <source>Édite les propriétés du folio (dimensions, informations du cartouche, propriétés des conducteurs...)</source>
         <comment>status bar tip</comment>
         <translation>Bewerk de bladzijde eigenschappen (afmetingen, informatie op de etiket, eigenschappen van de geleiders...)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="444"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="456"/>
         <source>Permet de visualiser le folio sans pouvoir le modifier</source>
         <comment>status bar tip</comment>
         <translation>U kan deze bladzijde alleen lezen en niet wijzigen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="637"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="649"/>
         <source>Outils</source>
         <translation>Gereedschappen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="472"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="484"/>
         <source>&amp;Ouvrir</source>
         <translation>&amp;Open</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="911"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="924"/>
         <source>Ouvrir un fichier</source>
         <translation>Bestand openen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="567"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="579"/>
         <source>Pas de zoom</source>
         <translation>Zoom 1:1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="518"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="530"/>
         <source>Pivoter</source>
         <translation>Draaien</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="263"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="265"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Verlaten</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="517"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="529"/>
         <source>Supprimer</source>
         <translation>Verwijderen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="544"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="556"/>
         <source>Tout sélectionner</source>
         <translation>Selecteer alles</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="566"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="578"/>
         <source>Zoom adapté</source>
         <translation>Passend maken</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="564"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="576"/>
         <source>Zoom arrière</source>
         <translation>Zoom Uit</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="563"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="575"/>
         <source>Zoom avant</source>
         <translation>Zoom In</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="269"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="271"/>
         <source>Annuler</source>
         <translation>Annuleer</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="274"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="276"/>
         <source>Refaire</source>
         <translation>Herdoen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="306"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="308"/>
         <source>Réinitialiser les conducteurs</source>
         <translation>Reset geleiders</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="307"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="309"/>
         <source>Ctrl+K</source>
         <translation>Ctrl+K</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="348"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="350"/>
         <source>Ctrl+L</source>
         <translation>Ctrl+L</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="749"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="762"/>
         <source>Affiche ou non la barre d&apos;outils principale</source>
         <translation>Weergeven of verbergen van de hoofdwerkbalk</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="750"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="763"/>
         <source>Affiche ou non la barre d&apos;outils Affichage</source>
         <translation>Tonen of verbergen van de weergave werkbalk</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="751"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="764"/>
         <source>Affiche ou non la barre d&apos;outils Schéma</source>
         <translation>Tonen of verbergen van de schema werkbalk</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="640"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="652"/>
         <source>Affichage</source>
         <translation>Weergave</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="643"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="655"/>
         <source>Schéma</source>
         <translation>Schema</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="591"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="603"/>
         <source>Ajouter un champ de texte</source>
         <translation>Toevoegen een tekstveld</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="196"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="198"/>
         <source>Aucune modification</source>
         <translation>Geen wijzigingen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="753"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="766"/>
         <source>Affiche ou non la liste des modifications</source>
         <translation>Tonen of verbergen van de lijst met wijzigingen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="521"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="533"/>
         <source>Éditer l&apos;item sélectionné</source>
         <translation>Bewerk het geselecteerde item</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="366"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="368"/>
         <source>Ctrl+T</source>
         <translation>Ctrl+T</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="522"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="534"/>
         <source>Grouper les textes sélectionnés</source>
-        <translation type="unfinished"></translation>
+        <translation>Groep van geslecteerde teksten</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="530"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="542"/>
         <source>Pivote les éléments et textes sélectionnés</source>
         <comment>status bar tip</comment>
         <translation>Draai de geselecteerde elementen en teksten</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="531"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="543"/>
         <source>Pivote les textes sélectionnés à un angle précis</source>
         <comment>status bar tip</comment>
         <translation>Draai de geselecteerde teksten met specifieke hoek</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="625"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="637"/>
         <source>Chercher/remplacer</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoeken/vervangen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="694"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="706"/>
         <source>&amp;Projet</source>
         <translation>&amp;Project</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="706"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="718"/>
         <source>&amp;Récemment ouverts</source>
         <translation>&amp;Onlangs geopende projecten</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="836"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="858"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="849"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="871"/>
         <source>Projet %1 enregistré dans le repertoire: %2.</source>
         <translation>Project %1 bewaard in map %2.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1009"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1022"/>
         <source>Il semblerait que le fichier que vous essayez d&apos;ouvrir ne soit pas accessible en lecture. Il est donc impossible de l&apos;ouvrir. Veuillez vérifier les permissions du fichier.</source>
         <translation>Het lijkt erop dat het bestand dat u probeert te openen niet leesbaar is. Het is dus onmogelijk om het te openen. Controleer de bestandsrechten.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1024"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1037"/>
         <source>Il semblerait que le projet que vous essayez d&apos;ouvrir ne soit pas accessible en écriture. Il sera donc ouvert en lecture seule.</source>
         <translation>Het lijkt erop dat het project dat u probeert te openen niet leesbaar is. Het zal geopend worden als alleen-lezen.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="407"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="419"/>
         <source>en utilisant des onglets</source>
         <translation>Gebruik tabs</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="412"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="424"/>
         <source>en utilisant des fenêtres</source>
         <translation>Gebruik vensters</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="757"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="770"/>
         <source>Afficher les projets</source>
         <translation>Weergeven projecten</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="359"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="361"/>
         <source>Propriétés du projet</source>
         <translation>Project eigenschappen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="378"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="380"/>
         <source>Nettoyer le projet</source>
         <translation>
 Reinig het project</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1041"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1747"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1054"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1760"/>
         <source>Échec de l&apos;ouverture du projet</source>
         <comment>message box title</comment>
         <translation>Project openen mislukt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1043"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1056"/>
         <source>Il semblerait que le fichier %1 ne soit pas un fichier projet QElectroTech. Il ne peut donc être ouvert.</source>
         <comment>message box content</comment>
         <translation>Het lijkt erop dat het bestand %1 geen QElectroTech project is. Het kan niet worden geopend.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="94"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="96"/>
         <source>QElectroTech</source>
         <comment>window title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="96"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="98"/>
         <source>QElectroTech</source>
         <comment>status bar message</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="200"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="202"/>
         <source>Annulations</source>
         <comment>dock title</comment>
         <translation>Annuleringen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="197"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="199"/>
         <source>Cliquez sur une action pour revenir en arrière dans l&apos;édition de votre schéma</source>
         <comment>Status tip</comment>
         <translation>Klik op een actie om terug te gaan in de bewerkingen van uw schema</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="519"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="531"/>
         <source>Orienter les textes</source>
         <translation>Kies tekst orientatie</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="520"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="532"/>
         <source>Retrouver dans le panel</source>
         <translation>Zoeken in paneel</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="592"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="604"/>
         <source>Ajouter une image</source>
         <translation>Afbeelding toevoegen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="388"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="390"/>
         <source>Ajouter un sommaire</source>
         <translation>Samenvatting toevoegen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="565"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="577"/>
         <source>Zoom sur le contenu</source>
         <translation>Zoom op de inhoud</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="525"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="537"/>
         <source>Space</source>
         <translation>Spatie</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="526"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="538"/>
         <source>Ctrl+Space</source>
         <translation>Ctrl+Spatie</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="527"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="539"/>
         <source>Ctrl+E</source>
         <translation>Ctrl+E</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="572"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="584"/>
         <source>Ctrl+8</source>
         <translatorcomment>Ctrl+8</translatorcomment>
         <translation>Ctrl+8</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="265"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="267"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <comment>status bar tip</comment>
         <translation>Afsluiten QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="272"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="274"/>
         <source>Annule l&apos;action précédente</source>
         <comment>status bar tip</comment>
         <translation>Annuleer de vorige actie</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="277"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="279"/>
         <source>Restaure l&apos;action annulée</source>
         <comment>status bar tip</comment>
         <translation>Herstel de geannuleerde actie</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="288"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="290"/>
         <source>Transfère les éléments sélectionnés dans le presse-papier</source>
         <comment>status bar tip</comment>
         <translation>Verplaats de geselecteerde elementen naar het klembord</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="289"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="291"/>
         <source>Copie les éléments sélectionnés dans le presse-papier</source>
         <comment>status bar tip</comment>
         <translation>Kopieert de geselecteerde elementen naar het klembord</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="554"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="566"/>
         <source>Désélectionne les éléments sélectionnés et sélectionne les éléments non sélectionnés</source>
         <comment>status bar tip</comment>
         <translation>
 Deselecteert alle geselecteerde elementen en selecteert de niet-geselecteerde elementen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="532"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="544"/>
         <source>Retrouve l&apos;élément sélectionné dans le panel</source>
         <comment>status bar tip</comment>
         <translation>Vind het geselecteerde element in het paneel</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="308"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="310"/>
         <source>Recalcule les chemins des conducteurs sans tenir compte des modifications</source>
         <comment>status bar tip</comment>
         <translation>Herberekent de paden van geleiders, ongeacht de veranderingen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="315"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="317"/>
         <source>Création automatique de conducteur(s)</source>
         <comment>Tool tip of auto conductor</comment>
         <translation>Automatisch creatie van geleiders</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="145"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="147"/>
         <source>Projets</source>
         <comment>dock title</comment>
         <translation>Projecten</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="176"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="178"/>
         <source>Collections</source>
         <translation>Collectie</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="316"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="318"/>
         <source>Utiliser la création automatique de conducteur(s) quand cela est possible</source>
         <comment>Status tip of auto conductor</comment>
         <translation>Maak gebruik van automatische creatie van geleider(s) indien mogelijk</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="396"/>
-        <source>Exporter une nomenclature</source>
-        <translation>Export een stuklijst </translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="580"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="592"/>
         <source>Restaure le zoom par défaut</source>
         <comment>status bar tip</comment>
         <translation>Herstel naar de standaard zoom instelling</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="413"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="425"/>
         <source>Présente les différents projets ouverts dans des sous-fenêtres</source>
         <comment>status bar tip</comment>
         <translation>Toont de verschillende geopende projecten in vensters</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="408"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="420"/>
         <source>Présente les différents projets ouverts des onglets</source>
         <comment>status bar tip</comment>
         <translation>Toont de verschillende geopende projecten in tabs</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="432"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="444"/>
         <source>Permet de sélectionner les éléments</source>
         <comment>status bar tip</comment>
         <translation>
 Selecteert elementen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="598"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="610"/>
         <source>Ajoute un champ de texte sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg een tekstveld bij op de huidige schema bladzijde</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="599"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="611"/>
         <source>Ajoute une image sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg een afbeelding bij op de huidige schema bladzijde</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="600"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="612"/>
         <source>Ajoute une ligne sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg een lijn toe aan de huidige schema bladzijde</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="601"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="613"/>
         <source>Ajoute un rectangle sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg een recthoek toe aan de huidige schema bladzijde</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="602"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="614"/>
         <source>Ajoute une ellipse sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg een elpis toe aan de huidige schema bladzijde</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="603"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="615"/>
         <source>Ajoute une polyligne sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg een polygoon toe aan de huidige schema bladzijde</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="684"/>
         <source>Ajouter</source>
         <translation>toevoegen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="913"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="926"/>
         <source>Projets QElectroTech (*.qet);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <translation>Project QElectroTech (*.qet);;Bestand XML (*.xml);;Alle bestanden (*)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="992"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1008"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1005"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1021"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
         <translation>
 Kan het bestand niet openen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="994"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1007"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
         <translation>
 Het lijkt erop dat het bestand %1 dat u probeert te openen niet bestaat.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1023"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1036"/>
         <source>Ouverture du projet en lecture seule</source>
         <comment>message box title</comment>
         <translation>Open het bestand als alleen lezen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1313"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1326"/>
         <source>Double-click pour terminer la forme, Click droit pour annuler le dernier point</source>
-        <translation type="unfinished"></translation>
+        <translation>Dubbelklik om het formulier te voltooien, klik met de rechtermuisknop om het laatste punt ongedaan te maken</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1549"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1562"/>
         <source>Éditer l&apos;élement</source>
         <comment>edit element</comment>
         <translation>Element bewerken</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1555"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1568"/>
         <source>Éditer le champ de texte</source>
         <comment>edit text field</comment>
         <translation>Tekst veld bewerken</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1561"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1574"/>
         <source>Éditer l&apos;image</source>
         <comment>edit image</comment>
         <translation>Afbeelding bewerken</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1567"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1580"/>
         <source>Éditer le conducteur</source>
         <comment>edit conductor</comment>
         <translation>Bewerk geleiders</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1574"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1587"/>
         <source>Éditer l&apos;objet sélectionné</source>
         <comment>edit selected item</comment>
         <translation>Het geselecteerde object bewerken</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1748"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1761"/>
         <source>Une erreur est survenue lors de l&apos;ouverture du fichier %1.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Een fout heeft zich voorgedaan bij het open vanbestand %1.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1794"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1807"/>
         <source>Active le projet « %1 »</source>
         <translation>Activeer project &quot; %1 &quot;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2171"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2184"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Fout</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="423"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="435"/>
         <source>Dispose les fenêtres en mosaïque</source>
         <comment>status bar tip</comment>
         <translation>Zet vensters in tegelpatroon</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="427"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="439"/>
         <source>Dispose les fenêtres en cascade</source>
         <comment>status bar tip</comment>
         <translation>Zet vensters achter elkaar</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="460"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="472"/>
         <source>Projet suivant</source>
         <translation>Volgende project</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="465"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="477"/>
         <source>Projet précédent</source>
         <translation>Vorige project</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="462"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="474"/>
         <source>Active le projet suivant</source>
         <comment>status bar tip</comment>
         <translation>Activeert volgende project</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="467"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="479"/>
         <source>Active le projet précédent</source>
         <comment>status bar tip</comment>
         <translation>Activeert vorige project</translation>
@@ -5861,7 +6099,10 @@ Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 &gt;&gt; Install on Windows
 Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Om de DXf naar QET toepassingen te installeren
+Bezoek  https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+&gt;&gt; Installatie onder Windows
+Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory </translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="171"/>
@@ -5871,7 +6112,10 @@ Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 &gt;&gt; Install on macOSX
 Put DXFtoQET.app binary on /Users/user_name/.qet/ directory 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Om de DXf naar QET toepassingen te installeren
+Bezoek  https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+&gt;&gt; Install on macOSX
+Put DXFtoQET.app binary on /Users/user_name/.qet/ directory </translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="177"/>
@@ -5882,7 +6126,12 @@ Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 Put DXFtoQET binary on your /home/user_name/.qet/ directory
 make it executable : chmod +x ./DXFtoQET
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Om de DXf naar QET toepassingen te installeren
+Bezoek  https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+&gt;&gt; Install on Linux
+Put DXFtoQET binary on your /home/user_name/.qet/ directory
+make it executable : chmod +x ./DXFtoQET
+</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="297"/>
@@ -5892,7 +6141,7 @@ make it executable : chmod +x ./DXFtoQET
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="310"/>
         <source>Double-click pour terminer la forme, Click droit pour annuler le dernier point</source>
-        <translation type="unfinished"></translation>
+        <translation>Dubbelklik om het formulier te voltooien, klik met de rechtermuisknop om het laatste punt ongedaan te maken</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="368"/>
@@ -6017,19 +6266,19 @@ make it executable : chmod +x ./DXFtoQET
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="311"/>
         <source>Ajouter un texte d&apos;élément non éditable dans les schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg een niet-bewerkbare tekst element toe in de schema bladzijden</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="312"/>
         <source>Ajouter un texte d&apos;élément pouvant être édité dans les schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg tekstveld toe die in schema&apos;s kan worden bewerkt</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/qetelementeditor.cpp" line="767"/>
         <source> %n avertissement(s)</source>
         <comment>warnings</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n waarschuwingen</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -6113,7 +6362,17 @@ Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory
 &gt;&gt; Install on macOSX
 Put DXFtoQET.app binary on /Users/user_name/.qet/ directory 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Om de DXFtoQET-plug-in te installeren Ga naar https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+
+&gt;&gt; Installeren op Linux 
+Plaats DXFtoQET binair op uw /home/user_name/.qet/directory
+maak het uitvoerbaar: chmod + x ./DXFtoQET
+
+&gt;&gt; Installeren op Windows
+plaatst DXFtoQET.exe binair op C: \ Users \ gebruikersnaam \ AppData \ Roaming \ qet \ directory
+
+&gt;&gt; Installeren op macOSX
+plaats DXFtoQET.app binair op /Users/user_name/.qet/directory</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1110"/>
@@ -6538,7 +6797,7 @@ les conditions requises ne sont pas valides</source>
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1265"/>
+        <location filename="../sources/qetproject.cpp" line="1262"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
@@ -6546,7 +6805,7 @@ Que désirez vous faire ?</source>
 Wat wilt u doen?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1264"/>
+        <location filename="../sources/qetproject.cpp" line="1261"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation>Aankondiging</translation>
@@ -6582,25 +6841,25 @@ Wat wilt u doen?</translation>
         <translation>%1 [gewijzigd]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1075"/>
+        <location filename="../sources/qetproject.cpp" line="1072"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
         <translation>Fout bij invoegen van het sjabloon.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1177"/>
+        <location filename="../sources/qetproject.cpp" line="1174"/>
         <source>Liste des Folios</source>
         <translation>Lijst van schema bladzijden</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1327"/>
+        <location filename="../sources/qetproject.cpp" line="1324"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Création des folios&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p align = &quot;center&quot;&gt; &lt;b&gt; Open het huidige project ... &lt;/ b&gt; &lt;br/&gt; Aanmaken van schema bladzijden &lt;/ p&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1374"/>
+        <location filename="../sources/qetproject.cpp" line="1371"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Mise en place des références croisées&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p align = &quot;center&quot;&gt; &lt;b&gt; Het lopende project openen ... &lt;/ b&gt; &lt;br/&gt; Kruisverwijzingen instellen &lt;/ p&gt;</translation>
     </message>
 </context>
 <context>
@@ -7156,67 +7415,67 @@ Opslaan naar een bestand</translation>
         <location filename="../sources/qet.cpp" line="567"/>
         <source>Une erreur est survenue lors de l&apos;écriture du fichier %1, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
-        <translation type="unfinished"></translation>
+        <translation>Er is een fout opgetreden tijdens het schrijven van bestand% 1, fout% 2 is opgetreden.</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="640"/>
         <source>Amener au premier plan</source>
-        <translation type="unfinished">Naar voor</translation>
+        <translation>Breng naar de voorgrond</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="641"/>
         <source>Rapprocher</source>
-        <translation type="unfinished">Omhoog</translation>
+        <translation>Omhoog</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="642"/>
         <source>Éloigner</source>
-        <translation type="unfinished">Omlaag</translation>
+        <translation>Omlaag</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="643"/>
         <source>Envoyer au fond</source>
-        <translation type="unfinished">Naar achter</translation>
+        <translation>Naar achter plaatsen</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="645"/>
         <source>Ramène la ou les sélections au premier plan</source>
-        <translation type="unfinished"></translation>
+        <translation>Zet het geselecteerde op de voorgrond</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="646"/>
         <source>Rapproche la ou les sélections</source>
-        <translation type="unfinished"></translation>
+        <translation>Nader de geselecteerden</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="647"/>
         <source>Éloigne la ou les sélections</source>
-        <translation type="unfinished"></translation>
+        <translation>Uitlijnen van geselecteerde</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="648"/>
         <source>Envoie en arrière plan la ou les sélections</source>
-        <translation type="unfinished"></translation>
+        <translation>Verplaatst het geselecteerde naar deachtergrond</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="650"/>
         <source>Ctrl+Shift+Up</source>
-        <translation type="unfinished">Ctrl+Shift+Up</translation>
+        <translation>Ctrl+Shift+Up</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="651"/>
         <source>Ctrl+Shift+Down</source>
-        <translation type="unfinished">Ctrl+Shift+Down</translation>
+        <translation>Ctrl+Shift+Down</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="652"/>
         <source>Ctrl+Shift+End</source>
-        <translation type="unfinished">Ctrl+Shift+End</translation>
+        <translation>Ctrl+Shift+End</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="653"/>
         <source>Ctrl+Shift+Home</source>
-        <translation type="unfinished">Ctrl+Shift+Home</translation>
+        <translation>Ctrl+Shift+Home</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/terminal.cpp" line="73"/>
@@ -7533,6 +7792,7 @@ Opnieuw instellen van de  afmetingen</translation>
         <translation>Afbeeldings bestanden (*.png *.jpg *.jpeg *.bmp *.svg)</translation>
     </message>
     <message>
+        <location filename="../sources/conductornumexport.cpp" line="61"/>
         <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="165"/>
         <location filename="../sources/nomenclature.cpp" line="61"/>
         <source>Erreur</source>
@@ -7619,18 +7879,18 @@ Opnieuw instellen van de  afmetingen</translation>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="146"/>
         <source>Déplacer</source>
-        <translation type="unfinished"></translation>
+        <translation>Verplaatsen</translation>
     </message>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="148"/>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="65"/>
         <source> et</source>
-        <translation type="unfinished"> en</translation>
+        <translation> en</translation>
     </message>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="151"/>
         <source> un groupe de texte</source>
-        <translation type="unfinished"></translation>
+        <translation>een tekst groep</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="51"/>
@@ -7638,16 +7898,24 @@ Opnieuw instellen van de  afmetingen</translation>
         <translation>onderdelenlijst_</translation>
     </message>
     <message>
+        <location filename="../sources/conductornumexport.cpp" line="47"/>
+        <source>numero_de_fileries_</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/conductornumexport.cpp" line="52"/>
         <location filename="../sources/nomenclature.cpp" line="55"/>
         <source>Enregister sous... </source>
         <translation>Bewaren als ...</translation>
     </message>
     <message>
+        <location filename="../sources/conductornumexport.cpp" line="52"/>
         <location filename="../sources/nomenclature.cpp" line="55"/>
         <source>Fichiers csv (*.csv)</source>
         <translation>Bestanden csv (*.csv)</translation>
     </message>
     <message>
+        <location filename="../sources/conductornumexport.cpp" line="62"/>
         <location filename="../sources/nomenclature.cpp" line="62"/>
         <source>Impossible de remplacer le fichier!
 
@@ -7664,129 +7932,129 @@ Opnieuw instellen van de  afmetingen</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
         <source>A001</source>
-        <translation type="unfinished"></translation>
+        <translation>A001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="88"/>
         <source>B001</source>
-        <translation type="unfinished"></translation>
+        <translation>B001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="89"/>
         <source>C001</source>
-        <translation type="unfinished"></translation>
+        <translation>C001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="90"/>
         <source>D001</source>
-        <translation type="unfinished"></translation>
+        <translation>D001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="91"/>
         <source>E001</source>
-        <translation type="unfinished"></translation>
+        <translation>E001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="92"/>
         <source>F001</source>
-        <translation type="unfinished"></translation>
+        <translation>F001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="93"/>
         <source>F002</source>
-        <translation type="unfinished"></translation>
+        <translation>F002</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="94"/>
         <source>G001</source>
-        <translation type="unfinished"></translation>
+        <translation>G001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="95"/>
         <source>H001</source>
-        <translation type="unfinished"></translation>
+        <translation>H001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="96"/>
         <source>H002</source>
-        <translation type="unfinished"></translation>
+        <translation>H002</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="97"/>
         <source>I001</source>
-        <translation type="unfinished"></translation>
+        <translation>I001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="98"/>
         <source>J001</source>
-        <translation type="unfinished"></translation>
+        <translation>J001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="99"/>
         <source>K001</source>
-        <translation type="unfinished"></translation>
+        <translation>K001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="100"/>
         <source>L001</source>
-        <translation type="unfinished"></translation>
+        <translation>L001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="101"/>
         <source>L002</source>
-        <translation type="unfinished"></translation>
+        <translation>L002</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="102"/>
         <source>L003</source>
-        <translation type="unfinished"></translation>
+        <translation>L003</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="103"/>
         <source>M001</source>
-        <translation type="unfinished"></translation>
+        <translation>M001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="104"/>
         <source>M002</source>
-        <translation type="unfinished"></translation>
+        <translation>M002</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="105"/>
         <source>N001</source>
-        <translation type="unfinished"></translation>
+        <translation>N001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="106"/>
         <source>O001</source>
-        <translation type="unfinished"></translation>
+        <translation>O001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="107"/>
         <source>P001</source>
-        <translation type="unfinished"></translation>
+        <translation>P001</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="108"/>
         <location filename="../sources/qetinformation.cpp" line="71"/>
         <source>Position du folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Positie van een schema bladzijde</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="110"/>
         <location filename="../sources/qetinformation.cpp" line="70"/>
         <source>Numéro de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummer van een schema bladzijde</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="120"/>
         <source>Numéro de commande</source>
-        <translation type="unfinished">Bestelnummer</translation>
+        <translation>Bestelnummer</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="126"/>
         <source>Numéro interne</source>
-        <translation type="unfinished">Intern nummer</translation>
+        <translation>Intern nummer</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="109"/>
@@ -7811,7 +8079,7 @@ Opnieuw instellen van de  afmetingen</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="114"/>
         <source>Formule du label</source>
-        <translation type="unfinished"></translation>
+        <translation>Formule van het etiket</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="115"/>
@@ -7836,17 +8104,17 @@ Opnieuw instellen van de  afmetingen</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="121"/>
         <source>Fournisseur</source>
-        <translation type="unfinished">Leverancier</translation>
+        <translation>Leverancier</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="122"/>
         <source>Quantité</source>
-        <translation type="unfinished"></translation>
+        <translation>Hoeveelheid</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="123"/>
         <source>Unité</source>
-        <translation type="unfinished"></translation>
+        <translation>Eenheid</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="124"/>
@@ -7917,230 +8185,231 @@ Opnieuw instellen van de  afmetingen</translation>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="76"/>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="90"/>
         <source>Ajouter un groupe de textes d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg een groep tekst velden in</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="114"/>
         <source>Grouper des textes d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Groep tekst velden</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="177"/>
         <source>Supprimer un groupe de textes d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder een groep tekst velden</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="226"/>
         <source>Insérer un texte d&apos;élément dans un groupe de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg een tekst veld toe aan een groep tekst velden</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="277"/>
         <source>Enlever un texte d&apos;élément d&apos;un groupe de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder een tekstveld uit een groep tekst velden</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="322"/>
         <source>Modifier l&apos;alignement d&apos;un groupe de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzig dde uitlijning van een groep tekstvelden</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotateselectioncommand.cpp" line="36"/>
         <source>Pivoter la selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Draai het geselecteeerde</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="59"/>
         <source>Pivoter %1 textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Draai %1 teksten</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="63"/>
         <source>Pivoter</source>
-        <translation type="unfinished">Draaien</translation>
+        <translation>Draaien</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="67"/>
         <source> %1 groupes de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 tekst groepen</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="116"/>
         <source>Orienter les textes sélectionnés</source>
         <comment>window title</comment>
-        <translation type="unfinished">Orientatie van geselecteerde tekst</translation>
+        <translation>Orientatie van geselecteerde tekst</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="64"/>
         <location filename="../sources/elementtextpattern.cpp" line="144"/>
         <source>Configuration de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Samenstelling van teksten</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="65"/>
         <source>Une configuration de textes nommée &lt;&lt; %1 &gt;&gt; existe déjà.
 Voulez-vous la remplacer ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Er bestaat al een tekstconfiguratie met de naam &lt;&lt;% 1 &gt;&gt;.
+Wilt u deze vervangen?</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="84"/>
         <source>Nom de la configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Naam van de configuratie</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="85"/>
         <source>Entrer le nom de la configuration à créer</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg de naam van de aangemaakte configuratie in</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="145"/>
         <source>Aucune configuration de textes existante.</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen bestaande tekst configuratie</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="170"/>
         <source>Sélectionner une configuration de textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer een tekst configuratie</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="171"/>
         <source>Sélectionner la configuration de textes à ajouter à l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer de tekst configuratie van het toegevoegde element</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="239"/>
         <source>Importer la configuration de texte : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Importeer de tekst configuratie : %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogwaiting.cpp" line="68"/>
         <source>%p% effectué (%v sur %m)</source>
-        <translation type="unfinished"></translation>
+        <translation>%p% gedaan (%v van %m)</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="183"/>
         <source>chargement %p% (%v sur %m)</source>
-        <translation type="unfinished"></translation>
+        <translation>opladen %p% (%v van %m)</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="54"/>
         <source>Chercher/remplacer les propriétés de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoek/vervang eigenschappen schema baldzijde</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="116"/>
         <source>Chercher/remplacer les propriétés d&apos;éléments.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoek/vervang element eigenschappen</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="206"/>
         <source>Chercher/remplacer les propriétés de conducteurs.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoek/vervang geleider eigenschappen</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="289"/>
         <source>Rechercher / remplacer avancé</source>
-        <translation type="unfinished"></translation>
+        <translation>Geavanceerd zoeken/vervangen</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="168"/>
         <source>Chercher/remplacer des textes independants</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoek/vervang losse teksten</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="65"/>
         <source>Fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestand</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="66"/>
         <source>Installation (=)</source>
-        <translation type="unfinished"></translation>
+        <translation>Installatie (=)</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="67"/>
         <source>Localisation (+)</source>
-        <translation type="unfinished"></translation>
+        <translation>Locatie (+)</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="68"/>
         <source>Indice de révision</source>
-        <translation type="unfinished"></translation>
+        <translation>Revisie index</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="69"/>
         <source>Version de QElectroTech</source>
-        <translation type="unfinished"></translation>
+        <translation>Versie van QelectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="72"/>
         <source>Nombre de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummer van schema bladzijde</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="73"/>
         <source>Numéro du folio précédent</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummer van de voorgaande schema bladzijde</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="74"/>
         <source>Numéro du folio suivant</source>
-        <translation type="unfinished"></translation>
+        <translation>Nummer van de volgde schema bladzijde</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="75"/>
         <source>Titre du projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Titel van het project</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="76"/>
         <source>Chemin du fichier du projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Pad van het project</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="77"/>
         <source>Nom du fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestandsnaam</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="78"/>
         <source>Date d&apos;enregistrement du fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Opslag datum van het bestand</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="79"/>
         <source>Heure d&apos;enregistrement du fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Tijdstip van opslag van het bestand</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="80"/>
         <source>Nom du fichier enregistré</source>
-        <translation type="unfinished"></translation>
+        <translation>Naam van het bewaarde bestand</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="81"/>
         <source>Chemin du fichier enregistré</source>
-        <translation type="unfinished"></translation>
+        <translation>Pad van het bewaarde bestand</translation>
     </message>
     <message>
         <location filename="../sources/utils/conductorcreator.cpp" line="47"/>
         <source>Création de conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Creatie van geleiders</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2233"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2246"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>De plug-in qet_tb_generator installeren &lt;br&gt; Bezoek: &lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt; qet-tb-generator &lt;/a&gt; - vereist python 3.5 of hoger. &lt;br&gt; &lt;B&gt; &lt;U&gt; Eerste installatie op Windows &lt;/ U&gt; &lt;br&gt; 1. Installeer, indien nodig, python 3.5 of hoger &lt;br&gt; Bezoek: &lt;a href=&apos;https://www.python.org/downloads/&apos;&gt; python.org &lt;/a&gt; &lt;br&gt; 2. pip install qet_tb_generator &lt;br&gt; &lt;B&gt; &lt;U&gt; Update voor Windows &lt;/ U&gt; &lt;br&gt; python -m pip install - upgrade qet_tb_generator &lt;br&gt; directory &lt;br&gt; C: \ gebruikers \ XXXX \ AppData \ Local \ Programs \ Python \ Python36-32 \ Scripts &lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2269"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2282"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Om de plug-in qet_tb_generator te installeren &lt;br&gt; Ga naar: &lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt; qet-tb-generator &lt;/a&gt; &lt;br&gt; &lt; B&gt; &lt;U&gt; Eerste installatie op macOSX &lt;/ U&gt; &lt;/ U&gt; &lt;br&gt; 1. Installeer, indien nodig, python 3.5 &lt;br&gt; Bezoek: &lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt; howo &lt;/a&gt; &lt;br&gt; 2 . pip3 install qet_tb_generator &lt;br&gt; &lt;B&gt; &lt;u&gt; Update op macOSX &lt;/ u&gt; &lt;/ u&gt; &lt;br&gt; pip3 install - upgrade qet_tb_generator &lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2300"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2313"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit : &lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Om de plug-in qet_tb_generator te installeren &lt;br&gt; Ga naar: &lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt; qet-tb-generator &lt;/a&gt; &lt;br&gt; &lt; br&gt; Vereist python 3.5 of hoger. &lt;br&gt; &lt;br&gt; &lt;B&gt; &lt;U&gt; Eerste installatie op Linux &lt;/ U&gt; &lt;/ U&gt; &lt;br&gt; 1. controleer of je pip3 hebt geïnstalleerd: pip3 --versie Als je niet hebt geïnstalleerd met: sudo apt-get install python3-pip 2. Installeer het programma: sudo pip3 install qet_tb_generator &lt;br&gt; 3. Voer het programma uit: qet_tb_generator &lt;br&gt; &lt;br&gt; &lt;B&gt; &lt;U&gt; Update voor Linux &lt;/ U&gt; &lt;br&gt; sudo pip3 install - upgrade qet_tb_generator &lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -8173,22 +8442,22 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="56"/>
         <source>Ajouter un point</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg een punt toe</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="59"/>
         <source>Supprimer ce point</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder een punt</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="653"/>
         <source>Ajouter un point à un polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg een punt op het polygoon toe</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="687"/>
         <source>Supprimer un point d&apos;un polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder een punt op het polygoon</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="829"/>
@@ -8216,17 +8485,17 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="42"/>
         <source>Dimensions :</source>
-        <translation type="unfinished"></translation>
+        <translation>Afmetingen :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="49"/>
         <source>y</source>
-        <translation type="unfinished">Y</translation>
+        <translation>Y</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="86"/>
         <source>Coin supérieur gauche :</source>
-        <translation type="unfinished"></translation>
+        <translation>Linker bovenhoek:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="93"/>
@@ -8237,12 +8506,12 @@ Voulez-vous la remplacer ?</source>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="103"/>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="133"/>
         <source>Arrondi :</source>
-        <translation type="unfinished"></translation>
+        <translation>Afronding:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="113"/>
         <source>x</source>
-        <translation type="unfinished">X</translation>
+        <translation>X</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="32"/>
@@ -8298,12 +8567,12 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="21"/>
         <source>Type</source>
-        <translation type="unfinished">Type</translation>
+        <translation>Type</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="30"/>
         <source>&amp;Multifilaire</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Meeraderig</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="43"/>
@@ -8320,27 +8589,27 @@ Voulez-vous la remplacer ?</source>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="556"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="180"/>
         <source>Ne pas modifier</source>
-        <translation type="unfinished"></translation>
+        <translation>Niet aangepast</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="48"/>
         <source>En haut</source>
-        <translation type="unfinished"></translation>
+        <translation>Bovedn</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="53"/>
         <source>En bas</source>
-        <translation type="unfinished"></translation>
+        <translation>Onder</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="61"/>
         <source>Texte sur conducteur horizontal :</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst op horizontale geleider:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="78"/>
         <source>Tension / protocol :</source>
-        <translation type="unfinished"></translation>
+        <translation>Spanning/net:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="95"/>
@@ -8348,180 +8617,180 @@ Voulez-vous la remplacer ?</source>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="196"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="228"/>
         <source>Supprimer ce texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder tekst</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="105"/>
         <source>Fonction :</source>
-        <translation type="unfinished">Functie :</translation>
+        <translation>Functie :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="112"/>
         <source>Formule du texte :</source>
-        <translation type="unfinished">Codering tekst :</translation>
+        <translation>Codering tekst :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="119"/>
         <source>Texte visible</source>
-        <translation type="unfinished">Tekst zichtbaar</translation>
+        <translation>Tekst zichtbaar</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="129"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="238"/>
         <source>Angle :</source>
-        <translation type="unfinished">Hoek:</translation>
+        <translation>Hoek:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="165"/>
         <source>Texte sur conducteur vertical :</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst op vertikale geleider:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="172"/>
         <source>Taille du texte :</source>
-        <translation type="unfinished">Hoogte van een tekst:</translation>
+        <translation>Hoogte van een tekst:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="179"/>
         <source>Texte :</source>
-        <translation type="unfinished">Tekst:</translation>
+        <translation>Tekst:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="215"/>
         <source>À gauche</source>
-        <translation type="unfinished"></translation>
+        <translation>Naar links</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="220"/>
         <source>À droite</source>
-        <translation type="unfinished"></translation>
+        <translation>Naar rechts</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="254"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="279"/>
         <source>°</source>
-        <translation type="unfinished"></translation>
+        <translation>°</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="308"/>
         <source>Unifilaire</source>
-        <translation type="unfinished">Enkele geleider</translation>
+        <translation>Enkele geleider</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="323"/>
         <source>Protective Earth Neutral</source>
-        <translation type="unfinished">Aarde en Nul samen</translation>
+        <translation>Aarde en Nul samen</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="326"/>
         <source>PEN</source>
-        <translation type="unfinished">PEN</translation>
+        <translation>PEN</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="333"/>
         <source>Phase</source>
-        <translation type="unfinished">Fase</translation>
+        <translation>Fase</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="336"/>
         <source>phase</source>
-        <translation type="unfinished">Fase</translation>
+        <translation>Fase</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="347"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="380"/>
         <source>Nombre de phase</source>
-        <translation type="unfinished">Aantal fase geleideers</translation>
+        <translation>Aantal fase geleiders</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="360"/>
         <source>Neutre</source>
-        <translation type="unfinished">Nul geleider</translation>
+        <translation>Nul geleider</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="363"/>
         <source>neutre</source>
-        <translation type="unfinished">Nul</translation>
+        <translation>Nul</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="396"/>
         <source>Terre</source>
-        <translation type="unfinished">Aarding</translation>
+        <translation>Aarding</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="399"/>
         <source>terre</source>
-        <translation type="unfinished">Aarde</translation>
+        <translation>Aarde</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="410"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst etiket</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="420"/>
         <source>PushButton</source>
-        <translation type="unfinished"></translation>
+        <translation>Drukknop</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="431"/>
         <source>Apparence</source>
-        <translation type="unfinished"></translation>
+        <translation>Weergave</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="437"/>
         <source>Taille :</source>
-        <translation type="unfinished"></translation>
+        <translation>Hoogte:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="444"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="520"/>
         <source>Couleur :</source>
-        <translation type="unfinished">Kleur:</translation>
+        <translation>Kleur:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="474"/>
         <source>Style :</source>
-        <translation type="unfinished">Stijl:</translation>
+        <translation>Stijl:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="481"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="527"/>
         <source>Modifier</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzig</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="491"/>
         <source>Couleur secondaire :</source>
-        <translation type="unfinished">Secundaire kleur:</translation>
+        <translation>Secundaire kleur:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="513"/>
         <source>Taille de trait :</source>
-        <translation type="unfinished">Lijn dikte:</translation>
+        <translation>Lijn dikte:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="540"/>
         <source>px</source>
-        <translation type="unfinished"></translation>
+        <translation>px</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="181"/>
         <source>Trait plein</source>
         <comment>conductor style: solid line</comment>
-        <translation type="unfinished">Volle lijn</translation>
+        <translation>Volle lijn</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="182"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
-        <translation type="unfinished">Streep lijn</translation>
+        <translation>Streep lijn</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="183"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Puntjes lijn</translation>
     </message>
 </context>
 <context>
@@ -8529,7 +8798,7 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceelementdialog.cpp" line="79"/>
         <source>Ne pas modifier</source>
-        <translation type="unfinished"></translation>
+        <translation>Niet aangepast</translation>
     </message>
 </context>
 <context>
@@ -8537,32 +8806,32 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Vorm</translation>
+        <translation>Vorm</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="45"/>
         <source>Principales</source>
-        <translation type="unfinished">Voornaamste</translation>
+        <translation>Voornaamste</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="53"/>
         <source>Indice Rev</source>
-        <translation type="unfinished">Revisie index</translation>
+        <translation>Revisie index</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="60"/>
         <source>Localisation</source>
-        <translation type="unfinished"></translation>
+        <translation>Locatie</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="67"/>
         <source>Fichier :</source>
-        <translation type="unfinished">Bestand :</translation>
+        <translation>Bestand :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="74"/>
         <source>Disponible en tant que %title pour les modèles de cartouches</source>
-        <translation type="unfinished">Beschikbaar als %title in de diversde titelhoeken bebruikt wordt</translation>
+        <translation>Beschikbaar als %title in de diversde titelhoeken bebruikt wordt</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="77"/>
@@ -8574,68 +8843,67 @@ Voulez-vous la remplacer ?</source>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="217"/>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="227"/>
         <source>Ne pas modifier</source>
-        <translation type="unfinished"></translation>
+        <translation>Niet aangepast</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="84"/>
         <source>Disponible en tant que %author pour les modèles de cartouches</source>
-        <translation type="unfinished">Beschikbaar als %author in de diversde titelhoeken bebruikt wordt</translation>
+        <translation>Beschikbaar als %author in de diversde titelhoeken bebruikt wordt</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="94"/>
         <source>Auteur :</source>
-        <translation type="unfinished">Auteur :</translation>
+        <translation>Auteur :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="101"/>
         <source>Date :</source>
-        <translation type="unfinished">Datum :</translation>
+        <translation>Datum :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="111"/>
         <source>Installation :</source>
-        <translation type="unfinished">Installatie :</translation>
+        <translation>Installatie :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="118"/>
         <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
-        <translation type="unfinished">Beschikbaar als %indexrev in de diverse titelhoeken te gebruiken</translation>
+        <translation>Beschikbaar als %indexrev in de diverse titelhoeken te gebruiken</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="128"/>
         <source>Disponible en tant que %filename pour les modèles de cartouches</source>
-        <translation type="unfinished">Beschikbaar als %filename in de diversde titelhoeken bebruikt wordt</translation>
+        <translation>Beschikbaar als %filename in de diversde titelhoeken bebruikt wordt</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="141"/>
         <source>Folio :</source>
-        <translation type="unfinished">Pagina :</translation>
+        <translation>Schema baldzijde:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="150"/>
         <source>Pas de date</source>
-        <translation type="unfinished">Zonder datum</translation>
+        <translation>Zonder datum</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="157"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
-        <translation type="unfinished">Beschikbaar als %date in de diverse titelhoeken te gebruiken</translation>
+        <translation>Beschikbaar als %date in de diverse titelhoeken te gebruiken</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="170"/>
         <source>Date fixe :</source>
-        <translation type="unfinished">Vaste datum :</translation>
+        <translation>Vaste datum :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="177"/>
         <source>Appliquer la date actuelle</source>
-        <translation type="unfinished">
-Breng de huidige datum aan</translation>
+        <translation>Breng de huidige datum aan</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="224"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disponible en tant que %plant pour les modèles de cartouches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt; &lt;head /&gt; &lt;body&gt; &lt;p&gt; Beschikbaar als% plant voor etiket sjablonen &lt;/ p&gt; &lt;/ body&gt; &lt;/ html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="200"/>
@@ -8644,7 +8912,7 @@ Les variables suivantes sont utilisables :
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
-        <translation type="unfinished">Beschikbaar als %folio voor de schema etiket
+        <translation>Beschikbaar als %folio voor de schema etiket
 De volgende variabelen kunnen gebruikt worden:
 - %id : huidige bladzijde nummering in het project 
 - %total : totaal aantal bladzijde in het project 
@@ -8653,12 +8921,12 @@ De volgende variabelen kunnen gebruikt worden:
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="214"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
-        <translation type="unfinished">Beschikbaar als %locmach in de diverse titelhoeken te gebruiken</translation>
+        <translation>Beschikbaar als %locmach in de diverse titelhoeken te gebruiken</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="234"/>
         <source>Titre :</source>
-        <translation type="unfinished">Titel :</translation>
+        <translation>Titel :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="241"/>
@@ -8669,18 +8937,18 @@ De volgende variabelen kunnen gebruikt worden:
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="291"/>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="301"/>
         <source>Supprimer ce texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder de tekst</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="327"/>
         <source>Personnalisées</source>
-        <translation type="unfinished">Gebruiker</translation>
+        <translation>Gebruiker</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="335"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation type="unfinished">U kan hier uw eigen namen/verwijzingen / waarden voor de titelhoek definiëren. Voorbeeld: associëren de naam &quot;volta&quot; en de waarde &quot;1745&quot; vervangt % {volta} door 1745 in de titelhoek.</translation>
+        <translation>U kan hier uw eigen namen/verwijzingen / waarden voor de titelhoek definiëren. Voorbeeld: associëren de naam &quot;volta&quot; en de waarde &quot;1745&quot; vervangt % {volta} door 1745 in de titelhoek.</translation>
     </message>
 </context>
 <context>
@@ -8705,7 +8973,14 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %LM : la localisation
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>U kunt een aangepast label definiëren voor foliorapporten.
+Maak uw eigen tekst met behulp van de volgende variabelen:
+% f: de foliopositie in het project
+% F: het folionummer
+% M: de installatie
+% LM: de locatie
+% l: het regelnummer
+% c: het kolomnummer</translation>
     </message>
 </context>
 <context>
@@ -8713,167 +8988,167 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Vorm</translation>
+        <translation>Vorm</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="78"/>
         <source>Aller à la correspondance suivante</source>
-        <translation type="unfinished"></translation>
+        <translation>Ga naar de volgende correspondentie</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="112"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Afficher les options avancées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt; &lt;head /&gt; &lt;body&gt; &lt;p&gt; Geavanceerde opties weergeven &lt;/ p&gt; &lt;/ body&gt; &lt;/ html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="95"/>
         <source>Aller à la correspondance précédente</source>
-        <translation type="unfinished"></translation>
+        <translation>Ga naar de vorige correspondentie</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="27"/>
         <source>Quitter</source>
-        <translation type="unfinished"></translation>
+        <translation>Afsluiten</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="175"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les éléments&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt; &lt;head /&gt; &lt;body&gt; &lt;p&gt; Definieer eigenschappen om te vervangen in elementen &lt;/ p&gt; &lt;/ body&gt; &lt;/ html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="152"/>
         <source>Champ texte de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst veld van schema bladzijde</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="185"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les conducteurs&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les conducteurs&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="162"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les folios&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt; &lt;head /&gt; &lt;body&gt; &lt;p&gt; Definieer eigenschappen om te vervangen in folio&apos;s &lt;/ p&gt; &lt;/ body&gt; &lt;/ html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="165"/>
         <source>Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Schema bladzijde</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="51"/>
         <source>Texte brut</source>
-        <translation type="unfinished"></translation>
+        <translation>Ruwe tekst</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="44"/>
         <source>Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Mode</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="56"/>
         <source>Mots entiers</source>
-        <translation type="unfinished"></translation>
+        <translation>Volledige woorden</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="64"/>
         <source>Sensible à la casse</source>
-        <translation type="unfinished"></translation>
+        <translation>Hoofdletter gevoelig</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="198"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer la correspondance sélectionnée&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt; &lt;head /&gt; &lt;body&gt; &lt;p&gt; Vervang de geselecteerde match &lt;/ p&gt; &lt;/ body&gt; &lt;/ html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="211"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer les correspondances cochées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt; &lt;head /&gt; &lt;body&gt; &lt;p&gt; Vink de overeenkomende overeenkomsten aan &lt;/ p&gt; &lt;/ body&gt; &lt;/ html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="242"/>
         <source>avancé</source>
-        <translation type="unfinished"></translation>
+        <translation>Naar voor</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="178"/>
         <source>Élément</source>
-        <translation type="unfinished">Element</translation>
+        <translation>Element</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="188"/>
         <source>Conducteur</source>
-        <translation type="unfinished">Geleider</translation>
+        <translation>Geleider</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="71"/>
         <source>Remplacer :</source>
-        <translation type="unfinished"></translation>
+        <translation>Vervang :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="201"/>
         <source>Remplacer</source>
-        <translation type="unfinished">Vervang</translation>
+        <translation>Vervang</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="214"/>
         <source>Tout remplacer</source>
-        <translation type="unfinished"></translation>
+        <translation>Alles vervangen</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="20"/>
         <source>Chercher :</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoeken :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="135"/>
         <source>Actualiser</source>
-        <translation type="unfinished"></translation>
+        <translation>Actualiseren</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="140"/>
         <source>Correspondance :</source>
-        <translation type="unfinished"></translation>
+        <translation>Corrspondentie :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="146"/>
         <source>Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Schema baldzijden</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="152"/>
         <source>Champs texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst veld</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="158"/>
         <source>Eléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementen</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="163"/>
         <source>Eléments simple</source>
-        <translation type="unfinished"></translation>
+        <translation>Simpel element</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="169"/>
         <source>Eléments maître</source>
-        <translation type="unfinished"></translation>
+        <translation>Master element</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="175"/>
         <source>Eléments esclave</source>
-        <translation type="unfinished"></translation>
+        <translation>Slave element</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="181"/>
         <source>Eléments report de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Schema rapport element</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="187"/>
         <source>Eléments bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Klem element</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="968"/>
@@ -8901,17 +9176,17 @@ Créer votre propre texte en vous aidant des variables suivantes :
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1207"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1208"/>
         <source> [édité]</source>
-        <translation type="unfinished"></translation>
+        <translation>[bewerken]</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="195"/>
         <source>Conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Geleiders</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="340"/>
         <source>Inconnue</source>
-        <translation type="unfinished"></translation>
+        <translation>Onbekend</translation>
     </message>
 </context>
 <context>
@@ -8997,7 +9272,17 @@ Si le chiffre défini dans le champ Valeur possède moins de digits que le type 
 Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hier kunt u bepalen hoe de nieuwe folio&apos;s worden genummerd.
+-Een nummering bestaat uit een minimale variabele.
+-U kunt een kiesvariabele toevoegen of verwijderen met de knoppen - en +.
+Een nummeringsvariabele bestaat uit: een type, een waarde en een toename.
+
+-de typen &quot;Cijfer 1&quot;, &quot;Cijfer 01&quot; en &quot;Cijfer 001&quot; vertegenwoordigen een numeriek type dat is gedefinieerd in het veld &quot;Waarde&quot;, waarbij elk nieuw folio wordt verhoogd met de waarde van het veld &quot;Verhoging&quot;.
+- &quot;Cijfer 01&quot; en &quot;Cijfer 001&quot; worden in het diagram respectievelijk weergegeven met minimaal twee en drie cijfers.
+Als het cijfer dat is gedefinieerd in het veld Waarde minder cijfers heeft dan het gekozen type, wordt het voorafgegaan door een of twee nullen om het type te respecteren.
+
+-Type &quot;Tekst&quot;, staat voor een vaste tekst.
+Het veld &quot;Verhoging&quot; wordt niet gebruikt.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="207"/>
@@ -9019,7 +9304,23 @@ Les autres champs ne sont pas utilisés.
 -Le type &quot;Folio&quot; représente le nom du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the conductor autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hier kunt u bepalen hoe nieuwe stuurprogramma&apos;s worden genummerd.
+-Een nummering bestaat uit een minimale variabele.
+-U kunt een kiesvariabele toevoegen of verwijderen met de knoppen - en +.
+Een nummeringsvariabele bestaat uit: een type, een waarde en een toename.
+
+de typen &quot;Cijfer 1&quot;, &quot;Cijfer 01&quot; en &quot;Cijfer 001&quot; vertegenwoordigen een numeriek type dat is gedefinieerd in het veld &quot;Waarde&quot;, waarbij elke nieuwe bestuurder wordt verhoogd met de waarde van het veld &quot;Verhoging&quot;.
+- &quot;Cijfer 01&quot; en &quot;Cijfer 001&quot; worden in het diagram respectievelijk weergegeven met minimaal twee en drie cijfers.
+Als het cijfer dat is gedefinieerd in het veld Waarde minder cijfers heeft dan het gekozen type, wordt het voorafgegaan door een of twee nullen om het type te respecteren.
+
+-Type &quot;Tekst&quot;, staat voor een vaste tekst.
+Het veld &quot;Verhoging&quot; wordt niet gebruikt.
+
+-Het type &quot;folio&quot; vertegenwoordigt het nummer van het huidige folio.
+De andere velden worden niet gebruikt.
+
+- Het type &quot;Folio&quot; vertegenwoordigt de naam van het huidige folio.
+De andere velden worden niet gebruikt.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="206"/>
@@ -9073,7 +9374,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="110"/>
         <source>Tiret custom</source>
-        <translation type="unfinished"></translation>
+        <translation>Aangepast lijn</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="26"/>
@@ -9206,12 +9507,12 @@ Positie vergrendelen</translation>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="274"/>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="306"/>
         <source>Modifier une forme simple</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzig een simple vorm</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="318"/>
         <source>Modifier les propriétés d&apos;une forme simple</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzig de eigenschappen van een simple vorm</translation>
     </message>
 </context>
 <context>
@@ -9586,18 +9887,18 @@ Positie vergrendelen</translation>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="173"/>
         <source>Pivoter un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Draai een tekst veld</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="185"/>
         <location filename="../sources/editor/ui/texteditor.cpp" line="207"/>
         <source>Modifier la police d&apos;un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Wijzig lettertype van een tekst</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="221"/>
         <source>Modifier la couleur d&apos;un texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Bewerken tekst kleur</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="152"/>
@@ -9608,42 +9909,42 @@ Positie vergrendelen</translation>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Vorm</translation>
+        <translation>Vorm</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="30"/>
         <source>Y :</source>
-        <translation type="unfinished"></translation>
+        <translation>Y :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="37"/>
         <source>Police :</source>
-        <translation type="unfinished">Font:</translation>
+        <translation>Font:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="47"/>
         <source>°</source>
-        <translation type="unfinished"></translation>
+        <translation>°</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="57"/>
         <source>Rotation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Rotatie :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="74"/>
         <source>X :</source>
-        <translation type="unfinished"></translation>
+        <translation>X :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="84"/>
         <source>Entrer votre texte ici</source>
-        <translation type="unfinished"></translation>
+        <translation>Geef hier uw tekst in</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.ui" line="97"/>
         <source>Couleur :</source>
-        <translation type="unfinished">Kleur:</translation>
+        <translation>Kleur:</translation>
     </message>
 </context>
 <context>
@@ -9702,7 +10003,7 @@ Positie vergrendelen</translation>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="297"/>
         <source>Dupliquer et éditer ce modèle</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Copieren en bewerken model</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="302"/>
@@ -9738,12 +10039,12 @@ Positie vergrendelen</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="230"/>
         <source>Indice Rev:</source>
-        <translation type="unfinished"></translation>
+        <translation>Revitie:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="244"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disponible en tant que %plant pour les modèles de cartouches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt; &lt;head /&gt; &lt;body&gt; &lt;p&gt; Beschikbaar als% plant voor etiket sjablonen &lt;/ p&gt; &lt;/ body&gt; &lt;/ html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="279"/>
@@ -9852,7 +10153,7 @@ De volgende variabelen kunnen gebruikt worden:
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="383"/>
         <source>Localisation:</source>
-        <translation type="unfinished"></translation>
+        <translation>Locatie :</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="406"/>
@@ -10008,7 +10309,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="423"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : numéro du folio précédent&lt;/li&gt;&lt;li&gt;%{next-folio-num} : numéro du folio suivant&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Standaard zijn de volgende variabelen beschikbaar: &lt;ul&gt; &lt;li&gt;% {author}: folio author &lt;/ li&gt; &lt;li&gt;% {date}: folio date &lt;/ li&gt; &lt;li&gt;% {title}: foliotitel &lt;/ li&gt; &lt;li&gt;% {bestandsnaam}: projectbestandsnaam &lt;/ li&gt; &lt;li&gt;% {plant}: naam van de installatie (=) waarin het folio zich bevindt &lt;/ li&gt; &lt;li&gt;% {locmach}: naam van de locatie (+) waarin het folio &lt;/ li&gt; &lt;li&gt;% {indexrev} wordt gevonden: indexrevisie van het folio &lt;/ li&gt; &lt;li&gt;% {version}: softwareversie &lt;/ li&gt; &lt;li&gt;% {folio}: folionummer &lt;/ li&gt; &lt;li&gt;% {folio-id}: foliopositie in het project &lt;/ li&gt; &lt;li&gt;% {folio-totaal }: totaal aantal folio&apos;s in het project &lt;/ li&gt; &lt;li&gt;% {vorig-folio-nummer}: nummer van het vorige folio &lt;/ li&gt; &lt;li&gt;% {volgend-folio-nummer}: nummer van het volgende folio &lt; / li&gt; &lt;li&gt;% {projecttitle}: projecttitel &lt;/ li&gt; &lt;li&gt;% {projectpath}: project path &lt;/ li&gt; &lt;li&gt;% {projectfilename}: bestandsnaam &lt;/ li&gt; &lt;li &gt;% {savedate}: datum van bestand opslaan &lt;/ li&gt; &lt;li&gt;% {savetime}: tijd van bestand opslaan &lt;/ li&gt; &lt;li&gt;% {savefilename}: naam van de fi geregistreerde le &lt;/ li&gt; &lt;li&gt;% {savedfilepath}: opgeslagen bestandspad &lt;/ li&gt; &lt;/ ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="455"/>
@@ -10398,42 +10699,47 @@ Maximale lengte : %2px
         <translation>Standaard - Pas in XREf hoogte</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="92"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="90"/>
+        <source>XRef slave position</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="106"/>
         <source>Affiche&amp;r en contacts</source>
         <translation>Wee&amp;rgeven in contacten</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="99"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="113"/>
         <source>Afficher en croix</source>
         <translation>Weergeven in kruisverwijzing</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="112"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="126"/>
         <source>Label des références croisées</source>
         <translation>Weergave kruisverwijzing</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="132"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="146"/>
         <source>Maitre</source>
         <translation>Master</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="142"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="156"/>
         <source>%f-%l%c</source>
         <translation>%f-%l%c</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="165"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="179"/>
         <source>Esclave</source>
         <translation>Slave</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="175"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="189"/>
         <source>(%f-%l%c)</source>
         <translation>%f-%l%c</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="184"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="198"/>
         <source>Créer votre propre texte en vous aidant des variables suivantes :
 %f : le numéro de folio 
 %F: le label de folio
@@ -10450,54 +10756,79 @@ Maximale lengte : %2px
 % LM: Location</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="205"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="219"/>
         <source>Option d&apos;affichage en croix</source>
         <translation>Eigenschappen kruisverwijzing</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="211"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="225"/>
         <source>Afficher les contacts de puissance dans la croix</source>
         <translation>Tonen de vermogen contacten in het kruis</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="220"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="234"/>
         <source>Préfixe des contacts de puissance :</source>
         <translation>Voorvoegsel voor vermogen contact :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="227"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="241"/>
         <source>Préfixe des contacts temporisés :</source>
         <translation>Voorvoegsel voor tijdsghestuurd contact :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="240"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="254"/>
         <source>Préfixe des contacts inverseurs :</source>
         <translation>Voorvoegsel voor omkeer contact :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="96"/>
+        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="97"/>
         <source>Bobine</source>
         <translation>Spoel</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="97"/>
+        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="98"/>
         <source>Organe de protection</source>
         <translation>Beveiliging</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="98"/>
+        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="99"/>
         <source>Commutateur / bouton</source>
         <translation>Schakelaar / drukknop</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="100"/>
+        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="101"/>
         <source>En bas de page</source>
         <translation>Onder aan de bladzijde</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="101"/>
+        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="102"/>
         <source>Sous le label de l&apos;élément</source>
         <translation>Naast element code</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="104"/>
+        <source>Top</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="105"/>
+        <source>Bottom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="106"/>
+        <source>Left</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="107"/>
+        <source>Rigth</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.cpp" line="108"/>
+        <source>Text alignment</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -10675,52 +11006,52 @@ Maximale lengte : %2px
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="14"/>
         <source>Rechercher/Remplacer avancé</source>
-        <translation type="unfinished"></translation>
+        <translation>Geavanceerd zoeken en vervangen</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="27"/>
         <source>par :</source>
-        <translation type="unfinished"></translation>
+        <translation>Van :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="34"/>
         <source>Remplacer :</source>
-        <translation type="unfinished"></translation>
+        <translation>Vervang :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="51"/>
         <source>Qui :</source>
-        <translation type="unfinished"></translation>
+        <translation>Wie :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="58"/>
         <source>Texte ou expression régulière</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst of een reguliere expresie</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="69"/>
         <source>Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Schema bladzijde</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="74"/>
         <source>Élément</source>
-        <translation type="unfinished">Element</translation>
+        <translation>Element</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="79"/>
         <source>Conducteur</source>
-        <translation type="unfinished">Geleider</translation>
+        <translation>Geleider</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="84"/>
         <source>Texte indépendant</source>
-        <translation type="unfinished"></translation>
+        <translation>Onafhankelijkle tekst</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="92"/>
         <source>Quoi :</source>
-        <translation type="unfinished"></translation>
+        <translation>Wat :</translation>
     </message>
 </context>
 </TS>

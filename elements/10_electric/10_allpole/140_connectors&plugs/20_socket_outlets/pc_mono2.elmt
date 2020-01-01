@@ -1,0 +1,49 @@
+<definition height="50" hotspot_x="15" hotspot_y="23" orientation="dyyy" link_type="simple" type="element" version="0.80" width="30">
+    <uuid uuid="{f09c1826-5deb-4e5d-a565-992b010a8007}"/>
+    <names>
+        <name lang="it">Presa monofase</name>
+        <name lang="nl">Contact AC + aarde</name>
+        <name lang="pl">Gniazdo wtyczkowe</name>
+        <name lang="cs">Zásuvka jednopólová</name>
+        <name lang="de">Steckdose 3-polig</name>
+        <name lang="ar">مقبس أحادي الوجه</name>
+        <name lang="fr">PC mono 2P+ Terre</name>
+        <name lang="en">Outlet 3 poles</name>
+        <name lang="es">Toma corriente 3P</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="designation" show="1"></elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text z="1" text_from="ElementInfo" rotation="0" text_width="-1" Valignment="AlignTop" frame="false" x="13" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-16" uuid="{9a66ab1b-c9d8-4de6-a786-a16ba182d28f}" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line end1="none" x1="0" x2="0" end2="none" length1="1.5" length2="1.5" antialias="false" y1="9" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="18"/>
+        <circle x="-10.0499" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20.0998" y="-10.0499"/>
+        <line end1="none" x1="-6" x2="-6" end2="none" length1="1.5" length2="1.5" antialias="false" y1="-8" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-14"/>
+        <circle x="-6" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4" y="-6"/>
+        <circle x="-2" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="4" y="4"/>
+        <line end1="none" x1="6" x2="6" end2="none" length1="1.5" length2="1.5" antialias="false" y1="-8" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-14"/>
+        <circle x="2" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4" y="-6"/>
+        <line end1="none" x1="0" x2="0" end2="none" length1="1.5" length2="1.5" antialias="false" y1="5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="3"/>
+        <line end1="none" x1="1.3" x2="-1.3" end2="none" length1="1.5" length2="1.5" antialias="false" y1="1" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="1"/>
+        <line end1="none" x1="-2.3" x2="2.3" end2="none" length1="1.5" length2="1.5" antialias="false" y1="2.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="2.5"/>
+        <line end1="none" x1="-0.6" x2="0.6" end2="none" length1="1.5" length2="1.5" antialias="false" y1="-0.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-0.5"/>
+        <terminal x="6" orientation="n" y="-15"/>
+        <terminal x="-6" orientation="n" y="-15"/>
+        <terminal x="0" orientation="s" y="17"/>
+    </description>
+</definition>

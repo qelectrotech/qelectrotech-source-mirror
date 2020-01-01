@@ -91,6 +91,8 @@ class CustomElementGraphicPart : public QGraphicsObject, public CustomElementPar
 		QVariant property    (const char *name) const override                  {return QObject::property(name);}
 
 		virtual QPainterPath shadowShape ()const = 0;
+        virtual void setHandlerColor(QPointF /*pos*/, const QColor &/*color*/) {}
+        virtual void resetAllHandlerColor() {}
 
 	protected:
 		void stylesToXml  (QDomElement &) const;

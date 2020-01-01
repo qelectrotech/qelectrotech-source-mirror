@@ -1,0 +1,59 @@
+<definition hotspot_y="46" orientation="dyyy" link_type="simple" hotspot_x="15" height="220" type="element" width="30" version="0.80">
+    <names>
+        <name lang="en">2102-1204</name>
+        <name lang="fr">2102-1204</name>
+        <name lang="de">2102-1204</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <polygon x4="-9.34" y4="171.511" y2="-43.982" x1="-9.34" x3="8.84" y1="-43.982" x2="8.84" y3="171.511" style="line-style:normal;line-weight:thin;filling:blue;color:black" antialias="false"/>
+        <ellipse x="-8.67" y="163.9" height="7" width="16.74" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>
+        <polygon x5="-6.677" y7="163.021" x15="7.797" y23="166.689" y16="161.163" y25="167.239" x9="-8.256" x4="-5.605" antialias="false" y14="126.02" x3="-4.509" y2="166.967" y19="163.945" y11="126.02" x12="-6.62" x26="0.418" y27="167.46" x21="5.695" x27="-0.869" y15="126.02" x1="-2.176" x8="-8.191" y24="167.03" x10="-8.256" y9="161.163" x7="-8.00923" y22="166.195" y13="85.9399" y6="163.882" x14="6.093" y5="165.127" x6="-7.659" y8="162.092" y3="166.48" y18="163.098" x2="-3.312" y12="85.9399" y21="165.519" x22="4.607" x18="7.513" x19="7.168" x24="2.675" x13="6.166" y20="164.647" x16="7.797" x20="6.714" x25="1.92" x23="3.596" y10="126.02" y1="167.283" y4="165.873" x11="-6.551" y17="162.156" style="line-style:normal;line-weight:thin;filling:orange;color:black" x17="7.724" y26="167.46"/>
+        <rect x="-7.925" y="27.6833" rx="0" height="14.7" ry="0" width="15.5965" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>
+        <polygon y2="-16.525" x1="8.646" y1="-16.525" x2="-9.16" style="line-style:normal;line-weight:thin;filling:gray;color:black" closed="false" antialias="false"/>
+        <rect x="-7.854" y="8.8833" rx="0" height="14.7" ry="0" width="15.5965" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>
+        <rect x="-6.649" y="-14.925" rx="0" height="10.2" ry="0" width="12.3067" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>
+        <line length2="1.5" y2="32.2848" end1="none" x1="-7.925" y1="27.6833" length1="1.5" x2="-4.712" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <ellipse x="-8.667" y="-34.475" height="17" width="16.7372" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>
+        <line length2="1.5" y2="13.4848" end1="none" x1="-7.854" y1="8.8833" length1="1.5" x2="-4.641" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <rect x="-6.45" y="-2.8703" rx="0" height="7.94531" ry="0" width="10.8167" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>
+        <polygon y2="5.005" x1="8.772" y1="5.005" x2="-8.873" style="line-style:normal;line-weight:thin;filling:gray;color:black" closed="false" antialias="false"/>
+        <line length2="1.5" y2="27.6833" end1="none" x1="4.467" y1="32.2833" length1="1.5" x2="7.671" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length2="1.5" y2="8.8833" end1="none" x1="4.538" y1="13.4833" length1="1.5" x2="7.742" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <polygon y2="-2.825" x1="8.517" y1="-2.825" x2="-9.144" style="line-style:normal;line-weight:thin;filling:gray;color:black" closed="false" antialias="false"/>
+        <polygon y2="-39.265" x1="8.668" y1="-39.265" x2="-9.26" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
+        <line length2="1.5" y2="23.5833" end1="none" x1="4.538" y1="19.0633" length1="1.5" x2="7.742" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length2="1.5" y2="42.3833" end1="none" x1="4.467" y1="37.8633" length1="1.5" x2="7.671" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length2="1.5" y2="19.0657" end1="none" x1="-7.854" y1="23.5833" length1="1.5" x2="-4.637" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <line length2="1.5" y2="37.8657" end1="none" x1="-7.925" y1="42.3833" length1="1.5" x2="-4.708" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
+        <rect x="-4.649" y="13.4833" rx="0" height="5.6" ry="0" width="9.18697" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>
+        <rect x="-4.72" y="32.2833" rx="0" height="5.6" ry="0" width="9.18697" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>
+        <polygon y2="8.9233" x1="-9.321" y1="8.9233" x2="8.861" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
+        <polygon y2="23.5833" x1="-9.321" y1="23.5833" x2="8.861" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
+        <polygon y2="27.7733" x1="-9.321" y1="27.7733" x2="8.861" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
+        <polygon y2="42.4333" x1="-9.321" y1="42.4333" x2="8.861" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
+        <polygon y2="43.52" x1="8.87" y1="43.52" x2="-9.33" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
+        <polygon y2="7.82" x1="8.87" y1="7.82" x2="-9.33" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
+        <polygon y2="-42.35" x1="8.87" y1="-42.35" x2="-9.33" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
+        <polygon y2="-42.2" x1="8.87" y1="-42.2" x2="-9.33" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
+        <polygon y2="160.56" x1="8.87" y1="160.43" x2="8.87" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
+        <polygon y2="72.23" x1="8.87" y1="72.23" x2="-9.33" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
+        <polygon y2="57.51" x1="8.87" y1="57.51" x2="-9.33" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
+        <polygon y2="54.37" x1="8.87" y1="54.37" x2="-9.33" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
+        <polygon y2="75.37" x1="8.87" y1="75.37" x2="-9.33" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
+        <polygon y2="85.75" x1="8.87" y1="85.75" x2="-9.33" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
+        <polygon y2="47.2" x1="-9.33" y1="47.2" x2="8.87" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
+        <polygon y2="82.55" x1="8.87" y1="82.55" x2="-9.33" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" antialias="false"/>
+        <circle diameter="7.4" x="-3.85" y="135.6" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false"/>
+        <dynamic_text text_width="-1" x="9.6" uuid="{96477b97-cb32-430e-b7f3-d40524511543}" Valignment="AlignVCenter" y="61" frame="false" Halignment="AlignHCenter" z="67" rotation="90" font="Sans Serif,7,-1,5,25,0,0,0,0,0" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+    </description>
+</definition>

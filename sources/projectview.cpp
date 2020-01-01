@@ -320,8 +320,8 @@ QString ProjectView::askUserForFilePath(bool assign) {
 	// if no filepath is provided, return an empty string
 	if (filepath.isEmpty()) return(filepath);
 
-	// if the name does not end with the .qet extension, append it
-	if (!filepath.endsWith(".qet", Qt::CaseInsensitive)) filepath += ".qet";
+//	// if the name does not end with the .qet extension, append it
+//	if (!filepath.endsWith(".qet", Qt::CaseInsensitive)) filepath += ".qet";
 
 	if (assign) {
 		// assign the provided filepath to the currently edited project
@@ -362,7 +362,8 @@ void ProjectView::addNewDiagram() {
  */
 void ProjectView::addNewDiagramFolioList() {
 	if (m_project -> isReadOnly()) return;
-	int i = 1; //< Each new diagram is added  to the end of the project.
+	QSettings settings;
+	int i = (settings.value("projectview/foliolist_position").toInt() -1); //< Each new diagram is added  to the end of the project.
 			   //< We use @i to move the folio list at second position in the project
 	foreach (Diagram *d, m_project -> addNewDiagramFolioList()) {
 		DiagramView *new_diagram_view = new DiagramView(d);
@@ -370,6 +371,7 @@ void ProjectView::addNewDiagramFolioList() {
 		showDiagram(new_diagram_view);
 		m_tab->tabBar()->moveTab(diagram_views().size()-1, i);
 		i++;
+		m_project->setModified(true);
 	}
 }
 
@@ -388,7 +390,7 @@ void ProjectView::addDiagram(DiagramView *diagram_view)
 		return;
 
 		// Add new tab for the diagram
-    m_tab->addTab(diagram_view, QET::Icons::Diagram, diagram_view -> title());
+	m_tab->addTab(diagram_view, QET::Icons::Diagram, diagram_view -> title());
 	diagram_view->setFrameStyle(QFrame::Plain | QFrame::NoFrame);
 
 	m_diagram_view_list << diagram_view;
@@ -444,12 +446,8 @@ void ProjectView::removeDiagram(DiagramView *diagram_view)
 	delete diagram_view;
 
 	emit(diagramRemoved(diagram_view));
-	
-        //Make definitve the withdrawal
-	m_project -> write();
     updateAllTabsTitle();
     m_project -> setModified(true);
-
 }
 
 /**
@@ -662,7 +660,7 @@ void ProjectView::exportProject() {
 	if (!m_project) return;
 
 	ExportDialog ed(m_project, parentWidget());
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
 	ed.setWindowFlags(Qt::Sheet);
 #endif
 	ed.exec();
@@ -749,7 +747,7 @@ int ProjectView::cleanProject() {
 	clean_categories -> setChecked(true);
 
 	QDialog clean_dialog(parentWidget());
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
 	clean_dialog.setWindowFlags(Qt::Sheet);
 #endif
 
@@ -808,7 +806,11 @@ void ProjectView::initWidgets() {
 	fallback_label_ -> setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
 
 	// initialize tabs
+#ifdef Q_OS_MACOS
+	m_tab = new WheelEnabledTabBar(this);
+#else
 	m_tab = new QTabWidget(this);
+#endif
 	m_tab -> setMovable(true);
 
 	QToolButton *add_new_diagram_button = new QToolButton;
@@ -818,7 +820,7 @@ void ProjectView::initWidgets() {
 
 	connect(m_tab, SIGNAL(currentChanged(int)), this, SLOT(tabChanged(int)));
 	connect(m_tab, SIGNAL(tabBarDoubleClicked(int)), this, SLOT(tabDoubleClicked(int)));
-	connect(m_tab->tabBar(), SIGNAL(tabMoved(int, int)), this, SLOT(tabMoved(int, int)));
+	connect(m_tab->tabBar(), SIGNAL(tabMoved(int, int)), this, SLOT(tabMoved(int, int)), Qt::QueuedConnection);
 
 	fallback_widget_ -> setVisible(false);
 	m_tab -> setVisible(false);
@@ -832,7 +834,7 @@ void ProjectView::initLayout() {
 	fallback_widget_layout_ -> addWidget(fallback_label_);
 
 	layout_ = new QVBoxLayout(this);
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
 	layout_ -> setContentsMargins(0, 8, 0, 0);
 #else
 	layout_ -> setContentsMargins(0, 0, 0, 0);
@@ -876,13 +878,17 @@ void ProjectView::loadDiagrams()
 		addDiagram(sv);
 	}
 
-	this->currentDiagram()->diagram()->loadElmtFolioSeq();
-	this->currentDiagram()->diagram()->loadCndFolioSeq();
-
-	// If project have the folios list, move it at the beginning of the project
+    if (DiagramView *dv = currentDiagram())
+    {
+        dv->diagram()->loadElmtFolioSeq();
+        dv->diagram()->loadCndFolioSeq();
+    }
+	
+	QSettings settings;
+        // If project have the folios list, move it at the beginning of the project
 	if (m_project -> getFolioSheetsQuantity()) {
 		for (int i = 0; i < m_project->getFolioSheetsQuantity(); i++)
-		m_tab -> tabBar() -> moveTab(diagram_views().size()-1, + 1);
+		m_tab -> tabBar() -> moveTab(diagram_views().size()-1, + (settings.value("projectview/foliolist_position").toInt() -1));
 		m_project->setModified(false);
 	}
 }

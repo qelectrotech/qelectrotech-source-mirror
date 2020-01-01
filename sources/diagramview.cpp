@@ -942,7 +942,7 @@ void DiagramView::editConductorColor(Conductor *edited_conductor)
 		// prepare a color dialog showing the initial conductor color
 	QColorDialog *color_dialog = new QColorDialog(this);
 	color_dialog -> setWindowTitle(tr("Choisir la nouvelle couleur de ce conducteur"));
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
 	color_dialog -> setWindowFlags(Qt::Sheet);
 #endif
 	color_dialog -> setCurrentColor(initial_properties.color);

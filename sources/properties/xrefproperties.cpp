@@ -17,6 +17,7 @@
 */
 #include "xrefproperties.h"
 #include "qetapp.h"
+#include <QMetaEnum>
 
 /**
  * @brief XRefProperties::XRefProperties
@@ -31,6 +32,7 @@ XRefProperties::XRefProperties()
 	m_master_label = "%f-%l%c";
 	m_slave_label = "(%f-%l%c)";
 	m_offset = 0;
+	m_xref_pos = Qt::AlignBottom;
 }
 
 /**
@@ -51,6 +53,11 @@ void XRefProperties::toSettings(QSettings &settings, const QString prefix) const
 	settings.setValue(prefix + "master_label", master_label);
 	QString slave_label = m_slave_label;
 	settings.setValue(prefix + "slave_label", slave_label);
+
+ 
+	QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
+	settings.setValue(prefix + "xrefpos",  var.valueToKey(m_xref_pos));
+
 	foreach (QString key, m_prefix.keys()) {
 		settings.setValue(prefix + key + "prefix", m_prefix.value(key));
 	}
@@ -71,6 +78,10 @@ void XRefProperties::fromSettings(const QSettings &settings, const QString prefi
 	m_offset = settings.value(prefix + "offset", "0").toInt();
 	m_master_label = settings.value(prefix + "master_label", "%f-%l%c").toString();
 	m_slave_label = settings.value(prefix + "slave_label", "(%f-%l%c)").toString();
+
+	QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
+	m_xref_pos = Qt::AlignmentFlag(var.keyToValue((settings.value(prefix + "xrefpos").toString()).toStdString().data()));
+
 	foreach (QString key, m_prefix_keys) {
 		m_prefix.insert(key, settings.value(prefix + key + "prefix").toString());
 	}
@@ -87,6 +98,12 @@ void XRefProperties::toXml(QDomElement &xml_element) const {
 	xml_element.setAttribute("displayhas", display);
 	QString snap = m_snap_to == Bottom? "bottom" : "label";
 	xml_element.setAttribute("snapto", snap);
+
+	QString xrefpos;
+	
+	QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
+	xml_element.setAttribute("xrefpos",  var.valueToKey(m_xref_pos));
+
 	int offset = m_offset;
 	xml_element.setAttribute("offset", QString::number(offset));
 	QString master_label = m_master_label;
@@ -109,6 +126,16 @@ void XRefProperties::fromXml(const QDomElement &xml_element) {
 	display == "cross"? m_display = Cross : m_display = Contacts;
 	QString snap = xml_element.attribute("snapto", "label");
 	snap == "bottom"? m_snap_to = Bottom : m_snap_to = Label;
+
+	QString xrefpos = xml_element.attribute("xrefpos","Left");
+
+	QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
+
+	if(xml_element.hasAttribute("xrefpos"))
+		m_xref_pos = Qt::AlignmentFlag(var.keyToValue(xml_element.attribute("xrefpos").toStdString().data()));
+	else
+		m_xref_pos = Qt::AlignBottom;
+
 	m_offset = xml_element.attribute("offset", "0").toInt();
 	m_master_label = xml_element.attribute("master_label", "%f-%l%c");
 	m_slave_label = xml_element.attribute("slave_label","(%f-%l%c)");
@@ -149,8 +176,8 @@ bool XRefProperties::operator ==(const XRefProperties &xrp) const{
 			m_snap_to == xrp.m_snap_to &&
 			m_prefix == xrp.m_prefix &&
 			m_master_label == xrp.m_master_label &&
-			m_slave_label == xrp.m_slave_label &&
-			m_offset == xrp.m_offset);
+			 m_offset == xrp.m_offset &&
+			m_xref_pos == xrp.m_xref_pos );
 }
 
 bool XRefProperties::operator !=(const XRefProperties &xrp) const {

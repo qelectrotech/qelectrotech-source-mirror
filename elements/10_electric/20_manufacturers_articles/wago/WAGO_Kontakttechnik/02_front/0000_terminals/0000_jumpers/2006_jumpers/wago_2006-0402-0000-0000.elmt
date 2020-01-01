@@ -1,0 +1,18 @@
+<definition height="20" width="60" version="0.80" type="element" hotspot_y="10" orientation="dyyy" hotspot_x="17" link_type="simple">
+    <names>
+        <name lang="en">2006-402</name>
+        <name lang="fr">2006-402</name>
+        <name lang="de">2006-402</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <polygon style="line-style:normal;line-weight:thin;filling:white;color:black" x1="-11.2" x2="36.63" y3="7.05" y4="7.05" antialias="false" x4="-11.2" y1="-7.13" y2="-7.13" x3="36.63"/>
+        <text text="2006-402" color="#000000" x="-1" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="2" rotation="0"/>
+    </description>
+</definition>

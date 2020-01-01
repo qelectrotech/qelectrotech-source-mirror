@@ -38,7 +38,7 @@ class RectangleEditor : public ElementItemEditor
 	
 	public:
 		explicit RectangleEditor(QETElementEditor *editor, PartRectangle *rect = nullptr, QWidget *parent = nullptr);
-		~RectangleEditor();
+        ~RectangleEditor() override;
 	
 		bool setPart(CustomElementPart *part) override;
 		CustomElementPart *currentPart() const override;

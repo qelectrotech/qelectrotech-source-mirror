@@ -889,12 +889,9 @@ QETResult QETProject::write()
 	if (isReadOnly() && !QFileInfo(m_file_path).isWritable())
 		return(QString("the file %1 was opened read-only and thus will not be written").arg(m_file_path));
 
-		//Get the project in xml
-	QDomDocument xml_project;
-	xml_project.appendChild(xml_project.importNode(toXml().documentElement(), true));
-
+    QDomDocument xml_project(toXml());
 	QString error_message;
-	if (!QET::writeXmlFile(xml_project, m_file_path, &error_message)) return(error_message);
+    if (!QET::writeXmlFile(xml_project, m_file_path, &error_message)) return(error_message);
 	
 	//title block variables should be updated after file save dialog is confirmed, before file is saved.
 	m_project_properties.addValue("saveddate", QDate::currentDate().toString(Qt::SystemLocaleShortDate));
@@ -1679,8 +1676,7 @@ void QETProject::writeBackup()
 		return;
 	}
 
-	QDomDocument xml_project;
-	xml_project.appendChild(xml_project.importNode(toXml().documentElement(), true));
+    QDomDocument xml_project(toXml());
 	QET::writeToFile(xml_project, m_backup_file);
 }
 

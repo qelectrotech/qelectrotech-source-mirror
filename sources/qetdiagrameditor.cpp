@@ -48,12 +48,14 @@
 #include "diagramcommands.h"
 #include "dialogwaiting.h"
 #include "addelementtextcommand.h"
+#include "conductornumexport.h"
 
 #include <QMessageBox>
 #include <QStandardPaths>
 #include <KAutoSaveFile>
 
 #include "elementscollectionmodel.h"
+#include "bomexportdialog.h"
 
 
 /**
@@ -391,17 +393,27 @@ void QETDiagramEditor::setUpActions()
 			current_project->addNewDiagramFolioList();
 		}
 	});
-	
 		//Export nomenclature to CSV
-	m_project_nomenclature = new QAction(QET::Icons::DocumentSpreadsheet, tr("Exporter une nomenclature"), this);
-	connect(m_project_nomenclature, &QAction::triggered, [this]() {
-		nomenclature nomencl(currentProjectView()->project(), this);
-		nomencl.saveToCSVFile();
+	m_csv_export = new QAction(QET::Icons::DocumentSpreadsheet, tr("Exporter au format CSV"), this);
+	connect(m_csv_export, &QAction::triggered, [this]() {
+        BOMExportDialog bom(currentProjectView()->project(), this);
+        bom.exec();
 	});
 	
 		//Lauch the plugin of terminal generator
 	m_project_terminalBloc = new QAction(QET::Icons::TerminalStrip, tr("Lancer le plugin de création de borniers"), this);
 	connect(m_project_terminalBloc, &QAction::triggered, this, &QETDiagramEditor::generateTerminalBlock);
+
+        //Export conductor num to csv
+    m_project_export_conductor_num = new QAction(QET::Icons::DocumentSpreadsheet, tr("Exporter la liste des noms de conducteurs"), this);
+    connect(m_project_export_conductor_num, &QAction::triggered, [this]() {
+        QETProject *project = this->currentProject();
+        if (project)
+        {
+            ConductorNumExport wne(project, this);
+            wne.toCsv();
+        }
+    });
 	
 		//MDI view style
 	m_tabbed_view_mode = new QAction(tr("en utilisant des onglets"), this);
@@ -743,7 +755,8 @@ void QETDiagramEditor::setUpMenu() {
 	menu_project -> addAction(m_clean_project);
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_project_folio_list);
-	menu_project -> addAction(m_project_nomenclature);
+	menu_project -> addAction(m_csv_export);
+    menu_project -> addAction(m_project_export_conductor_num);
 	menu_project -> addAction(m_project_terminalBloc);
 
 	main_tool_bar         -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils principale"));
@@ -1418,18 +1431,18 @@ void QETDiagramEditor::slot_updateActions()
 	m_close_file       -> setEnabled(opened_project);
 	m_save_file        -> setEnabled(opened_project);
 	m_save_file_as     -> setEnabled(opened_project);
-	m_project_edit_properties    -> setEnabled(opened_project);
+    m_project_edit_properties->setEnabled(opened_project);
+    m_project_export_conductor_num->setEnabled(opened_project);
 	//prj_terminalBloc -> setEnabled(opened_project);
 	m_rotate_texts -> setEnabled(editable_project);
 	m_project_add_diagram  -> setEnabled(editable_project);
 	m_remove_diagram_from_project  -> setEnabled(editable_project);
 	m_clean_project        -> setEnabled(editable_project);
 	m_project_folio_list  -> setEnabled(opened_project);
-	m_project_nomenclature -> setEnabled(editable_project);
+	m_csv_export -> setEnabled(editable_project);
 	m_export_diagram   -> setEnabled(opened_diagram);
 	m_print            -> setEnabled(opened_diagram);
 	m_edit_diagram_properties    -> setEnabled(opened_diagram);
-	m_project_nomenclature -> setEnabled(editable_project);
 	m_zoom_actions_group.      setEnabled(opened_diagram);
 	m_select_actions_group.    setEnabled(opened_diagram);
 	m_add_item_actions_group.  setEnabled(editable_project);
@@ -2210,7 +2223,7 @@ void QETDiagramEditor::generateTerminalBlock()
 		//connect(process, SIGNAL(errorOcurred(int error)), this, SLOT(slot_generateTerminalBlock_error()));
 		//process->start("qet_tb_generator");
 	
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
 	if (openedProjects().count()){
 		success = process->startDetached("/Library/Frameworks/Python.framework/Versions/3.5/bin/qet_tb_generator", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
 	}

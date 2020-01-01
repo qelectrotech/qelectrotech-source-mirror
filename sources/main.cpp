@@ -19,6 +19,7 @@
 #include "singleapplication.h"
 #include "qet.h"
 #include "macosxopenevent.h"
+#include <QStyleFactory>
 
 /**
  * @brief main
@@ -40,13 +41,13 @@ int main(int argc, char **argv)
 #else
     qputenv("QT_DEVICE_PIXEL_RATIO", QByteArray("auto"));
 #endif
-	
 	SingleApplication app(argc, argv, true);
 #ifdef Q_OS_MACOS
 		//Handle the opening of QET when user double click on a .qet .elmt .tbt file
 		//or drop these same files to the QET icon of the dock
 	MacOSXOpenEvent open_event;
 	app.installEventFilter(&open_event);
+	app.setStyle(QStyleFactory::create("Fusion"));
 #endif
 	
 	if (app.isSecondary())

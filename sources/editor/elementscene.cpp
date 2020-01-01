@@ -110,6 +110,7 @@ void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	}
 
 	QGraphicsScene::mouseMoveEvent(e);
+	
 }
 
 /**
@@ -209,8 +210,23 @@ void ElementScene::keyPressEvent(QKeyEvent *event)
 		QGraphicsObject *qgo = selectedItems().first()->toGraphicsObject();
 		if(qgo)
 		{
-			QPointF original_pos = qgo->pos();
-			QPointF p = qgo->pos();
+		QPointF original_pos = qgo->pos();
+		QPointF p = qgo->pos();
+		
+		if (event->modifiers() & Qt::ControlModifier) {
+			
+			int k = event->key();
+			if(k == Qt::Key_Right)
+				p.rx() += 0.1;
+			else if (k == Qt::Key_Left)
+				p.rx() -= 0.1;
+			else if (k == Qt::Key_Up)
+				p.ry() -= 0.1;
+			else if (k == Qt::Key_Down)
+				p.ry() += 0.1;
+				}
+			else {
+			
 			int k = event->key();
 			if(k == Qt::Key_Right)
 				p.rx() += 1;
@@ -220,6 +236,7 @@ void ElementScene::keyPressEvent(QKeyEvent *event)
 				p.ry() -= 1;
 			else if (k == Qt::Key_Down)
 				p.ry() += 1;
+			}
 			
 			qgo->setPos(p);
 			QPropertyUndoCommand *undo = new QPropertyUndoCommand(qgo, "pos", QVariant(original_pos), QVariant(p));
@@ -671,7 +688,7 @@ void ElementScene::slot_editAuthorInformations() {
 	// cree un dialogue
 	QDialog dialog_author(m_element_editor);
 	dialog_author.setModal(true);
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
 	dialog_author.setWindowFlags(Qt::Sheet);
 #endif
 	dialog_author.setMinimumSize(400, 260);

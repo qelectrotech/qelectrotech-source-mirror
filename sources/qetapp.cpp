@@ -92,7 +92,8 @@ QETApp::QETApp() :
 
 	setSplashScreenStep(tr("Chargement... Initialisation du cache des collections d'éléments", "splash screen caption"));
 	if (!collections_cache_) {
-		QString cache_path = QETApp::configDir() + "/elements_cache.sqlite";
+	QString cache_path = QETApp::configDir() + "/elements_cache.sqlite";
+	
 		collections_cache_ = new ElementsCollectionCache(cache_path, this);
 		collections_cache_->setLocale(langFromSetting());
 	}
@@ -550,7 +551,7 @@ QString QETApp::commonElementsDir()
 
 /**
  * @brief QETApp::customElementsDir
- * @return the dir path of user elements collection
+ * @return the dir path of user elements collection ened by a "/" separator
  */
 QString QETApp::customElementsDir()
 {
@@ -564,6 +565,9 @@ QString QETApp::customElementsDir()
 			if (dir.exists())
 				{
 					m_user_custom_elements_dir = path;
+                    if(!m_user_custom_elements_dir.endsWith("/")) {
+                        m_user_custom_elements_dir.append("/");
+                    }
 					return m_user_custom_elements_dir;
 			}
 		}
@@ -1233,11 +1237,10 @@ void QETApp::useSystemPalette(bool use) {
 	if (use) {
 		qApp->setPalette(initial_palette_);
 		qApp->setStyleSheet(
-					"QTabBar::tab:!selected { background-color: transparent; }"
 					"QAbstractScrollArea#mdiarea {"
 					"background-color -> setPalette(initial_palette_);"
 					"}"
-		);
+					);
 	} else {
 		QFile file(configDir() + "style.css");
 		file.open(QFile::ReadOnly);

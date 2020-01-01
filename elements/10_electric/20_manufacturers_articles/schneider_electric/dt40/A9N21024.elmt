@@ -1,0 +1,66 @@
+<definition height="70" hotspot_x="19" hotspot_y="40" orientation="dyyy" link_type="master" type="element" version="0.80" width="50">
+    <uuid uuid="{b292a200-a1ac-4791-b332-65cc217625d0}"/>
+    <names>
+        <name lang="it">Int. Aut. Magneto-termico 1P+N</name>
+        <name lang="nl">Lastscheider 1P+N</name>
+        <name lang="pl">Wyłącznik</name>
+        <name lang="de">Leitungsschutzschalter 1P+N</name>
+        <name lang="cs">Dvojpólový jistič 1 pól chránící</name>
+        <name lang="ar">قاطع ثنائي القطبية - 1 قطب محمي</name>
+        <name lang="fr">Prodis DT40</name>
+        <name lang="en">Circuit-breaker</name>
+        <name lang="es">Disyuntor termico magnetico en polo P+N</name>
+    </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">protection</kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">SCHNEIDER</elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="comment" show="1">10A</elementInformation>
+        <elementInformation name="designation" show="1">A9N21024</elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line end1="none" x1="-10" x2="-10" end2="none" length1="1.5" length2="1.5" antialias="false" y1="3" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="20"/>
+        <line end1="none" x1="-12" x2="7" end2="none" length1="1.5" length2="1.5" antialias="false" y1="-10" style="line-style:dashed;line-weight:thin;filling:none;color:black" y2="-10"/>
+        <polygon y3="-20" x1="-10" x2="-10" antialias="true" x3="-15" y1="3" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" closed="false"/>
+        <line end1="none" x1="10" x2="10" end2="none" length1="1.5" length2="1.5" antialias="false" y1="16" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="20"/>
+        <polygon y3="-20" x1="10" x2="10" antialias="true" x3="5" y1="3" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" closed="false"/>
+        <dynamic_text z="6" text_from="ElementInfo" rotation="0" text_width="-1" Valignment="AlignTop" frame="false" x="20" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-20" uuid="{0afdb394-69b7-48fe-b2ce-3abb444ef6b3}" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <arc height="5" start="90" x="6" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180" y="10.5" width="8"/>
+        <line end1="none" x1="-10" x2="-10" end2="none" length1="1.5" length2="1.5" antialias="false" y1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-20"/>
+        <line end1="none" x1="10" x2="10" end2="none" length1="1.5" length2="1.5" antialias="false" y1="8" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10"/>
+        <line end1="none" x1="10" x2="15" end2="none" length1="1.5" length2="1.5" antialias="false" y1="8" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="8"/>
+        <line end1="none" x1="15" x2="15" end2="none" length1="1.5" length2="1.5" antialias="false" y1="3" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="8"/>
+        <line end1="none" x1="-8" x2="-12" end2="none" length1="1.5" length2="1.5" antialias="true" y1="-22" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-18"/>
+        <line end1="none" x1="10" x2="15" end2="none" length1="1.5" length2="1.5" antialias="false" y1="3" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="3"/>
+        <line end1="none" x1="-12" x2="-8" end2="none" length1="1.5" length2="1.5" antialias="true" y1="-22" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-18"/>
+        <line end1="none" x1="10" x2="10" end2="none" length1="1.5" length2="1.5" antialias="false" y1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-20"/>
+        <line end1="none" x1="12" x2="8" end2="none" length1="1.5" length2="1.5" antialias="true" y1="-22" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-18"/>
+        <line end1="none" x1="8" x2="12" end2="none" length1="1.5" length2="1.5" antialias="true" y1="-22" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-18"/>
+        <dynamic_text z="18" text_from="ElementInfo" rotation="0" text_width="-1" Valignment="AlignTop" frame="false" x="15" font="Arial,9,-1,5,50,0,0,0,0,0,Normal" y="-5" uuid="{0e0653ea-01b2-48bb-8668-edd62f7eed33}" Halignment="AlignLeft">
+            <text>10A</text>
+            <info_name>comment</info_name>
+        </dynamic_text>
+        <text rotation="0" x="12" text="2" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" y="22"/>
+        <text rotation="0" x="12" text="1" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" y="-25"/>
+        <text rotation="0" x="-9" text="N" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" y="-25"/>
+        <text rotation="0" x="19" text="C" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" y="21"/>
+        <terminal x="-10" orientation="n" y="-30"/>
+        <terminal x="10" orientation="n" y="-30"/>
+        <terminal x="10" orientation="s" y="20"/>
+        <terminal x="-10" orientation="s" y="20"/>
+    </description>
+</definition>

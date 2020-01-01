@@ -1,0 +1,82 @@
+<definition height="110" version="0.51" link_type="simple" orientation="dyyy" type="element" hotspot_x="364" width="730" hotspot_y="45">
+    <names>
+        <name lang="en">WAGO 750-1607/0000-0000 (II)</name>
+        <name lang="de">WAGO 750-1607/0000-0000 (II)</name>
+        <name lang="fr">WAGO 750-1607/0000-0000 (II)</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line y2="-11.5" end1="none" antialias="false" length1="1.5" x1="-280" y1="50" length2="1.5" x2="-280" end2="circle" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <line y2="-11.5" end1="none" antialias="false" length1="1.5" x1="200" y1="50" length2="1.5" x2="200" end2="circle" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <line y2="8.5" end1="none" antialias="false" length1="1.5" x1="-40" y1="50" length2="1.5" x2="-40" end2="circle" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <line y2="8.5" end1="none" antialias="false" length1="1.5" x1="280" y1="50" length2="1.5" x2="280" end2="circle" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <line y2="50" end1="none" antialias="false" length1="1.5" x1="-360" y1="12.5" length2="1.5" x2="-360" end2="none" style="line-style:dashdotted;line-weight:normal;filling:none;color:black"/>
+        <line y2="50" end1="none" antialias="false" length1="1.5" x1="360" y1="12.5" length2="1.5" x2="360" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y2="8.5" end1="none" antialias="false" length1="1.5" x1="120" y1="50" length2="1.5" x2="120" end2="circle" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <text x="-355" y="-11" text="24V" size="7"/>
+        <text x="-355" y="9" text="0V" size="7"/>
+        <line y2="-11.5" end1="none" antialias="false" length1="1.5" x1="-120" y1="50" length2="1.5" x2="-120" end2="circle" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <circle x="-362.5" antialias="true" y="7.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <line y2="-11.5" end1="none" antialias="false" length1="1.5" x1="40" y1="50" length2="1.5" x2="40" end2="circle" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <line y2="7.5" end1="none" antialias="false" length1="1.5" x1="-360" y1="-7.5" length2="1.5" x2="-360" end2="none" style="line-style:dashdotted;line-weight:normal;filling:none;color:black"/>
+        <circle x="-362.5" antialias="true" y="-12.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <text x="283" y="48" text="0V" size="9"/>
+        <circle x="357.5" antialias="true" y="-12.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <text x="-36" y="48" text="0V" size="9"/>
+        <circle x="357.5" antialias="true" y="7.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <line y2="50" end1="none" antialias="false" length1="1.5" x1="-360" y1="50" length2="1.5" x2="-283" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="203" y="48" text="24V" size="9"/>
+        <text x="-277" y="48" text="24V" size="9"/>
+        <line y2="50" end1="none" antialias="false" length1="1.5" x1="283" y1="50" length2="1.5" x2="360" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y2="50" end1="none" antialias="false" length1="1.5" x1="203" y1="50" length2="1.5" x2="277" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="124" y="48" text="0V" size="9"/>
+        <line y2="50" end1="none" antialias="false" length1="1.5" x1="123" y1="50" length2="1.5" x2="197" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-196" y="48" text="0V" size="9"/>
+        <text x="43" y="48" text="24V" size="9"/>
+        <line y2="50" end1="none" antialias="false" length1="1.5" x1="43" y1="50" length2="1.5" x2="117" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-117" y="48" text="24V" size="9"/>
+        <line y2="50" end1="none" antialias="false" length1="1.5" x1="-37" y1="50" length2="1.5" x2="37" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y2="50" end1="none" antialias="false" length1="1.5" x1="-117" y1="50" length2="1.5" x2="-43" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y2="50" end1="none" antialias="false" length1="1.5" x1="-197" y1="50" length2="1.5" x2="-123" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y2="8.5" end1="none" antialias="false" length1="1.5" x1="-200" y1="50" length2="1.5" x2="-200" end2="circle" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <line y2="50" end1="none" antialias="false" length1="1.5" x1="-277" y1="50" length2="1.5" x2="-203" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-42.5" antialias="true" y="47.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-122.5" antialias="true" y="47.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-202.5" antialias="true" y="47.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-282.5" antialias="true" y="47.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="277.5" antialias="true" y="47.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="197.5" antialias="true" y="47.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="117.5" antialias="true" y="47.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="37.5" antialias="true" y="47.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <line y2="-40" end1="none" antialias="false" length1="1.5" x1="-360" y1="-40" length2="1.5" x2="360" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y2="-13" end1="none" antialias="false" length1="1.5" x1="-360" y1="-40" length2="1.5" x2="-360" end2="none" style="line-style:dashdotted;line-weight:normal;filling:none;color:black"/>
+        <line y2="10" end1="none" antialias="false" length1="1.5" x1="-360" y1="10" length2="1.5" x2="360" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line y2="-13" end1="none" antialias="false" length1="1.5" x1="360" y1="-40" length2="1.5" x2="360" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y2="7" end1="none" antialias="false" length1="1.5" x1="360" y1="-7" length2="1.5" x2="360" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y2="-10" end1="none" antialias="false" length1="1.5" x1="-360" y1="-10" length2="1.5" x2="360" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <text x="-331" y="-27" text="WAGO 750-1607/0000-0000 (II)" size="9"/>
+        <input x="219" y="-31" rotate="true" tagg="label" text="X123" size="9"/>
+        <text x="-278" y="58" text="5" size="5"/>
+        <text x="-197" y="58" text="13" size="5"/>
+        <text x="-117" y="58" text="6" size="5"/>
+        <text x="-37" y="58" text="14" size="5"/>
+        <text x="43" y="58" text="7" size="5"/>
+        <text x="123" y="58" text="15" size="5"/>
+        <text x="203" y="58" text="8" size="5"/>
+        <text x="283" y="58" text="16" size="5"/>
+        <text x="-127" y="-27" text="Connection Module 8+/8-" size="9"/>
+        <terminal x="-360" orientation="w" y="10"/>
+        <terminal x="-360" orientation="w" y="-10"/>
+        <terminal x="200" orientation="s" y="50"/>
+        <terminal x="280" orientation="s" y="50"/>
+        <terminal x="-40" orientation="s" y="50"/>
+        <terminal x="40" orientation="s" y="50"/>
+        <terminal x="-200" orientation="s" y="50"/>
+        <terminal x="-120" orientation="s" y="50"/>
+        <terminal x="120" orientation="s" y="50"/>
+        <terminal x="360" orientation="e" y="10"/>
+        <terminal x="-280" orientation="s" y="50"/>
+        <terminal x="360" orientation="e" y="-10"/>
+    </description>
+</definition>

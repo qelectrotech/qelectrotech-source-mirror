@@ -1145,7 +1145,7 @@ void QETElementEditor::slot_reload()
 /**
  * @brief QETElementEditor::slot_save
  * Save the current editing element.
- * If the filepath or location is unknow, use save_as instead
+ * If the filepath or location is unknown, use save_as instead
  * @return true if save with success
  */
 bool QETElementEditor::slot_save()
@@ -1237,9 +1237,9 @@ bool QETElementEditor::slot_saveAsFile()
 		if (fn.isEmpty())
 			return(false);
 
-			//If the name doesn't end by .elmt, we add it
-		if (!fn.endsWith(".elmt", Qt::CaseInsensitive))
-			fn += ".elmt";
+//			//If the name doesn't end by .elmt, we add it
+//		if (!fn.endsWith(".elmt", Qt::CaseInsensitive))
+//			fn += ".elmt";
 
 		bool result_save = toFile(fn);
 			//If the save success, the filename is keep

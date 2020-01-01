@@ -762,11 +762,13 @@ bool DynamicElementTextItem::sceneEventFilter(QGraphicsItem *watched, QEvent *ev
 void DynamicElementTextItem::elementInfoChanged()
 {
 	DiagramContext dc;
-	if(elementUseForInfo())
-		dc = elementUseForInfo()->elementInformations();
+	Element *element = elementUseForInfo();
+	if(element) {
+		dc = element->elementInformations();
+	}
 	
 	QString final_text;
-	Element *element = elementUseForInfo();
+
 
 	if (m_text_from == ElementInfo)
 	{
@@ -775,14 +777,14 @@ void DynamicElementTextItem::elementInfoChanged()
 		if(m_info_name == "label")
 		{
 			setupFormulaConnection();
-			
-			if (dc.value("formula").toString().isEmpty())
-				final_text = dc.value(m_info_name).toString();
-			else
-				final_text = autonum::AssignVariables::formulaToLabel(dc.value("formula").toString(), element->rSequenceStruct(), element->diagram(), element);
+
+			if (element) {
+				final_text = element->actualLabel();
+			}
 		}
-		else
+		else {
 			final_text = dc.value(m_info_name).toString();
+		}
 	}
 	else if (m_text_from == CompositeText)
 	{
@@ -1040,20 +1042,18 @@ void DynamicElementTextItem::updateLabel()
 		(m_text_from == CompositeText && m_composite_text.contains("%{label}")))
 	{
 		DiagramContext dc;
-		if(elementUseForInfo())
-			dc = elementUseForInfo()->elementInformations();
+        Element *element = elementUseForInfo();
+        if(element) {
+            dc = element->elementInformations();
+        }
 		
-		Element *element = elementUseForInfo();
-		
-		if(m_text_from == ElementInfo)
-		{
-			if(dc.value("formula").toString().isEmpty())
-				setPlainText(dc.value("label").toString());
-			else
-				setPlainText(autonum::AssignVariables::formulaToLabel(dc.value("formula").toString(), element->rSequenceStruct(), element->diagram(), element));
+
+        if(m_text_from == ElementInfo && element) {
+            setPlainText(element->actualLabel());
 		}
-		else if (m_text_from == CompositeText)
+        else if (m_text_from == CompositeText) {
 			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc));
+        }
 	}
 }
 
@@ -1172,7 +1172,7 @@ QString DynamicElementTextItem::reportReplacedCompositeText() const
 		{
 			Element *elmt = m_other_report.data();
 			QString label = m_report_formula;
-			label = autonum::AssignVariables::formulaToLabel(label, elmt->rSequenceStruct(), elmt->diagram(), elmt);
+            label = elmt->actualLabel();
 			string.replace("%{label}", label);
 		}
 		if (m_watched_conductor)
@@ -1287,11 +1287,7 @@ void DynamicElementTextItem::updateXref()
 				}
 				else
 					m_slave_Xref_item->setPlainText(xref_label);
-				
-				QRectF r = boundingRect();
-				QPointF pos(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,
-							r.bottom());
-				m_slave_Xref_item->setPos(pos);
+				setXref_item(xrp.getXrefPos());
 				return;
 			}
 		}
@@ -1316,7 +1312,8 @@ void DynamicElementTextItem::setPlainText(const QString &text)
 {
 	if (toPlainText() == text)
 		return;
-	
+
+
 	bool update_alignment = true;
 	if (diagram() && (diagram()->project()->state() == QETProject::ProjectParsingRunning))
 		update_alignment = false;
@@ -1352,10 +1349,9 @@ void DynamicElementTextItem::setPlainText(const QString &text)
 	}
 	else if (m_slave_Xref_item)
 	{
-		QRectF r = boundingRect();
-		QPointF pos(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,
-					r.bottom());
-		m_slave_Xref_item->setPos(pos);
+
+		XRefProperties xrp = diagram()->project()->defaultXRefProperties(m_master_element.data()->kindInformations()["type"].toString());
+		setXref_item(xrp.getXrefPos());
 	}
 }
 
@@ -1365,3 +1361,49 @@ void DynamicElementTextItem::setTextWidth(qreal width)
 	m_text_width = width;
 	emit textWidthChanged(width);
 }
+
+void DynamicElementTextItem::setXref_item(Qt::AlignmentFlag m_exHrefPos)
+{
+	QRectF r = boundingRect();
+	QPointF pos;
+	//QPointF pos(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top());
+	if (m_exHrefPos == Qt::AlignBottom)
+	{
+		pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.bottom());
+	}
+	else if (m_exHrefPos == Qt::AlignTop)
+	{
+		pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top() - m_slave_Xref_item->boundingRect().height());
+	}
+	else if (m_exHrefPos == Qt::AlignLeft)  //
+	{
+		pos = QPointF(r.left() -  m_slave_Xref_item->boundingRect().width(),r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
+	}
+	else if (m_exHrefPos == Qt::AlignRight)  //
+	{
+		pos = QPointF(r.right() ,r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
+	}
+	else if (m_exHrefPos == Qt::AlignBaseline)  //
+	{
+		if(this->alignment() &Qt::AlignBottom)
+		{
+			pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.bottom());
+		}
+		else if(this->alignment() &Qt::AlignTop)
+		{
+			pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top() - m_slave_Xref_item->boundingRect().height());
+		}
+		else if(this->alignment() &Qt::AlignLeft)
+		{
+			pos = QPointF(r.left() -  m_slave_Xref_item->boundingRect().width(),r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
+		}
+		else if(this->alignment() &Qt::AlignRight)
+		{
+			pos = QPointF(r.right() ,r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
+		}
+	}
+	m_slave_Xref_item->setPos(pos);
+
+	return;
+}
+

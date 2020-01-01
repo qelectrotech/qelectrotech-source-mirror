@@ -1,0 +1,19 @@
+<definition height="20" width="70" version="0.80" type="element" hotspot_y="10" orientation="dyyy" hotspot_x="22" link_type="simple">
+    <names>
+        <name lang="en">2004-433</name>
+        <name lang="fr">2004-433</name>
+        <name lang="de">2004-433</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <polygon style="line-style:normal;line-weight:thin;filling:white;color:black" x1="-18.85" x2="43.74" y3="7.15" y4="7.15" antialias="false" x4="-18.85" y1="-7.03" y2="-7.03" x3="43.74"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-9.5" x2="-9.5" closed="false" y3="-3" y4="3" antialias="false" x4="35.75" y1="3" y2="-3" x3="35.75"/>
+        <text text="2004-433" color="#000000" x="1.5" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="1.9" rotation="0"/>
+    </description>
+</definition>

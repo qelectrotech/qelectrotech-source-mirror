@@ -1,0 +1,19 @@
+<definition hotspot_y="10" type="element" height="20" width="140" orientation="dyyy" link_type="simple" hotspot_x="20" version="0.80">
+    <names>
+        <name lang="fr">2000-440</name>
+        <name lang="de">2000-440</name>
+        <name lang="en">2000-440</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <polygon y1="6.8" style="line-style:normal;line-weight:thin;filling:white;color:black" x1="-14.49" x4="112.25" antialias="false" x2="-14.49" x3="112.25" y3="-6.63" y4="6.8" y2="-6.63"/>
+        <polygon y1="3" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-9" x4="105.25" antialias="false" x2="-9" x3="105.25" y3="-3" y4="3" closed="false" y2="-3"/>
+        <text rotation="0" text="2000-440" x="35.9563" color="#000000" y="2.5" font="Sans Serif,4,-1,5,50,0,0,0,0,0"/>
+    </description>
+</definition>

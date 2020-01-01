@@ -1,0 +1,18 @@
+<definition link_type="simple" width="90" orientation="dyyy" hotspot_x="14" type="element" height="20" version="0.80" hotspot_y="10">
+    <names>
+        <name lang="de">2016-402</name>
+        <name lang="fr">2016-402</name>
+        <name lang="en">2016-402</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <polygon x4="-8.2" antialias="false" y2="-7.06" x2="69.09" x3="69.09" y3="7.12" style="line-style:normal;line-weight:thin;filling:white;color:black" y4="7.12" x1="-8.2" y1="-7.06"/>
+        <text x="17" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="2016-402" rotation="0" y="2.4" color="#000000"/>
+    </description>
+</definition>

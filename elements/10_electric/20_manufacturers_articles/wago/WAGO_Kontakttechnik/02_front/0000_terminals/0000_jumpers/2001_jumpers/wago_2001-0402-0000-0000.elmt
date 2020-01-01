@@ -1,0 +1,18 @@
+<definition hotspot_y="10" height="20" type="element" hotspot_x="12" link_type="simple" width="40" orientation="dyyy" version="0.80">
+    <names>
+        <name lang="de">2001-402</name>
+        <name lang="en">2001-402</name>
+        <name lang="fr">2001-402</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <rect ry="0" height="12" y="-6" rx="0" width="27" antialias="false" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-5.7"/>
+        <text text="2001-402" y="2" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" x="-4.1" color="#000000"/>
+    </description>
+</definition>

@@ -1,0 +1,17 @@
+<definition height="330" hotspot_y="92" version="0.80" hotspot_x="4" type="element" width="10" link_type="simple" orientation="dyyy">
+    <names>
+        <name lang="en">2116-1291</name>
+        <name lang="de">2116-1291</name>
+        <name lang="fr">2116-1291</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <polygon x3="2.5" x1="-1" y2="-87.482" antialias="false" y1="-87.482" style="line-style:normal;line-weight:thin;filling:lightgray;color:lightgray" x4="-1" y4="233" y3="233" x2="2.5"/>
+    </description>
+</definition>

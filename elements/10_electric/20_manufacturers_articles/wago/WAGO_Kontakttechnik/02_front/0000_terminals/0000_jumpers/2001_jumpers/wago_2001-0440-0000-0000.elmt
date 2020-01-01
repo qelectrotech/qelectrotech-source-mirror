@@ -1,0 +1,19 @@
+<definition type="element" width="160" hotspot_y="10" version="0.80" height="20" orientation="dyyy" hotspot_x="12" link_type="simple">
+    <names>
+        <name lang="de">2001-440</name>
+        <name lang="fr">2001-440</name>
+        <name lang="en">2001-440</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <rect width="147" rx="0" height="12" x="-5.7" y="-6" ry="0" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false"/>
+        <polygon y2="-3" x4="135.6" closed="false" x2="0" y4="3" x1="0" y1="3" y3="-3" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="135.6" antialias="false"/>
+        <text text="2001-440" color="#000000" x="56" rotation="0" y="2" font="Sans Serif,4,-1,5,50,0,0,0,0,0"/>
+    </description>
+</definition>

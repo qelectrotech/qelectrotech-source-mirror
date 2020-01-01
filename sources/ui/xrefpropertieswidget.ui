@@ -83,6 +83,20 @@
        </layout>
       </item>
       <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <item>
+         <widget class="QLabel" name="label_10">
+          <property name="text">
+           <string>XRef slave position</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="m_xrefpos_cb"/>
+        </item>
+       </layout>
+      </item>
+      <item>
        <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_2">

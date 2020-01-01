@@ -1,0 +1,46 @@
+<definition orientation="dyyy" type="element" version="0.51" link_type="simple" hotspot_x="366" height="100" hotspot_y="46" width="730">
+    <names>
+        <name lang="cs">WAGO 750-8100/0000-0000</name>
+        <name lang="de">WAGO 750-8100/0000-0000</name>
+        <name lang="pl">WAGO 750-8100/0000-0000</name>
+        <name lang="nl">WAGO 750-8100/0000-0000</name>
+        <name lang="ar">WAGO 750-8100/0000-0000</name>
+        <name lang="es">WAGO 750-8100/0000-0000</name>
+        <name lang="en">WAGO 750-8100/0000-0000</name>
+        <name lang="fr">WAGO 750-8100/0000-0000</name>
+        <name lang="pt">WAGO 750-8100/0000-0000</name>
+        <name lang="it">WAGO 750-8100/0000-0000</name>
+        <name lang="el">WAGO 750-8100/0000-0000</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle diameter="5" antialias="true" x="-362.5" y="17.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-355" text="Eth2" size="9" y="24"/>
+        <input x="220" text="X123" size="9" rotate="true" y="41" tagg="label"/>
+        <circle diameter="5" antialias="true" x="-362.5" y="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" antialias="false" x1="-360" end1="none" x2="-283" length2="1.5" y2="-40" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40"/>
+        <line end2="none" antialias="false" x1="-197" end1="none" x2="360" length2="1.5" y2="-40" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40"/>
+        <line end2="none" antialias="false" x1="-277" end1="none" x2="-203" length2="1.5" y2="-40" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40"/>
+        <circle diameter="5" antialias="true" x="-202.5" y="-42.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="true" x="-282.5" y="-42.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" antialias="false" x1="-360" end1="none" x2="360" length2="1.5" y2="50" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50"/>
+        <line end2="none" antialias="false" x1="-360" end1="none" x2="-360" length2="1.5" y2="-2.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40"/>
+        <line end2="none" antialias="false" x1="-360" end1="none" x2="-360" length2="1.5" y2="50" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="22.5"/>
+        <line end2="none" antialias="false" x1="360" end1="none" x2="360" length2="1.5" y2="50" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40"/>
+        <text x="-330" text="WAGO 750-8100/0000-0000" size="9" y="45"/>
+        <text x="-315" text="IP Adr. 1:" size="9" y="4"/>
+        <input x="-257" text="192.168.0.1" size="9" rotate="true" y="0" tagg="none"/>
+        <text x="-315" text="IP Adr. 2:" size="9" y="24"/>
+        <input x="-257" text="192.168.1.1" size="9" rotate="true" y="20" tagg="none"/>
+        <text x="-199" text="0V" size="9" y="-22"/>
+        <text x="-279" text="24V" size="9" y="-22"/>
+        <text x="-355" text="Eth1" size="9" y="4"/>
+        <text x="-138" text="PFC100 CS 2ETH ECO" size="9" y="45"/>
+        <line end2="none" antialias="false" x1="-360" end1="none" x2="-360" length2="1.5" y2="17.5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2.5"/>
+        <terminal orientation="n" x="-200" y="-40"/>
+        <terminal orientation="w" x="-360" y="20"/>
+        <terminal orientation="n" x="-280" y="-40"/>
+        <terminal orientation="w" x="-360" y="0"/>
+    </description>
+</definition>

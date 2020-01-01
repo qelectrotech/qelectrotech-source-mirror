@@ -1,0 +1,17 @@
+<definition version="0.80" type="element" hotspot_y="210" orientation="dyyy" link_type="simple" height="330" hotspot_x="9" width="20">
+    <names>
+        <name lang="en">859-525</name>
+        <name lang="fr">859-525</name>
+        <name lang="de">859-525</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <rect ry="0" antialias="false" rx="0" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" height="320.3" x="-3.5" y="-205.47" width="7"/>
+    </description>
+</definition>

@@ -1,0 +1,17 @@
+<definition hotspot_y="154" link_type="simple" version="0.80" width="10" orientation="dyyy" type="element" height="250" hotspot_x="4">
+    <names>
+        <name lang="en">2001-1491</name>
+        <name lang="de">2001-1491</name>
+        <name lang="fr">2001-1491</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <polygon y4="92.31" style="line-style:normal;line-weight:thin;filling:lightgray;color:lightgray" x3="2.42" y3="92.31" x1="-1" x4="-1" x2="2.42" y2="-152.38" y1="-152.38" antialias="false"/>
+    </description>
+</definition>

@@ -1,0 +1,17 @@
+<definition hotspot_x="15" orientation="dyyy" type="element" width="30" height="200" version="0.80" link_type="simple" hotspot_y="104">
+    <names>
+        <name lang="fr">769-307</name>
+        <name lang="de">769-307</name>
+        <name lang="en">769-307</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <polygon y2="-97.73" x4="2.5" x2="-1" y3="89.56" style="line-style:normal;line-weight:thin;filling:lightgray;color:lightgray" y1="-97.73" x3="-1" x1="2.5" antialias="false" y4="89.56"/>
+    </description>
+</definition>

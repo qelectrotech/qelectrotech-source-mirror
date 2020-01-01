@@ -110,7 +110,7 @@ void RotateTextsCommand::openDialog()
 		//Open the dialog
 	QDialog ori_text_dialog;
 	ori_text_dialog.setSizeGripEnabled(false);
-#ifdef Q_OS_MAC
+#ifdef Q_OS_MACOS
 	ori_text_dialog.setWindowFlags(Qt::Sheet);
 #endif
 	ori_text_dialog.setWindowTitle(QObject::tr("Orienter les textes sélectionnés", "window title"));

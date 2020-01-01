@@ -1,0 +1,37 @@
+<definition hotspot_x="29" orientation="dyyy" link_type="simple" height="360" version="0.80" type="element" width="60" hotspot_y="180">
+    <names>
+        <name lang="de">750-616</name>
+        <name lang="en">750-616</name>
+        <name lang="fr">750-616</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <polygon y4="-162.8" x16="-15.73" x21="-26.31" y12="-175.05" x19="-22.79" x28="19.56" x3="19.56" y16="-171.55" style="line-style:normal;line-weight:thin;filling:white;color:black" y15="-171.55" x4="14.27" y21="174.79" x25="-12.2" x9="-12.2" y8="-159.3" x7="1.92" y5="-164.55" y20="164.3" y1="-169.8" x12="-26.31" x10="1.92" y23="169.55" x15="-22.79" y6="-164.55" x29="19.56" y27="164.3" y11="-175.05" y7="-159.3" x13="-26.31" y18="171.3" x6="1.92" x14="-22.79" x5="14.27" y10="-169.8" y3="-162.8" x22="1.92" x17="-15.73" y14="-164.55" x23="1.92" antialias="false" y13="-164.55" x26="1.92" x27="1.92" x30="26.62" y2="-169.8" x24="-12.2" y26="162.55" x2="19.56" y9="-169.8" y19="164.3" y25="162.55" y30="169.55" y22="174.79" y17="171.3" x11="1.92" x18="-22.79" y28="164.3" x1="26.62" y29="169.55" x8="-12.2" x20="-26.31" y24="169.55"/>
+        <polygon y4="79.89" x16="5.11" x21="-3.39" y12="64.78" x19="0.67" x3="-13.73" y16="60.32" style="line-style:normal;line-weight:thin;filling:white;color:black" y15="59.53" x4="-10.5" y21="59.47" x9="7.17" y8="78.03" x7="2" y5="79.89" y20="60.23" y1="63.57" x12="21.41" x10="16.67" y23="60.22" x15="7.28" y6="78.11" y11="75.2" y7="75.24" x13="18.39" y18="63.64" x6="0.11" x14="14.2" x5="-3.11" y10="79.89" y3="78.04" x22="-10.25" x17="3.26" y14="59.53" x23="-12.47" antialias="false" y13="60.85" y2="75.23" x24="-14.35" x2="-15.63" y9="79.89" y19="61.7" y22="59.47" y17="61.79" x11="21.41" x18="2" x1="-15.63" x8="3.9" x20="-1.13" y24="61.68"/>
+        <polygon y12="58.37" y13="56.81" x6="-2.93" y11="60.3" x2="-12.34" antialias="false" x9="-1.31" y2="64.46" x14="-8.77" y10="63.29" style="line-style:normal;line-weight:thin;filling:white;color:black" y5="76.5" y1="63.29" y3="66.8" y4="73.37" y9="64.46" x16="-10.35" y16="60.3" x11="-3.3" x13="-4.88" y8="66.8" x8="0.23" y6="76.5" x15="-10.35" y15="58.37" x12="-3.3" y7="73.37" y14="56.81" x1="-10.03" x4="-13.88" x7="0.23" x3="-13.88" x5="-10.72" x10="-3.57"/>
+        <rect antialias="false" style="line-style:normal;line-weight:thin;filling:white;color:black" height="14" rx="0" y="42" x="-12.2" width="12.3" ry="0"/>
+        <polygon y3="-157.55" antialias="false" x3="26.62" x1="-15.73" style="line-style:normal;line-weight:thin;filling:none;color:black" x4="-15.73" x2="26.62" y2="-133.06" y4="-157.55" y1="-133.06"/>
+        <polygon y3="-133.06" antialias="false" x3="26.62" x1="-15.73" style="line-style:normal;line-weight:thin;filling:none;color:black" x4="-15.73" x2="26.62" y2="-157.55" y4="-133.06" y1="-157.55"/>
+        <polygon y3="-149.8" antialias="false" x3="19.57" x1="-8.66" style="line-style:normal;line-weight:thin;filling:none;color:black" x4="-8.66" x2="19.57" y2="-141.06" y4="-149.8" y1="-141.06"/>
+        <polygon y3="-141.06" antialias="false" x3="19.57" x1="-8.66" style="line-style:normal;line-weight:thin;filling:none;color:black" x4="-8.66" x2="19.57" y2="-149.8" y4="-141.06" y1="-149.8"/>
+        <polygon antialias="false" x1="-15.73" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="26.62" y2="38.36" y1="38.36" closed="false"/>
+        <polygon antialias="false" x1="26.62" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-15.73" y2="-98.08" y1="-98.08" closed="false"/>
+        <polygon antialias="false" x1="-15.73" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="26.62" y2="-132.19" y1="-132.19" closed="false"/>
+        <polygon y3="-138.31" antialias="false" x3="24.85" x1="-13.96" style="line-style:normal;line-weight:thin;filling:none;color:black" x4="-13.96" x2="24.85" y2="-152.31" y4="-138.31" y1="-152.31"/>
+        <polygon y3="73.57" antialias="false" x3="26.44" x1="21.43" style="line-style:normal;line-weight:thin;filling:orange;color:black" x4="21.43" x2="26.44" y2="41.62" y4="73.57" y1="41.62"/>
+        <polygon antialias="false" x1="21.42" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="26.46" y2="57.06" y1="57.06" closed="false"/>
+        <text text="A" color="#000000" rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-128" x="-15"/>
+        <polygon y12="39" x6="25" y11="39" x2="25" antialias="false" x9="-15" y2="-130" y10="78" style="line-style:normal;line-weight:thin;filling:orange;color:black" y5="78" y1="-130" y3="39" y4="39" y9="78" x11="-10" y8="160" x8="-15" y6="78" x12="-15" y7="160" x1="-15" x4="20" x7="25" x3="25" x5="20" x10="-10"/>
+        <text text="750-616" color="#000000" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="157" x="-9"/>
+        <dynamic_text frame="false" text_width="-1" uuid="{7e6b9aba-9db0-4037-a375-6029b90c44cb}" rotation="0" Valignment="AlignVCenter" font="Sans Serif,7,-1,5,25,0,0,0,0,0" text_from="ElementInfo" y="-43" z="18" Halignment="AlignHCenter" x="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+    </description>
+</definition>
