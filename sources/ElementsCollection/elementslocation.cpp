@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2019 The QElectroTech Team
 	This file is part of QElectroTech.
 	
@@ -495,7 +495,14 @@ NamesList ElementsLocation::nameList()
 	NamesList nl;
 
 	if (isElement())
-		nl.fromXml(pugiXml());
+	{
+		QSettings set;
+		if (set.value("use_pugixml").toBool()) {
+			nl.fromXml(pugiXml());
+		} else {
+			nl.fromXml(xml());
+		}
+	}
 
 	if (isDirectory())
 	{
@@ -666,24 +673,28 @@ bool ElementsLocation::setXml(const QDomDocument &xml_document) const
  */
 QUuid ElementsLocation::uuid() const
 {
-//		//Get the uuid of element
-//	QList<QDomElement>  list_ = QET::findInDomElement(xml(), "uuid");
-
-//	if (!list_.isEmpty())
-//		return QUuid(list_.first().attribute("uuid"));
-
-//	return QUuid();
-	//Get the uuid of element
-
 	if (!isElement()) {
 		return QUuid();
 	}
 
-	pugi::xml_node uuid_node = pugiXml().document_element().child("uuid");
-	if (uuid_node.empty()) {
-		return QUuid();
+	QSettings set;
+	if(set.value("use_pugixml").toBool())
+	{
+		pugi::xml_node uuid_node = pugiXml().document_element().child("uuid");
+		if (uuid_node.empty()) {
+			return QUuid();
+		}
+		return QUuid(uuid_node.attribute("uuid").as_string());
 	}
-	return QUuid(uuid_node.attribute("uuid").as_string());
+
+		//Get the uuid of element
+	QList<QDomElement>  list_ = QET::findInDomElement(xml(), "uuid");
+
+	if (!list_.isEmpty())
+		return QUuid(list_.first().attribute("uuid"));
+
+	return QUuid();
+		//Get the uuid of element
 }
 
 /**
@@ -714,8 +725,14 @@ QIcon ElementsLocation::icon() const
 QString ElementsLocation::name() const
 {
 	NamesList nl;
-//	nl.fromXml(xml());
-	nl.fromXml(pugiXml().document_element());
+
+	QSettings set;
+	if(set.value("use_pugixml").toBool()) {
+		nl.fromXml(pugiXml().document_element());
+	} else {
+		nl.fromXml(xml());
+	}
+
 	return nl.name(fileName());
 }
 

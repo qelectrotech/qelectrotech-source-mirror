@@ -26,6 +26,7 @@
 
 #include <QtConcurrent>
 #include <QFutureWatcher>
+#include <QMessageBox>
 
 /**
  * @brief ElementsCollectionModel::ElementsCollectionModel
@@ -149,7 +150,7 @@ bool ElementsCollectionModel::canDropMimeData(const QMimeData *data, Qt::DropAct
  */
 bool ElementsCollectionModel::dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent)
 {
-	Q_UNUSED(action);
+	Q_UNUSED(action)
 
 	QStandardItem *qsi = itemFromIndex(parent.child(row, column));
 	if (!qsi)
@@ -242,14 +243,16 @@ void ElementsCollectionModel::loadCollections(bool common_collection, bool custo
 		list.append(projectItems(project));
 	}
 
-QFutureWatcher<void> watcher;
-
+	QTime t;
+	t.start();
 	QFuture<void> futur = QtConcurrent::map(list, setUpData);
-	watcher.setFuture(futur);
 	emit loadingMaxValue(futur.progressMaximum());
 	while (futur.isRunning()) {
 		emit loadingProgressValue(futur.progressValue());
 	}
+	int ms = t.elapsed();
+
+	QMessageBox::about(nullptr, tr("Chargement collection d'élément"), tr("Le chargement de la collection d'éléments à été éffectué en %1 ms").arg(ms));
 }
 
 /**
