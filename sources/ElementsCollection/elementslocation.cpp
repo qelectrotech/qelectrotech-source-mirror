@@ -570,7 +570,6 @@ pugi::xml_document ElementsLocation::pugiXml() const
 {
 	if (!m_project)
 	{
-		QFile file (m_file_system_path);
 		pugi::xml_document docu;
 		if (docu.load_file(m_file_system_path.toStdString().c_str()))
 			return docu;
@@ -680,7 +679,8 @@ QUuid ElementsLocation::uuid() const
 	QSettings set;
 	if(set.value("use_pugixml").toBool())
 	{
-		pugi::xml_node uuid_node = pugiXml().document_element().child("uuid");
+		auto document = pugiXml();
+		auto uuid_node = document.document_element().child("uuid");
 		if (uuid_node.empty()) {
 			return QUuid();
 		}
@@ -765,8 +765,16 @@ DiagramContext ElementsLocation::elementInformations() const
 		return context;
 	}
 	
-	QDomElement dom = this->xml().firstChildElement("elementInformations");
-	context.fromXml(dom, "elementInformation");
+	QSettings set;
+	if (set.value("use_pugixml").toBool())
+	{
+		context.fromXml(pugiXml().document_element().child("elementInformations"), "elementInformation");
+	}
+	else
+	{
+		QDomElement dom = this->xml().firstChildElement("elementInformations");
+		context.fromXml(dom, "elementInformation");
+	}
 	return  context;
 }
 

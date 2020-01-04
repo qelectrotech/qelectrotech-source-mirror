@@ -120,20 +120,39 @@ QString FileElementCollectionItem::localName()
 			else
 				setText(QObject::tr("Collection inconnue"));
 		}
-		else {
+		else
+		{
+			QSettings set;
+			if (set.value("use_pugixml").toBool())
+			{
+				QString str(fileSystemPath() + "/qet_directory");
+				pugi::xml_document docu;
+				if(docu.load_file(str.toStdString().c_str()))
+				{
+					if (QString(docu.document_element().name()) == "qet-directory")
+					{
+						NamesList nl;
+						nl.fromXml(docu.document_element());
+						setText(nl.name());
+					}
+				}
+			}
+			else
+			{
 				//Open the qet_directory file, to get the traductions name of this dir
-			QFile dir_conf(fileSystemPath() + "/qet_directory");
+				QFile dir_conf(fileSystemPath() + "/qet_directory");
 
-			if (dir_conf.exists() && dir_conf.open(QIODevice::ReadOnly | QIODevice::Text)) {
+				if (dir_conf.exists() && dir_conf.open(QIODevice::ReadOnly | QIODevice::Text)) {
 
 					//Get the content of the file
-				QDomDocument document;
-				if (document.setContent(&dir_conf)) {
-					QDomElement root = document.documentElement();
-					if (root.tagName() == "qet-directory") {
-						NamesList nl;
-						nl.fromXml(root);
-						setText(nl.name());
+					QDomDocument document;
+					if (document.setContent(&dir_conf)) {
+						QDomElement root = document.documentElement();
+						if (root.tagName() == "qet-directory") {
+							NamesList nl;
+							nl.fromXml(root);
+							setText(nl.name());
+						}
 					}
 				}
 			}
