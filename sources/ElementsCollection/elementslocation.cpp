@@ -495,7 +495,7 @@ NamesList ElementsLocation::nameList()
 	NamesList nl;
 
 	if (isElement())
-		nl.fromXml(xml());
+		nl.fromXml(pugiXml());
 
 	if (isDirectory())
 	{

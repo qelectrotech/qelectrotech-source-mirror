@@ -97,7 +97,8 @@ INCLUDEPATH += sources \
 			   sources/SearchAndReplace/ui \
 			   sources/NameList \
 			   sources/NameList/ui \
-			   sources/utils
+                           sources/utils \
+                sources/pugixml
 
 
 # Fichiers sources
