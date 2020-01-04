@@ -555,6 +555,49 @@ QDomElement ElementsLocation::xml() const
 }
 
 /**
+ * @brief ElementsLocation::pugiXml
+ * @return the xml document of this element or directory
+ * The definition can be null
+ */
+pugi::xml_document ElementsLocation::pugiXml() const
+{
+	if (!m_project)
+	{
+		QFile file (m_file_system_path);
+		pugi::xml_document docu;
+		if (docu.load_file(m_file_system_path.toStdString().c_str()))
+			return docu;
+	}
+	else
+	{
+		QString str = m_collection_path;
+		if (isElement())
+		{
+				//Get the xml dom from Qt xml and copie to pugi xml
+			QDomElement element = m_project->embeddedElementCollection()->element(str.remove("embed://"));
+			QDomDocument qdoc;
+			qdoc.appendChild(qdoc.importNode(element.firstChildElement("definition"), true));
+
+			pugi::xml_document docu;
+			docu.load_string(qdoc.toString(4).toStdString().c_str());
+			return docu;
+		}
+		else
+		{
+			QDomElement element = m_project->embeddedElementCollection()->directory(str.remove("embed://"));
+			QDomDocument qdoc;
+			qdoc.appendChild(qdoc.importNode(element, true));
+
+			pugi::xml_document docu;
+			docu.load_string(qdoc.toString(4).toStdString().c_str());
+			return docu;
+		}
+	}
+
+	return pugi::xml_document();
+}
+
+/**
  * @brief ElementsLocation::setXml
  * Replace the current xml description by @xml_element;
  * The document element of @xml_document must have tagname "definition" to be written
@@ -623,13 +666,24 @@ bool ElementsLocation::setXml(const QDomDocument &xml_document) const
  */
 QUuid ElementsLocation::uuid() const
 {
-		//Get the uuid of element
-	QList<QDomElement>  list_ = QET::findInDomElement(xml(), "uuid");
+//		//Get the uuid of element
+//	QList<QDomElement>  list_ = QET::findInDomElement(xml(), "uuid");
 
-	if (!list_.isEmpty())
-		return QUuid(list_.first().attribute("uuid"));
+//	if (!list_.isEmpty())
+//		return QUuid(list_.first().attribute("uuid"));
 
-	return QUuid();
+//	return QUuid();
+	//Get the uuid of element
+
+	if (!isElement()) {
+		return QUuid();
+	}
+
+	pugi::xml_node uuid_node = pugiXml().document_element().child("uuid");
+	if (uuid_node.empty()) {
+		return QUuid();
+	}
+	return QUuid(uuid_node.attribute("uuid").as_string());
 }
 
 /**
@@ -660,7 +714,8 @@ QIcon ElementsLocation::icon() const
 QString ElementsLocation::name() const
 {
 	NamesList nl;
-	nl.fromXml(xml());
+//	nl.fromXml(xml());
+	nl.fromXml(pugiXml().document_element());
 	return nl.name(fileName());
 }
 

@@ -20,6 +20,7 @@
 
 #include "nameslist.h"
 #include "diagramcontext.h"
+#include "pugixml.hpp"
 #include <QString>
 #include <QIcon>
 
@@ -73,6 +74,7 @@ class ElementsLocation
 		NamesList nameList();
 
 		QDomElement xml() const;
+		pugi::xml_document pugiXml() const;
 		bool setXml(const QDomDocument &xml_document) const;
 		QUuid uuid() const;
 		QIcon icon() const;

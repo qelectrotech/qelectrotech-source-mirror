@@ -120,10 +120,11 @@ HEADERS += $$files(sources/*.h) $$files(sources/ui/*.h) \
            $$files(sources/autoNum/ui/*.h) \
            $$files(sources/ui/configpage/*.h) \
            $$files(sources/SearchAndReplace/*.h) \
-		   $$files(sources/SearchAndReplace/ui/*.h) \
-		   $$files(sources/NameList/*.h) \
-		   $$files(sources/NameList/ui/*.h) \
-                   $$files(sources/utils/*.h)
+           $$files(sources/SearchAndReplace/ui/*.h) \
+           $$files(sources/NameList/*.h) \
+           $$files(sources/NameList/ui/*.h) \
+           $$files(sources/utils/*.h) \
+           $$files(sources/pugixml/*.hpp)
 
 SOURCES += $$files(sources/*.cpp) \
            $$files(sources/editor/*.cpp) \
@@ -144,11 +145,12 @@ SOURCES += $$files(sources/*.cpp) \
            $$files(sources/autoNum/*.cpp) \
            $$files(sources/autoNum/ui/*.cpp) \
            $$files(sources/ui/configpage/*.cpp) \
-		   $$files(sources/SearchAndReplace/*.cpp) \
-		   $$files(sources/SearchAndReplace/ui/*.cpp) \
-		   $$files(sources/NameList/*.cpp) \
-		   $$files(sources/NameList/ui/*.cpp) \
-                   $$files(sources/utils/*.cpp)
+           $$files(sources/SearchAndReplace/*.cpp) \
+           $$files(sources/SearchAndReplace/ui/*.cpp) \
+           $$files(sources/NameList/*.cpp) \
+           $$files(sources/NameList/ui/*.cpp) \
+           $$files(sources/utils/*.cpp) \
+           $$files(sources/pugixml/*.cpp)
     
 # Liste des fichiers qui seront incorpores au binaire en tant que ressources Qt
 RESOURCES += qelectrotech.qrc
