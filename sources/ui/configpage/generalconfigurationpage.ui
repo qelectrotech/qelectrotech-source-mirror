@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>727</width>
-    <height>510</height>
+    <height>535</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <item row="0" column="0">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="tab_3">
       <attribute name="title">
@@ -328,7 +328,14 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
        <item>
         <widget class="QCheckBox" name="m_use_pugi_xml">
          <property name="text">
-          <string>Utiliser pugi xml pour le chargement des collections.</string>
+          <string>Utiliser pugiXml pour le chargement des collections.</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="m_use_timer_widget">
+         <property name="text">
+          <string>Afficher le temps de chargement des collections</string>
          </property>
         </widget>
        </item>

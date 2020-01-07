@@ -43,6 +43,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->DiagramEditor_xKeyGridFine_sb->setValue(settings.value("diagrameditor/key_fine_Xgrid", 1).toInt());
 	ui->DiagramEditor_yKeyGridFine_sb->setValue(settings.value("diagrameditor/key_fine_Ygrid", 1).toInt());
 	ui->m_use_system_color_cb->setChecked(settings.value("usesystemcolors", "true").toBool());
+	ui->m_use_timer_widget->setChecked(settings.value("m_use_timer", true).toBool());
 	bool tabbed = settings.value("diagrameditor/viewmode", "tabbed") == "tabbed";
 	if(tabbed)
 		ui->m_use_tab_mode_rb->setChecked(true);
@@ -127,7 +128,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 		ui->m_custom_tbt_path_cb->blockSignals(false);
 	}
 
-	ui->m_use_pugi_xml->setChecked(settings.value("use_pugixml").toBool());
+	ui->m_use_pugi_xml->setChecked(settings.value("use_pugixml").toBool());	
 	
 	fillLang();	
 }
@@ -160,6 +161,7 @@ void GeneralConfigurationPage::applyConf()
 
 		//DIAGRAM VIEW
 	settings.setValue("diagramview/gestures", ui->m_use_gesture_trackpad->isChecked());
+	settings.setValue("m_use_timer", ui->m_use_timer_widget->isChecked());
 
 		//DIAGRAM COMMAND
 	settings.setValue("diagramcommands/erase-label-on-copy", ui->m_save_label_paste->isChecked());

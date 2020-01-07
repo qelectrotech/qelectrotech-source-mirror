@@ -27,6 +27,7 @@
 #include <QtConcurrent>
 #include <QFutureWatcher>
 #include <QMessageBox>
+#include <QSettings>
 
 /**
  * @brief ElementsCollectionModel::ElementsCollectionModel
@@ -251,8 +252,13 @@ void ElementsCollectionModel::loadCollections(bool common_collection, bool custo
 		emit loadingProgressValue(futur.progressValue());
 	}
 	int ms = t.elapsed();
-
+	
+	QSettings settings;
+		if (settings.value("m_use_timer").toBool())
+		{
 	QMessageBox::about(nullptr, tr("Chargement collection d'élément"), tr("Le chargement de la collection d'éléments à été éffectué en %1 ms").arg(ms));
+	}
+	
 }
 
 /**
