@@ -41,6 +41,13 @@ SingleApplication::SingleApplication( int &argc, char *argv[], bool allowSeconda
 {
     Q_D(SingleApplication);
 
+#if defined(Q_OS_ANDROID) || defined(Q_OS_IOS)
+    // On Android and iOS since the library is not supported fallback to
+    // standard QApplication behaviour by simply returning at this point.
+    qWarning() << "SingleApplication is not supported on Android and iOS systems.";
+    return;
+#endif
+
     // Store the current mode of the program
     d->options = options;
 
@@ -168,7 +175,7 @@ bool SingleApplication::sendMessage( QByteArray message, int timeout )
     d->connectToPrimary( timeout,  SingleApplicationPrivate::Reconnect );
 
     d->socket->write( message );
-    bool dataWritten = d->socket->flush();
-    d->socket->waitForBytesWritten( timeout );
+    bool dataWritten = d->socket->waitForBytesWritten( timeout );
+    d->socket->flush();
     return dataWritten;
 }

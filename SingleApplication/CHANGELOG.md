@@ -1,6 +1,54 @@
 Changelog
 =========
 
+__3.0.18__
+----------
+
+* Fallback to standard QApplication class on iOS and Android systems where
+  the library is not supported.
+  
+* Added Build CI tests to verify the library builds successfully on Linux, Windows and MacOS  across multiple Qt versions.
+
+  _Anton Filimonov_
+
+__3.0.17__
+----------
+
+* Fixed compilation warning/error caused by `geteuid()` on unix based systems.
+
+   _Iakov Kirilenko_
+
+* Added CMake support
+
+   _Hennadii Chernyshchyk_
+
+__3.0.16__
+----------
+
+* Use geteuid and getpwuid to get username on Unix, fallback to environment variable.
+
+   _Jonas Kvinge_
+
+__3.0.15__
+----------
+
+* Bug Fix: sendMessage() might return false even though data was actually written.
+
+   _Jonas Kvinge_
+
+__3.0.14__
+----------
+
+* Fixed uninitialised variables in the `SingleApplicationPrivate` constructor.
+
+__3.0.13a__
+----------
+
+* Process socket events asynchronously
+* Fix undefined variable error on Windows
+
+   _Francis Giraldeau_
+
 __3.0.12a__
 ----------
 
@@ -113,7 +161,7 @@ __3.0.1a__
 __v3.0a__
 ---------
 
-*   Depricated secondary instances count.
+*   Deprecated secondary instances count.
 *   Added a sendMessage() method to send a message to the primary instance.
 *   Added a receivedMessage() signal, emitted when a message is received from a
     secondary instance.
