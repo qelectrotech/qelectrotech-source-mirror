@@ -40,8 +40,10 @@ FileElementCollectionItem::FileElementCollectionItem()
 bool FileElementCollectionItem::setRootPath(const QString& path, bool set_data, bool hide_element)
 {
 	QDir dir(path);
-	if (dir.exists()) {
+	if (dir.exists())
+	{
 		m_path = path;
+		m_location.setPath(collectionPath());
 		populate(set_data, hide_element);
 		return true;
 	}
@@ -159,8 +161,8 @@ QString FileElementCollectionItem::localName()
 		}
 	}
 	else if (isElement()) {
-		ElementsLocation loc(collectionPath());
-		setText(loc.name());
+//		ElementsLocation loc(collectionPath());
+		setText(m_location.name());
 	}
 
 	return text();
@@ -264,8 +266,8 @@ void FileElementCollectionItem::setUpData()
 		
 			//Set the local name and all informations of the element
 			//in the data Qt::UserRole+1, these data will be use for search.
-		ElementsLocation location(collectionPath());
-		DiagramContext context = location.elementInformations();
+//		ElementsLocation location(collectionPath());
+		DiagramContext context = m_location.elementInformations();
 		QStringList search_list;
 		for (QString key : context.keys()) {
 			search_list.append(context.value(key).toString());
@@ -297,8 +299,8 @@ void FileElementCollectionItem::setUpIcon()
 		if (isDir())
 			setIcon(QET::Icons::Folder);
 		else {
-			ElementsLocation loc(collectionPath());
-			setIcon(loc.icon());
+//			ElementsLocation loc(collectionPath());
+			setIcon(m_location.icon());
 		}
 	}
 }
@@ -313,6 +315,7 @@ void FileElementCollectionItem::setUpIcon()
 void FileElementCollectionItem::setPathName(const QString& path_name, bool set_data, bool hide_element)
 {
 	m_path = path_name;
+	m_location.setPath(collectionPath());
 
 		//This isn't an element, we create the childs
 	if (!path_name.endsWith(".elmt"))

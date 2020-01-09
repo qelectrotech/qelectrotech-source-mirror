@@ -243,6 +243,8 @@ void ElementsCollectionModel::loadCollections(bool common_collection, bool custo
 		list.append(projectItems(project));
 	}
 
+	ElementsLocation::clearAcces();
+	qDebug() << "acces count " << ElementsLocation::accesCount();
 	QTime t;
 	t.start();
 	QFuture<void> futur = QtConcurrent::map(list, setUpData);
@@ -252,7 +254,7 @@ void ElementsCollectionModel::loadCollections(bool common_collection, bool custo
 	}
 	int ms = t.elapsed();
 
-	QMessageBox::about(nullptr, tr("Chargement collection d'élément"), tr("Le chargement de la collection d'éléments à été éffectué en %1 ms").arg(ms));
+	QMessageBox::about(nullptr, tr("Chargement collection d'élément"), tr("Le chargement de la collection d'éléments à été éffectué en %1 ms %2 acces").arg(ms).arg(ElementsLocation::accesCount()));
 }
 
 /**

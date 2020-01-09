@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2019 The QElectroTech Team
 	This file is part of QElectroTech.
 	
@@ -25,6 +25,7 @@
 #include "qetxml.h"
 #include <QPicture>
 
+static int acces;
 // make this class usable with QVariant
 int ElementsLocation::MetaTypeId = qRegisterMetaType<ElementsLocation>("ElementsLocation");
 
@@ -538,6 +539,7 @@ QDomElement ElementsLocation::xml() const
 {
 	if (!m_project)
 	{
+		++acces;
 		QFile file (m_file_system_path);
 		QDomDocument docu;
 		if (docu.setContent(&file))
@@ -568,11 +570,28 @@ QDomElement ElementsLocation::xml() const
  */
 pugi::xml_document ElementsLocation::pugiXml() const
 {
-	if (!m_project)
+		//Except for linux OS (because linux keep in cache the file), we keep in memory the xml
+		//to avoid multiple access to file.
+		//keep in memory the XML, consumes a little more RAM, for this reason we don't use it for linux to minimize the RAM footprint.
+#ifndef Q_OS_LINUX
+	if (!m_string_stream.str().empty())
 	{
 		pugi::xml_document docu;
+		docu.load_string(m_string_stream.str().c_str());
+		return docu;
+	}
+#endif
+	if (!m_project)
+	{
+		++acces;
+		pugi::xml_document docu;
 		if (docu.load_file(m_file_system_path.toStdString().c_str()))
+		{
+#ifndef Q_OS_LINUX
+			docu.save(m_string_stream);
+#endif
 			return docu;
+		}
 	}
 	else
 	{
@@ -778,13 +797,23 @@ DiagramContext ElementsLocation::elementInformations() const
 	return  context;
 }
 
-/**
-	@param location A standard element location
-	@return a hash identifying this location
-*/
-uint qHash(const ElementsLocation &location) {
-	return(qHash(location.toString()));
+void ElementsLocation::clearAcces()
+{
+	acces =0;
 }
+
+int ElementsLocation::accesCount()
+{
+	return  acces;
+}
+
+///**
+//	@param location A standard element location
+//	@return a hash identifying this location
+//*/
+//uint qHash(const ElementsLocation &location) {
+//	return(qHash(location.toString()));
+//}
 
 QDebug operator<< (QDebug debug, const ElementsLocation &location)
 {

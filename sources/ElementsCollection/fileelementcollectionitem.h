@@ -19,6 +19,7 @@
 #define FILEELEMENTCOLLECTIONITEM2_H
 
 #include "elementcollectionitem.h"
+#include "elementslocation.h"
 
 /**
  * @brief The FileElementCollectionItem class
@@ -59,6 +60,7 @@ class FileElementCollectionItem : public ElementCollectionItem
 
 	private:
 		QString m_path;
+		ElementsLocation m_location;
 };
 
 #endif // FILEELEMENTCOLLECTIONITEM2_H
