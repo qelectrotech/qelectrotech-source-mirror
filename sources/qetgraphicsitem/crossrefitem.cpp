@@ -269,8 +269,8 @@ bool CrossRefItem::sceneEvent(QEvent *event)
  * @param widget
  */
 void CrossRefItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
-	Q_UNUSED(option);
-	Q_UNUSED(widget);
+	Q_UNUSED(option)
+	Q_UNUSED(widget)
 	m_drawing.play(painter);
 }
 
@@ -445,10 +445,12 @@ void CrossRefItem::setUpCrossBoundingRect(QPainter &painter)
 
 	QStringList no_str, nc_str;
 
-	foreach (Element *elmt, NOElements())
+	for (auto elmt : NOElements()) {
 		no_str.append(elementPositionText(elmt, true));
-	foreach(Element *elmt, NCElements())
+	}
+	for (auto elmt : NCElements()) {
 		nc_str.append(elementPositionText(elmt, true));
+	}
 
 
 		//There is no string to display, we return now
@@ -459,10 +461,11 @@ void CrossRefItem::setUpCrossBoundingRect(QPainter &painter)
 
 		//Bounding rect of the NO text
 	QRectF no_bounding;
-	foreach(QString str, no_str)
+	for (auto str : no_str)
 	{
 		QRectF bounding = painter.boundingRect(QRectF (), Qt::AlignCenter, str);
 		no_bounding = no_bounding.united(bounding);
+		no_bounding.setHeight(no_bounding.height() + bounding.height());
 	}
 		//Adjust according to the NO
 	if (no_bounding.height() > default_bounding.height() - header)
@@ -472,10 +475,11 @@ void CrossRefItem::setUpCrossBoundingRect(QPainter &painter)
 
 		//Bounding rect of the NC text
 	QRectF nc_bounding;
-	foreach(QString str, nc_str)
+	for (auto str : nc_str)
 	{
 		QRectF bounding = painter.boundingRect(QRectF (), Qt::AlignCenter, str);
 		nc_bounding = nc_bounding.united(bounding);
+		nc_bounding.setHeight(nc_bounding.height() + bounding.height());
 	}
 		//Adjust according to the NC
 	if (nc_bounding.height() > default_bounding.height() - header)
