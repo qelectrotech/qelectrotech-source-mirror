@@ -809,7 +809,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="225"/>
         <source>Unifilaire</source>
-        <translation>Enkeldraads</translation>
+        <translation>Eéndraadschema</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="88"/>
@@ -907,7 +907,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="30"/>
         <source>&amp;Multifilaire</source>
-        <translation>&amp;Meeraderig</translation>
+        <translation>&amp;Meerdraadsschema</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="151"/>
@@ -938,7 +938,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="305"/>
         <source>Protective Earth Neutral</source>
-        <translation>Nul aan aarde</translation>
+        <translation>Gecombineerde veiligheidsaarde en nul</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="308"/>
