@@ -96,8 +96,6 @@ class ElementsLocation
 	
 	public:
 		static int MetaTypeId; ///< Id of the corresponding Qt meta type
-		static void clearAcces();
-		static int accesCount();
 };
 
 QDebug operator<<(QDebug debug, const ElementsLocation &location);

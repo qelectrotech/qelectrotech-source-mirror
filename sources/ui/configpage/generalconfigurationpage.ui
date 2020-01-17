@@ -325,13 +325,6 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
          </layout>
         </widget>
        </item>
-       <item>
-        <widget class="QCheckBox" name="m_use_pugi_xml">
-         <property name="text">
-          <string>Utiliser pugi xml pour le chargement des collections.</string>
-         </property>
-        </widget>
-       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="tab_6">

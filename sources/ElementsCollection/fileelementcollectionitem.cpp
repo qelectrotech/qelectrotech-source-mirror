@@ -124,44 +124,20 @@ QString FileElementCollectionItem::localName()
 		}
 		else
 		{
-			QSettings set;
-			if (set.value("use_pugixml").toBool())
+			QString str(fileSystemPath() + "/qet_directory");
+			pugi::xml_document docu;
+			if(docu.load_file(str.toStdString().c_str()))
 			{
-				QString str(fileSystemPath() + "/qet_directory");
-				pugi::xml_document docu;
-				if(docu.load_file(str.toStdString().c_str()))
+				if (QString(docu.document_element().name()) == "qet-directory")
 				{
-					if (QString(docu.document_element().name()) == "qet-directory")
-					{
-						NamesList nl;
-						nl.fromXml(docu.document_element());
-						setText(nl.name());
-					}
-				}
-			}
-			else
-			{
-				//Open the qet_directory file, to get the traductions name of this dir
-				QFile dir_conf(fileSystemPath() + "/qet_directory");
-
-				if (dir_conf.exists() && dir_conf.open(QIODevice::ReadOnly | QIODevice::Text)) {
-
-					//Get the content of the file
-					QDomDocument document;
-					if (document.setContent(&dir_conf)) {
-						QDomElement root = document.documentElement();
-						if (root.tagName() == "qet-directory") {
-							NamesList nl;
-							nl.fromXml(root);
-							setText(nl.name());
-						}
-					}
+					NamesList nl;
+					nl.fromXml(docu.document_element());
+					setText(nl.name());
 				}
 			}
 		}
 	}
 	else if (isElement()) {
-//		ElementsLocation loc(collectionPath());
 		setText(m_location.name());
 	}
 
@@ -266,7 +242,6 @@ void FileElementCollectionItem::setUpData()
 		
 			//Set the local name and all informations of the element
 			//in the data Qt::UserRole+1, these data will be use for search.
-//		ElementsLocation location(collectionPath());
 		DiagramContext context = m_location.elementInformations();
 		QStringList search_list;
 		for (QString key : context.keys()) {
@@ -295,11 +270,11 @@ void FileElementCollectionItem::setUpIcon()
 		else
 			setIcon(QIcon(":/ico/16x16/go-home.png"));
 	}
-	else {
-		if (isDir())
+	else
+	{
+		if (isDir()) {
 			setIcon(QET::Icons::Folder);
-		else {
-//			ElementsLocation loc(collectionPath());
+		} else {
 			setIcon(m_location.icon());
 		}
 	}

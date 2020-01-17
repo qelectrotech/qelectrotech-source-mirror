@@ -25,7 +25,6 @@
 #include "qetxml.h"
 #include <QPicture>
 
-static int acces;
 // make this class usable with QVariant
 int ElementsLocation::MetaTypeId = qRegisterMetaType<ElementsLocation>("ElementsLocation");
 
@@ -539,7 +538,6 @@ QDomElement ElementsLocation::xml() const
 {
 	if (!m_project)
 	{
-		++acces;
 		QFile file (m_file_system_path);
 		QDomDocument docu;
 		if (docu.setContent(&file))
@@ -583,7 +581,6 @@ pugi::xml_document ElementsLocation::pugiXml() const
 #endif
 	if (!m_project)
 	{
-		++acces;
 		pugi::xml_document docu;
 		if (docu.load_file(m_file_system_path.toStdString().c_str()))
 		{
@@ -695,25 +692,12 @@ QUuid ElementsLocation::uuid() const
 		return QUuid();
 	}
 
-	QSettings set;
-	if(set.value("use_pugixml").toBool())
-	{
-		auto document = pugiXml();
-		auto uuid_node = document.document_element().child("uuid");
-		if (uuid_node.empty()) {
-			return QUuid();
-		}
-		return QUuid(uuid_node.attribute("uuid").as_string());
+	auto document = pugiXml();
+	auto uuid_node = document.document_element().child("uuid");
+	if (uuid_node.empty()) {
+		return QUuid();
 	}
-
-		//Get the uuid of element
-	QList<QDomElement>  list_ = QET::findInDomElement(xml(), "uuid");
-
-	if (!list_.isEmpty())
-		return QUuid(list_.first().attribute("uuid"));
-
-	return QUuid();
-		//Get the uuid of element
+	return QUuid(uuid_node.attribute("uuid").as_string());
 }
 
 /**
@@ -744,14 +728,7 @@ QIcon ElementsLocation::icon() const
 QString ElementsLocation::name() const
 {
 	NamesList nl;
-
-	QSettings set;
-	if(set.value("use_pugixml").toBool()) {
-		nl.fromXml(pugiXml().document_element());
-	} else {
-		nl.fromXml(xml());
-	}
-
+	nl.fromXml(pugiXml().document_element());
 	return nl.name(fileName());
 }
 
@@ -783,37 +760,10 @@ DiagramContext ElementsLocation::elementInformations() const
 	if (isDirectory()) {
 		return context;
 	}
-	
-	QSettings set;
-	if (set.value("use_pugixml").toBool())
-	{
-		context.fromXml(pugiXml().document_element().child("elementInformations"), "elementInformation");
-	}
-	else
-	{
-		QDomElement dom = this->xml().firstChildElement("elementInformations");
-		context.fromXml(dom, "elementInformation");
-	}
+
+	context.fromXml(pugiXml().document_element().child("elementInformations"), "elementInformation");
 	return  context;
 }
-
-void ElementsLocation::clearAcces()
-{
-	acces =0;
-}
-
-int ElementsLocation::accesCount()
-{
-	return  acces;
-}
-
-///**
-//	@param location A standard element location
-//	@return a hash identifying this location
-//*/
-//uint qHash(const ElementsLocation &location) {
-//	return(qHash(location.toString()));
-//}
 
 QDebug operator<< (QDebug debug, const ElementsLocation &location)
 {

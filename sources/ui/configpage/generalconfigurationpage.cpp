@@ -126,8 +126,6 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 		ui->m_custom_tbt_path_cb->setItemData(1, path, Qt::DisplayRole);
 		ui->m_custom_tbt_path_cb->blockSignals(false);
 	}
-
-	ui->m_use_pugi_xml->setChecked(settings.value("use_pugixml").toBool());
 	
 	fillLang();	
 }
@@ -236,8 +234,6 @@ void GeneralConfigurationPage::applyConf()
 	if (path != settings.value("elements-collections/custom-tbt-path").toString()) {
 		QETApp::resetUserElementsDir();
 	}
-
-	settings.setValue("use_pugixml", ui->m_use_pugi_xml->isChecked()? true : false);
 }
 
 /**

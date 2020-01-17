@@ -25,7 +25,6 @@
 #include "elementcollectionhandler.h"
 
 #include <QtConcurrent>
-#include <QFutureWatcher>
 #include <QMessageBox>
 
 /**
@@ -238,23 +237,17 @@ void ElementsCollectionModel::loadCollections(bool common_collection, bool custo
 		list.append(items());
 
 
-	foreach (QETProject *project, projects) {
+	for (QETProject *project : projects)
+	{
 		addProject(project, false);
 		list.append(projectItems(project));
 	}
 
-	ElementsLocation::clearAcces();
-	qDebug() << "acces count " << ElementsLocation::accesCount();
-	QTime t;
-	t.start();
-	QFuture<void> futur = QtConcurrent::map(list, setUpData);
-	emit loadingMaxValue(futur.progressMaximum());
-	while (futur.isRunning()) {
-		emit loadingProgressValue(futur.progressValue());
+	emit loadingMaxValue(list.size());
+	QFuture<void> future = QtConcurrent::map(list, setUpData);
+	while (future.isRunning()) {
+		emit loadingProgressValue(future.progressValue());
 	}
-	int ms = t.elapsed();
-
-	QMessageBox::about(nullptr, tr("Chargement collection d'élément"), tr("Le chargement de la collection d'éléments à été éffectué en %1 ms %2 acces").arg(ms).arg(ElementsLocation::accesCount()));
 }
 
 /**
