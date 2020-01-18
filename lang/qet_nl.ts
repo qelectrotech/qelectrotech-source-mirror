@@ -8568,7 +8568,7 @@ Wilt u deze vervangen ?</translation>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="30"/>
         <source>&amp;Multifilaire</source>
-        <translation>&amp;Meeraderig</translation>
+        <translation>&amp;Meerdraadschema</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="43"/>
@@ -8670,12 +8670,12 @@ Wilt u deze vervangen ?</translation>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="308"/>
         <source>Unifilaire</source>
-        <translation>Enkeldraads</translation>
+        <translation>Eéndraadschema</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="323"/>
         <source>Protective Earth Neutral</source>
-        <translation>Nul aan aarde</translation>
+        <translation>Veiligheidsaarde en nul</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="326"/>
