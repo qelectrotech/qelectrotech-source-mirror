@@ -33,6 +33,7 @@
 #include "qetmessagebox.h"
 #include "projectview.h"
 #include "elementpicturefactory.h"
+#include "aboutqetdialog.h"
 
 #include <cstdlib>
 #include <iostream>
@@ -1502,12 +1503,12 @@ void QETApp::configureQET() {
  */
 void QETApp::aboutQET()
 {
-	AboutQET aq(qApp->activeWindow());
-	
+	//AboutQET aq(qApp->activeWindow());
+	AboutQETDialog aqd(qApp->activeWindow());
 #ifdef Q_OS_MACOS
-	aq.setWindowFlags(Qt::Sheet);
+	aqd.setWindowFlags(Qt::Sheet);
 #endif
-	aq.exec();
+	aqd.exec();
 }
 
 /**
