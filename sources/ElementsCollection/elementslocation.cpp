@@ -494,14 +494,8 @@ NamesList ElementsLocation::nameList()
 {
 	NamesList nl;
 
-	if (isElement())
-	{
-		QSettings set;
-		if (set.value("use_pugixml").toBool()) {
-			nl.fromXml(pugiXml());
-		} else {
-			nl.fromXml(xml());
-		}
+	if (isElement()) {
+		nl.fromXml(pugiXml());
 	}
 
 	if (isDirectory())

@@ -168,9 +168,10 @@ bool ElementsCollectionCache::fetchElement(ElementsLocation &location)
 	}
 	else
 	{
+		auto uuid = location.uuid();
 		QString element_path = location.toString();
-		bool got_name   = fetchNameFromCache(element_path, location.uuid());
-		bool got_pixmap = fetchPixmapFromCache(element_path, location.uuid());
+		bool got_name   = fetchNameFromCache(element_path, uuid);
+		bool got_pixmap = fetchPixmapFromCache(element_path, uuid);
 
 		if (got_name && got_pixmap) {
 			return(true);
@@ -178,8 +179,8 @@ bool ElementsCollectionCache::fetchElement(ElementsLocation &location)
 
 		if (fetchData(location))
 		{
-			cacheName(element_path, location.uuid());
-			cachePixmap(element_path, location.uuid());
+			cacheName(element_path, uuid);
+			cachePixmap(element_path, uuid);
 		}
 		return(true);
 	}

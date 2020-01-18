@@ -83,15 +83,15 @@ QPixmap ElementPictureFactory::pixmap(const ElementsLocation &location)
 	
 	if(build(location))
 	{
-		QDomElement dom = location.xml();
+		auto doc = location.pugiXml();
 			//size
-		int w = dom.attribute("width").toInt();
-		int h = dom.attribute("height").toInt();
+		int w = doc.document_element().attribute("width").as_int();
+		int h = doc.document_element().attribute("height").as_int();
 		while (w % 10) ++ w;
 		while (h % 10) ++ h;
 			//hotspot
-		int hsx = qMin(dom.attribute("hotspot_x").toInt(), w);
-		int hsy = qMin(dom.attribute("hotspot_y").toInt(), h);
+		int hsx = qMin(doc.document_element().attribute("hotspot_x").as_int(), w);
+		int hsy = qMin(doc.document_element().attribute("hotspot_y").as_int(), h);
 
 		QPixmap pix(w, h);
 		pix.fill(QColor(255, 255, 255, 0));

@@ -231,11 +231,11 @@ void FileElementCollectionItem::addChildAtPath(const QString &collection_name)
  */
 void FileElementCollectionItem::setUpData()
 {
-		//Setup the displayed name
-	localName();
-
 	if (isDir())
+	{
+		localName();
 		setFlags(Qt::ItemIsSelectable | Qt::ItemIsDragEnabled | Qt::ItemIsDropEnabled | Qt::ItemIsEnabled);
+	}
 	else
 	{
 		setFlags(Qt::ItemIsSelectable | Qt::ItemIsDragEnabled | Qt::ItemIsEnabled);
