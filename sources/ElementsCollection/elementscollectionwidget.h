@@ -79,13 +79,15 @@ class ElementsCollectionWidget : public QWidget
 
 	public slots:
 		void reload();
+		void loadingFinished();
 
 	private:
 		void locationWasSaved(const ElementsLocation& location);
 
 
 	private:
-		ElementsCollectionModel *m_model;
+		ElementsCollectionModel *m_model = nullptr;
+		ElementsCollectionModel *m_new_model = nullptr;
 		QLineEdit *m_search_field;
 		QTimer m_search_timer;
 		ElementsTreeView *m_tree_view;

@@ -24,8 +24,8 @@
 #include "qetproject.h"
 #include "elementcollectionhandler.h"
 
+#include <QFutureWatcher>
 #include <QtConcurrent>
-#include <QMessageBox>
 
 /**
  * @brief ElementsCollectionModel::ElementsCollectionModel
@@ -218,15 +218,16 @@ bool ElementsCollectionModel::dropMimeData(const QMimeData *data, Qt::DropAction
  * Load the several collections in this model.
  * Prefer use this method instead of addCommonCollection, addCustomCollection and addProject,
  * because it use multithreading to speed up the loading.
- * This method emit loadingMaxValue(int) for know the maximum progress value
- * This method emit loadingProgressValue(int) for know the current progress value
+ * This method emit loadingProgressRangeChanged(int, int) for know the minimu and maximum progress value
+ * This method emit loadingProgressValueChanged(int) for know the current progress value
+ * This method emit loadingFinished for know when loading finished.
  * @param common_collection : true for load the common collection
  * @param custom_collection : true for load the custom collection
  * @param projects : list of projects to load
  */
 void ElementsCollectionModel::loadCollections(bool common_collection, bool custom_collection, QList<QETProject *> projects)
 {
-	QList <ElementCollectionItem *> list;
+	m_items_list_to_setUp.clear();
 
 	if (common_collection)
 		addCommonCollection(false);
@@ -234,20 +235,21 @@ void ElementsCollectionModel::loadCollections(bool common_collection, bool custo
 		addCustomCollection(false);
 
 	if (common_collection || custom_collection)
-		list.append(items());
+		m_items_list_to_setUp.append(items());
 
 
 	for (QETProject *project : projects)
 	{
 		addProject(project, false);
-		list.append(projectItems(project));
+		m_items_list_to_setUp.append(projectItems(project));
 	}
-
-	emit loadingMaxValue(list.size());
-	QFuture<void> future = QtConcurrent::map(list, setUpData);
-	while (future.isRunning()) {
-		emit loadingProgressValue(future.progressValue());
-	}
+	auto *watcher = new QFutureWatcher<void>();
+	connect(watcher, &QFutureWatcher<void>::progressValueChanged, this, &ElementsCollectionModel::loadingProgressValueChanged);
+	connect(watcher, &QFutureWatcher<void>::progressRangeChanged, this, &ElementsCollectionModel::loadingProgressRangeChanged);
+	connect(watcher, &QFutureWatcher<void>::finished, this, &ElementsCollectionModel::loadingFinished);
+	connect(watcher, &QFutureWatcher<void>::finished, watcher, &QFutureWatcher<void>::deleteLater);
+	m_future = QtConcurrent::map(m_items_list_to_setUp, setUpData);
+	watcher->setFuture(m_future);
 }
 
 /**
