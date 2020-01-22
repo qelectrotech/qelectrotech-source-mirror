@@ -1,0 +1,52 @@
+<definition height="250" hotspot_y="114" type="element" hotspot_x="45" width="90" orientation="dyyy" link_type="simple" version="0.80">
+    <uuid uuid="{ab1927bb-4fe6-4949-b54a-8aec3a15f0e5}"/>
+    <names>
+        <name lang="en">E49</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="label">Power</elementInformation>
+        <elementInformation show="1" name="plant">SCS MyHOME</elementInformation>
+        <elementInformation show="1" name="comment">BTicino E49</elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="description">SCS power in DIN module</elementInformation>
+        <elementInformation show="1" name="designation">E49</elementInformation>
+        <elementInformation show="1" name="manufacturer-reference">E49</elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="manufacturer">BTicino - Legrang Group</elementInformation>
+    </elementInformations>
+    <informations>Arnaud Valmary</informations>
+    <description>
+        <rect antialias="false" height="240" width="80" rx="0" x="-40" y="-110" ry="0" style="line-style:normal;line-weight:thin;filling:white;color:black"/>
+        <circle diameter="5" antialias="false" x="27.5" y="87.5" style="line-style:normal;line-weight:thin;filling:green;color:black"/>
+        <circle diameter="5" antialias="false" x="-32.5" y="-102.5" style="line-style:normal;line-weight:normal;filling:lightgray;color:black"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" text="PRI" x="-32" y="-80"/>
+        <text color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="PRI: 220-240V~  200-130mA&#xa;50-60Hz&#xa;SCS: 27 Vdc 600mA" x="-37" y="80"/>
+        <circle diameter="5" antialias="false" x="-22.5" y="-102.5" style="line-style:normal;line-weight:normal;filling:lightgray;color:black"/>
+        <line length1="1.5" antialias="false" x1="-32" y1="-99" x2="-28" end2="none" length2="1.5" y2="-101" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="N     L" x="-32" y="-91"/>
+        <rect antialias="false" height="11" width="21" rx="0" x="5" y="-54" ry="0" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line length1="1.5" antialias="false" x1="40" y1="110" x2="-40" end2="none" length2="1.5" y2="110" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line length1="1.5" antialias="false" x1="-22" y1="-99" x2="-18" end2="none" length2="1.5" y2="-101" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="5" antialias="false" x="23.5" y="116.5" style="line-style:normal;line-weight:normal;filling:lightgray;color:black"/>
+        <circle diameter="5" antialias="false" x="30.5" y="116.5" style="line-style:normal;line-weight:normal;filling:lightgray;color:black"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" text="SCS" x="22" y="108"/>
+        <line length1="1.5" antialias="false" x1="40" y1="-90" x2="-40" end2="none" length2="1.5" y2="-90" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <polygon antialias="false" x1="38" y1="100" x2="-38" y3="65" closed="false" y2="100" x3="-38" style="line-style:normal;line-weight:normal;filling:none;color:red"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" text="MyHOME" x="-3" y="-58"/>
+        <text color="#ffffff" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" text="S C S" x="5" y="-45"/>
+        <line length1="1.5" antialias="false" x1="24" y1="120" x2="28" end2="none" length2="1.5" y2="118" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" antialias="false" x1="31" y1="120" x2="35" end2="none" length2="1.5" y2="118" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text z="21" font="DejaVu Sans,8,-1,5,50,0,0,0,0,0" text_from="ElementInfo" rotation="0" text_width="-1" x="-40" uuid="{aa1f8720-f6d4-49b4-aa6e-08dae36df170}" frame="false" Valignment="AlignTop" y="57" Halignment="AlignLeft">
+            <text>E49</text>
+            <info_name>designation</info_name>
+        </dynamic_text>
+        <dynamic_text z="22" font="DejaVu Sans,8,-1,5,50,0,0,0,0,0" text_from="UserText" rotation="0" text_width="-1" x="-37" uuid="{d7919e62-c28f-41c4-b3e0-9e909946044e}" frame="false" Valignment="AlignTop" y="-17" Halignment="AlignLeft">
+            <text>_</text>
+        </dynamic_text>
+        <terminal x="-30" orientation="n" y="-110"/>
+        <terminal x="-20" orientation="n" y="-110"/>
+        <terminal x="30" orientation="s" y="130"/>
+    </description>
+</definition>

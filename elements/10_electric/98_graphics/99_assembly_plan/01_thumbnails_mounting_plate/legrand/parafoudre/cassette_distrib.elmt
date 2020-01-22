@@ -1,0 +1,61 @@
+<definition hotspot_y="32" type="element" version="0.80" orientation="dyyy" link_type="simple" width="90" hotspot_x="45" height="70">
+    <uuid uuid="{c17e4b2f-9d62-41c5-9a82-19ca7e0aeab8}"/>
+    <names>
+        <name lang="fr">003974 - Cassette parafoudre - Distribution</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">0039 74</elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Legrand</elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="description" show="1">Cassette de remplacement pour parafoudre réferences 003971 et 003973</elementInformation>
+    </elementInformations>
+    <informations>Alexandre Dis</informations>
+    <description>
+        <polygon x1="-11.9" x2="33.1" y1="30.5" y2="30.5" closed="false" antialias="false" style="line-style:normal;line-weight:normal;filling:red;color:red"/>
+        <rect ry="0" x="-39.9" y="-30" width="80" rx="0" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" height="65"/>
+        <circle diameter="10" x="5.1" y="-26" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect ry="0" x="-20.9" y="-26" width="17" rx="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10"/>
+        <circle diameter="10" x="-8.9" y="-26" antialias="false" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="-18.9" y="-19" text="OK"/>
+        <arc start="0" x="15.1" y="-26" width="20" angle="90" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20"/>
+        <line x1="10.1" x2="25.1" length2="1.5" y1="-26" y2="-26" end1="none" length1="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x7="35.1" x1="10.1" y1="-16" x9="35.1" y2="-16" y4="-13" closed="false" y3="-13" x8="35.1" antialias="false" x5="31.1" y9="-15" x4="22.1" y6="-13" x3="25.1" y5="-6" y7="-13" y8="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="25.1" x6="38.1"/>
+        <circle diameter="7" x="-7.4" y="-24.5" antialias="false" style="line-style:normal;line-weight:thin;filling:green;color:black"/>
+        <circle diameter="7" x="6.6" y="-24.5" antialias="false" style="line-style:normal;line-weight:thin;filling:red;color:black"/>
+        <ellipse x="-37.9375" y="-26" width="16.1501" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" height="10"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#ffffff" rotation="0" x="-34.6" y="-18.5" text="NF"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="-32.8" y="-12" text="UF2"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="-33.9" y="0" text="T2"/>
+        <rect ry="0" x="-35.9" y="-9" width="14" rx="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="12"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="-35.9" y="11" text="Uc : 275V~&#xa;In/Imax : 10/12kA&#xa;Up : 1,2kV&#xa;Icc : 10kA"/>
+        <polygon x1="-36.9" y3="30.5" x2="-36.9" y1="5.5" y2="30.5" x3="-31.9" closed="false" y4="30.5" x4="-31.9" antialias="false" style="line-style:normal;line-weight:normal;filling:red;color:red"/>
+        <rect ry="0" x="17.1" y="8" width="2" rx="0" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" height="7"/>
+        <line x1="18.1" x2="18.1" length2="1.5" y1="6" y2="17" end1="none" length1="1.5" antialias="false" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect ry="0" x="15.1" y="4" width="8" rx="0" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" height="15"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" x="19.9529" y="8.365" text="S&#xa;P&#xa;D"/>
+        <rect ry="0" x="29.35" y="5.195" width="2" rx="0" antialias="false" style="line-style:normal;line-weight:thin;filling:black;color:black" height="12"/>
+        <circle diameter="1" x="29.85" y="14.695" antialias="false" style="line-style:normal;line-weight:thin;filling:white;color:black"/>
+        <dynamic_text font="DejaVu Sans,2,-1,5,50,0,0,0,0,0" rotation="270" z="66" Halignment="AlignLeft" x="27.35" y="21.195" text_width="-1" text_from="ElementInfo" Valignment="AlignTop" uuid="{e9015d33-dac1-4928-9c1a-0b9dc300e5da}" frame="false">
+            <text>0039 74</text>
+            <info_name>designation</info_name>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" z="67" Halignment="AlignLeft" x="-41" y="-52" text_width="-1" text_from="UserText" Valignment="AlignTop" uuid="{1a161cf0-4a09-4180-88fe-bc8e85f19bbc}" frame="false">
+            <text>_</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" z="68" Halignment="AlignLeft" x="-40" y="-75.5" text_width="-1" text_from="ElementInfo" Valignment="AlignTop" uuid="{3f912e8c-d21a-4f53-a26c-dd65642c1b72}" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,3,-1,5,25,0,0,0,0,0" rotation="0" z="69" Halignment="AlignLeft" x="-33.9625" y="23" text_width="-1" text_from="ElementInfo" Valignment="AlignTop" uuid="{12f92c49-51df-46d1-9487-6330b21ab387}" frame="false">
+            <text>Legrand</text>
+            <info_name>manufacturer</info_name>
+        </dynamic_text>
+    </description>
+</definition>

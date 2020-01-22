@@ -1,0 +1,61 @@
+<definition height="640" version="0.80" type="element" hotspot_x="7" link_type="simple" width="50" hotspot_y="65" orientation="dyyy">
+    <uuid uuid="{003add6a-55f8-4701-98da-4212cbf9c520}"/>
+    <names>
+        <name lang="fr">405001 - Peigne P+N VX³ - 3 rangées</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="description">Peigne d'alimentation verticale VX³ optimisée monophasée - pour coffret 3 rangées entraxe 125mm</elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="designation">4050 01</elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+    </elementInformations>
+    <informations>Arnaud Valmary</informations>
+    <description>
+        <rect height="610" y="-40" ry="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="5" antialias="false" x="-5" rx="0"/>
+        <polygon y3="240" x4="20" y2="270" y1="240" x5="30" y4="220" x3="0" style="line-style:normal;line-weight:thin;filling:blue;color:black" y5="230" x2="0" antialias="false" x1="30"/>
+        <polygon y3="520" x4="20.25" y2="550" y1="520" x5="30.25" y4="500" x3="0.25" style="line-style:normal;line-weight:thin;filling:blue;color:black" y5="510" x2="0.25" antialias="false" x1="30.25"/>
+        <dynamic_text text_from="ElementInfo" uuid="{58b7ce38-810c-4865-8f14-ee41cd829a36}" z="3" y="252" font="Sans Serif,6,-1,5,50,0,0,0,0,0" text_width="-1" rotation="0" frame="false" Valignment="AlignTop" x="0" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text text_from="ElementInfo" uuid="{58b7ce38-810c-4865-8f14-ee41cd829a36}" z="3" y="532" font="Sans Serif,6,-1,5,50,0,0,0,0,0" text_width="-1" rotation="0" frame="false" Valignment="AlignTop" x="0.25" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text text_from="ElementInfo" uuid="{58b7ce38-810c-4865-8f14-ee41cd829a36}" z="3" y="-28" font="Sans Serif,6,-1,5,50,0,0,0,0,0" text_width="-1" rotation="0" frame="false" Valignment="AlignTop" x="0" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text text_from="ElementInfo" uuid="{e4a56c36-b376-4dc5-954e-049d43f23ce2}" z="4" y="3" font="DejaVu Sans,3,-1,5,50,0,0,0,0,0" text_width="-1" rotation="270" frame="false" Valignment="AlignTop" x="-9" Halignment="AlignLeft">
+            <text>4050 01</text>
+            <info_name>designation</info_name>
+        </dynamic_text>
+        <polygon y3="280" x4="0" y2="250" y1="240" x5="0" y4="280" x3="40" style="line-style:normal;line-weight:thin;filling:black;color:black" y5="270" x2="40" antialias="false" x6="30" x1="30" y6="240"/>
+        <dynamic_text text_from="ElementInfo" uuid="{2cd5e253-a1e3-4469-8a78-30128ccd7d74}" z="5" y="-18" font="DejaVu Sans,3,-1,5,50,0,0,0,0,0" text_width="-1" rotation="270" frame="false" Valignment="AlignTop" x="-9" Halignment="AlignLeft">
+            <text>Legrand</text>
+            <info_name>manufacturer</info_name>
+        </dynamic_text>
+        <polygon y3="560" x4="0.25" y2="530" y1="520" x5="0.25" y4="560" x3="40.25" style="line-style:normal;line-weight:thin;filling:black;color:black" y5="550" x2="40.25" antialias="false" x6="30.25" x1="30.25" y6="520"/>
+        <polygon y3="-40" x4="20" y2="-10" y1="-40" x5="30" y4="-60" x3="0" style="line-style:normal;line-weight:thin;filling:blue;color:black" y5="-50" x2="0" antialias="false" x1="30"/>
+        <polygon y3="0" x4="0" y2="-30" y1="-40" x5="0" y4="0" x3="40" style="line-style:normal;line-weight:thin;filling:black;color:black" y5="-10" x2="40" antialias="false" x6="30" x1="30" y6="-40"/>
+        <terminal y="-55" x="25" orientation="e"/>
+        <terminal y="0" x="10" orientation="s"/>
+        <terminal y="246" x="36" orientation="e"/>
+        <terminal y="280" x="30" orientation="s"/>
+        <terminal y="225" x="25" orientation="e"/>
+        <terminal y="-34" x="36" orientation="e"/>
+        <terminal y="0" x="30" orientation="s"/>
+        <terminal y="280" x="10" orientation="s"/>
+        <terminal y="526" x="36.25" orientation="e"/>
+        <terminal y="560" x="30.25" orientation="s"/>
+        <terminal y="505" x="25.25" orientation="e"/>
+        <terminal y="560" x="10.25" orientation="s"/>
+    </description>
+</definition>

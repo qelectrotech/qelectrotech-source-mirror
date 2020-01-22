@@ -1,0 +1,51 @@
+<definition height="360" orientation="dyyy" link_type="simple" hotspot_y="65" version="0.80" type="element" width="50" hotspot_x="7">
+    <uuid uuid="{c75e3f33-4e70-40d4-b7d4-eccea16bbc6d}"/>
+    <names>
+        <name lang="fr">405000 - Peigne P+N VX³ - 2 rangées</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="description">Peigne d'alimentation verticale VX³ optimisée monophasée - pour coffret 2 rangées entraxe 125mm</elementInformation>
+        <elementInformation show="1" name="designation">4050 00</elementInformation>
+    </elementInformations>
+    <informations>Arnaud Valmary</informations>
+    <description>
+        <rect height="330" ry="0" rx="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="-40" x="-5" antialias="false" width="5"/>
+        <polygon x1="30" x5="30" style="line-style:normal;line-weight:thin;filling:blue;color:black" x2="0" y2="270" x3="0" y5="230" y4="220" antialias="false" y1="240" x4="20" y3="240"/>
+        <dynamic_text Halignment="AlignLeft" y="-28" rotation="0" z="3" x="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0" uuid="{58b7ce38-810c-4865-8f14-ee41cd829a36}" text_width="-1" frame="false" text_from="ElementInfo" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon x1="30" x5="0" y6="240" style="line-style:normal;line-weight:thin;filling:black;color:black" x2="40" y2="250" x3="40" y5="270" y4="280" antialias="false" x6="30" y1="240" x4="0" y3="280"/>
+        <dynamic_text Halignment="AlignLeft" y="252" rotation="0" z="3" x="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0" uuid="{58b7ce38-810c-4865-8f14-ee41cd829a36}" text_width="-1" frame="false" text_from="ElementInfo" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text Halignment="AlignLeft" y="3" rotation="270" z="4" x="-9" font="DejaVu Sans,3,-1,5,50,0,0,0,0,0" uuid="{e4a56c36-b376-4dc5-954e-049d43f23ce2}" text_width="-1" frame="false" text_from="ElementInfo" Valignment="AlignTop">
+            <text>4050 00</text>
+            <info_name>designation</info_name>
+        </dynamic_text>
+        <dynamic_text Halignment="AlignLeft" y="-18" rotation="270" z="5" x="-9" font="DejaVu Sans,3,-1,5,50,0,0,0,0,0" uuid="{2cd5e253-a1e3-4469-8a78-30128ccd7d74}" text_width="-1" frame="false" text_from="ElementInfo" Valignment="AlignTop">
+            <text>Legrand</text>
+            <info_name>manufacturer</info_name>
+        </dynamic_text>
+        <polygon x1="30" x5="30" style="line-style:normal;line-weight:thin;filling:blue;color:black" x2="0" y2="-10" x3="0" y5="-50" y4="-60" antialias="false" y1="-40" x4="20" y3="-40"/>
+        <polygon x1="30" x5="0" y6="-40" style="line-style:normal;line-weight:thin;filling:black;color:black" x2="40" y2="-30" x3="40" y5="-10" y4="0" antialias="false" x6="30" y1="-40" x4="0" y3="0"/>
+        <terminal orientation="s" y="0" x="10"/>
+        <terminal orientation="s" y="280" x="30"/>
+        <terminal orientation="e" y="225" x="25"/>
+        <terminal orientation="e" y="-34" x="36"/>
+        <terminal orientation="s" y="0" x="30"/>
+        <terminal orientation="e" y="-55" x="25"/>
+        <terminal orientation="e" y="246" x="36"/>
+        <terminal orientation="s" y="280" x="10"/>
+    </description>
+</definition>

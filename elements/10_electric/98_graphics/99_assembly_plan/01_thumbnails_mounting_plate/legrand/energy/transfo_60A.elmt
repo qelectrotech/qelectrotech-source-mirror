@@ -1,0 +1,30 @@
+<definition height="70" width="80" link_type="simple" orientation="dyyy" hotspot_y="34" hotspot_x="38" type="element" version="0.80">
+    <uuid uuid="{18bb543b-faf3-4be4-8d50-5b28c44964b7}"/>
+    <names>
+        <name lang="fr">412004 - Transformateur de courant fermé 60A</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="description">Transformateur de courant fermé 60A</elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="designation">4120 04</elementInformation>
+        <elementInformation show="1" name="manufacturer"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+    </elementInformations>
+    <informations>Arnaud Valmary</informations>
+    <description>
+        <arc height="65" width="65" style="line-style:normal;line-weight:eleve;filling:black;color:black" x="-32.5" y="-32.5" start="0" angle="30" antialias="true"/>
+        <circle style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="60" x="-30" y="-30" antialias="true"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="30" x="-15" y="-15" antialias="true"/>
+        <text x="11" y="24" text="15W38" font="Sans Serif,2,-1,5,50,0,0,0,0,0" rotation="320" color="#ffffff"/>
+        <text x="-15" y="-18" text="41 20 04" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#ffffff"/>
+        <text x="19" y="-15" text="Imax=72A AC" font="Sans Serif,3,-1,5,50,0,0,0,0,0" rotation="90" color="#ffffff"/>
+        <text x="-21" y="10" text="Legrand" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="270" color="#ffffff"/>
+        <terminal x="33" orientation="s" y="3"/>
+    </description>
+</definition>

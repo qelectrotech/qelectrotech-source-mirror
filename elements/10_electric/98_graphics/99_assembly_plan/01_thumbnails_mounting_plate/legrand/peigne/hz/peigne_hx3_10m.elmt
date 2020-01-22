@@ -1,0 +1,57 @@
+<definition version="0.80" height="30" type="element" hotspot_y="14" width="390" hotspot_x="34" link_type="simple" orientation="dyyy">
+    <uuid uuid="{d70bca30-872b-4e1b-bbbc-03a5a75d0623}"/>
+    <names>
+        <name lang="fr">404926 - Peigne P+N HX³ - 10 modules</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Legrand</elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">4049 26</elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="description" show="1">Peigne d'alimentation universel Phase + Neutre HX³ horizontale 1P - longueur 13 modules</elementInformation>
+    </elementInformations>
+    <informations>Arnaud Valmary</informations>
+    <description>
+        <rect x="-31" height="20" antialias="false" width="382" rx="0" y="-10" ry="0" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <polygon y3="-8" closed="false" y2="-8" x3="350" antialias="false" x1="-30" y1="4" x2="-30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y3="-6" closed="false" y2="-6" x3="350" antialias="false" x1="-28" y1="6" x2="-28" style="line-style:normal;line-weight:normal;filling:none;color:blue"/>
+        <dynamic_text frame="false" text_width="-1" x="-31" z="3" uuid="{58b7ce38-810c-4865-8f14-ee41cd829a36}" text_from="ElementInfo" rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0" y="-28" Halignment="AlignLeft" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text frame="false" text_width="-1" x="-30.7266" z="4" uuid="{e4a56c36-b376-4dc5-954e-049d43f23ce2}" text_from="ElementInfo" rotation="0" font="DejaVu Sans,4,-1,5,50,0,0,0,0,0" y="-9.5" Halignment="AlignLeft" Valignment="AlignTop">
+            <text>4049 26</text>
+            <info_name>designation</info_name>
+        </dynamic_text>
+        <dynamic_text frame="false" text_width="-1" x="-3.72656" z="5" uuid="{2cd5e253-a1e3-4469-8a78-30128ccd7d74}" text_from="ElementInfo" rotation="0" font="DejaVu Sans,4,-1,5,50,0,0,0,0,0" y="-9.5" Halignment="AlignLeft" Valignment="AlignTop">
+            <text>Legrand</text>
+            <info_name>manufacturer</info_name>
+        </dynamic_text>
+        <terminal x="310" y="10" orientation="s"/>
+        <terminal x="170" y="10" orientation="s"/>
+        <terminal x="50" y="10" orientation="s"/>
+        <terminal x="110" y="10" orientation="s"/>
+        <terminal x="230" y="10" orientation="s"/>
+        <terminal x="330" y="10" orientation="s"/>
+        <terminal x="150" y="10" orientation="s"/>
+        <terminal x="30" y="10" orientation="s"/>
+        <terminal x="10" y="10" orientation="s"/>
+        <terminal x="270" y="10" orientation="s"/>
+        <terminal x="-10" y="10" orientation="s"/>
+        <terminal x="350" y="10" orientation="s"/>
+        <terminal x="290" y="10" orientation="s"/>
+        <terminal x="-30" y="10" orientation="s"/>
+        <terminal x="130" y="10" orientation="s"/>
+        <terminal x="90" y="10" orientation="s"/>
+        <terminal x="70" y="10" orientation="s"/>
+        <terminal x="190" y="10" orientation="s"/>
+        <terminal x="250" y="10" orientation="s"/>
+        <terminal x="210" y="10" orientation="s"/>
+    </description>
+</definition>

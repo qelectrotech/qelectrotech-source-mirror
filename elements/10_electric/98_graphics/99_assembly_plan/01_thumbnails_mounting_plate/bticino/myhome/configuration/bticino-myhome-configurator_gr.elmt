@@ -1,0 +1,29 @@
+<definition version="0.70" link_type="simple" hotspot_x="5" hotspot_y="29" width="10" height="40" orientation="dyyy" type="element">
+    <uuid uuid="{bfa5c953-ddbe-4688-8be6-249eb4ed4d84}"/>
+    <names>
+        <name lang="fr">Configurateur GR</name>
+        <name lang="en">Configurator GR</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="label">Configurator GR</elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="manufacturer">BTicino - Legrang Group</elementInformation>
+        <elementInformation show="1" name="description">Configurator GR</elementInformation>
+        <elementInformation show="1" name="comment">BTicino configurator GR</elementInformation>
+        <elementInformation show="1" name="plant">SCS MyHOME</elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference">3501/GR</elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="designation">3501/GR</elementInformation>
+    </elementInformations>
+    <informations>Arnaud Valmary</informations>
+    <description>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:blue;color:blue" width="5" rx="0" height="18" y="-19" ry="0" x="-2.5"/>
+        <arc antialias="true" start="180" angle="180" style="line-style:normal;line-weight:normal;filling:none;color:blue" width="5" height="5" y="-2.5" x="-2.5"/>
+        <arc antialias="true" start="0" angle="180" style="line-style:normal;line-weight:normal;filling:blue;color:blue" width="5" height="5" y="-22.5" x="-2.5"/>
+        <text color="#ffffff" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="G&#xa;R" rotation="0" y="-12" x="-2"/>
+        <terminal y="0" orientation="n" x="0"/>
+        <terminal y="-20" orientation="s" x="0"/>
+    </description>
+</definition>

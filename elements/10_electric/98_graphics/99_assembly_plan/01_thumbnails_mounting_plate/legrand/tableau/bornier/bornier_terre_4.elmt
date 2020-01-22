@@ -1,0 +1,64 @@
+<definition link_type="simple" hotspot_y="3" height="70" hotspot_x="6" version="0.80" orientation="dyyy" width="40" type="element">
+    <uuid uuid="{948e0192-24e9-40ff-8f6e-1251df8a1e5e}"/>
+    <names>
+        <name lang="fr">004830  - Bornier phase 4 x 1,5-16mm²</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">0048 30</elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="description" show="1">Bornier de répartition isolé IP2X terre - 4 connexions 1,5mm² à 16mm²- vert - longueur 47mm</elementInformation>
+        <elementInformation name="manufacturer" show="1">Legrand</elementInformation>
+    </elementInformations>
+    <informations>Arnaud Valmary</informations>
+    <description>
+        <line y1="10" antialias="false" x2="21" end1="none" y2="10" style="line-style:normal;line-weight:normal;filling:none;color:gray" end2="none" x1="23" length2="1.5" length1="1.5"/>
+        <line y1="55" antialias="false" x2="21" end1="none" y2="55" style="line-style:normal;line-weight:normal;filling:none;color:gray" end2="none" x1="23" length2="1.5" length1="1.5"/>
+        <arc antialias="true" start="45" height="6" angle="270" y="52" width="6" style="line-style:normal;line-weight:normal;filling:none;color:gray" x="23"/>
+        <rect antialias="false" height="65" ry="0" y="0" width="20" style="line-style:normal;line-weight:thin;filling:green;color:black" x="0" rx="0"/>
+        <circle diameter="10" antialias="true" y="50" style="line-style:normal;line-weight:thin;filling:gray;color:black" x="5"/>
+        <circle diameter="10" antialias="true" y="35" style="line-style:normal;line-weight:thin;filling:gray;color:black" x="5"/>
+        <circle diameter="10" antialias="true" y="20" style="line-style:normal;line-weight:thin;filling:gray;color:black" x="5"/>
+        <circle diameter="10" antialias="true" y="5" style="line-style:normal;line-weight:thin;filling:gray;color:black" x="5"/>
+        <arc antialias="true" start="45" height="6" angle="270" y="7" width="6" style="line-style:normal;line-weight:normal;filling:none;color:gray" x="23"/>
+        <rect antialias="false" height="65" ry="0" y="0" width="1" style="line-style:normal;line-weight:thin;filling:gray;color:black" x="20" rx="0"/>
+        <line y1="8" antialias="false" x2="12" end1="none" y2="12" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x1="8" length2="1.5" length1="1.5"/>
+        <line y1="23" antialias="false" x2="12" end1="none" y2="27" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x1="8" length2="1.5" length1="1.5"/>
+        <line y1="53" antialias="false" x2="12" end1="none" y2="57" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x1="8" length2="1.5" length1="1.5"/>
+        <line y1="38" antialias="false" x2="12" end1="none" y2="42" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x1="8" length2="1.5" length1="1.5"/>
+        <line y1="38" antialias="false" x2="8" end1="none" y2="42" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x1="12" length2="1.5" length1="1.5"/>
+        <line y1="23" antialias="false" x2="8" end1="none" y2="27" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x1="12" length2="1.5" length1="1.5"/>
+        <line y1="53" antialias="false" x2="8" end1="none" y2="57" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x1="12" length2="1.5" length1="1.5"/>
+        <line y1="8" antialias="false" x2="8" end1="none" y2="12" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x1="12" length2="1.5" length1="1.5"/>
+        <line y1="53" antialias="false" x2="10" end1="none" y2="57" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" x1="10" length2="1.5" length1="1.5"/>
+        <line y1="38" antialias="false" x2="10" end1="none" y2="42" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" x1="10" length2="1.5" length1="1.5"/>
+        <line y1="23" antialias="false" x2="10" end1="none" y2="27" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" x1="10" length2="1.5" length1="1.5"/>
+        <line y1="8" antialias="false" x2="10" end1="none" y2="12" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" x1="10" length2="1.5" length1="1.5"/>
+        <line y1="55" antialias="false" x2="12" end1="none" y2="55" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" x1="8" length2="1.5" length1="1.5"/>
+        <line y1="40" antialias="false" x2="12" end1="none" y2="40" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" x1="8" length2="1.5" length1="1.5"/>
+        <line y1="10" antialias="false" x2="12" end1="none" y2="10" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" x1="8" length2="1.5" length1="1.5"/>
+        <line y1="25" antialias="false" x2="12" end1="none" y2="25" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" x1="8" length2="1.5" length1="1.5"/>
+        <text rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="4" color="#000000" y="52" x="16"/>
+        <text rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="3" color="#000000" y="38" x="16"/>
+        <text rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="2" color="#000000" y="22" x="16"/>
+        <text rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="1" color="#000000" y="6" x="16"/>
+        <dynamic_text rotation="0" frame="false" font="DejaVu Sans,3,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" z="43" uuid="{a89b334a-761f-46ca-8aa4-2be0ffbcff1d}" Valignment="AlignTop" y="56" text_from="ElementInfo" x="-2" text_width="-1">
+            <text>0048 30</text>
+            <info_name>designation</info_name>
+        </dynamic_text>
+        <dynamic_text rotation="0" frame="false" font="DejaVu Sans,2,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" z="44" uuid="{82b01714-17af-45de-bbfa-1f8c03e57f41}" Valignment="AlignTop" y="-3.89815" text_from="ElementInfo" x="-3" text_width="-1">
+            <text>Legrand</text>
+            <info_name>manufacturer</info_name>
+        </dynamic_text>
+        <terminal y="25" orientation="w" x="0"/>
+        <terminal y="10" orientation="w" x="0"/>
+        <terminal y="55" orientation="w" x="0"/>
+        <terminal y="40" orientation="w" x="0"/>
+    </description>
+</definition>

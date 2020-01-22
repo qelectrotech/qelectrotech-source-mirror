@@ -1,0 +1,56 @@
+<definition hotspot_x="5" height="210" orientation="dyyy" link_type="simple" version="0.80" width="50" hotspot_y="4" type="element">
+    <uuid uuid="{527a6908-c78e-4bf7-a50d-e6430d5f0727}"/>
+    <names>
+        <name lang="fr">Prise RJ45 modulaire</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="description">Module de brassage RJ45 pour réseau multimédia - 1 module</elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+        <elementInformation show="1" name="designation">4130 03</elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+    </elementInformations>
+    <informations>Alexandre Dis</informations>
+    <description>
+        <rect x="0" rx="0" height="200" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false" y="0" width="40" ry="0"/>
+        <rect x="31.25" rx="0" height="12" style="line-style:normal;line-weight:thin;filling:black;color:black" antialias="false" y="119.195" width="2" ry="0"/>
+        <circle x="31.75" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false" y="128.695" diameter="1"/>
+        <text x="14" font="Sans Serif,2,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" text="  Câble&#xa;Ethernet" y="190"/>
+        <rect x="0" rx="0" height="100" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y="50" width="40" ry="0"/>
+        <rect x="10" rx="0" height="20" style="line-style:dotted;line-weight:normal;filling:white;color:purple" antialias="false" y="90" width="20" ry="0"/>
+        <line y2="75" end1="none" end2="none" x2="38" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x1="38" length2="1.5" y1="74"/>
+        <polygon y2="144" x2="4" style="line-style:normal;line-weight:normal;filling:none;color:purple" antialias="false" x3="6" y3="144" x1="4" y1="120" closed="false"/>
+        <polygon y2="144" x2="8" style="line-style:normal;line-weight:normal;filling:none;color:purple" antialias="false" x1="6" y1="144" closed="false"/>
+        <line y2="144" end1="none" end2="none" x2="39" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:purple" antialias="false" x1="27" length2="1.5" y1="144"/>
+        <dynamic_text x="5.89844" font="Sans Serif,3,-1,5,25,0,0,0,0,0" z="11" Valignment="AlignTop" uuid="{12f92c49-51df-46d1-9487-6330b21ab387}" Halignment="AlignLeft" rotation="0" text_width="-1" text_from="ElementInfo" y="137.5" frame="false">
+            <text>Legrand</text>
+            <info_name>manufacturer</info_name>
+        </dynamic_text>
+        <rect x="0" rx="0" height="30" style="line-style:normal;line-weight:thin;filling:cyan;color:black" antialias="false" y="50" width="40" ry="0"/>
+        <dynamic_text x="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="13" Valignment="AlignTop" uuid="{185c6802-06b8-4f9c-84ee-4ffb5720f7bd}" Halignment="AlignLeft" rotation="0" text_width="-1" text_from="ElementInfo" y="-21.95" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect x="10" rx="0" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="120" width="10" ry="0"/>
+        <dynamic_text x="-0.4" font="DejaVu Sans,9,-1,5,50,0,0,0,0,0" z="15" Valignment="AlignTop" uuid="{87517aff-7db6-4492-85d8-b07b002a4cae}" Halignment="AlignLeft" rotation="0" text_width="-1" text_from="UserText" y="50" frame="false">
+            <text>_</text>
+        </dynamic_text>
+        <polygon y9="127" x8="14" y11="126" x5="17" x10="13" x2="18" x11="13" y3="126" y6="127" y7="128" y12="126" x1="12" y2="122" y13="122" y5="127" y1="122" x7="16" y8="128" x9="14" x6="16" y4="126" x3="18" antialias="false" x4="17" y10="127" x12="12" style="line-style:normal;line-weight:normal;filling:none;color:black" x13="12"/>
+        <text x="13" font="Sans Serif,2,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" text=" Ethernet&#xa;Prise RJ45" y="8"/>
+        <dynamic_text x="29.25" font="DejaVu Sans,2,-1,5,50,0,0,0,0,0" z="18" Valignment="AlignTop" uuid="{e9015d33-dac1-4928-9c1a-0b9dc300e5da}" Halignment="AlignLeft" rotation="270" text_width="-1" text_from="ElementInfo" y="135.195" frame="false">
+            <text>4130 03</text>
+            <info_name>designation</info_name>
+        </dynamic_text>
+        <dynamic_text x="7.4" font="DejaVu Sans,9,-1,5,50,0,0,0,0,0" z="19" Valignment="AlignTop" uuid="{0b476921-0b26-4f6a-bc00-e23825c1fa31}" Halignment="AlignLeft" rotation="0" text_width="-1" text_from="UserText" y="85" frame="false">
+            <text>_</text>
+        </dynamic_text>
+        <terminal x="20" orientation="s" y="200"/>
+        <terminal x="20" orientation="n" y="0"/>
+    </description>
+</definition>
