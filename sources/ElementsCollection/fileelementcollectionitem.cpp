@@ -43,7 +43,6 @@ bool FileElementCollectionItem::setRootPath(const QString& path, bool set_data, 
 	if (dir.exists())
 	{
 		m_path = path;
-		m_location.setPath(collectionPath());
 		populate(set_data, hide_element);
 		return true;
 	}
@@ -138,7 +137,29 @@ QString FileElementCollectionItem::localName()
 		}
 	}
 	else if (isElement()) {
-		setText(m_location.name());
+		ElementsLocation loc(collectionPath());
+		setText(loc.name());
+	}
+
+	return text();
+}
+
+/**
+ * @brief FileElementCollectionItem::localName
+ * Surcharged method, unlike the default method, avoid to create an elementLocation and so, gain time.
+ * @param location
+ * @return
+ */
+QString FileElementCollectionItem::localName(const ElementsLocation &location)
+{
+	if (!text().isNull())
+		return text();
+
+	else if (isDir()) {
+		localName();
+	}
+	else if (isElement()) {
+		setText(location.name());
 	}
 
 	return text();
@@ -242,12 +263,13 @@ void FileElementCollectionItem::setUpData()
 		
 			//Set the local name and all informations of the element
 			//in the data Qt::UserRole+1, these data will be use for search.
-		DiagramContext context = m_location.elementInformations();
+		ElementsLocation loc(collectionPath());
+		DiagramContext context = loc.elementInformations();
 		QStringList search_list;
 		for (QString key : context.keys()) {
 			search_list.append(context.value(key).toString());
 		}
-		search_list.append(localName());
+		search_list.append(localName(loc));
 		setData(search_list.join(" "));
 	}
 
@@ -275,7 +297,8 @@ void FileElementCollectionItem::setUpIcon()
 		if (isDir()) {
 			setIcon(QET::Icons::Folder);
 		} else {
-			setIcon(m_location.icon());
+			ElementsLocation loc(collectionPath());
+			setIcon(loc.icon());
 		}
 	}
 }
@@ -290,7 +313,6 @@ void FileElementCollectionItem::setUpIcon()
 void FileElementCollectionItem::setPathName(const QString& path_name, bool set_data, bool hide_element)
 {
 	m_path = path_name;
-	m_location.setPath(collectionPath());
 
 		//This isn't an element, we create the childs
 	if (!path_name.endsWith(".elmt"))
@@ -307,7 +329,7 @@ void FileElementCollectionItem::populate(bool set_data, bool hide_element)
 	QDir dir (fileSystemPath());
 
 		//Get all directory in this directory.
-	foreach(QString str, dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::Name))
+	for(auto str : dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::Name))
 	{
 		FileElementCollectionItem *feci = new FileElementCollectionItem();
 		appendRow(feci);
@@ -321,7 +343,7 @@ void FileElementCollectionItem::populate(bool set_data, bool hide_element)
 
 		//Get all elmt file in this directory
 	dir.setNameFilters(QStringList() << "*.elmt");
-	foreach(QString str, dir.entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name))
+	for(auto str : dir.entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name))
 	{
 		FileElementCollectionItem *feci = new FileElementCollectionItem();
 		appendRow(feci);

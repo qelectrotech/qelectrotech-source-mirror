@@ -41,6 +41,7 @@ class FileElementCollectionItem : public ElementCollectionItem
 		bool isDir() const override;
 		bool isElement() const override;
 		QString localName() override;
+		QString localName(const ElementsLocation &location);
 		QString name() const override;
 		QString collectionPath() const override;
 		bool isCollectionRoot() const override;
@@ -51,16 +52,12 @@ class FileElementCollectionItem : public ElementCollectionItem
 		void setUpData() override;
 		void setUpIcon() override;
 
-		void hire();
-
-
 	private:
 		void setPathName(const QString& path_name, bool set_data = true, bool hide_element = false);
 		void populate(bool set_data = true, bool hide_element = false);
 
 	private:
 		QString m_path;
-		ElementsLocation m_location;
 };
 
 #endif // FILEELEMENTCOLLECTIONITEM2_H
