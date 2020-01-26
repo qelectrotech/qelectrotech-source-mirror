@@ -1,0 +1,41 @@
+<definition hotspot_y="60" link_type="simple" hotspot_x="53" orientation="dyyy" width="70" type="element" version="0.80" height="80">
+    <uuid uuid="{04cd2f29-05b2-4e0f-8f97-7937adf58522}"/>
+    <names>
+        <name lang="de">Gleichrichter in Brückenschaltung</name>
+        <name lang="fr">Pont de diodes</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="manufacturer"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+    </elementInformations>
+    <informations>S.Deffaux
+Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text text_width="-1" rotation="0" y="24" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{64a7d575-5d70-4476-9ac2-3ce2b5dffc08}" Valignment="AlignTop" text_from="ElementInfo" frame="false" x="5" z="1" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x5="-20" x3="-20" y2="-20" x1="-20" y4="-20" antialias="false" y3="-40" y5="0" x2="-40" x4="0" closed="false"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" y2="-10" end2="none" x1="-20" length1="1.5" antialias="false" x2="-20" end1="none"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" y2="-15" end2="none" x1="-25" length1="1.5" antialias="false" x2="-15" end1="none"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x3="-20" y2="-25" x1="-25" y4="-25" antialias="false" y3="-15" x2="-15" x4="-25" closed="false"/>
+        <text text="~" rotation="0" color="#000000" y="-5" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="5"/>
+        <text text="+" rotation="0" color="#000000" y="-40" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-35"/>
+        <text text="-" rotation="0" color="#000000" y="10" font="Sans Serif,10,-1,5,50,0,0,0,0,0" x="-35"/>
+        <text text="~" rotation="0" color="#000000" y="-5" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-50"/>
+        <terminal orientation="e" y="-20" x="0"/>
+        <terminal orientation="w" y="-20" x="-40"/>
+        <terminal orientation="s" y="0" x="-20"/>
+        <terminal orientation="n" y="-40" x="-20"/>
+    </description>
+</definition>
