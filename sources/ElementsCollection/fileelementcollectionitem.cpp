@@ -40,7 +40,8 @@ FileElementCollectionItem::FileElementCollectionItem()
 bool FileElementCollectionItem::setRootPath(const QString& path, bool set_data, bool hide_element)
 {
 	QDir dir(path);
-	if (dir.exists()) {
+	if (dir.exists())
+	{
 		m_path = path;
 		populate(set_data, hide_element);
 		return true;
@@ -120,21 +121,17 @@ QString FileElementCollectionItem::localName()
 			else
 				setText(QObject::tr("Collection inconnue"));
 		}
-		else {
-				//Open the qet_directory file, to get the traductions name of this dir
-			QFile dir_conf(fileSystemPath() + "/qet_directory");
-
-			if (dir_conf.exists() && dir_conf.open(QIODevice::ReadOnly | QIODevice::Text)) {
-
-					//Get the content of the file
-				QDomDocument document;
-				if (document.setContent(&dir_conf)) {
-					QDomElement root = document.documentElement();
-					if (root.tagName() == "qet-directory") {
-						NamesList nl;
-						nl.fromXml(root);
-						setText(nl.name());
-					}
+		else
+		{
+			QString str(fileSystemPath() + "/qet_directory");
+			pugi::xml_document docu;
+			if(docu.load_file(str.toStdString().c_str()))
+			{
+				if (QString(docu.document_element().name()) == "qet-directory")
+				{
+					NamesList nl;
+					nl.fromXml(docu.document_element());
+					setText(nl.name());
 				}
 			}
 		}
@@ -142,6 +139,27 @@ QString FileElementCollectionItem::localName()
 	else if (isElement()) {
 		ElementsLocation loc(collectionPath());
 		setText(loc.name());
+	}
+
+	return text();
+}
+
+/**
+ * @brief FileElementCollectionItem::localName
+ * Surcharged method, unlike the default method, avoid to create an elementLocation and so, gain time.
+ * @param location
+ * @return
+ */
+QString FileElementCollectionItem::localName(const ElementsLocation &location)
+{
+	if (!text().isNull())
+		return text();
+
+	else if (isDir()) {
+		localName();
+	}
+	else if (isElement()) {
+		setText(location.name());
 	}
 
 	return text();
@@ -234,24 +252,24 @@ void FileElementCollectionItem::addChildAtPath(const QString &collection_name)
  */
 void FileElementCollectionItem::setUpData()
 {
-		//Setup the displayed name
-	localName();
-
 	if (isDir())
+	{
+		localName();
 		setFlags(Qt::ItemIsSelectable | Qt::ItemIsDragEnabled | Qt::ItemIsDropEnabled | Qt::ItemIsEnabled);
+	}
 	else
 	{
 		setFlags(Qt::ItemIsSelectable | Qt::ItemIsDragEnabled | Qt::ItemIsEnabled);
 		
 			//Set the local name and all informations of the element
 			//in the data Qt::UserRole+1, these data will be use for search.
-		ElementsLocation location(collectionPath());
-		DiagramContext context = location.elementInformations();
+		ElementsLocation loc(collectionPath());
+		DiagramContext context = loc.elementInformations();
 		QStringList search_list;
 		for (QString key : context.keys()) {
 			search_list.append(context.value(key).toString());
 		}
-		search_list.append(localName());
+		search_list.append(localName(loc));
 		setData(search_list.join(" "));
 	}
 
@@ -274,10 +292,11 @@ void FileElementCollectionItem::setUpIcon()
 		else
 			setIcon(QIcon(":/ico/16x16/go-home.png"));
 	}
-	else {
-		if (isDir())
+	else
+	{
+		if (isDir()) {
 			setIcon(QET::Icons::Folder);
-		else {
+		} else {
 			ElementsLocation loc(collectionPath());
 			setIcon(loc.icon());
 		}
@@ -310,7 +329,7 @@ void FileElementCollectionItem::populate(bool set_data, bool hide_element)
 	QDir dir (fileSystemPath());
 
 		//Get all directory in this directory.
-	foreach(QString str, dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::Name))
+	for(auto str : dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::Name))
 	{
 		FileElementCollectionItem *feci = new FileElementCollectionItem();
 		appendRow(feci);
@@ -324,7 +343,7 @@ void FileElementCollectionItem::populate(bool set_data, bool hide_element)
 
 		//Get all elmt file in this directory
 	dir.setNameFilters(QStringList() << "*.elmt");
-	foreach(QString str, dir.entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name))
+	for(auto str : dir.entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name))
 	{
 		FileElementCollectionItem *feci = new FileElementCollectionItem();
 		appendRow(feci);

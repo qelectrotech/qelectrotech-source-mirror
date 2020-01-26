@@ -19,6 +19,7 @@
 #define FILEELEMENTCOLLECTIONITEM2_H
 
 #include "elementcollectionitem.h"
+#include "elementslocation.h"
 
 /**
  * @brief The FileElementCollectionItem class
@@ -40,6 +41,7 @@ class FileElementCollectionItem : public ElementCollectionItem
 		bool isDir() const override;
 		bool isElement() const override;
 		QString localName() override;
+		QString localName(const ElementsLocation &location);
 		QString name() const override;
 		QString collectionPath() const override;
 		bool isCollectionRoot() const override;
@@ -49,9 +51,6 @@ class FileElementCollectionItem : public ElementCollectionItem
 
 		void setUpData() override;
 		void setUpIcon() override;
-
-		void hire();
-
 
 	private:
 		void setPathName(const QString& path_name, bool set_data = true, bool hide_element = false);

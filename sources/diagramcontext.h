@@ -23,6 +23,8 @@
 #include <QString>
 #include <QVariant>
 #include <QStringList>
+
+#include "pugixml.hpp"
 /**
 	This class represents a diagram context, i.e. the data (a list of key/value
 	pairs) of a diagram at a given time. It is notably used by titleblock templates
@@ -74,6 +76,7 @@ class DiagramContext
 		
 		void toXml(QDomElement &, const QString & = "property") const;
 		void fromXml(const QDomElement &, const QString & = "property");
+		void fromXml(const pugi::xml_node &dom_element, const QString &tag_name = "property");
 		void toSettings(QSettings &, const QString &) const;
 		void fromSettings(QSettings &, const QString &);
 		

@@ -83,20 +83,18 @@ void ElementsCollectionWidget::expandFirstItems()
  * Add @project to be displayed
  * @param project
  */
-void ElementsCollectionWidget::addProject(QETProject *project) {
-	if (m_model) {
-		QList <QETProject *> prj; prj.append(project);
+void ElementsCollectionWidget::addProject(QETProject *project)
+{
+	if (m_model)
+	{
 		m_progress_bar->show();
-		connect(m_model, &ElementsCollectionModel::loadingMaxValue, m_progress_bar, &QProgressBar::setMaximum);
-		connect(m_model, &ElementsCollectionModel::loadingProgressValue, m_progress_bar, &QProgressBar::setValue);
+		m_tree_view->setDisabled(true);
+		QList <QETProject *> prj; prj.append(project);
 		m_model->loadCollections(false,false, prj);
-		disconnect(m_model, &ElementsCollectionModel::loadingMaxValue, m_progress_bar, &QProgressBar::setMaximum);
-		disconnect(m_model, &ElementsCollectionModel::loadingProgressValue, m_progress_bar, &QProgressBar::setValue);
-		m_progress_bar->hide();
-		m_model->highlightUnusedElement();
 	}
-	else
+	else {
 		m_waiting_project.append(project);
+	}
 }
 
 void ElementsCollectionWidget::removeProject(QETProject *project) {
@@ -533,7 +531,9 @@ void ElementsCollectionWidget::dirProperties()
 void ElementsCollectionWidget::reload()
 {
 	m_progress_bar->show();
-	ElementsCollectionModel *new_model = new ElementsCollectionModel(m_tree_view);
+	m_progress_bar->setValue(1); //Force to repaint now, else progress bar will be not displayed immediately
+	m_tree_view->setDisabled(true);
+	m_tree_view->repaint(); //Force to repaint now, else tree view will be not disabled immediately
 
 	QList <QETProject *> project_list;
 	project_list.append(m_waiting_project);
@@ -541,23 +541,40 @@ void ElementsCollectionWidget::reload()
 	if (m_model)
 		project_list.append(m_model->project());
 
+	if(m_new_model) {
+		m_new_model->deleteLater();
+	}
+	m_new_model = new ElementsCollectionModel(m_tree_view);
+	connect(m_new_model, &ElementsCollectionModel::loadingProgressRangeChanged, m_progress_bar, &QProgressBar::setRange);
+	connect(m_new_model, &ElementsCollectionModel::loadingProgressValueChanged, m_progress_bar, &QProgressBar::setValue);
+	connect(m_new_model, &ElementsCollectionModel::loadingFinished, this, &ElementsCollectionWidget::loadingFinished);
 
-	connect(new_model, &ElementsCollectionModel::loadingMaxValue, m_progress_bar, &QProgressBar::setMaximum);
-	connect(new_model, &ElementsCollectionModel::loadingProgressValue, m_progress_bar, &QProgressBar::setValue);
+	m_new_model->loadCollections(true, true, project_list);
+}
 
-	new_model->loadCollections(true, true, project_list);
+/**
+ * @brief ElementsCollectionWidget::loadingFinished
+ * Process when collection finished to be loaded
+ */
+void ElementsCollectionWidget::loadingFinished()
+{
+	if (m_new_model)
+	{
+		m_new_model->highlightUnusedElement();
+		m_tree_view->setModel(m_new_model);
+		m_index_at_context_menu = QModelIndex();
+		m_showed_index = QModelIndex();
+		if (m_model) delete m_model;
+		m_model = m_new_model;
+		m_new_model = nullptr;
+		expandFirstItems();
+	}
+	else {
+		m_model->highlightUnusedElement();
+	}
 
-	disconnect(new_model, &ElementsCollectionModel::loadingMaxValue, m_progress_bar, &QProgressBar::setMaximum);
-	disconnect(new_model, &ElementsCollectionModel::loadingProgressValue, m_progress_bar, &QProgressBar::setValue);
-
-	new_model->highlightUnusedElement();
-	m_tree_view->setModel(new_model);
-	m_index_at_context_menu = QModelIndex();
-	m_showed_index = QModelIndex();
-	if (m_model) delete m_model;
-	m_model = new_model;
-	expandFirstItems();
 	m_progress_bar->hide();
+	m_tree_view->setEnabled(true);
 }
 
 /**
