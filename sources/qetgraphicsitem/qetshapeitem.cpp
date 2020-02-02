@@ -275,9 +275,6 @@ QPainterPath QetShapeItem::shape() const
 				path.closeSubpath();
 			}
 			break;
-		default:
-			Q_ASSERT(false);
-			break;
 	}
 
 	QPainterPathStroker pps;
@@ -297,7 +294,8 @@ QPainterPath QetShapeItem::shape() const
  */
 void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-	Q_UNUSED(option); Q_UNUSED(widget);
+	Q_UNUSED(option)
+	Q_UNUSED(widget)
 
 	painter->save();
 	painter->setRenderHint(QPainter::Antialiasing, true);
@@ -697,8 +695,8 @@ void QetShapeItem::removePoint()
  */
 void QetShapeItem::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
-	Q_UNUSED(qghi);
-	Q_UNUSED(event);
+	Q_UNUSED(qghi)
+	Q_UNUSED(event)
 	
 	m_old_P1 = m_P1;
 	m_old_P2 = m_P2;
@@ -717,7 +715,7 @@ void QetShapeItem::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphic
  */
 void QetShapeItem::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
-	Q_UNUSED(qghi);
+	Q_UNUSED(qghi)
 	
 	QPointF new_pos = event->scenePos();
 	if (event->modifiers() != Qt::ControlModifier)
