@@ -18,6 +18,7 @@
 #ifndef NAMES_LIST_H
 #define NAMES_LIST_H
 #include <QtXml>
+#include "pugixml.hpp"
 /**
 	Cette classe represente une liste de noms, utilisee
 	par les elements et categories pour embarquer un meme nom en plusieurs
@@ -57,6 +58,7 @@ class NamesList {
 	
 	// methods relatives a XML
 	void fromXml(const QDomElement &, const QHash<QString, QString> & = QHash<QString, QString>());
+	void fromXml(const pugi::xml_node &xml_element, const QHash<QString, QString> &xml_options = QHash<QString, QString>());
 	QDomElement toXml(QDomDocument &, const QHash<QString, QString> & = QHash<QString, QString>()) const;
 	
 	protected:

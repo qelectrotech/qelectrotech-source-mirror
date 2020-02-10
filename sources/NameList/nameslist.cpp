@@ -133,6 +133,39 @@ void NamesList::fromXml(const QDomElement &xml_element, const QHash<QString, QSt
 }
 
 /**
+ * @brief NamesList::fromXml
+ * Load the list of lang <-> name from an xml description.
+ * @xml_element must be the parent of a child element tagged "names"
+ * If a couple lang <-> name already exist, they will overwrited, else
+ * they will be appened.
+ * @param xml_element : xml element to analyze
+ * @param xml_options : A set of options related to XML parsing.
+ * @see getXmlOptions()
+ */
+void NamesList::fromXml(const pugi::xml_node &xml_element, const QHash<QString, QString> &xml_options)
+{
+	QHash<QString, QString> xml_opt = getXmlOptions(xml_options);
+
+		//Walk the childs "names" of the xml element
+	for (auto names = xml_element.first_child() ; names ; names = names.next_sibling())
+	{
+		if (names.type() != pugi::node_element ||
+			QString(names.name()) != xml_opt["ParentTagName"]) {
+			continue;
+		}
+		for (auto name = names.first_child(); name; name = name.next_sibling()) {
+			if (name.type() != pugi::node_element ||
+				QString(name.name()) != xml_opt["TagName"]) {
+				continue;
+			}
+			QString lang_str(name.attribute(xml_opt["LanguageAttribute"].toStdString().c_str()).as_string());
+			QString name_str(name.text().get());
+			addName(lang_str, name_str);
+		}
+	}
+}
+
+/**
 	Exporte la liste des noms vers un element XML. Veillez a verifier que la
 	liste de noms n'est pas vide avant de l'exporter.
 	@param xml_document Le document XML dans lequel l'element XML sera insere

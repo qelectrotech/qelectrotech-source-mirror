@@ -126,16 +126,6 @@ QString ElementsLocation::baseName() const {
 }
 
 /**
- * @brief ElementsLocation::projectId
- * This method is used to know if an element belongs to
- * a project or not.
- * @return Element Project Id
- */
-int ElementsLocation::projectId() const {
-	return QETApp::projectId(m_project);
-}
-
-/**
  * @brief ElementsLocation::collectionPath
  * Return the path of the represented element relative to collection
  * if @protocol is true the path is prepended by the collection type (common://, custom:// or embed://)
@@ -494,8 +484,9 @@ NamesList ElementsLocation::nameList()
 {
 	NamesList nl;
 
-	if (isElement())
-		nl.fromXml(xml());
+	if (isElement()) {
+		nl.fromXml(pugiXml());
+	}
 
 	if (isDirectory())
 	{
@@ -552,6 +543,64 @@ QDomElement ElementsLocation::xml() const
 	}
 
 	return QDomElement();
+}
+
+/**
+ * @brief ElementsLocation::pugiXml
+ * @return the xml document of this element or directory
+ * The definition can be null
+ */
+pugi::xml_document ElementsLocation::pugiXml() const
+{
+		//Except for linux OS (because linux keep in cache the file), we keep in memory the xml
+		//to avoid multiple access to file.
+		//keep in memory the XML, consumes a little more RAM, for this reason we don't use it for linux to minimize the RAM footprint.
+#ifndef Q_OS_LINUX
+	if (!m_string_stream.str().empty())
+	{
+		pugi::xml_document docu;
+		docu.load_string(m_string_stream.str().c_str());
+		return docu;
+	}
+#endif
+	if (!m_project)
+	{
+		pugi::xml_document docu;
+		if (docu.load_file(m_file_system_path.toStdString().c_str()))
+		{
+#ifndef Q_OS_LINUX
+			docu.save(m_string_stream);
+#endif
+			return docu;
+		}
+	}
+	else
+	{
+		QString str = m_collection_path;
+		if (isElement())
+		{
+				//Get the xml dom from Qt xml and copie to pugi xml
+			QDomElement element = m_project->embeddedElementCollection()->element(str.remove("embed://"));
+			QDomDocument qdoc;
+			qdoc.appendChild(qdoc.importNode(element.firstChildElement("definition"), true));
+
+			pugi::xml_document docu;
+			docu.load_string(qdoc.toString(4).toStdString().c_str());
+			return docu;
+		}
+		else
+		{
+			QDomElement element = m_project->embeddedElementCollection()->directory(str.remove("embed://"));
+			QDomDocument qdoc;
+			qdoc.appendChild(qdoc.importNode(element, true));
+
+			pugi::xml_document docu;
+			docu.load_string(qdoc.toString(4).toStdString().c_str());
+			return docu;
+		}
+	}
+
+	return pugi::xml_document();
 }
 
 /**
@@ -623,13 +672,16 @@ bool ElementsLocation::setXml(const QDomDocument &xml_document) const
  */
 QUuid ElementsLocation::uuid() const
 {
-		//Get the uuid of element
-	QList<QDomElement>  list_ = QET::findInDomElement(xml(), "uuid");
+	if (!isElement()) {
+		return QUuid();
+	}
 
-	if (!list_.isEmpty())
-		return QUuid(list_.first().attribute("uuid"));
-
-	return QUuid();
+	auto document = pugiXml();
+	auto uuid_node = document.document_element().child("uuid");
+	if (uuid_node.empty()) {
+		return QUuid();
+	}
+	return QUuid(uuid_node.attribute("uuid").as_string());
 }
 
 /**
@@ -660,7 +712,7 @@ QIcon ElementsLocation::icon() const
 QString ElementsLocation::name() const
 {
 	NamesList nl;
-	nl.fromXml(xml());
+	nl.fromXml(pugiXml().document_element());
 	return nl.name(fileName());
 }
 
@@ -692,18 +744,9 @@ DiagramContext ElementsLocation::elementInformations() const
 	if (isDirectory()) {
 		return context;
 	}
-	
-	QDomElement dom = this->xml().firstChildElement("elementInformations");
-	context.fromXml(dom, "elementInformation");
-	return  context;
-}
 
-/**
-	@param location A standard element location
-	@return a hash identifying this location
-*/
-uint qHash(const ElementsLocation &location) {
-	return(qHash(location.toString()));
+	context.fromXml(pugiXml().document_element().child("elementInformations"), "elementInformation");
+	return  context;
 }
 
 QDebug operator<< (QDebug debug, const ElementsLocation &location)

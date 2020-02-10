@@ -1,0 +1,42 @@
+<definition width="130" type="element" hotspot_y="5" height="370" hotspot_x="5" orientation="dyyy" version="0.80" link_type="simple">
+    <uuid uuid="{4f0979fd-a62d-440f-a824-387eab6e869c}"/>
+    <names>
+        <name lang="fr">001302 - Coffret cache-bornes - 2 modules</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="designation">0 013 02</elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="description">Coffret cache-bornes 2 modules - blanc RAL9010</elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <rect width="120" height="360" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:white;color:black" x="0" y="0" antialias="false"/>
+        <rect width="80" height="200" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:white;color:black" x="20" y="90" antialias="false"/>
+        <arc width="100" height="20" start="0.6875" style="line-style:normal;line-weight:thin;filling:none;color:black" x="10" y="50" antialias="true" angle="180"/>
+        <arc width="100" height="20" start="180" style="line-style:normal;line-weight:thin;filling:none;color:black" x="10" y="280" antialias="true" angle="180"/>
+        <rect width="80" height="78" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" x="20" y="151" antialias="false"/>
+        <circle diameter="20" style="line-style:normal;line-weight:thin;filling:none;color:black" x="10" y="330" antialias="false"/>
+        <circle diameter="20" style="line-style:normal;line-weight:thin;filling:none;color:black" x="90" y="330" antialias="false"/>
+        <dynamic_text text_from="ElementInfo" font="DejaVu Sans,6,-1,5,50,0,0,0,0,0" z="8" text_width="-1" uuid="{6e039c4b-f469-4078-8f4a-be7e79976650}" Halignment="AlignLeft" rotation="0" Valignment="AlignTop" frame="false" x="40" y="330">
+            <text>Legrand</text>
+            <info_name>manufacturer</info_name>
+        </dynamic_text>
+        <dynamic_text text_from="ElementInfo" font="DejaVu Sans,6,-1,5,50,0,0,0,0,0" z="9" text_width="-1" uuid="{f74cc6db-ec1d-4c2a-a687-3ce4c5d2174a}" Halignment="AlignLeft" rotation="0" Valignment="AlignTop" frame="false" x="38" y="340">
+            <text>0 013 02</text>
+            <info_name>designation</info_name>
+        </dynamic_text>
+        <circle diameter="20" style="line-style:normal;line-weight:thin;filling:none;color:black" x="10" y="10" antialias="false"/>
+        <circle diameter="20" style="line-style:normal;line-weight:thin;filling:none;color:black" x="90" y="10" antialias="false"/>
+        <line y2="290" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="10" length1="1.5" end2="none" x2="10" end1="none" antialias="false" y1="60"/>
+        <line y2="290" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="110" length1="1.5" end2="none" x2="110" end1="none" antialias="false" y1="60"/>
+        <arc width="100" height="40" start="180" style="line-style:normal;line-weight:thin;filling:none;color:black" x="10" y="270" antialias="true" angle="180"/>
+    </description>
+</definition>

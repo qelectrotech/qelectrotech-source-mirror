@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2019 The QElectroTech Team
 	This file is part of QElectroTech.
 	
@@ -20,8 +20,13 @@
 
 #include "nameslist.h"
 #include "diagramcontext.h"
+#include "pugixml.hpp"
 #include <QString>
 #include <QIcon>
+
+#ifndef Q_OS_LINUX
+#include "sstream"
+#endif
 
 class QETProject;
 class XmlElementCollection;
@@ -45,7 +50,6 @@ class ElementsLocation
 	
 	public:
 		QString baseName() const;
-		int projectId() const;
 
 		QString collectionPath(bool protocol = true) const;
 		QString projectCollectionPath() const;
@@ -73,6 +77,7 @@ class ElementsLocation
 		NamesList nameList();
 
 		QDomElement xml() const;
+		pugi::xml_document pugiXml() const;
 		bool setXml(const QDomDocument &xml_document) const;
 		QUuid uuid() const;
 		QIcon icon() const;
@@ -84,6 +89,9 @@ class ElementsLocation
 		QString m_collection_path;
 		QString m_file_system_path;
 		QETProject *m_project = nullptr;
+#ifndef Q_OS_LINUX
+		mutable std::stringstream m_string_stream;
+#endif
 	
 	public:
 		static int MetaTypeId; ///< Id of the corresponding Qt meta type
@@ -92,5 +100,5 @@ class ElementsLocation
 QDebug operator<<(QDebug debug, const ElementsLocation &location);
 
 Q_DECLARE_METATYPE(ElementsLocation)
-uint qHash(const ElementsLocation &);
+//uint qHash(const ElementsLocation &);
 #endif
