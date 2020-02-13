@@ -60,7 +60,7 @@ apps:
 parts:
   launchers:
     plugin: dump
-    source: snap/local/launchers
+    source: build-aux/snap/local/launchers
     organize:
       '*': bin/
 
