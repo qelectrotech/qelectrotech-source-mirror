@@ -1,0 +1,76 @@
+<definition height="120" hotspot_x="5" hotspot_y="5" version="0.80" width="90" type="element" orientation="dyyy" link_type="simple">
+    <uuid uuid="{3ab9748e-5254-4de4-aa06-15a0e8b876cf}"/>
+    <names>
+        <name lang="fr">KMA-E08</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="manufacturer">KMA</elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+    </elementInformations>
+    <informations>S.DEFFAUX</informations>
+    <description>
+        <circle antialias="true" x="6" y="6" diameter="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="true" x="46" y="6" diameter="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="true" x="66" y="6" diameter="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="true" x="46" y="96" diameter="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse antialias="true" height="7.6" x="26" y="96" width="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="true" x="66" y="96" diameter="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="true" x="6" y="96" diameter="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="true" x="26" y="6" diameter="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" x="0" height="110" y="0" rx="0" width="80" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="true" x2="33" end1="none" length1="1.5" y2="102.175" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="27.5" y1="97.425"/>
+        <line antialias="true" x2="13" end1="none" length1="1.5" y2="12.5" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="7.5" y1="7.5"/>
+        <line antialias="true" x2="13" end1="none" length1="1.5" y2="102.5" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="7.5" y1="97.5"/>
+        <line antialias="true" x2="53" end1="none" length1="1.5" y2="102.5" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="47.5" y1="97.5"/>
+        <line antialias="true" x2="73" end1="none" length1="1.5" y2="102.5" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="67.5" y1="97.5"/>
+        <line antialias="true" x2="73" end1="none" length1="1.5" y2="12.5" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="67.5" y1="7.5"/>
+        <line antialias="true" x2="33" end1="none" length1="1.5" y2="12.5" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="27.5" y1="7.5"/>
+        <line antialias="true" x2="53" end1="none" length1="1.5" y2="12.5" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="47.5" y1="7.5"/>
+        <line antialias="false" x2="80" end1="none" length1="1.5" y2="80" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y1="80"/>
+        <line antialias="false" x2="80" end1="none" length1="1.5" y2="30" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y1="30"/>
+        <circle antialias="false" x="45" y="45" diameter="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" x2="50" end1="none" length1="1.5" y2="50" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="47" y1="48"/>
+        <line antialias="false" x2="44" end1="none" length1="1.5" y2="56" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="46" y1="54"/>
+        <line antialias="false" x2="56" end1="none" length1="1.5" y2="56" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="54" y1="54"/>
+        <line antialias="false" x2="59" end1="none" length1="1.5" y2="50" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="56" y1="50"/>
+        <line antialias="false" x2="50" end1="none" length1="1.5" y2="41" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="50" y1="44"/>
+        <line antialias="false" x2="41" end1="none" length1="1.5" y2="50" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="45" y1="50"/>
+        <line antialias="false" x2="46" end1="none" length1="1.5" y2="46" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="44" y1="44"/>
+        <line antialias="false" x2="56" end1="none" length1="1.5" y2="44" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="54" y1="46"/>
+        <rect antialias="false" x="24" height="10" y="60" rx="0" width="5" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="9" text="MANU" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" y="60" rotation="0"/>
+        <text x="9" text="AUTO" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" y="75" rotation="0"/>
+        <circle antialias="false" x="10" y="35" diameter="10" style="line-style:normal;line-weight:normal;filling:red;color:black"/>
+        <text x="3" text="A1" font="Sans Serif,8,-1,5,50,0,0,0,0,0" color="#000000" y="25" rotation="0"/>
+        <text x="23" text="A2" font="Sans Serif,8,-1,5,50,0,0,0,0,0" color="#000000" y="25" rotation="0"/>
+        <text x="44" text="YR" font="Sans Serif,8,-1,5,50,0,0,0,0,0" color="#000000" y="25" rotation="0"/>
+        <text x="73" text="T" font="Sans Serif,8,-1,5,50,0,0,0,0,0" color="#000000" y="16" rotation="180"/>
+        <text x="75" text="T" font="Sans Serif,8,-1,5,50,0,0,0,0,0" color="#000000" y="81" rotation="180"/>
+        <text x="47" text="Y" font="Sans Serif,8,-1,5,50,0,0,0,0,0" color="#000000" y="90" rotation="0"/>
+        <text x="24" text="S2" font="Sans Serif,8,-1,5,50,0,0,0,0,0" color="#000000" y="90" rotation="0"/>
+        <text x="4" text="S1" font="Sans Serif,8,-1,5,50,0,0,0,0,0" color="#000000" y="90" rotation="0"/>
+        <dynamic_text x="80" text_width="-1" text_from="ElementInfo" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" y="75" Halignment="AlignLeft" uuid="{5ee5a998-13af-40f5-93af-27f1f308fd57}" frame="false" z="41" rotation="270" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text x="55" text="KMA" font="Sans Serif,8,-1,5,50,0,0,0,0,0" color="#000000" y="70" rotation="0"/>
+        <circle antialias="false" x="25" y="65.5" diameter="3" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <terminal x="50" y="100" orientation="s"/>
+        <terminal x="70" y="10" orientation="n"/>
+        <terminal x="10" y="100" orientation="s"/>
+        <terminal x="10" y="10" orientation="n"/>
+        <terminal x="30" y="10" orientation="n"/>
+        <terminal x="70" y="100" orientation="s"/>
+        <terminal x="30" y="100" orientation="s"/>
+        <terminal x="50" y="10" orientation="n"/>
+    </description>
+</definition>

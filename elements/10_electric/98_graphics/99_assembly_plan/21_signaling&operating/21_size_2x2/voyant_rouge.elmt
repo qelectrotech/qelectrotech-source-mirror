@@ -1,0 +1,25 @@
+<definition height="50" hotspot_x="25" hotspot_y="25" version="0.80" width="50" type="element" orientation="dyyy" link_type="simple">
+    <uuid uuid="{72f7e41d-dd9a-4468-92c0-3f8c756d39c9}"/>
+    <names>
+        <name lang="en">Light</name>
+        <name lang="pl">Lampka sygnalizacyjna</name>
+        <name lang="ar">مُؤشّر ضوئي</name>
+        <name lang="el">Λάμπα</name>
+        <name lang="it">Lampada spia</name>
+        <name lang="nl">Lamp</name>
+        <name lang="cs">Světelný signál</name>
+        <name lang="fr">Voyant rouge</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle antialias="true" x="-22" y="-22" diameter="44" style="line-style:normal;line-weight:normal;filling:red;color:black"/>
+        <arc antialias="true" x="-14" height="28" y="-14" angle="-270" width="28" style="line-style:normal;line-weight:thin;filling:none;color:black" start="0"/>
+        <circle antialias="true" x="-20" y="-20" diameter="40" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <dynamic_text x="-18" text_width="-1" text_from="ElementInfo" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="33" Halignment="AlignLeft" uuid="{cd3f89cb-3520-4800-87a3-431776d29896}" frame="false" z="4" rotation="0" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+    </description>
+</definition>

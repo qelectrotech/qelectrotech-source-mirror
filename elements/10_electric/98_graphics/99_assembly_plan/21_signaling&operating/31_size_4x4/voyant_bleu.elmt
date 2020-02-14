@@ -1,0 +1,38 @@
+<definition height="50" hotspot_x="25" hotspot_y="25" version="0.80" width="50" type="element" orientation="dyyy" link_type="simple">
+    <uuid uuid="{dc0d7b05-d16c-47bb-9419-14eac86a65e3}"/>
+    <names>
+        <name lang="en">Light</name>
+        <name lang="pl">Lampka sygnalizacyjna</name>
+        <name lang="ar">مُؤشّر ضوئي</name>
+        <name lang="de">Meldeleuchte</name>
+        <name lang="el">Λάμπα</name>
+        <name lang="it">Lampada spia</name>
+        <name lang="nl">Lamp</name>
+        <name lang="cs">Světelný signál</name>
+        <name lang="fr">Voyant bleu</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="manufacturer"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle antialias="true" x="-22" y="-22" diameter="44" style="line-style:normal;line-weight:normal;filling:blue;color:black"/>
+        <dynamic_text x="-7" text_width="-1" text_from="ElementInfo" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-45.5" Halignment="AlignLeft" uuid="{23d642e3-e737-4d09-9768-66c895939950}" frame="false" z="2" rotation="0" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <arc antialias="true" x="-14" height="28" y="-14" angle="-270" width="28" style="line-style:normal;line-weight:thin;filling:none;color:black" start="0"/>
+        <circle antialias="true" x="-20" y="-20" diameter="40" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+    </description>
+</definition>
