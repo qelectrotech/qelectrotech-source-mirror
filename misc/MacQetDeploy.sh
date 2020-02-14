@@ -86,7 +86,7 @@ tagName=$(cat sources/qet.h | grep displayedVersion |  cut -d\" -f2 | cut -d\" -
 tagName=$(sed -n "s/const QString displayedVersion =\(.*\)/\1/p" sources/qet.h  | cut -d\" -f2 | cut -d\" -f1 )
 
 # Dmg de la dernière revision déjà créé
-if [ -e "packaging/mac-osx/${APPNAME} $tagName r$HEAD.dmg" ] ; then
+if [ -e "build-aux/mac-osx/${APPNAME} $tagName r$HEAD.dmg" ] ; then
     echo "There are not new updates, make disk image can"
     echo "take a lot of time (5 min). Can you continu?"
     echo  "[y/n]"
@@ -269,8 +269,8 @@ fi
 if [ -e "${APPNAME} $tagName r$HEAD.dmg" ] ; then
     rm -f "${APPNAME} $tagName r$HEAD.dmg"
 fi
-if [ -e "packaging/mac-osx/${APPNAME} $tagName r$HEAD.dmg" ] ; then
-    rm -f "packaging/mac-osx/${APPNAME} $tagName r$HEAD.dmg"
+if [ -e "build-aux/mac-osx/${APPNAME} $tagName r$HEAD.dmg" ] ; then
+    rm -f "build-aux/mac-osx/${APPNAME} $tagName r$HEAD.dmg"
 fi
 if [ -e $imagedir ] ; then
     rm -rf $imagedir
@@ -298,7 +298,7 @@ hdiutil internet-enable -yes -quiet "${APPNAME} $tagName r$HEAD.dmg"
 
 # Clean up disk folder
 echo 'Cleaning up... '
-cp -Rf "${APPNAME} $tagName r$HEAD.dmg" "packaging/mac-osx/${APPNAME} $tagName r$HEAD.dmg"
+cp -Rf "${APPNAME} $tagName r$HEAD.dmg" "build-aux/mac-osx/${APPNAME} $tagName r$HEAD.dmg"
 rm -f "${APPNAME} $tagName r$HEAD.dmg"
 rm -rf $imagedir
 rm -rf $BUNDLE
@@ -309,7 +309,7 @@ rm -rf $BUNDLE
 echo
 echo "______________________________________________________________"
 echo "The process of creating deployable application bundle is done."
-echo The disque image is in the folder \'packaging/mac-osx\'.
+echo The disque image is in the folder \'build-aux/mac-osx\'.
 # Affiche les mise à jour depuis l'ancienne revision 
 #if [ ! $(($HEAD - $revAv)) -eq 0 ] ; then
 #    echo
@@ -338,7 +338,7 @@ echo The disque image is in the folder \'packaging/mac-osx\'.
 echo  -e "\033[1;31mWould you like to upload MacOS packages "${APPNAME}"-"$tagName"_"r$HEAD.dmg", n/Y?.\033[m"
 read a
 if [[ $a == "Y" || $a == "y" ]]; then
-cp -Rf "packaging/mac-osx/${APPNAME} $tagName r$HEAD.dmg" /Users/laurent/MAC_OS_X/
+cp -Rf "build-aux/mac-osx/${APPNAME} $tagName r$HEAD.dmg" /Users/laurent/MAC_OS_X/
 rsync -e ssh -av --delete-after --no-owner --no-g --chmod=g+w --progress --exclude='.DS_Store' /Users/laurent/MAC_OS_X/ scorpio810@ssh.tuxfamily.org:/home/qet/qet-repository/builds/MAC_OS_X/
 if [ $? != 0 ]; then
 {
