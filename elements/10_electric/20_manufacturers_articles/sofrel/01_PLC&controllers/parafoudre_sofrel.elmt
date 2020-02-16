@@ -1,54 +1,54 @@
-<definition height="210" type="element" hotspot_x="5" hotspot_y="4" width="50" version="0.70" orientation="dyyy" link_type="simple">
-    <uuid uuid="{5e92e2cc-3d44-4161-ac35-36f36fd920fd}"/>
+<definition orientation="dyyy" hotspot_x="5" link_type="simple" type="element" version="0.80" width="50" height="210" hotspot_y="4">
+    <uuid uuid="{e382a061-cdc8-47d6-a2b8-da5e0a5697fb}"/>
     <names>
         <name lang="en">Sofrel Surge Protector </name>
         <name lang="fr"> Parafoudre Sofrel</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="supplier"></elementInformation>
-        <elementInformation show="1" name="comment"></elementInformation>
-        <elementInformation show="1" name="unity"></elementInformation>
-        <elementInformation show="1" name="plant"></elementInformation>
-        <elementInformation show="1" name="quantity"></elementInformation>
-        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
-        <elementInformation show="1" name="manufacturer">Sofrel</elementInformation>
-        <elementInformation show="1" name="label"></elementInformation>
-        <elementInformation show="1" name="designation"></elementInformation>
-        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
-        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Sofrel</elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="designation" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
     </elementInformations>
-    <informations>Alexandre Dis</informations>
+    <informations>S.DEFFAUX</informations>
     <description>
-        <rect height="100" antialias="false" y="50" x="0" width="40" ry="0" rx="0" style="line-style:normal;line-weight:thin;filling:none;color:blue"/>
-        <rect height="2" antialias="false" y="24" x="10" width="5" ry="0" rx="0" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <rect height="200" antialias="false" y="0" x="0" width="40" ry="0" rx="0" style="line-style:normal;line-weight:thin;filling:white;color:blue"/>
-        <text y="10" x="9" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="L" color="#0055ff" rotation="0"/>
-        <text y="10" x="28" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="N" color="#0055ff" rotation="0"/>
-        <line antialias="false" x2="40" length1="1" x1="0" y1="73" y2="73" end1="none" end2="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:blue"/>
-        <line antialias="false" x2="40" length1="1.5" x1="0" y1="116" y2="116" end1="none" end2="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:blue"/>
-        <text y="55" x="10" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="SOFREL" color="#0055ff" rotation="0"/>
-        <text y="60" x="5" font="Sans Serif,2,-1,5,50,0,0,0,0,0" text="SURGE PROTECTOR" color="#0055ff" rotation="0"/>
-        <text y="65" x="10" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="100-240VAC" color="#0055ff" rotation="0"/>
-        <rect height="5" antialias="false" y="25" x="5" width="10" ry="0" rx="0" style="line-style:normal;line-weight:normal;filling:blue;color:blue"/>
-        <rect height="5" antialias="false" y="25" x="25" width="10" ry="0" rx="0" style="line-style:normal;line-weight:normal;filling:blue;color:blue"/>
-        <line antialias="false" x2="20" length1="1.5" x1="20" y1="170" y2="180" end1="none" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:blue"/>
-        <line antialias="false" x2="13" length1="1.5" x1="27" y1="180" y2="180" end1="none" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:blue"/>
-        <line antialias="false" x2="15" length1="1.5" x1="25" y1="183" y2="183" end1="none" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:blue"/>
-        <line antialias="false" x2="23" length1="1.5" x1="17" y1="186" y2="186" end1="none" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:black;color:blue"/>
-        <text y="45" x="4" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="Red: to replace" color="#0055ff" rotation="0"/>
-        <text y="85" x="5" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="Un            230V" color="#0055ff" rotation="0"/>
-        <text y="90" x="5" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="Uc            255V" color="#0055ff" rotation="0"/>
-        <text y="95" x="5" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="In             5KA" color="#0055ff" rotation="0"/>
-        <text y="100" x="10" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="Imax   15KA" color="#0055ff" rotation="0"/>
-        <text y="115" x="0" font="Sans Serif,2,-1,5,50,0,0,0,0,0" text="EN 61643-11 IEC 61643-1" color="#0055ff" rotation="0"/>
-        <text y="105" x="5" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="Up    1 .5/0.9KV" color="#0055ff" rotation="0"/>
-        <text y="110" x="22" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="20A gG" color="#0055ff" rotation="0"/>
-        <rect height="5" antialias="false" y="106" x="4" width="10" ry="0" rx="0" style="line-style:normal;line-weight:thin;filling:none;color:blue"/>
-        <line antialias="false" x2="2" length1="1.5" x1="16" y1="108.5" y2="108.5" end1="none" end2="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:blue"/>
-        <text y="100" x="5" font="Sans Serif,2,-1,5,50,0,0,0,0,0" text="T2" color="#0055ff" rotation="0"/>
-        <rect height="4" antialias="false" y="97" x="5" width="4" ry="0" rx="0" style="line-style:normal;line-weight:thin;filling:none;color:blue"/>
-        <terminal y="0" x="10" orientation="n"/>
-        <terminal y="200" x="20" orientation="s"/>
-        <terminal y="0" x="30" orientation="n"/>
+        <rect y="50" rx="0" width="40" height="100" antialias="false" x="0" style="line-style:normal;line-weight:thin;filling:none;color:blue" ry="0"/>
+        <rect y="24" rx="0" width="5" height="2" antialias="false" x="10" style="line-style:normal;line-weight:normal;filling:black;color:black" ry="0"/>
+        <rect y="0" rx="0" width="40" height="200" antialias="false" x="0" style="line-style:normal;line-weight:thin;filling:white;color:blue" ry="0"/>
+        <text y="10" text="L" color="#0055ff" font="Sans Serif,4,-1,5,50,0,0,0,0,0" x="9" rotation="0"/>
+        <text y="10" text="N" color="#0055ff" font="Sans Serif,4,-1,5,50,0,0,0,0,0" x="28" rotation="0"/>
+        <line x2="40" end2="none" end1="none" length1="1" y2="73" antialias="false" x1="0" y1="73" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:blue"/>
+        <line x2="40" end2="none" end1="none" length1="1.5" y2="116" antialias="false" x1="0" y1="116" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:blue"/>
+        <text y="55" text="SOFREL" color="#0055ff" font="Sans Serif,4,-1,5,50,0,0,0,0,0" x="10" rotation="0"/>
+        <text y="60" text="SURGE PROTECTOR" color="#0055ff" font="Sans Serif,2,-1,5,50,0,0,0,0,0" x="5" rotation="0"/>
+        <text y="65" text="100-240VAC" color="#0055ff" font="Sans Serif,3,-1,5,50,0,0,0,0,0" x="10" rotation="0"/>
+        <rect y="25" rx="0" width="10" height="5" antialias="false" x="5" style="line-style:normal;line-weight:normal;filling:blue;color:blue" ry="0"/>
+        <rect y="25" rx="0" width="10" height="5" antialias="false" x="25" style="line-style:normal;line-weight:normal;filling:blue;color:blue" ry="0"/>
+        <line x2="20" end2="none" end1="none" length1="1.5" y2="180" antialias="false" x1="20" y1="170" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:blue"/>
+        <line x2="13" end2="none" end1="none" length1="1.5" y2="180" antialias="false" x1="27" y1="180" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:blue"/>
+        <line x2="15" end2="none" end1="none" length1="1.5" y2="183" antialias="false" x1="25" y1="183" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:blue"/>
+        <line x2="23" end2="none" end1="none" length1="1.5" y2="186" antialias="false" x1="17" y1="186" length2="1.5" style="line-style:normal;line-weight:normal;filling:black;color:blue"/>
+        <text y="45" text="Red: to replace" color="#0055ff" font="Sans Serif,3,-1,5,50,0,0,0,0,0" x="4" rotation="0"/>
+        <text y="85" text="Un            230V" color="#0055ff" font="Sans Serif,3,-1,5,50,0,0,0,0,0" x="5" rotation="0"/>
+        <text y="90" text="Uc            255V" color="#0055ff" font="Sans Serif,3,-1,5,50,0,0,0,0,0" x="5" rotation="0"/>
+        <text y="95" text="In             5KA" color="#0055ff" font="Sans Serif,3,-1,5,50,0,0,0,0,0" x="5" rotation="0"/>
+        <text y="100" text="Imax   15KA" color="#0055ff" font="Sans Serif,3,-1,5,50,0,0,0,0,0" x="10" rotation="0"/>
+        <text y="115" text="EN 61643-11 IEC 61643-1" color="#0055ff" font="Sans Serif,2,-1,5,50,0,0,0,0,0" x="0" rotation="0"/>
+        <text y="105" text="Up    1 .5/0.9KV" color="#0055ff" font="Sans Serif,3,-1,5,50,0,0,0,0,0" x="5" rotation="0"/>
+        <text y="110" text="20A gG" color="#0055ff" font="Sans Serif,3,-1,5,50,0,0,0,0,0" x="22" rotation="0"/>
+        <rect y="106" rx="0" width="10" height="5" antialias="false" x="4" style="line-style:normal;line-weight:thin;filling:none;color:blue" ry="0"/>
+        <line x2="2" end2="none" end1="none" length1="1.5" y2="108.5" antialias="false" x1="16" y1="108.5" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:blue"/>
+        <text y="100" text="T2" color="#0055ff" font="Sans Serif,2,-1,5,50,0,0,0,0,0" x="5" rotation="0"/>
+        <rect y="97" rx="0" width="4" height="4" antialias="false" x="5" style="line-style:normal;line-weight:thin;filling:none;color:blue" ry="0"/>
+        <terminal y="0" orientation="n" x="10"/>
+        <terminal y="200" orientation="s" x="20"/>
+        <terminal y="0" orientation="n" x="30"/>
     </description>
 </definition>

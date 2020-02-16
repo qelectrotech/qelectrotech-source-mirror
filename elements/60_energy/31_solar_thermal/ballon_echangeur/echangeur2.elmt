@@ -1,0 +1,37 @@
+<definition link_type="simple" height="130" hotspot_x="14" width="90" version="0.80" type="element" orientation="dyyy" hotspot_y="85">
+    <uuid uuid="{dcad4fd0-c990-4071-a0e9-65ab80d59fca}"/>
+    <names>
+        <name lang="es">Intercambiador de placas</name>
+        <name lang="cs">Deskový výměník tepla</name>
+        <name lang="ar">لوحة مبادل حراري</name>
+        <name lang="en">Plate heat exchanger</name>
+        <name lang="it">Scambiatore a piastre</name>
+        <name lang="pl">Płytowy wymiennik ciepła</name>
+        <name lang="nl">plaat warmtewisselaar</name>
+        <name lang="fr">Echangeur à Plaques2</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect height="120" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-80" width="60" antialias="false" ry="0" x="0"/>
+        <polygon y6="-5" y9="30" y7="10" x6="55" y1="-70" x9="60" y4="-40" x10="55" y10="30" x5="20" y8="30" x4="50" x8="55" y3="-50" y2="-70" x1="60" x3="20" y5="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" x2="55" antialias="true" x7="20"/>
+        <polygon y6="-6" y9="30" y7="10" x6="42" y1="-70" x9="3" y4="-40" x10="0" y10="30" x5="9" y8="30" x4="40" x8="43" y3="-50" y2="-70" x1="0" x3="10" y5="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" x2="43" antialias="true" x7="8"/>
+        <line y1="-47.7439" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="56.2777" antialias="false" y2="-15.2953" end1="simple" length1="1.5" end2="none" length2="1.5" x2="56.2777"/>
+        <line y1="-34.7645" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="5.44275" antialias="false" y2="-2.3159" end1="none" length1="1.5" end2="simple" length2="1.5" x2="5.44275"/>
+        <dynamic_text Halignment="AlignLeft" frame="false" y="50" z="6" text_width="-1" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" uuid="{d09759b9-9615-4373-9464-4fff06d75f3a}" text_from="ElementInfo" x="10" Valignment="AlignTop">
+            <text></text>
+            <info_name>description</info_name>
+        </dynamic_text>
+        <text y="-5" text="Secondaire" rotation="-90" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" x="70"/>
+        <text y="-7.18319" text="Primaire" rotation="-90" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" x="-4.266"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="28" diameter="4" antialias="true" x="58"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="28" diameter="4" antialias="true" x="-2"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="-72" diameter="4" antialias="true" x="58"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="-72.46" diameter="4" antialias="true" x="-1.58"/>
+        <terminal y="30" orientation="e" x="60"/>
+        <terminal y="-70" orientation="e" x="60"/>
+        <terminal y="-70" orientation="w" x="0"/>
+        <terminal y="30" orientation="w" x="-4"/>
+    </description>
+</definition>

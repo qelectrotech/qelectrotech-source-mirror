@@ -1,0 +1,57 @@
+<definition type="element" hotspot_y="5" orientation="dyyy" width="140" version="0.80" link_type="simple" hotspot_x="10" height="90">
+    <uuid uuid="{b37f1819-ffac-43b1-81ab-5a8ec19d289d}"/>
+    <names>
+        <name lang="fr">Nom du nouvel élément</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Kamstrup</elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="designation">603</elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+    </elementInformations>
+    <informations>S.DEFFAUX</informations>
+    <description>
+        <circle diameter="5" x="85.5" y="47.5" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false"/>
+        <circle diameter="10" x="43" y="45" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false"/>
+        <circle diameter="10" x="77" y="45" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false"/>
+        <rect x="10" y="43" width="10" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="11" y="47" width="1" height="1" style="line-style:normal;line-weight:normal;filling:black;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="14" y="47" width="1" height="1" style="line-style:normal;line-weight:normal;filling:black;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="17" y="44" width="1" height="1" style="line-style:normal;line-weight:normal;filling:black;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="18" y="51" width="1" height="1" style="line-style:normal;line-weight:normal;filling:black;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="15" y="51" width="1" height="1" style="line-style:normal;line-weight:normal;filling:black;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="18" y="46" width="1" height="1" style="line-style:normal;line-weight:normal;filling:black;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="18" y="48" width="1" height="1" style="line-style:normal;line-weight:normal;filling:black;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="13" y="49" width="1" height="1" style="line-style:normal;line-weight:normal;filling:black;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="11" y="44" width="1" height="1" style="line-style:normal;line-weight:normal;filling:black;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="14" y="44" width="1" height="1" style="line-style:normal;line-weight:normal;filling:black;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="16" y="49" width="1" height="1" style="line-style:normal;line-weight:normal;filling:black;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="0" y="0" width="120" height="80" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="-5" y="10" width="5" height="60" style="line-style:normal;line-weight:normal;filling:black;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="120" y="10" width="5" height="60" style="line-style:normal;line-weight:normal;filling:black;color:black" rx="0" antialias="false" ry="0"/>
+        <text color="#000000" rotation="0" x="88" y="76" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="kamstrup"/>
+        <rect x="40" y="10" width="50" height="30" style="line-style:normal;line-weight:normal;filling:gray;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="11" y="51" width="1" height="1" style="line-style:normal;line-weight:normal;filling:black;color:black" rx="0" antialias="false" ry="0"/>
+        <rect x="60" y="5" width="10" height="3" style="line-style:normal;line-weight:normal;filling:black;color:black" rx="0" antialias="false" ry="0"/>
+        <text color="#000000" rotation="0" x="5" y="15" font="MS Shell Dlg 2,2,-1,5,50,0,0,0,0,0,Normal" text="HEAT METER (E1) "/>
+        <dynamic_text rotation="0" uuid="{2828ddcb-2723-48c7-8952-7ed460e28a65}" text_from="ElementInfo" x="50" y="60" Halignment="AlignLeft" font="MS Shell Dlg 2,4,-1,5,50,0,0,0,0,0,Normal" Valignment="AlignTop" frame="false" text_width="-1" z="24">
+            <text></text>
+            <info_name>machine-manufacturer-reference</info_name>
+        </dynamic_text>
+        <text color="#000000" rotation="0" x="5" y="30" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text="CE"/>
+        <text color="#000000" rotation="0" x="5" y="75" font="Sans Serif,1,-1,5,50,0,0,0,0,0" text="Battery.2xA cell"/>
+        <polygon y3="54" x2="82" x1="80" x4="89" y2="55" y5="47" y1="48" y6="45" style="line-style:normal;line-weight:none;filling:black;color:black" x3="86" x6="83" x5="89" antialias="false" y4="53"/>
+        <polygon y3="48" x2="48" x1="48" x4="40" y2="45" y5="55" y1="50" style="line-style:normal;line-weight:normal;filling:black;color:black" x3="40" x5="47" antialias="false" y4="52"/>
+        <circle diameter="10" x="55" y="45" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false"/>
+        <circle diameter="10" x="65" y="45" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false"/>
+        <rect x="60" y="45" width="10" height="10" style="line-style:normal;line-weight:normal;filling:black;color:black" rx="0" antialias="false" ry="0"/>
+        <circle diameter="5" x="38.5" y="47.5" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false"/>
+    </description>
+</definition>
