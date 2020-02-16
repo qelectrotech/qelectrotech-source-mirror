@@ -1,0 +1,37 @@
+<definition link_type="simple" height="50" hotspot_x="25" width="50" version="0.80" type="element" orientation="dyyy" hotspot_y="25">
+    <uuid uuid="{90beeb22-bb34-4e37-a7dc-a8a2f55d9a2e}"/>
+    <names>
+        <name lang="cs">Světelný signál</name>
+        <name lang="ar">مُؤشّر ضوئي</name>
+        <name lang="en">Light</name>
+        <name lang="it">Lampada spia</name>
+        <name lang="pl">Lampka sygnalizacyjna</name>
+        <name lang="nl">Lamp</name>
+        <name lang="el">Λάμπα</name>
+        <name lang="fr">Voyant bleu</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="designation" show="1"></elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle style="line-style:normal;line-weight:normal;filling:blue;color:black" y="-22" diameter="44" antialias="true" x="-22"/>
+        <arc height="28" start="0" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-14" width="28" antialias="true" angle="-270" x="-14"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" y="-20" diameter="40" antialias="true" x="-20"/>
+        <dynamic_text Halignment="AlignLeft" frame="false" y="33" z="4" text_width="-1" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{681a5b51-c0eb-45ca-b71c-4956cb73ed5f}" text_from="ElementInfo" x="-18" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+    </description>
+</definition>
