@@ -17,10 +17,10 @@
 */
 #include "qetgraphicstableitem.h"
 #include "diagram.h"
+#include "qetgraphicsheaderitem.h"
 
 #include <QAbstractItemModel>
 #include <QFontMetrics>
-#include <algorithm>
 #include <QPainter>
 #include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
@@ -46,6 +46,8 @@ QetGraphicsTableItem::QetGraphicsTableItem(QGraphicsItem *parent) :
 	connect(this, &QetGraphicsTableItem::xChanged, this, &QetGraphicsTableItem::adjustHandlerPos);
 	connect(this, &QetGraphicsTableItem::yChanged, this, &QetGraphicsTableItem::adjustHandlerPos);
 
+	m_header_item = new QetGraphicsHeaderItem(this);
+
 
 
 	/*******ONLY FOR TEST DURING DEVEL*********/
@@ -60,6 +62,11 @@ QetGraphicsTableItem::QetGraphicsTableItem(QGraphicsItem *parent) :
 			model->setItem(row, column, item);
 		}
 	}
+	model->setHeaderData(0, Qt::Horizontal, "Label");
+	model->setHeaderData(1, Qt::Horizontal, "Folio");
+	model->setHeaderData(2, Qt::Horizontal, "Fonction");
+	model->setHeaderData(3, Qt::Horizontal, "Fabricant");
+	model->setHeaderData(4, Qt::Horizontal, "Installation");
 	this->setModel(model);
 	this->setPos(50,50);
 }
@@ -78,7 +85,11 @@ QetGraphicsTableItem::~QetGraphicsTableItem()
 void QetGraphicsTableItem::setModel(QAbstractItemModel *model)
 {
 	m_model = model;
-	modelReseted();
+	reset();
+
+	m_header_item->setModel(model);
+	adjustColumnsWidth();
+	m_header_item->setPos(0, -m_header_item->rect().height());
 }
 
 /**
@@ -87,6 +98,17 @@ void QetGraphicsTableItem::setModel(QAbstractItemModel *model)
  */
 QAbstractItemModel *QetGraphicsTableItem::model() const {
 	return m_model;
+}
+
+/**
+ * @brief QetGraphicsTableItem::reset
+ * Reset the internal state of the item
+ */
+void QetGraphicsTableItem::reset()
+{
+	setUpColumnAndRowMinimumSize();
+	setUpBoundingRect();
+	adjustColumnsWidth();
 }
 
 /**
@@ -128,12 +150,12 @@ void QetGraphicsTableItem::paint(QPainter *painter, const QStyleOptionGraphicsIt
 
 		//Draw vertical lines
 	auto offset= 0;
-	for(auto size : m_current_column_width)
+	for(auto i=0 ; i<m_model->columnCount() ; ++i)
 	{
-		QPointF p1(offset+size, m_current_rect.top());
-		QPointF p2(offset+size, m_current_rect.bottom());
+		QPointF p1(offset+m_header_item->sectionSize(i), m_current_rect.top());
+		QPointF p2(offset+m_header_item->sectionSize(i), m_current_rect.bottom());
 		painter->drawLine(p1, p2);
-		offset += size;
+		offset += m_header_item->sectionSize(i);
 	}
 
 		//Draw horizontal lines
@@ -154,9 +176,9 @@ void QetGraphicsTableItem::paint(QPainter *painter, const QStyleOptionGraphicsIt
 		{
 				//In first iteration the top left X is margin left, in all other iteration the top left X is stored in m_column_size
 			if (j>0) {
-				top_left.setX(top_left.x() + m_current_column_width.at(j-1));
+				top_left.setX(top_left.x() + m_header_item->sectionSize(j-1));
 			}
-			QSize size(m_current_column_width.at(j)/* - m_margin.left() - m_margin.right()*/,
+			QSize size(m_header_item->sectionSize(j),
 					   cell_height - m_margin.top() - m_margin.bottom());
 			painter->drawText(QRectF(top_left, size), Qt::AlignVCenter|Qt::AlignLeft, m_model->index(i, j).data().toString());
 		}
@@ -221,25 +243,6 @@ bool QetGraphicsTableItem::sceneEventFilter(QGraphicsItem *watched, QEvent *even
 }
 
 /**
- * @brief QetGraphicsTableItem::modelReseted
- * Called when the model is reseted
- */
-void QetGraphicsTableItem::modelReseted()
-{
-	preProcess();
-}
-
-/**
- * @brief QetGraphicsTableItem::preProcess
- * Make all post process needed befor painting
- */
-void QetGraphicsTableItem::preProcess()
-{
-	setUpColumnAndRowMinimumSize();
-	setUpBoundingRect();
-}
-
-/**
  * @brief QetGraphicsTableItem::setUpColumnAndRowMinimumSize
  * Calcule the minimum row height and the minimum column width for each columns
  */
@@ -268,13 +271,10 @@ void QetGraphicsTableItem::setUpColumnAndRowMinimumSize()
 	}
 
 		//Set the minimum size of the table
-	m_minimum_rect.setTopLeft(QPoint(0,0));
-	m_minimum_rect.setWidth(0);
-	for (auto cw : m_minimum_column_width) {
-		m_minimum_rect.setWidth(m_minimum_rect.width()+cw);
-	}
-	m_minimum_rect.setHeight(m_row_height*m_model->rowCount());
-	m_current_column_width = m_minimum_column_width;
+	m_minimum_rect.setRect(0, 0,
+						   std::accumulate(m_minimum_column_width.begin(), m_minimum_column_width.end(), 0),
+						   m_row_height*m_model->rowCount());
+
 	m_current_rect = m_minimum_rect;
 }
 
@@ -311,50 +311,38 @@ void QetGraphicsTableItem::handlerMousePressEvent(QGraphicsSceneMouseEvent *even
 
 void QetGraphicsTableItem::handlerMouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
-	QPointF new_handler_pos = event->scenePos();
-	if (event->modifiers() != Qt::ControlModifier) {
-		new_handler_pos = Diagram::snapToGrid(event->scenePos());
-	}
+	auto new_handler_pos = Diagram::snapToGrid(event->scenePos());
 	QSize size = QRectF(m_current_rect.topLeft(), mapFromScene(new_handler_pos)).size().toSize();
 
 	m_handler_item.setPos(mapToScene(std::max(m_minimum_rect.width(), size.width()),
 									 std::max(m_minimum_rect.height(), size.height())));
 
-	QRect new_rect(QPoint(0,0), mapFromScene(m_handler_item.scenePos()).toPoint());
+	QRect new_rect = QRectF(QPointF(0,0), mapFromScene(m_handler_item.scenePos())).toRect();
 
 	if (new_rect != m_current_rect)
 	{
+		prepareGeometryChange();
 		m_current_rect = new_rect;
+		setUpBoundingRect();
 		adjustColumnsWidth();
 	}
 }
 
-void QetGraphicsTableItem::handlerMouseReleaseEvent(QGraphicsSceneMouseEvent *event)
-{
+void QetGraphicsTableItem::handlerMouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
 	Q_UNUSED(event)
-	m_current_rect.setBottomRight(mapFromScene(m_handler_item.scenePos()).toPoint());
 }
 
 /**
  * @brief QetGraphicsTableItem::adjustColumnsWidth
- * Adjust the size of each column according to the current table width
+ * Adjust the size of each column according to the current table width by setting the sectionSize of the header item
  */
 void QetGraphicsTableItem::adjustColumnsWidth()
 {
-	m_current_column_width = m_minimum_column_width;
-
-		//Get the minimum width of table
-	auto minimum_width= 0;
-	for(auto w : m_minimum_column_width) {
-		minimum_width += w;
-	}
-
+	auto minimum_width = std::accumulate(m_minimum_column_width.begin(), m_minimum_column_width.end(), 0);
 	auto a = m_current_rect.width() - minimum_width;
 	auto b = a/m_model->columnCount();
-	for(auto i= 0 ; i<m_current_column_width.size() ; ++i) {
-		m_current_column_width.replace(i, m_current_column_width.at(i) + b);
-	}
 
-	prepareGeometryChange();
-	setUpBoundingRect();
+	for(auto i= 0 ; i<m_minimum_column_width.size() ; ++i) {
+		m_header_item->resizeSection(i, m_minimum_column_width.at(i) + b);
+	}
 }

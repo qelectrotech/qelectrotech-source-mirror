@@ -25,6 +25,7 @@
 #include "QetGraphicsItemModeler/qetgraphicshandleritem.h"
 
 class QAbstractItemModel;
+class QetGraphicsHeaderItem;
 
 class QetGraphicsTableItem : public QetGraphicsItem
 {
@@ -34,6 +35,8 @@ class QetGraphicsTableItem : public QetGraphicsItem
 
         void setModel(QAbstractItemModel *model);
 		QAbstractItemModel *model() const;
+		void reset();
+
 		virtual QRectF boundingRect() const override;
 		virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 
@@ -44,7 +47,6 @@ class QetGraphicsTableItem : public QetGraphicsItem
 
     private:
         void modelReseted();
-		void preProcess();
 		void setUpColumnAndRowMinimumSize();
 		void setUpBoundingRect();
 		void adjustHandlerPos();
@@ -58,8 +60,7 @@ class QetGraphicsTableItem : public QetGraphicsItem
         QAbstractItemModel *m_model= nullptr;
 		QFont m_font = QETApp::diagramTextsFont();
 
-		QVector<int> m_minimum_column_width,
-					 m_current_column_width;
+		QVector<int> m_minimum_column_width;
 
 		int m_row_height;
 		QMargins m_margin;
@@ -70,6 +71,7 @@ class QetGraphicsTableItem : public QetGraphicsItem
 		int m_br_margin= 10;
 
 		QetGraphicsHandlerItem m_handler_item;
+		QetGraphicsHeaderItem *m_header_item = nullptr;
 };
 
 #endif // QetGraphicsTableItem_H
