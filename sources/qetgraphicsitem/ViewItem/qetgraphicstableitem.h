@@ -33,6 +33,9 @@ class QetGraphicsTableItem : public QetGraphicsItem
         QetGraphicsTableItem(QGraphicsItem *parent= nullptr);
 		virtual ~QetGraphicsTableItem() override;
 
+		enum { Type = UserType + 1300 };
+		int type() const override { return Type; }
+
         void setModel(QAbstractItemModel *model);
 		QAbstractItemModel *model() const;
 		void reset();
