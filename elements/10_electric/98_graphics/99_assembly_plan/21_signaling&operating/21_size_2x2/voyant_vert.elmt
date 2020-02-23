@@ -1,0 +1,25 @@
+<definition width="50" type="element" hotspot_x="25" link_type="simple" hotspot_y="25" height="50" version="0.80" orientation="dyyy">
+    <uuid uuid="{3363816f-69d5-480e-a237-afff6bad81c5}"/>
+    <names>
+        <name lang="ar">مُؤشّر ضوئي</name>
+        <name lang="nl">Lamp</name>
+        <name lang="it">Lampada spia</name>
+        <name lang="fr">Voyant vert</name>
+        <name lang="en">Light</name>
+        <name lang="cs">Světelný signál</name>
+        <name lang="el">Λάμπα</name>
+        <name lang="pl">Lampka sygnalizacyjna</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle y="-22" style="line-style:normal;line-weight:normal;filling:green;color:black" antialias="true" x="-22" diameter="44"/>
+        <arc start="0" y="-14" width="28" style="line-style:normal;line-weight:thin;filling:none;color:black" angle="-270" antialias="true" x="-14" height="28"/>
+        <circle y="-20" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" x="-20" diameter="40"/>
+        <dynamic_text text_width="-1" y="33" uuid="{b7542c14-ab8b-465d-9bd5-4e6ec54ef0c5}" rotation="0" text_from="ElementInfo" Halignment="AlignLeft" x="-18" frame="false" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="4" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+    </description>
+</definition>

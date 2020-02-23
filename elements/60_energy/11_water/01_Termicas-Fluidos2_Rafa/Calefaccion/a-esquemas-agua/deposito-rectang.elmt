@@ -1,24 +1,30 @@
-<definition width="50" version="0.4" hotspot_x="25" hotspot_y="43" height="80" link_type="simple" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{F720A2BE-66F7-4F23-AE0E-D7936FE0BD72}"/><names>
-        <name lang="es">Depósito Rectangular</name>
+<definition hotspot_y="42" link_type="simple" height="80" width="50" type="element" version="0.80" hotspot_x="24" orientation="dyyy">
+    <uuid uuid="{bfcf7134-0d0b-46ca-bb3b-e31fd5a6a31c}"/>
+    <names>
+        <name lang="fr">Vase rectangle</name>
         <name lang="ca">Dipòsit rectangular</name>
+        <name lang="es">Depósito Rectangular</name>
     </names>
-    <informations>Rafael Ferrando.
+    <elementInformations/>
+    <informations>Rafael Ferrando.&#xd;
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <rect width="5" x="14" y="27" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="20" y2="21" x2="20"/>
-        <arc width="40" x="-20" y="-35" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <arc width="40" x="-20" y="16" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="-20" y2="21" x2="-20"/>
-        <rect width="42" x="-21" y="-35" antialias="false" height="61" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="5" x="-17" y="26" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="-7" y="-20" size="4" rotate="true" text="_L" tagg="label"/>
-        <terminal x="0" y="-36" orientation="n"/>
-        <terminal x="0" y="27" orientation="s"/>
-        <terminal x="-21" y="-20" orientation="w"/>
-        <terminal x="-21" y="10" orientation="w"/>
-        <terminal x="21" y="-20" orientation="e"/>
-        <terminal x="21" y="10" orientation="e"/>
+        <rect x="14" y="27" antialias="false" height="4" width="5" ry="0" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" x1="20" antialias="false" y1="-30" end1="none" x2="20" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="21" length2="1.5"/>
+        <arc x="-20" y="-35" antialias="true" height="10" start="-180" angle="-180" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-20" y="16" antialias="true" height="10" start="0" angle="-180" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" x1="-20" antialias="false" y1="-30" end1="none" x2="-20" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="21" length2="1.5"/>
+        <rect x="-21" y="-35" antialias="false" height="61" width="42" ry="0" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-17" y="26" antialias="false" height="4" width="5" ry="0" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text x="-7" z="8" frame="false" text_from="ElementInfo" y="-27" font="Sans Serif,4,-1,5,25,0,0,0,0,0" Valignment="AlignTop" rotation="0" Halignment="AlignLeft" text_width="-1" uuid="{212167db-83f7-40af-ace7-de49da04af5a}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal x="20" y="10" orientation="e"/>
+        <terminal x="0" y="-34" orientation="n"/>
+        <terminal x="20" y="-20" orientation="e"/>
+        <terminal x="-20" y="10" orientation="w"/>
+        <terminal x="0" y="26" orientation="s"/>
+        <terminal x="-20" y="-20" orientation="w"/>
     </description>
 </definition>

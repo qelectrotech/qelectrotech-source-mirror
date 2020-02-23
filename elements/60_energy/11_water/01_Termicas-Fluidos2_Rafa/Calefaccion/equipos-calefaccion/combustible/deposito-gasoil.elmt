@@ -1,24 +1,30 @@
-<definition hotspot_x="14" hotspot_y="22" width="30" type="element" version="0.5" height="50" link_type="simple" orientation="dyyy">
-<uuid uuid="{25DD5360-7BDF-4491-A82F-4E2D5EE8B8D2}"/><names>
+<definition hotspot_y="22" link_type="simple" height="50" width="30" type="element" version="0.80" hotspot_x="14" orientation="dyyy">
+    <uuid uuid="{a6685b92-0907-4fc0-9f21-19af1972e5a6}"/>
+    <names>
+        <name lang="fr">Cuve à Fioul 1000L</name>
         <name lang="ca">Dipòsit gasoil 1000L</name>
         <name lang="es">Depósito gasoil 1000L</name>
     </names>
-    <informations>Rafael Ferrando.
+    <elementInformations/>
+    <informations>Rafael Ferrando.&#xd;
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-7" width="20" antialias="false" height="30" x="-11"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-9" width="3" antialias="false" height="2" x="-8"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-14" width="7" antialias="false" height="5" x="-10"/>
-        <line length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" antialias="false" x2="-8" y2="-12" end1="none" x1="-6" y1="-10" length1="1.5"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-9" width="3" antialias="false" height="2" x="3"/>
-        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="-6" width="18" antialias="false" height="28" x="-10"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-12" width="3" antialias="false" height="3" x="3"/>
-        <polygon y7="-13" x4="9" y3="-14" antialias="false" x3="3" y4="-17" x2="3" x1="4" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="5" x7="6" y5="-16" x5="10" closed="false" y8="-12" y2="-12" x8="6" y6="-13" y1="-12"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-11" width="3" antialias="false" height="1" x="6"/>
-        <arc style="line-style:normal;line-weight:thin;filling:none;color:black" y="-13" width="5" angle="-120" antialias="true" height="4" x="-9" start="-180"/>
-        <rect style="line-style:normal;line-weight:thin;filling:brun;color:black" y="3" width="18" antialias="false" height="19" x="-10"/>
-        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="4" y2="20" end1="none" x1="4" y1="-7" length1="1.5"/>
-        <input rotate="true" text="1000L" tagg="label" y="-1.5" x="-11" size="3"/>
-        <terminal y="-10" x="10" orientation="e"/>
+        <rect x="-11" y="-7" antialias="false" height="30" width="20" ry="0" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-8" y="-9" antialias="false" height="2" width="3" ry="0" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-10" y="-14" antialias="false" height="5" width="7" ry="0" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" x1="-6" antialias="false" y1="-10" end1="none" x2="-8" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-12" length2="1.5"/>
+        <rect x="3" y="-9" antialias="false" height="2" width="3" ry="0" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-10" y="-6" antialias="false" height="28" width="18" ry="0" rx="0" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect x="3" y="-12" antialias="false" height="3" width="3" ry="0" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x5="10" x4="9" x3="3" y2="-12" x2="3" y7="-13" closed="false" x6="5" y8="-12" y1="-12" x8="6" x7="6" y5="-16" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="4" y3="-14" y4="-17" y6="-13"/>
+        <rect x="6" y="-11" antialias="false" height="1" width="3" ry="0" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-9" y="-13" antialias="true" height="4" start="-180" angle="-120" width="5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect x="-10" y="3" antialias="false" height="19" width="18" ry="0" rx="0" style="line-style:normal;line-weight:thin;filling:brun;color:black"/>
+        <line end2="none" x1="4" antialias="false" y1="-7" end1="none" x2="4" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="20" length2="1.5"/>
+        <dynamic_text x="-11" z="13" frame="false" text_from="ElementInfo" y="-8" font="Sans Serif,3,-1,5,25,0,0,0,0,0" Valignment="AlignTop" rotation="0" Halignment="AlignLeft" text_width="-1" uuid="{12ba8544-0a57-4d4f-8e2c-05d5e784c4c6}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal x="10" y="-10" orientation="e"/>
     </description>
 </definition>

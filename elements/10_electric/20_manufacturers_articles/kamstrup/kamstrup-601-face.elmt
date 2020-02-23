@@ -1,0 +1,47 @@
+<definition hotspot_x="10" link_type="simple" width="140" height="90" type="element" version="0.80" orientation="dyyy" hotspot_y="5">
+    <uuid uuid="{cdfa78ad-fbc9-43ea-802d-53cd48b933ec}"/>
+    <names>
+        <name lang="fr">Kamstrup 601</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="manufacturer" show="1">Kamstrup</elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1">65000987</elementInformation>
+        <elementInformation name="designation" show="1">MULTI CAL 601</elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+    </elementInformations>
+    <informations>S.DEFFAUX</informations>
+    <description>
+        <circle y="25" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10" x="5" antialias="false"/>
+        <text text="Cfg:     2100272700 " rotation="0" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="45" color="#000000" x="80"/>
+        <circle y="10" style="line-style:normal;line-weight:normal;filling:green;color:black" diameter="10" x="5" antialias="false"/>
+        <rect y="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="120" height="80" rx="0" x="0" ry="0" antialias="false"/>
+        <rect y="35" style="line-style:normal;line-weight:normal;filling:black;color:black" width="5" height="10" rx="0" x="-5" ry="0" antialias="false"/>
+        <rect y="35" style="line-style:normal;line-weight:normal;filling:black;color:black" width="5" height="10" rx="0" x="120" ry="0" antialias="false"/>
+        <text text="kamstrup" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="75" color="#ff0000" x="40"/>
+        <dynamic_text text_from="ElementInfo" rotation="0" z="8" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,Normal" y="27" uuid="{2828ddcb-2723-48c7-8952-7ed460e28a65}" text_width="-1" frame="false" x="88" Halignment="AlignLeft" Valignment="AlignTop">
+            <text>65000987</text>
+            <info_name>machine-manufacturer-reference</info_name>
+        </dynamic_text>
+        <dynamic_text text_from="ElementInfo" rotation="0" z="8" font="MS Shell Dlg 2,4,-1,5,50,0,0,0,0,0,Normal" y="5" uuid="{2828ddcb-2723-48c7-8952-7ed460e28a65}" text_width="-1" frame="false" x="75" Halignment="AlignLeft" Valignment="AlignTop">
+            <text>65000987</text>
+            <info_name>machine-manufacturer-reference</info_name>
+        </dynamic_text>
+        <rect y="10" style="line-style:normal;line-weight:normal;filling:lightgray;color:black" width="50" height="30" rx="0" x="20" ry="0" antialias="false"/>
+        <rect y="70" style="line-style:normal;line-weight:normal;filling:black;color:black" width="10" height="3" rx="0" x="25" ry="0" antialias="false"/>
+        <polygon x4="8" y2="12" y3="15" x2="8" style="line-style:normal;line-weight:normal;filling:white;color:white" x1="8" y1="18" x3="14" y4="18" antialias="false"/>
+        <text text="Type:  67B000701270" rotation="0" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="30" color="#000000" x="80"/>
+        <text text="S/N:" rotation="0" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="35" color="#000000" x="80"/>
+        <text text="601" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="55" color="#7a7a8d" x="25"/>
+        <text text="MULTICAL 601" rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="7" color="#000000" x="18"/>
+        <text text="Prog:   44458458" rotation="0" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="40" color="#000000" x="80"/>
+        <polygon x4="13" y2="29" y3="29" x2="7" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="8" y1="33" x3="12" y4="33" antialias="false"/>
+        <polygon x4="13" y2="28" y3="28" x2="8" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="8" closed="false" y1="29" x3="13" y4="33" antialias="false"/>
+    </description>
+</definition>
