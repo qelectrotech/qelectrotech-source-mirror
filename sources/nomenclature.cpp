@@ -48,7 +48,7 @@ nomenclature::~nomenclature() {
 bool nomenclature::saveToCSVFile()
 {
 	// SAVE IN FILE
-	QString name = QObject::tr("nomenclature_") + QString(m_project  -> title());
+	QString name = QObject::tr("nomenclature_") + QString(m_project  -> title() + ".csv");
 	if (!name.endsWith(".csv")) {
 		name += ".csv";
 	}

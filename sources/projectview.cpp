@@ -313,7 +313,7 @@ QString ProjectView::askUserForFilePath(bool assign) {
 	QString filepath = QFileDialog::getSaveFileName(
 		this,
 		tr("Enregistrer sous", "dialog title"),
-		m_project -> currentDir(),
+		m_project -> currentDir() + "/" + tr("sansnom") + ".qet",
 		tr("Projet QElectroTech (*.qet)", "filetypes allowed when saving a project file")
 	);
 

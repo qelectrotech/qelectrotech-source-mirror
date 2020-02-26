@@ -44,10 +44,10 @@ ConductorNumExport::ConductorNumExport(QETProject *project, QWidget *parent) :
  */
 bool ConductorNumExport::toCsv()
 {
-    QString name = QObject::tr("numero_de_fileries_") + m_project->title();
-    if(!name.endsWith(".csv")) {
-        name += ".csv";
-    }
+    QString name = QObject::tr("numero_de_fileries_") + m_project->title() + ".csv";
+//    if(!name.endsWith(".csv")) {
+//        name += ".csv";
+//    }
 
     QString filename = QFileDialog::getSaveFileName(m_parent_widget, QObject::tr("Enregister sous... "), name, QObject::tr("Fichiers csv (*.csv)"));
     QFile file(filename);
