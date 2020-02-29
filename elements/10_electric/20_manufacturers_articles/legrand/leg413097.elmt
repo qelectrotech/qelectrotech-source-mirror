@@ -1,0 +1,59 @@
+<definition width="50" height="80" hotspot_x="18" version="0.80" type="element" orientation="dyyy" link_type="simple" hotspot_y="44">
+    <uuid uuid="{dde7da57-6eb9-47d5-ac43-2acecfc28dc5}"/>
+    <names>
+        <name lang="cs">Jednofázový transformátor 40VA</name>
+        <name lang="it">Trasformatore monofase 40VA</name>
+        <name lang="pt">Transformador monofásico 40VA</name>
+        <name lang="de">Transformator einphasig 40VA</name>
+        <name lang="en">Single phase transducer 40VA</name>
+        <name lang="pl">Transformator jednofazowy 40VA</name>
+        <name lang="fr">Transfo mono 40VA</name>
+        <name lang="ru">Однофазный трансформатор 40VA</name>
+        <name lang="nl">eenfase transformator 40VA</name>
+        <name lang="ar">محوّل أحادي الوجه</name>
+        <name lang="es">Transformador monofásico Yyd 40VA</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="comment" show="1">40VA</elementInformation>
+        <elementInformation name="manufacturer" show="1">Legrand</elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">LEG0413097</elementInformation>
+        <elementInformation name="description" show="1">TRANSFORMATEUR MODULAIRE 230/24V 40VA</elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text x="26" rotation="0" uuid="{36e49736-9719-430e-bc5b-5fd136af88d7}" frame="false" text_width="-1" text_from="UserText" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="1" Valignment="AlignTop" y="6" Halignment="AlignLeft">
+            <text>24V</text>
+        </dynamic_text>
+        <ellipse x="-5" antialias="true" width="30" height="23" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-7"/>
+        <dynamic_text x="25" rotation="0" uuid="{033d6dec-bbdb-4e42-9e2a-e47d6aaa11a7}" frame="false" text_width="-1" text_from="UserText" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="3" Valignment="AlignTop" y="-15" Halignment="AlignLeft">
+            <text>230V</text>
+        </dynamic_text>
+        <ellipse x="-5" antialias="true" width="30" height="23" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-26"/>
+        <dynamic_text x="30" rotation="0" uuid="{05d420b8-f49b-46ce-8819-86d8b358cca3}" frame="false" text_width="-1" text_from="ElementInfo" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="5" Valignment="AlignTop" y="-35" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x2="0" antialias="false" y2="-24" y1="-35" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="0"/>
+        <line x2="0" antialias="false" y2="25" y1="14" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="0"/>
+        <line x2="20" antialias="false" y2="-24" y1="-35" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="20"/>
+        <line x2="20" antialias="false" y2="25" y1="14" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="20"/>
+        <line x2="-8" antialias="false" y2="-5" y1="-5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="1"/>
+        <dynamic_text x="25" rotation="0" uuid="{81c0d19d-c5b5-4179-acad-1b163dd0b20c}" frame="false" text_width="-1" text_from="ElementInfo" font="MS Shell Dlg 2,6,-1,5,50,0,0,0,0,0,Normal" z="11" Valignment="AlignTop" y="-5" Halignment="AlignLeft">
+            <text>40VA</text>
+            <info_name>comment</info_name>
+        </dynamic_text>
+        <terminal x="20" orientation="n" y="-36"/>
+        <terminal x="0" orientation="n" y="-36"/>
+        <terminal x="20" orientation="s" y="26"/>
+        <terminal x="0" orientation="s" y="26"/>
+        <terminal x="-10" orientation="w" y="-5"/>
+    </description>
+</definition>

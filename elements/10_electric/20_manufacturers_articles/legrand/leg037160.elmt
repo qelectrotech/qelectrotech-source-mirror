@@ -1,0 +1,45 @@
+<definition version="0.80" width="10" hotspot_x="4" link_type="terminal" hotspot_y="14" height="30" orientation="dyyy" type="element">
+    <uuid uuid="{d3e4f919-a103-49a2-ae25-06e2c8057295}"/>
+    <names>
+        <name lang="es">Terminal de unión</name>
+        <name lang="pl">Zacisk</name>
+        <name lang="ar">طرف توصيل</name>
+        <name lang="en">Terminal block</name>
+        <name lang="pt">Terminal de combinação</name>
+        <name lang="ru">Клеммное соединение</name>
+        <name lang="cs">Spojovací svorka</name>
+        <name lang="de">Klemme</name>
+        <name lang="fr">Borne 2.5mm</name>
+        <name lang="it">Terminale di unione</name>
+        <name lang="nl">klem doorgang</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="description" show="1">BLOC DE JONCTION VIKING GRISE 2,5mm</elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Legrand</elementInformation>
+        <elementInformation name="designation" show="1">LEG037160</elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" z="1" text_width="-1" rotation="270" frame="false" Valignment="AlignTop" y="11" uuid="{91c840ee-306f-4409-bae7-790d713a33d6}" Halignment="AlignLeft" x="-2" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" z="2" text_width="-1" rotation="0" frame="false" Valignment="AlignTop" y="-14" uuid="{a2463b96-7379-465b-b830-57fe2ce509da}" Halignment="AlignLeft" x="5" text_from="ElementInfo">
+            <text></text>
+        </dynamic_text>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="0" y1="10" length2="1.5" x1="0" antialias="false" end1="none" end2="none" y2="3"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="0" y1="-10" length2="1.5" x1="0" antialias="false" end1="none" end2="none" y2="-3"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5" antialias="true" y="-2.5" x="-2.5"/>
+        <terminal orientation="n" y="-10" x="0"/>
+        <terminal orientation="s" y="10" x="0"/>
+    </description>
+</definition>

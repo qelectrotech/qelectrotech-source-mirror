@@ -1,7 +1,7 @@
 <definition version="0.80" link_type="slave" height="210" hotspot_x="5" orientation="dyyy" type="element" width="50" hotspot_y="4">
-    <uuid uuid="{034a29d6-bc93-43e5-b868-d32960029e92}"/>
+    <uuid uuid="{1bb929e0-b789-4b44-afff-2393d0b47a55}"/>
     <names>
-        <name lang="fr">MFS716</name>
+        <name lang="fr">MFS732</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">power</kindInformation>
@@ -14,14 +14,14 @@
         <line length1="1.5" end1="none" length2="1.5" antialias="false" x1="7" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="170" end2="none" y1="170" x2="13"/>
         <arc y="191" angle="270" antialias="true" height="8" x="2.25" style="line-style:normal;line-weight:thin;filling:none;color:black" start="45" width="9"/>
         <arc y="191" angle="-270" antialias="true" height="8" x="8.75" style="line-style:normal;line-weight:thin;filling:none;color:black" start="-225" width="9"/>
-        <text y="69" rotation="0" x="1" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" text="C16"/>
+        <text y="69" rotation="0" x="1" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" text="C32"/>
         <line length1="1.5" end1="none" length2="1.5" antialias="false" x1="0" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="116" end2="none" y1="116" x2="40"/>
         <line length1="1.5" end1="none" length2="1.5" antialias="false" x1="7" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="173" end2="none" y1="170" x2="7"/>
         <rect y="72" antialias="false" height="4" x="3" style="line-style:normal;line-weight:thin;filling:none;color:black" width="10" rx="0" ry="0"/>
         <line length1="1.5" end1="none" length2="1.5" antialias="false" x1="13" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="173" end2="none" y1="170" x2="13"/>
         <line length1="1.5" end1="none" length2="1.5" antialias="false" x1="33" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="79" end2="none" y1="72" x2="33"/>
         <arc y="170" angle="-180" antialias="true" height="6" x="7" style="line-style:normal;line-weight:thin;filling:none;color:black" start="0" width="6"/>
-        <dynamic_text Halignment="AlignLeft" y="-10" Valignment="AlignTop" text_width="-1" z="12" rotation="270" x="-1" frame="false" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{cd04c975-73e5-4515-ac7b-94ca68cc61cd}" text_from="ElementInfo">
+        <dynamic_text Halignment="AlignLeft" y="-10" Valignment="AlignTop" text_width="-1" z="12" rotation="270" x="-1" frame="false" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{50e88605-f0c6-439a-9d0d-181e3769160c}" text_from="ElementInfo">
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>
@@ -35,10 +35,10 @@
         <text y="75" rotation="0" x="4" font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" text="3000"/>
         <text y="79" rotation="0" x="7" font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" text="3"/>
         <rect y="76" antialias="false" height="4" x="6.5" style="line-style:normal;line-weight:thin;filling:none;color:black" width="2.5" rx="0" ry="0"/>
-        <dynamic_text Halignment="AlignLeft" y="118.5" Valignment="AlignTop" text_width="-1" z="23" rotation="0" x="0" frame="false" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{2db19a90-9a85-43bd-bc32-d2a116949c2e}" text_from="UserText">
+        <dynamic_text Halignment="AlignLeft" y="118.5" Valignment="AlignTop" text_width="-1" z="23" rotation="0" x="0" frame="false" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{bef3859a-b925-4175-af8e-34ebd69db23e}" text_from="UserText">
             <text>Nom</text>
         </dynamic_text>
-        <text y="64" rotation="0" x="1" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" text="MFS 716"/>
+        <text y="64" rotation="0" x="1" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" text="MFS 720"/>
         <line length1="1.5" end1="none" length2="1.5" antialias="false" x1="37" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="67" end2="none" y1="66" x2="36"/>
         <line length1="1.5" end1="none" length2="1.5" antialias="false" x1="36" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="67" end2="none" y1="66" x2="37"/>
         <line length1="1.5" end1="none" length2="1.5" antialias="false" x1="36.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="65" end2="none" y1="68" x2="36.5"/>
@@ -98,9 +98,9 @@
         <rect y="182" antialias="false" height="6" x="11" style="line-style:normal;line-weight:thin;filling:none;color:black" width="7" rx="0" ry="0"/>
         <arc y="191" angle="270" antialias="true" height="8" x="22.25" style="line-style:normal;line-weight:thin;filling:none;color:black" start="45" width="9"/>
         <arc y="191" angle="-270" antialias="true" height="8" x="28.75" style="line-style:normal;line-weight:thin;filling:none;color:black" start="-225" width="9"/>
-        <terminal y="200" x="10" orientation="s"/>
         <terminal y="0" x="30" orientation="n"/>
-        <terminal y="200" x="30" orientation="s"/>
         <terminal y="0" x="10" orientation="n"/>
+        <terminal y="200" x="10" orientation="s"/>
+        <terminal y="200" x="30" orientation="s"/>
     </description>
 </definition>
