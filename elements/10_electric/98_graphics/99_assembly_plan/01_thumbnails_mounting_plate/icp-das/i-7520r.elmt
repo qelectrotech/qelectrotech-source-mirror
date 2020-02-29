@@ -1,5 +1,5 @@
 <definition orientation="dyyy" type="element" height="290" link_type="simple" version="0.80" hotspot_x="4" hotspot_y="31" width="170">
-    <uuid uuid="{fc440124-3afc-40b6-ae09-464d6268b73e}"/>
+    <uuid uuid="{94495699-40ee-4d78-8a7f-816323e688c2}"/>
     <names>
         <name lang="en">I-7520R - Isolated RS-232 to RS-485 Converter</name>
     </names>
@@ -16,7 +16,7 @@
         <elementInformation show="1" name="description">Isolated RS-232 to RS-485 Converter</elementInformation>
         <elementInformation show="1" name="manufacturer-reference"></elementInformation>
     </elementInformations>
-    <informations></informations>
+    <informations>Arnaud VALMARY</informations>
     <description>
         <rect height="26" rx="0" ry="0" x="25" y="226" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="false" width="112"/>
         <rect height="26" rx="0" ry="0" x="57" y="-26" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="false" width="48"/>

@@ -1,5 +1,5 @@
 <definition orientation="dyyy" type="element" height="290" link_type="simple" version="0.80" hotspot_x="4" hotspot_y="31" width="170">
-    <uuid uuid="{a1970239-57a2-4cf4-94ab-ef124c31bf47}"/>
+    <uuid uuid="{36b5be9d-44ae-4659-806d-25506a34e957}"/>
     <names>
         <name lang="en">I-7513 - RS-485 Hub</name>
     </names>
@@ -16,7 +16,7 @@
         <elementInformation show="1" name="description">RS-485 Hub</elementInformation>
         <elementInformation show="1" name="manufacturer-reference"></elementInformation>
     </elementInformations>
-    <informations></informations>
+    <informations>Arnaud VALMARY</informations>
     <description>
         <rect height="26" rx="0" ry="0" x="25" y="226" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="false" width="112"/>
         <rect height="226" rx="22" ry="65" x="0" y="0" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" width="162"/>

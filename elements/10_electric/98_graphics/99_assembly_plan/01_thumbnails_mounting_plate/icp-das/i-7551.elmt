@@ -1,5 +1,5 @@
 <definition orientation="dyyy" type="element" height="290" link_type="simple" version="0.80" hotspot_x="4" hotspot_y="31" width="170">
-    <uuid uuid="{881d0d4d-8a15-4a56-939f-e9083e8f061f}"/>
+    <uuid uuid="{fd508a60-e104-4d0d-9d04-c6a411f4c887}"/>
     <names>
         <name lang="en">I-7551 - RS-232 to RS-232 Converter</name>
     </names>
@@ -16,7 +16,7 @@
         <elementInformation show="1" name="description">RS-232 to RS-232 Converter</elementInformation>
         <elementInformation show="1" name="manufacturer-reference"></elementInformation>
     </elementInformations>
-    <informations></informations>
+    <informations>Arnaud VALMARY</informations>
     <description>
         <rect height="26" rx="0" ry="0" x="32" y="226" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="false" width="48"/>
         <rect height="26" rx="0" ry="0" x="105" y="226" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="false" width="32"/>

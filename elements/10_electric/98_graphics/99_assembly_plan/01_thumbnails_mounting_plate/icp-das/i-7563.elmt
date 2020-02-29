@@ -1,5 +1,5 @@
 <definition orientation="dyyy" type="element" height="290" link_type="simple" version="0.80" hotspot_x="4" hotspot_y="31" width="170">
-    <uuid uuid="{c61cd41a-8fcb-48e1-a43d-f419b63858f7}"/>
+    <uuid uuid="{4ff99094-e3f7-418e-819c-6be6a766b6bb}"/>
     <names>
         <name lang="en">I-7563 - USB to 3 Ports RS-485 Hub Converter</name>
     </names>
@@ -16,7 +16,7 @@
         <elementInformation show="1" name="description">USB to 3 Ports RS-485 Hub Converter</elementInformation>
         <elementInformation show="1" name="manufacturer-reference"></elementInformation>
     </elementInformations>
-    <informations></informations>
+    <informations>Arnaud VALMARY</informations>
     <description>
         <rect height="26" rx="0" ry="0" x="25" y="226" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="false" width="112"/>
         <rect height="26" rx="0" ry="0" x="57" y="-26" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="false" width="48"/>

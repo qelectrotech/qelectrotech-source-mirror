@@ -1,5 +1,5 @@
 <definition orientation="dyyy" type="element" height="290" link_type="simple" version="0.80" hotspot_x="4" hotspot_y="31" width="170">
-    <uuid uuid="{aa2c01c9-4433-4eb5-b8fd-c9c544a189a8}"/>
+    <uuid uuid="{2eeecf94-aaca-4699-ba57-a5c58b9baf61}"/>
     <names>
         <name lang="en">I-7510AR - RS-422/485 Repeater</name>
     </names>
@@ -16,7 +16,7 @@
         <elementInformation show="1" name="description">RS-422/485 Repeater</elementInformation>
         <elementInformation show="1" name="manufacturer-reference"></elementInformation>
     </elementInformations>
-    <informations></informations>
+    <informations>Arnaud VALMARY</informations>
     <description>
         <rect height="26" rx="0" ry="0" x="25" y="226" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="false" width="112"/>
         <rect height="226" rx="22" ry="65" x="0" y="0" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" width="162"/>
@@ -66,13 +66,13 @@
         <text color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" x="55" y="158" text="Variable Data Format"/>
         <rect height="5" rx="0" ry="0" x="45" y="154" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" width="5"/>
         <circle diameter="10" x="55" y="95" style="line-style:normal;line-weight:normal;filling:red;color:red" antialias="false"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" x="40" y="125" text="RS-422/485 Repeater"/>
+        <text color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" x="55" y="143" text="Variable Baud Rate&#xa;300,...9600,...115K"/>
+        <rect height="5" rx="0" ry="0" x="45" y="139" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" width="5"/>
         <dynamic_text uuid="{5b24b05d-78aa-4482-897b-b9e93e6c859a}" font="DejaVu Sans,9,-1,5,50,0,0,0,0,0" rotation="0" Valignment="AlignTop" x="67" text_width="-1" Halignment="AlignLeft" y="90" z="53" frame="false" text_from="ElementInfo">
             <text>I-7510AR</text>
             <info_name>designation</info_name>
         </dynamic_text>
-        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" x="40" y="125" text="RS-422/485 Repeater"/>
-        <text color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" x="55" y="143" text="Variable Baud Rate&#xa;300,...9600,...115K"/>
-        <rect height="5" rx="0" ry="0" x="45" y="139" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" width="5"/>
         <circle diameter="6" x="43" y="234" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false"/>
         <rect height="2" rx="0" ry="0" x="44" y="243" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" width="4"/>
         <rect height="2" rx="0" ry="0" x="54" y="243" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" width="4"/>

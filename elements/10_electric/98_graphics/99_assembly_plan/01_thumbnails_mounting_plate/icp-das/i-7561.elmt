@@ -1,5 +1,5 @@
 <definition orientation="dyyy" type="element" height="290" link_type="simple" version="0.80" hotspot_x="4" hotspot_y="31" width="170">
-    <uuid uuid="{51ea8b81-f91d-499a-b08d-3e6eba6e8309}"/>
+    <uuid uuid="{0bef1aa9-2277-4360-a48b-53c8bde96c28}"/>
     <names>
         <name lang="en">I-7561 - USB to RS-232/422/485 Converter</name>
     </names>
@@ -16,7 +16,7 @@
         <elementInformation show="1" name="description">USB to RS-232/422/485 Converter</elementInformation>
         <elementInformation show="1" name="manufacturer-reference"></elementInformation>
     </elementInformations>
-    <informations></informations>
+    <informations>Arnaud VALMARY</informations>
     <description>
         <rect height="26" rx="0" ry="0" x="25" y="226" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="false" width="112"/>
         <rect height="26" rx="0" ry="0" x="57" y="-26" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="false" width="48"/>
