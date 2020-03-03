@@ -1,10 +1,10 @@
 <definition hotspot_x="4" hotspot_y="31" link_type="simple" height="290" orientation="dyyy" type="element" width="170" version="0.80">
-    <uuid uuid="{bb2564a4-8449-45f6-8858-c6da2dadfa61}"/>
+    <uuid uuid="{75aa21a4-60cf-4826-b6eb-435ea263210e}"/>
     <names>
-        <name lang="en">i-7561 - USB to RS-232/422/485 Converter</name>
+        <name lang="en">i-7561-G - USB to RS-232/422/485 Converter</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="designation">i-7561</elementInformation>
+        <elementInformation show="1" name="designation">i-7561-G</elementInformation>
         <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
         <elementInformation show="1" name="comment"></elementInformation>
         <elementInformation show="1" name="label"></elementInformation>
@@ -20,7 +20,7 @@
     <description>
         <rect rx="0" style="line-style:normal;line-weight:normal;filling:orange;color:black" y="226" height="26" ry="0" antialias="false" x="25" width="112"/>
         <rect rx="0" style="line-style:normal;line-weight:normal;filling:gray;color:black" y="-26" height="26" ry="0" antialias="false" x="70" width="22"/>
-        <rect rx="22" style="line-style:normal;line-weight:normal;filling:white;color:black" y="0" height="226" ry="65" antialias="true" x="0" width="162"/>
+        <rect rx="22" style="line-style:normal;line-weight:normal;filling:gray;color:black" y="0" height="226" ry="65" antialias="true" x="0" width="162"/>
         <rect rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="140" height="3" ry="0" antialias="false" x="0" width="4"/>
         <rect rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="157" height="3" ry="0" antialias="false" x="0" width="10"/>
         <rect rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="134" height="3" ry="0" antialias="false" x="0" width="4"/>
@@ -59,32 +59,28 @@
         <ellipse style="line-style:normal;line-weight:normal;filling:none;color:white" height="20" y="57" antialias="true" width="40" x="65"/>
         <circle diameter="5" style="line-style:normal;line-weight:normal;filling:black;color:black" y="56.5" antialias="false" x="93.5"/>
         <circle diameter="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y="95" antialias="false" x="55"/>
-        <dynamic_text z="42" rotation="0" text_from="ElementInfo" y="90" Valignment="AlignTop" uuid="{5b24b05d-78aa-4482-897b-b9e93e6c859a}" x="70" font="DejaVu Sans,9,-1,5,50,0,0,0,0,0" text_width="-1" Halignment="AlignLeft" frame="false">
-            <text>i-7561</text>
-            <info_name>designation</info_name>
-        </dynamic_text>
         <text rotation="0" y="123" color="#000000" x="35" font="Sans Serif,6,-1,5,50,0,0,0,0,0" text="USB to RS-232/422/485&#xa;Converter"/>
         <text rotation="0" y="143" color="#000000" x="55" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="Variable Baud Rate&#xa;300,...9600,...115K"/>
         <rect rx="0" style="line-style:normal;line-weight:normal;filling:black;color:black" y="139" height="5" ry="0" antialias="false" x="45" width="5"/>
-        <text rotation="270" y="222" color="#000000" x="128.3" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="(B)GND 10"/>
-        <text rotation="0" y="205" color="#000000" x="64" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="(RS-422)"/>
-        <text rotation="270" y="222" color="#000000" x="48.1" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="DATA-"/>
-        <text rotation="270" y="222" color="#000000" x="118.2" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="(R)+Vs"/>
-        <text rotation="270" y="222" color="#000000" x="38" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="DATA+   1"/>
-        <text rotation="0" y="12" color="#000000" x="76" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="(USB)"/>
+        <text rotation="270" y="222" color="#ffffff" x="128.3" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="(B)GND"/>
+        <text rotation="0" y="201" color="#ffffff" x="57" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="(RS-422/485)"/>
+        <text rotation="270" y="222" color="#ffffff" x="48.1" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="DATA-"/>
+        <text rotation="270" y="222" color="#ffffff" x="118.2" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="(R)+Vs"/>
+        <text rotation="270" y="222" color="#ffffff" x="38" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="DATA+"/>
+        <text rotation="0" y="12" color="#ffffff" x="76" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="(USB)"/>
         <rect rx="22" style="line-style:normal;line-weight:normal;filling:none;color:black" y="0" height="226" ry="65" antialias="true" x="4" width="154"/>
-        <text rotation="0" y="205" color="#000000" x="40" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="(RS-485)"/>
-        <text rotation="270" y="221" color="#000000" x="67" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="TX-"/>
-        <text rotation="270" y="221" color="#000000" x="87.4" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="RX-"/>
-        <text rotation="270" y="221" color="#000000" x="57.6" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="TX+"/>
-        <text rotation="270" y="221" color="#000000" x="77.4" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="RX+"/>
-        <text rotation="0" y="205" color="#000000" x="88.8281" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="(RS-232)"/>
-        <text rotation="270" y="221" color="#000000" x="107.5" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="RXD"/>
-        <text rotation="270" y="221" color="#000000" x="97.5" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="TXD"/>
+        <text rotation="0" y="201" color="#ffffff" x="33" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="(RS-485)"/>
+        <text rotation="270" y="221" color="#ffffff" x="67" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="TX-"/>
+        <text rotation="270" y="221" color="#ffffff" x="87.4" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="RX-/D2-"/>
+        <text rotation="270" y="221" color="#ffffff" x="57.6" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="TX+"/>
+        <text rotation="270" y="221" color="#ffffff" x="77.4" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="RX+/D2+"/>
+        <text rotation="0" y="201" color="#ffffff" x="92.8281" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="(RS-232)"/>
+        <text rotation="270" y="221" color="#ffffff" x="107.5" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="RXD"/>
+        <text rotation="270" y="221" color="#ffffff" x="97.5" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="TXD"/>
         <arc style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="180" y="95" height="30" antialias="true" x="127" width="30"/>
-        <circle diameter="26" style="line-style:normal;line-weight:normal;filling:white;color:black" y="97" antialias="true" x="7"/>
+        <circle diameter="26" style="line-style:normal;line-weight:normal;filling:gray;color:black" y="97" antialias="true" x="7"/>
         <line length2="1.5" x1="142" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="152" end1="none" end2="none" y2="125" antialias="true" length1="1.5" y1="125"/>
-        <circle diameter="26" style="line-style:normal;line-weight:normal;filling:white;color:black" y="97" antialias="true" x="129"/>
+        <circle diameter="26" style="line-style:normal;line-weight:normal;filling:gray;color:black" y="97" antialias="true" x="129"/>
         <line length2="1.5" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="20" end1="none" end2="none" y2="125" antialias="true" length1="1.5" y1="125"/>
         <circle diameter="20" style="line-style:normal;line-weight:normal;filling:none;color:black" y="100" antialias="true" x="132"/>
         <line length2="1.5" x1="142" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="152" end1="none" end2="none" y2="95" antialias="true" length1="1.5" y1="95"/>
@@ -123,22 +119,22 @@
         <rect rx="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="243" height="2" ry="0" antialias="false" x="34" width="4"/>
         <text rotation="331" y="83" color="#000000" x="92.7933" font="DejaVu Sans,9,-1,5,75,0,0,0,0,0" text="CON"/>
         <text rotation="331" y="69" color="#000000" x="61" font="DejaVu Sans,9,-1,5,75,0,0,0,0,0" text="ICP"/>
-        <dynamic_text z="103" rotation="0" text_from="UserText" y="-27" Valignment="AlignTop" uuid="{af0c3640-8b19-4211-b2cd-08d01dd60024}" x="92" font="DejaVu Sans,9,-1,5,50,0,0,0,0,0" text_width="-1" Halignment="AlignLeft" frame="false">
+        <dynamic_text z="102" rotation="0" text_from="UserText" y="-27" Valignment="AlignTop" uuid="{af0c3640-8b19-4211-b2cd-08d01dd60024}" x="92" font="DejaVu Sans,9,-1,5,50,0,0,0,0,0" text_width="-1" Halignment="AlignLeft" frame="false">
             <text>_</text>
         </dynamic_text>
-        <text rotation="0" y="90.05" color="#000000" x="134.82" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="Hmf"/>
         <text rotation="0" y="90.05" color="#000000" x="14.8203" font="Sans Serif,10,-1,5,50,0,0,0,0,0" text="CE"/>
         <text rotation="0" y="180" color="#000000" x="35" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="3000V Isolation"/>
+        <text rotation="0" y="105" color="#000000" x="70" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="i-7561"/>
         <terminal y="252" orientation="s" x="56"/>
-        <terminal y="252" orientation="s" x="36"/>
-        <terminal y="252" orientation="s" x="86"/>
-        <terminal y="252" orientation="s" x="76"/>
         <terminal y="252" orientation="s" x="66"/>
-        <terminal y="252" orientation="s" x="96"/>
-        <terminal y="252" orientation="s" x="116"/>
         <terminal y="252" orientation="s" x="46"/>
-        <terminal y="-26" orientation="n" x="82"/>
+        <terminal y="252" orientation="s" x="76"/>
         <terminal y="252" orientation="s" x="106"/>
+        <terminal y="252" orientation="s" x="116"/>
         <terminal y="252" orientation="s" x="126"/>
+        <terminal y="252" orientation="s" x="36"/>
+        <terminal y="-26" orientation="n" x="82"/>
+        <terminal y="252" orientation="s" x="86"/>
+        <terminal y="252" orientation="s" x="96"/>
     </description>
 </definition>

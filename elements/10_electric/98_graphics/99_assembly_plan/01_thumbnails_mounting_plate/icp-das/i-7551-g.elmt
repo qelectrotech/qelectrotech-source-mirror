@@ -1,10 +1,10 @@
 <definition hotspot_x="4" hotspot_y="31" link_type="simple" height="290" orientation="dyyy" type="element" width="170" version="0.80">
-    <uuid uuid="{52f7aa8a-a3fa-40bd-8dd7-e42def3a1548}"/>
+    <uuid uuid="{d3a261d8-b0a2-40e3-824f-4a32459b08b0}"/>
     <names>
-        <name lang="en">i-7520AR - Isolated RS-232 to RS-422/485 Converter</name>
+        <name lang="en">i-7551-G - RS-232 to RS-232 Converter</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="designation">i-7520AR</elementInformation>
+        <elementInformation show="1" name="designation">i-7551-G</elementInformation>
         <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
         <elementInformation show="1" name="comment"></elementInformation>
         <elementInformation show="1" name="label"></elementInformation>
@@ -13,14 +13,15 @@
         <elementInformation show="1" name="manufacturer-reference"></elementInformation>
         <elementInformation show="1" name="quantity"></elementInformation>
         <elementInformation show="1" name="manufacturer">ICP DAS</elementInformation>
-        <elementInformation show="1" name="description">Isolated RS-232 to RS-422/485 Converter</elementInformation>
+        <elementInformation show="1" name="description">RS-232 to RS-232 Converter</elementInformation>
         <elementInformation show="1" name="supplier"></elementInformation>
     </elementInformations>
     <informations>Arnaud VALMARY</informations>
     <description>
-        <rect rx="0" style="line-style:normal;line-weight:normal;filling:orange;color:black" y="226" height="26" ry="0" antialias="false" x="25" width="112"/>
+        <rect rx="0" style="line-style:normal;line-weight:normal;filling:gray;color:black" y="226" height="26" ry="0" antialias="false" x="32" width="48"/>
+        <rect rx="0" style="line-style:normal;line-weight:normal;filling:orange;color:black" y="226" height="26" ry="0" antialias="false" x="105" width="32"/>
         <rect rx="0" style="line-style:normal;line-weight:normal;filling:gray;color:black" y="-26" height="26" ry="0" antialias="false" x="57" width="48"/>
-        <rect rx="22" style="line-style:normal;line-weight:normal;filling:white;color:black" y="0" height="226" ry="65" antialias="true" x="0" width="162"/>
+        <rect rx="22" style="line-style:normal;line-weight:normal;filling:gray;color:black" y="0" height="226" ry="65" antialias="true" x="0" width="162"/>
         <rect rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="140" height="3" ry="0" antialias="false" x="0" width="4"/>
         <rect rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="157" height="3" ry="0" antialias="false" x="0" width="10"/>
         <rect rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="134" height="3" ry="0" antialias="false" x="0" width="4"/>
@@ -49,92 +50,48 @@
         <rect rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="122" height="3" ry="0" antialias="false" x="158" width="4"/>
         <rect rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="86" height="3" ry="0" antialias="false" x="158" width="4"/>
         <polygon antialias="false" x8="25" y7="194" x3="135" x6="130" y3="224" x1="25" x7="30" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="27" y5="199" y6="194" y2="224" x4="137" y1="222" x5="137" y4="222" y8="199"/>
-        <line length2="1.5" x1="25" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="137" end1="none" end2="none" y2="232" antialias="false" length1="1.5" y1="232"/>
+        <line length2="1.5" x1="105" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="137" end1="none" end2="none" y2="232" antialias="false" length1="1.5" y1="232"/>
         <polygon antialias="false" x8="4" y7="160" x3="158" x6="30" y3="80" x1="29" x7="4" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="133" y5="192" y6="192" y2="34" x4="158" y1="34" x5="130" y4="160" y8="80"/>
         <polygon antialias="false" x8="10" y7="160" x3="152" x6="32" y3="80" x1="34" x7="10" style="line-style:normal;line-weight:normal;filling:gray;color:black" x2="128" y5="185" y6="185" y2="40" x4="152" y1="40" x5="128" y4="160" y8="80"/>
         <rect rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="80" height="3" ry="0" antialias="false" x="0" width="10"/>
         <rect rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="86" height="3" ry="0" antialias="false" x="0" width="4"/>
-        <text rotation="0" y="158" color="#000000" x="55" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="Variable Data Format"/>
-        <rect rx="0" style="line-style:normal;line-weight:normal;filling:black;color:black" y="154" height="5" ry="0" antialias="false" x="45" width="5"/>
-        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:white" height="20" y="57" antialias="true" width="40" x="65"/>
-        <circle diameter="5" style="line-style:normal;line-weight:normal;filling:black;color:black" y="56.5" antialias="false" x="93.5"/>
-        <circle diameter="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y="95" antialias="false" x="55"/>
-        <dynamic_text z="42" rotation="0" text_from="ElementInfo" y="90" Valignment="AlignTop" uuid="{5b24b05d-78aa-4482-897b-b9e93e6c859a}" x="67" font="DejaVu Sans,9,-1,5,50,0,0,0,0,0" text_width="-1" Halignment="AlignLeft" frame="false">
-            <text>i-7520AR</text>
-            <info_name>designation</info_name>
-        </dynamic_text>
-        <text rotation="0" y="123" color="#000000" x="38" font="Sans Serif,6,-1,5,50,0,0,0,0,0" text="RS-232 to RS-422/485&#xa;Converter"/>
-        <text rotation="0" y="143" color="#000000" x="55" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="Variable Baud Rate&#xa;300,...9600,...115K"/>
-        <rect rx="0" style="line-style:normal;line-weight:normal;filling:black;color:black" y="139" height="5" ry="0" antialias="false" x="45" width="5"/>
-        <text rotation="270" y="222" color="#000000" x="128.3" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="(B)GND 10"/>
-        <text rotation="0" y="201" color="#000000" x="31" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="(RS-485)"/>
-        <text rotation="270" y="222" color="#000000" x="48.1" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="DATA-"/>
-        <text rotation="270" y="222" color="#000000" x="118.2" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="(R)+Vs"/>
-        <text rotation="270" y="222" color="#000000" x="38" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="DATA+"/>
-        <text rotation="0" y="12" color="#000000" x="70" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="(RS-232)"/>
+        <circle diameter="10" style="line-style:normal;line-weight:normal;filling:red;color:red" y="95" antialias="false" x="55"/>
+        <text rotation="0" y="12" color="#000000" x="71" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="(RS-232)&#xa;     IN"/>
         <rect rx="22" style="line-style:normal;line-weight:normal;filling:none;color:black" y="0" height="226" ry="65" antialias="true" x="4" width="154"/>
-        <text rotation="270" y="221.539" color="#000000" x="77.55" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="TX-"/>
-        <text rotation="270" y="221.539" color="#000000" x="97.95" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="RX-"/>
-        <text rotation="270" y="221.539" color="#000000" x="68.15" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="TX+"/>
-        <text rotation="270" y="221.539" color="#000000" x="87.95" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="RX+"/>
+        <text rotation="0" y="214" color="#000000" x="44" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="    OUT&#xa;(RS-232)"/>
+        <text rotation="270" y="222" color="#000000" x="117.5" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="(R)+Vs"/>
+        <text rotation="270" y="222" color="#000000" x="127.9" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="(B)GND 10"/>
+        <text rotation="0" y="90" color="#000000" x="15" font="Sans Serif,10,-1,5,50,0,0,0,0,0" text="CE"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:white" height="20" y="55.7573" antialias="true" width="40" x="67.8628"/>
+        <circle diameter="5" style="line-style:normal;line-weight:normal;filling:black;color:black" y="55.2573" antialias="false" x="96.3628"/>
         <arc style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="180" y="95" height="30" antialias="true" x="127" width="30"/>
+        <circle diameter="26" style="line-style:normal;line-weight:normal;filling:gray;color:black" y="97" antialias="true" x="7"/>
         <line length2="1.5" x1="142" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="152" end1="none" end2="none" y2="125" antialias="true" length1="1.5" y1="125"/>
-        <circle diameter="26" style="line-style:normal;line-weight:normal;filling:white;color:black" y="97" antialias="true" x="129"/>
+        <circle diameter="26" style="line-style:normal;line-weight:normal;filling:gray;color:black" y="97" antialias="true" x="129"/>
+        <line length2="1.5" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="20" end1="none" end2="none" y2="125" antialias="true" length1="1.5" y1="125"/>
         <circle diameter="20" style="line-style:normal;line-weight:normal;filling:none;color:black" y="100" antialias="true" x="132"/>
         <line length2="1.5" x1="142" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="152" end1="none" end2="none" y2="95" antialias="true" length1="1.5" y1="95"/>
-        <circle diameter="26" style="line-style:normal;line-weight:normal;filling:white;color:black" y="97" antialias="true" x="7"/>
-        <line length2="1.5" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="20" end1="none" end2="none" y2="125" antialias="true" length1="1.5" y1="125"/>
         <circle diameter="20" style="line-style:normal;line-weight:normal;filling:none;color:black" y="100" antialias="true" x="10"/>
         <arc style="line-style:normal;line-weight:normal;filling:none;color:black" start="270" angle="180" y="95" height="30" antialias="true" x="5" width="30"/>
         <line length2="1.5" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="20" end1="none" end2="none" y2="95" antialias="true" length1="1.5" y1="95"/>
-        <text rotation="0" y="178.05" color="#000000" x="32.8047" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="3000V Isolation"/>
-        <text rotation="0" y="90" color="#000000" x="15" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="CE"/>
-        <circle diameter="6" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="234" antialias="false" x="43"/>
-        <rect rx="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="243" height="2" ry="0" antialias="false" x="44" width="4"/>
-        <rect rx="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="243" height="2" ry="0" antialias="false" x="54" width="4"/>
-        <circle diameter="6" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="234" antialias="false" x="53"/>
+        <text rotation="331" y="81.7573" color="#000000" x="95.6561" font="DejaVu Sans,9,-1,5,75,0,0,0,0,0" text="CON"/>
+        <text rotation="331" y="67.7573" color="#000000" x="63.8628" font="DejaVu Sans,9,-1,5,75,0,0,0,0,0" text="ICP"/>
+        <text rotation="0" y="123" color="#000000" x="44" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="RS-232 to RS-232&#xa;Converter"/>
+        <text rotation="0" y="179" color="#000000" x="48" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="3000V Three-way Isolation"/>
         <circle diameter="6" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="234" antialias="false" x="113"/>
-        <circle diameter="6" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="234" antialias="false" x="103"/>
-        <rect rx="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="243" height="2" ry="0" antialias="false" x="94" width="4"/>
-        <rect rx="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="243" height="2" ry="0" antialias="false" x="84" width="4"/>
-        <rect rx="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="243" height="2" ry="0" antialias="false" x="64" width="4"/>
-        <circle diameter="6" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="234" antialias="false" x="63"/>
-        <rect rx="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="243" height="2" ry="0" antialias="false" x="74" width="4"/>
-        <circle diameter="6" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="234" antialias="false" x="93"/>
-        <rect rx="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="243" height="2" ry="0" antialias="false" x="104" width="4"/>
-        <circle diameter="6" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="234" antialias="false" x="73"/>
         <rect rx="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="243" height="2" ry="0" antialias="false" x="124" width="4"/>
         <circle diameter="6" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="234" antialias="false" x="123"/>
-        <circle diameter="6" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="234" antialias="false" x="83"/>
         <rect rx="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="243" height="2" ry="0" antialias="false" x="114" width="4"/>
-        <polygon y3="235.3" x1="53.8" style="line-style:normal;line-weight:thin;filling:gray;color:black" x2="57.8" y4="239.3" y2="234.8" x3="58.3" antialias="false" x4="54.3" y1="238.8"/>
-        <polygon y3="235.3" x1="73.8" style="line-style:normal;line-weight:thin;filling:gray;color:black" x2="77.8" y4="239.3" y2="234.8" x3="78.3" antialias="false" x4="74.3" y1="238.8"/>
-        <polygon y3="235.3" x1="93.8" style="line-style:normal;line-weight:thin;filling:gray;color:black" x2="97.8" y4="239.3" y2="234.8" x3="98.3" antialias="false" x4="94.3" y1="238.8"/>
-        <polygon y3="235.3" x1="83.8" style="line-style:normal;line-weight:thin;filling:gray;color:black" x2="87.8" y4="239.3" y2="234.8" x3="88.3" antialias="false" x4="84.3" y1="238.8"/>
         <polygon y3="235.3" x1="123.8" style="line-style:normal;line-weight:thin;filling:gray;color:black" x2="127.8" y4="239.3" y2="234.8" x3="128.3" antialias="false" x4="124.3" y1="238.8"/>
-        <polygon y3="235.3" x1="63.8" style="line-style:normal;line-weight:thin;filling:gray;color:black" x2="67.8" y4="239.3" y2="234.8" x3="68.3" antialias="false" x4="64.3" y1="238.8"/>
         <polygon y3="235.3" x1="113.8" style="line-style:normal;line-weight:thin;filling:gray;color:black" x2="117.8" y4="239.3" y2="234.8" x3="118.3" antialias="false" x4="114.3" y1="238.8"/>
-        <polygon y3="235.3" x1="103.8" style="line-style:normal;line-weight:thin;filling:gray;color:black" x2="107.8" y4="239.3" y2="234.8" x3="108.3" antialias="false" x4="104.3" y1="238.8"/>
-        <polygon y3="235.3" x1="43.8" style="line-style:normal;line-weight:thin;filling:gray;color:black" x2="47.8" y4="239.3" y2="234.8" x3="48.3" antialias="false" x4="44.3" y1="238.8"/>
-        <circle diameter="6" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="234" antialias="false" x="33"/>
-        <polygon y3="235.3" x1="33.8" style="line-style:normal;line-weight:thin;filling:gray;color:black" x2="37.8" y4="239.3" y2="234.8" x3="38.3" antialias="false" x4="34.3" y1="238.8"/>
-        <rect rx="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" y="243" height="2" ry="0" antialias="false" x="34" width="4"/>
-        <dynamic_text z="99" rotation="0" text_from="UserText" y="-27" Valignment="AlignTop" uuid="{56d1fe70-d1e4-4b79-8116-89c980594d53}" x="105" font="DejaVu Sans,9,-1,5,50,0,0,0,0,0" text_width="-1" Halignment="AlignLeft" frame="false">
+        <text rotation="270" y="200" color="#000000" x="35" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="1"/>
+        <text rotation="0" y="105" color="#000000" x="70" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="i-7551"/>
+        <dynamic_text z="69" rotation="0" text_from="UserText" y="-27" Valignment="AlignTop" uuid="{76d56b79-8783-4004-9838-fca8407c2e55}" x="105" font="DejaVu Sans,9,-1,5,50,0,0,0,0,0" text_width="-1" Halignment="AlignLeft" frame="false">
             <text>_</text>
         </dynamic_text>
-        <text rotation="331" y="83" color="#000000" x="92.7933" font="DejaVu Sans,9,-1,5,75,0,0,0,0,0" text="CON"/>
-        <text rotation="331" y="69" color="#000000" x="61" font="DejaVu Sans,9,-1,5,75,0,0,0,0,0" text="ICP"/>
-        <text rotation="0" y="205" color="#000000" x="70" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="(RS-422)"/>
         <terminal y="252" orientation="s" x="56"/>
-        <terminal y="252" orientation="s" x="76"/>
-        <terminal y="252" orientation="s" x="106"/>
         <terminal y="252" orientation="s" x="126"/>
-        <terminal y="252" orientation="s" x="96"/>
         <terminal y="252" orientation="s" x="116"/>
-        <terminal y="252" orientation="s" x="66"/>
-        <terminal y="252" orientation="s" x="86"/>
-        <terminal y="252" orientation="s" x="46"/>
-        <terminal y="252" orientation="s" x="36"/>
         <terminal y="-26" orientation="n" x="82"/>
     </description>
 </definition>
