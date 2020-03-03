@@ -1,0 +1,113 @@
+<definition hotspot_x="55" height="250" orientation="dyyy" link_type="simple" version="0.80" width="90" hotspot_y="84" type="element">
+    <uuid uuid="{c18845dd-438d-4bc3-992d-1fe261f5af09}"/>
+    <names>
+        <name lang="en">F411/1NC</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="plant">SCS MyHOME</elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="description">1 relay actuator in DIN module</elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="manufacturer">BTicino - Legrang Group</elementInformation>
+        <elementInformation show="1" name="designation">F411/1NC</elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="label">Actuator</elementInformation>
+        <elementInformation show="1" name="comment">BTicino F411/1NC</elementInformation>
+        <elementInformation show="1" name="manufacturer-reference">F411/1NC</elementInformation>
+    </elementInformations>
+    <informations>Arnaud Valmary</informations>
+    <description>
+        <rect x="-50" rx="0" height="240" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false" y="-80" width="80" ry="0"/>
+        <rect x="-34" rx="0" height="32" style="line-style:normal;line-weight:thin;filling:black;color:black" antialias="false" y="104" width="59" ry="0"/>
+        <text x="-23" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" text="BT-F411/1NC" y="-5"/>
+        <rect x="-5" rx="0" height="11" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" y="-24" width="21" ry="0"/>
+        <line y2="140" end1="none" end2="none" x2="-50" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x1="30" length2="1.5" y1="140"/>
+        <rect x="-44" rx="0" height="8" style="line-style:normal;line-weight:normal;filling:green;color:black" antialias="false" y="-74" width="48" ry="0"/>
+        <text x="-41" font="Sans Serif,3,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" text="1" y="-54"/>
+        <circle x="-22.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-72.5" diameter="5"/>
+        <circle x="-42.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-72.5" diameter="5"/>
+        <text x="0" font="Sans Serif,3,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" text="3" y="-54"/>
+        <line y2="-71" end1="none" end2="none" x2="-38" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-42" length2="1.5" y1="-69"/>
+        <text x="-21" font="Sans Serif,3,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" text="2" y="-54"/>
+        <line y2="-71" end1="none" end2="none" x2="-18" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-22" length2="1.5" y1="-69"/>
+        <circle x="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-72.5" diameter="5"/>
+        <line y2="-71" end1="none" end2="none" x2="2" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-2" length2="1.5" y1="-69"/>
+        <text x="-46" font="Sans Serif,3,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" text="1" y="-32"/>
+        <circle x="-37.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-30.5" diameter="5"/>
+        <rect x="-49" rx="0" height="32" style="line-style:normal;line-weight:thin;filling:green;color:black" antialias="false" y="104" width="15" ry="0"/>
+        <text x="-26" font="Sans Serif,3,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" text="3" y="-32"/>
+        <circle x="-42.5" style="line-style:normal;line-weight:thin;filling:blue;color:black" antialias="false" y="82.5" diameter="5"/>
+        <circle x="-47.5" style="line-style:normal;line-weight:normal;filling:lightgray;color:black" antialias="false" y="127.5" diameter="5"/>
+        <circle x="-40.5" style="line-style:normal;line-weight:normal;filling:lightgray;color:black" antialias="false" y="127.5" diameter="5"/>
+        <circle x="-46" style="line-style:normal;line-weight:normal;filling:gray;color:black" antialias="false" y="109" diameter="2"/>
+        <circle x="-39" style="line-style:normal;line-weight:normal;filling:gray;color:black" antialias="false" y="109" diameter="2"/>
+        <circle x="-42.5" style="line-style:normal;line-weight:thin;filling:orange;color:black" antialias="false" y="92.5" diameter="5"/>
+        <text x="-36" font="Sans Serif,3,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" text="2" y="-32"/>
+        <line y2="-18" end1="none" end2="none" x2="-35" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-35" length2="1.5" y1="-25"/>
+        <line y2="-13" end1="none" end2="none" x2="-31" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-35" length2="1.5" y1="-18"/>
+        <line y2="-14" end1="none" end2="none" x2="-45" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-37" length2="1.5" y1="-14"/>
+        <circle x="-47.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-30.5" diameter="5"/>
+        <text x="-46" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" text="SCS" y="122"/>
+        <text x="-45" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" text="C1" y="77"/>
+        <line y2="-60" end1="none" end2="none" x2="-50" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x1="30" length2="1.5" y1="-60"/>
+        <polygon y2="100" x2="-48" style="line-style:normal;line-weight:normal;filling:none;color:red" antialias="false" x3="-48" y3="85" x1="28" y1="100" closed="false"/>
+        <line y2="-29" end1="none" end2="none" x2="-43" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-47" length2="1.5" y1="-27"/>
+        <line y2="-29" end1="none" end2="none" x2="-33" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-37" length2="1.5" y1="-27"/>
+        <circle x="-27.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-30.5" diameter="5"/>
+        <line y2="-29" end1="none" end2="none" x2="-23" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-27" length2="1.5" y1="-27"/>
+        <line y2="-14" end1="none" end2="none" x2="-33" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-25" length2="1.5" y1="-14"/>
+        <dynamic_text x="-49" font="DejaVu Sans,8,-1,5,50,0,0,0,0,0" z="40" Valignment="AlignTop" uuid="{aa1f8720-f6d4-49b4-aa6e-08dae36df170}" Halignment="AlignLeft" rotation="0" text_width="-1" text_from="ElementInfo" y="50" frame="false">
+            <text>F411/1NC</text>
+            <info_name>designation</info_name>
+        </dynamic_text>
+        <line y2="-25" end1="none" end2="none" x2="-25" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-25" length2="1.5" y1="-15"/>
+        <line y2="-25" end1="none" end2="none" x2="-45" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-45" length2="1.5" y1="-14"/>
+        <text x="-13" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" text="MyHOME" y="-28"/>
+        <text x="-5" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" color="#ffffff" text="S C S" y="-15"/>
+        <text x="-23" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" text="ID:" y="10"/>
+        <line y2="129" end1="none" end2="none" x2="-43" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-47" length2="1.5" y1="131"/>
+        <line y2="129" end1="none" end2="none" x2="-36" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-40" length2="1.5" y1="131"/>
+        <text x="22" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="270" color="#000000" text="M" y="148"/>
+        <circle x="17.5" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="false" y="127.5" diameter="5"/>
+        <text x="13" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="270" color="#000000" text="G3" y="148"/>
+        <circle x="17.5" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="false" y="107.5" diameter="5"/>
+        <text x="2" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="270" color="#000000" text="G2" y="148"/>
+        <text x="-8" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="270" color="#000000" text="G1" y="148"/>
+        <text x="-18" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="270" color="#000000" text="PL" y="148"/>
+        <dynamic_text x="-47" font="DejaVu Sans,8,-1,5,50,0,0,0,0,0" z="56" Valignment="AlignTop" uuid="{d7919e62-c28f-41c4-b3e0-9e909946044e}" Halignment="AlignLeft" rotation="0" text_width="-1" text_from="UserText" y="13" frame="false">
+            <text>_</text>
+        </dynamic_text>
+        <text x="-28" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="270" color="#000000" text="A" y="148"/>
+        <circle x="-32.5" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="false" y="127.5" diameter="5"/>
+        <circle x="-22.5" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="false" y="127.5" diameter="5"/>
+        <circle x="-12.5" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="false" y="127.5" diameter="5"/>
+        <circle x="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="false" y="127.5" diameter="5"/>
+        <circle x="7.5" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="false" y="127.5" diameter="5"/>
+        <circle x="7.5" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="false" y="107.5" diameter="5"/>
+        <circle x="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="false" y="107.5" diameter="5"/>
+        <circle x="-12.5" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="false" y="107.5" diameter="5"/>
+        <circle x="-22.5" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="false" y="107.5" diameter="5"/>
+        <circle x="-32.5" style="line-style:normal;line-weight:normal;filling:none;color:white" antialias="false" y="107.5" diameter="5"/>
+        <rect x="-48" rx="0" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="14" width="76" ry="0"/>
+        <dynamic_text x="-18" font="DejaVu Sans,4,-1,5,50,0,0,0,0,0" z="69" Valignment="AlignTop" uuid="{f843e627-7f69-4f88-a4ce-b47706e33c56}" Halignment="AlignLeft" rotation="0" text_width="-1" text_from="UserText" y="1" frame="false">
+            <text>_</text>
+        </dynamic_text>
+        <terminal x="-20" orientation="n" y="-80"/>
+        <terminal x="20" orientation="s" y="110"/>
+        <terminal x="20" orientation="n" y="130"/>
+        <terminal x="-30" orientation="s" y="110"/>
+        <terminal x="0" orientation="n" y="-80"/>
+        <terminal x="-40" orientation="n" y="-80"/>
+        <terminal x="10" orientation="s" y="110"/>
+        <terminal x="10" orientation="n" y="130"/>
+        <terminal x="-20" orientation="s" y="110"/>
+        <terminal x="0" orientation="n" y="130"/>
+        <terminal x="0" orientation="s" y="110"/>
+        <terminal x="-40" orientation="s" y="160"/>
+        <terminal x="-10" orientation="s" y="110"/>
+        <terminal x="-10" orientation="n" y="130"/>
+        <terminal x="-20" orientation="n" y="130"/>
+        <terminal x="-30" orientation="n" y="130"/>
+    </description>
+</definition>

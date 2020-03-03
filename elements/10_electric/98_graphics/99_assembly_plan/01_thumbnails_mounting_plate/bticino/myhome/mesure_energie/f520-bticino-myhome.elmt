@@ -1,0 +1,94 @@
+<definition height="250" hotspot_y="194" type="element" hotspot_x="35" width="50" orientation="dyyy" link_type="simple" version="0.80">
+    <uuid uuid="{6c6fab70-5df3-4ec8-8b1e-fe278f89b3ea}"/>
+    <names>
+        <name lang="nl">F520 - Meter met 3 ingangen</name>
+        <name lang="fr">F520 - Mesureur à 3 entrées</name>
+        <name lang="en">F520 - 3-input meter</name>
+        <name lang="it">F520 - Misuratore a 3 ingressi</name>
+        <name lang="es">F520 - Meditor de 3 entradas</name>
+        <name lang="de">F520 - Messgerät 3 Eingängen</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="label">Input meter</elementInformation>
+        <elementInformation show="1" name="plant">SCS MyHOME</elementInformation>
+        <elementInformation show="1" name="comment">bticino F520</elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="description">3 input meter in one DIN module</elementInformation>
+        <elementInformation show="1" name="designation">F520</elementInformation>
+        <elementInformation show="1" name="manufacturer-reference">F520</elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="manufacturer">bticino</elementInformation>
+    </elementInformations>
+    <informations>Arnaud Valmary</informations>
+    <description>
+        <rect antialias="false" height="240" width="40" rx="0" x="-30" y="-190" ry="0" style="line-style:normal;line-weight:thin;filling:white;color:black"/>
+        <text color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="230V~" x="-29" y="-174"/>
+        <text color="#000000" font="Sans Serif,2,-1,5,50,0,0,0,0,0" rotation="0" text="110-230V~ 50-60Hz&#xa;In(Tx)=16A&#xa;Imax(Tx)=90A" x="-28" y="-1"/>
+        <rect antialias="false" height="58" width="28" rx="0" x="-24" y="-104" ry="0" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <text color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="T&#xa;b" x="-2" y="-181"/>
+        <text color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="T&#xa;c" x="3" y="-181"/>
+        <text color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="BT-F520" x="-28" y="-125"/>
+        <rect antialias="false" height="11" width="21" rx="0" x="-20" y="-147" ry="0" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line length1="1.5" antialias="false" x1="10" y1="30" x2="-30" end2="none" length2="1.5" y2="30" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle diameter="5" antialias="false" x="-17.5" y="-167.5" style="line-style:normal;line-weight:thin;filling:blue;color:black"/>
+        <circle diameter="2" antialias="false" x="-25" y="39" style="line-style:normal;line-weight:normal;filling:gray;color:black"/>
+        <circle diameter="2" antialias="false" x="-18" y="39" style="line-style:normal;line-weight:normal;filling:gray;color:black"/>
+        <circle diameter="5" antialias="false" x="-27.5" y="-167.5" style="line-style:normal;line-weight:thin;filling:green;color:black"/>
+        <text color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="SCS" x="-25" y="36"/>
+        <line length1="1.5" antialias="false" x1="10" y1="-170" x2="-30" end2="none" length2="1.5" y2="-170" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <polygon antialias="false" x1="0" y1="25" x2="-28" y3="10" closed="false" y2="25" x3="-28" style="line-style:normal;line-weight:normal;filling:none;color:red"/>
+        <text color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" text="MyHOME" x="-28" y="-151"/>
+        <text color="#ffffff" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" text="S C S" x="-20" y="-138"/>
+        <text color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="13W09 070" x="-28" y="-117"/>
+        <text color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="ID:" x="-28" y="-109"/>
+        <circle diameter="5" antialias="false" x="-2.5" y="-52.5" style="line-style:normal;line-weight:normal;filling:none;color:white"/>
+        <circle diameter="5" antialias="false" x="-22.5" y="-52.5" style="line-style:normal;line-weight:normal;filling:none;color:white"/>
+        <circle diameter="5" antialias="false" x="-2.5" y="-102.5" style="line-style:normal;line-weight:normal;filling:none;color:white"/>
+        <circle diameter="5" antialias="false" x="-2.5" y="-92.5" style="line-style:normal;line-weight:normal;filling:none;color:white"/>
+        <circle diameter="5" antialias="false" x="-2.5" y="-82.5" style="line-style:normal;line-weight:normal;filling:none;color:white"/>
+        <circle diameter="5" antialias="false" x="-2.5" y="-72.5" style="line-style:normal;line-weight:normal;filling:none;color:white"/>
+        <circle diameter="5" antialias="false" x="-2.5" y="-62.5" style="line-style:normal;line-weight:normal;filling:none;color:white"/>
+        <circle diameter="5" antialias="false" x="-22.5" y="-62.5" style="line-style:normal;line-weight:normal;filling:none;color:white"/>
+        <circle diameter="5" antialias="false" x="-22.5" y="-72.5" style="line-style:normal;line-weight:normal;filling:none;color:white"/>
+        <circle diameter="5" antialias="false" x="-22.5" y="-82.5" style="line-style:normal;line-weight:normal;filling:none;color:white"/>
+        <circle diameter="5" antialias="false" x="-22.5" y="-92.5" style="line-style:normal;line-weight:normal;filling:none;color:white"/>
+        <circle diameter="5" antialias="false" x="-22.5" y="-102.5" style="line-style:normal;line-weight:normal;filling:none;color:white"/>
+        <dynamic_text z="33" font="DejaVu Sans,8,-1,5,50,0,0,0,0,0" text_from="ElementInfo" rotation="0" text_width="-1" x="-30" uuid="{aa1f8720-f6d4-49b4-aa6e-08dae36df170}" frame="false" Valignment="AlignTop" y="3" Halignment="AlignLeft">
+            <text>F520</text>
+            <info_name>designation</info_name>
+        </dynamic_text>
+        <text color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="N  L" x="-27" y="-180"/>
+        <dynamic_text z="35" font="DejaVu Sans,8,-1,5,50,0,0,0,0,0" text_from="UserText" rotation="0" text_width="-1" x="-32" uuid="{d7919e62-c28f-41c4-b3e0-9e909946044e}" frame="false" Valignment="AlignTop" y="-51" Halignment="AlignLeft">
+            <text>_</text>
+        </dynamic_text>
+        <dynamic_text z="36" font="DejaVu Sans,4,-1,5,50,0,0,0,0,0" text_from="UserText" rotation="0" text_width="-1" x="-25" uuid="{f843e627-7f69-4f88-a4ce-b47706e33c56}" frame="false" Valignment="AlignTop" y="-119" Halignment="AlignLeft">
+            <text>_</text>
+        </dynamic_text>
+        <text color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="T&#xa;a" x="-7" y="-181"/>
+        <text color="#ffffff" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="A3-Tb" x="-17" y="-71"/>
+        <text color="#ffffff" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="A3-Tc" x="-17" y="-60"/>
+        <text color="#ffffff" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="A1" x="-13" y="-98"/>
+        <text color="#ffffff" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="A3-Ta" x="-17" y="-81"/>
+        <text color="#ffffff" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="A2" x="-13" y="-89"/>
+        <terminal x="-20" orientation="e" y="-80"/>
+        <terminal x="0" orientation="w" y="-60"/>
+        <terminal x="0" orientation="w" y="-90"/>
+        <terminal x="0" orientation="n" y="-190"/>
+        <terminal x="-20" orientation="e" y="-70"/>
+        <terminal x="0" orientation="w" y="-80"/>
+        <terminal x="-20" orientation="n" y="-190"/>
+        <terminal x="0" orientation="w" y="-70"/>
+        <terminal x="-20" orientation="e" y="-50"/>
+        <terminal x="-20" orientation="s" y="50"/>
+        <terminal x="-5" orientation="n" y="-190"/>
+        <terminal x="-20" orientation="e" y="-60"/>
+        <terminal x="-20" orientation="e" y="-100"/>
+        <terminal x="0" orientation="w" y="-50"/>
+        <terminal x="5" orientation="n" y="-190"/>
+        <terminal x="-25" orientation="n" y="-190"/>
+        <terminal x="-20" orientation="e" y="-90"/>
+        <terminal x="0" orientation="w" y="-100"/>
+    </description>
+</definition>
