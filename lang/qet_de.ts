@@ -6,70 +6,70 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="20"/>
         <source>À propos de QElectrotech</source>
-        <translation type="unfinished">Über QElectroTech</translation>
+        <translation>Über QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="30"/>
         <source>À propos</source>
-        <translation type="unfinished"></translation>
+        <translation>Über</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="53"/>
         <source>Auteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Autoren</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="133"/>
         <source>Traducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Übersetzer</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="216"/>
         <source>Contributeurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Mitwirkende</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="296"/>
         <source>Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Version</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="345"/>
         <source>Bibliothèques</source>
-        <translation type="unfinished"></translation>
+        <translation>Bibliotheken</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="425"/>
         <source>Accord de licence</source>
-        <translation type="unfinished"></translation>
+        <translation>Lizenzvereinbarung</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="431"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
-        <translation type="unfinished">Das Programm ist unter GNU/GPL lizensiert.</translation>
+        <translation>Das Programm ist unter GNU/GPL lizensiert.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="43"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.</source>
         <comment>about tab, description line</comment>
-        <translation type="unfinished">QElectroTech ist eine Anwendung zum Erstellen von Stromlaufplänen.</translation>
+        <translation>QElectroTech ist eine Anwendung zum Erstellen von Stromlaufplänen.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="45"/>
         <source>2006-2019 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished">2006-2019 die QElectroTech Entwickler</translation>
+        <translation>2006-2020 die QElectroTech Entwickler</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="49"/>
         <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</source>
         <comment>about tab, contact line</comment>
-        <translation type="unfinished">Kontakt : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</translation>
+        <translation>Kontakt : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="56"/>
         <source>Idée originale</source>
-        <translation type="unfinished">Idee</translation>
+        <translation>Idee</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="57"/>
@@ -79,187 +79,187 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="107"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="110"/>
         <source>Développement</source>
-        <translation type="unfinished">Programmierung</translation>
+        <translation>Programmierung</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="60"/>
         <source>Convertisseur DXF</source>
-        <translation type="unfinished">DXF Konverter</translation>
+        <translation>DXF Konverter</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="61"/>
         <source>Plugin Bornier</source>
-        <translation type="unfinished">Klemmenplan-Plugin</translation>
+        <translation>Klemmenplan-Plugin</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="67"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="68"/>
         <source>Traduction en espagnol</source>
-        <translation type="unfinished">Übersetzung ins Spanische</translation>
+        <translation>Übersetzung ins Spanische</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="69"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="70"/>
         <source>Traduction en russe</source>
-        <translation type="unfinished">Übersetzung ins Russische</translation>
+        <translation>Übersetzung ins Russische</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="71"/>
         <source>Traduction en portugais</source>
-        <translation type="unfinished">Übersetzung ins Portugisische</translation>
+        <translation>Übersetzung ins Portugisische</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="72"/>
         <source>Traduction en tchèque</source>
-        <translation type="unfinished">Übersetzung ins Tschechische</translation>
+        <translation>Übersetzung ins Tschechische</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="73"/>
         <source>Traduction en polonais</source>
-        <translation type="unfinished">Übersetzung ins Polnische</translation>
+        <translation>Übersetzung ins Polnische</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="74"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="75"/>
         <source>Traduction en allemand</source>
-        <translation type="unfinished">Übersetzung ins Deutsche</translation>
+        <translation>Übersetzung ins Deutsche</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="76"/>
         <source>Traduction en roumain</source>
-        <translation type="unfinished">Übersetzung ins Rumänische</translation>
+        <translation>Übersetzung ins Rumänische</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="77"/>
         <source>Traduction en italien</source>
-        <translation type="unfinished">Übersetzung ins Italienische</translation>
+        <translation>Übersetzung ins Italienische</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="78"/>
         <source>Traduction en arabe</source>
-        <translation type="unfinished">Übersetzung ins Arabische</translation>
+        <translation>Übersetzung ins Arabische</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="79"/>
         <source>Traduction en croate</source>
-        <translation type="unfinished">Übersetzung ins Kroatische</translation>
+        <translation>Übersetzung ins Kroatische</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="80"/>
         <source>Traduction en catalan</source>
-        <translation type="unfinished">Übersetzung ins Katalanische</translation>
+        <translation>Übersetzung ins Katalanische</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="81"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="82"/>
         <source>Traduction en grec</source>
-        <translation type="unfinished">Übersetzung ins Griechische</translation>
+        <translation>Übersetzung ins Griechische</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="83"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="84"/>
         <source>Traduction en néerlandais</source>
-        <translation type="unfinished">Übersetzung ins Niederländische</translation>
+        <translation>Übersetzung ins Niederländische</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="85"/>
         <source>Traduction en flamand</source>
-        <translation type="unfinished">Übersetzung ins Flämische</translation>
+        <translation>Übersetzung ins Flämische</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="86"/>
         <source>Traduction en danois</source>
-        <translation type="unfinished">Übersetzung ins Dänische</translation>
+        <translation>Übersetzung ins Dänische</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="87"/>
         <source>Traduction en brézilien</source>
-        <translation type="unfinished">Übersetzung ins Brasilianische</translation>
+        <translation>Übersetzung ins Brasilianische</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="88"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="89"/>
         <source>Traduction en Turc</source>
-        <translation type="unfinished">Übersetzung ins Türkische</translation>
+        <translation>Übersetzung ins Türkische</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="90"/>
         <source>Traduction en hongrois</source>
-        <translation type="unfinished">Übersetzung ins Ungarische</translation>
+        <translation>Übersetzung ins Ungarische</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="95"/>
         <source>Paquets Fedora et Red Hat</source>
-        <translation type="unfinished">Fedora und Redhat Pakete</translation>
+        <translation>Fedora und Redhat Pakete</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="96"/>
         <source>Paquets Mageia</source>
-        <translation type="unfinished">Mageia Pakete</translation>
+        <translation>Mageia Pakete</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="97"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="98"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="99"/>
         <source>Paquets Debian</source>
-        <translation type="unfinished">Debian Pakete</translation>
+        <translation>Debian Pakete</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="100"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="101"/>
         <source>Paquets Gentoo</source>
-        <translation type="unfinished">Gentoo Pakete</translation>
+        <translation>Gentoo Pakete</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="102"/>
         <source>Paquets OS/2</source>
-        <translation type="unfinished">OS/2 Pakete</translation>
+        <translation>OS/2 Pakete</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="103"/>
         <source>Paquets FreeBSD</source>
-        <translation type="unfinished">FreeBSD Pakete</translation>
+        <translation>FreeBSD Pakete</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="104"/>
         <source>Paquets MAC OS X</source>
-        <translation type="unfinished">MAC OS X Pakete</translation>
+        <translation>MAC OS X Pakete</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="105"/>
         <source>Paquets Archlinux AUR</source>
-        <translation type="unfinished">Archlinux AUR Pakete</translation>
+        <translation>Archlinux AUR Pakete</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="106"/>
         <source>Icônes</source>
-        <translation type="unfinished">Symbole</translation>
+        <translation>Symbole</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="108"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="109"/>
         <source>Documentation</source>
-        <translation type="unfinished">Dokumentation</translation>
+        <translation>Dokumentation</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="111"/>
         <source>Collection d&apos;éléments</source>
-        <translation type="unfinished">Bauteilsammlung</translation>
+        <translation>Bauteilsammlung</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="112"/>
         <source>Python plugin qet-tb-generator</source>
-        <translation type="unfinished">Python Plugin qet-tb-generator</translation>
+        <translation>Python Plugin qet-tb-generator</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="113"/>
         <source>Paquets Snap</source>
-        <translation type="unfinished">Snap Pakete</translation>
+        <translation>Snap Pakete</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="119"/>
         <source>Compilation : </source>
-        <translation type="unfinished">Kompiliert: </translation>
+        <translation>Kompiliert: </translation>
     </message>
 </context>
 <context>
@@ -4481,7 +4481,7 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/projectview.cpp" line="316"/>
         <source>sansnom</source>
-        <translation type="unfinished"></translation>
+        <translation>ohne Namen</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="430"/>
