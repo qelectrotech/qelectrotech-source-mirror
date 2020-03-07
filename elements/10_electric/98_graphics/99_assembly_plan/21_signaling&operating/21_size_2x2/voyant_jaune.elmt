@@ -1,21 +1,38 @@
-<definition height="50" version="0.5" width="50" link_type="simple" hotspot_x="25" orientation="dyyy" hotspot_y="25" type="element">
-    <uuid uuid="{3467c4df-d0c0-4ac4-8cb3-0b363e487131}"/>
+<definition orientation="dyyy" link_type="simple" width="30" version="0.80" hotspot_y="15" type="element" height="30" hotspot_x="15">
+    <uuid uuid="{2dc4220a-e615-40e0-8c81-aabbdfc0c0fa}"/>
     <names>
+        <name lang="nl">Lamp</name>
+        <name lang="ar">مُؤشر ضوئي</name>
         <name lang="cs">Světelný signál</name>
+        <name lang="en">Light</name>
+        <name lang="pl">Lampka sygnalizacyjna</name>
         <name lang="it">Lampada spia</name>
         <name lang="el">Λάμπα</name>
-        <name lang="ar">مُؤشّر ضوئي</name>
-        <name lang="pl">Lampka sygnalizacyjna</name>
-        <name lang="en">Light</name>
+        <name lang="de">Meldeleuchte</name>
         <name lang="fr">Voyant jaune</name>
-        <name lang="nl">Lamp</name>
     </names>
-    <informations>Author: The QElectroTech team
+    <elementInformations>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <circle diameter="44" style="line-style:normal;line-weight:normal;filling:yellow;color:black" antialias="true" x="-22" y="-22"/>
-        <arc height="28" style="line-style:normal;line-weight:thin;filling:none;color:black" start="0" width="28" angle="-270" antialias="true" x="-14" y="-14"/>
-        <circle diameter="40" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" x="-20" y="-20"/>
-        <input rotate="true" size="9" x="-18" y="44" text="_" tagg="label"/>
+        <circle y="-11" style="line-style:normal;line-weight:normal;filling:yellow;color:black" diameter="22" x="-11" antialias="true"/>
+        <dynamic_text y="-35.45" text_from="ElementInfo" z="2" frame="false" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" Halignment="AlignLeft" x="-7" text_width="-1" uuid="{7c438efe-40e0-4a15-accf-50ff83b690a0}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <arc y="-7" start="0" style="line-style:normal;line-weight:thin;filling:none;color:black" width="14" height="14" x="-7" antialias="true" angle="-270"/>
+        <circle y="-10" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="20" x="-10" antialias="true"/>
     </description>
 </definition>
