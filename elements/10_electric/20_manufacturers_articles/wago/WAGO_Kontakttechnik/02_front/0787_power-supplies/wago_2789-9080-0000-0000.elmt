@@ -1,0 +1,50 @@
+<definition type="element" hotspot_y="145" orientation="dyyy" hotspot_x="65" height="290" link_type="simple" version="0.80" width="130">
+    <names>
+        <name lang="en">2789-9080</name>
+        <name lang="de">2789-9080</name>
+        <name lang="fr">2789-9080</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <polygon antialias="false" x2="-13.9" y2="139.37" x3="-13.9" x1="-34.98" y4="142.52" style="line-style:normal;line-weight:thin;filling:white;color:black" x4="-34.98" y1="139.37" y3="142.52"/>
+        <polygon antialias="false" x2="35.2" y2="139.37" x3="35.2" x1="14.13" y4="142.52" style="line-style:normal;line-weight:thin;filling:white;color:black" x4="14.13" y1="139.37" y3="142.52"/>
+        <polygon antialias="false" x2="30.64" y2="-142.99" x3="30.64" x1="13.38" y4="-140.71" style="line-style:normal;line-weight:thin;filling:white;color:black" x4="13.38" y1="-142.99" y3="-140.71"/>
+        <polygon antialias="false" x2="-13.17" y2="-142.99" x3="-13.17" x1="-30.42" y4="-140.71" style="line-style:normal;line-weight:thin;filling:white;color:black" x4="-30.42" y1="-142.99" y3="-140.71"/>
+        <polygon antialias="false" x2="26.41" y2="-142.11" x3="26.41" x1="-26.19" y4="-140.71" style="line-style:normal;line-weight:thin;filling:white;color:black" x4="-26.19" y1="-142.11" y3="-140.71"/>
+        <polygon antialias="false" x2="61.29" y2="-140.72" x3="61.29" x1="-61.11" y4="139.36" style="line-style:normal;line-weight:normal;filling:white;color:black" x4="-61.11" y1="-140.72" y3="139.36"/>
+        <polygon antialias="false" x2="-60.89" y2="-130.85" closed="false" x1="61.07" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-130.85"/>
+        <polygon antialias="false" x2="55" y2="128" x3="55" x1="-55" y4="130" style="line-style:normal;line-weight:thin;filling:white;color:black" x4="-55" y1="128" y3="130"/>
+        <polygon antialias="false" x2="-60.89" y2="127.87" closed="false" x1="61.07" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="127.87"/>
+        <polygon antialias="false" x2="-60.89" y2="-139.02" closed="false" x1="61.07" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-139.02"/>
+        <polygon antialias="false" x2="-60.89" y2="-129.25" closed="false" x1="61.07" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-129.25"/>
+        <polygon antialias="false" x2="-60.89" y2="119.89" closed="false" x1="61.07" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="119.89"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:white;color:black" x5="56.6" y8="48.36" y1="48.36" x1="-56.41" x3="-57.8" antialias="false" x2="-57.8" y2="49.75" x4="-56.41" y5="97.46" y4="97.46" x8="56.6" y3="96.07" y7="49.75" y6="96.07" x7="57.99" x6="57.99"/>
+        <polygon antialias="false" x2="53.25" y2="54.65" x3="53.25" x1="-53.34" y4="91.17" style="line-style:normal;line-weight:thin;filling:none;color:black" x4="-53.34" y1="54.65" y3="91.17"/>
+        <polygon antialias="false" x2="56.09" y2="50.19" x3="56.09" x1="-55.91" y4="95.63" style="line-style:normal;line-weight:thin;filling:none;color:black" x4="-55.91" y1="50.19" y3="95.63"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:white;color:black" x5="45.99" y8="68.81" y1="67.42" x1="41.94" x3="47.39" antialias="false" x2="45.99" y2="67.42" x4="47.39" y5="78.4" y4="77.01" x8="40.55" y3="68.81" y7="77.01" y6="78.4" x7="40.55" x6="41.94"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:white;color:black" x5="-41.94" y8="68.81" y1="67.42" x1="-45.99" x3="-40.55" antialias="false" x2="-41.94" y2="67.42" x4="-40.55" y5="78.4" y4="77.01" x8="-47.38" y3="68.81" y7="77.01" y6="78.4" x7="-47.38" x6="-45.99"/>
+        <polygon antialias="false" x2="53.25" y2="70.33" x3="53.25" x1="-53.34" y4="75.49" style="line-style:normal;line-weight:thin;filling:white;color:black" x4="-53.34" y1="70.33" y3="75.49"/>
+        <polygon antialias="false" x2="53.25" y2="62.81" x3="53.25" x1="-53.34" y4="65.53" style="line-style:normal;line-weight:thin;filling:white;color:black" x4="-53.34" y1="62.81" y3="65.53"/>
+        <polygon antialias="false" x2="53.25" y2="80.29" x3="53.25" x1="-53.34" y4="83.01" style="line-style:normal;line-weight:thin;filling:white;color:black" x4="-53.34" y1="80.29" y3="83.01"/>
+        <polygon antialias="false" x2="-10.19" y2="-119.44" x3="-10.19" x1="-21.06" y4="-112.09" style="line-style:normal;line-weight:thin;filling:red;color:black" x4="-21.06" y1="-119.44" y3="-112.09"/>
+        <polygon antialias="false" x2="-10.19" y2="-107.23" x3="-10.19" x1="-21.06" y4="-99.88" style="line-style:normal;line-weight:thin;filling:green;color:black" x4="-21.06" y1="-107.23" y3="-99.88"/>
+        <text rotation="0" text="2789-9080" color="#000000" x="-53" y="-31" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <polygon x6="29.452" x16="29.078" y11="-4.7369" x15="29.452" y4="-17.0496" y12="-4.7369" x4="8.068" y14="-7.1415" x21="8.123" x23="6.88" y24="3.0781" y20="5.49365" x1="6.484" x13="17.979" x20="9.179" x14="29.452" x12="17.979" y10="-2.4197" y16="4.2476" x22="7.4025" x5="8.9755" y8="-9.4368" y3="-16.5469" y21="5.26412" x24="6.484" y23="4.1438" y22="4.7668" y2="-15.8309" x3="7.397" y18="5.28598" x10="21.4715" y15="3.0016" x19="26.735" x8="14.4425" y7="-9.4368" x7="29.452" y17="4.8706" x9="14.4425" y6="-17.3611" x17="28.5115" y9="-2.4197" y5="-17.3611" y19="5.49365" x2="6.7755" y13="-7.1415" x18="27.78" antialias="false" y1="-14.8035" x11="21.4715" style="line-style:normal;line-weight:thin;filling:green;color:none"/>
+        <polygon x10="-4.3235" style="line-style:normal;line-weight:thin;filling:green;color:none" x9="-4.3235" y11="1.5096" x5="-26.329" y8="5.48818" y1="7.96385" y10="1.5096" x1="-16.8415" y9="5.48818" x3="-25.4435" antialias="false" x2="-13.3545" y2="7.96385" x4="-29.1835" y5="7.98571" y4="7.96385" x8="3.635" y3="13.6202" x11="-12.634" y7="-17.3611" y6="-17.3611" x7="3.635" x6="-9.785"/>
+        <dynamic_text rotation="0" text_width="-1" frame="false" text_from="ElementInfo" x="-4" y="30" Halignment="AlignHCenter" Valignment="AlignVCenter" font="Sans Serif,6,-1,5,25,0,0,0,0,0" uuid="{81678b8b-1a53-4a1c-a689-720f20470e8e}" z="27">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon x10="-11.457" style="line-style:normal;line-weight:thin;filling:green;color:none" x9="-8.8885" y11="5.48818" x5="-29.6125" y15="5.48818" y8="-25.5041" x16="-54.06" x13="-37.5985" y16="-17.3611" y1="-17.3611" y10="-19.8423" y12="5.48818" x1="-46.096" y9="-19.8423" x3="-39.1275" y14="5.48818" antialias="false" y13="-5.1741" x2="-46.096" y2="-6.7754" x4="-29.6125" y5="-6.748" y4="-17.3611" x8="-12.5075" x12="-37.5985" y3="-17.3611" x14="-44.567" x11="-28.0065" x15="-54.06" y7="-19.8915" y6="-19.8915" x7="-24.7065" x6="-21.0435"/>
+        <polygon x6="52.6565" x16="34.996" y11="3.0016" x15="52.552" y4="-17.0496" y12="4.2476" x4="33.885" y14="5.28598" y20="3.0781" x1="32.301" x13="54.3285" x20="32.301" x14="53.597" x12="54.895" y10="-14.7379" y16="5.49365" x5="34.7925" y8="-16.5906" y3="-16.5469" y2="-15.8309" x3="33.214" y18="4.7668" x10="55.269" y15="5.49365" x19="32.697" x8="54.3725" y7="-17.1152" x7="53.6355" y17="5.26412" x9="54.851" y6="-17.3611" x17="33.94" y9="-16.0113" y5="-17.3611" y19="4.1438" x2="32.5925" y13="4.8706" x18="33.2195" antialias="false" y1="-14.8035" x11="55.269" style="line-style:normal;line-weight:thin;filling:green;color:none"/>
+        <polygon antialias="false" x2="47.316" y2="-9.4368" x3="47.316" x1="40.21" y4="-2.4197" style="line-style:normal;line-weight:thin;filling:white;color:none" x4="40.21" y1="-9.4368" y3="-2.4197"/>
+        <polygon antialias="false" x2="-4.3235" y2="-2.4197" x3="-4.3235" x1="-9.9885" style="line-style:normal;line-weight:thin;filling:white;color:none" y1="-2.4197" y3="-11.0709"/>
+        <text rotation="0" text="IO-Link" color="#000000" x="22.9844" y="19" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+    </description>
+</definition>

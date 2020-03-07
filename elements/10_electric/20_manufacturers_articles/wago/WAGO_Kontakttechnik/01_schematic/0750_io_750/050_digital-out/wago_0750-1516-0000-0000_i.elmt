@@ -1,16 +1,16 @@
 <definition width="730" hotspot_x="364" type="element" hotspot_y="44" link_type="simple" height="110" orientation="dyyy" version="0.51">
     <names>
-        <name lang="ar">WAGO 750-1516/0000-0000 (I)</name>
-        <name lang="de">WAGO 750-1516/0000-0000 (I)</name>
-        <name lang="it">WAGO 750-1516/0000-0000 (I)</name>
-        <name lang="pl">WAGO 750-1516/0000-0000 (I)</name>
-        <name lang="pt">WAGO 750-1516/0000-0000 (I)</name>
-        <name lang="es">WAGO 750-1516/0000-0000 (I)</name>
-        <name lang="nl">WAGO 750-1516/0000-0000 (I)</name>
-        <name lang="en">WAGO 750-1516/0000-0000 (I)</name>
-        <name lang="el">WAGO 750-1516/0000-0000 (I)</name>
-        <name lang="fr">WAGO 750-1516/0000-0000 (I)</name>
-        <name lang="cs">WAGO 750-1516/0000-0000 (I)</name>
+        <name lang="ar">750-1516 (I)</name>
+        <name lang="de">750-1516 (I)</name>
+        <name lang="it">750-1516 (I)</name>
+        <name lang="pl">750-1516 (I)</name>
+        <name lang="pt">750-1516 (I)</name>
+        <name lang="es">750-1516 (I)</name>
+        <name lang="nl">750-1516 (I)</name>
+        <name lang="en">750-1516 (I)</name>
+        <name lang="el">750-1516 (I)</name>
+        <name lang="fr">750-1516 (I)</name>
+        <name lang="cs">750-1516 (I)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

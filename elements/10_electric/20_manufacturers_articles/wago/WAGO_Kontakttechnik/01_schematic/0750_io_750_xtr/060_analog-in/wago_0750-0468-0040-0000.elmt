@@ -1,8 +1,8 @@
 <definition type="element" width="730" version="0.51" link_type="simple" hotspot_y="55" height="110" hotspot_x="365" orientation="dyyy">
     <names>
-        <name lang="fr">WAGO 750-0468/0040-0000</name>
-        <name lang="de">WAGO 750-0468/0040-0000</name>
-        <name lang="en">WAGO 750-0468/0040-0000</name>
+        <name lang="fr">750-468/0040-0000</name>
+        <name lang="de">750-468/0040-0000</name>
+        <name lang="en">750-468/0040-0000</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
@@ -41,7 +41,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <text x="-279" text="AI1" y="-24" size="9"/>
         <text x="281" text="Shield" y="-24" size="9"/>
         <text x="286" text="8" y="-42" size="5"/>
-        <text x="-330" text="WAGO 750-0468/0040-0000" y="45" size="9"/>
+        <text x="-330" text="WAGO 750-468/0040-0000" y="45" size="9"/>
         <text x="-36" text="6" y="-42" size="5"/>
         <text x="-39" text="AI4" y="-24" size="9"/>
         <text x="42" text="GND" y="-24" size="9"/>

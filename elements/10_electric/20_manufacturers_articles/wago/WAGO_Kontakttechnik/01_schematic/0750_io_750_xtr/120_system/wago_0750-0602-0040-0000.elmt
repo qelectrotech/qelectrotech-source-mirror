@@ -1,8 +1,8 @@
 <definition height="110" link_type="simple" orientation="dyyy" version="0.51" hotspot_x="364" hotspot_y="55" type="element" width="730">
     <names>
-        <name lang="de">WAGO 750-0602/0040-0000</name>
-        <name lang="en">WAGO 750-0602/0040-0000</name>
-        <name lang="fr">WAGO 750-0602/0040-0000</name>
+        <name lang="de">750-602/0040-0000</name>
+        <name lang="en">750-602/0040-0000</name>
+        <name lang="fr">750-602/0040-0000</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
@@ -57,7 +57,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <text y="-42" size="5" text="1" x="-276"/>
         <text y="-24" size="9" text="PE" x="281"/>
         <text y="-42" size="5" text="8" x="286"/>
-        <text y="45" size="9" text="WAGO 750-0602/0040-0000" x="-330"/>
+        <text y="45" size="9" text="WAGO 750-602/0040-0000" x="-330"/>
         <text y="-42" size="5" text="6" x="-36"/>
         <text y="-24" size="9" text="24V" x="-39"/>
         <text y="-24" size="9" text="0V" x="42"/>

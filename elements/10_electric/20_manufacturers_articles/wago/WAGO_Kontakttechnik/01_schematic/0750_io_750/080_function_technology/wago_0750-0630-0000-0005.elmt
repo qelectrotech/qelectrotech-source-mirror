@@ -1,16 +1,16 @@
 <definition type="element" version="0.60" hotspot_y="44" orientation="dyyy" height="110" hotspot_x="364" link_type="simple" width="730">
     <names>
-        <name lang="en">WAGO 750-0630/0000-0005</name>
-        <name lang="es">WAGO 750-0630/0000-0005</name>
-        <name lang="nl">WAGO 750-0630/0000-0005</name>
-        <name lang="it">WAGO 750-0630/0000-0005</name>
-        <name lang="pl">WAGO 750-0630/0000-0005</name>
-        <name lang="ar">WAGO 750-0630/0000-0005</name>
-        <name lang="fr">WAGO 750-0630/0000-0005</name>
-        <name lang="el">WAGO 750-0630/0000-0005</name>
-        <name lang="pt">WAGO 750-0630/0000-0005</name>
-        <name lang="de">WAGO 750-0630/0000-0005</name>
-        <name lang="cs">WAGO 750-0630/0000-0005</name>
+        <name lang="en">750-630/0000-0005</name>
+        <name lang="es">750-630/0000-0005</name>
+        <name lang="nl">750-630/0000-0005</name>
+        <name lang="it">750-630/0000-0005</name>
+        <name lang="pl">750-630/0000-0005</name>
+        <name lang="ar">750-630/0000-0005</name>
+        <name lang="fr">750-630/0000-0005</name>
+        <name lang="el">750-630/0000-0005</name>
+        <name lang="pt">750-630/0000-0005</name>
+        <name lang="de">750-630/0000-0005</name>
+        <name lang="cs">750-630/0000-0005</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
@@ -59,7 +59,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-13" antialias="false" end2="none" x2="360" y1="-40" length2="1.5" x1="360" end1="none"/>
         <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="7" antialias="false" end2="none" x2="360" y1="-7" length2="1.5" x1="360" end1="none"/>
         <line length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-10" antialias="false" end2="none" x2="360" y1="-10" length2="1.5" x1="-360" end1="none"/>
-        <text size="9" text="WAGO 750-0630/0000-0005" x="-331" y="-27"/>
+        <text size="9" text="WAGO 750-630/0000-0005" x="-331" y="-27"/>
         <input size="9" text="X123" x="219" tagg="label" y="-31" rotate="true"/>
         <text size="5" text="1" x="-278" y="58"/>
         <text size="5" text="5" x="-197" y="58"/>

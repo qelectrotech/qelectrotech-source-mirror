@@ -1,8 +1,8 @@
 <definition hotspot_x="354" type="element" height="110" hotspot_y="55" width="730" version="0.51" orientation="dyyy" link_type="simple">
     <names>
-        <name lang="en">WAGO 750-1506/0000-0000 (DI)</name>
-        <name lang="de">WAGO 750-1506/0000-0000 (DI)</name>
-        <name lang="fr">WAGO 750-1506/0000-0000 (DI)</name>
+        <name lang="en">750-1506 (DI)</name>
+        <name lang="de">750-1506 (DI)</name>
+        <name lang="fr">750-1506 (DI)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
@@ -53,7 +53,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <text x="291" text="DI8" y="-24" size="9"/>
         <text x="296" text="8" y="-42" size="5"/>
         <text x="-26" text="4" y="-42" size="5"/>
-        <text x="-329" text="WAGO 750-1506/0000-0000 (DI)" y="45" size="9"/>
+        <text x="-329" text="WAGO 750-1506 (DI)" y="45" size="9"/>
         <text x="-29" text="DI4" y="-24" size="9"/>
         <text x="52" text="DI5" y="-24" size="9"/>
         <text x="56" text="5" y="-42" size="5"/>

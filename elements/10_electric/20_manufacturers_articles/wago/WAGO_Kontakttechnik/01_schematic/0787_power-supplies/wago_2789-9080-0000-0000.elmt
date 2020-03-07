@@ -1,0 +1,47 @@
+<definition hotspot_x="35" width="70" version="0.80" link_type="simple" type="element" height="90" hotspot_y="44" orientation="dyyy">
+    <names>
+        <name lang="cs">2789-9080</name>
+        <name lang="be">2789-9080</name>
+        <name lang="de">2789-9080</name>
+        <name lang="fr">2789-9080</name>
+        <name lang="es">2789-9080</name>
+        <name lang="pl">2789-9080</name>
+        <name lang="nl">2789-9080</name>
+        <name lang="it">2789-9080</name>
+        <name lang="el">2789-9080</name>
+        <name lang="ar">2789-9080</name>
+        <name lang="en">2789-9080</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-3" y2="-40" x1="-30" antialias="false" length1="1.5" end2="none" length2="1.5" y1="-40"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-23" y2="40" x1="-30" antialias="false" length1="1.5" end2="none" length2="1.5" y1="40"/>
+        <text rotation="0" x="-13.0156" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" y="16" text="IO-Link"/>
+        <text rotation="0" x="-22.5" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" y="31" text="L+"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-22.5" diameter="5" y="37.5" antialias="true"/>
+        <text rotation="0" x="-15" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" y="-11" text="WAGO"/>
+        <text rotation="0" x="17.1094" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" y="31" text="L-"/>
+        <text rotation="0" x="-4.39062" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" y="31" text="C/Q"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="17.5" diameter="5" y="37.5" antialias="true"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2.5" diameter="5" y="37.5" antialias="true"/>
+        <dynamic_text rotation="0" uuid="{7887e1bf-7914-4463-9f3a-9d4e58ed52ff}" Valignment="AlignVCenter" Halignment="AlignHCenter" text_from="ElementInfo" x="-4" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-38" frame="false" z="17" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2.5" diameter="5" y="-42.5" antialias="true"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-3" y2="40" x1="-17" antialias="false" length1="1.5" end2="none" length2="1.5" y1="40"/>
+        <line end1="none" style="line-style:dotted;line-weight:normal;filling:none;color:black" x2="-30" y2="2" x1="30" antialias="true" length1="1.5" end2="none" length2="1.5" y1="2"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-30" y2="40" x1="-30" antialias="false" length1="1.5" end2="none" length2="1.5" y1="-40"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="17" y2="40" x1="3" antialias="false" length1="1.5" end2="none" length2="1.5" y1="40"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="30" y2="40" x1="23" antialias="false" length1="1.5" end2="none" length2="1.5" y1="40"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="30" y2="-40" x1="30" antialias="false" length1="1.5" end2="none" length2="1.5" y1="40"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="30" y2="-40" x1="3" antialias="false" length1="1.5" end2="none" length2="1.5" y1="-40"/>
+        <text rotation="0" x="-24" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" y="-1" text="2789-9080"/>
+        <terminal x="0" y="40" orientation="s"/>
+        <terminal x="20" y="40" orientation="s"/>
+        <terminal x="0" y="-40" orientation="n"/>
+        <terminal x="-20" y="40" orientation="s"/>
+    </description>
+</definition>

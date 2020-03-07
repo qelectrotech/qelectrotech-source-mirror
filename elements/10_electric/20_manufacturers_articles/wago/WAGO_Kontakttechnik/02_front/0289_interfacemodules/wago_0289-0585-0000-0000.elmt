@@ -1,0 +1,112 @@
+<definition type="element" height="310" version="0.80" width="140" hotspot_x="69" link_type="simple" hotspot_y="154" orientation="dyyy">
+    <names>
+        <name lang="en">289-585</name>
+        <name lang="fr">289-585</name>
+        <name lang="de">289-585</name>
+    </names>
+    <elementInformations/>
+    <informations>
+     Author: DXF converter
+     License:see http://qelectrotech.org/wiki/doc/elements_license
+     Converter version:V3.0 DB
+
+</informations>
+    <description>
+        <polygon x2="-66.5" y2="149.6" y4="-148.6" antialias="false" x1="-66.5" y1="-148.6" x3="66.5" x4="66.5" y3="149.6" style="line-style:normal;line-weight:thin;filling:green;color:black"/>
+        <polygon x2="-25.0241" y2="69.52" y4="119.47" antialias="false" x1="-42.5741" y1="69.52" x3="-25.0241" x4="-42.5741" y3="119.47" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="45.2059" y2="69.52" y4="119.47" antialias="false" x1="27.6559" y1="69.52" x3="45.2059" x4="27.6559" y3="119.47" style="line-style:normal;line-weight:thin;filling:yellow;color:black"/>
+        <polygon x2="66.2716" y2="123.3" y4="149.5" antialias="false" x1="-66.4507" y1="123.3" x3="66.2716" x4="-66.4507" y3="149.5" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="66.3374" y2="-148.6" y4="-122.38" antialias="false" x1="-66.385" y1="-148.6" x3="66.3374" x4="-66.385" y3="-122.38" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="27.6839" y2="9.52" y4="59.47" antialias="false" x1="10.1339" y1="9.52" x3="27.6839" x4="10.1339" y3="59.47" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="-66.5" y2="-136.87" antialias="false" x1="66.5324" closed="false" y1="-136.87" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="-25.0241" y2="86.45" y4="93.13" antialias="false" x1="-42.5741" y1="86.45" x3="-25.0241" x4="-42.5741" y3="93.13" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="66.5324" y2="-134.92" antialias="false" x1="-66.5" closed="false" y1="-134.92" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="45.2059" y2="86.45" y4="93.13" antialias="false" x1="27.6559" y1="86.45" x3="45.2059" x4="27.6559" y3="93.13" style="line-style:normal;line-weight:thin;filling:yellow;color:black"/>
+        <polygon x2="66.4031" y2="-129.78" antialias="false" x1="-66.2534" closed="false" y1="-129.78" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="-66.5" y2="137.5" antialias="false" x1="66.5324" closed="false" y1="137.5" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="-31.6041" y2="73.03" y4="81.48" antialias="false" x1="-35.9941" y1="73.03" x3="-31.6041" x4="-35.9941" y3="81.48" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <polygon x2="66.5324" y2="135.55" antialias="false" x1="-66.5" closed="false" y1="135.55" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="38.6259" y2="73.03" y4="81.48" antialias="false" x1="34.2359" y1="73.03" x3="38.6259" x4="34.2359" y3="81.48" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <polygon x2="66.4031" y2="130.41" antialias="false" x1="-66.2534" closed="false" y1="130.41" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="42.6659" y2="93.12" y4="98.92" antialias="false" x1="30.1959" y1="93.12" x3="42.6659" x4="30.1959" y3="98.92" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <polygon x2="-27.5641" y2="93.12" y4="98.92" antialias="false" x1="-40.0341" y1="93.12" x3="-27.5641" x4="-40.0341" y3="98.92" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <text rotation="0" x="-22.34" text="289-585" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="147" color="#000000"/>
+        <polygon x2="42.6659" y2="105.86" y4="118.7" antialias="false" x1="30.1959" y1="105.86" x3="42.6659" x4="30.1959" y3="118.7" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <polygon x2="-27.5641" y2="105.86" y4="118.7" antialias="false" x1="-40.0341" y1="105.86" x3="-27.5641" x4="-40.0341" y3="118.7" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <rect height="40" width="115.7" antialias="false" x="-57.55" ry="4" rx="4" y="-109.2" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="-7.4641" y2="69.52" y4="119.47" antialias="false" x1="-25.0241" y1="69.52" x3="-7.4641" x4="-25.0241" y3="119.47" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="27.6839" y2="26.45" y4="33.13" antialias="false" x1="10.1339" y1="26.45" x3="27.6839" x4="10.1339" y3="33.13" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="-7.4641" y2="86.45" y4="93.13" antialias="false" x1="-25.0241" y1="86.45" x3="-7.4641" x4="-25.0241" y3="93.13" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="-14.0441" y2="73.03" y4="81.48" antialias="false" x1="-18.4341" y1="73.03" x3="-14.0441" x4="-18.4341" y3="81.48" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <polygon x2="-10.0041" y2="93.12" y4="98.92" antialias="false" x1="-22.4741" y1="93.12" x3="-10.0041" x4="-22.4741" y3="98.92" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <polygon x2="-66.46" y2="149.5" y4="121.5" antialias="false" x1="-66.46" y1="121.5" x3="-44.2" x4="-44.2" y3="149.5" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="-10.0041" y2="105.86" y4="118.7" antialias="false" x1="-22.4741" y1="105.86" x3="-10.0041" x4="-22.4741" y3="118.7" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <polygon x2="44.21" y2="149.5" y4="121.5" antialias="false" x1="44.21" y1="121.5" x3="66.47" x4="66.47" y3="149.5" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="21.1039" y2="13.03" y4="21.48" antialias="false" x1="16.7139" y1="13.03" x3="21.1039" x4="16.7139" y3="21.48" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <polygon x2="-66.43" y2="-120.56" y4="-148.6" antialias="false" x1="-66.43" y1="-148.6" x3="-44.17" x4="-44.17" y3="-120.56" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="44.24" y2="-120.56" y4="-148.6" antialias="false" x1="44.24" y1="-148.6" x3="66.5" x4="66.5" y3="-120.56" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="10.0959" y2="69.52" y4="119.47" antialias="false" x1="-7.4641" y1="69.52" x3="10.0959" x4="-7.4641" y3="119.47" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="10.0959" y2="86.45" y4="93.13" antialias="false" x1="-7.4641" y1="86.45" x3="10.0959" x4="-7.4641" y3="93.13" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="3.5159" y2="73.03" y4="81.48" antialias="false" x1="-0.8741" y1="73.03" x3="3.5159" x4="-0.8741" y3="81.48" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <polygon x2="7.5459" y2="93.12" y4="98.92" antialias="false" x1="-4.9141" y1="93.12" x3="7.5459" x4="-4.9141" y3="98.92" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <polygon x2="25.1439" y2="33.12" y4="38.92" antialias="false" x1="12.6739" y1="33.12" x3="25.1439" x4="12.6739" y3="38.92" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <polygon x2="7.5459" y2="105.86" y4="118.7" antialias="false" x1="-4.9141" y1="105.86" x3="7.5459" x4="-4.9141" y3="118.7" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <polygon x2="27.6559" y2="69.52" y4="119.47" antialias="false" x1="10.0959" y1="69.52" x3="27.6559" x4="10.0959" y3="119.47" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="27.6559" y2="86.45" y4="93.13" antialias="false" x1="10.0959" y1="86.45" x3="27.6559" x4="10.0959" y3="93.13" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="25.1439" y2="45.86" y4="58.7" antialias="false" x1="12.6739" y1="45.86" x3="25.1439" x4="12.6739" y3="58.7" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <polygon x2="21.0659" y2="73.03" y4="81.48" antialias="false" x1="16.6759" y1="73.03" x3="21.0659" x4="16.6759" y3="81.48" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <polygon x2="25.1059" y2="93.12" y4="98.92" antialias="false" x1="12.6459" y1="93.12" x3="25.1059" x4="12.6459" y3="98.92" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <polygon x2="25.1059" y2="105.86" y4="118.7" antialias="false" x1="12.6459" y1="105.86" x3="25.1059" x4="12.6459" y3="118.7" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <polygon x2="-42.5741" y2="69.52" y4="119.47" antialias="false" x1="-46.0941" y1="69.52" x3="-42.5741" x4="-46.0941" y3="119.47" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="45.2439" y2="9.52" y4="59.47" antialias="false" x1="27.6839" y1="9.52" x3="45.2439" x4="27.6839" y3="59.47" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="-24.9861" y2="9.52" y4="59.47" antialias="false" x1="-42.5461" y1="9.52" x3="-24.9861" x4="-42.5461" y3="59.47" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="-46.0941" y2="70.3" y4="73.47" antialias="false" x1="-47.5931" y1="70.3" x3="-46.0941" x4="-47.5931" y3="73.47" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="45.2439" y2="26.45" y4="33.13" antialias="false" x1="27.6839" y1="26.45" x3="45.2439" x4="27.6839" y3="33.13" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="-46.0941" y2="75.24" y4="78.4" antialias="false" x1="-47.5931" y1="75.24" x3="-46.0941" x4="-47.5931" y3="78.4" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="-24.9861" y2="26.45" y4="33.13" antialias="false" x1="-42.5461" y1="26.45" x3="-24.9861" x4="-42.5461" y3="33.13" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="-46.0941" y2="96.93" y4="100.09" antialias="false" x1="-47.5931" y1="96.93" x3="-46.0941" x4="-47.5931" y3="100.09" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="38.6639" y2="13.03" y4="21.48" antialias="false" x1="34.2739" y1="13.03" x3="38.6639" x4="34.2739" y3="21.48" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <polygon x2="-46.0941" y2="114.2" y4="117.36" antialias="false" x1="-47.5931" y1="114.2" x3="-46.0941" x4="-47.5931" y3="117.36" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="-42.5741" y2="86.45" y4="93.13" antialias="false" x1="-46.0941" y1="86.45" x3="-42.5741" x4="-46.0941" y3="93.13" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="-31.5661" y2="13.03" y4="21.48" antialias="false" x1="-35.9561" y1="13.03" x3="-31.5661" x4="-35.9561" y3="21.48" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <polygon x2="-27.5261" y2="33.12" y4="38.92" antialias="false" x1="-39.9961" y1="33.12" x3="-27.5261" x4="-39.9961" y3="38.92" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <polygon x2="42.7039" y2="33.12" y4="38.92" antialias="false" x1="30.2339" y1="33.12" x3="42.7039" x4="30.2339" y3="38.92" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <polygon x2="-27.5261" y2="45.86" y4="58.7" antialias="false" x1="-39.9961" y1="45.86" x3="-27.5261" x4="-39.9961" y3="58.7" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <polygon x2="42.7039" y2="45.86" y4="58.7" antialias="false" x1="30.2339" y1="45.86" x3="42.7039" x4="30.2339" y3="58.7" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <polygon x2="-7.4261" y2="9.52" y4="59.47" antialias="false" x1="-24.9861" y1="9.52" x3="-7.4261" x4="-24.9861" y3="59.47" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="-7.4261" y2="26.45" y4="33.13" antialias="false" x1="-24.9861" y1="26.45" x3="-7.4261" x4="-24.9861" y3="33.13" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="-14.0061" y2="13.03" y4="21.48" antialias="false" x1="-18.3961" y1="13.03" x3="-14.0061" x4="-18.3961" y3="21.48" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <polygon y18="-103.4" y9="-78.5523" x10="49.991" x20="29.1847" y26="-98.1397" x27="-53.9309" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" x8="31.3471" x1="-31.2674" x7="30.9718" x15="45.827" x4="-27.1257" y31="-78.587" x11="53.867" y2="-75.9177" y6="-73.4645" x25="-45.0206" y20="-105.619" y1="-78.587" y21="-105.619" y28="-89.316" x16="43.109" y11="-83.5567" y17="-99.6228" x2="-30.8902" x17="33.4378" y12="-88.5821" x3="-29.6466" x14="50.862" x12="55.3" x13="54.365" y24="-99.6628" x22="-30.5472" antialias="false" x24="-32.9247" x28="-55" x30="-50.5412" y16="-99.6228" x18="33.406" x29="-54.1511" y5="-72.7316" x23="-32.8079" y15="-99.5609" x26="-50.1708" x21="-27.8473" y3="-73.607" y30="-80.2919" x5="27.1894" x9="44.801" y13="-93.7355" x31="-45.4584" y10="-79.9106" y4="-72.7316" y8="-78.5523" y7="-75.7818" x19="31.8797" y25="-99.651" y29="-84.1923" y14="-97.725" y19="-105.393" y27="-94.3811" x6="29.7428" y22="-105.317" y23="-103.832"/>
+        <polygon x2="-9.9761" y2="33.12" y4="38.92" antialias="false" x1="-22.4361" y1="33.12" x3="-9.9761" x4="-22.4361" y3="38.92" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <polygon x2="-9.9761" y2="45.86" y4="58.7" antialias="false" x1="-22.4361" y1="45.86" x3="-9.9761" x4="-22.4361" y3="58.7" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <polygon y18="-75.045" y9="-103.069" x10="25.8931" style="line-style:normal;line-weight:thin;filling:gray;color:black" x8="-22.9566" x1="-21.8477" x7="-25.6331" x15="25.7964" x4="-29.9234" x11="28.3566" y2="-76.3636" y6="-101.474" y1="-75.2755" x16="24.0267" y11="-101.605" y17="-75.045" x2="-24.2939" x17="21.6729" y12="-99.45" x3="-25.8694" x14="26.8374" x12="29.8667" x13="30.0562" antialias="false" y16="-76.7296" x18="-19.0199" y5="-99.279" y15="-78.7339" y3="-78.505" x5="-29.5143" x9="23.2071" y13="-96.8175" y10="-102.683" y4="-96.6585" y8="-103.069" y7="-102.648" y14="-81.1776" x6="-28.0499"/>
+        <polygon x2="10.1339" y2="9.52" y4="59.47" antialias="false" x1="-7.4261" y1="9.52" x3="10.1339" x4="-7.4261" y3="59.47" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <circle antialias="false" x="39.144" y="-93.1891" style="line-style:normal;line-weight:thin;filling:gray;color:black" diameter="8.5"/>
+        <polygon x2="10.1339" y2="26.45" y4="33.13" antialias="false" x1="-7.4261" y1="26.45" x3="10.1339" x4="-7.4261" y3="33.13" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <polygon x2="51.099" y2="-93.4641" y4="-80.0941" y5="-84.5541" antialias="false" x1="43.379" x5="35.669" y1="-97.9141" x3="51.099" x4="43.379" x6="35.669" y3="-84.5541" y6="-93.4641" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <polygon x2="3.5439" y2="13.03" y4="21.48" antialias="false" x1="-0.8461" y1="13.03" x3="3.5439" x4="-0.8461" y3="21.48" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <circle antialias="false" x="-47.826" y="-93.1891" style="line-style:normal;line-weight:thin;filling:gray;color:black" diameter="8.5"/>
+        <polygon x2="7.5839" y2="33.12" y4="38.92" antialias="false" x1="-4.8761" y1="33.12" x3="7.5839" x4="-4.8761" y3="38.92" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <polygon x2="-35.871" y2="-93.4641" y4="-80.0941" y5="-84.5541" antialias="false" x1="-43.591" x5="-51.301" y1="-97.9141" x3="-35.871" x4="-43.591" x6="-51.301" y3="-84.5541" y6="-93.4641" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <circle antialias="false" x="-1.45" y="-97.0851" style="line-style:normal;line-weight:thin;filling:orange;color:black" diameter="4.5"/>
+        <polygon x2="7.5839" y2="45.86" y4="58.7" antialias="false" x1="-4.8761" y1="45.86" x3="7.5839" x4="-4.8761" y3="58.7" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <polygon x2="-42.4961" y2="9.52" y4="59.47" antialias="false" x1="-46.0161" y1="9.52" x3="-42.4961" x4="-46.0161" y3="59.47" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <dynamic_text Valignment="AlignVCenter" Halignment="AlignHCenter" rotation="0" x="-3.8" text_width="-1" z="80" font="Sans Serif,9,-1,5,25,0,0,0,0,0" y="-15" uuid="{22c9afcd-49bb-4f78-92fb-4b343aa14bf7}" text_from="ElementInfo" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <circle antialias="false" x="8.65" y="-97.0851" style="line-style:normal;line-weight:thin;filling:orange;color:black" diameter="4.5"/>
+        <circle antialias="false" x="-21.65" y="-97.0851" style="line-style:normal;line-weight:thin;filling:orange;color:black" diameter="4.5"/>
+        <polygon x2="-46.0161" y2="10.3" y4="13.47" antialias="false" x1="-47.5151" y1="10.3" x3="-46.0161" x4="-47.5151" y3="13.47" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <circle antialias="false" x="-11.55" y="-97.0851" style="line-style:normal;line-weight:thin;filling:orange;color:black" diameter="4.5"/>
+        <polygon x2="-46.0161" y2="15.24" y4="18.4" antialias="false" x1="-47.5151" y1="15.24" x3="-46.0161" x4="-47.5151" y3="18.4" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <circle antialias="false" x="18.75" y="-97.0851" style="line-style:normal;line-weight:thin;filling:orange;color:black" diameter="4.5"/>
+        <polygon x2="-46.0161" y2="36.93" y4="40.09" antialias="false" x1="-47.5151" y1="36.93" x3="-46.0161" x4="-47.5151" y3="40.09" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <circle antialias="false" x="3.75" y="-86.0851" style="line-style:normal;line-weight:thin;filling:orange;color:black" diameter="4.5"/>
+        <polygon x2="-46.0161" y2="54.2" y4="57.36" antialias="false" x1="-47.5151" y1="54.2" x3="-46.0161" x4="-47.5151" y3="57.36" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <circle antialias="false" x="13.85" y="-86.0851" style="line-style:normal;line-weight:thin;filling:orange;color:black" diameter="4.5"/>
+        <polygon x2="-42.4961" y2="26.45" y4="33.13" antialias="false" x1="-46.0161" y1="26.45" x3="-42.4961" x4="-46.0161" y3="33.13" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <circle antialias="false" x="-16.45" y="-86.0851" style="line-style:normal;line-weight:thin;filling:orange;color:black" diameter="4.5"/>
+        <circle antialias="false" x="-6.35" y="-86.0851" style="line-style:normal;line-weight:thin;filling:orange;color:black" diameter="4.5"/>
+    </description>
+</definition>

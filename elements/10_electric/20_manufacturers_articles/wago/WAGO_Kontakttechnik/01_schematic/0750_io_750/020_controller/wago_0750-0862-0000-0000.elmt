@@ -1,0 +1,52 @@
+<definition orientation="dyyy" height="100" hotspot_x="366" hotspot_y="46" type="element" width="730" version="0.5" link_type="simple">
+    <names>
+        <name lang="pt">750-862</name>
+        <name lang="de">750-862</name>
+        <name lang="nl">750-862</name>
+        <name lang="es">750-862</name>
+        <name lang="pl">750-862</name>
+        <name lang="it">750-862</name>
+        <name lang="ar">750-862</name>
+        <name lang="cs">750-862</name>
+        <name lang="el">750-862</name>
+        <name lang="fr">750-862</name>
+        <name lang="en">750-862</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text text="0V" x="-39" size="9" y="-22"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="-362.5" diameter="5" y="17.5"/>
+        <input text="X123" rotate="true" x="220" tagg="label" size="9" y="41"/>
+        <text text="Eth2" x="-355" size="9" y="24"/>
+        <text text="0V" x="-119" size="9" y="-22"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="-362.5" diameter="5" y="-2.5"/>
+        <line x1="-360" y1="-40" length2="1.5" y2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-283" antialias="false" end1="none" length1="1.5" end2="none"/>
+        <line x1="-37" y1="-40" length2="1.5" y2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="360" antialias="false" end1="none" length1="1.5" end2="none"/>
+        <line x1="-117" y1="-40" length2="1.5" y2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-43" antialias="false" end1="none" length1="1.5" end2="none"/>
+        <line x1="-197" y1="-40" length2="1.5" y2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-123" antialias="false" end1="none" length1="1.5" end2="none"/>
+        <line x1="-277" y1="-40" length2="1.5" y2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-203" antialias="false" end1="none" length1="1.5" end2="none"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="-42.5" diameter="5" y="-42.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="-122.5" diameter="5" y="-42.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="-202.5" diameter="5" y="-42.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="-282.5" diameter="5" y="-42.5"/>
+        <line x1="-360" y1="50" length2="1.5" y2="50" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="360" antialias="false" end1="none" length1="1.5" end2="none"/>
+        <line x1="-360" y1="-40" length2="1.5" y2="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-360" antialias="false" end1="none" length1="1.5" end2="none"/>
+        <line x1="-360" y1="22.5" length2="1.5" y2="50" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-360" antialias="false" end1="none" length1="1.5" end2="none"/>
+        <line x1="360" y1="-40" length2="1.5" y2="50" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="360" antialias="false" end1="none" length1="1.5" end2="none"/>
+        <text text="WAGO 750-862" x="-330" size="9" y="45"/>
+        <text text="IP Adr.:" x="-317" size="9" y="4"/>
+        <input text="192.168.1.1" rotate="true" x="-270" tagg="none" size="9" y="0"/>
+        <text text="24V" x="-199" size="9" y="-22"/>
+        <text text="24V" x="-279" size="9" y="-22"/>
+        <text text="Eth1" x="-355" size="9" y="4"/>
+        <text text="Ethernet ECO Controller" x="-138" size="9" y="45"/>
+        <line x1="-360" y1="2.5" length2="1.5" y2="17.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-360" antialias="false" end1="none" length1="1.5" end2="none"/>
+        <terminal orientation="w" x="-360" y="0"/>
+        <terminal orientation="n" x="-200" y="-40"/>
+        <terminal orientation="n" x="-120" y="-40"/>
+        <terminal orientation="n" x="-40" y="-40"/>
+        <terminal orientation="w" x="-360" y="20"/>
+        <terminal orientation="n" x="-280" y="-40"/>
+    </description>
+</definition>

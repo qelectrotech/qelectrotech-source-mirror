@@ -1,8 +1,8 @@
 <definition width="730" hotspot_x="365" type="element" hotspot_y="55" link_type="simple" height="110" orientation="dyyy" version="0.51">
     <names>
-        <name lang="de">WAGO 750-0495/0000-0001 (II)</name>
-        <name lang="en">WAGO 750-0495/0000-0001 (II)</name>
-        <name lang="fr">WAGO 750-0495/0000-0001 (II)</name>
+        <name lang="de">750-495/0000-0001 (II)</name>
+        <name lang="en">750-495/0000-0001 (II)</name>
+        <name lang="fr">750-495/0000-0001 (II)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
@@ -41,7 +41,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <text text="I1+" size="9" y="-24" x="-279"/>
         <text text="IN-" size="9" y="-24" x="281"/>
         <text text="8" size="5" y="-42" x="286"/>
-        <text text="WAGO 750-0495/0000-0001 (II)" size="9" y="45" x="-330"/>
+        <text text="WAGO 750-495/0000-0001 (II)" size="9" y="45" x="-330"/>
         <text text="6" size="5" y="-42" x="-36"/>
         <text text="I2-" size="9" y="-24" x="-39"/>
         <text text="I3+" size="9" y="-24" x="42"/>

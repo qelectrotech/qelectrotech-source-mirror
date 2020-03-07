@@ -1,8 +1,8 @@
 <definition width="730" version="0.70" link_type="simple" height="110" hotspot_y="45" orientation="dyyy" hotspot_x="354" type="element">
     <names>
-        <name lang="fr">WAGO 750-0657/0000-0000</name>
-        <name lang="en">WAGO 750-0657/0000-0000</name>
-        <name lang="de">WAGO 750-0657/0000-0000</name>
+        <name lang="fr">750-657</name>
+        <name lang="en">750-657</name>
+        <name lang="de">750-657</name>
     </names>
     <elementInformations/>
     <informations>Author: The QElectroTech team
@@ -116,7 +116,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <text y="46" text="L2-" size="9" x="-17"/>
         <text y="58" text="8" size="5" x="-17"/>
         <text y="58" text="4" size="5" x="-177"/>
-        <text y="-27" text="WAGO 750-657/0000-0000" size="9" x="-331"/>
+        <text y="-27" text="WAGO 750-657" size="9" x="-331"/>
         <text y="46" text="24V" size="9" x="-177"/>
         <text y="46" text="0V" size="9" x="-136"/>
         <text y="58" text="5" size="5" x="-137"/>

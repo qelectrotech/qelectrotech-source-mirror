@@ -1,16 +1,16 @@
 <definition hotspot_y="55" height="110" type="element" link_type="simple" orientation="dyyy" hotspot_x="364" version="0.5" width="730">
     <names>
-        <name lang="en">WAGO 750-0882/0000-0000</name>
-        <name lang="de">WAGO 750-0882/0000-0000</name>
-        <name lang="nl">WAGO 750-0882/0000-0000</name>
-        <name lang="it">WAGO 750-0882/0000-0000</name>
-        <name lang="el">WAGO 750-0882/0000-0000</name>
-        <name lang="cs">WAGO 750-0882/0000-0000</name>
-        <name lang="pt">WAGO 750-0882/0000-0000</name>
-        <name lang="fr">WAGO 750-0882/0000-0000</name>
-        <name lang="pl">WAGO 750-0882/0000-0000</name>
-        <name lang="es">WAGO 750-0882/0000-0000</name>
-        <name lang="ar">WAGO 750-0882/0000-0000</name>
+        <name lang="en">750-882</name>
+        <name lang="de">750-882</name>
+        <name lang="nl">750-882</name>
+        <name lang="it">750-882</name>
+        <name lang="el">750-882</name>
+        <name lang="cs">750-882</name>
+        <name lang="pt">750-882</name>
+        <name lang="fr">750-882</name>
+        <name lang="pl">750-882</name>
+        <name lang="es">750-882</name>
+        <name lang="ar">750-882</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
@@ -56,7 +56,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line x1="360" x2="360" y2="7" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" end1="none" y1="-7" end2="none" length2="1.5"/>
         <line x1="360" x2="360" y2="50" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" antialias="false" end1="none" y1="32.5" end2="none" length2="1.5"/>
         <line x1="-120" x2="358" y2="-10" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" antialias="false" end1="none" y1="-10" end2="none" length2="1.5"/>
-        <text text="WAGO 750-0882/0000-0000" y="45" x="-330" size="9"/>
+        <text text="WAGO 750-882" y="45" x="-330" size="9"/>
         <text text="IP Adr. 2:" y="24" x="-312" size="9"/>
         <input text="192.168.1.1" y="20" tagg="none" rotate="true" x="-257" size="9"/>
         <text text="PE" y="-22" x="281" size="9"/>

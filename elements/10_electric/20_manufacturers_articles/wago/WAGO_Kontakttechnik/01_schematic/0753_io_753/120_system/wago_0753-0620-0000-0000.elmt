@@ -1,16 +1,16 @@
 <definition width="730" orientation="dyyy" link_type="simple" type="element" height="110" version="0.5" hotspot_x="364" hotspot_y="44">
     <names>
-        <name lang="pt">WAGO 753-0620/0000-0000</name>
-        <name lang="de">WAGO 753-0620/0000-0000</name>
-        <name lang="ar">WAGO 753-0620/0000-0000</name>
-        <name lang="es">WAGO 753-0620/0000-0000</name>
-        <name lang="fr">WAGO 753-0620/0000-0000</name>
-        <name lang="el">WAGO 753-0620/0000-0000</name>
-        <name lang="en">WAGO 753-0620/0000-0000</name>
-        <name lang="pl">WAGO 753-0620/0000-0000</name>
-        <name lang="nl">WAGO 753-0620/0000-0000</name>
-        <name lang="it">WAGO 753-0620/0000-0000</name>
-        <name lang="cs">WAGO 753-0620/0000-0000</name>
+        <name lang="pt">753-620</name>
+        <name lang="de">753-620</name>
+        <name lang="ar">753-620</name>
+        <name lang="es">753-620</name>
+        <name lang="fr">753-620</name>
+        <name lang="el">753-620</name>
+        <name lang="en">753-620</name>
+        <name lang="pl">753-620</name>
+        <name lang="nl">753-620</name>
+        <name lang="it">753-620</name>
+        <name lang="cs">753-620</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
@@ -63,7 +63,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line x1="360" length1="1.5" end2="none" x2="360" antialias="false" y1="-40" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-13"/>
         <line x1="360" length1="1.5" end2="none" x2="360" antialias="false" y1="-7" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="7"/>
         <line x1="-360" length1="1.5" end2="none" x2="360" antialias="false" y1="-10" length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-10"/>
-        <text x="-331" text="WAGO 753-0620/0000-0000" y="-27" size="9"/>
+        <text x="-331" text="WAGO 753-620" y="-27" size="9"/>
         <input x="219" text="X123" rotate="true" y="-31" tagg="label" size="9"/>
         <text x="-278" text="1" y="58" size="5"/>
         <text x="-197" text="5" y="58" size="5"/>
