@@ -49,6 +49,7 @@
 #include "dialogwaiting.h"
 #include "addelementtextcommand.h"
 #include "conductornumexport.h"
+#include "qetgraphicstableitem.h"
 
 #include <QMessageBox>
 #include <QStandardPaths>
@@ -400,6 +401,14 @@ void QETDiagramEditor::setUpActions()
         bom.exec();
 	});
 	
+		//Add a nomenclature item
+	m_add_nomenclature = new QAction(QET::Icons::TableOfContent, tr("Ajouter un tableau lambda (Fonctionnalité en cours de devellopement)"),this);
+	connect(m_add_nomenclature, &QAction::triggered, [this]() {
+		if(this->currentDiagramView()) {
+			this->currentDiagramView()->diagram()->addItem(new QetGraphicsTableItem());
+		}
+	});
+
 		//Lauch the plugin of terminal generator
 	m_project_terminalBloc = new QAction(QET::Icons::TerminalStrip, tr("Lancer le plugin de création de borniers"), this);
 	connect(m_project_terminalBloc, &QAction::triggered, this, &QETDiagramEditor::generateTerminalBlock);
@@ -755,6 +764,7 @@ void QETDiagramEditor::setUpMenu() {
 	menu_project -> addAction(m_clean_project);
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_project_folio_list);
+	menu_project -> addAction(m_add_nomenclature);
 	menu_project -> addAction(m_csv_export);
     menu_project -> addAction(m_project_export_conductor_num);
 	menu_project -> addAction(m_project_terminalBloc);
@@ -1438,7 +1448,8 @@ void QETDiagramEditor::slot_updateActions()
 	m_project_add_diagram  -> setEnabled(editable_project);
 	m_remove_diagram_from_project  -> setEnabled(editable_project);
 	m_clean_project        -> setEnabled(editable_project);
-	m_project_folio_list  -> setEnabled(opened_project);
+	m_project_folio_list  -> setEnabled(editable_project);
+	m_add_nomenclature->setEnabled(editable_project);
 	m_csv_export -> setEnabled(editable_project);
 	m_export_diagram   -> setEnabled(opened_diagram);
 	m_print            -> setEnabled(opened_diagram);
