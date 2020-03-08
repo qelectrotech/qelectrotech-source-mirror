@@ -80,6 +80,7 @@ INCLUDEPATH += sources \
                sources/ui \
                sources/qetgraphicsitem \
                sources/qetgraphicsitem/ViewItem \
+               sources/qetgraphicsitem/ViewItem/ui \
                sources/richtext \
                sources/factory \
                sources/properties \
@@ -110,6 +111,7 @@ HEADERS += $$files(sources/*.h) $$files(sources/ui/*.h) \
            $$files(sources/richtext/*.h) \
            $$files(sources/qetgraphicsitem/*.h) \
            $$files(sources/qetgraphicsitem/ViewItem/*.h) \
+           $$files(sources/qetgraphicsitem/ViewItem/ui/*.h) \
            $$files(sources/factory/*.h) \
            $$files(sources/properties/*.h) \
            $$files(sources/editor/ui/*.h) \
@@ -137,6 +139,7 @@ SOURCES += $$files(sources/*.cpp) \
            $$files(sources/ui/*.cpp) \
            $$files(sources/qetgraphicsitem/*.cpp) \
            $$files(sources/qetgraphicsitem/ViewItem/*.cpp) \
+           $$files(sources/qetgraphicsitem/ViewItem/ui/*.cpp) \
            $$files(sources/factory/*.cpp) \
            $$files(sources/properties/*.cpp) \
            $$files(sources/editor/ui/*.cpp) \
@@ -177,7 +180,8 @@ FORMS += $$files(sources/richtext/*.ui) \
          $$files(sources/autoNum/ui/*.ui) \
          $$files(sources/ui/configpage/*.ui) \
          $$files(sources/SearchAndReplace/ui/*.ui) \
-         $$files(sources/NameList/ui/*.ui)
+         $$files(sources/NameList/ui/*.ui) \
+         $$files(sources/qetgraphicsitem/ViewItem/ui/*.ui)
 
 UI_SOURCES_DIR = sources/ui/
 UI_HEADERS_DIR = sources/ui/

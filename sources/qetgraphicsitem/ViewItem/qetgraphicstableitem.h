@@ -1,5 +1,5 @@
 ﻿/*
-        Copyright 2006-2019 QElectroTech Team
+		Copyright 2006-2020 QElectroTech Team
         This file is part of QElectroTech.
 
         QElectroTech is free software: you can redistribute it and/or modify
@@ -27,8 +27,22 @@
 class QAbstractItemModel;
 class QetGraphicsHeaderItem;
 
+/**
+ * @brief The QetGraphicsTableItem class
+ * This item display a table destined to represent the content of a QAbstractItemModel
+ * The table have a few parameters to edit her visual aspect.
+ * Margins, to edit the margin between the cell and the text.
+ * Text font.
+ * Text alignment in the cell
+ * These two last parameters are not settable directly with the table but trough the model to be displayed by the table.
+ */
 class QetGraphicsTableItem : public QetGraphicsItem
 {
+	Q_OBJECT
+
+	Q_PROPERTY(QMargins margins READ margins WRITE setMargins)
+	Q_PROPERTY(QSize size READ size WRITE setSize)
+
     public:
         QetGraphicsTableItem(QGraphicsItem *parent= nullptr);
 		virtual ~QetGraphicsTableItem() override;
@@ -38,10 +52,15 @@ class QetGraphicsTableItem : public QetGraphicsItem
 
         void setModel(QAbstractItemModel *model);
 		QAbstractItemModel *model() const;
-		void reset();
 
 		virtual QRectF boundingRect() const override;
 		virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
+		QMargins margins() const {return m_margin;}
+		void setMargins(const QMargins &margins);
+		QetGraphicsHeaderItem *headerItem() const {return m_header_item;}
+		void setSize(const QSize &size);
+		QSize size() const;
+		QSize minimumSize() const;
 
 	protected:
 		virtual void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
@@ -58,20 +77,21 @@ class QetGraphicsTableItem : public QetGraphicsItem
 		void handlerMouseMoveEvent    (QGraphicsSceneMouseEvent *event);
 		void handlerMouseReleaseEvent (QGraphicsSceneMouseEvent *event);
 		void adjustColumnsWidth();
+		void dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QVector<int> &roles);
+		void headerSectionResized();
+		void adjustSize();
 
     private:
         QAbstractItemModel *m_model= nullptr;
-		QFont m_font = QETApp::diagramTextsFont();
 
-		QVector<int> m_minimum_column_width;
-
-		int m_row_height;
 		QMargins m_margin;
-		QRect m_minimum_rect,
-			  m_current_rect;
+		QVector<int> m_minimum_column_width;
+		int m_minimum_row_height;
+		QSize m_current_size,
+			  m_old_size;
 
-		QRectF m_bounding_rect;
 		int m_br_margin= 10;
+		QRectF m_bounding_rect;
 
 		QetGraphicsHandlerItem m_handler_item;
 		QetGraphicsHeaderItem *m_header_item = nullptr;

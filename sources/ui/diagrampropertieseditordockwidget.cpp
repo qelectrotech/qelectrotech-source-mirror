@@ -27,6 +27,8 @@
 #include "elementtextitemgroup.h"
 #include "independenttextitem.h"
 #include "inditextpropertieswidget.h"
+#include "qetgraphicstableitem.h"
+#include "graphicstablepropertieseditor.h"
 
 /**
  * @brief DiagramPropertiesEditorDockWidget::DiagramPropertiesEditorDockWidget
@@ -228,6 +230,20 @@ void DiagramPropertiesEditorDockWidget::selectionChanged()
 				m_edited_qgi_type = Element::Type;
 				addEditor(new ElementPropertiesWidget(group, this));
 			}
+			break;
+		}
+		case QetGraphicsTableItem::Type:
+		{
+			if (count_ > 1)
+			{
+				clear();
+				m_edited_qgi_type = -1;
+				return;
+			}
+
+			clear();
+			m_edited_qgi_type = type_;
+			addEditor(new GraphicsTablePropertiesEditor(static_cast<QetGraphicsTableItem*>(item), this));
 			break;
 		}
 		default:

@@ -402,7 +402,7 @@ void QETDiagramEditor::setUpActions()
 	});
 	
 		//Add a nomenclature item
-	m_add_nomenclature = new QAction(QET::Icons::TableOfContent, tr("Ajouter une nomenclature"),this);
+	m_add_nomenclature = new QAction(QET::Icons::TableOfContent, tr("Ajouter un tableau lambda (Fonctionnalité en cours de devellopement)"),this);
 	connect(m_add_nomenclature, &QAction::triggered, [this]() {
 		if(this->currentDiagramView()) {
 			this->currentDiagramView()->diagram()->addItem(new QetGraphicsTableItem());

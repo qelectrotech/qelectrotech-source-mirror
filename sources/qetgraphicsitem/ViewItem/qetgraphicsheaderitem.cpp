@@ -1,4 +1,4 @@
-/*
+﻿/*
         Copyright 2006-2019 QElectroTech Team
         This file is part of QElectroTech.
 
@@ -40,8 +40,16 @@ QetGraphicsHeaderItem::QetGraphicsHeaderItem(QGraphicsItem *parent) :
  */
 void QetGraphicsHeaderItem::setModel(QAbstractItemModel *model)
 {
+	if (m_model) {
+		disconnect(m_model, &QAbstractItemModel::headerDataChanged, this, &QetGraphicsHeaderItem::headerDataChanged);
+	}
+
     m_model = model;
-	reset();
+	connect(m_model, &QAbstractItemModel::headerDataChanged, this, &QetGraphicsHeaderItem::headerDataChanged);
+	setUpMinimumSectionsSize();
+	m_current_sections_width.clear();
+	m_current_sections_width.resize(m_sections_minimum_width.size());
+	adjustSize();
 }
 
 /**
@@ -50,14 +58,6 @@ void QetGraphicsHeaderItem::setModel(QAbstractItemModel *model)
  */
 QAbstractItemModel *QetGraphicsHeaderItem::model() const {
 	return m_model;
-}
-
-/**
- * @brief QetGraphicsHeaderItem::reset
- * Reset the internal state of the item
- */
-void QetGraphicsHeaderItem::reset() {
-	setUpMinimumSectionsSize();
 }
 
 /**
@@ -93,7 +93,7 @@ void QetGraphicsHeaderItem::paint(QPainter *painter, const QStyleOptionGraphicsI
 	painter->setBrush(brush);
 
 	painter->setPen(pen);
-	painter->setFont(m_font);
+	painter->setFont(m_model->headerData(0, Qt::Horizontal, Qt::FontRole).value<QFont>());
 	painter->drawRect(m_current_rect);
 
 	if (!m_model)
@@ -116,9 +116,12 @@ void QetGraphicsHeaderItem::paint(QPainter *painter, const QStyleOptionGraphicsI
 	QPointF top_left(m_margin.left(), m_margin.top());
 	for (auto i= 0 ; i<m_model->columnCount() ; ++i)
 	{
-		QSize size(m_current_sections_width.at(i), m_section_height - m_margin.top() - m_margin.bottom());
-		painter->drawText(QRectF(top_left, size), Qt::AlignCenter, m_model->headerData(i, Qt::Horizontal).toString());
-		top_left.setX(top_left.x() + size.width());
+		QSize size(m_current_sections_width.at(i) - m_margin.left() - m_margin.right(), m_section_height - m_margin.top() - m_margin.bottom());
+		painter->drawText(QRectF(top_left, size),
+						  m_model->headerData(0, Qt::Horizontal, Qt::TextAlignmentRole).toInt(),
+						  m_model->headerData(i, Qt::Horizontal).toString());
+
+		top_left.setX(top_left.x() + m_current_sections_width.at(i));
 	}
 
 	painter->restore();
@@ -132,14 +135,28 @@ QRect QetGraphicsHeaderItem::rect() const {
 	return m_current_rect;
 }
 
+/**
+ * @brief QetGraphicsHeaderItem::resizeSection
+ * @param logicalIndex
+ * @param size
+ */
 void QetGraphicsHeaderItem::resizeSection(int logicalIndex, int size)
-{
-	if (m_model && logicalIndex<m_model->columnCount())
+{	
+	if (logicalIndex >= m_current_sections_width.size() ||
+		m_current_sections_width.at(logicalIndex) == size) {
+		return;
+	}
+
+	if (m_model &&
+		logicalIndex<m_model->columnCount() &&
+		size >= m_sections_minimum_width.at(logicalIndex))
 	{
 		prepareGeometryChange();
 		m_current_sections_width.replace(logicalIndex, size);
 		m_current_rect.setWidth(std::accumulate(m_current_sections_width.begin(), m_current_sections_width.end(), 0));
 		setUpBoundingRect();
+		update();
+		emit sectionResized(logicalIndex, size);
 	}
 }
 
@@ -158,8 +175,19 @@ int QetGraphicsHeaderItem::sectionSize(int logical_index) const
 }
 
 /**
+ * @brief QetGraphicsHeaderItem::setMargins
+ * @param margins
+ */
+void QetGraphicsHeaderItem::setMargins(const QMargins &margins)
+{
+	m_margin = margins;
+	headerDataChanged(Qt::Horizontal, 0,1);
+}
+
+/**
  * @brief QetGraphicsHeaderItem::setUpMinimumSectionsSize
- * Setup the minimum section size of the item
+ * Setup the minimum section size and height of the item.
+ * Not that this function doesn't change the current size of this item.
  */
 void QetGraphicsHeaderItem::setUpMinimumSectionsSize()
 {
@@ -167,9 +195,9 @@ void QetGraphicsHeaderItem::setUpMinimumSectionsSize()
 		return;
 	}
 
-	QFontMetrics metrics(m_font);
+	QFontMetrics metrics(m_model->headerData(0, Qt::Horizontal, Qt::FontRole).value<QFont>());
 		//Set the height of row;
-	m_section_height = metrics.boundingRect("HEIGHT TEST").height() + m_margin.top() + m_margin.bottom();
+	m_minimum_section_height = metrics.boundingRect("HEIGHT TEST").height() + m_margin.top() + m_margin.bottom();
 
 	m_sections_minimum_width.clear();
 	m_sections_minimum_width.resize(m_model->columnCount());
@@ -180,12 +208,7 @@ void QetGraphicsHeaderItem::setUpMinimumSectionsSize()
 		m_sections_minimum_width.replace(i, metrics.boundingRect(str).width() + m_margin.left() + m_margin.right());
 	}
 
-	m_current_sections_width = m_sections_minimum_width;
-
-	m_minimum_rect.setRect(0,0, std::accumulate(m_sections_minimum_width.begin(), m_sections_minimum_width.end(), 0), m_section_height);
-	m_current_rect = m_minimum_rect;
-
-	setUpBoundingRect();
+	m_minimum_width = std::accumulate(m_sections_minimum_width.begin(), m_sections_minimum_width.end(), 0);
 }
 
 /**
@@ -194,4 +217,50 @@ void QetGraphicsHeaderItem::setUpMinimumSectionsSize()
  */
 void QetGraphicsHeaderItem::setUpBoundingRect() {
 	m_bounding_rect = m_current_rect.adjusted(-10, -10, 10, 10);
+}
+
+/**
+ * @brief QetGraphicsHeaderItem::headerDataChanged
+ * Update the header when data of displayed model change
+ * @param orientation
+ * @param first
+ * @param last
+ */
+void QetGraphicsHeaderItem::headerDataChanged(Qt::Orientations orientation, int first, int last)
+{
+	Q_UNUSED(orientation)
+	Q_UNUSED(first)
+	Q_UNUSED(last)
+
+	setUpMinimumSectionsSize();
+	adjustSize();
+}
+
+/**
+ * @brief QetGraphicsHeaderItem::adjustSize
+ * If needed, this function resize the current height and section
+ * according to there minimum
+ */
+void QetGraphicsHeaderItem::adjustSize()
+{
+	if (m_section_height != m_minimum_section_height)
+	{
+		m_section_height = m_minimum_section_height;
+		m_current_rect.setHeight(m_section_height);
+		emit heightResized();
+	}
+
+	if(m_current_sections_width.size() == m_sections_minimum_width.size())
+	{
+		auto old_sections_width = m_current_sections_width;
+
+		for (int i=0 ; i<m_current_sections_width.size() ; ++i)
+		{
+			if (old_sections_width.at(i) < m_sections_minimum_width.at(i)) {
+				resizeSection(i, m_sections_minimum_width.at(i));
+			}
+		}
+	}
+
+	update();
 }
