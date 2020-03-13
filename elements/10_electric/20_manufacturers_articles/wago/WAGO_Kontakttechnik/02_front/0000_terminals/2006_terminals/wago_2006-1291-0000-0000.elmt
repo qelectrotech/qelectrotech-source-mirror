@@ -1,17 +1,18 @@
-<definition type="element" height="210" link_type="simple" orientation="dyyy" width="10" hotspot_y="75" version="0.80" hotspot_x="4">
+<definition height="210" width="10" link_type="simple" hotspot_x="4" version="0.80" orientation="dyyy" type="element" hotspot_y="75">
+    <uuid uuid="{fe81daae-560e-4dc4-9b4d-45e8390666c0}"/>
     <names>
-        <name lang="fr">2006-1291 term.-plate gray</name>
         <name lang="de">2006-1291 Abschluss grau</name>
         <name lang="en">2006-1291 term.-plate gray</name>
+        <name lang="fr">2006-1291 term.-plate grise</name>
     </names>
     <elementInformations/>
-    <informations>
-     Author: DXF converter
-     License:see http://qelectrotech.org/wiki/doc/elements_license
-     Converter version:V3.0 DB
-
+    <informations>&#xd;
+     Author: DXF converter&#xd;
+     License:see http://qelectrotech.org/wiki/doc/elements_license&#xd;
+     Converter version:V3.0 DB&#xd;
+&#xd;
 </informations>
     <description>
-        <polygon style="line-style:normal;line-weight:thin;filling:lightgray;color:lightgray" x4="2" y1="130.03" y3="-69.95" y4="130.03" x1="-1.5" antialias="false" x2="-1.5" y2="-69.95" x3="2"/>
+        <polygon x3="2" y1="130.03" x1="-1.5" style="line-style:normal;line-weight:thin;filling:lightgray;color:lightgray" y3="-69.95" y4="130.03" x4="2" y2="-69.95" x2="-1.5" antialias="false"/>
     </description>
 </definition>

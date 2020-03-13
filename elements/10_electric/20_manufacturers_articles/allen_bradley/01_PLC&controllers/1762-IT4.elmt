@@ -1,69 +1,123 @@
-<definition link_type="simple" hotspot_x="15" orientation="dyyy" hotspot_y="42" type="element" height="110" width="770" version="0.5">
-    <uuid uuid="{f3845073-93ec-4dc3-b227-1134a91f156f}"/>
+<definition hotspot_y="42" type="element" height="110" link_type="simple" width="770" orientation="dyyy" version="0.80" hotspot_x="15">
+    <uuid uuid="{a13aa6bf-3a35-4b2f-bbfa-9afe04898bfc}"/>
     <names>
         <name lang="pl">1762-IT4</name>
-        <name lang="nl">1762-IT4</name>
-        <name lang="el">1762-IT4</name>
         <name lang="fr">1762-IT4</name>
-        <name lang="en">1762-IT4</name>
         <name lang="it">1762-IT4</name>
-        <name lang="cs">1762-IT4</name>
         <name lang="ar">1762-IT4</name>
+        <name lang="nl">1762-IT4</name>
         <name lang="pt">1762-IT4</name>
+        <name lang="cs">1762-IT4</name>
         <name lang="es">1762-IT4</name>
+        <name lang="en">1762-IT4</name>
+        <name lang="el">1762-IT4</name>
     </names>
-    <informations>Author: The QElectroTech team
+    <elementInformations>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="designation" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Allen Bradley</elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input size="7" text="IN4&#xa; -" rotate="true" y="28" tagg="none" x="720"/>
-        <input size="7" text="IN3&#xa; -" rotate="true" y="28" tagg="none" x="560"/>
-        <input size="7" text="IN2&#xa; +" rotate="true" y="28" tagg="none" x="320"/>
-        <input size="7" text="IN2&#xa; -" rotate="true" y="28" tagg="none" x="399"/>
-        <input size="7" text="IN1&#xa; -" rotate="true" y="28" tagg="none" x="239"/>
-        <input size="7" text="CJC&#xa;  +" rotate="true" y="27" tagg="none" x="17"/>
-        <input size="7" text="CJC&#xa;  -" rotate="true" y="27" tagg="none" x="78"/>
-        <line y1="-40" x1="-10" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="48"/>
-        <input size="7" text="IN3&#xa; +" rotate="true" y="28" tagg="none" x="480"/>
-        <input size="7" text="IN4&#xa; +" rotate="true" y="27" tagg="none" x="640"/>
-        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" height="5" y="45.5" width="5.00431" x="27.4488"/>
-        <line y1="48" x1="-9.98307" x2="26.9744" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="48"/>
-        <input size="7" text="IN1&#xa; +" rotate="true" y="28" tagg="none" x="179"/>
-        <input size="9" text="4-Channel Thermocouple/mV Input Module" rotate="true" y="-23" tagg="none" x="-6"/>
-        <input size="9" text="/" rotate="true" y="4" tagg="none" x="-55"/>
-        <line y1="-40" x1="-9.96268" x2="749.96" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-40"/>
-        <line y1="48" x1="32.3983" x2="87.5613" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="48"/>
-        <line y1="-40" x1="750" x2="750" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="48"/>
-        <line y1="48" x1="733" x2="750" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="48"/>
-        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="45.5" diameter="5" x="727.5"/>
-        <line y1="48" x1="653" x2="727" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="48"/>
-        <line y1="48" x1="573" x2="647" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="48"/>
-        <line y1="48" x1="493" x2="567" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="48"/>
-        <line y1="48" x1="413" x2="487" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="48"/>
-        <line y1="48" x1="333" x2="407" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="48"/>
-        <line y1="48" x1="253" x2="327" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="48"/>
-        <line y1="48" x1="173" x2="247" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="48"/>
-        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="45.5" diameter="5" x="647.5"/>
-        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="45.5" diameter="5" x="567.5"/>
-        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="45.5" diameter="5" x="487.5"/>
-        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="45.5" diameter="5" x="407.5"/>
-        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="45.5" diameter="5" x="327.5"/>
-        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="45.5" diameter="5" x="247.5"/>
-        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="45.5" diameter="5" x="167.5"/>
-        <line y1="48" x1="93" x2="167" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="48"/>
-        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="45.5" diameter="5" x="87.5001"/>
-        <input size="9" text="1762-IT4" rotate="true" y="-25" tagg="none" x="670"/>
-        <input size="9" text="_" rotate="true" y="-28" tagg="label" x="751"/>
-        <arc angle="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" height="37" y="29" width="61" x="30" start="0"/>
-        <input size="6" text="CJC sensor" rotate="true" y="72" tagg="none" x="31"/>
-        <terminal orientation="s" y="51" x="170"/>
-        <terminal orientation="s" y="51" x="330"/>
-        <terminal orientation="s" y="51" x="730"/>
-        <terminal orientation="s" y="51" x="570"/>
-        <terminal orientation="s" y="51" x="490"/>
-        <terminal orientation="s" y="51" x="90"/>
-        <terminal orientation="s" y="51" x="410"/>
-        <terminal orientation="s" y="51" x="650"/>
-        <terminal orientation="s" y="51" x="30"/>
-        <terminal orientation="s" y="51" x="250"/>
+        <dynamic_text z="1" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_from="UserText" x="720" text_width="-1" rotation="0" frame="false" y="13" uuid="{8ab409b3-f290-4e7f-b728-6a97fd9d245b}">
+            <text>IN4
+ -</text>
+        </dynamic_text>
+        <dynamic_text z="2" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_from="UserText" x="560" text_width="-1" rotation="0" frame="false" y="13" uuid="{7bd10bb0-5cb0-40bd-b464-0c437b1367c0}">
+            <text>IN3
+ -</text>
+        </dynamic_text>
+        <dynamic_text z="3" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_from="UserText" x="320" text_width="-1" rotation="0" frame="false" y="13" uuid="{550730a6-06f7-4ed6-a480-97aa811b45c0}">
+            <text>IN2
+ +</text>
+        </dynamic_text>
+        <dynamic_text z="4" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_from="UserText" x="399" text_width="-1" rotation="0" frame="false" y="13" uuid="{a8cb7894-1691-41e0-b46a-2d370358bfc7}">
+            <text>IN2
+ -</text>
+        </dynamic_text>
+        <dynamic_text z="5" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_from="UserText" x="239" text_width="-1" rotation="0" frame="false" y="13" uuid="{0567f7d8-e5e4-4463-81f2-f254e147dfd5}">
+            <text>IN1
+ -</text>
+        </dynamic_text>
+        <dynamic_text z="6" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_from="UserText" x="17" text_width="-1" rotation="0" frame="false" y="12" uuid="{dc6e2a71-52e2-4a5d-bf4c-f3ae79354a9f}">
+            <text>CJC
+  +</text>
+        </dynamic_text>
+        <dynamic_text z="7" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_from="UserText" x="78" text_width="-1" rotation="0" frame="false" y="12" uuid="{5d8604cf-33b4-45a5-b19d-cbb719cee563}">
+            <text>CJC
+  -</text>
+        </dynamic_text>
+        <line x2="-10" x1="-10" antialias="false" y2="48" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" y1="-40" length2="1.5"/>
+        <dynamic_text z="9" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_from="UserText" x="480" text_width="-1" rotation="0" frame="false" y="13" uuid="{fde9872e-7d50-4d62-b624-e7485ad9cc21}">
+            <text>IN3
+ +</text>
+        </dynamic_text>
+        <dynamic_text z="10" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_from="UserText" x="640" text_width="-1" rotation="0" frame="false" y="12" uuid="{23b6a656-0404-4f4b-8d4c-42ec9edcd895}">
+            <text>IN4
+ +</text>
+        </dynamic_text>
+        <ellipse antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="27.4488" width="5.00431" y="45.5"/>
+        <line x2="26.9744" x1="-9.98307" antialias="false" y2="48" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" y1="48" length2="1.5"/>
+        <dynamic_text z="13" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_from="UserText" x="179" text_width="-1" rotation="0" frame="false" y="13" uuid="{aba51e0e-56a0-4cf8-95f9-d6947c9e4d90}">
+            <text>IN1
+ +</text>
+        </dynamic_text>
+        <dynamic_text z="14" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="UserText" x="-6" text_width="-1" rotation="0" frame="false" y="-34" uuid="{142f6259-15ce-4283-91ec-5b93d79fdb34}">
+            <text>4-Channel Thermocouple/mV Input Module</text>
+        </dynamic_text>
+        <dynamic_text z="15" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="UserText" x="-55" text_width="-1" rotation="0" frame="false" y="-7" uuid="{34bc15b7-e7e9-4f21-850f-1582de98b96c}">
+            <text>/</text>
+        </dynamic_text>
+        <line x2="749.96" x1="-9.96268" antialias="false" y2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" y1="-40" length2="1.5"/>
+        <line x2="87.5613" x1="32.3983" antialias="false" y2="48" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" y1="48" length2="1.5"/>
+        <line x2="750" x1="750" antialias="false" y2="48" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" y1="-40" length2="1.5"/>
+        <line x2="750" x1="733" antialias="false" y2="48" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" y1="48" length2="1.5"/>
+        <circle antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="727.5" diameter="5" y="45.5"/>
+        <line x2="727" x1="653" antialias="false" y2="48" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" y1="48" length2="1.5"/>
+        <line x2="647" x1="573" antialias="false" y2="48" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" y1="48" length2="1.5"/>
+        <line x2="567" x1="493" antialias="false" y2="48" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" y1="48" length2="1.5"/>
+        <line x2="487" x1="413" antialias="false" y2="48" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" y1="48" length2="1.5"/>
+        <line x2="407" x1="333" antialias="false" y2="48" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" y1="48" length2="1.5"/>
+        <line x2="327" x1="253" antialias="false" y2="48" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" y1="48" length2="1.5"/>
+        <line x2="247" x1="173" antialias="false" y2="48" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" y1="48" length2="1.5"/>
+        <circle antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="647.5" diameter="5" y="45.5"/>
+        <circle antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="567.5" diameter="5" y="45.5"/>
+        <circle antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="487.5" diameter="5" y="45.5"/>
+        <circle antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="407.5" diameter="5" y="45.5"/>
+        <circle antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="327.5" diameter="5" y="45.5"/>
+        <circle antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="247.5" diameter="5" y="45.5"/>
+        <circle antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="167.5" diameter="5" y="45.5"/>
+        <line x2="167" x1="93" antialias="false" y2="48" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" y1="48" length2="1.5"/>
+        <circle antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="87.5001" diameter="5" y="45.5"/>
+        <dynamic_text z="37" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="UserText" x="670" text_width="-1" rotation="0" frame="false" y="-36" uuid="{f0bad0c0-22ec-4b34-8977-f5d7674ac039}">
+            <text>1762-IT4</text>
+        </dynamic_text>
+        <dynamic_text z="38" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="ElementInfo" x="751" text_width="-1" rotation="0" frame="false" y="-39" uuid="{07180dfa-79dd-497a-b754-a88d6b608a2f}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <arc antialias="true" height="37" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" x="30" width="61" angle="-180" y="29"/>
+        <dynamic_text z="40" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,6,-1,5,50,0,0,0,0,0" text_from="UserText" x="31" text_width="-1" rotation="0" frame="false" y="63" uuid="{de451972-6d51-498d-b53d-e7fc36e51f5a}">
+            <text>CJC sensor</text>
+        </dynamic_text>
+        <terminal x="170" orientation="s" y="51"/>
+        <terminal x="330" orientation="s" y="51"/>
+        <terminal x="730" orientation="s" y="51"/>
+        <terminal x="570" orientation="s" y="51"/>
+        <terminal x="490" orientation="s" y="51"/>
+        <terminal x="90" orientation="s" y="51"/>
+        <terminal x="410" orientation="s" y="51"/>
+        <terminal x="650" orientation="s" y="51"/>
+        <terminal x="30" orientation="s" y="51"/>
+        <terminal x="250" orientation="s" y="51"/>
     </description>
 </definition>

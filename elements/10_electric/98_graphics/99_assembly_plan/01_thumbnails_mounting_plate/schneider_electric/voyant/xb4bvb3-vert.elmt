@@ -1,35 +1,35 @@
-<definition hotspot_y="29" height="60" type="element" version="0.80" link_type="simple" width="60" orientation="dyyy" hotspot_x="29">
-    <uuid uuid="{605959c8-2824-4154-8727-7ab0fc95152d}"/>
+<definition hotspot_x="25" width="50" height="50" version="0.80" link_type="simple" type="element" hotspot_y="25" orientation="dyyy">
+    <uuid uuid="{fca630e2-04ba-43fe-8465-56b933d77c12}"/>
     <names>
-        <name lang="it">Lampada spia</name>
         <name lang="en">Light</name>
+        <name lang="it">Lampada spia</name>
         <name lang="fr">Voyant vert XB4BVB3</name>
+        <name lang="el">Λάμπα</name>
+        <name lang="ar">مُؤشّر ضوئي</name>
         <name lang="nl">Lamp</name>
         <name lang="pl">Lampka sygnalizacyjna</name>
-        <name lang="ar">مُؤشّر ضوئي</name>
         <name lang="cs">Světelný signál</name>
-        <name lang="el">Λάμπα</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer-reference"></elementInformation>
-        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
         <elementInformation show="1" name="designation">XB4BVB3</elementInformation>
-        <elementInformation show="1" name="quantity"></elementInformation>
-        <elementInformation show="1" name="description">Voyant  VERT</elementInformation>
-        <elementInformation show="1" name="unity"></elementInformation>
-        <elementInformation show="1" name="comment"></elementInformation>
-        <elementInformation show="1" name="label"></elementInformation>
-        <elementInformation show="1" name="plant"></elementInformation>
         <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="description">Voyant  VERT</elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
         <elementInformation show="1" name="manufacturer">Schneider</elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
     </elementInformations>
     <informations>Author: The QElectroTech team&#xd;&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <circle diameter="49" y="-24.5" style="line-style:normal;line-weight:normal;filling:green;color:black" antialias="true" x="-24.5"/>
-        <arc y="-14" height="28" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" x="-14" start="0" width="28" angle="-270"/>
-        <circle diameter="40" y="-20" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" x="-20"/>
-        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="33" uuid="{b7542c14-ab8b-465d-9bd5-4e6ec54ef0c5}" frame="false" Halignment="AlignLeft" text_from="ElementInfo" x="-18" z="4" text_width="-1" Valignment="AlignTop" rotation="0">
+        <circle style="line-style:normal;line-weight:normal;filling:green;color:black" diameter="44" x="-22" antialias="true" y="-22"/>
+        <arc start="0" width="28" height="28" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-14" angle="-270" antialias="true" y="-14"/>
+        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="40" x="-20" antialias="true" y="-20"/>
+        <dynamic_text Valignment="AlignTop" text_from="ElementInfo" x="-18" uuid="{b7542c14-ab8b-465d-9bd5-4e6ec54ef0c5}" y="33" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1" z="4" Halignment="AlignLeft" frame="false">
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>
