@@ -1,5 +1,5 @@
 <definition orientation="dyyy" link_type="simple" width="50" version="0.80" hotspot_y="5" type="element" height="210" hotspot_x="5">
-    <uuid uuid="{d05c265a-c842-4530-8602-539e864439cd}"/>
+    <uuid uuid="{9261203c-b965-41af-91aa-ced2f3bdddcf}"/>
     <names>
         <name lang="it">Contattore ITC 2P 25A</name>
         <name lang="fr">Contacteur ITC 2P 25A</name>
@@ -19,6 +19,7 @@
     </elementInformations>
     <informations></informations>
     <description>
+        <rect y="0" style="line-style:normal;line-weight:normal;filling:white;color:black" width="40" rx="0" height="200" x="0" antialias="false" ry="0"/>
         <text y="173" text="2" font="Sans Serif,3,-1,5,50,0,0,0,0,0" rotation="0" x="9" color="#000000"/>
         <text y="146" text="250V" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" x="19" color="#000000"/>
         <text y="38" text="A1" font="Sans Serif,3,-1,5,50,0,0,0,0,0" rotation="0" x="18" color="#000000"/>
@@ -34,7 +35,6 @@
         <line length1="1.5" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="12" length2="1.5" antialias="false" y1="35" y2="39" x1="8"/>
         <line length1="1.5" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="12" length2="1.5" antialias="false" y1="160" y2="164" x1="8"/>
         <line length1="1.5" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="10" length2="1.5" antialias="false" y1="35" y2="39" x1="10"/>
-        <rect y="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="40" rx="0" height="200" x="0" antialias="false" ry="0"/>
         <line length1="1.5" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="10" length2="1.5" antialias="false" y1="160" y2="164" x1="10"/>
         <line length1="1.5" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="12" length2="1.5" antialias="false" y1="37" y2="37" x1="8"/>
         <line length1="1.5" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="12" length2="1.5" antialias="false" y1="162" y2="162" x1="8"/>
@@ -71,7 +71,7 @@
         <arc y="143" start="270" style="line-style:normal;line-weight:thin;filling:none;color:black" width="2" height="2" x="35" antialias="true" angle="90"/>
         <arc y="143" start="180" style="line-style:normal;line-weight:thin;filling:none;color:black" width="2" height="2" x="35" antialias="true" angle="90"/>
         <text y="163" text="A2" font="Sans Serif,3,-1,5,50,0,0,0,0,0" rotation="0" x="18" color="#000000"/>
-        <dynamic_text y="-21" text_from="ElementInfo" z="53" frame="false" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" Halignment="AlignLeft" x="0" text_width="-1" uuid="{a5c80296-8758-407f-94eb-ee124a453a75}">
+        <dynamic_text y="-21" text_from="ElementInfo" z="53" frame="false" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" Halignment="AlignLeft" x="0" text_width="-1" uuid="{0434227b-f180-4b41-91e1-ee949390fdce}">
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>

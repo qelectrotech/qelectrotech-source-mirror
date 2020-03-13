@@ -1,28 +1,44 @@
-<definition width="30" hotspot_y="32" height="60" type="element" hotspot_x="15" orientation="dyyy" version="0.5" link_type="simple">
-    <uuid uuid="{712c0554-d025-49f5-ac03-2f5b147aa45b}"/>
+<definition link_type="simple" orientation="dyyy" hotspot_x="15" hotspot_y="32" height="60" width="30" type="element" version="0.80">
+    <uuid uuid="{3950f0c9-7029-47f0-9928-60f292a138fc}"/>
     <names>
-        <name lang="el">Φίλτρο Schaff</name>
-        <name lang="nl">Filter Schaffner</name>
-        <name lang="en">Filter Schaffner</name>
-        <name lang="cs">Filtr Schaff</name>
         <name lang="it">Filtro Schaff</name>
         <name lang="pl">Filtr Schaff</name>
+        <name lang="cs">Filtr Schaff</name>
+        <name lang="el">Φίλτρο Schaff</name>
+        <name lang="nl">Filter Schaffner</name>
         <name lang="fr">Filtre_schaff</name>
+        <name lang="en">Filter Schaffner</name>
     </names>
-    <informations>Author: The QElectroTech team
+    <elementInformations>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Schaffer</elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon x4="13" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="19" x3="6" y3="26" y5="19" x1="-13" x5="13" y2="26" antialias="false" y4="19" x2="-6" closed="false"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-23" width="26" height="41" x="-13" antialias="false"/>
-        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="-29" diameter="6" x="-3" antialias="true"/>
-        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-26" x1="-3" end2="none" y2="-26" length2="1.5" antialias="false" x2="2" end1="none"/>
-        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-29" x1="0" end2="none" y2="-24" length2="1.5" antialias="false" x2="0" end1="none"/>
-        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" y="-20" width="20" height="35" x="-10.5" antialias="false"/>
-        <text size="8" y="8" x="4" rotation="-90" text="Filtre"/>
-        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="19" diameter="6" x="-3" antialias="true"/>
-        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="22" x1="-3" end2="none" y2="22" length2="1.5" antialias="false" x2="2" end1="none"/>
-        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="19" x1="0" end2="none" y2="24" length2="1.5" antialias="false" x2="0" end1="none"/>
-        <polygon x4="13" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-23" x3="6" y3="-30" y5="-23" x1="-13" x5="13" y2="-30" antialias="false" y4="-23" x2="-6" closed="false"/>
-        <input size="9" y="-32" x="-25" text="_" tagg="label" rotate="true"/>
+        <polygon x2="-6" x3="6" closed="false" y2="26" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-13" antialias="false" y3="26" y4="19" x5="13" y1="19" x4="13" y5="19"/>
+        <rect x="-13" y="-23" style="line-style:normal;line-weight:normal;filling:none;color:black" height="41" width="26" ry="0" antialias="false" rx="0"/>
+        <circle x="-3" y="-29" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6" antialias="true"/>
+        <line x2="2" length1="1.5" length2="1.5" y2="-26" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-3" end1="none" antialias="false" end2="none" y1="-26"/>
+        <line x2="0" length1="1.5" length2="1.5" y2="-24" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" end1="none" antialias="false" end2="none" y1="-29"/>
+        <rect x="-10.5" y="-20" style="line-style:normal;line-weight:thin;filling:none;color:black" height="35" width="20" ry="0" antialias="false" rx="0"/>
+        <text font="Sans Serif,8,-1,5,50,0,0,0,0,0" x="4" text="Filtre" y="8" rotation="-90" color="#000000"/>
+        <circle x="-3" y="19" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6" antialias="true"/>
+        <line x2="2" length1="1.5" length2="1.5" y2="22" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-3" end1="none" antialias="false" end2="none" y1="22"/>
+        <line x2="0" length1="1.5" length2="1.5" y2="24" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" end1="none" antialias="false" end2="none" y1="19"/>
+        <polygon x2="-6" x3="6" closed="false" y2="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-13" antialias="false" y3="-30" y4="-23" x5="13" y1="-23" x4="13" y5="-23"/>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-25" Halignment="AlignLeft" y="-43" rotation="0" text_width="-1" text_from="ElementInfo" uuid="{ea07f429-46a1-453d-8d73-2b3b100c64cd}" z="12" Valignment="AlignTop" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
     </description>
 </definition>

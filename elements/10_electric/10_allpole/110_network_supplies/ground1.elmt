@@ -1,26 +1,42 @@
-<definition width="30" link_type="simple" version="0.5" hotspot_x="16" orientation="dyyy" height="50" hotspot_y="29" type="element">
-    <uuid uuid="{75d4e5ef-6080-4118-9eab-afb53220b9ef}"/>
+<definition height="50" width="30" link_type="terminal" hotspot_x="16" version="0.80" orientation="dyyy" type="element" hotspot_y="29">
+    <uuid uuid="{a98ac40d-9055-4b9b-88ab-cffe6b08ed37}"/>
     <names>
+        <name lang="ro">Masă</name>
         <name lang="pt">Massa</name>
-        <name lang="es">Masa</name>
+        <name lang="cs">Kostra</name>
+        <name lang="it">Massa</name>
         <name lang="nl">Massa</name>
         <name lang="el">Γείωση</name>
+        <name lang="ru">Шасси</name>
         <name lang="de">Masse</name>
-        <name lang="cs">Kostra</name>
-        <name lang="pl">Masa</name>
-        <name lang="ro">Masă</name>
-        <name lang="it">Massa</name>
         <name lang="en">Ground</name>
+        <name lang="pl">Masa</name>
+        <name lang="es">Masa</name>
         <name lang="ar">هيكل معدني</name>
         <name lang="fr">Masse</name>
-        <name lang="ru">Шасси</name>
     </names>
-    <informations>titus
+    <elementInformations>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1"></elementInformation>
+        <elementInformation name="designation" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+    </elementInformations>
+    <informations>titus&#xd;
 titus0818@yahoo.com</informations>
     <description>
-        <line antialias="false" length1="1.5" x2="0" end2="none" x1="0" end1="none" y2="13" length2="1.5" style="line-style:normal;line-weight:hight;filling:none;color:black" y1="-16"/>
-        <line antialias="false" length1="1.5" x2="12.62" end2="none" x1="-13.6493" end1="none" y2="14" length2="1.5" style="line-style:normal;line-weight:hight;filling:none;color:black" y1="14"/>
-        <input x="8" y="2" tagg="label" size="9" rotate="true" text="_"/>
+        <line y1="-16" x1="0" style="line-style:normal;line-weight:hight;filling:none;color:black" end2="none" y2="13" length2="1.5" length1="1.5" x2="0" end1="none" antialias="false"/>
+        <line y1="14" x1="-13.6493" style="line-style:normal;line-weight:hight;filling:none;color:black" end2="none" y2="14" length2="1.5" length1="1.5" x2="12.62" end1="none" antialias="false"/>
+        <dynamic_text uuid="{7f02ce13-533d-4501-980d-6cb67bd1110d}" Halignment="AlignLeft" frame="false" x="8" Valignment="AlignTop" text_from="ElementInfo" y="-9" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="3" rotation="0" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
         <terminal x="0" y="-20" orientation="n"/>
     </description>
 </definition>

@@ -1,0 +1,49 @@
+<definition height="60" width="30" link_type="simple" hotspot_x="15" version="0.80" orientation="dyyy" type="element" hotspot_y="29">
+    <uuid uuid="{f63c4d1a-841c-4adf-9ad0-2c71d044368e}"/>
+    <names>
+        <name lang="pt">Lâmpada</name>
+        <name lang="cs">Světlo</name>
+        <name lang="it">Luce</name>
+        <name lang="el">Λυχνία</name>
+        <name lang="nl">Lamp</name>
+        <name lang="ru">Лампа</name>
+        <name lang="de">Meldeleuchte</name>
+        <name lang="en">Light</name>
+        <name lang="pl">Lampa</name>
+        <name lang="es">Lámpara</name>
+        <name lang="ar">مصباح</name>
+        <name lang="fr">XB4BVM6_BLEU</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="description" show="1">BLEU</elementInformation>
+        <elementInformation name="manufacturer" show="1">SCHNEIDER</elementInformation>
+        <elementInformation name="designation" show="1">XB4BVM6</elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20" y="-10" antialias="true"/>
+        <line y1="-7.03" x1="7.03" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="7.03" length2="1.5" length1="1.5" x2="-7.03" end1="none" antialias="false"/>
+        <line y1="-7.03" x1="-7.03" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="7.03" length2="1.5" length1="1.5" x2="7.03" end1="none" antialias="false"/>
+        <line y1="-20" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-10" length2="1.5" length1="1.5" x2="0" end1="none" antialias="false"/>
+        <line y1="10" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="20" length2="1.5" length1="1.5" x2="0" end1="none" antialias="false"/>
+        <dynamic_text uuid="{28bf9c47-da03-4675-b20f-2a17fecf9392}" Halignment="AlignLeft" frame="false" x="15" Valignment="AlignTop" text_from="ElementInfo" y="-10" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="6" rotation="0" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text uuid="{991a6341-0181-432d-bfe4-c3640b0adad5}" Halignment="AlignLeft" frame="false" x="6" Valignment="AlignTop" text_from="ElementInfo" y="6" font="MS Shell Dlg 2,4,-1,5,50,0,0,0,0,0,Normal" z="7" rotation="0" text_width="-1">
+            <text>BLEU</text>
+            <info_name>description</info_name>
+        </dynamic_text>
+        <terminal x="0" y="21" orientation="s"/>
+        <terminal x="0" y="-21" orientation="n"/>
+    </description>
+</definition>
