@@ -6,70 +6,70 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="20"/>
         <source>À propos de QElectrotech</source>
-        <translation type="unfinished">A QElectroTech-ről</translation>
+        <translation>A QElectroTech-ről</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="30"/>
         <source>À propos</source>
-        <translation type="unfinished"></translation>
+        <translation>Rólunk</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="53"/>
         <source>Auteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Szerzők</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="133"/>
         <source>Traducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Fordítók</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="216"/>
         <source>Contributeurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Közreműködők</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="296"/>
         <source>Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Verzió</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="345"/>
         <source>Bibliothèques</source>
-        <translation type="unfinished"></translation>
+        <translation>Könyvtárak</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="425"/>
         <source>Accord de licence</source>
-        <translation type="unfinished"></translation>
+        <translation>Licensz szerződés</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="431"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
-        <translation type="unfinished">Ez a program GNU/GPL engedélye alatt áll.</translation>
+        <translation>Ez a program GNU/GPL engedélye alatt áll.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="43"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.</source>
         <comment>about tab, description line</comment>
-        <translation type="unfinished">QElectroTech, egy alkalmazás elektromos tervek készítéséhez.</translation>
+        <translation>QElectroTech, egy alkalmazás elektromos tervek készítéséhez.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="45"/>
         <source>2006-2019 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished">2006-2019 QElectroTech programozók</translation>
+        <translation>2006-2019 QElectroTech programozók</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="49"/>
         <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</source>
         <comment>about tab, contact line</comment>
-        <translation type="unfinished">Kapcsolat : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</translation>
+        <translation>Kapcsolat : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="56"/>
         <source>Idée originale</source>
-        <translation type="unfinished">Eredeti elképzelés</translation>
+        <translation>Eredeti elképzelés</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="57"/>
@@ -79,187 +79,187 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="107"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="110"/>
         <source>Développement</source>
-        <translation type="unfinished">Fejlesztés</translation>
+        <translation>Fejlesztés</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="60"/>
         <source>Convertisseur DXF</source>
-        <translation type="unfinished">DXF kovertáló</translation>
+        <translation>DXF kovertáló</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="61"/>
         <source>Plugin Bornier</source>
-        <translation type="unfinished">Sorkapocs tömb plugin</translation>
+        <translation>Sorkapocs tömb plugin</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="67"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="68"/>
         <source>Traduction en espagnol</source>
-        <translation type="unfinished">Spanyol fordító</translation>
+        <translation>Spanyol fordító</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="69"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="70"/>
         <source>Traduction en russe</source>
-        <translation type="unfinished">Orosz fordító</translation>
+        <translation>Orosz fordító</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="71"/>
         <source>Traduction en portugais</source>
-        <translation type="unfinished">Portugál fordító</translation>
+        <translation>Portugál fordító</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="72"/>
         <source>Traduction en tchèque</source>
-        <translation type="unfinished">Cseh fordító</translation>
+        <translation>Cseh fordító</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="73"/>
         <source>Traduction en polonais</source>
-        <translation type="unfinished">Lengyel fordító</translation>
+        <translation>Lengyel fordító</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="74"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="75"/>
         <source>Traduction en allemand</source>
-        <translation type="unfinished">Német fordító</translation>
+        <translation>Német fordító</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="76"/>
         <source>Traduction en roumain</source>
-        <translation type="unfinished">Román fordító</translation>
+        <translation>Román fordító</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="77"/>
         <source>Traduction en italien</source>
-        <translation type="unfinished">Olasz fordító</translation>
+        <translation>Olasz fordító</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="78"/>
         <source>Traduction en arabe</source>
-        <translation type="unfinished">Arab fordító</translation>
+        <translation>Arab fordító</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="79"/>
         <source>Traduction en croate</source>
-        <translation type="unfinished">Horváth fordító</translation>
+        <translation>Horváth fordító</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="80"/>
         <source>Traduction en catalan</source>
-        <translation type="unfinished">Katalán fordító</translation>
+        <translation>Katalán fordító</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="81"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="82"/>
         <source>Traduction en grec</source>
-        <translation type="unfinished">Görög fordító</translation>
+        <translation>Görög fordító</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="83"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="84"/>
         <source>Traduction en néerlandais</source>
-        <translation type="unfinished">Holland fordító</translation>
+        <translation>Holland fordító</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="85"/>
         <source>Traduction en flamand</source>
-        <translation type="unfinished">Flamand fordító</translation>
+        <translation>Flamand fordító</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="86"/>
         <source>Traduction en danois</source>
-        <translation type="unfinished">Dán fordító</translation>
+        <translation>Dán fordító</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="87"/>
         <source>Traduction en brézilien</source>
-        <translation type="unfinished">Brazil fordító</translation>
+        <translation>Brazil fordító</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="88"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="89"/>
         <source>Traduction en Turc</source>
-        <translation type="unfinished">Török fordító</translation>
+        <translation>Török fordító</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="90"/>
         <source>Traduction en hongrois</source>
-        <translation type="unfinished">Magyar fordító</translation>
+        <translation>Magyar fordító</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="95"/>
         <source>Paquets Fedora et Red Hat</source>
-        <translation type="unfinished">Fedora és Red Hat programcsomag</translation>
+        <translation>Fedora és Red Hat programcsomag</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="96"/>
         <source>Paquets Mageia</source>
-        <translation type="unfinished">Mageia programcsomag</translation>
+        <translation>Mageia programcsomag</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="97"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="98"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="99"/>
         <source>Paquets Debian</source>
-        <translation type="unfinished">Debian programcsomag</translation>
+        <translation>Debian programcsomag</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="100"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="101"/>
         <source>Paquets Gentoo</source>
-        <translation type="unfinished">Gentoo programcsomag</translation>
+        <translation>Gentoo programcsomag</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="102"/>
         <source>Paquets OS/2</source>
-        <translation type="unfinished">OS/2 programcsomag</translation>
+        <translation>OS/2 programcsomag</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="103"/>
         <source>Paquets FreeBSD</source>
-        <translation type="unfinished">FreeBSD programcsomag</translation>
+        <translation>FreeBSD programcsomag</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="104"/>
         <source>Paquets MAC OS X</source>
-        <translation type="unfinished">MAC OS X programcsomag</translation>
+        <translation>MAC OS X programcsomag</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="105"/>
         <source>Paquets Archlinux AUR</source>
-        <translation type="unfinished">Archlinus AUR programcsomag</translation>
+        <translation>Archlinus AUR programcsomag</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="106"/>
         <source>Icônes</source>
-        <translation type="unfinished">Ikonok</translation>
+        <translation>Ikonok</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="108"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="109"/>
         <source>Documentation</source>
-        <translation type="unfinished">Dukumentáció</translation>
+        <translation>Dukumentáció</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="111"/>
         <source>Collection d&apos;éléments</source>
-        <translation type="unfinished">Tervjelek gyűjteménye</translation>
+        <translation>Tervjelek gyűjteménye</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="112"/>
         <source>Python plugin qet-tb-generator</source>
-        <translation type="unfinished">Pyton beépülő modul sorkapocs generátor</translation>
+        <translation>Pyton beépülő modul sorkapocs generátor</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="113"/>
         <source>Paquets Snap</source>
-        <translation type="unfinished">Beépülő programcsomag</translation>
+        <translation>Beépülő programcsomag</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="119"/>
         <source>Compilation : </source>
-        <translation type="unfinished">Összeállítás: </translation>
+        <translation>Összeállítás: </translation>
     </message>
 </context>
 <context>
@@ -4475,7 +4475,7 @@ Akarod menteni a változásokat?</translation>
     <message>
         <location filename="../sources/projectview.cpp" line="316"/>
         <source>sansnom</source>
-        <translation type="unfinished"></translation>
+        <translation>cím nélkül</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="317"/>
