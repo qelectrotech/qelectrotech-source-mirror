@@ -1,28 +1,44 @@
-<definition link_type="simple" hotspot_x="34" orientation="dyyy" hotspot_y="19" type="element" height="50" width="70" version="0.5">
-    <uuid uuid="{0a5fde32-7588-4b45-be21-08bed0809e57}"/>
+<definition link_type="simple" type="element" hotspot_y="19" width="70" hotspot_x="34" height="50" orientation="dyyy" version="0.80">
+    <uuid uuid="{f2cd8537-b764-45ed-a3a5-d68887ed2681}"/>
     <names>
-        <name lang="pl">Ultradźwiękowy czujnik odległości HC-SR04</name>
         <name lang="nl">Ultrasoon afstandsensor HC-SR04</name>
-        <name lang="fr">Capteur HC-SR04</name>
-        <name lang="en">Ultrasonic module HC-SR04</name>
-        <name lang="it">Sensore ultrasonico HC-SR04</name>
         <name lang="cs">Ultrazvukové vzdálenostní čidlo HC-SR04</name>
+        <name lang="fr">Capteur HC-SR04</name>
+        <name lang="it">Sensore ultrasonico HC-SR04</name>
+        <name lang="pl">Ultradźwiękowy czujnik odległości HC-SR04</name>
+        <name lang="en">Ultrasonic module HC-SR04</name>
     </names>
-    <informations>Author: The QElectroTech team
+    <elementInformations>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Arduino</elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" y="-9" diameter="22" x="7"/>
-        <text size="6" text="Gnd" y="2" rotation="90" x="11"/>
-        <text size="6" text="Trig" y="2" rotation="90" x="-4"/>
-        <text size="6" text="Echo" y="-1" rotation="90" x="3"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="36" y="-12" width="61" x="-30"/>
-        <circle style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" y="-8" diameter="22" x="-28"/>
-        <text size="6" text="Vcc" y="3" rotation="90" x="-11"/>
-        <text size="3" text="HC-SR04" y="-8" x="-7"/>
-        <input size="9" text="_" rotate="true" y="-23" tagg="label" x="-31"/>
-        <terminal orientation="s" y="22" x="5.6"/>
-        <terminal orientation="s" y="22" x="11.9"/>
-        <terminal orientation="s" y="22" x="-1.7"/>
-        <terminal orientation="s" y="22" x="-9"/>
+        <circle x="7" diameter="22" antialias="true" y="-9" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" x="11" rotation="90" text="Gnd" y="2"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" x="-4" rotation="90" text="Trig" y="2"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" x="3" rotation="90" text="Echo" y="-1"/>
+        <rect rx="0" width="61" x="-30" height="36" ry="0" antialias="false" y="-12" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-28" diameter="22" antialias="true" y="-8" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <text font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" x="-11" rotation="90" text="Vcc" y="3"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" color="#000000" x="-7" rotation="0" text="HC-SR04" y="-8"/>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" text_from="ElementInfo" x="-31" rotation="0" Valignment="AlignTop" z="9" text_width="-1" uuid="{451bd3b1-5d30-4add-b04b-bc91d01a9bbe}" Halignment="AlignLeft" y="-34">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal x="5.6" orientation="s" y="22"/>
+        <terminal x="11.9" orientation="s" y="22"/>
+        <terminal x="-1.7" orientation="s" y="22"/>
+        <terminal x="-9" orientation="s" y="22"/>
     </description>
 </definition>

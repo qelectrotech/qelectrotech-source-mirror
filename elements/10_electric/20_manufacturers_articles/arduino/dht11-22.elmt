@@ -1,38 +1,54 @@
-<definition link_type="simple" hotspot_x="30" orientation="dyyy" hotspot_y="30" type="element" height="110" width="60" version="0.5">
-    <uuid uuid="{ec505321-1d56-4992-895a-4ae0a60ab4e2}"/>
+<definition link_type="simple" type="element" hotspot_y="30" width="60" hotspot_x="30" height="110" orientation="dyyy" version="0.80">
+    <uuid uuid="{dfc77f95-af11-44ad-b42c-420c58453e7c}"/>
     <names>
-        <name lang="fr">DHT 11/22</name>
-        <name lang="en">DHT 11/22</name>
-        <name lang="it">Sensore DHT 11/22</name>
         <name lang="cs">Čidlo DHT 11/22</name>
+        <name lang="fr">DHT 11/22</name>
+        <name lang="it">Sensore DHT 11/22</name>
+        <name lang="en">DHT 11/22</name>
     </names>
+    <elementInformations>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Arduino</elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+    </elementInformations>
     <informations></informations>
     <description>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="6" y="-23" width="6" x="-3"/>
-        <text size="4" text="DATA" y="31" rotation="270" x="-3"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="6" y="8" width="6" x="-3"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="6" y="-3" width="6" x="-3"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="6" y="-13" width="6" x="-3"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="6" y="-23" width="6" x="11"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="65" y="-28" width="50" x="-25"/>
-        <text size="4" text="N.C." y="31" rotation="270" x="8"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="44" y="33" width="3" x="15"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="44" y="33" width="3" x="4"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="44" y="33" width="3" x="-7"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="6" y="8" width="6" x="11"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="6" y="-13" width="6" x="11"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="6" y="-3" width="6" x="11"/>
-        <input size="7" text="DHT" rotate="true" y="-40" tagg="label" x="-14"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="6" y="8" width="6" x="-17"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="6" y="-13" width="6" x="-17"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="6" y="-3" width="6" x="-17"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="44" y="33" width="3" x="-18"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="6" y="-23" width="6" x="-17"/>
-        <text size="4" text="VCC" y="31" rotation="270" x="-14"/>
-        <text size="4" text="GND" y="30" rotation="270" x="19"/>
-        <terminal orientation="n" y="70" x="-16.5"/>
-        <terminal orientation="n" y="70" x="-5.5"/>
-        <terminal orientation="n" y="70" x="5.5"/>
-        <terminal orientation="n" y="70" x="16.5"/>
+        <rect rx="0" width="6" x="-3" height="6" ry="0" antialias="false" y="-23" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" x="-3" rotation="270" text="DATA" y="31"/>
+        <rect rx="0" width="6" x="-3" height="6" ry="0" antialias="false" y="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect rx="0" width="6" x="-3" height="6" ry="0" antialias="false" y="-3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect rx="0" width="6" x="-3" height="6" ry="0" antialias="false" y="-13" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect rx="0" width="6" x="11" height="6" ry="0" antialias="false" y="-23" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect rx="0" width="50" x="-25" height="65" ry="0" antialias="false" y="-28" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" x="8" rotation="270" text="N.C." y="31"/>
+        <rect rx="0" width="3" x="15" height="44" ry="0" antialias="false" y="33" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect rx="0" width="3" x="4" height="44" ry="0" antialias="false" y="33" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect rx="0" width="3" x="-7" height="44" ry="0" antialias="false" y="33" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect rx="0" width="6" x="11" height="6" ry="0" antialias="false" y="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect rx="0" width="6" x="11" height="6" ry="0" antialias="false" y="-13" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect rx="0" width="6" x="11" height="6" ry="0" antialias="false" y="-3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" frame="false" text_from="ElementInfo" x="-14" rotation="0" Valignment="AlignTop" z="15" text_width="-1" uuid="{c0e7988f-413d-41df-a6aa-9caacdb10fe5}" Halignment="AlignLeft" y="-49.5">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect rx="0" width="6" x="-17" height="6" ry="0" antialias="false" y="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect rx="0" width="6" x="-17" height="6" ry="0" antialias="false" y="-13" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect rx="0" width="6" x="-17" height="6" ry="0" antialias="false" y="-3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect rx="0" width="3" x="-18" height="44" ry="0" antialias="false" y="33" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect rx="0" width="6" x="-17" height="6" ry="0" antialias="false" y="-23" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" x="-14" rotation="270" text="VCC" y="31"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" x="19" rotation="270" text="GND" y="30"/>
+        <terminal x="-16.5" orientation="n" y="70"/>
+        <terminal x="-5.5" orientation="n" y="70"/>
+        <terminal x="5.5" orientation="n" y="70"/>
+        <terminal x="16.5" orientation="n" y="70"/>
     </description>
 </definition>

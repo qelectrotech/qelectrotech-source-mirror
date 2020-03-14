@@ -1,0 +1,35 @@
+<definition hotspot_x="15" link_type="simple" orientation="dyyy" hotspot_y="44" version="0.70" height="90" width="30" type="element">
+    <uuid uuid="{d635f6f3-c559-44fc-864f-597148242827}"/>
+    <names>
+        <name lang="en"></name>
+        <name lang="fr">Borne Phase</name>
+        <name lang="es"></name>
+        <name lang="de"></name>
+        <name lang="pl"></name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <dynamic_text uuid="{4e0b3bcf-4cf3-42be-a6bd-3c56b6ab86cd}" z="1" text_width="-1" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" frame="false" y="14" text_from="UserText" x="-13" rotation="270" Valignment="AlignTop">
+            <text></text>
+        </dynamic_text>
+        <circle diameter="7" antialias="true" y="-24.5" x="-3.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle diameter="7" antialias="true" y="16.556" x="-3.34759" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="-1.84759" x1="2.15241" y2="22.056" y1="18.056" length1="1.5" end1="none" end2="none" antialias="false" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="-2" x1="2" y2="-19" y1="-23" length1="1.5" end1="none" end2="none" antialias="false" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="2" x1="-2" y2="-19" y1="-23" length1="1.5" end1="none" end2="none" antialias="false" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="2.15241" x1="-1.84759" y2="22.056" y1="18.056" length1="1.5" end1="none" end2="none" antialias="false" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect rx="0" ry="0" antialias="false" y="-40" height="80" x="-10" width="20" style="line-style:normal;line-weight:hight;filling:none;color:black"/>
+        <line x2="0" x1="0" y2="-18" y1="-24" length1="1.5" end1="none" end2="none" antialias="false" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x2="0.152409" x1="0.152409" y2="23.056" y1="17.056" length1="1.5" end1="none" end2="none" antialias="false" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect rx="0" ry="0" antialias="false" y="-12" height="24" x="-8" width="16" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <line x2="3.15241" x1="-2.84759" y2="20.056" y1="20.056" length1="1.5" end1="none" end2="none" antialias="false" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line x2="3" x1="-3" y2="-21" y1="-21" length1="1.5" end1="none" end2="none" antialias="false" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <dynamic_text uuid="{0a7ec1aa-56f5-4d4e-85fa-f35ad1211760}" z="15" text_width="-1" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Gras" Halignment="AlignLeft" frame="false" y="-39" text_from="UserText" x="-7" rotation="0" Valignment="AlignTop">
+            <text>_</text>
+            <color>#ff00ff</color>
+        </dynamic_text>
+        <terminal orientation="s" y="40" x="0"/>
+        <terminal orientation="n" y="-40" x="0"/>
+    </description>
+</definition>

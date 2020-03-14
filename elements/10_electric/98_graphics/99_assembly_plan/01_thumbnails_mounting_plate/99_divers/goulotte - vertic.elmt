@@ -1,0 +1,22 @@
+<definition link_type="simple" type="element" width="110" hotspot_y="5" version="0.70" hotspot_x="5" height="40" orientation="dyyy">
+    <uuid uuid="{fa08d822-2c99-4156-85ff-ae5c85a4638d}"/>
+    <names>
+        <name lang="en">Wiring duct 30mm</name>
+        <name lang="fr">Goulotte de câblage 30mm</name>
+        <name lang="de">Verdrahtungskanal 30mm</name>
+        <name lang="cs">Potrubí elektrického vedení 30 mm</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <rect antialias="false" rx="0" width="100" y="24" style="line-style:normal;line-weight:normal;filling:black;color:none" ry="0" x="0" height="1"/>
+        <rect antialias="false" rx="0" width="100" y="11" style="line-style:normal;line-weight:normal;filling:black;color:none" ry="0" x="0" height="1"/>
+        <rect antialias="false" rx="0" width="100" y="0" style="line-style:normal;line-weight:normal;filling:blue;color:none" ry="0" x="0" height="30"/>
+        <rect antialias="false" rx="0" width="100" y="19" style="line-style:normal;line-weight:normal;filling:black;color:none" ry="0" x="0" height="1"/>
+        <rect antialias="false" rx="0" width="100" y="6" style="line-style:normal;line-weight:normal;filling:black;color:none" ry="0" x="0" height="1"/>
+        <rect antialias="false" rx="0" width="100" y="18" style="line-style:normal;line-weight:normal;filling:black;color:none" ry="0" x="0" height="1"/>
+        <rect antialias="false" rx="0" width="100" y="5" style="line-style:normal;line-weight:normal;filling:black;color:none" ry="0" x="0" height="1"/>
+        <rect antialias="false" rx="0" width="100" y="19" style="line-style:normal;line-weight:normal;filling:white;color:none" ry="0" x="0" height="5"/>
+        <rect antialias="false" rx="0" width="100" y="6" style="line-style:normal;line-weight:normal;filling:white;color:none" ry="0" x="0" height="5"/>
+    </description>
+</definition>

@@ -1,36 +1,41 @@
-<definition width="70" version="0.4" hotspot_x="28" hotspot_y="28" height="70" link_type="simple" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{DAFD5CF7-6568-46A8-B0DD-55988B413332}"/><names>
+<definition width="70" type="element" link_type="simple" height="70" version="0.80" orientation="dyyy" hotspot_y="28" hotspot_x="29">
+    <uuid uuid="{1111b8d4-9778-4a75-9aec-0d628403a318}"/>
+    <names>
+        <name lang="cs">Trojfázový motor</name>
+        <name lang="nl">Draaistroommotor</name>
+        <name lang="it">Motore trifase</name>
+        <name lang="pl">Silnik trójfazowy</name>
+        <name lang="en">Three-phase engine</name>
+        <name lang="fr">Moteur triphasé</name>
         <name lang="ar">محرّك ثلاثي الأوجه</name>
-        <name lang="de">Drehstrom Motor</name>
         <name lang="ru">Трёхфазный эл. мотор</name>
         <name lang="pt">Motor trifásico</name>
-        <name lang="en">Three-phase engine</name>
-        <name lang="it">Motore trifase</name>
-        <name lang="fr">Moteur triphasé</name>
-        <name lang="pl">Silnik trójfazowy</name>
         <name lang="es">Motor trifásico</name>
-        <name lang="nl">Draaistroommotor</name>
-        <name lang="cs">Trojfázový motor</name>
+        <name lang="de">Drehstrom Motor</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;
+    <elementInformations/>
+    <informations>Author: The QElectroTech team&#xd;&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <text x="22" y="-12" size="6" text="W1"/>
-        <text x="2" y="-12" size="6" text="V1"/>
-        <text x="23" y="30" size="6" text="PE"/>
-        <arc width="9" x="0" y="21" antialias="true" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="180" angle="180"/>
-        <arc width="9" x="-9" y="21" antialias="true" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="180"/>
-        <text x="-10.25" y="18" size="18" text="M"/>
-        <ellipse width="46" x="-23" y="-5" antialias="true" height="42" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="-51" y="15.5" size="9" text="M_" tagg="label"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-5" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.6172" x1="20" y2="5.08526" x2="20"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.6" x1="-20" y2="5.06667" x2="-20"/>
-        <text x="-17" y="27" size="9" text="3"/>
-        <text x="-18" y="-12" size="6" text="U1"/>
-        <terminal x="-20" y="-21" orientation="n"/>
-        <terminal x="20" y="-21" orientation="n"/>
-        <terminal x="0" y="-21" orientation="n"/>
-        <terminal x="27" y="20" orientation="e"/>
+        <text y="-12" color="#000000" rotation="0" x="22" text="W1" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text y="-12" color="#000000" rotation="0" x="2" text="V1" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text y="30" color="#000000" rotation="0" x="23" text="PE" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <arc width="9" height="8" y="21" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="0" angle="180" start="180"/>
+        <arc width="9" height="8" y="21" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-9" angle="180" start="0"/>
+        <text y="18" color="#000000" rotation="0" x="-10.25" text="M" font="Sans Serif,18,-1,5,50,0,0,0,0,0"/>
+        <ellipse width="46" height="42" y="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-23"/>
+        <dynamic_text Halignment="AlignLeft" text_from="ElementInfo" frame="false" Valignment="AlignTop" y="-5" rotation="0" x="25" text_width="-1" z="8" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{6f1d2176-1c58-420d-8496-c54c4b134371}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line y1="-20" end1="none" y2="-5" antialias="false" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" length2="1.5" length1="1.5" end2="none"/>
+        <line y1="-19.6172" end1="none" y2="5.08526" antialias="false" x1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="20" length2="1.5" length1="1.5" end2="none"/>
+        <line y1="-19.6" end1="none" y2="5.06667" antialias="false" x1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-20" length2="1.5" length1="1.5" end2="none"/>
+        <text y="27" color="#000000" rotation="0" x="-17" text="3" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text y="-12" color="#000000" rotation="0" x="-18" text="U1" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <terminal y="-21" orientation="n" x="-20"/>
+        <terminal y="-21" orientation="n" x="20"/>
+        <terminal y="-21" orientation="n" x="0"/>
+        <terminal y="20" orientation="e" x="27"/>
     </description>
 </definition>
