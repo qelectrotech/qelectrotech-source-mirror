@@ -1,48 +1,64 @@
-<definition type="element" hotspot_y="75" version="0.51" width="100" height="130" orientation="dyyy" link_type="simple" hotspot_x="50">
-    <uuid uuid="{23f969a0-ff71-4b33-a60c-ba9665972e15}"/>
+<definition height="130" orientation="dyyy" version="0.80" width="100" hotspot_x="50" type="element" hotspot_y="75" link_type="simple">
+    <uuid uuid="{ed13c43c-b6c4-4317-9545-47ac8386778e}"/>
     <names>
         <name lang="fr">Wemos D1 Mini</name>
     </names>
+    <elementInformations>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Arduino</elementInformation>
+        <elementInformation name="designation" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+    </elementInformations>
     <informations></informations>
     <description>
-        <text text="D2" x="-34" y="14" size="7"/>
-        <text text="D3" x="-34" y="4" size="7"/>
-        <text text="D1" x="-34" y="24" size="7"/>
-        <text text="Tx" x="-34" y="44" size="7"/>
-        <text text="Rx" x="-34" y="34" size="7"/>
-        <text text="D6" x="21" y="4" size="7"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-16" y="-70" width="32" height="30" antialias="false"/>
-        <text text="D4" x="-34" y="-6" size="7"/>
-        <text text="GND" x="-34" y="-16" size="7"/>
-        <text text="USB" x="-13" y="-47" size="9"/>
-        <text text="RST" x="16" y="44" size="7"/>
-        <text text="D5" x="21" y="14" size="7"/>
-        <input tagg="label" text="_" x="-28" y="63" size="9"/>
-        <text text="A0" x="22" y="34" size="7"/>
-        <text text="+5V" x="-34" y="-26" size="7"/>
-        <text text="D0" x="21" y="24" size="7"/>
-        <text text="D7" x="21" y="-6" size="7"/>
-        <text text="D8" x="21" y="-16" size="7"/>
-        <text text="+3.3V" x="5" y="-26" size="7"/>
-        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" x="-20" y="-10" width="40" height="40" antialias="false"/>
-        <text text="ESP&#xa;12F" x="-7" y="8" size="5"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-45" y="-60" width="90" height="110" antialias="false"/>
-        <terminal x="-1" y="-65" orientation="n"/>
-        <terminal x="-40" y="-30" orientation="w"/>
-        <terminal x="-40" y="-20" orientation="w"/>
-        <terminal x="-40" y="-10" orientation="w"/>
-        <terminal x="-40" y="0" orientation="w"/>
-        <terminal x="-40" y="10" orientation="w"/>
-        <terminal x="-40" y="20" orientation="w"/>
-        <terminal x="-40" y="30" orientation="w"/>
-        <terminal x="-40" y="40" orientation="w"/>
-        <terminal x="40" y="-30" orientation="e"/>
-        <terminal x="40" y="-20" orientation="e"/>
-        <terminal x="40" y="-10" orientation="e"/>
-        <terminal x="40" y="0" orientation="e"/>
-        <terminal x="40" y="10" orientation="e"/>
-        <terminal x="40" y="20" orientation="e"/>
-        <terminal x="40" y="30" orientation="e"/>
-        <terminal x="40" y="40" orientation="e"/>
+        <text x="-34" text="D2" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="14" rotation="0" color="#000000"/>
+        <text x="-34" text="D3" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="4" rotation="0" color="#000000"/>
+        <text x="-34" text="D1" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="24" rotation="0" color="#000000"/>
+        <text x="-34" text="Tx" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="44" rotation="0" color="#000000"/>
+        <text x="-34" text="Rx" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="34" rotation="0" color="#000000"/>
+        <text x="21" text="D6" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="4" rotation="0" color="#000000"/>
+        <rect antialias="false" x="-16" height="30" rx="0" y="-70" width="32" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-34" text="D4" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-6" rotation="0" color="#000000"/>
+        <text x="-34" text="GND" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-16" rotation="0" color="#000000"/>
+        <text x="-13" text="USB" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-47" rotation="0" color="#000000"/>
+        <text x="16" text="RST" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="44" rotation="0" color="#000000"/>
+        <text x="21" text="D5" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="14" rotation="0" color="#000000"/>
+        <dynamic_text x="-28" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="13" y="52" frame="false" text_from="ElementInfo" Valignment="AlignTop" rotation="0" text_width="-1" uuid="{3e7530d6-656b-4fa3-a498-4ed000369dcc}" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text x="22" text="A0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="34" rotation="0" color="#000000"/>
+        <text x="-34" text="+5V" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-26" rotation="0" color="#000000"/>
+        <text x="21" text="D0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="24" rotation="0" color="#000000"/>
+        <text x="21" text="D7" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-6" rotation="0" color="#000000"/>
+        <text x="21" text="D8" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-16" rotation="0" color="#000000"/>
+        <text x="5" text="+3.3V" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-26" rotation="0" color="#000000"/>
+        <rect antialias="false" x="-20" height="40" rx="0" y="-10" width="40" ry="0" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <text x="-7" text="ESP&#xa;12F" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="8" rotation="0" color="#000000"/>
+        <rect antialias="false" x="-45" height="110" rx="0" y="-60" width="90" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="-1" orientation="n" y="-65"/>
+        <terminal x="-40" orientation="w" y="-30"/>
+        <terminal x="-40" orientation="w" y="-20"/>
+        <terminal x="-40" orientation="w" y="-10"/>
+        <terminal x="-40" orientation="w" y="0"/>
+        <terminal x="-40" orientation="w" y="10"/>
+        <terminal x="-40" orientation="w" y="20"/>
+        <terminal x="-40" orientation="w" y="30"/>
+        <terminal x="-40" orientation="w" y="40"/>
+        <terminal x="40" orientation="e" y="-30"/>
+        <terminal x="40" orientation="e" y="-20"/>
+        <terminal x="40" orientation="e" y="-10"/>
+        <terminal x="40" orientation="e" y="0"/>
+        <terminal x="40" orientation="e" y="10"/>
+        <terminal x="40" orientation="e" y="20"/>
+        <terminal x="40" orientation="e" y="30"/>
+        <terminal x="40" orientation="e" y="40"/>
     </description>
 </definition>

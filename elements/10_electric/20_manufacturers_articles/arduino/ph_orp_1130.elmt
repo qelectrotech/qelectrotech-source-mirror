@@ -1,21 +1,37 @@
-<definition link_type="simple" width="90" hotspot_x="49" orientation="dyyy" height="40" type="element" hotspot_y="21" version="0.51">
-    <uuid uuid="{ac234fc9-5705-4410-aedd-fe36fe2d3ea2}"/>
+<definition hotspot_x="49" orientation="dyyy" version="0.80" width="90" hotspot_y="21" type="element" height="40" link_type="simple">
+    <uuid uuid="{b61ce9f5-d6b3-4d27-9a5d-135143b90f9e}"/>
     <names>
-        <name lang="en">pH/ORP adapter phidget 1130</name>
         <name lang="fr">Adaptateur pH/ORP phidget 1130</name>
+        <name lang="en">pH/ORP adapter phidget 1130</name>
     </names>
+    <elementInformations>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Arduino</elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+    </elementInformations>
     <informations></informations>
     <description>
-        <text size="7" y="-7" text="A0" x="12"/>
-        <text size="7" y="13" text="GND" x="3"/>
-        <text size="7" y="3" text="BNC" x="-34"/>
-        <text size="7" y="3" text="VDD" x="4"/>
-        <input size="9" y="23" rotate="true" text="_" x="-20" tagg="label"/>
-        <rect y="-7" width="22" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" height="13" x="-34"/>
-        <rect y="-18" width="81" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="34" x="-45"/>
-        <terminal y="-10" orientation="e" x="30"/>
-        <terminal y="0" orientation="e" x="30"/>
-        <terminal y="10" orientation="e" x="30"/>
-        <terminal y="0" orientation="w" x="-40"/>
+        <text x="12" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-7" color="#000000" rotation="0" text="A0"/>
+        <text x="3" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="13" color="#000000" rotation="0" text="GND"/>
+        <text x="-34" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="3" color="#000000" rotation="0" text="BNC"/>
+        <text x="4" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="3" color="#000000" rotation="0" text="VDD"/>
+        <dynamic_text x="-20" uuid="{2ba968bd-3cfd-4643-a505-e510cb3fa15a}" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" y="12" text_from="ElementInfo" Halignment="AlignLeft" rotation="0" frame="false" z="5" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect x="-34" width="22" ry="0" y="-7" style="line-style:normal;line-weight:thin;filling:none;color:black" rx="0" height="13" antialias="false"/>
+        <rect x="-45" width="81" ry="0" y="-18" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" height="34" antialias="false"/>
+        <terminal x="30" orientation="e" y="-10"/>
+        <terminal x="30" orientation="e" y="0"/>
+        <terminal x="30" orientation="e" y="10"/>
+        <terminal x="-40" orientation="w" y="0"/>
     </description>
 </definition>

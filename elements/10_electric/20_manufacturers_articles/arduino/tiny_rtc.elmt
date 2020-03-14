@@ -1,52 +1,68 @@
-<definition link_type="simple" hotspot_x="50" orientation="dyyy" hotspot_y="57" type="element" height="80" width="90" version="0.5">
-    <uuid uuid="{11811a10-ef65-4682-883d-bd4b0aef4580}"/>
+<definition type="element" hotspot_y="57" height="80" hotspot_x="50" link_type="simple" width="90" version="0.80" orientation="dyyy">
+    <uuid uuid="{cad0711a-d6b0-475d-aa7f-6f82c5987d99}"/>
     <names>
-        <name lang="pl">Tiny RTC</name>
-        <name lang="nl">Tiny RTC Tijdklok</name>
         <name lang="fr">Tiny RTC (horloge temps réel)</name>
-        <name lang="en">Tiny RTC real time clock)</name>
-        <name lang="it">Tiny RTC (orologio e calendario)</name>
         <name lang="cs">Tiny RTC (hodiny a kalendář)</name>
+        <name lang="nl">Tiny RTC Tijdklok</name>
+        <name lang="en">Tiny RTC real time clock)</name>
+        <name lang="pl">Tiny RTC</name>
+        <name lang="it">Tiny RTC (orologio e calendario)</name>
     </names>
-    <informations>Charles Ferrand 
+    <elementInformations>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="designation" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Arduino</elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+    </elementInformations>
+    <informations>Charles Ferrand &#xd;
 novembre 2013</informations>
     <description>
-        <text size="6" text="SCL" y="-8" rotation="90" x="6"/>
-        <text size="6" text="DS" y="-6" rotation="90" x="15"/>
-        <text size="6" text="P1" y="13" x="-42"/>
-        <line y1="14" x1="35.8432" x2="30.2216" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="14"/>
-        <text size="6" text="SQ" y="-6" rotation="90" x="23"/>
-        <text size="6" text="Bat" y="-6" rotation="90" x="-30"/>
-        <text size="6" text="SDA" y="-9" rotation="90" x="-2"/>
-        <text size="6" text="GND" y="-10" rotation="90" x="-21"/>
-        <text size="6" text="Vcc" y="-7" rotation="90" x="-11"/>
-        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" height="7" y="8" width="62" x="-31"/>
-        <text size="6" text="DS" y="-42" rotation="90" x="15"/>
-        <text size="6" text="P2" y="-40" x="-33"/>
-        <text size="6" text="SCL" y="-42" rotation="90" x="6"/>
-        <text size="6" text="SDA" y="-42" rotation="90" x="-3"/>
-        <text size="6" text="Vcc" y="-41" rotation="90" x="-12"/>
-        <text size="6" text="GND" y="-42" rotation="90" x="-21"/>
-        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" height="7" y="-49" width="42" x="-21"/>
-        <line y1="14" x1="-31" x2="-47" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="14"/>
-        <line y1="14" x1="-47" x2="-47" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-47"/>
-        <line y1="-47" x1="-47" x2="-21" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-47"/>
-        <line y1="-47" x1="21" x2="36" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-47"/>
-        <line y1="-47" x1="36" x2="36" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="14"/>
-        <text size="7" text="Tiny RTC" y="-38" rotation="90" x="-44"/>
-        <ellipse style="line-style:dotted;line-weight:thin;filling:none;color:black" antialias="true" height="42" y="-40" width="41" x="-21"/>
-        <input size="9" text="_" rotate="true" y="-60" tagg="label" x="-55"/>
-        <terminal orientation="s" y="13" x="-9"/>
-        <terminal orientation="s" y="13" x="0"/>
-        <terminal orientation="n" y="-48" x="-18"/>
-        <terminal orientation="s" y="13" x="-18"/>
-        <terminal orientation="s" y="13" x="-27"/>
-        <terminal orientation="s" y="13" x="27"/>
-        <terminal orientation="n" y="-48" x="-9"/>
-        <terminal orientation="n" y="-48" x="0"/>
-        <terminal orientation="n" y="-48" x="9"/>
-        <terminal orientation="n" y="-48" x="18"/>
-        <terminal orientation="s" y="13" x="9"/>
-        <terminal orientation="s" y="13" x="18"/>
+        <text y="-8" text="SCL" rotation="90" x="6" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text y="-6" text="DS" rotation="90" x="15" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text y="13" text="P1" rotation="0" x="-42" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <line end1="none" length1="1.5" antialias="false" y2="14" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" y1="14" x2="30.2216" x1="35.8432"/>
+        <text y="-6" text="SQ" rotation="90" x="23" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text y="-6" text="Bat" rotation="90" x="-30" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text y="-9" text="SDA" rotation="90" x="-2" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text y="-10" text="GND" rotation="90" x="-21" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text y="-7" text="Vcc" rotation="90" x="-11" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <rect y="8" height="7" width="62" antialias="false" x="-31" style="line-style:normal;line-weight:thin;filling:none;color:black" rx="0" ry="0"/>
+        <text y="-42" text="DS" rotation="90" x="15" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text y="-40" text="P2" rotation="0" x="-33" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text y="-42" text="SCL" rotation="90" x="6" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text y="-42" text="SDA" rotation="90" x="-3" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text y="-41" text="Vcc" rotation="90" x="-12" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text y="-42" text="GND" rotation="90" x="-21" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <rect y="-49" height="7" width="42" antialias="false" x="-21" style="line-style:normal;line-weight:thin;filling:none;color:black" rx="0" ry="0"/>
+        <line end1="none" length1="1.5" antialias="false" y2="14" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" y1="14" x2="-47" x1="-31"/>
+        <line end1="none" length1="1.5" antialias="false" y2="-47" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" y1="14" x2="-47" x1="-47"/>
+        <line end1="none" length1="1.5" antialias="false" y2="-47" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" y1="-47" x2="-21" x1="-47"/>
+        <line end1="none" length1="1.5" antialias="false" y2="-47" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" y1="-47" x2="36" x1="21"/>
+        <line end1="none" length1="1.5" antialias="false" y2="14" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" y1="-47" x2="36" x1="36"/>
+        <text y="-38" text="Tiny RTC" rotation="90" x="-44" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <ellipse y="-40" height="42" width="41" antialias="true" x="-21" style="line-style:dotted;line-weight:thin;filling:none;color:black"/>
+        <dynamic_text text_width="-1" y="-71" rotation="0" z="25" Halignment="AlignLeft" x="-55" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="ElementInfo" uuid="{6ed3866d-4969-4549-b724-04009ad2fe7f}" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal y="13" x="-9" orientation="s"/>
+        <terminal y="13" x="0" orientation="s"/>
+        <terminal y="-48" x="-18" orientation="n"/>
+        <terminal y="13" x="-18" orientation="s"/>
+        <terminal y="13" x="-27" orientation="s"/>
+        <terminal y="13" x="27" orientation="s"/>
+        <terminal y="-48" x="-9" orientation="n"/>
+        <terminal y="-48" x="0" orientation="n"/>
+        <terminal y="-48" x="9" orientation="n"/>
+        <terminal y="-48" x="18" orientation="n"/>
+        <terminal y="13" x="9" orientation="s"/>
+        <terminal y="13" x="18" orientation="s"/>
     </description>
 </definition>

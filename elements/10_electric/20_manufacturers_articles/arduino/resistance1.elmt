@@ -1,33 +1,51 @@
-<definition link_type="simple" hotspot_x="15" orientation="dyyy" hotspot_y="34" type="element" height="70" width="30" version="0.5">
-    <uuid uuid="{083b34d0-32b9-43b5-86a8-710acf7afc96}"/>
+<definition height="70" hotspot_y="34" link_type="simple" orientation="dyyy" version="0.80" type="element" hotspot_x="15" width="30">
+    <uuid uuid="{2a5fc5b8-3b61-4845-9994-4eecd7a7696d}"/>
     <names>
-        <name lang="pl">Rezystor 1/4W</name>
-        <name lang="nl">Weerstand 1/4W</name>
         <name lang="el">Αντίσταση 1/4w</name>
-        <name lang="fr">Resistance 1/4w</name>
-        <name lang="en">Resistor 1/4w </name>
         <name lang="it">Resistenza</name>
         <name lang="cs">Rezistor 1/4W</name>
+        <name lang="nl">Weerstand 1/4W</name>
+        <name lang="pl">Rezystor 1/4W</name>
+        <name lang="fr">Resistance 1/4w</name>
+        <name lang="en">Resistor 1/4w </name>
     </names>
+    <elementInformations>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Arduino</elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+    </elementInformations>
     <informations>ezza</informations>
     <description>
-        <line y1="0" x1="-6" x2="8" style="line-style:dotted;line-weight:thin;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="0"/>
-        <line y1="-6" x1="-7" x2="7" style="line-style:dotted;line-weight:thin;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-6"/>
-        <polygon y1="-2" x3="9" y5="-2" x1="-9" x2="9" x4="-9" y4="2" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y3="2" y2="-2" x5="-9"/>
-        <polygon y1="-8" x3="9" y5="-8" x1="-9" x2="9" x4="-9" y4="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y3="-4" y2="-8" x5="-9"/>
-        <arc angle="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" height="10" y="18.5" width="18" x="-9" start="0"/>
-        <arc angle="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" height="10" y="-27.5" width="18" x="-9" start="-180"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="4" y="19" width="20" x="-10"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="4" y="-22" width="20" x="-10"/>
-        <line y1="-18" x1="-9" x2="-9" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="18"/>
-        <line y1="-18" x1="9" x2="9" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="18"/>
-        <polygon y1="-14" x3="9" y5="-14" x1="-9" x2="9" x4="-9" y4="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y3="-10" y2="-14" x5="-9"/>
-        <line y1="-12" x1="-7" x2="7" style="line-style:dotted;line-weight:thin;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-12"/>
-        <line y1="-30" x1="0" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="-28"/>
-        <line y1="30" x1="0" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end1="none" end2="none" length2="1.5" y2="29"/>
-        <input size="7" text="12" rotate="true" y="10" tagg="none" x="-11"/>
-        <input size="9" text="_" rotate="true" y="-25" tagg="label" x="-25"/>
-        <terminal orientation="n" y="-30" x="0"/>
-        <terminal orientation="s" y="30" x="0"/>
+        <line y2="0" y1="0" x2="8" end1="none" style="line-style:dotted;line-weight:thin;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" end2="none" x1="-6"/>
+        <line y2="-6" y1="-6" x2="7" end1="none" style="line-style:dotted;line-weight:thin;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" end2="none" x1="-7"/>
+        <polygon y2="-2" y1="-2" y5="-2" x2="9" x3="9" x4="-9" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-9" y4="2" y3="2" x5="-9"/>
+        <polygon y2="-8" y1="-8" y5="-8" x2="9" x3="9" x4="-9" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-9" y4="-4" y3="-4" x5="-9"/>
+        <arc height="10" x="-9" start="0" angle="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="18.5" width="18"/>
+        <arc height="10" x="-9" start="-180" angle="-180" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-27.5" width="18"/>
+        <rect height="4" rx="0" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="19" ry="0" width="20"/>
+        <rect height="4" rx="0" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-22" ry="0" width="20"/>
+        <line y2="18" y1="-18" x2="-9" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" end2="none" x1="-9"/>
+        <line y2="18" y1="-18" x2="9" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" end2="none" x1="9"/>
+        <polygon y2="-14" y1="-14" y5="-14" x2="9" x3="9" x4="-9" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-9" y4="-10" y3="-10" x5="-9"/>
+        <line y2="-12" y1="-12" x2="7" end1="none" style="line-style:dotted;line-weight:thin;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" end2="none" x1="-7"/>
+        <line y2="-28" y1="-30" x2="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" end2="none" x1="0"/>
+        <line y2="29" y1="30" x2="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" length2="1.5" end2="none" x1="0"/>
+        <dynamic_text Valignment="AlignTop" x="-11" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_width="-1" z="15" y="0.5" frame="false" text_from="UserText" Halignment="AlignLeft" rotation="0" uuid="{20fb02bc-93fc-4ec9-9e1b-b8757900c00b}">
+            <text>12</text>
+        </dynamic_text>
+        <dynamic_text Valignment="AlignTop" x="-25" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1" z="16" y="-36" frame="false" text_from="ElementInfo" Halignment="AlignLeft" rotation="0" uuid="{3126bee3-6c51-407a-8094-a0c42a4ce0d7}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal x="0" orientation="n" y="-30"/>
+        <terminal x="0" orientation="s" y="30"/>
     </description>
 </definition>
