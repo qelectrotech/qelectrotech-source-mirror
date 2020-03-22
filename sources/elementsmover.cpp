@@ -109,14 +109,15 @@ int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item)
  * Add a move to the current movement.
  * @param movement movement to applied
  */
-void ElementsMover::continueMovement(const QPointF &movement) {
+void ElementsMover::continueMovement(const QPointF &movement)
+{
 	if (!movement_running_ || movement.isNull()) return;
 
 	current_movement_ += movement;
 
 	//Move every movable item, except conductor
 	typedef DiagramContent dc;
-	for (QGraphicsItem *qgi : m_moved_content.items(dc::Elements | dc::TextFields | dc::Images | dc::Shapes | dc::ElementTextFields | dc::TextGroup))
+	for (QGraphicsItem *qgi : m_moved_content.items(dc::Elements | dc::TextFields | dc::Images | dc::Shapes | dc::ElementTextFields | dc::TextGroup | dc::ConductorsToMove))
 	{
 		if (qgi == m_movement_driver)
 			continue;
@@ -124,20 +125,18 @@ void ElementsMover::continueMovement(const QPointF &movement) {
 	}
 	
 	// Move some conductors
-	QList<Conductor *> c_list;
-	c_list.append(m_moved_content.m_conductors_to_move);
-	c_list.append(m_moved_content.m_conductors_to_update);
-
-	for (Conductor *c : c_list)
+	for (Conductor *c : m_moved_content.m_conductors_to_update)
 	{
 			//Due to a weird behavior, we must to ensure that the position of the conductor is to (0,0).
 			//If not, in some unknown case the function QGraphicsScene::itemsBoundingRect() return a rectangle
 			//that take in acount the pos() of the conductor, even if the bounding rect returned by the conductor is not in the pos().
 			//For the user this situation appear when the top right of the folio is not at the top right of the graphicsview,
 			//but displaced to the right and/or bottom.
-		if (c->pos() != QPointF(0,0)) {
-			c->setPos(0,0);
-		}
+
+	//@TODO fix this problem correctly, probably we must to see conductor class.
+//		if (c->pos() != QPointF(0,0)) { //<- they work, but the conductor text return to her original pos when the pos is set by user and not auto
+//			c->setPos(0,0);				// because set the pos to 0,0 so text move to, and after call updatePath but because text pos is user defined
+//		}								// we don't move it.
 		c->updatePath();
 	}
 }
@@ -209,7 +208,7 @@ void ElementsMover::endMovement()
 				ConductorAutoNumerotation can  (conductor, diagram_, undo_object);
 				can.numerate();
 			}
-		};
+		}
 	}
 
 		//Add undo_object if have child

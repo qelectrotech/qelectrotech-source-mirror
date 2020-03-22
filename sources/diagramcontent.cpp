@@ -101,8 +101,10 @@ DiagramContent::DiagramContent(Diagram *diagram, bool selected) :
                         other_terminal = conductor->terminal1;
 
                     //If the two elements of conductor are movable
-                    if (m_elements.contains(other_terminal -> parentElement()) && !m_conductors_to_move.contains(conductor))
-                        m_conductors_to_move << conductor;
+					if (m_elements.contains(other_terminal -> parentElement())) {
+						if (!m_conductors_to_move.contains(conductor))
+							m_conductors_to_move << conductor;
+					}
                     else if (!m_conductors_to_update.contains(conductor))
                         m_conductors_to_update << conductor;
                 }
