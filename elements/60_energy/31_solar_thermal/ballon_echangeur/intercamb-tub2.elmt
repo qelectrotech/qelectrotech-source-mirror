@@ -1,0 +1,39 @@
+<definition type="element" height="60" hotspot_x="38" orientation="dyyy" version="0.80" width="150" hotspot_y="44" link_type="simple">
+    <uuid uuid="{defb50a3-51ca-43f1-9a23-bbd8cffe19f1}"/>
+    <names>
+        <name lang="en">Tubular exchanger</name>
+        <name lang="ca">Intercamviador tubular</name>
+        <name lang="fr">Echangeur tubulaire</name>
+        <name lang="es">Intercambiador tubular</name>
+    </names>
+    <elementInformations/>
+    <informations>Rafael Ferrando.&#xd;
+Mantenimiento de Instalaciones Térmicas</informations>
+    <description>
+        <line end2="none" antialias="false" end1="none" y2="6.74566" length2="1.5" x2="101.5" x1="101.5" y1="-3.76303" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line end2="none" antialias="false" end1="none" y2="-33.5376" length2="1.5" x2="75.6625" x1="64.45" y1="-33.5376" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line end2="none" antialias="false" end1="none" y2="-30.0347" length2="1.5" x2="85.315" x1="-22.13" y1="-30.0347" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" antialias="false" end1="none" y2="9.15863" length2="1.5" x2="-28.37" x1="-28.37" y1="-30.6758" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect rx="0" height="10.5087" ry="0" antialias="false" width="9.75" y="-24.7804" x="95.65" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect rx="0" height="7.30688" ry="0" antialias="false" width="11.2125" y="-37.3416" x="64.45" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect rx="0" height="10.5087" ry="0" antialias="false" width="9.75" y="-3.76303" x="95.65" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" antialias="false" end1="none" y2="6.17794" length2="1.5" x2="78.88" x1="78.88" y1="-25.9036" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect rx="0" height="40.2616" ry="0" antialias="false" width="8.97" y="-30.013" x="85.315" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect rx="0" height="43.7645" ry="0" antialias="false" width="10.92" y="-31.7645" x="-33.05" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" antialias="false" end1="none" y2="10.2486" length2="1.5" x2="85.315" x1="-22.13" y1="10.2486" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect rx="0" height="7.30688" ry="0" antialias="false" width="10.725" y="-37.3416" x="-13.55" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect rx="0" height="3.50289" ry="0" antialias="false" width="1.95" y="-28.2833" x="-35" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect rx="0" height="5.25434" ry="0" antialias="false" width="1.95" y="-14.2717" x="-35" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect rx="0" height="3.50289" ry="0" antialias="false" width="1.95" y="3.24276" x="-35" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" antialias="false" end1="none" y2="-14.2717" length2="1.5" x2="101.5" x1="101.5" y1="-24.7804" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line end2="none" antialias="false" end1="none" y2="-33.5376" length2="1.5" x2="-2.825" x1="-13.55" y1="-33.5376" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <dynamic_text text_from="ElementInfo" uuid="{e9b40fb2-1983-4dfd-8e47-3f260e577db4}" rotation="0" Valignment="AlignTop" frame="false" y="-17.7746" x="11.8" text_width="-1" z="18" font="Sans Serif,4,-1,5,25,0,0,0,0,0" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal orientation="n" y="-37.3416" x="71.1775"/>
+        <terminal orientation="e" y="-19.5261" x="105.4"/>
+        <terminal orientation="e" y="1.49132" x="105.4"/>
+        <terminal orientation="n" y="-37.3416" x="-7.115"/>
+    </description>
+</definition>

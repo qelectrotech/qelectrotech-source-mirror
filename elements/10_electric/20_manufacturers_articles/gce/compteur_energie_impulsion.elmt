@@ -1,27 +1,43 @@
-<definition link_type="simple" hotspot_x="10" orientation="dyyy" hotspot_y="34" type="element" height="110" width="40" version="0.5">
-    <uuid uuid="{843bbdea-7163-426e-b3ea-0768fceb3c49}"/>
+<definition version="0.80" type="element" height="110" hotspot_x="10" orientation="dyyy" link_type="simple" width="40" hotspot_y="34">
+    <uuid uuid="{2b41375d-7a44-41f4-85d4-da0d493cd4b8}"/>
     <names>
-        <name lang="pl">Licznik energii</name>
-        <name lang="be">Energie meter met pulse contact</name>
         <name lang="el">Μετρητής ενέργειας, Κιλοβατώρες (KWh)</name>
-        <name lang="fr">Compteur d’énergie à Impulsion</name>
+        <name lang="be">Energie meter met pulse contact</name>
         <name lang="en">Energy meter with pulse output</name>
-        <name lang="it">Misuratore di Kwh</name>
         <name lang="cs">Počítadlo energie</name>
         <name lang="ar">عدّاد طاقة</name>
+        <name lang="it">Misuratore di Kwh</name>
+        <name lang="pl">Licznik energii</name>
+        <name lang="fr">Compteur d’énergie à Impulsion</name>
     </names>
+    <elementInformations>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="manufacturer"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+    </elementInformations>
     <informations></informations>
     <description>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="101" y="-30" width="32" x="-6"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="68" y="-14" width="32" x="-6"/>
-        <text size="10" text="kWh" y="33" rotation="270" x="15"/>
-        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" height="48" y="-5" width="16" x="2"/>
-        <input size="9" text="_" rotate="true" y="10" tagg="label" x="-30"/>
-        <terminal orientation="n" y="-29" x="20"/>
-        <terminal orientation="s" y="70" x="20"/>
-        <terminal orientation="n" y="-29" x="0"/>
-        <terminal orientation="s" y="53" x="20"/>
-        <terminal orientation="s" y="70" x="0"/>
-        <terminal orientation="s" y="53" x="0"/>
+        <rect y="-30" x="-6" height="101" style="line-style:normal;line-weight:normal;filling:white;color:black" width="32" rx="0" antialias="false" ry="0"/>
+        <rect y="-14" x="-6" height="68" style="line-style:normal;line-weight:normal;filling:none;color:black" width="32" rx="0" antialias="false" ry="0"/>
+        <text y="33" x="15" rotation="270" font="Sans Serif,10,-1,5,50,0,0,0,0,0" color="#000000" text="kWh"/>
+        <rect y="-5" x="2" height="48" style="line-style:normal;line-weight:thin;filling:none;color:black" width="16" rx="0" antialias="false" ry="0"/>
+        <dynamic_text y="-1" Halignment="AlignLeft" text_width="-1" x="-30" rotation="0" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="5" uuid="{5803d198-0097-4cde-a613-1704170111ba}" frame="false" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal y="-29" x="0" orientation="n"/>
+        <terminal y="53" x="20" orientation="s"/>
+        <terminal y="53" x="0" orientation="s"/>
+        <terminal y="70" x="0" orientation="s"/>
+        <terminal y="-29" x="20" orientation="n"/>
+        <terminal y="70" x="20" orientation="s"/>
     </description>
 </definition>
