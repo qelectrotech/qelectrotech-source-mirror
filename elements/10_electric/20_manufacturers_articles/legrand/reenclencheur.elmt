@@ -1,59 +1,59 @@
-<definition orientation="dyyy" type="element" width="70" height="80" hotspot_y="34" link_type="master" hotspot_x="25" version="0.80">
-    <uuid uuid="{db2ca6df-16ad-476f-a7b0-805e04036f6b}"/>
+<definition type="element" height="80" hotspot_x="25" orientation="dyyy" version="0.80" width="70" hotspot_y="34" link_type="master">
+    <uuid uuid="{7918dddd-80f2-475c-86b1-95816fbf2d1e}"/>
     <names>
         <name lang="fr">Réenclencheur automatique</name>
     </names>
     <kindInformations>
         <kindInformation show="1" name="type">protection</kindInformation>
-        <kindInformation show="1" name="number">1</kindInformation>
         <kindInformation show="1" name="state">NO</kindInformation>
+        <kindInformation show="1" name="number">1</kindInformation>
     </kindInformations>
     <elementInformations>
-        <elementInformation show="1" name="label"></elementInformation>
-        <elementInformation show="1" name="plant"></elementInformation>
-        <elementInformation show="1" name="unity"></elementInformation>
         <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="description">Réenclencheur</elementInformation>
         <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="designation">LEG406288</elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
         <elementInformation show="1" name="supplier"></elementInformation>
         <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
-        <elementInformation show="1" name="description"></elementInformation>
-        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
-        <elementInformation show="1" name="designation">406288</elementInformation>
-        <elementInformation show="1" name="quantity"></elementInformation>
     </elementInformations>
-    <informations>S.DEFFAUX
-Author: The QElectroTech team
+    <informations>S.DEFFAUX&#xd;
+Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon x3="16" y5="10" style="line-style:normal;line-weight:thin;filling:black;color:black" y3="1" x5="13" x8="15" y7="3" x6="15" y1="-7" y4="0" y8="-6" x4="19" y6="2" x7="14" y2="-7" x2="19" antialias="true" x1="15"/>
-        <rect antialias="false" rx="0" width="60" ry="0" height="70" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-30"/>
-        <text text="L1" x="-4" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="-20"/>
-        <text text="N1" x="14" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="-20"/>
-        <text text="17" x="-14" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="35"/>
-        <text text="18" x="-4" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="35"/>
-        <text text="N2" x="14" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="34"/>
-        <text text="L2" x="25" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="34"/>
-        <text text="!" x="-4" font="Sans Serif,18,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="14"/>
-        <polygon y1="-10" antialias="false" x2="10" x1="0" x3="-10" y3="10" y4="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10" x4="0"/>
-        <text text="CE" x="10" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" y="-8"/>
-        <line y1="15" antialias="false" x2="0" end1="none" length2="1.5" x1="0" end2="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="19"/>
-        <line y1="19" antialias="false" x2="-4" end1="none" length2="1.5" x1="-1" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="19"/>
-        <line y1="30" antialias="false" x2="-10" end1="none" length2="1.5" x1="-10" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="25"/>
-        <line y1="25" antialias="false" x2="-8" end1="none" length2="1.5" x1="-10" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="25"/>
-        <line y1="25" antialias="false" x2="-3" end1="none" length2="1.5" x1="-8" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="22"/>
-        <line y1="29" antialias="false" x2="0" end1="none" length2="1.5" x1="0" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="25"/>
-        <line y1="25" antialias="false" x2="-3" end1="none" length2="1.5" x1="0" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="25"/>
-        <line y1="20" antialias="false" x2="-4" end1="none" length2="1.5" x1="-4" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="22"/>
-        <dynamic_text frame="false" Halignment="AlignLeft" Valignment="AlignTop" text_width="-1" text_from="ElementInfo" x="60" z="20" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" rotation="0" y="-10" uuid="{876f4af1-6b26-4b00-8103-7291934f4b60}">
+        <polygon style="line-style:normal;line-weight:thin;filling:black;color:black" x1="15" x5="13" y8="-6" y1="-7" y6="2" x2="19" x4="19" x7="14" x3="16" y4="0" y3="1" y2="-7" x6="15" y5="10" antialias="true" x8="15" y7="3"/>
+        <rect rx="0" height="70" ry="0" antialias="false" width="60" y="-30" x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text color="#000000" rotation="0" y="-20" x="-4" text="L1" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" rotation="0" y="-20" x="14" text="N1" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" rotation="0" y="35" x="-14" text="17" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" rotation="0" y="35" x="-4" text="18" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" rotation="0" y="34" x="14" text="N2" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" rotation="0" y="34" x="25" text="L2" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" rotation="0" y="14" x="-4" text="!" font="Sans Serif,18,-1,5,50,0,0,0,0,0"/>
+        <polygon y3="10" x4="0" antialias="false" x3="-10" y2="10" y4="-10" x2="10" x1="0" y1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text color="#000000" rotation="0" y="-8" x="10" text="CE" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <line end2="none" antialias="false" end1="none" y2="19" length2="1.5" x2="0" x1="0" y1="15" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line end2="none" antialias="false" end1="none" y2="19" length2="1.5" x2="-4" x1="-1" y1="19" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" antialias="false" end1="none" y2="25" length2="1.5" x2="-10" x1="-10" y1="30" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" antialias="false" end1="none" y2="25" length2="1.5" x2="-8" x1="-10" y1="25" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" antialias="false" end1="none" y2="22" length2="1.5" x2="-3" x1="-8" y1="25" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" antialias="false" end1="none" y2="25" length2="1.5" x2="0" x1="0" y1="29" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" antialias="false" end1="none" y2="25" length2="1.5" x2="-3" x1="0" y1="25" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" antialias="false" end1="none" y2="22" length2="1.5" x2="-4" x1="-4" y1="20" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text text_from="ElementInfo" uuid="{876f4af1-6b26-4b00-8103-7291934f4b60}" rotation="0" Valignment="AlignTop" frame="false" y="-10" x="60" text_width="-1" z="20" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" Halignment="AlignLeft">
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>
-        <terminal orientation="s" x="20" y="40"/>
-        <terminal orientation="s" x="-10" y="40"/>
-        <terminal orientation="n" x="20" y="-30"/>
-        <terminal orientation="n" x="0" y="-30"/>
-        <terminal orientation="s" x="0" y="40"/>
-        <terminal orientation="s" x="10" y="40"/>
-        <terminal orientation="s" x="30" y="40"/>
+        <terminal orientation="s" y="40" x="20"/>
+        <terminal orientation="s" y="40" x="-10"/>
+        <terminal orientation="n" y="-30" x="20"/>
+        <terminal orientation="n" y="-30" x="0"/>
+        <terminal orientation="s" y="40" x="0"/>
+        <terminal orientation="s" y="40" x="10"/>
+        <terminal orientation="s" y="40" x="30"/>
     </description>
 </definition>
