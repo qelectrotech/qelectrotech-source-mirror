@@ -13,12 +13,12 @@
         <elementInformation show="1" name="label">Dimmer</elementInformation>
         <elementInformation show="1" name="plant">SCS MyHOME</elementInformation>
         <elementInformation show="1" name="comment">bticino F418</elementInformation>
-        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="unity"></elementInformation>
         <elementInformation show="1" name="quantity"></elementInformation>
         <elementInformation show="1" name="description">Dimmer for LED</elementInformation>
         <elementInformation show="1" name="designation">F418</elementInformation>
-        <elementInformation show="1" name="manufacturer-reference">F418</elementInformation>
+        <elementInformation show="1" name="manufacturer_reference">F418</elementInformation>
         <elementInformation show="1" name="supplier"></elementInformation>
         <elementInformation show="1" name="manufacturer">bticino</elementInformation>
     </elementInformations>

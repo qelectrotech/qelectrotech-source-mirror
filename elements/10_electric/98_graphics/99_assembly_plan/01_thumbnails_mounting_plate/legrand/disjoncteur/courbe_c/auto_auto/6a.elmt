@@ -6,9 +6,9 @@
     <elementInformations>
         <elementInformation show="1" name="plant"></elementInformation>
         <elementInformation show="1" name="designation">4067 81</elementInformation>
-        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="unity"></elementInformation>
-        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="comment"></elementInformation>
         <elementInformation show="1" name="description">Disjoncteur Phase+Neutre DNX³4500 6kA Auto/Auto 1P+N 230V~ 6A courbe C - 1 module</elementInformation>
         <elementInformation show="1" name="manufacturer">Legrand</elementInformation>

@@ -6,7 +6,7 @@
     </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">Euchner</elementInformation>
-        <elementInformation show="1" name="manufacturer-reference">083 966</elementInformation>
+        <elementInformation show="1" name="manufacturer_reference">083 966</elementInformation>
     </elementInformations>
     <informations></informations>
     <description>

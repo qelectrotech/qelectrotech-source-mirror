@@ -9,10 +9,10 @@
         <elementInformation name="comment" show="1"></elementInformation>
         <elementInformation name="manufacturer" show="1">HEDRESS HAUSER </elementInformation>
         <elementInformation name="supplier" show="1"></elementInformation>
-        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
         <elementInformation name="designation" show="1">PROMAG 10L</elementInformation>
         <elementInformation name="plant" show="1"></elementInformation>
-        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
         <elementInformation name="description" show="1"></elementInformation>
         <elementInformation name="unity" show="1"></elementInformation>
     </elementInformations>

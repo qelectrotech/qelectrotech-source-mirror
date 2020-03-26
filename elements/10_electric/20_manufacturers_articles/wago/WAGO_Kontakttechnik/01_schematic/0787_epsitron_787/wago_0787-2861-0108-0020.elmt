@@ -46,7 +46,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <text x="-330" text="WAGO 0787-2861/0108-0020" size="9" y="45"/>
         <text x="286" text="8" size="5" y="-42"/>
         <text x="45" text="5" size="5" y="-42"/>
-        <input x="150" text="1 A" size="9" rotate="true" y="41" tagg="tension-protocol"/>
+        <input x="150" text="1 A" size="9" rotate="true" y="41" tagg="tension_protocol"/>
         <terminal orientation="n" x="-40" y="-40"/>
         <terminal orientation="n" x="280" y="-40"/>
         <terminal orientation="n" x="40" y="-40"/>

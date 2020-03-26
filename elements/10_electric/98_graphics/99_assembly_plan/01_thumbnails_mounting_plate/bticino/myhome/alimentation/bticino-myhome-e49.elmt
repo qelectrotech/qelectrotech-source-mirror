@@ -7,12 +7,12 @@
         <elementInformation show="1" name="label">Power</elementInformation>
         <elementInformation show="1" name="plant">SCS MyHOME</elementInformation>
         <elementInformation show="1" name="comment">BTicino E49</elementInformation>
-        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="unity"></elementInformation>
         <elementInformation show="1" name="quantity"></elementInformation>
         <elementInformation show="1" name="description">SCS power in DIN module</elementInformation>
         <elementInformation show="1" name="designation">E49</elementInformation>
-        <elementInformation show="1" name="manufacturer-reference">E49</elementInformation>
+        <elementInformation show="1" name="manufacturer_reference">E49</elementInformation>
         <elementInformation show="1" name="supplier"></elementInformation>
         <elementInformation show="1" name="manufacturer">BTicino - Legrang Group</elementInformation>
     </elementInformations>

@@ -770,7 +770,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 <property name="date" show="1"></property>
             </properties>
         </inset>
-        <conductors num="_" formula="" numsize="7" bicolor="false" vertirotatetext="270" onetextperfolio="0" type="multi" function="" horizrotatetext="0" horizontal-alignment="AlignBottom" color2="#000000" displaytext="1" tension-protocol="" dash-size="1" condsize="1" vertical-alignment="AlignRight"/>
+        <conductors num="_" formula="" numsize="7" bicolor="false" vertirotatetext="270" onetextperfolio="0" type="multi" function="" horizrotatetext="0" horizontal-alignment="AlignBottom" color2="#000000" displaytext="1" tension_protocol="" dash-size="1" condsize="1" vertical-alignment="AlignRight"/>
         <report label="%f-%l%c"/>
         <xrefs>
             <xref showpowerctc="true" master_label="%f-%l%c" slave_label="(%f-%l%c)" powerprefix="P" switchprefix="INV" displayhas="cross" offset="0" type="coil" delayprefix="T" snapto="bottom"/>
@@ -865,7 +865,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             <property name="d-date" show="1"></property>
             <property name="e-nom" show="1"></property>
         </properties>
-        <defaultconductor num="_" formula="" numsize="7" bicolor="false" vertirotatetext="270" onetextperfolio="0" type="multi" function="" horizrotatetext="0" horizontal-alignment="AlignBottom" color2="#000000" displaytext="1" tension-protocol="" dash-size="1" condsize="1" vertical-alignment="AlignRight"/>
+        <defaultconductor num="_" formula="" numsize="7" bicolor="false" vertirotatetext="270" onetextperfolio="0" type="multi" function="" horizrotatetext="0" horizontal-alignment="AlignBottom" color2="#000000" displaytext="1" tension_protocol="" dash-size="1" condsize="1" vertical-alignment="AlignRight"/>
         <elements>
             <element y="110" prefix="" x="230" uuid="{bb26f9b5-f3fd-4c52-b744-c641f208212c}" type="embed://import/20nomenclatures/spec_cablage.elmt" orientation="0" freezeLabel="false" z="10">
                 <terminals>
@@ -1230,7 +1230,7 @@ Alternative</text>
         </shapes>
     </diagram>
     <diagram locmach="" filename="Silo de Stockage Grain Atelier ELEEC" height="660" author="N.VIVION" cols="17" displaycols="true" colsize="60" version="0.70-dev+svn5685" plant="" rows="8" rowsize="80" freezeNewConductor="false" order="2" indexrev="" freezeNewElement="false" folio="%id/%total" conductorAutonum="NAFOL3" auto_page_num="" titleblocktemplate="DIN A4 ISO" displayrows="true" titleblocktemplateCollection="embedded" date="20150626" displayAt="bottom" title="ARRIVEE PUISSANCE">
-        <defaultconductor num="_" formula="" numsize="7" bicolor="false" vertirotatetext="270" onetextperfolio="0" type="multi" function="" horizrotatetext="0" horizontal-alignment="AlignBottom" color2="#000000" displaytext="1" tension-protocol="" dash-size="1" condsize="1" vertical-alignment="AlignRight"/>
+        <defaultconductor num="_" formula="" numsize="7" bicolor="false" vertirotatetext="270" onetextperfolio="0" type="multi" function="" horizrotatetext="0" horizontal-alignment="AlignBottom" color2="#000000" displaytext="1" tension_protocol="" dash-size="1" condsize="1" vertical-alignment="AlignRight"/>
         <elements>
             <element y="130" prefix="" x="40" uuid="{2caf56c6-1806-4343-8b0e-e877d56fd208}" type="embed://import/061bornes/borne_finale.elmt" orientation="1" freezeLabel="false" z="10">
                 <terminals>
@@ -1456,19 +1456,19 @@ Alternative</text>
             </element>
         </elements>
         <conductors>
-            <conductor num="" ground="true" freezeLabel="false" neutral="false" condsize="1" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" numsize="7" displaytext="1" style="line-style: dashed;" y="0" phase="0" dash-size="1" terminal2="5" tension-protocol="" x="0" onetextperfolio="0" vertirotatetext="270" horizontal-alignment="AlignBottom" formula="" color2="#000000" type="single" function="" terminal1="0">
+            <conductor num="" ground="true" freezeLabel="false" neutral="false" condsize="1" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" numsize="7" displaytext="1" style="line-style: dashed;" y="0" phase="0" dash-size="1" terminal2="5" tension_protocol="" x="0" onetextperfolio="0" vertirotatetext="270" horizontal-alignment="AlignBottom" formula="" color2="#000000" type="single" function="" terminal1="0">
                 <sequentialNumbers/>
             </conductor>
-            <conductor num="" freezeLabel="false" condsize="1" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" numsize="7" displaytext="1" y="0" dash-size="1" terminal2="6" tension-protocol="" x="0" onetextperfolio="0" vertirotatetext="270" horizontal-alignment="AlignBottom" formula="" color2="#000000" type="multi" function="" terminal1="1">
+            <conductor num="" freezeLabel="false" condsize="1" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" numsize="7" displaytext="1" y="0" dash-size="1" terminal2="6" tension_protocol="" x="0" onetextperfolio="0" vertirotatetext="270" horizontal-alignment="AlignBottom" formula="" color2="#000000" type="multi" function="" terminal1="1">
                 <sequentialNumbers/>
             </conductor>
-            <conductor num="" freezeLabel="false" condsize="1" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" numsize="7" displaytext="1" y="0" dash-size="1" terminal2="7" tension-protocol="" x="0" onetextperfolio="0" vertirotatetext="270" horizontal-alignment="AlignBottom" formula="" color2="#000000" type="multi" function="" terminal1="2">
+            <conductor num="" freezeLabel="false" condsize="1" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" numsize="7" displaytext="1" y="0" dash-size="1" terminal2="7" tension_protocol="" x="0" onetextperfolio="0" vertirotatetext="270" horizontal-alignment="AlignBottom" formula="" color2="#000000" type="multi" function="" terminal1="2">
                 <sequentialNumbers/>
             </conductor>
-            <conductor num="" freezeLabel="false" condsize="1" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" numsize="7" displaytext="1" y="0" dash-size="1" terminal2="8" tension-protocol="" x="0" onetextperfolio="0" vertirotatetext="270" horizontal-alignment="AlignBottom" formula="" color2="#000000" type="multi" function="" terminal1="3">
+            <conductor num="" freezeLabel="false" condsize="1" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" numsize="7" displaytext="1" y="0" dash-size="1" terminal2="8" tension_protocol="" x="0" onetextperfolio="0" vertirotatetext="270" horizontal-alignment="AlignBottom" formula="" color2="#000000" type="multi" function="" terminal1="3">
                 <sequentialNumbers/>
             </conductor>
-            <conductor num="" freezeLabel="false" condsize="1" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" numsize="7" displaytext="1" y="0" dash-size="1" terminal2="9" tension-protocol="" x="0" onetextperfolio="0" vertirotatetext="270" horizontal-alignment="AlignBottom" formula="" color2="#000000" type="multi" function="" terminal1="4">
+            <conductor num="" freezeLabel="false" condsize="1" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" numsize="7" displaytext="1" y="0" dash-size="1" terminal2="9" tension_protocol="" x="0" onetextperfolio="0" vertirotatetext="270" horizontal-alignment="AlignBottom" formula="" color2="#000000" type="multi" function="" terminal1="4">
                 <segment orientation="horizontal" length="9"/>
                 <segment orientation="horizontal" length="0"/>
                 <segment orientation="horizontal" length="21"/>
@@ -1477,19 +1477,19 @@ Alternative</text>
                 <segment orientation="horizontal" length="9"/>
                 <sequentialNumbers/>
             </conductor>
-            <conductor num="N" freezeLabel="false" condsize="1" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" numsize="7" displaytext="1" y="0" userx="580" dash-size="1" terminal2="10" tension-protocol="" x="0" onetextperfolio="0" vertirotatetext="270" horizontal-alignment="AlignBottom" formula="" color2="#000000" usery="110" type="multi" function="" terminal1="17">
+            <conductor num="N" freezeLabel="false" condsize="1" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" numsize="7" displaytext="1" y="0" userx="580" dash-size="1" terminal2="10" tension_protocol="" x="0" onetextperfolio="0" vertirotatetext="270" horizontal-alignment="AlignBottom" formula="" color2="#000000" usery="110" type="multi" function="" terminal1="17">
                 <sequentialNumbers/>
             </conductor>
-            <conductor num="L1" freezeLabel="false" condsize="1" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" numsize="7" displaytext="1" y="0" userx="580" dash-size="1" terminal2="16" tension-protocol="" x="0" onetextperfolio="0" vertirotatetext="270" horizontal-alignment="AlignBottom" formula="" color2="#000000" usery="90" type="multi" function="" terminal1="11">
+            <conductor num="L1" freezeLabel="false" condsize="1" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" numsize="7" displaytext="1" y="0" userx="580" dash-size="1" terminal2="16" tension_protocol="" x="0" onetextperfolio="0" vertirotatetext="270" horizontal-alignment="AlignBottom" formula="" color2="#000000" usery="90" type="multi" function="" terminal1="11">
                 <sequentialNumbers/>
             </conductor>
-            <conductor num="L2" freezeLabel="false" condsize="1" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" numsize="7" displaytext="1" y="0" userx="580" dash-size="1" terminal2="12" tension-protocol="" x="0" onetextperfolio="0" vertirotatetext="270" horizontal-alignment="AlignBottom" formula="" color2="#000000" usery="70" type="multi" function="" terminal1="15">
+            <conductor num="L2" freezeLabel="false" condsize="1" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" numsize="7" displaytext="1" y="0" userx="580" dash-size="1" terminal2="12" tension_protocol="" x="0" onetextperfolio="0" vertirotatetext="270" horizontal-alignment="AlignBottom" formula="" color2="#000000" usery="70" type="multi" function="" terminal1="15">
                 <sequentialNumbers/>
             </conductor>
-            <conductor num="L3" freezeLabel="false" condsize="1" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" numsize="7" displaytext="1" y="0" userx="580" dash-size="1" terminal2="14" tension-protocol="" x="0" onetextperfolio="0" vertirotatetext="270" horizontal-alignment="AlignBottom" formula="" color2="#000000" usery="50" type="multi" function="" terminal1="13">
+            <conductor num="L3" freezeLabel="false" condsize="1" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" numsize="7" displaytext="1" y="0" userx="580" dash-size="1" terminal2="14" tension_protocol="" x="0" onetextperfolio="0" vertirotatetext="270" horizontal-alignment="AlignBottom" formula="" color2="#000000" usery="50" type="multi" function="" terminal1="13">
                 <sequentialNumbers/>
             </conductor>
-            <conductor num="" ground="true" freezeLabel="false" neutral="false" condsize="1" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" numsize="7" displaytext="1" style="line-style: dashed;" y="0" phase="0" dash-size="1" terminal2="18" tension-protocol="" x="0" onetextperfolio="0" vertirotatetext="270" horizontal-alignment="AlignBottom" formula="" color2="#000000" type="single" function="" terminal1="5">
+            <conductor num="" ground="true" freezeLabel="false" neutral="false" condsize="1" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" numsize="7" displaytext="1" style="line-style: dashed;" y="0" phase="0" dash-size="1" terminal2="18" tension_protocol="" x="0" onetextperfolio="0" vertirotatetext="270" horizontal-alignment="AlignBottom" formula="" color2="#000000" type="single" function="" terminal1="5">
                 <sequentialNumbers/>
             </conductor>
         </conductors>
@@ -1505,7 +1505,7 @@ Alternative</text>
         </shapes>
     </diagram>
     <diagram locmach="" filename="Silo de Stockage Grain Atelier ELEEC" height="660" author="N.VIVION" cols="17" displaycols="true" colsize="60" version="0.70-dev+svn5685" plant="" rows="8" rowsize="80" freezeNewConductor="false" order="3" indexrev="" freezeNewElement="false" folio="%id/%total" conductorAutonum="NAFOL5" auto_page_num="" titleblocktemplate="DIN A4 ISO" displayrows="true" titleblocktemplateCollection="embedded" date="20150626" displayAt="bottom" title="Dépats Moteurs">
-        <defaultconductor num="_" formula="" numsize="7" bicolor="false" vertirotatetext="270" onetextperfolio="1" type="multi" function="" horizrotatetext="0" horizontal-alignment="AlignBottom" color2="#000000" displaytext="1" tension-protocol="" dash-size="1" condsize="1" vertical-alignment="AlignRight"/>
+        <defaultconductor num="_" formula="" numsize="7" bicolor="false" vertirotatetext="270" onetextperfolio="1" type="multi" function="" horizrotatetext="0" horizontal-alignment="AlignBottom" color2="#000000" displaytext="1" tension_protocol="" dash-size="1" condsize="1" vertical-alignment="AlignRight"/>
         <elements>
             <element y="650" prefix="" x="990" uuid="{8193428b-91f8-4cc9-80c7-5d9aef302730}" type="embed://import/06renvoi/02next_folio.elmt" orientation="0" freezeLabel="false" z="10">
                 <terminals>
@@ -1684,19 +1684,19 @@ Alternative</text>
             </element>
         </elements>
         <conductors>
-            <conductor num="" ground="true" freezeLabel="false" neutral="false" condsize="1" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" numsize="7" displaytext="1" style="line-style: dashed;" y="20" phase="0" dash-size="1" terminal2="1" tension-protocol="" x="0" onetextperfolio="0" vertirotatetext="270" horizontal-alignment="AlignBottom" formula="" color2="#000000" type="single" function="" terminal1="0">
+            <conductor num="" ground="true" freezeLabel="false" neutral="false" condsize="1" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" numsize="7" displaytext="1" style="line-style: dashed;" y="20" phase="0" dash-size="1" terminal2="1" tension_protocol="" x="0" onetextperfolio="0" vertirotatetext="270" horizontal-alignment="AlignBottom" formula="" color2="#000000" type="single" function="" terminal1="0">
                 <sequentialNumbers/>
             </conductor>
-            <conductor num="L2" freezeLabel="false" condsize="1" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" numsize="7" displaytext="1" y="0" userx="500" dash-size="1" terminal2="7" tension-protocol="" x="0" onetextperfolio="0" vertirotatetext="270" horizontal-alignment="AlignBottom" formula="" color2="#000000" usery="70" type="multi" function="" terminal1="4">
+            <conductor num="L2" freezeLabel="false" condsize="1" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" numsize="7" displaytext="1" y="0" userx="500" dash-size="1" terminal2="7" tension_protocol="" x="0" onetextperfolio="0" vertirotatetext="270" horizontal-alignment="AlignBottom" formula="" color2="#000000" usery="70" type="multi" function="" terminal1="4">
                 <sequentialNumbers/>
             </conductor>
-            <conductor num="L1" freezeLabel="false" condsize="1" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" numsize="7" displaytext="1" y="0" userx="500" dash-size="1" terminal2="8" tension-protocol="" x="0" onetextperfolio="0" vertirotatetext="270" horizontal-alignment="AlignBottom" formula="" color2="#000000" usery="90" type="multi" function="" terminal1="3">
+            <conductor num="L1" freezeLabel="false" condsize="1" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" numsize="7" displaytext="1" y="0" userx="500" dash-size="1" terminal2="8" tension_protocol="" x="0" onetextperfolio="0" vertirotatetext="270" horizontal-alignment="AlignBottom" formula="" color2="#000000" usery="90" type="multi" function="" terminal1="3">
                 <sequentialNumbers/>
             </conductor>
-            <conductor num="N" freezeLabel="false" condsize="1" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" numsize="7" displaytext="1" y="0" userx="500" dash-size="1" terminal2="9" tension-protocol="" x="0" onetextperfolio="0" vertirotatetext="270" horizontal-alignment="AlignBottom" formula="" color2="#000000" usery="110" type="multi" function="" terminal1="2">
+            <conductor num="N" freezeLabel="false" condsize="1" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" numsize="7" displaytext="1" y="0" userx="500" dash-size="1" terminal2="9" tension_protocol="" x="0" onetextperfolio="0" vertirotatetext="270" horizontal-alignment="AlignBottom" formula="" color2="#000000" usery="110" type="multi" function="" terminal1="2">
                 <sequentialNumbers/>
             </conductor>
-            <conductor num="L3" freezeLabel="false" condsize="1" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" numsize="7" displaytext="1" y="0" userx="500" dash-size="1" terminal2="6" tension-protocol="" x="0" onetextperfolio="0" vertirotatetext="270" horizontal-alignment="AlignBottom" formula="" color2="#000000" usery="50" type="multi" function="" terminal1="5">
+            <conductor num="L3" freezeLabel="false" condsize="1" vertical-alignment="AlignRight" horizrotatetext="0" bicolor="false" numsize="7" displaytext="1" y="0" userx="500" dash-size="1" terminal2="6" tension_protocol="" x="0" onetextperfolio="0" vertirotatetext="270" horizontal-alignment="AlignBottom" formula="" color2="#000000" usery="50" type="multi" function="" terminal1="5">
                 <sequentialNumbers/>
             </conductor>
         </conductors>
@@ -1711,7 +1711,7 @@ Alternative</text>
         <properties>
             <property name="date" show="1"></property>
         </properties>
-        <defaultconductor num="" formula="" numsize="7" bicolor="false" vertirotatetext="270" onetextperfolio="0" type="multi" function="" horizrotatetext="0" horizontal-alignment="AlignBottom" color2="#000000" displaytext="1" tension-protocol="" dash-size="1" condsize="1" vertical-alignment="AlignRight"/>
+        <defaultconductor num="" formula="" numsize="7" bicolor="false" vertirotatetext="270" onetextperfolio="0" type="multi" function="" horizrotatetext="0" horizontal-alignment="AlignBottom" color2="#000000" displaytext="1" tension_protocol="" dash-size="1" condsize="1" vertical-alignment="AlignRight"/>
         <inputs>
             <input y="300" x="340" rotation="270" text="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;>&#xa;&lt;html>&lt;head>&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; />&lt;style type=&quot;text/css&quot;>&#xa;p, li { white-space: pre-wrap; }&#xa;&lt;/style>&lt;/head>&lt;body style=&quot; font-family:'Arimo,9,-1,5,75,1,0,0,0,0,Bold Italic'; font-size:9pt; font-weight:400; font-style:normal;&quot;>&#xa;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;>&lt;span style=&quot; font-family:'Sans Serif';&quot;>14&lt;/span>&lt;/p>&lt;/body>&lt;/html>"/>
             <input y="300" x="320" rotation="270" text="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;>&#xa;&lt;html>&lt;head>&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; />&lt;style type=&quot;text/css&quot;>&#xa;p, li { white-space: pre-wrap; }&#xa;&lt;/style>&lt;/head>&lt;body style=&quot; font-family:'Arimo,9,-1,5,75,1,0,0,0,0,Bold Italic'; font-size:9pt; font-weight:400; font-style:normal;&quot;>&#xa;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;>&lt;span style=&quot; font-family:'Sans Serif';&quot;>13&lt;/span>&lt;/p>&lt;/body>&lt;/html>"/>

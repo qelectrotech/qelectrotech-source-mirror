@@ -10,10 +10,10 @@
         <elementInformation name="manufacturer" show="1">BTicino - Legrang Group</elementInformation>
         <elementInformation name="unity" show="1"></elementInformation>
         <elementInformation name="description" show="1">Configurator GEN</elementInformation>
-        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
         <elementInformation name="designation" show="1">3501/GEN</elementInformation>
         <elementInformation name="plant" show="1">SCS MyHOME</elementInformation>
-        <elementInformation name="manufacturer-reference" show="1">3501/GEN</elementInformation>
+        <elementInformation name="manufacturer_reference" show="1">3501/GEN</elementInformation>
         <elementInformation name="label" show="1">Configurator GEN</elementInformation>
         <elementInformation name="comment" show="1">BTicino configurator GEN</elementInformation>
     </elementInformations>

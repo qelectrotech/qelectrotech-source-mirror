@@ -21,11 +21,11 @@
         <elementInformation show="1" name="manufacturer">SCHNEIDER</elementInformation>
         <elementInformation show="1" name="label"></elementInformation>
         <elementInformation show="1" name="supplier"></elementInformation>
-        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="designation">GV2RT08</elementInformation>
         <elementInformation show="1" name="quantity"></elementInformation>
         <elementInformation show="1" name="unity"></elementInformation>
-        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
     </elementInformations>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
