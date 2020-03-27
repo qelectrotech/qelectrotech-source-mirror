@@ -1652,7 +1652,11 @@ DiagramPosition Diagram::convertPosition(const QPointF &pos) {
  */
 QPointF Diagram::snapToGrid(const QPointF &p)
 {
-		//Return a point rounded to the nearest pixel
+	QSettings settings;
+	int xGrid = settings.value("diagrameditor/Xgrid", Diagram::xGrid).toInt();
+	int yGrid = settings.value("diagrameditor/Ygrid", Diagram::yGrid).toInt();
+
+	//Return a point rounded to the nearest pixel
 	if (QApplication::keyboardModifiers().testFlag(Qt::ControlModifier))
 	{
 		int p_x = qRound(p.x());
@@ -1661,8 +1665,8 @@ QPointF Diagram::snapToGrid(const QPointF &p)
 	}
 
 		//Return a point snapped to the grid
-	int p_x = qRound(p.x() / Diagram::xGrid) * Diagram::xGrid;
-	int p_y = qRound(p.y() / Diagram::yGrid) * Diagram::yGrid;
+	int p_x = qRound(p.x() / xGrid) * xGrid;
+	int p_y = qRound(p.y() / yGrid) * yGrid;
 	return (QPointF(p_x, p_y));
 }
 
