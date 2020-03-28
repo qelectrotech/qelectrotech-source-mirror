@@ -354,7 +354,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="24"/>
         <source>Folio</source>
-        <translation>Σελίδα</translation>
+        <translation>Φύλλο</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="132"/>
@@ -449,7 +449,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="346"/>
         <source>Folio</source>
-        <translation>Σελίδα</translation>
+        <translation>Φύλλο</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="363"/>
@@ -485,7 +485,12 @@
 -Update Only Existent: only existent Elements will be updated. New Elements will be assigned their formula but will not update once created.
 -Disable: both New and Existent Element labels will not be updated. This is valid for new folios as well.
 Note: These options DO NOT allow or block Auto Numberings, only their Update Policy.</source>
-        <translation type="unfinished"></translation>
+        <translation>Σε αυτό το μενού μπορείτε να ορίσετε αν θέλετε να ενημερώνονται ή όχι οι αυτόματες αριθμίσεις. Για την Αυτόματη Αρίθμηση Στοιχείων έχετε 4 επιλογές Πολιτικής Ενημέρωσης:
+-Αμφότεροι: Οι ετικέτες των νέων και των υπαρχόντων στοιχείων θα ενημερώνονται. Αυτή είναι η προεπιλογή.
+-Ενημέρωση Μόνο Νέα: θα ενημερωθούν μόνο τα νέα στοιχεία που δημιουργήθηκαν. Οι ετικέτες των υπάρχοντων στοιχείων θα παγώσουν.
+-Ενημέρωση Μόνο Υπάρχοντα: μόνο τα στοιχεία που υπάρχουν θα ενημερωθούν. Στα νέα στοιχεία θα δοθεί ο τύπος τους αλλά δεν θα ενημερωθεί μόλις δημιουργηθεί.
+-Απενεργοποίηση: Οι ετικέτες Νέο και Υπάρχων στοιχείο δεν θα ενημερωθούν. Αυτό ισχύει και για τα νέα φύλλα.
+Σημείωση: Αυτές οι επιλογές ΔΕΝ επιτρέπουν ή αποκλείουν τις Αυτόματες αριθμίσεις, μόνο την πολιτική ενημέρωσης τους.</translation>
     </message>
 </context>
 <context>
@@ -1001,7 +1006,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/editor/graphicspart/customelementgraphicpart.cpp" line="463"/>
         <source>Déplacer une primitive</source>
-        <translation type="unfinished">Μετακίνηση ενός ακροδέκτη</translation>
+        <translation>Μετακίνηση ενός βασικού στοιχείου</translation>
     </message>
 </context>
 <context>
@@ -2006,7 +2011,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="243"/>
         <source>Déplacer une primitive</source>
-        <translation>Μετακίνηση ενός πρωτέυοντος</translation>
+        <translation>Μετακίνηση ενός βασικού στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="695"/>
@@ -2497,7 +2502,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
     <message>
         <location filename="../sources/exportdialog.cpp" line="439"/>
         <source>Folio</source>
-        <translation>Σελίδα</translation>
+        <translation>Φύλλο</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="440"/>
@@ -2725,7 +2730,18 @@ Si le chiffre défini dans le champ Valeur possède moins de digits que le type 
 Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Εδώ μπορείτε να ορίσετε την αρίθμηση των νέων φύλλων.
+-Η αρίθμηση αποτελείται από μια ελάχιστη μεταβλητή.
+-Μπορείτε να προσθέσετε ή να διαγράψετε μια μεταβλητή αριθμοδότησης χρησιμοποιώντας τα κουμπιά - και +.
+-Μια μεταβλητή αριθμοδότησης περιλαμβάνει: έναν τύπο, μια τιμή και μια αύξηση.
+
+-οι τύποι &quot;Αριθμός 1&quot;, &quot;Αριθμός 01&quot; και &quot;Αριθμός 001&quot; αντιπροσωπεύουν έναν αριθμητικό τύπο που ορίζεται στο πεδίο &quot;Τιμή&quot;, το οποίο αυξάνεται με κάθε νέο φύλλο από την τιμή του πεδίου &quot;Αύξηση&quot;.
+- &quot;Ψηφίο 01&quot; και &quot;Ψηφίο 001&quot; αντιστοιχούν αντίστοιχα στο διάγραμμα με ελάχιστο δύο και τρία ψηφία.
+Εάν το ψηφίο που ορίζεται στο πεδίο Τιμή έχει λιγότερα ψηφία από τον επιλεγμένο τύπο, θα προηγηθεί ένα ή δύο 0 για να τηρηθεί ο τύπος του.
+
+-Ο τύπος &quot;Κείμενο&quot; αντιπροσωπεύει ένα σταθερό κείμενο.
+Το πεδίο &quot;Αύξηση&quot; δεν χρησιμοποιείται.
+</translation>
     </message>
 </context>
 <context>
@@ -3879,7 +3895,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/configpages.cpp" line="84"/>
         <source>Folio</source>
-        <translation>Σελίδα</translation>
+        <translation>Φύλλο</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="85"/>
@@ -4057,7 +4073,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="194"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="311"/>
         <source>Folio</source>
-        <translation>Σελίδα</translation>
+        <translation>Φύλλο</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="92"/>
@@ -4632,7 +4648,7 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="438"/>
         <source>Folio</source>
-        <translation>Σελίδα</translation>
+        <translation>Φύλλο</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="441"/>
@@ -6386,7 +6402,7 @@ les conditions requises ne sont pas valides</source>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1373"/>
         <source>Trop de primitives, liste non générée.</source>
-        <translation>Πάρα πολλά τμήματα· ο κατάλογος δεν αποτυπώθηκε.</translation>
+        <translation>Πάρα πολλά βασικά στοιχεία, η λίστα δεν δημιουργήθηκε.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1472"/>
@@ -7353,7 +7369,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/editorcommands.cpp" line="585"/>
         <source>redimensionnement de %1 primitives</source>
         <comment>undo caption -- %1 always &gt; 1</comment>
-        <translation>αλλαγή διάστασης %1 αντικειμένων</translation>
+        <translation>αλλαγή διάστασης %1 βασικών στοιχείων</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="602"/>
@@ -7737,7 +7753,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="266"/>
         <source>Folio</source>
-        <translation>Σελίδα</translation>
+        <translation>Φύλλο</translation>
     </message>
     <message>
         <location filename="../sources/diagramfoliolist.cpp" line="267"/>
@@ -7881,7 +7897,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/conductornumexport.cpp" line="47"/>
         <source>numero_de_fileries_</source>
-        <translation type="unfinished"></translation>
+        <translation>αριθμός_αρχείων_</translation>
     </message>
     <message>
         <location filename="../sources/conductornumexport.cpp" line="52"/>
@@ -8974,7 +8990,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="78"/>
         <source>Aller à la correspondance suivante</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετάβαση στην επόμενη αντιστοίχιση</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="112"/>
@@ -8984,7 +9000,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="95"/>
         <source>Aller à la correspondance précédente</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετάβαση στην προηγούμενη αντιστοίχιση</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="27"/>
@@ -9009,7 +9025,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="162"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les folios&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ορίστε τις ιδιότητες που θέλετε να αντικαταστήσετε στα φύλλα&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="165"/>
@@ -9039,12 +9055,12 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="198"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer la correspondance sélectionnée&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Αντικατάσταση της επιλεγμένης αντιστοίχισης&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="211"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer les correspondances cochées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Αντικατάσταση των επιλεγμένων αντιστοιχίσεων&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="242"/>
@@ -9124,7 +9140,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="181"/>
         <source>Eléments report de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Στοιχεία αναφοράς φύλου</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="187"/>
@@ -9253,7 +9269,18 @@ Si le chiffre défini dans le champ Valeur possède moins de digits que le type 
 Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Εδώ μπορείτε να ορίσετε τον τρόπο αρίθμησης των νέων φύλλων.
+-Η αρίθμηση αποτελείται από μια ελάχιστη μεταβλητή.
+-Μπορείτε να προσθέσετε ή να διαγράψετε μια μεταβλητή αριθμοδότησης χρησιμοποιώντας τα κουμπιά - και +.
+-Μια μεταβλητή αριθμοδότησης περιλαμβάνει: έναν τύπο, μια τιμή και μια αύξηση.
+
+-οι τύποι &quot;Αριθμός 1&quot;, &quot;Αριθμός 01&quot; και &quot;Αριθμός 001&quot; αντιπροσωπεύουν έναν αριθμητικό τύπο που ορίζεται στο πεδίο &quot;Τιμή&quot;, το οποίο αυξάνεται με κάθε νέο φύλλο από την τιμή του πεδίου &quot;Αύξηση&quot;.
+- &quot;Ψηφίο 01&quot; και &quot;Ψηφίο 001&quot; αντιστοιχούν αντίστοιχα στο διάγραμμα με ελάχιστο δύο και τρία ψηφία.
+Εάν το ψηφίο που ορίζεται στο πεδίο Τιμή έχει λιγότερα ψηφία από τον επιλεγμένο τύπο, θα προηγηθεί ένα ή δύο 0 για να τηρηθεί ο τύπος του.
+
+-Ο τύπος &quot;Κείμενο&quot; αντιπροσωπεύει ένα σταθερό κείμενο.
+Το πεδίο &quot;Αύξηση&quot; δεν χρησιμοποιείται.
+</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="207"/>
@@ -9275,7 +9302,23 @@ Les autres champs ne sont pas utilisés.
 -Le type &quot;Folio&quot; représente le nom du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the conductor autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Εδώ μπορείτε να ορίσετε την αρίθμηση των νέων αγωγών.
+-Η αρίθμηση αποτελείται από μια ελάχιστη μεταβλητή.
+-Μπορείτε να προσθέσετε ή να διαγράψετε μια μεταβλητή αριθμοδότησης χρησιμοποιώντας τα κουμπιά - και +.
+-Μια μεταβλητή αριθμοδότησης περιλαμβάνει: έναν τύπο, μια τιμή και μια αύξηση.
+
+- οι τύποι &quot;Digit 1&quot;, &quot;Digit 01&quot; και &quot;Digit 001&quot; αντιπροσωπεύουν έναν αριθμητικό τύπο που ορίζεται στο πεδίο &quot;Τιμή&quot;, το οποίο αυξάνεται με κάθε νέο αγωγό από την τιμή του πεδίου &quot;Αύξηση&quot;.
+- &quot;Ψηφίο 01&quot; και &quot;Ψηφίο 001&quot; αντιστοιχούν αντίστοιχα στο διάγραμμα με ελάχιστο δύο και τρία ψηφία.
+Εάν το ψηφίο που ορίζεται στο πεδίο Τιμή έχει λιγότερα ψηφία από τον επιλεγμένο τύπο, θα προηγηθεί ένα ή δύο 0 για να τηρηθεί ο τύπος του.
+
+-Ο τύπος &quot;Κείμενο&quot; αντιπροσωπεύει ένα σταθερό κείμενο.
+Το πεδίο &quot;Αύξηση&quot; δεν χρησιμοποιείται.
+
+-Ο τύπος &quot;N° φύλλου&quot; αντιπροσωπεύει τον αριθμό του τρέχοντος φύλλου.
+Τα άλλα πεδία δεν χρησιμοποιούνται.
+
+-Ο τύπος &quot;Φύλλο&quot; αναπαριστά το όνομα του τρέχοντος φύλλου.
+Τα άλλα πεδία δεν χρησιμοποιούνται.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="206"/>
@@ -9440,7 +9483,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.h" line="50"/>
         <source>Éditer les propriétés d&apos;une primitive </source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία των ιδιοτήτων ενός βασικού στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="192"/>
@@ -10273,7 +10316,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="423"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : numéro du folio précédent&lt;/li&gt;&lt;li&gt;%{next-folio-num} : numéro du folio suivant&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Από προεπιλογή, είναι διαθέσιμες οι ακόλουθες μεταβλητές: &lt;ul&gt;&lt;li&gt;%{author}: συγγραφέας φύλλου &lt;/li&gt;&lt;li&gt;%{date}: ημερομηνία φύλλου &lt;/li&gt;&lt;li&gt;%{title}: τίτλος του φύλλου &lt;/li&gt;&lt;li&gt;%{filename}: όνομα αρχείου έργου &lt;/li&gt;&lt;li&gt;%{plant}: όνομα της εγκατάστασης (=) στην οποία βρίσκεται το φύλλο &lt;li&gt;%{locmach}: όνομα της τοποθεσίας (+) στην οποία βρίσκεται το φύλλο &lt;/li&gt;&lt;li&gt;%{indexrev}: δείκτης αναθεώρησης του φύλλου &lt;/li&gt;&lt;/li&gt;{version}: έκδοση του λογισμικού &lt;/li&gt;&lt;li&gt;% {folio}: αριθμός φύλλου &lt;/li&gt;&lt;li&gt;%{folio-id} }: Θέση φύλλου στο έργο &lt;/li&gt;&lt;li&gt;%{folio-total }:ο συνολικός αριθμός φύλλων στο έργο &lt;/li&gt;&lt;li&gt;% {previous-folio-num}: αριθμός του προηγούμενου φύλλου &lt;/li&gt;&lt;li&gt;% {projecttitle}: Τίτλος έργου&lt;/li&gt;&lt;li&gt;%{projectpath}: Διαδρομή έργου&lt;/li&gt;&lt;li&gt;% {projectfilename}: όνομα αρχείου &lt;/li&gt; &lt;li&gt;%{saveddate}: ημερομηνία αποθήκευσης του αρχείου &lt;/li&gt; &lt;li&gt;%{savedtime}: χρόνος αποθήκευσης του αρχείου &lt;/li&gt;&lt;li&gt;% {savedfilename} όνομα αποθηκευμένου αρχείου &lt;/li&gt;&lt;li&gt;% {savedfilepath}: διαδρομή του αποθηκευμένου αρχείου &lt;/li&gt; &lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="455"/>
@@ -10632,17 +10675,17 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="48"/>
         <source>XRef Vertical Offset:</source>
-        <translation type="unfinished"></translation>
+        <translation>Κάθετη μετατόπιση παραπομπών:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="55"/>
         <source>10px corresponds to 1 tile displacement</source>
-        <translation type="unfinished"></translation>
+        <translation>10πξ αντιστοιχούν σε 1 πλακίδιο μετατόπιση</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="58"/>
         <source>Set Vertical Offset for the Cross References. 10px corresponds to 1 tile displacement.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ορίστε την κάθετη μετατόπιση για τις παραπομπές, 10πξ αντιστοιχούν σε 1 πλακίδιο μετατόπιση</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="61"/>
@@ -10977,12 +11020,12 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="58"/>
         <source>Texte ou expression régulière</source>
-        <translation type="unfinished">Κείμενο ή κανονική έκφραση</translation>
+        <translation>Κείμενο ή κανονική έκφραση</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="69"/>
         <source>Folio</source>
-        <translation>Σελίδα</translation>
+        <translation>Φύλλο</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="74"/>
