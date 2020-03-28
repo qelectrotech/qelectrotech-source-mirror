@@ -50,6 +50,7 @@
 #include "addelementtextcommand.h"
 #include "conductornumexport.h"
 #include "qetgraphicstableitem.h"
+#include "nomenclaturemodel.h"
 
 #include <QMessageBox>
 #include <QStandardPaths>
@@ -403,9 +404,29 @@ void QETDiagramEditor::setUpActions()
 	
 		//Add a nomenclature item
 	m_add_nomenclature = new QAction(QET::Icons::TableOfContent, tr("Ajouter un tableau lambda (Fonctionnalité en cours de devellopement)"),this);
-	connect(m_add_nomenclature, &QAction::triggered, [this]() {
-		if(this->currentDiagramView()) {
-			this->currentDiagramView()->diagram()->addItem(new QetGraphicsTableItem());
+	connect(m_add_nomenclature, &QAction::triggered, [this]()
+	{
+		if(this->currentDiagramView())
+		{
+			auto table = new QetGraphicsTableItem();
+
+			/*******ONLY FOR TEST DURING DEVEL*********/
+			auto model = new NomenclatureModel(this->currentProject(), this->currentProject());
+			model->query("SELECT plant, location, label, comment, description FROM element_info ORDER BY plant, location, label, comment, description");
+			model->setData(model->index(0,0), Qt::AlignLeft, Qt::TextAlignmentRole);
+			model->setData(model->index(0,0), QETApp::diagramTextsFont(), Qt::FontRole);
+			model->setHeaderData(0, Qt::Horizontal, Qt::AlignHCenter, Qt::TextAlignmentRole);
+			model->setHeaderData(0, Qt::Horizontal, QETApp::diagramTextsFont(), Qt::FontRole);
+			model->setHeaderData(0, Qt::Horizontal, "Installation");
+			model->setHeaderData(1, Qt::Horizontal, "Localisation");
+			model->setHeaderData(2, Qt::Horizontal, "Label");
+			model->setHeaderData(3, Qt::Horizontal, "Commentaire");
+			model->setHeaderData(4, Qt::Horizontal, "Description");
+			table->setModel(model);
+			/******************************************/
+
+			this->currentDiagramView()->diagram()->addItem(table);
+			table->setPos(50,50);
 		}
 	});
 

@@ -249,8 +249,10 @@ void GraphicsTablePropertiesEditor::updateUi()
 		return;
 	}
 
-	m_header_button_group->button(m_table_item->model()->headerData(0, Qt::Horizontal, Qt::TextAlignmentRole).toInt())->setChecked(true);
-	m_table_button_group->button(m_table_item->model()->data(m_table_item->model()->index(0,0), Qt::TextAlignmentRole).toInt())->setChecked(true);
+	if (auto button = m_header_button_group->button(m_table_item->model()->headerData(0, Qt::Horizontal, Qt::TextAlignmentRole).toInt()))
+		button->setChecked(true);
+	if (auto button = m_table_button_group->button(m_table_item->model()->data(m_table_item->model()->index(0,0), Qt::TextAlignmentRole).toInt()))
+		button->setChecked(true);
 
 	setUpEditConnection();
 }

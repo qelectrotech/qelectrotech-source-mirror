@@ -102,6 +102,7 @@ INCLUDEPATH += sources \
                sources/NameList/ui \
                sources/utils \
                sources/pugixml \
+               sources/dataBase
 
 
 # Fichiers sources
@@ -130,7 +131,8 @@ HEADERS += $$files(sources/*.h) $$files(sources/ui/*.h) \
            $$files(sources/NameList/*.h) \
            $$files(sources/NameList/ui/*.h) \
            $$files(sources/utils/*.h) \
-           $$files(sources/pugixml/*.hpp)
+           $$files(sources/pugixml/*.hpp) \
+           $$files(sources/dataBase/*.h)
 
 SOURCES += $$files(sources/*.cpp) \
            $$files(sources/editor/*.cpp) \
@@ -158,7 +160,8 @@ SOURCES += $$files(sources/*.cpp) \
            $$files(sources/NameList/*.cpp) \
            $$files(sources/NameList/ui/*.cpp) \
            $$files(sources/utils/*.cpp) \
-           $$files(sources/pugixml/*.cpp)
+           $$files(sources/pugixml/*.cpp) \
+           $$files(sources/dataBase/*.cpp)
     
 # Liste des fichiers qui seront incorpores au binaire en tant que ressources Qt
 RESOURCES += qelectrotech.qrc

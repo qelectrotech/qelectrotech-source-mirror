@@ -52,31 +52,6 @@ QetGraphicsTableItem::QetGraphicsTableItem(QGraphicsItem *parent) :
 	connect(m_header_item, &QetGraphicsHeaderItem::heightResized, this, [this]() {
 		m_header_item->setPos(0, 0-m_header_item->rect().height());
 	});
-
-	/*******ONLY FOR TEST DURING DEVEL*********/
-	auto model = new QStandardItemModel(this);
-	int r = 20;
-	int c = 5;
-
-	for (int row = 0; row < r; ++row)
-	{
-		for (int column = 0; column < c; ++column) {
-			QStandardItem *item = new QStandardItem(QString("row %0, column %1").arg(row).arg(column));
-			model->setItem(row, column, item);
-		}
-	}
-	model->setData(model->index(0,0), Qt::AlignLeft, Qt::TextAlignmentRole);
-	model->setData(model->index(0,0), QETApp::diagramTextsFont(), Qt::FontRole);
-	model->setHeaderData(0, Qt::Horizontal, Qt::AlignHCenter, Qt::TextAlignmentRole);
-	model->setHeaderData(0, Qt::Horizontal, QETApp::diagramTextsFont(), Qt::FontRole);
-	model->setHeaderData(0, Qt::Horizontal, "Label");
-	model->setHeaderData(1, Qt::Horizontal, "Folio");
-	model->setHeaderData(2, Qt::Horizontal, "Fonction");
-	model->setHeaderData(3, Qt::Horizontal, "Fabricant");
-	model->setHeaderData(4, Qt::Horizontal, "Installation");
-	this->setModel(model);
-	this->setPos(50,50);
-	/******************************************/
 }
 
 QetGraphicsTableItem::~QetGraphicsTableItem()
@@ -399,7 +374,7 @@ void QetGraphicsTableItem::handlerMouseReleaseEvent(QGraphicsSceneMouseEvent *ev
 void QetGraphicsTableItem::adjustColumnsWidth()
 {
 	auto a = m_current_size.width() - minimumSize().width();
-	auto b = a/m_model->columnCount();
+	auto b = a/std::max(1,m_model->columnCount()); //avoid divide by 0
 
 	for(auto i= 0 ; i<m_model->columnCount() ; ++i) {
 		m_header_item->resizeSection(i, std::max(m_minimum_column_width.at(i), m_header_item->minimumSectionWidth().at(i)) + b);

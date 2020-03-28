@@ -71,6 +71,7 @@ class QETProject : public QObject
 	
 		// methods
 	public:
+		QUuid uuid() const;
 		ProjectState state() const;
 		QList<Diagram *> diagrams() const;
 		int getFolioSheetsQuantity() const; /// get the folio sheets quantity for this project
@@ -266,6 +267,7 @@ class QETProject : public QObject
 		QTimer m_save_backup_timer,
 			   m_autosave_timer;
 		KAutoSaveFile *m_backup_file = nullptr;
+		QUuid m_uuid = QUuid::createUuid();
 };
 
 Q_DECLARE_METATYPE(QETProject *)

@@ -35,6 +35,8 @@ class QetGraphicsHeaderItem;
  * Text font.
  * Text alignment in the cell
  * These two last parameters are not settable directly with the table but trough the model to be displayed by the table.
+ * The table search for font and alignment only in the index(0,0) for all the table.
+ * By consequence, set data in other index than 0,0 is useless also the alignment and font can't be set individually for each cell.
  */
 class QetGraphicsTableItem : public QetGraphicsItem
 {

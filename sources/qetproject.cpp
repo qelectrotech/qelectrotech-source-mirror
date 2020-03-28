@@ -113,6 +113,14 @@ QETProject::~QETProject() {
 }
 
 /**
+ * @brief QETProject::uuid
+ * @return the uuid of this project
+ */
+QUuid QETProject::uuid() const {
+	return m_uuid;
+}
+
+/**
  * @brief QETProject::init
  */
 void QETProject::init()
