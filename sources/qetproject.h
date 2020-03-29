@@ -25,6 +25,7 @@
 #include "titleblockproperties.h"
 #include "templatescollection.h"
 #include "properties/xrefproperties.h"
+#include "projectdatabase.h"
 
 class Diagram;
 class ElementsLocation;
@@ -71,6 +72,7 @@ class QETProject : public QObject
 	
 		// methods
 	public:
+		projectDataBase *dataBase();
 		QUuid uuid() const;
 		ProjectState state() const;
 		QList<Diagram *> diagrams() const;
@@ -268,6 +270,7 @@ class QETProject : public QObject
 			   m_autosave_timer;
 		KAutoSaveFile *m_backup_file = nullptr;
 		QUuid m_uuid = QUuid::createUuid();
+		projectDataBase m_data_base;
 };
 
 Q_DECLARE_METATYPE(QETProject *)

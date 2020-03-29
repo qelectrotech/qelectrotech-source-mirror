@@ -20,8 +20,6 @@
 
 #include <QAbstractTableModel>
 #include <QPointer>
-#include "projectdatabase.h"
-
 
 class QETProject;
 
@@ -46,9 +44,11 @@ class NomenclatureModel : public QAbstractTableModel
 		void query(const QString &query);
 
 	private:
+		void dataBaseUpdated();
+
+	private:
 		QPointer<QETProject> m_project;
 		QString m_query;
-		projectDataBase m_database;
 		QVector<QStringList> m_record;
 		QHash<int, QHash<int, QVariant>> m_header_data;
 		QHash<int, QVariant> m_index_0_0_data;

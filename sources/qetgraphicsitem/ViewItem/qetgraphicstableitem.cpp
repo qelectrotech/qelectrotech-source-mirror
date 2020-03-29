@@ -391,6 +391,7 @@ void QetGraphicsTableItem::dataChanged(const QModelIndex &topLeft, const QModelI
 	setUpColumnAndRowMinimumSize();
 	adjustSize();
 	setSize(size_);
+	qDebug() << "data changed";
 }
 
 /**

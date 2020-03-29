@@ -17,6 +17,7 @@
 */
 #include "nomenclaturemodel.h"
 #include "qetapp.h"
+#include "qetproject.h"
 
 #include <QModelIndex>
 #include <QFont>
@@ -28,9 +29,10 @@
  */
 NomenclatureModel::NomenclatureModel(QETProject *project, QObject *parent) :
 	QAbstractTableModel(parent),
-	m_project(project),
-	m_database(project)
-{}
+	m_project(project)
+{
+	connect(m_project->dataBase(), &projectDataBase::dataBaseUpdated, this, &NomenclatureModel::dataBaseUpdated);
+}
 
 /**
  * @brief NomenclatureModel::rowCount
@@ -159,6 +161,22 @@ QVariant NomenclatureModel::data(const QModelIndex &index, int role) const
 void NomenclatureModel::query(const QString &query)
 {
 	m_query = query;
+
+	if (m_project) {
+		m_project->dataBase()->updateDB();
+	}
+}
+
+/**
+ * @brief NomenclatureModel::dataBaseUpdated
+ * slot called when the project database is updated
+ */
+void NomenclatureModel::dataBaseUpdated()
+{
 	m_record.clear();
-	m_record = m_database.elementsInfoFromQuery(query);
+	m_record = m_project->dataBase()->elementsInfoFromQuery(m_query);
+
+	auto row = m_record.size();
+	auto col = row ? m_record.first().count() : 1;
+	emit dataChanged(this->index(0,0), this->index(row-1, col-1), QVector<int>(Qt::DisplayRole));
 }

@@ -62,6 +62,7 @@ class GraphicsTablePropertiesEditor : public PropertiesEditorWidget
 										m_edit_connection;
 		QButtonGroup *m_header_button_group = nullptr,
 					 *m_table_button_group = nullptr;
+		QWidget *m_current_model_editor = nullptr;
 };
 
 Q_DECLARE_METATYPE(QMargins)

@@ -76,6 +76,20 @@ QVector<QStringList> projectDataBase::elementsInfoFromQuery(const QString &query
 }
 
 /**
+ * @brief projectDataBase::updateDB
+ * Up to date the content of the data base.
+ * Except at the creation of this class,
+ * call this method each time you want to query the data base
+ * to be sure that the content reflect the current state of the project.
+ * Emit the singal dataBaseUpdated
+ */
+void projectDataBase::updateDB()
+{
+	populateElementsTable();
+	emit dataBaseUpdated();
+}
+
+/**
  * @brief projectDataBase::createDataBase
  * Create the data base
  * @return : true if the data base was successfully created.
@@ -114,8 +128,7 @@ bool projectDataBase::createDataBase()
 		query_.exec();
 	}
 
-	populateElementsTable();
-
+	updateDB();
 	return true;
 }
 

@@ -23,9 +23,8 @@
 #include <QSqlQuery>
 #include <QPointer>
 
-#include "qetproject.h"
-
 class Element;
+class QETProject;
 
 /**
  * @brief The projectDataBase class
@@ -43,6 +42,10 @@ class projectDataBase : public QObject
 		virtual ~projectDataBase() override;
 
 		QVector<QStringList> elementsInfoFromQuery(const QString &query);
+		void updateDB();
+
+	signals:
+		void dataBaseUpdated();
 
 	private:
 		bool createDataBase();

@@ -46,7 +46,8 @@ static int BACKUP_INTERVAL = 120000; //interval in ms of backup = 2min
  */
 QETProject::QETProject(QObject *parent) :
 	QObject              (parent),
-	m_titleblocks_collection(this)
+	m_titleblocks_collection(this),
+	m_data_base(this, this)
 {
 	m_elements_collection = new XmlElementCollection(this);
 	init();
@@ -60,7 +61,8 @@ QETProject::QETProject(QObject *parent) :
  */
 QETProject::QETProject(const QString &path, QObject *parent) :
 	QObject              (parent),
-	m_titleblocks_collection(this)
+	m_titleblocks_collection(this),
+	m_data_base(this, this)
 {
 	QFile file(path);
 	m_state = openFile(&file);
@@ -78,7 +80,8 @@ QETProject::QETProject(const QString &path, QObject *parent) :
  */
 QETProject::QETProject(KAutoSaveFile *backup, QObject *parent) :
 	QObject              (parent),
-	m_titleblocks_collection(this)
+	m_titleblocks_collection(this),
+	m_data_base(this, this)
 {
 	m_state = openFile(backup);
 		//Failed to open from the backup, try to open the crashed
@@ -110,6 +113,14 @@ QETProject::QETProject(KAutoSaveFile *backup, QObject *parent) :
  */
 QETProject::~QETProject() {
 	qDeleteAll(m_diagrams_list);
+}
+
+/**
+ * @brief QETProject::dataBase
+ * @return The data base of this project
+ */
+projectDataBase *QETProject::dataBase() {
+	return &m_data_base;
 }
 
 /**

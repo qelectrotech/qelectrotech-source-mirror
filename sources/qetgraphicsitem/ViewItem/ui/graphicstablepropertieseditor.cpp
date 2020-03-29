@@ -22,6 +22,7 @@
 #include "diagram.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "itemmodelcommand.h"
+#include "propertieseditorfactory.h"
 
 #include <QAbstractItemModel>
 #include <QFontDialog>
@@ -69,6 +70,11 @@ void GraphicsTablePropertiesEditor::setTable(QetGraphicsTableItem *table)
 		for (auto c : m_connect_list) {
 			disconnect(c);
 		}
+		if (m_current_model_editor)
+		{
+			ui->m_content_layout->removeWidget(m_current_model_editor);
+			m_current_model_editor->deleteLater();
+		}
 	}
 
 	m_table_item = table;
@@ -76,6 +82,12 @@ void GraphicsTablePropertiesEditor::setTable(QetGraphicsTableItem *table)
 	m_connect_list << connect(m_table_item.data(), &QetGraphicsTableItem::xChanged, this, &GraphicsTablePropertiesEditor::updateUi);
 	m_connect_list << connect(m_table_item.data(), &QetGraphicsTableItem::yChanged, this, &GraphicsTablePropertiesEditor::updateUi);
 
+
+	if (auto editor = PropertiesEditorFactory::propertiesEditor(table->model(), this))
+	{
+		ui->m_content_layout->insertWidget(0, editor);
+		m_current_model_editor = editor;
+	}
 	updateUi();
 }
 
