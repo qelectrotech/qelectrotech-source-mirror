@@ -459,7 +459,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="61"/>
         <source>Under Development</source>
-        <translation>Υπο Ανάπτυξη</translation>
+        <translation>Υπό Ανάπτυξη</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="62"/>
@@ -485,12 +485,12 @@
 -Update Only Existent: only existent Elements will be updated. New Elements will be assigned their formula but will not update once created.
 -Disable: both New and Existent Element labels will not be updated. This is valid for new folios as well.
 Note: These options DO NOT allow or block Auto Numberings, only their Update Policy.</source>
-        <translation>Σε αυτό το μενού μπορείτε να ορίσετε αν θέλετε να ενημερώνονται ή όχι οι αυτόματες αριθμίσεις. Για την Αυτόματη Αρίθμηση Στοιχείων έχετε 4 επιλογές Πολιτικής Ενημέρωσης:
+        <translation>Σε αυτό το μενού μπορείτε να ορίσετε αν θέλετε να ενημερώνονται ή όχι οι αυτόματες αριθμήσεις. Για την Αυτόματη Αρίθμηση Στοιχείων έχετε 4 επιλογές Πολιτικής Ενημέρωσης:
 -Αμφότεροι: Οι ετικέτες των νέων και των υπαρχόντων στοιχείων θα ενημερώνονται. Αυτή είναι η προεπιλογή.
--Ενημέρωση Μόνο Νέα: θα ενημερωθούν μόνο τα νέα στοιχεία που δημιουργήθηκαν. Οι ετικέτες των υπάρχοντων στοιχείων θα παγώσουν.
+-Ενημέρωση Μόνο Νέα: θα ενημερωθούν μόνο τα νέα στοιχεία που δημιουργήθηκαν. Οι ετικέτες των υπαρχόντων στοιχείων θα παγώσουν.
 -Ενημέρωση Μόνο Υπάρχοντα: μόνο τα στοιχεία που υπάρχουν θα ενημερωθούν. Στα νέα στοιχεία θα δοθεί ο τύπος τους αλλά δεν θα ενημερωθεί μόλις δημιουργηθεί.
 -Απενεργοποίηση: Οι ετικέτες Νέο και Υπάρχων στοιχείο δεν θα ενημερωθούν. Αυτό ισχύει και για τα νέα φύλλα.
-Σημείωση: Αυτές οι επιλογές ΔΕΝ επιτρέπουν ή αποκλείουν τις Αυτόματες αριθμίσεις, μόνο την πολιτική ενημέρωσης τους.</translation>
+Σημείωση: Αυτές οι επιλογές ΔΕΝ επιτρέπουν ή αποκλείουν τις Αυτόματες αριθμήσεις, μόνο την πολιτική ενημέρωσης τους.</translation>
     </message>
 </context>
 <context>
@@ -623,7 +623,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="128"/>
         <source>nomenclature_</source>
-        <translation>ονοματολογία_</translation>
+        <translation>τεκμηρίωση</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="132"/>
@@ -1386,7 +1386,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="514"/>
         <source>Modifier le cadre d&apos;un texte d&apos;élément</source>
-        <translation>Επεξεργασία του περιθορίου ενός κειμένου του στοιχείου</translation>
+        <translation>Επεξεργασία του περιθωρίου ενός κειμένου του στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="522"/>
@@ -1914,7 +1914,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="117"/>
         <source>Temporisé travail &amp; repos</source>
-        <translation type="unfinished"></translation>
+        <translation>Καθυστέρηση ενεργοποίησης &amp; απενεργοποίησης</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="120"/>
@@ -2058,7 +2058,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <location filename="../sources/elementscategoryeditor.cpp" line="47"/>
         <source>L&apos;item demandé n&apos;est pas une categrie. Abandon.</source>
         <comment>message box content</comment>
-        <translation>Το ζητούμενο αντικείμενο δεν είναι κατηγορία. Εγκατάληψη.</translation>
+        <translation>Το ζητούμενο αντικείμενο δεν είναι κατηγορία. Εγκατάλειψη.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="53"/>
@@ -2184,7 +2184,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="147"/>
         <source>Afficher uniquement ce dossier</source>
-        <translation>Ενφάνιση μόνο αυτού του φακέλου</translation>
+        <translation>Εμφάνιση μόνο αυτού του φακέλου</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="148"/>
@@ -3331,7 +3331,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="30"/>
         <source>Écraser les textes existants</source>
-        <translation>Διαγραφή υπάρχοντων κειμένων</translation>
+        <translation>Διαγραφή υπαρχόντων κειμένων</translation>
     </message>
 </context>
 <context>
@@ -3905,7 +3905,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/configpages.cpp" line="86"/>
         <source>Reports de folio</source>
-        <translation>Αναφορές σελίδας</translation>
+        <translation>Αναφορές φύλλου</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="87"/>
@@ -4203,7 +4203,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="551"/>
         <source>Supprimer un point d&apos;un polygone</source>
-        <translation>Διγραφή σημείου από πολύγωνο</translation>
+        <translation>Διαγραφή σημείου από πολύγωνο</translation>
     </message>
 </context>
 <context>
@@ -4486,13 +4486,13 @@ Voulez-vous enregistrer les modifications ?</source>
         <location filename="../sources/projectview.cpp" line="430"/>
         <source>Supprimer le folio ?</source>
         <comment>message box title</comment>
-        <translation>Διαγραφή σελίδας;</translation>
+        <translation>Διαγραφή φύλλου;</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="431"/>
         <source>Êtes-vous sûr  de vouloir supprimer ce folio du projet ? Ce changement est irréversible.</source>
         <comment>message box content</comment>
-        <translation>Είστε σίγουρος ότι θέλετε να διαγράψετε αυτή την σελίδα του έργου; Οι διαγραφή είναι μη αναστρέψιμη.</translation>
+        <translation>Είστε σίγουρος ότι θέλετε να διαγράψετε αυτό το φύλλο του έργου; Οι διαγραφή είναι μη αναστρέψιμη.</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="733"/>
@@ -4520,13 +4520,13 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/projectview.cpp" line="787"/>
         <source>Ajouter un folio</source>
-        <translation>Προσθήκη σελίδας</translation>
+        <translation>Προσθήκη φύλλου</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="801"/>
         <source>Ce projet ne contient aucun folio</source>
         <comment>label displayed when a project contains no diagram</comment>
-        <translation>Το έργο δεν περιέχει σελίδες</translation>
+        <translation>Το έργο δεν περιέχει φύλλα</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="315"/>
@@ -5474,7 +5474,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="610"/>
         <source>Ajoute un champ de texte sur le folio actuel</source>
-        <translation>Προσθέτει ενα πεδίο κειμένου στην τρέχουσα σελίδα</translation>
+        <translation>Προσθέτει ένα πεδίο κειμένου στην τρέχουσα σελίδα</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="611"/>
@@ -5494,7 +5494,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="614"/>
         <source>Ajoute une ellipse sur le folio actuel</source>
-        <translation>Προσθήκη έλειψης στην τρέχουσα σελίδα</translation>
+        <translation>Προσθήκη έλλειψης στην τρέχουσα σελίδα</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="615"/>
@@ -5591,7 +5591,7 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="327"/>
         <source>Affiche la couleur de fond du folio en blanc ou en gris</source>
         <comment>Status tip of white/grey background button</comment>
-        <translation>Ενφανίζει το χρώμα παρασκηνίου της σελίδας σε λευκό ή γκρι</translation>
+        <translation>Εμφανίζει το χρώμα παρασκηνίου της σελίδας σε λευκό ή γκρι</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="336"/>
@@ -5601,7 +5601,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="337"/>
         <source>Affiche ou masque la grille des folios</source>
-        <translation>Εμφάνκση ή απόκρυψη του δικτυώματος της σελίδας</translation>
+        <translation>Εμφάνιση ή απόκρυψη του δικτυώματος της σελίδας</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="349"/>
@@ -7232,7 +7232,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qet.cpp" line="348"/>
         <source>Le fichier texte contenant la licence GNU/GPL existe mais n&apos;a pas pu être ouvert - bon bah de toute façon, vous la connaissez par coeur non ?</source>
-        <translation>Το αρχείο κειμένου που περιέχει την άδεια GNU/GPL υπάρχει αλλά δεν μπορεί να ανοιχτεί - αλλα ούτως ή άλλως την έχετε στην καρδιά σας, έτσι δεν είναι;</translation>
+        <translation>Το αρχείο κειμένου που περιέχει την άδεια GNU/GPL υπάρχει αλλά δεν μπορεί να ανοιχτεί - αλλά ούτως ή άλλως την έχετε στην καρδιά σας, έτσι δεν είναι;</translation>
     </message>
     <message>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="156"/>
@@ -7849,7 +7849,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/undocommand/linkelementcommand.cpp" line="37"/>
         <source>Éditer les référence croisé</source>
         <comment>edite the cross reference</comment>
-        <translation>Επεξεργασία διαταυρούμενων αναφορών</translation>
+        <translation>Επεξεργασία διασταυρούμενων αναφορών</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotation.cpp" line="80"/>
@@ -7924,7 +7924,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="86"/>
         <source>NOMENCLATURE : </source>
-        <translation>ΟΝΟΜΑΤΟΛΟΓΙΑ:</translation>
+        <translation>ΟΝΟΜΑΤΟΛΟΓΙΑ: </translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
@@ -8081,7 +8081,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/nomenclature.cpp" line="115"/>
         <source>Désignation</source>
-        <translation>Περιγραφή</translation>
+        <translation>Ονομασία</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="116"/>
@@ -8454,7 +8454,7 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="687"/>
         <source>Supprimer un point d&apos;un polygone</source>
-        <translation>Διγραφή σημείου από πολύγωνο</translation>
+        <translation>Διαγραφή σημείου από πολύγωνο</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="829"/>
@@ -8875,7 +8875,7 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="141"/>
         <source>Folio :</source>
-        <translation>Σελίδα: </translation>
+        <translation>Φύλλο: </translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="150"/>
@@ -8945,7 +8945,7 @@ Les variables suivantes sont utilisables :
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="335"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation>Εδώ μπορείτε να καθορίσετε τους δικούς σας συνδιασμούς ονόματος/τιμής ώστε οι πινακίδες να τα λαμβάνουν υπ&apos;όψη, Πχ συνδυάζοντας το όνομα &quot;volta&quot; με την τιμή &quot;1745&quot; θα αντικαταστήσει το %{volta} με το 1745 μέσα στην πινακίδα. </translation>
+        <translation>Εδώ μπορείτε να καθορίσετε τους δικούς σας συνδυασμούς ονόματος/τιμής ώστε οι πινακίδες να τα λαμβάνουν υπ&apos;όψη, Πχ συνδυάζοντας το όνομα &quot;volta&quot; με την τιμή &quot;1745&quot; θα αντικαταστήσει το %{volta} με το 1745 μέσα στην πινακίδα. </translation>
     </message>
 </context>
 <context>
@@ -9025,7 +9025,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="162"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les folios&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ορίστε τις ιδιότητες που θέλετε να αντικαταστήσετε στα φύλλα&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ορίστε τις ιδιότητες που θέλετε να αντικαταστήσετε στα φύλα&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="165"/>
@@ -9055,12 +9055,12 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="198"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer la correspondance sélectionnée&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Αντικατάσταση της επιλεγμένης αντιστοίχισης&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Αντικατάσταση της επιλεγμένης αντιστοίχησης&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="211"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer les correspondances cochées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Αντικατάσταση των επιλεγμένων αντιστοιχίσεων&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Αντικατάσταση των επιλεγμένων αντιστοιχήσεων&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="242"/>
@@ -9191,7 +9191,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="20"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>Φόρμα</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="133"/>
@@ -9498,7 +9498,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="218"/>
         <source>Fermer le polygone</source>
-        <translation>Κλεισιμο του  πολυγώνου</translation>
+        <translation>Κλείσιμο του  πολυγώνου</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="274"/>
@@ -10160,7 +10160,7 @@ Les variables suivantes sont utilisables :
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="414"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation>Εδώ μπορείτε να καθορίσετε τους δικούς σας συνδιασμούς ονόματος/τιμής ώστε οι πινακίδες να τα λαμβάνουν υπ&apos;όψη, Πχ συνδυάζοντας το όνομα &quot;volta&quot; με την τιμή &quot;1745&quot; θα αντικαταστήσει το %{volta} με το 1745 μέσα στην πινακίδα. </translation>
+        <translation>Εδώ μπορείτε να καθορίσετε τους δικούς σας συνδυασμούς ονόματος/τιμής ώστε οι πινακίδες να τα λαμβάνουν υπ&apos;όψη, Πχ συνδυάζοντας το όνομα &quot;volta&quot; με την τιμή &quot;1745&quot; θα αντικαταστήσει το %{volta} με το 1745 μέσα στην πινακίδα. </translation>
     </message>
 </context>
 <context>
@@ -10264,7 +10264,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="88"/>
         <source>vertical :</source>
-        <translation>Καθετα:</translation>
+        <translation>Κάθετα:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="90"/>
@@ -10575,7 +10575,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <location filename="../sources/titleblock/templateview.cpp" line="543"/>
         <source>Modifier la largeur de cet aperçu</source>
         <comment>context menu</comment>
-        <translation>Αλλαγή πλάτους της προεπισκόπησης</translation>
+        <translation>Αλλαγή πλάτους της προ επισκόπησης</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="608"/>
@@ -10603,12 +10603,12 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="784"/>
         <source>Changer la largeur de l&apos;aperçu</source>
-        <translation>Αλλαγή πλάτους της προεπισκόπησης</translation>
+        <translation>Αλλαγή πλάτους της προ επισκόπησης</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="785"/>
         <source>Largeur de l&apos;aperçu :</source>
-        <translation>Πλάτος προεπισκόπησης:</translation>
+        <translation>Πλάτος προ επισκόπησης:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="933"/>
@@ -10632,7 +10632,7 @@ Longueur maximale : %2px
         <location filename="../sources/titleblock/templateview.cpp" line="995"/>
         <source>Largeur totale pour cet aperçu : %1px</source>
         <comment>displayed at the top of the preview when editing a title block template</comment>
-        <translation>Συνολικό πλάτος αυτής της προεπισκόπησης: %1px</translation>
+        <translation>Συνολικό πλάτος αυτής της προ επισκόπησης: %1px</translation>
     </message>
 </context>
 <context>
@@ -10741,7 +10741,7 @@ Longueur maximale : %2px
 %c : le numéro de colonne
 %M: Installation 
 %LM: Localisation </source>
-        <translation>Δημιούργισε το δικό σου κείμενο με την βοήθεια των ακόλουθων μεταβλητών :
+        <translation>Δημιούργησε το δικό σου κείμενο με την βοήθεια των ακόλουθων μεταβλητών :
 %f : αριθμός σελίδας 
 % F: ετικέτα σελίδας
 % l : αριθμός γραμμής
@@ -11015,7 +11015,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="51"/>
         <source>Qui :</source>
-        <translation>Ποιό</translation>
+        <translation>Ποιο</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="58"/>
