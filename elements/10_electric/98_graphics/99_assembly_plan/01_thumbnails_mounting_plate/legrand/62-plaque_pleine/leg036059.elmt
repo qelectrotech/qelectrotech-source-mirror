@@ -1,0 +1,23 @@
+<definition version="0.80" width="1240" hotspot_y="5" type="element" orientation="dyyy" height="1690" link_type="simple" hotspot_x="5">
+    <uuid uuid="{54f8afee-c52c-4725-bd7f-29244262f29a}"/>
+    <names>
+        <name lang="fr">Plaque pleine 800X600</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="description" show="1">Plaque pleine lina 800X600</elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">0 360 59</elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Legrand</elementInformation>
+    </elementInformations>
+    <informations>Arnaud Valmary</informations>
+    <description>
+        <rect antialias="false" width="1230" y="0" rx="0" ry="0" height="1680" style="line-style:normal;line-weight:normal;filling:lightgray;color:black" x="0"/>
+    </description>
+</definition>

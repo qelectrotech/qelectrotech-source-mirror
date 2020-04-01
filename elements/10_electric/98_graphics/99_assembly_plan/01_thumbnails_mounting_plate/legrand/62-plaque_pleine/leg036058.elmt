@@ -1,14 +1,14 @@
-<definition version="0.80" width="860" hotspot_x="450" link_type="simple" type="element" hotspot_y="561" orientation="dyyy" height="1080">
-    <uuid uuid="{92ff5b72-a54e-4aa8-99e8-da954b71bc18}"/>
+<definition version="0.80" width="1090" hotspot_x="71" link_type="simple" type="element" hotspot_y="67" orientation="dyyy" height="1530">
+    <uuid uuid="{718d7f28-a398-4d03-808e-2910211b5afb}"/>
     <names>
-        <name lang="fr">Plaque pleine 500X400</name>
+        <name lang="fr">Plaque pleine 700X500</name>
     </names>
     <elementInformations>
         <elementInformation name="manufacturer" show="1">Legrand</elementInformation>
+        <elementInformation name="description" show="1">Plaque pleine lina 700X500</elementInformation>
         <elementInformation name="manufacturer-reference" show="1"></elementInformation>
-        <elementInformation name="description" show="1">Plaque pleine lina 500X400</elementInformation>
-        <elementInformation name="designation" show="1">0 360 55</elementInformation>
         <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">0 360 58</elementInformation>
         <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
         <elementInformation name="quantity" show="1"></elementInformation>
         <elementInformation name="comment" show="1"></elementInformation>
@@ -18,8 +18,8 @@
     </elementInformations>
     <informations>Arnaud Valmary</informations>
     <description>
-        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:lightgray;color:black" width="791" ry="0" y="-498" rx="0" x="-388" height="1013"/>
-        <text font="Sans Serif,32,-1,5,50,0,0,0,0,0" y="-513" rotation="0" color="#000000" x="-58" text="400mm"/>
-        <text font="Sans Serif,32,-1,5,50,0,0,0,0,0" y="57" rotation="270" color="#000000" x="-399" text="500mm"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:lightgray;color:black" width="1013" ry="0" y="0" rx="0" x="0" height="1458"/>
+        <text font="Sans Serif,32,-1,5,50,0,0,0,0,0" y="-17" rotation="0" color="#000000" x="435" text="500mm"/>
+        <text font="Sans Serif,32,-1,5,50,0,0,0,0,0" y="810" rotation="270" color="#000000" x="-20" text="700mm"/>
     </description>
 </definition>
