@@ -412,16 +412,11 @@ void QETDiagramEditor::setUpActions()
 
 			/*******ONLY FOR TEST DURING DEVEL*********/
 			auto model = new NomenclatureModel(this->currentProject(), this->currentProject());
-			model->query("SELECT plant, location, label, comment, description FROM element_info ORDER BY plant, location, label, comment, description");
+			model->query("SELECT plant, location, label, pos, comment, description FROM element_info ORDER BY plant, location, label, comment, description");
 			model->setData(model->index(0,0), Qt::AlignLeft, Qt::TextAlignmentRole);
 			model->setData(model->index(0,0), QETApp::diagramTextsFont(), Qt::FontRole);
 			model->setHeaderData(0, Qt::Horizontal, Qt::AlignHCenter, Qt::TextAlignmentRole);
 			model->setHeaderData(0, Qt::Horizontal, QETApp::diagramTextsFont(), Qt::FontRole);
-			model->setHeaderData(0, Qt::Horizontal, "Installation");
-			model->setHeaderData(1, Qt::Horizontal, "Localisation");
-			model->setHeaderData(2, Qt::Horizontal, "Label");
-			model->setHeaderData(3, Qt::Horizontal, "Commentaire");
-			model->setHeaderData(4, Qt::Horizontal, "Description");
 			table->setModel(model);
 			/******************************************/
 
@@ -444,6 +439,11 @@ void QETDiagramEditor::setUpActions()
             wne.toCsv();
         }
     });
+
+	m_export_project_db = new QAction(QET::Icons::DocumentSpreadsheet, tr("Exporter la base de donnée interne du projet"), this);
+	connect(m_export_project_db, &QAction::triggered, [this]() {
+		projectDataBase::exportDb(this->currentProject()->dataBase(), this);
+	});
 	
 		//MDI view style
 	m_tabbed_view_mode = new QAction(tr("en utilisant des onglets"), this);
@@ -789,6 +789,8 @@ void QETDiagramEditor::setUpMenu() {
 	menu_project -> addAction(m_csv_export);
     menu_project -> addAction(m_project_export_conductor_num);
 	menu_project -> addAction(m_project_terminalBloc);
+	menu_project -> addSeparator();
+	menu_project -> addAction(m_export_project_db);
 
 	main_tool_bar         -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils principale"));
 	view_tool_bar         -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils Affichage"));

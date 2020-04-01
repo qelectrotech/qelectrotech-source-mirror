@@ -102,7 +102,8 @@ INCLUDEPATH += sources \
                sources/NameList/ui \
                sources/utils \
                sources/pugixml \
-               sources/dataBase
+               sources/dataBase \
+               sources/dataBase/ui
 
 
 # Fichiers sources
@@ -132,7 +133,8 @@ HEADERS += $$files(sources/*.h) $$files(sources/ui/*.h) \
            $$files(sources/NameList/ui/*.h) \
            $$files(sources/utils/*.h) \
            $$files(sources/pugixml/*.hpp) \
-           $$files(sources/dataBase/*.h)
+           $$files(sources/dataBase/*.h) \
+           $$files(sources/dataBase/ui/*.h)
 
 SOURCES += $$files(sources/*.cpp) \
            $$files(sources/editor/*.cpp) \
@@ -161,7 +163,8 @@ SOURCES += $$files(sources/*.cpp) \
            $$files(sources/NameList/ui/*.cpp) \
            $$files(sources/utils/*.cpp) \
            $$files(sources/pugixml/*.cpp) \
-           $$files(sources/dataBase/*.cpp)
+           $$files(sources/dataBase/*.cpp) \
+           $$files(sources/dataBase/ui/*.cpp)
     
 # Liste des fichiers qui seront incorpores au binaire en tant que ressources Qt
 RESOURCES += qelectrotech.qrc
@@ -184,7 +187,8 @@ FORMS += $$files(sources/richtext/*.ui) \
          $$files(sources/ui/configpage/*.ui) \
          $$files(sources/SearchAndReplace/ui/*.ui) \
          $$files(sources/NameList/ui/*.ui) \
-         $$files(sources/qetgraphicsitem/ViewItem/ui/*.ui)
+         $$files(sources/qetgraphicsitem/ViewItem/ui/*.ui) \
+         $$files(sources/dataBase/ui/*.ui)
 
 UI_SOURCES_DIR = sources/ui/
 UI_HEADERS_DIR = sources/ui/

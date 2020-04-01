@@ -66,8 +66,10 @@ QetGraphicsTableItem::~QetGraphicsTableItem()
  */
 void QetGraphicsTableItem::setModel(QAbstractItemModel *model)
 {
-	if (m_model) {
+	if (m_model)
+	{
 		disconnect(m_model, &QAbstractItemModel::dataChanged, this, &QetGraphicsTableItem::dataChanged);
+		disconnect(m_model, &QAbstractItemModel::modelReset, this, &QetGraphicsTableItem::modelReseted);
 	}
 	m_model = model;
 	m_header_item->setModel(model);
@@ -77,6 +79,7 @@ void QetGraphicsTableItem::setModel(QAbstractItemModel *model)
 
 	m_header_item->setPos(0, -m_header_item->rect().height());
 	connect(m_model, &QAbstractItemModel::dataChanged, this, &QetGraphicsTableItem::dataChanged);
+	connect(m_model, &QAbstractItemModel::modelReset, this, &QetGraphicsTableItem::modelReseted);
 }
 
 /**
@@ -274,6 +277,10 @@ bool QetGraphicsTableItem::sceneEventFilter(QGraphicsItem *watched, QEvent *even
 	return false;
 }
 
+void QetGraphicsTableItem::modelReseted() {
+	dataChanged(m_model->index(0,0), m_model->index(0,0), QVector<int>());
+}
+
 /**
  * @brief QetGraphicsTableItem::setUpColumnAndRowMinimumSize
  * Calcule the minimum row height and the minimum column width for each columns
@@ -377,7 +384,8 @@ void QetGraphicsTableItem::adjustColumnsWidth()
 	auto b = a/std::max(1,m_model->columnCount()); //avoid divide by 0
 
 	for(auto i= 0 ; i<m_model->columnCount() ; ++i) {
-		m_header_item->resizeSection(i, std::max(m_minimum_column_width.at(i), m_header_item->minimumSectionWidth().at(i)) + b);
+		m_header_item->resizeSection(i, std::max(m_minimum_column_width.at(std::min(m_minimum_column_width.size()-1, i)),
+												 m_header_item->minimumSectionWidth().at(std::min(m_header_item->minimumSectionWidth().size()-1, i))) + b);
 	}
 }
 
@@ -391,7 +399,6 @@ void QetGraphicsTableItem::dataChanged(const QModelIndex &topLeft, const QModelI
 	setUpColumnAndRowMinimumSize();
 	adjustSize();
 	setSize(size_);
-	qDebug() << "data changed";
 }
 
 /**

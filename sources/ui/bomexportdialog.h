@@ -54,13 +54,12 @@ class BOMExportDialog : public QDialog
         void on_m_save_current_conf_pb_clicked();
         void on_m_load_pb_clicked();
 
-		private:
+	private:
         void setUpItems();
         QString getBom();
         QString headers() const;
         bool createDataBase();
         void populateDataBase();
-        void prepareQuery(QStringList keys);
         QHash<QString, QString> elementInfoToString(Element *elmt) const;
         QString queryStr() const;
         void updateQueryLine();

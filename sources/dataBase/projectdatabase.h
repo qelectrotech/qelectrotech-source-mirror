@@ -1,4 +1,4 @@
-﻿/*
+/*
 		Copyright 2006-2020 QElectroTech Team
 		This file is part of QElectroTech.
 
@@ -22,6 +22,7 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QPointer>
+#include <QFileDialog>
 
 class Element;
 class QETProject;
@@ -39,24 +40,33 @@ class projectDataBase : public QObject
 
 	public:
 		projectDataBase(QETProject *project, QObject *parent = nullptr);
+	private:
+		projectDataBase(QETProject *project, const QString &connection_name, const QString &path, QObject *parent = nullptr);
+	public:
 		virtual ~projectDataBase() override;
 
 		QVector<QStringList> elementsInfoFromQuery(const QString &query);
 		void updateDB();
+		QETProject *project() const;
+
+		static QStringList elementsInfoKeys();
+		static QStringList headersFromElementsInfoQuery(const QString &query);
 
 	signals:
 		void dataBaseUpdated();
 
 	private:
-		bool createDataBase();
+		bool createDataBase(const QString &connection_name= QString(), const QString &name = QString());
 		void populateElementsTable();
 		static QHash<QString, QString> elementInfoToString(Element *elmt);
-		QStringList elementsInfoKeys() const;
 
 	private:
 		QPointer<QETProject> m_project;
 		QSqlDatabase m_data_base;
 		QSqlQuery m_insert_elements_query;
+
+	public:
+		static void exportDb(projectDataBase *db, QWidget *parent = nullptr, const QString &caption = QString(), const QString &dir = QString());
 };
 
 #endif // PROJECTDATABASE_H

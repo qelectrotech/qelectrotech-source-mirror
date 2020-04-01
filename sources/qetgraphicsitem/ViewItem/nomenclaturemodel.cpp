@@ -102,11 +102,15 @@ QVariant NomenclatureModel::headerData(int section, Qt::Orientation orientation,
 		return QVariant();
 	}
 
-	auto hash_ = m_header_data.value(section);
-	if (role == Qt::DisplayRole && !hash_.contains(Qt::DisplayRole)) { //special case to have the same behavior as Qt
-		return hash_.value(Qt::EditRole);
+	if (m_header_data.contains(section))
+	{
+		auto hash_ = m_header_data.value(section);
+		if (role == Qt::DisplayRole && !hash_.contains(Qt::DisplayRole)) { //special case to have the same behavior as Qt
+			return hash_.value(Qt::EditRole);
+		}
+		return m_header_data.value(section).value(role);
 	}
-	return m_header_data.value(section).value(role);
+	return QVariant();
 }
 
 /**
@@ -160,11 +164,35 @@ QVariant NomenclatureModel::data(const QModelIndex &index, int role) const
  */
 void NomenclatureModel::query(const QString &query)
 {
+	auto rm_ = m_query != query;
+	if (rm_)
+	{
+		auto headers = projectDataBase::headersFromElementsInfoQuery(query);
+		for (auto i=0 ; i<headers.size() ; ++i) {
+			this->setHeaderData(i, Qt::Horizontal, headers.at(i));
+		}
+		emit beginResetModel();
+	}
+
 	m_query = query;
 
-	if (m_project) {
+	if (m_project)
+	{
+		if (rm_) {
+			disconnect(m_project->dataBase(), &projectDataBase::dataBaseUpdated, this, &NomenclatureModel::dataBaseUpdated);
+		}
 		m_project->dataBase()->updateDB();
+		if (rm_) {
+			m_record = m_project->dataBase()->elementsInfoFromQuery(m_query);
+			connect(m_project->dataBase(), &projectDataBase::dataBaseUpdated, this, &NomenclatureModel::dataBaseUpdated);
+		}
 	}
+
+	if (rm_) { emit endResetModel();}
+}
+
+QETProject *NomenclatureModel::project() const {
+	return m_project.data();
 }
 
 /**
@@ -173,10 +201,22 @@ void NomenclatureModel::query(const QString &query)
  */
 void NomenclatureModel::dataBaseUpdated()
 {
-	m_record.clear();
-	m_record = m_project->dataBase()->elementsInfoFromQuery(m_query);
+	auto new_record = m_project->dataBase()->elementsInfoFromQuery(m_query);
 
-	auto row = m_record.size();
-	auto col = row ? m_record.first().count() : 1;
-	emit dataChanged(this->index(0,0), this->index(row-1, col-1), QVector<int>(Qt::DisplayRole));
+		//This a very special case, if this nomenclature model is added
+		//befor any element, column count return 0, so in this case we emit column inserted
+	if (new_record.size() != m_record.size())
+	{
+		emit beginInsertColumns(index(0,0), 0, m_record.size()-1);
+		m_record = new_record;
+		emit endInsertColumns();
+	}
+	else
+	{
+		m_record = new_record;
+		auto row = m_record.size();
+		auto col = row ? m_record.first().count() : 1;
+
+		emit dataChanged(this->index(0,0), this->index(row-1, col-1), QVector<int>(Qt::DisplayRole));
+	}
 }

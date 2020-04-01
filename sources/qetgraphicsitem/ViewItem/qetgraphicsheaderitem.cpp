@@ -42,10 +42,14 @@ void QetGraphicsHeaderItem::setModel(QAbstractItemModel *model)
 {
 	if (m_model) {
 		disconnect(m_model, &QAbstractItemModel::headerDataChanged, this, &QetGraphicsHeaderItem::headerDataChanged);
+		disconnect(m_model, &QAbstractItemModel::modelReset, this, &QetGraphicsHeaderItem::modelReseted);
+		disconnect(m_model, &QAbstractItemModel::columnsInserted, this, &QetGraphicsHeaderItem::modelReseted);
 	}
 
     m_model = model;
 	connect(m_model, &QAbstractItemModel::headerDataChanged, this, &QetGraphicsHeaderItem::headerDataChanged);
+	connect(m_model, &QAbstractItemModel::modelReset, this, &QetGraphicsHeaderItem::modelReseted);
+	connect(m_model, &QAbstractItemModel::columnsInserted, this, &QetGraphicsHeaderItem::modelReseted);
 	setUpMinimumSectionsSize();
 	m_current_sections_width.clear();
 	m_current_sections_width.resize(m_sections_minimum_width.size());
@@ -263,4 +267,12 @@ void QetGraphicsHeaderItem::adjustSize()
 	}
 
 	update();
+}
+
+void QetGraphicsHeaderItem::modelReseted()
+{
+	setUpMinimumSectionsSize();
+	m_current_sections_width.clear();
+	m_current_sections_width.resize(m_sections_minimum_width.size());
+	adjustSize();
 }

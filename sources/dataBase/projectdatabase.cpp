@@ -1,4 +1,4 @@
-/*
+﻿/*
 		Copyright 2006-2020 QElectroTech Team
 		This file is part of QElectroTech.
 
@@ -20,6 +20,8 @@
 #include "qetproject.h"
 #include "elementprovider.h"
 #include "element.h"
+#include "diagram.h"
+#include "diagramposition.h"
 
 #include <QSqlError>
 
@@ -34,6 +36,13 @@ projectDataBase::projectDataBase(QETProject *project, QObject *parent) :
 	m_project(project)
 {
 	createDataBase();
+}
+
+projectDataBase::projectDataBase(QETProject *project, const QString &connection_name, const QString &path, QObject *parent) :
+	QObject(parent),
+	m_project(project)
+{
+	createDataBase(connection_name, path);
 }
 
 /**
@@ -76,6 +85,39 @@ QVector<QStringList> projectDataBase::elementsInfoFromQuery(const QString &query
 }
 
 /**
+ * @brief projectDataBase::headersFromElementsInfoQuery
+ * @param query
+ * @return the header according to @query.
+ * Header can be false, notably when user create is own query.
+ */
+QStringList projectDataBase::headersFromElementsInfoQuery(const QString &query)
+{
+	QStringList header_string;
+	if (query.startsWith("SELECT ") && query.contains("FROM"))
+	{
+		auto header = query;
+		header.remove(0, 7); //Remove SELECT from the string;
+		header.truncate(header.indexOf("FROM")); //Now we only have the string between SELECT and FROM
+		header.replace(" ", ""); //remove white space
+		QStringList list = header.split(",");
+
+		if (!list.isEmpty())
+		{
+			for (int i=0 ; i<list.size() ; i++)
+			{
+				if (list.at(i) == "pos") {
+					header_string.append(tr("Position"));
+				} else {
+					header_string.append(QETApp::elementTranslatedInfoKey(list.at(i)));
+				}
+			}
+		}
+	}
+
+	return header_string;
+}
+
+/**
  * @brief projectDataBase::updateDB
  * Up to date the content of the data base.
  * Except at the creation of this class,
@@ -90,19 +132,32 @@ void projectDataBase::updateDB()
 }
 
 /**
+ * @brief projectDataBase::project
+ * @return the project of this  database
+ */
+QETProject *projectDataBase::project() const {
+	return m_project;
+}
+
+/**
  * @brief projectDataBase::createDataBase
  * Create the data base
  * @return : true if the data base was successfully created.
  */
-bool projectDataBase::createDataBase()
+bool projectDataBase::createDataBase(const QString &connection_name, const QString &name)
 {
-	QString connect_name("qet_project_db_" + m_project->uuid().toString());
+
+	QString connect_name=connection_name;
+	if (connect_name.isEmpty()) {
+		connect_name = "qet_project_db_" + m_project->uuid().toString();
+	}
 	if (m_data_base.connectionNames().contains(connect_name)) {
 		m_data_base = QSqlDatabase::database(connect_name);
 	}
 	else
 	{
 		m_data_base = QSqlDatabase::addDatabase("QSQLITE", connect_name);
+		m_data_base.setDatabaseName(name);
 		if(!m_data_base.open())
 		{
 			m_data_base.close();
@@ -177,6 +232,7 @@ void projectDataBase::populateElementsTable()
 
 			query.bindValue(":element_type", elmt->linkTypeToString());
 			query.bindValue(":element_subtype", elmt->kindInformations()["type"].toString());
+			query.bindValue(":pos", elmt->diagram()->convertPosition(elmt->scenePos()).toString());
 
 			if (!query.exec()) {
 				qDebug() << "projectDataBase::populateElementsTable insert error : " << query.lastError();
@@ -210,10 +266,47 @@ QHash<QString, QString> projectDataBase::elementInfoToString(Element *elmt)
  * @brief projectDataBase::elementsInfoKeys
  * @return QETApp::elementInfoKeys() + "element_type" and "element_subtype"
  */
-QStringList projectDataBase::elementsInfoKeys() const
+QStringList projectDataBase::elementsInfoKeys()
 {
 	auto keys_ = QETApp::elementInfoKeys();
-	keys_<< "element_type" << "element_subtype";
+	keys_<< "element_type" << "subtype" << "pos";
 
 	return keys_;
+}
+
+/**
+ * @brief projectDataBase::exportDb
+ * @param parent
+ * @param caption
+ * @param dir
+ * @param filter
+ * @param selectedFilter
+ * @param options
+ */
+void projectDataBase::exportDb(projectDataBase *db, QWidget *parent, const QString &caption, const QString &dir)
+{
+	auto caption_ = caption;
+	if (caption_.isEmpty()) {
+		caption_ = tr("Exporter la base de données interne du projet");
+	}
+
+	auto dir_ = dir;
+	if(dir_.isEmpty()) {
+		dir_ = db->project()->filePath();
+		if (dir_.isEmpty()) {
+			dir_ = QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation).first();
+			dir_ += QString("/") += tr("sans_nom") += ".sqlite";
+		} else {
+			dir_.remove(".qet");
+			dir_.append(".sqlite");
+		}
+	}
+
+	auto path_ = QFileDialog::getSaveFileName(parent, caption_, dir_, "*.sqlite");
+	if (path_.isNull()) {
+		return;
+	}
+
+		//Database is filled at creation, work is done.
+	projectDataBase file_db(db->project(), "export_project_db_" + db->project()->uuid().toString(), path_);
 }

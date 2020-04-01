@@ -18,6 +18,10 @@
 #include "nomenclaturemodelpropertieswidget.h"
 #include "ui_nomenclaturemodelpropertieswidget.h"
 #include "nomenclaturemodel.h"
+#include "qetproject.h"
+#include "elementquerywidget.h"
+
+#include <QDialogButtonBox>
 
 /**
  * @brief NomenclatureModelPropertiesWidget::NomenclatureModelPropertiesWidget
@@ -49,11 +53,30 @@ void NomenclatureModelPropertiesWidget::setModel(NomenclatureModel *model) {
     m_model = model;
 }
 
+/**
+ * @brief NomenclatureModelPropertiesWidget::on_m_edit_query_pb_clicked
+ */
 void NomenclatureModelPropertiesWidget::on_m_edit_query_pb_clicked()
-{}
+{
+	QDialog d(this);
+	auto l = new QVBoxLayout(this);
+	d.setLayout(l);
+
+	auto query_widget = new ElementQueryWidget(&d);
+	l->addWidget(query_widget);
+
+	auto button_box = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+	l->addWidget(button_box);
+	connect(button_box, &QDialogButtonBox::accepted, &d, &QDialog::accept);
+	connect(button_box, &QDialogButtonBox::rejected, &d, &QDialog::reject);
+
+	if (d.exec()) {
+		m_model->query(query_widget->queryStr());
+	}
+}
 
 void NomenclatureModelPropertiesWidget::on_m_refresh_pb_clicked() {
-	if (m_model) {
-		m_model->query("SELECT plant, location, label, comment, description FROM element_info ORDER BY plant, location, label, comment, description");
+	if (m_model && m_model->project()) {
+		m_model->project()->dataBase()->updateDB();
 	}
 }
