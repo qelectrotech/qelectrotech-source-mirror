@@ -6,70 +6,70 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="20"/>
         <source>À propos de QElectrotech</source>
-        <translation type="unfinished">O programu QElectroTech</translation>
+        <translation>O programu QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="30"/>
         <source>À propos</source>
-        <translation type="unfinished"></translation>
+        <translation>O programu</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="53"/>
         <source>Auteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Autoři</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="133"/>
         <source>Traducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Překladatelé</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="216"/>
         <source>Contributeurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Přispěvatelé</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="296"/>
         <source>Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Verze</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="345"/>
         <source>Bibliothèques</source>
-        <translation type="unfinished"></translation>
+        <translation>Knihovny</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="425"/>
         <source>Accord de licence</source>
-        <translation type="unfinished"></translation>
+        <translation>Licenční ujednání</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="431"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
-        <translation type="unfinished">Tento program je pod licencí GNU/GPL.</translation>
+        <translation>Tento program je pod licencí GNU/GPL.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="43"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.</source>
         <comment>about tab, description line</comment>
-        <translation type="unfinished">QElectroTech, program pro vytváření elektrotechnických výkresů.</translation>
+        <translation>QElectroTech, program pro vytváření elektrotechnických výkresů.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="45"/>
         <source>2006-2019 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished">2006-2017 vývojáři QElectroTechu {2006-2019 ?}</translation>
+        <translation>2006-2019 vývojáři QElectroTechu</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="49"/>
         <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</source>
         <comment>about tab, contact line</comment>
-        <translation type="unfinished">Spojení: &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</translation>
+        <translation>Spojení: &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="56"/>
         <source>Idée originale</source>
-        <translation type="unfinished">Původní myšlenka</translation>
+        <translation>Původní myšlenka</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="57"/>
@@ -79,187 +79,187 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="107"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="110"/>
         <source>Développement</source>
-        <translation type="unfinished">Vývoj</translation>
+        <translation>Vývoj</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="60"/>
         <source>Convertisseur DXF</source>
-        <translation type="unfinished">Převodník DXF</translation>
+        <translation>Převodník DXF</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="61"/>
         <source>Plugin Bornier</source>
-        <translation type="unfinished">Přídavný modul svorkový pásek</translation>
+        <translation>Přídavný modul svorkový pásek</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="67"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="68"/>
         <source>Traduction en espagnol</source>
-        <translation type="unfinished">Překlad do španělštiny</translation>
+        <translation>Překlad do španělštiny</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="69"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="70"/>
         <source>Traduction en russe</source>
-        <translation type="unfinished">Překlad do ruštiny</translation>
+        <translation>Překlad do ruštiny</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="71"/>
         <source>Traduction en portugais</source>
-        <translation type="unfinished">Překlad do portugalštiny</translation>
+        <translation>Překlad do portugalštiny</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="72"/>
         <source>Traduction en tchèque</source>
-        <translation type="unfinished">Překlad do češtiny</translation>
+        <translation>Překlad do češtiny</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="73"/>
         <source>Traduction en polonais</source>
-        <translation type="unfinished">Překlad do polštiny</translation>
+        <translation>Překlad do polštiny</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="74"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="75"/>
         <source>Traduction en allemand</source>
-        <translation type="unfinished">Překlad do němčiny</translation>
+        <translation>Překlad do němčiny</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="76"/>
         <source>Traduction en roumain</source>
-        <translation type="unfinished">Překlad do rumunštiny</translation>
+        <translation>Překlad do rumunštiny</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="77"/>
         <source>Traduction en italien</source>
-        <translation type="unfinished">Překlad do italštiny</translation>
+        <translation>Překlad do italštiny</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="78"/>
         <source>Traduction en arabe</source>
-        <translation type="unfinished">Překlad do arabštiny</translation>
+        <translation>Překlad do arabštiny</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="79"/>
         <source>Traduction en croate</source>
-        <translation type="unfinished">Překlad do chorvatštiny</translation>
+        <translation>Překlad do chorvatštiny</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="80"/>
         <source>Traduction en catalan</source>
-        <translation type="unfinished">Překlad do katalánštiny</translation>
+        <translation>Překlad do katalánštiny</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="81"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="82"/>
         <source>Traduction en grec</source>
-        <translation type="unfinished">Překlad do řečtiny</translation>
+        <translation>Překlad do řečtiny</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="83"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="84"/>
         <source>Traduction en néerlandais</source>
-        <translation type="unfinished">Překlad do nizozemštiny</translation>
+        <translation>Překlad do nizozemštiny</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="85"/>
         <source>Traduction en flamand</source>
-        <translation type="unfinished">Překlad do vlámštiny</translation>
+        <translation>Překlad do vlámštiny</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="86"/>
         <source>Traduction en danois</source>
-        <translation type="unfinished">Překlad do dánštiny</translation>
+        <translation>Překlad do dánštiny</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="87"/>
         <source>Traduction en brézilien</source>
-        <translation type="unfinished">Překlad do brazilštiny</translation>
+        <translation>Překlad do brazilštiny</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="88"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="89"/>
         <source>Traduction en Turc</source>
-        <translation type="unfinished">Překlad do turečtiny</translation>
+        <translation>Překlad do turečtiny</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="90"/>
         <source>Traduction en hongrois</source>
-        <translation type="unfinished">Překlad do maďarštiny</translation>
+        <translation>Překlad do maďarštiny</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="95"/>
         <source>Paquets Fedora et Red Hat</source>
-        <translation type="unfinished">Balíčky pro Fedoru a Red Hat</translation>
+        <translation>Balíčky pro Fedoru a Red Hat</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="96"/>
         <source>Paquets Mageia</source>
-        <translation type="unfinished">Balíčky pro Mageiu</translation>
+        <translation>Balíčky pro Mageiu</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="97"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="98"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="99"/>
         <source>Paquets Debian</source>
-        <translation type="unfinished">Balíčky pro Debian</translation>
+        <translation>Balíčky pro Debian</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="100"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="101"/>
         <source>Paquets Gentoo</source>
-        <translation type="unfinished">Balíčky pro Gentoo</translation>
+        <translation>Balíčky pro Gentoo</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="102"/>
         <source>Paquets OS/2</source>
-        <translation type="unfinished">Balíčky pro OS/2</translation>
+        <translation>Balíčky pro OS/2</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="103"/>
         <source>Paquets FreeBSD</source>
-        <translation type="unfinished">Balíčky pro FreeBSD</translation>
+        <translation>Balíčky pro FreeBSD</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="104"/>
         <source>Paquets MAC OS X</source>
-        <translation type="unfinished">Balíčky pro MAC OS X</translation>
+        <translation>Balíčky pro MAC OS X</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="105"/>
         <source>Paquets Archlinux AUR</source>
-        <translation type="unfinished">Balíčky pro Archlinux AUR</translation>
+        <translation>Balíčky pro Archlinux AUR</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="106"/>
         <source>Icônes</source>
-        <translation type="unfinished">Ikony</translation>
+        <translation>Ikony</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="108"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="109"/>
         <source>Documentation</source>
-        <translation type="unfinished">Dokumentace</translation>
+        <translation>Dokumentace</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="111"/>
         <source>Collection d&apos;éléments</source>
-        <translation type="unfinished">Sbírka prvků</translation>
+        <translation>Sbírka prvků</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="112"/>
         <source>Python plugin qet-tb-generator</source>
-        <translation type="unfinished">Pythonovský přídavný modul qet-tb-generator</translation>
+        <translation>Pythonovský přídavný modul qet-tb-generator</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="113"/>
         <source>Paquets Snap</source>
-        <translation type="unfinished"></translation>
+        <translation>Balíčky pro snap</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="119"/>
         <source>Compilation : </source>
-        <translation type="unfinished">Sestavení: </translation>
+        <translation>Sestavení: </translation>
     </message>
 </context>
 <context>
@@ -359,7 +359,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="132"/>
         <source>Ctrl+Shift+P</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+P</translation>
     </message>
 </context>
 <context>
@@ -498,180 +498,181 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="38"/>
         <source>Informations disponibles</source>
-        <translation type="unfinished"></translation>
+        <translation>Dostupné informace</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="48"/>
         <source>Informations à exporter</source>
-        <translation type="unfinished"></translation>
+        <translation>Informace k vyvedení</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="88"/>
         <source>Monter la sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>Přesunout výběr nahoru</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="105"/>
         <source>Ajouter la sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat výběr</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="119"/>
         <source>Supprimer la sélection</source>
-        <translation type="unfinished">Smazat výběr</translation>
+        <translation>Smazat výběr</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="133"/>
         <source>Descendre la sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>Přesunout výběr dolů</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="187"/>
         <source>Type d&apos;éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ prvků</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="196"/>
         <source>Simples</source>
-        <translation type="unfinished"></translation>
+        <translation>Jednoduchý</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="206"/>
         <source>Tous</source>
-        <translation type="unfinished"></translation>
+        <translation>Vše</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="246"/>
         <source>Organes de protection</source>
-        <translation type="unfinished"></translation>
+        <translation>Ochranná zařízení</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="269"/>
         <source>Mise en page</source>
-        <translation type="unfinished">Rozvržení strany</translation>
+        <translation>Rozvržení strany</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="297"/>
         <source>Chaque élément portant la même référence sera listé</source>
-        <translation type="unfinished"></translation>
+        <translation>Prvky se stejným číslem položky budou uvedeny zvlášť</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="300"/>
         <source>Formater en tant que nomenclature</source>
-        <translation type="unfinished"></translation>
+        <translation>Formátovat jako seznam součástí</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="310"/>
         <source>Une même référence utilisé par plusieurs éléments ne sera listé qu&apos;une fois</source>
-        <translation type="unfinished"></translation>
+        <translation>Prvky se stejným číslem položky budou uvedeny v jednom řádku</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="313"/>
         <source>Formater en tant que liste de matériel</source>
-        <translation type="unfinished"></translation>
+        <translation>Formátovat jako seznam materiálu</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="339"/>
         <source>Ouvrir la configuration sélectionné</source>
-        <translation type="unfinished"></translation>
+        <translation>Otevřít vybrané nastavení</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="287"/>
         <source>Inclure les en-têtes</source>
-        <translation type="unfinished"></translation>
+        <translation>Zahrnout záhlaví</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="14"/>
         <source>Export CSV</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyvést CSV</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="216"/>
         <source>Contacteurs et relais</source>
-        <translation type="unfinished"></translation>
+        <translation>Stykače a relé</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="226"/>
         <source>Boutons et commutateurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Tlačítka a přepínače</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="236"/>
         <source>Borniers</source>
-        <translation type="unfinished"></translation>
+        <translation>Svorkové pásky</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="330"/>
         <source>Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavení</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="366"/>
         <source>Sauvegarder la configuration actuelle</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložit nynější nastavení</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="398"/>
         <source>Requête SQL personnalisée</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlastní dotaz SQL</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="408"/>
         <source>Requête SQL :</source>
-        <translation type="unfinished"></translation>
+        <translation>Dotaz SQL:</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="128"/>
         <source>nomenclature_</source>
-        <translation type="unfinished">Číselník_</translation>
+        <translation>Seznam součástí_</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="132"/>
         <source>Enregister sous... </source>
-        <translation type="unfinished">Uložit jako... </translation>
+        <translation>Uložit jako... </translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="132"/>
         <source>Fichiers csv (*.csv)</source>
-        <translation type="unfinished">Soubory csv (*.csv)</translation>
+        <translation>Soubory csv (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="141"/>
         <source>Erreur</source>
-        <translation type="unfinished">Chyba</translation>
+        <translation>Chyba</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="142"/>
         <source>Impossible de remplacer le fichier!
 
 </source>
-        <translation type="unfinished">Soubor nelze nahradit!
+        <translation>Soubor nelze nahradit!
+
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="47"/>
         <source>Position</source>
-        <translation type="unfinished">Poloha</translation>
+        <translation>Poloha</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="48"/>
         <source>Titre du folio</source>
-        <translation type="unfinished">Název listu</translation>
+        <translation>Název listu</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="49"/>
         <source>Position de folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Poloha listu</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="50"/>
         <source>Numéro de folio</source>
-        <translation type="unfinished">Číslo listu</translation>
+        <translation>Číslo listu</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="51"/>
         <source>Quantité (Numéro d&apos;article)</source>
-        <translation type="unfinished"></translation>
+        <translation>Množství (číslo článku)</translation>
     </message>
 </context>
 <context>
@@ -2730,7 +2731,7 @@ Si le chiffre défini dans le champ Valeur possède moins de digits que le type 
 Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -2900,7 +2901,7 @@ Stanovte výchozí hodnotu tohoto textového pole pro nové prvky níže:</trans
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="166"/>
         <source>Exporter les bornes dans la nomenclature</source>
-        <translation>Vyvést svorky (zakončení) do číselníku (seznamu částí)</translation>
+        <translation>Vyvést svorky (zakončení) do seznamu součástí (součástek, číselníku)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="14"/>
@@ -2980,7 +2981,7 @@ Stanovte výchozí hodnotu tohoto textového pole pro nové prvky níže:</trans
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="189"/>
         <source>Position de la liste des folios dans le projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Poloha seznamu listů v projektu</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="375"/>
@@ -4212,17 +4213,17 @@ Na toto , prosím, použijte pokročilý editor.</translation>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formulář</translation>
+        <translation>Formulář</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="31"/>
         <source>X</source>
-        <translation type="unfinished">X</translation>
+        <translation>X</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="36"/>
         <source>Y</source>
-        <translation type="unfinished">Y</translation>
+        <translation>Y</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="44"/>
@@ -4232,12 +4233,12 @@ Na toto , prosím, použijte pokročilý editor.</translation>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="55"/>
         <source>Ajouter un point</source>
-        <translation type="unfinished">Přidat bod</translation>
+        <translation>Přidat bod</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="64"/>
         <source>Supprimer ce point</source>
-        <translation type="unfinished">Smazat tento bod</translation>
+        <translation>Smazat tento bod</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="20"/>
@@ -4265,12 +4266,12 @@ Na toto , prosím, použijte pokročilý editor.</translation>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.cpp" line="267"/>
         <source>Ajouter un point à un polygone</source>
-        <translation type="unfinished">Přidat bod do mnohoúhelníku</translation>
+        <translation>Přidat bod do mnohoúhelníku</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.cpp" line="286"/>
         <source>Supprimer un point d&apos;un polygone</source>
-        <translation type="unfinished">Smazat bod z mnohoúhelníku</translation>
+        <translation>Smazat bod z mnohoúhelníku</translation>
     </message>
 </context>
 <context>
@@ -4464,7 +4465,7 @@ Chcete uložit změny?</translation>
     <message>
         <location filename="../sources/projectview.cpp" line="316"/>
         <source>sansnom</source>
-        <translation type="unfinished"></translation>
+        <translation>Bez názvu</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="317"/>
@@ -5119,7 +5120,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="397"/>
         <source>Exporter au format CSV</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyvést do formátu CSV</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="404"/>
@@ -5129,7 +5130,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="408"/>
         <source>Exporter la liste des noms de conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyvést seznam názvů vodičů</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="483"/>
@@ -6087,7 +6088,12 @@ Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 &gt;&gt; Install on Windows
 Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Pro nainstalování přídavného modulu DXFtoQET
+navštivte https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+
+&gt;&gt; Instalace na OS Windows
+Spustitelný soubor DXFtoQET.exe dejte do adresáře C:\Users\user_name\AppData\Roaming\qet\ 
+</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="171"/>
@@ -6097,7 +6103,12 @@ Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 &gt;&gt; Install on macOSX
 Put DXFtoQET.app binary on /Users/user_name/.qet/ directory 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Pro nainstalování přídavného modulu DXFtoQET
+navštivte https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+
+&gt;&gt; Instalace na OS macOSX
+Spustitelný soubor DXFtoQET.app dejte do adresáře /Users/user_name/.qet/ 
+</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="177"/>
@@ -6108,7 +6119,13 @@ Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 Put DXFtoQET binary on your /home/user_name/.qet/ directory
 make it executable : chmod +x ./DXFtoQET
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Pro nainstalování přídavného modulu DXFtoQET
+navštivte https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+
+&gt;&gt; Instalace na OS Linux
+Spustitelný soubor DXFtoQET dejte do adresáře /home/user_name/.qet/ 
+Učiňte jej spustitelným: chmod +x ./DXFtoQET
+</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="297"/>
@@ -6118,7 +6135,7 @@ make it executable : chmod +x ./DXFtoQET
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="310"/>
         <source>Double-click pour terminer la forme, Click droit pour annuler le dernier point</source>
-        <translation type="unfinished">Dvakrát klepnout pro dokončení tvaru, klepnutí pravým tlačítkem myši pro zrušení posledního bodu</translation>
+        <translation>Dvakrát klepnout pro dokončení tvaru, klepnutí pravým tlačítkem myši pro zrušení posledního bodu</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="368"/>
@@ -6245,12 +6262,12 @@ make it executable : chmod +x ./DXFtoQET
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="311"/>
         <source>Ajouter un texte d&apos;élément non éditable dans les schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat neupravitelný text prvku do výkresů</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="312"/>
         <source>Ajouter un texte d&apos;élément pouvant être édité dans les schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat upravitelný text prvku do výkresů</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/qetelementeditor.cpp" line="767"/>
@@ -7471,7 +7488,7 @@ Co chcete dělat?</translation>
         <location filename="../sources/qet.cpp" line="567"/>
         <source>Une erreur est survenue lors de l&apos;écriture du fichier %1, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
-        <translation type="unfinished"></translation>
+        <translation>Při zápisu souboru %1 se vyskytla chyba: %2.</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="640"/>
@@ -7881,12 +7898,12 @@ Co chcete dělat?</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="51"/>
         <source>nomenclature_</source>
-        <translation>Číselník_</translation>
+        <translation>Seznam součástí_</translation>
     </message>
     <message>
         <location filename="../sources/conductornumexport.cpp" line="47"/>
         <source>numero_de_fileries_</source>
-        <translation type="unfinished"></translation>
+        <translation>číslo_elektrického_vedení</translation>
     </message>
     <message>
         <location filename="../sources/conductornumexport.cpp" line="52"/>
@@ -7912,7 +7929,7 @@ Co chcete dělat?</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="86"/>
         <source>NOMENCLATURE : </source>
-        <translation>ČÍSELNÍK: </translation>
+        <translation>SEZNAM SOUČÁSTÍ: </translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="87"/>
@@ -8385,17 +8402,17 @@ Chcete je nahradit?</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2246"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Pro nainstalování přídavného modulu qet_tb_generator&lt;br&gt;navštivte :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;vyžaduje python 3.5 nebo novější.&lt;br&gt;&lt;B&gt;&lt;U&gt; Nejprve nainstalujte v OS Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. V případě potřeby nainstalujte python 3.5 nebo novější&lt;br&gt; Navštivte:&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Aktualizace na OS Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;uživatel tento skript může spustit v terminálu v tomto adresáři&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2282"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Pro nainstalování přídavného modulu qet_tb_generator&lt;br&gt;navštivte :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Nejprve nainstalujte v OS macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. V případě potřeby nainstalujte python 3.5 &lt;br&gt; Navštivte:&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;jak na to&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Aktualizace na OS macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2313"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit : &lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Pro nainstalování přídavného modulu qet_tb_generator&lt;br&gt;navštivte :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;vyžaduje python 3.5 nebo novější.&lt;br&gt;&lt;B&gt;&lt;U&gt; Nejprve nainstalujte v OS Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. zkontrolujte, že máte nainstalován pip3: pip3 --version&lt;br&gt;Pokud ne, nainstalujte pomocí: sudo apt-get install python3-pip&lt;br&gt;2. Nainstalujte program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Spusťte program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Aktualizace na OS Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
 </context>
 <context>
@@ -9259,7 +9276,7 @@ Si le chiffre défini dans le champ Valeur possède moins de digits que le type 
 Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="207"/>
@@ -9281,7 +9298,7 @@ Les autres champs ne sont pas utilisés.
 -Le type &quot;Folio&quot; représente le nom du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the conductor autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="206"/>
@@ -9467,12 +9484,12 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="274"/>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="306"/>
         <source>Modifier une forme simple</source>
-        <translation type="unfinished"></translation>
+        <translation>Upravit jednoduchý tvar</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="318"/>
         <source>Modifier les propriétés d&apos;une forme simple</source>
-        <translation type="unfinished"></translation>
+        <translation>Upravit vlastnosti jednoduchého tvaru</translation>
     </message>
 </context>
 <context>
@@ -10268,7 +10285,7 @@ Přiřazení názvu volta a hodnoty 1745 nahradí v záhlaví výkresu %{volta} 
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="423"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : numéro du folio précédent&lt;/li&gt;&lt;li&gt;%{next-folio-num} : numéro du folio suivant&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="455"/>
@@ -10658,7 +10675,7 @@ Největší délka: %2px</translation>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="90"/>
         <source>XRef slave position</source>
-        <translation type="unfinished"></translation>
+        <translation>Poloha křížového odkazu při podřízených prvcích</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="106"/>
@@ -10765,27 +10782,27 @@ Největší délka: %2px</translation>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="104"/>
         <source>Top</source>
-        <translation type="unfinished"></translation>
+        <translation>Nahoře</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="105"/>
         <source>Bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>Dole</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="106"/>
         <source>Left</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlevo</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="107"/>
         <source>Rigth</source>
-        <translation type="unfinished"></translation>
+        <translation>Vpravo</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="108"/>
         <source>Text alignment</source>
-        <translation type="unfinished"></translation>
+        <translation>Zarovnání textu</translation>
     </message>
 </context>
 <context>
