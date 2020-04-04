@@ -36,6 +36,14 @@ void DiagramContext::add(DiagramContext other)
 }
 
 /**
+ * @brief DiagramContext::remove
+ * @param key
+ */
+void DiagramContext::remove(const QString &key) {
+	m_content.remove(key);
+}
+
+/**
 	@return a list containing all the keys in the context object.
 */
 QList<QString> DiagramContext::keys(DiagramContext::KeyOrder order) const

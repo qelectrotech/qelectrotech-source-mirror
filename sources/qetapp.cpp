@@ -408,7 +408,7 @@ QString QETApp::conductorTranslatedInfoKey(const QString &key)
 
 /**
  * @brief QETApp::diagramInfoKeys
- * @return the diagram default information keys
+ * @return the diagram default default information keys
  */
 QStringList QETApp::diagramInfoKeys()
 {
@@ -420,6 +420,8 @@ QStringList QETApp::diagramInfoKeys()
 	list.append("plant");
 	list.append("locmach");
 	list.append("indexrev");
+	list.append("date");
+	list.append("display_folio");
 	
 	return list;
 }
@@ -439,6 +441,7 @@ QString QETApp::diagramTranslatedInfoKey(const QString &key)
 	else if (key == "plant")    return tr("Installation");
 	else if (key == "locmach")  return tr("Localisation");
 	else if (key == "indexrev") return tr("Indice Rev");
+	else if (key == "date")		return tr("Date");
 	else return QString();
 }
 

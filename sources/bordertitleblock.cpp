@@ -40,12 +40,12 @@ BorderTitleBlock::BorderTitleBlock(QObject *parent) :
 	QObject(parent)
 {
 	// at first, the internal titleblock template renderer uses the default titleblock template
-	titleblock_template_renderer_ = new TitleBlockTemplateRenderer(this);
-	titleblock_template_renderer_ -> setTitleBlockTemplate(QETApp::defaultTitleBlockTemplate());
+	m_titleblock_template_renderer = new TitleBlockTemplateRenderer(this);
+	m_titleblock_template_renderer -> setTitleBlockTemplate(QETApp::defaultTitleBlockTemplate());
 	
 	// disable the QPicture-based cache from Qt 4.8 to avoid rendering errors and crashes
 	if (!QRegExp("4\\.[0-7]\\.").exactMatch(qVersion())) {
-		titleblock_template_renderer_ -> setUseCache(false);
+		m_titleblock_template_renderer -> setUseCache(false);
 	}
 	
 	// dimensions par defaut du schema
@@ -73,9 +73,13 @@ BorderTitleBlock::~BorderTitleBlock() {
 QRectF BorderTitleBlock::titleBlockRect() const
 {
 	if (m_edge == Qt::BottomEdge)
-		return QRectF(diagram_rect_.bottomLeft(), QSize(diagram_rect_.width(), titleblock_template_renderer_ -> height()));
+		return QRectF(diagram_rect_.bottomLeft(), QSize(diagram_rect_.width(), m_titleblock_template_renderer -> height()));
 	else
-		return QRectF(diagram_rect_.topRight(), QSize(titleblock_template_renderer_ -> height(), diagram_rect_.height()));
+		return QRectF(diagram_rect_.topRight(), QSize(m_titleblock_template_renderer -> height(), diagram_rect_.height()));
+}
+
+DiagramContext BorderTitleBlock::titleblockInformation() const {
+	return m_titleblock_template_renderer->context();
 }
 
 /**
@@ -93,7 +97,7 @@ QRectF BorderTitleBlock::titleBlockRectForQPainter() const
 	if (m_edge == Qt::BottomEdge) //Rect at bottom have same position and dimension of displayed rect
 		return titleBlockRect();
 	else
-		return QRectF (diagram_rect_.bottomRight(), QSize(diagram_rect_.height(), titleblock_template_renderer_ -> height()));
+		return QRectF (diagram_rect_.bottomRight(), QSize(diagram_rect_.height(), m_titleblock_template_renderer -> height()));
 
 }
 
@@ -317,7 +321,7 @@ void BorderTitleBlock::importBorder(const BorderProperties &bp) {
 	@see TitleBlockTemplateRenderer::titleBlockTemplate()
 */
 const TitleBlockTemplate *BorderTitleBlock::titleBlockTemplate() {
-	return(titleblock_template_renderer_ -> titleBlockTemplate());
+	return(m_titleblock_template_renderer -> titleBlockTemplate());
 }
 
 /**
@@ -325,14 +329,14 @@ const TitleBlockTemplate *BorderTitleBlock::titleBlockTemplate() {
 	@see TitleBlockTemplateRenderer::setTitleBlockTemplate()
 */
 void BorderTitleBlock::setTitleBlockTemplate(const TitleBlockTemplate *titleblock_template) {
-	titleblock_template_renderer_ -> setTitleBlockTemplate(titleblock_template);
+	m_titleblock_template_renderer -> setTitleBlockTemplate(titleblock_template);
 }
 
 /**
 	@return The name of the template used to render the titleblock.
 */
 QString BorderTitleBlock::titleBlockTemplateName() const {
-	QString tbt_name = titleblock_template_renderer_ -> titleBlockTemplate() -> name();
+	QString tbt_name = m_titleblock_template_renderer -> titleBlockTemplate() -> name();
 	return((tbt_name == "default") ? "" : tbt_name);
 }
 
@@ -344,7 +348,7 @@ QString BorderTitleBlock::titleBlockTemplateName() const {
 */
 void BorderTitleBlock::titleBlockTemplateChanged(const QString &template_name) {
 	if (titleBlockTemplateName() != template_name) return;
-	titleblock_template_renderer_ -> invalidateRenderedTemplate();
+	m_titleblock_template_renderer -> invalidateRenderedTemplate();
 }
 
 /**
@@ -496,14 +500,14 @@ void BorderTitleBlock::draw(QPainter *painter)
 		if (m_edge == Qt::BottomEdge)
 		{
 			painter -> translate(tbt_rect.topLeft());
-			titleblock_template_renderer_ -> render(painter, tbt_rect.width());
+			m_titleblock_template_renderer -> render(painter, tbt_rect.width());
 			painter -> translate(-tbt_rect.topLeft());
 		}
 		else
 		{
 			painter->translate(tbt_rect.topLeft());
 			painter->rotate(-90);
-			titleblock_template_renderer_ -> render(painter, tbt_rect.width());
+			m_titleblock_template_renderer -> render(painter, tbt_rect.width());
 			painter->rotate(90);
 			painter -> translate(-tbt_rect.topLeft());
 		}
@@ -581,7 +585,7 @@ void BorderTitleBlock::drawDxf(int width, int height, bool keep_aspect_ratio, QS
 	if (display_titleblock_) {
 		//qp -> translate(titleblock_rect_.topLeft());
 		QRectF rect = titleBlockRect();
-		titleblock_template_renderer_ -> renderDxf(rect, rect.width(), file_path, color);
+		m_titleblock_template_renderer -> renderDxf(rect, rect.width(), file_path, color);
 		//qp -> translate(-titleblock_rect_.topLeft());
 	}
 
@@ -765,7 +769,7 @@ void BorderTitleBlock::updateDiagramContextForTitleBlock(const DiagramContext &i
 	context.addValue("previous-folio-num", m_previous_folio_num);
 	context.addValue("next-folio-num", m_next_folio_num);
 	
-	titleblock_template_renderer_ -> setContext(context);
+	m_titleblock_template_renderer -> setContext(context);
 }
 
 QString BorderTitleBlock::incrementLetters(const QString &string) {
@@ -866,9 +870,9 @@ void BorderTitleBlock::setAutoPageNum(const QString &auto_page_num) {
 void BorderTitleBlock::setPreviousFolioNum(const QString &previous)
 {
 	m_previous_folio_num = previous;
-	DiagramContext context = titleblock_template_renderer_->context();
+	DiagramContext context = m_titleblock_template_renderer->context();
 	context.addValue("previous-folio-num", m_previous_folio_num);
-	titleblock_template_renderer_->setContext(context);
+	m_titleblock_template_renderer->setContext(context);
 }
 
 /**
@@ -878,7 +882,7 @@ void BorderTitleBlock::setPreviousFolioNum(const QString &previous)
 void BorderTitleBlock::setNextFolioNum(const QString &next)
 {
 	m_next_folio_num = next;
-	DiagramContext context = titleblock_template_renderer_->context();
+	DiagramContext context = m_titleblock_template_renderer->context();
 	context.addValue("next-folio-num", m_next_folio_num);
-	titleblock_template_renderer_->setContext(context);
+	m_titleblock_template_renderer->setContext(context);
 }

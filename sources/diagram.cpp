@@ -445,6 +445,14 @@ void Diagram::keyReleaseEvent(QKeyEvent *e)
 }
 
 /**
+ * @brief Diagram::uuid
+ * @return the uuid of this diagram
+ */
+QUuid Diagram::uuid() {
+	return m_uuid;
+}
+
+/**
  * @brief Diagram::setEventInterface
  * Set event_interface has current interface.
  * Diagram become the ownership of event_interface

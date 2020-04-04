@@ -20,6 +20,7 @@
 #include <QtXml>
 #include "diagramcontext.h"
 #include "qet.h"
+
 /**
 	This class provides a container for the properties of a particular title
 	block, i.e. title, author, date, filename, folio, template, custom
@@ -60,7 +61,6 @@ class TitleBlockProperties {
 	QString version;          ///< Version (displayed by the default template)
 	QString folio;            ///< Folio information (displayed by the default template)
 	QString auto_page_num;
-	QString location;
 	DateManagement useDate;   ///< Wheter to use the date attribute
 	QString template_name;    ///< Name of the template used to render the title block - an empty string means "the default template provided by the application"
 	DiagramContext context;   ///< Container for the additional, user-defined fields

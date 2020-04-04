@@ -127,7 +127,10 @@ QStringList projectDataBase::headersFromElementsInfoQuery(const QString &query)
  */
 void projectDataBase::updateDB()
 {
-	populateElementsTable();
+	populateDiagramTable();
+	populateDiagramInfoTable();
+	populateElementTable();
+	populateElementInfoTable();
 	emit dataBaseUpdated();
 }
 
@@ -158,61 +161,151 @@ bool projectDataBase::createDataBase(const QString &connection_name, const QStri
 	{
 		m_data_base = QSqlDatabase::addDatabase("QSQLITE", connect_name);
 		m_data_base.setDatabaseName(name);
-		if(!m_data_base.open())
-		{
+		if(!m_data_base.open()) {
 			m_data_base.close();
 			return false;
 		}
 
-			//Create the elements table
-		QString elements_table("CREATE TABLE element_info(");
-		bool first = true;
-		for (auto string : elementsInfoKeys())
+		m_data_base.exec("PRAGMA temp_store = MEMORY");
+		m_data_base.exec("PRAGMA journal_mode = MEMORY");
+		m_data_base.exec("PRAGMA synchronous = OFF");
+
+		QSqlQuery query_(m_data_base);
+		bool first_ = true;
+
+			//Create diagram table
+		QString diagram_table("CREATE TABLE diagram ("
+							  "uuid VARCHAR(50) PRIMARY KEY NOT NULL,"
+							  "pos INTEGER)");
+		if (!query_.exec(diagram_table)) {
+			qDebug() << "diagram_table query : "<< query_.lastError();
+		}
+
+			//Create the table element
+		QString element_table("CREATE TABLE element"
+									"( "
+									"uuid VARCHAR(50) PRIMARY KEY NOT NULL, "
+									"diagram_uuid VARCHAR(50) NOT NULL,"
+									"pos VARCHAR(6) NOT NULL,"
+									"type VARCHAR(50),"
+									"sub_type VARCHAR(50),"
+									"FOREIGN KEY (diagram_uuid) REFERENCES diagram (uuid)"
+									")");
+		if (!query_.exec(element_table)) {
+			qDebug() <<" element_table query : "<< query_.lastError();
+		}
+
+			//Create the diagram info table
+		QString diagram_info_table("CREATE TABLE diagram_info (diagram_uuid VARCHAR(50) PRIMARY KEY NOT NULL, ");
+		first_ = true;
+		for (auto string : QETApp::diagramInfoKeys())
 		{
-			if (first) {
-				first = false;
+			if (first_) {
+				first_ = false;
 			} else {
-				elements_table += ",";
+				diagram_info_table += ", ";
+			}
+			diagram_info_table += string += string=="date" ? " DATE" : " VARCHAR(100)";
+		}
+		diagram_info_table += ", FOREIGN KEY (diagram_uuid) REFERENCES diagram (uuid))";
+		if (!query_.exec(diagram_info_table)) {
+			qDebug() << "diagram_info_table query : " << query_.lastError();
+		}
+
+			//Create the element info table
+		QString element_info_table("CREATE TABLE element_info(element_uuid VARCHAR(50) PRIMARY KEY NOT NULL,");
+		first_=true;
+		for (auto string : QETApp::elementInfoKeys())
+		{
+			if (first_) {
+				first_ = false;
+			} else {
+				element_info_table += ",";
 			}
 
-			elements_table += string += " VARCHAR(512)";
+			element_info_table += string += " VARCHAR(100)";
 		}
-		elements_table += ");";
+		element_info_table += ", FOREIGN KEY (element_uuid) REFERENCES element (uuid));";
 
-		QSqlQuery query_(elements_table, m_data_base);
-		query_.exec();
+		if (!query_.exec(element_info_table)) {
+			qDebug() << " element_info_table query : " << query_.lastError();
+		}
 	}
 
 	updateDB();
 	return true;
 }
 
+void projectDataBase::populateDiagramTable()
+{
+	QSqlQuery query_(m_data_base);
+	query_.exec("DELETE FROM diagram");
+
+	QString insert_("INSERT INTO diagram (uuid, pos) VALUES (:uuid, :pos)");
+	query_.prepare(insert_);
+	for (auto diagram : m_project->diagrams())
+	{
+		query_.bindValue(":uuid", diagram->uuid().toString());
+		query_.bindValue(":pos", m_project->folioIndex(diagram));
+		if(!query_.exec()) {
+			qDebug() << "projectDataBase::populateDiagramTable insert error : " << query_.lastError();
+		}
+	}
+}
+
+/**
+ * @brief projectDataBase::populateElementTable
+ * Populate the element table
+ */
+void projectDataBase::populateElementTable()
+{
+	QSqlQuery query_(m_data_base);
+	query_.exec("DELETE FROM element");
+
+	QString insert_("INSERT INTO element (uuid, diagram_uuid, pos, type, sub_type) VALUES (:uuid, :diagram_uuid, :pos, :type, :sub_type)");
+	query_.prepare(insert_);
+
+	for (auto diagram : m_project->diagrams())
+	{
+		ElementProvider ep(diagram);
+		QList<Element *> elements_list = ep.find(Element::Simple | Element::Terminale | Element::Master);
+			//Insert all value into the database
+		for (auto elmt : elements_list)
+		{
+			query_.bindValue(":uuid", elmt->uuid().toString());
+			query_.bindValue(":diagram_uuid", diagram->uuid().toString());
+			query_.bindValue(":pos", diagram->convertPosition(elmt->scenePos()).toString());
+			query_.bindValue(":type", elmt->linkTypeToString());
+			query_.bindValue(":sub_type", elmt->kindInformations()["type"].toString());
+			if (!query_.exec()) {
+				qDebug() << "projectDataBase::populateElementTable insert error : " << query_.lastError();
+			}
+		}
+	}
+}
+
 /**
  * @brief projectDataBase::populateElementsTable
  * Populate the elements table
  */
-void projectDataBase::populateElementsTable()
+void projectDataBase::populateElementInfoTable()
 {
-		//Very ugly, in futur we should update the table instead of delete all
-	QSqlQuery clear_table(m_data_base);
-	if (!clear_table.exec("DELETE FROM element_info")) {
-		qDebug() << "last error " << clear_table.lastError();
-	}
+	QSqlQuery query(m_data_base);
+	query.exec("DELETE FROM element_info");
+
 
 		//Prepare the query used for insert new record
 	QStringList bind_values;
-	for (auto key : elementsInfoKeys()) {
+	for (auto key : QETApp::elementInfoKeys()) {
 		bind_values << key.prepend(":");
 	}
-	QString insert("INSERT INTO element_info (" +
-				   elementsInfoKeys().join(", ") +
-				   ") VALUES (" +
+	QString insert("INSERT INTO element_info (element_uuid," +
+				   QETApp::elementInfoKeys().join(", ") +
+				   ") VALUES (:uuid," +
 				   bind_values.join(", ") +
 				   ")");
 
-	QSqlQuery query(m_data_base);
 	query.prepare(insert);
-
 
 	for (auto *diagram : m_project->diagrams())
 	{
@@ -222,6 +315,7 @@ void projectDataBase::populateElementsTable()
 			//Insert all value into the database
 		for (auto elmt : elements_list)
 		{
+			query.bindValue(":uuid", elmt->uuid().toString());
 			auto hash = elementInfoToString(elmt);
 			for (auto key : hash.keys())
 			{
@@ -230,13 +324,49 @@ void projectDataBase::populateElementsTable()
 				query.bindValue(bind, value);
 			}
 
-			query.bindValue(":element_type", elmt->linkTypeToString());
-			query.bindValue(":element_subtype", elmt->kindInformations()["type"].toString());
-			query.bindValue(":pos", elmt->diagram()->convertPosition(elmt->scenePos()).toString());
-
 			if (!query.exec()) {
-				qDebug() << "projectDataBase::populateElementsTable insert error : " << query.lastError();
+				qDebug() << "projectDataBase::populateElementInfoTable insert error : " << query.lastError();
 			}
+		}
+	}
+}
+
+void projectDataBase::populateDiagramInfoTable()
+{
+	QSqlQuery query(m_data_base);
+	query.exec("DELETE FROM diagram_info");
+
+		//Prepare the query used for insert new record
+	QStringList bind_values;
+	for (auto key : QETApp::diagramInfoKeys()) {
+		bind_values << key.prepend(":");
+	}
+	QString insert("INSERT INTO diagram_info (diagram_uuid, " +
+				   QETApp::diagramInfoKeys().join(", ") +
+				   ") VALUES (:uuid, " +
+				   bind_values.join(", ") +
+				   ")");
+
+	query.prepare(insert);
+
+	for (auto *diagram : m_project->diagrams())
+	{
+		query.bindValue(":uuid", diagram->uuid());
+
+		auto infos = diagram->border_and_titleblock.titleblockInformation();
+		for (auto key : QETApp::diagramInfoKeys())
+		{
+			if (key == "date") {
+				query.bindValue(":date", QDate::fromString(infos.value("date").toString(), Qt::SystemLocaleShortDate));
+			} else {
+				auto value = infos.value(key);
+				auto bind = key.prepend(":");
+				query.bindValue(bind, value);
+			}
+		}
+
+		if (!query.exec()) {
+			qDebug() << "projectDataBase::populateDiagramInfoTable insert error : " << query.lastError();
 		}
 	}
 }
@@ -260,18 +390,6 @@ QHash<QString, QString> projectDataBase::elementInfoToString(Element *elmt)
 	}
 
 	return hash;
-}
-
-/**
- * @brief projectDataBase::elementsInfoKeys
- * @return QETApp::elementInfoKeys() + "element_type" and "element_subtype"
- */
-QStringList projectDataBase::elementsInfoKeys()
-{
-	auto keys_ = QETApp::elementInfoKeys();
-	keys_<< "element_type" << "subtype" << "pos";
-
-	return keys_;
 }
 
 /**
@@ -308,5 +426,7 @@ void projectDataBase::exportDb(projectDataBase *db, QWidget *parent, const QStri
 	}
 
 		//Database is filled at creation, work is done.
-	projectDataBase file_db(db->project(), "export_project_db_" + db->project()->uuid().toString(), path_);
+	QString connection_name("export_project_db_" + db->project()->uuid().toString());
+	projectDataBase file_db(db->project(), connection_name, path_);
+	QSqlDatabase::removeDatabase(connection_name);
 }

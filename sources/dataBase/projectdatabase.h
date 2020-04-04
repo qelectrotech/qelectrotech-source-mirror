@@ -49,7 +49,6 @@ class projectDataBase : public QObject
 		void updateDB();
 		QETProject *project() const;
 
-		static QStringList elementsInfoKeys();
 		static QStringList headersFromElementsInfoQuery(const QString &query);
 
 	signals:
@@ -57,7 +56,10 @@ class projectDataBase : public QObject
 
 	private:
 		bool createDataBase(const QString &connection_name= QString(), const QString &name = QString());
-		void populateElementsTable();
+		void populateDiagramTable();
+		void populateElementTable();
+		void populateElementInfoTable();
+		void populateDiagramInfoTable();
 		static QHash<QString, QString> elementInfoToString(Element *elmt);
 
 	private:
