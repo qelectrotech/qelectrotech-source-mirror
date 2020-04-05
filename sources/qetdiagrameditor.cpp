@@ -2234,22 +2234,13 @@ void QETDiagramEditor::generateTerminalBlock()
 		//connect(process, SIGNAL(errorOcurred(int error)), this, SLOT(slot_generateTerminalBlock_error()));
 		//process->start("qet_tb_generator");
 	
-#ifdef Q_OS_MACOS
-	if (openedProjects().count()){
-		success = process->startDetached("/Library/Frameworks/Python.framework/Versions/3.8/bin/qet_tb_generator", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
-	}
-	else  {
-		success = process->startDetached("/Library/Frameworks/Python.framework/Versions/3.8/bin/qet_tb_generator");
-	}
-#else
 	if (openedProjects().count()){
 		success = process->startDetached("qet_tb_generator", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
 	}
 	else  {
 		success = process->startDetached("qet_tb_generator");
 	}
-	
-#endif
+
 	if ( !success ) {
 	#if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
 		QMessageBox::warning(nullptr,
