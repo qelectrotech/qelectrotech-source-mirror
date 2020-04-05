@@ -1,0 +1,23 @@
+<definition orientation="dyyy" type="element" hotspot_y="2" version="0.80" link_type="simple" width="580" hotspot_x="2" height="580">
+    <uuid uuid="{56f00ad6-c3b2-44eb-a69d-f3a5b60f6da7}"/>
+    <names>
+        <name lang="fr">036069 - Plaque pleine 300x300 Atlantic/Marina</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="designation">036069</elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+        <elementInformation show="1" name="description">Plaque pleine pour coffret Atlantic , Atlantic Inox et Marina hauteur 300 x largeur 300</elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+    </elementInformations>
+    <informations>Arnaud VALMARY</informations>
+    <description>
+        <polygon x32="41" x9="42" y9="20" y15="42" x12="39" y2="20" y59="38" x36="65" y48="535" y50="555" x52="570" y61="44" x14="29" x40="528" x48="552" y12="42" x23="5" x61="546" y21="20" x18="22" x56="557" y28="533" x25="22" x39="510" x27="23" y27="537" x6="76" y38="575" y42="540" y52="560" style="line-style:normal;line-weight:thin;filling:gray;color:black" x54="575" y39="560" y53="555" y14="44" x35="47" y51="560" y5="0" y18="20" x1="533" x22="0" y26="541" x43="534" x30="35" y13="44" y6="0" x46="545" y4="15" x58="553" y25="555" x15="25" x55="570" y43="535" x50="553" y17="35" x57="553" x28="25" y20="15" y23="560" y29="531" y62="44" y32="537" y31="533" y37="575" x38="500" x7="65" y44="532" y8="15" y56="15" x37="75" x45="540" x21="0" x2="533" y57="20" x60="550" x4="510" x20="5" y54="20" x24="17" y22="555" x10="42" x33="42" y16="38" x63="536" y33="541" x42="533" x31="39" y11="38" x64="534" y24="560" y47="532" y19="15" x3="528" x11="41" y10="35" y36="560" x44="537" y1="35" y55="15" x62="540" x59="552" x41="533" y63="42" y41="555" y35="560" x5="500" y60="42" y64="38" antialias="true" x8="46" x16="23" x34="42" y34="555" x19="18" x49="553" x51="558" x47="549" y7="15" y40="560" x13="35" y45="531" y58="35" x17="22" y3="15" y30="531" x29="29" y46="531" x53="575" x26="22" y49="540"/>
+    </description>
+</definition>

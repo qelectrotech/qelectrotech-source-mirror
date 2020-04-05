@@ -1,0 +1,29 @@
+
+<definition width="910" type="element" hotspot_y="2" orientation="dyyy" version="0.80" height="1130" hotspot_x="5" link_type="simple">
+    <uuid uuid="{3d3434ee-4cb3-bafa-977e-7fa26bfe3f79}"/>
+    <names>
+        <name lang="fr">036272 - Coffret Marina 500x400x200 Polyester IP66 IK10 RAL7035</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="designation">036272</elementInformation>
+        <elementInformation show="1" name="description">Coffret polyester Marina IP66 IK10 - 500x400x200mm - RAL7035 - Porte vitrée</elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+    </elementInformations>
+    <informations>Arnaud VALMARY</informations>
+    <description>
+        <rect x="0" rx="0" style="line-style:normal;line-weight:normal;filling:white;color:black" y="0" width="900" antialias="false" height="1125" ry="0"/>
+        <circle diameter="19.1" x="808.55" style="line-style:dashdotted;line-weight:thin;filling:none;color:black" y="1030.45" antialias="true"/>
+        <circle diameter="19.1" x="808.55" style="line-style:dashdotted;line-weight:thin;filling:none;color:black" y="75.45" antialias="true"/>
+        <circle diameter="19.1" x="72.55" style="line-style:dashdotted;line-weight:thin;filling:none;color:black" y="1030.45" antialias="true"/>
+        <circle diameter="19.1" x="72.55" style="line-style:dashdotted;line-weight:thin;filling:none;color:black" y="75.45" antialias="true"/>
+        <rect x="50" rx="0" style="line-style:dashdotted;line-weight:thin;filling:none;color:black" y="50" width="800" antialias="false" height="1025" ry="0"/>
+    </description>
+</definition>
