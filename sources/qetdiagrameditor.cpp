@@ -2236,10 +2236,10 @@ void QETDiagramEditor::generateTerminalBlock()
 	
 #ifdef Q_OS_MACOS
 	if (openedProjects().count()){
-		success = process->startDetached("/Library/Frameworks/Python.framework/Versions/3.5/bin/qet_tb_generator", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
+		success = process->startDetached("/Library/Frameworks/Python.framework/Versions/3.8/bin/qet_tb_generator", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
 	}
 	else  {
-		success = process->startDetached("/Library/Frameworks/Python.framework/Versions/3.5/bin/qet_tb_generator");
+		success = process->startDetached("/Library/Frameworks/Python.framework/Versions/3.8/bin/qet_tb_generator");
 	}
 #else
 	if (openedProjects().count()){
@@ -2300,7 +2300,7 @@ void QETDiagramEditor::generateTerminalBlock()
 								" First install on macOSX"
 							 "</B>""</U>"
 								"<br>"
-								"1. Install, if required, python 3.5 "
+								"1. Install, if required, python 3.8 "
 								"<br>"
 								" Visit :"
 								"<br>"
