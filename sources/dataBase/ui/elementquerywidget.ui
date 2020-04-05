@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>341</width>
-    <height>457</height>
+    <height>527</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -161,6 +161,61 @@
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="widget" native="true">
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="1" column="1">
+       <widget class="QComboBox" name="m_filter_type_cb">
+        <item>
+         <property name="text">
+          <string>Pas de filtre</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>N'est pas vide</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Est vide</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Contient</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Ne contient pas</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Est égal à</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>N'est pas égale à</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLineEdit" name="m_filter_le"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Filtre :</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
    <item>

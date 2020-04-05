@@ -93,23 +93,48 @@ QVector<QStringList> projectDataBase::elementsInfoFromQuery(const QString &query
 QStringList projectDataBase::headersFromElementsInfoQuery(const QString &query)
 {
 	QStringList header_string;
-	if (query.startsWith("SELECT ") && query.contains("FROM"))
-	{
-		auto header = query;
-		header.remove(0, 7); //Remove SELECT from the string;
-		header.truncate(header.indexOf("FROM")); //Now we only have the string between SELECT and FROM
-		header.replace(" ", ""); //remove white space
-		QStringList list = header.split(",");
+	if (!query.startsWith("SELECT ") && !query.contains("FROM")) {
+		return header_string;
+	}
 
-		if (!list.isEmpty())
+	auto header = query;
+	header.remove(0, 7); //Remove SELECT from the string;
+	header.truncate(header.indexOf("FROM")); //Now we only have the string between SELECT and FROM
+	header.replace(" ", ""); //remove white space
+	QStringList list = header.split(","); //split each column
+
+	if (list.isEmpty()) {
+		return header_string;
+	}
+
+	for (int i=0 ; i<list.size() ; i++)
+	{
+		auto str = list.at(i);
+
+		if(str == "e.pos") { //Query in element table wich have only pose use in this case
+			header_string.append(tr("Position"));
+		}
+		else if (str.contains("ei.")) //Query in element_info table
 		{
-			for (int i=0 ; i<list.size() ; i++)
-			{
-				if (list.at(i) == "pos") {
-					header_string.append(tr("Position"));
-				} else {
-					header_string.append(QETApp::elementTranslatedInfoKey(list.at(i)));
-				}
+			str.remove(0,3);
+			header_string.append(QETApp::elementTranslatedInfoKey(str));
+		}
+		else if (str == "d.pos") { //query in diagram table wich have only pos use in this case
+			header_string.append(tr("Position du folio"));
+		}
+		else if (str.contains("di.")) //query in diagram_info table
+		{
+			str.remove(0,3);
+			header_string.append(QETApp::diagramTranslatedInfoKey(str));
+		}
+		else //Default case
+		{
+			if (str == "pos") {
+				header_string.append(tr("Position"));
+			} else if (QETApp::elementInfoKeys().contains(str)) {
+				header_string.append(QETApp::elementTranslatedInfoKey(str));
+			} else {
+				header_string.append(QETApp::diagramTranslatedInfoKey(str));
 			}
 		}
 	}

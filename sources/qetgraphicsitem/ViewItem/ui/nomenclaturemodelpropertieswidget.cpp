@@ -70,8 +70,13 @@ void NomenclatureModelPropertiesWidget::on_m_edit_query_pb_clicked()
 	connect(button_box, &QDialogButtonBox::accepted, &d, &QDialog::accept);
 	connect(button_box, &QDialogButtonBox::rejected, &d, &QDialog::reject);
 
-	if (d.exec()) {
+	if (d.exec())
+	{
 		m_model->query(query_widget->queryStr());
+		auto headers = query_widget->header();
+		for (auto i=0 ; i<headers.size() ; ++i) {
+			m_model->setHeaderData(i, Qt::Horizontal, headers.at(i));
+		}
 	}
 }
 

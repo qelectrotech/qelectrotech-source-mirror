@@ -165,12 +165,7 @@ QVariant NomenclatureModel::data(const QModelIndex &index, int role) const
 void NomenclatureModel::query(const QString &query)
 {
 	auto rm_ = m_query != query;
-	if (rm_)
-	{
-		auto headers = projectDataBase::headersFromElementsInfoQuery(query);
-		for (auto i=0 ; i<headers.size() ; ++i) {
-			this->setHeaderData(i, Qt::Horizontal, headers.at(i));
-		}
+	if (rm_) {
 		emit beginResetModel();
 	}
 
@@ -193,6 +188,18 @@ void NomenclatureModel::query(const QString &query)
 
 QETProject *NomenclatureModel::project() const {
 	return m_project.data();
+}
+
+/**
+ * @brief NomenclatureModel::autoHeaders
+ * Try to determine the name of each columns header
+ */
+void NomenclatureModel::autoHeaders()
+{
+	auto headers = projectDataBase::headersFromElementsInfoQuery(m_query);
+	for (auto i=0 ; i<headers.size() ; ++i) {
+		this->setHeaderData(i, Qt::Horizontal, headers.at(i));
+	}
 }
 
 /**

@@ -43,6 +43,7 @@ class NomenclatureModel : public QAbstractTableModel
 		QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 		void query(const QString &query);
 		QETProject *project() const;
+		void autoHeaders();
 
 	private:
 		void dataBaseUpdated();

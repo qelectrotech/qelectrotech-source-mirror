@@ -41,6 +41,7 @@ class ElementQueryWidget : public QWidget
 		~ElementQueryWidget();
 
 		QString queryStr() const;
+		QStringList header() const;
 
 	private slots:
 		void on_m_up_pb_clicked();
@@ -48,17 +49,25 @@ class ElementQueryWidget : public QWidget
 		void on_m_remove_pb_clicked();
 		void on_m_down_pb_clicked();
 		void on_m_edit_sql_query_cb_clicked();
+		void on_m_plant_textChanged(const QString &arg1);
+		void on_m_location_textChanged(const QString &arg1);
+		void on_m_filter_le_textEdited(const QString &arg1);
+		void on_m_filter_type_cb_activated(int index);
 
 		void updateQueryLine();
 		QStringList selectedKeys() const;
 		void setUpItems();
+		QPair<int, QString> FilterFor(const QString &key) const;
 
-	private:
+		void on_m_choosen_list_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous);
+
+		private:
 		Ui::ElementQueryWidget *ui;
 		QHash <QString, QString> m_export_info;
 		QButtonGroup m_button_group;
 		QList <QListWidgetItem *> m_items_list;
 		QString m_custom_query;
+		QHash <QString, QPair<int, QString>> m_filter;
 };
 
 #endif // ELEMENTQUERYWIDGET_H

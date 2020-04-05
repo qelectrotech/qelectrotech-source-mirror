@@ -29,11 +29,10 @@ ElementQueryWidget::ElementQueryWidget(QWidget *parent) :
 {
     ui->setupUi(this);
 
-	m_export_info.insert("pos", tr("Position"));
-//	m_export_info.insert("folio_title", tr("Titre du folio"));
-//	m_export_info.insert("folio_pos", tr("Position de folio"));
-//	m_export_info.insert("folio_num", tr("Numéro de folio"));
-//	m_export_info.insert("designation_qty", tr("Quantité (Numéro d'article)"));
+	m_export_info.insert("e.pos", tr("Position"));
+	m_export_info.insert("di.title", tr("Titre du folio"));
+	m_export_info.insert("d.pos", tr("Position du folio"));
+	m_export_info.insert("di.folio", tr("Numéro du folio"));
 
 	m_button_group.setExclusive(false);
 	m_button_group.addButton(ui->m_all_cb, 0);
@@ -110,6 +109,7 @@ QString ElementQueryWidget::queryStr() const
 
 	QString select ="SELECT ";
 	QString order_by = " ORDER BY ";
+	QString filter_;
 
 	QString column;
 	bool first = true;
@@ -122,35 +122,64 @@ QString ElementQueryWidget::queryStr() const
 		}
 		column += key;
 		order_by += key;
+		
+		auto f = FilterFor(key);
+		switch (f.first)
+		{
+			case 0: //No filter
+				break;
+			case 1: //Not empty
+				filter_ += QString(" AND ") += key += " IS NOT NULL"; 
+				break;
+			case 2: //empty
+				filter_ += QString(" AND ") += key += " IS NULL";
+				break;
+			case 3: // contain
+				filter_ += QString(" AND ") += key += QString(" LIKE'%") += f.second += "%'";
+				break;
+			case 4: // not contain
+				filter_ += QString(" AND ") += key += QString(" NOT LIKE'%") += f.second += "%'";
+				break;
+			case 5: // is equal
+				filter_ += QString(" AND ") += key += QString("='") += f.second += "'";
+				break;
+			case 6: // is not equal
+				filter_ += QString(" AND ") += key += QString("!='") += f.second += "'";
+				break;
+		}
 	}
 
-	QString from = " FROM element_info";
-	QString where;
+	QString from = " FROM element_info ei, element e, diagram d, diagram_info di";
+	QString where = " WHERE ei.element_uuid = e.uuid"
+					" AND di.diagram_uuid = d.uuid"
+					" AND e.diagram_uuid = d.uuid";
+
 	if (ui->m_all_cb->checkState() == Qt::PartiallyChecked)
 	{
-		if (ui->m_terminal_cb->isChecked()) {
-			where = " WHERE element_type = 'Terminale'";
-		}
-		if (ui->m_simple_cb->isChecked()) {
-			auto str = where.isEmpty() ? " WHERE element_type = 'Simple'" : " AND element_type = 'Simple'";
-			where += str;
-		}
-		if (ui->m_button_cb->isChecked()) {
-			auto str = where.isEmpty() ? " WHERE element_subtype = 'commutator'" : " AND element_subtype = 'commutator'";
-			where += str;
-		}
-		if (ui->m_coil_cb->isChecked()) {
-			auto str = where.isEmpty() ? " WHERE element_subtype = 'coil'" : " AND element_subtype = 'coil'";
-			where += str;
-		}
-		if (ui->m_protection_cb->isChecked()) {
-			auto str = where.isEmpty() ? " WHERE element_subtype = 'protection'" : " AND element_subtype = 'protection'";
-			where += str;
-		}
+		if (ui->m_terminal_cb->isChecked())   {where += " AND e.type = 'Terminale'";}
+		if (ui->m_simple_cb->isChecked())     {where += " AND e.type = 'Simple'";}
+		if (ui->m_button_cb->isChecked())     {where += " AND e.sub_type = 'commutator'";}
+		if (ui->m_coil_cb->isChecked())       {where += " AND e.sub_type = 'coil'";}
+		if (ui->m_protection_cb->isChecked()) {where += " AND e.sub_type = 'protection'";}
+	}
+	
+
+	QString q(select + column + from + where + filter_ + order_by);
+	return q;
+}
+
+QStringList ElementQueryWidget::header() const
+{
+		//Made a string list with the colomns (keys) choosen by the user
+	QStringList headers;
+	int row = 0;
+	while (auto *item = ui->m_choosen_list->item(row))
+	{
+		headers.append(item->data(Qt::DisplayRole).toString());
+		++row;
 	}
 
-	QString q(select + column + from + where + order_by);
-	return q;
+	return headers;
 }
 
 /**
@@ -183,9 +212,10 @@ void ElementQueryWidget::setUpItems()
 	for(QString key : QETApp::elementInfoKeys())
 	{
 		auto item = new QListWidgetItem(QETApp::elementTranslatedInfoKey(key), ui->m_var_list);
-		item->setData(Qt::UserRole, key);
+		item->setData(Qt::UserRole, "ei." + key);
 		m_items_list << item;
 	}
+
 
 	for (auto key : m_export_info.keys())
 	{
@@ -193,6 +223,15 @@ void ElementQueryWidget::setUpItems()
 		item->setData(Qt::UserRole, key);
 		m_items_list << item;
 	}
+}
+
+/**
+ * @brief ElementQueryWidget::FilterFor
+ * @param key
+ * @return the filter associated to key
+ */
+QPair<int, QString> ElementQueryWidget::FilterFor(const QString &key) const {
+	return m_filter.value(key, qMakePair(0, QString()));
 }
 
 /**
@@ -271,4 +310,55 @@ void ElementQueryWidget::on_m_edit_sql_query_cb_clicked()
 		m_custom_query = ui->m_sql_query->text();
 		updateQueryLine();
 	}
+}
+
+void ElementQueryWidget::on_m_plant_textChanged(const QString &arg1) {
+	Q_UNUSED(arg1)
+	updateQueryLine();
+}
+
+void ElementQueryWidget::on_m_location_textChanged(const QString &arg1) {
+	Q_UNUSED(arg1)
+	updateQueryLine();
+}
+
+void ElementQueryWidget::on_m_filter_le_textEdited(const QString &arg1)
+{
+	if (auto item = ui->m_choosen_list->currentItem())
+	{
+		auto key =  item->data(Qt::UserRole).toString();
+		auto type = ui->m_filter_type_cb->currentIndex();
+		auto value = arg1;
+
+		m_filter.insert(key, qMakePair(type, value));
+		updateQueryLine();
+	}
+}
+
+void ElementQueryWidget::on_m_filter_type_cb_activated(int index)
+{
+	if (auto item = ui->m_choosen_list->currentItem())
+	{
+		auto key =  item->data(Qt::UserRole).toString();
+		auto type = index;
+		auto value = ui->m_filter_le->text();
+
+		m_filter.insert(key, qMakePair(type, value));
+		ui->m_filter_le->setDisabled(index <= 2);
+		updateQueryLine();
+	}
+}
+
+void ElementQueryWidget::on_m_choosen_list_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous)
+{
+	Q_UNUSED(previous)
+
+	if (!current)
+		return;
+
+	auto key = current->data(Qt::UserRole).toString();
+	auto p = FilterFor(key);
+	ui->m_filter_type_cb->setCurrentIndex(p.first);
+	ui->m_filter_le->setText(p.second);
+	ui->m_filter_le->setEnabled(p.first>=3);
 }

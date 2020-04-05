@@ -412,11 +412,12 @@ void QETDiagramEditor::setUpActions()
 
 			/*******ONLY FOR TEST DURING DEVEL*********/
 			auto model = new NomenclatureModel(this->currentProject(), this->currentProject());
-			QString query("SELECT ei.plant AS plant, ei.location AS location, di.title AS title, ei.label AS label, ei.comment AS comment, e.pos AS pos"
+			QString query("SELECT ei.plant, ei.location, ei.label, ei.comment, e.pos, di.title, di.folio"
 						  " FROM element_info ei, element e, diagram_info di"
 						  " WHERE ei.element_uuid = e.uuid AND e.diagram_uuid = di.diagram_uuid"
-						  " ORDER BY plant, location, title, label, pos");
+						  " ORDER BY ei.plant, ei.location, ei.label");
 			model->query(query);
+			model->autoHeaders();
 			model->setData(model->index(0,0), Qt::AlignLeft, Qt::TextAlignmentRole);
 			model->setData(model->index(0,0), QETApp::diagramTextsFont(), Qt::FontRole);
 			model->setHeaderData(0, Qt::Horizontal, Qt::AlignHCenter, Qt::TextAlignmentRole);
