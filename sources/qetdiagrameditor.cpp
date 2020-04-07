@@ -412,7 +412,7 @@ void QETDiagramEditor::setUpActions()
 
 			/*******ONLY FOR TEST DURING DEVEL*********/
 			auto model = new NomenclatureModel(this->currentProject(), this->currentProject());
-			QString query("SELECT ei.plant, ei.location, ei.label, ei.comment, e.pos, di.title, di.folio"
+			QString query("SELECT ei.plant, ei.location, ei.label, ei.comment, ei.description, ei.manufacturer, e.pos, di.title, di.folio"
 						  " FROM element_info ei, element e, diagram_info di"
 						  " WHERE ei.element_uuid = e.uuid AND e.diagram_uuid = di.diagram_uuid"
 						  " ORDER BY ei.plant, ei.location, ei.label");
