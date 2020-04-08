@@ -57,11 +57,10 @@ void MasterElement::linkToElement(Element *elmt)
 
 		XRefProperties xrp = diagram()->project()->defaultXRefProperties(kindInformations()["type"].toString());
 		if (!m_Xref_item && xrp.snapTo() == XRefProperties::Bottom)
-			m_Xref_item = new CrossRefItem(this); //create cross ref item if not yet
-		else
-			aboutDeleteXref();
+			m_Xref_item = new CrossRefItem(this); //create cross ref item if not yet	
 		
 		emit linkedElementChanged();
+		aboutDeleteXref();
 	}
 }
 

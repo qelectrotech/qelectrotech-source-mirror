@@ -211,9 +211,6 @@ void CrossRefItem::updateLabel()
 		else if (dh == XRefProperties::Contacts)
 			drawAsContacts(qp);
 	}
-
-//	AddExtraInfo(qp, "comment");
-//	AddExtraInfo(qp, "location");
 	qp.end();
 
 	autoPos();
