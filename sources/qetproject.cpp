@@ -25,7 +25,6 @@
 #include "titleblocktemplate.h"
 #include "ui/dialogwaiting.h"
 #include "numerotationcontext.h"
-#include "reportproperties.h"
 #include "integrationmovetemplateshandler.h"
 #include "xmlelementcollection.h"
 #include "importelementdialog.h"
@@ -48,6 +47,8 @@ QETProject::QETProject(QObject *parent) :
 	QObject              (parent),
 	m_titleblocks_collection(this)
 {
+	setDefaultTitleBlockProperties(TitleBlockProperties::defaultProperties());
+
 	m_elements_collection = new XmlElementCollection(this);
 	init();
 }
@@ -438,12 +439,10 @@ void QETProject::setDefaultTitleBlockProperties(const TitleBlockProperties &titl
 			case QET::Embedded :
 				//Titleblock is already embedded to project
 				return;
-			default:
-				return;
 		}
 
-		QScopedPointer<IntegrationMoveTitleBlockTemplatesHandler> m(new IntegrationMoveTitleBlockTemplatesHandler);
-		integrateTitleBlockTemplate(collection -> location(titleblock.template_name), m.data());
+		IntegrationMoveTitleBlockTemplatesHandler m_;
+		integrateTitleBlockTemplate(collection -> location(titleblock.template_name), &m_);
 	}
 	emit defaultTitleBlockPropertiesChanged();
 }

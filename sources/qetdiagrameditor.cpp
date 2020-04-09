@@ -16,25 +16,12 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetdiagrameditor.h"
-#include "qetapp.h"
-#include "diagramcontent.h"
 #include "diagramview.h"
-#include "diagram.h"
-#include "qetgraphicsitem/element.h"
 #include "elementspanelwidget.h"
-#include "conductorpropertieswidget.h"
-#include "qetproject.h"
-#include "projectview.h"
 #include "recentfiles.h"
 #include "qeticons.h"
-#include "qetelementeditor.h"
 #include "qetmessagebox.h"
-#include "qetresult.h"
-#include "genericpanel.h"
-#include "nomenclature.h"
 #include "diagramfoliolist.h"
-#include "qetshapeitem.h"
-#include "reportproperties.h"
 #include "diagrampropertieseditordockwidget.h"
 #include "diagrameventaddshape.h"
 #include "diagrameventaddimage.h"
@@ -50,13 +37,9 @@
 #include "addelementtextcommand.h"
 #include "conductornumexport.h"
 #include "qetgraphicstableitem.h"
-
-#include <QMessageBox>
-#include <QStandardPaths>
-#include <KAutoSaveFile>
-
-#include "elementscollectionmodel.h"
 #include "bomexportdialog.h"
+
+#include <KAutoSaveFile>
 
 
 /**
@@ -889,24 +872,14 @@ void QETDiagramEditor::saveAs() {
 
 /**
  * @brief QETDiagramEditor::newProject
- * Create an empty project
+ * Create a new project with an empty diagram
  * @return
  */
-bool QETDiagramEditor::newProject() {
-	// create new project without diagram
-	QETProject *new_project = new QETProject(this);
-	
-	// Set default properties for new diagram
-	new_project -> setDefaultBorderProperties	  (BorderProperties::    defaultProperties());
-	new_project -> setDefaultConductorProperties  (ConductorProperties:: defaultProperties());
-	new_project -> setDefaultTitleBlockProperties (TitleBlockProperties::defaultProperties());
-	new_project -> setDefaultReportProperties	  (ReportProperties::    defaultProperties());
-	new_project -> setDefaultXRefProperties		  (XRefProperties::      defaultProperties());
-	
-	// add new diagram
+bool QETDiagramEditor::newProject()
+{
+	auto new_project = new QETProject(this);
 	new_project -> addNewDiagram();
-	
-	return(addProject(new_project));
+	return addProject(new_project);
 }
 
 /**
