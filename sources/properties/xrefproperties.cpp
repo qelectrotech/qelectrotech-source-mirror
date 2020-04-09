@@ -69,8 +69,9 @@ void XRefProperties::toSettings(QSettings &settings, const QString prefix) const
  * @param settings: QSettings to use
  * @param prefix: prefix before properties name
  */
-void XRefProperties::fromSettings(const QSettings &settings, const QString prefix) {
-	m_show_power_ctc = settings.value(prefix + "showpowerctc", false).toBool();
+void XRefProperties::fromSettings(const QSettings &settings, const QString prefix)
+{
+	m_show_power_ctc = settings.value(prefix + "showpowerctc", true).toBool();
 	QString display = settings.value(prefix + "displayhas", "cross").toString();
 	display == "cross"? m_display = Cross : m_display = Contacts;
 	QString snap = settings.value(prefix + "snapto", "label").toString();
@@ -82,7 +83,7 @@ void XRefProperties::fromSettings(const QSettings &settings, const QString prefi
 	QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
 	m_xref_pos = Qt::AlignmentFlag(var.keyToValue((settings.value(prefix + "xrefpos").toString()).toStdString().data()));
 
-	foreach (QString key, m_prefix_keys) {
+	for (QString key : m_prefix_keys) {
 		m_prefix.insert(key, settings.value(prefix + key + "prefix").toString());
 	}
 }
