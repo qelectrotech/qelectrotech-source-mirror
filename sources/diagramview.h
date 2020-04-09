@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2019 The QElectroTech Team
 	This file is part of QElectroTech.
 	
@@ -102,8 +102,6 @@ class DiagramView : public QGraphicsView
 		bool gestures() const;
 
 	signals:
-			/// Signal emitted after the selection changed
-		void selectionChanged();
 			/// Signal emitted after the selection mode changed
 		void modeChanged();
 			/// Signal emitted after the diagram title changed

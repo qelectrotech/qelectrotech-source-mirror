@@ -56,11 +56,8 @@ ProjectView::ProjectView(QETProject *project, QWidget *parent) :
 	Supprime les DiagramView embarquees
 */
 ProjectView::~ProjectView() {
-	// qDebug() << "Suppression du ProjectView" << ((void *)this);
-	foreach(int id, m_diagram_ids.keys()) {
-		DiagramView *diagram_view = m_diagram_ids.take(id);
-		delete diagram_view;
-	}
+	for (auto dv_ : m_diagram_ids.values())
+		dv_->deleteLater();
 }
 
 /**
