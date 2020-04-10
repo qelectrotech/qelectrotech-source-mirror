@@ -1425,6 +1425,7 @@ void Element::setElementInformations(DiagramContext dc)
 
 	DiagramContext old_info = m_element_informations;
 	m_element_informations = dc;
+	m_element_informations.addValue("label", actualLabel()); //Update the label if there is a formula
 	emit elementInfoChange(old_info, m_element_informations);
 }
 
