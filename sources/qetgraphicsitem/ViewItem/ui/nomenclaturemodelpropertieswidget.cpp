@@ -33,9 +33,7 @@ NomenclatureModelPropertiesWidget::NomenclatureModelPropertiesWidget(Nomenclatur
     ui(new Ui::NomenclatureModelPropertiesWidget)
 {
     ui->setupUi(this);
-    if (model) {
-        setModel(model);
-    }
+	setModel(model);
 }
 
 /**
@@ -51,6 +49,8 @@ NomenclatureModelPropertiesWidget::~NomenclatureModelPropertiesWidget() {
  */
 void NomenclatureModelPropertiesWidget::setModel(NomenclatureModel *model) {
     m_model = model;
+	ui->m_edit_query_pb->setEnabled(m_model);
+	ui->m_refresh_pb->setEnabled(m_model);
 }
 
 /**

@@ -46,7 +46,7 @@ class QetGraphicsHeaderItem : public QGraphicsObject
 		enum { Type = UserType + 1301 };
 		int type() const override { return Type; }
 
-        void setModel(QAbstractItemModel *model);
+		void setModel(QAbstractItemModel *model = nullptr);
         QAbstractItemModel *model() const;
 
         virtual QRectF boundingRect() const override;

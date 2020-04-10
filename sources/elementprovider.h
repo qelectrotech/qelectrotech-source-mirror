@@ -20,10 +20,12 @@
 
 #include <QUuid>
 #include <QList>
+#include <QAbstractTableModel>
 
 class QETProject;
 class Diagram;
 class Element;
+class QetGraphicsTableItem;
 
 /**
   this class can search in the given diagram or project some kind of element
@@ -34,14 +36,15 @@ class Element;
 class ElementProvider
 {
 	public:
-	ElementProvider(QETProject *prj, Diagram *diagram=nullptr);
-	ElementProvider(Diagram *diag);
-	QList <Element *> freeElement(const int filter) const;
-	QList <Element *> fromUuids(QList <QUuid>) const;
-	QList <Element *> find(const int filter) const;
+		ElementProvider(QETProject *prj, Diagram *diagram=nullptr);
+		ElementProvider(Diagram *diag);
+		QList <Element *> freeElement(const int filter) const;
+		QList <Element *> fromUuids(QList <QUuid>) const;
+		QList <Element *> find(const int filter) const;
+		QVector <QetGraphicsTableItem *> table(QetGraphicsTableItem *table = nullptr, QAbstractItemModel *model = nullptr);
 
 	private:
-	QList <Diagram *> diag_list;
+		QList <Diagram *> m_diagram_list;
 };
 
 #endif // ELEMENTPROVIDER_H
