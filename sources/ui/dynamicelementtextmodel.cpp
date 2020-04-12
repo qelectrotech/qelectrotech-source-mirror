@@ -1781,7 +1781,7 @@ QStringList DynamicTextItemDelegate::availableInfo(DynamicElementTextItem *deti)
 			if (!cond->properties().m_function.isEmpty())
 				qstrl << "function";
 			if(!cond->properties().m_tension_protocol.isEmpty())
-				qstrl << "tension_protocol";
+				qstrl << "tension-protocol";
 		}
 		 
 		 return qstrl;

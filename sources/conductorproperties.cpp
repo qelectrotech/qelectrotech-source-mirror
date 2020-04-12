@@ -261,7 +261,7 @@ void ConductorProperties::toXml(QDomElement &e) const
 	e.setAttribute("num", text);
 	e.setAttribute("formula", m_formula);
 	e.setAttribute("function", m_function);
-	e.setAttribute("tension_protocol", m_tension_protocol);
+	e.setAttribute("tension-protocol", m_tension_protocol);
 	e.setAttribute("numsize", QString::number(text_size));
 	e.setAttribute("condsize", QString::number(cond_size));
 	e.setAttribute("displaytext", m_show_text);
@@ -313,7 +313,7 @@ void ConductorProperties::fromXml(QDomElement &e)
 	text                 = e.attribute("num");
 	m_formula            = e.attribute("formula");
 	m_function           = e.attribute("function");
-	m_tension_protocol   = e.attribute("tension_protocol");
+	m_tension_protocol   = e.attribute("tension-protocol");
 	text_size            = e.attribute("numsize", QString::number(9)).toInt();
 	cond_size            = e.attribute("condsize", QString::number(1)).toDouble();
 	m_show_text          = e.attribute("displaytext", QString::number(1)).toInt();
@@ -346,7 +346,7 @@ void ConductorProperties::toSettings(QSettings &settings, const QString &prefix)
 	settings.setValue(prefix + "text", text);
 	settings.setValue(prefix + "formula", m_formula);
 	settings.setValue(prefix + "function", m_function);
-	settings.setValue(prefix + "tension_protocol", m_tension_protocol);
+	settings.setValue(prefix + "tension-protocol", m_tension_protocol);
 	settings.setValue(prefix + "textsize", QString::number(text_size));
 	settings.setValue(prefix + "size", QString::number(cond_size));
 	settings.setValue(prefix + "displaytext", m_show_text);
@@ -384,7 +384,7 @@ void ConductorProperties::fromSettings(QSettings &settings, const QString &prefi
 	text                 = settings.value(prefix + "text", "_").toString();
 	m_formula            = settings.value(prefix + "formula", "").toString();
 	m_function           = settings.value(prefix + "function", "").toString();
-	m_tension_protocol   = settings.value(prefix + "tension_protocol", "").toString();
+	m_tension_protocol   = settings.value(prefix + "tension-protocol", "").toString();
 	text_size            = settings.value(prefix + "textsize", "7").toInt();
 	cond_size            = settings.value(prefix + "size", "1").toInt();
 	m_show_text          = settings.value(prefix + "displaytext", true).toBool();

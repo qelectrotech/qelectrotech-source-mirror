@@ -8,13 +8,13 @@
         <elementInformation show="1" name="quantity"></elementInformation>
         <elementInformation show="1" name="description">Bornier de terre à connexion automatique 5 + 274 050 555 x 6 à 25 mm² + 27 x 1,5 à 4 mm² (long. 227 mm)</elementInformation>
         <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
-        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
         <elementInformation show="1" name="plant"></elementInformation>
         <elementInformation show="1" name="designation">4050 55</elementInformation>
         <elementInformation show="1" name="unity"></elementInformation>
         <elementInformation show="1" name="comment"></elementInformation>
         <elementInformation show="1" name="label"></elementInformation>
-        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
     </elementInformations>
     <informations>Arnaud Valmary</informations>
     <description>

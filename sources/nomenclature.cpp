@@ -179,13 +179,13 @@ QString nomenclature::getElementInfo(Element *elmt) {
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["plant"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["comment"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["manufacturer"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
-	info += autonum::AssignVariables::formulaToLabel(elmt_info["manufacturer_reference"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
+	info += autonum::AssignVariables::formulaToLabel(elmt_info["manufacturer-reference"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["supplier"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["quantity"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["unity"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["auxiliary1"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["auxiliary2"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
-	info += autonum::AssignVariables::formulaToLabel(elmt_info["machine_manufacturer_reference"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
+	info += autonum::AssignVariables::formulaToLabel(elmt_info["machine-manufacturer-reference"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["location"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + ";";
 	info += autonum::AssignVariables::formulaToLabel(elmt_info["function"].toString(), elmt->rSequenceStruct(), elmt->diagram(), elmt) + "\n";
 
