@@ -4,8 +4,8 @@
         <name lang="fr">Kamstrup 603</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
-        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="designation">603</elementInformation>
         <elementInformation show="1" name="quantity"></elementInformation>
         <elementInformation show="1" name="description"></elementInformation>
@@ -43,7 +43,7 @@
         <text text="HEAT METER (E1) " font="MS Shell Dlg 2,2,-1,5,50,0,0,0,0,0,Normal" color="#000000" y="15" x="5" rotation="0"/>
         <dynamic_text font="MS Shell Dlg 2,4,-1,5,50,0,0,0,0,0,Normal" y="60" uuid="{2828ddcb-2723-48c7-8952-7ed460e28a65}" frame="false" Halignment="AlignLeft" text_from="ElementInfo" x="50" z="24" text_width="-1" Valignment="AlignTop" rotation="0">
             <text></text>
-            <info_name>machine-manufacturer-reference</info_name>
+            <info_name>machine_manufacturer_reference</info_name>
         </dynamic_text>
         <text text="CE" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" y="30" x="5" rotation="0"/>
         <text text="Battery.2xA cell" font="Sans Serif,1,-1,5,50,0,0,0,0,0" color="#000000" y="75" x="5" rotation="0"/>

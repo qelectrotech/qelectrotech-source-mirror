@@ -4,7 +4,7 @@
         <name lang="fr">05810 - Coupe-circuit unipolaire 10A</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="supplier"></elementInformation>
         <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
         <elementInformation show="1" name="label"></elementInformation>
@@ -13,7 +13,7 @@
         <elementInformation show="1" name="quantity"></elementInformation>
         <elementInformation show="1" name="comment"></elementInformation>
         <elementInformation show="1" name="description">Coupe-circuit 1P pour cartouche cylindrique domestique 10A</elementInformation>
-        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="unity"></elementInformation>
     </elementInformations>
     <informations>Arnaud Valmary</informations>

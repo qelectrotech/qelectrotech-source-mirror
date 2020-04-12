@@ -53,7 +53,7 @@
         <input size="9" text="_" rotate="true" y="-27.5" tagg="label" x="451"/>
         <input size="9" text="_" rotate="true" y="-7.5" tagg="comment" x="451"/>
         <input size="9" text="_" rotate="true" y="27.5" tagg="manufacturer" x="451"/>
-        <input size="9" text="_" rotate="true" y="47.5" tagg="manufacturer-reference" x="451"/>
+        <input size="9" text="_" rotate="true" y="47.5" tagg="manufacturer_reference" x="451"/>
         <input size="9" text="_" rotate="true" y="67.5" tagg="" x="451"/>
         <terminal orientation="n" y="-45" x="260"/>
         <terminal orientation="n" y="-45" x="210"/>

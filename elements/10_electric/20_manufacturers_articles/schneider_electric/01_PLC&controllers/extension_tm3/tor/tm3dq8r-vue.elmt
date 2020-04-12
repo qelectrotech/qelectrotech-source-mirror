@@ -8,13 +8,13 @@
         <elementInformation name="label" show="1"></elementInformation>
         <elementInformation name="comment" show="1"></elementInformation>
         <elementInformation name="supplier" show="1"></elementInformation>
-        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
         <elementInformation name="quantity" show="1"></elementInformation>
         <elementInformation name="description" show="1"></elementInformation>
         <elementInformation name="designation" show="1">TM3DQ8R/G</elementInformation>
         <elementInformation name="plant" show="1"></elementInformation>
         <elementInformation name="unity" show="1"></elementInformation>
-        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
         <elementInformation name="manufacturer" show="1">Schneider</elementInformation>
     </elementInformations>
     <informations>

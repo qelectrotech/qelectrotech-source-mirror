@@ -6,9 +6,9 @@
     <elementInformations>
         <elementInformation name="supplier" show="1"></elementInformation>
         <elementInformation name="description" show="1"></elementInformation>
-        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
         <elementInformation name="quantity" show="1"></elementInformation>
-        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
         <elementInformation name="manufacturer" show="1">SCHNEIDER</elementInformation>
         <elementInformation name="designation" show="1">STBDDI3725KC</elementInformation>
         <elementInformation name="label" show="1"></elementInformation>

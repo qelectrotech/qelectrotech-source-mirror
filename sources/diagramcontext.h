@@ -40,12 +40,12 @@
  * plant                          -> the plant assigned to the element
  * comment                        -> a little comment wich can be displayed in the folio
  * manufacturer                   -> the manufacturer of the element
- * manufacturer-reference         -> the manufacturer reference of the element
+ * manufacturer_reference         -> the manufacturer reference of the element
  * quantity                       -> quantity of the element
  * unity                          -> unity of the element
  * auxiliary1                     -> auxiliary 1 of element
  * auxiliary2                     -> auxiliary 2 of element
- * machine-manufacturer-reference -> reference of the machine manufacturer
+ * machine_manufacturer_reference -> reference of the machine manufacturer
  * supplier                       -> the supplier of the element
  * function                       -> the function of element
  * location                       -> the location assigned to the element

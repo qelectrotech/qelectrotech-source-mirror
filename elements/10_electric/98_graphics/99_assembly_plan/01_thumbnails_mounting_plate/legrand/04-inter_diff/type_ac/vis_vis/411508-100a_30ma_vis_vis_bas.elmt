@@ -6,9 +6,9 @@
     <elementInformations>
         <elementInformation name="description" show="1">Interrupteur différentiel DX³-ID arrivée haute et départ bas à vis - 2P 230V~ 100A typeAC 30mA - 2 modules</elementInformation>
         <elementInformation name="comment" show="1"></elementInformation>
-        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
         <elementInformation name="supplier" show="1"></elementInformation>
-        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
         <elementInformation name="designation" show="1">4115 08</elementInformation>
         <elementInformation name="quantity" show="1"></elementInformation>
         <elementInformation name="label" show="1"></elementInformation>

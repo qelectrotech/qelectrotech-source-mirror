@@ -15,7 +15,7 @@
         <kindInformation name="type" show="1">protection</kindInformation>
     </kindInformations>
     <elementInformations>
-        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
         <elementInformation name="supplier" show="1"></elementInformation>
         <elementInformation name="quantity" show="1"></elementInformation>
         <elementInformation name="comment" show="1">2A</elementInformation>
@@ -23,7 +23,7 @@
         <elementInformation name="plant" show="1"></elementInformation>
         <elementInformation name="description" show="1">DISJONCTEUR UNI+N COURBE C2 A</elementInformation>
         <elementInformation name="designation" show="1">LEG0406771</elementInformation>
-        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
         <elementInformation name="unity" show="1"></elementInformation>
         <elementInformation name="label" show="1"></elementInformation>
     </elementInformations>

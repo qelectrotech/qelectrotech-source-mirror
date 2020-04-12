@@ -12,8 +12,8 @@
         <elementInformation show="1" name="quantity"></elementInformation>
         <elementInformation show="1" name="designation">035236</elementInformation>
         <elementInformation show="1" name="description">Coffret Atlantic inox spécial agroalimentaire 304L IP66 IK10 - 600x400x250mm</elementInformation>
-        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
-        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="supplier"></elementInformation>
     </elementInformations>
     <informations>Arnaud VALMARY</informations>

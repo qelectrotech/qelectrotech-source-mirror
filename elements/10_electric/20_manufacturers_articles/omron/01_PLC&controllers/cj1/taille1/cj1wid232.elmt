@@ -6,8 +6,8 @@
     </names>
     <elementInformations>
         <elementInformation name="supplier" show="1"></elementInformation>
-        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
-        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
         <elementInformation name="label" show="1"></elementInformation>
         <elementInformation name="plant" show="1"></elementInformation>
         <elementInformation name="comment" show="1"></elementInformation>

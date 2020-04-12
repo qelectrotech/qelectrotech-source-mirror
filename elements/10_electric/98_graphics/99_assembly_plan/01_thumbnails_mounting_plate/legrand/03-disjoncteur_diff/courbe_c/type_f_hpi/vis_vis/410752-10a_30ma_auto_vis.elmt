@@ -8,8 +8,8 @@
         <elementInformation show="1" name="comment"></elementInformation>
         <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
         <elementInformation show="1" name="description">Disjoncteur différentiel DX³4500 arrivée haute et départ bas à vis U+N 230V~ - 10A type F 30mA - 2 modules</elementInformation>
-        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
-        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="label"></elementInformation>
         <elementInformation show="1" name="designation">4107 52</elementInformation>
         <elementInformation show="1" name="unity"></elementInformation>

@@ -15,14 +15,14 @@
         <kindInformation show="1" name="type">protection</kindInformation>
     </kindInformations>
     <elementInformations>
-        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="description">DISJONCTEUR UNI+N COURBE C6 A</elementInformation>
         <elementInformation show="1" name="comment">6A</elementInformation>
         <elementInformation show="1" name="quantity"></elementInformation>
         <elementInformation show="1" name="plant"></elementInformation>
         <elementInformation show="1" name="designation">LEG406772</elementInformation>
         <elementInformation show="1" name="unity"></elementInformation>
-        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="supplier"></elementInformation>
         <elementInformation show="1" name="label"></elementInformation>
         <elementInformation show="1" name="manufacturer">Legrand</elementInformation>

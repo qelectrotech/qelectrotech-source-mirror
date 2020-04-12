@@ -6,10 +6,10 @@
     <elementInformations>
         <elementInformation name="description" show="1">Télérupteur CX³ standard avec bornes à vis 4P 16A 400V~ contact 4F - tension commande 24V~ - 2 modules</elementInformation>
         <elementInformation name="supplier" show="1"></elementInformation>
-        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
         <elementInformation name="comment" show="1"></elementInformation>
         <elementInformation name="unity" show="1"></elementInformation>
-        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
         <elementInformation name="manufacturer" show="1">Legrand</elementInformation>
         <elementInformation name="quantity" show="1"></elementInformation>
         <elementInformation name="label" show="1"></elementInformation>

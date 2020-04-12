@@ -183,13 +183,13 @@ namespace autonum
 		str.replace("%{description}", dc.value("description").toString());
 		str.replace("%{designation}", dc.value("designation").toString());
 		str.replace("%{manufacturer}", dc.value("manufacturer").toString());
-		str.replace("%{manufacturer-reference}", dc.value("manufacturer-reference").toString());
+		str.replace("%{manufacturer_reference}", dc.value("manufacturer_reference").toString());
 		str.replace("%{supplier}", dc.value("supplier").toString());
 		str.replace("%{quantity}", dc.value("quantity").toString());
 		str.replace("%{unity}", dc.value("unity").toString());
 		str.replace("%{auxiliary1}", dc.value("auxiliary1").toString());
 		str.replace("%{auxiliary2}", dc.value("auxiliary2").toString());
-		str.replace("%{machine-manufacturer-reference}", dc.value("machine-manufacturer-reference").toString());
+		str.replace("%{machine_manufacturer_reference}", dc.value("machine_manufacturer_reference").toString());
 		str.replace("%{location}", dc.value("location").toString());
 		str.replace("%{function}", dc.value("function").toString());
 		str.replace("%{void}", QString());

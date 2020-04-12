@@ -13,8 +13,8 @@
         <elementInformation show="1" name="quantity"></elementInformation>
         <elementInformation show="1" name="designation">035212</elementInformation>
         <elementInformation show="1" name="description">Coffret Atlantic inox 304L IP66 IK10 - 00x800x300mm</elementInformation>
-        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
-        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="supplier"></elementInformation>
     </elementInformations>
     <informations>Arnaud VALMARY</informations>

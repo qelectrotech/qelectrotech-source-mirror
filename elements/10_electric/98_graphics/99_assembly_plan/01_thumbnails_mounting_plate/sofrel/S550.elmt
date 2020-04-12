@@ -14,8 +14,8 @@
     </names>
     <elementInformations>
         <elementInformation name="comment" show="1"></elementInformation>
-        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
-        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
         <elementInformation name="manufacturer" show="1">Sofrel</elementInformation>
         <elementInformation name="description" show="1"></elementInformation>
         <elementInformation name="quantity" show="1"></elementInformation>

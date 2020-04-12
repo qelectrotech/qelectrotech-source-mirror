@@ -4,14 +4,14 @@
         <name lang="fr">001302 - Coffret cache-bornes - 2 modules</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="comment"></elementInformation>
         <elementInformation show="1" name="quantity"></elementInformation>
         <elementInformation show="1" name="supplier"></elementInformation>
         <elementInformation show="1" name="label"></elementInformation>
         <elementInformation show="1" name="designation">0 013 02</elementInformation>
         <elementInformation show="1" name="unity"></elementInformation>
-        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="description">Coffret cache-bornes 2 modules - blanc RAL9010</elementInformation>
         <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
         <elementInformation show="1" name="plant"></elementInformation>

@@ -6,7 +6,7 @@
     </names>
     <elementInformations>
         <elementInformation show="1" name="plant"></elementInformation>
-        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="description">Transformateur pour sonnerie 230V vers 24V à 12V - 24VA à 18 VA - 4 modules</elementInformation>
         <elementInformation show="1" name="supplier"></elementInformation>
         <elementInformation show="1" name="quantity"></elementInformation>
@@ -15,7 +15,7 @@
         <elementInformation show="1" name="unity"></elementInformation>
         <elementInformation show="1" name="label"></elementInformation>
         <elementInformation show="1" name="comment"></elementInformation>
-        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
     </elementInformations>
     <informations>Alexandre Dis</informations>
     <description>

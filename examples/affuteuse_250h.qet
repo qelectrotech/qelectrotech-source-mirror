@@ -1111,7 +1111,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                     <input x="46" y="3.6666" userrotation="-270" userx="69.45" usery="-25.8834" text="D1"/>
                 </inputs>
                 <elementInformations>
-                    <elementInformation name="manufacturer-reference" show="0">IC60N D32</elementInformation>
+                    <elementInformation name="manufacturer_reference" show="0">IC60N D32</elementInformation>
                     <elementInformation name="comment" show="0">DISJONCTEUR GENERAL</elementInformation>
                     <elementInformation name="manufacturer" show="0">Schneider Electric</elementInformation>
                     <elementInformation name="label" show="1">D1</elementInformation>
@@ -1300,7 +1300,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                     <input x="-16" y="-40" text="1&#xa;L1"/>
                 </inputs>
                 <elementInformations>
-                    <elementInformation name="manufacturer-reference" show="0">GV2-ME6</elementInformation>
+                    <elementInformation name="manufacturer_reference" show="0">GV2-ME6</elementInformation>
                     <elementInformation name="comment" show="0">GV2 MOTEUR DESCENTE BROCHE</elementInformation>
                     <elementInformation name="manufacturer" show="0">Schneider Electric</elementInformation>
                     <elementInformation name="label" show="1">Q4</elementInformation>
@@ -1380,7 +1380,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                     <input x="-16" y="-40" text="1&#xa;L1"/>
                 </inputs>
                 <elementInformations>
-                    <elementInformation name="manufacturer-reference" show="0">GV2-ME22</elementInformation>
+                    <elementInformation name="manufacturer_reference" show="0">GV2-ME22</elementInformation>
                     <elementInformation name="comment" show="0">GV2 MOTEUR BROCHE</elementInformation>
                     <elementInformation name="manufacturer" show="0">Schneider Electric</elementInformation>
                     <elementInformation name="label" show="1">Q3</elementInformation>
@@ -1417,7 +1417,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                     <input x="-16" y="-40" text="1&#xa;L1"/>
                 </inputs>
                 <elementInformations>
-                    <elementInformation name="manufacturer-reference" show="0">GV2-ME7</elementInformation>
+                    <elementInformation name="manufacturer_reference" show="0">GV2-ME7</elementInformation>
                     <elementInformation name="comment" show="0">GV2 TRANSLATION CHARIOT</elementInformation>
                     <elementInformation name="manufacturer" show="0">Schneider Electric</elementInformation>
                     <elementInformation name="label" show="1">Q2</elementInformation>
@@ -1454,7 +1454,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                     <input x="-16" y="-40" text="1&#xa;L1"/>
                 </inputs>
                 <elementInformations>
-                    <elementInformation name="manufacturer-reference" show="0">GV2-ME5</elementInformation>
+                    <elementInformation name="manufacturer_reference" show="0">GV2-ME5</elementInformation>
                     <elementInformation name="comment" show="0">GV2 MOTEUR POMPE</elementInformation>
                     <elementInformation name="manufacturer" show="0">Schneider Electric</elementInformation>
                     <elementInformation name="label" show="1">Q1</elementInformation>
@@ -2126,7 +2126,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                     <input x="30" y="0.5" text="FU_1"/>
                 </inputs>
                 <elementInformations>
-                    <elementInformation name="manufacturer-reference" show="0">05828</elementInformation>
+                    <elementInformation name="manufacturer_reference" show="0">05828</elementInformation>
                     <elementInformation name="comment" show="0">protection secondaire 4A gl</elementInformation>
                     <elementInformation name="manufacturer" show="0">LEGRAND</elementInformation>
                     <elementInformation name="label" show="1">FU1</elementInformation>
@@ -2143,7 +2143,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                     <input x="26" y="3.6666" text="D2 C60N"/>
                 </inputs>
                 <elementInformations>
-                    <elementInformation name="manufacturer-reference" show="0">C60ND1A</elementInformation>
+                    <elementInformation name="manufacturer_reference" show="0">C60ND1A</elementInformation>
                     <elementInformation name="comment" show="0">protection primaire transformateur</elementInformation>
                     <elementInformation name="manufacturer" show="0">Schneider Electric</elementInformation>
                     <elementInformation name="label" show="1">D2</elementInformation>
@@ -2163,7 +2163,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                     <input x="24" y="3" text="T1"/>
                 </inputs>
                 <elementInformations>
-                    <elementInformation name="manufacturer-reference" show="0">42302</elementInformation>
+                    <elementInformation name="manufacturer_reference" show="0">42302</elementInformation>
                     <elementInformation name="comment" show="0">transformateur commande 220/400 24v 63VA</elementInformation>
                     <elementInformation name="manufacturer" show="0">LEGRAND</elementInformation>
                     <elementInformation name="label" show="1">T1</elementInformation>
@@ -2369,7 +2369,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                     <input x="29" y="3.5" userx="-150.297" usery="-2.40625" text="ATU_cable"/>
                 </inputs>
                 <elementInformations>
-                    <elementInformation name="manufacturer-reference" show="0">XY2CH 13270</elementInformation>
+                    <elementInformation name="manufacturer_reference" show="0">XY2CH 13270</elementInformation>
                     <elementInformation name="comment" show="0">ARRET D'URGENCE CABLE</elementInformation>
                     <elementInformation name="manufacturer" show="0">Schneider Electric</elementInformation>
                     <elementInformation name="label" show="1">ATU_CABLE</elementInformation>
@@ -2417,7 +2417,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                     <input x="69" y="-6.5" userx="-112.953" usery="-7.4375" text="ATU broche"/>
                 </inputs>
                 <elementInformations>
-                    <elementInformation name="manufacturer-reference" show="0">ZB4 B44</elementInformation>
+                    <elementInformation name="manufacturer_reference" show="0">ZB4 B44</elementInformation>
                     <elementInformation name="comment" show="0">ARRET D'URGENCE SUR BROCHE</elementInformation>
                     <elementInformation name="manufacturer" show="0">Schneider Electric</elementInformation>
                     <elementInformation name="label" show="1">ATU_BROCHE</elementInformation>
@@ -2518,7 +2518,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                     <input x="92" y="65.3333" text="K2"/>
                 </inputs>
                 <elementInformations>
-                    <elementInformation name="manufacturer-reference" show="0">XPS AC 5121 AC 24</elementInformation>
+                    <elementInformation name="manufacturer_reference" show="0">XPS AC 5121 AC 24</elementInformation>
                     <elementInformation name="comment" show="0">module de surveillance circuit arret d'urgence</elementInformation>
                     <elementInformation name="manufacturer" show="0">PREVENTA</elementInformation>
                     <elementInformation name="label" show="1">XPS-AC</elementInformation>
@@ -2555,7 +2555,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                     <input x="2.75" y="3" userx="-41.2812" usery="0.046875" text="S2"/>
                 </inputs>
                 <elementInformations>
-                    <elementInformation name="manufacturer-reference" show="0">ZB4 BW36</elementInformation>
+                    <elementInformation name="manufacturer_reference" show="0">ZB4 BW36</elementInformation>
                     <elementInformation name="comment" show="0">BP REARMEMENT</elementInformation>
                     <elementInformation name="manufacturer" show="0">Schneider Electric</elementInformation>
                     <elementInformation name="label" show="1">S2</elementInformation>
@@ -2600,7 +2600,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                     <input x="15" y="3" userx="-70.6406" usery="1.73438" text="verrine"/>
                 </inputs>
                 <elementInformations>
-                    <elementInformation name="manufacturer-reference" show="0">XVB C34</elementInformation>
+                    <elementInformation name="manufacturer_reference" show="0">XVB C34</elementInformation>
                     <elementInformation name="manufacturer" show="0">Schneider Electric</elementInformation>
                     <elementInformation name="label" show="1">VERRINE</elementInformation>
                 </elementInformations>
@@ -2995,7 +2995,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                     <link_uuid uuid="{c31d1c1a-a8e7-4824-bd68-02d4e05efa99}"/>
                 </links_uuids>
                 <elementInformations>
-                    <elementInformation name="manufacturer-reference" show="0">3RT2015-1BB42</elementInformation>
+                    <elementInformation name="manufacturer_reference" show="0">3RT2015-1BB42</elementInformation>
                     <elementInformation name="comment" show="1">descente broche</elementInformation>
                     <elementInformation name="manufacturer" show="0">SIEMENS</elementInformation>
                     <elementInformation name="label" show="1">desc</elementInformation>
@@ -3018,7 +3018,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                     <link_uuid uuid="{deca94ae-a503-45d7-857b-a27b5feee22d}"/>
                 </links_uuids>
                 <elementInformations>
-                    <elementInformation name="manufacturer-reference" show="0">3RT1315-8XB30-1AB0</elementInformation>
+                    <elementInformation name="manufacturer_reference" show="0">3RT1315-8XB30-1AB0</elementInformation>
                     <elementInformation name="comment" show="1">translation droite</elementInformation>
                     <elementInformation name="manufacturer" show="0">SIEMENS</elementInformation>
                     <elementInformation name="label" show="1">dr</elementInformation>
@@ -3040,7 +3040,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                     <link_uuid uuid="{c8ac2ae9-021e-4464-9cb8-a499a84b4f81}"/>
                 </links_uuids>
                 <elementInformations>
-                    <elementInformation name="manufacturer-reference" show="0">3RT1315-8XB30-1AB0</elementInformation>
+                    <elementInformation name="manufacturer_reference" show="0">3RT1315-8XB30-1AB0</elementInformation>
                     <elementInformation name="comment" show="1">translation gauche</elementInformation>
                     <elementInformation name="manufacturer" show="0">SIEMENS</elementInformation>
                     <elementInformation name="label" show="1">ga</elementInformation>
@@ -3062,7 +3062,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                     <link_uuid uuid="{0fe5b797-b54b-4674-b17a-f41a0b7ce354}"/>
                 </links_uuids>
                 <elementInformations>
-                    <elementInformation name="manufacturer-reference" show="0">3RT2026-1AB00</elementInformation>
+                    <elementInformation name="manufacturer_reference" show="0">3RT2026-1AB00</elementInformation>
                     <elementInformation name="comment" show="1">contacteur broche</elementInformation>
                     <elementInformation name="manufacturer" show="0">SIEMENS</elementInformation>
                     <elementInformation name="label" show="1">br</elementInformation>
@@ -3083,7 +3083,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                     <link_uuid uuid="{cf8bfe42-450b-486e-afb6-7bb96cc6c5fb}"/>
                 </links_uuids>
                 <elementInformations>
-                    <elementInformation name="manufacturer-reference" show="0">3RT2015-1BB42</elementInformation>
+                    <elementInformation name="manufacturer_reference" show="0">3RT2015-1BB42</elementInformation>
                     <elementInformation name="comment" show="1">contacteur pompe</elementInformation>
                     <elementInformation name="manufacturer" show="0">SIEMENS</elementInformation>
                     <elementInformation name="label" show="1">ppe</elementInformation>
@@ -3678,7 +3678,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 </terminals>
                 <inputs/>
                 <elementInformations>
-                    <elementInformation name="manufacturer-reference" show="0">R72A90-A</elementInformation>
+                    <elementInformation name="manufacturer_reference" show="0">R72A90-A</elementInformation>
                     <elementInformation name="comment" show="0">AMPEREMETRE BROCHE</elementInformation>
                     <elementInformation name="manufacturer" show="0">SOCOMEC</elementInformation>
                     <elementInformation name="label" show="1">A1</elementInformation>
@@ -3759,7 +3759,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                     <input x="6" y="6" text="10/48 V ~"/>
                 </inputs>
                 <elementInformations>
-                    <elementInformation name="manufacturer-reference" show="0">NTR 800 D</elementInformation>
+                    <elementInformation name="manufacturer_reference" show="0">NTR 800 D</elementInformation>
                     <elementInformation name="comment" show="0">COMPTEUR PASSES</elementInformation>
                     <elementInformation name="manufacturer" show="0">CROUZET</elementInformation>
                     <elementInformation name="label" show="1">ntrd_800d</elementInformation>

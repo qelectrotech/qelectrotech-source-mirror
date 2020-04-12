@@ -6,8 +6,8 @@
         <name lang="fr">035200 - coffret Atlantic 300x200x160 Inox 304L IP66 IK10</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
-        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="comment"></elementInformation>
         <elementInformation show="1" name="designation">035200</elementInformation>
         <elementInformation show="1" name="manufacturer">Legrand</elementInformation>

@@ -6,8 +6,8 @@
         <name lang="fr">036250 - Coffret Marina 300x200x160 Polyester IP66 IK10 RAL7035</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
-        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="comment"></elementInformation>
         <elementInformation show="1" name="designation">036250</elementInformation>
         <elementInformation show="1" name="manufacturer">Legrand</elementInformation>

@@ -5,12 +5,12 @@
     </names>
     <elementInformations>
         <elementInformation name="unity" show="1"></elementInformation>
-        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
         <elementInformation name="plant" show="1"></elementInformation>
         <elementInformation name="supplier" show="1"></elementInformation>
         <elementInformation name="description" show="1">Coffret DRIVIA 13 modules 3 rangées IP30 IK05 - Blanc RAL9003</elementInformation>
         <elementInformation name="quantity" show="1"></elementInformation>
-        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
         <elementInformation name="comment" show="1"></elementInformation>
         <elementInformation name="manufacturer" show="1">Legrand</elementInformation>
         <elementInformation name="label" show="1"></elementInformation>

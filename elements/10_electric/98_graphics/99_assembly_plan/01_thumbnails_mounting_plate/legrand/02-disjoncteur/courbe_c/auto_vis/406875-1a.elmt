@@ -4,7 +4,7 @@
         <name lang="fr">406875 - Disjoncteur 1A C 6kA - Auto/Vis</name>
     </names>
     <elementInformations>
-        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
         <elementInformation name="comment" show="1"></elementInformation>
         <elementInformation name="plant" show="1"></elementInformation>
         <elementInformation name="quantity" show="1"></elementInformation>
@@ -14,7 +14,7 @@
         <elementInformation name="description" show="1">Disjoncteur Phase+Neutre DNX³4500 6kA Auto/Vis 1P+N 230V~ 1A courbe C - 1 module</elementInformation>
         <elementInformation name="supplier" show="1"></elementInformation>
         <elementInformation name="manufacturer" show="1">Legrand</elementInformation>
-        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
     </elementInformations>
     <informations>Arnaud Valmary</informations>
     <description>

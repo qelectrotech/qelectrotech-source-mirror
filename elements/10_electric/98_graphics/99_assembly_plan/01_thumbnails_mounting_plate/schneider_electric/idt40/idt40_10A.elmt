@@ -11,8 +11,8 @@
         <elementInformation show="1" name="label"></elementInformation>
         <elementInformation show="1" name="unity"></elementInformation>
         <elementInformation show="1" name="manufacturer">Schneider</elementInformation>
-        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
-        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="designation"> A9P22610</elementInformation>
         <elementInformation show="1" name="plant"></elementInformation>
     </elementInformations>

@@ -11,12 +11,12 @@
         <elementInformation show="1" name="label">Actuator</elementInformation>
         <elementInformation show="1" name="plant">SCS MyHOME</elementInformation>
         <elementInformation show="1" name="comment">BTicino F411U2</elementInformation>
-        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="unity"></elementInformation>
         <elementInformation show="1" name="quantity"></elementInformation>
         <elementInformation show="1" name="description">2 relay actuator in DIN module</elementInformation>
         <elementInformation show="1" name="designation">F411U2</elementInformation>
-        <elementInformation show="1" name="manufacturer-reference">F411U2</elementInformation>
+        <elementInformation show="1" name="manufacturer_reference">F411U2</elementInformation>
         <elementInformation show="1" name="supplier"></elementInformation>
         <elementInformation show="1" name="manufacturer">BTicino - Legrang Group</elementInformation>
     </elementInformations>

@@ -5,7 +5,7 @@
     </names>
     <elementInformations>
         <elementInformation show="1" name="plant"></elementInformation>
-        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="comment"></elementInformation>
         <elementInformation show="1" name="designation">4068 09</elementInformation>
         <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
@@ -13,7 +13,7 @@
         <elementInformation show="1" name="label"></elementInformation>
         <elementInformation show="1" name="quantity"></elementInformation>
         <elementInformation show="1" name="description">Disjoncteur Phase+Neutre DNX³4500 6kA Auto/Auto 1P+N 230V~ 16A courbe D - 1 module</elementInformation>
-        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="supplier"></elementInformation>
     </elementInformations>
     <informations>Arnaud Valmary</informations>

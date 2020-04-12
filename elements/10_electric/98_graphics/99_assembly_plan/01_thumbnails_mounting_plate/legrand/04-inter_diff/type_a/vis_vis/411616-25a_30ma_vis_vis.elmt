@@ -11,9 +11,9 @@
         <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
         <elementInformation show="1" name="description">Interrupteur différentiel DX³-ID arrivée haute et départ haut à vis - 2P 230V~ 25A type A 30mA - 2 modules</elementInformation>
         <elementInformation show="1" name="label"></elementInformation>
-        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="unity"></elementInformation>
-        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="designation">4116 16</elementInformation>
     </elementInformations>
     <informations>Arnaud VALMARY</informations>

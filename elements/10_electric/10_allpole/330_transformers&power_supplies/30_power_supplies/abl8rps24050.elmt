@@ -10,10 +10,10 @@
     <elementInformations>
         <elementInformation name="unity" show="1"></elementInformation>
         <elementInformation name="supplier" show="1"></elementInformation>
-        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
         <elementInformation name="label" show="1"></elementInformation>
         <elementInformation name="designation" show="1">ABL8RPS24050</elementInformation>
-        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
         <elementInformation name="comment" show="1"></elementInformation>
         <elementInformation name="plant" show="1"></elementInformation>
         <elementInformation name="manufacturer" show="1">schneider</elementInformation>

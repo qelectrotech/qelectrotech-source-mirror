@@ -5,8 +5,8 @@
         <name lang="fr">035500 - Coffret Atlantic 300x200x160 Métal IP66 IK10 RAL7035</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
-        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="comment"></elementInformation>
         <elementInformation show="1" name="designation">035500</elementInformation>
         <elementInformation show="1" name="manufacturer">Legrand</elementInformation>

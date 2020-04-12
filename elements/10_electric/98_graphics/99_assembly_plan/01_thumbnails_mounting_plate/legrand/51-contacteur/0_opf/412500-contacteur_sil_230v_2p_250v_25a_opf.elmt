@@ -6,10 +6,10 @@
     <elementInformations>
         <elementInformation name="description" show="1">Contacteur domestique CX³ silencieux bobine 230V~ - 2P 250V~ - 25A - contact O+F - 1 module</elementInformation>
         <elementInformation name="supplier" show="1"></elementInformation>
-        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
         <elementInformation name="comment" show="1"></elementInformation>
         <elementInformation name="unity" show="1"></elementInformation>
-        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
         <elementInformation name="manufacturer" show="1">Legrand</elementInformation>
         <elementInformation name="quantity" show="1"></elementInformation>
         <elementInformation name="label" show="1"></elementInformation>

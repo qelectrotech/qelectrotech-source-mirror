@@ -7,14 +7,14 @@
         <elementInformation show="1" name="label"></elementInformation>
         <elementInformation show="1" name="description">Ecocompteur modulaire IP pour mesure consommation sur 6 postes 110V~ à 230V~ - 6 modules</elementInformation>
         <elementInformation show="1" name="comment"></elementInformation>
-        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="plant"></elementInformation>
         <elementInformation show="1" name="supplier"></elementInformation>
         <elementInformation show="1" name="unity"></elementInformation>
         <elementInformation show="1" name="designation">4120 00</elementInformation>
         <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
         <elementInformation show="1" name="quantity"></elementInformation>
-        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
     </elementInformations>
     <informations>Alexandre DIS&#xd;
 </informations>

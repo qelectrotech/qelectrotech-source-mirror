@@ -6,7 +6,7 @@
     <elementInformations>
         <elementInformation show="1" name="quantity"></elementInformation>
         <elementInformation show="1" name="designation"></elementInformation>
-        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="manufacturer">Schneider</elementInformation>
         <elementInformation show="1" name="unity"></elementInformation>
         <elementInformation show="1" name="plant"></elementInformation>
@@ -14,7 +14,7 @@
         <elementInformation show="1" name="comment"></elementInformation>
         <elementInformation show="1" name="description"></elementInformation>
         <elementInformation show="1" name="label"></elementInformation>
-        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
     </elementInformations>
     <informations>Alexandre Dis&#xd;&#xd;
 </informations>
