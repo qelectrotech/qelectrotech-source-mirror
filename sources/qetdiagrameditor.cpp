@@ -1959,18 +1959,25 @@ void QETDiagramEditor::activateProject(ProjectView *project_view) {
 	activateWidget(project_view);
 }
 
-/**
-	Gere la fermeture d'une ProjectView
-	@param project_view ProjectView fermee
-*/
-void QETDiagramEditor::projectWasClosed(ProjectView *project_view) {
+/*** @brief QETDiagramEditor::projectWasClosed
+ * Manage the close of a project.
+ * @param project_view
+ */
+void QETDiagramEditor::projectWasClosed(ProjectView *project_view)
+{
 	QETProject *project = project_view -> project();
-	if (project) {
+	if (project) 
+	{
 		pa -> elementsPanel().projectWasClosed(project);
 		m_element_collection_widget->removeProject(project);
 		undo_group.removeStack(project -> undoStack());
 		QETApp::unregisterProject(project);
-	}
+		}
+		//When project is closed, a lot of signal are emited, notably if there is an item selected in a diagram.
+		//In some special case, since signal/slot connection can be direct or queued, some signal are handled after QObject is deleted, and crash qet
+		//notably in the function Diagram::elements when she call items() (I don't know exactly why).
+		//set nullptr to "m_selection_properties_editor->setDiagram()" fix this crash
+	m_selection_properties_editor->setDiagram(nullptr);
 	project_view -> deleteLater();
 	project -> deleteLater();
 }
@@ -2175,7 +2182,7 @@ void QETDiagramEditor::removeDiagramFromProject() {
  */
 void QETDiagramEditor::diagramWasAdded(DiagramView *dv)
 {
-	connect(dv, SIGNAL(selectionChanged()), this, SLOT(selectionChanged()));
+	connect(dv, SIGNAL(modeChanged()),      this, SLOT(slot_updateModeActions()));
 	connect(dv, SIGNAL(modeChanged()),      this, SLOT(slot_updateModeActions()));
 }
 
