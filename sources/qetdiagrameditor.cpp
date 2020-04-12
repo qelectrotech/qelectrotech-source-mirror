@@ -2158,7 +2158,7 @@ void QETDiagramEditor::removeDiagramFromProject() {
  */
 void QETDiagramEditor::diagramWasAdded(DiagramView *dv)
 {
-	connect(dv, SIGNAL(modeChanged()),      this, SLOT(slot_updateModeActions()));
+	connect(dv->diagram(), &QGraphicsScene::selectionChanged, this, &QETDiagramEditor::selectionChanged, Qt::DirectConnection);
 	connect(dv, SIGNAL(modeChanged()),      this, SLOT(slot_updateModeActions()));
 }
 
