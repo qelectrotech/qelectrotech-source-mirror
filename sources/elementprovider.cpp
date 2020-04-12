@@ -19,6 +19,8 @@
 #include "qetproject.h"
 #include "diagram.h"
 #include "qetgraphicsitem/element.h"
+#include "qetgraphicstableitem.h"
+#include <QAbstractItemModel>
 
 /**
  * @brief ElementProvider::ElementProvider Constructor
@@ -27,8 +29,8 @@
  */
 ElementProvider::ElementProvider(QETProject *prj, Diagram *diagram)
 {
-	diag_list = prj->diagrams();
-	diag_list.removeOne(diagram);
+	m_diagram_list = prj->diagrams();
+	m_diagram_list.removeOne(diagram);
 }
 
 /**
@@ -36,7 +38,7 @@ ElementProvider::ElementProvider(QETProject *prj, Diagram *diagram)
  * @param diag Diagram to search
  */
 ElementProvider::ElementProvider(Diagram *diag) {
-	diag_list << diag;
+	m_diagram_list << diag;
 }
 
 /**
@@ -52,7 +54,7 @@ QList <Element *> ElementProvider::freeElement(const int filter) const{
 	QList <Element *> free_elmt;
 
 	//serch in all diagram
-	foreach (Diagram *d, diag_list) {
+	foreach (Diagram *d, m_diagram_list) {
 		//get all element in diagram d
 		QList <Element *> elmt_list;
 		elmt_list = d->elements();
@@ -72,7 +74,7 @@ QList <Element *> ElementProvider::freeElement(const int filter) const{
 QList <Element *> ElementProvider::fromUuids(QList<QUuid> uuid_list) const {
 	QList <Element *> found_element;
 
-	foreach (Diagram *d, diag_list) {
+	foreach (Diagram *d, m_diagram_list) {
 		foreach(Element *elmt, d->elements()) {
 			if (uuid_list.contains(elmt->uuid())) {
 				found_element << elmt;
@@ -94,7 +96,7 @@ QList <Element *> ElementProvider::find(const int filter) const {
 	QList <Element *> elmt_;
 
 	//serch in all diagram
-	foreach (Diagram *d, diag_list) {
+	foreach (Diagram *d, m_diagram_list) {
 		//get all element in diagram d
 		QList <Element *> elmt_list;
 		elmt_list = d->elements();
@@ -104,4 +106,53 @@ QList <Element *> ElementProvider::find(const int filter) const {
 		}
 	}
 	return (elmt_);
+}
+
+/**
+ * @brief ElementProvider::table
+ * @param table
+ * @param model
+ * @return All tables wich display the derivated class of @model (if set) and not already in all the chain of  next/previous table of @table (if set)
+ * If table and model are nullptr, return every tables
+ */
+QVector<QetGraphicsTableItem *> ElementProvider::table(QetGraphicsTableItem *table, QAbstractItemModel *model)
+{
+	QVector<QetGraphicsTableItem *> v_;
+	QVector<QetGraphicsTableItem *> linked_vector;
+
+	if (table)
+	{
+		auto linked_table = table->previousTable() ? table->previousTable() : table->nextTable(); //table can be inside a chain, at the head of a chain or alone
+		while (linked_table) { //Go to the first table
+			if (linked_table->previousTable())
+				linked_table = linked_table->previousTable();
+			else
+				break;
+		}
+		while (linked_table) { //Store each linked table in linked_vector
+			linked_vector.append(linked_table);
+			linked_table = linked_table->nextTable();
+		}
+	}
+
+	for (auto d : m_diagram_list) {
+		for (auto item_ : d->items())
+		{
+			if(item_->type() == QetGraphicsTableItem::Type)
+			{
+				auto found_table = static_cast<QetGraphicsTableItem *>(item_);
+
+				if (linked_vector.contains(found_table)) {
+					continue;
+				}
+
+				if (!model ||
+					(found_table->model() &&
+					 model->metaObject()->className() == found_table->model()->metaObject()->className()))
+				{v_.append(found_table);}
+			}
+		}
+	}
+
+	return v_;
 }

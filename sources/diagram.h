@@ -20,6 +20,8 @@
 #include <QtWidgets>
 #include <QtXml>
 #include <QHash>
+#include <QUuid>
+
 #include "bordertitleblock.h"
 #include "conductorproperties.h"
 #include "exportproperties.h"
@@ -119,6 +121,7 @@ class Diagram : public QGraphicsScene
 
 		bool m_freeze_new_elements;
 		bool m_freeze_new_conductors_;
+		QUuid m_uuid = QUuid::createUuid();
 	
 	// METHODS
 	protected:
@@ -133,6 +136,7 @@ class Diagram : public QGraphicsScene
 		void keyReleaseEvent (QKeyEvent *) override;
 	
 	public:
+		QUuid uuid();
 		void setEventInterface (DiagramEventInterface *event_interface);
 		void clearEventInterface();
 			

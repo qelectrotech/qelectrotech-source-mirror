@@ -38,6 +38,9 @@ class ChangeElementInformationCommand : public QUndoCommand
 		void redo() override;
 
 	private:
+		void updateProjectDB();
+
+	private:
 		Element       *m_element;
 		DiagramContext m_old_info,
 					   m_new_info;

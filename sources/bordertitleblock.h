@@ -76,6 +76,8 @@ class BorderTitleBlock : public QObject
 		qreal diagramHeight() const { return(rowsTotalHeight() + columnsHeaderHeight()); }
 
 		QRectF titleBlockRect () const;
+
+		DiagramContext titleblockInformation() const;
 	private:
 		QRectF titleBlockRectForQPainter () const;
 
@@ -255,6 +257,6 @@ class BorderTitleBlock : public QObject
 		bool display_columns_;
 		bool display_rows_;
 		bool display_border_;
-		TitleBlockTemplateRenderer *titleblock_template_renderer_;
+		TitleBlockTemplateRenderer *m_titleblock_template_renderer;
 };
 #endif

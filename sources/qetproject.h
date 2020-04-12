@@ -25,6 +25,7 @@
 #include "titleblockproperties.h"
 #include "templatescollection.h"
 #include "properties/xrefproperties.h"
+#include "projectdatabase.h"
 #include "reportproperties.h"
 
 class Diagram;
@@ -72,6 +73,8 @@ class QETProject : public QObject
 	
 		// methods
 	public:
+		projectDataBase *dataBase();
+		QUuid uuid() const;
 		ProjectState state() const;
 		QList<Diagram *> diagrams() const;
 		int getFolioSheetsQuantity() const; /// get the folio sheets quantity for this project
@@ -267,6 +270,8 @@ class QETProject : public QObject
 		QTimer m_save_backup_timer,
 			   m_autosave_timer;
 		KAutoSaveFile *m_backup_file = nullptr;
+		QUuid m_uuid = QUuid::createUuid();
+		projectDataBase m_data_base;
 };
 
 Q_DECLARE_METATYPE(QETProject *)

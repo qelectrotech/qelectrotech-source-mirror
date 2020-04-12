@@ -1,4 +1,4 @@
-﻿/*
+/*
 		Copyright 2006-2020 QElectroTech Team
         This file is part of QElectroTech.
 
@@ -35,6 +35,8 @@ class QetGraphicsHeaderItem;
  * Text font.
  * Text alignment in the cell
  * These two last parameters are not settable directly with the table but trough the model to be displayed by the table.
+ * The table search for font and alignment only in the index(0,0) for all the table.
+ * By consequence, set data in other index than 0,0 is useless also the alignment and font can't be set individually for each cell.
  */
 class QetGraphicsTableItem : public QetGraphicsItem
 {
@@ -42,6 +44,7 @@ class QetGraphicsTableItem : public QetGraphicsItem
 
 	Q_PROPERTY(QMargins margins READ margins WRITE setMargins)
 	Q_PROPERTY(QSize size READ size WRITE setSize)
+	Q_PROPERTY(int displayNRow READ displayNRow WRITE setDisplayNRow)
 
     public:
         QetGraphicsTableItem(QGraphicsItem *parent= nullptr);
@@ -50,7 +53,7 @@ class QetGraphicsTableItem : public QetGraphicsItem
 		enum { Type = UserType + 1300 };
 		int type() const override { return Type; }
 
-        void setModel(QAbstractItemModel *model);
+		void setModel(QAbstractItemModel *model = nullptr);
 		QAbstractItemModel *model() const;
 
 		virtual QRectF boundingRect() const override;
@@ -61,6 +64,16 @@ class QetGraphicsTableItem : public QetGraphicsItem
 		void setSize(const QSize &size);
 		QSize size() const;
 		QSize minimumSize() const;
+		void setDisplayNRow(const int &number);
+		int displayNRow() const;
+		void setPreviousTable(QetGraphicsTableItem *table = nullptr);
+		void setNextTable(QetGraphicsTableItem *table = nullptr);
+		void setTableName(const QString &name);
+		QString tableName() const;
+		int displayNRowOffset() const;
+		QetGraphicsTableItem *previousTable() const;
+		QetGraphicsTableItem *nextTable() const;
+		void setToMinimumHeight();
 
 	protected:
 		virtual void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
@@ -80,6 +93,7 @@ class QetGraphicsTableItem : public QetGraphicsItem
 		void dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QVector<int> &roles);
 		void headerSectionResized();
 		void adjustSize();
+		void previousTableDisplayRowChanged();
 
     private:
         QAbstractItemModel *m_model= nullptr;
@@ -87,6 +101,7 @@ class QetGraphicsTableItem : public QetGraphicsItem
 		QMargins m_margin;
 		QVector<int> m_minimum_column_width;
 		int m_minimum_row_height;
+		int m_number_of_displayed_row = 0;
 		QSize m_current_size,
 			  m_old_size;
 
@@ -95,6 +110,11 @@ class QetGraphicsTableItem : public QetGraphicsItem
 
 		QetGraphicsHandlerItem m_handler_item;
 		QetGraphicsHeaderItem *m_header_item = nullptr;
+
+		QetGraphicsTableItem *m_previous_table = nullptr,
+							 *m_next_table = nullptr;
+
+		QString m_name;
 };
 
 #endif // QetGraphicsTableItem_H

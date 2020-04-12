@@ -22,6 +22,8 @@
 #include "diagram.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "itemmodelcommand.h"
+#include "propertieseditorfactory.h"
+#include "elementprovider.h"
 
 #include <QAbstractItemModel>
 #include <QFontDialog>
@@ -69,6 +71,12 @@ void GraphicsTablePropertiesEditor::setTable(QetGraphicsTableItem *table)
 		for (auto c : m_connect_list) {
 			disconnect(c);
 		}
+		if (m_current_model_editor)
+		{
+			ui->m_content_layout->removeWidget(m_current_model_editor);
+			m_current_model_editor->deleteLater();
+			m_current_model_editor = nullptr;
+		}
 	}
 
 	m_table_item = table;
@@ -76,6 +84,12 @@ void GraphicsTablePropertiesEditor::setTable(QetGraphicsTableItem *table)
 	m_connect_list << connect(m_table_item.data(), &QetGraphicsTableItem::xChanged, this, &GraphicsTablePropertiesEditor::updateUi);
 	m_connect_list << connect(m_table_item.data(), &QetGraphicsTableItem::yChanged, this, &GraphicsTablePropertiesEditor::updateUi);
 
+
+	if (auto editor = PropertiesEditorFactory::propertiesEditor(table->model(), this))
+	{
+		ui->m_content_layout->insertWidget(0, editor);
+		m_current_model_editor = editor;
+	}
 	updateUi();
 }
 
@@ -114,6 +128,12 @@ QUndoCommand *GraphicsTablePropertiesEditor::associatedUndo() const
 			auto undo = new QPropertyUndoCommand(m_table_item.data(), "y", m_table_item->pos().y(), ui->m_y_pos->value());
 			undo->setAnimated(true, false);
 			undo->setText(tr("Déplacer un tableau"));
+			return undo;
+		}
+
+		if (ui->m_display_n_row_sb->value() != m_table_item->displayNRow()) {
+			auto undo = new QPropertyUndoCommand(m_table_item.data(), "displayNRow", m_table_item->displayNRow(), ui->m_display_n_row_sb->value());
+			undo->setText(tr("Modifier le nombre de ligne affiché par un tableau"));
 			return undo;
 		}
 
@@ -229,8 +249,33 @@ void GraphicsTablePropertiesEditor::updateUi()
 	}
 	m_edit_connection.clear();
 
+	ui->m_table_name_le->setText(m_table_item->tableName());
 	ui->m_x_pos->setValue(m_table_item->pos().x());
 	ui->m_y_pos->setValue(m_table_item->pos().y());
+	ui->m_display_n_row_sb->setValue(m_table_item->displayNRow());
+
+	ui->m_previous_table_cb->clear();
+	m_other_table_vector.clear();
+
+	ui->m_previous_table_cb->addItem(tr("Aucun")); //Add no previous table
+
+	if (auto item_ = m_table_item->previousTable()) //Add the current previous table
+	{
+		m_other_table_vector.append(item_);
+		ui->m_previous_table_cb->addItem(item_->tableName(), m_other_table_vector.indexOf(item_));
+		ui->m_previous_table_cb->setCurrentIndex(ui->m_previous_table_cb->findData(m_other_table_vector.indexOf(item_)));
+	}
+
+	ElementProvider ep(m_table_item->diagram()->project());
+	for (auto item_ : ep.table(m_table_item, m_table_item->model())) //Add available tables
+	{
+		if (item_ != m_table_item &&
+			item_->nextTable() == nullptr)
+		{
+			m_other_table_vector.append(item_);
+			ui->m_previous_table_cb->addItem(item_->tableName(), m_other_table_vector.indexOf(item_));
+		}
+	}
 
 	auto margin = m_table_item->headerItem()->margins();
 	ui->m_header_top_margin   ->setValue(margin.top());
@@ -249,8 +294,10 @@ void GraphicsTablePropertiesEditor::updateUi()
 		return;
 	}
 
-	m_header_button_group->button(m_table_item->model()->headerData(0, Qt::Horizontal, Qt::TextAlignmentRole).toInt())->setChecked(true);
-	m_table_button_group->button(m_table_item->model()->data(m_table_item->model()->index(0,0), Qt::TextAlignmentRole).toInt())->setChecked(true);
+	if (auto button = m_header_button_group->button(m_table_item->model()->headerData(0, Qt::Horizontal, Qt::TextAlignmentRole).toInt()))
+		button->setChecked(true);
+	if (auto button = m_table_button_group->button(m_table_item->model()->data(m_table_item->model()->index(0,0), Qt::TextAlignmentRole).toInt()))
+		button->setChecked(true);
 
 	setUpEditConnection();
 }
@@ -280,5 +327,19 @@ void GraphicsTablePropertiesEditor::setUpEditConnection()
 		m_edit_connection << connect(ui->m_table_bottom_margin,  QOverload<int>::of(&QSpinBox::valueChanged),      this, &GraphicsTablePropertiesEditor::apply);
 		m_edit_connection << connect(m_table_button_group,       QOverload<int>::of(&QButtonGroup::buttonClicked), this, &GraphicsTablePropertiesEditor::apply);
 		m_edit_connection << connect(m_header_button_group,      QOverload<int>::of(&QButtonGroup::buttonClicked), this, &GraphicsTablePropertiesEditor::apply);
+		m_edit_connection << connect(ui->m_display_n_row_sb,     QOverload<int>::of(&QSpinBox::valueChanged),      this, &GraphicsTablePropertiesEditor::apply);
+	}
+}
+
+void GraphicsTablePropertiesEditor::on_m_table_name_le_textEdited(const QString &arg1) {
+	m_table_item->setTableName(arg1);
+}
+
+void GraphicsTablePropertiesEditor::on_m_previous_table_cb_activated(int index)
+{
+	if (index == 0) {
+		m_table_item->setPreviousTable();
+	} else {
+		m_table_item->setPreviousTable(m_other_table_vector.at(ui->m_previous_table_cb->currentData().toInt()));
 	}
 }

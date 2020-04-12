@@ -17,6 +17,7 @@
 */
 #include "changeelementinformationcommand.h"
 #include "element.h"
+#include "diagram.h"
 #include <QObject>
 
 /**
@@ -49,6 +50,7 @@ bool ChangeElementInformationCommand::mergeWith(const QUndoCommand *other)
  */
 void ChangeElementInformationCommand::undo() {
 	m_element -> setElementInformations(m_old_info);
+	updateProjectDB();
 }
 
 /**
@@ -56,4 +58,12 @@ void ChangeElementInformationCommand::undo() {
  */
 void ChangeElementInformationCommand::redo() {
 	m_element -> setElementInformations(m_new_info);
+	updateProjectDB();
+}
+
+void ChangeElementInformationCommand::updateProjectDB()
+{
+	if(m_element->diagram()) {
+		m_element->diagram()->project()->dataBase()->updateDB();
+	}
 }

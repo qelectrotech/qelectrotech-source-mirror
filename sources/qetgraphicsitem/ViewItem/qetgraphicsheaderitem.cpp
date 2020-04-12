@@ -1,5 +1,5 @@
 ﻿/*
-        Copyright 2006-2019 QElectroTech Team
+		Copyright 2006-2020 QElectroTech Team
         This file is part of QElectroTech.
 
         QElectroTech is free software: you can redistribute it and/or modify
@@ -21,6 +21,8 @@
 #include <QFontMetrics>
 #include <QPainter>
 
+static int no_model_height = 20;
+static int no_model_width = 40;
 /**
  * @brief QetGraphicsHeaderItem::QetGraphicsHeaderItem
  * @param parent
@@ -42,13 +44,23 @@ void QetGraphicsHeaderItem::setModel(QAbstractItemModel *model)
 {
 	if (m_model) {
 		disconnect(m_model, &QAbstractItemModel::headerDataChanged, this, &QetGraphicsHeaderItem::headerDataChanged);
+		disconnect(m_model, &QAbstractItemModel::modelReset, this, &QetGraphicsHeaderItem::modelReseted);
+		disconnect(m_model, &QAbstractItemModel::columnsInserted, this, &QetGraphicsHeaderItem::modelReseted);
 	}
 
     m_model = model;
-	connect(m_model, &QAbstractItemModel::headerDataChanged, this, &QetGraphicsHeaderItem::headerDataChanged);
-	setUpMinimumSectionsSize();
-	m_current_sections_width.clear();
-	m_current_sections_width.resize(m_sections_minimum_width.size());
+	if (m_model)
+	{
+		connect(m_model, &QAbstractItemModel::headerDataChanged, this, &QetGraphicsHeaderItem::headerDataChanged);
+		connect(m_model, &QAbstractItemModel::modelReset, this, &QetGraphicsHeaderItem::modelReseted);
+		connect(m_model, &QAbstractItemModel::columnsInserted, this, &QetGraphicsHeaderItem::modelReseted);
+		setUpMinimumSectionsSize();
+		m_current_sections_width.clear();
+		m_current_sections_width.resize(m_sections_minimum_width.size());
+
+	} else {
+		setUpMinimumSectionsSize();
+	}
 	adjustSize();
 }
 
@@ -93,7 +105,6 @@ void QetGraphicsHeaderItem::paint(QPainter *painter, const QStyleOptionGraphicsI
 	painter->setBrush(brush);
 
 	painter->setPen(pen);
-	painter->setFont(m_model->headerData(0, Qt::Horizontal, Qt::FontRole).value<QFont>());
 	painter->drawRect(m_current_rect);
 
 	if (!m_model)
@@ -101,6 +112,7 @@ void QetGraphicsHeaderItem::paint(QPainter *painter, const QStyleOptionGraphicsI
 		painter->restore();
 		return;
 	}
+	painter->setFont(m_model->headerData(0, Qt::Horizontal, Qt::FontRole).value<QFont>());
 
 		//Draw vertical lines
 	auto offset= 0;
@@ -141,7 +153,20 @@ QRect QetGraphicsHeaderItem::rect() const {
  * @param size
  */
 void QetGraphicsHeaderItem::resizeSection(int logicalIndex, int size)
-{	
+{
+	if (!m_model)
+	{
+		m_current_sections_width.clear();
+		m_current_sections_width.append(no_model_width);
+		m_sections_minimum_width.clear();
+		m_sections_minimum_width.append(no_model_width);
+		m_current_rect.setWidth(no_model_width);
+		setUpBoundingRect();
+		update();
+		emit sectionResized(0, no_model_width);
+		return;
+	}
+
 	if (logicalIndex >= m_current_sections_width.size() ||
 		m_current_sections_width.at(logicalIndex) == size) {
 		return;
@@ -191,7 +216,12 @@ void QetGraphicsHeaderItem::setMargins(const QMargins &margins)
  */
 void QetGraphicsHeaderItem::setUpMinimumSectionsSize()
 {
-	if (!m_model) {
+	if (!m_model)
+	{
+		m_minimum_section_height = no_model_height;
+		m_sections_minimum_width.clear();
+		m_sections_minimum_width.append(no_model_width);
+		m_minimum_width = no_model_width;
 		return;
 	}
 
@@ -263,4 +293,12 @@ void QetGraphicsHeaderItem::adjustSize()
 	}
 
 	update();
+}
+
+void QetGraphicsHeaderItem::modelReseted()
+{
+	setUpMinimumSectionsSize();
+	m_current_sections_width.clear();
+	m_current_sections_width.resize(m_sections_minimum_width.size());
+	adjustSize();
 }

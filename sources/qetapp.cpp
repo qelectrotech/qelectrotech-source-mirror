@@ -297,15 +297,15 @@ QStringList QETApp::elementInfoKeys()
 			  
 			  << "comment"
 			  << "function"
-			  << "tension-protocol"
+			  << "tension_protocol"
 			  << "auxiliary1"
 			  << "auxiliary2"
 			  
 			  << "description"
 			  << "designation"
 			  << "manufacturer"
-			  << "manufacturer-reference"
-			  << "machine-manufacturer-reference"
+			  << "manufacturer_reference"
+			  << "machine_manufacturer_reference"
 			  << "supplier"
 			  << "quantity"
 			  << "unity";
@@ -328,15 +328,15 @@ QString QETApp::elementTranslatedInfoKey(const QString &info)
 	
 	else if (info == "comment") return tr("Commentaire");
 	else if (info == "function") return tr("Fonction");
-	else if (info == "tension-protocol") return tr("Tension / Protocole");
+	else if (info == "tension_protocol") return tr("Tension / Protocole");
 	else if (info == "auxiliary1") return tr("Bloc auxiliaire 1");
 	else if (info == "auxiliary2") return tr("Bloc auxiliaire 2");
 	
 	else if (info == "description") return tr("Description textuelle");
 	else if (info == "designation") return tr("Numéro d'article");
 	else if (info == "manufacturer") return tr("Fabricant");
-	else if (info == "manufacturer-reference") return tr("Numéro de commande");
-	else if (info == "machine-manufacturer-reference") return tr("Numéro interne");
+	else if (info == "manufacturer_reference") return tr("Numéro de commande");
+	else if (info == "machine_manufacturer_reference") return tr("Numéro interne");
 	else if (info == "supplier") return tr("Fournisseur");
 	else if (info == "quantity") return tr("Quantité");
 	else if (info == "unity") return tr("Unité");
@@ -362,16 +362,16 @@ QString QETApp::elementInfoToVar(const QString &info)
 	else if (info == "description")                    return QString("%{description}");
 	else if (info == "designation")                    return QString("%{designation}");
 	else if (info == "manufacturer")                   return QString("%{manufacturer}");
-	else if (info == "manufacturer-reference")         return QString("%{manufacturer-reference}");
+	else if (info == "manufacturer_reference")         return QString("%{manufacturer_reference}");
 	else if (info == "supplier")                       return QString("%{supplier}");
 	else if (info == "quantity")                       return QString("%{quantity}");
 	else if (info == "unity")                          return QString("%{unity}");
 	else if (info == "auxiliary1")                     return QString("%{auxiliary1}");
 	else if (info == "auxiliary2")                     return QString("%{auxiliary2}");
-	else if (info == "machine-manufacturer-reference") return QString("%{machine-manufacturer-reference}");
+	else if (info == "machine_manufacturer_reference") return QString("%{machine_manufacturer_reference}");
 	else if (info == "location")                       return QString("%{location}");
 	else if (info == "function")                       return QString("%{function}");
-	else if (info == "tension-protocol")               return QString("%{tension-protocol}");
+	else if (info == "tension_protocol")               return QString("%{tension_protocol}");
 	
 	return (QString ("%{void}"));
 }
@@ -408,7 +408,7 @@ QString QETApp::conductorTranslatedInfoKey(const QString &key)
 
 /**
  * @brief QETApp::diagramInfoKeys
- * @return the diagram default information keys
+ * @return the diagram default default information keys
  */
 QStringList QETApp::diagramInfoKeys()
 {
@@ -420,6 +420,8 @@ QStringList QETApp::diagramInfoKeys()
 	list.append("plant");
 	list.append("locmach");
 	list.append("indexrev");
+	list.append("date");
+	list.append("display_folio");
 	
 	return list;
 }
@@ -439,6 +441,7 @@ QString QETApp::diagramTranslatedInfoKey(const QString &key)
 	else if (key == "plant")    return tr("Installation");
 	else if (key == "locmach")  return tr("Localisation");
 	else if (key == "indexrev") return tr("Indice Rev");
+	else if (key == "date")		return tr("Date");
 	else return QString();
 }
 

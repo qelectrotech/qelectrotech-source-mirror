@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -51,8 +51,10 @@ class GraphicsTablePropertiesEditor : public PropertiesEditorWidget
 		void on_m_header_font_pb_clicked();
 		void on_m_table_font_pb_clicked();
 		virtual void updateUi() override;
+		void on_m_table_name_le_textEdited(const QString &arg1);
+		void on_m_previous_table_cb_activated(int index);
 
-	private:
+		private:
 		void setUpEditConnection();
 
 	private:
@@ -62,6 +64,8 @@ class GraphicsTablePropertiesEditor : public PropertiesEditorWidget
 										m_edit_connection;
 		QButtonGroup *m_header_button_group = nullptr,
 					 *m_table_button_group = nullptr;
+		QWidget *m_current_model_editor = nullptr;
+		QVector<QetGraphicsTableItem *> m_other_table_vector;
 };
 
 Q_DECLARE_METATYPE(QMargins)

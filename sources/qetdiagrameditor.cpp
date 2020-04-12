@@ -38,6 +38,7 @@
 #include "conductornumexport.h"
 #include "qetgraphicstableitem.h"
 #include "bomexportdialog.h"
+#include "nomenclaturemodel.h"
 
 #include <KAutoSaveFile>
 
@@ -386,9 +387,29 @@ void QETDiagramEditor::setUpActions()
 	
 		//Add a nomenclature item
 	m_add_nomenclature = new QAction(QET::Icons::TableOfContent, tr("Ajouter un tableau lambda (Fonctionnalité en cours de devellopement)"),this);
-	connect(m_add_nomenclature, &QAction::triggered, [this]() {
-		if(this->currentDiagramView()) {
-			this->currentDiagramView()->diagram()->addItem(new QetGraphicsTableItem());
+	connect(m_add_nomenclature, &QAction::triggered, [this]()
+	{
+		if(this->currentDiagramView())
+		{
+			auto table = new QetGraphicsTableItem();
+
+			/*******ONLY FOR TEST DURING DEVEL*********/
+			auto model = new NomenclatureModel(this->currentProject(), this->currentProject());
+			QString query("SELECT ei.plant, ei.location, ei.label, ei.comment, ei.description, ei.manufacturer, e.pos, di.title, di.folio"
+						  " FROM element_info ei, element e, diagram_info di"
+						  " WHERE ei.element_uuid = e.uuid AND e.diagram_uuid = di.diagram_uuid"
+						  " ORDER BY ei.plant, ei.location, ei.label");
+			model->query(query);
+			model->autoHeaders();
+			model->setData(model->index(0,0), Qt::AlignLeft, Qt::TextAlignmentRole);
+			model->setData(model->index(0,0), QETApp::diagramTextsFont(), Qt::FontRole);
+			model->setHeaderData(0, Qt::Horizontal, Qt::AlignHCenter, Qt::TextAlignmentRole);
+			model->setHeaderData(0, Qt::Horizontal, QETApp::diagramTextsFont(), Qt::FontRole);
+			table->setModel(model);
+			/******************************************/
+
+			this->currentDiagramView()->diagram()->addItem(table);
+			table->setPos(50,50);
 		}
 	});
 
@@ -406,6 +427,11 @@ void QETDiagramEditor::setUpActions()
             wne.toCsv();
         }
     });
+
+	m_export_project_db = new QAction(QET::Icons::DocumentSpreadsheet, tr("Exporter la base de donnée interne du projet"), this);
+	connect(m_export_project_db, &QAction::triggered, [this]() {
+		projectDataBase::exportDb(this->currentProject()->dataBase(), this);
+	});
 	
 		//MDI view style
 	m_tabbed_view_mode = new QAction(tr("en utilisant des onglets"), this);
@@ -751,6 +777,8 @@ void QETDiagramEditor::setUpMenu() {
 	menu_project -> addAction(m_csv_export);
     menu_project -> addAction(m_project_export_conductor_num);
 	menu_project -> addAction(m_project_terminalBloc);
+	menu_project -> addSeparator();
+	menu_project -> addAction(m_export_project_db);
 
 	main_tool_bar         -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils principale"));
 	view_tool_bar         -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils Affichage"));
@@ -878,7 +906,10 @@ void QETDiagramEditor::saveAs() {
 bool QETDiagramEditor::newProject()
 {
 	auto new_project = new QETProject(this);
+	
+	// add new diagram
 	new_project -> addNewDiagram();
+	
 	return addProject(new_project);
 }
 
@@ -1904,22 +1935,20 @@ void QETDiagramEditor::activateProject(ProjectView *project_view) {
 	activateWidget(project_view);
 }
 
-/**
- * @brief QETDiagramEditor::projectWasClosed
+/*** @brief QETDiagramEditor::projectWasClosed
  * Manage the close of a project.
  * @param project_view
  */
 void QETDiagramEditor::projectWasClosed(ProjectView *project_view)
 {
 	QETProject *project = project_view -> project();
-	if (project)
+	if (project) 
 	{
 		pa -> elementsPanel().projectWasClosed(project);
 		m_element_collection_widget->removeProject(project);
 		undo_group.removeStack(project -> undoStack());
 		QETApp::unregisterProject(project);
-	}
-
+		}
 		//When project is closed, a lot of signal are emited, notably if there is an item selected in a diagram.
 		//In some special case, since signal/slot connection can be direct or queued, some signal are handled after QObject is deleted, and crash qet
 		//notably in the function Diagram::elements when she call items() (I don't know exactly why).
@@ -2129,7 +2158,7 @@ void QETDiagramEditor::removeDiagramFromProject() {
  */
 void QETDiagramEditor::diagramWasAdded(DiagramView *dv)
 {
-	connect(dv->diagram(), &QGraphicsScene::selectionChanged, this, &QETDiagramEditor::selectionChanged, Qt::DirectConnection);
+	connect(dv, SIGNAL(modeChanged()),      this, SLOT(slot_updateModeActions()));
 	connect(dv, SIGNAL(modeChanged()),      this, SLOT(slot_updateModeActions()));
 }
 
@@ -2218,10 +2247,10 @@ void QETDiagramEditor::generateTerminalBlock()
 	
 #ifdef Q_OS_MACOS
 	if (openedProjects().count()){
-		success = process->startDetached("/Library/Frameworks/Python.framework/Versions/3.8/bin/qet_tb_generator", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
+		success = process->startDetached("/Library/Frameworks/Python.framework/Versions/3.5/bin/qet_tb_generator", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
 	}
 	else  {
-		success = process->startDetached("/Library/Frameworks/Python.framework/Versions/3.8/bin/qet_tb_generator");
+		success = process->startDetached("/Library/Frameworks/Python.framework/Versions/3.5/bin/qet_tb_generator");
 	}
 #else
 	if (openedProjects().count()){
@@ -2282,7 +2311,7 @@ void QETDiagramEditor::generateTerminalBlock()
 								" First install on macOSX"
 							 "</B>""</U>"
 								"<br>"
-								"1. Install, if required, python 3.8 "
+								"1. Install, if required, python 3.5 "
 								"<br>"
 								" Visit :"
 								"<br>"
