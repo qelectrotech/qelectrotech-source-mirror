@@ -1,16 +1,16 @@
 <definition link_type="simple" height="110" hotspot_x="364" version="0.60" width="730" hotspot_y="44" orientation="dyyy" type="element">
     <names>
-        <name lang="es">WAGO 750-1515/0040-0000 (II)</name>
-        <name lang="de">WAGO 750-1515/0040-0000 (II)</name>
-        <name lang="en">WAGO 750-1515/0040-0000 (II)</name>
-        <name lang="pl">WAGO 750-1515/0040-0000 (II)</name>
-        <name lang="nl">WAGO 750-1515/0040-0000 (II)</name>
-        <name lang="ar">WAGO 750-1515/0040-0000 (II)</name>
-        <name lang="cs">WAGO 750-1515/0040-0000 (II)</name>
-        <name lang="fr">WAGO 750-1515/0040-0000 (II)</name>
-        <name lang="it">WAGO 750-1515/0040-0000 (II)</name>
-        <name lang="pt">WAGO 750-1515/0040-0000 (II)</name>
-        <name lang="el">WAGO 750-1515/0040-0000 (II)</name>
+        <name lang="es">750-1515/0040-0000 (II)</name>
+        <name lang="de">750-1515/0040-0000 (II)</name>
+        <name lang="en">750-1515/0040-0000 (II)</name>
+        <name lang="pl">750-1515/0040-0000 (II)</name>
+        <name lang="nl">750-1515/0040-0000 (II)</name>
+        <name lang="ar">750-1515/0040-0000 (II)</name>
+        <name lang="cs">750-1515/0040-0000 (II)</name>
+        <name lang="fr">750-1515/0040-0000 (II)</name>
+        <name lang="it">750-1515/0040-0000 (II)</name>
+        <name lang="pt">750-1515/0040-0000 (II)</name>
+        <name lang="el">750-1515/0040-0000 (II)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

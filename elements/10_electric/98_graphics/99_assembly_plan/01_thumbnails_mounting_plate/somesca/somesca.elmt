@@ -1,0 +1,50 @@
+<definition width="160" hotspot_x="25" orientation="dyyy" height="140" version="0.80" link_type="simple" hotspot_y="25" type="element">
+    <uuid uuid="{02f6944e-e750-44cc-8228-26e46e066c16}"/>
+    <names>
+        <name lang="fr">SOMESCA</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1">65000987</elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Kamstrup</elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">MULTI CAL 601</elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+    </elementInformations>
+    <informations>S.DEFFAUX</informations>
+    <description>
+        <rect width="130" y="-20" ry="0" height="130" style="line-style:normal;line-weight:normal;filling:lightgray;color:black" x="-10" rx="0" antialias="false"/>
+        <rect width="110" y="-10" ry="0" height="110" style="line-style:normal;line-weight:normal;filling:red;color:black" x="0" rx="0" antialias="false"/>
+        <circle y="53.75" style="line-style:normal;line-weight:normal;filling:green;color:none" x="8.75" antialias="false" diameter="2.5"/>
+        <circle y="48.75" style="line-style:normal;line-weight:normal;filling:green;color:none" x="8.75" antialias="false" diameter="2.5"/>
+        <circle y="45" style="line-style:normal;line-weight:normal;filling:none;color:black" x="90" antialias="false" diameter="10"/>
+        <circle y="43.75" style="line-style:normal;line-weight:normal;filling:green;color:none" x="8.75" antialias="false" diameter="2.5"/>
+        <circle y="45" style="line-style:normal;line-weight:normal;filling:none;color:black" x="60" antialias="false" diameter="10"/>
+        <circle y="45" style="line-style:normal;line-weight:normal;filling:red;color:black" x="45" antialias="false" diameter="10"/>
+        <rect width="50" y="0" ry="0" height="15" style="line-style:normal;line-weight:normal;filling:green;color:black" x="30" rx="0" antialias="false"/>
+        <polygon x3="54" y4="53" y3="50" x4="48" y1="53" y2="47" style="line-style:normal;line-weight:normal;filling:black;color:red" x1="48" antialias="true" x2="48"/>
+        <rect width="10" y="-20" ry="0" height="130" style="line-style:normal;line-weight:normal;filling:cyan;color:black" x="120" rx="0" antialias="false"/>
+        <rect width="10" y="-20" ry="0" height="130" style="line-style:normal;line-weight:normal;filling:cyan;color:black" x="-20" rx="0" antialias="false"/>
+        <circle y="38.75" style="line-style:normal;line-weight:normal;filling:green;color:none" x="8.75" antialias="false" diameter="2.5"/>
+        <text font="MS Shell Dlg 2,9,-1,5,75,0,0,0,0,0,Gras" y="53.8242" color="#000000" rotation="0" text="+" x="60.2637"/>
+        <text font="MS Shell Dlg 2,9,-1,5,75,0,0,0,0,0,Gras" y="53.8242" color="#000000" rotation="0" text="-" x="77.4727"/>
+        <text font="MS Shell Dlg 2,7,-1,5,75,0,0,0,0,0,Gras" y="54" color="#000000" rotation="0" text="V" x="92"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="13" color="#000000" rotation="0" text="ENERGIE" x="45"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="41" color="#000000" rotation="0" text="DEFAUT" x="15"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="46" color="#000000" rotation="0" text="SECTEUR" x="15"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="51" color="#000000" rotation="0" text="SEUIL" x="15"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="56" color="#000000" rotation="0" text="DEBIT" x="15"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="70" color="#000000" rotation="0" text="SOMESCA" x="5"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="75" color="#000000" rotation="0" text="FONDE EN 1955" x="5"/>
+        <text font="Sans Serif,1,-1,5,50,0,0,0,0,0" y="79" color="#000000" rotation="0" text="tél=+33(0)1 47 86 84 00" x="6"/>
+        <circle y="45" style="line-style:normal;line-weight:normal;filling:none;color:black" x="75" antialias="false" diameter="10"/>
+        <circle y="82.5" style="line-style:normal;line-weight:normal;filling:black;color:black" x="12.5" antialias="false" diameter="10"/>
+        <rect width="55" y="60" ry="0" height="20" style="line-style:normal;line-weight:none;filling:white;color:black" x="45" rx="0" antialias="false"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="64" color="#000000" rotation="0" text="Marque: Somesca" x="46"/>
+    </description>
+</definition>

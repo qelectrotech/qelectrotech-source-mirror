@@ -1,8 +1,8 @@
 <definition orientation="dyyy" width="730" version="0.51" link_type="simple" hotspot_x="364" type="element" height="110" hotspot_y="44">
     <names>
-        <name lang="en">WAGO 750-1506/0000-0000 (DO)</name>
-        <name lang="fr">WAGO 750-1506/0000-0000 (DO)</name>
-        <name lang="de">WAGO 750-1506/0000-0000 (DO)</name>
+        <name lang="en">750-1506 (DO)</name>
+        <name lang="fr">750-1506 (DO)</name>
+        <name lang="de">750-1506 (DO)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
@@ -47,7 +47,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line x1="360" length2="1.5" y2="-13" length1="1.5" antialias="false" end1="none" y1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="360"/>
         <line x1="360" length2="1.5" y2="7" length1="1.5" antialias="false" end1="none" y1="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="360"/>
         <line x1="-360" length2="1.5" y2="-10" length1="1.5" antialias="false" end1="none" y1="-10" style="line-style:normal;line-weight:thin;filling:none;color:black" end2="none" x2="360"/>
-        <text x="-331" y="-27" size="9" text="WAGO 750-1506/0000-0000 (DO)"/>
+        <text x="-331" y="-27" size="9" text="WAGO 750-1506 (DO)"/>
         <input x="219" y="-31" tagg="label" size="9" text="X123" rotate="true"/>
         <text x="-278" y="58" size="5" text="9"/>
         <text x="-197" y="58" size="5" text="10"/>

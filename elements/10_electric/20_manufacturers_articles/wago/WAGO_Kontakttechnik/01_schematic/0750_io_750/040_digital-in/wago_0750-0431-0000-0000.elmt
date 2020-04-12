@@ -1,8 +1,8 @@
 <definition orientation="dyyy" hotspot_x="364" type="element" version="0.5" height="110" hotspot_y="55" width="730" link_type="simple">
     <names>
-        <name lang="en">WAGO 750-0431/0000-0000</name>
-        <name lang="fr">WAGO 750-0431/0000-0000</name>
-        <name lang="de">WAGO 750-0431/0000-0000</name>
+        <name lang="en">750-431</name>
+        <name lang="fr">750-431</name>
+        <name lang="de">750-431</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
@@ -53,7 +53,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <text x="-279" y="-24" text="DI1" size="9"/>
         <text x="281" y="-24" text="DI8" size="9"/>
         <text x="286" y="-42" text="8" size="5"/>
-        <text x="-330" y="45" text="WAGO 750-0431/0000-0000" size="9"/>
+        <text x="-330" y="45" text="WAGO 750-431" size="9"/>
         <text x="-36" y="-42" text="6" size="5"/>
         <text x="-39" y="-24" text="DI4" size="9"/>
         <text x="42" y="-24" text="DI5" size="9"/>

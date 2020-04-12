@@ -1,16 +1,16 @@
 <definition height="110" link_type="simple" width="730" orientation="dyyy" hotspot_x="365" type="element" version="0.5" hotspot_y="44">
     <names>
-        <name lang="ar">WAGO 750-0514/0000-0000</name>
-        <name lang="de">WAGO 750-0514/0000-0000</name>
-        <name lang="fr">WAGO 750-0514/0000-0000</name>
-        <name lang="el">WAGO 750-0514/0000-0000</name>
-        <name lang="en">WAGO 750-0514/0000-0000</name>
-        <name lang="it">WAGO 750-0514/0000-0000</name>
-        <name lang="pl">WAGO 750-0514/0000-0000</name>
-        <name lang="cs">WAGO 750-0514/0000-0000</name>
-        <name lang="nl">WAGO 750-0514/0000-0000</name>
-        <name lang="es">WAGO 750-0514/0000-0000</name>
-        <name lang="pt">WAGO 750-0514/0000-0000</name>
+        <name lang="ar">750-514</name>
+        <name lang="de">750-514</name>
+        <name lang="fr">750-514</name>
+        <name lang="el">750-514</name>
+        <name lang="en">750-514</name>
+        <name lang="it">750-514</name>
+        <name lang="pl">750-514</name>
+        <name lang="cs">750-514</name>
+        <name lang="nl">750-514</name>
+        <name lang="es">750-514</name>
+        <name lang="pt">750-514</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
@@ -67,7 +67,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <circle diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="47.5" x="117.5"/>
         <circle diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="47.5" x="37.5"/>
         <line end2="none" x2="360" length2="1.5" end1="none" length1="1.5" x1="-360" y2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y1="-40"/>
-        <text text="WAGO 750-0514/0000-0000" size="9" y="-27" x="-331"/>
+        <text text="WAGO 750-514" size="9" y="-27" x="-331"/>
         <input text="X123" tagg="label" size="9" y="-31" rotate="true" x="219"/>
         <text text="1" size="5" y="58" x="-278"/>
         <text text="2" size="5" y="58" x="-197"/>

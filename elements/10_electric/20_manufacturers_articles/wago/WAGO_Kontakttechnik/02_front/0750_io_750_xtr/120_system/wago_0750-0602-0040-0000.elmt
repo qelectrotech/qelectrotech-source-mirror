@@ -1,8 +1,8 @@
 <definition hotspot_y="180" type="element" width="60" height="360" hotspot_x="29" version="0.80" link_type="simple" orientation="dyyy">
     <names>
-        <name lang="de">750-602</name>
-        <name lang="fr">750-602</name>
-        <name lang="en">750-602</name>
+        <name lang="de">750-602/040-000</name>
+        <name lang="fr">750-602/040-000</name>
+        <name lang="en">750-602/040-000</name>
     </names>
     <elementInformations/>
     <informations>
@@ -65,11 +65,12 @@
         <polygon x4="-13.96" x1="-13.96" style="line-style:normal;line-weight:thin;filling:none;color:lightgray" y1="-155.31" y3="-141.31" x3="24.85" y4="-141.31" y2="-155.31" x2="24.85" antialias="false"/>
         <polygon x4="21.43" x1="21.43" style="line-style:normal;line-weight:thin;filling:orange;color:black" y1="41.62" y3="73.57" x3="26.44" y4="73.57" y2="41.62" x2="26.44" antialias="false"/>
         <polygon x1="21.42" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="57.06" y2="57.06" x2="26.46" antialias="false"/>
-        <text x="-9" color="#f3f3f3" text="750-602" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="157" rotation="0"/>
         <polygon y2="-57.54" x2="-12.42" y11="-61.7" y5="-45.5" y16="-61.7" antialias="false" y3="-55.2" y15="-63.63" x14="-8.85" y4="-48.63" x8="0.15" y7="-48.63" y10="-58.71" x7="0.15" x5="-10.8" x15="-10.43" y12="-63.63" y1="-58.71" x13="-4.96" y13="-65.19" x12="-3.38" x6="-3.01" y14="-65.19" style="line-style:normal;line-weight:thin;filling:black;color:lightgray" x4="-13.96" x3="-13.96" x11="-3.38" y8="-55.2" x9="-1.39" y9="-57.54" x16="-10.43" y6="-45.5" x10="-3.65" x1="-10.11"/>
         <polygon y2="-57.54" x2="5.69" y11="-61.7" y5="-45.5" y16="-61.7" antialias="false" y3="-55.2" y15="-63.63" x14="9.26" y4="-48.63" x8="18.26" y7="-48.63" y10="-58.71" x7="18.26" x5="7.31" x15="7.68" y12="-63.63" y1="-58.71" x13="13.15" y13="-65.19" x12="14.73" x6="15.1" y14="-65.19" style="line-style:normal;line-weight:thin;filling:black;color:lightgray" x4="4.15" x3="4.15" x11="14.73" y8="-55.2" x9="16.72" y9="-57.54" x16="7.68" y6="-45.5" x10="14.46" x1="8"/>
         <rect x="-12.2" rx="0" style="line-style:normal;line-weight:thin;filling:black;color:lightgray" width="12.3" height="14" ry="0" y="-80.6" antialias="false"/>
         <text x="-15" color="#f3f3f3" text="A" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-130" rotation="0"/>
         <rect x="-6" rx="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="10" height="5" ry="0" y="-133" antialias="false"/>
+        <text rotation="0" text="750-602" x="-9" y="152" color="#f3f3f3" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text rotation="0" text="/040-000" x="-10.3656" y="159.8" color="#f3f3f3" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
     </description>
 </definition>

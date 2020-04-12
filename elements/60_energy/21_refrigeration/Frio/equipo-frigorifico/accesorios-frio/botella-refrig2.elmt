@@ -1,36 +1,42 @@
-<definition width="40" hotspot_y="32" hotspot_x="13" type="element" orientation="dyyy" version="0.5" link_type="simple" height="60">
-<uuid uuid="{FD35885C-98FD-481C-BF6B-F4AD75FAB657}"/><names>
-        <name lang="es">Botella refrigerante doble</name>
+<definition hotspot_y="32" link_type="simple" height="60" width="30" type="element" version="0.80" hotspot_x="8" orientation="dyyy">
+    <uuid uuid="{94716d16-eeb9-4263-83a0-24d6bf08e2c9}"/>
+    <names>
+        <name lang="fr">Bouteille réfrigérante</name>
         <name lang="ca">Botella refrig doble</name>
+        <name lang="es">Botella refrigerante doble</name>
     </names>
+    <elementInformations/>
     <informations></informations>
     <description>
-        <line y1="-22" end1="none" x1="10" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="10" antialias="false" y2="-13" length2="1.5"/>
-        <ellipse width="6" y="-26" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-3" antialias="true" height="1"/>
-        <arc width="19" angle="-180" y="-12" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-3" start="0" antialias="true" height="6"/>
-        <arc width="21" angle="-70" y="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-4" start="70" antialias="true" height="7"/>
-        <line y1="-25" end1="none" x1="0" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="0" antialias="false" y2="-21" length2="1.5"/>
-        <polygon y1="16" x3="16" y4="15" x4="15" x1="12" closed="false" y3="16" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="13" antialias="false" y2="17"/>
-        <arc width="25" angle="-180" y="13" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-6" start="0" antialias="true" height="9"/>
-        <arc width="21" angle="-75" y="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-4" start="-180" antialias="true" height="7"/>
-        <line y1="-11" end1="none" x1="-4" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="-4" antialias="false" y2="12" length2="1.5"/>
-        <arc width="21" angle="-180" y="9" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-4" start="0" antialias="true" height="7"/>
-        <line y1="-11" end1="none" x1="17" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="17" antialias="false" y2="12" length2="1.5"/>
-        <polygon y1="13" x3="-6" x1="-4" closed="false" y3="17" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-6" antialias="false" y2="15"/>
-        <polygon y1="13" x3="19" x1="17" closed="false" y3="17" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="19" antialias="false" y2="14"/>
-        <polygon y1="15" x3="0" y4="16" x4="1" x1="-2" closed="false" y3="17" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-3" antialias="false" y2="16"/>
-        <polygon y1="16" x3="9" y4="16" x4="9" x1="5" closed="false" y3="18" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="5" antialias="false" y2="18"/>
-        <polygon y1="-10" x3="15" y4="-11" x4="16" x1="13" closed="false" y3="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="12" antialias="false" y2="-14"/>
-        <polygon y1="-12" x3="2" y4="-14" x4="2" x1="-3" closed="false" y3="-17" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-2" antialias="false" y2="-16"/>
-        <ellipse width="6" y="-26" style="line-style:normal;line-weight:normal;filling:none;color:black" x="10" antialias="true" height="1"/>
-        <polygon y1="-21" x3="15" y4="-20" x4="11" x1="11" closed="false" y3="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="15" antialias="false" y2="-21"/>
-        <input size="4" text="R_" y="-3" tagg="label" x="-3" rotate="true"/>
-        <line y1="-25" end1="none" x1="13" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="13" antialias="false" y2="-21" length2="1.5"/>
-        <polygon y7="-20.0212" y1="-20.8714" x3="-1" y4="-20.0212" x5="4" x4="0" x7="4" x1="4" y6="-20.0212" y5="-20.0212" closed="false" y3="-20.4463" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" x6="4" antialias="false" y2="-20.8714"/>
-        <arc width="6" angle="-200" y="-14" style="line-style:normal;line-weight:normal;filling:none;color:black" x="4" start="10" antialias="true" height="3"/>
-        <line y1="-22" end1="none" x1="4" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="4" antialias="false" y2="-13" length2="1.5"/>
-        <ellipse width="6" y="-24" style="line-style:normal;line-weight:normal;filling:none;color:black" x="4" antialias="false" height="2"/>
-        <terminal y="-20" orientation="w" x="-5"/>
-        <terminal y="-20" orientation="e" x="18"/>
+        <line end2="none" x1="10" antialias="false" y1="-22" end1="none" x2="10" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-13" length2="1.5"/>
+        <ellipse x="-3" y="-26" antialias="true" height="1" width="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-3" y="-12" antialias="true" height="6" start="0" angle="-180" width="19" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <arc x="-4" y="-15" antialias="true" height="7" start="70" angle="-70" width="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" x1="0" antialias="false" y1="-25" end1="none" x2="0" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-21" length2="1.5"/>
+        <polygon y3="16" x1="12" antialias="false" x3="16" y1="16" x2="13" x4="15" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="17" y4="15"/>
+        <arc x="-6" y="13" antialias="true" height="9" start="0" angle="-180" width="25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc x="-4" y="-15" antialias="true" height="7" start="-180" angle="-75" width="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" x1="-4" antialias="false" y1="-11" end1="none" x2="-4" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="12" length2="1.5"/>
+        <arc x="-4" y="9" antialias="true" height="7" start="0" angle="-180" width="21" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" x1="17" antialias="false" y1="-11" end1="none" x2="17" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="12" length2="1.5"/>
+        <polygon y3="17" x1="-4" antialias="false" x3="-6" y1="13" x2="-6" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="15"/>
+        <polygon y3="17" x1="17" antialias="false" x3="19" y1="13" x2="19" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="14"/>
+        <polygon y3="17" x1="-2" antialias="false" x3="0" y1="15" x2="-3" x4="1" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="16" y4="16"/>
+        <polygon y3="18" x1="5" antialias="false" x3="9" y1="16" x2="5" x4="9" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="18" y4="16"/>
+        <polygon y3="-15" x1="13" antialias="false" x3="15" y1="-10" x2="12" x4="16" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-14" y4="-11"/>
+        <polygon y3="-17" x1="-3" antialias="false" x3="2" y1="-12" x2="-2" x4="2" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-16" y4="-14"/>
+        <ellipse x="10" y="-26" antialias="true" height="1" width="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y3="-19" x1="11" antialias="false" x3="15" y1="-20" x2="15" x4="11" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-20" y4="-19"/>
+        <dynamic_text x="-3" z="20" frame="false" text_from="ElementInfo" y="-10" font="Sans Serif,4,-1,5,25,0,0,0,0,0" Valignment="AlignTop" rotation="0" Halignment="AlignLeft" text_width="-1" uuid="{993333c5-01b5-4851-b3e4-8664aa56a077}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line end2="none" x1="13" antialias="false" y1="-25" end1="none" x2="13" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-21" length2="1.5"/>
+        <polygon y3="-19" x1="2" antialias="false" x3="0" y1="-20" x2="-1" x4="4" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-20" y4="-19"/>
+        <arc x="4" y="-14" antialias="true" height="3" start="10" angle="-200" width="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" x1="4" antialias="false" y1="-22" end1="none" x2="4" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-13" length2="1.5"/>
+        <ellipse x="4" y="-24" antialias="false" height="2" width="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="0" y="-20" orientation="w"/>
+        <terminal x="15" y="-20" orientation="e"/>
     </description>
 </definition>

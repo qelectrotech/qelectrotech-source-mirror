@@ -1,8 +1,8 @@
 <definition orientation="dyyy" hotspot_x="354" version="0.51" height="110" hotspot_y="44" link_type="simple" type="element" width="730">
     <names>
-        <name lang="fr">WAGO 750-1606/0000-0000</name>
-        <name lang="de">WAGO 750-1606/0000-0000</name>
-        <name lang="en">WAGO 750-1606/0000-0000</name>
+        <name lang="fr">750-1606</name>
+        <name lang="de">750-1606</name>
+        <name lang="en">750-1606</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
@@ -115,7 +115,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <text x="-17" size="9" y="46" text="0V"/>
         <text x="-17" size="5" y="58" text="8"/>
         <text x="-177" size="5" y="58" text="4"/>
-        <text x="-331" size="9" y="-27" text="WAGO 750-1606/0000-0000"/>
+        <text x="-331" size="9" y="-27" text="WAGO 750-1606"/>
         <text x="-177" size="9" y="46" text="0V"/>
         <text x="-136" size="9" y="46" text="0V"/>
         <text x="-137" size="5" y="58" text="5"/>

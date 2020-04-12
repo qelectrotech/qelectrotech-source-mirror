@@ -1,0 +1,30 @@
+<definition height="40" orientation="dyyy" hotspot_x="10" hotspot_y="29" link_type="simple" type="element" version="0.70" width="20">
+    <uuid uuid="{590a4683-cbaa-4b4c-82a5-f17d222ca1ad}"/>
+    <names>
+        <name lang="fr">3501/6 - Configurateur 6</name>
+        <name lang="en">3501/6 - Configurator 6</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="manufacturer">BTicino - Legrang Group</elementInformation>
+        <elementInformation show="1" name="designation">3501/6</elementInformation>
+        <elementInformation show="1" name="manufacturer-reference">3501/6</elementInformation>
+        <elementInformation show="1" name="label">Configurator 6</elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="plant">SCS MyHOME</elementInformation>
+        <elementInformation show="1" name="comment">BTicino configurator 6</elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="description">Configurator 6</elementInformation>
+    </elementInformations>
+    <informations>Arnaud Valmary</informations>
+    <description>
+        <rect x="-2.5" antialias="false" height="18" ry="0" y="-19" rx="0" style="line-style:normal;line-weight:normal;filling:blue;color:blue" width="5"/>
+        <arc x="-2.5" antialias="true" height="5" y="-2.5" start="180" angle="180" style="line-style:normal;line-weight:normal;filling:none;color:blue" width="5"/>
+        <arc x="-2.5" antialias="true" height="5" y="-22.5" start="0" angle="180" style="line-style:normal;line-weight:normal;filling:blue;color:blue" width="5"/>
+        <text x="-3" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#ffffff" y="-8" text="6" rotation="0"/>
+        <line antialias="false" end2="none" x1="-2" end1="none" length2="1.5" x2="2" y2="-6" style="line-style:normal;line-weight:normal;filling:none;color:white" length1="1.5" y1="-6"/>
+        <terminal x="0" orientation="n" y="0"/>
+        <terminal x="0" orientation="s" y="-20"/>
+    </description>
+</definition>

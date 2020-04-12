@@ -1,8 +1,8 @@
 <definition height="360" orientation="dyyy" type="element" link_type="simple" hotspot_x="29" hotspot_y="180" version="0.80" width="60">
     <names>
-        <name lang="de">750-601</name>
-        <name lang="fr">750-601</name>
-        <name lang="en">750-601</name>
+        <name lang="de">750-601/040-000</name>
+        <name lang="fr">750-601/040-000</name>
+        <name lang="en">750-601/040-000</name>
     </names>
     <elementInformations/>
     <informations>
@@ -51,7 +51,6 @@
         <polygon style="line-style:normal;line-weight:thin;filling:none;color:lightgray" y3="-138.31" y1="-152.31" x4="-13.96" x1="-13.96" y4="-138.31" y2="-152.31" antialias="false" x2="24.85" x3="24.85"/>
         <polygon style="line-style:normal;line-weight:thin;filling:orange;color:black" y3="73.57" y1="41.62" x4="21.43" x1="21.43" y4="73.57" y2="41.62" antialias="false" x2="26.44" x3="26.44"/>
         <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" y1="57.06" x1="21.42" y2="57.06" closed="false" antialias="false" x2="26.46"/>
-        <text text="750-601" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#f3f3f3" x="-9" y="157" rotation="0"/>
         <text text="A" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#f3f3f3" x="-15" y="-128" rotation="0"/>
         <text text="B" font="Sans Serif,6,-1,5,50,0,0,0,0,0" color="#f3f3f3" x="19" y="-120" rotation="0"/>
         <circle diameter="12" style="line-style:normal;line-weight:thin;filling:red;color:black" x="-13" y="-128.5" antialias="false"/>
@@ -59,5 +58,7 @@
         <rect height="9" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-3.5" y="-108" rx="0" antialias="false" width="19"/>
         <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y1="-103.5" x1="-11" y2="-103.5" antialias="false" x2="23" end1="none"/>
         <text text="T 6,3 A" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" x="-10" y="-89" rotation="0"/>
+        <text rotation="0" text="750-601" x="-9" y="152" color="#f3f3f3" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text rotation="0" text="/040-000" x="-10.3656" y="159.8" color="#f3f3f3" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
     </description>
 </definition>

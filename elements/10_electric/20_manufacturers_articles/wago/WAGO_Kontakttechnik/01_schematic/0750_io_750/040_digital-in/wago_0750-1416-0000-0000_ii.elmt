@@ -1,8 +1,8 @@
 <definition width="730" height="110" version="0.51" link_type="simple" hotspot_x="354" orientation="dyyy" type="element" hotspot_y="55">
     <names>
-        <name lang="de">WAGO 750-1416/0000-0000 (II)</name>
-        <name lang="fr">WAGO 750-1416/0000-0000 (II)</name>
-        <name lang="en">WAGO 750-1416/0000-0000 (II)</name>
+        <name lang="de">750-1416 (II)</name>
+        <name lang="fr">750-1416 (II)</name>
+        <name lang="en">750-1416 (II)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

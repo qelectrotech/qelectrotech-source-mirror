@@ -1,16 +1,16 @@
 <definition hotspot_y="55" type="element" orientation="dyyy" hotspot_x="364" version="0.70" link_type="simple" width="730" height="190">
     <names>
-        <name lang="pl">WAGO 750-8215/0000-0000</name>
-        <name lang="ar">WAGO 750-8215/0000-0000</name>
-        <name lang="cs">WAGO 750-8215/0000-0000</name>
-        <name lang="de">WAGO 750-8215/0000-0000</name>
-        <name lang="nl">WAGO 750-8215/0000-0000</name>
-        <name lang="el">WAGO 750-8215/0000-0000</name>
-        <name lang="it">WAGO 750-8215/0000-0000</name>
-        <name lang="fr">WAGO 750-8215/0000-0000</name>
-        <name lang="pt">WAGO 750-8215/0000-0000</name>
-        <name lang="es">WAGO 750-8215/0000-0000</name>
-        <name lang="en">WAGO 750-8215/0000-0000</name>
+        <name lang="pl">750-8215</name>
+        <name lang="ar">750-8215</name>
+        <name lang="cs">750-8215</name>
+        <name lang="de">750-8215</name>
+        <name lang="nl">750-8215</name>
+        <name lang="el">750-8215</name>
+        <name lang="it">750-8215</name>
+        <name lang="fr">750-8215</name>
+        <name lang="pt">750-8215</name>
+        <name lang="es">750-8215</name>
+        <name lang="en">750-8215</name>
     </names>
     <elementInformations/>
     <informations>Author: The QElectroTech team
@@ -91,7 +91,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line x1="360" end1="none" end2="none" x2="360" length2="1.5" antialias="false" y1="-7" length1="1.5" y2="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line x1="360" end1="none" end2="none" x2="360" length2="1.5" antialias="false" y1="32.5" length1="1.5" y2="130" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line x1="-120" end1="none" end2="none" x2="358" length2="1.5" antialias="false" y1="-10" length1="1.5" y2="-10" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <text x="-329" size="9" text="WAGO 750-8215/0000-0000" y="125"/>
+        <text x="-329" size="9" text="WAGO 750-8215" y="125"/>
         <text x="281" size="9" text="PE" y="-22"/>
         <text x="201" size="9" text="PE" y="-22"/>
         <text x="-199" size="9" text="0V" y="-22"/>

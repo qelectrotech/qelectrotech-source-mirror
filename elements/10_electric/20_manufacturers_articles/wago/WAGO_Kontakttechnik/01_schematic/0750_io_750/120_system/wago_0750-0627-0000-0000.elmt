@@ -1,16 +1,16 @@
 <definition hotspot_y="55" orientation="dyyy" version="0.70" width="730" type="element" height="110" hotspot_x="364" link_type="simple">
     <names>
-        <name lang="el">WAGO 750-0627/0000-0000</name>
-        <name lang="pl">WAGO 750-0627/0000-0000</name>
-        <name lang="it">WAGO 750-0627/0000-0000</name>
-        <name lang="de">WAGO 750-0627/0000-0000</name>
-        <name lang="fr">WAGO 750-0627/0000-0000</name>
-        <name lang="nl">WAGO 750-0627/0000-0000</name>
-        <name lang="ar">WAGO 750-0627/0000-0000</name>
-        <name lang="pt">WAGO 750-0627/0000-0000</name>
-        <name lang="cs">WAGO 750-0627/0000-0000</name>
-        <name lang="es">WAGO 750-0627/0000-0000</name>
-        <name lang="en">WAGO 750-0627/0000-0000</name>
+        <name lang="el">750-627</name>
+        <name lang="pl">750-627</name>
+        <name lang="it">750-627</name>
+        <name lang="de">750-627</name>
+        <name lang="fr">750-627</name>
+        <name lang="nl">750-627</name>
+        <name lang="ar">750-627</name>
+        <name lang="pt">750-627</name>
+        <name lang="cs">750-627</name>
+        <name lang="es">750-627</name>
+        <name lang="en">750-627</name>
     </names>
     <elementInformations/>
     <informations>Author: The QElectroTech team
@@ -24,7 +24,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line antialias="false" x1="360" end1="none" end2="none" y1="-40" length2="1.5" x2="360" y2="-13" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <circle x="-122.5" antialias="true" y="-42.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <circle x="197.5" antialias="true" y="-42.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <text x="-330" y="45" text="WAGO 750-0627/0000-0000" size="9"/>
+        <text x="-330" y="45" text="WAGO 750-627" size="9"/>
         <dynamic_text Valignment="AlignTop" x="220" frame="false" z="8" y="29.5" font_size="9" uuid="{7bba58d8-5876-4db3-aeb0-251da4b88499}" Halignment="AlignLeft" text_width="-1" text_from="ElementInfo" rotation="0">
             <text></text>
             <info_name>label</info_name>

@@ -1,16 +1,19 @@
-<definition width="30" version="0.4" hotspot_x="14" hotspot_y="37" height="60" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{116557AC-3606-4ECA-8F3B-18D5D0DAE07C}"/><names>
+<definition hotspot_y="37" link_type="simple" height="60" width="30" type="element" version="0.80" hotspot_x="14" orientation="dyyy">
+    <uuid uuid="{76a02ef0-da89-423a-9f41-e12c8e3757a6}"/>
+    <names>
+        <name lang="fr">Bouteille de réfrigérant</name>
         <name lang="es">Botella de  refrig.</name>
     </names>
-    <informations/>
+    <elementInformations/>
+    <informations></informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-26.9838" x1="2.887" y2="-22.4854" x2="2.887"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17.0873" x1="8.425" y2="18" x2="8.425"/>
-        <arc width="16.575" x="-8.15" y="-22.4854" antialias="true" height="9.89643" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17.0873" x1="-8.15" y2="18" x2="-8.15"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18" x1="-8.15" y2="18" x2="8.1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-26.9838" x1="-2.3" y2="-22.4854" x2="-2.3"/>
-        <arc width="5.2" x="-2.3" y="-30.5825" antialias="true" height="5.39805" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <terminal x="0" y="-31" nameHidden="1" number="" name="" orientation="n"/>
+        <line end2="none" x1="2.887" antialias="false" y1="-26.9838" end1="none" x2="2.887" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-22.4854" length2="1.5"/>
+        <line end2="none" x1="8.425" antialias="false" y1="-17.0873" end1="none" x2="8.425" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="18" length2="1.5"/>
+        <arc x="-8.15" y="-22.4854" antialias="true" height="9.89643" start="-180" angle="-180" width="16.575" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" x1="-8.15" antialias="false" y1="-17.0873" end1="none" x2="-8.15" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="18" length2="1.5"/>
+        <line end2="none" x1="-8.15" antialias="false" y1="18" end1="none" x2="8.1" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="18" length2="1.5"/>
+        <line end2="none" x1="-2.3" antialias="false" y1="-26.9838" end1="none" x2="-2.3" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-22.4854" length2="1.5"/>
+        <arc x="-2.3" y="-30.5825" antialias="true" height="5.39805" start="-180" angle="-180" width="5.2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="0" y="-30" orientation="n"/>
     </description>
 </definition>

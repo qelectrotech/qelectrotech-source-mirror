@@ -1,22 +1,27 @@
-<definition link_type="simple" height="20" type="element" width="40" hotspot_y="10" version="0.5" hotspot_x="19" orientation="dyyy">
-<uuid uuid="{ECCB3E04-3788-4682-BE65-0FF2CEDEFE3A}"/><names>
+<definition orientation="dyyy" hotspot_x="19" link_type="simple" type="element" version="0.80" width="40" height="20" hotspot_y="10">
+    <uuid uuid="{251e441e-fe60-4f51-9a8e-13ac9eaa6199}"/>
+    <names>
         <name lang="ca">Clau de globus</name>
-        <name lang="en">Globe valve</name>
+        <name lang="en">Valve globe</name>
         <name lang="es">Llave de globo</name>
-        <name lang="fr">Valve globe</name>
+        <name lang="fr">Vanne a boisseau</name>
     </names>
-    <informations>Rafael Ferrando.
+    <elementInformations/>
+    <informations>Rafael Ferrando.&#xd;
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <line length2="1.5" end1="none" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10.7828" end2="none" antialias="false" x1="16.0481" y1="0" length1="1.5"/>
-        <line length2="1.5" end1="none" y2="-4.89732" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-8.8275" end2="none" antialias="false" x1="-8.8275" y1="4.9727" length1="1.5"/>
-        <line length2="1.5" end1="none" y2="-4.89732" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10.2993" end2="none" antialias="false" x1="10.2993" y1="4.9727" length1="1.5"/>
-        <line length2="1.5" end1="none" y2="5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10.0725" end2="none" antialias="false" x1="-8.8275" y1="-4.9225" length1="1.5"/>
-        <line length2="1.5" end1="none" y2="-4.9225" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10.0725" end2="none" antialias="false" x1="-8.8275" y1="5" length1="1.5"/>
-        <line length2="1.5" end1="none" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-14.9858" end2="none" antialias="false" x1="-9.18334" y1="0" length1="1.5"/>
-        <input text="_" x="-6" tagg="label" size="4" y="12" rotate="true"/>
-        <ellipse style="line-style:normal;line-weight:normal;filling:black;color:black" x="-2" height="4" antialias="false" width="5" y="-2"/>
-        <terminal x="-15" y="0" orientation="w"/>
-        <terminal x="16" y="0" orientation="e"/>
+        <line x2="10.7828" end2="none" end1="none" length1="1.5" y2="0" antialias="false" x1="16.0481" y1="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="-8.8275" end2="none" end1="none" length1="1.5" y2="-4.89732" antialias="false" x1="-8.8275" y1="4.9727" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="10.2993" end2="none" end1="none" length1="1.5" y2="-4.89732" antialias="false" x1="10.2993" y1="4.9727" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="10.0725" end2="none" end1="none" length1="1.5" y2="5" antialias="false" x1="-8.8275" y1="-4.9225" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="10.0725" end2="none" end1="none" length1="1.5" y2="-4.9225" antialias="false" x1="-8.8275" y1="5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x2="-14.9858" end2="none" end1="none" length1="1.5" y2="0" antialias="false" x1="-9.18334" y1="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text y="5" Halignment="AlignLeft" z="7" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{83389664-3f13-40cd-b2fd-91fbe1af3f1b}" text_width="-1" frame="false" x="-6" rotation="0" text_from="ElementInfo" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <ellipse y="-2" width="5" height="4" antialias="false" x="-2" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <terminal y="0" orientation="w" x="-15"/>
+        <terminal y="0" orientation="e" x="16"/>
     </description>
 </definition>

@@ -1,18 +1,34 @@
-<definition link_type="simple" hotspot_x="11" orientation="dyyy" hotspot_y="5" type="element" height="10" width="20" version="0.5">
-    <uuid uuid="{80855484-020b-429c-9f5c-4bfad9df2586}"/>
+<definition version="0.80" type="element" hotspot_y="5" hotspot_x="11" height="10" link_type="simple" orientation="dyyy" width="20">
+    <uuid uuid="{8ffa69c3-1f67-49e7-a17e-74a0b90c589b}"/>
     <names>
-        <name lang="pl">Masa</name>
-        <name lang="nl">Nul</name>
-        <name lang="el">Γείωση</name>
         <name lang="fr">groupement masse</name>
         <name lang="en">ground</name>
+        <name lang="el">Γείωση</name>
         <name lang="it">Massa</name>
         <name lang="cs">Masa</name>
+        <name lang="nl">Nul</name>
+        <name lang="pl">Masa</name>
     </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Arduino</elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+    </elementInformations>
     <informations>ezza</informations>
     <description>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="6" y="-3" width="6" x="-3"/>
-        <input size="9" text="_" rotate="true" y="-12" tagg="label" x="-7"/>
-        <terminal orientation="e" y="0" x="0"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-3" rx="0" height="6" width="6" antialias="false" y="-3"/>
+        <dynamic_text rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="2" text_width="-1" text_from="ElementInfo" x="-7" frame="false" Valignment="AlignTop" uuid="{ae46d66f-6fc8-4679-893e-a2d390fc0090}" Halignment="AlignLeft" y="-23">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal x="0" orientation="e" y="0"/>
     </description>
 </definition>

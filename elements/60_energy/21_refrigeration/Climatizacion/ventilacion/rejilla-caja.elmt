@@ -1,26 +1,32 @@
-<definition hotspot_x="35" hotspot_y="32" width="50" type="element" version="0.5" height="50" link_type="simple" orientation="dyyy">
-<uuid uuid="{47959C9E-5A39-4A75-A07A-5D400ACDFDAB}"/><names>
+<definition hotspot_y="32" link_type="simple" height="50" width="50" type="element" version="0.80" hotspot_x="35" orientation="dyyy">
+    <uuid uuid="{db56c7c2-ae1c-49ca-9219-230e18e32fe0}"/>
+    <names>
+        <name lang="fr">Grille</name>
         <name lang="ca">Reixa caixa</name>
         <name lang="es">Rejilla caja</name>
     </names>
+    <elementInformations/>
     <informations></informations>
     <description>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="10" y2="-7.1715" y3="5.24173" closed="false" x1="8.6" y1="-7.94732" x3="-2.6"/>
-        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-22.3513" y2="0" end1="none" x1="-27.3826" y1="0" length1="1.5"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="10" y2="-13.3781" y3="-0.964883" closed="false" x1="8.6" y1="-14.1539" x3="-2.6"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="10" y2="-10.2748" y3="2.13842" closed="false" x1="8.6" y1="-11.0506" x3="-2.6"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="10" y2="-4.06819" y3="8.34504" closed="false" x1="8.6" y1="-4.84402" x3="-2.6"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="10" y2="-16.4814" y3="-4.06819" closed="false" x1="8.6" y1="-17.2572" x3="-2.6"/>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-11.0506" width="4.9" antialias="false" height="24.0506" x="-9.6"/>
-        <polygon y4="-11.0506" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="6.5" y2="-26.5672" y3="-26.5672" x4="-4.7" closed="false" x1="-9.6" y1="-11.0506" x3="11.4"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="11.4" y2="-2.51654" y3="-26.5672" closed="false" x1="-4.7" y1="13" x3="11.4"/>
-        <polygon y4="-22.688" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-2.6" y2="8.34504" x5="-2.6" y3="-3.29236" y5="-10.2748" x4="10" closed="false" x1="-2.6" y1="-10.2748" x3="10"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="10" y2="-19.5847" y3="-7.1715" closed="false" x1="8.6" y1="-20.3606" x3="-2.6"/>
-        <input rotate="true" text="_" tagg="label" y="-10.6627" x="10.7" size="4"/>
-        <polygon y4="-11" x6="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-3" y2="-27" x5="-10" y3="-11" y5="-11" x4="-10" y6="-11" closed="false" x1="6" y1="-27" x3="-22"/>
-        <polygon y4="13" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-22" y2="13" x5="-10" y3="13" y5="13" x4="-10" closed="false" x1="-22" y1="-11" x3="-10"/>
-        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" y="-14.503" width="6.69471" angle="-180" antialias="true" height="14.503" x="-31.9853" start="270"/>
-        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" x2="-18.7059" y2="-14.503" end1="none" x1="-28.486" y1="-14.503" length1="1.5"/>
-        <terminal y="0" x="-11" orientation="w"/>
+        <polygon y3="5.24173" x1="8.6" antialias="false" x3="-2.6" y1="-7.94732" x2="10" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-7.1715"/>
+        <line end2="none" x1="-27.3826" antialias="false" y1="0" end1="none" x2="-22.3513" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" length2="1.5"/>
+        <polygon y3="-0.964883" x1="8.6" antialias="false" x3="-2.6" y1="-14.1539" x2="10" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-13.3781"/>
+        <polygon y3="2.13842" x1="8.6" antialias="false" x3="-2.6" y1="-11.0506" x2="10" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-10.2748"/>
+        <polygon y3="8.34504" x1="8.6" antialias="false" x3="-2.6" y1="-4.84402" x2="10" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-4.06819"/>
+        <polygon y3="-4.06819" x1="8.6" antialias="false" x3="-2.6" y1="-17.2572" x2="10" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-16.4814"/>
+        <rect x="-9.6" y="-11.0506" antialias="false" height="24.0506" width="4.9" ry="0" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y3="-26.5672" x1="-9.6" antialias="false" x3="11.4" y1="-11.0506" x2="6.5" x4="-4.7" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-26.5672" y4="-11.0506"/>
+        <polygon y3="-26.5672" x1="-4.7" antialias="false" x3="11.4" y1="13" x2="11.4" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-2.51654"/>
+        <polygon y5="-10.2748" y3="-3.29236" x1="-2.6" antialias="false" x5="-2.6" x3="10" y1="-10.2748" x2="-2.6" x4="10" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="8.34504" y4="-22.688"/>
+        <polygon y3="-7.1715" x1="8.6" antialias="false" x3="-2.6" y1="-20.3606" x2="10" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-19.5847"/>
+        <dynamic_text x="10.7" z="12" frame="false" text_from="ElementInfo" y="-17.6627" font="Sans Serif,4,-1,5,25,0,0,0,0,0" Valignment="AlignTop" rotation="0" Halignment="AlignLeft" text_width="-1" uuid="{da14ed7c-33df-404d-9819-87f184f69189}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon y5="-11" y3="-11" x1="6" antialias="false" x5="-10" x3="-22" y1="-27" x2="-3" x4="-10" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-27" y4="-11" x6="-10" y6="-11"/>
+        <polygon y5="13" y3="13" x1="-22" antialias="false" x5="-10" x3="-10" y1="-11" x2="-22" x4="-10" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="13" y4="13"/>
+        <arc x="-31.9853" y="-14.503" antialias="true" height="14.503" start="270" angle="-180" width="6.69471" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" x1="-28.486" antialias="false" y1="-14.503" end1="none" x2="-18.7059" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-14.503" length2="1.5"/>
+        <terminal x="-11" y="0" orientation="w"/>
     </description>
 </definition>

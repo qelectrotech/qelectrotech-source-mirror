@@ -1,72 +1,72 @@
-<definition height="160" link_type="simple" width="760" version="0.80" type="element" orientation="dyyy" hotspot_x="5" hotspot_y="4">
-    <uuid uuid="{8c4e6fcf-417f-4138-88ff-cfc39ce48bb8}"/>
+<definition type="element" height="160" hotspot_x="5" orientation="dyyy" version="0.80" width="760" hotspot_y="4" link_type="simple">
+    <uuid uuid="{83c4d9ac-c91e-4526-94c1-c165514ba83f}"/>
     <names>
+        <name lang="en">Board RS232</name>
+        <name lang="nl">Kaart RS232</name>
+        <name lang="cs">Karta RS232</name>
+        <name lang="it">Scheda RS232</name>
+        <name lang="pt">Carta RS232</name>
         <name lang="fr">Carte RS232</name>
         <name lang="pl">Karta RS232</name>
         <name lang="el">Κάρτα επικοινωνίας RS232</name>
-        <name lang="nl">Kaart RS232</name>
-        <name lang="pt">Carta RS232</name>
-        <name lang="cs">Karta RS232</name>
         <name lang="es">Tarjeta RS232</name>
-        <name lang="en">Board RS232</name>
-        <name lang="it">Scheda RS232</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="plant"></elementInformation>
-        <elementInformation show="1" name="supplier"></elementInformation>
-        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
         <elementInformation show="1" name="manufacturer-reference"></elementInformation>
-        <elementInformation show="1" name="manufacturer"></elementInformation>
-        <elementInformation show="1" name="label"></elementInformation>
-        <elementInformation show="1" name="description"></elementInformation>
-        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="description">carte de communicatio RS-232</elementInformation>
         <elementInformation show="1" name="comment"></elementInformation>
-        <elementInformation show="1" name="designation"></elementInformation>
         <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="designation">RS-232</elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Sofrel</elementInformation>
     </elementInformations>
     <informations>s.deffaux</informations>
     <description>
-        <line end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="290" length2="1.5" antialias="false" y2="131" x1="290" y1="150" end2="none"/>
-        <text color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" y="145" x="495" text="DTR"/>
-        <line end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="450" length2="1.5" antialias="false" y2="131" x1="450" y1="150" end2="none"/>
-        <line end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="490" length2="1.5" antialias="false" y2="131" x1="490" y1="150" end2="none"/>
-        <line end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="570" length2="1.5" antialias="false" y2="130.5" x1="570" y1="149.5" end2="none"/>
-        <line end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="530" length2="1.5" antialias="false" y2="131" x1="530" y1="150" end2="none"/>
-        <text color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" y="144" x="302" text="0V"/>
-        <text color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" y="145" x="415" text="CTS"/>
-        <text color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" y="145" x="260" text="RX"/>
-        <text color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" y="145" x="536" text="DSR"/>
-        <text color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" y="145" x="340" text="V+"/>
-        <dynamic_text text_from="ElementInfo" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" y="0" Valignment="AlignTop" x="734" z="11" frame="false" uuid="{6d3142ea-703d-42ad-8965-27b146311c5c}" text_width="-1" Halignment="AlignLeft">
+        <line end2="none" antialias="false" end1="none" y2="131" length2="1.5" x2="290" x1="290" y1="150" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <text color="#000000" rotation="0" y="145" x="495" text="DTR" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <line end2="none" antialias="false" end1="none" y2="131" length2="1.5" x2="450" x1="450" y1="150" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line end2="none" antialias="false" end1="none" y2="131" length2="1.5" x2="490" x1="490" y1="150" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line end2="none" antialias="false" end1="none" y2="130.5" length2="1.5" x2="570" x1="570" y1="149.5" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line end2="none" antialias="false" end1="none" y2="131" length2="1.5" x2="530" x1="530" y1="150" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <text color="#000000" rotation="0" y="144" x="302" text="0V" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" rotation="0" y="145" x="415" text="CTS" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" rotation="0" y="145" x="260" text="RX" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" rotation="0" y="145" x="536" text="DSR" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" rotation="0" y="145" x="340" text="V+" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <dynamic_text text_from="ElementInfo" uuid="{6d3142ea-703d-42ad-8965-27b146311c5c}" rotation="0" Valignment="AlignTop" frame="false" y="0" x="734" text_width="-1" z="11" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Halignment="AlignLeft">
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>
-        <text color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" y="145" x="460" text="CD"/>
-        <line end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="330" length2="1.5" antialias="false" y2="131" x1="330" y1="150" end2="none"/>
-        <rect height="150" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" antialias="false" y="0" rx="0" width="750" x="0"/>
-        <text color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" y="145" x="380" text="RTS"/>
-        <text color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" y="145" x="220" text="TX"/>
-        <text color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" y="15" x="625" text="EMPLACEMENT"/>
-        <line end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="210" length2="1.5" antialias="false" y2="131" x1="210" y1="150" end2="none"/>
-        <line end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="410" length2="1.5" antialias="false" y2="131" x1="410" y1="150" end2="none"/>
-        <dynamic_text text_from="UserText" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" rotation="0" y="-4" Valignment="AlignTop" x="730" z="20" frame="false" uuid="{45357fd2-3959-491a-941a-9557ac1c254d}" text_width="-1" Halignment="AlignLeft">
+        <text color="#000000" rotation="0" y="145" x="460" text="CD" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <line end2="none" antialias="false" end1="none" y2="131" length2="1.5" x2="330" x1="330" y1="150" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect rx="0" height="150" ry="0" antialias="false" width="750" y="0" x="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text color="#000000" rotation="0" y="145" x="380" text="RTS" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" rotation="0" y="145" x="220" text="TX" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" rotation="0" y="15" x="625" text="EMPLACEMENT" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <line end2="none" antialias="false" end1="none" y2="131" length2="1.5" x2="210" x1="210" y1="150" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line end2="none" antialias="false" end1="none" y2="131" length2="1.5" x2="410" x1="410" y1="150" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <dynamic_text text_from="UserText" uuid="{45357fd2-3959-491a-941a-9557ac1c254d}" rotation="0" Valignment="AlignTop" frame="false" y="-4" x="730" text_width="-1" z="20" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft">
             <text>#</text>
         </dynamic_text>
-        <line end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="370" length2="1.5" antialias="false" y2="131" x1="370" y1="150" end2="none"/>
-        <line end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="250" length2="1.5" antialias="false" y2="131" x1="250" y1="150" end2="none"/>
-        <text color="#000000" font="Sans Serif,25,-1,5,50,0,0,0,0,0" rotation="0" y="84" x="268" text="CARTE RS 232"/>
-        <line end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="617" length2="1.5" antialias="false" y2="0" x1="617" y1="20" end2="none"/>
-        <line end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="730" length2="1.5" antialias="false" y2="20" x1="730" y1="0" end2="none"/>
-        <line end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="750" length2="1.5" antialias="false" y2="131" x1="0" y1="131" end2="none"/>
-        <line end1="none" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="750" length2="1.5" antialias="false" y2="20" x1="0" y1="20" end2="none"/>
-        <terminal y="150" x="230" orientation="s"/>
-        <terminal y="150" x="310" orientation="s"/>
-        <terminal y="150" x="350" orientation="s"/>
-        <terminal y="150" x="430" orientation="s"/>
-        <terminal y="150" x="390" orientation="s"/>
-        <terminal y="150" x="270" orientation="s"/>
-        <terminal y="150" x="470" orientation="s"/>
-        <terminal y="150" x="550" orientation="s"/>
-        <terminal y="150" x="510" orientation="s"/>
+        <line end2="none" antialias="false" end1="none" y2="131" length2="1.5" x2="370" x1="370" y1="150" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line end2="none" antialias="false" end1="none" y2="131" length2="1.5" x2="250" x1="250" y1="150" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <text color="#000000" rotation="0" y="84" x="268" text="CARTE RS 232" font="Sans Serif,25,-1,5,50,0,0,0,0,0"/>
+        <line end2="none" antialias="false" end1="none" y2="0" length2="1.5" x2="617" x1="617" y1="20" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line end2="none" antialias="false" end1="none" y2="20" length2="1.5" x2="730" x1="730" y1="0" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line end2="none" antialias="false" end1="none" y2="131" length2="1.5" x2="750" x1="0" y1="131" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line end2="none" antialias="false" end1="none" y2="20" length2="1.5" x2="750" x1="0" y1="20" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <terminal orientation="s" y="150" x="230"/>
+        <terminal orientation="s" y="150" x="310"/>
+        <terminal orientation="s" y="150" x="350"/>
+        <terminal orientation="s" y="150" x="430"/>
+        <terminal orientation="s" y="150" x="390"/>
+        <terminal orientation="s" y="150" x="270"/>
+        <terminal orientation="s" y="150" x="470"/>
+        <terminal orientation="s" y="150" x="550"/>
+        <terminal orientation="s" y="150" x="510"/>
     </description>
 </definition>

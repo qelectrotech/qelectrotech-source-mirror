@@ -1,16 +1,16 @@
 <definition link_type="simple" height="110" hotspot_x="365" version="0.60" width="730" hotspot_y="44" orientation="dyyy" type="element">
     <names>
-        <name lang="en">WAGO 750-0517/0040-0000</name>
-        <name lang="de">WAGO 750-0517/0040-0000</name>
-        <name lang="es">WAGO 750-0517/0040-0000</name>
-        <name lang="pl">WAGO 750-0517/0040-0000</name>
-        <name lang="nl">WAGO 750-0517/0040-0000</name>
-        <name lang="cs">WAGO 750-0517/0040-0000</name>
-        <name lang="ar">WAGO 750-0517/0040-0000</name>
-        <name lang="fr">WAGO 750-0517/0040-0000</name>
-        <name lang="pt">WAGO 750-0517/0040-0000</name>
-        <name lang="it">WAGO 750-0517/0040-0000</name>
-        <name lang="el">WAGO 750-0517/0040-0000</name>
+        <name lang="en">750-517/0040-0000</name>
+        <name lang="de">750-517/0040-0000</name>
+        <name lang="es">750-517/0040-0000</name>
+        <name lang="pl">750-517/0040-0000</name>
+        <name lang="nl">750-517/0040-0000</name>
+        <name lang="cs">750-517/0040-0000</name>
+        <name lang="ar">750-517/0040-0000</name>
+        <name lang="fr">750-517/0040-0000</name>
+        <name lang="pt">750-517/0040-0000</name>
+        <name lang="it">750-517/0040-0000</name>
+        <name lang="el">750-517/0040-0000</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
@@ -57,7 +57,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <circle diameter="5" x="117.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="47.5" antialias="true"/>
         <circle diameter="5" x="37.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="47.5" antialias="true"/>
         <line end2="none" length2="1.5" y2="-40" length1="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="360" y1="-40" antialias="false" x1="-360"/>
-        <text x="-331" size="9" y="-27" text="WAGO 750-0517/0040-0000"/>
+        <text x="-331" size="9" y="-27" text="WAGO 750-517/0040-0000"/>
         <input x="219" size="9" tagg="label" y="-31" rotate="true" text="X123"/>
         <text x="-278" size="5" y="58" text="1"/>
         <text x="-197" size="5" y="58" text="2"/>

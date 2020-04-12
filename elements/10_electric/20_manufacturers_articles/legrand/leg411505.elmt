@@ -1,0 +1,69 @@
+<definition version="0.80" link_type="master" hotspot_y="34" orientation="dyyy" hotspot_x="42" width="100" type="element" height="80">
+    <uuid uuid="{f259a9c7-b112-4690-94dc-0bec7f3264f0}"/>
+    <names>
+        <name lang="it">Int. Aut. Magneto-termico 1P+N</name>
+        <name lang="cs">Dvojpólový jistič 1 pól chránící</name>
+        <name lang="de">Leitungsschutzschalter 1P+N</name>
+        <name lang="en">Circuit-breaker</name>
+        <name lang="fr">Interrupteur différentiel  40A typeAC 30mA </name>
+        <name lang="nl">Lastscheider 1P+N</name>
+        <name lang="ar">قاطع ثنائي القطبية - 1 قطب محمي</name>
+        <name lang="es">Disyuntor termico magnetico en polo P+N</name>
+        <name lang="pl">Wyłącznik</name>
+    </names>
+    <kindInformations>
+        <kindInformation show="1" name="state">NO</kindInformation>
+        <kindInformation show="1" name="type">protection</kindInformation>
+        <kindInformation show="1" name="number">1</kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="designation">LEG411505</elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="description">Interrupteur différentiel  40A typeAC 30mA </elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+    </elementInformations>
+    <informations>S.DEFFAUX
+Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line y2="40" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10" antialias="false" y1="4" x2="10" end1="none" length1="1.5" length2="1.5" end2="none"/>
+        <polygon x3="-35" y2="0" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-30" antialias="true" closed="false" y3="-20" y1="3" x2="-30"/>
+        <polygon x3="-25" y2="0" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-20" antialias="true" closed="false" y3="-20" y1="5" x2="-20"/>
+        <line y2="40" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10" antialias="false" y1="4" x2="-10" end1="none" length1="1.5" length2="1.5" end2="none"/>
+        <dynamic_text z="6" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" uuid="{7c189aba-a86c-4286-964d-b437612ed744}" text_from="ElementInfo" x="20" frame="false" y="-18" text_width="-1" Halignment="AlignLeft" rotation="0">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line y2="-10" style="line-style:dashed;line-weight:thin;filling:none;color:black" x1="-22" antialias="false" y1="-10" x2="8" end1="none" length1="1.5" length2="1.5" end2="none"/>
+        <polygon x3="-15" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10" antialias="true" closed="false" y3="-20" y1="3" x2="-10"/>
+        <polygon x3="5" y2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10" antialias="true" closed="false" y3="-20" y1="3" x2="10"/>
+        <line y2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10" antialias="false" y1="-30" x2="-10" end1="none" length1="1.5" length2="1.5" end2="none"/>
+        <line y2="-18" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-8" antialias="true" y1="-22" x2="-12" end1="none" length1="1.5" length2="1.5" end2="none"/>
+        <line y2="-18" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-12" antialias="true" y1="-22" x2="-8" end1="none" length1="1.5" length2="1.5" end2="none"/>
+        <line y2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10" antialias="false" y1="-30" x2="10" end1="none" length1="1.5" length2="1.5" end2="none"/>
+        <line y2="-18" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="12" antialias="true" y1="-22" x2="8" end1="none" length1="1.5" length2="1.5" end2="none"/>
+        <line y2="-18" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="8" antialias="true" y1="-22" x2="12" end1="none" length1="1.5" length2="1.5" end2="none"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="40A" x="22" y="20" rotation="0" color="#000000"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="30mA" x="22" y="34" rotation="0" color="#000000"/>
+        <line y2="35" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-10" antialias="false" y1="35" x2="-30" end1="none" length1="1.5" length2="1.5" end2="none"/>
+        <line y2="20" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-30" antialias="false" y1="35" x2="-30" end1="none" length1="1.5" length2="1.5" end2="none"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" x="-32" antialias="false" rx="0" width="4" ry="0" y="10" height="10"/>
+        <line y2="3" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-30" antialias="false" y1="10" x2="-30" end1="none" length1="1.5" length2="1.5" end2="none"/>
+        <polygon x3="-20" y2="-25" y5="-20" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-30" antialias="false" closed="false" y3="-25" x4="-20" y1="-20" y4="-20" x2="-30" x5="-20"/>
+        <line y2="5" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-20" antialias="false" y1="5" x2="10" end1="none" length1="1.5" length2="1.5" end2="none"/>
+        <line y2="-10" style="line-style:dashdotted;line-weight:thin;filling:none;color:black" x1="-40" antialias="false" y1="-10" x2="-35" end1="none" length1="1.5" length2="1.5" end2="none"/>
+        <polygon x3="-40" y2="-13" y5="-7" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-38" antialias="false" closed="false" y3="-7" x4="-38" y1="-13" y4="-7" x2="-40" x5="-38"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-20" antialias="false" rx="5" width="40" ry="5" y="20" height="10"/>
+        <terminal x="10" orientation="n" y="-30"/>
+        <terminal x="-10" orientation="n" y="-30"/>
+        <terminal x="-10" orientation="s" y="40"/>
+        <terminal x="10" orientation="s" y="40"/>
+    </description>
+</definition>

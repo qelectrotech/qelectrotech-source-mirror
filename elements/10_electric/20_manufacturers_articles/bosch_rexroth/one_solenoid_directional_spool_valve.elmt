@@ -1,0 +1,55 @@
+<definition height="80" hotspot_x="65" version="0.70" width="140" hotspot_y="45" link_type="simple" type="element" orientation="dyyy">
+    <uuid uuid="{73433f26-bfe7-459f-87cc-b2de76b5e735}"/>
+    <names>
+        <name lang="en">One solenoid directional spool valve</name>
+        <name lang="es">Válvula direccional de corredera de una solenoide</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1"></elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="designation" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <rect height="16" rx="0" y="-1.52539" x="-34.1328" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="28" antialias="false"/>
+        <line length2="1.5" x2="-20.13" end2="none" y2="-1.53" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" antialias="false" x1="-20.13" y1="-9.53" length1="1.5"/>
+        <line length2="1.5" x2="-20.13" end2="none" y2="22.47" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" antialias="false" x1="-20.13" y1="14.47" length1="1.5"/>
+        <dynamic_text y="-28" x="-46" uuid="{c4516490-9eca-4797-866d-8846ff6377ef}" z="4" text_from="UserText" rotation="0" text_width="-1" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,4,-1,5,0,0,0,0,0,0,normal" frame="false">
+            <text>1</text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text y="-28" x="14" uuid="{cb70ebe0-be5c-4093-bfe4-6f80733db5f7}" z="5" text_from="UserText" rotation="0" text_width="-1" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,4,-1,5,0,0,0,0,0,0,normal" frame="false">
+            <text>2</text>
+        </dynamic_text>
+        <polygon x5="1" x2="11" y2="-1" x4="11" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="14" x3="1" y5="-1" antialias="false" y4="14" x1="1" y1="-1"/>
+        <line length2="1.5" x2="5.8672" end2="none" y2="6.47461" style="line-style:dashed;line-weight:normal;filling:none;color:black" end1="none" antialias="false" x1="-5.13281" y1="6.47461" length1="1.5"/>
+        <rect height="70" rx="0" y="-40" x="-60" ry="0" style="line-style:dashed;line-weight:normal;filling:none;color:black" width="130" antialias="false"/>
+        <circle y="-30" x="-42" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="4"/>
+        <circle y="-30" x="48" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="4"/>
+        <circle y="-30" x="18" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="4"/>
+        <dynamic_text y="-28" x="43" uuid="{84c72113-3acb-4ac3-a1cc-73d9b5016521}" z="13" text_from="UserText" rotation="0" text_width="-1" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,4,-1,5,0,0,0,0,0,0,normal" frame="false">
+            <text>PE</text>
+        </dynamic_text>
+        <dynamic_text y="-41" x="-72.4688" uuid="{ded49a61-9ad6-46de-8e84-9cd550ebfeea}" z="14" text_from="ElementInfo" rotation="0" text_width="-1" Valignment="AlignVCenter" Halignment="AlignRight" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text y="-20" x="-53" uuid="{a5c4d062-ed7d-4f13-aed3-4f0c7734696e}" z="15" text_from="UserText" rotation="0" text_width="-1" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,4,-1,5,0,0,0,0,0,0,normal" frame="false">
+            <text>24 VDC</text>
+        </dynamic_text>
+        <dynamic_text y="-20" x="10" uuid="{6d748961-550e-49ce-9a1c-ffb529599d1b}" z="16" text_from="UserText" rotation="0" text_width="-1" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,4,-1,5,0,0,0,0,0,0,normal" frame="false">
+            <text>GND</text>
+        </dynamic_text>
+        <terminal y="-35" x="20" orientation="n"/>
+        <terminal y="-35" x="-40" orientation="n"/>
+        <terminal y="-35" x="50" orientation="n"/>
+    </description>
+</definition>

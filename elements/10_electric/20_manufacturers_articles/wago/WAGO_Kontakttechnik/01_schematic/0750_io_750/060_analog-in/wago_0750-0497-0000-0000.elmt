@@ -1,8 +1,8 @@
 <definition link_type="simple" hotspot_y="56" hotspot_x="354" type="element" height="110" version="0.70" width="730" orientation="dyyy">
     <names>
-        <name lang="en">WAGO 750-0497/0000-0000</name>
-        <name lang="de">WAGO 750-0497/0000-0000</name>
-        <name lang="fr">WAGO 750-0497/0000-0000</name>
+        <name lang="en">750-497</name>
+        <name lang="de">750-497</name>
+        <name lang="fr">750-497</name>
     </names>
     <elementInformations/>
     <informations>Author: The QElectroTech team
@@ -99,11 +99,11 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <text y="-24" size="9" text="M" x="-19"/>
         <text y="-42" size="5" text="12" x="-14"/>
         <text y="-42" size="5" text="10" x="-176"/>
-        <text y="45" size="9" text="WAGO 750-0497/0000-0000" x="-329"/>
+        <text y="45" size="9" text="WAGO 750-497" x="-329"/>
         <text y="-24" size="9" text="M" x="-179"/>
         <text y="-24" size="9" text="AI3" x="-138"/>
         <text y="-42" size="5" text="3" x="-134"/>
-        <text y="45" size="9" text="8-Channel DI, 0..10V / +/- 10V" x="-120"/>
+        <text y="45" size="9" text="8-Channel AI, 0..10V / +/- 10V" x="-120"/>
         <line length1="1.5" x1="300" y2="30" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-40" end2="none" x2="300" length2="1.5" antialias="false" end1="none"/>
         <circle y="28.5" diameter="3" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" x="-181.5"/>
         <terminal y="-40" x="-220" orientation="n"/>

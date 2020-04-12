@@ -1,8 +1,8 @@
 <definition version="0.70" hotspot_x="364" type="element" width="730" hotspot_y="56" link_type="simple" height="110" orientation="dyyy">
     <names>
-        <name lang="de">WAGO 750-0497/0000-0000 (I)</name>
-        <name lang="en">WAGO 750-0497/0000-0000 (I)</name>
-        <name lang="fr">WAGO 750-0497/0000-0000 (I)</name>
+        <name lang="de">750-497 (I)</name>
+        <name lang="en">750-497 (I)</name>
+        <name lang="fr">750-497 (I)</name>
     </names>
     <elementInformations/>
     <informations>Author: The QElectroTech team
@@ -65,7 +65,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <text text="WAGO 750-497/000-000 (I)" x="-329" size="9" y="45"/>
         <text text="AI2" x="-118" size="9" y="-24"/>
         <text text="2" x="-114" size="5" y="-42"/>
-        <text text="8-Channel DI, 0..10V / +/- 10V" x="-120" size="9" y="45"/>
+        <text text="8-Channel AI, 0..10V / +/- 10V" x="-120" size="9" y="45"/>
         <circle style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" x="-41.5" diameter="3" y="28.5"/>
         <terminal x="-360" orientation="w" y="10"/>
         <terminal x="-200" orientation="n" y="-40"/>

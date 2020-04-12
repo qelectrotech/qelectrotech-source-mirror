@@ -1,66 +1,119 @@
-<definition width="830" version="0.3" hotspot_x="59" hotspot_y="51" height="110" type="element" ic="true" orientation="dyyy">
-<uuid uuid="{9A0F7053-B7A7-4060-977F-F58D4BA0329B}"/><names>
-        <name lang="ar">1762-L40BXB(R) - (part OUT 2/2)</name>
-        <name lang="pt">1762-L40BXB(R) - (part OUT 2/2)</name>
-        <name lang="el">1762-L40BXB(R) - (Έξοδοι, μέρος 2/2)</name>
-        <name lang="en">1762-L40BXB(R) - (part OUT 2/2)</name>
+<definition hotspot_y="51" type="element" height="110" link_type="simple" width="770" orientation="dyyy" version="0.80" hotspot_x="17">
+    <uuid uuid="{2be64ffe-cbf8-451c-acd1-a4d7113967e9}"/>
+    <names>
+        <name lang="pl">1762-L40BXB(R) - (part OUT 2/2)</name>
         <name lang="it">1762-L40BXB(R) - (part OUT 2/2)</name>
         <name lang="fr">1762-L40BXB(R) - (part OUT 2/2)</name>
-        <name lang="pl">1762-L40BXB(R) - (part OUT 2/2)</name>
+        <name lang="ar">1762-L40BXB(R) - (part OUT 2/2)</name>
+        <name lang="pt">1762-L40BXB(R) - (part OUT 2/2)</name>
+        <name lang="nl">1762-L40BXB(R) - (part OUT 2/2)</name>
         <name lang="es">1762-L40BXB(R) - (Salida parte 2/2)</name>
         <name lang="cs">1762-L40BXB(R) - (part OUT 2/2)</name>
-        <name lang="nl">1762-L40BXB(R) - (part OUT 2/2)</name>
+        <name lang="en">1762-L40BXB(R) - (part OUT 2/2)</name>
+        <name lang="el">1762-L40BXB(R) - (Έξοδοι, μέρος 2/2)</name>
     </names>
-    <informations>Author: The QElectroTech team
+    <elementInformations>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="designation" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Allen Bradley</elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <input x="318" y="27" size="7" rotate="true" text="OUT&#xa; 11"/>
-        <input x="715" y="27" size="7" rotate="true" text="OUT&#xa; 15"/>
-        <input x="155" y="27" size="7" rotate="true" text="VAC&#xa;DC 3"/>
-        <ellipse width="5.00431" x="27.4488" y="45.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="-9.98307" y2="48" x2="26.9744"/>
-        <input x="15" y="27" size="7" rotate="true" text="COM&#xa;   2"/>
-        <input x="-6" y="-23" size="9" rotate="true" text="MicroLogix 1200 : DO 16   part 2 of 2"/>
-        <input x="-55" y="4" size="9" rotate="true" text="/"/>
-        <polygon x4="-5" y5="0" x5="-10" y6="-45" x6="-10" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="53" x1="-10" y2="6" x2="-10" y3="3" x3="-15" y4="3"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x1="-9.96268" y2="-40" x2="749.96"/>
-        <input x="76" y="27" size="7" rotate="true" text="OUT&#xa;   9"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="32.3983" y2="48" x2="87.5613"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x1="750" y2="48" x2="750"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="733" y2="48" x2="750"/>
-        <input x="637" y="27" size="7" rotate="true" text="OUT&#xa; 14"/>
-        <input x="556" y="27" size="7" rotate="true" text="OUT&#xa; 13"/>
-        <input x="476" y="27" size="7" rotate="true" text="OUT&#xa; 12"/>
-        <input x="395" y="27" size="7" rotate="true" text="VAC&#xa;DC 4"/>
-        <input x="236" y="27" size="7" rotate="true" text="OUT&#xa; 10"/>
-        <circle x="727.5" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="653" y2="48" x2="727"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="573" y2="48" x2="647"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="493" y2="48" x2="567"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="413" y2="48" x2="487"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="333" y2="48" x2="407"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="253" y2="48" x2="327"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="173" y2="48" x2="247"/>
-        <circle x="647.5" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="567.5" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="487.5" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="407.5" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="327.5" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="247.5" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="167.5" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="93" y2="48" x2="167"/>
-        <circle x="87.5001" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <input x="566" y="-24" size="9" rotate="true" text="1762-L40BXB(R) - OUT 2/2"/>
-        <input x="751" y="-28" size="9" rotate="true" text="_" tagg="label"/>
-        <terminal x="90" y="51" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="170" y="51" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="250" y="51" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="330" y="51" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="410" y="51" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="490" y="51" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="570" y="51" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="650" y="51" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="730" y="51" nameHidden="0" number="" name="" orientation="s"/>
-        <terminal x="30" y="51" nameHidden="0" number="" name="" orientation="s"/>
+        <dynamic_text z="1" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_from="UserText" x="318" text_width="-1" rotation="0" frame="false" y="12" uuid="{3d5bb3e2-3cf3-4087-9d4c-0f221c20f19e}">
+            <text>OUT
+ 11</text>
+        </dynamic_text>
+        <dynamic_text z="2" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_from="UserText" x="715" text_width="-1" rotation="0" frame="false" y="12" uuid="{c5a9489c-aae4-4784-96c4-f8add7d73398}">
+            <text>OUT
+ 15</text>
+        </dynamic_text>
+        <dynamic_text z="3" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_from="UserText" x="155" text_width="-1" rotation="0" frame="false" y="12" uuid="{740f91fa-8472-4282-882d-eb0040d59880}">
+            <text>VAC
+DC 3</text>
+        </dynamic_text>
+        <ellipse antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="27.4488" width="5.00431" y="45.5"/>
+        <line x2="26.9744" x1="-9.98307" antialias="false" y2="48" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" y1="48" length2="1.5"/>
+        <dynamic_text z="6" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_from="UserText" x="15" text_width="-1" rotation="0" frame="false" y="12" uuid="{d152b18a-6151-4217-8fbd-d6921f4d77d3}">
+            <text>COM
+   2</text>
+        </dynamic_text>
+        <dynamic_text z="7" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="UserText" x="-6" text_width="-1" rotation="0" frame="false" y="-34" uuid="{ba84cb99-38b8-4109-ab31-6397e8adcfaa}">
+            <text>MicroLogix 1200 : DO 16   part 2 of 2</text>
+        </dynamic_text>
+        <dynamic_text z="8" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="UserText" x="-55" text_width="-1" rotation="0" frame="false" y="-7" uuid="{65ca65b9-2513-42f3-bd8e-2d22ee1f881b}">
+            <text>/</text>
+        </dynamic_text>
+        <polygon x2="-10" closed="false" x1="-10" antialias="true" y2="6" x3="-15" x5="-10" style="line-style:normal;line-weight:thin;filling:none;color:black" x6="-10" y4="3" y6="-45" x4="-5" y3="3" y1="53" y5="0"/>
+        <line x2="749.96" x1="-9.96268" antialias="false" y2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" y1="-40" length2="1.5"/>
+        <dynamic_text z="11" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_from="UserText" x="76" text_width="-1" rotation="0" frame="false" y="12" uuid="{20132517-bfc6-4812-8cda-41670d3341d1}">
+            <text>OUT
+   9</text>
+        </dynamic_text>
+        <line x2="87.5613" x1="32.3983" antialias="false" y2="48" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" y1="48" length2="1.5"/>
+        <line x2="750" x1="750" antialias="false" y2="48" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" y1="-40" length2="1.5"/>
+        <line x2="750" x1="733" antialias="false" y2="48" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" y1="48" length2="1.5"/>
+        <dynamic_text z="15" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_from="UserText" x="637" text_width="-1" rotation="0" frame="false" y="12" uuid="{292b90bc-b034-49e9-bb28-ce82b764d417}">
+            <text>OUT
+ 14</text>
+        </dynamic_text>
+        <dynamic_text z="16" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_from="UserText" x="556" text_width="-1" rotation="0" frame="false" y="12" uuid="{f8626333-66df-4eed-80ea-a492af345c7e}">
+            <text>OUT
+ 13</text>
+        </dynamic_text>
+        <dynamic_text z="17" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_from="UserText" x="476" text_width="-1" rotation="0" frame="false" y="12" uuid="{c8664f07-7d65-46f6-bec8-84fb1f70257d}">
+            <text>OUT
+ 12</text>
+        </dynamic_text>
+        <dynamic_text z="18" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_from="UserText" x="395" text_width="-1" rotation="0" frame="false" y="12" uuid="{85bce440-4d87-4c8a-83ee-c2880a714541}">
+            <text>VAC
+DC 4</text>
+        </dynamic_text>
+        <dynamic_text z="19" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_from="UserText" x="236" text_width="-1" rotation="0" frame="false" y="12" uuid="{0202c666-91be-4421-af68-6dc309a0745c}">
+            <text>OUT
+ 10</text>
+        </dynamic_text>
+        <circle antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="727.5" diameter="5" y="45.5"/>
+        <line x2="727" x1="653" antialias="false" y2="48" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" y1="48" length2="1.5"/>
+        <line x2="647" x1="573" antialias="false" y2="48" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" y1="48" length2="1.5"/>
+        <line x2="567" x1="493" antialias="false" y2="48" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" y1="48" length2="1.5"/>
+        <line x2="487" x1="413" antialias="false" y2="48" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" y1="48" length2="1.5"/>
+        <line x2="407" x1="333" antialias="false" y2="48" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" y1="48" length2="1.5"/>
+        <line x2="327" x1="253" antialias="false" y2="48" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" y1="48" length2="1.5"/>
+        <line x2="247" x1="173" antialias="false" y2="48" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" y1="48" length2="1.5"/>
+        <circle antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="647.5" diameter="5" y="45.5"/>
+        <circle antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="567.5" diameter="5" y="45.5"/>
+        <circle antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="487.5" diameter="5" y="45.5"/>
+        <circle antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="407.5" diameter="5" y="45.5"/>
+        <circle antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="327.5" diameter="5" y="45.5"/>
+        <circle antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="247.5" diameter="5" y="45.5"/>
+        <circle antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="167.5" diameter="5" y="45.5"/>
+        <line x2="167" x1="93" antialias="false" y2="48" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" end2="none" y1="48" length2="1.5"/>
+        <circle antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="87.5001" diameter="5" y="45.5"/>
+        <dynamic_text z="37" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="UserText" x="566" text_width="-1" rotation="0" frame="false" y="-35" uuid="{a77cf53b-185a-484f-bf54-5c76f5431fcd}">
+            <text>1762-L40BXB(R) - OUT 2/2</text>
+        </dynamic_text>
+        <dynamic_text z="38" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="ElementInfo" x="751" text_width="-1" rotation="0" frame="false" y="-39" uuid="{cf473eda-d633-4c73-a53c-e807ad11395a}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal x="90" orientation="s" y="51"/>
+        <terminal x="170" orientation="s" y="51"/>
+        <terminal x="250" orientation="s" y="51"/>
+        <terminal x="330" orientation="s" y="51"/>
+        <terminal x="410" orientation="s" y="51"/>
+        <terminal x="490" orientation="s" y="51"/>
+        <terminal x="570" orientation="s" y="51"/>
+        <terminal x="650" orientation="s" y="51"/>
+        <terminal x="730" orientation="s" y="51"/>
+        <terminal x="30" orientation="s" y="51"/>
     </description>
 </definition>

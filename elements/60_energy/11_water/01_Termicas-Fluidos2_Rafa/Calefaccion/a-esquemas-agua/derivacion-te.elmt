@@ -1,16 +1,22 @@
-<definition hotspot_x="15" hotspot_y="14" width="30" type="element" version="0.4" height="20" link_type="simple" orientation="dyyy">
-<uuid uuid="{C920FEA4-951F-457D-B2C9-C9DB79136440}"/><names>
-        <name lang="es">Derivación-Te</name>
+<definition hotspot_y="14" link_type="simple" height="20" width="30" type="element" version="0.80" hotspot_x="14" orientation="dyyy">
+    <uuid uuid="{f167c82e-714b-494e-9df0-56a1bc3e43d6}"/>
+    <names>
+        <name lang="fr">Té-dérivation</name>
         <name lang="ca">Derivació-Te</name>
+        <name lang="es">Derivación-Te</name>
     </names>
-    <informations/>
+    <elementInformations/>
+    <informations></informations>
     <description>
-        <input rotate="true" text="Te" tagg="label" y="8" x="-1" size="6"/>
-        <circle style="line-style:normal;line-weight:normal;filling:black;color:black" y="-3" antialias="false" x="-3" diameter="6"/>
-        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y2="0" x2="0" end1="none" length1="1.5" y1="-10" x1="0"/>
-        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" y2="0" x2="10" end1="none" length1="1.5" y1="0" x1="-10"/>
-        <terminal y="-10" x="0" orientation="n"/>
-        <terminal y="0" x="10" orientation="e"/>
-        <terminal y="0" x="-10" orientation="w"/>
+        <dynamic_text x="-1" z="1" frame="false" text_from="ElementInfo" y="-1" font="Sans Serif,6,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" Halignment="AlignLeft" text_width="-1" uuid="{f73d3a2e-27bd-4158-857e-5d8ada4fcf2b}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <circle diameter="6" x="-3" y="-3" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line end2="none" x1="0" antialias="false" y1="-10" end1="none" x2="0" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" length2="1.5"/>
+        <line end2="none" x1="-10" antialias="false" y1="0" end1="none" x2="10" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" length2="1.5"/>
+        <terminal x="0" y="-10" orientation="n"/>
+        <terminal x="10" y="0" orientation="e"/>
+        <terminal x="-10" y="0" orientation="w"/>
     </description>
 </definition>

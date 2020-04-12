@@ -1,0 +1,66 @@
+<definition version="0.80" height="110" orientation="dyyy" hotspot_y="55" link_type="simple" hotspot_x="285" type="element" width="570">
+    <names>
+        <name lang="en">857-734</name>
+        <name lang="fr">857-734</name>
+        <name lang="de">857-734</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text x="45" color="#000000" text="14 (RL)" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" y="-24"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" end1="none" length2="1.5" length1="1.5" end2="simple" y2="-5" x2="-32" x1="-44" antialias="false"/>
+        <text x="-197" color="#000000" text="A1+" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" y="-24"/>
+        <text x="-116" color="#000000" text="A2-" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" y="-24"/>
+        <circle diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="117.5" y="-42.5" antialias="true"/>
+        <circle diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-122.5" y="-42.5" antialias="true"/>
+        <circle diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="197.5" y="-42.5" antialias="true"/>
+        <circle diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-202.5" y="-42.5" antialias="true"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" end1="none" length2="1.5" length1="1.5" end2="none" y2="50" x2="-280" x1="-280" antialias="false"/>
+        <circle diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="37.5" y="-42.5" antialias="true"/>
+        <dynamic_text uuid="{d5b87438-ce37-48d7-aa24-ceb036d63d35}" Valignment="AlignBottom" x="271" text_from="ElementInfo" text_width="-1" z="12" Halignment="AlignRight" frame="false" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="29.5">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" end1="none" length2="1.5" length1="1.5" end2="none" y2="50" x2="280" x1="280" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" end1="none" length2="1.5" length1="1.5" end2="none" y2="-40" x2="37" x1="-117" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" end1="none" length2="1.5" length1="1.5" end2="none" y2="-40" x2="197" x1="123" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" end1="none" length2="1.5" length1="1.5" end2="none" y2="-40" x2="-123" x1="-197" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" end1="none" length2="1.5" length1="1.5" end2="none" y2="-40" x2="280" x1="203" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" end1="none" length2="1.5" length1="1.5" end2="none" y2="-40" x2="-203" x1="-280" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" end1="none" length2="1.5" length1="1.5" end2="none" y2="-40" x2="117" x1="43" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" end1="none" length2="1.5" length1="1.5" end2="none" y2="50" x2="280" x1="-280" antialias="false"/>
+        <text x="206" color="#000000" text="5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-42"/>
+        <text x="125" color="#000000" text="4" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-42"/>
+        <text x="-105" color="#000000" text="Solid-State-Relay DC 12 V || DC 24 V / 8 A" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" y="45"/>
+        <text x="-196" color="#000000" text="1" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-42"/>
+        <text x="205" color="#000000" text="n.c." font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" y="-25"/>
+        <text x="-115" color="#000000" text="2" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-42"/>
+        <text x="-274" color="#000000" text="WAGO 857-734" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" y="45"/>
+        <text x="123" color="#000000" text="13 (+)" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" y="-25"/>
+        <text x="45" color="#000000" text="3" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-42"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" end1="none" length2="1.5" length1="1.5" end2="none" y2="10" x2="-60" x1="-60" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" end1="none" length2="1.5" length1="1.5" end2="none" y2="10" x2="-200" x1="-200" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" end1="none" length2="1.5" length1="1.5" end2="none" y2="10" x2="-60" x1="-200" antialias="false"/>
+        <polygon y3="-1" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" y2="-1" closed="false" x3="-54" x2="-66" x4="-60" x1="-60" y4="-13" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" end1="none" length2="1.5" length1="1.5" end2="none" y2="-13" x2="-54" x1="-66" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" end1="none" length2="1.5" length1="1.5" end2="simple" y2="-9" x2="-32" x1="-44" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" end1="none" length2="1.5" length1="1.5" end2="none" y2="-20" x2="-120" x1="-120" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" end1="none" length2="1.5" length1="1.5" end2="none" y2="-20" x2="-60" x1="-120" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18.819" end1="none" length2="1.5" length1="1.5" end2="none" y2="-13.713" x2="-11" x1="-11" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.60696" end1="none" length2="1.5" length1="1.5" end2="none" y2="-3.50093" x2="-11" x1="-11" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1.6051" end1="none" length2="1.5" length1="1.5" end2="none" y2="6.71114" x2="-11" x1="-11" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18.82" end1="none" length2="1.5" length1="1.5" end2="none" y2="6.71" x2="-14.3" x1="-14.3" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6.71114" end1="none" length2="1.5" length1="1.5" end2="none" y2="6.71114" x2="-24.3" x1="-14.3" antialias="false"/>
+        <polygon y3="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" y2="4" closed="false" x3="120" x2="120" x1="-10" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" end1="simple" length2="1.5" length1="1.5" end2="none" y2="-6" x2="0" x1="-10" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16" end1="none" length2="1.5" length1="1.5" end2="none" y2="-16" x2="40" x1="-10" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16" end1="none" length2="1.5" length1="1.5" end2="none" y2="-40" x2="40" x1="40" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" end1="none" length2="1.5" length1="1.5" end2="none" y2="-16" x2="0" x1="0" antialias="false"/>
+        <circle diameter="3" style="line-style:normal;line-weight:normal;filling:black;color:black" x="-1.5" y="-17.5" antialias="false"/>
+        <terminal x="40" orientation="n" y="-40"/>
+        <terminal x="-200" orientation="n" y="-40"/>
+        <terminal x="-120" orientation="n" y="-40"/>
+        <terminal x="120" orientation="n" y="-40"/>
+    </description>
+</definition>

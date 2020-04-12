@@ -1,0 +1,62 @@
+<definition hotspot_x="365" width="730" version="0.80" link_type="simple" type="element" height="110" hotspot_y="55" orientation="dyyy">
+    <names>
+        <name lang="de">787-2861/0050-0000</name>
+        <name lang="fr">787-2861/0050-0000</name>
+        <name lang="en">787-2861/0050-0000</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text rotation="0" x="122" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" y="-24" text="Vout+"/>
+        <text rotation="0" x="203" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" y="-24" text="Vout+"/>
+        <text rotation="0" x="-197" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" y="-24" text="Vin+"/>
+        <text rotation="0" x="282" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" y="-24" text="GND"/>
+        <text rotation="0" x="41" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" y="-24" text="S1 (DI)"/>
+        <text rotation="0" x="-116" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" y="-24" text="Vin+"/>
+        <text rotation="0" x="-37" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" y="-24" text="GND"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="117.5" diameter="5" y="-42.5" antialias="true"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-122.5" diameter="5" y="-42.5" antialias="true"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="197.5" diameter="5" y="-42.5" antialias="true"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-202.5" diameter="5" y="-42.5" antialias="true"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-360" y2="50" x1="-360" antialias="false" length1="1.5" end2="none" length2="1.5" y1="-40"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="277.5" diameter="5" y="-42.5" antialias="true"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-282.5" diameter="5" y="-42.5" antialias="true"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="37.5" diameter="5" y="-42.5" antialias="true"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-42.5" diameter="5" y="-42.5" antialias="true"/>
+        <dynamic_text rotation="0" uuid="{dec3e830-5818-440e-8b7b-d6159d39a230}" Valignment="AlignTop" Halignment="AlignLeft" text_from="ElementInfo" x="220" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="29.5" frame="false" z="17" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="360" y2="50" x1="360" antialias="false" length1="1.5" end2="none" length2="1.5" y1="-40"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-43" y2="-40" x1="-117" antialias="false" length1="1.5" end2="none" length2="1.5" y1="-40"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="197" y2="-40" x1="123" antialias="false" length1="1.5" end2="none" length2="1.5" y1="-40"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-123" y2="-40" x1="-197" antialias="false" length1="1.5" end2="none" length2="1.5" y1="-40"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="277" y2="-40" x1="203" antialias="false" length1="1.5" end2="none" length2="1.5" y1="-40"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-203" y2="-40" x1="-277" antialias="false" length1="1.5" end2="none" length2="1.5" y1="-40"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="360" y2="-40" x1="283" antialias="false" length1="1.5" end2="none" length2="1.5" y1="-40"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-283" y2="-40" x1="-360" antialias="false" length1="1.5" end2="none" length2="1.5" y1="-40"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="37" y2="-40" x1="-37" antialias="false" length1="1.5" end2="none" length2="1.5" y1="-40"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="117" y2="-40" x1="43" antialias="false" length1="1.5" end2="none" length2="1.5" y1="-40"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="360" y2="50" x1="-360" antialias="false" length1="1.5" end2="none" length2="1.5" y1="50"/>
+        <text rotation="0" x="206" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" y="-42" text="7"/>
+        <text rotation="0" x="125" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" y="-42" text="6"/>
+        <text rotation="0" x="-130" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" y="45" text="Electronic Circuit Breaker 24 V / 0.5 A"/>
+        <text rotation="0" x="-196" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" y="-42" text="2"/>
+        <text rotation="0" x="-115" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" y="-42" text="3"/>
+        <text rotation="0" x="-276" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" y="-42" text="1"/>
+        <text rotation="0" x="-278" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" y="-24" text="S2 (DO)"/>
+        <text rotation="0" x="-35" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" y="-42" text="4"/>
+        <text rotation="0" x="-330" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" y="45" text="WAGO 0787-2861/0050-0000"/>
+        <text rotation="0" x="286" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" y="-42" text="8"/>
+        <text rotation="0" x="45" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" y="-42" text="5"/>
+        <terminal x="280" y="-40" orientation="n"/>
+        <terminal x="-40" y="-40" orientation="n"/>
+        <terminal x="40" y="-40" orientation="n"/>
+        <terminal x="-200" y="-40" orientation="n"/>
+        <terminal x="-120" y="-40" orientation="n"/>
+        <terminal x="-280" y="-40" orientation="n"/>
+        <terminal x="200" y="-40" orientation="n"/>
+        <terminal x="120" y="-40" orientation="n"/>
+    </description>
+</definition>

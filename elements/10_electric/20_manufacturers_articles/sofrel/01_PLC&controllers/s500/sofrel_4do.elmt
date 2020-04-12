@@ -1,80 +1,80 @@
-<definition orientation="dyyy" version="0.70" height="160" hotspot_x="5" hotspot_y="4" width="410" type="element" link_type="simple">
-    <uuid uuid="{cbb9cb3d-5a23-43bd-96c2-9822734e93f5}"/>
+<definition type="element" height="160" hotspot_x="5" orientation="dyyy" version="0.80" width="410" hotspot_y="4" link_type="simple">
+    <uuid uuid="{2be33d3f-676b-4bf4-9873-2d1566a1ab61}"/>
     <names>
-        <name lang="it">Scheda 4DO</name>
-        <name lang="es">Tarjeta 4DO</name>
         <name lang="en">Board 4DO</name>
+        <name lang="it">Scheda 4DO</name>
         <name lang="fr">Carte 4 DO</name>
+        <name lang="es">Tarjeta 4DO</name>
     </names>
     <elementInformations>
-        <elementInformation name="quantity" show="1"></elementInformation>
-        <elementInformation name="supplier" show="1"></elementInformation>
-        <elementInformation name="label" show="1"></elementInformation>
-        <elementInformation name="plant" show="1"></elementInformation>
-        <elementInformation name="designation" show="1"></elementInformation>
-        <elementInformation name="unity" show="1"></elementInformation>
-        <elementInformation name="manufacturer" show="1">Sofrel</elementInformation>
-        <elementInformation name="description" show="1"></elementInformation>
-        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
-        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
-        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation show="1" name="description">Carte de sortie digitale</elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="designation">4-DO</elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Sofrel</elementInformation>
     </elementInformations>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <dynamic_text uuid="{a1ebbbc9-7cf5-454a-b0fa-22d962a1561a}" text_from="ElementInfo" x="440" text_width="-1" z="1" rotation="0" y="30" frame="false" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" Valignment="AlignTop">
+        <dynamic_text text_from="ElementInfo" uuid="{a1ebbbc9-7cf5-454a-b0fa-22d962a1561a}" rotation="0" Valignment="AlignTop" frame="false" y="30" x="440" text_width="-1" z="1" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Halignment="AlignLeft">
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>
-        <rect height="5" x="110" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20" antialias="false" y="102.95" rx="0"/>
-        <rect height="5" x="290" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20" antialias="false" y="102.95" rx="0"/>
-        <rect height="5" x="46" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20" antialias="false" y="103" rx="0"/>
-        <rect height="5" x="230" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20" antialias="false" y="102.95" rx="0"/>
-        <rect height="5" x="170" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20" antialias="false" y="102.95" rx="0"/>
-        <rect height="5" x="110" ry="0" style="line-style:normal;line-weight:normal;filling:black;color:black" width="10" antialias="false" y="102.95" rx="0"/>
-        <rect height="5" x="290" ry="0" style="line-style:normal;line-weight:normal;filling:black;color:black" width="10" antialias="false" y="102.95" rx="0"/>
-        <rect height="5" x="170" ry="0" style="line-style:normal;line-weight:normal;filling:black;color:black" width="10" antialias="false" y="102.95" rx="0"/>
-        <rect height="5" x="230" ry="0" style="line-style:normal;line-weight:normal;filling:black;color:black" width="10" antialias="false" y="102.95" rx="0"/>
-        <text text="4B" x="255" rotation="0" y="140" color="#000000" font="Sans Serif,10,-1,5,50,0,0,0,0,0"/>
-        <rect height="5" x="46" ry="0" style="line-style:normal;line-weight:normal;filling:black;color:black" width="10" antialias="false" y="103" rx="0"/>
-        <text text="DB" x="320" rotation="0" y="140" color="#000000" font="Sans Serif,10,-1,5,50,0,0,0,0,0"/>
-        <text text="A" x="172" rotation="0" y="99.65" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
-        <text text="DA" x="290" rotation="0" y="140" color="#000000" font="Sans Serif,10,-1,5,50,0,0,0,0,0"/>
-        <text text="A" x="48" rotation="0" y="99.7" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
-        <text text="A" x="112" rotation="0" y="99.65" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
-        <text text="A" x="292" rotation="0" y="99.65" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
-        <text text="A" x="232" rotation="0" y="99.65" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
-        <text text="B" x="184" rotation="0" y="99.65" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
-        <text text="B" x="244" rotation="0" y="99.65" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
-        <text text="B" x="304" rotation="0" y="99.65" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
-        <text text="B" x="60" rotation="0" y="99.7" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
-        <text text="B" x="124" rotation="0" y="99.65" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
-        <text text="3B" x="195" rotation="0" y="140" color="#000000" font="Sans Serif,10,-1,5,50,0,0,0,0,0"/>
-        <dynamic_text uuid="{03c9655f-539b-46ab-8f40-b86905aa1ec8}" text_from="UserText" x="380" text_width="-1" z="27" rotation="0" y="0" frame="false" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" Valignment="AlignTop">
+        <rect rx="0" height="5" ry="0" antialias="false" width="20" y="102.95" x="110" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect rx="0" height="5" ry="0" antialias="false" width="20" y="102.95" x="290" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect rx="0" height="5" ry="0" antialias="false" width="20" y="103" x="46" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect rx="0" height="5" ry="0" antialias="false" width="20" y="102.95" x="230" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect rx="0" height="5" ry="0" antialias="false" width="20" y="102.95" x="170" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect rx="0" height="5" ry="0" antialias="false" width="10" y="102.95" x="110" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect rx="0" height="5" ry="0" antialias="false" width="10" y="102.95" x="290" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect rx="0" height="5" ry="0" antialias="false" width="10" y="102.95" x="170" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect rx="0" height="5" ry="0" antialias="false" width="10" y="102.95" x="230" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <text color="#000000" rotation="0" y="140" x="255" text="4B" font="Sans Serif,10,-1,5,50,0,0,0,0,0"/>
+        <rect rx="0" height="5" ry="0" antialias="false" width="10" y="103" x="46" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <text color="#000000" rotation="0" y="140" x="320" text="DB" font="Sans Serif,10,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" rotation="0" y="99.65" x="172" text="A" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" rotation="0" y="140" x="290" text="DA" font="Sans Serif,10,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" rotation="0" y="99.7" x="48" text="A" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" rotation="0" y="99.65" x="112" text="A" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" rotation="0" y="99.65" x="292" text="A" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" rotation="0" y="99.65" x="232" text="A" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" rotation="0" y="99.65" x="184" text="B" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" rotation="0" y="99.65" x="244" text="B" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" rotation="0" y="99.65" x="304" text="B" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" rotation="0" y="99.7" x="60" text="B" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" rotation="0" y="99.65" x="124" text="B" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" rotation="0" y="140" x="195" text="3B" font="Sans Serif,10,-1,5,50,0,0,0,0,0"/>
+        <dynamic_text text_from="UserText" uuid="{03c9655f-539b-46ab-8f40-b86905aa1ec8}" rotation="0" Valignment="AlignTop" frame="false" y="0" x="380" text_width="-1" z="27" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft">
             <text>_</text>
         </dynamic_text>
-        <text text="2B" x="135" rotation="0" y="140" color="#000000" font="Sans Serif,10,-1,5,50,0,0,0,0,0"/>
-        <text text="4A" x="225" rotation="0" y="140" color="#000000" font="Sans Serif,10,-1,5,50,0,0,0,0,0"/>
-        <text text="1B" x="75" rotation="0" y="140" color="#000000" font="Sans Serif,10,-1,5,50,0,0,0,0,0"/>
-        <text text="3A" x="165" rotation="0" y="140" color="#000000" font="Sans Serif,10,-1,5,50,0,0,0,0,0"/>
-        <text text="2A" x="105" rotation="0" y="140" color="#000000" font="Sans Serif,10,-1,5,50,0,0,0,0,0"/>
-        <rect height="150" x="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="400" antialias="false" y="0" rx="0"/>
-        <text text="EMPLACEMENT" x="290" rotation="0" y="15" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
-        <text text="1A" x="45" rotation="0" y="140" color="#000000" font="Sans Serif,10,-1,5,50,0,0,0,0,0"/>
-        <text text="CARTE  4DO" x="120" rotation="0" y="70" color="#000000" font="Sans Serif,25,-1,5,50,0,0,0,0,0"/>
-        <line y1="20" length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y2="0" end2="none" x1="380" x2="380" length1="1.5"/>
-        <line y1="0" length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y2="20" end2="none" x1="280" x2="280" length1="1.5"/>
-        <line y1="120" length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y2="120" end2="none" x1="0" x2="400" length1="1.5"/>
-        <line y1="20" length2="1.5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y2="20" end2="none" x1="-1" x2="400" length1="1.5"/>
-        <terminal orientation="s" x="250" y="150"/>
-        <terminal orientation="s" x="190" y="150"/>
-        <terminal orientation="s" x="220" y="150"/>
-        <terminal orientation="s" x="280" y="150"/>
-        <terminal orientation="s" x="70" y="150"/>
-        <terminal orientation="s" x="160" y="150"/>
-        <terminal orientation="s" x="310" y="150"/>
-        <terminal orientation="s" x="130" y="150"/>
-        <terminal orientation="s" x="100" y="150"/>
-        <terminal orientation="s" x="40" y="150"/>
+        <text color="#000000" rotation="0" y="140" x="135" text="2B" font="Sans Serif,10,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" rotation="0" y="140" x="225" text="4A" font="Sans Serif,10,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" rotation="0" y="140" x="75" text="1B" font="Sans Serif,10,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" rotation="0" y="140" x="165" text="3A" font="Sans Serif,10,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" rotation="0" y="140" x="105" text="2A" font="Sans Serif,10,-1,5,50,0,0,0,0,0"/>
+        <rect rx="0" height="150" ry="0" antialias="false" width="400" y="0" x="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text color="#000000" rotation="0" y="15" x="290" text="EMPLACEMENT" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" rotation="0" y="140" x="45" text="1A" font="Sans Serif,10,-1,5,50,0,0,0,0,0"/>
+        <text color="#000000" rotation="0" y="70" x="120" text="CARTE  4DO" font="Sans Serif,25,-1,5,50,0,0,0,0,0"/>
+        <line end2="none" antialias="false" end1="none" y2="0" length2="1.5" x2="380" x1="380" y1="20" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line end2="none" antialias="false" end1="none" y2="20" length2="1.5" x2="280" x1="280" y1="0" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line end2="none" antialias="false" end1="none" y2="120" length2="1.5" x2="400" x1="0" y1="120" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <line end2="none" antialias="false" end1="none" y2="20" length2="1.5" x2="400" x1="-1" y1="20" length1="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <terminal orientation="s" y="150" x="250"/>
+        <terminal orientation="s" y="150" x="190"/>
+        <terminal orientation="s" y="150" x="220"/>
+        <terminal orientation="s" y="150" x="280"/>
+        <terminal orientation="s" y="150" x="70"/>
+        <terminal orientation="s" y="150" x="160"/>
+        <terminal orientation="s" y="150" x="310"/>
+        <terminal orientation="s" y="150" x="130"/>
+        <terminal orientation="s" y="150" x="100"/>
+        <terminal orientation="s" y="150" x="40"/>
     </description>
 </definition>

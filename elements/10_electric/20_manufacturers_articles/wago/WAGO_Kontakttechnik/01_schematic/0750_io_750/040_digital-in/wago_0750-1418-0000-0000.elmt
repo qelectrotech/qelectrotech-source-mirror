@@ -1,8 +1,8 @@
 <definition width="730" orientation="dyyy" hotspot_x="354" type="element" link_type="simple" hotspot_y="55" height="110" version="0.51">
     <names>
-        <name lang="en">WAGO 750-1418/0000-0000</name>
-        <name lang="fr">WAGO 750-1418/0000-0000</name>
-        <name lang="de">WAGO 750-1418/0000-0000</name>
+        <name lang="en">750-1418</name>
+        <name lang="fr">750-1418</name>
+        <name lang="de">750-1418</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
@@ -99,7 +99,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <text y="-24" size="9" x="-19" text="0V"/>
         <text y="-42" size="5" x="-14" text="8"/>
         <text y="-42" size="5" x="-176" text="4"/>
-        <text y="45" size="9" x="-329" text="WAGO 750-1418/0000-0000"/>
+        <text y="45" size="9" x="-329" text="WAGO 750-1418"/>
         <text y="-24" size="9" x="-179" text="0V"/>
         <text y="-24" size="9" x="-138" text="DI3"/>
         <text y="-42" size="5" x="-134" text="5"/>

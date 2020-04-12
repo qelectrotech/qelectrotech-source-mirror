@@ -1,26 +1,27 @@
-<definition width="50" hotspot_y="48" type="element" orientation="dyyy" height="80" version="0.70" hotspot_x="24" link_type="simple">
-    <uuid uuid="{43b540a9-7762-4675-970b-e86c46ec5345}"/>
+<definition width="50" type="element" link_type="simple" height="60" version="0.80" orientation="dyyy" hotspot_y="27" hotspot_x="24">
+    <uuid uuid="{e00c09f2-96d8-4b0c-beba-b358d41b52c5}"/>
     <names>
-        <name lang="es">Motormonofásico</name>
-        <name lang="en">Motor single phase</name>
         <name lang="nl">Motor  1fase</name>
         <name lang="it">Motore monofase</name>
+        <name lang="en">Motor single phase</name>
         <name lang="fr">Moteur monophasé</name>
+        <name lang="es">Motormonofásico</name>
     </names>
     <elementInformations/>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team&#xd;&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon x4="15" closed="false" y3="9" y2="9" y1="-36" x3="15" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="20" x1="20" y4="9"/>
-        <polygon closed="false" y3="9" y2="9" y1="-40" x3="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x2="-20" x1="-20"/>
-        <circle y="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="30" x="-15"/>
-        <text y="17" size="9" x="-11" text="1 ~"/>
-        <text y="7" size="8" x="-4" text="M"/>
-        <dynamic_text y="4" uuid="{02168a47-380e-4a8b-94ba-48ae684a0b3d}" font_size="9" z="9" rotation="0" text_from="ElementInfo" Halignment="AlignLeft" x="18" font_family="Sans Serif" Valignment="AlignTop" frame="false" text_width="-1">
+        <polygon y1="-20" y3="9" closed="false" y2="9" x3="15" antialias="false" x1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" x4="15" x2="20" y4="9"/>
+        <polygon y1="-20" y3="10" closed="false" y2="10" x3="-15" antialias="false" x1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-20"/>
+        <circle diameter="30" y="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-15"/>
+        <text y="17" color="#000000" rotation="0" x="-11" text="1 ~" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text y="7" color="#000000" rotation="0" x="-4" text="M" font="Sans Serif,8,-1,5,50,0,0,0,0,0"/>
+        <dynamic_text Halignment="AlignLeft" text_from="ElementInfo" frame="false" Valignment="AlignTop" y="4" rotation="0" x="18" text_width="-1" z="9" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" uuid="{02168a47-380e-4a8b-94ba-48ae684a0b3d}">
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>
-        <terminal y="-40" orientation="n" x="20"/>
-        <terminal y="-40" orientation="n" x="-20"/>
+        <terminal y="25" orientation="s" x="10"/>
+        <terminal y="-20" orientation="n" x="-20"/>
+        <terminal y="-20" orientation="n" x="20"/>
     </description>
 </definition>

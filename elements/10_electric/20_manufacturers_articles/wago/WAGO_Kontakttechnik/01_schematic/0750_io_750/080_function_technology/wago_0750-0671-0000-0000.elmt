@@ -1,16 +1,16 @@
 <definition version="0.70" link_type="simple" orientation="dyyy" width="730" type="element" height="110" hotspot_x="364" hotspot_y="46">
     <names>
-        <name lang="de">WAGO 750-0671/0000-0000</name>
-        <name lang="pt">WAGO 750-0671/0000-0000</name>
-        <name lang="nl">WAGO 750-0671/0000-0000</name>
-        <name lang="el">WAGO 750-0671/0000-0000</name>
-        <name lang="cs">WAGO 750-0671/0000-0000</name>
-        <name lang="it">WAGO 750-0671/0000-0000</name>
-        <name lang="ar">WAGO 750-0671/0000-0000</name>
-        <name lang="pl">WAGO 750-0671/0000-0000</name>
-        <name lang="fr">WAGO 750-0671/0000-0000</name>
-        <name lang="es">WAGO 750-0671/0000-0000</name>
-        <name lang="en">WAGO 750-0671/0000-0000</name>
+        <name lang="de">750-671</name>
+        <name lang="pt">750-671</name>
+        <name lang="nl">750-671</name>
+        <name lang="el">750-671</name>
+        <name lang="cs">750-671</name>
+        <name lang="it">750-671</name>
+        <name lang="ar">750-671</name>
+        <name lang="pl">750-671</name>
+        <name lang="fr">750-671</name>
+        <name lang="es">750-671</name>
+        <name lang="en">750-671</name>
     </names>
     <elementInformations/>
     <informations>Author: The QElectroTech team

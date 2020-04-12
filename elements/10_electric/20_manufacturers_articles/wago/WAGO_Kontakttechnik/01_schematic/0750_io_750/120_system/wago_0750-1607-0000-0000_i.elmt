@@ -1,8 +1,8 @@
 <definition version="0.5" hotspot_y="44" type="element" hotspot_x="364" height="110" width="730" orientation="dyyy" link_type="simple">
     <names>
-        <name lang="de">WAGO 750-1607/0000-0000 (I)</name>
-        <name lang="fr">WAGO 750-1607/0000-0000 (I)</name>
-        <name lang="en">WAGO 750-1607/0000-0000 (I)</name>
+        <name lang="de">750-1607 (I)</name>
+        <name lang="fr">750-1607 (I)</name>
+        <name lang="en">750-1607 (I)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
