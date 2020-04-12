@@ -26,6 +26,7 @@
 #include "templatescollection.h"
 #include "properties/xrefproperties.h"
 #include "projectdatabase.h"
+#include "reportproperties.h"
 
 class Diagram;
 class ElementsLocation;
@@ -237,15 +238,15 @@ class QETProject : public QObject
 			/// Filepath for which this project is considered read only
 		QString read_only_file_path_;
 			/// Default dimensions and properties for new diagrams created within the project
-		BorderProperties default_border_properties_;
+		BorderProperties default_border_properties_ = BorderProperties::defaultProperties();
 			/// Default conductor properties for new diagrams created within the project
-		ConductorProperties default_conductor_properties_;
+		ConductorProperties default_conductor_properties_ = ConductorProperties::defaultProperties();
 			/// Default title block properties for new diagrams created within the project
 		TitleBlockProperties default_titleblock_properties_;
 			/// Default report properties
-		QString m_default_report_properties;
+		QString m_default_report_properties = ReportProperties::defaultProperties();
 			/// Default xref properties
-		QHash <QString, XRefProperties> m_default_xref_properties;
+		QHash <QString, XRefProperties> m_default_xref_properties = XRefProperties::defaultProperties();
 			/// Embedded title block templates collection
 		TitleBlockTemplatesProjectCollection m_titleblocks_collection;
 			/// project-wide variables that will be made available to child diagrams
