@@ -1,0 +1,46 @@
+<definition version="0.80" hotspot_y="27" link_type="simple" hotspot_x="20" height="60" orientation="dyyy" width="40" type="element">
+    <uuid uuid="{e980024c-458a-48c2-8166-0d2d8b2a9e28}"/>
+    <names>
+        <name lang="en">Motor single phase</name>
+        <name lang="nl">Motor  1fase</name>
+        <name lang="fr">Moteur monophasé</name>
+        <name lang="es">Motormonofásico</name>
+        <name lang="it">Motore monofase</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle x="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-5" antialias="true" diameter="30"/>
+        <text x="-11" color="#000000" y="17" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" text="1 ~"/>
+        <text x="-4" color="#000000" y="7" font="Sans Serif,8,-1,5,50,0,0,0,0,0" rotation="0" text="M"/>
+        <line x1="-10" y1="-1" end1="none" length1="1.5" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-15" length2="1.5" antialias="false"/>
+        <line x1="10" y1="-16" end1="none" length1="1.5" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-1" length2="1.5" antialias="false"/>
+        <dynamic_text x="20" text_from="CompositeText" z="9" text_width="-1" y="-10" Halignment="AlignLeft" uuid="{02168a47-380e-4a8b-94ba-48ae684a0b3d}" Valignment="AlignTop" rotation="0" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" frame="false">
+            <text>
+
+
+</text>
+            <info_name>label</info_name>
+            <composite_text>%{label}
+%{manufacturer}
+%{designation}
+%{auxiliary1}</composite_text>
+        </dynamic_text>
+        <terminal x="10" orientation="n" y="-20"/>
+        <terminal x="10" orientation="s" y="25"/>
+        <terminal x="-10" orientation="n" y="-20"/>
+    </description>
+</definition>
