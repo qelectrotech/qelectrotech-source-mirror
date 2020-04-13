@@ -1,69 +1,71 @@
-<definition type="element" height="230" hotspot_x="4" orientation="dyyy" version="0.80" width="80" hotspot_y="33" link_type="simple">
-    <uuid uuid="{42ea2aaa-d3f2-4fd6-9d45-4bd354ae1481}"/>
+<definition type="element" width="80" hotspot_y="33" link_type="simple" hotspot_x="4" height="230" orientation="dyyy" version="0.80">
+    <uuid uuid="{77b726cc-9825-47ef-9422-11ac92156ff7}"/>
     <names>
         <name lang="fr">Sofrel 4 AO</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
-        <elementInformation show="1" name="description">Cartes de sorties analoqigue</elementInformation>
-        <elementInformation show="1" name="comment"></elementInformation>
-        <elementInformation show="1" name="quantity"></elementInformation>
-        <elementInformation show="1" name="designation">4-AO</elementInformation>
-        <elementInformation show="1" name="plant"></elementInformation>
-        <elementInformation show="1" name="unity"></elementInformation>
-        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
-        <elementInformation show="1" name="label"></elementInformation>
-        <elementInformation show="1" name="supplier"></elementInformation>
-        <elementInformation show="1" name="manufacturer">Sofrel</elementInformation>
+        <elementInformation name="manufacturer" show="1">Sofrel</elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="label" show="1">4-AO</elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">4-AO</elementInformation>
+        <elementInformation name="description" show="1">Cartes de sorties analoqigue</elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
     </elementInformations>
     <informations>S.Deffaux</informations>
     <description>
-        <rect rx="0" height="190" ry="0" antialias="false" width="70" y="0" x="0" style="line-style:normal;line-weight:normal;filling:green;color:black"/>
-        <text color="#000000" rotation="0" y="140" x="55" text="2A&#xa;" font="MS Shell Dlg 2,6,-1,5,75,0,0,0,0,0,Gras"/>
-        <text color="#000000" rotation="0" y="100" x="55" text="3A&#xa;" font="MS Shell Dlg 2,6,-1,5,75,0,0,0,0,0,Gras"/>
-        <rect rx="1" height="40" ry="0" antialias="false" width="20" y="110" x="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect rx="1" height="40" ry="0" antialias="false" width="20" y="70" x="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text color="#000000" rotation="0" y="120" x="55" text="2B" font="MS Shell Dlg 2,6,-1,5,75,0,0,0,0,0,Gras"/>
-        <text color="#000000" rotation="0" y="80" x="55" text="3B" font="MS Shell Dlg 2,6,-1,5,75,0,0,0,0,0,Gras"/>
-        <text color="#000000" rotation="0" y="95" x="5" text="B" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Gras"/>
-        <text color="#000000" rotation="0" y="135" x="5" text="B" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Gras"/>
-        <rect rx="0" height="40" ry="0" antialias="false" width="50" y="110" x="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect rx="0" height="40" ry="0" antialias="false" width="50" y="70" x="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect rx="0" height="20" ry="0" antialias="false" width="5" y="75" x="9.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect rx="0" height="20" ry="0" antialias="false" width="5" y="115" x="9.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text color="#000000" rotation="0" y="60" x="55" text="4A" font="MS Shell Dlg 2,6,-1,5,75,0,0,0,0,0,Gras"/>
-        <text color="#000000" rotation="0" y="122" x="5" text="A" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Gras"/>
-        <text color="#000000" rotation="0" y="82" x="5" text="A" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Gras"/>
-        <rect rx="0" height="10" ry="0" antialias="false" width="5" y="85" x="9.5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <rect rx="0" height="10" ry="0" antialias="false" width="5" y="125" x="9.5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <text color="#000000" rotation="0" y="180" x="55" text="1A&#xa;" font="MS Shell Dlg 2,6,-1,5,75,0,0,0,0,0,Gras"/>
-        <rect rx="1" height="40" ry="0" antialias="false" width="20" y="30" x="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text color="#000000" rotation="0" y="40" x="55" text="4B" font="MS Shell Dlg 2,6,-1,5,75,0,0,0,0,0,Gras"/>
-        <text color="#000000" rotation="0" y="55" x="5.5" text="B" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Gras"/>
-        <rect rx="0" height="40" ry="0" antialias="false" width="50" y="30" x="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect rx="0" height="20" ry="0" antialias="false" width="5" y="35" x="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text color="#000000" rotation="0" y="42" x="5.5" text="A" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Gras"/>
-        <rect rx="0" height="10" ry="0" antialias="false" width="4" y="35" x="10" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <rect rx="1" height="40" ry="0" antialias="false" width="20" y="150" x="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text color="#000000" rotation="0" y="160" x="55" text="1B" font="MS Shell Dlg 2,6,-1,5,75,0,0,0,0,0,Gras"/>
-        <text color="#000000" rotation="0" y="175" x="5.5" text="B" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Gras"/>
-        <rect rx="0" height="40" ry="0" antialias="false" width="50" y="150" x="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect rx="0" height="20" ry="0" antialias="false" width="5" y="155" x="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text color="#000000" rotation="0" y="162" x="5.5" text="A" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Gras"/>
-        <rect rx="0" height="10" ry="0" antialias="false" width="5" y="165" x="10" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <rect rx="0" height="30" ry="0" antialias="false" width="70" y="0" x="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text color="#000000" rotation="0" y="7" x="11" text="Réglage sortie" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
-        <text color="#000000" rotation="0" y="19" x="10" text="A=0 (4)-20mA" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
-        <text color="#000000" rotation="0" y="29" x="10" text="B=0-10V" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
-        <text color="#000000" rotation="0" y="-15" x="5" text="CARTE AO" font="MS Shell Dlg 2,9,-1,5,75,0,0,0,0,0,Gras"/>
-        <text color="#000000" rotation="0" y="-4" x="22" text="S550" font="MS Shell Dlg 2,9,-1,5,75,0,0,0,0,0,Gras"/>
-        <terminal orientation="e" y="120" x="70"/>
-        <terminal orientation="e" y="160" x="70"/>
-        <terminal orientation="e" y="100" x="70"/>
-        <terminal orientation="e" y="140" x="70"/>
-        <terminal orientation="e" y="40" x="70"/>
-        <terminal orientation="e" y="80" x="70"/>
-        <terminal orientation="e" y="180" x="70"/>
-        <terminal orientation="e" y="60" x="70"/>
+        <rect x="0" width="70" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:green;color:black" height="190" y="0"/>
+        <text x="55" font="MS Shell Dlg 2,6,-1,5,75,0,0,0,0,0,Gras" rotation="0" text="2A&#xa;" color="#000000" y="140"/>
+        <text x="55" font="MS Shell Dlg 2,6,-1,5,75,0,0,0,0,0,Gras" rotation="0" text="3A&#xa;" color="#000000" y="100"/>
+        <rect x="50" width="20" antialias="false" rx="1" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="40" y="110"/>
+        <rect x="50" width="20" antialias="false" rx="1" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="40" y="70"/>
+        <text x="55" font="MS Shell Dlg 2,6,-1,5,75,0,0,0,0,0,Gras" rotation="0" text="2B" color="#000000" y="120"/>
+        <text x="55" font="MS Shell Dlg 2,6,-1,5,75,0,0,0,0,0,Gras" rotation="0" text="3B" color="#000000" y="80"/>
+        <text x="5" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Gras" rotation="0" text="B" color="#000000" y="95"/>
+        <text x="5" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Gras" rotation="0" text="B" color="#000000" y="135"/>
+        <rect x="0" width="50" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="40" y="110"/>
+        <rect x="0" width="50" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="40" y="70"/>
+        <rect x="9.5" width="5" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" y="75"/>
+        <rect x="9.5" width="5" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" y="115"/>
+        <text x="55" font="MS Shell Dlg 2,6,-1,5,75,0,0,0,0,0,Gras" rotation="0" text="4A" color="#000000" y="60"/>
+        <text x="5" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Gras" rotation="0" text="A" color="#000000" y="122"/>
+        <text x="5" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Gras" rotation="0" text="A" color="#000000" y="82"/>
+        <rect x="9.5" width="5" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:black;color:black" height="10" y="85"/>
+        <rect x="9.5" width="5" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:black;color:black" height="10" y="125"/>
+        <text x="55" font="MS Shell Dlg 2,6,-1,5,75,0,0,0,0,0,Gras" rotation="0" text="1A&#xa;" color="#000000" y="180"/>
+        <rect x="50" width="20" antialias="false" rx="1" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="40" y="30"/>
+        <text x="55" font="MS Shell Dlg 2,6,-1,5,75,0,0,0,0,0,Gras" rotation="0" text="4B" color="#000000" y="40"/>
+        <text x="5.5" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Gras" rotation="0" text="B" color="#000000" y="55"/>
+        <rect x="0" width="50" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="40" y="30"/>
+        <rect x="10" width="5" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" y="35"/>
+        <text x="5.5" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Gras" rotation="0" text="A" color="#000000" y="42"/>
+        <rect x="10" width="4" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:black;color:black" height="10" y="35"/>
+        <rect x="50" width="20" antialias="false" rx="1" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="40" y="150"/>
+        <text x="55" font="MS Shell Dlg 2,6,-1,5,75,0,0,0,0,0,Gras" rotation="0" text="1B" color="#000000" y="160"/>
+        <text x="5.5" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Gras" rotation="0" text="B" color="#000000" y="175"/>
+        <rect x="0" width="50" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="40" y="150"/>
+        <rect x="10" width="5" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" y="155"/>
+        <text x="5.5" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,Gras" rotation="0" text="A" color="#000000" y="162"/>
+        <rect x="10" width="5" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:black;color:black" height="10" y="165"/>
+        <rect x="0" width="70" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="30" y="0"/>
+        <text x="11" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" text="Réglage sortie" color="#000000" y="7"/>
+        <text x="10" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" text="A=0 (4)-20mA" color="#000000" y="19"/>
+        <text x="10" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" text="B=0-10V" color="#000000" y="29"/>
+        <text x="5" font="MS Shell Dlg 2,9,-1,5,75,0,0,0,0,0,Gras" rotation="0" text="CARTE AO" color="#000000" y="-15"/>
+        <text x="22" font="MS Shell Dlg 2,9,-1,5,75,0,0,0,0,0,Gras" rotation="0" text="S550" color="#000000" y="-4"/>
+        <dynamic_text x="20" z="40" font="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0,Normal" Valignment="AlignTop" rotation="0" frame="false" Halignment="AlignLeft" text_width="-1" text_from="ElementInfo" uuid="{15f055ce-6793-445f-87e7-2c71c48009e0}" y="195">
+            <text>4-AO</text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal x="70" orientation="e" y="40"/>
+        <terminal x="70" orientation="e" y="60"/>
+        <terminal x="70" orientation="e" y="120"/>
+        <terminal x="70" orientation="e" y="100"/>
+        <terminal x="70" orientation="e" y="80"/>
+        <terminal x="70" orientation="e" y="160"/>
+        <terminal x="70" orientation="e" y="180"/>
+        <terminal x="70" orientation="e" y="140"/>
     </description>
 </definition>
