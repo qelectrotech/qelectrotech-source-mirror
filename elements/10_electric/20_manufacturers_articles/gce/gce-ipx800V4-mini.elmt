@@ -1,0 +1,103 @@
+<definition orientation="dyyy" hotspot_y="6" type="element" link_type="terminal" width="200" height="170" version="0.61" hotspot_x="80">
+    <uuid uuid="{62456a53-77e8-4f59-be65-f53062860b6d}"/>
+    <names>
+        <name lang="fr">Nom du nouvel élément</name>
+    </names>
+    <informations></informations>
+    <description>
+        <text y="16" text="GND" x="35" size="4"/>
+        <rect antialias="false" width="20" y="116" height="10" x="-50" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect antialias="false" width="20" y="116" height="10" x="-6" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <text y="137" text="RJ45" x="-2" size="4"/>
+        <rect antialias="false" width="20" y="116" height="10" x="28" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <text y="137" text="RJ12" x="-46" size="4"/>
+        <text y="123" color="white" text="Pwr" x="33" size="4"/>
+        <text y="123" color="white" text="Ext" x="-44" size="4"/>
+        <text y="123" color="white" text="LAN" x="-1" size="4"/>
+        <rect antialias="false" width="15" y="139" height="10" x="-3.25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" width="20" y="132" height="24" x="-6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" x1="0" antialias="false" y2="152" length2="1.5" end1="none" length1="1.5" y1="150" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" x1="0" antialias="false" y2="152" length2="1.5" end1="none" length1="1.5" y1="152" x2="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" x1="8" antialias="false" y2="150" length2="1.5" end1="none" length1="1.5" y1="152" x2="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" width="20" y="60" height="10" x="60" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <text y="114" text="DC 12V" x="29" size="4"/>
+        <text y="67" color="white" text="Sel" x="65" size="4"/>
+        <circle antialias="false" y="60" x="45" diameter="10" style="line-style:normal;line-weight:normal;filling:blue;color:blue"/>
+        <text y="16" text="Bus+" x="15" size="4"/>
+        <rect antialias="false" width="20" y="0" height="10" x="-70" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="17" text="+" x="97" size="6"/>
+        <text y="16" text="3.3V" x="-45" size="4"/>
+        <text y="26" text="12V DC Power" x="73" size="4"/>
+        <text y="18" text="-" x="78" size="8"/>
+        <text y="16" text="Bus-" x="-5" size="4"/>
+        <circle antialias="false" y="60" x="-10" diameter="10" style="line-style:normal;line-weight:normal;filling:blue;color:blue"/>
+        <text y="16" text="GND" x="-25" size="4"/>
+        <text y="16" text="GND" x="55" size="4"/>
+        <text y="50" text="IPX800 V4M" x="-50" size="12"/>
+        <rect antialias="false" width="20" y="10" height="10" x="-70" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="16" text="GND" x="-65" size="4"/>
+        <line end2="none" x1="-30" antialias="false" y2="10" length2="1.5" end1="none" length1="1.5" y1="0" x2="-30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" x1="-10" antialias="false" y2="10" length2="1.5" end1="none" length1="1.5" y1="0" x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" x1="10" antialias="false" y2="10" length2="1.5" end1="none" length1="1.5" y1="0" x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" width="20" y="0" height="10" x="70" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" width="20" y="10" height="10" x="-50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" width="20" y="10" height="10" x="-30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" width="20" y="10" height="10" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" width="20" y="10" height="10" x="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" width="20" y="10" height="10" x="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" width="20" y="10" height="10" x="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" width="20" y="0" height="10" x="90" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" width="20" y="10" height="10" x="70" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="false" y="60" x="-40" diameter="10" style="line-style:normal;line-weight:normal;filling:blue;color:blue"/>
+        <rect antialias="false" width="20" y="75" height="10" x="-46" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect antialias="false" width="20" y="75" height="10" x="-15" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <text y="82" color="white" text="Pwr" x="-41" size="4"/>
+        <text y="82" color="white" text="Link" x="-10" size="4"/>
+        <rect antialias="false" width="55" y="120" height="5" x="55" style="line-style:normal;line-weight:normal;filling:green;color:green"/>
+        <rect antialias="false" width="45" y="75" height="10" x="35" style="line-style:normal;line-weight:normal;filling:gray;color:gray"/>
+        <text y="81" text="RESET" x="50" size="4"/>
+        <rect antialias="false" width="15" y="139" height="10" x="-47.25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" width="5" y="49" height="100" x="-70" style="line-style:normal;line-weight:normal;filling:green;color:green"/>
+        <text y="118" text="GCE Electronics" x="54" size="6"/>
+        <line end2="none" x1="115" antialias="false" y2="10" length2="1.5" end1="none" length1="1.5" y1="10" x2="105" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" x1="70" antialias="false" y2="10" length2="1.5" end1="none" length1="1.5" y1="10" x2="60" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" x1="-40" antialias="false" y2="10" length2="1.5" end1="none" length1="1.5" y1="10" x2="-50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" x1="-70" antialias="false" y2="10" length2="1.5" end1="none" length1="1.5" y1="10" x2="-74" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" x1="-75" antialias="false" y2="156" length2="1.5" end1="none" length1="1.5" y1="10" x2="-75" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input y="100" tagg="none" rotate="true" text="IP:...:...:...:...:.." x="-64" size="6"/>
+        <rect antialias="false" width="80" y="0" height="10" x="-50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" width="20" y="0" height="10" x="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" x1="95" antialias="false" y2="10" length2="1.5" end1="none" length1="1.5" y1="10" x2="100" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" x1="50" antialias="false" y2="10" length2="1.5" end1="none" length1="1.5" y1="10" x2="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" x1="70" antialias="false" y2="10" length2="1.5" end1="none" length1="1.5" y1="10" x2="80" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" width="20" y="10" height="10" x="90" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" width="20" y="0" height="10" x="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" width="20" y="132" height="24" x="-50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" x1="-44" antialias="false" y2="152" length2="1.5" end1="none" length1="1.5" y1="150" x2="-44" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" x1="-44" antialias="false" y2="152" length2="1.5" end1="none" length1="1.5" y1="152" x2="-36" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" x1="-36" antialias="false" y2="150" length2="1.5" end1="none" length1="1.5" y1="152" x2="-36" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" width="2" y="152" height="2" x="-4" style="line-style:normal;line-weight:normal;filling:yellow;color:yellow"/>
+        <rect antialias="false" width="2" y="152" height="2" x="10" style="line-style:normal;line-weight:normal;filling:green;color:green"/>
+        <line end2="none" x1="-75" antialias="false" y2="156" length2="1.5" end1="none" length1="1.5" y1="156" x2="-50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" x1="-30" antialias="false" y2="156" length2="1.5" end1="none" length1="1.5" y1="156" x2="-6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="false" y="136" x="66" diameter="8" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <line end2="none" x1="23" antialias="false" y2="156" length2="1.5" end1="none" length1="1.5" y1="156" x2="115" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="false" y="132" x="62" diameter="16" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" x1="115" antialias="false" y2="155" length2="1.5" end1="none" length1="1.5" y1="10" x2="115" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end2="none" x1="22" antialias="false" y2="156" length2="1.5" end1="none" length1="1.5" y1="156" x2="14" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect antialias="false" width="5" y="25" height="25" x="-70" style="line-style:normal;line-weight:normal;filling:green;color:green"/>
+        <circle antialias="false" y="138" x="68" diameter="4" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect antialias="false" width="40" y="20" height="10" x="70" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="n" y="0" x="100"/>
+        <terminal orientation="n" y="0" x="0"/>
+        <terminal orientation="n" y="0" x="-20"/>
+        <terminal orientation="n" y="0" x="-60"/>
+        <terminal orientation="n" y="0" x="-40"/>
+        <terminal orientation="n" y="0" x="80"/>
+        <terminal orientation="n" y="0" x="20"/>
+        <terminal orientation="n" y="0" x="40"/>
+        <terminal orientation="n" y="0" x="60"/>
+        <terminal orientation="s" y="156" x="-40"/>
+        <terminal orientation="s" y="156" x="4"/>
+    </description>
+</definition>
