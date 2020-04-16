@@ -1,0 +1,26 @@
+<definition version="0.80" link_type="simple" hotspot_x="3" hotspot_y="55" type="element" orientation="dyyy" width="20" height="110">
+    <uuid uuid="{93e43afb-d097-42c1-96c5-58f45d3e0b88}"/>
+    <names>
+        <name lang="fr">037515 - Viking3 - Préhenseur fusible Gris</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="description">Préhenseur cartouche fusible 5x20 pour bloc de jonction sectionnable à vis ou ressort Viking 3</elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="designation">037515</elementInformation>
+    </elementInformations>
+    <informations>Arnaud VALMARY</informations>
+    <description>
+        <rect ry="0" x="-1.80411e-15" rx="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" width="13" height="100" y="-50"/>
+        <circle x="3.5" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" diameter="6" y="-13"/>
+        <circle x="3.5" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" diameter="6" y="7"/>
+        <rect ry="0" x="4.5" rx="0" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" width="4" height="8" y="-4"/>
+        <terminal x="6.5" orientation="s" y="10"/>
+        <terminal x="6.5" orientation="n" y="-10"/>
+    </description>
+</definition>

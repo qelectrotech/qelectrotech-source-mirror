@@ -1,0 +1,27 @@
+<definition version="0.80" link_type="simple" hotspot_x="3" hotspot_y="8" type="element" orientation="dyyy" width="40" height="130">
+    <uuid uuid="{2683f5cf-13d1-467e-82cb-c084e6e61a44}"/>
+    <names>
+        <name lang="fr">037176 - Viking3 - 1 jonction 1 entrée 1 sortie 35mm² pas 15mm Nu</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="description">Bloc de jonction pour conducteur de protection à vis Viking3 avec 1 jonction bloc nu section 35mm² - pas 15mm</elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="designation">037176</elementInformation>
+    </elementInformations>
+    <informations>Arnaud VALMARY</informations>
+    <description>
+        <rect ry="0" x="0" rx="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" width="34" height="113" y="0"/>
+        <circle x="14" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" diameter="6" y="77"/>
+        <polygon y3="78.3" x1="14.8" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" x2="18.8" y2="77.8" x4="15.3" y4="82.3" y1="81.8" x3="19.3"/>
+        <circle x="14" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" diameter="6" y="28"/>
+        <polygon y3="29.3" x1="14.8" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" x2="18.8" y2="28.8" x4="15.3" y4="33.3" y1="32.8" x3="19.3"/>
+        <terminal x="17" orientation="s" y="113"/>
+        <terminal x="17" orientation="n" y="0"/>
+    </description>
+</definition>

@@ -1,0 +1,31 @@
+<definition version="0.80" link_type="simple" hotspot_x="3" hotspot_y="6" type="element" orientation="dyyy" width="20" height="130">
+    <uuid uuid="{0f9ec706-7f6b-4e4b-9f46-b52fb1016d65}"/>
+    <names>
+        <name lang="fr">037171 - Viking3 - 1 jonction 1 entrée 1 sortie 4mm² pas 6mm Vert/jaune</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="description">Bloc de jonction pour conducteur de protection à vis Viking3 avec 1 jonction 1 entrée 1 sortie section 4mm² - pas 6mm</elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="designation">037171</elementInformation>
+    </elementInformations>
+    <informations>Arnaud VALMARY</informations>
+    <description>
+        <rect ry="0" x="0" rx="0" style="line-style:normal;line-weight:thin;filling:yellow;color:black" antialias="false" width="13" height="117" y="0"/>
+        <rect ry="0" x="0" rx="0" style="line-style:normal;line-weight:thin;filling:HTMLGreenLimeGreen;color:black" antialias="false" width="13" height="103" y="7"/>
+        <rect ry="0" x="0" rx="0" style="line-style:normal;line-weight:thin;filling:yellow;color:black" antialias="false" width="13" height="13" y="52"/>
+        <circle x="4.5" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" diameter="4" y="54"/>
+        <circle x="4.5" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" diameter="4" y="59"/>
+        <circle x="3.5" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" diameter="6" y="67"/>
+        <polygon y3="68.3" x1="4.3" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" x2="8.3" y2="67.8" x4="4.8" y4="72.3" y1="71.8" x3="8.8"/>
+        <circle x="3.5" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" diameter="6" y="44"/>
+        <polygon y3="45.3" x1="4.3" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" x2="8.3" y2="44.8" x4="4.8" y4="49.3" y1="48.8" x3="8.8"/>
+        <terminal x="6.5" orientation="s" y="117"/>
+        <terminal x="6.5" orientation="n" y="0"/>
+    </description>
+</definition>

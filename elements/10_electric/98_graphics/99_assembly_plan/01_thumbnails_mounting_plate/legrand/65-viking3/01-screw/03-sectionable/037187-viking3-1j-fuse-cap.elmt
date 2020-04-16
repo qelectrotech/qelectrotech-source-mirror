@@ -1,0 +1,30 @@
+<definition version="0.80" link_type="simple" hotspot_x="3" hotspot_y="6" type="element" orientation="dyyy" width="20" height="160">
+    <uuid uuid="{2ff7f572-39c9-4c05-a8be-94c7c8fd3be0}"/>
+    <names>
+        <name lang="fr">037187 - Viking3 - 1 jonction Fusible Bouchon 2,5mm² pas 6mm</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="description">Bloc de jonction sectionnable à vis Viking3 avec 1 jonction pour cartouche 5x20 avec bouchon vissé</elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="designation">037187</elementInformation>
+    </elementInformations>
+    <informations>Arnaud VALMARY</informations>
+    <description>
+        <rect ry="0" x="0" rx="0" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" width="13" height="147" y="0"/>
+        <rect ry="0" x="0" rx="0" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" width="13" height="120" y="10"/>
+        <circle x="3.5" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" diameter="6" y="134"/>
+        <polygon y3="135.3" x1="4.3" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" x2="8.3" y2="134.8" x4="4.8" y4="139.3" y1="138.8" x3="8.8"/>
+        <circle x="3.5" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" diameter="6" y="53"/>
+        <circle x="1.5" style="line-style:normal;line-weight:thin;filling:black;color:black" antialias="false" diameter="10" y="71"/>
+        <circle x="3.5" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" diameter="6" y="17"/>
+        <polygon y3="18.3" x1="4.3" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" x2="8.3" y2="17.8" x4="4.8" y4="22.3" y1="21.8" x3="8.8"/>
+        <terminal x="6.5" orientation="s" y="147"/>
+        <terminal x="6.5" orientation="n" y="0"/>
+    </description>
+</definition>

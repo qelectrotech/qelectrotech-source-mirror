@@ -1,0 +1,24 @@
+<definition version="0.80" link_type="simple" hotspot_x="3" hotspot_y="25" type="element" orientation="dyyy" width="20" height="50">
+    <uuid uuid="{bc9e1aa7-e2dd-4c0b-871c-54c3dcd1050b}"/>
+    <names>
+        <name lang="fr">037524 - Viking3 - Témoin 12 à 24V~ ou =</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="description">Témoin de fusion pour bloc jonction sectionnable Viking3 à cartouche fusible 5x20 préhenseur 12V~ à 24V~ et 12V= à 24V=</elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="designation">037524</elementInformation>
+    </elementInformations>
+    <informations>Arnaud VALMARY</informations>
+    <description>
+        <rect ry="0" x="1" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="11" height="40" y="-20"/>
+        <rect ry="5" x="3.4" rx="2" style="line-style:normal;line-weight:thin;filling:cyan;color:black" antialias="false" width="6" height="20" y="-10"/>
+        <terminal x="6.5" orientation="s" y="10"/>
+        <terminal x="6.5" orientation="n" y="-10"/>
+    </description>
+</definition>
