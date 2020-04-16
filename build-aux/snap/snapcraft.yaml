@@ -103,3 +103,14 @@ parts:
       SED_CMD="sed -i -E s|^Icon=(.*)|Icon=\${SNAP}/usr/local/share/icons/hicolor/128x128/apps/\1.png|g" 
       $SED_CMD usr/local/share/applications/qelectrotech.desktop
 
+  cleanup:
+    after: [qelectrotech, dxf-to-qet, qet-tb-generator]
+    plugin: nil
+    build-snaps: [core18, kde-frameworks-5-core18]
+    override-prime: |
+      # Remove all files from snap that are already included in the base snap or in
+      # any connected content snaps
+      set -eux
+      for snap in "core18" "kde-frameworks-5-core18"; do  # List all content-snaps and base snaps you're using here
+        cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" \;
+      done
