@@ -13,9 +13,9 @@ confinement: strict
 
 layout:
   /usr/local/share/qelectrotech:
-    bind: $SNAP/usr/local/share/qelectrotech
+    symlink: $SNAP/usr/local/share/qelectrotech
   /usr/share/libdrm/amdgpu.ids:
-    bind-file: $SNAP/kf5/usr/share/libdrm/amdgpu.ids
+    symlink: $SNAP/kf5/usr/share/libdrm/amdgpu.ids
 
 apps:
   qelectrotech:
