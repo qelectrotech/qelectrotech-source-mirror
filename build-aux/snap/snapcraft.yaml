@@ -59,48 +59,47 @@ parts:
       - python3-tk
       - libtk8.6
 
-  dxf-to-qet:
-    after: [desktop-qt5]
-    plugin: qmake
-    source: https://github.com/qelectrotech/DXFtoQET.git
+  kde-sdk-setup:
+    plugin: nil
+    build-snaps:
+      - kde-frameworks-5-core18-sdk
     build-packages:
-      - qtbase5-dev
+      - g++
+      - mesa-common-dev
+      - libglvnd-dev
+      - rsync
     override-build: |
-      snapcraftctl build
+      rsync -a --ignore-existing /snap/kde-frameworks-5-core18-sdk/current/ /
+      
+  dxf-to-qet:
+    after: [kde-sdk-setup]
+    plugin: nil
+    source: https://github.com/qelectrotech/DXFtoQET.git
+    override-build: |
+      qmake "$SNAPCRAFT_PART_SRC/DXFtoQET.pro"
+      make -j$(nproc)
       mkdir -p "$SNAPCRAFT_PART_INSTALL/bin"
       cp DXFtoQET "$SNAPCRAFT_PART_INSTALL/bin/"
 
   qelectrotech:
-    after: [desktop-qt5]
-    plugin: qmake
+    after: [kde-sdk-setup]
+    plugin: nil
     source: .
+    build-packages:
+      - git
     override-pull: |
       snapcraftctl pull
       snap_version=$(git describe --dirty)
       modified_displayed_version=$snap_version".snap"
       sed -i -E "s|const QString displayedVersion =.*|const QString displayedVersion =\"$modified_displayed_version\";|" sources/qet.h
       snapcraftctl set-version "$snap_version"
+    override-build: |
+      qmake "$SNAPCRAFT_PART_SRC/qelectrotech.pro"
+      make -j$(nproc)
+      make install INSTALL_ROOT="$SNAPCRAFT_PART_INSTALL"
     override-stage: |
       snapcraftctl stage
       # patch desktop file with correct icon path
       SED_CMD="sed -i -E s|^Icon=(.*)|Icon=\${SNAP}/usr/local/share/icons/hicolor/128x128/apps/\1.png|g" 
       $SED_CMD usr/local/share/applications/qelectrotech.desktop
-    build-packages: 
-      - g++
-      - qttools5-dev-tools
-      - libqt5svg5-dev
-      - libkf5widgetsaddons-dev
-      - libkf5coreaddons-dev
-      - git
-    stage-packages: 
-      - qtwayland5
-      - qt5-gtk-platformtheme
-      - libkf5coreaddons5
-      - libkf5widgetsaddons5
-      - libqt5concurrent5
-      - libqt5printsupport5
-      - libqt5sql5
-      - libqt5xml5
-      - libfam0
-      - libqt5sql5-sqlite
-      - libdrm2
+
