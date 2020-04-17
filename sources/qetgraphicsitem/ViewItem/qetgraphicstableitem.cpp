@@ -222,13 +222,15 @@ void QetGraphicsTableItem::setMargins(const QMargins &margins)
  */
 void QetGraphicsTableItem::setSize(const QSize &size)
 {
-	qDebug() << "ici";
 	auto new_size = size;
 	if (new_size.width() < minimumSize().width())  {
 		new_size.setWidth(minimumSize().width());
 	}
 	if (new_size.height() < minimumSize().height()) {
 		new_size.setHeight(minimumSize().height());
+	}
+	while (new_size.width()%10) {
+		new_size.rwidth()++;
 	}
 
 	prepareGeometryChange();
@@ -267,9 +269,13 @@ QSize QetGraphicsTableItem::minimumSize() const
 		row_count = std::min(row_count, m_number_of_displayed_row);
 
 
-
-	QSize s(std::accumulate(m_minimum_column_width.begin(), m_minimum_column_width.end(), 0), m_minimum_row_height*row_count);
-	return s;
+		//m_minimum_column_width already take in count the minimum size of header
+	QSize size_(std::accumulate(m_minimum_column_width.begin(), m_minimum_column_width.end(), 0), m_minimum_row_height*row_count);
+		//make sure that the width is a multiple of 10
+	while (size_.width()%10) {
+		size_.rwidth()++;
+	}
+	return size_;
 }
 
 /**
@@ -692,10 +698,35 @@ void QetGraphicsTableItem::adjustColumnsWidth()
 	auto a = m_current_size.width() - minimumSize().width();
 	auto b = a/std::max(1,m_model->columnCount()); //avoid divide by 0
 
-	for(auto i= 0 ; i<m_model->columnCount() ; ++i) {
-		m_header_item->resizeSection(i, std::max(m_minimum_column_width.at(std::min(m_minimum_column_width.size()-1, i)),
-												 m_header_item->minimumSectionWidth().at(std::min(m_header_item->minimumSectionWidth().size()-1, i))) + b);
+	disconnect(m_header_item, &QetGraphicsHeaderItem::sectionResized, this, &QetGraphicsTableItem::headerSectionResized); //Avoid to resize
+
+	int sum_=0;
+	for(auto i= 0 ; i<m_model->columnCount() ; ++i)
+	{
+		auto at_a = std::min(m_minimum_column_width.size()-1, i);               //In case of the I is higher than m_minimum_column_width or
+		auto at_b = std::min(m_header_item->minimumSectionWidth().size()-1, i); //m_header_item->minimumSectionWidth().size()
+		m_header_item->resizeSection(i, std::max(m_minimum_column_width.at(at_a),
+												 m_header_item->minimumSectionWidth().at(at_b))+b);
+		sum_+= m_header_item->sectionSize(i);
 	}
+
+
+		//The sum of the header sections width can be less than width of @m_current_size we adjust it in order to have the same width
+	if (m_model->columnCount() > 0 &&
+		sum_ < m_current_size.width())
+	{
+			//add the quotient of the division to each columns
+		auto result = (m_current_size.width()-sum_)/m_model->columnCount();
+		for(auto i= 0 ; i<m_model->columnCount() ; ++i) {
+			m_header_item->resizeSection(i, m_header_item->sectionSize(i) + result);
+		}
+
+			//add the rest of the division to the last column
+		auto last_section = m_model->columnCount()-1;
+		m_header_item->resizeSection(last_section, m_header_item->sectionSize(last_section) + ((m_current_size.width()-sum_)%m_model->columnCount()));
+	}
+	connect(m_header_item, &QetGraphicsHeaderItem::sectionResized, this, &QetGraphicsTableItem::headerSectionResized);
+	update();
 }
 
 void QetGraphicsTableItem::dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QVector<int> &roles)
@@ -704,10 +735,8 @@ void QetGraphicsTableItem::dataChanged(const QModelIndex &topLeft, const QModelI
 	Q_UNUSED(bottomRight)
 	Q_UNUSED(roles)
 
-	auto size_ = size();
 	setUpColumnAndRowMinimumSize();
 	adjustSize();
-	setSize(size_);
 }
 
 /**
@@ -727,7 +756,7 @@ void QetGraphicsTableItem::headerSectionResized()
 
 /**
  * @brief QetGraphicsTableItem::adjustSize
- * If needed, this function resize the current height and width of table
+ * If needed, this function resize the current height and width of table and/or the size of columns.
  * according to there minimum
  */
 void QetGraphicsTableItem::adjustSize()
@@ -746,13 +775,15 @@ void QetGraphicsTableItem::adjustSize()
 		update();
 	}
 
-	if (m_current_size.width() < minimumSize().width())
+	if (m_current_size.width() < minimumSize().width())		//The current width is shorter than the the minimum width, adjust it
 	{
 		prepareGeometryChange();
 		m_current_size.setWidth(minimumSize().width());
 		adjustColumnsWidth();
 		setUpBoundingRect();
-		update();
+	}
+	else { //The current width is ok, but we need to adjust all columns width
+		adjustColumnsWidth();
 	}
 }
 
