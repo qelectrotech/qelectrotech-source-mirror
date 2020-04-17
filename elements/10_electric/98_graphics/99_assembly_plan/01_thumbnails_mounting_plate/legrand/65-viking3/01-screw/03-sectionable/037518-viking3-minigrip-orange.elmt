@@ -1,0 +1,21 @@
+<definition version="0.80" link_type="simple" hotspot_x="3" hotspot_y="55" type="element" orientation="dyyy" width="20" height="110">
+    <uuid uuid="{9acdc0f4-841d-4efa-8587-ad28277ae5bc}"/>
+    <names>
+        <name lang="fr">037518 - Viking3 - Mini préhenseur Orange</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="description">Mini préhenseur pour bloc de jonction sectionnable à vis ou ressort Viking 3</elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="designation">037518</elementInformation>
+    </elementInformations>
+    <informations>Arnaud VALMARY</informations>
+    <description>
+        <rect ry="0" x="2.77556e-17" rx="0" style="line-style:normal;line-weight:thin;filling:orange;color:black" antialias="false" width="13" height="100" y="-50"/>
+    </description>
+</definition>

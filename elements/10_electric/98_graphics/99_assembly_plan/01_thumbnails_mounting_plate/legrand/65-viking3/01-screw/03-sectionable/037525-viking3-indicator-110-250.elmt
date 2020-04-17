@@ -1,0 +1,24 @@
+<definition version="0.80" link_type="simple" hotspot_x="3" hotspot_y="25" type="element" orientation="dyyy" width="20" height="50">
+    <uuid uuid="{6354cc72-3bb9-412d-badd-633da7f69bdc}"/>
+    <names>
+        <name lang="fr">037525 - Viking3 - Témoin 110 à 250V~</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="description">Témoin de fusion pour bloc de jonction sectionnable Viking3 à cartouche fusible 5x20Avec préhenseur 110V~ à 250V~</elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="designation">037525</elementInformation>
+    </elementInformations>
+    <informations>Arnaud VALMARY</informations>
+    <description>
+        <rect ry="0" x="1" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="11" height="40" y="-20"/>
+        <rect ry="5" x="3.4" rx="2" style="line-style:normal;line-weight:thin;filling:cyan;color:black" antialias="false" width="6" height="20" y="-10"/>
+        <terminal x="6.5" orientation="n" y="-10"/>
+        <terminal x="6.5" orientation="s" y="10"/>
+    </description>
+</definition>

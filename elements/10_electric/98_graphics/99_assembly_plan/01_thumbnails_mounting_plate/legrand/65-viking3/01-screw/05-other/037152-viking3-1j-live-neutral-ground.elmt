@@ -1,0 +1,43 @@
+<definition version="0.80" link_type="simple" hotspot_x="4" hotspot_y="4" type="element" orientation="dyyy" width="20" height="200">
+    <uuid uuid="{5c04ea33-4504-4216-863e-17d98629f0fa}"/>
+    <names>
+        <name lang="fr">037152 - Viking3 - 3 jonctions 3 étages 2,5mm² pas 5mm Gris</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="description">Bloc de jonction phase terre neutre à vis Viking3 avec 3 jonctions 3 étages section 2,5mm² - pas 5mm - gris</elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="designation">037152</elementInformation>
+    </elementInformations>
+    <informations>Arnaud VALMARY</informations>
+    <description>
+        <rect ry="0" x="0" rx="0" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" width="11" height="190" y="0"/>
+        <rect ry="0" x="0" rx="0" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" width="11" height="173" y="7"/>
+        <rect ry="0" x="0" rx="0" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" width="11" height="13" y="90"/>
+        <circle x="3.5" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" diameter="4" y="92"/>
+        <circle x="3.5" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" diameter="4" y="97"/>
+        <circle x="2.5" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" diameter="6" y="105"/>
+        <polygon y3="106.3" x1="3.3" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" x2="7.3" y2="105.8" x4="3.8" y4="110.3" y1="109.8" x3="7.8"/>
+        <circle x="2.5" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" diameter="6" y="82"/>
+        <polygon y3="83.3" x1="3.3" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" x2="7.3" y2="82.8" x4="3.8" y4="87.3" y1="86.8" x3="7.8"/>
+        <circle x="2.5" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" diameter="6" y="139"/>
+        <polygon y3="140.3" x1="3.3" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" x2="7.3" y2="139.8" x4="3.8" y4="144.3" y1="143.8" x3="7.8"/>
+        <circle x="2.5" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" diameter="6" y="47"/>
+        <polygon y3="48.3" x1="3.3" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" x2="7.3" y2="47.8" x4="3.8" y4="52.3" y1="51.8" x3="7.8"/>
+        <circle x="2.5" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" diameter="6" y="172"/>
+        <polygon y3="173.3" x1="3.3" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" x2="7.3" y2="172.8" x4="3.8" y4="177.3" y1="176.8" x3="7.8"/>
+        <circle x="2.5" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" diameter="6" y="13"/>
+        <polygon y3="14.3" x1="3.3" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" x2="7.3" y2="13.8" x4="3.8" y4="18.3" y1="17.8" x3="7.8"/>
+        <terminal x="5.5" orientation="s" y="151"/>
+        <terminal x="5.5" orientation="s" y="190"/>
+        <terminal x="5.5" orientation="s" y="80"/>
+        <terminal x="5.5" orientation="s" y="116.743"/>
+        <terminal x="5.5" orientation="n" y="0"/>
+        <terminal x="5.5" orientation="s" y="45"/>
+    </description>
+</definition>

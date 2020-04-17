@@ -1,49 +1,52 @@
-<definition height="60" width="30" link_type="simple" hotspot_x="15" version="0.80" orientation="dyyy" type="element" hotspot_y="29">
-    <uuid uuid="{7dfc5aea-b4f6-451d-8cbb-4d1f6170720b}"/>
+<definition type="element" width="40" hotspot_y="29" link_type="simple" hotspot_x="15" height="60" orientation="dyyy" version="0.80">
+    <uuid uuid="{49e3c33a-9829-40d2-a7a2-8c36a40eb699}"/>
     <names>
-        <name lang="pt">Lâmpada</name>
-        <name lang="it">Luce</name>
-        <name lang="cs">Světlo</name>
         <name lang="ru">Лампа</name>
-        <name lang="el">Λυχνία</name>
-        <name lang="nl">Lamp</name>
         <name lang="de">Meldeleuchte</name>
-        <name lang="en">Light</name>
-        <name lang="pl">Lampa</name>
-        <name lang="es">Lámpara</name>
-        <name lang="ar">مصباح</name>
         <name lang="fr">XB4BVB3_VERT</name>
+        <name lang="nl">Lamp</name>
+        <name lang="it">Luce</name>
+        <name lang="pl">Lampa</name>
+        <name lang="ar">مصباح</name>
+        <name lang="en">Light</name>
+        <name lang="pt">Lâmpada</name>
+        <name lang="el">Λυχνία</name>
+        <name lang="es">Lámpara</name>
+        <name lang="cs">Světlo</name>
     </names>
     <elementInformations>
-        <elementInformation name="comment" show="1"></elementInformation>
-        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
-        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
-        <elementInformation name="description" show="1">VERT</elementInformation>
+        <elementInformation name="manufacturer-reference" show="1"></elementInformation>
         <elementInformation name="manufacturer" show="1">SCHNEIDER</elementInformation>
-        <elementInformation name="designation" show="1">XB4BVB3</elementInformation>
         <elementInformation name="quantity" show="1"></elementInformation>
-        <elementInformation name="unity" show="1"></elementInformation>
         <elementInformation name="supplier" show="1"></elementInformation>
         <elementInformation name="plant" show="1"></elementInformation>
         <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">XB4BVB3</elementInformation>
+        <elementInformation name="machine-manufacturer-reference" show="1"></elementInformation>
+        <elementInformation name="description" show="1">VERT</elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
     </elementInformations>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team&#xd;&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <circle x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20" y="-10" antialias="true"/>
-        <line y1="-7.03" x1="7.03" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="7.03" length2="1.5" length1="1.5" x2="-7.03" end1="none" antialias="false"/>
-        <line y1="-7.03" x1="-7.03" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="7.03" length2="1.5" length1="1.5" x2="7.03" end1="none" antialias="false"/>
-        <line y1="-20" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-10" length2="1.5" length1="1.5" x2="0" end1="none" antialias="false"/>
-        <line y1="10" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="20" length2="1.5" length1="1.5" x2="0" end1="none" antialias="false"/>
-        <dynamic_text uuid="{28bf9c47-da03-4675-b20f-2a17fecf9392}" Halignment="AlignLeft" frame="false" x="15" Valignment="AlignTop" text_from="ElementInfo" y="-10" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="6" rotation="0" text_width="-1">
+        <circle x="-10" diameter="20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10"/>
+        <text x="10.5" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="24V" color="#000000" y="20.55"/>
+        <line end2="none" x1="7.03" y2="7.03" antialias="false" x2="-7.03" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" length2="1.5" y1="-7.03"/>
+        <line end2="none" x1="-7.03" y2="7.03" antialias="false" x2="7.03" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" length2="1.5" y1="-7.03"/>
+        <line end2="none" x1="0" y2="-10" antialias="false" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" length2="1.5" y1="-20"/>
+        <dynamic_text x="15" z="6" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" frame="false" Halignment="AlignLeft" text_width="-1" text_from="ElementInfo" uuid="{28bf9c47-da03-4675-b20f-2a17fecf9392}" y="-10">
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>
-        <dynamic_text uuid="{f97856b1-e6fa-46f0-9fcb-3cc77074f586}" Halignment="AlignLeft" frame="false" x="6" Valignment="AlignTop" text_from="ElementInfo" y="6" font="MS Shell Dlg 2,4,-1,5,50,0,0,0,0,0,Normal" z="7" rotation="0" text_width="-1">
+        <line end2="none" x1="0" y2="20" antialias="false" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" length2="1.5" y1="10"/>
+        <dynamic_text x="6" z="7" font="MS Shell Dlg 2,4,-1,5,50,0,0,0,0,0,Normal" Valignment="AlignTop" rotation="0" frame="false" Halignment="AlignLeft" text_width="-1" text_from="ElementInfo" uuid="{f97856b1-e6fa-46f0-9fcb-3cc77074f586}" y="6">
             <text>VERT</text>
             <info_name>description</info_name>
         </dynamic_text>
-        <terminal x="0" y="21" orientation="s"/>
-        <terminal x="0" y="-21" orientation="n"/>
+        <text x="1" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="X1" color="#000000" y="-12"/>
+        <text x="1" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="X2" color="#000000" y="23"/>
+        <terminal x="0" orientation="s" y="21"/>
+        <terminal x="0" orientation="n" y="-21"/>
     </description>
 </definition>

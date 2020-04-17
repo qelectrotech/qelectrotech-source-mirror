@@ -1,5 +1,15 @@
-#!/bin/bash
+#!/bin/sh
 
+# migrate .qet directory from SNAP_USER_DATA to SNAP_USER_COMMON
+from="$SNAP_USER_DATA/.qet"
+to="$SNAP_USER_COMMON/.qet"
+if [ ! -d "$to" ] && [ -d "$from" ]; then
+  echo "Migrating user data from $from to $to"
+  mkdir "$to"
+  cp -av "$from/." "$to"
+fi
+
+# link DXFtoQET so that QET finds it
 mkdir -p "$HOME/.qet"
 ln -snf "$SNAP/bin/DXFtoQET" "$HOME/.qet/DXFtoQET"
 

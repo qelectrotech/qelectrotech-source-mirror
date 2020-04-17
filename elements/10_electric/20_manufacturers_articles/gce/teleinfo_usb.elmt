@@ -1,0 +1,52 @@
+<definition type="element" width="110" hotspot_y="66" link_type="simple" hotspot_x="50" height="140" orientation="dyyy" version="0.80">
+    <uuid uuid="{097256a5-b109-432f-924a-9e6136615d2b}"/>
+    <names>
+        <name lang="fr">Téléinfo usb</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="manufacturer" show="1">GCE Electronics</elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="designation" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <text x="35" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="90" text="GCE Electronics" color="#000000" y="-30"/>
+        <circle x="12" diameter="6" antialias="false" style="line-style:normal;line-weight:normal;filling:yellow;color:yellow" y="-58"/>
+        <circle x="32" diameter="6" antialias="false" style="line-style:normal;line-weight:normal;filling:green;color:green" y="-58"/>
+        <text x="28" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="PWR" color="#000000" y="-44"/>
+        <text x="-10" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="TIC" color="#000000" y="-44"/>
+        <text x="11" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="DATA" color="#000000" y="-44"/>
+        <text x="-29" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="TIC" color="#000000" y="-44"/>
+        <text x="-35" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="90" text="Télé-information" color="#000000" y="-35"/>
+        <line end2="none" x1="-15" y2="-50" antialias="false" x2="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" length2="1.5" y1="-60"/>
+        <line end2="none" x1="5" y2="-50" antialias="false" x2="5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" length2="1.5" y1="-60"/>
+        <line end2="none" x1="25" y2="-50" antialias="false" x2="25" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" length2="1.5" y1="-60"/>
+        <line end2="none" x1="45" y2="-50" antialias="false" x2="45" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" length2="1.5" y1="-60"/>
+        <rect x="5" width="20" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-50"/>
+        <rect x="25" width="20" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-50"/>
+        <line end2="none" x1="56" y2="-50" antialias="false" x2="56" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" length2="1.5" y1="70"/>
+        <line end2="none" x1="-31" y2="-50" antialias="false" x2="-46" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" length2="1.5" y1="-50"/>
+        <line end2="none" x1="-46" y2="70" antialias="false" x2="-46" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" length2="1.5" y1="-50"/>
+        <rect x="-35" width="80" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-60"/>
+        <line end2="none" x1="55" y2="-50" antialias="false" x2="41" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" length2="1.5" y1="-50"/>
+        <line end2="none" x1="-46" y2="70" antialias="false" x2="55" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" length2="1.5" y1="70"/>
+        <rect x="-35" width="20" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-50"/>
+        <rect x="-15" width="20" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-50"/>
+        <rect x="15" width="10" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="0" y="-50"/>
+        <dynamic_text x="-15" z="24" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" frame="false" Halignment="AlignLeft" text_width="-1" text_from="ElementInfo" uuid="{d7adee68-3206-47b5-b942-63d3e4f0f24d}" y="49">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect x="-15" width="35" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20" y="50"/>
+        <rect x="48" width="4" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:green;color:green" height="101" y="-47"/>
+        <rect x="6" width="38" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:green;color:green" height="4" y="-36"/>
+        <terminal x="-5" orientation="n" y="-60"/>
+        <terminal x="-25" orientation="n" y="-60"/>
+    </description>
+</definition>

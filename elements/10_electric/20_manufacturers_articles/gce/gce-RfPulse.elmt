@@ -1,0 +1,69 @@
+<definition type="element" width="80" hotspot_y="74" link_type="terminal" hotspot_x="30" height="150" orientation="dyyy" version="0.80">
+    <uuid uuid="{464550d9-0cb5-45c0-8f16-8a8409d96296}"/>
+    <names>
+        <name lang="fr">RF pulse</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="manufacturer" show="1">GCE Electronics</elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="designation" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <arc x="-0.1744" start="0" angle="90" width="18.2289" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="8.98011" y="-3.0822"/>
+        <text x="7" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="C1" color="#000000" y="57"/>
+        <arc x="0.2813" start="90" angle="90" width="18.2289" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="17.9602" y="-3.0822"/>
+        <arc x="0.2813" start="90" angle="90" width="18.2289" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="17.9602" y="-3.9802"/>
+        <text x="-14" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="GND" color="#000000" y="57"/>
+        <arc x="0.2813" start="0" angle="90" width="18.2289" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="8.98011" y="-3.9802"/>
+        <text x="27" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="C2" color="#000000" y="57"/>
+        <arc x="-8.8331" start="270" angle="90" width="9.11444" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="8.98011" y="0.5099"/>
+        <arc x="-13.3903" start="0" angle="90" width="18.2289" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="8.98011" y="9.49"/>
+        <line end2="none" x1="17.5987" y2="2.3059" antialias="false" x2="20.3331" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" length2="1.5" y1="-0.3881"/>
+        <arc x="15.7759" start="180" angle="90" width="9.11444" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" height="0" y="3.2039"/>
+        <line end2="none" x1="9.3957" y2="-8.4702" antialias="false" x2="4.8385" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" length2="1.5" y1="-3.9802"/>
+        <text x="9" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" text="Enocean" color="#000000" y="15"/>
+        <rect x="-20" width="20" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-70"/>
+        <text x="7" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="I1" color="#000000" y="-54"/>
+        <text x="-15" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="868 Mhz" color="#000000" y="-15"/>
+        <circle x="10" diameter="10" antialias="false" style="line-style:normal;line-weight:normal;filling:blue;color:blue" y="-28"/>
+        <text x="28" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="I2" color="#000000" y="-54"/>
+        <text x="-18" font="Sans Serif,10,-1,5,50,0,0,0,0,0" rotation="0" text="RF PULSE" color="#000000" y="-30"/>
+        <rect x="-20" width="20" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-60"/>
+        <text x="-17" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="+12V" color="#000000" y="-54"/>
+        <rect x="20" width="20" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-70"/>
+        <rect x="1" width="20" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-60"/>
+        <rect x="20" width="20" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-60"/>
+        <circle x="10" diameter="10" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y="20"/>
+        <rect x="8" width="35" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:green;color:green" height="5" y="42"/>
+        <rect x="-20" width="20" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="60"/>
+        <rect x="0" width="20" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="60"/>
+        <rect x="20" width="20" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="60"/>
+        <rect x="-20" width="20" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="50"/>
+        <rect x="0" width="20" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="50"/>
+        <rect x="20" width="20" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="50"/>
+        <rect x="-25" width="5" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:green;color:green" height="100" y="-50"/>
+        <text x="-11" font="Sans Serif,6,-1,5,50,0,0,0,0,0" rotation="0" text="GCE Electronics" color="#000000" y="40"/>
+        <line end2="none" x1="40" y2="60" antialias="false" x2="45" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" length2="1.5" y1="60"/>
+        <line end2="none" x1="10" y2="-60" antialias="false" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" length2="1.5" y1="-60"/>
+        <line end2="none" x1="-15" y2="-60" antialias="false" x2="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" length2="1.5" y1="-60"/>
+        <line end2="none" x1="-25" y2="60" antialias="false" x2="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" length2="1.5" y1="-60"/>
+        <line end2="none" x1="-25" y2="60" antialias="false" x2="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" length2="1.5" y1="60"/>
+        <rect x="0" width="20" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" height="10" y="-70"/>
+        <line end2="none" x1="35" y2="-60" antialias="false" x2="45" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" length2="1.5" y1="-60"/>
+        <line end2="none" x1="45" y2="60" antialias="false" x2="45" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" length2="1.5" y1="-60"/>
+        <line end2="none" x1="45" y2="60" antialias="false" x2="40" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" length2="1.5" y1="60"/>
+        <terminal x="30" orientation="s" y="70"/>
+        <terminal x="30" orientation="n" y="-70"/>
+        <terminal x="10" orientation="n" y="-70"/>
+        <terminal x="-10" orientation="s" y="70"/>
+        <terminal x="10" orientation="s" y="70"/>
+        <terminal x="-10" orientation="n" y="-70"/>
+    </description>
+</definition>

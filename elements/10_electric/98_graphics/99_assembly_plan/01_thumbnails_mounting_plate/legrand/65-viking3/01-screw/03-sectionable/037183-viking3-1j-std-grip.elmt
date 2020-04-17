@@ -1,0 +1,32 @@
+<definition version="0.80" link_type="simple" hotspot_x="3" hotspot_y="4" type="element" orientation="dyyy" width="20" height="170">
+    <uuid uuid="{24d6ae67-738d-4475-845d-af4417a63506}"/>
+    <names>
+        <name lang="fr">037183 - Viking3 - 1 jonction Circuit standard Préhenseur 2,5mm² pas 6mm Bleu</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="description">Bloc de jonction sectionnable à vis Viking3 avec 1 jonction pour circuit standard avec préhenseur</elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="designation">037183</elementInformation>
+    </elementInformations>
+    <informations>Arnaud VALMARY</informations>
+    <description>
+        <rect ry="0" x="0" rx="0" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" width="13" height="160" y="0"/>
+        <rect ry="0" x="0" rx="0" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" width="13" height="140" y="10"/>
+        <rect ry="0" x="0" rx="0" style="line-style:normal;line-weight:thin;filling:blue;color:black" antialias="false" width="13" height="100" y="15"/>
+        <circle x="4.5" style="line-style:normal;line-weight:thin;filling:none;color:white" antialias="false" diameter="4" y="108"/>
+        <circle x="3.5" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" diameter="6" y="120"/>
+        <polygon y3="121.3" x1="4.3" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" x2="8.3" y2="120.8" x4="4.8" y4="125.3" y1="124.8" x3="8.8"/>
+        <circle x="3.5" style="line-style:normal;line-weight:thin;filling:none;color:white" antialias="false" diameter="6" y="47"/>
+        <circle x="3.5" style="line-style:normal;line-weight:thin;filling:none;color:white" antialias="false" diameter="6" y="67"/>
+        <circle x="3.5" style="line-style:dashed;line-weight:thin;filling:none;color:white" antialias="false" diameter="6" y="17"/>
+        <polygon y3="18.3" x1="4.3" style="line-style:dashed;line-weight:thin;filling:none;color:white" antialias="false" x2="8.3" y2="17.8" x4="4.8" y4="22.3" y1="21.8" x3="8.8"/>
+        <terminal x="6.5" orientation="n" y="0"/>
+        <terminal x="6.5" orientation="s" y="160"/>
+    </description>
+</definition>

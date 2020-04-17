@@ -1,49 +1,50 @@
-<definition height="60" width="30" link_type="simple" hotspot_x="15" version="0.80" orientation="dyyy" type="element" hotspot_y="29">
-    <uuid uuid="{90649f61-25dc-4a02-9ae0-0a83d3fe1b06}"/>
+<definition version="0.80" hotspot_y="29" link_type="simple" hotspot_x="15" height="60" orientation="dyyy" width="40" type="element">
+    <uuid uuid="{4c594b71-6c34-4754-9b1e-a24c10db3ef2}"/>
     <names>
+        <name lang="ru">Лампа</name>
+        <name lang="en">Light</name>
+        <name lang="ar">مصباح</name>
+        <name lang="nl">Lamp</name>
+        <name lang="pl">Lampa</name>
+        <name lang="fr">XB4BVB6_BLEU</name>
         <name lang="pt">Lâmpada</name>
+        <name lang="el">Λυχνία</name>
+        <name lang="es">Lámpara</name>
         <name lang="it">Luce</name>
         <name lang="cs">Světlo</name>
-        <name lang="ru">Лампа</name>
-        <name lang="el">Λυχνία</name>
-        <name lang="nl">Lamp</name>
         <name lang="de">Meldeleuchte</name>
-        <name lang="en">Light</name>
-        <name lang="pl">Lampa</name>
-        <name lang="es">Lámpara</name>
-        <name lang="ar">مصباح</name>
-        <name lang="fr">XB4BVB6_BLEU</name>
     </names>
     <elementInformations>
-        <elementInformation name="comment" show="1"></elementInformation>
-        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
-        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
-        <elementInformation name="description" show="1">BLEU</elementInformation>
-        <elementInformation name="manufacturer" show="1">SCHNEIDER</elementInformation>
-        <elementInformation name="designation" show="1">XB4BVB6</elementInformation>
-        <elementInformation name="quantity" show="1"></elementInformation>
-        <elementInformation name="unity" show="1"></elementInformation>
-        <elementInformation name="supplier" show="1"></elementInformation>
-        <elementInformation name="plant" show="1"></elementInformation>
-        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer">SCHNEIDER</elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="description">BLEU</elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="designation">XB4BVB6</elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
     </elementInformations>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team&#xd;&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <circle x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20" y="-10" antialias="true"/>
-        <line y1="-7.03" x1="7.03" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="7.03" length2="1.5" length1="1.5" x2="-7.03" end1="none" antialias="false"/>
-        <line y1="-7.03" x1="-7.03" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="7.03" length2="1.5" length1="1.5" x2="7.03" end1="none" antialias="false"/>
-        <line y1="-20" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-10" length2="1.5" length1="1.5" x2="0" end1="none" antialias="false"/>
-        <line y1="10" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="20" length2="1.5" length1="1.5" x2="0" end1="none" antialias="false"/>
-        <dynamic_text uuid="{28bf9c47-da03-4675-b20f-2a17fecf9392}" Halignment="AlignLeft" frame="false" x="15" Valignment="AlignTop" text_from="ElementInfo" y="-10" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="6" rotation="0" text_width="-1">
+        <circle x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10" antialias="true" diameter="20"/>
+        <text x="10" color="#000000" y="20" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="24V"/>
+        <line x1="7.03" y1="-7.03" end1="none" length1="1.5" x2="-7.03" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="7.03" length2="1.5" antialias="false"/>
+        <line x1="-7.03" y1="-7.03" end1="none" length1="1.5" x2="7.03" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="7.03" length2="1.5" antialias="false"/>
+        <line x1="0" y1="-20" end1="none" length1="1.5" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="-10" length2="1.5" antialias="false"/>
+        <line x1="0" y1="10" end1="none" length1="1.5" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y2="20" length2="1.5" antialias="false"/>
+        <dynamic_text x="15" text_from="ElementInfo" z="6" text_width="-1" y="-10" Halignment="AlignLeft" uuid="{28bf9c47-da03-4675-b20f-2a17fecf9392}" Valignment="AlignTop" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false">
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>
-        <dynamic_text uuid="{991a6341-0181-432d-bfe4-c3640b0adad5}" Halignment="AlignLeft" frame="false" x="6" Valignment="AlignTop" text_from="ElementInfo" y="6" font="MS Shell Dlg 2,4,-1,5,50,0,0,0,0,0,Normal" z="7" rotation="0" text_width="-1">
+        <dynamic_text x="6" text_from="ElementInfo" z="7" text_width="-1" y="6" Halignment="AlignLeft" uuid="{991a6341-0181-432d-bfe4-c3640b0adad5}" Valignment="AlignTop" rotation="0" font="MS Shell Dlg 2,4,-1,5,50,0,0,0,0,0,Normal" frame="false">
             <text>BLEU</text>
             <info_name>description</info_name>
         </dynamic_text>
-        <terminal x="0" y="21" orientation="s"/>
-        <terminal x="0" y="-21" orientation="n"/>
+        <terminal x="0" orientation="s" y="21"/>
+        <terminal x="0" orientation="n" y="-21"/>
     </description>
 </definition>

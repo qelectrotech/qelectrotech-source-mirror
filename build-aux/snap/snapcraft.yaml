@@ -13,47 +13,35 @@ confinement: strict
 
 layout:
   /usr/local/share/qelectrotech:
-    bind: $SNAP/usr/local/share/qelectrotech
+    symlink: $SNAP/usr/local/share/qelectrotech
   /usr/share/libdrm/amdgpu.ids:
-    bind-file: $SNAP/usr/share/libdrm/amdgpu.ids
-
-plugs:
-  gtk-3-themes:
-    interface: content
-    target: $SNAP/data-dir/themes
-    default-provider: gtk-common-themes
-  icon-themes:
-    interface: content
-    target: $SNAP/data-dir/icons
-    default-provider: gtk-common-themes
-  sound-themes:
-    interface: content
-    target: $SNAP/data-dir/sounds
-    default-provider: gtk-common-themes
+    symlink: $SNAP/kf5/usr/share/libdrm/amdgpu.ids
 
 apps:
   qelectrotech:
-    adapter: full
     command: usr/local/bin/qelectrotech
     command-chain:
-      - bin/desktop-launch 
       - bin/qelectrotech-launch
     desktop: usr/local/share/applications/qelectrotech.desktop
-    plugs: &plugs [opengl, x11, unity7, wayland, desktop, desktop-legacy, home, removable-media, gsettings, network, cups-control]
+    extensions: [kde-neon]
+    plugs: &plugs [opengl, unity7, home, removable-media, gsettings, network, cups-control]
     environment: &env
-        __EGL_VENDOR_LIBRARY_DIRS: $SNAP/usr/share/glvnd/egl_vendor.d
-        QT_QPA_PLATFORMTHEME: gtk3
-        QT_AUTO_SCREEN_SCALE_FACTOR: 1
-        DISABLE_WAYLAND: 1
-        TCL_LIBRARY: $SNAP/usr/share/tcltk/tcl8.6
+      __EGL_VENDOR_LIBRARY_DIRS: $SNAP/kf5/usr/share/glvnd/egl_vendor.d:$SNAP/usr/share/glvnd/egl_vendor.d
+      TCL_LIBRARY: $SNAP/usr/share/tcltk/tcl8.6
+      QT_QPA_PLATFORMTHEME: gtk3
+      QT_AUTO_SCREEN_SCALE_FACTOR: 1
+      HOME: $SNAP_USER_COMMON
+      PYTHONPATH: $SNAP:$SNAP/lib/python3.6/site-packages:$SNAP/usr/lib/python3.6:$SNAP/usr/lib/python3.6/lib-dynload
 
   qet-tb-generator:
-    command: desktop-launch $SNAP/bin/qet_tb_generator
+    command: bin/qelectrotech-launch $SNAP/bin/qet_tb_generator
+    extensions: [kde-neon]
     plugs: *plugs
     environment: *env
-
+      
   dxf-to-qet:
-    command: desktop-launch $SNAP/bin/DXFtoQET
+    command: bin/DXFtoQET
+    extensions: [kde-neon]
     plugs: *plugs
     environment: *env
 
@@ -64,34 +52,7 @@ parts:
     organize:
       '*': bin/
 
-  desktop-qt5:
-    source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
-    source-subdir: qt
-    plugin: make
-    make-parameters: ["FLAVOR=qt5"]
-    build-packages:
-      - build-essential
-      - qtbase5-dev
-      - dpkg-dev
-    stage-packages:
-      - libxkbcommon0
-      - ttf-ubuntu-font-family
-      - dmz-cursor-theme
-      - light-themes
-      - adwaita-icon-theme
-      - gnome-themes-standard
-      - shared-mime-info
-      - libqt5gui5
-      - libgdk-pixbuf2.0-0
-      - libqt5svg5 # for loading icon themes which are svg
-      - try: [appmenu-qt5] # not available on core18
-      - locales-all 
-      - xdg-user-dirs
-      - fcitx-frontend-qt5
-      - cups-bsd # for lpr used for printing in general (needs cups-control)
-  
   qet-tb-generator:
-    after: [desktop-qt5]
     plugin: python
     python-version: python3
     source: https://github.com/qelectrotech/qet_tb_generator.git
@@ -100,48 +61,58 @@ parts:
       - python3-tk
       - libtk8.6
 
-  dxf-to-qet:
-    after: [desktop-qt5]
-    plugin: qmake
-    source: https://github.com/qelectrotech/DXFtoQET.git
+  kde-sdk-setup:
+    plugin: nil
+    build-snaps:
+      - kde-frameworks-5-core18-sdk
     build-packages:
-      - qtbase5-dev
+      - g++
+      - mesa-common-dev
+      - libglvnd-dev
+      - rsync
     override-build: |
-      snapcraftctl build
+      rsync -a --ignore-existing /snap/kde-frameworks-5-core18-sdk/current/ /
+      
+  dxf-to-qet:
+    after: [kde-sdk-setup]
+    plugin: nil
+    source: https://github.com/qelectrotech/DXFtoQET.git
+    override-build: |
+      qmake "$SNAPCRAFT_PART_SRC/DXFtoQET.pro"
+      make -j$(nproc)
       mkdir -p "$SNAPCRAFT_PART_INSTALL/bin"
       cp DXFtoQET "$SNAPCRAFT_PART_INSTALL/bin/"
 
   qelectrotech:
-    after: [desktop-qt5]
-    plugin: qmake
+    after: [kde-sdk-setup]
+    plugin: nil
     source: .
+    build-packages:
+      - git
     override-pull: |
       snapcraftctl pull
       snap_version=$(git describe --dirty)
       modified_displayed_version=$snap_version".snap"
       sed -i -E "s|const QString displayedVersion =.*|const QString displayedVersion =\"$modified_displayed_version\";|" sources/qet.h
       snapcraftctl set-version "$snap_version"
+    override-build: |
+      qmake "$SNAPCRAFT_PART_SRC/qelectrotech.pro"
+      make -j$(nproc)
+      make install INSTALL_ROOT="$SNAPCRAFT_PART_INSTALL"
     override-stage: |
       snapcraftctl stage
       # patch desktop file with correct icon path
       SED_CMD="sed -i -E s|^Icon=(.*)|Icon=\${SNAP}/usr/local/share/icons/hicolor/128x128/apps/\1.png|g" 
       $SED_CMD usr/local/share/applications/qelectrotech.desktop
-    build-packages: 
-      - g++
-      - qttools5-dev-tools
-      - libqt5svg5-dev
-      - libkf5widgetsaddons-dev
-      - libkf5coreaddons-dev
-      - git
-    stage-packages: 
-      - qtwayland5
-      - qt5-gtk-platformtheme
-      - libkf5coreaddons5
-      - libkf5widgetsaddons5
-      - libqt5concurrent5
-      - libqt5printsupport5
-      - libqt5sql5
-      - libqt5xml5
-      - libfam0
-      - libqt5sql5-sqlite
-      - libdrm2
+
+  cleanup:
+    after: [qelectrotech, dxf-to-qet, qet-tb-generator]
+    plugin: nil
+    build-snaps: [core18, kde-frameworks-5-core18]
+    override-prime: |
+      # Remove all files from snap that are already included in the base snap or in
+      # any connected content snaps
+      set -eux
+      for snap in "core18" "kde-frameworks-5-core18"; do  # List all content-snaps and base snaps you're using here
+        cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" \;
+      done

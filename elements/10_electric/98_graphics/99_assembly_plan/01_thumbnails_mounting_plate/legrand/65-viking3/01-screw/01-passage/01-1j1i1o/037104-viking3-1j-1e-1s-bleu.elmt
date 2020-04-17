@@ -1,0 +1,31 @@
+<definition hotspot_y="5" orientation="dyyy" hotspot_x="6" height="140" version="0.80" link_type="simple" type="element" width="40">
+    <uuid uuid="{022f8899-2059-4999-8e03-c23175a5a527}"/>
+    <names>
+        <name lang="fr">037104 - Viking3 - 1 jonction 1 entrée 1 sortie 16mm² pas 12mm Bleu</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="description" show="1">Bloc de jonction de passage à vis Viking3 avec 1 jonction 1 entrée 1 sortie section 16mm² - pas 12mm - bleu</elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Legrand</elementInformation>
+        <elementInformation name="designation" show="1">037104</elementInformation>
+    </elementInformations>
+    <informations>Arnaud VALMARY</informations>
+    <description>
+        <rect ry="0" y="0" style="line-style:normal;line-weight:thin;filling:blue;color:black" height="128" x="0" antialias="false" rx="0" width="27"/>
+        <rect ry="0" y="8.5" style="line-style:normal;line-weight:thin;filling:blue;color:black" height="111" x="0" antialias="false" rx="0" width="27"/>
+        <rect ry="0" y="57" style="line-style:normal;line-weight:thin;filling:blue;color:black" height="13" x="0" antialias="false" rx="0" width="27"/>
+        <circle y="59" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" diameter="4" x="11.5" antialias="false"/>
+        <circle y="64" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" diameter="4" x="11.5" antialias="false"/>
+        <circle y="72" style="line-style:normal;line-weight:thin;filling:gray;color:black" diameter="6" x="10.5" antialias="false"/>
+        <polygon x1="11.3" y4="77.3" style="line-style:normal;line-weight:thin;filling:gray;color:black" y2="72.8" antialias="false" y1="76.8" x2="15.3" x4="11.8" x3="15.8" y3="73.3"/>
+        <circle y="49" style="line-style:normal;line-weight:thin;filling:gray;color:black" diameter="6" x="10.5" antialias="false"/>
+        <polygon x1="11.3" y4="54.3" style="line-style:normal;line-weight:thin;filling:gray;color:black" y2="49.8" antialias="false" y1="53.8" x2="15.3" x4="11.8" x3="15.8" y3="50.3"/>
+        <terminal orientation="s" y="128" x="13.5"/>
+        <terminal orientation="n" y="0" x="13.5"/>
+    </description>
+</definition>

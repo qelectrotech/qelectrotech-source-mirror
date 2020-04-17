@@ -1,0 +1,26 @@
+<definition version="0.80" hotspot_y="4" link_type="simple" hotspot_x="5" height="140" orientation="dyyy" width="210" type="element">
+    <uuid uuid="{21c6f995-0271-43cb-8bc1-f70cbe54fcae}"/>
+    <names>
+        <name lang="en">Wiring duct 60mm</name>
+        <name lang="fr">Goulotte de câblage 60mm</name>
+        <name lang="cs">Potrubí elektrického vedení 60 mm</name>
+        <name lang="de">Verdrahtungskanal 60mm</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <rect x="0" style="line-style:normal;line-weight:normal;filling:blue;color:none" height="132" rx="0" y="0" ry="0" width="200" antialias="false"/>
+    </description>
+</definition>

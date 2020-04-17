@@ -1,0 +1,21 @@
+<definition version="0.80" link_type="simple" hotspot_x="3" hotspot_y="55" type="element" orientation="dyyy" width="20" height="110">
+    <uuid uuid="{5ca3a601-b17e-4590-ba90-96f17d825b29}"/>
+    <names>
+        <name lang="fr">037516 - Viking3 - Préhenseur neutre Bleu</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="description">Préhenseur neutre bleu pour bloc de jonction sectionnable à vis ou ressort Viking 3</elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="designation">037516</elementInformation>
+    </elementInformations>
+    <informations>Arnaud VALMARY</informations>
+    <description>
+        <rect ry="0" x="2.77556e-17" rx="0" style="line-style:normal;line-weight:thin;filling:blue;color:black" antialias="false" width="13" height="100" y="-50"/>
+    </description>
+</definition>
