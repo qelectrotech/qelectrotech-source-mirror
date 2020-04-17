@@ -59,6 +59,10 @@ class QetGraphicsHeaderItem : public QGraphicsObject
 		QVector<int> minimumSectionWidth()  const {return m_sections_minimum_width;}
 		int minimumWidth() const {return m_minimum_width;}
 
+		QDomElement toXml (QDomDocument &document) const;
+		void fromXml(const QDomElement &element);
+		static QString xmlTagName() {return QString("graphics_header");}
+
 	signals:
 		void sectionResized(int logicalIndex, int size);
 		void heightResized();

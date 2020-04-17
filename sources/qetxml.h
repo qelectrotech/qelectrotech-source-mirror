@@ -1,4 +1,4 @@
-/*
+﻿/*
         Copyright 2006-2019 The QElectroTech Team
         This file is part of QElectroTech.
 
@@ -24,6 +24,7 @@
 class QDomDocument;
 class QDir;
 class QFile;
+class QAbstractItemModel;
 
 /**
  *This namespace contain some function to use xml with QET.
@@ -42,6 +43,15 @@ namespace QETXML
 	bool writeXmlFile(const QDomDocument &xml_document, const QString &file_path, QString *error_message = nullptr);
 
 	QDomElement textToDomElement (QDomDocument &document, const QString& tag_name, const QString& value);
+
+	QVector <QDomElement> directChild(const QDomElement &element, const QString &tag_name);
+	QVector <QDomElement> subChild(const QDomElement &element, const QString parent_tag_name, const QString &children_tag_name);
+
+	QDomElement marginsToXml (QDomDocument &parent_document, const QMargins &margins);
+	QMargins marginsFromXml(const QDomElement &element);
+
+	QDomElement modelHeaderDataToXml(QDomDocument &parent_document, const QAbstractItemModel *model, QHash<int, QList<int>> horizontal_section_role, QHash<int, QList<int>> vertical_section_role);
+	void modelHeaderDataFromXml(const QDomElement &element, QAbstractItemModel *model);
 }
 
 #endif // QETXML_H

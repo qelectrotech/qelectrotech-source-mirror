@@ -17,6 +17,7 @@
 */
 #include "qetgraphicsheaderitem.h"
 #include "qabstractitemmodel.h"
+#include "qetxml.h"
 
 #include <QFontMetrics>
 #include <QPainter>
@@ -207,6 +208,34 @@ void QetGraphicsHeaderItem::setMargins(const QMargins &margins)
 {
 	m_margin = margins;
 	headerDataChanged(Qt::Horizontal, 0,1);
+}
+
+/**
+ * @brief QetGraphicsHeaderItem::toXml
+ * save the header to xml
+ * @param document
+ * @return
+ */
+QDomElement QetGraphicsHeaderItem::toXml(QDomDocument &document) const
+{
+	auto dom_element = document.createElement(xmlTagName());
+	dom_element.appendChild(QETXML::marginsToXml(document, m_margin));
+
+	return dom_element;
+}
+
+/**
+ * @brief QetGraphicsHeaderItem::fromXml
+ * Restore the header from xml
+ * @param element
+ */
+void QetGraphicsHeaderItem::fromXml(const QDomElement &element)
+{
+	if (element.tagName() != xmlTagName()) {
+		return;
+	}
+
+	m_margin = QETXML::marginsFromXml(element.firstChildElement("margins"));
 }
 
 /**

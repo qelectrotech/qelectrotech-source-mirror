@@ -86,7 +86,7 @@ DynamicElementTextItem::DynamicElementTextItem()
  */
 QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
 {
-	QDomElement root_element = dom_doc.createElement(xmlTaggName());
+	QDomElement root_element = dom_doc.createElement(xmlTagName());
 	
 	root_element.setAttribute("x", QString::number(pos().x()));
 	root_element.setAttribute("y", QString::number(pos().y()));
@@ -153,7 +153,7 @@ QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
  */
 void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 {
-	if (dom_elmt.tagName() != xmlTaggName()) {
+	if (dom_elmt.tagName() != xmlTagName()) {
 		qDebug() << "DynamicElementTextItem::fromXml : Wrong tagg name";
 		return;
 	}

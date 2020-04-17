@@ -42,6 +42,7 @@ class ElementProvider
 		QList <Element *> fromUuids(QList <QUuid>) const;
 		QList <Element *> find(const int filter) const;
 		QVector <QetGraphicsTableItem *> table(QetGraphicsTableItem *table = nullptr, QAbstractItemModel *model = nullptr);
+		QetGraphicsTableItem *tableFromUuid(const QUuid &uuid);
 
 	private:
 		QList <Diagram *> m_diagram_list;

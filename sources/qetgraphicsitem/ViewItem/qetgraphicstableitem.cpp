@@ -1,4 +1,4 @@
-/*
+﻿/*
 		Copyright 2006-2020 QElectroTech Team
         This file is part of QElectroTech.
 
@@ -19,6 +19,9 @@
 #include "diagram.h"
 #include "qetgraphicsheaderitem.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include "qetxml.h"
+#include "nomenclaturemodel.h"
+#include "elementprovider.h"
 
 #include <QAbstractItemModel>
 #include <QFontMetrics>
@@ -55,6 +58,8 @@ QetGraphicsTableItem::QetGraphicsTableItem(QGraphicsItem *parent) :
 	connect(m_header_item, &QetGraphicsHeaderItem::heightResized, this, [this]() {
 		m_header_item->setPos(0, 0-m_header_item->rect().height());
 	});
+		//Init the size of table without a model
+	setModel();
 }
 
 QetGraphicsTableItem::~QetGraphicsTableItem()
@@ -85,6 +90,10 @@ void QetGraphicsTableItem::setModel(QAbstractItemModel *model)
 	{
 		connect(m_model, &QAbstractItemModel::dataChanged, this, &QetGraphicsTableItem::dataChanged);
 		connect(m_model, &QAbstractItemModel::modelReset, this, &QetGraphicsTableItem::modelReseted);
+	}
+
+	if (m_next_table) {
+		m_next_table->setModel(m_model);
 	}
 }
 
@@ -141,7 +150,7 @@ void QetGraphicsTableItem::paint(QPainter *painter, const QStyleOptionGraphicsIt
 		painter->restore();
 		return;
 	}
-	painter->setFont(m_model->data(model()->index(0,0), Qt::FontRole).value<QFont>());
+	painter->setFont(m_model->data(m_model->index(0,0), Qt::FontRole).value<QFont>());
 
 		//Draw vertical lines
 	auto offset= 0;
@@ -213,6 +222,7 @@ void QetGraphicsTableItem::setMargins(const QMargins &margins)
  */
 void QetGraphicsTableItem::setSize(const QSize &size)
 {
+	qDebug() << "ici";
 	auto new_size = size;
 	if (new_size.width() < minimumSize().width())  {
 		new_size.setWidth(minimumSize().width());
@@ -296,7 +306,8 @@ int QetGraphicsTableItem::displayNRow() const {
  */
 void QetGraphicsTableItem::setPreviousTable(QetGraphicsTableItem *table)
 {
-	if (m_previous_table == table) {
+	if (m_previous_table == table ||
+		this == table) {
 		return;
 	}
 
@@ -316,13 +327,6 @@ void QetGraphicsTableItem::setPreviousTable(QetGraphicsTableItem *table)
 		old_previous_table->nextTable() == this) {
 		old_previous_table->setNextTable(nullptr);
 	}
-
-		//Set the m_model to every next table
-	auto next_ = m_next_table;
-	while (next_) {
-		next_->setModel(m_model);
-		next_ = next_->nextTable();
-	}
 }
 
 /**
@@ -333,7 +337,8 @@ void QetGraphicsTableItem::setPreviousTable(QetGraphicsTableItem *table)
  */
 void QetGraphicsTableItem::setNextTable(QetGraphicsTableItem *table)
 {
-	if (m_next_table == table) {
+	if (m_next_table == table ||
+		this == table) {
 		return;
 	}
 
@@ -391,6 +396,119 @@ void QetGraphicsTableItem::setToMinimumHeight()
 	auto size_ = size();
 	size_.setHeight(1);
 	setSize(size_);
+}
+
+void QetGraphicsTableItem::initLink()
+{
+	if (!m_pending_previous_table_uuid.isNull())
+	{
+		ElementProvider provider_(this->diagram());
+		if (auto previous_table = provider_.tableFromUuid(m_pending_previous_table_uuid)) {
+			setPreviousTable(previous_table);
+		}
+		m_pending_previous_table_uuid = QUuid(); //Set to null in case initLink is called again
+	}
+	setSize(m_pending_size);
+}
+
+/**
+ * @brief QetGraphicsTableItem::toXml
+ * Save the table to xml
+ * @param dom_document : parent document
+ * @return the dom_element that describe the table
+ */
+QDomElement QetGraphicsTableItem::toXml(QDomDocument &dom_document) const
+{
+	auto dom_table = dom_document.createElement(xmlTagName());
+	dom_table.setAttribute("x", QString::number(pos().x()));
+	dom_table.setAttribute("y", QString::number(pos().y()));
+	dom_table.setAttribute("width", QString::number(m_current_size.width()));
+	dom_table.setAttribute("height", QString::number(m_current_size.height()));
+	dom_table.setAttribute("uuid", m_uuid.toString());
+	dom_table.setAttribute("name", m_name);
+	dom_table.setAttribute("display_n_row", QString::number(m_number_of_displayed_row));
+
+		//Add the header xml
+	dom_table.appendChild(m_header_item->toXml(dom_document));
+
+		//Add previous table, the model is save by the previous table
+	if (m_previous_table)
+	{
+		auto dom_previous_table = dom_document.createElement("previous_table");
+		dom_previous_table.setAttribute("uuid", m_previous_table->m_uuid.toString());
+		dom_table.appendChild(dom_previous_table);
+	}
+	else if (m_model) //There is not a previous table, we need to save the model
+	{
+			//Add cell properties
+		auto dom_cell = dom_document.createElement("cell");
+		dom_cell.setAttribute("font", m_model->data(m_model->index(0,0), Qt::FontRole).toString());
+		auto me = QMetaEnum::fromType<Qt::Alignment>();
+		dom_cell.setAttribute("alignment", me.valueToKey(m_model->data(m_model->index(0,0), Qt::TextAlignmentRole).toInt()));
+		dom_cell.appendChild(QETXML::marginsToXml(dom_document, m_margin));
+		dom_table.appendChild(dom_cell);
+
+			//Add model
+		auto dom_model = dom_document.createElement("model");
+		auto nomenclature_model = static_cast<NomenclatureModel *>(m_model);
+		dom_model.appendChild(nomenclature_model->toXml(dom_document));
+		dom_table.appendChild(dom_model);
+
+	}
+
+	return dom_table;
+}
+
+/**
+ * @brief QetGraphicsTableItem::fromXml
+ * Restore the table from xml.
+ * Make this item is already in a diagram to
+ * @param dom_element
+ */
+void QetGraphicsTableItem::fromXml(const QDomElement &dom_element)
+{
+	if (dom_element.tagName() != xmlTagName()) {
+		return;
+	}
+
+	this->setPos(dom_element.attribute("x", QString::number(10)).toDouble(),
+				 dom_element.attribute("y", QString::number(10)).toDouble());
+		//Size is not set now because will change during the whole process of opening a project from the xml
+	m_pending_size = QSize(dom_element.attribute("width",  QString::number(no_model_width)).toInt(),
+						   dom_element.attribute("height", QString::number(no_model_height)).toInt());
+
+	m_uuid = QUuid(dom_element.attribute("uuid", QUuid::createUuid().toString()));
+	m_name = dom_element.attribute("name");
+	m_number_of_displayed_row = dom_element.attribute("display_n_row", QString::number(0)).toInt();
+	m_margin = QETXML::marginsFromXml(dom_element.firstChildElement("margins"));
+
+	auto vector_ = QETXML::directChild(dom_element, "previous_table");
+	if (vector_.size()) { //Table have a previous table
+		m_pending_previous_table_uuid = QUuid(vector_.first().attribute("uuid"));
+	}
+	else if (this->diagram()) //The table haven't got a previous table, so there should be a model save to xml
+	{
+			//Get table
+		auto model_ = new NomenclatureModel(this->diagram()->project(), this->diagram()->project());
+		model_->fromXml(dom_element.firstChildElement("model").firstChildElement(NomenclatureModel::xmlTagName()));
+		this->setModel(model_);
+
+			//Get cell properties
+		auto dom_cell = dom_element.firstChildElement("cell");
+			//font
+		QFont font_;
+		font_.fromString(dom_cell.attribute("font"));
+		m_model->setData(m_model->index(0,0), font_, Qt::FontRole);
+			//alignment
+		auto me = QMetaEnum::fromType<Qt::Alignment>();
+		m_model->setData(m_model->index(0,0), me.keyToValue(dom_cell.attribute("alignment").toStdString().data()));
+		dom_cell.setAttribute("alignment", me.valueToKey(m_model->data(m_model->index(0,0), Qt::TextAlignmentRole).toInt()));
+			//margins
+		m_margin =  QETXML::marginsFromXml(dom_cell.firstChildElement("margins"));
+	}
+
+		//Restore the header from xml
+	m_header_item->fromXml(dom_element.firstChildElement(QetGraphicsHeaderItem::xmlTagName()));
 }
 
 /**

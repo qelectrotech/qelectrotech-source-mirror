@@ -17,8 +17,10 @@
 */
 #include "qetxml.h"
 #include "nameslist.h"
+
 #include <QPen>
 #include <QDir>
+#include <QFont>
 
 /**
  * @brief QETXML::penToXml
@@ -72,8 +74,10 @@ QPen QETXML::penFromXml(const QDomElement &element)
 	else if (style == "DotLine")        pen.setStyle(Qt::DotLine);
 	else if (style == "DashDotLine")    pen.setStyle(Qt::DashDotLine);
 	else if (style == "DashDotDotLine") pen.setStyle(Qt::DashDotDotLine);
-	else if (style == "CustomDashLine") pen.setStyle(Qt::CustomDashLine),
-	pen.setDashPattern( QVector<qreal>() << 10 << 10 );
+	else if (style == "CustomDashLine") {
+		pen.setStyle(Qt::CustomDashLine);
+		pen.setDashPattern( QVector<qreal>() << 10 << 10 );
+	}
 	else                                pen.setStyle(Qt::DashLine);
 
 	pen.setColor(QColor(element.attribute("color", "#000000")));
@@ -273,4 +277,198 @@ QDomElement QETXML::textToDomElement(QDomDocument &document, const QString& tag_
 
 	element.appendChild(text);
 	return element;
+}
+
+/**
+ * @brief QETXML::directChild
+ * @param element
+ * @param tag_name
+ * @return All direct child of @element  with the tag name @tag_name
+ */
+QVector<QDomElement> QETXML::directChild(const QDomElement &element, const QString &tag_name)
+{
+	QVector<QDomElement> return_list;
+	for (QDomNode node = element.firstChild() ; !node.isNull() ; node = node.nextSibling())
+	{
+		if (!node.isElement()) continue;
+		QDomElement element = node.toElement();
+		if (element.isNull() || element.tagName() != tag_name) continue;
+		return_list << element;
+	}
+
+	return(return_list);
+}
+
+/**
+ * @brief QETXML::subChild
+ * @param element
+ * @param parent_tag_name
+ * @param children_tag_name
+ * @return When given an xml dom element @element,
+ * returns a vector of all children dom_elements tagged @children_tag_name
+ * nested in the parent dom elements tagged parent_tag_name, themselves children of the dom element @element.
+ */
+QVector<QDomElement> QETXML::subChild(const QDomElement &element, const QString parent_tag_name, const QString &children_tag_name)
+{
+	QVector<QDomElement> return_list;
+
+	for (QDomNode child = element.firstChild() ; !child.isNull() ; child = child.nextSibling())
+	{
+		QDomElement parents = child.toElement();
+		if (parents.isNull() || parents.tagName() != parent_tag_name)
+			continue;
+
+		for (QDomNode node_children = parents.firstChild() ; !node_children.isNull() ; node_children = node_children.nextSibling())
+		{
+			QDomElement n_children = node_children.toElement();
+			if (!n_children.isNull() && n_children.tagName() == children_tag_name)
+				return_list.append(n_children);
+		}
+	}
+
+	return(return_list);
+}
+
+/**
+ * @brief QETXML::marginsToXml
+ * Save a QMargins to xml. the xml tag name is 'margins'
+ * @param parent_document
+ * @param margins
+ * @return
+ */
+QDomElement QETXML::marginsToXml(QDomDocument &parent_document, const QMargins &margins)
+{
+	auto dom_ = parent_document.createElement("margins");
+	auto text_ = parent_document.createTextNode(QString::number(margins.left())  + QString(";") +
+												QString::number(margins.top())   + QString(";") +
+												QString::number(margins.right()) + QString(";") +
+												QString::number(margins.bottom()));
+	dom_.appendChild(text_);
+	return  dom_;
+}
+
+/**
+ * @brief QETXML::marginsFromXml
+ * @param element
+ * @return a QMargins from an xml description.
+ * The tag name must ne 'margins'
+ */
+QMargins QETXML::marginsFromXml(const QDomElement &element)
+{
+	if (element.tagName() != "margins") {
+		return QMargins();
+	}
+
+	auto margins_ = element.text().split(";");
+	if (margins_.size() == 4) {
+		return QMargins(margins_.at(0).toInt(), margins_.at(1).toInt(), margins_.at(2).toInt(), margins_.at(3).toInt());
+	} else {
+		return QMargins();
+	}
+}
+
+/**
+ * @brief QETXML::modelHeaderDataToXml
+ * Save to xml element all header data specified by @horizontal_section_role and @vertical_section_role
+ * @param parent_document
+ * @param model
+ * @param horizontal_section_role : key as header section and value as list of roles to save in xml
+ * @param vertical_section_role :key as header section and value as list of roles to save in xml
+ * @return
+ */
+QDomElement QETXML::modelHeaderDataToXml(QDomDocument &parent_document, const QAbstractItemModel *model, QHash<int, QList<int>> horizontal_section_role, QHash<int, QList<int>> vertical_section_role)
+{
+	auto dom_element = parent_document.createElement("header_data");
+
+	auto orientation_ = Qt::Horizontal;
+	auto data_hash = horizontal_section_role;
+	auto meta_enum_ori = QMetaEnum::fromType<Qt::Orientation>();
+	auto meta_enum_role = QMetaEnum::fromType<Qt::ItemDataRole>();
+
+		//Iterate twice, first for horizontal header and second to vertical header
+	while (true)
+	{
+		for (auto section : data_hash.keys())
+		{
+			for (auto role : data_hash.value(section))
+			{
+				auto variant = model->headerData(section, orientation_, role);
+				if (variant.isValid())
+				{
+					auto dom_data = parent_document.createElement("data");
+					dom_data.setAttribute("section", QString::number(section));
+					dom_data.setAttribute("orientation", meta_enum_ori.valueToKey(orientation_));
+					dom_data.setAttribute("role", meta_enum_role.valueToKey(role));
+
+					auto text_node = parent_document.createTextNode("");
+					if (role == Qt::DisplayRole || role == Qt::EditRole || role == Qt::ToolTipRole || role == Qt::StatusTipRole || role == Qt::WhatsThisRole)
+					{
+						text_node.setData(variant.toString());
+					}
+					else if (role == Qt::FontRole)
+					{
+						auto font = variant.value<QFont>();
+						text_node.setData(font.toString());
+					}
+					else if (role == Qt::TextAlignmentRole)
+					{
+						auto me = QMetaEnum::fromType<Qt::Alignment>();
+						text_node.setData(me.valueToKey(variant.toInt()));
+					}
+					dom_data.appendChild(text_node);
+					dom_element.appendChild(dom_data);
+				}
+			}
+		}
+
+		if(orientation_ == Qt::Vertical) {
+			break;
+		} else {
+			data_hash = vertical_section_role;
+			orientation_ = Qt::Vertical;
+		}
+	}
+
+	return dom_element;
+}
+
+/**
+ * @brief QETXML::modelHeaderDataFromXml
+ * Restore from xml modele header data
+ * @param element
+ * @param model
+ */
+void QETXML::modelHeaderDataFromXml(const QDomElement &element, QAbstractItemModel *model)
+{
+	if (element.tagName() != "header_data")
+		return;
+
+	auto meta_enum_orientation = QMetaEnum::fromType<Qt::Orientations>();
+	auto meta_enum_role        = QMetaEnum::fromType<Qt::ItemDataRole>();
+
+	for (auto child : QETXML::directChild(element, "data"))
+	{
+		auto section_ = child.attribute("section", "-1").toInt();
+		auto orientation_ = Qt::Orientation(meta_enum_orientation.keyToValue(child.attribute("orientation", "Horizontal").toStdString().data()));
+		auto role_ = meta_enum_role.keyToValue(child.attribute("role", "DisplayRole").toStdString().data());
+		auto text_ = child.text();
+		QVariant data_;
+
+		if (role_ == Qt::DisplayRole || role_ == Qt::EditRole || role_ == Qt::ToolTipRole || role_ == Qt::StatusTipRole || role_ == Qt::WhatsThisRole) {
+			data_ = text_;
+		}
+		else if (role_ == Qt::FontRole)
+		{
+			QFont font;
+			font.fromString(text_);
+			data_ = font;
+		}
+		else if (role_ == Qt::TextAlignmentRole)
+		{
+			auto me = QMetaEnum::fromType<Qt::Alignment>();
+			data_ = me.keyToValue(text_.toStdString().data());
+		}
+
+		model->setHeaderData(section_, orientation_, data_, role_);
+	}
 }

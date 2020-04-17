@@ -156,3 +156,17 @@ QVector<QetGraphicsTableItem *> ElementProvider::table(QetGraphicsTableItem *tab
 
 	return v_;
 }
+
+/**
+ * @brief ElementProvider::tableFromUuid
+ * @param uuid
+ * @return the table with uuid @uuid or nullptr if not found
+ */
+QetGraphicsTableItem *ElementProvider::tableFromUuid(const QUuid &uuid)
+{
+	for (auto table : this->table())
+		if (table->uuid() == uuid)
+			return table;
+
+	return nullptr;
+}

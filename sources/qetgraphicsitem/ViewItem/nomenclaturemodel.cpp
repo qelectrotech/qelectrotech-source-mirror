@@ -18,6 +18,7 @@
 #include "nomenclaturemodel.h"
 #include "qetapp.h"
 #include "qetproject.h"
+#include "qetxml.h"
 
 #include <QModelIndex>
 #include <QFont>
@@ -203,6 +204,47 @@ void NomenclatureModel::autoHeaders()
 }
 
 /**
+ * @brief NomenclatureModel::toXml
+ * Save the model to xml,since model can have unlimited data we only save few data.
+ * The query and all header data. All other data are not saved.
+ * @param document
+ * @return
+ */
+QDomElement NomenclatureModel::toXml(QDomDocument &document) const
+{
+	auto dom_element = document.createElement(xmlTagName());
+
+		//query
+	auto dom_query = document.createElement("query");
+	auto dom_query_txt = document.createTextNode(m_query);
+	dom_query.appendChild(dom_query_txt);
+	dom_element.appendChild(dom_query);
+
+		//header data
+	QHash<int, QList<int>> horizontal_;
+	for (auto key : m_header_data.keys()) {
+		horizontal_.insert(key, m_header_data.value(key).keys()); }
+
+	dom_element.appendChild(QETXML::modelHeaderDataToXml(document, this, horizontal_, QHash<int, QList<int>>()));
+
+	return dom_element;
+}
+
+/**
+ * @brief NomenclatureModel::fromXml
+ * Restore the model from xml
+ * @param element
+ */
+void NomenclatureModel::fromXml(const QDomElement &element)
+{
+	if (element.tagName() != xmlTagName())
+		return;
+
+	query(element.firstChildElement("query").text());
+	QETXML::modelHeaderDataFromXml(element.firstChildElement("header_data"), this);
+}
+
+/**
  * @brief NomenclatureModel::dataBaseUpdated
  * slot called when the project database is updated
  */
@@ -214,9 +256,9 @@ void NomenclatureModel::dataBaseUpdated()
 		//befor any element, column count return 0, so in this case we emit column inserted
 	if (new_record.size() != m_record.size())
 	{
-		emit beginInsertColumns(index(0,0), 0, m_record.size()-1);
+		emit beginResetModel();
 		m_record = new_record;
-		emit endInsertColumns();
+		emit endResetModel();
 	}
 	else
 	{

@@ -74,6 +74,12 @@ class QetGraphicsTableItem : public QetGraphicsItem
 		QetGraphicsTableItem *previousTable() const;
 		QetGraphicsTableItem *nextTable() const;
 		void setToMinimumHeight();
+		void initLink();
+		QUuid uuid() const {return m_uuid;}
+
+		QDomElement toXml(QDomDocument &dom_document) const;
+		void fromXml(const QDomElement &dom_element);
+		static QString xmlTagName() {return QString("graphics_table");}
 
 	protected:
 		virtual void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
@@ -103,7 +109,8 @@ class QetGraphicsTableItem : public QetGraphicsItem
 		int m_minimum_row_height;
 		int m_number_of_displayed_row = 0;
 		QSize m_current_size,
-			  m_old_size;
+			  m_old_size,
+			  m_pending_size;
 
 		int m_br_margin= 10;
 		QRectF m_bounding_rect;
@@ -115,6 +122,8 @@ class QetGraphicsTableItem : public QetGraphicsItem
 							 *m_next_table = nullptr;
 
 		QString m_name;
+		QUuid m_uuid = QUuid::createUuid(),
+			  m_pending_previous_table_uuid;
 };
 
 #endif // QetGraphicsTableItem_H

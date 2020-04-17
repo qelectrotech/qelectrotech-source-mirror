@@ -1,4 +1,4 @@
-/*
+﻿/*
         Copyright 2006-2020 QElectroTech Team
         This file is part of QElectroTech.
 
@@ -20,6 +20,7 @@
 
 #include <QAbstractTableModel>
 #include <QPointer>
+#include <QDomElement>
 
 class QETProject;
 
@@ -44,6 +45,10 @@ class NomenclatureModel : public QAbstractTableModel
 		void query(const QString &query);
 		QETProject *project() const;
 		void autoHeaders();
+
+		QDomElement toXml(QDomDocument &document) const;
+		void fromXml(const QDomElement &element);
+		static QString xmlTagName() {return QString("nomenclature_model");}
 
 	private:
 		void dataBaseUpdated();

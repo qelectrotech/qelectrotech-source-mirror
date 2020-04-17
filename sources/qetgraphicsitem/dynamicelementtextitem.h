@@ -91,7 +91,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		void setTextFrom (DynamicElementTextItem::TextFrom text_from);
 		QString text() const;
 		void setText(const QString &text);
-		static QString xmlTaggName() {return QString("dynamic_elmt_text");}
+		static QString xmlTagName() {return QString("dynamic_elmt_text");}
 		void setInfoName(const QString &info_name);
 		QString infoName() const;
 		void setCompositeText(const QString &text);

@@ -37,6 +37,9 @@
 #include "elementtextitemgroup.h"
 #include "undocommand/addelementtextcommand.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include "qetgraphicstableitem.h"
+#include "qetxml.h"
+#include "elementprovider.h"
 
 int Diagram::xGrid  = 10;
 int Diagram::yGrid  = 10;
@@ -614,31 +617,31 @@ QDomDocument Diagram::toXml(bool whole_content) {
 	QDomDocument document;
 	
 	// racine de l'arbre XML
-	QDomElement racine = document.createElement("diagram");
+	auto dom_root = document.createElement("diagram");
 	
 	// add the application version number
-	racine.setAttribute("version", QET::version);
+	dom_root.setAttribute("version", QET::version);
 	
 	// proprietes du schema
 	if (whole_content) {
-		border_and_titleblock.titleBlockToXml(racine);
-		border_and_titleblock.borderToXml(racine);
+		border_and_titleblock.titleBlockToXml(dom_root);
+		border_and_titleblock.borderToXml(dom_root);
 		
 		// Default conductor properties
 		QDomElement default_conductor = document.createElement("defaultconductor");
 		defaultConductorProperties.toXml(default_conductor);
-		racine.appendChild(default_conductor);
+		dom_root.appendChild(default_conductor);
 
 		// Conductor autonum
 		if (!m_conductors_autonum_name.isEmpty()) {
-			racine.setAttribute("conductorAutonum", m_conductors_autonum_name);
+			dom_root.setAttribute("conductorAutonum", m_conductors_autonum_name);
 		}
 
 		//Default New Element
-		racine.setAttribute("freezeNewElement", m_freeze_new_elements ? "true" : "false");
+		dom_root.setAttribute("freezeNewElement", m_freeze_new_elements ? "true" : "false");
 
 		//Default New Conductor
-		racine.setAttribute("freezeNewConductor", m_freeze_new_conductors_ ? "true" : "false");
+		dom_root.setAttribute("freezeNewConductor", m_freeze_new_conductors_ ? "true" : "false");
 
 		//Element Folio Sequential Variables
 		if (!m_elmt_unitfolio_max.isEmpty() || !m_elmt_tenfolio_max.isEmpty() || !m_elmt_hundredfolio_max.isEmpty()) {
@@ -658,7 +661,7 @@ QDomDocument Diagram::toXml(bool whole_content) {
 				folioSequentialsToXml(&m_elmt_hundredfolio_max, &elmtfolioseq, "seqhf_", "hundredfolioseq", &document);
 				elmtfoliosequential.appendChild(elmtfolioseq);
 			}
-			racine.appendChild(elmtfoliosequential);
+			dom_root.appendChild(elmtfoliosequential);
 		}
 		//Conductor Folio Sequential Variables
 		if (!m_cnd_unitfolio_max.isEmpty() || !m_cnd_tenfolio_max.isEmpty() || !m_cnd_hundredfolio_max.isEmpty()) {
@@ -679,101 +682,125 @@ QDomDocument Diagram::toXml(bool whole_content) {
 				folioSequentialsToXml(&m_cnd_hundredfolio_max, &cndfolioseq, "seqhf_", "hundredfolioseq", &document);
 				cndfoliosequential.appendChild(cndfolioseq);
 			}
-			racine.appendChild(cndfoliosequential);
+			dom_root.appendChild(cndfoliosequential);
 		}
 	}
 	else {
 			//this method with whole_content to false,
 			//is often use to copy and paste the current selection
 			//so we add the id of the project where copy occur.
-		racine.setAttribute("projectId", QETApp::projectId(m_project));
+		dom_root.setAttribute("projectId", QETApp::projectId(m_project));
 	}
-	document.appendChild(racine);
+	document.appendChild(dom_root);
 	
-	// si le schema ne contient pas d'element (et donc pas de conducteurs), on retourne de suite le document XML
-	if (items().isEmpty()) return(document);
+	if (items().isEmpty())
+		return(document);
 	
-	// creation de trois listes : une qui contient les elements, une qui contient les conducteurs, une qui contient les champs de texte
-	QList<Element *> list_elements;
-	QList<Conductor *> list_conductors;
-	QList<DiagramTextItem *> list_texts;
-	QList<DiagramImageItem *> list_images;
-	QList<QetShapeItem *> list_shapes;
-	
-	QList<QGraphicsItem *> list_items = items();
-	;
-	// Determine les elements a "XMLiser"
-	foreach(QGraphicsItem *qgi, list_items) {
-		if (Element *elmt = qgraphicsitem_cast<Element *>(qgi)) {
-			if (whole_content) list_elements << elmt;
-			else if (elmt -> isSelected()) list_elements << elmt;
-		} else if (Conductor *f = qgraphicsitem_cast<Conductor *>(qgi)) {
-			if (whole_content) list_conductors << f;
-			// lorsqu'on n'exporte pas tout le diagram, il faut retirer les conducteurs non selectionnes
-			// et pour l'instant, les conducteurs non selectionnes sont les conducteurs dont un des elements n'est pas selectionne
-			else if (f -> terminal1 -> parentItem() -> isSelected() && f -> terminal2 -> parentItem() -> isSelected()) {
-				list_conductors << f;
+	QVector<Element *> list_elements;
+	QVector<Conductor *> list_conductors;
+	QVector<DiagramTextItem *> list_texts;
+	QVector<DiagramImageItem *> list_images;
+	QVector<QetShapeItem *> list_shapes;
+	QVector<QetGraphicsTableItem *> table_vector;
+
+		//Ckeck graphics item to "XMLise"
+	for(QGraphicsItem *qgi : items())
+	{
+		switch (qgi->type())
+		{
+			case Element::Type: {
+				auto elmt = static_cast<Element *>(qgi);
+				if (whole_content || elmt->isSelected())
+					list_elements << elmt;
+				break;
 			}
-		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(qgi)) {
-			if (whole_content) list_texts << iti;
-			else if (iti -> isSelected()) list_texts << iti;
-		} else if (DiagramImageItem *dii = qgraphicsitem_cast<DiagramImageItem *>(qgi)) {
-			if (whole_content) list_images << dii;
-			else if (dii -> isSelected()) list_images << dii;
-		} else if (QetShapeItem *dsi = qgraphicsitem_cast<QetShapeItem *>(qgi)) {
-			if (whole_content) list_shapes << dsi;
-			else if (dsi -> isSelected()) list_shapes << dsi;
+			case Conductor::Type: {
+				auto cond = static_cast<Conductor *>(qgi);
+				if (whole_content)
+					list_conductors << cond;
+					//When we did not export the whole diagram, we must to remove the non selected conductors.
+					//At this step that mean a conductor which one of these two element are not selected
+				else if (cond->terminal1->parentItem()->isSelected() && cond->terminal2->parentItem()->isSelected())
+					list_conductors << cond;
+				break;
+			}
+			case DiagramImageItem::Type: {
+				auto image = static_cast<DiagramImageItem *>(qgi);
+				if (whole_content || image->isSelected())
+					list_images << image;
+				break;
+			}
+			case IndependentTextItem::Type: {
+				auto indi_text = static_cast<IndependentTextItem *>(qgi);
+				if (whole_content || indi_text->isSelected())
+					list_texts << indi_text;
+				break;
+			}
+			case QetShapeItem::Type: {
+				auto shape = static_cast<QetShapeItem *>(qgi);
+				if (whole_content || shape->isSelected())
+					list_shapes << shape;
+				break;
+			}
+			case QetGraphicsTableItem::Type: {
+				auto table = static_cast<QetGraphicsTableItem *>(qgi);
+				if (whole_content || table->isSelected())
+					table_vector << table;
+			}
 		}
 	}
 	
-	// table de correspondance entre les adresses des bornes et leurs ids
+		// table de correspondance entre les adresses des bornes et leurs ids
 	QHash<Terminal *, int> table_adr_id;
 	
-	// enregistrement des elements
 	if (!list_elements.isEmpty()) {
-		QDomElement elements = document.createElement("elements");
-		foreach(Element *elmt, list_elements) {
-			elements.appendChild(elmt -> toXml(document, table_adr_id));
+		auto dom_elements = document.createElement("elements");
+		for (auto elmt : list_elements) {
+			dom_elements.appendChild(elmt->toXml(document, table_adr_id));
 		}
-		racine.appendChild(elements);
+		dom_root.appendChild(dom_elements);
 	}
 	
-	// enregistrement des conducteurs
 	if (!list_conductors.isEmpty()) {
-		QDomElement conductors = document.createElement("conductors");
-		foreach(Conductor *cond, list_conductors) {
-			conductors.appendChild(cond -> toXml(document, table_adr_id));
+		auto dom_conductors = document.createElement("conductors");
+		for (auto cond : list_conductors) {
+			dom_conductors.appendChild(cond->toXml(document, table_adr_id));
 		}
-		racine.appendChild(conductors);
+		dom_root.appendChild(dom_conductors);
 	}
 	
-	// enregistrement des champs de texte
 	if (!list_texts.isEmpty()) {
-		QDomElement inputs = document.createElement("inputs");
-		foreach(DiagramTextItem *dti, list_texts) {
-			inputs.appendChild(dti -> toXml(document));
+		auto dom_texts = document.createElement("inputs");
+		for (auto dti : list_texts) {
+			dom_texts.appendChild(dti->toXml(document));
 		}
-		racine.appendChild(inputs);
+		dom_root.appendChild(dom_texts);
 	}
 
-	// save of images
 	if (!list_images.isEmpty()) {
-		QDomElement images = document.createElement("images");
-		foreach (DiagramImageItem *dii, list_images) {
-			images.appendChild(dii -> toXml(document));
+		auto dom_images = document.createElement("images");
+		for (auto dii : list_images) {
+			dom_images.appendChild(dii->toXml(document));
 		}
-		racine.appendChild(images);
+		dom_root.appendChild(dom_images);
 	}
 
-	// save of basic shapes
 	if (!list_shapes.isEmpty()) {
-		QDomElement shapes = document.createElement("shapes");
-		foreach (QetShapeItem *dii, list_shapes) {
-			shapes.appendChild(dii -> toXml(document));
+		auto dom_shapes = document.createElement("shapes");
+		for (auto dii : list_shapes) {
+			dom_shapes.appendChild(dii -> toXml(document));
 		}
-		racine.appendChild(shapes);
+		dom_root.appendChild(dom_shapes);
 	}
-	// on retourne le document XML ainsi genere
+
+	if (table_vector.size()) {
+		auto tables = document.createElement("tables");
+		for (auto table : table_vector) {
+			tables.appendChild(table->toXml(document));
+		}
+		dom_root.appendChild(tables);
+	}
+
 	return(document);
 }
 
@@ -970,7 +997,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		}
 	}
 	
-	// Load text
+		// Load text
 	QList<IndependentTextItem *> added_texts;
 	foreach (QDomElement text_xml, QET::findInDomElement(root, "inputs", "input")) {
 		IndependentTextItem *iti = new IndependentTextItem();
@@ -979,7 +1006,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		added_texts << iti;
 	}
 
-	// Load image
+		// Load image
 	QList<DiagramImageItem *> added_images;
 	foreach (QDomElement image_xml, QET::findInDomElement(root, "images", "image")) {
 		DiagramImageItem *dii = new DiagramImageItem ();
@@ -988,7 +1015,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		added_images << dii;
 	}
 
-	// Load shape
+		// Load shape
 	QList<QetShapeItem *> added_shapes;
 	foreach (QDomElement shape_xml, QET::findInDomElement(root, "shapes", "shape")) {
 		QetShapeItem *dii = new QetShapeItem (QPointF(0,0));
@@ -1026,39 +1053,52 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		else qDebug() << "Diagram::fromXml() : Le chargement du conducteur" << id_p1 << id_p2 << "a echoue";
 	}
 
-	//Translate items if a new position was given in parameter
-	if (position != QPointF()) {
+		//Load tables
+	QVector<QetGraphicsTableItem *> added_tables;
+	for (auto dom_table : QETXML::subChild(root, "tables", QetGraphicsTableItem::xmlTagName()))
+	{
+		auto table = new QetGraphicsTableItem();
+		addItem(table);
+		table->fromXml(dom_table);
+		added_tables << table;
+	}
 
-		QList<QGraphicsItem *> added_items;
-		foreach (Element          *added_element, added_elements  ) added_items << added_element;
-		foreach (Conductor        *added_cond,    added_conductors) added_items << added_cond;
-		foreach (QetShapeItem     *added_shape,   added_shapes    ) added_items << added_shape;
-		foreach (DiagramTextItem  *added_text,    added_texts     ) added_items << added_text;
-		foreach (DiagramImageItem *added_image,   added_images    ) added_items << added_image;
+		//Translate items if a new position was given in parameter
+	if (position != QPointF())
+	{
+		QVector <QGraphicsItem *> added_items;
+		for (auto element : added_elements  ) added_items << element;
+		for (auto cond    : added_conductors) added_items << cond;
+		for (auto shape   : added_shapes    ) added_items << shape;
+		for (auto text    : added_texts     ) added_items << text;
+		for (auto image   : added_images    ) added_items << image;
+		for (auto table   : added_tables    ) added_items << table;
 
-		//Get the top left corner of the rectangle that contain all added items
+			//Get the top left corner of the rectangle that contain all added items
 		QRectF items_rect;
-		foreach (QGraphicsItem *item, added_items) {
-			items_rect = items_rect.united(item -> mapToScene(item -> boundingRect()).boundingRect());
+		for (auto item : added_items) {
+			items_rect = items_rect.united(item->mapToScene(item->boundingRect()).boundingRect());
 		}
 
 		QPointF point_ = items_rect.topLeft();
 		QPointF pos_ = Diagram::snapToGrid(QPointF (position.x() - point_.x(),
 													position.y() - point_.y()));
 
-		//Translate all added items
-		foreach (QGraphicsItem *qgi, added_items)
-			qgi -> setPos( qgi -> pos() += pos_);
+			//Translate all added items
+		for (auto qgi : added_items)
+			qgi->setPos(qgi->pos() += pos_);
 	}
 	
-	// remplissage des listes facultatives
+		//Filling of falculatory lists
 	if (content_ptr) {
-		content_ptr -> m_elements         = added_elements;
+		content_ptr -> m_elements           = added_elements;
 		content_ptr -> m_conductors_to_move = added_conductors;
-		content_ptr -> m_text_fields       = added_texts.toSet();
-		content_ptr -> m_images			= added_images.toSet();
-		content_ptr -> m_shapes			= added_shapes.toSet();
+		content_ptr -> m_text_fields        = added_texts.toSet();
+		content_ptr -> m_images			    = added_images.toSet();
+		content_ptr -> m_shapes			    = added_shapes.toSet();
+		content_ptr -> m_tables             = added_tables;
 	}
+
 	adjustSceneRect();
 	return(true);
 }
@@ -1096,6 +1136,8 @@ void Diagram::folioSequentialsFromXml(const QDomElement &root, QHash<QString, QS
  */
 void Diagram::refreshContents()
 {
+	ElementProvider provider_(this);
+
 	for (Element *elmt : elements())
 	{
 		elmt->initLink(project());
@@ -1105,6 +1147,9 @@ void Diagram::refreshContents()
 
 	for (Conductor *conductor : conductors())
 		conductor->refreshText();
+
+	for (auto table : provider_.table())
+		table->initLink();
 }
 
 /**

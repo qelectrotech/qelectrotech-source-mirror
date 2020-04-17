@@ -555,7 +555,7 @@ DynamicElementTextItem *Element::parseDynamicText(const QDomElement &dom_element
 		//and the uuid (because the uuid, is the uuid of the descritpion and not the uuid of instantiated dynamic text field)
 	
 	QDomElement dom(dom_element.cloneNode(true).toElement());
-	dom.setTagName(DynamicElementTextItem::xmlTaggName());
+	dom.setTagName(DynamicElementTextItem::xmlTagName());
 	deti->fromXml(dom);
 	deti->m_uuid = QUuid::createUuid();
 	this->addDynamicTextItem(deti);
@@ -741,7 +741,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 		//************************//
 		//***Dynamic texts item***//
 		//************************//
-    for (const QDomElement& qde : QET::findInDomElement(e, "dynamic_texts", DynamicElementTextItem::xmlTaggName()))
+	for (const QDomElement& qde : QET::findInDomElement(e, "dynamic_texts", DynamicElementTextItem::xmlTagName()))
     {
         DynamicElementTextItem *deti = new DynamicElementTextItem(this);
         addDynamicTextItem(deti);

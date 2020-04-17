@@ -1391,6 +1391,9 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 								 "Mise en place des références croisées"
 								 "</p>"));
 	}
+
+	m_data_base.updateDB(); //All diagrams and items are created we need to update the database
+
 	for(Diagram *d : diagrams())
 	{
 		if(dlgWaiting)
