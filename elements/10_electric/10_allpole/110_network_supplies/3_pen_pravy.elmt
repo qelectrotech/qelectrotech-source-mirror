@@ -1,0 +1,37 @@
+<definition type="element" orientation="dyyy" height="80" hotspot_y="40" version="0.70" width="50" hotspot_x="23" link_type="simple">
+    <uuid uuid="{65b9e889-c2eb-4d85-aa9e-c1dff55678f5}"/>
+    <names>
+        <name lang="en">Three-pole source + PEN</name>
+        <name lang="el">Τριφασικό + PEN</name>
+        <name lang="es">Fuente tripolar + PEN</name>
+        <name lang="nl">driefasen + aardenul</name>
+        <name lang="pl">Linia trójfazowa (PEN)</name>
+        <name lang="it">Sorgente tripolare + PEN</name>
+        <name lang="de">Drehstrom + PEN</name>
+        <name lang="ru">Трёхполюсный + PEN</name>
+        <name lang="fr">Source tripolaire + PEN</name>
+        <name lang="ar">مصدر ثلاثي القطبيّة + PEN</name>
+        <name lang="cs">3 fáze + PEN pravý</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text z="1" Valignment="AlignTop" x="-7" text_from="ElementInfo" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" uuid="{7c68cf51-b979-4e89-97b2-a93b5ad61f95}" y="-60.45" Halignment="AlignLeft" frame="false" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text x="7" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="33" text="PEN" color="#000000"/>
+        <text x="7" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="13" text="L3" color="#000000"/>
+        <text x="7" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-7" text="L2" color="#000000"/>
+        <text x="7" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-27" text="L1" color="#000000"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x1="-15" y2="-30" end1="none" y1="-30" length1="1.5" length2="1.5" antialias="false" x2="-5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x1="-15" y2="-10" end1="none" y1="-10" length1="1.5" length2="1.5" antialias="false" x2="-5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x1="-15" y2="10" end1="none" y1="10" length1="1.5" length2="1.5" antialias="false" x2="-5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x1="-14" y2="30" end1="none" y1="30" length1="1.5" length2="1.5" antialias="false" x2="-5"/>
+        <terminal orientation="w" x="-15" y="-30"/>
+        <terminal orientation="w" x="-15" y="-10"/>
+        <terminal orientation="w" x="-15" y="30"/>
+        <terminal orientation="w" x="-15" y="10"/>
+    </description>
+</definition>

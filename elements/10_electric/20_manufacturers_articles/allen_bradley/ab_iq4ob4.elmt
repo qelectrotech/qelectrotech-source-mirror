@@ -1,0 +1,68 @@
+<definition version="0.80" orientation="dyyy" link_type="simple" height="120" hotspot_x="65" hotspot_y="59" type="element" width="130">
+    <uuid uuid="{02940448-0d5c-4c0e-8441-b1026bc8369e}"/>
+    <names>
+        <name lang="cs">Micro800 -  IQ4OB4</name>
+        <name lang="fr">Micro800 -  IQ4OB4</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="manufacturer" show="1">Allen Bradley</elementInformation>
+        <elementInformation name="designation" show="1">Micro800 -  IQ4OB4</elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <rect y="-50" style="line-style:normal;line-weight:normal;filling:white;color:black" x="-60" height="100" antialias="false" rx="0" ry="0" width="120"/>
+        <text y="31" x="49" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="90" text="O_03"/>
+        <text y="30.6742" x="29.5414" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="90" text="O_02"/>
+        <text y="30.7422" x="9.03281" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="90" text="O_01"/>
+        <text y="30.6313" x="-10.8016" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="90" text="O_00"/>
+        <text y="-46.25" x="48" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="90" text="I_03"/>
+        <text y="-46.25" x="28.6172" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="90" text="I_02"/>
+        <text y="-46" x="8.25" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="90" text="I_01"/>
+        <text y="-46.25" x="-11.8" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="90" text="I_00"/>
+        <text y="33.6718" x="-30.207" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="90" text="COM"/>
+        <text y="-48" x="-31.75" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="90" text="+24DC"/>
+        <rect y="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-60" height="40" antialias="false" rx="0" ry="0" width="120"/>
+        <text y="-4" x="-26" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" text="Micro800"/>
+        <text y="6" x="-30" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" text="2080 - IQ4OB4"/>
+        <text y="-47.75" x="-52.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="90" text="-24DC"/>
+        <text y="33.5024" x="-50.9672" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="90" text="COM"/>
+        <dynamic_text y="-71" z="17" text_width="-1" Halignment="AlignLeft" x="-80" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="ElementInfo" rotation="0" uuid="{af941ab4-c8e1-4e7a-90ed-b92ce5f43da2}" frame="false" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text y="8" z="18" text_width="-1" Halignment="AlignLeft" x="-62" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text_from="UserText" rotation="0" uuid="{eac63840-408f-4d3e-bf59-6f34c4351ad7}" frame="false" Valignment="AlignTop">
+            <text>Slot:</text>
+        </dynamic_text>
+        <line x1="-50" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-55" end1="none" length2="1.5" antialias="false" x2="-50" y1="-50"/>
+        <line x1="-30" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-55" end1="none" length2="1.5" antialias="false" x2="-30" y1="-50"/>
+        <line x1="-10" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-55" end1="none" length2="1.5" antialias="false" x2="-10" y1="-50"/>
+        <line x1="10" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-55" end1="none" length2="1.5" antialias="false" x2="10" y1="-50"/>
+        <line x1="30" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-55" end1="none" length2="1.5" antialias="false" x2="30" y1="-50"/>
+        <line x1="50" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-55" end1="none" length2="1.5" antialias="false" x2="50" y1="-50"/>
+        <line x1="-50" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="55" end1="none" length2="1.5" antialias="false" x2="-50" y1="50"/>
+        <line x1="-30" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="55" end1="none" length2="1.5" antialias="false" x2="-30" y1="50"/>
+        <line x1="-10" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="55" end1="none" length2="1.5" antialias="false" x2="-10" y1="50"/>
+        <line x1="10" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="55" end1="none" length2="1.5" antialias="false" x2="10" y1="50"/>
+        <line x1="30" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="55" end1="none" length2="1.5" antialias="false" x2="30" y1="50"/>
+        <line x1="50" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="55" end1="none" length2="1.5" antialias="false" x2="50" y1="50"/>
+        <terminal y="55" orientation="s" x="-50"/>
+        <terminal y="-55" orientation="n" x="-50"/>
+        <terminal y="55" orientation="s" x="10"/>
+        <terminal y="-55" orientation="n" x="30"/>
+        <terminal y="55" orientation="s" x="50"/>
+        <terminal y="-55" orientation="n" x="10"/>
+        <terminal y="55" orientation="s" x="-30"/>
+        <terminal y="-55" orientation="n" x="-30"/>
+        <terminal y="55" orientation="s" x="-10"/>
+        <terminal y="-55" orientation="n" x="50"/>
+        <terminal y="-55" orientation="n" x="-10"/>
+        <terminal y="55" orientation="s" x="30"/>
+    </description>
+</definition>

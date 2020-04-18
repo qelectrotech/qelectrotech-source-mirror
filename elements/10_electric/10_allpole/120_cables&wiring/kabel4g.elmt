@@ -1,0 +1,27 @@
+<definition type="element" height="10" link_type="simple" version="0.60" hotspot_x="36" hotspot_y="5" orientation="dyyy" width="90">
+    <uuid uuid="{e02f4582-b5dd-4f81-ba71-e3d5521b4152}"/>
+    <names>
+        <name lang="ru">Кабель 3 жилы + PE</name>
+        <name lang="pl">Oznaczenie przewodu czterożyłowego</name>
+        <name lang="cs">Kabel 4G</name>
+        <name lang="de">Kabel 4G</name>
+        <name lang="es">Cable 3 fases+tierra</name>
+        <name lang="it">Cavo 3 fasi + terra</name>
+        <name lang="fr">Cable 3 phases+terre</name>
+    </names>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x1="-2.05" y1="-2.05" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" length2="1.5" x2="1.95" y2="1.95" antialias="true"/>
+        <line x1="37.95" y1="-2.05" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" length2="1.5" x2="41.95" y2="1.95" antialias="true"/>
+        <line x1="18" y1="-2" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" length2="1.5" x2="22" y2="2" antialias="true"/>
+        <input size="7" tagg="none" rotate="true" x="-50" y="10" text="4G"/>
+        <line x1="-29.9373" y1="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" length2="1.5" x2="47.932" y2="0" antialias="false"/>
+        <line x1="-22" y1="-2" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" length2="1.5" x2="-18" y2="2" antialias="true"/>
+        <input size="7" tagg="label" rotate="true" x="-51" y="-9" text="_"/>
+        <input size="4" tagg="none" rotate="true" x="-22" y="-4" text="1"/>
+        <input size="4" tagg="none" rotate="true" x="-2" y="-4" text="2"/>
+        <input size="4" tagg="none" rotate="true" x="18" y="-4" text="3"/>
+        <input size="4" tagg="none" rotate="true" x="38" y="-4" text="PE"/>
+    </description>
+</definition>

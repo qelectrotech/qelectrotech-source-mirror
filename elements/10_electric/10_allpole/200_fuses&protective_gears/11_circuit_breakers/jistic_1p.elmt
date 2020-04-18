@@ -1,0 +1,47 @@
+<definition version="0.70" height="60" type="element" width="20" hotspot_x="10" link_type="master" hotspot_y="34" orientation="dyyy">
+    <uuid uuid="{820edcf9-d719-4728-bf86-d497c4994ce2}"/>
+    <names>
+        <name lang="cs">Jednopólový jistič</name>
+        <name lang="ar">قاطع أحدي القطب</name>
+        <name lang="en">Circuit-breaker</name>
+        <name lang="nl">Lastscheider 1</name>
+        <name lang="pl">Wyłącznik</name>
+        <name lang="it">Int. Aut. Magneto-termico 1P</name>
+        <name lang="de">Leitungsschutzschalter 1P</name>
+        <name lang="fr">Disjoncteur unipolaire</name>
+    </names>
+    <kindInformations>
+        <kindInformation name="type" show="1">protection</kindInformation>
+    </kindInformations>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line y1="16" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" length2="1.5" antialias="false" length1="1.5" end2="none" y2="20" end1="none" x2="0"/>
+        <polygon x3="-5" y1="3" y3="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" antialias="true" y2="0" closed="false" x2="0"/>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" x="-34" text_from="ElementInfo" y="-22" z="3" rotation="0" Valignment="AlignTop" text_width="-1" uuid="{4f18ba79-2f81-40eb-b34a-e0fa9b32537f}" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <arc height="5" x="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="-180" y="10.5" width="8" start="90" antialias="true"/>
+        <line y1="8" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" length2="1.5" antialias="false" length1="1.5" end2="none" y2="10" end1="none" x2="0"/>
+        <line y1="8" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" length2="1.5" antialias="false" length1="1.5" end2="none" y2="8" end1="none" x2="5"/>
+        <line y1="3" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="5" length2="1.5" antialias="false" length1="1.5" end2="none" y2="8" end1="none" x2="5"/>
+        <line y1="3" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" length2="1.5" antialias="false" length1="1.5" end2="none" y2="3" end1="none" x2="5"/>
+        <line y1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" length2="1.5" antialias="false" length1="1.5" end2="none" y2="-20" end1="none" x2="0"/>
+        <line y1="-22" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="2" length2="1.5" antialias="true" length1="1.5" end2="none" y2="-18" end1="none" x2="-2"/>
+        <line y1="-22" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-2" length2="1.5" antialias="true" length1="1.5" end2="none" y2="-18" end1="none" x2="2"/>
+        <dynamic_text font="Sans Serif,5,-1,5,25,0,0,0,0,0" frame="false" x="-2" text_from="UserText" y="-36" z="12" rotation="0" Valignment="AlignTop" text_width="-1" uuid="{6fcf35c5-27f9-4bfc-981e-558a8b81f94e}" Halignment="AlignLeft">
+            <text>1</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,5,-1,5,25,0,0,0,0,0" frame="false" x="0" text_from="UserText" y="9" z="13" rotation="0" Valignment="AlignTop" text_width="-1" uuid="{9dcbca2c-150b-4185-b3b0-969bafa07f27}" Halignment="AlignLeft">
+            <text>2</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,7,-1,5,0,0,0,0,0,0,normal" frame="false" x="-40" text_from="ElementInfo" y="-2" z="14" rotation="0" Valignment="AlignTop" text_width="-1" uuid="{838aaa47-a755-43e3-9584-95a7de914c0b}" Halignment="AlignLeft">
+            <text></text>
+            <info_name>comment</info_name>
+        </dynamic_text>
+        <terminal x="0" y="-30" orientation="n"/>
+        <terminal x="0" y="20" orientation="s"/>
+    </description>
+</definition>

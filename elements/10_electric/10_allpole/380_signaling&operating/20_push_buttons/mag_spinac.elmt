@@ -1,0 +1,64 @@
+<definition orientation="dyyy" hotspot_y="31" hotspot_x="29" width="80" version="0.80" type="element" height="60" link_type="simple">
+    <uuid uuid="{b4edcab9-dda2-4ef4-839d-e3875c61fed7}"/>
+    <names>
+        <name lang="ar">زرّ توقف طارئ (NC)</name>
+        <name lang="es">Parada de emergencia (NC)</name>
+        <name lang="pl">Łącznik przyciskowy (przycisk bezpieczeństwa)</name>
+        <name lang="it">Arresto d'emergenza</name>
+        <name lang="de">Pilzdrucktaster Öffner</name>
+        <name lang="pt">Paragem de emergência (NC)</name>
+        <name lang="fr">Arrêt d'urgence (NF)</name>
+        <name lang="cs">Dveřní spínač magnetický</name>
+        <name lang="en">Emergency stop (NC)</name>
+        <name lang="ru">Аварийный стоп</name>
+        <name lang="nl">Noodstop drukknop (NC)</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="manufacturer"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text x="21" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" y="-17" text="1" rotation="0"/>
+        <polygon x1="5" y1="-10" x2="0" x3="0" closed="false" antialias="true" y2="10" y3="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="21" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" y="18" text="2" rotation="0"/>
+        <text x="41" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" y="-17" text="3" rotation="0"/>
+        <text x="1" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" y="18" text="2" rotation="0"/>
+        <text x="41" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" y="18" text="4" rotation="0"/>
+        <line x1="0" y1="-9" end1="none" length1="1.5" length2="1.5" x2="6" antialias="false" end2="none" y2="-9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="0" y1="-20" end1="none" length1="1.5" length2="1.5" x2="0" antialias="false" end2="none" y2="-9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text z="9" text_width="-1" x="-42" uuid="{522765e1-81a1-4dfc-bba6-792fc10a339c}" Halignment="AlignLeft" font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" text_from="ElementInfo" Valignment="AlignTop" y="-7" rotation="0">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x1="20" y1="-18" end1="none" length1="1.5" length2="1.5" x2="20" antialias="false" end2="none" y2="-9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="20" y1="-9" end1="none" length1="1.5" length2="1.5" x2="26" antialias="false" end2="none" y2="-9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="20" y1="17" end1="none" length1="1.5" length2="1.5" x2="20" antialias="false" end2="none" y2="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="20" y1="10" end1="none" length1="1.5" length2="1.5" x2="25" antialias="false" end2="none" y2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="40" y1="-16" end1="none" length1="1.5" length2="1.5" x2="40" antialias="false" end2="none" y2="-9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="40" y1="16" end1="none" length1="1.5" length2="1.5" x2="40" antialias="false" end2="none" y2="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="40" y1="10" end1="none" length1="1.5" length2="1.5" x2="33" antialias="false" end2="none" y2="-9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="1" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" y="-17" text="1" rotation="0"/>
+        <polygon x1="-10" y1="0" y7="0" y6="0" x2="-15" y5="0" x6="-10" x3="-20" x7="-10" closed="false" antialias="false" x5="-10" x4="-15" y2="-5" y3="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="5"/>
+        <line x1="-16" y1="-4" end1="none" length1="1.5" length2="1.5" x2="-16" antialias="false" end2="none" y2="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line x1="-14" y1="-4" end1="none" length1="1.5" length2="1.5" x2="-14" antialias="false" end2="none" y2="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x8="-19" y6="-5" x6="-23" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-24" antialias="false" y7="5" y4="-6" x5="-19" y3="-6" x2="-24" y5="-5" x1="-19" x4="-19" y8="5" x7="-23" closed="false" y2="6" y1="6"/>
+        <line x1="-20" y1="-6" end1="none" length1="1.5" length2="1.5" x2="-23" antialias="false" end2="none" y2="-6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x1="-20" y1="-6" x2="-23" x3="-23" closed="false" antialias="false" x4="-19" y2="-6" y3="6" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="6"/>
+        <line x1="-10" y1="0" end1="none" length1="1.5" length2="1.5" x2="36" antialias="false" end2="none" y2="0" style="line-style:dashed;line-weight:thin;filling:none;color:black"/>
+        <terminal orientation="n" x="0" y="-20"/>
+        <terminal orientation="s" x="0" y="20"/>
+        <terminal orientation="s" x="20" y="20"/>
+        <terminal orientation="s" x="40" y="20"/>
+        <terminal orientation="n" x="40" y="-20"/>
+        <terminal orientation="n" x="20" y="-20"/>
+    </description>
+</definition>

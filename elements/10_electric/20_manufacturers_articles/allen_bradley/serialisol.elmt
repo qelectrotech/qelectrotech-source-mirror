@@ -1,0 +1,56 @@
+<definition version="0.80" orientation="dyyy" link_type="simple" height="120" hotspot_x="65" hotspot_y="59" type="element" width="130">
+    <uuid uuid="{233d6ccd-b758-4167-ae4a-14c846c2145f}"/>
+    <names>
+        <name lang="en">Micro800 - SERIALISOL</name>
+        <name lang="cs">Micro800 - SERIALISOL</name>
+        <name lang="fr">Micro800 - SERIALISOL</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="manufacturer" show="1">Allen Bradley</elementInformation>
+        <elementInformation name="designation" show="1">Micro800 - SERIALISOL</elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <rect y="-50" style="line-style:normal;line-weight:normal;filling:white;color:black" x="-60" height="100" antialias="false" rx="0" ry="0" width="120"/>
+        <text y="35.9681" x="49.1346" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="90" text="CTS"/>
+        <text y="36.2125" x="28.8959" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="90" text="RTS"/>
+        <text y="33.0588" x="9.22167" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="90" text="GND"/>
+        <text y="31.0113" x="-10.5856" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="90" text="+485"/>
+        <text y="-46.25" x="48" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="90" text="-485"/>
+        <text y="-46.25" x="28.4" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="90" text="TXD"/>
+        <text y="-46" x="8.25" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="90" text="RXD"/>
+        <text y="-46.25" x="-11.8" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" rotation="90" text="DCD"/>
+        <rect y="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-60" height="40" antialias="false" rx="0" ry="0" width="120"/>
+        <text y="0" x="-25" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" text="Micro800"/>
+        <text y="10" x="-30" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" text="2080 -SERIALISOL"/>
+        <text y="-35" x="-50" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" text="B"/>
+        <text y="35" x="-50" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" rotation="0" text="A"/>
+        <dynamic_text y="-71" z="15" text_width="-1" Halignment="AlignLeft" x="-80" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="ElementInfo" rotation="0" uuid="{9c4a380d-f359-4dc1-a6f1-5d67b8cc2656}" frame="false" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x1="-10" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-55" end1="none" length2="1.5" antialias="false" x2="-10" y1="-50"/>
+        <line x1="10" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-55" end1="none" length2="1.5" antialias="false" x2="10" y1="-50"/>
+        <line x1="30" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-55" end1="none" length2="1.5" antialias="false" x2="30" y1="-50"/>
+        <line x1="50" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-55" end1="none" length2="1.5" antialias="false" x2="50" y1="-50"/>
+        <line x1="50" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="50" end1="none" length2="1.5" antialias="false" x2="50" y1="55"/>
+        <line x1="30" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="50" end1="none" length2="1.5" antialias="false" x2="30" y1="55"/>
+        <line x1="10" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="50" end1="none" length2="1.5" antialias="false" x2="10" y1="55"/>
+        <line x1="-10" end2="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="50" end1="none" length2="1.5" antialias="false" x2="-10" y1="55"/>
+        <terminal y="-55" orientation="n" x="-10"/>
+        <terminal y="-55" orientation="n" x="10"/>
+        <terminal y="55" orientation="s" x="10"/>
+        <terminal y="55" orientation="s" x="-10"/>
+        <terminal y="-55" orientation="n" x="50"/>
+        <terminal y="55" orientation="s" x="30"/>
+        <terminal y="55" orientation="s" x="50"/>
+        <terminal y="-55" orientation="n" x="30"/>
+    </description>
+</definition>

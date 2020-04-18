@@ -1,0 +1,63 @@
+<definition hotspot_x="45" link_type="simple" height="100" type="element" width="90" version="0.80" hotspot_y="49" orientation="dyyy">
+    <uuid uuid="{a9abc5f7-020e-4b5e-b4e8-c0d39290d384}"/>
+    <names>
+        <name lang="cs">Převodník RS485 na I2C</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="manufacturer"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <rect antialias="false" y="-40" ry="0" height="80" style="line-style:normal;line-weight:normal;filling:white;color:black" width="80" x="-40" rx="0"/>
+        <line antialias="false" x2="-20" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="-20" y1="-45" y2="-40" end2="none" length2="1.5"/>
+        <line antialias="false" x2="-10" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="-10" y1="-45" y2="-40" end2="none" length2="1.5"/>
+        <line antialias="false" x2="10" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="10" y1="-45" y2="-40" end2="none" length2="1.5"/>
+        <line antialias="false" x2="20" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="20" y1="-45" y2="-40" end2="none" length2="1.5"/>
+        <line antialias="false" x2="-20" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="-20" y1="40" y2="45" end2="none" length2="1.5"/>
+        <line antialias="false" x2="-10" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="-10" y1="40" y2="45" end2="none" length2="1.5"/>
+        <line antialias="false" x2="0" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="0" y1="40" y2="45" end2="none" length2="1.5"/>
+        <line antialias="false" x2="10" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="10" y1="40" y2="45" end2="none" length2="1.5"/>
+        <line antialias="false" x2="20" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="20" y1="40" y2="45" end2="none" length2="1.5"/>
+        <text y="-5.25" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-17.25" rotation="270" text="DATA+" color="#000000"/>
+        <text y="-5.25" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-4" rotation="270" text="DATA-" color="#000000"/>
+        <text y="-17.75" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="15.5" rotation="270" text="+Ub" color="#000000"/>
+        <text y="-21.5" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="25.75" rotation="270" text="-Ub" color="#000000"/>
+        <text y="35" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-25" rotation="0" text="1" color="#000000"/>
+        <text y="35" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-15" rotation="0" text="2" color="#000000"/>
+        <text y="35" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-5" rotation="0" text="3" color="#000000"/>
+        <text y="35" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="5" rotation="0" text="4" color="#000000"/>
+        <text y="35" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="15" rotation="0" text="5" color="#000000"/>
+        <text y="10" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-30" rotation="0" text="RS485/I2C" color="#000000"/>
+        <dynamic_text y="-40" z="21" Valignment="AlignTop" text_from="ElementInfo" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" uuid="{a709e01c-eb4a-44af-9b5d-c57f1350b98b}" frame="false" x="-65" Halignment="AlignLeft" rotation="0" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text y="-35" z="22" Valignment="AlignTop" text_from="ElementInfo" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" uuid="{ac9ea9a8-85a3-4a84-89c5-9f3af69804b3}" frame="false" x="-65" Halignment="AlignLeft" rotation="0" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text y="-45" z="23" Valignment="AlignTop" text_from="UserText" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" uuid="{40770369-fcd3-40e2-ac97-1f3b0b903e5e}" frame="false" x="-65" Halignment="AlignLeft" rotation="0" text_width="-1">
+            <text>A</text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal y="-45" orientation="n" x="10"/>
+        <terminal y="45" orientation="s" x="-10"/>
+        <terminal y="-45" orientation="n" x="20"/>
+        <terminal y="45" orientation="s" x="-20"/>
+        <terminal y="-45" orientation="n" x="-20"/>
+        <terminal y="45" orientation="s" x="10"/>
+        <terminal y="45" orientation="s" x="0"/>
+        <terminal y="-45" orientation="n" x="-10"/>
+        <terminal y="45" orientation="s" x="20"/>
+    </description>
+</definition>

@@ -1,0 +1,58 @@
+<definition hotspot_x="35" link_type="simple" height="80" type="element" width="70" version="0.80" hotspot_y="40" orientation="dyyy">
+    <uuid uuid="{617264c1-5351-4e5e-9a43-eeb1077403ce}"/>
+    <names>
+        <name lang="cs">Filtr KFS 4300</name>
+        <name lang="fr">Filtre KFS 4300</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="manufacturer"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <rect antialias="false" y="-30" ry="0" height="60" style="line-style:normal;line-weight:normal;filling:white;color:black" width="60" x="-30" rx="0"/>
+        <arc antialias="true" y="30" height="6" angle="180" style="line-style:normal;line-weight:normal;filling:none;color:black" width="6" start="0" x="-3"/>
+        <dynamic_text y="-33" z="3" Valignment="AlignTop" text_from="UserText" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{2a587053-e9d5-486e-8426-2ce8b00de2b3}" frame="false" x="-6" Halignment="AlignLeft" rotation="0" text_width="-1">
+            <text>N</text>
+        </dynamic_text>
+        <arc antialias="true" y="30" height="6" angle="180" style="line-style:normal;line-weight:normal;filling:none;color:black" width="6" start="0" x="17"/>
+        <dynamic_text y="19" z="5" Valignment="AlignTop" text_from="UserText" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{cc5bfc34-c77d-40f2-963e-4415896c4644}" frame="false" x="-6" Halignment="AlignLeft" rotation="0" text_width="-1">
+            <text>N</text>
+        </dynamic_text>
+        <dynamic_text y="19" z="6" Valignment="AlignTop" text_from="UserText" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{044badff-81f8-42b3-ad05-ae83e0130580}" frame="false" x="12" Halignment="AlignLeft" rotation="0" text_width="-1">
+            <text>PE</text>
+        </dynamic_text>
+        <arc antialias="true" y="30" height="6" angle="180" style="line-style:normal;line-weight:normal;filling:none;color:black" width="6" start="0" x="-23"/>
+        <dynamic_text y="-33" z="8" Valignment="AlignTop" text_from="UserText" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{ac22be33-0c3a-4800-a4ee-c972333c01ab}" frame="false" x="12" Halignment="AlignLeft" rotation="0" text_width="-1">
+            <text>PE</text>
+        </dynamic_text>
+        <dynamic_text y="-33" z="9" Valignment="AlignTop" text_from="UserText" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{33de4ed1-00ff-4393-80f9-f2fa8047f4ed}" frame="false" x="-26" Halignment="AlignLeft" rotation="0" text_width="-1">
+            <text>L</text>
+        </dynamic_text>
+        <dynamic_text y="19" z="10" Valignment="AlignTop" text_from="UserText" font="Sans Serif,4,-1,5,25,0,0,0,0,0" uuid="{51c4bfff-f3a0-487e-b5c5-a62d5fafd0de}" frame="false" x="-26" Halignment="AlignLeft" rotation="0" text_width="-1">
+            <text>L</text>
+        </dynamic_text>
+        <dynamic_text y="-16" z="11" Valignment="AlignTop" text_from="UserText" font="Sans Serif,5,-1,5,50,0,0,0,0,0" uuid="{0d659559-bd21-47e3-b9f9-09a21cf1c7ee}" frame="false" x="-18" Halignment="AlignLeft" rotation="0" text_width="-1">
+            <text>Schurter
+KFS4300
+5055</text>
+        </dynamic_text>
+        <dynamic_text y="-33" z="12" Valignment="AlignTop" text_from="ElementInfo" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{f309ca0f-77ef-4b89-99ae-1b82b81affb3}" frame="false" x="-50" Halignment="AlignLeft" rotation="0" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line antialias="false" x2="-20" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="-20" y1="-30" y2="-34" end2="none" length2="1.5"/>
+        <line antialias="false" x2="0" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="0" y1="-30" y2="-34" end2="none" length2="1.5"/>
+        <line antialias="false" x2="20" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="20" y1="-30" y2="-34" end2="none" length2="1.5"/>
+        <terminal y="-34" orientation="n" x="0"/>
+        <terminal y="-34" orientation="n" x="20"/>
+        <terminal y="-34" orientation="n" x="-20"/>
+    </description>
+</definition>

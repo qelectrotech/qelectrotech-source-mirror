@@ -1,0 +1,33 @@
+<definition width="70" hotspot_x="35" hotspot_y="5" orientation="dyyy" version="0.80" type="element" height="10" link_type="simple">
+    <uuid uuid="{3cfdc90d-f114-4ecd-9ab2-37786c279287}"/>
+    <names>
+        <name lang="de">Kabel 3G</name>
+        <name lang="fr">Cable 3G</name>
+        <name lang="cs">Kabel 3G</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x2="1.95" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2.05" length2="1.5" antialias="true" y2="1.95" end2="none" x1="-2.05" length1="1.5"/>
+        <line x2="22" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" length2="1.5" antialias="true" y2="2" end2="none" x1="18" length1="1.5"/>
+        <dynamic_text text_width="-1" font="Sans Serif,7,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" z="3" Valignment="AlignTop" frame="false" x="-50" uuid="{fe752adf-2e2b-4005-a272-42dd6976c493}" y="0.5" text_from="UserText" rotation="0">
+            <text>3G</text>
+        </dynamic_text>
+        <line x2="30" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" length2="1.5" antialias="false" y2="0" end2="none" x1="-29.9373" length1="1.5"/>
+        <line x2="-18" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" length2="1.5" antialias="true" y2="2" end2="none" x1="-22" length1="1.5"/>
+        <dynamic_text text_width="-1" font="Sans Serif,7,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" z="6" Valignment="AlignTop" frame="false" x="-51" uuid="{65bfd07e-7af5-4193-a5ba-b3dc967da121}" y="-18.5" text_from="ElementInfo" rotation="0">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text text_width="-1" font="Sans Serif,4,-1,5,25,0,0,0,0,0" Halignment="AlignLeft" z="7" Valignment="AlignTop" frame="false" x="-22" uuid="{df01c7dd-b2e7-4b24-9057-b8bc3478ff67}" y="-11" text_from="UserText" rotation="0">
+            <text>1</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" font="Sans Serif,4,-1,5,25,0,0,0,0,0" Halignment="AlignLeft" z="8" Valignment="AlignTop" frame="false" x="-2" uuid="{ce5a0030-5247-47ab-a975-63256db0d2bd}" y="-11" text_from="UserText" rotation="0">
+            <text>2</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" font="Sans Serif,4,-1,5,25,0,0,0,0,0" Halignment="AlignLeft" z="9" Valignment="AlignTop" frame="false" x="18" uuid="{e0a00f86-dd76-48fe-be8b-8ff6f510e651}" y="-11" text_from="UserText" rotation="0">
+            <text>PE</text>
+        </dynamic_text>
+    </description>
+</definition>
