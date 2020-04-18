@@ -1,0 +1,44 @@
+<definition link_type="simple" height="40" width="40" orientation="dyyy" version="0.80" type="element" hotspot_y="19" hotspot_x="19">
+    <uuid uuid="{3b52c7d1-d848-4b39-be83-98dfb325fab7}"/>
+    <names>
+        <name lang="en">Graetz</name>
+        <name lang="cs">Graetz</name>
+        <name lang="fr">Pont de Graetz</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="designation" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <line x2="-3" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-3" y1="-3" length2="1.5" y2="3" antialias="false" length1="1.5" end2="none"/>
+        <line x2="2" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-3" y1="3" length2="1.5" y2="0" antialias="false" length1="1.5" end2="none"/>
+        <line x2="-3" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="2" y1="0" length2="1.5" y2="-3" antialias="false" length1="1.5" end2="none"/>
+        <line x2="2" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="2" y1="-3" length2="1.5" y2="3" antialias="false" length1="1.5" end2="none"/>
+        <line x2="-4" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-6" y1="0" length2="1.5" y2="0" antialias="false" length1="1.5" end2="none"/>
+        <line x2="5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="2" y1="0" length2="1.5" y2="0" antialias="false" length1="1.5" end2="none"/>
+        <line x2="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10" y1="0" length2="1.5" y2="-10" antialias="false" length1="1.5" end2="none"/>
+        <line x2="10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y1="-10" length2="1.5" y2="0" antialias="false" length1="1.5" end2="none"/>
+        <line x2="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10" y1="0" length2="1.5" y2="10" antialias="false" length1="1.5" end2="none"/>
+        <line x2="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y1="10" length2="1.5" y2="0" antialias="false" length1="1.5" end2="none"/>
+        <dynamic_text text_width="-1" y="-22" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="ElementInfo" Halignment="AlignLeft" Valignment="AlignTop" uuid="{36037412-7fa8-4e88-8188-7675ed4ff88e}" frame="false" rotation="0" x="-23" z="11">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x2="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-14" y1="0" length2="1.5" y2="0" antialias="false" length1="1.5" end2="none"/>
+        <line x2="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y1="-14" length2="1.5" y2="-10" antialias="false" length1="1.5" end2="none"/>
+        <line x2="14" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10" y1="0" length2="1.5" y2="0" antialias="false" length1="1.5" end2="none"/>
+        <line x2="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" y1="10" length2="1.5" y2="14" antialias="false" length1="1.5" end2="none"/>
+        <terminal y="0" orientation="w" x="-15"/>
+        <terminal y="15" orientation="s" x="0"/>
+        <terminal y="-14" orientation="n" x="0"/>
+        <terminal y="0" orientation="e" x="15"/>
+    </description>
+</definition>

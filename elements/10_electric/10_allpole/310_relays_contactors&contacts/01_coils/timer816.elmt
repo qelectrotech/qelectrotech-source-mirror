@@ -1,0 +1,28 @@
+<definition type="element" orientation="dyyy" height="50" hotspot_y="25" version="0.70" width="40" hotspot_x="23" link_type="master">
+    <uuid uuid="{2abf6e68-2359-4b1b-b468-f7842007f956}"/>
+    <names>
+        <name lang="cs">Timer T 816</name>
+    </names>
+    <kindInformations>
+        <kindInformation show="1" name="type">coil</kindInformation>
+    </kindInformations>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-14" height="15" rx="0" width="28" y="-8" ry="0" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:black;color:black" x="-20" height="15" rx="0" width="5" y="-8" ry="0" antialias="false"/>
+        <dynamic_text z="3" Valignment="AlignTop" x="-45" text_from="ElementInfo" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" uuid="{9b8efa95-7359-4c1f-84ce-b9787d530cd9}" y="-12" Halignment="AlignLeft" frame="false" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text x="2" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-10" text="2" color="#000000"/>
+        <text x="1" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="15" text="10" color="#000000"/>
+        <text x="-9" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-10" text="5" color="#000000"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x1="0" y2="-15" end1="none" y1="-8" length1="1.5" length2="1.5" antialias="false" x2="0"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x1="0" y2="15" end1="none" y1="7" length1="1.5" length2="1.5" antialias="false" x2="0"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x1="-10" y2="-15" end1="none" y1="-8" length1="1.5" length2="1.5" antialias="false" x2="-10"/>
+        <terminal orientation="n" x="-10" y="-15"/>
+        <terminal orientation="n" x="0" y="-15"/>
+        <terminal orientation="s" x="0" y="15"/>
+    </description>
+</definition>

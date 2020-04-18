@@ -1,0 +1,31 @@
+<definition version="0.70" height="50" type="element" width="30" hotspot_x="12" link_type="slave" hotspot_y="24" orientation="dyyy">
+    <uuid uuid="{90fe1aa6-d017-4064-8ce7-242a4b7b416a}"/>
+    <names>
+        <name lang="cs">Zpožděný odpad </name>
+    </names>
+    <kindInformations>
+        <kindInformation name="state" show="1">NO</kindInformation>
+        <kindInformation name="number" show="1">1</kindInformation>
+        <kindInformation name="type" show="1">delayOff</kindInformation>
+    </kindInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x3="10" y1="-10" y3="20" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="5" antialias="true" y2="10" closed="false" x2="10"/>
+        <line y1="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10" length2="1.5" antialias="false" length1="1.5" end2="none" y2="-10" end1="none" x2="10"/>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" x="-23" text_from="ElementInfo" y="-12" z="3" rotation="0" Valignment="AlignTop" text_width="-1" uuid="{87554fe0-c02a-4473-81d1-4cb89205402c}" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,5,-1,5,25,0,0,0,0,0" frame="false" x="7" text_from="UserText" y="-26" z="4" rotation="0" Valignment="AlignTop" text_width="-1" uuid="{07fe6bcb-92fd-4fef-bef4-595fab066fa2}" Halignment="AlignLeft">
+            <text>15</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,5,-1,5,25,0,0,0,0,0" frame="false" x="7" text_from="UserText" y="9" z="5" rotation="0" Valignment="AlignTop" text_width="-1" uuid="{bbc34c0f-1331-4499-8663-978b944c8287}" Halignment="AlignLeft">
+            <text>18</text>
+        </dynamic_text>
+        <line y1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="7" length2="1.5" antialias="false" length1="1.5" end2="none" y2="0" end1="none" x2="3"/>
+        <arc height="10" x="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="180" y="-5" width="10" start="270" antialias="true"/>
+        <terminal x="10" y="20" orientation="s"/>
+        <terminal x="10" y="-20" orientation="n"/>
+    </description>
+</definition>

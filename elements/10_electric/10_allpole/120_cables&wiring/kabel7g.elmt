@@ -1,0 +1,33 @@
+<definition type="element" height="10" link_type="simple" version="0.60" hotspot_x="73" hotspot_y="5" orientation="dyyy" width="150">
+    <uuid uuid="{d1007c67-032b-4925-8560-aac9e547d6ae}"/>
+    <names>
+        <name lang="ru">Кабель 6 жилы + PE</name>
+        <name lang="pl">Oznaczenie przewodu czterożyłowego</name>
+        <name lang="cs">Kabel 7G</name>
+        <name lang="de">Kabel 7G</name>
+        <name lang="es">Cable 6 fases+tierra</name>
+        <name lang="it">Cavo  fasi + terra</name>
+        <name lang="fr">Cable 6 phases+terre</name>
+    </names>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input size="4" tagg="none" rotate="true" x="38" y="-4" text="6"/>
+        <input size="4" tagg="none" rotate="true" x="18" y="-4" text="5"/>
+        <input size="4" tagg="none" rotate="true" x="-2" y="-4" text="4"/>
+        <line x1="57.95" y1="-2.05" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" length2="1.5" x2="61.95" y2="1.95" antialias="true"/>
+        <line x1="-42.05" y1="-2.05" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" length2="1.5" x2="-38.05" y2="1.95" antialias="true"/>
+        <line x1="37.95" y1="-2.05" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" length2="1.5" x2="41.95" y2="1.95" antialias="true"/>
+        <line x1="17.95" y1="-2.05" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" length2="1.5" x2="21.95" y2="1.95" antialias="true"/>
+        <line x1="-2.05" y1="-2.05" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" length2="1.5" x2="1.95" y2="1.95" antialias="true"/>
+        <line x1="-22" y1="-2" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" length2="1.5" x2="-18" y2="2" antialias="true"/>
+        <input size="7" tagg="none" rotate="true" x="-89" y="10" text="7G"/>
+        <line x1="-67.9373" y1="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" length2="1.5" x2="71" y2="0" antialias="false"/>
+        <line x1="-62" y1="-2" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" length2="1.5" x2="-58" y2="2" antialias="true"/>
+        <input size="7" tagg="label" rotate="true" x="-90" y="-9" text="_"/>
+        <input size="4" tagg="none" rotate="true" x="-62" y="-4" text="1"/>
+        <input size="4" tagg="none" rotate="true" x="-42" y="-4" text="2"/>
+        <input size="4" tagg="none" rotate="true" x="-22" y="-4" text="3"/>
+        <input size="4" tagg="none" rotate="true" x="58" y="-4" text="PE"/>
+    </description>
+</definition>

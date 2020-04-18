@@ -1,0 +1,44 @@
+<definition hotspot_x="34" link_type="simple" height="60" type="element" width="70" version="0.80" hotspot_y="38" orientation="dyyy">
+    <uuid uuid="{fc322143-365e-480b-a75c-89171b76cf32}"/>
+    <names>
+        <name lang="cs">Krokový motor</name>
+        <name lang="fr">moteur pas à pas</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="manufacturer"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle antialias="true" y="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30" x="-15"/>
+        <text y="1" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-5" rotation="0" text="M" color="#000000"/>
+        <dynamic_text y="-3" z="3" Valignment="AlignTop" text_from="ElementInfo" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{5d6b4935-398b-4999-ae36-818b4796a984}" frame="false" x="-46" Halignment="AlignLeft" rotation="0" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text y="24" z="4" Valignment="AlignTop" text_from="ElementInfo" font="Sans Serif,7,-1,5,50,0,0,0,0,0" uuid="{3f25d559-525f-4f82-ac21-8a51e33d9a4a}" frame="false" x="-20" Halignment="AlignLeft" rotation="0" text_width="-1">
+            <text></text>
+        </dynamic_text>
+        <dynamic_text y="69" z="5" Valignment="AlignTop" text_from="ElementInfo" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{d2f22986-69e5-4e41-97b6-d9e2805837e7}" frame="false" x="-10" Halignment="AlignLeft" rotation="0" text_width="-1">
+            <text></text>
+            <info_name>tension-protocol</info_name>
+        </dynamic_text>
+        <polygon antialias="false" x2="-7" y5="2" y4="2" x5="6" x3="6" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="5" x1="-7" y1="8" closed="false" y2="5" x4="6"/>
+        <polygon antialias="false" x2="-10" x3="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="-14" x1="-10" y1="-30" closed="false" y2="-20"/>
+        <polygon antialias="false" x2="10" x3="7" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="-14" x1="10" y1="-30" closed="false" y2="-20"/>
+        <polygon antialias="false" x2="30" x3="13" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="-8" x1="30" y1="-30" closed="false" y2="-20"/>
+        <polygon antialias="false" x2="-30" x3="-13" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="-8" x1="-30" y1="-30" closed="false" y2="-20"/>
+        <terminal y="-30" orientation="n" x="30"/>
+        <terminal y="-30" orientation="n" x="-10"/>
+        <terminal y="-30" orientation="n" x="10"/>
+        <terminal y="-30" orientation="n" x="-30"/>
+    </description>
+</definition>
