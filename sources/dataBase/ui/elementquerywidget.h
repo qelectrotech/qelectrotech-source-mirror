@@ -60,6 +60,8 @@ class ElementQueryWidget : public QWidget
 		QPair<int, QString> FilterFor(const QString &key) const;
 
 		void on_m_choosen_list_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous);
+		void on_m_var_list_itemDoubleClicked(QListWidgetItem *item);
+		void on_m_choosen_list_itemDoubleClicked(QListWidgetItem *item);
 
 		private:
 		Ui::ElementQueryWidget *ui;

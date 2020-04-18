@@ -384,3 +384,13 @@ void ElementQueryWidget::on_m_choosen_list_currentItemChanged(QListWidgetItem *c
 	ui->m_filter_le->setText(p.second);
 	ui->m_filter_le->setEnabled(p.first>=3);
 }
+
+void ElementQueryWidget::on_m_var_list_itemDoubleClicked(QListWidgetItem *item) {
+	Q_UNUSED(item)
+	on_m_add_pb_clicked();
+}
+
+void ElementQueryWidget::on_m_choosen_list_itemDoubleClicked(QListWidgetItem *item) {
+	Q_UNUSED(item)
+	on_m_remove_pb_clicked();
+}
