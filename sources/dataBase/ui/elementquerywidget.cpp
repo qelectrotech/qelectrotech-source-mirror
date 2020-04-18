@@ -156,11 +156,33 @@ QString ElementQueryWidget::queryStr() const
 
 	if (ui->m_all_cb->checkState() == Qt::PartiallyChecked)
 	{
-		if (ui->m_terminal_cb->isChecked())   {where += " AND e.type = 'Terminale'";}
-		if (ui->m_simple_cb->isChecked())     {where += " AND e.type = 'Simple'";}
-		if (ui->m_button_cb->isChecked())     {where += " AND e.sub_type = 'commutator'";}
-		if (ui->m_coil_cb->isChecked())       {where += " AND e.sub_type = 'coil'";}
-		if (ui->m_protection_cb->isChecked()) {where += " AND e.sub_type = 'protection'";}
+		bool b = false;
+		where += " AND (";
+		if (ui->m_terminal_cb->isChecked()) {
+			if (b) where +=" OR";
+			where += " e.type = 'Terminale'";
+			b = true;
+		}
+		if (ui->m_simple_cb->isChecked()) {
+			if (b) where +=" OR";
+			where += " e.type = 'Simple'";
+			b = true;
+		}
+		if (ui->m_button_cb->isChecked())     {
+			if (b) where +=" OR";
+			where += " e.sub_type = 'commutator'";
+			b = true;
+		}
+		if (ui->m_coil_cb->isChecked()) {
+			if (b) where +=" OR";
+			where += " e.sub_type = 'coil'";
+			b = true;
+		}
+		if (ui->m_protection_cb->isChecked()) {
+			if (b) where +=" OR";
+			where += " e.sub_type = 'protection'";
+		}
+		where += ")";
 	}
 	
 
