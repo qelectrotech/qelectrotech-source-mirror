@@ -1,0 +1,23 @@
+<definition version="0.70" height="50" type="element" width="30" hotspot_x="22" link_type="simple" hotspot_y="25" orientation="dyyy">
+    <uuid uuid="{9a1d4a4a-3715-4424-9b87-cb14c0e1cf65}"/>
+    <names>
+        <name lang="cs">Spínací tlačítko</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <line y1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" length2="1.5" antialias="false" length1="1.5" end2="none" y2="-15" end1="none" x2="0"/>
+        <line y1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" length2="1.5" antialias="false" length1="1.5" end2="none" y2="15" end1="none" x2="0"/>
+        <line y1="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" length2="1.5" antialias="false" length1="1.5" end2="none" y2="-10" end1="none" x2="-5"/>
+        <line y1="0" style="line-style:dashed;line-weight:normal;filling:none;color:black" x1="-5" length2="1.5" antialias="false" length1="1.5" end2="none" y2="0" end1="none" x2="-20"/>
+        <polygon x3="-20" y1="-5" y3="5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-15" antialias="false" y4="5" y2="-5" x4="-15" closed="false" x2="-20"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="1" color="#000000" text="3" y="-12" rotation="0"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="1" color="#000000" text="4" y="13" rotation="0"/>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" x="-46" text_from="ElementInfo" y="-13" z="8" rotation="0" Valignment="AlignTop" text_width="-1" uuid="{6d243ebc-046d-41a5-a109-0885e709b987}" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal x="0" y="15" orientation="s"/>
+        <terminal x="0" y="-15" orientation="n"/>
+    </description>
+</definition>

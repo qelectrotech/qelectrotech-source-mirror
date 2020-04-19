@@ -1,0 +1,42 @@
+<definition hotspot_y="19" link_type="simple" hotspot_x="13" orientation="dyyy" version="0.80" width="20" height="40" type="element">
+    <uuid uuid="{db0d94b0-30de-4477-b693-49af4da70f3e}"/>
+    <names>
+        <name lang="fr">Porte fusible</name>
+        <name lang="cs">Pojistkový odpínač</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <dynamic_text text_width="-1" text_from="UserText" y="-22" x="-3" z="1" Valignment="AlignTop" font="Sans Serif,5,-1,5,25,0,0,0,0,0" rotation="0" frame="false" uuid="{d3f026c2-4718-4cf6-b783-49b6080d3ec3}" Halignment="AlignLeft">
+            <text>1</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" text_from="UserText" y="4" x="-2" z="2" Valignment="AlignTop" font="Sans Serif,5,-1,5,25,0,0,0,0,0" rotation="0" frame="false" uuid="{f3c9c54f-bc4f-44b6-a691-e28a08f857d2}" Halignment="AlignLeft">
+            <text>2</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" text_from="ElementInfo" y="-15" x="-28" z="3" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" frame="false" uuid="{0e5e65df-6f92-4dc2-a46e-040c5e3e1d6c}" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon x3="-8.77479" y2="10.8817" y3="-6.81657" y1="8.87394" y4="-8.81219" x5="2.8423" x1="2.82578" x4="-3.13713" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-2.92493" closed="false" y5="8.89046" antialias="true"/>
+        <line y2="10.0885" length2="1.5" y1="-7.79981" x1="-5.91596" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0.01823" antialias="true"/>
+        <line y2="-10" length2="1.5" y1="-10" x1="-3" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="3" antialias="false"/>
+        <dynamic_text text_width="-1" text_from="ElementInfo" y="2" x="-34" z="7" Valignment="AlignTop" font="Sans Serif,7,-1,5,0,0,0,0,0,0,normal" rotation="0" frame="false" uuid="{f61998ec-d878-4737-9e74-8679a306af5a}" Halignment="AlignLeft">
+            <text></text>
+            <info_name>comment</info_name>
+        </dynamic_text>
+        <line y2="-15" length2="1.5" y1="-10" x1="0" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" antialias="false"/>
+        <line y2="15" length2="1.5" y1="10" x1="0" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" antialias="false"/>
+        <terminal y="15" orientation="s" x="0"/>
+        <terminal y="-15" orientation="n" x="0"/>
+    </description>
+</definition>

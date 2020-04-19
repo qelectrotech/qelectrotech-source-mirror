@@ -1,0 +1,58 @@
+<definition version="0.70" height="80" type="element" width="80" hotspot_x="28" link_type="simple" hotspot_y="57" orientation="dyyy">
+    <uuid uuid="{9f3d68cf-4c3e-40b1-9331-ebcff6b3a54b}"/>
+    <names>
+        <name lang="cs">Jednofázový motor</name>
+        <name lang="ar">محرّك ثلاثي الأوجه</name>
+        <name lang="pt">Motor trifásico</name>
+        <name lang="en">One-phase engine</name>
+        <name lang="pl">Silnik trójfazowy</name>
+        <name lang="nl">Draaistroommotor</name>
+        <name lang="ru">Однофазный эл. мотор</name>
+        <name lang="de">Drehstrom Motor</name>
+        <name lang="it">Motore trifase</name>
+        <name lang="fr">Moteur triphasé</name>
+        <name lang="es">Motor trifásico</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="2" color="#000000" text="U2" y="-45" rotation="0"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="22" color="#000000" text="PE" y="-45" rotation="0"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-5" color="#000000" text="M" y="-2" rotation="0"/>
+        <circle x="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-20" antialias="true" diameter="40"/>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" x="-51" text_from="ElementInfo" y="-11.5" z="5" rotation="0" Valignment="AlignTop" text_width="-1" uuid="{3afac6d2-0ab0-4395-883d-25092cbcf9f0}" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line y1="-51" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" length2="1.5" antialias="false" length1="1.5" end2="none" y2="-30" end1="none" x2="0"/>
+        <line y1="-51" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-20" length2="1.5" antialias="false" length1="1.5" end2="none" y2="-23" end1="none" x2="-20"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-8" color="#000000" text="1 ~" y="8" rotation="0"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-18" color="#000000" text="U1" y="-45" rotation="0"/>
+        <line y1="-45" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="20" length2="1.5" antialias="false" length1="1.5" end2="none" y2="-23" end1="none" x2="20"/>
+        <line y1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-20" length2="1.5" antialias="false" length1="1.5" end2="none" y2="-40" end1="none" x2="40"/>
+        <line y1="-29" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="40" length2="1.5" antialias="false" length1="1.5" end2="none" y2="-22" end1="none" x2="40"/>
+        <line y1="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="40" length2="1.5" antialias="false" length1="1.5" end2="none" y2="-31" end1="none" x2="40"/>
+        <circle x="-21" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-41" antialias="false" diameter="2"/>
+        <line y1="-51" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="20" length2="1.5" antialias="false" length1="1.5" end2="none" y2="-46" end1="none" x2="20"/>
+        <line y1="-22" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="40" length2="1.5" antialias="true" length1="1.5" end2="none" y2="-9" end1="none" x2="18"/>
+        <line y1="-31" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="35" length2="1.5" antialias="false" length1="1.5" end2="none" y2="-31" end1="none" x2="45"/>
+        <line y1="-29" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="35" length2="1.5" antialias="false" length1="1.5" end2="none" y2="-29" end1="none" x2="45"/>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" x="-30" text_from="ElementInfo" y="99" z="19" rotation="0" Valignment="AlignTop" text_width="-1" uuid="{82cbe610-484f-4b00-977a-774877ace119}" Halignment="AlignLeft">
+            <text></text>
+            <info_name>function</info_name>
+        </dynamic_text>
+        <line y1="-23" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-20" length2="1.5" antialias="false" length1="1.5" end2="none" y2="-15" end1="none" x2="-14"/>
+        <line y1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" length2="1.5" antialias="false" length1="1.5" end2="none" y2="-20" end1="none" x2="0"/>
+        <line y1="-23" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="20" length2="1.5" antialias="false" length1="1.5" end2="none" y2="-15" end1="none" x2="14"/>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" x="-25" text_from="UserText" y="23" z="23" rotation="0" Valignment="AlignTop" text_width="-1" uuid="{786fb0d7-59c9-4f4f-913b-d023822c8ddb}" Halignment="AlignLeft">
+            <text>0,37kW
+2800 rpm
+2,4A
+230V/50Hz</text>
+        </dynamic_text>
+        <terminal x="0" y="-50" orientation="n"/>
+        <terminal x="-20" y="-50" orientation="n"/>
+        <terminal x="20" y="-50" orientation="n"/>
+    </description>
+</definition>

@@ -1,0 +1,54 @@
+<definition hotspot_x="36" link_type="simple" height="80" type="element" width="100" version="0.80" hotspot_y="55" orientation="dyyy">
+    <uuid uuid="{baf2df44-6d28-4ff3-8893-c3acc532b464}"/>
+    <names>
+        <name lang="ru">Однофазный эл. мотор</name>
+        <name lang="it">Motore trifase</name>
+        <name lang="en">One-phase engine</name>
+        <name lang="pl">Silnik trójfazowy</name>
+        <name lang="de">Drehstrom Motor</name>
+        <name lang="cs">Jednofázový motor bez kondu</name>
+        <name lang="es">Motor trifásico</name>
+        <name lang="fr">Moteur triphasé</name>
+        <name lang="nl">Draaistroommotor</name>
+        <name lang="ar">محرّك ثلاثي الأوجه</name>
+        <name lang="pt">Motor trifásico</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text y="-44" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="31" rotation="0" text="Z2" color="#000000"/>
+        <text y="-44" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="12" rotation="0" text="Z1" color="#000000"/>
+        <text y="-44" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-8" rotation="0" text="U2" color="#000000"/>
+        <text y="-44" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="51" rotation="0" text="PE" color="#000000"/>
+        <text y="-3" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-5" rotation="0" text="M" color="#000000"/>
+        <circle antialias="true" y="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="40" x="-20"/>
+        <dynamic_text y="-11.5" z="7" Valignment="AlignTop" text_from="ElementInfo" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{46ee6f24-8507-47e3-b3e0-0be0d2e6758d}" frame="false" x="-61" Halignment="AlignLeft" rotation="0" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line antialias="false" x2="-10" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="-10" y1="-50" y2="-30" end2="none" length2="1.5"/>
+        <line antialias="false" x2="-30" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="-30" y1="-50" y2="-23" end2="none" length2="1.5"/>
+        <text y="9" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-8" rotation="0" text="1 ~" color="#000000"/>
+        <text y="-44" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-28" rotation="0" text="U1" color="#000000"/>
+        <line antialias="false" x2="10" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="10" y1="-50" y2="-23" end2="none" length2="1.5"/>
+        <line antialias="false" x2="30" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="30" y1="-50" y2="-22" end2="none" length2="1.5"/>
+        <line antialias="true" x2="16" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="30" y1="-22" y2="-12" end2="none" length2="1.5"/>
+        <dynamic_text y="99" z="15" Valignment="AlignTop" text_from="ElementInfo" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{178f74cc-65b3-449a-98de-77ab48dd8156}" frame="false" x="-30" Halignment="AlignLeft" rotation="0" text_width="-1">
+            <text></text>
+            <info_name>function</info_name>
+        </dynamic_text>
+        <line antialias="false" x2="-16" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="-30" y1="-23" y2="-12" end2="none" length2="1.5"/>
+        <line antialias="false" x2="-7" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="-10" y1="-30" y2="-19" end2="none" length2="1.5"/>
+        <line antialias="false" x2="8" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="10" y1="-23" y2="-19" end2="none" length2="1.5"/>
+        <arc antialias="true" y="-23" height="46" angle="28" style="line-style:normal;line-weight:normal;filling:none;color:black" width="46" start="300" x="-23"/>
+        <line antialias="false" x2="20" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="16" y1="17" y2="20" end2="none" length2="1.5"/>
+        <line antialias="false" x2="50" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="20" y1="20" y2="20" end2="none" length2="1.5"/>
+        <line antialias="false" x2="50" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" x1="50" y1="20" y2="-50" end2="none" length2="1.5"/>
+        <terminal y="-50" orientation="n" x="10"/>
+        <terminal y="-50" orientation="n" x="-30"/>
+        <terminal y="-50" orientation="n" x="-10"/>
+        <terminal y="-50" orientation="n" x="50"/>
+        <terminal y="-50" orientation="n" x="30"/>
+    </description>
+</definition>
