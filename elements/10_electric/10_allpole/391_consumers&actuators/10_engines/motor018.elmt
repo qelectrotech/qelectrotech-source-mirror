@@ -1,0 +1,61 @@
+<definition type="element" link_type="simple" hotspot_y="62" orientation="dyyy" hotspot_x="65" width="190" height="100" version="0.80">
+    <uuid uuid="{36bee958-905e-4ab9-80a4-03ddd1de1d2b}"/>
+    <names>
+        <name lang="cs">Jednofázový motor 0,18kW</name>
+        <name lang="ru">Однофазный эл. мотор</name>
+        <name lang="pl">Silnik trójfazowy</name>
+        <name lang="fr">Moteur triphasé</name>
+        <name lang="it">Motore trifase</name>
+        <name lang="ar">محرّك ثلاثي الأوجه</name>
+        <name lang="nl">Draaistroommotor</name>
+        <name lang="en">One-phase engine</name>
+        <name lang="pt">Motor trifásico</name>
+        <name lang="es">Motor trifásico</name>
+        <name lang="de">Drehstrom Motor</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="2" text="Z1" y="-50" color="#000000"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="42" text="PE" y="-49" color="#000000"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" x="0" start="180" angle="180" y="5" width="9" height="8" antialias="true"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" x="-9" start="0" angle="180" y="5" width="9" height="8" antialias="true"/>
+        <text font="Sans Serif,18,-1,5,50,0,0,0,0,0" rotation="0" x="-10.25" text="M" y="2" color="#000000"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-30" diameter="60" y="-30" antialias="true"/>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="7" frame="false" uuid="{6e9844dc-4ef7-4d45-8a6b-5c34cb2227ac}" rotation="0" x="-51" Halignment="AlignLeft" text_from="ElementInfo" y="-11.5" text_width="-1" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line y1="-55" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" end1="none" x1="0" y2="-30" length2="1.5" x2="0" antialias="false"/>
+        <line y1="-56" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" end1="none" x1="-20" y2="-22.8213" length2="1.5" x2="-20.067" antialias="false"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" x="-17" text="1" y="11" color="#000000"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="-18" text="U1" y="-50" color="#000000"/>
+        <line y1="-55" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" end1="none" x1="20" y2="-22.7651" length2="1.5" x2="20.0143" antialias="false"/>
+        <line y1="-56" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" end1="none" x1="20" y2="-51" length2="1.5" x2="20" antialias="false"/>
+        <line y1="-22" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" end1="none" x1="40" y2="-16" length2="1.5" x2="26" antialias="true"/>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="19" frame="false" uuid="{40bbd647-1335-44e7-8727-8b665b9b4805}" rotation="0" x="-30" Halignment="AlignLeft" text_from="ElementInfo" y="99" text_width="-1" Valignment="AlignTop">
+            <text></text>
+            <info_name>function</info_name>
+        </dynamic_text>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="21.6246" text="U2" y="-49.6447" color="#000000"/>
+        <line y1="-55" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" end1="none" x1="40" y2="-22" length2="1.5" x2="40" antialias="false"/>
+        <polygon y1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" x5="40" closed="false" y3="5" x3="45" y5="-10" x1="40" y2="10" x4="45" y4="-5" x2="40" antialias="false"/>
+        <polygon y1="0" style="line-style:dashed;line-weight:normal;filling:none;color:black" closed="false" x1="45" y2="0" x2="60" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" x="60" y="-10" width="40" height="20" rx="0" antialias="false"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" x="60" y="-55" width="15" height="35" rx="0" antialias="false"/>
+        <polygon y1="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y3="-45" x3="60" x1="-20" y2="-45" x2="-15" antialias="false"/>
+        <polygon y1="-35" y6="-30" y7="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" x6="60" x5="60" closed="false" y3="-30" x3="55" y5="-30" x1="20" y2="-30" x4="55" x7="60" y4="-30" x2="25" antialias="false"/>
+        <polygon y1="-41" style="line-style:normal;line-weight:normal;filling:none;color:black" x5="80" closed="false" y3="20" x3="105" y5="10" x1="75" y2="-41" x4="80" y4="20" x2="105" antialias="false"/>
+        <polygon y1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y3="-34" x3="75" x1="80" y2="-34" x2="80" antialias="false"/>
+        <rect style="line-style:dashed;line-weight:normal;filling:none;color:black" ry="0" x="-60" y="-60" width="180" height="95" rx="0" antialias="false"/>
+        <line y1="-42" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" end1="none" x1="69" y2="-34" length2="1.5" x2="69" antialias="false"/>
+        <line y1="-38" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" end1="none" x1="69" y2="-38" length2="1.5" x2="72" antialias="false"/>
+        <line y1="-38" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" end1="none" x1="65" y2="-38" length2="1.5" x2="62" antialias="false"/>
+        <polygon y1="-38" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y3="-42" x3="65" x1="69" y2="-34" x4="69" y4="-38" x2="65" antialias="false"/>
+        <terminal x="40" orientation="n" y="-55"/>
+        <terminal x="0" orientation="n" y="-55"/>
+        <terminal x="20" orientation="n" y="-55"/>
+        <terminal x="-20" orientation="n" y="-55"/>
+    </description>
+</definition>

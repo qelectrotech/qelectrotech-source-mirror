@@ -1,0 +1,60 @@
+<definition type="element" link_type="simple" hotspot_y="18" orientation="dyyy" hotspot_x="13" width="60" height="40" version="0.80">
+    <uuid uuid="{bdaf5ba8-ac37-4518-b0ae-6e98828eaa6d}"/>
+    <names>
+        <name lang="cs">Pojistkový odpínač 3p</name>
+        <name lang="fr">Porte Fusible 3p</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <dynamic_text font="Sans Serif,5,-1,5,25,0,0,0,0,0" z="1" frame="false" uuid="{a1bea68c-2f6b-47e9-95cb-796c23035510}" rotation="0" x="37" Halignment="AlignLeft" text_from="UserText" y="-22" text_width="-1" Valignment="AlignTop">
+            <text>5</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,5,-1,5,25,0,0,0,0,0" z="2" frame="false" uuid="{fea18f19-a064-4c5f-89d3-394f1556c09f}" rotation="0" x="17" Halignment="AlignLeft" text_from="UserText" y="-22" text_width="-1" Valignment="AlignTop">
+            <text>3</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,5,-1,5,25,0,0,0,0,0" z="3" frame="false" uuid="{73eb4bf8-0b8d-4ef4-8608-ecf1dcb5ce68}" rotation="0" x="-3" Halignment="AlignLeft" text_from="UserText" y="-22" text_width="-1" Valignment="AlignTop">
+            <text>1</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,5,-1,5,25,0,0,0,0,0" z="4" frame="false" uuid="{79b7fc2c-af09-4355-8472-41f49d3cbf41}" rotation="0" x="17" Halignment="AlignLeft" text_from="UserText" y="5" text_width="-1" Valignment="AlignTop">
+            <text>4</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,5,-1,5,25,0,0,0,0,0" z="5" frame="false" uuid="{a8895b11-8d45-40bd-a211-fe80d05f254e}" rotation="0" x="37" Halignment="AlignLeft" text_from="UserText" y="5" text_width="-1" Valignment="AlignTop">
+            <text>6</text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,5,-1,5,25,0,0,0,0,0" z="6" frame="false" uuid="{7e5d1555-4bd8-4e16-97fa-41d95ed212b7}" rotation="0" x="-3" Halignment="AlignLeft" text_from="UserText" y="6" text_width="-1" Valignment="AlignTop">
+            <text>2</text>
+        </dynamic_text>
+        <polygon y1="10.2834" style="line-style:normal;line-weight:normal;filling:none;color:black" x5="22.7384" closed="false" y3="-6.75574" x3="10.8698" y5="9.98961" x1="22.4446" y2="12.4573" x4="16.8629" y4="-8.81219" x2="17.0979" antialias="true"/>
+        <polygon y1="10.2834" style="line-style:normal;line-weight:normal;filling:none;color:black" x5="42.7384" closed="false" y3="-6.75574" x3="30.8698" y5="9.98961" x1="42.4447" y2="12.4573" x4="36.8629" y4="-8.81219" x2="37.0979" antialias="true"/>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="9" frame="false" uuid="{f497d4a7-97ed-478a-8d51-e7712d3da71a}" rotation="0" x="-37" Halignment="AlignLeft" text_from="ElementInfo" y="-17" text_width="-1" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line y1="-7.51957" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" end1="none" x1="13.8663" y2="11.0885" length2="1.5" x2="20.0182" antialias="true"/>
+        <line y1="-7.51957" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" end1="none" x1="33.8663" y2="11.0885" length2="1.5" x2="40.0182" antialias="true"/>
+        <polygon y1="10.2834" style="line-style:normal;line-weight:normal;filling:none;color:black" x5="2.73843" closed="false" y3="-6.75574" x3="-9.13021" y5="9.98961" x1="2.44465" y2="12.4573" x4="-3.13713" y4="-8.81219" x2="-2.90211" antialias="true"/>
+        <line y1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" end1="none" x1="17" y2="-10" length2="1.5" x2="23" antialias="false"/>
+        <line y1="-7.51957" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" end1="none" x1="-6.13367" y2="11.0885" length2="1.5" x2="0.01823" antialias="true"/>
+        <line y1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" end1="none" x1="37" y2="-10" length2="1.5" x2="43" antialias="false"/>
+        <line y1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" end1="none" x1="-3" y2="-10" length2="1.5" x2="3" antialias="false"/>
+        <line y1="0" style="line-style:dashed;line-weight:thin;filling:none;color:black" end2="none" length1="1.5" end1="none" x1="0" y2="0" length2="1.5" x2="12" antialias="false"/>
+        <line y1="0" style="line-style:dashed;line-weight:thin;filling:none;color:black" end2="none" length1="1.5" end1="none" x1="20" y2="0" length2="1.5" x2="32" antialias="false"/>
+        <dynamic_text font="Sans Serif,7,-1,5,0,0,0,0,0,0,normal" z="19" frame="false" uuid="{f70a1441-9e9b-40ca-b09f-35d65dfdd582}" rotation="0" x="-44" Halignment="AlignLeft" text_from="ElementInfo" y="0" text_width="-1" Valignment="AlignTop">
+            <text></text>
+            <info_name>comment</info_name>
+        </dynamic_text>
+        <line y1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" end1="none" x1="0" y2="-14" length2="1.5" x2="0" antialias="false"/>
+        <line y1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" end1="none" x1="20" y2="-14" length2="1.5" x2="20" antialias="false"/>
+        <line y1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" end1="none" x1="40" y2="-14" length2="1.5" x2="40" antialias="false"/>
+        <line y1="12" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" end1="none" x1="40" y2="16" length2="1.5" x2="40" antialias="false"/>
+        <line y1="12" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" end1="none" x1="20" y2="16" length2="1.5" x2="20" antialias="false"/>
+        <line y1="12" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" end1="none" x1="0" y2="16" length2="1.5" x2="0" antialias="false"/>
+        <terminal x="40" orientation="s" y="16"/>
+        <terminal x="0" orientation="n" y="-14"/>
+        <terminal x="40" orientation="n" y="-14"/>
+        <terminal x="0" orientation="s" y="16"/>
+        <terminal x="20" orientation="n" y="-14"/>
+        <terminal x="20" orientation="s" y="16"/>
+    </description>
+</definition>

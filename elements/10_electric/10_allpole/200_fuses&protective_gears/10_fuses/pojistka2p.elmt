@@ -1,0 +1,43 @@
+<definition hotspot_y="19" link_type="simple" hotspot_x="5" orientation="dyyy" version="0.80" width="20" height="40" type="element">
+    <uuid uuid="{329f82a5-7029-4192-ab32-2e8b11615564}"/>
+    <names>
+        <name lang="fr">Fusible 2p</name>
+        <name lang="cs">Pojistka 2p</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <rect y="-10" ry="0" x="7" width="6" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false"/>
+        <rect y="-10" ry="0" x="-3" width="6" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false"/>
+        <line y2="10" length2="1.5" y1="-10" x1="0" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" antialias="false"/>
+        <line y2="10" length2="1.5" y1="-10" x1="10" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10" antialias="false"/>
+        <dynamic_text text_width="-1" text_from="UserText" y="-22" x="7" z="5" Valignment="AlignTop" font="Sans Serif,5,-1,5,25,0,0,0,0,0" rotation="0" frame="false" uuid="{c37aa946-efa6-4e46-b228-9c8b1d8ce193}" Halignment="AlignLeft">
+            <text>1</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" text_from="UserText" y="-22" x="-3" z="6" Valignment="AlignTop" font="Sans Serif,5,-1,5,25,0,0,0,0,0" rotation="0" frame="false" uuid="{6190ce78-54fe-49ae-85b3-915fd3bcf431}" Halignment="AlignLeft">
+            <text>1</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" text_from="UserText" y="5" x="7" z="7" Valignment="AlignTop" font="Sans Serif,5,-1,5,25,0,0,0,0,0" rotation="0" frame="false" uuid="{caa6bbc0-5cda-4bd6-8c5d-14a8b1a19f5d}" Halignment="AlignLeft">
+            <text>2</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" text_from="UserText" y="5" x="-3" z="8" Valignment="AlignTop" font="Sans Serif,5,-1,5,25,0,0,0,0,0" rotation="0" frame="false" uuid="{9f060a2d-d66b-4b5b-b86b-d4c0c872f605}" Halignment="AlignLeft">
+            <text>2</text>
+        </dynamic_text>
+        <dynamic_text text_width="-1" text_from="ElementInfo" y="-17" x="-30" z="9" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" frame="false" uuid="{c8fdb551-ba1e-4910-9293-206116b3640f}" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text text_width="-1" text_from="ElementInfo" y="0" x="-36" z="10" Valignment="AlignTop" font="Sans Serif,7,-1,5,0,0,0,0,0,0,normal" rotation="0" frame="false" uuid="{9a3517e6-3bbf-4a00-8ebb-198952257b50}" Halignment="AlignLeft">
+            <text></text>
+            <info_name>comment</info_name>
+        </dynamic_text>
+        <line y2="-15" length2="1.5" y1="-10" x1="0" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" antialias="false"/>
+        <line y2="-15" length2="1.5" y1="-10" x1="10" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10" antialias="false"/>
+        <line y2="15" length2="1.5" y1="10" x1="10" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10" antialias="false"/>
+        <line y2="15" length2="1.5" y1="10" x1="0" end2="none" end1="none" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" antialias="false"/>
+        <terminal y="15" orientation="s" x="0"/>
+        <terminal y="-15" orientation="n" x="0"/>
+        <terminal y="15" orientation="s" x="10"/>
+        <terminal y="-15" orientation="n" x="10"/>
+    </description>
+</definition>
