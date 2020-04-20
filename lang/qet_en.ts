@@ -1012,7 +1012,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
 <context>
     <name>Diagram</name>
     <message>
-        <location filename="../sources/diagram.cpp" line="1311"/>
+        <location filename="../sources/diagram.cpp" line="1356"/>
         <source>Modifier la profondeur</source>
         <translation>Change the depth</translation>
     </message>
@@ -7794,7 +7794,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qet.cpp" line="554"/>
         <location filename="../sources/qet.cpp" line="676"/>
-        <location filename="../sources/qetxml.cpp" line="245"/>
+        <location filename="../sources/qetxml.cpp" line="249"/>
         <source>Impossible d&apos;ouvrir le fichier %1 en écriture, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
         <translation>Unable to open file %1 with write access, encountered error %2.</translation>
@@ -8746,7 +8746,7 @@ Do you want to replace it ?</translation>
 <context>
     <name>QetGraphicsTableItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="552"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="676"/>
         <source>Modifier la géometrie d&apos;un tableau</source>
         <translation>Modify the geometry of a table</translation>
     </message>
