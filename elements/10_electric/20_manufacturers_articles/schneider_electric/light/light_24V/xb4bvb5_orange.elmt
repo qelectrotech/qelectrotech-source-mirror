@@ -1,5 +1,5 @@
-<definition orientation="dyyy" hotspot_y="29" width="40" height="60" version="0.80" hotspot_x="14" link_type="simple" type="element">
-    <uuid uuid="{0a38e157-b307-418e-86d4-da160b5f0f74}"/>
+<definition orientation="dyyy" hotspot_y="29" width="50" height="60" version="0.80" hotspot_x="15" link_type="simple" type="element">
+    <uuid uuid="{6b3a3807-33bf-4df8-b45a-ba2e3341733e}"/>
     <names>
         <name lang="nl">Lamp</name>
         <name lang="en">Light</name>
@@ -8,16 +8,16 @@
         <name lang="de">Meldeleuchte</name>
         <name lang="it">Luce</name>
         <name lang="es">Lámpara</name>
-        <name lang="fr">XB4BVB6_bleu</name>
+        <name lang="fr">XB4BVB5_ORANGE</name>
         <name lang="cs">Světlo</name>
         <name lang="el">Λυχνία</name>
         <name lang="ru">Лампа</name>
         <name lang="ar">مصباح</name>
     </names>
     <elementInformations>
-        <elementInformation name="designation" show="1">XB4BVB6</elementInformation>
+        <elementInformation name="designation" show="1">XB4BVB5</elementInformation>
         <elementInformation name="comment" show="1"></elementInformation>
-        <elementInformation name="description" show="1">Voyant lumineux bleu 24V</elementInformation>
+        <elementInformation name="description" show="1">Voyant lumineux orange 24V</elementInformation>
         <elementInformation name="manufacturer-reference" show="1"></elementInformation>
         <elementInformation name="quantity" show="1"></elementInformation>
         <elementInformation name="unity" show="1"></elementInformation>
@@ -42,7 +42,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         </dynamic_text>
         <line x1="0" y1="10" antialias="false" x2="0" y2="20" length1="1.5" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none"/>
         <text y="-12" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="X1" x="2" color="#000000"/>
-        <text y="15" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="BLEU" x="10" color="#000000"/>
+        <text y="15" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="ORANGE" x="10" color="#000000"/>
         <terminal orientation="s" y="21" x="0"/>
         <terminal orientation="n" y="-21" x="0"/>
     </description>
