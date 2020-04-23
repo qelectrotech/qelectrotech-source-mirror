@@ -1,0 +1,97 @@
+<definition orientation="dyyy" type="element" height="160" version="0.80" link_type="simple" width="550" hotspot_y="55" hotspot_x="131">
+    <uuid uuid="{6296d4b1-b15f-4cb2-b545-1670f44599cc}"/>
+    <names>
+        <name lang="pl">DVP14SS211R</name>
+        <name lang="cs">DVP14SS211R</name>
+        <name lang="en">DVP14SS211R</name>
+        <name lang="el">DVP14SS211R</name>
+        <name lang="es">DVP14SS211R</name>
+        <name lang="nl">DVP14SS211R</name>
+        <name lang="it">DVP14SS211R</name>
+        <name lang="fr">DVP14SS211R</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: Guillaume Morel</informations>
+    <description>
+        <text rotation="270" text="Y5" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="-7" x="306" color="#000000"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="10" y="80" x="-90"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="5" y="57.5" x="302.5"/>
+        <text rotation="270" text="Y4" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="-7" x="284" color="#000000"/>
+        <dynamic_text rotation="0" uuid="{c5092296-7c51-484f-8601-38f9be4686de}" text_width="-1" Valignment="AlignTop" text_from="ElementInfo" z="4" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="109" frame="false" Halignment="AlignLeft" x="120">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x4="318" x1="322" x3="318" y3="76" y4="80" y1="80" x2="322" y2="76" closed="false"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" angle="-348" height="40" width="40" start="264" y="40" x="300"/>
+        <text rotation="270" text="C1" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="-7" x="245" color="#000000"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="5" y="67.5" x="317.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="5" y="57.5" x="315.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="5" y="57.5" x="332.5"/>
+        <text rotation="270" text="POWER" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="78" x="-102" color="#000000"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="5" y="47.5" x="322.5"/>
+        <text rotation="270" text="X7" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="-7" x="92" color="#000000"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="5" y="47.5" x="312.5"/>
+        <text rotation="270" text="ERROR" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="78" x="-62" color="#000000"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="5" y="67.5" x="327.5"/>
+        <text rotation="270" text="24VDC" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="29" x="385" color="#000000"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" diameter="5" y="67.5" x="307.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="10" y="80" x="-70"/>
+        <text rotation="270" text="STOP" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="80" x="130" color="#000000"/>
+        <text rotation="270" text="RUN" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="78" x="-82" color="#000000"/>
+        <text rotation="270" text="RUN" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="80" x="75" color="#000000"/>
+        <text rotation="270" text="X6" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="-7" x="72" color="#000000"/>
+        <text rotation="270" text="-" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="17" x="400" color="#000000"/>
+        <text rotation="270" text="+" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="4" x="400" color="#000000"/>
+        <text rotation="270" text="Y2" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="-7" x="205" color="#000000"/>
+        <text rotation="270" text="Y1" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="-7" x="185" color="#000000"/>
+        <text rotation="270" text="Y0" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="-7" x="164" color="#000000"/>
+        <text rotation="270" text="Y3" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="-7" x="265" color="#000000"/>
+        <text rotation="270" text="C0" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="-6" x="144" color="#000000"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-125" end2="none" y1="100" length1="1.5" x2="-125" end1="none" y2="-50"/>
+        <text rotation="270" text="-" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="-12" x="224" color="#000000"/>
+        <text rotation="270" text="X5" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="-7" x="52" color="#000000"/>
+        <text rotation="270" text="X4" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="-7" x="31" color="#000000"/>
+        <text rotation="270" text="X3" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="-7" x="12" color="#000000"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-125" end2="none" y1="-50" length1="1.5" x2="375" end1="none" y2="-50"/>
+        <text rotation="0" text="DVP14SS211R" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="29" x="-46" color="#000000"/>
+        <text rotation="0" text="DELTA AUTOMATION" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="16" x="-46" color="#000000"/>
+        <text rotation="270" text="X2" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="-7" x="-9" color="#000000"/>
+        <text rotation="270" text="X1" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="-8" x="-29" color="#000000"/>
+        <text rotation="270" text="X0" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="-7" x="-49" color="#000000"/>
+        <text rotation="270" text="S/S" font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="-3" x="-69" color="#000000"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-125" end2="none" y1="100" length1="1.5" x2="375" end1="none" y2="100"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="375" end2="none" y1="100" length1="1.5" x2="375" end1="none" y2="-50"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="10" y="80" x="-110"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" rx="0" height="10" width="40" y="70" x="80" ry="0"/>
+        <ellipse style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" height="10" width="12" y="70" x="81"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" rx="0" height="70" width="36" y="-19" x="375" ry="0"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" rx="0" height="15" width="175" y="-35" x="-80" ry="0"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" rx="0" height="15" width="175" y="-35" x="135" ry="0"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="391" end2="none" y1="30" length1="1.5" x2="397" end1="none" y2="30"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="397" end2="none" y1="26" length1="1.5" x2="397" end1="none" y2="34"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="399" end2="none" y1="27" length1="1.5" x2="399" end1="none" y2="33"/>
+        <line length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="401" end2="none" y1="28" length1="1.5" x2="401" end1="none" y2="32"/>
+        <terminal orientation="n" y="-32" x="240"/>
+        <terminal orientation="n" y="-32" x="300"/>
+        <terminal orientation="n" y="-32" x="-30"/>
+        <terminal orientation="n" y="-32" x="180"/>
+        <terminal orientation="n" y="-32" x="70"/>
+        <terminal orientation="n" y="-32" x="260"/>
+        <terminal orientation="n" y="-32" x="220"/>
+        <terminal orientation="n" y="-32" x="160"/>
+        <terminal orientation="n" y="-32" x="50"/>
+        <terminal orientation="n" y="-32" x="30"/>
+        <terminal orientation="n" y="-32" x="90"/>
+        <terminal orientation="e" y="0" x="411"/>
+        <terminal orientation="n" y="-32" x="140"/>
+        <terminal orientation="e" y="15" x="411"/>
+        <terminal orientation="n" y="-32" x="-10"/>
+        <terminal orientation="n" y="-32" x="200"/>
+        <terminal orientation="e" y="60" x="340"/>
+        <terminal orientation="n" y="-32" x="10"/>
+        <terminal orientation="n" y="-32" x="280"/>
+        <terminal orientation="n" y="-32" x="-70"/>
+        <terminal orientation="e" y="30" x="411"/>
+        <terminal orientation="n" y="-32" x="-50"/>
+    </description>
+</definition>

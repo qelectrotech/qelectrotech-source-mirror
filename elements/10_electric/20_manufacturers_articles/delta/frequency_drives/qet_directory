@@ -1,0 +1,14 @@
+<qet-directory>
+    <names>
+        <name lang="de">Frequenzumrichter</name>
+        <name lang="ru">Преобразователи частоты</name>
+        <name lang="en">Frequency drives</name>
+        <name lang="fr">Variateurs de fréquence</name>
+        <name lang="ar">مُغيّرات تردّد</name>
+        <name lang="pl">Przemienniki częstotliwości</name>
+        <name lang="it">Inverter</name>
+        <name lang="cs">Převodníky kmitočtu</name>
+        <name lang="el">Ρυθμιστές στροφών</name>
+        <name lang="nl">Frequentieomvormers</name>
+    </names>
+</qet-directory>
