@@ -282,6 +282,3 @@ macx {
 unix {
 	QMAKE_COPY_DIR = 'cp -f -r --preserve=timestamps'
 }
-
-SUBDIRS += \
-    sources/QwidgetAnimation/QWidgetAnimation.pro
