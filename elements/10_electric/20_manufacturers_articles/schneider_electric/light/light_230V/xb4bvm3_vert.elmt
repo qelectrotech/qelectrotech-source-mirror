@@ -1,50 +1,47 @@
-<definition type="element" width="40" hotspot_y="29" link_type="simple" hotspot_x="13" height="60" orientation="dyyy" version="0.80">
-    <uuid uuid="{3b69d5e3-0088-4b26-8704-bb3bd6108ba0}"/>
+<definition width="40" hotspot_x="13" height="60" hotspot_y="29" orientation="dyyy" link_type="simple" type="element" version="0.80">
+    <uuid uuid="{2b476cac-35d6-4346-8eec-540b35a631c1}"/>
     <names>
-        <name lang="ru">Лампа</name>
-        <name lang="de">Meldeleuchte</name>
-        <name lang="fr">XB4BVM3_VERT</name>
-        <name lang="nl">Lamp</name>
-        <name lang="it">Luce</name>
-        <name lang="pl">Lampa</name>
-        <name lang="ar">مصباح</name>
-        <name lang="pt">Lâmpada</name>
-        <name lang="el">Λυχνία</name>
-        <name lang="en">Light</name>
         <name lang="es">Lámpara</name>
+        <name lang="ru">Лампа</name>
         <name lang="cs">Světlo</name>
+        <name lang="pl">Lampa</name>
+        <name lang="el">Λυχνία</name>
+        <name lang="de">Meldeleuchte</name>
+        <name lang="it">Luce</name>
+        <name lang="fr">XB4BVM3_VERT</name>
+        <name lang="pt">Lâmpada</name>
+        <name lang="nl">Lamp</name>
+        <name lang="en">Light</name>
+        <name lang="ar">مصباح</name>
     </names>
     <elementInformations>
-        <elementInformation name="manufacturer" show="1">SCHNEIDER</elementInformation>
-        <elementInformation name="quantity" show="1"></elementInformation>
-        <elementInformation name="supplier" show="1"></elementInformation>
-        <elementInformation name="plant" show="1"></elementInformation>
-        <elementInformation name="label" show="1"></elementInformation>
-        <elementInformation name="comment" show="1"></elementInformation>
-        <elementInformation name="designation" show="1">XB4BVM3</elementInformation>
-        <elementInformation name="description" show="1">VERT</elementInformation>
         <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Schneider Electric</elementInformation>
+        <elementInformation name="designation" show="1">XB4BVM3</elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="description" show="1">Voyant lumineux vert 230V</elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
     </elementInformations>
-    <informations>Author: The QElectroTech team&#xd;&#xd;
+    <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <circle x="-10" diameter="20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10"/>
-        <text x="2" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="X1" color="#000000" y="-12"/>
-        <text x="2" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="X2" color="#000000" y="16"/>
-        <line end2="none" x1="7.03" y2="7.03" antialias="false" x2="-7.03" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" length2="1.5" y1="-7.03"/>
-        <line end2="none" x1="-7.03" y2="7.03" antialias="false" x2="7.03" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" length2="1.5" y1="-7.03"/>
-        <line end2="none" x1="0" y2="-10" antialias="false" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" length2="1.5" y1="-20"/>
-        <dynamic_text x="15" z="6" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" frame="false" Halignment="AlignLeft" text_width="-1" text_from="ElementInfo" uuid="{28bf9c47-da03-4675-b20f-2a17fecf9392}" y="-10">
+        <circle diameter="20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" x="-10" y="-10"/>
+        <text text="X1" rotation="0" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" x="2" y="-12"/>
+        <text text="X2" rotation="0" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" x="2" y="16"/>
+        <line y2="7.03" length2="1.5" y1="-7.03" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="7.03" end1="none" end2="none" antialias="false" x2="-7.03"/>
+        <line y2="7.03" length2="1.5" y1="-7.03" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-7.03" end1="none" end2="none" antialias="false" x2="7.03"/>
+        <line y2="-10" length2="1.5" y1="-20" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" end1="none" end2="none" antialias="false" x2="0"/>
+        <dynamic_text z="6" text_width="-1" Valignment="AlignTop" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" uuid="{28bf9c47-da03-4675-b20f-2a17fecf9392}" text_from="ElementInfo" x="15" Halignment="AlignLeft" y="-10">
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>
-        <line end2="none" x1="0" y2="20" antialias="false" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length1="1.5" length2="1.5" y1="10"/>
-        <dynamic_text x="6" z="7" font="MS Shell Dlg 2,4,-1,5,50,0,0,0,0,0,Normal" Valignment="AlignTop" rotation="0" frame="false" Halignment="AlignLeft" text_width="-1" text_from="ElementInfo" uuid="{f97856b1-e6fa-46f0-9fcb-3cc77074f586}" y="6">
-            <text>VERT</text>
-            <info_name>description</info_name>
-        </dynamic_text>
-        <text x="10" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="230V" color="#000000" y="20"/>
-        <terminal x="0" orientation="s" y="21"/>
-        <terminal x="0" orientation="n" y="-21"/>
+        <line y2="20" length2="1.5" y1="10" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" end1="none" end2="none" antialias="false" x2="0"/>
+        <text text="230V" rotation="0" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" x="10" y="20"/>
+        <text text="VERT" rotation="0" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" x="10" y="15"/>
+        <terminal orientation="s" x="0" y="21"/>
+        <terminal orientation="n" x="0" y="-21"/>
     </description>
 </definition>
