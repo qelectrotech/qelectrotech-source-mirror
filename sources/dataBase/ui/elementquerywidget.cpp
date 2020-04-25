@@ -29,10 +29,10 @@ ElementQueryWidget::ElementQueryWidget(QWidget *parent) :
 {
     ui->setupUi(this);
 
-	m_export_info.insert("e.pos", tr("Position"));
-	m_export_info.insert("di.title", tr("Titre du folio"));
-	m_export_info.insert("d.pos", tr("Position du folio"));
-	m_export_info.insert("di.folio", tr("Numéro du folio"));
+	m_export_info.insert("position", tr("Position"));
+	m_export_info.insert("title", tr("Titre du folio"));
+	m_export_info.insert("diagram_position", tr("Position du folio"));
+	m_export_info.insert("folio", tr("Numéro du folio"));
 
 	m_button_group.setExclusive(false);
 	m_button_group.addButton(ui->m_all_cb, 0);
@@ -149,42 +149,38 @@ QString ElementQueryWidget::queryStr() const
 		}
 	}
 
-	QString from = " FROM element_info ei, element e, diagram d, diagram_info di";
-	QString where = " WHERE ei.element_uuid = e.uuid"
-					" AND di.diagram_uuid = d.uuid"
-					" AND e.diagram_uuid = d.uuid";
+	QString from = " FROM element_nomenclature_view";
 
+	QString where;
 	if (ui->m_all_cb->checkState() == Qt::PartiallyChecked)
 	{
+		where = " WHERE ";
 		bool b = false;
-		where += " AND (";
 		if (ui->m_terminal_cb->isChecked()) {
 			if (b) where +=" OR";
-			where += " e.type = 'Terminale'";
+			where += " element_type = 'Terminale'";
 			b = true;
 		}
 		if (ui->m_simple_cb->isChecked()) {
 			if (b) where +=" OR";
-			where += " e.type = 'Simple'";
+			where += " element_type = 'Simple'";
 			b = true;
 		}
 		if (ui->m_button_cb->isChecked())     {
 			if (b) where +=" OR";
-			where += " e.sub_type = 'commutator'";
+			where += " element_sub_type = 'commutator'";
 			b = true;
 		}
 		if (ui->m_coil_cb->isChecked()) {
 			if (b) where +=" OR";
-			where += " e.sub_type = 'coil'";
+			where += " element_sub_type = 'coil'";
 			b = true;
 		}
 		if (ui->m_protection_cb->isChecked()) {
 			if (b) where +=" OR";
-			where += " e.sub_type = 'protection'";
+			where += " element_sub_type = 'protection'";
 		}
-		where += ")";
 	}
-	
 
 	QString q(select + column + from + where + filter_ + order_by);
 	return q;
@@ -233,8 +229,11 @@ void ElementQueryWidget::setUpItems()
 {
 	for(QString key : QETApp::elementInfoKeys())
 	{
+		if (key == "formula")
+			continue;
+
 		auto item = new QListWidgetItem(QETApp::elementTranslatedInfoKey(key), ui->m_var_list);
-		item->setData(Qt::UserRole, "ei." + key);
+		item->setData(Qt::UserRole, key);
 		m_items_list << item;
 	}
 

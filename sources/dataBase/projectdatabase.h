@@ -49,13 +49,14 @@ class projectDataBase : public QObject
 		void updateDB();
 		QETProject *project() const;
 
-		static QStringList headersFromElementsInfoQuery(const QString &query);
+		static QStringList headersFromElementNomenclatureViewQuery(const QString &query);
 
 	signals:
 		void dataBaseUpdated();
 
 	private:
 		bool createDataBase(const QString &connection_name= QString(), const QString &name = QString());
+		void createElementNomenclatureView();
 		void populateDiagramTable();
 		void populateElementTable();
 		void populateElementInfoTable();
