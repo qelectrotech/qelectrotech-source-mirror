@@ -197,7 +197,7 @@ QETProject *NomenclatureModel::project() const {
  */
 void NomenclatureModel::autoHeaders()
 {
-	auto headers = projectDataBase::headersFromElementsInfoQuery(m_query);
+	auto headers = projectDataBase::headersFromElementNomenclatureViewQuery(m_query);
 	for (auto i=0 ; i<headers.size() ; ++i) {
 		this->setHeaderData(i, Qt::Horizontal, headers.at(i));
 	}

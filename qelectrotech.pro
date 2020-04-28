@@ -71,6 +71,8 @@ include(sources/PropertiesEditor/PropertiesEditor.pri)
 include(sources/QetGraphicsItemModeler/QetGraphicsItemModeler.pri)
 include(sources/QPropertyUndoCommand/QPropertyUndoCommand.pri)
 include(SingleApplication/singleapplication.pri)
+include(sources/QWidgetAnimation/QWidgetAnimation.pri)
+
 DEFINES += QAPPLICATION_CLASS=QApplication
 
 TEMPLATE = app

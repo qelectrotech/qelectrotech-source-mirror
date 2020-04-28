@@ -90,7 +90,7 @@ QVector<QStringList> projectDataBase::elementsInfoFromQuery(const QString &query
  * @return the header according to @query.
  * Header can be false, notably when user create is own query.
  */
-QStringList projectDataBase::headersFromElementsInfoQuery(const QString &query)
+QStringList projectDataBase::headersFromElementNomenclatureViewQuery(const QString &query)
 {
 	QStringList header_string;
 	if (!query.startsWith("SELECT ") && !query.contains("FROM")) {
@@ -107,34 +107,27 @@ QStringList projectDataBase::headersFromElementsInfoQuery(const QString &query)
 		return header_string;
 	}
 
-	for (int i=0 ; i<list.size() ; i++)
+	for (int i=0 ; i<list.size() ; ++i)
 	{
 		auto str = list.at(i);
 
-		if(str == "e.pos") { //Query in element table wich have only pose use in this case
+		if (str == "position") {
 			header_string.append(tr("Position"));
-		}
-		else if (str.contains("ei.")) //Query in element_info table
-		{
-			str.remove(0,3);
-			header_string.append(QETApp::elementTranslatedInfoKey(str));
-		}
-		else if (str == "d.pos") { //query in diagram table wich have only pos use in this case
+		} else if (str == "diagram_position") {
 			header_string.append(tr("Position du folio"));
-		}
-		else if (str.contains("di.")) //query in diagram_info table
-		{
-			str.remove(0,3);
-			header_string.append(QETApp::diagramTranslatedInfoKey(str));
-		}
-		else //Default case
-		{
-			if (str == "pos") {
-				header_string.append(tr("Position"));
-			} else if (QETApp::elementInfoKeys().contains(str)) {
-				header_string.append(QETApp::elementTranslatedInfoKey(str));
-			} else {
-				header_string.append(QETApp::diagramTranslatedInfoKey(str));
+		} else {
+			auto elmt_str = QETApp::elementTranslatedInfoKey(str);
+			if (!elmt_str.isEmpty()) {
+				header_string.append(elmt_str);
+				continue;
+			}
+			auto diagram_str = QETApp::diagramTranslatedInfoKey(str);
+			if (!diagram_str.isEmpty()) {
+				header_string.append(diagram_str);
+				continue;
+			}
+			else {
+				header_string.append(str);
 			}
 		}
 	}
@@ -175,7 +168,7 @@ QETProject *projectDataBase::project() const {
 bool projectDataBase::createDataBase(const QString &connection_name, const QString &name)
 {
 
-	QString connect_name=connection_name;
+	QString connect_name = connection_name;
 	if (connect_name.isEmpty()) {
 		connect_name = "qet_project_db_" + m_project->uuid().toString();
 	}
@@ -255,10 +248,46 @@ bool projectDataBase::createDataBase(const QString &connection_name, const QStri
 		if (!query_.exec(element_info_table)) {
 			qDebug() << " element_info_table query : " << query_.lastError();
 		}
+
+		createElementNomenclatureView();
 	}
 
 	updateDB();
 	return true;
+}
+
+void projectDataBase::createElementNomenclatureView()
+{
+	QString create_view ("CREATE VIEW element_nomenclature_view AS SELECT "
+						 "ei.label AS label,"
+						 "ei.plant AS plant,"
+						 "ei.location AS location,"
+						 "ei.comment AS comment,"
+						 "ei.function AS function,"
+						 "ei.tension_protocol AS tension_protocol,"
+						 "ei.auxiliary1 AS auxiliary1,"
+						 "ei.auxiliary2 AS auxiliary2,"
+						 "ei.description AS description,"
+						 "ei.designation AS designation,"
+						 "ei.manufacturer AS manufacturer,"
+						 "ei.manufacturer_reference AS manufacturer_reference,"
+						 "ei.machine_manufacturer_reference AS machine_manufacturer_reference,"
+						 "ei.supplier AS supplier,"
+						 "ei.quantity AS quantity,"
+						 "ei.unity AS unity,"
+						 "d.pos AS diagram_position,"
+						 "e.type AS element_type,"
+						 "e.sub_type AS element_sub_type,"
+						 "di.title AS title,"
+						 "di.folio AS folio,"
+						 "e.pos AS position "
+						 " FROM element_info ei, diagram_info di, element e, diagram d"
+						 " WHERE ei.element_uuid = e.uuid AND e.diagram_uuid = d.uuid AND di.diagram_uuid = d.uuid");
+
+	QSqlQuery query(m_data_base);
+	if (!query.exec(create_view)) {
+		qDebug() << query.lastError();
+	}
 }
 
 void projectDataBase::populateDiagramTable()

@@ -44,6 +44,13 @@ SearchAndReplaceWidget::SearchAndReplaceWidget(QWidget *parent) :
 	ui(new Ui::SearchAndReplaceWidget)
 {
 	ui->setupUi(this);
+
+	m_horizontal_animation = new QWidgetAnimation(ui->m_advanced_button_widget, Qt::Horizontal, QWidgetAnimation::minimumSizeHint, 250);
+	m_vertical_animation = new QWidgetAnimation(ui->m_advanced_widget, Qt::Vertical, QWidgetAnimation::availableSpace, 250);
+	QVector<QWidget *> v;
+	v << ui->m_header_widget;
+	m_vertical_animation->widgetToSubtract(v);
+
 	setHideAdvanced(true);
 	setUpTreeItems();
 	
@@ -70,7 +77,6 @@ bool SearchAndReplaceWidget::event(QEvent *event)
 	if (event->type() == QEvent::Hide)
 	{
 		clear();
-		setHideAdvanced(true);
 		if (m_highlighted_element)
 		{
 			m_highlighted_element.data()->setHighlighted(false);
@@ -204,20 +210,10 @@ void SearchAndReplaceWidget::setUpTreeItems()
  * Hide advanced widgets
  * @param hide
  */
-void SearchAndReplaceWidget::setHideAdvanced(bool hide) const
+void SearchAndReplaceWidget::setHideAdvanced(bool hide)
 {
-	ui->m_advanced_pb      ->setChecked(!hide);
-	ui->m_replace          ->setHidden(hide);
-	ui->m_replace_le       ->setHidden(hide);
-	ui->m_folio_pb         ->setHidden(hide);
-	ui->m_element_pb       ->setHidden(hide);
-	ui->m_conductor_pb     ->setHidden(hide);
-	ui->m_tree_widget      ->setHidden(hide);
-	ui->m_replace_pb       ->setHidden(hide);
-	ui->m_replace_all_pb   ->setHidden(hide);
-	ui->m_mode_cb          ->setHidden(hide);
-	ui->m_case_sensitive_cb->setHidden(hide);
-	ui->m_advanced_replace_pb->setHidden(hide);
+	m_vertical_animation->setHidden(hide);
+	m_horizontal_animation->setHidden(hide);
 }
 
 /**

@@ -24,6 +24,7 @@
 #include "element.h"
 #include "independenttextitem.h"
 #include "searchandreplaceworker.h"
+#include "QWidgetAnimation/qwidgetanimation.h"
 
 class QTreeWidgetItem;
 
@@ -39,7 +40,7 @@ class SearchAndReplaceWidget : public QWidget
 	
 	public:
 		explicit SearchAndReplaceWidget(QWidget *parent = nullptr);
-		~SearchAndReplaceWidget();
+		~SearchAndReplaceWidget() override;
 	
 		bool event(QEvent *event) override;
 		void clear();
@@ -47,7 +48,7 @@ class SearchAndReplaceWidget : public QWidget
 	
 	private:
 		void setUpTreeItems();
-		void setHideAdvanced(bool hide) const;
+		void setHideAdvanced(bool hide);
 		void fillItemsList();
 		void addElement(Element *element);
 		void search();
@@ -109,6 +110,8 @@ class SearchAndReplaceWidget : public QWidget
 		QPointer<QGraphicsObject> m_last_selected;
 		QHash<QTreeWidgetItem *, QPointer <Diagram>> m_diagram_hash;
 		SearchAndReplaceWorker m_worker;
+		QWidgetAnimation *m_vertical_animation;
+		QWidgetAnimation *m_horizontal_animation;
 };
 
 #endif // SEARCHANDREPLACEWIDGET_H

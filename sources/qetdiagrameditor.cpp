@@ -39,6 +39,7 @@
 #include "qetgraphicstableitem.h"
 #include "bomexportdialog.h"
 #include "nomenclaturemodel.h"
+#include "QWidgetAnimation/qwidgetanimation.h"
 
 #include <KAutoSaveFile>
 
@@ -66,9 +67,17 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	splitter_->setOrientation(Qt::Vertical);
 	splitter_->addWidget(&m_workspace);
 	splitter_->addWidget(&m_search_and_replace_widget);
-	m_search_and_replace_widget.setHidden(true);
-	m_search_and_replace_widget.setEditor(this);
 	setCentralWidget(splitter_);
+	m_search_and_replace_widget.setEditor(this);
+
+	QList<int> s;
+	s << m_workspace.maximumHeight() << m_search_and_replace_widget.minimumSizeHint().height();
+	splitter_->setSizes(s); //Force the size of the search and replace widget, force have a good animation the first time he is showed
+
+	auto anim = new QWidgetAnimation(&m_search_and_replace_widget, Qt::Vertical, QWidgetAnimation::lastSize, 250);
+	anim->setObjectName("search and replace animator");
+	m_search_and_replace_widget.setHidden(true);
+	anim->setLastShowSize(m_search_and_replace_widget.minimumSizeHint().height());
 	
 		//Set object name to be retrieved by the stylesheets
 	m_workspace.setBackground(QBrush(Qt::NoBrush));
@@ -654,8 +663,13 @@ void QETDiagramEditor::setUpActions()
 	
 	m_find = new QAction(tr("Chercher/remplacer"), this);
 	m_find->setShortcut(QKeySequence::Find);
-	connect(m_find, &QAction::triggered, [this]() {
-		this->m_search_and_replace_widget.setHidden(!m_search_and_replace_widget.isHidden());
+	connect(m_find, &QAction::triggered, [this]()
+	{
+		if (auto animator = m_search_and_replace_widget.findChild<QWidgetAnimation *>("search and replace animator")) {
+			animator->setHidden(!m_search_and_replace_widget.isHidden());
+		} else {
+			this->m_search_and_replace_widget.setHidden(!m_search_and_replace_widget.isHidden());
+		}
 	});
 }
 
@@ -2311,7 +2325,7 @@ void QETDiagramEditor::generateTerminalBlock()
 								" First install on macOSX"
 							 "</B>""</U>"
 								"<br>"
-								"1. Install, if required, python 3.5 "
+								"1. Install, if required, python 3.8 bundle only, because program use hardcoded PATH for localise qet-tb-generator plugin "
 								"<br>"
 								" Visit :"
 								"<br>"
