@@ -2325,7 +2325,7 @@ void QETDiagramEditor::generateTerminalBlock()
 								" First install on macOSX"
 							 "</B>""</U>"
 								"<br>"
-								"1. Install, if required, python 3.5 "
+								"1. Install, if required, python 3.8 bundle only, because program use hardcoded PATH for localise qet-tb-generator plugin "
 								"<br>"
 								" Visit :"
 								"<br>"
