@@ -1,4 +1,4 @@
-/*
+﻿/*
    Copyright 2006-2020 The QElectroTech Team
    This file is part of QElectroTech.
 
@@ -40,6 +40,7 @@ class ElementQueryWidget : public QWidget
 		explicit ElementQueryWidget(QWidget *parent = nullptr);
 		~ElementQueryWidget();
 
+		void setQuery(const QString &query);
 		QString queryStr() const;
 		QStringList header() const;
 
@@ -49,8 +50,6 @@ class ElementQueryWidget : public QWidget
 		void on_m_remove_pb_clicked();
 		void on_m_down_pb_clicked();
 		void on_m_edit_sql_query_cb_clicked();
-		void on_m_plant_textChanged(const QString &arg1);
-		void on_m_location_textChanged(const QString &arg1);
 		void on_m_filter_le_textEdited(const QString &arg1);
 		void on_m_filter_type_cb_activated(int index);
 
@@ -63,7 +62,9 @@ class ElementQueryWidget : public QWidget
 		void on_m_var_list_itemDoubleClicked(QListWidgetItem *item);
 		void on_m_choosen_list_itemDoubleClicked(QListWidgetItem *item);
 
-		private:
+		void reset();
+
+	private:
 		Ui::ElementQueryWidget *ui;
 		QHash <QString, QString> m_export_info;
 		QButtonGroup m_button_group;

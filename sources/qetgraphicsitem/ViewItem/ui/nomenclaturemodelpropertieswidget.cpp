@@ -59,10 +59,11 @@ void NomenclatureModelPropertiesWidget::setModel(NomenclatureModel *model) {
 void NomenclatureModelPropertiesWidget::on_m_edit_query_pb_clicked()
 {
 	QDialog d(this);
-	auto l = new QVBoxLayout(this);
+	auto l = new QVBoxLayout;
 	d.setLayout(l);
 
 	auto query_widget = new ElementQueryWidget(&d);
+	query_widget->setQuery(m_model->queryString());
 	l->addWidget(query_widget);
 
 	auto button_box = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);

@@ -19,6 +19,8 @@
 #include "ui_elementquerywidget.h"
 #include "qetapp.h"
 
+#include <QRegularExpression>
+
 /**
  * @brief ElementQueryWidget::ElementQueryWidget
  * @param parent
@@ -63,7 +65,7 @@ ElementQueryWidget::ElementQueryWidget(QWidget *parent) :
 		else
 		{
 			int checked = 0;
-			for (int i=1 ; i<5 ; ++i) {
+			for (int i=1 ; i<6 ; ++i) {
 				if (m_button_group.button(i)->isChecked()) {++checked;}
 			}
 
@@ -95,6 +97,164 @@ ElementQueryWidget::~ElementQueryWidget() {
 }
 
 /**
+ * @brief ElementQueryWidget::setQuery
+ * @param query
+ * Set the current query to @query.
+ * If it's possible, rebuild the state of the widget from the query
+ */
+void ElementQueryWidget::setQuery(const QString &query)
+{
+	if (query.startsWith("SELECT"))
+	{
+		reset();
+
+		ui->m_sql_query->setText(query);
+
+		QString select = query;
+		select.remove(0,7); //Remove SELECT
+		select.truncate(select.indexOf("FROM")); //Truncate at FROM
+		select.replace(" ", ""); //Remove withe space
+
+			//Get the select -> the item in the right list
+		QStringList split = select.split(",");
+		for (auto str : split)
+		{
+			for (auto item : m_items_list)
+			{
+				if (item->data(Qt::UserRole).toString() == str) {
+					ui->m_var_list->takeItem(ui->m_var_list->row(item));
+					ui->m_choosen_list->addItem(item);
+					continue;
+				}
+			}
+		}
+
+			//There is not filter return now.
+		if (!query.contains("WHERE")) {
+			return;
+		}
+
+			//Get the filter
+		auto where = query;
+		where.remove(0, where.indexOf("WHERE") + 6);
+		where.truncate(where.indexOf("ORDER BY"));
+
+			//Element type filter
+		if (where.contains("element_sub_type") || where.contains("element_type"))
+		{
+			int c=0;
+			ui->m_simple_cb->setChecked    (where.contains("Simple")     ? true : false);
+			if (ui->m_simple_cb->isChecked()) {
+				++c;
+				where.remove("element_type = 'Simple' ");
+			}
+			ui->m_terminal_cb->setChecked  (where.contains("Terminale")  ? true : false);
+			if (ui->m_terminal_cb->isChecked()) {
+				++c;
+				where.remove("element_type = 'Terminale'");
+			}
+			ui->m_coil_cb->setChecked      (where.contains("coil")       ? true : false);
+			if (ui->m_coil_cb->isChecked()) {
+				++c;
+				where.remove("element_sub_type = 'coil' ");
+			}
+			ui->m_button_cb->setChecked    (where.contains("commutator") ? true : false);
+			if (ui->m_button_cb->isChecked()) {
+				++c;
+				where.remove("element_sub_type = 'commutator' ");
+			}
+			ui->m_protection_cb->setChecked(where.contains("protection") ? true : false);
+			if (ui->m_protection_cb) {
+				++c;
+				where.remove("element_sub_type = 'protection'");
+			}
+
+			if (c == 5) {
+				ui->m_all_cb->setCheckState(Qt::Checked);
+			} else if (c > 0) {
+				ui->m_all_cb->setCheckState(Qt::PartiallyChecked);
+			}
+
+			where.remove("OR");
+		}
+
+
+			//Filter for selected data
+		QStringList strl;
+		for (auto item : m_items_list) {
+			strl.append(item->data(Qt::UserRole).toString());
+		}
+
+		QString beginning_rx;
+		beginning_rx.append(QString("^(").append(strl.join("|")));
+		beginning_rx.append(")");
+
+		QRegularExpression rx_is_not_null(beginning_rx + " IS NOT NULL$");
+		QRegularExpression rx_is_null (beginning_rx + " IS NULL$");
+		QRegularExpression rx_like (beginning_rx + QString(" LIKE'%(.+)%'$"));
+		QRegularExpression rx_not_like (beginning_rx + QString(" NOT LIKE'%(.+)%'$"));
+		QRegularExpression rx_equal (beginning_rx + QString("='(.+)'$"));
+		QRegularExpression rx_not_equal (beginning_rx + QString("!='(.+)'$"));
+
+
+		QStringList split_where;
+
+			//Remove the white space at begin and end of each string
+		for (auto str : where.split("AND "))
+		{
+			if (str.startsWith(" "))
+				str.remove(0,1);
+			if (str.endsWith(" "))
+				str.remove(str.size()-1, 1);
+
+			split_where.append(str);
+		}
+
+
+		QRegularExpressionMatch rxm;
+		for (auto str : split_where)
+		{
+			rxm = rx_is_not_null.match(str);
+			if (rxm.hasMatch()) {
+				m_filter.insert(rxm.captured(1), qMakePair(1, QString()));
+				continue;
+			}
+
+			rxm = rx_is_null.match(str);
+			if (rxm.hasMatch()) {
+				m_filter.insert(rxm.captured(1), qMakePair(2, QString()));
+				continue;
+			}
+
+			rxm = rx_like.match(str);
+			if (rxm.hasMatch()) {
+				m_filter.insert(rxm.captured(1), qMakePair(3, rxm.captured(2)));
+				continue;
+			}
+
+			rxm = rx_not_like.match(str);
+			if (rxm.hasMatch()) {
+				m_filter.insert(rxm.captured(1), qMakePair(4, rxm.captured(2)));
+				continue;
+			}
+
+			rxm = rx_equal.match(str);
+			if (rxm.hasMatch()) {
+				m_filter.insert(rxm.captured(1), qMakePair(5, rxm.captured(2)));
+				continue;
+			}
+
+			rxm = rx_not_equal.match(str);
+			if (rxm.hasMatch()) {
+				m_filter.insert(rxm.captured(1), qMakePair(6, rxm.captured(2)));
+				continue;
+			}
+
+		}
+	}
+}
+
+/**
  * @brief ElementQueryWidget::queryStr
  * @return The current query
  */
@@ -122,7 +282,7 @@ QString ElementQueryWidget::queryStr() const
 		}
 		column += key;
 		order_by += key;
-		
+
 		auto f = FilterFor(key);
 		switch (f.first)
 		{
@@ -154,7 +314,7 @@ QString ElementQueryWidget::queryStr() const
 	QString where;
 	if (ui->m_all_cb->checkState() == Qt::PartiallyChecked)
 	{
-		where = " WHERE ";
+		where = " WHERE (";
 		bool b = false;
 		if (ui->m_terminal_cb->isChecked()) {
 			if (b) where +=" OR";
@@ -180,6 +340,12 @@ QString ElementQueryWidget::queryStr() const
 			if (b) where +=" OR";
 			where += " element_sub_type = 'protection'";
 		}
+		where.append(")");
+	}
+
+	if (where.isEmpty() && !filter_.isEmpty()) {
+		filter_.remove(0, 4); //Remove the first " AND" of filter.
+		filter_.prepend( " WHERE");
 	}
 
 	QString q(select + column + from + where + filter_ + order_by);
@@ -333,16 +499,6 @@ void ElementQueryWidget::on_m_edit_sql_query_cb_clicked()
 	}
 }
 
-void ElementQueryWidget::on_m_plant_textChanged(const QString &arg1) {
-	Q_UNUSED(arg1)
-	updateQueryLine();
-}
-
-void ElementQueryWidget::on_m_location_textChanged(const QString &arg1) {
-	Q_UNUSED(arg1)
-	updateQueryLine();
-}
-
 void ElementQueryWidget::on_m_filter_le_textEdited(const QString &arg1)
 {
 	if (auto item = ui->m_choosen_list->currentItem())
@@ -392,4 +548,19 @@ void ElementQueryWidget::on_m_var_list_itemDoubleClicked(QListWidgetItem *item) 
 void ElementQueryWidget::on_m_choosen_list_itemDoubleClicked(QListWidgetItem *item) {
 	Q_UNUSED(item)
 	on_m_remove_pb_clicked();
+}
+
+/**
+ * @brief ElementQueryWidget::reset
+ * Clear this widget aka set to initial state
+ */
+void ElementQueryWidget::reset()
+{
+	while (ui->m_choosen_list->item(0) != nullptr) {
+		on_m_remove_pb_clicked();
+	}
+
+	ui->m_all_cb->setChecked(true);
+	ui->m_sql_query->clear();
+	m_filter.clear();
 }

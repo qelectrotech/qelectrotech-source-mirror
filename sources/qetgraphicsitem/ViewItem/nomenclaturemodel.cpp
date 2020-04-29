@@ -187,6 +187,14 @@ void NomenclatureModel::query(const QString &query)
 	if (rm_) { emit endResetModel();}
 }
 
+/**
+ * @brief NomenclatureModel::queryString
+ * @return the current query used by this model
+ */
+QString NomenclatureModel::queryString() const {
+	return m_query;
+}
+
 QETProject *NomenclatureModel::project() const {
 	return m_project.data();
 }
