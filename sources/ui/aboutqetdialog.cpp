@@ -84,7 +84,7 @@ void AboutQETDialog::setTranslators()
 	addAuthor(ui->m_translators_label, "Dik Leenheer",                              "dleenheer@suzerein.nl",          tr("Traduction en néerlandais"));
 	addAuthor(ui->m_translators_label, "Ronny Desmedt",                             "r.desmedt@live.be",              tr("Traduction en flamand"));
 	addAuthor(ui->m_translators_label, "OSS au2mation",                             "OSSau2mation@OSSau2mation.dk",   tr("Traduction en danois"));
-	addAuthor(ui->m_translators_label, "Hilario Silveira",                          "hilario@soliton.com.br",         tr("Traduction en brézilien"));
+	addAuthor(ui->m_translators_label, "Hilario Silveira & Gleisson J.J.Cardoso",   "hilario@soliton.com.br",         tr("Traduction en brézilien"));
 	addAuthor(ui->m_translators_label, "Aziz Karabudak",                            "aziz.karabudak@argevi.com",      tr("Traduction en Turc"));
 	addAuthor(ui->m_translators_label, "Emir Izmiroglu",                            "emirizmiroglu@gmail.com",        tr("Traduction en Turc"));
 	addAuthor(ui->m_translators_label, "Gábor Gubányi",                             "gubanyig@gmail.com",             tr("Traduction en hongrois"));
