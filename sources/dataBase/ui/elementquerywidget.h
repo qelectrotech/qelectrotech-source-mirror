@@ -52,19 +52,23 @@ class ElementQueryWidget : public QWidget
 		void on_m_edit_sql_query_cb_clicked();
 		void on_m_filter_le_textEdited(const QString &arg1);
 		void on_m_filter_type_cb_activated(int index);
+		void on_m_load_pb_clicked();
+		void on_m_save_current_conf_pb_clicked();
+		void on_m_save_name_le_textChanged(const QString &arg1);
+		void on_m_choosen_list_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous);
+		void on_m_var_list_itemDoubleClicked(QListWidgetItem *item);
+		void on_m_choosen_list_itemDoubleClicked(QListWidgetItem *item);
 
 		void updateQueryLine();
 		QStringList selectedKeys() const;
 		void setUpItems();
 		QPair<int, QString> FilterFor(const QString &key) const;
+		void fillSavedQuery();
 
-		void on_m_choosen_list_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous);
-		void on_m_var_list_itemDoubleClicked(QListWidgetItem *item);
-		void on_m_choosen_list_itemDoubleClicked(QListWidgetItem *item);
 
 		void reset();
 
-	private:
+		private:
 		Ui::ElementQueryWidget *ui;
 		QHash <QString, QString> m_export_info;
 		QButtonGroup m_button_group;

@@ -87,6 +87,7 @@ ElementQueryWidget::ElementQueryWidget(QWidget *parent) :
 	});
 
 	setUpItems();
+	fillSavedQuery();
 }
 
 /**
@@ -130,7 +131,11 @@ void ElementQueryWidget::setQuery(const QString &query)
 		}
 
 			//There is not filter return now.
-		if (!query.contains("WHERE")) {
+		if (!query.contains("WHERE"))
+		{
+			ui->m_all_cb->setCheckState(Qt::Checked);
+			for (auto b : m_button_group.buttons())
+				b->setChecked(true);
 			return;
 		}
 
@@ -176,6 +181,12 @@ void ElementQueryWidget::setQuery(const QString &query)
 			}
 
 			where.remove("OR");
+		}
+		else // There is not "element_sub_type" or "element_type" that mean every element are selected
+		{
+			ui->m_all_cb->setCheckState(Qt::Checked);
+			for (auto b : m_button_group.buttons())
+				b->setChecked(true);
 		}
 
 
@@ -352,6 +363,11 @@ QString ElementQueryWidget::queryStr() const
 	return q;
 }
 
+/**
+ * @brief ElementQueryWidget::header
+ * @return the name of each selected item is a QStringList.
+ * You can use the QStringList as header string of a table filled by the returned value of the query ElementQueryWidget::queryStr() to project database.
+ */
 QStringList ElementQueryWidget::header() const
 {
 		//Made a string list with the colomns (keys) choosen by the user
@@ -391,6 +407,9 @@ QStringList ElementQueryWidget::selectedKeys() const
 	return keys;
 }
 
+/**
+ * @brief ElementQueryWidget::setUpItems
+ */
 void ElementQueryWidget::setUpItems()
 {
 	for(QString key : QETApp::elementInfoKeys())
@@ -419,6 +438,24 @@ void ElementQueryWidget::setUpItems()
  */
 QPair<int, QString> ElementQueryWidget::FilterFor(const QString &key) const {
 	return m_filter.value(key, qMakePair(0, QString()));
+}
+
+/**
+ * @brief ElementQueryWidget::fillSavedQuery
+ * Fill the combobox of saved queries
+ */
+void ElementQueryWidget::fillSavedQuery()
+{
+	QFile file(QETApp::configDir() + "/nomenclature.json");
+	if (file.open(QFile::ReadOnly))
+	{
+		QJsonDocument jsd(QJsonDocument::fromJson(file.readAll()));
+		QJsonObject jso = jsd.object();
+
+		for (auto it = jso.begin() ; it != jso.end() ; ++it) {
+			ui->m_conf_cb->addItem(it.key());
+		}
+	}
 }
 
 /**
@@ -499,6 +536,10 @@ void ElementQueryWidget::on_m_edit_sql_query_cb_clicked()
 	}
 }
 
+/**
+ * @brief ElementQueryWidget::on_m_filter_le_textEdited
+ * @param arg1
+ */
 void ElementQueryWidget::on_m_filter_le_textEdited(const QString &arg1)
 {
 	if (auto item = ui->m_choosen_list->currentItem())
@@ -512,6 +553,10 @@ void ElementQueryWidget::on_m_filter_le_textEdited(const QString &arg1)
 	}
 }
 
+/**
+ * @brief ElementQueryWidget::on_m_filter_type_cb_activated
+ * @param index
+ */
 void ElementQueryWidget::on_m_filter_type_cb_activated(int index)
 {
 	if (auto item = ui->m_choosen_list->currentItem())
@@ -524,6 +569,71 @@ void ElementQueryWidget::on_m_filter_type_cb_activated(int index)
 		ui->m_filter_le->setDisabled(index <= 2);
 		updateQueryLine();
 	}
+}
+
+/**
+ * @brief ElementQueryWidget::on_m_load_pb_clicked
+ * Load a query from nomenclature.json file
+ */
+void ElementQueryWidget::on_m_load_pb_clicked()
+{
+	auto name = ui->m_conf_cb->currentText();
+	if (name.isEmpty()) {
+		return;
+	}
+
+	QFile file_(QETApp::configDir() + "/nomenclature.json");
+	if (!file_.open(QFile::ReadOnly)) {
+		return;
+	}
+
+	QJsonDocument doc_(QJsonDocument::fromJson(file_.readAll()));
+	QJsonObject object_ = doc_.object();
+
+	auto value = object_.value(name);
+	if (!value.isObject()) {
+		return;
+	}
+
+	auto value_object = value.toObject();
+	if (value_object.value("query").isString()) {
+		setQuery(value_object.value("query").toString());
+	}
+}
+
+/**
+ * @brief ElementQueryWidget::on_m_save_current_conf_pb_clicked
+ * Save the actual query to nomenclature.json file
+ */
+void ElementQueryWidget::on_m_save_current_conf_pb_clicked()
+{
+	QFile file_(QETApp::configDir() + "/nomenclature.json");
+
+	if (file_.open(QFile::ReadWrite))
+	{
+		QJsonDocument doc_(QJsonDocument::fromJson(file_.readAll()));
+		QJsonObject root_object;
+
+		if (!doc_.isEmpty())
+		{
+			root_object = doc_.object();
+			if (root_object.contains(ui->m_save_name_le->text())) {
+				root_object.remove(ui->m_save_name_le->text());
+			}
+		}
+
+		QJsonObject object_;
+		object_.insert("query", queryStr());
+		root_object[ui->m_save_name_le->text()] = object_;
+
+		doc_.setObject(root_object);
+		file_.resize(0);
+		file_.write(doc_.toJson());
+	}
+}
+
+void ElementQueryWidget::on_m_save_name_le_textChanged(const QString &arg1) {
+	ui->m_save_current_conf_pb->setDisabled(arg1.isEmpty());
 }
 
 void ElementQueryWidget::on_m_choosen_list_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous)
@@ -556,11 +666,13 @@ void ElementQueryWidget::on_m_choosen_list_itemDoubleClicked(QListWidgetItem *it
  */
 void ElementQueryWidget::reset()
 {
-	while (ui->m_choosen_list->item(0) != nullptr) {
-		on_m_remove_pb_clicked();
+		//Ugly hack to force to remove all selected infos
+	while (auto item = ui->m_choosen_list->takeItem(0)) {
+		ui->m_var_list->addItem(item);
 	}
 
 	ui->m_all_cb->setChecked(true);
 	ui->m_sql_query->clear();
 	m_filter.clear();
 }
+
