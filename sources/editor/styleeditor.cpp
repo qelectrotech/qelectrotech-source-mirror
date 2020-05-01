@@ -22,7 +22,6 @@
 #include <QComboBox>
 #include <QCheckBox>
 #include <QVBoxLayout>
-#include <QHBoxLayout>
 #include <QLabel>
 
 /**
@@ -378,26 +377,23 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	
 	updateForm();
 	
-	main_layout = new QVBoxLayout();
+	auto main_layout = new QVBoxLayout();
 	main_layout -> setMargin(0);
 	
 	main_layout -> addWidget(new QLabel("<u>" + tr("Apparence :") + "</u> "));
-	
-	QHBoxLayout *color_layout = new QHBoxLayout();
-	color_layout -> addWidget(new QLabel(tr("Contour :")), 0, Qt::AlignRight);
-	color_layout -> addWidget(outline_color);
-	color_layout -> addSpacing(10);
-	color_layout -> addWidget(new QLabel(tr("Remplissage :")), 0, Qt::AlignRight);
-	color_layout -> addWidget(filling_color);
-	main_layout -> addLayout(color_layout);
-	
-	QHBoxLayout *style_layout = new QHBoxLayout();
-	style_layout -> addWidget(new QLabel(tr("Style : ")), 0, Qt::AlignRight);
-	style_layout -> addWidget(line_style);
-	style_layout -> addSpacing(10);
-	style_layout -> addWidget(new QLabel(tr("Épaisseur : ")), 0, Qt::AlignRight);
-	style_layout -> addWidget(size_weight);
-	main_layout -> addLayout(style_layout);
+
+	outline_color->setSizeAdjustPolicy(QComboBox::AdjustToMinimumContentsLength);
+	filling_color->setSizeAdjustPolicy(QComboBox::AdjustToMinimumContentsLength);
+	auto grid_layout = new QGridLayout(this);
+	grid_layout->addWidget(new QLabel(tr("Contour :")), 0,0, Qt::AlignRight);
+	grid_layout->addWidget(outline_color, 0, 1);
+	grid_layout->addWidget(new QLabel(tr("Remplissage :")), 0, 2, Qt::AlignRight);
+	grid_layout->addWidget(filling_color, 0, 3);
+	grid_layout->addWidget(new QLabel(tr("Style :")), 1, 0, Qt::AlignRight);
+	grid_layout->addWidget(line_style, 1, 1);
+	grid_layout->addWidget(new QLabel(tr("Épaisseur :")), 1, 2, Qt::AlignRight);
+	grid_layout->addWidget(size_weight, 1 ,3);
+	main_layout->addItem(grid_layout);
 
 	main_layout -> addWidget(antialiasing);
 

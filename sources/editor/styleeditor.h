@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2019 The QElectroTech Team
 	This file is part of QElectroTech.
 	
@@ -47,7 +47,6 @@ class StyleEditor : public ElementItemEditor
 		CustomElementGraphicPart *part;
 		QList <CustomElementGraphicPart *> m_part_list;
 		QList <CustomElementPart *> m_cep_list;
-		QVBoxLayout *main_layout;
 		QCheckBox *antialiasing;
 		QComboBox *filling_color, *outline_color, *size_weight, *line_style;
 	
