@@ -1,0 +1,22 @@
+<definition link_type="simple" type="element" hotspot_x="95" hotspot_y="33" height="80" width="120" version="0.70" orientation="dyyy">
+    <uuid uuid="{1edb53f2-0985-4d4c-8ac5-635b4ff63d3b}"/>
+    <names>
+        <name lang="de">Vaillant VRC DCF Aussenfühler</name>
+    </names>
+    <elementInformations/>
+    <informations>Manfred Rieser
+Lizenz: free</informations>
+    <description>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-90" y="-30" height="60" width="110" rx="0" ry="0"/>
+        <dynamic_text font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" x="-125" text_width="-1" y="-9" text_from="UserText" z="2" rotation="0" uuid="{4a114693-1bd7-478e-8d9b-5d797e8c0331}" frame="false" Valignment="AlignTop" Halignment="AlignLeft">
+            <text>_</text>
+        </dynamic_text>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-48" color="#000000" y="24" rotation="0" text="AF"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-32" color="#000000" y="24" rotation="0" text="DCF&#xa;"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-4" color="#000000" y="24" rotation="0" text="0&#xa;"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-86" color="#000000" y="-13" rotation="0" text="Vaillant VCR DCF"/>
+        <terminal x="0" y="35" orientation="s"/>
+        <terminal x="-40" y="35" orientation="s"/>
+        <terminal x="-20" y="35" orientation="s"/>
+    </description>
+</definition>

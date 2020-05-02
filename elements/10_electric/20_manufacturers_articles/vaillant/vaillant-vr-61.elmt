@@ -1,0 +1,63 @@
+<definition link_type="simple" type="element" hotspot_x="205" hotspot_y="44" height="90" width="550" version="0.70" orientation="dyyy">
+    <uuid uuid="{3c062432-e133-4137-90c1-6f5fb8b151f5}"/>
+    <names>
+        <name lang="de">Vaillant VR 61</name>
+    </names>
+    <elementInformations/>
+    <informations>Manfred Rieser
+Lizenz: free</informations>
+    <description>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-200" y="-40" height="80" width="540" rx="0" ry="0"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-8" color="#000000" y="-21" rotation="0" text="Vaillant Mischermodul VR 61"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-187" color="#000000" y="32" rotation="0" text="PE"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-164" color="#000000" y="32" rotation="0" text="N"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-143" color="#000000" y="32" rotation="0" text="L"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-107" color="#000000" y="32" rotation="0" text="PE"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-84" color="#000000" y="32" rotation="0" text="N"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-63" color="#000000" y="32" rotation="0" text="L"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-27" color="#000000" y="32" rotation="0" text="PE"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-4" color="#000000" y="32" rotation="0" text="N"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="16" color="#000000" y="32" rotation="0" text="L"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="53" color="#000000" y="32" rotation="0" text="PE"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="75" color="#000000" y="32" rotation="0" text="N"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="97" color="#000000" y="32" rotation="0" text="L"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="132" color="#000000" y="32" rotation="0" text="PE"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="156" color="#000000" y="32" rotation="0" text="N"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="175" color="#000000" y="32" rotation="0" text="A"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="195" color="#000000" y="32" rotation="0" text="Z"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="235" color="#000000" y="32" rotation="0" text="+"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="258" color="#000000" y="32" rotation="0" text="-"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="297" color="#000000" y="32" rotation="0" text="2"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="316" color="#000000" y="32" rotation="0" text="1"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="298" color="#000000" y="20" rotation="0" text="VF2"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="237" color="#000000" y="20" rotation="0" text="BUS"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="156" color="#000000" y="20" rotation="0" text="HK2"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="60" color="#000000" y="20" rotation="0" text="HK2-P"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-20" color="#000000" y="20" rotation="0" text="HK1-P"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-98" color="#000000" y="20" rotation="0" text="LP/ZP"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-182" color="#000000" y="20" rotation="0" text="230V~"/>
+        <dynamic_text font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" x="-236" text_width="-1" y="-13" text_from="UserText" z="32" rotation="0" uuid="{257e5a17-ac7b-4928-815e-a882d0a49ad6}" frame="false" Valignment="AlignTop" Halignment="AlignLeft">
+            <text>_</text>
+        </dynamic_text>
+        <terminal x="80" y="40" orientation="s"/>
+        <terminal x="60" y="40" orientation="s"/>
+        <terminal x="240" y="40" orientation="s"/>
+        <terminal x="140" y="40" orientation="s"/>
+        <terminal x="200" y="40" orientation="s"/>
+        <terminal x="260" y="40" orientation="s"/>
+        <terminal x="-100" y="40" orientation="s"/>
+        <terminal x="-80" y="40" orientation="s"/>
+        <terminal x="100" y="40" orientation="s"/>
+        <terminal x="-160" y="40" orientation="s"/>
+        <terminal x="180" y="40" orientation="s"/>
+        <terminal x="0" y="40" orientation="s"/>
+        <terminal x="-60" y="40" orientation="s"/>
+        <terminal x="-140" y="40" orientation="s"/>
+        <terminal x="320" y="40" orientation="s"/>
+        <terminal x="-20" y="40" orientation="s"/>
+        <terminal x="300" y="40" orientation="s"/>
+        <terminal x="160" y="40" orientation="s"/>
+        <terminal x="-180" y="40" orientation="s"/>
+        <terminal x="20" y="40" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,84 @@
+<definition orientation="dyyy" type="element" link_type="simple" hotspot_x="285" height="110" hotspot_y="56" width="650" version="0.70">
+    <uuid uuid="{e86a32d7-9d91-4015-ab07-bb4fa9f1c0a4}"/>
+    <names>
+        <name lang="de">Vaillant Gastherme ecoTEC VC AT 196/3-5</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="machine-manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="manufacturer-reference"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="manufacturer"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+    </elementInformations>
+    <informations>Autor: Manfred Rieser
+Lizenz: free</informations>
+    <description>
+        <text text="10" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="301" y="-30"/>
+        <text text="X2" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="293" y="-13"/>
+        <text text="4" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="286" y="-30"/>
+        <rect antialias="false" height="100" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-280" y="-50" width="640"/>
+        <text text="+" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-35" y="-30"/>
+        <text text="X41" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-220" y="-30"/>
+        <text text="BUS" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-52" y="-12"/>
+        <text text="-" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-52" y="-31"/>
+        <text text="8" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="27" y="-30"/>
+        <text text="7" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="16" y="-30"/>
+        <text text="9" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="37" y="-30"/>
+        <text text="L" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="127" y="-30"/>
+        <text text="N" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="135" y="-30"/>
+        <text text="PE" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="145" y="-30"/>
+        <text text="3" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="206" y="-30"/>
+        <text text="4" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="216" y="-30"/>
+        <text text="5" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="226" y="-30"/>
+        <text text="230V~" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="120" y="-12"/>
+        <text text="RT230V" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="197" y="-12"/>
+        <text text="RT24V=" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="5" y="-12"/>
+        <line y1="-50" y2="-40" x1="-170" end1="none" x2="-170" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line y1="-50" y2="-40" x1="-130" end1="none" x2="-130" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line y1="-50" y2="-40" x1="-100" end1="none" x2="-100" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line y1="-50" y2="-40" x1="120" end1="none" x2="120" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line y1="-50" y2="-40" x1="160" end1="none" x2="160" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line y1="-50" y2="-40" x1="-240" end1="none" x2="-240" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line y1="-50" y2="-40" x1="240" end1="none" x2="240" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <text text="Vaillant Gastherme VC AT 196/3-5" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-100" y="33"/>
+        <line y1="-40" y2="-50" x1="-60" end1="none" x2="-60" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line y1="-40" y2="-50" x1="-20" end1="none" x2="-20" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line y1="-50" y2="-40" x1="10" end1="none" x2="10" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line y1="-40" y2="-50" x1="200" end1="none" x2="200" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line y1="-50" y2="-40" x1="50" end1="none" x2="50" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <dynamic_text frame="false" text_width="-1" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" rotation="0" Valignment="AlignTop" text_from="UserText" uuid="{da971d61-55d7-4454-90d7-e2d4baa6be0b}" x="-310" Halignment="AlignLeft" y="-10" z="31">
+            <text>_</text>
+        </dynamic_text>
+        <text text="  Anl-&#xa;Therm" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-135" y="-11"/>
+        <text text="Aussenfühler&#xa;    DCF-77" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-247" y="-11"/>
+        <line y1="-50" y2="-40" x1="280" end1="none" x2="280" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <line y1="-50" y2="-40" x1="320" end1="none" x2="320" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
+        <terminal orientation="n" x="290" y="-50"/>
+        <terminal orientation="n" x="310" y="-50"/>
+        <terminal orientation="n" x="-110" y="-50"/>
+        <terminal orientation="n" x="-180" y="-50"/>
+        <terminal orientation="n" x="-200" y="-50"/>
+        <terminal orientation="n" x="220" y="-50"/>
+        <terminal orientation="n" x="-30" y="-50"/>
+        <terminal orientation="n" x="-50" y="-50"/>
+        <terminal orientation="n" x="-220" y="-50"/>
+        <terminal orientation="n" x="20" y="-50"/>
+        <terminal orientation="n" x="150" y="-50"/>
+        <terminal orientation="n" x="40" y="-50"/>
+        <terminal orientation="n" x="30" y="-50"/>
+        <terminal orientation="n" x="-190" y="-50"/>
+        <terminal orientation="n" x="130" y="-50"/>
+        <terminal orientation="n" x="-230" y="-50"/>
+        <terminal orientation="n" x="140" y="-50"/>
+        <terminal orientation="n" x="-120" y="-50"/>
+        <terminal orientation="n" x="230" y="-50"/>
+        <terminal orientation="n" x="-210" y="-50"/>
+        <terminal orientation="n" x="210" y="-50"/>
+    </description>
+</definition>

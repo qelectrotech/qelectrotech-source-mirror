@@ -1,0 +1,21 @@
+<definition link_type="simple" type="element" hotspot_x="64" hotspot_y="37" height="80" width="120" version="0.70" orientation="dyyy">
+    <uuid uuid="{adb3e278-5c82-455c-9e35-5be13cfe6b2b}"/>
+    <names>
+        <name lang="de">Vaillant VRC430</name>
+    </names>
+    <elementInformations/>
+    <informations>Manfred Rieser
+Lizenz: free</informations>
+    <description>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-62" y="-30" height="60" width="115" rx="0" ry="0"/>
+        <dynamic_text font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" x="-92" text_width="-1" y="-11" text_from="UserText" z="2" rotation="0" uuid="{48a541a5-61fe-4a8e-8475-d4ca9d9aec4c}" frame="false" Valignment="AlignTop" Halignment="AlignLeft">
+            <text>_</text>
+        </dynamic_text>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-54" color="#000000" y="-14" rotation="0" text="Vaillant VRC 430"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-12" color="#000000" y="21" rotation="0" text="-"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="5" color="#000000" y="21" rotation="0" text="+"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-12" color="#000000" y="9" rotation="0" text="BUS"/>
+        <terminal x="-10" y="34" orientation="s"/>
+        <terminal x="10" y="34" orientation="s"/>
+    </description>
+</definition>

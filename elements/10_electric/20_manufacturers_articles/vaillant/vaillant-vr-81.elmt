@@ -1,0 +1,21 @@
+<definition link_type="simple" type="element" hotspot_x="65" hotspot_y="43" height="80" width="130" version="0.70" orientation="dyyy">
+    <uuid uuid="{8c3f3227-28ad-4b7a-a885-3be1d8161e0c}"/>
+    <names>
+        <name lang="de">Vaillant VR 81</name>
+    </names>
+    <elementInformations/>
+    <informations>Manfred Rieser
+Lizenz: free</informations>
+    <description>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-60" y="-30" height="60" width="120" rx="0" ry="0"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-12" color="#000000" y="-7" rotation="0" text="BUS"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-15" color="#000000" y="-20" rotation="0" text="+"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="8" color="#000000" y="-20" rotation="0" text="-"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-42" color="#000000" y="20" rotation="0" text="Vaillant VR 81"/>
+        <dynamic_text font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" x="-92" text_width="-1" y="-13" text_from="UserText" z="6" rotation="0" uuid="{c0cdf8d3-4007-48dd-8a1e-acbdea684a64}" frame="false" Valignment="AlignTop" Halignment="AlignLeft">
+            <text>_</text>
+        </dynamic_text>
+        <terminal x="-10" y="-35" orientation="n"/>
+        <terminal x="10" y="-35" orientation="n"/>
+    </description>
+</definition>
