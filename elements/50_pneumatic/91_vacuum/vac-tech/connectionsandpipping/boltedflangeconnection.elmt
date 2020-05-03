@@ -1,0 +1,22 @@
+<definition hotspot_x="24" height="40" type="element" orientation="dyyy" hotspot_y="20" version="0.80" link_type="simple" width="50">
+    <uuid uuid="{7029a733-502a-40e2-89ce-0aa6e09edbbb}"/>
+    <names>
+        <name lang="en">Bolted flange connection</name>
+        <name lang="fr">Bride vérrouillée</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: Eudes Grosjean, S.Deffaux
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text y="12" Valignment="AlignTop" z="2" frame="false" text_from="ElementInfo" Halignment="AlignLeft" uuid="{dd55bb10-a3fa-47b6-9eea-fc0ccfc2493b}" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1" x="19">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="4" end1="none" length2="1.5" y1="-18" x1="4" antialias="false" length1="1.5" end2="none" y2="18"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-4" end1="none" length2="1.5" y1="-18" x1="-4" antialias="false" length1="1.5" end2="none" y2="18"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="20" end1="none" length2="1.5" y1="0" x1="-20" antialias="false" length1="1.5" end2="none" y2="0"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="9" end1="none" length2="1.5" y1="-18" x1="-9" antialias="false" length1="1.5" end2="none" y2="-18"/>
+        <terminal y="0" orientation="e" x="20"/>
+        <terminal y="0" orientation="w" x="-20"/>
+    </description>
+</definition>

@@ -1,0 +1,26 @@
+<definition hotspot_x="18" height="50" type="element" orientation="dyyy" hotspot_y="24" version="0.80" link_type="simple" width="40">
+    <uuid uuid="{29c2d890-3e57-4179-8e0e-726fbdf3055d}"/>
+    <names>
+        <name lang="en">Cooled baffle</name>
+        <name lang="fr">Baffle refroidi</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: Eudes Grosjean, S.Deffaux
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="7" end1="none" length2="1.5" y1="-4" x1="-7" antialias="false" length1="1.5" end2="none" y2="-4"/>
+        <dynamic_text y="12" Valignment="AlignTop" z="2" frame="false" text_from="ElementInfo" Halignment="AlignLeft" uuid="{dd55bb10-a3fa-47b6-9eea-fc0ccfc2493b}" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1" x="19">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" end1="none" length2="1.5" y1="-16" x1="0" antialias="false" length1="1.5" end2="none" y2="-18"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" end1="none" length2="1.5" y1="16" x1="0" antialias="false" length1="1.5" end2="none" y2="18"/>
+        <rect y="-16" height="32" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" rx="0" antialias="false" width="32" x="-16"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-6" end1="none" length2="1.5" y1="-8" x1="-16" antialias="false" length1="1.5" end2="none" y2="-8"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="16" end1="none" length2="1.5" y1="-8" x1="6" antialias="false" length1="1.5" end2="none" y2="-8"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="7" end1="none" length2="1.5" y1="-12" x1="-7" antialias="false" length1="1.5" end2="none" y2="-12"/>
+        <polygon x3="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-7" y1="11" x1="19" y3="8" antialias="false" y5="5" x5="19" x4="-7" y4="5" closed="false" y2="11"/>
+        <terminal y="18" orientation="s" x="0"/>
+        <terminal y="-18" orientation="n" x="0"/>
+    </description>
+</definition>

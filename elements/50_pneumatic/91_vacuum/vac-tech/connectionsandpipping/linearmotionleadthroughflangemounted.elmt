@@ -1,0 +1,26 @@
+<definition hotspot_x="24" height="40" type="element" orientation="dyyy" hotspot_y="20" version="0.80" link_type="simple" width="50">
+    <uuid uuid="{83eb7ebf-f90c-4cea-a362-0f63d075cf0c}"/>
+    <names>
+        <name lang="en">Linear-motion leadthrough, flange-mounted</name>
+        <name lang="fr">Traversé à mouvement linéaire, à bride</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: Eudes Grosjean, S.Deffaux
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="17" end1="none" length2="1.5" y1="0" x1="7" antialias="false" length1="1.5" end2="none" y2="0"/>
+        <dynamic_text y="12" Valignment="AlignTop" z="2" frame="false" text_from="ElementInfo" Halignment="AlignLeft" uuid="{dd55bb10-a3fa-47b6-9eea-fc0ccfc2493b}" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1" x="19">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-7" end1="none" length2="1.5" y1="0" x1="-17" antialias="false" length1="1.5" end2="none" y2="0"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" end1="none" length2="1.5" y1="-14" x1="0" antialias="false" length1="1.5" end2="none" y2="13.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="1" end1="none" length2="1.5" y1="-14" x1="1" antialias="false" length1="1.5" end2="none" y2="13.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-1" end1="none" length2="1.5" y1="-14" x1="-1" antialias="false" length1="1.5" end2="none" y2="13.5"/>
+        <polygon x3="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-4" y1="-5" x1="-14" y3="7" antialias="false" closed="false" y2="-5"/>
+        <polygon x3="14" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="4" y1="7" x1="4" y3="-5" antialias="false" closed="false" y2="-5"/>
+        <line style="line-style:normal;line-weight:hight;filling:none;color:black" x2="11" end1="triangle" length2="0.5" y1="-14" x1="11" antialias="false" length1="0.5" end2="triangle" y2="-7"/>
+        <terminal y="0" orientation="e" x="17"/>
+        <terminal y="0" orientation="w" x="-17"/>
+    </description>
+</definition>

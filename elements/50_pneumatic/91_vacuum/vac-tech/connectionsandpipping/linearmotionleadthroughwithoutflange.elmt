@@ -1,0 +1,24 @@
+<definition type="element" hotspot_x="19" width="40" link_type="simple" height="40" version="0.80" orientation="dyyy" hotspot_y="17">
+    <uuid uuid="{f73607c3-56d5-40a3-a246-a28193e9c18e}"/>
+    <names>
+        <name lang="fr">Traversé à mouvement linéaire, sans bride</name>
+        <name lang="en">Linear-motion leadthrough, without flange</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: Eudes Grosjean, S.Deffaux
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line antialias="false" y2="15.4684" end2="none" length2="1.5" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11.1226" length1="1.5" end1="none" x2="0"/>
+        <dynamic_text x="19" z="2" y="14" text_width="-1" text_from="ElementInfo" Halignment="AlignLeft" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" uuid="{dd55bb10-a3fa-47b6-9eea-fc0ccfc2493b}" rotation="0" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line antialias="false" y2="15.4684" end2="none" length2="1.5" x1="1" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11.1226" length1="1.5" end1="none" x2="1"/>
+        <line antialias="false" y2="15.4684" end2="none" length2="1.5" x1="-1" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11.1226" length1="1.5" end1="none" x2="-1"/>
+        <polygon antialias="false" x3="-4" y2="0" closed="false" x1="-14" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="7" y1="0" x2="-4"/>
+        <polygon antialias="false" x3="14" y2="0" closed="false" x1="4" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="0" y1="7" x2="4"/>
+        <line antialias="false" y2="-2" end2="triangle" length2="0.5" x1="11" style="line-style:normal;line-weight:hight;filling:none;color:black" y1="-10" length1="0.5" end1="triangle" x2="11"/>
+        <terminal x="-14" y="0" orientation="w"/>
+        <terminal x="14" y="0" orientation="e"/>
+    </description>
+</definition>

@@ -1,0 +1,21 @@
+<definition hotspot_x="24" height="40" type="element" orientation="dyyy" hotspot_y="15" version="0.80" link_type="simple" width="40">
+    <uuid uuid="{2b499e53-76c9-4a8d-a2bb-c84c61d39cef}"/>
+    <names>
+        <name lang="en">Right-angle stop cock</name>
+        <name lang="fr">Valve à angle droit</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: Eudes Grosjean, S.Deffaux
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text y="12" Valignment="AlignTop" z="2" frame="false" text_from="ElementInfo" Halignment="AlignLeft" uuid="{dd55bb10-a3fa-47b6-9eea-fc0ccfc2493b}" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1" x="19">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <circle y="-9" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="18" x="-9"/>
+        <polygon x3="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-20" y1="-5" x1="-8" y3="13" antialias="false" x4="-8" y4="5" closed="false" y2="-13"/>
+        <polygon x3="13" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-13" y1="8" x1="-5" y3="20" antialias="false" x4="5" y4="8" closed="false" y2="20"/>
+        <terminal y="0" orientation="w" x="-20"/>
+        <terminal y="20" orientation="s" x="0"/>
+    </description>
+</definition>

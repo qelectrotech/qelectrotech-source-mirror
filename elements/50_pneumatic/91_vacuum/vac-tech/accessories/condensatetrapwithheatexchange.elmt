@@ -1,0 +1,22 @@
+<definition hotspot_x="24" height="50" type="element" orientation="dyyy" hotspot_y="22" version="0.80" link_type="simple" width="50">
+    <uuid uuid="{dd587823-281b-441c-8ca0-296633c5548f}"/>
+    <names>
+        <name lang="en">Condensate trap with heat exchange</name>
+        <name lang="fr">Piège à condensation à échangeur de chaleur</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: Eudes Grosjean, S.Deffaux
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="12" end1="none" length2="1.5" y1="-10" x1="18" antialias="false" length1="1.5" end2="none" y2="-10"/>
+        <dynamic_text y="5.55" Valignment="AlignTop" z="2" frame="false" text_from="ElementInfo" Halignment="AlignLeft" uuid="{dd55bb10-a3fa-47b6-9eea-fc0ccfc2493b}" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1" x="-7">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-12" end1="none" length2="1.5" y1="-10" x1="-18" antialias="false" length1="1.5" end2="none" y2="-10"/>
+        <polygon x3="12" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="12" y1="-19" x1="-12" y3="14" antialias="false" y5="14" x5="-12" x4="0" y4="24" y2="-19"/>
+        <polygon x3="-1" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-5" y1="-4" x1="18" y3="0" antialias="false" y5="4" x5="18" x4="-5" y4="4" closed="false" y2="-4"/>
+        <terminal y="-10" orientation="w" x="-18"/>
+        <terminal y="-10" orientation="e" x="18"/>
+    </description>
+</definition>

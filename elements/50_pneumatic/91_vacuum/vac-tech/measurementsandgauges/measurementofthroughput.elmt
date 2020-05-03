@@ -1,0 +1,23 @@
+<definition hotspot_x="24" height="50" type="element" orientation="dyyy" hotspot_y="24" version="0.80" link_type="simple" width="50">
+    <uuid uuid="{62001ef9-a95a-4f78-81ad-2aeb441b8323}"/>
+    <names>
+        <name lang="en">Measurement of throughput</name>
+        <name lang="fr">Measurement de flux</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: Eudes Grosjean, S.Deffaux
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text y="12" Valignment="AlignTop" z="2" frame="false" text_from="ElementInfo" Halignment="AlignLeft" uuid="{dd55bb10-a3fa-47b6-9eea-fc0ccfc2493b}" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1" x="19">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <circle y="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="40" x="-20"/>
+        <polygon x3="7" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-7" y1="-11" x1="-16" y3="-3" antialias="false" x4="16" y4="-11" closed="false" y2="-3"/>
+        <polygon x3="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="7" y1="11" x1="16" y3="3" antialias="false" x4="-16" y4="11" closed="false" y2="3"/>
+        <terminal y="-20" orientation="n" x="0"/>
+        <terminal y="0" orientation="e" x="20"/>
+        <terminal y="20" orientation="s" x="0"/>
+        <terminal y="0" orientation="w" x="-20"/>
+    </description>
+</definition>

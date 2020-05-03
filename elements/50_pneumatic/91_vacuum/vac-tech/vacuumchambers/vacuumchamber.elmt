@@ -1,0 +1,24 @@
+<definition hotspot_x="23" height="50" type="element" orientation="dyyy" hotspot_y="21" version="0.80" link_type="simple" width="40">
+    <uuid uuid="{f6bea3a9-79d5-47ba-94ae-2652ca28f7fb}"/>
+    <names>
+        <name lang="en">Vacuum chamber</name>
+        <name lang="fr">Enceinte sous vide</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: Eudes Grosjean, S.Deffaux
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc y="3" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="180" angle="179.5" width="20" x="-10"/>
+        <dynamic_text y="12" Valignment="AlignTop" z="2" frame="false" text_from="ElementInfo" Halignment="AlignLeft" uuid="{dd55bb10-a3fa-47b6-9eea-fc0ccfc2493b}" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1" x="19">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" end1="none" length2="1.5" y1="20" x1="0" antialias="false" length1="1.5" end2="none" y2="15"/>
+        <arc y="-15" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" start="0.6875" angle="179.688" width="20" x="-10"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-10" end1="none" length2="1.5" y1="-9" x1="-10" antialias="false" length1="1.5" end2="none" y2="9"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10" end1="none" length2="1.5" y1="-9" x1="10" antialias="false" length1="1.5" end2="none" y2="9"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-10" end1="none" length2="1.5" y1="-8" x1="-15" antialias="false" length1="1.5" end2="none" y2="-8"/>
+        <terminal y="-8" orientation="w" x="-15"/>
+        <terminal y="20" orientation="s" x="0"/>
+    </description>
+</definition>

@@ -1,0 +1,22 @@
+<definition hotspot_x="24" version="0.80" width="50" height="50" link_type="simple" type="element" hotspot_y="22" orientation="dyyy">
+    <uuid uuid="{36c689c2-474b-4462-9263-91ee3dc48f9d}"/>
+    <names>
+        <name lang="en">Condensate trap, general</name>
+        <name lang="fr">Piège à condensation</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: Eudes Grosjean, S.Deffaux
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text rotation="0" Valignment="AlignTop" uuid="{dd55bb10-a3fa-47b6-9eea-fc0ccfc2493b}" text_width="-1" frame="false" x="-7" z="2" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" y="5.55" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line length1="1.5" x2="12" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" y1="-10" y2="-10" x1="18" end2="none" length2="1.5"/>
+        <line length1="1.5" x2="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" y1="-10" y2="-10" x1="-18" end2="none" length2="1.5"/>
+        <polygon y4="24" x2="12" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y5="14" y3="14" y1="-19" x3="12" y2="-19" x4="0" x1="-12" x5="-12"/>
+        <line length1="1.5" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" y1="-10" y2="15" x1="0" end2="none" length2="1.5"/>
+        <terminal x="18" y="-10" orientation="e"/>
+        <terminal x="-18" y="-10" orientation="w"/>
+    </description>
+</definition>

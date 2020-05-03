@@ -1,0 +1,20 @@
+<definition hotspot_x="26" height="40" type="element" orientation="dyyy" hotspot_y="14" version="0.80" link_type="simple" width="40">
+    <uuid uuid="{90d29dd2-e382-4f3d-8d80-9b2f46617d06}"/>
+    <names>
+        <name lang="en">Right-angle valve</name>
+        <name lang="fr">Vanne d'arrêt à angle droit</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: Eudes Grosjean, S.Deffaux
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text y="12" Valignment="AlignTop" z="2" frame="false" text_from="ElementInfo" Halignment="AlignLeft" uuid="{dd55bb10-a3fa-47b6-9eea-fc0ccfc2493b}" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1" x="19">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon x3="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-20" x6="0" y1="-10" x1="-20" y3="0" antialias="false" y5="20" x5="10" y6="0" x4="-10" y4="20" y2="10"/>
+        <circle y="-3" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" diameter="6" x="-3"/>
+        <terminal y="20" orientation="s" x="0"/>
+        <terminal y="0" orientation="w" x="-20"/>
+    </description>
+</definition>

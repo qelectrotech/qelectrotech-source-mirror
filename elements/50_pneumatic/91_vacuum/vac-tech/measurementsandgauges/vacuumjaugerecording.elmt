@@ -1,0 +1,28 @@
+<definition type="element" hotspot_x="34" width="70" link_type="simple" height="40" version="0.80" orientation="dyyy" hotspot_y="19">
+    <uuid uuid="{29ce955d-3d32-4ba8-aabd-d66a44a3f7d2}"/>
+    <names>
+        <name lang="fr">Jauge de vide avec enregistreur</name>
+        <name lang="en">Vacuum gauge recording</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: Eudes Grosjean, S.Deffaux
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line antialias="false" y2="0" end2="none" length2="1.5" x1="-23" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" length1="1.5" end1="none" x2="-3"/>
+        <arc start="80.75" antialias="true" angle="197.688" x="7" width="4" y="1.9" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text x="19" z="2" y="12" text_width="-1" text_from="ElementInfo" Halignment="AlignLeft" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" uuid="{dd55bb10-a3fa-47b6-9eea-fc0ccfc2493b}" rotation="0" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <arc start="341.188" antialias="true" angle="110.75" x="5" width="10" y="4.85" height="4.4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon antialias="false" x3="-3" y2="10" closed="false" x1="-23" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="-9" y1="-9" x2="-13"/>
+        <rect rx="0" antialias="false" x="-27" width="54" ry="0" y="-11" height="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" y2="11" end2="none" length2="1.5" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-11" length1="1.5" end1="none" x2="0"/>
+        <arc start="80.75" antialias="true" angle="162.563" x="9" width="12" y="-9" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc start="257.063" antialias="true" angle="170.25" x="6" width="10" y="-2.4" height="4.4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="0" y="-11" orientation="n"/>
+        <terminal x="-27" y="0" orientation="w"/>
+        <terminal x="0" y="11" orientation="s"/>
+        <terminal x="27" y="0" orientation="e"/>
+    </description>
+</definition>

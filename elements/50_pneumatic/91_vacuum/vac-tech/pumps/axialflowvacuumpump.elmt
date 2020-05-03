@@ -1,0 +1,29 @@
+<definition hotspot_x="24" version="0.80" width="50" height="50" link_type="simple" type="element" hotspot_y="24" orientation="dyyy">
+    <uuid uuid="{c8dc0b06-b6db-4d8b-8a05-477be809302a}"/>
+    <names>
+        <name lang="en">axial flow vacuum pump</name>
+        <name lang="fr">Pompe à flux axial</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: Eudes Grosjean, S.Deffaux
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="30" x="-15" y="-15"/>
+        <dynamic_text rotation="0" Valignment="AlignTop" uuid="{dd55bb10-a3fa-47b6-9eea-fc0ccfc2493b}" text_width="-1" frame="false" x="-7" z="2" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" y="5.55" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line length1="1.5" x2="15" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" y1="0" y2="0" x1="16" end2="none" length2="1.5"/>
+        <line length1="1.5" x2="-15" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" y1="0" y2="0" x1="-16" end2="none" length2="1.5"/>
+        <line length1="1.5" x2="7" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" y1="-7" y2="13" x1="13" end2="none" length2="1.5"/>
+        <line length1="1.5" x2="-13" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" y1="13" y2="-7" x1="-7" end2="none" length2="1.5"/>
+        <line length1="1.5" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" y1="-16" y2="-15" x1="0" end2="none" length2="1.5"/>
+        <line length1="1.5" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" y1="16" y2="15" x1="0" end2="none" length2="1.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="14" x="-7" y="-7"/>
+        <line length1="1.5" x2="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end1="none" y1="-6.5" y2="6.5" x1="0" end2="none" length2="1.5"/>
+        <terminal x="16" y="0" orientation="e"/>
+        <terminal x="0" y="16" orientation="s"/>
+        <terminal x="-16" y="0" orientation="w"/>
+        <terminal x="0" y="-16" orientation="n"/>
+    </description>
+</definition>

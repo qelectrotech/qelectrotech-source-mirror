@@ -1,0 +1,20 @@
+<definition hotspot_x="24" height="30" type="element" orientation="dyyy" hotspot_y="15" version="0.80" link_type="simple" width="50">
+    <uuid uuid="{fa83db61-03f5-4cb3-a46e-dd6d17cfffa2}"/>
+    <names>
+        <name lang="en">Safety shut-off valve</name>
+        <name lang="fr">Valve d'arrêt d'urgence</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: Eudes Grosjean, S.Deffaux
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x3="20" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="20" y1="10" x1="-20" y3="10" antialias="false" x4="-20" y4="-10" y2="-10"/>
+        <dynamic_text y="12" Valignment="AlignTop" z="2" frame="false" text_from="ElementInfo" Halignment="AlignLeft" uuid="{dd55bb10-a3fa-47b6-9eea-fc0ccfc2493b}" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1" x="19">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="15" end1="none" length2="1.5" y1="-10" x1="15" antialias="false" length1="1.5" end2="none" y2="10"/>
+        <terminal y="0" orientation="w" x="-20"/>
+        <terminal y="0" orientation="e" x="20"/>
+    </description>
+</definition>

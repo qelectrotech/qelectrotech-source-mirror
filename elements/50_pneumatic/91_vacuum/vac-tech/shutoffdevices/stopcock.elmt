@@ -1,0 +1,21 @@
+<definition hotspot_x="24" height="30" type="element" orientation="dyyy" hotspot_y="15" version="0.80" link_type="simple" width="50">
+    <uuid uuid="{af716c7b-5e4e-4982-9d4d-01fa42f2e783}"/>
+    <names>
+        <name lang="en">Stop cock</name>
+        <name lang="fr">Valve d'arrêt </name>
+    </names>
+    <elementInformations/>
+    <informations>Author: Eudes Grosjean, S.Deffaux
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <circle y="-9" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" diameter="18" x="-9"/>
+        <dynamic_text y="12" Valignment="AlignTop" z="2" frame="false" text_from="ElementInfo" Halignment="AlignLeft" uuid="{dd55bb10-a3fa-47b6-9eea-fc0ccfc2493b}" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1" x="19">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon x3="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-20" y1="-5" x1="-8" y3="13" antialias="false" x4="-8" y4="5" closed="false" y2="-13"/>
+        <polygon x3="20" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="20" y1="5" x1="8" y3="-13" antialias="false" x4="8" y4="-5" closed="false" y2="13"/>
+        <terminal y="0" orientation="w" x="-20"/>
+        <terminal y="0" orientation="e" x="20"/>
+    </description>
+</definition>

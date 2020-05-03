@@ -1,0 +1,23 @@
+<definition hotspot_x="29" height="30" type="element" orientation="dyyy" hotspot_y="15" version="0.80" link_type="simple" width="60">
+    <uuid uuid="{8841446d-f2d3-4da5-996d-b215d954b8b2}"/>
+    <names>
+        <name lang="en">Butterflyvalve</name>
+        <name lang="fr">Valve papillon</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: Eudes Grosjean, S.Deffaux
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text y="12" Valignment="AlignTop" z="2" frame="false" text_from="ElementInfo" Halignment="AlignLeft" uuid="{dd55bb10-a3fa-47b6-9eea-fc0ccfc2493b}" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1" x="19">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="19.75" end1="none" length2="1.5" y1="-9.75" x1="-19.75" antialias="false" length1="1.5" end2="none" y2="9.75"/>
+        <rect y="-10" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" rx="0" antialias="false" width="40" x="-20"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-22" end1="none" length2="1.5" y1="0" x1="-20" antialias="false" length1="1.5" end2="none" y2="0"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="22" end1="none" length2="1.5" y1="0" x1="20" antialias="false" length1="1.5" end2="none" y2="0"/>
+        <circle y="-2" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" diameter="4" x="-2"/>
+        <terminal y="0" orientation="e" x="22"/>
+        <terminal y="0" orientation="w" x="-22"/>
+    </description>
+</definition>

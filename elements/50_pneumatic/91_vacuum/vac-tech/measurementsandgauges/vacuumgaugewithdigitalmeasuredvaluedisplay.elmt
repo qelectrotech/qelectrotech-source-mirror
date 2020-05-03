@@ -1,0 +1,28 @@
+<definition hotspot_x="34" height="40" type="element" orientation="dyyy" hotspot_y="19" version="0.80" link_type="simple" width="70">
+    <uuid uuid="{a6963965-e7ed-43f0-852d-d9be112b7ee5}"/>
+    <names>
+        <name lang="en">Vacuum gauge with digital measured-value display</name>
+        <name lang="fr">Jauge de vide avec affichage digital</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: Eudes Grosjean, S.Deffaux
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-3" end1="none" length2="1.5" y1="0" x1="-23" antialias="false" length1="1.5" end2="none" y2="0"/>
+        <dynamic_text y="12" Valignment="AlignTop" z="2" frame="false" text_from="ElementInfo" Halignment="AlignLeft" uuid="{dd55bb10-a3fa-47b6-9eea-fc0ccfc2493b}" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1" x="19">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon x3="-3" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-13" y1="-9" x1="-23" y3="-9" antialias="false" closed="false" y2="10"/>
+        <rect y="-11" height="22" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" rx="0" antialias="false" width="54" x="-27"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" end1="none" length2="1.5" y1="-11" x1="0" antialias="false" length1="1.5" end2="none" y2="11"/>
+        <polygon x3="25" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="2" y1="-7" x1="2" y3="-2" antialias="false" x4="25" y4="-7" closed="false" y2="-2"/>
+        <ellipse height="6" y="-9.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="4" x="4"/>
+        <ellipse height="6" y="-9.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="4" x="11.5"/>
+        <ellipse height="6" y="-9.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="4" x="19"/>
+        <terminal y="-11" orientation="n" x="0"/>
+        <terminal y="0" orientation="w" x="-27"/>
+        <terminal y="11" orientation="s" x="0"/>
+        <terminal y="0" orientation="e" x="27"/>
+    </description>
+</definition>

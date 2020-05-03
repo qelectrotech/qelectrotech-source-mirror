@@ -1,0 +1,24 @@
+<definition hotspot_x="20" height="60" type="element" orientation="dyyy" hotspot_y="29" version="0.80" link_type="simple" width="40">
+    <uuid uuid="{41bfc019-0961-4c72-989f-0e88ad5e650c}"/>
+    <names>
+        <name lang="en">Filtering apparatus, general</name>
+        <name lang="fr">Dispositif filtrant, symbole général</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: Eudes Grosjean, S.Deffaux
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" end1="none" length2="1.5" y1="-20" x1="0" antialias="false" length1="1.5" end2="none" y2="-22"/>
+        <dynamic_text y="12" Valignment="AlignTop" z="2" frame="false" text_from="ElementInfo" Halignment="AlignLeft" uuid="{dd55bb10-a3fa-47b6-9eea-fc0ccfc2493b}" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1" x="19">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" end1="none" length2="1.5" y1="20" x1="0" antialias="false" length1="1.5" end2="none" y2="22"/>
+        <rect y="-20" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" rx="0" antialias="false" width="28" x="-14"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-10" end1="none" length2="1.5" y1="0" x1="-14" antialias="false" length1="1.5" end2="none" y2="0"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="13" end1="none" length2="1.5" y1="0" x1="10" antialias="false" length1="1.5" end2="none" y2="0"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="6" end1="none" length2="1.5" y1="0" x1="-5" antialias="false" length1="1.5" end2="none" y2="0"/>
+        <terminal y="-22" orientation="n" x="0"/>
+        <terminal y="22" orientation="s" x="0"/>
+    </description>
+</definition>

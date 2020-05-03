@@ -1,0 +1,21 @@
+<definition hotspot_x="24" height="50" type="element" orientation="dyyy" hotspot_y="25" version="0.80" link_type="simple" width="50">
+    <uuid uuid="{8f534c1c-3d9e-48c1-bcd2-da85929abd95}"/>
+    <names>
+        <name lang="en">Threaded tube connection</name>
+        <name lang="fr">Bride à tube taraudé</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: Eudes Grosjean, S.Deffaux
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text y="12" Valignment="AlignTop" z="2" frame="false" text_from="ElementInfo" Halignment="AlignLeft" uuid="{dd55bb10-a3fa-47b6-9eea-fc0ccfc2493b}" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1" x="19">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="20" end1="none" length2="1.5" y1="0" x1="-20" antialias="false" length1="1.5" end2="none" y2="0"/>
+        <polygon x3="4" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="4" y1="-15" x1="-5" y3="15" antialias="false" x4="-5" y4="15" closed="false" y2="-15"/>
+        <polygon x3="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10" y1="-20" x1="-5" y3="20" antialias="false" x4="-5" y4="20" closed="false" y2="-20"/>
+        <terminal y="0" orientation="w" x="-20"/>
+        <terminal y="0" orientation="e" x="20"/>
+    </description>
+</definition>

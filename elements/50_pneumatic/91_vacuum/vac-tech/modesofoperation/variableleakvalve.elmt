@@ -1,0 +1,23 @@
+<definition hotspot_x="24" height="40" type="element" orientation="dyyy" hotspot_y="25" version="0.80" link_type="simple" width="50">
+    <uuid uuid="{70f61b48-4162-468e-969e-4bf936cbc0a3}"/>
+    <names>
+        <name lang="en">Variable leak valve</name>
+        <name lang="fr">Valve à fuite variable</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: Eudes Grosjean, S.Deffaux
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <polygon x3="20" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="20" y1="10" x1="-20" y3="10" antialias="false" x4="-20" y4="-10" y2="-10"/>
+        <dynamic_text y="12" Valignment="AlignTop" z="2" frame="false" text_from="ElementInfo" Halignment="AlignLeft" uuid="{dd55bb10-a3fa-47b6-9eea-fc0ccfc2493b}" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1" x="19">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" end1="none" length2="1.5" y1="-20" x1="0" antialias="false" length1="1.5" end2="none" y2="0"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10" end1="none" length2="1.5" y1="-20" x1="-10" antialias="false" length1="1.5" end2="none" y2="-20"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="6" end1="none" length2="1.5" y1="-9" x1="-3" antialias="false" length1="1.5" end2="none" y2="-14"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="7" end1="none" length2="1.5" y1="-16" x1="5" antialias="false" length1="1.5" end2="none" y2="-13"/>
+        <terminal y="0" orientation="w" x="-20"/>
+        <terminal y="0" orientation="e" x="20"/>
+    </description>
+</definition>

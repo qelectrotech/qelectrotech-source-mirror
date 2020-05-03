@@ -1,0 +1,25 @@
+<definition hotspot_x="24" height="30" type="element" orientation="dyyy" hotspot_y="15" version="0.80" link_type="simple" width="50">
+    <uuid uuid="{5e6ac9c3-220e-4d51-bb7e-fc1ff57280ee}"/>
+    <names>
+        <name lang="en">Flexible connection</name>
+        <name lang="fr">Connexion flexible</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: Eudes Grosjean, S.Deffaux
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="6" end1="none" length2="1.5" y1="-10" x1="6" antialias="false" length1="1.5" end2="none" y2="10"/>
+        <dynamic_text y="12" Valignment="AlignTop" z="2" frame="false" text_from="ElementInfo" Halignment="AlignLeft" uuid="{dd55bb10-a3fa-47b6-9eea-fc0ccfc2493b}" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1" x="19">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="17" end1="none" length2="1.5" y1="0" x1="13" antialias="false" length1="1.5" end2="none" y2="0"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x2="12" y1="-10" x1="12" antialias="false" closed="false" y2="10"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-12" y1="-10" x1="-12" antialias="false" closed="false" y2="10"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-13" end1="none" length2="1.5" y1="0" x1="-17" antialias="false" length1="1.5" end2="none" y2="0"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" end1="none" length2="1.5" y1="-10" x1="0" antialias="false" length1="1.5" end2="none" y2="10"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-6" end1="none" length2="1.5" y1="-10" x1="-6" antialias="false" length1="1.5" end2="none" y2="10"/>
+        <terminal y="0" orientation="w" x="-17"/>
+        <terminal y="0" orientation="e" x="17"/>
+    </description>
+</definition>

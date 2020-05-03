@@ -1,0 +1,25 @@
+<definition type="element" hotspot_x="22" width="50" link_type="simple" height="50" version="0.80" orientation="dyyy" hotspot_y="28">
+    <uuid uuid="{1edf9557-8e7b-47bc-abb1-c73fb86fab7f}"/>
+    <names>
+        <name lang="fr">Piège à froid avec réservoir réfrigéré</name>
+        <name lang="en">Cooled trap with coolant reservoir</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: Eudes Grosjean, S.Deffaux
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc start="180" antialias="true" angle="179.5" x="-6" width="12" y="2" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text x="19" z="2" y="11" text_width="-1" text_from="ElementInfo" Halignment="AlignLeft" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" uuid="{dd55bb10-a3fa-47b6-9eea-fc0ccfc2493b}" rotation="0" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line antialias="false" y2="-19" end2="none" length2="1.5" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" length1="1.5" end1="none" x2="0"/>
+        <line antialias="false" y2="-10" end2="none" length2="1.5" x1="6" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" length1="1.5" end1="none" x2="19"/>
+        <rect rx="0" antialias="false" x="-16" width="32" ry="0" y="-17" height="32" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc start="0.6875" antialias="true" angle="179.688" x="-6" width="12" y="-16" height="12" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line antialias="false" y2="8" end2="none" length2="1.5" x1="-6" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" length1="1.5" end1="none" x2="-6"/>
+        <line antialias="false" y2="8" end2="none" length2="1.5" x1="6" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" length1="1.5" end1="none" x2="6"/>
+        <terminal x="0" y="-19" orientation="n"/>
+        <terminal x="19" y="-10" orientation="e"/>
+    </description>
+</definition>
