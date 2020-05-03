@@ -190,9 +190,12 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 
 		//Text
 	QDomElement dom_text = dom_elmt.firstChildElement("text");
-	if (!dom_text.isNull())
+		//Clear the current text.
+	setPlainText("");
+	if (!dom_text.isNull()) {
 		setText(dom_text.text());
-	
+	}
+
 		//Info name
 	QDomElement dom_info_name = dom_elmt.firstChildElement("info_name");
 	if(!dom_info_name.isNull())

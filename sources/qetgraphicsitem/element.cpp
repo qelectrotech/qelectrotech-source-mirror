@@ -537,8 +537,6 @@ bool Element::parseInput(const QDomElement &dom_element)
 		m_converted_text_from_xml_description.insert(deti, p);
 		return true;
 	}
-	
-	return false;
 }
 
 /**
