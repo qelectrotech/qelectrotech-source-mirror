@@ -195,7 +195,7 @@ void QetGraphicsTableItem::paint(QPainter *painter, const QStyleOptionGraphicsIt
 					   static_cast<int>(cell_height) - m_margin.top() - m_margin.bottom());
 			auto index_row = m_previous_table ? i + m_previous_table->displayNRowOffset() : i;
 			painter->drawText(QRectF(top_left, size),
-							  m_model->data(m_model->index(0,0), Qt::TextAlignmentRole).toInt(),
+							  m_model->data(m_model->index(0,0), Qt::TextAlignmentRole).toInt() | Qt::AlignVCenter,
 							  m_model->index(index_row, j).data().toString());
 		}
 	}

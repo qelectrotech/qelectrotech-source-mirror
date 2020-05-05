@@ -40,6 +40,7 @@
 #include "bomexportdialog.h"
 #include "nomenclaturemodel.h"
 #include "QWidgetAnimation/qwidgetanimation.h"
+#include "qetgraphicstablefactory.h"
 
 #include <KAutoSaveFile>
 
@@ -395,30 +396,10 @@ void QETDiagramEditor::setUpActions()
 	});
 	
 		//Add a nomenclature item
-	m_add_nomenclature = new QAction(QET::Icons::TableOfContent, tr("Ajouter un tableau lambda (Fonctionnalité en cours de devellopement)"),this);
-	connect(m_add_nomenclature, &QAction::triggered, [this]()
-	{
-		if(this->currentDiagramView())
-		{
-			auto table = new QetGraphicsTableItem();
-
-			/*******ONLY FOR TEST DURING DEVEL*********/
-			auto model = new NomenclatureModel(this->currentProject(), this->currentProject());
-			QString query("SELECT ei.plant, ei.location, ei.label, ei.comment, ei.description, ei.manufacturer, e.pos, di.title, di.folio"
-						  " FROM element_info ei, element e, diagram_info di"
-						  " WHERE ei.element_uuid = e.uuid AND e.diagram_uuid = di.diagram_uuid"
-						  " ORDER BY ei.plant, ei.location, ei.label");
-			model->query(query);
-			model->autoHeaders();
-			model->setData(model->index(0,0), Qt::AlignLeft, Qt::TextAlignmentRole);
-			model->setData(model->index(0,0), QETApp::diagramTextsFont(), Qt::FontRole);
-			model->setHeaderData(0, Qt::Horizontal, Qt::AlignHCenter, Qt::TextAlignmentRole);
-			model->setHeaderData(0, Qt::Horizontal, QETApp::diagramTextsFont(), Qt::FontRole);
-			table->setModel(model);
-			/******************************************/
-
-			this->currentDiagramView()->diagram()->addItem(table);
-			table->setPos(50,50);
+	m_add_nomenclature = new QAction(QET::Icons::TableOfContent, tr("Ajouter une nomenclature"), this);
+	connect(m_add_nomenclature, &QAction::triggered, [this]() {
+		if(this->currentDiagramView()) {
+			QetGraphicsTableFactory::createAndAddNomenclature(this->currentDiagramView()->diagram());
 		}
 	});
 
