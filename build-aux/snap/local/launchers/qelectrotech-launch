@@ -1,5 +1,15 @@
 #!/bin/sh
 
+# a KDE session forces the KDE Plasma platformtheme which is incompatible with QET
+# unset the ENV vars in that case to prevent loading of the theme
+if [ ! -z "$KDE_FULL_SESSION" ]; then
+  unset KDE_FULL_SESSION
+fi
+
+if echo "$XDG_CURRENT_DESKTOP" | grep -q KDE; then
+  unset XDG_CURRENT_DESKTOP
+fi
+
 # migrate .qet directory from SNAP_USER_DATA to SNAP_USER_COMMON
 from="$SNAP_USER_DATA/.qet"
 to="$SNAP_USER_COMMON/.qet"
