@@ -5835,11 +5835,6 @@ Verfügbare Optionen:
         <translation>Strg+I</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
-        <source>Space</source>
-        <translation>Leertaste</translation>
-    </message>
-    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="546"/>
         <source>Ctrl+Space</source>
         <translation>Strg+Leertaste</translation>
@@ -6052,6 +6047,11 @@ Verfügbare Optionen:
         <source>Active le projet précédent</source>
         <comment>status bar tip</comment>
         <translation>wechselt zum vorherigen Projekt</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
+        <source>SPACE</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="618"/>

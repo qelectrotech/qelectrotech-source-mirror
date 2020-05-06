@@ -5818,11 +5818,6 @@ Opções disponíveis:
         <translation>Editar o item selecionado</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
-        <source>Space</source>
-        <translation>Espaço</translation>
-    </message>
-    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="546"/>
         <source>Ctrl+Space</source>
         <translation>Ctrl+Espaço</translation>
@@ -6096,6 +6091,11 @@ Opções disponíveis:
         <location filename="../sources/qetdiagrameditor.cpp" line="542"/>
         <source>Grouper les textes sélectionnés</source>
         <translation>Agrupar textos selecionados</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
+        <source>SPACE</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="618"/>

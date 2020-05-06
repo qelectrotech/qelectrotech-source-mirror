@@ -5745,11 +5745,6 @@ Elérhető lehetőségek:
         <translation>A kijelölt elem szerkesztése</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
-        <source>Space</source>
-        <translation>Space</translation>
-    </message>
-    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="546"/>
         <source>Ctrl+Space</source>
         <translation>Ctrl+Space</translation>
@@ -6122,6 +6117,11 @@ Elérhető lehetőségek:
         <source>Active le projet précédent</source>
         <comment>status bar tip</comment>
         <translation>Előző projekt aktiválása</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
+        <source>SPACE</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="618"/>

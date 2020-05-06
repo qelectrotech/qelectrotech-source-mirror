@@ -5772,11 +5772,6 @@ Options disponibles :
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
-        <source>Space</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="546"/>
         <source>Ctrl+Space</source>
         <translation></translation>
@@ -6050,6 +6045,11 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="542"/>
         <source>Grouper les textes sélectionnés</source>
         <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
+        <source>SPACE</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="618"/>

@@ -5861,7 +5861,7 @@ Options disponibles :
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
-        <source>Space</source>
+        <source>SPACE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

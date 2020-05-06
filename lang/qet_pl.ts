@@ -5714,6 +5714,11 @@ Dostępne opcje:
         <translation>Usuwa wiersz z arkusza</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
+        <source>SPACE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="549"/>
         <source>Enlève les éléments sélectionnés du folio</source>
         <comment>status bar tip</comment>
@@ -6085,11 +6090,6 @@ Dostępne opcje:
         <location filename="../sources/qetdiagrameditor.cpp" line="585"/>
         <source>Zoom sur le contenu</source>
         <translation>Powiększenie zawartości</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
-        <source>Space</source>
-        <translation>Space</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="546"/>

@@ -5839,11 +5839,6 @@ Options disponibles :
         <translation>Εστίαση στο περιεχόμενο</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
-        <source>Space</source>
-        <translation>Διάστημα</translation>
-    </message>
-    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="546"/>
         <source>Ctrl+Space</source>
         <translation>Ctrl+Διάστημα</translation>
@@ -6190,6 +6185,11 @@ Options disponibles :
         <source>Rétrécit le folio en hauteur</source>
         <comment>status bar tip</comment>
         <translation>Συρρικνώνει το ύψος της σελίδας</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
+        <source>SPACE</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="549"/>

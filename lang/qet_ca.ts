@@ -5630,6 +5630,11 @@ Opcions:
         <translation>Disminuir l&apos;altura</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
+        <source>SPACE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="549"/>
         <source>Enlève les éléments sélectionnés du folio</source>
         <comment>status bar tip</comment>
@@ -5896,11 +5901,6 @@ Opcions:
         <location filename="../sources/qetdiagrameditor.cpp" line="570"/>
         <source>Ctrl+I</source>
         <translation>Ctrl+I</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
-        <source>Space</source>
-        <translation>Espai</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="546"/>

@@ -5691,6 +5691,11 @@ Dostupné volby:
         <translation>Zmenšit výšku listu</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
+        <source>SPACE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="549"/>
         <source>Enlève les éléments sélectionnés du folio</source>
         <comment>status bar tip</comment>
@@ -6062,11 +6067,6 @@ Dostupné volby:
         <location filename="../sources/qetdiagrameditor.cpp" line="585"/>
         <source>Zoom sur le contenu</source>
         <translation>Přiblížit obsah</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
-        <source>Space</source>
-        <translation>Mezerník</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="546"/>

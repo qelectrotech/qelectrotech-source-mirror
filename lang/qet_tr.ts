@@ -5714,6 +5714,11 @@ Mevcut seçenekler:
         <translation>Seçilen metinleri gruplandır</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
+        <source>SPACE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="645"/>
         <source>Chercher/remplacer</source>
         <translation>Bul / Değiştir</translation>
@@ -5946,11 +5951,6 @@ Mevcut seçenekler:
         <location filename="../sources/qetdiagrameditor.cpp" line="541"/>
         <source>Éditer l&apos;item sélectionné</source>
         <translation>Seçilen öğeyi düzenle</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
-        <source>Space</source>
-        <translation>Space</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="546"/>

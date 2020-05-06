@@ -5702,6 +5702,11 @@ Kommandovalg:
         <translation>Indskrænk ark højde</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
+        <source>SPACE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="549"/>
         <source>Enlève les éléments sélectionnés du folio</source>
         <comment>status bar tip</comment>
@@ -6074,11 +6079,6 @@ Kommandovalg:
         <location filename="../sources/qetdiagrameditor.cpp" line="585"/>
         <source>Zoom sur le contenu</source>
         <translation>Tilpas indhold</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
-        <source>Space</source>
-        <translation>Mellemrum</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="546"/>

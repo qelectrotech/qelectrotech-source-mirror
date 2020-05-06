@@ -5676,11 +5676,6 @@ Options disponibles :
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
-        <source>Space</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="546"/>
         <source>Ctrl+Space</source>
         <translation type="unfinished"></translation>
@@ -6052,6 +6047,11 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="487"/>
         <source>Active le projet précédent</source>
         <comment>status bar tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
+        <source>SPACE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

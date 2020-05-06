@@ -5696,6 +5696,11 @@ Opties :
         <translation>Verwijder een rij van het blad</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
+        <source>SPACE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="549"/>
         <source>Enlève les éléments sélectionnés du folio</source>
         <comment>status bar tip</comment>
@@ -6067,11 +6072,6 @@ Opties :
         <location filename="../sources/qetdiagrameditor.cpp" line="585"/>
         <source>Zoom sur le contenu</source>
         <translation>Zoom inhoud</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
-        <source>Space</source>
-        <translation>Spatie</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="546"/>

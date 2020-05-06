@@ -5646,6 +5646,11 @@ Opciones disponibles:
         <translation>Disminuir el tamaño vertical del folio</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
+        <source>SPACE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="549"/>
         <source>Enlève les éléments sélectionnés du folio</source>
         <comment>status bar tip</comment>
@@ -5802,11 +5807,6 @@ Opciones disponibles:
         <location filename="../sources/qetdiagrameditor.cpp" line="463"/>
         <source>Mode Visualisation</source>
         <translation>Modo visualización</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
-        <source>Space</source>
-        <translation>Espacio</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="194"/>
