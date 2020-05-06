@@ -152,7 +152,7 @@ QFont AddTableDialog::tableFont() const {
 void AddTableDialog::on_m_header_font_pb_clicked()
 {
 	bool b;
-	auto font = QFontDialog::getFont(&b, m_header_font, this, tr("Sélectionné la police des en tête du tableau"));
+	auto font = QFontDialog::getFont(&b, m_header_font, this, tr("Sélectionner la police des en tête du tableau"));
 	if (b) {
 		m_header_font = font;
 		ui->m_header_font_pb->setText(font.family());
@@ -163,7 +163,7 @@ void AddTableDialog::on_m_header_font_pb_clicked()
 void AddTableDialog::on_m_table_font_pb_clicked()
 {
 	bool b;
-	auto font = QFontDialog::getFont(&b, m_table_font, this, tr("Sélectionné la police des cellules du tableau"));
+	auto font = QFontDialog::getFont(&b, m_table_font, this, tr("Sélectionner la police des cellules du tableau"));
 	if (b) {
 		m_table_font = font;
 		ui->m_table_font_pb->setText(font.family());
