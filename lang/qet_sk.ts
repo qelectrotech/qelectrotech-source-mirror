@@ -5869,7 +5869,7 @@ Options disponibles :
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="546"/>
-        <source>Ctrl+Space</source>
+        <source>Ctrl+SPACE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

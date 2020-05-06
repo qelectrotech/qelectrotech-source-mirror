@@ -5835,11 +5835,6 @@ Verfügbare Optionen:
         <translation>Strg+I</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="546"/>
-        <source>Ctrl+Space</source>
-        <translation>Strg+Leertaste</translation>
-    </message>
-    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="304"/>
         <source>Ctrl+K</source>
         <translation>Strg+K</translation>
@@ -6051,6 +6046,11 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
         <source>SPACE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="546"/>
+        <source>Ctrl+SPACE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

@@ -5745,11 +5745,6 @@ Elérhető lehetőségek:
         <translation>A kijelölt elem szerkesztése</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="546"/>
-        <source>Ctrl+Space</source>
-        <translation>Ctrl+Space</translation>
-    </message>
-    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="645"/>
         <source>Chercher/remplacer</source>
         <translation>Keresés / csere</translation>
@@ -6121,6 +6116,11 @@ Elérhető lehetőségek:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
         <source>SPACE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="546"/>
+        <source>Ctrl+SPACE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
