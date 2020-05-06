@@ -542,7 +542,7 @@ void QETDiagramEditor::setUpActions()
 	m_group_selected_texts = m_selection_actions_group.addAction(QET::Icons::textGroup,       tr("Grouper les textes sélectionnés"));
 
 	m_delete_selection->setShortcut(QKeySequence::Delete);
-	m_rotate_selection->setShortcut(QKeySequence( tr("Space")));
+	m_rotate_selection->setShortcut(QKeySequence( tr("SPACE")));
 	m_rotate_texts    ->setShortcut(QKeySequence( tr("Ctrl+Space")));
 	m_edit_selection  ->setShortcut(QKeySequence( tr("Ctrl+E")));
 
