@@ -76,7 +76,7 @@ parts:
   dxf-to-qet:
     after: [kde-sdk-setup]
     plugin: nil
-    source: https://github.com/qelectrotech/DXFtoQET.git
+    source: https://github.com/qelectrotech/DXFtoQET-2020.git
     override-build: |
       qmake "$SNAPCRAFT_PART_SRC/DXFtoQET.pro"
       make -j$(nproc)
