@@ -543,7 +543,7 @@ void QETDiagramEditor::setUpActions()
 
 	m_delete_selection->setShortcut(QKeySequence::Delete);
 	m_rotate_selection->setShortcut(QKeySequence( tr("SPACE")));
-	m_rotate_texts    ->setShortcut(QKeySequence( tr("Ctrl+Space")));
+	m_rotate_texts    ->setShortcut(QKeySequence( tr("Ctrl+SPACE")));
 	m_edit_selection  ->setShortcut(QKeySequence( tr("Ctrl+E")));
 
 	m_delete_selection->setStatusTip( tr("Enlève les éléments sélectionnés du folio", "status bar tip"));
