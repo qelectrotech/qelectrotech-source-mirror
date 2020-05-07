@@ -24,6 +24,7 @@
 #include "itemmodelcommand.h"
 #include "propertieseditorfactory.h"
 #include "elementprovider.h"
+#include "qetutils.h"
 
 #include <QAbstractItemModel>
 #include <QFontDialog>
@@ -137,28 +138,28 @@ QUndoCommand *GraphicsTablePropertiesEditor::associatedUndo() const
 			return undo;
 		}
 
-		QMargins header_margins(ui->m_header_left_margin->value(),
+		QMargins edited_header_margins(ui->m_header_left_margin->value(),
 							   ui->m_header_top_margin->value(),
 							   ui->m_header_right_margin->value(),
 							   ui->m_header_bottom_margin->value());
-		if (header_margins != m_table_item->headerItem()->margins())
+		auto model_header_margins = QETUtils::marginsFromString(m_table_item->model()->headerData(0, Qt::Horizontal, Qt::UserRole+1).toString());
+		if (edited_header_margins != model_header_margins)
 		{
-			QVariant old_; old_.setValue(m_table_item->headerItem()->margins());
-			QVariant new_; new_.setValue(header_margins);
-			auto undo = new QPropertyUndoCommand(m_table_item->headerItem(), "margins", old_, new_);
+			auto undo = new ModelHeaderDataCommand(m_table_item->model());
+			undo->setData(0, Qt::Horizontal, QETUtils::marginsToString(edited_header_margins), Qt::UserRole+1);
 			undo->setText(tr("Modifier les marges d'une en tête de tableau"));
 			return undo;
 		}
 
-		QMargins table_margins(ui->m_table_left_margin->value(),
+		QMargins edited_table_margins(ui->m_table_left_margin->value(),
 							   ui->m_table_top_margin->value(),
 							   ui->m_table_right_margin->value(),
 							   ui->m_table_bottom_margin->value());
-		if (table_margins != m_table_item->margins())
+		auto model_margins = QETUtils::marginsFromString(m_table_item->model()->index(0,0).data(Qt::UserRole+1).toString());
+		if (edited_table_margins != model_margins)
 		{
-			QVariant old_; old_.setValue(m_table_item->margins());
-			QVariant new_; new_.setValue(table_margins);
-			auto undo = new QPropertyUndoCommand(m_table_item.data(), "margins", old_, new_);
+			auto undo = new ModelIndexCommand(m_table_item->model(), m_table_item->model()->index(0,0));
+			undo->setData(QETUtils::marginsToString(edited_table_margins), Qt::UserRole+1);
 			undo->setText(tr("Modifier les marges d'un tableau"));
 			return undo;
 		}
@@ -277,13 +278,13 @@ void GraphicsTablePropertiesEditor::updateUi()
 		}
 	}
 
-	auto margin = m_table_item->headerItem()->margins();
+	auto margin = QETUtils::marginsFromString(m_table_item->model()->headerData(0, Qt::Horizontal, Qt::UserRole+1).toString());
 	ui->m_header_top_margin   ->setValue(margin.top());
 	ui->m_header_left_margin  ->setValue(margin.left());
 	ui->m_header_right_margin ->setValue(margin.right());
 	ui->m_header_bottom_margin->setValue(margin.bottom());
 
-	margin = m_table_item->margins();
+	margin = QETUtils::marginsFromString(m_table_item->model()->index(0,0).data(Qt::UserRole+1).toString());
 	ui->m_table_top_margin   ->setValue(margin.top());
 	ui->m_table_left_margin  ->setValue(margin.left());
 	ui->m_table_right_margin ->setValue(margin.right());

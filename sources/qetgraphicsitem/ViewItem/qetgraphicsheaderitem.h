@@ -32,13 +32,14 @@ class QAbstractItemModel;
  * Margins, to edit the margin between the cell and the text.
  * Text font.
  * Text alignment in the cell
- * These two last parameters are not settable directly with the header but trough the model to be displayed by the header.
+ * These three parameters are not settable directly with the header but trough the model to be displayed by the header.
+ * Header search these parameters only in the section 0 for cell of header.
+ * By consequence, set data in other section is useless also these parameter can't be set individually for each cell.
+ * The margins is stored in the model in index Qt::UserRole+1 and for value a QString. See QETUtils::marginsFromString and  QETUtils::marginsToString
  */
 class QetGraphicsHeaderItem : public QGraphicsObject
 {
 	Q_OBJECT
-
-	Q_PROPERTY(QMargins margins READ margins WRITE setMargins)
 
     public:
         QetGraphicsHeaderItem(QGraphicsItem *parent = nullptr);
@@ -54,8 +55,6 @@ class QetGraphicsHeaderItem : public QGraphicsObject
 		QRect rect() const;
 		void resizeSection(int logicalIndex, int size);
 		int sectionSize(int logical_index) const;
-		QMargins margins() const {return m_margin;}
-		void setMargins(const QMargins &margins);
 		QVector<int> minimumSectionWidth()  const {return m_sections_minimum_width;}
 		int minimumWidth() const {return m_minimum_width;}
 
@@ -77,7 +76,6 @@ class QetGraphicsHeaderItem : public QGraphicsObject
     private:
         QRectF m_bounding_rect;
         QAbstractItemModel *m_model = nullptr;
-		QMargins m_margin;
 		QVector<int> m_sections_minimum_width,
 					 m_current_sections_width;
 		int m_section_height=1,

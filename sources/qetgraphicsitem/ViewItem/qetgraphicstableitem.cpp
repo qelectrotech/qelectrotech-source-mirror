@@ -22,6 +22,7 @@
 #include "qetxml.h"
 #include "nomenclaturemodel.h"
 #include "elementprovider.h"
+#include "qetutils.h"
 
 #include <QAbstractItemModel>
 #include <QFontMetrics>
@@ -45,7 +46,6 @@ QetGraphicsTableItem::QetGraphicsTableItem(QGraphicsItem *parent) :
 	setAcceptHoverEvents(true);
 	setUpHandler();
 
-	m_margin = QMargins(5,3,15,3);
 		//A litle bounding rect before model is set,
 		//then user can already grab this item, even if model is not already set
 	m_bounding_rect.setRect(m_br_margin/-2, m_br_margin/-2, 50, 50);
@@ -183,7 +183,8 @@ void QetGraphicsTableItem::paint(QPainter *painter, const QStyleOptionGraphicsIt
 		//Write text of each cell
 	for (auto i=0 ; i<row_count ; ++i)
 	{
-		QPointF top_left(m_margin.left(), i==0? m_margin.top() : cell_height*i + m_margin.top());
+		auto margin_ = QETUtils::marginsFromString(m_model->index(0,0).data(Qt::UserRole+1).toString());
+		QPointF top_left(margin_.left(), i==0? margin_.top() : cell_height*i + margin_.top());
 
 		for(auto j= 0 ; j<m_model->columnCount() ; ++j)
 		{
@@ -191,8 +192,8 @@ void QetGraphicsTableItem::paint(QPainter *painter, const QStyleOptionGraphicsIt
 			if (j>0) {
 				top_left.setX(top_left.x() + m_header_item->sectionSize(j-1));
 			}
-			QSize size(m_header_item->sectionSize(j) - m_margin.left() - m_margin.right(),
-					   static_cast<int>(cell_height) - m_margin.top() - m_margin.bottom());
+			QSize size(m_header_item->sectionSize(j) - margin_.left() - margin_.right(),
+					   static_cast<int>(cell_height) - margin_.top() - margin_.bottom());
 			auto index_row = m_previous_table ? i + m_previous_table->displayNRowOffset() : i;
 			painter->drawText(QRectF(top_left, size),
 							  m_model->data(m_model->index(0,0), Qt::TextAlignmentRole).toInt() | Qt::AlignVCenter,
@@ -201,18 +202,6 @@ void QetGraphicsTableItem::paint(QPainter *painter, const QStyleOptionGraphicsIt
 	}
 
 	painter->restore();
-}
-
-/**
- * @brief QetGraphicsTableItem::setMargins
- * @param margins
- */
-void QetGraphicsTableItem::setMargins(const QMargins &margins)
-{
-	m_margin = margins;
-	setUpColumnAndRowMinimumSize();
-	adjustSize();
-	update();
 }
 
 /**
@@ -408,7 +397,7 @@ void QetGraphicsTableItem::initLink()
 {
 	if (!m_pending_previous_table_uuid.isNull())
 	{
-		ElementProvider provider_(this->diagram());
+		ElementProvider provider_(this->diagram()->project());
 		if (auto previous_table = provider_.tableFromUuid(m_pending_previous_table_uuid)) {
 			setPreviousTable(previous_table);
 		}
@@ -446,14 +435,6 @@ QDomElement QetGraphicsTableItem::toXml(QDomDocument &dom_document) const
 	}
 	else if (m_model) //There is not a previous table, we need to save the model
 	{
-			//Add cell properties
-		auto dom_cell = dom_document.createElement("cell");
-		dom_cell.setAttribute("font", m_model->data(m_model->index(0,0), Qt::FontRole).toString());
-		auto me = QMetaEnum::fromType<Qt::Alignment>();
-		dom_cell.setAttribute("alignment", me.valueToKey(m_model->data(m_model->index(0,0), Qt::TextAlignmentRole).toInt()));
-		dom_cell.appendChild(QETXML::marginsToXml(dom_document, m_margin));
-		dom_table.appendChild(dom_cell);
-
 			//Add model
 		auto dom_model = dom_document.createElement("model");
 		auto nomenclature_model = static_cast<NomenclatureModel *>(m_model);
@@ -486,7 +467,6 @@ void QetGraphicsTableItem::fromXml(const QDomElement &dom_element)
 	m_uuid = QUuid(dom_element.attribute("uuid", QUuid::createUuid().toString()));
 	m_name = dom_element.attribute("name");
 	m_number_of_displayed_row = dom_element.attribute("display_n_row", QString::number(0)).toInt();
-	m_margin = QETXML::marginsFromXml(dom_element.firstChildElement("margins"));
 
 	auto vector_ = QETXML::directChild(dom_element, "previous_table");
 	if (vector_.size()) { //Table have a previous table
@@ -498,19 +478,6 @@ void QetGraphicsTableItem::fromXml(const QDomElement &dom_element)
 		auto model_ = new NomenclatureModel(this->diagram()->project(), this->diagram()->project());
 		model_->fromXml(dom_element.firstChildElement("model").firstChildElement(NomenclatureModel::xmlTagName()));
 		this->setModel(model_);
-
-			//Get cell properties
-		auto dom_cell = dom_element.firstChildElement("cell");
-			//font
-		QFont font_;
-		font_.fromString(dom_cell.attribute("font"));
-		m_model->setData(m_model->index(0,0), font_, Qt::FontRole);
-			//alignment
-		auto me = QMetaEnum::fromType<Qt::Alignment>();
-		m_model->setData(m_model->index(0,0), me.keyToValue(dom_cell.attribute("alignment").toStdString().data()));
-		dom_cell.setAttribute("alignment", me.valueToKey(m_model->data(m_model->index(0,0), Qt::TextAlignmentRole).toInt()));
-			//margins
-		m_margin =  QETXML::marginsFromXml(dom_cell.firstChildElement("margins"));
 	}
 
 		//Restore the header from xml
@@ -597,8 +564,9 @@ void QetGraphicsTableItem::setUpColumnAndRowMinimumSize()
 	}
 
 	QFontMetrics metrics(m_model->data(model()->index(0,0), Qt::FontRole).value<QFont>());
+	auto margin_ = QETUtils::marginsFromString(model()->index(0,0).data(Qt::UserRole+1).toString());
 		//Set the height of row;
-	m_minimum_row_height = metrics.boundingRect("HEIGHT TEST").height() + m_margin.top() + m_margin.bottom();
+	m_minimum_row_height = metrics.boundingRect("HEIGHT TEST").height() + margin_.top() + margin_.bottom();
 
 	m_minimum_column_width = m_header_item->minimumSectionWidth();
 
@@ -609,7 +577,7 @@ void QetGraphicsTableItem::setUpColumnAndRowMinimumSize()
 		{
 			auto index = m_model->index(row, col);
 			auto width = metrics.boundingRect(index.data().toString()).width();
-			m_minimum_column_width.replace(col, std::max(m_minimum_column_width.at(col), width + m_margin.left() + m_margin.right()));
+			m_minimum_column_width.replace(col, std::max(m_minimum_column_width.at(col), width + margin_.left() + margin_.right()));
 		}
 	}
 }
@@ -737,6 +705,7 @@ void QetGraphicsTableItem::dataChanged(const QModelIndex &topLeft, const QModelI
 
 	setUpColumnAndRowMinimumSize();
 	adjustSize();
+	update();
 }
 
 /**

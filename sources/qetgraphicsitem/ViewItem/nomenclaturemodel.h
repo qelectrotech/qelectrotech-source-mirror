@@ -28,6 +28,9 @@ class QETProject;
  * @brief The NomenclatureModel class
  * An element nomenclature Model.
  * This model represent a 2D data.
+ *
+ * NOTE : qelectrotech use the data Qt::UserRole+1 on this model to store a QMargins formated to a QString
+ * This is important because to/from XML of this class store the data Qt::UserRole+1 as QString.
  */
 class NomenclatureModel : public QAbstractTableModel
 {

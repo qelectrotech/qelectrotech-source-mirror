@@ -21,9 +21,11 @@
 #include "elementquerywidget.h"
 #include "diagram.h"
 #include "qetgraphicsheaderitem.h"
+#include "addtabledialog.h"
+#include "qetutils.h"
 
 #include <QDialog>
-#include "addtabledialog.h"
+
 QetGraphicsTableFactory::QetGraphicsTableFactory()
 {
 
@@ -47,13 +49,13 @@ void QetGraphicsTableFactory::createAndAddNomenclature(Diagram *diagram)
 		model->autoHeaders();
 		model->setData(model->index(0,0), int(d->tableAlignment()), Qt::TextAlignmentRole);
 		model->setData(model->index(0,0), d->tableFont(), Qt::FontRole);
+		model->setData(model->index(0,0), QETUtils::marginsToString(d->headerMargins()), Qt::UserRole+1);
 		model->setHeaderData(0, Qt::Horizontal, int(d->headerAlignment()), Qt::TextAlignmentRole);
 		model->setHeaderData(0, Qt::Horizontal, d->headerFont(), Qt::FontRole);
+		model->setHeaderData(0, Qt::Horizontal, QETUtils::marginsToString(d->headerMargins()), Qt::UserRole+1);
 
 		auto table = new QetGraphicsTableItem();
 		table->setTableName(d->tableName());
-		table->setMargins(d->tableMargins());
-		table->headerItem()->setMargins(d->headerMargins());
 		table->setModel(model);
 		diagram->addItem(table);
 		table->setPos(50,50);

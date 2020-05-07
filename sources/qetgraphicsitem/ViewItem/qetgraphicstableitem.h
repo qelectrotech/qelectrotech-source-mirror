@@ -34,15 +34,15 @@ class QetGraphicsHeaderItem;
  * Margins, to edit the margin between the cell and the text.
  * Text font.
  * Text alignment in the cell
- * These two last parameters are not settable directly with the table but trough the model to be displayed by the table.
- * The table search for font and alignment only in the index(0,0) for all the table.
- * By consequence, set data in other index than 0,0 is useless also the alignment and font can't be set individually for each cell.
+ * These three parameters are not settable directly with the table but trough the model to be displayed by the table.
+ * The table search these parameters only in the index(0,0) for all the table.
+ * By consequence, set data in other index than 0,0 is useless also these parameter can't be set individually for each cell.
+ * The margins is stored in the model in index Qt::UserRole+1 and for value a QString. See QETUtils::marginsFromString and  QETUtils::marginsToString
  */
 class QetGraphicsTableItem : public QetGraphicsItem
 {
 	Q_OBJECT
 
-	Q_PROPERTY(QMargins margins READ margins WRITE setMargins)
 	Q_PROPERTY(QSize size READ size WRITE setSize)
 	Q_PROPERTY(int displayNRow READ displayNRow WRITE setDisplayNRow)
 
@@ -58,8 +58,6 @@ class QetGraphicsTableItem : public QetGraphicsItem
 
 		virtual QRectF boundingRect() const override;
 		virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
-		QMargins margins() const {return m_margin;}
-		void setMargins(const QMargins &margins);
 		QetGraphicsHeaderItem *headerItem() const {return m_header_item;}
 		void setSize(const QSize &size);
 		QSize size() const;
@@ -104,7 +102,6 @@ class QetGraphicsTableItem : public QetGraphicsItem
     private:
         QAbstractItemModel *m_model= nullptr;
 
-		QMargins m_margin;
 		QVector<int> m_minimum_column_width;
 		int m_minimum_row_height;
 		int m_number_of_displayed_row = 0;

@@ -18,6 +18,7 @@
 #include "qetgraphicsheaderitem.h"
 #include "qabstractitemmodel.h"
 #include "qetxml.h"
+#include "qetutils.h"
 
 #include <QFontMetrics>
 #include <QPainter>
@@ -30,9 +31,7 @@ static int no_model_width = 40;
  */
 QetGraphicsHeaderItem::QetGraphicsHeaderItem(QGraphicsItem *parent) :
     QGraphicsObject(parent)
-{
-	m_margin = QMargins(5,5,5,5);
-}
+{}
 
 /**
  * @brief QetGraphicsHeaderItem::setModel
@@ -126,10 +125,11 @@ void QetGraphicsHeaderItem::paint(QPainter *painter, const QStyleOptionGraphicsI
 	}
 
 		//Write text of each cell
-	QPointF top_left(m_margin.left(), m_margin.top());
+	auto margins_ = QETUtils::marginsFromString(m_model->headerData(0, Qt::Horizontal, Qt::UserRole+1).toString());
+	QPointF top_left(margins_.left(), margins_.top());
 	for (auto i= 0 ; i<m_model->columnCount() ; ++i)
 	{
-		QSize size(m_current_sections_width.at(i) - m_margin.left() - m_margin.right(), m_section_height - m_margin.top() - m_margin.bottom());
+		QSize size(m_current_sections_width.at(i) - margins_.left() - margins_.right(), m_section_height - margins_.top() - margins_.bottom());
 		painter->drawText(QRectF(top_left, size),
 						  m_model->headerData(0, Qt::Horizontal, Qt::TextAlignmentRole).toInt(),
 						  m_model->headerData(i, Qt::Horizontal).toString());
@@ -201,16 +201,6 @@ int QetGraphicsHeaderItem::sectionSize(int logical_index) const
 }
 
 /**
- * @brief QetGraphicsHeaderItem::setMargins
- * @param margins
- */
-void QetGraphicsHeaderItem::setMargins(const QMargins &margins)
-{
-	m_margin = margins;
-	headerDataChanged(Qt::Horizontal, 0,1);
-}
-
-/**
  * @brief QetGraphicsHeaderItem::toXml
  * save the header to xml
  * @param document
@@ -219,7 +209,9 @@ void QetGraphicsHeaderItem::setMargins(const QMargins &margins)
 QDomElement QetGraphicsHeaderItem::toXml(QDomDocument &document) const
 {
 	auto dom_element = document.createElement(xmlTagName());
-	dom_element.appendChild(QETXML::marginsToXml(document, m_margin));
+	if (m_model) {
+		dom_element.appendChild(QETXML::marginsToXml(document, QETUtils::marginsFromString(m_model->headerData(0, Qt::Horizontal, Qt::UserRole+1).toString())));
+	}
 
 	return dom_element;
 }
@@ -231,11 +223,12 @@ QDomElement QetGraphicsHeaderItem::toXml(QDomDocument &document) const
  */
 void QetGraphicsHeaderItem::fromXml(const QDomElement &element)
 {
-	if (element.tagName() != xmlTagName()) {
+	if ((element.tagName() != xmlTagName()) || !m_model) {
 		return;
 	}
 
-	m_margin = QETXML::marginsFromXml(element.firstChildElement("margins"));
+	auto margins_ = QETUtils::marginsToString(QETXML::marginsFromXml(element.firstChildElement("margins")));
+	m_model->setHeaderData(0, Qt::Horizontal, QETUtils::marginsToString(QETXML::marginsFromXml(element.firstChildElement("margins"))), Qt::UserRole+1);
 }
 
 /**
@@ -255,8 +248,9 @@ void QetGraphicsHeaderItem::setUpMinimumSectionsSize()
 	}
 
 	QFontMetrics metrics(m_model->headerData(0, Qt::Horizontal, Qt::FontRole).value<QFont>());
+	auto margins_ = QETUtils::marginsFromString(m_model->headerData(0, Qt::Horizontal, Qt::UserRole+1).toString());
 		//Set the height of row;
-	m_minimum_section_height = metrics.boundingRect("HEIGHT TEST").height() + m_margin.top() + m_margin.bottom();
+	m_minimum_section_height = metrics.boundingRect("HEIGHT TEST").height() + margins_.top() + margins_.bottom();
 
 	m_sections_minimum_width.clear();
 	m_sections_minimum_width.resize(m_model->columnCount());
@@ -264,7 +258,7 @@ void QetGraphicsHeaderItem::setUpMinimumSectionsSize()
 	for (auto i= 0 ; i<m_model->columnCount() ; ++i)
 	{
 		auto str = m_model->headerData(i, Qt::Horizontal).toString();
-		m_sections_minimum_width.replace(i, metrics.boundingRect(str).width() + m_margin.left() + m_margin.right());
+		m_sections_minimum_width.replace(i, metrics.boundingRect(str).width() + margins_.left() + margins_.right());
 	}
 
 	m_minimum_width = std::accumulate(m_sections_minimum_width.begin(), m_sections_minimum_width.end(), 0);
@@ -293,6 +287,7 @@ void QetGraphicsHeaderItem::headerDataChanged(Qt::Orientations orientation, int 
 
 	setUpMinimumSectionsSize();
 	adjustSize();
+	update();
 }
 
 /**

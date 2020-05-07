@@ -213,8 +213,8 @@ void NomenclatureModel::autoHeaders()
 
 /**
  * @brief NomenclatureModel::toXml
- * Save the model to xml,since model can have unlimited data we only save few data.
- * The query and all header data. All other data are not saved.
+ * Save the model to xml,since model can have unlimited data we only save few data (only these used by qelectrotech).
+ * The query, all header data. and some data of index::(0,0). All other data are not saved.
  * @param document
  * @return
  */
@@ -227,6 +227,14 @@ QDomElement NomenclatureModel::toXml(QDomDocument &document) const
 	auto dom_query_txt = document.createTextNode(m_query);
 	dom_query.appendChild(dom_query_txt);
 	dom_element.appendChild(dom_query);
+
+		//Add index 0,0 data
+	auto index_00 = document.createElement("index00");
+	index_00.setAttribute("font", m_index_0_0_data.value(Qt::FontRole).toString());
+	auto me = QMetaEnum::fromType<Qt::Alignment>();
+	index_00.setAttribute("alignment", me.valueToKey(m_index_0_0_data.value(Qt::TextAlignmentRole).toInt()));
+	dom_element.appendChild(index_00);
+	index_00.setAttribute("margins", m_index_0_0_data.value(Qt::UserRole+1).toString());
 
 		//header data
 	QHash<int, QList<int>> horizontal_;
@@ -249,6 +257,16 @@ void NomenclatureModel::fromXml(const QDomElement &element)
 		return;
 
 	query(element.firstChildElement("query").text());
+
+		//Index 0,0
+	auto index_00 = element.firstChildElement("index00");
+	QFont font_;
+	font_.fromString(index_00.attribute("font"));
+	m_index_0_0_data.insert(Qt::FontRole, font_);
+	auto me = QMetaEnum::fromType<Qt::Alignment>();
+	m_index_0_0_data.insert(Qt::TextAlignmentRole, me.keyToValue(index_00.attribute("alignment").toStdString().data()));
+	m_index_0_0_data.insert(Qt::UserRole+1, index_00.attribute("margins"));
+
 	QETXML::modelHeaderDataFromXml(element.firstChildElement("header_data"), this);
 }
 
