@@ -3125,12 +3125,12 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="381"/>
         <source>Vous pouvez définir ici l&apos;apparence par defaut des differents textes de QElectroTech</source>
-        <translation>St&apos;andardverdier for de forskjellige tekstene</translation>
+        <translation>Standardverdier for de forskjellige tekstene</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="395"/>
         <source>Textes d&apos;éléments</source>
-        <translation>Kompon&apos;enttekstene</translation>
+        <translation>Komponenttekstene</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="408"/>
@@ -3541,17 +3541,17 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="149"/>
         <source>Modifier les marges d&apos;une en tête de tableau</source>
-        <translation>Endre kantlinjer for kolonneo&apos;verskrifter</translation>
+        <translation>Endre kantlinjer for kolonneoverskrifter</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="162"/>
         <source>Modifier les marges d&apos;un tableau</source>
-        <translation>Endre tabellenes kan&apos;ter</translation>
+        <translation>Endre tabellenes kanter</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="170"/>
         <source>Modifier l&apos;alignement d&apos;une en tête de tableau</source>
-        <translation>Endre j&apos;ustering av kolonneoverskrift</translation>
+        <translation>Endre justering av kolonneoverskrift</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="178"/>
@@ -3561,12 +3561,12 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="212"/>
         <source>Modifier la police d&apos;une en tête de tableau</source>
-        <translation>Endre skriftt&apos;ype i kolonneoverskriftene</translation>
+        <translation>Endre skrifttype i kolonneoverskriftene</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="234"/>
         <source>Changer la police d&apos;un tableau</source>
-        <translation>Endre skrifttype i tabellte&apos;kstene</translation>
+        <translation>Endre skrifttype i tabelltekstene</translation>
     </message>
 </context>
 <context>
@@ -3584,7 +3584,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="30"/>
         <source>Dimension de l&apos;image</source>
-        <translation>Bildestø&apos;rrelse</translation>
+        <translation>Bildestørrelse</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="50"/>
@@ -3594,7 +3594,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="141"/>
         <source>Modifier la taille d&apos;une image</source>
-        <translation>Endre bildest&apos;ørrelse</translation>
+        <translation>Endre bildestørrelse</translation>
     </message>
 </context>
 <context>
@@ -3602,7 +3602,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="14"/>
         <source>Intégration d&apos;un élément</source>
-        <translation>Innlemme en k&apos;omponent</translation>
+        <translation>Innlemme en komponent</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="20"/>
@@ -3612,17 +3612,17 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="27"/>
         <source>Utiliser l&apos;élément déjà integré</source>
-        <translation>Bruk kompon&apos;enten som allerede er innlemmet</translation>
+        <translation>Bruk komponenten som allerede er innlemmet</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="34"/>
         <source>Intégrer l&apos;élément déposé</source>
-        <translation>Bruk den nye komponenten &apos;isteden</translation>
+        <translation>Bruk den nye komponenten isteden</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="52"/>
         <source>Écraser l&apos;élément déjà intégé</source>
-        <translation>Sle&apos;tt den allerede innlemmede komponenten</translation>
+        <translation>Slett den allerede innlemmede komponenten</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="59"/>
@@ -3759,7 +3759,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="282"/>
         <source>Modifier les propriétés d&apos;un texte</source>
-        <translation>Endre tekstfeltenens &apos;egenskaper</translation>
+        <translation>Endre tekstfeltenens egenskaper</translation>
     </message>
 </context>
 <context>
@@ -3785,7 +3785,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="148"/>
         <source>Intégration d&apos;un modèle de cartouche</source>
-        <translation>&apos;Innlemme tegningsmalen</translation>
+        <translation>Lim inn tegningsmalen</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="152"/>
@@ -3920,7 +3920,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="49"/>
         <source>Voir l&apos;élément lié</source>
-        <translation>&apos;Vis komponent</translation>
+        <translation>Vis komponent</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="56"/>
@@ -3935,12 +3935,12 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="44"/>
         <source>Lier l&apos;élément</source>
-        <translation>Ti&apos;lknytt komponentet</translation>
+        <translation>Tilknytt komponentet</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="45"/>
         <source>Montrer l&apos;élément</source>
-        <translation>&apos;Vis komponentet</translation>
+        <translation>Vis komponentet</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="46"/>
@@ -4079,22 +4079,22 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="55"/>
         <source>Lier l&apos;élément</source>
-        <translation>T&apos;ilkoble komponent</translation>
+        <translation>Tilkoble komponent</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="56"/>
         <source>Délier l&apos;élément</source>
-        <translation>Fr&apos;akoble komponent</translation>
+        <translation>Frakoble komponent</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="57"/>
         <source>Montrer l&apos;élément</source>
-        <translation>Vis k&apos;omponenten</translation>
+        <translation>Vis komponenten</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="58"/>
         <source>Montrer l&apos;élément maître</source>
-        <translation>Vis &apos;master-komponent</translation>
+        <translation>Vis master-komponent</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="59"/>
@@ -4288,13 +4288,13 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <location filename="../sources/newelementwizard.cpp" line="129"/>
         <source>Étape 3/3 : Noms de l&apos;élément</source>
         <comment>wizard page title</comment>
-        <translation>Trinn 3/3: Komponentenes na&apos;vn</translation>
+        <translation>Trinn 3/3: Komponentenes navn</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="130"/>
         <source>Indiquez le ou les noms de l&apos;élément.</source>
         <comment>wizard page subtitle</comment>
-        <translation>Angi komponentna&apos;vnet i en eller flere språk</translation>
+        <translation>Angi komponentnavnet i en eller flere språk</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="135"/>
