@@ -20,6 +20,7 @@
 
 #include "qet.h"
 #include <QColor>
+#include <QSettings>
 
 class QPainter;
 

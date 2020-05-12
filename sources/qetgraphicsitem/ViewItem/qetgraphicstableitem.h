@@ -83,6 +83,7 @@ class QetGraphicsTableItem : public QetGraphicsItem
 		virtual void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
 		virtual void hoverLeaveEvent(QGraphicsSceneHoverEvent *event) override;
 		virtual bool sceneEventFilter(QGraphicsItem *watched, QEvent *event) override;
+		virtual QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
 
     private:
         void modelReseted();

@@ -23,6 +23,7 @@
 #include <QAction>
 #include <QFileInfo>
 #include <QSaveFile>
+#include <QTextStream>
 
 /**
 	Permet de convertir une chaine de caracteres ("n", "s", "e" ou "w")
@@ -237,7 +238,8 @@ bool QET::attributeIsAReal(const QDomElement &e, const QString& nom_attribut, qr
 	@return la proposition decrivant le nombre d'elements, de conducteurs et de
 	textes
 */
-QString QET::ElementsAndConductorsSentence(int elements_count, int conductors_count, int texts_count, int images_count, int shapes_count, int element_text_count) {
+QString QET::ElementsAndConductorsSentence(int elements_count, int conductors_count, int texts_count, int images_count, int shapes_count, int element_text_count, int tables_count)
+{
 	QString text;
 	if (elements_count) {
 		text += QObject::tr(
@@ -289,6 +291,14 @@ QString QET::ElementsAndConductorsSentence(int elements_count, int conductors_co
 					"%n texte(s) d'élément",
 					"part of a sentence listing the content of a diagram",
 					element_text_count);
+	}
+
+	if (tables_count) {
+		if (!text.isEmpty()) text += ", ";
+		text += QObject::tr(
+					"%n tableau(s)",
+					"part of a sentence listing the content of diagram",
+					tables_count);
 	}
 	
 	return(text);

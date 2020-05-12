@@ -17,7 +17,7 @@
 */
 #include "conductorproperties.h"
 #include <QPainter>
-#include <utility>
+#include <QMetaEnum>
 
 /**
 	Constructeur par defaut

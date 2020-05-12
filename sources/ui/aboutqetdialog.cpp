@@ -19,6 +19,8 @@
 #include "ui_aboutqetdialog.h"
 #include "qet.h"
 
+#include <QThread>
+
 AboutQETDialog::AboutQETDialog(QWidget *parent) :
 	QDialog(parent),
 	ui(new Ui::AboutQETDialog)

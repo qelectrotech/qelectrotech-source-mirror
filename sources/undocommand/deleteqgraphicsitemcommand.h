@@ -24,9 +24,16 @@
 class Diagram;
 class ElementTextItemGroup;
 class Terminal;
+class QetGraphicsTableItem;
 
 class DeleteQGraphicsItemCommand : public QUndoCommand
 {
+	private :
+		struct tableStatus {
+			QetGraphicsTableItem *previous = nullptr;
+			QetGraphicsTableItem *next     = nullptr;
+		};
+
 	public:
 		DeleteQGraphicsItemCommand(Diagram *diagram, const DiagramContent &content, QUndoCommand * parent = nullptr);
 		~DeleteQGraphicsItemCommand() override;
@@ -49,6 +56,7 @@ class DeleteQGraphicsItemCommand : public QUndoCommand
 		QHash <DynamicElementTextItem *, Element *> m_elmt_text_hash; /// Keep the parent element of each deleted dynamic element text item
 		QHash <DynamicElementTextItem *, ElementTextItemGroup *> m_grp_texts_hash; ///Keep the parent group of each deleted element text item
 		QList <QPair<Terminal *, Terminal *>> m_connected_terminals;
+		QHash <QetGraphicsTableItem *, tableStatus> m_tables_status;
 };
 
 #endif // DELETEQGRAPHICSITEMCOMMAND_H

@@ -17,7 +17,9 @@
 */
 #ifndef _QET_H
 #define _QET_H
-#include <QtXml>
+
+#include <QDomElement>
+#include <QFile>
 #include <QObject>
 
 class QActionGroup;
@@ -160,7 +162,7 @@ namespace QET {
 	bool orthogonalProjection(const QPointF &, const QLineF &, QPointF * = nullptr);
 	bool attributeIsAnInteger(const QDomElement &, const QString& , int * = nullptr);
 	bool attributeIsAReal(const QDomElement &, const QString& , qreal * = nullptr);
-	QString ElementsAndConductorsSentence(int, int, int = 0, int = 0, int = 0, int = 0);
+	QString ElementsAndConductorsSentence(int elements=0, int conductors=0, int indi_texts=0, int images=0, int shapes=0, int element_text=0, int tables_count=0);
 	QList<QDomElement> findInDomElement(const QDomElement &, const QString &);
 	QList<QDomElement> findInDomElement(const QDomElement &, const QString &, const QString &);
 	QList<QChar> forbiddenCharacters();

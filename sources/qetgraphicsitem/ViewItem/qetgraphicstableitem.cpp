@@ -544,6 +544,24 @@ bool QetGraphicsTableItem::sceneEventFilter(QGraphicsItem *watched, QEvent *even
 	return false;
 }
 
+/**
+ * @brief QetGraphicsTableItem::itemChange
+ * @param change
+ * @param value
+ * @return
+ */
+QVariant QetGraphicsTableItem::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value)
+{
+		//item was removed from scene, we remove the handler
+	if (change == ItemSceneHasChanged) {
+		if (!scene() && m_handler_item.scene()) {
+			m_handler_item.scene()->removeItem(&m_handler_item);
+		}
+	}
+
+	return QetGraphicsItem::itemChange(change, value);
+}
+
 void QetGraphicsTableItem::modelReseted() {
 	dataChanged(m_model->index(0,0), m_model->index(0,0), QVector<int>());
 	setToMinimumHeight();

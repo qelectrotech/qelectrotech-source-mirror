@@ -25,6 +25,7 @@
 #include "addelementtextcommand.h"
 #include "terminal.h"
 #include "diagramcommands.h"
+#include "qetgraphicstableitem.h"
 
 /**
  * @brief DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand
@@ -73,6 +74,15 @@ DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand(Diagram *diagram, const D
 	
 	m_removed_contents.m_texts_groups.clear();
 	setPotentialsOfRemovedElements();
+
+		//Store some information about the tables
+	for (auto table : m_removed_contents.m_tables)
+	{
+		tableStatus status;
+		status.next = table->nextTable();
+		status.previous = table->previousTable();
+		m_tables_status.insert(table, status);
+	}
 	
 	setText(QString(QObject::tr("supprimer %1", "undo caption - %1 is a sentence listing the removed content")).arg(m_removed_contents.sentence(DiagramContent::All)));
 	m_diagram->qgiManager().manage(m_removed_contents.items(DiagramContent::All));
@@ -229,6 +239,27 @@ void DeleteQGraphicsItemCommand::undo()
 			elmt->addTextToGroup(deti, m_grp_texts_hash.value(deti));
 		}
 	}
+
+	for (auto table : m_removed_contents.m_tables)
+	{
+		auto pair = m_tables_status.value(table);
+
+		if(pair.next && pair.previous) // Table is between two tables
+		{
+			pair.next->setPreviousTable(nullptr);
+			table->setPreviousTable(pair.previous);
+			pair.next->setPreviousTable(table);
+		}
+		else if (pair.next) //Table is the first table of linked tables
+		{
+			auto model = pair.next->model();
+			pair.next->setPreviousTable(table);
+			table->setModel(model);
+		}
+		else if (pair.previous) { //Table is the last of linked tables
+			table->setPreviousTable(pair.previous);
+		}
+	}
 	
 	QUndoCommand::undo();
 }
@@ -270,6 +301,20 @@ void DeleteQGraphicsItemCommand::redo()
 
 		deti->parentElement()->removeDynamicTextItem(deti);
 		deti->setParentItem(nullptr);
+	}
+
+	for (auto table : m_removed_contents.m_tables)
+	{
+		auto pair = m_tables_status.value(table);
+
+		if(pair.next && pair.previous) { // Table is between two tables
+			pair.next->setPreviousTable(pair.previous); //change the previous table of the current next table of @table
+		} else if (pair.next) { //Table is the first table of linked tables
+			pair.next->setPreviousTable(nullptr);	//Next table haven't got model anymore
+			pair.next->setModel(table->model());
+		} else if (pair.previous) { //Table is the last of linked tables
+			table->setPreviousTable(nullptr); //Remove the previous table @table
+		}
 	}
 
 	
