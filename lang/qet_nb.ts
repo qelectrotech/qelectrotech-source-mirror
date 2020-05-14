@@ -2566,7 +2566,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
         <location filename="../sources/elementspanel.cpp" line="148"/>
         <source>Double-cliquez pour réduire ou développer ce projet</source>
         <comment>Status tip</comment>
-        <translation>Dobbeltklikk for å åpne eller lukke prosjektet</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="156"/>
@@ -9451,7 +9451,8 @@ Disse variablene er tilgjengelig i sidefeltet:
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="335"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation type="unfinished"></translation>
+        <translation>Her kan du definere kombinasjoner av variabler/verdier for bruk i tegningsmalene. For eksempel: 
+variablen &quot;volta&quot; kombiniert med verdi &quot;1745&quot; I tegningsmalen blir så %{volta} erstattet med 1745.</translation>
     </message>
 </context>
 <context>
@@ -12315,7 +12316,8 @@ Disse variablene kan brukes i feltet Side:
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="414"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation type="unfinished"></translation>
+        <translation>Her kan du definere kombinasjoner av variabler/verdier for bruk i tegningsmalene. For eksempel: 
+variablen &quot;volta&quot; kombiniert med verdi &quot;1745&quot; I tegningsmalen blir så %{volta} erstattet med 1745.</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="296"/>
