@@ -90,4 +90,6 @@ class DiagramContext
 		QHash<QString, QVariant> m_content;
 		QHash<QString, bool> m_content_show;
 };
+
+QDebug operator <<(QDebug debug, const DiagramContext &context);
 #endif

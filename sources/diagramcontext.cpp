@@ -18,7 +18,7 @@
 #include "diagramcontext.h"
 #include <QRegExp>
 #include "qet.h"
-#include <algorithm>
+#include <QDebug>
 
 /**
  * @brief DiagramContext::add
@@ -213,7 +213,7 @@ void DiagramContext::fromSettings(QSettings &settings, const QString &array_name
 	@see keyIsAcceptable()
 */
 QString DiagramContext::validKeyRegExp() {
-	return("^[a-z0-9-]+$");
+	return("^[a-z0-9-_]+$");
 }
 
 /**
@@ -230,4 +230,15 @@ bool DiagramContext::stringLongerThan(const QString &a, const QString &b) {
 bool DiagramContext::keyIsAcceptable(const QString &key) const {
 	QRegExp re(DiagramContext::validKeyRegExp());
 	return(re.exactMatch(key));
+}
+
+QDebug operator <<(QDebug debug, const DiagramContext &context)
+{
+	debug << "DiagramContext";
+	for (auto key : context.keys()) {
+		debug.nospace() << key << " : " << context.value(key) << "\n";
+	}
+	debug << " end DiagramContext";
+
+	return debug;
 }
