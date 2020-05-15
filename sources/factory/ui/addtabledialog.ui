@@ -234,6 +234,18 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>m_adjust_table_size_cb</tabstop>
+  <tabstop>m_add_table_and_folio</tabstop>
+  <tabstop>m_table_name_le</tabstop>
+  <tabstop>m_edit_header_margins_pb</tabstop>
+  <tabstop>m_header_alignment_cb</tabstop>
+  <tabstop>m_header_font_pb</tabstop>
+  <tabstop>m_table_margins_pb</tabstop>
+  <tabstop>m_table_alignment_cb</tabstop>
+  <tabstop>m_table_font_pb</tabstop>
+  <tabstop>m_tab</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

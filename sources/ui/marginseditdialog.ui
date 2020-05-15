@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Editer les marges</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="3" column="1">
@@ -95,6 +95,12 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>m_top_sb</tabstop>
+  <tabstop>m_left_sb</tabstop>
+  <tabstop>m_right_sb</tabstop>
+  <tabstop>m_bottom_sb</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
