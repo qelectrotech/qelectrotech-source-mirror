@@ -17,7 +17,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="type">
       <attribute name="title">
@@ -381,7 +381,7 @@
           <double>0.400000000000000</double>
          </property>
          <property name="maximum">
-          <double>10.000000000000000</double>
+          <double>20.000000000000000</double>
          </property>
          <property name="singleStep">
           <double>0.200000000000000</double>
