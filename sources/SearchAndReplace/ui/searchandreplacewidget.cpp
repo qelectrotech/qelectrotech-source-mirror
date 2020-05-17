@@ -31,6 +31,7 @@
 #include "replaceadvanceddialog.h"
 #include "dynamicelementtextitem.h"
 #include "elementtextitemgroup.h"
+#include "QWidgetAnimation/qwidgetanimation.h"
 
 #include <QSettings>
 
@@ -796,8 +797,16 @@ QStringList SearchAndReplaceWidget::searchTerms(Conductor *conductor)
 	return list;
 }
 
-void SearchAndReplaceWidget::on_m_quit_button_clicked() {
-	this->setHidden(true);
+/**
+ * @brief SearchAndReplaceWidget::on_m_quit_button_clicked
+ */
+void SearchAndReplaceWidget::on_m_quit_button_clicked()
+{
+	if (auto animator = this->findChild<QWidgetAnimation *>("search and replace animator")) {
+		animator->setHidden(!this->isHidden());
+	} else {
+		this->setHidden(true);
+	}
 }
 
 void SearchAndReplaceWidget::on_m_advanced_pb_toggled(bool checked) {
@@ -806,7 +815,7 @@ void SearchAndReplaceWidget::on_m_advanced_pb_toggled(bool checked) {
 
 void SearchAndReplaceWidget::on_m_tree_widget_itemDoubleClicked(QTreeWidgetItem *item, int column)
 {
-	Q_UNUSED(column);
+	Q_UNUSED(column)
 	
 	if (m_diagram_hash.keys().contains(item))
 	{
