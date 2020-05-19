@@ -2247,6 +2247,12 @@ void QETDiagramEditor::generateTerminalBlock()
 	else  {
 		success = process->startDetached("/Library/Frameworks/Python.framework/Versions/3.8/bin/qet_tb_generator");
 	}
+		if (openedProjects().count()){
+		success = process->startDetached(QDir::homePath() + "/.qet/qet_tb_generator.app", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
+	}
+	else  {
+		success = process->startDetached(QDir::homePath() + "/.qet/qet_tb_generator.app");
+	}
 #else
 	if (openedProjects().count()){
 		success = process->startDetached("qet_tb_generator", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
@@ -2254,8 +2260,31 @@ void QETDiagramEditor::generateTerminalBlock()
 	else  {
 		success = process->startDetached("qet_tb_generator");
 	}
+	if (openedProjects().count()){
+		success = process->startDetached(QDir::homePath() + "/.qet/qet_tb_generator", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
+	}
+	else  {
+		success = process->startDetached(QDir::homePath() + "/.qet/qet_tb_generator");
+	}
 	
 #endif
+
+#if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
+if (openedProjects().count()){
+		success = process->startDetached("qet_tb_generator", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
+	}
+	else  {
+		success = process->startDetached("qet_tb_generator");
+	}
+	if (openedProjects().count()){
+		success = process->startDetached(QDir::homePath() + "/Application Data/qet/qet_tb_generator.exe", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
+	}
+	else  {
+		success = process->startDetached(QDir::homePath() + "/Application Data/qet/qet_tb_generator.exe");
+	}
+#endif
+
+
 	if ( !success ) {
 	#if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
 		QMessageBox::warning(nullptr,
