@@ -2260,7 +2260,7 @@ void QETDiagramEditor::generateTerminalBlock()
 		success = process->startDetached(QDir::homePath() + "/qet_tb_generator.exe");
 	}
 
-#elif Q_OS_MACOS
+#elif  defined(Q_OS_MAC)
 	if (openedProjects().count()){
 		success = process->startDetached("/Library/Frameworks/Python.framework/Versions/3.8/bin/qet_tb_generator", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
 	}
