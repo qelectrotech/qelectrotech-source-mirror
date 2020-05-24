@@ -34,8 +34,8 @@ class PropertiesInterface
 	virtual void toSettings	  (QSettings &settings, const QString = QString()) const =0;
 	virtual void fromSettings (const QSettings &settings, const QString = QString()) =0;
 	// Save/load properties to xml element
-	virtual void toXml		  (QDomElement &xml_element) const =0;
-	virtual void fromXml	  (const QDomElement &xml_element) =0;
+    virtual QDomElement toXml		  (QDomDocument &xml_document) const =0;
+    virtual bool fromXml	  (const QDomElement &xml_element) =0;
 };
 
 #endif // PROPERTIESINTERFACE_H
