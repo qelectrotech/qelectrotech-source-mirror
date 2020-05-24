@@ -23,4 +23,12 @@ fi
 mkdir -p "$HOME/.qet"
 ln -snf "$SNAP/bin/DXFtoQET" "$HOME/.qet/DXFtoQET"
 
+# start desktop portal. Open & save dialogs might fail if it is not running
+dbus-send --print-reply \
+  --dest=org.freedesktop.DBus \
+  /org/freedesktop/DBus \
+  org.freedesktop.DBus.StartServiceByName \
+  string:org.freedesktop.portal.Desktop \
+  uint32:0
+
 exec "${@}"
