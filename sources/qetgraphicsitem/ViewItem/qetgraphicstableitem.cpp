@@ -407,6 +407,14 @@ void QetGraphicsTableItem::initLink()
 }
 
 /**
+ * @brief QetGraphicsTableItem::minimumRowHeigth
+ * @return the minimum height of a row
+ */
+int QetGraphicsTableItem::minimumRowHeigth() const {
+	return m_minimum_row_height;
+}
+
+/**
  * @brief QetGraphicsTableItem::toXml
  * Save the table to xml
  * @param dom_document : parent document

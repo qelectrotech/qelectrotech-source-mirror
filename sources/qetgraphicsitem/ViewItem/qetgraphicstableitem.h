@@ -74,6 +74,7 @@ class QetGraphicsTableItem : public QetGraphicsItem
 		void setToMinimumHeight();
 		void initLink();
 		QUuid uuid() const {return m_uuid;}
+		int minimumRowHeigth() const;
 
 		QDomElement toXml(QDomDocument &dom_document) const;
 		void fromXml(const QDomElement &dom_element);

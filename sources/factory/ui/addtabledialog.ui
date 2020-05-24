@@ -27,7 +27,7 @@
        <item>
         <widget class="QCheckBox" name="m_adjust_table_size_cb">
          <property name="enabled">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <property name="text">
           <string>Ajuster la taille du tableau au folio</string>

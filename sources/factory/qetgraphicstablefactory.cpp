@@ -59,5 +59,24 @@ void QetGraphicsTableFactory::createAndAddNomenclature(Diagram *diagram)
 		table->setModel(model);
 		diagram->addItem(table);
 		table->setPos(50,50);
+
+
+		if (d->adjustTableToFolio())
+		{
+			auto drawable_rect = diagram->border_and_titleblock.insideBorderRect();
+			table->setPos(drawable_rect.topLeft().x() + 20, drawable_rect.topLeft().y() + 20 + table->headerItem()->rect().height());
+
+			auto size_ = table->size();
+			size_.setWidth(int(drawable_rect.width() - 40));
+				//Size must be a multiple of 10, because the table adjust itself by step of 10.
+			while (size_.width()%10) {
+				--size_.rwidth();    }
+			table->setSize(size_);
+
+				//Calcul the maximum row to display to fit the nomenclature into diagram
+			auto available_height = drawable_rect.height() - table->pos().y();
+			auto min_row_height = table->minimumRowHeigth();
+			table->setDisplayNRow(int(floor(available_height/min_row_height))); //Convert a double to int, but max_row_to_display is already rounded an integer so we assume everything is ok
+		}
 	}
 }
