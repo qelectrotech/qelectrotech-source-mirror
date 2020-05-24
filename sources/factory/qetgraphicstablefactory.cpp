@@ -50,6 +50,7 @@ void QetGraphicsTableFactory::createAndAddNomenclature(Diagram *diagram)
 		}
 
 
+			//Add new table if needed and option checked
 		if (d->addNewTableToNewDiagram() && table_->model()->rowCount() > table_->displayNRow())
 		{
 			auto already_displayed_rows = table_->displayNRow();
@@ -57,13 +58,14 @@ void QetGraphicsTableFactory::createAndAddNomenclature(Diagram *diagram)
 			auto actual_diagram = diagram;
 			auto previous_table = table_;
 
-			int i = 2;
+			table_->setTableName(d->tableName() + QString(" 1"));
+			int table_number = 2;
 			while (already_displayed_rows < table_->model()->rowCount())
 			{
 					//Add a new diagram after the current one
 				actual_diagram = project_->addNewDiagram(project_->folioIndex(actual_diagram)+1);
 				table_ = newTable(actual_diagram, d.data());
-				table_->setTableName(d->tableName() + QString(" %1").arg(i));
+				table_->setTableName(d->tableName() + QString(" %1").arg(table_number));
 					//Set the previous folio of table
 				table_->setPreviousTable(previous_table);
 					//Adjust table
@@ -73,7 +75,7 @@ void QetGraphicsTableFactory::createAndAddNomenclature(Diagram *diagram)
 					//Update some variable for the next loop
 				already_displayed_rows += table_->displayNRow();
 				previous_table = table_;
-				++i;
+				++table_number;
 			}
 		}
 	}
