@@ -1,59 +1,59 @@
-<definition width="50" height="80" hotspot_x="18" version="0.80" type="element" orientation="dyyy" link_type="simple" hotspot_y="44">
-    <uuid uuid="{1c5e96ed-7745-4415-89ef-0545a0c6b900}"/>
+<definition hotspot_y="44" orientation="dyyy" version="0.80" hotspot_x="18" link_type="simple" height="80" type="element" width="50">
+    <uuid uuid="{5dcf3133-d669-4baa-bd93-e271cc55cb41}"/>
     <names>
-        <name lang="cs">Jednofázový transformátor 20VA</name>
-        <name lang="pt">Transformador monofásico 20VA</name>
-        <name lang="it">Trasformatore monofase 20VA</name>
-        <name lang="de">Transformator einphasig 20VA</name>
+        <name lang="es">Transformador monofásico Yyd 20VA</name>
         <name lang="en">Single phase transducer 20VA</name>
         <name lang="pl">Transformator jednofazowy 20VA</name>
+        <name lang="cs">Jednofázový transformátor 20VA</name>
         <name lang="nl">eenfase transformator 20VA</name>
         <name lang="ru">Однофазный трансформатор 20VA</name>
         <name lang="fr">Transfo mono 20VA</name>
+        <name lang="pt">Transformador monofásico 20VA</name>
+        <name lang="de">Transformator einphasig 20VA</name>
         <name lang="ar">محوّل أحادي الوجه</name>
-        <name lang="es">Transformador monofásico Yyd 20VA</name>
+        <name lang="it">Trasformatore monofase 20VA</name>
     </names>
     <elementInformations>
-        <elementInformation name="supplier" show="1"></elementInformation>
-        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
-        <elementInformation name="quantity" show="1"></elementInformation>
-        <elementInformation name="comment" show="1">20VA</elementInformation>
+        <elementInformation name="description" show="1">Transformateur modulaire 230/24 V 20VA</elementInformation>
         <elementInformation name="manufacturer" show="1">Legrand</elementInformation>
-        <elementInformation name="plant" show="1"></elementInformation>
-        <elementInformation name="description" show="1">TRANSFORMATEUR MODULAIRE 230/24 V 20VA</elementInformation>
-        <elementInformation name="designation" show="1">LEG413093</elementInformation>
-        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="comment" show="1">20VA</elementInformation>
         <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">LEG413093</elementInformation>
         <elementInformation name="label" show="1"></elementInformation>
     </elementInformations>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <dynamic_text x="26" rotation="0" uuid="{36e49736-9719-430e-bc5b-5fd136af88d7}" frame="false" text_width="-1" text_from="UserText" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="1" Valignment="AlignTop" y="6" Halignment="AlignLeft">
+        <dynamic_text rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text_width="-1" text_from="UserText" x="26" z="1" Valignment="AlignTop" frame="false" y="6" uuid="{36e49736-9719-430e-bc5b-5fd136af88d7}" Halignment="AlignLeft">
             <text>24V</text>
         </dynamic_text>
-        <ellipse x="-5" antialias="true" width="30" height="23" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-7"/>
-        <dynamic_text x="25" rotation="0" uuid="{033d6dec-bbdb-4e42-9e2a-e47d6aaa11a7}" frame="false" text_width="-1" text_from="UserText" font="Sans Serif,5,-1,5,50,0,0,0,0,0" z="3" Valignment="AlignTop" y="-15" Halignment="AlignLeft">
+        <ellipse antialias="true" x="-5" y="-7" style="line-style:normal;line-weight:normal;filling:none;color:black" height="23" width="30"/>
+        <dynamic_text rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text_width="-1" text_from="UserText" x="25" z="3" Valignment="AlignTop" frame="false" y="-15" uuid="{033d6dec-bbdb-4e42-9e2a-e47d6aaa11a7}" Halignment="AlignLeft">
             <text>230V</text>
         </dynamic_text>
-        <ellipse x="-5" antialias="true" width="30" height="23" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-26"/>
-        <dynamic_text x="30" rotation="0" uuid="{05d420b8-f49b-46ce-8819-86d8b358cca3}" frame="false" text_width="-1" text_from="ElementInfo" font="Sans Serif,9,-1,5,50,0,0,0,0,0" z="5" Valignment="AlignTop" y="-35" Halignment="AlignLeft">
+        <ellipse antialias="true" x="-5" y="-26" style="line-style:normal;line-weight:normal;filling:none;color:black" height="23" width="30"/>
+        <dynamic_text rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1" text_from="ElementInfo" x="30" z="5" Valignment="AlignTop" frame="false" y="-35" uuid="{05d420b8-f49b-46ce-8819-86d8b358cca3}" Halignment="AlignLeft">
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>
-        <line x2="0" antialias="false" y2="-24" y1="-35" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="0"/>
-        <line x2="0" antialias="false" y2="25" y1="14" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="0"/>
-        <line x2="20" antialias="false" y2="-24" y1="-35" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="20"/>
-        <line x2="20" antialias="false" y2="25" y1="14" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="20"/>
-        <line x2="-8" antialias="false" y2="-5" y1="-5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end1="none" length2="1.5" x1="1"/>
-        <dynamic_text x="25" rotation="0" uuid="{81c0d19d-c5b5-4179-acad-1b163dd0b20c}" frame="false" text_width="-1" text_from="ElementInfo" font="MS Shell Dlg 2,6,-1,5,50,0,0,0,0,0,Normal" z="11" Valignment="AlignTop" y="-5" Halignment="AlignLeft">
+        <line x2="0" antialias="false" length2="1.5" y2="-24" end2="none" y1="-35" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" length1="1.5"/>
+        <line x2="0" antialias="false" length2="1.5" y2="25" end2="none" y1="14" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" length1="1.5"/>
+        <line x2="20" antialias="false" length2="1.5" y2="-24" end2="none" y1="-35" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="20" length1="1.5"/>
+        <line x2="20" antialias="false" length2="1.5" y2="25" end2="none" y1="14" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="20" length1="1.5"/>
+        <line x2="-8" antialias="false" length2="1.5" y2="-5" end2="none" y1="-5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="1" length1="1.5"/>
+        <dynamic_text rotation="0" font="MS Shell Dlg 2,6,-1,5,50,0,0,0,0,0,Normal" text_width="-1" text_from="ElementInfo" x="25" z="11" Valignment="AlignTop" frame="false" y="-5" uuid="{81c0d19d-c5b5-4179-acad-1b163dd0b20c}" Halignment="AlignLeft">
             <text>20VA</text>
             <info_name>comment</info_name>
         </dynamic_text>
-        <terminal x="20" orientation="n" y="-36"/>
-        <terminal x="0" orientation="n" y="-36"/>
-        <terminal x="20" orientation="s" y="26"/>
-        <terminal x="0" orientation="s" y="26"/>
-        <terminal x="-10" orientation="w" y="-5"/>
+        <terminal orientation="n" x="20" y="-36"/>
+        <terminal orientation="n" x="0" y="-36"/>
+        <terminal orientation="s" x="20" y="26"/>
+        <terminal orientation="s" x="0" y="26"/>
+        <terminal orientation="w" x="-10" y="-5"/>
     </description>
 </definition>

@@ -1,0 +1,29 @@
+<definition hotspot_y="54" orientation="dyyy" version="0.80" hotspot_x="25" link_type="simple" height="60" type="element" width="50">
+    <uuid uuid="{eee67c6d-7df7-43fe-a49b-5edc06ac100f}"/>
+    <names>
+        <name lang="fr">Porte étiquette SOUS TENSION</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="description" show="1">Porte étiquette SOUS TENSION</elementInformation>
+        <elementInformation name="manufacturer" show="1">Schneider</elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">ZBY2126</elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect antialias="false" ry="0" x="-20" y="-48" rx="0" style="line-style:normal;line-weight:thin;filling:black;color:black" height="24" width="40"/>
+        <line x2="22" antialias="false" length2="1.5" y2="-50" end2="none" y1="-50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-22" length1="1.5"/>
+        <line x2="-22" antialias="false" length2="1.5" y2="2" end2="none" y1="-50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-22" length1="1.5"/>
+        <line x2="22" antialias="false" length2="1.5" y2="2" end2="none" y1="-50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="22" length1="1.5"/>
+        <text rotation="0" font="MS Shell Dlg 2,6,-1,5,75,0,0,0,0,0,Gras" x="-11" color="#ffffff" y="-38" text="SOUS"/>
+        <text rotation="0" font="MS Shell Dlg 2,6,-1,5,75,0,0,0,0,0,Gras" x="-18" color="#ffffff" y="-26" text="TENSION"/>
+    </description>
+</definition>

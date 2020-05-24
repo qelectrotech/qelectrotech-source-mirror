@@ -1,0 +1,62 @@
+<definition hotspot_y="29" orientation="dyyy" version="0.80" hotspot_x="33" link_type="simple" height="60" type="element" width="130">
+    <uuid uuid="{32c136e8-678e-4661-8529-5a53a99fe367}"/>
+    <names>
+        <name lang="es">Interruptor de 3 posiciones</name>
+        <name lang="en">3 position  switch</name>
+        <name lang="pl">Łącznik obrotowy przełączny z położeniem neutralnym</name>
+        <name lang="nl">keuzeschakelaar 3 pos (NO/NO)</name>
+        <name lang="cs">Spínač - 3 polohy</name>
+        <name lang="fr">Commutateur Ppe1/Ppe2 </name>
+        <name lang="de">Drehschalter 2-polig 3 Positionen ein/aus</name>
+        <name lang="it">Commutatore a 3 posizioni </name>
+    </names>
+    <elementInformations>
+        <elementInformation name="description" show="1">Bouton tournant 3 position 2 NO</elementInformation>
+        <elementInformation name="manufacturer" show="1">Schneider</elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">XB4BD33</elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+    </elementInformations>
+    <informations>s.deffaux</informations>
+    <description>
+        <text rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="85" color="#000000" y="20" text="24"/>
+        <text rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="85" color="#000000" y="-10" text="23"/>
+        <text rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="5" color="#000000" y="20" text="14"/>
+        <line x2="41" antialias="false" length2="1.5" y2="0" end2="none" y1="0" end1="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" x1="76" length1="1.5"/>
+        <text rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" x="-22" color="#000000" y="-7" text="I"/>
+        <polygon x2="80" x3="80" antialias="true" y2="10" y1="-10" y3="20" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="75" closed="false"/>
+        <text rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" x="-12" color="#000000" y="-7" text="II"/>
+        <line x2="80" antialias="false" length2="1.5" y2="-10" end2="none" y1="-20" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="80" length1="1.5"/>
+        <line x2="-10" antialias="false" length2="1.5" y2="-5" end2="none" y1="5" end1="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" x1="-15" length1="1.5"/>
+        <line x2="-15" antialias="false" length2="1.5" y2="5" end2="none" y1="-5" end1="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" x1="-20" length1="1.5"/>
+        <line x2="-26.0136" antialias="false" length2="1.5" y2="0" end2="none" y1="0" end1="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" x1="38" length1="1.5"/>
+        <text rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" x="-17" color="#000000" y="-7" text="0"/>
+        <polygon x2="-27" y4="5" x3="-27" x4="-30" antialias="false" y2="-5" y1="-5" y3="5" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-24" closed="false"/>
+        <dynamic_text rotation="0" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_width="-1" text_from="ElementInfo" x="90" z="13" Valignment="AlignTop" frame="false" y="-10" uuid="{8421b800-f8e5-4f1f-b0a2-0f1e893c8b14}" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon x2="0" x3="0" antialias="true" y2="10" y1="-10" y3="20" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-5" closed="false"/>
+        <line x2="0" antialias="false" length2="1.5" y2="-10" end2="none" y1="-20" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" length1="1.5"/>
+        <line x2="-15" antialias="false" length2="1.5" y2="-6" end2="none" y1="5" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-15" length1="1.5"/>
+        <dynamic_text rotation="0" font="Sans Serif,7,-1,5,0,0,0,0,0,0,normal" text_width="-1" text_from="UserText" x="-30" z="17" Valignment="AlignTop" frame="false" y="15" uuid="{3aac8cf1-b07d-41a2-a3f7-57b19217324b}" Halignment="AlignLeft">
+            <text>PPE1</text>
+        </dynamic_text>
+        <line x2="40" antialias="false" length2="1.5" y2="13" end2="none" y1="0" end1="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" x1="38" length1="1.5"/>
+        <dynamic_text rotation="0" font="Sans Serif,7,-1,5,0,0,0,0,0,0,normal" text_width="-1" text_from="UserText" x="80" z="18" Valignment="AlignTop" frame="false" y="15" uuid="{c9d3c9f8-041e-4d5b-96fd-357a38119021}" Halignment="AlignLeft">
+            <text>PPE2</text>
+        </dynamic_text>
+        <line x2="40" antialias="false" length2="1.5" y2="12" end2="none" y1="0" end1="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" x1="41" length1="1.5"/>
+        <text rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0" x="5" color="#000000" y="-5" text="13"/>
+        <terminal orientation="n" x="80" y="-20"/>
+        <terminal orientation="s" x="0" y="21"/>
+        <terminal orientation="s" x="80" y="20"/>
+        <terminal orientation="n" x="0" y="-21"/>
+    </description>
+</definition>
