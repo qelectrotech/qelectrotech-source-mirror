@@ -19,6 +19,8 @@
 #define QETGRAPHICSTABLEFACTORY_H
 
 class Diagram;
+class QetGraphicsTableItem;
+class AddTableDialog;
 
 /**
  * @brief The QetGraphicsTableFactory class
@@ -29,6 +31,9 @@ class QetGraphicsTableFactory
         QetGraphicsTableFactory();
 
         static void createAndAddNomenclature(Diagram *diagram);
+	private:
+		static QetGraphicsTableItem *newTable(Diagram *diagram, AddTableDialog *dialog);
+		static void AdjustTableToFolio(QetGraphicsTableItem *table);
 };
 
 #endif // QETGRAPHICSTABLEFACTORY_H

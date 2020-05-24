@@ -40,7 +40,7 @@
        <item>
         <widget class="QCheckBox" name="m_add_table_and_folio">
          <property name="enabled">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <property name="text">
           <string>Ajouter de nouveau folio et tableau si nécessaire.</string>
