@@ -1,0 +1,45 @@
+<definition version="0.80" height="30" width="10" type="element" link_type="terminal" hotspot_y="14" hotspot_x="4" orientation="dyyy">
+    <uuid uuid="{9c21ed14-7180-42c6-86df-ca3f0b0bd47b}"/>
+    <names>
+        <name lang="en">Terminal block</name>
+        <name lang="pl">Zacisk</name>
+        <name lang="it">Terminale di unione</name>
+        <name lang="nl">klem doorgang</name>
+        <name lang="pt">Terminal de combinação</name>
+        <name lang="fr">Bloc jonction Viking3 à ressort gris - 2 jonc/4 conducteurs/2 étages</name>
+        <name lang="ar">طرف توصيل</name>
+        <name lang="de">Klemme</name>
+        <name lang="es">Terminal de unión</name>
+        <name lang="cs">Spojovací svorka</name>
+        <name lang="ru">Клеммное соединение</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="description">Bloc jonction Viking3 à ressort - 2 jonc/4 conducteurs/2 étages - gris - pas 5</elementInformation>
+        <elementInformation show="1" name="designation">LEG037267</elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text x="-2" text_from="ElementInfo" Halignment="AlignLeft" rotation="270" text_width="-1" y="11" z="1" uuid="{91c840ee-306f-4409-bae7-790d713a33d6}" Valignment="AlignTop" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" frame="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text x="5" text_from="ElementInfo" Halignment="AlignLeft" rotation="0" text_width="-1" y="-14" z="2" uuid="{a2463b96-7379-465b-b830-57fe2ce509da}" Valignment="AlignTop" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" frame="false">
+            <text></text>
+        </dynamic_text>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" end1="none" end2="none" y2="3" antialias="false" x2="0" y1="10" length2="1.5"/>
+        <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" end1="none" end2="none" y2="-3" antialias="false" x2="0" y1="-10" length2="1.5"/>
+        <circle x="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-2.5" diameter="5" antialias="true"/>
+        <terminal x="0" y="-10" orientation="n"/>
+        <terminal x="0" y="10" orientation="s"/>
+    </description>
+</definition>

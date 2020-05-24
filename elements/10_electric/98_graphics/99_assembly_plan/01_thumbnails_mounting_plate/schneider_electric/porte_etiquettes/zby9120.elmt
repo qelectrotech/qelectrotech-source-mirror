@@ -1,0 +1,49 @@
+<definition link_type="simple" hotspot_x="69" orientation="dyyy" version="0.80" type="element" hotspot_y="76" width="140" height="150">
+    <uuid uuid="{9724e7a6-ce47-4548-8ca1-dab046836daa}"/>
+    <names>
+        <name lang="ar">توقيف طارئ</name>
+        <name lang="nl">Label Noodstop (fr)</name>
+        <name lang="cs">Štítek - nouzové zastavení - fr</name>
+        <name lang="pl">Etykieta - Zatrzymanie awaryjne - fr</name>
+        <name lang="de">Schild Not-Aus französisch</name>
+        <name lang="en">Label - Emergency stopping - fr</name>
+        <name lang="it">Etichetta - Arrêt d'urgence (fr)</name>
+        <name lang="fr">Etiquette - Arrêt d'urgence - fr</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="manufacturer">Schneider</elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="designation">ZBY9120</elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text frame="false" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" text_width="-1" x="-7" text_from="ElementInfo" z="1" Halignment="AlignLeft" Valignment="AlignTop" y="-100" uuid="{f903c841-a54e-4ddd-9764-192b3ed64049}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <circle diameter="135" antialias="true" style="line-style:normal;line-weight:normal;filling:yellow;color:black" x="-67.5" y="-67.05"/>
+        <circle diameter="80" antialias="true" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-40" y="-39.55"/>
+        <text font="Sans Serif,16,-1,5,50,0,0,0,0,0" rotation="299" color="#000000" x="48.977" y="37.272" text="C"/>
+        <text font="Sans Serif,16,-1,5,50,0,0,0,0,0" rotation="322" color="#000000" x="31.101" y="52.595" text="N"/>
+        <text font="Sans Serif,16,-1,5,50,0,0,0,0,0" rotation="-14" color="#000000" x="7.8087" y="60.614" text="E"/>
+        <text font="Sans Serif,16,-1,5,50,0,0,0,0,0" rotation="15" color="#000000" x="-22.2105" y="57.027" text="G"/>
+        <text font="Sans Serif,16,-1,5,50,0,0,0,0,0" rotation="37" color="#000000" x="-41.5252" y="44.826" text="R"/>
+        <text font="Sans Serif,16,-1,5,50,0,0,0,0,0" rotation="58" color="#000000" x="-55.431" y="25.896" text="U"/>
+        <text font="Sans Serif,16,-1,5,50,0,0,0,0,0" rotation="81" color="#000000" x="-61.5225" y="0.9078" text="D'"/>
+        <text font="Sans Serif,16,-1,5,50,0,0,0,0,0" rotation="279" color="#000000" x="59.025" y="16.4981" text="E"/>
+        <text font="Sans Serif,16,-1,5,50,0,0,0,0,0" rotation="45" color="#000000" x="35" y="-45" text="T"/>
+        <text font="Sans Serif,16,-1,5,50,0,0,0,0,0" rotation="24" color="#000000" x="12.7788" y="-44.8724" text="Ê"/>
+        <text font="Sans Serif,16,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-7" y="-46.55" text="R"/>
+        <text font="Sans Serif,16,-1,5,50,0,0,0,0,0" rotation="335" color="#000000" x="-25.6413" y="-38.8465" text="R"/>
+        <text font="Sans Serif,16,-1,5,50,0,0,0,0,0" rotation="315" color="#000000" x="-39.1508" y="-27.115" text="A"/>
+    </description>
+</definition>

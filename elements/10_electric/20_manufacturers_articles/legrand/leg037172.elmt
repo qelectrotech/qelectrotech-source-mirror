@@ -1,45 +1,45 @@
-<definition link_type="terminal" hotspot_y="14" orientation="dyyy" height="30" type="element" version="0.80" hotspot_x="4" width="10">
-    <uuid uuid="{488a22b3-4526-4e77-b369-e79c4fff3420}"/>
+<definition hotspot_y="14" orientation="dyyy" version="0.80" hotspot_x="4" link_type="terminal" height="30" type="element" width="10">
+    <uuid uuid="{6a77f183-f3f9-42f7-abb6-339f98f32b00}"/>
     <names>
-        <name lang="fr">Borne V/J 6mm²</name>
-        <name lang="de">Klemme</name>
-        <name lang="pt">Terminal de combinação</name>
+        <name lang="es">Terminal de unión</name>
         <name lang="en">Terminal block</name>
         <name lang="pl">Zacisk</name>
-        <name lang="it">Terminale di unione</name>
         <name lang="cs">Spojovací svorka</name>
-        <name lang="ru">Клеммное соединение</name>
-        <name lang="es">Terminal de unión</name>
+        <name lang="fr">Borne à vis V/J 6mm²</name>
         <name lang="nl">klem doorgang</name>
+        <name lang="ru">Клеммное соединение</name>
+        <name lang="pt">Terminal de combinação</name>
+        <name lang="de">Klemme</name>
         <name lang="ar">طرف توصيل</name>
+        <name lang="it">Terminale di unione</name>
     </names>
     <elementInformations>
-        <elementInformation name="comment" show="1"></elementInformation>
-        <elementInformation name="label" show="1"></elementInformation>
-        <elementInformation name="designation" show="1">LEG037172</elementInformation>
-        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
-        <elementInformation name="unity" show="1"></elementInformation>
-        <elementInformation name="supplier" show="1"></elementInformation>
-        <elementInformation name="plant" show="1"></elementInformation>
-        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
-        <elementInformation name="description" show="1">BLOC DE JONCTION VIKING V/J 6mm²</elementInformation>
-        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="description" show="1">Bloc jonction Viking3 à vis - 1 jonction/1entrée/1 sortie - vert/jaune - pas 8</elementInformation>
         <elementInformation name="manufacturer" show="1">Legrand</elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">LEG037172</elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
     </elementInformations>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <dynamic_text font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_width="-1" rotation="270" y="11" Valignment="AlignTop" x="-2" text_from="ElementInfo" frame="false" Halignment="AlignLeft" uuid="{91c840ee-306f-4409-bae7-790d713a33d6}" z="1">
+        <dynamic_text rotation="270" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_width="-1" text_from="ElementInfo" x="-2" z="1" Valignment="AlignTop" frame="false" y="11" uuid="{91c840ee-306f-4409-bae7-790d713a33d6}" Halignment="AlignLeft">
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>
-        <dynamic_text font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_width="-1" rotation="0" y="-14" Valignment="AlignTop" x="5" text_from="ElementInfo" frame="false" Halignment="AlignLeft" uuid="{a2463b96-7379-465b-b830-57fe2ce509da}" z="2">
+        <dynamic_text rotation="0" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_width="-1" text_from="ElementInfo" x="5" z="2" Valignment="AlignTop" frame="false" y="-14" uuid="{a2463b96-7379-465b-b830-57fe2ce509da}" Halignment="AlignLeft">
             <text></text>
         </dynamic_text>
-        <line antialias="false" y2="3" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="0" x1="0" end1="none" y1="10" length1="1.5" length2="1.5"/>
-        <line antialias="false" y2="-3" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="0" x1="0" end1="none" y1="-10" length1="1.5" length2="1.5"/>
-        <circle antialias="true" y="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2.5" diameter="5"/>
-        <terminal y="-10" x="0" orientation="n"/>
-        <terminal y="10" x="0" orientation="s"/>
+        <line x2="0" antialias="false" length2="1.5" y2="3" end2="none" y1="10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" length1="1.5"/>
+        <line x2="0" antialias="false" length2="1.5" y2="-3" end2="none" y1="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" length1="1.5"/>
+        <circle antialias="true" x="-2.5" diameter="5" y="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal orientation="n" x="0" y="-10"/>
+        <terminal orientation="s" x="0" y="10"/>
     </description>
 </definition>
