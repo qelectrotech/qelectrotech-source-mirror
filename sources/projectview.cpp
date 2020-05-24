@@ -68,17 +68,25 @@ QETProject *ProjectView::project() {
 }
 
 /**
-	Definit le projet visualise par le ProjectView. Ne fait rien si le projet a
-	deja ete defini.
-	@param project projet a visualiser
-*/
-void ProjectView::setProject(QETProject *project) {
-	if (!m_project) {
+ * @brief ProjectView::setProject
+ * Set the project display by the project view
+ * @param project
+ */
+void ProjectView::setProject(QETProject *project)
+{
+	if (!m_project)
+	{
 		m_project = project;
-		connect(m_project, SIGNAL(projectTitleChanged(QETProject *, const QString &)),	this, SLOT(updateWindowTitle()));
-		connect(m_project, SIGNAL(projectModified	(QETProject *, bool)),				this, SLOT(updateWindowTitle()));
-		connect(m_project, SIGNAL(readOnlyChanged	(QETProject *, bool)),				this, SLOT(adjustReadOnlyState()));
-		connect(m_project, SIGNAL(addAutoNumDiagram()),									this, SLOT(addNewDiagram()));
+		connect(m_project, &QETProject::projectTitleChanged, this, &ProjectView::updateWindowTitle);
+		connect(m_project, &QETProject::projectModified, this, &ProjectView::updateWindowTitle);
+		connect(m_project, &QETProject::readOnlyChanged, this, &ProjectView::adjustReadOnlyState);
+		connect(m_project, &QETProject::addAutoNumDiagram, [this](){this->project()->addNewDiagram();});
+
+		connect(m_project, &QETProject::diagramAdded, [this](QETProject *project, Diagram *diagram) {
+			Q_UNUSED(project)
+			this->diagramAdded(diagram);
+		});
+
 		adjustReadOnlyState();
 		loadDiagrams();
 	}
@@ -338,22 +346,6 @@ QETResult ProjectView::noProjectResult() const {
 }
 
 /**
- * @brief ProjectView::addNewDiagram
- * Add new diagram to project view
- */
-void ProjectView::addNewDiagram() {
-	if (m_project -> isReadOnly()) return;
-
-	Diagram *new_diagram = m_project -> addNewDiagram();
-	DiagramView *new_diagram_view = new DiagramView(new_diagram);
-	addDiagram(new_diagram_view);
-
-	if (m_project -> diagrams().size() % 58 == 1 && m_project -> getFolioSheetsQuantity() != 0)
-		addNewDiagramFolioList();
-	showDiagram(new_diagram_view);
-}
-
-/**
  * @brief ProjectView::addNewDiagramFolioList
  * Add new diagram folio list to project
  */
@@ -362,48 +354,10 @@ void ProjectView::addNewDiagramFolioList() {
 	QSettings settings;
 	int i = (settings.value("projectview/foliolist_position").toInt() -1); //< Each new diagram is added  to the end of the project.
 			   //< We use @i to move the folio list at second position in the project
-	foreach (Diagram *d, m_project -> addNewDiagramFolioList()) {
-		DiagramView *new_diagram_view = new DiagramView(d);
-		addDiagram(new_diagram_view);
-		showDiagram(new_diagram_view);
+	auto count = m_project->addNewDiagramFolioList().size();
+	for (auto j=0 ; j<count ; ++j) {
 		m_tab->tabBar()->moveTab(diagram_views().size()-1, i);
-		i++;
-		m_project->setModified(true);
 	}
-}
-
-/**
- * @brief ProjectView::addDiagram
- * Add diagram view to this project view
- * @param diagram_view
- */
-void ProjectView::addDiagram(DiagramView *diagram_view)
-{
-	if (!diagram_view) 
-		return;
-
-		//Check if diagram isn't present in the project
-	if (m_diagram_ids.values().contains(diagram_view))
-		return;
-
-		// Add new tab for the diagram
-	m_tab->addTab(diagram_view, QET::Icons::Diagram, diagram_view -> title());
-	diagram_view->setFrameStyle(QFrame::Plain | QFrame::NoFrame);
-
-	m_diagram_view_list << diagram_view;
-
-	rebuildDiagramsMap();
-	updateAllTabsTitle();
-	
-	connect(diagram_view, SIGNAL(showDiagram(Diagram*)), this, SLOT(showDiagram(Diagram*)));
-	connect(diagram_view, SIGNAL(titleChanged(DiagramView *, const QString &)), this, SLOT(updateTabTitle(DiagramView *)));
-	connect(diagram_view, SIGNAL(findElementRequired(const ElementsLocation &)), this, SIGNAL(findElementRequired(const ElementsLocation &)));
-	connect(diagram_view, SIGNAL(editElementRequired(const ElementsLocation &)), this, SIGNAL(editElementRequired(const ElementsLocation &)));
-	connect(&diagram_view->diagram()->border_and_titleblock , &BorderTitleBlock::titleBlockFolioChanged, [this, diagram_view]() {this->updateTabTitle(diagram_view);});
-
-		// signal diagram view was added
-	emit(diagramAdded(diagram_view));
-	m_project -> setModified(true);
 }
 
 /**
@@ -780,9 +734,10 @@ int ProjectView::cleanProject() {
 /**
 	Initialize actions for this widget.
 */
-void ProjectView::initActions() {
-	add_new_diagram_ = new QAction(QET::Icons::AddFolio, tr("Ajouter un folio"), this);
-	connect(add_new_diagram_, SIGNAL(triggered()), this, SLOT(addNewDiagram()));
+void ProjectView::initActions()
+{
+	m_add_new_diagram = new QAction(QET::Icons::AddFolio, tr("Ajouter un folio"), this);
+	connect(m_add_new_diagram, &QAction::triggered, [this](){this->m_project->addNewDiagram();});
 }
 
 /**
@@ -811,7 +766,7 @@ void ProjectView::initWidgets() {
 	m_tab -> setMovable(true);
 
 	QToolButton *add_new_diagram_button = new QToolButton;
-	add_new_diagram_button -> setDefaultAction(add_new_diagram_);
+	add_new_diagram_button -> setDefaultAction(m_add_new_diagram);
 	add_new_diagram_button -> setAutoRaise(true);
 	m_tab -> setCornerWidget(add_new_diagram_button, Qt::TopRightCorner);
 
@@ -870,9 +825,7 @@ void ProjectView::loadDiagrams()
 			dialog->setDetail(diagram->title());
 			dialog->setProgressBar(dialog->progressBarValue()+1);
 		}
-		
-		DiagramView *sv = new DiagramView(diagram);
-		addDiagram(sv);
+		diagramAdded(diagram);
 	}
 
     if (DiagramView *dv = currentDiagram())
@@ -914,10 +867,43 @@ void ProjectView::adjustReadOnlyState() {
 	// prevent users from moving existing diagrams
 	m_tab -> setMovable(editable);
 	// prevent users from adding new diagrams
-	add_new_diagram_ -> setEnabled(editable);
+	m_add_new_diagram -> setEnabled(editable);
 
 	// on met a jour le titre du widget, qui reflete l'etat de lecture seule
 	updateWindowTitle();
+}
+
+/**
+ * @brief ProjectView::diagramAdded
+ * Slot called when qetproject emit diagramAdded
+ * @param diagram
+ */
+void ProjectView::diagramAdded(Diagram *diagram)
+{
+	auto dv = new DiagramView(diagram);
+	auto index = m_project->folioIndex(diagram);
+	m_tab->insertTab(index, dv, QET::Icons::Diagram, dv->title());
+	dv->setFrameStyle(QFrame::Plain | QFrame::NoFrame);
+
+	m_diagram_view_list.insert(index, dv);
+
+	rebuildDiagramsMap();
+	updateAllTabsTitle();
+
+	connect(dv, &DiagramView::showDiagram,         this, QOverload<Diagram*>::of(&ProjectView::showDiagram));
+	connect(dv, &DiagramView::titleChanged,        this, &ProjectView::updateTabTitle);
+	connect(dv, &DiagramView::findElementRequired, this, &ProjectView::findElementRequired);
+	connect(dv, &DiagramView::editElementRequired, this, &ProjectView::editElementRequired);
+	connect(&dv->diagram()->border_and_titleblock , &BorderTitleBlock::titleBlockFolioChanged, [this, dv]() {this->updateTabTitle(dv);});
+
+		// signal diagram view was added
+	emit(diagramAdded(dv));
+	m_project->setModified(true);
+
+	if (m_project->diagrams().size() % 58 == 1 && m_project->getFolioSheetsQuantity() != 0) {
+		addNewDiagramFolioList();
+	}
+	showDiagram(dv);
 }
 
 /**

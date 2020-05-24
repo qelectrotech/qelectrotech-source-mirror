@@ -98,9 +98,7 @@ class ProjectView : public QWidget
 		void changeLastTab();
 
 	public slots:
-		void addNewDiagram();
 		void addNewDiagramFolioList();
-		void addDiagram(DiagramView *);
 		void removeDiagram(DiagramView *);
 		void removeDiagram(Diagram *);
 		void showDiagram(DiagramView *);
@@ -162,10 +160,11 @@ class ProjectView : public QWidget
 		void tabDoubleClicked(int);
 		void setDisplayFallbackWidget(bool);
 		void adjustReadOnlyState();
+		void diagramAdded(Diagram *diagram);
 
 		// attributes
 	private:
-		QAction *add_new_diagram_;
+		QAction *m_add_new_diagram;
 		QETProject *m_project;
 		QVBoxLayout *layout_;
 		QWidget *fallback_widget_;

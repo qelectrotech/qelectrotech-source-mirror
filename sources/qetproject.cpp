@@ -1145,21 +1145,24 @@ bool QETProject::usesTitleBlockTemplate(const TitleBlockTemplateLocation &locati
 }
 
 /**
-	Ajoute un nouveau schema au projet et emet le signal diagramAdded
-*/
-Diagram *QETProject::addNewDiagram() {
-	// ne fait rien si le projet est en lecture seule
-	if (isReadOnly()) return(nullptr);
+ * @brief QETProject::addNewDiagram
+ * Add a new diagram in project at position pos.
+ * @param pos
+ * @return the new created diagram
+ */
+Diagram *QETProject::addNewDiagram(int pos)
+{
+	if (isReadOnly()) {
+		return(nullptr);
+	}
 	
-	// cree un nouveau schema
 	Diagram *diagram = new Diagram(this);
 	
-	// lui transmet les parametres par defaut
-	diagram -> border_and_titleblock.importBorder(defaultBorderProperties());
-	diagram -> border_and_titleblock.importTitleBlock(defaultTitleBlockProperties());
-	diagram -> defaultConductorProperties = defaultConductorProperties();
-	
-	addDiagram(diagram);
+	diagram->border_and_titleblock.importBorder(defaultBorderProperties());
+	diagram->border_and_titleblock.importTitleBlock(defaultTitleBlockProperties());
+	diagram->defaultConductorProperties = defaultConductorProperties();
+
+	addDiagram(diagram, pos);
 	emit(diagramAdded(this, diagram));
 	return(diagram);
 }
@@ -1169,7 +1172,8 @@ Diagram *QETProject::addNewDiagram() {
  * Add new diagram folio list
  * @return the created diagram
  */
-QList <Diagram *> QETProject::addNewDiagramFolioList() {
+QList <Diagram *> QETProject::addNewDiagramFolioList()
+{
 	// do nothing if project is read only or folio sheet is alredy created
 	QList <Diagram *> diagram_list;
 
@@ -1625,34 +1629,28 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element) {
 }
 
 /**
-	Cette methode ajoute un schema donne au projet
-	@param diagram Schema a ajouter
-*/
-/**
  * @brief QETProject::addDiagram
  * Add a diagram in this project
  * @param diagram added diagram
- * @param position postion of the new diagram, by default at the end
+ * @param pos postion of the new diagram, by default at the end
  */
-void QETProject::addDiagram(Diagram *diagram) {
-	if (!diagram) return;
+void QETProject::addDiagram(Diagram *diagram, int pos)
+{
+	if (!diagram) {
+		return;
+	}
 	
-	// Ensure diagram know is parent project
-	diagram -> setProject(this);
-	
-	connect(
-		&(diagram -> border_and_titleblock),
-		SIGNAL(needFolioData()),
-		this,
-		SLOT(updateDiagramsFolioData())
-	);
-	connect(
-		diagram, SIGNAL(usedTitleBlockTemplateChanged(const QString &)),
-		this, SLOT(usedTitleBlockTemplateChanged(const QString &))
-	);
-	
-	// add diagram to project
+		// Ensure diagram know is parent project
+	diagram->setProject(this);
+
+	connect(&diagram->border_and_titleblock, &BorderTitleBlock::needFolioData, this, &QETProject::updateDiagramsFolioData);
+	connect(diagram, &Diagram::usedTitleBlockTemplateChanged, this, &QETProject::usedTitleBlockTemplateChanged);
+
+	if (pos == -1) {
 		m_diagrams_list << diagram;
+	} else {
+		m_diagrams_list.insert(pos, diagram);
+	}
 	
 	updateDiagramsFolioData();
 }

@@ -363,7 +363,7 @@ void QETDiagramEditor::setUpActions()
 	m_project_add_diagram->setShortcut(QKeySequence(tr("Ctrl+T")));
 	connect(m_project_add_diagram, &QAction::triggered, [this]() {
 		if (ProjectView *current_project = currentProjectView()) {
-			current_project->addNewDiagram();
+			current_project->project()->addNewDiagram();
 		}
 	});
 	
@@ -1972,20 +1972,20 @@ void QETDiagramEditor::editProjectProperties(QETProject *project) {
 }
 
 /**
-	Ajoute un nouveau schema a un projet
-	@param project Projet auquel il faut ajouter un schema
-*/
-void QETDiagramEditor::addDiagramToProject(QETProject *project) {
-	if (!project) return;
+ * @brief QETDiagramEditor::addDiagramToProject
+ * Add a diagram to project
+ * @param project
+ */
+void QETDiagramEditor::addDiagramToProject(QETProject *project)
+{
+	if (!project) {
+		return;
+	}
 	
-	// recupere le ProjectView visualisant ce projet
-	if (ProjectView *project_view = findProject(project)) {
-		
-		// affiche le projet en question
+	if (ProjectView *project_view = findProject(project))
+	{
 		activateProject(project);
-		
-		// ajoute un schema au projet
-		project_view -> addNewDiagram();
+		project_view->project()->addNewDiagram();
 	}
 }
 

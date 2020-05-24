@@ -233,6 +233,7 @@ DiagramContext ElementInfoWidget::currentInfo() const
 
 	for (ElementInfoPartWidget *eipw : m_eipw_list)
 	{
+
 			//add value only if they're something to store
 		if (!eipw->text().isEmpty())
 		{

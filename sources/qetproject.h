@@ -168,7 +168,7 @@ class QETProject : public QObject
 		QUndoStack* undoStack() {return m_undo_stack;}
 	
 	public slots:
-		Diagram *addNewDiagram();
+		Diagram *addNewDiagram(int pos = -1);
 		QList <Diagram *> addNewDiagramFolioList();
 		void removeDiagram(Diagram *);
 		void diagramOrderChanged(int, int);
@@ -213,7 +213,7 @@ class QETProject : public QObject
 
 		void writeProjectPropertiesXml(QDomElement &);
 		void writeDefaultPropertiesXml(QDomElement &);
-		void addDiagram(Diagram *);
+		void addDiagram(Diagram *diagram, int pos = -1);
 		NamesList namesListForIntegrationCategory();
 		void writeBackup();
 		void init();
