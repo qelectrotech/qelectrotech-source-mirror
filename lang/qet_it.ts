@@ -49,215 +49,215 @@
         <translation type="unfinished">Questo programma è rilasciato sotto licenza GNU/GPL.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="43"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="45"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.</source>
         <comment>about tab, description line</comment>
         <translation type="unfinished">QElectroTech, applicazione per il disegno di schemi elettrici.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="45"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="47"/>
         <source>2006-2019 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
         <translation type="unfinished">2006-2017 Gli sviluppatori di QElectroTech {2006-2019 ?}</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="49"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="51"/>
         <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</source>
         <comment>about tab, contact line</comment>
         <translation type="unfinished">Contatto : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="56"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="58"/>
         <source>Idée originale</source>
         <translation type="unfinished">Idea originale</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="57"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="58"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="59"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="62"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="107"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="110"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="60"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="61"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="64"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="109"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="112"/>
         <source>Développement</source>
         <translation type="unfinished">Sviluppo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="60"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="62"/>
         <source>Convertisseur DXF</source>
         <translation type="unfinished">Convertitore DXF</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="61"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="63"/>
         <source>Plugin Bornier</source>
         <translation type="unfinished">Plugin Morsettiera</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="67"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="68"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="69"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="70"/>
         <source>Traduction en espagnol</source>
         <translation type="unfinished">Traduzione in spagnolo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="69"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="70"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="71"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="72"/>
         <source>Traduction en russe</source>
         <translation type="unfinished">Traduzione in russo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="71"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="73"/>
         <source>Traduction en portugais</source>
         <translation type="unfinished">Traduzione in portoghese</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="72"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="74"/>
         <source>Traduction en tchèque</source>
         <translation type="unfinished">Traduzione in ceco</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="73"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="75"/>
         <source>Traduction en polonais</source>
         <translation type="unfinished">Traduzione in polacco</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="74"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="75"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="76"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="77"/>
         <source>Traduction en allemand</source>
         <translation type="unfinished">Traduzione in tedesco</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="76"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="78"/>
         <source>Traduction en roumain</source>
         <translation type="unfinished">Traduzione in rumeno</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="77"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="79"/>
         <source>Traduction en italien</source>
         <translation type="unfinished">Traduzione in italiano</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="78"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="80"/>
         <source>Traduction en arabe</source>
         <translation type="unfinished">Traduzione in arabo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="79"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="81"/>
         <source>Traduction en croate</source>
         <translation type="unfinished">Traduzione in croato</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="80"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="82"/>
         <source>Traduction en catalan</source>
         <translation type="unfinished">Traduzione in catalano</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="81"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="82"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="83"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="84"/>
         <source>Traduction en grec</source>
         <translation type="unfinished">Traduzione in greco</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="83"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="84"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="85"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="86"/>
         <source>Traduction en néerlandais</source>
         <translation type="unfinished">Traduzione in olandese</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="85"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="87"/>
         <source>Traduction en flamand</source>
         <translation type="unfinished">Traduzione in fiammingo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="86"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="88"/>
         <source>Traduction en danois</source>
         <translation type="unfinished">Traduzione in danese</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="87"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="89"/>
         <source>Traduction en brézilien</source>
         <translation type="unfinished">Traduzione in brasiliano</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="88"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="89"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="90"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="91"/>
         <source>Traduction en Turc</source>
         <translation type="unfinished">Traduzione in Turco</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="90"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="92"/>
         <source>Traduction en hongrois</source>
         <translation type="unfinished">Traduzione in ungherese</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="95"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="97"/>
         <source>Paquets Fedora et Red Hat</source>
         <translation type="unfinished">Pacchetti per Fedora e Red Hat</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="96"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="98"/>
         <source>Paquets Mageia</source>
         <translation type="unfinished">Pacchetti per Mageia</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="97"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="98"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="99"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="100"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="101"/>
         <source>Paquets Debian</source>
         <translation type="unfinished">Pacchetti per Debian</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="100"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="101"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="102"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="103"/>
         <source>Paquets Gentoo</source>
         <translation type="unfinished">Pacchetti per Gentoo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="102"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="104"/>
         <source>Paquets OS/2</source>
         <translation type="unfinished">Pacchetti per OS/2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="103"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="105"/>
         <source>Paquets FreeBSD</source>
         <translation type="unfinished">Pacchetti per FreeBSD</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="104"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="106"/>
         <source>Paquets MAC OS X</source>
         <translation type="unfinished">Pacchetti MAC OS X</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="105"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="107"/>
         <source>Paquets Archlinux AUR</source>
         <translation type="unfinished">Pacchetti per Archlinux AUR</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="106"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="108"/>
         <source>Icônes</source>
         <translation type="unfinished">Icone</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="108"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="109"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="110"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="111"/>
         <source>Documentation</source>
         <translation type="unfinished">Documentazione</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="111"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="113"/>
         <source>Collection d&apos;éléments</source>
         <translation type="unfinished">Collezione di elementi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="112"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="114"/>
         <source>Python plugin qet-tb-generator</source>
         <translation type="unfinished">Plugin Python Generatore qet tb</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="113"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="115"/>
         <source>Paquets Snap</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="119"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="121"/>
         <source>Compilation : </source>
         <translation type="unfinished">Compilazione: </translation>
     </message>
@@ -3088,12 +3088,12 @@ che si crea. Si possono anche inserire caratteri alfanumerici.</translation>
         <translation>Usare i colori di sistema</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="383"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="384"/>
         <source>Chemin de la collection utilisateur</source>
         <translation>Percorso della raccolta utente</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="397"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="398"/>
         <source>Chemin des cartouches utilisateur</source>
         <translation>Percorso dei cartigli utente</translation>
     </message>
@@ -3103,7 +3103,7 @@ che si crea. Si possono anche inserire caratteri alfanumerici.</translation>
         <translation>Lingua</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="369"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="370"/>
         <source>Chemin de la collection commune</source>
         <translation>Percorso della raccolta comune</translation>
     </message>
@@ -3459,16 +3459,21 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="283"/>
+        <source>Norvege</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="284"/>
         <source>Belgique-Flemish</source>
         <translation>Belga-Fiammingo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="284"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="285"/>
         <source>Turc</source>
         <translation>Turco</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="285"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="286"/>
         <source>Hongrois</source>
         <translation>Ungherese</translation>
     </message>
@@ -3547,7 +3552,7 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="50"/>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="260"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="261"/>
         <source>Aucun</source>
         <translation type="unfinished">Nessuno</translation>
     </message>
@@ -3642,43 +3647,43 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="123"/>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="130"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="124"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="131"/>
         <source>Déplacer un tableau</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="136"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="137"/>
         <source>Modifier le nombre de ligne affiché par un tableau</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="149"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="150"/>
         <source>Modifier les marges d&apos;une en tête de tableau</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="162"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="163"/>
         <source>Modifier les marges d&apos;un tableau</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="170"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="171"/>
         <source>Modifier l&apos;alignement d&apos;une en tête de tableau</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="178"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="179"/>
         <source>Modifier l&apos;alignement des textes d&apos;un tableau</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="212"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="213"/>
         <source>Modifier la police d&apos;une en tête de tableau</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="234"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="235"/>
         <source>Changer la police d&apos;un tableau</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4140,8 +4145,8 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
     <name>MarginsEditDialog</name>
     <message>
         <location filename="../sources/ui/marginseditdialog.ui" line="14"/>
-        <source>Dialog</source>
-        <translation type="unfinished">Finestra di dialogo</translation>
+        <source>Editer les marges</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/marginseditdialog.ui" line="71"/>
@@ -4928,104 +4933,104 @@ Le seguenti variabili sono incompatibili:
 <context>
     <name>ProjectView</name>
     <message>
-        <location filename="../sources/projectview.cpp" line="738"/>
+        <location filename="../sources/projectview.cpp" line="692"/>
         <source>Supprimer les éléments inutilisés dans le projet</source>
         <translation>Cancellare gli elementi non usati nel progetto</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="739"/>
+        <location filename="../sources/projectview.cpp" line="693"/>
         <source>Supprimer les catégories vides</source>
         <translation>Cancella le categorie vuote</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="292"/>
+        <location filename="../sources/projectview.cpp" line="300"/>
         <source>Le projet à été modifié.
 Voulez-vous enregistrer les modifications ?</source>
         <translation>La proprietà è stata modificata.
 Salvare le modifiche?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="313"/>
+        <location filename="../sources/projectview.cpp" line="321"/>
         <source>sansnom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="314"/>
+        <location filename="../sources/projectview.cpp" line="322"/>
         <source>Projet QElectroTech (*.qet)</source>
         <comment>filetypes allowed when saving a project file</comment>
         <translation>Progetto QElectrotech (*.qet)</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="427"/>
+        <location filename="../sources/projectview.cpp" line="381"/>
         <source>Supprimer le folio ?</source>
         <comment>message box title</comment>
         <translation>Eliminare la pagina?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="428"/>
+        <location filename="../sources/projectview.cpp" line="382"/>
         <source>Êtes-vous sûr  de vouloir supprimer ce folio du projet ? Ce changement est irréversible.</source>
         <comment>message box content</comment>
         <translation>Sicuro di voler eliminare la pagina? Questa operazione sarà irreversibile.</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="730"/>
+        <location filename="../sources/projectview.cpp" line="684"/>
         <source>Projet en lecture seule</source>
         <comment>message box title</comment>
         <translation>Progetto in sola lettura</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="731"/>
+        <location filename="../sources/projectview.cpp" line="685"/>
         <source>Ce projet est en lecture seule. Il n&apos;est donc pas possible de le nettoyer.</source>
         <comment>message box content</comment>
         <translation>Questo progetto è in sola lettura. Perciò non può essere pulito.</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="737"/>
+        <location filename="../sources/projectview.cpp" line="691"/>
         <source>Supprimer les modèles de cartouche inutilisés dans le projet</source>
         <translation>Eliminare i modelli di cartiglio non utilizzati nel progetto</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="751"/>
+        <location filename="../sources/projectview.cpp" line="705"/>
         <source>Nettoyer le projet</source>
         <comment>window title</comment>
         <translation>Pulisci il progetto</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="784"/>
+        <location filename="../sources/projectview.cpp" line="739"/>
         <source>Ajouter un folio</source>
         <translation>Aggiungi una pagina</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="798"/>
+        <location filename="../sources/projectview.cpp" line="753"/>
         <source>Ce projet ne contient aucun folio</source>
         <comment>label displayed when a project contains no diagram</comment>
         <translation>Questo progetto non contiene nessuna pagina</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="312"/>
+        <location filename="../sources/projectview.cpp" line="320"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation>Salva come</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="336"/>
+        <location filename="../sources/projectview.cpp" line="344"/>
         <source>aucun projet affiché</source>
         <comment>error message</comment>
         <translation>nessun progetto inviato</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="861"/>
+        <location filename="../sources/projectview.cpp" line="816"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Création des onglets de folio :&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Apertura progetto in corso...&lt;/b&gt;&lt;br/&gt;Creazione delle schede del foglio :&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="902"/>
+        <location filename="../sources/projectview.cpp" line="855"/>
         <source>Projet</source>
         <comment>window title for a project-less ProjectView</comment>
         <translation>Progetto</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="638"/>
+        <location filename="../sources/projectview.cpp" line="592"/>
         <source>projet</source>
         <comment>string used to generate a filename</comment>
         <translation>progetto</translation>
@@ -5789,7 +5794,7 @@ Opzioni disponibili:
         <translation>Gruppo</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2262"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2296"/>
         <source>Error launching qet_tb_generator plugin</source>
         <translation>Errore durante l&apos;avvio del plugin qet_tb_generator</translation>
     </message>
@@ -7287,7 +7292,7 @@ le condizioni richieste non sono validi</translation>
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1280"/>
+        <location filename="../sources/qetproject.cpp" line="1284"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
@@ -7295,7 +7300,7 @@ Que désirez vous faire ?</source>
 Cosa vuoi fare?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1279"/>
+        <location filename="../sources/qetproject.cpp" line="1283"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation>Avviso</translation>
@@ -7337,17 +7342,17 @@ Cosa vuoi fare?</translation>
         <translation>Si è verificato un errore durante l&apos;integrazione del modello.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1192"/>
+        <location filename="../sources/qetproject.cpp" line="1196"/>
         <source>Liste des Folios</source>
         <translation>Elenco delle pagine</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1342"/>
+        <location filename="../sources/qetproject.cpp" line="1346"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Création des folios&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Apertura progetto in corso...&lt;/b&gt;&lt;br/&gt;Creazione dei fogli :&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1389"/>
+        <location filename="../sources/qetproject.cpp" line="1393"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Mise en place des références croisées&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Apertura progetto in corso...&lt;/b&gt;&lt;br/&gt;Impostazione dei riferimenti incrociati &lt;&lt;/p&gt;</translation>
     </message>
@@ -7715,12 +7720,12 @@ Cosa vuoi fare?</translation>
         <translation>Esporta negli appunti</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="344"/>
+        <location filename="../sources/qet.cpp" line="354"/>
         <source>Le fichier texte contenant la licence GNU/GPL est introuvable - bon bah de toute façon, vous la connaissez par coeur non ?</source>
         <translation>Non trovo il file di testo che contiene la licenza GNU/GPL - comunque sia la conosci a menadito, o no?</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="348"/>
+        <location filename="../sources/qet.cpp" line="358"/>
         <source>Le fichier texte contenant la licence GNU/GPL existe mais n&apos;a pas pu être ouvert - bon bah de toute façon, vous la connaissez par coeur non ?</source>
         <translation>Non posso aprire il file di testo che contiene la licenza GNU/GPL - comunque sia la conosci a menadito, o no?</translation>
     </message>
@@ -7741,7 +7746,7 @@ Cosa vuoi fare?</translation>
         <translation>un conduttore</translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/deleteqgraphicsitemcommand.cpp" line="77"/>
+        <location filename="../sources/undocommand/deleteqgraphicsitemcommand.cpp" line="87"/>
         <source>supprimer %1</source>
         <comment>undo caption - %1 is a sentence listing the removed content</comment>
         <translation>cancella %1</translation>
@@ -7909,7 +7914,7 @@ Cosa vuoi fare?</translation>
         <translation>testo</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="243"/>
+        <location filename="../sources/qet.cpp" line="245"/>
         <source>%n élément(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -7918,7 +7923,7 @@ Cosa vuoi fare?</translation>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="252"/>
+        <location filename="../sources/qet.cpp" line="254"/>
         <source>%n conducteur(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -7927,7 +7932,7 @@ Cosa vuoi fare?</translation>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="261"/>
+        <location filename="../sources/qet.cpp" line="263"/>
         <source>%n champ(s) de texte</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -7936,7 +7941,7 @@ Cosa vuoi fare?</translation>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="270"/>
+        <location filename="../sources/qet.cpp" line="272"/>
         <source>%n image(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -7945,7 +7950,7 @@ Cosa vuoi fare?</translation>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="279"/>
+        <location filename="../sources/qet.cpp" line="281"/>
         <source>%n forme(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -7954,7 +7959,7 @@ Cosa vuoi fare?</translation>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="288"/>
+        <location filename="../sources/qet.cpp" line="290"/>
         <source>%n texte(s) d&apos;élément</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -7962,77 +7967,86 @@ Cosa vuoi fare?</translation>
             <numerusform></numerusform>
         </translation>
     </message>
+    <message numerus="yes">
+        <location filename="../sources/qet.cpp" line="298"/>
+        <source>%n tableau(s)</source>
+        <comment>part of a sentence listing the content of diagram</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
     <message>
-        <location filename="../sources/qet.cpp" line="554"/>
-        <location filename="../sources/qet.cpp" line="676"/>
+        <location filename="../sources/qet.cpp" line="564"/>
+        <location filename="../sources/qet.cpp" line="686"/>
         <location filename="../sources/qetxml.cpp" line="249"/>
         <source>Impossible d&apos;ouvrir le fichier %1 en écriture, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
         <translation>Impossibile aprire il file %1 in scrittura, riscontrato errore %2.</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="567"/>
+        <location filename="../sources/qet.cpp" line="577"/>
         <source>Une erreur est survenue lors de l&apos;écriture du fichier %1, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="640"/>
+        <location filename="../sources/qet.cpp" line="650"/>
         <source>Amener au premier plan</source>
         <translation>Portare in primo piano</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="641"/>
+        <location filename="../sources/qet.cpp" line="651"/>
         <source>Rapprocher</source>
         <translation>Alzare</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="642"/>
+        <location filename="../sources/qet.cpp" line="652"/>
         <source>Éloigner</source>
         <translation>Abbassa</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="643"/>
+        <location filename="../sources/qet.cpp" line="653"/>
         <source>Envoyer au fond</source>
         <translation>Metti sullo sfondo</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="645"/>
+        <location filename="../sources/qet.cpp" line="655"/>
         <source>Ramène la ou les sélections au premier plan</source>
         <translation>Porta la(e) selezione(i) in primo piano</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="646"/>
+        <location filename="../sources/qet.cpp" line="656"/>
         <source>Rapproche la ou les sélections</source>
         <translation>Sposta in alto la(e) selezione(i)</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="647"/>
+        <location filename="../sources/qet.cpp" line="657"/>
         <source>Éloigne la ou les sélections</source>
         <translation>Sposta in basso la(e) selezione(i)</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="648"/>
+        <location filename="../sources/qet.cpp" line="658"/>
         <source>Envoie en arrière plan la ou les sélections</source>
         <translation>Porta sullo sfondo la(e) selezione(i)</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="650"/>
+        <location filename="../sources/qet.cpp" line="660"/>
         <source>Ctrl+Shift+Up</source>
         <translation>Ctrl+Shift+Up</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="651"/>
+        <location filename="../sources/qet.cpp" line="661"/>
         <source>Ctrl+Shift+Down</source>
         <translation>Ctrl+Shift+Down</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="652"/>
+        <location filename="../sources/qet.cpp" line="662"/>
         <source>Ctrl+Shift+End</source>
         <translation>Ctrl+Shift+End</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="653"/>
+        <location filename="../sources/qet.cpp" line="663"/>
         <source>Ctrl+Shift+Home</source>
         <translation>Ctrl+Shift+Home</translation>
     </message>
@@ -8884,22 +8898,22 @@ La si vuole sostituire?</translation>
         <translation>Creazione dei conduttori</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2263"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2297"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</source>
         <translation>Per installare il plugin qet_tb_generator &lt;br&gt; Visita: &lt;br&gt; &lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt; qet-tb-generator &lt;/a&gt; &lt;br&gt; Richiede python 3.5 o successivo. &lt;br&gt; &lt;B&gt; &lt;U&gt; Prima installazione su Windows &lt;/B&gt; &lt;/U&gt; &lt;br&gt; 1. Installa, se richiesto, python 3.5 o successivo &lt;br&gt; Visita: &lt;br&gt; &lt;a href=&apos;https://www.python.org/downloads/&apos;&gt; python.org &lt;/a&gt; &lt;br&gt; 2. pip install qet_tb_generator &lt;br&gt; &lt;B&gt; &lt;U&gt; Aggiorna su Windows &lt;/B&gt; &lt;/U&gt; &lt;br&gt; python -m pip install --upgrade qet_tb_generator &lt;br&gt; &gt;&gt; l&apos;utente può lanciare in un terminale questo script in questa cartella&lt;br&gt; C: \utenti\XXXX\AppData \Local\Programmi\Python\Python36-32\Scripts   &lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2299"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2333"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.8 bundle only, because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2330"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2364"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit : &lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation>Per installare il plugin qet_tb_generator &lt;br&gt; Visita: &lt;br&gt; &lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt; qet-tb-generator &lt;/a&gt; &lt;br&gt; &lt;br&gt; Richiede Python 3.5 o versione successiva. &lt;br&gt; &lt;br&gt; &lt;B&gt; &lt;U&gt; Prima installazione su Linux &lt;/B&gt; &lt;/U&gt; &lt;br&gt; 1. controlla di aver installato pip3: pip3 --version &lt;br&gt; Se non è presente installa con: sudo apt-get install python3-pip &lt;br&gt; 2. Installa il programma: sudo pip3 install qet_tb_generator &lt;br&gt; 3. Esegui il programma: qet_tb_generator &lt;br&gt; &lt;br&gt; &lt;B&gt; &lt;U&gt; Aggiornamento su Linux &lt;/B&gt; &lt;/U&gt; &lt;br&gt; sudo pip3 install --upgrade qet_tb_generator &lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="41"/>
+        <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="43"/>
         <source>Ajouter une nomenclature</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8922,7 +8936,7 @@ La si vuole sostituire?</translation>
 <context>
     <name>QetGraphicsTableItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="676"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="670"/>
         <source>Modifier la géometrie d&apos;un tableau</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9606,85 +9620,85 @@ Creare il proprio testo utilizzando le seguenti variabili:
         <translation>Aggiornare</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="146"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="147"/>
         <source>Correspondance :</source>
         <translation>Corrispondenza</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="152"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="153"/>
         <source>Folios</source>
         <translation>Pagine</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="158"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="159"/>
         <source>Champs texte</source>
         <translation>Campi di testo</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="164"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="165"/>
         <source>Eléments</source>
         <translation>Elementi</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="169"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="170"/>
         <source>Eléments simple</source>
         <translation>Elementi semplici</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="175"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="176"/>
         <source>Eléments maître</source>
         <translation>Elementi Master</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="181"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="182"/>
         <source>Eléments esclave</source>
         <translation>Elementi slave</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="187"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="188"/>
         <source>Eléments report de folio</source>
         <translation>Riferimenti di pagina</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="193"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="194"/>
         <source>Eléments bornier</source>
         <translation>Morsettiere</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="964"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="965"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="973"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="974"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="993"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1001"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1019"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1029"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1079"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1082"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1089"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1092"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1114"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1115"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="982"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="983"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1002"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1010"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1028"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1038"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1088"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1091"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1098"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1101"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1123"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1124"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1165"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1166"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1132"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1133"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1174"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1175"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1194"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1195"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1183"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1184"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1203"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1204"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1212"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1213"/>
         <source> [édité]</source>
         <translation> [modificato]</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="201"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="202"/>
         <source>Conducteurs</source>
         <translation>Conduttori</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="336"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="337"/>
         <source>Inconnue</source>
         <translation>Sconosciuto</translation>
     </message>

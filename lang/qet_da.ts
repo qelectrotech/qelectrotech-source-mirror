@@ -49,215 +49,215 @@
         <translation>Dette program er licenseret under GNU / GPL.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="43"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="45"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.</source>
         <comment>about tab, description line</comment>
         <translation>QElectroTech er et program til at tegne elektriske diagrammer.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="45"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="47"/>
         <source>2006-2019 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
         <translation>2006-2019 QElectroTech udviklere</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="49"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="51"/>
         <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</source>
         <comment>about tab, contact line</comment>
         <translation>Kontakt: &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="56"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="58"/>
         <source>Idée originale</source>
         <translation>Original idé</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="57"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="58"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="59"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="62"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="107"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="110"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="60"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="61"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="64"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="109"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="112"/>
         <source>Développement</source>
         <translation>Udvikling</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="60"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="62"/>
         <source>Convertisseur DXF</source>
         <translation>DXF konverter</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="61"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="63"/>
         <source>Plugin Bornier</source>
         <translation>Klemmerække ddvidelsesmodul</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="67"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="68"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="69"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="70"/>
         <source>Traduction en espagnol</source>
         <translation>Spansk oversættelse</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="69"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="70"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="71"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="72"/>
         <source>Traduction en russe</source>
         <translation>Russisk oversættelse</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="71"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="73"/>
         <source>Traduction en portugais</source>
         <translation>Portugisisk oversættelse</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="72"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="74"/>
         <source>Traduction en tchèque</source>
         <translation>Tjekkisk oversættelse</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="73"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="75"/>
         <source>Traduction en polonais</source>
         <translation>Polsk oversættelse</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="74"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="75"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="76"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="77"/>
         <source>Traduction en allemand</source>
         <translation>Tysk oversættelse</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="76"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="78"/>
         <source>Traduction en roumain</source>
         <translation>Rumænsk oversættelse</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="77"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="79"/>
         <source>Traduction en italien</source>
         <translation>Italiensk oversættelse</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="78"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="80"/>
         <source>Traduction en arabe</source>
         <translation>Arabisk oversættelse</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="79"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="81"/>
         <source>Traduction en croate</source>
         <translation>Kroatisk oversættelse</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="80"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="82"/>
         <source>Traduction en catalan</source>
         <translation>Katalansk oversættelse</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="81"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="82"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="83"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="84"/>
         <source>Traduction en grec</source>
         <translation>Græsk oversættelse</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="83"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="84"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="85"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="86"/>
         <source>Traduction en néerlandais</source>
         <translation>Hollandsk oversættelse</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="85"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="87"/>
         <source>Traduction en flamand</source>
         <translation>Flamsk oversættelse</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="86"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="88"/>
         <source>Traduction en danois</source>
         <translation>Dansk oversættelse</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="87"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="89"/>
         <source>Traduction en brézilien</source>
         <translation>Brasiliansk oversættelse</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="88"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="89"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="90"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="91"/>
         <source>Traduction en Turc</source>
         <translation>Tyrkisk oversættelse</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="90"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="92"/>
         <source>Traduction en hongrois</source>
         <translation>Ungarsk oversættelse</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="95"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="97"/>
         <source>Paquets Fedora et Red Hat</source>
         <translation>Fedora og Red Hat pakker</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="96"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="98"/>
         <source>Paquets Mageia</source>
         <translation>Mageia pakker</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="97"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="98"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="99"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="100"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="101"/>
         <source>Paquets Debian</source>
         <translation>Debian pakker</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="100"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="101"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="102"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="103"/>
         <source>Paquets Gentoo</source>
         <translation>Gentoo pakker</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="102"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="104"/>
         <source>Paquets OS/2</source>
         <translation>OS/2 pakker</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="103"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="105"/>
         <source>Paquets FreeBSD</source>
         <translation>FreeBSD pakker</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="104"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="106"/>
         <source>Paquets MAC OS X</source>
         <translation>MAC OS X pakker</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="105"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="107"/>
         <source>Paquets Archlinux AUR</source>
         <translation>Archlinux AUR pakker</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="106"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="108"/>
         <source>Icônes</source>
         <translation>Ikoner</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="108"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="109"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="110"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="111"/>
         <source>Documentation</source>
         <translation>Dokumentation</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="111"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="113"/>
         <source>Collection d&apos;éléments</source>
         <translation>Samling af symboler</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="112"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="114"/>
         <source>Python plugin qet-tb-generator</source>
         <translation>Python udvidelsesmodul qet-tb-generator</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="113"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="115"/>
         <source>Paquets Snap</source>
         <translation>Snap pakke</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="119"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="121"/>
         <source>Compilation : </source>
         <translation>Kompilering: </translation>
     </message>
@@ -3092,12 +3092,12 @@ Tekst og nummer inddata er også tilgængelig.</translation>
         <translation>Brug systemfarver</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="383"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="384"/>
         <source>Chemin de la collection utilisateur</source>
         <translation>Sti til brugertilpasset samling</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="397"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="398"/>
         <source>Chemin des cartouches utilisateur</source>
         <translation>Sti til brugertilpasset titelblok</translation>
     </message>
@@ -3107,7 +3107,7 @@ Tekst og nummer inddata er også tilgængelig.</translation>
         <translation>Sprog</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="369"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="370"/>
         <source>Chemin de la collection commune</source>
         <translation>Sti til fælles samling</translation>
     </message>
@@ -3462,16 +3462,21 @@ Her kan standardværdien angives for dette felt for de oprettede symboler:</tran
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="283"/>
+        <source>Norvege</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="284"/>
         <source>Belgique-Flemish</source>
         <translation>Belgisk-Flamsk</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="284"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="285"/>
         <source>Turc</source>
         <translation>Tyrkisk</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="285"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="286"/>
         <source>Hongrois</source>
         <translation>Ungarsk</translation>
     </message>
@@ -3550,7 +3555,7 @@ Her kan standardværdien angives for dette felt for de oprettede symboler:</tran
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="50"/>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="260"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="261"/>
         <source>Aucun</source>
         <translation>Ingen</translation>
     </message>
@@ -3645,43 +3650,43 @@ Her kan standardværdien angives for dette felt for de oprettede symboler:</tran
         <translation>Indhold</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="123"/>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="130"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="124"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="131"/>
         <source>Déplacer un tableau</source>
         <translation>Flyt tabel</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="136"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="137"/>
         <source>Modifier le nombre de ligne affiché par un tableau</source>
         <translation>Ændre antal tabel rækker</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="149"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="150"/>
         <source>Modifier les marges d&apos;une en tête de tableau</source>
         <translation>Ændre tabel overskrift margen</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="162"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="163"/>
         <source>Modifier les marges d&apos;un tableau</source>
         <translation>Ændre tabel margen</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="170"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="171"/>
         <source>Modifier l&apos;alignement d&apos;une en tête de tableau</source>
         <translation>Ændre tabel overskrift justering</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="178"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="179"/>
         <source>Modifier l&apos;alignement des textes d&apos;un tableau</source>
         <translation>Ændre tabel tekst justering</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="212"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="213"/>
         <source>Modifier la police d&apos;une en tête de tableau</source>
         <translation>Ændre tabel hoved skrifttype</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="234"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="235"/>
         <source>Changer la police d&apos;un tableau</source>
         <translation>Ændre tabel skrifttype</translation>
     </message>
@@ -4143,8 +4148,8 @@ Brug avanceret redigering til dette.</translation>
     <name>MarginsEditDialog</name>
     <message>
         <location filename="../sources/ui/marginseditdialog.ui" line="14"/>
-        <source>Dialog</source>
-        <translation>Dialog</translation>
+        <source>Editer les marges</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/marginseditdialog.ui" line="71"/>
@@ -4932,105 +4937,105 @@ Følgende variabler er ikke kompatible:
 <context>
     <name>ProjectView</name>
     <message>
-        <location filename="../sources/projectview.cpp" line="738"/>
+        <location filename="../sources/projectview.cpp" line="692"/>
         <source>Supprimer les éléments inutilisés dans le projet</source>
         <translation>Slet ikke brugt symbol i projekt</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="739"/>
+        <location filename="../sources/projectview.cpp" line="693"/>
         <source>Supprimer les catégories vides</source>
         <translation>Slet tom kategori</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="292"/>
+        <location filename="../sources/projectview.cpp" line="300"/>
         <source>Le projet à été modifié.
 Voulez-vous enregistrer les modifications ?</source>
         <translation>Projekt er ændret.
 Skal ændringer gemmes?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="313"/>
+        <location filename="../sources/projectview.cpp" line="321"/>
         <source>sansnom</source>
         <translation>IkkeNavngivet</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="314"/>
+        <location filename="../sources/projectview.cpp" line="322"/>
         <source>Projet QElectroTech (*.qet)</source>
         <comment>filetypes allowed when saving a project file</comment>
         <translation>Projekt QElectroTech (*.qet)</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="427"/>
+        <location filename="../sources/projectview.cpp" line="381"/>
         <source>Supprimer le folio ?</source>
         <comment>message box title</comment>
         <translation>Slet ark?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="428"/>
+        <location filename="../sources/projectview.cpp" line="382"/>
         <source>Êtes-vous sûr  de vouloir supprimer ce folio du projet ? Ce changement est irréversible.</source>
         <comment>message box content</comment>
         <translation>Skal ark slettes fra projekt?
 Sletningen kan ikke fortrydes.</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="730"/>
+        <location filename="../sources/projectview.cpp" line="684"/>
         <source>Projet en lecture seule</source>
         <comment>message box title</comment>
         <translation>Skrivebeskyttet projekt</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="731"/>
+        <location filename="../sources/projectview.cpp" line="685"/>
         <source>Ce projet est en lecture seule. Il n&apos;est donc pas possible de le nettoyer.</source>
         <comment>message box content</comment>
         <translation>Projekt er skrivebeskyttet og er derfor ikke muligt at rydde op i.</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="737"/>
+        <location filename="../sources/projectview.cpp" line="691"/>
         <source>Supprimer les modèles de cartouche inutilisés dans le projet</source>
         <translation>Slet ikke brugt titelblok skabelon i projekt</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="751"/>
+        <location filename="../sources/projectview.cpp" line="705"/>
         <source>Nettoyer le projet</source>
         <comment>window title</comment>
         <translation>Ryd op i projekt</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="784"/>
+        <location filename="../sources/projectview.cpp" line="739"/>
         <source>Ajouter un folio</source>
         <translation>Tilføj ark</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="798"/>
+        <location filename="../sources/projectview.cpp" line="753"/>
         <source>Ce projet ne contient aucun folio</source>
         <comment>label displayed when a project contains no diagram</comment>
         <translation>Projekt indeholder ingen ark</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="312"/>
+        <location filename="../sources/projectview.cpp" line="320"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation>Gem som</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="336"/>
+        <location filename="../sources/projectview.cpp" line="344"/>
         <source>aucun projet affiché</source>
         <comment>error message</comment>
         <translation>intet projekt vist</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="861"/>
+        <location filename="../sources/projectview.cpp" line="816"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Création des onglets de folio :&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Åbning af projekt...&lt;/b&gt;&lt;br/&gt;Oprettelse af ark faner:&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="902"/>
+        <location filename="../sources/projectview.cpp" line="855"/>
         <source>Projet</source>
         <comment>window title for a project-less ProjectView</comment>
         <translation>Projekt</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="638"/>
+        <location filename="../sources/projectview.cpp" line="592"/>
         <source>projet</source>
         <comment>string used to generate a filename</comment>
         <translation>projekt</translation>
@@ -5797,7 +5802,7 @@ Kommandovalg:
         <translation>Gruppe</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2262"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2296"/>
         <source>Error launching qet_tb_generator plugin</source>
         <translation>Fejl ved start qet_tb_generator udvidelsesmodul</translation>
     </message>
@@ -7299,7 +7304,7 @@ betingelser ikke gyldig</translation>
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1280"/>
+        <location filename="../sources/qetproject.cpp" line="1284"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
@@ -7307,7 +7312,7 @@ Que désirez vous faire ?</source>
 Hvad skal ske?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1279"/>
+        <location filename="../sources/qetproject.cpp" line="1283"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation>Advarsel</translation>
@@ -7349,17 +7354,17 @@ Hvad skal ske?</translation>
         <translation>Der opstod fejl under integration af skabelon.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1192"/>
+        <location filename="../sources/qetproject.cpp" line="1196"/>
         <source>Liste des Folios</source>
         <translation>Ark liste</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1342"/>
+        <location filename="../sources/qetproject.cpp" line="1346"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Création des folios&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Åbning af projekt...&lt;/b&gt;&lt;br/&gt;Oprettelse af ark:&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1389"/>
+        <location filename="../sources/qetproject.cpp" line="1393"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Mise en place des références croisées&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Åbning af igangværende projekt...&lt;/b&gt;&lt;br/&gt;Opsætning af referencekors&lt;/p&gt;</translation>
     </message>
@@ -7728,12 +7733,12 @@ Hvad skal ske?</translation>
         <translation>Eksportere til udklipsholder</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="344"/>
+        <location filename="../sources/qet.cpp" line="354"/>
         <source>Le fichier texte contenant la licence GNU/GPL est introuvable - bon bah de toute façon, vous la connaissez par coeur non ?</source>
         <translation>Tekst fil indeholdende GNU/GPL licens kunne ikke findes?</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="348"/>
+        <location filename="../sources/qet.cpp" line="358"/>
         <source>Le fichier texte contenant la licence GNU/GPL existe mais n&apos;a pas pu être ouvert - bon bah de toute façon, vous la connaissez par coeur non ?</source>
         <translation>Tekst fil indeholdende GNU/GPL licens kunne ikke findes?</translation>
     </message>
@@ -7754,7 +7759,7 @@ Hvad skal ske?</translation>
         <translation>en leder</translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/deleteqgraphicsitemcommand.cpp" line="77"/>
+        <location filename="../sources/undocommand/deleteqgraphicsitemcommand.cpp" line="87"/>
         <source>supprimer %1</source>
         <comment>undo caption - %1 is a sentence listing the removed content</comment>
         <translation>Slette %1</translation>
@@ -7922,7 +7927,7 @@ Hvad skal ske?</translation>
         <translation>Tekst</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="243"/>
+        <location filename="../sources/qet.cpp" line="245"/>
         <source>%n élément(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -7931,7 +7936,7 @@ Hvad skal ske?</translation>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="252"/>
+        <location filename="../sources/qet.cpp" line="254"/>
         <source>%n conducteur(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -7940,7 +7945,7 @@ Hvad skal ske?</translation>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="261"/>
+        <location filename="../sources/qet.cpp" line="263"/>
         <source>%n champ(s) de texte</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -7949,7 +7954,7 @@ Hvad skal ske?</translation>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="270"/>
+        <location filename="../sources/qet.cpp" line="272"/>
         <source>%n image(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -7958,7 +7963,7 @@ Hvad skal ske?</translation>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="279"/>
+        <location filename="../sources/qet.cpp" line="281"/>
         <source>%n forme(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -7967,7 +7972,7 @@ Hvad skal ske?</translation>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="288"/>
+        <location filename="../sources/qet.cpp" line="290"/>
         <source>%n texte(s) d&apos;élément</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -7975,77 +7980,86 @@ Hvad skal ske?</translation>
             <numerusform>%n symbol tekster</numerusform>
         </translation>
     </message>
+    <message numerus="yes">
+        <location filename="../sources/qet.cpp" line="298"/>
+        <source>%n tableau(s)</source>
+        <comment>part of a sentence listing the content of diagram</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
     <message>
-        <location filename="../sources/qet.cpp" line="554"/>
-        <location filename="../sources/qet.cpp" line="676"/>
+        <location filename="../sources/qet.cpp" line="564"/>
+        <location filename="../sources/qet.cpp" line="686"/>
         <location filename="../sources/qetxml.cpp" line="249"/>
         <source>Impossible d&apos;ouvrir le fichier %1 en écriture, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
         <translation>Kan ikke skrive til fil %1, fejl %2 opstået.</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="567"/>
+        <location filename="../sources/qet.cpp" line="577"/>
         <source>Une erreur est survenue lors de l&apos;écriture du fichier %1, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
         <translation>Der opstod en fejl under skrivning af fil %1, fejl %2 opstod.</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="640"/>
+        <location filename="../sources/qet.cpp" line="650"/>
         <source>Amener au premier plan</source>
         <translation>Flyt forrest</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="641"/>
+        <location filename="../sources/qet.cpp" line="651"/>
         <source>Rapprocher</source>
         <translation>Flyt fremad</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="642"/>
+        <location filename="../sources/qet.cpp" line="652"/>
         <source>Éloigner</source>
         <translation>Flyt bagud</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="643"/>
+        <location filename="../sources/qet.cpp" line="653"/>
         <source>Envoyer au fond</source>
         <translation>Flyt bagerst</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="645"/>
+        <location filename="../sources/qet.cpp" line="655"/>
         <source>Ramène la ou les sélections au premier plan</source>
         <translation>Flyt udvalgt(e) forrest</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="646"/>
+        <location filename="../sources/qet.cpp" line="656"/>
         <source>Rapproche la ou les sélections</source>
         <translation>Flyt udvalgt(e) fremad</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="647"/>
+        <location filename="../sources/qet.cpp" line="657"/>
         <source>Éloigne la ou les sélections</source>
         <translation>Flyt udvalgt(e) bagud</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="648"/>
+        <location filename="../sources/qet.cpp" line="658"/>
         <source>Envoie en arrière plan la ou les sélections</source>
         <translation>Flyt udvalgt(e) bagerst</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="650"/>
+        <location filename="../sources/qet.cpp" line="660"/>
         <source>Ctrl+Shift+Up</source>
         <translation>Ctrl+Skift+Op</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="651"/>
+        <location filename="../sources/qet.cpp" line="661"/>
         <source>Ctrl+Shift+Down</source>
         <translation>Ctrl+Skift+Ned</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="652"/>
+        <location filename="../sources/qet.cpp" line="662"/>
         <source>Ctrl+Shift+End</source>
         <translation>Ctrl+Skift+End</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="653"/>
+        <location filename="../sources/qet.cpp" line="663"/>
         <source>Ctrl+Shift+Home</source>
         <translation>Ctrl+Skift+Hjem</translation>
     </message>
@@ -8896,22 +8910,22 @@ Voulez-vous la remplacer ?</source>
         <translation>Oprette ledere</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2263"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2297"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</source>
         <translation>For at installere udvidelsesmodul qet_tb_generator&lt;br&gt;Besøg:&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Kræver python 3.5 eller over.&lt;br&gt;&lt;B&gt;&lt;U&gt;Første installering på Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Installere, hvis påkrævet, python 3.5 eller over&lt;br&gt;Besøg:&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip installere qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt;Opdatere på Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;brugeren kan i en terminal udføre dette skript i følgende mappe&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2299"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2333"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.8 bundle only, because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation>For at installere udvidelsesmodul qet_tb_generator&lt;br&gt;Besøg:&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Først installere på macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Installere, hvis påkrævet, kun python 3.8 bundle, fordi den bruger hård kodet PATH til lokalisering qet-tb-generator udvidelsesmodul&lt;br&gt; Besøg:&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;Guide&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Opdatere på macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2330"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2364"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit : &lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation>For at installere udvidelsesmodul qet_tb_generator&lt;br&gt;Besøg: &lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Kræver python 3.5 eller over.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt;Første installering på Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. kontrollere at pip3 er installeretd: pip3 --version&lt;br&gt;Hvis ikke, installere med: sudo apt-get install python3-pip&lt;br&gt;2. Installere programmet: sudo pip3 install qet_tb_generator&lt;br&gt;3. Kør programmet: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt;Opdatere på Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="41"/>
+        <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="43"/>
         <source>Ajouter une nomenclature</source>
         <translation>Tilføje en BOM</translation>
     </message>
@@ -8934,7 +8948,7 @@ Voulez-vous la remplacer ?</source>
 <context>
     <name>QetGraphicsTableItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="676"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="670"/>
         <source>Modifier la géometrie d&apos;un tableau</source>
         <translation>Ændre tabel geometri</translation>
     </message>
@@ -9619,86 +9633,86 @@ Opret tekst ved hjælp af følgende variabler:
         <translation>Aktualisere</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="146"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="147"/>
         <source>Correspondance :</source>
         <translatorcomment>Mangler en sigende oversættelse</translatorcomment>
         <translation>Korrespondance:</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="152"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="153"/>
         <source>Folios</source>
         <translation>Ark</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="158"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="159"/>
         <source>Champs texte</source>
         <translation>Tekstfelter</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="164"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="165"/>
         <source>Eléments</source>
         <translation>Symboler</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="169"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="170"/>
         <source>Eléments simple</source>
         <translation>Simple symboler</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="175"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="176"/>
         <source>Eléments maître</source>
         <translation>Overordnet symbol</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="181"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="182"/>
         <source>Eléments esclave</source>
         <translation>Underordnet symbol</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="187"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="188"/>
         <source>Eléments report de folio</source>
         <translation>Symboler ark rapport</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="193"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="194"/>
         <source>Eléments bornier</source>
         <translation>Terminal symboler</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="964"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="965"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="973"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="974"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="993"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1001"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1019"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1029"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1079"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1082"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1089"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1092"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1114"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1115"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="982"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="983"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1002"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1010"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1028"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1038"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1088"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1091"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1098"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1101"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1123"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1124"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1165"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1166"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1132"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1133"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1174"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1175"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1194"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1195"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1183"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1184"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1203"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1204"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1212"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1213"/>
         <source> [édité]</source>
         <translation> [redigeret]</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="201"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="202"/>
         <source>Conducteurs</source>
         <translation>Leder</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="336"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="337"/>
         <source>Inconnue</source>
         <translation>Ukendt</translation>
     </message>

@@ -4143,8 +4143,8 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <name>MarginsEditDialog</name>
     <message>
         <location filename="../sources/ui/marginseditdialog.ui" line="14"/>
-        <source>Dialog</source>
-        <translation>Dialog</translation>
+        <source>Editer les marges</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/marginseditdialog.ui" line="71"/>
@@ -4928,103 +4928,103 @@ Disse variablene kan IKKE brukes:
 <context>
     <name>ProjectView</name>
     <message>
-        <location filename="../sources/projectview.cpp" line="292"/>
+        <location filename="../sources/projectview.cpp" line="300"/>
         <source>Le projet à été modifié.
 Voulez-vous enregistrer les modifications ?</source>
         <translation>Prosjektet ble endret. Vil du lagre endringene?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="312"/>
+        <location filename="../sources/projectview.cpp" line="320"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation>Lagre som</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="313"/>
+        <location filename="../sources/projectview.cpp" line="321"/>
         <source>sansnom</source>
         <translation>Uten navn</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="314"/>
+        <location filename="../sources/projectview.cpp" line="322"/>
         <source>Projet QElectroTech (*.qet)</source>
         <comment>filetypes allowed when saving a project file</comment>
         <translation>QElectroTech-Prosjekt (*.qet)</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="336"/>
+        <location filename="../sources/projectview.cpp" line="344"/>
         <source>aucun projet affiché</source>
         <comment>error message</comment>
         <translation>Ingen prosjekt å vise</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="427"/>
+        <location filename="../sources/projectview.cpp" line="381"/>
         <source>Supprimer le folio ?</source>
         <comment>message box title</comment>
         <translation>Slett siden</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="428"/>
+        <location filename="../sources/projectview.cpp" line="382"/>
         <source>Êtes-vous sûr  de vouloir supprimer ce folio du projet ? Ce changement est irréversible.</source>
         <comment>message box content</comment>
         <translation>Er du sikker at du vil slette/fjerne siden fra prosjektet? Dette kan ikke reverseres.</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="638"/>
+        <location filename="../sources/projectview.cpp" line="592"/>
         <source>projet</source>
         <comment>string used to generate a filename</comment>
         <translation>Prosjekt</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="730"/>
+        <location filename="../sources/projectview.cpp" line="684"/>
         <source>Projet en lecture seule</source>
         <comment>message box title</comment>
         <translation>Prosjektet er skrivebeskyttet</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="731"/>
+        <location filename="../sources/projectview.cpp" line="685"/>
         <source>Ce projet est en lecture seule. Il n&apos;est donc pas possible de le nettoyer.</source>
         <comment>message box content</comment>
         <translation>Prosjektet er skrivebeskyttet, og kan derfor ikke renses.</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="737"/>
+        <location filename="../sources/projectview.cpp" line="691"/>
         <source>Supprimer les modèles de cartouche inutilisés dans le projet</source>
         <translation>Fjern alle ubrukte tegningsmaler fra prosjektet</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="738"/>
+        <location filename="../sources/projectview.cpp" line="692"/>
         <source>Supprimer les éléments inutilisés dans le projet</source>
         <translation>Fjern alle ubrukte komponenter fra prosjektet</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="739"/>
+        <location filename="../sources/projectview.cpp" line="693"/>
         <source>Supprimer les catégories vides</source>
         <translation>Slett alle tomme kategorier</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="751"/>
+        <location filename="../sources/projectview.cpp" line="705"/>
         <source>Nettoyer le projet</source>
         <comment>window title</comment>
         <translation>Rense prosjektet</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="784"/>
+        <location filename="../sources/projectview.cpp" line="739"/>
         <source>Ajouter un folio</source>
         <translation>Tilføy en ny side</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="798"/>
+        <location filename="../sources/projectview.cpp" line="753"/>
         <source>Ce projet ne contient aucun folio</source>
         <comment>label displayed when a project contains no diagram</comment>
         <translation>Prosjektet inneholder ingen sider</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="861"/>
+        <location filename="../sources/projectview.cpp" line="816"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Création des onglets de folio :&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Åpner prosjektet....&lt;/b&gt;&lt;br/&gt;Lager sidefliker: &lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="902"/>
+        <location filename="../sources/projectview.cpp" line="855"/>
         <source>Projet</source>
         <comment>window title for a project-less ProjectView</comment>
         <translation>Prosjekt</translation>
@@ -6325,7 +6325,7 @@ Tilgjengelige opsjoner:
         <translation>Fy faen, en feil</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2262"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2296"/>
         <source>Error launching qet_tb_generator plugin</source>
         <translation>Feil ved start av qet_tb_generator-plugin</translation>
     </message>
@@ -7317,18 +7317,18 @@ les conditions requises ne sont pas valides</source>
         <translation>Det oppstod en feil ved bruk av sidemalen</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1192"/>
+        <location filename="../sources/qetproject.cpp" line="1196"/>
         <source>Liste des Folios</source>
         <translation>Innholdsfortegnelse</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1279"/>
+        <location filename="../sources/qetproject.cpp" line="1283"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation>Advarsel</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1280"/>
+        <location filename="../sources/qetproject.cpp" line="1284"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
@@ -7336,12 +7336,12 @@ Que désirez vous faire ?</source>
 Hva vil du gjøre?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1342"/>
+        <location filename="../sources/qetproject.cpp" line="1346"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Création des folios&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Åpner prosjektet...&lt;/b&gt;&lt;br/&gt;Sidene lages&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1389"/>
+        <location filename="../sources/qetproject.cpp" line="1393"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Mise en place des références croisées&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Åpner prosjektet...&lt;/b&gt;&lt;br/&gt;Laster inn kryssreferansene&lt;/p&gt;</translation>
     </message>
@@ -8561,17 +8561,17 @@ Vil du erstatte den?</translation>
         <translation>[CTRL]+[SHIFT]+[HOME]</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2263"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2297"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</source>
         <translation>Installasjon av plugin qet_tb_generator&lt;br&gt;Se:&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Benötigt python 3.5 oder höher.&lt;br&gt;&lt;B&gt;&lt;U&gt; Erste Installation unter Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Python 3.5 oder höher installieren&lt;br&gt; Siehe:&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update under Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;Plug-in (Skript) flyttes i denne permen og kjøres så derifra:&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2299"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2333"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.8 bundle only, because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation>For å installere plugin qet_tb_generator&lt;br&gt;Se  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Første installasjon på macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Installer, om nødvendig, bare python 3.8 pakken, fordi programmet because programmet bruker hardcoded PATH for å finne qet-tb-generator plugin &lt;br&gt; Se :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Oppdatering på macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2330"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2364"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit : &lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation>Installasjon av plugin qet_tb_generator&lt;br&gt;Se: &lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Trenger Python 3.5 eller nyere.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Første installasjon under Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Sjekk, om pip3 allerede er installert: pip3 --version&lt;br&gt;Hvis ikke, installeres denne med: sudo apt-get install python3-pip&lt;br&gt;2. Installer plugin med: sudo pip3 install qet_tb_generator&lt;br&gt;3. Kjør plugin med: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update under Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
@@ -8925,7 +8925,7 @@ Vil du erstatte den?</translation>
 <context>
     <name>QetGraphicsTableItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="662"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="670"/>
         <source>Modifier la géometrie d&apos;un tableau</source>
         <translation>Endre tabellenes dimensjon</translation>
     </message>
@@ -9610,85 +9610,85 @@ Disse variablene er tilgjengelig:
         <translation>Avansert</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="146"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="147"/>
         <source>Correspondance :</source>
         <translation>Funnet:</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="152"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="153"/>
         <source>Folios</source>
         <translation>Sider</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="158"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="159"/>
         <source>Champs texte</source>
         <translation>Tekstfelt</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="164"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="165"/>
         <source>Eléments</source>
         <translation>Komponenter</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="169"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="170"/>
         <source>Eléments simple</source>
         <translation>Enkle komponenter</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="175"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="176"/>
         <source>Eléments maître</source>
         <translation>Master-komponenter</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="181"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="182"/>
         <source>Eléments esclave</source>
         <translation>Slave-komponenter</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="187"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="188"/>
         <source>Eléments report de folio</source>
         <translation>Side-kryssreferanser</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="193"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="194"/>
         <source>Eléments bornier</source>
         <translation>Koblingspunkter/klemmer</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="201"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="202"/>
         <source>Conducteurs</source>
         <translation>Leder</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="336"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="337"/>
         <source>Inconnue</source>
         <translation>Ukjent</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="964"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="965"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="973"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="974"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="993"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1001"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1019"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1029"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1079"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1082"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1089"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1092"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1114"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1115"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="982"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="983"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1002"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1010"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1028"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1038"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1088"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1091"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1098"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1101"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1123"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1124"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1165"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1166"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1132"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1133"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1174"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1175"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1194"/>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1195"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1183"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1184"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1203"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1204"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1212"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1213"/>
         <source> [édité]</source>
         <translation>[endret]</translation>
     </message>
