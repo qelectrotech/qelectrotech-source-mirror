@@ -23,6 +23,7 @@
 #include "elementprovider.h"
 #include "diagramposition.h"
 #include "terminal.h"
+#include "terminaldata.h"
 #include "PropertiesEditor/propertieseditordialog.h"
 #include "elementpropertieswidget.h"
 #include "numerotationcontextcommands.h"
@@ -560,36 +561,22 @@ DynamicElementTextItem *Element::parseDynamicText(const QDomElement &dom_element
 	return deti;
 }
 
+/*!
+ * \brief Element::parseTerminal
+ * Parse partTerminal from xml structure
+ * \param dom_element
+ * \return
+ */
 Terminal *Element::parseTerminal(const QDomElement &dom_element)
 {
-	qreal terminalx, terminaly;
-	Qet::Orientation terminalo;
-	if (!QET::attributeIsAReal(dom_element, QString("x"), &terminalx)) {
-		return(nullptr);
-	}
-	if (!QET::attributeIsAReal(dom_element, QString("y"), &terminaly)) {
-		return(nullptr);
-	}
-	if (!dom_element.hasAttribute("orientation")) {
-		return(nullptr);
-	}
-	if (dom_element.attribute("orientation") == "n") {
-		terminalo = Qet::North;
-	}
-	else if (dom_element.attribute("orientation") == "s") {
-		terminalo = Qet::South;
-	}
-	else if (dom_element.attribute("orientation") == "e") {
-		terminalo = Qet::East;
-	}
-	else if (dom_element.attribute("orientation") == "w") {
-		terminalo = Qet::West;
-	}
-	else {
-		return(nullptr);
-	}
+
+    TerminalData* data = new TerminalData();
+    if (!data->fromXml(dom_element)) {
+        delete data;
+        return nullptr;
+    }
 	
-	Terminal *new_terminal = new Terminal(terminalx, terminaly, terminalo, this);
+    Terminal *new_terminal = new Terminal(data, this);
 	m_terminals << new_terminal;
 	
 		//Sort from top to bottom and left to rigth

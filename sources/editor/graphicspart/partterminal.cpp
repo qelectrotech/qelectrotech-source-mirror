@@ -25,9 +25,11 @@
 	@param scene La scene sur laquelle figure cette borne
 */
 PartTerminal::PartTerminal(QETElementEditor *editor, QGraphicsItem *parent) :
-	CustomElementGraphicPart(editor, parent),
-	m_orientation(Qet::North)
+    CustomElementGraphicPart(editor, parent)
 {
+    d = new TerminalData(this);
+    d->m_orientation = Qet::North;
+    d->m_uuid = QUuid::createUuid(); // if part is loaded this uuid will be overwritten, but being sure that terminal has a uuid
 	updateSecondPoint();
 	setZValue(100000);
 }
@@ -41,15 +43,8 @@ PartTerminal::~PartTerminal() {
 	@param xml_elmt Element XML a lire
 */
 void PartTerminal::fromXml(const QDomElement &xml_elmt) {
-	// lit la position de la borne
-	qreal term_x = 0.0, term_y = 0.0;
-	QET::attributeIsAReal(xml_elmt, "x", &term_x);
-	QET::attributeIsAReal(xml_elmt, "y", &term_y);
-	setPos(QPointF(term_x, term_y));
-	
-	// lit l'orientation de la borne
-	m_orientation = Qet::orientationFromString(xml_elmt.attribute("orientation"));
-	
+    d->fromXml(xml_elmt);
+    setPos(d->m_pos);
 	updateSecondPoint();
 }
 
@@ -59,18 +54,7 @@ void PartTerminal::fromXml(const QDomElement &xml_elmt) {
 	@return un element XML decrivant la borne
 */
 const QDomElement PartTerminal::toXml(QDomDocument &xml_document) const {
-	QDomElement xml_element = xml_document.createElement("terminal");
-	
-	// ecrit la position de la borne
-	xml_element.setAttribute("x", QString("%1").arg(scenePos().x()));
-	xml_element.setAttribute("y", QString("%1").arg(scenePos().y()));
-	
-	
-	// ecrit l'orientation de la borne
-	xml_element.setAttribute("orientation", Qet::orientationToString(m_orientation));
-	// Write name and number to XML
-	
-	return(xml_element);
+    return d->toXml(xml_document);
 }
 
 /**
@@ -95,7 +79,7 @@ void PartTerminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, Q
 	// dessin de la borne en rouge
 	t.setColor(isSelected() ? Terminal::neutralColor : Qt::red);
 	p -> setPen(t);
-	p -> drawLine(QPointF(0.0, 0.0), second_point);
+    p -> drawLine(QPointF(0.0, 0.0), d->second_point);
 	
 	// dessin du point d'amarrage au conducteur en bleu
 	t.setColor(isSelected() ? Qt::red : Terminal::neutralColor);
@@ -115,7 +99,7 @@ void PartTerminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, Q
 QPainterPath PartTerminal::shape() const
 {
 	QPainterPath shape;
-	shape.lineTo(second_point);
+    shape.lineTo(d->second_point);
 
 	QPainterPathStroker pps;
 	pps.setWidth(1);
@@ -129,7 +113,7 @@ QPainterPath PartTerminal::shape() const
  */
 QRectF PartTerminal::boundingRect() const
 {
-	QRectF br(QPointF(0, 0), second_point);
+    QRectF br(QPointF(0, 0), d->second_point);
 	br = br.normalized();
 
 	qreal adjust = (SHADOWS_HEIGHT + 1) / 2;
@@ -143,11 +127,18 @@ QRectF PartTerminal::boundingRect() const
 */
 void PartTerminal::setOrientation(Qet::Orientation ori)
 {
-	if (m_orientation == ori) return;
+    if (d->m_orientation == ori) return;
 	prepareGeometryChange();
-	m_orientation = ori;
+    d->m_orientation = ori;
 	updateSecondPoint();
 	emit orientationChanged();
+}
+
+void PartTerminal::setName(QString& name)
+{
+    if (d->m_name == name) return;
+    d->m_name = name;
+    emit nameChanged();
 }
 
 /**
@@ -156,11 +147,11 @@ void PartTerminal::setOrientation(Qet::Orientation ori)
 */
 void PartTerminal::updateSecondPoint() {
 	qreal ts = 4.0; // terminal size
-	switch(m_orientation) {
-		case Qet::North: second_point = QPointF(0.0,  ts); break;
-		case Qet::East : second_point = QPointF(-ts, 0.0); break;
-		case Qet::South: second_point = QPointF(0.0, -ts); break;
-		case Qet::West : second_point = QPointF(ts,  0.0); break;
+    switch(d->m_orientation) {
+        case Qet::North: d->second_point = QPointF(0.0,  ts); break;
+        case Qet::East : d->second_point = QPointF(-ts, 0.0); break;
+        case Qet::South: d->second_point = QPointF(0.0, -ts); break;
+        case Qet::West : d->second_point = QPointF(ts,  0.0); break;
 	}
 }
 
