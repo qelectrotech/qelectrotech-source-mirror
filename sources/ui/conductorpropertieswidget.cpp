@@ -82,6 +82,8 @@ void ConductorPropertiesWidget::setProperties(const ConductorProperties &propert
 	ui->m_text_le               -> setText    (m_properties.text);
 	ui->m_function_le           -> setText    (m_properties.m_function);
 	ui->m_tension_protocol_le   -> setText    (m_properties.m_tension_protocol);
+	ui->m_wire_color_le         -> setText    (m_properties.m_wire_color);
+	ui->m_wire_section_le       -> setText    (m_properties.m_wire_section);
 	ui->m_text_size_sb          -> setValue   (m_properties.text_size);
 	ui->m_cond_size_sb          -> setValue   (m_properties.cond_size);
 	ui->m_show_text_cb          -> setChecked (m_properties.m_show_text);
@@ -122,6 +124,8 @@ ConductorProperties ConductorPropertiesWidget::properties() const
 	properties_.text                    = ui -> m_text_le -> text();
 	properties_.m_function              = ui -> m_function_le->text();
 	properties_.m_tension_protocol      = ui -> m_tension_protocol_le->text();
+	properties_.m_wire_color            = ui -> m_wire_color_le->text();
+	properties_.m_wire_section          = ui -> m_wire_section_le->text();
 	properties_.text_size               = ui -> m_text_size_sb -> value();
 	properties_.cond_size               = ui -> m_cond_size_sb -> value();
 	properties_.m_show_text             = ui -> m_show_text_cb -> isChecked();

@@ -1150,6 +1150,10 @@ void DynamicElementTextItem::conductorPropertiesChanged()
 				setPlainText(m_watched_conductor? m_watched_conductor.data()->properties().m_function : "");
 			else if (m_info_name == "tension-protocol")
 				setPlainText(m_watched_conductor? m_watched_conductor.data()->properties().m_tension_protocol : "");
+			else if (m_info_name == "couleur-conducteur")
+				setPlainText(m_watched_conductor? m_watched_conductor.data()->properties().m_wire_color : "");
+			else if (m_info_name == "section-conducteur")
+				setPlainText(m_watched_conductor? m_watched_conductor.data()->properties().m_wire_section : "");
 		}
 		else if (m_text_from == CompositeText) {
 			setPlainText(reportReplacedCompositeText());
@@ -1184,6 +1188,10 @@ QString DynamicElementTextItem::reportReplacedCompositeText() const
 				string.replace("%{function}", m_watched_conductor.data()->properties().m_function);
 			if(string.contains("%{tension-protocol}"))
 				string.replace("%{tension-protocol}", m_watched_conductor.data()->properties().m_tension_protocol);
+			if(string.contains("%{}couleur-conducteur"))
+				string.replace("%{couleur-conducteur}", m_watched_conductor.data()->properties().m_wire_color);
+			if(string.contains("%{}section-conducteur"))
+				string.replace("%{section-conducteur}", m_watched_conductor.data()->properties().m_wire_section);
 		}
 	}
 	

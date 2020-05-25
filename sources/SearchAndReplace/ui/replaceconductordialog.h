@@ -51,6 +51,8 @@ class ReplaceConductorDialog : public QDialog
 		void on_m_erase_text_cb_clicked();
 		void on_m_erase_function_cb_clicked();
 		void on_m_erase_tension_protocol_cb_clicked();
+		void on_m_erase_m_wire_color_cb_clicked();
+		void on_m_erase_m_wire_section_cb_clicked();
 		void on_m_earth_cb_toggled(bool checked);
 		void on_m_neutral_cb_toggled(bool checked);
 		void on_m_update_preview_pb_clicked();

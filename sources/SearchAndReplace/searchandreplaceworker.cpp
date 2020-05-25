@@ -400,6 +400,8 @@ ConductorProperties SearchAndReplaceWorker::applyChange(const ConductorPropertie
 	new_properties.m_show_text = change.m_show_text;
 	new_properties.m_function = applyChange(new_properties.m_function, change.m_function);
 	new_properties.m_tension_protocol = applyChange(new_properties.m_tension_protocol, change.m_tension_protocol);
+	new_properties.m_wire_color = applyChange(new_properties.m_wire_color, change.m_wire_color);
+	new_properties.m_wire_section = applyChange(new_properties.m_wire_section, change.m_wire_section);
 	if(change.m_vertical_alignment == Qt::AlignLeft ||
 	   change.m_vertical_alignment == Qt::AlignRight) {new_properties.m_vertical_alignment = change.m_vertical_alignment;}
 	if(change.m_horizontal_alignment == Qt::AlignTop ||
@@ -501,6 +503,8 @@ ConductorProperties SearchAndReplaceWorker::replaceAdvanced(Conductor *conductor
 		else if (what == "text")             {properties.text.replace(rx, replace);}
 		else if (what == "function")         {properties.m_function.replace(rx, replace);}
 		else if (what == "tension/protocol") {properties.m_tension_protocol.replace(rx, replace);}
+		else if (what == "couleur-conducteur") {properties.m_wire_color.replace(rx, replace);}
+		else if (what == "section-conducteur") {properties.m_wire_section.replace(rx, replace);}
 	}
 	
 	return properties;

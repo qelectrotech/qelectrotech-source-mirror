@@ -793,6 +793,8 @@ QStringList SearchAndReplaceWidget::searchTerms(Conductor *conductor)
 	list.append(properties.text);
 	list.append(properties.m_function);
 	list.append(properties.m_tension_protocol);
+	list.append(properties.m_wire_color);
+	list.append(properties.m_wire_section);
 	
 	return list;
 }

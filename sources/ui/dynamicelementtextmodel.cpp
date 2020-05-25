@@ -1782,6 +1782,10 @@ QStringList DynamicTextItemDelegate::availableInfo(DynamicElementTextItem *deti)
 				qstrl << "function";
 			if(!cond->properties().m_tension_protocol.isEmpty())
 				qstrl << "tension-protocol";
+			if(!cond->properties().m_wire_color.isEmpty())
+				qstrl << "couleur-conducteur";
+			if(!cond->properties().m_wire_section.isEmpty())
+				qstrl << "section-conducteur";
 		}
 		 
 		 return qstrl;

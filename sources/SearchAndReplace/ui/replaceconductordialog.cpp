@@ -83,6 +83,8 @@ void ReplaceConductorDialog::setProperties(const ConductorProperties &properties
 	sarw::setupLineEdit(ui->m_text_le, ui->m_erase_text_cb, m_properties.text);
 	sarw::setupLineEdit(ui->m_function_le, ui->m_erase_function_cb, m_properties.m_function);
 	sarw::setupLineEdit(ui->m_tension_protocol_le, ui->m_erase_tension_protocol_cb, m_properties.m_tension_protocol);
+	sarw::setupLineEdit(ui->m_wire_color_le, ui->m_erase_wire_color_cb, m_properties.m_wire_color);
+	sarw::setupLineEdit(ui->m_wire_section_le,ui->m_erase_wire_section_cb,m_properties.m_wire_section);
 	switch (m_properties.m_vertical_alignment) {
 		case Qt::AlignLeft: ui->m_vertical_align_cb->setCurrentIndex(1);break;
 		case Qt::AlignRight: ui->m_vertical_align_cb->setCurrentIndex(2);break;
@@ -140,6 +142,8 @@ ConductorProperties ReplaceConductorDialog::properties() const
 	properties_.m_show_text = ui->m_show_text->isChecked();
 	properties_.m_function = ui->m_function_le->text();
 	properties_.m_tension_protocol = ui->m_tension_protocol_le->text();
+	properties_.m_wire_color =ui->m_wire_color_le->text();
+	properties_.m_wire_section =ui->m_wire_section_le->text();
 	switch (ui->m_vertical_align_cb->currentIndex()) {
 		case 0: properties_.m_vertical_alignment = Qt::AlignAbsolute; break;
 		case 1: properties_.m_vertical_alignment = Qt::AlignLeft;     break;
@@ -225,6 +229,18 @@ void ReplaceConductorDialog::on_m_erase_tension_protocol_cb_clicked()
 {
 	ui->m_tension_protocol_le->setText(ui->m_erase_tension_protocol_cb->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
 	ui->m_tension_protocol_le->setDisabled(ui->m_erase_tension_protocol_cb->isChecked());
+}
+
+void ReplaceConductorDialog::on_m_erase_m_wire_color_cb_clicked()
+{
+	ui->m_wire_color_le->setText(ui->m_erase_wire_color_cb->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
+	ui->m_wire_color_le->setDisabled(ui->m_erase_wire_color_cb->isChecked());
+}
+
+void ReplaceConductorDialog::on_m_erase_m_wire_section_cb_clicked()
+{
+	ui->m_wire_section_le->setText(ui->m_erase_wire_section_cb->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
+	ui->m_wire_section_le->setDisabled(ui->m_erase_wire_section_cb->isChecked());
 }
 
 void ReplaceConductorDialog::on_m_earth_cb_toggled(bool checked)

@@ -85,6 +85,8 @@ class ConductorProperties
 		QString text,
 				m_function,
 				m_tension_protocol,
+				m_wire_color,
+				m_wire_section,
 				m_formula;
 		
 		int text_size,

@@ -1478,6 +1478,8 @@ void Conductor::setPropertyToPotential(const ConductorProperties &property, bool
 			other_properties.text = m_properties.text;
 			other_properties.m_function = m_properties.m_function;
 			other_properties.m_tension_protocol = m_properties.m_tension_protocol;
+			other_properties.m_wire_color = m_properties.m_wire_color;
+			other_properties.m_wire_section = m_properties.m_wire_section;
 			other_conductor->setProperties(other_properties);
 		}
 		else

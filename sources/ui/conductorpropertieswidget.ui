@@ -17,7 +17,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="type">
       <attribute name="title">
@@ -37,11 +37,38 @@
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
-           <layout class="QGridLayout" name="gridLayout_3" rowstretch="0,0,0,0,0,0,0">
+           <layout class="QGridLayout" name="gridLayout_3" rowstretch="0,0,0,0,0,0,0,0,0">
+            <item row="3" column="0">
+             <widget class="QLabel" name="m_autonum_label">
+              <property name="text">
+               <string>Autonumérotation</string>
+              </property>
+             </widget>
+            </item>
             <item row="0" column="0">
              <widget class="QLabel" name="label_2">
               <property name="text">
                <string>Taille du texte :</string>
+              </property>
+             </widget>
+            </item>
+            <item row="7" column="0">
+             <widget class="QLabel" name="label_4">
+              <property name="text">
+               <string>Couleur du conducteur</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="1">
+             <widget class="QComboBox" name="m_available_autonum_cb"/>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLineEdit" name="m_formula_le"/>
+            </item>
+            <item row="5" column="0">
+             <widget class="QLabel" name="label_8">
+              <property name="text">
+               <string>Fonction :</string>
               </property>
              </widget>
             </item>
@@ -52,10 +79,41 @@
               </property>
              </widget>
             </item>
+            <item row="2" column="1">
+             <widget class="QLineEdit" name="m_text_le">
+              <property name="toolTip">
+               <string>Texte</string>
+              </property>
+              <property name="clearButtonEnabled">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
             <item row="6" column="1">
              <widget class="QLineEdit" name="m_tension_protocol_le">
               <property name="clearButtonEnabled">
                <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="0">
+             <widget class="QLabel" name="label_9">
+              <property name="text">
+               <string>Tension / Protocole :</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="label">
+              <property name="text">
+               <string>Texte :</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_11">
+              <property name="text">
+               <string>Formule du texte :</string>
               </property>
              </widget>
             </item>
@@ -104,57 +162,6 @@
               </property>
              </widget>
             </item>
-            <item row="1" column="1">
-             <widget class="QLineEdit" name="m_formula_le"/>
-            </item>
-            <item row="2" column="1">
-             <widget class="QLineEdit" name="m_text_le">
-              <property name="toolTip">
-               <string>Texte</string>
-              </property>
-              <property name="clearButtonEnabled">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QLabel" name="label">
-              <property name="text">
-               <string>Texte :</string>
-              </property>
-             </widget>
-            </item>
-            <item row="5" column="0">
-             <widget class="QLabel" name="label_8">
-              <property name="text">
-               <string>Fonction :</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="label_11">
-              <property name="text">
-               <string>Formule du texte :</string>
-              </property>
-             </widget>
-            </item>
-            <item row="6" column="0">
-             <widget class="QLabel" name="label_9">
-              <property name="text">
-               <string>Tension / Protocole :</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="0">
-             <widget class="QLabel" name="m_autonum_label">
-              <property name="text">
-               <string>Autonumérotation</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="1">
-             <widget class="QComboBox" name="m_available_autonum_cb"/>
-            </item>
             <item row="3" column="2">
              <widget class="QPushButton" name="m_edit_autonum_pb">
               <property name="toolTip">
@@ -168,6 +175,19 @@
                 <normaloff>:/ico/16x16/configure.png</normaloff>:/ico/16x16/configure.png</iconset>
               </property>
              </widget>
+            </item>
+            <item row="8" column="0">
+             <widget class="QLabel" name="label_5">
+              <property name="text">
+               <string>Section du conducteur</string>
+              </property>
+             </widget>
+            </item>
+            <item row="7" column="1">
+             <widget class="QLineEdit" name="m_wire_color_le"/>
+            </item>
+            <item row="8" column="1">
+             <widget class="QLineEdit" name="m_wire_section_le"/>
             </item>
            </layout>
           </item>

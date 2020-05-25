@@ -205,6 +205,8 @@ void LinkElementCommand::redo()
 			str_txt   << c->properties().text;
 			str_funct << c->properties().m_function;
 			str_tens  << c->properties().m_tension_protocol;
+			str_tens  << c->properties().m_wire_color;
+			str_tens  << c->properties().m_wire_section;
 		}
 
 			//check text list, isn't same in potential, ask user what to do

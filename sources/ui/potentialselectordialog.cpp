@@ -191,6 +191,10 @@ ConductorProperties PotentialSelectorDialog::chosenProperties(QList<ConductorPro
 			text.append(tr("\nFonction : %1").arg(cp.m_function));
 		if(!cp.m_tension_protocol.isEmpty())
 			text.append(tr("\nTension/protocole : %1").arg(cp.m_tension_protocol));
+		if(!cp.m_wire_color.isEmpty())
+			text.append(tr("\nCouleur du conducteur : %1").arg(cp.m_wire_color));
+		if(!cp.m_wire_section.isEmpty())
+			text.append(tr("\nSection du conducteur : %1").arg(cp.m_wire_section));
 		
 		QRadioButton *b = new QRadioButton(text, &dialog);
 		layout.addWidget(b);
@@ -272,6 +276,10 @@ void PotentialSelectorDialog::buildWidget()
 		text1.append(tr("\nFonction : %1").arg(cp1.m_function));
 	if(!cp1.m_tension_protocol.isEmpty())
 		text1.append(tr("\nTension/protocole : %1").arg(cp1.m_tension_protocol));
+	if(!cp1.m_wire_color.isEmpty())
+		text1.append(tr("\nCouleur du conducteur : %1").arg(cp1.m_wire_color));
+	if(!cp1.m_wire_section.isEmpty())
+		text1.append(tr("\nSection du conducteur : %1").arg(cp1.m_wire_section));
 			
 	QString text2(tr("%n conducteurs composent le potentiel suivant :", "", m_potential_selector->m_conductor_number_2));
 	ConductorProperties cp2;
@@ -284,6 +292,10 @@ void PotentialSelectorDialog::buildWidget()
 		text2.append(tr("\nFonction : %1").arg(cp2.m_function));
 	if(!cp2.m_tension_protocol.isEmpty())
 		text2.append(tr("\nTension/protocole : %1").arg(cp2.m_tension_protocol));
+	if(!cp2.m_wire_color.isEmpty())
+		text2.append(tr("\nCouleur du conducteur : %1").arg(cp2.m_wire_color));
+	if(!cp2.m_wire_section.isEmpty())
+		text2.append(tr("\nSection du conducteur : %1").arg(cp2.m_wire_section));
 			
 	QRadioButton *rb1 = new QRadioButton(text1, this);
 	QRadioButton *rb2 = new QRadioButton(text2, this);

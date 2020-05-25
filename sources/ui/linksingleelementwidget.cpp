@@ -279,6 +279,12 @@ void LinkSingleElementWidget::buildTree()
 				str_list << cp.m_tension_protocol;
 				if (!str_list.last().isEmpty())
 					search_list << str_list.last();
+				str_list << cp.m_wire_color;
+				if (!str_list.last().isEmpty())
+					search_list << str_list.last();
+				str_list << cp.m_wire_section;
+				if (!str_list.last().isEmpty())
+					search_list << str_list.last();
 			}
 			else
 				str_list << "" << "" << "";
@@ -421,11 +427,11 @@ void LinkSingleElementWidget::setUpHeaderLabels()
 	{
 		if (settings.value("genericpanel/folio", false).toBool())
 		{
-			list << tr("N° de fil") << tr("Fonction") << tr("Tension / Protocole") << tr("Label de folio") << tr("Position") << tr("Titre de folio");
+			list << tr("N° de fil") << tr("Fonction") << tr("Tension / Protocole") << tr("Couleur du conducteur")  << tr("Section du conducteur") << tr("Label de folio") << tr("Position") << tr("Titre de folio");
 		}
 		else
 		{
-			list << tr("N° de fil") << tr("Fonction") << tr("Tension / Protocole") << tr("N° de folio") << tr("Position") << tr("Titre de folio");
+			list << tr("N° de fil") << tr("Fonction") << tr("Tension / Protocole") << tr("Couleur du conducteur")  << tr("Section du conducteur") << tr("N° de folio") << tr("Position") << tr("Titre de folio");
 		}
 	}
 	
