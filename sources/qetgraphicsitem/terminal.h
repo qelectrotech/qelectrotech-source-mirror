@@ -23,9 +23,12 @@
 class Conductor;
 class Diagram;
 class Element;
+class TerminalData;
+
 /**
 	This class represents a terminal of an electrical element, i.e. a possible
 	plug point for conductors.
+    This class handles all mouse events for connecting conductors
 */
 class Terminal : public QGraphicsObject
 {
@@ -39,6 +42,7 @@ class Terminal : public QGraphicsObject
 	public:
 		Terminal(QPointF,      Qet::Orientation, Element * = nullptr);
 		Terminal(qreal, qreal, Qet::Orientation, Element * = nullptr);
+        Terminal(TerminalData* data, Element *e = nullptr);
 		Terminal(QPointF,      Qet::Orientation, QString number, QString name, bool hiddenName, Element * = nullptr);
 		~Terminal() override;
 	
@@ -110,14 +114,13 @@ class Terminal : public QGraphicsObject
 		QGraphicsLineItem *m_help_line;
 		QGraphicsLineItem *m_help_line_a;
 
+
+    TerminalData* d;
+
 	/// Parent electrical element
 	Element *parent_element_;
-	/// docking point for conductors
-	QPointF dock_conductor_;
 	/// docking point for parent element
 	QPointF dock_elmt_;
-	/// terminal orientation
-	Qet::Orientation ori_;
 	/// List of conductors attached to the terminal
 	QList<Conductor *> conductors_;
 	/// Pointer to a rectangle representing the terminal bounding rect;
@@ -135,9 +138,14 @@ class Terminal : public QGraphicsObject
 	/// Name of Terminal
 	QString name_terminal_;
 	bool name_terminal_hidden;
+
+    /// Unique identifier of the terminal
+    /// This uuid is different to the uuid of the part terminal it represents
+    QUuid m_uuid;
 	
 	private:
-	void init(QPointF, Qet::Orientation, QString number, QString name, bool hiddenName);
+    void init(QString number, QString name, bool hiddenName);
+    void init(QPointF pf, Qet::Orientation o, QString number, QString name, bool hiddenName);
 };
 
 /**
@@ -145,14 +153,6 @@ class Terminal : public QGraphicsObject
 */
 inline int Terminal::conductorsCount() const {
 	return(conductors_.size());
-}
-
-/**
-	@return the position, relative to the scene, of the docking point for
-	conductors.
-*/
-inline QPointF Terminal::dockConductor() const {
-	return(mapToScene(dock_conductor_));
 }
 
 /**
