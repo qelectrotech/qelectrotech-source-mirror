@@ -1047,7 +1047,7 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 	foreach(Terminal *t, terminals()) {
 		// alors on enregistre la borne
 		QDomElement terminal = t -> toXml(document);
-		terminal.setAttribute("id", id_terminal);
+        terminal.setAttribute("id", id_terminal); // for backward compatibility
 		table_adr_id.insert(t, id_terminal ++);
 		xml_terminals.appendChild(terminal);
 	}
