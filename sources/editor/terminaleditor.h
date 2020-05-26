@@ -31,21 +31,27 @@ class TerminalEditor : public ElementItemEditor {
 	Q_OBJECT
 	// Constructors, destructor
 	public:
-	TerminalEditor(QETElementEditor *, PartTerminal * = nullptr, QWidget * = nullptr);
+    TerminalEditor(QETElementEditor *, QList<PartTerminal *>& terms, QWidget * = nullptr);
+    TerminalEditor(QETElementEditor *, QWidget * = nullptr);
+
 	~TerminalEditor() override;
 	private:
 	TerminalEditor(const TerminalEditor &);
+
+    void init();
 	
 	// attributes
 	private:
-		PartTerminal *part;
+        QList<PartTerminal *> m_terminals;
+        PartTerminal *m_part{nullptr};
 		QDoubleSpinBox *qle_x, *qle_y;
 		QComboBox *orientation;
-		bool m_locked;
+        bool m_locked{false};
 	
 	// methods
 	public:
-	bool setPart(CustomElementPart *) override;
+    bool setPart(CustomElementPart *) override;
+    bool setTerminals(QList<PartTerminal*> terminals);
 	CustomElementPart *currentPart() const override;
 	
 	public slots:
