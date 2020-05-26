@@ -121,10 +121,10 @@ Terminal::Terminal(QPointF pf, Qet::Orientation o, Element *e) :
 */
 Terminal::Terminal(qreal pf_x, qreal pf_y, Qet::Orientation o, Element *e) :
 	QGraphicsObject(e),
-    d(new TerminalData(this)),
 	m_draw_help_line (false),
 	m_help_line      (nullptr),
 	m_help_line_a    (nullptr),
+    d(new TerminalData(this)),
 	parent_element_  (e),
 	hovered_color_   (Terminal::neutralColor)
 {
@@ -143,10 +143,10 @@ Terminal::Terminal(qreal pf_x, qreal pf_y, Qet::Orientation o, Element *e) :
 */
 Terminal::Terminal(QPointF pf, Qet::Orientation o, QString num, QString name, bool hiddenName, Element *e) :
 	QGraphicsObject    (e),
-    d(new TerminalData(this)),
 	m_draw_help_line (false),
 	m_help_line      (nullptr),
 	m_help_line_a    (nullptr),
+    d(new TerminalData(this)),
 	parent_element_  (e),
 	hovered_color_   (Terminal::neutralColor)
 {
@@ -155,8 +155,12 @@ Terminal::Terminal(QPointF pf, Qet::Orientation o, QString num, QString name, bo
 
 Terminal::Terminal(TerminalData* data, Element* e) :
     QGraphicsObject(e),
+    m_draw_help_line (false),
+    m_help_line      (nullptr),
+    m_help_line_a    (nullptr),
     d(data),
-    parent_element_(e)
+    parent_element_(e),
+    hovered_color_   (Terminal::neutralColor)
 {
     // TODO: what is when multiple parents exist. So the other relation is lost.
     d->setParent(this);
