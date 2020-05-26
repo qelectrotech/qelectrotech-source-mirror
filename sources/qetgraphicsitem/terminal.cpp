@@ -155,7 +155,8 @@ Terminal::Terminal(QPointF pf, Qet::Orientation o, QString num, QString name, bo
 
 Terminal::Terminal(TerminalData* data, Element* e) :
     QGraphicsObject(e),
-    d(data)
+    d(data),
+    parent_element_(e)
 {
     // TODO: what is when multiple parents exist. So the other relation is lost.
     d->setParent(this);
