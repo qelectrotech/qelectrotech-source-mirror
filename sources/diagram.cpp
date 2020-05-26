@@ -883,12 +883,12 @@ Terminal* findTerminal(int conductor_index, QDomElement& f, QHash<int, Terminal 
         // element1 did not exist in the conductor part of the xml until prior 0.7
         // It is used as an indicator that uuid's are used to identify terminals
         bool element_found = false;
-        foreach (auto element, added_elements) {
+        for (auto element: added_elements) {
             if (element->uuid() != element_uuid)
                 continue;
             element_found = true;
             QUuid terminal_uuid = QUuid(f.attribute(terminal_index));
-            foreach (auto terminal, element->terminals()) {
+            for (auto terminal: element->terminals()) {
                 if (terminal->uuid() != terminal_uuid)
                     continue;
 
