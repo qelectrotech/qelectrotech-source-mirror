@@ -579,13 +579,27 @@ bool Conductor::valideXml(QDomElement &e){
 	if (!e.hasAttribute("terminal2")) return(false);
 	
 	bool conv_ok;
-	// parse l'abscisse
-	e.attribute("terminal1").toInt(&conv_ok);
-	if (!conv_ok) return(false);
+    // parse l'abscisse
+    if (e.hasAttribute("element1")) {
+        if (QUuid(e.attribute("element1")).isNull())
+            return false;
+        if (QUuid(e.attribute("terminal1")).isNull())
+            return false;
+    } else {
+        e.attribute("terminal1").toInt(&conv_ok);
+        if (!conv_ok) return(false);
+    }
 	
 	// parse l'ordonnee
-	e.attribute("terminal2").toInt(&conv_ok);
-	if (!conv_ok) return(false);
+    if (e.hasAttribute("element2")) {
+        if (QUuid(e.attribute("element2")).isNull())
+            return false;
+        if (QUuid(e.attribute("terminal2")).isNull())
+            return false;
+    } else {
+        e.attribute("terminal2").toInt(&conv_ok);
+        if (!conv_ok) return(false);
+    }
 	return(true);
 }
 
@@ -994,8 +1008,23 @@ QDomElement Conductor::toXml(QDomDocument &dom_document, QHash<Terminal *, int> 
 
 	dom_element.setAttribute("x", QString::number(pos().x()));
 	dom_element.setAttribute("y", QString::number(pos().y()));
-	dom_element.setAttribute("terminal1", table_adr_id.value(terminal1));
-	dom_element.setAttribute("terminal2", table_adr_id.value(terminal2));
+
+    // Terminal is uniquely identified by the uuid of the terminal and the element
+    if (terminal1->uuid().isNull()) {
+        // legacy method to identify the terminal
+        dom_element.setAttribute("terminal1", table_adr_id.value(terminal1)); // for backward compability
+    } else {
+        dom_element.setAttribute("element1", terminal1->parentElement()->uuid().toString());
+        dom_element.setAttribute("terminal1", terminal1->uuid().toString());
+    }
+
+    if (terminal2->uuid().isNull()) {
+        // legacy method to identify the terminal
+        dom_element.setAttribute("terminal2", table_adr_id.value(terminal2)); // for backward compability
+    } else {
+        dom_element.setAttribute("element2", terminal2->parentElement()->uuid().toString());
+        dom_element.setAttribute("terminal2", terminal2->uuid().toString());
+    }
 	dom_element.setAttribute("freezeLabel", m_freeze_label? "true" : "false");
 	
 	// on n'exporte les segments du conducteur que si ceux-ci ont
@@ -1031,7 +1060,8 @@ QDomElement Conductor::toXml(QDomDocument &dom_document, QHash<Terminal *, int> 
 
 /**
  * @brief Conductor::pathFromXml
- * Generate the path from xml file
+ * Generate the path (of the line) from xml file by checking the segments in the xml
+ * file
  * @param e
  * @return true if generate path success else return false
  */
