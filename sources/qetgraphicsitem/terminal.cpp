@@ -43,7 +43,6 @@ const qreal Terminal::Z = 1000;
 void Terminal::init(QString number, QString name, bool hiddenName) {
 
     hovered_color_  = Terminal::neutralColor;
-    m_uuid = QUuid::createUuid();
 	
 	// calcul de la position du point d'amarrage a l'element
     dock_elmt_ = d->m_pos;
@@ -709,13 +708,12 @@ QList<Conductor *> Terminal::conductors() const {
 */
 QDomElement Terminal::toXml(QDomDocument &doc) const {
 	QDomElement qdo = doc.createElement("terminal");
-	qdo.setAttribute("x", QString("%1").arg(dock_elmt_.x()));
-	qdo.setAttribute("y",  QString("%1").arg(dock_elmt_.y()));
+    qdo.setAttribute("x", QString("%1").arg(dock_elmt_.x())); // for backward compatibility
+    qdo.setAttribute("y",  QString("%1").arg(dock_elmt_.y()));// for backward compatibility
     qdo.setAttribute("orientation", d->m_orientation);
 	qdo.setAttribute("number", number_terminal_);
 	qdo.setAttribute("name", name_terminal_);
 	qdo.setAttribute("nameHidden", name_terminal_hidden);
-    qdo.setAttribute("uuid", m_uuid.toString());
 	return(qdo);
 }
 
@@ -764,9 +762,6 @@ bool Terminal::fromXml(QDomElement &terminal) {
 	number_terminal_ = terminal.attribute("number");
 	name_terminal_ = terminal.attribute("name");
 	name_terminal_hidden = terminal.attribute("nameHidden").toInt();
-    QString uuid = terminal.attribute("uuid");
-    if (!uuid.isEmpty())
-        m_uuid = uuid;
 
 	return (
 		qFuzzyCompare(terminal.attribute("x").toDouble(), dock_elmt_.x()) &&
@@ -795,6 +790,10 @@ Diagram *Terminal::diagram() const {
 */
 Element *Terminal::parentElement() const {
 	return(parent_element_);
+}
+
+QUuid Terminal::uuid() const {
+    return d->m_uuid;
 }
 
 /**
