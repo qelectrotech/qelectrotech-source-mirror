@@ -64,10 +64,8 @@ void QetGraphicsTableFactory::createAndAddNomenclature(Diagram *diagram)
 			{
 					//Add a new diagram after the current one
 				actual_diagram = project_->addNewDiagram(project_->folioIndex(actual_diagram)+1);
-				table_ = newTable(actual_diagram, d.data());
+				table_ = newTable(actual_diagram, d.data(), previous_table);
 				table_->setTableName(d->tableName() + QString(" %1").arg(table_number));
-					//Set the previous folio of table
-				table_->setPreviousTable(previous_table);
 					//Adjust table
 				if (d->adjustTableToFolio()) {
 					AdjustTableToFolio(table_);
@@ -81,27 +79,48 @@ void QetGraphicsTableFactory::createAndAddNomenclature(Diagram *diagram)
 	}
 }
 
-QetGraphicsTableItem *QetGraphicsTableFactory::newTable(Diagram *diagram, AddTableDialog *dialog)
+/**
+ * @brief QetGraphicsTableFactory::newTable
+ * Create a new table .
+ * @param diagram : Diagram where we must add the new table.
+ * @param dialog : dialog conf, it's used to setup the model.
+ * @param previous_table : If you know that the new table will have a previous table and you already now the previous table,
+ * set it now they will improve time needed for creating the new table by avoiding to create a new model.
+ * @return the new table
+ */
+QetGraphicsTableItem *QetGraphicsTableFactory::newTable(Diagram *diagram, AddTableDialog *dialog, QetGraphicsTableItem *previous_table)
 {
-	auto model = new NomenclatureModel(diagram->project(), diagram->project());
-	model->query(dialog->queryStr());
-	model->autoHeaders();
-	model->setData(model->index(0,0), int(dialog->tableAlignment()), Qt::TextAlignmentRole);
-	model->setData(model->index(0,0), dialog->tableFont(), Qt::FontRole);
-	model->setData(model->index(0,0), QETUtils::marginsToString(dialog->headerMargins()), Qt::UserRole+1);
-	model->setHeaderData(0, Qt::Horizontal, int(dialog->headerAlignment()), Qt::TextAlignmentRole);
-	model->setHeaderData(0, Qt::Horizontal, dialog->headerFont(), Qt::FontRole);
-	model->setHeaderData(0, Qt::Horizontal, QETUtils::marginsToString(dialog->headerMargins()), Qt::UserRole+1);
-
 	auto table = new QetGraphicsTableItem();
 	table->setTableName(dialog->tableName());
-	table->setModel(model);
+
+	if (!previous_table)
+	{
+		auto model = new NomenclatureModel(diagram->project(), diagram->project());
+		model->query(dialog->queryStr());
+		model->autoHeaders();
+		model->setData(model->index(0,0), int(dialog->tableAlignment()), Qt::TextAlignmentRole);
+		model->setData(model->index(0,0), dialog->tableFont(), Qt::FontRole);
+		model->setData(model->index(0,0), QETUtils::marginsToString(dialog->headerMargins()), Qt::UserRole+1);
+		model->setHeaderData(0, Qt::Horizontal, int(dialog->headerAlignment()), Qt::TextAlignmentRole);
+		model->setHeaderData(0, Qt::Horizontal, dialog->headerFont(), Qt::FontRole);
+		model->setHeaderData(0, Qt::Horizontal, QETUtils::marginsToString(dialog->headerMargins()), Qt::UserRole+1);
+		table->setModel(model);
+	}
+	else {
+		table->setPreviousTable(previous_table);
+	}
+
 	diagram->addItem(table);
 	table->setPos(50,50);
 
 	return table;
 }
 
+/**
+ * @brief QetGraphicsTableFactory::AdjustTableToFolio
+ * Adjust @table to fit as better as possible to it's parent diagram.
+ * @param table
+ */
 void QetGraphicsTableFactory::AdjustTableToFolio(QetGraphicsTableItem *table)
 {
 	auto drawable_rect = table->diagram()->border_and_titleblock.insideBorderRect();
