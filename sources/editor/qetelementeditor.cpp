@@ -613,11 +613,48 @@ void QETElementEditor::slot_updateInformations()
 	QList<CustomElementPart *> cep_list;
 	bool style_editable = false;
 
+    bool same_xml_name = true;
+    CustomElementPart* part = dynamic_cast<CustomElementPart *>(selected_qgis.first());
+    QString selection_xml_name;
+    if (part) {
+        selection_xml_name = part->xmlName();
+        for (auto itm: selected_qgis) {
+            CustomElementPart *selection = dynamic_cast<CustomElementPart *>(itm);
+            if (selection -> xmlName() != selection_xml_name) {
+                same_xml_name = false;
+                break;
+            }
+        }
+    } else
+        same_xml_name = false;
+
+    if (same_xml_name) {
+        if (selection_xml_name == "terminal") {
+            clearToolsDock();
+                //We add the editor widget
+            TerminalEditor *editor = static_cast<TerminalEditor*>(m_editors[selection_xml_name]);
+            if (editor)
+            {
+                if (editor->setTerminals(selection))
+                {
+                    m_tools_dock_stack->insertWidget(1, selection_editor);
+                    m_tools_dock_stack -> setCurrentIndex(1);
+                }
+                else
+                {
+                    qDebug() << "Editor refused part.";
+                }
+            }
+        }
+    }
+
+
+
 		//Test if part are editable by style editor
 	if (selected_qgis.size() >= 2)
 	{
 		style_editable = true;
-		foreach (QGraphicsItem *qgi, selected_qgis)
+        for (QGraphicsItem *qgi: selected_qgis)
 		{
 			if (CustomElementPart *cep = dynamic_cast<CustomElementPart *>(qgi))
 				cep_list << cep;

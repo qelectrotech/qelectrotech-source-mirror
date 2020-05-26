@@ -548,7 +548,7 @@ bool StyleEditor::isStyleEditable(QList<CustomElementPart *> cep_list)
 	QStringList str;
 	str << "arc" << "ellipse" << "line" << "polygon" << "rect";
 
-	foreach (CustomElementPart *cep, cep_list)
+    for (CustomElementPart *cep: cep_list)
 		if (!str.contains(cep -> xmlName()))
 			return false;
 
