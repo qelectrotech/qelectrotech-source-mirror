@@ -110,15 +110,15 @@ class Terminal : public QGraphicsObject
 		static QColor forbiddenColor;
 	
 	private:
-		bool               m_draw_help_line;
-		QGraphicsLineItem *m_help_line;
-		QGraphicsLineItem *m_help_line_a;
+        bool               m_draw_help_line{false};
+        QGraphicsLineItem *m_help_line{nullptr};
+        QGraphicsLineItem *m_help_line_a{nullptr};
 
 
     TerminalData* d;
 
 	/// Parent electrical element
-	Element *parent_element_;
+    Element *parent_element_{nullptr};
 	/// docking point for parent element
 	QPointF dock_elmt_;
 	/// List of conductors attached to the terminal
@@ -126,7 +126,7 @@ class Terminal : public QGraphicsObject
 	/// Pointer to a rectangle representing the terminal bounding rect;
 	/// used to calculate the bounding rect once only;
 	/// used a pointer because boundingRect() is supposed to be const.
-	QRectF *br_;
+    QRectF *br_{nullptr};
 	/// Last terminal seen through an attached conductor
 	Terminal *previous_terminal_;
 	/// Whether the mouse pointer is hovering the terminal
