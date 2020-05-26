@@ -21,6 +21,8 @@ public:
     TerminalData(QGraphicsObject* parent);
     ~TerminalData();
 
+    void init();
+
     void setParent(QGraphicsObject* parent);
 
     // Save/load properties to setting file. QString is use for prefix a word befor the name of each paramètre

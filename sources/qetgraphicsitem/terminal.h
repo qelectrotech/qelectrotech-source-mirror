@@ -67,6 +67,7 @@ class Terminal : public QGraphicsObject
 		int       conductorsCount     () const;
 		Diagram  *diagram             () const;
 		Element  *parentElement       () const;
+        QUuid uuid                    () const;
 	
 	QList<Conductor *> conductors() const;
 	Qet::Orientation orientation() const;
@@ -138,10 +139,6 @@ class Terminal : public QGraphicsObject
 	/// Name of Terminal
 	QString name_terminal_;
 	bool name_terminal_hidden;
-
-    /// Unique identifier of the terminal
-    /// This uuid is different to the uuid of the part terminal it represents
-    QUuid m_uuid;
 	
 	private:
     void init(QString number, QString name, bool hiddenName);

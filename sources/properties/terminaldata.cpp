@@ -5,14 +5,17 @@
 TerminalData::TerminalData():
     PropertiesInterface()
 {
-
+    init();
 }
 
 TerminalData::TerminalData(QGraphicsObject *parent):
     PropertiesInterface(),
     q(parent)
 {
+    init();
+}
 
+void TerminalData::init() {
 }
 
 TerminalData::~TerminalData()
@@ -69,7 +72,8 @@ bool TerminalData::fromXml (const QDomElement &xml_element)
 
     QString uuid = xml_element.attribute("uuid");
     // update part and add uuid, which is used in the new version to connect terminals together
-    // if the attribute not exists, in the constructor of PartTerminal already one is created
+    // if the attribute not exists, means, the element is created with an older version of qet. So use the legacy approach
+    // to identify terminals
     if (!uuid.isEmpty())
         m_uuid = QUuid(uuid);
 
