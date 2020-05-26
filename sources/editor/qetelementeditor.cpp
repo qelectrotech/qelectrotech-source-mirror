@@ -629,22 +629,6 @@ void QETElementEditor::slot_updateInformations()
 
 	}
 	
-	if(selected_qgis.size() == 1)
-	{
-		QGraphicsItem *qgi = selected_qgis.first();
-		if (CustomElementPart *selection = dynamic_cast<CustomElementPart *>(qgi))
-		{
-			if (QWidget *widget = m_tools_dock_stack->widget(1))
-			{
-				if (ElementItemEditor *editor = dynamic_cast<ElementItemEditor *>(widget))
-				{
-					if(editor->currentPart() == selection)
-						return;
-				}
-			}
-		}
-	}
-	
 		//There's one selected item
 	if (selected_qgis.size() == 1)
 	{
