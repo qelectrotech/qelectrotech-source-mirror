@@ -281,7 +281,7 @@ void DeleteQGraphicsItemCommand::redo()
 		if (m_diagram -> defaultConductorProperties.m_one_text_per_folio && c -> textItem() -> isVisible())
 		{
 			QList <Conductor *> conductor_list;
-			conductor_list << c -> relatedPotentialConductors(false).toList();
+			conductor_list << c -> relatedPotentialConductors(false).values();
 			if (conductor_list.count())
 				conductor_list.first() -> calculateTextItemPosition();
 		}

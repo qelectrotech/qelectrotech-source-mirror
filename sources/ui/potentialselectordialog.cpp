@@ -104,7 +104,7 @@ class NewConductorPotentialSelector : public AbstractPotentialSelector
 			seq_num = conductor_in_potential->sequenceNum();
 			number = conductor_in_potential->relatedPotentialConductors().size()+1; //We add +1 because conductor_in_potential isn't count by relatedPotentialConductors
 
-			c_list = conductor_in_potential->relatedPotentialConductors().toList();
+                       c_list = conductor_in_potential->relatedPotentialConductors().values();
 			c_list.append(conductor_in_potential);
 			foreach(Conductor *c, c_list)
 				properties_list.append(c->properties());
@@ -137,14 +137,14 @@ class LinkReportPotentialSelector : public AbstractPotentialSelector
 
 				m_conductor_number_1 = report->conductors().first()->relatedPotentialConductors().size() + 1;
 				m_seq_num_1 = report->conductors().first()->sequenceNum();
-				m_conductors_list_1.append(report->conductors().first()->relatedPotentialConductors().toList());
+				m_conductors_list_1.append(report->conductors().first()->relatedPotentialConductors().values());
 				m_conductors_list_1.append(report->conductors().first());
 				foreach(Conductor *c, m_conductors_list_1)
 					m_properties_list_1 << c->properties();
 
 				m_conductor_number_2 = other_report->conductors().first()->relatedPotentialConductors().size() + 1;
 				m_seq_num_2 = other_report->conductors().first()->sequenceNum();
-				m_conductors_list_2.append(other_report->conductors().first()->relatedPotentialConductors().toList());
+				m_conductors_list_2.append(other_report->conductors().first()->relatedPotentialConductors().values());
 				m_conductors_list_2.append(other_report->conductors().first());
 				foreach(Conductor *c, m_conductors_list_2)
 					m_properties_list_2 << c->properties();

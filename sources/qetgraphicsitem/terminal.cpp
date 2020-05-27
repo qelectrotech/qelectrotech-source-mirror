@@ -612,7 +612,7 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 
 	if (use_properties)
 	{
-		Conductor *other = conductors_list.toList().first();
+	        Conductor *other = conductors_list.values().first();
 		new_conductor->rSequenceNum() = other->sequenceNum();
 		new_conductor->setProperties(others_properties);
 	}
@@ -626,7 +626,7 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 	diagram() -> undoStack().push(undo);
 	if (use_properties)
 	{
-		Conductor *other = conductors_list.toList().first();
+	        Conductor *other = conductors_list.values().first();
 		new_conductor->setProperties(other->properties());
 	}
 }

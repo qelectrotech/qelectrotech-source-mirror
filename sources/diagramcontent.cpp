@@ -68,7 +68,7 @@ DiagramContent::DiagramContent(Diagram *diagram, bool selected) :
 				if (m_potential_conductors.isEmpty()) {
 					m_potential_conductors << c;
 				} else {
-					if (!potentialIsManaged(c->relatedPotentialConductors(true).toList())) {
+				        if (!potentialIsManaged(c->relatedPotentialConductors(true).values())) {
 						m_potential_conductors << c;
 					}
 				}
@@ -338,7 +338,7 @@ DiagramContent &DiagramContent::operator+=(const DiagramContent &other)
 	
 	for (Conductor *c : other.m_potential_conductors)
 	{
-		QList<Conductor *> c_list = c->relatedPotentialConductors(true).toList();
+	        QList<Conductor *> c_list = c->relatedPotentialConductors(true).values();
 		c_list << c;
 		if (!potentialIsManaged(c_list)) {
 			m_potential_conductors << c;

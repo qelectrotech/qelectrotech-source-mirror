@@ -38,7 +38,7 @@
 ConductorAutoNumerotation::ConductorAutoNumerotation(Conductor *conductor, Diagram *diagram, QUndoCommand *parent_undo) :
 	m_diagram      (diagram),
 	m_conductor     (conductor),
-	conductor_list (conductor -> relatedPotentialConductors().toList()),
+	conductor_list (conductor -> relatedPotentialConductors().values()),
 	m_parent_undo  (parent_undo)
 {}
 

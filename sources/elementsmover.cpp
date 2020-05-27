@@ -81,14 +81,14 @@ int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item)
 	m_moved_content.removeNonMovableItems();
 
 		//Remove element text, if the parent element is selected.
-	QList<DynamicElementTextItem *> deti_list = m_moved_content.m_element_texts.toList();
+	QList<DynamicElementTextItem *> deti_list = m_moved_content.m_element_texts.values();
 	for(DynamicElementTextItem *deti : deti_list) {
 		if(m_moved_content.m_elements.contains(deti->parentElement())) {
 			m_moved_content.m_element_texts.remove(deti);
 		}
 	}
 
-	QList<ElementTextItemGroup *> etig_list = m_moved_content.m_texts_groups.toList();
+       QList<ElementTextItemGroup *> etig_list = m_moved_content.m_texts_groups.values();
 	for(ElementTextItemGroup *etig : etig_list) {
 		if (m_moved_content.m_elements.contains(etig->parentElement())) {
 			m_moved_content.m_texts_groups.remove(etig);

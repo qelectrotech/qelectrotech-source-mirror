@@ -1393,7 +1393,7 @@ void QETDiagramEditor::selectionGroupTriggered(QAction *action)
 		dv->editSelection();
 	else if (value == "group_selected_texts")
 	{
-		QList<DynamicElementTextItem *> deti_list = dc.m_element_texts.toList();
+	        QList<DynamicElementTextItem *> deti_list = dc.m_element_texts.values();
 		if(deti_list.size() <= 1)
 			return;
 		
@@ -1537,8 +1537,8 @@ void QETDiagramEditor::slot_updateComplexActions()
 	int selected_dynamic_elmt_text = 0; for(DiagramTextItem *dti : texts) {if(dti->type() == DynamicElementTextItem::Type) selected_dynamic_elmt_text++;}
 	m_rotate_texts->setEnabled(!ro && (selected_texts || groups.size()));
 	
-		//Action that need only element text selected
-	QList<DynamicElementTextItem *> deti_list = dc.m_element_texts.toList();
+               //Action that need only element text selected
+       QList<DynamicElementTextItem *> deti_list = dc.m_element_texts.values();
 	if(deti_list.size() > 1 && dc.count() == deti_list.count())
 	{
 		Element *elmt = deti_list.first()->parentElement();

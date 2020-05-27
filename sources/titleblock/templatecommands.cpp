@@ -718,7 +718,7 @@ TitleBlockCell *MergeCellsCommand::getBottomRightCell(const TitleBlockTemplateCe
 	// next, we get its logical cells: the painted one and the spanned ones (if any)
 	QSet<TitleBlockCell *> logical_cells = bottom_right_cell -> cells();
 	if (logical_cells.isEmpty()) return(nullptr);
-	if (logical_cells.count() == 1) return(logical_cells.toList().first());
+	if (logical_cells.count() == 1) return(logical_cells.values().first());
 	
 	// we then look for the bottom right logical cell
 	int max_num_row = -1, max_num_col = -1;
