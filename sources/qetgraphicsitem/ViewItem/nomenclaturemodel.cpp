@@ -43,8 +43,8 @@ NomenclatureModel::NomenclatureModel(QETProject *project, QObject *parent) :
  */
 int NomenclatureModel::rowCount(const QModelIndex &parent) const
 {
-    if (parent.isValid())
-        return 0;
+	if (parent.isValid())
+		return 0;
 
 	return  m_record.count();
 }
@@ -57,8 +57,8 @@ int NomenclatureModel::rowCount(const QModelIndex &parent) const
  */
 int NomenclatureModel::columnCount(const QModelIndex &parent) const
 {
-    if (parent.isValid())
-        return 0;
+	if (parent.isValid())
+		return 0;
 
 	if (m_record.count()) {
 		return m_record.first().count();
@@ -141,8 +141,8 @@ bool NomenclatureModel::setData(const QModelIndex &index, const QVariant &value,
  */
 QVariant NomenclatureModel::data(const QModelIndex &index, int role) const
 {
-    if (!index.isValid())
-        return QVariant();
+	if (!index.isValid())
+		return QVariant();
 
 	if (index.row() == 0 &&
 		index.column() == 0 &&
