@@ -176,7 +176,8 @@ void TextEditor::setUpEditConnection()
 	m_edit_connection << connect(ui->m_line_edit, &QLineEdit::textEdited, [this]()
 	{
 		QString text_ = ui->m_line_edit->text();
-        for (auto partText: m_parts) {
+        for (int i=0; i < m_parts.length(); i++) {
+            PartText* partText = m_parts[i];
             if (text_ != partText->toPlainText())
             {
                 QPropertyUndoCommand *undo = new QPropertyUndoCommand(partText, "text", partText->toPlainText(), text_);
@@ -188,7 +189,8 @@ void TextEditor::setUpEditConnection()
 	m_edit_connection << connect(ui->m_x_sb, QOverload<int>::of(&QSpinBox::valueChanged), [this]()
 	{
         QPointF pos(ui->m_x_sb->value(), 0);
-        for (auto partText: m_parts) {
+        for (int i=0; i < m_parts.length(); i++) {
+            PartText* partText = m_parts[i];
             pos.setY(partText->pos().y());
             if (pos != partText->pos())
             {
@@ -202,7 +204,8 @@ void TextEditor::setUpEditConnection()
 	m_edit_connection << connect(ui->m_y_sb, QOverload<int>::of(&QSpinBox::valueChanged), [this]()
 	{
         QPointF pos(0, ui->m_y_sb->value());
-        for (auto partText: m_parts) {
+        for (int i=0; i < m_parts.length(); i++) {
+            PartText* partText = m_parts[i];
             pos.setX(partText->pos().x());
             if (pos != partText->pos())
             {
@@ -212,25 +215,11 @@ void TextEditor::setUpEditConnection()
                 undoStack().push(undo);
             }
         }
-	});
-	m_edit_connection << connect(ui->m_rotation_sb, QOverload<int>::of(&QSpinBox::valueChanged), [this]()
-	{
-        for (auto partText: m_parts) {
-            if (ui->m_rotation_sb->value() != partText->rotation())
-            {
-                QPropertyUndoCommand *undo = new QPropertyUndoCommand(partText, "rotation", partText->rotation(), ui->m_rotation_sb->value());
                 undo->setText(tr("Pivoter un champ texte"));
                 undo->setAnimated(true, false);
                 undoStack().push(undo);
             }
         }
-	});
-	m_edit_connection << connect(ui->m_size_sb, QOverload<int>::of(&QSpinBox::valueChanged), [this]()
-	{
-        for (auto partText: m_parts) {
-            if (partText->font().pointSize() != ui->m_size_sb->value())
-            {
-                QFont font_ = partText->font();
                 font_.setPointSize(ui->m_size_sb->value());
                 QPropertyUndoCommand *undo = new QPropertyUndoCommand(partText, "font", partText->font(), font_);
                 undo->setText(tr("Modifier la police d'un texte"));
@@ -253,13 +242,6 @@ void TextEditor::on_m_font_pb_clicked()
         ui->m_size_sb->setValue(font_.pointSize());
         ui->m_size_sb->blockSignals(false);
 
-        ui->m_font_pb->setText(font_.family());
-    }
-
-    for (auto partText: m_parts) {
-        if (ok && font_ != partText->font())
-        {
-            QPropertyUndoCommand *undo = new QPropertyUndoCommand(partText, "font", partText->font(), font_);
             undo->setText(tr("Modifier la police d'un texte"));
             undoStack().push(undo);
         }
@@ -269,13 +251,6 @@ void TextEditor::on_m_font_pb_clicked()
 /**
  * @brief TextEditor::on_m_color_pb_changed
  * @param newColor
- */
-void TextEditor::on_m_color_pb_changed(const QColor &newColor)
-{
-    for (auto partText: m_parts) {
-        if (newColor != partText->defaultTextColor())
-        {
-            QPropertyUndoCommand *undo = new QPropertyUndoCommand(partText, "color", partText->defaultTextColor(), newColor);
             undo->setText(tr("Modifier la couleur d'un texte"));
             undoStack().push(undo);
         }

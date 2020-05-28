@@ -160,7 +160,8 @@ void TerminalEditor::updateTerminalO()
 	m_locked = true;
 	QVariant var(orientation -> itemData(orientation -> currentIndex()));
 
-    for (auto term: m_terminals) {
+    for (int i=0; i < m_terminals.length(); i++) {
+        PartTerminal* term = m_terminals[i];
         if (var != term->property("orientation"))
         {
             QPropertyUndoCommand *undo = new QPropertyUndoCommand(term, "orientation", term->property("orientation"), var);
@@ -176,8 +177,8 @@ void TerminalEditor::updateXPos() {
     m_locked = true;
     QPointF new_pos(qle_x->value(), 0);
 
-    int i=0;
-    for (PartTerminal* term: m_terminals) {
+    for (int i=0; i < m_terminals.length(); i++) {
+        PartTerminal* term = m_terminals[i];
         new_pos.setY(term->pos().y()); // change only x value
         if (term->pos() != new_pos) {
             QPropertyUndoCommand *undo = new QPropertyUndoCommand(term, "pos", term->property("pos"), new_pos);
@@ -194,7 +195,8 @@ void TerminalEditor::updateYPos() {
     m_locked = true;
     QPointF new_pos(0, qle_y->value()); // change only y value
 
-    for (auto term: m_terminals) {
+    for (int i=0; i < m_terminals.length(); i++) {
+        PartTerminal* term = m_terminals[i];
         new_pos.setX(term->pos().x());
         if (term->pos() != new_pos) {
             QPropertyUndoCommand *undo = new QPropertyUndoCommand(term, "pos", term->property("pos"), new_pos);
