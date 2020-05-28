@@ -55,7 +55,7 @@ class TextEditor : public ElementItemEditor
 		Ui::TextEditor *ui;
 
 		QPointer <PartText> m_text;
-        QList<QPointer<PartText>> m_parts;
+        QList<PartText*> m_parts;
 		QList <QMetaObject::Connection> m_edit_connection;
         QList <QMetaObject::Connection> m_change_connection;
 };
