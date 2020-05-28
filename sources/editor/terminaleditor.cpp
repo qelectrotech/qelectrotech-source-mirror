@@ -106,7 +106,7 @@ bool TerminalEditor::setPart(CustomElementPart* new_part)
         m_part = nullptr;
 		return(true);
 	}
-	if (PartTerminal *part_terminal = dynamic_cast<PartTerminal *>(new_part))
+    if (PartTerminal *part_terminal = static_cast<PartTerminal *>(new_part))
 	{
         if(m_part == part_terminal) return true;
         if (m_part)
