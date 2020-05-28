@@ -232,9 +232,7 @@ void IntegrationMoveTitleBlockTemplatesHandler::initDialog() {
 	@param button Radio button
 */
 void IntegrationMoveTitleBlockTemplatesHandler::radioButtonleftMargin(QRadioButton *button) {
-	int a, b, c, d;
-	button -> getContentsMargins(&a, &b, &c, &d);
-	button -> setContentsMargins(a + 15, b, c, d);
+	button->contentsMargins().setLeft(button->contentsMargins().left()+15);
 }
 
 /**
