@@ -133,8 +133,13 @@ void DiagramFolioList::fillRow(QPainter *qp, const QRectF &row_rect, const QStri
 
 	if (settings.value("genericpanel/folio", true).toBool()){
 	// reduce the font size if the text entry is long
+#if QT_VERSION < QT_VERSION_CHECK(5, 11, 0)	// ### Qt 6: remove
 	if (origFontMetrics.width(folio) > 0.95*colWidths[0]*row_rect.width())
 		workingFont.setPointSizeF(origFontSize * 0.95*colWidths[0]*row_rect.width() / origFontMetrics.width(folio));
+#else
+		if (origFontMetrics.horizontalAdvance(folio) > 0.95*colWidths[0]*row_rect.width())
+			workingFont.setPointSizeF(origFontSize * 0.95*colWidths[0]*row_rect.width() / origFontMetrics.horizontalAdvance(folio));
+#endif
 	else
 		workingFont.setPointSizeF(origFontSize);
 	qp -> setFont(workingFont);
@@ -142,8 +147,13 @@ void DiagramFolioList::fillRow(QPainter *qp, const QRectF &row_rect, const QStri
 	
 	x += colWidths[0]*row_rect.width();
 	}else{
+#if QT_VERSION < QT_VERSION_CHECK(5, 11, 0)	// ### Qt 6: remove
 	if (origFontMetrics.width(folio) > 0.95*colWidths[0]*row_rect.width())
 		workingFont.setPointSizeF(origFontSize * 0.95*colWidths[0]*row_rect.width() / origFontMetrics.width(folio));
+#else
+		if (origFontMetrics.horizontalAdvance(folio) > 0.95*colWidths[0]*row_rect.width())
+			workingFont.setPointSizeF(origFontSize * 0.95*colWidths[0]*row_rect.width() / origFontMetrics.horizontalAdvance(folio));
+#endif
 	else
 		workingFont.setPointSizeF(origFontSize);
 	qp -> setFont(workingFont);
@@ -152,8 +162,13 @@ void DiagramFolioList::fillRow(QPainter *qp, const QRectF &row_rect, const QStri
 	}
 
 
+#if QT_VERSION < QT_VERSION_CHECK(5, 11, 0)	// ### Qt 6: remove
 	if (origFontMetrics.width(title) > 0.95*colWidths[1]*row_rect.width())
 		workingFont.setPointSizeF(origFontSize * 0.95*colWidths[1]*row_rect.width() / origFontMetrics.width(title));
+#else
+	if (origFontMetrics.horizontalAdvance(title) > 0.95*colWidths[1]*row_rect.width())
+		workingFont.setPointSizeF(origFontSize * 0.95*colWidths[1]*row_rect.width() / origFontMetrics.horizontalAdvance(title));
+#endif
 	else
 		workingFont.setPointSizeF(origFontSize);
 	qp -> setFont(workingFont);
@@ -165,27 +180,42 @@ void DiagramFolioList::fillRow(QPainter *qp, const QRectF &row_rect, const QStri
 					   row_rect.height()), Qt::AlignLeft | Qt::AlignVCenter, title);
 	x += colWidths[1]*row_rect.width();
 	
-	
+
+#if QT_VERSION < QT_VERSION_CHECK(5, 11, 0)	// ### Qt 6: remove
 	if (origFontMetrics.width(plant) > 0.95*colWidths[2]*row_rect.width())
 		workingFont.setPointSizeF(origFontSize * 0.95*colWidths[2]*row_rect.width() / origFontMetrics.width(plant));
+#else
+	if (origFontMetrics.horizontalAdvance(plant) > 0.95*colWidths[2]*row_rect.width())
+		workingFont.setPointSizeF(origFontSize * 0.95*colWidths[2]*row_rect.width() / origFontMetrics.horizontalAdvance(plant));
+#endif
 	else
 		workingFont.setPointSizeF(origFontSize);
 	qp -> setFont(workingFont);
 	qp -> drawText(QRectF(x, y, colWidths[3]*row_rect.width(), row_rect.height()), Qt::AlignCenter, plant);
 	x += colWidths[2]*row_rect.width();
 	
-	
+
+#if QT_VERSION < QT_VERSION_CHECK(5, 11, 0)	// ### Qt 6: remove
 	if (origFontMetrics.width(loc) > 0.95*colWidths[3]*row_rect.width())
 		workingFont.setPointSizeF(origFontSize * 0.95*colWidths[3]*row_rect.width() / origFontMetrics.width(loc));
+#else
+	if (origFontMetrics.horizontalAdvance(loc) > 0.95*colWidths[3]*row_rect.width())
+		workingFont.setPointSizeF(origFontSize * 0.95*colWidths[3]*row_rect.width() / origFontMetrics.horizontalAdvance(loc));
+#endif
 	else
 		workingFont.setPointSizeF(origFontSize);
 	qp -> setFont(workingFont);
 	qp -> drawText(QRectF(x, y, colWidths[3]*row_rect.width(), row_rect.height()), Qt::AlignCenter, loc);
 	x += colWidths[3]*row_rect.width();
 	
-	
+
+#if QT_VERSION < QT_VERSION_CHECK(5, 11, 0)	// ### Qt 6: remove
 	if (origFontMetrics.width(indexrev) > 0.95*colWidths[4]*row_rect.width())
 		workingFont.setPointSizeF(origFontSize * 0.95*colWidths[4]*row_rect.width() / origFontMetrics.width(indexrev));
+#else
+	if (origFontMetrics.horizontalAdvance(indexrev) > 0.95*colWidths[4]*row_rect.width())
+		workingFont.setPointSizeF(origFontSize * 0.95*colWidths[4]*row_rect.width() / origFontMetrics.horizontalAdvance(indexrev));
+#endif
 	else
 		workingFont.setPointSizeF(origFontSize);
 	qp -> setFont(workingFont);
@@ -195,8 +225,13 @@ void DiagramFolioList::fillRow(QPainter *qp, const QRectF &row_rect, const QStri
 	
 	
 
+#if QT_VERSION < QT_VERSION_CHECK(5, 11, 0)	// ### Qt 6: remove
 	if (origFontMetrics.width(author) > 0.95*colWidths[5]*row_rect.width())
 		workingFont.setPointSizeF(origFontSize * 0.95*colWidths[5]*row_rect.width() / origFontMetrics.width(author));
+#else
+	if (origFontMetrics.horizontalAdvance(author) > 0.95*colWidths[5]*row_rect.width())
+		workingFont.setPointSizeF(origFontSize * 0.95*colWidths[5]*row_rect.width() / origFontMetrics.horizontalAdvance(author));
+#endif
 	else
 		workingFont.setPointSizeF(origFontSize);
 	qp -> setFont(workingFont);
@@ -204,8 +239,13 @@ void DiagramFolioList::fillRow(QPainter *qp, const QRectF &row_rect, const QStri
 	x += colWidths[5]*row_rect.width();
 	
 
+#if QT_VERSION < QT_VERSION_CHECK(5, 11, 0)	// ### Qt 6: remove
 	if (origFontMetrics.width(date) > 0.95*colWidths[6]*row_rect.width())
 		workingFont.setPointSizeF(origFontSize * 0.95*colWidths[6]*row_rect.width() / origFontMetrics.width(date));
+#else
+	if (origFontMetrics.horizontalAdvance(date) > 0.95*colWidths[6]*row_rect.width())
+		workingFont.setPointSizeF(origFontSize * 0.95*colWidths[6]*row_rect.width() / origFontMetrics.horizontalAdvance(date));
+#endif
 	else
 		workingFont.setPointSizeF(origFontSize);
 	qp -> setFont(workingFont);
