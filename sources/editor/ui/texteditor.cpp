@@ -110,7 +110,7 @@ bool TextEditor::setPart(CustomElementPart *part)
 		return true;
 	}
 
-	if (PartText *part_text = dynamic_cast<PartText *>(part))
+    if (PartText *part_text = static_cast<PartText *>(part))
 	{
 		if (part_text == m_text) {
 			return true;
@@ -215,11 +215,27 @@ void TextEditor::setUpEditConnection()
                 undoStack().push(undo);
             }
         }
+	});
+	m_edit_connection << connect(ui->m_rotation_sb, QOverload<int>::of(&QSpinBox::valueChanged), [this]()
+	{
+        for (int i=0; i < m_parts.length(); i++) {
+            PartText* partText = m_parts[i];
+            if (ui->m_rotation_sb->value() != partText->rotation())
+            {
+                QPropertyUndoCommand *undo = new QPropertyUndoCommand(partText, "rotation", partText->rotation(), ui->m_rotation_sb->value());
                 undo->setText(tr("Pivoter un champ texte"));
                 undo->setAnimated(true, false);
                 undoStack().push(undo);
             }
         }
+	});
+	m_edit_connection << connect(ui->m_size_sb, QOverload<int>::of(&QSpinBox::valueChanged), [this]()
+	{
+        for (int i=0; i < m_parts.length(); i++) {
+            PartText* partText = m_parts[i];
+            if (partText->font().pointSize() != ui->m_size_sb->value())
+            {
+                QFont font_ = partText->font();
                 font_.setPointSize(ui->m_size_sb->value());
                 QPropertyUndoCommand *undo = new QPropertyUndoCommand(partText, "font", partText->font(), font_);
                 undo->setText(tr("Modifier la police d'un texte"));
@@ -242,6 +258,14 @@ void TextEditor::on_m_font_pb_clicked()
         ui->m_size_sb->setValue(font_.pointSize());
         ui->m_size_sb->blockSignals(false);
 
+        ui->m_font_pb->setText(font_.family());
+    }
+
+    for (int i=0; i < m_parts.length(); i++) {
+        PartText* partText = m_parts[i];
+        if (ok && font_ != partText->font())
+        {
+            QPropertyUndoCommand *undo = new QPropertyUndoCommand(partText, "font", partText->font(), font_);
             undo->setText(tr("Modifier la police d'un texte"));
             undoStack().push(undo);
         }
@@ -251,6 +275,14 @@ void TextEditor::on_m_font_pb_clicked()
 /**
  * @brief TextEditor::on_m_color_pb_changed
  * @param newColor
+ */
+void TextEditor::on_m_color_pb_changed(const QColor &newColor)
+{
+    for (int i=0; i < m_parts.length(); i++) {
+        PartText* partText = m_parts[i];
+        if (newColor != partText->defaultTextColor())
+        {
+            QPropertyUndoCommand *undo = new QPropertyUndoCommand(partText, "color", partText->defaultTextColor(), newColor);
             undo->setText(tr("Modifier la couleur d'un texte"));
             undoStack().push(undo);
         }

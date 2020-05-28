@@ -631,8 +631,10 @@ void QETElementEditor::slot_updateInformations()
             cep_list << cep;
             if (cep->xmlName() != selection_xml_name)
                 same_xml_name = false;
-        } else
+        } else {
             style_editable = false;
+            same_xml_name = false;
+        }
     }
     if (style_editable)
         style_editable = StyleEditor::isStyleEditable(cep_list);
@@ -645,10 +647,10 @@ void QETElementEditor::slot_updateInformations()
 //                    if(editor->currentPart() == cep_list.first())
 //                        return;
 
-        if (selection_xml_name == "terminal") {
+        if (selection_xml_name == "terminal" || selection_xml_name == "text") {
             clearToolsDock();
                 //We add the editor widget
-            TerminalEditor *editor = static_cast<TerminalEditor*>(m_editors[selection_xml_name]);
+            ElementItemEditor *editor = static_cast<ElementItemEditor*>(m_editors[selection_xml_name]);
             if (editor)
             {
                 if (editor->setParts(cep_list))
