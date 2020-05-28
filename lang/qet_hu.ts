@@ -3465,7 +3465,7 @@ A szövegmező alapértelmezett értékének meghatározása az új elemek alá 
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="283"/>
         <source>Norvege</source>
-        <translation type="unfinished"></translation>
+        <translation>Norvég</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="284"/>
@@ -4156,7 +4156,7 @@ Ehhez speciális szerkesztőt kell használni.</translation>
     <message>
         <location filename="../sources/ui/marginseditdialog.ui" line="14"/>
         <source>Editer les marges</source>
-        <translation type="unfinished"></translation>
+        <translation>Margók szerkesztése</translation>
     </message>
     <message>
         <location filename="../sources/ui/marginseditdialog.ui" line="71"/>
@@ -8134,8 +8134,8 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qet.cpp" line="298"/>
         <source>%n tableau(s)</source>
         <comment>part of a sentence listing the content of diagram</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n táblázat(ok)</numerusform>
         </translation>
     </message>
     <message>
@@ -8904,7 +8904,7 @@ Cserélni akarod?</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2333"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.8 bundle only, because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
-        <translation type="unfinished">A qet_tb_generator beépülő modul telepítéséhez&lt;br&gt;Látogass el: &lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt;Első telepítés macOSX-en&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. telepítés, ha szükséges pyton3.8 csomag egyedül. Azért, mert a programban kódolt fájl elérésiútvonala van a qet_tb_generator beépülő modulnak&lt;br&gt; Látogass el :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Frissítés macOSX-en&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
+        <translation>A qet_tb_generator beépülő modul telepítéséhez&lt;br&gt;Látogass el: &lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt;Első telepítés macOSX-en&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. telepítés, ha szükséges pyton3.8 csomag egyedül. Azért, mert a programban kódolt fájlelérési útvonala van a qet_tb_generator beépülő modulnak&lt;br&gt; Látogass el :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Frissítés macOSX-en&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2364"/>
