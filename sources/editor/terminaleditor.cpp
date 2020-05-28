@@ -119,9 +119,9 @@ bool TerminalEditor::setPart(CustomElementPart* new_part)
 	return(false);
 }
 
-bool TerminalEditor::setTerminals(QList<PartTerminal *> terminals)
+bool TerminalEditor::setParts(QList<CustomElementPart *> parts)
 {
-    if (terminals.isEmpty())
+    if (parts.isEmpty())
     {
         m_terminals.clear();
         if (m_part)
@@ -130,13 +130,15 @@ bool TerminalEditor::setTerminals(QList<PartTerminal *> terminals)
         return(true);
     }
 
-    if (PartTerminal *part_terminal = dynamic_cast<PartTerminal *>(terminals.first()))
+    if (PartTerminal *part_terminal = static_cast<PartTerminal *>(parts.first()))
     {
-        if(m_part == part_terminal) return true;
         if (m_part)
             disconnect(m_part, &PartTerminal::orientationChanged, this, &TerminalEditor::updateForm);
         m_part = part_terminal;
-        m_terminals = terminals;
+        m_terminals.clear();
+        m_terminals.append(part_terminal);
+        for (int i=1; i < parts.length(); i++)
+            m_terminals.append(static_cast<PartTerminal*>(parts[i]));
         updateForm();
         connect(m_part, &PartTerminal::orientationChanged, this, &TerminalEditor::updateForm);
         return(true);
@@ -169,13 +171,14 @@ void TerminalEditor::updateTerminalO()
 	m_locked = false;
 }
 
-void TerminalEditor::updatePos()
-{
-	if (m_locked) return;
-	m_locked = true;
-	QPointF new_pos(qle_x->value(), qle_y->value());
+void TerminalEditor::updateXPos() {
+    if (m_locked) return;
+    m_locked = true;
+    QPointF new_pos(qle_x->value(), 0);
 
-    for (auto term: m_terminals) {
+    int i=0;
+    for (PartTerminal* term: m_terminals) {
+        new_pos.setY(term->pos().y()); // change only x value
         if (term->pos() != new_pos) {
             QPropertyUndoCommand *undo = new QPropertyUndoCommand(term, "pos", term->property("pos"), new_pos);
             undo->setText(tr("Déplacer une borne"));
@@ -183,7 +186,24 @@ void TerminalEditor::updatePos()
             undoStack().push(undo);
         }
     }
-	m_locked=false;
+    m_locked=false;
+}
+
+void TerminalEditor::updateYPos() {
+    if (m_locked) return;
+    m_locked = true;
+    QPointF new_pos(0, qle_y->value()); // change only y value
+
+    for (auto term: m_terminals) {
+        new_pos.setX(term->pos().x());
+        if (term->pos() != new_pos) {
+            QPropertyUndoCommand *undo = new QPropertyUndoCommand(term, "pos", term->property("pos"), new_pos);
+            undo->setText(tr("Déplacer une borne"));
+            undo->enableAnimation();
+            undoStack().push(undo);
+        }
+    }
+    m_locked=false;
 }
 /// update Number and name, create cancel object
 
@@ -207,14 +227,14 @@ void TerminalEditor::activeConnections(bool active)
 {
 	if (active)
 	{
-		connect(qle_x,       SIGNAL(editingFinished()), this, SLOT(updatePos()));
-		connect(qle_y,       SIGNAL(editingFinished()), this, SLOT(updatePos()));
-		connect(orientation, SIGNAL(activated(int)),    this, SLOT(updateTerminalO()));
+        connect(qle_x,       &QDoubleSpinBox::editingFinished, this, &TerminalEditor::updateXPos);
+        connect(qle_y,       &QDoubleSpinBox::editingFinished, this, &TerminalEditor::updateYPos);
+        connect(orientation, QOverload<int>::of(&QComboBox::activated), this, &TerminalEditor::updateTerminalO);
 	}
 	else
 	{
-		disconnect(qle_x,       SIGNAL(editingFinished()), this, SLOT(updatePos()));
-		disconnect(qle_y,       SIGNAL(editingFinished()), this, SLOT(updatePos()));
-		disconnect(orientation, SIGNAL(activated(int)),    this, SLOT(updateTerminalO()));
+        disconnect(qle_x,       &QDoubleSpinBox::editingFinished, this, &TerminalEditor::updateXPos);
+        disconnect(qle_y,       &QDoubleSpinBox::editingFinished, this, &TerminalEditor::updateYPos);
+        disconnect(orientation, QOverload<int>::of(&QComboBox::activated), this, &TerminalEditor::updateTerminalO);
 	}
 }

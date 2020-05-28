@@ -26,6 +26,8 @@ class QComboBox;
 
 /**
 	This class provides a widget to edit terminals within the element editor.
+    The class is capable to change the values of multiple parts of the same time.
+    The displayed values are from the first selected element
 */
 class TerminalEditor : public ElementItemEditor {
 	Q_OBJECT
@@ -51,12 +53,13 @@ class TerminalEditor : public ElementItemEditor {
 	// methods
 	public:
     bool setPart(CustomElementPart *) override;
-    bool setTerminals(QList<PartTerminal*> terminals);
+    bool setParts(QList<CustomElementPart *> parts) override;
 	CustomElementPart *currentPart() const override;
 	
 	public slots:
 		void updateTerminalO();
-		void updatePos();
+        void updateXPos();
+        void updateYPos();
 		void updateForm() override;
 	
 	private:
