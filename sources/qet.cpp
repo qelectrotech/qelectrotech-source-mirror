@@ -173,7 +173,11 @@ bool QET::orthogonalProjection(const QPointF &point, const QLineF &line, QPointF
 	
 	// determine le point d'intersection des deux droites = le projete orthogonal
 	QPointF intersection_point;
-	QLineF::IntersectType it = line.intersect(perpendicular_line, &intersection_point);
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
+	QLineF::IntersectType it = line.intersect(perpendicular_line, &intersection_point); // ### Qt 6: remove
+#else
+	QLineF::IntersectType it = line.intersects(perpendicular_line, &intersection_point);
+#endif
 	
 	// ne devrait pas arriver (mais bon...)
 	if (it == QLineF::NoIntersection) return(false);
