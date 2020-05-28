@@ -155,7 +155,7 @@ QTreeWidgetItem *GenericPanel::updateProjectItem(QTreeWidgetItem *project_qtwi, 
 	if (!project_qtwi || !project) return(nullptr);
 	
 	if (freshly_created) {
-		project_qtwi -> setData(0, GenericPanel::Item, qVariantFromValue(project));
+		project_qtwi -> setData(0, GenericPanel::Item, QVariant::fromValue(project));
 		projects_.insert(project, project_qtwi);
 		
 		connect(
@@ -317,7 +317,7 @@ QTreeWidgetItem *GenericPanel::updateDiagramItem(QTreeWidgetItem *diagram_qtwi, 
 	}
 	if (freshly_created)
 	{
-		diagram_qtwi -> setData(0, GenericPanel::Item, qVariantFromValue(diagram));
+		diagram_qtwi -> setData(0, GenericPanel::Item, QVariant::fromValue(diagram));
 		diagrams_.insert(diagram, diagram_qtwi);
 		
 		connect(diagram, &Diagram::diagramTitleChanged, this, &GenericPanel::diagramTitleChanged);
@@ -389,7 +389,7 @@ QTreeWidgetItem *GenericPanel::updateTemplatesCollectionItem(QTreeWidgetItem *tb
 	tbt_collection_qtwi -> setToolTip(0, tbt_collection -> location().toString());
 	
 	if (freshly_created) {
-		tbt_collection_qtwi -> setData(0, GenericPanel::Item, qVariantFromValue(tbt_collection -> location()));
+		tbt_collection_qtwi -> setData(0, GenericPanel::Item, QVariant::fromValue(tbt_collection -> location()));
 		tb_templates_.insert(tbt_collection -> location(), tbt_collection_qtwi);
 	}
 	
@@ -485,7 +485,7 @@ QTreeWidgetItem *GenericPanel::updateTemplateItem(QTreeWidgetItem *tb_template_q
 	}
 	
 	if (freshly_created) {
-		tb_template_qtwi -> setData(0, GenericPanel::Item, qVariantFromValue(tb_template));
+		tb_template_qtwi -> setData(0, GenericPanel::Item, QVariant::fromValue(tb_template));
 		tb_templates_.insert(tb_template, tb_template_qtwi);
 	}
 	return(updateItem(tb_template_qtwi, options, freshly_created));

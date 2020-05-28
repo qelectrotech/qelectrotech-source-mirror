@@ -86,11 +86,11 @@ QVariant TitleBlockCell::attribute(const QString &attribute) {
 	} else if (attribute == "logo") {
 		return(logo_reference);
 	} else if (attribute == "label") {
-		return(qVariantFromValue(label));
+		return(QVariant::fromValue(label));
 	} else if (attribute == "displaylabel") {
 		return(display_label);
 	} else if (attribute == "value") {
-		return(qVariantFromValue(value));
+		return(QVariant::fromValue(value));
 	} else if (attribute == "alignment") {
 		return(alignment);
 	} else if (attribute == "fontsize") {

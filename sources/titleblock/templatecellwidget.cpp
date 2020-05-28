@@ -389,7 +389,7 @@ void TitleBlockTemplateCellWidget::editTranslatableValue(NamesList &names, const
 	nlw_->setClipboardValue(QETInformation::titleblockTranslatedKeyHashVar());
 	
 	if(dialog_.exec() == QDialog::Accepted) {
-		emitModification(attribute, qVariantFromValue(nlw_->names()));
+		emitModification(attribute, QVariant::fromValue(nlw_->names()));
 	}
 }
 
