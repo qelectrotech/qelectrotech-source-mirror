@@ -105,7 +105,7 @@ void ElementsPanel::startTitleBlockTemplateDrag(const TitleBlockTemplateLocation
 	QDrag *drag = new QDrag(this);
 	drag -> setMimeData(mime_data);
 	drag -> setPixmap(QET::Icons::TitleBlock.pixmap(22, 16));
-	drag -> start(Qt::CopyAction);
+	drag -> exec(Qt::CopyAction);
 }
 
 /**
