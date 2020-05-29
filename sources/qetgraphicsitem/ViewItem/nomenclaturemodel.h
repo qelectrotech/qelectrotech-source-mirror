@@ -61,7 +61,7 @@ class NomenclatureModel : public QAbstractTableModel
 		QPointer<QETProject> m_project;
 		QString m_query;
 		QVector<QStringList> m_record;
-		QHash<int, QHash<int, QVariant>> m_header_data;
+		QHash<int, QHash<int, QVariant>> m_header_data; //First int = section, second int = Qt::role, QVariant = value
 		QHash<int, QVariant> m_index_0_0_data;
 };
 

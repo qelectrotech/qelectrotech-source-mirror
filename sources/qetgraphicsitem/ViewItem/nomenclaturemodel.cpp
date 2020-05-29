@@ -1,19 +1,19 @@
 ﻿/*
-        Copyright 2006-2020 QElectroTech Team
-        This file is part of QElectroTech.
+		Copyright 2006-2020 QElectroTech Team
+		This file is part of QElectroTech.
 
-        QElectroTech is free software: you can redistribute it and/or modify
-        it under the terms of the GNU General Public License as published by
-        the Free Software Foundation, either version 2 of the License, or
-        (at your option) any later version.
+		QElectroTech is free software: you can redistribute it and/or modify
+		it under the terms of the GNU General Public License as published by
+		the Free Software Foundation, either version 2 of the License, or
+		(at your option) any later version.
 
-        QElectroTech is distributed in the hope that it will be useful,
-        but WITHOUT ANY WARRANTY; without even the implied warranty of
-        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-        GNU General Public License for more details.
+		QElectroTech is distributed in the hope that it will be useful,
+		but WITHOUT ANY WARRANTY; without even the implied warranty of
+		MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+		GNU General Public License for more details.
 
-        You should have received a copy of the GNU General Public License
-        along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+		You should have received a copy of the GNU General Public License
+		along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "nomenclaturemodel.h"
 #include "qetapp.h"
@@ -238,8 +238,14 @@ QDomElement NomenclatureModel::toXml(QDomDocument &document) const
 
 		//header data
 	QHash<int, QList<int>> horizontal_;
-	for (auto key : m_header_data.keys()) {
-		horizontal_.insert(key, m_header_data.value(key).keys()); }
+	for (auto key : m_header_data.keys())
+	{
+			//We save all data except the display role, because he was generated in the fly
+		auto list = m_header_data.value(key).keys();
+		list.removeAll(Qt::DisplayRole);
+
+		horizontal_.insert(key, list);
+	}
 
 	dom_element.appendChild(QETXML::modelHeaderDataToXml(document, this, horizontal_, QHash<int, QList<int>>()));
 
@@ -257,6 +263,7 @@ void NomenclatureModel::fromXml(const QDomElement &element)
 		return;
 
 	query(element.firstChildElement("query").text());
+	autoHeaders();
 
 		//Index 0,0
 	auto index_00 = element.firstChildElement("index00");
