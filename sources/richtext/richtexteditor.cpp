@@ -737,6 +737,14 @@ QString RichTextEditor::text(Qt::TextFormat format) const
     return m_simplifyRichText ? simplifyRichTextFilter(toHtml()) : toHtml();
     case Qt::AutoText:
         break;
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
+#else
+    case Qt::MarkdownText: //This enum value was added in Qt 5.14.
+        break;
+#endif
+    default:
+    qInfo("(RichTextEditor::text) no valid switch: %d",format);
+        break;
     }
     const QString html = toHtml();
     bool isPlainText;
