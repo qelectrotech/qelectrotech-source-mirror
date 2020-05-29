@@ -54,7 +54,7 @@ ExportDialog::ExportDialog(QETProject *project, QWidget *parent) : QDialog(paren
 	
 	// on utilise le repertoire du projet a exporter si possible
 	if (!project_ -> filePath().isEmpty()) {
-		default_export_properties.destination_directory = project_ -> currentDir();
+		default_export_properties.destination_directory.setPath(project_ -> currentDir());
 	}
 	
 	// la taille minimale du dialogue est fixee

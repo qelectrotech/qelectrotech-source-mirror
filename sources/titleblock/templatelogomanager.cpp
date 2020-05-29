@@ -72,7 +72,7 @@ void TitleBlockTemplateLogoManager::emitLogosChangedSignal() {
 	Initialize widgets composing the Logo manager
 */
 void TitleBlockTemplateLogoManager::initWidgets() {
-	open_dialog_dir_ = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
+	open_dialog_dir_.setPath(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation));
 	
 	setWindowTitle(tr("Gestionnaire de logos"));
 	setWindowIcon(QET::Icons::InsertImage);
