@@ -413,7 +413,7 @@ void ChangeZValueCommand::applyRaise(const QList<QGraphicsItem *> &items_list) {
 	for (int i = my_items_list.count() - 2 ; i >= 0 ; -- i) {
 		if (my_items_list[i] -> isSelected()) {
 			if (!my_items_list[i +1] -> isSelected()) {
-				my_items_list.swapItemsAt(i, i + 1);
+				my_items_list.swap(i, i + 1);
 			}
 		}
 	}
@@ -431,7 +431,7 @@ void ChangeZValueCommand::applyLower(const QList<QGraphicsItem *> &items_list) {
 	for (int i = 1 ; i < my_items_list.count() ; ++ i) {
 		if (my_items_list[i] -> isSelected()) {
 			if (!my_items_list[i - 1] -> isSelected()) {
-				my_items_list.swapItemsAt(i, i - 1);
+				my_items_list.swap(i, i - 1);
 			}
 		}
 	}
