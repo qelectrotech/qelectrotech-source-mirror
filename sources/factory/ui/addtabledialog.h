@@ -63,6 +63,9 @@ class AddTableDialog : public QDialog
 		void on_m_table_font_pb_clicked();
 		void on_m_edit_header_margins_pb_clicked();
 		void on_m_table_margins_pb_clicked();
+		void saveConfig();
+		void loadConfig();
+		void fillSavedQuery();
 
 	private:
 		Ui::AddTableDialog *ui;

@@ -195,6 +195,9 @@
        </item>
        <item>
         <widget class="ConfigSaveLoaderWidget" name="m_config_gb">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
          <property name="title">
           <string>Configuration</string>
          </property>

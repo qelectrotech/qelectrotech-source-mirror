@@ -42,6 +42,7 @@ class ConfigSaveLoaderWidget : public QGroupBox
 
 		QString selectedText() const;
 		QString text()const;
+		void addItem(QString text);
 
 	signals:
 		void loadClicked();

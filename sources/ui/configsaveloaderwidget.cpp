@@ -38,6 +38,10 @@ QString ConfigSaveLoaderWidget::text() const {
 	return ui->m_line_edit->text();
 }
 
+void ConfigSaveLoaderWidget::addItem(QString text) {
+	ui->m_combo_box->addItem(text);
+}
+
 void ConfigSaveLoaderWidget::on_m_load_pb_clicked() {
 	emit loadClicked();
 }

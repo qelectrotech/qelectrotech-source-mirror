@@ -19,6 +19,7 @@
 #include "ui_addtabledialog.h"
 #include "elementquerywidget.h"
 #include "marginseditdialog.h"
+#include "qetutils.h"
 
 #include <QFontDialog>
 
@@ -34,7 +35,11 @@ AddTableDialog::AddTableDialog(QWidget *parent) :
 	ui->m_header_font_pb->setText(m_header_font.family());
 	ui->m_table_font_pb->setText(m_table_font.family());
 	ui->m_tab->addTab(m_query_widget, tr("Contenu"));
-	ui->m_config_gb->setDisabled(true);
+	fillSavedQuery();
+	
+	connect(ui->m_config_gb, &ConfigSaveLoaderWidget::saveClicked, this, &AddTableDialog::saveConfig);
+	connect(ui->m_config_gb, &ConfigSaveLoaderWidget::loadClicked, this, &AddTableDialog::loadConfig);
+	
 }
 
 /**
@@ -184,4 +189,113 @@ void AddTableDialog::on_m_table_margins_pb_clicked()
 	auto margins_ = MarginsEditDialog::getMargins(m_table_margins, &accept, this);
 	if (accept)
 		m_table_margins = margins_;
+}
+
+void AddTableDialog::saveConfig()
+{
+	QFile file_(QETApp::configDir() + "/graphics_table.json");
+	
+	if (file_.open(QFile::ReadWrite))
+	{
+		QJsonDocument doc_(QJsonDocument::fromJson(file_.readAll()));
+		QJsonObject root_object;
+		
+		if (!doc_.isEmpty())
+		{
+			root_object = doc_.object();
+			if (root_object.contains(ui->m_config_gb->text())) {
+				root_object.remove(ui->m_config_gb->text());
+			}
+		}
+		
+		QJsonObject header_object;
+		header_object.insert("margins", QETUtils::marginsToString(this->headerMargins()));
+		auto me = QMetaEnum::fromType<Qt::Alignment>();
+		header_object.insert("alignment", me.valueToKey(int(this->headerAlignment())));
+		header_object.insert("font", this->headerFont().toString());
+
+		QJsonObject table_object;
+		table_object.insert("margins", QETUtils::marginsToString(this->tableMargins()));
+		table_object.insert("alignment", me.valueToKey(int(this->tableAlignment())));
+		table_object.insert("font", this->tableFont().toString());
+
+		QJsonObject config_object;
+		config_object.insert("header", header_object);
+		config_object.insert("table", table_object);
+
+		root_object.insert(ui->m_config_gb->text(), config_object);
+
+		doc_.setObject(root_object);
+		file_.resize(0);
+		file_.write(doc_.toJson());
+	}
+}
+
+void AddTableDialog::loadConfig()
+{
+	auto name = ui->m_config_gb->selectedText();
+	if (name.isEmpty()) {
+		return;
+	}
+
+	QFile file_(QETApp::configDir() + "/graphics_table.json");
+	if (!file_.open(QFile::ReadOnly)) {
+		return;
+	}
+
+	QJsonDocument doc_(QJsonDocument::fromJson(file_.readAll()));
+	QJsonObject root_object(doc_.object());
+	auto config_object = root_object.value(name).toObject();
+	if (config_object.isEmpty()) {
+		return;
+	}
+
+	auto me = QMetaEnum::fromType<Qt::Alignment>();
+
+		//Header
+	auto header_object = config_object.value("header").toObject();
+	m_header_margins = QETUtils::marginsFromString(header_object.value("margins").toString());
+	switch (me.keyToValue(header_object.value("alignment").toString().toStdString().data())) {
+		case Qt::AlignLeft :
+			ui->m_header_alignment_cb->setCurrentIndex(0);
+			break;
+		case Qt::AlignCenter :
+			ui->m_header_alignment_cb->setCurrentIndex(1);
+			break;
+		default:
+			ui->m_header_alignment_cb->setCurrentIndex(2);
+	}
+	m_header_font.fromString(header_object.value("font").toString());
+	ui->m_header_font_pb->setText(m_header_font.family());
+
+		//Table
+	auto table_object = config_object.value("table").toObject();
+	m_table_margins = QETUtils::marginsFromString(table_object.value("margins").toString());
+	switch (me.keyToValue(table_object.value("alignment").toString().toStdString().data())) {
+		case Qt::AlignLeft :
+			ui->m_table_alignment_cb->setCurrentIndex(0);
+			break;
+		case Qt::AlignCenter :
+			ui->m_table_alignment_cb->setCurrentIndex(1);
+			break;
+		default:
+			ui->m_table_alignment_cb->setCurrentIndex(2);
+	}
+	m_table_font.fromString(table_object.value("font").toString());
+	ui->m_table_font_pb->setText(m_table_font.family());
+
+}
+
+void AddTableDialog::fillSavedQuery()
+{
+	QFile file(QETApp::configDir() + "/graphics_table.json");
+	if (file.open(QFile::ReadOnly))
+	{
+		QJsonDocument jsd(QJsonDocument::fromJson(file.readAll()));
+		QJsonObject jso = jsd.object();
+
+		for (auto it = jso.begin() ; it != jso.end() ; ++it) {
+			ui->m_config_gb->addItem(it.key());
+		}
+	}
 }
