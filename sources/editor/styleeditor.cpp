@@ -489,6 +489,7 @@ bool StyleEditor::setPart(CustomElementPart *new_part) {
 	if (CustomElementGraphicPart *part_graphic = dynamic_cast<CustomElementGraphicPart *>(new_part))
 	{
 		part = part_graphic;
+        m_cep_list.append(part_graphic);
 		updateForm();
 		return(true);
 	}
@@ -536,6 +537,10 @@ bool StyleEditor::setParts(QList<CustomElementPart *> part_list)
 */
 CustomElementPart *StyleEditor::currentPart() const {
 	return(part);
+}
+
+QList<CustomElementPart*> StyleEditor::currentParts() const {
+    return m_cep_list;
 }
 
 /**

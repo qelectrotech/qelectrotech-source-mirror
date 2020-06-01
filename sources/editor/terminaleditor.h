@@ -55,6 +55,7 @@ class TerminalEditor : public ElementItemEditor {
     bool setPart(CustomElementPart *) override;
     bool setParts(QList<CustomElementPart *> parts) override;
 	CustomElementPart *currentPart() const override;
+    QList<CustomElementPart*> currentParts() const override;
 	
 	public slots:
 		void updateTerminalO();

@@ -30,7 +30,7 @@
 #include <QColorDialog>
 
 DynamicTextFieldEditor::DynamicTextFieldEditor(QETElementEditor *editor, PartDynamicTextField *text_field, QWidget *parent) :
-	ElementItemEditor(editor, parent),
+    ElementItemEditor(editor, parent),
 	ui(new Ui::DynamicTextFieldEditor)
 {
 	ui->setupUi(this);
@@ -111,6 +111,14 @@ bool DynamicTextFieldEditor::setParts(QList <CustomElementPart *> parts) {
  */
 CustomElementPart *DynamicTextFieldEditor::currentPart() const {
 	return m_text_field.data();
+}
+
+QList<CustomElementPart*> DynamicTextFieldEditor::currentParts() const {
+    QList<CustomElementPart*> parts;
+    for (auto part: m_parts) {
+        parts.append(static_cast<CustomElementPart*>(part));
+    }
+    return parts;
 }
 
 void DynamicTextFieldEditor::updateForm()

@@ -54,6 +54,7 @@ class ElementItemEditor : public QWidget
 		virtual bool setParts(QList <CustomElementPart *>) {return false;}
 
 		virtual CustomElementPart *currentPart() const = 0;
+        virtual QList<CustomElementPart*> currentParts() const = 0;
 		virtual void updateForm() = 0;
 	
 		// attributes
