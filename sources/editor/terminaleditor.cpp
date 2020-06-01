@@ -153,6 +153,14 @@ CustomElementPart *TerminalEditor::currentPart() const {
     return(m_part);
 }
 
+QList<CustomElementPart*> TerminalEditor::currentParts() const {
+    QList<CustomElementPart*> parts;
+    for (auto term: m_terminals) {
+        parts.append(static_cast<CustomElementPart*>(term));
+    }
+    return parts;
+}
+
 /// Met a jour l'orientation de la borne et cree un objet d'annulation
 void TerminalEditor::updateTerminalO()
 {

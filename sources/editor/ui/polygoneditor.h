@@ -38,6 +38,7 @@ class PolygonEditor : public ElementItemEditor
 
         bool setPart(CustomElementPart *part) override;
         CustomElementPart *currentPart() const override;
+        QList<CustomElementPart*> currentParts() const override;
         void updateForm() override;
         QVector<QPointF> pointsFromTree();
         bool eventFilter(QObject *watched, QEvent *event) override;

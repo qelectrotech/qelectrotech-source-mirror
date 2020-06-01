@@ -109,6 +109,10 @@ CustomElementPart *EllipseEditor::currentPart() const {
 	return(part);
 }
 
+QList<CustomElementPart*> EllipseEditor::currentParts() const {
+    return style_->currentParts();
+}
+
 void EllipseEditor::editingFinished()
 {
 	if (m_locked) return;
