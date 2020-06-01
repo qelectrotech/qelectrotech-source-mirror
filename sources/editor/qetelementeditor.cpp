@@ -640,22 +640,40 @@ void QETElementEditor::slot_updateInformations()
         style_editable = StyleEditor::isStyleEditable(cep_list);
 
     if (same_xml_name) {
-        //The current editor already edit the selected part
-        // Expensive for a list of elements
-//        if (QWidget *widget = m_tools_dock_stack->widget(1))
-//                if (ElementItemEditor *editor = dynamic_cast<ElementItemEditor *>(widget))
-//                    if(editor->currentPart() == cep_list.first())
-//                        return;
-
         if (selection_xml_name == "terminal" ||
             selection_xml_name == "text" ||
             selection_xml_name == "dynamic_text") {
             clearToolsDock();
                 //We add the editor widget
             ElementItemEditor *editor = static_cast<ElementItemEditor*>(m_editors[selection_xml_name]);
+
+            // TODO: Check if it takes longer than setting the parts again to the editor.
+            bool equal = true;
+            QList<CustomElementPart*> parts = editor->currentParts();
+            if (parts.length() == cep_list.length()) {
+                for (auto cep: cep_list) {
+                    bool part_found = false;
+                    for (auto part: parts) {
+                        if (part == cep) {
+                            part_found = true;
+                            break;
+                        }
+                    }
+                    if (!part_found) {
+                        equal = false;
+                        break;
+                    }
+                }
+            } else
+                equal = false;
+
             if (editor)
             {
-                if (editor->setParts(cep_list))
+                bool success = true;
+                if (equal == false) {
+                    success = editor->setParts(cep_list);
+                }
+                if (success)
                 {
                     m_tools_dock_stack->insertWidget(1, editor);
                     m_tools_dock_stack -> setCurrentIndex(1);
