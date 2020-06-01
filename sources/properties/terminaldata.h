@@ -36,7 +36,15 @@ public:
     // must be public, because this class is a private member of PartTerminal/Terminal and they must
     // access this data
 public:
+    /*!
+     * \brief m_orientation
+     * Orientation of the terminal
+     */
     Qet::Orientation m_orientation;
+    /*!
+     * \brief second_point
+     * Position of the second point of the terminal in scene coordinates
+     */
     QPointF second_point;
     /*!
      * \brief m_uuid
