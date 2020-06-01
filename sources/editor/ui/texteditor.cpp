@@ -28,7 +28,7 @@
  * @param parent : the parent widget
  */
 TextEditor::TextEditor(QETElementEditor *editor,  PartText *text, QWidget *parent) :
-	ElementItemEditor(editor, parent),
+    ElementItemEditor(editor, parent),
 	ui(new Ui::TextEditor)
 {
     ui->setupUi(this);
@@ -162,6 +162,14 @@ bool TextEditor::setParts(QList <CustomElementPart *> parts) {
  */
 CustomElementPart *TextEditor::currentPart() const {
 	return m_text;
+}
+
+QList<CustomElementPart*> TextEditor::currentParts() const {
+    QList<CustomElementPart*> parts;
+    for (auto part: m_parts) {
+        parts.append(static_cast<CustomElementPart*>(part));
+    }
+    return parts;
 }
 
 /**

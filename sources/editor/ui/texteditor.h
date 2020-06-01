@@ -41,6 +41,7 @@ class TextEditor : public ElementItemEditor
 		bool setPart(CustomElementPart *part) override;
         bool setParts(QList <CustomElementPart *>) override;
 		CustomElementPart *currentPart() const override;
+        QList<CustomElementPart*> currentParts() const override;
 
 	private slots:
 		void on_m_font_pb_clicked();

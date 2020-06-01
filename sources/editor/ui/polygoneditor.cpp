@@ -98,6 +98,10 @@ CustomElementPart *PolygonEditor::currentPart() const {
     return m_part;
 }
 
+QList<CustomElementPart*> PolygonEditor::currentParts() const {
+    return m_style->currentParts();
+}
+
 /**
  * @brief PolygonEditor::updateForm
  * Update the widget
