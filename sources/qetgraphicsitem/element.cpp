@@ -303,7 +303,7 @@ void Element::drawSelection(QPainter *painter, const QStyleOptionGraphicsItem *o
 	t.setCosmetic(true);
 	painter -> setPen(t);
 	// Le dessin se fait a partir du rectangle delimitant
-	painter -> drawRoundRect(boundingRect().adjusted(1, 1, -1, -1), 10, 10);
+	painter -> drawRoundedRect(boundingRect().adjusted(1, 1, -1, -1), 10, 10);
 	painter -> restore();
 }
 
@@ -329,7 +329,7 @@ void Element::drawHighlight(QPainter *painter, const QStyleOptionGraphicsItem *o
 	painter -> setPen(Qt::NoPen);
 	painter -> setBrush(brush);
 	// Le dessin se fait a partir du rectangle delimitant
-	painter -> drawRoundRect(boundingRect().adjusted(1, 1, -1, -1), 10, 10);
+	painter -> drawRoundedRect(boundingRect().adjusted(1, 1, -1, -1), 10, 10);
 	painter -> restore();
 }
 

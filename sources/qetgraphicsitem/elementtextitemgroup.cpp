@@ -447,7 +447,7 @@ void ElementTextItemGroup::paint(QPainter *painter, const QStyleOptionGraphicsIt
 		t.setStyle(Qt::DashDotLine);
 		t.setCosmetic(true);
 		painter->setPen(t);
-		painter->drawRoundRect(boundingRect().adjusted(1, 1, -1, -1), 10, 10);
+		painter->drawRoundedRect(boundingRect().adjusted(1, 1, -1, -1), 10, 10);
 		
 		painter->restore();
 	}

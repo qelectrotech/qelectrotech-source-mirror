@@ -253,7 +253,7 @@ void DiagramTextItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *o
 		t.setStyle(Qt::DashDotLine);
 		t.setCosmetic(true);
 		painter -> setPen(t);
-		painter -> drawRoundRect(boundingRect(), 10, 10);
+		painter -> drawRoundedRect(boundingRect(), 10, 10);
 
 		painter -> restore();
 	}
