@@ -128,6 +128,10 @@ CustomElementPart *ArcEditor::currentPart() const {
 	return(part);
 }
 
+QList<CustomElementPart*> ArcEditor::currentParts() const {
+    return style_->currentParts();
+}
+
 /**
  * @brief ArcEditor::updateArcS
  * Update the start angle of the arc according to  the edited value.

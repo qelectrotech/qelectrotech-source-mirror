@@ -42,6 +42,7 @@ class RectangleEditor : public ElementItemEditor
 	
 		bool setPart(CustomElementPart *part) override;
 		CustomElementPart *currentPart() const override;
+        QList<CustomElementPart*> currentParts() const override;
 		QPointF editedTopLeft () const;
 	
 	public slots:
