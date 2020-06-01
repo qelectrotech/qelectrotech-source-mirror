@@ -647,7 +647,9 @@ void QETElementEditor::slot_updateInformations()
 //                    if(editor->currentPart() == cep_list.first())
 //                        return;
 
-        if (selection_xml_name == "terminal" || selection_xml_name == "text") {
+        if (selection_xml_name == "terminal" ||
+            selection_xml_name == "text" ||
+            selection_xml_name == "dynamic_text") {
             clearToolsDock();
                 //We add the editor widget
             ElementItemEditor *editor = static_cast<ElementItemEditor*>(m_editors[selection_xml_name]);
