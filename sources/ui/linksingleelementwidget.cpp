@@ -477,16 +477,15 @@ void LinkSingleElementWidget::linkTriggered()
 			//which element will be linked when he press the apply button
 		if (m_pending_qtwi)
 		{
-			QBrush brush(Qt::white, Qt::NoBrush);
 			for(int i=0 ; i<6 ; i++)
 			{
-				m_pending_qtwi->setBackground(i,brush);
+				m_pending_qtwi->setBackground(i,QBrush(Qt::white, Qt::NoBrush));
 			}
 		}
 		
 		for (int i=0 ; i<6 ; i++)
 		{
-			m_qtwi_at_context_menu->setBackgroundColor(i, Qt::green);
+			m_qtwi_at_context_menu->setBackground(i,QBrush(Qt::green,Qt::SolidPattern));
 		}
 		m_pending_qtwi = m_qtwi_at_context_menu;
 	}
