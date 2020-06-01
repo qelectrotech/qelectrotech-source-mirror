@@ -146,7 +146,7 @@ bool TextEditor::setParts(QList <CustomElementPart *> parts) {
         m_parts.clear();
         m_parts.append(part);
         for (int i=1; i < parts.length(); i++)
-            m_parts.append(dynamic_cast<PartText*>(parts[i]));
+            m_parts.append(static_cast<PartText*>(parts[i]));
 
         setUpChangeConnection(m_text);
 
