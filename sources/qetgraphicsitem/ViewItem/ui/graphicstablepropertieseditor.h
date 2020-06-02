@@ -53,8 +53,10 @@ class GraphicsTablePropertiesEditor : public PropertiesEditorWidget
 		virtual void updateUi() override;
 		void on_m_table_name_le_textEdited(const QString &arg1);
 		void on_m_previous_table_cb_activated(int index);
+		void on_m_previous_pb_clicked();
+		void on_m_next_pb_clicked();
 
-		private:
+	private:
 		void setUpEditConnection();
 
 	private:

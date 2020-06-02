@@ -250,6 +250,9 @@ void GraphicsTablePropertiesEditor::updateUi()
 	}
 	m_edit_connection.clear();
 
+	ui->m_next_pb->setEnabled(m_table_item->nextTable());
+	ui->m_previous_pb->setEnabled(m_table_item->previousTable());
+
 	ui->m_table_name_le->setText(m_table_item->tableName());
 	ui->m_x_pos->setValue(m_table_item->pos().x());
 	ui->m_y_pos->setValue(m_table_item->pos().y());
@@ -343,4 +346,22 @@ void GraphicsTablePropertiesEditor::on_m_previous_table_cb_activated(int index)
 	} else {
 		m_table_item->setPreviousTable(m_other_table_vector.at(ui->m_previous_table_cb->currentData().toInt()));
 	}
+}
+
+void GraphicsTablePropertiesEditor::on_m_previous_pb_clicked()
+{
+	auto new_table = m_table_item->previousTable();
+	auto old_table = m_table_item;
+	new_table->diagram()->showMe();
+	new_table->setSelected(true);
+	old_table->setSelected(false);
+}
+
+void GraphicsTablePropertiesEditor::on_m_next_pb_clicked()
+{
+	auto new_table = m_table_item->nextTable();
+	auto old_table = m_table_item;
+	new_table->diagram()->showMe();
+	new_table->setSelected(true);
+	old_table->setSelected(false);
 }

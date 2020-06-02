@@ -85,7 +85,7 @@
           <item row="1" column="7">
            <widget class="QPushButton" name="m_next_pb">
             <property name="enabled">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <property name="toolTip">
              <string>Tableau suivant</string>
@@ -126,9 +126,9 @@
            </spacer>
           </item>
           <item row="1" column="6">
-           <widget class="QPushButton" name="m_previous_cb">
+           <widget class="QPushButton" name="m_previous_pb">
             <property name="enabled">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <property name="toolTip">
              <string>Tableau précédent</string>
