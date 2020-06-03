@@ -22,6 +22,9 @@
 
 #include <QModelIndex>
 #include <QFont>
+#include <QSqlQuery>
+#include <QSqlRecord>
+
 
 /**
  * @brief NomenclatureModel::NomenclatureModel
@@ -179,12 +182,15 @@ void NomenclatureModel::query(const QString &query)
 		}
 		m_project->dataBase()->updateDB();
 		if (rm_) {
+			setHeaderString();
 			m_record = m_project->dataBase()->elementsInfoFromQuery(m_query);
 			connect(m_project->dataBase(), &projectDataBase::dataBaseUpdated, this, &NomenclatureModel::dataBaseUpdated);
 		}
 	}
 
 	if (rm_) { emit endResetModel();}
+
+
 }
 
 /**
@@ -197,18 +203,6 @@ QString NomenclatureModel::queryString() const {
 
 QETProject *NomenclatureModel::project() const {
 	return m_project.data();
-}
-
-/**
- * @brief NomenclatureModel::autoHeaders
- * Try to determine the name of each columns header
- */
-void NomenclatureModel::autoHeaders()
-{
-	auto headers = projectDataBase::headersFromElementNomenclatureViewQuery(m_query);
-	for (auto i=0 ; i<headers.size() ; ++i) {
-		this->setHeaderData(i, Qt::Horizontal, headers.at(i));
-	}
 }
 
 /**
@@ -263,7 +257,6 @@ void NomenclatureModel::fromXml(const QDomElement &element)
 		return;
 
 	query(element.firstChildElement("query").text());
-	autoHeaders();
 
 		//Index 0,0
 	auto index_00 = element.firstChildElement("index00");
@@ -300,5 +293,32 @@ void NomenclatureModel::dataBaseUpdated()
 		auto col = row ? m_record.first().count() : 1;
 
 		emit dataChanged(this->index(0,0), this->index(row-1, col-1), QVector<int>(Qt::DisplayRole));
+	}
+}
+
+void NomenclatureModel::setHeaderString()
+{
+	auto q = m_project->dataBase()->newQuery(m_query);
+	auto record = q.record();
+
+	for (auto i=0 ; i<record.count() ; ++i)
+	{
+		auto field_name = record.fieldName(i);
+		QString header_name;
+
+		if (field_name == "position") {
+			header_name = tr("Position");
+		} else if (field_name == "diagram_position") {
+			header_name = tr("Position du folio");
+		} else {
+			header_name = QETApp::elementTranslatedInfoKey(field_name);
+			if (header_name.isEmpty()) {
+				header_name = QETApp::diagramTranslatedInfoKey(field_name);
+			}
+			if (header_name.isEmpty()) {
+				header_name = field_name;
+			}
+		}
+		this->setHeaderData(i, Qt::Horizontal, header_name);
 	}
 }

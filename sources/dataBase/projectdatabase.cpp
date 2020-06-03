@@ -85,57 +85,6 @@ QVector<QStringList> projectDataBase::elementsInfoFromQuery(const QString &query
 }
 
 /**
- * @brief projectDataBase::headersFromElementsInfoQuery
- * @param query
- * @return the header according to @query.
- * Header can be false, notably when user create is own query.
- */
-QStringList projectDataBase::headersFromElementNomenclatureViewQuery(const QString &query)
-{
-	QStringList header_string;
-	if (!query.startsWith("SELECT ") && !query.contains("FROM")) {
-		return header_string;
-	}
-
-	auto header = query;
-	header.remove(0, 7); //Remove SELECT from the string;
-	header.truncate(header.indexOf("FROM")); //Now we only have the string between SELECT and FROM
-	header.replace(" ", ""); //remove white space
-	QStringList list = header.split(","); //split each column
-
-	if (list.isEmpty()) {
-		return header_string;
-	}
-
-	for (int i=0 ; i<list.size() ; ++i)
-	{
-		auto str = list.at(i);
-
-		if (str == "position") {
-			header_string.append(tr("Position"));
-		} else if (str == "diagram_position") {
-			header_string.append(tr("Position du folio"));
-		} else {
-			auto elmt_str = QETApp::elementTranslatedInfoKey(str);
-			if (!elmt_str.isEmpty()) {
-				header_string.append(elmt_str);
-				continue;
-			}
-			auto diagram_str = QETApp::diagramTranslatedInfoKey(str);
-			if (!diagram_str.isEmpty()) {
-				header_string.append(diagram_str);
-				continue;
-			}
-			else {
-				header_string.append(str);
-			}
-		}
-	}
-
-	return header_string;
-}
-
-/**
  * @brief projectDataBase::updateDB
  * Up to date the content of the data base.
  * Except at the creation of this class,
@@ -158,6 +107,14 @@ void projectDataBase::updateDB()
  */
 QETProject *projectDataBase::project() const {
 	return m_project;
+}
+
+/**
+ * @brief projectDataBase::newQuery
+ * @return a QSqlquery with @query as query and the internal database of this class as database to use.
+ */
+QSqlQuery projectDataBase::newQuery(const QString &query) {
+	return QSqlQuery(query, m_data_base);
 }
 
 /**

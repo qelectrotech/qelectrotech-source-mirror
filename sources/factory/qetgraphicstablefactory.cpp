@@ -97,7 +97,6 @@ QetGraphicsTableItem *QetGraphicsTableFactory::newTable(Diagram *diagram, AddTab
 	{
 		auto model = new NomenclatureModel(diagram->project(), diagram->project());
 		model->query(dialog->queryStr());
-		model->autoHeaders();
 		model->setData(model->index(0,0), int(dialog->tableAlignment()), Qt::TextAlignmentRole);
 		model->setData(model->index(0,0), dialog->tableFont(), Qt::FontRole);
 		model->setData(model->index(0,0), QETUtils::marginsToString(dialog->headerMargins()), Qt::UserRole+1);

@@ -48,8 +48,7 @@ class projectDataBase : public QObject
 		QVector<QStringList> elementsInfoFromQuery(const QString &query);
 		void updateDB();
 		QETProject *project() const;
-
-		static QStringList headersFromElementNomenclatureViewQuery(const QString &query);
+		QSqlQuery newQuery(const QString &query = QString());
 
 	signals:
 		void dataBaseUpdated();

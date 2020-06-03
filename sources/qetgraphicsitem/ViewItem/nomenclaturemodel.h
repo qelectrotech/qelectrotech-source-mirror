@@ -48,7 +48,6 @@ class NomenclatureModel : public QAbstractTableModel
 		void query(const QString &query);
 		QString queryString() const;
 		QETProject *project() const;
-		void autoHeaders();
 
 		QDomElement toXml(QDomDocument &document) const;
 		void fromXml(const QDomElement &element);
@@ -56,6 +55,7 @@ class NomenclatureModel : public QAbstractTableModel
 
 	private:
 		void dataBaseUpdated();
+		void setHeaderString();
 
 	private:
 		QPointer<QETProject> m_project;
