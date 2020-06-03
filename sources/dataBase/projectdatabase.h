@@ -45,7 +45,6 @@ class projectDataBase : public QObject
 	public:
 		virtual ~projectDataBase() override;
 
-		QVector<QStringList> elementsInfoFromQuery(const QString &query);
 		void updateDB();
 		QETProject *project() const;
 		QSqlQuery newQuery(const QString &query = QString());

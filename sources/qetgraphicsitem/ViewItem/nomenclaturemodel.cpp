@@ -24,6 +24,7 @@
 #include <QFont>
 #include <QSqlQuery>
 #include <QSqlRecord>
+#include <QSqlError>
 
 
 /**
@@ -183,7 +184,7 @@ void NomenclatureModel::query(const QString &query)
 		m_project->dataBase()->updateDB();
 		if (rm_) {
 			setHeaderString();
-			m_record = m_project->dataBase()->elementsInfoFromQuery(m_query);
+			fillValue();
 			connect(m_project->dataBase(), &projectDataBase::dataBaseUpdated, this, &NomenclatureModel::dataBaseUpdated);
 		}
 	}
@@ -276,7 +277,10 @@ void NomenclatureModel::fromXml(const QDomElement &element)
  */
 void NomenclatureModel::dataBaseUpdated()
 {
-	auto new_record = m_project->dataBase()->elementsInfoFromQuery(m_query);
+	auto original_record = m_record;
+	fillValue();
+	auto new_record = m_record;
+	m_record = original_record;
 
 		//This a very special case, if this nomenclature model is added
 		//befor any element, column count return 0, so in this case we emit column inserted
@@ -320,5 +324,27 @@ void NomenclatureModel::setHeaderString()
 			}
 		}
 		this->setHeaderData(i, Qt::Horizontal, header_name);
+	}
+}
+
+void NomenclatureModel::fillValue()
+{
+	m_record.clear();
+
+	auto query_ = m_project->dataBase()->newQuery(m_query);
+	if (!query_.exec()) {
+		qDebug() << "Query error : " << query_.lastError();
+	}
+
+	while (query_.next())
+	{
+		QStringList record_;
+		auto i=0;
+		while (query_.value(i).isValid())
+		{
+			record_ << query_.value(i).toString();
+			++i;
+		}
+		m_record << record_;
 	}
 }

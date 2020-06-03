@@ -56,6 +56,7 @@ class NomenclatureModel : public QAbstractTableModel
 	private:
 		void dataBaseUpdated();
 		void setHeaderString();
+		void fillValue();
 
 	private:
 		QPointer<QETProject> m_project;

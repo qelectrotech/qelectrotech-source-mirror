@@ -54,37 +54,6 @@ projectDataBase::~projectDataBase() {
 }
 
 /**
- * @brief projectDataBase::elementsInfoFromQuery
- * @param query
- * @return quickly return all information about elements from @query, ensure that all
- * record returned by the query can be casted to string.
- * Each item of the Qvector represent an element and each value of the QStringList represent the recorded value.
- */
-QVector<QStringList> projectDataBase::elementsInfoFromQuery(const QString &query)
-{
-	QVector<QStringList> result_;
-
-	QSqlQuery query_(query, m_data_base);
-	if (!query_.exec()) {
-		qDebug() << "Query error : " << query_.lastError();
-	}
-
-	while (query_.next())
-	{
-		QStringList record_;
-		auto i=0;
-		while (query_.value(i).isValid())
-		{
-			record_ << query_.value(i).toString();
-			++i;
-		}
-		result_ << record_;
-	}
-
-	return result_;
-}
-
-/**
  * @brief projectDataBase::updateDB
  * Up to date the content of the data base.
  * Except at the creation of this class,
