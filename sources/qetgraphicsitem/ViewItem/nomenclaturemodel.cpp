@@ -40,6 +40,19 @@ NomenclatureModel::NomenclatureModel(QETProject *project, QObject *parent) :
 }
 
 /**
+ * @brief NomenclatureModel::NomenclatureModel
+ * @param other_model
+ */
+NomenclatureModel::NomenclatureModel(const NomenclatureModel &other_model)
+{
+	this->setParent(other_model.parent());
+	m_project = other_model.m_project;
+	connect(m_project->dataBase(), &projectDataBase::dataBaseUpdated, this, &NomenclatureModel::dataBaseUpdated);
+	m_index_0_0_data = other_model.m_index_0_0_data;
+	query(other_model.queryString());
+}
+
+/**
  * @brief NomenclatureModel::rowCount
  * Reimplemented for QAbstractTableModel
  * @param parent
@@ -346,5 +359,6 @@ void NomenclatureModel::fillValue()
 			++i;
 		}
 		m_record << record_;
+
 	}
 }

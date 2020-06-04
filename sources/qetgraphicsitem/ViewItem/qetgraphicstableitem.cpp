@@ -313,9 +313,9 @@ void QetGraphicsTableItem::setPreviousTable(QetGraphicsTableItem *table)
 		m_previous_table->setNextTable(this);
 		setModel(m_previous_table->m_model);
 	}
-	else	//Remove model
-	{
-		setModel(nullptr);
+	else //Copie the model of old previous table
+	{		
+		setModel(new NomenclatureModel(*static_cast<NomenclatureModel *>(old_previous_table->model())));
 	}
 
 	if (old_previous_table &&

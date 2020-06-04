@@ -38,6 +38,7 @@ class NomenclatureModel : public QAbstractTableModel
 
 	public:
 		explicit NomenclatureModel(QETProject *project, QObject *parent = nullptr);
+		explicit NomenclatureModel (const NomenclatureModel &other_model);
 
 		int rowCount(const QModelIndex &parent = QModelIndex()) const override;
 		int columnCount(const QModelIndex &parent = QModelIndex()) const override;
