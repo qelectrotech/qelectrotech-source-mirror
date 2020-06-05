@@ -26,6 +26,7 @@
 #include "terminal.h"
 #include "diagramcommands.h"
 #include "qetgraphicstableitem.h"
+#include "qetdiagrameditor.h"
 
 /**
  * @brief DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand
@@ -75,16 +76,29 @@ DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand(Diagram *diagram, const D
 	m_removed_contents.m_texts_groups.clear();
 	setPotentialsOfRemovedElements();
 
-		//Store some information about the tables
+		//Get all linkeds table of removed table.
 	for (auto table : m_removed_contents.m_tables)
 	{
-		tableStatus status;
-		status.next = table->nextTable();
-		status.previous = table->previousTable();
-		m_tables_status.insert(table, status);
+			//Table is already managed, jump to next loop
+		if (m_table_scene_hash.keys().contains(table))
+			continue;
+
+		auto first_table  = table; //The first table if the table is linked to another
+		while(first_table->previousTable())
+			first_table = first_table->previousTable();
+		auto current_table = first_table;
+
+		m_table_scene_hash.insert(first_table, first_table->scene());
+		while (current_table->nextTable())
+		{
+			current_table = current_table->nextTable();
+			m_table_scene_hash.insert(current_table, current_table->scene());
+		}
 	}
 	
 	setText(QString(QObject::tr("supprimer %1", "undo caption - %1 is a sentence listing the removed content")).arg(m_removed_contents.sentence(DiagramContent::All)));
+		//Table is now managed by @m_table_scene_hash, we clear the tables of m_removed_content
+	m_removed_contents.m_tables.clear();
 	m_diagram->qgiManager().manage(m_removed_contents.items(DiagramContent::All));
 }
 
@@ -240,24 +254,10 @@ void DeleteQGraphicsItemCommand::undo()
 		}
 	}
 
-	for (auto table : m_removed_contents.m_tables)
+	for (auto table : m_table_scene_hash.keys())
 	{
-		auto pair = m_tables_status.value(table);
-
-		if(pair.next && pair.previous) // Table is between two tables
-		{
-			pair.next->setPreviousTable(nullptr);
-			table->setPreviousTable(pair.previous);
-			pair.next->setPreviousTable(table);
-		}
-		else if (pair.next) //Table is the first table of linked tables
-		{
-			auto model = pair.next->model();
-			pair.next->setPreviousTable(table);
-			table->setModel(model);
-		}
-		else if (pair.previous) { //Table is the last of linked tables
-			table->setPreviousTable(pair.previous);
+		if (!m_table_scene_hash.value(table).isNull()) {
+			m_table_scene_hash.value(table)->addItem(table);
 		}
 	}
 	
@@ -303,20 +303,12 @@ void DeleteQGraphicsItemCommand::redo()
 		deti->setParentItem(nullptr);
 	}
 
-	for (auto table : m_removed_contents.m_tables)
+	for (auto table : m_table_scene_hash.keys())
 	{
-		auto pair = m_tables_status.value(table);
-
-		if(pair.next && pair.previous) { // Table is between two tables
-			pair.next->setPreviousTable(pair.previous); //change the previous table of the current next table of @table
-		} else if (pair.next) { //Table is the first table of linked tables
-			pair.next->setPreviousTable(nullptr);	//Next table haven't got model anymore
-			pair.next->setModel(table->model());
-		} else if (pair.previous) { //Table is the last of linked tables
-			table->setPreviousTable(nullptr); //Remove the previous table @table
+		if (!m_table_scene_hash.value(table).isNull()) {
+			m_table_scene_hash.value(table)->removeItem(table);
 		}
 	}
-
 	
 	for(QGraphicsItem *item : m_removed_contents.items())
 		m_diagram->removeItem(item);
