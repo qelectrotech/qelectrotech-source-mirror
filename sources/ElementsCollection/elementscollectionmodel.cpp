@@ -112,7 +112,7 @@ bool ElementsCollectionModel::canDropMimeData(const QMimeData *data, Qt::DropAct
 	if (!(QStandardItemModel::canDropMimeData(data, action, row, column, parent) && parent.isValid()))
 		return false;
 
-	QStandardItem *qsi = itemFromIndex(parent.child(row, column));
+	QStandardItem *qsi = itemFromIndex(parent.QModelIndex::model()->index(row, column));
 	if (!qsi)
 		qsi = itemFromIndex(parent);
 
@@ -150,8 +150,7 @@ bool ElementsCollectionModel::canDropMimeData(const QMimeData *data, Qt::DropAct
 bool ElementsCollectionModel::dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent)
 {
 	Q_UNUSED(action)
-
-	QStandardItem *qsi = itemFromIndex(parent.child(row, column));
+	QStandardItem *qsi = itemFromIndex(parent.QModelIndex::model()->index(row, column));
 	if (!qsi)
 		qsi = itemFromIndex(parent);
 

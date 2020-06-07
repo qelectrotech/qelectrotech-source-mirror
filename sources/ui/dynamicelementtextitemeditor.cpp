@@ -146,7 +146,7 @@ void DynamicElementTextItemEditor::setCurrentText(DynamicElementTextItem *text)
 		return;
 	
 	ui->m_tree_view->expand(index);
-	ui->m_tree_view->expand(index.child(0,0));
+	ui->m_tree_view->expand(index.QModelIndex::model()->index(0,0));
 	ui->m_tree_view->setCurrentIndex(index);
 	ui->m_remove_selection->setEnabled(true);
 }

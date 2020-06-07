@@ -870,7 +870,7 @@ bool DynamicElementTextModel::indexIsText(const QModelIndex &index) const
 	if(index.column() == 1)
 	{
 		if(index.parent().isValid())
-			item = itemFromIndex(index.parent().child(index.row(),0));
+			item = itemFromIndex(index.parent().QModelIndex::model()->index(index.row(),0));
 		else
 			item = itemFromIndex(this->index(index.row(),0));
 	}
@@ -897,7 +897,7 @@ bool DynamicElementTextModel::indexIsGroup(const QModelIndex &index) const
 	if(index.column() == 1)
 	{
 		if(index.parent().isValid())
-			item = itemFromIndex(index.parent().child(index.row(),0));
+			item = itemFromIndex(index.parent().QModelIndex::model()->index(index.row(),0));
 		else
 			item = itemFromIndex(this->index(index.row(),0));
 	}
@@ -918,7 +918,7 @@ bool DynamicElementTextModel::canDropMimeData(const QMimeData *data, Qt::DropAct
 	{
 		QModelIndex index;
 		if(parent.isValid() && row != -1 && column !=1) //Insert in child of parent
-			index = parent.child(row, column);
+			index = parent.QModelIndex::model()->index(row, column);
 		else if (parent.isValid() && row == -1 && column == -1) //Drop in parent
 			index = parent;
 		
@@ -977,7 +977,7 @@ bool DynamicElementTextModel::dropMimeData(const QMimeData *data, Qt::DropAction
 		
 		QModelIndex index;
 		if(parent.isValid() && row != -1 && column !=1) //Insert in child of parent
-			index = parent.child(row, column);
+			index = parent.QModelIndex::model()->index(row, column);
 		else if (parent.isValid() && row == -1 && column == -1) //Drop in parent
 			index = parent;
 
