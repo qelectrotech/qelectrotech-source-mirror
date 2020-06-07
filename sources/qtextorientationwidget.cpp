@@ -286,7 +286,9 @@ QString QTextOrientationWidget::getMostUsableStringForRadius(const qreal &radius
 	// trie les longueurs par ordre croissant
 	std::sort(available_lengths.begin(), available_lengths.end());
 	// recherche la position ou l'on insererait le rayon
-	QList<qreal>::const_iterator i = qUpperBound(available_lengths, radius);
+	QList<qreal>::const_iterator i = std::upper_bound(available_lengths.begin(),
+							  available_lengths.end(),
+							  radius);
 	
 	// la valeur precedent cette position est donc celle qui nous interesse
 	if (i == available_lengths.begin()) {
