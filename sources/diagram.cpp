@@ -1093,9 +1093,21 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 	if (content_ptr) {
 		content_ptr -> m_elements           = added_elements;
 		content_ptr -> m_conductors_to_move = added_conductors;
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
 		content_ptr -> m_text_fields        = added_texts.toSet();
 		content_ptr -> m_images			    = added_images.toSet();
 		content_ptr -> m_shapes			    = added_shapes.toSet();
+#else
+		content_ptr -> m_text_fields	= QSet<IndependentTextItem *>(
+					added_texts.begin(),
+					added_texts.end());
+		content_ptr -> m_images		= QSet<DiagramImageItem *>(
+					added_images.begin(),
+					added_images.end());
+		content_ptr -> m_shapes		= QSet<QetShapeItem *>(
+					added_shapes.begin(),
+					added_shapes.end());
+#endif
 		content_ptr -> m_tables             = added_tables;
 	}
 
