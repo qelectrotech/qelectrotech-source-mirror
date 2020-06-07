@@ -47,7 +47,6 @@ class DiagramContent
 	public:
 		DiagramContent();
 		DiagramContent(Diagram *diagram, bool selected = true);
-		DiagramContent(const DiagramContent &);
 		~DiagramContent();
 		
 		/// Used to filter the different items carried by this container.

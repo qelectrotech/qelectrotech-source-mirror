@@ -29,7 +29,6 @@ class TitleBlockTemplateCellsSet : public QList<TitleBlockTemplateVisualCell *> 
 	// Constructors, destructor
 	public:
 	TitleBlockTemplateCellsSet(const TitleBlockTemplateView *);
-	TitleBlockTemplateCellsSet(const TitleBlockTemplateCellsSet &);
 	virtual ~TitleBlockTemplateCellsSet();
 	
 	// methods

@@ -30,16 +30,6 @@ TitleBlockTemplateCellsSet::TitleBlockTemplateCellsSet(const TitleBlockTemplateV
 }
 
 /**
-	Copy constructor
-	@param copy TitleBlockTemplateCellsSet object to copy
-*/
-TitleBlockTemplateCellsSet::TitleBlockTemplateCellsSet(const TitleBlockTemplateCellsSet &copy) :
-	QList<TitleBlockTemplateVisualCell *>(copy),
-	parent_view_(copy.parent_view_)
-{
-}
-
-/**
 	Destructor
 */
 TitleBlockTemplateCellsSet::~TitleBlockTemplateCellsSet() {

@@ -116,26 +116,6 @@ DiagramContent::DiagramContent(Diagram *diagram, bool selected) :
 	}
 }
 
-/**
- * @brief DiagramContent::DiagramContent
- * Copy constructor
- * @param other
- */
-DiagramContent::DiagramContent(const DiagramContent &other) :
-	m_elements(other.m_elements),
-	m_text_fields(other.m_text_fields),
-	m_images(other.m_images),
-	m_shapes(other.m_shapes),
-	m_conductors_to_update(other.m_conductors_to_update),
-	m_conductors_to_move(other.m_conductors_to_move),
-	m_other_conductors(other.m_other_conductors),
-	m_potential_conductors(other.m_potential_conductors),
-	m_element_texts(other.m_element_texts),
-	m_texts_groups(other.m_texts_groups),
-	m_selected_items(other.m_selected_items),
-	m_tables(other.m_tables)
-{}
-
 DiagramContent::~DiagramContent()
 {}
 

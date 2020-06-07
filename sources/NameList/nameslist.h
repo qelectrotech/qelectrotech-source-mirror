@@ -31,7 +31,6 @@ class NamesList {
 	// constructors, destructor
 	public:
 	NamesList();
-	NamesList(const NamesList &);
 	virtual ~NamesList();
 	
 	// attributes
