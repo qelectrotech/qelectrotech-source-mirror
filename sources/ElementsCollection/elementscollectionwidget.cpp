@@ -123,7 +123,8 @@ void ElementsCollectionWidget::setCurrentLocation(const ElementsLocation &locati
 	if (!location.exist())
 		return;
 	
-	m_tree_view->setCurrentIndex(m_model->indexFromLocation(location));
+    if (m_model)
+        m_tree_view->setCurrentIndex(m_model->indexFromLocation(location));
 }
 
 void ElementsCollectionWidget::leaveEvent(QEvent *event)
