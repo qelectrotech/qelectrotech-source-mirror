@@ -43,7 +43,8 @@ NomenclatureModel::NomenclatureModel(QETProject *project, QObject *parent) :
  * @brief NomenclatureModel::NomenclatureModel
  * @param other_model
  */
-NomenclatureModel::NomenclatureModel(const NomenclatureModel &other_model)
+NomenclatureModel::NomenclatureModel(const NomenclatureModel &other_model):
+		QAbstractTableModel(other_model.parent())
 {
 	this->setParent(other_model.parent());
 	m_project = other_model.m_project;
