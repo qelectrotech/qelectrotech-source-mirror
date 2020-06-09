@@ -20,6 +20,7 @@
 #include "qet.h"
 
 #include <QThread>
+#include <QDate>
 
 AboutQETDialog::AboutQETDialog(QWidget *parent) :
 	QDialog(parent),
@@ -42,9 +43,10 @@ AboutQETDialog::~AboutQETDialog()
 
 void AboutQETDialog::setAbout()
 {
+
 	QString str  = tr("QElectroTech, une application de réalisation de schémas électriques.", "about tab, description line") +
-			"<br><br>" +
-			tr("2006-2019 Les développeurs de QElectroTech", "about tab, developers line") +
+			"<br><br> 2006-"+QDate::currentDate().toString("yyyy")+
+			tr(" Les développeurs de QElectroTech", "about tab, developers line") +
 			"<br><br>"
 			"<a href=\"https://qelectrotech.org/\">https://qelectrotech.org/</a>"
 			"<br><br>" +
