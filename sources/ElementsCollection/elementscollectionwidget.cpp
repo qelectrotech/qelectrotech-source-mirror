@@ -638,7 +638,11 @@ void ElementsCollectionWidget::search()
 	}
 
 	hideCollection(true);
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
 	QStringList text_list = text.split("+", QString::SkipEmptyParts);
+#else
+	QStringList text_list = text.split("+", Qt::SkipEmptyParts);
+#endif
 	QModelIndexList match_index;
 	foreach (QString txt, text_list) {
 		match_index << m_model->match(m_showed_index.isValid() ? m_model->index(0,0,m_showed_index) : m_model->index(0,0),

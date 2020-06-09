@@ -334,8 +334,12 @@ void TitleBlockTemplate::parseRows(const QString &rows_string) {
 	// parse the rows attribute: we expect a serie of absolute heights
 	QRegExp row_size_format("^([0-9]+)(?:px)?$", Qt::CaseInsensitive);
 	bool conv_ok;
-	
+
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
 	QStringList rows_descriptions = rows_string.split(QChar(';'), QString::SkipEmptyParts);
+#else
+	QStringList rows_descriptions = rows_string.split(QChar(';'), Qt::SkipEmptyParts);
+#endif
 	foreach (QString rows_description, rows_descriptions) {
 		if (row_size_format.exactMatch(rows_description)) {
 			int row_size = row_size_format.capturedTexts().at(1).toInt(&conv_ok);
@@ -357,8 +361,12 @@ void TitleBlockTemplate::parseColumns(const QString &cols_string) {
 	QRegExp abs_col_size_format("^([0-9]+)(?:px)?$", Qt::CaseInsensitive);
 	QRegExp rel_col_size_format("^([rt])([0-9]+)%$", Qt::CaseInsensitive);
 	bool conv_ok;
-	
+
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
 	QStringList cols_descriptions = cols_string.split(QChar(';'), QString::SkipEmptyParts);
+#else
+	QStringList cols_descriptions = cols_string.split(QChar(';'), Qt::SkipEmptyParts);
+#endif
 	foreach (QString cols_description, cols_descriptions) {
 		if (abs_col_size_format.exactMatch(cols_description)) {
 			int col_size = abs_col_size_format.capturedTexts().at(1).toInt(&conv_ok);

@@ -730,7 +730,11 @@ void ConductorProperties::readStyle(const QString &style_string) {
 	if (style_string.isEmpty()) return;
 	
 	// recupere la liste des couples style / valeur
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
 	QStringList styles = style_string.split(";", QString::SkipEmptyParts);
+#else
+	QStringList styles = style_string.split(";", Qt::SkipEmptyParts);
+#endif
 	
 	QRegExp rx("^\\s*([a-z-]+)\\s*:\\s*([a-z-]+)\\s*$");
 	foreach (QString style_str, styles) {

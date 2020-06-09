@@ -447,8 +447,12 @@ QString QET::joinWithSpaces(const QStringList &string_list) {
 */
 QStringList QET::splitWithSpaces(const QString &string) {
 	// les chaines sont separees par des espaces non echappes = avec un nombre nul ou pair de backslashes devant
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
 	QStringList escaped_strings = string.split(QRegExp("[^\\]?(?:\\\\)* "), QString::SkipEmptyParts);
-	
+#else
+	QStringList escaped_strings = string.split(QRegExp("[^\\]?(?:\\\\)* "), Qt::SkipEmptyParts);
+#endif
+
 	QStringList returned_list;
 	foreach(QString escaped_string, escaped_strings) {
 		returned_list << QET::unescapeSpaces(escaped_string);

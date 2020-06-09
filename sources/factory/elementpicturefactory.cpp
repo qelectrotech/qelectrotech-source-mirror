@@ -556,8 +556,11 @@ void ElementPictureFactory::setPainterStyle(const QDomElement &dom, QPainter &pa
 	pen.setCapStyle(Qt::SquareCap);
 
 		//Get the couples style/value
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
 	const QStringList styles = dom.attribute("style").split(";", QString::SkipEmptyParts);
-
+#else
+	const QStringList styles = dom.attribute("style").split(";", Qt::SkipEmptyParts);
+#endif
 	QRegExp rx("^\\s*([a-z-]+)\\s*:\\s*([a-zA-Z-]+)\\s*$");
 	for (QString style : styles) {
 		if (rx.exactMatch(style)) {

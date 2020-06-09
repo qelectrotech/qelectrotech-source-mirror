@@ -495,7 +495,11 @@ void CustomElementGraphicPart::stylesFromXml(const QDomElement &qde)
 	resetStyles();
 	
 		//Get the list of pair style/value
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
 	QStringList styles = qde.attribute("style").split(";", QString::SkipEmptyParts);
+#else
+	QStringList styles = qde.attribute("style").split(";", Qt::SkipEmptyParts);
+#endif
 	
 		//Check each pair of style
 	QRegExp rx("^\\s*([a-z-]+)\\s*:\\s*([a-zA-Z-]+)\\s*$");
