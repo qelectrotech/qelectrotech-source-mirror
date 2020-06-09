@@ -67,7 +67,11 @@ bool ConductorNumExport::toCsv()
         if (file.open(QIODevice::WriteOnly | QIODevice::Text))
         {
             QTextStream stream(&file);
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)	// ### Qt 6: remove
             stream << wiresNum() << endl;
+#else
+            stream << wiresNum() << &Qt::endl(stream);
+#endif
         }
         else {
             return false;
