@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "exportpropertieswidget.h"
+#include <QFileSystemModel>
 
 /**
 	Constructeur
@@ -126,7 +127,7 @@ void ExportPropertiesWidget::build() {
 	dirpath_label = new QLabel(tr("Dossier cible :"), this);
 	dirpath = new QLineEdit(this);
 	QCompleter *completer = new QCompleter(this);
-	completer -> setModel(new QDirModel(completer));
+	completer -> setModel(new QFileSystemModel(completer));
 	dirpath -> setCompleter(completer);
 	button_browse = new QPushButton(tr("Parcourir"), this);
 	hboxLayout -> addWidget(dirpath_label);
