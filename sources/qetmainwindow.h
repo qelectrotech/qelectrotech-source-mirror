@@ -28,7 +28,7 @@ class QETMainWindow : public QMainWindow {
 	
 	// constructor, destructor
 	public:
-	QETMainWindow(QWidget * = nullptr, Qt::WindowFlags = nullptr);
+	QETMainWindow(QWidget * = nullptr, Qt::WindowFlags = Qt::Widget);
 	~QETMainWindow() override;
 	
 	// methods
