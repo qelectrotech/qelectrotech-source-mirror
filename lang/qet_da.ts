@@ -1020,7 +1020,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="182"/>
         <source>Section du conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Leder sektion</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="268"/>
@@ -4148,13 +4148,13 @@ Brug avanceret redigering til dette.</translation>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="430"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="434"/>
         <source>Couleur du conducteur</source>
-        <translation type="unfinished">Leder farve</translation>
+        <translation>Leder farve</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="430"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="434"/>
         <source>Section du conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Leder sektion</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="42"/>
@@ -4502,12 +4502,12 @@ Brug avanceret redigering til dette.</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/nomenclaturemodel.cpp" line="328"/>
         <source>Position</source>
-        <translation type="unfinished">Placering</translation>
+        <translation>Placering</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/nomenclaturemodel.cpp" line="330"/>
         <source>Position du folio</source>
-        <translation type="unfinished">Ark placering</translation>
+        <translation>Ark placering</translation>
     </message>
 </context>
 <context>
@@ -4860,7 +4860,8 @@ Spænding/protokol: %1</translation>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="296"/>
         <source>
 Couleur du conducteur : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Leder farve: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="197"/>
@@ -4868,7 +4869,8 @@ Couleur du conducteur : %1</source>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="298"/>
         <source>
 Section du conducteur : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Leder sektion: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="351"/>
@@ -9241,7 +9243,7 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="91"/>
         <source>Couleur du conducteur</source>
-        <translation type="unfinished">Leder farve</translation>
+        <translation>Leder farve</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="121"/>
@@ -9252,7 +9254,7 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="312"/>
         <source>Section du conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Leder sektion</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="342"/>
