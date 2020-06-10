@@ -127,7 +127,7 @@ void TitleBlockTemplateView::zoomFit() {
 */
 void TitleBlockTemplateView::zoomReset() {
 	adjustSceneRect();
-	resetMatrix();
+	resetTransform();
 }
 
 /**

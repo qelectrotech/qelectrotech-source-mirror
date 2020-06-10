@@ -332,7 +332,7 @@ void DiagramView::zoomContent() {
 	Reinitialise le zoom
 */
 void DiagramView::zoomReset() {
-	resetMatrix();
+	resetTransform();
 	adjustGridToZoom();
 }
 

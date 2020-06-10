@@ -138,8 +138,8 @@ void ElementView::zoomFit() {
 	Reinitialise le zoom
 */
 void ElementView::zoomReset() {
-    resetSceneRect();
-	resetMatrix();
+	resetSceneRect();
+	resetTransform();
 	scale(4.0, 4.0);
 }
 
