@@ -20,6 +20,7 @@
 
 #include "PropertiesEditor/propertieseditorwidget.h"
 #include <QPointer>
+#include <QButtonGroup>
 
 namespace Ui {
 class GraphicsTablePropertiesEditor;

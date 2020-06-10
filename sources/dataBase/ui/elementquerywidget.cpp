@@ -43,7 +43,11 @@ ElementQueryWidget::ElementQueryWidget(QWidget *parent) :
 	m_button_group.addButton(ui->m_button_cb, 3);
 	m_button_group.addButton(ui->m_coil_cb, 4);
 	m_button_group.addButton(ui->m_protection_cb, 5);
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)	// ### Qt 6: remove
 	connect(&m_button_group, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::buttonClicked), [this](int id)
+#else
+	connect(&m_button_group, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::idClicked), [this](int id)
+#endif
 	{
 		auto check_box = static_cast<QCheckBox *>(m_button_group.button(0));
 		if (id == 0)
