@@ -19,8 +19,10 @@
 #define CROSSREFITEM_H
 
 #include <QGraphicsObject>
-#include"properties/xrefproperties.h"
 #include <QPicture>
+#include <QMultiMap>
+
+#include"properties/xrefproperties.h"
 
 class Element;
 class DynamicElementTextItem;
@@ -104,7 +106,7 @@ class CrossRefItem : public QGraphicsObject
 		QPainterPath   m_shape_path;
 		XRefProperties m_properties;
 		int			   m_drawed_contacts;
-		QMap <Element *, QRectF> m_hovered_contacts_map;
+		QMultiMap <Element *, QRectF> m_hovered_contacts_map;
 		Element *m_hovered_contact = nullptr;
 		DynamicElementTextItem *m_text = nullptr;
 		ElementTextItemGroup *m_group = nullptr;

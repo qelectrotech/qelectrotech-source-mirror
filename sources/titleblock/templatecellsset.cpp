@@ -15,6 +15,9 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+
+#include <QMultiMap>
+
 #include "templatecellsset.h"
 #include "templatevisualcell.h"
 #include "templateview.h"
@@ -100,7 +103,7 @@ TitleBlockTemplateVisualCell *TitleBlockTemplateCellsSet::topLeftCell() const {
 	QMultiMap<int, TitleBlockTemplateVisualCell *> top_cells;
 	foreach (TitleBlockTemplateVisualCell *cell_view, *this) {
 		if (TitleBlockCell *cell = cell_view -> cell()) {
-			top_cells.insertMulti(cell -> num_row, cell_view);
+			top_cells.insert(cell -> num_row, cell_view);
 		}
 	}
 	QList<TitleBlockTemplateVisualCell *> candidates = top_cells.values(top_cells.keys().first());
@@ -130,7 +133,7 @@ TitleBlockTemplateVisualCell *TitleBlockTemplateCellsSet::bottomRightCell() cons
 	// look for cells at the bottom
 	QMultiMap<qreal, TitleBlockTemplateVisualCell *> bottom_cells;
 	foreach (TitleBlockTemplateVisualCell *cell_view, *this) {
-		bottom_cells.insertMulti(cell_view -> geometry().bottom(), cell_view);
+		bottom_cells.insert(cell_view -> geometry().bottom(), cell_view);
 	}
 	QList<TitleBlockTemplateVisualCell *> candidates = bottom_cells.values(bottom_cells.keys().last());
 	if (candidates.count() == 1) return(candidates.first());

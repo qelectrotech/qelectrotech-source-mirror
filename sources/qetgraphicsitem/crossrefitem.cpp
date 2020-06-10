@@ -681,7 +681,7 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
 
 		if (m_hovered_contacts_map.contains(elmt))
 		{
-			m_hovered_contacts_map.insertMulti(elmt, bounding_rect);
+			m_hovered_contacts_map.insert(elmt, bounding_rect);
 		}
 		else
 		{
@@ -740,7 +740,7 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
 		bounding_rect = bounding_rect.united(text_rect);
 
 		if (m_hovered_contacts_map.contains(elmt)) {
-			m_hovered_contacts_map.insertMulti(elmt, bounding_rect);
+			m_hovered_contacts_map.insert(elmt, bounding_rect);
 		}
 		else {
 			m_hovered_contacts_map.insert(elmt, bounding_rect);
@@ -778,7 +778,7 @@ void CrossRefItem::fillCrossRef(QPainter &painter)
 
 		if (m_hovered_contacts_map.contains(elmt))
 		{
-			m_hovered_contacts_map.insertMulti(elmt, bounding);
+			m_hovered_contacts_map.insert(elmt, bounding);
 		}
 		else
 		{
@@ -802,7 +802,7 @@ void CrossRefItem::fillCrossRef(QPainter &painter)
 
 		if (m_hovered_contacts_map.contains(elmt))
 		{
-			m_hovered_contacts_map.insertMulti(elmt, bounding);
+			m_hovered_contacts_map.insert(elmt, bounding);
 		}
 		else
 		{
