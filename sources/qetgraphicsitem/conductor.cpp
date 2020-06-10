@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include <QtDebug>
+#include <QMultiHash>
+
 #include "conductor.h"
 #include "conductorsegment.h"
 #include "conductorsegmentprofile.h"
@@ -236,7 +238,7 @@ void Conductor::updateConductorPath(const QPointF &p1, Qet::Orientation o1, cons
 	qreal v_diff = (qAbs(new_rect.height()) - qAbs(profile_height)) * getSign(profile_height);
 	
 	// applique les differences aux segments
-	QHash<ConductorSegmentProfile *, qreal> segments_lengths;
+	QMultiHash<ConductorSegmentProfile *, qreal> segments_lengths;
 	segments_lengths.unite(shareOffsetBetweenSegments(h_diff, conductor_profile.horizontalSegments()));
 	segments_lengths.unite(shareOffsetBetweenSegments(v_diff, conductor_profile.verticalSegments()));
 	
@@ -257,7 +259,7 @@ void Conductor::updateConductorPath(const QPointF &p1, Qet::Orientation o1, cons
 		
 		// coefficient et offset a utiliser pour ce point
 		qreal coeff = csp -> isHorizontal ? horiz_coeff : verti_coeff;
-		qreal offset_applied = segments_lengths[csp];
+		qreal offset_applied = segments_lengths.value(csp);
 		
 		// applique l'offset et le coeff au point
 		if (csp -> isHorizontal) {
