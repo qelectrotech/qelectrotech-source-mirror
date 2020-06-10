@@ -511,7 +511,7 @@ qreal TitleBlockTemplateView::templateHeight() const {
 void TitleBlockTemplateView::wheelEvent(QWheelEvent *e) {
 	// si la touche Ctrl est enfoncee, on zoome / dezoome
 	if (e -> modifiers() & Qt::ControlModifier) {
-		if (e -> delta() > 0) { 
+		if (e -> angleDelta().manhattanLength() > 0) {
 			zoomIn();
 		} else {
 			zoomOut();
