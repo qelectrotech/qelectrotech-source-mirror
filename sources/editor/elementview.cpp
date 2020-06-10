@@ -479,7 +479,7 @@ void ElementView::drawBackground(QPainter *p, const QRectF &r) {
 	p -> drawRect(r);
 		
 	// determine le zoom en cours
-	qreal zoom_factor = matrix().m11();
+	qreal zoom_factor = transform().m11();
 	
 	// choisit la granularite de la grille en fonction du zoom en cours
 	int drawn_x_grid = 1;//scene_ -> xGrid();
