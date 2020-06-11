@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>467</width>
-    <height>672</height>
+    <width>524</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -37,10 +37,31 @@
        <item>
         <widget class="QGroupBox" name="groupBox">
          <property name="title">
-          <string>Position et lignes</string>
+          <string>Géometrie et lignes</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout_2">
-          <item row="1" column="4" colspan="2">
+         <layout class="QGridLayout" name="gridLayout_2" columnstretch="0,0,0,0,0,0,0,0">
+          <item row="0" column="6">
+           <widget class="QPushButton" name="m_apply_geometry_to_linked_table_pb">
+            <property name="toolTip">
+             <string>Appliquer la géometrie à tous les tableaux liée à celui-ci</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../../../qelectrotech.qrc">
+              <normaloff>:/ico/22x22/all_pages.png</normaloff>:/ico/22x22/all_pages.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QSpinBox" name="m_y_pos">
+            <property name="maximum">
+             <number>10000</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="4">
            <widget class="QComboBox" name="m_previous_table_cb">
             <property name="insertPolicy">
              <enum>QComboBox::InsertAtBottom</enum>
@@ -52,37 +73,7 @@
             </item>
            </widget>
           </item>
-          <item row="0" column="6" colspan="2">
-           <widget class="QSpinBox" name="m_display_n_row_sb">
-            <property name="specialValueText">
-             <string>Toutes</string>
-            </property>
-            <property name="maximum">
-             <number>999</number>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="5">
-           <widget class="QLabel" name="label">
-            <property name="text">
-             <string>Lignes à afficher :</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="3">
-           <widget class="QLabel" name="label_7">
-            <property name="text">
-             <string>Y :</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="7">
+          <item row="1" column="6">
            <widget class="QPushButton" name="m_next_pb">
             <property name="enabled">
              <bool>true</bool>
@@ -102,13 +93,10 @@
             </property>
            </widget>
           </item>
-          <item row="0" column="1">
-           <widget class="QLabel" name="label_8">
-            <property name="text">
-             <string>X :</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          <item row="0" column="2">
+           <widget class="QSpinBox" name="m_x_pos">
+            <property name="maximum">
+             <number>10000</number>
             </property>
            </widget>
           </item>
@@ -125,7 +113,92 @@
             </property>
            </spacer>
           </item>
-          <item row="1" column="6">
+          <item row="1" column="7">
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="0" column="5">
+           <widget class="QPushButton" name="m_auto_geometry_pb">
+            <property name="toolTip">
+             <string>Ajuster le tableau au folio</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../../../qelectrotech.qrc">
+              <normaloff>:/ico/22x22/zoom-fit-best.png</normaloff>:/ico/22x22/zoom-fit-best.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1" colspan="6">
+           <widget class="QWidget" name="widget_3" native="true">
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+            </layout>
+           </widget>
+          </item>
+          <item row="0" column="3">
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>Lignes à afficher :</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLabel" name="label_8">
+            <property name="text">
+             <string>X :</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="4">
+           <widget class="QSpinBox" name="m_display_n_row_sb">
+            <property name="specialValueText">
+             <string>Toutes</string>
+            </property>
+            <property name="maximum">
+             <number>999</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3">
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>Tableau précédent :</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="5">
            <widget class="QPushButton" name="m_previous_pb">
             <property name="enabled">
              <bool>true</bool>
@@ -145,55 +218,10 @@
             </property>
            </widget>
           </item>
-          <item row="0" column="2">
-           <widget class="QSpinBox" name="m_x_pos">
-            <property name="maximum">
-             <number>10000</number>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1" colspan="7">
-           <widget class="QWidget" name="widget_3" native="true">
-            <layout class="QHBoxLayout" name="horizontalLayout_3">
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="topMargin">
-              <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
-              <number>0</number>
-             </property>
-            </layout>
-           </widget>
-          </item>
-          <item row="0" column="4">
-           <widget class="QSpinBox" name="m_y_pos">
-            <property name="maximum">
-             <number>10000</number>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="8">
-           <spacer name="horizontalSpacer_2">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="1" column="2" colspan="2">
-           <widget class="QLabel" name="label_3">
+          <item row="1" column="1">
+           <widget class="QLabel" name="label_7">
             <property name="text">
-             <string>Tableau précédent :</string>
+             <string>Y :</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -211,8 +239,37 @@
          <layout class="QVBoxLayout" name="verticalLayout_2">
           <item>
            <layout class="QGridLayout" name="gridLayout">
+            <item row="3" column="2">
+             <widget class="QSpinBox" name="m_header_bottom_margin"/>
+            </item>
             <item row="2" column="4">
              <spacer name="horizontalSpacer_4">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="2" column="2">
+             <widget class="QLabel" name="label_2">
+              <property name="text">
+               <string>Marge</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="3">
+             <widget class="QSpinBox" name="m_header_right_margin"/>
+            </item>
+            <item row="2" column="0">
+             <spacer name="horizontalSpacer_3">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
@@ -236,35 +293,6 @@
             </item>
             <item row="1" column="2">
              <widget class="QSpinBox" name="m_header_top_margin"/>
-            </item>
-            <item row="2" column="2">
-             <widget class="QLabel" name="label_2">
-              <property name="text">
-               <string>Marge</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="3">
-             <widget class="QSpinBox" name="m_header_right_margin"/>
-            </item>
-            <item row="3" column="2">
-             <widget class="QSpinBox" name="m_header_bottom_margin"/>
-            </item>
-            <item row="2" column="0">
-             <spacer name="horizontalSpacer_3">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
             </item>
            </layout>
           </item>

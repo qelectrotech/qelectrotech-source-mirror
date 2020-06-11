@@ -34,6 +34,34 @@ static int no_model_height = 20;
 static int no_model_width = 40;
 
 /**
+ * @brief QetGraphicsTableItem::adjustTableToFolio
+ * Adjust the table @table to fit at best the folio
+ * @param table : table to adjust
+ * @param margins : margins between table and folio.
+ */
+void QetGraphicsTableItem::adjustTableToFolio(QetGraphicsTableItem *table, QMargins margins)
+{
+	if (!table->diagram()) {
+		return;
+	}
+
+	auto drawable_rect = table->diagram()->border_and_titleblock.insideBorderRect();
+	table->setPos(drawable_rect.topLeft().x() + margins.left(), drawable_rect.topLeft().y() + margins.top() + table->headerItem()->rect().height());
+
+	auto size_ = table->size();
+	size_.setWidth(int(drawable_rect.width() - (margins.left() + margins.right())));
+		//Size must be a multiple of 10, because the table adjust itself by step of 10.
+	while (size_.width()%10) {
+		--size_.rwidth();    }
+	table->setSize(size_);
+
+		//Calcul the maximum row to display to fit the nomenclature into diagram
+	auto available_height = drawable_rect.height() - table->pos().y();
+	auto min_row_height = table->minimumRowHeigth();
+	table->setDisplayNRow(int(floor(available_height/min_row_height))); //Convert a double to int, but max_row_to_display is already rounded an integer so we assume everything is ok
+}
+
+/**
  * @brief QetGraphicsTableItem::QetGraphicsTableItem
  * Default constructor
  * @param parent

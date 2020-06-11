@@ -33,7 +33,6 @@ class QetGraphicsTableFactory
         static void createAndAddNomenclature(Diagram *diagram);
 	private:
 		static QetGraphicsTableItem *newTable(Diagram *diagram, AddTableDialog *dialog, QetGraphicsTableItem *previous_table = nullptr);
-		static void AdjustTableToFolio(QetGraphicsTableItem *table);
 };
 
 #endif // QETGRAPHICSTABLEFACTORY_H

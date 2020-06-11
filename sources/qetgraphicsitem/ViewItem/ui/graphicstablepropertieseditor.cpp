@@ -365,3 +365,51 @@ void GraphicsTablePropertiesEditor::on_m_next_pb_clicked()
 	new_table->setSelected(true);
 	old_table->setSelected(false);
 }
+
+/**
+ * @brief GraphicsTablePropertiesEditor::on_m_auto_geometry_pb_clicked
+ */
+void GraphicsTablePropertiesEditor::on_m_auto_geometry_pb_clicked()
+{
+	if (m_table_item) {
+		QetGraphicsTableItem::adjustTableToFolio(m_table_item);
+	}
+}
+
+/**
+ * @brief GraphicsTablePropertiesEditor::on_m_apply_geometry_to_linked_table_pb_clicked
+ */
+void GraphicsTablePropertiesEditor::on_m_apply_geometry_to_linked_table_pb_clicked()
+{
+	if (m_table_item.isNull() || !m_table_item->diagram() || (!m_table_item->nextTable() && !m_table_item->previousTable())) {
+		return;
+	}
+	auto first_table = m_table_item;
+	while (first_table->previousTable()) {
+		first_table = first_table->previousTable();
+	}
+
+		//Get all linked tables.
+	QVector<QetGraphicsTableItem*> vector_;
+	vector_ << first_table;
+	while (first_table->nextTable())
+	{
+		vector_ << first_table->nextTable();
+		first_table = first_table->nextTable();
+	}
+	vector_.removeAll(m_table_item);
+
+
+	auto new_pos           = m_table_item->pos();
+	auto new_size          = m_table_item->size();
+	auto new_displayN_row  = m_table_item->displayNRow();
+		//Apply to all linked table
+	auto parent_undo = new QUndoCommand(tr("Appliquer la géometrie d'un tableau aux tableau liée à celui-ci"));
+	for (auto table : vector_)
+	{
+		new QPropertyUndoCommand(table, "pos", table->pos(), new_pos, parent_undo);
+		new QPropertyUndoCommand(table, "size", table->size(), new_size, parent_undo);
+		new QPropertyUndoCommand(table, "displayNRow", table->displayNRow(), new_displayN_row, parent_undo);
+	}
+	m_table_item->diagram()->undoStack().push(parent_undo);
+}

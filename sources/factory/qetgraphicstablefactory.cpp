@@ -46,7 +46,7 @@ void QetGraphicsTableFactory::createAndAddNomenclature(Diagram *diagram)
 	{
 		auto table_ = newTable(diagram, d.data());
 		if (d->adjustTableToFolio()) {
-			AdjustTableToFolio(table_);
+			QetGraphicsTableItem::adjustTableToFolio(table_);
 		}
 
 
@@ -68,7 +68,7 @@ void QetGraphicsTableFactory::createAndAddNomenclature(Diagram *diagram)
 				table_->setTableName(d->tableName() + QString(" %1").arg(table_number));
 					//Adjust table
 				if (d->adjustTableToFolio()) {
-					AdjustTableToFolio(table_);
+					QetGraphicsTableItem::adjustTableToFolio(table_);
 				}
 					//Update some variable for the next loop
 				already_displayed_rows += table_->displayNRow();
@@ -113,27 +113,4 @@ QetGraphicsTableItem *QetGraphicsTableFactory::newTable(Diagram *diagram, AddTab
 	table->setPos(50,50);
 
 	return table;
-}
-
-/**
- * @brief QetGraphicsTableFactory::AdjustTableToFolio
- * Adjust @table to fit as better as possible to it's parent diagram.
- * @param table
- */
-void QetGraphicsTableFactory::AdjustTableToFolio(QetGraphicsTableItem *table)
-{
-	auto drawable_rect = table->diagram()->border_and_titleblock.insideBorderRect();
-	table->setPos(drawable_rect.topLeft().x() + 20, drawable_rect.topLeft().y() + 20 + table->headerItem()->rect().height());
-
-	auto size_ = table->size();
-	size_.setWidth(int(drawable_rect.width() - 40));
-		//Size must be a multiple of 10, because the table adjust itself by step of 10.
-	while (size_.width()%10) {
-		--size_.rwidth();    }
-	table->setSize(size_);
-
-		//Calcul the maximum row to display to fit the nomenclature into diagram
-	auto available_height = drawable_rect.height() - table->pos().y();
-	auto min_row_height = table->minimumRowHeigth();
-	table->setDisplayNRow(int(floor(available_height/min_row_height))); //Convert a double to int, but max_row_to_display is already rounded an integer so we assume everything is ok
 }

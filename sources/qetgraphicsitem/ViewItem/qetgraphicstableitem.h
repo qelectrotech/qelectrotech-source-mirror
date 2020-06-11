@@ -46,6 +46,9 @@ class QetGraphicsTableItem : public QetGraphicsItem
 	Q_PROPERTY(QSize size READ size WRITE setSize)
 	Q_PROPERTY(int displayNRow READ displayNRow WRITE setDisplayNRow)
 
+	public :
+		static void adjustTableToFolio(QetGraphicsTableItem *table, QMargins margins = QMargins(20,20,20,0));
+
     public:
         QetGraphicsTableItem(QGraphicsItem *parent= nullptr);
 		virtual ~QetGraphicsTableItem() override;
