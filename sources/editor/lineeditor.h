@@ -51,7 +51,6 @@ class LineEditor : public ElementItemEditor
 	public:
 		bool setPart(CustomElementPart *) override;
 		CustomElementPart *currentPart() const override;
-        QList<CustomElementPart*> currentParts() const override;
 		QPointF editedP1() const;
 		QPointF editedP2() const;
 	

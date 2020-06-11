@@ -23,12 +23,9 @@
 class Conductor;
 class Diagram;
 class Element;
-class TerminalData;
-
 /**
 	This class represents a terminal of an electrical element, i.e. a possible
 	plug point for conductors.
-    This class handles all mouse events for connecting conductors
 */
 class Terminal : public QGraphicsObject
 {
@@ -42,7 +39,6 @@ class Terminal : public QGraphicsObject
 	public:
 		Terminal(QPointF,      Qet::Orientation, Element * = nullptr);
 		Terminal(qreal, qreal, Qet::Orientation, Element * = nullptr);
-        Terminal(TerminalData* data, Element *e = nullptr);
 		Terminal(QPointF,      Qet::Orientation, QString number, QString name, bool hiddenName, Element * = nullptr);
 		~Terminal() override;
 	
@@ -67,7 +63,6 @@ class Terminal : public QGraphicsObject
 		int       conductorsCount     () const;
 		Diagram  *diagram             () const;
 		Element  *parentElement       () const;
-        QUuid uuid                    () const;
 	
 	QList<Conductor *> conductors() const;
 	Qet::Orientation orientation() const;
@@ -111,23 +106,24 @@ class Terminal : public QGraphicsObject
 		static QColor forbiddenColor;
 	
 	private:
-        bool               m_draw_help_line{false};
-        QGraphicsLineItem *m_help_line{nullptr};
-        QGraphicsLineItem *m_help_line_a{nullptr};
-
-
-    TerminalData* d;
+		bool               m_draw_help_line;
+		QGraphicsLineItem *m_help_line;
+		QGraphicsLineItem *m_help_line_a;
 
 	/// Parent electrical element
-    Element *parent_element_{nullptr};
+	Element *parent_element_;
+	/// docking point for conductors
+	QPointF dock_conductor_;
 	/// docking point for parent element
 	QPointF dock_elmt_;
+	/// terminal orientation
+	Qet::Orientation ori_;
 	/// List of conductors attached to the terminal
 	QList<Conductor *> conductors_;
 	/// Pointer to a rectangle representing the terminal bounding rect;
 	/// used to calculate the bounding rect once only;
 	/// used a pointer because boundingRect() is supposed to be const.
-    QRectF *br_{nullptr};
+	QRectF *br_;
 	/// Last terminal seen through an attached conductor
 	Terminal *previous_terminal_;
 	/// Whether the mouse pointer is hovering the terminal
@@ -141,8 +137,7 @@ class Terminal : public QGraphicsObject
 	bool name_terminal_hidden;
 	
 	private:
-    void init(QString number, QString name, bool hiddenName);
-    void init(QPointF pf, Qet::Orientation o, QString number, QString name, bool hiddenName);
+	void init(QPointF, Qet::Orientation, QString number, QString name, bool hiddenName);
 };
 
 /**
@@ -150,6 +145,14 @@ class Terminal : public QGraphicsObject
 */
 inline int Terminal::conductorsCount() const {
 	return(conductors_.size());
+}
+
+/**
+	@return the position, relative to the scene, of the docking point for
+	conductors.
+*/
+inline QPointF Terminal::dockConductor() const {
+	return(mapToScene(dock_conductor_));
 }
 
 /**

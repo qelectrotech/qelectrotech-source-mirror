@@ -49,7 +49,6 @@ class EllipseEditor : public ElementItemEditor
 	public:
 		bool setPart(CustomElementPart *) override;
 		CustomElementPart *currentPart() const override;
-        QList<CustomElementPart*> currentParts() const override;
 	
 	public slots:
 		void editingFinished();

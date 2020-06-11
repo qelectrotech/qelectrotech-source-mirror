@@ -51,7 +51,6 @@ class ArcEditor : public ElementItemEditor
 	public:
 		bool setPart(CustomElementPart *) override;
 		CustomElementPart *currentPart() const override;
-        QList<CustomElementPart*> currentParts() const override;
 	
 	public slots:
 		void updateArcS();

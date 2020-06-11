@@ -93,12 +93,8 @@ void XRefProperties::fromSettings(const QSettings &settings, const QString prefi
  * Save to xml
  * @param xml_element: QDomElement to use for saving
  */
-QDomElement XRefProperties::toXml(QDomDocument &xml_document) const {
-
-    QDomElement xml_element = xml_document.createElement("xref");
-    xml_element.setAttribute("type", m_key);
-
-    xml_element.setAttribute("showpowerctc", m_show_power_ctc? "true" : "false");
+void XRefProperties::toXml(QDomElement &xml_element) const {
+	xml_element.setAttribute("showpowerctc", m_show_power_ctc? "true" : "false");
 	QString display = m_display == Cross? "cross" : "contacts";
 	xml_element.setAttribute("displayhas", display);
 	QString snap = m_snap_to == Bottom? "bottom" : "label";
@@ -118,8 +114,6 @@ QDomElement XRefProperties::toXml(QDomDocument &xml_document) const {
 	foreach (QString key, m_prefix.keys()) {
 		xml_element.setAttribute(key + "prefix", m_prefix.value(key));
 	}
-
-    return xml_element;
 }
 
 /**
@@ -127,7 +121,7 @@ QDomElement XRefProperties::toXml(QDomDocument &xml_document) const {
  * Load from xml
  * @param xml_element: QDomElement to use for load
  */
-bool XRefProperties::fromXml(const QDomElement &xml_element) {
+void XRefProperties::fromXml(const QDomElement &xml_element) {
 	m_show_power_ctc = xml_element.attribute("showpowerctc")  == "true";
 	QString display = xml_element.attribute("displayhas", "cross");
 	display == "cross"? m_display = Cross : m_display = Contacts;
@@ -149,7 +143,6 @@ bool XRefProperties::fromXml(const QDomElement &xml_element) {
 	foreach (QString key, m_prefix_keys) {
 		m_prefix.insert(key, xml_element.attribute(key + "prefix"));
 	}
-    return true;
 }
 
 /**

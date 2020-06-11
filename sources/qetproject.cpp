@@ -1582,10 +1582,11 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element) {
 
 	// export default XRef properties
 	QDomElement xrefs_elmt = xml_document.createElement("xrefs");
-    foreach (QString key, defaultXRefProperties().keys()) {
-        defaultXRefProperties()[key].setKey(key);
-        QDomElement xref_elmt = defaultXRefProperties()[key].toXml(xml_document);
-        xrefs_elmt.appendChild(xref_elmt);
+	foreach (QString key, defaultXRefProperties().keys()) {
+		QDomElement xref_elmt = xml_document.createElement("xref");
+		xref_elmt.setAttribute("type", key);
+		defaultXRefProperties()[key].toXml(xref_elmt);
+		xrefs_elmt.appendChild(xref_elmt);
 	}
 	xml_element.appendChild(xrefs_elmt);
 

@@ -610,86 +610,73 @@ void QETElementEditor::slot_setNoDragToView() {
 void QETElementEditor::slot_updateInformations()
 {
 	QList<QGraphicsItem *> selected_qgis = m_elmt_scene -> selectedItems();
-    if (selected_qgis.isEmpty()) {
-        clearToolsDock();
-        m_default_informations -> setText(tr("%n partie(s) sélectionnée(s).",
-                                           "",
-                                           selected_qgis.size()));
-        m_default_informations -> setAlignment(Qt::AlignHCenter | Qt::AlignTop);
-        m_tools_dock_stack -> setCurrentIndex(0);
-        return;
-    }
-
 	QList<CustomElementPart *> cep_list;
+	bool style_editable = false;
 
-    CustomElementPart* part = dynamic_cast<CustomElementPart *>(selected_qgis.first());
-    QString selection_xml_name = part->xmlName();
-    bool same_xml_name = true;
-    bool style_editable = true;
-    for (QGraphicsItem *qgi: selected_qgis) {
-        if (CustomElementPart *cep = dynamic_cast<CustomElementPart *>(qgi)) {
-            cep_list << cep;
-            if (cep->xmlName() != selection_xml_name)
-                same_xml_name = false;
-        } else {
-            style_editable = false;
-            same_xml_name = false;
-        }
-    }
-    if (style_editable)
-        style_editable = StyleEditor::isStyleEditable(cep_list);
+		//Test if part are editable by style editor
+	if (selected_qgis.size() >= 2)
+	{
+		style_editable = true;
+		foreach (QGraphicsItem *qgi, selected_qgis)
+		{
+			if (CustomElementPart *cep = dynamic_cast<CustomElementPart *>(qgi))
+				cep_list << cep;
+			else
+				style_editable = false;
+		}
+		if (style_editable)
+			style_editable = StyleEditor::isStyleEditable(cep_list);
 
-    if (same_xml_name) {
-        if (selection_xml_name == "terminal" ||
-            selection_xml_name == "text" ||
-            selection_xml_name == "dynamic_text") {
-            clearToolsDock();
-                //We add the editor widget
-            ElementItemEditor *editor = static_cast<ElementItemEditor*>(m_editors[selection_xml_name]);
-
-            // TODO: Check if it takes longer than setting the parts again to the editor.
-            bool equal = true;
-            QList<CustomElementPart*> parts = editor->currentParts();
-            if (parts.length() == cep_list.length()) {
-                for (auto cep: cep_list) {
-                    bool part_found = false;
-                    for (auto part: parts) {
-                        if (part == cep) {
-                            part_found = true;
-                            break;
-                        }
-                    }
-                    if (!part_found) {
-                        equal = false;
-                        break;
-                    }
-                }
-            } else
-                equal = false;
-
-            if (editor)
-            {
-                bool success = true;
-                if (equal == false) {
-                    success = editor->setParts(cep_list);
-                }
-                if (success)
-                {
-                    m_tools_dock_stack->insertWidget(1, editor);
-                    m_tools_dock_stack -> setCurrentIndex(1);
-                }
-                else
-                {
-                    qDebug() << "Editor refused part.";
-                }
-            }
-            return;
-        }
-
-    }
-
-    //There's several parts selecteds and all can be edited by style editor.
-    if (style_editable)
+	}
+	
+	if(selected_qgis.size() == 1)
+	{
+		QGraphicsItem *qgi = selected_qgis.first();
+		if (CustomElementPart *selection = dynamic_cast<CustomElementPart *>(qgi))
+		{
+			if (QWidget *widget = m_tools_dock_stack->widget(1))
+			{
+				if (ElementItemEditor *editor = dynamic_cast<ElementItemEditor *>(widget))
+				{
+					if(editor->currentPart() == selection)
+						return;
+				}
+			}
+		}
+	}
+	
+		//There's one selected item
+	if (selected_qgis.size() == 1)
+	{
+		QGraphicsItem *qgi = selected_qgis.first();
+		if (CustomElementPart *selection = dynamic_cast<CustomElementPart *>(qgi))
+		{
+				//The current editor already edit the selected part
+			if (QWidget *widget = m_tools_dock_stack->widget(1))
+				if (ElementItemEditor *editor = dynamic_cast<ElementItemEditor *>(widget))
+					if(editor->currentPart() == selection)
+						return;
+			
+			clearToolsDock();
+				//We add the editor widget
+			QString selection_xml_name = selection -> xmlName();
+			ElementItemEditor *selection_editor = m_editors[selection_xml_name];
+			if (selection_editor)
+			{
+				if (selection_editor->setPart(selection))
+				{
+					m_tools_dock_stack->insertWidget(1, selection_editor);
+					m_tools_dock_stack -> setCurrentIndex(1);
+				}
+				else
+				{
+					qDebug() << "Editor refused part.";
+				}
+			}
+		}
+	}
+		//There's several parts selecteds and all can be edited by style editor.
+	else if (style_editable)
 	{
 		clearToolsDock();
 		ElementItemEditor *selection_editor = m_editors["style"];

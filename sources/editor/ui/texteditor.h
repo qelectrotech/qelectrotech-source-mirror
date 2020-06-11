@@ -39,26 +39,20 @@ class TextEditor : public ElementItemEditor
 
 		void updateForm() override;
 		bool setPart(CustomElementPart *part) override;
-        bool setParts(QList <CustomElementPart *>) override;
 		CustomElementPart *currentPart() const override;
-        QList<CustomElementPart*> currentParts() const override;
 
 	private slots:
 		void on_m_font_pb_clicked();
 		void on_m_color_pb_changed(const QColor &newColor);
 	private:
 		void setUpEditConnection();
-        void setUpChangeConnection(QPointer<PartText> part);
-        void disconnectChangeConnection();
-        void disconnectEditConnection();
 
 	private:
 		Ui::TextEditor *ui;
 
 		QPointer <PartText> m_text;
-        QList<PartText*> m_parts;
 		QList <QMetaObject::Connection> m_edit_connection;
-        QList <QMetaObject::Connection> m_change_connection;
+		QList <QMetaObject::Connection> m_change_connection;
 };
 
 #endif // TEXTEDITOR_H

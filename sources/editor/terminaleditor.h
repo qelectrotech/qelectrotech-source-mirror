@@ -26,41 +26,31 @@ class QComboBox;
 
 /**
 	This class provides a widget to edit terminals within the element editor.
-    The class is capable to change the values of multiple parts of the same time.
-    The displayed values are from the first selected element
 */
 class TerminalEditor : public ElementItemEditor {
 	Q_OBJECT
 	// Constructors, destructor
 	public:
-    TerminalEditor(QETElementEditor *, QList<PartTerminal *>& terms, QWidget * = nullptr);
-    TerminalEditor(QETElementEditor *, QWidget * = nullptr);
-
+	TerminalEditor(QETElementEditor *, PartTerminal * = nullptr, QWidget * = nullptr);
 	~TerminalEditor() override;
 	private:
 	TerminalEditor(const TerminalEditor &);
-
-    void init();
 	
 	// attributes
 	private:
-        QList<PartTerminal *> m_terminals;
-        PartTerminal *m_part{nullptr};
+		PartTerminal *part;
 		QDoubleSpinBox *qle_x, *qle_y;
 		QComboBox *orientation;
-        bool m_locked{false};
+		bool m_locked;
 	
 	// methods
 	public:
-    bool setPart(CustomElementPart *) override;
-    bool setParts(QList<CustomElementPart *> parts) override;
+	bool setPart(CustomElementPart *) override;
 	CustomElementPart *currentPart() const override;
-    QList<CustomElementPart*> currentParts() const override;
 	
 	public slots:
 		void updateTerminalO();
-        void updateXPos();
-        void updateYPos();
+		void updatePos();
 		void updateForm() override;
 	
 	private:

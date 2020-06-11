@@ -146,10 +146,6 @@ CustomElementPart *LineEditor::currentPart() const {
 	return(part);
 }
 
-QList<CustomElementPart*> LineEditor::currentParts() const {
-    return style_->currentParts();
-}
-
 /**
  * @brief LineEditor::editedP1
  * @return The edited P1 in item coordinate

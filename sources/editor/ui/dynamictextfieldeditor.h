@@ -38,15 +38,11 @@ class DynamicTextFieldEditor : public ElementItemEditor
 		~DynamicTextFieldEditor() override;
 	
 		bool setPart(CustomElementPart *part) override;
-        bool setParts(QList <CustomElementPart *>) override;
 		CustomElementPart *currentPart() const override;
-        QList<CustomElementPart*> currentParts() const override;
 		void updateForm() override;
 		
 	private:
 		void fillInfoComboBox();
-        void setUpConnections();
-        void disconnectConnections();
 	
 	private slots:
 		void on_m_x_sb_editingFinished();
@@ -67,7 +63,6 @@ class DynamicTextFieldEditor : public ElementItemEditor
 		private:
 		Ui::DynamicTextFieldEditor *ui;
 		QPointer<PartDynamicTextField> m_text_field;
-        QList<PartDynamicTextField*> m_parts;
 		QList<QMetaObject::Connection> m_connection_list;
 };
 

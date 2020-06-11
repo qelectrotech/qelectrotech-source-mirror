@@ -103,10 +103,6 @@ CustomElementPart *RectangleEditor::currentPart() const {
 	return m_part;
 }
 
-QList<CustomElementPart*> RectangleEditor::currentParts() const {
-    return m_style->currentParts();
-}
-
 /**
  * @brief RectangleEditor::topLeft
  * @return The edited topLeft already mapped to part coordinate
