@@ -100,7 +100,7 @@ SingleApplication::SingleApplication( int &argc, char *argv[], bool allowSeconda
         d->memory->unlock();
 
         // Random sleep here limits the probability of a collision between two racing apps
-#if QT_VERSION < QT_VERSION_CHECK(5, 10, 0)	// ### Qt 6: remove
+#if QT_VERSION < QT_VERSION_CHECK(5, 9, 0)	// ### Qt 6: remove
         qsrand( QDateTime::currentMSecsSinceEpoch() % std::numeric_limits<uint>::max() );
         QThread::sleep( 8 + static_cast <unsigned long>( static_cast <float>( qrand() ) / RAND_MAX * 10 ) );
 #else
