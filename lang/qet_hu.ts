@@ -966,7 +966,7 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="182"/>
         <source>Section du conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Vezető keresztmetszete</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="245"/>
@@ -4160,13 +4160,13 @@ Ehhez speciális szerkesztőt kell használni.</translation>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="430"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="434"/>
         <source>Couleur du conducteur</source>
-        <translation type="unfinished">Vezető színe</translation>
+        <translation>Vezető színe</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="430"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="434"/>
         <source>Section du conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Vezető keresztmetszete</translation>
     </message>
 </context>
 <context>
@@ -4509,12 +4509,12 @@ Ehhez speciális szerkesztőt kell használni.</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/nomenclaturemodel.cpp" line="328"/>
         <source>Position</source>
-        <translation type="unfinished">Pozíció</translation>
+        <translation>Pozíció</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/nomenclaturemodel.cpp" line="330"/>
         <source>Position du folio</source>
-        <translation type="unfinished">Tervlap pozíció</translation>
+        <translation>Tervlap pozíció</translation>
     </message>
 </context>
 <context>
@@ -4865,7 +4865,8 @@ Feszültség / Protokol : %1</translation>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="296"/>
         <source>
 Couleur du conducteur : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Vezető színe : %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="197"/>
@@ -4873,7 +4874,8 @@ Couleur du conducteur : %1</source>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="298"/>
         <source>
 Section du conducteur : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Vezető színe : %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="351"/>
@@ -9228,7 +9230,7 @@ Cserélni akarod?</translation>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="91"/>
         <source>Couleur du conducteur</source>
-        <translation type="unfinished">Vezető színe</translation>
+        <translation>Vezető színe</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="121"/>
@@ -9239,7 +9241,7 @@ Cserélni akarod?</translation>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="312"/>
         <source>Section du conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Vezető keresztmetszete</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="342"/>
