@@ -530,7 +530,7 @@ QTreeWidgetItem *GenericPanel::fillItem(QTreeWidgetItem *qtwi, PanelOptions opti
 	
 */
 void GenericPanel::projectInformationsChanged(QETProject *project) {
-	addProject(project, nullptr, nullptr);
+	addProject(project, nullptr, AddAllChild);
 	emit(panelContentChanged());
 }
 
