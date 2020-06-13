@@ -66,7 +66,7 @@ bool nomenclature::saveToCSVFile()
 		}
 		if (file.open(QIODevice::WriteOnly | QIODevice::Text)){
 			QTextStream stream(&file);
-			stream << getNomenclature() << &Qt::endl(stream);
+			stream << getNomenclature() << "\n";
 		}
 		else return false;
 	}
