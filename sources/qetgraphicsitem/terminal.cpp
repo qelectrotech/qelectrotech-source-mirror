@@ -774,7 +774,7 @@ bool Terminal::fromXml(QDomElement &terminal) {
     @return the position, relative to the scene, of the docking point for
     conductors.
 */
-inline QPointF Terminal::dockConductor() const {
+QPointF Terminal::dockConductor() const {
     return(mapToScene(d->m_pos));
 }
 
