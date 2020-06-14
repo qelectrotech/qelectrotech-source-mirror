@@ -1020,7 +1020,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="182"/>
         <source>Section du conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Geleiderdoorsnede</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="268"/>
@@ -4104,13 +4104,13 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="430"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="434"/>
         <source>Couleur du conducteur</source>
-        <translation type="unfinished">Geleiderkleur</translation>
+        <translation>Geleiderkleur</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="430"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="434"/>
         <source>Section du conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Geleiderdoorsnede</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="20"/>
@@ -4498,12 +4498,12 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/nomenclaturemodel.cpp" line="328"/>
         <source>Position</source>
-        <translation type="unfinished"></translation>
+        <translation>Positie</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/nomenclaturemodel.cpp" line="330"/>
         <source>Position du folio</source>
-        <translation type="unfinished">Plaats van het blad</translation>
+        <translation>Positie van het blad</translation>
     </message>
 </context>
 <context>
@@ -4856,7 +4856,8 @@ Voltage / Protocol :%1</translation>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="296"/>
         <source>
 Couleur du conducteur : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Kleur van geleider : %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="197"/>
@@ -4864,7 +4865,8 @@ Couleur du conducteur : %1</source>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="298"/>
         <source>
 Section du conducteur : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Doorsnede van geleider : %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="351"/>
@@ -9233,7 +9235,7 @@ Wilt u deze vervangen ?</translation>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="91"/>
         <source>Couleur du conducteur</source>
-        <translation type="unfinished">Geleiderkleur</translation>
+        <translation>Geleiderkleur</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="121"/>
@@ -9244,7 +9246,7 @@ Wilt u deze vervangen ?</translation>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="312"/>
         <source>Section du conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Geleiderdoorsnede</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="342"/>
