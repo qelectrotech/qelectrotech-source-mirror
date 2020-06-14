@@ -24,6 +24,7 @@
 #include "qetapp.h"
 #include "compositetexteditdialog.h"
 #include "alignmenttextdialog.h"
+#include <assert.h>
 
 #include <QPointer>
 #include <QGraphicsItem>
