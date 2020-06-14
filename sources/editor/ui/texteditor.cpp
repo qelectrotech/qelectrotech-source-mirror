@@ -19,6 +19,7 @@
 #include "ui_texteditor.h"
 #include "parttext.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include <cassert>
 
 /**
  * @brief TextEditor::TextEditor
