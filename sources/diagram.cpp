@@ -863,53 +863,6 @@ bool Diagram::initFromXml(QDomElement &document, QPointF position, bool consider
 	return(from_xml);
 }
 
-/*!
- * \brief findTerminal
- * Find terminal to which the conductor should be connected
- * \param conductor_index 1 or 2 depending on which terminal is searched
- * \param f Conductor xml element
- * \param table_adr_id Hash table to all terminal id assignement (legacy)
- * \param added_elements Elements found in the xml file
- * \return
- */
-Terminal* findTerminal(int conductor_index, QDomElement& f, QHash<int, Terminal *>& table_adr_id, QList<Element *>& added_elements) {
-    assert(conductor_index == 1 || conductor_index == 2);
-
-    QString element_index = "element" + QString::number(conductor_index);
-    QString terminal_index = "terminal" + QString::number(conductor_index);
-
-    if (f.hasAttribute(element_index)) {
-        QUuid element_uuid = QUuid(f.attribute(element_index));
-        // element1 did not exist in the conductor part of the xml until prior 0.7
-        // It is used as an indicator that uuid's are used to identify terminals
-        bool element_found = false;
-        for (auto element: added_elements) {
-            if (element->uuid() != element_uuid)
-                continue;
-            element_found = true;
-            QUuid terminal_uuid = QUuid(f.attribute(terminal_index));
-            for (auto terminal: element->terminals()) {
-                if (terminal->uuid() != terminal_uuid)
-                    continue;
-
-                return terminal;
-            }
-            qDebug() << "Diagram::fromXml() : "<< terminal_index << ":" << terminal_uuid << "not found in " << element_index << ":"  << element_uuid;
-            break;
-        }
-        if (!element_found)
-            qDebug() << "Diagram::fromXml() : " <<  element_index << ": " << element_uuid << "not found";
-    } else {
-        // Backward compatibility. Until version 0.7 a generated id is used to link the terminal.
-        int id_p1 = f.attribute(terminal_index).toInt();
-        if (!table_adr_id.contains(id_p1)) {
-            qDebug() << "Diagram::fromXml() : terminal id " << id_p1 << " not found";
-        } else
-            return table_adr_id.value(id_p1);
-    }
-    return nullptr;
-}
-
 /**
 	Importe le schema decrit dans un element XML. Si une position est
 	precisee, les elements importes sont positionnes de maniere a ce que le
@@ -1078,22 +1031,26 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		if (!Conductor::valideXml(f)) continue;
 
 			//Check if terminal that conductor must be linked is know
-
-        Terminal* p1 = findTerminal(1, f, table_adr_id, added_elements);
-        Terminal* p2 = findTerminal(2, f, table_adr_id, added_elements);
-
-        if (p1 && p2 && p1 != p2)
-        {
-            Conductor *c = new Conductor(p1, p2);
-            if (c->isValid())
-            {
-                addItem(c);
-                c -> fromXml(f);
-                added_conductors << c;
-            }
-            else
-                delete c;
-        }
+		int id_p1 = f.attribute("terminal1").toInt();
+		int id_p2 = f.attribute("terminal2").toInt();
+		if (table_adr_id.contains(id_p1) && table_adr_id.contains(id_p2))
+		{
+			Terminal *p1 = table_adr_id.value(id_p1);
+			Terminal *p2 = table_adr_id.value(id_p2);
+			if (p1 != p2)
+			{
+				Conductor *c = new Conductor(p1, p2);
+				if (c->isValid())
+				{
+					addItem(c);
+					c -> fromXml(f);
+					added_conductors << c;
+				}
+				else
+					delete c;
+			}
+		}
+		else qDebug() << "Diagram::fromXml() : Le chargement du conducteur" << id_p1 << id_p2 << "a echoue";
 	}
 
 		//Load tables

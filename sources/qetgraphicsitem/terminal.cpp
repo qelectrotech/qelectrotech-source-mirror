@@ -24,7 +24,6 @@
 #include "diagramcommands.h"
 #include "conductorautonumerotation.h"
 #include "conductortextitem.h"
-#include "terminaldata.h"
 
 QColor Terminal::neutralColor      = QColor(Qt::blue);
 QColor Terminal::allowedColor      = QColor(Qt::darkGreen);
@@ -40,13 +39,17 @@ const qreal Terminal::Z = 1000;
 	@param number of terminal
 	@param name of terminal
 */
-void Terminal::init(QString number, QString name, bool hiddenName) {
-
-    hovered_color_  = Terminal::neutralColor;
+void Terminal::init(QPointF pf, Qet::Orientation o, QString number, QString name, bool hiddenName) {
+	// definition du pount d'amarrage pour un conducteur
+	dock_conductor_  = pf;
+	
+	// definition de l'orientation de la borne (par defaut : sud)
+	if (o < Qet::North || o > Qet::West) ori_ = Qet::South;
+	else ori_ = o;
 	
 	// calcul de la position du point d'amarrage a l'element
-    dock_elmt_ = d->m_pos;
-    switch(d->m_orientation) {
+	dock_elmt_ = dock_conductor_;
+	switch(ori_) {
 		case Qet::North: dock_elmt_ += QPointF(0, Terminal::terminalSize);  break;
 		case Qet::East : dock_elmt_ += QPointF(-Terminal::terminalSize, 0); break;
 		case Qet::West : dock_elmt_ += QPointF(Terminal::terminalSize, 0);  break;
@@ -71,27 +74,6 @@ void Terminal::init(QString number, QString name, bool hiddenName) {
 	setZValue(Z);
 }
 
-/*!
- * \brief Terminal::init
- * Additionaly to the init above, this method stores position and orientation into the data class
- * \param pf
- * \param o
- * \param number
- * \param name
- * \param hiddenName
- */
-void Terminal::init(QPointF pf, Qet::Orientation o, QString number, QString name, bool hiddenName)
-{
-    // definition du pount d'amarrage pour un conducteur
-    d->m_pos  = pf;
-
-    // definition de l'orientation de la borne (par defaut : sud)
-    if (o < Qet::North || o > Qet::West) d->m_orientation = Qet::South;
-    else d->m_orientation = o;
-
-    init(number, name, hiddenName);
-}
-
 /**
 	initialise une borne
 	@param pf  position du point d'amarrage pour un conducteur
@@ -101,8 +83,11 @@ void Terminal::init(QPointF pf, Qet::Orientation o, QString number, QString name
 */
 Terminal::Terminal(QPointF pf, Qet::Orientation o, Element *e) :
 	QGraphicsObject(e),
-    d(new TerminalData(this)),
-    parent_element_ (e)
+	m_draw_help_line(false),
+	m_help_line     (nullptr),
+	m_help_line_a   (nullptr),
+	parent_element_ (e),
+	hovered_color_  (Terminal::neutralColor)
 {
 	init(pf, o, "_", "_", false);
 }
@@ -117,10 +102,13 @@ Terminal::Terminal(QPointF pf, Qet::Orientation o, Element *e) :
 */
 Terminal::Terminal(qreal pf_x, qreal pf_y, Qet::Orientation o, Element *e) :
 	QGraphicsObject(e),
-    d(new TerminalData(this)),
-    parent_element_  (e)
+	m_draw_help_line (false),
+	m_help_line      (nullptr),
+	m_help_line_a    (nullptr),
+	parent_element_  (e),
+	hovered_color_   (Terminal::neutralColor)
 {
-    init(QPointF(pf_x, pf_y), o, "_", "_", false);
+	init(QPointF(pf_x, pf_y), o, "_", "_", false);
 }
 
 /**
@@ -135,20 +123,13 @@ Terminal::Terminal(qreal pf_x, qreal pf_y, Qet::Orientation o, Element *e) :
 */
 Terminal::Terminal(QPointF pf, Qet::Orientation o, QString num, QString name, bool hiddenName, Element *e) :
 	QGraphicsObject    (e),
-    d(new TerminalData(this)),
-    parent_element_  (e)
+	m_draw_help_line (false),
+	m_help_line      (nullptr),
+	m_help_line_a    (nullptr),
+	parent_element_  (e),
+	hovered_color_   (Terminal::neutralColor)
 {
 	init(pf, o, std::move(num), std::move(name), hiddenName);
-}
-
-Terminal::Terminal(TerminalData* data, Element* e) :
-    QGraphicsObject(e),
-    d(data),
-    parent_element_(e)
-{
-    // TODO: what is when multiple parents exist. So the other relation is lost.
-    d->setParent(this);
-    init("_", "_", false);
 }
 
 /**
@@ -172,15 +153,15 @@ Qet::Orientation Terminal::orientation() const {
 	if (Element *elt = qgraphicsitem_cast<Element *>(parentItem())) {
 		// orientations actuelle et par defaut de l'element
 		int ori_cur = elt -> orientation();
-        if (ori_cur == 0) return(d->m_orientation);
+		if (ori_cur == 0) return(ori_);
 		else {
 			// calcul l'angle de rotation implique par l'orientation de l'element parent
 			// angle de rotation de la borne sur la scene, divise par 90
-            int angle = ori_cur + d->m_orientation;
+			int angle = ori_cur + ori_;
 			while (angle >= 4) angle -= 4;
 			return((Qet::Orientation)angle);
 		}
-    } else return(d->m_orientation);
+	} else return(ori_);
 }
 
 
@@ -257,7 +238,7 @@ void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidg
 	p -> setRenderHint(QPainter::SmoothPixmapTransform, false);
 	
 	// on travaille avec les coordonnees de l'element parent
-    QPointF c = mapFromParent(d->m_pos);
+	QPointF c = mapFromParent(dock_conductor_);
 	QPointF e = mapFromParent(dock_elmt_);
 	
 	QPen t;
@@ -409,11 +390,11 @@ QLineF Terminal::HelpLine() const
 */
 QRectF Terminal::boundingRect() const {
 	if (br_ -> isNull()) {
-        qreal dcx = d->m_pos.x();
-        qreal dcy = d->m_pos.y();
+		qreal dcx = dock_conductor_.x();
+		qreal dcy = dock_conductor_.y();
 		qreal dex = dock_elmt_.x();
 		qreal dey = dock_elmt_.y();
-        QPointF origin = (dcx <= dex && dcy <= dey ? d->m_pos : dock_elmt_);
+		QPointF origin = (dcx <= dex && dcy <= dey ? dock_conductor_ : dock_elmt_);
 		origin += QPointF(-3.0, -3.0);
 		qreal w = qAbs((int)(dcx - dex)) + 7;
 		qreal h = qAbs((int)(dcy - dey)) + 7;
@@ -511,10 +492,10 @@ void Terminal::hoverLeaveEvent(QGraphicsSceneHoverEvent *) {
 	@param e L'evenement souris correspondant
 */
 void Terminal::mousePressEvent(QGraphicsSceneMouseEvent *e) {
-    if (Diagram *diag = diagram()) {
-        diag -> setConductorStart(mapToScene(QPointF(d->m_pos)));
-        diag -> setConductorStop(e -> scenePos());
-        diag -> setConductor(true);
+	if (Diagram *d = diagram()) {
+		d -> setConductorStart(mapToScene(QPointF(dock_conductor_)));
+		d -> setConductorStop(e -> scenePos());
+		d -> setConductor(true);
 		//setCursor(Qt::CrossCursor);
 	}
 }
@@ -536,13 +517,13 @@ void Terminal::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	}
 	
 	
-    Diagram *diag = diagram();
-    if (!diag) return;
+	Diagram *d = diagram();
+	if (!d) return;
 	// si la scene est un Diagram, on actualise le poseur de conducteur
-    diag -> setConductorStop(e -> scenePos());
+	d -> setConductorStop(e -> scenePos());
 	
 	// on recupere la liste des qgi sous le pointeur
-    QList<QGraphicsItem *> qgis = diag -> items(e -> scenePos());
+	QList<QGraphicsItem *> qgis = d -> items(e -> scenePos());
 	
 	/* le qgi le plus haut
 	   = le poseur de conductor
@@ -678,10 +659,6 @@ bool Terminal::isLinkedTo(Terminal *other_terminal) {
 
 /**
  * @brief Terminal::canBeLinkedTo
- * Checking if the terminal can be linked to \p other_terminal or not
- * Reasons for not linable:
- *  - \p other_terminal is this terminal
- *  - this terminal is already connected to \p other_terminal
  * @param other_terminal
  * @return true if this terminal can be linked to @other_terminal,
  * otherwise false
@@ -708,9 +685,9 @@ QList<Conductor *> Terminal::conductors() const {
 */
 QDomElement Terminal::toXml(QDomDocument &doc) const {
 	QDomElement qdo = doc.createElement("terminal");
-    qdo.setAttribute("x", QString("%1").arg(dock_elmt_.x())); // for backward compatibility
-    qdo.setAttribute("y",  QString("%1").arg(dock_elmt_.y()));// for backward compatibility
-    qdo.setAttribute("orientation", d->m_orientation);
+	qdo.setAttribute("x", QString("%1").arg(dock_elmt_.x()));
+	qdo.setAttribute("y",  QString("%1").arg(dock_elmt_.y()));
+	qdo.setAttribute("orientation", ori_);
 	qdo.setAttribute("number", number_terminal_);
 	qdo.setAttribute("name", name_terminal_);
 	qdo.setAttribute("nameHidden", name_terminal_hidden);
@@ -762,20 +739,11 @@ bool Terminal::fromXml(QDomElement &terminal) {
 	number_terminal_ = terminal.attribute("number");
 	name_terminal_ = terminal.attribute("name");
 	name_terminal_hidden = terminal.attribute("nameHidden").toInt();
-
 	return (
 		qFuzzyCompare(terminal.attribute("x").toDouble(), dock_elmt_.x()) &&
 		qFuzzyCompare(terminal.attribute("y").toDouble(), dock_elmt_.y()) &&
-        (terminal.attribute("orientation").toInt() == d->m_orientation)
+		(terminal.attribute("orientation").toInt() == ori_)
 	);
-}
-
-/**
-    @return the position, relative to the scene, of the docking point for
-    conductors.
-*/
-inline QPointF Terminal::dockConductor() const {
-    return(mapToScene(d->m_pos));
 }
 
 /**
@@ -790,10 +758,6 @@ Diagram *Terminal::diagram() const {
 */
 Element *Terminal::parentElement() const {
 	return(parent_element_);
-}
-
-QUuid Terminal::uuid() const {
-    return d->m_uuid;
 }
 
 /**

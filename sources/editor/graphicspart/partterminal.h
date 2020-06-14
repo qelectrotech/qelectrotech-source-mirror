@@ -19,8 +19,6 @@
 #define PART_TERMINAL_H
 
 #include "customelementgraphicpart.h"
-#include "QUuid"
-#include "terminaldata.h"
 
 
 
@@ -33,7 +31,6 @@ class PartTerminal : public CustomElementGraphicPart
 		Q_OBJECT
 
 		Q_PROPERTY(Qet::Orientation orientation READ orientation WRITE setOrientation)
-        Q_PROPERTY(QString name READ name WRITE setName)
 
 	
 	public:
@@ -45,7 +42,12 @@ class PartTerminal : public CustomElementGraphicPart
 
 	signals:
 		void orientationChanged();
-        void nameChanged();
+	
+		// attributes
+	private:
+		Qet::Orientation m_orientation;
+		QPointF second_point;
+
 
 		// methods
 	public:
@@ -55,7 +57,7 @@ class PartTerminal : public CustomElementGraphicPart
 			 * @return the QGraphicsItem type
 			 */
 		int type() const override { return Type; }
-        QString name() const override { return d->m_name; }
+		QString name() const override { return(QObject::tr("borne", "element part name")); }
 		QString xmlName() const override { return(QString("terminal")); }
 		void fromXml(const QDomElement &) override;
 		const QDomElement toXml(QDomDocument &) const override;
@@ -69,14 +71,11 @@ class PartTerminal : public CustomElementGraphicPart
 		void startUserTransformation(const QRectF &) override;
 		void handleUserTransformation(const QRectF &, const QRectF &) override;
 
-        Qet::Orientation orientation() const {return d->m_orientation;}
+		Qet::Orientation orientation() const {return m_orientation;}
 		void setOrientation(Qet::Orientation ori);
-
-        void setName(QString& name);
 	
 	private:
 		void updateSecondPoint();
-        TerminalData* d; // pointer to the terminal data
 	
 	private:
 		QPointF saved_position_;
