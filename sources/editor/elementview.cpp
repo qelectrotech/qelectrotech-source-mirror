@@ -415,11 +415,11 @@ void ElementView::wheelEvent(QWheelEvent *e) {
 	//Zoom and scrolling
 	if ( gestures() ) {
 		if (e -> modifiers() & Qt::ControlModifier)
-			e -> angleDelta().manhattanLength() > 0 ? zoomInSlowly() : zoomOutSlowly();
+			e -> angleDelta().y() > 0 ? zoomInSlowly() : zoomOutSlowly();
 		else
             QGraphicsView::wheelEvent(e);
 	} else {
-		e -> angleDelta().manhattanLength() > 0 ? zoomIn(): zoomOut();
+		e -> angleDelta().y() > 0 ? zoomIn(): zoomOut();
 	}
 }
 
