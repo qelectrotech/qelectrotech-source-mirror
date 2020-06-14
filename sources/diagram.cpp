@@ -40,6 +40,7 @@
 #include "qetgraphicstableitem.h"
 #include "qetxml.h"
 #include "elementprovider.h"
+#include <cassert>
 
 int Diagram::xGrid  = 10;
 int Diagram::yGrid  = 10;
