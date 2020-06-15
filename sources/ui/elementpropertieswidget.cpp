@@ -361,6 +361,7 @@ QWidget *ElementPropertiesWidget::generalWidget()
 		//widget for the text
 	QLabel *label = new QLabel (description_string, general_widget);
 	label->setWordWrap(true);
+	label->setTextInteractionFlags(Qt::TextEditorInteraction);
 	vlayout_->addWidget(label);
 
 		//widget for the pixmap
