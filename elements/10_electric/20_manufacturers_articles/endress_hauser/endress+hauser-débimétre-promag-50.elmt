@@ -1,0 +1,95 @@
+<definition width="220" height="70" hotspot_y="30" version="0.80" link_type="simple" type="element" hotspot_x="15" orientation="dyyy">
+    <uuid uuid="{250ced3b-cbc9-4791-843a-07754e4aebf9}"/>
+    <names>
+        <name lang="it">Debimetro Endress+Hauser Promag 50</name>
+        <name lang="cs">Endress+Hauser - Průtokoměr Promag 50</name>
+        <name lang="fr">Endress+Hauser Débimétre PROMAG 50</name>
+        <name lang="es">Endress+Hauser - Promag 50 Medidor de flujo</name>
+        <name lang="pl">Endress+Hauser - Przepływomierz Promag 50</name>
+        <name lang="en">Endress+Hauser Promag 50 Flowmeter</name>
+        <name lang="ar">Endress+Hauser - مقياس تدفق Promag 50</name>
+        <name lang="el">Endress+Hauser - Μετρητής ροής Promag 50</name>
+    </names>
+    <elementInformations/>
+    <informations></informations>
+    <description>
+        <line y1="15" y2="15" x2="144" x1="136" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="12" y2="9" x2="151" x1="151" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="12" y2="15" x2="145.804" x1="147.804" length2="1.5" end1="none" end2="none" antialias="true" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="12" y2="11" x2="144.804" x1="147.804" length2="1.5" end1="none" end2="none" antialias="true" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="12" y2="12" x2="150.804" x1="147.804" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="15" y2="12" x2="146.804" x1="140.804" length2="1.5" end1="none" end2="none" antialias="true" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="12" y2="15" x2="141" x1="134" length2="1.5" end1="none" end2="none" antialias="true" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="12" y2="12" x2="134" x1="130" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="9" y2="12" x2="129" x1="129" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="25" x="123" color="#000000" text="Pulse OUT" rotation="0" font="LyX,4,-1,5,50,0,0,0,0,0"/>
+        <dynamic_text y="18" uuid="{9f0e6cb7-f111-4dc3-9c2a-6729ed1eb1a1}" z="11" x="-9" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" text_width="-1" font="LyX,6,-1,5,50,0,0,0,0,0" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text y="4" uuid="{44af9aa4-e32e-4364-a01e-0bb4dc3be044}" z="12" x="56" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" text_width="-1" font="LyX,7,-1,5,50,0,0,0,0,0" text_from="UserText">
+            <text>_</text>
+        </dynamic_text>
+        <line y1="35" y2="35" x2="200" x1="-10" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-19.8857" y2="34.8762" x2="-10" x1="-10" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" y2="-20" x2="47" x1="23" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="25" x="168" color="#000000" text="4-20mA" rotation="0" font="LyX,4,-1,5,50,0,0,0,0,0"/>
+        <line y1="-1" y2="2" x2="184" x1="182" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="17" x="23" color="#000000" text="N/L-" rotation="270" font="LyX,5,-1,5,50,0,0,0,0,0"/>
+        <text y="3" x="194" color="#000000" text="- 27" rotation="270" font="LyX,6,-1,5,50,0,0,0,0,0"/>
+        <text y="7" x="174" color="#000000" text="+ 26" rotation="270" font="LyX,6,-1,5,50,0,0,0,0,0"/>
+        <text y="4" x="154" color="#000000" text="- 25" rotation="270" font="LyX,6,-1,5,50,0,0,0,0,0"/>
+        <text y="7" x="133" color="#000000" text="+ 24" rotation="270" font="LyX,6,-1,5,50,0,0,0,0,0"/>
+        <line y1="-19.8857" y2="34.8762" x2="200" x1="200" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" y2="-20" x2="107" x1="93" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" y2="-20" x2="87" x1="73" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" y2="-20" x2="67" x1="53" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-1" y2="2" x2="180" x1="182" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-16" y2="-23" x2="70" x1="70" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="6.8769" x="177.877" diameter="8.24621" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-16" y2="-23" x2="50" x1="50" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="11" y2="0" x2="182" x1="182" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-22.8284" x="67.172" diameter="5.65685" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-22.8284" x="47.172" diameter="5.65685" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="-9" x="4" color="#000000" text="1" rotation="270" font="LyX,6,-1,5,50,0,0,0,0,0"/>
+        <line y1="-20" y2="-20" x2="200" x1="193" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" y2="-20" x2="187" x1="173" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" y2="-20" x2="167" x1="153" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" y2="-20" x2="147" x1="133" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" y2="-20" x2="127" x1="113" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" y2="-20" x2="17" x1="3" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" y2="-20" x2="-3" x1="-10" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-16" y2="-23" x2="-3.55271e-15" x1="-3.55271e-15" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-22.8284" x="-2.82843" diameter="5.65685" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="4" x="113" color="#000000" text="- 23" rotation="270" font="LyX,6,-1,5,50,0,0,0,0,0"/>
+        <text y="8" x="94" color="#000000" text="+ 22" rotation="270" font="LyX,6,-1,5,50,0,0,0,0,0"/>
+        <text y="5" x="74" color="#000000" text="- 21" rotation="270" font="LyX,6,-1,5,50,0,0,0,0,0"/>
+        <text y="7" x="53" color="#000000" text="+ 20" rotation="270" font="LyX,6,-1,5,50,0,0,0,0,0"/>
+        <text y="17" x="7" color="#000000" text="L1/L+" rotation="270" font="LyX,5,-1,5,50,0,0,0,0,0"/>
+        <text y="-8" x="22" color="#000000" text="2" rotation="270" font="LyX,6,-1,5,50,0,0,0,0,0"/>
+        <line y1="-16" y2="-23" x2="190" x1="190" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-16" y2="-23" x2="170" x1="170" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-16" y2="-23" x2="150" x1="150" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-16" y2="-23" x2="130" x1="130" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-16" y2="-23" x2="110" x1="110" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-16" y2="-23" x2="90" x1="90" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-16" y2="-23" x2="20" x1="20" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-22.8284" x="127.172" diameter="5.65685" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-22.8284" x="147.172" diameter="5.65685" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-22.8284" x="167.172" diameter="5.65685" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-22.8284" x="187.172" diameter="5.65685" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-22.8284" x="107.172" diameter="5.65685" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-22.8284" x="87.172" diameter="5.65685" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-22.8284" x="17.1716" diameter="5.65685" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="-23" uuid="{70a99dea-23dc-412a-a6b2-42253eb5b038}" x="-3.55271e-15" orientation="n" name=""/>
+        <terminal y="-23" uuid="{ce2bf6d8-18a3-4e4b-a452-656cbf757f60}" x="20" orientation="n" name=""/>
+        <terminal y="-23" uuid="{26c5b2aa-17f1-4e29-9a43-b517b5771be8}" x="90" orientation="n" name=""/>
+        <terminal y="-23" uuid="{474a7540-9dcc-40f9-acd5-fc14fe65dbfe}" x="110" orientation="n" name=""/>
+        <terminal y="-23" uuid="{4e0be5a1-ae6e-4428-9b83-6eb215eb5237}" x="130" orientation="n" name=""/>
+        <terminal y="-23" uuid="{dbb7d6b0-714b-4aec-a70d-afe753689670}" x="150" orientation="n" name=""/>
+        <terminal y="-23" uuid="{5c628c9c-3385-41e2-8ff0-9ab6ecfc9f7b}" x="170" orientation="n" name=""/>
+        <terminal y="-23" uuid="{435fb6a6-09e6-4a09-86db-03c5eabb7179}" x="190" orientation="n" name=""/>
+        <terminal y="-23" uuid="{804bbcfb-1739-4d94-a7de-041758469dad}" x="50" orientation="n" name=""/>
+        <terminal y="-23" uuid="{2dd7a937-048d-4c09-98fe-e6427c9a6f1c}" x="70" orientation="n" name=""/>
+    </description>
+</definition>

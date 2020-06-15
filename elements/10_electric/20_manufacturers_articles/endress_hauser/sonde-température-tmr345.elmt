@@ -1,0 +1,71 @@
+<definition width="200" height="110" hotspot_y="55" version="0.80" link_type="simple" type="element" hotspot_x="34" orientation="dyyy">
+    <uuid uuid="{f41e1f3b-e274-4e1d-815c-705d262358c3}"/>
+    <names>
+        <name lang="fr">Sonde Température TMR345</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text y="22" x="6" color="#000000" text="1" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <circle y="-40" x="-20" diameter="80" antialias="true" style="line-style:normal;line-weight:eleve;filling:none;color:black"/>
+        <circle y="12" x="-4" diameter="8" antialias="true" style="line-style:normal;line-weight:hight;filling:none;color:black"/>
+        <circle y="-34" x="-14" diameter="68" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-36" x="-16" diameter="72" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="-18" x="6" color="#000000" text="4" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <line y1="14" y2="14" x2="120" x1="110" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="17" x="134" color="#000000" text="3-BU" rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text y="-25" x="130" color="#000000" text="1-BN" rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text y="-11" x="131" color="#000000" text="2-WH" rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text y="-18" x="30" color="#000000" text="3" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text y="22" x="30" color="#000000" text="2" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <circle y="-20" x="36" diameter="8" antialias="true" style="line-style:normal;line-weight:hight;filling:none;color:black"/>
+        <circle y="12" x="36" diameter="8" antialias="true" style="line-style:normal;line-weight:hight;filling:none;color:black"/>
+        <circle y="-20" x="-4" diameter="8" antialias="true" style="line-style:normal;line-weight:hight;filling:none;color:black"/>
+        <text y="27" x="134" color="#000000" text="4-BK" rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <text y="8" x="8" color="#000000" text="M12x1" rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0"/>
+        <line y1="-50" y2="-50" x2="40" x1="0" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" y2="20" x2="-30" x1="-30" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="50" y2="50" x2="40" x1="0" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" y2="-50" x2="0" x1="-30" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="20" y2="50" x2="0" x1="-30" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" y2="20" x2="70" x1="70" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="20" y2="50" x2="40" x1="70" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-50" y2="-20" x2="70" x1="40" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="-20" width="40" rx="1" height="40" x="70" ry="1" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text y="45" uuid="{f0483631-3ab7-4652-be86-5bbde0d3fc12}" z="27" x="-10" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" text_width="-1" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line y1="-14" y2="-14" x2="120" x1="110" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-20" y2="-20" x2="160" x1="130" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-5" y2="-5" x2="120" x1="110" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-10" y2="-10" x2="160" x1="130" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="6" y2="6" x2="120" x1="110" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-14" y2="-20" x2="130" x1="120" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-5" y2="-10" x2="130" x1="120" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="6" y2="10" x2="130" x1="120" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="10" y2="10" x2="160" x1="130" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="14" y2="20" x2="130" x1="120" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="20" y2="20" x2="160" x1="130" length2="1.5" end1="none" end2="none" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text y="-70" uuid="{e5b62c70-e2c7-4690-9465-e4c55e6e33a9}" z="55" x="-30" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" text_width="-1" font="Sans Serif,7,-1,5,0,0,0,0,0,0,normal" text_from="UserText">
+            <text>EASYTEMP TRM35</text>
+        </dynamic_text>
+        <dynamic_text y="-18" uuid="{94855a6d-d6a7-4cc0-ad42-f3f3b1bf2e51}" z="56" x="26" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" text_width="-1" font="Sans Serif,4,-1,5,0,0,0,0,0,0,normal" text_from="UserText">
+            <text>0V</text>
+        </dynamic_text>
+        <dynamic_text y="18" uuid="{94855a6d-d6a7-4cc0-ad42-f3f3b1bf2e51}" z="56" x="-4" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" text_width="-1" font="Sans Serif,4,-1,5,0,0,0,0,0,0,normal" text_from="UserText">
+            <text>10-35VDC</text>
+        </dynamic_text>
+        <dynamic_text y="-12" uuid="{1ddba7d5-7d29-44d2-8d6d-acc38b153729}" z="57" x="26" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" text_width="-1" font="Sans Serif,4,-1,5,0,0,0,0,0,0,normal" text_from="UserText">
+            <text>(4-20mA)</text>
+        </dynamic_text>
+        <dynamic_text y="22" uuid="{1ddba7d5-7d29-44d2-8d6d-acc38b153729}" z="57" x="4" Halignment="AlignLeft" Valignment="AlignTop" frame="false" rotation="0" text_width="-1" font="Sans Serif,4,-1,5,0,0,0,0,0,0,normal" text_from="UserText">
+            <text>(4-20mA)</text>
+        </dynamic_text>
+        <terminal y="-10" uuid="{6f976130-5c8b-497a-9fbe-db41d8f80c77}" x="160" orientation="e" name=""/>
+        <terminal y="20" uuid="{538fcc0a-8795-4b12-9a96-d06d91a2409c}" x="160" orientation="e" name=""/>
+        <terminal y="-20" uuid="{41901683-710d-4fd2-9426-bdc50a569f59}" x="160" orientation="e" name=""/>
+        <terminal y="10" uuid="{cb61df3a-1d04-482b-b5cb-774e9f43ccbc}" x="160" orientation="e" name=""/>
+    </description>
+</definition>
