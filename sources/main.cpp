@@ -48,6 +48,13 @@ int main(int argc, char **argv)
 	MacOSXOpenEvent open_event;
 	app.installEventFilter(&open_event);
 	app.setStyle(QStyleFactory::create("Fusion"));
+	
+	// Since Apple made difficult for users to set PATH, we set here for convenience.
+	// Users are supposed to install Homebrew Python for Python qet_tb_generator plugin.
+	
+	QByteArray path = "/usr/local/bin:";
+	path += qgetenv("PATH");
+	qputenv("PATH", path.constData());
 #endif
 	
 	if (app.isSecondary())
