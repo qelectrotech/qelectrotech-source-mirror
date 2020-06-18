@@ -20,7 +20,6 @@
 #include "qetgraphicsheaderitem.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "qetxml.h"
-#include "nomenclaturemodel.h"
 #include "elementprovider.h"
 #include "qetutils.h"
 #include "projectdbmodel.h"

@@ -38,7 +38,6 @@
 #include "conductornumexport.h"
 #include "qetgraphicstableitem.h"
 #include "bomexportdialog.h"
-#include "nomenclaturemodel.h"
 #include "QWidgetAnimation/qwidgetanimation.h"
 #include "qetgraphicstablefactory.h"
 
