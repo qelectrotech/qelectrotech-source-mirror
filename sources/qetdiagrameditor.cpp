@@ -403,6 +403,14 @@ void QETDiagramEditor::setUpActions()
 		}
 	});
 
+		//Add a summary item
+	m_add_summary = new QAction(QET::Icons::TableOfContent, tr("Ajouter un sommaire"), this);
+	connect(m_add_summary, &QAction::triggered, [this]() {
+		if(this->currentDiagramView()) {
+			QetGraphicsTableFactory::createAndAddSummary(this->currentDiagramView()->diagram());
+		}
+	});
+
 		//Lauch the plugin of terminal generator
 	m_project_terminalBloc = new QAction(QET::Icons::TerminalStrip, tr("Lancer le plugin de création de borniers"), this);
 	connect(m_project_terminalBloc, &QAction::triggered, this, &QETDiagramEditor::generateTerminalBlock);
@@ -769,6 +777,7 @@ void QETDiagramEditor::setUpMenu() {
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_project_folio_list);
 	menu_project -> addAction(m_add_nomenclature);
+	menu_project -> addAction(m_add_summary);
 	menu_project -> addAction(m_csv_export);
     menu_project -> addAction(m_project_export_conductor_num);
 	menu_project -> addAction(m_project_terminalBloc);
@@ -1449,6 +1458,7 @@ void QETDiagramEditor::slot_updateActions()
 	m_clean_project        -> setEnabled(editable_project);
 	m_project_folio_list  -> setEnabled(editable_project);
 	m_add_nomenclature->setEnabled(editable_project);
+	m_add_summary->setEnabled(editable_project);
 	m_csv_export -> setEnabled(editable_project);
 	m_export_diagram   -> setEnabled(opened_diagram);
 	m_print            -> setEnabled(opened_diagram);

@@ -24,17 +24,21 @@
 #include <QFontDialog>
 
 /**
- * @brief AddTableDialog::AddNomenclatureDialog
- * @param parent
+ * @brief AddTableDialog::AddTableDialog
+ * @param content_widget : the widget to display in the "content" tab.
+ * This dialog take ownership of @content_widget.
+ * @param parent : parent widget.
  */
-AddTableDialog::AddTableDialog(QWidget *parent) :
+AddTableDialog::AddTableDialog(QWidget *content_widget, QWidget *parent) :
     QDialog(parent),
 	ui(new Ui::AddTableDialog)
 {
     ui->setupUi(this);
 	ui->m_header_font_pb->setText(m_header_font.family());
 	ui->m_table_font_pb->setText(m_table_font.family());
-	ui->m_tab->addTab(m_query_widget, tr("Contenu"));
+	m_content_widget = content_widget;
+	content_widget->setParent(this);
+	ui->m_tab->addTab(content_widget, tr("Contenu"));
 	fillSavedQuery();
 	
 	connect(ui->m_config_gb, &ConfigSaveLoaderWidget::saveClicked, this, &AddTableDialog::saveConfig);
@@ -56,14 +60,6 @@ AddTableDialog::~AddTableDialog() {
  */
 void AddTableDialog::setQueryWidget(QWidget *widget) {
 	Q_UNUSED(widget)
-}
-
-/**
- * @brief AddTableDialog::queryStr
- * @return
- */
-QString AddTableDialog::queryStr() {
-	return m_query_widget->queryStr();
 }
 
 /**
@@ -152,6 +148,10 @@ Qt::Alignment AddTableDialog::tableAlignment() const
  */
 QFont AddTableDialog::tableFont() const {
 	return m_table_font;
+}
+
+QWidget *AddTableDialog::contentWidget() const {
+	return m_content_widget;
 }
 
 void AddTableDialog::on_m_header_font_pb_clicked()

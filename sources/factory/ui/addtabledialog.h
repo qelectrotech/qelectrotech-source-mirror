@@ -20,7 +20,6 @@
 
 #include <QDialog>
 
-#include "elementquerywidget.h"
 #include "qetapp.h"
 
 namespace Ui {
@@ -40,11 +39,10 @@ class AddTableDialog : public QDialog
     Q_OBJECT
 
 	public:
-		explicit AddTableDialog(QWidget *parent = nullptr);
+		explicit AddTableDialog(QWidget *content_widget, QWidget *parent = nullptr);
 		~AddTableDialog();
 
 		void setQueryWidget(QWidget *widget);
-		QString queryStr();
 		bool adjustTableToFolio() const;
 		bool addNewTableToNewDiagram() const;
 
@@ -57,6 +55,7 @@ class AddTableDialog : public QDialog
 		QMargins tableMargins() const;
 		Qt::Alignment tableAlignment() const;
 		QFont tableFont() const;
+		QWidget *contentWidget() const;
 
 	private slots:
 		void on_m_header_font_pb_clicked();
@@ -69,13 +68,16 @@ class AddTableDialog : public QDialog
 
 	private:
 		Ui::AddTableDialog *ui;
-		ElementQueryWidget *m_query_widget = new ElementQueryWidget();
+
+		QWidget *m_content_widget = nullptr;
 
 		QMargins m_header_margins = QMargins(5,5,10,5),
 				 m_table_margins  = QMargins(5,5,10,5);
 
 		QFont m_header_font = QETApp::diagramTextsFont();
 		QFont m_table_font  = QETApp::diagramTextsFont();
+
+		QString m_identifier;
 
 };
 

@@ -15,38 +15,39 @@
         You should have received a copy of the GNU General Public License
         along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef NOMENCLATUREMODELPROPERTIESWIDGET_H
-#define NOMENCLATUREMODELPROPERTIESWIDGET_H
+#ifndef PROJECTDBMODELPROPERTIESWIDGET_H
+#define PROJECTDBMODELPROPERTIESWIDGET_H
 
 #include "PropertiesEditor/propertieseditorwidget.h"
 
-class NomenclatureModel;
+class ProjectDBModel;
 
 namespace Ui {
-class NomenclatureModelPropertiesWidget;
+class ProjectDBModelPropertiesWidget;
 }
 
 /**
- * @brief The NomenclatureModelPropertiesWidget class
+ * @brief The projectDBModelPropertiesWidget class
  * This class is an editor for a NomenclatureModel
  */
-class NomenclatureModelPropertiesWidget : public PropertiesEditorWidget
+class ProjectDBModelPropertiesWidget : public PropertiesEditorWidget
 {
     Q_OBJECT
 
     public:
-        explicit NomenclatureModelPropertiesWidget(NomenclatureModel *model = nullptr, QWidget *parent = nullptr);
-        ~NomenclatureModelPropertiesWidget();
+		explicit ProjectDBModelPropertiesWidget(ProjectDBModel *model = nullptr, QWidget *parent = nullptr);
+		~ProjectDBModelPropertiesWidget();
 
-        void setModel(NomenclatureModel *model);
+		void setModel(ProjectDBModel *model);
 
 	private slots:
 		void on_m_edit_query_pb_clicked();
 		void on_m_refresh_pb_clicked();
 
 		private:
-        Ui::NomenclatureModelPropertiesWidget *ui;
-        NomenclatureModel *m_model = nullptr;
+		Ui::ProjectDBModelPropertiesWidget *ui;
+		ProjectDBModel *m_model = nullptr;
 };
 
-#endif // NOMENCLATUREMODELPROPERTIESWIDGET_H
+#endif // PROJECTDBMODELPROPERTIESWIDGET_H
+

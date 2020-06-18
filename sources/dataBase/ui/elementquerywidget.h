@@ -44,6 +44,8 @@ class ElementQueryWidget : public QWidget
 		QString queryStr() const;
 		QStringList header() const;
 
+		static QString modelIdentifier() {return "nomenclature";}
+
 	private slots:
 		void on_m_up_pb_clicked();
 		void on_m_add_pb_clicked();

@@ -15,48 +15,48 @@
         You should have received a copy of the GNU General Public License
         along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "nomenclaturemodelpropertieswidget.h"
-#include "ui_nomenclaturemodelpropertieswidget.h"
-#include "nomenclaturemodel.h"
+#include "projectdbmodelpropertieswidget.h"
+#include "ui_projectdbmodelpropertieswidget.h"
+#include "projectdbmodel.h"
 #include "qetproject.h"
 #include "elementquerywidget.h"
 
 #include <QDialogButtonBox>
 
 /**
- * @brief NomenclatureModelPropertiesWidget::NomenclatureModelPropertiesWidget
+ * @brief projectDBModelPropertiesWidget::projectDBModelPropertiesWidget
  * @param model
  * @param parent
  */
-NomenclatureModelPropertiesWidget::NomenclatureModelPropertiesWidget(NomenclatureModel *model, QWidget *parent) :
+ProjectDBModelPropertiesWidget::ProjectDBModelPropertiesWidget(ProjectDBModel *model, QWidget *parent) :
 	PropertiesEditorWidget(parent),
-    ui(new Ui::NomenclatureModelPropertiesWidget)
+	ui(new Ui::ProjectDBModelPropertiesWidget)
 {
     ui->setupUi(this);
 	setModel(model);
 }
 
 /**
- * @brief NomenclatureModelPropertiesWidget::~NomenclatureModelPropertiesWidget
+ * @brief projectDBModelPropertiesWidget::~projectDBModelPropertiesWidget
  */
-NomenclatureModelPropertiesWidget::~NomenclatureModelPropertiesWidget() {
+ProjectDBModelPropertiesWidget::~ProjectDBModelPropertiesWidget() {
     delete ui;
 }
 
 /**
- * @brief NomenclatureModelPropertiesWidget::setModel
+ * @brief projectDBModelPropertiesWidget::setModel
  * @param model
  */
-void NomenclatureModelPropertiesWidget::setModel(NomenclatureModel *model) {
+void ProjectDBModelPropertiesWidget::setModel(ProjectDBModel *model) {
     m_model = model;
 	ui->m_edit_query_pb->setEnabled(m_model);
 	ui->m_refresh_pb->setEnabled(m_model);
 }
 
 /**
- * @brief NomenclatureModelPropertiesWidget::on_m_edit_query_pb_clicked
+ * @brief projectDBModelPropertiesWidget::on_m_edit_query_pb_clicked
  */
-void NomenclatureModelPropertiesWidget::on_m_edit_query_pb_clicked()
+void ProjectDBModelPropertiesWidget::on_m_edit_query_pb_clicked()
 {
 	QDialog d(this);
 	auto l = new QVBoxLayout;
@@ -73,7 +73,7 @@ void NomenclatureModelPropertiesWidget::on_m_edit_query_pb_clicked()
 
 	if (d.exec())
 	{
-		m_model->query(query_widget->queryStr());
+		m_model->setQuery(query_widget->queryStr());
 		auto headers = query_widget->header();
 		for (auto i=0 ; i<headers.size() ; ++i) {
 			m_model->setHeaderData(i, Qt::Horizontal, headers.at(i));
@@ -81,7 +81,7 @@ void NomenclatureModelPropertiesWidget::on_m_edit_query_pb_clicked()
 	}
 }
 
-void NomenclatureModelPropertiesWidget::on_m_refresh_pb_clicked() {
+void ProjectDBModelPropertiesWidget::on_m_refresh_pb_clicked() {
 	if (m_model && m_model->project()) {
 		m_model->project()->dataBase()->updateDB();
 	}

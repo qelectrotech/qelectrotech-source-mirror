@@ -17,12 +17,14 @@
 */
 #include "qetgraphicstablefactory.h"
 #include "qetgraphicstableitem.h"
-#include "nomenclaturemodel.h"
+#include "projectdbmodel.h"
 #include "elementquerywidget.h"
 #include "diagram.h"
 #include "qetgraphicsheaderitem.h"
 #include "addtabledialog.h"
 #include "qetutils.h"
+#include "elementquerywidget.h"
+#include "summaryquerywidget.h"
 
 #include <QDialog>
 
@@ -33,48 +35,72 @@ QetGraphicsTableFactory::QetGraphicsTableFactory()
 
 /**
  * @brief QetGraphicsTableFactory::createAndAddNomenclature
- * Create a nomenclature table, open a dialog for ask to user the config of the table,
+ * Open a dialog for ask user the config of the table ,create a nomenclature table
  * and add it to diagram @diagram;
  * @param diagram
  */
 void QetGraphicsTableFactory::createAndAddNomenclature(Diagram *diagram)
 {
-	QScopedPointer<AddTableDialog> d(new AddTableDialog(diagram->views().first()));
+	QScopedPointer<AddTableDialog> d(new AddTableDialog(new ElementQueryWidget(), diagram->views().first()));
 	d->setWindowTitle(QObject::tr("Ajouter une nomenclature"));
 
-	if (d->exec())
+	if (d->exec()) {
+		create(diagram, d.data());
+	}
+}
+
+/**
+ * @brief QetGraphicsTableFactory::createAndAddSummary
+ * Open a dialog for ask user the config of the table ,create a summary table
+ * and add it to diagram @diagram;
+ * @param diagram
+ */
+void QetGraphicsTableFactory::createAndAddSummary(Diagram *diagram)
+{
+	QScopedPointer<AddTableDialog> d(new AddTableDialog(new SummaryQueryWidget(), diagram->views().first()));
+	d->setWindowTitle(QObject::tr("Ajouter un sommaire"));
+
+	if (d->exec()) {
+		create(diagram, d.data());
+	}
+}
+
+void QetGraphicsTableFactory::create(Diagram *diagram, AddTableDialog *dialog)
+{
+	auto table_ = newTable(diagram, dialog);
+	if (dialog->adjustTableToFolio()) {
+		QetGraphicsTableItem::adjustTableToFolio(table_);
+	}
+
+
+		//Add new table if needed and option checked
+	dialog->addNewTableToNewDiagram();
+	qDebug() << "model " << table_->model();
+	table_->model()->rowCount();
+	table_->displayNRow();
+	if (dialog->addNewTableToNewDiagram() && table_->model()->rowCount() > table_->displayNRow())
 	{
-		auto table_ = newTable(diagram, d.data());
-		if (d->adjustTableToFolio()) {
-			QetGraphicsTableItem::adjustTableToFolio(table_);
-		}
+		auto already_displayed_rows = table_->displayNRow();
+		auto project_ = diagram->project();
+		auto actual_diagram = diagram;
+		auto previous_table = table_;
 
-
-			//Add new table if needed and option checked
-		if (d->addNewTableToNewDiagram() && table_->model()->rowCount() > table_->displayNRow())
+		table_->setTableName(dialog->tableName() + QString(" 1"));
+		int table_number = 2;
+		while (already_displayed_rows < table_->model()->rowCount())
 		{
-			auto already_displayed_rows = table_->displayNRow();
-			auto project_ = diagram->project();
-			auto actual_diagram = diagram;
-			auto previous_table = table_;
-
-			table_->setTableName(d->tableName() + QString(" 1"));
-			int table_number = 2;
-			while (already_displayed_rows < table_->model()->rowCount())
-			{
-					//Add a new diagram after the current one
-				actual_diagram = project_->addNewDiagram(project_->folioIndex(actual_diagram)+1);
-				table_ = newTable(actual_diagram, d.data(), previous_table);
-				table_->setTableName(d->tableName() + QString(" %1").arg(table_number));
-					//Adjust table
-				if (d->adjustTableToFolio()) {
-					QetGraphicsTableItem::adjustTableToFolio(table_);
-				}
-					//Update some variable for the next loop
-				already_displayed_rows += table_->displayNRow();
-				previous_table = table_;
-				++table_number;
+				//Add a new diagram after the current one
+			actual_diagram = project_->addNewDiagram(project_->folioIndex(actual_diagram)+1);
+			table_ = newTable(actual_diagram, dialog, previous_table);
+			table_->setTableName(dialog->tableName() + QString(" %1").arg(table_number));
+				//Adjust table
+			if (dialog->adjustTableToFolio()) {
+				QetGraphicsTableItem::adjustTableToFolio(table_);
 			}
+				//Update some variable for the next loop
+			already_displayed_rows += table_->displayNRow();
+			previous_table = table_;
+			++table_number;
 		}
 	}
 }
@@ -95,8 +121,20 @@ QetGraphicsTableItem *QetGraphicsTableFactory::newTable(Diagram *diagram, AddTab
 
 	if (!previous_table)
 	{
-		auto model = new NomenclatureModel(diagram->project(), diagram->project());
-		model->query(dialog->queryStr());
+		QString identifier_;
+		QString query_;
+
+		if (auto query_widget = dynamic_cast<ElementQueryWidget *>(dialog->contentWidget())) {
+			identifier_ = query_widget->modelIdentifier();
+			query_ = query_widget->queryStr();
+		} else if (auto query_widget = dynamic_cast<SummaryQueryWidget *>(dialog->contentWidget())) {
+			identifier_ = query_widget->modelIdentifier();
+			query_ = query_widget->queryStr();
+		}
+
+		auto model = new ProjectDBModel(diagram->project(), diagram->project());
+		model->setIdentifier(identifier_);
+		model->setQuery(query_);
 		model->setData(model->index(0,0), int(dialog->tableAlignment()), Qt::TextAlignmentRole);
 		model->setData(model->index(0,0), dialog->tableFont(), Qt::FontRole);
 		model->setData(model->index(0,0), QETUtils::marginsToString(dialog->headerMargins()), Qt::UserRole+1);

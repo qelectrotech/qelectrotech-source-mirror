@@ -185,6 +185,7 @@ class QETDiagramEditor : public QETMainWindow
 		QAction *m_project_folio_list;    ///< Sommaire des schemas
 		QAction *m_csv_export;   ///< generate nomenclature
 		QAction *m_add_nomenclature; ///< Add nomenclature graphics item;
+		QAction *m_add_summary; ///<Add summary graphics item
 		QAction *m_project_terminalBloc;   ///< generate terminal block
         QAction *m_project_export_conductor_num; ///<Export the wire num to csv
 		QAction *m_export_project_db; ///Export to file the internal database of the current project

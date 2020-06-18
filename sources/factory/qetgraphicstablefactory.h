@@ -31,7 +31,9 @@ class QetGraphicsTableFactory
         QetGraphicsTableFactory();
 
         static void createAndAddNomenclature(Diagram *diagram);
+		static void createAndAddSummary(Diagram *diagram);
 	private:
+		static void create(Diagram *diagram, AddTableDialog *dialog);
 		static QetGraphicsTableItem *newTable(Diagram *diagram, AddTableDialog *dialog, QetGraphicsTableItem *previous_table = nullptr);
 };
 

@@ -55,6 +55,7 @@ class projectDataBase : public QObject
 	private:
 		bool createDataBase(const QString &connection_name= QString(), const QString &name = QString());
 		void createElementNomenclatureView();
+		void createSummaryView();
 		void populateDiagramTable();
 		void populateElementTable();
 		void populateElementInfoTable();

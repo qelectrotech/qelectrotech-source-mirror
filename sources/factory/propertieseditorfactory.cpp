@@ -32,8 +32,8 @@
 #include "elementtextitemgroup.h"
 #include "qetgraphicstableitem.h"
 #include "graphicstablepropertieseditor.h"
-#include "nomenclaturemodel.h"
-#include "nomenclaturemodelpropertieswidget.h"
+#include "projectdbmodelpropertieswidget.h"
+#include "projectdbmodel.h"
 
 /**
  * @brief PropertiesEditorFactory::propertiesEditor
@@ -48,15 +48,15 @@ PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(QAbstractItemM
 	Q_UNUSED(editor)
 	Q_UNUSED(parent)
 
-	if (auto m = static_cast<NomenclatureModel *>(model))
+	if (auto m = static_cast<ProjectDBModel *>(model))
 	{
 		if (editor &&
-			editor->metaObject()->className() == NomenclatureModelPropertiesWidget::staticMetaObject.className())
+			editor->metaObject()->className() == ProjectDBModelPropertiesWidget::staticMetaObject.className())
 		{
-			static_cast<NomenclatureModelPropertiesWidget *>(editor)->setModel(m);
+			static_cast<ProjectDBModelPropertiesWidget *>(editor)->setModel(m);
 			return editor;
 		}
-		return new NomenclatureModelPropertiesWidget(m, parent);
+		return new ProjectDBModelPropertiesWidget(m, parent);
 	}
 	return nullptr;
 }

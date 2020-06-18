@@ -176,12 +176,16 @@ bool projectDataBase::createDataBase(const QString &connection_name, const QStri
 		}
 
 		createElementNomenclatureView();
+		createSummaryView();
 	}
 
 	updateDB();
 	return true;
 }
 
+/**
+ * @brief projectDataBase::createElementNomenclatureView
+ */
 void projectDataBase::createElementNomenclatureView()
 {
 	QString create_view ("CREATE VIEW element_nomenclature_view AS SELECT "
@@ -209,6 +213,29 @@ void projectDataBase::createElementNomenclatureView()
 						 "e.pos AS position "
 						 " FROM element_info ei, diagram_info di, element e, diagram d"
 						 " WHERE ei.element_uuid = e.uuid AND e.diagram_uuid = d.uuid AND di.diagram_uuid = d.uuid");
+
+	QSqlQuery query(m_data_base);
+	if (!query.exec(create_view)) {
+		qDebug() << query.lastError();
+	}
+}
+
+/**
+ * @brief projectDataBase::createSummaryView
+ */
+void projectDataBase::createSummaryView()
+{
+	QString create_view ("CREATE VIEW project_summary_view AS SELECT "
+						 "di.title AS title,"
+						 "di.author AS author,"
+						 "di.folio AS folio,"
+						 "di.plant AS plant,"
+						 "di.locmach AS locmach,"
+						 "di.indexrev AS indexrev,"
+						 "di.date AS date,"
+						 "d.pos AS pos"
+						 " FROM diagram_info di, diagram d"
+						 " WHERE di.diagram_uuid = d.uuid");
 
 	QSqlQuery query(m_data_base);
 	if (!query.exec(create_view)) {

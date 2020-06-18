@@ -23,6 +23,7 @@
 #include "nomenclaturemodel.h"
 #include "elementprovider.h"
 #include "qetutils.h"
+#include "projectdbmodel.h"
 
 #include <QAbstractItemModel>
 #include <QFontMetrics>
@@ -343,7 +344,7 @@ void QetGraphicsTableItem::setPreviousTable(QetGraphicsTableItem *table)
 	}
 	else //Copie the model of old previous table
 	{		
-		setModel(new NomenclatureModel(*static_cast<NomenclatureModel *>(old_previous_table->model())));
+		setModel(new ProjectDBModel(*static_cast<ProjectDBModel *>(old_previous_table->model())));
 	}
 
 	if (old_previous_table &&
@@ -473,8 +474,8 @@ QDomElement QetGraphicsTableItem::toXml(QDomDocument &dom_document) const
 	{
 			//Add model
 		auto dom_model = dom_document.createElement("model");
-		auto nomenclature_model = static_cast<NomenclatureModel *>(m_model);
-		dom_model.appendChild(nomenclature_model->toXml(dom_document));
+		auto project_db_model = static_cast<ProjectDBModel *>(m_model);
+		dom_model.appendChild(project_db_model->toXml(dom_document));
 		dom_table.appendChild(dom_model);
 
 	}
@@ -511,8 +512,8 @@ void QetGraphicsTableItem::fromXml(const QDomElement &dom_element)
 	else if (this->diagram()) //The table haven't got a previous table, so there should be a model save to xml
 	{
 			//Get table
-		auto model_ = new NomenclatureModel(this->diagram()->project(), this->diagram()->project());
-		model_->fromXml(dom_element.firstChildElement("model").firstChildElement(NomenclatureModel::xmlTagName()));
+		auto model_ = new ProjectDBModel(this->diagram()->project(), this->diagram()->project());
+		model_->fromXml(dom_element.firstChildElement("model").firstChildElement(ProjectDBModel::xmlTagName()));
 		this->setModel(model_);
 	}
 
