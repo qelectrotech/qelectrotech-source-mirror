@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>927</width>
-    <height>478</height>
+    <width>662</width>
+    <height>346</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,358 +23,379 @@
       <attribute name="title">
        <string>Type</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_5">
+      <layout class="QGridLayout" name="gridLayout_8">
        <item row="0" column="0">
-        <widget class="QGroupBox" name="m_multiwires_gb">
-         <property name="minimumSize">
-          <size>
-           <width>600</width>
-           <height>0</height>
-          </size>
+        <widget class="QTabWidget" name="tabWidget_2">
+         <property name="currentIndex">
+          <number>0</number>
          </property>
-         <property name="title">
-          <string>&amp;Multifilaire</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-         <layout class="QGridLayout" name="gridLayout_6">
-          <item row="1" column="0">
-           <layout class="QGridLayout" name="gridLayout_3">
-            <item row="2" column="4">
-             <widget class="QLineEdit" name="m_tension_protocol_le">
-              <property name="clearButtonEnabled">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="0">
-             <widget class="QLabel" name="label">
-              <property name="text">
-               <string>Texte :</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="3">
-             <widget class="QLabel" name="label_9">
-              <property name="text">
-               <string>Tension / Protocole :</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QSpinBox" name="m_text_size_sb">
-              <property name="toolTip">
-               <string>Taille du texte</string>
-              </property>
-              <property name="wrapping">
-               <bool>false</bool>
-              </property>
-              <property name="buttonSymbols">
-               <enum>QAbstractSpinBox::UpDownArrows</enum>
-              </property>
-              <property name="prefix">
-               <string/>
-              </property>
-              <property name="minimum">
-               <number>3</number>
-              </property>
-              <property name="maximum">
-               <number>99</number>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="4">
-             <widget class="QLineEdit" name="m_wire_section_le"/>
-            </item>
-            <item row="4" column="0">
-             <widget class="QLabel" name="m_autonum_label">
-              <property name="text">
-               <string>Autonumérotation</string>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="1">
-             <widget class="QComboBox" name="m_available_autonum_cb"/>
-            </item>
-            <item row="3" column="2">
-             <widget class="QCheckBox" name="m_show_text_cb">
-              <property name="toolTip">
-               <string>Texte visible</string>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="checked">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="4">
-             <widget class="QLineEdit" name="m_function_le">
-              <property name="clearButtonEnabled">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="label_2">
-              <property name="text">
-               <string>Taille du texte :</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="3">
-             <widget class="QLabel" name="label_4">
-              <property name="text">
-               <string>Couleur du conducteur</string>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="2">
-             <widget class="QPushButton" name="m_edit_autonum_pb">
-              <property name="toolTip">
-               <string>éditer les numérotations</string>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="icon">
-               <iconset resource="../../qelectrotech.qrc">
-                <normaloff>:/ico/16x16/configure.png</normaloff>:/ico/16x16/configure.png</iconset>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="3">
-             <widget class="QLabel" name="label_5">
-              <property name="text">
-               <string>Section du conducteur</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <widget class="QLineEdit" name="m_formula_le"/>
-            </item>
-            <item row="3" column="4">
-             <widget class="QLineEdit" name="m_wire_color_le"/>
-            </item>
-            <item row="1" column="3">
-             <widget class="QLabel" name="label_8">
-              <property name="text">
-               <string>Fonction :</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QLabel" name="label_11">
-              <property name="text">
-               <string>Formule du texte :</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="1">
-             <widget class="QLineEdit" name="m_text_le">
-              <property name="toolTip">
-               <string>Texte</string>
-              </property>
-              <property name="clearButtonEnabled">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="3" column="0">
-           <layout class="QGridLayout" name="m_text_angle_gl">
-            <item row="1" column="1">
-             <widget class="QComboBox" name="m_horiz_cb">
-              <item>
-               <property name="text">
-                <string>Horizontal en haut</string>
-               </property>
+         <widget class="QWidget" name="Multifilaire">
+          <attribute name="title">
+           <string>&amp;Multifilaire</string>
+          </attribute>
+          <layout class="QGridLayout" name="gridLayout_7">
+           <item row="0" column="0">
+            <widget class="QGroupBox" name="m_multiwires_gb">
+             <property name="minimumSize">
+              <size>
+               <width>600</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="title">
+              <string>&amp;Multifilaire</string>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_6">
+              <item row="1" column="0">
+               <layout class="QGridLayout" name="gridLayout_3">
+                <item row="4" column="0">
+                 <widget class="QLabel" name="m_autonum_label">
+                  <property name="text">
+                   <string>Autonumérotation</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="3">
+                 <widget class="QLabel" name="label_9">
+                  <property name="text">
+                   <string>Tension / Protocole :</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="4">
+                 <widget class="QLineEdit" name="m_tension_protocol_le">
+                  <property name="clearButtonEnabled">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="3">
+                 <widget class="QLabel" name="label_8">
+                  <property name="text">
+                   <string>Fonction :</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="2">
+                 <widget class="QCheckBox" name="m_show_text_cb">
+                  <property name="toolTip">
+                   <string>Texte visible</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="checked">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="4">
+                 <widget class="QLineEdit" name="m_function_le">
+                  <property name="clearButtonEnabled">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="0">
+                 <widget class="QLabel" name="label">
+                  <property name="text">
+                   <string>Texte :</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QLabel" name="label_11">
+                  <property name="text">
+                   <string>Formule du texte :</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="2">
+                 <widget class="QPushButton" name="m_edit_autonum_pb">
+                  <property name="toolTip">
+                   <string>éditer les numérotations</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../../qelectrotech.qrc">
+                    <normaloff>:/ico/16x16/configure.png</normaloff>:/ico/16x16/configure.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QLabel" name="label_2">
+                  <property name="text">
+                   <string>Taille du texte :</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="3">
+                 <widget class="QLabel" name="label_4">
+                  <property name="text">
+                   <string>Couleur du conducteur</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="4">
+                 <widget class="QLineEdit" name="m_wire_color_le"/>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QSpinBox" name="m_text_size_sb">
+                  <property name="toolTip">
+                   <string>Taille du texte</string>
+                  </property>
+                  <property name="wrapping">
+                   <bool>false</bool>
+                  </property>
+                  <property name="buttonSymbols">
+                   <enum>QAbstractSpinBox::UpDownArrows</enum>
+                  </property>
+                  <property name="prefix">
+                   <string/>
+                  </property>
+                  <property name="minimum">
+                   <number>3</number>
+                  </property>
+                  <property name="maximum">
+                   <number>99</number>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QLineEdit" name="m_formula_le"/>
+                </item>
+                <item row="4" column="4">
+                 <widget class="QLineEdit" name="m_wire_section_le"/>
+                </item>
+                <item row="3" column="1">
+                 <widget class="QLineEdit" name="m_text_le">
+                  <property name="toolTip">
+                   <string>Texte</string>
+                  </property>
+                  <property name="clearButtonEnabled">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="3">
+                 <widget class="QLabel" name="label_5">
+                  <property name="text">
+                   <string>Section du conducteur</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="1">
+                 <widget class="QComboBox" name="m_available_autonum_cb"/>
+                </item>
+               </layout>
               </item>
-              <item>
-               <property name="text">
-                <string>Horizontal en bas</string>
-               </property>
+              <item row="3" column="0">
+               <layout class="QGridLayout" name="m_text_angle_gl">
+                <item row="1" column="1">
+                 <widget class="QComboBox" name="m_horiz_cb">
+                  <item>
+                   <property name="text">
+                    <string>Horizontal en haut</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Horizontal en bas</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item row="0" column="0" colspan="2">
+                 <widget class="QLabel" name="label_3">
+                  <property name="text">
+                   <string>Position et rotation du texte de conducteur :</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignHCenter|Qt::AlignTop</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QComboBox" name="m_verti_cb">
+                  <item>
+                   <property name="text">
+                    <string>Vertical à gauche</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Vertical à droite</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+               </layout>
               </item>
-             </widget>
-            </item>
-            <item row="0" column="0" colspan="2">
-             <widget class="QLabel" name="label_3">
-              <property name="text">
-               <string>Position et rotation du texte de conducteur :</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignHCenter|Qt::AlignTop</set>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QComboBox" name="m_verti_cb">
-              <item>
-               <property name="text">
-                <string>Vertical à gauche</string>
-               </property>
+              <item row="2" column="0">
+               <layout class="QVBoxLayout" name="m_autonum_layout"/>
               </item>
-              <item>
-               <property name="text">
-                <string>Vertical à droite</string>
-               </property>
+              <item row="0" column="0">
+               <widget class="QCheckBox" name="m_one_text_per_folio_cb">
+                <property name="toolTip">
+                 <string>activer l'option un texte par potentiel</string>
+                </property>
+                <property name="text">
+                 <string>Afficher un texte de potentiel par folio. </string>
+                </property>
+               </widget>
               </item>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="2" column="0">
-           <layout class="QVBoxLayout" name="m_autonum_layout"/>
-          </item>
-          <item row="0" column="0">
-           <widget class="QCheckBox" name="m_one_text_per_folio_cb">
-            <property name="toolTip">
-             <string>activer l'option un texte par potentiel</string>
-            </property>
-            <property name="text">
-             <string>Afficher un texte de potentiel par folio. </string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QGroupBox" name="m_singlewire_gb">
-         <property name="maximumSize">
-          <size>
-           <width>450</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="title">
-          <string>Unifilaire</string>
-         </property>
-         <property name="flat">
-          <bool>false</bool>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="checked">
-          <bool>false</bool>
-         </property>
-         <layout class="QHBoxLayout" name="horizontalLayout">
-          <item>
-           <layout class="QGridLayout" name="gridLayout">
-            <item row="0" column="0" rowspan="3">
-             <widget class="QLabel" name="m_preview_label">
-              <property name="text">
-               <string>TextLabel</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="3">
-             <widget class="QSpinBox" name="m_phase_sb">
-              <property name="toolTip">
-               <string>Nombre de phase</string>
-              </property>
-              <property name="minimum">
-               <number>1</number>
-              </property>
-              <property name="maximum">
-               <number>3</number>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="2">
-             <widget class="QPushButton" name="m_update_preview_pb">
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QCheckBox" name="m_neutral_cb">
-              <property name="toolTip">
-               <string>Neutre</string>
-              </property>
-              <property name="text">
-               <string>neutre</string>
-              </property>
-              <property name="icon">
-               <iconset resource="../../qelectrotech.qrc">
-                <normaloff>:/ico/16x16/neutral.png</normaloff>:/ico/16x16/neutral.png</iconset>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QCheckBox" name="m_earth_cb">
-              <property name="toolTip">
-               <string>Terre</string>
-              </property>
-              <property name="text">
-               <string>terre</string>
-              </property>
-              <property name="icon">
-               <iconset resource="../../qelectrotech.qrc">
-                <normaloff>:/ico/16x16/ground.png</normaloff>:/ico/16x16/ground.png</iconset>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <widget class="QCheckBox" name="m_phase_cb">
-              <property name="toolTip">
-               <string>Phase</string>
-              </property>
-              <property name="text">
-               <string>phase</string>
-              </property>
-              <property name="icon">
-               <iconset resource="../../qelectrotech.qrc">
-                <normaloff>:/ico/16x16/phase.png</normaloff>:/ico/16x16/phase.png</iconset>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="2">
-             <widget class="QSlider" name="m_phase_slider">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="toolTip">
-               <string>Nombre de phase</string>
-              </property>
-              <property name="minimum">
-               <number>1</number>
-              </property>
-              <property name="maximum">
-               <number>3</number>
-              </property>
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="2">
-             <widget class="QCheckBox" name="m_pen_cb">
-              <property name="toolTip">
-               <string>Protective Earth Neutral</string>
-              </property>
-              <property name="text">
-               <string>PEN</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-         </layout>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="Unifilaire">
+          <attribute name="title">
+           <string>Unifilaire</string>
+          </attribute>
+          <layout class="QGridLayout" name="gridLayout_5">
+           <item row="0" column="0">
+            <widget class="QGroupBox" name="m_singlewire_gb">
+             <property name="maximumSize">
+              <size>
+               <width>450</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="title">
+              <string>Unifilaire</string>
+             </property>
+             <property name="flat">
+              <bool>false</bool>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="checked">
+              <bool>false</bool>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout">
+              <item>
+               <layout class="QGridLayout" name="gridLayout">
+                <item row="0" column="0" rowspan="3">
+                 <widget class="QLabel" name="m_preview_label">
+                  <property name="text">
+                   <string>TextLabel</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="3">
+                 <widget class="QSpinBox" name="m_phase_sb">
+                  <property name="toolTip">
+                   <string>Nombre de phase</string>
+                  </property>
+                  <property name="minimum">
+                   <number>1</number>
+                  </property>
+                  <property name="maximum">
+                   <number>3</number>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2">
+                 <widget class="QPushButton" name="m_update_preview_pb">
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QCheckBox" name="m_neutral_cb">
+                  <property name="toolTip">
+                   <string>Neutre</string>
+                  </property>
+                  <property name="text">
+                   <string>neutre</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../../qelectrotech.qrc">
+                    <normaloff>:/ico/16x16/neutral.png</normaloff>:/ico/16x16/neutral.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QCheckBox" name="m_earth_cb">
+                  <property name="toolTip">
+                   <string>Terre</string>
+                  </property>
+                  <property name="text">
+                   <string>terre</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../../qelectrotech.qrc">
+                    <normaloff>:/ico/16x16/ground.png</normaloff>:/ico/16x16/ground.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QCheckBox" name="m_phase_cb">
+                  <property name="toolTip">
+                   <string>Phase</string>
+                  </property>
+                  <property name="text">
+                   <string>phase</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../../qelectrotech.qrc">
+                    <normaloff>:/ico/16x16/phase.png</normaloff>:/ico/16x16/phase.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="2">
+                 <widget class="QSlider" name="m_phase_slider">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="toolTip">
+                   <string>Nombre de phase</string>
+                  </property>
+                  <property name="minimum">
+                   <number>1</number>
+                  </property>
+                  <property name="maximum">
+                   <number>3</number>
+                  </property>
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="2">
+                 <widget class="QCheckBox" name="m_pen_cb">
+                  <property name="toolTip">
+                   <string>Protective Earth Neutral</string>
+                  </property>
+                  <property name="text">
+                   <string>PEN</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
         </widget>
        </item>
       </layout>
