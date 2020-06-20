@@ -1552,6 +1552,7 @@ void Conductor::setProperties(const ConductorProperties &property)
 	QFont font = m_text_item->font();
 	font.setPointSize(m_properties.text_size);
 	m_text_item->setFont(font);
+	m_text_item->setColor(m_properties.text_color);
 
 	if (m_properties.type != ConductorProperties::Multi)
 		m_text_item->setVisible(false);

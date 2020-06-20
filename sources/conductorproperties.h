@@ -79,8 +79,9 @@ class ConductorProperties
 			//Attributes
 		ConductorType type;
 		
-		QColor  color,
-				m_color_2;
+		QColor		color,
+				m_color_2,
+				text_color;
 		
 		QString text,
 				m_function,

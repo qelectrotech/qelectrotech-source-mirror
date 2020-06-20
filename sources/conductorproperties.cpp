@@ -222,6 +222,7 @@ void SingleLineProperties::fromXml(QDomElement &e) {
 ConductorProperties::ConductorProperties() :
 	type(Multi),
 	color(Qt::black),
+	text_color(Qt::black),
 	text("_"),
 	text_size(9),
 	cond_size(1),
@@ -259,6 +260,7 @@ void ConductorProperties::toXml(QDomElement &e) const
 		singleLineProperties.toXml(e);
 
 	e.setAttribute("num", text);
+	e.setAttribute("text_color", text_color.name());
 	e.setAttribute("formula", m_formula);
 	e.setAttribute("function", m_function);
 	e.setAttribute("tension-protocol", m_tension_protocol);
@@ -291,11 +293,11 @@ void ConductorProperties::fromXml(QDomElement &e)
 		// get conductor color
 	QColor xml_color= QColor(e.attribute("color"));
 	color = (xml_color.isValid()? xml_color : QColor(Qt::black));
-	
+
 	QString bicolor_str = e.attribute("bicolor", "false");
 	m_bicolor = bicolor_str == "true"? true : false;
 	
-    QColor xml_color_2 = QColor(e.attribute("color2"));
+	QColor xml_color_2 = QColor(e.attribute("color2"));
 	m_color_2 = xml_color_2.isValid()? xml_color_2 : QColor(Qt::black);
 	
 	m_dash_size = e.attribute("dash-size", QString::number(1)).toInt();
@@ -313,6 +315,9 @@ void ConductorProperties::fromXml(QDomElement &e)
 		type = Multi;
 
 	text                 = e.attribute("num");
+	// get text color
+	QColor xml_text_color= QColor(e.attribute("text_color"));
+	text_color = (xml_text_color.isValid()? xml_text_color : QColor(Qt::black));
 	m_formula            = e.attribute("formula");
 	m_function           = e.attribute("function");
 	m_tension_protocol   = e.attribute("tension-protocol");
@@ -348,6 +353,7 @@ void ConductorProperties::toSettings(QSettings &settings, const QString &prefix)
 	settings.setValue(prefix + "style", writeStyle());
 	settings.setValue(prefix + "type", typeToString(type));
 	settings.setValue(prefix + "text", text);
+	settings.setValue(prefix + "text_color", text_color.name());
 	settings.setValue(prefix + "formula", m_formula);
 	settings.setValue(prefix + "function", m_function);
 	settings.setValue(prefix + "tension-protocol", m_tension_protocol);
@@ -388,6 +394,8 @@ void ConductorProperties::fromSettings(QSettings &settings, const QString &prefi
 	singleLineProperties.fromSettings(settings, prefix);
 
 	text                 = settings.value(prefix + "text", "_").toString();
+	QColor settings_text_color = QColor(settings.value(prefix + "text_color").toString());
+	text_color = (settings_text_color.isValid()? settings_text_color : QColor(Qt::black));
 	m_formula            = settings.value(prefix + "formula", "").toString();
 	m_function           = settings.value(prefix + "function", "").toString();
 	m_tension_protocol   = settings.value(prefix + "tension-protocol", "").toString();
@@ -441,6 +449,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 		m_color_2            = cp.m_color_2;
 		m_dash_size          = cp.m_dash_size;
 		text                 = cp.text;
+		text_color           = cp.text_color;
 		m_formula            = cp.m_formula;
 		m_function           = cp.m_function;
 		m_tension_protocol   = cp.m_tension_protocol;
@@ -519,6 +528,17 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 	}
 	if (equal)
 		text = s_value;
+	equal = true;
+
+		//text color
+	c_value = clist.first().text_color;
+	for(ConductorProperties cp : clist)
+	{
+		if (cp.text_color != c_value)
+			equal = false;
+	}
+	if (equal)
+		text_color = c_value;
 	equal = true;
 
 		//formula
@@ -695,6 +715,7 @@ bool ConductorProperties::operator==(const ConductorProperties &other) const
 		other.m_dash_size == m_dash_size &&\
 		other.style == style &&\
 		other.text == text &&\
+		other.text_color == text_color &&\
 		other.m_formula == m_formula &&\
 		other.m_function == m_function &&\
 		other.m_tension_protocol == m_tension_protocol &&\

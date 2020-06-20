@@ -95,6 +95,7 @@ void ConductorPropertiesWidget::setProperties(const ConductorProperties &propert
 	ui->m_phase_slider          -> setValue   (m_properties.singleLineProperties.phasesCount());
 	ui->m_color_kpb             -> setColor(m_properties.color);
 	ui->m_color_2_kpb           -> setColor(m_properties.m_color_2);
+	ui->m_text_color_kpb        -> setColor(m_properties.text_color);
 
 	ui->m_horiz_cb->setCurrentIndex(m_properties.m_horizontal_alignment == Qt::AlignTop? 0 : 1);
 	ui->m_verti_cb->setCurrentIndex(m_properties.m_vertical_alignment == Qt::AlignLeft? 0 : 1);
@@ -122,6 +123,7 @@ ConductorProperties ConductorPropertiesWidget::properties() const
 	properties_.style                   = ui -> m_line_style_cb->itemData(ui->m_line_style_cb->currentIndex()).value<QPen>().style();
 	properties_.m_formula               = ui->m_formula_le->text();
 	properties_.text                    = ui -> m_text_le -> text();
+	properties_.text_color              = ui -> m_text_color_kpb->color();
 	properties_.m_function              = ui -> m_function_le->text();
 	properties_.m_tension_protocol      = ui -> m_tension_protocol_le->text();
 	properties_.m_wire_color            = ui -> m_wire_color_le->text();

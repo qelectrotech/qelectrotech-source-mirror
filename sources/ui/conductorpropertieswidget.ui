@@ -7,14 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>662</width>
-    <height>346</height>
+    <height>372</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_2">
-   <item>
+  <layout class="QGridLayout" name="gridLayout_9">
+   <item row="0" column="0">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
       <number>0</number>
@@ -51,153 +51,169 @@
              <property name="checked">
               <bool>true</bool>
              </property>
-             <layout class="QGridLayout" name="gridLayout_6">
+             <layout class="QGridLayout" name="gridLayout_3">
+              <item row="0" column="0" colspan="3">
+               <widget class="QCheckBox" name="m_one_text_per_folio_cb">
+                <property name="toolTip">
+                 <string>activer l'option un texte par potentiel</string>
+                </property>
+                <property name="text">
+                 <string>Afficher un texte de potentiel par folio. </string>
+                </property>
+               </widget>
+              </item>
               <item row="1" column="0">
-               <layout class="QGridLayout" name="gridLayout_3">
-                <item row="4" column="0">
-                 <widget class="QLabel" name="m_autonum_label">
-                  <property name="text">
-                   <string>Autonumérotation</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="3">
-                 <widget class="QLabel" name="label_9">
-                  <property name="text">
-                   <string>Tension / Protocole :</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="4">
-                 <widget class="QLineEdit" name="m_tension_protocol_le">
-                  <property name="clearButtonEnabled">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="3">
-                 <widget class="QLabel" name="label_8">
-                  <property name="text">
-                   <string>Fonction :</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="2">
-                 <widget class="QCheckBox" name="m_show_text_cb">
-                  <property name="toolTip">
-                   <string>Texte visible</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="checked">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="4">
-                 <widget class="QLineEdit" name="m_function_le">
-                  <property name="clearButtonEnabled">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="0">
-                 <widget class="QLabel" name="label">
-                  <property name="text">
-                   <string>Texte :</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="0">
-                 <widget class="QLabel" name="label_11">
-                  <property name="text">
-                   <string>Formule du texte :</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="4" column="2">
-                 <widget class="QPushButton" name="m_edit_autonum_pb">
-                  <property name="toolTip">
-                   <string>éditer les numérotations</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="../../qelectrotech.qrc">
-                    <normaloff>:/ico/16x16/configure.png</normaloff>:/ico/16x16/configure.png</iconset>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="0">
-                 <widget class="QLabel" name="label_2">
-                  <property name="text">
-                   <string>Taille du texte :</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="3">
-                 <widget class="QLabel" name="label_4">
-                  <property name="text">
-                   <string>Couleur du conducteur</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="4">
-                 <widget class="QLineEdit" name="m_wire_color_le"/>
-                </item>
-                <item row="1" column="1">
-                 <widget class="QSpinBox" name="m_text_size_sb">
-                  <property name="toolTip">
-                   <string>Taille du texte</string>
-                  </property>
-                  <property name="wrapping">
-                   <bool>false</bool>
-                  </property>
-                  <property name="buttonSymbols">
-                   <enum>QAbstractSpinBox::UpDownArrows</enum>
-                  </property>
-                  <property name="prefix">
-                   <string/>
-                  </property>
-                  <property name="minimum">
-                   <number>3</number>
-                  </property>
-                  <property name="maximum">
-                   <number>99</number>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="1">
-                 <widget class="QLineEdit" name="m_formula_le"/>
-                </item>
-                <item row="4" column="4">
-                 <widget class="QLineEdit" name="m_wire_section_le"/>
-                </item>
-                <item row="3" column="1">
-                 <widget class="QLineEdit" name="m_text_le">
-                  <property name="toolTip">
-                   <string>Texte</string>
-                  </property>
-                  <property name="clearButtonEnabled">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="4" column="3">
-                 <widget class="QLabel" name="label_5">
-                  <property name="text">
-                   <string>Section du conducteur</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="4" column="1">
-                 <widget class="QComboBox" name="m_available_autonum_cb"/>
-                </item>
-               </layout>
+               <widget class="QLabel" name="label_2">
+                <property name="text">
+                 <string>Taille du texte :</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QSpinBox" name="m_text_size_sb">
+                <property name="toolTip">
+                 <string>Taille du texte</string>
+                </property>
+                <property name="wrapping">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::UpDownArrows</enum>
+                </property>
+                <property name="prefix">
+                 <string/>
+                </property>
+                <property name="minimum">
+                 <number>3</number>
+                </property>
+                <property name="maximum">
+                 <number>99</number>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="QLabel" name="label_8">
+                <property name="text">
+                 <string>Fonction :</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="4">
+               <widget class="QLineEdit" name="m_function_le">
+                <property name="clearButtonEnabled">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_11">
+                <property name="text">
+                 <string>Formule du texte :</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLineEdit" name="m_formula_le"/>
+              </item>
+              <item row="2" column="3">
+               <widget class="QLabel" name="label_9">
+                <property name="text">
+                 <string>Tension / Protocole :</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="4">
+               <widget class="QLineEdit" name="m_tension_protocol_le">
+                <property name="clearButtonEnabled">
+                 <bool>true</bool>
+                </property>
+               </widget>
               </item>
               <item row="3" column="0">
+               <widget class="QLabel" name="label">
+                <property name="text">
+                 <string>Texte :</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QLineEdit" name="m_text_le">
+                <property name="toolTip">
+                 <string>Texte</string>
+                </property>
+                <property name="clearButtonEnabled">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="QCheckBox" name="m_show_text_cb">
+                <property name="toolTip">
+                 <string>Texte visible</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="QLabel" name="label_4">
+                <property name="text">
+                 <string>Couleur du conducteur</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="4">
+               <widget class="QLineEdit" name="m_wire_color_le"/>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="label_14">
+                <property name="text">
+                 <string>Text color:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="KColorButton" name="m_text_color_kpb"/>
+              </item>
+              <item row="4" column="3">
+               <widget class="QLabel" name="label_5">
+                <property name="text">
+                 <string>Section du conducteur</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="4">
+               <widget class="QLineEdit" name="m_wire_section_le"/>
+              </item>
+              <item row="5" column="0">
+               <widget class="QLabel" name="m_autonum_label">
+                <property name="text">
+                 <string>Autonumérotation</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="1">
+               <widget class="QComboBox" name="m_available_autonum_cb"/>
+              </item>
+              <item row="5" column="2">
+               <widget class="QPushButton" name="m_edit_autonum_pb">
+                <property name="toolTip">
+                 <string>éditer les numérotations</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="../../qelectrotech.qrc">
+                  <normaloff>:/ico/16x16/configure.png</normaloff>:/ico/16x16/configure.png</iconset>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="0" colspan="5">
                <layout class="QGridLayout" name="m_text_angle_gl">
                 <item row="1" column="1">
                  <widget class="QComboBox" name="m_horiz_cb">
@@ -239,18 +255,8 @@
                 </item>
                </layout>
               </item>
-              <item row="2" column="0">
+              <item row="6" column="0" colspan="2">
                <layout class="QVBoxLayout" name="m_autonum_layout"/>
-              </item>
-              <item row="0" column="0">
-               <widget class="QCheckBox" name="m_one_text_per_folio_cb">
-                <property name="toolTip">
-                 <string>activer l'option un texte par potentiel</string>
-                </property>
-                <property name="text">
-                 <string>Afficher un texte de potentiel par folio. </string>
-                </property>
-               </widget>
               </item>
              </layout>
             </widget>
@@ -405,7 +411,17 @@
        <string>Apparence</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_4">
-       <item row="4" column="0">
+       <item row="0" column="1">
+        <widget class="KColorButton" name="m_color_kpb"/>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_10">
+         <property name="text">
+          <string>Taille :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -418,29 +434,13 @@
          </property>
         </spacer>
        </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_6">
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_7">
          <property name="toolTip">
-          <string>Couleur du conducteur</string>
+          <string>Style du conducteur</string>
          </property>
          <property name="text">
-          <string>Couleur :</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QDoubleSpinBox" name="m_cond_size_sb">
-         <property name="minimum">
-          <double>0.400000000000000</double>
-         </property>
-         <property name="maximum">
-          <double>20.000000000000000</double>
-         </property>
-         <property name="singleStep">
-          <double>0.200000000000000</double>
-         </property>
-         <property name="value">
-          <double>1.000000000000000</double>
+          <string>Style :</string>
          </property>
         </widget>
        </item>
@@ -489,10 +489,19 @@
          </layout>
         </widget>
        </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_10">
-         <property name="text">
-          <string>Taille :</string>
+       <item row="2" column="1">
+        <widget class="QDoubleSpinBox" name="m_cond_size_sb">
+         <property name="minimum">
+          <double>0.400000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>20.000000000000000</double>
+         </property>
+         <property name="singleStep">
+          <double>0.200000000000000</double>
+         </property>
+         <property name="value">
+          <double>1.000000000000000</double>
          </property>
         </widget>
        </item>
@@ -503,18 +512,15 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_7">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_6">
          <property name="toolTip">
-          <string>Style du conducteur</string>
+          <string>Couleur du conducteur</string>
          </property>
          <property name="text">
-          <string>Style :</string>
+          <string>Couleur :</string>
          </property>
         </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="KColorButton" name="m_color_kpb"/>
        </item>
       </layout>
      </widget>
