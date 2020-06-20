@@ -29,13 +29,14 @@ void TerminalData::setParent(QGraphicsObject* parent)
 }
 
 void TerminalData::toSettings(QSettings &settings, const QString) const
-{
 
+{
+	Q_UNUSED(settings);
 }
 
 void TerminalData::fromSettings(const QSettings &settings, const QString)
 {
-
+	Q_UNUSED(settings);
 }
 
 QDomElement TerminalData::toXml(QDomDocument &xml_document) const
