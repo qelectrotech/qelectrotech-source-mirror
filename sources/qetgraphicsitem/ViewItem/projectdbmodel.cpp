@@ -274,7 +274,7 @@ void ProjectDBModel::fromXml(const QDomElement &element)
         if (element.tagName() != xmlTagName())
                 return;
 
-		setIdentifier(element.firstChildElement("identifier").text());
+        setIdentifier(element.firstChildElement("identifier").text());
         setQuery(element.firstChildElement("query").text());
 
                 //Index 0,0
