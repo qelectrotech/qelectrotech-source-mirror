@@ -47,7 +47,7 @@ SummaryQueryWidget::~SummaryQueryWidget()
 
 /**
  * @brief SummaryQueryWidget::queryStr
- * @return
+ * @return The current query string
  */
 QString SummaryQueryWidget::queryStr() const
 {
@@ -79,6 +79,40 @@ QString SummaryQueryWidget::queryStr() const
 }
 
 /**
+ * @brief SummaryQueryWidget::setQuery
+ * @param query
+ * set the current query to @query.
+ * If it's possible, rebuild the state of the widget from the query
+ */
+void SummaryQueryWidget::setQuery(const QString &query)
+{
+	if (query.startsWith("SELECT"))
+	{
+		reset();
+		ui->m_user_query_le->setText(query);
+
+		QString select = query;
+		select.remove(0,7); //remove SELECT
+		select.truncate(select.indexOf("FROM")); //Truncate at FROM
+		select.replace(" ",""); //Remove white
+
+			//Get the select -> the item in the right list
+		QStringList split = select.split(",");
+		for (auto str : split)
+		{
+			for (auto item : m_items_list)
+			{
+				if (item->data(Qt::UserRole).toString() == str) {
+					ui->m_available_list->takeItem(ui->m_available_list->row(item));
+					ui->m_choosen_list->addItem(item);
+					continue;
+				}
+			}
+		}
+	}
+}
+
+/**
  * @brief SummaryQueryWidget::setUpItems
  */
 void SummaryQueryWidget::setUpItems()
@@ -97,6 +131,9 @@ void SummaryQueryWidget::setUpItems()
 	m_items_list << item;
 }
 
+/**
+ * @brief SummaryQueryWidget::fillSavedQuery
+ */
 void SummaryQueryWidget::fillSavedQuery()
 {
 
@@ -126,6 +163,11 @@ QStringList SummaryQueryWidget::selectedKeys() const
 
 	return keys;
 }
+
+/**
+ * @brief SummaryQueryWidget::on_m_available_list_itemDoubleClicked
+ * @param item
+ */
 void SummaryQueryWidget::on_m_available_list_itemDoubleClicked(QListWidgetItem *item)
 {
 	Q_UNUSED(item)
@@ -200,6 +242,9 @@ void SummaryQueryWidget::on_m_down_pb_clicked()
 	updateQueryLine();
 }
 
+/**
+ * @brief SummaryQueryWidget::on_m_edit_sql_query_cb_clicked
+ */
 void SummaryQueryWidget::on_m_edit_sql_query_cb_clicked()
 {
 	ui->m_user_query_le->setEnabled(ui->m_edit_sql_query_cb->isChecked());
@@ -214,4 +259,17 @@ void SummaryQueryWidget::on_m_edit_sql_query_cb_clicked()
 		m_custom_query = ui->m_user_query_le->text();
 		updateQueryLine();
 	}
+}
+
+/**
+ * @brief SummaryQueryWidget::reset
+ * Clear this widget aka set to initial state
+ */
+void SummaryQueryWidget::reset()
+{
+		//Ugly hack to force to remove all selected infos
+	while (auto item = ui->m_choosen_list->takeItem(0)) {
+		ui->m_available_list->addItem(item);
+	}
+	ui->m_user_query_le->clear();
 }

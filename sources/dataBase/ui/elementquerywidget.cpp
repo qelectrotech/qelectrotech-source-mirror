@@ -118,7 +118,7 @@ void ElementQueryWidget::setQuery(const QString &query)
 		QString select = query;
 		select.remove(0,7); //Remove SELECT
 		select.truncate(select.indexOf("FROM")); //Truncate at FROM
-		select.replace(" ", ""); //Remove withe space
+		select.replace(" ", ""); //Remove white space
 
 			//Get the select -> the item in the right list
 		QStringList split = select.split(",");
@@ -365,25 +365,6 @@ QString ElementQueryWidget::queryStr() const
 
 	QString q(select + column + from + where + filter_ + order_by);
 	return q;
-}
-
-/**
- * @brief ElementQueryWidget::header
- * @return the name of each selected item is a QStringList.
- * You can use the QStringList as header string of a table filled by the returned value of the query ElementQueryWidget::queryStr() to project database.
- */
-QStringList ElementQueryWidget::header() const
-{
-		//Made a string list with the colomns (keys) choosen by the user
-	QStringList headers;
-	int row = 0;
-	while (auto *item = ui->m_choosen_list->item(row))
-	{
-		headers.append(item->data(Qt::DisplayRole).toString());
-		++row;
-	}
-
-	return headers;
 }
 
 /**

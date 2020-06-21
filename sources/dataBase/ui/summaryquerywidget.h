@@ -36,6 +36,7 @@ class SummaryQueryWidget : public QWidget
 
 		static QString modelIdentifier() {return "summary";}
 		QString queryStr() const;
+		void setQuery(const QString &query);
 
 	private:
 		void setUpItems();
@@ -51,6 +52,7 @@ class SummaryQueryWidget : public QWidget
 		void on_m_remove_pb_clicked();
 		void on_m_down_pb_clicked();
 		void on_m_edit_sql_query_cb_clicked();
+		void reset();
 
 	private:
 		Ui::SummaryQueryWidget *ui;

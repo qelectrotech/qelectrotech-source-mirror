@@ -56,12 +56,10 @@ class GraphicsTablePropertiesEditor : public PropertiesEditorWidget
 		void on_m_previous_table_cb_activated(int index);
 		void on_m_previous_pb_clicked();
 		void on_m_next_pb_clicked();
-
 		void on_m_auto_geometry_pb_clicked();
-
 		void on_m_apply_geometry_to_linked_table_pb_clicked();
 
-		private:
+	private:
 		void setUpEditConnection();
 
 	private:

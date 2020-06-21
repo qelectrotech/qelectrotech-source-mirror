@@ -132,7 +132,7 @@ void QetGraphicsHeaderItem::paint(QPainter *painter, const QStyleOptionGraphicsI
 		QSize size(m_current_sections_width.at(i) - margins_.left() - margins_.right(), m_section_height - margins_.top() - margins_.bottom());
 		painter->drawText(QRectF(top_left, size),
 						  m_model->headerData(0, Qt::Horizontal, Qt::TextAlignmentRole).toInt(),
-						  m_model->headerData(i, Qt::Horizontal).toString());
+						  m_model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString());
 
 		top_left.setX(top_left.x() + m_current_sections_width.at(i));
 	}

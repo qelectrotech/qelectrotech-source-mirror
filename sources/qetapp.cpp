@@ -340,11 +340,8 @@ QString QETApp::elementTranslatedInfoKey(const QString &info)
 	else if (info == "supplier") return tr("Fournisseur");
 	else if (info == "quantity") return tr("Quantité");
 	else if (info == "unity") return tr("Unité");
-	
-	
-	
-	
-	return (info);
+
+	else return QString();
 }
 
 /**
@@ -440,8 +437,9 @@ QString QETApp::diagramTranslatedInfoKey(const QString &key)
 	else if (key == "folio")    return tr("Folio");
 	else if (key == "plant")    return tr("Installation");
 	else if (key == "locmach")  return tr("Localisation");
-	else if (key == "indexrev") return tr("Indice Rev");
+	else if (key == "indexrev") return tr("Indice de révision");
 	else if (key == "date")		return tr("Date");
+	else if (key == "pos")      return tr("Position");
 	else return QString();
 }
 

@@ -31,6 +31,9 @@ class QETProject;
  * This class should be sufficient to display the content of the project data base from a query set by the method void ProjectDBModel::setQuery(const QString &query).
  * The indentifier method is used by widget editor to retrieve the good widget for edit the query. By defaut identifer return the string 'unknow'.
  * You should use setIdentfier method to set your custom identifier.
+ * At the time this sentence is written, there is two identifier :
+ * nomenclature
+ * summary
  */
 class ProjectDBModel : public QAbstractTableModel
 {
@@ -53,7 +56,7 @@ class ProjectDBModel : public QAbstractTableModel
         QDomElement toXml(QDomDocument &document) const;
         void fromXml(const QDomElement &element);
 		void setIdentifier(const QString &identifier);
-		QString indentifier() const {return m_identifier;}
+		QString identifier() const {return m_identifier;}
 		static QString xmlTagName() {return QString("project_data_base_model");}
 
     private:

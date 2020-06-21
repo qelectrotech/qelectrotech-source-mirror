@@ -20,6 +20,7 @@
 #include "projectdbmodel.h"
 #include "qetproject.h"
 #include "elementquerywidget.h"
+#include "summaryquerywidget.h"
 
 #include <QDialogButtonBox>
 
@@ -62,9 +63,20 @@ void ProjectDBModelPropertiesWidget::on_m_edit_query_pb_clicked()
 	auto l = new QVBoxLayout;
 	d.setLayout(l);
 
-	auto query_widget = new ElementQueryWidget(&d);
-	query_widget->setQuery(m_model->queryString());
-	l->addWidget(query_widget);
+	ElementQueryWidget *nom_w = nullptr;
+	SummaryQueryWidget *sum_w = nullptr;
+	if (m_model->identifier() == "nomenclature")
+	{
+		nom_w = new ElementQueryWidget(&d);
+		nom_w->setQuery(m_model->queryString());
+		l->addWidget(nom_w);
+	}
+	else if (m_model->identifier() == "summary")
+	{
+		sum_w = new SummaryQueryWidget(&d);
+		sum_w->setQuery(m_model->queryString());
+		l->addWidget(sum_w);
+	}
 
 	auto button_box = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	l->addWidget(button_box);
@@ -73,10 +85,10 @@ void ProjectDBModelPropertiesWidget::on_m_edit_query_pb_clicked()
 
 	if (d.exec())
 	{
-		m_model->setQuery(query_widget->queryStr());
-		auto headers = query_widget->header();
-		for (auto i=0 ; i<headers.size() ; ++i) {
-			m_model->setHeaderData(i, Qt::Horizontal, headers.at(i));
+		if (nom_w) {
+			m_model->setQuery(nom_w->queryStr());
+		} else if (sum_w) {
+			m_model->setQuery(sum_w->queryStr());
 		}
 	}
 }

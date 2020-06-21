@@ -42,7 +42,6 @@ class ElementQueryWidget : public QWidget
 
 		void setQuery(const QString &query);
 		QString queryStr() const;
-		QStringList header() const;
 
 		static QString modelIdentifier() {return "nomenclature";}
 

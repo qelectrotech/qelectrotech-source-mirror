@@ -100,7 +100,7 @@ bool ProjectDBModel::setHeaderData(int section, Qt::Orientation orientation, con
         auto hash_ = m_header_data.value(section);
         hash_.insert(role, value);
         m_header_data.insert(section, hash_);
-        headerDataChanged(orientation, section, section);
+		emit headerDataChanged(orientation, section, section);
         return true;
 }
 
@@ -329,29 +329,29 @@ void ProjectDBModel::dataBaseUpdated()
 
 void ProjectDBModel::setHeaderString()
 {
-        auto q = m_project->dataBase()->newQuery(m_query);
-        auto record = q.record();
+	auto q = m_project->dataBase()->newQuery(m_query);
+	auto record = q.record();
 
-        for (auto i=0 ; i<record.count() ; ++i)
-        {
-                auto field_name = record.fieldName(i);
-                QString header_name;
+	for (auto i=0 ; i<record.count() ; ++i)
+	{
+		auto field_name = record.fieldName(i);
+		QString header_name;
 
-                if (field_name == "position") {
-                        header_name = tr("Position");
-                } else if (field_name == "diagram_position") {
-                        header_name = tr("Position du folio");
-                } else {
-                        header_name = QETApp::elementTranslatedInfoKey(field_name);
-                        if (header_name.isEmpty()) {
-                                header_name = QETApp::diagramTranslatedInfoKey(field_name);
-                        }
-                        if (header_name.isEmpty()) {
-                                header_name = field_name;
-                        }
-                }
-                this->setHeaderData(i, Qt::Horizontal, header_name);
-        }
+		if (field_name == "position") {
+			header_name = tr("Position");
+		} else if (field_name == "diagram_position") {
+			header_name = tr("Position du folio");
+		} else {
+			header_name = QETApp::elementTranslatedInfoKey(field_name);
+			if (header_name.isEmpty()) {
+				header_name = QETApp::diagramTranslatedInfoKey(field_name);
+			}
+			if (header_name.isEmpty()) {
+				header_name = field_name;
+			}
+		}
+		this->setHeaderData(i, Qt::Horizontal, header_name, Qt::DisplayRole);
+	}
 }
 
 void ProjectDBModel::fillValue()
