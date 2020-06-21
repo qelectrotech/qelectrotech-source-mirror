@@ -172,7 +172,7 @@ void DiagramFolioList::fillRow(QPainter *qp, const QRectF &row_rect, const QStri
 	else
 		workingFont.setPointSizeF(origFontSize);
 	qp -> setFont(workingFont);
-	QString heading = tr("Titre");
+	QString heading = QObject::tr("Titre");
 	if (title == heading)
 		qp -> drawText(QRectF(x, y, colWidths[1]*row_rect.width(),row_rect.height()), Qt::AlignCenter, title);
 	else
