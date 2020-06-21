@@ -368,7 +368,7 @@
         <translation>Opsætning</translation>
     </message>
     <message>
-        <location filename="../sources/factory/ui/addtabledialog.cpp" line="37"/>
+        <location filename="../sources/factory/ui/addtabledialog.cpp" line="41"/>
         <source>Contenu</source>
         <translation>Indhold</translation>
     </message>
@@ -840,13 +840,13 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1606"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1607"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>Ændre leder egenskab</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1611"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1612"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
         <translation>Ændre egenskab for flere ledere</translation>
@@ -880,37 +880,38 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
 <context>
     <name>ConductorPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="51"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="68"/>
         <source>Taille du texte :</source>
         <translation>Tekststørrelse:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="102"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="121"/>
         <source>Tension / Protocole :</source>
         <translation>Spænding / protokol:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="109"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="135"/>
         <source>Texte :</source>
         <translation>Tekst:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="71"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="97"/>
         <source>Fonction :</source>
         <translation>Funktion:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="85"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="142"/>
         <source>Texte</source>
         <translation>Tekst</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="245"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="268"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="280"/>
         <source>Unifilaire</source>
         <translation>Enkelt leder</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="146"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="75"/>
         <source>Taille du texte</source>
         <translation>Tekststørrelse</translation>
     </message>
@@ -920,70 +921,70 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <translation>Type</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="123"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="152"/>
         <source>Texte visible</source>
         <translation>Synlig tekst</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="136"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="58"/>
         <source>activer l&apos;option un texte par potentiel</source>
         <translation>aktiver tekst ved potentiale</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="203"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="222"/>
         <source>Horizontal en haut</source>
         <translation>Vandret øverst</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="208"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="227"/>
         <source>Horizontal en bas</source>
         <translation>Vandret nederst</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="217"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="246"/>
         <source>Vertical à gauche</source>
         <translation>Vandret venstre</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="222"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="251"/>
         <source>Vertical à droite</source>
         <translation>Vandret højre</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="230"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="235"/>
         <source>Position et rotation du texte de conducteur :</source>
         <translation>Placering og rotation leder tekst:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="301"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="358"/>
         <source>phase</source>
         <translation>fase</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="223"/>
+        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="225"/>
         <source>Trait plein</source>
         <comment>conductor style: solid line</comment>
         <translation>Fuld streg</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="224"/>
+        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="226"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
         <translation>Stiplet streg</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="225"/>
+        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="227"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
         <translation>Stiplet streg og punkt</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="338"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="344"/>
         <source>terre</source>
         <translation>jord</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="287"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="330"/>
         <source>neutre</source>
         <translation>neutral</translation>
     </message>
@@ -993,116 +994,122 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <translation>Form</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="116"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="111"/>
         <source>Formule du texte :</source>
         <translation>Formel tekst:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="139"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="61"/>
         <source>Afficher un texte de potentiel par folio. </source>
         <translation>Vis potentiale tekst på ark. </translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="30"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="34"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="46"/>
         <source>&amp;Multifilaire</source>
         <translation>&amp;Flere leder</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="44"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="195"/>
         <source>Autonumérotation</source>
         <translation>Autonummerering</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="168"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="205"/>
         <source>éditer les numérotations</source>
         <translation>Rediger nummerering</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="182"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="185"/>
         <source>Section du conducteur</source>
         <translation>Leder sektion</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="268"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="312"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="175"/>
+        <source>Couleur du texte</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="307"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="375"/>
         <source>Nombre de phase</source>
         <translation>Fase nummer</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="284"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="327"/>
         <source>Neutre</source>
         <translation>Neutral</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="298"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="355"/>
         <source>Phase</source>
         <translation>Fase</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="325"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="391"/>
         <source>Protective Earth Neutral</source>
         <translation>Beskyttende Jord Neutral</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="328"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="394"/>
         <source>PEN</source>
         <translation>PEN</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="335"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="341"/>
         <source>Terre</source>
         <translation>Jord</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="349"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="297"/>
         <source>TextLabel</source>
         <translation>Tekst etiket</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="462"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="420"/>
         <source>Taille :</source>
         <translation>Størrelse:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="469"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="476"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="440"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="511"/>
         <source>Style du conducteur</source>
         <translation>Leder typografi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="417"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="450"/>
         <source>Couleur secondaire :</source>
         <translation>Sekundær farve:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="439"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="472"/>
         <source>px</source>
         <translation>piksel</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="432"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="465"/>
         <source>Taille de trait :</source>
         <translation>Størrelse på funktion:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="58"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="391"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="165"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="518"/>
         <source>Couleur du conducteur</source>
         <translation>Leder farve</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="372"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="411"/>
         <source>Apparence</source>
         <translation>Udseende</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="394"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="449"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="482"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="521"/>
         <source>Couleur :</source>
         <translation>Farve:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="479"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="443"/>
         <source>Style :</source>
         <translation>Typografi:</translation>
     </message>
@@ -1166,14 +1173,6 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <location filename="../sources/diagramevent/diagrameventaddelement.cpp" line="224"/>
         <source>Ajouter %1</source>
         <translation>Tilføj %1</translation>
-    </message>
-</context>
-<context>
-    <name>DiagramFolioList</name>
-    <message>
-        <location filename="../sources/diagramfoliolist.cpp" line="175"/>
-        <source>Titre</source>
-        <translation>Titel</translation>
     </message>
 </context>
 <context>
@@ -2115,12 +2114,12 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="372"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="373"/>
         <source>Retrouver dans le panel</source>
         <translation>Find i panel</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="374"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="375"/>
         <source>Éditer l&apos;élément</source>
         <translation>Rediger symbol</translation>
     </message>
@@ -4513,37 +4512,6 @@ Brug avanceret redigering til dette.</translation>
     </message>
 </context>
 <context>
-    <name>NomenclatureModel</name>
-    <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/nomenclaturemodel.cpp" line="328"/>
-        <source>Position</source>
-        <translation>Placering</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/nomenclaturemodel.cpp" line="330"/>
-        <source>Position du folio</source>
-        <translation>Ark placering</translation>
-    </message>
-</context>
-<context>
-    <name>NomenclatureModelPropertiesWidget</name>
-    <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/nomenclaturemodelpropertieswidget.ui" line="14"/>
-        <source>Form</source>
-        <translation>Formular</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/nomenclaturemodelpropertieswidget.ui" line="20"/>
-        <source>Requête</source>
-        <translation>Forespørgsel</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/nomenclaturemodelpropertieswidget.ui" line="31"/>
-        <source>Recharger</source>
-        <translation>Genindlæs</translation>
-    </message>
-</context>
-<context>
     <name>NumPartEditorW</name>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.ui" line="14"/>
@@ -4969,6 +4937,37 @@ Følgende variabler er ikke kompatible:
         <location filename="../sources/projectconfigpages.cpp" line="612"/>
         <source>Nom de la nouvelle numérotation</source>
         <translation>Navngiv ny nummerering</translation>
+    </message>
+</context>
+<context>
+    <name>ProjectDBModel</name>
+    <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="341"/>
+        <source>Position</source>
+        <translation type="unfinished">Placering</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="343"/>
+        <source>Position du folio</source>
+        <translation type="unfinished">Ark placering</translation>
+    </message>
+</context>
+<context>
+    <name>ProjectDBModelPropertiesWidget</name>
+    <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="20"/>
+        <source>Requête</source>
+        <translation type="unfinished">Forespørgsel</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="31"/>
+        <source>Recharger</source>
+        <translation type="unfinished">Genindlæs</translation>
     </message>
 </context>
 <context>
@@ -5507,904 +5506,905 @@ Kommandovalg:
 <context>
     <name>QETDiagramEditor</name>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="720"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="727"/>
         <source>Afficha&amp;ge</source>
         <translation>&amp;Vis</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="781"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="789"/>
         <source>Affiche ou non le panel d&apos;appareils</source>
         <translation>Vise eller skjule symbol panel</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="519"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="526"/>
         <source>Ajouter une colonne</source>
         <translation>Tilføj kolonne</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="446"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="453"/>
         <source>&amp;Cascade</source>
         <translation>&amp;Overlappet</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="279"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="278"/>
         <source>C&amp;oller</source>
         <translation>&amp;Indsæt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="278"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="277"/>
         <source>Cop&amp;ier</source>
         <translation>K&amp;opier</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="277"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="276"/>
         <source>Co&amp;uper</source>
         <translation>&amp;Klip</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="594"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="601"/>
         <source>Ctrl+0</source>
         <translation>Ctrl+0</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="593"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="600"/>
         <source>Ctrl+9</source>
         <translation>Ctrl+9</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="570"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="577"/>
         <source>Ctrl+I</source>
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="261"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="260"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="239"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="238"/>
         <source>Ctrl+Shift+X</source>
         <translation>Ctrl+Skift+X</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="565"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="572"/>
         <source>Désélectionner tout</source>
         <translation>Vælg ingen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="718"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="725"/>
         <source>&amp;Édition</source>
         <translation>&amp;Redigere</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="520"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="527"/>
         <source>Enlever une colonne</source>
         <translation>Slet kolonne</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="493"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="500"/>
         <source>&amp;Enregistrer</source>
         <translation>&amp;Gem</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="494"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="501"/>
         <source>Enregistrer sous</source>
         <translation>Gem som</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="238"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="237"/>
         <source>E&amp;xporter</source>
         <translation>&amp;Eksport</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="722"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="729"/>
         <source>Fe&amp;nêtres</source>
         <translation>&amp;Vinduer</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="495"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="502"/>
         <source>&amp;Fermer</source>
         <translation>&amp;Luk</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="717"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="724"/>
         <source>&amp;Fichier</source>
         <translation>&amp;Filer</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="249"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="248"/>
         <source>Imprimer</source>
         <translation>Udskriv</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="566"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="573"/>
         <source>Inverser la sélection</source>
         <translation>Vælg modsat</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="451"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="458"/>
         <source>Mode Selection</source>
         <translation>Vælg</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="195"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="194"/>
         <source>Ce panneau liste les différentes actions effectuées sur le folio courant. Cliquer sur une action permet de revenir à l&apos;état du schéma juste après son application.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Vinduet viser de forskellige ændringer, der udføres på nuværende ark. Klik på en ænding for at vende tilbage til tidligere tilstand.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="321"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="320"/>
         <source>Couleur de fond blanc/gris</source>
         <comment>Tool tip of white/grey background button</comment>
         <translation>Bagrundsfarve hvid / grå</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="322"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="321"/>
         <source>Affiche la couleur de fond du folio en blanc ou en gris</source>
         <comment>Status tip of white/grey background button</comment>
         <translation>Viser ark baggrundsfarve i hvid eller grå</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="331"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="330"/>
         <source>Afficher la grille</source>
         <translation>Vis gitter</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="332"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="331"/>
         <source>Affiche ou masque la grille des folios</source>
         <translation>Vis eller skjul ark gitter</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="344"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="343"/>
         <source>Propriétés du folio</source>
         <translation>Ark egenskab</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="362"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="361"/>
         <source>Ajouter un folio</source>
         <translation>Tilføj ark</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="371"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="370"/>
         <source>Supprimer le folio</source>
         <translation>Slet ark</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="463"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="470"/>
         <source>Mode Visualisation</source>
         <translation>Vise</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="442"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="449"/>
         <source>&amp;Mosaïque</source>
         <translation>&amp;Side om side</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="392"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="391"/>
         <source>Exporter au format CSV</source>
         <translation>Eksportere som CSV format</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="407"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="414"/>
         <source>Lancer le plugin de création de borniers</source>
         <translation>Starte udvidelsesmodul til opretning af terminalblokke</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="411"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="418"/>
         <source>Exporter la liste des noms de conducteurs</source>
         <translation>Eksportere liste med navne på ledere</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="421"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="428"/>
         <source>Exporter la base de donnée interne du projet</source>
         <translation>Eksportere intern projekt database</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="491"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="498"/>
         <source>&amp;Nouveau</source>
         <translation>&amp;Ny</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="502"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="509"/>
         <source>Crée un nouveau projet</source>
         <comment>status bar tip</comment>
         <translation>Opret nyt projekt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="503"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="510"/>
         <source>Ouvre un projet existant</source>
         <comment>status bar tip</comment>
         <translation>Åbne eksisterende projekt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="504"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="511"/>
         <source>Ferme le projet courant</source>
         <comment>status bar tip</comment>
         <translation>Luk nuværende projekt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="505"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="512"/>
         <source>Enregistre le projet courant et tous ses folios</source>
         <comment>status bar tip</comment>
         <translation>Gem nuværende projekt og alle ark</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="506"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="513"/>
         <source>Enregistre le projet courant avec un autre nom de fichier</source>
         <comment>status bar tip</comment>
         <translation>Gem nuværende projekt under andet filnavn</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="521"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="528"/>
         <source>Ajouter une ligne</source>
         <comment>Add row</comment>
         <translation>Tilføj linje</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="522"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="529"/>
         <source>Enlever une ligne</source>
         <comment>Remove row</comment>
         <translation>Slet linje</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="524"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="531"/>
         <source>Ajoute une colonne au folio</source>
         <comment>status bar tip</comment>
         <translation>Tilføj kolonne til ark</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="525"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="532"/>
         <source>Enlève une colonne au folio</source>
         <comment>status bar tip</comment>
         <translation>Slet kolonne fra ark</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="526"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="533"/>
         <source>Agrandit le folio en hauteur</source>
         <comment>status bar tip</comment>
         <translation>Udvid ark højde</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="527"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="534"/>
         <source>Rétrécit le folio en hauteur</source>
         <comment>status bar tip</comment>
         <translation>Indskrænk ark højde</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="552"/>
         <source>SPACE</source>
         <translation>Mellemrum</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="546"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="553"/>
         <source>Ctrl+SPACE</source>
         <translation>Ctrl+Mellemrum</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="549"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="556"/>
         <source>Enlève les éléments sélectionnés du folio</source>
         <comment>status bar tip</comment>
         <translation>Slet symbol fra ark</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="572"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="579"/>
         <source>Sélectionne tous les éléments du folio</source>
         <comment>status bar tip</comment>
         <translation>Væg alle symboler på ark</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="573"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="580"/>
         <source>Désélectionne tous les éléments du folio</source>
         <comment>status bar tip</comment>
         <translation>Vælg ingen symboler på ark</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="596"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="603"/>
         <source>Agrandit le folio</source>
         <comment>status bar tip</comment>
         <translation>Udvid ark</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="597"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="604"/>
         <source>Rétrécit le folio</source>
         <comment>status bar tip</comment>
         <translation>Indskrænk ark</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="598"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="605"/>
         <source>Adapte le zoom de façon à afficher tout le contenu du folio indépendamment du cadre</source>
         <translation>Tilpas visning til indhold uanset ark ramme</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="599"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="606"/>
         <source>Adapte le zoom exactement sur le cadre du folio</source>
         <comment>status bar tip</comment>
         <translation>Tilpas visning til ark</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="613"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="620"/>
         <source>Ajouter une ligne</source>
         <comment>Draw line</comment>
         <translation>Tilføj linje</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="614"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="621"/>
         <source>Ajouter un rectangle</source>
         <translation>Tilføj rektangel</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="615"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="622"/>
         <source>Ajouter une ellipse</source>
         <translation>Tilføj cirkel</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="616"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="623"/>
         <source>Ajouter une polyligne</source>
         <translation>Tilføj flerkant</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="240"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="239"/>
         <source>Exporte le folio courant dans un autre format</source>
         <comment>status bar tip</comment>
         <translation>Eksportere nuværende ark til andet format</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="251"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="250"/>
         <source>Imprime un ou plusieurs folios du projet courant</source>
         <comment>status bar tip</comment>
         <translation>Udskriv et eller flere ark fra nuværende projekt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="701"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="708"/>
         <source>Profondeur</source>
         <comment>toolbar title</comment>
         <translation>Placeringsniveau</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1400"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1408"/>
         <source>Groupe</source>
         <translation>Gruppe</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2296"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2305"/>
         <source>Error launching qet_tb_generator plugin</source>
         <translation>Fejl ved start qet_tb_generator udvidelsesmodul</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="287"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="286"/>
         <source>Place les éléments du presse-papier sur le folio</source>
         <comment>status bar tip</comment>
         <translation>Indsæt symboler fra udklipsholder på ark</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="346"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="345"/>
         <source>Édite les propriétés du folio (dimensions, informations du cartouche, propriétés des conducteurs...)</source>
         <comment>status bar tip</comment>
         <translation>Rediger ark egenskab (størrelse, titelblok information, leder egenskab etc.)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="464"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="471"/>
         <source>Permet de visualiser le folio sans pouvoir le modifier</source>
         <comment>status bar tip</comment>
         <translation>Tillader skrivebeskyttet ark visning</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="662"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="669"/>
         <source>Outils</source>
         <translation>Værktøjer</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="492"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="499"/>
         <source>&amp;Ouvrir</source>
         <translation>&amp;Åbne</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="933"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="941"/>
         <source>Ouvrir un fichier</source>
         <translation>Åbne fil</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="587"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="594"/>
         <source>Pas de zoom</source>
         <translation>Nulstil</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="538"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
         <source>Pivoter</source>
         <translation>Roter</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="260"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="259"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Afslut</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="537"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="544"/>
         <source>Supprimer</source>
         <translation>Slet</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="564"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="571"/>
         <source>Tout sélectionner</source>
         <translation>Vælg alle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="586"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="593"/>
         <source>Zoom adapté</source>
         <translation>Tilpas ark</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="584"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="591"/>
         <source>Zoom arrière</source>
         <translation>Formindsk</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="583"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="590"/>
         <source>Zoom avant</source>
         <translation>Forstør</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="266"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="265"/>
         <source>Annuler</source>
         <translation>Fortryd</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="271"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="270"/>
         <source>Refaire</source>
         <translation>Gendan</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="303"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="302"/>
         <source>Réinitialiser les conducteurs</source>
         <translation>Nulstil leder</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="304"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="303"/>
         <source>Ctrl+K</source>
         <translation>Ctrl+K</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="345"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="344"/>
         <source>Ctrl+L</source>
         <translation>Ctrl+L</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="778"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="786"/>
         <source>Affiche ou non la barre d&apos;outils principale</source>
         <translation>Vise eller skjule værktøjslinje</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="779"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="787"/>
         <source>Affiche ou non la barre d&apos;outils Affichage</source>
         <translation>Vise eller skjule værktøjslinjen Vise</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="780"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="788"/>
         <source>Affiche ou non la barre d&apos;outils Schéma</source>
         <translation>Vise eller skjule værktøjslinjen Diagram</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="665"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
         <source>Affichage</source>
         <translation>Vise</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="668"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="675"/>
         <source>Schéma</source>
         <translation>Diagram</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="611"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="618"/>
         <source>Ajouter un champ de texte</source>
         <translation>Tilføj tekstfelt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="193"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="192"/>
         <source>Aucune modification</source>
         <translation>Ingen ændring</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="782"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="790"/>
         <source>Affiche ou non la liste des modifications</source>
         <translation>Vise eller skjule gendan liste</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="541"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="548"/>
         <source>Éditer l&apos;item sélectionné</source>
         <translation>Rediger emne</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="363"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="362"/>
         <source>Ctrl+T</source>
         <translation>Ctrl+T</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="542"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="549"/>
         <source>Grouper les textes sélectionnés</source>
         <translation>Gruppere valgte tekste</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="550"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="557"/>
         <source>Pivote les éléments et textes sélectionnés</source>
         <comment>status bar tip</comment>
         <translation>Roter symbol og tekst</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="551"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="558"/>
         <source>Pivote les textes sélectionnés à un angle précis</source>
         <comment>status bar tip</comment>
         <translation>Roter tekst til vinkel</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="645"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="652"/>
         <source>Chercher/remplacer</source>
         <translation>Søge/erstatte</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="719"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="726"/>
         <source>&amp;Projet</source>
         <translation>&amp;Projekter</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="731"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="738"/>
         <source>&amp;Récemment ouverts</source>
         <translation>&amp;Seneste åbnet</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="865"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="887"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="873"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="895"/>
         <source>Projet %1 enregistré dans le repertoire: %2.</source>
         <translation>Projekt %1 registreret i bibliotek: %2.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1031"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1039"/>
         <source>Il semblerait que le fichier que vous essayez d&apos;ouvrir ne soit pas accessible en lecture. Il est donc impossible de l&apos;ouvrir. Veuillez vérifier les permissions du fichier.</source>
         <translation>Skrivebeskyttet fil forsøgt åbnet. Kontroller fil rettigheder.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1046"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1054"/>
         <source>Il semblerait que le projet que vous essayez d&apos;ouvrir ne soit pas accessible en écriture. Il sera donc ouvert en lecture seule.</source>
         <translation>Projekt åbnes skrivebeskyttet.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="427"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="434"/>
         <source>en utilisant des onglets</source>
         <translation>faneblade</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="432"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="439"/>
         <source>en utilisant des fenêtres</source>
         <translation>vinduer</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="786"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="794"/>
         <source>Afficher les projets</source>
         <translation>Vis projekt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="356"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="355"/>
         <source>Propriétés du projet</source>
         <translation>Projekt egenskab</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="375"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="374"/>
         <source>Nettoyer le projet</source>
         <translation>Ryd op i projekt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1063"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1770"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1071"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1779"/>
         <source>Échec de l&apos;ouverture du projet</source>
         <comment>message box title</comment>
         <translation>Projekt kan ikke åbnes</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1065"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1073"/>
         <source>Il semblerait que le fichier %1 ne soit pas un fichier projet QElectroTech. Il ne peut donc être ouvert.</source>
         <comment>message box content</comment>
         <translation>%1 er ikke en QElectroTech projekt fil.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="91"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="90"/>
         <source>QElectroTech</source>
         <comment>window title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="93"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="92"/>
         <source>QElectroTech</source>
         <comment>status bar message</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="197"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="196"/>
         <source>Annulations</source>
         <comment>dock title</comment>
         <translatorcomment>Funktion beskrivende oversættelse</translatorcomment>
         <translation>Redigeringshistorik</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="194"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="193"/>
         <source>Cliquez sur une action pour revenir en arrière dans l&apos;édition de votre schéma</source>
         <comment>Status tip</comment>
         <translation>Klik på en ændring for at komme tilbage i diagram ændringer</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="539"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="546"/>
         <source>Orienter les textes</source>
         <translation>Vælg tekst retning</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="540"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="547"/>
         <source>Retrouver dans le panel</source>
         <translation>Find i panel</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="612"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="619"/>
         <source>Ajouter une image</source>
         <translation>Tilføj billede</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="385"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="384"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="406"/>
         <source>Ajouter un sommaire</source>
         <translation>Tilføj oversigt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="585"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="592"/>
         <source>Zoom sur le contenu</source>
         <translation>Tilpas indhold</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="547"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="554"/>
         <source>Ctrl+E</source>
         <translation>Ctrl+E</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="592"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="599"/>
         <source>Ctrl+8</source>
         <translatorcomment>Ctrl+8</translatorcomment>
         <translation>Ctrl+8</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="262"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="261"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <comment>status bar tip</comment>
         <translation>Luk QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="269"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="268"/>
         <source>Annule l&apos;action précédente</source>
         <comment>status bar tip</comment>
         <translation>Fortryd foregående handling</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="274"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="273"/>
         <source>Restaure l&apos;action annulée</source>
         <comment>status bar tip</comment>
         <translation>Gendan fortrudt handling</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="285"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="284"/>
         <source>Transfère les éléments sélectionnés dans le presse-papier</source>
         <comment>status bar tip</comment>
         <translation>Kopier symboler til udklipsholder</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="286"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="285"/>
         <source>Copie les éléments sélectionnés dans le presse-papier</source>
         <comment>status bar tip</comment>
         <translation>Kopier symboler fra udklipsholder</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="574"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="581"/>
         <source>Désélectionne les éléments sélectionnés et sélectionne les éléments non sélectionnés</source>
         <comment>status bar tip</comment>
         <translation>Vælger modsat</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="552"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="559"/>
         <source>Retrouve l&apos;élément sélectionné dans le panel</source>
         <comment>status bar tip</comment>
         <translation>Find symbol i panel</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="305"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="304"/>
         <source>Recalcule les chemins des conducteurs sans tenir compte des modifications</source>
         <comment>status bar tip</comment>
         <translation>Genberegn leder rute uanset ændringer</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="312"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="311"/>
         <source>Création automatique de conducteur(s)</source>
         <comment>Tool tip of auto conductor</comment>
         <translation>Opret automatisk leder</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="142"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="141"/>
         <source>Projets</source>
         <comment>dock title</comment>
         <translation>Projekter</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="173"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="172"/>
         <source>Collections</source>
         <translation>Samlinger</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="313"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="312"/>
         <source>Utiliser la création automatique de conducteur(s) quand cela est possible</source>
         <comment>Status tip of auto conductor</comment>
         <translation>Brug automatisk opret af leder hvor det er muligt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="600"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="607"/>
         <source>Restaure le zoom par défaut</source>
         <comment>status bar tip</comment>
         <translation>Gendan standard visning</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="433"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="440"/>
         <source>Présente les différents projets ouverts dans des sous-fenêtres</source>
         <comment>status bar tip</comment>
         <translation>Vise åbne projekter i vinduer</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="399"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="398"/>
         <source>Ajouter une nomenclature</source>
         <translation>Tilføje en BOM</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="428"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="435"/>
         <source>Présente les différents projets ouverts des onglets</source>
         <comment>status bar tip</comment>
         <translation>Vise åbne projekter i faneblade</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="452"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="459"/>
         <source>Permet de sélectionner les éléments</source>
         <comment>status bar tip</comment>
         <translation>Tillader symbol valg</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="618"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="625"/>
         <source>Ajoute un champ de texte sur le folio actuel</source>
         <translation>Tilføje tekstfelt til det aktuelle ark</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="619"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="626"/>
         <source>Ajoute une image sur le folio actuel</source>
         <translation>Tilføje billede til det aktuelle ark</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="620"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="627"/>
         <source>Ajoute une ligne sur le folio actuel</source>
         <translation>Tilføje linje til det aktuelle ark</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="621"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="628"/>
         <source>Ajoute un rectangle sur le folio actuel</source>
         <translation>Tilføje rektangel til det aktuelle ark</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="622"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="629"/>
         <source>Ajoute une ellipse sur le folio actuel</source>
         <translation>Tilføje elipse til det aktuelle ark</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="623"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="630"/>
         <source>Ajoute une polyligne sur le folio actuel</source>
         <translation>Tilføje flerkant til det aktuelle ark</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="697"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="704"/>
         <source>Ajouter</source>
         <translation>Tilføj</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="935"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="943"/>
         <source>Projets QElectroTech (*.qet);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <translation>QElectroTech projekter (*.qet);; XML-filer (*.xml);; Alle filer (*)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1014"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1030"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1022"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1038"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
         <translation>Kan ikke åbne filen</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1016"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1024"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
         <translation>Fil %1 findes ikke.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1045"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1053"/>
         <source>Ouverture du projet en lecture seule</source>
         <comment>message box title</comment>
         <translation>Projekt åbnes skrivebeskyttet</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1335"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1343"/>
         <source>Double-click pour terminer la forme, Click droit pour annuler le dernier point</source>
         <translation>Dobbeltklik for at afslutte formular, højreklik for at fortryde det sidste punkt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1572"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1581"/>
         <source>Éditer l&apos;élement</source>
         <comment>edit element</comment>
         <translation>Rediger symbol</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1578"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1587"/>
         <source>Éditer le champ de texte</source>
         <comment>edit text field</comment>
         <translation>Rediger tekstfelt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1584"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1593"/>
         <source>Éditer l&apos;image</source>
         <comment>edit image</comment>
         <translation>Rediger billede</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1590"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1599"/>
         <source>Éditer le conducteur</source>
         <comment>edit conductor</comment>
         <translation>Rediger leder</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1597"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1606"/>
         <source>Éditer l&apos;objet sélectionné</source>
         <comment>edit selected item</comment>
         <translation>Rediger objekt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1771"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1780"/>
         <source>Une erreur est survenue lors de l&apos;ouverture du fichier %1.</source>
         <comment>message box content</comment>
         <translation>Der opstod en fejl under åbning af fil %1.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1817"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1826"/>
         <source>Active le projet « %1 »</source>
         <translation>Aktiver projekt « %1 »</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2201"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2210"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Fejl</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="443"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="450"/>
         <source>Dispose les fenêtres en mosaïque</source>
         <comment>status bar tip</comment>
         <translation>Arranger vinduer side om side</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="447"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="454"/>
         <source>Dispose les fenêtres en cascade</source>
         <comment>status bar tip</comment>
         <translation>Arranger vinduer overlappet</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="480"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="487"/>
         <source>Projet suivant</source>
         <translation>Næste projekt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="485"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="492"/>
         <source>Projet précédent</source>
         <translation>Foregående projekt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="482"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="489"/>
         <source>Active le projet suivant</source>
         <comment>status bar tip</comment>
         <translation>Aktiver næste projekt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="487"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="494"/>
         <source>Active le projet précédent</source>
         <comment>status bar tip</comment>
         <translation>Aktiver foregående projekt</translation>
@@ -8321,6 +8321,7 @@ Hvad skal ske?</translation>
         <translation>Forfatter</translation>
     </message>
     <message>
+        <location filename="../sources/diagramfoliolist.cpp" line="175"/>
         <location filename="../sources/diagramfoliolist.cpp" line="305"/>
         <location filename="../sources/qetinformation.cpp" line="64"/>
         <source>Titre</source>
@@ -8969,24 +8970,35 @@ Voulez-vous la remplacer ?</source>
         <translation>Oprette ledere</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2297"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2306"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</source>
         <translation>For at installere udvidelsesmodul qet_tb_generator&lt;br&gt;Besøg: &lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Kræver python 3.5 eller over.&lt;br&gt;&lt;B&gt;&lt;U&gt;Første installering på Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Installere, hvis påkrævet, python 3.5 eller over&lt;br&gt;Besøg:&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip installere qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt;Opdatere på Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;brugeren kan i en terminal udføre dette skript i følgende mappe&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2333"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2341"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2372"/>
+        <source>Error launching qet_tb_generator plugin</source>
+        <translation type="unfinished">Fejl ved start qet_tb_generator udvidelsesmodul</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2342"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.8 bundle only, because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation>For at installere udvidelsesmodul qet_tb_generator&lt;br&gt;Besøg: &lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Først installere på macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Installere, hvis påkrævet, kun python 3.8 bundle, fordi den bruger hård kodet PATH til lokalisering qet-tb-generator udvidelsesmodul&lt;br&gt; Besøg:&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;Guide&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Opdatere på macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2364"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2373"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit : &lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation>For at installere udvidelsesmodul qet_tb_generator&lt;br&gt;Besøg: &lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Kræver python 3.5 eller over.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt;Første installering på Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. kontrollere at pip3 er installeretd: pip3 --version&lt;br&gt;Hvis ikke, installere med: sudo apt-get install python3-pip&lt;br&gt;2. Installere programmet: sudo pip3 install qet_tb_generator&lt;br&gt;3. Kør programmet: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt;Opdatere på Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="43"/>
+        <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="45"/>
         <source>Ajouter une nomenclature</source>
         <translation>Tilføje en BOM</translation>
+    </message>
+    <message>
+        <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="61"/>
+        <source>Ajouter un sommaire</source>
+        <translation type="unfinished">Tilføj oversigt</translation>
     </message>
 </context>
 <context>
@@ -12104,6 +12116,39 @@ De andre felter anvendes ikke.</translation>
     </message>
 </context>
 <context>
+    <name>SummaryQueryWidget</name>
+    <message>
+        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="26"/>
+        <source>Informations disponibles</source>
+        <translation type="unfinished">Information tilgængelig</translation>
+    </message>
+    <message>
+        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="39"/>
+        <source>Information à afficher</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="133"/>
+        <source>Configuration</source>
+        <translation type="unfinished">Opsætning</translation>
+    </message>
+    <message>
+        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="149"/>
+        <source>Requête SQL :</source>
+        <translation type="unfinished">SQL forespørgsel:</translation>
+    </message>
+    <message>
+        <location filename="../sources/dataBase/ui/summaryquerywidget.cpp" line="95"/>
+        <source>Position</source>
+        <translation type="unfinished">Placering</translation>
+    </message>
+</context>
+<context>
     <name>TerminalEditor</name>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="58"/>
@@ -13160,12 +13205,12 @@ Maksimum længde: %2piksel
 <context>
     <name>projectDataBase</name>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="388"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="415"/>
         <source>Exporter la base de données interne du projet</source>
         <translation>Eksportere intern projekt database</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="396"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="423"/>
         <source>sans_nom</source>
         <translation>ikke_navngivet</translation>
     </message>
