@@ -1027,7 +1027,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="175"/>
         <source>Couleur du texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstkleur</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="307"/>
@@ -4940,12 +4940,12 @@ De volgende variabelen zijn compatibel :
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="341"/>
         <source>Position</source>
-        <translation type="unfinished"></translation>
+        <translation>Plaats</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="343"/>
         <source>Position du folio</source>
-        <translation type="unfinished">Plaats van het blad</translation>
+        <translation>Plaats van het blad</translation>
     </message>
 </context>
 <context>
@@ -4953,17 +4953,17 @@ De volgende variabelen zijn compatibel :
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Dialoog</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="20"/>
         <source>Requête</source>
-        <translation type="unfinished">Verzoek</translation>
+        <translation>Verzoek</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="31"/>
         <source>Recharger</source>
-        <translation type="unfinished">Herladen</translation>
+        <translation>Herladen</translation>
     </message>
 </context>
 <context>
@@ -5216,7 +5216,7 @@ Wilt u de wijzigingen opslaan?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="442"/>
         <source>Position</source>
-        <translation type="unfinished"></translation>
+        <translation>Plaats</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1661"/>
@@ -5401,7 +5401,7 @@ Wilt u de wijzigingen opslaan?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="440"/>
         <source>Indice de révision</source>
-        <translation type="unfinished">Reviesie-index</translation>
+        <translation>Reviesie-index</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="453"/>
@@ -8975,7 +8975,7 @@ Wilt u deze vervangen ?</translation>
         <location filename="../sources/qetdiagrameditor.cpp" line="2341"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="2372"/>
         <source>Error launching qet_tb_generator plugin</source>
-        <translation type="unfinished">Fout bij het laden van de qet_tb_generator plugin</translation>
+        <translation>Fout bij het laden van de qet_tb_generator plugin</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2342"/>
@@ -8995,7 +8995,7 @@ Wilt u deze vervangen ?</translation>
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="61"/>
         <source>Ajouter un sommaire</source>
-        <translation type="unfinished">Bladoverzicht toevoegen</translation>
+        <translation>Bladoverzicht toevoegen</translation>
     </message>
 </context>
 <context>
@@ -12113,32 +12113,32 @@ De andere velden hebben nu geen betekenis.</translation>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Weergave informatie</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="38"/>
         <source>Informations disponibles</source>
-        <translation type="unfinished">Beschikbare informatie</translation>
+        <translation>Beschikbare informatie</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="51"/>
         <source>Information à afficher</source>
-        <translation type="unfinished"></translation>
+        <translation>Weergegeven informatie</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="145"/>
         <source>Configuration</source>
-        <translation type="unfinished">Configuratie</translation>
+        <translation>Configuratie</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="161"/>
         <source>Requête SQL :</source>
-        <translation type="unfinished">SQL-query :</translation>
+        <translation>SQL-query :</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.cpp" line="130"/>
         <source>Position</source>
-        <translation type="unfinished"></translation>
+        <translation>Plaats</translation>
     </message>
 </context>
 <context>
