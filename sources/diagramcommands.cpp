@@ -33,12 +33,12 @@ QString itemText(const QetGraphicsItem *item) {
 }
 
 QString itemText(const IndependentTextItem *item) {
-	Q_UNUSED(item);
+	Q_UNUSED(item)
 	return QObject::tr("un champ texte");
 }
 
 QString itemText(const Conductor *item) {
-	Q_UNUSED(item);
+	Q_UNUSED(item)
 	return QObject::tr("un conducteur");
 }
 
@@ -246,7 +246,7 @@ void MoveElementsCommand::move(const QPointF &actual_movement)
 	typedef DiagramContent dc;
 
 		//Move every movable items, except conductor
-	for (QGraphicsItem *qgi : content_to_move.items(dc::Elements | dc::TextFields | dc::Images | dc::Shapes | dc::TextGroup | dc::ElementTextFields))
+	for (QGraphicsItem *qgi : content_to_move.items(dc::Elements | dc::TextFields | dc::Images | dc::Shapes | dc::TextGroup | dc::ElementTextFields | dc::Tables))
 	{
 			//If curent item have parent, and parent item is in content_to_move
 			//we don't apply movement to this item, because this item will be moved by is parent.
