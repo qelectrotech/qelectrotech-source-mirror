@@ -53,6 +53,8 @@ class SummaryQueryWidget : public QWidget
 		void on_m_down_pb_clicked();
 		void on_m_edit_sql_query_cb_clicked();
 		void reset();
+		void saveConfig();
+		void loadConfig();
 
 	private:
 		Ui::SummaryQueryWidget *ui;

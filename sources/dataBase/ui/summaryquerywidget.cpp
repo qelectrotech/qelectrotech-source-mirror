@@ -17,7 +17,6 @@
 */
 #include "summaryquerywidget.h"
 #include "ui_summaryquerywidget.h"
-
 #include "qetapp.h"
 
 #include <QListWidgetItem>
@@ -31,10 +30,12 @@ SummaryQueryWidget::SummaryQueryWidget(QWidget *parent) :
 	ui(new Ui::SummaryQueryWidget)
 {
     ui->setupUi(this);
-	ui->m_config_gb->setDisabled(true);
 
 	setUpItems();
 	fillSavedQuery();
+
+	connect(ui->m_config_gb, &ConfigSaveLoaderWidget::saveClicked, this, &SummaryQueryWidget::saveConfig);
+	connect(ui->m_config_gb, &ConfigSaveLoaderWidget::loadClicked, this, &SummaryQueryWidget::loadConfig);
 }
 
 /**
@@ -133,10 +134,20 @@ void SummaryQueryWidget::setUpItems()
 
 /**
  * @brief SummaryQueryWidget::fillSavedQuery
+ * Fill the combo box of the saved query
  */
 void SummaryQueryWidget::fillSavedQuery()
 {
+	QFile file(QETApp::configDir() + "/summary.json");
+	if (file.open(QFile::ReadOnly))
+	{
+		QJsonDocument jsd(QJsonDocument::fromJson(file.readAll()));
+		QJsonObject jso = jsd.object();
 
+		for (auto it = jso.begin() ; it != jso.end() ; ++it) {
+			ui->m_config_gb->addItem(it.key());
+		}
+	}
 }
 
 /**
@@ -272,4 +283,63 @@ void SummaryQueryWidget::reset()
 		ui->m_available_list->addItem(item);
 	}
 	ui->m_user_query_le->clear();
+}
+
+/**
+ * @brief SummaryQueryWidget::saveConfig
+ */
+void SummaryQueryWidget::saveConfig()
+{
+	QFile file_(QETApp::configDir() + "/summary.json");
+
+	if (file_.open(QFile::ReadWrite))
+	{
+		QJsonDocument doc_(QJsonDocument::fromJson(file_.readAll()));
+		QJsonObject root_object;
+
+		if (!doc_.isEmpty())
+		{
+			root_object = doc_.object();
+			if (root_object.contains(ui->m_config_gb->text())) {
+				root_object.remove(ui->m_config_gb->text());
+			}
+		}
+
+		QJsonObject object_;
+		object_.insert("query", queryStr());
+		root_object[ui->m_config_gb->text()] = object_;
+
+		doc_.setObject(root_object);
+		file_.resize(0);
+		file_.write(doc_.toJson());
+	}
+}
+
+/**
+ * @brief SummaryQueryWidget::loadConfig
+ */
+void SummaryQueryWidget::loadConfig()
+{
+	auto name = ui->m_config_gb->selectedText();
+	if (name.isEmpty()) {
+		return;
+	}
+
+	QFile file_(QETApp::configDir() + "/summary.json");
+	if (!file_.open(QFile::ReadOnly)) {
+		return;
+	}
+
+	QJsonDocument doc_(QJsonDocument::fromJson(file_.readAll()));
+	QJsonObject object_ = doc_.object();
+
+	auto value = object_.value(name);
+	if (!value.isObject()) {
+		return;
+	}
+
+	auto value_object = value.toObject();
+	if (value_object.value("query").isString()) {
+		setQuery(value_object.value("query").toString());
+	}
 }

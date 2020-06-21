@@ -43,7 +43,6 @@ AddTableDialog::AddTableDialog(QWidget *content_widget, QWidget *parent) :
 	
 	connect(ui->m_config_gb, &ConfigSaveLoaderWidget::saveClicked, this, &AddTableDialog::saveConfig);
 	connect(ui->m_config_gb, &ConfigSaveLoaderWidget::loadClicked, this, &AddTableDialog::loadConfig);
-	
 }
 
 /**
