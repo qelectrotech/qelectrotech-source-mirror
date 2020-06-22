@@ -642,7 +642,11 @@ void QETElementEditor::slot_updateInformations()
     if (same_xml_name) {
         if (selection_xml_name == "terminal" ||
             selection_xml_name == "text" ||
-            selection_xml_name == "dynamic_text") {
+            selection_xml_name == "dynamic_text" ||
+            selection_xml_name == "line" ||
+            selection_xml_name == "rect" ||
+            selection_xml_name == "ellipse" ||
+            selection_xml_name == "arc") {
             clearToolsDock();
                 //We add the editor widget
             ElementItemEditor *editor = static_cast<ElementItemEditor*>(m_editors[selection_xml_name]);
@@ -684,7 +688,36 @@ void QETElementEditor::slot_updateInformations()
                 }
             }
             return;
-        }
+        } else if (selection_xml_name == "polygon" && cep_list.length() == 1) {
+            // multi edit for polygons makes no sense
+            // TODO: maybe allowing multipart edit when number of points is the same?
+            //We add the editor widget
+            clearToolsDock();
+            ElementItemEditor *editor = static_cast<ElementItemEditor*>(m_editors[selection_xml_name]);
+            CustomElementPart* part = editor->currentPart();
+            bool equal = part == cep_list.first();
+
+            if (editor)
+            {
+                bool success = true;
+                if (equal == false) {
+                    success = editor->setPart(cep_list.first());
+                }
+                if (success)
+                {
+                    m_tools_dock_stack->insertWidget(1, editor);
+                    m_tools_dock_stack -> setCurrentIndex(1);
+                }
+                else
+                {
+                    qDebug() << "Editor refused part.";
+                }
+            }
+            return;
+
+            } else {
+                qDebug() << "Multiedit not supported for: " << cep_list.first()->xmlName();
+            }
 
     }
 

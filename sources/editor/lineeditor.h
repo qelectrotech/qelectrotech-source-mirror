@@ -46,10 +46,12 @@ class LineEditor : public ElementItemEditor
 		QComboBox *end1_type, *end2_type;
 		QDoubleSpinBox*end1_length, *end2_length;
 		bool m_locked;
+        QList <QMetaObject::Connection> m_change_connections;
 	
 		// methods
 	public:
 		bool setPart(CustomElementPart *) override;
+        bool setParts(QList <CustomElementPart *> parts) override;
 		CustomElementPart *currentPart() const override;
         QList<CustomElementPart*> currentParts() const override;
 		QPointF editedP1() const;
@@ -60,10 +62,19 @@ class LineEditor : public ElementItemEditor
 		void updateLineEndLength1();
 		void updateLineEndType2();
 		void updateLineEndLength2();
-		void lineEditingFinished();
+        void lineEditingFinishedX1();
+        void lineEditingFinishedY1();
+        void lineEditingFinishedX2();
+        void lineEditingFinishedY2();
 		void updateForm() override;
 	
 	private:
 		void activeConnections(bool);
+        /*!
+         * \brief setUpChangeConnections
+         * Setup the connection from the line(s) to the widget, to update it when the line(s) are changed (moved ...)
+         */
+        void setUpChangeConnections();
+        void disconnectChangeConnections();
 };
 #endif

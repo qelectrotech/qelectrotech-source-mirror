@@ -50,6 +50,22 @@ PolygonEditor::~PolygonEditor() {
     delete ui;
 }
 
+void PolygonEditor::setUpChangeConnections()
+{
+    m_change_connections << connect(m_part, &PartPolygon::polygonChanged, this, &PolygonEditor::updateForm);
+    m_change_connections << connect(m_part, &PartPolygon::closedChange, this, &PolygonEditor::updateForm);
+    m_change_connections << connect(m_part, &PartPolygon::xChanged, this, &PolygonEditor::updateForm);
+    m_change_connections << connect(m_part, &PartPolygon::yChanged, this, &PolygonEditor::updateForm);
+}
+
+void PolygonEditor::disconnectChangeConnections()
+{
+    for (QMetaObject::Connection c : m_change_connections) {
+        disconnect(c);
+    }
+    m_change_connections.clear();
+}
+
 /**
  * @brief PolygonEditor::setPart
  * @param new_part
@@ -61,8 +77,7 @@ bool PolygonEditor::setPart(CustomElementPart *new_part)
     {
         if (m_part)
         {
-            disconnect(m_part, &PartPolygon::polygonChanged, this, &PolygonEditor::updateForm);
-            disconnect(m_part, &PartPolygon::closedChange, this, &PolygonEditor::updateForm);
+            disconnectChangeConnections();
         }
         m_part = nullptr;
         m_style -> setPart(nullptr);
@@ -73,18 +88,12 @@ bool PolygonEditor::setPart(CustomElementPart *new_part)
         if (m_part == part_polygon) return true;
         if (m_part)
         {
-            disconnect(m_part, &PartPolygon::polygonChanged, this, &PolygonEditor::updateForm);
-            disconnect(m_part, &PartPolygon::closedChange, this, &PolygonEditor::updateForm);
-            disconnect(m_part, &PartPolygon::xChanged, this, &PolygonEditor::updateForm);
-            disconnect(m_part, &PartPolygon::yChanged, this, &PolygonEditor::updateForm);
+            disconnectChangeConnections();
         }
         m_part = part_polygon;
         m_style -> setPart(m_part);
         updateForm();
-        connect(m_part, &PartPolygon::polygonChanged, this, &PolygonEditor::updateForm);
-        connect(m_part, &PartPolygon::closedChange, this, &PolygonEditor::updateForm);
-        connect(m_part, &PartPolygon::xChanged, this, &PolygonEditor::updateForm);
-        connect(m_part, &PartPolygon::yChanged, this, &PolygonEditor::updateForm);
+        setUpChangeConnections();
         return(true);
     }
     return(false);

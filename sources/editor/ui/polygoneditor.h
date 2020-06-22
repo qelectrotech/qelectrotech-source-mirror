@@ -51,9 +51,18 @@ class PolygonEditor : public ElementItemEditor
         void on_m_remove_point_action_triggered();
 
 private:
+        /*!
+         * \brief setUpChangeConnections
+         * Setup the connection from the line(s) to the widget, to update it when the line(s) are changed (moved ...)
+         */
+        void setUpChangeConnections();
+        void disconnectChangeConnections();
+
+private:
         Ui::PolygonEditor *ui;
         StyleEditor *m_style = nullptr;
         PartPolygon *m_part = nullptr;
+        QList <QMetaObject::Connection> m_change_connections;
 };
 
 #endif // POLYGONEDITOR_H

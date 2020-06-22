@@ -46,6 +46,23 @@ RectangleEditor::~RectangleEditor() {
 	delete ui;
 }
 
+void RectangleEditor::setUpChangeConnections()
+{
+    m_change_connections << connect(m_part, &PartRectangle::rectChanged, this, &RectangleEditor::updateForm);
+    m_change_connections << connect(m_part, &PartRectangle::XRadiusChanged, this, &RectangleEditor::updateForm);
+    m_change_connections << connect(m_part, &PartRectangle::YRadiusChanged, this, &RectangleEditor::updateForm);
+    m_change_connections << connect(m_part, &PartRectangle::xChanged, this, &RectangleEditor::updateForm);
+    m_change_connections << connect(m_part, &PartRectangle::yChanged, this, &RectangleEditor::updateForm);
+}
+
+void RectangleEditor::disconnectChangeConnections()
+{
+    for (QMetaObject::Connection c : m_change_connections) {
+        disconnect(c);
+    }
+    m_change_connections.clear();
+}
+
 /**
  * @brief RectangleEditor::setPart
  * @param part
@@ -57,11 +74,7 @@ bool RectangleEditor::setPart(CustomElementPart *part)
 	{
 		if (m_part)
 		{
-			disconnect(m_part, &PartRectangle::rectChanged, this, &RectangleEditor::updateForm);
-			disconnect(m_part, &PartRectangle::XRadiusChanged, this, &RectangleEditor::updateForm);
-			disconnect(m_part, &PartRectangle::YRadiusChanged, this, &RectangleEditor::updateForm);
-			disconnect(m_part, &PartRectangle::xChanged, this, &RectangleEditor::updateForm);
-			disconnect(m_part, &PartRectangle::yChanged, this, &RectangleEditor::updateForm);
+            disconnectChangeConnections();
 		}
 		m_part = nullptr;
 		m_style->setPart(nullptr);
@@ -75,24 +88,26 @@ bool RectangleEditor::setPart(CustomElementPart *part)
 		}
 		if (m_part)
 		{
-			disconnect(m_part, &PartRectangle::rectChanged, this, &RectangleEditor::updateForm);
-			disconnect(m_part, &PartRectangle::XRadiusChanged, this, &RectangleEditor::updateForm);
-			disconnect(m_part, &PartRectangle::YRadiusChanged, this, &RectangleEditor::updateForm);
-			disconnect(m_part, &PartRectangle::xChanged, this, &RectangleEditor::updateForm);
-			disconnect(m_part, &PartRectangle::yChanged, this, &RectangleEditor::updateForm);
+            disconnectChangeConnections();
 		}
 		m_part = part_rectangle;
 		m_style->setPart(m_part);
 		updateForm();
-		connect(m_part, &PartRectangle::rectChanged, this, &RectangleEditor::updateForm);
-		connect(m_part, &PartRectangle::XRadiusChanged, this, &RectangleEditor::updateForm);
-		connect(m_part, &PartRectangle::YRadiusChanged, this, &RectangleEditor::updateForm);
-		connect(m_part, &PartRectangle::xChanged, this, &RectangleEditor::updateForm);
-		connect(m_part, &PartRectangle::yChanged, this, &RectangleEditor::updateForm);
+        setUpChangeConnections();
 		return(true);
 	}
 
 	return(false);
+}
+
+bool RectangleEditor::setParts(QList <CustomElementPart *> parts)
+{
+    if (parts.isEmpty())
+        return false;
+
+    if (!setPart(parts.first()))
+        return false;
+    return m_style->setParts(parts);
 }
 
 /**
@@ -175,6 +190,157 @@ void RectangleEditor::editingFinished()
 	m_locked = false;
 }
 
+void RectangleEditor::xPosChanged()
+{
+    if (m_locked) {
+        return;
+    }
+    m_locked = true;
+
+    for (auto part: m_style->currentParts()) {
+
+        PartRectangle* rec = static_cast<PartRectangle*>(part);
+
+        QRectF rect = rec->rect();
+
+        QPointF p = rec->mapFromScene(ui->m_x_sb->value(), ui->m_y_sb->value());
+
+        if (rect.x() != p.x()) {
+            rect.moveLeft(p.x());
+            QPropertyUndoCommand *undo = new QPropertyUndoCommand(rec, "rect", rec->rect(), rect);
+            undo->enableAnimation();
+            elementScene()->undoStack().push(undo);
+        }
+    }
+
+    m_locked = false;
+}
+
+void RectangleEditor::yPosChanged()
+{
+    if (m_locked) {
+        return;
+    }
+    m_locked = true;
+
+    for (auto part: m_style->currentParts()) {
+
+        PartRectangle* rec = static_cast<PartRectangle*>(part);
+
+        QRectF rect = rec->rect();
+
+        QPointF p = rec->mapFromScene(ui->m_x_sb->value(), ui->m_y_sb->value());
+
+        if (rect.y() != p.y()) {
+            rect.moveTop(p.y());
+            QPropertyUndoCommand *undo = new QPropertyUndoCommand(rec, "rect", rec->rect(), rect);
+            undo->enableAnimation();
+            elementScene()->undoStack().push(undo);
+        }
+    }
+
+    m_locked = false;
+}
+
+void RectangleEditor::widthChanged()
+{
+    if (m_locked) {
+        return;
+    }
+    m_locked = true;
+
+    double width = ui->m_width_sb->value();
+
+    for (auto part: m_style->currentParts()) {
+
+        PartRectangle* rec = static_cast<PartRectangle*>(part);
+
+        QRectF rect = rec->rect();
+
+        if (rect.width() != width) {
+            rect.setWidth(width);
+            QPropertyUndoCommand *undo = new QPropertyUndoCommand(rec, "rect", rec->rect(), rect);
+            undo->enableAnimation();
+            elementScene()->undoStack().push(undo);
+        }
+    }
+
+    m_locked = false;
+}
+
+void RectangleEditor::heightChanged()
+{
+    if (m_locked) {
+        return;
+    }
+    m_locked = true;
+
+    double height = ui->m_height_sb->value();
+
+    for (auto part: m_style->currentParts()) {
+
+        PartRectangle* rec = static_cast<PartRectangle*>(part);
+
+        QRectF rect = rec->rect();
+
+        if (rect.height() != height) {
+            rect.setHeight(height);
+            QPropertyUndoCommand *undo = new QPropertyUndoCommand(rec, "rect", rec->rect(), rect);
+            undo->enableAnimation();
+            elementScene()->undoStack().push(undo);
+        }
+    }
+
+    m_locked = false;
+}
+
+void RectangleEditor::xRadiusChanged()
+{
+    if (m_locked) {
+        return;
+    }
+    m_locked = true;
+
+    double radius = ui->m_rx_sb->value();
+
+    for (auto part: m_style->currentParts()) {
+
+        PartRectangle* rec = static_cast<PartRectangle*>(part);
+
+        if (rec->XRadius() != radius) {
+            QPropertyUndoCommand *undo = new QPropertyUndoCommand(rec, "xRadius", rec->XRadius(), radius);
+            undo->setAnimated();
+            elementScene()->undoStack().push(undo);
+        }
+    }
+
+    m_locked = false;
+}
+
+void RectangleEditor::yRadiusChanged()
+{
+    if (m_locked) {
+        return;
+    }
+    m_locked = true;
+
+    double radius = ui->m_ry_sb->value();
+
+    for (auto part: m_style->currentParts()) {
+
+        PartRectangle* rec = static_cast<PartRectangle*>(part);
+
+        if (rec->YRadius() != radius) {
+            QPropertyUndoCommand *undo = new QPropertyUndoCommand(rec, "yRadius", rec->YRadius(), radius);
+            undo->setAnimated();
+            elementScene()->undoStack().push(undo);
+        }
+    }
+
+    m_locked = false;
+}
+
+
 /**
  * @brief RectangleEditor::activeConnections
  * Enable/disable connection between editor widget and slot editingFinished
@@ -185,20 +351,20 @@ void RectangleEditor::activeConnections(bool active)
 {
 	if (active)
 	{
-		connect(ui->m_x_sb,      &QDoubleSpinBox::editingFinished, this, &RectangleEditor::editingFinished);
-		connect(ui->m_y_sb,      &QDoubleSpinBox::editingFinished, this, &RectangleEditor::editingFinished);
-		connect(ui->m_width_sb,  &QDoubleSpinBox::editingFinished, this, &RectangleEditor::editingFinished);
-		connect(ui->m_height_sb, &QDoubleSpinBox::editingFinished, this, &RectangleEditor::editingFinished);
-		connect(ui->m_rx_sb,     &QDoubleSpinBox::editingFinished, this, &RectangleEditor::editingFinished);
-		connect(ui->m_ry_sb,     &QDoubleSpinBox::editingFinished, this, &RectangleEditor::editingFinished);
+        connect(ui->m_x_sb,      &QDoubleSpinBox::editingFinished, this, &RectangleEditor::xPosChanged);
+        connect(ui->m_y_sb,      &QDoubleSpinBox::editingFinished, this, &RectangleEditor::yPosChanged);
+        connect(ui->m_width_sb,  &QDoubleSpinBox::editingFinished, this, &RectangleEditor::widthChanged);
+        connect(ui->m_height_sb, &QDoubleSpinBox::editingFinished, this, &RectangleEditor::heightChanged);
+        connect(ui->m_rx_sb,     &QDoubleSpinBox::editingFinished, this, &RectangleEditor::xRadiusChanged);
+        connect(ui->m_ry_sb,     &QDoubleSpinBox::editingFinished, this, &RectangleEditor::yRadiusChanged);
 	}
 	else
 	{
-		disconnect(ui->m_x_sb,      &QDoubleSpinBox::editingFinished, this, &RectangleEditor::editingFinished);
-		disconnect(ui->m_y_sb,      &QDoubleSpinBox::editingFinished, this, &RectangleEditor::editingFinished);
-		disconnect(ui->m_width_sb,  &QDoubleSpinBox::editingFinished, this, &RectangleEditor::editingFinished);
-		disconnect(ui->m_height_sb, &QDoubleSpinBox::editingFinished, this, &RectangleEditor::editingFinished);
-		disconnect(ui->m_rx_sb,     &QDoubleSpinBox::editingFinished, this, &RectangleEditor::editingFinished);
-		disconnect(ui->m_ry_sb,     &QDoubleSpinBox::editingFinished, this, &RectangleEditor::editingFinished);
+        disconnect(ui->m_x_sb,      &QDoubleSpinBox::editingFinished, this, &RectangleEditor::xPosChanged);
+        disconnect(ui->m_y_sb,      &QDoubleSpinBox::editingFinished, this, &RectangleEditor::yPosChanged);
+        disconnect(ui->m_width_sb,  &QDoubleSpinBox::editingFinished, this, &RectangleEditor::widthChanged);
+        disconnect(ui->m_height_sb, &QDoubleSpinBox::editingFinished, this, &RectangleEditor::heightChanged);
+        disconnect(ui->m_rx_sb,     &QDoubleSpinBox::editingFinished, this, &RectangleEditor::xRadiusChanged);
+        disconnect(ui->m_ry_sb,     &QDoubleSpinBox::editingFinished, this, &RectangleEditor::yRadiusChanged);
 	}
 }

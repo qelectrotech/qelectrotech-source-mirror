@@ -70,6 +70,19 @@ EllipseEditor::EllipseEditor(QETElementEditor *editor, PartEllipse *ellipse, QWi
 EllipseEditor::~EllipseEditor() {
 }
 
+void EllipseEditor::setUpChangeConnections()
+{
+    m_change_connections << connect(part, &PartEllipse::rectChanged, this, &EllipseEditor::updateForm);
+}
+
+void EllipseEditor::disconnectChangeConnections()
+{
+    for (QMetaObject::Connection c : m_change_connections) {
+        disconnect(c);
+    }
+    m_change_connections.clear();
+}
+
 /**
 	Permet de specifier a cet editeur quelle primitive il doit editer. A noter
 	qu'un editeur peut accepter ou refuser d'editer une primitive.
@@ -83,7 +96,7 @@ bool EllipseEditor::setPart(CustomElementPart *new_part)
 	if (!new_part)
 	{
 		if (part)
-			disconnect(part, &PartEllipse::rectChanged, this, &EllipseEditor::updateForm);
+            disconnectChangeConnections();
 		part = nullptr;
 		style_ -> setPart(nullptr);
 		return(true);
@@ -92,14 +105,24 @@ bool EllipseEditor::setPart(CustomElementPart *new_part)
 	{
 		if (part == part_ellipse) return true;
 		if (part)
-			disconnect(part, &PartEllipse::rectChanged, this, &EllipseEditor::updateForm);
+            disconnectChangeConnections();
 		part = part_ellipse;
 		style_ -> setPart(part);
 		updateForm();
-		connect(part, &PartEllipse::rectChanged, this, &EllipseEditor::updateForm);
+        setUpChangeConnections();
 		return(true);
 	}
 	return(false);
+}
+
+bool EllipseEditor::setParts(QList <CustomElementPart *> parts)
+{
+    if (parts.isEmpty())
+        return false;
+
+    if (!setPart(parts.first()))
+        return false;
+    return style_->setParts(parts);
 }
 
 /**
@@ -113,22 +136,100 @@ QList<CustomElementPart*> EllipseEditor::currentParts() const {
     return style_->currentParts();
 }
 
-void EllipseEditor::editingFinished()
+void EllipseEditor::editingFinishedX()
 {
-	if (m_locked) return;
-	m_locked = true;
-	QPointF point = part->mapFromScene(x->value() - h->value()/2, y->value() - v->value()/2);
-	QRectF rect(point, QSizeF(h->value(), v->value()));
+    if (m_locked) return;
+    m_locked = true;
 
-	if (rect != part->property("rect"))
-	{
-		QPropertyUndoCommand *undo= new QPropertyUndoCommand(part, "rect", part->property("rect"), rect);
-		undo->setText("Modifier une ellipse");
-		undo->enableAnimation();
-		elementScene()->undoStack().push(undo);
-	}
+    for (auto part: style_->currentParts()) {
 
-	m_locked = false;
+        PartEllipse* ell = static_cast<PartEllipse*>(part);
+        QRectF rect = ell->property("rect").toRectF();
+        QPointF point = ell->mapFromScene(x->value() - h->value()/2, y->value() - v->value()/2); // does not matter which value y is, because only the x value is used
+        rect.setX(point.x()); // change only the x value
+
+        if (rect != part->property("rect"))
+        {
+            QPropertyUndoCommand *undo= new QPropertyUndoCommand(ell, "rect", ell->property("rect"), rect);
+            undo->setText("Modifier un arc");
+            undo->enableAnimation();
+            elementScene()->undoStack().push(undo);
+        }
+    }
+
+    m_locked = false;
+}
+
+void EllipseEditor::editingFinishedY()
+{
+    if (m_locked) return;
+    m_locked = true;
+
+    for (auto part: style_->currentParts()) {
+
+        PartEllipse* ell = static_cast<PartEllipse*>(part);
+        QRectF rect = ell->property("rect").toRectF();
+
+        QPointF point = ell->mapFromScene(x->value() - h->value()/2, y->value() - v->value()/2);
+        rect.setY(point.y());
+
+        if (rect != ell->property("rect"))
+        {
+            QPropertyUndoCommand *undo= new QPropertyUndoCommand(ell, "rect", ell->property("rect"), rect);
+            undo->setText("Modifier un arc");
+            undo->enableAnimation();
+            elementScene()->undoStack().push(undo);
+        }
+
+    }
+
+    m_locked = false;
+}
+
+void EllipseEditor::editingFinishedH()
+{
+    if (m_locked) return;
+    m_locked = true;
+
+    for (auto part: style_->currentParts()) {
+
+        PartEllipse* ell = static_cast<PartEllipse*>(part);
+        QRectF rect = ell->property("rect").toRectF();
+
+        if (rect.width() != h->value())
+        {
+            rect.setWidth(h->value());
+            QPropertyUndoCommand *undo= new QPropertyUndoCommand(ell, "rect", ell->property("rect"), rect);
+            undo->setText("Modifier un arc");
+            undo->enableAnimation();
+            elementScene()->undoStack().push(undo);
+        }
+    }
+
+    m_locked = false;
+}
+
+void EllipseEditor::editingFinishedV()
+{
+    if (m_locked) return;
+    m_locked = true;
+
+    for (auto part: style_->currentParts()) {
+
+        PartEllipse* ell = static_cast<PartEllipse*>(part);
+        QRectF rect = ell->property("rect").toRectF();
+
+        if (rect.height() != v->value())
+        {
+            rect.setHeight(v->value());
+            QPropertyUndoCommand *undo= new QPropertyUndoCommand(ell, "rect", ell->property("rect"), rect);
+            undo->setText("Modifier un arc");
+            undo->enableAnimation();
+            elementScene()->undoStack().push(undo);
+        }
+    }
+
+    m_locked = false;
 }
 
 /**
@@ -154,16 +255,16 @@ void EllipseEditor::activeConnections(bool active)
 {
 	if (active)
 	{
-		connect(x, SIGNAL(editingFinished()), this, SLOT(editingFinished()));
-		connect(y, SIGNAL(editingFinished()), this, SLOT(editingFinished()));
-		connect(h, SIGNAL(editingFinished()), this, SLOT(editingFinished()));
-		connect(v, SIGNAL(editingFinished()), this, SLOT(editingFinished()));
+        connect(x, SIGNAL(editingFinished()), this, SLOT(editingFinishedX()));
+        connect(y, SIGNAL(editingFinished()), this, SLOT(editingFinishedY()));
+        connect(h, SIGNAL(editingFinished()), this, SLOT(editingFinishedH()));
+        connect(v, SIGNAL(editingFinished()), this, SLOT(editingFinishedV()));
 	}
 	else
 	{
-		disconnect(x, SIGNAL(editingFinished()), this, SLOT(editingFinished()));
-		disconnect(y, SIGNAL(editingFinished()), this, SLOT(editingFinished()));
-		disconnect(h, SIGNAL(editingFinished()), this, SLOT(editingFinished()));
-		disconnect(v, SIGNAL(editingFinished()), this, SLOT(editingFinished()));
+        disconnect(x, SIGNAL(editingFinished()), this, SLOT(editingFinishedX()));
+        disconnect(y, SIGNAL(editingFinished()), this, SLOT(editingFinishedY()));
+        disconnect(h, SIGNAL(editingFinished()), this, SLOT(editingFinishedH()));
+        disconnect(v, SIGNAL(editingFinished()), this, SLOT(editingFinishedV()));
 	}
 }

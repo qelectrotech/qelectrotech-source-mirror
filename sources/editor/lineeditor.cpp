@@ -92,6 +92,23 @@ LineEditor::LineEditor(QETElementEditor *editor, PartLine *line, QWidget *parent
 LineEditor::~LineEditor() {
 }
 
+void LineEditor::setUpChangeConnections()
+{
+    m_change_connections << connect(part, &PartLine::lineChanged, this, &LineEditor::updateForm);
+    m_change_connections << connect(part, &PartLine::firstEndTypeChanged, this, &LineEditor::updateForm);
+    m_change_connections << connect(part, &PartLine::secondEndTypeChanged, this, &LineEditor::updateForm);
+    m_change_connections << connect(part, &PartLine::firstEndLengthChanged, this, &LineEditor::updateForm);
+    m_change_connections << connect(part, &PartLine::secondEndLengthChanged, this, &LineEditor::updateForm);
+}
+
+void LineEditor::disconnectChangeConnections()
+{
+    for (QMetaObject::Connection c : m_change_connections) {
+        disconnect(c);
+    }
+    m_change_connections.clear();
+}
+
 /**
  * @brief LineEditor::setPart
  * Specifie to this editor the part to edit.
@@ -105,11 +122,7 @@ bool LineEditor::setPart(CustomElementPart *new_part)
 	{
 		if (part)
 		{
-			disconnect(part, &PartLine::lineChanged, this, &LineEditor::updateForm);
-			disconnect(part, &PartLine::firstEndTypeChanged, this, &LineEditor::updateForm);
-			disconnect(part, &PartLine::secondEndTypeChanged, this, &LineEditor::updateForm);
-			disconnect(part, &PartLine::firstEndLengthChanged, this, &LineEditor::updateForm);
-			disconnect(part, &PartLine::secondEndLengthChanged, this, &LineEditor::updateForm);
+            disconnectChangeConnections();
 		}
 		part = nullptr;
 		style_ -> setPart(nullptr);
@@ -120,23 +133,25 @@ bool LineEditor::setPart(CustomElementPart *new_part)
 		if (part == part_line) return true;
 		if (part)
 		{
-			disconnect(part, &PartLine::lineChanged, this, &LineEditor::updateForm);
-			disconnect(part, &PartLine::firstEndTypeChanged, this, &LineEditor::updateForm);
-			disconnect(part, &PartLine::secondEndTypeChanged, this, &LineEditor::updateForm);
-			disconnect(part, &PartLine::firstEndLengthChanged, this, &LineEditor::updateForm);
-			disconnect(part, &PartLine::secondEndLengthChanged, this, &LineEditor::updateForm);
+            disconnectChangeConnections();
 		}
 		part = part_line;
 		style_ -> setPart(part);
 		updateForm();
-		connect(part, &PartLine::lineChanged, this, &LineEditor::updateForm);
-		connect(part, &PartLine::firstEndTypeChanged, this, &LineEditor::updateForm);
-		connect(part, &PartLine::secondEndTypeChanged, this, &LineEditor::updateForm);
-		connect(part, &PartLine::firstEndLengthChanged, this, &LineEditor::updateForm);
-		connect(part, &PartLine::secondEndLengthChanged, this, &LineEditor::updateForm);
+        setUpChangeConnections();
 		return(true);
 	}
 	return(false);
+}
+
+bool LineEditor::setParts(QList <CustomElementPart *> parts)
+{
+    if (parts.isEmpty())
+        return false;
+
+    if (!setPart(parts.first()))
+        return false;
+    return style_->setParts(parts);
 }
 
 /**
@@ -173,12 +188,17 @@ void LineEditor::updateLineEndType1()
 	m_locked = true;
 	QVariant end = end1_type -> itemData(end1_type->currentIndex());
 
-	if (end != part->property("end1"))
-	{
-		QPropertyUndoCommand *undo = new QPropertyUndoCommand(part, "end1", part->property("end1"), end);
-		undo->setText(tr("Modifier une ligne"));
-		elementScene()->undoStack().push(undo);
-	}
+    for (auto part: style_->currentParts()) {
+
+        PartLine* line = static_cast<PartLine*>(part);
+
+        if (end != line->property("end1"))
+        {
+            QPropertyUndoCommand *undo = new QPropertyUndoCommand(line, "end1", line->property("end1"), end);
+            undo->setText(tr("Modifier une ligne"));
+            elementScene()->undoStack().push(undo);
+        }
+    }
 	m_locked = false;
 }
 
@@ -189,13 +209,18 @@ void LineEditor::updateLineEndLength1()
 	m_locked = true;
 	double length = end1_length->value();
 
-	if (length != part->property("length1"))
-	{
-		QPropertyUndoCommand *undo = new QPropertyUndoCommand(part, "length1", part->property("length1"), length);
-		undo->setText(tr("Modifier une ligne"));
-		undo->enableAnimation();
-		elementScene()->undoStack().push(undo);
-	}
+    for (auto part: style_->currentParts()) {
+
+        PartLine* line = static_cast<PartLine*>(part);
+
+        if (length != line->property("length1"))
+        {
+            QPropertyUndoCommand *undo = new QPropertyUndoCommand(line, "length1", line->property("length1"), length);
+            undo->setText(tr("Modifier une ligne"));
+            undo->enableAnimation();
+            elementScene()->undoStack().push(undo);
+        }
+    }
 	m_locked = false;
 }
 
@@ -206,12 +231,17 @@ void LineEditor::updateLineEndType2()
 	m_locked = true;
 	QVariant end = end2_type -> itemData(end2_type->currentIndex());
 
-	if (end != part->property("end2"))
-	{
-		QPropertyUndoCommand *undo = new QPropertyUndoCommand(part, "end2", part->property("end2"), end);
-		undo->setText(tr("Modifier une ligne"));
-		elementScene()->undoStack().push(undo);
-	}
+    for (auto part: style_->currentParts()) {
+
+        PartLine* line = static_cast<PartLine*>(part);
+
+        if (end != line->property("end2"))
+        {
+            QPropertyUndoCommand *undo = new QPropertyUndoCommand(line, "end2", line->property("end2"), end);
+            undo->setText(tr("Modifier une ligne"));
+            elementScene()->undoStack().push(undo);
+        }
+    }
 	m_locked = false;
 }
 
@@ -222,30 +252,119 @@ void LineEditor::updateLineEndLength2()
 	m_locked = true;
 	double length = end2_length->value();
 
-	if (length != part->property("length2"))
-	{
-		QPropertyUndoCommand *undo = new QPropertyUndoCommand(part, "length2", part->property("length2"), length);
-		undo->setText(tr("Modifier une ligne"));
-		undo->enableAnimation();
-		elementScene()->undoStack().push(undo);
-	}
+    for (auto part: style_->currentParts()) {
+
+        PartLine* line = static_cast<PartLine*>(part);
+
+        if (length != line->property("length2"))
+        {
+            QPropertyUndoCommand *undo = new QPropertyUndoCommand(line, "length2", line->property("length2"), length);
+            undo->setText(tr("Modifier une ligne"));
+            undo->enableAnimation();
+            elementScene()->undoStack().push(undo);
+        }
+    }
 	m_locked = false;
 }
 
-void LineEditor::lineEditingFinished()
+void LineEditor::lineEditingFinishedX1()
 {
 	if (m_locked) return;
 	m_locked = true;
-	QLineF line (editedP1(), editedP2());
 
-	if (line != part->property("line"))
-	{
-		QPropertyUndoCommand *undo = new QPropertyUndoCommand(part, "line", part->property("line"), line);
-		undo->setText(tr("Modifier une ligne"));
-		undo->enableAnimation();
-		elementScene()->undoStack().push(undo);
-	}
+    for (auto part: style_->currentParts()) {
+
+        PartLine* l = static_cast<PartLine*>(part);
+        QLineF line = l->property("line").toLineF();
+
+        QPointF p1 = l->mapFromScene(x1->value(), y1->value());
+
+        if (p1.x() != line.p1().x())
+        {
+            p1.setY(line.p1().y()); // restore old y value
+            line.setP1(p1);
+            QPropertyUndoCommand *undo = new QPropertyUndoCommand(l, "line", l->property("line"), line);
+            undo->setText(tr("Modifier une ligne"));
+            undo->enableAnimation();
+            elementScene()->undoStack().push(undo);
+        }
+    }
 	m_locked = false;
+}
+
+void LineEditor::lineEditingFinishedY1()
+{
+    if (m_locked) return;
+    m_locked = true;
+
+    for (auto part: style_->currentParts()) {
+
+        PartLine* l = static_cast<PartLine*>(part);
+        QLineF line = l->property("line").toLineF();
+
+        QPointF p1 = l->mapFromScene(x1->value(), y1->value());
+
+        if (p1.y() != line.p1().y())
+        {
+            p1.setX(line.p1().x()); // restore old x value
+            line.setP1(p1);
+            QPropertyUndoCommand *undo = new QPropertyUndoCommand(l, "line", l->property("line"), line);
+            undo->setText(tr("Modifier une ligne"));
+            undo->enableAnimation();
+            elementScene()->undoStack().push(undo);
+        }
+    }
+    m_locked = false;
+}
+
+void LineEditor::lineEditingFinishedX2()
+{
+    if (m_locked) return;
+    m_locked = true;
+
+    for (auto part: style_->currentParts()) {
+
+        PartLine* l = static_cast<PartLine*>(part);
+        QLineF line = l->property("line").toLineF();
+
+        QPointF p2 = l->mapFromScene(x2->value(), y2->value());
+
+        if (p2.x() != line.p1().x())
+        {
+            p2.setY(line.p2().y()); // restore old y value
+            line.setP2(p2);
+            QPropertyUndoCommand *undo = new QPropertyUndoCommand(l, "line", l->property("line"), line);
+            undo->setText(tr("Modifier une ligne"));
+            undo->enableAnimation();
+            elementScene()->undoStack().push(undo);
+        }
+    }
+    m_locked = false;
+}
+
+void LineEditor::lineEditingFinishedY2()
+{
+    if (m_locked) return;
+    m_locked = true;
+
+    for (auto part: style_->currentParts()) {
+
+        PartLine* l = static_cast<PartLine*>(part);
+        QLineF line = l->property("line").toLineF();
+
+        QPointF p2 = l->mapFromScene(x2->value(), y2->value());
+
+        if (p2.y() != line.p1().y())
+        {
+            p2.setX(line.p2().x()); // restore old y value
+            line.setP2(p2);
+            QPropertyUndoCommand *undo = new QPropertyUndoCommand(l, "line", l->property("line"), line);
+            undo->setText(tr("Modifier une ligne"));
+            undo->enableAnimation();
+            elementScene()->undoStack().push(undo);
+        }
+    }
+    m_locked = false;
 }
 
 /**
@@ -279,10 +398,10 @@ void LineEditor::activeConnections(bool active)
 {
 	if (active)
 	{
-		connect(x1, SIGNAL(editingFinished()), this, SLOT(lineEditingFinished()));
-		connect(y1, SIGNAL(editingFinished()), this, SLOT(lineEditingFinished()));
-		connect(x2, SIGNAL(editingFinished()), this, SLOT(lineEditingFinished()));
-		connect(y2, SIGNAL(editingFinished()), this, SLOT(lineEditingFinished()));
+        connect(x1, SIGNAL(editingFinished()), this, SLOT(lineEditingFinishedX1()));
+        connect(y1, SIGNAL(editingFinished()), this, SLOT(lineEditingFinishedY1()));
+        connect(x2, SIGNAL(editingFinished()), this, SLOT(lineEditingFinishedX2()));
+        connect(y2, SIGNAL(editingFinished()), this, SLOT(lineEditingFinishedY2()));
 		connect(end1_type,   SIGNAL(currentIndexChanged(int)), this, SLOT(updateLineEndType1()));
 		connect(end1_length, SIGNAL(editingFinished()),        this, SLOT(updateLineEndLength1()));
 		connect(end2_type,   SIGNAL(currentIndexChanged(int)), this, SLOT(updateLineEndType2()));
@@ -290,10 +409,10 @@ void LineEditor::activeConnections(bool active)
 	}
 	else
 	{
-		disconnect(x1, SIGNAL(editingFinished()), this, SLOT(lineEditingFinished()));
-		disconnect(y1, SIGNAL(editingFinished()), this, SLOT(lineEditingFinished()));
-		disconnect(x2, SIGNAL(editingFinished()), this, SLOT(lineEditingFinished()));
-		disconnect(y2, SIGNAL(editingFinished()), this, SLOT(lineEditingFinished()));
+        disconnect(x1, SIGNAL(editingFinished()), this, SLOT(lineEditingFinishedX1()));
+        disconnect(y1, SIGNAL(editingFinished()), this, SLOT(lineEditingFinishedY1()));
+        disconnect(x2, SIGNAL(editingFinished()), this, SLOT(lineEditingFinishedX2()));
+        disconnect(y2, SIGNAL(editingFinished()), this, SLOT(lineEditingFinishedY2()));
 		disconnect(end1_type,   SIGNAL(currentIndexChanged(int)), this, SLOT(updateLineEndType1()));
 		disconnect(end1_length, SIGNAL(editingFinished()),        this, SLOT(updateLineEndLength1()));
 		disconnect(end2_type,   SIGNAL(currentIndexChanged(int)), this, SLOT(updateLineEndType2()));
