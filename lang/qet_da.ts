@@ -1027,7 +1027,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="175"/>
         <source>Couleur du texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst farve</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="307"/>
@@ -4944,12 +4944,12 @@ Følgende variabler er ikke kompatible:
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="341"/>
         <source>Position</source>
-        <translation type="unfinished">Placering</translation>
+        <translation>Placering</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="343"/>
         <source>Position du folio</source>
-        <translation type="unfinished">Ark placering</translation>
+        <translation>Ark placering</translation>
     </message>
 </context>
 <context>
@@ -4957,17 +4957,17 @@ Følgende variabler er ikke kompatible:
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="20"/>
         <source>Requête</source>
-        <translation type="unfinished">Forespørgsel</translation>
+        <translation>Forespørgsel</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="31"/>
         <source>Recharger</source>
-        <translation type="unfinished">Genindlæs</translation>
+        <translation>Genindlæs</translation>
     </message>
 </context>
 <context>
@@ -5194,7 +5194,7 @@ Sletningen kan ikke fortrydes.</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="442"/>
         <source>Position</source>
-        <translation type="unfinished">Placering</translation>
+        <translation>Placering</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1661"/>
@@ -5426,7 +5426,7 @@ Kommandovalg:
     <message>
         <location filename="../sources/qetapp.cpp" line="440"/>
         <source>Indice de révision</source>
-        <translation type="unfinished">Revision indeks</translation>
+        <translation>Revision indeks</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="453"/>
@@ -8983,7 +8983,7 @@ Voulez-vous la remplacer ?</source>
         <location filename="../sources/qetdiagrameditor.cpp" line="2341"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="2372"/>
         <source>Error launching qet_tb_generator plugin</source>
-        <translation type="unfinished">Fejl ved start qet_tb_generator udvidelsesmodul</translation>
+        <translation>Fejl ved opstart af qet_tb_generator udvidelsesmodul</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2342"/>
@@ -9003,7 +9003,7 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="61"/>
         <source>Ajouter un sommaire</source>
-        <translation type="unfinished">Tilføj oversigt</translation>
+        <translation>Tilføj oversigt</translation>
     </message>
 </context>
 <context>
@@ -10303,7 +10303,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="66"/>
         <source>Red : DarkRed</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Rød : Mørkerød</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="67"/>
@@ -10351,7 +10351,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="74"/>
         <source>Yellow : LightYellow</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Gyl : Lysegul</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="75"/>
@@ -10405,7 +10405,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="83"/>
         <source>Yellow : Gold</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Gul : Guld</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="84"/>
@@ -10531,7 +10531,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="104"/>
         <source>Green : YellowGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Grøn : Gulgrøn</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="105"/>
@@ -10579,7 +10579,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="112"/>
         <source>Green : LightGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Grøn : Lysegrøn</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="113"/>
@@ -10645,7 +10645,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="123"/>
         <source>Cyan : LightCyan</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Turkis : Lysturkis</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="124"/>
@@ -10717,13 +10717,13 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="135"/>
         <source>Blue : LightBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Blå : Lyseblå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="136"/>
         <source>Blue : SkyBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Blå : Himmelblå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="137"/>
@@ -12125,32 +12125,32 @@ De andre felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="38"/>
         <source>Informations disponibles</source>
-        <translation type="unfinished">Information tilgængelig</translation>
+        <translation>Information tilgængelig</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="51"/>
         <source>Information à afficher</source>
-        <translation type="unfinished"></translation>
+        <translation>Vise information</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="145"/>
         <source>Configuration</source>
-        <translation type="unfinished">Opsætning</translation>
+        <translation>Opsætning</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="161"/>
         <source>Requête SQL :</source>
-        <translation type="unfinished">SQL forespørgsel:</translation>
+        <translation>SQL forespørgsel:</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.cpp" line="130"/>
         <source>Position</source>
-        <translation type="unfinished">Placering</translation>
+        <translation>Placering</translation>
     </message>
 </context>
 <context>
