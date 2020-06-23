@@ -972,7 +972,7 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="175"/>
         <source>Couleur du texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Szöveg színe</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="268"/>
@@ -4949,12 +4949,12 @@ Az összeférhetetlen változók a következők:
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="341"/>
         <source>Position</source>
-        <translation type="unfinished">Pozíció</translation>
+        <translation>Pozíció</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="343"/>
         <source>Position du folio</source>
-        <translation type="unfinished">Tervlap pozíció</translation>
+        <translation>Tervlap pozíció</translation>
     </message>
 </context>
 <context>
@@ -4962,17 +4962,17 @@ Az összeférhetetlen változók a következők:
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Űrlap</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="20"/>
         <source>Requête</source>
-        <translation type="unfinished">Igénylés</translation>
+        <translation>Igénylés</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="31"/>
         <source>Recharger</source>
-        <translation type="unfinished">Újratöltés</translation>
+        <translation>Újratöltés</translation>
     </message>
 </context>
 <context>
@@ -5264,7 +5264,7 @@ Akarod menteni a változásokat?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="440"/>
         <source>Indice de révision</source>
-        <translation type="unfinished">Revízió jezése</translation>
+        <translation>Revízió jezése</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="441"/>
@@ -5274,7 +5274,7 @@ Akarod menteni a változásokat?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="442"/>
         <source>Position</source>
-        <translation type="unfinished">Pozíció</translation>
+        <translation>Pozíció</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="453"/>
@@ -8970,7 +8970,7 @@ Cserélni akarod?</translation>
         <location filename="../sources/qetdiagrameditor.cpp" line="2341"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="2372"/>
         <source>Error launching qet_tb_generator plugin</source>
-        <translation type="unfinished">Hiba a qet_tb_generator beépülő modul indítással</translation>
+        <translation>Hiba a qet_tb_generator beépülő modul indítással</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2342"/>
@@ -8990,7 +8990,7 @@ Cserélni akarod?</translation>
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="61"/>
         <source>Ajouter un sommaire</source>
-        <translation type="unfinished">Összesítés hozzáadása</translation>
+        <translation>Összesítés hozzáadása</translation>
     </message>
 </context>
 <context>
@@ -12108,32 +12108,32 @@ A többi mező nincs használva.</translation>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Űrlap</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="38"/>
         <source>Informations disponibles</source>
-        <translation type="unfinished">Elérhető információ</translation>
+        <translation>Elérhető információ</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="51"/>
         <source>Information à afficher</source>
-        <translation type="unfinished"></translation>
+        <translation>Információ kijelzése</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="145"/>
         <source>Configuration</source>
-        <translation type="unfinished">Konfiguráció</translation>
+        <translation>Konfiguráció</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="161"/>
         <source>Requête SQL :</source>
-        <translation type="unfinished">SQL igénylés  :</translation>
+        <translation>SQL igénylés  :</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.cpp" line="130"/>
         <source>Position</source>
-        <translation type="unfinished">Pozíció</translation>
+        <translation>Pozíció</translation>
     </message>
 </context>
 <context>
