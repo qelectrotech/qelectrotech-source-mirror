@@ -327,35 +327,36 @@ QString ElementQueryWidget::queryStr() const
 	QString from = " FROM element_nomenclature_view";
 
 	QString where;
-	if (ui->m_all_cb->checkState() == Qt::PartiallyChecked)
-	{
-		where = " WHERE (";
-		bool b = false;
-		if (ui->m_terminal_cb->isChecked()) {
-			if (b) where +=" OR";
-			where += " element_type = 'Terminale'";
-			b = true;
-		}
-		if (ui->m_simple_cb->isChecked()) {
-			if (b) where +=" OR";
-			where += " element_type = 'Simple'";
-			b = true;
-		}
-		if (ui->m_button_cb->isChecked())     {
-			if (b) where +=" OR";
-			where += " element_sub_type = 'commutator'";
-			b = true;
-		}
-		if (ui->m_coil_cb->isChecked()) {
-			if (b) where +=" OR";
-			where += " element_sub_type = 'coil'";
-			b = true;
-		}
-		if (ui->m_protection_cb->isChecked()) {
-			if (b) where +=" OR";
-			where += " element_sub_type = 'protection'";
-		}
-		where.append(")");
+	where = " WHERE (";
+	bool b = false;
+	if (ui->m_terminal_cb->isChecked()) {
+		if (b) where +=" OR";
+		where += " element_type = 'Terminale'";
+		b = true;
+	}
+	if (ui->m_simple_cb->isChecked()) {
+		if (b) where +=" OR";
+		where += " element_type = 'Simple'";
+		b = true;
+	}
+	if (ui->m_button_cb->isChecked())     {
+		if (b) where +=" OR";
+		where += " element_sub_type = 'commutator'";
+		b = true;
+	}
+	if (ui->m_coil_cb->isChecked()) {
+		if (b) where +=" OR";
+		where += " element_sub_type = 'coil'";
+		b = true;
+	}
+	if (ui->m_protection_cb->isChecked()) {
+		if (b) where +=" OR";
+		where += " element_sub_type = 'protection'";
+	}
+	where.append(")");
+
+	if (where == " WHERE ()") {
+		where.clear();
 	}
 
 	if (where.isEmpty() && !filter_.isEmpty()) {
