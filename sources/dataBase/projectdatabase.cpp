@@ -24,6 +24,8 @@
 #include "diagramposition.h"
 
 #include <QSqlError>
+#include <QSqlDriver>
+#include <sqlite3.h>
 
 /**
  * @brief projectDataBase::projectDataBase
@@ -36,13 +38,6 @@ projectDataBase::projectDataBase(QETProject *project, QObject *parent) :
 	m_project(project)
 {
 	createDataBase();
-}
-
-projectDataBase::projectDataBase(QETProject *project, const QString &connection_name, const QString &path, QObject *parent) :
-	QObject(parent),
-	m_project(project)
-{
-	createDataBase(connection_name, path);
 }
 
 /**
@@ -91,93 +86,81 @@ QSqlQuery projectDataBase::newQuery(const QString &query) {
  * Create the data base
  * @return : true if the data base was successfully created.
  */
-bool projectDataBase::createDataBase(const QString &connection_name, const QString &name)
+bool projectDataBase::createDataBase()
 {
+	m_data_base = QSqlDatabase::addDatabase("QSQLITE", "qet_project_db_" + m_project->uuid().toString());
+	if(!m_data_base.open()) {
+		m_data_base.close();
+		return false;
+	}
 
-	QString connect_name = connection_name;
-	if (connect_name.isEmpty()) {
-		connect_name = "qet_project_db_" + m_project->uuid().toString();
+	m_data_base.exec("PRAGMA temp_store = MEMORY");
+	m_data_base.exec("PRAGMA journal_mode = MEMORY");
+	m_data_base.exec("PRAGMA synchronous = OFF");
+
+	QSqlQuery query_(m_data_base);
+	bool first_ = true;
+
+	//Create diagram table
+	QString diagram_table("CREATE TABLE diagram ("
+						  "uuid VARCHAR(50) PRIMARY KEY NOT NULL,"
+						  "pos INTEGER)");
+	if (!query_.exec(diagram_table)) {
+		qDebug() << "diagram_table query : "<< query_.lastError();
 	}
-	if (m_data_base.connectionNames().contains(connect_name)) {
-		m_data_base = QSqlDatabase::database(connect_name);
+
+	//Create the table element
+	QString element_table("CREATE TABLE element"
+						  "( "
+						  "uuid VARCHAR(50) PRIMARY KEY NOT NULL, "
+						  "diagram_uuid VARCHAR(50) NOT NULL,"
+						  "pos VARCHAR(6) NOT NULL,"
+						  "type VARCHAR(50),"
+						  "sub_type VARCHAR(50),"
+						  "FOREIGN KEY (diagram_uuid) REFERENCES diagram (uuid)"
+						  ")");
+	if (!query_.exec(element_table)) {
+		qDebug() <<" element_table query : "<< query_.lastError();
 	}
-	else
+
+	//Create the diagram info table
+	QString diagram_info_table("CREATE TABLE diagram_info (diagram_uuid VARCHAR(50) PRIMARY KEY NOT NULL, ");
+	first_ = true;
+	for (auto string : QETApp::diagramInfoKeys())
 	{
-		m_data_base = QSqlDatabase::addDatabase("QSQLITE", connect_name);
-		m_data_base.setDatabaseName(name);
-		if(!m_data_base.open()) {
-			m_data_base.close();
-			return false;
+		if (first_) {
+			first_ = false;
+		} else {
+			diagram_info_table += ", ";
 		}
-
-		m_data_base.exec("PRAGMA temp_store = MEMORY");
-		m_data_base.exec("PRAGMA journal_mode = MEMORY");
-		m_data_base.exec("PRAGMA synchronous = OFF");
-
-		QSqlQuery query_(m_data_base);
-		bool first_ = true;
-
-			//Create diagram table
-		QString diagram_table("CREATE TABLE diagram ("
-							  "uuid VARCHAR(50) PRIMARY KEY NOT NULL,"
-							  "pos INTEGER)");
-		if (!query_.exec(diagram_table)) {
-			qDebug() << "diagram_table query : "<< query_.lastError();
-		}
-
-			//Create the table element
-		QString element_table("CREATE TABLE element"
-									"( "
-									"uuid VARCHAR(50) PRIMARY KEY NOT NULL, "
-									"diagram_uuid VARCHAR(50) NOT NULL,"
-									"pos VARCHAR(6) NOT NULL,"
-									"type VARCHAR(50),"
-									"sub_type VARCHAR(50),"
-									"FOREIGN KEY (diagram_uuid) REFERENCES diagram (uuid)"
-									")");
-		if (!query_.exec(element_table)) {
-			qDebug() <<" element_table query : "<< query_.lastError();
-		}
-
-			//Create the diagram info table
-		QString diagram_info_table("CREATE TABLE diagram_info (diagram_uuid VARCHAR(50) PRIMARY KEY NOT NULL, ");
-		first_ = true;
-		for (auto string : QETApp::diagramInfoKeys())
-		{
-			if (first_) {
-				first_ = false;
-			} else {
-				diagram_info_table += ", ";
-			}
-			diagram_info_table += string += string=="date" ? " DATE" : " VARCHAR(100)";
-		}
-		diagram_info_table += ", FOREIGN KEY (diagram_uuid) REFERENCES diagram (uuid))";
-		if (!query_.exec(diagram_info_table)) {
-			qDebug() << "diagram_info_table query : " << query_.lastError();
-		}
-
-			//Create the element info table
-		QString element_info_table("CREATE TABLE element_info(element_uuid VARCHAR(50) PRIMARY KEY NOT NULL,");
-		first_=true;
-		for (auto string : QETApp::elementInfoKeys())
-		{
-			if (first_) {
-				first_ = false;
-			} else {
-				element_info_table += ",";
-			}
-
-			element_info_table += string += " VARCHAR(100)";
-		}
-		element_info_table += ", FOREIGN KEY (element_uuid) REFERENCES element (uuid));";
-
-		if (!query_.exec(element_info_table)) {
-			qDebug() << " element_info_table query : " << query_.lastError();
-		}
-
-		createElementNomenclatureView();
-		createSummaryView();
+		diagram_info_table += string += string=="date" ? " DATE" : " VARCHAR(100)";
 	}
+	diagram_info_table += ", FOREIGN KEY (diagram_uuid) REFERENCES diagram (uuid))";
+	if (!query_.exec(diagram_info_table)) {
+		qDebug() << "diagram_info_table query : " << query_.lastError();
+	}
+
+	//Create the element info table
+	QString element_info_table("CREATE TABLE element_info(element_uuid VARCHAR(50) PRIMARY KEY NOT NULL,");
+	first_=true;
+	for (auto string : QETApp::elementInfoKeys())
+	{
+		if (first_) {
+			first_ = false;
+		} else {
+			element_info_table += ",";
+		}
+
+		element_info_table += string += " VARCHAR(100)";
+	}
+	element_info_table += ", FOREIGN KEY (element_uuid) REFERENCES element (uuid));";
+
+	if (!query_.exec(element_info_table)) {
+		qDebug() << " element_info_table query : " << query_.lastError();
+	}
+
+	createElementNomenclatureView();
+	createSummaryView();
 
 	updateDB();
 	return true;
@@ -432,8 +415,38 @@ void projectDataBase::exportDb(projectDataBase *db, QWidget *parent, const QStri
 		return;
 	}
 
-		//Database is filled at creation, work is done.
 	QString connection_name("export_project_db_" + db->project()->uuid().toString());
-	projectDataBase file_db(db->project(), connection_name, path_);
+
+	if (true) //Enter in a scope only to nicely use QSqlDatabase::removeDatabase just after the end of the scope
+	{
+		auto file_db = QSqlDatabase::addDatabase("QSQLITE", connection_name);
+		file_db.setDatabaseName(path_);
+		if (!file_db.open()) {
+			return;
+		}
+
+		auto memory_db_handle = sqliteHandle(&db->m_data_base);
+		auto file_db_handle = sqliteHandle(&file_db);
+
+		auto sqlite_backup = sqlite3_backup_init(file_db_handle, "main", memory_db_handle, "main");
+		if (sqlite_backup)
+		{
+			sqlite3_backup_step(sqlite_backup, -1);
+			sqlite3_backup_finish(sqlite_backup);
+		}
+		file_db.close();
+	}
 	QSqlDatabase::removeDatabase(connection_name);
+}
+
+sqlite3 *projectDataBase::sqliteHandle(QSqlDatabase *db)
+{
+	sqlite3 *handle = nullptr;
+
+	QVariant v = db->driver()->handle();
+	if (v.isValid() && qstrcmp(v.typeName(), "sqlite3*") == 0) {
+		handle = *static_cast<sqlite3 **>(v.data());
+	}
+
+	return handle;
 }

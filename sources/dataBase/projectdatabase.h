@@ -26,6 +26,7 @@
 
 class Element;
 class QETProject;
+class sqlite3;
 
 /**
  * @brief The projectDataBase class
@@ -40,9 +41,6 @@ class projectDataBase : public QObject
 
 	public:
 		projectDataBase(QETProject *project, QObject *parent = nullptr);
-	private:
-		projectDataBase(QETProject *project, const QString &connection_name, const QString &path, QObject *parent = nullptr);
-	public:
 		virtual ~projectDataBase() override;
 
 		void updateDB();
@@ -53,7 +51,7 @@ class projectDataBase : public QObject
 		void dataBaseUpdated();
 
 	private:
-		bool createDataBase(const QString &connection_name= QString(), const QString &name = QString());
+		bool createDataBase();
 		void createElementNomenclatureView();
 		void createSummaryView();
 		void populateDiagramTable();
@@ -61,6 +59,7 @@ class projectDataBase : public QObject
 		void populateElementInfoTable();
 		void populateDiagramInfoTable();
 		static QHash<QString, QString> elementInfoToString(Element *elmt);
+		static sqlite3 *sqliteHandle(QSqlDatabase *db);
 
 	private:
 		QPointer<QETProject> m_project;
