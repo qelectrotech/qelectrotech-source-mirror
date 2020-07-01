@@ -87,6 +87,69 @@ QSqlQuery projectDataBase::newQuery(const QString &query) {
 }
 
 /**
+ * @brief projectDataBase::addElement
+ * @param element
+ */
+void projectDataBase::addElement(Element *element)
+{
+	m_insert_elements_query.bindValue(":uuid", element->uuid().toString());
+	m_insert_elements_query.bindValue(":diagram_uuid", element->diagram()->uuid().toString());
+	m_insert_elements_query.bindValue(":pos", element->diagram()->convertPosition(element->scenePos()).toString());
+	m_insert_elements_query.bindValue(":type", element->linkTypeToString());
+	m_insert_elements_query.bindValue(":sub_type", element->kindInformations()["type"].toString());
+	if (!m_insert_elements_query.exec()) {
+		qDebug() << "projectDataBase::addElement insert element error : " << m_insert_elements_query.lastError();
+	}
+
+	m_insert_element_info_query.bindValue(":uuid", element->uuid().toString());
+	auto hash = elementInfoToString(element);
+	for (auto key : hash.keys())
+	{
+		QString value = hash.value(key);
+		QString bind = key.prepend(":");
+		m_insert_element_info_query.bindValue(bind, value);
+	}
+
+	if (!m_insert_element_info_query.exec()) {
+		qDebug() << "projectDataBase::addElement insert element info error : " << m_insert_element_info_query.lastError();
+	} else {
+		emit dataBaseUpdated();
+	}
+}
+
+/**
+ * @brief projectDataBase::removeElement
+ * @param element
+ */
+void projectDataBase::removeElement(Element *element)
+{
+	m_remove_element_query.bindValue(":uuid", element->uuid().toString());
+	if(!m_remove_element_query.exec()) {
+		qDebug() << "projectDataBase::removeElement remove error : " << m_remove_element_query.lastError();
+	} else {
+		emit dataBaseUpdated();
+	}
+}
+
+/**
+ * @brief projectDataBase::elementInfoChanged
+ * @param element
+ */
+void projectDataBase::elementInfoChanged(Element *element)
+{
+	auto hash = elementInfoToString(element);
+	for (auto str : QETApp::elementInfoKeys()) {
+		m_update_element_query.bindValue(":" + str, hash.value(str));
+	}
+	m_update_element_query.bindValue(":uuid", element->uuid().toString());
+	if (!m_update_element_query.exec()) {
+		qDebug() << "projectDataBase::elementInfoChanged update error : " << m_update_element_query.lastError();
+	} else {
+		emit dataBaseUpdated();
+	}
+}
+
+/**
  * @brief projectDataBase::createDataBase
  * Create the data base
  * @return : true if the data base was successfully created.
@@ -113,6 +176,7 @@ bool projectDataBase::createDataBase(const QString &connection_name, const QStri
 		m_data_base.exec("PRAGMA temp_store = MEMORY");
 		m_data_base.exec("PRAGMA journal_mode = MEMORY");
 		m_data_base.exec("PRAGMA synchronous = OFF");
+		m_data_base.exec("PRAGMA foreign_keys = ON");
 
 		QSqlQuery query_(m_data_base);
 		bool first_ = true;
@@ -133,7 +197,7 @@ bool projectDataBase::createDataBase(const QString &connection_name, const QStri
 									"pos VARCHAR(6) NOT NULL,"
 									"type VARCHAR(50),"
 									"sub_type VARCHAR(50),"
-									"FOREIGN KEY (diagram_uuid) REFERENCES diagram (uuid)"
+									"FOREIGN KEY (diagram_uuid) REFERENCES diagram (uuid) ON DELETE CASCADE"
 									")");
 		if (!query_.exec(element_table)) {
 			qDebug() <<" element_table query : "<< query_.lastError();
@@ -151,7 +215,7 @@ bool projectDataBase::createDataBase(const QString &connection_name, const QStri
 			}
 			diagram_info_table += string += string=="date" ? " DATE" : " VARCHAR(100)";
 		}
-		diagram_info_table += ", FOREIGN KEY (diagram_uuid) REFERENCES diagram (uuid))";
+		diagram_info_table += ", FOREIGN KEY (diagram_uuid) REFERENCES diagram (uuid) ON DELETE CASCADE)";
 		if (!query_.exec(diagram_info_table)) {
 			qDebug() << "diagram_info_table query : " << query_.lastError();
 		}
@@ -169,7 +233,7 @@ bool projectDataBase::createDataBase(const QString &connection_name, const QStri
 
 			element_info_table += string += " VARCHAR(100)";
 		}
-		element_info_table += ", FOREIGN KEY (element_uuid) REFERENCES element (uuid));";
+		element_info_table += ", FOREIGN KEY (element_uuid) REFERENCES element (uuid) ON DELETE CASCADE);";
 
 		if (!query_.exec(element_info_table)) {
 			qDebug() << " element_info_table query : " << query_.lastError();
@@ -179,6 +243,7 @@ bool projectDataBase::createDataBase(const QString &connection_name, const QStri
 		createSummaryView();
 	}
 
+	prepareQuery();
 	updateDB();
 	return true;
 }
@@ -269,9 +334,6 @@ void projectDataBase::populateElementTable()
 	QSqlQuery query_(m_data_base);
 	query_.exec("DELETE FROM element");
 
-	QString insert_("INSERT INTO element (uuid, diagram_uuid, pos, type, sub_type) VALUES (:uuid, :diagram_uuid, :pos, :type, :sub_type)");
-	query_.prepare(insert_);
-
 	for (auto diagram : m_project->diagrams())
 	{
 		ElementProvider ep(diagram);
@@ -279,13 +341,13 @@ void projectDataBase::populateElementTable()
 			//Insert all value into the database
 		for (auto elmt : elements_list)
 		{
-			query_.bindValue(":uuid", elmt->uuid().toString());
-			query_.bindValue(":diagram_uuid", diagram->uuid().toString());
-			query_.bindValue(":pos", diagram->convertPosition(elmt->scenePos()).toString());
-			query_.bindValue(":type", elmt->linkTypeToString());
-			query_.bindValue(":sub_type", elmt->kindInformations()["type"].toString());
-			if (!query_.exec()) {
-				qDebug() << "projectDataBase::populateElementTable insert error : " << query_.lastError();
+			m_insert_elements_query.bindValue(":uuid", elmt->uuid().toString());
+			m_insert_elements_query.bindValue(":diagram_uuid", diagram->uuid().toString());
+			m_insert_elements_query.bindValue(":pos", diagram->convertPosition(elmt->scenePos()).toString());
+			m_insert_elements_query.bindValue(":type", elmt->linkTypeToString());
+			m_insert_elements_query.bindValue(":sub_type", elmt->kindInformations()["type"].toString());
+			if (!m_insert_elements_query.exec()) {
+				qDebug() << "projectDataBase::populateElementTable insert error : " << m_insert_elements_query.lastError();
 			}
 		}
 	}
@@ -300,20 +362,6 @@ void projectDataBase::populateElementInfoTable()
 	QSqlQuery query(m_data_base);
 	query.exec("DELETE FROM element_info");
 
-
-		//Prepare the query used for insert new record
-	QStringList bind_values;
-	for (auto key : QETApp::elementInfoKeys()) {
-		bind_values << key.prepend(":");
-	}
-	QString insert("INSERT INTO element_info (element_uuid," +
-				   QETApp::elementInfoKeys().join(", ") +
-				   ") VALUES (:uuid," +
-				   bind_values.join(", ") +
-				   ")");
-
-	query.prepare(insert);
-
 	for (auto *diagram : m_project->diagrams())
 	{
 		ElementProvider ep(diagram);
@@ -322,17 +370,17 @@ void projectDataBase::populateElementInfoTable()
 			//Insert all value into the database
 		for (auto elmt : elements_list)
 		{
-			query.bindValue(":uuid", elmt->uuid().toString());
+			m_insert_element_info_query.bindValue(":uuid", elmt->uuid().toString());
 			auto hash = elementInfoToString(elmt);
 			for (auto key : hash.keys())
 			{
 				QString value = hash.value(key);
 				QString bind = key.prepend(":");
-				query.bindValue(bind, value);
+				m_insert_element_info_query.bindValue(bind, value);
 			}
 
-			if (!query.exec()) {
-				qDebug() << "projectDataBase::populateElementInfoTable insert error : " << query.lastError();
+			if (!m_insert_element_info_query.exec()) {
+				qDebug() << "projectDataBase::populateElementInfoTable insert error : " << m_insert_element_info_query.lastError();
 			}
 		}
 	}
@@ -376,6 +424,43 @@ void projectDataBase::populateDiagramInfoTable()
 			qDebug() << "projectDataBase::populateDiagramInfoTable insert error : " << query.lastError();
 		}
 	}
+}
+
+void projectDataBase::prepareQuery()
+{
+		//INSERT ELEMENT
+	QString insert_element_query("INSERT INTO element (uuid, diagram_uuid, pos, type, sub_type) VALUES (:uuid, :diagram_uuid, :pos, :type, :sub_type)");
+	m_insert_elements_query = QSqlQuery(m_data_base);
+	m_insert_elements_query.prepare(insert_element_query);
+
+
+		//INSERT ELEMENT INFO
+	QStringList bind_values;
+	for (auto key : QETApp::elementInfoKeys()) {
+		bind_values << key.prepend(":");
+	}
+	QString insert_element_info("INSERT INTO element_info (element_uuid," +
+				   QETApp::elementInfoKeys().join(", ") +
+				   ") VALUES (:uuid," +
+				   bind_values.join(", ") +
+				   ")");
+	m_insert_element_info_query = QSqlQuery(m_data_base);
+	m_insert_element_info_query.prepare(insert_element_info);
+
+		//REMOVE ELEMENT
+	QString remove_element("DELETE FROM element WHERE uuid=:uuid");
+	m_remove_element_query = QSqlQuery(m_data_base);
+	m_remove_element_query.prepare(remove_element);
+
+		//UPDATE ELEMENT INFO
+	QString update_str("UPDATE element_info SET ");
+	for (auto string : QETApp::elementInfoKeys()) {
+		update_str.append(string + " = :" + string + ", ");
+	}
+	update_str.remove(update_str.length()-2, 2); //Remove the last ", "
+	update_str.append(" WHERE element_uuid = :uuid");
+	m_update_element_query = QSqlQuery(m_data_base);
+	m_update_element_query.prepare(update_str);
 }
 
 /**

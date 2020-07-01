@@ -72,10 +72,8 @@ void QetGraphicsTableFactory::create(Diagram *diagram, AddTableDialog *dialog)
 		QetGraphicsTableItem::adjustTableToFolio(table_);
 	}
 
-
 		//Add new table if needed and option checked
 	dialog->addNewTableToNewDiagram();
-	qDebug() << "model " << table_->model();
 	table_->model()->rowCount();
 	table_->displayNRow();
 	if (dialog->addNewTableToNewDiagram() && table_->model()->rowCount() > table_->displayNRow())

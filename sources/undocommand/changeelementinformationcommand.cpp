@@ -64,6 +64,6 @@ void ChangeElementInformationCommand::redo() {
 void ChangeElementInformationCommand::updateProjectDB()
 {
 	if(m_element->diagram()) {
-		m_element->diagram()->project()->dataBase()->updateDB();
+		m_element->diagram()->project()->dataBase()->elementInfoChanged(m_element);
 	}
 }

@@ -48,6 +48,9 @@ class projectDataBase : public QObject
 		void updateDB();
 		QETProject *project() const;
 		QSqlQuery newQuery(const QString &query = QString());
+		void addElement(Element *element);
+		void removeElement(Element *element);
+		void elementInfoChanged(Element *element);
 
 	signals:
 		void dataBaseUpdated();
@@ -60,12 +63,16 @@ class projectDataBase : public QObject
 		void populateElementTable();
 		void populateElementInfoTable();
 		void populateDiagramInfoTable();
+		void prepareQuery();
 		static QHash<QString, QString> elementInfoToString(Element *elmt);
 
 	private:
 		QPointer<QETProject> m_project;
 		QSqlDatabase m_data_base;
-		QSqlQuery m_insert_elements_query;
+		QSqlQuery m_insert_elements_query,
+				  m_insert_element_info_query,
+				  m_remove_element_query,
+				  m_update_element_query;
 
 	public:
 		static void exportDb(projectDataBase *db, QWidget *parent = nullptr, const QString &caption = QString(), const QString &dir = QString());

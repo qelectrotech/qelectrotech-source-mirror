@@ -1221,6 +1221,11 @@ void Diagram::addItem(QGraphicsItem *item)
 
 	switch (item->type())
 	{
+		case Element::Type:
+		{
+			m_project->dataBase()->addElement(static_cast<Element *>(item));
+			break;
+		}
 		case Conductor::Type:
 		{
 			Conductor *conductor = static_cast<Conductor *>(item);
@@ -1235,7 +1240,7 @@ void Diagram::addItem(QGraphicsItem *item)
 
 /**
  * @brief Diagram::removeItem
- * Réimplemented from QGraphicsScene::removeItem(QGraphicsItem *item)
+ * Reimplemented from QGraphicsScene::removeItem(QGraphicsItem *item)
  * Do some specific operation if item need it (for exemple an element)
  * @param item
  */
@@ -1247,8 +1252,9 @@ void Diagram::removeItem(QGraphicsItem *item)
 	{
 		case Element::Type:
 		{
-			Element *elmt = static_cast<Element*>(item);
+			auto elmt = static_cast<Element*>(item);
 			elmt->unlinkAllElements();
+			m_project->dataBase()->removeElement(elmt);
 			break;
 		}
 		case Conductor::Type:

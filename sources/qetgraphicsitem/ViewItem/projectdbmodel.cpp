@@ -356,23 +356,23 @@ void ProjectDBModel::setHeaderString()
 
 void ProjectDBModel::fillValue()
 {
-        m_record.clear();
+	m_record.clear();
 
-        auto query_ = m_project->dataBase()->newQuery(m_query);
-        if (!query_.exec()) {
-                qDebug() << "Query error : " << query_.lastError();
-        }
+	auto query_ = m_project->dataBase()->newQuery(m_query);
+	if (!query_.exec()) {
+		qDebug() << "Query error : " << query_.lastError();
+	}
 
-        while (query_.next())
-        {
-                QStringList record_;
-                auto i=0;
-                while (query_.value(i).isValid())
-                {
-                        record_ << query_.value(i).toString();
-                        ++i;
-                }
-                m_record << record_;
-        }
+	while (query_.next())
+	{
+		QStringList record_;
+		auto i=0;
+		while (query_.value(i).isValid())
+		{
+			record_ << query_.value(i).toString();
+			++i;
+		}
+		m_record << record_;
+	}
 }
 

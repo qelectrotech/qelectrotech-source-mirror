@@ -59,8 +59,12 @@ DiagramEventAddElement::DiagramEventAddElement(ElementsLocation &location, Diagr
  */
 DiagramEventAddElement::~DiagramEventAddElement()
 {
-	if (m_element) delete m_element;
-	foreach(QGraphicsView *view, m_diagram->views())
+	if (m_element)
+	{
+		m_diagram->removeItem(m_element);
+		m_element->deleteLater();
+	}
+	for (auto view : m_diagram->views())
 		view -> setContextMenuPolicy(Qt::DefaultContextMenu);
 }
 
@@ -101,7 +105,8 @@ void DiagramEventAddElement::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 	{
 		if (event->button() == Qt::RightButton)
 		{
-			delete m_element;
+			m_diagram->removeItem(m_element);
+			m_element->deleteLater();
 			m_element = nullptr;
 			m_running = false;
 			emit finish();
@@ -125,7 +130,8 @@ void DiagramEventAddElement::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *eve
 {
 	if (m_element && (event -> button() == Qt::LeftButton))
 	{
-		delete m_element;
+		m_diagram->removeItem(m_element);
+		m_element->deleteLater();
 		m_element = nullptr;
 		m_running = false;
 		emit finish();
