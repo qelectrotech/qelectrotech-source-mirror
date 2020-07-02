@@ -928,7 +928,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="161"/>
         <source>Couleur du texte:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst farve:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="171"/>
@@ -2082,14 +2082,15 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="350"/>
         <source>Type : %1
 </source>
-        <translation type="unfinished">Type: %1
+        <translation>Type: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="351"/>
         <source>Sous-type : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Under type : %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="352"/>
@@ -10283,7 +10284,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="60"/>
         <source>Red : Salmon</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Rød : Laks</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="61"/>
@@ -10577,7 +10578,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="109"/>
         <source>Green : GreenYellow</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Grøn : Grøngul</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="110"/>
@@ -10793,7 +10794,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="145"/>
         <source>Blue : DarkBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Blå : Mørkeblå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="146"/>
@@ -10925,7 +10926,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="167"/>
         <source>White : Snow</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hvid : Sne</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="168"/>
@@ -11033,13 +11034,13 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="185"/>
         <source>Gray : Silver</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Grå : Sølv</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="186"/>
         <source>Gray : DarkGray</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Grå : Mørkegrå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="187"/>
@@ -11075,7 +11076,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="192"/>
         <source>Gray : Black</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Grå : Sort</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="194"/>
@@ -11267,7 +11268,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="236"/>
         <source>Red : Salmon</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Rød : Laks</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="237"/>
@@ -11303,7 +11304,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="242"/>
         <source>Red : DarkRed</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Rød : Mørkerød</translation>
+        <translation>Rød : Mørkerød</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="243"/>
@@ -11351,7 +11352,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="250"/>
         <source>Yellow : LightYellow</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Gyl : Lysegul</translation>
+        <translation>Gyl : Lysegul</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="251"/>
@@ -11405,7 +11406,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="259"/>
         <source>Yellow : Gold</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Gul : Guld</translation>
+        <translation>Gul : Guld</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="260"/>
@@ -11531,7 +11532,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="280"/>
         <source>Green : YellowGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Grøn : Gulgrøn</translation>
+        <translation>Grøn : Gulgrøn</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="281"/>
@@ -11579,7 +11580,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="288"/>
         <source>Green : LightGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Grøn : Lysegrøn</translation>
+        <translation>Grøn : Lysegrøn</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="289"/>
@@ -11645,7 +11646,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="299"/>
         <source>Cyan : LightCyan</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Turkis : Lysturkis</translation>
+        <translation>Turkis : Lysturkis</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="300"/>
@@ -11717,13 +11718,13 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="311"/>
         <source>Blue : LightBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Blå : Lyseblå</translation>
+        <translation>Blå : Lyseblå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="312"/>
         <source>Blue : SkyBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Blå : Himmelblå</translation>
+        <translation>Blå : Himmelblå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="313"/>
@@ -12017,13 +12018,13 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="361"/>
         <source>Gray : Silver</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Grå : Sølv</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="362"/>
         <source>Gray : DarkGray</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Grå : Mørkegrå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="363"/>
@@ -12059,7 +12060,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="368"/>
         <source>Gray : Black</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Grå : Sort</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="370"/>
