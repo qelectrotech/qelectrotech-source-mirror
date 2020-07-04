@@ -56,7 +56,7 @@ void CompositeTextEditDialog::setUpComboBox()
 	
 	if(m_text && (m_text->parentElement()->linkType() & Element::AllReport)) //Special treatment for text owned by a folio report
 	{
-		qstrl << "label" << "function" << "tension-protocol";
+		qstrl << "label" << "function" << "tension_protocol";
 	}
 	else
 	{

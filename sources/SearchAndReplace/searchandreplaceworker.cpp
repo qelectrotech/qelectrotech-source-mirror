@@ -503,8 +503,8 @@ ConductorProperties SearchAndReplaceWorker::replaceAdvanced(Conductor *conductor
 		else if (what == "text")             {properties.text.replace(rx, replace);}
 		else if (what == "function")         {properties.m_function.replace(rx, replace);}
 		else if (what == "tension/protocol") {properties.m_tension_protocol.replace(rx, replace);}
-		else if (what == "couleur-conducteur") {properties.m_wire_color.replace(rx, replace);}
-		else if (what == "section-conducteur") {properties.m_wire_section.replace(rx, replace);}
+		else if (what == "conductor_color") {properties.m_wire_color.replace(rx, replace);}
+		else if (what == "conductor_section") {properties.m_wire_section.replace(rx, replace);}
 	}
 	
 	return properties;

@@ -263,9 +263,9 @@ void ConductorProperties::toXml(QDomElement &e) const
 	e.setAttribute("text_color", text_color.name());
 	e.setAttribute("formula", m_formula);
 	e.setAttribute("function", m_function);
-	e.setAttribute("tension-protocol", m_tension_protocol);
-	e.setAttribute("couleur-conducteur", m_wire_color);
-	e.setAttribute("section-conducteur", m_wire_section);
+	e.setAttribute("tension_protocol", m_tension_protocol);
+	e.setAttribute("conductor_color", m_wire_color);
+	e.setAttribute("conductor_section", m_wire_section);
 	e.setAttribute("numsize", QString::number(text_size));
 	e.setAttribute("condsize", QString::number(cond_size));
 	e.setAttribute("displaytext", m_show_text);
@@ -320,9 +320,9 @@ void ConductorProperties::fromXml(QDomElement &e)
 	text_color = (xml_text_color.isValid()? xml_text_color : QColor(Qt::black));
 	m_formula            = e.attribute("formula");
 	m_function           = e.attribute("function");
-	m_tension_protocol   = e.attribute("tension-protocol");
-	m_wire_color         = e.attribute("couleur-conducteur");
-	m_wire_section       = e.attribute("section-conducteur");
+	m_tension_protocol   = e.attribute("tension_protocol");
+	m_wire_color         = e.attribute("conductor_color");
+	m_wire_section       = e.attribute("conductor_section");
 	text_size            = e.attribute("numsize", QString::number(9)).toInt();
 	cond_size            = e.attribute("condsize", QString::number(1)).toDouble();
 	m_show_text          = e.attribute("displaytext", QString::number(1)).toInt();
@@ -356,9 +356,9 @@ void ConductorProperties::toSettings(QSettings &settings, const QString &prefix)
 	settings.setValue(prefix + "text_color", text_color.name());
 	settings.setValue(prefix + "formula", m_formula);
 	settings.setValue(prefix + "function", m_function);
-	settings.setValue(prefix + "tension-protocol", m_tension_protocol);
-	settings.setValue(prefix + "couleur-conducteur", m_wire_color);
-	settings.setValue(prefix + "section-conducteur", m_wire_section);
+	settings.setValue(prefix + "tension_protocol", m_tension_protocol);
+	settings.setValue(prefix + "conductor_color", m_wire_color);
+	settings.setValue(prefix + "conductor_section", m_wire_section);
 	settings.setValue(prefix + "textsize", QString::number(text_size));
 	settings.setValue(prefix + "size", QString::number(cond_size));
 	settings.setValue(prefix + "displaytext", m_show_text);
@@ -398,9 +398,9 @@ void ConductorProperties::fromSettings(QSettings &settings, const QString &prefi
 	text_color = (settings_text_color.isValid()? settings_text_color : QColor(Qt::black));
 	m_formula            = settings.value(prefix + "formula", "").toString();
 	m_function           = settings.value(prefix + "function", "").toString();
-	m_tension_protocol   = settings.value(prefix + "tension-protocol", "").toString();
-	m_wire_color         = settings.value(prefix + "couleur-conducteur", "").toString();
-	m_wire_section       = settings.value(prefix + "section-conducteur", "").toString();
+	m_tension_protocol   = settings.value(prefix + "tension_protocol", "").toString();
+	m_wire_color         = settings.value(prefix + "conductor_color", "").toString();
+	m_wire_section       = settings.value(prefix + "conductor_section", "").toString();
 	text_size            = settings.value(prefix + "textsize", "7").toInt();
 	cond_size            = settings.value(prefix + "size", "1").toInt();
 	m_show_text          = settings.value(prefix + "displaytext", true).toBool();
@@ -574,7 +574,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 		m_tension_protocol = s_value;
 	equal = true;
 
-		//couleur-conducteur
+		//conductor_color
 	s_value = clist.first().m_wire_color;
 	for(ConductorProperties cp : clist)
 	{
@@ -585,7 +585,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 		m_wire_color = s_value;
 	equal = true;
 
-		//section-conducteur
+		//conductor_section
 	s_value = clist.first().m_wire_section;
 	for(ConductorProperties cp : clist)
 	{

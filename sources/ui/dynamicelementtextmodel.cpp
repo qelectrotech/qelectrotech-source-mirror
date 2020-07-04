@@ -1781,11 +1781,11 @@ QStringList DynamicTextItemDelegate::availableInfo(DynamicElementTextItem *deti)
 			if (!cond->properties().m_function.isEmpty())
 				qstrl << "function";
 			if(!cond->properties().m_tension_protocol.isEmpty())
-				qstrl << "tension-protocol";
+				qstrl << "tension_protocol";
 			if(!cond->properties().m_wire_color.isEmpty())
-				qstrl << "couleur-conducteur";
+				qstrl << "conductor_color";
 			if(!cond->properties().m_wire_section.isEmpty())
-				qstrl << "section-conducteur";
+				qstrl << "conductor_section";
 		}
 		 
 		 return qstrl;
