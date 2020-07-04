@@ -1179,7 +1179,7 @@ QString DynamicElementTextItem::reportReplacedCompositeText() const
 		{
 			Element *elmt = m_other_report.data();
 			QString label = m_report_formula;
-            label = elmt->actualLabel();
+			label = autonum::AssignVariables::formulaToLabel(label, elmt->rSequenceStruct(), elmt->diagram(), elmt);
 			string.replace("%{label}", label);
 		}
 		if (m_watched_conductor)
