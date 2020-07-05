@@ -5128,207 +5128,207 @@ Voulez-vous enregistrer les modifications ?</source>
 <context>
     <name>QETApp</name>
     <message>
-        <location filename="../sources/qetapp.cpp" line="335"/>
+        <location filename="../sources/qetapp.cpp" line="339"/>
         <source>Description textuelle</source>
         <translation>Κείμενο περιγραφής</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="336"/>
+        <location filename="../sources/qetapp.cpp" line="340"/>
         <source>Numéro d&apos;article</source>
         <translation>Αριθμός άρθρου</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="338"/>
+        <location filename="../sources/qetapp.cpp" line="342"/>
         <source>Numéro de commande</source>
         <translation>Αριθμός παραγγελίας</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="340"/>
+        <location filename="../sources/qetapp.cpp" line="344"/>
         <source>Fournisseur</source>
         <translation>Προμηθευτής</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="339"/>
+        <location filename="../sources/qetapp.cpp" line="343"/>
         <source>Numéro interne</source>
         <translation>Εσωτερικός αριθμός</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="324"/>
+        <location filename="../sources/qetapp.cpp" line="326"/>
         <source>Formule du label</source>
         <translation>Τύπος ετικέτας</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="326"/>
-        <location filename="../sources/qetapp.cpp" line="438"/>
+        <location filename="../sources/qetapp.cpp" line="328"/>
+        <location filename="../sources/qetapp.cpp" line="448"/>
         <source>Installation</source>
         <translation>Εγκατάσταση</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="331"/>
-        <location filename="../sources/qetapp.cpp" line="402"/>
+        <location filename="../sources/qetapp.cpp" line="333"/>
+        <location filename="../sources/qetapp.cpp" line="410"/>
         <source>Tension / Protocole</source>
         <translation>Τάση / πρωτόκολλο</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="341"/>
+        <location filename="../sources/qetapp.cpp" line="345"/>
         <source>Quantité</source>
         <translation>Ποσότητα</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="342"/>
+        <location filename="../sources/qetapp.cpp" line="346"/>
         <source>Unité</source>
         <translation>Ενότητα</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="399"/>
+        <location filename="../sources/qetapp.cpp" line="407"/>
         <source>Formule du texte</source>
         <translation>Τύπος κειμένου</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="400"/>
+        <location filename="../sources/qetapp.cpp" line="408"/>
         <source>Texte</source>
         <translation>Κείμενο</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="434"/>
+        <location filename="../sources/qetapp.cpp" line="444"/>
         <source>Titre</source>
         <translation>Τίτλος</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="435"/>
+        <location filename="../sources/qetapp.cpp" line="445"/>
         <source>Auteur</source>
         <translation>Συγγραφέας</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="436"/>
+        <location filename="../sources/qetapp.cpp" line="446"/>
         <source>Fichier</source>
         <translation>Αρχείο</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="437"/>
+        <location filename="../sources/qetapp.cpp" line="447"/>
         <source>Folio</source>
         <translation>Φύλλο</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="441"/>
+        <location filename="../sources/qetapp.cpp" line="451"/>
         <source>Date</source>
         <translation>Ημερομηνία</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="442"/>
+        <location filename="../sources/qetapp.cpp" line="452"/>
         <source>Position</source>
         <translation type="unfinished">Θέση</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1661"/>
+        <location filename="../sources/qetapp.cpp" line="1671"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Τερματισμός</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1662"/>
+        <location filename="../sources/qetapp.cpp" line="1672"/>
         <source>&amp;Masquer</source>
         <translation>Από&amp;κρυψη</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1663"/>
+        <location filename="../sources/qetapp.cpp" line="1673"/>
         <source>&amp;Restaurer</source>
         <translation>&amp;Εμφάνιση</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1664"/>
+        <location filename="../sources/qetapp.cpp" line="1674"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>&amp;Απόκρυψη όλων των επεξεργαστών διαγραμμάτων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1665"/>
+        <location filename="../sources/qetapp.cpp" line="1675"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>Εμ&amp;φάνιση όλων των επεξεργαστών διαγραμμάτων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1666"/>
+        <location filename="../sources/qetapp.cpp" line="1676"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>Από&amp;κρυψη όλων των επεξεργαστών στοιχείων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1667"/>
+        <location filename="../sources/qetapp.cpp" line="1677"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>Προ&amp;βολή όλων των επεξεργαστών στοιχείων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1668"/>
+        <location filename="../sources/qetapp.cpp" line="1678"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>Α&amp;πόκρυψη όλων των επεξεργαστών πινακίδων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1669"/>
+        <location filename="../sources/qetapp.cpp" line="1679"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>Ε&amp;μφάνιση όλων των επεξεργαστών πινακίδων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1670"/>
+        <location filename="../sources/qetapp.cpp" line="1680"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>&amp;Νέος επεξεργαστής διαγραμμάτων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1671"/>
+        <location filename="../sources/qetapp.cpp" line="1681"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>&amp;Νέος επεξεργαστής στοιχείου</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1673"/>
+        <location filename="../sources/qetapp.cpp" line="1683"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>Κλείσιμο του QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1674"/>
+        <location filename="../sources/qetapp.cpp" line="1684"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>Ελαχιστοποιεί το QElectroTech στο πλαίσιο συστήματος</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1675"/>
+        <location filename="../sources/qetapp.cpp" line="1685"/>
         <source>Restaurer QElectroTech</source>
         <translation>Επαναφορά του QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1760"/>
+        <location filename="../sources/qetapp.cpp" line="1770"/>
         <source>Éditeurs de schémas</source>
         <translation>Επεξεργαστές διαγραμμάτων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1769"/>
+        <location filename="../sources/qetapp.cpp" line="1779"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>Επεξεργαστές στοιχείων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1779"/>
+        <location filename="../sources/qetapp.cpp" line="1789"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
         <translation>Επεξεργαστές πινακίδων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1820"/>
+        <location filename="../sources/qetapp.cpp" line="1830"/>
         <source>&lt;b&gt;Le fichier de restauration suivant a été trouvé,&lt;br&gt;Voulez-vous l&apos;ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;Βρέθηκε το παρακάτω αρχείο επαναφοράς,&lt;br&gt;Θέλεις να ανοιχτεί;&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1823"/>
+        <location filename="../sources/qetapp.cpp" line="1833"/>
         <source>&lt;b&gt;Les fichiers de restauration suivant on été trouvé,&lt;br&gt;Voulez-vous les ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;Βρέθηκαν τα παρακάτω αρχεία επαναφοράς,&lt;br&gt;Θέλεις να ανοιχτούν;&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1837"/>
+        <location filename="../sources/qetapp.cpp" line="1847"/>
         <source>Fichier de restauration</source>
         <translation>Αρχεία επαναφοράς</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1915"/>
+        <location filename="../sources/qetapp.cpp" line="1925"/>
         <source>Usage : </source>
         <translation>Χρήση: </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1916"/>
+        <location filename="../sources/qetapp.cpp" line="1926"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -5344,7 +5344,7 @@ Options disponibles :
   --license                     προβολή της άδειας χρήσης</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1915"/>
+        <location filename="../sources/qetapp.cpp" line="1925"/>
         <source> [options] [fichier]...
 
 </source>
@@ -5353,49 +5353,49 @@ Options disponibles :
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="337"/>
+        <location filename="../sources/qetapp.cpp" line="341"/>
         <source>Fabricant</source>
         <translation>Κατασκευαστής</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="332"/>
+        <location filename="../sources/qetapp.cpp" line="336"/>
         <source>Bloc auxiliaire 1</source>
         <translation>Βοηθητικό μπλοκ 1</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="333"/>
+        <location filename="../sources/qetapp.cpp" line="337"/>
         <source>Bloc auxiliaire 2</source>
         <translation>Βοηθητικό μπλοκ 2</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1482"/>
+        <location filename="../sources/qetapp.cpp" line="1492"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
         <translation>Ρύθμιση του QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1922"/>
+        <location filename="../sources/qetapp.cpp" line="1932"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=ΚΑΤΑΛΟΓΟΣ     Προσδιορίστε τον κατάλογο της συλλογής στοιχείων
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1925"/>
+        <location filename="../sources/qetapp.cpp" line="1935"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
         <translation>  --common-elements-dir=ΚΑΤΑΛΟΓΟΣ     Προσδιορίστε τον κατάλογο της συλλογής πινακίδων
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1928"/>
+        <location filename="../sources/qetapp.cpp" line="1938"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=ΚΑΤΑΛΟΓΟΣ              Προσδιορίστε τον κατάλογο των ρυθμίσεων
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1930"/>
+        <location filename="../sources/qetapp.cpp" line="1940"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=ΚΑΤΑΛΟΓΟΣ                Προσδιορίστε τον κατάλογο των αρχείων γλώσσας</translation>
@@ -5425,94 +5425,106 @@ Options disponibles :
         <translation>LTR</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="325"/>
+        <location filename="../sources/qetapp.cpp" line="327"/>
         <source>Label</source>
         <translation>Ετικέτα</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="329"/>
+        <location filename="../sources/qetapp.cpp" line="331"/>
         <source>Commentaire</source>
         <translation>Σχόλιο</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="327"/>
-        <location filename="../sources/qetapp.cpp" line="439"/>
+        <location filename="../sources/qetapp.cpp" line="329"/>
+        <location filename="../sources/qetapp.cpp" line="449"/>
         <source>Localisation</source>
         <translation>Θέση</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="330"/>
-        <location filename="../sources/qetapp.cpp" line="401"/>
+        <location filename="../sources/qetapp.cpp" line="332"/>
+        <location filename="../sources/qetapp.cpp" line="409"/>
         <source>Fonction</source>
         <translation>Λειτουργία</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="440"/>
+        <location filename="../sources/qetapp.cpp" line="334"/>
+        <location filename="../sources/qetapp.cpp" line="411"/>
+        <source>Couleur du fil</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="335"/>
+        <location filename="../sources/qetapp.cpp" line="412"/>
+        <source>Section du fil</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="450"/>
         <source>Indice de révision</source>
         <translation type="unfinished">Δείκτης αναθεώρησης</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="453"/>
+        <location filename="../sources/qetapp.cpp" line="463"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates collection provided by QElectroTech</comment>
         <translation>Πινακίδες QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="467"/>
+        <location filename="../sources/qetapp.cpp" line="477"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s title block templates collection</comment>
         <translation>Πινακίδες χρήστη</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1081"/>
+        <location filename="../sources/qetapp.cpp" line="1091"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1082"/>
+        <location filename="../sources/qetapp.cpp" line="1092"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation>QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1083"/>
+        <location filename="../sources/qetapp.cpp" line="1093"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Διάγρα</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1084"/>
+        <location filename="../sources/qetapp.cpp" line="1094"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Ηλεκτρικ</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1085"/>
+        <location filename="../sources/qetapp.cpp" line="1095"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1592"/>
+        <location filename="../sources/qetapp.cpp" line="1602"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>Φόρτωση...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1657"/>
+        <location filename="../sources/qetapp.cpp" line="1667"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>Φόρτωση ... Εικονίδιο πλαισίου συστήματος</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1659"/>
+        <location filename="../sources/qetapp.cpp" line="1669"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1691"/>
+        <location filename="../sources/qetapp.cpp" line="1701"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>

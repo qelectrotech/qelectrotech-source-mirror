@@ -5174,321 +5174,333 @@ Değişiklikleri kaydetmek ister misiniz ?</translation>
         <translation>LTR</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="325"/>
+        <location filename="../sources/qetapp.cpp" line="327"/>
         <source>Label</source>
         <translation>Etiket</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="329"/>
+        <location filename="../sources/qetapp.cpp" line="331"/>
         <source>Commentaire</source>
         <translation>Açıklama</translation>
     </message>
     <message>
+        <location filename="../sources/qetapp.cpp" line="334"/>
+        <location filename="../sources/qetapp.cpp" line="411"/>
+        <source>Couleur du fil</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/qetapp.cpp" line="335"/>
+        <location filename="../sources/qetapp.cpp" line="412"/>
+        <source>Section du fil</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="339"/>
         <source>Description textuelle</source>
         <translation>Metin açıklaması</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="336"/>
+        <location filename="../sources/qetapp.cpp" line="340"/>
         <source>Numéro d&apos;article</source>
         <translation>Makale numarası</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="337"/>
+        <location filename="../sources/qetapp.cpp" line="341"/>
         <source>Fabricant</source>
         <translation>Üretici</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="338"/>
+        <location filename="../sources/qetapp.cpp" line="342"/>
         <source>Numéro de commande</source>
         <translation>Sipariş numarası</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="340"/>
+        <location filename="../sources/qetapp.cpp" line="344"/>
         <source>Fournisseur</source>
         <translation>Sağlayıcı</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="332"/>
+        <location filename="../sources/qetapp.cpp" line="336"/>
         <source>Bloc auxiliaire 1</source>
         <translation>Yardımcı blok 1</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="333"/>
+        <location filename="../sources/qetapp.cpp" line="337"/>
         <source>Bloc auxiliaire 2</source>
         <translation>Yardımcı blok 2</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="339"/>
+        <location filename="../sources/qetapp.cpp" line="343"/>
         <source>Numéro interne</source>
         <translation>Dahili Numara</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="327"/>
-        <location filename="../sources/qetapp.cpp" line="439"/>
+        <location filename="../sources/qetapp.cpp" line="329"/>
+        <location filename="../sources/qetapp.cpp" line="449"/>
         <source>Localisation</source>
         <translation>Konum</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="324"/>
+        <location filename="../sources/qetapp.cpp" line="326"/>
         <source>Formule du label</source>
         <translation>Etiket Formulü</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="326"/>
-        <location filename="../sources/qetapp.cpp" line="438"/>
+        <location filename="../sources/qetapp.cpp" line="328"/>
+        <location filename="../sources/qetapp.cpp" line="448"/>
         <source>Installation</source>
         <translation>Kurulum</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="330"/>
-        <location filename="../sources/qetapp.cpp" line="401"/>
+        <location filename="../sources/qetapp.cpp" line="332"/>
+        <location filename="../sources/qetapp.cpp" line="409"/>
         <source>Fonction</source>
         <translation>Fonksiyon</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="331"/>
-        <location filename="../sources/qetapp.cpp" line="402"/>
+        <location filename="../sources/qetapp.cpp" line="333"/>
+        <location filename="../sources/qetapp.cpp" line="410"/>
         <source>Tension / Protocole</source>
         <translation>Gerilim / Protokol</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="341"/>
+        <location filename="../sources/qetapp.cpp" line="345"/>
         <source>Quantité</source>
         <translation>Miktar</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="342"/>
+        <location filename="../sources/qetapp.cpp" line="346"/>
         <source>Unité</source>
         <translation>Birim</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="399"/>
+        <location filename="../sources/qetapp.cpp" line="407"/>
         <source>Formule du texte</source>
         <translation>Metin Formülü</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="400"/>
+        <location filename="../sources/qetapp.cpp" line="408"/>
         <source>Texte</source>
         <translation>Metin</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="434"/>
+        <location filename="../sources/qetapp.cpp" line="444"/>
         <source>Titre</source>
         <translation>Başlık</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="435"/>
+        <location filename="../sources/qetapp.cpp" line="445"/>
         <source>Auteur</source>
         <translation>Yazar</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="436"/>
+        <location filename="../sources/qetapp.cpp" line="446"/>
         <source>Fichier</source>
         <translation>Dosya</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="437"/>
+        <location filename="../sources/qetapp.cpp" line="447"/>
         <source>Folio</source>
         <translation>Sayfa</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="440"/>
+        <location filename="../sources/qetapp.cpp" line="450"/>
         <source>Indice de révision</source>
         <translation type="unfinished">Revizyon İndeksi</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="441"/>
+        <location filename="../sources/qetapp.cpp" line="451"/>
         <source>Date</source>
         <translation type="unfinished">Tarih</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="442"/>
+        <location filename="../sources/qetapp.cpp" line="452"/>
         <source>Position</source>
         <translation type="unfinished">Pozisyon</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="453"/>
+        <location filename="../sources/qetapp.cpp" line="463"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates collection provided by QElectroTech</comment>
         <translation>QElectroTech Antetleri</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="467"/>
+        <location filename="../sources/qetapp.cpp" line="477"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s title block templates collection</comment>
         <translation>Kullanıcı Antetleri</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1081"/>
+        <location filename="../sources/qetapp.cpp" line="1091"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1082"/>
+        <location filename="../sources/qetapp.cpp" line="1092"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation>QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1083"/>
+        <location filename="../sources/qetapp.cpp" line="1093"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Şema</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1084"/>
+        <location filename="../sources/qetapp.cpp" line="1094"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Elektrik</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1085"/>
+        <location filename="../sources/qetapp.cpp" line="1095"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1482"/>
+        <location filename="../sources/qetapp.cpp" line="1492"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
         <translation>QElectroTech&apos;i yapılandır</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1592"/>
+        <location filename="../sources/qetapp.cpp" line="1602"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>Yükleniyor...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1657"/>
+        <location filename="../sources/qetapp.cpp" line="1667"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>Yükleniyor ... systray icon</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1659"/>
+        <location filename="../sources/qetapp.cpp" line="1669"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1661"/>
+        <location filename="../sources/qetapp.cpp" line="1671"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Çıkış</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1662"/>
+        <location filename="../sources/qetapp.cpp" line="1672"/>
         <source>&amp;Masquer</source>
         <translation>&amp;Gizle</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1663"/>
+        <location filename="../sources/qetapp.cpp" line="1673"/>
         <source>&amp;Restaurer</source>
         <translation>&amp;Geri Yükle</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1664"/>
+        <location filename="../sources/qetapp.cpp" line="1674"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>Tüm şema düzenleyicilerini &amp;gizle</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1665"/>
+        <location filename="../sources/qetapp.cpp" line="1675"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>Tüm şema düzenleyicilerini &amp;geri yükle</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1666"/>
+        <location filename="../sources/qetapp.cpp" line="1676"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>Tüm öğe düzenleyicilerini &amp;gizle</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1667"/>
+        <location filename="../sources/qetapp.cpp" line="1677"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>Tüm öğe düzenleyicilerini &amp;geri yükle</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1668"/>
+        <location filename="../sources/qetapp.cpp" line="1678"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>Tüm Antet düzenleyicileri &amp;gizle</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1669"/>
+        <location filename="../sources/qetapp.cpp" line="1679"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Tüm Antet düzenlemelerini geri yükle</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1670"/>
+        <location filename="../sources/qetapp.cpp" line="1680"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>&amp;Yeni şema düzenleyici</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1671"/>
+        <location filename="../sources/qetapp.cpp" line="1681"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>&amp;Yeni öğe editörü</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1673"/>
+        <location filename="../sources/qetapp.cpp" line="1683"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>QElectroTech uygulamasını kapatır</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1674"/>
+        <location filename="../sources/qetapp.cpp" line="1684"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>Systray&apos;da QElectroTech&apos;i azaltın</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1675"/>
+        <location filename="../sources/qetapp.cpp" line="1685"/>
         <source>Restaurer QElectroTech</source>
         <translation>QElectroTech&apos;i geri yükle</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1691"/>
+        <location filename="../sources/qetapp.cpp" line="1701"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1760"/>
+        <location filename="../sources/qetapp.cpp" line="1770"/>
         <source>Éditeurs de schémas</source>
         <translation>Şema Editörleri</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1769"/>
+        <location filename="../sources/qetapp.cpp" line="1779"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>Öğe Editörleri</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1779"/>
+        <location filename="../sources/qetapp.cpp" line="1789"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
         <translation>Anteti Düzenle</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1820"/>
+        <location filename="../sources/qetapp.cpp" line="1830"/>
         <source>&lt;b&gt;Le fichier de restauration suivant a été trouvé,&lt;br&gt;Voulez-vous l&apos;ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;Aşağıdaki geri yükleme dosyası bulundu,&lt;br&gt;Açmak ister misiniz ?&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1823"/>
+        <location filename="../sources/qetapp.cpp" line="1833"/>
         <source>&lt;b&gt;Les fichiers de restauration suivant on été trouvé,&lt;br&gt;Voulez-vous les ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;Aşağıdaki geri yükleme dosyaları bulundu,&lt;br&gt;Açmak ister misiniz ?&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1837"/>
+        <location filename="../sources/qetapp.cpp" line="1847"/>
         <source>Fichier de restauration</source>
         <translation>Dosyayı geri yükle</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1915"/>
+        <location filename="../sources/qetapp.cpp" line="1925"/>
         <source>Usage : </source>
         <translation>Kullanım : </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1915"/>
+        <location filename="../sources/qetapp.cpp" line="1925"/>
         <source> [options] [fichier]...
 
 </source>
@@ -5497,7 +5509,7 @@ Değişiklikleri kaydetmek ister misiniz ?</translation>
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1916"/>
+        <location filename="../sources/qetapp.cpp" line="1926"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -5514,28 +5526,28 @@ Mevcut seçenekler:
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1922"/>
+        <location filename="../sources/qetapp.cpp" line="1932"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=DIR     Öğelerin kütüphanesinin klasörünü tanımla
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1925"/>
+        <location filename="../sources/qetapp.cpp" line="1935"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
         <translation>  --common-tbt-dir=DIR          Antet şablonu kütüphanesinin klasörünü tanımlayın
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1928"/>
+        <location filename="../sources/qetapp.cpp" line="1938"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=DIR              Yapılandırma klasörünü ayarla
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1930"/>
+        <location filename="../sources/qetapp.cpp" line="1940"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=DIR                Dil dosyalarını içeren klasörü ayarlayın
