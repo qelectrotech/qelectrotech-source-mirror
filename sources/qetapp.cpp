@@ -331,8 +331,8 @@ QString QETApp::elementTranslatedInfoKey(const QString &info)
 	else if (info == "comment") return tr("Commentaire");
 	else if (info == "function") return tr("Fonction");
 	else if (info == "tension_protocol") return tr("Tension / Protocole");
-	else if (info == "conductor_color") return tr("conductor_color");
-	else if (info == "conductor_section") return tr("conductor_section");
+	else if (info == "conductor_color") return tr("Couleur du fil");
+	else if (info == "conductor_section") return tr("Section du fil");
 	else if (info == "auxiliary1") return tr("Bloc auxiliaire 1");
 	else if (info == "auxiliary2") return tr("Bloc auxiliaire 2");
 	
@@ -408,8 +408,8 @@ QString QETApp::conductorTranslatedInfoKey(const QString &key)
 	else if (key == "text")              return tr("Texte");
 	else if (key == "function")          return tr("Fonction");
 	else if (key ==  "tension/protocol") return tr("Tension / Protocole");
-	else if (key ==  "conductor_color")  return tr("conductor_color");
-	else if (key ==  "conductor_section")return tr("conductor_section");
+	else if (key ==  "conductor_color")  return tr("Couleur du fil");
+	else if (key ==  "conductor_section")return tr("Section du fil");
 	return QString();
 }
 
