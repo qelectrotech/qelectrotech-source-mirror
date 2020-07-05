@@ -190,7 +190,7 @@ void DynamicTextFieldEditor::fillInfoComboBox()
 	QString type = elementEditor()->elementScene()->elementType();
 	
 	if(type.contains("report"))
-		strl << "function" << "tension_protocol";
+		strl << "function" << "tension_protocol" << "conductor_color" << "conductor_section";
 	else
 		strl = QETApp::elementInfoKeys();
 	
