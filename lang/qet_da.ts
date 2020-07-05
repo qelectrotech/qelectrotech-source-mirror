@@ -5444,13 +5444,13 @@ Kommandovalg:
         <location filename="../sources/qetapp.cpp" line="334"/>
         <location filename="../sources/qetapp.cpp" line="411"/>
         <source>Couleur du fil</source>
-        <translation type="unfinished"></translation>
+        <translation>Leder farve</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="335"/>
         <location filename="../sources/qetapp.cpp" line="412"/>
         <source>Section du fil</source>
-        <translation type="unfinished"></translation>
+        <translation>Leder sektion</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="450"/>
@@ -11784,13 +11784,13 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="320"/>
         <source>Blue : MediumBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Blå : Mellelblå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="321"/>
         <source>Blue : DarkBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Blå : Mørkeblå</translation>
+        <translation>Blå : Mørkeblå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="322"/>
@@ -11922,7 +11922,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="343"/>
         <source>White : Snow</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Hvid : Sne</translation>
+        <translation>Hvid : Sne</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="344"/>
