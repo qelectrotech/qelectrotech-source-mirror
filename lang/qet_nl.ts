@@ -928,7 +928,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="161"/>
         <source>Couleur du texte:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstkleur:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="171"/>
@@ -2082,14 +2082,15 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="350"/>
         <source>Type : %1
 </source>
-        <translation type="unfinished">Type: %1
+        <translation>Type: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="351"/>
         <source>Sous-type : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Subtype : %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="352"/>
@@ -5408,13 +5409,13 @@ Wilt u de wijzigingen opslaan?</translation>
         <location filename="../sources/qetapp.cpp" line="334"/>
         <location filename="../sources/qetapp.cpp" line="411"/>
         <source>Couleur du fil</source>
-        <translation type="unfinished"></translation>
+        <translation>Draadkleur</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="335"/>
         <location filename="../sources/qetapp.cpp" line="412"/>
         <source>Section du fil</source>
-        <translation type="unfinished"></translation>
+        <translation>Draaddoorsnede</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="336"/>
