@@ -112,8 +112,10 @@ QETProject::QETProject(KAutoSaveFile *backup, QObject *parent) :
  * @brief QETProject::~QETProject
  * Destructor
  */
-QETProject::~QETProject() {
-	qDeleteAll(m_diagrams_list);
+QETProject::~QETProject()
+{
+	for (auto diagram : m_diagrams_list)
+		diagram->deleteLater();
 }
 
 /**
@@ -871,7 +873,7 @@ QDomDocument QETProject::toXml() {
 			qDebug() << qPrintable(QString("QETProject::toXml() : exporting diagram \"%1\"").arg(diagram -> title())) << "[" << diagram << "]";
 			QDomElement xml_diagram = diagram->toXml().documentElement();
 			QDomNode xml_node = xml_doc.importNode(xml_diagram, true);
-			
+
 			QDomNode appended_diagram = project_root.appendChild(xml_node);
 			appended_diagram.toElement().setAttribute("order", order_num ++);
 		}
@@ -1209,18 +1211,24 @@ QList <Diagram *> QETProject::addNewDiagramFolioList()
 	return(diagram_list);
 }
 
-/**
-	Enleve un schema du projet et emet le signal diagramRemoved
-	@param diagram le schema a enlever
-*/
-void QETProject::removeDiagram(Diagram *diagram) {
-	// ne fait rien si le projet est en lecture seule
-	if (isReadOnly()) return;	
-	if (!diagram || !m_diagrams_list.contains(diagram)) return;
 
-	if (m_diagrams_list.removeAll(diagram)) {
+/**
+ * @brief QETProject::removeDiagram
+ * Remove @diagram from project
+ * @param diagram
+ */
+void QETProject::removeDiagram(Diagram *diagram)
+{
+	if (isReadOnly() ||
+		!diagram || !m_diagrams_list.contains(diagram)) {
+		return;
+	}
+
+	if (m_diagrams_list.removeAll(diagram))
+	{
+		m_data_base.removeDiagram(diagram);
 		emit(diagramRemoved(this, diagram));
-		delete diagram;
+		diagram->deleteLater();
 	}
 	
 	updateDiagramsFolioData();
@@ -1333,8 +1341,6 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
  */
 void QETProject::readDiagramsXml(QDomDocument &xml_project)
 {
-	QMultiMap<int, Diagram *> loaded_diagrams;
-	
 	//@TODO try to solve a weird bug (dialog is black) since port to Qt5 with the DialogWaiting
 	//show DialogWaiting
 	DialogWaiting *dlgWaiting = nullptr;
@@ -1364,27 +1370,17 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 		{
 			QDomElement diagram_xml_element = diagram_nodes.at(i).toElement();
 			Diagram *diagram = new Diagram(this);
-			bool diagram_loading = diagram -> initFromXml(diagram_xml_element);
-			if (diagram_loading)
-			{
-				if(dlgWaiting)
-					dlgWaiting->setDetail( diagram->title() );
-				
-					//Get the attribute "order" of the diagram
-				int diagram_order = -1;
-				if (!QET::attributeIsAnInteger(diagram_xml_element, "order", &diagram_order)) diagram_order = 500000;
-				loaded_diagrams.insert(diagram_order, diagram);
-			}
-			else
-			{
-				delete diagram;
-			}
+
+			int diagram_order = -1;
+			if (!QET::attributeIsAnInteger(diagram_xml_element, "order", &diagram_order)) diagram_order = 500000;
+
+			addDiagram(diagram, diagram_order-1);
+
+			diagram->initFromXml(diagram_xml_element);
+			if(dlgWaiting)
+				dlgWaiting->setDetail(diagram->title());
 		}
 	}
-	
-		//Add the diagrams according to there "order" attribute
-	foreach(Diagram *diagram, loaded_diagrams.values())
-		addDiagram(diagram);
 
 		//Initialise links between elements in this project
 		//and refresh the text of conductor
@@ -1638,9 +1634,6 @@ void QETProject::addDiagram(Diagram *diagram, int pos)
 	if (!diagram) {
 		return;
 	}
-	
-		// Ensure diagram know is parent project
-	diagram->setProject(this);
 
 	connect(&diagram->border_and_titleblock, &BorderTitleBlock::needFolioData, this, &QETProject::updateDiagramsFolioData);
 	connect(diagram, &Diagram::usedTitleBlockTemplateChanged, this, &QETProject::usedTitleBlockTemplateChanged);
@@ -1650,7 +1643,7 @@ void QETProject::addDiagram(Diagram *diagram, int pos)
 	} else {
 		m_diagrams_list.insert(pos, diagram);
 	}
-	
+	m_data_base.addDiagram(diagram);
 	updateDiagramsFolioData();
 }
 

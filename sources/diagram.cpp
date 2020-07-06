@@ -60,7 +60,7 @@ QColor		Diagram::background_color = Qt::white;
  */
 Diagram::Diagram(QETProject *project) :
 	QGraphicsScene           (project),
-	m_project                 (nullptr),
+	m_project                 (project),
 	diagram_qet_version_     (-1),
 	draw_grid_               (true),
 	use_border_              (true),
@@ -76,8 +76,7 @@ Diagram::Diagram(QETProject *project) :
 		//https://stackoverflow.com/questions/38458830/crash-after-qgraphicssceneremoveitem-with-custom-item-class
 		//http://www.qtcentre.org/archive/index.php/t-33730.html
 		//http://tech-artists.org/t/qt-properly-removing-qgraphicitems/3063
-	
-	setProject(project);
+
 	qgi_manager_ = new QGIManager(this);
 	setBackgroundBrush(Qt::white);
 	conductor_setter_ = new QGraphicsLineItem(nullptr);
@@ -1834,20 +1833,6 @@ bool Diagram::clipboardMayContainDiagram() {
 */
 QETProject *Diagram::project() const {
 	return(m_project);
-}
-
-/**
- * @brief Diagram::setProject
- * Set parent project of this diagram, project also become the parent QObject of this diagram
- * @param project new project
- */
-void Diagram::setProject(QETProject *project)
-{
-	if (m_project == project)
-		return;
-
-	m_project = project;
-	setParent (project);
 }
 
 /**

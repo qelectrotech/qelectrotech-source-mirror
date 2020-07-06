@@ -56,10 +56,7 @@ projectDataBase::~projectDataBase() {
 /**
  * @brief projectDataBase::updateDB
  * Up to date the content of the data base.
- * Except at the creation of this class,
- * call this method each time you want to query the data base
- * to be sure that the content reflect the current state of the project.
- * Emit the singal dataBaseUpdated
+ * Emit the signal dataBaseUpdated
  */
 void projectDataBase::updateDB()
 {
@@ -144,6 +141,45 @@ void projectDataBase::elementInfoChanged(Element *element)
 	m_update_element_query.bindValue(":uuid", element->uuid().toString());
 	if (!m_update_element_query.exec()) {
 		qDebug() << "projectDataBase::elementInfoChanged update error : " << m_update_element_query.lastError();
+	} else {
+		emit dataBaseUpdated();
+	}
+}
+
+void projectDataBase::addDiagram(Diagram *diagram)
+{
+	m_insert_diagram_query.bindValue(":uuid", diagram->uuid().toString());
+	m_insert_diagram_query.bindValue(":pos", m_project->folioIndex(diagram));
+	if(!m_insert_diagram_query.exec()) {
+		qDebug() << "projectDataBase::addDiagram insert error : " << m_insert_diagram_query.lastError();
+	}
+
+
+	m_insert_diagram_info_query.bindValue(":uuid", diagram->uuid());
+	auto infos = diagram->border_and_titleblock.titleblockInformation();
+	for (auto key : QETApp::diagramInfoKeys())
+	{
+		if (key == "date") {
+			m_insert_diagram_info_query.bindValue(":date", QDate::fromString(infos.value("date").toString(), Qt::SystemLocaleShortDate));
+		} else {
+			auto value = infos.value(key);
+			auto bind = key.prepend(":");
+			m_insert_diagram_info_query.bindValue(bind, value);
+		}
+	}
+
+	if (!m_insert_diagram_info_query.exec()) {
+		qDebug() << "projectDataBase::addDiagram insert info error : " << m_insert_diagram_info_query.lastError();
+	} else {
+		emit dataBaseUpdated();
+	}
+}
+
+void projectDataBase::removeDiagram(Diagram *diagram)
+{
+	m_remove_diagram_query.bindValue(":uuid", diagram->uuid().toString());
+	if (!m_remove_diagram_query.exec()) {
+		qDebug() << "projectDataBase::removeDiagram delete error : " << m_remove_diagram_query.lastError();
 	} else {
 		emit dataBaseUpdated();
 	}
@@ -313,14 +349,12 @@ void projectDataBase::populateDiagramTable()
 	QSqlQuery query_(m_data_base);
 	query_.exec("DELETE FROM diagram");
 
-	QString insert_("INSERT INTO diagram (uuid, pos) VALUES (:uuid, :pos)");
-	query_.prepare(insert_);
 	for (auto diagram : m_project->diagrams())
 	{
-		query_.bindValue(":uuid", diagram->uuid().toString());
-		query_.bindValue(":pos", m_project->folioIndex(diagram));
-		if(!query_.exec()) {
-			qDebug() << "projectDataBase::populateDiagramTable insert error : " << query_.lastError();
+		m_insert_diagram_query.bindValue(":uuid", diagram->uuid().toString());
+		m_insert_diagram_query.bindValue(":pos", m_project->folioIndex(diagram));
+		if(!m_insert_diagram_query.exec()) {
+			qDebug() << "projectDataBase::populateDiagramTable insert error : " << m_insert_diagram_query.lastError();
 		}
 	}
 }
@@ -391,43 +425,51 @@ void projectDataBase::populateDiagramInfoTable()
 	QSqlQuery query(m_data_base);
 	query.exec("DELETE FROM diagram_info");
 
-		//Prepare the query used for insert new record
-	QStringList bind_values;
-	for (auto key : QETApp::diagramInfoKeys()) {
-		bind_values << key.prepend(":");
-	}
-	QString insert("INSERT INTO diagram_info (diagram_uuid, " +
-				   QETApp::diagramInfoKeys().join(", ") +
-				   ") VALUES (:uuid, " +
-				   bind_values.join(", ") +
-				   ")");
-
-	query.prepare(insert);
-
 	for (auto *diagram : m_project->diagrams())
 	{
-		query.bindValue(":uuid", diagram->uuid());
+		m_insert_diagram_info_query.bindValue(":uuid", diagram->uuid());
 
 		auto infos = diagram->border_and_titleblock.titleblockInformation();
 		for (auto key : QETApp::diagramInfoKeys())
 		{
 			if (key == "date") {
-				query.bindValue(":date", QDate::fromString(infos.value("date").toString(), Qt::SystemLocaleShortDate));
+				m_insert_diagram_info_query.bindValue(":date", QDate::fromString(infos.value("date").toString(), Qt::SystemLocaleShortDate));
 			} else {
 				auto value = infos.value(key);
 				auto bind = key.prepend(":");
-				query.bindValue(bind, value);
+				m_insert_diagram_info_query.bindValue(bind, value);
 			}
 		}
 
-		if (!query.exec()) {
-			qDebug() << "projectDataBase::populateDiagramInfoTable insert error : " << query.lastError();
+		if (!m_insert_diagram_info_query.exec()) {
+			qDebug() << "projectDataBase::populateDiagramInfoTable insert error : " << m_insert_diagram_info_query.lastError();
 		}
 	}
 }
 
 void projectDataBase::prepareQuery()
 {
+		//INSERT DIAGRAM
+	m_insert_diagram_query = QSqlQuery(m_data_base);
+	m_insert_diagram_query.prepare("INSERT INTO diagram (uuid, pos) VALUES (:uuid, :pos)");
+
+		//REMOVE DIAGRAM
+	m_remove_diagram_query = QSqlQuery(m_data_base);
+	m_remove_diagram_query.prepare("DELETE FROM diagram WHERE uuid=:uuid");
+
+		//INSERT DIAGRAM INFO
+	m_insert_diagram_info_query = QSqlQuery(m_data_base);
+	QStringList bind_diag_info_values;
+	for (auto key : QETApp::diagramInfoKeys()) {
+		bind_diag_info_values << key.prepend(":");
+	}
+	QString insert_diag_info("INSERT INTO diagram_info (diagram_uuid, " +
+				   QETApp::diagramInfoKeys().join(", ") +
+				   ") VALUES (:uuid, " +
+				   bind_diag_info_values.join(", ") +
+				   ")");
+	m_insert_diagram_info_query.prepare(insert_diag_info);
+
 		//INSERT ELEMENT
 	QString insert_element_query("INSERT INTO element (uuid, diagram_uuid, pos, type, sub_type) VALUES (:uuid, :diagram_uuid, :pos, :type, :sub_type)");
 	m_insert_elements_query = QSqlQuery(m_data_base);

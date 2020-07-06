@@ -48,15 +48,21 @@ class DiagramEventInterface;
 	This class represents an electric diagram. It manages its various child
 	elements, conductors and texts and handles their graphic rendering.
 */
+
+class DiagramFolioList;
+class QETProject;
+
 class Diagram : public QGraphicsScene
 {
+	friend DiagramFolioList;
+	friend QETProject;
+
 	Q_OBJECT
 	
 		// constructors, destructor
-	public:
+	private:
 		Diagram(QETProject *project);
 		~Diagram() override;
-	private:
 		Diagram(const Diagram &diagram);
 	
 	// ATTRIBUTES
@@ -148,7 +154,6 @@ class Diagram : public QGraphicsScene
 	
 			// methods related to parent project
 		QETProject *project() const;
-		void        setProject(QETProject *);
 		int         folioIndex() const;
 		qreal       declaredQElectroTechVersion(bool = true) const;
 		void        showMe() {emit showDiagram(this);}

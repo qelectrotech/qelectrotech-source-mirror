@@ -26,6 +26,7 @@
 
 class Element;
 class QETProject;
+class Diagram;
 
 /**
  * @brief The projectDataBase class
@@ -51,6 +52,8 @@ class projectDataBase : public QObject
 		void addElement(Element *element);
 		void removeElement(Element *element);
 		void elementInfoChanged(Element *element);
+		void addDiagram(Diagram *diagram);
+		void removeDiagram(Diagram *diagram);
 
 	signals:
 		void dataBaseUpdated();
@@ -72,7 +75,10 @@ class projectDataBase : public QObject
 		QSqlQuery m_insert_elements_query,
 				  m_insert_element_info_query,
 				  m_remove_element_query,
-				  m_update_element_query;
+				  m_update_element_query,
+				  m_insert_diagram_query,
+				  m_remove_diagram_query,
+				  m_insert_diagram_info_query;
 
 	public:
 		static void exportDb(projectDataBase *db, QWidget *parent = nullptr, const QString &caption = QString(), const QString &dir = QString());
