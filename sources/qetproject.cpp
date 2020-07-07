@@ -115,7 +115,7 @@ QETProject::QETProject(KAutoSaveFile *backup, QObject *parent) :
 QETProject::~QETProject()
 {
 	for (auto diagram : m_diagrams_list)
-		diagram->deleteLater();
+		delete  diagram;
 }
 
 /**
