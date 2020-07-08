@@ -369,7 +369,11 @@ void ProjectDBModel::fillValue()
 		auto i=0;
 		while (query_.value(i).isValid())
 		{
-			record_ << query_.value(i).toString();
+			if (query_.value(i).canConvert(QMetaType::QDate)) {
+				record_ << QLocale::system().toString(query_.value(i).toDate(), QLocale::ShortFormat);
+			} else {
+				record_ << query_.value(i).toString();
+			}
 			++i;
 		}
 		m_record << record_;
