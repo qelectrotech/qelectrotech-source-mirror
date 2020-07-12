@@ -104,6 +104,10 @@ QString ConductorNumExport::wiresNum() const
     return csv;
 }
 
+/**
+ * @brief ConductorNumExport::fillHash
+ * @value m_hash
+ */
 void ConductorNumExport::fillHash()
 {
         //We used this rx to avoid insert num composed only withe white space.
