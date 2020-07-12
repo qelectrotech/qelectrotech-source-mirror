@@ -1077,7 +1077,7 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="161"/>
         <source>Couleur du texte:</source>
-        <translation type="unfinished"></translation>
+        <translation>Szöveg színe:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="192"/>
@@ -2092,14 +2092,15 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="350"/>
         <source>Type : %1
 </source>
-        <translation type="unfinished">Típus : %1
+        <translation>Típus : %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="351"/>
         <source>Sous-type : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Altípus : %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="352"/>
@@ -5172,13 +5173,13 @@ Akarod menteni a változásokat?</translation>
         <location filename="../sources/qetapp.cpp" line="334"/>
         <location filename="../sources/qetapp.cpp" line="411"/>
         <source>Couleur du fil</source>
-        <translation type="unfinished"></translation>
+        <translation>Vezető színe</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="335"/>
         <location filename="../sources/qetapp.cpp" line="412"/>
         <source>Section du fil</source>
-        <translation type="unfinished"></translation>
+        <translation>Vezető keresztmetszete</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="341"/>
