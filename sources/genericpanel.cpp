@@ -367,17 +367,24 @@ QTreeWidgetItem *GenericPanel::updateDiagramItem(QTreeWidgetItem *diagram_qtwi, 
 
 
 /**
-	
+	@brief GenericPanel::fillDiagramItem
+	@param diagram_qtwi
+	@param Q_UNUSED(diagram)
+	@param options
+	@param freshly_created
+	@return fillItem(diagram_qtwi, options, freshly_created)
 */
 QTreeWidgetItem *GenericPanel::fillDiagramItem(QTreeWidgetItem *diagram_qtwi, Diagram *diagram, PanelOptions options, bool freshly_created) {
 	Q_UNUSED(diagram)
-	Q_UNUSED(options)
-	Q_UNUSED(freshly_created)
 	return(fillItem(diagram_qtwi, options, freshly_created));
 }
 
 /**
-	
+	@brief GenericPanel::addTemplatesCollection
+	@param tbt_collection
+	@param parent_item
+	@param options
+	@return tbt_collection_qtwi
 */
 QTreeWidgetItem *GenericPanel::addTemplatesCollection(TitleBlockTemplatesCollection *tbt_collection, QTreeWidgetItem *parent_item, PanelOptions options) {
 	if (!tbt_collection) return(nullptr);
@@ -523,10 +530,14 @@ QTreeWidgetItem *GenericPanel::getItemForTemplate(const TitleBlockTemplateLocati
 }
 
 /**
-	
+	@brief GenericPanel::updateTemplateItem
+	@param tb_template_qtwi
+	@param tb_template
+	@param options
+	@param freshly_created
+	@return updateItem(tb_template_qtwi, options, freshly_created)
 */
 QTreeWidgetItem *GenericPanel::updateTemplateItem(QTreeWidgetItem *tb_template_qtwi, const TitleBlockTemplateLocation &tb_template, PanelOptions options, bool freshly_created) {
-	Q_UNUSED(options)
 	tb_template_qtwi -> setText(0, tr("Modèle \"%1\"", "used to display a title block template").arg(tb_template.name()));
 	QString tbt_whatsthis = tr(
         "Ceci est un modèle de cartouche, qui peut être appliqué à un folio.",
@@ -553,22 +564,29 @@ QTreeWidgetItem *GenericPanel::updateTemplateItem(QTreeWidgetItem *tb_template_q
 }
 
 /**
-	
+	@brief GenericPanel::fillTemplateItem
+	@param tb_template_qtwi
+	@param tb_template
+	@param options
+	@param freshly_created
+	@return fillItem(tb_template_qtwi, options, freshly_created)
 */
 QTreeWidgetItem *GenericPanel::fillTemplateItem(QTreeWidgetItem *tb_template_qtwi, const TitleBlockTemplateLocation &tb_template, PanelOptions options, bool freshly_created) {
 	Q_UNUSED(tb_template)
-	Q_UNUSED(options)
-	Q_UNUSED(freshly_created)
 	return(fillItem(tb_template_qtwi, options, freshly_created));
 }
 
 /**
+	@brief GenericPanel::updateItem
 	This generic method is called at the end of each update*Item method. Its
 	only purpose is being reimplemented in a subclass. The default
 	implementation does nothing.
+	@param qtwi
+	@param options
+	@param freshly_created
+	@return qtwi
 */
 QTreeWidgetItem *GenericPanel::updateItem(QTreeWidgetItem *qtwi, PanelOptions options, bool freshly_created) {
-	Q_UNUSED(qtwi);
 	Q_UNUSED(options);
 	Q_UNUSED(freshly_created);
 	QApplication::processEvents();
@@ -576,19 +594,24 @@ QTreeWidgetItem *GenericPanel::updateItem(QTreeWidgetItem *qtwi, PanelOptions op
 }
 
 /**
+	@brief GenericPanel::fillItem
 	This generic method is called at the end of each fill*Item method. Its
 	only purpose is being reimplemented in a subclass. The default
 	implementation does nothing.
+	@param qtwi
+	@param options
+	@param freshly_created
+	@return qtwi
 */
 QTreeWidgetItem *GenericPanel::fillItem(QTreeWidgetItem *qtwi, PanelOptions options, bool freshly_created) {
-	Q_UNUSED(qtwi);
 	Q_UNUSED(options);
 	Q_UNUSED(freshly_created);
 	return(qtwi);
 }
 
 /**
-	
+	@brief GenericPanel::projectInformationsChanged
+	@param project
 */
 void GenericPanel::projectInformationsChanged(QETProject *project) {
 	addProject(project, nullptr, AddAllChild);
@@ -675,17 +698,20 @@ void GenericPanel::templatesCollectionChanged(TitleBlockTemplatesCollection*coll
 }
 
 /**
-	
+	@brief GenericPanel::diagramUsedTemplate
+	@param collection
+	@param name
 */
 void GenericPanel::diagramUsedTemplate(TitleBlockTemplatesCollection *collection, const QString &name) {
-	Q_UNUSED(collection)
 	Q_UNUSED(name)
 	addTemplatesCollection(collection);
 	emit(panelContentChanged());
 }
 
 /**
-	
+	@brief GenericPanel::defaultText
+	@param type
+	@return the default text for \a type
 */
 QString GenericPanel::defaultText(QET::ItemType type) {
 	switch(type) {
