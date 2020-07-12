@@ -369,7 +369,8 @@ void ProjectDBModel::fillValue()
 		auto i=0;
 		while (query_.value(i).isValid())
 		{
-			if (query_.value(i).canConvert(QMetaType::QDate)) {
+			auto date = query_.value(i).toDate();
+			if (!date.isNull()) {
 				record_ << QLocale::system().toString(query_.value(i).toDate(), QLocale::ShortFormat);
 			} else {
 				record_ << query_.value(i).toString();
