@@ -19,6 +19,7 @@
 #include <QFileSystemModel>
 
 /**
+	@brief ExportPropertiesWidget::ExportPropertiesWidget
 	Constructeur
 	@param parent QWidget parent
 */
@@ -30,6 +31,7 @@ ExportPropertiesWidget::ExportPropertiesWidget(QWidget *parent) : QWidget(parent
 }
 
 /**
+	@brief ExportPropertiesWidget::ExportPropertiesWidget
 	Constructeur
 	@param export_properties Parametres d'export a afficher / editer
 	@param parent QWidget parent
@@ -39,11 +41,15 @@ ExportPropertiesWidget::ExportPropertiesWidget(const ExportProperties &export_pr
 	setExportProperties(export_properties);
 }
 
-/// Destructeur
+/**
+	@brief ExportPropertiesWidget::~ExportPropertiesWidget
+	Destructeur
+*/
 ExportPropertiesWidget::~ExportPropertiesWidget() {
 }
 
 /**
+	@brief ExportPropertiesWidget::exportProperties
 	@return les parametres d'export definis via le widget
 */
 ExportProperties ExportPropertiesWidget::exportProperties() const {
@@ -62,6 +68,7 @@ ExportProperties ExportPropertiesWidget::exportProperties() const {
 }
 
 /**
+	@brief ExportPropertiesWidget::setExportProperties
 	@param export_properties les parametres d'export a afficher / editer via le widget
 */
 void ExportPropertiesWidget::setExportProperties(const ExportProperties &export_properties) {
@@ -101,7 +108,9 @@ void ExportPropertiesWidget::setPrintingMode(bool mode) {
 }
 
 /**
-	Slot demandant a l'utilisateur de choisir un dossier
+	@brief ExportPropertiesWidget::slot_chooseADirectory
+	Slot asking the user to choose a folder
+	/ Slot demandant a l'utilisateur de choisir un dossier
 */
 void ExportPropertiesWidget::slot_chooseADirectory() {
 	QString user_dir = QFileDialog::getExistingDirectory(
@@ -115,7 +124,9 @@ void ExportPropertiesWidget::slot_chooseADirectory() {
 }
 
 /**
-	Cette methode construit le widget en lui-meme
+	@brief ExportPropertiesWidget::build
+	Generated the ExportPropertiesWidget ui
+	/ Cette methode construit le widget en lui-meme
 */
 void ExportPropertiesWidget::build() {
 	// le dialogue est un empilement vertical d'elements
