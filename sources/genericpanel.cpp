@@ -51,6 +51,11 @@ int GenericPanel::currentItemType() {
 	return(current_qtwi -> type());
 }
 
+/**
+	@brief GenericPanel::projectForItem
+	@param item
+	@return nullptr
+*/
 QETProject *GenericPanel::projectForItem(QTreeWidgetItem *item) const {
 	if (item && item -> type() == QET::Project) {
 		return(valueForItem<QETProject *>(item));
@@ -60,7 +65,9 @@ QETProject *GenericPanel::projectForItem(QTreeWidgetItem *item) const {
 }
 
 /**
-	
+	@brief GenericPanel::diagramForItem
+	@param item
+	@return nullptr
 */
 Diagram *GenericPanel::diagramForItem(QTreeWidgetItem *item) const {
 	if (item && item -> type() == QET::Diagram) {
@@ -70,7 +77,9 @@ Diagram *GenericPanel::diagramForItem(QTreeWidgetItem *item) const {
 }
 
 /**
-	
+	@brief GenericPanel::templateLocationForItem
+	@param item
+	@return TitleBlockTemplateLocation()
 */
 TitleBlockTemplateLocation GenericPanel::templateLocationForItem(QTreeWidgetItem *item) const {
 	if (item && item -> type() & QET::TitleBlockTemplatesCollectionItem) {
@@ -80,28 +89,35 @@ TitleBlockTemplateLocation GenericPanel::templateLocationForItem(QTreeWidgetItem
 }
 
 /**
-	
+	@brief GenericPanel::selectedProject
+	@return projectForItem(currentItem())
 */
 QETProject *GenericPanel::selectedProject() const {
 	return(projectForItem(currentItem()));
 }
 
 /**
-	
+	@brief GenericPanel::selectedDiagram
+	@return diagramForItem(currentItem())
 */
 Diagram *GenericPanel::selectedDiagram() const {
 	return(diagramForItem(currentItem()));
 }
 
 /**
-	
+	@brief GenericPanel::selectedTemplateLocation
+	@return templateLocationForItem(currentItem())
 */
 TitleBlockTemplateLocation GenericPanel::selectedTemplateLocation() const {
 	return(templateLocationForItem(currentItem()));
 }
 
 /**
-	
+	@brief GenericPanel::addProject
+	@param project
+	@param parent_item
+	@param options
+	@return project_qtwi
 */
 QTreeWidgetItem *GenericPanel::addProject(QETProject *project, QTreeWidgetItem *parent_item, PanelOptions options) {
 	if (!project) return(nullptr);
@@ -148,7 +164,12 @@ QTreeWidgetItem *GenericPanel::getItemForProject(QETProject *project, bool *crea
 }
 
 /**
-	
+	@brief GenericPanel::updateProjectItem
+	@param project_qtwi
+	@param project
+	@param options
+	@param freshly_created
+	@return updateItem(project_qtwi, options, freshly_created)
 */
 QTreeWidgetItem *GenericPanel::updateProjectItem(QTreeWidgetItem *project_qtwi, QETProject *project, PanelOptions options, bool freshly_created) {
 	Q_UNUSED(options)
@@ -185,7 +206,12 @@ QTreeWidgetItem *GenericPanel::updateProjectItem(QTreeWidgetItem *project_qtwi, 
 }
 
 /**
-	
+	@brief GenericPanel::fillProjectItem
+	@param project_qtwi
+	@param project
+	@param options
+	@param freshly_created
+	@return fillItem(project_qtwi, options, freshly_created)
 */
 QTreeWidgetItem *GenericPanel::fillProjectItem(QTreeWidgetItem *project_qtwi, QETProject *project, PanelOptions options, bool freshly_created) {
 	if (!project_qtwi || !project) return(nullptr);
@@ -235,7 +261,11 @@ QTreeWidgetItem *GenericPanel::fillProjectItem(QTreeWidgetItem *project_qtwi, QE
 }
 
 /**
-	
+	@brief GenericPanel::addDiagram
+	@param diagram
+	@param parent_item
+	@param options
+	@return diagram_qtwi
 */
 QTreeWidgetItem *GenericPanel::addDiagram(Diagram *diagram, QTreeWidgetItem *parent_item, PanelOptions options) {
 	Q_UNUSED(options)
@@ -252,7 +282,10 @@ QTreeWidgetItem *GenericPanel::addDiagram(Diagram *diagram, QTreeWidgetItem *par
 }
 
 /**
-	
+	@brief GenericPanel::getItemForDiagram
+	@param diagram
+	@param created
+	@return diagram_qtwi
 */
 QTreeWidgetItem *GenericPanel::getItemForDiagram(Diagram *diagram, bool *created) {
 	if (!diagram) return(nullptr);
@@ -269,7 +302,12 @@ QTreeWidgetItem *GenericPanel::getItemForDiagram(Diagram *diagram, bool *created
 }
 
 /**
-	
+	@brief GenericPanel::updateDiagramItem
+	@param diagram_qtwi
+	@param diagram
+	@param options
+	@param freshly_created
+	@return updateItem(diagram_qtwi, options, freshly_created)
 */
 QTreeWidgetItem *GenericPanel::updateDiagramItem(QTreeWidgetItem *diagram_qtwi, Diagram *diagram, PanelOptions options, bool freshly_created) {
 	Q_UNUSED(options)
@@ -354,7 +392,10 @@ QTreeWidgetItem *GenericPanel::addTemplatesCollection(TitleBlockTemplatesCollect
 }
 
 /**
-	
+	@brief GenericPanel::itemForTemplatesCollection
+	@param tbt_collection
+	@return tb_templates_.value(tbt_collection -> location(), nullptr)
+	@return nullptr
 */
 QTreeWidgetItem *GenericPanel::itemForTemplatesCollection(TitleBlockTemplatesCollection *tbt_collection) {
 	if (!tbt_collection) return(nullptr);
@@ -362,7 +403,10 @@ QTreeWidgetItem *GenericPanel::itemForTemplatesCollection(TitleBlockTemplatesCol
 }
 
 /**
-	
+	@brief GenericPanel::getItemForTemplatesCollection
+	@param tbt_collection
+	@param created
+	@return tbt_collection_item
 */
 QTreeWidgetItem *GenericPanel::getItemForTemplatesCollection(TitleBlockTemplatesCollection *tbt_collection, bool *created) {
 	if (!tbt_collection) return(nullptr);
@@ -378,7 +422,12 @@ QTreeWidgetItem *GenericPanel::getItemForTemplatesCollection(TitleBlockTemplates
 }
 
 /**
-	
+	@brief GenericPanel::updateTemplatesCollectionItem
+	@param tbt_collection_qtwi
+	@param tbt_collection
+	@param options
+	@param freshly_created
+	@return updateItem(tbt_collection_qtwi, options, freshly_created)
 */
 QTreeWidgetItem *GenericPanel::updateTemplatesCollectionItem(QTreeWidgetItem *tbt_collection_qtwi, TitleBlockTemplatesCollection *tbt_collection, PanelOptions options, bool freshly_created) {
 	Q_UNUSED(options)
@@ -397,7 +446,12 @@ QTreeWidgetItem *GenericPanel::updateTemplatesCollectionItem(QTreeWidgetItem *tb
 }
 
 /**
-	
+	@brief GenericPanel::fillTemplatesCollectionItem
+	@param tbt_collection_qtwi
+	@param tbt_collection
+	@param options
+	@param freshly_created
+	@return fillItem(tbt_collection_qtwi, options, freshly_created)
 */
 QTreeWidgetItem *GenericPanel::fillTemplatesCollectionItem(QTreeWidgetItem *tbt_collection_qtwi, TitleBlockTemplatesCollection *tbt_collection, PanelOptions options, bool freshly_created) {
 	if (!tbt_collection_qtwi || !tbt_collection) return(tbt_collection_qtwi);
@@ -430,7 +484,11 @@ QTreeWidgetItem *GenericPanel::fillTemplatesCollectionItem(QTreeWidgetItem *tbt_
 }
 
 /**
-	
+	@brief GenericPanel::addTemplate
+	@param tb_template
+	@param parent_item
+	@param options
+	@return tb_template_qtwi
 */
 QTreeWidgetItem *GenericPanel::addTemplate(const TitleBlockTemplateLocation &tb_template, QTreeWidgetItem *parent_item, PanelOptions options) {
 	if (!tb_template.isValid()) return(nullptr);
@@ -445,7 +503,10 @@ QTreeWidgetItem *GenericPanel::addTemplate(const TitleBlockTemplateLocation &tb_
 }
 
 /**
-	
+	@brief GenericPanel::getItemForTemplate
+	@param tb_template
+	@param created
+	@return tb_template_qtwi
 */
 QTreeWidgetItem *GenericPanel::getItemForTemplate(const TitleBlockTemplateLocation &tb_template, bool *created) {
 	if (!tb_template.isValid()) return(nullptr);
@@ -535,7 +596,9 @@ void GenericPanel::projectInformationsChanged(QETProject *project) {
 }
 
 /**
-	
+	@brief GenericPanel::diagramAdded
+	@param project
+	@param diagram
 */
 void GenericPanel::diagramAdded(QETProject *project, Diagram *diagram) {
 	Q_UNUSED(diagram)
@@ -544,7 +607,9 @@ void GenericPanel::diagramAdded(QETProject *project, Diagram *diagram) {
 }
 
 /**
-	
+	@brief GenericPanel::diagramRemoved
+	@param project
+	@param diagram
 */
 void GenericPanel::diagramRemoved(QETProject *project, Diagram *diagram) {
 	Q_UNUSED(diagram)
@@ -553,11 +618,11 @@ void GenericPanel::diagramRemoved(QETProject *project, Diagram *diagram) {
 }
 
 /**
- * @brief GenericPanel::projectDiagramsOrderChanged
- * @param project project where diagram moved
- * @param from Index of diagram before move
- * @param to Index of diagram after move
- */
+	@brief GenericPanel::projectDiagramsOrderChanged
+	@param project project where diagram moved
+	@param from Index of diagram before move
+	@param to Index of diagram after move
+*/
 void GenericPanel::projectDiagramsOrderChanged(QETProject *project, int from, int to)
 {
 		// get the item representing the provided project
@@ -702,7 +767,9 @@ void GenericPanel::markItemAsUnused(QTreeWidgetItem *qtwi) {
 }
 
 /**
-	
+	@brief GenericPanel::reparent
+	@param item
+	@param parent
 */
 void GenericPanel::reparent(QTreeWidgetItem *item, QTreeWidgetItem *parent) {
 	if (parent && item -> parent() != parent) {
@@ -767,8 +834,10 @@ template QETProject* GenericPanel::valueForItem(QTreeWidgetItem*)
 const;
 template Diagram* GenericPanel::valueForItem(QTreeWidgetItem*)
 const;
+
 /**
-	
+	@brief GenericPanel::unregisterItem
+	@param item
 */
 void GenericPanel::unregisterItem(QTreeWidgetItem *item) {
 	if (!item) return;
