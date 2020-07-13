@@ -2,6 +2,7 @@
     <uuid uuid="{e86a32d7-9d91-4015-ab07-bb4fa9f1c0a4}"/>
     <names>
         <name lang="de">Vaillant Gastherme ecoTEC VC AT 196/3-5</name>
+        <name lang="fr">Vaillant Gastherme ecoTEC VC AT 196/3-5</name>
     </names>
     <elementInformations>
         <elementInformation show="1" name="label"></elementInformation>
