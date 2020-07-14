@@ -1,0 +1,16 @@
+<qet-directory>
+    <names>
+        <name lang="en">Home installation</name>
+        <name lang="fr">Installation domestique</name>
+        <name lang="de">Haustechnik Installation</name>
+        <name lang="ru">Бытовая техника</name>
+        <name lang="pt">Electrodomésticos</name>
+        <name lang="ar">منزليات</name>
+        <name lang="pl">Instalacje w obiektach budowlanych</name>
+        <name lang="es">Electrodoméstico</name>
+        <name lang="cs">Domácí elektrotechnika</name>
+        <name lang="it">Impianti civili</name>
+        <name lang="el">Οικιακά</name>
+        <name lang="nl">Huisinstallatie</name>
+    </names>
+</qet-directory>
