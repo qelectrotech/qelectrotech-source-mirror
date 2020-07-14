@@ -43,15 +43,15 @@ class QETProject;
 class Terminal;
 class DiagramImageItem;
 class DiagramEventInterface;
-
-/**
-	This class represents an electric diagram. It manages its various child
-	elements, conductors and texts and handles their graphic rendering.
-*/
-
 class DiagramFolioList;
 class QETProject;
 
+/**
+	@brief The Diagram class
+	This class represents an electric diagram.
+	It manages its various child elements,
+	conductors and texts and handles their graphic rendering.
+*/
 class Diagram : public QGraphicsScene
 {
 	friend DiagramFolioList;
