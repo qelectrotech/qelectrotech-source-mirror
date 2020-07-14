@@ -41,7 +41,9 @@ class QetGraphicsItem;
 template <typename QGI>
 class AddItemCommand : public QUndoCommand {
 	public:
-		AddItemCommand(QGI item, Diagram *diagram, const QPointF &pos = QPointF(), QUndoCommand *parent = nullptr) :
+		AddItemCommand(QGI item, Diagram *diagram,
+			       const QPointF &pos = QPointF(),
+			       QUndoCommand *parent = nullptr) :
 			QUndoCommand (parent),
 			m_item (item),
 			m_diagram (diagram),

@@ -167,11 +167,19 @@ class Diagram : public QGraphicsScene
 	
 		// methods related to XML import/export
 		QDomDocument toXml(bool = true);
-		bool initFromXml(QDomElement &, QPointF = QPointF(), bool = true, DiagramContent * = nullptr);
-		bool fromXml(QDomDocument &, QPointF = QPointF(), bool = true, DiagramContent * = nullptr);
-		bool fromXml(QDomElement &, QPointF = QPointF(), bool = true, DiagramContent * = nullptr);
-		void folioSequentialsToXml(QHash<QString, QStringList>*, QDomElement *, const QString&, const QString&, QDomDocument *);
-		void folioSequentialsFromXml(const QDomElement&, QHash<QString, QStringList>*, const QString&, const QString&, const QString&, const QString&);
+		bool initFromXml(QDomElement &, QPointF = QPointF(),
+				bool = true, DiagramContent * = nullptr);
+		bool fromXml(QDomDocument &, QPointF = QPointF(),
+			     bool = true, DiagramContent * = nullptr);
+		bool fromXml(QDomElement &, QPointF = QPointF(),
+			     bool = true, DiagramContent * = nullptr);
+		void folioSequentialsToXml(QHash<QString, QStringList>*,
+					   QDomElement *, const QString&,
+					   const QString&, QDomDocument *);
+		void folioSequentialsFromXml(const QDomElement&, QHash<QString,
+					     QStringList>*, const QString&,
+					     const QString&, const QString&,
+					     const QString&);
 	
 		void refreshContents();
 	
@@ -196,7 +204,8 @@ class Diagram : public QGraphicsScene
 		void setDrawColoredConductors(bool);
 	
 		QString title() const;
-		bool toPaintDevice(QPaintDevice &, int = -1, int = -1, Qt::AspectRatioMode = Qt::KeepAspectRatio);
+		bool toPaintDevice(QPaintDevice &, int = -1, int = -1,
+				   Qt::AspectRatioMode = Qt::KeepAspectRatio);
 		QSize imageSize() const;
 		
 		bool isEmpty() const;
@@ -225,16 +234,22 @@ class Diagram : public QGraphicsScene
 		void setFreezeNewConductors(bool);
 		bool freezeNewConductors();
 	
-			//methods related to insertion and loading of folio sequential
-		void insertFolioSeqHash (QHash<QString, QStringList> *hash, const QString& title, const QString& seq, NumerotationContext *nc);
-		void loadFolioSeqHash (QHash<QString, QStringList> *hash, const QString& title, const QString& seq, NumerotationContext *nc);
+		//methods related to insertion and loading of folio sequential
+		void insertFolioSeqHash (QHash<QString, QStringList> *hash,
+					 const QString& title,
+					 const QString& seq,
+					 NumerotationContext *nc);
+		void loadFolioSeqHash (QHash<QString, QStringList> *hash,
+				       const QString& title, const QString& seq,
+				       NumerotationContext *nc);
 		void changeZValue(QET::DepthOption option);
 
 	public slots:
 		void adjustSceneRect ();
 		void titleChanged(const QString &);
 		void titleBlockTemplateChanged(const QString &);
-		void titleBlockTemplateRemoved(const QString &, const QString & = QString());
+		void titleBlockTemplateRemoved(const QString &,
+					       const QString & = QString());
 		void setTitleBlockTemplate(const QString &);
 		void updateLabels();
 		void loadElmtFolioSeq();
@@ -249,15 +264,24 @@ class Diagram : public QGraphicsScene
 		void showDiagram (Diagram *);
 		void usedTitleBlockTemplateChanged(const QString &);
 		void diagramTitleChanged(Diagram *, const QString &);
-		void findElementRequired(const ElementsLocation &);		/// Signal emitted when users wish to locate an element from the diagram within elements collection
-		void editElementRequired(const ElementsLocation &);		/// Signal emitted when users wish to edit an element from the diagram
+
+		/// Signal emitted when users wish to locate an element
+		/// from the diagram within elements collection
+		void findElementRequired(const ElementsLocation &);
+
+		/// Signal emitted when users wish to edit an element from the diagram
+		void editElementRequired(const ElementsLocation &);
+
 		void diagramActivated();
 };
 Q_DECLARE_METATYPE(Diagram *)
 
 /**
-	Display or hide the conductor setter, i.e. a dashed conductor stub which appears when creating a conductor between two terminals.
-	@param pf true pour ajouter le poseur de conducteur, false pour l'enlever
+	@brief Diagram::setConductor
+	Display or hide the conductor setter,
+	i.e. a dashed conductor stub which appears
+	when creating a conductor between two terminals.
+	@param adding true add conductor ,false remove conductor
 */
 inline void Diagram::setConductor(bool adding) {
 	if (adding) {
@@ -337,8 +361,10 @@ inline void Diagram::setBorderOptions(Diagram::BorderOptions bo) {
 */
 inline Diagram::BorderOptions Diagram::borderOptions() {
 	BorderOptions options = EmptyBorder;
-	if (border_and_titleblock.titleBlockIsDisplayed()) options = (BorderOptions)(options|TitleBlock);
-	if (border_and_titleblock.columnsAreDisplayed()) options = (BorderOptions)(options|Columns);
+	if (border_and_titleblock.titleBlockIsDisplayed())
+		options = (BorderOptions)(options|TitleBlock);
+	if (border_and_titleblock.columnsAreDisplayed())
+		options = (BorderOptions)(options|Columns);
 	return(options);
 }
 
