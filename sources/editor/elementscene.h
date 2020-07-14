@@ -67,7 +67,7 @@ class ElementScene : public QGraphicsScene
 		QString m_informations; /// Extra informations
 		QString m_elmt_type; /// element type
 		DiagramContext m_elmt_kindInfo,
-					   m_elmt_information; /// element kind info
+			       m_elmt_information; /// element kind info
 		QGIManager m_qgi_manager;
 		QUndoStack m_undo_stack;
 
@@ -84,7 +84,7 @@ class ElementScene : public QGraphicsScene
 		ElementPrimitiveDecorator *m_decorator = nullptr;
 
 		int m_x_grid,
-			m_y_grid;
+		    m_y_grid;
 	
 		// methods
 	public:

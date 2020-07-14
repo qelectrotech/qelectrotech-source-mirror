@@ -89,14 +89,13 @@ class Diagram : public QGraphicsScene
 		static int xKeyGrid;
 		/// Key grid y step size
 		static int yKeyGrid;
-        /// Key grid fine x step size
-        static int xKeyGridFine;
-        /// Key grid fine y step size
-        static int yKeyGridFine;
+		/// Key grid fine x step size
+		static int xKeyGridFine;
+		/// Key grid fine y step size
+		static int yKeyGridFine;
 		/// margin around the diagram
 		static const qreal margin;
 		/// background color of diagram
-
 		static QColor background_color;
 		/// Hash containing max values for folio sequential autonums in this diagram
 		QHash <QString, QStringList> m_elmt_unitfolio_max;
@@ -146,21 +145,21 @@ class Diagram : public QGraphicsScene
 		QUuid uuid();
 		void setEventInterface (DiagramEventInterface *event_interface);
 		void clearEventInterface();
-			
-			//methods related to autonum
+
+		//methods related to autonum
 		QString conductorsAutonumName() const;
 		void setConductorsAutonumName(const QString &name);
 
 		static bool clipboardMayContainDiagram();
 	
-			// methods related to parent project
+		// methods related to parent project
 		QETProject *project() const;
 		int         folioIndex() const;
 		qreal       declaredQElectroTechVersion(bool = true) const;
 		void        showMe() {emit showDiagram(this);}
 		bool        isReadOnly() const;
 	
-			// methods related to conductor creation
+		// methods related to conductor creation
 		void setConductor(bool);
 		void setConductorStart (QPointF);
 		void setConductorStop(QPointF);
@@ -176,11 +175,11 @@ class Diagram : public QGraphicsScene
 	
 		void refreshContents();
 	
-			// methods related to graphics items addition/removal on the diagram
+		// methods related to graphics items addition/removal on the diagram
 		virtual void addItem    (QGraphicsItem *item);
 		virtual void removeItem (QGraphicsItem *item);
 	
-			// methods related to graphics options
+		// methods related to graphics options
 		ExportProperties applyProperties(const ExportProperties &);
 		void setDisplayGrid(bool);
 		bool displayGrid();
@@ -215,13 +214,13 @@ class Diagram : public QGraphicsScene
 		QUndoStack &undoStack();
 		QGIManager &qgiManager();
 	
-			//methods related to element label Update Policy
+		//methods related to element label Update Policy
 		void freezeElements(bool freeze);
 		void unfreezeElements();
 		void setFreezeNewElements(bool);
 		bool freezeNewElements();
 	
-			//methods related to conductor label Update Policy
+		//methods related to conductor label Update Policy
 		void freezeConductors(bool freeze);
 		void setFreezeNewConductors(bool);
 		bool freezeNewConductors();
@@ -241,7 +240,7 @@ class Diagram : public QGraphicsScene
 		void loadElmtFolioSeq();
 		void loadCndFolioSeq();
 	
-			// methods related to graphics items selection
+		// methods related to graphics items selection
 		void selectAll();
 		void deselectAll();
 		void invertSelection();
