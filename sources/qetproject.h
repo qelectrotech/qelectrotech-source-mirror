@@ -77,8 +77,6 @@ class QETProject : public QObject
 		QUuid uuid() const;
 		ProjectState state() const;
 		QList<Diagram *> diagrams() const;
-		int getFolioSheetsQuantity() const; /// get the folio sheets quantity for this project
-		void setFolioSheetsQuantity(int);   /// set the folio sheets quantity for this project
 		int folioIndex(const Diagram *) const;
 		XmlElementCollection *embeddedElementCollection()const;
 		TitleBlockTemplatesProjectCollection *embeddedTitleBlockTemplatesCollection();
@@ -169,7 +167,6 @@ class QETProject : public QObject
 	
 	public slots:
 		Diagram *addNewDiagram(int pos = -1);
-		QList <Diagram *> addNewDiagramFolioList();
 		void removeDiagram(Diagram *);
 		void diagramOrderChanged(int, int);
 		void setModified(bool);
@@ -261,8 +258,6 @@ class QETProject : public QObject
 			/// Element Auto Numbering
 		QHash <QString, NumerotationContext> m_element_autonum; //Title and NumContext hash
 		QString m_current_element_autonum;
-			/// Folio List Sheets quantity for this project.
-		int m_folio_sheets_quantity = 0;
 		bool m_auto_conductor = true;
 		XmlElementCollection *m_elements_collection = nullptr;
 		bool m_freeze_new_elements = false;

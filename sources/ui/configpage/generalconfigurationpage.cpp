@@ -55,7 +55,6 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_export_terminal->setChecked(settings.value("nomenclature-exportlist", true).toBool());
 	ui->m_border_0->setChecked(settings.value("border-columns_0", false).toBool());
 	ui->m_autosave_sb->setValue(settings.value("diagrameditor/autosave-interval", 0).toInt());
-	ui->m_foliolist_sb->setValue(settings.value("projectview/foliolist_position", 2).toInt());
 	
 	QString fontInfos = settings.value("diagramitemfont").toString() + " " +
                         settings.value("diagramitemsize").toString() + " (" +
@@ -175,7 +174,6 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue("diagrameditor/highlight-integrated-elements", ui->m_highlight_integrated_elements->isChecked());
 	settings.setValue("diagrameditor/zoom-out-beyond-of-folio", ui->m_zoom_out_beyond_folio->isChecked());
 	settings.setValue("diagrameditor/autosave-interval", ui->m_autosave_sb->value());
-	settings.setValue("projectview/foliolist_position", ui->m_foliolist_sb->value());
 		//Grid step and key navigation
 	settings.setValue("diagrameditor/Xgrid", ui->DiagramEditor_xGrid_sb->value());
 	settings.setValue("diagrameditor/Ygrid", ui->DiagramEditor_yGrid_sb->value());

@@ -29,7 +29,6 @@
 #include "qeticons.h"
 #include "qetmessagebox.h"
 #include "qettemplateeditor.h"
-#include "diagramfoliolist.h"
 #include "projectpropertiesdialog.h"
 #include "xmlelementcollection.h"
 #include "autoNum/assignvariables.h"
@@ -343,21 +342,6 @@ QString ProjectView::askUserForFilePath(bool assign) {
 QETResult ProjectView::noProjectResult() const {
 	QETResult no_project(tr("aucun projet affiché", "error message"), false);
 	return(no_project);
-}
-
-/**
- * @brief ProjectView::addNewDiagramFolioList
- * Add new diagram folio list to project
- */
-void ProjectView::addNewDiagramFolioList() {
-	if (m_project -> isReadOnly()) return;
-	QSettings settings;
-	int i = (settings.value("projectview/foliolist_position").toInt() -1); //< Each new diagram is added  to the end of the project.
-			   //< We use @i to move the folio list at second position in the project
-	auto count = m_project->addNewDiagramFolioList().size();
-	for (auto j=0 ; j<count ; ++j) {
-		m_tab->tabBar()->moveTab(diagram_views().size()-1, i);
-	}
 }
 
 /**
@@ -835,12 +819,6 @@ void ProjectView::loadDiagrams()
     }
 	
 	QSettings settings;
-        // If project have the folios list, move it at the beginning of the project
-	if (m_project -> getFolioSheetsQuantity()) {
-		for (int i = 0; i < m_project->getFolioSheetsQuantity(); i++)
-		m_tab -> tabBar() -> moveTab(diagram_views().size()-1, + (settings.value("projectview/foliolist_position").toInt() -1));
-		m_project->setModified(false);
-	}
 }
 
 /**
@@ -899,10 +877,6 @@ void ProjectView::diagramAdded(Diagram *diagram)
 		// signal diagram view was added
 	emit(diagramAdded(dv));
 	m_project->setModified(true);
-
-	if (m_project->diagrams().size() % 58 == 1 && m_project->getFolioSheetsQuantity() != 0) {
-		addNewDiagramFolioList();
-	}
 	showDiagram(dv);
 }
 

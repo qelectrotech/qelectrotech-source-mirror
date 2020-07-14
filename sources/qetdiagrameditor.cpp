@@ -21,7 +21,6 @@
 #include "recentfiles.h"
 #include "qeticons.h"
 #include "qetmessagebox.h"
-#include "diagramfoliolist.h"
 #include "diagrampropertieseditordockwidget.h"
 #include "diagrameventaddshape.h"
 #include "diagrameventaddimage.h"
@@ -379,14 +378,7 @@ void QETDiagramEditor::setUpActions()
 			}
 		}
 	});
-	
-		//Add folio list to current project
-	m_project_folio_list = new QAction(QET::Icons::TableOfContent, tr("Ajouter un sommaire"), this);
-	connect(m_project_folio_list, &QAction::triggered, [this]() {
-		if (ProjectView *current_project = currentProjectView()) {
-			current_project->addNewDiagramFolioList();
-		}
-	});
+
 		//Export nomenclature to CSV
 	m_csv_export = new QAction(QET::Icons::DocumentSpreadsheet, tr("Exporter au format CSV"), this);
 	connect(m_csv_export, &QAction::triggered, [this]() {
@@ -774,7 +766,6 @@ void QETDiagramEditor::setUpMenu() {
 	menu_project -> addAction(m_remove_diagram_from_project);
 	menu_project -> addAction(m_clean_project);
 	menu_project -> addSeparator();
-	menu_project -> addAction(m_project_folio_list);
 	menu_project -> addAction(m_add_nomenclature);
 	menu_project -> addAction(m_add_summary);
 	menu_project -> addAction(m_csv_export);
@@ -1455,7 +1446,6 @@ void QETDiagramEditor::slot_updateActions()
 	m_project_add_diagram  -> setEnabled(editable_project);
 	m_remove_diagram_from_project  -> setEnabled(editable_project);
 	m_clean_project        -> setEnabled(editable_project);
-	m_project_folio_list  -> setEnabled(editable_project);
 	m_add_nomenclature->setEnabled(editable_project);
 	m_add_summary->setEnabled(editable_project);
 	m_csv_export -> setEnabled(editable_project);
@@ -2122,35 +2112,11 @@ void QETDiagramEditor::reloadOldElementPanel() {
 /**
 	Supprime le schema courant du projet courant
 */
-void QETDiagramEditor::removeDiagramFromProject() {
+void QETDiagramEditor::removeDiagramFromProject()
+{
 	if (ProjectView *current_project = currentProjectView()) {
 		if (DiagramView *current_diagram = current_project -> currentDiagram()) {
-			bool isFolioList = false;
-
-			// if diagram to remove is a "folio list sheet", then set a flag.
-			if (dynamic_cast<DiagramFolioList *>(current_diagram -> diagram()))
-				isFolioList = true;
-
 			current_project -> removeDiagram(current_diagram);
-
-			// if the removed diagram was a folio sheet, then delete all the remaining folio sheets also.
-			if (isFolioList) {
-				foreach (DiagramView *diag, current_project -> diagram_views()) {
-					if (dynamic_cast<DiagramFolioList *>(diag -> diagram())) {
-						current_project -> removeDiagram(diag);
-					}
-				}
-
-			  // else if after diagram removal, the total diagram quantity becomes a factor of 58, then
-			  // remove one (last) folio sheet.
-			} else if (current_project -> diagram_views().size() % 58 == 0) {
-				foreach (DiagramView *diag, current_project -> diagram_views()) {
-					DiagramFolioList *ptr = dynamic_cast<DiagramFolioList *>(diag -> diagram());
-					if (ptr && ptr -> getId() == current_project -> project() -> getFolioSheetsQuantity() - 1) {
-						current_project -> removeDiagram(diag);
-					}
-				}
-			}
 		}
 	}
 }

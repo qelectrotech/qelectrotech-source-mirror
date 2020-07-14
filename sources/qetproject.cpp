@@ -17,7 +17,6 @@
 */
 #include "qetproject.h"
 #include "diagram.h"
-#include "diagramfoliolist.h"
 #include "qetapp.h"
 #include "qetresult.h"
 #include "movetemplateshandler.h"
@@ -208,22 +207,6 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 */
 QETProject::ProjectState QETProject::state() const {
 	return(m_state);
-}
-
-/**
-	Get the folioSheetQuantity
-	@return folio Sheets Quantity.
-*/
-int QETProject::getFolioSheetsQuantity() const {
-	return(m_folio_sheets_quantity);
-}
-
-/**
-	Set the folioSheetQuantity to quantity
-	@param New value of quantity to be set.
-*/
-void QETProject::setFolioSheetsQuantity(int quantity) {
-	m_folio_sheets_quantity = quantity;
 }
 
 /**
@@ -834,9 +817,6 @@ QDomDocument QETProject::toXml() {
 	QDomElement project_root = xml_doc.createElement("project");
 	project_root.setAttribute("version", QET::version);
 	project_root.setAttribute("title", project_title_);
-
-	// write the present value of folioSheetsQuantity to XML.
-	project_root.setAttribute("folioSheetQuantity", QString::number(m_folio_sheets_quantity));
 	xml_doc.appendChild(project_root);
 	
 	// titleblock templates, if any
@@ -866,17 +846,12 @@ QDomDocument QETProject::toXml() {
 	const QList<Diagram *> diagrams_list = m_diagrams_list;
 	for(Diagram *diagram : diagrams_list)
 	{
-		// Write the diagram to XML only if it is not of type DiagramFolioList.
-		DiagramFolioList *ptr = dynamic_cast<DiagramFolioList *>(diagram);
-		if ( !ptr )
-		{
-			qDebug() << qPrintable(QString("QETProject::toXml() : exporting diagram \"%1\"").arg(diagram -> title())) << "[" << diagram << "]";
-			QDomElement xml_diagram = diagram->toXml().documentElement();
-			QDomNode xml_node = xml_doc.importNode(xml_diagram, true);
+		qDebug() << qPrintable(QString("QETProject::toXml() : exporting diagram \"%1\"").arg(diagram -> title())) << "[" << diagram << "]";
+		QDomElement xml_diagram = diagram->toXml().documentElement();
+		QDomNode xml_node = xml_doc.importNode(xml_diagram, true);
 
-			QDomNode appended_diagram = project_root.appendChild(xml_node);
-			appended_diagram.toElement().setAttribute("order", order_num ++);
-		}
+		QDomNode appended_diagram = project_root.appendChild(xml_node);
+		appended_diagram.toElement().setAttribute("order", order_num ++);
 	}
 	
 		//Write the elements collection.
@@ -1056,8 +1031,6 @@ ElementsLocation QETProject::importElement(ElementsLocation &location)
 			return loc;
 		}
 	}
-
-	return ElementsLocation();
 }
 
 /**
@@ -1168,49 +1141,6 @@ Diagram *QETProject::addNewDiagram(int pos)
 	emit(diagramAdded(this, diagram));
 	return(diagram);
 }
-
-/**
- * @brief QETProject::addNewDiagramFolioList
- * Add new diagram folio list
- * @return the created diagram
- */
-QList <Diagram *> QETProject::addNewDiagramFolioList()
-{
-	// do nothing if project is read only or folio sheet is alredy created
-	QList <Diagram *> diagram_list;
-
-	if (!isReadOnly() && getFolioSheetsQuantity() == 0) {
-
-		//reset the number of folio sheet
-		setFolioSheetsQuantity(0);
-
-		int diagCount = diagrams().size();
-		for (int i = 0; i <= diagCount/29; i++) {
-
-			//create new diagram
-			Diagram *diagram_folio_list = new DiagramFolioList(this);
-
-			// setup default properties
-			diagram_folio_list -> border_and_titleblock.importBorder(defaultBorderProperties());
-			diagram_folio_list -> border_and_titleblock.importTitleBlock(defaultTitleBlockProperties());
-			diagram_folio_list -> defaultConductorProperties = defaultConductorProperties();
-
-			diagram_folio_list -> border_and_titleblock.setTitle(tr("Liste des Folios"));
-			// no need to display rows and columns
-			diagram_folio_list -> border_and_titleblock.displayRows(false);
-			diagram_folio_list -> border_and_titleblock.displayColumns(false);
-
-			addDiagram(diagram_folio_list);
-			setFolioSheetsQuantity( getFolioSheetsQuantity()+1 );
-			emit(diagramAdded(this, diagram_folio_list));
-			diagram_list << diagram_folio_list;
-			diagCount++;
-		}
-	}
-
-	return(diagram_list);
-}
-
 
 /**
  * @brief QETProject::removeDiagram
@@ -1324,11 +1254,6 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	readElementsCollectionXml(xml_project);
 		//Load the diagrams
 	readDiagramsXml(xml_project);
-
-		// if there is an attribute for folioSheetQuantity, then set it accordingly.
-		// If not, then the value remains at the initial value of zero.
-	if (root_elmt.attribute("folioSheetQuantity","0").toInt())
-		addNewDiagramFolioList();
 	
 	m_state = Ok;
 }

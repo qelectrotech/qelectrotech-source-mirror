@@ -31,7 +31,6 @@
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qetgraphicsitem/diagramimageitem.h"
 #include "qetgraphicsitem/qetshapeitem.h"
-#include "diagramfoliolist.h"
 #include "elementpicturefactory.h"
 #include "element.h"
 #include "dynamicelementtextitem.h"
@@ -427,62 +426,20 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 	//QList<QRectF *> list_ellipses;
 	QList <QetShapeItem *> list_shapes;
 
-	DiagramFolioList *ptr = dynamic_cast<DiagramFolioList *>(diagram);
-	if (ptr) {
-		list_lines = ptr -> lines();
-		list_rectangles = ptr -> rectangles();
-		QSettings settings;
-
-		// fill the rows with text.
-		QString authorTranslatable = tr("Auteur");
-		QString titleTranslatable = tr("Titre");
-		QString folioTranslatable = tr("Folio");
-		QString dateTranslatable = tr("Date");
-
-		qreal x0 = list_rectangles[0] -> topLeft().x();
-		qreal y0 = list_rectangles[0] -> topLeft().y();
-		qreal rowHeight = (list_rectangles[0] -> height())/30;
-		QRectF row_RectF(x0, y0, list_rectangles[0] -> width(), rowHeight);
-
-		fillRow(file_path, row_RectF, authorTranslatable, titleTranslatable, folioTranslatable, dateTranslatable);
-		QList<Diagram *> diagram_list = ptr -> project() -> diagrams();
-
-		int startDiagram = (ptr -> getId()) *29;
-
-		for (int i = startDiagram; i < startDiagram+29 && i < diagram_list.size(); ++i) {
-			y0 += rowHeight;
-			QRectF row_rect(x0, y0, list_rectangles[0] -> width(), rowHeight);
-			if (settings.value("genericpanel/folio", true).toBool()){
-			fillRow(file_path, row_rect, diagram_list[i] -> border_and_titleblock.author(),
-					diagram_list[i] -> title(),
-					diagram_list[i] -> border_and_titleblock.finalfolio(),
-					diagram_list[i] -> border_and_titleblock.date().toString("dd/MM/yy"));
-					
-		}else{
-				fillRow(file_path, row_rect, diagram_list[i] -> border_and_titleblock.author(),
-					diagram_list[i] -> title(),
-					QString::number(diagram_list[i] ->folioIndex()+1),
-					diagram_list[i] -> border_and_titleblock.date().toString("dd/MM/yy"));
-					
-		}
-}
-
-	} else {
-		// Determine les elements a "XMLiser"
-		foreach(QGraphicsItem *qgi, diagram -> items()) {
-			if (Element *elmt = qgraphicsitem_cast<Element *>(qgi)) {
-				list_elements << elmt;
-			} else if (Conductor *f = qgraphicsitem_cast<Conductor *>(qgi)) {
-				list_conductors << f;
-			} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(qgi)) {
-				list_texts << iti;
-			} else if (DiagramImageItem *dii = qgraphicsitem_cast<DiagramImageItem *>(qgi)) {
-				list_images << dii;
-			} else if (QetShapeItem *dii = qgraphicsitem_cast<QetShapeItem *>(qgi)) {
-				list_shapes << dii;
-			} else if (DynamicElementTextItem *deti = qgraphicsitem_cast<DynamicElementTextItem *>(qgi)) {
-				list_texts << deti;
-			}
+	// Determine les elements a "XMLiser"
+	foreach(QGraphicsItem *qgi, diagram -> items()) {
+		if (Element *elmt = qgraphicsitem_cast<Element *>(qgi)) {
+			list_elements << elmt;
+		} else if (Conductor *f = qgraphicsitem_cast<Conductor *>(qgi)) {
+			list_conductors << f;
+		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(qgi)) {
+			list_texts << iti;
+		} else if (DiagramImageItem *dii = qgraphicsitem_cast<DiagramImageItem *>(qgi)) {
+			list_images << dii;
+		} else if (QetShapeItem *dii = qgraphicsitem_cast<QetShapeItem *>(qgi)) {
+			list_shapes << dii;
+		} else if (DynamicElementTextItem *deti = qgraphicsitem_cast<DynamicElementTextItem *>(qgi)) {
+			list_texts << deti;
 		}
 	}
 
@@ -688,43 +645,6 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 	Createdxf::dxfEnd(file_path);
 
     saveReloadDiagramParameters(diagram, false);
-}
-
-void ExportDialog::fillRow(const QString& file_path, const QRectF &row_rect, QString author, const QString& title,
-							   QString folio, QString date)
-{
-	qreal x = row_rect.bottomLeft().x();
-	qreal y = row_rect.bottomLeft().y();
-
-	x *= Createdxf::xScale;
-	y = Createdxf::sheetHeight - y * Createdxf::yScale;
-	qreal height = row_rect.height() * Createdxf::yScale *0.7;
-	y += height*0.2;
-
-	Createdxf::drawTextAligned(file_path, std::move(folio),
-							   x + 0.02*DiagramFolioList::colWidths[0]*row_rect.width()*Createdxf::xScale, y, height, 0, 0, 5, 0,
-							   x + 0.95*DiagramFolioList::colWidths[0]*row_rect.width()*Createdxf::xScale, 0);
-
-	x += DiagramFolioList::colWidths[0]*row_rect.width()*Createdxf::xScale;
-	QString heading = tr("Titre");
-	if (title == heading)
-		Createdxf::drawTextAligned(file_path, title,
-								   x + 0.02*DiagramFolioList::colWidths[1]*row_rect.width()*Createdxf::xScale, y, height, 0, 0, 5, 0,
-								   x + 0.02*DiagramFolioList::colWidths[1]*row_rect.width()*Createdxf::xScale, 0);
-	else
-		Createdxf::drawTextAligned(file_path, title,
-								   x + 0.02*DiagramFolioList::colWidths[1]*row_rect.width()*Createdxf::xScale, y, height, 0, 0, 5, 0,
-								   x + 0.02*DiagramFolioList::colWidths[1]*row_rect.width()*Createdxf::xScale, 0, true);
-
-	x += DiagramFolioList::colWidths[1]*row_rect.width()*Createdxf::xScale;
-	Createdxf::drawTextAligned(file_path, std::move(author),
-							   x + 0.02*DiagramFolioList::colWidths[2]*row_rect.width()*Createdxf::xScale, y, height, 0, 0, 5, 0,
-							   x + 3.02*DiagramFolioList::colWidths[2]*row_rect.width()*Createdxf::xScale, 0);
-
-	x += DiagramFolioList::colWidths[2]*row_rect.width()*Createdxf::xScale;
-	Createdxf::drawTextAligned(file_path, std::move(date),
-							   x + 0.02*DiagramFolioList::colWidths[3]*row_rect.width()*Createdxf::xScale, y, height, 0, 0, 5, 0,
-							   x + 5.02*DiagramFolioList::colWidths[3]*row_rect.width()*Createdxf::xScale, 0);
 }
 
 QPointF ExportDialog::rotation_transformed(qreal px, qreal py , qreal origin_x, qreal origin_y, qreal angle) {

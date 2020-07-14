@@ -98,7 +98,6 @@ class ProjectView : public QWidget
 		void changeLastTab();
 
 	public slots:
-		void addNewDiagramFolioList();
 		void removeDiagram(DiagramView *);
 		void removeDiagram(Diagram *);
 		void showDiagram(DiagramView *);
