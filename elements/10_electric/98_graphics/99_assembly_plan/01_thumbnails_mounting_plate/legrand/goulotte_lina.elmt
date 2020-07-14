@@ -1,17 +1,17 @@
-<definition hotspot_y="2" width="210" link_type="simple" type="element" height="70" hotspot_x="5" orientation="dyyy" version="0.80">
-    <uuid uuid="{0d10e989-e9ac-4cb9-a8a1-1d3575a57b6e}"/>
+<definition height="70" version="0.80" hotspot_x="5" width="460" hotspot_y="2" link_type="simple" orientation="dyyy" type="element">
+    <uuid uuid="{ba4c7979-88a2-40eb-88fe-ed29811aa667}"/>
     <names>
-        <name lang="de">Verdrahtungskanal 30mm</name>
-        <name lang="cs">Potrubí elektrického vedení 30 mm</name>
         <name lang="fr">Goulotte de câblage 30mm</name>
+        <name lang="cs">Potrubí elektrického vedení 30 mm</name>
+        <name lang="de">Verdrahtungskanal 30mm</name>
         <name lang="en">Wiring duct 30mm</name>
     </names>
     <elementInformations/>
     <informations></informations>
     <description>
-        <rect x="0" style="line-style:normal;line-weight:normal;filling:black;color:none" rx="0" y="10" ry="0" width="100" antialias="false" height="1"/>
-        <rect x="0" style="line-style:normal;line-weight:normal;filling:blue;color:none" rx="0" y="0" ry="0" width="200" antialias="false" height="66"/>
-        <rect x="0" style="line-style:normal;line-weight:normal;filling:white;color:none" rx="0" y="40" ry="0" width="200" antialias="false" height="10"/>
-        <rect x="0" style="line-style:normal;line-weight:normal;filling:white;color:none" rx="0" y="15" ry="0" width="200" antialias="false" height="10"/>
+        <rect height="1" style="line-style:normal;line-weight:normal;filling:black;color:none" width="100" antialias="false" y="10" rx="0" x="0" ry="0"/>
+        <rect height="66" style="line-style:normal;line-weight:normal;filling:blue;color:none" width="450" antialias="false" y="0" rx="0" x="0" ry="0"/>
+        <rect height="10" style="line-style:normal;line-weight:normal;filling:white;color:none" width="450" antialias="false" y="50" rx="0" x="0" ry="0"/>
+        <rect height="10" style="line-style:normal;line-weight:normal;filling:white;color:none" width="450" antialias="false" y="10" rx="0" x="0" ry="0"/>
     </description>
 </definition>
