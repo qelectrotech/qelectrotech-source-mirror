@@ -68,10 +68,11 @@ class Diagram : public QGraphicsScene
 	// ATTRIBUTES
 	public:
 		/**
+			@brief The BorderOptions enum
 			Represents available options when rendering a particular diagram:
-			 * EmptyBorder: display border only
-			 * TitleBlock: display title block
-			 * Columns: display columns
+			EmptyBorder: display border only
+			TitleBlock: display title block
+			Columns: display columns
 		*/
 		enum BorderOptions { EmptyBorder, TitleBlock, Columns };
 		/// Represents available option of Numerotation type.
