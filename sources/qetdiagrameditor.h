@@ -187,7 +187,7 @@ class QETDiagramEditor : public QETMainWindow
 		QAction *m_add_nomenclature; ///< Add nomenclature graphics item;
 		QAction *m_add_summary; ///<Add summary graphics item
 		QAction *m_project_terminalBloc;   ///< generate terminal block
-        QAction *m_project_export_conductor_num; ///<Export the wire num to csv
+		QAction *m_project_export_conductor_num; ///<Export the wire num to csv
 		QAction *m_export_project_db; ///Export to file the internal database of the current project
 		QAction *m_tile_window;        ///< Show MDI subwindows as tile
 		QAction *m_cascade_window;     ///< Show MDI subwindows as cascade

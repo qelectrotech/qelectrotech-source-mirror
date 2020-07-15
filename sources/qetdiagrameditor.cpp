@@ -406,16 +406,16 @@ void QETDiagramEditor::setUpActions()
 	m_project_terminalBloc = new QAction(QET::Icons::TerminalStrip, tr("Lancer le plugin de création de borniers"), this);
 	connect(m_project_terminalBloc, &QAction::triggered, this, &QETDiagramEditor::generateTerminalBlock);
 
-        //Export conductor num to csv
-    m_project_export_conductor_num = new QAction(QET::Icons::DocumentSpreadsheet, tr("Exporter la liste des noms de conducteurs"), this);
-    connect(m_project_export_conductor_num, &QAction::triggered, [this]() {
-        QETProject *project = this->currentProject();
-        if (project)
-        {
-            ConductorNumExport wne(project, this);
-            wne.toCsv();
-        }
-    });
+	//Export conductor num to csv
+	m_project_export_conductor_num = new QAction(QET::Icons::DocumentSpreadsheet, tr("Exporter la liste des noms de conducteurs"), this);
+	connect(m_project_export_conductor_num, &QAction::triggered, [this]() {
+		QETProject *project = this->currentProject();
+		if (project)
+		{
+			ConductorNumExport wne(project, this);
+			wne.toCsv();
+		}
+	});
 
 	m_export_project_db = new QAction(QET::Icons::DocumentSpreadsheet, tr("Exporter la base de donnée interne du projet"), this);
 	connect(m_export_project_db, &QAction::triggered, [this]() {
@@ -1392,7 +1392,7 @@ void QETDiagramEditor::selectionGroupTriggered(QAction *action)
 		dv->editSelection();
 	else if (value == "group_selected_texts")
 	{
-	        QList<DynamicElementTextItem *> deti_list = dc.m_element_texts.values();
+		QList<DynamicElementTextItem *> deti_list = dc.m_element_texts.values();
 		if(deti_list.size() <= 1)
 			return;
 		
@@ -1439,8 +1439,8 @@ void QETDiagramEditor::slot_updateActions()
 	m_close_file       -> setEnabled(opened_project);
 	m_save_file        -> setEnabled(opened_project);
 	m_save_file_as     -> setEnabled(opened_project);
-    m_project_edit_properties->setEnabled(opened_project);
-    m_project_export_conductor_num->setEnabled(opened_project);
+	m_project_edit_properties->setEnabled(opened_project);
+	m_project_export_conductor_num->setEnabled(opened_project);
 	//prj_terminalBloc -> setEnabled(opened_project);
 	m_rotate_texts -> setEnabled(editable_project);
 	m_project_add_diagram  -> setEnabled(editable_project);
@@ -1536,8 +1536,8 @@ void QETDiagramEditor::slot_updateComplexActions()
 	int selected_dynamic_elmt_text = 0; for(DiagramTextItem *dti : texts) {if(dti->type() == DynamicElementTextItem::Type) selected_dynamic_elmt_text++;}
 	m_rotate_texts->setEnabled(!ro && (selected_texts || groups.size()));
 	
-               //Action that need only element text selected
-       QList<DynamicElementTextItem *> deti_list = dc.m_element_texts.values();
+	//Action that need only element text selected
+	QList<DynamicElementTextItem *> deti_list = dc.m_element_texts.values();
 	if(deti_list.size() > 1 && dc.count() == deti_list.count())
 	{
 		Element *elmt = deti_list.first()->parentElement();
@@ -1587,7 +1587,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 		else if (selected_conductors_count)
 		{
 			m_edit_selection -> setText(tr("Éditer le conducteur", "edit conductor"));
-            m_edit_selection -> setIcon(QET::Icons::ConductorEdit);
+			m_edit_selection -> setIcon(QET::Icons::ConductorEdit);
 		}
 	}
 		//not an editable item
