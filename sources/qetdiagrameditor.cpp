@@ -766,10 +766,10 @@ void QETDiagramEditor::setUpMenu() {
 	menu_project -> addAction(m_remove_diagram_from_project);
 	menu_project -> addAction(m_clean_project);
 	menu_project -> addSeparator();
-	menu_project -> addAction(m_add_nomenclature);
 	menu_project -> addAction(m_add_summary);
+	menu_project -> addAction(m_add_nomenclature);
 	menu_project -> addAction(m_csv_export);
-    menu_project -> addAction(m_project_export_conductor_num);
+	menu_project -> addAction(m_project_export_conductor_num);
 	menu_project -> addAction(m_project_terminalBloc);
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_export_project_db);
