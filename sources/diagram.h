@@ -43,6 +43,7 @@ class QETProject;
 class Terminal;
 class DiagramImageItem;
 class DiagramEventInterface;
+class DiagramFolioList;
 class QETProject;
 
 /**
@@ -53,6 +54,7 @@ class QETProject;
 */
 class Diagram : public QGraphicsScene
 {
+	friend DiagramFolioList;
 	friend QETProject;
 
 	Q_OBJECT

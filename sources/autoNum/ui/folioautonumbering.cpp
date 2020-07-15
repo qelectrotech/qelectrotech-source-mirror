@@ -85,6 +85,19 @@ int FolioAutonumberingW::toFolio(){
 int FolioAutonumberingW::newFoliosNumber(){
 	return ui->m_new_tabs_sb->value();
 }
+/**
+ * @brief FolioAutonumberingW::updateFolioList
+ * update Folio List in From and To ComboBox
+ */
+void FolioAutonumberingW::updateFolioList(){
+	ui   -> m_from_cb->clear();
+	ui   -> m_to_cb->clear();
+	if (newFolios){
+		this -> on_m_create_new_tabs_rb_clicked();
+	} else {
+		this -> on_m_autonumber_tabs_rb_clicked();
+	}
+}
 
 /**
  * @brief FolioAutonumberingW::on_m_create_new_tabs_rb_clicked
@@ -175,6 +188,7 @@ void FolioAutonumberingW::on_buttonBox_clicked(QAbstractButton *button) {
 		case QDialogButtonBox::ApplyRole:
 			applyEnable(true);
 			emit applyPressed();
+			updateFolioList();
 			break;
 	}
 }

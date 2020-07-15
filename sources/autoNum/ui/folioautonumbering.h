@@ -66,7 +66,7 @@ class FolioAutonumberingW : public QWidget
 		Ui::FolioAutonumberingW *ui;
 		QList <NumPartEditorW *> num_part_list_;
 		NumerotationContext m_context;
-	
+		void updateFolioList();
 };
 
 #endif // FOLIOAUTONUMBERING_H
