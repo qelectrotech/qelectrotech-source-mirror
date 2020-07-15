@@ -29,17 +29,17 @@ class TerminalData;
 	@brief The Terminal class
 	This class represents a terminal of an electrical element, i.e. a possible
 	plug point for conductors.
-    This class handles all mouse events for connecting conductors
+	This class handles all mouse events for connecting conductors
 */
 class Terminal : public QGraphicsObject
 {
-		Q_OBJECT
+	Q_OBJECT
 
 	signals:
 		void conductorWasAdded(Conductor *conductor);
 		void conductorWasRemoved(Conductor *conductor);
 	
-		// constructors, destructor
+	// constructors, destructor
 	public:
 		Terminal(QPointF,      Qet::Orientation, Element * = nullptr);
 		Terminal(qreal, qreal, Qet::Orientation, Element * = nullptr);
@@ -50,7 +50,7 @@ class Terminal : public QGraphicsObject
 	private:
 		Terminal(const Terminal &);
 	
-		// methods
+	// methods
 	public:
 		/**
 			@brief type
@@ -65,85 +65,87 @@ class Terminal : public QGraphicsObject
 		QLineF HelpLine     () const;
 		QRectF boundingRect () const override;
 	
-			// methods to manage conductors attached to the terminal
+		// methods to manage conductors attached to the terminal
 		Terminal* alignedWithTerminal () const;
 		bool      addConductor        (Conductor *conductor);
 		void      removeConductor     (Conductor *conductor);
 		int       conductorsCount     () const;
 		Diagram  *diagram             () const;
 		Element  *parentElement       () const;
-        QUuid uuid                    () const;
+		QUuid uuid                    () const;
 	
-	QList<Conductor *> conductors() const;
-	Qet::Orientation orientation() const;
-	QPointF dockConductor() const;
-	QString number() const;
-	QString name() const;
-	void setNumber(QString number);
-	void setName(QString name, bool hiddenName);
-	void updateConductor();
-	bool isLinkedTo(Terminal *);
-	bool canBeLinkedTo(Terminal *);
+		QList<Conductor *> conductors() const;
+		Qet::Orientation orientation() const;
+		QPointF dockConductor() const;
+		QString number() const;
+		QString name() const;
+		void setNumber(QString number);
+		void setName(QString name, bool hiddenName);
+		void updateConductor();
+		bool isLinkedTo(Terminal *);
+		bool canBeLinkedTo(Terminal *);
 	
-	// methods related to XML import/export
-	static bool valideXml(QDomElement  &);
-	bool fromXml (QDomElement &);
-	QDomElement toXml (QDomDocument &) const;
+		// methods related to XML import/export
+		static bool valideXml(QDomElement  &);
+		bool fromXml (QDomElement &);
+		QDomElement toXml (QDomDocument &) const;
 	
 	protected:
-	// methods related to events management
-	void hoverEnterEvent  (QGraphicsSceneHoverEvent *) override;
-	void hoverMoveEvent   (QGraphicsSceneHoverEvent *) override;
-	void hoverLeaveEvent  (QGraphicsSceneHoverEvent *) override;
-	void mousePressEvent  (QGraphicsSceneMouseEvent *) override;
-	void mouseMoveEvent   (QGraphicsSceneMouseEvent *) override;
-	void mouseReleaseEvent(QGraphicsSceneMouseEvent *) override;
+		// methods related to events management
+		void hoverEnterEvent  (QGraphicsSceneHoverEvent *) override;
+		void hoverMoveEvent   (QGraphicsSceneHoverEvent *) override;
+		void hoverLeaveEvent  (QGraphicsSceneHoverEvent *) override;
+		void mousePressEvent  (QGraphicsSceneMouseEvent *) override;
+		void mouseMoveEvent   (QGraphicsSceneMouseEvent *) override;
+		void mouseReleaseEvent(QGraphicsSceneMouseEvent *) override;
 	
-		// attributes
+	// attributes
 	public:
 		enum { Type = UserType + 1002 };
 
 		static const qreal terminalSize;
 		static const qreal Z;
-			// Various static colors used for hover effects
-			/// default color
+		// Various static colors used for hover effects
+		/// default color
 		static QColor neutralColor;
-			/// color for legal actions
+		/// color for legal actions
 		static QColor allowedColor;
-			/// color for allowed but fuzzy or not recommended  actions
+		/// color for allowed but fuzzy or not recommended  actions
 		static QColor warningColor;
-			/// color for forbidden actions
+		/// color for forbidden actions
 		static QColor forbiddenColor;
 	
 	private:
-        bool               m_draw_help_line{false};
-        QGraphicsLineItem *m_help_line{nullptr};
-        QGraphicsLineItem *m_help_line_a{nullptr};
+		bool               m_draw_help_line{false};
+		QGraphicsLineItem *m_help_line{nullptr};
+		QGraphicsLineItem *m_help_line_a{nullptr};
 
 
-    TerminalData* d;
+		TerminalData* d;
 
-	/// Parent electrical element
-    Element *parent_element_{nullptr};
-	/// docking point for parent element
-	QPointF dock_elmt_;
-	/// List of conductors attached to the terminal
-	QList<Conductor *> conductors_;
-	/// Pointer to a rectangle representing the terminal bounding rect;
-	/// used to calculate the bounding rect once only;
-	/// used a pointer because boundingRect() is supposed to be const.
-    QRectF *br_{nullptr};
-	/// Last terminal seen through an attached conductor
-	Terminal *previous_terminal_;
-	/// Whether the mouse pointer is hovering the terminal
-	bool hovered_;
-	/// Color used for the hover effect
-	QColor hovered_color_;
-	/// Number of Terminal
-	QString number_terminal_;
-	/// Name of Terminal
-	QString name_terminal_;
-	bool name_terminal_hidden;
+		/// Parent electrical element
+		Element *parent_element_{nullptr};
+		/// docking point for parent element
+		QPointF dock_elmt_;
+		/// List of conductors attached to the terminal
+		QList<Conductor *> conductors_;
+		/**
+			Pointer to a rectangle representing the terminal bounding rect;
+			used to calculate the bounding rect once only;
+			used a pointer because boundingRect() is supposed to be const.
+		*/
+		QRectF *br_{nullptr};
+		/// Last terminal seen through an attached conductor
+		Terminal *previous_terminal_;
+		/// Whether the mouse pointer is hovering the terminal
+		bool hovered_;
+		/// Color used for the hover effect
+		QColor hovered_color_;
+		/// Number of Terminal
+		QString number_terminal_;
+		/// Name of Terminal
+		QString name_terminal_;
+		bool name_terminal_hidden;
 	
 	private:
     void init(QString number, QString name, bool hiddenName);

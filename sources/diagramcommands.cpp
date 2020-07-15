@@ -43,12 +43,12 @@ QString itemText(const Conductor *item) {
 }
 
 /**
- * @brief PasteDiagramCommand::PasteDiagramCommand
- * Constructor
- * @param dia : diagram where we must to paste
- * @param c : content to past
- * @param parent : parent undo command
- */
+	@brief PasteDiagramCommand::PasteDiagramCommand
+	Constructor
+	@param dia : diagram where we must to paste
+	@param c : content to past
+	@param parent : parent undo command
+*/
 PasteDiagramCommand::PasteDiagramCommand( Diagram *dia, const DiagramContent &c, QUndoCommand *parent) :
 	QUndoCommand(parent),
 	content(c),
@@ -61,17 +61,17 @@ PasteDiagramCommand::PasteDiagramCommand( Diagram *dia, const DiagramContent &c,
 }
 
 /**
- * @brief PasteDiagramCommand::~PasteDiagramCommand
- * Destructor
- */
+	@brief PasteDiagramCommand::~PasteDiagramCommand
+	Destructor
+*/
 PasteDiagramCommand::~PasteDiagramCommand() {
 	diagram -> qgiManager().release(content.items(filter));
 }
 
 /**
- * @brief PasteDiagramCommand::undo
- * Undo this command
- */
+	@brief PasteDiagramCommand::undo
+	Undo this command
+*/
 void PasteDiagramCommand::undo()
 {
 	diagram -> showMe();
@@ -81,9 +81,9 @@ void PasteDiagramCommand::undo()
 }
 
 /**
- * @brief PasteDiagramCommand::redo
- * Redo this commnand
- */
+	@brief PasteDiagramCommand::redo
+	Redo this commnand
+*/
 void PasteDiagramCommand::redo()
 {
 	diagram -> showMe();
@@ -93,16 +93,16 @@ void PasteDiagramCommand::redo()
 	{
 		first_redo = false;
 
-			//this is the first paste, we do some actions for the new element
+		//this is the first paste, we do some actions for the new element
 		const QList <Element *> elmts_list = content.m_elements;
 		for (Element *e : elmts_list)
 		{
-				//make new uuid, because old uuid are the uuid of the copied element
+			//make new uuid, because old uuid are the uuid of the copied element
 			e -> newUuid();
 
 			if (settings.value("diagramcommands/erase-label-on-copy", true).toBool())
 			{
-					//Reset the information about the label, the comment and location
+				//Reset the information about the label, the comment and location
 				DiagramContext dc = e->elementInformations();
 				dc.addValue("formula", "");
 				dc.addValue("label", "");
@@ -110,7 +110,7 @@ void PasteDiagramCommand::redo()
 				dc.addValue("location", "");
 				e->setElementInformations(dc);
 				
-					//Reset the text of conductors
+				//Reset the text of conductors
 				const QList <Conductor *> conductors_list = content.m_conductors_to_move;
 				for (Conductor *c : conductors_list)
 				{
@@ -166,13 +166,13 @@ CutDiagramCommand::~CutDiagramCommand() {
 }
 
 /**
- * @brief MoveElementsCommand::MoveElementsCommand
- * Constructor
- * @param dia diagram
- * @param diagram_content diagram content (contain all items to be moved)
- * @param m movement to applied
- * @param parent parent undo command
- */
+	@brief MoveElementsCommand::MoveElementsCommand
+	Constructor
+	@param dia diagram
+	@param diagram_content diagram content (contain all items to be moved)
+	@param m movement to applied
+	@param parent parent undo command
+*/
 MoveElementsCommand::MoveElementsCommand(
 	Diagram *dia,
 	const DiagramContent &diagram_content,
@@ -207,16 +207,16 @@ MoveElementsCommand::MoveElementsCommand(
 }
 
 /**
- * @brief MoveElementsCommand::~MoveElementsCommand
- * Destructor
- */
+	@brief MoveElementsCommand::~MoveElementsCommand
+	Destructor
+*/
 MoveElementsCommand::~MoveElementsCommand() {
 	delete m_anim_group;
 }
 
 /**
- * @brief MoveElementsCommand::undo
- */
+	@brief MoveElementsCommand::undo
+*/
 void MoveElementsCommand::undo() {
 	diagram -> showMe();
 	m_anim_group->setDirection(QAnimationGroup::Forward);
@@ -225,8 +225,8 @@ void MoveElementsCommand::undo() {
 }
 
 /**
- * @brief MoveElementsCommand::redo
- */
+	@brief MoveElementsCommand::redo
+*/
 void MoveElementsCommand::redo() {
 	diagram -> showMe();
 	if (first_redo) {
@@ -241,10 +241,10 @@ void MoveElementsCommand::redo() {
 }
 
 /**
- * @brief MoveElementsCommand::move
- * Move item and conductor to @actual_movement
- * @param actual_movement movement to be applied
- */
+	@brief MoveElementsCommand::move
+	Move item and conductor to @actual_movement
+	@param actual_movement movement to be applied
+*/
 void MoveElementsCommand::move(const QPointF &actual_movement)
 {
 	typedef DiagramContent dc;
@@ -252,8 +252,8 @@ void MoveElementsCommand::move(const QPointF &actual_movement)
 		//Move every movable items, except conductor
 	for (QGraphicsItem *qgi : content_to_move.items(dc::Elements | dc::TextFields | dc::Images | dc::Shapes | dc::TextGroup | dc::ElementTextFields | dc::Tables))
 	{
-			//If curent item have parent, and parent item is in content_to_move
-			//we don't apply movement to this item, because this item will be moved by is parent.
+		//If curent item have parent, and parent item is in content_to_move
+		//we don't apply movement to this item, because this item will be moved by is parent.
 		if (qgi->parentItem())
 			if (content_to_move.items().contains(qgi->parentItem()))
 					continue;
@@ -262,17 +262,18 @@ void MoveElementsCommand::move(const QPointF &actual_movement)
 			setupAnimation(qgi->toGraphicsObject(), "pos", qgi->pos(), qgi->pos() + actual_movement);
 		else if(qgi->type() == QGraphicsItemGroup::Type) //ElementTextItemGroup is a QObject but not a QGraphicsObject
 		{
+			//ElementTextItemGroup is a QObject but not a QGraphicsObject
 			if(ElementTextItemGroup *etig = dynamic_cast<ElementTextItemGroup *>(qgi))
 				setupAnimation(etig, "pos", etig->pos(), etig->pos() + actual_movement);
 		}
 		else qgi -> setPos(qgi->pos() + actual_movement);
 	}
 	
-		// Move some conductors
+	// Move some conductors
 	for (Conductor *conductor : content_to_move.m_conductors_to_move)
 		setupAnimation(conductor, "pos", conductor->pos(), conductor->pos() + actual_movement);
 	
-		// Recalcul the path of other conductor
+	// Recalcul the path of other conductor
 	for (Conductor *conductor : content_to_move.m_conductors_to_update)
 		setupAnimation(conductor, "animPath", 1, 1);
 }
@@ -511,10 +512,10 @@ void ChangeConductorCommand::setConductorTextItemMove(const QPointF &pos_before,
 }
 
 /**
- * @brief ResetConductorCommand::ResetConductorCommand
- * @param cp
- * @param parent
- */
+	@brief ResetConductorCommand::ResetConductorCommand
+	@param cp
+	@param parent
+*/
 ResetConductorCommand::ResetConductorCommand(
 	const QHash<Conductor *, ConductorProfilesGroup> &cp,
 	QUndoCommand *parent
@@ -532,14 +533,14 @@ ResetConductorCommand::ResetConductorCommand(
 }
 
 /**
- * @brief ResetConductorCommand::~ResetConductorCommand
- */
+	@brief ResetConductorCommand::~ResetConductorCommand
+*/
 ResetConductorCommand::~ResetConductorCommand() {
 }
 
 /**
- * @brief ResetConductorCommand::undo
- */
+	@brief ResetConductorCommand::undo
+*/
 void ResetConductorCommand::undo() {
 	diagram -> showMe();
 	foreach(Conductor *c, conductors_profiles.keys()) {
@@ -548,8 +549,8 @@ void ResetConductorCommand::undo() {
 }
 
 /**
- * @brief ResetConductorCommand::redo
- */
+	@brief ResetConductorCommand::redo
+*/
 void ResetConductorCommand::redo() {
 	diagram -> showMe();
 	foreach(Conductor *c, conductors_profiles.keys()) {

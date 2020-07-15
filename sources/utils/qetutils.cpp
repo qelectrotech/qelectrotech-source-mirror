@@ -26,7 +26,7 @@
 */
 QString QETUtils::marginsToString(const QMargins &margins)
 {
-    QString str;
+	QString str;
 	str += QString::number(margins.left());
 	str += ";";
 	str += QString::number(margins.top());

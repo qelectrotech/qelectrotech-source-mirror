@@ -185,28 +185,28 @@ Qet::Orientation Terminal::orientation() const {
 
 
 /**
- * @brief Terminal::setNumber
- * @param number
- */
+	@brief Terminal::setNumber
+	@param number
+*/
 void Terminal::setNumber(QString number) {
 	number_terminal_ = std::move(number);
 }
 
 /**
- * @brief Terminal::setName
- * @param name
- */
+	@brief Terminal::setName
+	@param name
+*/
 void Terminal::setName(QString name, bool hiddenName) {
 	name_terminal_ = std::move(name);
 	name_terminal_hidden = hiddenName;
 }
 
 /**
- * @brief Terminal::addConductor
- * Add a conductor to this terminal
- * @param conductor : the conductor to add.
- * @return true if the conductor was successfully added
- */
+	@brief Terminal::addConductor
+	Add a conductor to this terminal
+	@param conductor : the conductor to add.
+	@return true if the conductor was successfully added
+*/
 bool Terminal::addConductor(Conductor *conductor)
 {
 	if (!conductor) return(false);
@@ -227,10 +227,10 @@ bool Terminal::addConductor(Conductor *conductor)
 }
 
 /**
- * @brief Terminal::removeConductor
- * Remove a conductor from this terminal
- * @param conductor : conductor to remove
- */
+	@brief Terminal::removeConductor
+	Remove a conductor from this terminal
+	@param conductor : conductor to remove
+*/
 void Terminal::removeConductor(Conductor *conductor)
 {
 	int index = conductors_.indexOf(conductor);
@@ -346,10 +346,10 @@ void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidg
 }
 
 /**
- * @brief Terminal::drawHelpLine
- * @param draw : true, display the help line
- * false, hide it.
- */
+	@brief Terminal::drawHelpLine
+	@param draw : true, display the help line
+	false, hide it.
+*/
 void Terminal::drawHelpLine(bool draw)
 {
 	if (m_draw_help_line == draw) return;
@@ -372,11 +372,11 @@ void Terminal::drawHelpLine(bool draw)
 }
 
 /**
- * @brief Terminal::HelpLine
- * @return a line with coordinate P1 the dock point of conductor
- * and P2 the border of diagram, according to the orientation of terminal
- * The line is in scene coordinate;
- */
+	@brief Terminal::HelpLine
+	@return a line with coordinate P1 the dock point of conductor
+	and P2 the border of diagram, according to the orientation of terminal
+	The line is in scene coordinate;
+*/
 QLineF Terminal::HelpLine() const
 {
 	QPointF scene_dock = dockConductor();
@@ -425,12 +425,12 @@ QRectF Terminal::boundingRect() const {
 }
 
 /**
- * @brief Terminal::alignedWithTerminal
- * If this terminal is aligned with an other terminal
- * and is orientation is opposed return the other terminal
- * else return nullptr
- * @return
- */
+	@brief Terminal::alignedWithTerminal
+	If this terminal is aligned with an other terminal
+	and is orientation is opposed return the other terminal
+	else return nullptr
+	@return
+*/
 Terminal* Terminal::alignedWithTerminal() const
 {
 	QLineF line(HelpLine());
@@ -439,23 +439,23 @@ Terminal* Terminal::alignedWithTerminal() const
 	path.moveTo(line.p1());
 	path.lineTo(line.p2());
 
-		//Get all QGraphicsItem in the alignement of this terminal
+	//Get all QGraphicsItem in the alignement of this terminal
 	QList <QGraphicsItem *> qgi_list = diagram() -> items(path);
 
-		//Remove all terminals of the parent element
+	//Remove all terminals of the parent element
 	foreach (Terminal *t, parent_element_ -> terminals())
 		qgi_list.removeAll(t);
 
 	if (qgi_list.isEmpty()) return nullptr;
 
-		//Get terminals only if orientation is opposed with this terminal
+	//Get terminals only if orientation is opposed with this terminal
 	QList <Terminal *>  available_terminals;
 	foreach (QGraphicsItem *qgi, qgi_list)
 	{
 		if (Terminal *tt = qgraphicsitem_cast <Terminal *> (qgi))
 		{
-				//Call QET::lineContainsPoint to be sure the line intersect
-				//the dock point and not an other part of terminal
+			//Call QET::lineContainsPoint to be sure the line intersect
+			//the dock point and not an other part of terminal
 			if (Qet::isOpposed(orientation(), tt -> orientation()) &&
 				QET::lineContainsPoint(line, tt -> dockConductor()))
 			{
@@ -467,12 +467,12 @@ Terminal* Terminal::alignedWithTerminal() const
 	if (available_terminals.isEmpty())   return nullptr;
 	if (available_terminals.size() == 1) return (available_terminals.first());
 
-		//Available_terminals have several terminals, we get the nearest terminal
+	//Available_terminals have several terminals, we get the nearest terminal
 	line.setP2(available_terminals.first() -> dockConductor());
 	qreal     current_lenght   = line.length();
 	Terminal *nearest_terminal = available_terminals.takeFirst();
 
-		//Search the nearest terminal to this one
+	//Search the nearest terminal to this one
 	foreach (Terminal *terminal, available_terminals)
 	{
 		line.setP2(terminal -> dockConductor());
@@ -517,10 +517,10 @@ void Terminal::hoverLeaveEvent(QGraphicsSceneHoverEvent *) {
 	@param e L'evenement souris correspondant
 */
 void Terminal::mousePressEvent(QGraphicsSceneMouseEvent *e) {
-    if (Diagram *diag = diagram()) {
-        diag -> setConductorStart(mapToScene(QPointF(d->m_pos)));
-        diag -> setConductorStop(e -> scenePos());
-        diag -> setConductor(true);
+	if (Diagram *diag = diagram()) {
+		diag -> setConductorStart(mapToScene(QPointF(d->m_pos)));
+		diag -> setConductorStop(e -> scenePos());
+		diag -> setConductor(true);
 		//setCursor(Qt::CrossCursor);
 	}
 }
@@ -541,15 +541,14 @@ void Terminal::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 		previous_terminal_ -> hovered_color_ = previous_terminal_ -> neutralColor;
 		previous_terminal_ -> update();
 	}
-	
-	
-    Diagram *diag = diagram();
-    if (!diag) return;
+
+	Diagram *diag = diagram();
+	if (!diag) return;
 	// si la scene est un Diagram, on actualise le poseur de conducteur
-    diag -> setConductorStop(e -> scenePos());
+	diag -> setConductorStop(e -> scenePos());
 	
 	// on recupere la liste des qgi sous le pointeur
-    QList<QGraphicsItem *> qgis = diag -> items(e -> scenePos());
+	QList<QGraphicsItem *> qgis = diag -> items(e -> scenePos());
 	
 	/* le qgi le plus haut
 	   = le poseur de conductor
@@ -584,9 +583,9 @@ void Terminal::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 
 
 /**
- * @brief Terminal::mouseReleaseEvent
- * @param e
- */
+	@brief Terminal::mouseReleaseEvent
+	@param e
+*/
 void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 {
 	previous_terminal_ = nullptr;
@@ -594,31 +593,31 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 
 	if (!diagram()) return;
 
-		//Stop conductor preview
+	//Stop conductor preview
 	diagram() -> setConductor(false);
 
-		//Get item under cursor
+	//Get item under cursor
 	QGraphicsItem *qgi = diagram() -> itemAt(e -> scenePos(), QTransform());
 	if (!qgi) return;
 
-		//Element must be a terminal
+	//Element must be a terminal
 	Terminal *other_terminal = qgraphicsitem_cast<Terminal *>(qgi);
 	if (!other_terminal) return;
 
 	other_terminal -> hovered_color_ = neutralColor;
 	other_terminal -> hovered_       = false;
 
-		//We stop her if we can't link this terminal with other terminal
+	//We stop her if we can't link this terminal with other terminal
 	if (!canBeLinkedTo(other_terminal)) return;
 
-		//Create conductor
+	//Create conductor
 	Conductor *new_conductor = new Conductor(this, other_terminal);
 
-		//Get all conductors at the same potential of new conductors
+	//Get all conductors at the same potential of new conductors
 	QSet <Conductor *> conductors_list = new_conductor->relatedPotentialConductors();
 
-		//Compare the properties of every conductors stored in conductors_list,
-		//if every conductors properties is equal, we use this properties for the new conductor.
+	//Compare the properties of every conductors stored in conductors_list,
+	//if every conductors properties is equal, we use this properties for the new conductor.
 	ConductorProperties others_properties;
 	bool use_properties = false;
 	if (!conductors_list.isEmpty())
@@ -658,9 +657,9 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 }
 
 /**
- * @brief Terminal::updateConductor
- * Update the path of conductor docked to this terminal
- */
+	@brief Terminal::updateConductor
+	Update the path of conductor docked to this terminal
+*/
 void Terminal::updateConductor() {
 	foreach (Conductor *conductor, conductors_)
 		conductor->updatePath();
@@ -685,15 +684,15 @@ bool Terminal::isLinkedTo(Terminal *other_terminal) {
 }
 
 /**
- * @brief Terminal::canBeLinkedTo
- * Checking if the terminal can be linked to \p other_terminal or not
- * Reasons for not linable:
- *  - \p other_terminal is this terminal
- *  - this terminal is already connected to \p other_terminal
- * @param other_terminal
- * @return true if this terminal can be linked to @other_terminal,
- * otherwise false
- */
+	@brief Terminal::canBeLinkedTo
+	Checking if the terminal can be linked to \p other_terminal or not
+	Reasons for not linable:
+	 - \p other_terminal is this terminal
+	 - this terminal is already connected to \p other_terminal
+	@param other_terminal
+	@return true if this terminal can be linked to @other_terminal,
+	otherwise false
+*/
 bool Terminal::canBeLinkedTo(Terminal *other_terminal)
 {
 	if (other_terminal == this || isLinkedTo(other_terminal))
@@ -780,7 +779,7 @@ bool Terminal::fromXml(QDomElement &terminal) {
 	return (
 		qFuzzyCompare(terminal.attribute("x").toDouble(), dock_elmt_.x()) &&
 		qFuzzyCompare(terminal.attribute("y").toDouble(), dock_elmt_.y()) &&
-        (terminal.attribute("orientation").toInt() == d->m_orientation)
+		(terminal.attribute("orientation").toInt() == d->m_orientation)
 	);
 }
 
@@ -790,7 +789,7 @@ bool Terminal::fromXml(QDomElement &terminal) {
 	conductors.
 */
 QPointF Terminal::dockConductor() const {
-    return(mapToScene(d->m_pos));
+	return(mapToScene(d->m_pos));
 }
 
 /**
@@ -811,20 +810,20 @@ Element *Terminal::parentElement() const {
 }
 
 QUuid Terminal::uuid() const {
-    return d->m_uuid;
+	return d->m_uuid;
 }
 
 /**
- * @brief Conductor::relatedPotentialTerminal
- * Return terminal at the same potential from the same
- * parent element of @t.
- * For folio report, return the terminal of linked other report.
- * For Terminal element, return the other terminal of terminal element.
- * @param t terminal to start search
- * @param all_diagram :if true return all related terminal,
- * false return only terminal in the same diagram of @t
- * @return the list of terminal at the same potential
- */
+	@brief Conductor::relatedPotentialTerminal
+	Return terminal at the same potential from the same
+	parent element of @t.
+	For folio report, return the terminal of linked other report.
+	For Terminal element, return the other terminal of terminal element.
+	@param t terminal to start search
+	@param all_diagram :if true return all related terminal,
+	false return only terminal in the same diagram of @t
+	@return the list of terminal at the same potential
+*/
 QList<Terminal *> relatedPotentialTerminal (const Terminal *terminal, const bool all_diagram)
 {
 		// If terminal parent element is a folio report.

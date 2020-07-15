@@ -21,12 +21,12 @@
 #include <QMargins>
 
 /**
- * Provide some small utils function
- */
+	Provide some small utils function
+*/
 namespace QETUtils
 {
-    QString marginsToString(const QMargins &margins);
-    QMargins marginsFromString(const QString &string);
+	QString marginsToString(const QMargins &margins);
+	QMargins marginsFromString(const QString &string);
 }
 
 #endif // QETUTILS_H

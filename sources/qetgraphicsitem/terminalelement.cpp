@@ -32,9 +32,9 @@ TerminalElement::TerminalElement(const ElementsLocation &location, QGraphicsItem
 TerminalElement::~TerminalElement() {}
 
 /**
- * @brief TerminalElement::initLink
- * @param project
- */
+	@brief TerminalElement::initLink
+	@param project
+*/
 void TerminalElement::initLink(QETProject *project) {
 	Element::initLink(project);
 }

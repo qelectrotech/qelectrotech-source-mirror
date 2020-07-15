@@ -9,11 +9,13 @@
 
 class QGraphicsObject;
 
-/*!
- * \brief The TerminalData class
- * Data of the terminal. Stored in extra class so it can be used by PartTerminal and Terminal without
- * defining everything again.
- */
+/**
+	@brief The TerminalData class
+	Data of the terminal.
+	Stored in extra class so it can be used by PartTerminal
+	and Terminal without defining everything again.
+	@note tis class needs to be work on
+*/
 class TerminalData : public PropertiesInterface
 {
 public:

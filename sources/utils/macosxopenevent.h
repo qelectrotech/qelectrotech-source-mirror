@@ -19,13 +19,15 @@
 #define MACOSXOPENEVENT_H
 
 #include <QObject>
-
+/**
+	@brief The MacOSXOpenEvent class
+*/
 class MacOSXOpenEvent : public QObject
 {
-     Q_OBJECT
-    public:
-        explicit MacOSXOpenEvent(QObject *parent = nullptr);
-        bool eventFilter(QObject *watched, QEvent *event) override;
+	Q_OBJECT
+	public:
+		explicit MacOSXOpenEvent(QObject *parent = nullptr);
+		bool eventFilter(QObject *watched, QEvent *event) override;
 };
 
 #endif // MACOSXOPENEVENT_H

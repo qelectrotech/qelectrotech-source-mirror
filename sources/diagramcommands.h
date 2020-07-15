@@ -34,10 +34,10 @@ class DiagramImageItem;
 class QetGraphicsItem;
 
 /**
- * @brief The AddItemCommand class
- * This command add an item in a diagram
- * The item to add is template, but must be QGraphicsItem or derived.
- */
+	@brief The AddItemCommand class
+	This command add an item in a diagram
+	The item to add is template, but must be QGraphicsItem or derived.
+*/
 template <typename QGI>
 class AddItemCommand : public QUndoCommand {
 	public:

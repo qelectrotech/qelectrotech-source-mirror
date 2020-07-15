@@ -24,7 +24,7 @@
 	@param parent
 */
 MacOSXOpenEvent::MacOSXOpenEvent(QObject *parent) :
-    QObject(parent)
+	QObject(parent)
 {}
 
 /**
@@ -35,13 +35,13 @@ MacOSXOpenEvent::MacOSXOpenEvent(QObject *parent) :
 */
 bool MacOSXOpenEvent::eventFilter(QObject *watched, QEvent *event)
 {
-    if (event->type() == QEvent::FileOpen)
-    {
-        SingleApplication *app = dynamic_cast<SingleApplication *>(watched);
-        QFileOpenEvent *open_event = static_cast<QFileOpenEvent*>(event);
-        QString message = "launched-with-args: " + open_event->file();
-        app->sendMessage(message.toUtf8());
-        return true;
-    }
-    return false;
+	if (event->type() == QEvent::FileOpen)
+	{
+		SingleApplication *app = dynamic_cast<SingleApplication *>(watched);
+		QFileOpenEvent *open_event = static_cast<QFileOpenEvent*>(event);
+		QString message = "launched-with-args: " + open_event->file();
+		app->sendMessage(message.toUtf8());
+		return true;
+	}
+	return false;
 }
