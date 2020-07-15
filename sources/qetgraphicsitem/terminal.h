@@ -26,6 +26,7 @@ class Element;
 class TerminalData;
 
 /**
+	@brief The Terminal class
 	This class represents a terminal of an electrical element, i.e. a possible
 	plug point for conductors.
     This class handles all mouse events for connecting conductors
@@ -51,8 +52,12 @@ class Terminal : public QGraphicsObject
 	
 		// methods
 	public:
-			//Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a Terminal
-			//@return the QGraphicsItem type
+		/**
+			@brief type
+			Enable the use of qgraphicsitem_cast to safely
+			cast a QGraphicsItem into a Terminal
+			@return the QGraphicsItem type
+		*/
 		int type() const override { return Type; }
 	
 		void   paint        (QPainter *, const QStyleOptionGraphicsItem *, QWidget *) override;
@@ -146,6 +151,7 @@ class Terminal : public QGraphicsObject
 };
 
 /**
+	@brief Terminal::conductorsCount
 	@return the number of conductors attached to the terminal.
 */
 inline int Terminal::conductorsCount() const {
@@ -153,6 +159,7 @@ inline int Terminal::conductorsCount() const {
 }
 
 /**
+	@brief Terminal::number
 	@return the number of terminal.
 */
 inline QString Terminal::number() const {

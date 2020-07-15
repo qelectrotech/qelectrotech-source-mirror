@@ -292,6 +292,7 @@ inline void Diagram::setConductor(bool adding) {
 }
 
 /**
+	@brief Diagram::setConductorStart
 	Set the start point of the conductor setter.
 	@param start the point (in scene coordinates) which the newly created
 	conductor should start from.
@@ -301,6 +302,7 @@ inline void Diagram::setConductorStart(QPointF start) {
 }
 
 /**
+	@brief Diagram::setConductorStop
 	Set the end point of the conductor setter.
 	@param end the point (in scene coordinates) upon to which the newly created
 	conductor should be drawn.
@@ -310,6 +312,7 @@ inline void Diagram::setConductorStop(QPointF end) {
 }
 
 /**
+	@brief Diagram::setDisplayGrid
 	Set whether the diagram grid should be drawn.
 	@param dg true to render the grid, false otherwise.
 */
@@ -318,13 +321,15 @@ inline void Diagram::setDisplayGrid(bool dg) {
 }
 
 /**
-	@return true if the grid is drawn, false otherwise.
+	@brief Diagram::displayGrid
+	@return draw_grid_ true if the grid is drawn, false otherwise.
 */
 inline bool Diagram::displayGrid() {
 	return(draw_grid_);
 }
 
 /**
+	@brief Diagram::setUseBorder
 	Set whether the diagram border (including rows/colums headers and the title
 	block) should be rendered along with the diagram. When set to false, the size
 	of the smallest rectangle containing all items is considered as the diagram
@@ -336,14 +341,16 @@ inline void Diagram::setUseBorder(bool ub) {
 }
 
 /**
-	@return true if the border is rendered and take into account, false
-	otherwise.
+	@brief Diagram::useBorder
+	@return use_border_ true if the border is rendered and take into account,
+	false otherwise.
 */
 inline bool Diagram::useBorder() {
 	return(use_border_);
 }
 
 /**
+	@brief Diagram::setBorderOptions
 	Set the rendering options for the diagram border (including rows/colums
 	headers and the title block)
 	@param bo Enabled options ORed together
@@ -356,6 +363,7 @@ inline void Diagram::setBorderOptions(Diagram::BorderOptions bo) {
 }
 
 /**
+	@brief Diagram::borderOptions
 	@return The rendering optios for the diagram border
 	@see setBorderOptions
 */
@@ -368,22 +376,34 @@ inline Diagram::BorderOptions Diagram::borderOptions() {
 	return(options);
 }
 
-/// @return the diagram undo stack
+/**
+	@brief Diagram::undoStack
+	@return the diagram undo stack
+*/
 inline QUndoStack &Diagram::undoStack() {
 	return *(project()->undoStack());
 }
 
-/// @return the diagram graphics item manager
+/**
+	@brief Diagram::qgiManager
+	@return the diagram graphics item manager
+*/
 inline QGIManager &Diagram::qgiManager() {
 	return(*qgi_manager_);
 }
 
-/// @return true if terminals are rendered, false otherwise
+/**
+	@brief Diagram::drawTerminals
+	@return true if terminals are rendered, false otherwise
+*/
 inline bool Diagram::drawTerminals() const {
 	return(draw_terminals_);
 }
 
-/// @return true if conductors colors are rendered, false otherwise.
+/**
+	@brief Diagram::drawColoredConductors
+	@return true if conductors colors are rendered, false otherwise.
+*/
 inline bool Diagram::drawColoredConductors() const {
 	return(draw_colored_conductors_);
 }

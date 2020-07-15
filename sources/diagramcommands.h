@@ -82,6 +82,7 @@ QString itemText(const IndependentTextItem *item);
 QString itemText(const Conductor           *item);
 
 /**
+	@brief The PasteDiagramCommand class
 	This command pastes some content onto a particular diagram.
 */
 class PasteDiagramCommand : public QUndoCommand {
@@ -110,6 +111,7 @@ class PasteDiagramCommand : public QUndoCommand {
 };
 
 /**
+	@brief The CutDiagramCommand class
 	This command cuts content from a particular diagram.
 */
 class CutDiagramCommand : public DeleteQGraphicsItemCommand {
@@ -122,6 +124,7 @@ class CutDiagramCommand : public DeleteQGraphicsItemCommand {
 };
 
 /**
+	@brief The MoveElementsCommand class
 	This command moves some content on a particular diagram.
 */
 class MoveElementsCommand : public QUndoCommand {
@@ -156,8 +159,9 @@ class MoveElementsCommand : public QUndoCommand {
 };
 
 /**
-	This command moves text items related to conductors on a particular
-	diagram.
+	@brief The MoveConductorsTextsCommand class
+	This command moves text items related to conductors
+	on a particular diagram.
 */
 class MoveConductorsTextsCommand : public QUndoCommand {
 	// constructors, destructor

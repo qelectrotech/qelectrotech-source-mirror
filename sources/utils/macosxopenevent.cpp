@@ -19,10 +19,20 @@
 #include "singleapplication.h"
 #include <QFileOpenEvent>
 
+/**
+	@brief MacOSXOpenEvent::MacOSXOpenEvent
+	@param parent
+*/
 MacOSXOpenEvent::MacOSXOpenEvent(QObject *parent) :
     QObject(parent)
 {}
 
+/**
+	@brief MacOSXOpenEvent::eventFilter
+	@param watched
+	@param event
+	@return bool
+*/
 bool MacOSXOpenEvent::eventFilter(QObject *watched, QEvent *event)
 {
     if (event->type() == QEvent::FileOpen)

@@ -240,6 +240,7 @@ void Terminal::removeConductor(Conductor *conductor)
 }
 
 /**
+	@brief Terminal::paint
 	Fonction de dessin des bornes
 	@param p Le QPainter a utiliser
 	@param options Les options de dessin
@@ -405,6 +406,7 @@ QLineF Terminal::HelpLine() const
 }
 
 /**
+	@brief Terminal::boundingRect
 	@return Le rectangle (en precision flottante) delimitant la borne et ses alentours.
 */
 QRectF Terminal::boundingRect() const {
@@ -485,6 +487,7 @@ Terminal* Terminal::alignedWithTerminal() const
 }
 
 /**
+	@brief Terminal::hoverEnterEvent
 	Gere l'entree de la souris sur la zone de la Borne.
 */
 void Terminal::hoverEnterEvent(QGraphicsSceneHoverEvent *) {
@@ -493,12 +496,14 @@ void Terminal::hoverEnterEvent(QGraphicsSceneHoverEvent *) {
 }
 
 /**
+	@brief Terminal::hoverMoveEvent
 	Gere les mouvements de la souris sur la zone de la Borne.
 */
 void Terminal::hoverMoveEvent(QGraphicsSceneHoverEvent *) {
 }
 
 /**
+	@brief Terminal::hoverLeaveEvent
 	Gere le fait que la souris sorte de la zone de la Borne.
 */
 void Terminal::hoverLeaveEvent(QGraphicsSceneHoverEvent *) {
@@ -507,6 +512,7 @@ void Terminal::hoverLeaveEvent(QGraphicsSceneHoverEvent *) {
 }
 
 /**
+	@brief Terminal::mousePressEvent
 	Gere le fait qu'on enfonce un bouton de la souris sur la Borne.
 	@param e L'evenement souris correspondant
 */
@@ -520,6 +526,7 @@ void Terminal::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 }
 
 /**
+	@brief Terminal::mouseMoveEvent
 	Gere le fait qu'on bouge la souris sur la Borne.
 	@param e L'evenement souris correspondant
 */
@@ -660,6 +667,7 @@ void Terminal::updateConductor() {
 }
 
 /**
+	@brief Terminal::isLinkedTo
 	@param other_terminal Autre borne
 	@return true si cette borne est reliee a other_terminal, false sion
 */
@@ -695,6 +703,7 @@ bool Terminal::canBeLinkedTo(Terminal *other_terminal)
 }
 
 /**
+	@brief Terminal::conductors
 	@return La liste des conducteurs lies a cette borne
 */
 QList<Conductor *> Terminal::conductors() const {
@@ -702,6 +711,7 @@ QList<Conductor *> Terminal::conductors() const {
 }
 
 /**
+	@brief Terminal::toXml
 	Methode d'export en XML
 	@param doc Le Document XML a utiliser pour creer l'element XML
 	@return un QDomElement representant cette borne
@@ -718,6 +728,7 @@ QDomElement Terminal::toXml(QDomDocument &doc) const {
 }
 
 /**
+	@brief Terminal::valideXml
 	Permet de savoir si un element XML represente une borne
 	@param terminal Le QDomElement a analyser
 	@return true si le QDomElement passe en parametre est une borne, false sinon
@@ -754,9 +765,12 @@ bool Terminal::valideXml(QDomElement &terminal) {
 }
 
 /**
-	Permet de savoir si un element XML represente cette borne. Attention, l'element XML n'est pas verifie
+	@brief Terminal::fromXml
+	Permet de savoir si un element XML represente cette borne. Attention,
+	l'element XML n'est pas verifie
 	@param terminal Le QDomElement a analyser
-	@return true si la borne "se reconnait" (memes coordonnes, meme orientation), false sinon
+	@return true si la borne "se reconnait"
+	(memes coordonnes, meme orientation), false sinon
 */
 bool Terminal::fromXml(QDomElement &terminal) {
 	number_terminal_ = terminal.attribute("number");
@@ -771,21 +785,25 @@ bool Terminal::fromXml(QDomElement &terminal) {
 }
 
 /**
-    @return the position, relative to the scene, of the docking point for
-    conductors.
+	@brief Terminal::dockConductor
+	@return the position, relative to the scene, of the docking point for
+	conductors.
 */
 QPointF Terminal::dockConductor() const {
     return(mapToScene(d->m_pos));
 }
 
 /**
-	@return le Diagram auquel cette borne appartient, ou 0 si cette borne est independant
+	@brief Terminal::diagram
+	@return le Diagram auquel cette borne appartient,
+	ou 0 si cette borne est independant
 */
 Diagram *Terminal::diagram() const {
 	return(qobject_cast<Diagram *>(scene()));
 }
 
 /**
+	@brief Terminal::parentElement
 	@return L'element auquel cette borne est rattachee
 */
 Element *Terminal::parentElement() const {

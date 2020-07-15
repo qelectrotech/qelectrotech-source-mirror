@@ -19,6 +19,11 @@
 #include <QString>
 #include <QStringList>
 
+/**
+	@brief QETUtils::marginsToString
+	@param margins
+	@return QString str "left;top;right;bottom"
+*/
 QString QETUtils::marginsToString(const QMargins &margins)
 {
     QString str;
@@ -33,6 +38,11 @@ QString QETUtils::marginsToString(const QMargins &margins)
 	return str;
 }
 
+/**
+	@brief QETUtils::marginsFromString
+	@param string
+	@return QMargins margins
+*/
 QMargins QETUtils::marginsFromString(const QString &string)
 {
 	QMargins margins;

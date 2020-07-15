@@ -92,9 +92,17 @@ void ExportPropertiesWidget::setExportProperties(const ExportProperties &export_
 }
 
 /**
+	@brief ExportPropertiesWidget::setPrintingMode
+	Puts the widget in Print or Export mode. Print mode
+	does not display as many options as Export mode.
+	/
 	Passe le widget en mode Impression ou en mode Export. Le mode Impression
 	n'affiche pas autant d'options que le mode Export.
-	@param mode true pour utiliser le widget en mode impression, false pour
+	@param mode
+	true to use the widget in print mode,
+	false to use it in export mode
+	/
+	true pour utiliser le widget en mode impression, false pour
 	l'utiliser en mode export
 */
 void ExportPropertiesWidget::setPrintingMode(bool mode) {
