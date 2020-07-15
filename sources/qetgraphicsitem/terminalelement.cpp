@@ -18,14 +18,15 @@
 #include "terminalelement.h"
 
 /**
- * @brief TerminalElement::TerminalElement
- * Default constructor
- * @param location location of xml definition
- * @param qgi parent QGraphicItem
- * @param s parent diagram
- * @param state int used to know if the creation of element have error
- */
-TerminalElement::TerminalElement(const ElementsLocation &location, QGraphicsItem *qgi, int *state) :
+	@brief TerminalElement::TerminalElement
+	Default constructor
+	@param location location of xml definition
+	@param qgi parent QGraphicItem
+	@param s parent diagram
+	@param state int used to know if the creation of element have error
+*/
+TerminalElement::TerminalElement(const ElementsLocation &location,
+				 QGraphicsItem *qgi, int *state) :
 	Element(location, qgi, state, Element::Terminale)
 {}
 

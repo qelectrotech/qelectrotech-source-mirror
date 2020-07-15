@@ -249,8 +249,14 @@ void MoveElementsCommand::move(const QPointF &actual_movement)
 {
 	typedef DiagramContent dc;
 
-		//Move every movable items, except conductor
-	for (QGraphicsItem *qgi : content_to_move.items(dc::Elements | dc::TextFields | dc::Images | dc::Shapes | dc::TextGroup | dc::ElementTextFields | dc::Tables))
+	//Move every movable items, except conductor
+	for (QGraphicsItem *qgi : content_to_move.items(dc::Elements
+							| dc::TextFields
+							| dc::Images
+							| dc::Shapes
+							| dc::TextGroup
+							| dc::ElementTextFields
+							| dc::Tables))
 	{
 		//If curent item have parent, and parent item is in content_to_move
 		//we don't apply movement to this item, because this item will be moved by is parent.
@@ -259,19 +265,22 @@ void MoveElementsCommand::move(const QPointF &actual_movement)
 					continue;
 		
 		if(qgi->toGraphicsObject())
-			setupAnimation(qgi->toGraphicsObject(), "pos", qgi->pos(), qgi->pos() + actual_movement);
-		else if(qgi->type() == QGraphicsItemGroup::Type) //ElementTextItemGroup is a QObject but not a QGraphicsObject
+			setupAnimation(qgi->toGraphicsObject(), "pos",
+				       qgi->pos(), qgi->pos() + actual_movement);
+		else if(qgi->type() == QGraphicsItemGroup::Type)
 		{
 			//ElementTextItemGroup is a QObject but not a QGraphicsObject
 			if(ElementTextItemGroup *etig = dynamic_cast<ElementTextItemGroup *>(qgi))
-				setupAnimation(etig, "pos", etig->pos(), etig->pos() + actual_movement);
+				setupAnimation(etig, "pos", etig->pos(),
+					       etig->pos() + actual_movement);
 		}
 		else qgi -> setPos(qgi->pos() + actual_movement);
 	}
 	
 	// Move some conductors
 	for (Conductor *conductor : content_to_move.m_conductors_to_move)
-		setupAnimation(conductor, "pos", conductor->pos(), conductor->pos() + actual_movement);
+		setupAnimation(conductor, "pos", conductor->pos(),
+			       conductor->pos() + actual_movement);
 	
 	// Recalcul the path of other conductor
 	for (Conductor *conductor : content_to_move.m_conductors_to_update)
@@ -279,14 +288,17 @@ void MoveElementsCommand::move(const QPointF &actual_movement)
 }
 
 /**
- * @brief MoveElementsCommand::setupAnimation
- * Set up the animation for this undo command
- * @param target object to anim
- * @param propertyName property to animate
- * @param start value at start
- * @param end value at end
- */
-void MoveElementsCommand::setupAnimation(QObject *target, const QByteArray &propertyName, const QVariant& start, const QVariant& end) {
+	@brief MoveElementsCommand::setupAnimation
+	Set up the animation for this undo command
+	@param target object to anim
+	@param propertyName property to animate
+	@param start value at start
+	@param end value at end
+*/
+void MoveElementsCommand::setupAnimation(QObject *target,
+					 const QByteArray &propertyName,
+					 const QVariant& start,
+					 const QVariant& end) {
 	//create animation group if not yet.
 	if (m_anim_group == nullptr) m_anim_group = new QParallelAnimationGroup();
 	QPropertyAnimation *animation = new QPropertyAnimation(target, propertyName);
@@ -366,11 +378,15 @@ void MoveConductorsTextsCommand::redo() {
 	@param alread_moved true si le champ de texte etait deja a une position
 	personnalisee par l'utilisateur, false sinon
 */
-void MoveConductorsTextsCommand::addTextMovement(ConductorTextItem *text_item, const QPointF &old_pos, const QPointF &new_pos, bool already_moved) {
+void MoveConductorsTextsCommand::addTextMovement(ConductorTextItem *text_item,
+						 const QPointF &old_pos,
+						 const QPointF &new_pos,
+						 bool already_moved) {
 	// si le champ de texte est deja connu de l'objet d'annulation, il sera ignore
 	if (texts_to_move_.contains(text_item)) return;
 	
-	// on memorise le champ de texte, en l'associant au mouvement effectue et a son etat avant le deplacement
+	// on memorise le champ de texte,
+	//en l'associant au mouvement effectue et a son etat avant le deplacement
 	texts_to_move_.insert(text_item, qMakePair(new_pos - old_pos, already_moved));
 	
 	// met a jour la description de l'objet d'annulation

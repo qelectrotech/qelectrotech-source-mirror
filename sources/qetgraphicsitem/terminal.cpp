@@ -42,11 +42,11 @@ const qreal Terminal::Z = 1000;
 */
 void Terminal::init(QString number, QString name, bool hiddenName) {
 
-    hovered_color_  = Terminal::neutralColor;
+	hovered_color_  = Terminal::neutralColor;
 	
 	// calcul de la position du point d'amarrage a l'element
-    dock_elmt_ = d->m_pos;
-    switch(d->m_orientation) {
+	dock_elmt_ = d->m_pos;
+	switch(d->m_orientation) {
 		case Qet::North: dock_elmt_ += QPointF(0, Terminal::terminalSize);  break;
 		case Qet::East : dock_elmt_ += QPointF(-Terminal::terminalSize, 0); break;
 		case Qet::West : dock_elmt_ += QPointF(Terminal::terminalSize, 0);  break;
@@ -82,14 +82,14 @@ void Terminal::init(QString number, QString name, bool hiddenName) {
  */
 void Terminal::init(QPointF pf, Qet::Orientation o, QString number, QString name, bool hiddenName)
 {
-    // definition du pount d'amarrage pour un conducteur
-    d->m_pos  = pf;
+	// definition du pount d'amarrage pour un conducteur
+	d->m_pos  = pf;
 
-    // definition de l'orientation de la borne (par defaut : sud)
-    if (o < Qet::North || o > Qet::West) d->m_orientation = Qet::South;
-    else d->m_orientation = o;
+	// definition de l'orientation de la borne (par defaut : sud)
+	if (o < Qet::North || o > Qet::West) d->m_orientation = Qet::South;
+	else d->m_orientation = o;
 
-    init(number, name, hiddenName);
+	init(number, name, hiddenName);
 }
 
 /**
@@ -101,8 +101,8 @@ void Terminal::init(QPointF pf, Qet::Orientation o, QString number, QString name
 */
 Terminal::Terminal(QPointF pf, Qet::Orientation o, Element *e) :
 	QGraphicsObject(e),
-    d(new TerminalData(this)),
-    parent_element_ (e)
+	d(new TerminalData(this)),
+	parent_element_ (e)
 {
 	init(pf, o, "_", "_", false);
 }
@@ -117,10 +117,10 @@ Terminal::Terminal(QPointF pf, Qet::Orientation o, Element *e) :
 */
 Terminal::Terminal(qreal pf_x, qreal pf_y, Qet::Orientation o, Element *e) :
 	QGraphicsObject(e),
-    d(new TerminalData(this)),
-    parent_element_  (e)
+	d(new TerminalData(this)),
+	parent_element_  (e)
 {
-    init(QPointF(pf_x, pf_y), o, "_", "_", false);
+	init(QPointF(pf_x, pf_y), o, "_", "_", false);
 }
 
 /**
@@ -135,20 +135,20 @@ Terminal::Terminal(qreal pf_x, qreal pf_y, Qet::Orientation o, Element *e) :
 */
 Terminal::Terminal(QPointF pf, Qet::Orientation o, QString num, QString name, bool hiddenName, Element *e) :
 	QGraphicsObject    (e),
-    d(new TerminalData(this)),
-    parent_element_  (e)
+	d(new TerminalData(this)),
+	parent_element_  (e)
 {
 	init(pf, o, std::move(num), std::move(name), hiddenName);
 }
 
 Terminal::Terminal(TerminalData* data, Element* e) :
-    QGraphicsObject(e),
-    d(data),
-    parent_element_(e)
+	QGraphicsObject(e),
+	d(data),
+	parent_element_(e)
 {
-    // TODO: what is when multiple parents exist. So the other relation is lost.
-    d->setParent(this);
-    init("_", "_", false);
+	// TODO: what is when multiple parents exist. So the other relation is lost.
+	d->setParent(this);
+	init("_", "_", false);
 }
 
 /**
@@ -172,15 +172,15 @@ Qet::Orientation Terminal::orientation() const {
 	if (Element *elt = qgraphicsitem_cast<Element *>(parentItem())) {
 		// orientations actuelle et par defaut de l'element
 		int ori_cur = elt -> orientation();
-        if (ori_cur == 0) return(d->m_orientation);
+	if (ori_cur == 0) return(d->m_orientation);
 		else {
 			// calcul l'angle de rotation implique par l'orientation de l'element parent
 			// angle de rotation de la borne sur la scene, divise par 90
-            int angle = ori_cur + d->m_orientation;
+			int angle = ori_cur + d->m_orientation;
 			while (angle >= 4) angle -= 4;
 			return((Qet::Orientation)angle);
 		}
-    } else return(d->m_orientation);
+	} else return(d->m_orientation);
 }
 
 
@@ -258,7 +258,7 @@ void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidg
 	p -> setRenderHint(QPainter::SmoothPixmapTransform, false);
 	
 	// on travaille avec les coordonnees de l'element parent
-    QPointF c = mapFromParent(d->m_pos);
+	QPointF c = mapFromParent(d->m_pos);
 	QPointF e = mapFromParent(dock_elmt_);
 	
 	QPen t;
@@ -410,12 +410,13 @@ QLineF Terminal::HelpLine() const
 	@return Le rectangle (en precision flottante) delimitant la borne et ses alentours.
 */
 QRectF Terminal::boundingRect() const {
-	if (br_ -> isNull()) {
-        qreal dcx = d->m_pos.x();
-        qreal dcy = d->m_pos.y();
+	if (br_ -> isNull())
+	{
+		qreal dcx = d->m_pos.x();
+		qreal dcy = d->m_pos.y();
 		qreal dex = dock_elmt_.x();
 		qreal dey = dock_elmt_.y();
-        QPointF origin = (dcx <= dex && dcy <= dey ? d->m_pos : dock_elmt_);
+		QPointF origin = (dcx <= dex && dcy <= dey ? d->m_pos : dock_elmt_);
 		origin += QPointF(-3.0, -3.0);
 		qreal w = qAbs((int)(dcx - dex)) + 7;
 		qreal h = qAbs((int)(dcy - dey)) + 7;
@@ -637,7 +638,7 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 
 	if (use_properties)
 	{
-	        Conductor *other = conductors_list.values().first();
+		Conductor *other = conductors_list.values().first();
 		new_conductor->rSequenceNum() = other->sequenceNum();
 		new_conductor->setProperties(others_properties);
 	}
@@ -651,7 +652,7 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 	diagram() -> undoStack().push(undo);
 	if (use_properties)
 	{
-	        Conductor *other = conductors_list.values().first();
+		Conductor *other = conductors_list.values().first();
 		new_conductor->setProperties(other->properties());
 	}
 }
@@ -717,9 +718,13 @@ QList<Conductor *> Terminal::conductors() const {
 */
 QDomElement Terminal::toXml(QDomDocument &doc) const {
 	QDomElement qdo = doc.createElement("terminal");
-    qdo.setAttribute("x", QString("%1").arg(dock_elmt_.x())); // for backward compatibility
-    qdo.setAttribute("y",  QString("%1").arg(dock_elmt_.y()));// for backward compatibility
-    qdo.setAttribute("orientation", d->m_orientation);
+
+	// for backward compatibility
+	qdo.setAttribute("x", QString("%1").arg(dock_elmt_.x()));
+	qdo.setAttribute("y",  QString("%1").arg(dock_elmt_.y()));
+	// end for backward compatibility
+
+	qdo.setAttribute("orientation", d->m_orientation);
 	qdo.setAttribute("number", number_terminal_);
 	qdo.setAttribute("name", name_terminal_);
 	qdo.setAttribute("nameHidden", name_terminal_hidden);
@@ -757,7 +762,10 @@ bool Terminal::valideXml(QDomElement &terminal) {
 	// parse l'orientation
 	int terminal_or = terminal.attribute("orientation").toInt(&conv_ok);
 	if (!conv_ok) return(false);
-	if (terminal_or != Qet::North && terminal_or != Qet::South && terminal_or != Qet::East && terminal_or != Qet::West) return(false);
+	if (terminal_or != Qet::North
+			&& terminal_or != Qet::South
+			&& terminal_or != Qet::East
+			&& terminal_or != Qet::West) return(false);
 	
 	// a ce stade, la borne est syntaxiquement correcte
 	return(true);

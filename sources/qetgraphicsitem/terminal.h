@@ -43,8 +43,9 @@ class Terminal : public QGraphicsObject
 	public:
 		Terminal(QPointF,      Qet::Orientation, Element * = nullptr);
 		Terminal(qreal, qreal, Qet::Orientation, Element * = nullptr);
-        Terminal(TerminalData* data, Element *e = nullptr);
-		Terminal(QPointF,      Qet::Orientation, QString number, QString name, bool hiddenName, Element * = nullptr);
+		Terminal(TerminalData* data, Element *e = nullptr);
+		Terminal(QPointF,      Qet::Orientation, QString number,
+			 QString name, bool hiddenName, Element * = nullptr);
 		~Terminal() override;
 	
 	private:
@@ -60,7 +61,8 @@ class Terminal : public QGraphicsObject
 		*/
 		int type() const override { return Type; }
 	
-		void   paint        (QPainter *, const QStyleOptionGraphicsItem *, QWidget *) override;
+		void   paint        (QPainter *,const QStyleOptionGraphicsItem *,
+				     QWidget *) override;
 		void   drawHelpLine (bool draw = true);
 		QLineF HelpLine     () const;
 		QRectF boundingRect () const override;
@@ -148,8 +150,9 @@ class Terminal : public QGraphicsObject
 		bool name_terminal_hidden;
 	
 	private:
-    void init(QString number, QString name, bool hiddenName);
-    void init(QPointF pf, Qet::Orientation o, QString number, QString name, bool hiddenName);
+		void init(QString number, QString name, bool hiddenName);
+		void init(QPointF pf, Qet::Orientation o, QString number,
+			  QString name, bool hiddenName);
 };
 
 /**
@@ -169,12 +172,14 @@ inline QString Terminal::number() const {
 }
 
 /**
+	@brief Terminal::name
 	@return the name of terminal.
 */
 inline QString Terminal::name() const {
 	return(name_terminal_);
 }
 
-QList<Terminal *> relatedPotentialTerminal (const Terminal *terminal, const bool all_diagram = true);
+QList<Terminal *> relatedPotentialTerminal (const Terminal *terminal,
+					    const bool all_diagram = true);
 
 #endif
