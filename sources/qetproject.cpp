@@ -1478,7 +1478,8 @@ void QETProject::writeProjectPropertiesXml(QDomElement &xml_element) {
  * #default Xref
  * @param xml_element xml element to use for store default propertie.
  */
-void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element) {
+void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
+{
 	QDomDocument xml_document = xml_element.ownerDocument();
 	
 	// export size of border
@@ -1501,12 +1502,14 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element) {
 	report_elmt.setAttribute("label", defaultReportProperties());
 	xml_element.appendChild(report_elmt);
 
-	// export default XRef properties
+		// export default XRef properties
 	QDomElement xrefs_elmt = xml_document.createElement("xrefs");
-    foreach (QString key, defaultXRefProperties().keys()) {
-        defaultXRefProperties()[key].setKey(key);
-        QDomElement xref_elmt = defaultXRefProperties()[key].toXml(xml_document);
-        xrefs_elmt.appendChild(xref_elmt);
+	for (QString key : defaultXRefProperties().keys())
+	{
+		auto xrp = defaultXRefProperties(key);
+		xrp.setKey(key);
+		auto xref_dom = xrp.toXml(xml_document);
+		xrefs_elmt.appendChild(xref_dom);
 	}
 	xml_element.appendChild(xrefs_elmt);
 
