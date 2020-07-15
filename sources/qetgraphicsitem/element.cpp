@@ -1525,7 +1525,7 @@ void Element::setUpFormula(bool code_letter)
 		if(!m_freeze_label && !formula.isEmpty())
 		{
 			DiagramContext dc = m_element_informations;
-            m_element_informations.addValue("label", actualLabel());
+			m_element_informations.addValue("label", actualLabel());
 			emit elementInfoChange(dc, m_element_informations);
 		}
 	}

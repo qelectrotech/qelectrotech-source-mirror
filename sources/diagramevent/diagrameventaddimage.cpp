@@ -56,26 +56,26 @@ DiagramEventAddImage::~DiagramEventAddImage()
  */
 void DiagramEventAddImage::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    if (m_image && event -> button() == Qt::LeftButton)
-    {
-        QPointF pos = event->scenePos();
-        pos.rx() -= m_image->boundingRect().width()/2;
-        pos.ry() -= m_image->boundingRect().height()/2;
-        m_diagram -> undoStack().push (new AddItemCommand<DiagramImageItem *>(m_image, m_diagram, pos));
-
+	if (m_image && event -> button() == Qt::LeftButton)
+	{
+		QPointF pos = event->scenePos();
+		pos.rx() -= m_image->boundingRect().width()/2;
+		pos.ry() -= m_image->boundingRect().height()/2;
+		m_diagram -> undoStack().push (new AddItemCommand<DiagramImageItem *>(m_image, m_diagram, pos));
+		
 		for (QGraphicsView *view : m_diagram->views()) {
-            view->setContextMenuPolicy((Qt::DefaultContextMenu));
+			view->setContextMenuPolicy((Qt::DefaultContextMenu));
 		}
-
-        m_running = false;
-        emit finish();
+		
+		m_running = false;
+		emit finish();
 		event->setAccepted(true);
-    }
-    else if (m_image && event -> button() == Qt::RightButton)
-    {
-			m_image->setRotation(m_image->rotation() + 90);
-            event->setAccepted(true);
-    }
+	}
+	else if (m_image && event -> button() == Qt::RightButton)
+	{
+		m_image->setRotation(m_image->rotation() + 90);
+		event->setAccepted(true);
+	}
 }
 
 /**
@@ -88,21 +88,21 @@ void DiagramEventAddImage::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 	if (!m_image || event->buttons() != Qt::NoButton) {
 		return;
 	};
-
-    QPointF pos = event->scenePos();
-
-    if (!m_is_added)
-    {
+	
+	QPointF pos = event->scenePos();
+	
+	if (!m_is_added)
+	{
 		for (QGraphicsView *view : m_diagram->views()) {
-            view->setContextMenuPolicy((Qt::NoContextMenu));
+			view->setContextMenuPolicy((Qt::NoContextMenu));
 		}
-
-        m_diagram->addItem(m_image);
-        m_is_added = true;
-    }
-
-    m_image->setPos(pos - m_image->boundingRect().center());
-    event->setAccepted(true);
+		
+		m_diagram->addItem(m_image);
+		m_is_added = true;
+	}
+	
+	m_image->setPos(pos - m_image->boundingRect().center());
+	event->setAccepted(true);
 }
 
 /**
@@ -125,14 +125,14 @@ void DiagramEventAddImage::wheelEvent(QGraphicsSceneWheelEvent *event)
 	if (!m_is_added || !m_image || event -> modifiers() != Qt::CTRL) {
 		return;
 	}
-
-    qreal scaling = m_image->scale();
-    event->delta() > 1? scaling += 0.01 : scaling -= 0.01;
+	
+	qreal scaling = m_image->scale();
+	event->delta() > 1? scaling += 0.01 : scaling -= 0.01;
 	if (scaling>0.01 && scaling <= 2) {
-            m_image->setScale(scaling);
+		m_image->setScale(scaling);
 	}
-
-    event->setAccepted(true);
+	
+	event->setAccepted(true);
 }
 
 /**
@@ -141,8 +141,8 @@ void DiagramEventAddImage::wheelEvent(QGraphicsSceneWheelEvent *event)
  */
 bool DiagramEventAddImage::isNull() const
 {
-    if (!m_image) return true;
-    return false;
+	if (!m_image) return true;
+	return false;
 }
 
 /**
@@ -151,21 +151,21 @@ bool DiagramEventAddImage::isNull() const
  */
 void DiagramEventAddImage::openDialog()
 {
-    if (m_diagram -> isReadOnly()) return;
-
-        //Open dialog for select image
-    QString pathPictures = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
-    QString fileName = QFileDialog::getOpenFileName(m_diagram->views().isEmpty()? nullptr : m_diagram->views().first(), QObject::tr("Selectionner une image..."), pathPictures, QObject::tr("Image Files (*.png *.jpg  *.jpeg *.bmp *.svg)"));
-
-    if (fileName.isEmpty()) return;
-
-    QImage image(fileName);
-    if(image.isNull())
-    {
-            QMessageBox::critical(m_diagram->views().isEmpty()? nullptr : m_diagram->views().first(), QObject::tr("Erreur"), QObject::tr("Impossible de charger l'image."));
-            return;
-    }
-
-    m_image = new DiagramImageItem (QPixmap::fromImage(image));
-    m_running = true;
+	if (m_diagram -> isReadOnly()) return;
+	
+	//Open dialog for select image
+	QString pathPictures = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
+	QString fileName = QFileDialog::getOpenFileName(m_diagram->views().isEmpty()? nullptr : m_diagram->views().first(), QObject::tr("Selectionner une image..."), pathPictures, QObject::tr("Image Files (*.png *.jpg  *.jpeg *.bmp *.svg)"));
+	
+	if (fileName.isEmpty()) return;
+	
+	QImage image(fileName);
+	if(image.isNull())
+	{
+		QMessageBox::critical(m_diagram->views().isEmpty()? nullptr : m_diagram->views().first(), QObject::tr("Erreur"), QObject::tr("Impossible de charger l'image."));
+		return;
+	}
+	
+	m_image = new DiagramImageItem (QPixmap::fromImage(image));
+	m_running = true;
 }

@@ -29,18 +29,18 @@ class QWidget;
  */
 class ConductorNumExport
 {
-    public:
-        ConductorNumExport(QETProject *project, QWidget *parent = nullptr);
-        bool toCsv();
-        QString wiresNum() const;
-
-    private:
-        void fillHash();
-
-    private:
-        QETProject *m_project = nullptr;
-        QHash <QString, int> m_hash;
-        QWidget *m_parent_widget = nullptr;
+	public:
+	ConductorNumExport(QETProject *project, QWidget *parent = nullptr);
+	bool toCsv();
+	QString wiresNum() const;
+	
+	private:
+	void fillHash();
+	
+	private:
+	QETProject *m_project = nullptr;
+	QHash <QString, int> m_hash;
+	QWidget *m_parent_widget = nullptr;
 };
 
 #endif // ConductorNumExport_H

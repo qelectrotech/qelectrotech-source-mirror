@@ -26,8 +26,8 @@
 /******************************************************/
 
 ECHStrategy::ECHStrategy(ElementsLocation &source, ElementsLocation &destination) :
-    m_source(source),
-    m_destination (destination)
+	m_source(source),
+	m_destination (destination)
 {}
 
 ECHStrategy::~ECHStrategy() {}
@@ -35,12 +35,12 @@ ECHStrategy::~ECHStrategy() {}
 /******************************************************/
 
 ECHSFileToFile::ECHSFileToFile(ElementsLocation &source, ElementsLocation &destination) :
-    ECHStrategy(source, destination)
+	ECHStrategy(source, destination)
 {}
 
 ElementsLocation ECHSFileToFile::copy()
 {
-		//Check if the destination already have an item with the same name of the item to copy
+	//Check if the destination already have an item with the same name of the item to copy
 	ElementsLocation location(m_destination.fileSystemPath() + "/" + m_source.fileName());
 	QString rename;
 	if (location.exist())
@@ -69,32 +69,32 @@ ElementsLocation ECHSFileToFile::copy()
 		else
 			return ElementsLocation();
 	}
-
+	
 	if (m_source.isElement())
 		return copyElement(m_source, m_destination, rename);
-    else
+	else
 		return copyDirectory(m_source, m_destination, rename);
 }
 
 ElementsLocation ECHSFileToFile::copyDirectory(ElementsLocation &source, ElementsLocation &destination, const QString& rename)
 {
-    QDir source_dir(source.fileSystemPath());
-    QDir destination_dir(destination.fileSystemPath());
-
+	QDir source_dir(source.fileSystemPath());
+	QDir destination_dir(destination.fileSystemPath());
+	
 	if (!source_dir.exists() || !destination_dir.exists()) return ElementsLocation();
-
-    QString new_dir_name = rename.isEmpty() ? source_dir.dirName() : rename;
-
-        //Create a new dir
-    if (destination_dir.mkdir(new_dir_name))
-    {
-            //The new created directory
-        QDir created_dir(destination_dir.canonicalPath() + "/" + new_dir_name);
-
-            //Copy the qet_directory file
-        QFile::copy(source_dir.canonicalPath() + "/qet_directory", created_dir.canonicalPath() + "/qet_directory");
-
-            //Copy all dirs found in source_dir to destination_dir
+	
+	QString new_dir_name = rename.isEmpty() ? source_dir.dirName() : rename;
+	
+	//Create a new dir
+	if (destination_dir.mkdir(new_dir_name))
+	{
+		//The new created directory
+		QDir created_dir(destination_dir.canonicalPath() + "/" + new_dir_name);
+		
+		//Copy the qet_directory file
+		QFile::copy(source_dir.canonicalPath() + "/qet_directory", created_dir.canonicalPath() + "/qet_directory");
+		
+		//Copy all dirs found in source_dir to destination_dir
 		ElementsLocation created_location(created_dir.canonicalPath());
 			//Used this bool when user drop a folder into itself to avoid infinite recursive creation of the dropped dir
 		bool copy_itself = false;
@@ -116,30 +116,30 @@ ElementsLocation ECHSFileToFile::copyDirectory(ElementsLocation &source, Element
 			copyDirectory(sub_source, created_location);
 		}
 
-            //Copy all elements found in source_dir to destination_dir
-        source_dir.setNameFilters(QStringList() << "*.elmt");
-        foreach(QString str, source_dir.entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name))
-        {
+		//Copy all elements found in source_dir to destination_dir
+		source_dir.setNameFilters(QStringList() << "*.elmt");
+		foreach(QString str, source_dir.entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name))
+		{
 			ElementsLocation sub_source(source.fileSystemPath() + "/" + str);
-            copyElement(sub_source, created_location);
-        }
-
-        return created_location;
-    }
-
+			copyElement(sub_source, created_location);
+		}
+		
+		return created_location;
+	}
+	
 	return ElementsLocation();
 }
 
 ElementsLocation ECHSFileToFile::copyElement(ElementsLocation &source, ElementsLocation &destination, const QString& rename)
 {
-    QString new_elmt_name = rename.isEmpty() ? source.fileName() : rename;
-    bool rb = QFile::copy(source.fileSystemPath(), destination.fileSystemPath() + "/" + new_elmt_name);
-    if (rb)
+	QString new_elmt_name = rename.isEmpty() ? source.fileName() : rename;
+	bool rb = QFile::copy(source.fileSystemPath(), destination.fileSystemPath() + "/" + new_elmt_name);
+	if (rb)
 	{
 #ifdef Q_OS_WIN
-			//On windows when user drag and drop an element from the common elements collection
-			//to the custom elements collection, the element file stay in read only mode, and so
-			//user can't save the element
+		//On windows when user drag and drop an element from the common elements collection
+		//to the custom elements collection, the element file stay in read only mode, and so
+		//user can't save the element
 		extern Q_CORE_EXPORT int qt_ntfs_permission_lookup;
 		qt_ntfs_permission_lookup++;
 		QFile file(destination.fileSystemPath() + "/" + new_elmt_name);
@@ -153,7 +153,7 @@ ElementsLocation ECHSFileToFile::copyElement(ElementsLocation &source, ElementsL
 #endif
 		return ElementsLocation (destination.fileSystemPath() + "/" + new_elmt_name);
 	}
-    else
+	else
 		return ElementsLocation();
 }
 
@@ -165,7 +165,7 @@ ECHSXmlToFile::ECHSXmlToFile(ElementsLocation &source, ElementsLocation &destina
 
 ElementsLocation ECHSXmlToFile::copy()
 {
-		//Check if the destination already have an item with the same name of the item to copy
+	//Check if the destination already have an item with the same name of the item to copy
 	ElementsLocation location(m_destination.fileSystemPath() + "/" + m_source.fileName());
 	QString rename;
 	if (location.exist())
@@ -194,7 +194,7 @@ ElementsLocation ECHSXmlToFile::copy()
 		else
 			return ElementsLocation();
 	}
-
+	
 	if (m_source.isElement())
 		return copyElement(m_source, m_destination, rename);
 	else
@@ -204,61 +204,61 @@ ElementsLocation ECHSXmlToFile::copy()
 ElementsLocation ECHSXmlToFile::copyDirectory(ElementsLocation &source, ElementsLocation &destination, const QString& rename)
 {
 	QDir destination_dir(destination.fileSystemPath());
-
+	
 	if (!(destination_dir.exists() && source.exist())) return ElementsLocation();
-
+	
 	QString new_dir_name = rename.isEmpty() ? source.fileName() : rename;
-
-		//Create new dir
+	
+	//Create new dir
 	if (destination_dir.mkdir(new_dir_name))
 	{
 		QDir created_dir(destination_dir.canonicalPath() + "/" + new_dir_name);
 		ElementsLocation created_location(created_dir.canonicalPath());
-
-			//Create the qet-directory file
+		
+		//Create the qet-directory file
 		QDomDocument document;
 		QDomElement root = document.createElement("qet-directory");
 		document.appendChild(root);
 		root.appendChild(source.nameList().toXml(document));
-
+		
 		QString filepath = created_dir.canonicalPath() + "/qet_directory";
 		QET::writeXmlFile(document, filepath);
-
-			//Create all directory found in source to created_dir
+		
+		//Create all directory found in source to created_dir
 		XmlElementCollection *project_collection = source.projectCollection();
-
+		
 		QStringList directories_names = project_collection->directoriesNames( project_collection->directory(source.collectionPath(false)) );
 		foreach(QString name, directories_names)
 		{
 			ElementsLocation sub_source_dir(source.projectCollectionPath() + "/" + name);
 			copyDirectory(sub_source_dir,  created_location);
 		}
-
-			//Create all elements found in source to destination
+		
+		//Create all elements found in source to destination
 		QStringList elements_names = project_collection->elementsNames( project_collection->directory(source.collectionPath(false))) ;
 		foreach (QString name, elements_names)
 		{
 			ElementsLocation source_element(source.projectCollectionPath() + "/" + name);
 			copyElement(source_element, created_location);
 		}
-
+		
 		return created_location;
 	}
-
+	
 	return ElementsLocation();
 }
 
 ElementsLocation ECHSXmlToFile::copyElement(ElementsLocation &source, ElementsLocation &destination, const QString& rename)
 {	
 	if (!(destination.exist() && source.exist())) return ElementsLocation();
-
+	
 	QString new_element_name = rename.isEmpty() ? source.fileName() : rename;
-
-		//Get the xml descrption of the element
+	
+	//Get the xml descrption of the element
 	QDomDocument document;
 	document.appendChild(document.importNode(source.xml(), true));
-
-		//Create the .elmt file
+	
+	//Create the .elmt file
 	QString filepath = destination.fileSystemPath() + "/" + new_element_name;
 	if (QET::writeXmlFile(document, filepath))
 		return ElementsLocation(filepath);
@@ -275,10 +275,10 @@ ECHSToXml::ECHSToXml(ElementsLocation &source, ElementsLocation &destination) :
 ElementsLocation ECHSToXml::copy()
 {
 	if (!(m_source.exist() && m_destination.isDirectory() && m_destination.isProject())) return ElementsLocation();
-
-		//Check if the destination already have an item with the same name of the item to copy
+	
+	//Check if the destination already have an item with the same name of the item to copy
 	ElementsLocation location(m_destination.projectCollectionPath() + "/" + m_source.fileName());
-
+	
 	QString rename;
 	if (location.exist())
 	{
@@ -291,7 +291,7 @@ ElementsLocation ECHSToXml::copy()
 		else
 			return ElementsLocation();
 	}
-
+	
 	return m_destination.projectCollection()->copy(m_source, m_destination, rename);
 }
 
@@ -305,7 +305,7 @@ ElementCollectionHandler::ElementCollectionHandler() {}
 
 ElementCollectionHandler::~ElementCollectionHandler()
 {
-    if (m_strategy) delete m_strategy;
+	if (m_strategy) delete m_strategy;
 }
 
 /**
@@ -320,11 +320,11 @@ ElementCollectionHandler::~ElementCollectionHandler()
 ElementsLocation ElementCollectionHandler::copy(ElementsLocation &source, ElementsLocation &destination)
 {
 	if (!source.exist() || !destination.exist() || destination.isElement()) return ElementsLocation();
-
-    if (source.isFileSystem() && destination.isFileSystem()) m_strategy = new ECHSFileToFile(source, destination);
+	
+	if (source.isFileSystem() && destination.isFileSystem()) m_strategy = new ECHSFileToFile(source, destination);
 	if (source.isProject() && destination.isFileSystem()) m_strategy = new ECHSXmlToFile(source, destination);
 	else if (destination.isProject()) m_strategy = new ECHSToXml(source, destination);
-
+	
 	if (m_strategy)
 		return m_strategy->copy();
 	else
@@ -342,31 +342,31 @@ ElementsLocation ElementCollectionHandler::copy(ElementsLocation &source, Elemen
  */
 ElementsLocation ElementCollectionHandler::createDir(ElementsLocation &parent, const QString &name, const NamesList &name_list)
 {
-		//Parent must be a directorie and writable
+	//Parent must be a directorie and writable
 	if (!(parent.isDirectory() && parent.isWritable() && parent.exist())) {
 		qDebug() << "ElementCollectionHandler::createDir : the prerequisites are not valid. " << parent;
 		return ElementsLocation();
 	}
-
-		//Directorie to create must not already exist
+	
+	//Directorie to create must not already exist
 	ElementsLocation created_dir = parent;
 	created_dir.addToPath(name);
 	if (created_dir.exist()) {
 		return ElementsLocation();
 	}
-
-		//Location is a file system
+	
+	//Location is a file system
 	if (parent.isFileSystem()) {
-
+		
 		QDir parent_dir(parent.fileSystemPath());
-
+		
 		if (parent_dir.mkdir(name)) {
-				//Create the qet-directory file
+			//Create the qet-directory file
 			QDomDocument document;
 			QDomElement root = document.createElement("qet-directory");
 			document.appendChild(root);
 			root.appendChild(name_list.toXml(document));
-
+			
 			QString filepath = created_dir.fileSystemPath() + "/qet_directory";
 			if (!QET::writeXmlFile(document, filepath)) {
 				qDebug() << "ElementCollectionHandler::createDir : write qet-directory file failed";
@@ -388,7 +388,7 @@ ElementsLocation ElementCollectionHandler::createDir(ElementsLocation &parent, c
 			return ElementsLocation();
 		}
 	}
-
+	
 	return ElementsLocation();
 }
 
@@ -403,35 +403,35 @@ ElementsLocation ElementCollectionHandler::createDir(ElementsLocation &parent, c
 bool ElementCollectionHandler::importFromProject(QETProject *project, ElementsLocation &location)
 {
 	if (!(location.isElement() && location.exist() && location.isProject())) return false;
-
+	
 	ElementsLocation destination(location.collectionPath(false), project);
 	if (destination.exist()) return true;
-
+	
 	QList <QString> names;
-
-		//Get the parent of location and find if exist in embedded collection of project
+	
+	//Get the parent of location and find if exist in embedded collection of project
 	ElementsLocation source = location.parent();
 	names.append(location.fileName());
-
+	
 	destination = ElementsLocation(source.collectionPath(), project);
-
-		//Go back until to find an existing directory in destination
+	
+	//Go back until to find an existing directory in destination
 	while (!destination.exist()) {
 		names.append(source.fileName());
 		source = source.parent();
 		destination = ElementsLocation(source.collectionPath(), project);
 	}
-
+	
 	XmlElementCollection *collection = project->embeddedElementCollection();
-
+	
 	while (!names.isEmpty()) {
 		source.addToPath(names.takeLast());
 		destination = collection->copy(source, destination, QString(), false);
-
+		
 		if (!destination.exist())
 			return false;
 	}
-
+	
 	return true;
 }
 
@@ -447,23 +447,23 @@ bool ElementCollectionHandler::setNames(ElementsLocation &location, const NamesL
 	if ( !(location.exist() && location.isWritable()) ) {
 		return false;
 	}
-
+	
 	if (location.isFileSystem()) {
 		if (location.isDirectory()) {
 			QDomDocument document;
 			QDomElement root = document.createElement("qet-directory");
 			document.appendChild(root);
 			root.appendChild(name_list.toXml(document));
-
+			
 			QString filepath = location.fileSystemPath() + "/qet_directory";
 			if (!QET::writeXmlFile(document, filepath)) {
 				qDebug() << "ElementCollectionHandler::setNames : write qet-directory file failed";
 				return false;
 			}
-
+			
 			return true;
 		}
-
+		
 		if (location.isElement()) {
 			QDomDocument document;
 			document.appendChild(document.importNode(location.xml(), true));
@@ -471,19 +471,19 @@ bool ElementCollectionHandler::setNames(ElementsLocation &location, const NamesL
 				qDebug() << "ElementCollectionHandler::setNames : failed to load xml document from file";
 				return false;
 			}
-
+			
 			QDomElement document_element = document.documentElement();
 			document_element.replaceChild(name_list.toXml(document), document_element.firstChildElement("names"));
 			return true;
 		}
 	}
-
+	
 	if (location.isProject()) {
 		QDomElement element = location.xml();
 		QDomDocument document = element.ownerDocument();
 		element.replaceChild(name_list.toXml(document), element.firstChildElement("names"));
 		return true;
 	}
-
+	
 	return false;
 }
