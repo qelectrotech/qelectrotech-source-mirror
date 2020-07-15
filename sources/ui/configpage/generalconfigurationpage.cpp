@@ -62,10 +62,6 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_font_pb->setText(fontInfos);
 
 	
-	QString foliolistfontInfos = settings.value("foliolistfont").toString() + " " +
-                        settings.value("foliolistsize").toString() + " (" +
-                        settings.value("folioliststyle").toString() + ")";
-	ui->m_folio_list_pb->setText(foliolistfontInfos);
 	
 
 		//Dynamic element text item
@@ -339,27 +335,7 @@ void GeneralConfigurationPage::on_m_dyn_text_font_pb_clicked()
 }
 
 
-/**
- * @brief GeneralConfigurationPage::on_m_folio_list_pb_clicked
- * Apply font to summary pages
- */
-void GeneralConfigurationPage::on_m_folio_list_pb_clicked()
-{
-	bool ok;
-	QSettings settings;
-	QFont font = QFontDialog::getFont(&ok, QFont("Sans Serif", 9), this);
-	if (ok)
-	{
-		settings.setValue("foliolistfont", font.family());
-		settings.setValue("foliolistsize", font.pointSize());
-		settings.setValue("foliolistweight", font.weight());
-		settings.setValue("folioliststyle", font.styleName());
-		QString fontInfos = settings.value("foliolistfont").toString() + " " +
-                            settings.value("foliolistsize").toString() + " (" +
-                            settings.value("folioliststyle").toString() + ")";
-        ui->m_folio_list_pb->setText(fontInfos);
-	}
-}
+
 
 void GeneralConfigurationPage::on_m_common_elmt_path_cb_currentIndexChanged(int index)
 {
