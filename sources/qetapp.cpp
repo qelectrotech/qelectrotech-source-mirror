@@ -1112,7 +1112,11 @@ QList<QETElementEditor *> QETApp::elementEditors(QETProject *project) {
 
 	return(editors);
 }
-
+/**
+ * @brief QETApp::receiveMessage
+ * @param instanceId
+ * @param message
+ */
 void QETApp::receiveMessage(int instanceId, QByteArray message)
 {
 	Q_UNUSED(instanceId);
