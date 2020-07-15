@@ -18,10 +18,19 @@
 #include "borderproperties.h"
 
 /**
-	Constructeur. Initialise un objet BorderProperties avec les proprietes par
+	@brief BorderProperties::BorderProperties
+	constructor
+	Initializes a BorderProperties object with default properties
+
+	Initializes a BorderProperties object
+	with the following default properties:
+	- 17 columns of 60.0 px wide by 20.0px high
+	- 8    lines of 80.0 px high by 20.0px wide
+
+	Initialise un objet BorderProperties avec les proprietes par
 	defaut suivantes :
-	  * 17 colonnes affichees de 60.0 px de large pour 20.0px de haut
-	  * 8 lignes affichees de 80.0 px de haut pour 20.0px de large
+	- 17 colonnes affichees de 60.0 px de large pour 20.0px de haut
+	- 8    lignes affichees de 80.0 px de haut pour 20.0px de large
 */
 BorderProperties::BorderProperties() :
 	columns_count(17),
@@ -36,14 +45,20 @@ BorderProperties::BorderProperties() :
 }
 
 /**
-	Destructeur
+	@brief BorderProperties::~BorderProperties
+	destructor
 */
 BorderProperties::~BorderProperties() {
 }
 
 /**
-	@param bp autre conteneur BorderProperties
-	@return true si ip et ce conteneur sont identiques, false sinon
+	@brief BorderProperties::operator ==
+	@param bp :
+	- other BorderProperties container/class
+	- autre conteneur BorderProperties
+	@return
+	- true if it and this container are identical, false otherwise
+	- true si ip et ce conteneur sont identiques, false sinon
 */
 bool BorderProperties::operator==(const BorderProperties &bp) {
 	return(
@@ -59,16 +74,25 @@ bool BorderProperties::operator==(const BorderProperties &bp) {
 }
 
 /**
-	@param bp autre conteneur BorderProperties
-	@return false si bp et ce conteneur sont identiques, true sinon
+	@brief BorderProperties::operator !=
+	@param bp :
+	- other BorderProperties container/class
+	- autre conteneur BorderProperties
+	@return
+	- false if it and this container are identical, true otherwise
+	- false si bp et ce conteneur sont identiques, true sinon
 */
 bool BorderProperties::operator!=(const BorderProperties &bp) {
 	return(!(*this == bp));
 }
 
 /**
-	Exporte les dimensions sous formes d'attributs XML ajoutes a l'element e.
-	@param e Element XML auquel seront ajoutes des attributs
+	@brief BorderProperties::toXml
+	- Exports dimensions as XML attributes added to element e.
+	- Exporte les dimensions sous formes d'attributs XML ajoutes a l'element e.
+	@param e :
+	- XML element to which attributes will be added
+	- Element XML auquel seront ajoutes des attributs
 */
 void BorderProperties::toXml(QDomElement &e) const {
 	e.setAttribute("cols",        columns_count);
@@ -80,8 +104,12 @@ void BorderProperties::toXml(QDomElement &e) const {
 }
 
 /**
-	Importe les dimensions a partir des attributs XML de l'element e
-	@param e Element XML dont les attributs seront lus
+	@brief BorderProperties::fromXml
+	- Import dimensions from XML attributes of element e
+	- Importe les dimensions a partir des attributs XML de l'element e
+	@param e :
+	- XML element whose attributes will be read
+	- Element XML dont les attributs seront lus
 */
 void BorderProperties::fromXml(QDomElement &e) {
 	if (e.hasAttribute("cols"))        columns_count   = e.attribute("cols").toInt();
@@ -93,9 +121,15 @@ void BorderProperties::fromXml(QDomElement &e) {
 }
 
 /**
-	Exporte les dimensions dans une configuration.
-	@param settings Parametres a ecrire
-	@param prefix prefixe a ajouter devant les noms des parametres
+	@brief BorderProperties::toSettings
+	- Export dimensions in a QSettings object.
+	- Exporte les dimensions dans une configuration.
+	@param settings :
+	- QSettings object to write
+	- Parametres a ecrire
+	@param prefix :
+	- prefix to be added before the names of the parameters
+	- prefixe a ajouter devant les noms des parametres
 */
 void BorderProperties::toSettings(QSettings &settings, const QString &prefix) const {
 	settings.setValue(prefix + "cols",        columns_count);
@@ -107,9 +141,15 @@ void BorderProperties::toSettings(QSettings &settings, const QString &prefix) co
 }
 
 /**
-	Importe les dimensions depuis une configuration.
-	@param settings Parametres a lire
-	@param prefix prefixe a ajouter devant les noms des parametres
+	@brief BorderProperties::fromSettings
+	- Import dimensions from a QSettings object.
+	- Importe les dimensions depuis une configuration.
+	@param settings :
+	- QSettings object to read
+	- Parametres a lire
+	@param prefix :
+	- prefix to be added before the names of the parameters
+	- prefixe a ajouter devant les noms des parametres
 */
 void BorderProperties::fromSettings(QSettings &settings, const QString &prefix) {
 	columns_count   = settings.value(prefix + "cols",            columns_count).toInt();
@@ -122,9 +162,9 @@ void BorderProperties::fromSettings(QSettings &settings, const QString &prefix) 
 }
 
 /**
- * @brief BorderProperties::defaultProperties
- * @return the default properties stored in the setting file
- */
+	@brief BorderProperties::defaultProperties
+	@return the default properties stored in the setting file
+*/
 BorderProperties BorderProperties::defaultProperties()
 {
 	QSettings settings;
