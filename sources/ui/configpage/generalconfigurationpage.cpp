@@ -47,7 +47,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	if(tabbed)
 		ui->m_use_tab_mode_rb->setChecked(true);
 	else
-	ui->m_use_windows_mode_rb->setChecked(true);
+		ui->m_use_windows_mode_rb->setChecked(true);
 	ui->m_zoom_out_beyond_folio->setChecked(settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool());
 	ui->m_use_gesture_trackpad->setChecked(settings.value("diagramview/gestures", false).toBool());
 	ui->m_save_label_paste->setChecked(settings.value("diagramcommands/erase-label-on-copy", true).toBool());
@@ -57,8 +57,8 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_autosave_sb->setValue(settings.value("diagrameditor/autosave-interval", 0).toInt());
 	
 	QString fontInfos = settings.value("diagramitemfont").toString() + " " +
-                        settings.value("diagramitemsize").toString() + " (" +
-                        settings.value("diagramitemstyle").toString() + ")";
+			settings.value("diagramitemsize").toString() + " (" +
+			settings.value("diagramitemstyle").toString() + ")";
 	ui->m_font_pb->setText(fontInfos);
 
 	
@@ -309,9 +309,9 @@ void GeneralConfigurationPage::on_m_font_pb_clicked()
 		settings.setValue("diagramitemweight", font.weight());
 		settings.setValue("diagramitemstyle", font.styleName());
 		QString fontInfos = settings.value("diagramitemfont").toString() + " " +
-                            settings.value("diagramitemsize").toString() + " (" +
-                            settings.value("diagramitemstyle").toString() + ")";
-        ui->m_font_pb->setText(fontInfos);
+				settings.value("diagramitemsize").toString() + " (" +
+				settings.value("diagramitemstyle").toString() + ")";
+		ui->m_font_pb->setText(fontInfos);
 	}
 }
 
@@ -339,7 +339,7 @@ void GeneralConfigurationPage::on_m_dyn_text_font_pb_clicked()
 
 void GeneralConfigurationPage::on_m_common_elmt_path_cb_currentIndexChanged(int index)
 {
-    if (index == 1)
+	if (index == 1)
 	{
 		QString path = QFileDialog::getExistingDirectory(this, tr("Chemin de la collection commune"), QDir::homePath());
 		if (!path.isEmpty()) {
@@ -353,7 +353,7 @@ void GeneralConfigurationPage::on_m_common_elmt_path_cb_currentIndexChanged(int 
 
 void GeneralConfigurationPage::on_m_custom_elmt_path_cb_currentIndexChanged(int index)
 {
-    if (index == 1)
+	if (index == 1)
 	{
 		QString path = QFileDialog::getExistingDirectory(this, tr("Chemin de la collection utilisateur"), QDir::homePath());
 		if (!path.isEmpty()) {
@@ -367,7 +367,7 @@ void GeneralConfigurationPage::on_m_custom_elmt_path_cb_currentIndexChanged(int 
 
 void GeneralConfigurationPage::on_m_custom_tbt_path_cb_currentIndexChanged(int index)
 {
-    if (index == 1)
+	if (index == 1)
 	{
 		QString path = QFileDialog::getExistingDirectory(this, tr("Chemin des cartouches utilisateur"), QDir::homePath());
 		if (!path.isEmpty()) {

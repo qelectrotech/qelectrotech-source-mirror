@@ -1377,23 +1377,23 @@ void Element::initLink(QETProject *prj)
 
 QString Element::linkTypeToString() const
 {
-    switch (m_link_type)
-    {
-        case Simple:
-            return "Simple";
-        case NextReport :
-            return "NextReport";
-        case PreviousReport:
-            return "PreviousReport";
-        case Master:
-            return "Master";
-        case Slave:
-            return "Slave";
-        case Terminale:
-            return "Terminale";
-        default:
-            return "Unknown";
-    }
+	switch (m_link_type)
+	{
+		case Simple:
+			return "Simple";
+		case NextReport :
+			return "NextReport";
+		case PreviousReport:
+			return "PreviousReport";
+		case Master:
+			return "Master";
+		case Slave:
+			return "Slave";
+		case Terminale:
+			return "Terminale";
+		default:
+			return "Unknown";
+	}
 }
 
 /**

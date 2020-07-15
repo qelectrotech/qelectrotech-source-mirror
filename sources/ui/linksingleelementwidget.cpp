@@ -220,10 +220,10 @@ void LinkSingleElementWidget::buildTree()
 			QStringList search_list;
 			QStringList str_list;
 
-            str_list << elmt->actualLabel();
-            if(!str_list.last().isEmpty()) {
-                search_list << str_list.last();
-            }
+			str_list << elmt->actualLabel();
+			if(!str_list.last().isEmpty()) {
+				search_list << str_list.last();
+			}
 			
 			str_list << elmt->elementInformations()["comment"].toString();
 			if (!str_list.last().isEmpty())
@@ -254,7 +254,7 @@ void LinkSingleElementWidget::buildTree()
 			m_qtwi_strl_hash.insert(qtwi, search_list);
 		}
 		
-
+		
 		QVariant v = settings.value("link-element-widget/slave-state");
 		if(!v.isNull())
 			ui->m_tree_widget->header()->restoreState(v.toByteArray());
@@ -319,7 +319,7 @@ void LinkSingleElementWidget::buildTree()
 		if(!v.isNull())
 			ui->m_tree_widget->header()->restoreState(v.toByteArray());
 	}
-
+	
 	setUpCompleter();
 }
 
@@ -347,10 +347,10 @@ bool LinkSingleElementWidget::setLiveEdit(bool live_edit)
 QList <Element *> LinkSingleElementWidget::availableElements()
 {
 	QList <Element *> elmt_list;
-		//if element isn't free and unlink isn't pressed, return an empty list
+	//if element isn't free and unlink isn't pressed, return an empty list
 	if (!m_element->isFree() && !m_unlink)
 		return elmt_list;
-
+	
 	if (!m_element->diagram() || !m_element->diagram()->project()) return elmt_list;
 	
 	ElementProvider ep(m_element->diagram()->project());
@@ -359,9 +359,9 @@ QList <Element *> LinkSingleElementWidget::availableElements()
 	else
 		elmt_list = ep.find(m_filter);
 	
-		//If element is linked, remove is parent from the list
+	//If element is linked, remove is parent from the list
 	if(!m_element->isFree()) elmt_list.removeAll(m_element->linkedElements().first());
-
+	
 	return elmt_list;
 }
 
@@ -445,8 +445,8 @@ void LinkSingleElementWidget::setUpHeaderLabels()
  */
 void LinkSingleElementWidget::diagramWasRemovedFromProject()
 {
-		//We use a timer because if the removed diagram contain the master element linked to the edited element
-		//we must to wait for this elements be unlinked, else the list of available master isn't up to date
+	//We use a timer because if the removed diagram contain the master element linked to the edited element
+	//we must to wait for this elements be unlinked, else the list of available master isn't up to date
 	QTimer::singleShot(10, this, SLOT(updateUi()));
 }
 
@@ -473,8 +473,8 @@ void LinkSingleElementWidget::linkTriggered()
 	}
 	else
 	{
-			//In no live edit mode, we set the background of the qtwi green, to inform the user
-			//which element will be linked when he press the apply button
+		//In no live edit mode, we set the background of the qtwi green, to inform the user
+		//which element will be linked when he press the apply button
 		if (m_pending_qtwi)
 		{
 			for(int i=0 ; i<6 ; i++)
@@ -559,13 +559,13 @@ void LinkSingleElementWidget::on_m_tree_widget_itemDoubleClicked(QTreeWidgetItem
 	elmt->setHighlighted(true);
 	m_showed_element = elmt;
 	connect(m_showed_element, SIGNAL(destroyed()), this, SLOT(showedElementWasDeleted()));
-
+	
 }
 
 void LinkSingleElementWidget::on_m_tree_widget_customContextMenuRequested(const QPoint &pos)
 {
-		//add the size of the header to display the topleft of the QMenu at the position of the mouse.
-		//See doc about QWidget::customContextMenuRequested section related to QAbstractScrollArea 
+	//add the size of the header to display the topleft of the QMenu at the position of the mouse.
+	//See doc about QWidget::customContextMenuRequested section related to QAbstractScrollArea 
 	QPoint point = pos;
 	point.ry()+=ui->m_tree_widget->header()->height();
 	point = ui->m_tree_widget->mapToGlobal(point);
@@ -606,7 +606,7 @@ void LinkSingleElementWidget::on_m_show_this_pb_clicked()
  */
 void LinkSingleElementWidget::on_m_search_field_textEdited(const QString &arg1)
 {
-		//Show all items if arg1 is empty, if not hide all items
+	//Show all items if arg1 is empty, if not hide all items
 	foreach(QTreeWidgetItem *qtwi, m_qtwi_elmt_hash.keys())
 		qtwi->setHidden(!arg1.isEmpty());
 	
@@ -624,7 +624,7 @@ void LinkSingleElementWidget::on_m_search_field_textEdited(const QString &arg1)
 		}
 	}
 	
-		//Show items which match with arg1
+	//Show items which match with arg1
 	foreach(QTreeWidgetItem *qtwi, qtwi_list)
 		qtwi->setHidden(false);
 }

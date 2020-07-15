@@ -30,39 +30,39 @@ namespace Ui {
 
 class PolygonEditor : public ElementItemEditor
 {
-    Q_OBJECT
-
-    public:
-        explicit PolygonEditor(QETElementEditor *editor, PartPolygon *part = nullptr, QWidget *parent = nullptr);
-        ~PolygonEditor() override;
-
-        bool setPart(CustomElementPart *part) override;
-        CustomElementPart *currentPart() const override;
-        QList<CustomElementPart*> currentParts() const override;
-        void updateForm() override;
-        QVector<QPointF> pointsFromTree();
-        bool eventFilter(QObject *watched, QEvent *event) override;
-
-    private slots:
-        void on_m_close_polygon_cb_stateChanged(int arg1);
-        void on_m_points_list_tree_itemChanged(QTreeWidgetItem *item, int column);
-        void on_m_points_list_tree_itemSelectionChanged();
-        void on_m_add_point_action_triggered();
-        void on_m_remove_point_action_triggered();
-
-private:
-        /*!
-         * \brief setUpChangeConnections
-         * Setup the connection from the line(s) to the widget, to update it when the line(s) are changed (moved ...)
-         */
-        void setUpChangeConnections();
-        void disconnectChangeConnections();
-
-private:
-        Ui::PolygonEditor *ui;
-        StyleEditor *m_style = nullptr;
-        PartPolygon *m_part = nullptr;
-        QList <QMetaObject::Connection> m_change_connections;
+	Q_OBJECT
+	
+	public:
+	explicit PolygonEditor(QETElementEditor *editor, PartPolygon *part = nullptr, QWidget *parent = nullptr);
+	~PolygonEditor() override;
+	
+	bool setPart(CustomElementPart *part) override;
+	CustomElementPart *currentPart() const override;
+	QList<CustomElementPart*> currentParts() const override;
+	void updateForm() override;
+	QVector<QPointF> pointsFromTree();
+	bool eventFilter(QObject *watched, QEvent *event) override;
+	
+	private slots:
+	void on_m_close_polygon_cb_stateChanged(int arg1);
+	void on_m_points_list_tree_itemChanged(QTreeWidgetItem *item, int column);
+	void on_m_points_list_tree_itemSelectionChanged();
+	void on_m_add_point_action_triggered();
+	void on_m_remove_point_action_triggered();
+	
+	private:
+	/*!
+		 * \brief setUpChangeConnections
+		 * Setup the connection from the line(s) to the widget, to update it when the line(s) are changed (moved ...)
+		 */
+	void setUpChangeConnections();
+	void disconnectChangeConnections();
+	
+	private:
+	Ui::PolygonEditor *ui;
+	StyleEditor *m_style = nullptr;
+	PartPolygon *m_part = nullptr;
+	QList <QMetaObject::Connection> m_change_connections;
 };
 
 #endif // POLYGONEDITOR_H

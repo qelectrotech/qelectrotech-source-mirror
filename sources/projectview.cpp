@@ -887,27 +887,27 @@ void ProjectView::diagramAdded(Diagram *diagram)
  */
 void ProjectView::updateTabTitle(DiagramView *diagram_view)
 {
-    int diagram_tab_id = m_diagram_ids.key(diagram_view, -1);
-    
-    if (diagram_tab_id != -1)
-    {
-        QSettings settings;
-        QString title;
-        Diagram *diagram = diagram_view->diagram();
-        
-        if (settings.value("genericpanel/folio", false).toBool())
-        {
-            QString formula = diagram->border_and_titleblock.folio();
-            autonum::sequentialNumbers seq;
-            title = autonum::AssignVariables::formulaToLabel(formula, seq, diagram);
-        }
-        else
-            title = QString::number(diagram->folioIndex() + 1);
-        
-        title += " - ";
-        title += diagram->title();
-        m_tab->setTabText(diagram_tab_id ,title);
-    }
+	int diagram_tab_id = m_diagram_ids.key(diagram_view, -1);
+	
+	if (diagram_tab_id != -1)
+	{
+		QSettings settings;
+		QString title;
+		Diagram *diagram = diagram_view->diagram();
+		
+		if (settings.value("genericpanel/folio", false).toBool())
+		{
+			QString formula = diagram->border_and_titleblock.folio();
+			autonum::sequentialNumbers seq;
+			title = autonum::AssignVariables::formulaToLabel(formula, seq, diagram);
+		}
+		else
+			title = QString::number(diagram->folioIndex() + 1);
+		
+		title += " - ";
+		title += diagram->title();
+		m_tab->setTabText(diagram_tab_id ,title);
+	}
 }
 
 /**

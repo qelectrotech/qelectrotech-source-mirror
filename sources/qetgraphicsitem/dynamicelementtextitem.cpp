@@ -1045,18 +1045,18 @@ void DynamicElementTextItem::updateLabel()
 		(m_text_from == CompositeText && m_composite_text.contains("%{label}")))
 	{
 		DiagramContext dc;
-        Element *element = elementUseForInfo();
-        if(element) {
-            dc = element->elementInformations();
-        }
+		Element *element = elementUseForInfo();
+		if(element) {
+			dc = element->elementInformations();
+		}
 		
 
-        if(m_text_from == ElementInfo && element) {
-            setPlainText(element->actualLabel());
+		if(m_text_from == ElementInfo && element) {
+			setPlainText(element->actualLabel());
 		}
-        else if (m_text_from == CompositeText) {
+		else if (m_text_from == CompositeText) {
 			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc));
-        }
+		}
 	}
 }
 

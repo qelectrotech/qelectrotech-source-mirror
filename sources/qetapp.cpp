@@ -576,9 +576,9 @@ QString QETApp::customElementsDir()
 			if (dir.exists())
 				{
 					m_user_custom_elements_dir = path;
-                    if(!m_user_custom_elements_dir.endsWith("/")) {
-                        m_user_custom_elements_dir.append("/");
-                    }
+					if(!m_user_custom_elements_dir.endsWith("/")) {
+						m_user_custom_elements_dir.append("/");
+					}
 					return m_user_custom_elements_dir;
 			}
 		}
@@ -1786,17 +1786,17 @@ void QETApp::buildSystemTrayMenu() {
  */
 void QETApp::checkBackupFiles()
 {
-    QList<KAutoSaveFile *> stale_files = KAutoSaveFile::allStaleFiles();
-
-		//Remove from the list @stale_files, the stales file of opened project
+	QList<KAutoSaveFile *> stale_files = KAutoSaveFile::allStaleFiles();
+	
+	//Remove from the list @stale_files, the stales file of opened project
 	const QList<KAutoSaveFile *> sf = stale_files;
-    for (KAutoSaveFile *kasf : sf)
-    {
-        for (QETProject *project : registeredProjects().values())
-        {
-                //We must to adjust with the flag QUrl::StripTrailingSlash to compar a path formated like the path returned by KAutoSaveFile
-            const QString path = QUrl::fromLocalFile(project->filePath()).adjusted(QUrl::RemoveScheme | QUrl::StripTrailingSlash).path();
-            if (kasf->managedFile() == path) {
+	for (KAutoSaveFile *kasf : sf)
+	{
+		for (QETProject *project : registeredProjects().values())
+		{
+			//We must to adjust with the flag QUrl::StripTrailingSlash to compar a path formated like the path returned by KAutoSaveFile
+			const QString path = QUrl::fromLocalFile(project->filePath()).adjusted(QUrl::RemoveScheme | QUrl::StripTrailingSlash).path();
+			if (kasf->managedFile() == path) {
 				stale_files.removeOne(kasf);
 			}
 		}

@@ -47,31 +47,31 @@ class ArcEditor : public ElementItemEditor
 		QSpinBox *angle, *start_angle;
 		bool m_locked;
 
-        QList <QMetaObject::Connection> m_change_connections;
+		QList <QMetaObject::Connection> m_change_connections;
 	
 		// methods
 	public:
 		bool setPart(CustomElementPart *) override;
-        bool setParts(QList <CustomElementPart *> parts) override;
+		bool setParts(QList <CustomElementPart *> parts) override;
 		CustomElementPart *currentPart() const override;
-        QList<CustomElementPart*> currentParts() const override;
+		QList<CustomElementPart*> currentParts() const override;
 	
 	public slots:
 		void updateArcS();
 		void updateArcA();
-        void updateArcRectX();
-        void updateArcRectY();
-        void updateArcRectH();
-        void updateArcRectV();
+		void updateArcRectX();
+		void updateArcRectY();
+		void updateArcRectH();
+		void updateArcRectV();
 		void updateForm() override;
 	
 	private:
 		void activeConnections(bool);
-        /*!
-         * \brief setUpChangeConnections
-         * Setup the connection from the arc(s) to the widget, to update it when the arc(s) are changed (moved ...)
-         */
-        void setUpChangeConnections();
-        void disconnectChangeConnections();
+		/*!
+		 * \brief setUpChangeConnections
+		 * Setup the connection from the arc(s) to the widget, to update it when the arc(s) are changed (moved ...)
+		 */
+		void setUpChangeConnections();
+		void disconnectChangeConnections();
 };
 #endif

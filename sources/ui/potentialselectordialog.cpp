@@ -104,7 +104,7 @@ class NewConductorPotentialSelector : public AbstractPotentialSelector
 			seq_num = conductor_in_potential->sequenceNum();
 			number = conductor_in_potential->relatedPotentialConductors().size()+1; //We add +1 because conductor_in_potential isn't count by relatedPotentialConductors
 
-                       c_list = conductor_in_potential->relatedPotentialConductors().values();
+			c_list = conductor_in_potential->relatedPotentialConductors().values();
 			c_list.append(conductor_in_potential);
 			foreach(Conductor *c, c_list)
 				properties_list.append(c->properties());

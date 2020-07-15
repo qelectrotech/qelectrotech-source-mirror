@@ -417,7 +417,7 @@ void ElementView::wheelEvent(QWheelEvent *e) {
 		if (e -> modifiers() & Qt::ControlModifier)
 			e -> angleDelta().y() > 0 ? zoomInSlowly() : zoomOutSlowly();
 		else
-            QGraphicsView::wheelEvent(e);
+			QGraphicsView::wheelEvent(e);
 	} else {
 		e -> angleDelta().y() > 0 ? zoomIn(): zoomOut();
 	}

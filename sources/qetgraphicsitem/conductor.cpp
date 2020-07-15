@@ -581,27 +581,27 @@ bool Conductor::valideXml(QDomElement &e){
 	if (!e.hasAttribute("terminal2")) return(false);
 	
 	bool conv_ok;
-    // parse l'abscisse
-    if (e.hasAttribute("element1")) {
-        if (QUuid(e.attribute("element1")).isNull())
-            return false;
-        if (QUuid(e.attribute("terminal1")).isNull())
-            return false;
-    } else {
-        e.attribute("terminal1").toInt(&conv_ok);
-        if (!conv_ok) return(false);
-    }
+	// parse l'abscisse
+	if (e.hasAttribute("element1")) {
+		if (QUuid(e.attribute("element1")).isNull())
+			return false;
+		if (QUuid(e.attribute("terminal1")).isNull())
+			return false;
+	} else {
+		e.attribute("terminal1").toInt(&conv_ok);
+		if (!conv_ok) return(false);
+	}
 	
 	// parse l'ordonnee
-    if (e.hasAttribute("element2")) {
-        if (QUuid(e.attribute("element2")).isNull())
-            return false;
-        if (QUuid(e.attribute("terminal2")).isNull())
-            return false;
-    } else {
-        e.attribute("terminal2").toInt(&conv_ok);
-        if (!conv_ok) return(false);
-    }
+	if (e.hasAttribute("element2")) {
+		if (QUuid(e.attribute("element2")).isNull())
+			return false;
+		if (QUuid(e.attribute("terminal2")).isNull())
+			return false;
+	} else {
+		e.attribute("terminal2").toInt(&conv_ok);
+		if (!conv_ok) return(false);
+	}
 	return(true);
 }
 

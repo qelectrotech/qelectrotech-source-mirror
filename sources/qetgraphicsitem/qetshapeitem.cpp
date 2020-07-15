@@ -366,24 +366,24 @@ void QetShapeItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
  */
 QVariant QetShapeItem::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value)
 {
-    if (change == ItemSelectedHasChanged)
-    {
-        if (value.toBool() == true) { //If this is selected, wa add handlers.
+	if (change == ItemSelectedHasChanged)
+	{
+		if (value.toBool() == true) { //If this is selected, wa add handlers.
 			addHandler();
-        }
-        else //Else this is deselected, we remove handlers
-        {
-            if(!m_handler_vector.isEmpty())
-            {
-                qDeleteAll(m_handler_vector);
-                m_handler_vector.clear();
-            }
+		}
+		else //Else this is deselected, we remove handlers
+		{
+			if(!m_handler_vector.isEmpty())
+			{
+				qDeleteAll(m_handler_vector);
+				m_handler_vector.clear();
+			}
 			m_resize_mode = 1;
-        }
-    }
-    else if (change == ItemPositionHasChanged) {
+		}
+	}
+	else if (change == ItemPositionHasChanged) {
 		adjusteHandlerPos();
-    }
+	}
 	else if (change == ItemSceneHasChanged)
 	{
 		if (!scene()) //This is removed from scene, then we deselect this, and so, the handlers is also removed.
@@ -391,8 +391,8 @@ QVariant QetShapeItem::itemChange(QGraphicsItem::GraphicsItemChange change, cons
 			setSelected(false);
 		}
 	}
-
-    return QGraphicsItem::itemChange(change, value);
+	
+	return QGraphicsItem::itemChange(change, value);
 }
 
 /**

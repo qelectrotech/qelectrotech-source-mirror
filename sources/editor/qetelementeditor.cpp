@@ -610,119 +610,119 @@ void QETElementEditor::slot_setNoDragToView() {
 void QETElementEditor::slot_updateInformations()
 {
 	QList<QGraphicsItem *> selected_qgis = m_elmt_scene -> selectedItems();
-    if (selected_qgis.isEmpty()) {
-        clearToolsDock();
-        m_default_informations -> setText(tr("%n partie(s) sélectionnée(s).",
-                                           "",
-                                           selected_qgis.size()));
-        m_default_informations -> setAlignment(Qt::AlignHCenter | Qt::AlignTop);
-        m_tools_dock_stack -> setCurrentIndex(0);
-        return;
-    }
-
+	if (selected_qgis.isEmpty()) {
+		clearToolsDock();
+		m_default_informations -> setText(tr("%n partie(s) sélectionnée(s).",
+											 "",
+											 selected_qgis.size()));
+		m_default_informations -> setAlignment(Qt::AlignHCenter | Qt::AlignTop);
+		m_tools_dock_stack -> setCurrentIndex(0);
+		return;
+	}
+	
 	QList<CustomElementPart *> cep_list;
-
-    CustomElementPart* part = dynamic_cast<CustomElementPart *>(selected_qgis.first());
-    QString selection_xml_name = part->xmlName();
-    bool same_xml_name = true;
-    bool style_editable = true;
-    for (QGraphicsItem *qgi: selected_qgis) {
-        if (CustomElementPart *cep = dynamic_cast<CustomElementPart *>(qgi)) {
-            cep_list << cep;
-            if (cep->xmlName() != selection_xml_name)
-                same_xml_name = false;
-        } else {
-            style_editable = false;
-            same_xml_name = false;
-        }
-    }
-    if (style_editable)
-        style_editable = StyleEditor::isStyleEditable(cep_list);
-
-    if (same_xml_name) {
-        if (selection_xml_name == "terminal" ||
-            selection_xml_name == "text" ||
-            selection_xml_name == "dynamic_text" ||
-            selection_xml_name == "line" ||
-            selection_xml_name == "rect" ||
-            selection_xml_name == "ellipse" ||
-            selection_xml_name == "arc") {
-            clearToolsDock();
-                //We add the editor widget
-            ElementItemEditor *editor = static_cast<ElementItemEditor*>(m_editors[selection_xml_name]);
-
-            // TODO: Check if it takes longer than setting the parts again to the editor.
-            bool equal = true;
-            QList<CustomElementPart*> parts = editor->currentParts();
-            if (parts.length() == cep_list.length()) {
-                for (auto cep: cep_list) {
-                    bool part_found = false;
-                    for (auto part: parts) {
-                        if (part == cep) {
-                            part_found = true;
-                            break;
-                        }
-                    }
-                    if (!part_found) {
-                        equal = false;
-                        break;
-                    }
-                }
-            } else
-                equal = false;
-
-            if (editor)
-            {
-                bool success = true;
-                if (equal == false) {
-                    success = editor->setParts(cep_list);
-                }
-                if (success)
-                {
-                    m_tools_dock_stack->insertWidget(1, editor);
-                    m_tools_dock_stack -> setCurrentIndex(1);
-                }
-                else
-                {
-                    qDebug() << "Editor refused part.";
-                }
-            }
-            return;
-        } else if (selection_xml_name == "polygon" && cep_list.length() == 1) {
-            // multi edit for polygons makes no sense
-            // TODO: maybe allowing multipart edit when number of points is the same?
-            //We add the editor widget
-            clearToolsDock();
-            ElementItemEditor *editor = static_cast<ElementItemEditor*>(m_editors[selection_xml_name]);
-            CustomElementPart* part = editor->currentPart();
-            bool equal = part == cep_list.first();
-
-            if (editor)
-            {
-                bool success = true;
-                if (equal == false) {
-                    success = editor->setPart(cep_list.first());
-                }
-                if (success)
-                {
-                    m_tools_dock_stack->insertWidget(1, editor);
-                    m_tools_dock_stack -> setCurrentIndex(1);
-                }
-                else
-                {
-                    qDebug() << "Editor refused part.";
-                }
-            }
-            return;
-
-            } else {
-                qDebug() << "Multiedit not supported for: " << cep_list.first()->xmlName();
-            }
-
-    }
-
-    //There's several parts selecteds and all can be edited by style editor.
-    if (style_editable)
+	
+	CustomElementPart* part = dynamic_cast<CustomElementPart *>(selected_qgis.first());
+	QString selection_xml_name = part->xmlName();
+	bool same_xml_name = true;
+	bool style_editable = true;
+	for (QGraphicsItem *qgi: selected_qgis) {
+		if (CustomElementPart *cep = dynamic_cast<CustomElementPart *>(qgi)) {
+			cep_list << cep;
+			if (cep->xmlName() != selection_xml_name)
+				same_xml_name = false;
+		} else {
+			style_editable = false;
+			same_xml_name = false;
+		}
+	}
+	if (style_editable)
+		style_editable = StyleEditor::isStyleEditable(cep_list);
+	
+	if (same_xml_name) {
+		if (selection_xml_name == "terminal" ||
+			selection_xml_name == "text" ||
+			selection_xml_name == "dynamic_text" ||
+			selection_xml_name == "line" ||
+			selection_xml_name == "rect" ||
+			selection_xml_name == "ellipse" ||
+			selection_xml_name == "arc") {
+			clearToolsDock();
+			//We add the editor widget
+			ElementItemEditor *editor = static_cast<ElementItemEditor*>(m_editors[selection_xml_name]);
+			
+			// TODO: Check if it takes longer than setting the parts again to the editor.
+			bool equal = true;
+			QList<CustomElementPart*> parts = editor->currentParts();
+			if (parts.length() == cep_list.length()) {
+				for (auto cep: cep_list) {
+					bool part_found = false;
+					for (auto part: parts) {
+						if (part == cep) {
+							part_found = true;
+							break;
+						}
+					}
+					if (!part_found) {
+						equal = false;
+						break;
+					}
+				}
+			} else
+				equal = false;
+			
+			if (editor)
+			{
+				bool success = true;
+				if (equal == false) {
+					success = editor->setParts(cep_list);
+				}
+				if (success)
+				{
+					m_tools_dock_stack->insertWidget(1, editor);
+					m_tools_dock_stack -> setCurrentIndex(1);
+				}
+				else
+				{
+					qDebug() << "Editor refused part.";
+				}
+			}
+			return;
+		} else if (selection_xml_name == "polygon" && cep_list.length() == 1) {
+			// multi edit for polygons makes no sense
+			// TODO: maybe allowing multipart edit when number of points is the same?
+			//We add the editor widget
+			clearToolsDock();
+			ElementItemEditor *editor = static_cast<ElementItemEditor*>(m_editors[selection_xml_name]);
+			CustomElementPart* part = editor->currentPart();
+			bool equal = part == cep_list.first();
+			
+			if (editor)
+			{
+				bool success = true;
+				if (equal == false) {
+					success = editor->setPart(cep_list.first());
+				}
+				if (success)
+				{
+					m_tools_dock_stack->insertWidget(1, editor);
+					m_tools_dock_stack -> setCurrentIndex(1);
+				}
+				else
+				{
+					qDebug() << "Editor refused part.";
+				}
+			}
+			return;
+			
+		} else {
+			qDebug() << "Multiedit not supported for: " << cep_list.first()->xmlName();
+		}
+		
+	}
+	
+	//There's several parts selecteds and all can be edited by style editor.
+	if (style_editable)
 	{
 		clearToolsDock();
 		ElementItemEditor *selection_editor = m_editors["style"];

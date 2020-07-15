@@ -105,9 +105,9 @@ BOMExportDialog::BOMExportDialog(QETProject *project, QWidget *parent) :
 		updateQueryLine();
 	});
 
-    setUpItems();
-    createDataBase();
-    fillSavedQuery();
+	setUpItems();
+	createDataBase();
+	fillSavedQuery();
 }
 
 /**
@@ -115,8 +115,8 @@ BOMExportDialog::BOMExportDialog(QETProject *project, QWidget *parent) :
  */
 BOMExportDialog::~BOMExportDialog()
 {
-    delete ui;
-    m_data_base.close();
+	delete ui;
+	m_data_base.close();
 }
 
 /**
@@ -126,39 +126,39 @@ BOMExportDialog::~BOMExportDialog()
  */
 int BOMExportDialog::exec()
 {
-    int r = QDialog::exec();
-    if (r == QDialog::Accepted)
-    {
-            //save in csv file
-        QString file_name = tr("nomenclature_") + QString(m_project ->title() + ".csv");
-//        if (!file_name.endsWith(".csv")) {
-//            file_name += ".csv";
-//        }
-        QString file_path = QFileDialog::getSaveFileName(this, tr("Enregister sous... "), file_name, tr("Fichiers csv (*.csv)"));
-        QFile file(file_path);
-        if (!file_path.isEmpty())
-        {
-            if (QFile::exists(file_path ))
-            {
-                    // if file already exist -> delete it
-                if (!QFile::remove(file_path) )
-                {
-                    QMessageBox::critical(this, tr("Erreur"),
-                                          tr("Impossible de remplacer le fichier!\n\n")+
-                                          "Destination : "+file_path+"\n");
-                }
-            }
-            if (file.open(QIODevice::WriteOnly | QIODevice::Text))
-            {
-                QTextStream stream(&file);
+	int r = QDialog::exec();
+	if (r == QDialog::Accepted)
+	{
+		//save in csv file
+		QString file_name = tr("nomenclature_") + QString(m_project ->title() + ".csv");
+		//        if (!file_name.endsWith(".csv")) {
+		//            file_name += ".csv";
+		//        }
+		QString file_path = QFileDialog::getSaveFileName(this, tr("Enregister sous... "), file_name, tr("Fichiers csv (*.csv)"));
+		QFile file(file_path);
+		if (!file_path.isEmpty())
+		{
+			if (QFile::exists(file_path ))
+			{
+				// if file already exist -> delete it
+				if (!QFile::remove(file_path) )
+				{
+					QMessageBox::critical(this, tr("Erreur"),
+										  tr("Impossible de remplacer le fichier!\n\n")+
+										  "Destination : "+file_path+"\n");
+				}
+			}
+			if (file.open(QIODevice::WriteOnly | QIODevice::Text))
+			{
+				QTextStream stream(&file);
 #if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)	// ### Qt 6: remove
-                stream << getBom() << endl;
+				stream << getBom() << endl;
 #else
-                stream << getBom() << &Qt::endl(stream);
+				stream << getBom() << &Qt::endl(stream);
 #endif
-            }
-        }
-    }
+			}
+		}
+	}
 	return r;
 }
 
@@ -168,7 +168,7 @@ int BOMExportDialog::exec()
  */
 QStringList BOMExportDialog::selectedKeys() const
 {
-		//Made a string list with the colomns (keys) choosen by the user
+	//Made a string list with the colomns (keys) choosen by the user
 	QStringList keys;
 	int row = 0;
 	while (auto *item = ui->m_choosen_list->item(row))
@@ -176,7 +176,7 @@ QStringList BOMExportDialog::selectedKeys() const
 		keys.append(item->data(Qt::UserRole).toString());
 		++row;
 	}
-
+	
 	return keys;
 }
 
@@ -205,14 +205,14 @@ QString BOMExportDialog::translatedKeys(const QString &key) const
  */
 void BOMExportDialog::setUpItems()
 {
-    for(QString key : QETApp::elementInfoKeys())
-    {
+	for(QString key : QETApp::elementInfoKeys())
+	{
 		auto item = new QListWidgetItem(QETApp::elementTranslatedInfoKey(key), ui->m_var_list);
 		item->setData(Qt::UserRole+1, key); //We store the real key before replace "-" by "_" to easily retrieve it in the element information
 		item->setData(Qt::UserRole, key.replace("-", "_")); //We must to replace "-" by "_" because "-" is a sql keyword.
 		m_items_list << item;
-    }
-
+	}
+	
 	for (auto key : m_export_info.keys())
 	{
 		auto item = new QListWidgetItem(m_export_info.value(key), ui->m_var_list);
@@ -227,11 +227,11 @@ void BOMExportDialog::setUpItems()
  */
 void BOMExportDialog::on_m_add_pb_clicked()
 {
-    if (auto *item = ui->m_var_list->takeItem(ui->m_var_list->currentRow())) {
-        ui->m_choosen_list->addItem(item);
-    }
-
-    updateQueryLine();
+	if (auto *item = ui->m_var_list->takeItem(ui->m_var_list->currentRow())) {
+		ui->m_choosen_list->addItem(item);
+	}
+	
+	updateQueryLine();
 }
 
 /**
@@ -239,11 +239,11 @@ void BOMExportDialog::on_m_add_pb_clicked()
  */
 void BOMExportDialog::on_m_remove_pb_clicked()
 {
-    if (auto *item = ui->m_choosen_list->takeItem(ui->m_choosen_list->currentRow())) {
-        ui->m_var_list->addItem(item);
-    }
-
-    updateQueryLine();
+	if (auto *item = ui->m_choosen_list->takeItem(ui->m_choosen_list->currentRow())) {
+		ui->m_var_list->addItem(item);
+	}
+	
+	updateQueryLine();
 }
 
 /**
@@ -251,16 +251,16 @@ void BOMExportDialog::on_m_remove_pb_clicked()
  */
 void BOMExportDialog::on_m_up_pb_clicked()
 {   
-        auto row = ui->m_choosen_list->currentRow();
-        if(row <= 0) {
-            return;
-        }
-
-        auto *item = ui->m_choosen_list->takeItem(row);
-        ui->m_choosen_list->insertItem(row-1, item);
-        ui->m_choosen_list->setCurrentItem(item);
-
-        updateQueryLine();
+	auto row = ui->m_choosen_list->currentRow();
+	if(row <= 0) {
+		return;
+	}
+	
+	auto *item = ui->m_choosen_list->takeItem(row);
+	ui->m_choosen_list->insertItem(row-1, item);
+	ui->m_choosen_list->setCurrentItem(item);
+	
+	updateQueryLine();
 }
 
 /**
@@ -268,20 +268,20 @@ void BOMExportDialog::on_m_up_pb_clicked()
  */
 void BOMExportDialog::on_m_down_pb_clicked()
 {
-    auto row = ui->m_choosen_list->currentRow();
-    if (row == -1) {
-        return;
-    }
-
-    auto *item = ui->m_choosen_list->takeItem(row);
-    ui->m_choosen_list->insertItem(row+1, item);
-    ui->m_choosen_list->setCurrentItem(item);
-
-    updateQueryLine();
+	auto row = ui->m_choosen_list->currentRow();
+	if (row == -1) {
+		return;
+	}
+	
+	auto *item = ui->m_choosen_list->takeItem(row);
+	ui->m_choosen_list->insertItem(row+1, item);
+	ui->m_choosen_list->setCurrentItem(item);
+	
+	updateQueryLine();
 }
 
 void BOMExportDialog::on_m_save_name_le_textChanged(const QString &arg1) {
-    ui->m_save_current_conf_pb->setDisabled(arg1.isEmpty());
+	ui->m_save_current_conf_pb->setDisabled(arg1.isEmpty());
 }
 
 /**
@@ -291,17 +291,17 @@ void BOMExportDialog::on_m_save_name_le_textChanged(const QString &arg1) {
  */
 QString BOMExportDialog::getBom()
 {
-    QString data; //The string to be returned
-    if (ui->m_include_header_cb->isChecked()) {
-        data = headers();
+	QString data; //The string to be returned
+	if (ui->m_include_header_cb->isChecked()) {
+		data = headers();
 		data += "\n";
-    }
-
-    QSqlQuery query (queryStr() , m_data_base);
-    if (!query.exec()) {
-        qDebug() << "Query error : " << query.lastError();
-    }
-
+	}
+	
+	QSqlQuery query (queryStr() , m_data_base);
+	if (!query.exec()) {
+		qDebug() << "Query error : " << query.lastError();
+	}
+	
 	QStringList record;
 	while (query.next())
 	{
@@ -321,13 +321,13 @@ QString BOMExportDialog::getBom()
 				record << sql_record.value(key).toString();
 			}
 		}
-
+		
 		data += record.join(";") + "\n";
 		record.clear();
 	}
-
-    m_data_base.close();
-    return data;
+	
+	m_data_base.close();
+	return data;
 }
 
 /**
@@ -336,10 +336,10 @@ QString BOMExportDialog::getBom()
  */
 QString BOMExportDialog::headers() const
 {
-    QString header_string;
-
-    if (!ui->m_edit_sql_query_cb->isChecked())
-    {
+	QString header_string;
+	
+	if (!ui->m_edit_sql_query_cb->isChecked())
+	{
 		for (auto key : selectedKeys())
 		{
 			if (!header_string.isEmpty()) {
@@ -347,32 +347,32 @@ QString BOMExportDialog::headers() const
 			}
 			header_string += translatedKeys(key);
 		}
-
-        header_string += "\n";
-    }
-    else if (!queryStr().isEmpty())     //Try to retreive the header according to the sql query
-    {
-        if (queryStr().startsWith("SELECT ") && queryStr().contains("FROM"))
-        {
-            auto header = queryStr();
-            header.remove(0, 7); //Remove SELECT from the string;
-            header.truncate(header.indexOf("FROM")); //Now we only have the string between SELECT and FROM
-            header.replace(" ", ""); //remove white space
-            QStringList list = header.split(",");
-            if (!list.isEmpty())
-            {
-                for (int i=0 ; i<list.size() ; i++)
-                {
-                    if(!header_string.isEmpty()) {
-                        header_string += ";";
-                    }
-                    header_string += QETApp::elementTranslatedInfoKey(list.at(i));
-                }
-                header_string += "\n";
-            }
-        }
-    }
-    return header_string;
+		
+		header_string += "\n";
+	}
+	else if (!queryStr().isEmpty())     //Try to retreive the header according to the sql query
+	{
+		if (queryStr().startsWith("SELECT ") && queryStr().contains("FROM"))
+		{
+			auto header = queryStr();
+			header.remove(0, 7); //Remove SELECT from the string;
+			header.truncate(header.indexOf("FROM")); //Now we only have the string between SELECT and FROM
+			header.replace(" ", ""); //remove white space
+			QStringList list = header.split(",");
+			if (!list.isEmpty())
+			{
+				for (int i=0 ; i<list.size() ; i++)
+				{
+					if(!header_string.isEmpty()) {
+						header_string += ";";
+					}
+					header_string += QETApp::elementTranslatedInfoKey(list.at(i));
+				}
+				header_string += "\n";
+			}
+		}
+	}
+	return header_string;
 }
 
 /**
@@ -381,58 +381,58 @@ QString BOMExportDialog::headers() const
  */
 bool BOMExportDialog::createDataBase()
 {
-        //Create a sqlite data base to sort the bom
+	//Create a sqlite data base to sort the bom
 	m_data_base = QSqlDatabase::addDatabase("QSQLITE", "bill_of_material");
-    if (!m_data_base.open())
-    {
-        m_data_base.close();
-        return false;
-    }
-
-        //Create the table:
-    QStringList keys;
-    auto row = 0;
-    while (ui->m_var_list->item(row))
-    {
-        keys << ui->m_var_list->item(row)->data(Qt::UserRole).toString();
-        ++row;
-    }
-    keys << "element_type" << "element_subtype";
+	if (!m_data_base.open())
+	{
+		m_data_base.close();
+		return false;
+	}
+	
+	//Create the table:
+	QStringList keys;
+	auto row = 0;
+	while (ui->m_var_list->item(row))
+	{
+		keys << ui->m_var_list->item(row)->data(Qt::UserRole).toString();
+		++row;
+	}
+	keys << "element_type" << "element_subtype";
 	keys.removeAll("designation_qty");
-
-    QString table("CREATE TABLE bom(");
-    bool first = true;
-    for (auto string : keys)
-    {
-        if (first) {
-            first = false;
-        } else {
-            table += ",";
+	
+	QString table("CREATE TABLE bom(");
+	bool first = true;
+	for (auto string : keys)
+	{
+		if (first) {
+			first = false;
+		} else {
+			table += ",";
 		}
-
+		
 		table += string += " VARCHAR(512)";
-    }
-    table += ");";
-    m_data_base.exec(table);
-
-    QStringList bind_values;
-    for (auto key : keys) {
-        bind_values << key.prepend(":");
-    }
-
-        //Prepare the query used for insert new record
-    QString insert("INSERT INTO bom (" +
-                   keys.join(", ") +
-                   ") VALUES (" +
-                   bind_values.join(", ") +
-                   ")");
-
-    m_insert_query = QSqlQuery(m_data_base);
-    m_insert_query.prepare(insert);
-
-    populateDataBase();
-
-    return true;
+	}
+	table += ");";
+	m_data_base.exec(table);
+	
+	QStringList bind_values;
+	for (auto key : keys) {
+		bind_values << key.prepend(":");
+	}
+	
+	//Prepare the query used for insert new record
+	QString insert("INSERT INTO bom (" +
+				   keys.join(", ") +
+				   ") VALUES (" +
+				   bind_values.join(", ") +
+				   ")");
+	
+	m_insert_query = QSqlQuery(m_data_base);
+	m_insert_query.prepare(insert);
+	
+	populateDataBase();
+	
+	return true;
 }
 
 /**
@@ -441,30 +441,30 @@ bool BOMExportDialog::createDataBase()
  */
 void BOMExportDialog::populateDataBase()
 {
-    for (auto *diagram : m_project->diagrams())
-    {
-        ElementProvider ep(diagram);
-        QList<Element *> elements_list = ep.find(Element::Simple | Element::Terminale | Element::Master);
-
-            //Insert all value into the database
-        for (auto elmt : elements_list)
-        {
-            auto hash = elementInfoToString(elmt);
-            for (auto key : hash.keys())
-            {
-                QString value = hash.value(key);
-                QString bind = key.prepend(":");
-                m_insert_query.bindValue(bind, value);
-            }
-
-            m_insert_query.bindValue(":element_type", elmt->linkTypeToString());
-            m_insert_query.bindValue(":element_subtype", elmt->kindInformations()["type"].toString());
-
-            if (!m_insert_query.exec()) {
-                qDebug() << "BOMExportDialog::populateDataBase insert error : " << m_insert_query.lastError();
-            }
-        }
-    }
+	for (auto *diagram : m_project->diagrams())
+	{
+		ElementProvider ep(diagram);
+		QList<Element *> elements_list = ep.find(Element::Simple | Element::Terminale | Element::Master);
+		
+		//Insert all value into the database
+		for (auto elmt : elements_list)
+		{
+			auto hash = elementInfoToString(elmt);
+			for (auto key : hash.keys())
+			{
+				QString value = hash.value(key);
+				QString bind = key.prepend(":");
+				m_insert_query.bindValue(bind, value);
+			}
+			
+			m_insert_query.bindValue(":element_type", elmt->linkTypeToString());
+			m_insert_query.bindValue(":element_subtype", elmt->kindInformations()["type"].toString());
+			
+			if (!m_insert_query.exec()) {
+				qDebug() << "BOMExportDialog::populateDataBase insert error : " << m_insert_query.lastError();
+			}
+		}
+	}
 }
 
 /**
@@ -474,39 +474,39 @@ void BOMExportDialog::populateDataBase()
  */
 QHash<QString, QString> BOMExportDialog::elementInfoToString(Element *elmt) const
 {
-    QHash<QString, QString> keys_hash; //Use to get the element info according to the database columns name
-    int row = 0;
-    while (auto *item = ui->m_var_list->item(row))
-    {
-        keys_hash.insert(item->data(Qt::UserRole).toString(),
-                         item->data(Qt::UserRole+1).toString());
-        ++row;
-    }
-
-    QHash<QString, QString> hash; //Store the value for each columns
-    for (auto key : keys_hash.keys())
-    {
-        if (key == "pos") {
-            hash.insert(key, elmt->diagram()->convertPosition(elmt->scenePos()).toString());
-        }
-        else if (key == "folio_title") {
-            hash.insert(key, elmt->diagram()->title());
-        }
-        else if (key == "folio_pos") {
-            hash.insert(key, QString::number(elmt->diagram()->folioIndex() + 1));
-        }
-        else if (key == "folio_num") {
+	QHash<QString, QString> keys_hash; //Use to get the element info according to the database columns name
+	int row = 0;
+	while (auto *item = ui->m_var_list->item(row))
+	{
+		keys_hash.insert(item->data(Qt::UserRole).toString(),
+						 item->data(Qt::UserRole+1).toString());
+		++row;
+	}
+	
+	QHash<QString, QString> hash; //Store the value for each columns
+	for (auto key : keys_hash.keys())
+	{
+		if (key == "pos") {
+			hash.insert(key, elmt->diagram()->convertPosition(elmt->scenePos()).toString());
+		}
+		else if (key == "folio_title") {
+			hash.insert(key, elmt->diagram()->title());
+		}
+		else if (key == "folio_pos") {
+			hash.insert(key, QString::number(elmt->diagram()->folioIndex() + 1));
+		}
+		else if (key == "folio_num") {
 			hash.insert(key, elmt->diagram()->border_and_titleblock.finalfolio());
-        }
-        else if (key == "label") {
-            hash.insert(key, elmt->actualLabel());
-        }
-        else {
-            hash.insert(key, elmt->elementInformations()[keys_hash.value(key)].toString());
-        }
-    }
-
-    return hash;
+		}
+		else if (key == "label") {
+			hash.insert(key, elmt->actualLabel());
+		}
+		else {
+			hash.insert(key, elmt->elementInformations()[keys_hash.value(key)].toString());
+		}
+	}
+	
+	return hash;
 }
 
 /**
@@ -515,33 +515,33 @@ QHash<QString, QString> BOMExportDialog::elementInfoToString(Element *elmt) cons
  */
 QString BOMExportDialog::queryStr() const
 {
-        //User define is own query
-    if (ui->m_edit_sql_query_cb->isChecked()) {
-        return ui->m_sql_query->text();
-    }
-        //Made a string list with the colomns (keys) choosen by the user
+	//User define is own query
+	if (ui->m_edit_sql_query_cb->isChecked()) {
+		return ui->m_sql_query->text();
+	}
+	//Made a string list with the colomns (keys) choosen by the user
 	QStringList keys = selectedKeys();
 	keys.removeAll("designation_qty");
-
-    QString select ="SELECT ";
-    QString order_by = " ORDER BY ";
-
-    QString column;
-    bool first = true;
-    for (auto key: keys) {
-        if (first) {
-            first = false;
-        } else {
-            column += ", ";
-            order_by += ", ";
-        }
-        column += key;
-        order_by += key;
-    }
-
-    QString from = " FROM bom";
+	
+	QString select ="SELECT ";
+	QString order_by = " ORDER BY ";
+	
+	QString column;
+	bool first = true;
+	for (auto key: keys) {
+		if (first) {
+			first = false;
+		} else {
+			column += ", ";
+			order_by += ", ";
+		}
+		column += key;
+		order_by += key;
+	}
+	
+	QString from = " FROM bom";
 	QString count = ui->m_format_as_bom_rb->isChecked() ? QString(", COUNT(*) AS designation_qty ") : QString();
-    QString where;
+	QString where;
 	if (ui->m_all_cb->checkState() == Qt::PartiallyChecked)
 	{
 		if (ui->m_terminal_cb->isChecked()) {
@@ -564,24 +564,24 @@ QString BOMExportDialog::queryStr() const
 			where += str;
 		}
 	}
-    QString where_bom;
-    if(ui->m_format_as_bom_rb->isChecked())
-    {
-        if (where.isEmpty()) {
-            where = " WHERE designation IS NOT NULL";
-        } else {
-            where.append(" AND designation IS NOT NULL");
-        }
-
-    }
-
-    QString group_by = ui->m_format_as_bom_rb->isChecked() ? " GROUP BY designation" : "";
+	QString where_bom;
+	if(ui->m_format_as_bom_rb->isChecked())
+	{
+		if (where.isEmpty()) {
+			where = " WHERE designation IS NOT NULL";
+		} else {
+			where.append(" AND designation IS NOT NULL");
+		}
+		
+	}
+	
+	QString group_by = ui->m_format_as_bom_rb->isChecked() ? " GROUP BY designation" : "";
 	QString q(select + column + count + from + where + where_bom + group_by + order_by);
-    return q;
+	return q;
 }
 
 void BOMExportDialog::updateQueryLine() {
-    ui->m_sql_query->setText(queryStr());
+	ui->m_sql_query->setText(queryStr());
 }
 
 /**
@@ -590,16 +590,16 @@ void BOMExportDialog::updateQueryLine() {
  */
 void BOMExportDialog::fillSavedQuery()
 {
-    QFile file(QETApp::configDir() + "/bill_of_materials.json");
-    if (file.open(QFile::ReadOnly))
-    {
-        QJsonDocument jsd(QJsonDocument::fromJson(file.readAll()));
-        QJsonObject jso = jsd.object();
-
-        for (auto it = jso.begin() ; it != jso.end() ; ++it) {
-            ui->m_conf_cb->addItem(it.key());
-        }
-    }
+	QFile file(QETApp::configDir() + "/bill_of_materials.json");
+	if (file.open(QFile::ReadOnly))
+	{
+		QJsonDocument jsd(QJsonDocument::fromJson(file.readAll()));
+		QJsonObject jso = jsd.object();
+		
+		for (auto it = jso.begin() ; it != jso.end() ; ++it) {
+			ui->m_conf_cb->addItem(it.key());
+		}
+	}
 }
 
 void BOMExportDialog::on_m_format_as_nomenclature_rb_toggled(bool checked) {
@@ -613,20 +613,20 @@ void BOMExportDialog::on_m_format_as_nomenclature_rb_toggled(bool checked) {
  */
 void BOMExportDialog::on_m_edit_sql_query_cb_clicked()
 {
-    ui->m_sql_query->setEnabled(ui->m_edit_sql_query_cb->isChecked());
-    ui->m_info_widget->setDisabled(ui->m_edit_sql_query_cb->isChecked());
-    ui->m_parametre_widget->setDisabled(ui->m_edit_sql_query_cb->isChecked());
+	ui->m_sql_query->setEnabled(ui->m_edit_sql_query_cb->isChecked());
+	ui->m_info_widget->setDisabled(ui->m_edit_sql_query_cb->isChecked());
+	ui->m_parametre_widget->setDisabled(ui->m_edit_sql_query_cb->isChecked());
 	ui->m_format_as_gb->setDisabled(ui->m_edit_sql_query_cb->isChecked());
-
-    if (ui->m_edit_sql_query_cb->isChecked() && !m_custom_query.isEmpty())
-    {
-        ui->m_sql_query->setText(m_custom_query);
-    }
-    else if (!ui->m_edit_sql_query_cb->isChecked())
-    {
-        m_custom_query = ui->m_sql_query->text();
-        updateQueryLine();
-    }
+	
+	if (ui->m_edit_sql_query_cb->isChecked() && !m_custom_query.isEmpty())
+	{
+		ui->m_sql_query->setText(m_custom_query);
+	}
+	else if (!ui->m_edit_sql_query_cb->isChecked())
+	{
+		m_custom_query = ui->m_sql_query->text();
+		updateQueryLine();
+	}
 }
 
 /**
@@ -635,24 +635,24 @@ void BOMExportDialog::on_m_edit_sql_query_cb_clicked()
  */
 void BOMExportDialog::on_m_save_current_conf_pb_clicked()
 {
-    QFile file(QETApp::configDir() + "/bill_of_materials.json");
-
-    if (file.open(QFile::ReadWrite))
-    {
-        QJsonDocument jsd(QJsonDocument::fromJson(file.readAll()));
-        QJsonObject root_object;
-
-        if (!jsd.isEmpty())
-        {
-            root_object = jsd.object();
-            if (root_object.contains(ui->m_save_name_le->text())) {
-                root_object.remove(ui->m_save_name_le->text());
-            }
-        }
-
-        QVariantMap vm;
+	QFile file(QETApp::configDir() + "/bill_of_materials.json");
+	
+	if (file.open(QFile::ReadWrite))
+	{
+		QJsonDocument jsd(QJsonDocument::fromJson(file.readAll()));
+		QJsonObject root_object;
+		
+		if (!jsd.isEmpty())
+		{
+			root_object = jsd.object();
+			if (root_object.contains(ui->m_save_name_le->text())) {
+				root_object.remove(ui->m_save_name_le->text());
+			}
+		}
+		
+		QVariantMap vm;
 		vm.insert("user query", ui->m_edit_sql_query_cb->isChecked());
-
+		
 		if (ui->m_edit_sql_query_cb->isChecked()) {
 			vm.insert("query", ui->m_sql_query->text());
 		}
@@ -660,13 +660,13 @@ void BOMExportDialog::on_m_save_current_conf_pb_clicked()
 		{
 			vm.insert("header", ui->m_include_header_cb->isChecked());
 			vm.insert("format as bill of material", ui->m_format_as_bom_rb->isChecked());
-
+			
 			QJsonArray keys_array;
 			for (auto key : selectedKeys()) {
 				keys_array.append(QJsonValue(key));
 			}
 			vm.insert("selected infos", keys_array);
-
+			
 			QJsonArray selected_elements_array;
 			for (auto button : m_button_group.buttons())
 			{
@@ -677,14 +677,14 @@ void BOMExportDialog::on_m_save_current_conf_pb_clicked()
 			}
 			vm.insert("selected elements", selected_elements_array);
 		}
-
+		
 		root_object[ui->m_save_name_le->text()] = QJsonObject::fromVariantMap(vm);
-
-
-        jsd.setObject(root_object);
-        file.resize(0);
-        file.write(jsd.toJson());
-    }
+		
+		
+		jsd.setObject(root_object);
+		file.resize(0);
+		file.write(jsd.toJson());
+	}
 }
 
 /**
@@ -697,20 +697,20 @@ void BOMExportDialog::on_m_load_pb_clicked()
 	if (name.isEmpty()) {
 		return;
 	}
-
+	
 	QFile file(QETApp::configDir() + "/bill_of_materials.json");
 	if (!file.open(QFile::ReadOnly)) {
 		return;
 	}
-
+	
 	QJsonDocument jsd(QJsonDocument::fromJson(file.readAll()));
 	QJsonObject jso = jsd.object();
-
+	
 	auto value = jso.value(name);
 	if (!value.isObject()) {
 		return;
 	}
-
+	
 	auto value_object = value.toObject();
 	if (value_object["user query"].toBool())
 	{
@@ -722,13 +722,13 @@ void BOMExportDialog::on_m_load_pb_clicked()
 		ui->m_edit_sql_query_cb->setChecked(false);
 		ui->m_include_header_cb->setChecked(value_object["header"].toBool());
 		ui->m_format_as_bom_rb->setChecked(value_object["format as bill of material"].toBool());
-
-
-			//Ugly hack to force to remove all selected infos
+		
+		
+		//Ugly hack to force to remove all selected infos
 		while (auto item = ui->m_choosen_list->takeItem(0)) {
 			ui->m_var_list->addItem(item);
 		}
-
+		
 		QVariantList vl = value_object["selected infos"].toArray().toVariantList();
 		for (auto variant : vl)
 		{
@@ -741,16 +741,16 @@ void BOMExportDialog::on_m_load_pb_clicked()
 				}
 			}
 		}
-
+		
 		QJsonArray selected_elements_array = value_object["selected elements"].toArray();
 		for (int id=0 ; id<selected_elements_array.size() ; ++id)
 		{
 			QJsonObject obj = selected_elements_array[id].toObject();
 			m_button_group.button(obj["ID"].toInt())->setChecked(obj["checked"].toBool());
 		}
-
+		
 		updateQueryLine();
 	}
-
+	
 	on_m_edit_sql_query_cb_clicked(); //Force to update dialog
 }

@@ -164,7 +164,7 @@ QTreeWidgetItem *ElementsPanel::updateTemplateItem(QTreeWidgetItem *tb_template_
 	item -> setStatusTip(
 		0,
 		tr(
-            "Glissez-déposez ce modèle de cartouche sur un folio pour l'y appliquer.",
+					"Glissez-déposez ce modèle de cartouche sur un folio pour l'y appliquer.",
 			"Status tip displayed when selecting a title block template"
 		)
 	);

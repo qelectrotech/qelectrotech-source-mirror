@@ -73,30 +73,30 @@ void PolygonEditor::disconnectChangeConnections()
  */
 bool PolygonEditor::setPart(CustomElementPart *new_part)
 {
-    if (!new_part)
-    {
-        if (m_part)
-        {
-            disconnectChangeConnections();
-        }
-        m_part = nullptr;
-        m_style -> setPart(nullptr);
-        return(true);
-    }
-    if (PartPolygon *part_polygon = dynamic_cast<PartPolygon *>(new_part))
-    {
-        if (m_part == part_polygon) return true;
-        if (m_part)
-        {
-            disconnectChangeConnections();
-        }
-        m_part = part_polygon;
-        m_style -> setPart(m_part);
-        updateForm();
-        setUpChangeConnections();
-        return(true);
-    }
-    return(false);
+	if (!new_part)
+	{
+		if (m_part)
+		{
+			disconnectChangeConnections();
+		}
+		m_part = nullptr;
+		m_style -> setPart(nullptr);
+		return(true);
+	}
+	if (PartPolygon *part_polygon = dynamic_cast<PartPolygon *>(new_part))
+	{
+		if (m_part == part_polygon) return true;
+		if (m_part)
+		{
+			disconnectChangeConnections();
+		}
+		m_part = part_polygon;
+		m_style -> setPart(m_part);
+		updateForm();
+		setUpChangeConnections();
+		return(true);
+	}
+	return(false);
 }
 
 /**
@@ -143,35 +143,35 @@ void PolygonEditor::updateForm()
  */
 QVector<QPointF> PolygonEditor::pointsFromTree()
 {
-    QVector<QPointF> points;
-    if (!m_part) {
-        return points;
-    }
-
-    for(int i = 0 ; i < ui->m_points_list_tree->topLevelItemCount() ; ++ i)
-    {
-        QTreeWidgetItem *qtwi = ui->m_points_list_tree->topLevelItem(i);
-        bool x_convert_ok, y_convert_ok;
-        qreal x = qtwi->data(0, Qt::EditRole).toReal(&x_convert_ok);
-        qreal y = qtwi->data(1, Qt::EditRole).toReal(&y_convert_ok);
-        if (x_convert_ok && y_convert_ok) {
-            points << m_part->mapFromScene(QPointF(x, y));
-        }
-    }
-    return(points);
+	QVector<QPointF> points;
+	if (!m_part) {
+		return points;
+	}
+	
+	for(int i = 0 ; i < ui->m_points_list_tree->topLevelItemCount() ; ++ i)
+	{
+		QTreeWidgetItem *qtwi = ui->m_points_list_tree->topLevelItem(i);
+		bool x_convert_ok, y_convert_ok;
+		qreal x = qtwi->data(0, Qt::EditRole).toReal(&x_convert_ok);
+		qreal y = qtwi->data(1, Qt::EditRole).toReal(&y_convert_ok);
+		if (x_convert_ok && y_convert_ok) {
+			points << m_part->mapFromScene(QPointF(x, y));
+		}
+	}
+	return(points);
 }
 
 bool PolygonEditor::eventFilter(QObject *watched, QEvent *event)
 {
-    if (watched == ui->m_points_list_tree &&
-        event->type() == QEvent::FocusOut &&
-        m_part)
-    {
-        m_part->resetAllHandlerColor();
-        return true;
-    }
-
-    return false;
+	if (watched == ui->m_points_list_tree &&
+		event->type() == QEvent::FocusOut &&
+		m_part)
+	{
+		m_part->resetAllHandlerColor();
+		return true;
+	}
+	
+	return false;
 }
 
 /**
@@ -179,18 +179,18 @@ bool PolygonEditor::eventFilter(QObject *watched, QEvent *event)
  */
 void PolygonEditor::on_m_close_polygon_cb_stateChanged(int arg1)
 {
-    Q_UNUSED(arg1);
-
-    if (!m_part) {
-        return;
-    }
-    bool close = ui->m_close_polygon_cb->isChecked();
-    if (close != m_part->isClosed())
-    {
-        QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_part, "closed", m_part->property("closed"), close);
-        undo->setText(tr("Modifier un polygone"));
-        undoStack().push(undo);
-    }
+	Q_UNUSED(arg1);
+	
+	if (!m_part) {
+		return;
+	}
+	bool close = ui->m_close_polygon_cb->isChecked();
+	if (close != m_part->isClosed())
+	{
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_part, "closed", m_part->property("closed"), close);
+		undo->setText(tr("Modifier un polygone"));
+		undoStack().push(undo);
+	}
 }
 
 /**
@@ -199,26 +199,26 @@ void PolygonEditor::on_m_close_polygon_cb_stateChanged(int arg1)
  */
 void PolygonEditor::on_m_points_list_tree_itemChanged(QTreeWidgetItem *item, int column)
 {
-    Q_UNUSED(item);
-    Q_UNUSED(column);
-
-    if (!m_part) {
-        return;
-    }
-
-    QPolygonF points = pointsFromTree();
-    if (points.count() < 2)
-    {
-        QET::QetMessageBox::warning(this, tr("Erreur", "message box title"), tr("Le polygone doit comporter au moins deux points.", "message box content"));
-        return;
-    }
-
-    if (points != m_part->polygon())
-    {
-        QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_part, "polygon", m_part->property("polygon"), points);
-        undo->setText(tr("Modifier un polygone"));
-        undoStack().push(undo);
-    }
+	Q_UNUSED(item);
+	Q_UNUSED(column);
+	
+	if (!m_part) {
+		return;
+	}
+	
+	QPolygonF points = pointsFromTree();
+	if (points.count() < 2)
+	{
+		QET::QetMessageBox::warning(this, tr("Erreur", "message box title"), tr("Le polygone doit comporter au moins deux points.", "message box content"));
+		return;
+	}
+	
+	if (points != m_part->polygon())
+	{
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_part, "polygon", m_part->property("polygon"), points);
+		undo->setText(tr("Modifier un polygone"));
+		undoStack().push(undo);
+	}
 }
 
 /**
@@ -227,76 +227,76 @@ void PolygonEditor::on_m_points_list_tree_itemChanged(QTreeWidgetItem *item, int
  */
 void PolygonEditor::on_m_points_list_tree_itemSelectionChanged()
 {
-        //Prevent when selection change but the widget ins't focused
-    if (!ui->m_points_list_tree->hasFocus()) {
-        return;
-    }
-
-    QTreeWidgetItem *qtwi = ui->m_points_list_tree->currentItem();
-    if (!qtwi || !m_part) {
-        return;
-    }
-
-    m_part->resetAllHandlerColor();
-    int index = ui->m_points_list_tree->indexOfTopLevelItem(qtwi);
-
-        //We need to check if index isn't out of range of polygon
-        //this case can occur when user remove the last point of the polygon
-        //with the context menu of the tree widget
-    if(index >= 0 &&
-       index < m_part->polygon().size())
-    {
-        m_part->setHandlerColor(m_part->polygon().at(index), QColor(0, 255, 128));
-    }
+	//Prevent when selection change but the widget ins't focused
+	if (!ui->m_points_list_tree->hasFocus()) {
+		return;
+	}
+	
+	QTreeWidgetItem *qtwi = ui->m_points_list_tree->currentItem();
+	if (!qtwi || !m_part) {
+		return;
+	}
+	
+	m_part->resetAllHandlerColor();
+	int index = ui->m_points_list_tree->indexOfTopLevelItem(qtwi);
+	
+	//We need to check if index isn't out of range of polygon
+	//this case can occur when user remove the last point of the polygon
+	//with the context menu of the tree widget
+	if(index >= 0 &&
+	   index < m_part->polygon().size())
+	{
+		m_part->setHandlerColor(m_part->polygon().at(index), QColor(0, 255, 128));
+	}
 }
 
 void PolygonEditor::on_m_add_point_action_triggered()
 {
-    QTreeWidgetItem *qtwi = ui->m_points_list_tree->currentItem();
-    if (!qtwi || !m_part) {
-        return;
-    }
-
-    int index = ui->m_points_list_tree->indexOfTopLevelItem(qtwi);
-    QPolygonF new_polygon = m_part->polygon();
-
-        //Special case when user add a point after the last point of the polygon
-    if (index == m_part->polygon().size()-1)
-    {
-        QPointF p = m_part->polygon().last();
-        p.rx()+=20;
-        p.ry()+=20;
-        new_polygon.append(p);
-    }
-    else
-    {
-        QPointF p = m_part->polygon().at(index) +
-                    m_part->polygon().at(index+1);
-        p/=2;
-        new_polygon.insert(index+1, p);
-    }
-
-        //Wrap the undo for avoid to merge the undo commands when user add several points.
-    QUndoCommand *undo = new QUndoCommand(tr("Ajouter un point à un polygone"));
-    new QPropertyUndoCommand(m_part, "polygon", m_part->polygon(), new_polygon, undo);
-    elementScene()->undoStack().push(undo);
-
-    m_part->resetAllHandlerColor();
-    m_part->setHandlerColor(m_part->polygon().at(index+1), QColor(0, 255, 128));
+	QTreeWidgetItem *qtwi = ui->m_points_list_tree->currentItem();
+	if (!qtwi || !m_part) {
+		return;
+	}
+	
+	int index = ui->m_points_list_tree->indexOfTopLevelItem(qtwi);
+	QPolygonF new_polygon = m_part->polygon();
+	
+	//Special case when user add a point after the last point of the polygon
+	if (index == m_part->polygon().size()-1)
+	{
+		QPointF p = m_part->polygon().last();
+		p.rx()+=20;
+		p.ry()+=20;
+		new_polygon.append(p);
+	}
+	else
+	{
+		QPointF p = m_part->polygon().at(index) +
+				m_part->polygon().at(index+1);
+		p/=2;
+		new_polygon.insert(index+1, p);
+	}
+	
+	//Wrap the undo for avoid to merge the undo commands when user add several points.
+	QUndoCommand *undo = new QUndoCommand(tr("Ajouter un point à un polygone"));
+	new QPropertyUndoCommand(m_part, "polygon", m_part->polygon(), new_polygon, undo);
+	elementScene()->undoStack().push(undo);
+	
+	m_part->resetAllHandlerColor();
+	m_part->setHandlerColor(m_part->polygon().at(index+1), QColor(0, 255, 128));
 }
 
 void PolygonEditor::on_m_remove_point_action_triggered()
 {
-    QTreeWidgetItem *qtwi = ui->m_points_list_tree->currentItem();
-    if (!qtwi || !m_part) {
-        return;
-    }
-
-    QPolygonF new_polygon = m_part->polygon();
-    new_polygon.removeAt(ui->m_points_list_tree->indexOfTopLevelItem(qtwi));
-
-        //Wrap the undo for avoid to merge the undo commands when user remove several points.
-    QUndoCommand *undo = new QUndoCommand(tr("Supprimer un point d'un polygone"));
-    new QPropertyUndoCommand(m_part, "polygon", m_part->polygon(), new_polygon, undo);
-    elementScene()->undoStack().push(undo);
+	QTreeWidgetItem *qtwi = ui->m_points_list_tree->currentItem();
+	if (!qtwi || !m_part) {
+		return;
+	}
+	
+	QPolygonF new_polygon = m_part->polygon();
+	new_polygon.removeAt(ui->m_points_list_tree->indexOfTopLevelItem(qtwi));
+	
+	//Wrap the undo for avoid to merge the undo commands when user remove several points.
+	QUndoCommand *undo = new QUndoCommand(tr("Supprimer un point d'un polygone"));
+	new QPropertyUndoCommand(m_part, "polygon", m_part->polygon(), new_polygon, undo);
+	elementScene()->undoStack().push(undo);
 }

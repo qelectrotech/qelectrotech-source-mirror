@@ -106,7 +106,7 @@ bool ArcEditor::setPart(CustomElementPart *new_part)
 	if (!new_part)
 	{
 		if (part)
-            disconnectChangeConnections();
+			disconnectChangeConnections();
 
 		part = nullptr;
 		style_ -> setPart(nullptr);
@@ -117,11 +117,11 @@ bool ArcEditor::setPart(CustomElementPart *new_part)
 	{
 		if (part == part_arc) return true;
 		if (part)
-            disconnectChangeConnections();
+			disconnectChangeConnections();
 		part = part_arc;
 		style_ -> setPart(part);
 		updateForm();
-        setUpChangeConnections();
+		setUpChangeConnections();
 		return(true);
 	}
 
@@ -130,12 +130,12 @@ bool ArcEditor::setPart(CustomElementPart *new_part)
 
 bool ArcEditor::setParts(QList <CustomElementPart *> parts)
 {
-    if (parts.isEmpty())
-        return false;
+	if (parts.isEmpty())
+		return false;
 
-    if (!setPart(parts.first()))
-        return false;
-    return style_->setParts(parts);
+	if (!setPart(parts.first()))
+		return false;
+	return style_->setParts(parts);
 }
 
 /**
@@ -147,7 +147,7 @@ CustomElementPart *ArcEditor::currentPart() const {
 }
 
 QList<CustomElementPart*> ArcEditor::currentParts() const {
-    return style_->currentParts();
+	return style_->currentParts();
 }
 
 /**
@@ -158,20 +158,20 @@ void ArcEditor::updateArcS()
 {
 	if (m_locked) return;
 	m_locked = true;
-    double value = start_angle->value() * 16;
+	double value = start_angle->value() * 16;
 
-    for (auto part: style_->currentParts()) {
+	for (auto part: style_->currentParts()) {
 
-        PartArc* arc = static_cast<PartArc*>(part);
+		PartArc* arc = static_cast<PartArc*>(part);
 
-        if (value != arc->property("startAngle"))
-        {
-            QPropertyUndoCommand *undo= new QPropertyUndoCommand(arc, "startAngle", arc->property("startAngle"), value);
-            undo->setText("Modifier l'angle de depart d'un arc");
-            undo->enableAnimation();
-            elementScene()->undoStack().push(undo);
-        }
-    }
+		if (value != arc->property("startAngle"))
+		{
+			QPropertyUndoCommand *undo= new QPropertyUndoCommand(arc, "startAngle", arc->property("startAngle"), value);
+			undo->setText("Modifier l'angle de depart d'un arc");
+			undo->enableAnimation();
+			elementScene()->undoStack().push(undo);
+		}
+	}
 
 	m_locked = false;
 }
@@ -186,17 +186,17 @@ void ArcEditor::updateArcA()
 	m_locked = true;
 	double value = angle->value() * 16;
 
-    for (auto part: style_->currentParts()) {
+	for (auto part: style_->currentParts()) {
 
-        PartArc* arc = static_cast<PartArc*>(part);
-        if (value != arc->property("spanAngle"))
-        {
-            QPropertyUndoCommand *undo= new QPropertyUndoCommand(arc, "spanAngle", arc->property("spanAngle"), value);
-            undo->setText("Modifier l'angle d'un arc");
-            undo->enableAnimation();
-            elementScene()->undoStack().push(undo);
-        }
-    }
+		PartArc* arc = static_cast<PartArc*>(part);
+		if (value != arc->property("spanAngle"))
+		{
+			QPropertyUndoCommand *undo= new QPropertyUndoCommand(arc, "spanAngle", arc->property("spanAngle"), value);
+			undo->setText("Modifier l'angle d'un arc");
+			undo->enableAnimation();
+			elementScene()->undoStack().push(undo);
+		}
+	}
 
 	m_locked = false;
 }
@@ -210,95 +210,95 @@ void ArcEditor::updateArcRectX()
 	if (m_locked) return;
 	m_locked = true;
 
-    for (auto part: style_->currentParts()) {
+	for (auto part: style_->currentParts()) {
 
-        PartArc* arc = static_cast<PartArc*>(part);
-        QRectF rect = arc->property("rect").toRectF();
-        QPointF point = arc->mapFromScene(x->value() - h->value()/2, y->value() - v->value()/2); // does not matter which value y is, because only the x value is used
-        rect.setX(point.x()); // change only the x value
+		PartArc* arc = static_cast<PartArc*>(part);
+		QRectF rect = arc->property("rect").toRectF();
+		QPointF point = arc->mapFromScene(x->value() - h->value()/2, y->value() - v->value()/2); // does not matter which value y is, because only the x value is used
+		rect.setX(point.x()); // change only the x value
 
-        if (rect != part->property("rect"))
-        {
-            QPropertyUndoCommand *undo= new QPropertyUndoCommand(arc, "rect", arc->property("rect"), rect);
-            undo->setText("Modifier un arc");
-            undo->enableAnimation();
-            elementScene()->undoStack().push(undo);
-        }
-    }
+		if (rect != part->property("rect"))
+		{
+			QPropertyUndoCommand *undo= new QPropertyUndoCommand(arc, "rect", arc->property("rect"), rect);
+			undo->setText("Modifier un arc");
+			undo->enableAnimation();
+			elementScene()->undoStack().push(undo);
+		}
+	}
 
 	m_locked = false;
 }
 
 void ArcEditor::updateArcRectY()
 {
-    if (m_locked) return;
-    m_locked = true;
+	if (m_locked) return;
+	m_locked = true;
 
-    for (auto part: style_->currentParts()) {
+	for (auto part: style_->currentParts()) {
 
-        PartArc* arc = static_cast<PartArc*>(part);
-        QRectF rect = arc->property("rect").toRectF();
+		PartArc* arc = static_cast<PartArc*>(part);
+		QRectF rect = arc->property("rect").toRectF();
 
-        QPointF point = arc->mapFromScene(x->value() - h->value()/2, y->value() - v->value()/2);
-        rect.setY(point.y());
+		QPointF point = arc->mapFromScene(x->value() - h->value()/2, y->value() - v->value()/2);
+		rect.setY(point.y());
 
-        if (rect != arc->property("rect"))
-        {
-            QPropertyUndoCommand *undo= new QPropertyUndoCommand(arc, "rect", arc->property("rect"), rect);
-            undo->setText("Modifier un arc");
-            undo->enableAnimation();
-            elementScene()->undoStack().push(undo);
-        }
+		if (rect != arc->property("rect"))
+		{
+			QPropertyUndoCommand *undo= new QPropertyUndoCommand(arc, "rect", arc->property("rect"), rect);
+			undo->setText("Modifier un arc");
+			undo->enableAnimation();
+			elementScene()->undoStack().push(undo);
+		}
 
-    }
+	}
 
-    m_locked = false;
+	m_locked = false;
 }
 
 void ArcEditor::updateArcRectH()
 {
-    if (m_locked) return;
-    m_locked = true;
+	if (m_locked) return;
+	m_locked = true;
 
-    for (auto part: style_->currentParts()) {
+	for (auto part: style_->currentParts()) {
 
-        PartArc* arc = static_cast<PartArc*>(part);
-        QRectF rect = arc->property("rect").toRectF();
+		PartArc* arc = static_cast<PartArc*>(part);
+		QRectF rect = arc->property("rect").toRectF();
 
-        if (rect.width() != h->value())
-        {
-            rect.setWidth(h->value());
-            QPropertyUndoCommand *undo= new QPropertyUndoCommand(arc, "rect", arc->property("rect"), rect);
-            undo->setText("Modifier un arc");
-            undo->enableAnimation();
-            elementScene()->undoStack().push(undo);
-        }
-    }
+		if (rect.width() != h->value())
+		{
+			rect.setWidth(h->value());
+			QPropertyUndoCommand *undo= new QPropertyUndoCommand(arc, "rect", arc->property("rect"), rect);
+			undo->setText("Modifier un arc");
+			undo->enableAnimation();
+			elementScene()->undoStack().push(undo);
+		}
+	}
 
-    m_locked = false;
+	m_locked = false;
 }
 
 void ArcEditor::updateArcRectV()
 {
-    if (m_locked) return;
-    m_locked = true;
+	if (m_locked) return;
+	m_locked = true;
 
-    for (auto part: style_->currentParts()) {
+	for (auto part: style_->currentParts()) {
 
-        PartArc* arc = static_cast<PartArc*>(part);
-        QRectF rect = arc->property("rect").toRectF();
+		PartArc* arc = static_cast<PartArc*>(part);
+		QRectF rect = arc->property("rect").toRectF();
 
-        if (rect.height() != v->value())
-        {
-            rect.setHeight(v->value());
-            QPropertyUndoCommand *undo= new QPropertyUndoCommand(arc, "rect", arc->property("rect"), rect);
-            undo->setText("Modifier un arc");
-            undo->enableAnimation();
-            elementScene()->undoStack().push(undo);
-        }
-    }
+		if (rect.height() != v->value())
+		{
+			rect.setHeight(v->value());
+			QPropertyUndoCommand *undo= new QPropertyUndoCommand(arc, "rect", arc->property("rect"), rect);
+			undo->setText("Modifier un arc");
+			undo->enableAnimation();
+			elementScene()->undoStack().push(undo);
+		}
+	}
 
-    m_locked = false;
+	m_locked = false;
 }
 
 /**
@@ -329,19 +329,19 @@ void ArcEditor::activeConnections(bool active)
 {
 	if (active)
 	{
-        connect(x,           SIGNAL(editingFinished()), this, SLOT(updateArcRectX()));
-        connect(y,           SIGNAL(editingFinished()), this, SLOT(updateArcRectY()));
-        connect(h,           SIGNAL(editingFinished()), this, SLOT(updateArcRectH()));
-        connect(v,           SIGNAL(editingFinished()), this, SLOT(updateArcRectV()));
+		connect(x,           SIGNAL(editingFinished()), this, SLOT(updateArcRectX()));
+		connect(y,           SIGNAL(editingFinished()), this, SLOT(updateArcRectY()));
+		connect(h,           SIGNAL(editingFinished()), this, SLOT(updateArcRectH()));
+		connect(v,           SIGNAL(editingFinished()), this, SLOT(updateArcRectV()));
 		connect(start_angle, SIGNAL(editingFinished()), this, SLOT(updateArcS()));
 		connect(angle,       SIGNAL(editingFinished()), this, SLOT(updateArcA()));
 	}
 	else
 	{
-        disconnect(x,           SIGNAL(editingFinished()), this, SLOT(updateArcRectX()));
-        disconnect(y,           SIGNAL(editingFinished()), this, SLOT(updateArcRectY()));
-        disconnect(h,           SIGNAL(editingFinished()), this, SLOT(updateArcRectH()));
-        disconnect(v,           SIGNAL(editingFinished()), this, SLOT(updateArcRectV()));
+		disconnect(x,           SIGNAL(editingFinished()), this, SLOT(updateArcRectX()));
+		disconnect(y,           SIGNAL(editingFinished()), this, SLOT(updateArcRectY()));
+		disconnect(h,           SIGNAL(editingFinished()), this, SLOT(updateArcRectH()));
+		disconnect(v,           SIGNAL(editingFinished()), this, SLOT(updateArcRectV()));
 		disconnect(start_angle, SIGNAL(editingFinished()), this, SLOT(updateArcS()));
 		disconnect(angle,       SIGNAL(editingFinished()), this, SLOT(updateArcA()));
 	}

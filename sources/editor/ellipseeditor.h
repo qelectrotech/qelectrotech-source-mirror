@@ -44,29 +44,29 @@ class EllipseEditor : public ElementItemEditor
 		StyleEditor *style_;
 		QDoubleSpinBox *x, *y, *h, *v;
 		bool m_locked;
-        QList <QMetaObject::Connection> m_change_connections;
+		QList <QMetaObject::Connection> m_change_connections;
 	
 		// methods
 	public:
 		bool setPart(CustomElementPart *) override;
-        bool setParts(QList <CustomElementPart *> parts) override;
+		bool setParts(QList <CustomElementPart *> parts) override;
 		CustomElementPart *currentPart() const override;
-        QList<CustomElementPart*> currentParts() const override;
+		QList<CustomElementPart*> currentParts() const override;
 	
 	public slots:
-        void editingFinishedX();
-        void editingFinishedY();
-        void editingFinishedH();
-        void editingFinishedV();
+		void editingFinishedX();
+		void editingFinishedY();
+		void editingFinishedH();
+		void editingFinishedV();
 		void updateForm() override;
 	
 	private:
 		void activeConnections(bool);
-        /*!
-         * \brief setUpChangeConnections
-         * Setup the connection from the ellipse(s) to the widget, to update it when the ellipse(s) are changed (moved ...)
-         */
-        void setUpChangeConnections();
-        void disconnectChangeConnections();
+		/*!
+		 * \brief setUpChangeConnections
+		 * Setup the connection from the ellipse(s) to the widget, to update it when the ellipse(s) are changed (moved ...)
+		 */
+		void setUpChangeConnections();
+		void disconnectChangeConnections();
 };
 #endif

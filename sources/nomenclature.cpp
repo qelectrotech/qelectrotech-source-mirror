@@ -60,7 +60,7 @@ bool nomenclature::saveToCSVFile()
 			if(!QFile::remove ( filename ) ){
 				QMessageBox::critical(this->m_parent, QObject::tr("Erreur"),
 									  QObject::tr("Impossible de remplacer le fichier!\n\n")+
-                                      "Destination : "+filename+"\n");
+									  "Destination : "+filename+"\n");
 				return false;
 			}	
 		}
@@ -88,28 +88,28 @@ QString nomenclature::getNomenclature()
 {
 	//Process...
 	QString data = QObject::tr("NOMENCLATURE : ") + m_project -> title() + "\n\n";
-    data += QObject::tr("A001") +";"  //:Don't translate this text!    //ID for folio position in project
-    ""+ QObject::tr("B001") +";"      //:Don't translate this text!    //ID for folio title
-    ""+ QObject::tr("C001") +";"      //:Don't translate this text!    //ID for folio number
-    ""+ QObject::tr("D001") +";"      //:Don't translate this text!    //ID for qet designation
-    ""+ QObject::tr("E001") +";"      //:Don't translate this text!    //ID for position of element on the folio
-    ""+ QObject::tr("F001") +";"      //:Don't translate this text!    //ID for label of element
-    ""+ QObject::tr("F002") +";"      //:Don't translate this text!    //ID for label formula of element
-    ""+ QObject::tr("G001") +";"      //:Don't translate this text!    //ID for order number
-    ""+ QObject::tr("H001") +";"      //:Don't translate this text!    //ID for article description
-    ""+ QObject::tr("H002") +";"      //:Don't translate this text!    //ID for plant
-    ""+ QObject::tr("I001") +";"      //:Don't translate this text!    //ID for comment
-    ""+ QObject::tr("J001") +";"      //:Don't translate this text!    //ID for manufacturer
-    ""+ QObject::tr("K001") +";"      //:Don't translate this text!    //ID for article number
-    ""+ QObject::tr("L001") +";"      //:Don't translate this text!    //ID for quantity
-    ""+ QObject::tr("L002") +";"      //:Don't translate this text!    //ID for unity
-    ""+ QObject::tr("L003") +";"      //:Don't translate this text!    //ID for supplier
-    ""+ QObject::tr("M001") +";"      //:Don't translate this text!    //ID for auxiliary field 1
-    ""+ QObject::tr("M002") +";"      //:Don't translate this text!    //ID for auxiliary field 2
-    ""+ QObject::tr("N001")+";"       //:Don't translate this text!    //ID for internal number
-    ""+ QObject::tr("O001")+";"       //:Don't translate this text!    //ID for location
-    ""+ QObject::tr("P001") +"\n";    //:Don't translate this text!    //ID for function
-    data += QObject::tr("Position du folio") +";"
+	data += QObject::tr("A001") +";"  //:Don't translate this text!    //ID for folio position in project
+			""+ QObject::tr("B001") +";"      //:Don't translate this text!    //ID for folio title
+			""+ QObject::tr("C001") +";"      //:Don't translate this text!    //ID for folio number
+			""+ QObject::tr("D001") +";"      //:Don't translate this text!    //ID for qet designation
+			""+ QObject::tr("E001") +";"      //:Don't translate this text!    //ID for position of element on the folio
+			""+ QObject::tr("F001") +";"      //:Don't translate this text!    //ID for label of element
+			""+ QObject::tr("F002") +";"      //:Don't translate this text!    //ID for label formula of element
+			""+ QObject::tr("G001") +";"      //:Don't translate this text!    //ID for order number
+			""+ QObject::tr("H001") +";"      //:Don't translate this text!    //ID for article description
+			""+ QObject::tr("H002") +";"      //:Don't translate this text!    //ID for plant
+			""+ QObject::tr("I001") +";"      //:Don't translate this text!    //ID for comment
+			""+ QObject::tr("J001") +";"      //:Don't translate this text!    //ID for manufacturer
+			""+ QObject::tr("K001") +";"      //:Don't translate this text!    //ID for article number
+			""+ QObject::tr("L001") +";"      //:Don't translate this text!    //ID for quantity
+			""+ QObject::tr("L002") +";"      //:Don't translate this text!    //ID for unity
+			""+ QObject::tr("L003") +";"      //:Don't translate this text!    //ID for supplier
+			""+ QObject::tr("M001") +";"      //:Don't translate this text!    //ID for auxiliary field 1
+			""+ QObject::tr("M002") +";"      //:Don't translate this text!    //ID for auxiliary field 2
+			""+ QObject::tr("N001")+";"       //:Don't translate this text!    //ID for internal number
+			""+ QObject::tr("O001")+";"       //:Don't translate this text!    //ID for location
+			""+ QObject::tr("P001") +"\n";    //:Don't translate this text!    //ID for function
+	data += QObject::tr("Position du folio") +";"
 	""+ QObject::tr("Titre de folio") +";"
 	""+ QObject::tr("Numéro de folio") +";"
 	""+ QObject::tr("Désignation qet") +";"

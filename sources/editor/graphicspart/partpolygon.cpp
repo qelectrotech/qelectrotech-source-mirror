@@ -265,11 +265,11 @@ void PartPolygon::setClosed(bool close)
  */
 void PartPolygon::setHandlerColor(QPointF pos, const QColor &color)
 {
-    for (QetGraphicsHandlerItem *qghi : m_handler_vector) {
-        if (qghi->pos() == mapToScene(pos)) {
-            qghi->setColor(color);
-        }
-    }
+	for (QetGraphicsHandlerItem *qghi : m_handler_vector) {
+		if (qghi->pos() == mapToScene(pos)) {
+			qghi->setColor(color);
+		}
+	}
 }
 
 /**
@@ -278,9 +278,9 @@ void PartPolygon::setHandlerColor(QPointF pos, const QColor &color)
 */
 void PartPolygon::resetAllHandlerColor()
 {
-    for (QetGraphicsHandlerItem *qghi : m_handler_vector) {
-        qghi->setColor(Qt::blue);
-    }
+	for (QetGraphicsHandlerItem *qghi : m_handler_vector) {
+		qghi->setColor(Qt::blue);
+	}
 }
 
 /**

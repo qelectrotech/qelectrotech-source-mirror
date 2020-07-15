@@ -68,7 +68,7 @@ DiagramContent::DiagramContent(Diagram *diagram, bool selected) :
 				if (m_potential_conductors.isEmpty()) {
 					m_potential_conductors << c;
 				} else {
-				        if (!potentialIsManaged(c->relatedPotentialConductors(true).values())) {
+					if (!potentialIsManaged(c->relatedPotentialConductors(true).values())) {
 						m_potential_conductors << c;
 					}
 				}
@@ -91,28 +91,28 @@ DiagramContent::DiagramContent(Diagram *diagram, bool selected) :
 		//For each selected element, we determine if conductors must be moved or updated.
 	for(Element *elmt : m_elements)
 	{
-        if (elmt->isSelected())
-        {
-            for(Terminal *terminal : elmt->terminals())
-            {
-                for(Conductor *conductor : terminal->conductors())
-                {
-                    Terminal *other_terminal;
-                    if (conductor->terminal1 == terminal)
-                        other_terminal = conductor->terminal2;
-                    else
-                        other_terminal = conductor->terminal1;
+		if (elmt->isSelected())
+		{
+			for(Terminal *terminal : elmt->terminals())
+			{
+				for(Conductor *conductor : terminal->conductors())
+				{
+					Terminal *other_terminal;
+					if (conductor->terminal1 == terminal)
+						other_terminal = conductor->terminal2;
+					else
+						other_terminal = conductor->terminal1;
 
 						//If the two elements of conductor are movable
 					if (m_elements.contains(other_terminal -> parentElement())) {
 						if (!m_conductors_to_move.contains(conductor))
 							m_conductors_to_move << conductor;
 					}
-                    else if (!m_conductors_to_update.contains(conductor))
-                        m_conductors_to_update << conductor;
-                }
-            }
-        }
+					else if (!m_conductors_to_update.contains(conductor))
+						m_conductors_to_update << conductor;
+				}
+			}
+		}
 	}
 }
 
