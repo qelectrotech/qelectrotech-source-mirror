@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2014 The QElectroTech team
+	Copyright 2006-2020 The QElectroTech team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -26,16 +26,23 @@
 #include "assignvariables.h"
 
 /**
- * @brief ConductorAutoNumerotation::ConductorAutoNumerotation
- * Constructor of autonum, after create a class, call numerate to apply the autonum.
- * When autonum is applyed, they do with an undo command added to the stack of diagram.
- * If you give a parent_undo at constructor, the undo command create in this class have parent_undo for parent,
- * and wasn't added to the stack of diagram (it's the responsabillty of the parent_undo)
- * @param conductor   : the conductor to apply automatic numerotation
- * @param diagram     : the diagram of conductor
- * @param parent_undo : parent undo command
- */
-ConductorAutoNumerotation::ConductorAutoNumerotation(Conductor *conductor, Diagram *diagram, QUndoCommand *parent_undo) :
+	@brief ConductorAutoNumerotation::ConductorAutoNumerotation
+	Constructor of autonum, after create a class,
+	call numerate to apply the autonum.
+	When autonum is applyed,
+	they do with an undo command added to the stack of diagram.
+	If you give a parent_undo at constructor,
+	the undo command create in this class have parent_undo for parent,
+	and wasn't added to the stack of diagram
+	(it's the responsabillty of the parent_undo)
+	@param conductor   : the conductor to apply automatic numerotation
+	@param diagram     : the diagram of conductor
+	@param parent_undo : parent undo command
+*/
+ConductorAutoNumerotation::ConductorAutoNumerotation(
+		Conductor *conductor,
+		Diagram *diagram,
+		QUndoCommand *parent_undo) :
 	m_diagram      (diagram),
 	m_conductor     (conductor),
 	conductor_list (conductor -> relatedPotentialConductors().values()),
@@ -43,19 +50,22 @@ ConductorAutoNumerotation::ConductorAutoNumerotation(Conductor *conductor, Diagr
 {}
 
 /**
- * @brief ConductorAutoNumerotation::numerate
- * execute the automatic numerotation
- */
+	@brief ConductorAutoNumerotation::numerate
+	execute the automatic numerotation
+*/
 void ConductorAutoNumerotation::numerate() {
 	if (!m_conductor) return;
 	if (conductor_list.size() >= 1 ) numeratePotential();
-	else if (m_conductor -> properties().type == ConductorProperties::Multi) numerateNewConductor();
+	else if (m_conductor -> properties().type == ConductorProperties::Multi)
+		numerateNewConductor();
 }
 
 /**
- * @brief ConductorAutoNumerotation::applyText
- * apply the text @t to @conductor_ and all conductors at the same potential
- */
+	@brief ConductorAutoNumerotation::applyText
+	apply the text @t to @conductor_
+	and all conductors at the same potential
+	@param t : Conductor text
+*/
 void ConductorAutoNumerotation::applyText(const QString& t)
 {
 	if (!m_conductor) return;
@@ -70,20 +80,36 @@ void ConductorAutoNumerotation::applyText(const QString& t)
 
 	if (m_parent_undo)
 	{
-		new QPropertyUndoCommand(m_conductor, "properties", old_value, new_value, m_parent_undo);
+		new QPropertyUndoCommand(
+					m_conductor,
+					"properties",
+					old_value,
+					new_value,
+					m_parent_undo);
 		undo = m_parent_undo;
 	}
 	else
 	{
 		undo = new QUndoCommand();
-		new QPropertyUndoCommand(m_conductor, "properties", old_value, new_value, undo);
-		undo->setText(QObject::tr("Modifier les propriétés d'un conducteur", "undo caption"));
+		new QPropertyUndoCommand(
+					m_conductor,
+					"properties",
+					old_value,
+					new_value,
+					undo);
+		undo->setText(
+			QObject::tr(
+				"Modifier les propriétés d'un conducteur",
+				"undo caption"));
 	}
 
 	if (!conductor_list.isEmpty())
 	{
 		if (!m_parent_undo)
-			undo->setText(QObject::tr("Modifier les propriétés de plusieurs conducteurs", "undo caption"));
+			undo->setText(
+				QObject::tr(
+					"Modifier les propriétés de plusieurs conducteurs",
+					"undo caption"));
 
 		foreach (Conductor *cond, conductor_list)
 		{
@@ -91,7 +117,12 @@ void ConductorAutoNumerotation::applyText(const QString& t)
 			old_value.setValue(cp2);
 			cp2.text = t;
 			new_value.setValue(cp2);
-			new QPropertyUndoCommand(cond, "properties", old_value, new_value, undo);
+			new QPropertyUndoCommand(
+						cond,
+						"properties",
+						old_value,
+						new_value,
+						undo);
 		}
 	}
 
@@ -100,15 +131,19 @@ void ConductorAutoNumerotation::applyText(const QString& t)
 }
 
 /**
- * @brief ConductorAutoNumerotation::newProperties
- * Create a new properties according to the current autonum rule of diagram
- * @param d
- * @param cp
- * @param seq
- */
-void ConductorAutoNumerotation::newProperties(Diagram *diagram, ConductorProperties &cp, autonum::sequentialNumbers &seq)
+	@brief ConductorAutoNumerotation::newProperties
+	Create a new properties according to the current autonum rule of diagram
+	@param diagram : Diagram class
+	@param cp : ConductorProperties
+	@param seq : sequentialNumbers
+*/
+void ConductorAutoNumerotation::newProperties(
+		Diagram *diagram,
+		ConductorProperties &cp,
+		autonum::sequentialNumbers &seq)
 {	
-	NumerotationContext context = diagram->project()->conductorAutoNum(diagram->conductorsAutonumName());
+	NumerotationContext context = diagram->project()->conductorAutoNum(
+				diagram->conductorsAutonumName());
 	if (context.isEmpty()) {
 		return;
 	}
@@ -124,9 +159,9 @@ void ConductorAutoNumerotation::newProperties(Diagram *diagram, ConductorPropert
 }
 
 /**
- * @brief ConductorAutoNumerotation::numeratePotential
- * Numerate a conductor on an existing potential
- */
+	@brief ConductorAutoNumerotation::numeratePotential
+	Numerate a conductor on an existing potential
+*/
 void ConductorAutoNumerotation::numeratePotential()
 {
 	ConductorProperties cp = conductor_list.first()->properties();
@@ -136,7 +171,8 @@ void ConductorAutoNumerotation::numeratePotential()
 		if (conductor->properties() != cp)
 			properties_equal = false;
 	}
-		//Every properties of the potential is equal, so we apply it to m_conductor
+	// Every properties of the potential is equal,
+	// so we apply it to m_conductor
 	if (properties_equal)
 	{
 		m_conductor->setProperties(cp);
@@ -169,21 +205,25 @@ void ConductorAutoNumerotation::numeratePotential()
 		//the texts isn't identicals
 	else
 	{
-		PotentialSelectorDialog psd(m_conductor, m_parent_undo, m_conductor->diagramEditor());
+		PotentialSelectorDialog psd(
+					m_conductor,
+					m_parent_undo,
+					m_conductor->diagramEditor());
 		psd.exec();
 	}
 }
 
 /**
- * @brief ConductorAutoNumerotation::numerateNewConductor
- * create and apply a new numerotation to @m_conductor
- */
+	@brief ConductorAutoNumerotation::numerateNewConductor
+	create and apply a new numerotation to @m_conductor
+*/
 void ConductorAutoNumerotation::numerateNewConductor()
 {
 	if (!m_conductor || m_diagram->conductorsAutonumName().isEmpty())
 		return;
 
-	NumerotationContext context = m_diagram->project()->conductorAutoNum(m_diagram -> conductorsAutonumName());
+	NumerotationContext context = m_diagram->project()->conductorAutoNum(
+				m_diagram -> conductorsAutonumName());
 	if (context.isEmpty())
 		return;
 
@@ -194,10 +234,17 @@ void ConductorAutoNumerotation::numerateNewConductor()
 	cp.m_formula = formula;
 	m_conductor->setProperties(cp);
 
-	autonum::setSequential(formula, m_conductor->rSequenceNum(), context, m_diagram, autoNum_name);
+	autonum::setSequential(formula,
+			       m_conductor->rSequenceNum(),
+			       context,
+			       m_diagram,
+			       autoNum_name);
 
 	NumerotationContextCommands ncc (context, m_diagram);
 	m_diagram->project()->addConductorAutoNum(autoNum_name, ncc.next());
 
-	applyText(autonum::AssignVariables::formulaToLabel(formula, m_conductor->rSequenceNum(), m_diagram));
+	applyText(autonum::AssignVariables::formulaToLabel(
+			  formula,
+			  m_conductor->rSequenceNum(),
+			  m_diagram));
 }

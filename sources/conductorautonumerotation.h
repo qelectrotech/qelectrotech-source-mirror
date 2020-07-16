@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2014 The QElectroTech team
+	Copyright 2006-2020 The QElectroTech team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -26,19 +26,26 @@ class Conductor;
 class QUndoCommand;
 class ConductorProperties;
 
+/**
+	@brief The ConductorAutoNumerotation class
+*/
 class ConductorAutoNumerotation
 {
 	public:
 		//constructors & destructor
-		ConductorAutoNumerotation (Conductor *conductor, Diagram *diagram, QUndoCommand *undo_parent = nullptr);
+		ConductorAutoNumerotation (Conductor *conductor,
+					   Diagram *diagram,
+					   QUndoCommand *undo_parent = nullptr);
 
-			//methods
+		//methods
 		void        numerate       ();
 		void        applyText      (const QString&);
-		static void newProperties(Diagram *diagram, ConductorProperties &cp, autonum::sequentialNumbers &seq);
+		static void newProperties(Diagram *diagram,
+					  ConductorProperties &cp,
+					  autonum::sequentialNumbers &seq);
 
 	private:
-			//methods
+		//methods
 		void numeratePotential ();
 		void numerateNewConductor ();
 
