@@ -32,9 +32,16 @@
 #define MIN_ROW_HEIGHT 5.0
 
 /**
-	Constructeur simple : construit une bordure en recuperant les dimensions
+	@brief BorderTitleBlock::BorderTitleBlock
+	Simple constructor:
+	build a border by recovering the dimensions
+	in the application configuration.
+
+	\~French Constructeur simple :
+	construit une bordure en recuperant les dimensions
 	dans la configuration de l'application.
-	@param parent QObject parent de ce BorderTitleBlock
+	\~ @param parent :
+	\~French QObject parent de ce BorderTitleBlock
 */
 BorderTitleBlock::BorderTitleBlock(QObject *parent) :
 	QObject(parent)
@@ -61,96 +68,120 @@ BorderTitleBlock::BorderTitleBlock(QObject *parent) :
 }
 
 /**
-	Destructeur - ne fait rien
+	@brief BorderTitleBlock::~BorderTitleBlock
+	\~French Destructeur - ne fait rien
 */
 BorderTitleBlock::~BorderTitleBlock() {
 }
 
 /**
- * @brief BorderTitleBlock::titleBlockRect
- * @return the rectangle of the titleblock in scene coordinate.
- */
+	@brief BorderTitleBlock::titleBlockRect
+	@return the rectangle of the titleblock in scene coordinate.
+*/
 QRectF BorderTitleBlock::titleBlockRect() const
 {
 	if (m_edge == Qt::BottomEdge)
-		return QRectF(diagram_rect_.bottomLeft(), QSize(diagram_rect_.width(), m_titleblock_template_renderer -> height()));
+		return QRectF(diagram_rect_.bottomLeft(),
+			      QSize(diagram_rect_.width(),
+				    m_titleblock_template_renderer -> height()
+				    ));
 	else
-		return QRectF(diagram_rect_.topRight(), QSize(m_titleblock_template_renderer -> height(), diagram_rect_.height()));
+		return QRectF(diagram_rect_.topRight(),
+			      QSize(m_titleblock_template_renderer -> height(),
+				    diagram_rect_.height()
+				    ));
 }
 
+/**
+	@brief BorderTitleBlock::titleblockInformation
+	@return
+*/
 DiagramContext BorderTitleBlock::titleblockInformation() const {
 	return m_titleblock_template_renderer->context();
 }
 
 /**
- * @brief BorderTitleBlock::titleBlockRectForQPainter
- * @return The title block rect to use with the QPainter in the method draw.
- * The returned rect is alway horizontal (like displayed at the bottom of rect) only the top left change of pos
- * according to the edge where the title block need to be displayed.
- * Rect according to edge:
- * Bottom : top left is at the bottom left edge of the diagram rect.
- * Right : top left is at the bottom right of diagram rect. Befor use this rect you need to rotate the QPainter by -90°
- * for snap the rect at the right edge of diagram.
- */
+	@brief BorderTitleBlock::titleBlockRectForQPainter
+	@return The title block rect to use with the QPainter in the method draw.
+	The returned rect is alway horizontal
+	(like displayed at the bottom of rect) only the top left change of pos
+	according to the edge where the title block need to be displayed.
+	Rect according to edge:
+	Bottom : top left is at the bottom left edge of the diagram rect.
+	Right : top left is at the bottom right of diagram rect.
+	Befor use this rect you need to rotate the QPainter by -90°
+	for snap the rect at the right edge of diagram.
+*/
 QRectF BorderTitleBlock::titleBlockRectForQPainter() const
 {
-	if (m_edge == Qt::BottomEdge) //Rect at bottom have same position and dimension of displayed rect
+	//Rect at bottom have same position and dimension of displayed rect
+	if (m_edge == Qt::BottomEdge)
 		return titleBlockRect();
 	else
-		return QRectF (diagram_rect_.bottomRight(), QSize(diagram_rect_.height(), m_titleblock_template_renderer -> height()));
+		return QRectF (diagram_rect_.bottomRight(),
+			       QSize(diagram_rect_.height(),
+				     m_titleblock_template_renderer -> height()
+				     ));
 
 }
 
 /**
- * @brief BorderTitleBlock::borderAndTitleBlockRect
- * @return the bounding rectangle of diagram and titleblock.
- * It's like unite outsideBorderRect and titleBlockRect.
- * The rect is in scene coordinate
- */
+	@brief BorderTitleBlock::borderAndTitleBlockRect
+	@return the bounding rectangle of diagram and titleblock.
+	It's like unite outsideBorderRect and titleBlockRect.
+	The rect is in scene coordinate
+*/
 QRectF BorderTitleBlock::borderAndTitleBlockRect() const {
 	return diagram_rect_ | titleBlockRect();
 }
 
 /**
- * @brief BorderTitleBlock::columnsRect
- * @return The columns rect in scene coordinate.
- * If column is not displayed, return a null QRectF
- */
+	@brief BorderTitleBlock::columnsRect
+	@return The columns rect in scene coordinate.
+	If column is not displayed, return a null QRectF
+*/
 QRectF BorderTitleBlock::columnsRect() const
 {
 	if (!display_columns_) return QRectF();
-	return QRectF (Diagram::margin, Diagram::margin, (columns_count_*columns_width_) + rows_header_width_, columns_header_height_);
+	return QRectF (Diagram::margin,
+		       Diagram::margin,
+		       (columns_count_*columns_width_) + rows_header_width_,
+		       columns_header_height_);
 }
 
 /**
- * @brief BorderTitleBlock::rowsRect
- * @return The rows rect in scene coordinate.
- * If row is not displayed, return a null QRectF
- */
+	@brief BorderTitleBlock::rowsRect
+	@return The rows rect in scene coordinate.
+	If row is not displayed, return a null QRectF
+*/
 QRectF BorderTitleBlock::rowsRect() const
 {
 	if (!display_rows_) return QRectF();
-	return QRectF (Diagram::margin, Diagram::margin, rows_header_width_, (rows_count_*rows_height_) + columns_header_height_);
+	return QRectF (Diagram::margin,
+		       Diagram::margin,
+		       rows_header_width_,
+		       (rows_count_*rows_height_) + columns_header_height_);
 }
 
 /**
- * @brief BorderTitleBlock::outsideBorderRect
- * @return The rect of outside border (diagram with columns and rows)
- * The rect is in scene coordinate
- */
+	@brief BorderTitleBlock::outsideBorderRect
+	@return The rect of outside border (diagram with columns and rows)
+	The rect is in scene coordinate
+*/
 QRectF BorderTitleBlock::outsideBorderRect() const
 {
-	return QRectF (Diagram::margin, Diagram::margin,
-				  (columns_width_*columns_count_) + rows_header_width_,
-				  (rows_height_*rows_count_) + columns_header_height_);
+	return QRectF (Diagram::margin,
+		       Diagram::margin,
+		       (columns_width_*columns_count_) + rows_header_width_,
+		       (rows_height_*rows_count_) + columns_header_height_);
 }
 
 /**
- * @brief BorderTitleBlock::insideBorderRect
- * @return The rect of the inside border, in other word, the drawing area.
- * This method take care about if rows or columns are displayed or not.
- * The rect is in scene coordinate
- */
+	@brief BorderTitleBlock::insideBorderRect
+	@return The rect of the inside border, in other word, the drawing area.
+	This method take care about if rows or columns are displayed or not.
+	The rect is in scene coordinate
+*/
 QRectF BorderTitleBlock::insideBorderRect() const
 {
 	qreal left = Diagram::margin;
@@ -165,6 +196,7 @@ QRectF BorderTitleBlock::insideBorderRect() const
 }
 
 /**
+	@brief BorderTitleBlock::titleBlockToXml
 	Exports the title block current values to XML.
 	@param xml_elmt the XML element attributes will be added to
 */
@@ -173,6 +205,7 @@ void BorderTitleBlock::titleBlockToXml(QDomElement &xml_elmt) {
 }
 
 /**
+	@brief BorderTitleBlock::titleBlockFromXml
 	Reads the title block values from XML.
 	@param xml_elmt the XML element values will be read from
 */
@@ -183,6 +216,7 @@ void BorderTitleBlock::titleBlockFromXml(const QDomElement &xml_elmt) {
 }
 
 /**
+	@brief BorderTitleBlock::borderToXml
 	Exports the border current settings to XML.
 	@param xml_elmt the XML element attributes will be added to
 */
@@ -200,6 +234,7 @@ void BorderTitleBlock::borderToXml(QDomElement &xml_elmt) {
 }
 
 /**
+	@brief BorderTitleBlock::borderFromXml
 	Reads the border settings from XML.
 	@param xml_elmt the XML element values will be read from
 */
@@ -213,7 +248,8 @@ void BorderTitleBlock::borderFromXml(const QDomElement &xml_elmt) {
 	double cols_width = xml_elmt.attribute("colsize").toDouble(&ok);
 	if (ok) setColumnsWidth(cols_width);
 	
-	// backward compatibility: diagrams saved with 0.1 version have a "height" attribute
+	// backward compatibility:
+	//	diagrams saved with 0.1 version have a "height" attribute
 	if (xml_elmt.hasAttribute("rows") && xml_elmt.hasAttribute("rowsize")) {
 		// rows counts
 		int rows_count = xml_elmt.attribute("rows").toInt(&ok);
@@ -236,7 +272,9 @@ void BorderTitleBlock::borderFromXml(const QDomElement &xml_elmt) {
 }
 
 /**
-	@return les proprietes du cartouches
+	@brief BorderTitleBlock::exportTitleBlock
+	@return the properties of the titleblock
+	\~French les proprietes du cartouches
 */
 TitleBlockProperties BorderTitleBlock::exportTitleBlock() {
 	TitleBlockProperties ip;
@@ -260,9 +298,9 @@ TitleBlockProperties BorderTitleBlock::exportTitleBlock() {
 }
 
 /**
- * @brief BorderTitleBlock::importTitleBlock
- * @param ip the new properties of titleblock
- */
+	@brief BorderTitleBlock::importTitleBlock
+	@param ip the new properties of titleblock
+*/
 void BorderTitleBlock::importTitleBlock(const TitleBlockProperties &ip) {
 	setAuthor(ip.author);
 	setDate(ip.date);
@@ -282,12 +320,15 @@ void BorderTitleBlock::importTitleBlock(const TitleBlockProperties &ip) {
 	additional_fields_ = ip.context;
 	
 	emit(needFolioData()); // Note: we expect additional data to be provided
-	// through setFolioData(), which in turn calls updateDiagramContextForTitleBlock().
+	// through setFolioData(),
+	// which in turn calls updateDiagramContextForTitleBlock().
 	emit(needTitleBlockTemplate(ip.template_name));
 }
 
 /**
-	@return les proprietes de la bordure
+	@brief BorderTitleBlock::exportBorder
+	@return border properties
+	\~French les proprietes de la bordure
 */
 BorderProperties BorderTitleBlock::exportBorder() {
 	BorderProperties bp;
@@ -303,7 +344,9 @@ BorderProperties BorderTitleBlock::exportBorder() {
 }
 
 /**
-	@param bp les nouvelles proprietes de la bordure
+	@brief BorderTitleBlock::importBorder
+	@param bp : the new properties of the border
+	\~French les nouvelles proprietes de la bordure
 */
 void BorderTitleBlock::importBorder(const BorderProperties &bp) {
 	setColumnsHeaderHeight(bp.columns_header_height);
@@ -317,6 +360,7 @@ void BorderTitleBlock::importBorder(const BorderProperties &bp) {
 }
 
 /**
+	@brief BorderTitleBlock::titleBlockTemplate
 	@return the titleblock template used to render the titleblock
 	@see TitleBlockTemplateRenderer::titleBlockTemplate()
 */
@@ -325,14 +369,19 @@ const TitleBlockTemplate *BorderTitleBlock::titleBlockTemplate() {
 }
 
 /**
-	@param titleblock_template The new titleblock template to use to render the titleblock
+	@brief BorderTitleBlock::setTitleBlockTemplate
+	@param titleblock_template:
+	The new titleblock template to use to render the titleblock
 	@see TitleBlockTemplateRenderer::setTitleBlockTemplate()
 */
-void BorderTitleBlock::setTitleBlockTemplate(const TitleBlockTemplate *titleblock_template) {
-	m_titleblock_template_renderer -> setTitleBlockTemplate(titleblock_template);
+void BorderTitleBlock::setTitleBlockTemplate(
+		const TitleBlockTemplate *titleblock_template) {
+	m_titleblock_template_renderer -> setTitleBlockTemplate(
+				titleblock_template);
 }
 
 /**
+	@brief BorderTitleBlock::titleBlockTemplateName
 	@return The name of the template used to render the titleblock.
 */
 QString BorderTitleBlock::titleBlockTemplateName() const {
@@ -341,10 +390,11 @@ QString BorderTitleBlock::titleBlockTemplateName() const {
 }
 
 /**
+	@brief BorderTitleBlock::titleBlockTemplateChanged
 	This slot may be used to inform this class that the given title block
-	template has changed. The title block-dedicated rendering cache will thus be
-	flushed.
-	@param template_name Name of the title block template that has changed
+	template has changed.
+	The title block-dedicated rendering cache will thus be flushed.
+	@param template_name : Name of the title block template that has changed
 */
 void BorderTitleBlock::titleBlockTemplateChanged(const QString &template_name) {
 	if (titleBlockTemplateName() != template_name) return;
@@ -352,14 +402,18 @@ void BorderTitleBlock::titleBlockTemplateChanged(const QString &template_name) {
 }
 
 /**
+	@brief BorderTitleBlock::titleBlockTemplateRemoved
 	This slot has to be used to inform this class that the given title block
 	template is about to be removed and is no longer accessible. This class
 	will either use the provided optional TitleBlockTemplate or the default
 	title block provided by QETApp::defaultTitleBlockTemplate()
-	@param template_name Name of the title block template that has changed
+	@param removed_template_name :
+	Name of the title block template that has changed
 	@param new_template (Optional) title block template to use instead
 */
-void BorderTitleBlock::titleBlockTemplateRemoved(const QString &removed_template_name, const TitleBlockTemplate *new_template) {
+void BorderTitleBlock::titleBlockTemplateRemoved(
+		const QString &removed_template_name,
+		const TitleBlockTemplate *new_template) {
 	if (titleBlockTemplateName() != removed_template_name) return;
 	
 	if (new_template) {
@@ -370,7 +424,9 @@ void BorderTitleBlock::titleBlockTemplateRemoved(const QString &removed_template
 }
 
 /**
-	@param di true pour afficher le cartouche, false sinon
+	@brief BorderTitleBlock::displayTitleBlock
+	@param di : true to display the title block, false otherwise
+	\~French true pour afficher le cartouche, false sinon
 */
 void BorderTitleBlock::displayTitleBlock(bool di) {
 	bool change = (di != display_titleblock_);
@@ -379,7 +435,9 @@ void BorderTitleBlock::displayTitleBlock(bool di) {
 }
 
 /**
-	@param dc true pour afficher les entetes des colonnes, false sinon
+	@brief BorderTitleBlock::displayColumns
+	@param dc : true to display the column headers, false otherwise
+	\~French true pour afficher les entetes des colonnes, false sinon
 */
 void BorderTitleBlock::displayColumns(bool dc) {
 	bool change = (dc != display_columns_);
@@ -388,7 +446,9 @@ void BorderTitleBlock::displayColumns(bool dc) {
 }
 
 /**
-	@param dr true pour afficher les entetes des lignes, false sinon
+	@brief BorderTitleBlock::displayRows
+	@param dr : true to display line headers, false otherwise
+	\~French true pour afficher les entetes des lignes, false sinon
 */
 void BorderTitleBlock::displayRows(bool dr) {
 	bool change = (dr != display_rows_);
@@ -397,9 +457,13 @@ void BorderTitleBlock::displayRows(bool dr) {
 }
 
 /**
-	@param db true pour afficher la bordure du schema, false sinon
-	Note : si l'affichage de la bordure est ainsi desactivee, les lignes et
-	colonnes ne seront pas dessinees.
+	@brief BorderTitleBlock::displayBorder
+	@param db : true to display the border of the diagram, false otherwise
+	\~French true pour afficher la bordure du schema, false sinon
+	\~ @note : if the border display is deactivated,
+	the rows and columns will not be drawn.
+	\~French si l'affichage de la bordure est ainsi desactivee,
+	les lignes et colonnes ne seront pas dessinees.
 */
 void BorderTitleBlock::displayBorder(bool db) {
 	bool change = (db != display_border_);
@@ -408,33 +472,38 @@ void BorderTitleBlock::displayBorder(bool db) {
 }
 
 /**
- * @brief BorderTitleBlock::slot_setAutoPageNum
- * @param pageAutoNum
- * Set Page (Folio) Auto Num
- */
+	@brief BorderTitleBlock::slot_setAutoPageNum
+	@param pageAutoNum :
+	Set Page (Folio) Auto Num
+*/
 void BorderTitleBlock::slot_setAutoPageNum(QString pageAutoNum) {
 	btb_auto_page_num_=std::move(pageAutoNum);
 }
 
 /**
- * @brief BorderTitleBlock::updateRectangles
- * This method update the diagram rect according to the value of rows and columns (number and size)
- */
+	@brief BorderTitleBlock::updateRectangles
+	This method update the diagram rect according
+	to the value of rows and columns (number and size)
+*/
 void BorderTitleBlock::updateRectangles()
 {
 	QRectF previous_diagram = diagram_rect_;
-	diagram_rect_ = QRectF(Diagram::margin, Diagram::margin, diagramWidth(), diagramHeight());
-	if (diagram_rect_ != previous_diagram) emit(borderChanged(previous_diagram, diagram_rect_));
+	diagram_rect_ = QRectF(Diagram::margin,
+			       Diagram::margin,
+			       diagramWidth(),
+			       diagramHeight());
+	if (diagram_rect_ != previous_diagram)
+		emit(borderChanged(previous_diagram, diagram_rect_));
 }
 
 /**
- * @brief BorderTitleBlock::draw
- * Draw the border and the titleblock.
- * @param painter, QPainter to use for draw this.
- */
+	@brief BorderTitleBlock::draw
+	Draw the border and the titleblock.
+	@param painter, QPainter to use for draw this.
+*/
 void BorderTitleBlock::draw(QPainter *painter)
 {
-		//Set the QPainter
+	//Set the QPainter
 	painter -> save();
 	QPen pen(Qt::black);
 	pen.setCosmetic(true);
@@ -443,12 +512,12 @@ void BorderTitleBlock::draw(QPainter *painter)
 	
 	QSettings settings;
 	
-		//Draw the borer
+	//Draw the borer
 	if (display_border_) painter -> drawRect(diagram_rect_);
 	
 	painter -> setFont(QETApp::diagramTextsFont());
 	
-		//Draw the empty case at the top left of diagram when there is header
+	//Draw the empty case at the top left of diagram when there is header
 	if (display_border_ && (display_columns_ || display_rows_))
 	{
 		QRectF first_rectangle(
@@ -464,16 +533,24 @@ void BorderTitleBlock::draw(QPainter *painter)
 	if (display_border_ && display_columns_) {
 		for (int i = 1 ; i <= columns_count_ ; ++ i) {
 			QRectF numbered_rectangle = QRectF(
-				diagram_rect_.topLeft().x() + (rows_header_width_ + ((i - 1) * columns_width_)),
+				diagram_rect_.topLeft().x()
+					+ (rows_header_width_
+					   + ((i - 1) * columns_width_)),
 				diagram_rect_.topLeft().y(),
 				columns_width_,
 				columns_header_height_
 			);
 			painter -> drawRect(numbered_rectangle);
 			if (settings.value("border-columns_0", true).toBool()){
-			painter -> drawText(numbered_rectangle, Qt::AlignVCenter | Qt::AlignCenter, QString("%1").arg(i - 1));
+			painter -> drawText(numbered_rectangle,
+					    Qt::AlignVCenter
+					    | Qt::AlignCenter,
+					    QString("%1").arg(i - 1));
 			}else{
-			painter -> drawText(numbered_rectangle, Qt::AlignVCenter | Qt::AlignCenter, QString("%1").arg(i));
+			painter -> drawText(numbered_rectangle,
+					    Qt::AlignVCenter
+					    | Qt::AlignCenter,
+					    QString("%1").arg(i));
 			}
 		}
 	}
@@ -484,12 +561,19 @@ void BorderTitleBlock::draw(QPainter *painter)
 		for (int i = 1 ; i <= rows_count_ ; ++ i) {
 			QRectF lettered_rectangle = QRectF(
 				diagram_rect_.topLeft().x(),
-				diagram_rect_.topLeft().y() + (columns_header_height_ + ((i - 1) * rows_height_)),
+				diagram_rect_.topLeft().y()
+					+ (
+						columns_header_height_
+						+ ((i - 1)* rows_height_)
+						),
 				rows_header_width_,
 				rows_height_
 			);
 			painter -> drawRect(lettered_rectangle);
-			painter -> drawText(lettered_rectangle, Qt::AlignVCenter | Qt::AlignCenter, row_string);
+			painter -> drawText(lettered_rectangle,
+					    Qt::AlignVCenter
+					    | Qt::AlignCenter,
+					    row_string);
 			row_string = incrementLetters(row_string);
 		}
 	}
@@ -500,14 +584,18 @@ void BorderTitleBlock::draw(QPainter *painter)
 		if (m_edge == Qt::BottomEdge)
 		{
 			painter -> translate(tbt_rect.topLeft());
-			m_titleblock_template_renderer -> render(painter, tbt_rect.width());
+			m_titleblock_template_renderer -> render(
+						painter,
+						tbt_rect.width());
 			painter -> translate(-tbt_rect.topLeft());
 		}
 		else
 		{
 			painter->translate(tbt_rect.topLeft());
 			painter->rotate(-90);
-			m_titleblock_template_renderer -> render(painter, tbt_rect.width());
+			m_titleblock_template_renderer -> render(
+						painter,
+						tbt_rect.width());
 			painter->rotate(90);
 			painter -> translate(-tbt_rect.topLeft());
 		}
@@ -516,7 +604,20 @@ void BorderTitleBlock::draw(QPainter *painter)
 	painter -> restore();
 }
 
-void BorderTitleBlock::drawDxf(int width, int height, bool keep_aspect_ratio, QString &file_path, int color) {
+/**
+ * @brief BorderTitleBlock::drawDxf
+ * @param width
+ * @param height
+ * @param keep_aspect_ratio
+ * @param file_path
+ * @param color
+ */
+void BorderTitleBlock::drawDxf(
+		int width,
+		int height,
+		bool keep_aspect_ratio,
+		QString &file_path,
+		int color) {
 	Q_UNUSED (width); Q_UNUSED (height); Q_UNUSED (keep_aspect_ratio);
 
 	// Transform to DXF scale.
@@ -525,6 +626,7 @@ void BorderTitleBlock::drawDxf(int width, int height, bool keep_aspect_ratio, QS
 	rows_header_width_     *= Createdxf::xScale;
 	columns_width_         *= Createdxf::xScale;
 
+	// draw the empty box that appears as soon as there is a header
 	// dessine la case vide qui apparait des qu'il y a un entete
 	if (display_border_ &&
 		(display_columns_ ||
@@ -533,7 +635,10 @@ void BorderTitleBlock::drawDxf(int width, int height, bool keep_aspect_ratio, QS
 		Createdxf::drawRectangle(
 			file_path,
 			double(diagram_rect_.topLeft().x()) * Createdxf::xScale,
-			Createdxf::sheetHeight - double(diagram_rect_.topLeft().y()) * Createdxf::yScale - columns_header_height_,
+			Createdxf::sheetHeight
+					- double(diagram_rect_.topLeft().y())
+					* Createdxf::yScale
+					- columns_header_height_,
 			rows_header_width_,
 			columns_header_height_,
 			color
@@ -542,6 +647,7 @@ void BorderTitleBlock::drawDxf(int width, int height, bool keep_aspect_ratio, QS
 
 	QSettings settings;
 	
+	// draw the numbering of the columns
 	// dessine la numerotation des colonnes
 	if (display_border_ &&
 		display_columns_) {
@@ -549,34 +655,74 @@ void BorderTitleBlock::drawDxf(int width, int height, bool keep_aspect_ratio, QS
 			double xCoord = diagram_rect_.topLeft().x() +
 					(rows_header_width_ + ((i - 1) *
 					 columns_width_));
-			double yCoord = Createdxf::sheetHeight - diagram_rect_.topLeft().y() - columns_header_height_;
+			double yCoord = Createdxf::sheetHeight
+					- diagram_rect_.topLeft().y()
+					- columns_header_height_;
 			double recWidth = columns_width_;
 			double recHeight = columns_header_height_;
-			Createdxf::drawRectangle(file_path, xCoord, yCoord, recWidth, recHeight, color);
+			Createdxf::drawRectangle(file_path, xCoord, yCoord,
+						 recWidth, recHeight, color);
 			if (settings.value("border-columns_0", true).toBool()){
-			Createdxf::drawTextAligned(file_path, QString::number(i - 1), xCoord,
-									   yCoord + recHeight*0.5, recHeight*0.7, 0, 0, 1, 2, xCoord+recWidth/2, color, 0);
+			Createdxf::drawTextAligned(file_path,
+						   QString::number(i - 1),
+						   xCoord,
+						   yCoord + recHeight*0.5,
+						   recHeight*0.7,
+						   0,
+						   0,
+						   1,
+						   2,
+						   xCoord+recWidth/2,
+						   color,
+						   0);
 			}else{
-			Createdxf::drawTextAligned(file_path, QString::number(i), xCoord,
-									   yCoord + recHeight*0.5, recHeight*0.7, 0, 0, 1, 2, xCoord+recWidth/2, color, 0);
+			Createdxf::drawTextAligned(file_path,
+						   QString::number(i),
+						   xCoord,
+						   yCoord + recHeight*0.5,
+						   recHeight*0.7,
+						   0,
+						   0,
+						   1,
+						   2,
+						   xCoord+recWidth/2,
+						   color,
+						   0);
 			}
 		}
 	}
 
+	// draw line numbering
 	// dessine la numerotation des lignes
-
 	if (display_border_ && display_rows_) {
 		QString row_string("A");
 		for (int i = 1 ; i <= rows_count_ ; ++ i) {
-			double xCoord = diagram_rect_.topLeft().x() * Createdxf::xScale;
-			double yCoord = Createdxf::sheetHeight - diagram_rect_.topLeft().y()*Createdxf::yScale
-							- (columns_header_height_ + ((i - 1) * rows_height_))
-							- rows_height_;
+			double xCoord = diagram_rect_.topLeft().x()
+					* Createdxf::xScale;
+			double yCoord = Createdxf::sheetHeight
+					- diagram_rect_.topLeft().y()
+					*Createdxf::yScale
+					- (
+						columns_header_height_
+						+ ((i - 1)
+						   * rows_height_) )
+					- rows_height_;
 			double recWidth = rows_header_width_;
 			double recHeight = rows_height_;
-			Createdxf::drawRectangle(file_path, xCoord, yCoord, recWidth, recHeight, color);
-			Createdxf::drawTextAligned(file_path, row_string, xCoord,
-									   yCoord + recHeight*0.5, recWidth*0.7, 0, 0, 1, 2, xCoord+recWidth/2, color, 0);
+			Createdxf::drawRectangle(file_path, xCoord, yCoord,
+						 recWidth, recHeight, color);
+			Createdxf::drawTextAligned(file_path,
+						   row_string,
+						   xCoord,
+						   yCoord + recHeight*0.5,
+						   recWidth*0.7,
+						   0,
+						   0,
+						   1,
+						   2,
+						   xCoord+recWidth/2,
+						   color,
+						   0);
 			row_string = incrementLetters(row_string);
 		}
 	}
@@ -585,7 +731,10 @@ void BorderTitleBlock::drawDxf(int width, int height, bool keep_aspect_ratio, QS
 	if (display_titleblock_) {
 		//qp -> translate(titleblock_rect_.topLeft());
 		QRectF rect = titleBlockRect();
-		m_titleblock_template_renderer -> renderDxf(rect, rect.width(), file_path, color);
+		m_titleblock_template_renderer -> renderDxf(rect,
+							    rect.width(),
+							    file_path,
+							    color);
 		//qp -> translate(-titleblock_rect_.topLeft());
 	}
 
@@ -598,11 +747,17 @@ void BorderTitleBlock::drawDxf(int width, int height, bool keep_aspect_ratio, QS
 }
 
 /**
-	Permet de changer le nombre de colonnes.
-	Si ce nombre de colonnes est inferieur au minimum requis, c'est ce minimum
-	qui est utilise.
-	@param nb_c nouveau nombre de colonnes
-	@see minNbColumns()
+	@brief BorderTitleBlock::setColumnsCount
+	Allows you to change the number of columns.
+	If this number of columns is less than the minimum required,
+	it is this minimum which is used.
+
+	\~French Permet de changer le nombre de colonnes.
+	Si ce nombre de colonnes est inferieur au minimum requis,
+	c'est ce minimum qui est utilise.
+	\~ @param nb_c : new number of columns
+	\~French nouveau nombre de colonnes
+	\~ @see minNbColumns()
 */
 void BorderTitleBlock::setColumnsCount(int nb_c) {
 	if (nb_c == columnsCount()) return;
@@ -611,11 +766,17 @@ void BorderTitleBlock::setColumnsCount(int nb_c) {
 }
 
 /**
-	Change la largeur des colonnes.
-	Si la largeur indiquee est inferieure au minimum requis, c'est ce minimum
-	qui est utilise.
-	@param new_cw nouvelle largeur des colonnes
-	@see minColumnsWidth()
+	@brief BorderTitleBlock::setColumnsWidth
+	Change the width of the columns.
+	If the width indicated is less than the minimum required,
+	it is this minimum which is used.
+
+	\~French Change la largeur des colonnes.
+	Si la largeur indiquee est inferieure au minimum requis,
+	c'est ce minimum qui est utilise.
+	\~ @param new_cw : new column width
+	\~French nouvelle largeur des colonnes
+	\~ @see minColumnsWidth()
 */
 void BorderTitleBlock::setColumnsWidth(const qreal &new_cw) {
 	if (new_cw == columnsWidth()) return;
@@ -624,9 +785,14 @@ void BorderTitleBlock::setColumnsWidth(const qreal &new_cw) {
 }
 
 /**
-	Change la hauteur des en-tetes contenant les numeros de colonnes. Celle-ci
-	doit rester comprise entre 5 et 50 px.
-	@param new_chh nouvelle hauteur des en-tetes de colonnes
+	@brief BorderTitleBlock::setColumnsHeaderHeight
+	Change the height of the headers containing the column numbers.
+	This must remain between 5 and 50 px.
+
+	\~French Change la hauteur des en-tetes contenant les numeros de colonnes.
+	Celle-ci doit rester comprise entre 5 et 50 px.
+	\~ @param new_chh : new height of column headers
+	\~French nouvelle hauteur des en-tetes de colonnes
 */
 void BorderTitleBlock::setColumnsHeaderHeight(const qreal &new_chh) {
 	columns_header_height_ = qBound(qreal(5.0), new_chh, qreal(50.0));
@@ -634,11 +800,17 @@ void BorderTitleBlock::setColumnsHeaderHeight(const qreal &new_chh) {
 }
 
 /**
-	Permet de changer le nombre de lignes.
-	Si ce nombre de lignes est inferieur au minimum requis, cette fonction ne
-	fait rien
-	@param nb_r nouveau nombre de lignes
-	@see minNbRows()
+	@brief BorderTitleBlock::setRowsCount
+	Allows you to change the number of lines.
+	If this number of lines is lower than the minimum required,
+	this function does nothing
+
+	\~French Permet de changer le nombre de lignes.
+	Si ce nombre de lignes est inferieur au minimum requis,
+	cette fonction ne fait rien
+	\~ @param nb_r : new number of lines
+	\~French nouveau nombre de lignes
+	\~ @see minNbRows()
 */
 void BorderTitleBlock::setRowsCount(int nb_r) {
 	if (nb_r == rowsCount()) return;
@@ -647,11 +819,17 @@ void BorderTitleBlock::setRowsCount(int nb_r) {
 }
 
 /**
-	Change la hauteur des lignes.
-	Si la hauteur indiquee est inferieure au minimum requis, c'est ce minimum
-	qui est utilise.
-	@param new_rh nouvelle hauteur des lignes
-	@see minRowsHeight()
+	@brief BorderTitleBlock::setRowsHeight
+	Change the height of the lines.
+	If the indicated height is lower than the minimum required,
+	it is this minimum which is used.
+
+	\~French Change la hauteur des lignes.
+	Si la hauteur indiquee est inferieure au minimum requis,
+	c'est ce minimum qui est utilise.
+	\~ @param new_rh : new row height
+	\~French nouvelle hauteur des lignes
+	\~ @see minRowsHeight()
 */
 void BorderTitleBlock::setRowsHeight(const qreal &new_rh) {
 	if (new_rh == rowsHeight()) return;
@@ -660,9 +838,14 @@ void BorderTitleBlock::setRowsHeight(const qreal &new_rh) {
 }
 
 /**
-	Change la largeur des en-tetes contenant les numeros de lignes. Celle-ci
-	doit rester comprise entre 5 et 50 px.
-	@param new_rhw nouvelle largeur des en-tetes des lignes
+	@brief BorderTitleBlock::setRowsHeaderWidth
+	Change the width of the headers containing the line numbers.
+	This must remain between 5 and 50 px.
+
+	\~French Change la largeur des en-tetes contenant les numeros de lignes.
+	Celle-ci doit rester comprise entre 5 et 50 px.
+	\~ @param new_rhw : new width of line headers
+	\~French nouvelle largeur des en-tetes des lignes
 */
 void BorderTitleBlock::setRowsHeaderWidth(const qreal &new_rhw) {
 	rows_header_width_ = qBound(qreal(5.0), new_rhw, qreal(50.0));
@@ -670,20 +853,27 @@ void BorderTitleBlock::setRowsHeaderWidth(const qreal &new_rhw) {
 }
 
 /**
-	Cette methode essaye de se rapprocher le plus possible de la hauteur donnee
-	en parametre en modifiant le nombre de lignes en cours.
+	@brief BorderTitleBlock::setDiagramHeight
+	This method tries to get as close as possible to the given height
+	as a parameter by modifying the number of rows in progress.
+
+	\~French Cette methode essaye de se rapprocher le plus possible de la
+	hauteur donnee en parametre en modifiant le nombre de lignes en cours.
+	\~ @param height :
 */
 void BorderTitleBlock::setDiagramHeight(const qreal &height) {
+	//          size of rows to use = rows_height
 	// taille des lignes a utiliser = rows_height
 	setRowsCount(qRound(ceil(height / rows_height_)));
 }
 
 /**
- * @brief BorderTitleBlock::convertPosition
- * Convert a Point in cartesian coordinate (x : 12.5, 56.9) to a point in grid coordinate (ex : B2)
- * @param pos : position to convert
- * @return the converted point in grid coordinate.
- */
+	@brief BorderTitleBlock::convertPosition
+	Convert a Point in cartesian coordinate (x : 12.5, 56.9)
+	to a point in grid coordinate (ex : B2)
+	@param pos : position to convert
+	@return the converted point in grid coordinate.
+*/
 DiagramPosition BorderTitleBlock::convertPosition(const QPointF &pos)
 {
 	if(!insideBorderRect().contains(pos))
@@ -701,25 +891,25 @@ DiagramPosition BorderTitleBlock::convertPosition(const QPointF &pos)
 }
 
 /**
- * @brief BorderTitleBlock::setAuthor
- * @param author the new value of the "Author" field
- */
+	@brief BorderTitleBlock::setAuthor
+	@param author the new value of the "Author" field
+*/
 void BorderTitleBlock::setAuthor(const QString &author) {
 	btb_author_ = author;
 }
 
 /**
- * @brief BorderTitleBlock::setDate
- * @param date the new value of the "Date" field
- */
+	@brief BorderTitleBlock::setDate
+	@param date the new value of the "Date" field
+*/
 void BorderTitleBlock::setDate(const QDate &date) {
 	btb_date_ = date;
 }
 
 /**
- * @brief BorderTitleBlock::setTitle
- * @param title the new value of the "Title" field
- */
+	@brief BorderTitleBlock::setTitle
+	@param title the new value of the "Title" field
+*/
 void BorderTitleBlock::setTitle(const QString &title)
 {
 	if (btb_title_ != title)
@@ -730,9 +920,9 @@ void BorderTitleBlock::setTitle(const QString &title)
 }
 
 /**
- * @brief BorderTitleBlock::setFolio
- * @param folio the new value of the "Folio" field
- */
+	@brief BorderTitleBlock::setFolio
+	@param folio the new value of the "Folio" field
+*/
 void BorderTitleBlock::setFolio(const QString &folio)
 {
 	btb_folio_ = folio;
@@ -740,12 +930,14 @@ void BorderTitleBlock::setFolio(const QString &folio)
 }
 
 /**
-	Update the informations given to the titleblock template by regenerating a
-	DiagramContext object.
-	@param initial_context Base diagram context that will be overridden by
-	diagram-wide values
+	@brief BorderTitleBlock::updateDiagramContextForTitleBlock
+	Update the informations given to the titleblock template
+	by regenerating a DiagramContext object.
+	@param initial_context :
+	Base diagram context that will be overridden by diagram-wide values
 */
-void BorderTitleBlock::updateDiagramContextForTitleBlock(const DiagramContext &initial_context) {
+void BorderTitleBlock::updateDiagramContextForTitleBlock(
+		const DiagramContext &initial_context) {
 	// Our final DiagramContext is the initial one (which is supposed to bring
 	// project-wide properties), overridden by the "additional fields" one...
 	DiagramContext context = initial_context;
@@ -755,7 +947,8 @@ void BorderTitleBlock::updateDiagramContextForTitleBlock(const DiagramContext &i
 	
 	// ... overridden by the historical and/or dynamically generated fields
 	context.addValue("author",      btb_author_);
-	context.addValue("date",        btb_date_.toString(Qt::SystemLocaleShortDate));
+	context.addValue("date",        btb_date_.toString(
+				 Qt::SystemLocaleShortDate));
 	context.addValue("title",       btb_title_);
 	context.addValue("filename",    btb_filename_);
 	context.addValue("plant",     btb_plant_);
@@ -772,14 +965,25 @@ void BorderTitleBlock::updateDiagramContextForTitleBlock(const DiagramContext &i
 	m_titleblock_template_renderer -> setContext(context);
 }
 
+/**
+	@brief BorderTitleBlock::incrementLetters
+	increments string with Letters A to Z
+	@param string
+	@return string ++Letters
+	eg:
+	- A-> B
+	- Z -> AA
+*/
 QString BorderTitleBlock::incrementLetters(const QString &string) {
 	if (string.isEmpty()) {
 		return("A");
 	} else {
+		// separate previous digits from last digit
 		// separe les digits precedents du dernier digit
 		QString first_digits(string.left(string.count() - 1));
 		QChar last_digit(string.at(string.count() - 1));
 		if (last_digit != 'Z') {
+			// increments the last digit
 			// incremente le dernier digit
 			last_digit = last_digit.toLatin1() + 1;
 			return(first_digits + QString(last_digit));
@@ -790,83 +994,97 @@ QString BorderTitleBlock::incrementLetters(const QString &string) {
 }
 
 /**
-	@param index numero du schema (de 1 a total)
-	@param total nombre total de schemas dans le projet
-	@param project_properties Project-wide properties, to be merged with diagram-wide ones.
+	@brief BorderTitleBlock::setFolioData
+
+	\~ @param index : schema number (from 1 to total)
+	\~French numero du schema (de 1 a total)
+
+	\~ @param total : total number of diagrams in the project
+	\~French nombre total de schemas dans le projet
+
+	\~ @param autonum :
+
+	\~ @param project_properties : Project-wide properties,
+	to be merged with diagram-wide ones.
 */
-void BorderTitleBlock::setFolioData(int index, int total, const QString& autonum, const DiagramContext &project_properties) {
+void BorderTitleBlock::setFolioData(
+		int index,
+		int total,
+		const QString& autonum,
+		const DiagramContext &project_properties) {
 	if (index < 1 || total < 1 || index > total) return;
 	
+	// memorize information
 	// memorise les informations
 	folio_index_ = index;
 	folio_total_ = total;
 	
+	// regenerate the content of the folio field
 	// regenere le contenu du champ folio
 	btb_final_folio_ = btb_folio_;
 
 	if (btb_final_folio_.contains("%autonum")){
-	btb_final_folio_.replace("%autonum", autonum);
-	btb_folio_ = btb_final_folio_;
+		btb_final_folio_.replace("%autonum", autonum);
+		btb_folio_ = btb_final_folio_;
 	}
 	btb_final_folio_.replace("%id",    QString::number(folio_index_));
 	btb_final_folio_.replace("%total", QString::number(folio_total_));
-
 
 	updateDiagramContextForTitleBlock(project_properties);
 }
 
 /**
- * @brief BorderTitleBlock::setPlant
- * @param plant the new value of the "plant" field
- */
+	@brief BorderTitleBlock::setPlant
+	@param plant the new value of the "plant" field
+*/
 void BorderTitleBlock::setPlant(const QString &plant) {
 	btb_plant_ = plant;
 }
 
 /**
- * @brief BorderTitleBlock::setLocMach
- * @param locmach the new value of the "locmach" field
- */
+	@brief BorderTitleBlock::setLocMach
+	@param locmach the new value of the "locmach" field
+*/
 void BorderTitleBlock::setLocMach(const QString &locmach) {
 	btb_locmach_ = locmach;
 }
 
 /**
- * @brief BorderTitleBlock::setIndicerev
- * @param indexrev the new value of the "indexrev" field
- */
+	@brief BorderTitleBlock::setIndicerev
+	@param indexrev the new value of the "indexrev" field
+*/
 void BorderTitleBlock::setIndicerev(const QString &indexrev) {
 	btb_indexrev_ = indexrev;
 }
 
 /**
- * @brief BorderTitleBlock::setFileName
- * @param filename the new value of the "filename" field
- */
+	@brief BorderTitleBlock::setFileName
+	@param filename the new value of the "filename" field
+*/
 void BorderTitleBlock::setFileName(const QString &filename) {
 	btb_filename_ = filename;
 }
 
 /**
- * @brief BorderTitleBlock::setVersion
- * @param version the new value of the "version" field
- */
+	@brief BorderTitleBlock::setVersion
+	@param version the new value of the "version" field
+*/
 void BorderTitleBlock::setVersion(const QString &version) {
 	btb_version_ = version;
 }
 
 /**
- * @brief BorderTitleBlock::setAutoPageNum
- * @param auto_page_num the new value of the "auto_page_num" field
- */
+	@brief BorderTitleBlock::setAutoPageNum
+	@param auto_page_num the new value of the "auto_page_num" field
+*/
 void BorderTitleBlock::setAutoPageNum(const QString &auto_page_num) {
 	btb_auto_page_num_ = auto_page_num;
 }
 
 /**
- * @brief BorderTitleBlock::setPreviousFolioNum
- * @param previous the new value of the "previous-folio-num" field
- */
+	@brief BorderTitleBlock::setPreviousFolioNum
+	@param previous the new value of the "previous-folio-num" field
+*/
 void BorderTitleBlock::setPreviousFolioNum(const QString &previous)
 {
 	m_previous_folio_num = previous;
@@ -876,9 +1094,9 @@ void BorderTitleBlock::setPreviousFolioNum(const QString &previous)
 }
 
 /**
- * @brief BorderTitleBlock::setNextFolioNum
- * @param next the new value of the "next-folio-num" field
- */
+	@brief BorderTitleBlock::setNextFolioNum
+	@param next the new value of the "next-folio-num" field
+*/
 void BorderTitleBlock::setNextFolioNum(const QString &next)
 {
 	m_next_folio_num = next;
