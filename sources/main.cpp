@@ -22,29 +22,31 @@
 #include <QStyleFactory>
 
 /**
- * @brief main
- * Main function of QElectroTech
- * @param argc : number of paramètres
- * @param argv : paramètres
- * @return
- */
+	@brief main
+	Main function of QElectroTech
+	@param argc : number of parameters
+	\~French number of paramètres
+	\~ @param argv : parameters
+	\~French paramètres
+	\~ @return exit code
+*/
 int main(int argc, char **argv)
 {
-		//Some setup, notably to use with QSetting.
+	//Some setup, notably to use with QSetting.
 	QCoreApplication::setOrganizationName("QElectroTech");
 	QCoreApplication::setOrganizationDomain("qelectrotech.org");
 	QCoreApplication::setApplicationName("QElectroTech");
-		//Creation and execution of the application
-		//HighDPI
+	//Creation and execution of the application
+	//HighDPI
 #if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+	QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #else
-    qputenv("QT_DEVICE_PIXEL_RATIO", QByteArray("auto"));
+	qputenv("QT_DEVICE_PIXEL_RATIO", QByteArray("auto"));
 #endif
 	SingleApplication app(argc, argv, true);
 #ifdef Q_OS_MACOS
-		//Handle the opening of QET when user double click on a .qet .elmt .tbt file
-		//or drop these same files to the QET icon of the dock
+	//Handle the opening of QET when user double click on a .qet .elmt .tbt file
+	//or drop these same files to the QET icon of the dock
 	MacOSXOpenEvent open_event;
 	app.installEventFilter(&open_event);
 	app.setStyle(QStyleFactory::create("Fusion"));
@@ -53,17 +55,19 @@ int main(int argc, char **argv)
 	if (app.isSecondary())
 	{
 		QStringList arg_list = app.arguments();
-			//Remove the first argument, it's the binary file
+		//Remove the first argument, it's the binary file
 		arg_list.takeFirst();
 		QETArguments qetarg(arg_list);
-		QString message = "launched-with-args: " + QET::joinWithSpaces(QStringList(qetarg.arguments()));
+		QString message = "launched-with-args: " + QET::joinWithSpaces(
+					QStringList(qetarg.arguments()));
 		app.sendMessage(message.toUtf8());
 		return 0;
 	}
 	
 	QETApp qetapp;
 	QETApp::instance()->installEventFilter(&qetapp);
-	QObject::connect(&app, &SingleApplication::receivedMessage, &qetapp, &QETApp::receiveMessage);
+	QObject::connect(&app, &SingleApplication::receivedMessage,
+			 &qetapp, &QETApp::receiveMessage);
 	
 	return app.exec();
 }
