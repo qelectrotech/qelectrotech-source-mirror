@@ -1,0 +1,29 @@
+<definition link_type="simple" height="80" version="0.80" orientation="dyyy" type="element" width="50" hotspot_x="25" hotspot_y="44">
+    <uuid uuid="{fc317779-bd1e-4c3a-bd9c-edabf1fe9229}"/>
+    <names>
+        <name lang="de">Wattstundenzähler (EN 60617)</name>
+        <name lang="pl">Licznik watogodzin (en_60617)</name>
+        <name lang="nl">Watt uur meter (en_60617)</name>
+        <name lang="cs">Počítadlo watthodin(en_60617) </name>
+        <name lang="ar">عدّاد طاقة فعّالة - وات ساعة متر -(en_60617) </name>
+        <name lang="en">Watt hour meter (en_60617)</name>
+        <name lang="fr">Compteur d'énergie active Wattheuremètre (en_60617)</name>
+        <name lang="it">Misuratore di Wh (en_60617)</name>
+    </names>
+    <elementInformations/>
+    <informations>https://github.com/jonasstein/qelectrotech-symbols&#xd;
+EN 60617</informations>
+    <description>
+        <dynamic_text rotation="0" frame="false" Valignment="AlignTop" text_width="-1" Halignment="AlignLeft" z="1" x="23" y="-10.95" font="Sans Serif,9,-1,5,50,0,0,0,0,0" uuid="{b0deaf89-852a-4b82-a9c0-c5c0cbb96c46}" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text color="#000000" text="Wh" rotation="0" x="-10" y="7" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <rect height="40" antialias="false" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-20" y="-15" width="40" rx="0"/>
+        <rect height="20" antialias="false" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-20" y="-35" width="40" rx="0"/>
+        <terminal orientation="n" x="10" name="" y="-40" uuid="{df6115b4-ae75-4a61-a35c-7ad81ffaf3eb}"/>
+        <terminal orientation="s" x="10" name="" y="30" uuid="{67ac4117-bd99-4eb8-9e72-ca302033babd}"/>
+        <terminal orientation="s" x="-10" name="" y="30" uuid="{0d11dc0b-abdc-4f1e-b082-8bbeb61fcfdd}"/>
+        <terminal orientation="n" x="-10" name="" y="-40" uuid="{df6115b4-ae75-4a61-a35c-7ad81ffaf3eb}"/>
+    </description>
+</definition>

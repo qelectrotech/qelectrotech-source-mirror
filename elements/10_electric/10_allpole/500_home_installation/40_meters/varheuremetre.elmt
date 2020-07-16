@@ -1,0 +1,30 @@
+<definition orientation="dyyy" link_type="simple" type="element" height="50" width="40" hotspot_y="29" version="0.80" hotspot_x="20">
+    <uuid uuid="{1688481b-e743-430b-9c92-163a264d0ba0}"/>
+    <names>
+        <name lang="ar">عدّد طاقة تفاعليّة - فارساعة متر-</name>
+        <name lang="nl">VAr energie meter</name>
+        <name lang="fr">Varheuremètre</name>
+        <name lang="el">Μετρητής, Βαρώρια</name>
+        <name lang="en">Var hour meter</name>
+        <name lang="de">Blindverbrauchszähler</name>
+        <name lang="pl">Licznik warogodzin</name>
+        <name lang="cs">Počítadlo varhodin</name>
+        <name lang="it">Misuratore di varh</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text text="Varh" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" x="-13" y="2.3333" color="#000000"/>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="18" z="2" uuid="{aa606f19-181d-48f9-abd3-6766980ef4ad}" text_from="ElementInfo" y="-15.95" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="22" width="30" ry="0" x="-15" rx="0" y="-11"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="8" width="30" ry="0" x="-15" rx="0" y="-19"/>
+        <terminal orientation="n" name="" x="10" uuid="{d8963975-0cbb-4be5-ab4c-db3c606b4c71}" y="-24"/>
+        <terminal orientation="s" name="" x="10" uuid="{02de3884-b2c5-43d2-b378-f2355b800e89}" y="15"/>
+        <terminal orientation="s" name="" x="-10" uuid="{63537316-4ddd-4675-9886-3b10ab84518c}" y="15"/>
+        <terminal orientation="n" name="" x="-10" uuid="{027720d3-d3e0-459d-89b8-a4c6536d93a5}" y="-24"/>
+    </description>
+</definition>

@@ -1,0 +1,29 @@
+<definition orientation="dyyy" link_type="simple" type="element" height="70" width="40" hotspot_y="12" version="0.80" hotspot_x="10">
+    <uuid uuid="{02ba1a69-05e9-413f-98c2-bb50a89a8250}"/>
+    <names>
+        <name lang="ar">عدّاد طاقة فعّالة - وات ساعة متر -</name>
+        <name lang="nl">Watt uur meter</name>
+        <name lang="fr">Compteur d'énergie active Wattheuremètre</name>
+        <name lang="el">Μετρητής βατ/ώρα</name>
+        <name lang="en">Watt hour meter</name>
+        <name lang="de">Wattstundenzähler</name>
+        <name lang="pl">Licznik watogodzin</name>
+        <name lang="cs">Počítadlo watthodin</name>
+        <name lang="it">Misuratore di Wh</name>
+    </names>
+    <elementInformations/>
+    <informations>EN 60617: 08-04-03</informations>
+    <description>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="50" width="32" ry="0" x="-6" rx="0" y="0"/>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="27" z="2" uuid="{e0af5b4a-9517-49d2-9579-9f851abc05d6}" text_from="ElementInfo" y="17.05" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" y2="14" length2="1.5" length1="1.5" x2="26" y1="14" x1="-6" end2="none"/>
+        <text text="Wh" font="Sans Serif,10,-1,5,50,0,0,0,0,0" rotation="0" x="0" y="35" color="#000000"/>
+        <terminal orientation="n" name="" x="0" uuid="{9a9ed87b-1c1f-4c09-ac12-569cd4c08be8}" y="-5"/>
+        <terminal orientation="n" name="" x="20" uuid="{3d8496aa-f88d-460c-ae0a-fad2bad4a5a8}" y="-5"/>
+        <terminal orientation="s" name="" x="0" uuid="{9d7a11ff-4a5f-4fe8-b506-e43ceefde6f9}" y="50"/>
+        <terminal orientation="s" name="" x="20" uuid="{e61b924f-44c3-46b2-8b11-0979e4696329}" y="50"/>
+    </description>
+</definition>

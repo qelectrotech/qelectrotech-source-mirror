@@ -1,0 +1,30 @@
+<definition orientation="dyyy" link_type="simple" type="element" height="50" width="40" hotspot_y="28" version="0.80" hotspot_x="20">
+    <uuid uuid="{2ed7ee89-b4f6-435f-b1d6-8e12f1a315af}"/>
+    <names>
+        <name lang="ar">أمبيرساعة متر </name>
+        <name lang="nl">Ampere uur meter</name>
+        <name lang="fr">Ampèreheuremètre</name>
+        <name lang="el">Μετρητής κατανάλωσης, Αμπερώρια (Ah)</name>
+        <name lang="en">Ampere Hour Meter</name>
+        <name lang="de">Amperestundenzähler</name>
+        <name lang="pl">Licznik amperogodzin</name>
+        <name lang="cs">Ampérmetr</name>
+        <name lang="it">Misuratore di Ah</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" text_width="-1" frame="false" x="18" z="1" uuid="{8ebf2d39-e040-418d-b06a-085a578da846}" text_from="ElementInfo" y="-15.95" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text text="Ah" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" x="-8" y="2.3333" color="#000000"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="22" width="30" ry="0" x="-15" rx="0" y="-11"/>
+        <rect antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" height="8" width="30" ry="0" x="-15" rx="0" y="-19"/>
+        <terminal orientation="n" name="" x="10" uuid="{bdbaf99e-b5f1-4ca4-b70a-61f6eac4f960}" y="-23"/>
+        <terminal orientation="s" name="" x="10" uuid="{73e13ecf-294a-4963-855f-dbd855ce3e47}" y="15"/>
+        <terminal orientation="n" name="" x="-10" uuid="{c2151c4c-d885-4b8b-92f1-b32afa1b5161}" y="-23"/>
+        <terminal orientation="s" name="" x="-10" uuid="{415c29db-49be-4149-a814-485a55219ba1}" y="15"/>
+    </description>
+</definition>
