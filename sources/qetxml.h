@@ -31,27 +31,48 @@ class QAbstractItemModel;
  */
 namespace QETXML
 {
-    QDomElement penToXml(QDomDocument &parent_document, const QPen& pen);
-    QPen penFromXml (const QDomElement &element);
+	QDomElement penToXml(QDomDocument &parent_document, const QPen& pen);
+	QPen penFromXml (const QDomElement &element);
 
-	QDomElement brushToXml (QDomDocument &parent_document, const QBrush& brush);
+	QDomElement brushToXml (QDomDocument &parent_document,
+				const QBrush& brush);
 	QBrush brushFromXml (const QDomElement &element);
 
-	QDomElement fileSystemDirToXmlCollectionDir (QDomDocument &document, const QDir &dir, const QString& rename = QString());
-	QDomElement fileSystemElementToXmlCollectionElement (QDomDocument &document, QFile &file, const QString& rename = QString());
+	QDomElement fileSystemDirToXmlCollectionDir (
+			QDomDocument &document,
+			const QDir &dir,
+			const QString& rename = QString());
+	QDomElement fileSystemElementToXmlCollectionElement (
+			QDomDocument &document,
+			QFile &file,
+			const QString& rename = QString());
 
-	bool writeXmlFile(const QDomDocument &xml_document, const QString &file_path, QString *error_message = nullptr);
+	bool writeXmlFile(const QDomDocument &xml_document,
+			  const QString &file_path,
+			  QString *error_message = nullptr);
 
-	QDomElement textToDomElement (QDomDocument &document, const QString& tag_name, const QString& value);
+	QDomElement textToDomElement (QDomDocument &document,
+				      const QString& tag_name,
+				      const QString& value);
 
-	QVector <QDomElement> directChild(const QDomElement &element, const QString &tag_name);
-	QVector <QDomElement> subChild(const QDomElement &element, const QString parent_tag_name, const QString &children_tag_name);
+	QVector <QDomElement> directChild(const QDomElement &element,
+					  const QString &tag_name);
+	QVector <QDomElement> subChild(const QDomElement &element,
+				       const QString parent_tag_name,
+				       const QString &children_tag_name);
 
-	QDomElement marginsToXml (QDomDocument &parent_document, const QMargins &margins);
+	QDomElement marginsToXml (QDomDocument &parent_document,
+				  const QMargins &margins);
 	QMargins marginsFromXml(const QDomElement &element);
 
-	QDomElement modelHeaderDataToXml(QDomDocument &parent_document, const QAbstractItemModel *model, QHash<int, QList<int>> horizontal_section_role, QHash<int, QList<int>> vertical_section_role);
-	void modelHeaderDataFromXml(const QDomElement &element, QAbstractItemModel *model);
+	QDomElement modelHeaderDataToXml(QDomDocument &parent_document,
+					 const QAbstractItemModel *model,
+					 QHash<int,
+					 QList<int>> horizontal_section_role,
+					 QHash<int,
+					 QList<int>> vertical_section_role);
+	void modelHeaderDataFromXml(const QDomElement &element,
+				    QAbstractItemModel *model);
 }
 
 #endif // QETXML_H
