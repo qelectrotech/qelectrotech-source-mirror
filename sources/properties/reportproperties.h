@@ -20,6 +20,9 @@
 
 #include <QString>
 
+/**
+	@brief The ReportProperties class
+*/
 class ReportProperties
 {
 	public:

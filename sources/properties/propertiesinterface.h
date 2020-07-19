@@ -23,9 +23,10 @@
 #include <QDomElement>
 
 /**
- * @brief The PropertiesInterface class
- * This class is an interface for have common way to use properties in QElectroTech
- */
+	@brief The PropertiesInterface class
+	This class is an interface for have common way
+	to use properties in QElectroTech
+*/
 class PropertiesInterface
 {
 	public:

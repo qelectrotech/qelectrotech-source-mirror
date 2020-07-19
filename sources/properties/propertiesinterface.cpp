@@ -17,10 +17,15 @@
 */
 #include "propertiesinterface.h"
 
+/**
+	@brief PropertiesInterface::PropertiesInterface
+*/
 PropertiesInterface::PropertiesInterface()
 {
 }
-
+/**
+	@brief PropertiesInterface::~PropertiesInterface
+*/
 PropertiesInterface::~PropertiesInterface()
 {
 
