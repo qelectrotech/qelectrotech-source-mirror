@@ -22,6 +22,10 @@
 #include <QThread>
 #include <QDate>
 
+/**
+	@brief AboutQETDialog::AboutQETDialog
+	@param parent
+*/
 AboutQETDialog::AboutQETDialog(QWidget *parent) :
 	QDialog(parent),
 	ui(new Ui::AboutQETDialog)
@@ -36,11 +40,17 @@ AboutQETDialog::AboutQETDialog(QWidget *parent) :
 	setLicence();
 }
 
+/**
+	@brief AboutQETDialog::~AboutQETDialog
+*/
 AboutQETDialog::~AboutQETDialog()
 {
 	delete ui;
 }
 
+/**
+	@brief AboutQETDialog::setAbout
+*/
 void AboutQETDialog::setAbout()
 {
 
@@ -55,6 +65,9 @@ void AboutQETDialog::setAbout()
 	ui->m_about_label->setText(str);
 }
 
+/**
+	@brief AboutQETDialog::setAuthors
+*/
 void AboutQETDialog::setAuthors()
 {
 	addAuthor(ui->m_author_label, "Benoît Ansieau",     "benoit@qelectrotech.org",     tr("Idée originale"));
@@ -66,6 +79,9 @@ void AboutQETDialog::setAuthors()
 	addAuthor(ui->m_author_label, "Abhishek Bansal",    "abhishek@qelectrotech.org",   tr("Développement"));
 }
 
+/**
+	@brief AboutQETDialog::setTranslators
+*/
 void AboutQETDialog::setTranslators()
 {
 	addAuthor(ui->m_translators_label, "Alfredo Carreto",                           "electronicos_mx@yahoo.com.mx",   tr("Traduction en espagnol"));
@@ -94,6 +110,9 @@ void AboutQETDialog::setTranslators()
 	addAuthor(ui->m_translators_label, "Gábor Gubányi",                             "gubanyig@gmail.com",             tr("Traduction en hongrois"));
 }
 
+/**
+	@brief AboutQETDialog::setContributors
+*/
 void AboutQETDialog::setContributors()
 {
 	addAuthor(ui->m_contrib_label, "Remi Collet",         "remi@fedoraproject.org",              tr("Paquets Fedora et Red Hat"));
@@ -117,6 +136,9 @@ void AboutQETDialog::setContributors()
 	addAuthor(ui->m_contrib_label, "Maximilian Federle",   "",                                   tr("Paquets Snap"));
 }
 
+/**
+	@brief AboutQETDialog::setVersion
+*/
 void AboutQETDialog::setVersion()
 {
 	QString str = "<span style=\"font-weight:bold;font-size:16pt;\">QElectroTech V " + QET::displayedVersion + "</span>";
@@ -149,6 +171,9 @@ void AboutQETDialog::setVersion()
 	ui->m_version_label->setText(str + compilation_info);
 }
 
+/**
+	@brief AboutQETDialog::setLibraries
+*/
 void AboutQETDialog::setLibraries()
 {
 	addLibrary(ui->m_libraries_label, "KDE lib",            "https://api.kde.org");
@@ -156,19 +181,22 @@ void AboutQETDialog::setLibraries()
 	addLibrary(ui->m_libraries_label, "pugixml",            "https://pugixml.org");
 }
 
+/**
+	@brief AboutQETDialog::setLicence
+*/
 void AboutQETDialog::setLicence()
 {
 	ui->m_license_text_edit->setPlainText(QET::license());
 }
 
 /**
- * @brief AboutQETDialog::addAuthor
- * Adds a person to the list of authors
- * @param label : QLabel which will add the person
- * @param name : Name of person
- * @param email : E-mail address of the person
- * @param work : Function / work done by the person
- */
+	@brief AboutQETDialog::addAuthor
+	Adds a person to the list of authors
+	@param label : QLabel which will add the person
+	@param name : Name of person
+	@param email : E-mail address of the person
+	@param work : Function / work done by the person
+*/
 void AboutQETDialog::addAuthor(QLabel *label, const QString &name, const QString &email, const QString &work)
 {
 	QString new_text = label->text();
@@ -180,6 +208,12 @@ void AboutQETDialog::addAuthor(QLabel *label, const QString &name, const QString
 	label->setText(new_text);
 }
 
+/**
+	@brief AboutQETDialog::addLibrary
+	@param label
+	@param name
+	@param link
+*/
 void AboutQETDialog::addLibrary(QLabel *label, const QString &name, const QString &link)
 {
 	QString new_text = label->text();

@@ -26,6 +26,9 @@ namespace Ui {
 	class AboutQETDialog;
 }
 
+/**
+	@brief The AboutQETDialog class
+*/
 class AboutQETDialog : public QDialog
 {
 	Q_OBJECT
@@ -42,8 +45,13 @@ class AboutQETDialog : public QDialog
 		void setVersion();
 		void setLibraries();
 		void setLicence();
-		void addAuthor(QLabel *label, const QString &name, const QString &email, const QString &work);
-		void addLibrary(QLabel *label, const QString &name, const QString &link);
+		void addAuthor(QLabel *label,
+			       const QString &name,
+			       const QString &email,
+			       const QString &work);
+		void addLibrary(QLabel *label,
+				const QString &name,
+				const QString &link);
 
 	private:
 		Ui::AboutQETDialog *ui;
