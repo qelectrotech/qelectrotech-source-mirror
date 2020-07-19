@@ -416,6 +416,7 @@ void ChangeZValueCommand::applyRaise(const QList<QGraphicsItem *> &items_list) {
 #if QT_VERSION < QT_VERSION_CHECK(5, 13, 0)	// ### Qt 6: remove
 				my_items_list.swap(i, i + 1);
 #else
+#pragma message("@TODO remove code for QT 5.13 or later")
 				my_items_list.swapItemsAt(i, i + 1);
 #endif
 			}
@@ -438,6 +439,7 @@ void ChangeZValueCommand::applyLower(const QList<QGraphicsItem *> &items_list) {
 #if QT_VERSION < QT_VERSION_CHECK(5, 13, 0)	// ### Qt 6: remove
 				my_items_list.swap(i, i - 1);
 #else
+#pragma message("@TODO remove code for QT 5.13 or later")
 				my_items_list.swapItemsAt(i, i - 1);
 #endif
 			}

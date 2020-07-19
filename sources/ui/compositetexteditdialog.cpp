@@ -16,6 +16,7 @@ CompositeTextEditDialog::CompositeTextEditDialog(DynamicElementTextItem *text, Q
 	m_default_text = m_text->compositeText();
 	ui->m_plain_text_edit->setPlainText(m_default_text);
 #if QT_VERSION >= 0x050300
+#pragma message("@TODO remove code for QT 5.3 or later")
 	ui->m_plain_text_edit->setPlaceholderText(tr("Entrée votre texte composé ici, en vous aidant des variables disponible"));
 #endif
 	setUpComboBox();
@@ -29,6 +30,7 @@ CompositeTextEditDialog::CompositeTextEditDialog(QString text, QWidget *parent) 
 	m_default_text = std::move(text);
 	ui->m_plain_text_edit->setPlainText(m_default_text);
 #if QT_VERSION >= 0x050300
+#pragma message("@TODO remove code for QT 5.3 or later")
 	ui->m_plain_text_edit->setPlaceholderText(tr("Entrée votre texte composé ici, en vous aidant des variables disponible"));
 #endif
 	setUpComboBox();

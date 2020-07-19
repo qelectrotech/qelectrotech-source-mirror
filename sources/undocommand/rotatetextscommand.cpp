@@ -77,6 +77,7 @@ m_diagram(diagram)
 #if QT_VERSION >= 0x050900
 	else
 		setObsolete(true);
+#pragma message("@TODO remove code for QT 5.9 or later")
 #endif
 	
 }
@@ -135,6 +136,7 @@ void RotateTextsCommand::openDialog()
 #if QT_VERSION >= 0x050900
 	else
 		setObsolete(true);
+#pragma message("@TODO remove code for QT 5.9 or later")
 #endif
 }
 

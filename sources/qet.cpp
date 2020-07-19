@@ -176,6 +176,7 @@ bool QET::orthogonalProjection(const QPointF &point, const QLineF &line, QPointF
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
 	QLineF::IntersectType it = line.intersect(perpendicular_line, &intersection_point); // ### Qt 6: remove
 #else
+#pragma message("@TODO remove code for QT 5.14 or later")
 	QLineF::IntersectType it = line.intersects(perpendicular_line, &intersection_point);
 #endif
 	
@@ -450,6 +451,7 @@ QStringList QET::splitWithSpaces(const QString &string) {
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
 	QStringList escaped_strings = string.split(QRegExp("[^\\]?(?:\\\\)* "), QString::SkipEmptyParts);
 #else
+#pragma message("@TODO remove code for QT 5.14 or later")
 	QStringList escaped_strings = string.split(QRegExp("[^\\]?(?:\\\\)* "), Qt::SkipEmptyParts);
 #endif
 

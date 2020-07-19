@@ -70,6 +70,7 @@ bool ConductorNumExport::toCsv()
 #if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)	// ### Qt 6: remove
 			stream << wiresNum() << endl;
 #else
+#pragma message("@TODO remove code for QT 5.15 or later")
 			stream << wiresNum() << &Qt::endl(stream);
 #endif
 		}

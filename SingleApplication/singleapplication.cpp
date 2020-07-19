@@ -27,6 +27,7 @@
 #include <QtCore/QSharedMemory>
 #if QT_VERSION < QT_VERSION_CHECK(5, 10, 0)	// ### Qt 6: remove
 #else
+#pragma message("@TODO remove code for QT 5.10 or later")
 #include <QRandomGenerator>
 #endif
 #include "singleapplication.h"
@@ -106,6 +107,7 @@ SingleApplication::SingleApplication( int &argc, char *argv[], bool allowSeconda
 		qsrand( QDateTime::currentMSecsSinceEpoch() % std::numeric_limits<uint>::max() );
 		QThread::sleep( 8 + static_cast <unsigned long>( static_cast <float>( qrand() ) / RAND_MAX * 10 ) );
 #else
+#pragma message("@TODO remove code for QT 5.10 or later")
 		quint32 value = QRandomGenerator::global()->generate();
 		QThread::sleep( 8 + static_cast <unsigned long>( static_cast <float>( value ) / RAND_MAX * 10 ) );
 #endif

@@ -338,6 +338,7 @@ void TitleBlockTemplate::parseRows(const QString &rows_string) {
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
 	QStringList rows_descriptions = rows_string.split(QChar(';'), QString::SkipEmptyParts);
 #else
+#pragma message("@TODO remove code for QT 5.14 or later")
 	QStringList rows_descriptions = rows_string.split(QChar(';'), Qt::SkipEmptyParts);
 #endif
 	foreach (QString rows_description, rows_descriptions) {
@@ -365,6 +366,7 @@ void TitleBlockTemplate::parseColumns(const QString &cols_string) {
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
 	QStringList cols_descriptions = cols_string.split(QChar(';'), QString::SkipEmptyParts);
 #else
+#pragma message("@TODO remove code for QT 5.14 or later")
 	QStringList cols_descriptions = cols_string.split(QChar(';'), Qt::SkipEmptyParts);
 #endif
 	foreach (QString cols_description, cols_descriptions) {

@@ -39,6 +39,7 @@ int main(int argc, char **argv)
 	//Creation and execution of the application
 	//HighDPI
 #if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
+#pragma message("@TODO remove code for QT 5.6 or later")
 	QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #else
 	qputenv("QT_DEVICE_PIXEL_RATIO", QByteArray("auto"));

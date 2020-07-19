@@ -46,6 +46,7 @@ ElementQueryWidget::ElementQueryWidget(QWidget *parent) :
 #if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)	// ### Qt 6: remove
 	connect(&m_button_group, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::buttonClicked), [this](int id)
 #else
+#pragma message("@TODO remove code for QT 5.15 or later")
 	connect(&m_button_group, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::idClicked), [this](int id)
 #endif
 	{

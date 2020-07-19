@@ -1141,6 +1141,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		content_ptr -> m_images			    = added_images.toSet();
 		content_ptr -> m_shapes			    = added_shapes.toSet();
 #else
+#pragma message("@TODO remove code for QT 5.14 or later")
 		content_ptr -> m_text_fields	= QSet<IndependentTextItem *>(
 					added_texts.begin(),
 					added_texts.end());

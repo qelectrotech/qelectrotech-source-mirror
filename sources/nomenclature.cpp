@@ -69,6 +69,7 @@ bool nomenclature::saveToCSVFile()
 #if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)	// ### Qt 6: remove
 			stream << getNomenclature() << endl;
 #else
+#pragma message("@TODO remove code for QT 5.15 or later")
 			stream << getNomenclature() << &Qt::endl(stream);
 #endif
 		}

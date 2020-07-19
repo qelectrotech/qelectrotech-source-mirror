@@ -641,6 +641,7 @@ void ElementsCollectionWidget::search()
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
 	QStringList text_list = text.split("+", QString::SkipEmptyParts);
 #else
+#pragma message("@TODO remove code for QT 5.14 or later")
 	QStringList text_list = text.split("+", Qt::SkipEmptyParts);
 #endif
 	QModelIndexList match_index;
