@@ -35,11 +35,11 @@ namespace Ui {
 }
 
 /**
- * @brief The MasterPropertiesWidget class
- * This class is a widget for make link between a master element with several slave element.
- * This class embenddedthe undo/redo command when apply new connection.
- */
-
+	@brief The MasterPropertiesWidget class
+	This class is a widget for make link between a master element
+	with several slave element.
+	This class embenddedthe undo/redo command when apply new connection.
+*/
 class MasterPropertiesWidget : public AbstractElementPropertiesEditorWidget
 {
 	Q_OBJECT
@@ -52,7 +52,12 @@ class MasterPropertiesWidget : public AbstractElementPropertiesEditorWidget
 		void apply() override;
 		void reset() override;
 		QUndoCommand *associatedUndo () const override;
-		QString title() const override {return tr("Référence croisée (maître)");}
+		/**
+		 * @brief title
+		 * @return QString title
+		 */
+		QString title() const override {
+			return tr("Référence croisée (maître)");}
 		bool setLiveEdit(bool live_edit) override;
 
 	public slots:

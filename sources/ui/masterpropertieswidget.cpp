@@ -25,11 +25,11 @@
 #include <linkelementcommand.h>
 
 /**
- * @brief MasterPropertiesWidget::MasterPropertiesWidget
- * Default constructor
- * @param elmt
- * @param parent
- */
+	@brief MasterPropertiesWidget::MasterPropertiesWidget
+	Default constructor
+	@param elmt
+	@param parent
+*/
 MasterPropertiesWidget::MasterPropertiesWidget(Element *elmt, QWidget *parent) :
 	AbstractElementPropertiesEditorWidget(parent),
 	ui(new Ui::MasterPropertiesWidget),
@@ -90,9 +90,9 @@ MasterPropertiesWidget::MasterPropertiesWidget(Element *elmt, QWidget *parent) :
 }
 
 /**
- * @brief MasterPropertiesWidget::~MasterPropertiesWidget
- * Destructor
- */
+	@brief MasterPropertiesWidget::~MasterPropertiesWidget
+	Destructor
+*/
 MasterPropertiesWidget::~MasterPropertiesWidget()
 {
 	if (m_showed_element)
@@ -105,10 +105,10 @@ MasterPropertiesWidget::~MasterPropertiesWidget()
 }
 
 /**
- * @brief MasterPropertiesWidget::setElement
- * Set the element to be edited
- * @param element
- */
+	@brief MasterPropertiesWidget::setElement
+	Set the element to be edited
+	@param element
+*/
 void MasterPropertiesWidget::setElement(Element *element)
 {
 	if (m_element == element)
@@ -133,7 +133,7 @@ void MasterPropertiesWidget::setElement(Element *element)
 	else
 		m_project = nullptr;
 
-		//Keep up to date this widget when the linked elements of m_element change
+	//Keep up to date this widget when the linked elements of m_element change
 	if (m_element)
 		disconnect(m_element.data(), &Element::linkedElementChanged, this, &MasterPropertiesWidget::updateUi);
 	
@@ -144,11 +144,12 @@ void MasterPropertiesWidget::setElement(Element *element)
 }
 
 /**
- * @brief MasterPropertiesWidget::apply
- * If link betwen edited element and other change,
- * apply the change with a QUndoCommand (got with method associatedUndo)
- * pushed to the stack of element project.
- * Return true if link change, else false
+	@brief MasterPropertiesWidget::apply
+	If link betwen edited element and other change,
+	apply the change with a QUndoCommand (got with method associatedUndo)
+	pushed to the stack of element project.
+	Return true if link change, else false
+	@note is void no Return ???
  */
 void MasterPropertiesWidget::apply() {
 	if (QUndoCommand *undo = associatedUndo())
@@ -156,9 +157,9 @@ void MasterPropertiesWidget::apply() {
 }
 
 /**
- * @brief MasterPropertiesWidget::reset
- * Reset curent widget, clear eveything and rebuild widget.
- */
+	@brief MasterPropertiesWidget::reset
+	Reset curent widget, clear eveything and rebuild widget.
+*/
 void MasterPropertiesWidget::reset()
 {
 	foreach (QTreeWidgetItem *qtwi, m_qtwi_hash.keys())
@@ -169,12 +170,12 @@ void MasterPropertiesWidget::reset()
 }
 
 /**
- * @brief MasterPropertiesWidget::associatedUndo
- * If link between the edited element and other change,
- * return a QUndoCommand with this change.
- * If no change return nullptr.
- * @return
- */
+	@brief MasterPropertiesWidget::associatedUndo
+	If link between the edited element and other change,
+	return a QUndoCommand with this change.
+	If no change return nullptr.
+	@return
+*/
 QUndoCommand* MasterPropertiesWidget::associatedUndo() const
 {
 	QList <Element *> to_link;
@@ -207,11 +208,11 @@ QUndoCommand* MasterPropertiesWidget::associatedUndo() const
 }
 
 /**
- * @brief MasterPropertiesWidget::setLiveEdit
- * @param live_edit = true : live edit is enable
- * else false : live edit is disable.
- * @return always true because live edit is handled by this editor widget
- */
+	@brief MasterPropertiesWidget::setLiveEdit
+	@param live_edit = true : live edit is enable
+	else false : live edit is disable.
+	@return always true because live edit is handled by this editor widget
+*/
 bool MasterPropertiesWidget::setLiveEdit(bool live_edit)
 {
 	m_live_edit = live_edit;
@@ -219,9 +220,9 @@ bool MasterPropertiesWidget::setLiveEdit(bool live_edit)
 }
 
 /**
- * @brief MasterPropertiesWidget::updateUi
- * Build the interface of the widget
- */
+	@brief MasterPropertiesWidget::updateUi
+	Build the interface of the widget
+*/
 void MasterPropertiesWidget::updateUi()
 {
 	ui->m_free_tree_widget->clear();
@@ -298,6 +299,10 @@ void MasterPropertiesWidget::updateUi()
 	}
 }
 
+/**
+	@brief MasterPropertiesWidget::headerCustomContextMenuRequested
+	@param pos
+*/
 void MasterPropertiesWidget::headerCustomContextMenuRequested(const QPoint &pos)
 {
 	m_context_menu->clear();
@@ -306,9 +311,9 @@ void MasterPropertiesWidget::headerCustomContextMenuRequested(const QPoint &pos)
 }
 
 /**
- * @brief MasterPropertiesWidget::on_link_button_clicked
- * move curent item in the free_list to linked_list
- */
+	@brief MasterPropertiesWidget::on_link_button_clicked
+	move curent item in the free_list to linked_list
+*/
 void MasterPropertiesWidget::on_link_button_clicked()
 {
 		//take the curent item from free_list and push it to linked_list
@@ -324,9 +329,9 @@ void MasterPropertiesWidget::on_link_button_clicked()
 }
 
 /**
- * @brief MasterPropertiesWidget::on_unlink_button_clicked
- * move curent item in linked_list to free_list
- */
+	@brief MasterPropertiesWidget::on_unlink_button_clicked
+	move curent item in linked_list to free_list
+*/
 void MasterPropertiesWidget::on_unlink_button_clicked()
 {
 		//take the curent item from linked_list and push it to free_list
@@ -342,11 +347,11 @@ void MasterPropertiesWidget::on_unlink_button_clicked()
 }
 
 /**
- * @brief MasterPropertiesWidget::showElementFromTWI
- * Show the element corresponding to the given QTreeWidgetItem
- * @param qtwi
- * @param column
- */
+	@brief MasterPropertiesWidget::showElementFromTWI
+	Show the element corresponding to the given QTreeWidgetItem
+	@param qtwi
+	@param column
+*/
 void MasterPropertiesWidget::showElementFromTWI(QTreeWidgetItem *qtwi, int column)
 {
 	Q_UNUSED(column);
@@ -365,35 +370,39 @@ void MasterPropertiesWidget::showElementFromTWI(QTreeWidgetItem *qtwi, int colum
 }
 
 /**
- * @brief MasterPropertiesWidget::showedElementWasDeleted
- * Set to nullptr the current showed element when he was deleted
- */
+	@brief MasterPropertiesWidget::showedElementWasDeleted
+	Set to nullptr the current showed element when he was deleted
+*/
 void MasterPropertiesWidget::showedElementWasDeleted() {
 	m_showed_element = nullptr;
 }
 
 /**
- * @brief MasterPropertiesWidget::diagramWasdeletedFromProject
- * This slot is called when a diagram is removed from the parent project of edited element
- * to update the content of this widget
- */
+	@brief MasterPropertiesWidget::diagramWasdeletedFromProject
+	This slot is called when a diagram is removed from the parent project
+	of edited element to update the content of this widget
+*/
 void MasterPropertiesWidget::diagramWasdeletedFromProject()
 {
-		//We use a timer because if the removed diagram contain slave element linked to the edited element
-		//we must to wait for this elements be unlinked, else the linked list provide deleted elements.
+	// We use a timer because if the removed diagram
+	// contain slave element linked to the edited element
+	// we must to wait for this elements be unlinked,
+	// else the linked list provide deleted elements.
 	QTimer::singleShot(10, this, SLOT(updateUi()));
 }
 
 /**
- * @brief MasterPropertiesWidget::customContextMenu
- * Display a context menu
- * @param pos
- * @param i : the tree widget where the context menu was requested.
- */
+	@brief MasterPropertiesWidget::customContextMenu
+	Display a context menu
+	@param pos
+	@param i : the tree widget where the context menu was requested.
+*/
 void MasterPropertiesWidget::customContextMenu(const QPoint &pos, int i)
 {
-		//add the size of the header to display the topleft of the QMenu at the position of the mouse.
-		//See doc about QWidget::customContextMenuRequested section related to QAbstractScrollArea 
+	// add the size of the header to display the topleft of the QMenu
+	// at the position of the mouse.
+	// See doc about QWidget::customContextMenuRequested
+	// section related to QAbstractScrollArea
 	QPoint point = pos;
 	point.ry()+=ui->m_free_tree_widget->header()->height();
 	
