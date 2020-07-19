@@ -51,8 +51,9 @@ ElementsCollectionCache::ElementsCollectionCache(const QString &database_path, Q
 		cache_db_.exec("PRAGMA locking_mode = EXCLUSIVE");
 		cache_db_.exec("PRAGMA synchronous = OFF");
 
-			//TODO This code remove old table with mtime for create table with uuid, created at version 0,5
-			//see to remove this code at version 0,6 or 0,7 when all users will table with uuid.
+		//TODO This code remove old table with mtime for create table with uuid, created at version 0,5
+		//see to remove this code at version 0,6 or 0,7 when all users will table with uuid.
+#pragma message("@TODO remove this code for qet 0.6 or later")
 		QSqlQuery table_name(cache_db_);
 		if (table_name.exec("PRAGMA table_info(names)"))
 		{

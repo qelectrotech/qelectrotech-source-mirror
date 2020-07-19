@@ -826,6 +826,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 		 * this mean the label was made before commit 4791 (0.51 dev). So we swap the value stored in "label" to "formula" as expected.
 		 * @TODO remove this code at version 0.7 or more (probably useless).
 		 */
+#pragma message("@TODO remove this code for qet 0.7 or later")
 	if (dc["label"].toString().contains("%") && dc["formula"].toString().isNull())
 	{
 		dc.addValue("formula", dc["label"]);
