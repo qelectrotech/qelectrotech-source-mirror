@@ -45,7 +45,8 @@ class MasterPropertiesWidget : public AbstractElementPropertiesEditorWidget
 	Q_OBJECT
 
 	public:
-		explicit MasterPropertiesWidget(Element *elmt, QWidget *parent = nullptr);
+		explicit MasterPropertiesWidget(Element *elmt,
+						QWidget *parent = nullptr);
 		~MasterPropertiesWidget() override;
 
 		void setElement (Element *element) override;

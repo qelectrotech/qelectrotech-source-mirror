@@ -43,10 +43,16 @@ MasterPropertiesWidget::MasterPropertiesWidget(Element *elmt, QWidget *parent) :
 	QStringList list;
 	QSettings settings;
 	if (settings.value("genericpanel/folio", false).toBool()) {
-		list << tr("Vignette") << tr("Label de folio") << tr("Titre de folio") << tr("Position");
+		list << tr("Vignette")
+		     << tr("Label de folio")
+		     << tr("Titre de folio")
+		     << tr("Position");
 	}
 	else {
-		list << tr("Vignette") << tr("N° de folio") << tr("Titre de folio") << tr("Position");
+		list << tr("Vignette")
+		     << tr("N° de folio")
+		     << tr("Titre de folio")
+		     << tr("Position");
 	}
 	ui->m_free_tree_widget->setHeaderLabels(list);
 	ui->m_link_tree_widget->setHeaderLabels(list);
@@ -58,15 +64,22 @@ MasterPropertiesWidget::MasterPropertiesWidget(Element *elmt, QWidget *parent) :
 	m_show_element  = new QAction(tr("Montrer l'élément maître"), this);
 	m_save_header_state = new QAction(tr("Enregistrer la disposition"), this);
 	
-	connect(ui->m_free_tree_widget, &QTreeWidget::itemDoubleClicked, this, &MasterPropertiesWidget::showElementFromTWI);
-	connect(ui->m_link_tree_widget, &QTreeWidget::itemDoubleClicked, this, &MasterPropertiesWidget::showElementFromTWI);
+	connect(ui->m_free_tree_widget, &QTreeWidget::itemDoubleClicked,
+		this, &MasterPropertiesWidget::showElementFromTWI);
+	connect(ui->m_link_tree_widget, &QTreeWidget::itemDoubleClicked,
+		this, &MasterPropertiesWidget::showElementFromTWI);
 	
-	connect(ui->m_free_tree_widget, &QTreeWidget::customContextMenuRequested, [this](QPoint point) {this->customContextMenu(point, 1);});
-	connect(ui->m_link_tree_widget, &QTreeWidget::customContextMenuRequested, [this](QPoint point) {this->customContextMenu(point, 2);});
+	connect(ui->m_free_tree_widget, &QTreeWidget::customContextMenuRequested,
+		[this](QPoint point) {this->customContextMenu(point, 1);});
+	connect(ui->m_link_tree_widget, &QTreeWidget::customContextMenuRequested,
+		[this](QPoint point) {this->customContextMenu(point, 2);});
 	
-	connect(m_link_action,   &QAction::triggered, this, &MasterPropertiesWidget::on_link_button_clicked);
-	connect(m_unlink_action, &QAction::triggered, this, &MasterPropertiesWidget::on_unlink_button_clicked);
-	connect(m_show_qtwi,     &QAction::triggered, [this]() {this->showElementFromTWI(this->m_qtwi_at_context_menu,0);});
+	connect(m_link_action,   &QAction::triggered,
+		this, &MasterPropertiesWidget::on_link_button_clicked);
+	connect(m_unlink_action, &QAction::triggered,
+		this, &MasterPropertiesWidget::on_unlink_button_clicked);
+	connect(m_show_qtwi,     &QAction::triggered,
+		[this]() {this->showElementFromTWI(this->m_qtwi_at_context_menu,0);});
 	
 	connect(m_show_element,  &QAction::triggered, [this]()
 	{
@@ -78,7 +91,8 @@ MasterPropertiesWidget::MasterPropertiesWidget(Element *elmt, QWidget *parent) :
 	
 	QHeaderView *qhv = ui->m_free_tree_widget->header();
 	qhv->setContextMenuPolicy(Qt::CustomContextMenu);
-	connect(qhv, &QHeaderView::customContextMenuRequested, this, &MasterPropertiesWidget::headerCustomContextMenuRequested);
+	connect(qhv, &QHeaderView::customContextMenuRequested,
+		this, &MasterPropertiesWidget::headerCustomContextMenuRequested);
 	connect(m_save_header_state, &QAction::triggered, [qhv]()
 	{
 		QByteArray qba = qhv->saveState();
@@ -123,22 +137,26 @@ void MasterPropertiesWidget::setElement(Element *element)
 		m_element->setHighlighted(false);
 	
 	if (m_project)
-		disconnect(m_project, SIGNAL(diagramRemoved(QETProject*,Diagram*)), this, SLOT(diagramWasdeletedFromProject()));
+		disconnect(m_project, SIGNAL(diagramRemoved(QETProject*,Diagram*)),
+			   this, SLOT(diagramWasdeletedFromProject()));
 
 	if(Q_LIKELY(element->diagram() && element->diagram()->project()))
 	{
 		m_project = element->diagram()->project();
-		connect(m_project, SIGNAL(diagramRemoved(QETProject*,Diagram*)), this, SLOT(diagramWasdeletedFromProject()));
+		connect(m_project, SIGNAL(diagramRemoved(QETProject*,Diagram*)),
+			this, SLOT(diagramWasdeletedFromProject()));
 	}
 	else
 		m_project = nullptr;
 
 	//Keep up to date this widget when the linked elements of m_element change
 	if (m_element)
-		disconnect(m_element.data(), &Element::linkedElementChanged, this, &MasterPropertiesWidget::updateUi);
+		disconnect(m_element.data(), &Element::linkedElementChanged,
+			   this, &MasterPropertiesWidget::updateUi);
 	
 	m_element = element;
-	connect(m_element.data(), &Element::linkedElementChanged, this, &MasterPropertiesWidget::updateUi);
+	connect(m_element.data(), &Element::linkedElementChanged,
+		this, &MasterPropertiesWidget::updateUi);
 
 	updateUi();
 }
@@ -246,17 +264,24 @@ void MasterPropertiesWidget::updateUi()
 		if(settings.value("genericpanel/folio", false).toBool())
 		{
 			autonum::sequentialNumbers seq;
-			QString F =autonum::AssignVariables::formulaToLabel(elmt->diagram()->border_and_titleblock.folio(), seq, elmt->diagram(), elmt);
+			QString F =autonum::AssignVariables::formulaToLabel(
+						elmt->diagram()->border_and_titleblock.folio(),
+						seq,
+						elmt->diagram(),
+						elmt);
 			qtwi->setText(1, F);
 		}
 		else
 		{
-			qtwi->setText(1, QString::number(elmt->diagram()->folioIndex() + 1));
+			qtwi->setText(1, QString::number(
+					      elmt->diagram()->folioIndex()
+					      + 1));
 		}
 		
 
 		qtwi->setText(2, elmt->diagram()->title());
-		qtwi->setText(4, elmt->diagram()->convertPosition(elmt->scenePos()).toString());
+		qtwi->setText(4, elmt->diagram()->convertPosition(
+				      elmt->scenePos()).toString());
 		items_list.append(qtwi);
 		m_qtwi_hash.insert(qtwi, elmt);
 	}
@@ -274,16 +299,23 @@ void MasterPropertiesWidget::updateUi()
 		if(settings.value("genericpanel/folio", false).toBool())
 		{
 			autonum::sequentialNumbers seq;
-			QString F =autonum::AssignVariables::formulaToLabel(elmt->diagram()->border_and_titleblock.folio(), seq, elmt->diagram(), elmt);
+			QString F =autonum::AssignVariables::formulaToLabel(
+						elmt->diagram()->border_and_titleblock.folio(),
+						seq,
+						elmt->diagram(),
+						elmt);
 			qtwi->setText(1, F);
 		}
 		else
 		{
-			qtwi->setText(1, QString::number(elmt->diagram()->folioIndex() + 1));
+			qtwi->setText(1, QString::number(
+					      elmt->diagram()->folioIndex()
+					      + 1));
 		}
 
 		qtwi->setText(2, elmt->diagram()->title());
-		qtwi->setText(3, elmt->diagram()->convertPosition(elmt->scenePos()).toString());
+		qtwi->setText(3, elmt->diagram()->convertPosition(
+				      elmt->scenePos()).toString());
 		items_list.append(qtwi);
 		m_qtwi_hash.insert(qtwi, elmt);
 	}
@@ -320,7 +352,8 @@ void MasterPropertiesWidget::on_link_button_clicked()
 	QTreeWidgetItem *qtwi = ui->m_free_tree_widget->currentItem();
 	if (qtwi)
 	{
-		ui->m_free_tree_widget->takeTopLevelItem(ui->m_free_tree_widget->indexOfTopLevelItem(qtwi));
+		ui->m_free_tree_widget->takeTopLevelItem(
+					ui->m_free_tree_widget->indexOfTopLevelItem(qtwi));
 		ui->m_link_tree_widget->insertTopLevelItem(0, qtwi);
 		
 		if(m_live_edit)
@@ -338,7 +371,8 @@ void MasterPropertiesWidget::on_unlink_button_clicked()
 	QTreeWidgetItem *qtwi = ui->m_link_tree_widget->currentItem();
 	if(qtwi)
 	{
-		ui->m_link_tree_widget->takeTopLevelItem(ui->m_link_tree_widget->indexOfTopLevelItem(qtwi));
+		ui->m_link_tree_widget->takeTopLevelItem(
+					ui->m_link_tree_widget->indexOfTopLevelItem(qtwi));
 		ui->m_free_tree_widget->insertTopLevelItem(0, qtwi);
 
 		if(m_live_edit)
@@ -357,7 +391,8 @@ void MasterPropertiesWidget::showElementFromTWI(QTreeWidgetItem *qtwi, int colum
 	Q_UNUSED(column);
 	if (m_showed_element)
 	{
-		disconnect(m_showed_element, SIGNAL(destroyed()), this, SLOT(showedElementWasDeleted()));
+		disconnect(m_showed_element, SIGNAL(destroyed()),
+			   this, SLOT(showedElementWasDeleted()));
 		m_showed_element -> setHighlighted(false);
 	}
 	if (m_element)
@@ -366,7 +401,8 @@ void MasterPropertiesWidget::showElementFromTWI(QTreeWidgetItem *qtwi, int colum
 	m_showed_element = m_qtwi_hash[qtwi];
 	m_showed_element->diagram()->showMe();
 	m_showed_element->setHighlighted(true);
-	connect(m_showed_element, SIGNAL(destroyed()), this, SLOT(showedElementWasDeleted()));
+	connect(m_showed_element, SIGNAL(destroyed()),
+		this, SLOT(showedElementWasDeleted()));
 }
 
 /**
