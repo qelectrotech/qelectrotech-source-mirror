@@ -25,6 +25,7 @@
 class QPainter;
 
 /**
+	@brief The SingleLineProperties class
 	This class represents the properties of a singleline conductor.
 */
 class SingleLineProperties {
@@ -59,6 +60,7 @@ class SingleLineProperties {
 };
 
 /**
+	@brief The ConductorProperties class
 	This class represents the functional properties of a particular conductor,
 	i.e. properties other than path and terminals.
 */
@@ -69,14 +71,15 @@ class ConductorProperties
 		virtual ~ConductorProperties();
 	
 			/**
-			 * @brief The ConductorType enum Represents the kind of a particular conductor:
-			 * Single: singleline symbols, no text input
-			 * Multi: text input, no symbol
-			 */
+				@brief The ConductorType enum Represents
+				the kind of a particular conductor:
+				Single: singleline symbols, no text input
+				Multi: text input, no symbol
+			*/
 		enum ConductorType { Single, Multi };
 
 
-			//Attributes
+		//Attributes
 		ConductorType type;
 		
 		QColor		color,
@@ -108,7 +111,7 @@ class ConductorProperties
 		
 		SingleLineProperties singleLineProperties;
 	
-			// methods
+		// methods
 		void toXml(QDomElement &) const;
 		void fromXml(QDomElement &);
 		void toSettings(QSettings &, const QString & = QString()) const;
@@ -118,7 +121,7 @@ class ConductorProperties
 
 		static ConductorProperties defaultProperties();
 	
-			// operators
+		// operators
 		bool operator==(const ConductorProperties &) const;
 		bool operator!=(const ConductorProperties &) const;
 	
