@@ -20,3 +20,8 @@
 PropertiesInterface::PropertiesInterface()
 {
 }
+
+PropertiesInterface::~PropertiesInterface()
+{
+
+}

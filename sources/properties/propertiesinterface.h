@@ -30,6 +30,7 @@ class PropertiesInterface
 {
 	public:
 	PropertiesInterface();
+	virtual ~PropertiesInterface();
 	// Save/load properties to setting file. QString is use for prefix a word befor the name of each paramètre
 	virtual void toSettings	  (QSettings &settings, const QString = QString()) const =0;
 	virtual void fromSettings (const QSettings &settings, const QString = QString()) =0;
