@@ -48,6 +48,7 @@ class QetGraphicsTableItem : public QetGraphicsItem
 
 	public :
 		static void adjustTableToFolio(QetGraphicsTableItem *table, QMargins margins = QMargins(20,20,20,0));
+		static void checkInsufficientRowsCount(QetGraphicsTableItem *first_table);
 
     public:
         QetGraphicsTableItem(QGraphicsItem *parent= nullptr);

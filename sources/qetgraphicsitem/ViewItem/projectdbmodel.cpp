@@ -309,8 +309,6 @@ void ProjectDBModel::dataBaseUpdated()
 	auto new_record = m_record;
 	m_record = original_record;
 	
-	//This a very special case, if this nomenclature model is added
-	//befor any element, column count return 0, so in this case we emit column inserted
 	if (new_record.size() != m_record.size())
 	{
 		emit beginResetModel();

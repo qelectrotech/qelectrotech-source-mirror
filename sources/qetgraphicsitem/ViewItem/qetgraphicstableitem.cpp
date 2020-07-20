@@ -62,6 +62,56 @@ void QetGraphicsTableItem::adjustTableToFolio(QetGraphicsTableItem *table, QMarg
 }
 
 /**
+ * @brief QetGraphicsTableItem::checkInsufficientRowsCount
+ * Check if the number of rows of @table + linked table is enough to display all
+ * content of the model, if not open a dialog to advise user what to do.
+ * @param table
+ */
+void QetGraphicsTableItem::checkInsufficientRowsCount(QetGraphicsTableItem *table)
+{
+	if (!table->diagram() || !table->model()) {
+		return;
+	}
+
+	auto first_table = table;
+	while (first_table->previousTable())
+		first_table = first_table->previousTable();
+
+	if (first_table->displayNRow() <= 0) //displayed rows is unlimited
+		return;
+
+	int count_ = first_table->displayNRow();
+	bool several_table = false;
+	while (first_table->nextTable())
+	{
+		several_table = true;
+		first_table = first_table->nextTable();
+		if (first_table->displayNRow() <= 0) { //displayed rows is unlimited
+			return;
+		} else {
+			count_ += first_table->displayNRow();
+			first_table->displayNRowOffset();
+		}
+	}
+
+	if (count_ < first_table->model()->rowCount())
+	{
+		QWidget *parent = first_table->diagram()->views().first() ? first_table->diagram()->views().first() : nullptr;
+
+		QString text;
+		if (several_table) {
+			text = tr("Les information à afficher sont supérieurs à la quantité maximal pouvant être affiché par les tableaux.\n"
+					  "Veuillez ajouter un nouveau tableau ou regler les tableaux existant afin d'afficher l'integralité des informations.");
+		} else {
+			text = tr("Les information à afficher sont supérieurs à la quantité maximal pouvant être affiché par le tableau.\n"
+					  "Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d'afficher l'integralité des informations.");
+		}
+		QMessageBox::information(parent, tr("Limitation de tableau"), text);
+	}
+
+}
+
+/**
  * @brief QetGraphicsTableItem::QetGraphicsTableItem
  * Default constructor
  * @param parent
@@ -601,6 +651,10 @@ QVariant QetGraphicsTableItem::itemChange(QGraphicsItem::GraphicsItemChange chan
 void QetGraphicsTableItem::modelReseted() {
 	dataChanged(m_model->index(0,0), m_model->index(0,0), QVector<int>());
 	setToMinimumHeight();
+
+	if (!previousTable()) { //this is the head table
+		checkInsufficientRowsCount(this);
+	}
 }
 
 /**
