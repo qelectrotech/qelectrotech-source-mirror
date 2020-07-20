@@ -52,6 +52,8 @@ GraphicsTablePropertiesEditor::GraphicsTablePropertiesEditor(QetGraphicsTableIte
 	if (table) {
 		setTable(table);
 	}
+
+	ui->m_info_label->setStyleSheet("QLabel {color : red; }");
 }
 
 /**
@@ -281,6 +283,8 @@ void GraphicsTablePropertiesEditor::updateUi()
 		}
 	}
 
+	updateInfoLabel();
+
 	auto margin = QETUtils::marginsFromString(m_table_item->model()->headerData(0, Qt::Horizontal, Qt::UserRole+1).toString());
 	ui->m_header_top_margin   ->setValue(margin.top());
 	ui->m_header_left_margin  ->setValue(margin.left());
@@ -304,6 +308,38 @@ void GraphicsTablePropertiesEditor::updateUi()
 		button->setChecked(true);
 
 	setUpEditConnection();
+}
+
+void GraphicsTablePropertiesEditor::updateInfoLabel()
+{
+	auto table_ = m_table_item;
+	while (table_->previousTable()) { table_ = table_->previousTable();}
+
+	int count_ = 0;
+	bool infinite = false;
+	if (table_->displayNRow() <= 0) {
+		infinite = true;
+	} else {
+		count_ = table_->displayNRow();
+	}
+
+	while (table_->nextTable())
+	{
+		table_ = table_->nextTable();
+		if (table_->displayNRow() <= 0) {
+			infinite = true;
+		} else {
+			count_ += table_->displayNRow();
+		}
+	}
+
+	auto value = m_table_item->model()->rowCount() - count_;
+	if (value > 0 && !infinite) {
+		ui->m_info_label->setText(tr("<center>ATTENTION :</center>\n il manque %1 lignes afin d'afficher l'intégralité des informations").arg(value));
+		ui->m_info_label->show();
+	} else {
+		ui->m_info_label->hide();
+	}
 }
 
 /**
@@ -338,6 +374,7 @@ void GraphicsTablePropertiesEditor::setUpEditConnection()
 		m_edit_connection << connect(m_header_button_group,      QOverload<int>::of(&QButtonGroup::idClicked), this, &GraphicsTablePropertiesEditor::apply);
 #endif
 		m_edit_connection << connect(ui->m_display_n_row_sb,     QOverload<int>::of(&QSpinBox::valueChanged),      this, &GraphicsTablePropertiesEditor::apply);
+		m_edit_connection << connect(ui->m_display_n_row_sb,     QOverload<int>::of(&QSpinBox::valueChanged),      this, &GraphicsTablePropertiesEditor::updateInfoLabel);
 	}
 }
 
