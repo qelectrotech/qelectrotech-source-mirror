@@ -21,6 +21,7 @@
 
 #include <QThread>
 #include <QDate>
+#include <QScreen>
 
 /**
 	@brief AboutQETDialog::AboutQETDialog
@@ -168,6 +169,17 @@ void AboutQETDialog::setVersion()
 	compilation_info += "</br>" " -  Kernel :     " + QString(QSysInfo::kernelVersion());
 #endif
 #endif
+	compilation_info += "<br>  *** Qt screens *** </br>";
+	const auto screens = qApp->screens();
+	for (int ii = 0; ii < screens.count(); ++ii) {
+	  compilation_info += "<br> ( "
+			  + QString::number(ii + 1)
+			  + " : "
+			  + QString::number(screens[ii]->geometry().width() * screens[ii]->devicePixelRatio())
+			  + " x "
+			  + QString::number(screens[ii]->geometry().height() * screens[ii]->devicePixelRatio())
+			  + " ) </br>";
+	}
 	ui->m_version_label->setText(str + compilation_info);
 }
 
