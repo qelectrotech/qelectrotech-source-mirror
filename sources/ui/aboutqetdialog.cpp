@@ -191,7 +191,7 @@ void AboutQETDialog::setVersion()
 	qp.start("awk", QStringList() << "/MemAvailable/ {print $2}" << "/proc/meminfo");
 	qp.waitForFinished();
 	QString AvailableMemory = qp.readAllStandardOutput();
-	compilation_info += "<br>" + QString("Available RAM : %1 MB").arg(AvailableMemory.toLong() / 1024);
+	compilation_info += "<br>" + QString("RAM Available : %1 MB").arg(AvailableMemory.toLong() / 1024);
 	qp.close();
 	
 	QProcess linuxgpuinfo;
