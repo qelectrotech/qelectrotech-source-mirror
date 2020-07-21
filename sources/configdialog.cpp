@@ -19,15 +19,22 @@
 #include "configpages.h"
 #include "qetapp.h"
 
+#include "machine_info.h"
+
 /**
 	Constructeur
 	@param parent QWidget parent
 */
 ConfigDialog::ConfigDialog(QWidget *parent) : QDialog(parent) {
+	Machine_info *mymachineinfo= new Machine_info(this);
 	// liste des pages
 	pages_list = new QListWidget();
 	pages_list -> setViewMode(QListView::IconMode);
-    pages_list -> setIconSize(QSize(128, 128));
+	if(mymachineinfo->get_max_screen_height()<1000){
+		pages_list -> setIconSize(QSize(64, 64));
+	} else {
+		pages_list -> setIconSize(QSize(128, 128));
+	}
 	pages_list -> setMovement(QListView::Static);
     pages_list -> setMinimumWidth(168);
     pages_list -> setMaximumWidth(168);
