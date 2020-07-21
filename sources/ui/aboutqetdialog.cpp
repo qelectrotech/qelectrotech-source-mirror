@@ -184,8 +184,15 @@ void AboutQETDialog::setVersion()
 	p.start("awk", QStringList() << "/MemTotal/ { print $2 }" << "/proc/meminfo");
 	p.waitForFinished();
 	QString memory = p.readAllStandardOutput();
-	compilation_info += "<br>" + QString("RAM : %1 MB").arg(memory.toLong() / 1024);
+	compilation_info += "<br>" + QString("RAM Total : %1 MB").arg(memory.toLong() / 1024);
 	p.close();
+	
+	QProcess qp;
+	qp.start("awk", QStringList() << "/MemAvailable/ {print $2}" << "/proc/meminfo");
+	qp.waitForFinished();
+	QString AvailableMemory = qp.readAllStandardOutput();
+	compilation_info += "<br>" + QString("Available RAM : %1 MB").arg(AvailableMemory.toLong() / 1024);
+	qp.close();
 	
 	QProcess linuxgpuinfo;
 	linuxgpuinfo.start("bash", QStringList() << "-c" << "lspci | grep VGA | cut -d : -f 3");
