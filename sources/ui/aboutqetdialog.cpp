@@ -180,11 +180,19 @@ void AboutQETDialog::setVersion()
 	QString linuxOutput = linuxcpuinfo.readAllStandardOutput();
 	compilation_info +=  "<br>"" CPU : " + QString(linuxOutput.toLocal8Bit().constData());
 	
+	QProcess p;
+	p.start("awk", QStringList() << "/MemTotal/ { print $2 }" << "/proc/meminfo");
+	p.waitForFinished();
+	QString memory = p.readAllStandardOutput();
+	compilation_info += "<br>" + QString("RAM : %1 MB").arg(memory.toLong() / 1024);
+	p.close();
+	
 	QProcess linuxgpuinfo;
 	linuxgpuinfo.start("bash", QStringList() << "-c" << "lspci | grep VGA | cut -d : -f 3");
 	linuxgpuinfo.waitForFinished();
 	QString linuxGPUOutput = linuxgpuinfo.readAllStandardOutput();
 	compilation_info += "<br>"" GPU : " + QString(linuxGPUOutput.toLocal8Bit().constData());
+	
 	}
 	
 	compilation_info += "<br>" "  OS : " +  QString(QSysInfo::kernelType());
