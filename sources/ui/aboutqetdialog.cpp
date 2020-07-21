@@ -172,7 +172,13 @@ void AboutQETDialog::setVersion()
 	linuxcpuinfo.start("bash", QStringList() << "-c" << "cat /proc/cpuinfo |grep 'model name' | uniq");
 	linuxcpuinfo.waitForFinished();
 	QString linuxOutput = linuxcpuinfo.readAllStandardOutput();
-	compilation_info += "<br>" + QString(linuxOutput.toLocal8Bit().constData());
+	compilation_info +=  "<br>"" CPU : " + QString(linuxOutput.toLocal8Bit().constData());
+	
+	QProcess linuxgpuinfo;
+	linuxgpuinfo.start("bash", QStringList() << "-c" << "lspci | grep VGA | cut -d : -f 3");
+	linuxgpuinfo.waitForFinished();
+	QString linuxGPUOutput = linuxgpuinfo.readAllStandardOutput();
+	compilation_info += "<br>"" GPU : " + QString(linuxGPUOutput.toLocal8Bit().constData());
 	}
 	
 	compilation_info += "<br>" "  OS : " +  QString(QSysInfo::kernelType());
