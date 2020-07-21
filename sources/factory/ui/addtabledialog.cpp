@@ -103,7 +103,7 @@ Qt::Alignment AddTableDialog::headerAlignment() const
 		case 0 :
 			return  Qt::AlignLeft;
 		case 1:
-			return Qt::AlignCenter;
+			return Qt::AlignHCenter;
 		default:
 			return Qt::AlignRight;
 	}
@@ -135,7 +135,7 @@ Qt::Alignment AddTableDialog::tableAlignment() const
 		case 0 :
 			return  Qt::AlignLeft;
 		case 1:
-			return Qt::AlignCenter;
+			return Qt::AlignHCenter;
 		default:
 			return Qt::AlignRight;
 	}
