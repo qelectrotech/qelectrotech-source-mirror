@@ -153,6 +153,12 @@ void AboutQETDialog::setVersion()
 	compilation_info += " : " + QString(__TIME__);
 	compilation_info += " <br>Run with Qt "+ QString(qVersion());
 	compilation_info += " using" + QString(" %1 thread(s)").arg(QThread::idealThreadCount());
+	QProcess macoscpuinfo;
+	macoscpuinfo.start("bash", QStringList() << "-c" << "sysctl -n machdep.cpu.brand_string");
+	macoscpuinfo.waitForFinished();
+	QString macosOutput = macoscpuinfo.readAllStandardOutput();
+	compilation_info +=  "<br>"" CPU : " + QString(macosOutput.toLocal8Bit().constData());
+
 	compilation_info += "<br>" "  OS : " +  QString(QSysInfo::kernelType());
 	compilation_info += "  -   " + QString(QSysInfo::currentCpuArchitecture());
 	compilation_info += " -  Version :    " + QString(QSysInfo::prettyProductName());
