@@ -29,8 +29,8 @@ class Machine_info : public QObject
 	Q_OBJECT
 public:
 	explicit Machine_info(QObject *parent = nullptr);
-	int32_t get_max_screen_width();
-	int32_t get_max_screen_height();
+	int32_t i_max_screen_width();
+	int32_t i_max_screen_height();
 
 signals:
 

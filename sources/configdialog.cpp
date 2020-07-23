@@ -36,7 +36,7 @@ ConfigDialog::ConfigDialog(QWidget *parent) : QDialog(parent) {
 	// liste des pages
 	pages_list = new QListWidget();
 	pages_list -> setViewMode(QListView::IconMode);
-	if(mymachineinfo->get_max_screen_height()<1000){
+	if(mymachineinfo->i_max_screen_height()<1000){
 		pages_list -> setIconSize(QSize(64, 64));
 	} else {
 		pages_list -> setIconSize(QSize(128, 128));
@@ -80,8 +80,8 @@ ConfigDialog::ConfigDialog(QWidget *parent) : QDialog(parent) {
 	connect(pages_list, SIGNAL(currentRowChanged(int)),
 		pages_widget, SLOT(setCurrentIndex(int)));
 
-	resize(mymachineinfo->get_max_screen_width(),
-	       mymachineinfo->get_max_screen_height());
+	resize(mymachineinfo->i_max_screen_width(),
+	       mymachineinfo->i_max_screen_height());
 
 #ifdef Q_OS_MACOS
 	if (parent) {
