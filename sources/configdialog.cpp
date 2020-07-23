@@ -15,46 +15,74 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include <QScrollArea>
 #include "configdialog.h"
 #include "configpages.h"
 #include "qetapp.h"
+
+#include "machine_info.h"
 
 /**
 	Constructeur
 	@param parent QWidget parent
 */
 ConfigDialog::ConfigDialog(QWidget *parent) : QDialog(parent) {
+	Machine_info *mymachineinfo= new Machine_info(this);
+	//ScrollArea for low screens
+	QScrollArea *scroll = new QScrollArea(this);
+	scroll->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+	scroll->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+
 	// liste des pages
 	pages_list = new QListWidget();
 	pages_list -> setViewMode(QListView::IconMode);
-    pages_list -> setIconSize(QSize(128, 128));
+	if(mymachineinfo->i_max_screen_height()<1000){
+		pages_list -> setIconSize(QSize(64, 64));
+	} else {
+		pages_list -> setIconSize(QSize(128, 128));
+	}
 	pages_list -> setMovement(QListView::Static);
-    pages_list -> setMinimumWidth(168);
-    pages_list -> setMaximumWidth(168);
-    pages_list -> setSpacing(16);
-    pages_list -> setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-	
+	pages_list -> setMinimumWidth(168);
+	pages_list -> setMaximumWidth(168);
+	pages_list -> setSpacing(16);
+	pages_list -> setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
 	// pages
 	pages_widget = new QStackedWidget();
-	
 	// boutons
-	buttons = new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel);
-	
+	buttons = new QDialogButtonBox(
+				QDialogButtonBox::Ok
+				|QDialogButtonBox::Cancel);
+
+
+	QWidget *viewport = new QWidget(this);
+	scroll->setWidget(viewport);
+	scroll->setWidgetResizable(true);
+
 	// layouts
-	QHBoxLayout *hlayout1 = new QHBoxLayout();
+	QHBoxLayout *hlayout1 = new QHBoxLayout(viewport);
+	// add needed widgets to layout "hlayout1"
 	hlayout1 -> addWidget(pages_list);
 	hlayout1 -> addWidget(pages_widget);
-	
-	QVBoxLayout *vlayout1 = new QVBoxLayout();
-	vlayout1 -> addLayout(hlayout1);
-	vlayout1 -> addWidget(buttons);
-	setLayout(vlayout1);
-	
+
+	//add hlayout1 to widget
+	viewport->setLayout(hlayout1);
+
+	// Add a layout for QDialog
+	QVBoxLayout *dialog_layout = new QVBoxLayout(this);
+	dialog_layout->addWidget(scroll); // add scroll to the QDialog's layout
+	dialog_layout -> addWidget(buttons);
+	setLayout(dialog_layout);
+
 	// connexion signaux / slots
 	connect(buttons, SIGNAL(accepted()), this, SLOT(applyConf()));
 	connect(buttons, SIGNAL(rejected()), this, SLOT(reject()));
-	connect(pages_list, SIGNAL(currentRowChanged(int)), pages_widget, SLOT(setCurrentIndex(int)));
-	
+	connect(pages_list, SIGNAL(currentRowChanged(int)),
+		pages_widget, SLOT(setCurrentIndex(int)));
+
+	resize(mymachineinfo->i_max_screen_width(),
+	       mymachineinfo->i_max_screen_height());
+
 #ifdef Q_OS_MACOS
 	if (parent) {
 		setWindowFlags(Qt::Sheet);
