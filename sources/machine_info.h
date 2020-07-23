@@ -31,6 +31,7 @@ public:
 	explicit Machine_info(QObject *parent = nullptr);
 	int32_t i_max_screen_width();
 	int32_t i_max_screen_height();
+	QString compilation_info();
 
 signals:
 
