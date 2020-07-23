@@ -30,8 +30,8 @@ ConfigDialog::ConfigDialog(QWidget *parent) : QDialog(parent) {
 	Machine_info *mymachineinfo= new Machine_info(this);
 	//ScrollArea for low screens
 	QScrollArea *scroll = new QScrollArea(this);
-	scroll->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-	scroll->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+	scroll->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+	scroll->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 
 	// liste des pages
 	pages_list = new QListWidget();
