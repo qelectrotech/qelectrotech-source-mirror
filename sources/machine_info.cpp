@@ -70,7 +70,7 @@ void Machine_info::init_get_Screen_info()
 	@brief Machine_info::get_max_screen_width
 	@return max screen width
  */
-int32_t Machine_info::get_max_screen_width()
+int32_t Machine_info::i_max_screen_width()
 {
 	return Max_screen_width;
 }
@@ -79,7 +79,7 @@ int32_t Machine_info::get_max_screen_width()
 	@brief Machine_info::get_max_screen_height
 	@return max screen height
 */
-int32_t Machine_info::get_max_screen_height()
+int32_t Machine_info::i_max_screen_height()
 {
 	return Max_screen_height;
 }
