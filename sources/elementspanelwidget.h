@@ -21,8 +21,9 @@
 #include "elementspanel.h"
 
 /**
-	This class embeds an elements panel under a toolbar providing various actions
-	to manage elements.
+	@brief The ElementsPanelWidget class
+	This class embeds an elements panel under a toolbar
+	providing various actions to manage elements.
 	@see ElementsPanel
 */
 class ElementsPanelWidget : public QWidget {
@@ -93,6 +94,7 @@ class ElementsPanelWidget : public QWidget {
 };
 
 /**
+	@brief ElementsPanelWidget::elementsPanel
 	@return The elements panel embedded within this widget.
 */
 inline ElementsPanel &ElementsPanelWidget::elementsPanel() const {
