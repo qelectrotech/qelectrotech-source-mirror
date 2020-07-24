@@ -61,7 +61,8 @@ QString FileElementCollectionItem::fileSystemPath() const
 	if (isCollectionRoot())
 		return m_path;
 
-	FileElementCollectionItem *feci = static_cast<FileElementCollectionItem *> (parent());
+	FileElementCollectionItem *feci =
+			static_cast<FileElementCollectionItem *> (parent());
 	if (feci)
 		return feci->fileSystemPath() + "/" + m_path;
 	else
@@ -129,7 +130,8 @@ QString FileElementCollectionItem::localName()
 			pugi::xml_document docu;
 			if(docu.load_file(str.toStdString().c_str()))
 			{
-				if (QString(docu.document_element().name()) == "qet-directory")
+				if (QString(docu.document_element().name())
+						== "qet-directory")
 				{
 					NamesList nl;
 					nl.fromXml(docu.document_element());
@@ -192,8 +194,10 @@ QString FileElementCollectionItem::collectionPath() const
 		else
 			return "custom://";
 	}
-	else if (parent() && parent()->type() == FileElementCollectionItem::Type) {
-		ElementCollectionItem *eci = static_cast<ElementCollectionItem*>(parent());
+	else if (parent() && parent()->type()
+		 == FileElementCollectionItem::Type) {
+		ElementCollectionItem *eci =
+				static_cast<ElementCollectionItem*>(parent());
 		if (eci->isCollectionRoot())
 			return eci->collectionPath() + m_path;
 		else
@@ -209,7 +213,8 @@ QString FileElementCollectionItem::collectionPath() const
 */
 bool FileElementCollectionItem::isCollectionRoot() const
 {
-	if (m_path == QETApp::commonElementsDirN() || m_path == QETApp::customElementsDirN())
+	if (m_path == QETApp::commonElementsDirN()
+			|| m_path == QETApp::customElementsDirN())
 		return true;
 	else
 		return false;
@@ -259,11 +264,16 @@ void FileElementCollectionItem::setUpData()
 	if (isDir())
 	{
 		localName();
-		setFlags(Qt::ItemIsSelectable | Qt::ItemIsDragEnabled | Qt::ItemIsDropEnabled | Qt::ItemIsEnabled);
+		setFlags(Qt::ItemIsSelectable
+			 | Qt::ItemIsDragEnabled
+			 | Qt::ItemIsDropEnabled
+			 | Qt::ItemIsEnabled);
 	}
 	else
 	{
-		setFlags(Qt::ItemIsSelectable | Qt::ItemIsDragEnabled | Qt::ItemIsEnabled);
+		setFlags(Qt::ItemIsSelectable
+			 | Qt::ItemIsDragEnabled
+			 | Qt::ItemIsEnabled);
 		
 		//Set the local name and all informations of the element
 		//in the data Qt::UserRole+1, these data will be use for search.
@@ -340,7 +350,8 @@ void FileElementCollectionItem::populate(bool set_data, bool hide_element)
 	QDir dir (fileSystemPath());
 
 		//Get all directory in this directory.
-	for(auto str : dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::Name))
+	for(auto str : dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot,
+				     QDir::Name))
 	{
 		FileElementCollectionItem *feci = new FileElementCollectionItem();
 		appendRow(feci);
@@ -354,7 +365,8 @@ void FileElementCollectionItem::populate(bool set_data, bool hide_element)
 
 		//Get all elmt file in this directory
 	dir.setNameFilters(QStringList() << "*.elmt");
-	for(auto str : dir.entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name))
+	for(auto str : dir.entryList(QDir::Files | QDir::NoDotAndDotDot,
+				     QDir::Name))
 	{
 		FileElementCollectionItem *feci = new FileElementCollectionItem();
 		appendRow(feci);
