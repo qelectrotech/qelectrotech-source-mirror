@@ -80,8 +80,9 @@ ConfigDialog::ConfigDialog(QWidget *parent) : QDialog(parent) {
 	connect(pages_list, SIGNAL(currentRowChanged(int)),
 		pages_widget, SLOT(setCurrentIndex(int)));
 
-	resize(mymachineinfo->i_max_screen_width(),
-	       mymachineinfo->i_max_screen_height());
+	setMaximumSize(mymachineinfo->i_max_screen_width(),
+		       mymachineinfo->i_max_screen_height());
+	resize(1400,1000);
 
 #ifdef Q_OS_MACOS
 	if (parent) {
