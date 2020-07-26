@@ -1257,11 +1257,11 @@ QList<QETTitleBlockTemplateEditor *> QETApp::titleBlockTemplateEditors(
 /**
 	@brief QETApp::createTextOrientationSpinBoxWidget
 	Instantiates a QTextOrientationSpinBoxWidget and configures:
-	  * his font
-	  * his strings
+	  - his font
+	  - his strings
 	\~French Instancie un QTextOrientationSpinBoxWidget et configure :
-	  * sa police de caracteres
-	  * ses chaines de caracteres
+	  - sa police de caracteres
+	  - ses chaines de caracteres
 	\~ @note that the deletion of the widget thus allocated is the
 	responsibility of the caller.
 	\~French que la suppression du widget ainsi alloue est a la charge
@@ -1824,23 +1824,25 @@ QList<QWidget *> QETApp::floatingToolbarsAndDocksForMainWindow(
 /**
 	@brief QETApp::parseArguments
 	Parse the following arguments:
-	  * --common-elements-dir=
-	  * --config-dir
-	  * --help
-	  * --version
-	  * -v
-	  * --license
+	  - --common-elements-dir=
+	  - --config-dir
+	  - --help
+	  - --version
+	  - -v
+	  - --license
+
 	The other arguments are normally file paths.
 	If they exist, they are just stored in the arguments_files_ attribute.
 	Otherwise, they are stored in the arguments_options_ attribute.
 	\~French
 	Parse les arguments suivants :
-	  * --common-elements-dir=
-	  * --config-dir
-	  * --help
-	  * --version
-	  * -v
-	  * --license
+	  - --common-elements-dir=
+	  - --config-dir
+	  - --help
+	  - --version
+	  - -v
+	  - --license
+
 	Les autres arguments sont normalement des chemins de fichiers.
 	S'ils existent, ils sont juste memorises dans l'attribut arguments_files_.
 	Sinon, ils sont memorises dans l'attribut arguments_options_.
@@ -1952,15 +1954,15 @@ void QETApp::initStyle() {
 	@brief QETApp::initConfiguration
 	Reads and takes into account the configuration of the application.
 	This method will create, if necessary:
-	  * the configuration folder
-	  * the folder of the personal collection
-	  * the directory for custom title blocks
+	  - the configuration folder
+	  - the folder of the personal collection
+	  - the directory for custom title blocks
 	\~French
 	Lit et prend en compte la configuration de l'application.
 	Cette methode creera, si necessaire :
-	  * le dossier de configuration
-	  * le dossier de la collection perso
-	  * the directory for custom title blocks
+	  - le dossier de configuration
+	  - le dossier de la collection perso
+	  - the directory for custom title blocks
 */
 void QETApp::initConfiguration() {
 	// create configuration files if necessary
