@@ -86,11 +86,15 @@ QETApp::QETApp() :
 	initSplashScreen();
 	initSystemTray();
 
-	connect(&signal_map, SIGNAL(mapped(QWidget *)), this, SLOT(invertMainWindowVisibility(QWidget *)));
+	connect(&signal_map, SIGNAL(mapped(QWidget *)),
+		this, SLOT(invertMainWindowVisibility(QWidget *)));
 	qApp->setQuitOnLastWindowClosed(false);
-	connect(qApp, &QApplication::lastWindowClosed, this, &QETApp::checkRemainingWindows);
+	connect(qApp, &QApplication::lastWindowClosed,
+		this, &QETApp::checkRemainingWindows);
 
-	setSplashScreenStep(tr("Chargement... Initialisation du cache des collections d'éléments", "splash screen caption"));
+	setSplashScreenStep(
+		tr("Chargement... Initialisation du cache des collections d'éléments",
+		   "splash screen caption"));
 	if (!collections_cache_) {
 	QString cache_path = QETApp::configDir() + "/elements_cache.sqlite";
 	
@@ -100,11 +104,13 @@ QETApp::QETApp() :
 
 	if (qet_arguments_.files().isEmpty())
 	{
-		setSplashScreenStep(tr("Chargement... Éditeur de schéma", "splash screen caption"));
+		setSplashScreenStep(tr("Chargement... Éditeur de schéma",
+				       "splash screen caption"));
 		new QETDiagramEditor();
 	} else
 	{
-		setSplashScreenStep(tr("Chargement... Ouverture des fichiers", "splash screen caption"));
+		setSplashScreenStep(tr("Chargement... Ouverture des fichiers",
+				       "splash screen caption"));
 		openFiles(qet_arguments_);
 	}
 	
@@ -167,10 +173,16 @@ void QETApp::setLanguage(const QString &desired_language) {
 	}
 	qApp->installTranslator(&qtTranslator);
 
+	// load translations for the QET application
 	// charge les traductions pour l'application QET
 	if (!qetTranslator.load("qet_" + desired_language, languages_path)) {
-		// en cas d'echec, on retombe sur les chaines natives pour le francais
+		/* in case of failure,
+		 *  we fall back on the native channels for French
+		 * en cas d'echec,
+		 *  on retombe sur les chaines natives pour le francais
+		 */
 		if (desired_language != "fr") {
+			// use of the English version by default
 			// utilisation de la version anglaise par defaut
 			qetTranslator.load("qet_en", languages_path);
 		}
@@ -179,7 +191,8 @@ void QETApp::setLanguage(const QString &desired_language) {
 
 	QString ltr_special_string = tr(
 		"LTR",
-		"Translate this string to RTL if you are translating to a Right-to-Left language, else translate to LTR"
+		"Translate this string to RTL if you are translating \
+		 to a Right-to-Left language, else translate to LTR"
 	);
 	if (ltr_special_string == "RTL") switchLayout(Qt::RightToLeft);
 }
@@ -193,7 +206,9 @@ QString QETApp::langFromSetting()
 {
 	QSettings settings;
 	QString system_language = settings.value("lang", "system").toString();
-	if(system_language == "system") {system_language = QLocale::system().name().left(2);}
+	if(system_language == "system") {
+		system_language = QLocale::system().name().left(2);
+	}
 	return system_language;
 }
 /**
@@ -224,8 +239,14 @@ void QETApp::systray(QSystemTrayIcon::ActivationReason reason) {
 		case QSystemTrayIcon::Trigger:
 			// reduce or restore the application
 			// reduction ou restauration de l'application
-			fetchWindowStats(diagramEditors(), elementEditors(), titleBlockTemplateEditors());
-			if (every_editor_reduced) restoreEveryEditor(); else reduceEveryEditor();
+			fetchWindowStats(
+						diagramEditors(),
+						elementEditors(),
+						titleBlockTemplateEditors());
+			if (every_editor_reduced)
+				restoreEveryEditor();
+			else
+				reduceEveryEditor();
 			break;
 		case QSystemTrayIcon::Unknown:
 		default:
@@ -487,7 +508,7 @@ QString QETApp::diagramTranslatedInfoKey(const QString &key)
 	else if (key == "plant")    return tr("Installation");
 	else if (key == "locmach")  return tr("Localisation");
 	else if (key == "indexrev") return tr("Indice de révision");
-	else if (key == "date")		return tr("Date");
+	else if (key == "date")     return tr("Date");
 	else if (key == "pos")      return tr("Position");
 	else return QString();
 }
@@ -499,8 +520,13 @@ QString QETApp::diagramTranslatedInfoKey(const QString &key)
 */
 TitleBlockTemplatesFilesCollection *QETApp::commonTitleBlockTemplatesCollection() {
 	if (!m_common_tbt_collection) {
-		m_common_tbt_collection = new TitleBlockTemplatesFilesCollection(QETApp::commonTitleBlockTemplatesDir());
-		m_common_tbt_collection -> setTitle(tr("Cartouches QET", "title of the title block templates collection provided by QElectroTech"));
+		m_common_tbt_collection =
+				new TitleBlockTemplatesFilesCollection(
+					QETApp::commonTitleBlockTemplatesDir());
+		m_common_tbt_collection -> setTitle(
+					tr("Cartouches QET",
+					   "title of the title block templates \
+					collection provided by QElectroTech"));
 		m_common_tbt_collection -> setProtocol(QETAPP_COMMON_TBT_PROTOCOL);
 		m_common_tbt_collection -> setCollection(QET::QetCollection::Common);
 	}
@@ -514,8 +540,12 @@ TitleBlockTemplatesFilesCollection *QETApp::commonTitleBlockTemplatesCollection(
 */
 TitleBlockTemplatesFilesCollection *QETApp::customTitleBlockTemplatesCollection() {
 	if (!m_custom_tbt_collection) {
-		m_custom_tbt_collection = new TitleBlockTemplatesFilesCollection(QETApp::customTitleBlockTemplatesDir());
-		m_custom_tbt_collection -> setTitle(tr("Cartouches utilisateur", "title of the user's title block templates collection"));
+		m_custom_tbt_collection =
+				new TitleBlockTemplatesFilesCollection(
+					QETApp::customTitleBlockTemplatesDir());
+		m_custom_tbt_collection -> setTitle(tr("Cartouches utilisateur",
+						       "title of the user's \
+					title block templates collection"));
 		m_custom_tbt_collection -> setProtocol(QETAPP_CUSTOM_TBT_PROTOCOL);
 		m_custom_tbt_collection -> setCollection(QET::QetCollection::Custom);
 	}
@@ -546,7 +576,8 @@ QList<TitleBlockTemplatesCollection *> QETApp::availableTitleBlockTemplatesColle
 	@return the templates collection matching the provided protocol,
 	or 0 if none could be found
 */
-TitleBlockTemplatesCollection *QETApp::titleBlockTemplatesCollection(const QString &protocol) {
+TitleBlockTemplatesCollection *QETApp::titleBlockTemplatesCollection(
+		const QString &protocol) {
 	if (protocol == QETAPP_COMMON_TBT_PROTOCOL) {
 		return(m_common_tbt_collection);
 	} else if (protocol == QETAPP_CUSTOM_TBT_PROTOCOL) {
@@ -569,7 +600,9 @@ QString QETApp::commonElementsDir()
 	if (m_user_common_elements_dir.isEmpty())
 	{
 		QSettings settings;
-		QString path = settings.value("elements-collections/common-collection-path", "default").toString();
+		QString path = settings.value(
+					"elements-collections/common-collection-path",
+					"default").toString();
 		if (path != "default" && !path.isEmpty())
 		{
 			QDir dir(path);
@@ -591,15 +624,28 @@ QString QETApp::commonElementsDir()
 	if (common_elements_dir != QString()) return(common_elements_dir);
 #endif
 #ifndef QET_COMMON_COLLECTION_PATH
-	// en l'absence d'option de compilation, on utilise le dossier elements, situe a cote du binaire executable
+	/* in the absence of a compilation option,
+	 *  we use the elements folder, located next to the executable binary
+	 * en l'absence d'option de compilation,
+	 *  on utilise le dossier elements, situe a cote du binaire executable
+	 */
 	return(QCoreApplication::applicationDirPath() + "/elements/");
 #else
 	#ifndef QET_COMMON_COLLECTION_PATH_RELATIVE_TO_BINARY_PATH
-		// l'option de compilation represente un chemin absolu ou relatif classique
+		/* the compilation option represents a classic absolute
+		 *  or relative path
+		 * l'option de compilation represente un chemin absolu
+		 *  ou relatif classique
+		 */
 		return(QUOTE(QET_COMMON_COLLECTION_PATH));
 	#else
-		// l'option de compilation represente un chemin relatif au dossier contenant le binaire executable
-		return(QCoreApplication::applicationDirPath() + "/" + QUOTE(QET_COMMON_COLLECTION_PATH));
+		/* the compilation option represents a path
+		 *  relative to the folder containing the executable binary
+		 * l'option de compilation represente un chemin
+		 *  relatif au dossier contenant le binaire executable
+		 */
+		return(QCoreApplication::applicationDirPath()
+		       + "/" + QUOTE(QET_COMMON_COLLECTION_PATH));
 	#endif
 #endif
 }
@@ -613,7 +659,9 @@ QString QETApp::customElementsDir()
 	if (m_user_custom_elements_dir.isEmpty())
 	{
 		QSettings settings;
-		QString path = settings.value("elements-collections/custom-collection-path", "default").toString();
+		QString path = settings.value(
+					"elements-collections/custom-collection-path",
+					"default").toString();
 		if (path != "default" && !path.isEmpty())
 		{
 			QDir dir(path);
@@ -683,7 +731,9 @@ QString QETApp::commonTitleBlockTemplatesDir() {
 	if (common_tbt_dir_ != QString()) return(common_tbt_dir_);
 #endif
 #ifndef QET_COMMON_TBT_PATH
-	// without any compile-time option, use the "titleblocks" directory next to the executable binary
+	/* without any compile-time option,
+	 *  use the "titleblocks" directory next to the executable binary
+	 */
 	return(QCoreApplication::applicationDirPath() + "/titleblocks/");
 #else
 	#ifndef QET_COMMON_COLLECTION_PATH_RELATIVE_TO_BINARY_PATH
@@ -691,8 +741,11 @@ QString QETApp::commonTitleBlockTemplatesDir() {
 		// (be it absolute or relative)
 		return(QUOTE(QET_COMMON_TBT_PATH));
 	#else
-		// the compile-time option represents a path relative to the directory that contains the executable binary
-		return(QCoreApplication::applicationDirPath() + "/" + QUOTE(QET_COMMON_TBT_PATH));
+		/* the compile-time option represents a path relative
+		 * to the directory that contains the executable binary
+		 */
+		return(QCoreApplication::applicationDirPath()
+		       + "/" + QUOTE(QET_COMMON_TBT_PATH));
 	#endif
 #endif
 }
@@ -706,7 +759,9 @@ QString QETApp::customTitleBlockTemplatesDir() {
 		if (m_user_custom_tbt_dir.isEmpty())
 	{
 			QSettings settings;
-			QString path = settings.value("elements-collections/custom-tbt-path", "default").toString();
+			QString path = settings.value(
+						"elements-collections/custom-tbt-path",
+						"default").toString();
 			if (path != "default" && !path.isEmpty())
 			{
 				QDir dir(path);
@@ -795,7 +850,8 @@ QString QETApp::realPath(const QString &sym_path) {
 	} else if (sym_path.startsWith(QETAPP_CUSTOM_TBT_PROTOCOL "://")) {
 		directory = customTitleBlockTemplatesDir();
 	} else return(QString());
-	return(directory + QDir::toNativeSeparators(sym_path.right(sym_path.length() - 9)));
+	return(directory
+	       + QDir::toNativeSeparators(sym_path.right(sym_path.length() - 9)));
 }
 
 
@@ -824,9 +880,13 @@ QString QETApp::symbolicPath(const QString &real_path) {
 	// analyzes the file path passed in parameter
 	// analyse le chemin de fichier passe en parametre
 	if (real_path.startsWith(commond)) {
-		chemin = "common://" + real_path.right(real_path.length() - commond.length());
+		chemin = "common://"
+				+ real_path.right(
+					real_path.length() - commond.length());
 	} else if (real_path.startsWith(customd)) {
-		chemin = "custom://" + real_path.right(real_path.length() - customd.length());
+		chemin = "custom://"
+				+ real_path.right(
+					real_path.length() - customd.length());
 	} else chemin = QString();
 	return(chemin);
 }
@@ -881,7 +941,8 @@ QETDiagramEditor *QETApp::diagramEditorForFile(const QString &filepath) {
 	if (filepath.isEmpty()) return(nullptr);
 
 	QETApp *qet_app(QETApp::instance());
-	foreach (QETDiagramEditor *diagram_editor, qet_app -> diagramEditors()) {
+	foreach (QETDiagramEditor *diagram_editor, qet_app -> diagramEditors())
+	{
 		if (diagram_editor -> viewForFile(filepath)) {
 			return(diagram_editor);
 		}
@@ -919,9 +980,11 @@ QETDiagramEditor *QETApp::diagramEditorAncestorOf (const QWidget *child)
 */
 void QETApp::overrideCommonElementsDir(const QString &new_ced) {
 	QFileInfo new_ced_info(new_ced);
-	if (new_ced_info.isDir()) {
+	if (new_ced_info.isDir())
+	{
 		common_elements_dir = new_ced_info.absoluteFilePath();
-		if (!common_elements_dir.endsWith("/")) common_elements_dir += "/";
+		if (!common_elements_dir.endsWith("/"))
+			common_elements_dir += "/";
 	}
 }
 #endif
@@ -986,19 +1049,28 @@ QString QETApp::languagesPath() {
 		return(lang_dir);
 	} else {
 #ifndef QET_LANG_PATH
-	// en l'absence d'option de compilation, on utilise le dossier lang, situe a cote du binaire executable
+	/* in the absence of a compilation option, we use the lang folder,
+	 *  located next to the executable binary
+	 * en l'absence d'option de compilation, on utilise le dossier lang,
+	 *  situe a cote du binaire executable
+	 */
 	return(QCoreApplication::applicationDirPath() + "/lang/");
 #else
 	#ifndef QET_LANG_PATH_RELATIVE_TO_BINARY_PATH
 		/* the compilation option represents
-		 * a classic absolute or relative path
+		 *  a classic absolute or relative path
 		 * l'option de compilation represente
-		 * un chemin absolu ou relatif classique
+		 *  un chemin absolu ou relatif classique
 		 */
 		return(QUOTE(QET_LANG_PATH));
 	#else
-		// l'option de compilation represente un chemin relatif au dossier contenant le binaire executable
-		return(QCoreApplication::applicationDirPath() + "/" + QUOTE(QET_LANG_PATH));
+		/* the compilation option represents a path relative
+		 *  to the folder containing the executable binary
+		 * l'option de compilation represente un chemin relatif
+		 *  au dossier contenant le binaire executable
+		 */
+		return(QCoreApplication::applicationDirPath()
+		       + "/" + QUOTE(QET_LANG_PATH));
 	#endif
 #endif
 	}
@@ -1041,8 +1113,10 @@ QFont QETApp::diagramTextsFont(qreal size)
 	QSettings settings;
 
 	//Font to use
-	QString diagram_texts_family = settings.value("diagramfont", "Sans Serif").toString();
-	qreal diagram_texts_size     = settings.value("diagramsize", 9.0).toDouble();
+	QString diagram_texts_family = settings.value("diagramfont",
+						      "Sans Serif").toString();
+	qreal diagram_texts_size     = settings.value("diagramsize",
+						      9.0).toDouble();
 
 	if (size != -1.0) {
 		diagram_texts_size = size;
@@ -1065,10 +1139,14 @@ QFont QETApp::diagramTextsItemFont(qreal size)
 	QSettings settings;
 
 	//Font to use
-	QString diagram_texts_item_family = settings.value("diagramitemfont", "Sans Serif").toString();
-	qreal diagram_texts_item_size     = settings.value("diagramitemsize", 9.0).toDouble();
-	qreal diagram_texts_item_weight   = settings.value("diagramitemweight").toDouble();
-	QString diagram_texts_item_style  = settings.value("diagramitemstyle", "normal").toString();
+	QString diagram_texts_item_family = settings.value("diagramitemfont",
+							   "Sans Serif").toString();
+	qreal diagram_texts_item_size     = settings.value("diagramitemsize",
+							   9.0).toDouble();
+	qreal diagram_texts_item_weight   = settings.value("diagramitemweight"
+							   ).toDouble();
+	QString diagram_texts_item_style  = settings.value("diagramitemstyle",
+							   "normal").toString();
 	
 	if (size != -1.0) {
 		diagram_texts_item_size = size;
@@ -1094,7 +1172,9 @@ QFont QETApp::diagramTextsItemFont(qreal size)
 	//Font to use
 	QFont font_ = diagramTextsItemFont();
 	if (settings.contains("diagrameditor/dynamic_text_font")) {
-		font_.fromString(settings.value("diagrameditor/dynamic_text_font").toString());
+		font_.fromString(settings.value(
+					 "diagrameditor/dynamic_text_font"
+						).toString());
 	}
 	if (size > 0) {
 		font_.setPointSizeF(size);
@@ -1116,7 +1196,9 @@ QFont QETApp::indiTextsItemFont(qreal size)
 	//Font to use
 	QFont font_ = diagramTextsItemFont();
 	if (settings.contains("diagrameditor/independent_text_font")) {
-		font_.fromString(settings.value("diagrameditor/independent_text_font").toString());
+		font_.fromString(settings.value(
+					 "diagrameditor/independent_text_font"
+					 ).toString());
 	}
 	if (size > 0) {
 		font_.setPointSizeF(size);
@@ -1156,12 +1238,14 @@ QList<QETTitleBlockTemplateEditor *> QETApp::titleBlockTemplateEditors() {
 	@return the list of title block template editors which are currently
 	editing a template embedded within \a project.
 */
-QList<QETTitleBlockTemplateEditor *> QETApp::titleBlockTemplateEditors(QETProject *project) {
+QList<QETTitleBlockTemplateEditor *> QETApp::titleBlockTemplateEditors(
+		QETProject *project) {
 	QList<QETTitleBlockTemplateEditor *> editors;
 	if (!project) return(editors);
 
 	// foreach known template editor
-	foreach (QETTitleBlockTemplateEditor *tbt_editor, titleBlockTemplateEditors()) {
+	foreach (QETTitleBlockTemplateEditor *tbt_editor,
+		 titleBlockTemplateEditors()) {
 		if (tbt_editor -> location().parentProject() == project) {
 			editors << tbt_editor;
 		}
@@ -1189,11 +1273,16 @@ QTextOrientationSpinBoxWidget *QETApp::createTextOrientationSpinBoxWidget() {
 	QTextOrientationSpinBoxWidget *widget = new QTextOrientationSpinBoxWidget();
 	widget -> orientationWidget() -> setFont(QETApp::diagramTextsFont());
 	widget -> orientationWidget() -> setUsableTexts(QList<QString>()
-		<< QETApp::tr("Q",            "Single-letter example text - translate length, not meaning")
-		<< QETApp::tr("QET",          "Small example text - translate length, not meaning")
-		<< QETApp::tr("Schema",       "Normal example text - translate length, not meaning")
-		<< QETApp::tr("Electrique",   "Normal example text - translate length, not meaning")
-		<< QETApp::tr("QElectroTech", "Long example text - translate length, not meaning")
+		<< QETApp::tr("Q",
+			      "Single-letter example text - translate length, not meaning")
+		<< QETApp::tr("QET",
+			      "Small example text - translate length, not meaning")
+		<< QETApp::tr("Schema",
+			      "Normal example text - translate length, not meaning")
+		<< QETApp::tr("Electrique",
+			      "Normal example text - translate length, not meaning")
+		<< QETApp::tr("QElectroTech",
+			      "Long example text - translate length, not meaning")
 	);
 	return(widget);
 }
@@ -1346,7 +1435,8 @@ void QETApp::setMainWindowVisible(QMainWindow *window, bool visible) {
 	\~French fenetre a afficher / cacher
 */
 void QETApp::invertMainWindowVisibility(QWidget *window) {
-	if (QMainWindow *w = qobject_cast<QMainWindow *>(window)) setMainWindowVisible(w, !w -> isVisible());
+	if (QMainWindow *w = qobject_cast<QMainWindow *>(window))
+		setMainWindowVisible(w, !w -> isVisible());
 }
 
 /**
@@ -1363,7 +1453,7 @@ if defined(Q_OS_WIN)
 				&& QSysInfo::WindowsVersion < QSysInfo::WV_NT_based))
 				style = QLatin1String("WindowsXP");
 			else
-				style = QLatin1String("Windows");                // default styles for Windows
+				style = QLatin1String("Windows");// default styles for Windows
 #endif
 
 /**
@@ -1379,10 +1469,10 @@ void QETApp::useSystemPalette(bool use) {
 	if (use) {
 		qApp->setPalette(initial_palette_);
 		qApp->setStyleSheet(
-					"QAbstractScrollArea#mdiarea {"
-					"background-color -> setPalette(initial_palette_);"
-					"}"
-					);
+				"QAbstractScrollArea#mdiarea {"
+				"background-color -> setPalette(initial_palette_);"
+				"}"
+				);
 	} else {
 		QFile file(configDir() + "style.css");
 		file.open(QFile::ReadOnly);
@@ -1601,7 +1691,8 @@ void QETApp::openElementLocations(const QList<ElementsLocation> &locations_list)
 	which means the user will be prompter for a new template name.
 	@see QETTitleBlockTemplateEditor::setOpenForDuplication()
 */
-void QETApp::openTitleBlockTemplate(const TitleBlockTemplateLocation &location, bool duplicate) {
+void QETApp::openTitleBlockTemplate(const TitleBlockTemplateLocation &location,
+				    bool duplicate) {
 	QETTitleBlockTemplateEditor *qet_template_editor = new QETTitleBlockTemplateEditor();
 	qet_template_editor -> setOpenForDuplication(duplicate);
 	qet_template_editor -> edit(location);
@@ -1716,11 +1807,13 @@ void QETApp::aboutQET()
 	\~ @return the window's toolbars and floating dock
 	\~French les barres d'outils et dock flottants de la fenetre
 */
-QList<QWidget *> QETApp::floatingToolbarsAndDocksForMainWindow(QMainWindow *window) const {
+QList<QWidget *> QETApp::floatingToolbarsAndDocksForMainWindow(
+		QMainWindow *window) const {
 	QList<QWidget *> widgets;
 	foreach(QWidget *qw, qApp->topLevelWidgets()) {
 		if (!qw -> isWindow()) continue;
-		if (qobject_cast<QToolBar *>(qw) || qobject_cast<QDockWidget *>(qw)) {
+		if (qobject_cast<QToolBar *>(qw)
+		    || qobject_cast<QDockWidget *>(qw)) {
 			if (qw -> parent() == window) widgets << qw;
 		}
 	}
@@ -1772,7 +1865,8 @@ void QETApp::parseArguments() {
 #endif
 #ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
 	if (qet_arguments_.commonTitleBlockTemplatesDirSpecified()) {
-		overrideCommonTitleBlockTemplatesDir(qet_arguments_.commonTitleBlockTemplatesDir());
+		overrideCommonTitleBlockTemplatesDir(
+				qet_arguments_.commonTitleBlockTemplatesDir());
 	}
 #endif
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
@@ -1827,7 +1921,8 @@ void QETApp::initSplashScreen() {
 void QETApp::setSplashScreenStep(const QString &message) {
 	if (!m_splash_screen) return;
 	if (!message.isEmpty()) {
-		m_splash_screen -> showMessage(message, Qt::AlignBottom | Qt::AlignLeft);
+		m_splash_screen -> showMessage(message,
+					       Qt::AlignBottom | Qt::AlignLeft);
 	}
 	qApp->processEvents();
 }
@@ -1874,10 +1969,12 @@ void QETApp::initConfiguration() {
 	if (!config_dir.exists()) config_dir.mkpath(QETApp::configDir());
 
 	QDir custom_elements_dir(QETApp::customElementsDir());
-	if (!custom_elements_dir.exists()) custom_elements_dir.mkpath(QETApp::customElementsDir());
+	if (!custom_elements_dir.exists())
+		custom_elements_dir.mkpath(QETApp::customElementsDir());
 
 	QDir custom_tbt_dir(QETApp::customTitleBlockTemplatesDir());
-	if (!custom_tbt_dir.exists()) custom_tbt_dir.mkpath(QETApp::customTitleBlockTemplatesDir());
+	if (!custom_tbt_dir.exists())
+		custom_tbt_dir.mkpath(QETApp::customTitleBlockTemplatesDir());
 
 	/* recent files
 	 * note:
@@ -1901,22 +1998,40 @@ void QETApp::initConfiguration() {
 	\~French Construit l'icone dans le systray et son menu
 */
 void QETApp::initSystemTray() {
-	setSplashScreenStep(tr("Chargement... icône du systray", "splash screen caption"));
+	setSplashScreenStep(tr("Chargement... icône du systray",
+			       "splash screen caption"));
 	// initialization of the icon menus in the systray
 	// initialisation des menus de l'icone dans le systray
 	menu_systray = new QMenu(tr("QElectroTech", "systray menu title"));
 
-	quitter_qet       = new QAction(QET::Icons::ApplicationExit,       tr("&Quitter"),                                        this);
-	reduce_appli      = new QAction(QET::Icons::Hide,    tr("&Masquer"),                                        this);
-	restore_appli     = new QAction(QET::Icons::Restore,  tr("&Restaurer"),                                      this);
-	reduce_diagrams   = new QAction(QET::Icons::Hide,    tr("&Masquer tous les éditeurs de schéma"),      this);
-	restore_diagrams  = new QAction(QET::Icons::Restore,  tr("&Restaurer tous les éditeurs de schéma"),    this);
-	reduce_elements   = new QAction(QET::Icons::Hide,    tr("&Masquer tous les éditeurs d'élément"),   this);
-	restore_elements  = new QAction(QET::Icons::Restore,  tr("&Restaurer tous les éditeurs d'élément"), this);
-	reduce_templates  = new QAction(QET::Icons::Hide,      tr("&Masquer tous les éditeurs de cartouche",   "systray submenu entry"), this);
-	restore_templates = new QAction(QET::Icons::Restore,   tr("&Restaurer tous les éditeurs de cartouche", "systray submenu entry"), this);
-	new_diagram       = new QAction(QET::Icons::WindowNew, tr("&Nouvel éditeur de schéma"),                 this);
-	new_element       = new QAction(QET::Icons::WindowNew, tr("&Nouvel éditeur d'élément"),              this);
+	quitter_qet       = new QAction(QET::Icons::ApplicationExit,
+					tr("&Quitter"),this);
+	reduce_appli      = new QAction(QET::Icons::Hide,
+					tr("&Masquer"),this);
+	restore_appli     = new QAction(QET::Icons::Restore,
+					tr("&Restaurer"),this);
+	reduce_diagrams   = new QAction(QET::Icons::Hide,
+					tr("&Masquer tous les éditeurs de schéma"),
+					this);
+	restore_diagrams  = new QAction(QET::Icons::Restore,
+					tr("&Restaurer tous les éditeurs de schéma"),
+					this);
+	reduce_elements   = new QAction(QET::Icons::Hide,
+					tr("&Masquer tous les éditeurs d'élément"),
+					this);
+	restore_elements  = new QAction(QET::Icons::Restore,
+					tr("&Restaurer tous les éditeurs d'élément"),
+					this);
+	reduce_templates  = new QAction(QET::Icons::Hide,
+					tr("&Masquer tous les éditeurs de cartouche",
+					   "systray submenu entry"), this);
+	restore_templates = new QAction(QET::Icons::Restore,
+					tr("&Restaurer tous les éditeurs de cartouche",
+					   "systray submenu entry"), this);
+	new_diagram       = new QAction(QET::Icons::WindowNew,
+					tr("&Nouvel éditeur de schéma"),this);
+	new_element       = new QAction(QET::Icons::WindowNew,
+					tr("&Nouvel éditeur d'élément"),this);
 
 	quitter_qet   -> setStatusTip(tr("Ferme l'application QElectroTech"));
 	reduce_appli  -> setToolTip(tr("Réduire QElectroTech dans le systray"));
@@ -1938,7 +2053,8 @@ void QETApp::initSystemTray() {
 	// initialisation de l'icone du systray
 	m_qsti = new QSystemTrayIcon(QET::Icons::QETLogo, this);
 	m_qsti -> setToolTip(tr("QElectroTech", "systray icon tooltip"));
-	connect(m_qsti, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(systray(QSystemTrayIcon::ActivationReason)));
+	connect(m_qsti, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
+		this, SLOT(systray(QSystemTrayIcon::ActivationReason)));
 	m_qsti -> setContextMenu(menu_systray);
 	m_qsti -> show();
 }
@@ -1951,7 +2067,8 @@ void QETApp::initSystemTray() {
 	@param menu the menu windows will be added to
 	@param windows A list of top-level windows.
 */
-template <class T> void QETApp::addWindowsListToMenu(QMenu *menu, const QList<T *> &windows) {
+template <class T> void QETApp::addWindowsListToMenu(
+		QMenu *menu, const QList<T *> &windows) {
 	menu -> addSeparator();
 	foreach (QMainWindow *window, windows) {
 		QAction *current_menu = menu -> addAction(window -> windowTitle());
@@ -2036,7 +2153,8 @@ void QETApp::buildSystemTrayMenu() {
 
 	// add title block template editors in a submenu
 	// add title block template editors in a submenu
-	QMenu *tbtemplates_submenu = menu_systray -> addMenu(tr("Éditeurs de cartouche", "systray menu entry"));
+	QMenu *tbtemplates_submenu = menu_systray -> addMenu(tr("Éditeurs de cartouche",
+								"systray menu entry"));
 	tbtemplates_submenu -> addAction(reduce_templates);
 	tbtemplates_submenu -> addAction(restore_templates);
 	reduce_templates  -> setEnabled(!tbtemplates.isEmpty() && !every_template_reduced);
@@ -2068,7 +2186,10 @@ void QETApp::checkBackupFiles()
 			 * QUrl::StripTrailingSlash to compar a path formated
 			 * like the path returned by KAutoSaveFile
 			 */
-			const QString path = QUrl::fromLocalFile(project->filePath()).adjusted(QUrl::RemoveScheme | QUrl::StripTrailingSlash).path();
+			const QString path = QUrl::fromLocalFile(
+						project->filePath()).adjusted(
+						QUrl::RemoveScheme
+						| QUrl::StripTrailingSlash).path();
 			if (kasf->managedFile() == path) {
 				stale_files.removeOne(kasf);
 			}
@@ -2098,7 +2219,13 @@ void QETApp::checkBackupFiles()
 	}
 
 	//Open backup file
-	if (QET::QetMessageBox::question(nullptr, tr("Fichier de restauration"), text, QMessageBox::Ok|QMessageBox::Cancel) == QMessageBox::Ok)
+	if (QET::QetMessageBox::question(nullptr,
+					 tr("Fichier de restauration"),
+					 text,
+					 QMessageBox::Ok
+					 |QMessageBox::Cancel
+					 )
+			== QMessageBox::Ok)
 	{
 		//If there is opened editors, we find those who are visible
 		if (diagramEditors().count())
@@ -2139,21 +2266,26 @@ void QETApp::fetchWindowStats(
 	// count the number of visible diagrams
 	// compte le nombre de schemas visibles
 	int visible_diagrams = 0;
-	foreach(QMainWindow *w, diagrams) if (w -> isVisible()) ++ visible_diagrams;
+	foreach(QMainWindow *w, diagrams)
+		if (w -> isVisible())
+			++ visible_diagrams;
 	every_diagram_reduced = !visible_diagrams;
 	every_diagram_visible = visible_diagrams == diagrams.count();
 
 	// count the number of visible elements
 	// compte le nombre de schemas visibles
 	int visible_elements = 0;
-	foreach(QMainWindow *w, elements) if (w -> isVisible()) ++ visible_elements;
+	foreach(QMainWindow *w, elements)
+		if (w -> isVisible())
+			++ visible_elements;
 	every_element_reduced = !visible_elements;
 	every_element_visible = visible_elements == elements.count();
 
 	// count visible template editors
 	int visible_templates = 0;
 	foreach(QMainWindow *window, tbtemplates) {
-		if (window -> isVisible()) ++ visible_templates;
+		if (window -> isVisible())
+			++ visible_templates;
 	}
 	every_template_reduced = !visible_templates;
 	every_template_visible = visible_templates == tbtemplates.count();
@@ -2188,8 +2320,10 @@ bool QETApp::eventFiltrer(QObject *object, QEvent *e) {
 */
 void QETApp::printHelp() {
 	QString help(
-		tr("Usage : ") + QFileInfo(qApp->applicationFilePath()).fileName() + tr(" [options] [fichier]...\n\n") +
-		tr("QElectroTech, une application de réalisation de schémas électriques.\n\n"
+		tr("Usage : ")
+		+ QFileInfo(qApp->applicationFilePath()).fileName()
+		+ tr(" [options] [fichier]...\n\n")
+		+ tr("QElectroTech, une application de réalisation de schémas électriques.\n\n"
 		"Options disponibles : \n"
 		"  --help                        Afficher l'aide sur les options\n"
 		"  -v, --version                 Afficher la version\n"
@@ -2243,7 +2377,8 @@ QMap<uint, QETProject *> QETApp::registeredProjects() {
 	\~ @return true if the project could be saved, false otherwise
 	Failure to save a project usually means that it is already saved.
 	\~French true si le projet a pu etre enregistre, false sinon
-	L'echec de l'enregistrement d'un projet signifie generalement qu'il est deja enregistre.
+	L'echec de l'enregistrement d'un projet signifie
+	generalement qu'il est deja enregistre.
 */
 bool QETApp::registerProject(QETProject *project) {
 	// the project must seem valid
