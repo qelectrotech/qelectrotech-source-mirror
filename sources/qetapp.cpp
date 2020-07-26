@@ -409,29 +409,12 @@ QString QETApp::elementTranslatedInfoKey(const QString &info)
 	@return var in form %{my-var} corresponding to the info,
 	if there is not available var for the given info
 	the returned var is %{void}
+	@see QETApp::elementInfoKeys for list
 */
 QString QETApp::elementInfoToVar(const QString &info)
 {
-	if (info == "formula")                             return QString("%{formula}");
-	else if (info == "label")                          return QString("%{label}");
-	else if (info == "plant")                          return QString("%{plant}");
-	else if (info == "comment")                        return QString("%{comment}");
-	else if (info == "description")                    return QString("%{description}");
-	else if (info == "designation")                    return QString("%{designation}");
-	else if (info == "manufacturer")                   return QString("%{manufacturer}");
-	else if (info == "manufacturer_reference")         return QString("%{manufacturer_reference}");
-	else if (info == "supplier")                       return QString("%{supplier}");
-	else if (info == "quantity")                       return QString("%{quantity}");
-	else if (info == "unity")                          return QString("%{unity}");
-	else if (info == "auxiliary1")                     return QString("%{auxiliary1}");
-	else if (info == "auxiliary2")                     return QString("%{auxiliary2}");
-	else if (info == "machine_manufacturer_reference") return QString("%{machine_manufacturer_reference}");
-	else if (info == "location")                       return QString("%{location}");
-	else if (info == "function")                       return QString("%{function}");
-	else if (info == "tension_protocol")               return QString("%{tension_protocol}");
-	else if (info == "conductor_color")                return QString("%{conductor_color}");
-	else if (info == "conductor_section")               return QString("%{conductor_section}");
-	
+	if (elementInfoKeys().contains(info))
+		return QString("%{")+info+QString("}");
 	return (QString ("%{void}"));
 }
 
