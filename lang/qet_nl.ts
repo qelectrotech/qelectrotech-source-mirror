@@ -349,7 +349,7 @@
         <location filename="../sources/factory/ui/addtabledialog.ui" line="119"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="142"/>
         <source>Marges :</source>
-        <translation></translation>
+        <translation>Marges :</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="126"/>
@@ -643,7 +643,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="246"/>
         <source>Organes de protection</source>
-        <translation>Bedieningsorganen</translation>
+        <translation>Beveiligingsorganen</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="269"/>
@@ -663,7 +663,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="310"/>
         <source>Une même référence utilisé par plusieurs éléments ne sera listé qu&apos;une fois</source>
-        <translation>Referentie door verschillende elementen gebruikt, wordt slechts één keer vermeld</translation>
+        <translation>Een door meerdere elementen gebruikte referentie wordt slechts één keer vermeld</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="313"/>
@@ -698,7 +698,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="236"/>
         <source>Borniers</source>
-        <translation>Klemmenstroken</translation>
+        <translation>Terminals</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="330"/>
@@ -733,7 +733,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="137"/>
         <source>Fichiers csv (*.csv)</source>
-        <translation>Bestanden csv (*.csv)</translation>
+        <translation>csv-bestanden (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="146"/>
@@ -843,7 +843,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
         <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1607"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation>Eigenschappen van één enkele geleider wijzigen</translation>
+        <translation>Eigenschappen van één geleider wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1612"/>
@@ -908,7 +908,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="281"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="293"/>
         <source>Unifilaire</source>
-        <translation>Eéndraadschema</translation>
+        <translation>Eéndraadsschema</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="68"/>
@@ -923,7 +923,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="132"/>
         <source>Texte visible</source>
-        <translation>Zichtbare tekst</translation>
+        <translation>Tekst zichtbaar</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="161"/>
@@ -1936,7 +1936,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="69"/>
         <source>Type de contact</source>
-        <translation>Type contact</translation>
+        <translation>Contacttype</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="76"/>
@@ -2243,7 +2243,7 @@ Noot: Geen van deze opties bepalen het wel of niet automatisch nummeren, alleen 
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="288"/>
         <source>Borniers</source>
-        <translation>Aansluitklemmen</translation>
+        <translation>Terminals</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="298"/>
@@ -3731,7 +3731,7 @@ Hier kunt u de standaardtekst hiervoor opgeven voor nieuwe elementen :</translat
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="23"/>
         <source>Verrouiller la position</source>
-        <translation>Vergrendel de positie</translation>
+        <translation>Vergrendel positie</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="30"/>
@@ -4344,17 +4344,17 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="100"/>
         <source>Auto-numérotation des éléments</source>
-        <translation>Automatische elementnummering</translation>
+        <translation>Elementen automatisch nummeren</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="107"/>
         <source>Auto-numérotation des conducteurs</source>
-        <translation>Automatische geleidernummering</translation>
+        <translation>Geleiders automatisch nummeren</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.cpp" line="98"/>
         <source>Multi-collage</source>
-        <translation>Meervoudig kopiëren</translation>
+        <translation>Meervoudig plakken</translation>
     </message>
 </context>
 <context>
