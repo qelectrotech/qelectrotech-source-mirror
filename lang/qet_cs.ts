@@ -58,7 +58,7 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="49"/>
         <source> Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished"></translation>
+        <translation> Vývojáři QElectroTechu</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="53"/>
@@ -288,99 +288,99 @@
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="14"/>
         <source>Ajouter un tableau</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat tabulku</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="24"/>
         <source>Affichage</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazení</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="33"/>
         <source>Ajuster la taille du tableau au folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Upravit velikost tabulky k listu</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="46"/>
         <source>Ajouter de nouveau folio et tableau si nécessaire.</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat nový list a tabulku, pokud je to nezbytné.</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="66"/>
         <source>Nom du tableau</source>
-        <translation type="unfinished"></translation>
+        <translation>Název tabulky</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="73"/>
         <source>Texte des en-têtes</source>
-        <translation type="unfinished"></translation>
+        <translation>Text záhlaví</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="80"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="164"/>
         <source>Gauche</source>
-        <translation type="unfinished">Vlevo</translation>
+        <translation>Vlevo</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="85"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="169"/>
         <source>Centre</source>
-        <translation type="unfinished">Na střed</translation>
+        <translation>Na střed</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="90"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="174"/>
         <source>Droite</source>
-        <translation type="unfinished">Vpravo</translation>
+        <translation>Vpravo</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="98"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="182"/>
         <source>Police :</source>
-        <translation type="unfinished">Písmo:</translation>
+        <translation>Písmo:</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="105"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="149"/>
         <source>Éditer</source>
-        <translation type="unfinished">Upravit</translation>
+        <translation>Upravit</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="119"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="142"/>
         <source>Marges :</source>
-        <translation type="unfinished"></translation>
+        <translation>Okraje:</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="126"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="156"/>
         <source>Alignement :</source>
-        <translation type="unfinished">Zarovnání:</translation>
+        <translation>Zarovnání:</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="136"/>
         <source>Texte du tableau</source>
-        <translation type="unfinished"></translation>
+        <translation>Text tabulky</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="202"/>
         <source>Configuration</source>
-        <translation type="unfinished">Nastavení</translation>
+        <translation>Nastavení</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.cpp" line="41"/>
         <source>Contenu</source>
-        <translation type="unfinished"></translation>
+        <translation>Obsah</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.cpp" line="159"/>
         <source>Sélectionner la police des en tête du tableau</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrat písmo záhlaví tabulky</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.cpp" line="170"/>
         <source>Sélectionner la police des cellules du tableau</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrat písmo buněk tabulky</translation>
     </message>
 </context>
 <context>
@@ -928,7 +928,7 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="161"/>
         <source>Couleur du texte:</source>
-        <translation type="unfinished"></translation>
+        <translation>Barva textu:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="171"/>
@@ -1027,7 +1027,7 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="233"/>
         <source>Section du conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Úsek vodiče</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="320"/>
@@ -1119,12 +1119,12 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
     <message>
         <location filename="../sources/ui/configsaveloaderwidget.ui" line="14"/>
         <source>GroupBox</source>
-        <translation type="unfinished"></translation>
+        <translation>Skupinový rámeček</translation>
     </message>
     <message>
         <location filename="../sources/ui/configsaveloaderwidget.ui" line="17"/>
         <source>Configuration</source>
-        <translation type="unfinished">Nastavení</translation>
+        <translation>Nastavení</translation>
     </message>
 </context>
 <context>
@@ -2082,14 +2082,15 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="350"/>
         <source>Type : %1
 </source>
-        <translation type="unfinished">Typ: %1
+        <translation>Typ: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="351"/>
         <source>Sous-type : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Podtyp: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="352"/>
@@ -2142,157 +2143,157 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formulář</translation>
+        <translation>Formulář</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="35"/>
         <source>Informations disponibles</source>
-        <translation type="unfinished">Dostupné informace</translation>
+        <translation>Dostupné informace</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="45"/>
         <source>Informations à exporter</source>
-        <translation type="unfinished">Informace k vyvedení</translation>
+        <translation>Informace k vyvedení</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="85"/>
         <source>Monter la sélection</source>
-        <translation type="unfinished">Přesunout výběr nahoru</translation>
+        <translation>Přesunout výběr nahoru</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="102"/>
         <source>Ajouter la sélection</source>
-        <translation type="unfinished">Přidat výběr</translation>
+        <translation>Přidat výběr</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="116"/>
         <source>Supprimer la sélection</source>
-        <translation type="unfinished">Smazat výběr</translation>
+        <translation>Smazat výběr</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="130"/>
         <source>Descendre la sélection</source>
-        <translation type="unfinished">Přesunout výběr dolů</translation>
+        <translation>Přesunout výběr dolů</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="173"/>
         <source>Pas de filtre</source>
-        <translation type="unfinished"></translation>
+        <translation>Žádný filtr</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="178"/>
         <source>N&apos;est pas vide</source>
-        <translation type="unfinished"></translation>
+        <translation>Není prázdný</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="183"/>
         <source>Est vide</source>
-        <translation type="unfinished"></translation>
+        <translation>Je prázdný</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="188"/>
         <source>Contient</source>
-        <translation type="unfinished"></translation>
+        <translation>Obsahuje</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="193"/>
         <source>Ne contient pas</source>
-        <translation type="unfinished"></translation>
+        <translation>Neobsahuje</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="198"/>
         <source>Est égal à</source>
-        <translation type="unfinished"></translation>
+        <translation>Rovná se</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="203"/>
         <source>N&apos;est pas égale à</source>
-        <translation type="unfinished"></translation>
+        <translation>Nerovná se</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="214"/>
         <source>Filtre :</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtr:</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="239"/>
         <source>Type d&apos;éléments</source>
-        <translation type="unfinished">Typ prvků</translation>
+        <translation>Typ prvků</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="248"/>
         <source>Simples</source>
-        <translation type="unfinished">Jednoduchý</translation>
+        <translation>Jednoduchý</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="258"/>
         <source>Tous</source>
-        <translation type="unfinished">Vše</translation>
+        <translation>Vše</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="268"/>
         <source>Contacteurs et relais</source>
-        <translation type="unfinished">Stykače a relé</translation>
+        <translation>Stykače a relé</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="278"/>
         <source>Boutons et commutateurs</source>
-        <translation type="unfinished">Tlačítka a přepínače</translation>
+        <translation>Tlačítka a přepínače</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="288"/>
         <source>Borniers</source>
-        <translation type="unfinished">Svorkové pásky</translation>
+        <translation>Svorkové pásky</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="298"/>
         <source>Organes de protection</source>
-        <translation type="unfinished">Ochranná zařízení</translation>
+        <translation>Ochranná zařízení</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="321"/>
         <source>Configuration</source>
-        <translation type="unfinished">Nastavení</translation>
+        <translation>Nastavení</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="330"/>
         <source>Ouvrir la configuration sélectionné</source>
-        <translation type="unfinished">Otevřít vybrané nastavení</translation>
+        <translation>Otevřít vybrané nastavení</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="357"/>
         <source>Sauvegarder la configuration actuelle</source>
-        <translation type="unfinished">Uložit nynější nastavení</translation>
+        <translation>Uložit nynější nastavení</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="389"/>
         <source>Requête SQL personnalisée</source>
-        <translation type="unfinished">Vlastní dotaz SQL</translation>
+        <translation>Vlastní dotaz SQL</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="399"/>
         <source>Requête SQL :</source>
-        <translation type="unfinished">Dotaz SQL:</translation>
+        <translation>Dotaz SQL:</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="34"/>
         <source>Position</source>
-        <translation type="unfinished">Poloha</translation>
+        <translation>Poloha</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="35"/>
         <source>Titre du folio</source>
-        <translation type="unfinished">Název listu</translation>
+        <translation>Název listu</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="36"/>
         <source>Position du folio</source>
-        <translation type="unfinished">Poloha listu</translation>
+        <translation>Poloha listu</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="37"/>
         <source>Numéro du folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Číslo listu</translation>
     </message>
 </context>
 <context>
@@ -3471,7 +3472,7 @@ Stanovte výchozí hodnotu tohoto textového pole pro nové prvky níže:</trans
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="283"/>
         <source>Norvege</source>
-        <translation type="unfinished"></translation>
+        <translation>Norský</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="284"/>
@@ -3544,174 +3545,174 @@ Stanovte výchozí hodnotu tohoto textového pole pro nové prvky níže:</trans
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formulář</translation>
+        <translation>Formulář</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="24"/>
         <source>Affichage</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazení</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="33"/>
         <source>Nom du tableau</source>
-        <translation type="unfinished"></translation>
+        <translation>Název tabulky</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="71"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="264"/>
         <source>Aucun</source>
-        <translation type="unfinished"></translation>
+        <translation>Žádný</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="184"/>
         <source>Toutes</source>
-        <translation type="unfinished"></translation>
+        <translation>Vše</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="164"/>
         <source>Lignes à afficher :</source>
-        <translation type="unfinished"></translation>
+        <translation>Řádky k zobrazení:</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="224"/>
         <source>Y :</source>
-        <translation type="unfinished">Y:</translation>
+        <translation>Y:</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="82"/>
         <source>Tableau suivant</source>
-        <translation type="unfinished"></translation>
+        <translation>Další tabulka</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="174"/>
         <source>X :</source>
-        <translation type="unfinished">X:</translation>
+        <translation>X:</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="207"/>
         <source>Tableau précédent</source>
-        <translation type="unfinished"></translation>
+        <translation>Předchozí tabulka</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="194"/>
         <source>Tableau précédent :</source>
-        <translation type="unfinished"></translation>
+        <translation>Předchozí tabulka:</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="40"/>
         <source>Géometrie et lignes</source>
-        <translation type="unfinished"></translation>
+        <translation>Sestavení a řádky</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="46"/>
         <source>Appliquer la géometrie à tous les tableaux liée à celui-ci</source>
-        <translation type="unfinished"></translation>
+        <translation>Použít sestavení na všechny s touto spojené tabulky</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="132"/>
         <source>Ajuster le tableau au folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Přizpůsobit tabulku listu</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="237"/>
         <source>En tête</source>
-        <translation type="unfinished"></translation>
+        <translation>Záhlaví</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="261"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="420"/>
         <source>Marge</source>
-        <translation type="unfinished"></translation>
+        <translation>Okraj</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="330"/>
         <source>Aligement :</source>
-        <translation type="unfinished"></translation>
+        <translation>Zarovnání:</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="337"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="480"/>
         <source>Gauche</source>
-        <translation type="unfinished">Vlevo</translation>
+        <translation>Vlevo</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="344"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="487"/>
         <source>Centré</source>
-        <translation type="unfinished">Na střed</translation>
+        <translation>Na střed</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="351"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="494"/>
         <source>Droite</source>
-        <translation type="unfinished">Vpravo</translation>
+        <translation>Vpravo</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="374"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="517"/>
         <source>Police</source>
-        <translation type="unfinished">Písmo</translation>
+        <translation>Písmo</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="387"/>
         <source>Tableau</source>
-        <translation type="unfinished"></translation>
+        <translation>Tabulka</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="473"/>
         <source>Alignement :</source>
-        <translation type="unfinished">Zarovnání:</translation>
+        <translation>Zarovnání:</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="544"/>
         <source>Contenu</source>
-        <translation type="unfinished"></translation>
+        <translation>Obsah</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="124"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="131"/>
         <source>Déplacer un tableau</source>
-        <translation type="unfinished"></translation>
+        <translation>Přesunout tabulku</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="137"/>
         <source>Modifier le nombre de ligne affiché par un tableau</source>
-        <translation type="unfinished"></translation>
+        <translation>Změnit počet řádků zobrazených tabulkou</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="150"/>
         <source>Modifier les marges d&apos;une en tête de tableau</source>
-        <translation type="unfinished"></translation>
+        <translation>Změnit okraje záhlaví tabulky</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="163"/>
         <source>Modifier les marges d&apos;un tableau</source>
-        <translation type="unfinished"></translation>
+        <translation>Změnit okraje tabulky</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="171"/>
         <source>Modifier l&apos;alignement d&apos;une en tête de tableau</source>
-        <translation type="unfinished"></translation>
+        <translation>Změnit zarovnání záhlaví tabulky</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="179"/>
         <source>Modifier l&apos;alignement des textes d&apos;un tableau</source>
-        <translation type="unfinished"></translation>
+        <translation>Změnit zarovnání textů v tabulce</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="213"/>
         <source>Modifier la police d&apos;une en tête de tableau</source>
-        <translation type="unfinished"></translation>
+        <translation>Změnit písmo záhlaví tabulky</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="235"/>
         <source>Changer la police d&apos;un tableau</source>
-        <translation type="unfinished"></translation>
+        <translation>Změnit písmo tabulky</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="412"/>
         <source>Appliquer la géometrie d&apos;un tableau aux tableau liée à celui-ci</source>
-        <translation type="unfinished"></translation>
+        <translation>Použít sestavení tabulky na s touto spojenou tabulku</translation>
     </message>
 </context>
 <context>
@@ -4128,13 +4129,13 @@ Na toto , prosím, použijte pokročilý editor.</translation>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="430"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="434"/>
         <source>Couleur du conducteur</source>
-        <translation type="unfinished">Barva vodiče</translation>
+        <translation>Barva vodiče</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="430"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="434"/>
         <source>Section du conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Úsek vodiče</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="20"/>
@@ -4187,27 +4188,27 @@ Na toto , prosím, použijte pokročilý editor.</translation>
     <message>
         <location filename="../sources/ui/marginseditdialog.ui" line="14"/>
         <source>Editer les marges</source>
-        <translation type="unfinished"></translation>
+        <translation>Upravit okraje</translation>
     </message>
     <message>
         <location filename="../sources/ui/marginseditdialog.ui" line="71"/>
         <source>Haut :</source>
-        <translation type="unfinished"></translation>
+        <translation>Nahoře:</translation>
     </message>
     <message>
         <location filename="../sources/ui/marginseditdialog.ui" line="78"/>
         <source>Gauche :</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlevo:</translation>
     </message>
     <message>
         <location filename="../sources/ui/marginseditdialog.ui" line="85"/>
         <source>Droit :</source>
-        <translation type="unfinished"></translation>
+        <translation>Vpravo:</translation>
     </message>
     <message>
         <location filename="../sources/ui/marginseditdialog.ui" line="92"/>
         <source>Bas :</source>
-        <translation type="unfinished"></translation>
+        <translation>Dole:</translation>
     </message>
 </context>
 <context>
@@ -4850,7 +4851,8 @@ aby se použil pro nový potenciál</translation>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="296"/>
         <source>
 Couleur du conducteur : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Barva vodiče: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="197"/>
@@ -4858,7 +4860,8 @@ Couleur du conducteur : %1</source>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="298"/>
         <source>
 Section du conducteur : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Úsek vodiče: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="351"/>
@@ -4949,12 +4952,12 @@ Následující proměnné jsou neslučitelné:
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="341"/>
         <source>Position</source>
-        <translation type="unfinished">Poloha</translation>
+        <translation>Poloha</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="343"/>
         <source>Position du folio</source>
-        <translation type="unfinished">Poloha listu</translation>
+        <translation>Poloha listu</translation>
     </message>
 </context>
 <context>
@@ -4962,17 +4965,17 @@ Následující proměnné jsou neslučitelné:
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formulář</translation>
+        <translation>Formulář</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="20"/>
         <source>Requête</source>
-        <translation type="unfinished"></translation>
+        <translation>Žádost</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="31"/>
         <source>Recharger</source>
-        <translation type="unfinished">Nahrát znovu</translation>
+        <translation>Nahrát znovu</translation>
     </message>
 </context>
 <context>
@@ -5203,12 +5206,12 @@ Chcete uložit změny?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="451"/>
         <source>Date</source>
-        <translation type="unfinished">Datum</translation>
+        <translation>Datum</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="452"/>
         <source>Position</source>
-        <translation type="unfinished">Poloha</translation>
+        <translation>Poloha</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1671"/>
@@ -5437,18 +5440,18 @@ Dostupné volby:
         <location filename="../sources/qetapp.cpp" line="334"/>
         <location filename="../sources/qetapp.cpp" line="411"/>
         <source>Couleur du fil</source>
-        <translation type="unfinished"></translation>
+        <translation>Barva drátu</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="335"/>
         <location filename="../sources/qetapp.cpp" line="412"/>
         <source>Section du fil</source>
-        <translation type="unfinished"></translation>
+        <translation>Úsek drátu</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="450"/>
         <source>Indice de révision</source>
-        <translation type="unfinished">Číslo změny</translation>
+        <translation>Číslo změny</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="463"/>
@@ -5716,7 +5719,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="428"/>
         <source>Exporter la base de donnée interne du projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyvést vnitřní projektovou databázi</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="498"/>
@@ -5792,12 +5795,12 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="552"/>
         <source>SPACE</source>
-        <translation type="unfinished"></translation>
+        <translation>MEZERNÍK</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="553"/>
         <source>Ctrl+SPACE</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+MEZERNÍK</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="556"/>
@@ -6269,7 +6272,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="398"/>
         <source>Ajouter une nomenclature</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat seznam součástí</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="435"/>
@@ -8067,10 +8070,10 @@ Co chcete dělat?</translation>
         <location filename="../sources/qet.cpp" line="302"/>
         <source>%n tableau(s)</source>
         <comment>part of a sentence listing the content of diagram</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n tabulka</numerusform>
+            <numerusform>%n tabulky</numerusform>
+            <numerusform>%n tabulek</numerusform>
         </translation>
     </message>
     <message>
@@ -9006,12 +9009,12 @@ Chcete je nahradit?</translation>
         <location filename="../sources/qetdiagrameditor.cpp" line="2341"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="2372"/>
         <source>Error launching qet_tb_generator plugin</source>
-        <translation type="unfinished">Chyba při spouštění přídavného modulu qet_tb_generator</translation>
+        <translation>Chyba při spouštění přídavného modulu qet_tb_generator</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2342"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.8 bundle only, because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Pro nainstalování přídavného modulu qet_tb_generator&lt;br&gt;navštivte :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt;Nejprve nainstalujte v macOS&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. V případě potřeby nainstalujte python 3.8, protože program používá pevně zapsanou PATH pro přeložení přídavného modulu qet-tb-generator &lt;br&gt; Navštivte:&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Aktualizace na macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2373"/>
@@ -9021,12 +9024,12 @@ Chcete je nahradit?</translation>
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="45"/>
         <source>Ajouter une nomenclature</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat seznam součástí</translation>
     </message>
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="61"/>
         <source>Ajouter un sommaire</source>
-        <translation type="unfinished">Přidat stručný obsah</translation>
+        <translation>Přidat stručný obsah</translation>
     </message>
 </context>
 <context>
@@ -9049,7 +9052,7 @@ Chcete je nahradit?</translation>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="698"/>
         <source>Modifier la géometrie d&apos;un tableau</source>
-        <translation type="unfinished"></translation>
+        <translation>Změnit sestavení tabulky</translation>
     </message>
 </context>
 <context>
@@ -9293,7 +9296,7 @@ Chcete je nahradit?</translation>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="91"/>
         <source>Couleur du conducteur</source>
-        <translation type="unfinished">Barva vodiče</translation>
+        <translation>Barva vodiče</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="121"/>
@@ -9304,7 +9307,7 @@ Chcete je nahradit?</translation>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="312"/>
         <source>Section du conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Úsek vodiče</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="342"/>
@@ -10218,841 +10221,841 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="53"/>
         <source>Pink : Pink</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Růžová: růžová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="54"/>
         <source>Pink : LightPink</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Růžová: světlá růžová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="55"/>
         <source>Pink : HotPink</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Růžová: ostrá růžová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="56"/>
         <source>Pink : DeepPink</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Růžová: sytá růžová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="57"/>
         <source>Pink : PaleVioletRed</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Růžová: bledá fialová červená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="58"/>
         <source>Pink : MediumVioletRed</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Růžová: středně fialová červená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="59"/>
         <source>Red : LightSalmon</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Červená: světlá lososová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="60"/>
         <source>Red : Salmon</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Červená: lososová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="61"/>
         <source>Red : DarkSalmon</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Červená: tmavá lososová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="62"/>
         <source>Red : LightCoral</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Červená: světlá korálová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="63"/>
         <source>Red : IndianRed</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Červená: indiánská červená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="64"/>
         <source>Red : Crimson</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Červená: karmínová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="65"/>
         <source>Red : Firebrick</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Červená: cihlová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="66"/>
         <source>Red : DarkRed</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Červená: tmavá červená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="67"/>
         <source>Red : Red</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Červená: červená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="68"/>
         <source>Orange : OrangeRed</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Oranžová: oranžová červená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="69"/>
         <source>Orange : Tomato</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Oranžová: rajčatová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="70"/>
         <source>Orange : Coral</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Oranžová: korálová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="71"/>
         <source>Orange : DarkOrange</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Oranžová: tmavá oranžová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="72"/>
         <source>Orange : Orange</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Oranžová: oranžová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="73"/>
         <source>Yellow : Yellow</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Žlutá: žlutá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="74"/>
         <source>Yellow : LightYellow</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Žlutá: světlá žlutá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="75"/>
         <source>Yellow : LemonChiffon</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Žlutá: citrónová sněhová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="76"/>
         <source>Yellow : LightGoldenrodYellow</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Žlutá: světlá zlatobýlová žlutá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="77"/>
         <source>Yellow : PapayaWhip</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Žlutá: papájová krémová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="78"/>
         <source>Yellow : Moccasin</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Žlutá: mokasínová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="79"/>
         <source>Yellow : PeachPuff</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Žlutá: broskvová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="80"/>
         <source>Yellow : PaleGoldenrod</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Žlutá: bledá zlatobýlová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="81"/>
         <source>Yellow : Khaki</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Žlutá: hnědožlutá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="82"/>
         <source>Yellow : DarkKhaki</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Žlutá: tmavá hnědožlutá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="83"/>
         <source>Yellow : Gold</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Žlutá: zlatá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="84"/>
         <source>Brown : Cornsilk</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: kukuřičná hedvábná</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="85"/>
         <source>Brown : BlanchedAlmond</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: loupaná mandle</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="86"/>
         <source>Brown : Bisque</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: nepolévaný porcelán</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="87"/>
         <source>Brown : NavajoWhite</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: navajo bílá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="88"/>
         <source>Brown : Wheat</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: pšeničná</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="89"/>
         <source>Brown : Burlywood</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: jadrné dřevo</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="90"/>
         <source>Brown : Tan</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: zhnědnutá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="91"/>
         <source>Brown : RosyBrown</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: růžová hnědá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="92"/>
         <source>Brown : SandyBrown</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: písková hnědá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="93"/>
         <source>Brown : Goldenrod</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: zlatobýlová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="94"/>
         <source>Brown : DarkGoldenrod</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: tmavá zlatobýlová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="95"/>
         <source>Brown : Peru</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: Peru</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="96"/>
         <source>Brown : Chocolate</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: čokoládová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="97"/>
         <source>Brown : SaddleBrown</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: sedlová hnědá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="98"/>
         <source>Brown : Sienna</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: žlutohnědá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="99"/>
         <source>Brown : Brown</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: hnědá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="100"/>
         <source>Brown : Maroon</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: kaštanová hnědá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="101"/>
         <source>Green : DarkOliveGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: tmavá olivová zelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="102"/>
         <source>Green : Olive</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: olivová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="103"/>
         <source>Green : OliveDrab</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: olivová zeleň</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="104"/>
         <source>Green : YellowGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: žlutozelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="105"/>
         <source>Green : LimeGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: citrónová zelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="106"/>
         <source>Green : Lime</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: citrónová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="107"/>
         <source>Green : LawnGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: trávníková zelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="108"/>
         <source>Green : Chartreuse</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: světle zelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="109"/>
         <source>Green : GreenYellow</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: zelenožlutá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="110"/>
         <source>Green : SpringGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: jarní zelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="111"/>
         <source>Green : MediumSpringGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: středně tmavá jarní zelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="112"/>
         <source>Green : LightGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: světlá zelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="113"/>
         <source>Green : PaleGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: bledá zelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="114"/>
         <source>Green : DarkSeaGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: tmavá modrozelená (mořská zeleň)</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="115"/>
         <source>Green : MediumAquamarine</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: středně tmavá akvamarínová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="116"/>
         <source>Green : MediumSeaGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: středně tmavá modrozelená (mořská zeleň)</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="117"/>
         <source>Green : SeaGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: modrozelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="118"/>
         <source>Green : ForestGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: lesní zelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="119"/>
         <source>Green : Green</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: zelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="120"/>
         <source>Green : DarkGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: tmavá zelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="121"/>
         <source>Cyan : Aqua</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Azurová: voda</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="122"/>
         <source>Cyan : Cyan</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Azurová: azurová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="123"/>
         <source>Cyan : LightCyan</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Azurová: světlá modrozelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="124"/>
         <source>Cyan : PaleTurquoise</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Azurová: bledá tyrkysová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="125"/>
         <source>Cyan : Aquamarine</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Azurová: akvamarínová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="126"/>
         <source>Cyan : Turquoise</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Azurová: tyrkysová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="127"/>
         <source>Cyan : MediumTurquoise</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Azurová: středně tmavá tyrkysová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="128"/>
         <source>Cyan : DarkTurquoise</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Azurová: tmavá tyrkysová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="129"/>
         <source>Cyan : LightSeaGreen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Azurová: světlá modrozelená (mořská zeleň)</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="130"/>
         <source>Cyan : CadetBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Azurová: kadetní modrá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="131"/>
         <source>Cyan : DarkCyan</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Azurová: tmavá azurová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="132"/>
         <source>Cyan : Teal</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Azurová: modrozelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="133"/>
         <source>Blue : LightSteelBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrá: světlá ocelová modř</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="134"/>
         <source>Blue : PowderBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrá: světlá prachová modř</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="135"/>
         <source>Blue : LightBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Růžová: světlá modrá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="136"/>
         <source>Blue : SkyBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrá: nebeská modř</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="137"/>
         <source>Blue : LightSkyBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrá: světlá nebeská modř</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="138"/>
         <source>Blue : DeepSkyBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrá: tmavá nebeská modř</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="139"/>
         <source>Blue : DodgerBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrá: kukuřičná modř</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="140"/>
         <source>Blue : CornflowerBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrá: chrpová modř</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="141"/>
         <source>Blue : SteelBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrá: ocelová modř</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="142"/>
         <source>Blue : RoyalBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrá: královská modř</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="143"/>
         <source>Blue : Blue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrá: modrá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="144"/>
         <source>Blue : MediumBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrá: středně tmavá modrá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="145"/>
         <source>Blue : DarkBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrá: tmavá modrá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="146"/>
         <source>Blue : Navy</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrá: námořní modř (tmavomodrá)</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="147"/>
         <source>Blue : MidnightBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrá: půlnoční modř</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="148"/>
         <source>Purple : Lavender</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: levandulová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="149"/>
         <source>Purple : Thistle</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: bodlák</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="150"/>
         <source>Purple : Plum</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: červenofialová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="151"/>
         <source>Purple : Violet</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: fialová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="152"/>
         <source>Purple : Orchid</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: orchidej</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="153"/>
         <source>Purple : Fuchsia</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: fuchsie</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="154"/>
         <source>Purple : Magenta</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: červenorudá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="155"/>
         <source>Purple : MediumOrchid</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: středně tmavá orchidej</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="156"/>
         <source>Purple : MediumPurple</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: středně tmavá purpurová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="157"/>
         <source>Purple : BlueViolet</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: modrá fialová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="158"/>
         <source>Purple : DarkViolet</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: tmavá fialová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="159"/>
         <source>Purple : DarkOrchid</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: tmavá orchidej</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="160"/>
         <source>Purple : DarkMagenta</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: tmavá červenorudá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="161"/>
         <source>Purple : Purple</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: purpurová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="162"/>
         <source>Purple : Indigo</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: indigově modrá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="163"/>
         <source>Purple : DarkSlateBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: tmavá břidlicová modrá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="164"/>
         <source>Purple : SlateBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: břidlicová modrá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="165"/>
         <source>Purple : MediumSlateBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: středně tmavá břidlicová modrá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="166"/>
         <source>White : White</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: bílá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="167"/>
         <source>White : Snow</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: sníh</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="168"/>
         <source>White : Honeydew</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: medová rosa</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="169"/>
         <source>White : MintCream</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: mátová zmrzlina</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="170"/>
         <source>White : Azure</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: blankytně modrá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="171"/>
         <source>White : AliceBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: Alenčina modrá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="172"/>
         <source>White : GhostWhite</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: přízračná bílá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="173"/>
         <source>White : WhiteSmoke</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: bílý kouř</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="174"/>
         <source>White : Seashell</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: ulita</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="175"/>
         <source>White : Beige</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: béžová barva</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="176"/>
         <source>White : OldLace</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: stará krajka</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="177"/>
         <source>White : FloralWhite</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: květinová bílá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="178"/>
         <source>White : Ivory</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: slonovinová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="179"/>
         <source>White : AntiqueWhite</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: starožitná bílá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="180"/>
         <source>White : Linen</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: lněná</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="181"/>
         <source>White : LavenderBlush</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: levandulový nach</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="182"/>
         <source>White : MistyRose</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: nejasná růžová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="183"/>
         <source>Gray : Gainsboro</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Šedá: neutrální šedá barva</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="184"/>
         <source>Gray : LightGray</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Šedá: světlá šedá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="185"/>
         <source>Gray : Silver</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Šedá: stříbrná</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="186"/>
         <source>Gray : DarkGray</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Šedá: tmavá šedá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="187"/>
         <source>Gray : Gray</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Šedá: šedá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="188"/>
         <source>Gray : DimGray</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Šedá: tlumená šedá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="189"/>
         <source>Gray : LightSlateGray</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Šedá: světlá břidlicová šedá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="190"/>
         <source>Gray : SlateGray</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Šedá: břidlicová šedá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="191"/>
         <source>Gray : DarkSlateGray</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Šedá: tmavá břidlicová šedá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="192"/>
         <source>Gray : Black</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Šedá: černá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="194"/>
@@ -11202,841 +11205,841 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/editor/styleeditor.cpp" line="229"/>
         <source>Pink : Pink</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Růžová: růžová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="230"/>
         <source>Pink : LightPink</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Růžová: světlá růžová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="231"/>
         <source>Pink : HotPink</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Růžová: ostrá růžová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="232"/>
         <source>Pink : DeepPink</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Růžová: sytá růžová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="233"/>
         <source>Pink : PaleVioletRed</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Růžová: bledá fialová červená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="234"/>
         <source>Pink : MediumVioletRed</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Růžová: středně fialová červená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="235"/>
         <source>Red : LightSalmon</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Červená: světlá lososová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="236"/>
         <source>Red : Salmon</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Červená: lososová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="237"/>
         <source>Red : DarkSalmon</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Červená: tmavá lososová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="238"/>
         <source>Red : LightCoral</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Červená: světlá korálová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="239"/>
         <source>Red : IndianRed</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Červená: indiánská červená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="240"/>
         <source>Red : Crimson</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Červená: karmínová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="241"/>
         <source>Red : Firebrick</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Červená: cihlová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="242"/>
         <source>Red : DarkRed</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Červená: tmavá červená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="243"/>
         <source>Red : Red</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Červená: červená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="244"/>
         <source>Orange : OrangeRed</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Oranžová: oranžová červená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="245"/>
         <source>Orange : Tomato</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Oranžová: rajčatová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="246"/>
         <source>Orange : Coral</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Oranžová: korálová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="247"/>
         <source>Orange : DarkOrange</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Oranžová: tmavá oranžová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="248"/>
         <source>Orange : Orange</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Oranžová: oranžová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="249"/>
         <source>Yellow : Yellow</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Žlutá: žlutá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="250"/>
         <source>Yellow : LightYellow</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Žlutá: světlá žlutá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="251"/>
         <source>Yellow : LemonChiffon</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Žlutá: citrónová sněhová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="252"/>
         <source>Yellow : LightGoldenrodYellow</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Žlutá: světlá zlatobýlová žlutá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="253"/>
         <source>Yellow : PapayaWhip</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Žlutá: papájová krémová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="254"/>
         <source>Yellow : Moccasin</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Žlutá: mokasínová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="255"/>
         <source>Yellow : PeachPuff</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Žlutá: broskvová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="256"/>
         <source>Yellow : PaleGoldenrod</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Žlutá: bledá zlatobýlová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="257"/>
         <source>Yellow : Khaki</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Žlutá: hnědožlutá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="258"/>
         <source>Yellow : DarkKhaki</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Žlutá: tmavá hnědožlutá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="259"/>
         <source>Yellow : Gold</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Žlutá: zlatá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="260"/>
         <source>Brown : Cornsilk</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: kukuřičná hedvábná</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="261"/>
         <source>Brown : BlanchedAlmond</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: loupaná mandle</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="262"/>
         <source>Brown : Bisque</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: nepolévaný porcelán</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="263"/>
         <source>Brown : NavajoWhite</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: navajo bílá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="264"/>
         <source>Brown : Wheat</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: pšeničná</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="265"/>
         <source>Brown : Burlywood</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: jadrné dřevo</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="266"/>
         <source>Brown : Tan</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: zhnědnutá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="267"/>
         <source>Brown : RosyBrown</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: růžová hnědá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="268"/>
         <source>Brown : SandyBrown</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: písková hnědá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="269"/>
         <source>Brown : Goldenrod</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: zlatobýlová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="270"/>
         <source>Brown : DarkGoldenrod</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: tmavá zlatobýlová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="271"/>
         <source>Brown : Peru</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: Peru</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="272"/>
         <source>Brown : Chocolate</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: čokoládová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="273"/>
         <source>Brown : SaddleBrown</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: sedlová hnědá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="274"/>
         <source>Brown : Sienna</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: žlutohnědá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="275"/>
         <source>Brown : Brown</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: hnědá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="276"/>
         <source>Brown : Maroon</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hnědá: kaštanová hnědá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="277"/>
         <source>Green : DarkOliveGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: tmavá olivová zelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="278"/>
         <source>Green : Olive</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: olivová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="279"/>
         <source>Green : OliveDrab</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: olivová zeleň</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="280"/>
         <source>Green : YellowGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: žlutozelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="281"/>
         <source>Green : LimeGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: citrónová zelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="282"/>
         <source>Green : Lime</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: citrónová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="283"/>
         <source>Green : LawnGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: trávníková zelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="284"/>
         <source>Green : Chartreuse</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: světle zelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="285"/>
         <source>Green : GreenYellow</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: zelenožlutá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="286"/>
         <source>Green : SpringGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: jarní zelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="287"/>
         <source>Green : MediumSpringGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: středně tmavá jarní zelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="288"/>
         <source>Green : LightGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: světlá zelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="289"/>
         <source>Green : PaleGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: bledá zelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="290"/>
         <source>Green : DarkSeaGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: tmavá modrozelená (mořská zeleň)</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="291"/>
         <source>Green : MediumAquamarine</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: středně tmavá akvamarínová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="292"/>
         <source>Green : MediumSeaGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: středně tmavá modrozelená (mořská zeleň)</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="293"/>
         <source>Green : SeaGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: modrozelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="294"/>
         <source>Green : ForestGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: lesní zelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="295"/>
         <source>Green : Green</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: zelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="296"/>
         <source>Green : DarkGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená: tmavá zelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="297"/>
         <source>Cyan : Aqua</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Azurová: voda</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="298"/>
         <source>Cyan : Cyan</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Azurová: azurová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="299"/>
         <source>Cyan : LightCyan</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Azurová: světlá modrozelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="300"/>
         <source>Cyan : PaleTurquoise</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Azurová: bledá tyrkysová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="301"/>
         <source>Cyan : Aquamarine</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Azurová: akvamarínová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="302"/>
         <source>Cyan : Turquoise</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Azurová: tyrkysová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="303"/>
         <source>Cyan : MediumTurquoise</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Azurová: středně tmavá tyrkysová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="304"/>
         <source>Cyan : DarkTurquoise</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Azurová: tmavá tyrkysová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="305"/>
         <source>Cyan : LightSeaGreen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Azurová: světlá modrozelená (mořská zeleň)</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="306"/>
         <source>Cyan : CadetBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Azurová: kadetní modrá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="307"/>
         <source>Cyan : DarkCyan</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Azurová: tmavá azurová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="308"/>
         <source>Cyan : Teal</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Azurová: modrozelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="309"/>
         <source>Blue : LightSteelBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrá: světlá ocelová modř</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="310"/>
         <source>Blue : PowderBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrá: světlá prachová modř</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="311"/>
         <source>Blue : LightBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Růžová: světlá modrá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="312"/>
         <source>Blue : SkyBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrá: nebeská modř</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="313"/>
         <source>Blue : LightSkyBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrá: světlá nebeská modř</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="314"/>
         <source>Blue : DeepSkyBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrá: tmavá nebeská modř</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="315"/>
         <source>Blue : DodgerBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrá: kukuřičná modř</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="316"/>
         <source>Blue : CornflowerBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrá: chrpová modř</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="317"/>
         <source>Blue : SteelBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrá: ocelová modř</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="318"/>
         <source>Blue : RoyalBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrá: královská modř</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="319"/>
         <source>Blue : Blue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrá: modrá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="320"/>
         <source>Blue : MediumBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrá: středně tmavá modrá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="321"/>
         <source>Blue : DarkBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrá: tmavá modrá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="322"/>
         <source>Blue : Navy</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrá: námořní modř (tmavomodrá)</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="323"/>
         <source>Blue : MidnightBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrá: půlnoční modř</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="324"/>
         <source>Purple : Lavender</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: levandulová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="325"/>
         <source>Purple : Thistle</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: bodlák</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="326"/>
         <source>Purple : Plum</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: červenofialová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="327"/>
         <source>Purple : Violet</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: fialová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="328"/>
         <source>Purple : Orchid</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: orchidej</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="329"/>
         <source>Purple : Fuchsia</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: fuchsie</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="330"/>
         <source>Purple : Magenta</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: červenorudá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="331"/>
         <source>Purple : MediumOrchid</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: středně tmavá orchidej</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="332"/>
         <source>Purple : MediumPurple</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: středně tmavá purpurová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="333"/>
         <source>Purple : BlueViolet</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: modrá fialová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="334"/>
         <source>Purple : DarkViolet</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: tmavá fialová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="335"/>
         <source>Purple : DarkOrchid</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: tmavá orchidej</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="336"/>
         <source>Purple : DarkMagenta</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: tmavá červenorudá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="337"/>
         <source>Purple : Purple</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: purpurová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="338"/>
         <source>Purple : Indigo</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: indigově modrá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="339"/>
         <source>Purple : DarkSlateBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: tmavá břidlicová modrá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="340"/>
         <source>Purple : SlateBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: břidlicová modrá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="341"/>
         <source>Purple : MediumSlateBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Purpurová: středně tmavá břidlicová modrá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="342"/>
         <source>White : White</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: bílá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="343"/>
         <source>White : Snow</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: sníh</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="344"/>
         <source>White : Honeydew</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: medová rosa</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="345"/>
         <source>White : MintCream</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: mátová zmrzlina</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="346"/>
         <source>White : Azure</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: blankytně modrá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="347"/>
         <source>White : AliceBlue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: Alenčina modrá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="348"/>
         <source>White : GhostWhite</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: přízračná bílá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="349"/>
         <source>White : WhiteSmoke</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: bílý kouř</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="350"/>
         <source>White : Seashell</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: ulita</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="351"/>
         <source>White : Beige</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: béžová barva</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="352"/>
         <source>White : OldLace</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: stará krajka</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="353"/>
         <source>White : FloralWhite</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: květinová bílá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="354"/>
         <source>White : Ivory</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: slonovinová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="355"/>
         <source>White : AntiqueWhite</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: starožitná bílá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="356"/>
         <source>White : Linen</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: lněná</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="357"/>
         <source>White : LavenderBlush</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: levandulový nach</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="358"/>
         <source>White : MistyRose</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bílá: nejasná růžová</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="359"/>
         <source>Gray : Gainsboro</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Šedá: neutrální šedá barva</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="360"/>
         <source>Gray : LightGray</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Šedá: světlá šedá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="361"/>
         <source>Gray : Silver</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Šedá: stříbrná</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="362"/>
         <source>Gray : DarkGray</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Šedá: tmavá šedá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="363"/>
         <source>Gray : Gray</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Šedá: šedá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="364"/>
         <source>Gray : DimGray</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Šedá: tlumená šedá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="365"/>
         <source>Gray : LightSlateGray</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Šedá: světlá břidlicová šedá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="366"/>
         <source>Gray : SlateGray</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Šedá: břidlicová šedá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="367"/>
         <source>Gray : DarkSlateGray</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Šedá: tmavá břidlicová šedá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="368"/>
         <source>Gray : Black</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Šedá: černá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="370"/>
@@ -12075,12 +12078,12 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="392"/>
         <source>Style :</source>
-        <translation type="unfinished">Styl:</translation>
+        <translation>Styl:</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="394"/>
         <source>Épaisseur :</source>
-        <translation type="unfinished"></translation>
+        <translation>Tloušťka:</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="401"/>
@@ -12118,32 +12121,32 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formulář</translation>
+        <translation>Formulář</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="38"/>
         <source>Informations disponibles</source>
-        <translation type="unfinished">Dostupné informace</translation>
+        <translation>Dostupné informace</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="51"/>
         <source>Information à afficher</source>
-        <translation type="unfinished"></translation>
+        <translation>Informace k zobrazení</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="145"/>
         <source>Configuration</source>
-        <translation type="unfinished">Nastavení</translation>
+        <translation>Nastavení</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="161"/>
         <source>Requête SQL :</source>
-        <translation type="unfinished">Dotaz SQL:</translation>
+        <translation>Dotaz SQL:</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.cpp" line="130"/>
         <source>Position</source>
-        <translation type="unfinished">Poloha</translation>
+        <translation>Poloha</translation>
     </message>
 </context>
 <context>
@@ -13204,12 +13207,12 @@ Největší délka: %2px</translation>
     <message>
         <location filename="../sources/dataBase/projectdatabase.cpp" line="500"/>
         <source>Exporter la base de données interne du projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyvést vnitřní projektovou databázi</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/projectdatabase.cpp" line="508"/>
         <source>sans_nom</source>
-        <translation type="unfinished"></translation>
+        <translation>Bez názvu</translation>
     </message>
 </context>
 <context>
