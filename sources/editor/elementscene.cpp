@@ -67,17 +67,20 @@ ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 	initPasteArea();
 	m_undo_stack.setClean();
 	m_decorator_lock = new QMutex(QMutex::NonRecursive);
-	connect(&m_undo_stack, SIGNAL(indexChanged(int)), this, SLOT(managePrimitivesGroups()));
-	connect(this, SIGNAL(selectionChanged()), this, SLOT(managePrimitivesGroups()));
+	connect(&m_undo_stack, SIGNAL(indexChanged(int)),
+		this, SLOT(managePrimitivesGroups()));
+	connect(this, SIGNAL(selectionChanged()),
+		this, SLOT(managePrimitivesGroups()));
 }
 
 /**
- * @brief ElementScene::~ElementScene
+	@brief ElementScene::~ElementScene
  */
 ElementScene::~ElementScene()
 {
-		//Disconnect to avoid crash, see bug report N° 122.
-	disconnect(&m_undo_stack, SIGNAL(indexChanged(int)), this, SLOT(managePrimitivesGroups()));
+	//Disconnect to avoid crash, see bug report N° 122.
+	disconnect(&m_undo_stack, SIGNAL(indexChanged(int)),
+		   this, SLOT(managePrimitivesGroups()));
 	delete m_decorator_lock;
 
 	if (m_event_interface)
@@ -95,7 +98,8 @@ void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	if (m_event_interface) {
 		if (m_event_interface -> mouseMoveEvent(e)) {
 			if (m_event_interface->isFinish()) {
-				delete m_event_interface; m_event_interface = nullptr;
+				delete m_event_interface;
+				m_event_interface = nullptr;
 				emit(partsAdded());
 			}
 			return;
@@ -125,7 +129,8 @@ void ElementScene::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 	if (m_event_interface) {
 		if (m_event_interface -> mousePressEvent(e)) {
 			if (m_event_interface->isFinish()) {
-				delete m_event_interface; m_event_interface = nullptr;
+				delete m_event_interface;
+				m_event_interface = nullptr;
 				emit(partsAdded());
 			}
 			return;
@@ -143,7 +148,8 @@ void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	if (m_event_interface) {
 		if (m_event_interface -> mouseReleaseEvent(e)) {
 			if (m_event_interface->isFinish()) {
-				delete m_event_interface; m_event_interface = nullptr;
+				delete m_event_interface;
+				m_event_interface = nullptr;
 				emit(partsAdded());
 			}
 			return;
@@ -169,7 +175,8 @@ void ElementScene::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 	if (m_event_interface) {
 		if (m_event_interface -> mouseDoubleClickEvent(event)) {
 			if (m_event_interface->isFinish()) {
-				delete m_event_interface; m_event_interface = nullptr;
+				delete m_event_interface;
+				m_event_interface = nullptr;
 				emit(partsAdded());
 			}
 			return;
@@ -192,7 +199,8 @@ void ElementScene::keyPressEvent(QKeyEvent *event)
 		{
 			if (m_event_interface->isFinish())
 			{
-				delete m_event_interface; m_event_interface = nullptr;
+				delete m_event_interface;
+				m_event_interface = nullptr;
 				emit(partsAdded());
 			}
 			return;
@@ -243,7 +251,11 @@ void ElementScene::keyPressEvent(QKeyEvent *event)
 			}
 			
 			qgo->setPos(p);
-			QPropertyUndoCommand *undo = new QPropertyUndoCommand(qgo, "pos", QVariant(original_pos), QVariant(p));
+			QPropertyUndoCommand *undo =
+					new QPropertyUndoCommand(qgo,
+								 "pos",
+								 QVariant(original_pos),
+								 QVariant(p));
 			undo->setText(tr("Déplacer une primitive"));
 			undo->enableAnimation();
 			undoStack().push(undo);
@@ -394,10 +406,12 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 
 	// define the size of the element by the upper multiple of 10
 	int upwidth = ((qRound(size.width())/10)*10)+10;
-	if ((qRound(size.width())%10) > 6) upwidth+=10;
+	if ((qRound(size.width())%10) > 6)
+		upwidth += 10;
 
 	int upheight = ((qRound(size.height())/10)*10)+10;
-	if ((qRound(size.height())%10) > 6) upheight+=10;
+	if ((qRound(size.height())%10) > 6)
+		upheight += 10;
 
 	// the margin between the real size of the element and the rectangle that delimits
 	int xmargin = qRound(upwidth - size.width());
@@ -411,9 +425,15 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 	root.setAttribute("type",        "element");
 	root.setAttribute("width",       QString("%1").arg(upwidth));
 	root.setAttribute("height",      QString("%1").arg(upheight));
-	root.setAttribute("hotspot_x",   QString("%1").arg(-(qRound(size.x() - (xmargin/2)))));
-	root.setAttribute("hotspot_y",   QString("%1").arg(-(qRound(size.y() - (ymargin/2)))));
-	root.setAttribute("orientation", "dyyy"); //we keep the orientation for compatibility with previous version of qet
+	root.setAttribute("hotspot_x",   QString("%1").arg(
+				  -(qRound(size.x() - (xmargin/2)))));
+	root.setAttribute("hotspot_y",   QString("%1").arg(
+				  -(qRound(size.y() - (ymargin/2)))));
+
+#pragma message("@TODO remove this code? the orientation for element")
+	// we keep the orientation for compatibility with previous version of qet
+	root.setAttribute("orientation", "dyyy");
+
 	root.setAttribute("version", QET::version);
 	root.setAttribute("link_type", m_elmt_type);
 
@@ -514,7 +534,10 @@ QRectF ElementScene::boundingRectFromXml(const QDomDocument &xml_document) {
 	\~French si ce pointeur vers un ElementContent est different de 0,
 	il sera rempli avec le contenu ajoute a l'element par le fromXml
 */
-void ElementScene::fromXml(const QDomDocument &xml_document, const QPointF &position, bool consider_informations, ElementContent *content_ptr)
+void ElementScene::fromXml(const QDomDocument &xml_document,
+			   const QPointF &position,
+			   bool consider_informations,
+			   ElementContent *content_ptr)
 {
 	bool state = true;
 	
@@ -794,11 +817,15 @@ void ElementScene::slot_editAuthorInformations() {
 	dialog_layout -> addWidget(text_field);
 	
 	// ajoute deux boutons au dialogue
-	QDialogButtonBox *dialog_buttons = new QDialogButtonBox(is_read_only ? QDialogButtonBox::Ok : QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+	QDialogButtonBox *dialog_buttons = new QDialogButtonBox(
+				is_read_only ? QDialogButtonBox::Ok :
+					       QDialogButtonBox::Ok
+					       | QDialogButtonBox::Cancel);
 	dialog_layout -> addWidget(dialog_buttons);
-	connect(dialog_buttons, SIGNAL(accepted()),    &dialog_author, SLOT(accept()));
-	connect(dialog_buttons, SIGNAL(rejected()),    &dialog_author, SLOT(reject()));
-	
+	connect(dialog_buttons, SIGNAL(accepted()),&dialog_author, SLOT(accept()));
+	connect(dialog_buttons, SIGNAL(rejected()),&dialog_author, SLOT(reject()));
+
+	// start the dialogue
 	// lance le dialogue
 	if (dialog_author.exec() == QDialog::Accepted && !is_read_only) {
 		QString new_infos = text_field -> toPlainText().remove(QChar(13)); // CR-less text
@@ -824,7 +851,10 @@ void  ElementScene::slot_editProperties()
 	if (type != m_elmt_type ||
 		kind_info != m_elmt_kindInfo ||
 		elmt_info != m_elmt_information)
-		undoStack().push(new ChangePropertiesCommand(this, type, kind_info, elmt_info));
+		undoStack().push(new ChangePropertiesCommand(this,
+							     type,
+							     kind_info,
+							     elmt_info));
 }
 
 /**
@@ -851,7 +881,9 @@ void ElementScene::slot_editNames()
 	{
 		NamesList new_names = nlw_->names();
 		if (new_names != m_names_list) {
-			undoStack().push(new ChangeNamesCommand(this, m_names_list, new_names));
+			undoStack().push(new ChangeNamesCommand(this,
+								m_names_list,
+								new_names));
 		}
 	}
 }
@@ -878,7 +910,9 @@ QList<CustomElementPart *> ElementScene::primitives() const {
 */
 QList<QGraphicsItem *> ElementScene::zItems(ItemOptions options) const {
 	// handle dummy request, i.e. when neither Selected nor NonSelected are set
-	if (!(options & ElementScene::Selected) && !(options & ElementScene::NonSelected)) {
+	if (!(options & ElementScene::Selected)
+			&&
+			!(options & ElementScene::NonSelected)) {
 		return(QList<QGraphicsItem *>());
 	}
 	
@@ -887,7 +921,8 @@ QList<QGraphicsItem *> ElementScene::zItems(ItemOptions options) const {
 	QMutableListIterator<QGraphicsItem *> i(all_items_list);
 	
 	// remove unrequired items
-	if ((options & ElementScene::SelectedOrNot) != ElementScene::SelectedOrNot) {
+	if ((options & ElementScene::SelectedOrNot)
+			!= ElementScene::SelectedOrNot) {
 		bool keep_selected = options & ElementScene::Selected;
 		while (i.hasNext()) {
 			if (i.next() -> isSelected() != keep_selected) {
@@ -918,7 +953,9 @@ QList<QGraphicsItem *> ElementScene::zItems(ItemOptions options) const {
 	// orders the parts by their zValue
 	// ordonne les parties par leur zValue
 	if (options & SortByZValue) {
-		std::sort (all_items_list.begin(), all_items_list.end(), ElementScene::zValueLessThan);
+		std::sort (all_items_list.begin(),
+			   all_items_list.end(),
+			   ElementScene::zValueLessThan);
 	}
 	
 	// possibly add the limits
@@ -999,7 +1036,8 @@ void ElementScene::reset()
 	\~French  le boundingRect de ces parties,
 	exprime dans les coordonnes de la scene
 */
-QRectF ElementScene::elementContentBoundingRect(const ElementContent &content) const {
+QRectF ElementScene::elementContentBoundingRect(
+		const ElementContent &content) const {
 	QRectF bounding_rect;
 	foreach(QGraphicsItem *qgi, content) {
 		// skip non-primitives QGraphicsItems (paste area, selection decorator)
@@ -1029,24 +1067,35 @@ bool ElementScene::applyInformations(const QDomDocument &xml_document)
 	// Root must be an element definition
 	QDomElement root = xml_document.documentElement();
 	
-	if (root.tagName() != "definition" || root.attribute("type") != "element")
+	if (
+			root.tagName() != "definition"
+			||
+			root.attribute("type") != "element")
 		return(false);
 
 	//Extract info about element type
 	m_elmt_type = root.attribute("link_type", "simple");
-	m_elmt_kindInfo.fromXml(root.firstChildElement("kindInformations"), "kindInformation");
-		//Extract info of element
-	m_elmt_information.fromXml(root.firstChildElement("elementInformations"), "elementInformation");
+	m_elmt_kindInfo.fromXml(
+				root.firstChildElement("kindInformations"),
+				"kindInformation");
+	//Extract info of element
+	m_elmt_information.fromXml(
+				root.firstChildElement("elementInformations"),
+				"elementInformation");
 
 	//Extract names of xml definition
 	m_names_list.fromXml(root);
 	
 	//extract additional informations
 	setInformations(QString());
-	for (QDomNode node = root.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
+	for (QDomNode node = root.firstChild() ;
+	     !node.isNull() ;
+	     node = node.nextSibling())
+	{
 		QDomElement elmt = node.toElement();
 		if (elmt.isNull()) continue;
-		if (elmt.tagName() == "informations") {
+		if (elmt.tagName() == "informations")
+		{
 			setInformations(elmt.text());
 			break;
 		}
@@ -1153,7 +1202,9 @@ ElementContent ElementScene::addContent(const ElementContent &content) {
 	\~ @return Content adds
 	\~French Le contenu ajoute
 */
-ElementContent ElementScene::addContentAtPos(const ElementContent &content, const QPointF &pos) {
+ElementContent ElementScene::addContentAtPos(const ElementContent &content,
+					     const QPointF &pos) {
+	// calculate the boundingRect of the content to add
 	// calcule le boundingRect du contenu a ajouter
 	QRectF bounding_rect = elementContentBoundingRect(content);
 	
@@ -1248,15 +1299,15 @@ void ElementScene::centerElementToOrigine() {
 	int move_y = center_y - (center_y %10);
 	if (center_y < 0) move_y -= 10;
 
-		//move each primitive by @move
-		foreach (QGraphicsItem *qgi, items()) {
-			if (qgi -> type() == ElementPrimitiveDecorator::Type) continue;
-			if (qgi -> type() == QGraphicsRectItem::Type) continue;
-			//deselect item for disable decorator
-			qgi -> setSelected(false);
-			qgi -> moveBy(-(move_x), -(move_y));
-		}
-		emit (needZoomFit());
+	//move each primitive by @move
+	foreach (QGraphicsItem *qgi, items()) {
+		if (qgi -> type() == ElementPrimitiveDecorator::Type) continue;
+		if (qgi -> type() == QGraphicsRectItem::Type) continue;
+		//deselect item for disable decorator
+		qgi -> setSelected(false);
+		qgi -> moveBy(-(move_x), -(move_y));
+	}
+	emit (needZoomFit());
 }
 
 /**
@@ -1273,14 +1324,18 @@ void ElementScene::managePrimitivesGroups()
 	if (!m_decorator)
 	{
 		m_decorator = new ElementPrimitiveDecorator();
-		connect(m_decorator, SIGNAL(actionFinished(ElementEditionCommand*)), this, SLOT(stackAction(ElementEditionCommand *)));
+		connect(m_decorator,
+			SIGNAL(actionFinished(ElementEditionCommand*)),
+			this, SLOT(stackAction(ElementEditionCommand *)));
 		addItem(m_decorator);
 		m_decorator -> hide();
 	}
 	
 		// should we hide the decorator?
-	QList<QGraphicsItem *> selected_items = zItems(ElementScene::Selected | ElementScene::IncludeTerminals);
-    if (selected_items.size() <= 1)
+	QList<QGraphicsItem *> selected_items = zItems(
+				ElementScene::Selected
+				| ElementScene::IncludeTerminals);
+	if (selected_items.size() <= 1)
 	{
 		m_decorator -> hide();
 	}
@@ -1315,7 +1370,8 @@ void ElementScene::stackAction(ElementEditionCommand *command) {
 	
 	if (!command -> elementView()) {
 		foreach (QGraphicsView *view, views()) {
-			if (ElementView *element_view = dynamic_cast<ElementView *>(view)) {
+			if (ElementView *element_view =
+					dynamic_cast<ElementView *>(view)) {
 				command -> setElementView(element_view);
 				break;
 			}

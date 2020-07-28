@@ -106,10 +106,16 @@ class ElementScene : public QGraphicsScene
 		virtual void setGrid(int, int);
 		virtual const QDomDocument toXml(bool = true);
 		virtual QRectF boundingRectFromXml(const QDomDocument &);
-		virtual void fromXml(const QDomDocument &, const QPointF & = QPointF(), bool = true, ElementContent * = nullptr);
+		virtual void fromXml(const QDomDocument &,
+				     const QPointF & = QPointF(),
+				     bool = true,
+				     ElementContent * = nullptr);
 		virtual void reset();
 		virtual QList<CustomElementPart *> primitives() const;
-		virtual QList<QGraphicsItem *> zItems(ItemOptions options = ItemOptions(SortByZValue | IncludeTerminals | SelectedOrNot)) const;
+		virtual QList<QGraphicsItem *>
+		zItems(ItemOptions options = ItemOptions(SortByZValue
+							 | IncludeTerminals
+							 | SelectedOrNot)) const;
 		virtual ElementContent selectedContent() const;
 		virtual void getPasteArea(const QRectF &);
 		QRectF elementSceneGeometricRect () const;
