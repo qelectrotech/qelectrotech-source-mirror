@@ -40,9 +40,13 @@
 #include <QKeyEvent>
 
 /**
-	Constructeur
-	@param editor L'editeur d'element concerne
-	@param parent le Widget parent
+	@brief ElementScene::ElementScene
+	constructor
+	\~French Constructeur
+	\~ @param editor : Element editor concerned
+	\~French L'editeur d'element concerne
+	\~ @param parent : Widget parent
+	\~French le Widget parent
 */
 ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 	QGraphicsScene(parent),
@@ -51,11 +55,11 @@ ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 	m_element_editor(editor)
 {
 	setItemIndexMethod(QGraphicsScene::NoIndex);
-		//Set to no index, because they can be the source of the crash with conductor and shape ghost.
-		//https://forum.qt.io/topic/71316/qgraphicsscenefinditembsptreevisitor-visit-crashes-due-to-an-obsolete-paintevent-after-qgraphicsscene-removeitem
-		//https://stackoverflow.com/questions/38458830/crash-after-qgraphicssceneremoveitem-with-custom-item-class
-		//http://www.qtcentre.org/archive/index.php/t-33730.html
-		//http://tech-artists.org/t/qt-properly-removing-qgraphicitems/3063
+	//Set to no index, because they can be the source of the crash with conductor and shape ghost.
+	//https://forum.qt.io/topic/71316/qgraphicsscenefinditembsptreevisitor-visit-crashes-due-to-an-obsolete-paintevent-after-qgraphicsscene-removeitem
+	//https://stackoverflow.com/questions/38458830/crash-after-qgraphicssceneremoveitem-with-custom-item-class
+	//http://www.qtcentre.org/archive/index.php/t-33730.html
+	//http://tech-artists.org/t/qt-properly-removing-qgraphicitems/3063
 	
 	m_behavior = Normal;
 	setItemIndexMethod(NoIndex);
@@ -84,9 +88,9 @@ ElementScene::~ElementScene()
 }
 
 /**
- * @brief ElementScene::mouseMoveEvent
- * @param e
- */
+	@brief ElementScene::mouseMoveEvent
+	@param e
+*/
 void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	if (m_event_interface) {
 		if (m_event_interface -> mouseMoveEvent(e)) {
@@ -114,9 +118,9 @@ void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 }
 
 /**
- * @brief ElementScene::mousePressEvent
- * @param e
- */
+	@brief ElementScene::mousePressEvent
+	@param e
+*/
 void ElementScene::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 	if (m_event_interface) {
 		if (m_event_interface -> mousePressEvent(e)) {
@@ -132,9 +136,9 @@ void ElementScene::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 }
 
 /**
- * @brief ElementScene::mouseReleaseEvent
- * @param e
- */
+	@brief ElementScene::mouseReleaseEvent
+	@param e
+*/
 void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	if (m_event_interface) {
 		if (m_event_interface -> mouseReleaseEvent(e)) {
@@ -158,9 +162,9 @@ void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 }
 
 /**
- * @brief ElementScene::mouseDoubleClickEvent
- * @param event
- */
+	@brief ElementScene::mouseDoubleClickEvent
+	@param event
+*/
 void ElementScene::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 	if (m_event_interface) {
 		if (m_event_interface -> mouseDoubleClickEvent(event)) {
@@ -176,10 +180,10 @@ void ElementScene::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 }
 
 /**
- * @brief ElementScene::keyPressEvent
- * manage key press event
- * @param event
- */
+	@brief ElementScene::keyPressEvent
+	manage key press event
+	@param event
+*/
 void ElementScene::keyPressEvent(QKeyEvent *event)
 {
 	if (m_event_interface)
@@ -252,10 +256,10 @@ void ElementScene::keyPressEvent(QKeyEvent *event)
 }
 
 /**
- * @brief ElementScene::contextMenuEvent
- * Display the context menu event, only if behavior are Normal
- * @param event
- */
+	@brief ElementScene::contextMenuEvent
+	Display the context menu event, only if behavior are Normal
+	@param event
+*/
 void ElementScene::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 {
 	QGraphicsScene::contextMenuEvent(event);
@@ -267,9 +271,13 @@ void ElementScene::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 }
 
 /**
-	Dessine l'arriere-plan de l'editeur, cad l'indicateur de hotspot.
-	@param p Le QPainter a utiliser pour dessiner
-	@param rect Le rectangle de la zone a dessiner
+	@brief ElementScene::drawForeground
+	Draws the background of the editor, ie the hotspot indicator.
+	\~French Dessine l'arriere-plan de l'editeur, cad l'indicateur de hotspot.
+	\~ @param p : The QPainter to use for drawing
+	\~French Le QPainter a utiliser pour dessiner
+	\~ @param rect : The rectangle of the area to be drawn
+	\~French Le rectangle de la zone a dessiner
 */
 void ElementScene::drawForeground(QPainter *p, const QRectF &rect) {
 	Q_UNUSED(rect);
@@ -290,10 +298,10 @@ void ElementScene::drawForeground(QPainter *p, const QRectF &rect) {
 }
 
 /**
- * @brief ElementScene::setEventInterface
- * Set a new event interface
- * @param interface
- */
+	@brief ElementScene::setEventInterface
+	Set a new event interface
+	@param interface
+*/
 void ElementScene::setEventInterface(ESEventInterface *event_interface)
 {
 	if (m_event_interface)
@@ -307,9 +315,9 @@ void ElementScene::setEventInterface(ESEventInterface *event_interface)
 }
 
 /**
- * @brief ElementScene::clearEventInterface
- * Clear the current event interface
- */
+	@brief ElementScene::clearEventInterface
+	Clear the current event interface
+*/
 void ElementScene::clearEventInterface()
 {
 	if(m_event_interface)
@@ -320,10 +328,11 @@ void ElementScene::clearEventInterface()
 }
 
 /**
- * @brief ElementScene::setBehavior
- * Modifie the current behavior of this scene
- * @param b
- */
+	@brief ElementScene::setBehavior
+	Modify the current behavior of this scene
+	\~French Modifie the current behavior of this scene
+	\~ @param b
+*/
 void ElementScene::setBehavior(ElementScene::Behavior b) {
 	m_behavior = b;
 }
@@ -333,22 +342,29 @@ ElementScene::Behavior ElementScene::behavior() const {
 }
 
 /**
-	@return la taille horizontale de la grille
+	@brief ElementScene::xGrid
+	@return the horizontal size of the grid
+	\~French la taille horizontale de la grille
 */
 int ElementScene::xGrid() const {
 	return(m_x_grid);
 }
 
 /**
-	@return la taille verticale de la grille
+	@brief ElementScene::yGrid
+	@return vertical grid size
+	\~French la taille verticale de la grille
 */
 int ElementScene::yGrid() const {
 	return(m_y_grid);
 }
 
 /**
-	@param x_g Taille horizontale de la grille
-	@param y_g Taille verticale de la grille
+	@brief ElementScene::setGrid
+	\~ @param x_g : Horizontal grid size
+	\~French Taille horizontale de la grille
+	\~ @param y_g : Vertical grid size
+	\~French Taille verticale de la grille
 */
 void ElementScene::setGrid(int x_g, int y_g) {
 	m_x_grid = x_g ? x_g : 1;
@@ -356,40 +372,41 @@ void ElementScene::setGrid(int x_g, int y_g) {
 }
 
 /**
- * @brief ElementScene::toXml
- * Export this element as a xml file
- * @param all_parts (true by default) if true, export the entire element in xml,
- * if false, only export the selected parts.
- * @return an xml document that describe the element.
- */
+	@brief ElementScene::toXml
+	Export this element as a xml file
+	@param all_parts : (true by default)
+	if true, export the entire element in xml,
+	if false, only export the selected parts.
+	@return an xml document that describe the element.
+*/
 const QDomDocument ElementScene::toXml(bool all_parts)
 {
 	QRectF size= elementSceneGeometricRect();
 
-		//if the element doesn't contains the origin point of the scene
-		//we move the element to the origin for solve this default before saving
+	// if the element doesn't contains the origin point of the scene
+	// we move the element to the origin for solve this default before saving
 	if (!size.contains(0,0) && all_parts)
 	{
 		centerElementToOrigine();
-			//recalcul the size after movement
-		size= elementSceneGeometricRect();
+		//recalcul the size after movement
+		size = elementSceneGeometricRect();
 	}
 
-		//define the size of the element by the upper multiple of 10
+	// define the size of the element by the upper multiple of 10
 	int upwidth = ((qRound(size.width())/10)*10)+10;
 	if ((qRound(size.width())%10) > 6) upwidth+=10;
 
 	int upheight = ((qRound(size.height())/10)*10)+10;
 	if ((qRound(size.height())%10) > 6) upheight+=10;
 
-		//the margin between the real size of the element and the rectangle that delimits
+	// the margin between the real size of the element and the rectangle that delimits
 	int xmargin = qRound(upwidth - size.width());
 	int ymargin = qRound(upheight - size.height());
 
-		// document XML
+	// document XML
 	QDomDocument xml_document;
 
-		//Root of xml document
+	//Root of xml document
 	QDomElement root = xml_document.createElement("definition");
 	root.setAttribute("type",        "element");
 	root.setAttribute("width",       QString("%1").arg(upwidth));
@@ -400,12 +417,12 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 	root.setAttribute("version", QET::version);
 	root.setAttribute("link_type", m_elmt_type);
 
-		//Uuid used to compare two elements
+	//Uuid used to compare two elements
 	QDomElement uuid = xml_document.createElement("uuid");
 	uuid.setAttribute("uuid", QUuid::createUuid().toString());
 	root.appendChild(uuid);
 	
-		//names of element
+	//names of element
 	root.appendChild(m_names_list.toXml(xml_document));
 
 	if (m_elmt_type == "slave" || m_elmt_type == "master")
@@ -415,24 +432,27 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 		root.appendChild(kindInfo);
 	}
 	
-	if(m_elmt_type == "simple" || m_elmt_type == "master" || m_elmt_type == "terminal")
+	if(
+			m_elmt_type == "simple"
+			|| m_elmt_type == "master"
+			|| m_elmt_type == "terminal")
 	{
 		QDomElement element_info = xml_document.createElement("elementInformations");
 		m_elmt_information.toXml(element_info, "elementInformation");
 		root.appendChild(element_info);
 	}
 	
-		//complementary information about the element
+	//complementary information about the element
 	QDomElement informations_element = xml_document.createElement("informations");
 	root.appendChild(informations_element);
 	informations_element.appendChild(xml_document.createTextNode(informations()));
 	
 	QDomElement description = xml_document.createElement("description");
 
-		//the graphic description of the element
+	//the graphic description of the element
 	foreach(QGraphicsItem *qgi, zItems())
 	{
-			//If the export concerns only the selection, the not selected part is ignored
+		//If the export concerns only the selection, the not selected part is ignored
 		if (!all_parts && !qgi -> isSelected()) continue;
 		if (CustomElementPart *ce = dynamic_cast<CustomElementPart *>(qgi))
 		{
@@ -447,17 +467,23 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 }
 
 /**
-	@param xml_document un document XML decrivant un element
-	@return le boundingRect du contenu de l'element
+	@brief ElementScene::boundingRectFromXml
+	@param xml_document : an XML document describing an element
+	\~French un document XML decrivant un element
+	\~ @return the boundingRect of the element's content
+	\~French le boundingRect du contenu de l'element
 */
 QRectF ElementScene::boundingRectFromXml(const QDomDocument &xml_document) {
+	// load parts from XML document
 	// charge les parties depuis le document XML
 	ElementContent loaded_content = loadContent(xml_document);
 	if (loaded_content.isEmpty()) return(QRectF());
 	
+	// calcule the boundingRect
 	// calcule le boundingRect
 	QRectF bounding_rect = elementContentBoundingRect(loaded_content);
 	
+	// destroy charged parties
 	// detruit les parties chargees
 	qDeleteAll(loaded_content);
 	
@@ -465,23 +491,34 @@ QRectF ElementScene::boundingRectFromXml(const QDomDocument &xml_document) {
 }
 
 /**
-	Importe l'element decrit dans un document XML. Si une position est
+	@brief ElementScene::fromXml
+	Imports the element described in an XML document. If a position is
+	specified, the imported elements are positioned in such a way that the
+	upper left corner of the smallest rectangle that can surround them all
+	(the bounding rect) either at this position.
+	\~French Importe l'element decrit dans un document XML. Si une position est
 	precisee, les elements importes sont positionnes de maniere a ce que le
 	coin superieur gauche du plus petit rectangle pouvant les entourant tous
 	(le bounding rect) soit a cette position.
-	@param xml_document un document XML decrivant l'element
-	@param position La position des parties importees
-	@param consider_informations Si vrai, les informations complementaires
+	\~ @param xml_document : an XML document describing the element
+	\~French un document XML decrivant l'element
+	\~ @param position : The position of the imported parts
+	\~French La position des parties importees
+	\~ @param consider_informations : If true, additional information
+	(dimensions, hotspot, etc.) will be taken into account
+	\~French Si vrai, les informations complementaires
 	(dimensions, hotspot, etc.) seront prises en compte
-	@param content_ptr si ce pointeur vers un ElementContent est different de 0,
+	\~ @param content_ptr :
+	if this pointer to an ElementContent is different from 0,
+	it will be filled with the content added to the element by the fromXml
+	\~French si ce pointeur vers un ElementContent est different de 0,
 	il sera rempli avec le contenu ajoute a l'element par le fromXml
-	@return true si l'import a reussi, false sinon
 */
 void ElementScene::fromXml(const QDomDocument &xml_document, const QPointF &position, bool consider_informations, ElementContent *content_ptr)
 {
 	bool state = true;
 	
-		//Consider the informations of the element
+	//Consider the informations of the element
 	if (consider_informations) {
 		state = applyInformations(xml_document);
 	}
@@ -500,8 +537,10 @@ void ElementScene::fromXml(const QDomDocument &xml_document, const QPointF &posi
 }
 
 /**
-	@return the minimum, margin-less rectangle the element can fit into, in scene
-	coordinates. It is different from itemsBoundingRect() because it is not supposed
+	@brief ElementScene::elementSceneGeometricRect
+	@return the minimum, margin-less rectangle the element can fit into,
+	in scene coordinates.
+	It is different from itemsBoundingRect() because it is not supposed
 	to imply any margin.
 */
 QRectF ElementScene::elementSceneGeometricRect() const{
@@ -518,8 +557,11 @@ QRectF ElementScene::elementSceneGeometricRect() const{
 }
 
 /**
-	@return true si l'element comporte au moins une borne, false s'il n'en a
-	aucune.
+	@brief ElementScene::containsTerminals
+	@return true if the element has at least one terminal,
+	false if it has none.
+	\~French true si l'element comporte au moins une borne,
+	false s'il n'en a aucune.
 */
 bool ElementScene::containsTerminals() const {
 	foreach(QGraphicsItem *qgi,items()) {
@@ -531,40 +573,54 @@ bool ElementScene::containsTerminals() const {
 }
 
 /**
-	@return la pile d'annulations de cet editeur d'element
+	@brief ElementScene::undoStack
+	@return the undo stack of this element editor
+	\~French la pile d'annulations de cet editeur d'element
 */
 QUndoStack &ElementScene::undoStack() {
 	return(m_undo_stack);
 }
 
 /**
-	@return le gestionnaire de QGraphicsItem de cet editeur d'element
+	@brief ElementScene::qgiManager
+	@return the QGraphicsItem manager of this item editor
+	\~French le gestionnaire de QGraphicsItem de cet editeur d'element
 */
 QGIManager &ElementScene::qgiManager() {
 	return(m_qgi_manager);
 }
 
 /**
-	@return true si le presse-papier semble contenir un element
+	@brief ElementScene::clipboardMayContainElement
+	@return true if the clipboard appears to contain an element
+	\~French true si le presse-papier semble contenir un element
 */
 bool ElementScene::clipboardMayContainElement() {
 	QString clipboard_text = QApplication::clipboard() -> text().trimmed();
-	bool may_be_element = clipboard_text.startsWith("<definition") && clipboard_text.endsWith("</definition>");
+	bool may_be_element = clipboard_text.startsWith("<definition")
+			&& clipboard_text.endsWith("</definition>");
 	return(may_be_element);
 }
 
 /**
-	@param clipboard_content chaine de caractere, provenant vraisemblablement du
-	presse-papier.
-	@return true si clipboard_content a ete copie depuis cet element.
+	@brief ElementScene::wasCopiedFromThisElement
+	\~ @param clipboard_content :
+	character string, probably coming from the clipboard.
+	\~French chaine de caractere, provenant vraisemblablement du presse-papier.
+	\~ @return
+	true if clipboard_content has been copied from this element.
+	\~French true si clipboard_content a ete copie depuis cet element.
 */
 bool ElementScene::wasCopiedFromThisElement(const QString &clipboard_content) {
 	return(clipboard_content == m_last_copied);
 }
 
 /**
-	Gere le fait de couper la selection = l'exporter en XML dans le
-	presse-papier puis la supprimer.
+	@brief ElementScene::cut
+	Handles the fact of cutting the selection
+	= exporting it in XML to the clipboard then deleting it.
+	\~French Gere le fait de couper la selection
+	= l'exporter en XML dans le presse-papier puis la supprimer.
 */
 void ElementScene::cut() {
 	copy();
@@ -574,8 +630,11 @@ void ElementScene::cut() {
 }
 
 /**
-	Gere le fait de copier la selection = l'exporter en XML dans le
-	presse-papier.
+	@brief ElementScene::copy
+	Handles the fact of copying the selection
+	= exporting it as XML to the clipboard.
+	\~French Gere le fait de copier la selection
+	= l'exporter en XML dans lepresse-papier.
 */
 void ElementScene::copy() {
 	// accede au presse-papier
@@ -594,10 +653,18 @@ void ElementScene::copy() {
 	m_last_copied = clipboard_content;
 }
 
+/**
+	@brief ElementScene::editor
+	@return
+*/
 QETElementEditor* ElementScene::editor() const {
 	return m_element_editor;
 }
 
+/**
+	@brief ElementScene::setElementInfo
+	@param dc
+*/
 void ElementScene::setElementInfo(const DiagramContext& dc)
 {
 	if(m_elmt_information != dc)
@@ -608,18 +675,22 @@ void ElementScene::setElementInfo(const DiagramContext& dc)
 }
 
 /**
- * @brief ElementScene::slot_select
- * Select the item in content, every others items in the scene are deselected
- * @param content
- */
+	@brief ElementScene::slot_select
+	Select the item in content,
+	every others items in the scene are deselected
+	@param content
+*/
 void ElementScene::slot_select(const ElementContent &content)
 {
 	blockSignals(true);
 	
-	//Befor clear selection, we must to remove the handlers items in @content,
-	//because if in @content there are a selected item, but also its handlers items,
-	//When item is deselected, the item delete its handlers items,
-	//then handlers in content doesn't exist anymore and cause segfault
+	/* Befor clear selection,
+	 * we must to remove the handlers items in @content,
+	 * because if in @content there are a selected item,
+	 * but also its handlers items, When item is deselected,
+	 * the item delete its handlers items,
+	 * then handlers in content doesn't exist anymore and cause segfault
+	 */
 	QList<QGraphicsItem*> items_list;
 	for (QGraphicsItem *qgi : content)
 	{
@@ -636,39 +707,46 @@ void ElementScene::slot_select(const ElementContent &content)
 }
 
 /**
- * @brief ElementScene::slot_selectAll
- * Select all items
- */
+	@brief ElementScene::slot_selectAll
+	Select all items
+*/
 void ElementScene::slot_selectAll() {
 	slot_select(items());
 }
 
 /**
- * @brief ElementScene::slot_deselectAll
- * deselect all item
- */
+	@brief ElementScene::slot_deselectAll
+	deselect all item
+*/
 void ElementScene::slot_deselectAll() {
 	slot_select(ElementContent());
 }
 
 /**
-	Inverse la selection
+	@brief ElementScene::slot_invertSelection
+	Inverse Selection
+	\~French Inverse la selection
 */
 void ElementScene::slot_invertSelection() {
 	blockSignals(true);
-	foreach(QGraphicsItem *qgi, items()) qgi -> setSelected(!qgi -> isSelected());
+	foreach(QGraphicsItem *qgi,
+			items()) qgi -> setSelected(!qgi -> isSelected());
 	blockSignals(false);
 	emit(selectionChanged());
 }
 
 /**
-	Supprime les elements selectionnes
+	@brief ElementScene::slot_delete
+	Delete selected items
+	\~French Supprime les elements selectionnes
 */
 void ElementScene::slot_delete() {
+	// check that there is something selected
 	// verifie qu'il y a qqc de selectionne
 	QList<QGraphicsItem *> selected_items = selectedItems();
 	if (selected_items.isEmpty()) return;
 	
+	// erase everything that is selected
 	// efface tout ce qui est selectionne
 	m_undo_stack.push(new DeletePartsCommand(this, selected_items));
 	
@@ -678,13 +756,18 @@ void ElementScene::slot_delete() {
 }
 
 /**
-	Lance un dialogue pour editer les informations complementaires de cet
-	element. Concretement, ce champ libre est destine a accueillir des informations
-	sur l'auteur de l'element, sa licence, etc.
+	@brief ElementScene::slot_editAuthorInformations
+	Starts a dialog to edit the additional information of this element.
+	Concretely, this free field is intended to receive information
+	on the author of the element, its license, etc.
+	\~French Lance un dialogue pour editer les informations complementaires
+	de cet element. Concretement, ce champ libre est destine a accueillir
+	des informations sur l'auteur de l'element, sa licence, etc.
 */
 void ElementScene::slot_editAuthorInformations() {
 	bool is_read_only = m_element_editor && m_element_editor -> isReadOnly();
 	
+	// create a dialogue
 	// cree un dialogue
 	QDialog dialog_author(m_element_editor);
 	dialog_author.setModal(true);
@@ -695,12 +778,14 @@ void ElementScene::slot_editAuthorInformations() {
 	dialog_author.setWindowTitle(tr("Éditer les informations sur l'auteur", "window title"));
 	QVBoxLayout *dialog_layout = new QVBoxLayout(&dialog_author);
 	
+	// adds an explanatory field to the dialogue
 	// ajoute un champ explicatif au dialogue
 	QLabel *information_label = new QLabel(tr("Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l'élément, sa licence, ou tout autre renseignement que vous jugerez utile."));
 	information_label -> setAlignment(Qt::AlignJustify | Qt::AlignVCenter);
 	information_label -> setWordWrap(true);
 	dialog_layout -> addWidget(information_label);
-	
+
+	// add a QTextEdit to the dialog
 	// ajoute un QTextEdit au dialogue
 	QTextEdit *text_field = new QTextEdit();
 	text_field -> setAcceptRichText(false);
@@ -724,9 +809,9 @@ void ElementScene::slot_editAuthorInformations() {
 }
 
 /**
- * @brief ElementScene::slot_editProperties
- * Open dialog to edit the element properties
- */
+	@brief ElementScene::slot_editProperties
+	Open dialog to edit the element properties
+*/
 void  ElementScene::slot_editProperties()
 {
 	QString type = m_elmt_type;
@@ -743,9 +828,9 @@ void  ElementScene::slot_editProperties()
 }
 
 /**
- * @brief ElementScene::slot_editNames
- * Launch a dialog for edit the names of the edited element
- */
+	@brief ElementScene::slot_editNames
+	Launch a dialog for edit the names of the edited element
+*/
 void ElementScene::slot_editNames()
 {
 	bool is_read_only = m_element_editor && m_element_editor -> isReadOnly();
@@ -772,6 +857,7 @@ void ElementScene::slot_editNames()
 }
 
 /**
+	@brief ElementScene::primitives
 	@return the list of primitives currently present on the scene.
 */
 QList<CustomElementPart *> ElementScene::primitives() const {
@@ -785,8 +871,10 @@ QList<CustomElementPart *> ElementScene::primitives() const {
 }
 
 /**
-	@param include_terminals true pour inclure les bornes, false sinon
-	@return les parties de l'element ordonnes par zValue croissante
+	@brief ElementScene::zItems
+	@param options
+	@return the parts of the element ordered by increasing zValue
+	\~French les parties de l'element ordonnes par zValue croissante
 */
 QList<QGraphicsItem *> ElementScene::zItems(ItemOptions options) const {
 	// handle dummy request, i.e. when neither Selected nor NonSelected are set
@@ -827,11 +915,13 @@ QList<QGraphicsItem *> ElementScene::zItems(ItemOptions options) const {
 		}
 	}
 	
+	// orders the parts by their zValue
 	// ordonne les parties par leur zValue
 	if (options & SortByZValue) {
 		std::sort (all_items_list.begin(), all_items_list.end(), ElementScene::zValueLessThan);
 	}
 	
+	// possibly add the limits
 	// rajoute eventuellement les bornes
 	if (options & ElementScene::IncludeTerminals) {
 		all_items_list += terminals;
@@ -843,7 +933,9 @@ QList<QGraphicsItem *> ElementScene::zItems(ItemOptions options) const {
 }
 
 /**
-	@return les parties graphiques selectionnees
+	@brief ElementScene::selectedContent
+	@return the selected graphic parts
+	\~French les parties graphiques selectionnees
 */
 ElementContent ElementScene::selectedContent() const {
 	ElementContent content;
@@ -854,28 +946,33 @@ ElementContent ElementScene::selectedContent() const {
 }
 
 /**
-	@param to_paste Rectangle englobant les parties a coller
-	@return le rectangle ou il faudra coller ces parties
+	@brief ElementScene::getPasteArea
+	\~ @param to_paste : Rectangle enclosing the parts to be glued
+	\~French Rectangle englobant les parties a coller
+	\~ @return the rectangle where you will have to glue these parts
+	\~French le rectangle ou il faudra coller ces parties
 */
 void ElementScene::getPasteArea(const QRectF &to_paste) {
+	// we draw it on the stage
 	// on le dessine sur la scene
 	m_paste_area -> setRect(to_paste);
 	addItem(m_paste_area);
-	
+	//we switch the scene to "zone search for copy / paste" mode
 	// on passe la scene en mode "recherche de zone pour copier/coller"
 	m_behavior = PasteArea;
 }
 
 /**
- * @brief ElementScene::reset
- * Remove all QGraphicsItems in the scene and clear the undo stack.
- */
+	@brief ElementScene::reset
+	Remove all QGraphicsItems in the scene and clear the undo stack.
+*/
 void ElementScene::reset()
 {
 	clearSelection();
 	undoStack().clear();
 
-		//We don't add handlers, because it's the role of the primitive or decorator to remove it.
+	// We don't add handlers,
+	// because it's the role of the primitive or decorator to remove it.
 	QList<QGraphicsItem*> items_list;
 	for (QGraphicsItem *qgi : items())
 	{
@@ -894,9 +991,13 @@ void ElementScene::reset()
 }
 
 /**
-	@param content Contenu ( = parties) d'un element
-	@return le boundingRect de ces parties, exprime dans les coordonnes de la
-	scene
+	@brief ElementScene::elementContentBoundingRect
+	\~ @param content : Content (= parts) of an element
+	\~French Contenu ( = parties) d'un element
+	\~ @return the boundingRect of these parts,
+	expressed in the coordinates of the scene
+	\~French  le boundingRect de ces parties,
+	exprime dans les coordonnes de la scene
 */
 QRectF ElementScene::elementContentBoundingRect(const ElementContent &content) const {
 	QRectF bounding_rect;
@@ -910,21 +1011,28 @@ QRectF ElementScene::elementContentBoundingRect(const ElementContent &content) c
 }
 
 /**
-	Applique les informations (dimensions, hostpot, orientations, connexions
-	internes, noms et informations complementaires) contenu dans un document XML.
-	@param xml_document Document XML a analyser
-	@return true si la lecture et l'application des informations s'est bien
-	passee, false sinon.
+	@brief ElementScene::applyInformations
+	Applies the information (dimensions, hostpot, orientations,
+	internal connections, names and additional information)
+	contained in an XML document.
+	\~French Applique les informations (dimensions, hostpot, orientations,
+	connexions internes, noms et informations complementaires)
+	contenu dans un document XML.
+	\~ @param xml_document : Document XML a analyser
+	\~ @return
+	true if reading and applying the information went well, false otherwise.
+	\~French true si la lecture et l'application
+	des informations s'est bien passee, false sinon.
 */
 bool ElementScene::applyInformations(const QDomDocument &xml_document)
 {
-		// Root must be an element definition
+	// Root must be an element definition
 	QDomElement root = xml_document.documentElement();
 	
 	if (root.tagName() != "definition" || root.attribute("type") != "element")
 		return(false);
 
-		//Extract info about element type
+	//Extract info about element type
 	m_elmt_type = root.attribute("link_type", "simple");
 	m_elmt_kindInfo.fromXml(root.firstChildElement("kindInformations"), "kindInformation");
 		//Extract info of element
@@ -948,34 +1056,22 @@ bool ElementScene::applyInformations(const QDomDocument &xml_document)
 }
 
 /**
-	Par le document XML xml_document et retourne le contenu ( = liste de
-	parties) correspondant.
-	@param xml_document Document XML a analyser
-	@param error_message pointeur vers une QString ; si error_message est
-	different de 0, un message d'erreur sera stocke dedans si necessaire
+	@brief ElementScene::loadContent
+	Create and load the content describe in the xml document.
+	@param xml_document : xml dom document to analyze
+	@return the loaded content
 */
-/**
- * @brief ElementScene::loadContent
- * @param xml_document : xml dom document to analyze
- * @return 
- */
-/**
- * @brief ElementScene::loadContent
- * Create and load the content describe in the xml document.
- * @param xml_document
- * @return the loaded content
- */
 ElementContent ElementScene::loadContent(const QDomDocument &xml_document)
 {
 	ElementContent loaded_parts;
 	
-		//The root is supposed to be an element definition
+	// The root is supposed to be an element definition
 	QDomElement root = xml_document.documentElement();
 	
 	if (root.tagName() != "definition" || root.attribute("type") != "element")
 		return(loaded_parts);
 	
-		//Load the graphic description of the element
+	//Load the graphic description of the element
 	for (QDomNode node = root.firstChild() ; !node.isNull() ; node = node.nextSibling())
 	{
 		QDomElement elmts = node.toElement();
@@ -1002,7 +1098,7 @@ ElementContent ElementScene::loadContent(const QDomDocument &xml_document)
 				else if (qde.tagName() == "text")     cep = new PartText     (m_element_editor);
 				else if (qde.tagName() == "arc")      cep = new PartArc      (m_element_editor);
 				else if (qde.tagName() == "dynamic_text") cep = new PartDynamicTextField (m_element_editor);
-					//For the input (aka the old text field) we try to convert it to the new partDynamicTextField
+				//For the input (aka the old text field) we try to convert it to the new partDynamicTextField
 				else if (qde.tagName() == "input") cep = pdtf = new PartDynamicTextField(m_element_editor);
 				else continue;
 				
@@ -1028,9 +1124,14 @@ ElementContent ElementScene::loadContent(const QDomDocument &xml_document)
 }
 
 /**
-	Ajoute le contenu content a cet element
-	@param content contenu ( = liste de parties) a charger
-	@return Le contenu ajoute
+	@brief ElementScene::addContent
+	Add content content to this element
+	\~French Ajoute le contenu content a cet element
+	\~ @param content :
+	content (= list of parts) to load
+	\~French contenu ( = liste de parties) a charger
+	\~ @return Content adds
+	\~French Le contenu ajoute
 */
 ElementContent ElementScene::addContent(const ElementContent &content) {
 	foreach(QGraphicsItem *part, content) {
@@ -1040,18 +1141,30 @@ ElementContent ElementScene::addContent(const ElementContent &content) {
 }
 
 /**
-	Ajoute le contenu content a cet element
-	@param content contenu ( = liste de parties) a charger
-	@param pos Position du coin superieur gauche du contenu apres avoir ete ajoute
-	@return Le contenu ajoute
+	@brief ElementScene::addContentAtPos
+	Add content content to this element
+	\~French Ajoute le contenu content a cet element
+	\~ @param content :
+	content (= list of parts) to load
+	\~French contenu ( = liste de parties) a charger
+	\~ @param pos :
+	Position of the upper left corner of the content after being added
+	\~French Position du coin superieur gauche du contenu apres avoir ete ajoute
+	\~ @return Content adds
+	\~French Le contenu ajoute
 */
 ElementContent ElementScene::addContentAtPos(const ElementContent &content, const QPointF &pos) {
 	// calcule le boundingRect du contenu a ajouter
 	QRectF bounding_rect = elementContentBoundingRect(content);
 	
-	// en deduit le decalage a appliquer aux parties pour les poser au point demander
+	/*   deduced the offset to be applied to the parts to place
+	 * them at the point requested
+	 *   en deduit le decalage a appliquer aux parties pour les poser
+	 * au point demander
+	 */
 	QPointF offset = pos - bounding_rect.topLeft();
 	
+	// add the parts with the correct offset
 	// ajoute les parties avec le decalage adequat
 	foreach(QGraphicsItem *part, content) {
 		part -> setPos(part -> pos() + offset);
@@ -1061,8 +1174,10 @@ ElementContent ElementScene::addContentAtPos(const ElementContent &content, cons
 }
 
 /**
+	@brief ElementScene::addPrimitive
 	Add a primitive to the scene by wrapping it within an
 	ElementPrimitiveDecorator group.
+	@param primitive
 */
 void ElementScene::addPrimitive(QGraphicsItem *primitive) {
 	if (!primitive) return;
@@ -1070,7 +1185,9 @@ void ElementScene::addPrimitive(QGraphicsItem *primitive) {
 }
 
 /**
-	Initialise la zone de collage
+	@brief ElementScene::initPasteArea
+	Initializes the paste area
+	\~French Initialise la zone de collage
 */
 void ElementScene::initPasteArea() {
 	m_paste_area = new QGraphicsRectItem();
@@ -1089,10 +1206,15 @@ void ElementScene::initPasteArea() {
 }
 
 /**
-	Arrondit les coordonnees du point passees en parametre de facon a ce que ce
-	point soit aligne sur la grille.
-	@param point une reference vers un QPointF. Cet objet sera modifie.
-	
+	@brief ElementScene::snapToGrid
+	Rounds the coordinates of the point passed as a parameter
+	so that this point is aligned with the grid.
+	\~French Arrondit les coordonnees du point passees en parametre
+	de facon a ce que ce point soit aligne sur la grille.
+	\~ @param point :
+	a reference to a QPointF. This object will be modified.
+	\~French une reference vers un QPointF. Cet objet sera modifie.
+	\~ @return point
 */
 QPointF ElementScene::snapToGrid(QPointF point) {
 	point.rx() = qRound(point.x() / m_x_grid) * m_x_grid;
@@ -1101,6 +1223,9 @@ QPointF ElementScene::snapToGrid(QPointF point) {
 }
 
 /**
+	@brief ElementScene::zValueLessThan
+	@param item1 : QGraphicsItem
+	@param item2 : QGraphicsItem
 	@return true if \a item1's zValue() is less than \a item2's.
 */
 bool ElementScene::zValueLessThan(QGraphicsItem *item1, QGraphicsItem *item2) {
@@ -1108,10 +1233,10 @@ bool ElementScene::zValueLessThan(QGraphicsItem *item1, QGraphicsItem *item2) {
 }
 
 /**
- * @brief ElementScene::centerElementToOrigine
- * try to center better is possible the element to the scene
- * (the calcul isn't optimal but work good)
- */
+	@brief ElementScene::centerElementToOrigine
+	try to center better is possible the element to the scene
+	(the calcul isn't optimal but work good)
+*/
 void ElementScene::centerElementToOrigine() {
 	QRectF size= elementSceneGeometricRect();
 	int center_x = qRound(size.center().x());
@@ -1135,13 +1260,13 @@ void ElementScene::centerElementToOrigine() {
 }
 
 /**
- * @brief ElementScene::managePrimitivesGroups
- * Ensure the decorator is adequately shown, hidden or updated so it always
- * represents the current selection.
- */
+	@brief ElementScene::managePrimitivesGroups
+	Ensure the decorator is adequately shown, hidden or updated so it always
+	represents the current selection.
+*/
 void ElementScene::managePrimitivesGroups()
 {
-		//this function is not supposed to be reentrant
+	//this function is not supposed to be reentrant
 	if (!m_decorator_lock->tryLock())
 		return;
 	
@@ -1163,7 +1288,10 @@ void ElementScene::managePrimitivesGroups()
 	{
 		for(QGraphicsItem *qgi : selected_items)
 		{
-				//We recall set selected, then every primitive will remove there handler because there are several item selected
+			/* We recall set selected,
+			 * then every primitive will remove there handler
+			 * because there are several item selected
+			 */
 			qgi->setSelected(true);
 		}
 		m_decorator -> setZValue(1000000);
@@ -1174,7 +1302,9 @@ void ElementScene::managePrimitivesGroups()
 }
 
 /**
+	@brief ElementScene::stackAction
 	Push the provided \a command on the undo stack.
+	@param command
 */
 void ElementScene::stackAction(ElementEditionCommand *command) {
 	if (command -> elementScene()) {

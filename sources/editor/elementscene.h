@@ -31,9 +31,10 @@ class QETElementEditor;
 class ESEventInterface;
 class QKeyEvent;
 /**
+	@brief The ElementScene class
 	This class is the canvas allowing the visual edition of an electrial element.
-	It displays the various primitives composing the drawing of the element, the
-	border due to its fixed size and its hotspot.
+	It displays the various primitives composing the drawing of the element,
+	the border due to its fixed size and its hotspot.
 */
 class ElementScene : public QGraphicsScene
 {
@@ -80,7 +81,7 @@ class ElementScene : public QGraphicsScene
 		
 		QString m_last_copied;
 	
-			/// Decorator item displayed when at least one item is selected
+		/// Decorator item displayed when at least one item is selected
 		ElementPrimitiveDecorator *m_decorator = nullptr;
 
 		int m_x_grid,
@@ -157,15 +158,15 @@ class ElementScene : public QGraphicsScene
 		void stackAction(ElementEditionCommand *);
 	
 	signals:
-			/// Signal emitted after one or several parts were added
+		/// Signal emitted after one or several parts were added
 		void partsAdded();
-			/// Signal emitted after one or several parts were removed
+		/// Signal emitted after one or several parts were removed
 		void partsRemoved();
-			/// Signal emitted when the zValue of one or several parts change
+		/// Signal emitted when the zValue of one or several parts change
 		void partsZValueChanged();
-			/// Signal emitted when users have defined the copy/paste area
+		/// Signal emitted when users have defined the copy/paste area
 		void pasteAreaDefined(const QRectF &);
-			/// Signal emitted when need zoomFit
+		/// Signal emitted when need zoomFit
 		void needZoomFit();
 		void elementInfoChanged();
 };
@@ -174,6 +175,7 @@ Q_DECLARE_OPERATORS_FOR_FLAGS(ElementScene::ItemOptions)
 
 
 /**
+	@brief ElementScene::setNames
 	@param nameslist New set of naes for the currently edited element
 */
 inline void ElementScene::setNames(const NamesList &nameslist) {
@@ -181,6 +183,7 @@ inline void ElementScene::setNames(const NamesList &nameslist) {
 }
 
 /**
+	@brief ElementScene::names
 	@return the list of names of the currently edited element
 */
 inline NamesList ElementScene::names() const {
@@ -188,6 +191,7 @@ inline NamesList ElementScene::names() const {
 }
 
 /**
+	@brief ElementScene::informations
 	@return extra informations of the currently edited element
 */
 inline QString ElementScene::informations() const {
@@ -195,6 +199,7 @@ inline QString ElementScene::informations() const {
 }
 
 /**
+	@brief ElementScene::setInformations
 	@param infos new extra information for the currently edited element
 */
 inline void ElementScene::setInformations(const QString &infos) {
