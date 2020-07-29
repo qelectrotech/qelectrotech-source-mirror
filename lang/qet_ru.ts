@@ -11,54 +11,54 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="30"/>
         <source>À propos</source>
-        <translation type="unfinished"></translation>
+        <translation>О программе</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="53"/>
         <source>Auteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Авторы</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="133"/>
         <source>Traducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Переводчики</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="216"/>
         <source>Contributeurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Пожертвования</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="296"/>
         <source>Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Версия</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="348"/>
         <source>Bibliothèques</source>
-        <translation type="unfinished"></translation>
+        <translation>Библиотека</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="428"/>
         <source>Accord de licence</source>
-        <translation type="unfinished"></translation>
+        <translation>Лицензионное соглашение</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="434"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
-        <translation type="unfinished">Эта программа распространяется на условиях лицкезии GNU/GPL.</translation>
+        <translation>Эта программа распространяется на условиях лицкезии GNU/GPL.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="47"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.</source>
         <comment>about tab, description line</comment>
-        <translation type="unfinished">QElectroTech - приложение для разработки электрических схем.</translation>
+        <translation>QElectroTech - приложение для разработки электрических схем.</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="49"/>
         <source> Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished"></translation>
+        <translation> Разработка QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="53"/>
@@ -69,7 +69,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="60"/>
         <source>Idée originale</source>
-        <translation type="unfinished">Оригинальная идея</translation>
+        <translation>Оригинальная идея</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="61"/>
@@ -79,39 +79,39 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="111"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="114"/>
         <source>Développement</source>
-        <translation type="unfinished">Разработка</translation>
+        <translation>Разработка</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="64"/>
         <source>Convertisseur DXF</source>
-        <translation type="unfinished">Конвертер DXF</translation>
+        <translation>Конвертер DXF</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="65"/>
         <source>Plugin Bornier</source>
-        <translation type="unfinished"></translation>
+        <translation>Клеммные соединения</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="71"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="72"/>
         <source>Traduction en espagnol</source>
-        <translation type="unfinished">Перевод на испанский</translation>
+        <translation>Перевод на испанский</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="73"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="74"/>
         <source>Traduction en russe</source>
-        <translation type="unfinished">Перевод на русский</translation>
+        <translation>Перевод на русский</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="75"/>
         <source>Traduction en portugais</source>
-        <translation type="unfinished">Перевод на португальский</translation>
+        <translation>Перевод на португальский</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="76"/>
         <source>Traduction en tchèque</source>
-        <translation type="unfinished">Перевод на чешский</translation>
+        <translation>Перевод на чешский</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="77"/>
@@ -122,144 +122,144 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="78"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="79"/>
         <source>Traduction en allemand</source>
-        <translation type="unfinished">Перевод на немецкий</translation>
+        <translation>Перевод на немецкий</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="80"/>
         <source>Traduction en roumain</source>
-        <translation type="unfinished">Перевод на румынский</translation>
+        <translation>Перевод на румынский</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="81"/>
         <source>Traduction en italien</source>
-        <translation type="unfinished">Перевод на итальянский</translation>
+        <translation>Перевод на итальянский</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="82"/>
         <source>Traduction en arabe</source>
-        <translation type="unfinished">Перевод на арабский</translation>
+        <translation>Перевод на арабский</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="83"/>
         <source>Traduction en croate</source>
-        <translation type="unfinished">Перевод на хорватский</translation>
+        <translation>Перевод на хорватский</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="84"/>
         <source>Traduction en catalan</source>
-        <translation type="unfinished">Перевод на каталонский</translation>
+        <translation>Перевод на каталонский</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="85"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="86"/>
         <source>Traduction en grec</source>
-        <translation type="unfinished">Перевод на греческий</translation>
+        <translation>Перевод на греческий</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="87"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="88"/>
         <source>Traduction en néerlandais</source>
-        <translation type="unfinished">Перевод на голландский</translation>
+        <translation>Перевод на голландский</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="89"/>
         <source>Traduction en flamand</source>
-        <translation type="unfinished">Перевод на фламандский</translation>
+        <translation>Перевод на фламандский</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="90"/>
         <source>Traduction en danois</source>
-        <translation type="unfinished">Датский перевод</translation>
+        <translation>Датский перевод</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="91"/>
         <source>Traduction en brézilien</source>
-        <translation type="unfinished">Бразильский перевод</translation>
+        <translation>Бразильский перевод</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="92"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="93"/>
         <source>Traduction en Turc</source>
-        <translation type="unfinished"></translation>
+        <translation>Турецкий перевод</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="94"/>
         <source>Traduction en hongrois</source>
-        <translation type="unfinished"></translation>
+        <translation>Венгерский перевод</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="99"/>
         <source>Paquets Fedora et Red Hat</source>
-        <translation type="unfinished">Пакеты для Fedora и Red Hat</translation>
+        <translation>Пакеты для Fedora и Red Hat</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="100"/>
         <source>Paquets Mageia</source>
-        <translation type="unfinished">Пакеты для Mageia</translation>
+        <translation>Пакеты для Mageia</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="101"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="102"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="103"/>
         <source>Paquets Debian</source>
-        <translation type="unfinished">Пакеты для Debian</translation>
+        <translation>Пакеты для Debian</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="104"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="105"/>
         <source>Paquets Gentoo</source>
-        <translation type="unfinished">Пакеты для Gentoo</translation>
+        <translation>Пакеты для Gentoo</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="106"/>
         <source>Paquets OS/2</source>
-        <translation type="unfinished">Пакеты для OS/2</translation>
+        <translation>Пакеты для OS/2</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="107"/>
         <source>Paquets FreeBSD</source>
-        <translation type="unfinished">Пакеты для FreeBSD</translation>
+        <translation>Пакеты для FreeBSD</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="108"/>
         <source>Paquets MAC OS X</source>
-        <translation type="unfinished">Пакеты для MAC OS X</translation>
+        <translation>Пакеты для MAC OS X</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="109"/>
         <source>Paquets Archlinux AUR</source>
-        <translation type="unfinished">Пакеты для Archlinux AUR</translation>
+        <translation>Пакеты для Archlinux AUR</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="110"/>
         <source>Icônes</source>
-        <translation type="unfinished">Значки</translation>
+        <translation type="unfinished">Иконки</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="112"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="113"/>
         <source>Documentation</source>
-        <translation type="unfinished">Документация</translation>
+        <translation>Документация</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="115"/>
         <source>Collection d&apos;éléments</source>
-        <translation type="unfinished">Коллекция элементов</translation>
+        <translation>Коллекция элементов</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="116"/>
         <source>Python plugin qet-tb-generator</source>
-        <translation type="unfinished"></translation>
+        <translation>Python расширения qet-tb-generator</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="117"/>
         <source>Paquets Snap</source>
-        <translation type="unfinished"></translation>
+        <translation>Пакет Snap</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="123"/>
         <source>Compilation : </source>
-        <translation type="unfinished">Компиляция: </translation>
+        <translation>Компиляция: </translation>
     </message>
 </context>
 <context>
@@ -290,17 +290,17 @@
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="14"/>
         <source>Ajouter un tableau</source>
-        <translation type="unfinished"></translation>
+        <translation>Добавить таблицу</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="24"/>
         <source>Affichage</source>
-        <translation type="unfinished">Вид</translation>
+        <translation>Вид</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="33"/>
         <source>Ajuster la taille du tableau au folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Подогнать размер стола к листу</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="46"/>
@@ -321,25 +321,25 @@
         <location filename="../sources/factory/ui/addtabledialog.ui" line="80"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="164"/>
         <source>Gauche</source>
-        <translation type="unfinished">Лево</translation>
+        <translation>Лево</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="85"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="169"/>
         <source>Centre</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="90"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="174"/>
         <source>Droite</source>
-        <translation type="unfinished">Право</translation>
+        <translation>Право</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="98"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="182"/>
         <source>Police :</source>
-        <translation type="unfinished">Шрифт :</translation>
+        <translation>Шрифт :</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="105"/>
@@ -357,7 +357,7 @@
         <location filename="../sources/factory/ui/addtabledialog.ui" line="126"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="156"/>
         <source>Alignement :</source>
-        <translation type="unfinished">Выравнивание :</translation>
+        <translation>Выравнивание :</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="136"/>
@@ -436,12 +436,12 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="34"/>
         <source>Element</source>
-        <translation type="unfinished"></translation>
+        <translation>Элемент</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="41"/>
         <source>Conducteur</source>
-        <translation type="unfinished">Проводник</translation>
+        <translation>Проводник</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="64"/>
@@ -456,7 +456,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="24"/>
         <source>Folio</source>
-        <translation type="unfinished">Страница</translation>
+        <translation>Страница</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="132"/>
@@ -469,7 +469,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="26"/>
         <source>Form</source>
-        <translation type="unfinished">Форма</translation>
+        <translation>Форма</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="149"/>
@@ -499,12 +499,12 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="78"/>
         <source>From</source>
-        <translation type="unfinished"></translation>
+        <translation>от</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="101"/>
         <source>To</source>
-        <translation type="unfinished"></translation>
+        <translation>к</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="156"/>
@@ -514,7 +514,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="171"/>
         <source>Conductor</source>
-        <translation type="unfinished">Проводник</translation>
+        <translation>Проводник</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="188"/>
@@ -551,7 +551,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="346"/>
         <source>Folio</source>
-        <translation type="unfinished">Страница</translation>
+        <translation>Страница</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="363"/>
@@ -587,7 +587,12 @@
 -Update Only Existent: only existent Elements will be updated. New Elements will be assigned their formula but will not update once created.
 -Disable: both New and Existent Element labels will not be updated. This is valid for new folios as well.
 Note: These options DO NOT allow or block Auto Numberings, only their Update Policy.</source>
-        <translation type="unfinished"></translation>
+        <translation>В этом меню вы можете указать, хотите ли вы обновлять автонумерацию или нет. Для автоматической нумерации элементов у вас есть 4 варианта политики обновления:
+-В обоих случаях будут обновлены метки как нового, так и существующего элемента. Это опция по умолчанию.
+-Обновлять только новые: только новые созданные элементы будут обновлены. Ярлыки существующих элементов будут заморожены.
+-Обновлять только существующие: будут обновляться только существующие элементы. Новым элементам будет назначена их формула, но они не будут обновляться после создания.
+-Отключить: метки Новый и Существующий элемент не будут обновлены. Это относится и к новым страницам.
+Примечание. Эти параметры НЕ разрешают и не блокируют автоматическую нумерацию, только их политику обновления.</translation>
     </message>
 </context>
 <context>
@@ -645,7 +650,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="269"/>
         <source>Mise en page</source>
-        <translation type="unfinished">Макет страницы</translation>
+        <translation>Макет страницы</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="297"/>
@@ -725,24 +730,24 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="137"/>
         <source>Enregister sous... </source>
-        <translation type="unfinished">Сохранить как ...</translation>
+        <translation>Сохранить как ...</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="137"/>
         <source>Fichiers csv (*.csv)</source>
-        <translation type="unfinished">Файлы csv (*.csv)</translation>
+        <translation>Создание файла csv (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="146"/>
         <source>Erreur</source>
-        <translation type="unfinished">Ошибка</translation>
+        <translation>Ошибка</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="147"/>
         <source>Impossible de remplacer le fichier!
 
 </source>
-        <translation type="unfinished">Невозможно заменить файл!
+        <translation>Невозможно заменить файл!
 
 </translation>
     </message>
@@ -12325,12 +12330,12 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="230"/>
         <source>Indice Rev:</source>
-        <translation type="unfinished"></translation>
+        <translation>Индекс REV :</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="244"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disponible en tant que %plant pour les modèles de cartouches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Доступен как% plant для шаблонов титульных блоков&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="279"/>
@@ -12385,7 +12390,11 @@ Les variables suivantes sont utilisables :
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
-        <translation type="unfinished"></translation>
+        <translation>Доступно как % страница для титульного блока
+Можно использовать следующие переменные:
+-%id: номер текущего фолио в проекте
+-%total: общее количество страниц в проекте
+-%autonum: автоматическая нумерация страниц</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="349"/>
@@ -12425,17 +12434,17 @@ Les variables suivantes sont utilisables :
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="376"/>
         <source>Installation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Оборудование</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="369"/>
         <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
-        <translation type="unfinished"></translation>
+        <translation>Доступен как% indexrev для титульного блока</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="383"/>
         <source>Localisation:</source>
-        <translation type="unfinished"></translation>
+        <translation>Место нахождения</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="406"/>
@@ -12590,7 +12599,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="423"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : numéro du folio précédent&lt;/li&gt;&lt;li&gt;%{next-folio-num} : numéro du folio suivant&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>По умолчанию доступны следующие переменные :&lt;ul&gt;&lt;li&gt;%{author} : авторстраницы&lt;/li&gt;&lt;li&gt;%{date} : дата страницы&lt;/li&gt;&lt;li&gt;%{title} : титул страницы&lt;/li&gt;&lt;li&gt;%{filename} : имя файла проекта folio&lt;/li&gt;&lt;li&gt;%{plant} : имя установки l&apos;(=) на которую ссылается схема&lt;/li&gt;&lt;li&gt;%{locmach} : название местоположения (+) в которой находится этот объект&lt;/li&gt;&lt;li&gt;%{indexrev} : индекс ревизии страницы&lt;/li&gt;&lt;li&gt;%{version} : версия проекта&lt;/li&gt;&lt;li&gt;%{folio} : номер страницы&lt;/li&gt;&lt;li&gt;%{folio-id} : позиция страницы в проекте&lt;/li&gt;&lt;li&gt;%{folio-total} : всего страниц в проекте&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : номер предыдущей страницы&lt;/li&gt;&lt;li&gt;%{next-folio-num} : номер следующей страницы&lt;/li&gt;&lt;li&gt;%{projecttitle} : название проекта&lt;/li&gt;&lt;li&gt;%{projectpath} : путь проекта&lt;/li&gt;&lt;li&gt;%{projectfilename} : имя файла&lt;/li&gt;&lt;li&gt;%{saveddate} : дата d&apos;сохранения файла&lt;/li&gt;&lt;li&gt;%{savedtime} : время d&apos;сохранения файла&lt;/li&gt;&lt;li&gt;%{savedfilename} : имя сохраненного файла&lt;/li&gt;&lt;li&gt;%{savedfilepath} : путь сохраненного файла&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="455"/>
@@ -12959,32 +12968,32 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="48"/>
         <source>XRef Vertical Offset:</source>
-        <translation type="unfinished"></translation>
+        <translation>XRef Вертикальное смещение</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="55"/>
         <source>10px corresponds to 1 tile displacement</source>
-        <translation type="unfinished"></translation>
+        <translation>10px соответствует 1 смещению плитки</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="58"/>
         <source>Set Vertical Offset for the Cross References. 10px corresponds to 1 tile displacement.</source>
-        <translation type="unfinished"></translation>
+        <translation>Установите вертикальное смещение для перекрестных ссылок. 10px соответствует 1 смещению плитки.</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="61"/>
         <source>Default - Fit to XRef height</source>
-        <translation type="unfinished"></translation>
+        <translation>По умолчанию - по высоте XRef</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="90"/>
         <source>XRef slave position</source>
-        <translation type="unfinished"></translation>
+        <translation>XRef подчинённый</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="106"/>
         <source>Affiche&amp;r en contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>П&amp;казать контакт</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="113"/>
@@ -13025,7 +13034,13 @@ Longueur maximale : %2px
 %c : le numéro de colonne
 %M: Installation 
 %LM: Localisation </source>
-        <translation type="unfinished"></translation>
+        <translation>Создайте свой собственный текст, используя следующие переменные:
+% f: номер страницы
+% F: метка страницы
+% l: номер строки
+% c: номер столбца
+% M: установка
+% LM: расположение</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="219"/>
@@ -13080,27 +13095,27 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="104"/>
         <source>Top</source>
-        <translation type="unfinished"></translation>
+        <translation>Верх</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="105"/>
         <source>Bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>Низ</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="106"/>
         <source>Left</source>
-        <translation type="unfinished"></translation>
+        <translation>Лево</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="107"/>
         <source>Rigth</source>
-        <translation type="unfinished"></translation>
+        <translation>Право</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="108"/>
         <source>Text alignment</source>
-        <translation type="unfinished"></translation>
+        <translation>Выравнивание текста</translation>
     </message>
 </context>
 <context>
@@ -13158,12 +13173,12 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/dataBase/projectdatabase.cpp" line="500"/>
         <source>Exporter la base de données interne du projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Экспорт во внутреннюю базу данных проекта</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/projectdatabase.cpp" line="508"/>
         <source>sans_nom</source>
-        <translation type="unfinished"></translation>
+        <translation>без_имени</translation>
     </message>
 </context>
 <context>
@@ -13293,52 +13308,52 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="14"/>
         <source>Rechercher/Remplacer avancé</source>
-        <translation type="unfinished"></translation>
+        <translation>Найти / заменить расширенное</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="27"/>
         <source>par :</source>
-        <translation type="unfinished"></translation>
+        <translation>по :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="34"/>
         <source>Remplacer :</source>
-        <translation type="unfinished"></translation>
+        <translation>Заменить :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="51"/>
         <source>Qui :</source>
-        <translation type="unfinished"></translation>
+        <translation>Который :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="58"/>
         <source>Texte ou expression régulière</source>
-        <translation type="unfinished"></translation>
+        <translation>Текст или регулярное выражение</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="69"/>
         <source>Folio</source>
-        <translation type="unfinished">Страница</translation>
+        <translation>Страница</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="74"/>
         <source>Élément</source>
-        <translation type="unfinished">Элемент</translation>
+        <translation>Элемент</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="79"/>
         <source>Conducteur</source>
-        <translation type="unfinished">Проводник</translation>
+        <translation>Проводник</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="84"/>
         <source>Texte indépendant</source>
-        <translation type="unfinished"></translation>
+        <translation>Независимый текст</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="92"/>
         <source>Quoi :</source>
-        <translation type="unfinished"></translation>
+        <translation>Какой:</translation>
     </message>
 </context>
 </TS>
