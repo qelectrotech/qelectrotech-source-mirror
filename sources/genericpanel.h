@@ -27,10 +27,11 @@ class TitleBlockTemplatesCollection;
 class TitleBlockTemplateLocation;
 
 /**
+	@brief The GenericPanel class
 	The generic panel is a QTreeWidget subclass providing extra methods
-	allowing developers to easily add objects (projects, diagrams, title block
-	templates, elements, ...) to it; it also ensures the displayed information
-	remains up to date.
+	allowing developers to easily add objects
+	(projects, diagrams, title block templates, elements, ...) to it;
+	it also ensures the displayed information remains up to date.
 */
 class GenericPanel : public QTreeWidget {
 	Q_OBJECT

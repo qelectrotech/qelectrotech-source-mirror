@@ -167,7 +167,7 @@ QTreeWidgetItem *GenericPanel::getItemForProject(QETProject *project, bool *crea
 	@brief GenericPanel::updateProjectItem
 	@param project_qtwi
 	@param project
-	@param options
+	@param options (unused)
 	@param freshly_created
 	@return updateItem(project_qtwi, options, freshly_created)
 */
@@ -264,7 +264,7 @@ QTreeWidgetItem *GenericPanel::fillProjectItem(QTreeWidgetItem *project_qtwi, QE
 	@brief GenericPanel::addDiagram
 	@param diagram
 	@param parent_item
-	@param options
+	@param options (unused)
 	@return diagram_qtwi
 */
 QTreeWidgetItem *GenericPanel::addDiagram(Diagram *diagram, QTreeWidgetItem *parent_item, PanelOptions options) {
@@ -369,7 +369,7 @@ QTreeWidgetItem *GenericPanel::updateDiagramItem(QTreeWidgetItem *diagram_qtwi, 
 /**
 	@brief GenericPanel::fillDiagramItem
 	@param diagram_qtwi
-	@param Q_UNUSED(diagram)
+	@param diagram (unused)
 	@param options
 	@param freshly_created
 	@return fillItem(diagram_qtwi, options, freshly_created)
@@ -566,7 +566,7 @@ QTreeWidgetItem *GenericPanel::updateTemplateItem(QTreeWidgetItem *tb_template_q
 /**
 	@brief GenericPanel::fillTemplateItem
 	@param tb_template_qtwi
-	@param tb_template
+	@param tb_template (unused)
 	@param options
 	@param freshly_created
 	@return fillItem(tb_template_qtwi, options, freshly_created)
@@ -578,12 +578,12 @@ QTreeWidgetItem *GenericPanel::fillTemplateItem(QTreeWidgetItem *tb_template_qtw
 
 /**
 	@brief GenericPanel::updateItem
-	This generic method is called at the end of each update*Item method. Its
-	only purpose is being reimplemented in a subclass. The default
-	implementation does nothing.
+	This generic method is called at the end of each update*Item method.
+	Its only purpose is being reimplemented in a subclass.
+	The default implementation does nothing.
 	@param qtwi
-	@param options
-	@param freshly_created
+	@param options (unused)
+	@param freshly_created (unused)
 	@return qtwi
 */
 QTreeWidgetItem *GenericPanel::updateItem(QTreeWidgetItem *qtwi, PanelOptions options, bool freshly_created) {
@@ -621,7 +621,7 @@ void GenericPanel::projectInformationsChanged(QETProject *project) {
 /**
 	@brief GenericPanel::diagramAdded
 	@param project
-	@param diagram
+	@param diagram (unused)
 */
 void GenericPanel::diagramAdded(QETProject *project, Diagram *diagram) {
 	Q_UNUSED(diagram)
@@ -632,7 +632,7 @@ void GenericPanel::diagramAdded(QETProject *project, Diagram *diagram) {
 /**
 	@brief GenericPanel::diagramRemoved
 	@param project
-	@param diagram
+	@param diagram (unused)
 */
 void GenericPanel::diagramRemoved(QETProject *project, Diagram *diagram) {
 	Q_UNUSED(diagram)
@@ -679,7 +679,10 @@ void GenericPanel::projectDiagramsOrderChanged(QETProject *project, int from, in
 }
 
 /**
+	@brief GenericPanel::diagramTitleChanged
 	Inform this panel the diagram \a diagram has changed its title to \a title.
+	@param diagram
+	@param title (unused)
 */
 void GenericPanel::diagramTitleChanged(Diagram *diagram, const QString &title) {
 	Q_UNUSED(title)
@@ -688,8 +691,10 @@ void GenericPanel::diagramTitleChanged(Diagram *diagram, const QString &title) {
 }
 
 /**
-	@param collection Title block templates collection that changed and should be updated
-	@param template_name Name of the changed template (unused)
+	@brief GenericPanel::templatesCollectionChanged
+	@param collection :
+	Title block templates collection that changed and should be updated
+	@param template_name : Name of the changed template (unused)
 */
 void GenericPanel::templatesCollectionChanged(TitleBlockTemplatesCollection*collection, const QString &template_name) {
 	Q_UNUSED(template_name)
@@ -700,7 +705,7 @@ void GenericPanel::templatesCollectionChanged(TitleBlockTemplatesCollection*coll
 /**
 	@brief GenericPanel::diagramUsedTemplate
 	@param collection
-	@param name
+	@param name : (unused)
 */
 void GenericPanel::diagramUsedTemplate(TitleBlockTemplatesCollection *collection, const QString &name) {
 	Q_UNUSED(name)
@@ -731,6 +736,7 @@ QString GenericPanel::defaultText(QET::ItemType type) {
 }
 
 /**
+	@brief GenericPanel::defaultIcon
 	@param type Item type we want the default icon for
 	@return the default icon for \a type
 */
@@ -763,10 +769,11 @@ QTreeWidgetItem *GenericPanel::makeItem(QET::ItemType type, QTreeWidgetItem *par
 }
 
 /**
+	@brief GenericPanel::deleteItem
 	Delete and item and its children.
 	@param item item to delete
 	@param deleted_on_cascade true if the item is not being directly deleted
-	but is undergoing the deletion of its parent.
+	but is undergoing the deletion of its parent. (unused)
 */
 void GenericPanel::deleteItem(QTreeWidgetItem *item, bool deleted_on_cascade) {
 	Q_UNUSED(deleted_on_cascade)
@@ -781,6 +788,7 @@ void GenericPanel::deleteItem(QTreeWidgetItem *item, bool deleted_on_cascade) {
 }
 
 /**
+	@brief GenericPanel::markItemAsUnused
 	Mark the provided QTreeWidgetItem as unused in its parent project.
 	@param qtwi A QTreeWidgetItem
 */
@@ -804,10 +812,11 @@ void GenericPanel::reparent(QTreeWidgetItem *item, QTreeWidgetItem *parent) {
 }
 
 /**
-	@return the child items of \a item of type \a type
+	@brief GenericPanel::childItems
 	@param item Parent item that will be searched.
 	@param type Type of items to look for.
 	@param recursive Whether to search recursively.
+	@return the child items of \a item of type \a type
 */
 QList<QTreeWidgetItem *> GenericPanel::childItems(QTreeWidgetItem *item, QET::ItemType type, bool recursive) const {
 	QList<QTreeWidgetItem *> items;
@@ -879,8 +888,11 @@ void GenericPanel::unregisterItem(QTreeWidgetItem *item) {
 }
 
 /**
+	@brief GenericPanel::event
 	Handle various events; reimplemented here to emit the signal
 	firstActivated().
+	@param event
+	@return
 */
 bool GenericPanel::event(QEvent *event) {
 	if (first_activation_) {
@@ -893,6 +905,7 @@ bool GenericPanel::event(QEvent *event) {
 }
 
 /**
+	@brief GenericPanel::emitFirstActivated
 	Emit the signal firstActivated().
 */
 void GenericPanel::emitFirstActivated() {

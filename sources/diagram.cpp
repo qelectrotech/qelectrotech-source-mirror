@@ -54,10 +54,10 @@ const qreal Diagram::margin = 5.0;
 QColor		Diagram::background_color = Qt::white;
 
 /**
- * @brief Diagram::Diagram
- * Constructor
- * @param project : The project of this diagram and also parent QObject
- */
+	@brief Diagram::Diagram
+	Constructor
+	@param project : The project of this diagram and also parent QObject
+*/
 Diagram::Diagram(QETProject *project) :
 	QGraphicsScene           (project),
 	m_project                 (project),
@@ -71,11 +71,13 @@ Diagram::Diagram(QETProject *project) :
 	m_freeze_new_conductors_ (false)
 {
 	setItemIndexMethod(QGraphicsScene::NoIndex);
-		//Set to no index, because they can be the source of the crash with conductor and shape ghost.
-		//https://forum.qt.io/topic/71316/qgraphicsscenefinditembsptreevisitor-visit-crashes-due-to-an-obsolete-paintevent-after-qgraphicsscene-removeitem
-		//https://stackoverflow.com/questions/38458830/crash-after-qgraphicssceneremoveitem-with-custom-item-class
-		//http://www.qtcentre.org/archive/index.php/t-33730.html
-		//http://tech-artists.org/t/qt-properly-removing-qgraphicitems/3063
+	/* Set to no index,
+	 * because they can be the source of the crash with conductor and shape ghost.
+	 * https://forum.qt.io/topic/71316/qgraphicsscenefinditembsptreevisitor-visit-crashes-due-to-an-obsolete-paintevent-after-qgraphicsscene-removeitem
+	 * https://stackoverflow.com/questions/38458830/crash-after-qgraphicssceneremoveitem-with-custom-item-class
+	 * http://www.qtcentre.org/archive/index.php/t-33730.html
+	 * http://tech-artists.org/t/qt-properly-removing-qgraphicitems/3063
+	 */
 
 	qgi_manager_ = new QGIManager(this);
 	setBackgroundBrush(Qt::white);
@@ -1269,7 +1271,11 @@ void Diagram::removeItem(QGraphicsItem *item)
 
 	QGraphicsScene::removeItem(item);
 }
-
+/**
+	@brief Diagram::titleChanged
+	emit(diagramTitleChanged(this, title));
+	@param title
+*/
 void Diagram::titleChanged(const QString &title) {
 	emit(diagramTitleChanged(this, title));
 }
