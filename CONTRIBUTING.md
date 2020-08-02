@@ -1,18 +1,22 @@
 # How to contribute
  
-I'm really glad you're reading this, because we need volunteer developers to help this project come to fruition.
+I'm really glad you're reading this,
+because we need volunteer developers to help
+this project come to fruition.
 
 
 Here are some important resources:
 
-* [wiki](https://qelectrotech.org/wiki_new/doc/qt_creator#on_ajoute_le_style_de_code_qet)Qet code style
-* [wiki](https://git-scm.com/doc)git Documentation
+* [Qet code style](https://qelectrotech.org/wiki_new/doc/qt_creator#on_ajoute_le_style_de_code_qet)
+* [git Documentation](https://git-scm.com/doc)
 
 ## Testing
 
 ## Submitting changes
 
-Always write a clear log message for your commits. One-line messages are fine for small changes, but bigger changes should look like this:
+Always write a clear log message for your commits.
+One-line messages are fine for small changes,
+but bigger changes should look like this:
 
     $ git commit -m "A brief summary of the commit
     > 
@@ -101,9 +105,17 @@ issue: you have modified a class but you want to write it in 2 commits
 
 ## Coding conventions
 
-Start reading our code and you'll get the hang of it. We optimize for readability:
+Start reading our code and you'll get the hang of it.
+We optimize for readability:
 
-  * We indent using tab, see https://qelectrotech.org/wiki_new/doc/qt_creator#on_ajoute_le_style_de_code_qet
-
+  * We use tabs to indent, and interpret tabs as taking up to 8 spaces.
+    see https://qelectrotech.org/wiki_new/doc/qt_creator#on_ajoute_le_style_de_code_qet
+  * We try to keep to at most 80 characters per line.
+  * Try to make your code understandable.
+    You may put comments in, but comments invariably tend to stale out when
+    the code they were describing changes.
+    Often splitting a function into two
+    makes the intention of the code much clearer.
+    
 Thanks,
 QElectroTech
