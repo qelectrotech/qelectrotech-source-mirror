@@ -50,7 +50,10 @@ int Diagram::xKeyGridFine = 1;
 int Diagram::yKeyGridFine = 1;
 const qreal Diagram::margin = 5.0;
 
-// static variable to keep track of present background color of the diagram.
+/**
+	@brief Diagram::background_color
+	static variable to keep track of present background color of the diagram.
+*/
 QColor		Diagram::background_color = Qt::white;
 
 /**
@@ -111,24 +114,24 @@ Diagram::Diagram(QETProject *project) :
 }
 
 /**
- * @brief Diagram::~Diagram
- * Destructor
- */
+	@brief Diagram::~Diagram
+	Destructor
+*/
 Diagram::~Diagram()
 {
         //First clear every selection to close an hypothetical editor
     clearSelection();
         // clear undo stack to prevent errors, because contains pointers to this diagram and is elements.
 	undoStack().clear();
-        //delete of QGIManager, every elements he knows are removed
+	//delete of QGIManager, every elements he knows are removed
 	delete qgi_manager_;
-        // remove of conductor setter
+	// remove of conductor setter
 	delete conductor_setter_;
 
 	if (m_event_interface)
         delete m_event_interface;
 	
-        // list removable items
+	// list removable items
 	QList<QGraphicsItem *> deletable_items;
 	for(QGraphicsItem *qgi : items())
     {
@@ -141,18 +144,26 @@ Diagram::~Diagram()
 }
 
 /**
-	Dessine l'arriere-plan du schema, cad la grille.
-	@param p Le QPainter a utiliser pour dessiner
-	@param r Le rectangle de la zone a dessiner
+	@brief Diagram::drawBackground
+	Draw the background of the diagram, ie the grid.
+	\~French Dessine l'arriere-plan du schema, cad la grille.
+	\~ @param p :
+	The QPainter to use for drawing
+	\~French Le QPainter a utiliser pour dessiner
+	\~ @param r :
+	The rectangle of the area to be drawn
+	\~French Le rectangle de la zone a dessiner
 */
 void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 	p -> save();
 	
+	// disable all antialiasing, except for text
 	// desactive tout antialiasing, sauf pour le texte
 	p -> setRenderHint(QPainter::Antialiasing, false);
 	p -> setRenderHint(QPainter::TextAntialiasing, true);
 	p -> setRenderHint(QPainter::SmoothPixmapTransform, false);
 	
+	// draw a white background
 	// dessine un fond blanc
 	p -> setPen(Qt::NoPen);
 	//set brush color to present background color.
@@ -160,8 +171,11 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 	p -> drawRect(r);
 	
 	if (draw_grid_) {
-			//Draw the point of the grid
-			// if background color is black, then grid spots shall be white, else they shall be black in color.
+			/* Draw the point of the grid
+			 * if background color is black,
+			 * then grid spots shall be white,
+			 * else they shall be black in color.
+			 */
 		QPen pen;
 		Diagram::background_color == Qt::black? pen.setColor(Qt::white) : pen.setColor(Qt::black);
 		pen.setCosmetic(true);
@@ -169,7 +183,8 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 
 		p -> setBrush(Qt::NoBrush);
 
-			//If user allow zoom out beyond of folio, we draw grid outside of border.
+		// If user allow zoom out beyond of folio,
+		// we draw grid outside of border.
 		QSettings settings;
 		int xGrid = settings.value("diagrameditor/Xgrid", Diagram::xGrid).toInt();
 		int yGrid = settings.value("diagrameditor/Ygrid", Diagram::yGrid).toInt();
@@ -199,10 +214,10 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 }
 
 /**
- * @brief Diagram::mouseDoubleClickEvent
- * This event is managed by diagram event interface if any.
- * @param event :
- */
+	@brief Diagram::mouseDoubleClickEvent
+	This event is managed by diagram event interface if any.
+	@param event :
+*/
 void Diagram::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 {
 	event->setAccepted(false);
@@ -218,10 +233,10 @@ void Diagram::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief Diagram::mousePressEvent
- * This event is managed by diagram event interface if any.
- * @param event
- */
+	@brief Diagram::mousePressEvent
+	This event is managed by diagram event interface if any.
+	@param event
+*/
 void Diagram::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
 	event->setAccepted(false);
@@ -237,10 +252,10 @@ void Diagram::mousePressEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief Diagram::mouseMoveEvent
- * This event is managed by diagram event interface if any.
- * @param event
- */
+	@brief Diagram::mouseMoveEvent
+	This event is managed by diagram event interface if any.
+	@param event
+*/
 void Diagram::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
 	event->setAccepted(false);
@@ -256,10 +271,10 @@ void Diagram::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief Diagram::mouseReleaseEvent
- * This event is managed by diagram event interface if any.
- * @param event
- */
+	@brief Diagram::mouseReleaseEvent
+	This event is managed by diagram event interface if any.
+	@param event
+*/
 void Diagram::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
 	event->setAccepted(false);
@@ -275,10 +290,10 @@ void Diagram::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief Diagram::wheelEvent
- * This event is managed by diagram event interface if any.
- * @param event
- */
+	@brief Diagram::wheelEvent
+	This event is managed by diagram event interface if any.
+	@param event
+*/
 void Diagram::wheelEvent(QGraphicsSceneWheelEvent *event)
 {
 	event->setAccepted(false);
@@ -294,11 +309,11 @@ void Diagram::wheelEvent(QGraphicsSceneWheelEvent *event)
 }
 
 /**
- * @brief Diagram::keyPressEvent
- * This event is managed by diagram event interface if any.
- * Else move selected elements
- * @param e
- */
+	@brief Diagram::keyPressEvent
+	This event is managed by diagram event interface if any.
+	Else move selected elements
+	@param e
+*/
 void Diagram::keyPressEvent(QKeyEvent *event)
 {
 	QSettings settings;
@@ -427,11 +442,11 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 }
 
 /**
- * @brief Diagram::keyReleaseEvent
- * This event is managed by diagram event interface if any.
- * Else move selected element
- * @param e
- */
+	@brief Diagram::keyReleaseEvent
+	This event is managed by diagram event interface if any.
+	Else move selected element
+	@param e
+*/
 void Diagram::keyReleaseEvent(QKeyEvent *e)
 {
 	e->setAccepted(false);
@@ -445,7 +460,11 @@ void Diagram::keyReleaseEvent(QKeyEvent *e)
 	
 	bool transmit_event = true;
 	if (!isReadOnly()) {
-		// detecte le relachement d'une touche de direction ( = deplacement d'elements)
+		/* detects the release of a direction key
+		 *  (= movement of elements)
+		 * detecte le relachement d'une touche de direction
+		 *  ( = deplacement d'elements)
+		 */
 		if (
 			(e -> key() == Qt::Key_Left || e -> key() == Qt::Key_Right  ||
 			 e -> key() == Qt::Key_Up   || e -> key() == Qt::Key_Down)  &&
@@ -462,21 +481,21 @@ void Diagram::keyReleaseEvent(QKeyEvent *e)
 }
 
 /**
- * @brief Diagram::uuid
- * @return the uuid of this diagram
- */
+	@brief Diagram::uuid
+	@return the uuid of this diagram
+*/
 QUuid Diagram::uuid() {
 	return m_uuid;
 }
 
 /**
- * @brief Diagram::setEventInterface
- * Set event_interface has current interface.
- * Diagram become the ownership of event_interface
- * If there is a previous interface, they will be delete before
- * and call init() to the new interface.
- * @param event_interface
- */
+	@brief Diagram::setEventInterface
+	Set event_interface has current interface.
+	Diagram become the ownership of event_interface
+	If there is a previous interface, they will be delete before
+	and call init() to the new interface.
+	@param event_interface
+*/
 void Diagram::setEventInterface(DiagramEventInterface *event_interface)
 {
 	if (m_event_interface)
@@ -494,9 +513,9 @@ void Diagram::setEventInterface(DiagramEventInterface *event_interface)
 }
 
 /**
- * @brief Diagram::clearEventInterface
- * Clear the current event interface.
- */
+	@brief Diagram::clearEventInterface
+	Clear the current event interface.
+*/
 void Diagram::clearEventInterface()
 {
 	if(m_event_interface)
@@ -507,17 +526,17 @@ void Diagram::clearEventInterface()
 }
 
 /**
- * @brief Diagram::conductorsAutonumName
- * @return the name of autonum to use.
- */
+	@brief Diagram::conductorsAutonumName
+	@return the name of autonum to use.
+*/
 QString Diagram::conductorsAutonumName() const {
 	return m_conductors_autonum_name;
 }
 
 /**
- * @brief Diagram::setConductorsAutonumName
- * @param name, name of autonum to use.
- */
+	@brief Diagram::setConductorsAutonumName
+	@param name, name of autonum to use.
+*/
 void Diagram::setConductorsAutonumName(const QString &name) {
 	m_conductors_autonum_name= name;
 }
@@ -546,23 +565,28 @@ bool Diagram::toPaintDevice(QPaintDevice &pix, int width, int height, Qt::Aspect
 	// si les dimensions ne sont pas precisees, l'image est exportee a l'echelle 1:1
 	QSize image_size = (width == -1 && height == -1) ? source_area.size().toSize() : QSize(width, height);
 	
+	// prepare the rendering
 	// prepare le rendu
 	QPainter p;
 	if (!p.begin(&pix)) return(false);
 	
+	// anti-aliasis rendering
 	// rendu antialiase
 	p.setRenderHint(QPainter::Antialiasing, true);
 	p.setRenderHint(QPainter::TextAntialiasing, true);
 	p.setRenderHint(QPainter::SmoothPixmapTransform, true);
 	
+	// deselect all elements
 	// deselectionne tous les elements
 	QList<QGraphicsItem *> selected_elmts = selectedItems();
 	foreach (QGraphicsItem *qgi, selected_elmts) qgi -> setSelected(false);
 	
+	// renders itself
 	// effectue le rendu lui-meme
 	render(&p, QRect(QPoint(0, 0), image_size), source_area, aspectRatioMode);
 	p.end();
 	
+	// restore selected items
 	// restaure les elements selectionnes
 	foreach (QGraphicsItem *qgi, selected_elmts) qgi -> setSelected(true);
 	
@@ -570,8 +594,13 @@ bool Diagram::toPaintDevice(QPaintDevice &pix, int width, int height, Qt::Aspect
 }
 
 /**
-	Permet de connaitre les dimensions qu'aura l'image generee par la methode toImage()
-	@return La taille de l'image generee par toImage()
+	@brief Diagram::imageSize
+	Allows you to know the dimensions
+	that the image generated by the toImage() method will have
+	\~French Permet de connaitre les dimensions
+	qu'aura l'image generee par la methode toImage()
+	\~ @return The size of the image generated by toImage()
+	\~French La taille de l'image generee par toImage()
 */
 QSize Diagram::imageSize() const {
 	// determine la zone source =  contenu du schema + marges
@@ -588,12 +617,16 @@ QSize Diagram::imageSize() const {
 	image_width  += 2.0 * margin;
 	image_height += 2.0 * margin;
 	
+	// returns the size of the source area
 	// renvoie la taille de la zone source
 	return(QSizeF(image_width, image_height).toSize());
 }
 
 /**
-	@return true si le schema est considere comme vide, false sinon.
+	@brief Diagram::isEmpty
+	An empty schema contains no element, conductor, or text field
+	@return true if the schema is considered empty, false otherwise.
+	\~French true si le schema est considere comme vide, false sinon.
 	Un schema vide ne contient ni element, ni conducteur, ni champ de texte
 */
 bool Diagram::isEmpty() const {
@@ -601,10 +634,11 @@ bool Diagram::isEmpty() const {
 }
 
 /**
- * @brief Diagram::potential
- * @return all potential in the diagram
- *each potential are in the QList and each conductors of one potential are in the QSet
- */
+	@brief Diagram::potential
+	@return all potential in the diagram
+	each potential are in the QList
+	and each conductors of one potential are in the QSet
+*/
 QList < QSet <Conductor *> > Diagram::potentials() {
 	QList < QSet <Conductor *> > potential_List;
 	if (content().conductors().size() == 0) return (potential_List); //return an empty potential
@@ -621,21 +655,29 @@ QList < QSet <Conductor *> > Diagram::potentials() {
 }
 
 /**
-	Exporte tout ou partie du schema 
-	@param whole_content Booleen (a vrai par defaut) indiquant si le XML genere doit
+	@brief Diagram::toXml
+	Exports all or part of the schema
+	\~French Exporte tout ou partie du schema
+	\~ @param whole_content :
+	Boolean (to true by default) indicating if the generated XML must
+	represent the entire schema or only the selected content
+	\~French Booleen (a vrai par defaut) indiquant si le XML genere doit
 	representer l'integralite du schema ou seulement le contenu selectionne
-	@return Un Document XML (QDomDocument)
+	\~ @return An XML Document (QDomDocument)
+	\~French Un Document XML (QDomDocument)
 */
 QDomDocument Diagram::toXml(bool whole_content) {
 	// document
 	QDomDocument document;
 	
+	// XML tree root
 	// racine de l'arbre XML
 	auto dom_root = document.createElement("diagram");
 	
 	// add the application version number
 	dom_root.setAttribute("version", QET::version);
 	
+	// schema properties
 	// proprietes du schema
 	if (whole_content) {
 		border_and_titleblock.titleBlockToXml(dom_root);
@@ -700,9 +742,9 @@ QDomDocument Diagram::toXml(bool whole_content) {
 		}
 	}
 	else {
-			//this method with whole_content to false,
-			//is often use to copy and paste the current selection
-			//so we add the id of the project where copy occur.
+		//this method with whole_content to false,
+		//is often use to copy and paste the current selection
+		//so we add the id of the project where copy occur.
 		dom_root.setAttribute("projectId", QETApp::projectId(m_project));
 	}
 	document.appendChild(dom_root);
@@ -717,7 +759,7 @@ QDomDocument Diagram::toXml(bool whole_content) {
 	QVector<QetShapeItem *> list_shapes;
 	QVector<QetGraphicsTableItem *> table_vector;
 
-		//Ckeck graphics item to "XMLise"
+	//Ckeck graphics item to "XMLise"
 	for(QGraphicsItem *qgi : items())
 	{
 		switch (qgi->type())
@@ -764,7 +806,8 @@ QDomDocument Diagram::toXml(bool whole_content) {
 		}
 	}
 	
-		// table de correspondance entre les adresses des bornes et leurs ids
+	// correspondence table between the addresses of the terminals and their ids
+	// table de correspondance entre les adresses des bornes et leurs ids
 	QHash<Terminal *, int> table_adr_id;
 	
 	if (!list_elements.isEmpty()) {
@@ -838,17 +881,35 @@ void Diagram::folioSequentialsToXml(QHash<QString, QStringList> *hash, QDomEleme
 }
 
 /**
-	Importe le schema decrit dans un document XML. Si une position est
-	precisee, les elements importes sont positionnes de maniere a ce que le
-	coin superieur gauche du plus petit rectangle pouvant les entourant tous
+	@brief Diagram::fromXml
+	Imports the described schema into an XML document.
+	If a position is specified,
+	the imported elements are positioned so that the upper left corner
+	of the smallest rectangle that can surround them all
+	(the bounding rect) is at this position.
+	\~French Importe le schema decrit dans un document XML.
+	Si une position estprecisee,
+	les elements importes sont positionnes de maniere a ce que le coin
+	superieur gauche du plus petit rectangle pouvant les entourant tous
 	(le bounding rect) soit a cette position.
-	@param document Le document XML a analyser
-	@param position La position du schema importe
-	@param consider_informations Si vrai, les informations complementaires
+	\~ @param document :
+	The XML document to analyze
+	\~French Le document XML a analyser
+	\~ @param position :
+	The position of the diagram matters
+	\~French La position du schema importe
+	\~ @param consider_informations :
+	If true, additional information
+	(author, title, ...) will be taken into account
+	\~French  Si vrai, les informations complementaires
 	(auteur, titre, ...) seront prises en compte
-	@param content_ptr si ce pointeur vers un DiagramContent est different de 0,
+	\~ @param content_ptr :
+	if this pointer to a DiagramContent is different from 0,
+	it will be filled with the content added to the schema by the fromXml
+	\~French si ce pointeur vers un DiagramContent est different de 0,
 	il sera rempli avec le contenu ajoute au schema par le fromXml
-	@return true si l'import a reussi, false sinon
+	\~ @return true if the import was successful, false otherwise
+	\~French true si l'import a reussi, false sinon
 */
 bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_informations, DiagramContent *content_ptr) {
 	QDomElement root = document.documentElement();
@@ -856,19 +917,34 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 }
 
 /**
-	Importe le schema decrit dans un element XML. Cette methode delegue son travail a Diagram::fromXml
+	@brief Diagram::initFromXml
+	Imports the described schema in an XML element.
+	This method delegates its work to Diagram :: fromXml
+	If the import is successful,
+	this method also initializes the XML document internal allowing to
+	manage the recording of this diagram in the project to which it belongs.
+	@see Diagram::fromXml
+	\~French Importe le schema decrit dans un element XML.
+	Cette methode delegue son travail a Diagram::fromXml
 	Si l'import reussit, cette methode initialise egalement le document XML
 	interne permettant de bien gerer l'enregistrement de ce schema dans le
 	projet auquel il appartient.
-	@see Diagram::fromXml
-	@param document Le document XML a analyser
-	@param position La position du schema importe
-	@param consider_informations Si vrai, les informations complementaires
+	\~ @param document : The XML document to analyze
+	\~French  Le document XML a analyser
+	\~ @param position : The position of the diagram matters
+	\~French La position du schema importe
+	\~ @param consider_informations :
+	If true, additional information
+	(author, title, ...) will be taken into account
+	\~French  Si vrai, les informations complementaires
 	(auteur, titre, ...) seront prises en compte
-	@param content_ptr si ce pointeur vers un DiagramContent est different de 0,
+	\~ @param content_ptr :
+	if this pointer to a DiagramContent is different from 0,
+	it will be filled with the content added to the schema by the fromXml
+	\~French si ce pointeur vers un DiagramContent est different de 0,
 	il sera rempli avec le contenu ajoute au schema par le fromXml
-	@return true si l'import a reussi, false sinon
-	
+	\~ @return true if the import was successful, false otherwise
+	\~French true si l'import a reussi, false sinon
 */
 bool Diagram::initFromXml(QDomElement &document, QPointF position, bool consider_informations, DiagramContent *content_ptr) {
 	// import le contenu et les proprietes du schema depuis l'element XML fourni en parametre
@@ -914,7 +990,8 @@ Terminal* findTerminal(int conductor_index, QDomElement& f, QHash<int, Terminal 
 		if (!element_found)
 			qDebug() << "Diagram::fromXml() : " <<  element_index << ": " << element_uuid << "not found";
 	} else {
-		// Backward compatibility. Until version 0.7 a generated id is used to link the terminal.
+		// Backward compatibility.
+		// Until version 0.7 a generated id is used to link the terminal.
 		int id_p1 = f.attribute(terminal_index).toInt();
 		if (!table_adr_id.contains(id_p1)) {
 			qDebug() << "Diagram::fromXml() : terminal id " << id_p1 << " not found";
@@ -925,17 +1002,35 @@ Terminal* findTerminal(int conductor_index, QDomElement& f, QHash<int, Terminal 
 }
 
 /**
-	Importe le schema decrit dans un element XML. Si une position est
-	precisee, les elements importes sont positionnes de maniere a ce que le
+	@brief Diagram::fromXml
+	Imports the described schema in an XML element. If a position is
+	specified, the imported elements are positioned in such a way that the
+	upper left corner of the smallest rectangle that can surround them all
+	(the bounding rect) either at this position.
+	\~French Importe le schema decrit dans un element XML.
+	Si une position est precisee,
+	les elements importes sont positionnes de maniere a ce que le
 	coin superieur gauche du plus petit rectangle pouvant les entourant tous
 	(le bounding rect) soit a cette position.
-	@param document Le document XML a analyser
-	@param position La position du schema importe
-	@param consider_informations Si vrai, les informations complementaires
+	\~ @param document :
+	The XML document to analyze
+	\~French Le document XML a analyser
+	\~ @param position :
+	The position of the diagram matters
+	\~French La position du schema importe
+	\~ @param consider_informations :
+	If true, additional information
+	(author, title, ...) will be taken into account
+	\~French Si vrai, les informations complementaires
 	(auteur, titre, ...) seront prises en compte
-	@param content_ptr si ce pointeur vers un DiagramContent est different de 0,
+	\~ @param content_ptr :
+	if this pointer to a DiagramContent is different from 0,
+	it will be filled with the content added to the schema by the fromXml
+	\~French si ce pointeur vers un DiagramContent est different de 0,
 	il sera rempli avec le contenu ajoute au schema par le fromXml
-	@return true si l'import a reussi, false sinon
+	\~ @return
+	true if the import was successful, false otherwise
+	\~French true si l'import a reussi, false sinon
 */
 bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_informations, DiagramContent *content_ptr) {
 	const QDomElement& root = document;
@@ -987,11 +1082,13 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		return(true);
 	}
 	
-	// Backward compatibility: prior to version 0.3, we need to compensate, at
-	// diagram-opening time, the rotation of the element for each of its
-	// textfields having the "FollowParentRotation" option disabled.
-	// After 0.3, elements textfields get userx, usery and userrotation attributes
-	// that explicitly specify their position and orientation.
+	/* Backward compatibility: prior to version 0.3, we need to compensate,
+	 *  at diagram-opening time, the rotation of the element for each of its
+	 *  textfields having the "FollowParentRotation" option disabled.
+	 *  After 0.3, elements textfields get userx,
+	 *  usery and userrotation attributes that explicitly specify
+	 *  their position and orientation.
+	 */
 	qreal project_qet_version = declaredQElectroTechVersion(true);
 	bool handle_inputs_rotation = (
 		project_qet_version != -1 && project_qet_version < 0.3 &&
@@ -1120,7 +1217,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		added_tables << table;
 	}
 
-		//Translate items if a new position was given in parameter
+	//Translate items if a new position was given in parameter
 	if (position != QPointF())
 	{
 		QVector <QGraphicsItem *> added_items;
@@ -1131,7 +1228,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		for (auto image   : added_images    ) added_items << image;
 		for (auto table   : added_tables    ) added_items << table;
 
-			//Get the top left corner of the rectangle that contain all added items
+		//Get the top left corner of the rectangle that contain all added items
 		QRectF items_rect;
 		for (auto item : added_items) {
 			items_rect = items_rect.united(item->mapToScene(item->boundingRect()).boundingRect());
@@ -1198,12 +1295,13 @@ void Diagram::folioSequentialsFromXml(const QDomElement &root, QHash<QString, QS
 }
 
 /**
- * @brief Diagram::refreshContents
- * refresh all content of diagram.
- * - refresh conductor text.
- * - linking the elements waiting to be linked
- * - Refresh the connection of the dynamic element text item (use for text with source of text label)
- */
+	@brief Diagram::refreshContents
+	refresh all content of diagram.
+	- refresh conductor text.
+	- linking the elements waiting to be linked
+	- Refresh the connection of the dynamic element text item
+	  (use for text with source of text label)
+*/
 void Diagram::refreshContents()
 {
 	ElementProvider provider_(this);
@@ -1223,11 +1321,11 @@ void Diagram::refreshContents()
 }
 
 /**
- * @brief Diagram::addItem
- * Réimplemented from QGraphicsScene::addItem(QGraphicsItem *item)
- * Do some specific operation if item need it (for exemple an element)
- * @param item
- */
+	@brief Diagram::addItem
+	Réimplemented from QGraphicsScene::addItem(QGraphicsItem *item)
+	Do some specific operation if item need it (for exemple an element)
+	@param item
+*/
 void Diagram::addItem(QGraphicsItem *item)
 {
 	if (!item || isReadOnly() || item->scene() == this) return;
@@ -1253,11 +1351,11 @@ void Diagram::addItem(QGraphicsItem *item)
 }
 
 /**
- * @brief Diagram::removeItem
- * Reimplemented from QGraphicsScene::removeItem(QGraphicsItem *item)
- * Do some specific operation if item need it (for exemple an element)
- * @param item
- */
+	@brief Diagram::removeItem
+	Reimplemented from QGraphicsScene::removeItem(QGraphicsItem *item)
+	Do some specific operation if item need it (for exemple an element)
+	@param item
+*/
 void Diagram::removeItem(QGraphicsItem *item)
 {
 	if (!item || isReadOnly()) return;
@@ -1293,6 +1391,7 @@ void Diagram::titleChanged(const QString &title) {
 }
 
 /**
+	@brief Diagram::titleBlockTemplateChanged
 	This slot may be used to inform the diagram object that the given title
 	block template has changed. The diagram will thus flush its title
 	block-dedicated rendering cache.
@@ -1306,6 +1405,7 @@ void Diagram::titleBlockTemplateChanged(const QString &template_name) {
 }
 
 /**
+	@brief Diagram::titleBlockTemplateRemoved
 	This slot has to be be used to inform this class that the given title block
 	template is about to be removed and is no longer accessible. This class
 	will either use the provided  optional TitleBlockTemplate or the default
@@ -1322,6 +1422,7 @@ void Diagram::titleBlockTemplateRemoved(const QString &template_name, const QStr
 }
 
 /**
+	@brief Diagram::setTitleBlockTemplate
 	Set the template to use to render the title block of this diagram.
 	@param template_name Name of the title block template.
 */
@@ -1338,7 +1439,9 @@ void Diagram::setTitleBlockTemplate(const QString &template_name)
 }
 
 /**
-	Selectionne tous les objets du schema
+	@brief Diagram::selectAll
+	Select all schema objects
+	\~French Selectionne tous les objets du schema
 */
 void Diagram::selectAll() {
 	if (items().isEmpty()) return;
@@ -1350,7 +1453,9 @@ void Diagram::selectAll() {
 }
 
 /**
-	Deslectionne tous les objets selectionnes
+	@brief Diagram::deselectAll
+	Deselects all selected objects
+	\~French Deslectionne tous les objets selectionnes
 */
 void Diagram::deselectAll() {
 	if (items().isEmpty()) return;
@@ -1359,6 +1464,8 @@ void Diagram::deselectAll() {
 }
 
 /**
+	@brief Diagram::invertSelection
+	Reverses the selection state of all schema objects
 	Inverse l'etat de selection de tous les objets du schema
 */
 void Diagram::invertSelection() {
@@ -1371,10 +1478,10 @@ void Diagram::invertSelection() {
 }
 
 /**
- * @brief Diagram::updateLabels
- * Update elements and conductors that reference folio field
- * in their labels.
- */
+	@brief Diagram::updateLabels
+	Update elements and conductors that reference folio field
+	in their labels.
+*/
 void Diagram::updateLabels()
 {
 	for (Conductor *cnd : content().conductors())
@@ -1427,9 +1534,9 @@ void Diagram::loadFolioSeqHash(QHash<QString, QStringList> *hash, const QString&
 }
 
 /**
- * @brief Diagram::changeZValue
- * Change the Z value of the current selected item, according to @option
- */
+	@brief Diagram::changeZValue
+	Change the Z value of the current selected item, according to @option
+*/
 void Diagram::changeZValue(QET::DepthOption option)
 {
 	DiagramContent dc(this);
@@ -1483,10 +1590,10 @@ void Diagram::changeZValue(QET::DepthOption option)
 }
 
 /**
- * @brief Diagram::loadElmtFolioSeq
- * This class loads all folio sequential variables related
- * to the current autonum
- */
+	@brief Diagram::loadElmtFolioSeq
+	This class loads all folio sequential variables related
+	to the current autonum
+*/
 void Diagram::loadElmtFolioSeq() {
 	QString title = project()->elementCurrentAutoNum();
 	NumerotationContext nc = project()->elementAutoNum(title);
@@ -1541,10 +1648,10 @@ void Diagram::loadElmtFolioSeq() {
 }
 
 /**
- * @brief Diagram::loadCndFolioSeq
- * This class loads all conductor folio sequential variables related
- * to the current autonum
- */
+	@brief Diagram::loadCndFolioSeq
+	This class loads all conductor folio sequential variables related
+	to the current autonum
+*/
 void Diagram::loadCndFolioSeq() {
 	//Conductor
 	QString title = project()->conductorCurrentAutoNum();
@@ -1601,12 +1708,18 @@ void Diagram::loadCndFolioSeq() {
 }
 
 /**
-	@return le titre du cartouche
+	@brief Diagram::title
+	@return title of the titleblock
+	\~Frenchle titre du cartouche
 */
 QString Diagram::title() const {
 	return(border_and_titleblock.title());
 }
 
+/**
+	@brief Diagram::elements
+	@return  the list containing all elements
+*/
 QList <Element *> Diagram::elements() const {
 	QList<Element *> element_list;
 	foreach (QGraphicsItem *qgi, items()) {
@@ -1617,9 +1730,9 @@ QList <Element *> Diagram::elements() const {
 }
 
 /**
- * @brief Diagram::conductors
- * Return the list containing all conductors
- */
+	@brief Diagram::conductors
+	@return the list containing all conductors
+*/
 QList <Conductor *> Diagram::conductors() const {
 	QList<Conductor *> cnd_list;
 	foreach (QGraphicsItem *qgi, items()) {
@@ -1629,18 +1742,32 @@ QList <Conductor *> Diagram::conductors() const {
 	return (cnd_list);
 }
 
+/**
+	@brief Diagram::elementsMover
+	@return
+*/
 ElementsMover &Diagram::elementsMover() {
 	return m_elements_mover;
 }
 
+/**
+	@brief Diagram::elementTextsMover
+	@return
+*/
 ElementTextsMover &Diagram::elementTextsMover() {
 	return m_element_texts_mover;
 }
 
 /**
-	Permet de savoir si un element est utilise sur un schema
-	@param location Emplacement d'un element
-	@return true si l'element location est utilise sur ce schema, false sinon
+	@brief Diagram::usesElement
+	Used to find out if an element is used on a schema
+	\~French Permet de savoir si un element est utilise sur un schema
+	\~ @param location : Location of an element
+	\~French Emplacement d'un element
+	\~ @return true if the location element is used on this schema,
+	false otherwise
+	\~French true si l'element location est utilise sur ce schema,
+	false sinon
 */
 bool Diagram::usesElement(const ElementsLocation &location)
 {
@@ -1653,7 +1780,8 @@ bool Diagram::usesElement(const ElementsLocation &location)
 }
 
 /**
-	@param a title block template name
+	@brief Diagram::usesTitleBlockTemplate
+	@param name : a title block template name
 	@return true if the provided template is used by this diagram, false
 	otherwise.
 */
@@ -1662,9 +1790,9 @@ bool Diagram::usesTitleBlockTemplate(const QString &name) {
 }
 
 /**
- * @brief Diagram::freezeElements
- * Freeze every existent element label.
- */
+	@brief Diagram::freezeElements
+	Freeze every existent element label.
+*/
 void Diagram::freezeElements(bool freeze) {
 	foreach (Element *elmt, elements()) {
 		elmt->freezeLabel(freeze);
@@ -1672,9 +1800,9 @@ void Diagram::freezeElements(bool freeze) {
 }
 
 /**
- * @brief Diagram::unfreezeElements
- * Unfreeze every existent element label.
- */
+	@brief Diagram::unfreezeElements
+	Unfreeze every existent element label.
+*/
 void Diagram::unfreezeElements() {
 	foreach (Element *elmt, elements()) {
 		elmt->freezeLabel(false);
@@ -1682,25 +1810,25 @@ void Diagram::unfreezeElements() {
 }
 
 /**
- * @brief Diagram::freezeNewElements
- * Set new element label to be frozen.
- */
+	@brief Diagram::freezeNewElements
+	Set new element label to be frozen.
+*/
 void Diagram::setFreezeNewElements(bool b) {
 	m_freeze_new_elements = b;
 }
 
 /**
- * @brief Diagram::freezeNewElements
- * @return current freeze new element status .
- */
+	@brief Diagram::freezeNewElements
+	@return current freeze new element status .
+*/
 bool Diagram::freezeNewElements() {
 	return m_freeze_new_elements;
 }
 
 /**
- * @brief Diagram::freezeConductors
- * Freeze every existent conductor label.
- */
+	@brief Diagram::freezeConductors
+	Freeze every existent conductor label.
+*/
 void Diagram::freezeConductors(bool freeze) {
 	foreach (Conductor *cnd, conductors()) {
 		cnd->setFreezeLabel(freeze);
@@ -1708,25 +1836,25 @@ void Diagram::freezeConductors(bool freeze) {
 }
 
 /**
- * @brief Diagram::setfreezeNewConductors
- * Set new conductor label to be frozen.
- */
+	@brief Diagram::setfreezeNewConductors
+	Set new conductor label to be frozen.
+*/
 void Diagram::setFreezeNewConductors(bool b) {
 	m_freeze_new_conductors_ = b;
 }
 
 /**
- * @brief Diagram::freezeNewConductors
- * @return current freeze new conductor status .
- */
+	@brief Diagram::freezeNewConductors
+	@return current freeze new conductor status .
+*/
 bool Diagram::freezeNewConductors() {
 	return m_freeze_new_conductors_;
 }
 
 /**
- * @brief Diagram::adjustSceneRect
- * Recalcul and adjust the size of the scene
- */
+	@brief Diagram::adjustSceneRect
+	Recalcul and adjust the size of the scene
+*/
 void Diagram::adjustSceneRect()
 {
 	QRectF old_rect = sceneRect();
@@ -1735,10 +1863,16 @@ void Diagram::adjustSceneRect()
 }
 
 /**
-	Cette methode permet d'appliquer de nouvelles options de rendu tout en
-	accedant aux proprietes de rendu en cours.
-	@param new_properties Nouvelles options de rendu a appliquer
-	@return les options de rendu avant l'application de new_properties
+	@brief Diagram::applyProperties
+	This method allows you to apply new rendering options while
+	accessing the current rendering properties.
+	\~French Cette methode permet d'appliquer de nouvelles options de rendu
+	tout en accedant aux proprietes de rendu en cours.
+	\~ @param new_properties :
+	New rendering options to apply
+	\~French Nouvelles options de rendu a appliquer
+	\~ @return rendering options before applying new_properties
+	\~French les options de rendu avant l'application de new_properties
 */
 ExportProperties Diagram::applyProperties(const ExportProperties &new_properties) {
 	// exporte les options de rendu en cours
@@ -1750,6 +1884,7 @@ ExportProperties Diagram::applyProperties(const ExportProperties &new_properties
 	old_properties.draw_colored_conductors = drawColoredConductors();
 	old_properties.exported_area           = useBorder() ? QET::BorderArea : QET::ElementsArea;
 	
+	// apply the new rendering options
 	// applique les nouvelles options de rendu
 	setUseBorder                  (new_properties.exported_area == QET::BorderArea);
 	setDrawTerminals              (new_properties.draw_terminals);
@@ -1758,14 +1893,20 @@ ExportProperties Diagram::applyProperties(const ExportProperties &new_properties
 	border_and_titleblock.displayBorder(new_properties.draw_border);
 	border_and_titleblock.displayTitleBlock (new_properties.draw_titleblock);
 	
+	// return old rendering options
 	// retourne les anciennes options de rendu
 	return(old_properties);
 }
 
 /**
-	@param pos Position cartesienne (ex : 10.3, 45.2) a transformer en position
+	@brief Diagram::convertPosition
+	@param pos :
+	Cartesian position (ex: 10.3, 45.2) to transform into position
+	in the grid (ex: B2)
+	\~French  Position cartesienne (ex : 10.3, 45.2) a transformer en position
 	dans la grille (ex : B2)
-	@return la position dans la grille correspondant a pos
+	\~ @return a position in the grid corresponding to pos
+	\~French la position dans la grille correspondant a pos
 */
 DiagramPosition Diagram::convertPosition(const QPointF &pos) {
 	// delegue le calcul au BorderTitleBlock
@@ -1806,8 +1947,11 @@ QPointF Diagram::snapToGrid(const QPointF &p)
 
 
 /**
-	Definit s'il faut afficher ou non les bornes
-	@param dt true pour afficher les bornes, false sinon
+	@brief Diagram::setDrawTerminals
+	Defines whether or not to display the terminals
+	\~French Definit s'il faut afficher ou non les bornes
+	\~ @param dt : true to display the bounds, false otherwise
+	\~French true pour afficher les bornes, false sinon
 */
 void Diagram::setDrawTerminals(bool dt) {
 	foreach(QGraphicsItem *qgi, items()) {
@@ -1818,16 +1962,22 @@ void Diagram::setDrawTerminals(bool dt) {
 }
 
 /**
-	Definit s'il faut respecter ou non les couleurs des conducteurs.
+	@brief Diagram::setDrawColoredConductors
+	Defines whether or not to respect the colors of the conductors.
+	If not, the conductors are all drawn in black.
+	\~French Definit s'il faut respecter ou non les couleurs des conducteurs.
 	Si non, les conducteurs sont tous dessines en noir.
-	@param dcc true pour respecter les couleurs, false sinon
+	\~ @param dcc true to respect the colors, false otherwise
+	\~French dcc true pour respecter les couleurs, false sinon
 */
 void Diagram::setDrawColoredConductors(bool dcc) {
 	draw_colored_conductors_ = dcc;
 }
 
 /**
-	@return la liste des conducteurs selectionnes sur le schema
+	@brief Diagram::selectedConductors
+	@return the list of conductors selected on the diagram
+	\~French la liste des conducteurs selectionnes sur le schema
 */
 QSet<Conductor *> Diagram::selectedConductors() const {
 	QSet<Conductor *> conductors_set;
@@ -1839,7 +1989,11 @@ QSet<Conductor *> Diagram::selectedConductors() const {
 	return(conductors_set);
 }
 
-/// @return true si le presse-papier semble contenir un schema
+/**
+	@brief Diagram::clipboardMayContainDiagram
+	@return true if the clipboard appears to contain a schema
+	\~French true si le presse-papier semble contenir un schema
+*/
 bool Diagram::clipboardMayContainDiagram() {
 	QString clipboard_text = QApplication::clipboard() -> text().trimmed();
 	bool may_be_diagram = clipboard_text.startsWith("<diagram") && clipboard_text.endsWith("</diagram>");
@@ -1847,16 +2001,20 @@ bool Diagram::clipboardMayContainDiagram() {
 }
 
 /**
-	@return le projet auquel ce schema appartient ou 0 s'il s'agit d'un schema
-	independant.
+	@brief Diagram::project
+	@return the project to which this schema belongs
+	or 0 if it is an independent schema.
+	\~French le projet auquel ce schema appartient
+	ou 0 s'il s'agit d'un schema independant.
 */
 QETProject *Diagram::project() const {
 	return(m_project);
 }
 
 /**
-	@return the folio number of this diagram within its parent project, or -1
-	if it is has no parent project
+	@brief Diagram::folioIndex
+	@return the folio number of this diagram within its parent project,
+	or -1 if it is has no parent project
 */
 int Diagram::folioIndex() const {
 	if (!m_project) return(-1);
@@ -1864,7 +2022,9 @@ int Diagram::folioIndex() const {
 }
 
 /**
-	@param fallback_to_project When a diagram does not have a declared version,
+	@brief Diagram::declaredQElectroTechVersion
+	@param fallback_to_project :
+	When a diagram does not have a declared version,
 	this method will use the one declared by its parent project only if
 	fallback_to_project is true.
 	@return the declared QElectroTech version of this diagram
@@ -1880,17 +2040,20 @@ qreal Diagram::declaredQElectroTechVersion(bool fallback_to_project) const {
 }
 
 /**
- * @brief Diagram::isReadOnly
- * @return  true if this diagram is read only.
- * This method is same has call Diagram::project() -> isReadOnly()
- */
+	@brief Diagram::isReadOnly
+	@return  true if this diagram is read only.
+	This method is same has call Diagram::project() -> isReadOnly()
+*/
 bool Diagram::isReadOnly() const
 {
 	return m_project -> isReadOnly();
 }
 
 /**
-	@return Le contenu du schema. Les conducteurs sont tous places dans
+	@brief Diagram::content
+	@return The content of the diagram.
+	The conductors are all seated in conductorsToMove.
+	\~French Le contenu du schema. Les conducteurs sont tous places dans
 	conductorsToMove.
 */
 DiagramContent Diagram::content() const {
@@ -1908,9 +2071,9 @@ DiagramContent Diagram::content() const {
 }
 
 /**
- * @brief Diagram::canRotateSelection
- * @return True if a least one of selected items can be rotated
- */
+	@brief Diagram::canRotateSelection
+	@return True if a least one of selected items can be rotated
+*/
 bool Diagram::canRotateSelection() const
 {
 	for (QGraphicsItem *qgi : selectedItems())
