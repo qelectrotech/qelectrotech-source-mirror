@@ -1207,7 +1207,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	
 		//The roots of the xml document must be a "project" element
 	if (root_elmt.tagName() == "project")
-	{
+	  {
 			//Normal opening mode
 		if (root_elmt.hasAttribute("version"))
 		{
@@ -1244,6 +1244,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		m_state = ProjectParsingFailed;
 	}
 	
+	m_data_base.blockSignals(true);
 		//Load the project-wide properties
 	readProjectPropertiesXml(xml_project);
 		//Load the default properties for the new diagrams
@@ -1254,6 +1255,8 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	readElementsCollectionXml(xml_project);
 		//Load the diagrams
 	readDiagramsXml(xml_project);
+	m_data_base.blockSignals(false);
+	m_data_base.updateDB();
 	
 	m_state = Ok;
 }

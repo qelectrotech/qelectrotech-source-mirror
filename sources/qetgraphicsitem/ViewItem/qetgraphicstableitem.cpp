@@ -96,7 +96,9 @@ void QetGraphicsTableItem::checkInsufficientRowsCount(QetGraphicsTableItem *tabl
 
 	if (count_ < first_table->model()->rowCount())
 	{
-		QWidget *parent = first_table->diagram()->views().first() ? first_table->diagram()->views().first() : nullptr;
+		QWidget *parent = nullptr;
+		if (first_table->diagram() && first_table->diagram()->views().size())
+			parent = first_table->diagram()->views().first();
 
 		QString text;
 		if (several_table) {
