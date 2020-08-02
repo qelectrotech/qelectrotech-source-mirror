@@ -6,6 +6,7 @@ I'm really glad you're reading this, because we need volunteer developers to hel
 Here are some important resources:
 
 * [wiki](https://qelectrotech.org/wiki_new/doc/qt_creator#on_ajoute_le_style_de_code_qet)Qet code style
+* [wiki](https://git-scm.com/doc)git Documentation
 
 ## Testing
 
@@ -16,6 +17,87 @@ Always write a clear log message for your commits. One-line messages are fine fo
     $ git commit -m "A brief summary of the commit
     > 
     > A paragraph describing what changed and its impact."
+
+* It is always appropriate to keep the commits small.
+* For major changes it is recommended to use branches.
+
+### Interactive Staging
+https://git-scm.com/book/en/v2/Git-Tools-Interactive-Staging
+
+issue: you have modified a class but you want to write it in 2 commits
+
+ ´git add -p´ or ´git add -i´
+
+
+    /qet> git add -i
+
+
+               staged     unstaged path
+      1:    unchanged        +1/-1 sources/diagram.cpp
+
+    *** Commands ***
+      1: status       2: update       3: revert       4: add untracked
+      5: patch        6: diff         7: quit         8: help
+
+
+    What now> 5
+
+
+               staged     unstaged path
+      1:    unchanged        +1/-1 sources/diagram.cpp
+    Patch update>> 1
+               staged     unstaged path
+    * 1:    unchanged        +1/-1 sources/diagram.cpp
+    Patch update>>
+    diff --git a/sources/diagram.cpp b/sources/diagram.cpp
+    index bffca653f..9bd2280f7 100644
+    --- a/sources/diagram.cpp
+    +++ b/sources/diagram.cpp
+    @@ -103,9 +103,9 @@ Diagram::Diagram(QETProject *project) :
+        connect(&border_and_titleblock,
+                &BorderTitleBlock::titleBlockFolioChanged,
+                this, &Diagram::updateLabels);
+    -       connect(this, &Diagram::diagramActivated,
+    +       foo(do_a);
+    -       adjust(diagramActivated);
+    +       bar(do_c);
+        adjustSceneRect();
+     }
+
+
+    (1/1) Stage this hunk [y,n,q,a,d,s,e,?]? s
+
+
+    Split into 2 hunks.
+    @@ -103,5 +103,5 @@
+        connect(&border_and_titleblock,
+                &BorderTitleBlock::titleBlockFolioChanged,
+                this, &Diagram::updateLabels);
+    -       connect(this, &Diagram::diagramActivated,
+    +       foo(do_a);
+
+
+    (1/2) Stage this hunk [y,n,q,a,d,j,J,g,/,e,?]? y
+
+
+    @@ -107,5 +107,5 @@
+                this, &Diagram::loadElmtFolioSeq);
+    -       adjust(diagramActivated);
+    +       bar(do_c);
+        adjustSceneRect();
+     }
+
+
+    (2/2) Stage this hunk [y,n,q,a,d,K,g,/,e,?]? n
+
+
+    *** Commands ***
+      1: status       2: update       3: revert       4: add untracked
+      5: patch        6: diff         7: quit         8: help
+    What now>What now>7
+    Bye.
+
+    git commit -m "Mod Signal Slot to funsion"
 
 ## Coding conventions
 
