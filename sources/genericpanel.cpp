@@ -81,7 +81,8 @@ Diagram *GenericPanel::diagramForItem(QTreeWidgetItem *item) const {
 	@param item
 	@return TitleBlockTemplateLocation()
 */
-TitleBlockTemplateLocation GenericPanel::templateLocationForItem(QTreeWidgetItem *item) const {
+TitleBlockTemplateLocation GenericPanel::templateLocationForItem(
+		QTreeWidgetItem *item) const {
 	if (item && item -> type() & QET::TitleBlockTemplatesCollectionItem) {
 		return(valueForItem<TitleBlockTemplateLocation>(item));
 	}
@@ -119,11 +120,14 @@ TitleBlockTemplateLocation GenericPanel::selectedTemplateLocation() const {
 	@param options
 	@return project_qtwi
 */
-QTreeWidgetItem *GenericPanel::addProject(QETProject *project, QTreeWidgetItem *parent_item, PanelOptions options) {
+QTreeWidgetItem *GenericPanel::addProject(QETProject *project,
+					  QTreeWidgetItem *parent_item,
+					  PanelOptions options) {
 	if (!project) return(nullptr);
 	bool creation_required;
 	
-	QTreeWidgetItem *project_qtwi = getItemForProject(project, &creation_required);
+	QTreeWidgetItem *project_qtwi = getItemForProject(project,
+							  &creation_required);
 	updateProjectItem(project_qtwi, project, options, creation_required);
 	reparent(project_qtwi, parent_item);
 	fillProjectItem(project_qtwi, project, options, creation_required);
@@ -149,7 +153,8 @@ QTreeWidgetItem *GenericPanel::itemForProject(QETProject *project) {
 	@return the tree item representing the provided project. If it does not
 	appear within this panel, it is created.
 */
-QTreeWidgetItem *GenericPanel::getItemForProject(QETProject *project, bool *created) {
+QTreeWidgetItem *GenericPanel::getItemForProject(QETProject *project,
+						 bool *created) {
 	if (!project) return(nullptr);
 	
 	QTreeWidgetItem *project_qtwi = projects_.value(project, nullptr);
@@ -171,12 +176,16 @@ QTreeWidgetItem *GenericPanel::getItemForProject(QETProject *project, bool *crea
 	@param freshly_created
 	@return updateItem(project_qtwi, options, freshly_created)
 */
-QTreeWidgetItem *GenericPanel::updateProjectItem(QTreeWidgetItem *project_qtwi, QETProject *project, PanelOptions options, bool freshly_created) {
+QTreeWidgetItem *GenericPanel::updateProjectItem(QTreeWidgetItem *project_qtwi,
+						 QETProject *project,
+						 PanelOptions options,
+						 bool freshly_created) {
 	Q_UNUSED(options)
 	if (!project_qtwi || !project) return(nullptr);
 	
 	if (freshly_created) {
-		project_qtwi -> setData(0, GenericPanel::Item, QVariant::fromValue(project));
+		project_qtwi -> setData(0, GenericPanel::Item,
+					QVariant::fromValue(project));
 		projects_.insert(project, project_qtwi);
 		
 		connect(
@@ -200,7 +209,11 @@ QTreeWidgetItem *GenericPanel::updateProjectItem(QTreeWidgetItem *project_qtwi, 
 		);
 	}
 	project_qtwi -> setToolTip(0, final_tooltip);
-    QString project_whatsthis = tr("Ceci est un projet QElectroTech, c'est-à-dire un fichier d'extension .qet regroupant plusieurs folios. Il embarque également les éléments et modèles de cartouches utilisés dans ces folios.", "\"What's this\" tip");
+	QString project_whatsthis = tr("Ceci est un projet QElectroTech, \
+		c'est-à-dire un fichier d'extension .qet regroupant \
+		plusieurs folios. Il embarque également les éléments et \
+		modèles de cartouches utilisés dans ces folios.",
+		"\"What's this\" tip");
 	project_qtwi -> setWhatsThis(0, project_whatsthis);
 	return(updateItem(project_qtwi, options, freshly_created));
 }
@@ -213,7 +226,10 @@ QTreeWidgetItem *GenericPanel::updateProjectItem(QTreeWidgetItem *project_qtwi, 
 	@param freshly_created
 	@return fillItem(project_qtwi, options, freshly_created)
 */
-QTreeWidgetItem *GenericPanel::fillProjectItem(QTreeWidgetItem *project_qtwi, QETProject *project, PanelOptions options, bool freshly_created) {
+QTreeWidgetItem *GenericPanel::fillProjectItem(QTreeWidgetItem *project_qtwi,
+					       QETProject *project,
+					       PanelOptions options,
+					       bool freshly_created) {
 	if (!project_qtwi || !project) return(nullptr);
 	
 	
@@ -233,11 +249,14 @@ QTreeWidgetItem *GenericPanel::fillProjectItem(QTreeWidgetItem *project_qtwi, QE
 			);
 		} else {
 			// remove diagrams unknown to the project (presumably removed)
-			removeObsoleteItems(project -> diagrams(), project_qtwi, QET::Diagram, false);
+			removeObsoleteItems(project -> diagrams(),
+					    project_qtwi, QET::Diagram, false);
 		}
 		int index = 0;
 		foreach (Diagram *diagram, project -> diagrams()) {
-			QTreeWidgetItem *diagram_qtwi = addDiagram(diagram, nullptr, options);
+			QTreeWidgetItem *diagram_qtwi = addDiagram(diagram,
+								   nullptr,
+								   options);
 			project_qtwi -> insertChild(index, diagram_qtwi);
 			++ index;
 		}
@@ -253,8 +272,7 @@ QTreeWidgetItem *GenericPanel::fillProjectItem(QTreeWidgetItem *project_qtwi, QE
 		addTemplatesCollection(
 			project -> embeddedTitleBlockTemplatesCollection(),
 			project_qtwi,
-			options
-		);
+			options);
 	}
 
 	return(fillItem(project_qtwi, options, freshly_created));
@@ -267,13 +285,16 @@ QTreeWidgetItem *GenericPanel::fillProjectItem(QTreeWidgetItem *project_qtwi, QE
 	@param options (unused)
 	@return diagram_qtwi
 */
-QTreeWidgetItem *GenericPanel::addDiagram(Diagram *diagram, QTreeWidgetItem *parent_item, PanelOptions options) {
+QTreeWidgetItem *GenericPanel::addDiagram(Diagram *diagram,
+					  QTreeWidgetItem *parent_item,
+					  PanelOptions options) {
 	Q_UNUSED(options)
 	if (!diagram) return(nullptr);
 	
 	bool creation_required;
 	
-	QTreeWidgetItem *diagram_qtwi = getItemForDiagram(diagram, &creation_required);
+	QTreeWidgetItem *diagram_qtwi = getItemForDiagram(diagram,
+							  &creation_required);
 	updateDiagramItem(diagram_qtwi, diagram, options, creation_required);
 	reparent(diagram_qtwi, parent_item);
 	fillDiagramItem(diagram_qtwi, diagram, options, creation_required);
@@ -287,7 +308,8 @@ QTreeWidgetItem *GenericPanel::addDiagram(Diagram *diagram, QTreeWidgetItem *par
 	@param created
 	@return diagram_qtwi
 */
-QTreeWidgetItem *GenericPanel::getItemForDiagram(Diagram *diagram, bool *created) {
+QTreeWidgetItem *GenericPanel::getItemForDiagram(Diagram *diagram,
+						 bool *created) {
 	if (!diagram) return(nullptr);
 	
 	QTreeWidgetItem *diagram_qtwi = diagrams_.value(diagram, nullptr);
@@ -309,29 +331,34 @@ QTreeWidgetItem *GenericPanel::getItemForDiagram(Diagram *diagram, bool *created
 	@param freshly_created
 	@return updateItem(diagram_qtwi, options, freshly_created)
 */
-QTreeWidgetItem *GenericPanel::updateDiagramItem(QTreeWidgetItem *diagram_qtwi, Diagram *diagram, PanelOptions options, bool freshly_created) {
-	Q_UNUSED(options)
+QTreeWidgetItem *GenericPanel::updateDiagramItem(QTreeWidgetItem *diagram_qtwi,
+						 Diagram *diagram,
+						 PanelOptions options,
+						 bool freshly_created) {
 	if (!diagram || !diagram_qtwi) return(nullptr);
 	QSettings settings;
 	
 	QString displayed_title = diagram -> title();
 	if (displayed_title.isEmpty())
 	{
-		displayed_title = tr("Folio sans titre", "Fallback label when a diagram has no title");
+		displayed_title = tr("Folio sans titre",
+				     "Fallback label when a diagram has no title");
 	}
 
 	if (settings.value("genericpanel/folio", true).toBool())
 	{
-		QString displayed_label = diagram ->border_and_titleblock.finalfolio();
+		QString displayed_label =
+				diagram ->border_and_titleblock.finalfolio();
 		int diagram_folio_idx = diagram -> folioIndex();
 		if (diagram_folio_idx != -1)
 		{
 			displayed_label = QString(
-						tr(
-							"%1 - %2",
-							"label displayed for a diagram in the panel ; %1 is the folio index, %2 is the diagram title"
-							)
-						).arg(displayed_label).arg(displayed_title);
+				tr(
+				   "%1 - %2",
+				   "label displayed for a diagram in the panel ;\
+				    %1 is the folio index, %2 is the diagram title"
+				   )
+				).arg(displayed_label).arg(displayed_title);
 			diagram_qtwi -> setText(0, displayed_label);
 		}
 
@@ -343,11 +370,12 @@ QTreeWidgetItem *GenericPanel::updateDiagramItem(QTreeWidgetItem *diagram_qtwi, 
 		if (diagram_folio_idx != -1)
 		{
 			displayed_label = QString(
-						tr(
-							"%1 - %2",
-							"label displayed for a diagram in the panel ; %1 is the folio index, %2 is the diagram title"
-							)
-						).arg(diagram_folio_idx + 1).arg(displayed_title);
+				tr(
+				   "%1 - %2",
+				   "label displayed for a diagram in the panel ;\
+				    %1 is the folio index, %2 is the diagram title"
+				   )
+				).arg(diagram_folio_idx + 1).arg(displayed_title);
 		}
 
 		diagram_qtwi -> setText(0, displayed_label);
@@ -355,7 +383,9 @@ QTreeWidgetItem *GenericPanel::updateDiagramItem(QTreeWidgetItem *diagram_qtwi, 
 	}
 	if (freshly_created)
 	{
-		diagram_qtwi -> setData(0, GenericPanel::Item, QVariant::fromValue(diagram));
+		diagram_qtwi -> setData(0,
+					GenericPanel::Item,
+					QVariant::fromValue(diagram));
 		diagrams_.insert(diagram, diagram_qtwi);
 		
 		connect(diagram, &Diagram::diagramTitleChanged, this, &GenericPanel::diagramTitleChanged);
@@ -374,7 +404,10 @@ QTreeWidgetItem *GenericPanel::updateDiagramItem(QTreeWidgetItem *diagram_qtwi, 
 	@param freshly_created
 	@return fillItem(diagram_qtwi, options, freshly_created)
 */
-QTreeWidgetItem *GenericPanel::fillDiagramItem(QTreeWidgetItem *diagram_qtwi, Diagram *diagram, PanelOptions options, bool freshly_created) {
+QTreeWidgetItem *GenericPanel::fillDiagramItem(QTreeWidgetItem *diagram_qtwi,
+					       Diagram *diagram,
+					       PanelOptions options,
+					       bool freshly_created) {
 	Q_UNUSED(diagram)
 	return(fillItem(diagram_qtwi, options, freshly_created));
 }
@@ -386,14 +419,25 @@ QTreeWidgetItem *GenericPanel::fillDiagramItem(QTreeWidgetItem *diagram_qtwi, Di
 	@param options
 	@return tbt_collection_qtwi
 */
-QTreeWidgetItem *GenericPanel::addTemplatesCollection(TitleBlockTemplatesCollection *tbt_collection, QTreeWidgetItem *parent_item, PanelOptions options) {
+QTreeWidgetItem *GenericPanel::addTemplatesCollection(
+		TitleBlockTemplatesCollection *tbt_collection,
+		QTreeWidgetItem *parent_item,
+		PanelOptions options) {
 	if (!tbt_collection) return(nullptr);
 	bool creation_required;
 	
-	QTreeWidgetItem *tbt_collection_qtwi = getItemForTemplatesCollection(tbt_collection, &creation_required);
-	updateTemplatesCollectionItem(tbt_collection_qtwi, tbt_collection, options, creation_required);
+	QTreeWidgetItem *tbt_collection_qtwi =
+			getItemForTemplatesCollection(tbt_collection,
+						      &creation_required);
+	updateTemplatesCollectionItem(tbt_collection_qtwi,
+				      tbt_collection,
+				      options,
+				      creation_required);
 	reparent(tbt_collection_qtwi, parent_item);
-	fillTemplatesCollectionItem(tbt_collection_qtwi, tbt_collection, options, creation_required);
+	fillTemplatesCollectionItem(tbt_collection_qtwi,
+				    tbt_collection,
+				    options,
+				    creation_required);
 	
 	return(tbt_collection_qtwi);
 }
@@ -404,7 +448,8 @@ QTreeWidgetItem *GenericPanel::addTemplatesCollection(TitleBlockTemplatesCollect
 	@return tb_templates_.value(tbt_collection -> location(), nullptr)
 	@return nullptr
 */
-QTreeWidgetItem *GenericPanel::itemForTemplatesCollection(TitleBlockTemplatesCollection *tbt_collection) {
+QTreeWidgetItem *GenericPanel::itemForTemplatesCollection(
+		TitleBlockTemplatesCollection *tbt_collection) {
 	if (!tbt_collection) return(nullptr);
 	return(tb_templates_.value(tbt_collection -> location(), nullptr));
 }
@@ -415,9 +460,13 @@ QTreeWidgetItem *GenericPanel::itemForTemplatesCollection(TitleBlockTemplatesCol
 	@param created
 	@return tbt_collection_item
 */
-QTreeWidgetItem *GenericPanel::getItemForTemplatesCollection(TitleBlockTemplatesCollection *tbt_collection, bool *created) {
+QTreeWidgetItem *GenericPanel::getItemForTemplatesCollection(
+		TitleBlockTemplatesCollection *tbt_collection,
+		bool *created) {
 	if (!tbt_collection) return(nullptr);
-	QTreeWidgetItem *tbt_collection_item = tb_templates_.value(tbt_collection -> location(), nullptr);
+	QTreeWidgetItem *tbt_collection_item =
+			tb_templates_.value(tbt_collection -> location(),
+					    nullptr);
 	if (tbt_collection_item) {
 		if (created) *created = false;
 		return(tbt_collection_item);
@@ -436,17 +485,25 @@ QTreeWidgetItem *GenericPanel::getItemForTemplatesCollection(TitleBlockTemplates
 	@param freshly_created
 	@return updateItem(tbt_collection_qtwi, options, freshly_created)
 */
-QTreeWidgetItem *GenericPanel::updateTemplatesCollectionItem(QTreeWidgetItem *tbt_collection_qtwi, TitleBlockTemplatesCollection *tbt_collection, PanelOptions options, bool freshly_created) {
-	Q_UNUSED(options)
+QTreeWidgetItem *GenericPanel::updateTemplatesCollectionItem(
+		QTreeWidgetItem *tbt_collection_qtwi,
+		TitleBlockTemplatesCollection *tbt_collection,
+		PanelOptions options,
+		bool freshly_created) {
 	QString label = tbt_collection -> title();
 	if (label.isEmpty()) label = tr("Modèles de cartouche");
 	
 	tbt_collection_qtwi -> setText(0, label);
-	tbt_collection_qtwi -> setToolTip(0, tbt_collection -> location().toString());
+	tbt_collection_qtwi -> setToolTip(0,
+					  tbt_collection->location().toString());
 	
 	if (freshly_created) {
-		tbt_collection_qtwi -> setData(0, GenericPanel::Item, QVariant::fromValue(tbt_collection -> location()));
-		tb_templates_.insert(tbt_collection -> location(), tbt_collection_qtwi);
+		tbt_collection_qtwi -> setData(0,
+					       GenericPanel::Item,
+					       QVariant::fromValue(
+						   tbt_collection->location()));
+		tb_templates_.insert(tbt_collection -> location(),
+				     tbt_collection_qtwi);
 	}
 	
 	return(updateItem(tbt_collection_qtwi, options, freshly_created));
@@ -460,8 +517,13 @@ QTreeWidgetItem *GenericPanel::updateTemplatesCollectionItem(QTreeWidgetItem *tb
 	@param freshly_created
 	@return fillItem(tbt_collection_qtwi, options, freshly_created)
 */
-QTreeWidgetItem *GenericPanel::fillTemplatesCollectionItem(QTreeWidgetItem *tbt_collection_qtwi, TitleBlockTemplatesCollection *tbt_collection, PanelOptions options, bool freshly_created) {
-	if (!tbt_collection_qtwi || !tbt_collection) return(tbt_collection_qtwi);
+QTreeWidgetItem *GenericPanel::fillTemplatesCollectionItem(
+		QTreeWidgetItem *tbt_collection_qtwi,
+		TitleBlockTemplatesCollection *tbt_collection,
+		PanelOptions options,
+		bool freshly_created) {
+	if (!tbt_collection_qtwi || !tbt_collection)
+		return(tbt_collection_qtwi);
 	
 	if (options & AddChildTemplates) {
 		if (freshly_created) {
@@ -476,14 +538,24 @@ QTreeWidgetItem *GenericPanel::fillTemplatesCollectionItem(QTreeWidgetItem *tbt_
 				);
 			}
 		} else {
-			// remove templates unknown to the collection (presumably removed)
-			removeObsoleteItems(tbt_collection -> templatesLocations(), tbt_collection_qtwi, QET::TitleBlockTemplate, false);
+		// remove templates unknown to the collection (presumably removed)
+			removeObsoleteItems(
+					tbt_collection -> templatesLocations(),
+					tbt_collection_qtwi,
+					QET::TitleBlockTemplate,
+					false);
 		}
 		
 		int index = 0;
 		foreach (QString template_name, tbt_collection -> templates()) {
-			QTreeWidgetItem *template_item = addTemplate(tbt_collection -> location(template_name), nullptr, options);
-			tbt_collection_qtwi -> insertChild(index ++, template_item);
+			QTreeWidgetItem *template_item =
+					addTemplate(
+						tbt_collection -> location(
+							template_name),
+						nullptr,
+						options);
+			tbt_collection_qtwi -> insertChild(index ++,
+							   template_item);
 		}
 	}
 	
@@ -497,14 +569,24 @@ QTreeWidgetItem *GenericPanel::fillTemplatesCollectionItem(QTreeWidgetItem *tbt_
 	@param options
 	@return tb_template_qtwi
 */
-QTreeWidgetItem *GenericPanel::addTemplate(const TitleBlockTemplateLocation &tb_template, QTreeWidgetItem *parent_item, PanelOptions options) {
+QTreeWidgetItem *GenericPanel::addTemplate(
+		const TitleBlockTemplateLocation &tb_template,
+		QTreeWidgetItem *parent_item,
+		PanelOptions options) {
 	if (!tb_template.isValid()) return(nullptr);
 	bool creation_required;
 	
-	QTreeWidgetItem *tb_template_qtwi = getItemForTemplate(tb_template, &creation_required);
-	updateTemplateItem(tb_template_qtwi, tb_template, options, creation_required);
+	QTreeWidgetItem *tb_template_qtwi = getItemForTemplate(tb_template,
+							       &creation_required);
+	updateTemplateItem(tb_template_qtwi,
+			   tb_template,
+			   options,
+			   creation_required);
 	reparent(tb_template_qtwi, parent_item);
-	fillTemplateItem(tb_template_qtwi, tb_template, options, creation_required);
+	fillTemplateItem(tb_template_qtwi,
+			 tb_template,
+			 options,
+			 creation_required);
 	
 	return(tb_template_qtwi);
 }
@@ -515,10 +597,13 @@ QTreeWidgetItem *GenericPanel::addTemplate(const TitleBlockTemplateLocation &tb_
 	@param created
 	@return tb_template_qtwi
 */
-QTreeWidgetItem *GenericPanel::getItemForTemplate(const TitleBlockTemplateLocation &tb_template, bool *created) {
+QTreeWidgetItem *GenericPanel::getItemForTemplate(
+		const TitleBlockTemplateLocation &tb_template,
+		bool *created) {
 	if (!tb_template.isValid()) return(nullptr);
 	
-	QTreeWidgetItem *tb_template_qtwi = tb_templates_.value(tb_template, nullptr);
+	QTreeWidgetItem *tb_template_qtwi = tb_templates_.value(tb_template,
+								nullptr);
 	if (tb_template_qtwi) {
 		if (created) *created = false;
 		return(tb_template_qtwi);
@@ -537,8 +622,15 @@ QTreeWidgetItem *GenericPanel::getItemForTemplate(const TitleBlockTemplateLocati
 	@param freshly_created
 	@return updateItem(tb_template_qtwi, options, freshly_created)
 */
-QTreeWidgetItem *GenericPanel::updateTemplateItem(QTreeWidgetItem *tb_template_qtwi, const TitleBlockTemplateLocation &tb_template, PanelOptions options, bool freshly_created) {
-	tb_template_qtwi -> setText(0, tr("Modèle \"%1\"", "used to display a title block template").arg(tb_template.name()));
+QTreeWidgetItem *GenericPanel::updateTemplateItem(
+		QTreeWidgetItem *tb_template_qtwi,
+		const TitleBlockTemplateLocation &tb_template,
+		PanelOptions options,
+		bool freshly_created) {
+	tb_template_qtwi -> setText(0,
+		tr("Modèle \"%1\"",
+		   "used to display a title block template").arg(
+					    tb_template.name()));
 	QString tbt_whatsthis = tr(
         "Ceci est un modèle de cartouche, qui peut être appliqué à un folio.",
 		"\"What's this\" tip"
@@ -557,7 +649,9 @@ QTreeWidgetItem *GenericPanel::updateTemplateItem(QTreeWidgetItem *tb_template_q
 	}
 	
 	if (freshly_created) {
-		tb_template_qtwi -> setData(0, GenericPanel::Item, QVariant::fromValue(tb_template));
+		tb_template_qtwi -> setData(0,
+					    GenericPanel::Item,
+					    QVariant::fromValue(tb_template));
 		tb_templates_.insert(tb_template, tb_template_qtwi);
 	}
 	return(updateItem(tb_template_qtwi, options, freshly_created));
@@ -571,7 +665,11 @@ QTreeWidgetItem *GenericPanel::updateTemplateItem(QTreeWidgetItem *tb_template_q
 	@param freshly_created
 	@return fillItem(tb_template_qtwi, options, freshly_created)
 */
-QTreeWidgetItem *GenericPanel::fillTemplateItem(QTreeWidgetItem *tb_template_qtwi, const TitleBlockTemplateLocation &tb_template, PanelOptions options, bool freshly_created) {
+QTreeWidgetItem *GenericPanel::fillTemplateItem(
+		QTreeWidgetItem *tb_template_qtwi,
+		const TitleBlockTemplateLocation &tb_template,
+		PanelOptions options,
+		bool freshly_created) {
 	Q_UNUSED(tb_template)
 	return(fillItem(tb_template_qtwi, options, freshly_created));
 }
@@ -586,7 +684,9 @@ QTreeWidgetItem *GenericPanel::fillTemplateItem(QTreeWidgetItem *tb_template_qtw
 	@param freshly_created (unused)
 	@return qtwi
 */
-QTreeWidgetItem *GenericPanel::updateItem(QTreeWidgetItem *qtwi, PanelOptions options, bool freshly_created) {
+QTreeWidgetItem *GenericPanel::updateItem(QTreeWidgetItem *qtwi,
+					  PanelOptions options,
+					  bool freshly_created) {
 	Q_UNUSED(options);
 	Q_UNUSED(freshly_created);
 	QApplication::processEvents();
@@ -595,15 +695,17 @@ QTreeWidgetItem *GenericPanel::updateItem(QTreeWidgetItem *qtwi, PanelOptions op
 
 /**
 	@brief GenericPanel::fillItem
-	This generic method is called at the end of each fill*Item method. Its
-	only purpose is being reimplemented in a subclass. The default
-	implementation does nothing.
+	This generic method is called at the end of each fill*Item method.
+	Its only purpose is being reimplemented in a subclass.
+	The default implementation does nothing.
 	@param qtwi
-	@param options
-	@param freshly_created
+	@param options (unused)
+	@param freshly_created (unused)
 	@return qtwi
 */
-QTreeWidgetItem *GenericPanel::fillItem(QTreeWidgetItem *qtwi, PanelOptions options, bool freshly_created) {
+QTreeWidgetItem *GenericPanel::fillItem(QTreeWidgetItem *qtwi,
+					PanelOptions options,
+					bool freshly_created) {
 	Q_UNUSED(options);
 	Q_UNUSED(freshly_created);
 	return(qtwi);
@@ -646,22 +748,24 @@ void GenericPanel::diagramRemoved(QETProject *project, Diagram *diagram) {
 	@param from Index of diagram before move
 	@param to Index of diagram after move
 */
-void GenericPanel::projectDiagramsOrderChanged(QETProject *project, int from, int to)
+void GenericPanel::projectDiagramsOrderChanged(QETProject *project,
+					       int from,
+					       int to)
 {
-		// get the item representing the provided project
+	// get the item representing the provided project
 	QTreeWidgetItem *qtwi_project = itemForProject(project);
 	if (!qtwi_project) return;
 	
-		// get the item representing the moved diagram
+	// get the item representing the moved diagram
 	QTreeWidgetItem *moved_qtwi_diagram = qtwi_project -> child(from);
 	if (!moved_qtwi_diagram) return;
 	
-		// remove the QTWI then insert it back at the adequate location
+	// remove the QTWI then insert it back at the adequate location
 	bool was_selected = moved_qtwi_diagram -> isSelected();
 	qtwi_project -> removeChild (moved_qtwi_diagram);
 	qtwi_project -> insertChild (to, moved_qtwi_diagram);
 	
-		// update the QTWI labels because they may display the folio index
+	// update the QTWI labels because they may display the folio index
 	for (int i = qMin(from, to); i < qMax(from, to) + 1; i++)
 	{
 		QTreeWidgetItem *qtwi_diagram = qtwi_project -> child(i);
@@ -696,7 +800,9 @@ void GenericPanel::diagramTitleChanged(Diagram *diagram, const QString &title) {
 	Title block templates collection that changed and should be updated
 	@param template_name : Name of the changed template (unused)
 */
-void GenericPanel::templatesCollectionChanged(TitleBlockTemplatesCollection*collection, const QString &template_name) {
+void GenericPanel::templatesCollectionChanged(
+		TitleBlockTemplatesCollection*collection,
+		const QString &template_name) {
 	Q_UNUSED(template_name)
 	addTemplatesCollection(collection);
 	emit(panelContentChanged());
@@ -707,7 +813,9 @@ void GenericPanel::templatesCollectionChanged(TitleBlockTemplatesCollection*coll
 	@param collection
 	@param name : (unused)
 */
-void GenericPanel::diagramUsedTemplate(TitleBlockTemplatesCollection *collection, const QString &name) {
+void GenericPanel::diagramUsedTemplate(
+		TitleBlockTemplatesCollection *collection,
+		const QString &name) {
 	Q_UNUSED(name)
 	addTemplatesCollection(collection);
 	emit(panelContentChanged());
@@ -727,7 +835,8 @@ QString GenericPanel::defaultText(QET::ItemType type) {
 		case QET::ElementsCollection: return("elements collection");
 		case QET::TitleBlockTemplatesCollectionItem:
 		case QET::TitleBlockTemplate: return("title block template");
-		case QET::TitleBlockTemplatesCollection: return("title block templates collection");
+		case QET::TitleBlockTemplatesCollection:
+			return("title block templates collection");
 		case QET::Diagram: return("diagram");
 		case QET::Project: return("project");
 		default: return(QString());
@@ -754,14 +863,18 @@ QIcon GenericPanel::defaultIcon(QET::ItemType type) {
 }
 
 /**
+	@brief GenericPanel::makeItem
 	Create a QTreeWidgetItem
-	@param parent Parent for the created item
 	@param type Item type (e.g QET::Diagram, QET::Project, ...)
+	@param parent Parent for the created item
 	@param label Label for the created item
 	@param icon Icon for the created item
 	@return the create QTreeWidgetItem
 */
-QTreeWidgetItem *GenericPanel::makeItem(QET::ItemType type, QTreeWidgetItem *parent, const QString &label, const QIcon &icon) {
+QTreeWidgetItem *GenericPanel::makeItem(QET::ItemType type,
+					QTreeWidgetItem *parent,
+					const QString &label,
+					const QIcon &icon) {
 	QTreeWidgetItem *qtwi = new QTreeWidgetItem(parent, type);
 	qtwi -> setText(0, label.isEmpty() ? defaultText(type) : label);
 	qtwi -> setIcon(0, icon.isNull() ? defaultIcon(type) : icon);
@@ -797,7 +910,9 @@ void GenericPanel::markItemAsUnused(QTreeWidgetItem *qtwi) {
 	t.setColorAt(0, QColor("#ffc0c0"));
 	t.setColorAt(1, QColor("#ffffff"));
 	qtwi -> setBackground(0, QBrush(t));
-	qtwi -> setToolTip(0, QString(tr("%1 [non utilisé dans le projet]")).arg(qtwi -> toolTip(0)));
+	qtwi -> setToolTip(0,
+			   QString(tr("%1 [non utilisé dans le projet]")).arg(
+				   qtwi -> toolTip(0)));
 }
 
 /**
@@ -818,7 +933,10 @@ void GenericPanel::reparent(QTreeWidgetItem *item, QTreeWidgetItem *parent) {
 	@param recursive Whether to search recursively.
 	@return the child items of \a item of type \a type
 */
-QList<QTreeWidgetItem *> GenericPanel::childItems(QTreeWidgetItem *item, QET::ItemType type, bool recursive) const {
+QList<QTreeWidgetItem *> GenericPanel::childItems(
+		QTreeWidgetItem *item,
+		QET::ItemType type,
+		bool recursive) const {
 	QList<QTreeWidgetItem *> items;
 	if (!item) return(items);
 	for (int i = 0 ; i < item -> childCount() ; ++ i) {
@@ -844,9 +962,14 @@ QList<QTreeWidgetItem *> GenericPanel::childItems(QTreeWidgetItem *item, QET::It
 	@see GenericPanel::childItems()
 */
 template<typename T>
-void GenericPanel::removeObsoleteItems(const QList<T> &expected_items, QTreeWidgetItem *item, QET::ItemType type, bool recursive) {
+void GenericPanel::removeObsoleteItems(
+		const QList<T> &expected_items,
+		QTreeWidgetItem *item,
+		QET::ItemType type,
+		bool recursive) {
 	// remove items not found in expected_items
-	foreach (QTreeWidgetItem *child_item, childItems(item, type, recursive)) {
+	foreach (QTreeWidgetItem *child_item,
+		 childItems(item, type, recursive)) {
 		T child_value = valueForItem<T>(child_item);
 		if (!expected_items.contains(child_value)) {
 			deleteItem(child_item);
@@ -896,7 +1019,8 @@ void GenericPanel::unregisterItem(QTreeWidgetItem *item) {
 */
 bool GenericPanel::event(QEvent *event) {
 	if (first_activation_) {
-		if (event -> type() == QEvent::WindowActivate || event -> type() == QEvent::Show) {
+		if (event -> type() == QEvent::WindowActivate
+				|| event -> type() == QEvent::Show) {
 			QTimer::singleShot(250, this, SLOT(emitFirstActivated()));
 			first_activation_ = false;
 		}
