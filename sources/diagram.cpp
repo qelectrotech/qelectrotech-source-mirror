@@ -341,116 +341,133 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 		}
 	}
 	
-	if (!isReadOnly())
+	if (isReadOnly()) return;
+
+	QPointF movement;
+	qreal top_position = 0;
+	qreal left_position = 0;
+	DiagramContent dc(this);
+	if (dc.items(DiagramContent::All).isEmpty())
 	{
-		QPointF movement;
-		qreal top_position = 0;
-		qreal left_position = 0;
-		DiagramContent dc(this);
-		if (!dc.items(DiagramContent::All).isEmpty())
-		{
-#pragma message("@TODO move code to new function")
-			//Move item with the keyboard arrow
-			if(event->modifiers() == Qt::NoModifier)
-			{
-				switch(event->key())
-				{
-					case Qt::Key_Left:
-						for (Element *item : dc.m_elements)
-						{
-							left_position = item->sceneBoundingRect().x();
-							if(left_position <= 5)
-								return;
-						}
-						movement = QPointF(-xKeyGrid, 0.0);
-						break;
-					case Qt::Key_Right:
-						movement = QPointF(+xKeyGrid, 0.0);
-						break;
-					case Qt::Key_Up:
-						for(Element *item : dc.m_elements)
-						{
-							top_position = item->sceneBoundingRect().y();
-							if(top_position <= 5)
-								return;
-						}
-						movement = QPointF(0.0, -yKeyGrid);
-						break;
-					case Qt::Key_Down:
-						movement = QPointF(0.0, +yKeyGrid);
-						break;
-				}
-				
-				if (!movement.isNull() && !focusItem())
-				{
-					m_elements_mover.beginMovement(this);
-					m_elements_mover.continueMovement(movement);
-					event->accept();
-					return;
-				}
-			}
-			else if(event->modifiers() == Qt::AltModifier)
-
-			{
-				switch(event->key())
-				{
-					case Qt::Key_Left:
-						for (Element *item : dc.m_elements)
-						{
-							left_position = item->sceneBoundingRect().x();
-							if(left_position <= 5)
-								return;
-						}
-						movement = QPointF(-xKeyGridFine, 0.0);
-						break;
-					case Qt::Key_Right:
-						movement = QPointF(+xKeyGridFine, 0.0);
-						break;
-					case Qt::Key_Up:
-						for(Element *item : dc.m_elements)
-						{
-							top_position = item->sceneBoundingRect().y();
-							if(top_position <= 5)
-								return;
-						}
-						movement = QPointF(0.0, -yKeyGridFine);
-						break;
-					case Qt::Key_Down:
-						movement = QPointF(0.0, +yKeyGridFine);
-						break;
-				}
-
-				if (!movement.isNull() && !focusItem())
-				{
-					m_elements_mover.beginMovement(this);
-					m_elements_mover.continueMovement(movement);
-					event->accept();
-					return;
-				}
-			}
-			else if(event->modifiers() == Qt::ControlModifier)
-			{
-				//Adjust the alignment of a texts group
-				if(selectedItems().size() == 1 && selectedItems().first()->type() == QGraphicsItemGroup::Type)
-				{
-					if(ElementTextItemGroup *etig = dynamic_cast<ElementTextItemGroup *>(selectedItems().first()))
-					{
-						if(event->key() == Qt::Key_Left &&  etig->alignment() != Qt::AlignLeft)
-							undoStack().push(new AlignmentTextsGroupCommand(etig, Qt::AlignLeft));
-						
-						else if (event->key() == Qt::Key_Up && etig->alignment() != Qt::AlignVCenter)
-							undoStack().push(new AlignmentTextsGroupCommand(etig, Qt::AlignVCenter));
-						
-						else if (event->key() == Qt::Key_Right && etig->alignment() != Qt::AlignRight)
-							undoStack().push(new AlignmentTextsGroupCommand(etig, Qt::AlignRight));
-					}
-				}
-			}
-		}
-		
 		event->ignore();
 		QGraphicsScene::keyPressEvent(event);
+		return;
 	}
+
+#pragma message("@TODO move code to new function")
+	//Move item with the keyboard arrow
+	if(event->modifiers() == Qt::NoModifier)
+	{
+		switch(event->key())
+		{
+			case Qt::Key_Left:
+				for (Element *item : dc.m_elements)
+				{
+					left_position = item->sceneBoundingRect().x();
+					if(left_position <= 5)
+						return;
+				}
+				movement = QPointF(-xKeyGrid, 0.0);
+				break;
+			case Qt::Key_Right:
+				movement = QPointF(+xKeyGrid, 0.0);
+				break;
+			case Qt::Key_Up:
+				for(Element *item : dc.m_elements)
+				{
+					top_position = item->sceneBoundingRect().y();
+					if(top_position <= 5)
+						return;
+				}
+				movement = QPointF(0.0, -yKeyGrid);
+				break;
+			case Qt::Key_Down:
+				movement = QPointF(0.0, +yKeyGrid);
+				break;
+		}
+
+		if (!movement.isNull() && !focusItem())
+		{
+			m_elements_mover.beginMovement(this);
+			m_elements_mover.continueMovement(movement);
+			event->accept();
+			return;
+		}
+	}
+	else if(event->modifiers() == Qt::AltModifier)
+	{
+		switch(event->key())
+		{
+			case Qt::Key_Left:
+				for (Element *item : dc.m_elements)
+				{
+					left_position = item->sceneBoundingRect().x();
+					if(left_position <= 5)
+						return;
+				}
+				movement = QPointF(-xKeyGridFine, 0.0);
+				break;
+			case Qt::Key_Right:
+				movement = QPointF(+xKeyGridFine, 0.0);
+				break;
+			case Qt::Key_Up:
+				for(Element *item : dc.m_elements)
+				{
+					top_position = item->sceneBoundingRect().y();
+					if(top_position <= 5)
+						return;
+				}
+				movement = QPointF(0.0, -yKeyGridFine);
+				break;
+			case Qt::Key_Down:
+				movement = QPointF(0.0, +yKeyGridFine);
+				break;
+		}
+
+		if (!movement.isNull() && !focusItem())
+		{
+			m_elements_mover.beginMovement(this);
+			m_elements_mover.continueMovement(movement);
+			event->accept();
+			return;
+		}
+	}
+	else if(event->modifiers() == Qt::ControlModifier)
+	{
+		//Adjust the alignment of a texts group
+		if(selectedItems().size() == 1
+				&& selectedItems().first()->type()
+				   == QGraphicsItemGroup::Type)
+		{
+			if(ElementTextItemGroup *etig =
+					dynamic_cast<ElementTextItemGroup *>
+					(selectedItems().first()))
+			{
+				if(event->key() == Qt::Key_Left
+				   &&  etig->alignment() != Qt::AlignLeft)
+					undoStack().push(
+						new AlignmentTextsGroupCommand(
+								etig,
+								Qt::AlignLeft));
+
+				else if (event->key() == Qt::Key_Up
+					 && etig->alignment() != Qt::AlignVCenter)
+					undoStack().push(
+						new AlignmentTextsGroupCommand(
+								etig,
+								Qt::AlignVCenter));
+
+				else if (event->key() == Qt::Key_Right
+					 && etig->alignment() != Qt::AlignRight)
+					undoStack().push(
+						new AlignmentTextsGroupCommand(
+								etig,
+								Qt::AlignRight));
+			}
+		}
+	}
+	event->ignore();
+	QGraphicsScene::keyPressEvent(event);
 }
 
 /**
