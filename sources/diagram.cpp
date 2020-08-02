@@ -1125,7 +1125,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 
 		QPointF point_ = items_rect.topLeft();
 		QPointF pos_ = Diagram::snapToGrid(QPointF (position.x() - point_.x(),
-													position.y() - point_.y()));
+						position.y() - point_.y()));
 
 			//Translate all added items
 		for (auto qgi : added_items)

@@ -113,7 +113,6 @@ Terminal::Terminal(QPointF pf, Qet::Orientation o, Element *e) :
 	@param pf_y Ordonnee du point d'amarrage pour un conducteur
 	@param o    orientation de la borne : Qt::Horizontal ou Qt::Vertical
 	@param e    Element auquel cette borne appartient
-	@param s    Scene sur laquelle figure cette borne
 */
 Terminal::Terminal(qreal pf_x, qreal pf_y, Qet::Orientation o, Element *e) :
 	QGraphicsObject(e),

@@ -133,12 +133,15 @@ void PartTerminal::setOrientation(Qet::Orientation ori)
 	updateSecondPoint();
 	emit orientationChanged();
 }
-
+/**
+	@brief PartTerminal::setName
+	@param name
+*/
 void PartTerminal::setName(QString& name)
 {
-    if (d->m_name == name) return;
-    d->m_name = name;
-    emit nameChanged();
+	if (d->m_name == name) return;
+	d->m_name = name;
+	emit nameChanged();
 }
 
 /**

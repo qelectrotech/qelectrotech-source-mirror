@@ -997,12 +997,20 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 }
 
 /**
-	Permet d'exporter l'element en XML
-	@param document Document XML a utiliser
-	@param table_adr_id Table de correspondance entre les adresses des bornes
-	et leur id dans la representation XML ; cette table completee par cette
-	methode
-	@return L'element XML representant cet element electrique
+	@brief Element::toXml
+	Allows to export the element in XML
+	\~French Permet d'exporter l'element en XML
+	\~ @param document : XML document to use
+	\~French Document XML a utiliser
+	\~ @param table_adr_id :
+	Correspondence table between the addresses of the terminals 
+	and their id in the XML representation;
+	this table completed by this method
+	\~French Table de correspondance entre les adresses des bornes
+	et leur id dans la representation XML ;
+	cette table completee par cette methode
+	\~ @return The XML element representing this electrical element
+	\~French L'element XML representant cet element electrique
 */
 QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table_adr_id) const
 {
@@ -1031,7 +1039,8 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 	element.setAttribute("z", QString::number(this->zValue()));
 	element.setAttribute("orientation", QString::number(orientation()));
 	
-	/* recupere le premier id a utiliser pour les bornes de cet element */
+	/* get the first id to use for the bounds of this element
+	 * recupere le premier id a utiliser pour les bornes de cet element */
 	int id_terminal = 0;
 	if (!table_adr_id.isEmpty()) {
 		// trouve le plus grand id
@@ -1042,8 +1051,10 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 		id_terminal = max_id_t + 1;
 	}
 	
+	// registration of device terminals
 	// enregistrement des bornes de l'appareil
 	QDomElement xml_terminals = document.createElement("terminals");
+	// for each child of the element
 	// pour chaque enfant de l'element
 	foreach(Terminal *t, terminals()) {
 		// alors on enregistre la borne

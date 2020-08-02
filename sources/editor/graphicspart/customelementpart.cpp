@@ -66,7 +66,10 @@ QET::ScalingMethod CustomElementPart::preferredScalingMethod() const {
 	@param points List of points when the movement started, in scene coordinates.
 	@return The list of points mapped from initial_selection_rect to new_selection_rect
 */
-QList<QPointF> CustomElementPart::mapPoints(const QRectF &initial_selection_rect, const QRectF &new_selection_rect, const QList<QPointF> &points) {
+QList<QPointF> CustomElementPart::mapPoints(
+		const QRectF &initial_selection_rect,
+		const QRectF &new_selection_rect,
+		const QList<QPointF> &points) {
 	QList<QPointF> new_points;
 	if (!points.count()) return(new_points);
 	
