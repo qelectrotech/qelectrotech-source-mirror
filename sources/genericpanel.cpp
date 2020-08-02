@@ -189,13 +189,11 @@ QTreeWidgetItem *GenericPanel::updateProjectItem(QTreeWidgetItem *project_qtwi,
 		projects_.insert(project, project_qtwi);
 		
 		connect(
-			project, SIGNAL(projectInformationsChanged(QETProject *)),
-			this,    SLOT  (projectInformationsChanged(QETProject *))
-		);
+			project,&QETProject::projectInformationsChanged,
+			this,&GenericPanel::projectInformationsChanged);
 		connect(
-			project, SIGNAL(readOnlyChanged(QETProject *, bool)),
-			this,    SLOT  (projectInformationsChanged(QETProject *))
-		);
+			project,&QETProject::readOnlyChanged,
+			this,&GenericPanel::projectInformationsChanged);
 	}
 	
 	// text
@@ -236,17 +234,14 @@ QTreeWidgetItem *GenericPanel::fillProjectItem(QTreeWidgetItem *project_qtwi,
 	if (options & AddChildDiagrams) {
 		if (freshly_created) {
 			connect(
-				project, SIGNAL(diagramAdded(QETProject *, Diagram *)),
-				this,    SLOT  (diagramAdded(QETProject *, Diagram *))
-			);
+				project,&QETProject::diagramAdded,
+				this,&GenericPanel::diagramAdded);
 			connect(
-				project, SIGNAL(diagramRemoved(QETProject *, Diagram *)),
-				this,    SLOT  (diagramRemoved(QETProject *, Diagram *))
-			);
+				project,&QETProject::diagramRemoved,
+				this,&GenericPanel::diagramRemoved);
 			connect(
-				project, SIGNAL(projectDiagramsOrderChanged(QETProject *, int, int)),
-				this,    SLOT  (projectDiagramsOrderChanged(QETProject *, int, int))
-			);
+				project,&QETProject::projectDiagramsOrderChanged,
+				this,&GenericPanel::projectDiagramsOrderChanged);
 		} else {
 			// remove diagrams unknown to the project (presumably removed)
 			removeObsoleteItems(project -> diagrams(),
@@ -265,9 +260,8 @@ QTreeWidgetItem *GenericPanel::fillProjectItem(QTreeWidgetItem *project_qtwi,
 	if (options & AddChildTemplatesCollection) {
 		if (freshly_created) {
 			connect(
-				project, SIGNAL(diagramUsedTemplate(TitleBlockTemplatesCollection *, const QString &)),
-				this,    SLOT  (diagramUsedTemplate(TitleBlockTemplatesCollection *, const QString &))
-			);
+				project,&QETProject::diagramUsedTemplate,
+				this,&GenericPanel::diagramUsedTemplate);
 		}
 		addTemplatesCollection(
 			project -> embeddedTitleBlockTemplatesCollection(),
@@ -388,7 +382,8 @@ QTreeWidgetItem *GenericPanel::updateDiagramItem(QTreeWidgetItem *diagram_qtwi,
 					QVariant::fromValue(diagram));
 		diagrams_.insert(diagram, diagram_qtwi);
 		
-		connect(diagram, &Diagram::diagramTitleChanged, this, &GenericPanel::diagramTitleChanged);
+		connect(diagram, &Diagram::diagramTitleChanged,
+			this, &GenericPanel::diagramTitleChanged);
 	}
 	
 	return(updateItem(diagram_qtwi, options, freshly_created));
@@ -528,14 +523,15 @@ QTreeWidgetItem *GenericPanel::fillTemplatesCollectionItem(
 	if (options & AddChildTemplates) {
 		if (freshly_created) {
 			connect(
-				tbt_collection, SIGNAL(changed(TitleBlockTemplatesCollection*,QString)),
-				this, SLOT(templatesCollectionChanged(TitleBlockTemplatesCollection*, const QString &))
-			);
+				tbt_collection,
+				&TitleBlockTemplatesCollection::changed,
+				this,
+				&GenericPanel::templatesCollectionChanged);
 			if (QETProject *project = tbt_collection -> parentProject()) {
 				connect(
-					project, SIGNAL(diagramUsedTemplate(TitleBlockTemplatesCollection *, const QString &)),
-					this,    SLOT  (templatesCollectionChanged(TitleBlockTemplatesCollection *, const QString &))
-				);
+					project, &QETProject::diagramUsedTemplate,
+					this,
+					&GenericPanel::templatesCollectionChanged);
 			}
 		} else {
 		// remove templates unknown to the collection (presumably removed)

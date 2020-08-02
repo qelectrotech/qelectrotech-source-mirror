@@ -88,13 +88,25 @@ Diagram::Diagram(QETProject *project) :
 	pen.setColor(Qt::black);
 	conductor_setter_ -> setPen(pen);
 
-	connect(&border_and_titleblock, SIGNAL(needTitleBlockTemplate(const QString &)), this, SLOT(setTitleBlockTemplate(const QString &)));
-	connect(&border_and_titleblock, SIGNAL(diagramTitleChanged(const QString &)),    this, SLOT(titleChanged(const QString &)));
-	connect(&border_and_titleblock, SIGNAL(titleBlockFolioChanged(const QString &)),    this, SLOT(titleChanged(const QString &)));
-	connect(&border_and_titleblock, SIGNAL(borderChanged(QRectF,QRectF)), this, SLOT(adjustSceneRect()));
-	connect(&border_and_titleblock, SIGNAL(titleBlockFolioChanged(const QString &)), this, SLOT(updateLabels()));
-	connect(this, SIGNAL (diagramActivated()), this, SLOT(loadElmtFolioSeq()));
-	connect(this, SIGNAL (diagramActivated()), this, SLOT(loadCndFolioSeq()));
+	connect(&border_and_titleblock,
+		&BorderTitleBlock::needTitleBlockTemplate,
+		this, &Diagram::setTitleBlockTemplate);
+	connect(&border_and_titleblock,
+		&BorderTitleBlock::diagramTitleChanged,
+		this, &Diagram::titleChanged);
+	connect(&border_and_titleblock,
+		&BorderTitleBlock::titleBlockFolioChanged,
+		this, &Diagram::titleChanged);
+	connect(&border_and_titleblock,
+		&BorderTitleBlock::borderChanged,
+		this, &Diagram::adjustSceneRect);
+	connect(&border_and_titleblock,
+		&BorderTitleBlock::titleBlockFolioChanged,
+		this, &Diagram::updateLabels);
+	connect(this, &Diagram::diagramActivated,
+		this, &Diagram::loadElmtFolioSeq);
+	connect(this, &Diagram::diagramActivated,
+		this, &Diagram::loadCndFolioSeq);
 	adjustSceneRect();
 }
 
