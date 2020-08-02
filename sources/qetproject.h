@@ -28,6 +28,8 @@
 #include "projectdatabase.h"
 #include "reportproperties.h"
 
+#include <KAutoSaveFile>
+
 class Diagram;
 class ElementsLocation;
 class QETResult;
@@ -264,7 +266,7 @@ class QETProject : public QObject
 		bool m_freeze_new_conductors = false;
 		QTimer m_save_backup_timer,
 			   m_autosave_timer;
-		KAutoSaveFile *m_backup_file = nullptr;
+		KAutoSaveFile m_backup_file;
 		QUuid m_uuid = QUuid::createUuid();
 		projectDataBase m_data_base;
 };

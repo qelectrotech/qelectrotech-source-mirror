@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2020 The QElectroTech Team
 	This file is part of QElectroTech.
 	
@@ -33,7 +33,6 @@
 #include <QTimer>
 #include <QStandardPaths>
 #include <utility>
-#include <KAutoSaveFile>
 
 static int BACKUP_INTERVAL = 120000; //interval in ms of backup = 2min
 
@@ -263,17 +262,11 @@ void QETProject::setFilePath(const QString &filepath)
 		return;
 	}
 
-	if (m_backup_file)
-	{
-		delete m_backup_file;
-		m_backup_file = nullptr;
+	if (m_backup_file.isOpen()) {
+		m_backup_file.close();
 	}
+	m_backup_file.setManagedFile(QUrl::fromLocalFile(filepath));
 
-    m_backup_file = new KAutoSaveFile(QUrl::fromLocalFile(filepath), this);
-	if (!m_backup_file->open(QIODevice::WriteOnly)) {
-		delete m_backup_file;
-		m_backup_file = nullptr;
-	}
 	m_file_path = filepath;
 	
 	QFileInfo fi(m_file_path);
@@ -1613,13 +1606,8 @@ NamesList QETProject::namesListForIntegrationCategory() {
  */
 void QETProject::writeBackup()
 {
-	if (!m_backup_file ||
-		(!m_backup_file->isOpen() && !m_backup_file->open(QIODevice::ReadWrite))) {
-		return;
-	}
-
     QDomDocument xml_project(toXml());
-	QET::writeToFile(xml_project, m_backup_file);
+	QET::writeToFile(xml_project, &m_backup_file);
 }
 
 /**
