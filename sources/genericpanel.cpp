@@ -207,10 +207,10 @@ QTreeWidgetItem *GenericPanel::updateProjectItem(QTreeWidgetItem *project_qtwi,
 		);
 	}
 	project_qtwi -> setToolTip(0, final_tooltip);
-	QString project_whatsthis = tr("Ceci est un projet QElectroTech, \
-		c'est-à-dire un fichier d'extension .qet regroupant \
-		plusieurs folios. Il embarque également les éléments et \
-		modèles de cartouches utilisés dans ces folios.",
+	QString project_whatsthis = tr("Ceci est un projet QElectroTech, "
+		"c'est-à-dire un fichier d'extension .qet regroupant "
+		"plusieurs folios. Il embarque également les éléments et "
+		"modèles de cartouches utilisés dans ces folios.",
 		"\"What's this\" tip");
 	project_qtwi -> setWhatsThis(0, project_whatsthis);
 	return(updateItem(project_qtwi, options, freshly_created));
@@ -349,8 +349,8 @@ QTreeWidgetItem *GenericPanel::updateDiagramItem(QTreeWidgetItem *diagram_qtwi,
 			displayed_label = QString(
 				tr(
 				   "%1 - %2",
-				   "label displayed for a diagram in the panel ;\
-				    %1 is the folio index, %2 is the diagram title"
+				   "label displayed for a diagram in the panel ;"
+				   " %1 is the folio index, %2 is the diagram title"
 				   )
 				).arg(displayed_label).arg(displayed_title);
 			diagram_qtwi -> setText(0, displayed_label);
@@ -366,8 +366,8 @@ QTreeWidgetItem *GenericPanel::updateDiagramItem(QTreeWidgetItem *diagram_qtwi,
 			displayed_label = QString(
 				tr(
 				   "%1 - %2",
-				   "label displayed for a diagram in the panel ;\
-				    %1 is the folio index, %2 is the diagram title"
+				   "label displayed for a diagram in the panel ;"
+				   " %1 is the folio index, %2 is the diagram title"
 				   )
 				).arg(diagram_folio_idx + 1).arg(displayed_title);
 		}
