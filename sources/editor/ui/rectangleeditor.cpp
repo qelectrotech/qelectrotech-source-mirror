@@ -77,7 +77,6 @@ bool RectangleEditor::setPart(CustomElementPart *part)
 			disconnectChangeConnections();
 		}
 		m_part = nullptr;
-		m_style->setPart(nullptr);
 		return(true);
 	}
 	
@@ -91,7 +90,6 @@ bool RectangleEditor::setPart(CustomElementPart *part)
 			disconnectChangeConnections();
 		}
 		m_part = part_rectangle;
-		m_style->setPart(m_part);
 		updateForm();
 		setUpChangeConnections();
 		return(true);
