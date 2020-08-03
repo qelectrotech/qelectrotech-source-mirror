@@ -80,7 +80,6 @@ bool PolygonEditor::setPart(CustomElementPart *new_part)
 			disconnectChangeConnections();
 		}
 		m_part = nullptr;
-		m_style -> setPart(nullptr);
 		return(true);
 	}
 	if (PartPolygon *part_polygon = dynamic_cast<PartPolygon *>(new_part))
@@ -91,7 +90,6 @@ bool PolygonEditor::setPart(CustomElementPart *new_part)
 			disconnectChangeConnections();
 		}
 		m_part = part_polygon;
-		m_style -> setPart(m_part);
 		updateForm();
 		setUpChangeConnections();
 		return(true);
