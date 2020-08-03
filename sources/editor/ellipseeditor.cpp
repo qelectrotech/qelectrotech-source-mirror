@@ -98,7 +98,6 @@ bool EllipseEditor::setPart(CustomElementPart *new_part)
 		if (part)
 			disconnectChangeConnections();
 		part = nullptr;
-		style_ -> setPart(nullptr);
 		return(true);
 	}
 	if (PartEllipse *part_ellipse = dynamic_cast<PartEllipse *>(new_part))
@@ -107,7 +106,6 @@ bool EllipseEditor::setPart(CustomElementPart *new_part)
 		if (part)
 			disconnectChangeConnections();
 		part = part_ellipse;
-		style_ -> setPart(part);
 		updateForm();
 		setUpChangeConnections();
 		return(true);
