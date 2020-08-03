@@ -109,7 +109,6 @@ bool ArcEditor::setPart(CustomElementPart *new_part)
 			disconnectChangeConnections();
 
 		part = nullptr;
-		style_ -> setPart(nullptr);
 		return(true);
 	}
 
@@ -119,7 +118,6 @@ bool ArcEditor::setPart(CustomElementPart *new_part)
 		if (part)
 			disconnectChangeConnections();
 		part = part_arc;
-		style_ -> setPart(part);
 		updateForm();
 		setUpChangeConnections();
 		return(true);
