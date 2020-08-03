@@ -479,6 +479,7 @@ void StyleEditor::updateForm()
  */
 bool StyleEditor::setPart(CustomElementPart *new_part) {
 	m_part_list.clear();
+	m_cep_list.clear();
 
 	if (!new_part)
 	{
