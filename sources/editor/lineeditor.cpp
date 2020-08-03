@@ -125,7 +125,6 @@ bool LineEditor::setPart(CustomElementPart *new_part)
 			disconnectChangeConnections();
 		}
 		part = nullptr;
-		style_ -> setPart(nullptr);
 		return(true);
 	}
 	if (PartLine *part_line = dynamic_cast<PartLine *>(new_part))
@@ -136,7 +135,6 @@ bool LineEditor::setPart(CustomElementPart *new_part)
 			disconnectChangeConnections();
 		}
 		part = part_line;
-		style_ -> setPart(part);
 		updateForm();
 		setUpChangeConnections();
 		return(true);
