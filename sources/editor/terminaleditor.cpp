@@ -26,11 +26,10 @@
 #include <QLabel>
 
 TerminalEditor::TerminalEditor(QETElementEditor* editor, QWidget* parent):
-    ElementItemEditor(editor, parent)
-{
-    m_part = nullptr;
-    m_terminals.clear();
-    init();
+	ElementItemEditor(editor, parent) {
+	m_part = nullptr;
+	m_terminals.clear();
+	init();
 }
 
 /**
@@ -41,48 +40,45 @@ TerminalEditor::TerminalEditor(QETElementEditor* editor, QWidget* parent):
 */
 TerminalEditor::TerminalEditor(QETElementEditor *editor, QList<PartTerminal *> &terms, QWidget *parent) :
 	ElementItemEditor(editor, parent),
-    m_terminals(terms),
-    m_part(terms.first())
-{
-    init();
+	m_terminals(terms),
+	m_part(terms.first()) {
+	init();
 }
 
 void TerminalEditor::init() {
-    qle_x = new QDoubleSpinBox();
-    qle_y = new QDoubleSpinBox();
+	qle_x = new QDoubleSpinBox();
+	qle_y = new QDoubleSpinBox();
 
-    qle_x -> setRange(-5000, 5000);
-    qle_y -> setRange(-5000, 5000);
+	qle_x -> setRange(-5000, 5000);
+	qle_y -> setRange(-5000, 5000);
 
-    orientation = new QComboBox();
-    orientation -> addItem(QET::Icons::North, tr("Nord"),  Qet::North);
-    orientation -> addItem(QET::Icons::East,  tr("Est"),   Qet::East);
-    orientation -> addItem(QET::Icons::South, tr("Sud"),   Qet::South);
-    orientation -> addItem(QET::Icons::West,  tr("Ouest"), Qet::West);
+	orientation = new QComboBox();
+	orientation -> addItem(QET::Icons::North, tr("Nord"),  Qet::North);
+	orientation -> addItem(QET::Icons::East,  tr("Est"),   Qet::East);
+	orientation -> addItem(QET::Icons::South, tr("Sud"),   Qet::South);
+	orientation -> addItem(QET::Icons::West,  tr("Ouest"), Qet::West);
 
-    QVBoxLayout *main_layout = new QVBoxLayout();
-    main_layout -> addWidget(new QLabel(tr("Position : ")));
+	QVBoxLayout *main_layout = new QVBoxLayout();
+	main_layout -> addWidget(new QLabel(tr("Position : ")));
 
-    QHBoxLayout *position = new QHBoxLayout();
-    position -> addWidget(new QLabel(tr("x : ")));
-    position -> addWidget(qle_x                 );
-    position -> addWidget(new QLabel(tr("y : ")));
-    position -> addWidget(qle_y                 );
-    main_layout -> addLayout(position);
+	QHBoxLayout *position = new QHBoxLayout();
+	position -> addWidget(new QLabel(tr("x : ")));
+	position -> addWidget(qle_x                 );
+	position -> addWidget(new QLabel(tr("y : ")));
+	position -> addWidget(qle_y                 );
+	main_layout -> addLayout(position);
 
-    QHBoxLayout *ori = new QHBoxLayout();
-    ori -> addWidget(new QLabel(tr("Orientation : ")));
-    ori -> addWidget(orientation                     );
-    main_layout -> addLayout(ori);
+	QHBoxLayout *ori = new QHBoxLayout();
+	ori -> addWidget(new QLabel(tr("Orientation : ")));
+	ori -> addWidget(orientation                     );
+	main_layout -> addLayout(ori);
 
-    main_layout -> addStretch();
-    setLayout(main_layout);
+	main_layout -> addStretch();
+	setLayout(main_layout);
 
-    activeConnections(true);
-    updateForm();
+	activeConnections(true);
+	updateForm();
 }
-
-
 
 /// Destructeur
 TerminalEditor::~TerminalEditor() {
@@ -96,21 +92,20 @@ TerminalEditor::~TerminalEditor() {
 	@param new_part Nouvelle primitive a editer
 	@return true si l'editeur a accepter d'editer la primitive, false sinon
 */
-bool TerminalEditor::setPart(CustomElementPart* new_part)
-{
+bool TerminalEditor::setPart(CustomElementPart* new_part) {
 	m_terminals.clear();
-	if (!new_part)
-	{
-		if (m_part)
+	if (!new_part) {
+		if (m_part) {
 			disconnect(m_part, &PartTerminal::orientationChanged, this, &TerminalEditor::updateForm);
+		}
 		m_part = nullptr;
 		return(true);
 	}
-	if (PartTerminal *part_terminal = static_cast<PartTerminal *>(new_part))
-	{
+	if (PartTerminal *part_terminal = static_cast<PartTerminal *>(new_part)) {
 		if(m_part == part_terminal) return true;
-		if (m_part)
+		if (m_part) {
 			disconnect(m_part, &PartTerminal::orientationChanged, this, &TerminalEditor::updateForm);
+		}
 		m_part = part_terminal;
 		updateForm();
 		connect(m_part, &PartTerminal::orientationChanged, this, &TerminalEditor::updateForm);
@@ -119,26 +114,26 @@ bool TerminalEditor::setPart(CustomElementPart* new_part)
 	return(false);
 }
 
-bool TerminalEditor::setParts(QList<CustomElementPart *> parts)
-{
-	if (parts.isEmpty())
-	{
+bool TerminalEditor::setParts(QList<CustomElementPart *> parts) {
+	if (parts.isEmpty()) {
 		m_terminals.clear();
-		if (m_part)
+		if (m_part) {
 			disconnect(m_part, &PartTerminal::orientationChanged, this, &TerminalEditor::updateForm);
+		}
 		m_part = nullptr;
 		return(true);
 	}
-	
-	if (PartTerminal *part_terminal = static_cast<PartTerminal *>(parts.first()))
-	{
-		if (m_part)
+
+	if (PartTerminal *part_terminal = static_cast<PartTerminal *>(parts.first())) {
+		if (m_part) {
 			disconnect(m_part, &PartTerminal::orientationChanged, this, &TerminalEditor::updateForm);
+		}
 		m_part = part_terminal;
 		m_terminals.clear();
 		m_terminals.append(part_terminal);
-		for (int i=1; i < parts.length(); i++)
+		for (int i=1; i < parts.length(); i++) {
 			m_terminals.append(static_cast<PartTerminal*>(parts[i]));
+		}
 		updateForm();
 		connect(m_part, &PartTerminal::orientationChanged, this, &TerminalEditor::updateForm);
 		return(true);
@@ -162,12 +157,11 @@ QList<CustomElementPart*> TerminalEditor::currentParts() const {
 }
 
 /// Met a jour l'orientation de la borne et cree un objet d'annulation
-void TerminalEditor::updateTerminalO()
-{
+void TerminalEditor::updateTerminalO() {
 	if (m_locked) return;
 	m_locked = true;
 	QVariant var(orientation -> itemData(orientation -> currentIndex()));
-	
+
 	for (int i=0; i < m_terminals.length(); i++) {
 		PartTerminal* term = m_terminals[i];
 		if (var != term->property("orientation"))
@@ -184,7 +178,7 @@ void TerminalEditor::updateXPos() {
 	if (m_locked) return;
 	m_locked = true;
 	QPointF new_pos(qle_x->value(), 0);
-	
+
 	for (int i=0; i < m_terminals.length(); i++) {
 		PartTerminal* term = m_terminals[i];
 		new_pos.setY(term->pos().y()); // change only x value
@@ -202,7 +196,7 @@ void TerminalEditor::updateYPos() {
 	if (m_locked) return;
 	m_locked = true;
 	QPointF new_pos(0, qle_y->value()); // change only y value
-	
+
 	for (int i=0; i < m_terminals.length(); i++) {
 		PartTerminal* term = m_terminals[i];
 		new_pos.setX(term->pos().x());
@@ -233,16 +227,13 @@ void TerminalEditor::updateForm() {
 	Active ou desactive les connexionx signaux/slots entre les widgets internes.
 	@param active true pour activer les connexions, false pour les desactiver
 */
-void TerminalEditor::activeConnections(bool active)
-{
-	if (active)
-	{
+void TerminalEditor::activeConnections(bool active) {
+	if (active) {
 		connect(qle_x,       &QDoubleSpinBox::editingFinished, this, &TerminalEditor::updateXPos);
 		connect(qle_y,       &QDoubleSpinBox::editingFinished, this, &TerminalEditor::updateYPos);
 		connect(orientation, QOverload<int>::of(&QComboBox::activated), this, &TerminalEditor::updateTerminalO);
 	}
-	else
-	{
+	else {
 		disconnect(qle_x,       &QDoubleSpinBox::editingFinished, this, &TerminalEditor::updateXPos);
 		disconnect(qle_y,       &QDoubleSpinBox::editingFinished, this, &TerminalEditor::updateYPos);
 		disconnect(orientation, QOverload<int>::of(&QComboBox::activated), this, &TerminalEditor::updateTerminalO);
