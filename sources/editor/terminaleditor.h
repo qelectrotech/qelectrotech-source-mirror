@@ -26,44 +26,43 @@ class QComboBox;
 
 /**
 	This class provides a widget to edit terminals within the element editor.
-    The class is capable to change the values of multiple parts of the same time.
-    The displayed values are from the first selected element
+	The class is capable to change the values of multiple parts of the same time.
+	The displayed values are from the first selected element
 */
 class TerminalEditor : public ElementItemEditor {
 	Q_OBJECT
+
 	// Constructors, destructor
 	public:
-    TerminalEditor(QETElementEditor *, QList<PartTerminal *>& terms, QWidget * = nullptr);
-    TerminalEditor(QETElementEditor *, QWidget * = nullptr);
-
-	~TerminalEditor() override;
+		TerminalEditor(QETElementEditor *, QList<PartTerminal *>& terms, QWidget * = nullptr);
+		TerminalEditor(QETElementEditor *, QWidget * = nullptr);
+		~TerminalEditor() override;
 	private:
-	TerminalEditor(const TerminalEditor &);
+		TerminalEditor(const TerminalEditor &);
+		void init();
 
-    void init();
-	
 	// attributes
 	private:
-        QList<PartTerminal *> m_terminals;
-        PartTerminal *m_part{nullptr};
+		QList<PartTerminal *> m_terminals;
+		PartTerminal *m_part{nullptr};
 		QDoubleSpinBox *qle_x, *qle_y;
 		QComboBox *orientation;
-        bool m_locked{false};
-	
+		bool m_locked{false};
+
 	// methods
 	public:
-    bool setPart(CustomElementPart *) override;
-    bool setParts(QList<CustomElementPart *> parts) override;
-	CustomElementPart *currentPart() const override;
-    QList<CustomElementPart*> currentParts() const override;
-	
+		bool setPart(CustomElementPart *) override;
+		bool setParts(QList<CustomElementPart *> parts) override;
+		CustomElementPart *currentPart() const override;
+		QList<CustomElementPart*> currentParts() const override;
+
 	public slots:
 		void updateTerminalO();
-        void updateXPos();
-        void updateYPos();
+		void updateXPos();
+		void updateYPos();
 		void updateForm() override;
-	
+
 	private:
-	void activeConnections(bool);
+		void activeConnections(bool);
 };
 #endif
