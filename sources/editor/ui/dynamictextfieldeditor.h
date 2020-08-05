@@ -29,25 +29,24 @@ namespace Ui {
  * @brief The DynamicTextFieldEditor class
  * This class provide a widget used to edit the property of a dynamic text field
  */
-class DynamicTextFieldEditor : public ElementItemEditor
-{
+class DynamicTextFieldEditor : public ElementItemEditor {
 	Q_OBJECT
-	
+
 	public:
 		explicit DynamicTextFieldEditor(QETElementEditor *editor, PartDynamicTextField *text_field = nullptr, QWidget *parent = nullptr);
 		~DynamicTextFieldEditor() override;
-	
+
 		bool setPart(CustomElementPart *part) override;
-        bool setParts(QList <CustomElementPart *>) override;
+		bool setParts(QList <CustomElementPart *>) override;
 		CustomElementPart *currentPart() const override;
-        QList<CustomElementPart*> currentParts() const override;
+		QList<CustomElementPart*> currentParts() const override;
 		void updateForm() override;
-		
+
 	private:
 		void fillInfoComboBox();
-        void setUpConnections();
-        void disconnectConnections();
-	
+		void setUpConnections();
+		void disconnectConnections();
+
 	private slots:
 		void on_m_x_sb_editingFinished();
 		void on_m_y_sb_editingFinished();
@@ -64,10 +63,10 @@ class DynamicTextFieldEditor : public ElementItemEditor
 
 		void on_m_color_kpb_changed(const QColor &newColor);
 
-		private:
+	private:
 		Ui::DynamicTextFieldEditor *ui;
 		QPointer<PartDynamicTextField> m_text_field;
-        QList<PartDynamicTextField*> m_parts;
+		QList<PartDynamicTextField*> m_parts;
 		QList<QMetaObject::Connection> m_connection_list;
 };
 
