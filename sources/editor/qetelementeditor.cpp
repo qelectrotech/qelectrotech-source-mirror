@@ -506,8 +506,8 @@ void QETElementEditor::slot_updateTitle() {
 	}
 	if (isReadOnly()) {
 		title += tr(" [lecture seule]", "window title tag");
-		setWindowTitle(title);
 	}
+	setWindowTitle(title);
 }
 
 /**
