@@ -72,25 +72,24 @@ QETElementEditor::QETElementEditor(QWidget *parent) :
 	QETMainWindow(parent),
 	read_only(false),
 	min_title(tr("QElectroTech - Éditeur d'élément", "window title")),
-	opened_from_file(false)
-{
-	setWindowTitle(min_title);
-	setWindowIcon(QET::Icons::QETLogo);
+	opened_from_file(false) {
+		setWindowTitle(min_title);
+		setWindowIcon(QET::Icons::QETLogo);
+
+		setupInterface();
+		setupActions();
+		setupMenus();
+
+		// la fenetre est maximisee par defaut
+		setMinimumSize(QSize(500, 350));
+		setWindowState(Qt::WindowMaximized);
 	
-	setupInterface();
-	setupActions();
-	setupMenus();
-	
-	// la fenetre est maximisee par defaut
-	setMinimumSize(QSize(500, 350));
-	setWindowState(Qt::WindowMaximized);
-	
-	// lecture des parametres
-	readSettings();
-	slot_updateMenus();
-	
-	// affichage
-	show();
+		// lecture des parametres
+		readSettings();
+		slot_updateMenus();
+
+		// affichage
+		show();
 }
 
 /// Destructeur
@@ -100,7 +99,7 @@ QETElementEditor::~QETElementEditor() {
 		cela evite qu'il ne soit supprime par son widget parent
 	*/
 	clearToolsDock();
-	
+
 	// supprime les editeurs de primitives
 	qDeleteAll(m_editors.begin(), m_editors.end());
 	m_editors.clear();
@@ -111,8 +110,7 @@ QETElementEditor::~QETElementEditor() {
  * The new location to edit
  * @param el
  */
-void QETElementEditor::setLocation(const ElementsLocation &el)
-{
+void QETElementEditor::setLocation(const ElementsLocation &el) {
 	location_ = el;
 	opened_from_file = false;
 	setReadOnly(!location_.isWritable());
@@ -138,29 +136,29 @@ void QETElementEditor::setFileName(const QString &fn) {
  * Create action used in Element editor
  */
 void QETElementEditor::setupActions() {
-	new_element       = new QAction(QET::Icons::DocumentNew,          tr("&Nouveau"),                                  this);
-	open              = new QAction(QET::Icons::FolderOpen,         tr("&Ouvrir"),                                   this);
-	open_file         = new QAction(QET::Icons::FolderOpen,         tr("&Ouvrir depuis un fichier"),                 this);
-	open_dxf          = new QAction(QET::Icons::RunDxf,         tr("&Lancer le plugin convertisseur DXF"),       this);
-	save              = new QAction(QET::Icons::DocumentSave,         tr("&Enregistrer"),                              this);
-	save_as           = new QAction(QET::Icons::DocumentSaveAs,       tr("Enregistrer sous"),                          this);
-	save_as_file      = new QAction(QET::Icons::DocumentSaveAs,       tr("Enregistrer dans un fichier"),               this);
-	reload            = new QAction(QET::Icons::ViewRefresh,          tr("Recharger"),                                 this);
-	quit              = new QAction(QET::Icons::ApplicationExit,      tr("&Quitter"),                                  this);
-	selectall         = new QAction(QET::Icons::EditSelectAll,        tr("Tout sélectionner"),                         this);
-	deselectall       = new QAction(QET::Icons::EditSelectNone,       tr("Désélectionner tout"),                       this);
-	cut               = new QAction(QET::Icons::EditCut,              tr("Co&uper"),                                   this);
-	copy              = new QAction(QET::Icons::EditCopy,             tr("Cop&ier"),                                   this);
-	paste             = new QAction(QET::Icons::EditPaste,            tr("C&oller"),                                   this);
-	paste_in_area     = new QAction(QET::Icons::EditPaste,            tr("C&oller dans la zone..."),                   this);
-	paste_from_file   = new QAction(QET::Icons::XmlTextFile,          tr("un fichier"),                                this);
-	paste_from_elmt   = new QAction(QET::Icons::Element,              tr("un élément"),                                this);
-	inv_select        = new QAction(QET::Icons::EditSelectInvert,     tr("Inverser la sélection"),                     this);
-	edit_delete       = new QAction(QET::Icons::EditDelete,           tr("&Supprimer"),                                this);
+	new_element       = new QAction(QET::Icons::DocumentNew,          tr("&Nouveau"),                                      this);
+	open              = new QAction(QET::Icons::FolderOpen,           tr("&Ouvrir"),                                       this);
+	open_file         = new QAction(QET::Icons::FolderOpen,           tr("&Ouvrir depuis un fichier"),                     this);
+	open_dxf          = new QAction(QET::Icons::RunDxf,               tr("&Lancer le plugin convertisseur DXF"),           this);
+	save              = new QAction(QET::Icons::DocumentSave,         tr("&Enregistrer"),                                  this);
+	save_as           = new QAction(QET::Icons::DocumentSaveAs,       tr("Enregistrer sous"),                              this);
+	save_as_file      = new QAction(QET::Icons::DocumentSaveAs,       tr("Enregistrer dans un fichier"),                   this);
+	reload            = new QAction(QET::Icons::ViewRefresh,          tr("Recharger"),                                     this);
+	quit              = new QAction(QET::Icons::ApplicationExit,      tr("&Quitter"),                                      this);
+	selectall         = new QAction(QET::Icons::EditSelectAll,        tr("Tout sélectionner"),                             this);
+	deselectall       = new QAction(QET::Icons::EditSelectNone,       tr("Désélectionner tout"),                           this);
+	cut               = new QAction(QET::Icons::EditCut,              tr("Co&uper"),                                       this);
+	copy              = new QAction(QET::Icons::EditCopy,             tr("Cop&ier"),                                       this);
+	paste             = new QAction(QET::Icons::EditPaste,            tr("C&oller"),                                       this);
+	paste_in_area     = new QAction(QET::Icons::EditPaste,            tr("C&oller dans la zone..."),                       this);
+	paste_from_file   = new QAction(QET::Icons::XmlTextFile,          tr("un fichier"),                                    this);
+	paste_from_elmt   = new QAction(QET::Icons::Element,              tr("un élément"),                                    this);
+	inv_select        = new QAction(QET::Icons::EditSelectInvert,     tr("Inverser la sélection"),                         this);
+	edit_delete       = new QAction(QET::Icons::EditDelete,           tr("&Supprimer"),                                    this);
 	edit_names        = new QAction(QET::Icons::Names,                tr("Éditer le nom et les traductions de l'élément"), this);
-	edit_author       = new QAction(QET::Icons::UserInformations,     tr("Éditer les informations sur l'auteur"),      this);
-	m_edit_properties = new QAction(QET::Icons::ElementEdit,          tr("Éditer les propriétés de l'élément"),        this);
-	
+	edit_author       = new QAction(QET::Icons::UserInformations,     tr("Éditer les informations sur l'auteur"),          this);
+	m_edit_properties = new QAction(QET::Icons::ElementEdit,          tr("Éditer les propriétés de l'élément"),            this);
+
 #if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
 	open_dxf -> setStatusTip(tr("To install the plugin DXFtoQET\nVisit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/\n"
 					 "\n"
@@ -181,7 +179,7 @@ void QETElementEditor::setupActions() {
 					 "make it executable : chmod +x ./DXFtoQET\n"
 					  ));
 #endif
-	
+
 	open_dxf -> setWhatsThis (tr("To install the plugin DXFtoQET\nVisit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/\n"
 					 "\n"
 					 ">> Install on Linux\n"
@@ -200,7 +198,7 @@ void QETElementEditor::setupActions() {
 	redo -> setIcon(QET::Icons::EditRedo);
 	undo -> setShortcuts(QKeySequence::Undo);
 	redo -> setShortcuts(QKeySequence::Redo);
-	
+
 	new_element       -> setShortcut(QKeySequence::New);
 	open              -> setShortcut(QKeySequence::Open);
 	open_file         -> setShortcut(tr("Ctrl+Shift+O"));
@@ -214,51 +212,52 @@ void QETElementEditor::setupActions() {
 	copy              -> setShortcut(QKeySequence::Copy);
 	paste             -> setShortcut(QKeySequence::Paste);
 	paste_in_area     -> setShortcut(tr("Ctrl+Shift+V"));
+
 #ifndef Q_OS_MAC
 	edit_delete       -> setShortcut(QKeySequence(Qt::Key_Delete));
 #else
 	edit_delete       -> setShortcut(QKeySequence(tr("Backspace")));
 #endif
-	
+
 	edit_names        -> setShortcut(QKeySequence(tr("Ctrl+E")));
 	edit_author       -> setShortcut(tr("Ctrl+Y"));
-	
-	connect(new_element,     SIGNAL(triggered()), this,     SLOT(slot_new()));
-	connect(open,            SIGNAL(triggered()), this,     SLOT(slot_open()));
-	connect(open_dxf,       SIGNAL(triggered()), this,     SLOT(slot_openDxf()));
-	connect(open_file,       SIGNAL(triggered()), this,     SLOT(slot_openFile()));
-	connect(save,            SIGNAL(triggered()), this,     SLOT(slot_save()));
-	connect(save_as,         SIGNAL(triggered()), this,     SLOT(slot_saveAs()));
-	connect(save_as_file,    SIGNAL(triggered()), this,     SLOT(slot_saveAsFile()));
-	connect(reload,          SIGNAL(triggered()), this,     SLOT(slot_reload()));
-	connect(quit,            SIGNAL(triggered()), this,     SLOT(close()));
-	connect(selectall,       SIGNAL(triggered()), m_elmt_scene, SLOT(slot_selectAll()));
-	connect(deselectall,     SIGNAL(triggered()), m_elmt_scene, SLOT(slot_deselectAll()));
-	connect(inv_select,      SIGNAL(triggered()), m_elmt_scene, SLOT(slot_invertSelection()));
-	connect(cut,             SIGNAL(triggered()), m_view,  SLOT(cut()));
-	connect(copy,            SIGNAL(triggered()), m_view,  SLOT(copy()));
-	connect(paste,           SIGNAL(triggered()), m_view,  SLOT(paste()));
-	connect(paste_in_area,   SIGNAL(triggered()), m_view,  SLOT(pasteInArea()));
-	connect(paste_from_file, SIGNAL(triggered()), this,     SLOT(pasteFromFile()));
-	connect(paste_from_elmt, SIGNAL(triggered()), this,     SLOT(pasteFromElement()));
-	connect(edit_delete,     SIGNAL(triggered()), m_elmt_scene, SLOT(slot_delete()));
-	connect(edit_names,      SIGNAL(triggered()), m_elmt_scene, SLOT(slot_editNames()));
-	connect(edit_author,     SIGNAL(triggered()), m_elmt_scene, SLOT(slot_editAuthorInformations()));
+
+	connect(new_element,       SIGNAL(triggered()), this,         SLOT(slot_new()));
+	connect(open,              SIGNAL(triggered()), this,         SLOT(slot_open()));
+	connect(open_dxf,          SIGNAL(triggered()), this,         SLOT(slot_openDxf()));
+	connect(open_file,         SIGNAL(triggered()), this,         SLOT(slot_openFile()));
+	connect(save,              SIGNAL(triggered()), this,         SLOT(slot_save()));
+	connect(save_as,           SIGNAL(triggered()), this,         SLOT(slot_saveAs()));
+	connect(save_as_file,      SIGNAL(triggered()), this,         SLOT(slot_saveAsFile()));
+	connect(reload,            SIGNAL(triggered()), this,         SLOT(slot_reload()));
+	connect(quit,              SIGNAL(triggered()), this,         SLOT(close()));
+	connect(selectall,         SIGNAL(triggered()), m_elmt_scene, SLOT(slot_selectAll()));
+	connect(deselectall,       SIGNAL(triggered()), m_elmt_scene, SLOT(slot_deselectAll()));
+	connect(inv_select,        SIGNAL(triggered()), m_elmt_scene, SLOT(slot_invertSelection()));
+	connect(cut,               SIGNAL(triggered()), m_view,       SLOT(cut()));
+	connect(copy,              SIGNAL(triggered()), m_view,       SLOT(copy()));
+	connect(paste,             SIGNAL(triggered()), m_view,       SLOT(paste()));
+	connect(paste_in_area,     SIGNAL(triggered()), m_view,       SLOT(pasteInArea()));
+	connect(paste_from_file,   SIGNAL(triggered()), this,         SLOT(pasteFromFile()));
+	connect(paste_from_elmt,   SIGNAL(triggered()), this,         SLOT(pasteFromElement()));
+	connect(edit_delete,       SIGNAL(triggered()), m_elmt_scene, SLOT(slot_delete()));
+	connect(edit_names,        SIGNAL(triggered()), m_elmt_scene, SLOT(slot_editNames()));
+	connect(edit_author,       SIGNAL(triggered()), m_elmt_scene, SLOT(slot_editAuthorInformations()));
 	connect(m_edit_properties, SIGNAL(triggered()), m_elmt_scene, SLOT(slot_editProperties()));
 
 		//Action related to change depth of primitive
 	m_depth_action_group = QET::depthActionGroup(this);
-	
+
 	connect(m_depth_action_group, &QActionGroup::triggered, [this](QAction *action) {
-		this->elementScene()->undoStack().push(new ChangeZValueCommand(this->elementScene(), action->data().value<QET::DepthOption>()));
-		emit(this->elementScene()->partsZValueChanged());
+		this -> elementScene() -> undoStack().push(
+			new ChangeZValueCommand(this -> elementScene(), action -> data().value<QET::DepthOption>()));
+		emit(this -> elementScene() -> partsZValueChanged());
 	});
-	
+
 	depth_toolbar = addToolBar(tr("Profondeur", "toolbar title"));
 	depth_toolbar -> setObjectName("depth_toolbar");
 	depth_toolbar -> addActions(m_depth_action_group -> actions());
 	addToolBar(Qt::TopToolBarArea, depth_toolbar);
-
 
 	/*
 	 * Action related to zoom
@@ -266,8 +265,8 @@ void QETElementEditor::setupActions() {
 	m_zoom_ag = new QActionGroup(this);
 
 	QAction *zoom_in    = new QAction(QET::Icons::ZoomIn,       tr("Zoom avant"),      m_zoom_ag);
-	QAction *zoom_out   = new QAction(QET::Icons::ZoomOut,      tr("Zoom arrière"), m_zoom_ag);
-	QAction *zoom_fit   = new QAction(QET::Icons::ZoomFitBest,  tr("Zoom adapté"),  m_zoom_ag);
+	QAction *zoom_out   = new QAction(QET::Icons::ZoomOut,      tr("Zoom arrière"),    m_zoom_ag);
+	QAction *zoom_fit   = new QAction(QET::Icons::ZoomFitBest,  tr("Zoom adapté"),     m_zoom_ag);
 	QAction *zoom_reset = new QAction(QET::Icons::ZoomOriginal, tr("Pas de zoom"),     m_zoom_ag);
 
 	zoom_in    -> setShortcut(QKeySequence::ZoomIn);
@@ -280,20 +279,19 @@ void QETElementEditor::setupActions() {
 	connect(zoom_fit,   SIGNAL(triggered()), m_view,  SLOT(zoomFit()   ));
 	connect(zoom_reset, SIGNAL(triggered()), m_view,  SLOT(zoomReset() ));
 
-
 	/*
 	 * Action related to primitive creation
 	 */
 	connect (m_elmt_scene, SIGNAL(partsAdded()), this, SLOT(UncheckAddPrimitive()));
 	parts = new QActionGroup(this);
 
-	QAction *add_line      = new QAction(QET::Icons::PartLine,      tr("Ajouter une ligne"),         parts);
-	QAction *add_rectangle = new QAction(QET::Icons::PartRectangle, tr("Ajouter un rectangle"),      parts);
-	QAction *add_ellipse   = new QAction(QET::Icons::PartEllipse,   tr("Ajouter une ellipse"),       parts);
-	QAction *add_polygon   = new QAction(QET::Icons::PartPolygon,   tr("Ajouter un polygone"),       parts);
-	QAction *add_text      = new QAction(QET::Icons::PartText,      tr("Ajouter du texte"),          parts);
-	QAction *add_arc       = new QAction(QET::Icons::PartArc,       tr("Ajouter un arc de cercle"),  parts);
-	QAction *add_terminal  = new QAction(QET::Icons::Terminal,      tr("Ajouter une borne"),         parts);
+	QAction *add_line               = new QAction(QET::Icons::PartLine,      tr("Ajouter une ligne"),                parts);
+	QAction *add_rectangle          = new QAction(QET::Icons::PartRectangle, tr("Ajouter un rectangle"),             parts);
+	QAction *add_ellipse            = new QAction(QET::Icons::PartEllipse,   tr("Ajouter une ellipse"),              parts);
+	QAction *add_polygon            = new QAction(QET::Icons::PartPolygon,   tr("Ajouter un polygone"),              parts);
+	QAction *add_text               = new QAction(QET::Icons::PartText,      tr("Ajouter du texte"),                 parts);
+	QAction *add_arc                = new QAction(QET::Icons::PartArc,       tr("Ajouter un arc de cercle"),         parts);
+	QAction *add_terminal           = new QAction(QET::Icons::Terminal,      tr("Ajouter une borne"),                parts);
 	QAction *add_dynamic_text_field = new QAction(QET::Icons::PartTextField, tr("Ajouter un champ texte dynamique"), parts);
 
 	foreach (QAction *action, parts -> actions()) action -> setCheckable(true);
@@ -307,16 +305,15 @@ void QETElementEditor::setupActions() {
 	connect(add_terminal,  SIGNAL(triggered()), this, SLOT(addTerminal()  ));
 	connect(add_dynamic_text_field, &QAction::triggered, this, &QETElementEditor::addDynamicTextField);
 
-	add_polygon ->setStatusTip(tr("Double-click pour terminer la forme, Click droit pour annuler le dernier point"));
-	add_text    ->setStatusTip(tr("Ajouter un texte d'élément non éditable dans les schémas"));
-	add_dynamic_text_field ->setStatusTip(tr("Ajouter un texte d'élément pouvant être édité dans les schémas"));
-	
+	add_polygon -> setStatusTip(tr("Double-click pour terminer la forme, Click droit pour annuler le dernier point"));
+	add_text    -> setStatusTip(tr("Ajouter un texte d'élément non éditable dans les schémas"));
+	add_dynamic_text_field -> setStatusTip(tr("Ajouter un texte d'élément pouvant être édité dans les schémas"));
+
 	parts_toolbar =  addToolBar(tr("Parties", "toolbar title"));
 	parts_toolbar -> setAllowedAreas(Qt::AllToolBarAreas);
 	parts_toolbar -> setObjectName("parts");
 	parts_toolbar -> addActions(parts -> actions());
 	addToolBar(Qt::LeftToolBarArea, parts_toolbar);
-
 
 	main_toolbar = new QToolBar(tr("Outils", "toolbar title"), this);
 	main_toolbar -> setObjectName("main_toolbar");
@@ -324,7 +321,7 @@ void QETElementEditor::setupActions() {
 	view_toolbar -> setObjectName("display");
 	element_toolbar = new QToolBar(tr("Élément", "toolbar title"), this);
 	element_toolbar -> setObjectName("element_toolbar");
-	
+
 	main_toolbar -> addAction(new_element);
 	main_toolbar -> addAction(open);
 	main_toolbar -> addAction(save);
@@ -341,21 +338,21 @@ void QETElementEditor::setupActions() {
 
 	element_toolbar -> addAction(edit_names);
 	element_toolbar -> addAction(m_edit_properties);
-	
+
 	addToolBar(Qt::TopToolBarArea, main_toolbar);
 	addToolBar(Qt::TopToolBarArea, view_toolbar);
 	addToolBar(Qt::TopToolBarArea, element_toolbar);
-	
+
 	connect(m_elmt_scene, SIGNAL(selectionChanged()), this, SLOT(slot_updateInformations()), Qt::QueuedConnection);
 	connect(m_elmt_scene, SIGNAL(selectionChanged()), this, SLOT(slot_updateMenus()));
-	connect(QApplication::clipboard(),  SIGNAL(dataChanged()),      this, SLOT(slot_updateMenus()));
+	connect(QApplication::clipboard(),  SIGNAL(dataChanged()), this, SLOT(slot_updateMenus()));
 	connect(&(m_elmt_scene -> undoStack()), SIGNAL(cleanChanged(bool)), this, SLOT(slot_updateMenus()));
 	connect(&(m_elmt_scene -> undoStack()), SIGNAL(cleanChanged(bool)), this, SLOT(slot_updateTitle()));
-	
+
 	// Annuler ou refaire une action met a jour la liste des primitives ; cela sert notamment pour les
 	// ajouts et suppressions de primitives ainsi que pour les actions entrainant un change
 	connect(&(m_elmt_scene -> undoStack()), SIGNAL(indexChanged(int)),  this, SLOT(slot_updatePartsList()));
-	
+
 	// Annuler ou refaire une action met a jour les informations affichees sur les primitives selectionnees,
 	// celles-ci etant potentiellement impactees
 	connect(&(m_elmt_scene -> undoStack()), SIGNAL(indexChanged(int)),  this, SLOT(slot_updateInformations()));
@@ -365,23 +362,24 @@ void QETElementEditor::setupActions() {
  * @brief QETElementEditor::setupMenus
  */
 void QETElementEditor::setupMenus() {
-	file_menu    = new QMenu(tr("&Fichier"),       this);
-	edit_menu    = new QMenu(tr("&Édition"),    this);
-	display_menu = new QMenu(tr("Afficha&ge"),     this);
-	tools_menu   = new QMenu(tr("O&utils"),        this);
-	
+	file_menu    = new QMenu(tr("&Fichier"),   this);
+	edit_menu    = new QMenu(tr("&Édition"),   this);
+	display_menu = new QMenu(tr("Afficha&ge"), this);
+	tools_menu   = new QMenu(tr("O&utils"),    this);
+
 	file_menu    -> setTearOffEnabled(true);
 	edit_menu    -> setTearOffEnabled(true);
 	display_menu -> setTearOffEnabled(true);
 	tools_menu   -> setTearOffEnabled(true);
-	
+
 	file_menu    -> addAction(new_element);
 	file_menu    -> addAction(open);
 	file_menu    -> addAction(open_file);
 	file_menu    -> addAction(open_dxf);
 	QMenu *recentfile = file_menu -> addMenu(QET::Icons::DocumentOpenRecent, tr("&Récemment ouverts"));
-	recentfile->addActions(QETApp::elementsRecentFiles()->menu()->actions());
-	connect(QETApp::elementsRecentFiles(), SIGNAL(fileOpeningRequested(const QString &)), this, SLOT(openRecentFile(const QString &)));
+	recentfile -> addActions(QETApp::elementsRecentFiles() -> menu() -> actions());
+	connect(QETApp::elementsRecentFiles(), SIGNAL(
+		fileOpeningRequested(const QString &)), this, SLOT(openRecentFile(const QString &)));
 	file_menu    -> addAction(save);
 	file_menu    -> addAction(save_as);
 	file_menu    -> addAction(save_as_file);
@@ -389,7 +387,7 @@ void QETElementEditor::setupMenus() {
 	file_menu    -> addAction(reload);
 	file_menu    -> addSeparator();
 	file_menu    -> addAction(quit);
-	
+
 	paste_from_menu = new QMenu(tr("Coller depuis..."));
 	paste_from_menu -> setIcon(QET::Icons::EditPaste);
 	paste_from_menu -> addAction(paste_from_file);
@@ -417,7 +415,7 @@ void QETElementEditor::setupMenus() {
 	edit_menu -> addActions(m_depth_action_group -> actions());
 
 	display_menu -> addActions(m_zoom_ag -> actions());
-	
+
 	insertMenu(settings_menu_, file_menu);
 	insertMenu(settings_menu_, edit_menu);
 	insertMenu(settings_menu_, display_menu);
@@ -429,37 +427,35 @@ void QETElementEditor::setupMenus() {
  * @param p, the pos of the menu, in screen coordinate
  * @param actions, a list of actions who can be prepended to the context menu.
  */
-void QETElementEditor::contextMenu(QPoint p, QList<QAction *> actions)
-{
-		QMenu menu(this);
-		menu.addActions(std::move(actions));
-		menu.addSeparator();
-		menu.addAction(undo);
-		menu.addAction(redo);
-		menu.addAction(selectall);
-		menu.addAction(deselectall);
-		menu.addAction(inv_select);
-		menu.addSeparator();
-		menu.addAction(edit_delete);
-		menu.addAction(cut);
-		menu.addAction(copy);
-		menu.addSeparator();
-		menu.addAction(paste);
-		menu.addAction(paste_in_area);
-		menu.addMenu(paste_from_menu);
-		menu.addSeparator();
-		menu.addActions(m_depth_action_group -> actions());
-		
-			//Remove from the context menu the actions which are disabled.
-		const QList<QAction *>menu_actions = menu.actions();
-		for(QAction *action : menu_actions)
-		{
-			if(!action->isEnabled())
-				menu.removeAction(action);
-		}
-		menu.exec(p);
-}
+void QETElementEditor::contextMenu(QPoint p, QList<QAction *> actions) {
+	QMenu menu(this);
+	menu.addActions(std::move(actions));
+	menu.addSeparator();
+	menu.addAction(undo);
+	menu.addAction(redo);
+	menu.addAction(selectall);
+	menu.addAction(deselectall);
+	menu.addAction(inv_select);
+	menu.addSeparator();
+	menu.addAction(edit_delete);
+	menu.addAction(cut);
+	menu.addAction(copy);
+	menu.addSeparator();
+	menu.addAction(paste);
+	menu.addAction(paste_in_area);
+	menu.addMenu(paste_from_menu);
+	menu.addSeparator();
+	menu.addActions(m_depth_action_group -> actions());
 
+		//Remove from the context menu the actions which are disabled.
+	const QList<QAction *>menu_actions = menu.actions();
+	for(QAction *action : menu_actions) {
+		if(!action -> isEnabled()) {
+			menu.removeAction(action);
+		}
+	}
+	menu.exec(p);
+}
 
 /**
 	Met a jour les menus
@@ -467,7 +463,7 @@ void QETElementEditor::contextMenu(QPoint p, QList<QAction *> actions)
 void QETElementEditor::slot_updateMenus() {
 	bool selected_items = !read_only && !m_elmt_scene -> selectedItems().isEmpty();
 	bool clipboard_elmt = !read_only && ElementScene::clipboardMayContainElement();
-	
+
 	// actions dependant seulement de l'etat "lecture seule" de l'editeur
 	foreach (QAction *action, parts -> actions()) {
 		action -> setEnabled(!read_only);
@@ -476,16 +472,17 @@ void QETElementEditor::slot_updateMenus() {
 	inv_select      -> setEnabled(!read_only);
 	paste_from_file -> setEnabled(!read_only);
 	paste_from_elmt -> setEnabled(!read_only);
-	m_parts_list      -> setEnabled(!read_only);
-	
+	m_parts_list    -> setEnabled(!read_only);
+
 	// Action enabled if primitive selected
 	deselectall     -> setEnabled(selected_items);
 	cut             -> setEnabled(selected_items);
 	copy            -> setEnabled(selected_items);
 	edit_delete     -> setEnabled(selected_items);
-	foreach (QAction *action, m_depth_action_group -> actions())
-		action->setEnabled(selected_items);
-	
+	foreach (QAction *action, m_depth_action_group -> actions()) {
+		action -> setEnabled(selected_items);
+	}
+
 	// actions dependant du contenu du presse-papiers
 	paste           -> setEnabled(clipboard_elmt);
 	paste_in_area   -> setEnabled(clipboard_elmt);
@@ -503,47 +500,50 @@ void QETElementEditor::slot_updateTitle() {
 	QString title = min_title;
 	title += " - " + m_elmt_scene -> names().name() + " ";
 	if (!filename_.isEmpty() || !location_.isNull()) {
-		if (!m_elmt_scene -> undoStack().isClean()) title += tr("[Modifié]", "window title tag");
+		if (!m_elmt_scene -> undoStack().isClean()) {
+			title += tr("[Modifié]", "window title tag");
+		}
 	}
-	if (isReadOnly()) title += tr(" [lecture seule]", "window title tag");
-	setWindowTitle(title);
+	if (isReadOnly()) {
+		title += tr(" [lecture seule]", "window title tag");
+		setWindowTitle(title);
+	}
 }
 
 /**
  * @brief QETElementEditor::setupInterface
  */
-void QETElementEditor::setupInterface()
-{
+void QETElementEditor::setupInterface() {
 		// editeur
 	m_elmt_scene = new ElementScene(this, this);
 	m_view = new ElementView(m_elmt_scene, this);
 	slot_setRubberBandToView();
 	setCentralWidget(m_view);
-	
+
 		// widget par defaut dans le QDockWidget
 	m_default_informations = new QLabel();
-	
+
 		// ScrollArea pour accueillir un widget d'edition (change a la volee)
-//	m_tools_dock_scroll_area = new QScrollArea();
-//	m_tools_dock_scroll_area -> setFrameStyle(QFrame::NoFrame);
-//	m_tools_dock_scroll_area -> setAlignment(Qt::AlignHCenter|Qt::AlignTop);
+// m_tools_dock_scroll_area = new QScrollArea();
+// m_tools_dock_scroll_area -> setFrameStyle(QFrame::NoFrame);
+// m_tools_dock_scroll_area -> setAlignment(Qt::AlignHCenter|Qt::AlignTop);
 	
 		// Pile de widgets pour accueillir les deux widgets precedents
 	m_tools_dock_stack = new QStackedWidget();
 	m_tools_dock_stack -> insertWidget(0, m_default_informations);
-//	m_tools_dock_stack -> insertWidget(1, m_tools_dock_scroll_area);
-	
+// m_tools_dock_stack -> insertWidget(1, m_tools_dock_scroll_area);
+
 		// widgets d'editions pour les parties
-	m_editors["arc"]       = new ArcEditor(this);
-	m_editors["ellipse"]   = new EllipseEditor(this);
-	m_editors["line"]      = new LineEditor(this);
-	m_editors["polygon"]   = new PolygonEditor(this);
-	m_editors["rect"]      = new RectangleEditor(this);
-	m_editors["terminal"]  = new TerminalEditor(this);
-	m_editors["text"]      = new TextEditor(this);
-	m_editors["style"]     = new StyleEditor(this);
+	m_editors["arc"]          = new ArcEditor(this);
+	m_editors["ellipse"]      = new EllipseEditor(this);
+	m_editors["line"]         = new LineEditor(this);
+	m_editors["polygon"]      = new PolygonEditor(this);
+	m_editors["rect"]         = new RectangleEditor(this);
+	m_editors["terminal"]     = new TerminalEditor(this);
+	m_editors["text"]         = new TextEditor(this);
+	m_editors["style"]        = new StyleEditor(this);
 	m_editors["dynamic_text"] = new DynamicTextFieldEditor(this);
-	
+
 	// panel sur le cote pour editer les parties
 	m_tools_dock = new QDockWidget(tr("Informations", "dock title"), this);
 	m_tools_dock -> setObjectName("informations");
@@ -552,7 +552,7 @@ void QETElementEditor::setupInterface()
 	//m_tools_dock -> setMinimumWidth(380);
 	addDockWidget(Qt::RightDockWidgetArea, m_tools_dock);
 	m_tools_dock -> setWidget(m_tools_dock_stack);
-	
+
 	// panel sur le cote pour les annulations
 	m_undo_dock = new QDockWidget(tr("Annulations", "dock title"), this);
 	m_undo_dock -> setObjectName("undo");
@@ -563,7 +563,7 @@ void QETElementEditor::setupInterface()
 	QUndoView* undo_view = new QUndoView(&(m_elmt_scene -> undoStack()), this);
 	undo_view -> setEmptyLabel(tr("Aucune modification"));
 	m_undo_dock -> setWidget(undo_view);
-	
+
 	// panel sur le cote pour la liste des parties
 	m_parts_list = new QListWidget(this);
 	m_parts_list -> setSelectionMode(QAbstractItemView::ExtendedSelection);
@@ -571,7 +571,7 @@ void QETElementEditor::setupInterface()
 	connect(m_elmt_scene,   SIGNAL(partsRemoved()),         this, SLOT(slot_createPartsList()));
 	connect(m_elmt_scene,   SIGNAL(partsZValueChanged()),   this, SLOT(slot_createPartsList()));
 	connect(m_elmt_scene,   SIGNAL(selectionChanged()),     this, SLOT(slot_updatePartsList()));
-	connect(m_parts_list, SIGNAL(itemSelectionChanged()), this, SLOT(slot_updateSelectionFromPartsList()));
+	connect(m_parts_list,   SIGNAL(itemSelectionChanged()), this, SLOT(slot_updateSelectionFromPartsList()));
 	m_parts_dock = new QDockWidget(tr("Parties", "dock title"), this);
 	m_parts_dock -> setObjectName("parts_list");
 	m_parts_dock -> setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
@@ -579,10 +579,10 @@ void QETElementEditor::setupInterface()
 	m_parts_dock -> setMinimumWidth(290);
 	tabifyDockWidget(m_undo_dock, m_parts_dock);
 	m_parts_dock -> setWidget(m_parts_list);
-	
+
 	slot_updateInformations();
 	slot_createPartsList();
-	
+
 	// barre d'etat
 	statusBar() -> showMessage(tr("Éditeur d'éléments", "status bar message"));
 }
@@ -607,8 +607,7 @@ void QETElementEditor::slot_setNoDragToView() {
 	Si plusieurs primitives sont selectionnees, seule leur quantite est
 	affichee. Sinon, un widget d'edition approprie est mis en place.
 */
-void QETElementEditor::slot_updateInformations()
-{
+void QETElementEditor::slot_updateInformations() {
 	QList<QGraphicsItem *> selected_qgis = m_elmt_scene -> selectedItems();
 	if (selected_qgis.isEmpty()) {
 		clearToolsDock();
@@ -619,26 +618,29 @@ void QETElementEditor::slot_updateInformations()
 		m_tools_dock_stack -> setCurrentIndex(0);
 		return;
 	}
-	
+
 	QList<CustomElementPart *> cep_list;
-	
+
 	CustomElementPart* part = dynamic_cast<CustomElementPart *>(selected_qgis.first());
-	QString selection_xml_name = part->xmlName();
+	QString selection_xml_name = part -> xmlName();
 	bool same_xml_name = true;
 	bool style_editable = true;
 	for (QGraphicsItem *qgi: selected_qgis) {
 		if (CustomElementPart *cep = dynamic_cast<CustomElementPart *>(qgi)) {
 			cep_list << cep;
-			if (cep->xmlName() != selection_xml_name)
+			if (cep -> xmlName() != selection_xml_name) {
 				same_xml_name = false;
-		} else {
+			}
+		}
+		else {
 			style_editable = false;
 			same_xml_name = false;
 		}
 	}
-	if (style_editable)
+	if (style_editable) {
 		style_editable = StyleEditor::isStyleEditable(cep_list);
-	
+	}
+
 	if (same_xml_name) {
 		if (selection_xml_name == "terminal" ||
 			selection_xml_name == "text" ||
@@ -650,10 +652,10 @@ void QETElementEditor::slot_updateInformations()
 			clearToolsDock();
 			//We add the editor widget
 			ElementItemEditor *editor = static_cast<ElementItemEditor*>(m_editors[selection_xml_name]);
-			
+
 			// TODO: Check if it takes longer than setting the parts again to the editor.
 			bool equal = true;
-			QList<CustomElementPart*> parts = editor->currentParts();
+			QList<CustomElementPart*> parts = editor -> currentParts();
 			if (parts.length() == cep_list.length()) {
 				for (auto cep: cep_list) {
 					bool part_found = false;
@@ -668,80 +670,73 @@ void QETElementEditor::slot_updateInformations()
 						break;
 					}
 				}
-			} else
+			}
+			else {
 				equal = false;
-			
-			if (editor)
-			{
+			}
+
+			if (editor) {
 				bool success = true;
 				if (equal == false) {
-					success = editor->setParts(cep_list);
+					success = editor -> setParts(cep_list);
 				}
-				if (success)
-				{
-					m_tools_dock_stack->insertWidget(1, editor);
+				if (success) {
+					m_tools_dock_stack -> insertWidget(1, editor);
 					m_tools_dock_stack -> setCurrentIndex(1);
 				}
-				else
-				{
+				else {
 					qDebug() << "Editor refused part.";
 				}
 			}
 			return;
-		} else if (selection_xml_name == "polygon" && cep_list.length() == 1) {
+		}
+		else if (selection_xml_name == "polygon" && cep_list.length() == 1) {
 			// multi edit for polygons makes no sense
 			// TODO: maybe allowing multipart edit when number of points is the same?
 			//We add the editor widget
 			clearToolsDock();
 			ElementItemEditor *editor = static_cast<ElementItemEditor*>(m_editors[selection_xml_name]);
-			CustomElementPart* part = editor->currentPart();
+			CustomElementPart* part = editor -> currentPart();
 			bool equal = part == cep_list.first();
-			
-			if (editor)
-			{
+
+			if (editor) {
 				bool success = true;
 				if (equal == false) {
-					success = editor->setPart(cep_list.first());
+					success = editor -> setPart(cep_list.first());
 				}
-				if (success)
-				{
-					m_tools_dock_stack->insertWidget(1, editor);
+				if (success) {
+					m_tools_dock_stack -> insertWidget(1, editor);
 					m_tools_dock_stack -> setCurrentIndex(1);
 				}
-				else
-				{
+				else {
 					qDebug() << "Editor refused part.";
 				}
 			}
 			return;
-			
-		} else {
-			qDebug() << "Multiedit not supported for: " << cep_list.first()->xmlName();
+
 		}
-		
+		else {
+			qDebug() << "Multiedit not supported for: " << cep_list.first() -> xmlName();
+		}
+
 	}
-	
+
 	//There's several parts selecteds and all can be edited by style editor.
-	if (style_editable)
-	{
+	if (style_editable) {
 		clearToolsDock();
 		ElementItemEditor *selection_editor = m_editors["style"];
-		if (selection_editor)
-		{
-			if (selection_editor -> setParts(cep_list))
-			{
-				m_tools_dock_stack->insertWidget(1, selection_editor);
+		if (selection_editor) {
+			if (selection_editor -> setParts(cep_list)) {
+				m_tools_dock_stack -> insertWidget(1, selection_editor);
 				m_tools_dock_stack -> setCurrentIndex(1);
 			}
-			else
-			{
+			else {
 				qDebug() << "Editor refused part.";
 			}
 		}
 	}
 		//Else we only display the number of selected items
-	else
-	{
+	else {
 		clearToolsDock();
 		m_default_informations -> setText(tr("%n partie(s) sélectionnée(s).",
 										   "",
@@ -756,8 +751,7 @@ void QETElementEditor::slot_updateInformations()
  * Do several check about element.
  * If error is occurred return false
  */
-bool QETElementEditor::checkElement()
-{
+bool QETElementEditor::checkElement() {
 		//List of warning and error
 	typedef QPair<QString, QString> QETWarning;
 	QList<QETWarning> warnings;
@@ -765,8 +759,7 @@ bool QETElementEditor::checkElement()
 
 		/// Warning #1: Element haven't got terminal
 		/// (except for report, because report must have one terminal and this checking is do below)
-	if (!m_elmt_scene -> containsTerminals() && !m_elmt_scene -> elementType().contains("report"))
-	{
+	if (!m_elmt_scene -> containsTerminals() && !m_elmt_scene -> elementType().contains("report")) {
 		warnings << qMakePair(
 			tr("Absence de borne", "warning title"),
 			tr(
@@ -778,17 +771,17 @@ bool QETElementEditor::checkElement()
 	}
 
 		/// Check folio report element
-	if (m_elmt_scene -> elementType().contains("report"))
-	{
+	if (m_elmt_scene -> elementType().contains("report")) {
 		int terminal =0;
 
-		foreach(QGraphicsItem *qgi, m_elmt_scene->items())
-			if (qgraphicsitem_cast<PartTerminal *>(qgi)) 
+		foreach(QGraphicsItem *qgi, m_elmt_scene -> items()) {
+			if (qgraphicsitem_cast<PartTerminal *>(qgi)) {
 				terminal ++;
+			}
+		}
 
 			///Error folio report must have only one terminal
-		if (terminal != 1)
-		{
+		if (terminal != 1) {
 			errors << qMakePair (tr("Absence de borne"),
 								 tr("<br><b>Erreur</b> :"
 									"<br>Les reports de folio doivent posséder une seul borne."
@@ -797,19 +790,21 @@ bool QETElementEditor::checkElement()
 		}
 	}
 
-	if (!errors.count() && !warnings.count()) return(true);
+	if (!errors.count() && !warnings.count()) {
+		return(true);
+	}
 
 		// Display warnings
 	QString dialog_message = tr("La vérification de cet élément a généré", "message box content");
 
-	if (errors.size())
+	if (errors.size()) {
 		dialog_message += QString(tr(" %n erreur(s)", "errors", errors.size()));
+	}
 
-	if (warnings.size())
-	{
-		if (errors.size())
+	if (warnings.size()) {
+		if (errors.size()) {
 			dialog_message += QString (tr(" et"));
-
+		}
 		dialog_message += QString (tr(" %n avertissement(s)", "warnings", warnings.size()));
 	}
 	dialog_message += " :";
@@ -825,13 +820,17 @@ bool QETElementEditor::checkElement()
 	}
 	dialog_message += "</ol>";
 
-	if (errors.size())
+	if (errors.size()) {
 		QMessageBox::critical(this, tr("Erreurs"), dialog_message);
-	else
+	}
+	else {
 		QMessageBox::warning(this, tr("Avertissements"), dialog_message);
+	}
 
 		//if error == 0 that means they are only warning, we return true.
-	if (errors.count() == 0) return(true);
+	if (errors.count() == 0) {
+		return(true);
+	}
 	return false;
 }
 
@@ -842,14 +841,14 @@ bool QETElementEditor::checkElement()
 void QETElementEditor::fromFile(const QString &filepath) {
 	bool state = true;
 	QString error_message;
-	
+
 	// le fichier doit exister
 	QFileInfo infos_file(filepath);
 	if (!infos_file.exists() || !infos_file.isFile()) {
 		state = false;
 		error_message = QString(tr("Le fichier %1 n'existe pas.", "message box content")).arg(filepath);
 	}
-	
+
 	// le fichier doit etre lisible
 	QFile file(filepath);
 	if (state) {
@@ -858,7 +857,7 @@ void QETElementEditor::fromFile(const QString &filepath) {
 			error_message = QString(tr("Impossible d'ouvrir le fichier %1.", "message box content")).arg(filepath);
 		}
 	}
-	
+
 	// le fichier doit etre un document XML
 	QDomDocument document_xml;
 	if (state) {
@@ -868,16 +867,16 @@ void QETElementEditor::fromFile(const QString &filepath) {
 		}
 		file.close();
 	}
-	
+
 	if (!state) {
 		QET::QetMessageBox::critical(this, tr("Erreur", "toolbar title"), error_message);
 		return;
 	}
-	
+
 	// chargement de l'element
 	m_elmt_scene -> fromXml(document_xml);
 	slot_createPartsList();
-	
+
 	// gestion de la lecture seule
 	if (!infos_file.isWritable()) {
 		QET::QetMessageBox::warning(
@@ -886,10 +885,11 @@ void QETElementEditor::fromFile(const QString &filepath) {
 			tr("Vous n'avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.", "message box content")
 		);
 		setReadOnly(true);
-	} else {
+	}
+	else {
 		setReadOnly(false);
 	}
-	
+
 	// memorise le fichier
 	setFileName(filepath);
 	QETApp::elementsRecentFiles() -> fileWasOpened(filepath);
@@ -902,13 +902,12 @@ void QETElementEditor::fromFile(const QString &filepath) {
  * @param fn : path of the file
  * @return : true if succesfully save.
  */
-bool QETElementEditor::toFile(const QString &fn)
-{
-	m_elmt_scene->clearEventInterface();
-	m_elmt_scene->clearSelection();
+bool QETElementEditor::toFile(const QString &fn) {
+	m_elmt_scene -> clearEventInterface();
+	m_elmt_scene -> clearSelection();
 	UncheckAddPrimitive();
-	
-	QDomDocument element_xml = m_elmt_scene->toXml();
+
+	QDomDocument element_xml = m_elmt_scene -> toXml();
 	bool writing = QET::writeXmlFile(element_xml, fn);
 	if (!writing) {
 		QET::QetMessageBox::warning(
@@ -920,21 +919,18 @@ bool QETElementEditor::toFile(const QString &fn)
 	return(writing);
 }
 
-
 /**
  * @brief QETElementEditor::toLocation
  * Save the element to Location
  * @param location : location where we must save the current element
  * @return true if succesfully saved
  */
-bool QETElementEditor::toLocation(const ElementsLocation &location)
-{
-	m_elmt_scene->clearEventInterface();
-	m_elmt_scene->clearSelection();
+bool QETElementEditor::toLocation(const ElementsLocation &location) {
+	m_elmt_scene -> clearEventInterface();
+	m_elmt_scene -> clearSelection();
 	UncheckAddPrimitive();
-	
-	if (!location.setXml(m_elmt_scene->toXml()))
-	{
+
+	if (!location.setXml(m_elmt_scene -> toXml())) {
 		QET::QetMessageBox::critical(this,
 									 tr("Erreur", "message box title"),
 									 tr("Impossible d'enregistrer l'élément", "message box content"));
@@ -956,7 +952,8 @@ bool QETElementEditor::isEditing(const ElementsLocation &provided_location) {
 				QETApp::realPath(provided_location.toString())
 			)
 		);
-	} else {
+	}
+	else {
 		return(provided_location == location_);
 	}
 }
@@ -971,10 +968,11 @@ bool QETElementEditor::isEditing(const QString &provided_filepath) {
 	QString current_filepath;
 	if (opened_from_file) {
 		current_filepath = filename_;
-	} else {
+	}
+	else {
 		current_filepath = QETApp::realPath(location_.toString());
 	}
-	
+
 	return(
 		QET::compareCanonicalFilePaths(
 			current_filepath,
@@ -989,10 +987,10 @@ bool QETElementEditor::isEditing(const QString &provided_filepath) {
 */
 void QETElementEditor::setReadOnly(bool ro) {
 	read_only = ro;
-	
+
 	// active / desactive les interactions avec la scene
 	m_view -> setInteractive(!ro);
-	
+
 	slot_updateMenus();
 }
 
@@ -1064,7 +1062,7 @@ void QETElementEditor::addTerminal() {
  * Set dynamic text field creation interface to scene
  */
 void QETElementEditor::addDynamicTextField() {
-	m_elmt_scene->setEventInterface(new ESEventAddDynamicTextField(m_elmt_scene));
+	m_elmt_scene -> setEventInterface(new ESEventAddDynamicTextField(m_elmt_scene));
 }
 
 /**
@@ -1072,7 +1070,9 @@ void QETElementEditor::addDynamicTextField() {
  * Uncheck all action related to primitive
  */
 void QETElementEditor::UncheckAddPrimitive() {
-	foreach(QAction *action, parts->actions()) action -> setChecked(false);
+	foreach(QAction *action, parts -> actions()) {
+		action -> setChecked(false);
+	}
 }
 
 /**
@@ -1089,7 +1089,9 @@ void QETElementEditor::slot_new() {
 void QETElementEditor::slot_open() {
 	// demande le chemin virtuel de l'element a ouvrir a l'utilisateur
 	ElementsLocation location = ElementDialog::getOpenElementLocation(this);
-	if (location.isNull()) return;
+	if (location.isNull()) {
+		return;
+	}
 	QETApp::instance() -> openElementLocations(QList<ElementsLocation>() << location);
 }
 
@@ -1117,7 +1119,9 @@ void QETElementEditor::slot_openFile() {
 void QETElementEditor::openRecentFile(const QString &filepath) {
 	// small hack to prevent all element editors from trying to topen the required
 	// recent file at the same time
-	if (qApp -> activeWindow() != this) return;
+	if (qApp -> activeWindow() != this) {
+		return;
+	}
 	openElement(filepath);
 }
 
@@ -1135,7 +1139,7 @@ QString program = (QDir::homePath() + "/.qet/DXFtoQET");
 #endif
 QStringList arguments;
 QProcess *DXF = new QProcess(qApp);
-DXF->start(program,arguments);
+DXF -> start(program,arguments);
 
 }
 
@@ -1147,7 +1151,9 @@ DXF->start(program,arguments);
 	@see QETApp::openElementFiles
 */
 void QETElementEditor::openElement(const QString &filepath) {
-	if (filepath.isEmpty()) return;
+	if (filepath.isEmpty()) {
+		return;
+	}
 	// we have to test the file existence here because QETApp::openElementFiles()
 	// will discard non-existent files through QFileInfo::canonicalFilePath()
 	if (!QFile::exists(filepath)) {
@@ -1167,25 +1173,27 @@ void QETElementEditor::openElement(const QString &filepath) {
  * @brief QETElementEditor::slot_reload
  * Reload the element from the file or location
  */
-void QETElementEditor::slot_reload()
-{
+void QETElementEditor::slot_reload() {
 		//If user already edit the element, ask confirmation to reload
-	if (!m_elmt_scene -> undoStack().isClean())
-	{
+	if (!m_elmt_scene -> undoStack().isClean()) {
 		QMessageBox::StandardButton answer = QET::QetMessageBox::question(this,
 																		  tr("Recharger l'élément", "dialog title"),
 																		  tr("Vous avez efffectué des modifications sur cet élément. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l'élément ?", "dialog content"),
 																		  QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel,
 																		  QMessageBox::Cancel);
-		if (answer != QMessageBox::Yes) return;
+		if (answer != QMessageBox::Yes){
+			return;
+		}
 	}
 
 		//Reload the element
 	m_elmt_scene -> reset();
-	if (opened_from_file)
+	if (opened_from_file) {
 		fromFile(filename_);
-	else
+	}
+	else {
 		fromLocation(location_);
+	}
 }
 
 /**
@@ -1194,26 +1202,24 @@ void QETElementEditor::slot_reload()
  * If the filepath or location is unknown, use save_as instead
  * @return true if save with success
  */
-bool QETElementEditor::slot_save()
-{
+bool QETElementEditor::slot_save() {
 		// Check element befor writing
-	if (checkElement())
-	{
+	if (checkElement()) {
 			//If we don't know the name of the current file, use save as instead
-		if (opened_from_file)
-		{
-			if (filename_.isEmpty())
+		if (opened_from_file) {
+			if (filename_.isEmpty()) {
 				return(slot_saveAsFile());
+			}
 
 				//Else wa save to the file at filename_ path
 			bool result_save = toFile(filename_);
 			if (result_save) m_elmt_scene -> undoStack().setClean();
 			return(result_save);
 		}
-		else
-		{
-			if (location_.isNull())
+		else {
+			if (location_.isNull()) {
 				return(slot_saveAs());
+			}
 
 				//Else save to the known location
 			bool result_save = toLocation(location_);
@@ -1235,21 +1241,19 @@ bool QETElementEditor::slot_save()
  * to this location
  * @return true if save with success
  */
-bool QETElementEditor::slot_saveAs()
-{
+bool QETElementEditor::slot_saveAs() {
 		// Check element befor writing
-	if (checkElement())
-	{
+	if (checkElement()) {
 			//Ask a location to user
 		ElementsLocation location = ElementDialog::getSaveElementLocation(this);
-		if (location.isNull())
+		if (location.isNull()) {
 			return(false);
+		}
 
 		bool result_save = toLocation(location);
-		if (result_save)
-		{
+		if (result_save) {
 			setLocation(location);
-			m_elmt_scene->undoStack().setClean();
+			m_elmt_scene -> undoStack().setClean();
 			emit saveToLocation(location);
 		}
 
@@ -1264,11 +1268,9 @@ bool QETElementEditor::slot_saveAs()
  * Ask a file to user and save the current edited element to this file
  * @return true if save with success
  */
-bool QETElementEditor::slot_saveAsFile()
-{
+bool QETElementEditor::slot_saveAsFile() {
 		// Check element befor writing
-	if (checkElement())
-	{
+	if (checkElement()) {
 			//Ask a filename to user, for save the element
 		QString fn = QFileDialog::getSaveFileName(
 			this,
@@ -1280,17 +1282,18 @@ bool QETElementEditor::slot_saveAsFile()
 			)
 		);
 
-		if (fn.isEmpty())
+		if (fn.isEmpty()) {
 			return(false);
+		}
 
 			//If the name doesn't end by .elmt, we add it
-		if (!fn.endsWith(".elmt", Qt::CaseInsensitive))
+		if (!fn.endsWith(".elmt", Qt::CaseInsensitive)) {
 			fn += ".elmt";
+		}
 
 		bool result_save = toFile(fn);
 			//If the save success, the filename is keep
-		if (result_save)
-		{
+		if (result_save) {
 			setFileName(fn);
 			QETApp::elementsRecentFiles() -> fileWasOpened(fn);
 			m_elmt_scene -> undoStack().setClean();
@@ -1309,7 +1312,9 @@ bool QETElementEditor::slot_saveAsFile()
 	l'utilisateur.
 */
 bool QETElementEditor::canClose() {
-	if (m_elmt_scene -> undoStack().isClean()) return(true);
+	if (m_elmt_scene -> undoStack().isClean()) {
+		return(true);
+	}
 	// demande d'abord a l'utilisateur s'il veut enregistrer l'element en cours
 	QMessageBox::StandardButton answer = QET::QetMessageBox::question(
 		this,
@@ -1325,9 +1330,17 @@ bool QETElementEditor::canClose() {
 	);
 	bool result;
 	switch(answer) {
-		case QMessageBox::Cancel: result = false;         break; // l'utilisateur annule : echec de la fermeture
-		case QMessageBox::Yes:    result = slot_save();   break; // l'utilisateur dit oui : la reussite depend de l'enregistrement
-		default:                  result = true;                 // l'utilisateur dit non ou ferme le dialogue: c'est reussi
+		case QMessageBox::Cancel: {
+			result = false;
+			break; // l'utilisateur annule : echec de la fermeture
+		}
+		case QMessageBox::Yes: {
+			result = slot_save();
+			break; // l'utilisateur dit oui : la reussite depend de l'enregistrement
+		}
+		default: {
+			result = true; // l'utilisateur dit non ou ferme le dialogue: c'est reussi
+		}
 	}
 	return(result);
 }
@@ -1338,9 +1351,8 @@ bool QETElementEditor::canClose() {
 	@return le widget enleve, ou 0 s'il n'y avait pas de widget a enlever
 */
 QWidget *QETElementEditor::clearToolsDock() {
-	if (QWidget *previous_widget = m_tools_dock_stack->widget(1))
-	{
-		m_tools_dock_stack->removeWidget(previous_widget);
+	if (QWidget *previous_widget = m_tools_dock_stack -> widget(1)) {
+		m_tools_dock_stack -> removeWidget(previous_widget);
 		previous_widget -> setParent(nullptr);
 		previous_widget -> hide();
 		return(previous_widget);
@@ -1357,16 +1369,16 @@ QWidget *QETElementEditor::clearToolsDock() {
 void QETElementEditor::copyAndPasteXml(const QDomDocument &xml_document) {
 	// accede au presse-papier
 	QClipboard *clipboard = QApplication::clipboard();
-	
+
 	// genere la description XML de la selection
 	QString clipboard_content = xml_document.toString(4);
-	
+
 	// met la description XML dans le presse-papier
 	if (clipboard -> supportsSelection()) {
 		clipboard -> setText(clipboard_content, QClipboard::Selection);
 	}
 	clipboard -> setText(clipboard_content);
-	
+
 	m_view -> pasteInArea();
 }
 
@@ -1380,7 +1392,10 @@ void QETElementEditor::closeEvent(QCloseEvent *qce) {
 		setAttribute(Qt::WA_DeleteOnClose);
 		m_elmt_scene -> reset();
 		qce -> accept();
-	} else qce -> ignore();
+	}
+	else {
+		qce -> ignore();
+	}
 }
 
 /**
@@ -1415,7 +1430,8 @@ void QETElementEditor::slot_createPartsList() {
 				qlwi -> setSelected(qgi -> isSelected());
 			}
 		}
-	} else {
+	}
+	else {
 		m_parts_list -> addItem(new QListWidgetItem(tr("Trop de primitives, liste non générée.")));
 	}
 	m_parts_list -> blockSignals(false);
@@ -1428,7 +1444,8 @@ void QETElementEditor::slot_updatePartsList() {
 	int items_count = m_elmt_scene -> items().count();
 	if (m_parts_list -> count() != items_count) {
 		slot_createPartsList();
-	} else if (items_count <= QET_MAX_PARTS_IN_ELEMENT_EDITOR_LIST) {
+	}
+	else if (items_count <= QET_MAX_PARTS_IN_ELEMENT_EDITOR_LIST) {
 		m_parts_list -> blockSignals(true);
 		int i = 0;
 		QList<QGraphicsItem *> items = m_elmt_scene -> zItems();
@@ -1466,18 +1483,21 @@ void QETElementEditor::slot_updateSelectionFromPartsList() {
  * @brief QETElementEditor::readSettings
  * Read settings
  */
-void QETElementEditor::readSettings()
-{
+void QETElementEditor::readSettings() {
 	QSettings settings;
-	
+
 	// dimensions et position de la fenetre
 	QVariant geometry = settings.value("elementeditor/geometry");
-	if (geometry.isValid()) restoreGeometry(geometry.toByteArray());
-	
+	if (geometry.isValid()) {
+		restoreGeometry(geometry.toByteArray());
+	}
+
 	// etat de la fenetre (barres d'outils, docks...)
 	QVariant state = settings.value("elementeditor/state");
-	if (state.isValid()) restoreState(state.toByteArray());
-	
+	if (state.isValid()) {
+		restoreState(state.toByteArray());
+	}
+
 	// informations complementaires de l'element : valeur par defaut
 	m_elmt_scene -> setInformations(settings.value("elementeditor/default-informations", "").toString());
 }
@@ -1486,8 +1506,7 @@ void QETElementEditor::readSettings()
  * @brief QETElementEditor::writeSettings
  * Write the settings
  */
-void QETElementEditor::writeSettings()
-{
+void QETElementEditor::writeSettings() {
 	QSettings settings;
 	settings.setValue("elementeditor/geometry", saveGeometry());
 	settings.setValue("elementeditor/state", saveState());
@@ -1532,17 +1551,14 @@ QString QETElementEditor::getOpenElementFileName(QWidget *parent, const QString 
  * Location of the element to edit
  * @param location
  */
-void QETElementEditor::fromLocation(const ElementsLocation &location)
-{
-	if (!location.isElement())
-	{
+void QETElementEditor::fromLocation(const ElementsLocation &location) {
+	if (!location.isElement()) {
 		QET::QetMessageBox::critical(this,
 									 tr("Élément inexistant.", "message box title"),
 									 tr("Le chemin virtuel choisi ne correspond pas à un élément.", "message box content"));
 		return;
 	}
-	if (!location.exist())
-	{
+	if (!location.exist()) {
 		QET::QetMessageBox::critical(this,
 									 tr("Élément inexistant.", "message box title"),
 									 tr("L'élément n'existe pas.", "message box content"));
@@ -1559,8 +1575,7 @@ void QETElementEditor::fromLocation(const ElementsLocation &location)
 	slot_createPartsList();
 
 		//location is read only
-	if (!location.isWritable())
-	{
+	if (!location.isWritable()) {
 		QET::QetMessageBox::warning(this,
 									tr("Édition en lecture seule", "message box title"),
 									tr("Vous n'avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.", "message box content"));
@@ -1581,22 +1596,25 @@ void QETElementEditor::fromLocation(const ElementsLocation &location)
 void QETElementEditor::pasteFromFile() {
 	// demande le chemin du fichier a ouvrir a l'utilisateur
 	QString element_file_path = getOpenElementFileName(this);
-	if (element_file_path.isEmpty()) return;
-	
+	if (element_file_path.isEmpty()) {
+		return;
+	}
+
 	QString error_message;
 	QDomDocument xml_document;
 	QFile element_file(element_file_path);
 	// le fichier doit etre lisible
 	if (!element_file.open(QIODevice::ReadOnly)) {
 		error_message = QString(tr("Impossible d'ouvrir le fichier %1.", "message box content")).arg(element_file_path);
-	} else {
+	}
+	else {
 		// le fichier doit etre un document XML
 		if (!xml_document.setContent(&element_file)) {
 			error_message = tr("Ce fichier n'est pas un document XML valide", "message box content");
 		}
 		element_file.close();
 	}
-	
+
 	if (!error_message.isEmpty()) {
 		QET::QetMessageBox::critical(this, tr("Erreur", "toolbar title"), error_message);
 	}
@@ -1608,22 +1626,20 @@ void QETElementEditor::pasteFromFile() {
  * Ask an element to user, copy the xml definition of the element
  * to the clipboard and call ElementView::PasteInArea
  */
-void QETElementEditor::pasteFromElement()
-{
+void QETElementEditor::pasteFromElement() {
 		//Ask for a location
 	ElementsLocation location = ElementDialog::getOpenElementLocation(this);
-	if (location.isNull())
+	if (location.isNull()) {
 		return;
+	}
 
-	if (!location.isElement())
-	{
+	if (!location.isElement()) {
 		QET::QetMessageBox::critical(this,
 									 tr("Élément inexistant.", "message box title"),
 									 tr("Le chemin virtuel choisi ne correspond pas à un élément.", "message box content"));
 		return;
 	}
-	if (!location.exist())
-	{
+	if (!location.exist()) {
 		QET::QetMessageBox::critical(this,
 									 tr("Élément inexistant.", "message box title"),
 									 tr("L'élément n'existe pas.", "message box content"));
@@ -1644,10 +1660,12 @@ void QETElementEditor::pasteFromElement()
 */
 void QETElementEditor::updateCurrentPartEditor() {
 	// si aucun widget d'edition n'est affiche, on ne fait rien
-	if (!m_tools_dock_stack -> currentIndex()) return;
-	
+	if (!m_tools_dock_stack -> currentIndex()) {
+		return;
+	}
+
 	// s'il y a un widget d'edition affiche, on le met a jour
-	if (ElementItemEditor *current_editor = dynamic_cast<ElementItemEditor *>(m_tools_dock_stack->widget(1))) {
+	if (ElementItemEditor *current_editor = dynamic_cast<ElementItemEditor *>(m_tools_dock_stack -> widget(1))) {
 		current_editor -> updateForm();
 	}
 }
