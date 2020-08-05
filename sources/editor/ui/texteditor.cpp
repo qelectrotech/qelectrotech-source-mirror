@@ -29,13 +29,11 @@
  * @param parent : the parent widget
  */
 TextEditor::TextEditor(QETElementEditor *editor,  PartText *text, QWidget *parent) :
-    ElementItemEditor(editor, parent),
-	ui(new Ui::TextEditor)
-{
-    ui->setupUi(this);
+	ElementItemEditor(editor, parent),
+	ui(new Ui::TextEditor) {
+	ui->setupUi(this);
 	setUpEditConnection();
-	if (text)
-	{
+	if (text) {
 		setPart(text);
 		updateForm();
 	}
@@ -58,7 +56,7 @@ void TextEditor::updateForm()
 		return;
 	}
 
-    disconnectEditConnection();
+	disconnectEditConnection();
 
 	ui->m_line_edit->setText(m_text->toPlainText());
 	ui->m_x_sb->setValue(m_text->pos().x());
@@ -72,27 +70,27 @@ void TextEditor::updateForm()
 }
 
 void TextEditor::setUpChangeConnection(QPointer<PartText> part) {
-    assert(m_change_connection.isEmpty());
-    m_change_connection << connect(part, &PartText::plainTextChanged, this, &TextEditor::updateForm);
-    m_change_connection << connect(part, &PartText::xChanged,         this, &TextEditor::updateForm);
-    m_change_connection << connect(part, &PartText::yChanged,         this, &TextEditor::updateForm);
-    m_change_connection << connect(part, &PartText::rotationChanged,  this, &TextEditor::updateForm);
-    m_change_connection << connect(part, &PartText::fontChanged,      this, &TextEditor::updateForm);
-    m_change_connection << connect(part, &PartText::colorChanged,     this, &TextEditor::updateForm);
+	assert(m_change_connection.isEmpty());
+	m_change_connection << connect(part, &PartText::plainTextChanged, this, &TextEditor::updateForm);
+	m_change_connection << connect(part, &PartText::xChanged,         this, &TextEditor::updateForm);
+	m_change_connection << connect(part, &PartText::yChanged,         this, &TextEditor::updateForm);
+	m_change_connection << connect(part, &PartText::rotationChanged,  this, &TextEditor::updateForm);
+	m_change_connection << connect(part, &PartText::fontChanged,      this, &TextEditor::updateForm);
+	m_change_connection << connect(part, &PartText::colorChanged,     this, &TextEditor::updateForm);
 }
 
 void TextEditor::disconnectChangeConnection() {
-    for (QMetaObject::Connection c : m_change_connection) {
-        disconnect(c);
-    }
-    m_change_connection.clear();
+	for (QMetaObject::Connection c : m_change_connection) {
+		disconnect(c);
+	}
+	m_change_connection.clear();
 }
 
 void TextEditor::disconnectEditConnection() {
-    for (QMetaObject::Connection c : m_edit_connection) {
-        disconnect(c);
-    }
-    m_edit_connection.clear();
+	for (QMetaObject::Connection c : m_edit_connection) {
+	disconnect(c);
+	}
+	m_edit_connection.clear();
 }
 
 /**
@@ -117,9 +115,7 @@ bool TextEditor::setPart(CustomElementPart *part)
 			return true;
 		}
 		m_text = part_text;
-		
 		setUpChangeConnection(m_text);
-		
 		updateForm();
 		return true;
 	}
@@ -127,8 +123,7 @@ bool TextEditor::setPart(CustomElementPart *part)
 }
 
 bool TextEditor::setParts(QList <CustomElementPart *> parts) {
-	if (parts.isEmpty())
-	{
+	if (parts.isEmpty()) {
 		m_parts.clear();
 		if (m_text) {
 			disconnectChangeConnection();
@@ -136,21 +131,17 @@ bool TextEditor::setParts(QList <CustomElementPart *> parts) {
 		m_text = nullptr;
 		return true;
 	}
-	
-	if (PartText *part= static_cast<PartText *>(parts.first()))
-	{
+
+	if (PartText *part= static_cast<PartText *>(parts.first())) {
 		if (m_text) {
 			disconnectChangeConnection();
 		}
-		
 		m_text = part;
 		m_parts.clear();
 		m_parts.append(part);
 		for (int i=1; i < parts.length(); i++)
 			m_parts.append(static_cast<PartText*>(parts[i]));
-		
 		setUpChangeConnection(m_text);
-		
 		updateForm();
 		return true;
 	}
@@ -181,28 +172,24 @@ QList<CustomElementPart*> TextEditor::currentParts() const {
 void TextEditor::setUpEditConnection()
 {
 	disconnectEditConnection();
-	
-	m_edit_connection << connect(ui->m_line_edit, &QLineEdit::textEdited, [this]()
-	{
+
+	m_edit_connection << connect(ui->m_line_edit, &QLineEdit::textEdited, [this]() {
 		QString text_ = ui->m_line_edit->text();
 		for (int i=0; i < m_parts.length(); i++) {
 			PartText* partText = m_parts[i];
-			if (text_ != partText->toPlainText())
-			{
+			if (text_ != partText->toPlainText()) {
 				QPropertyUndoCommand *undo = new QPropertyUndoCommand(partText, "text", partText->toPlainText(), text_);
 				undo->setText(tr("Modifier le contenu d'un champ texte"));
 				undoStack().push(undo);
 			}
 		}
 	});
-	m_edit_connection << connect(ui->m_x_sb, QOverload<int>::of(&QSpinBox::valueChanged), [this]()
-	{
+	m_edit_connection << connect(ui->m_x_sb, QOverload<int>::of(&QSpinBox::valueChanged), [this]() {
 		QPointF pos(ui->m_x_sb->value(), 0);
 		for (int i=0; i < m_parts.length(); i++) {
 			PartText* partText = m_parts[i];
 			pos.setY(partText->pos().y());
-			if (pos != partText->pos())
-			{
+			if (pos != partText->pos()) {
 				QPropertyUndoCommand *undo = new QPropertyUndoCommand(partText, "pos", partText->pos(), pos);
 				undo->setText(tr("Déplacer un champ texte"));
 				undo->setAnimated(true, false);
@@ -210,14 +197,12 @@ void TextEditor::setUpEditConnection()
 			}
 		}
 	});
-	m_edit_connection << connect(ui->m_y_sb, QOverload<int>::of(&QSpinBox::valueChanged), [this]()
-	{
+	m_edit_connection << connect(ui->m_y_sb, QOverload<int>::of(&QSpinBox::valueChanged), [this]() {
 		QPointF pos(0, ui->m_y_sb->value());
 		for (int i=0; i < m_parts.length(); i++) {
 			PartText* partText = m_parts[i];
 			pos.setX(partText->pos().x());
-			if (pos != partText->pos())
-			{
+			if (pos != partText->pos()) {
 				QPropertyUndoCommand *undo = new QPropertyUndoCommand(partText, "pos", partText->pos(), pos);
 				undo->setText(tr("Déplacer un champ texte"));
 				undo->setAnimated(true, false);
@@ -225,12 +210,10 @@ void TextEditor::setUpEditConnection()
 			}
 		}
 	});
-	m_edit_connection << connect(ui->m_rotation_sb, QOverload<int>::of(&QSpinBox::valueChanged), [this]()
-	{
+	m_edit_connection << connect(ui->m_rotation_sb, QOverload<int>::of(&QSpinBox::valueChanged), [this]() {
 		for (int i=0; i < m_parts.length(); i++) {
 			PartText* partText = m_parts[i];
-			if (ui->m_rotation_sb->value() != partText->rotation())
-			{
+			if (ui->m_rotation_sb->value() != partText->rotation()) {
 				QPropertyUndoCommand *undo = new QPropertyUndoCommand(partText, "rotation", partText->rotation(), ui->m_rotation_sb->value());
 				undo->setText(tr("Pivoter un champ texte"));
 				undo->setAnimated(true, false);
@@ -238,12 +221,10 @@ void TextEditor::setUpEditConnection()
 			}
 		}
 	});
-	m_edit_connection << connect(ui->m_size_sb, QOverload<int>::of(&QSpinBox::valueChanged), [this]()
-	{
+	m_edit_connection << connect(ui->m_size_sb, QOverload<int>::of(&QSpinBox::valueChanged), [this]() {
 		for (int i=0; i < m_parts.length(); i++) {
 			PartText* partText = m_parts[i];
-			if (partText->font().pointSize() != ui->m_size_sb->value())
-			{
+			if (partText->font().pointSize() != ui->m_size_sb->value()) {
 				QFont font_ = partText->font();
 				font_.setPointSize(ui->m_size_sb->value());
 				QPropertyUndoCommand *undo = new QPropertyUndoCommand(partText, "font", partText->font(), font_);
@@ -257,23 +238,21 @@ void TextEditor::setUpEditConnection()
 /**
  * @brief TextEditor::on_m_font_pb_clicked
  */
-void TextEditor::on_m_font_pb_clicked()
-{
+void TextEditor::on_m_font_pb_clicked() {
 	bool ok;
 	QFont font_ = QFontDialog::getFont(&ok, m_text->font(), this);
-	
+
 	if (ok && font_ != m_text->font()) {
 		ui->m_size_sb->blockSignals(true);
 		ui->m_size_sb->setValue(font_.pointSize());
 		ui->m_size_sb->blockSignals(false);
-		
+
 		ui->m_font_pb->setText(font_.family());
 	}
-	
+
 	for (int i=0; i < m_parts.length(); i++) {
 		PartText* partText = m_parts[i];
-		if (ok && font_ != partText->font())
-		{
+		if (ok && font_ != partText->font()) {
 			QPropertyUndoCommand *undo = new QPropertyUndoCommand(partText, "font", partText->font(), font_);
 			undo->setText(tr("Modifier la police d'un texte"));
 			undoStack().push(undo);
@@ -285,12 +264,10 @@ void TextEditor::on_m_font_pb_clicked()
  * @brief TextEditor::on_m_color_pb_changed
  * @param newColor
  */
-void TextEditor::on_m_color_pb_changed(const QColor &newColor)
-{
+void TextEditor::on_m_color_pb_changed(const QColor &newColor) {
 	for (int i=0; i < m_parts.length(); i++) {
 		PartText* partText = m_parts[i];
-		if (newColor != partText->defaultTextColor())
-		{
+		if (newColor != partText->defaultTextColor()) {
 			QPropertyUndoCommand *undo = new QPropertyUndoCommand(partText, "color", partText->defaultTextColor(), newColor);
 			undo->setText(tr("Modifier la couleur d'un texte"));
 			undoStack().push(undo);
