@@ -33,6 +33,7 @@
 #include <QTimer>
 #include <QStandardPaths>
 #include <utility>
+#include <QtConcurrent>
 
 static int BACKUP_INTERVAL = 120000; //interval in ms of backup = 2min
 
@@ -1607,7 +1608,9 @@ NamesList QETProject::namesListForIntegrationCategory() {
 void QETProject::writeBackup()
 {
     QDomDocument xml_project(toXml());
-	QET::writeToFile(xml_project, &m_backup_file);
+	QString temp;
+	QFuture<void> bac = QtConcurrent::run(QET::writeToFile,xml_project,&m_backup_file,&temp);
+	bac.waitForFinished();
 }
 
 /**
