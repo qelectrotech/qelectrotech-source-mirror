@@ -170,7 +170,7 @@ QList<CustomElementPart*> TextEditor::currentParts() const {
 void TextEditor::setUpEditConnection() {
 	disconnectEditConnection();
 
-	m_edit_connection << connect(ui -> m_line_edit, &QLineEdit::textEdited, [this]() {
+	m_edit_connection << connect(ui -> m_line_edit, &QLineEdit::editingFinished, [this]() {
 		QString text_ = ui -> m_line_edit -> text();
 		for (int i=0; i < m_parts.length(); i++) {
 			PartText* partText = m_parts[i];
