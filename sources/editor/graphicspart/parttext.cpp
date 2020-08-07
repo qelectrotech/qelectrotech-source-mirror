@@ -172,12 +172,8 @@ void PartText::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *e) {
 	@param value Valeur numerique relative au changement
 */
 QVariant PartText::itemChange(GraphicsItemChange change, const QVariant &value) {
-	if (change == QGraphicsItem::ItemPositionHasChanged || change == QGraphicsItem::ItemSceneHasChanged) {
-		updateCurrentPartEditor();
-	} else if (change == QGraphicsItem::ItemSelectedHasChanged) {
-		if (value.toBool() == true) {
-			updateCurrentPartEditor();
-		}
+	if (change == QGraphicsItem::ItemPositionHasChanged || change == QGraphicsItem::ItemSceneHasChanged || change == QGraphicsItem::ItemSelectedHasChanged) {
+		updateCurrentPartEditor();	
 	}
 	return(QGraphicsTextItem::itemChange(change, value));
 }
