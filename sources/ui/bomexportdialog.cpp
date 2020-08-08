@@ -34,10 +34,10 @@
 #include <QSqlRecord>
 
 /**
- * @brief BOMExportDialog::BOMExportDialog
- * @param project the project for create the bill of material
- * @param parent widget
- */
+	@brief BOMExportDialog::BOMExportDialog
+	@param project the project for create the bill of material
+	@param parent widget
+*/
 BOMExportDialog::BOMExportDialog(QETProject *project, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::BOMExportDialog),
@@ -112,8 +112,8 @@ BOMExportDialog::BOMExportDialog(QETProject *project, QWidget *parent) :
 }
 
 /**
- * @brief BOMExportDialog::~BOMExportDialog
- */
+	@brief BOMExportDialog::~BOMExportDialog
+*/
 BOMExportDialog::~BOMExportDialog()
 {
 	delete ui;
@@ -121,10 +121,10 @@ BOMExportDialog::~BOMExportDialog()
 }
 
 /**
- * @brief BOMExportDialog::exec
- * Reimplemented from QDialog
- * @return
- */
+	@brief BOMExportDialog::exec
+	Reimplemented from QDialog
+	@return
+*/
 int BOMExportDialog::exec()
 {
 	int r = QDialog::exec();
@@ -165,9 +165,9 @@ int BOMExportDialog::exec()
 }
 
 /**
- * @brief BOMExportDialog::selectedKeys
- * @return the current keys of selected infos to be exported
- */
+	@brief BOMExportDialog::selectedKeys
+	@return the current keys of selected infos to be exported
+*/
 QStringList BOMExportDialog::selectedKeys() const
 {
 	//Made a string list with the colomns (keys) choosen by the user
@@ -183,10 +183,10 @@ QStringList BOMExportDialog::selectedKeys() const
 }
 
 /**
- * @brief BOMExportDialog::translatedKeys
- * @param key
- * @return
- */
+	@brief BOMExportDialog::translatedKeys
+	@param key
+	@return
+*/
 QString BOMExportDialog::translatedKeys(const QString &key) const
 {
 	if (QETApp::elementInfoKeys().contains(key)) {
@@ -202,9 +202,9 @@ QString BOMExportDialog::translatedKeys(const QString &key) const
 }
 
 /**
- * @brief BOMExportDialog::setUpItems
- * Setup all items available for create the column of the bill of material.
- */
+	@brief BOMExportDialog::setUpItems
+	Setup all items available for create the column of the bill of material.
+*/
 void BOMExportDialog::setUpItems()
 {
 	for(QString key : QETApp::elementInfoKeys())
@@ -225,8 +225,8 @@ void BOMExportDialog::setUpItems()
 }
 
 /**
- * @brief BOMExportDialog::on_m_add_pb_clicked
- */
+	@brief BOMExportDialog::on_m_add_pb_clicked
+*/
 void BOMExportDialog::on_m_add_pb_clicked()
 {
 	if (auto *item = ui->m_var_list->takeItem(ui->m_var_list->currentRow())) {
@@ -237,8 +237,8 @@ void BOMExportDialog::on_m_add_pb_clicked()
 }
 
 /**
- * @brief BOMExportDialog::on_m_remove_pb_clicked
- */
+	@brief BOMExportDialog::on_m_remove_pb_clicked
+*/
 void BOMExportDialog::on_m_remove_pb_clicked()
 {
 	if (auto *item = ui->m_choosen_list->takeItem(ui->m_choosen_list->currentRow())) {
@@ -249,10 +249,10 @@ void BOMExportDialog::on_m_remove_pb_clicked()
 }
 
 /**
- * @brief BOMExportDialog::on_m_up_pb_clicked
- */
+	@brief BOMExportDialog::on_m_up_pb_clicked
+*/
 void BOMExportDialog::on_m_up_pb_clicked()
-{   
+{
 	auto row = ui->m_choosen_list->currentRow();
 	if(row <= 0) {
 		return;
@@ -266,8 +266,8 @@ void BOMExportDialog::on_m_up_pb_clicked()
 }
 
 /**
- * @brief BOMExportDialog::on_m_down_pb_clicked
- */
+	@brief BOMExportDialog::on_m_down_pb_clicked
+*/
 void BOMExportDialog::on_m_down_pb_clicked()
 {
 	auto row = ui->m_choosen_list->currentRow();
@@ -287,10 +287,10 @@ void BOMExportDialog::on_m_save_name_le_textChanged(const QString &arg1) {
 }
 
 /**
- * @brief BOMExportDialog::getBom
- * @return the bill of material as string already formated
- * for export to csv.
- */
+	@brief BOMExportDialog::getBom
+	@return the bill of material as string already formated
+	for export to csv.
+*/
 QString BOMExportDialog::getBom()
 {
 	QString data; //The string to be returned
@@ -333,9 +333,9 @@ QString BOMExportDialog::getBom()
 }
 
 /**
- * @brief BOMExportDialog::headers
- * @return the header to be use for the csv file
- */
+	@brief BOMExportDialog::headers
+	@return the header to be use for the csv file
+*/
 QString BOMExportDialog::headers() const
 {
 	QString header_string;
@@ -378,9 +378,9 @@ QString BOMExportDialog::headers() const
 }
 
 /**
- * @brief BOMExportDialog::createDataBase
- * @return true if database is successfully created
- */
+	@brief BOMExportDialog::createDataBase
+	@return true if database is successfully created
+*/
 bool BOMExportDialog::createDataBase()
 {
 	//Create a sqlite data base to sort the bom
@@ -438,9 +438,9 @@ bool BOMExportDialog::createDataBase()
 }
 
 /**
- * @brief BOMExportDialog::populateDataBase
- * Populate the database
- */
+	@brief BOMExportDialog::populateDataBase
+	Populate the database
+*/
 void BOMExportDialog::populateDataBase()
 {
 	for (auto *diagram : m_project->diagrams())
@@ -470,10 +470,10 @@ void BOMExportDialog::populateDataBase()
 }
 
 /**
- * @brief BOMExportDialog::elementInfoToString
- * @param elmt
- * @return a Hash with as key the name of bdd columns and value the value of @elmt for each columns.
- */
+	@brief BOMExportDialog::elementInfoToString
+	@param elmt
+	@return a Hash with as key the name of bdd columns and value the value of @elmt for each columns.
+*/
 QHash<QString, QString> BOMExportDialog::elementInfoToString(Element *elmt) const
 {
 	QHash<QString, QString> keys_hash; //Use to get the element info according to the database columns name
@@ -512,9 +512,9 @@ QHash<QString, QString> BOMExportDialog::elementInfoToString(Element *elmt) cons
 }
 
 /**
- * @brief BOMExportDialog::queryStr
- * @return the query string
- */
+	@brief BOMExportDialog::queryStr
+	@return the query string
+*/
 QString BOMExportDialog::queryStr() const
 {
 	//User define is own query
@@ -587,9 +587,9 @@ void BOMExportDialog::updateQueryLine() {
 }
 
 /**
- * @brief BOMExportDialog::fillSavedQuery
- * Fill the combo box with the name of the saved query
- */
+	@brief BOMExportDialog::fillSavedQuery
+	Fill the combo box with the name of the saved query
+*/
 void BOMExportDialog::fillSavedQuery()
 {
 	QFile file(QETApp::configDir() + "/bill_of_materials.json");
@@ -610,9 +610,9 @@ void BOMExportDialog::on_m_format_as_nomenclature_rb_toggled(bool checked) {
 }
 
 /**
- * @brief BOMExportDialog::on_m_edit_sql_query_cb_clicked
- * Update widgets
- */
+	@brief BOMExportDialog::on_m_edit_sql_query_cb_clicked
+	Update widgets
+*/
 void BOMExportDialog::on_m_edit_sql_query_cb_clicked()
 {
 	ui->m_sql_query->setEnabled(ui->m_edit_sql_query_cb->isChecked());
@@ -632,9 +632,9 @@ void BOMExportDialog::on_m_edit_sql_query_cb_clicked()
 }
 
 /**
- * @brief BOMExportDialog::on_m_save_current_conf_pb_clicked
- * Save the current query to file
- */
+	@brief BOMExportDialog::on_m_save_current_conf_pb_clicked
+	Save the current query to file
+*/
 void BOMExportDialog::on_m_save_current_conf_pb_clicked()
 {
 	QFile file(QETApp::configDir() + "/bill_of_materials.json");
@@ -690,9 +690,9 @@ void BOMExportDialog::on_m_save_current_conf_pb_clicked()
 }
 
 /**
- * @brief BOMExportDialog::on_m_load_pb_clicked
- * Load the current selected query from file
- */
+	@brief BOMExportDialog::on_m_load_pb_clicked
+	Load the current selected query from file
+*/
 void BOMExportDialog::on_m_load_pb_clicked()
 {
 	auto name = ui->m_conf_cb->currentText();

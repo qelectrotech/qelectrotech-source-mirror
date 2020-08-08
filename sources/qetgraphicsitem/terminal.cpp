@@ -823,10 +823,10 @@ QUuid Terminal::uuid() const {
 /**
 	@brief Conductor::relatedPotentialTerminal
 	Return terminal at the same potential from the same
-	parent element of @t.
+	parent element of @terminal.
 	For folio report, return the terminal of linked other report.
 	For Terminal element, return the other terminal of terminal element.
-	@param t terminal to start search
+	@param terminal : to start search
 	@param all_diagram :if true return all related terminal,
 	false return only terminal in the same diagram of @t
 	@return the list of terminal at the same potential

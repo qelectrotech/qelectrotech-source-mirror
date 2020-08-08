@@ -27,9 +27,13 @@
 #include "diagram.h"
 
 /**
- * Constructor
- */
-AutoNumberingManagementW::AutoNumberingManagementW(QETProject *project, QWidget *parent) :
+	@brief AutoNumberingManagementW::AutoNumberingManagementW
+	Constructor
+	@param project
+	@param parent
+*/
+AutoNumberingManagementW::AutoNumberingManagementW(QETProject *project,
+						   QWidget *parent) :
 	QWidget(parent),
 	project_(project)
 {
@@ -46,17 +50,18 @@ AutoNumberingManagementW::AutoNumberingManagementW(QETProject *project, QWidget 
 }
 
 /**
- * Destructor
- */
+	@brief AutoNumberingManagementW::~AutoNumberingManagementW
+	Destructor
+*/
 AutoNumberingManagementW::~AutoNumberingManagementW()
 {
 	delete ui;
 }
 
 /**
- * @brief AutoNumberingManagementW::setProjectContext
- * Add Default Project Status
- */
+	@brief AutoNumberingManagementW::setProjectContext
+	Add Default Project Status
+*/
 void AutoNumberingManagementW::setProjectContext() {
 	ui->m_status_cb->addItem(tr("Under Development"));
 	ui->m_status_cb->addItem(tr("Installing"));
@@ -64,9 +69,10 @@ void AutoNumberingManagementW::setProjectContext() {
 }
 
 /**
- * @brief AutoNumberingManagementW::on_m_status_cb_currentIndexChanged
- * Load Default Status Options
- */
+	@brief AutoNumberingManagementW::on_m_status_cb_currentIndexChanged
+	Load Default Status Options
+	@param index
+*/
 void AutoNumberingManagementW::on_m_status_cb_currentIndexChanged(int index) {
 
 	//Under Development
@@ -96,9 +102,9 @@ void AutoNumberingManagementW::on_m_status_cb_currentIndexChanged(int index) {
 }
 
 /**
- * @brief AutoNumberingManagementW::on_m_apply_folios_rb_clicked
- * Set From Folios Combobox
- */
+	@brief AutoNumberingManagementW::on_m_apply_folios_rb_clicked
+	Set From Folios Combobox
+*/
 void AutoNumberingManagementW::on_m_apply_folios_rb_clicked() {
 	if (ui->m_apply_folios_rb->isChecked()) {
 		ui->m_selected_folios_widget->setEnabled(true);
@@ -119,9 +125,10 @@ void AutoNumberingManagementW::on_m_apply_folios_rb_clicked() {
 }
 
 /**
- * @brief AutoNumberingManagementW::on_m_from_folios_cb_currentIndexChanged
- * Set To Folios Combobox
- */
+	@brief AutoNumberingManagementW::on_m_from_folios_cb_currentIndexChanged
+	Set To Folios Combobox
+	@param index
+*/
 void AutoNumberingManagementW::on_m_from_folios_cb_currentIndexChanged(int index) {
 	ui->m_to_folios_cb->clear();
 	ui->m_selected_folios_le->clear();
@@ -131,9 +138,14 @@ void AutoNumberingManagementW::on_m_from_folios_cb_currentIndexChanged(int index
 		ui->m_to_folios_cb->addItem("");
 		for (int i=index;i<project_->diagrams().size();i++) {
 				if (project_->diagrams().at(i)->title() != "") {
-					ui->m_to_folios_cb->addItem(project_->diagrams().at(i)->title(),project_->diagrams().at(i)->folioIndex());
+					ui->m_to_folios_cb->addItem(
+						project_->diagrams().at(i)->title(),
+						project_->diagrams().at(i)->folioIndex());
 				}
-				else ui->m_to_folios_cb->addItem(QString::number(project_->diagrams().at(i)->folioIndex()),project_->diagrams().at(i)->folioIndex());
+				else ui->m_to_folios_cb->addItem(
+					QString::number(
+						project_->diagrams().at(i)->folioIndex()),
+							project_->diagrams().at(i)->folioIndex());
 		}
 		applyEnable(true);
 		ui->m_selected_folios_le->clear();
@@ -143,9 +155,10 @@ void AutoNumberingManagementW::on_m_from_folios_cb_currentIndexChanged(int index
 }
 
 /**
- * @brief AutoNumberingManagementW::on_m_to_folios_cb_currentIndexChanged
- * Set selected folios Line Edit content
- */
+	@brief AutoNumberingManagementW::on_m_to_folios_cb_currentIndexChanged
+	Set selected folios Line Edit content
+	@param index
+*/
 void AutoNumberingManagementW::on_m_to_folios_cb_currentIndexChanged(int index) {
 	if (index > 0) {
 		QString from = ui->m_from_folios_cb->currentText();
@@ -158,9 +171,9 @@ void AutoNumberingManagementW::on_m_to_folios_cb_currentIndexChanged(int index) 
 }
 
 /**
- * @brief AutoNumberingManagementW::on_m_apply_project_rb_clicked
- * Disable folio widget
- */
+	@brief AutoNumberingManagementW::on_m_apply_project_rb_clicked
+	Disable folio widget
+*/
 void AutoNumberingManagementW::on_m_apply_project_rb_clicked() {
 	ui->m_selected_folios_widget->setDisabled(true);
 	ui->m_selected_folios_le->setDisabled(true);
@@ -168,9 +181,10 @@ void AutoNumberingManagementW::on_m_apply_project_rb_clicked() {
 }
 
 /**
- * @brief AutoNumberingManagementW::on_buttonBox_clicked
- * Action on @buttonBox clicked
- */
+	@brief AutoNumberingManagementW::on_buttonBox_clicked
+	Action on @buttonBox clicked
+	@param button
+*/
 void AutoNumberingManagementW::on_buttonBox_clicked(QAbstractButton *button) {
 	//transform button to int
 	int answer = ui -> buttonBox -> buttonRole(button);
@@ -196,9 +210,10 @@ void AutoNumberingManagementW::on_buttonBox_clicked(QAbstractButton *button) {
 }
 
 /**
- * @brief AutoNumberingManagementW::applyEnable
- * enable/disable the apply button
- */
+	@brief AutoNumberingManagementW::applyEnable
+	enable/disable the apply button
+	@param b
+*/
 void AutoNumberingManagementW::applyEnable(bool b) {
 	if (b){
 		bool valid= true;

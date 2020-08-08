@@ -1466,15 +1466,15 @@ void QETProject::writeProjectPropertiesXml(QDomElement &xml_element) {
 }
 
 /**
- * @brief QETProject::writeDefaultPropertiesXml
- * Export all defaults properties used by a new diagram and his content
- * #size of border
- * #content of titleblock
- * #default conductor
- * #defaut folio report
- * #default Xref
- * @param xml_element xml element to use for store default propertie.
- */
+	@brief QETProject::writeDefaultPropertiesXml
+	Export all defaults properties used by a new diagram and his content
+	#size of border
+	#content of titleblock
+	#default conductor
+	#defaut folio report
+	#default Xref
+	@param xml_element xml element to use for store default propertie.
+*/
 void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 {
 	QDomDocument xml_document = xml_element.ownerDocument();
@@ -1549,19 +1549,23 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 }
 
 /**
- * @brief QETProject::addDiagram
- * Add a diagram in this project
- * @param diagram added diagram
- * @param pos postion of the new diagram, by default at the end
- */
+	@brief QETProject::addDiagram
+	Add a diagram in this project
+	@param diagram added diagram
+	@param pos postion of the new diagram, by default at the end
+*/
 void QETProject::addDiagram(Diagram *diagram, int pos)
 {
 	if (!diagram) {
 		return;
 	}
 
-	connect(&diagram->border_and_titleblock, &BorderTitleBlock::needFolioData, this, &QETProject::updateDiagramsFolioData);
-	connect(diagram, &Diagram::usedTitleBlockTemplateChanged, this, &QETProject::usedTitleBlockTemplateChanged);
+	connect(&diagram->border_and_titleblock,
+		&BorderTitleBlock::needFolioData,
+		this,
+		&QETProject::updateDiagramsFolioData);
+	connect(diagram, &Diagram::usedTitleBlockTemplateChanged,
+		this, &QETProject::usedTitleBlockTemplateChanged);
 
 	if (pos == -1) {
 		m_diagrams_list << diagram;
@@ -1575,7 +1579,6 @@ void QETProject::addDiagram(Diagram *diagram, int pos)
 /**
 	@return La liste des noms a utiliser pour la categorie dediee aux elements
 	integres automatiquement dans le projet.
-
 */
 NamesList QETProject::namesListForIntegrationCategory() {
 	NamesList names;
@@ -1602,14 +1605,17 @@ NamesList QETProject::namesListForIntegrationCategory() {
 }
 
 /**
- * @brief QETProject::writeBackup
- * Write a backup file of this project, in the case that QET crash
- */
+	@brief QETProject::writeBackup
+	Write a backup file of this project, in the case that QET crash
+*/
 void QETProject::writeBackup()
 {
-    QDomDocument xml_project(toXml());
+	QDomDocument xml_project(toXml());
 	QString temp;
-	QFuture<void> bac = QtConcurrent::run(QET::writeToFile,xml_project,&m_backup_file,&temp);
+	QFuture<void> bac = QtConcurrent::run(QET::writeToFile,
+					      xml_project,
+					      &m_backup_file,
+					      &temp);
 	bac.waitForFinished();
 }
 
