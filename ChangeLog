@@ -11,7 +11,7 @@
 
 * Diagram editor :
 
-* The export of the nomenclature has been completely rewritten :
+* The export of the nomenclature to csv file has been completely rewritten :
 It is now possible to choose which information to export as well as the order in which it should be displayed.
 An option allows filtering by type of element: all, terminal block, button / switch.
 Another option allows to display or not the column headers in the csv file.
@@ -19,15 +19,31 @@ With these options, it is possible to create a nomenclature, an order list, but 
 It is possible to save / load a configuration easily.
 Finally, the work being done by an SQLite database, a text field allows the user to create his own SQL query.
 
-* Conductors num : can be exported to csv file.
+* Add Conductors numbering to csv file.
 
 * Add new summary table.
 
+* add BOM creation dialog :
+nomenclature is now integrated into the project (accompanied by several parameters in order to be customizable).
+Tables can have a name.
+Tables an be added to any folio.
+Font margin and alignment (right center left) separately adjustable for headers and table cells.
+Position size and number of lines is adjustable.
+Possibility of linking several tables together, especially when the entire nomenclature cannot be contained in a folio.
+Automatic adjustment of the size of the table in relation to the folio.
+Option to apply the geometry of an array to all the array linked to it, so that everything is homogeneous.
+Save / load table configuration and content to make creation faster.
+Option to automatically adjust the table to the folio.
+Option to automatically add new tables in new folios if the nomenclature cannot be contained in 1 to N folios / tables.
 
-* Loading of element collections faster (thanks to the pugixml parser)
+* Table content:
+Fully customizable, you display what you want or want (info to display in the desired order, filter on type of element, filter on content of the info "contains, not contains, not empty etc ..." ).
+The content being generated from a sqlite database, you can write your own request.
+
+
+* Loading of element collections is now faster (thanks to the pugixml parser)
 * The loading of collections of elements no longer freezes QElectroTech.
 * The appearance and disappearance of the search / replace menu is animated.
-* Addition of nomenclature integrated into the project (accompanied by several parameters in order to be customizable).
 * Fix wrong position of slave xref after open a saved project
 
 * Add font color of the conductors (Simon).
