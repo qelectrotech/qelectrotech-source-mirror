@@ -24,6 +24,7 @@
 //#define TITLEBLOCK_TEMPLATE_DEBUG
 
 /**
+	@brief TitleBlockTemplate::TitleBlockTemplate
 	Constructor
 	@param parent parent QObject
 */
@@ -33,6 +34,7 @@ TitleBlockTemplate::TitleBlockTemplate(QObject *parent) :
 }
 
 /**
+	@brief TitleBlockTemplate::~TitleBlockTemplate
 	Destructor
 */
 TitleBlockTemplate::~TitleBlockTemplate() {
@@ -41,8 +43,9 @@ TitleBlockTemplate::~TitleBlockTemplate() {
 }
 
 /**
-	Create a new cell and associate it with this template, which means that it
-	will be deleted when this template is destroyed.
+	@brief TitleBlockTemplate::createCell
+	Create a new cell and associate it with this template,
+	which means that it will be deleted when this template is destroyed.
 	@param existing_cell (optional) An existing cell that will be copied
 	@return A pointer to the newly created cell
 */
@@ -53,7 +56,9 @@ TitleBlockCell *TitleBlockTemplate::createCell(const TitleBlockCell *existing_ce
 }
 
 /**
-	@param count Number of cells expected in the list
+	@brief TitleBlockTemplate::createCellsList
+	@param count :
+	Number of cells expected in the list
 	@return a list containing count newly created (and registered) cells
 	@see createCell()
 */
@@ -64,16 +69,19 @@ QList<TitleBlockCell *> TitleBlockTemplate::createCellsList(int count) {
 }
 
 /**
-	@param cell An existing cell
-	@return The font that should be used to render this cell according to its properties.
+	@brief TitleBlockTemplate::fontForCell
+	@param cell : An existing cell
+	@return The font that should be used to render this cell
+	according to its properties.
 */
 QFont TitleBlockTemplate::fontForCell(const TitleBlockCell &cell) {
 	return(QETApp::diagramTextsFont(cell.font_size));
 }
 
 /**
+	@brief TitleBlockTemplate::loadFromXmlFile
 	Load a titleblock template from an XML file.
-	@param filepath A file path to read the template from.
+	@param filepath : A file path to read the template from.
 	@return true if the reading succeeds, false otherwise.
 */
 bool TitleBlockTemplate::loadFromXmlFile(const QString &filepath) {
@@ -99,7 +107,8 @@ bool TitleBlockTemplate::loadFromXmlFile(const QString &filepath) {
 }
 
 /**
-	@param xml_element An XML document to read the template from.
+	 @brief TitleBlockTemplate::loadFromXmlElement
+	@param xml_element : An XML document to read the template from.
 	@return true if the reading succeeds, false otherwise.
 */
 bool TitleBlockTemplate::loadFromXmlElement(const QDomElement &xml_element) {
@@ -120,8 +129,10 @@ bool TitleBlockTemplate::loadFromXmlElement(const QDomElement &xml_element) {
 }
 
 /**
+	@brief TitleBlockTemplate::saveToXmlFile
 	Save the title block template into an XML file.
-	@param filepath The file path this title block template should be saved to.
+	@param filepath :
+	The file path this title block template should be saved to.
 	@return true if the operation succeeds, false otherwise
 */
 bool TitleBlockTemplate::saveToXmlFile(const QString &filepath) {
@@ -138,8 +149,10 @@ bool TitleBlockTemplate::saveToXmlFile(const QString &filepath) {
 }
 
 /**
+	@brief TitleBlockTemplate::saveToXmlElement
 	Save the title block template as XML.
-	@param xml_element The XML element this title block template should be saved to.
+	@param xml_element :
+	The XML element this title block template should be saved to.
 	@return true if the export succeeds, false otherwise
 */
 bool TitleBlockTemplate::saveToXmlElement(QDomElement &xml_element) const {
@@ -155,23 +168,28 @@ bool TitleBlockTemplate::saveToXmlElement(QDomElement &xml_element) const {
 }
 
 /**
-	@param xml_element Parent XML element to be used when exporting \a cell
-	@param cell Cell to export
+	@brief TitleBlockTemplate::exportCellToXml
+	@param cell : Cell to export
+	@param xml_element :
+	Parent XML element to be used when exporting \a cell
 */
 void TitleBlockTemplate::exportCellToXml(TitleBlockCell *cell, QDomElement &xml_element) const {
 	saveCell(cell, xml_element, true);
 }
 
 /**
-	@return a deep copy of the current title block template (i.e. title block
-	cells are duplicated too and associated with their parent template).
+	@brief TitleBlockTemplate::clone
+	@return a deep copy of the current title block template
+	(i.e. title block cells are duplicated too
+	and associated with their parent template).
 */
 TitleBlockTemplate *TitleBlockTemplate::clone() const {
 	TitleBlockTemplate *copy = new TitleBlockTemplate();
 	copy -> name_ = name_;
 	copy -> information_ = information_;
 	
-	// this does not really duplicates pixmaps, only the objects that hold a key to the implicitly shared pixmaps
+	// this does not really duplicates pixmaps,
+	// only the objects that hold a key to the implicitly shared pixmaps
 	foreach (QString logo_key, bitmap_logos_.keys()) {
 		copy -> bitmap_logos_[logo_key] = QPixmap(bitmap_logos_[logo_key]);
 #ifdef TITLEBLOCK_TEMPLATE_DEBUG
@@ -179,7 +197,8 @@ TitleBlockTemplate *TitleBlockTemplate::clone() const {
 #endif
 	}
 	
-	// we have to create new QSvgRenderer objects from the data (no copy constructor)
+	// we have to create new QSvgRenderer objects from the data
+	// (no copy constructor)
 	foreach (QString logo_key, vector_logos_.keys()) {
 		copy -> vector_logos_[logo_key] = new QSvgRenderer(data_logos_[logo_key]);
 	}
@@ -198,7 +217,8 @@ TitleBlockTemplate *TitleBlockTemplate::clone() const {
 		}
 	}
 	
-	// ensure the copy has no spanner_cell attribute pointing to a cell from the original object
+	// ensure the copy has no spanner_cell attribute pointing to a cell
+	// from the original object
 	for (int j = 0 ; j < rows_heights_.count() ; ++ j) {
 		for (int i = 0 ; i < columns_width_.count() ; ++ i) {
 			TitleBlockCell *current_cell = copy -> cells_[i][j];
@@ -215,7 +235,9 @@ TitleBlockTemplate *TitleBlockTemplate::clone() const {
 }
 
 /**
+	@brief TitleBlockTemplate::loadInformation
 	Import text informations from a given XML title block template.
+	@param xml_element
 */
 void TitleBlockTemplate::loadInformation(const QDomElement &xml_element) {
 	for (QDomNode n = xml_element.firstChild() ; !n.isNull() ; n = n.nextSibling()) {
@@ -226,10 +248,11 @@ void TitleBlockTemplate::loadInformation(const QDomElement &xml_element) {
 }
 
 /**
+	@brief TitleBlockTemplate::loadLogos
 	Import the logos from a given XML titleblock template.
-	@param xml_element An XML element representing an titleblock template.
-	@param reset true to delete all previously known logos before, false
-	otherwise.
+	@param xml_element : An XML element representing an titleblock template.
+	@param reset : true to delete all previously known logos before,
+	false otherwise.
 	@return true if the reading succeeds, false otherwise.
 */
 bool TitleBlockTemplate::loadLogos(const QDomElement &xml_element, bool reset) {
@@ -237,7 +260,8 @@ bool TitleBlockTemplate::loadLogos(const QDomElement &xml_element, bool reset) {
 		qDeleteAll(vector_logos_.begin(), vector_logos_.end());
 		vector_logos_.clear();
 		
-		// Note: QPixmap are only a key to access the implicitly shared pixmap
+		// Note:
+		// QPixmap are only a key to access the implicitly shared pixmap
 		bitmap_logos_.clear();
 		
 		data_logos_.clear();
@@ -259,9 +283,10 @@ bool TitleBlockTemplate::loadLogos(const QDomElement &xml_element, bool reset) {
 }
 
 /**
+	@brief TitleBlockTemplate::loadLogo
 	Import the logo from a given XML logo description.
-	@param xml_element An XML element representing a logo within an titleblock
-	template.
+	@param xml_element :
+	An XML element representing a logo within an titleblock template.
 	@return true if the reading succeeds, false otherwise.
 */
 bool TitleBlockTemplate::loadLogo(const QDomElement &xml_element) {
@@ -326,8 +351,10 @@ bool TitleBlockTemplate::loadGrid(const QDomElement &xml_element) {
 }
 
 /**
+	@brief TitleBlockTemplate::parseRows
 	Parse the rows heights
-	@param rows_string A string describing the rows heights of the titleblock
+	@param rows_string :
+	A string describing the rows heights of the titleblock
 */
 void TitleBlockTemplate::parseRows(const QString &rows_string) {
 	rows_heights_.clear();
@@ -353,8 +380,10 @@ void TitleBlockTemplate::parseRows(const QString &rows_string) {
 }
 
 /**
+	@brief TitleBlockTemplate::parseColumns
 	Parse the columns widths
-	@param cols_string A string describing the columns widths of the titleblock
+	@param cols_string :
+	A string describing the columns widths of the titleblock
 */
 void TitleBlockTemplate::parseColumns(const QString &cols_string) {
 	columns_width_.clear();
@@ -387,6 +416,7 @@ void TitleBlockTemplate::parseColumns(const QString &cols_string) {
 }
 
 /**
+	@brief TitleBlockTemplate::loadCells
 	Analyze an XML element, looking for grid cells. The grid cells are checked
 	and stored in this object.
 	@param xml_element XML element to analyze
@@ -406,8 +436,10 @@ bool TitleBlockTemplate::loadCells(const QDomElement &xml_element) {
 }
 
 /**
+	@brief TitleBlockTemplate::loadCell
 	Load a cell into this template.
-	@param cell_element XML element describing a cell within a title block template
+	@param cell_element :
+	XML element describing a cell within a title block template
 */
 void TitleBlockTemplate::loadCell(const QDomElement &cell_element) {
 	TitleBlockCell *loaded_cell;
@@ -416,8 +448,10 @@ void TitleBlockTemplate::loadCell(const QDomElement &cell_element) {
 }
 
 /**
+	@brief TitleBlockTemplate::saveInformation
 	Export this template's extra information.
-	@param xml_element XML element under which extra informations will be attached
+	@param xml_element :
+	XML element under which extra informations will be attached
 */
 void TitleBlockTemplate::saveInformation(QDomElement &xml_element) const {
 	QDomNode information_text_node = xml_element.ownerDocument().createTextNode(information());
@@ -428,8 +462,10 @@ void TitleBlockTemplate::saveInformation(QDomElement &xml_element) const {
 }
 
 /**
+	@brief TitleBlockTemplate::saveLogos
 	Export this template's logos as XML
-	@param xml_element XML Element under which the \<logos\> element will be attached
+	@param xml_element :
+	XML Element under which the \<logos\> element will be attached
 */
 void TitleBlockTemplate::saveLogos(QDomElement &xml_element) const {
 	QDomElement logos_element = xml_element.ownerDocument().createElement("logos");
@@ -442,9 +478,10 @@ void TitleBlockTemplate::saveLogos(QDomElement &xml_element) const {
 }
 
 /**
+	@brief TitleBlockTemplate::saveLogo
 	Export a specific logo as XML
-	@param logo_name Name of the logo to be exported
-	@param xml_element XML element in which the logo will be exported
+	@param logo_name : Name of the logo to be exported
+	@param xml_element : XML element in which the logo will be exported
 */
 void TitleBlockTemplate::saveLogo(const QString &logo_name, QDomElement &xml_element) const {
 	if (!type_logos_.contains(logo_name)) return;
@@ -465,8 +502,10 @@ void TitleBlockTemplate::saveLogo(const QString &logo_name, QDomElement &xml_ele
 }
 
 /**
+	@brief TitleBlockTemplate::saveGrid
 	Export this template's cells grid as XML
-	@param xml_element XML element under which the \<grid\> element will be attached
+	@param xml_element :
+	XML element under which the \<grid\> element will be attached
 */
 void TitleBlockTemplate::saveGrid(QDomElement &xml_element) const {
 	QDomElement grid_element = xml_element.ownerDocument().createElement("grid");
@@ -483,8 +522,11 @@ void TitleBlockTemplate::saveGrid(QDomElement &xml_element) const {
 }
 
 /**
-	Export this template's cells as XML (without the grid-related information, usch as rows and cols)
-	@param xml_element XML element under which the \<cell\> elements will be attached
+	@brief TitleBlockTemplate::saveCells
+	Export this template's cells as XML
+	(without the grid-related information, usch as rows and cols)
+	@param xml_element :
+	XML element under which the \<cell\> elements will be attached
 */
 void TitleBlockTemplate::saveCells(QDomElement &xml_element) const {
 	for (int j = 0 ; j < rows_heights_.count() ; ++ j) {
@@ -497,6 +539,7 @@ void TitleBlockTemplate::saveCells(QDomElement &xml_element) const {
 }
 
 /**
+	@brief TitleBlockTemplate::saveCell
 	Export a specific cell as XML
 	@param cell Cell to be exported as XML
 	@param xml_element XML element under which the \<cell\> element will be attached
@@ -522,10 +565,14 @@ void TitleBlockTemplate::saveCell(TitleBlockCell *cell, QDomElement &xml_element
 }
 
 /**
-	Load the essential attributes of a cell: row and column indices and spans.
-	@param xml_element XML element representing a cell, i.e. either an titleblock
+	@brief TitleBlockTemplate::checkCell
+	Load the essential attributes of a cell:
+	row and column indices and spans.
+	@param xml_element :
+	XML element representing a cell, i.e. either an titleblock
 	logo or an titleblock field.
-	@param titleblock_cell_ptr Pointer to a TitleBlockCell object pointer - if non-zero and if
+	@param titleblock_cell_ptr :
+	Pointer to a TitleBlockCell object pointer - if non-zero and if
 	this method returns true, will be filled with the created TitleBlockCell
 	@return TRUE if the cell appears to be ok, FALSE otherwise
 */
@@ -568,13 +615,15 @@ bool TitleBlockTemplate::checkCell(const QDomElement &xml_element, TitleBlockCel
 	if (QET::attributeIsAnInteger(xml_element, "colspan", &col_span) && col_span > 0) {
 		cell_ptr -> col_span = col_span;
 	}
-	// these attributes are stored "as is" -- whether they can be applied directly or must be restricted will be checked later
+	// these attributes are stored "as is" -- whether they can be applied
+	// directly or must be restricted will be checked later
 	
 	if (titleblock_cell_ptr) *titleblock_cell_ptr = cell_ptr;
 	return(true);
 }
 
 /**
+	@brief TitleBlockTemplate::initCells
 	Initialize the internal cells grid with the row and column counts.
 	Note that this method does nothing if one of the internal lists
 	columns_width_ and rows_heights_ is empty.
@@ -594,6 +643,7 @@ void TitleBlockTemplate::initCells() {
 }
 
 /**
+	@brief TitleBlockTemplate::name
 	@return the name of this template
 */
 QString TitleBlockTemplate::name() const {
@@ -601,6 +651,7 @@ QString TitleBlockTemplate::name() const {
 }
 
 /**
+	@brief TitleBlockTemplate::information
 	@return the information field attached to this template
 */
 QString TitleBlockTemplate::information() const {
@@ -608,6 +659,7 @@ QString TitleBlockTemplate::information() const {
 }
 
 /**
+	@brief TitleBlockTemplate::setInformation
 	@param info information to be attached to this template
 */
 void TitleBlockTemplate::setInformation(const QString &info) {
@@ -615,7 +667,8 @@ void TitleBlockTemplate::setInformation(const QString &info) {
 }
 
 /**
-	@param i row index
+	@brief TitleBlockTemplate::rowDimension
+	@param i : row index
 	@return the height of the row at index i
 */
 int TitleBlockTemplate::rowDimension(int i) {
@@ -627,9 +680,10 @@ int TitleBlockTemplate::rowDimension(int i) {
 }
 
 /**
+	@brief TitleBlockTemplate::setRowDimension
 	Set the height of a row
-	@param i row index
-	@param dimension New height of the row at index i
+	@param i : row index
+	@param dimension : New height of the row at index i
 */
 void TitleBlockTemplate::setRowDimension(int i, const TitleBlockDimension &dimension) {
 	int index = (i == -1) ? rows_heights_.count() - 1 : i;
@@ -639,7 +693,8 @@ void TitleBlockTemplate::setRowDimension(int i, const TitleBlockDimension &dimen
 }
 
 /**
-	@param i column index
+	@brief TitleBlockTemplate::columnDimension
+	@param i : column index
 	@return the width of the column at index i
 */
 TitleBlockDimension TitleBlockTemplate::columnDimension(int i) {
@@ -651,9 +706,10 @@ TitleBlockDimension TitleBlockTemplate::columnDimension(int i) {
 }
 
 /**
+	@brief TitleBlockTemplate::setColumnDimension
 	Set the width of a column
-	@param i column index
-	@param dimension New width of the column at index i
+	@param i : column index
+	@param dimension : New width of the column at index i
 */
 void TitleBlockTemplate::setColumnDimension(int i, const TitleBlockDimension &dimension) {
 	int index = (i == -1) ? columns_width_.count() - 1 : i;
@@ -663,6 +719,7 @@ void TitleBlockTemplate::setColumnDimension(int i, const TitleBlockDimension &di
 }
 
 /**
+	@brief TitleBlockTemplate::columnsCount
 	@return the number of columns in this template
 */
 int TitleBlockTemplate::columnsCount() const {
@@ -670,6 +727,7 @@ int TitleBlockTemplate::columnsCount() const {
 }
 
 /**
+	@brief TitleBlockTemplate::rowsCount
 	@return the number of rows in this template
 */
 int TitleBlockTemplate::rowsCount() const {
@@ -677,7 +735,8 @@ int TitleBlockTemplate::rowsCount() const {
 }
 
 /**
-	@param total_width The total width of the titleblock to render
+	@brief TitleBlockTemplate::columnsWidth
+	@param total_width : The total width of the titleblock to render
 	@return the list of the columns widths for this rendering
 */
 QList<int> TitleBlockTemplate::columnsWidth(int total_width) const {
@@ -716,13 +775,16 @@ QList<int> TitleBlockTemplate::columnsWidth(int total_width) const {
 	
 	// Have we computed widths from percentage for relative columns?
 	if (relative_columns.count()) {
-		// Due to the rounding process, we may get a slight difference between the
+		// Due to the rounding process,
+		// we may get a slight difference between the
 		// sum of the columns widths and the total width.
 		int difference = total_width - abs_widths_sum - rel_widths_sum;
 	
 		if (difference) {
-			// We consider we should not attempt to compensate this difference if it is
-			// under relative_columns_count * 0.5 (which means that each percent-based
+			// We consider we should not attempt to compensate
+			// this difference if it is under
+			// relative_columns_count * 0.5
+			// (which means that each percent-based
 			// columns can "bring" up to 0.5px of difference).
 			qreal max_acceptable_difference = relative_columns.count() * 0.5;
 			
@@ -742,6 +804,7 @@ QList<int> TitleBlockTemplate::columnsWidth(int total_width) const {
 }
 
 /**
+	@brief TitleBlockTemplate::rowsHeights
 	@return the heights of all the rows in this template
 */
 QList<int> TitleBlockTemplate::rowsHeights() const {
@@ -749,7 +812,8 @@ QList<int> TitleBlockTemplate::rowsHeights() const {
 }
 
 /**
-	@param a column type
+	@brief TitleBlockTemplate::columnTypeCount
+	@param type : a column type
 	@return the count of \a type columns 
 */
 int TitleBlockTemplate::columnTypeCount(QET::TitleBlockColumnLength type) {
@@ -763,7 +827,8 @@ int TitleBlockTemplate::columnTypeCount(QET::TitleBlockColumnLength type) {
 }
 
 /**
-	@param a column type
+	@brief TitleBlockTemplate::columnTypeTotal
+	@param type : a column type
 	@return the sum of values attached to \a type columns 
 */
 int TitleBlockTemplate::columnTypeTotal(QET::TitleBlockColumnLength type) {
@@ -782,8 +847,9 @@ int TitleBlockTemplate::columnTypeTotal(QET::TitleBlockColumnLength type) {
 	@return the minimum width for this template
 */
 int TitleBlockTemplate::minimumWidth() {
-	// Abbreviations: ABS: absolute, RTT: relative to total, RTR: relative to
-	// remaining, TOT: total diagram/TBT width (variable).
+	// Abbreviations: ABS: absolute, RTT: relative to total, RTR:
+	// relative to remaining,
+	// TOT: total diagram/TBT width (variable).
 	
 	// Minimum size may be enforced by ABS and RTT widths:
 	// TOT >= ((sum(REL)/100)*TOT)+sum(ABS)
@@ -800,7 +866,9 @@ int TitleBlockTemplate::minimumWidth() {
 }
 
 /**
-	@return the maximum width for this template, or -1 if it does not have any.
+	@brief TitleBlockTemplate::maximumWidth
+	@return the maximum width for this template,
+	or -1 if it does not have any.
 */
 int TitleBlockTemplate::maximumWidth() {
 	if (columnTypeCount(QET::Absolute) == columns_width_.count()) {
@@ -812,8 +880,9 @@ int TitleBlockTemplate::maximumWidth() {
 }
 
 /**
+	@brief TitleBlockTemplate::width
+	@param total_width : The total width initially planned for the rendering
 	@return the total effective width of this template
-	@param total_width The total width initially planned for the rendering
 */
 int TitleBlockTemplate::width(int total_width) {
 	int width = 0;
@@ -824,6 +893,7 @@ int TitleBlockTemplate::width(int total_width) {
 }
 
 /**
+	@brief TitleBlockTemplate::height
 	@return the total height of this template
 */
 int TitleBlockTemplate::height() const {
@@ -835,9 +905,11 @@ int TitleBlockTemplate::height() const {
 }
 
 /**
+	@brief TitleBlockTemplate::moveRow
 	Move a row within this template.
-	@param from Index of the moved row
-	@param to Arrival index of the moved row
+	@param from : Index of the moved row
+	@param to : Arrival index of the moved row
+	@return true on row Changed or false
 */
 bool TitleBlockTemplate::moveRow(int from, int to) {
 	// checks from and to
@@ -852,17 +924,23 @@ bool TitleBlockTemplate::moveRow(int from, int to) {
 }
 
 /**
+	@brief TitleBlockTemplate::addRow
 	Add a new 25px-wide row at the provided index.
-	@param i Index of the added row, -1 meaning "last position"
+	@param i : Index of the added row, -1 meaning "last position"
 */
 void TitleBlockTemplate::addRow(int i) {
 	insertRow(25, createRow(), i);
 }
 
 /**
-	@param dimension Size of the row to be added (always absolute, in pixels)
-	@param column Row to be added
-	@param i Index of the column after insertion, -1 meaning "last position"
+	@brief TitleBlockTemplate::insertRow
+	@param dimension :
+	dimension Size of the row to be added (always absolute, in pixels)
+	@param row :
+	column Row to be added
+	@param i :
+	Index of the column after insertion, -1 meaning "last position"
+	@return true
 */
 bool TitleBlockTemplate::insertRow(int dimension, const QList<TitleBlockCell *> &row, int i) {
 	int index = (i == -1) ? rows_heights_.count() : i;
@@ -876,8 +954,9 @@ bool TitleBlockTemplate::insertRow(int dimension, const QList<TitleBlockCell *> 
 }
 
 /**
+	@brief TitleBlockTemplate::takeRow
 	Removes the row at index i
-	@param i Index of the column to be removed
+	@param i : Index of the column to be removed
 	@return the removed column
 */
 QList<TitleBlockCell *> TitleBlockTemplate::takeRow(int i) {
@@ -893,17 +972,19 @@ QList<TitleBlockCell *> TitleBlockTemplate::takeRow(int i) {
 }
 
 /**
+	@brief TitleBlockTemplate::createRow
 	@return a new row that fits the current grid
 */
 QList<TitleBlockCell *> TitleBlockTemplate::createRow() {
 	return(createCellsList(columns_width_.count()));
-	
 }
 
 /**
+	@brief TitleBlockTemplate::moveColumn
 	Move the column at index "from" to index "to".
-	@param from Source index of the moved column
-	@param to   Target index of the moved column
+	@param from : Source index of the moved column
+	@param to :   Target index of the moved column
+	@return true or false
 */
 bool TitleBlockTemplate::moveColumn(int from, int to) {
 	// checks from and to
@@ -916,17 +997,21 @@ bool TitleBlockTemplate::moveColumn(int from, int to) {
 }
 
 /**
+	@brief TitleBlockTemplate::addColumn
 	Add a new 50px-wide column at the provided index.
-	@param i Index of the added column, -1 meaning "last position"
+	@param i : Index of the added column, -1 meaning "last position"
 */
 void TitleBlockTemplate::addColumn(int i) {
 	insertColumn(TitleBlockDimension(50, QET::Absolute), createColumn(), i);
 }
 
 /**
-	@param dimension Size of the column to be added
-	@param column Column to be added
-	@param i Index of the column after insertion, -1 meaning "last position"
+	@brief TitleBlockTemplate::insertColumn
+	@param dimension : Size of the column to be added
+	@param column : Column to be added
+	@param i :
+	Index of the column after insertion, -1 meaning "last position"
+	@return true
 */
 bool TitleBlockTemplate::insertColumn(const TitleBlockDimension &dimension, const QList<TitleBlockCell *> &column, int i) {
 	int index = (i == -1) ? columns_width_.count() : i;
@@ -937,8 +1022,9 @@ bool TitleBlockTemplate::insertColumn(const TitleBlockDimension &dimension, cons
 }
 
 /**
+	@brief TitleBlockTemplate::takeColumn
 	Removes the column at index i
-	@param i Index of the column to be removed
+	@param i : Index of the column to be removed
 	@return the removed column
 */
 QList<TitleBlockCell *> TitleBlockTemplate::takeColumn(int i) {
@@ -953,6 +1039,7 @@ QList<TitleBlockCell *> TitleBlockTemplate::takeColumn(int i) {
 }
 
 /**
+	@brief TitleBlockTemplate::createColumn
 	@return a new column that fits the current grid
 */
 QList<TitleBlockCell *> TitleBlockTemplate::createColumn() {
@@ -960,8 +1047,9 @@ QList<TitleBlockCell *> TitleBlockTemplate::createColumn() {
 }
 
 /**
-	@param row A row number (starting from 0)
-	@param col A column number (starting from 0)
+	@brief TitleBlockTemplate::cell
+	@param row : A row number (starting from 0)
+	@param col : A column number (starting from 0)
 	@return the cell located at (row, col)
 */
 TitleBlockCell *TitleBlockTemplate::cell(int row, int col) const {
@@ -972,8 +1060,11 @@ TitleBlockCell *TitleBlockTemplate::cell(int row, int col) const {
 }
 
 /**
-	@param cell A cell belonging to this title block template
-	@param ignore_span_state (Optional, defaults to false) If true, will consider
+	@brief TitleBlockTemplate::spannedCells
+	@param given_cell :
+	cell A cell belonging to this title block template
+	@param ignore_span_state :
+	(Optional, defaults to false) If true, will consider
 	cells theoretically spanned (i.e. row_span and col_span attributes).
 	Otherwise, will take span_state attribute into account.
 	@return the set of cells spanned by the provided cell
@@ -999,7 +1090,9 @@ QSet<TitleBlockCell *> TitleBlockTemplate::spannedCells(const TitleBlockCell *gi
 }
 
 /**
+	@brief TitleBlockTemplate::getAllSpans
 	Export the span parameters of all cell in the current grid.
+	@return
 */
 QHash<TitleBlockCell *, QPair<int, int> > TitleBlockTemplate::getAllSpans() const {
 	QHash<TitleBlockCell *, QPair<int, int> > spans;
@@ -1018,7 +1111,9 @@ QHash<TitleBlockCell *, QPair<int, int> > TitleBlockTemplate::getAllSpans() cons
 }
 
 /**
+	@brief TitleBlockTemplate::setAllSpans
 	Restore a set of span parameters.
+	@param spans :
 */
 void TitleBlockTemplate::setAllSpans(const QHash<TitleBlockCell *, QPair<int, int> > &spans) {
 	foreach (TitleBlockCell *cell, spans.keys()) {
@@ -1028,8 +1123,14 @@ void TitleBlockTemplate::setAllSpans(const QHash<TitleBlockCell *, QPair<int, in
 }
 
 /**
-	@param logo_name Logo name to be added / replaced
-	@param logo_data Logo data
+	@brief TitleBlockTemplate::addLogo
+	@param logo_name :
+	Logo name to be added / replaced
+	@param logo_data :
+	Logo data
+	@param logo_type :
+	@param logo_storage :
+	@return true or false
 */
 bool TitleBlockTemplate::addLogo(const QString &logo_name, QByteArray *logo_data, const QString &logo_type, const QString &logo_storage) {
 	if (data_logos_.contains(logo_name)) {
@@ -1074,8 +1175,11 @@ bool TitleBlockTemplate::addLogo(const QString &logo_name, QByteArray *logo_data
 }
 
 /**
-	@param filepath Path of the image file to add as a logo
-	@param name Name used to store the logo; if none is provided, the
+	@brief TitleBlockTemplate::addLogoFromFile
+	@param filepath :
+	Path of the image file to add as a logo
+	@param name :
+	Name used to store the logo; if none is provided, the
 	basename of the first argument is used.
 	@return true if the logo could be deleted, false otherwise
 */
@@ -1096,9 +1200,12 @@ bool TitleBlockTemplate::addLogoFromFile(const QString &filepath, const QString 
 	return addLogo(filename, &file_content, filepath_info.suffix(), "base64");
 }
 
-/*
-	@param logo_name Name used to store the logo
-	@param filepath Path the logo will be saved as
+/**
+	@brief TitleBlockTemplate::saveLogoToFile
+	@param logo_name :
+	Name used to store the logo
+	@param filepath :
+	Path the logo will be saved as
 	@return true if the logo could be exported, false otherwise
 */
 bool TitleBlockTemplate::saveLogoToFile(const QString &logo_name, const QString &filepath) {
@@ -1117,7 +1224,8 @@ bool TitleBlockTemplate::saveLogoToFile(const QString &logo_name, const QString 
 }
 
 /**
-	@param logo_name Name of the logo to remove
+	@brief TitleBlockTemplate::removeLogo
+	@param logo_name : Name of the logo to remove
 	@return true if the logo could be deleted, false otherwise
 */
 bool TitleBlockTemplate::removeLogo(const QString &logo_name) {
@@ -1138,6 +1246,7 @@ bool TitleBlockTemplate::removeLogo(const QString &logo_name) {
 }
 
 /**
+	@brief TitleBlockTemplate::renameLogo
 	Rename the \a logo_name logo to \a new_name
 	@param logo_name Name of the logo to be renamed
 	@param new_name New name of the renamed logo
@@ -1160,9 +1269,12 @@ bool TitleBlockTemplate::renameLogo(const QString &logo_name, const QString &new
 }
 
 /**
+	@brief TitleBlockTemplate::setLogoStorage
 	Set the kind of storage for the \a logo_name logo.
-	@param logo_name Name of the logo which kind of storage is to be changed
-	@param storage The kind of storage to use for the logo, e.g. "xml" or "base64".
+	@param logo_name :
+	Name of the logo which kind of storage is to be changed
+	@param storage :
+	The kind of storage to use for the logo, e.g. "xml" or "base64".
 */
 void TitleBlockTemplate::setLogoStorage(const QString &logo_name, const QString &storage) {
 	if (storage_logos_.contains(logo_name)) {
@@ -1171,6 +1283,7 @@ void TitleBlockTemplate::setLogoStorage(const QString &logo_name, const QString 
 }
 
 /**
+	@brief TitleBlockTemplate::logos
 	@return The names of logos embedded within this title block template.
 */
 QList<QString> TitleBlockTemplate::logos() const {
@@ -1178,9 +1291,11 @@ QList<QString> TitleBlockTemplate::logos() const {
 }
 
 /**
-	@param logo_name Name of a logo embedded within this title block template.
-	@return the kind of storage used for the required logo, or a null QString
-	if no such logo was found in this template.
+	@brief TitleBlockTemplate::logoType
+	@param logo_name :
+	Name of a logo embedded within this title block template.
+	@return the kind of storage used for the required logo,
+	or a null QString if no such logo was found in this template.
 */
 QString TitleBlockTemplate::logoType(const QString &logo_name) const {
 	if (type_logos_.contains(logo_name)) {
@@ -1190,9 +1305,11 @@ QString TitleBlockTemplate::logoType(const QString &logo_name) const {
 }
 
 /**
-	@param logo_name Name of a vector logo embedded within this title block template.
-	@return the rendering object for the required vector logo, or 0 if no such
-	vector logo was found in this template.
+	@brief TitleBlockTemplate::vectorLogo
+	@param logo_name :
+	Name of a vector logo embedded within this title block template.
+	@return the rendering object for the required vector logo,
+	or 0 if no such vector logo was found in this template.
 */
 QSvgRenderer *TitleBlockTemplate::vectorLogo(const QString &logo_name) const {
 	if (vector_logos_.contains(logo_name)) {
@@ -1202,7 +1319,9 @@ QSvgRenderer *TitleBlockTemplate::vectorLogo(const QString &logo_name) const {
 }
 
 /**
-	@param logo_name Name of a logo embedded within this title block template.  
+	@brief TitleBlockTemplate::bitmapLogo
+	@param logo_name :
+	Name of a logo embedded within this title block template.
 	@return the pixmap for the required bitmap logo, or a null pixmap if no
 	such bitmap logo was found in this template.
 */
@@ -1214,6 +1333,7 @@ QPixmap TitleBlockTemplate::bitmapLogo(const QString &logo_name) const {
 }
 
 /**
+	@brief TitleBlockTemplate::render
 	Render the titleblock.
 	@param painter Painter to use to render the titleblock
 	@param diagram_context Diagram context to use to generate the titleblock strings
@@ -1257,6 +1377,7 @@ void TitleBlockTemplate::render(QPainter &painter, const DiagramContext &diagram
 }
 
 /**
+	@brief TitleBlockTemplate::renderDxf
 	Render the titleblock in DXF.
 	@param diagram_context Diagram context to use to generate the titleblock strings
 	@param titleblock_width Width of the titleblock to render
@@ -1306,6 +1427,7 @@ void TitleBlockTemplate::renderDxf(QRectF &title_block_rect, const DiagramContex
 
 
 /**
+	@brief TitleBlockTemplate::renderCell
 	Render a titleblock cell.
 	@param painter Painter to use to render the titleblock
 	@param diagram_context Diagram context to use to generate the titleblock strings
@@ -1322,9 +1444,12 @@ void TitleBlockTemplate::renderCell(QPainter &painter, const TitleBlockCell &cel
 	// render the inner content of the current cell
 	if (cell.type() == TitleBlockCell::LogoCell) {
 		if (!cell.logo_reference.isEmpty()) {
-			// the current cell appears to be a logo - we first look for the
-			// logo reference in our vector logos list, since they offer a
-			// potentially better (or, at least, not resolution-limited) rendering
+			/* the current cell appears to be a logo
+			 *  - we first look for the logo reference
+			 *    in our vector logos list,
+			 *    since they offer a potentially better
+			 *    (or, at least, not resolution-limited) rendering
+			 */
 			if (vector_logos_.contains(cell.logo_reference)) {
 				vector_logos_[cell.logo_reference] -> render(&painter, cell_rect);
 			} else if (bitmap_logos_.contains(cell.logo_reference)) {
@@ -1346,8 +1471,11 @@ void TitleBlockTemplate::renderCell(QPainter &painter, const TitleBlockCell &cel
 
 
 /**
-	@param cell A cell from this template
-	@param diagram_context Diagram context to use to generate the final text for the given cell
+	@brief TitleBlockTemplate::finalTextForCell
+	@param cell :
+	A cell from this template
+	@param diagram_context :
+	Diagram context to use to generate the final text for the given cell
 	@return the final text that has to be drawn in the given cell
 */
 QString TitleBlockTemplate::finalTextForCell(const TitleBlockCell &cell, const DiagramContext &diagram_context) const {
@@ -1366,9 +1494,13 @@ QString TitleBlockTemplate::finalTextForCell(const TitleBlockCell &cell, const D
 }
 
 /**
-	@param string A text containing 0 to n variables, e.g. "%var" or "%{var}"
-	@param diagram_context Diagram context to use to interprete variables
-	@return the provided string with variables replaced by the values from the diagram context
+	@brief TitleBlockTemplate::interpreteVariables
+	@param string :
+	A text containing 0 to n variables, e.g. "%var" or "%{var}"
+	@param diagram_context :
+	Diagram context to use to interprete variables
+	@return the provided string with variables replaced by the values
+	from the diagram context
 */
 QString TitleBlockTemplate::interpreteVariables(const QString &string, const DiagramContext &diagram_context) const {
 	QString interpreted_string = string;
@@ -1380,7 +1512,8 @@ QString TitleBlockTemplate::interpreteVariables(const QString &string, const Dia
 }
 
 /**
-	@brief Get list of variables
+	@brief TitleBlockTemplate::listOfVariables
+	Get list of variables
 	@return The list of string with variables
 */
 QStringList TitleBlockTemplate::listOfVariables() {
@@ -1398,6 +1531,7 @@ QStringList TitleBlockTemplate::listOfVariables() {
 }
 
 /**
+	@brief TitleBlockTemplate::renderTextCell
 	This method uses a \a painter to render the \a text of a \a cell
 	into the \a cell_rect rectangle.
 	The alignment, font_size and other cell parameters are taken into account
@@ -1499,6 +1633,7 @@ void TitleBlockTemplate::renderTextCellDxf(QString &file_path, const QString &te
 
 
 /**
+	@brief TitleBlockTemplate::forgetSpanning
 	Set the spanner_cell attribute of every cell to 0.
 */
 void TitleBlockTemplate::forgetSpanning() {
@@ -1510,8 +1645,13 @@ void TitleBlockTemplate::forgetSpanning() {
 }
 
 /**
-	Set the spanner_cell attribute of every cell spanned by \a spanning_cell to 0.
-	@param modify_cell (Optional, defaults to true) Whether to set row_span and col_span of \a spanning_cell to 0.
+	@brief TitleBlockTemplate::forgetSpanning
+	Set the spanner_cell attribute of every cell
+	spanned by \a spanning_cell to 0.
+	@param spanning_cell :
+	@param modify_cell :
+	(Optional, defaults to true)
+	Whether to set row_span and col_span of \a spanning_cell to 0.
 */
 void TitleBlockTemplate::forgetSpanning(TitleBlockCell *spanning_cell, bool modify_cell) {
 	if (!spanning_cell) return;
@@ -1528,8 +1668,9 @@ void TitleBlockTemplate::forgetSpanning(TitleBlockCell *spanning_cell, bool modi
 }
 
 /**
-	Forget any previously applied span, then apply again all spans defined
-	by existing cells.
+	@brief TitleBlockTemplate::applyCellSpans
+	Forget any previously applied span,
+	then apply again all spans defined by existing cells.
 */
 void TitleBlockTemplate::applyCellSpans() {
 	forgetSpanning();
@@ -1542,13 +1683,15 @@ void TitleBlockTemplate::applyCellSpans() {
 }
 
 /**
+	@brief TitleBlockTemplate::checkCellSpan
 	Check whether a given cell can be spanned according to its row_span and
 	col_span attributes. the following attributes of \a cell are updated
 	according to what is really possible:
 	  * applied_col_span
 	  * applied_row_span
 	  * span_state
-	@param cell Cell we want to check
+	@param cell :
+	Cell we want to check
 	@return false if no check could be performed, true otherwise
 */
 bool TitleBlockTemplate::checkCellSpan(TitleBlockCell *cell) {
@@ -1587,9 +1730,13 @@ bool TitleBlockTemplate::checkCellSpan(TitleBlockCell *cell) {
 }
 
 /**
-	Ensure the spans of the provided cell are applied within the grid structure.
-	Note: this function does not check whether the spans of the provided cell make sense.
-	@param cell Potentially spanning cell
+	@brief TitleBlockTemplate::applyCellSpan
+	Ensure the spans of the provided cell are applied
+	within the grid structure.
+	@note: this function does not check
+	whether the spans of the provided cell make sense.
+	@param cell :
+	Potentially spanning cell
 */
 void TitleBlockTemplate::applyCellSpan(TitleBlockCell *cell) {
 	if (!cell || (!cell -> row_span && !cell -> col_span)) return;
@@ -1610,6 +1757,7 @@ void TitleBlockTemplate::applyCellSpan(TitleBlockCell *cell) {
 }
 
 /**
+	@brief TitleBlockTemplate::applyRowColNums
 	Ensure all cells have the right col+row numbers.
 */
 void TitleBlockTemplate::applyRowColNums() {
@@ -1622,6 +1770,7 @@ void TitleBlockTemplate::applyRowColNums() {
 }
 
 /**
+	@brief TitleBlockTemplate::rowColsChanged
 	Take care of consistency and span-related problematics when
 	adding/moving/deleting rows and columns.
 */
@@ -1631,9 +1780,13 @@ void TitleBlockTemplate::rowColsChanged() {
 }
 
 /**
+	@brief TitleBlockTemplate::lengthRange
+	@param start :
+	start border number
+	@param end :
+	end border number
+	@param lengths_list :
 	@return the width between two borders
-	@param start start border number
-	@param end end border number
 */
 int TitleBlockTemplate::lengthRange(int start, int end, const QList<int> &lengths_list) const {
 	if (start > end || start >= lengths_list.count() || end > lengths_list.count()) {

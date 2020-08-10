@@ -21,7 +21,9 @@
 #include "diagramcontext.h"
 
 class TitleBlockTemplate;
-
+/**
+	@brief The TitleBlockTemplateRenderer class
+*/
 class TitleBlockTemplateRenderer : public QObject
 {
 	Q_OBJECT
