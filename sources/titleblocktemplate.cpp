@@ -1344,7 +1344,7 @@ bool TitleBlockTemplate::removeLogo(const QString &logo_name) {
 	if (!data_logos_.contains(logo_name)) {
 		return(false);
 	}
-	
+#pragma message("@TODO check existing cells using this logo.")
 	/// TODO check existing cells using this logo.
 	if (vector_logos_.contains(logo_name)) {
 		delete vector_logos_.take(logo_name);
@@ -1707,7 +1707,11 @@ QStringList TitleBlockTemplate::listOfVariables() {
 	// run through each individual cell
 	for (int j = 0 ; j < rows_heights_.count() ; ++ j) {
 		for (int i = 0 ; i < columns_width_.count() ; ++ i) {
-			if (cells_[i][j] -> spanner_cell || cells_[i][j] -> cell_type == TitleBlockCell::EmptyCell) continue;
+			if (cells_[i][j] -> spanner_cell
+					|| cells_[i][j] -> cell_type
+					== TitleBlockCell::EmptyCell)
+				continue;
+#pragma message("@TODO not works on all cases...")
 			// TODO: not works on all cases...
 			list << cells_[i][j] -> value.name().replace("%","");
 		}	
