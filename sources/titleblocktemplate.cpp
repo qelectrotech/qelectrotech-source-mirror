@@ -49,8 +49,11 @@ TitleBlockTemplate::~TitleBlockTemplate() {
 	@param existing_cell (optional) An existing cell that will be copied
 	@return A pointer to the newly created cell
 */
-TitleBlockCell *TitleBlockTemplate::createCell(const TitleBlockCell *existing_cell) {
-	TitleBlockCell *new_cell = existing_cell ? new TitleBlockCell(*existing_cell) : new TitleBlockCell();
+TitleBlockCell *TitleBlockTemplate::createCell(
+		const TitleBlockCell *existing_cell) {
+	TitleBlockCell *new_cell =
+			existing_cell ? new TitleBlockCell(*existing_cell)
+				      : new TitleBlockCell();
 	registered_cells_ << new_cell;
 	return(new_cell);
 }
@@ -173,7 +176,8 @@ bool TitleBlockTemplate::saveToXmlElement(QDomElement &xml_element) const {
 	@param xml_element :
 	Parent XML element to be used when exporting \a cell
 */
-void TitleBlockTemplate::exportCellToXml(TitleBlockCell *cell, QDomElement &xml_element) const {
+void TitleBlockTemplate::exportCellToXml(TitleBlockCell *cell,
+					 QDomElement &xml_element) const {
 	saveCell(cell, xml_element, true);
 }
 
@@ -191,16 +195,22 @@ TitleBlockTemplate *TitleBlockTemplate::clone() const {
 	// this does not really duplicates pixmaps,
 	// only the objects that hold a key to the implicitly shared pixmaps
 	foreach (QString logo_key, bitmap_logos_.keys()) {
-		copy -> bitmap_logos_[logo_key] = QPixmap(bitmap_logos_[logo_key]);
+		copy -> bitmap_logos_[logo_key] =
+				QPixmap(bitmap_logos_[logo_key]);
 #ifdef TITLEBLOCK_TEMPLATE_DEBUG
-		qDebug() << Q_FUNC_INFO << "copying " << bitmap_logos_[logo_key] -> cacheKey() << "to" << copy -> bitmap_logos_[logo_key] -> cacheKey();
+		qDebug() << Q_FUNC_INFO
+			 << "copying "
+			 << bitmap_logos_[logo_key] -> cacheKey()
+			 << "to"
+			 << copy -> bitmap_logos_[logo_key] -> cacheKey();
 #endif
 	}
 	
 	// we have to create new QSvgRenderer objects from the data
 	// (no copy constructor)
 	foreach (QString logo_key, vector_logos_.keys()) {
-		copy -> vector_logos_[logo_key] = new QSvgRenderer(data_logos_[logo_key]);
+		copy -> vector_logos_[logo_key] =
+				new QSvgRenderer(data_logos_[logo_key]);
 	}
 	
 	copy -> data_logos_    = data_logos_;
@@ -222,10 +232,13 @@ TitleBlockTemplate *TitleBlockTemplate::clone() const {
 	for (int j = 0 ; j < rows_heights_.count() ; ++ j) {
 		for (int i = 0 ; i < columns_width_.count() ; ++ i) {
 			TitleBlockCell *current_cell = copy -> cells_[i][j];
-			if (TitleBlockCell *original_cell = current_cell -> spanner_cell) {
+			if (TitleBlockCell *original_cell
+					= current_cell -> spanner_cell) {
 				int original_cell_row = original_cell -> num_row;
 				int original_cell_col = original_cell -> num_col;
-				TitleBlockCell *copy_cell = copy -> cells_[original_cell_col][original_cell_row];
+				TitleBlockCell *copy_cell =
+					copy -> cells_[original_cell_col]
+						[original_cell_row];
 				current_cell -> spanner_cell = copy_cell;
 			}
 		}
@@ -240,7 +253,9 @@ TitleBlockTemplate *TitleBlockTemplate::clone() const {
 	@param xml_element
 */
 void TitleBlockTemplate::loadInformation(const QDomElement &xml_element) {
-	for (QDomNode n = xml_element.firstChild() ; !n.isNull() ; n = n.nextSibling()) {
+	for (QDomNode n = xml_element.firstChild() ;
+	     !n.isNull() ;
+	     n = n.nextSibling()) {
 		if (n.isElement() && n.toElement().tagName() == "information") {
 			setInformation(n.toElement().text());
 		}
@@ -269,10 +284,15 @@ bool TitleBlockTemplate::loadLogos(const QDomElement &xml_element, bool reset) {
 	}
 	
 	// we look for //logos/logo elements
-	for (QDomNode n = xml_element.firstChild() ; !n.isNull() ; n = n.nextSibling()) {
+	for (QDomNode n = xml_element.firstChild() ;
+	     !n.isNull() ;
+	     n = n.nextSibling()) {
 		if (n.isElement() && n.toElement().tagName() == "logos") {
-			for (QDomNode p = n.firstChild() ; !p.isNull() ; p = p.nextSibling()) {
-				if (p.isElement() && p.toElement().tagName() == "logo") {
+			for (QDomNode p = n.firstChild() ;
+			     !p.isNull() ;
+			     p = p.nextSibling()) {
+				if (p.isElement()  && p.toElement().tagName()
+						== "logo") {
 					loadLogo(p.toElement());
 				}
 			}
@@ -330,14 +350,17 @@ bool TitleBlockTemplate::loadLogo(const QDomElement &xml_element) {
 bool TitleBlockTemplate::loadGrid(const QDomElement &xml_element) {
 	// we parse the first available "grid" XML element
 	QDomElement grid_element;
-	for (QDomNode n = xml_element.firstChild() ; !n.isNull() ; n = n.nextSibling()) {
+	for (QDomNode n = xml_element.firstChild() ;
+	     !n.isNull() ;
+	     n = n.nextSibling()) {
 		if (n.isElement() && n.toElement().tagName() == "grid") {
 			grid_element = n.toElement();
 			break;
 		}
 	}
 	
-	if (!grid_element.hasAttribute("rows") || !grid_element.hasAttribute("cols")) {
+	if (!grid_element.hasAttribute("rows")
+			|| !grid_element.hasAttribute("cols")) {
 		return(false);
 	}
 	
@@ -363,15 +386,20 @@ void TitleBlockTemplate::parseRows(const QString &rows_string) {
 	bool conv_ok;
 
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
-	QStringList rows_descriptions = rows_string.split(QChar(';'), QString::SkipEmptyParts);
+	QStringList rows_descriptions =
+			rows_string.split(QChar(';'), QString::SkipEmptyParts);
 #else
 #pragma message("@TODO remove code for QT 5.14 or later")
-	QStringList rows_descriptions = rows_string.split(QChar(';'), Qt::SkipEmptyParts);
+	QStringList rows_descriptions =
+			rows_string.split(QChar(';'), Qt::SkipEmptyParts);
 #endif
 	foreach (QString rows_description, rows_descriptions) {
 		if (row_size_format.exactMatch(rows_description)) {
-			int row_size = row_size_format.capturedTexts().at(1).toInt(&conv_ok);
-			if (conv_ok) rows_heights_ << row_size;
+			int row_size =
+				row_size_format.capturedTexts().at(1).toInt(
+						&conv_ok);
+			if (conv_ok)
+				rows_heights_ << row_size;
 		}
 	}
 #ifdef TITLEBLOCK_TEMPLATE_DEBUG
@@ -393,24 +421,40 @@ void TitleBlockTemplate::parseColumns(const QString &cols_string) {
 	bool conv_ok;
 
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
-	QStringList cols_descriptions = cols_string.split(QChar(';'), QString::SkipEmptyParts);
+	QStringList cols_descriptions =
+			cols_string.split(QChar(';'), QString::SkipEmptyParts);
 #else
 #pragma message("@TODO remove code for QT 5.14 or later")
-	QStringList cols_descriptions = cols_string.split(QChar(';'), Qt::SkipEmptyParts);
+	QStringList cols_descriptions =
+			cols_string.split(QChar(';'), Qt::SkipEmptyParts);
 #endif
 	foreach (QString cols_description, cols_descriptions) {
 		if (abs_col_size_format.exactMatch(cols_description)) {
 			int col_size = abs_col_size_format.capturedTexts().at(1).toInt(&conv_ok);
-			if (conv_ok) columns_width_ << TitleBlockDimension(col_size, QET::Absolute);
+			if (conv_ok)
+				columns_width_ << TitleBlockDimension(
+							  col_size,
+							  QET::Absolute);
 		} else if (rel_col_size_format.exactMatch(cols_description)) {
-			int col_size = rel_col_size_format.capturedTexts().at(2).toInt(&conv_ok);
-			QET::TitleBlockColumnLength col_type = rel_col_size_format.capturedTexts().at(1) == "t" ? QET::RelativeToTotalLength : QET::RelativeToRemainingLength;
-			if (conv_ok) columns_width_ << TitleBlockDimension(col_size, col_type );
+			int col_size =
+				rel_col_size_format.capturedTexts().at(2).toInt(
+						&conv_ok);
+			QET::TitleBlockColumnLength col_type =
+					rel_col_size_format.capturedTexts().at(1)
+					== "t"
+					? QET::RelativeToTotalLength
+					: QET::RelativeToRemainingLength;
+			if (conv_ok)
+				columns_width_ << TitleBlockDimension(
+							  col_size,
+							  col_type );
 		}
 	}
 #ifdef TITLEBLOCK_TEMPLATE_DEBUG
 	foreach (TitleBlockColDimension icd, columns_width_) {
-		qDebug() << Q_FUNC_INFO << QString("%1 [%2]").arg(icd.value).arg(QET::titleBlockColumnLengthToString(icd.type));
+		qDebug() << Q_FUNC_INFO
+			 << QString("%1 [%2]").arg(icd.value).arg(
+				    QET::titleBlockColumnLengthToString(icd.type));
 	}
 #endif
 }
@@ -425,10 +469,13 @@ void TitleBlockTemplate::parseColumns(const QString &cols_string) {
 bool TitleBlockTemplate::loadCells(const QDomElement &xml_element) {
 	// we are interested by the "logo" and "field" elements
 	QDomElement grid_element;
-	for (QDomNode n = xml_element.firstChild() ; !n.isNull() ; n = n.nextSibling()) {
+	for (QDomNode n = xml_element.firstChild() ;
+	     !n.isNull() ;
+	     n = n.nextSibling()) {
 		if (!n.isElement()) continue;
 		QDomElement cell_element = n.toElement();
-		if (cell_element.tagName() == "field" || cell_element.tagName() == "logo") {
+		if (cell_element.tagName() == "field"
+				|| cell_element.tagName() == "logo") {
 			loadCell(cell_element);
 		}
 	}
@@ -454,9 +501,11 @@ void TitleBlockTemplate::loadCell(const QDomElement &cell_element) {
 	XML element under which extra informations will be attached
 */
 void TitleBlockTemplate::saveInformation(QDomElement &xml_element) const {
-	QDomNode information_text_node = xml_element.ownerDocument().createTextNode(information());
+	QDomNode information_text_node =
+			xml_element.ownerDocument().createTextNode(information());
 	
-	QDomElement information_element = xml_element.ownerDocument().createElement("information");
+	QDomElement information_element =
+			xml_element.ownerDocument().createElement("information");
 	information_element.appendChild(information_text_node);
 	xml_element.appendChild(information_element);
 }
@@ -468,9 +517,11 @@ void TitleBlockTemplate::saveInformation(QDomElement &xml_element) const {
 	XML Element under which the \<logos\> element will be attached
 */
 void TitleBlockTemplate::saveLogos(QDomElement &xml_element) const {
-	QDomElement logos_element = xml_element.ownerDocument().createElement("logos");
+	QDomElement logos_element =
+			xml_element.ownerDocument().createElement("logos");
 	foreach(QString logo_name, type_logos_.keys()) {
-		QDomElement logo_element = xml_element.ownerDocument().createElement("logo");
+		QDomElement logo_element =
+				xml_element.ownerDocument().createElement("logo");
 		saveLogo(logo_name, logo_element);
 		logos_element.appendChild(logo_element);
 	}
@@ -483,20 +534,26 @@ void TitleBlockTemplate::saveLogos(QDomElement &xml_element) const {
 	@param logo_name : Name of the logo to be exported
 	@param xml_element : XML element in which the logo will be exported
 */
-void TitleBlockTemplate::saveLogo(const QString &logo_name, QDomElement &xml_element) const {
+void TitleBlockTemplate::saveLogo(const QString &logo_name,
+				  QDomElement &xml_element) const {
 	if (!type_logos_.contains(logo_name)) return;
 	
 	xml_element.setAttribute("name", logo_name);
 	xml_element.setAttribute("type", type_logos_[logo_name]);
 	xml_element.setAttribute("storage", storage_logos_[logo_name]);
 	
-	if (storage_logos_[logo_name] == "xml" && type_logos_[logo_name] == "svg") {
+	if (storage_logos_[logo_name] == "xml"
+			&& type_logos_[logo_name] == "svg") {
 		QDomDocument svg_logo;
 		svg_logo.setContent(data_logos_[logo_name]);
-		QDomNode svg_logo_element = xml_element.ownerDocument().importNode(svg_logo.documentElement(), true);
+		QDomNode svg_logo_element =
+				xml_element.ownerDocument().importNode(
+					svg_logo.documentElement(), true);
 		xml_element.appendChild(svg_logo_element.toElement());
 	} else if (storage_logos_[logo_name] == "base64") {
-		QDomText base64_logo = xml_element.ownerDocument().createTextNode(data_logos_[logo_name].toBase64());
+		QDomText base64_logo =
+				xml_element.ownerDocument().createTextNode(
+					data_logos_[logo_name].toBase64());
 		xml_element.appendChild(base64_logo);
 	}
 }
@@ -508,11 +565,14 @@ void TitleBlockTemplate::saveLogo(const QString &logo_name, QDomElement &xml_ele
 	XML element under which the \<grid\> element will be attached
 */
 void TitleBlockTemplate::saveGrid(QDomElement &xml_element) const {
-	QDomElement grid_element = xml_element.ownerDocument().createElement("grid");
+	QDomElement grid_element =
+			xml_element.ownerDocument().createElement("grid");
 	
 	QString rows_attr, cols_attr;
-	foreach(int row_height, rows_heights_) rows_attr += QString("%1;").arg(row_height);
-	foreach(TitleBlockDimension col_width, columns_width_) cols_attr += col_width.toShortString();
+	foreach(int row_height, rows_heights_)
+		rows_attr += QString("%1;").arg(row_height);
+	foreach(TitleBlockDimension col_width, columns_width_)
+		cols_attr += col_width.toShortString();
 	grid_element.setAttribute("rows", rows_attr);
 	grid_element.setAttribute("cols", cols_attr);
 	
@@ -531,7 +591,8 @@ void TitleBlockTemplate::saveGrid(QDomElement &xml_element) const {
 void TitleBlockTemplate::saveCells(QDomElement &xml_element) const {
 	for (int j = 0 ; j < rows_heights_.count() ; ++ j) {
 		for (int i = 0 ; i < columns_width_.count() ; ++ i) {
-			if (cells_[i][j] -> cell_type != TitleBlockCell::EmptyCell) {
+			if (cells_[i][j] -> cell_type
+					!= TitleBlockCell::EmptyCell) {
 				saveCell(cells_[i][j], xml_element);
 			}
 		}
@@ -541,24 +602,32 @@ void TitleBlockTemplate::saveCells(QDomElement &xml_element) const {
 /**
 	@brief TitleBlockTemplate::saveCell
 	Export a specific cell as XML
-	@param cell Cell to be exported as XML
-	@param xml_element XML element under which the \<cell\> element will be attached
-	@param save_empty If true, the cell will be saved even if it is an empty one
+	@param cell : Cell to be exported as XML
+	@param xml_element :
+	XML element under which the \<cell\> element will be attached
+	@param save_empty :
+	If true, the cell will be saved even if it is an empty one
 */
-void TitleBlockTemplate::saveCell(TitleBlockCell *cell, QDomElement &xml_element, bool save_empty) const {
+void TitleBlockTemplate::saveCell(TitleBlockCell *cell,
+				  QDomElement &xml_element,
+				  bool save_empty) const {
 	if (!cell) return;
 	if (cell -> spanner_cell) return;
-	if (!save_empty && cell -> cell_type == TitleBlockCell::EmptyCell) return;
+	if (!save_empty && cell -> cell_type == TitleBlockCell::EmptyCell)
+		return;
 	
 	
-	QDomElement cell_elmt = xml_element.ownerDocument().createElement("cell");
+	QDomElement cell_elmt =
+			xml_element.ownerDocument().createElement("cell");
 	xml_element.appendChild(cell_elmt);
 	
 	// save information dependent from this template
 	cell_elmt.setAttribute("row", cell -> num_row);
 	cell_elmt.setAttribute("col", cell -> num_col);
-	if (cell -> row_span) cell_elmt.setAttribute("rowspan", cell -> row_span);
-	if (cell -> col_span) cell_elmt.setAttribute("colspan", cell -> col_span);
+	if (cell -> row_span) cell_elmt.setAttribute("rowspan",
+						     cell -> row_span);
+	if (cell -> col_span) cell_elmt.setAttribute("colspan",
+						     cell -> col_span);
 	
 	// save other information
 	cell -> saveContentToXml(cell_elmt);
@@ -576,8 +645,10 @@ void TitleBlockTemplate::saveCell(TitleBlockCell *cell, QDomElement &xml_element
 	this method returns true, will be filled with the created TitleBlockCell
 	@return TRUE if the cell appears to be ok, FALSE otherwise
 */
-bool TitleBlockTemplate::checkCell(const QDomElement &xml_element, TitleBlockCell **titleblock_cell_ptr) {
-	int col_count = columns_width_.count(), row_count = rows_heights_.count();
+bool TitleBlockTemplate::checkCell(const QDomElement &xml_element,
+				   TitleBlockCell **titleblock_cell_ptr) {
+	int col_count = columns_width_.count(),
+			row_count = rows_heights_.count();
 	
 #ifdef TITLEBLOCK_TEMPLATE_DEBUG
 	qDebug() << Q_FUNC_INFO << "begin" << row_count << col_count;
@@ -588,10 +659,14 @@ bool TitleBlockTemplate::checkCell(const QDomElement &xml_element, TitleBlockCel
 	row_span = col_span = 0;
 	
 	// parse the row and col attributes
-	if (!QET::attributeIsAnInteger(xml_element, "row", &row_num) || row_num < 0 || row_num >= row_count) {
+	if (!QET::attributeIsAnInteger(xml_element, "row", &row_num)
+			|| row_num < 0
+			|| row_num >= row_count) {
 		return(false);
 	}
-	if (!QET::attributeIsAnInteger(xml_element, "col", &col_num) || col_num < 0 || col_num >= col_count) {
+	if (!QET::attributeIsAnInteger(xml_element, "col", &col_num)
+			|| col_num < 0
+			|| col_num >= col_count) {
 		return(false);
 	}
 	
@@ -600,7 +675,8 @@ bool TitleBlockTemplate::checkCell(const QDomElement &xml_element, TitleBlockCel
 	qDebug() << Q_FUNC_INFO << "cell access" << col_num << row_num;
 #endif
 	TitleBlockCell *cell_ptr = cells_[col_num][row_num];
-	if (cell_ptr -> cell_type != TitleBlockCell::EmptyCell || cell_ptr -> spanner_cell) {
+	if (cell_ptr -> cell_type != TitleBlockCell::EmptyCell
+			|| cell_ptr -> spanner_cell) {
 		return(false);
 	}
 	// ensure the num_row and num_col attributes are alright
@@ -608,11 +684,13 @@ bool TitleBlockTemplate::checkCell(const QDomElement &xml_element, TitleBlockCel
 	cell_ptr -> num_col = col_num;
 	
 	// parse the rowspan and colspan attributes
-	if (QET::attributeIsAnInteger(xml_element, "rowspan", &row_span) && row_span > 0) {
+	if (QET::attributeIsAnInteger(xml_element, "rowspan", &row_span)
+			&& row_span > 0) {
 		cell_ptr -> row_span = row_span;
 	}
 	
-	if (QET::attributeIsAnInteger(xml_element, "colspan", &col_span) && col_span > 0) {
+	if (QET::attributeIsAnInteger(xml_element, "colspan", &col_span)
+			&& col_span > 0) {
 		cell_ptr -> col_span = col_span;
 	}
 	// these attributes are stored "as is" -- whether they can be applied
@@ -685,7 +763,8 @@ int TitleBlockTemplate::rowDimension(int i) {
 	@param i : row index
 	@param dimension : New height of the row at index i
 */
-void TitleBlockTemplate::setRowDimension(int i, const TitleBlockDimension &dimension) {
+void TitleBlockTemplate::setRowDimension(int i,
+					 const TitleBlockDimension &dimension) {
 	int index = (i == -1) ? rows_heights_.count() - 1 : i;
 	if (index >= 0 || index < rows_heights_.count()) {
 		rows_heights_[index] = dimension.value;
@@ -711,7 +790,9 @@ TitleBlockDimension TitleBlockTemplate::columnDimension(int i) {
 	@param i : column index
 	@param dimension : New width of the column at index i
 */
-void TitleBlockTemplate::setColumnDimension(int i, const TitleBlockDimension &dimension) {
+void TitleBlockTemplate::setColumnDimension(
+		int i,
+		const TitleBlockDimension &dimension) {
 	int index = (i == -1) ? columns_width_.count() - 1 : i;
 	if (index >= 0 || index < columns_width_.count()) {
 		columns_width_[index] = dimension;
@@ -767,7 +848,8 @@ QList<int> TitleBlockTemplate::columnsWidth(int total_width) const {
 	for (int i = 0 ; i < columns_width_.count() ; ++ i) {
 		TitleBlockDimension icd = columns_width_.at(i);
 		if (icd.type == QET::RelativeToRemainingLength) {
-			final_widths[i] = qRound(remaining_width * icd.value / 100.0);
+			final_widths[i] =
+				qRound(remaining_width * icd.value / 100.0);
 			relative_columns << i;
 			rel_widths_sum += final_widths[i];
 		}
@@ -786,7 +868,8 @@ QList<int> TitleBlockTemplate::columnsWidth(int total_width) const {
 			// relative_columns_count * 0.5
 			// (which means that each percent-based
 			// columns can "bring" up to 0.5px of difference).
-			qreal max_acceptable_difference = relative_columns.count() * 0.5;
+			qreal max_acceptable_difference =
+					relative_columns.count() * 0.5;
 			
 			int share = difference > 0 ? 1 : -1;
 			if (qAbs(difference) <= max_acceptable_difference) {
@@ -860,7 +943,8 @@ int TitleBlockTemplate::minimumWidth() {
 		qRound(
 			columnTypeTotal(QET::Absolute)
 			/
-			((100.0 - columnTypeTotal(QET::RelativeToTotalLength)) / 100.0)
+			((100.0 - columnTypeTotal(QET::RelativeToTotalLength))
+			 / 100.0)
 		)
 	);
 }
@@ -942,7 +1026,9 @@ void TitleBlockTemplate::addRow(int i) {
 	Index of the column after insertion, -1 meaning "last position"
 	@return true
 */
-bool TitleBlockTemplate::insertRow(int dimension, const QList<TitleBlockCell *> &row, int i) {
+bool TitleBlockTemplate::insertRow(int dimension,
+				   const QList<TitleBlockCell *> &row,
+				   int i) {
 	int index = (i == -1) ? rows_heights_.count() : i;
 	
 	for (int j = 0 ; j < columns_width_.count() ; ++ j) {
@@ -1013,7 +1099,9 @@ void TitleBlockTemplate::addColumn(int i) {
 	Index of the column after insertion, -1 meaning "last position"
 	@return true
 */
-bool TitleBlockTemplate::insertColumn(const TitleBlockDimension &dimension, const QList<TitleBlockCell *> &column, int i) {
+bool TitleBlockTemplate::insertColumn(const TitleBlockDimension &dimension,
+				      const QList<TitleBlockCell *> &column,
+				      int i) {
 	int index = (i == -1) ? columns_width_.count() : i;
 	cells_.insert(index, column);
 	columns_width_.insert(index, dimension);
@@ -1070,18 +1158,32 @@ TitleBlockCell *TitleBlockTemplate::cell(int row, int col) const {
 	@return the set of cells spanned by the provided cell
 	Note the returned set does not include the spanning, provided cell
 */
-QSet<TitleBlockCell *> TitleBlockTemplate::spannedCells(const TitleBlockCell *given_cell, bool ignore_span_state) const {
+QSet<TitleBlockCell *> TitleBlockTemplate::spannedCells(
+		const TitleBlockCell *given_cell,
+		bool ignore_span_state) const {
 	QSet<TitleBlockCell *> set;
 	if (!given_cell) return(set);
-	if (!ignore_span_state && given_cell -> span_state == TitleBlockCell::Disabled) return(set);
-	
-	int final_row_span = ignore_span_state ? given_cell -> row_span : given_cell -> applied_row_span;
-	int final_col_span = ignore_span_state ? given_cell -> col_span : given_cell -> applied_col_span;
+	if (!ignore_span_state && given_cell -> span_state
+			== TitleBlockCell::Disabled)
+		return(set);
+
+	int final_row_span = ignore_span_state
+			? given_cell -> row_span
+			: given_cell -> applied_row_span;
+	int final_col_span = ignore_span_state
+			? given_cell -> col_span
+			: given_cell -> applied_col_span;
 	if (!final_row_span && !final_col_span) return(set);
 	
-	for (int i = given_cell -> num_col ; i <= given_cell -> num_col + final_col_span ; ++ i) {
-		for (int j = given_cell -> num_row ; j <= given_cell -> num_row + final_row_span ; ++ j) {
-			if (i == given_cell -> num_col && j == given_cell -> num_row) continue;
+	for (int i = given_cell -> num_col ;
+	     i <= given_cell -> num_col + final_col_span ;
+	     ++ i) {
+		for (int j = given_cell -> num_row ;
+		     j <= given_cell -> num_row + final_row_span ;
+		     ++ j) {
+			if (i == given_cell -> num_col && j
+					== given_cell -> num_row)
+				continue;
 			TitleBlockCell *current_cell = cell(j, i);
 			if (current_cell) set << current_cell;
 		}
@@ -1094,7 +1196,8 @@ QSet<TitleBlockCell *> TitleBlockTemplate::spannedCells(const TitleBlockCell *gi
 	Export the span parameters of all cell in the current grid.
 	@return
 */
-QHash<TitleBlockCell *, QPair<int, int> > TitleBlockTemplate::getAllSpans() const {
+QHash<TitleBlockCell *, QPair<int, int> > TitleBlockTemplate::getAllSpans(
+		) const {
 	QHash<TitleBlockCell *, QPair<int, int> > spans;
 	for (int j = 0 ; j < rows_heights_.count() ; ++ j) {
 		for (int i = 0 ; i < columns_width_.count() ; ++ i) {
@@ -1115,7 +1218,8 @@ QHash<TitleBlockCell *, QPair<int, int> > TitleBlockTemplate::getAllSpans() cons
 	Restore a set of span parameters.
 	@param spans :
 */
-void TitleBlockTemplate::setAllSpans(const QHash<TitleBlockCell *, QPair<int, int> > &spans) {
+void TitleBlockTemplate::setAllSpans(const QHash<TitleBlockCell *,
+				     QPair<int, int> > &spans) {
 	foreach (TitleBlockCell *cell, spans.keys()) {
 		cell -> row_span = spans[cell].first;
 		cell -> col_span = spans[cell].second;
@@ -1132,7 +1236,10 @@ void TitleBlockTemplate::setAllSpans(const QHash<TitleBlockCell *, QPair<int, in
 	@param logo_storage :
 	@return true or false
 */
-bool TitleBlockTemplate::addLogo(const QString &logo_name, QByteArray *logo_data, const QString &logo_type, const QString &logo_storage) {
+bool TitleBlockTemplate::addLogo(const QString &logo_name,
+				 QByteArray *logo_data,
+				 const QString &logo_type,
+				 const QString &logo_storage) {
 	if (data_logos_.contains(logo_name)) {
 		// we are replacing the logo
 		removeLogo(logo_name);
@@ -1183,7 +1290,8 @@ bool TitleBlockTemplate::addLogo(const QString &logo_name, QByteArray *logo_data
 	basename of the first argument is used.
 	@return true if the logo could be deleted, false otherwise
 */
-bool TitleBlockTemplate::addLogoFromFile(const QString &filepath, const QString &name) {
+bool TitleBlockTemplate::addLogoFromFile(const QString &filepath,
+					 const QString &name) {
 	QFileInfo filepath_info(filepath);
 	QString filename = name.isEmpty() ? filepath_info.fileName() : name;
 	QString filetype = filepath_info.suffix();
@@ -1197,7 +1305,10 @@ bool TitleBlockTemplate::addLogoFromFile(const QString &filepath, const QString 
 	if (addLogo(filename, &file_content, "svg", "xml")) return(true);
 	
 	// we then try to add it as a bitmap image
-	return addLogo(filename, &file_content, filepath_info.suffix(), "base64");
+	return addLogo(filename,
+		       &file_content,
+		       filepath_info.suffix(),
+		       "base64");
 }
 
 /**
@@ -1208,7 +1319,8 @@ bool TitleBlockTemplate::addLogoFromFile(const QString &filepath, const QString 
 	Path the logo will be saved as
 	@return true if the logo could be exported, false otherwise
 */
-bool TitleBlockTemplate::saveLogoToFile(const QString &logo_name, const QString &filepath) {
+bool TitleBlockTemplate::saveLogoToFile(const QString &logo_name,
+					const QString &filepath) {
 	if (!data_logos_.contains(logo_name)) {
 		return(false);
 	}
@@ -1248,11 +1360,14 @@ bool TitleBlockTemplate::removeLogo(const QString &logo_name) {
 /**
 	@brief TitleBlockTemplate::renameLogo
 	Rename the \a logo_name logo to \a new_name
-	@param logo_name Name of the logo to be renamed
-	@param new_name New name of the renamed logo
+	@param logo_name : Name of the logo to be renamed
+	@param new_name : New name of the renamed logo
+	@return
 */
-bool TitleBlockTemplate::renameLogo(const QString &logo_name, const QString &new_name) {
-	if (!data_logos_.contains(logo_name) || data_logos_.contains(new_name)) {
+bool TitleBlockTemplate::renameLogo(const QString &logo_name,
+				    const QString &new_name) {
+	if (!data_logos_.contains(logo_name)
+			|| data_logos_.contains(new_name)) {
 		return(false);
 	}
 	
@@ -1276,7 +1391,8 @@ bool TitleBlockTemplate::renameLogo(const QString &logo_name, const QString &new
 	@param storage :
 	The kind of storage to use for the logo, e.g. "xml" or "base64".
 */
-void TitleBlockTemplate::setLogoStorage(const QString &logo_name, const QString &storage) {
+void TitleBlockTemplate::setLogoStorage(const QString &logo_name,
+					const QString &storage) {
 	if (storage_logos_.contains(logo_name)) {
 		storage_logos_[logo_name] = storage;
 	}
@@ -1335,11 +1451,16 @@ QPixmap TitleBlockTemplate::bitmapLogo(const QString &logo_name) const {
 /**
 	@brief TitleBlockTemplate::render
 	Render the titleblock.
-	@param painter Painter to use to render the titleblock
-	@param diagram_context Diagram context to use to generate the titleblock strings
-	@param titleblock_width Width of the titleblock to render
+	@param painter :
+	Painter to use to render the titleblock
+	@param diagram_context :
+	Diagram context to use to generate the titleblock strings
+	@param titleblock_width :
+	Width of the titleblock to render
 */
-void TitleBlockTemplate::render(QPainter &painter, const DiagramContext &diagram_context, int titleblock_width) const {
+void TitleBlockTemplate::render(QPainter &painter,
+				const DiagramContext &diagram_context,
+				int titleblock_width) const {
 	QList<int> widths = columnsWidth(titleblock_width);
 	int titleblock_height = height();
 	
@@ -1355,22 +1476,34 @@ void TitleBlockTemplate::render(QPainter &painter, const DiagramContext &diagram
 	// run through each individual cell
 	for (int j = 0 ; j < rows_heights_.count() ; ++ j) {
 		for (int i = 0 ; i < columns_width_.count() ; ++ i) {
-			if (cells_[i][j] -> spanner_cell || cells_[i][j] -> cell_type == TitleBlockCell::EmptyCell) continue;
+			if (cells_[i][j] -> spanner_cell
+					|| cells_[i][j] -> cell_type
+					== TitleBlockCell::EmptyCell)
+				continue;
 			
 			// calculate the border rect of the current cell
 			int x = lengthRange(0, cells_[i][j] -> num_col, widths);
-			int y = lengthRange(0, cells_[i][j] -> num_row, rows_heights_);
+			int y = lengthRange(0,
+					    cells_[i][j] -> num_row,
+					    rows_heights_);
 			
 			int row_span = 0, col_span = 0;
-			if (cells_[i][j] -> span_state != TitleBlockCell::Disabled) {
+			if (cells_[i][j] -> span_state
+					!= TitleBlockCell::Disabled) {
 				row_span = cells_[i][j] -> applied_row_span;
 				col_span = cells_[i][j] -> applied_col_span;
 			}
-			int w = lengthRange(cells_[i][j] -> num_col, cells_[i][j] -> num_col + 1 + col_span, widths);
-			int h = lengthRange(cells_[i][j] -> num_row, cells_[i][j] -> num_row + 1 + row_span, rows_heights_);
+			int w = lengthRange(cells_[i][j] -> num_col,
+					    cells_[i][j] -> num_col + 1 + col_span,
+					    widths);
+			int h = lengthRange(cells_[i][j] -> num_row,
+					    cells_[i][j] -> num_row + 1 + row_span,
+					    rows_heights_);
 			QRect cell_rect(x, y, w, h);
 			
-			renderCell(painter, *cells_[i][j], diagram_context, cell_rect);
+			renderCell(painter, *cells_[i][j],
+				   diagram_context,
+				   cell_rect);
 		}
 	}
 	painter.restore();
@@ -1379,36 +1512,62 @@ void TitleBlockTemplate::render(QPainter &painter, const DiagramContext &diagram
 /**
 	@brief TitleBlockTemplate::renderDxf
 	Render the titleblock in DXF.
-	@param diagram_context Diagram context to use to generate the titleblock strings
-	@param titleblock_width Width of the titleblock to render
+	@param title_block_rect :
+	@param diagram_context :
+	Diagram context to use to generate the titleblock strings
+	@param titleblock_width :
+	Width of the titleblock to render
+	@param file_path :
+	@param color :
 */
-void TitleBlockTemplate::renderDxf(QRectF &title_block_rect, const DiagramContext &diagram_context,
-								   int titleblock_width, QString &file_path, int color) const {
+void TitleBlockTemplate::renderDxf(QRectF &title_block_rect,
+				   const DiagramContext &diagram_context,
+				   int titleblock_width,
+				   QString &file_path,
+				   int color) const {
 	QList<int> widths = columnsWidth(titleblock_width);
 
 	// draw the titleblock border
 	double xCoord    = title_block_rect.topLeft().x();
-	double yCoord    = Createdxf::sheetHeight - title_block_rect.bottomLeft().y()*Createdxf::yScale;
+	double yCoord    =
+		Createdxf::sheetHeight
+			- title_block_rect.bottomLeft().y()
+			*Createdxf::yScale;
 	double recWidth  = title_block_rect.width()  * Createdxf::xScale;
 	double recHeight = title_block_rect.height() * Createdxf::yScale;
-	Createdxf::drawRectangle(file_path, xCoord, yCoord, recWidth, recHeight, color);
+	Createdxf::drawRectangle(file_path,
+				 xCoord,
+				 yCoord,
+				 recWidth,
+				 recHeight,
+				 color);
 
 	// run through each individual cell
 	for (int j = 0 ; j < rows_heights_.count() ; ++ j) {
 		for (int i = 0 ; i < columns_width_.count() ; ++ i) {
-			if (cells_[i][j] -> spanner_cell || cells_[i][j] -> cell_type == TitleBlockCell::EmptyCell) continue;
+			if (cells_[i][j] -> spanner_cell
+					|| cells_[i][j] -> cell_type
+					== TitleBlockCell::EmptyCell)
+				continue;
 
 			// calculate the border rect of the current cell
-			double x = lengthRange(0, cells_[i][j] -> num_col, widths);
-			double y = lengthRange(0, cells_[i][j] -> num_row, rows_heights_);
+			double x = lengthRange(0, cells_[i][j] -> num_col,
+					       widths);
+			double y = lengthRange(0, cells_[i][j] -> num_row,
+					       rows_heights_);
 
 			int row_span = 0, col_span = 0;
-			if (cells_[i][j] -> span_state != TitleBlockCell::Disabled) {
+			if (cells_[i][j] -> span_state
+					!= TitleBlockCell::Disabled) {
 				row_span = cells_[i][j] -> applied_row_span;
 				col_span = cells_[i][j] -> applied_col_span;
 			}
-			double w = lengthRange(cells_[i][j] -> num_col, cells_[i][j] -> num_col + 1 + col_span, widths);
-			double h = lengthRange(cells_[i][j] -> num_row, cells_[i][j] -> num_row + 1 + row_span, rows_heights_);
+			double w = lengthRange(cells_[i][j] -> num_col,
+					       cells_[i][j] -> num_col + 1 + col_span,
+					       widths);
+			double h = lengthRange(cells_[i][j] -> num_row,
+					       cells_[i][j] -> num_row + 1 + row_span,
+					       rows_heights_);
 
 			x = xCoord + x*Createdxf::xScale;
 			h *= Createdxf::yScale;
@@ -1416,9 +1575,19 @@ void TitleBlockTemplate::renderDxf(QRectF &title_block_rect, const DiagramContex
 			w *= Createdxf::xScale;
 
 			Createdxf::drawRectangle(file_path, x, y, w, h, color);
-			if (cells_[i][j] -> type() == TitleBlockCell::TextCell) {
-				QString final_text = finalTextForCell(*cells_[i][j], diagram_context);
-				renderTextCellDxf(file_path, final_text, *cells_[i][j], x, y, w, h, color);
+			if (cells_[i][j] -> type() == TitleBlockCell::TextCell)
+			{
+				QString final_text =
+						finalTextForCell(*cells_[i][j],
+								 diagram_context);
+				renderTextCellDxf(file_path,
+						  final_text,
+						  *cells_[i][j],
+						  x,
+						  y,
+						  w,
+						  h,
+						  color);
 			}
 		}
 	}
@@ -1429,11 +1598,18 @@ void TitleBlockTemplate::renderDxf(QRectF &title_block_rect, const DiagramContex
 /**
 	@brief TitleBlockTemplate::renderCell
 	Render a titleblock cell.
-	@param painter Painter to use to render the titleblock
-	@param diagram_context Diagram context to use to generate the titleblock strings
-	@param rect Rectangle the cell must be rendered into.
+	@param painter :
+	Painter to use to render the titleblock
+	@param cell :
+	@param diagram_context :
+	Diagram context to use to generate the titleblock strings
+	@param cell_rect :
+	Rectangle the cell must be rendered into.
 */
-void TitleBlockTemplate::renderCell(QPainter &painter, const TitleBlockCell &cell, const DiagramContext &diagram_context, const QRect &cell_rect) const {
+void TitleBlockTemplate::renderCell(QPainter &painter,
+				    const TitleBlockCell &cell,
+				    const DiagramContext &diagram_context,
+				    const QRect &cell_rect) const {
 	// draw the border rect of the current cell
 	QPen pen(QBrush(), 0.0, Qt::SolidLine, Qt::SquareCap, Qt::MiterJoin);
 	pen.setColor(Qt::black);
@@ -1451,9 +1627,12 @@ void TitleBlockTemplate::renderCell(QPainter &painter, const TitleBlockCell &cel
 			 *    (or, at least, not resolution-limited) rendering
 			 */
 			if (vector_logos_.contains(cell.logo_reference)) {
-				vector_logos_[cell.logo_reference] -> render(&painter, cell_rect);
+				vector_logos_[cell.logo_reference] -> render(
+							&painter,
+							cell_rect);
 			} else if (bitmap_logos_.contains(cell.logo_reference)) {
-				painter.drawPixmap(cell_rect, bitmap_logos_[cell.logo_reference]);
+				painter.drawPixmap(cell_rect,
+						   bitmap_logos_[cell.logo_reference]);
 			}
 		}
 	} else if (cell.type() == TitleBlockCell::TextCell) {
@@ -1478,7 +1657,9 @@ void TitleBlockTemplate::renderCell(QPainter &painter, const TitleBlockCell &cel
 	Diagram context to use to generate the final text for the given cell
 	@return the final text that has to be drawn in the given cell
 */
-QString TitleBlockTemplate::finalTextForCell(const TitleBlockCell &cell, const DiagramContext &diagram_context) const {
+QString TitleBlockTemplate::finalTextForCell(
+		const TitleBlockCell &cell,
+		const DiagramContext &diagram_context) const {
 	QString cell_text = cell.value.name();
 	QString cell_label = cell.label.name();
 	
@@ -1502,11 +1683,16 @@ QString TitleBlockTemplate::finalTextForCell(const TitleBlockCell &cell, const D
 	@return the provided string with variables replaced by the values
 	from the diagram context
 */
-QString TitleBlockTemplate::interpreteVariables(const QString &string, const DiagramContext &diagram_context) const {
+QString TitleBlockTemplate::interpreteVariables(
+		const QString &string,
+		const DiagramContext &diagram_context) const {
 	QString interpreted_string = string;
-	foreach (QString key, diagram_context.keys(DiagramContext::DecreasingLength)) {
-		interpreted_string.replace("%{" + key + "}", diagram_context[key].toString());
-		interpreted_string.replace("%" + key,        diagram_context[key].toString());
+	foreach (QString key,
+		 diagram_context.keys(DiagramContext::DecreasingLength)) {
+		interpreted_string.replace("%{" + key + "}",
+					   diagram_context[key].toString());
+		interpreted_string.replace("%" + key,
+					   diagram_context[key].toString());
 	}
 	return(interpreted_string);
 }
@@ -1536,33 +1722,48 @@ QStringList TitleBlockTemplate::listOfVariables() {
 	into the \a cell_rect rectangle.
 	The alignment, font_size and other cell parameters are taken into account
 	when rendering.
-	@param painter QPainter used to render the text
-	@param text Text to render
-	@param cell Cell the rendered text is rattached to
-	@param cell_rect Rectangle delimiting the cell area
+	@param painter :
+	QPainter used to render the text
+	@param text :
+	Text to render
+	@param cell :
+	Cell the rendered text is rattached to
+	@param cell_rect :
+	Rectangle delimiting the cell area
 */
-void TitleBlockTemplate::renderTextCell(QPainter &painter, const QString &text, const TitleBlockCell &cell, const QRectF &cell_rect) const {
+void TitleBlockTemplate::renderTextCell(QPainter &painter,
+					const QString &text,
+					const TitleBlockCell &cell,
+					const QRectF &cell_rect) const {
 	if (text.isEmpty()) return;
 	QFont text_font = TitleBlockTemplate::fontForCell(cell);
 	painter.setFont(text_font);
 	
 	if (cell.hadjust) {
 		QFontMetricsF font_metrics(text_font);
-		QRectF font_rect = font_metrics.boundingRect(QRect(-10000, -10000, 10000, 10000), cell.alignment, text);
+		QRectF font_rect = font_metrics.boundingRect(
+					QRect(-10000, -10000, 10000, 10000),
+					cell.alignment,
+					text);
 		
 		if (font_rect.width() > cell_rect.width()) {
-			qreal ratio = qreal(cell_rect.width()) / qreal(font_rect.width());
+			qreal ratio = qreal(cell_rect.width())
+					/ qreal(font_rect.width());
 			painter.save();
 			
 			painter.translate(cell_rect.topLeft());
-			qreal vertical_adjustment = cell_rect.height() * (1 - ratio) / 2.0;
+			qreal vertical_adjustment =
+					cell_rect.height() * (1 - ratio) / 2.0;
 			painter.translate(0.0, vertical_adjustment);
 			painter.scale(ratio, ratio);
 			
 			QRectF new_world_cell_rect(cell_rect);
 			new_world_cell_rect.moveTo(0, 0.0);
-			new_world_cell_rect.setWidth(new_world_cell_rect.width() / ratio);
-			painter.drawText(new_world_cell_rect, cell.alignment, text);
+			new_world_cell_rect.setWidth(new_world_cell_rect.width()
+						     / ratio);
+			painter.drawText(new_world_cell_rect,
+					 cell.alignment,
+					 text);
 			
 			painter.restore();
 			return;
@@ -1573,10 +1774,25 @@ void TitleBlockTemplate::renderTextCell(QPainter &painter, const QString &text, 
 	painter.drawText(cell_rect, cell.alignment, text);
 }
 
-
-void TitleBlockTemplate::renderTextCellDxf(QString &file_path, const QString &text,
-										   const TitleBlockCell &cell,
-										   qreal x, qreal y, qreal w, qreal h, int color) const {
+/**
+	@brief TitleBlockTemplate::renderTextCellDxf
+	@param file_path
+	@param text
+	@param cell
+	@param x
+	@param y
+	@param w
+	@param h
+	@param color
+*/
+void TitleBlockTemplate::renderTextCellDxf(QString &file_path,
+					   const QString &text,
+					   const TitleBlockCell &cell,
+					   qreal x,
+					   qreal y,
+					   qreal w,
+					   qreal h,
+					   int color) const {
 	if (text.isEmpty()) return;
 	QFont text_font = TitleBlockTemplate::fontForCell(cell);
 	double textHeight = text_font.pointSizeF();
@@ -1618,16 +1834,31 @@ void TitleBlockTemplate::renderTextCellDxf(QString &file_path, const QString &te
 
 	if (cell.hadjust) {
 		QFontMetricsF font_metrics(text_font);
-		QRectF font_rect = font_metrics.boundingRect(QRect(-10000, -10000, 10000, 10000), cell.alignment, text);
+		QRectF font_rect = font_metrics.boundingRect(
+					QRect(-10000, -10000, 10000, 10000),
+					cell.alignment,
+					text);
 
 		if (font_rect.width()*Createdxf::xScale > w) {
-			qreal ratio = qreal(w) / qreal(font_rect.width()*Createdxf::xScale);
+			qreal ratio = qreal(w)
+					/ qreal(font_rect.width()
+						*Createdxf::xScale);
 			textHeight *= ratio;
 		}
 	}
 
-	Createdxf::drawTextAligned(file_path, text, x,
-							   y, textHeight*Createdxf::yScale, 0, 0, hAlign, vAlign, x2, color, 0);
+	Createdxf::drawTextAligned(file_path,
+				   text,
+				   x,
+				   y,
+				   textHeight*Createdxf::yScale,
+				   0,
+				   0,
+				   hAlign,
+				   vAlign,
+				   x2,
+				   color,
+				   0);
 
 }
 
@@ -1653,7 +1884,8 @@ void TitleBlockTemplate::forgetSpanning() {
 	(Optional, defaults to true)
 	Whether to set row_span and col_span of \a spanning_cell to 0.
 */
-void TitleBlockTemplate::forgetSpanning(TitleBlockCell *spanning_cell, bool modify_cell) {
+void TitleBlockTemplate::forgetSpanning(TitleBlockCell *spanning_cell,
+					bool modify_cell) {
 	if (!spanning_cell) return;
 	foreach (TitleBlockCell *spanned_cell, spannedCells(spanning_cell)) {
 		spanned_cell -> spanner_cell = nullptr;
@@ -1712,14 +1944,26 @@ bool TitleBlockTemplate::checkCellSpan(TitleBlockCell *cell) {
 	}
 	
 	// ensure cells that will be spanned are either empty or free
-	for (int i = cell -> num_col ; i <= cell -> num_col + cell -> applied_col_span ; ++ i) {
-		for (int j = cell -> num_row ; j <= cell -> num_row + cell -> applied_row_span ; ++ j) {
-			if (i == cell -> num_col && j == cell -> num_row) continue;
+	for (int i = cell -> num_col ;
+	     i <= cell -> num_col + cell -> applied_col_span ;
+	     ++ i) {
+		for (int j = cell -> num_row ;
+		     j <= cell -> num_row + cell -> applied_row_span ;
+		     ++ j) {
+			if (i == cell -> num_col && j == cell -> num_row)
+				continue;
 #ifdef TITLEBLOCK_TEMPLATE_DEBUG
 			qDebug() << Q_FUNC_INFO << "span check" << i << j;
 #endif
 			TitleBlockCell *current_cell = cells_[i][j];
-			if (current_cell -> cell_type != TitleBlockCell::EmptyCell || (current_cell -> spanner_cell && current_cell -> spanner_cell != cell)) {
+			if (current_cell -> cell_type
+					!= TitleBlockCell::EmptyCell
+					|| (
+						current_cell -> spanner_cell
+						&& current_cell -> spanner_cell
+						!= cell
+					    )
+			    ) {
 				cell -> span_state = TitleBlockCell::Disabled;
 				return(true);
 			}
@@ -1743,12 +1987,23 @@ void TitleBlockTemplate::applyCellSpan(TitleBlockCell *cell) {
 	if (cell -> span_state == TitleBlockCell::Disabled) return;
 	
 	// goes through every spanned cell
-	for (int i = cell -> num_col ; i <= cell -> num_col + cell -> applied_col_span ; ++ i) {
-		for (int j = cell -> num_row ; j <= cell -> num_row + cell -> applied_row_span ; ++ j) {
+	for (int i = cell -> num_col ;
+	     i <= cell -> num_col + cell -> applied_col_span ;
+	     ++ i) {
+		for (int j = cell -> num_row ;
+		     j <= cell -> num_row + cell -> applied_row_span ;
+		     ++ j) {
 			// avoid the spanning cell itself
-			if (i == cell -> num_col && j == cell -> num_row) continue;
+			if (i == cell -> num_col && j == cell -> num_row)
+				continue;
 #ifdef TITLEBLOCK_TEMPLATE_DEBUG
-			qDebug() << Q_FUNC_INFO << "marking cell at" << j << i <<  "as spanned by cell at" << cell -> num_row <<  cell -> num_col;
+			qDebug() << Q_FUNC_INFO
+				 << "marking cell at"
+				 << j
+				 << i
+				 <<  "as spanned by cell at"
+				  << cell -> num_row
+				  <<  cell -> num_col;
 #endif
 			// marks all spanned cells with the spanning cell
 			cells_[i][j] -> spanner_cell = cell;
@@ -1788,8 +2043,12 @@ void TitleBlockTemplate::rowColsChanged() {
 	@param lengths_list :
 	@return the width between two borders
 */
-int TitleBlockTemplate::lengthRange(int start, int end, const QList<int> &lengths_list) const {
-	if (start > end || start >= lengths_list.count() || end > lengths_list.count()) {
+int TitleBlockTemplate::lengthRange(int start,
+				    int end,
+				    const QList<int> &lengths_list) const {
+	if (start > end
+			|| start >= lengths_list.count()
+			|| end > lengths_list.count()) {
 #ifdef TITLEBLOCK_TEMPLATE_DEBUG
 		qDebug() << Q_FUNC_INFO << "wont use" << start << "and" << end;
 #endif

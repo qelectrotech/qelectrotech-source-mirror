@@ -76,12 +76,14 @@ int TitleBlockTemplateRenderer::height() const {
 	@param provided_painter : QPainter to use to render the titleblock.
 	@param titleblock_width : The total width of the titleblock to render
 */
-void TitleBlockTemplateRenderer::render(QPainter *provided_painter, int titleblock_width) {
+void TitleBlockTemplateRenderer::render(QPainter *provided_painter,
+					int titleblock_width) {
 	if (!m_titleblock_template) return;
 	
 	if (m_use_cache) {
 		// Do we really need to calculate all this again?
-		if (titleblock_width != m_last_known_titleblock_width || m_rendered_template.isNull()) {
+		if (titleblock_width != m_last_known_titleblock_width
+				|| m_rendered_template.isNull()) {
 			renderToQPicture(titleblock_width);
 		}
 		
@@ -89,14 +91,28 @@ void TitleBlockTemplateRenderer::render(QPainter *provided_painter, int titleblo
 		m_rendered_template.play(provided_painter);
 		provided_painter -> restore();
 	} else {
-		m_titleblock_template -> render(*provided_painter, m_context, titleblock_width);
+		m_titleblock_template -> render(*provided_painter,
+						m_context,
+						titleblock_width);
 	}
 }
 
-
-void TitleBlockTemplateRenderer::renderDxf(QRectF &title_block_rect, int titleblock_width, QString &file_path, int color) {
+/**
+	@brief TitleBlockTemplateRenderer::renderDxf
+	@param title_block_rect
+	@param titleblock_width
+	@param file_path
+	@param color
+*/
+void TitleBlockTemplateRenderer::renderDxf(QRectF &title_block_rect,
+					   int titleblock_width,
+					   QString &file_path,
+					   int color) {
 	if (!m_titleblock_template) return;
-	m_titleblock_template -> renderDxf(title_block_rect, m_context, titleblock_width, file_path, color);
+	m_titleblock_template -> renderDxf(title_block_rect,
+					   m_context,
+					   titleblock_width,
+					   file_path, color);
 }
 
 /**
