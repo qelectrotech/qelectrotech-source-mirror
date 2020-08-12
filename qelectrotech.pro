@@ -91,6 +91,7 @@ INCLUDEPATH += sources \
                sources/editor/esevent \
                sources/editor/graphicspart \
                sources/editor/ui \
+               sources/editor/UndoCommand \
                sources/undocommand \
                sources/diagramevent \
                sources/ElementsCollection \
@@ -122,6 +123,7 @@ HEADERS += $$files(sources/*.h) $$files(sources/ui/*.h) \
            $$files(sources/editor/ui/*.h) \
            $$files(sources/editor/esevent/*.h) \
            $$files(sources/editor/graphicspart/*.h) \
+           $$files(sources/editor/UndoCommand/*h) \
            $$files(sources/dvevent/*.h) \
            $$files(sources/undocommand/*.h) \
            $$files(sources/diagramevent/*.h) \
@@ -153,6 +155,7 @@ SOURCES += $$files(sources/*.cpp) \
            $$files(sources/editor/ui/*.cpp) \
            $$files(sources/editor/esevent/*.cpp) \
            $$files(sources/editor/graphicspart/*.cpp) \
+           $$files(sources/editor/UndoCommand/*cpp) \
            $$files(sources/dvevent/*.cpp) \
            $$files(sources/undocommand/*.cpp) \
            $$files(sources/diagramevent/*.cpp) \
