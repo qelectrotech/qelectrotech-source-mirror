@@ -22,6 +22,79 @@
 #include <QStyleFactory>
 
 /**
+	@brief myMessageOutput
+	for debugging
+	@param type : the messages that can be sent to a message handler
+	@param context : were? wat?
+	@param msg : Message
+*/
+void myMessageOutput(QtMsgType type,
+		     const QMessageLogContext &context,
+		     const QString &msg)
+{
+
+	QByteArray dbs =
+		QTime::currentTime().toString("hh:mm:ss.zzz").toLocal8Bit();
+	QByteArray localMsg = msg.toLocal8Bit();
+	const char *file = context.file ? context.file : "";
+	const char *function = context.function ? context.function : "";
+	switch (type) {
+	case QtDebugMsg:
+		fprintf(stderr,
+			"%s Debug: %s (%s:%u, %s)\n",
+			dbs.constData(),
+			localMsg.constData(),
+			file,
+			context.line,
+			function);
+		break;
+	case QtInfoMsg:
+		fprintf(stderr,
+			"%s Info: %s (%s:%u, %s)\n",
+			dbs.constData(),
+			localMsg.constData(),
+			file,
+			context.line,
+			function);
+		break;
+	case QtWarningMsg:
+		fprintf(stderr,
+			"%s Warning: %s (%s:%u, %s)\n",
+			dbs.constData(),
+			localMsg.constData(),
+			file, context.line,
+			function);
+		break;
+	case QtCriticalMsg:
+		fprintf(stderr,
+			"%s Critical: %s (%s:%u, %s)\n",
+			dbs.constData(),
+			localMsg.constData(),
+			file,
+			context.line,
+			function);
+		break;
+	case QtFatalMsg:
+		fprintf(stderr,
+			"%s Fatal: %s (%s:%u, %s)\n",
+			dbs.constData(),
+			localMsg.constData(),
+			file,
+			context.line,
+			function);
+		break;
+	default:
+		fprintf(stderr,
+			"%s Unknown: %s (%s:%u, %s)\n",
+			dbs.constData(),
+			localMsg.constData(),
+			file,
+			context.line,
+			function);
+	}
+}
+
+/**
 	@brief main
 	Main function of QElectroTech
 	@param argc : number of parameters
@@ -32,10 +105,20 @@
 */
 int main(int argc, char **argv)
 {
+	qInstallMessageHandler(myMessageOutput);
 	//Some setup, notably to use with QSetting.
 	QCoreApplication::setOrganizationName("QElectroTech");
 	QCoreApplication::setOrganizationDomain("qelectrotech.org");
 	QCoreApplication::setApplicationName("QElectroTech");
+	qDebug()<<"test message generated";
+	qInfo()<<"OS:"
+		  + QString(QSysInfo::kernelType())
+		  + "-"
+		  + QString(QSysInfo::currentCpuArchitecture())
+		  + " Version:"
+		  + QString(QSysInfo::prettyProductName())
+		  + " Kernel:"
+		  + QString(QSysInfo::kernelVersion());
 	//Creation and execution of the application
 	//HighDPI
 	QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);

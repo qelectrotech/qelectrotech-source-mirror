@@ -74,6 +74,7 @@ include(SingleApplication/singleapplication.pri)
 include(sources/QWidgetAnimation/QWidgetAnimation.pri)
 
 DEFINES += QAPPLICATION_CLASS=QApplication
+DEFINES += QT_MESSAGELOGCONTEXT
 
 TEMPLATE = app
 DEPENDPATH += .

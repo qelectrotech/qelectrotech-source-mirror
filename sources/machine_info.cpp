@@ -20,6 +20,7 @@
 #include <QProcess>
 #include <QThread>
 #include <QApplication>
+#include <QDebug>
 
 /**
 	@brief Machine_info::Machine_info
@@ -195,5 +196,6 @@ QString Machine_info::compilation_info()
 				* screens[ii]->devicePixelRatio())
 			+ " ) </br>";
 	}
+	qDebug()<<compilation_info;
 	return compilation_info;
 }
