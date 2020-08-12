@@ -33,7 +33,9 @@ class ElementTextItemGroup;
 class AddElementTextCommand : public QUndoCommand
 {
 	public:
-		AddElementTextCommand(Element *element, DynamicElementTextItem *deti, QUndoCommand *parent = nullptr);
+		AddElementTextCommand(Element *element,
+				      DynamicElementTextItem *deti,
+				      QUndoCommand *parent = nullptr);
 		~AddElementTextCommand() override;
 		
 		void undo() override;
@@ -51,9 +53,16 @@ class AddElementTextCommand : public QUndoCommand
 class AddTextsGroupCommand : public QUndoCommand
 {
 	public:
-		AddTextsGroupCommand(Element *element, QString groupe_name, QUndoCommand *parent = nullptr);
-		AddTextsGroupCommand(Element *element, const QDomElement& dom_element, QUndoCommand *parent = nullptr);
-		AddTextsGroupCommand(Element *element, QString groupe_name, QList<DynamicElementTextItem *> texts_list, QUndoCommand *parent = nullptr);
+		AddTextsGroupCommand(Element *element,
+				     QString groupe_name,
+				     QUndoCommand *parent = nullptr);
+		AddTextsGroupCommand(Element *element,
+				     const QDomElement& dom_element,
+				     QUndoCommand *parent = nullptr);
+		AddTextsGroupCommand(Element *element,
+				     QString groupe_name,
+				     QList<DynamicElementTextItem *> texts_list,
+				     QUndoCommand *parent = nullptr);
 		~AddTextsGroupCommand() override;
 		
 		void undo() override;
@@ -75,7 +84,9 @@ class AddTextsGroupCommand : public QUndoCommand
 class RemoveTextsGroupCommand : public QUndoCommand
 {
 	public:
-		RemoveTextsGroupCommand(Element *element, ElementTextItemGroup *group, QUndoCommand *parent = nullptr);
+		RemoveTextsGroupCommand(Element *element,
+					ElementTextItemGroup *group,
+					QUndoCommand *parent = nullptr);
 		~RemoveTextsGroupCommand() override;
 		
 		void undo() override;
@@ -90,7 +101,9 @@ class RemoveTextsGroupCommand : public QUndoCommand
 class AddTextToGroupCommand : public QUndoCommand
 {
 	public:
-		AddTextToGroupCommand(DynamicElementTextItem *text, ElementTextItemGroup *group, QUndoCommand *parent = nullptr);
+		AddTextToGroupCommand(DynamicElementTextItem *text,
+				      ElementTextItemGroup *group,
+				      QUndoCommand *parent = nullptr);
 		~AddTextToGroupCommand() override;
 		
 		void undo() override;
@@ -105,7 +118,9 @@ class AddTextToGroupCommand : public QUndoCommand
 class RemoveTextFromGroupCommand : public QUndoCommand
 {
 	public:
-		RemoveTextFromGroupCommand(DynamicElementTextItem *text, ElementTextItemGroup *group, QUndoCommand *parent = nullptr);
+		RemoveTextFromGroupCommand(DynamicElementTextItem *text,
+					   ElementTextItemGroup *group,
+					   QUndoCommand *parent = nullptr);
 		~RemoveTextFromGroupCommand() override;
 		
 		void undo() override;
@@ -120,7 +135,9 @@ class RemoveTextFromGroupCommand : public QUndoCommand
 class AlignmentTextsGroupCommand : public QUndoCommand
 {
 	public:
-		AlignmentTextsGroupCommand(ElementTextItemGroup *group, Qt::Alignment new_alignment, QUndoCommand *parent = nullptr);
+		AlignmentTextsGroupCommand(ElementTextItemGroup *group,
+					   Qt::Alignment new_alignment,
+					   QUndoCommand *parent = nullptr);
 		~AlignmentTextsGroupCommand() override;
 		
 		int id() const override{return 6;}
