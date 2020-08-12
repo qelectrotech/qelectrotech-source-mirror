@@ -77,37 +77,6 @@ class DeletePartsCommand : public ElementEditionCommand {
 };
 
 /**
-	This command pastes primitives when editing an electrical element.
-*/
-class PastePartsCommand : public ElementEditionCommand {
-	// constructors, destructor
-	public:
-	PastePartsCommand(ElementView *, const ElementContent &, QUndoCommand * = nullptr);
-	~PastePartsCommand() override;
-	private:
-	PastePartsCommand(const PastePartsCommand &);
-	
-	// methods
-	public:
-	void undo() override;
-	void redo() override;
-	virtual void setOffset(int, const QPointF &, int, const QPointF &);
-	
-	// attributes
-	private:
-	/// Pasted content
-	ElementContent content_;
-	/// Data required to undo a copy/paste with offset
-	int old_offset_paste_count_;
-	QPointF old_start_top_left_corner_;
-	int new_offset_paste_count_;
-	QPointF new_start_top_left_corner_;
-	bool uses_offset;
-	/// Prevent the first call to redo()
-	bool first_redo;
-};
-
-/**
 	This command cut primitives when editing an electrical element.
 */
 class CutPartsCommand : public DeletePartsCommand {

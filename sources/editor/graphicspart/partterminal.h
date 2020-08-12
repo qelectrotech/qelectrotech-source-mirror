@@ -72,7 +72,8 @@ class PartTerminal : public CustomElementGraphicPart
         Qet::Orientation orientation() const {return d->m_orientation;}
 		void setOrientation(Qet::Orientation ori);
 
-        void setName(QString& name);
+		void setName(QString& name);
+		void setNewUuid();
 	
 	private:
 		void updateSecondPoint();

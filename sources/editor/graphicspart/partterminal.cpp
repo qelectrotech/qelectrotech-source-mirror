@@ -144,6 +144,11 @@ void PartTerminal::setName(QString& name)
 	emit nameChanged();
 }
 
+void PartTerminal::setNewUuid()
+{
+	d->m_uuid = QUuid::createUuid();
+}
+
 /**
 	Met a jour la position du second point en fonction de la position et de
 	l'orientation de la borne.

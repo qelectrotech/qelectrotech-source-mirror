@@ -17,8 +17,8 @@
 */
 #include "elementview.h"
 #include "qetelementeditor.h"
-#include "editorcommands.h"
 #include "qetapp.h"
+#include "pastepartscommand.h"
 /**
 	Constructeur
 	@param scene ElementScene visualisee par cette ElementView
