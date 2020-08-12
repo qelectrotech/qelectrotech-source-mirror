@@ -1,0 +1,29 @@
+<definition type="element" width="10" height="30" hotspot_y="14" link_type="simple" hotspot_x="4" orientation="dyyy" version="0.80">
+    <uuid uuid="{1815e51a-f497-4323-9dc8-7d54b56ff7ca}"/>
+    <names>
+        <name lang="fr">037151 - Viking3 - 3 jonctions 3 étages 2,5mm² pas 5mm Gris</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Legrand</elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="description" show="1">Bloc de jonction de passage à vis Viking3 avec 3 jonctions 3 étages section 2,5mm² - pas 5mm - gris</elementInformation>
+        <elementInformation name="designation" show="1">037151</elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+    </elementInformations>
+    <informations>Arnaud VALMARY</informations>
+    <description>
+        <dynamic_text x="-2" frame="false" rotation="270" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" Valignment="AlignTop" text_from="ElementInfo" z="1" y="11" text_width="-1" uuid="{91c840ee-306f-4409-bae7-790d713a33d6}" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line length2="1.5" y1="10" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" end2="none" x1="0" antialias="false" y2="3" end1="none"/>
+        <line length2="1.5" y1="-10" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" end2="none" x1="0" antialias="false" y2="-3" end1="none"/>
+        <circle x="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-2.5" diameter="5"/>
+        <terminal x="0" name="" y="10" orientation="s" uuid="{2ed19cfc-5d43-4663-b0b9-2f3fa60c6c70}"/>
+        <terminal x="0" name="" y="-10" orientation="n" uuid="{de96a6c0-3b84-49f9-86b9-d49cd7f27db1}"/>
+    </description>
+</definition>
