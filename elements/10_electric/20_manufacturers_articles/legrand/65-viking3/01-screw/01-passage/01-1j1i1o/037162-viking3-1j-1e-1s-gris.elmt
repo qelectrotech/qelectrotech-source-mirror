@@ -1,0 +1,29 @@
+<definition type="element" hotspot_x="4" width="10" height="30" orientation="dyyy" link_type="simple" version="0.80" hotspot_y="14">
+    <uuid uuid="{4d94b037-93a1-43e1-8512-32311513848e}"/>
+    <names>
+        <name lang="fr">037162 - Viking3 - 1 jonction 1 entrée 1 sortie 6mm² pas 8mm Gris</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="description">Bloc de jonction de passage à vis Viking3 avec 1 jonction 1 entrée 1 sortie section 6mm² - pas 8mm - gris</elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+        <elementInformation show="1" name="designation">037162</elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+    </elementInformations>
+    <informations>Arnaud VALMARY</informations>
+    <description>
+        <dynamic_text rotation="270" text_width="-1" x="-2" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" Valignment="AlignTop" y="11" z="1" frame="false" Halignment="AlignLeft" uuid="{91c840ee-306f-4409-bae7-790d713a33d6}" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line length1="1.5" length2="1.5" y2="3" end1="none" y1="10" antialias="false" x2="0" end2="none" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" y2="-3" end1="none" y1="-10" antialias="false" x2="0" end2="none" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-2.5" y="-2.5" antialias="true" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="0" y="10" orientation="s" uuid="{2ed19cfc-5d43-4663-b0b9-2f3fa60c6c70}" name=""/>
+        <terminal x="0" y="-10" orientation="n" uuid="{de96a6c0-3b84-49f9-86b9-d49cd7f27db1}" name=""/>
+    </description>
+</definition>

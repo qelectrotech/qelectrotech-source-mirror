@@ -1,0 +1,29 @@
+<definition type="element" hotspot_x="4" width="10" height="30" orientation="dyyy" link_type="simple" version="0.80" hotspot_y="14">
+    <uuid uuid="{cd0f8489-8a96-49d6-aa17-1dd1b5f1914a}"/>
+    <names>
+        <name lang="fr">037179 - Viking3 - 1 jonction 2 entrées 2 sorties 4mm² pas 6mm Vert/jaune</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="description">Bloc de jonction pour conducteur de protection à vis Viking3 avec 1 jonction 2 entrées 2 sorties section 4mm² - pas 6mm</elementInformation>
+        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
+        <elementInformation show="1" name="designation">037179</elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+    </elementInformations>
+    <informations>Arnaud VALMARY</informations>
+    <description>
+        <dynamic_text rotation="270" text_width="-1" x="-2" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" Valignment="AlignTop" y="11" z="1" frame="false" Halignment="AlignLeft" uuid="{91c840ee-306f-4409-bae7-790d713a33d6}" text_from="ElementInfo">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line length1="1.5" length2="1.5" y2="3" end1="none" y1="10" antialias="false" x2="0" end2="none" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" y2="-3" end1="none" y1="-10" antialias="false" x2="0" end2="none" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-2.5" y="-2.5" antialias="true" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="0" y="10" orientation="s" uuid="{9546575d-7c5b-4d05-ad88-a7512d169d0d}" name=""/>
+        <terminal x="0" y="-10" orientation="n" uuid="{5f2d92cc-a3ff-4471-b818-c802111218e2}" name=""/>
+    </description>
+</definition>
