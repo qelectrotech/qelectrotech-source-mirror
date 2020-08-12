@@ -74,11 +74,8 @@ m_diagram(diagram)
 		for(ElementTextItemGroup *grp : groups_list)
 			setupAnimation(grp, "rotation", grp->rotation(), m_rotation);
 	}
-#if QT_VERSION >= 0x050900
 	else
 		setObsolete(true);
-#pragma message("@TODO remove code for QT 5.9 or later")
-#endif
 	
 }
 
@@ -133,11 +130,8 @@ void RotateTextsCommand::openDialog()
 	
 	if (ori_text_dialog.exec() == QDialog::Accepted)
 		m_rotation = ori_widget->orientation();
-#if QT_VERSION >= 0x050900
 	else
 		setObsolete(true);
-#pragma message("@TODO remove code for QT 5.9 or later")
-#endif
 }
 
 void RotateTextsCommand::setupAnimation(QObject *target, const QByteArray &propertyName, const QVariant& start, const QVariant& end)

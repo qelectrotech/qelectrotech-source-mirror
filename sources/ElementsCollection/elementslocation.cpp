@@ -796,13 +796,7 @@ DiagramContext ElementsLocation::elementInformations() const
 QDebug operator<< (QDebug debug, const ElementsLocation &location)
 {
 	QDebugStateSaver saver(debug);
-
-#if QT_VERSION >= 0x050400
-#pragma message("@TODO remove code for QT 5.04 or later")
 	debug.noquote();
-#else
-	debug.nospace();
-#endif
 
 	QString msg;
 	msg += "ElementsLocation(";
