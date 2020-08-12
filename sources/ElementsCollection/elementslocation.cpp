@@ -29,16 +29,18 @@
 int ElementsLocation::MetaTypeId = qRegisterMetaType<ElementsLocation>("ElementsLocation");
 
 /**
- * @brief ElementsLocation::ElementsLocation
- * Constructor
- */
+	@brief ElementsLocation::ElementsLocation
+	Constructor
+*/
 ElementsLocation::ElementsLocation()
 {}
 
 /**
-	Constructeur
-	@param p Chemin de l'emplacement de l'element
-	@param pr Projet de l'emplacement de l'element
+	@brief ElementsLocation::ElementsLocation
+	@param path :
+	Chemin de l'emplacement de l'element
+	@param project :
+	Projet de l'emplacement de l'element
 */
 ElementsLocation::ElementsLocation(const QString &path, QETProject *project) :
 	m_project(project)
@@ -63,15 +65,17 @@ ElementsLocation::ElementsLocation(const ElementsLocation &other) :
 {}
 
 /**
- * @brief ElementsLocation::ElementLocation
- * Constructor, build an ElementLocation from a QMimeData, the mime data format
- * must be "application/x-qet-element-uri" or "application/x-qet-category-uri".
- * This location can be null even if format is valid.
- * @param data
- */
+	@brief ElementsLocation::ElementLocation
+	Constructor, build an ElementLocation from a QMimeData,
+	the mime data format must be "application/x-qet-element-uri"
+	or "application/x-qet-category-uri".
+	This location can be null even if format is valid.
+	@param data
+*/
 ElementsLocation::ElementsLocation(const QMimeData *data)
 {
-	if (data->hasFormat("application/x-qet-element-uri") || data->hasFormat("application/x-qet-category-uri"))
+	if (data->hasFormat("application/x-qet-element-uri")
+			|| data->hasFormat("application/x-qet-category-uri"))
 		setPath(data->text());
 }
 
@@ -87,9 +91,11 @@ ElementsLocation &ElementsLocation::operator=(const ElementsLocation &other) {
 }
 
 /**
+	@brief ElementsLocation::operator ==
 	Operateur de comparaison
 	@param other Autre emplacement d'element a comparer
-	@return true si other et cet ElementsLocation sont identiques, false sinon
+	@return true si other et cet ElementsLocation sont identiques,
+	false sinon
 */
 bool ElementsLocation::operator==(const ElementsLocation &other) const {
 	return(
@@ -99,9 +105,11 @@ bool ElementsLocation::operator==(const ElementsLocation &other) const {
 }
 
 /**
+	@brief ElementsLocation::operator !=
 	Operateur de comparaison
 	@param other Autre emplacement d'element a comparer
-	@return true si other et cet ElementsLocation sont differents, false sinon
+	@return true si other et cet ElementsLocation sont differents,
+	false sinon
 */
 bool ElementsLocation::operator!=(const ElementsLocation &other) const {
 	return(
@@ -111,11 +119,12 @@ bool ElementsLocation::operator!=(const ElementsLocation &other) const {
 }
 
 /**
- * @brief ElementsLocation::baseName
- * @return The base name of the element or directory.
- * Unlike ElementsLocation::fileName , this method don't return the extension name.
- * For exemple if this location represent an element they return myElement.
- * @see fileName()
+	@brief ElementsLocation::baseName
+	@return The base name of the element or directory.
+	Unlike ElementsLocation::fileName,
+	this method don't return the extension name.
+	For exemple if this location represent an element they return myElement.
+	@see fileName()
  */
 QString ElementsLocation::baseName() const {
 	QRegExp regexp("^.*([^/]+)\\.elmt$");
@@ -126,13 +135,15 @@ QString ElementsLocation::baseName() const {
 }
 
 /**
- * @brief ElementsLocation::collectionPath
- * Return the path of the represented element relative to collection
- * if @protocol is true the path is prepended by the collection type (common://, custom:// or embed://)
- * else if false, only the collection path is returned without the collection type.
- * @param protocol
- * @return the path
- */
+	@brief ElementsLocation::collectionPath
+	Return the path of the represented element relative to collection
+	if protocol is true the path is prepended by
+	the collection type (common://, custom:// or embed://)
+	else if false,
+	only the collection path is returned without the collection type.
+	@param protocol
+	@return the path
+*/
 QString ElementsLocation::collectionPath(bool protocol) const
 {
 	if (protocol)
@@ -145,23 +156,27 @@ QString ElementsLocation::collectionPath(bool protocol) const
 }
 
 /**
- * @brief ElementsLocation::projectCollectionPath
- * @return The path is in form : project0+embed://dir/subdir/myElement.elmt
- * If this item represent a file system thing, return a null QString;
- */
+	@brief ElementsLocation::projectCollectionPath
+	@return The path is in form : project0+embed://dir/subdir/myElement.elmt
+	If this item represent a file system thing, return a null QString;
+*/
 QString ElementsLocation::projectCollectionPath() const
 {
 	if (isFileSystem())
 		return QString();
 	else
-		return QString("project" + QString::number(QETApp::projectId(m_project)) + "+" + collectionPath());
+		return QString("project"
+			       + QString::number(QETApp::projectId(m_project))
+			       + "+"
+			       + collectionPath());
 }
 
 /**
- * @brief ElementsLocation::fileSystemPath
- * @return The file system path of this element, (the separator is always '/' see QDir::toNativeSeparators())
- * If this element is embedded in a project return an empty string;
- */
+	@brief ElementsLocation::fileSystemPath
+	@return The file system path of this element,
+	(the separator is always '/' see QDir::toNativeSeparators())
+	If this element is embedded in a project return an empty string;
+*/
 QString ElementsLocation::fileSystemPath() const
 {
 	if (!m_project)
@@ -171,20 +186,21 @@ QString ElementsLocation::fileSystemPath() const
 }
 
 /**
- * @brief ElementsLocation::path
- * @return The path of this location.
- * OBSOLETE, use instead collectionPath(true)
- */
+	@brief ElementsLocation::path
+	@return The path of this location.
+	@deprecated use instead collectionPath(true)
+*/
 QString ElementsLocation::path() const {
 	return(m_collection_path);
 }
 
 /**
- * @brief ElementsLocation::setPath
- * Set the path of this item.
- * The path can be relative to a collection (start by common:// , custom:// or embed://) or not.
- * @param path
- */
+	@brief ElementsLocation::setPath
+	Set the path of this item.
+	The path can be relative to a collection
+	(start by common:// , custom:// or embed://) or not.
+	@param path
+*/
 void ElementsLocation::setPath(const QString &path)
 {
 		QString tmp_path = path;
@@ -204,7 +220,7 @@ void ElementsLocation::setPath(const QString &path)
 
 	}
 
-		//The path start with project, we get the project and the path from the string
+	//The path start with project, we get the project and the path from the string
 	else if (tmp_path.startsWith("project"))
 	{
 		QRegExp rx("^project([0-9]+)\\+(embed:\\/\\/.*)$", Qt::CaseInsensitive);
@@ -224,7 +240,8 @@ void ElementsLocation::setPath(const QString &path)
 		}
 	}
 
-		//The path is in file system, the given path is relative to common or custom collection
+	// The path is in file system,
+	// the given path is relative to common or custom collection
 	else if (path.startsWith("common://") || path.startsWith("custom://"))
 	{
 		QString p;
@@ -242,7 +259,7 @@ void ElementsLocation::setPath(const QString &path)
 		m_file_system_path = p;
 		m_collection_path = path;
 	}
-		//In this case, the path is supposed to be relative to the file system.
+	//In this case, the path is supposed to be relative to the file system.
 	else
 	{
 		QString path_ = path;
@@ -282,11 +299,11 @@ void ElementsLocation::setPath(const QString &path)
 }
 
 /**
- * @brief ElementsLocation::addToPath
- * Add a string to the actual path of this location
- * @param string
- * @return True if the operation success
- */
+	@brief ElementsLocation::addToPath
+	Add a string to the actual path of this location
+	@param string
+	@return True if the operation success
+*/
 bool ElementsLocation::addToPath(const QString &string)
 {
 	if (m_collection_path.endsWith(".elmt", Qt::CaseInsensitive))
@@ -308,6 +325,7 @@ bool ElementsLocation::addToPath(const QString &string)
 }
 
 /**
+	@brief ElementsLocation::parent
 	@return the location of the parent category, or a copy of this location
 	when it represents a root category.
 */
@@ -324,6 +342,7 @@ ElementsLocation ElementsLocation::parent() const {
 }
 
 /**
+	@brief ElementsLocation::project
 	@return le projet de cet emplacement ou 0 si celui-ci n'est pas lie a
 	un projet.
 */
@@ -332,7 +351,9 @@ QETProject *ElementsLocation::project() const {
 }
 
 /**
-	@param project le nouveau projet pointe par cet emplacement
+	@brief ElementsLocation::setProject
+	@param project :
+	le nouveau projet pointe par cet emplacement
 	Indiquer 0 pour que cet emplacement ne soit plus lie a un projet.
 */
 void ElementsLocation::setProject(QETProject *project) {
@@ -340,6 +361,7 @@ void ElementsLocation::setProject(QETProject *project) {
 }
 
 /**
+	@brief ElementsLocation::isNull
 	@return true si l'emplacement semble utilisable (chemin virtuel non vide).
 */
 bool ElementsLocation::isNull() const {
@@ -347,6 +369,7 @@ bool ElementsLocation::isNull() const {
 }
 
 /**
+	@brief ElementsLocation::toString
 	@return Une chaine de caracteres representant l'emplacement
 */
 QString ElementsLocation::toString() const {
@@ -362,25 +385,25 @@ QString ElementsLocation::toString() const {
 }
 
 /**
- * @brief ElementsLocation::isElement
- * @return true if this location represent an element
- */
+	@brief ElementsLocation::isElement
+	@return true if this location represent an element
+*/
 bool ElementsLocation::isElement() const {
 	return m_collection_path.endsWith(".elmt");
 }
 
 /**
- * @brief ElementsLocation::isDirectory
- * @return true if this location represent a directory
- */
+	@brief ElementsLocation::isDirectory
+	@return true if this location represent a directory
+*/
 bool ElementsLocation::isDirectory() const {
 	return (!isElement() && !m_collection_path.isEmpty());
 }
 
 /**
- * @brief ElementsLocation::isFileSystem
- * @return
- */
+	@brief ElementsLocation::isFileSystem
+	@return true if
+*/
 bool ElementsLocation::isFileSystem() const
 {
 	if (m_project) return false;
@@ -389,27 +412,29 @@ bool ElementsLocation::isFileSystem() const
 }
 
 /**
- * @brief ElementsLocation::isCommonCollection
- * @return True if this location represent an item from the common collection
- */
+	@brief ElementsLocation::isCommonCollection
+	@return
+	True if this location represent an item from the common collection
+*/
 bool ElementsLocation::isCommonCollection() const
 {
 	return fileSystemPath().startsWith(QETApp::commonElementsDirN());
 }
 
 /**
- * @brief ElementsLocation::isCustomCollection
- * @return True if this location represent an item from the custom collection
- */
+	@brief ElementsLocation::isCustomCollection
+	@return
+	True if this location represent an item from the custom collection
+*/
 bool ElementsLocation::isCustomCollection() const
 {
 	return fileSystemPath().startsWith(QETApp::customElementsDirN());
 }
 
 /**
- * @brief ElementsLocation::isProject
- * @return True if this location represent an item from a project.
- */
+	@brief ElementsLocation::isProject
+	@return True if this location represent an item from a project.
+*/
 bool ElementsLocation::isProject() const
 {
 	if (m_project && !m_collection_path.isEmpty())
@@ -419,9 +444,10 @@ bool ElementsLocation::isProject() const
 }
 
 /**
- * @brief ElementsLocation::exist
- * @return True if this location represent an existing directory or element.
- */
+	@brief ElementsLocation::exist
+	@return
+	True if this location represent an existing directory or element.
+*/
 bool ElementsLocation::exist() const
 {
 	if (m_project)
@@ -445,9 +471,9 @@ bool ElementsLocation::exist() const
 }
 
 /**
- * @brief ElementsLocation::isWritable
- * @return True if this element can be writable (can use set xml)
- */
+	@brief ElementsLocation::isWritable
+	@return True if this element can be writable (can use set xml)
+*/
 bool ElementsLocation::isWritable() const
 {
 	if (m_project)
@@ -463,10 +489,11 @@ bool ElementsLocation::isWritable() const
 }
 
 /**
- * @brief ElementsLocation::projectCollection
- * @return If this location represente a item in an embedded project collection, return this collection
- * else return nullptr.
- */
+	@brief ElementsLocation::projectCollection
+	@return
+	If this location represente a item in an embedded project collection,
+	return this collection else return nullptr.
+*/
 XmlElementCollection *ElementsLocation::projectCollection() const
 {
 	if (m_project)
@@ -476,10 +503,10 @@ XmlElementCollection *ElementsLocation::projectCollection() const
 }
 
 /**
- * @brief ElementsLocation::nameList
- * @return the namelist of the represented element or directory.
- * If namelist can't be set, return a empty namelist
- */
+	@brief ElementsLocation::nameList
+	@return the namelist of the represented element or directory.
+	If namelist can't be set, return a empty namelist
+*/
 NamesList ElementsLocation::nameList()
 {
 	NamesList nl;
@@ -514,10 +541,10 @@ NamesList ElementsLocation::nameList()
 }
 
 /**
- * @brief ElementsLocation::xml
- * @return The definition of this element or directory.
- * The definition can be null.
- */
+	@brief ElementsLocation::xml
+	@return The definition of this element or directory.
+	The definition can be null.
+*/
 QDomElement ElementsLocation::xml() const
 {
 	if (!m_project)
@@ -546,15 +573,19 @@ QDomElement ElementsLocation::xml() const
 }
 
 /**
- * @brief ElementsLocation::pugiXml
- * @return the xml document of this element or directory
- * The definition can be null
- */
+	@brief ElementsLocation::pugiXml
+	@return the xml document of this element or directory
+	The definition can be null
+*/
 pugi::xml_document ElementsLocation::pugiXml() const
 {
-		//Except for linux OS (because linux keep in cache the file), we keep in memory the xml
-		//to avoid multiple access to file.
-		//keep in memory the XML, consumes a little more RAM, for this reason we don't use it for linux to minimize the RAM footprint.
+	/* Except for linux OS (because linux keep in cache the file),
+	 * we keep in memory the xml
+	 * to avoid multiple access to file.
+	 * keep in memory the XML,
+	 * consumes a little more RAM,
+	 * for this reason we don't use it for linux to minimize the RAM footprint.
+	 */
 #ifndef Q_OS_LINUX
 	if (!m_string_stream.str().empty())
 	{
@@ -579,7 +610,7 @@ pugi::xml_document ElementsLocation::pugiXml() const
 		QString str = m_collection_path;
 		if (isElement())
 		{
-				//Get the xml dom from Qt xml and copie to pugi xml
+			//Get the xml dom from Qt xml and copie to pugi xml
 			QDomElement element = m_project->embeddedElementCollection()->element(str.remove("embed://"));
 			QDomDocument qdoc;
 			qdoc.appendChild(qdoc.importNode(element.firstChildElement("definition"), true));
@@ -604,13 +635,14 @@ pugi::xml_document ElementsLocation::pugiXml() const
 }
 
 /**
- * @brief ElementsLocation::setXml
- * Replace the current xml description by @xml_element;
- * The document element of @xml_document must have tagname "definition" to be written
- * This definition must be writable
- * @param xml_element
- * @return true if success
- */
+	@brief ElementsLocation::setXml
+	Replace the current xml description by xml_document;
+	The document element of xml_document must have
+	tagname "definition" to be written
+	This definition must be writable
+	@param xml_document
+	@return true if success
+*/
 bool ElementsLocation::setXml(const QDomDocument &xml_document) const
 {
 	if (!isWritable())
@@ -666,10 +698,10 @@ bool ElementsLocation::setXml(const QDomDocument &xml_document) const
 }
 
 /**
- * @brief ElementsLocation::uuid
- * @return The uuid of the pointed element
- * Uuid can be null
- */
+	@brief ElementsLocation::uuid
+	@return The uuid of the pointed element
+	Uuid can be null
+*/
 QUuid ElementsLocation::uuid() const
 {
 	if (!isElement()) {
@@ -685,16 +717,17 @@ QUuid ElementsLocation::uuid() const
 }
 
 /**
- * @brief ElementLocation::icon
- * @return The icon of the represented element.
- * If icon can't be set, return a null QIcon
- */
+	@brief ElementLocation::icon
+	@return The icon of the represented element.
+	If icon can't be set, return a null QIcon
+*/
 QIcon ElementsLocation::icon() const
 {
 	if (!m_project)
 	{
 		ElementsCollectionCache *cache = QETApp::collectionCache();
-		ElementsLocation loc(*this); //Make a copy of this to keep this method const
+		// Make a copy of this to keep this method const
+		ElementsLocation loc(*this);
 		if (cache->fetchElement(loc))
 			return QIcon(cache->pixmap());
 	}
@@ -706,9 +739,9 @@ QIcon ElementsLocation::icon() const
 }
 
 /**
- * @brief ElementLocation::name
- * @return The name of the represented element in the current local
- */
+	@brief ElementLocation::name
+	@return The name of the represented element in the current local
+*/
 QString ElementsLocation::name() const
 {
 	NamesList nl;
@@ -717,13 +750,15 @@ QString ElementsLocation::name() const
 }
 
 /**
- * @brief ElementLocation::fileName
- * @return Return the file name of the represented item, whatever the storage system (file system, xml collection)
- * with is file extension.
- * For example if this location represent an element, they return myElement.elmt.
- * For a directory return myDirectory.
- * @see baseName
- */
+	@brief ElementLocation::fileName
+	@return Return the file name of the represented item,
+	whatever the storage system (file system, xml collection)
+	with is file extension.
+	For example if this location represent an element,
+	they return myElement.elmt.
+	For a directory return myDirectory.
+	@see baseName
+*/
 QString ElementsLocation::fileName() const
 {
 	if (m_collection_path.isEmpty()) return QString();
@@ -734,10 +769,11 @@ QString ElementsLocation::fileName() const
 }
 
 /**
- * @brief ElementsLocation::elementInformations
- * @return the element information of the element represented by this location.
- * If the location is a directory, the returned diagram context is empty
- */
+	@brief ElementsLocation::elementInformations
+	@return
+	the element information of the element represented by this location.
+	If the location is a directory, the returned diagram context is empty
+*/
 DiagramContext ElementsLocation::elementInformations() const
 {
 	DiagramContext context;
@@ -745,10 +781,18 @@ DiagramContext ElementsLocation::elementInformations() const
 		return context;
 	}
 
-	context.fromXml(pugiXml().document_element().child("elementInformations"), "elementInformation");
+	context.fromXml(pugiXml().document_element().child(
+				"elementInformations"),
+			"elementInformation");
 	return  context;
 }
 
+/**
+	@brief operator <<
+	@param debug
+	@param location
+	@return
+*/
 QDebug operator<< (QDebug debug, const ElementsLocation &location)
 {
 	QDebugStateSaver saver(debug);
@@ -762,7 +806,8 @@ QDebug operator<< (QDebug debug, const ElementsLocation &location)
 
 	QString msg;
 	msg += "ElementsLocation(";
-	msg += (location.isProject()? location.projectCollectionPath() : location.collectionPath(true));
+	msg += (location.isProject()? location.projectCollectionPath()
+				    : location.collectionPath(true));
 	msg += location.exist()? ", true" : ", false";
 	msg +=")";
 

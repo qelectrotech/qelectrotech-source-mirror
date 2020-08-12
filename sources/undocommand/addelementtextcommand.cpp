@@ -28,6 +28,12 @@
  * AddElementTextCommand*
  * **********************/
 
+/**
+	@brief AddElementTextCommand::AddElementTextCommand
+	@param element
+	@param deti
+	@param parent
+*/
 AddElementTextCommand::AddElementTextCommand(Element *element,
 					     DynamicElementTextItem *deti,
 					     QUndoCommand *parent):
@@ -38,6 +44,9 @@ AddElementTextCommand::AddElementTextCommand(Element *element,
 	setText(QObject::tr("Ajouter un texte d'élément"));	
 }
 
+/**
+	@brief AddElementTextCommand::~AddElementTextCommand
+*/
 AddElementTextCommand::~AddElementTextCommand()
 {
 	if(m_text->parentGroup())
@@ -47,6 +56,9 @@ AddElementTextCommand::~AddElementTextCommand()
 		delete m_text;
 }
 
+/**
+	@brief AddElementTextCommand::undo
+*/
 void AddElementTextCommand::undo()
 {
 	m_element->removeDynamicTextItem(m_text);
@@ -54,6 +66,9 @@ void AddElementTextCommand::undo()
 		m_text->scene()->removeItem(m_text);
 }
 
+/**
+	@brief AddElementTextCommand::redo
+*/
 void AddElementTextCommand::redo()
 {
 	m_text->setParentItem(m_element);
@@ -65,11 +80,11 @@ void AddElementTextCommand::redo()
  * AddTextsGroupCommand*
  * *********************/
 /**
- * @brief AddTextsGroupCommand::AddTextsGroupCommand
- * @param element : the element to add a new group
- * @param groupe_name : the name of the group
- * @param parent : parent undo
- */
+	@brief AddTextsGroupCommand::AddTextsGroupCommand
+	@param element : the element to add a new group
+	@param groupe_name : the name of the group
+	@param parent : parent undo
+*/
 AddTextsGroupCommand::AddTextsGroupCommand(Element *element,
 					   QString groupe_name,
 					   QUndoCommand *parent) :
@@ -81,11 +96,13 @@ AddTextsGroupCommand::AddTextsGroupCommand(Element *element,
 }
 
 /**
- * @brief AddTextsGroupCommand::AddTextsGroupCommand
- * @param element : The element to add a new group
- * @param dom_element : the first time the group is created, we call the function fromXml of the group, and give @dom_element has argument.
- * @param parent : parent undo
- */
+	@brief AddTextsGroupCommand::AddTextsGroupCommand
+	@param element : The element to add a new group
+	@param dom_element : the first time the group is created,
+	we call the function fromXml of the group,
+	and give @dom_element has argument.
+	@param parent : parent undo
+*/
 AddTextsGroupCommand::AddTextsGroupCommand(Element *element,
 					   const QDomElement& dom_element,
 					   QUndoCommand *parent) :
@@ -97,11 +114,12 @@ AddTextsGroupCommand::AddTextsGroupCommand(Element *element,
 }
 
 /**
- * @brief AddTextsGroupCommand::AddTextsGroupCommand
- * @param element : The element to add a new group
- * @param texts_list : a list of texts to add to the created group (texts must be child of element)
- * @param parent : parent undo
- */
+	@brief AddTextsGroupCommand::AddTextsGroupCommand
+	@param element : The element to add a new group
+	@param texts_list : a list of texts to add to the created group
+	(texts must be child of element)
+	@param parent : parent undo
+*/
 AddTextsGroupCommand::AddTextsGroupCommand(
 		Element *element,
 		QString groupe_name,
@@ -125,18 +143,24 @@ AddTextsGroupCommand::AddTextsGroupCommand(
 }
 
 /**
- * @brief AddTextsGroupCommand::~AddTextsGroupCommand
- * Destructor
- */
+	@brief AddTextsGroupCommand::~AddTextsGroupCommand
+	Destructor
+*/
 AddTextsGroupCommand::~AddTextsGroupCommand()
 {}
 
+/**
+	@brief AddTextsGroupCommand::undo
+*/
 void AddTextsGroupCommand::undo()
 {
 	if(m_element && m_group)
 		m_element.data()->removeTextGroup(m_group);
 }
 
+/**
+	@brief AddTextsGroupCommand::redo
+*/
 void AddTextsGroupCommand::redo()
 {
 	if(!m_element)
@@ -179,11 +203,11 @@ void AddTextsGroupCommand::redo()
  * RemoveTextsGroupCommand*
  * ************************/
 /**
- * @brief RemoveTextsGroupCommand::RemoveTextsGroupCommand
- * @param element : The element where we remove a group
- * @param group : the group to remove
- * @param parent : the parent undo command
- */
+	@brief RemoveTextsGroupCommand::RemoveTextsGroupCommand
+	@param element : The element where we remove a group
+	@param group : the group to remove
+	@param parent : the parent undo command
+*/
 RemoveTextsGroupCommand::RemoveTextsGroupCommand(Element *element,
 						 ElementTextItemGroup *group,
 						 QUndoCommand *parent) :
@@ -197,9 +221,15 @@ RemoveTextsGroupCommand::RemoveTextsGroupCommand(Element *element,
 		m_text_list.append(deti);
 }
 
+/**
+	@brief RemoveTextsGroupCommand::~RemoveTextsGroupCommand
+*/
 RemoveTextsGroupCommand::~RemoveTextsGroupCommand()
 {}
-	
+
+/**
+	@brief RemoveTextsGroupCommand::undo
+*/
 void RemoveTextsGroupCommand::undo()
 {
 	if(m_element && m_group)
@@ -214,6 +244,9 @@ void RemoveTextsGroupCommand::undo()
 	}
 }
 
+/**
+	@brief RemoveTextsGroupCommand::redo
+*/
 void RemoveTextsGroupCommand::redo()
 {
 	if(m_element && m_group)
@@ -233,11 +266,11 @@ void RemoveTextsGroupCommand::redo()
  * AddTextToGroupCommand*
  * **********************/
 /**
- * @brief AddTextToGroupCommand::AddTextToGroupCommand
- * @param text
- * @param group
- * @param parent
- */
+	@brief AddTextToGroupCommand::AddTextToGroupCommand
+	@param text
+	@param group
+	@param parent
+*/
 AddTextToGroupCommand::AddTextToGroupCommand(DynamicElementTextItem *text,
 					     ElementTextItemGroup *group,
 					     QUndoCommand *parent) :
@@ -250,9 +283,9 @@ AddTextToGroupCommand::AddTextToGroupCommand(DynamicElementTextItem *text,
 }
 
 /**
- * @brief AddTextToGroupCommand::~AddTextToGroupCommand
- * Destructor
- */
+	@brief AddTextToGroupCommand::~AddTextToGroupCommand
+	Destructor
+*/
 AddTextToGroupCommand::~AddTextToGroupCommand()
 {
 	if(m_group && m_text && m_element)
@@ -263,12 +296,18 @@ AddTextToGroupCommand::~AddTextToGroupCommand()
 	}
 }
 
+/**
+	@brief AddTextToGroupCommand::undo
+*/
 void AddTextToGroupCommand::undo()
 {
 	if(m_element && m_group && m_text)
 		m_element.data()->removeTextFromGroup(m_text, m_group);
 }
 
+/**
+	@brief AddTextToGroupCommand::redo
+*/
 void AddTextToGroupCommand::redo()
 {
 	if(m_element && m_group && m_text)
@@ -286,11 +325,11 @@ void AddTextToGroupCommand::redo()
  * RemoveTextFromGroupCommand*
  * ***************************/
 /**
- * @brief RemoveTextFromGroupCommand::RemoveTextFromGroupCommand
- * @param text : text to add to @group
- * @param group
- * @param parent : parent undo command
- */
+	@brief RemoveTextFromGroupCommand::RemoveTextFromGroupCommand
+	@param text : text to add to @group
+	@param group
+	@param parent : parent undo command
+*/
 RemoveTextFromGroupCommand::RemoveTextFromGroupCommand(
 		DynamicElementTextItem *text,
 		ElementTextItemGroup *group,
@@ -304,9 +343,9 @@ RemoveTextFromGroupCommand::RemoveTextFromGroupCommand(
 }
 
 /**
- * @brief RemoveTextFromGroupCommand::~RemoveTextFromGroupCommand
- * Destructor
- */
+	@brief RemoveTextFromGroupCommand::~RemoveTextFromGroupCommand
+	Destructor
+*/
 RemoveTextFromGroupCommand::~RemoveTextFromGroupCommand()
 {
 	if(m_group && m_text && m_element)
@@ -317,12 +356,18 @@ RemoveTextFromGroupCommand::~RemoveTextFromGroupCommand()
 	}
 }
 
+/**
+	@brief RemoveTextFromGroupCommand::undo
+*/
 void RemoveTextFromGroupCommand::undo()
 {
 	if(m_element && m_group && m_text)
 		m_element.data()->addTextToGroup(m_text, m_group);
 }
 
+/**
+	@brief RemoveTextFromGroupCommand::redo
+*/
 void RemoveTextFromGroupCommand::redo()
 {
 	if(m_element && m_group && m_text)
@@ -334,11 +379,11 @@ void RemoveTextFromGroupCommand::redo()
  * AlignmentTextsGroupCommand*
  * ***************************/
 /**
- * @brief AlignmentTextsGroupCommand::AlignmentTextsGroupCommand
- * @param group : Group to change the alignment
- * @param new_alignment : the new alignment of the group
- * @param parent : the parent QUndoCommand of this undo
- */
+	@brief AlignmentTextsGroupCommand::AlignmentTextsGroupCommand
+	@param group : Group to change the alignment
+	@param new_alignment : the new alignment of the group
+	@param parent : the parent QUndoCommand of this undo
+*/
 AlignmentTextsGroupCommand::AlignmentTextsGroupCommand(
 		ElementTextItemGroup *group,
 		Qt::Alignment new_alignment,
@@ -361,18 +406,18 @@ AlignmentTextsGroupCommand::AlignmentTextsGroupCommand(
 }
 
 /**
- * @brief AlignmentTextsGroupCommand::~AlignmentTextsGroupCommand
- * Destructor
- */
+	@brief AlignmentTextsGroupCommand::~AlignmentTextsGroupCommand
+	Destructor
+*/
 AlignmentTextsGroupCommand::~AlignmentTextsGroupCommand()
 {}
 
 /**
- * @brief AlignmentTextsGroupCommand::mergeWith
- * Try to merge this command with other command
- * @param other
- * @return true if was merged, else false
- */
+	@brief AlignmentTextsGroupCommand::mergeWith
+	Try to merge this command with other command
+	@param other
+	@return true if was merged, else false
+*/
 bool AlignmentTextsGroupCommand::mergeWith(const QUndoCommand *other)
 {
 	if (id() != other->id() || other->childCount())
@@ -388,8 +433,8 @@ bool AlignmentTextsGroupCommand::mergeWith(const QUndoCommand *other)
 }
 
 /**
- * @brief AlignmentTextsGroupCommand::undo
- */
+	@brief AlignmentTextsGroupCommand::undo
+*/
 void AlignmentTextsGroupCommand::undo()
 {
 	if(m_group)
@@ -409,8 +454,8 @@ void AlignmentTextsGroupCommand::undo()
 }
 
 /**
- * @brief AlignmentTextsGroupCommand::redo
- */
+	@brief AlignmentTextsGroupCommand::redo
+*/
 void AlignmentTextsGroupCommand::redo()
 {
 	if(m_group)

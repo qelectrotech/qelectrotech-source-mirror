@@ -27,9 +27,9 @@ class DynamicElementTextItem;
 class ElementTextItemGroup;
 
 /**
- * @brief The AddElementTextCommand class
- * Manage the adding of element text
- */
+	@brief The AddElementTextCommand class
+	Manage the adding of element text
+*/
 class AddElementTextCommand : public QUndoCommand
 {
 	public:
@@ -47,9 +47,9 @@ class AddElementTextCommand : public QUndoCommand
 };
 
 /**
- * @brief The AddTextsGroupCommand class
- * Manage the adding of a texts group
- */
+	@brief The AddTextsGroupCommand class
+	Manage the adding of a texts group
+*/
 class AddTextsGroupCommand : public QUndoCommand
 {
 	public:
@@ -78,9 +78,9 @@ class AddTextsGroupCommand : public QUndoCommand
 };
 
 /**
- * @brief The RemoveTextsGroupCommand class
- * Manage the removinf of a texts group
- */
+	@brief The RemoveTextsGroupCommand class
+	Manage the removinf of a texts group
+*/
 class RemoveTextsGroupCommand : public QUndoCommand
 {
 	public:
@@ -98,6 +98,9 @@ class RemoveTextsGroupCommand : public QUndoCommand
 		QList<QPointer<DynamicElementTextItem>> m_text_list;
 };
 
+/**
+	@brief The AddTextToGroupCommand class
+*/
 class AddTextToGroupCommand : public QUndoCommand
 {
 	public:
@@ -115,6 +118,9 @@ class AddTextToGroupCommand : public QUndoCommand
 		QPointer<Element> m_element;
 };
 
+/**
+	@brief The RemoveTextFromGroupCommand class
+*/
 class RemoveTextFromGroupCommand : public QUndoCommand
 {
 	public:
@@ -132,6 +138,9 @@ class RemoveTextFromGroupCommand : public QUndoCommand
 		QPointer<Element> m_element;
 };
 
+/**
+	@brief The AlignmentTextsGroupCommand class
+*/
 class AlignmentTextsGroupCommand : public QUndoCommand
 {
 	public:

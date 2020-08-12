@@ -32,6 +32,7 @@ class QETProject;
 class XmlElementCollection;
 
 /**
+	@brief The ElementsLocation class
 	Cette classe represente la localisation, l'emplacement d'un element ou
 	d'une categorie, voire d'une collection... dans une collection. Elle
 	encapsule un chemin virtuel.
@@ -40,7 +41,8 @@ class ElementsLocation
 {
 	public:
 		ElementsLocation();
-		ElementsLocation(const QString &path, QETProject *project = nullptr);
+		ElementsLocation(const QString &path,
+				 QETProject *project = nullptr);
 		ElementsLocation(const ElementsLocation &);
 		ElementsLocation(const QMimeData *data);
 		virtual ~ElementsLocation();

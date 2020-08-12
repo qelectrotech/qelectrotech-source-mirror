@@ -29,16 +29,20 @@ class DynamicElementTextItem;
 class ElementTextItemGroup;
 
 /**
- * @brief The CrossRefItem class
- * This clas provide an item, for show the cross reference, like the contacts linked to a coil.
- * The item setpos automaticaly when parent move.
- * All slave displayed in cross ref will be updated when folio position change in the project.
- * It's the responsability of the master element to informe displayed slave are moved,
- * by calling the slot @updateLabel
- * By default master element is the parent graphics item of this Xref,
- * but if the Xref must be snap to the label of master, the label become the parent of this Xref.
- * This behavior can be changed at anytime by calling setProperties.
- */
+	@brief The CrossRefItem class
+	This clas provide an item, for show the cross reference,
+	like the contacts linked to a coil.
+	The item setpos automaticaly when parent move.
+	All slave displayed in cross ref will be updated
+	when folio position change in the project.
+	It's the responsability of the master element
+	to informe displayed slave are moved,
+	by calling the slot updateLabel
+	By default master element is the parent graphics item of this Xref,
+	but if the Xref must be snap to the label of master,
+	the label become the parent of this Xref.
+	This behavior can be changed at anytime by calling setProperties.
+*/
 class CrossRefItem : public QGraphicsObject
 {
 	Q_OBJECT
@@ -46,8 +50,10 @@ class CrossRefItem : public QGraphicsObject
 		//Methods
 	public:
 		explicit CrossRefItem(Element *elmt);
-		explicit CrossRefItem(Element *elmt, DynamicElementTextItem *text);
-		explicit CrossRefItem(Element *elmt, ElementTextItemGroup *group);
+		explicit CrossRefItem(Element *elmt,
+				      DynamicElementTextItem *text);
+		explicit CrossRefItem(Element *elmt,
+				      ElementTextItemGroup *group);
 		~CrossRefItem() override;
 	private:
 		void init();
@@ -57,55 +63,63 @@ class CrossRefItem : public QGraphicsObject
 		enum { Type = UserType + 1009 };
 		int type() const override { return Type; }
 
+		/**
+			@brief The CONTACTS enum
+		*/
 		enum CONTACTS {
-			NO       = 1,
-			NC       = 2,
-			NOC      = 3,
-			SW       = 4,
-			Power    = 8,
-			DelayOn  = 16,
-			DelayOff = 32,
-			DelayOnOff = 64,
-			Delay    = 112
+			NO		= 1,
+			NC		= 2,
+			NOC		= 3,
+			SW		= 4,
+			Power		= 8,
+			DelayOn		= 16,
+			DelayOff	= 32,
+			DelayOnOff	= 64,
+			Delay		= 112
 		};
 
-		QRectF boundingRect			() const override;
-		QPainterPath shape	() const override;
-		QString elementPositionText (const Element *elmt, const bool &add_prefix = false) const;
+		QRectF boundingRect() const override;
+		QPainterPath shape() const override;
+		QString elementPositionText(
+				const Element *elmt,
+				const bool &add_prefix = false) const;
 
 	public slots:
-		void updateProperties ();
-		void updateLabel   ();
-		void autoPos	   ();
+		void updateProperties();
+		void updateLabel();
+		void autoPos();
 
 	protected:
 		bool sceneEvent(QEvent *event) override;
-		void paint (QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
-		void mouseDoubleClickEvent (QGraphicsSceneMouseEvent * event ) override;
+		void paint(QPainter *painter,
+			   const QStyleOptionGraphicsItem *option,
+			   QWidget *widget) override;
+		void mouseDoubleClickEvent (
+				QGraphicsSceneMouseEvent * event ) override;
 		void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
 		void hoverMoveEvent(QGraphicsSceneHoverEvent *event) override;
 		void hoverLeaveEvent(QGraphicsSceneHoverEvent *event) override;
 
 	private:
 		void linkedChanged();
-		void buildHeaderContact		();
-		void setUpCrossBoundingRect (QPainter &painter);
-		void drawAsCross			(QPainter &painter);
-		void drawAsContacts		(QPainter &painter);
-		QRectF drawContact			(QPainter &painter, int flags, Element *elmt);
-		void fillCrossRef			(QPainter &painter);
-		void AddExtraInfo			(QPainter &painter, const QString&);
+		void buildHeaderContact();
+		void setUpCrossBoundingRect(QPainter &painter);
+		void drawAsCross(QPainter &painter);
+		void drawAsContacts(QPainter &painter);
+		QRectF drawContact(QPainter &painter, int flags, Element *elmt);
+		void fillCrossRef(QPainter &painter);
+		void AddExtraInfo(QPainter &painter, const QString&);
 		QList<Element *> NOElements() const;
 		QList<Element *> NCElements() const;
 
 		//Attributes
 	private:
-		Element		  *m_element; //element to display the cross reference
-		QRectF		   m_bounding_rect;
-		QPicture	   m_drawing, m_hdr_no_ctc, m_hdr_nc_ctc;
-		QPainterPath   m_shape_path;
+		Element *m_element; //element to display the cross reference
+		QRectF m_bounding_rect;
+		QPicture m_drawing, m_hdr_no_ctc, m_hdr_nc_ctc;
+		QPainterPath m_shape_path;
 		XRefProperties m_properties;
-		int			   m_drawed_contacts;
+		int m_drawed_contacts;
 		QMultiMap <Element *, QRectF> m_hovered_contacts_map;
 		Element *m_hovered_contact = nullptr;
 		DynamicElementTextItem *m_text = nullptr;
