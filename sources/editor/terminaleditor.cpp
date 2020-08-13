@@ -82,7 +82,7 @@ void TerminalEditor::init() {
 
 /// Destructeur
 TerminalEditor::~TerminalEditor() {
-};
+}
 
 /**
 	Permet de specifier a cet editeur quelle primitive il doit editer. A noter
