@@ -18,7 +18,6 @@
 #include "machine_info.h"
 #include <QScreen>
 #include <QProcess>
-#include <QThread>
 #include <QApplication>
 #include <QDebug>
 #include <QSysInfo>
@@ -31,6 +30,43 @@
 Machine_info::Machine_info(QObject *parent) : QObject(parent)
 {
 	init_get_Screen_info();
+	init_get_cpu_info();
+}
+
+/**
+	@brief Machine_info::send_info_to_debug
+*/
+void Machine_info::send_info_to_debug()
+{
+	qDebug()<<"test message generated";
+	qInfo()<< tr("Compilation : ") + pc.built.version;
+	qInfo()<< "Built with Qt " + pc.built.QT
+		  + " - Date : " + pc.built.date
+		  + " : " + pc.built.time;
+	qInfo()<< "Run with Qt "+ QString(qVersion())
+		  + " using"
+		  + QString(" %1 thread(s)").arg(pc.cpu.ThreadCount);
+	qInfo()<< "CPU : " + pc.cpu.info;
+	qInfo()<< pc.ram.Total;
+	qInfo()<< pc.ram.Available;
+	qInfo()<< "GPU : " + pc.gpu.info;
+	qInfo()<< "GPU RAM : " + pc.gpu.RAM;
+
+	qInfo()<< "OS : " + pc.os.type
+		  + "  - " + pc.cpu.Architecture
+		  + " - Version : "+pc.os.name
+		  + " - Kernel : "+pc.os.kernel;
+	qInfo()<< "*** Qt screens ***";
+
+	for (int ii = 0; ii < pc.screen.count; ++ii) {
+		qInfo()<<"( "
+			+ QString::number(ii + 1)
+			+ " : "
+			+ QString::number(pc.screen.width[ii])
+			+ " x "
+			+ QString::number(pc.screen.height[ii])
+			+ " )";
+	}
 }
 
 /**
@@ -42,28 +78,29 @@ void Machine_info::init_get_Screen_info()
 	const auto screens = qApp->screens();
 	for (int ii = 0; ii < screens.count(); ++ii)
 	{
+
 		if(
-				Max_screen_width
+				pc.screen.Max_width
 				<
 				screens[ii]->geometry().width()
 				*
 				screens[ii]->devicePixelRatio()
 				)
 		{
-			Max_screen_width =
+			pc.screen.Max_width =
 					screens[ii]->geometry().width()
 					*
 					screens[ii]->devicePixelRatio();
 		}
 		if(
-				Max_screen_height
+				pc.screen.Max_height
 				<
 				screens[ii]->geometry().height()
 				*
 				screens[ii]->devicePixelRatio()
 				)
 		{
-			Max_screen_height =
+			pc.screen.Max_height =
 					screens[ii]->geometry().height()
 					*
 					screens[ii]->devicePixelRatio();
@@ -72,70 +109,44 @@ void Machine_info::init_get_Screen_info()
 }
 
 /**
-	@brief Machine_info::i_max_screen_width
-	@return max screen width
- */
-int32_t Machine_info::i_max_screen_width()
-{
-	return Max_screen_width;
-}
-
-/**
-	@brief Machine_info::i_max_screen_height
-	@return max screen height
+	@brief Machine_info::init_get_cpu_info
 */
-int32_t Machine_info::i_max_screen_height()
+void Machine_info::init_get_cpu_info()
 {
-	return Max_screen_height;
-}
-
-/**
-	@brief Machine_info::compilation_info
-	@return compilation_info
-*/
-QString Machine_info::compilation_info()
-{
-	QString compilation_info = "<br />" + tr("Compilation : ");
 #ifdef __GNUC__
 #ifdef __APPLE_CC__
-	compilation_info += "  CLANG " + QString(__clang_version__ );
-	compilation_info += " <br>Built with Qt " + QString(QT_VERSION_STR);
-	compilation_info += " - Date : " + QString(__DATE__);
-	compilation_info += " : " + QString(__TIME__);
-	compilation_info += " <br>Run with Qt "+ QString(qVersion());
-	compilation_info += " using" + QString(" %1 thread(s)").arg(
-				QThread::idealThreadCount());
-	QProcess macoscpuinfo;
-	macoscpuinfo.start("bash",
-			   QStringList()
-			   << "-c"
-			   << "sysctl -n machdep.cpu.brand_string");
-	macoscpuinfo.waitForFinished();
-	QString macosOutput = macoscpuinfo.readAllStandardOutput();
-	compilation_info +=  "<br>"" CPU : "
-			+ QString(macosOutput.toLocal8Bit().constData());
-
+	init_get_cpu_info_macos();
 #else
-	compilation_info += "  GCC " + QString(__VERSION__);
-	compilation_info += "<br>Built with Qt " + QString(QT_VERSION_STR);
-	compilation_info += " - Date : " + QString(__DATE__);
-	compilation_info += " : " + QString(__TIME__);
-	compilation_info += " <br>Run with Qt "+ QString(qVersion());
-	compilation_info += " using"
-			+ QString(" %1 thread(s)").arg(
-				QThread::idealThreadCount());
+	if (pc.os.type == "linux")
+		init_get_cpu_info_linux();
+	if (pc.os.type == "winnt")
+		init_get_cpu_info_winnt();
+#endif
+#endif
+	const auto screens = qApp->screens();
+	pc.screen.count=screens.count();
+	for (int ii = 0; ii < pc.screen.count; ++ii) {
+		pc.screen.width[ii]=
+				screens[ii]->geometry().width()
+				* screens[ii]->devicePixelRatio();
+		pc.screen.height[ii]=
+				screens[ii]->geometry().height()
+				* screens[ii]->devicePixelRatio();
+	}
+}
 
-	QString OSName = QSysInfo::kernelType();
-	if (OSName == "linux")
-	{
+/**
+	@brief Machine_info::init_get_cpu_info_linux
+*/
+void Machine_info::init_get_cpu_info_linux()
+{
 	QProcess linuxcpuinfo;
 	linuxcpuinfo.start("bash", QStringList()
 			   << "-c"
 			   << "cat /proc/cpuinfo |grep 'model name' | uniq");
 	linuxcpuinfo.waitForFinished();
 	QString linuxOutput = linuxcpuinfo.readAllStandardOutput();
-	compilation_info +=  "<br>"" CPU : "
-			+ QString(linuxOutput.toLocal8Bit().constData());
+	pc.cpu.info=QString(linuxOutput.toLocal8Bit().constData());
 
 	QProcess p;
 	p.start("awk", QStringList()
@@ -143,8 +154,8 @@ QString Machine_info::compilation_info()
 		<< "/proc/meminfo");
 	p.waitForFinished();
 	QString memory = p.readAllStandardOutput();
-	compilation_info += "<br>"
-			+ QString("RAM Total : %1 MB").arg(
+	//compilation_info += "<br>"
+	pc.ram.Total=QString("RAM Total : %1 MB").arg(
 				memory.toLong() / 1024);
 	p.close();
 
@@ -155,8 +166,7 @@ QString Machine_info::compilation_info()
 		 << "/proc/meminfo");
 	qp.waitForFinished();
 	QString AvailableMemory = qp.readAllStandardOutput();
-	compilation_info += "<br>"
-			+ QString("RAM Available : %1 MB").arg(
+	pc.ram.Available=QString("RAM Available : %1 MB").arg(
 				AvailableMemory.toLong() / 1024);
 	qp.close();
 
@@ -167,81 +177,108 @@ QString Machine_info::compilation_info()
 			   << "lspci | grep VGA | cut -d : -f 3");
 	linuxgpuinfo.waitForFinished();
 	QString linuxGPUOutput = linuxgpuinfo.readAllStandardOutput();
-	compilation_info += "<br>"" GPU : "
-			+ QString(linuxGPUOutput.toLocal8Bit().constData());
+	pc.gpu.info=QString(linuxGPUOutput.toLocal8Bit().constData());
+	pc.gpu.RAM="@ToDo";
+}
+/**
+	@brief Machine_info::init_get_cpu_info_winnt
+*/
+void Machine_info::init_get_cpu_info_winnt()
+{
+	QProcess wincpuinfo;
+	wincpuinfo.start("wmic",
+			 QStringList() << "cpu" << "get" << "name");
+	wincpuinfo.waitForFinished();
+	QString windows_output = wincpuinfo.readAllStandardOutput().toUpper();
+	pc.cpu.info=QString(windows_output.toLocal8Bit().constData());
 
-	}
-	
-	if(QSysInfo::kernelType() == "winnt")
-	{
-		QProcess wincpuinfo;
-	{
-		
-		wincpuinfo.start("wmic",
-				 QStringList() << "cpu" << "get" << "name");
-		wincpuinfo.waitForFinished();
-		QString windows_output = wincpuinfo.readAllStandardOutput().toUpper();
-		compilation_info +=  "<br>"" CPU : "  
-				+ QString(windows_output.toLocal8Bit().constData());
-		
-		QProcess wingpuinfo;
-	{
-		
-		wingpuinfo.start("wmic",
-				 QStringList()
-				 << "PATH"
-				 << "Win32_videocontroller"
-				 << "get"
-				 << "VideoProcessor ");
-		wingpuinfo.waitForFinished();
-		QString WinGPUOutput = wingpuinfo.readAllStandardOutput();
-		compilation_info += "<br>" "GPU : "
-				+ QString(WinGPUOutput.toLocal8Bit().constData()); 
-			}
-			
-			QProcess wingpuraminfo;
-	{
-		
-		wingpuraminfo.start("wmic",
-				    QStringList()
-				    << "PATH"
-				    << "Win32_videocontroller"
-				    << "get"
-				    << "AdapterRAM ");
-		wingpuraminfo.waitForFinished();
-		QString WinGPURAMOutput = wingpuraminfo.readAllStandardOutput();
-		compilation_info += "<br>" "GPU RAM : "
-				+ QString(WinGPURAMOutput.toLocal8Bit().constData()); 
-			}
-		}
-	}
+	QProcess wingpuinfo;
+	wingpuinfo.start("wmic",
+			 QStringList()
+			 << "PATH"
+			 << "Win32_videocontroller"
+			 << "get"
+			 << "VideoProcessor ");
+	wingpuinfo.waitForFinished();
+	QString WinGPUOutput = wingpuinfo.readAllStandardOutput();
+	pc.gpu.info=QString(WinGPUOutput.toLocal8Bit().constData());
 
-#endif
-#endif
+	QProcess wingpuraminfo;
+	wingpuraminfo.start("wmic",
+			    QStringList()
+			    << "PATH"
+			    << "Win32_videocontroller"
+			    << "get"
+			    << "AdapterRAM ");
+	wingpuraminfo.waitForFinished();
+	QString WinGPURAMOutput = wingpuraminfo.readAllStandardOutput();
+	pc.gpu.RAM=QString(WinGPURAMOutput.toLocal8Bit().constData());
+}
 
-	compilation_info += "<br>" "  OS : "
-			+ QString(QSysInfo::kernelType());
-	compilation_info += "  -   "
-			+ QString(QSysInfo::currentCpuArchitecture());
-	compilation_info += " -  Version :    "
-			+ QString(QSysInfo::prettyProductName());
-	compilation_info += "</br>" " -  Kernel :     "
-			+ QString(QSysInfo::kernelVersion());
+void Machine_info::init_get_cpu_info_macos()
+{
+	QProcess macoscpuinfo;
+	macoscpuinfo.start("bash",
+			   QStringList()
+			   << "-c"
+			   << "sysctl -n machdep.cpu.brand_string");
+	macoscpuinfo.waitForFinished();
+	QString macosOutput = macoscpuinfo.readAllStandardOutput();
+	pc.cpu.info=QString(macosOutput.toLocal8Bit().constData());
+}
+
+/**
+	@brief Machine_info::i_max_screen_width
+	@return max screen width
+ */
+int32_t Machine_info::i_max_screen_width()
+{
+	return pc.screen.Max_width;
+}
+
+/**
+	@brief Machine_info::i_max_screen_height
+	@return max screen height
+*/
+int32_t Machine_info::i_max_screen_height()
+{
+	return pc.screen.Max_height;
+}
+
+/**
+	@brief Machine_info::compilation_info
+	@return compilation_info
+*/
+QString Machine_info::compilation_info()
+{
+	QString compilation_info = "<br />" + tr("Compilation :   ");
+	compilation_info +=pc.built.version;
+	compilation_info += "<br>Built with Qt " + pc.built.QT;
+	compilation_info += " - Date : " + pc.built.date;
+	compilation_info += " : " + pc.built.time;
+	compilation_info += " <br>Run with Qt "+ QString(qVersion());
+	compilation_info += " using"
+			+ QString(" %1 thread(s)").arg(pc.cpu.ThreadCount);
+	compilation_info +=  "<br> CPU : " + pc.cpu.info;
+	compilation_info += "<br>" + pc.ram.Total;
+	compilation_info += "<br>" + pc.ram.Available;
+	compilation_info += "<br>GPU : " + pc.gpu.info;
+	compilation_info += "<br>GPU RAM : " + pc.gpu.RAM;
+
+	compilation_info += "<br>  OS : " + pc.os.type;
+	compilation_info += "  -   " + pc.cpu.Architecture;
+	compilation_info += " -  Version :    "+pc.os.name;
+	compilation_info += "</br> -  Kernel :     "+pc.os.kernel;
 	compilation_info += "<br>  *** Qt screens *** </br>";
-	const auto screens = qApp->screens();
-	for (int ii = 0; ii < screens.count(); ++ii) {
+
+	for (int ii = 0; ii < pc.screen.count; ++ii) {
 		compilation_info += "<br> ( "
 			+ QString::number(ii + 1)
 			+ " : "
-			+ QString::number(
-				screens[ii]->geometry().width()
-				* screens[ii]->devicePixelRatio())
+			+ QString::number(pc.screen.width[ii])
 			+ " x "
-			+ QString::number(
-				screens[ii]->geometry().height()
-				* screens[ii]->devicePixelRatio())
+			+ QString::number(pc.screen.height[ii])
 			+ " ) </br>";
 	}
-	qDebug()<<compilation_info;
 	return compilation_info;
 }

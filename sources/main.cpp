@@ -19,6 +19,7 @@
 #include "singleapplication.h"
 #include "qet.h"
 #include "macosxopenevent.h"
+#include "machine_info.h"
 #include <QStyleFactory>
 
 /**
@@ -50,12 +51,9 @@ void myMessageOutput(QtMsgType type,
 		break;
 	case QtInfoMsg:
 		fprintf(stderr,
-			"%s Info: %s (%s:%u, %s)\n",
+			"%s Info: %s \n",
 			dbs.constData(),
-			localMsg.constData(),
-			file,
-			context.line,
-			function);
+			localMsg.constData());
 		break;
 	case QtWarningMsg:
 		fprintf(stderr,
@@ -110,19 +108,16 @@ int main(int argc, char **argv)
 	QCoreApplication::setOrganizationName("QElectroTech");
 	QCoreApplication::setOrganizationDomain("qelectrotech.org");
 	QCoreApplication::setApplicationName("QElectroTech");
-	qDebug()<<"test message generated";
-	qInfo()<<"OS:"
-		  + QString(QSysInfo::kernelType())
-		  + "-"
-		  + QString(QSysInfo::currentCpuArchitecture())
-		  + " Version:"
-		  + QString(QSysInfo::prettyProductName())
-		  + " Kernel:"
-		  + QString(QSysInfo::kernelVersion());
 	//Creation and execution of the application
 	//HighDPI
 	QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 	SingleApplication app(argc, argv, true);
+
+	{
+		Machine_info *my_ma =new Machine_info();
+		my_ma->send_info_to_debug();
+		delete my_ma;
+	}
 #ifdef Q_OS_MACOS
 	//Handle the opening of QET when user double click on a .qet .elmt .tbt file
 	//or drop these same files to the QET icon of the dock
