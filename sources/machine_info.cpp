@@ -197,7 +197,7 @@ QString Machine_info::compilation_info()
 				+ QString(WinGPUOutput.toLocal8Bit().constData()); 
 	
 	
-		QProcess wingpuraminfo;	
+		QProcess wingpuraminfo;
 		
 		wingpuraminfo.start("wmic",
 				    QStringList()
