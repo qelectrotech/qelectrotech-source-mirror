@@ -177,7 +177,8 @@ QString Machine_info::compilation_info()
 		QProcess wincpuinfo;
 	{
 		
-		wincpuinfo.start("wmic cpu get name");
+		wincpuinfo.start("wmic",
+				 QStringList() << "cpu" << "get" << "name");
 		wincpuinfo.waitForFinished();
 		QString windows_output = wincpuinfo.readAllStandardOutput().toUpper();
 		compilation_info +=  "<br>"" CPU : "  
@@ -186,7 +187,12 @@ QString Machine_info::compilation_info()
 		QProcess wingpuinfo;
 	{
 		
-		wingpuinfo.start("wmic PATH Win32_videocontroller get VideoProcessor ");
+		wingpuinfo.start("wmic",
+				 QStringList()
+				 << "PATH"
+				 << "Win32_videocontroller"
+				 << "get"
+				 << "VideoProcessor ");
 		wingpuinfo.waitForFinished();
 		QString WinGPUOutput = wingpuinfo.readAllStandardOutput();
 		compilation_info += "<br>" "GPU : "
@@ -196,7 +202,12 @@ QString Machine_info::compilation_info()
 			QProcess wingpuraminfo;
 	{
 		
-		wingpuraminfo.start("wmic PATH Win32_videocontroller get AdapterRAM ");
+		wingpuraminfo.start("wmic",
+				    QStringList()
+				    << "PATH"
+				    << "Win32_videocontroller"
+				    << "get"
+				    << "AdapterRAM ");
 		wingpuraminfo.waitForFinished();
 		QString WinGPURAMOutput = wingpuraminfo.readAllStandardOutput();
 		compilation_info += "<br>" "GPU RAM : "
