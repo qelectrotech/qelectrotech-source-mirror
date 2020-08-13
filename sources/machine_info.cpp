@@ -199,7 +199,7 @@ QString Machine_info::compilation_info()
 		wingpuraminfo.start("wmic PATH Win32_videocontroller get AdapterRAM ");
 		wingpuraminfo.waitForFinished();
 		QString WinGPURAMOutput = wingpuraminfo.readAllStandardOutput();
-		compilation_info += "<br>" "GPU : "
+		compilation_info += "<br>" "GPU RAM : "
 				+ QString(WinGPURAMOutput.toLocal8Bit().constData()); 
 			}
 		}
