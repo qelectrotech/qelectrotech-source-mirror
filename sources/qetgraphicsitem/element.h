@@ -48,14 +48,17 @@ class Element : public QetGraphicsItem
 			 * Used to know the kind of this element (master, slave, report ect...)
 			 */
 		enum kind {Simple = 1,
-				   NextReport = 2,
-				   PreviousReport = 4,
-				   AllReport = 6,
-				   Master = 8,
-				   Slave = 16,
-				   Terminale = 32};
+			   NextReport = 2,
+			   PreviousReport = 4,
+			   AllReport = 6,
+			   Master = 8,
+			   Slave = 16,
+			   Terminale = 32};
 
-		Element(const ElementsLocation &location, QGraphicsItem * = nullptr, int *state = nullptr, Element::kind link_type = Element::Simple);
+		Element(const ElementsLocation &location,
+			QGraphicsItem * = nullptr,
+			int *state = nullptr,
+			Element::kind link_type = Element::Simple);
 		~Element() override;
 	private:
 		Element(const Element &);
@@ -71,36 +74,43 @@ class Element : public QetGraphicsItem
 		
 	signals:
 		void linkedElementChanged(); //This signal is emited when the linked elements with this element change
-		void elementInfoChange(DiagramContext old_info, DiagramContext new_info);
+		void elementInfoChange(DiagramContext old_info,
+				       DiagramContext new_info);
 		void textAdded(DynamicElementTextItem *deti);
 		void textRemoved(DynamicElementTextItem *deti);
 		void textsGroupAdded(ElementTextItemGroup *group);
 		void textsGroupAboutToBeRemoved(ElementTextItemGroup *group);
-		void textAddedToGroup(DynamicElementTextItem *text, ElementTextItemGroup *group);
-		void textRemovedFromGroup(DynamicElementTextItem *text, ElementTextItemGroup *group);
+		void textAddedToGroup(DynamicElementTextItem *text,
+				      ElementTextItemGroup *group);
+		void textRemovedFromGroup(DynamicElementTextItem *text,
+					  ElementTextItemGroup *group);
 
 		
 	public:
 		QList<Terminal *> terminals() const;
 		QList<Conductor *> conductors() const;
-		QList <QPair <Terminal *, Terminal *> > AlignedFreeTerminals () const;
+		QList<QPair<Terminal *,Terminal *>> AlignedFreeTerminals() const;
 		
 			//METHODS related to information
-		DiagramContext  elementInformations    ()const              {return m_element_informations;}
-		virtual void    setElementInformations (DiagramContext dc);
-		DiagramContext  kindInformations       () const             {return m_kind_informations;}	//@kind_information_ is used to store more information
+		DiagramContext elementInformations()const
+		{return m_element_informations;}
+		virtual void setElementInformations(DiagramContext dc);
+		DiagramContext kindInformations() const
+		{return m_kind_informations;}	//@kind_information_ is used to store more information
 																									//about the herited class like contactelement for know
 																									// kind of contact (simple tempo) or number of contact show by the element.
 
-		autonum::sequentialNumbers sequenceStruct () const {return m_autoNum_seq;}
-		autonum::sequentialNumbers& rSequenceStruct()      {return m_autoNum_seq;}
+		autonum::sequentialNumbers sequenceStruct() const
+		{return m_autoNum_seq;}
+		autonum::sequentialNumbers& rSequenceStruct()
+		{return m_autoNum_seq;}
 		void setUpFormula(bool code_letter = true);
 		void setPrefix(QString);
 		QString getPrefix() const;
 		void freezeLabel(bool freeze);
 		bool isFreezeLabel() const {return m_freeze_label;}
 		void freezeNewAddedElement();
-        QString actualLabel();
+		QString actualLabel();
 		
 		QString name() const override;
 		ElementsLocation location() const;
@@ -108,36 +118,43 @@ class Element : public QetGraphicsItem
 		void displayHelpLine(bool b = true);
 		QSize size() const;
 		QPixmap pixmap();
-        QPoint setHotspot(QPoint);
-        QPoint hotspot() const;     
-        void editProperty() override;
-        static bool valideXml(QDomElement &);
-        virtual bool fromXml(QDomElement &, QHash<int, Terminal *> &, bool = false);
-        virtual QDomElement toXml(QDomDocument &, QHash<Terminal *, int> &) const;
-        QUuid uuid() const;
-        int orientation() const;
+		QPoint setHotspot(QPoint);
+		QPoint hotspot() const;
+		void editProperty() override;
+		static bool valideXml(QDomElement &);
+		virtual bool fromXml(QDomElement &,
+				     QHash<int,
+				     Terminal *> &,
+				     bool = false);
+		virtual QDomElement toXml(QDomDocument &,
+					  QHash<Terminal *,
+					  int> &) const;
+		QUuid uuid() const;
+		int orientation() const;
 		
 			//METHODS related to texts
-        void addDynamicTextItem(DynamicElementTextItem *deti = nullptr);
-        void removeDynamicTextItem(DynamicElementTextItem *deti);
-        QList<DynamicElementTextItem *> dynamicTextItems() const;
+		void addDynamicTextItem(DynamicElementTextItem *deti = nullptr);
+		void removeDynamicTextItem(DynamicElementTextItem *deti);
+		QList<DynamicElementTextItem *> dynamicTextItems() const;
 		ElementTextItemGroup *addTextGroup(const QString &name);
 		void addTextGroup(ElementTextItemGroup *group);
 		void removeTextGroup(ElementTextItemGroup *group);
 		ElementTextItemGroup *textGroup(const QString &name) const;
 		QList<ElementTextItemGroup *> textGroups() const;
-		bool addTextToGroup(DynamicElementTextItem *text, ElementTextItemGroup *group);
-		bool removeTextFromGroup(DynamicElementTextItem *text, ElementTextItemGroup *group);
+		bool addTextToGroup(DynamicElementTextItem *text,
+				    ElementTextItemGroup *group);
+		bool removeTextFromGroup(DynamicElementTextItem *text,
+					 ElementTextItemGroup *group);
 		
 			//METHODS related to linked element
-				bool isFree            () const;
-		virtual void linkToElement     (Element *) {}
-		virtual void unlinkAllElements () {}
-		virtual void unlinkElement     (Element *) {}
-		virtual void initLink          (QETProject *);
+		bool isFree() const;
+		virtual void linkToElement(Element *) {}
+		virtual void unlinkAllElements() {}
+		virtual void unlinkElement(Element *) {}
+		virtual void initLink(QETProject *);
 		QList<Element *> linkedElements ();
 		virtual kind linkType() const {return m_link_type;} // @return the linkable type
-        QString linkTypeToString() const;
+		QString linkTypeToString() const;
 		void newUuid() {m_uuid = QUuid::createUuid();} 	//create new uuid for this element
 
 	protected:
@@ -145,29 +162,36 @@ class Element : public QetGraphicsItem
 		void setSize(int, int);
 	
 	private:
-		void drawSelection(QPainter *, const QStyleOptionGraphicsItem *);
-		void drawHighlight(QPainter *, const QStyleOptionGraphicsItem *);
+		void drawSelection(QPainter *,
+				   const QStyleOptionGraphicsItem *);
+		void drawHighlight(QPainter *,
+				   const QStyleOptionGraphicsItem *);
 		bool buildFromXml(const QDomElement &, int * = nullptr);
 		bool parseElement(const QDomElement &dom);
 		bool parseInput(const QDomElement &dom_element);
-		DynamicElementTextItem *parseDynamicText(const QDomElement &dom_element);
+		DynamicElementTextItem *parseDynamicText(
+				const QDomElement &dom_element);
 		Terminal *parseTerminal(const QDomElement &dom_element);
 
 		//Reimplemented from QGraphicsItem
 	public:
-		void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *) override;
+		void paint(QPainter *,
+			   const QStyleOptionGraphicsItem *,
+			   QWidget *) override;
 		QRectF boundingRect() const override;
 	protected:
-		void mouseMoveEvent    ( QGraphicsSceneMouseEvent *event ) override;
-		void mouseReleaseEvent ( QGraphicsSceneMouseEvent *event ) override;
-		void hoverEnterEvent   ( QGraphicsSceneHoverEvent * ) override;
-		void hoverLeaveEvent   ( QGraphicsSceneHoverEvent * ) override;
+		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
+		void mouseReleaseEvent(
+				QGraphicsSceneMouseEvent *event) override;
+		void hoverEnterEvent(QGraphicsSceneHoverEvent *) override;
+		void hoverLeaveEvent(QGraphicsSceneHoverEvent *) override;
 
 	protected:
 			// @m_converted_text_from_description, when a element is created from his description, the old element text item (tagged as 'input' in the xml)
 			// are converted to dynamic text field, the QPointF is the original position of the text item, because the origin transformation point of text item
 			// and dynamic text item are not the same, so we must to keep a track of this value, to be use in the function element::fromXml
-		QHash <DynamicElementTextItem *, QPointF> m_converted_text_from_xml_description;
+		QHash <DynamicElementTextItem *, QPointF>
+		m_converted_text_from_xml_description;
 		
 			//ATTRIBUTES related to linked element
 		QList <Element *> connected_elements;
@@ -193,7 +217,7 @@ class Element : public QetGraphicsItem
 		QPoint  hotspot_coord;
 		bool m_mouse_over = false;
 		QString m_prefix;
-        QList <DynamicElementTextItem *> m_dynamic_text_list;
+		QList <DynamicElementTextItem *> m_dynamic_text_list;
 		QList <ElementTextItemGroup *> m_texts_group;
 
 };
@@ -229,7 +253,9 @@ inline QUuid Element::uuid() const {
  * @return the list of linked elements, the list is sorted by position
  */
 inline QList <Element *> Element::linkedElements() {
-	 std::sort(connected_elements.begin(), connected_elements.end(), comparPos);
+	 std::sort(connected_elements.begin(),
+		   connected_elements.end(),
+		   comparPos);
 	return connected_elements;
 }
 
