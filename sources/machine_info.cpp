@@ -21,6 +21,8 @@
 #include <QThread>
 #include <QApplication>
 #include <QDebug>
+#include <QSysInfo>
+#include <QStorageInfo>
 
 /**
 	@brief Machine_info::Machine_info
@@ -168,6 +170,29 @@ QString Machine_info::compilation_info()
 	compilation_info += "<br>"" GPU : "
 			+ QString(linuxGPUOutput.toLocal8Bit().constData());
 
+	}
+	
+	if(QSysInfo::kernelType() == "winnt")
+	{
+		QProcess wincpuinfo;
+	{
+		
+		wincpuinfo.start("wmic cpu get name");
+		wincpuinfo.waitForFinished();
+		QString windows_output = wincpuinfo.readAllStandardOutput().toUpper();
+		compilation_info +=  "<br>"" CPU : "  
+				+ QString(windows_output.toLocal8Bit().constData());
+		
+		QProcess wingpuinfo;
+	{
+		
+		wingpuinfo.start("wmic PATH Win32_videocontroller get VideoProcessor ");
+		wingpuinfo.waitForFinished();
+		QString WinGPUOutput = wingpuinfo.readAllStandardOutput();
+		compilation_info += "<br>" "GPU : "
+				+ QString(WinGPUOutput.toLocal8Bit().constData()); 
+			}
+		}
 	}
 
 #endif
