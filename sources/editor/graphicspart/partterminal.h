@@ -23,19 +23,15 @@
 #include "terminaldata.h"
 
 
-
 /**
 	This class represents a terminal which may be used to compose the drawing of
 	an electrical element within the element editor.
 */
-class PartTerminal : public CustomElementGraphicPart
-{
-		Q_OBJECT
+class PartTerminal : public CustomElementGraphicPart {
+	Q_OBJECT
+	Q_PROPERTY(Qet::Orientation orientation READ orientation WRITE setOrientation)
+	Q_PROPERTY(QString name READ name WRITE setName)
 
-		Q_PROPERTY(Qet::Orientation orientation READ orientation WRITE setOrientation)
-        Q_PROPERTY(QString name READ name WRITE setName)
-
-	
 	public:
 		// constructors, destructor
 		PartTerminal(QETElementEditor *editor, QGraphicsItem *parent = nullptr);
@@ -45,7 +41,7 @@ class PartTerminal : public CustomElementGraphicPart
 
 	signals:
 		void orientationChanged();
-        void nameChanged();
+		void nameChanged();
 
 		// methods
 	public:
@@ -55,7 +51,7 @@ class PartTerminal : public CustomElementGraphicPart
 			 * @return the QGraphicsItem type
 			 */
 		int type() const override { return Type; }
-        QString name() const override { return d->m_name; }
+		QString name() const override { return d -> m_name; }
 		QString xmlName() const override { return(QString("terminal")); }
 		void fromXml(const QDomElement &) override;
 		const QDomElement toXml(QDomDocument &) const override;
@@ -69,7 +65,7 @@ class PartTerminal : public CustomElementGraphicPart
 		void startUserTransformation(const QRectF &) override;
 		void handleUserTransformation(const QRectF &, const QRectF &) override;
 
-        Qet::Orientation orientation() const {return d->m_orientation;}
+		Qet::Orientation orientation() const {return d -> m_orientation;}
 		void setOrientation(Qet::Orientation ori);
 
 		void setName(QString& name);
@@ -77,8 +73,8 @@ class PartTerminal : public CustomElementGraphicPart
 	
 	private:
 		void updateSecondPoint();
-        TerminalData* d; // pointer to the terminal data
-	
+		TerminalData* d; // pointer to the terminal data
+
 	private:
 		QPointF saved_position_;
 };
