@@ -20,6 +20,8 @@
 #include <QtWidgets>
 #include <QtXml>
 #include "qet.h"
+#include "propertiesinterface.h"
+
 class Conductor;
 class Diagram;
 class Element;
@@ -31,7 +33,7 @@ class TerminalData;
 	plug point for conductors.
 	This class handles all mouse events for connecting conductors
 */
-class Terminal : public QGraphicsObject
+class Terminal : public QGraphicsObject, public PropertiesInterface
 {
 	Q_OBJECT
 
@@ -88,9 +90,9 @@ class Terminal : public QGraphicsObject
 		bool canBeLinkedTo(Terminal *);
 	
 		// methods related to XML import/export
-		static bool valideXml(QDomElement  &);
-		bool fromXml (QDomElement &);
-		QDomElement toXml (QDomDocument &) const;
+        bool valideXml(QDomElement  &) const override;
+        bool fromXml (const QDomElement &) override;
+        QDomElement toXml (QDomDocument &) const override;
 	
 	protected:
 		// methods related to events management

@@ -35,6 +35,24 @@ public:
     QDomElement toXml(QDomDocument &xml_element) const override;
     bool fromXml(const QDomElement &xml_element) override;
 
+    bool valideXml(QDomElement  &element) const override;
+
+    /**
+        Permet de convertir une chaine de caracteres ("n", "s", "e" ou "w")
+        en orientation. Si la chaine fait plusieurs caracteres, seul le
+        premier est pris en compte. En cas d'incoherence, Qet::North est
+        retourne.
+        @param s Chaine de caractere cense representer une orientation
+        @return l'orientation designee par la chaine de caractere
+    */
+    static Qet::Orientation orientationFromString(const QString &s);
+
+    /**
+        @param o une orientation
+        @return une chaine de caractere representant l'orientation
+    */
+    static QString orientationToString(Qet::Orientation o);
+
     // must be public, because this class is a private member of PartTerminal/Terminal and they must
     // access this data
 public:

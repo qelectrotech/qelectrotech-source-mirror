@@ -95,7 +95,7 @@ class CustomElementGraphicPart : public QGraphicsObject, public CustomElementPar
         virtual void resetAllHandlerColor() {}
 
 	protected:
-		void stylesToXml  (QDomElement &) const;
+        void stylesToXml  (QDomDocument &xml_document, QDomElement &) const;
 		void stylesFromXml(const QDomElement &);
 		void resetStyles  ();
 		void applyStylesToQPainter(QPainter &) const;

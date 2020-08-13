@@ -21,6 +21,8 @@
 #include <QString>
 #include <QSettings>
 #include <QDomElement>
+#include <limits>
+#include "qet.h"
 
 /**
  * @brief The PropertiesInterface class
@@ -36,6 +38,49 @@ class PropertiesInterface
 	// Save/load properties to xml element
     virtual QDomElement toXml		  (QDomDocument &xml_document) const =0;
     virtual bool fromXml	  (const QDomElement &xml_element) =0;
+    virtual bool valideXml(QDomElement& element) const = 0;
+
+    /*!
+     * Use this functions to add properties to the xml document
+     */
+    QDomElement createXmlProperty(QDomDocument& doc, const QString& name, const QString value) const;
+    QDomElement createXmlProperty(QDomDocument& doc, const QString& name, const int value) const;
+    QDomElement createXmlProperty(QDomDocument& doc, const QString& name, const double value) const;
+    QDomElement createXmlProperty(QDomDocument& doc, const QString& name, const bool value) const;
+
+    static QDomElement property(const QDomElement& e, const QString& name);
+    static bool attribute(const QDomElement& e, const QString& attribute_name, const QString& type, QString* attr);
+
+    typedef enum PropertyFlags {
+        Success,
+        NotFound,
+        NoValidConversion,
+    };
+
+    static PropertyFlags propertyInteger(const QDomElement &e, const QString& attribute_name, int *entier = nullptr, int defaultValue = std::numeric_limits<int>::quiet_NaN());
+    static PropertyFlags propertyDouble(const QDomElement &e, const QString& attribute_name, double *reel = nullptr, double defaultValue = std::numeric_limits<double>::quiet_NaN());
+    static PropertyFlags propertyString(const QDomElement& e, const QString& attribute_name, QString* string = nullptr, QString defaultValue = QString());
+    static PropertyFlags propertyBool(const QDomElement &e, const QString& attribute_name, bool* boolean = nullptr, bool defaulValue = false);
+
+    static bool validXmlProperty(const QDomElement& e);
+
+    QVariant XmlProperty(const QDomElement& element);
+
+    /**
+        Permet de convertir une chaine de caracteres ("n", "s", "e" ou "w")
+        en orientation. Si la chaine fait plusieurs caracteres, seul le
+        premier est pris en compte. En cas d'incoherence, Qet::North est
+        retourne.
+        @param s Chaine de caractere cense representer une orientation
+        @return l'orientation designee par la chaine de caractere
+    */
+    static Qet::Orientation orientationFromString(const QString &s);
+
+    /**
+        @param o une orientation
+        @return une chaine de caractere representant l'orientation
+    */
+    static QString orientationToString(Qet::Orientation o);
 };
 
 #endif // PROPERTIESINTERFACE_H

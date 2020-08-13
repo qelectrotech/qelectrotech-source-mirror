@@ -719,15 +719,13 @@ QList<Conductor *> Terminal::conductors() const {
 QDomElement Terminal::toXml(QDomDocument &doc) const {
 	QDomElement qdo = doc.createElement("terminal");
 
-	// for backward compatibility
-	qdo.setAttribute("x", QString("%1").arg(dock_elmt_.x()));
-	qdo.setAttribute("y",  QString("%1").arg(dock_elmt_.y()));
-	// end for backward compatibility
+    qdo.appendChild(createXmlProperty(doc, "x", dock_elmt_.x()));
+    qdo.appendChild(createXmlProperty(doc, "y", dock_elmt_.y()));
+    qdo.appendChild(createXmlProperty(doc, "orientation", orientationToString(d->m_orientation)));
+    qdo.appendChild(createXmlProperty(doc, "number", number_terminal_));
+    qdo.appendChild(createXmlProperty(doc, "name", name_terminal_));
+    qdo.appendChild(createXmlProperty(doc, "nameHidden", name_terminal_hidden));
 
-	qdo.setAttribute("orientation", d->m_orientation);
-	qdo.setAttribute("number", number_terminal_);
-	qdo.setAttribute("name", name_terminal_);
-	qdo.setAttribute("nameHidden", name_terminal_hidden);
 	return(qdo);
 }
 
@@ -737,38 +735,36 @@ QDomElement Terminal::toXml(QDomDocument &doc) const {
 	@param terminal Le QDomElement a analyser
 	@return true si le QDomElement passe en parametre est une borne, false sinon
 */
-bool Terminal::valideXml(QDomElement &terminal) {
-	// verifie le nom du tag
+bool Terminal::valideXml(QDomElement &terminal) const {
 	if (terminal.tagName() != "terminal") return(false);
+
+    if (!propertyString(terminal, "number", nullptr))
+        return false;
+
+    if (!propertyString(terminal, "name", nullptr))
+        return false;
+
+    if (!propertyBool(terminal, "nameHidden", nullptr))
+        return false;
+
+    if (!propertyDouble(terminal, "x", nullptr))
+        return false;
+    if (!propertyDouble(terminal, "y", nullptr))
+        return false;
+
+    QString o;
+    if (!propertyString(terminal, "orientation", &o))
+        return false;
+
+    Qet::Orientation terminal_or = orientationFromString(o);
+    if (terminal_or != Qet::North
+            && terminal_or != Qet::South
+            && terminal_or != Qet::East
+            && terminal_or != Qet::West)
+        return false;
 	
-	// verifie la presence des attributs minimaux
-	if (!terminal.hasAttribute("x")) return(false);
-	if (!terminal.hasAttribute("y")) return(false);
-	if (!terminal.hasAttribute("orientation")) return(false);
-	
-	bool conv_ok;
-	// parse l'abscisse
-	terminal.attribute("x").toDouble(&conv_ok);
-	if (!conv_ok) return(false);
-	
-	// parse l'ordonnee
-	terminal.attribute("y").toDouble(&conv_ok);
-	if (!conv_ok) return(false);
-	
-	// parse l'id
-	terminal.attribute("id").toInt(&conv_ok);
-	if (!conv_ok) return(false);
-	
-	// parse l'orientation
-	int terminal_or = terminal.attribute("orientation").toInt(&conv_ok);
-	if (!conv_ok) return(false);
-	if (terminal_or != Qet::North
-			&& terminal_or != Qet::South
-			&& terminal_or != Qet::East
-			&& terminal_or != Qet::West) return(false);
-	
-	// a ce stade, la borne est syntaxiquement correcte
-	return(true);
+    // a ce stade, la borne est syntaxiquement correcte
+    return true;
 }
 
 /**
@@ -779,15 +775,30 @@ bool Terminal::valideXml(QDomElement &terminal) {
 	@return true si la borne "se reconnait"
 	(memes coordonnes, meme orientation), false sinon
 */
-bool Terminal::fromXml(QDomElement &terminal) {
-	number_terminal_ = terminal.attribute("number");
-	name_terminal_ = terminal.attribute("name");
-	name_terminal_hidden = terminal.attribute("nameHidden").toInt();
+bool Terminal::fromXml(const QDomElement &terminal) {
+    if (!propertyString(terminal, "number", &number_terminal_))
+        return false;
 
-	return (
-		qFuzzyCompare(terminal.attribute("x").toDouble(), dock_elmt_.x()) &&
-		qFuzzyCompare(terminal.attribute("y").toDouble(), dock_elmt_.y()) &&
-		(terminal.attribute("orientation").toInt() == d->m_orientation)
+    if (!propertyString(terminal, "name", &name_terminal_))
+        return false;
+
+    if (!propertyBool(terminal, "nameHidden", &name_terminal_hidden))
+        return false;
+
+    double x, y;
+    if (!propertyDouble(terminal, "x", &x))
+        return false;
+    if (!propertyDouble(terminal, "y", &y))
+        return false;
+
+    QString o;
+    if (!propertyString(terminal, "orientation", &o))
+        return false;
+
+    return (
+        qFuzzyCompare(x, dock_elmt_.x()) &&
+        qFuzzyCompare(y, dock_elmt_.y()) &&
+        (orientationFromString(o) == d->m_orientation)
 	);
 }
 

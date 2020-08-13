@@ -81,10 +81,11 @@ const QDomElement PartRectangle::toXml(QDomDocument &xml_document) const
 {
 	QDomElement xml_element = xml_document.createElement("rect");
 	QPointF top_left(sceneTopLeft());
-	xml_element.setAttribute("x", QString("%1").arg(top_left.x()));
-	xml_element.setAttribute("y", QString("%1").arg(top_left.y()));
-	xml_element.setAttribute("width",  QString("%1").arg(m_rect.width()));
-	xml_element.setAttribute("height", QString("%1").arg(m_rect.height()));
+
+    xml_element.appendChild(createXmlProperty(xml_document, "x", top_left.x()));
+    xml_element.appendChild(createXmlProperty(xml_document, "y", top_left.y()));
+    xml_element.appendChild(createXmlProperty(xml_document, "width", m_rect.width()));
+    xml_element.appendChild(createXmlProperty(xml_document, "height", m_rect.height()));
 	
 	QRectF rect = m_rect.normalized();
 	qreal x = m_xRadius;
@@ -98,8 +99,11 @@ const QDomElement PartRectangle::toXml(QDomDocument &xml_document) const
 	
 	xml_element.setAttribute("rx", QString::number(m_xRadius));
 	xml_element.setAttribute("ry", QString::number(m_yRadius));
+
+    xml_element.appendChild(createXmlProperty(xml_document, "rx", m_xRadius));
+    xml_element.appendChild(createXmlProperty(xml_document, "ry", m_yRadius));
 	
-	stylesToXml(xml_element);
+    stylesToXml(xml_document, xml_element);
 	return(xml_element);
 }
 

@@ -89,22 +89,24 @@ void PartPolygon::fromXml(const QDomElement &qde)
 	int i = 1;
 	while(true)
 	{
-		if (QET::attributeIsAReal(qde, QString("x%1").arg(i)) &&\
-			QET::attributeIsAReal(qde, QString("y%1").arg(i)))
-			++ i;
+        if (propertyDouble(qde, QString("x%1").arg(i)) &&
+            propertyDouble(qde, QString("y%1").arg(i)))
+            i++;
 
 		else break;
 	}
 	
 	QPolygonF temp_polygon;
+    double x, y;
 	for (int j = 1 ; j < i ; ++ j)
 	{
-		temp_polygon << QPointF(qde.attribute(QString("x%1").arg(j)).toDouble(),
-								qde.attribute(QString("y%1").arg(j)).toDouble());
+        propertyDouble(qde, QString("x%1").arg(j), &x);
+        propertyDouble(qde, QString("y%1").arg(j), &y);
+        temp_polygon << QPointF(x, y);
 	}
 	m_polygon = temp_polygon;
 	
-	m_closed = qde.attribute("closed") != "false";
+    propertyBool(qde, "closed", &m_closed);
 }
 
 /**
@@ -119,12 +121,14 @@ const QDomElement PartPolygon::toXml(QDomDocument &xml_document) const
 	int i = 1;
 	foreach(QPointF point, m_polygon) {
 		point = mapToScene(point);
-		xml_element.setAttribute(QString("x%1").arg(i), QString("%1").arg(point.x()));
-		xml_element.setAttribute(QString("y%1").arg(i), QString("%1").arg(point.y()));
+        xml_element.appendChild(createXmlProperty(xml_document, QString("x%1").arg(i), point.x()));
+        xml_element.appendChild(createXmlProperty(xml_document, QString("y%1").arg(i), point.y()));
 		++ i;
 	}
-	if (!m_closed) xml_element.setAttribute("closed", "false");
-	stylesToXml(xml_element);
+
+    xml_element.appendChild(createXmlProperty(xml_document, "closed", m_closed));
+
+    stylesToXml(xml_document, xml_element);
 	return(xml_element);
 }
 

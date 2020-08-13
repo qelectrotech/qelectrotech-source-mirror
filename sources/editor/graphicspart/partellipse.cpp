@@ -82,20 +82,20 @@ const QDomElement PartEllipse::toXml(QDomDocument &xml_document) const
 	if (qFuzzyCompare(rect().width(), rect().height()))
 	{
 		xml_element = xml_document.createElement("circle");
-		xml_element.setAttribute("diameter", QString("%1").arg(rect().width()));
+        xml_element.appendChild(createXmlProperty(xml_document, "diameter", rect().width()));
 	}
 	else
 	{
 		xml_element = xml_document.createElement("ellipse");
-		xml_element.setAttribute("width",  QString("%1").arg(rect().width()));
-		xml_element.setAttribute("height", QString("%1").arg(rect().height()));
+        xml_element.appendChild(createXmlProperty(xml_document, "width", rect().width()));
+        xml_element.appendChild(createXmlProperty(xml_document, "height", rect().height()));
 	}
 
 	QPointF top_left(sceneTopLeft());
-	xml_element.setAttribute("x", QString("%1").arg(top_left.x()));
-	xml_element.setAttribute("y", QString("%1").arg(top_left.y()));
+    xml_element.appendChild(createXmlProperty(xml_document, "x", top_left.x()));
+    xml_element.appendChild(createXmlProperty(xml_document, "y", top_left.y()));
 
-	stylesToXml(xml_element);
+	stylesToXml(xml_document, xml_element);
 
 	return(xml_element);
 }
@@ -108,19 +108,23 @@ const QDomElement PartEllipse::toXml(QDomDocument &xml_document) const
 void PartEllipse::fromXml(const QDomElement &qde)
 {
 	stylesFromXml(qde);
-	qreal width, height;
+    double x = 0, y = 0, width = 0, height = 0;
 
 	if (qde.tagName() == "ellipse")
 	{
-		width = qde.attribute("width",  "0").toDouble();
-		height = qde.attribute("height", "0").toDouble();
+        propertyDouble(qde, "width", &width);
+        propertyDouble(qde, "height", &height);
 	}
-	else
-		width = height = qde.attribute("diameter", "0").toDouble();
+    else {
+        propertyDouble(qde, "diameter", &width);
+        height = width;
+    }
 
-	m_rect = QRectF(mapFromScene(qde.attribute("x", "0").toDouble(),
-								 qde.attribute("y", "0").toDouble()),
-					QSizeF(width, height));
+
+    propertyDouble(qde, "x", &x);
+    propertyDouble(qde, "y", &y);
+
+    m_rect = QRectF(mapFromScene(x, y), QSizeF(width, height));
 }
 
 /**

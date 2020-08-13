@@ -59,28 +59,41 @@ void PartText::fromXml(const QDomElement &xml_element)
 {
 	bool ok;
 
-	if (xml_element.hasAttribute("size"))
+    int size;
+    QString font;
+
+    if (propertyInteger(xml_element, "size", &size) != PropertyFlags::NotFound)
 	{
-		int font_size = xml_element.attribute("size").toInt(&ok);
-		if (!ok || font_size < 1) {
-			font_size = 20;
+        if (size < 1) {
+            size = 20;
 		}
 		QFont font_ = this->font();
-		font_.setPointSize(font_size);
+        font_.setPointSize(size);
 		setFont(font_);
 	}
-	else if (xml_element.hasAttribute("font"))
+    else if (propertyString(xml_element, "font", &font) != PropertyFlags::NotFound)
 	{
 		QFont font_;
-		font_.fromString(xml_element.attribute("font"));
+        font_.fromString(font);
 		setFont(font_);
-	}
+    }
 	
-	setDefaultTextColor(QColor(xml_element.attribute("color", "#000000")));
-	setPlainText(xml_element.attribute("text"));
-	setPos(xml_element.attribute("x").toDouble(),
-		   xml_element.attribute("y").toDouble());
-	setRotation(xml_element.attribute("rotation", QString::number(0)).toDouble());
+    QString color;
+    QString text;
+    propertyString(xml_element, "color", &color, "#000000");
+    setDefaultTextColor(QColor(color));
+
+
+    propertyString(xml_element, "text", &text);
+    setPlainText(text);
+
+    double x, y, rot;
+    propertyDouble(xml_element, "x", &x, 0);
+    propertyDouble(xml_element, "y", &y, 0);
+    setPos(x, y);
+
+    propertyDouble(xml_element, "rotation", &rot, 0);
+    setRotation(rot);
 }
 
 /**
@@ -92,12 +105,12 @@ const QDomElement PartText::toXml(QDomDocument &xml_document) const
 {
 	QDomElement xml_element = xml_document.createElement(xmlName());
 
-	xml_element.setAttribute("x", QString::number(pos().x()));
-	xml_element.setAttribute("y", QString::number(pos().y()));
-	xml_element.setAttribute("text", toPlainText());
-	xml_element.setAttribute("font", font().toString());
-	xml_element.setAttribute("rotation", QString::number(rotation()));
-	xml_element.setAttribute("color", defaultTextColor().name());
+    xml_element.appendChild(createXmlProperty(xml_document, "x", pos().x()));
+    xml_element.appendChild(createXmlProperty(xml_document, "y", pos().y()));
+    xml_element.appendChild(createXmlProperty(xml_document, "text", toPlainText()));
+    xml_element.appendChild(createXmlProperty(xml_document, "font", font().toString()));
+    xml_element.appendChild(createXmlProperty(xml_document, "rotation", rotation()));
+    xml_element.appendChild(createXmlProperty(xml_document, "color", defaultTextColor().name()));
 
 	return(xml_element);
 }

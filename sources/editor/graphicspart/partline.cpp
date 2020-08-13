@@ -108,16 +108,18 @@ const QDomElement PartLine::toXml(QDomDocument &xml_document) const
 	QPointF p2(sceneP2());
 	
 	QDomElement xml_element = xml_document.createElement("line");
-	xml_element.setAttribute("x1", QString("%1").arg(p1.x()));
-	xml_element.setAttribute("y1", QString("%1").arg(p1.y()));
-	xml_element.setAttribute("x2", QString("%1").arg(p2.x()));
-	xml_element.setAttribute("y2", QString("%1").arg(p2.y()));
-	xml_element.setAttribute("end1", Qet::endTypeToString(first_end));
-	xml_element.setAttribute("length1", QString("%1").arg(first_length));
-	xml_element.setAttribute("end2", Qet::endTypeToString(second_end));
-	xml_element.setAttribute("length2", QString("%1").arg(second_length));
+
+    xml_element.appendChild(createXmlProperty(xml_document, "x1", p1.x()));
+    xml_element.appendChild(createXmlProperty(xml_document, "y1", p1.y()));
+    xml_element.appendChild(createXmlProperty(xml_document, "x2", p2.x()));
+    xml_element.appendChild(createXmlProperty(xml_document, "y2", p2.y()));
+
+    xml_element.appendChild(createXmlProperty(xml_document, "end1", Qet::endTypeToString(first_end)));
+    xml_element.appendChild(createXmlProperty(xml_document, "length1", first_length));
+    xml_element.appendChild(createXmlProperty(xml_document, "end2", Qet::endTypeToString(second_end)));
+    xml_element.appendChild(createXmlProperty(xml_document, "length2", second_length));
 	
-	stylesToXml(xml_element);
+	stylesToXml(xml_document, xml_element);
 	return(xml_element);
 }
 
@@ -128,15 +130,28 @@ const QDomElement PartLine::toXml(QDomDocument &xml_document) const
  */
 void PartLine::fromXml(const QDomElement &qde) {
 	stylesFromXml(qde);
-	m_line = QLineF(mapFromScene(qde.attribute("x1", "0").toDouble(),
-								 qde.attribute("y1", "0").toDouble()),
-					mapFromScene(qde.attribute("x2", "0").toDouble(),
-								 qde.attribute("y2", "0").toDouble()));
 
-	first_end     = Qet::endTypeFromString(qde.attribute("end1"));
-	first_length  = qde.attribute("length1", "1.5").toDouble();
-	second_end    = Qet::endTypeFromString(qde.attribute("end2"));
-	second_length = qde.attribute("length2", "1.5").toDouble();
+    double x1 = 0, y1 = 0, x2 = 0, y2 = 0;
+    propertyDouble(qde, "x1", &x1);
+    propertyDouble(qde, "y1", &y1);
+    propertyDouble(qde, "x2", &x2);
+    propertyDouble(qde, "y2", &y2);
+
+    m_line = QLineF(mapFromScene(x1, y1),
+                    mapFromScene(x2, y2));
+
+    QString s;
+    propertyString(qde, "end1", &s);
+    first_end = Qet::endTypeFromString(s);
+
+    propertyString(qde, "end2", &s);
+    first_end = Qet::endTypeFromString(s);
+
+    first_length = 1.5;
+    second_length = 1.5;
+
+    propertyDouble(qde, "length1", &first_length);
+    propertyDouble(qde, "length2", &second_length);
 }
 
 /**
