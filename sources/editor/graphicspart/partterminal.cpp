@@ -27,9 +27,9 @@
 PartTerminal::PartTerminal(QETElementEditor *editor, QGraphicsItem *parent) :
     CustomElementGraphicPart(editor, parent)
 {
-    d = new TerminalData(this);
-    d->m_orientation = Qet::North;
-    d->m_uuid = QUuid::createUuid(); // if part is loaded this uuid will be overwritten, but being sure that terminal has a uuid
+	d = new TerminalData(this);
+	d -> m_orientation = Qet::North;
+	d -> m_uuid = QUuid::createUuid(); // if part is loaded this uuid will be overwritten, but being sure that terminal has a uuid
 	updateSecondPoint();
 	setZValue(100000);
 }
@@ -43,8 +43,8 @@ PartTerminal::~PartTerminal() {
 	@param xml_elmt Element XML a lire
 */
 void PartTerminal::fromXml(const QDomElement &xml_elmt) {
-    d->fromXml(xml_elmt);
-    setPos(d->m_pos);
+	d -> fromXml(xml_elmt);
+	setPos(d -> m_pos);
 	updateSecondPoint();
 }
 
@@ -54,7 +54,7 @@ void PartTerminal::fromXml(const QDomElement &xml_elmt) {
 	@return un element XML decrivant la borne
 */
 const QDomElement PartTerminal::toXml(QDomDocument &xml_document) const {
-    return d->toXml(xml_document);
+	return d -> toXml(xml_document);
 }
 
 /**
@@ -66,12 +66,12 @@ const QDomElement PartTerminal::toXml(QDomDocument &xml_document) const {
 void PartTerminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidget *widget) {
 	Q_UNUSED(widget);
 	p -> save();
-	
+
 	// annulation des renderhints
 	p -> setRenderHint(QPainter::Antialiasing,          false);
 	p -> setRenderHint(QPainter::TextAntialiasing,      false);
 	p -> setRenderHint(QPainter::SmoothPixmapTransform, false);
-	
+
 	QPen t;
 	t.setWidthF(1.0);
 	t.setCosmetic(options && options -> levelOfDetail < 1.0);
@@ -79,8 +79,8 @@ void PartTerminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, Q
 	// dessin de la borne en rouge
 	t.setColor(isSelected() ? Terminal::neutralColor : Qt::red);
 	p -> setPen(t);
-    p -> drawLine(QPointF(0.0, 0.0), d->second_point);
-	
+	p -> drawLine(QPointF(0.0, 0.0), d -> second_point);
+
 	// dessin du point d'amarrage au conducteur en bleu
 	t.setColor(isSelected() ? Qt::red : Terminal::neutralColor);
 	p -> setPen(t);
@@ -96,10 +96,9 @@ void PartTerminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, Q
  * @brief PartTerminal::shape
  * @return the shape of this item
  */
-QPainterPath PartTerminal::shape() const
-{
+QPainterPath PartTerminal::shape() const {
 	QPainterPath shape;
-    shape.lineTo(d->second_point);
+	shape.lineTo(d -> second_point);
 
 	QPainterPathStroker pps;
 	pps.setWidth(1);
@@ -111,9 +110,8 @@ QPainterPath PartTerminal::shape() const
  * @brief PartTerminal::boundingRect
  * @return the bounding rect of this item
  */
-QRectF PartTerminal::boundingRect() const
-{
-    QRectF br(QPointF(0, 0), d->second_point);
+QRectF PartTerminal::boundingRect() const {
+	QRectF br(QPointF(0, 0), d -> second_point);
 	br = br.normalized();
 
 	qreal adjust = (SHADOWS_HEIGHT + 1) / 2;
@@ -125,11 +123,10 @@ QRectF PartTerminal::boundingRect() const
 	Definit l'orientation de la borne
 	@param ori la nouvelle orientation de la borne
 */
-void PartTerminal::setOrientation(Qet::Orientation ori)
-{
-    if (d->m_orientation == ori) return;
+void PartTerminal::setOrientation(Qet::Orientation ori) {
+	if (d -> m_orientation == ori) return;
 	prepareGeometryChange();
-    d->m_orientation = ori;
+	d -> m_orientation = ori;
 	updateSecondPoint();
 	emit orientationChanged();
 }
@@ -137,16 +134,14 @@ void PartTerminal::setOrientation(Qet::Orientation ori)
 	@brief PartTerminal::setName
 	@param name
 */
-void PartTerminal::setName(QString& name)
-{
-	if (d->m_name == name) return;
-	d->m_name = name;
+void PartTerminal::setName(QString& name) {
+	if (d -> m_name == name) return;
+	d -> m_name = name;
 	emit nameChanged();
 }
 
-void PartTerminal::setNewUuid()
-{
-	d->m_uuid = QUuid::createUuid();
+void PartTerminal::setNewUuid() {
+	d -> m_uuid = QUuid::createUuid();
 }
 
 /**
@@ -155,11 +150,11 @@ void PartTerminal::setNewUuid()
 */
 void PartTerminal::updateSecondPoint() {
 	qreal ts = 4.0; // terminal size
-    switch(d->m_orientation) {
-        case Qet::North: d->second_point = QPointF(0.0,  ts); break;
-        case Qet::East : d->second_point = QPointF(-ts, 0.0); break;
-        case Qet::South: d->second_point = QPointF(0.0, -ts); break;
-        case Qet::West : d->second_point = QPointF(ts,  0.0); break;
+	switch(d -> m_orientation) {
+		case Qet::North: d -> second_point = QPointF(0.0,  ts); break;
+		case Qet::East : d -> second_point = QPointF(-ts, 0.0); break;
+		case Qet::South: d -> second_point = QPointF(0.0, -ts); break;
+		case Qet::West : d -> second_point = QPointF(ts,  0.0); break;
 	}
 }
 
@@ -196,6 +191,7 @@ void PartTerminal::startUserTransformation(const QRectF &initial_selection_rect)
 	Handle the user-induced transformation from \a initial_selection_rect to \a new_selection_rect
 */
 void PartTerminal::handleUserTransformation(const QRectF &initial_selection_rect, const QRectF &new_selection_rect) {
-	QPointF mapped_point = mapPoints(initial_selection_rect, new_selection_rect, QList<QPointF>() << saved_position_).first();
+	QPointF mapped_point = mapPoints(
+		initial_selection_rect, new_selection_rect, QList<QPointF>() << saved_position_).first();
 	setPos(mapped_point);
 }
