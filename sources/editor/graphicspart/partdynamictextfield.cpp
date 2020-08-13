@@ -36,9 +36,11 @@ PartDynamicTextField::PartDynamicTextField(QETElementEditor *editor, QGraphicsIt
 	setTextWidth(settings.value("diagrameditor/dynamic_text_width", -1).toInt());
 	setText("_");
 	setTextFrom(DynamicElementTextItem::UserText);
-	setFlags(QGraphicsItem::ItemIsSelectable |
-				QGraphicsItem::ItemSendsGeometryChanges |
-				QGraphicsItem::ItemIsMovable);
+	setFlags(
+		QGraphicsItem::ItemIsSelectable |
+		QGraphicsItem::ItemSendsGeometryChanges |
+		QGraphicsItem::ItemIsMovable
+	);
 
 		//Option when text is displayed in multiple line
 	QTextOption option = document() -> defaultTextOption();
@@ -154,8 +156,10 @@ void PartDynamicTextField::fromXml(const QDomElement &dom_elmt) {
 		return;
 	}
 
-	QGraphicsTextItem::setPos(dom_elmt.attribute("x", QString::number(0)).toDouble(),
-								dom_elmt.attribute("y", QString::number(0)).toDouble());
+	QGraphicsTextItem::setPos(
+		dom_elmt.attribute("x", QString::number(0)).toDouble(),
+		dom_elmt.attribute("y", QString::number(0)).toDouble()
+	);
 	setZValue(dom_elmt.attribute("z", QString::number(zValue())).toDouble());
 	QGraphicsTextItem::setRotation(dom_elmt.attribute("rotation", QString::number(0)).toDouble());
 
@@ -242,8 +246,10 @@ void PartDynamicTextField::fromTextFieldXml(const QDomElement &dom_element)
 	QPointF pos = transform.map(QPointF(0, -boundingRect().height()/2));
 	transform.reset();
 	//Second translate to the pos
-	transform.translate(dom_element.attribute("x", QString::number(0)).toDouble(),
-						dom_element.attribute("y", QString::number(0)).toDouble());
+	transform.translate(
+		dom_element.attribute("x", QString::number(0)).toDouble(),
+		dom_element.attribute("y", QString::number(0)).toDouble()
+	);
 	QGraphicsTextItem::setPos(transform.map(pos));
 }
 
