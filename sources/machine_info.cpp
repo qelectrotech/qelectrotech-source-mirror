@@ -22,6 +22,7 @@
 #include <QDebug>
 #include <QSysInfo>
 #include <QStorageInfo>
+#include <QLibraryInfo>
 
 /**
 	@brief Machine_info::Machine_info
@@ -38,7 +39,43 @@ Machine_info::Machine_info(QObject *parent) : QObject(parent)
 */
 void Machine_info::send_info_to_debug()
 {
-	qDebug()<<"test message generated";
+	qInfo()<<"debugging enabled:"
+		<< QLibraryInfo::isDebugBuild();
+
+	qInfo()<< "Qt library version:"
+		<< QLibraryInfo::version();
+	qInfo()<< "Qt library location default prefix:"
+		<< QLibraryInfo::location(QLibraryInfo::PrefixPath);
+	qInfo()<< "Qt library location documentation:"
+		<< QLibraryInfo::location(QLibraryInfo::DocumentationPath);
+	qInfo()<< "Qt library location headers:"
+		<< QLibraryInfo::location(QLibraryInfo::HeadersPath);
+	qInfo()<< "Qt library location libraries:"
+		<< QLibraryInfo::location(QLibraryInfo::LibrariesPath);
+	qInfo()<< "Qt library location executables:"
+		<< QLibraryInfo::location(QLibraryInfo::LibraryExecutablesPath);
+	qInfo()<< "Qt library location Qt binaries:"
+		<< QLibraryInfo::location(QLibraryInfo::BinariesPath);
+	qInfo()<< "Qt library location Qt plugins:"
+		<< QLibraryInfo::location(QLibraryInfo::PluginsPath);
+	qInfo()<< "Qt library location installed QML extensions:"
+		<< QLibraryInfo::location(QLibraryInfo::ImportsPath);
+	qInfo()<< "Qt library location installed QML extensions:"
+		<< QLibraryInfo::location(QLibraryInfo::Qml2ImportsPath);
+	qInfo()<< "Qt library location dependent Qt data:"
+		<< QLibraryInfo::location(QLibraryInfo::ArchDataPath);
+	qInfo()<< "Qt library location independent Qt data:"
+		<< QLibraryInfo::location(QLibraryInfo::DataPath);
+	qInfo()<< "Qt library location translation:"
+		<< QLibraryInfo::location(QLibraryInfo::TranslationsPath);
+	qInfo()<< "Qt library location examples:"
+		<< QLibraryInfo::location(QLibraryInfo::ExamplesPath);
+	qInfo()<< "Qt library location Qt testcases:"
+		<< QLibraryInfo::location(QLibraryInfo::TestsPath);
+#ifndef Q_OS_WIN
+	qInfo()<< "Qt library location Qt settings:"
+		<< QLibraryInfo::location(QLibraryInfo::SettingsPath);
+#endif
 	qInfo()<< tr("Compilation : ") + pc.built.version;
 	qInfo()<< "Built with Qt " + pc.built.QT
 		  + " - Date : " + pc.built.date
@@ -215,6 +252,9 @@ void Machine_info::init_get_cpu_info_winnt()
 	pc.gpu.RAM=QString(WinGPURAMOutput.toLocal8Bit().constData());
 }
 
+/**
+	@brief Machine_info::init_get_cpu_info_macos
+*/
 void Machine_info::init_get_cpu_info_macos()
 {
 	QProcess macoscpuinfo;
