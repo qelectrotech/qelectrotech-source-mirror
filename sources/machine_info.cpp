@@ -113,35 +113,19 @@ void Machine_info::send_info_to_debug()
 void Machine_info::init_get_Screen_info()
 {
 	const auto screens = qApp->screens();
-	for (int ii = 0; ii < screens.count(); ++ii)
-	{
-
-		if(
-				pc.screen.Max_width
-				<
+	pc.screen.count=screens.count();
+	for (int ii = 0; ii < pc.screen.count; ++ii) {
+		pc.screen.width[ii]=
 				screens[ii]->geometry().width()
-				*
-				screens[ii]->devicePixelRatio()
-				)
-		{
-			pc.screen.Max_width =
-					screens[ii]->geometry().width()
-					*
-					screens[ii]->devicePixelRatio();
-		}
-		if(
-				pc.screen.Max_height
-				<
+				* screens[ii]->devicePixelRatio();
+		if(pc.screen.Max_width<pc.screen.width[ii])
+			pc.screen.Max_width=pc.screen.width[ii];
+
+		pc.screen.height[ii]=
 				screens[ii]->geometry().height()
-				*
-				screens[ii]->devicePixelRatio()
-				)
-		{
-			pc.screen.Max_height =
-					screens[ii]->geometry().height()
-					*
-					screens[ii]->devicePixelRatio();
-		}
+				* screens[ii]->devicePixelRatio();
+		if(pc.screen.Max_height<pc.screen.height[ii])
+			pc.screen.Max_height=pc.screen.height[ii];
 	}
 }
 
@@ -160,16 +144,6 @@ void Machine_info::init_get_cpu_info()
 		init_get_cpu_info_winnt();
 #endif
 #endif
-	const auto screens = qApp->screens();
-	pc.screen.count=screens.count();
-	for (int ii = 0; ii < pc.screen.count; ++ii) {
-		pc.screen.width[ii]=
-				screens[ii]->geometry().width()
-				* screens[ii]->devicePixelRatio();
-		pc.screen.height[ii]=
-				screens[ii]->geometry().height()
-				* screens[ii]->devicePixelRatio();
-	}
 }
 
 /**
@@ -217,6 +191,7 @@ void Machine_info::init_get_cpu_info_linux()
 	pc.gpu.info=QString(linuxGPUOutput.toLocal8Bit().constData());
 	pc.gpu.RAM="@ToDo";
 }
+
 /**
 	@brief Machine_info::init_get_cpu_info_winnt
 */
