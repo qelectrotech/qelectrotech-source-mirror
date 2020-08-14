@@ -104,7 +104,7 @@ void myMessageOutput(QtMsgType type,
 		txt+= " (";
 		txt+= context.file ? context.file : "";
 		txt+= ":";
-		txt+= context.line ? context.line :0;
+		txt+=QString::number(context.line ? context.line :0);
 		txt+= ", ";
 		txt+= context.function ? context.function : "";
 		txt+=")\n";
