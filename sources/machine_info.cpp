@@ -265,6 +265,17 @@ void Machine_info::init_get_cpu_info_macos()
 	macoscpuinfo.waitForFinished();
 	QString macosOutput = macoscpuinfo.readAllStandardOutput();
 	pc.cpu.info=QString(macosOutput.toLocal8Bit().constData());
+	
+	QProcess macosraminfo;
+	macosraminfo.start("bash",
+			   QStringList()
+			   << "-c"
+			   << "sysctl -n hw.memsize");
+	macosraminfo.waitForFinished();
+	QString macosRAMOutput = macosraminfo.readAllStandardOutput();
+	pc.ram.Available=QString("RAM Total : %1 MB").arg(
+	macosRAMOutput.toLongLong() /1024 / 1024);
+	macosraminfo.close();
 }
 
 /**
