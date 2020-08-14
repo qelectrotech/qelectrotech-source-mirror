@@ -34,11 +34,12 @@ void myMessageOutput(QtMsgType type,
 		     const QString &msg)
 {
 
-	QByteArray dbs =
-		QTime::currentTime().toString("hh:mm:ss.zzz").toLocal8Bit();
+	QString txt=QTime::currentTime().toString("hh:mm:ss.zzz");
+	QByteArray dbs =txt.toLocal8Bit();
 	QByteArray localMsg = msg.toLocal8Bit();
 	const char *file = context.file ? context.file : "";
 	const char *function = context.function ? context.function : "";
+
 	switch (type) {
 	case QtDebugMsg:
 		fprintf(stderr,
@@ -48,12 +49,14 @@ void myMessageOutput(QtMsgType type,
 			file,
 			context.line,
 			function);
+		txt+=" Debug: ";
 		break;
 	case QtInfoMsg:
 		fprintf(stderr,
 			"%s Info: %s \n",
 			dbs.constData(),
 			localMsg.constData());
+		txt+=" Info: ";
 		break;
 	case QtWarningMsg:
 		fprintf(stderr,
@@ -62,6 +65,7 @@ void myMessageOutput(QtMsgType type,
 			localMsg.constData(),
 			file, context.line,
 			function);
+		txt+=" Warning: ";
 		break;
 	case QtCriticalMsg:
 		fprintf(stderr,
@@ -71,6 +75,7 @@ void myMessageOutput(QtMsgType type,
 			file,
 			context.line,
 			function);
+		txt+=" Critical: ";
 		break;
 	case QtFatalMsg:
 		fprintf(stderr,
@@ -80,6 +85,7 @@ void myMessageOutput(QtMsgType type,
 			file,
 			context.line,
 			function);
+		txt+=" Fatal: ";
 		break;
 	default:
 		fprintf(stderr,
@@ -89,6 +95,58 @@ void myMessageOutput(QtMsgType type,
 			file,
 			context.line,
 			function);
+		txt+=" Unknown: ";
+	}
+	txt+= msg;
+	if(type==QtInfoMsg){
+		txt+=" \n";
+	} else {
+		txt+= " (";
+		txt+= context.file ? context.file : "";
+		txt+= ":";
+		txt+= context.line ? context.line :0;
+		txt+= ", ";
+		txt+= context.function ? context.function : "";
+		txt+=")\n";
+	}
+	QFile outFile(QDir::homePath()
+		      +"/.qet/"
+		      +QDate::currentDate().toString("yyyyMMdd")
+		      +".log");
+	if(outFile.open(QIODevice::WriteOnly | QIODevice::Append))
+	{
+		QTextStream ts(&outFile);
+		ts << txt;
+	}
+	outFile.close();
+}
+
+/**
+	@brief delete_old_log_files
+	delete old log files
+	@param days : max days old
+*/
+void delete_old_log_files(int days)
+{
+	const QDate today = QDate::currentDate();
+	const QString path = QDir::homePath() + "/.qet/";
+
+	QString filter("%1%1%1%1%1%1%1%1.log"); // pattern
+	filter = filter.arg("[0123456789]"); // valid characters
+
+	Q_FOREACH (auto fileInfo,
+		   QDir(path).entryInfoList(
+			   QStringList(filter),
+			   QDir::Files))
+	{
+		if (fileInfo.lastRead().date().daysTo(today) > days)
+		{
+			QString filepath = fileInfo.absoluteFilePath();
+			QDir deletefile;
+			deletefile.setPath(filepath);
+			deletefile.remove(filepath);
+			qDebug() << "File " + filepath + " is deleted!";
+		}
 	}
 }
 
@@ -103,7 +161,11 @@ void myMessageOutput(QtMsgType type,
 */
 int main(int argc, char **argv)
 {
+	// for debugging
 	qInstallMessageHandler(myMessageOutput);
+	qInfo("Start-up");
+	// delete old log files of max 7 days old.
+	delete_old_log_files(7);
 	//Some setup, notably to use with QSetting.
 	QCoreApplication::setOrganizationName("QElectroTech");
 	QCoreApplication::setOrganizationDomain("qelectrotech.org");
@@ -112,7 +174,7 @@ int main(int argc, char **argv)
 	//HighDPI
 	QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 	SingleApplication app(argc, argv, true);
-
+	// for debugging
 	{
 		Machine_info *my_ma =new Machine_info();
 		my_ma->send_info_to_debug();
