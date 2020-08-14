@@ -1,28 +1,41 @@
-<definition type="element" orientation="dyyy" height="50" hotspot_y="25" version="0.70" width="40" hotspot_x="23" link_type="master">
-    <uuid uuid="{2abf6e68-2359-4b1b-b468-f7842007f956}"/>
+<definition width="40" hotspot_x="23" hotspot_y="25" orientation="dyyy" link_type="master" version="0.80" type="element" height="50">
+    <uuid uuid="{431b440b-1fa0-4e9e-b5a6-07f189bdc1a7}"/>
     <names>
+        <name lang="en">Timer T 816</name>
         <name lang="cs">Timer T 816</name>
     </names>
     <kindInformations>
-        <kindInformation show="1" name="type">coil</kindInformation>
+        <kindInformation name="type" show="1">coil</kindInformation>
     </kindInformations>
-    <elementInformations/>
+    <elementInformations>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="designation" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+    </elementInformations>
     <informations></informations>
     <description>
-        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" x="-14" height="15" rx="0" width="28" y="-8" ry="0" antialias="false"/>
-        <rect style="line-style:normal;line-weight:normal;filling:black;color:black" x="-20" height="15" rx="0" width="5" y="-8" ry="0" antialias="false"/>
-        <dynamic_text z="3" Valignment="AlignTop" x="-45" text_from="ElementInfo" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" uuid="{9b8efa95-7359-4c1f-84ce-b9787d530cd9}" y="-12" Halignment="AlignLeft" frame="false" text_width="-1">
+        <rect width="28" y="-8" antialias="false" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" x="-14" height="15"/>
+        <rect width="5" y="-8" antialias="false" ry="0" style="line-style:normal;line-weight:normal;filling:black;color:black" rx="0" x="-20" height="15"/>
+        <dynamic_text Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-12" uuid="{9b8efa95-7359-4c1f-84ce-b9787d530cd9}" frame="false" z="3" rotation="0" text_from="ElementInfo" Halignment="AlignLeft" text_width="-1" x="-45">
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>
-        <text x="2" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-10" text="2" color="#000000"/>
-        <text x="1" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="15" text="10" color="#000000"/>
-        <text x="-9" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-10" text="5" color="#000000"/>
-        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x1="0" y2="-15" end1="none" y1="-8" length1="1.5" length2="1.5" antialias="false" x2="0"/>
-        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x1="0" y2="15" end1="none" y1="7" length1="1.5" length2="1.5" antialias="false" x2="0"/>
-        <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x1="-10" y2="-15" end1="none" y1="-8" length1="1.5" length2="1.5" antialias="false" x2="-10"/>
-        <terminal orientation="n" x="-10" y="-15"/>
-        <terminal orientation="n" x="0" y="-15"/>
-        <terminal orientation="s" x="0" y="15"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-10" rotation="0" text="2" color="#000000" x="2"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="15" rotation="0" text="10" color="#000000" x="1"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-10" rotation="0" text="5" color="#000000" x="-9"/>
+        <line length1="1.5" end1="none" length2="1.5" y1="-8" antialias="false" x2="0" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-15" end2="none"/>
+        <line length1="1.5" end1="none" length2="1.5" y1="7" antialias="false" x2="0" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="15" end2="none"/>
+        <line length1="1.5" end1="none" length2="1.5" y1="-8" antialias="false" x2="-10" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-15" end2="none"/>
+        <terminal name="" y="-15" orientation="n" uuid="{46ca50be-4ef1-4d74-be46-dc0715a4ade7}" x="-10"/>
+        <terminal name="" y="-15" orientation="n" uuid="{dd0b15b5-4a54-4b8a-aef2-aac5d0cc34d5}" x="0"/>
+        <terminal name="" y="15" orientation="s" uuid="{4cb91363-bfe0-4c8c-b72c-98e3d0f395f0}" x="0"/>
     </description>
 </definition>
