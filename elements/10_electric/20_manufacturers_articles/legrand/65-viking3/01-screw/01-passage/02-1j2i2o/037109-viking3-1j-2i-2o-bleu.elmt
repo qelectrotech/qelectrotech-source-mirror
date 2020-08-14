@@ -1,29 +1,31 @@
-<definition link_type="simple" hotspot_y="14" width="10" type="element" height="30" hotspot_x="4" version="0.80" orientation="dyyy">
-    <uuid uuid="{e8effd92-5b6e-4eb1-9be3-e4db53d894d4}"/>
+<definition type="element" hotspot_y="14" link_type="terminal" orientation="dyyy" width="10" height="30" hotspot_x="4" version="0.80">
+    <uuid uuid="{7835b81e-15cc-406c-944c-0077c117573a}"/>
     <names>
         <name lang="fr">037109 - Viking3 - 1 jonction 2 entrées 2 sorties 4mm² pas 6mm Bleu</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="designation">037109</elementInformation>
-        <elementInformation show="1" name="quantity"></elementInformation>
-        <elementInformation show="1" name="description">Bloc de jonction de passage à vis Viking3 avec 1 jonction 2 entrées 2 sorties section 4mm² - pas 6mm - bleu</elementInformation>
-        <elementInformation show="1" name="comment"></elementInformation>
-        <elementInformation show="1" name="manufacturer">Legrand</elementInformation>
-        <elementInformation show="1" name="label"></elementInformation>
-        <elementInformation show="1" name="plant"></elementInformation>
-        <elementInformation show="1" name="unity"></elementInformation>
-        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Legrand</elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="description" show="1">Bloc de jonction de passage à vis Viking3 avec 1 jonction 2 entrées 2 sorties section 4mm² - pas 6mm - bleu</elementInformation>
+        <elementInformation name="designation" show="1">037109</elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
     </elementInformations>
     <informations>Arnaud VALMARY</informations>
     <description>
-        <dynamic_text text_width="-1" x="-2" z="1" frame="false" Valignment="AlignTop" rotation="270" Halignment="AlignLeft" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_from="ElementInfo" y="11" uuid="{91c840ee-306f-4409-bae7-790d713a33d6}">
+        <dynamic_text y="11" Valignment="AlignTop" uuid="{91c840ee-306f-4409-bae7-790d713a33d6}" text_width="-1" z="1" text_from="ElementInfo" x="-2" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" rotation="270" frame="false">
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>
-        <line y2="3" y1="10" x1="0" x2="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" end1="none" length1="1.5"/>
-        <line y2="-3" y1="-10" x1="0" x2="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" antialias="false" end1="none" length1="1.5"/>
-        <circle x="-2.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-2.5"/>
-        <terminal x="0" name="" y="10" uuid="{2ed19cfc-5d43-4663-b0b9-2f3fa60c6c70}" orientation="s"/>
-        <terminal x="0" name="" y="-10" uuid="{de96a6c0-3b84-49f9-86b9-d49cd7f27db1}" orientation="n"/>
+        <line antialias="false" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" x2="0" end1="none" y1="10" y2="3" length1="1.5"/>
+        <line antialias="false" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" x2="0" end1="none" y1="-10" y2="-3" length1="1.5"/>
+        <circle diameter="5" y="-2.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2.5"/>
+        <terminal name="" y="10" uuid="{2ed19cfc-5d43-4663-b0b9-2f3fa60c6c70}" orientation="s" x="0"/>
+        <terminal name="" y="-10" uuid="{de96a6c0-3b84-49f9-86b9-d49cd7f27db1}" orientation="n" x="0"/>
     </description>
 </definition>
