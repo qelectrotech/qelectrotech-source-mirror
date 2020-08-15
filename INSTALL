@@ -140,3 +140,14 @@ $ qmake (qmake-qt5 for Debian baserede systemer)
 $ make
 # umask 0022
 # make install
+
+[ja]
+必要条件 :
+libQt5 (パッケージ libqt5* を参照)
+cupsys-bsd 印刷用
+
+コンパイルの方法 :
+$ qmake (Debian ベースのシステムでは qmake-qt5)
+$ make
+# umask 0022
+# make install

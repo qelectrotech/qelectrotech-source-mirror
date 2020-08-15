@@ -182,7 +182,7 @@ RESOURCES += qelectrotech.qrc
 #RC_FILE = ico/windows_icon/qelectrotech.rc
 
 # Fichiers de traduction qui seront installes
-TRANSLATIONS += lang/qet_ar.ts lang/qet_be.ts lang/qet_ca.ts lang/qet_cs.ts lang/qet_da.ts lang/qet_de.ts lang/qet_el.ts lang/qet_en.ts lang/qet_es.ts lang/qet_fi.ts lang/qet_fr.ts lang/qet_hr.ts lang/qet_hu.ts lang/qet_it.ts lang/qet_nl.ts lang/qet_no.ts lang/qet_pl.ts lang/qet_pt_br.ts lang/qet_pt.ts lang/qet_ro.ts lang/qet_ru.ts lang/qet_sl.ts lang/qet_sr.ts lang/qet_tr.ts lang/qet_zh.ts
+TRANSLATIONS += lang/qet_ar.ts lang/qet_be.ts lang/qet_ca.ts lang/qet_cs.ts lang/qet_da.ts lang/qet_de.ts lang/qet_el.ts lang/qet_en.ts lang/qet_es.ts lang/qet_fi.ts lang/qet_fr.ts lang/qet_hr.ts lang/qet_hu.ts lang/qet_it.ts lang/qet_ja.ts lang/qet_nl.ts lang/qet_no.ts lang/qet_pl.ts lang/qet_pt_br.ts lang/qet_pt.ts lang/qet_ro.ts lang/qet_ru.ts lang/qet_sl.ts lang/qet_sr.ts lang/qet_tr.ts lang/qet_zh.ts
 
 # Modules Qt utilises par l'application
 QT += xml svg network sql widgets printsupport concurrent KWidgetsAddons KCoreAddons
