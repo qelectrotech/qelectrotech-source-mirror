@@ -17,6 +17,7 @@
 		<comment xml:lang="nl">QElectroTech project bestand</comment>
 		<comment xml:lang="be">QElectroTech project bestand</comment>
 		<comment xml:lang="da">QElectroTech projekt fil</comment>
+		<comment xml:lang="ja">QElectroTech プロジェクト・ファイル</comment>
 		<glob pattern="*.qet" />
 	</mime-type>
 	<mime-type type="application/x-qet-element">
@@ -36,6 +37,7 @@
 		<comment xml:lang="nl">QElectroTech element bestand</comment>
 		<comment xml:lang="be">QElectroTech element bestand</comment>
 		<comment xml:lang="da">QElectroTech symbol fil</comment>
+		<comment xml:lang="ja">QElectroTech 要素ファイル</comment>
 		<glob pattern="*.elmt" />
 	</mime-type>
 	<mime-type type="application/x-qet-titleblock">
@@ -54,6 +56,7 @@
 		<comment xml:lang="nl">QElectroTech titel bloksjabloon</comment>
 		<comment xml:lang="be">QElectroTech titel bloksjabloon</comment>
 		<comment xml:lang="da">QElectroTech titelblok skabelon</comment>
+		<comment xml:lang="ja">QElectroTech 表題欄テンプレート</comment>
 		<glob pattern="*.titleblock" />
 	</mime-type>
 </mime-info>
