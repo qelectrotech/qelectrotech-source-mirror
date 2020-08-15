@@ -578,12 +578,14 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 	}
 
 	//Draw conductors
-	foreach(Conductor *cond, list_conductors) {
-		foreach(ConductorSegment *segment, cond -> segmentsList()) {
-			qreal x1 = (segment -> firstPoint().x()) * Createdxf::xScale;
-			qreal y1 = Createdxf::sheetHeight - (segment -> firstPoint().y() * Createdxf::yScale);
-			qreal x2 = (segment -> secondPoint().x()) * Createdxf::xScale;
-			qreal y2 = Createdxf::sheetHeight - (segment -> secondPoint().y() * Createdxf::yScale);
+    foreach(Conductor *cond, list_conductors) {
+        qreal cx = cond->pos().x();
+        qreal cy = cond->pos().y();
+        foreach(ConductorSegment *segment, cond -> segmentsList()) {
+            qreal x1 = (cx + segment -> firstPoint().x()) * Createdxf::xScale;
+            qreal y1 = Createdxf::sheetHeight - ((cy + segment -> firstPoint().y()) * Createdxf::yScale);
+            qreal x2 = (cx + segment -> secondPoint().x()) * Createdxf::xScale;
+            qreal y2 = Createdxf::sheetHeight - ((cy + segment -> secondPoint().y()) * Createdxf::yScale);
 			Createdxf::drawLine(file_path, x1, y1, x2, y2, 0);
 		}
 		//Draw conductor text item
