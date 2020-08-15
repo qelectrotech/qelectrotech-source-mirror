@@ -2787,50 +2787,50 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
         <translation>大きさ</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="693"/>
+        <location filename="../sources/exportdialog.cpp" line="695"/>
         <source>Noms des fichiers cibles</source>
         <comment>message box title</comment>
         <translation>出力ファイル名</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="694"/>
+        <location filename="../sources/exportdialog.cpp" line="696"/>
         <source>Vous devez entrer un nom de fichier non vide et unique pour chaque folio à exporter.</source>
         <comment>message box content</comment>
         <translation>エクスポートする各フォリオに空ではない一意の名前を入力する必要があります。</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="709"/>
+        <location filename="../sources/exportdialog.cpp" line="711"/>
         <source>Dossier non spécifié</source>
         <comment>message box title</comment>
         <translation>フォルダが見つかりません</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="710"/>
+        <location filename="../sources/exportdialog.cpp" line="712"/>
         <source>Vous devez spécifier le chemin du dossier dans lequel seront enregistrés les fichiers images.</source>
         <comment>message box content</comment>
         <translatorcomment>画像ファイルを保存するフォルダのパスを指定する必要があります。</translatorcomment>
         <translation>You must specify the path of the directory in which the images files will be saved.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="751"/>
+        <location filename="../sources/exportdialog.cpp" line="753"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box title</comment>
         <translation>このファイルに書き込めません</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="753"/>
+        <location filename="../sources/exportdialog.cpp" line="755"/>
         <source>Il semblerait que vous n&apos;ayez pas les permissions nécessaires pour écrire dans le fichier %1.</source>
         <comment>message box content</comment>
         <translation>ファイル %1 を書き込む権限がないようです。</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="869"/>
+        <location filename="../sources/exportdialog.cpp" line="871"/>
         <source>Aperçu</source>
         <translation>プレビュー</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="973"/>
-        <location filename="../sources/exportdialog.cpp" line="978"/>
+        <location filename="../sources/exportdialog.cpp" line="975"/>
+        <location filename="../sources/exportdialog.cpp" line="980"/>
         <source>px</source>
         <translation></translation>
     </message>
@@ -8210,32 +8210,32 @@ Voulez-vous la remplacer ?</source>
         <translation> テキストのグループ</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="960"/>
+        <location filename="../sources/exportdialog.cpp" line="962"/>
         <source>Folio sans titre</source>
         <translation>無題のフォリオ</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="962"/>
+        <location filename="../sources/exportdialog.cpp" line="964"/>
         <source>schema</source>
         <translation>diagram</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="987"/>
+        <location filename="../sources/exportdialog.cpp" line="989"/>
         <source>Conserver les proportions</source>
         <translation>縦横比を保持</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="991"/>
+        <location filename="../sources/exportdialog.cpp" line="993"/>
         <source>Réinitialiser les dimensions</source>
         <translation>大きさをリセット</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="995"/>
+        <location filename="../sources/exportdialog.cpp" line="997"/>
         <source>Aperçu</source>
         <translation>プレビュー</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="999"/>
+        <location filename="../sources/exportdialog.cpp" line="1001"/>
         <source>Exporter vers le presse-papier</source>
         <translation>クリップボードにエクスポート</translation>
     </message>
