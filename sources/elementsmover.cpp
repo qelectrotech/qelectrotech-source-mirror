@@ -88,7 +88,7 @@ int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item)
 		}
 	}
 
-       QList<ElementTextItemGroup *> etig_list = m_moved_content.m_texts_groups.values();
+	QList<ElementTextItemGroup *> etig_list = m_moved_content.m_texts_groups.values();
 	for(ElementTextItemGroup *etig : etig_list) {
 		if (m_moved_content.m_elements.contains(etig->parentElement())) {
 			m_moved_content.m_texts_groups.remove(etig);

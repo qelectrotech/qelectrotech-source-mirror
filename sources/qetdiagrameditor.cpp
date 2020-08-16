@@ -46,8 +46,8 @@
 /**
 	@brief QETDiagramEditor::QETDiagramEditor
 	Constructor
-	@param files, list of files to open
-	@param parent, parent widget
+	@param files : list of files to open
+	@param parent : parent widget
 */
 QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	QETMainWindow(parent),
@@ -382,8 +382,8 @@ void QETDiagramEditor::setUpActions()
 		//Export nomenclature to CSV
 	m_csv_export = new QAction(QET::Icons::DocumentSpreadsheet, tr("Exporter au format CSV"), this);
 	connect(m_csv_export, &QAction::triggered, [this]() {
-        BOMExportDialog bom(currentProjectView()->project(), this);
-        bom.exec();
+		BOMExportDialog bom(currentProjectView()->project(), this);
+		bom.exec();
 	});
 	
 		//Add a nomenclature item

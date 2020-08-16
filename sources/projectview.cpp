@@ -352,14 +352,14 @@ QETResult ProjectView::noProjectResult() const {
 void ProjectView::removeDiagram(DiagramView *diagram_view)
 {
 	if (!diagram_view)
-        return;
+		return;
 	if (m_project -> isReadOnly())
-        return;
+		return;
 	if (!m_diagram_ids.values().contains(diagram_view))
-        return;
+		return;
 
 
-        //Ask confirmation to user.
+	//Ask confirmation to user.
 	int answer = QET::QetMessageBox::question(
 		this,
 		tr("Supprimer le folio ?", "message box title"),
@@ -371,18 +371,18 @@ void ProjectView::removeDiagram(DiagramView *diagram_view)
 		return;
 	}
 
-        //Remove the diagram view of the tabs widget
+	//Remove the diagram view of the tabs widget
 	int index_to_remove = m_diagram_ids.key(diagram_view);
 	m_tab->removeTab(index_to_remove);
 	m_diagram_view_list.removeAll(diagram_view);
 	rebuildDiagramsMap();
-    
+
 	m_project -> removeDiagram(diagram_view -> diagram());
 	delete diagram_view;
 
 	emit(diagramRemoved(diagram_view));
-    updateAllTabsTitle();
-    m_project -> setModified(true);
+	updateAllTabsTitle();
+	m_project -> setModified(true);
 }
 
 /**
@@ -812,11 +812,11 @@ void ProjectView::loadDiagrams()
 		diagramAdded(diagram);
 	}
 
-    if (DiagramView *dv = currentDiagram())
-    {
-        dv->diagram()->loadElmtFolioSeq();
-        dv->diagram()->loadCndFolioSeq();
-    }
+	if (DiagramView *dv = currentDiagram())
+	{
+		dv->diagram()->loadElmtFolioSeq();
+		dv->diagram()->loadCndFolioSeq();
+	}
 	
 	QSettings settings;
 }

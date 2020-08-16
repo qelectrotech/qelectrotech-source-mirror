@@ -352,26 +352,28 @@ void DiagramPrintDialog::browseFilePrintTypeDialog() {
 	ou non
 	@param options Options de rendu
 */
-void DiagramPrintDialog::print(const QList<Diagram *> &diagrams, bool fit_page, const ExportProperties& options) {
+void DiagramPrintDialog::print(const QList<Diagram *> &diagrams,
+			       bool fit_page,
+			       const ExportProperties& options) {
 	//qDebug() << "Demande d'impression de " << diagrams.count() << "schemas.";
 #if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
-    #ifdef Q_OS_WIN
-        #ifdef QT_DEBUG
-            qDebug() << "--";
-            qDebug() << "DiagramPrintDialog::print  printer_->resolution() before " << printer_->resolution();
-            qDebug() << "DiagramPrintDialog::print  screennumber " << QApplication::desktop()->screenNumber();
-        #endif
+	#ifdef Q_OS_WIN
+		#ifdef QT_DEBUG
+		qDebug() << "--";
+		qDebug() << "DiagramPrintDialog::print  printer_->resolution() before " << printer_->resolution();
+		qDebug() << "DiagramPrintDialog::print  screennumber " << QApplication::desktop()->screenNumber();
+		#endif
 
-        QScreen *srn = QApplication::screens().at(QApplication::desktop()->screenNumber());
-        qreal dotsPerInch = (qreal)srn->logicalDotsPerInch();
-        printer_->setResolution(dotsPerInch);
+		QScreen *srn = QApplication::screens().at(QApplication::desktop()->screenNumber());
+		qreal dotsPerInch = (qreal)srn->logicalDotsPerInch();
+		printer_->setResolution(dotsPerInch);
 
-        #ifdef QT_DEBUG
-            qDebug() << "DiagramPrintDialog::print  dotsPerInch " << dotsPerInch;
-            qDebug() << "DiagramPrintDialog::print  printer_->resolution() after" << printer_->resolution();
-            qDebug() << "--";
-        #endif
-    #endif
+		#ifdef QT_DEBUG
+			qDebug() << "DiagramPrintDialog::print  dotsPerInch " << dotsPerInch;
+			qDebug() << "DiagramPrintDialog::print  printer_->resolution() after" << printer_->resolution();
+		qDebug() << "--";
+		#endif
+	#endif
 #endif
 	// QPainter utiliser pour effectuer le rendu
 	QPainter qp(printer_);
@@ -399,7 +401,11 @@ void DiagramPrintDialog::print(const QList<Diagram *> &diagrams, bool fit_page, 
 	@param qp QPainter a utiliser (deja initialise sur printer)
 	@param printer Imprimante a utiliser
 */
-void DiagramPrintDialog::printDiagram(Diagram *diagram, bool fit_page, const ExportProperties &options, QPainter *qp, QPrinter *printer) {
+void DiagramPrintDialog::printDiagram(Diagram *diagram,
+				      bool fit_page,
+				      const ExportProperties &options,
+				      QPainter *qp,
+				      QPrinter *printer) {
 	//qDebug() << printer -> paperSize() << printer -> paperRect() << diagram -> title();
 	// l'imprimante utilise-t-elle toute la feuille ?
 	bool full_page = printer -> fullPage();

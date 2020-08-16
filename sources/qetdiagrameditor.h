@@ -52,7 +52,8 @@ class QETDiagramEditor : public QETMainWindow
 	Q_OBJECT
 	
 	public:
-		QETDiagramEditor(const QStringList & = QStringList(), QWidget * = nullptr);
+		QETDiagramEditor(const QStringList & = QStringList(),
+				 QWidget * = nullptr);
 		~QETDiagramEditor() override;
 	
 	private:

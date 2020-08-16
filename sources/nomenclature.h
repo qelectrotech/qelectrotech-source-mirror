@@ -31,11 +31,11 @@ class Diagram;
 class Element;
 
 /**
-		This class represents a nomenclature...
+	This class represents a nomenclature...
 */
 class nomenclature
 {
-	private:       
+	private:
 	QETProject *m_project;
 	QList<Diagram *> m_list_diagram;
 	QWidget *m_parent;
