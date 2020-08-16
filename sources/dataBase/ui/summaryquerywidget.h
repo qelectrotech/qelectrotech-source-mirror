@@ -28,7 +28,7 @@ class SummaryQueryWidget;
 
 class SummaryQueryWidget : public QWidget
 {
-    Q_OBJECT
+	Q_OBJECT
 
 	public:
 		explicit SummaryQueryWidget(QWidget *parent = nullptr);

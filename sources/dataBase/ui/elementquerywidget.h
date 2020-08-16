@@ -34,7 +34,7 @@ class ElementQueryWidget;
 */
 class ElementQueryWidget : public QWidget
 {
-    Q_OBJECT
+	Q_OBJECT
 
 	public:
 		explicit ElementQueryWidget(QWidget *parent = nullptr);

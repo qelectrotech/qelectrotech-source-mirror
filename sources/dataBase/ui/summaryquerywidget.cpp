@@ -26,10 +26,10 @@
 	@param parent
 */
 SummaryQueryWidget::SummaryQueryWidget(QWidget *parent) :
-    QWidget(parent),
+	QWidget(parent),
 	ui(new Ui::SummaryQueryWidget)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 
 	setUpItems();
 	fillSavedQuery();

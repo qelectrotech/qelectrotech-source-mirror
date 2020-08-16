@@ -26,10 +26,10 @@
 	@param parent
 */
 ElementQueryWidget::ElementQueryWidget(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::ElementQueryWidget)
+	QWidget(parent),
+	ui(new Ui::ElementQueryWidget)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 
 	m_export_info.insert("position", tr("Position"));
 	m_export_info.insert("title", tr("Titre du folio"));
