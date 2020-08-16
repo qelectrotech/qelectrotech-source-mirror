@@ -412,7 +412,9 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
 
 	//Add project elements (lines, rectangles, circles, texts) to dxf file
     if (epw -> exportProperties().draw_border) {
-    Createdxf::drawRectangle(file_path, 0, 0, double(width)*Createdxf::xScale, double(height)*Createdxf::yScale, 0);
+        double bx0 = Diagram::margin * Createdxf::xScale;
+        double by0 = Diagram::margin * Createdxf::yScale;
+    Createdxf::drawRectangle(file_path, bx0, -by0, double(width)*Createdxf::xScale, double(height)*Createdxf::yScale, 0);
     }
     diagram -> border_and_titleblock.drawDxf(width, height, keep_aspect_ratio, file_path, 0);
 

@@ -1528,7 +1528,7 @@ void TitleBlockTemplate::renderDxf(QRectF &title_block_rect,
 	QList<int> widths = columnsWidth(titleblock_width);
 
 	// draw the titleblock border
-	double xCoord    = title_block_rect.topLeft().x();
+    double xCoord    = title_block_rect.topLeft().x()*Createdxf::xScale;
 	double yCoord    =
 		Createdxf::sheetHeight
 			- title_block_rect.bottomLeft().y()
