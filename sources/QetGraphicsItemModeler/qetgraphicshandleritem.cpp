@@ -57,18 +57,24 @@ void QetGraphicsHandlerItem::setColor(QColor color)
 	@param option
 	@param widget
 */
-void QetGraphicsHandlerItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void QetGraphicsHandlerItem::paint(QPainter *painter,
+				   const QStyleOptionGraphicsItem *option,
+				   QWidget *widget)
 {
 	Q_UNUSED(option)
 	Q_UNUSED(widget)
 
-    painter->save();
-    painter->setBrush(QBrush(m_color));
-    QPen pen(QBrush(m_color), 2, Qt::SolidLine, Qt::SquareCap, Qt::MiterJoin);
+	painter->save();
+	painter->setBrush(QBrush(m_color));
+	QPen pen(QBrush(m_color),
+		 2,
+		 Qt::SolidLine,
+		 Qt::SquareCap,
+		 Qt::MiterJoin);
 	pen.setCosmetic(true);
-    painter->setPen(pen);
+	painter->setPen(pen);
 	painter->setRenderHint(QPainter::Antialiasing, true);
-    painter->drawEllipse(m_handler_rect);
+	painter->drawEllipse(m_handler_rect);
 	painter->restore();
 }
 
@@ -77,15 +83,17 @@ void QetGraphicsHandlerItem::paint(QPainter *painter, const QStyleOptionGraphics
 	@param points
 	@return A list of handler with pos at point
 */
-QVector<QetGraphicsHandlerItem *> QetGraphicsHandlerItem::handlerForPoint(const QVector<QPointF> &points, int size)
+QVector<QetGraphicsHandlerItem *> QetGraphicsHandlerItem::handlerForPoint(
+		const QVector<QPointF> &points,
+		int size)
 {
-    QVector <QetGraphicsHandlerItem *> list_;
-    for (QPointF point : points)
-    {
-        QetGraphicsHandlerItem *qghi = new QetGraphicsHandlerItem(size);
-        qghi->setPos(point);
-        list_ << qghi;
-    }
+	QVector <QetGraphicsHandlerItem *> list_;
+	for (QPointF point : points)
+	{
+		QetGraphicsHandlerItem *qghi = new QetGraphicsHandlerItem(size);
+		qghi->setPos(point);
+		list_ << qghi;
+	}
 
 	return list_;
 }

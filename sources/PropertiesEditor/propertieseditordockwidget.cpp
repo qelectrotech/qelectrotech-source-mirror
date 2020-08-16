@@ -52,7 +52,7 @@ void PropertiesEditorDockWidget::clear()
 	{
 		m_editor_list.removeOne(editor);
 		ui->m_main_vlayout->removeWidget(editor);
-        delete editor;
+		delete editor;
 	}
 
 	m_editor_list.clear();
