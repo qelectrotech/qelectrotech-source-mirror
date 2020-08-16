@@ -27,25 +27,25 @@ namespace Ui {
 
 class RenameDialog : public QDialog
 {
-    Q_OBJECT
+	Q_OBJECT
 
-    public:
-        explicit RenameDialog(QString path, QWidget *parent = nullptr);
-        ~RenameDialog() override;
+	public:
+		explicit RenameDialog(QString path, QWidget *parent = nullptr);
+		~RenameDialog() override;
 
 		QString newName() const {return m_new_name;}
 		QET::Action selectedAction() const {return m_action;}
 
-    private slots:
-        void on_lineEdit_textEdited(const QString &arg1);
+	private slots:
+		void on_lineEdit_textEdited(const QString &arg1);
 		void on_m_erase_pb_clicked();
 		void on_m_rename_pb_clicked();
 		void on_m_cancel_pb_clicked();
 
 	private:
-        Ui::RenameDialog *ui;
-        QString m_path;
-        QString m_name;
+		Ui::RenameDialog *ui;
+		QString m_path;
+		QString m_name;
 		QString m_new_name;
 		QET::Action m_action;
 };

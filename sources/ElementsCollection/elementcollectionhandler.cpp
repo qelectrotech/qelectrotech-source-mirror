@@ -25,7 +25,8 @@
 
 /******************************************************/
 
-ECHStrategy::ECHStrategy(ElementsLocation &source, ElementsLocation &destination) :
+ECHStrategy::ECHStrategy(ElementsLocation &source,
+			 ElementsLocation &destination) :
 	m_source(source),
 	m_destination (destination)
 {}

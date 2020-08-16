@@ -41,12 +41,12 @@ class ElementsTreeView;
 */
 class ElementsCollectionWidget : public QWidget
 {
-        Q_OBJECT
+	Q_OBJECT
 
-    public:
-        ElementsCollectionWidget(QWidget *parent = nullptr);
+	public:
+		ElementsCollectionWidget(QWidget *parent = nullptr);
 
-        void expandFirstItems();
+		void expandFirstItems();
 
 		void addProject (QETProject *project);
 		void removeProject (QETProject *project);

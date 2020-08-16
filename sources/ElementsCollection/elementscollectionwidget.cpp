@@ -118,13 +118,15 @@ void ElementsCollectionWidget::highlightUnusedElement()
 	Set the current item to be the item for @location
 	@param location
 */
-void ElementsCollectionWidget::setCurrentLocation(const ElementsLocation &location)
+void ElementsCollectionWidget::setCurrentLocation(
+		const ElementsLocation &location)
 {
 	if (!location.exist())
 		return;
 	
-    if (m_model)
-        m_tree_view->setCurrentIndex(m_model->indexFromLocation(location));
+	if (m_model)
+		m_tree_view->setCurrentIndex(
+					m_model->indexFromLocation(location));
 }
 
 void ElementsCollectionWidget::leaveEvent(QEvent *event)
@@ -137,17 +139,29 @@ void ElementsCollectionWidget::leaveEvent(QEvent *event)
 
 void ElementsCollectionWidget::setUpAction()
 {
-    m_open_dir =       new QAction(QET::Icons::FolderOpen,           tr("Ouvrir le dossier correspondant"), this);
-    m_edit_element =   new QAction(QET::Icons::ElementEdit,          tr("Éditer l'élément"),                this);
-    m_delete_element = new QAction(QET::Icons::ElementDelete,        tr("Supprimer l'élément"),             this);
-    m_delete_dir =     new QAction(QET::Icons::FolderDelete,         tr("Supprimer le dossier"),            this);
-    m_reload =         new QAction(QET::Icons::ViewRefresh,          tr("Recharger les collections"),       this);
-    m_edit_dir =       new QAction(QET::Icons::FolderEdit,           tr("Éditer le dossier"),               this);
-    m_new_directory =  new QAction(QET::Icons::FolderNew,            tr("Nouveau dossier"),                 this);
-    m_new_element =    new QAction(QET::Icons::ElementNew,           tr("Nouvel élément"),                  this);
-    m_show_this_dir =  new QAction(QET::Icons::FolderOnlyThis,       tr("Afficher uniquement ce dossier"),  this);
-    m_show_all_dir =   new QAction(QET::Icons::FolderShowAll,        tr("Afficher tous les dossiers"),      this);
-    m_dir_propertie =  new QAction(QET::Icons::FolderProperties,     tr("Propriété du dossier"),            this);
+	m_open_dir = new QAction(QET::Icons::FolderOpen,
+				 tr("Ouvrir le dossier correspondant"), this);
+	m_edit_element = new QAction(QET::Icons::ElementEdit,
+				     tr("Éditer l'élément"), this);
+	m_delete_element = new QAction(QET::Icons::ElementDelete,
+				       tr("Supprimer l'élément"), this);
+	m_delete_dir = new QAction(QET::Icons::FolderDelete,
+				   tr("Supprimer le dossier"), this);
+	m_reload = new QAction(QET::Icons::ViewRefresh,
+			       tr("Recharger les collections"), this);
+	m_edit_dir = new QAction(QET::Icons::FolderEdit,
+				 tr("Éditer le dossier"), this);
+	m_new_directory = new QAction(QET::Icons::FolderNew,
+				      tr("Nouveau dossier"), this);
+	m_new_element = new QAction(QET::Icons::ElementNew,
+				    tr("Nouvel élément"), this);
+	m_show_this_dir = new QAction(QET::Icons::FolderOnlyThis,
+				      tr("Afficher uniquement ce dossier"),
+				      this);
+	m_show_all_dir = new QAction(QET::Icons::FolderShowAll,
+				     tr("Afficher tous les dossiers"), this);
+	m_dir_propertie = new QAction(QET::Icons::FolderProperties,
+				      tr("Propriété du dossier"), this);
 }
 
 /**
@@ -156,7 +170,7 @@ void ElementsCollectionWidget::setUpAction()
 */
 void ElementsCollectionWidget::setUpWidget()
 {
-		//Setup the main layout
+	//Setup the main layout
 	m_main_vlayout = new QVBoxLayout(this);
 	this->setLayout(m_main_vlayout);
 
@@ -165,7 +179,7 @@ void ElementsCollectionWidget::setUpWidget()
 	m_search_field->setClearButtonEnabled(true);
 	m_main_vlayout->addWidget(m_search_field);
 
-		//Setup the tree view
+	//Setup the tree view
 	m_tree_view = new ElementsTreeView(this);
 	m_tree_view->setHeaderHidden(true);
 	m_tree_view->setIconSize(QSize(50, 50));
@@ -177,7 +191,7 @@ void ElementsCollectionWidget::setUpWidget()
 	m_tree_view->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
 	m_main_vlayout->addWidget(m_tree_view);
 
-		//Setup the progress bar
+	//Setup the progress bar
 	m_progress_bar = new QProgressBar(this);
 	m_progress_bar->setFormat(QObject::tr("chargement %p% (%v sur %m)"));
 
@@ -193,26 +207,44 @@ void ElementsCollectionWidget::setUpWidget()
 */
 void ElementsCollectionWidget::setUpConnection()
 {
-	connect(m_tree_view,      &QTreeView::customContextMenuRequested, this, &ElementsCollectionWidget::customContextMenu);
-	connect(m_search_field,   &QLineEdit::textEdited, [this]() {m_search_timer.start();});
-	connect(&m_search_timer,   &QTimer::timeout,   this, &ElementsCollectionWidget::search);
-	connect(m_open_dir,       &QAction::triggered, this, &ElementsCollectionWidget::openDir);
-	connect(m_edit_element,   &QAction::triggered, this, &ElementsCollectionWidget::editElement);
-	connect(m_delete_element, &QAction::triggered, this, &ElementsCollectionWidget::deleteElement);
-	connect(m_delete_dir,     &QAction::triggered, this, &ElementsCollectionWidget::deleteDirectory);
-	connect(m_reload,         &QAction::triggered, this, &ElementsCollectionWidget::reload);
-	connect(m_edit_dir,       &QAction::triggered, this, &ElementsCollectionWidget::editDirectory);
-	connect(m_new_directory,  &QAction::triggered, this, &ElementsCollectionWidget::newDirectory);
-	connect(m_new_element,    &QAction::triggered, this, &ElementsCollectionWidget::newElement);
-	connect(m_show_this_dir,  &QAction::triggered, this, &ElementsCollectionWidget::showThisDir);
-	connect(m_show_all_dir,   &QAction::triggered, this, &ElementsCollectionWidget::resetShowThisDir);
-	connect(m_dir_propertie,  &QAction::triggered, this, &ElementsCollectionWidget::dirProperties);
+	connect(m_tree_view, &QTreeView::customContextMenuRequested,
+		this, &ElementsCollectionWidget::customContextMenu);
+	connect(m_search_field, &QLineEdit::textEdited,
+		[this]() {m_search_timer.start();});
+	connect(&m_search_timer, &QTimer::timeout,
+		this, &ElementsCollectionWidget::search);
+	connect(m_open_dir, &QAction::triggered,
+		this, &ElementsCollectionWidget::openDir);
+	connect(m_edit_element, &QAction::triggered,
+		this, &ElementsCollectionWidget::editElement);
+	connect(m_delete_element, &QAction::triggered,
+		this, &ElementsCollectionWidget::deleteElement);
+	connect(m_delete_dir, &QAction::triggered,
+		this, &ElementsCollectionWidget::deleteDirectory);
+	connect(m_reload, &QAction::triggered,
+		this, &ElementsCollectionWidget::reload);
+	connect(m_edit_dir, &QAction::triggered,
+		this, &ElementsCollectionWidget::editDirectory);
+	connect(m_new_directory, &QAction::triggered,
+		this, &ElementsCollectionWidget::newDirectory);
+	connect(m_new_element, &QAction::triggered,
+		this, &ElementsCollectionWidget::newElement);
+	connect(m_show_this_dir, &QAction::triggered,
+		this, &ElementsCollectionWidget::showThisDir);
+	connect(m_show_all_dir, &QAction::triggered,
+		this, &ElementsCollectionWidget::resetShowThisDir);
+	connect(m_dir_propertie, &QAction::triggered,
+		this, &ElementsCollectionWidget::dirProperties);
 
-	connect(m_tree_view, &QTreeView::doubleClicked, [this](const QModelIndex &index) {
-		this->m_index_at_context_menu = index ;
-		this->editElement();});
+	connect(m_tree_view, &QTreeView::doubleClicked,
+		[this](const QModelIndex &index)
+		{
+			this->m_index_at_context_menu = index ;
+			this->editElement();
+		});
 
-	connect(m_tree_view, &QTreeView::entered, [this] (const QModelIndex &index) {
+	connect(m_tree_view, &QTreeView::entered,
+		[this] (const QModelIndex &index) {
 		QETDiagramEditor *qde = QETApp::diagramEditorAncestorOf(this);
 		ElementCollectionItem *eci = elementCollectionItemForIndex(index);
 		if (qde && eci)
@@ -222,7 +254,7 @@ void ElementsCollectionWidget::setUpConnection()
 
 /**
 	@brief ElementsCollectionWidget::customContextMenu
-	Display the context menu of this widget at @point
+	Display the context menu of this widget at point
 	@param point
 */
 void ElementsCollectionWidget::customContextMenu(const QPoint &point)
@@ -232,7 +264,8 @@ void ElementsCollectionWidget::customContextMenu(const QPoint &point)
 
 	m_context_menu->clear();
 
-	ElementCollectionItem *eci = elementCollectionItemForIndex(m_index_at_context_menu);
+	ElementCollectionItem *eci = elementCollectionItemForIndex(
+				m_index_at_context_menu);
 	bool add_open_dir = false;
 
 	if (eci->isElement())
@@ -241,7 +274,8 @@ void ElementsCollectionWidget::customContextMenu(const QPoint &point)
 	if (eci->type() == FileElementCollectionItem::Type)
 	{
 		add_open_dir = true;
-		FileElementCollectionItem *feci = static_cast<FileElementCollectionItem*>(eci);
+		FileElementCollectionItem *feci =
+				static_cast<FileElementCollectionItem*>(eci);
 		if (!feci->isCommonCollection())
 		{
 			if (feci->isDir())
@@ -260,7 +294,8 @@ void ElementsCollectionWidget::customContextMenu(const QPoint &point)
 	}
 	if (eci->type() == XmlProjectElementCollectionItem::Type)
 	{
-		XmlProjectElementCollectionItem *xpeci = static_cast<XmlProjectElementCollectionItem *>(eci);
+		XmlProjectElementCollectionItem *xpeci =
+			static_cast<XmlProjectElementCollectionItem *>(eci);
 		if (xpeci->isCollectionRoot())
 			add_open_dir = true;
 	}
@@ -269,7 +304,7 @@ void ElementsCollectionWidget::customContextMenu(const QPoint &point)
 	if (eci->isDir())
 	{
 		m_context_menu->addAction(m_show_this_dir);
-			//there is a current filtered dir, add entry to reset it
+		//there is a current filtered dir, add entry to reset it
 		if (m_showed_index.isValid())
 			m_context_menu->addAction(m_show_all_dir);
 
@@ -288,7 +323,8 @@ void ElementsCollectionWidget::customContextMenu(const QPoint &point)
 */
 void ElementsCollectionWidget::openDir()
 {
-	ElementCollectionItem *eci = elementCollectionItemForIndex(m_index_at_context_menu);
+	ElementCollectionItem *eci =
+			elementCollectionItemForIndex(m_index_at_context_menu);
 	if (!eci) return;
 
 	if (eci->type() == FileElementCollectionItem::Type)
@@ -324,7 +360,10 @@ void ElementsCollectionWidget::editElement()
 	app->openElementLocations(QList<ElementsLocation>() << location);
 
 	foreach (QETElementEditor *element_editor, app->elementEditors())
-		connect(element_editor, &QETElementEditor::saveToLocation, this, &ElementsCollectionWidget::locationWasSaved);
+		connect(element_editor,
+			&QETElementEditor::saveToLocation,
+			this,
+			&ElementsCollectionWidget::locationWasSaved);
 }
 
 /**
@@ -333,28 +372,39 @@ void ElementsCollectionWidget::editElement()
 */
 void ElementsCollectionWidget::deleteElement()
 {
-	ElementCollectionItem *eci = elementCollectionItemForIndex(m_index_at_context_menu);
+	ElementCollectionItem *eci = elementCollectionItemForIndex(
+				m_index_at_context_menu);
 
 	if (!eci) return;
 
 	ElementsLocation loc(eci->collectionPath());
-	if (! (loc.isElement() && loc.exist() && loc.isFileSystem() && loc.collectionPath().startsWith("custom://")) ) return;
+	if (! (loc.isElement()
+	       && loc.exist()
+	       && loc.isFileSystem()
+	       && loc.collectionPath().startsWith("custom://")) ) return;
 
-	if (QET::QetMessageBox::question(this,
-									 tr("Supprimer l'élément ?", "message box title"),
-									 tr("Êtes-vous sûr  de vouloir supprimer cet élément ?\n", "message box content"),
-									 QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
+	if (QET::QetMessageBox::question(
+		this,
+		tr("Supprimer l'élément ?", "message box title"),
+		tr("Êtes-vous sûr  de vouloir supprimer cet élément ?\n",
+		   "message box content"),
+		QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
 	{
 		QFile file(loc.fileSystemPath());
 		if (file.remove())
 		{
-			m_model->removeRows(m_index_at_context_menu.row(), 1, m_index_at_context_menu.parent());
+			m_model->removeRows(m_index_at_context_menu.row(),
+					    1,
+					    m_index_at_context_menu.parent());
 		}
 		else
 		{
-			QET::QetMessageBox::warning(this,
-										tr("Suppression de l'élément", "message box title"),
-										tr("La suppression de l'élément a échoué.", "message box content"));
+			QET::QetMessageBox::warning(
+				this,
+				tr("Suppression de l'élément",
+				   "message box title"),
+				tr("La suppression de l'élément a échoué.",
+				   "message box content"));
 		}	
 	}
 }
@@ -365,30 +415,40 @@ void ElementsCollectionWidget::deleteElement()
 */
 void ElementsCollectionWidget::deleteDirectory()
 {
-	ElementCollectionItem *eci = elementCollectionItemForIndex(m_index_at_context_menu);
+	ElementCollectionItem *eci = elementCollectionItemForIndex(
+				m_index_at_context_menu);
 
 	if (!eci) return;
 
 	ElementsLocation loc (eci->collectionPath());
-	if (! (loc.isDirectory() && loc.exist() && loc.isFileSystem() && loc.collectionPath().startsWith("custom://")) ) return;
+	if (! (loc.isDirectory()
+	       && loc.exist()
+	       && loc.isFileSystem()
+	       && loc.collectionPath().startsWith("custom://")) ) return;
 
-	if (QET::QetMessageBox::question(this,
-									 tr("Supprimer le dossier?", "message box title"),
-									 tr("Êtes-vous sûr  de vouloir supprimer le dossier ?\n"
-										"Tout les éléments et les dossier contenus dans ce dossier seront supprimés.",
-										"message box content"),
-									 QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
+	if (QET::QetMessageBox::question(
+		this,
+		tr("Supprimer le dossier?", "message box title"),
+		tr("Êtes-vous sûr  de vouloir supprimer le dossier ?\n"
+		"Tout les éléments et les dossier contenus dans ce dossier seront supprimés.",
+		"message box content"),
+		QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
 	{
 		QDir dir (loc.fileSystemPath());
 		if (dir.removeRecursively())
 		{
-			m_model->removeRows(m_index_at_context_menu.row(), 1, m_index_at_context_menu.parent());
+			m_model->removeRows(m_index_at_context_menu.row(),
+					    1,
+					    m_index_at_context_menu.parent());
 		}
 		else
 		{
-			QET::QetMessageBox::warning(this,
-										tr("Suppression du dossier", "message box title"),
-										tr("La suppression du dossier a échoué.", "message box content"));
+			QET::QetMessageBox::warning(
+				this,
+				tr("Suppression du dossier",
+				   "message box title"),
+				tr("La suppression du dossier a échoué.",
+				   "message box content"));
 		}
 	}
 }
@@ -399,11 +459,13 @@ void ElementsCollectionWidget::deleteDirectory()
 */
 void ElementsCollectionWidget::editDirectory()
 {
-	ElementCollectionItem *eci = elementCollectionItemForIndex(m_index_at_context_menu);
+	ElementCollectionItem *eci = elementCollectionItemForIndex(
+				m_index_at_context_menu);
 
 	if (eci->type() != FileElementCollectionItem::Type) return;
 
-	FileElementCollectionItem *feci = static_cast<FileElementCollectionItem*>(eci);
+	FileElementCollectionItem *feci =
+			static_cast<FileElementCollectionItem*>(eci);
 	if(feci->isCommonCollection()) return;
 
 	ElementsLocation location(feci->collectionPath());
@@ -419,11 +481,13 @@ void ElementsCollectionWidget::editDirectory()
 */
 void ElementsCollectionWidget::newDirectory()
 {
-	ElementCollectionItem *eci = elementCollectionItemForIndex(m_index_at_context_menu);
+	ElementCollectionItem *eci = elementCollectionItemForIndex(
+				m_index_at_context_menu);
 
 	if (eci->type() != FileElementCollectionItem::Type) return;
 
-	FileElementCollectionItem *feci = static_cast<FileElementCollectionItem*>(eci);
+	FileElementCollectionItem *feci =
+			static_cast<FileElementCollectionItem*>(eci);
 	if(feci->isCommonCollection()) return;
 
 	ElementsLocation location(feci->collectionPath());
@@ -438,13 +502,15 @@ void ElementsCollectionWidget::newDirectory()
 */
 void ElementsCollectionWidget::newElement()
 {
-	ElementCollectionItem *eci = elementCollectionItemForIndex(m_index_at_context_menu);
+	ElementCollectionItem *eci = elementCollectionItemForIndex(
+				m_index_at_context_menu);
 
 	if (eci->type() != FileElementCollectionItem::Type) {
 		return;
 	}
 
-	FileElementCollectionItem *feci = static_cast<FileElementCollectionItem*>(eci);
+	FileElementCollectionItem *feci =
+			static_cast<FileElementCollectionItem*>(eci);
 	if(feci->isCommonCollection()) {
 		return;
 	}
@@ -454,8 +520,12 @@ void ElementsCollectionWidget::newElement()
 	elmt_wizard.preselectedLocation(loc);
 	elmt_wizard.exec();
 
-	foreach (QETElementEditor *element_editor, QETApp::instance()->elementEditors())
-		connect(element_editor, &QETElementEditor::saveToLocation, this, &ElementsCollectionWidget::locationWasSaved);
+	foreach (QETElementEditor *element_editor,
+		 QETApp::instance()->elementEditors())
+		connect(element_editor,
+			&QETElementEditor::saveToLocation,
+			this,
+			&ElementsCollectionWidget::locationWasSaved);
 }
 
 /**
@@ -467,7 +537,8 @@ void ElementsCollectionWidget::showThisDir()
 		//Disable the yellow background of the previous index
 	if (m_showed_index.isValid())
 	{
-		ElementCollectionItem *eci = elementCollectionItemForIndex(m_showed_index);
+		ElementCollectionItem *eci =
+				elementCollectionItemForIndex(m_showed_index);
 		if (eci)
 			eci->setBackground(QBrush());
 	}
@@ -477,9 +548,10 @@ void ElementsCollectionWidget::showThisDir()
 	{
 		hideCollection(true);
 		showAndExpandItem(m_showed_index, true, true);
-		ElementCollectionItem *eci = elementCollectionItemForIndex(m_showed_index);
+		ElementCollectionItem *eci =
+				elementCollectionItemForIndex(m_showed_index);
 		if (eci)
-            eci->setBackground(QBrush(QColor(255, 204, 0, 255)));
+			eci->setBackground(QBrush(QColor(255, 204, 0, 255)));
 		search();
 	}
 	else
@@ -495,7 +567,8 @@ void ElementsCollectionWidget::resetShowThisDir()
 {
 	if (m_showed_index.isValid())
 	{
-		ElementCollectionItem *eci = elementCollectionItemForIndex(m_showed_index);
+		ElementCollectionItem *eci = elementCollectionItemForIndex(
+					m_showed_index);
 		if (eci)
 			eci->setBackground(QBrush());
 	}
@@ -510,19 +583,28 @@ void ElementsCollectionWidget::resetShowThisDir()
 */
 void ElementsCollectionWidget::dirProperties()
 {
-	ElementCollectionItem *eci = elementCollectionItemForIndex(m_index_at_context_menu);
+	ElementCollectionItem *eci = elementCollectionItemForIndex(
+				m_index_at_context_menu);
 	if (eci && eci->isDir()) {
-		QString txt1 = tr("Le dossier %1 contient").arg(eci->localName());
-		QString txt2 = tr("%n élément(s), répartie(s)", "", eci->elementsChild().size());
-		QString txt3 = tr("dans %n dossier(s).", "" , eci->directoriesChild().size());
-		QString txt4 = tr("Chemin de la collection :  %1").arg(eci->collectionPath());
+		QString txt1 = tr("Le dossier %1 contient").arg(
+					eci->localName());
+		QString txt2 = tr("%n élément(s), répartie(s)",
+				  "",
+				  eci->elementsChild().size());
+		QString txt3 = tr("dans %n dossier(s).",
+				  "" ,
+				  eci->directoriesChild().size());
+		QString txt4 = tr("Chemin de la collection :  %1").arg(
+					eci->collectionPath());
 		QString txt5;
 		if (eci->type() == FileElementCollectionItem::Type) {
-			txt5 = tr("Chemin dans le système de fichiers :  %1").arg(static_cast<FileElementCollectionItem*>(eci)->fileSystemPath());
+			txt5 = tr("Chemin dans le système de fichiers :  %1")
+				.arg(static_cast<FileElementCollectionItem*>(eci)->fileSystemPath());
 		}
-		QMessageBox::information(this,
-								 tr("Propriété du dossier %1").arg(eci->localName()),
-								 txt1 + " " + txt2 + " " + txt3 + "\n\n" + txt4 + "\n" + txt5);
+		QMessageBox::information(
+			this,
+			tr("Propriété du dossier %1").arg(eci->localName()),
+			txt1 + " " + txt2 + " " + txt3 + "\n\n" + txt4 + "\n" + txt5);
 	}
 }
 
@@ -532,9 +614,13 @@ void ElementsCollectionWidget::dirProperties()
 void ElementsCollectionWidget::reload()
 {
 	m_progress_bar->show();
-	m_progress_bar->setValue(1); //Force to repaint now, else progress bar will be not displayed immediately
+	// Force to repaint now,
+	// else progress bar will be not displayed immediately
+	m_progress_bar->setValue(1);
 	m_tree_view->setDisabled(true);
-	m_tree_view->repaint(); //Force to repaint now, else tree view will be not disabled immediately
+	// Force to repaint now,
+	// else tree view will be not disabled immediately
+	m_tree_view->repaint();
 
 	QList <QETProject *> project_list;
 	project_list.append(m_waiting_project);
@@ -546,9 +632,18 @@ void ElementsCollectionWidget::reload()
 		m_new_model->deleteLater();
 	}
 	m_new_model = new ElementsCollectionModel(m_tree_view);
-	connect(m_new_model, &ElementsCollectionModel::loadingProgressRangeChanged, m_progress_bar, &QProgressBar::setRange);
-	connect(m_new_model, &ElementsCollectionModel::loadingProgressValueChanged, m_progress_bar, &QProgressBar::setValue);
-	connect(m_new_model, &ElementsCollectionModel::loadingFinished, this, &ElementsCollectionWidget::loadingFinished);
+	connect(m_new_model,
+		&ElementsCollectionModel::loadingProgressRangeChanged,
+		m_progress_bar,
+		&QProgressBar::setRange);
+	connect(m_new_model,
+		&ElementsCollectionModel::loadingProgressValueChanged,
+		m_progress_bar,
+		&QProgressBar::setValue);
+	connect(m_new_model,
+		&ElementsCollectionModel::loadingFinished,
+		this,
+		&ElementsCollectionWidget::loadingFinished);
 
 	m_new_model->loadCollections(true, true, project_list);
 }
@@ -580,14 +675,16 @@ void ElementsCollectionWidget::loadingFinished()
 
 /**
 	@brief ElementsCollectionWidget::locationWasSaved
-	This method is connected with the signal savedToLocation of Element editor (see ElementsCollectionWidget::editElement())
+	This method is connected with the signal savedToLocation
+	of Element editor (see ElementsCollectionWidget::editElement())
 	Update or add the item represented by location to m_model
 	@param location
 */
-void ElementsCollectionWidget::locationWasSaved(const ElementsLocation& location)
+void ElementsCollectionWidget::locationWasSaved(
+		const ElementsLocation& location)
 {
-		//Because this method update an item in the model, location must
-		//represente an existing element (in file system of project)
+	//Because this method update an item in the model, location must
+	//represente an existing element (in file system of project)
 	if (!location.exist())
 		return;
 
@@ -607,8 +704,9 @@ void ElementsCollectionWidget::locationWasSaved(const ElementsLocation& location
 
 /**
 	@brief ElementsCollectionWidget::search
-	Search every item (directory or element) that match the text of m_search_field
-	and display it, other item who does not match @text is hidden
+	Search every item (directory or element)
+	that match the text of m_search_field and display it,
+	other item who does not match text is hidden
 */
 void ElementsCollectionWidget::search()
 {
@@ -627,7 +725,7 @@ void ElementsCollectionWidget::search()
 		else
 			expandFirstItems();
 
-			//Expand the tree and scroll to the last selected index
+		//Expand the tree and scroll to the last selected index
 		if (current_index.isValid())
 		{
 			showAndExpandItem(current_index);
@@ -646,8 +744,14 @@ void ElementsCollectionWidget::search()
 #endif
 	QModelIndexList match_index;
 	foreach (QString txt, text_list) {
-		match_index << m_model->match(m_showed_index.isValid() ? m_model->index(0,0,m_showed_index) : m_model->index(0,0),
-									  Qt::UserRole+1, QVariant(txt), -1, Qt::MatchContains | Qt::MatchRecursive);
+		match_index << m_model->match(m_showed_index.isValid()
+					      ? m_model->index(0,0,m_showed_index)
+					      : m_model->index(0,0),
+					      Qt::UserRole+1,
+					      QVariant(txt),
+					      -1,
+					      Qt::MatchContains
+					      | Qt::MatchRecursive);
 	}
 
 	foreach(QModelIndex index, match_index)
@@ -667,12 +771,15 @@ void ElementsCollectionWidget::hideCollection(bool hide)
 
 /**
 	@brief ElementsCollectionWidget::hideItem
-	Hide the item @index. If @recursive is true, hide all subchilds of @index
+	Hide the item index. If @recursive is true,
+	hide all subchilds of index
 	@param hide- true = hide , false = visible
 	@param index- index to hide
-	@param recursive- true = apply to child , false = only for @index
+	@param recursive- true = apply to child , false = only for index
 */
-void ElementsCollectionWidget::hideItem(bool hide, const QModelIndex &index, bool recursive)
+void ElementsCollectionWidget::hideItem(bool hide,
+					const QModelIndex &index,
+					bool recursive)
 {
 	m_tree_view->setRowHidden(index.row(), index.parent(), hide);
 
@@ -683,14 +790,16 @@ void ElementsCollectionWidget::hideItem(bool hide, const QModelIndex &index, boo
 
 /**
 	@brief ElementsCollectionWidget::showAndExpandItem
-	Show the item @index and expand it.
-	If parent is true, ensure parents of @index is show and expanded
-	If child is true, ensure all childs of @index is show and expended
+	Show the item index and expand it.
+	If parent is true, ensure parents of index is show and expanded
+	If child is true, ensure all childs of index is show and expended
 	@param index- index to show
 	@param parent- Apply to parent
 	@param child- Apply to all childs
 */
-void ElementsCollectionWidget::showAndExpandItem(const QModelIndex &index, bool parent, bool child)
+void ElementsCollectionWidget::showAndExpandItem(const QModelIndex &index,
+						 bool parent,
+						 bool child)
 {
 	if (index.isValid()) {
 		if (parent)
@@ -706,9 +815,11 @@ void ElementsCollectionWidget::showAndExpandItem(const QModelIndex &index, bool 
 	@param index
 	@return The internal pointer of index casted to ElementCollectionItem;
 */
-ElementCollectionItem *ElementsCollectionWidget::elementCollectionItemForIndex(const QModelIndex &index) {
+ElementCollectionItem *ElementsCollectionWidget::elementCollectionItemForIndex(
+		const QModelIndex &index) {
 	if (!index.isValid())
 		return nullptr;
 
-	return static_cast<ElementCollectionItem*>(m_model->itemFromIndex(index));
+	return static_cast<ElementCollectionItem*>(
+				m_model->itemFromIndex(index));
 }

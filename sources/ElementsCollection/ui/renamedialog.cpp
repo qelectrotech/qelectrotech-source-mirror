@@ -21,12 +21,12 @@
 #include "ui_renamedialog.h"
 
 RenameDialog::RenameDialog(QString path, QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::RenameDialog),
-    m_path(std::move(path))
+	QDialog(parent),
+	ui(new Ui::RenameDialog),
+	m_path(std::move(path))
 {
-    ui->setupUi(this);
-    m_name = m_path.split("/").last();
+	ui->setupUi(this);
+	m_name = m_path.split("/").last();
 	if (m_name.endsWith(".elmt")) m_name.remove(".elmt");
 	ui->m_label->setText(tr("L'élément « %1 » existe déjà. Que souhaitez-vous faire ?").arg(m_path));
 	ui->lineEdit->setText(m_name + QDate::currentDate().toString("dd-MM-yy"));
@@ -34,14 +34,14 @@ RenameDialog::RenameDialog(QString path, QWidget *parent) :
 
 RenameDialog::~RenameDialog()
 {
-    delete ui;
+	delete ui;
 }
 
 void RenameDialog::on_lineEdit_textEdited(const QString &arg1)
 {
-    if (arg1.isEmpty() || (arg1 == m_name))
+	if (arg1.isEmpty() || (arg1 == m_name))
 		ui->m_rename_pb->setDisabled(true);
-    else
+	else
 		ui->m_rename_pb->setEnabled(true);
 }
 
