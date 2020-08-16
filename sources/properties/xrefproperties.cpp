@@ -95,10 +95,10 @@ void XRefProperties::fromSettings(const QSettings &settings, const QString prefi
 */
 QDomElement XRefProperties::toXml(QDomDocument &xml_document) const {
 
-    QDomElement xml_element = xml_document.createElement("xref");
-    xml_element.setAttribute("type", m_key);
+	QDomElement xml_element = xml_document.createElement("xref");
+	xml_element.setAttribute("type", m_key);
 
-    xml_element.setAttribute("showpowerctc", m_show_power_ctc? "true" : "false");
+	xml_element.setAttribute("showpowerctc", m_show_power_ctc? "true" : "false");
 	QString display = m_display == Cross? "cross" : "contacts";
 	xml_element.setAttribute("displayhas", display);
 	QString snap = m_snap_to == Bottom? "bottom" : "label";
@@ -119,7 +119,7 @@ QDomElement XRefProperties::toXml(QDomDocument &xml_document) const {
 		xml_element.setAttribute(key + "prefix", m_prefix.value(key));
 	}
 
-    return xml_element;
+	return xml_element;
 }
 
 /**
@@ -149,7 +149,7 @@ bool XRefProperties::fromXml(const QDomElement &xml_element) {
 	foreach (QString key, m_prefix_keys) {
 		m_prefix.insert(key, xml_element.attribute(key + "prefix"));
 	}
-    return true;
+	return true;
 }
 
 /**
