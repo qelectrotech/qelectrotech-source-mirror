@@ -58,7 +58,8 @@ XRefPropertiesWidget::~XRefPropertiesWidget()
 	set new properties for this widget
 	@param properties
 */
-void XRefPropertiesWidget::setProperties(const QHash <QString, XRefProperties> &properties) {
+void XRefPropertiesWidget::setProperties(const QHash <QString,
+					 XRefProperties> &properties) {
 	m_properties = properties;
 	updateDisplay();
 	m_previous_type_index = ui->m_type_cb->currentIndex();
@@ -94,18 +95,18 @@ void XRefPropertiesWidget::setReadOnly(bool ro) {
 */
 void XRefPropertiesWidget::buildUi()
 {
-	ui -> m_type_cb -> addItem(tr("Bobine"),			   "coil");
+	ui -> m_type_cb -> addItem(tr("Bobine"), "coil");
 	ui -> m_type_cb -> addItem(tr("Organe de protection"), "protection");
 	ui -> m_type_cb -> addItem(tr("Commutateur / bouton"), "commutator");
 
-	ui -> m_snap_to_cb -> addItem(tr("En bas de page"),					  "bottom");
+	ui -> m_snap_to_cb -> addItem(tr("En bas de page"), "bottom");
 	ui -> m_snap_to_cb -> addItem(tr("Sous le label de l'élément"), "label");
 
 	ui -> m_xrefpos_cb -> addItem(tr("Top"),"top");
 	ui -> m_xrefpos_cb -> addItem(tr("Bottom"),"bottom");
 	ui -> m_xrefpos_cb -> addItem(tr("Left"),"left");
 	ui -> m_xrefpos_cb -> addItem(tr("Rigth"),"right");
-	ui -> m_xrefpos_cb -> addItem(tr("Text alignment"),"alignment");                                                
+	ui -> m_xrefpos_cb -> addItem(tr("Text alignment"),"alignment");
 	m_previous_type_index = ui -> m_type_cb -> currentIndex();
 }
 
@@ -118,11 +119,16 @@ void XRefPropertiesWidget::saveProperties(int index) {
 	QString type = ui->m_type_cb->itemData(index).toString();
 	XRefProperties xrp = m_properties[type];
 
-	if		(ui->m_display_has_cross_rb->isChecked())	 xrp.setDisplayHas(XRefProperties::Cross);
-	else if (ui->m_display_has_contacts_rb->isChecked()) xrp.setDisplayHas(XRefProperties::Contacts);
-	if (ui->m_snap_to_cb->itemData(ui->m_snap_to_cb->currentIndex()).toString() == "bottom")
-		 xrp.setSnapTo(XRefProperties::Bottom);
-	else xrp.setSnapTo(XRefProperties::Label);
+	if (ui->m_display_has_cross_rb->isChecked())
+		xrp.setDisplayHas(XRefProperties::Cross);
+	else if (ui->m_display_has_contacts_rb->isChecked())
+		xrp.setDisplayHas(XRefProperties::Contacts);
+	if (ui->m_snap_to_cb->itemData(
+				ui->m_snap_to_cb->currentIndex()).toString()
+			== "bottom")
+		xrp.setSnapTo(XRefProperties::Bottom);
+	else
+		xrp.setSnapTo(XRefProperties::Label);
 
 
 

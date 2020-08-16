@@ -39,11 +39,11 @@
 	@param parent widget
 */
 BOMExportDialog::BOMExportDialog(QETProject *project, QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::BOMExportDialog),
-    m_project(project)
+	QDialog(parent),
+	ui(new Ui::BOMExportDialog),
+	m_project(project)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 
 	m_export_info.insert("pos", tr("Position"));
 	m_export_info.insert("folio_title", tr("Titre du folio"));
@@ -59,10 +59,14 @@ BOMExportDialog::BOMExportDialog(QETProject *project, QWidget *parent) :
 	m_button_group.addButton(ui->m_coil_cb, 4);
 	m_button_group.addButton(ui->m_protection_cb, 5);
 #if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)	// ### Qt 6: remove
-	connect(&m_button_group, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::buttonClicked), [this](int id)
+	connect(&m_button_group,
+		static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::buttonClicked),
+		[this](int id)
 #else
 #pragma message("@TODO remove code for QT 5.15 or later")
-	connect(&m_button_group, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::idClicked), [this](int id)
+	connect(&m_button_group,
+		static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::idClicked),
+		[this](int id)
 #endif
 	{
 		auto check_box = static_cast<QCheckBox *>(m_button_group.button(0));
@@ -352,7 +356,7 @@ QString BOMExportDialog::headers() const
 		
 		header_string += "\n";
 	}
-	else if (!queryStr().isEmpty())     //Try to retreive the header according to the sql query
+	else if (!queryStr().isEmpty())//Try to retreive the header according to the sql query
 	{
 		if (queryStr().startsWith("SELECT ") && queryStr().contains("FROM"))
 		{

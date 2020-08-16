@@ -31,18 +31,21 @@ class MarginsEditDialog;
 */
 class MarginsEditDialog : public QDialog
 {
-    Q_OBJECT
+	Q_OBJECT
 
-    public:
-		explicit MarginsEditDialog(QMargins margins = QMargins(), QWidget *parent = nullptr);
-        ~MarginsEditDialog();
+	public:
+		explicit MarginsEditDialog(QMargins margins = QMargins(),
+					   QWidget *parent = nullptr);
+		~MarginsEditDialog();
 
 		QMargins margins() const;
 
-		static QMargins getMargins(QMargins margins = QMargins(), bool *accepted = nullptr,  QWidget *parent = nullptr);
+		static QMargins getMargins(QMargins margins = QMargins(),
+					   bool *accepted = nullptr,
+					   QWidget *parent = nullptr);
 
-    private:
-        Ui::MarginsEditDialog *ui;
+	private:
+		Ui::MarginsEditDialog *ui;
 };
 
 #endif // MARGINSEDITDIALOG_H

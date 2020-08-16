@@ -292,7 +292,7 @@ void ElementPropertiesWidget::updateUi()
 		default:
 			break;
 	}
-    m_list_editor << new DynamicElementTextItemEditor(m_element, this);
+	m_list_editor << new DynamicElementTextItemEditor(m_element, this);
 
 		//Add each editors in tab widget
 	for (AbstractElementPropertiesEditorWidget *aepew : m_list_editor)
@@ -376,7 +376,7 @@ QWidget *ElementPropertiesWidget::generalWidget()
 	connect(find_in_panel, SIGNAL(clicked()), this, SLOT(findInPanel()));
 	QPushButton *edit_element = new QPushButton(QET::Icons::ElementEdit, tr("Éditer l'élément"), general_widget);
 	connect(edit_element, SIGNAL(clicked()), this, SLOT(editElement()));
-    QHBoxLayout *hlayout_ = new QHBoxLayout;
+	QHBoxLayout *hlayout_ = new QHBoxLayout;
 	hlayout_->addWidget(find_in_panel);
 	hlayout_->addWidget(edit_element);
 	vlayout_->addLayout(hlayout_);

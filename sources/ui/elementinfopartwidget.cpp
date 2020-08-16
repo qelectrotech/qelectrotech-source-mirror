@@ -135,6 +135,8 @@ Qt::CheckState ElementInfoPartWidget::EraseTextCheckState() const {
 
 void ElementInfoPartWidget::on_m_erase_text_clicked()
 {
-    ui->line_edit->setText(ui->m_erase_text->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
+	ui->line_edit->setText(ui->m_erase_text->isChecked()
+			       ? SearchAndReplaceWorker::eraseText()
+			       : QString());
 	ui->line_edit->setDisabled(ui->m_erase_text->isChecked());
 }

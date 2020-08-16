@@ -21,10 +21,10 @@
 #include <QScopedPointer>
 
 MarginsEditDialog::MarginsEditDialog(QMargins margins, QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::MarginsEditDialog)
+	QDialog(parent),
+	ui(new Ui::MarginsEditDialog)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 	ui->m_top_sb->setValue(margins.top());
 	ui->m_left_sb->setValue(margins.left());
 	ui->m_right_sb->setValue(margins.right());
@@ -37,7 +37,10 @@ MarginsEditDialog::~MarginsEditDialog()
 }
 
 QMargins MarginsEditDialog::margins() const {
-	return QMargins(ui->m_left_sb->value(), ui->m_top_sb->value(), ui->m_right_sb->value(), ui->m_bottom_sb->value());
+	return QMargins(ui->m_left_sb->value(),
+			ui->m_top_sb->value(),
+			ui->m_right_sb->value(),
+			ui->m_bottom_sb->value());
 }
 
 /**
@@ -45,11 +48,15 @@ QMargins MarginsEditDialog::margins() const {
 	@param margins : margins to set by default
 	@param accepted : bool to know if dialog is accepted
 	@param parent : parent widget.
-	@return The a margins with the edited value if dialog is accepted or a default constructed QMargins() if dialog is rejected
+	@return The a margins with the edited value if dialog is accepted
+	or a default constructed QMargins() if dialog is rejected
 */
-QMargins MarginsEditDialog::getMargins(QMargins margins, bool *accepted, QWidget *parent)
+QMargins MarginsEditDialog::getMargins(QMargins margins,
+				       bool *accepted,
+				       QWidget *parent)
 {
-	QScopedPointer<MarginsEditDialog> d(new MarginsEditDialog(margins, parent));
+	QScopedPointer<MarginsEditDialog> d(
+				new MarginsEditDialog(margins, parent));
 	if (d->exec())
 	{
 		if (accepted) {

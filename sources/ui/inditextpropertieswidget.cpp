@@ -427,7 +427,7 @@ void IndiTextPropertiesWidget::on_m_advanced_editor_pb_clicked() {
 
 void IndiTextPropertiesWidget::on_m_break_html_pb_clicked()
 {
-    if (m_text) {
+	if (m_text) {
 		m_text->setPlainText(m_text->toPlainText());
 	}
 	for (QPointer<IndependentTextItem> piti : m_text_list) {

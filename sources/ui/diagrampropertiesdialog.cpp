@@ -46,7 +46,7 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 	setWindowFlags(Qt::Sheet);
 #endif
 
-    setWindowTitle(tr("Propriétés du folio", "window title"));
+	setWindowTitle(tr("Propriétés du folio", "window title"));
 
 	//Border widget
 	BorderPropertiesWidget *border_infos = new BorderPropertiesWidget(border, this);
@@ -148,8 +148,8 @@ void DiagramPropertiesDialog::editAutonum()
 	Open folio autonum editor
 */
 void DiagramPropertiesDialog::editAutoFolioNum () {
-    ProjectPropertiesDialog ppd (m_diagram->project(), this);
-    ppd.setCurrentPage(ProjectPropertiesDialog::Autonum);
-    ppd.changeToFolio();
-    ppd.exec();
+	ProjectPropertiesDialog ppd (m_diagram->project(), this);
+	ppd.setCurrentPage(ProjectPropertiesDialog::Autonum);
+	ppd.changeToFolio();
+	ppd.exec();
 }

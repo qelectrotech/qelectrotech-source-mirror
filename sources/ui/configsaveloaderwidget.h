@@ -34,7 +34,7 @@ class ConfigSaveLoaderWidget;
 */
 class ConfigSaveLoaderWidget : public QGroupBox
 {
-    Q_OBJECT
+	Q_OBJECT
 
 	public:
 		explicit ConfigSaveLoaderWidget(QWidget *parent = nullptr);

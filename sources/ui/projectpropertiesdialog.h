@@ -39,7 +39,7 @@ class ProjectPropertiesDialog : public QObject {
 		~ProjectPropertiesDialog() override;
 		void exec();
 		void setCurrentPage(ProjectPropertiesDialog::Page);
-        void changeToFolio();
+		void changeToFolio();
 
 	private:
 		ConfigDialog *m_properties_dialog;

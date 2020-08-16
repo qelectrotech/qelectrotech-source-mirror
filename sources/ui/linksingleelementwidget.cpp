@@ -33,7 +33,8 @@
 	@param parent
 	the parent widget
 */
-LinkSingleElementWidget::LinkSingleElementWidget(Element *elmt, QWidget *parent) :
+LinkSingleElementWidget::LinkSingleElementWidget(Element *elmt,
+						 QWidget *parent) :
 	AbstractElementPropertiesEditorWidget(parent),
 	ui(new Ui::LinkSingleElementWidget)
 {
@@ -46,8 +47,14 @@ LinkSingleElementWidget::LinkSingleElementWidget(Element *elmt, QWidget *parent)
 	m_show_element  = new QAction(tr("Montrer l'élément esclave"), this);
 	m_save_header_state = new QAction(tr("Enregistrer la disposition"), this);
 	
-	connect(m_show_qtwi, &QAction::triggered, [this]() {this->on_m_tree_widget_itemDoubleClicked(this->m_qtwi_at_context_menu, 0);});
-	connect(m_link_action, &QAction::triggered, this, &LinkSingleElementWidget::linkTriggered);
+	connect(m_show_qtwi,
+		&QAction::triggered,
+		[this]()
+	{this->on_m_tree_widget_itemDoubleClicked(this->m_qtwi_at_context_menu, 0);});
+	connect(m_link_action,
+		&QAction::triggered,
+		this,
+		&LinkSingleElementWidget::linkTriggered);
 	
 	connect(m_show_element,  &QAction::triggered, [this]()
 	{
@@ -59,7 +66,10 @@ LinkSingleElementWidget::LinkSingleElementWidget(Element *elmt, QWidget *parent)
 	
 	QHeaderView *qhv = ui->m_tree_widget->header();
 	qhv->setContextMenuPolicy(Qt::CustomContextMenu);
-	connect(qhv, &QHeaderView::customContextMenuRequested, this, &LinkSingleElementWidget::headerCustomContextMenuRequested);
+	connect(qhv,
+		&QHeaderView::customContextMenuRequested,
+		this,
+		&LinkSingleElementWidget::headerCustomContextMenuRequested);
 	connect(m_save_header_state, &QAction::triggered, [this, qhv]()
 	{
 		QByteArray qba = qhv->saveState();
@@ -105,8 +115,14 @@ void LinkSingleElementWidget::setElement(Element *element)
 		//Remove connection of previous edited element
 	if (m_element)
 	{
-		disconnect(m_element->diagram()->project(), &QETProject::diagramRemoved, this, &LinkSingleElementWidget::diagramWasRemovedFromProject);
-		disconnect(m_element.data(), &Element::linkedElementChanged, this, &LinkSingleElementWidget::updateUi);
+		disconnect(m_element->diagram()->project(),
+			   &QETProject::diagramRemoved,
+			   this,
+			   &LinkSingleElementWidget::diagramWasRemovedFromProject);
+		disconnect(m_element.data(),
+			   &Element::linkedElementChanged,
+			   this,
+			   &LinkSingleElementWidget::updateUi);
 		m_element->setHighlighted(false);
 	}
 	
@@ -124,12 +140,16 @@ void LinkSingleElementWidget::setElement(Element *element)
 	if (m_element->linkType() & Element::Slave)
 		m_filter = Element::Master;
 	else if (m_element->linkType() & Element::AllReport)
-		m_filter = m_element->linkType() == Element::NextReport? Element::PreviousReport : Element::NextReport;
+		m_filter = m_element->linkType() == Element::NextReport
+				? Element::PreviousReport
+				: Element::NextReport;
 	else
 		m_filter = Element::Simple;
 
-	connect(m_element->diagram()->project(), &QETProject::diagramRemoved, this, &LinkSingleElementWidget::diagramWasRemovedFromProject);
-	connect(m_element.data(), &Element::linkedElementChanged, this, &LinkSingleElementWidget::updateUi, Qt::QueuedConnection);
+	connect(m_element->diagram()->project(), &QETProject::diagramRemoved,
+		this, &LinkSingleElementWidget::diagramWasRemovedFromProject);
+	connect(m_element.data(), &Element::linkedElementChanged,
+		this, &LinkSingleElementWidget::updateUi, Qt::QueuedConnection);
 
 	updateUi();
 }
@@ -234,7 +254,8 @@ void LinkSingleElementWidget::buildTree()
 				if (settings.value("genericpanel/folio", false).toBool())
 				{
 					autonum::sequentialNumbers seq;
-					QString F =autonum::AssignVariables::formulaToLabel(diag->border_and_titleblock.folio(), seq, diag, elmt);
+					QString F =autonum::AssignVariables::formulaToLabel(
+								diag->border_and_titleblock.folio(), seq, diag, elmt);
 					str_list << F;
 				}
 				else
@@ -415,11 +436,19 @@ void LinkSingleElementWidget::setUpHeaderLabels()
 	{
 		if (settings.value("genericpanel/folio", false).toBool())
 		{
-			list << tr("Label") << tr("Commentaire") << tr("Label de folio") << tr("Position") << tr("Titre de folio");
+			list << tr("Label")
+			     << tr("Commentaire")
+			     << tr("Label de folio")
+			     << tr("Position")
+			     << tr("Titre de folio");
 		}
 		else
 		{
-			list << tr("Label") << tr("Commentaire") << tr("N° de folio") << tr("Position") << tr("Titre de folio");
+			list << tr("Label")
+			     << tr("Commentaire")
+			     << tr("N° de folio")
+			     << tr("Position")
+			     << tr("Titre de folio");
 		}
 	}
 	
@@ -427,11 +456,25 @@ void LinkSingleElementWidget::setUpHeaderLabels()
 	{
 		if (settings.value("genericpanel/folio", false).toBool())
 		{
-			list << tr("N° de fil") << tr("Fonction") << tr("Tension / Protocole") << tr("Couleur du conducteur")  << tr("Section du conducteur") << tr("Label de folio") << tr("Position") << tr("Titre de folio");
+			list << tr("N° de fil")
+			     << tr("Fonction")
+			     << tr("Tension / Protocole")
+			     << tr("Couleur du conducteur")
+			     << tr("Section du conducteur")
+			     << tr("Label de folio")
+			     << tr("Position")
+			     << tr("Titre de folio");
 		}
 		else
 		{
-			list << tr("N° de fil") << tr("Fonction") << tr("Tension / Protocole") << tr("Couleur du conducteur")  << tr("Section du conducteur") << tr("N° de folio") << tr("Position") << tr("Titre de folio");
+			list << tr("N° de fil")
+			     << tr("Fonction")
+			     << tr("Tension / Protocole")
+			     << tr("Couleur du conducteur")
+			     << tr("Section du conducteur")
+			     << tr("N° de folio")
+			     << tr("Position")
+			     << tr("Titre de folio");
 		}
 	}
 	
@@ -440,13 +483,16 @@ void LinkSingleElementWidget::setUpHeaderLabels()
 
 /**
 	@brief LinkSingleElementWidget::diagramWasRemovedFromProject
-	 * This slot is called when a diagram is removed from the parent project of edited element
+	This slot is called when a diagram
+	is removed from the parent project of edited element
 	to update the content of this widget
 */
 void LinkSingleElementWidget::diagramWasRemovedFromProject()
 {
-	//We use a timer because if the removed diagram contain the master element linked to the edited element
-	//we must to wait for this elements be unlinked, else the list of available master isn't up to date
+	// We use a timer because if the removed diagram
+	// contain the master element linked to the edited element
+	// we must to wait for this elements be unlinked,
+	// else the list of available master isn't up to date
 	QTimer::singleShot(10, this, SLOT(updateUi()));
 }
 
@@ -473,19 +519,25 @@ void LinkSingleElementWidget::linkTriggered()
 	}
 	else
 	{
-		//In no live edit mode, we set the background of the qtwi green, to inform the user
-		//which element will be linked when he press the apply button
+		//In no live edit mode, we set the background of the qtwi green,
+		// to inform the user
+		// which element will be linked when he press the apply button
 		if (m_pending_qtwi)
 		{
 			for(int i=0 ; i<6 ; i++)
 			{
-				m_pending_qtwi->setBackground(i,QBrush(Qt::white, Qt::NoBrush));
+				m_pending_qtwi->setBackground(i,
+							      QBrush(
+								      Qt::white,
+								      Qt::NoBrush));
 			}
 		}
 		
 		for (int i=0 ; i<6 ; i++)
 		{
-			m_qtwi_at_context_menu->setBackground(i,QBrush(Qt::green,Qt::SolidPattern));
+			m_qtwi_at_context_menu->setBackground(i,
+							      QBrush(Qt::green,
+								     Qt::SolidPattern));
 		}
 		m_pending_qtwi = m_qtwi_at_context_menu;
 	}
@@ -518,7 +570,8 @@ void LinkSingleElementWidget::showButtons()
 	ui->m_search_field->hide();
 }
 
-void LinkSingleElementWidget::headerCustomContextMenuRequested(const QPoint &pos)
+void LinkSingleElementWidget::headerCustomContextMenuRequested(
+		const QPoint &pos)
 {
 	m_context_menu->clear();
 	m_context_menu->addAction(m_save_header_state);
@@ -544,13 +597,16 @@ void LinkSingleElementWidget::on_m_unlink_pb_clicked()
 	@param item
 	@param column
 */
-void LinkSingleElementWidget::on_m_tree_widget_itemDoubleClicked(QTreeWidgetItem *item, int column)
+void LinkSingleElementWidget::on_m_tree_widget_itemDoubleClicked(
+		QTreeWidgetItem *item,
+		int column)
 {
 	Q_UNUSED(column);
 	
 	if (m_showed_element)
 	{
-		disconnect(m_showed_element, SIGNAL(destroyed()), this, SLOT(showedElementWasDeleted()));
+		disconnect(m_showed_element, SIGNAL(destroyed()),
+			   this, SLOT(showedElementWasDeleted()));
 		m_showed_element->setHighlighted(false);
 	}
 	
@@ -558,14 +614,18 @@ void LinkSingleElementWidget::on_m_tree_widget_itemDoubleClicked(QTreeWidgetItem
 	elmt->diagram()->showMe();
 	elmt->setHighlighted(true);
 	m_showed_element = elmt;
-	connect(m_showed_element, SIGNAL(destroyed()), this, SLOT(showedElementWasDeleted()));
+	connect(m_showed_element, SIGNAL(destroyed()),
+		this, SLOT(showedElementWasDeleted()));
 	
 }
 
-void LinkSingleElementWidget::on_m_tree_widget_customContextMenuRequested(const QPoint &pos)
+void LinkSingleElementWidget::on_m_tree_widget_customContextMenuRequested(
+		const QPoint &pos)
 {
-	//add the size of the header to display the topleft of the QMenu at the position of the mouse.
-	//See doc about QWidget::customContextMenuRequested section related to QAbstractScrollArea 
+	//add the size of the header to display the topleft of the QMenu
+	//at the position of the mouse.
+	//See doc about QWidget::customContextMenuRequested
+	//section related to QAbstractScrollArea
 	QPoint point = pos;
 	point.ry()+=ui->m_tree_widget->header()->height();
 	point = ui->m_tree_widget->mapToGlobal(point);
@@ -600,8 +660,9 @@ void LinkSingleElementWidget::on_m_show_this_pb_clicked()
 
 /**
 	@brief LinkSingleElementWidget::on_m_search_field_textEdited
-	Search all items which match with @arg1 and shows it, other items is hidden.
-	If @arg1 is empty, show all items.
+	Search all items which match with arg1 and shows it,
+	other items is hidden.
+	If arg1 is empty, show all items.
 	@param arg1
 */
 void LinkSingleElementWidget::on_m_search_field_textEdited(const QString &arg1)

@@ -427,7 +427,7 @@ void TitleBlockPropertiesWidget::on_m_date_now_pb_clicked() {
 	Open Auto Folio Num dialog
 */
 void TitleBlockPropertiesWidget::on_m_edit_autofolionum_pb_clicked() {
-    emit openAutoNumFolioEditor(ui->auto_page_cb->currentText());
+	emit openAutoNumFolioEditor(ui->auto_page_cb->currentText());
 	if (ui->auto_page_cb->currentText()!=tr("Créer un Folio Numérotation Auto"))
 	{
 		//still to implement: load current auto folio num settings
