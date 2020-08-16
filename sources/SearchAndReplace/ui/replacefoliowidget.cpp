@@ -75,7 +75,8 @@ TitleBlockProperties ReplaceFolioWidget::titleBlockProperties() const
 	Set the title block properties edited by this widget
 	@param properties
 */
-void ReplaceFolioWidget::setTitleBlockProperties(const TitleBlockProperties &properties)
+void ReplaceFolioWidget::setTitleBlockProperties(
+		const TitleBlockProperties &properties)
 {
 	sarw::setupLineEdit(ui->m_title_le, ui->m_title_cb, properties.title);
 	sarw::setupLineEdit(ui->m_author_le, ui->m_author_cb, properties.author);
@@ -118,9 +119,15 @@ ReplaceFolioDialog::ReplaceFolioDialog(QWidget *parent) :
 {
 	QVBoxLayout *layout = new QVBoxLayout(this);
 	layout->addWidget(m_widget = new ReplaceFolioWidget(this));
-	layout->addWidget(m_button_box = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Reset, this));
+	layout->addWidget(m_button_box = new QDialogButtonBox(
+				QDialogButtonBox::Ok
+				| QDialogButtonBox::Cancel
+				| QDialogButtonBox::Reset,
+				this));
 	
-	connect(m_button_box, &QDialogButtonBox::clicked, [this](QAbstractButton *button_)
+	connect(m_button_box,
+		&QDialogButtonBox::clicked,
+		[this](QAbstractButton *button_)
 	{
 		this->done(m_button_box->buttonRole(button_));
 	});
@@ -141,40 +148,55 @@ TitleBlockProperties ReplaceFolioDialog::titleBlockProperties() const {
 	@brief ReplaceFolioDialog::setTitleBlockProperties
 	@param properties : set the title block properties edited by this dialog
 */
-void ReplaceFolioDialog::setTitleBlockProperties(const TitleBlockProperties &properties) {
+void ReplaceFolioDialog::setTitleBlockProperties(
+		const TitleBlockProperties &properties) {
 	m_widget->setTitleBlockProperties(properties);
 }
 void ReplaceFolioWidget::on_m_title_cb_clicked() {
-	ui->m_title_le->setText(ui->m_title_cb->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
+	ui->m_title_le->setText(ui->m_title_cb->isChecked()
+				? SearchAndReplaceWorker::eraseText()
+				: QString());
 	ui->m_title_le->setDisabled(ui->m_title_cb->isChecked());
 }
 
 void ReplaceFolioWidget::on_m_author_cb_clicked() {
-	ui->m_author_le->setText(ui->m_author_cb->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
+	ui->m_author_le->setText(ui->m_author_cb->isChecked()
+				 ? SearchAndReplaceWorker::eraseText()
+				 : QString());
 	ui->m_author_le->setDisabled(ui->m_author_cb->isChecked());
 }
 
 void ReplaceFolioWidget::on_m_file_cb_clicked() {
-	ui->m_file_le->setText(ui->m_file_cb->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
+	ui->m_file_le->setText(ui->m_file_cb->isChecked()
+			       ? SearchAndReplaceWorker::eraseText()
+			       : QString());
 	ui->m_file_le->setDisabled(ui->m_file_cb->isChecked());
 }
 
 void ReplaceFolioWidget::on_m_folio_cb_clicked() {
-	ui->m_folio_le->setText(ui->m_folio_cb->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
+	ui->m_folio_le->setText(ui->m_folio_cb->isChecked()
+				? SearchAndReplaceWorker::eraseText()
+				: QString());
 	ui->m_folio_le->setDisabled(ui->m_folio_cb->isChecked());
 }
 
 void ReplaceFolioWidget::on_m_plant_cb_clicked() {
-	ui->m_plant->setText(ui->m_plant_cb->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
+	ui->m_plant->setText(ui->m_plant_cb->isChecked()
+			     ? SearchAndReplaceWorker::eraseText()
+			     : QString());
 	ui->m_plant->setDisabled(ui->m_plant_cb->isChecked());
 }
 
 void ReplaceFolioWidget::on_m_loc_cb_clicked() {
-	ui->m_loc->setText(ui->m_loc_cb->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
+	ui->m_loc->setText(ui->m_loc_cb->isChecked()
+			   ? SearchAndReplaceWorker::eraseText()
+			   : QString());
 	ui->m_loc->setDisabled(ui->m_loc_cb->isChecked());
 }
 
 void ReplaceFolioWidget::on_m_indice_cb_clicked() {
-	ui->m_indice->setText(ui->m_indice_cb->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
+	ui->m_indice->setText(ui->m_indice_cb->isChecked()
+			      ? SearchAndReplaceWorker::eraseText()
+			      : QString());
 	ui->m_indice->setDisabled(ui->m_indice_cb->isChecked());
 }
