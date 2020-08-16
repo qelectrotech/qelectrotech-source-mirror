@@ -46,7 +46,8 @@ namespace autonum
 
 	sequentialNumbers::~sequentialNumbers() {}
 
-	sequentialNumbers &sequentialNumbers::operator=(const sequentialNumbers &other)
+	sequentialNumbers &sequentialNumbers::operator=(
+			const sequentialNumbers &other)
 	{
 		if (&other == this || other == *this)
 			return (*this);
@@ -90,22 +91,41 @@ namespace autonum
 		@return A QDomElement, if this sequential have no value,
 		the returned QDomELement is empty
 	*/
-	QDomElement sequentialNumbers::toXml(QDomDocument &document, const QString& tag_name) const
+	QDomElement sequentialNumbers::toXml(QDomDocument &document,
+					     const QString& tag_name) const
 	{
 		QDomElement element = document.createElement(tag_name);
 
 		if (!unit.isEmpty())
-			element.appendChild(QETXML::textToDomElement(document, "unit", unit.join(";")));
+			element.appendChild(QETXML::textToDomElement(
+						    document,
+						    "unit",
+						    unit.join(";")));
 		if (!unit_folio.isEmpty())
-			element.appendChild(QETXML::textToDomElement(document, "unitFolio", unit_folio.join(";")));
+			element.appendChild(QETXML::textToDomElement(
+						    document,
+						    "unitFolio",
+						    unit_folio.join(";")));
 		if(!ten.isEmpty())
-			element.appendChild(QETXML::textToDomElement(document, "ten", ten.join(";")));
+			element.appendChild(QETXML::textToDomElement(
+						    document,
+						    "ten",
+						    ten.join(";")));
 		if(!ten_folio.isEmpty())
-			element.appendChild(QETXML::textToDomElement(document, "tenFolio", ten_folio.join(";")));
+			element.appendChild(QETXML::textToDomElement(
+						    document,
+						    "tenFolio",
+						    ten_folio.join(";")));
 		if(!hundred.isEmpty())
-			element.appendChild(QETXML::textToDomElement(document, "hundred", hundred.join(";")));
+			element.appendChild(QETXML::textToDomElement(
+						    document,
+						    "hundred",
+						    hundred.join(";")));
 		if(!hundred_folio.isEmpty())
-			element.appendChild(QETXML::textToDomElement(document, "hundredFolio", hundred_folio.join(";")));
+			element.appendChild(QETXML::textToDomElement(
+						    document,
+						    "hundredFolio",
+						    hundred_folio.join(";")));
 
 		return element;
 	}
@@ -164,9 +184,15 @@ namespace autonum
 		@param elmt - parent element (if any) of the formula
 		@return the string with variable assigned.
 	*/
-	QString AssignVariables::formulaToLabel(QString formula, sequentialNumbers &seqStruct, Diagram *diagram, const Element *elmt)
+	QString AssignVariables::formulaToLabel(QString formula,
+						sequentialNumbers &seqStruct,
+						Diagram *diagram,
+						const Element *elmt)
 	{
-		AssignVariables av(std::move(formula), seqStruct, diagram, elmt);
+		AssignVariables av(std::move(formula),
+				   seqStruct,
+				   diagram,
+				   elmt);
 		seqStruct = av.m_seq_struct;
 		return av.m_assigned_label;
 	}
@@ -174,12 +200,13 @@ namespace autonum
 	/**
 		@brief AssignVariables::replaceVariable
 		Replace the variables in @formula in form %{my-var}
-		to the corresponding value stored in @dc
+		to the corresponding value stored in dc
 		@param formula
 		@param dc
 		@return
 	*/
-	QString AssignVariables::replaceVariable(const QString &formula, const DiagramContext &dc)
+	QString AssignVariables::replaceVariable(const QString &formula,
+						 const DiagramContext &dc)
 	{
 		QString str = formula;
 		str.replace("%{label}", dc.value("label").toString());
@@ -188,13 +215,15 @@ namespace autonum
 		str.replace("%{description}", dc.value("description").toString());
 		str.replace("%{designation}", dc.value("designation").toString());
 		str.replace("%{manufacturer}", dc.value("manufacturer").toString());
-		str.replace("%{manufacturer_reference}", dc.value("manufacturer_reference").toString());
+		str.replace("%{manufacturer_reference}",
+			    dc.value("manufacturer_reference").toString());
 		str.replace("%{supplier}", dc.value("supplier").toString());
 		str.replace("%{quantity}", dc.value("quantity").toString());
 		str.replace("%{unity}", dc.value("unity").toString());
 		str.replace("%{auxiliary1}", dc.value("auxiliary1").toString());
 		str.replace("%{auxiliary2}", dc.value("auxiliary2").toString());
-		str.replace("%{machine_manufacturer_reference}", dc.value("machine_manufacturer_reference").toString());
+		str.replace("%{machine_manufacturer_reference}",
+			    dc.value("machine_manufacturer_reference").toString());
 		str.replace("%{location}", dc.value("location").toString());
 		str.replace("%{function}", dc.value("function").toString());
 		str.replace("%{void}", QString());
@@ -203,7 +232,10 @@ namespace autonum
 	}
 	
 	
-	AssignVariables::AssignVariables(const QString& formula, const sequentialNumbers& seqStruct , Diagram *diagram, const Element *elmt):
+	AssignVariables::AssignVariables(const QString& formula,
+					 const sequentialNumbers& seqStruct,
+					 Diagram *diagram,
+					 const Element *elmt):
 	m_diagram(diagram),
 	m_arg_formula(formula),
 	m_assigned_label(formula),
@@ -213,14 +245,33 @@ namespace autonum
 	{
 		if (m_diagram)
 		{
-			m_assigned_label.replace("%F",  m_diagram -> border_and_titleblock.folio());
-			m_assigned_label.replace("%f",     QString::number(m_diagram->folioIndex()+1));
-			m_assigned_label.replace("%id",    QString::number(m_diagram->folioIndex()+1));
-			m_assigned_label.replace("%total", QString::number(m_diagram->border_and_titleblock.folioTotal()));
-			m_assigned_label.replace("%M",  m_diagram -> border_and_titleblock.plant());
-			m_assigned_label.replace("%LM", m_diagram -> border_and_titleblock.locmach());
+			m_assigned_label.replace("%F",
+						 m_diagram
+						 -> border_and_titleblock
+						 .folio());
+			m_assigned_label.replace("%f",
+						 QString::number(
+							 m_diagram
+							 ->folioIndex()+1));
+			m_assigned_label.replace("%id",
+						 QString::number(
+							 m_diagram
+							 ->folioIndex()+1));
+			m_assigned_label.replace("%total",
+						 QString::number(
+							 m_diagram
+							 ->border_and_titleblock
+							 .folioTotal()));
+			m_assigned_label.replace("%M",
+						 m_diagram
+						 -> border_and_titleblock
+						 .plant());
+			m_assigned_label.replace("%LM",
+						 m_diagram
+						 -> border_and_titleblock
+						 .locmach());
 
-	QSettings settings;
+			QSettings settings;
 			if (m_element)
 			{
 			if (settings.value("border-columns_0", true).toBool()){
