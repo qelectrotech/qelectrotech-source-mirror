@@ -652,11 +652,11 @@ void BorderTitleBlock::drawDxf(
 	if (display_border_ &&
 		display_columns_) {
 		for (int i = 1 ; i <= columns_count_ ; ++ i) {
-			double xCoord = diagram_rect_.topLeft().x() +
+            double xCoord = diagram_rect_.topLeft().x() * Createdxf::xScale +
 					(rows_header_width_ + ((i - 1) *
 					 columns_width_));
 			double yCoord = Createdxf::sheetHeight
-					- diagram_rect_.topLeft().y()
+                    - diagram_rect_.topLeft().y()*Createdxf::yScale
 					- columns_header_height_;
 			double recWidth = columns_width_;
 			double recHeight = columns_header_height_;
@@ -665,27 +665,27 @@ void BorderTitleBlock::drawDxf(
 			if (settings.value("border-columns_0", true).toBool()){
 			Createdxf::drawTextAligned(file_path,
 						   QString::number(i - 1),
-						   xCoord,
-						   yCoord + recHeight*0.5,
+                           xCoord+recWidth/4,
+                           yCoord + recHeight*0.2,
 						   recHeight*0.7,
 						   0,
 						   0,
 						   1,
 						   2,
-						   xCoord+recWidth/2,
+                           xCoord+recWidth/2,
 						   color,
 						   0);
 			}else{
 			Createdxf::drawTextAligned(file_path,
 						   QString::number(i),
-						   xCoord,
-						   yCoord + recHeight*0.5,
+                           xCoord+recWidth/4,
+                           yCoord + recHeight*0.2,
 						   recHeight*0.7,
 						   0,
 						   0,
 						   1,
 						   2,
-						   xCoord+recWidth/2,
+                           xCoord+recWidth/2,
 						   color,
 						   0);
 			}
@@ -699,8 +699,8 @@ void BorderTitleBlock::drawDxf(
 		for (int i = 1 ; i <= rows_count_ ; ++ i) {
 			double xCoord = diagram_rect_.topLeft().x()
 					* Createdxf::xScale;
-			double yCoord = Createdxf::sheetHeight
-					- diagram_rect_.topLeft().y()
+            double yCoord = Createdxf::sheetHeight
+                    - diagram_rect_.topLeft().y()
 					*Createdxf::yScale
 					- (
 						columns_header_height_
@@ -713,8 +713,8 @@ void BorderTitleBlock::drawDxf(
 						 recWidth, recHeight, color);
 			Createdxf::drawTextAligned(file_path,
 						   row_string,
-						   xCoord,
-						   yCoord + recHeight*0.5,
+                           xCoord+recWidth*0.1,
+                           yCoord + recHeight*0.4,
 						   recWidth*0.7,
 						   0,
 						   0,
