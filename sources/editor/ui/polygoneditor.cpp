@@ -29,41 +29,55 @@
 	@param part
 	@param parent
 */
-PolygonEditor::PolygonEditor(QETElementEditor *editor, PartPolygon *part, QWidget *parent) :
-    ElementItemEditor(editor, parent),
-    ui(new Ui::PolygonEditor),
-    m_part(part)
+PolygonEditor::PolygonEditor(QETElementEditor *editor,
+			     PartPolygon *part,
+			     QWidget *parent) :
+	ElementItemEditor(editor, parent),
+	ui(new Ui::PolygonEditor),
+	m_part(part)
 {
-    ui->setupUi(this);
-    m_style = new StyleEditor(editor);
-    ui->m_main_layout->insertWidget(0, m_style);
-    updateForm();
-    ui->m_points_list_tree->installEventFilter(this);
-    ui->m_points_list_tree->addAction(ui->m_add_point_action);
-    ui->m_points_list_tree->addAction(ui->m_remove_point_action);
+	ui->setupUi(this);
+	m_style = new StyleEditor(editor);
+	ui->m_main_layout->insertWidget(0, m_style);
+	updateForm();
+	ui->m_points_list_tree->installEventFilter(this);
+	ui->m_points_list_tree->addAction(ui->m_add_point_action);
+	ui->m_points_list_tree->addAction(ui->m_remove_point_action);
 }
 
 /**
 	@brief PolygonEditor::~PolygonEditor
 */
 PolygonEditor::~PolygonEditor() {
-    delete ui;
+	delete ui;
 }
 
 void PolygonEditor::setUpChangeConnections()
 {
-    m_change_connections << connect(m_part, &PartPolygon::polygonChanged, this, &PolygonEditor::updateForm);
-    m_change_connections << connect(m_part, &PartPolygon::closedChange, this, &PolygonEditor::updateForm);
-    m_change_connections << connect(m_part, &PartPolygon::xChanged, this, &PolygonEditor::updateForm);
-    m_change_connections << connect(m_part, &PartPolygon::yChanged, this, &PolygonEditor::updateForm);
+	m_change_connections << connect(m_part,
+					&PartPolygon::polygonChanged,
+					this,
+					&PolygonEditor::updateForm);
+	m_change_connections << connect(m_part,
+					&PartPolygon::closedChange,
+					this,
+					&PolygonEditor::updateForm);
+	m_change_connections << connect(m_part,
+					&PartPolygon::xChanged,
+					this,
+					&PolygonEditor::updateForm);
+	m_change_connections << connect(m_part,
+					&PartPolygon::yChanged,
+					this,
+					&PolygonEditor::updateForm);
 }
 
 void PolygonEditor::disconnectChangeConnections()
 {
-    for (QMetaObject::Connection c : m_change_connections) {
-        disconnect(c);
-    }
-    m_change_connections.clear();
+	for (QMetaObject::Connection c : m_change_connections) {
+		disconnect(c);
+	}
+	 m_change_connections.clear();
 }
 
 /**
@@ -102,11 +116,11 @@ bool PolygonEditor::setPart(CustomElementPart *new_part)
 	@return the curent edited part
 */
 CustomElementPart *PolygonEditor::currentPart() const {
-    return m_part;
+	return m_part;
 }
 
 QList<CustomElementPart*> PolygonEditor::currentParts() const {
-    return m_style->currentParts();
+	return m_style->currentParts();
 }
 
 /**
@@ -115,23 +129,24 @@ QList<CustomElementPart*> PolygonEditor::currentParts() const {
 */
 void PolygonEditor::updateForm()
 {
-    if (!m_part) {
-        return;
-    }
+	if (!m_part) {
+		return;
+	}
 
-    ui->m_points_list_tree->clear();
+	ui->m_points_list_tree->clear();
 
-    for(QPointF point : m_part->polygon())
-    {
-        point = m_part->mapToScene(point);
-        QTreeWidgetItem *qtwi = new QTreeWidgetItem();
-        qtwi->setData(0, Qt::EditRole, point.x());
-        qtwi->setData(1, Qt::EditRole, point.y());
-        qtwi -> setFlags(Qt::ItemIsEditable | Qt::ItemIsEnabled);
-        ui->m_points_list_tree->addTopLevelItem(qtwi);
-    }
-    ui->m_close_polygon_cb->setChecked(m_part->isClosed());
-    ui->m_remove_point_action->setEnabled(m_part->polygon().size() > 2 ? true : false);
+	for(QPointF point : m_part->polygon())
+	{
+		point = m_part->mapToScene(point);
+		QTreeWidgetItem *qtwi = new QTreeWidgetItem();
+		qtwi->setData(0, Qt::EditRole, point.x());
+		qtwi->setData(1, Qt::EditRole, point.y());
+		qtwi -> setFlags(Qt::ItemIsEditable | Qt::ItemIsEnabled);
+		ui->m_points_list_tree->addTopLevelItem(qtwi);
+	}
+	ui->m_close_polygon_cb->setChecked(m_part->isClosed());
+	ui->m_remove_point_action->setEnabled(m_part->polygon().size()
+					      > 2 ? true : false);
 }
 
 /**
@@ -185,7 +200,11 @@ void PolygonEditor::on_m_close_polygon_cb_stateChanged(int arg1)
 	bool close = ui->m_close_polygon_cb->isChecked();
 	if (close != m_part->isClosed())
 	{
-		QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_part, "closed", m_part->property("closed"), close);
+		QPropertyUndoCommand *undo =
+				new QPropertyUndoCommand(m_part,
+							 "closed",
+							 m_part->property("closed"),
+							 close);
 		undo->setText(tr("Modifier un polygone"));
 		undoStack().push(undo);
 	}
@@ -195,7 +214,8 @@ void PolygonEditor::on_m_close_polygon_cb_stateChanged(int arg1)
 	@brief PolygonEditor::on_m_points_list_tree_itemChanged
 	Update the polygon according to the current value of the tree editor
 */
-void PolygonEditor::on_m_points_list_tree_itemChanged(QTreeWidgetItem *item, int column)
+void PolygonEditor::on_m_points_list_tree_itemChanged(QTreeWidgetItem *item,
+						      int column)
 {
 	Q_UNUSED(item);
 	Q_UNUSED(column);
@@ -207,13 +227,21 @@ void PolygonEditor::on_m_points_list_tree_itemChanged(QTreeWidgetItem *item, int
 	QPolygonF points = pointsFromTree();
 	if (points.count() < 2)
 	{
-		QET::QetMessageBox::warning(this, tr("Erreur", "message box title"), tr("Le polygone doit comporter au moins deux points.", "message box content"));
+		QET::QetMessageBox::warning(this,
+					    tr("Erreur",
+					       "message box title"),
+					    tr("Le polygone doit comporter au moins deux points.",
+					       "message box content"));
 		return;
 	}
 	
 	if (points != m_part->polygon())
 	{
-		QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_part, "polygon", m_part->property("polygon"), points);
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(
+					m_part,
+					"polygon",
+					m_part->property("polygon"),
+					points);
 		undo->setText(tr("Modifier un polygone"));
 		undoStack().push(undo);
 	}

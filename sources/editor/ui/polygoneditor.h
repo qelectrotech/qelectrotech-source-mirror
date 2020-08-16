@@ -25,7 +25,7 @@ class PartPolygon;
 class QTreeWidgetItem;
 
 namespace Ui {
-    class PolygonEditor;
+	class PolygonEditor;
 }
 
 class PolygonEditor : public ElementItemEditor

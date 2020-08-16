@@ -25,7 +25,7 @@
 	@param scene La scene sur laquelle figure cette borne
 */
 PartTerminal::PartTerminal(QETElementEditor *editor, QGraphicsItem *parent) :
-    CustomElementGraphicPart(editor, parent)
+	CustomElementGraphicPart(editor, parent)
 {
 	d = new TerminalData(this);
 	d -> m_orientation = Qet::North;

@@ -490,7 +490,7 @@ bool StyleEditor::setPart(CustomElementPart *new_part) {
 	if (CustomElementGraphicPart *part_graphic = dynamic_cast<CustomElementGraphicPart *>(new_part))
 	{
 		part = part_graphic;
-        m_cep_list.append(part_graphic);
+		m_cep_list.append(part_graphic);
 		updateForm();
 		return(true);
 	}
@@ -541,13 +541,14 @@ CustomElementPart *StyleEditor::currentPart() const {
 }
 
 QList<CustomElementPart*> StyleEditor::currentParts() const {
-    return m_cep_list;
+	return m_cep_list;
 }
 
 /**
 	@brief StyleEditor::isStyleEditable
 	@param cep_list
-	@return true if all of the content of cep_list can be edited by style editor, else return false.
+	@return true if all of the content of cep_list
+	can be edited by style editor, else return false.
 */
 bool StyleEditor::isStyleEditable(QList<CustomElementPart *> cep_list)
 {

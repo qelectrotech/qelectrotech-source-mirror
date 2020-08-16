@@ -84,8 +84,8 @@ class PartPolygon : public CustomElementGraphicPart
 		bool isClosed  () const {return m_closed;}
 		void setClosed (bool close);
 
-        void setHandlerColor(QPointF pos, const QColor &color) final;
-        void resetAllHandlerColor() final;
+		void setHandlerColor(QPointF pos, const QColor &color) final;
+		void resetAllHandlerColor() final;
 
 	protected:
 		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;

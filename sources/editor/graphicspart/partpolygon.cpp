@@ -254,7 +254,7 @@ void PartPolygon::setClosed(bool close)
 	if (m_closed == close) return;
 	prepareGeometryChange();
 	m_closed = close;
-    emit closedChange();
+	emit closedChange();
 }
 
 /**
@@ -544,7 +544,7 @@ void PartPolygon::removePoint()
 	if (index > -1 && index<m_handler_vector.count())
 	{
 		QPolygonF polygon = this->polygon();
-        qDebug() << index;
+		qDebug() << index;
 		polygon.removeAt(index);
 		
 			//Wrap the undo for avoid to merge the undo commands when user add several points.

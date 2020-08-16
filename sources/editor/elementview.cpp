@@ -114,14 +114,14 @@ void ElementView::zoomOut() {
 	Agrandit le schema avec le trackpad
 */
 void ElementView::zoomInSlowly() {
-    scale(1.02, 1.02);
+	scale(1.02, 1.02);
 }
 
 /**
 	Retrecit le schema avec le trackpad
 */
 void ElementView::zoomOutSlowly() {
-    scale(0.98, 0.98);
+	scale(0.98, 0.98);
 }
 
 /**
