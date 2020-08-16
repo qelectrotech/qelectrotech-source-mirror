@@ -1850,11 +1850,13 @@ void TitleBlockTemplate::renderTextCellDxf(QString &file_path,
 			textHeight *= ratio;
 		}
 	}
-
+    //TODO DAV 16AUG2020 - x & y offset values bellow (5 & 3) set heuristically for now, as are not exactly Diagram::margin = 5
+    // fix when have a chance to work through the preceding scaling logic!
+    // Also add/fix autosizing font to fit in cell
 	Createdxf::drawTextAligned(file_path,
 				   text,
-				   x,
-				   y,
+                   x - 5*Createdxf::xScale,
+                   y - 3*Createdxf::yScale,
 				   textHeight*Createdxf::yScale,
 				   0,
 				   0,
