@@ -1011,22 +1011,22 @@ QDomElement Conductor::toXml(QDomDocument &dom_document, QHash<Terminal *, int> 
 	dom_element.setAttribute("x", QString::number(pos().x()));
 	dom_element.setAttribute("y", QString::number(pos().y()));
 
-    // Terminal is uniquely identified by the uuid of the terminal and the element
-    if (terminal1->uuid().isNull()) {
-        // legacy method to identify the terminal
-        dom_element.setAttribute("terminal1", table_adr_id.value(terminal1)); // for backward compability
-    } else {
-        dom_element.setAttribute("element1", terminal1->parentElement()->uuid().toString());
-        dom_element.setAttribute("terminal1", terminal1->uuid().toString());
-    }
+	// Terminal is uniquely identified by the uuid of the terminal and the element
+	if (terminal1->uuid().isNull()) {
+		// legacy method to identify the terminal
+		dom_element.setAttribute("terminal1", table_adr_id.value(terminal1)); // for backward compability
+	} else {
+		dom_element.setAttribute("element1", terminal1->parentElement()->uuid().toString());
+		dom_element.setAttribute("terminal1", terminal1->uuid().toString());
+	}
 
-    if (terminal2->uuid().isNull()) {
-        // legacy method to identify the terminal
-        dom_element.setAttribute("terminal2", table_adr_id.value(terminal2)); // for backward compability
-    } else {
-        dom_element.setAttribute("element2", terminal2->parentElement()->uuid().toString());
-        dom_element.setAttribute("terminal2", terminal2->uuid().toString());
-    }
+	if (terminal2->uuid().isNull()) {
+		// legacy method to identify the terminal
+		dom_element.setAttribute("terminal2", table_adr_id.value(terminal2)); // for backward compability
+	} else {
+		dom_element.setAttribute("element2", terminal2->parentElement()->uuid().toString());
+		dom_element.setAttribute("terminal2", terminal2->uuid().toString());
+	}
 	dom_element.setAttribute("freezeLabel", m_freeze_label? "true" : "false");
 	
 	// on n'exporte les segments du conducteur que si ceux-ci ont
@@ -2006,8 +2006,9 @@ Conductor * longuestConductorInPotential(Conductor *conductor, bool all_diagram)
 /**
 	@brief relatedConductors
 	@param conductor
-	@return return all conductors who share the same terminals of @conductor given as parametre,
-	except @conductor himself.
+	@return return all conductors who share the same terminals
+	of conductor given as parametre,
+	except conductor himself.
 */
 QList <Conductor *> relatedConductors(const Conductor *conductor) {
 	QList<Conductor *> other_conductors_list = conductor -> terminal1 -> conductors();

@@ -41,17 +41,17 @@ class QetGraphicsHeaderItem : public QGraphicsObject
 {
 	Q_OBJECT
 
-    public:
-        QetGraphicsHeaderItem(QGraphicsItem *parent = nullptr);
+	public:
+		QetGraphicsHeaderItem(QGraphicsItem *parent = nullptr);
 
 		enum { Type = UserType + 1301 };
 		int type() const override { return Type; }
 
 		void setModel(QAbstractItemModel *model = nullptr);
-        QAbstractItemModel *model() const;
+		QAbstractItemModel *model() const;
 
-        virtual QRectF boundingRect() const override;
-        virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
+		virtual QRectF boundingRect() const override;
+		virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 		QRect rect() const;
 		void resizeSection(int logicalIndex, int size);
 		int sectionSize(int logical_index) const;
@@ -73,9 +73,9 @@ class QetGraphicsHeaderItem : public QGraphicsObject
 		void adjustSize();
 		void modelReseted();
 
-    private:
-        QRectF m_bounding_rect;
-        QAbstractItemModel *m_model = nullptr;
+	private:
+		QRectF m_bounding_rect;
+		QAbstractItemModel *m_model = nullptr;
 		QVector<int> m_sections_minimum_width,
 					 m_current_sections_width;
 		int m_section_height=1,

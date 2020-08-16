@@ -142,7 +142,7 @@ class Conductor : public QGraphicsObject
 		void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
 		void hoverLeaveEvent(QGraphicsSceneHoverEvent *event) override;
 		QVariant itemChange(GraphicsItemChange, const QVariant &) override;
-        bool sceneEventFilter(QGraphicsItem *watched, QEvent *event) override;
+		bool sceneEventFilter(QGraphicsItem *watched, QEvent *event) override;
 
 	private:
 		void adjusteHandlerPos();

@@ -38,9 +38,9 @@ ConductorTextItem::ConductorTextItem(Conductor *parent_conductor) :
 	Constructeur
 	@param text Le texte affiche par le champ de texte
 	@param parent_conductor  Conducteur auquel ce texte est rattache
-	@param parent_diagram    Schema auquel ce texte et son conducteur parent sont rattaches
 */
-ConductorTextItem::ConductorTextItem(const QString &text, Conductor *parent_conductor) :
+ConductorTextItem::ConductorTextItem(const QString &text,
+				     Conductor *parent_conductor) :
 	DiagramTextItem(text, parent_conductor),
 	parent_conductor_(parent_conductor),
 	moved_by_user_(false),

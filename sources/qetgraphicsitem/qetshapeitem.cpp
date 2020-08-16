@@ -64,8 +64,8 @@ QetShapeItem::QetShapeItem(QPointF p1, QPointF p2, ShapeType type, QGraphicsItem
 
 QetShapeItem::~QetShapeItem()
 {
-    if(!m_handler_vector.isEmpty())
-        qDeleteAll(m_handler_vector);
+	if(!m_handler_vector.isEmpty())
+		qDeleteAll(m_handler_vector);
 }
 
 /**
@@ -221,8 +221,9 @@ void QetShapeItem::setNextPoint(QPointF P)
 /**
 	@brief QetShapeItem::removePoints
 	Number of point to remove on the polygon
-	If @number is superior to number of polygon points-2,
-	all points of polygon will be removed except the first two (minimum point for the polygon);
+	If number is superior to number of polygon points-2,
+	all points of polygon will be removed except
+	the first two (minimum point for the polygon);
 */
 void QetShapeItem::removePoints(int number)
 {
@@ -259,12 +260,14 @@ QPainterPath QetShapeItem::shape() const
 
 	switch (m_shapeType)
 	{
-		case Line:      
+		case Line:
 			path.moveTo(m_P1);
-			path.lineTo(m_P2);                   
+			path.lineTo(m_P2);
 			break;
 		case Rectangle: 
-			path.addRoundedRect(QRectF(m_P1, m_P2), m_xRadius, m_yRadius);
+			path.addRoundedRect(QRectF(m_P1, m_P2),
+					    m_xRadius,
+					    m_yRadius);
 			break;
 		case Ellipse:
 			path.addEllipse(QRectF(m_P1, m_P2));
@@ -292,7 +295,9 @@ QPainterPath QetShapeItem::shape() const
 	@param option
 	@param widget
 */
-void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void QetShapeItem::paint(QPainter *painter,
+			 const QStyleOptionGraphicsItem *option,
+			 QWidget *widget)
 {
 	Q_UNUSED(option)
 	Q_UNUSED(widget)
@@ -317,9 +322,12 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
     switch (m_shapeType)
     {
         case Line:      painter->drawLine(QLineF(m_P1, m_P2)); break;
-        case Rectangle: painter->drawRoundedRect(QRectF(m_P1, m_P2), m_xRadius, m_yRadius); break;
+	case Rectangle: painter->drawRoundedRect(QRectF(m_P1, m_P2),
+						 m_xRadius,
+						 m_yRadius); break;
         case Ellipse:   painter->drawEllipse(QRectF(m_P1, m_P2)); break;
-        case Polygon:   m_closed ? painter->drawPolygon(m_polygon) : painter->drawPolyline(m_polygon); break;
+	case Polygon:   m_closed ? painter->drawPolygon(m_polygon)
+				 : painter->drawPolyline(m_polygon); break;
     }
     
     painter->restore();
@@ -364,11 +372,13 @@ void QetShapeItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 	@param value
 	@return 
 */
-QVariant QetShapeItem::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value)
+QVariant QetShapeItem::itemChange(QGraphicsItem::GraphicsItemChange change,
+				  const QVariant &value)
 {
 	if (change == ItemSelectedHasChanged)
 	{
-		if (value.toBool() == true) { //If this is selected, wa add handlers.
+		if (value.toBool() == true) {
+			//If this is selected, wa add handlers.
 			addHandler();
 		}
 		else //Else this is deselected, we remove handlers
@@ -956,11 +966,32 @@ QDomElement QetShapeItem::toXml(QDomDocument &document) const
 bool QetShapeItem::toDXF(const QString &filepath,const QPen &pen)
 {
 
-    switch (m_shapeType)
+	switch (m_shapeType)
 	{
-        case Line:      Createdxf::drawLine     (filepath, QLineF(mapToScene(m_P1), mapToScene(m_P2)), Createdxf::getcolorCode(pen.color().red(),pen.color().green(),pen.color().blue()));              return true;
-        case Rectangle: Createdxf::drawRectangle(filepath, QRectF(mapToScene(m_P1), mapToScene(m_P2)).normalized(), Createdxf::getcolorCode(pen.color().red(),pen.color().green(),pen.color().blue())); return true;
-        case Ellipse:   Createdxf::drawEllipse  (filepath, QRectF(mapToScene(m_P1), mapToScene(m_P2)).normalized(), Createdxf::getcolorCode(pen.color().red(),pen.color().green(),pen.color().blue())); return true;
+		case Line:
+		Createdxf::drawLine(filepath,
+				    QLineF(mapToScene(m_P1),
+					   mapToScene(m_P2)),
+				    Createdxf::getcolorCode(pen.color().red(),
+							    pen.color().green(),
+							    pen.color().blue()));
+		return true;
+		case Rectangle:
+		Createdxf::drawRectangle(filepath,
+					 QRectF(mapToScene(m_P1),
+						mapToScene(m_P2)).normalized(),
+					 Createdxf::getcolorCode(pen.color().red(),
+								 pen.color().green(),
+								 pen.color().blue()));
+		return true;
+		case Ellipse:
+		Createdxf::drawEllipse  (filepath,
+					 QRectF(mapToScene(m_P1),
+						mapToScene(m_P2)).normalized(),
+					 Createdxf::getcolorCode(pen.color().red(),
+								 pen.color().green(),
+								 pen.color().blue()));
+		return true;
 		default: return false;
 	}
 }

@@ -40,16 +40,16 @@ class DynamicElementTextItem : public DiagramTextItem
 	friend class DynamicTextItemDelegate;
 	friend class CompositeTextEditDialog;
 	friend class Element;
-	
-    Q_OBJECT
-    
+
+	Q_OBJECT
+
 	Q_PROPERTY(QString text READ text WRITE setText NOTIFY textChanged)
 	Q_PROPERTY(TextFrom textFrom READ textFrom WRITE setTextFrom NOTIFY textFromChanged)
 	Q_PROPERTY(QString infoName READ infoName WRITE setInfoName NOTIFY infoNameChanged)
 	Q_PROPERTY(QString compositeText READ compositeText WRITE setCompositeText NOTIFY compositeTextChanged)
 	Q_PROPERTY(bool frame READ frame WRITE setFrame NOTIFY frameChanged)
 	Q_PROPERTY(qreal textWidth READ textWidth WRITE setTextWidth NOTIFY textWidthChanged)
-	
+
 	public:
 
 		enum TextFrom {
@@ -60,7 +60,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		Q_ENUM (TextFrom)
 		enum {Type = UserType + 1010};
 		int type() const override {return Type;}
-		
+
 	signals:
 		void textChanged(QString text);
 		void textFromChanged(DynamicElementTextItem::TextFrom text_from);
@@ -69,7 +69,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		void frameChanged(bool frame);
 		void plainTextChanged();
 		void textWidthChanged(qreal width);
-	
+
 	public:
 		DynamicElementTextItem(Element *parent_element);
 		~DynamicElementTextItem() override;
@@ -81,12 +81,12 @@ class DynamicElementTextItem : public DiagramTextItem
 	public:
 		QDomElement toXml(QDomDocument &dom_doc) const override;
 		void fromXml(const QDomElement &dom_elmt) override;
-		
+
 		Element *parentElement() const;
 		ElementTextItemGroup *parentGroup() const;
 		Element *elementUseForInfo() const;
 		void refreshLabelConnection();
-		
+
 		DynamicElementTextItem::TextFrom textFrom() const;
 		void setTextFrom (DynamicElementTextItem::TextFrom text_from);
 		QString text() const;
@@ -103,7 +103,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		void setPlainText(const QString &text);
 		void setTextWidth(qreal width);
 		void setXref_item(Qt::AlignmentFlag m_exHrefPos);
-		
+
 	protected:
 		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
 		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
@@ -114,7 +114,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
 		bool sceneEventFilter(QGraphicsItem *watched, QEvent *event) override;
-		
+
 	private:
 		void elementInfoChanged();
 		void masterChanged();
@@ -134,25 +134,28 @@ class DynamicElementTextItem : public DiagramTextItem
 		QString reportReplacedCompositeText() const;
 		void zoomToLinkedElement();
 
-		
 	private:
-		QPointer <Element> m_parent_element,
-						   m_master_element,
-						   m_other_report;
+		QPointer <Element>
+		m_parent_element,
+		m_master_element,
+		m_other_report;
 		QPointer <Conductor> m_watched_conductor;
-		QString m_text,
-				m_info_name,
-				m_composite_text,
-				m_report_formula,
-				m_F_str;
+		QString
+		m_text,
+		m_info_name,
+		m_composite_text,
+		m_report_formula,
+		m_F_str;
 		DynamicElementTextItem::TextFrom m_text_from = UserText;
 		QUuid m_uuid;
 		QMetaObject::Connection m_report_formula_con;
-		QList<QMetaObject::Connection> m_formula_connection,
-									   m_update_slave_Xref_connection;
+		QList<QMetaObject::Connection>
+		m_formula_connection,
+		m_update_slave_Xref_connection;
 		QColor m_user_color;
-		bool m_frame = false,
-			 m_first_scene_change = true;
+		bool
+		m_frame = false,
+		m_first_scene_change = true;
 		CrossRefItem *m_Xref_item = nullptr;
 		QGraphicsTextItem *m_slave_Xref_item = nullptr;
 		qreal m_text_width = -1;

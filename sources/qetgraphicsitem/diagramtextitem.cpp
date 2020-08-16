@@ -166,7 +166,7 @@ void DiagramTextItem::setFont(const QFont &font)
 
 void DiagramTextItem::setColor(const QColor& color)
 {
-    setDefaultTextColor(color);
+	setDefaultTextColor(color);
 	emit colorChanged(color);
 }
 

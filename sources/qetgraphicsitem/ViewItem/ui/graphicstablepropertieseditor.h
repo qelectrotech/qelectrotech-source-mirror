@@ -37,7 +37,7 @@ class QButtonGroup;
 */
 class GraphicsTablePropertiesEditor : public PropertiesEditorWidget
 {
-    Q_OBJECT
+	Q_OBJECT
 
 	public:
 		explicit GraphicsTablePropertiesEditor(QetGraphicsTableItem *table = nullptr, QWidget *parent = nullptr);

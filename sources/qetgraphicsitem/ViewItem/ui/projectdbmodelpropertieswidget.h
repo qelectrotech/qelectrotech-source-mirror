@@ -32,9 +32,9 @@ class ProjectDBModelPropertiesWidget;
 */
 class ProjectDBModelPropertiesWidget : public PropertiesEditorWidget
 {
-    Q_OBJECT
+	Q_OBJECT
 
-    public:
+	public:
 		explicit ProjectDBModelPropertiesWidget(ProjectDBModel *model = nullptr, QWidget *parent = nullptr);
 		~ProjectDBModelPropertiesWidget();
 
