@@ -29,23 +29,23 @@ class DiagramImageItem;
 */
 class DiagramEventAddImage : public DiagramEventInterface
 {
-        Q_OBJECT
+	Q_OBJECT
 
-        public:
-            DiagramEventAddImage(Diagram *diagram);
-            ~DiagramEventAddImage() override;
+	public:
+		DiagramEventAddImage(Diagram *diagram);
+		~DiagramEventAddImage() override;
 
-            void mousePressEvent       (QGraphicsSceneMouseEvent *event) override;
-            void mouseMoveEvent        (QGraphicsSceneMouseEvent *event) override;
-            void mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event) override;
-            void wheelEvent            (QGraphicsSceneWheelEvent *event) override;
+		void mousePressEvent       (QGraphicsSceneMouseEvent *event) override;
+		void mouseMoveEvent        (QGraphicsSceneMouseEvent *event) override;
+		void mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event) override;
+		void wheelEvent            (QGraphicsSceneWheelEvent *event) override;
 
-            bool isNull () const;
-    private:
-            void openDialog();
+		 bool isNull () const;
+	private:
+		void openDialog();
 
-            DiagramImageItem *m_image;
-            bool m_is_added;
+		DiagramImageItem *m_image;
+		bool m_is_added;
 };
 
 #endif // DIAGRAMEVENTADDIMAGE_H

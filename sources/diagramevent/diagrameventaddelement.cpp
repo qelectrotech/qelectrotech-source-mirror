@@ -243,7 +243,7 @@ void DiagramEventAddElement::addElement()
 		if (m_diagram->freezeNewConductors() || m_diagram->project()->isFreezeNewConductors()) {
 			conductor->setFreezeLabel(true);
 		}
-    }
+	}
 
 	m_diagram -> undoStack().push(undo_object);
 	element->setUpFormula();

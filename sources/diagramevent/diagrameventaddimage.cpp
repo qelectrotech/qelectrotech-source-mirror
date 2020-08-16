@@ -27,11 +27,11 @@
 	@param diagram : diagram where operate this event
 */
 DiagramEventAddImage::DiagramEventAddImage(Diagram *diagram) :
-    DiagramEventInterface(diagram),
-    m_image (nullptr),
-    m_is_added (false)
+	DiagramEventInterface(diagram),
+	m_image (nullptr),
+	m_is_added (false)
 {
-    openDialog();
+	openDialog();
 }
 
 /**
@@ -39,14 +39,14 @@ DiagramEventAddImage::DiagramEventAddImage(Diagram *diagram) :
 */
 DiagramEventAddImage::~DiagramEventAddImage()
 {
-    if (m_running || m_abort)
-    {
-        if (m_is_added) m_diagram->removeItem(m_image);
-        delete m_image;
-    }
+	if (m_running || m_abort)
+	{
+		if (m_is_added) m_diagram->removeItem(m_image);
+		delete m_image;
+	}
 
-    foreach (QGraphicsView *view, m_diagram->views())
-        view->setContextMenuPolicy((Qt::DefaultContextMenu));
+	foreach (QGraphicsView *view, m_diagram->views())
+		view->setContextMenuPolicy((Qt::DefaultContextMenu));
 }
 
 /**

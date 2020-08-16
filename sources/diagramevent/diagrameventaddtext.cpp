@@ -27,7 +27,7 @@
 	@param diagram : the diagram where this event must operate
 */
 DiagramEventAddText::DiagramEventAddText(Diagram *diagram) :
-    DiagramEventInterface(diagram)
+	DiagramEventInterface(diagram)
 {}
 
 /**
@@ -42,13 +42,17 @@ DiagramEventAddText::~DiagramEventAddText()
 */
 void DiagramEventAddText::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    if (event->button() == Qt::LeftButton)
-    {
-        IndependentTextItem *text = new IndependentTextItem();
-        m_diagram -> undoStack().push(new AddItemCommand<IndependentTextItem *>(text, m_diagram, event->scenePos()));
-        text->setTextInteractionFlags(Qt::TextEditorInteraction);
-        text->setFocus(Qt::MouseFocusReason);
-        emit finish();
+	if (event->button() == Qt::LeftButton)
+	{
+		IndependentTextItem *text = new IndependentTextItem();
+		m_diagram -> undoStack().push(
+					new AddItemCommand<IndependentTextItem *>(
+						text,
+						m_diagram,
+						event->scenePos()));
+		text->setTextInteractionFlags(Qt::TextEditorInteraction);
+		text->setFocus(Qt::MouseFocusReason);
+		emit finish();
 		event->setAccepted(true);
-    }
+	}
 }

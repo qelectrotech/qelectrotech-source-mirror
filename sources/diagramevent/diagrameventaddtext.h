@@ -28,13 +28,13 @@ class Diagram;
 */
 class DiagramEventAddText : public DiagramEventInterface
 {
-        Q_OBJECT
+		Q_OBJECT
 
-        public:
-            DiagramEventAddText(Diagram *diagram);
-            ~DiagramEventAddText() override;
+		public:
+		DiagramEventAddText(Diagram *diagram);
+		~DiagramEventAddText() override;
 
-            void mousePressEvent (QGraphicsSceneMouseEvent *event) override;
+		void mousePressEvent (QGraphicsSceneMouseEvent *event) override;
 };
 
 #endif // DIAGRAMEVENTADDTEXT_H
