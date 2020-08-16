@@ -422,7 +422,7 @@ void TitleBlockTemplateView::drawBackground(QPainter *painter, const QRectF &rec
 	@return the selected logical cells, not including the spanned ones.
 */
 QList<TitleBlockCell *> TitleBlockTemplateView::selectedCells() const {
-       return(selectedCellsSet().cells(false).values());
+	return(selectedCellsSet().cells(false).values());
 }
 
 /**
