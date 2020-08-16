@@ -30,10 +30,10 @@
 	@param parent : parent widget.
 */
 AddTableDialog::AddTableDialog(QWidget *content_widget, QWidget *parent) :
-    QDialog(parent),
+	QDialog(parent),
 	ui(new Ui::AddTableDialog)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 	ui->m_header_font_pb->setText(m_header_font.family());
 	ui->m_table_font_pb->setText(m_table_font.family());
 	m_content_widget = content_widget;

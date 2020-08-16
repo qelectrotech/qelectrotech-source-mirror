@@ -36,7 +36,7 @@ class AddTableDialog;
 */
 class AddTableDialog : public QDialog
 {
-    Q_OBJECT
+	Q_OBJECT
 
 	public:
 		explicit AddTableDialog(QWidget *content_widget, QWidget *parent = nullptr);

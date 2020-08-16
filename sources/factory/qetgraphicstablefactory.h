@@ -27,14 +27,17 @@ class AddTableDialog;
 */
 class QetGraphicsTableFactory
 {
-    public:
-        QetGraphicsTableFactory();
+	public:
+		QetGraphicsTableFactory();
 
-        static void createAndAddNomenclature(Diagram *diagram);
+		static void createAndAddNomenclature(Diagram *diagram);
 		static void createAndAddSummary(Diagram *diagram);
 	private:
 		static void create(Diagram *diagram, AddTableDialog *dialog);
-		static QetGraphicsTableItem *newTable(Diagram *diagram, AddTableDialog *dialog, QetGraphicsTableItem *previous_table = nullptr);
+		static QetGraphicsTableItem *newTable(
+				Diagram *diagram,
+				AddTableDialog *dialog,
+				QetGraphicsTableItem *previous_table = nullptr);
 };
 
 #endif // QETGRAPHICSTABLEFACTORY_H
