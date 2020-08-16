@@ -27,19 +27,25 @@
 	@param old_info : old info of element
 	@param new_info : new info of element
 */
-ChangeElementInformationCommand::ChangeElementInformationCommand(Element *elmt, DiagramContext &old_info, DiagramContext &new_info, QUndoCommand *parent) :
+ChangeElementInformationCommand::ChangeElementInformationCommand(
+		Element *elmt,
+		DiagramContext &old_info,
+		DiagramContext &new_info,
+		QUndoCommand *parent) :
 	QUndoCommand (parent),
 	m_element    (elmt),
 	m_old_info   (old_info),
 	m_new_info   (new_info)
 {
-	setText(QObject::tr("Modifier les informations de l'élément : %1").arg(elmt -> name()));
+	setText(QObject::tr("Modifier les informations de l'élément : %1")
+		.arg(elmt -> name()));
 }
 
 bool ChangeElementInformationCommand::mergeWith(const QUndoCommand *other)
 {
 	if (id() != other->id()) return false;
-	ChangeElementInformationCommand const *undo = static_cast<const ChangeElementInformationCommand*>(other);
+	ChangeElementInformationCommand const *undo =
+			static_cast<const ChangeElementInformationCommand*>(other);
 	if (m_element != undo->m_element) return false;
 	m_new_info = undo->m_new_info;
 	return true;
@@ -64,6 +70,7 @@ void ChangeElementInformationCommand::redo() {
 void ChangeElementInformationCommand::updateProjectDB()
 {
 	if(m_element->diagram()) {
-		m_element->diagram()->project()->dataBase()->elementInfoChanged(m_element);
+		m_element->diagram()->project()->dataBase()->elementInfoChanged(
+					m_element);
 	}
 }

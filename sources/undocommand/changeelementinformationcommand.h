@@ -30,7 +30,11 @@ class Element;
 class ChangeElementInformationCommand : public QUndoCommand
 {
 	public:
-		ChangeElementInformationCommand(Element *elmt, DiagramContext &old_info, DiagramContext &new_info, QUndoCommand *parent = nullptr);
+		ChangeElementInformationCommand(
+				Element *elmt,
+				DiagramContext &old_info,
+				DiagramContext &new_info,
+				QUndoCommand *parent = nullptr);
 
 		int id() const override {return 1;}
 		bool mergeWith(const QUndoCommand *other) override;
