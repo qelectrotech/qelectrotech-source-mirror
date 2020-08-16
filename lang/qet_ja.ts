@@ -1,75 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en">
+<TS version="2.1" language="ja_JP">
 <context>
     <name>AboutQETDialog</name>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="20"/>
         <source>À propos de QElectrotech</source>
-        <translation>About QElectroTech</translation>
+        <translation>QElectrotech について</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="30"/>
         <source>À propos</source>
-        <translation></translation>
+        <translation>情報</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="53"/>
         <source>Auteurs</source>
-        <translation>Authors</translation>
+        <translation>作成者</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="133"/>
         <source>Traducteurs</source>
-        <translation>Translators</translation>
+        <translation>翻訳者</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="216"/>
         <source>Contributeurs</source>
-        <translation>Contributors</translation>
+        <translation>貢献者</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="296"/>
         <source>Version</source>
-        <translation>Version</translation>
+        <translation>バージョン</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="348"/>
         <source>Bibliothèques</source>
-        <translation>Libraries</translation>
+        <translation>ライブラリ</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="428"/>
         <source>Accord de licence</source>
-        <translation>License Agreement</translation>
+        <translation>ライセンス契約</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="434"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
-        <translation>This program is under the GNU/GPL license.</translation>
+        <translation>このプログラムは GNU/GPL のもとでライセンスされます。</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="56"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.</source>
         <comment>about tab, description line</comment>
-        <translation>QElectroTech, an application to design electric diagrams.</translation>
+        <translation>QElectroTech, 電気回路図を作成するアプリケーション。</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="58"/>
         <source> Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation> The developers of QElectroTech</translation>
+        <translation> QElectroTech の開発者</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="62"/>
         <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</source>
         <comment>about tab, contact line</comment>
-        <translation>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</translation>
+        <translation>連絡先 : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="72"/>
         <source>Idée originale</source>
-        <translation>Original concept</translation>
+        <translation>創案</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="73"/>
@@ -79,113 +79,113 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="129"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="132"/>
         <source>Développement</source>
-        <translation>Development</translation>
+        <translation>開発</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="76"/>
         <source>Convertisseur DXF</source>
-        <translation>DXF converter</translation>
+        <translation>ＤＸＦコンバータ</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="77"/>
         <source>Plugin Bornier</source>
-        <translation>Terminal Block plugin</translation>
+        <translation>端子台プラグイン</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="86"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="87"/>
         <source>Traduction en espagnol</source>
-        <translation>Spanish translation</translation>
+        <translation>スペイン語翻訳</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="88"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="89"/>
         <source>Traduction en russe</source>
-        <translation>Russian translation</translation>
+        <translation>ロシア語翻訳</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="90"/>
         <source>Traduction en portugais</source>
-        <translation>Portuguese translation</translation>
+        <translation>ポルトガル語翻訳</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="91"/>
         <source>Traduction en tchèque</source>
-        <translation>Czech translation</translation>
+        <translation>チェコ語翻訳</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="92"/>
         <source>Traduction en polonais</source>
-        <translation>Polish translation</translation>
+        <translation>ポーランド語翻訳</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="93"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="94"/>
         <source>Traduction en allemand</source>
-        <translation>German translation</translation>
+        <translation>ドイツ語翻訳</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="95"/>
         <source>Traduction en roumain</source>
-        <translation>Romanian translation</translation>
+        <translation>ルーマニア語翻訳</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="96"/>
         <source>Traduction en italien</source>
-        <translation>Italian translation</translation>
+        <translation>イタリア語翻訳</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="97"/>
         <source>Traduction en arabe</source>
-        <translation>Arabic translation</translation>
+        <translation>アラビア語翻訳</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="98"/>
         <source>Traduction en croate</source>
-        <translation>Croatian translation</translation>
+        <translation>クロアチア語翻訳</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="99"/>
         <source>Traduction en catalan</source>
-        <translation>Catalan translation</translation>
+        <translation>カタルーニャ語翻訳</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="100"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="101"/>
         <source>Traduction en grec</source>
-        <translation>Greek translation</translation>
+        <translation>ギリシア語翻訳</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="102"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="103"/>
         <source>Traduction en néerlandais</source>
-        <translation>Dutch translation</translation>
+        <translation>オランダ語翻訳</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="104"/>
         <source>Traduction en flamand</source>
-        <translation>Flemish translation</translation>
+        <translation>フラマン語翻訳</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="105"/>
         <source>Traduction en danois</source>
-        <translation>Danish translation</translation>
+        <translation>デンマーク語翻訳</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="106"/>
         <source>Traduction en brézilien</source>
-        <translation>Brazilian translation</translation>
+        <translation>ブラジル語翻訳</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="107"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="108"/>
         <source>Traduction en Turc</source>
-        <translation>Turkish translation</translation>
+        <translation>トルコ語翻訳</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="109"/>
         <source>Traduction en hongrois</source>
-        <translation>Hungarian translation</translation>
+        <translation>ハンガリー語翻訳</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="117"/>
@@ -233,18 +233,18 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="128"/>
         <source>Icônes</source>
-        <translation>Icons</translation>
+        <translation>アイコン</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="130"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="131"/>
         <source>Documentation</source>
-        <translation>Documentation</translation>
+        <translation>文書</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="133"/>
         <source>Collection d&apos;éléments</source>
-        <translation>Collection of elements</translation>
+        <translation>要素コレクション</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="134"/>
@@ -263,13 +263,13 @@
         <location filename="../sources/richtext/addlinkdialog.ui" line="5"/>
         <location filename="../sources/richtext/ui_addlinkdialog.h" line="104"/>
         <source>Insert Link</source>
-        <translation></translation>
+        <translation>リンクを挿入</translation>
     </message>
     <message>
         <location filename="../sources/richtext/addlinkdialog.ui" line="19"/>
         <location filename="../sources/richtext/ui_addlinkdialog.h" line="105"/>
         <source>Title:</source>
-        <translation></translation>
+        <translation>文字:</translation>
     </message>
     <message>
         <location filename="../sources/richtext/addlinkdialog.ui" line="36"/>
@@ -283,99 +283,99 @@
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="14"/>
         <source>Ajouter un tableau</source>
-        <translation>Add a table</translation>
+        <translation>表を追加</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="24"/>
         <source>Affichage</source>
-        <translation>Display</translation>
+        <translation>表示</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="33"/>
         <source>Ajuster la taille du tableau au folio</source>
-        <translation>Adjust the size of the table to the folio</translation>
+        <translation>表の大きさをフォリオに合わせる</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="46"/>
         <source>Ajouter de nouveau folio et tableau si nécessaire.</source>
-        <translation>Add new folio and table if necessary.</translation>
+        <translation>必要であれば新しいフォリオと表を追加。</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="66"/>
         <source>Nom du tableau</source>
-        <translation>Table name</translation>
+        <translation>表の名前</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="73"/>
         <source>Texte des en-têtes</source>
-        <translation>Header text</translation>
+        <translation>ヘッダのテキスト</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="80"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="164"/>
         <source>Gauche</source>
-        <translation>Left</translation>
+        <translation>左</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="85"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="169"/>
         <source>Centre</source>
-        <translation>Middle</translation>
+        <translation>中央</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="90"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="174"/>
         <source>Droite</source>
-        <translation>Right</translation>
+        <translation>右</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="98"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="182"/>
         <source>Police :</source>
-        <translation>Font :</translation>
+        <translation>フォント :</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="105"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="149"/>
         <source>Éditer</source>
-        <translation>Edit</translation>
+        <translation>編集</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="119"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="142"/>
         <source>Marges :</source>
-        <translation>Margins :</translation>
+        <translation>余白 :</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="126"/>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="156"/>
         <source>Alignement :</source>
-        <translation>Alignment:</translation>
+        <translation>文字揃え :</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="136"/>
         <source>Texte du tableau</source>
-        <translation>Text of the table</translation>
+        <translation>表のテキスト</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="202"/>
         <source>Configuration</source>
-        <translation>Configuration</translation>
+        <translation>設定</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.cpp" line="41"/>
         <source>Contenu</source>
-        <translation>Content</translation>
+        <translation>内容</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.cpp" line="159"/>
         <source>Sélectionner la police des en tête du tableau</source>
-        <translation>Select the font at the top of the table</translation>
+        <translation>表のヘッダのフォントを選択</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.cpp" line="170"/>
         <source>Sélectionner la police des cellules du tableau</source>
-        <translation>Select the font of the table cells</translation>
+        <translation>表のセルのフォントを選択</translation>
     </message>
 </context>
 <context>
@@ -383,7 +383,7 @@
     <message>
         <location filename="../sources/ui/alignmenttextdialog.ui" line="26"/>
         <source>Alignement du texte</source>
-        <translation>text alignment</translation>
+        <translation>テキストの配置</translation>
     </message>
 </context>
 <context>
@@ -391,32 +391,32 @@
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="53"/>
         <source>Centre : </source>
-        <translation>Center : </translation>
+        <translation>中心 : </translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="58"/>
         <source>Diamètres : </source>
-        <translation>Diameters: </translation>
+        <translation>直径 : </translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="59"/>
         <source>horizontal :</source>
-        <translation>horizontal:</translation>
+        <translation>水平 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="61"/>
         <source>vertical :</source>
-        <translation>vertical:</translation>
+        <translation>垂直 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="63"/>
         <source>Angle de départ :</source>
-        <translation>Start angle:</translation>
+        <translation>開始角 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="65"/>
         <source>Angle :</source>
-        <translation>Angle:</translation>
+        <translation>角度 :</translation>
     </message>
 </context>
 <context>
@@ -424,37 +424,37 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="14"/>
         <source>Sélection numérotation auto</source>
-        <translation>Auto numbering selection</translation>
-    </message>
-    <message>
-        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="34"/>
-        <source>Element</source>
-        <translation>Element</translation>
-    </message>
-    <message>
-        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="41"/>
-        <source>Conducteur</source>
-        <translation>Conductor</translation>
-    </message>
-    <message>
-        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="64"/>
-        <source>Configurer les règles d&apos;auto numérotation</source>
-        <translation>Configure auto numbering rules</translation>
-    </message>
-    <message>
-        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="67"/>
-        <source>Configurer</source>
-        <translation>Configure</translation>
+        <translation>自動採番の選択</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="24"/>
         <source>Folio</source>
-        <translation>Folio</translation>
+        <translation>フォリオ</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="34"/>
+        <source>Element</source>
+        <translation>要素</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="41"/>
+        <source>Conducteur</source>
+        <translation>導体</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="64"/>
+        <source>Configurer les règles d&apos;auto numérotation</source>
+        <translation>自動採番規則の設定</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="67"/>
+        <source>Configurer</source>
+        <translation>設定</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="132"/>
         <source>Ctrl+Shift+P</source>
-        <translation>Ctrl+Shift+P</translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -462,115 +462,115 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="26"/>
         <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="149"/>
-        <source>Project Status:</source>
-        <translation>Project Status:</translation>
+        <translation>フォーム</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="32"/>
         <source>Range</source>
-        <translation>Range</translation>
+        <translation>範囲</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="45"/>
         <source>Apply to Selected Locations</source>
-        <translation>Apply to Selected Locations</translation>
+        <translation>選択された場所に適用</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="52"/>
         <source>Apply to Selected Folios</source>
-        <translation>Apply to Selected Folios</translation>
+        <translation>選択されたフォリオに適用</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="59"/>
         <source>Apply to Entire Project</source>
-        <translation>Apply to Entire Project</translation>
+        <translation>プロジェクト全体に適用</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="78"/>
         <source>From</source>
-        <translation>From</translation>
+        <translation>始値</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="101"/>
         <source>To</source>
-        <translation>To</translation>
+        <translation>終値</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="149"/>
+        <source>Project Status:</source>
+        <translation>プロジェクト状況:</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="156"/>
         <source>Update Policy</source>
-        <translation>Update Policy</translation>
+        <translation>更新方針</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="171"/>
         <source>Conductor</source>
-        <translation>Conductor</translation>
-    </message>
-    <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="188"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="275"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="353"/>
-        <source>Only New</source>
-        <translation>Only New</translation>
+        <translation>導体</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="178"/>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="259"/>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="373"/>
         <source>Both</source>
-        <translation>Both</translation>
+        <translation>両方</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="188"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="275"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="353"/>
+        <source>Only New</source>
+        <translation>新規だけ</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="198"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="291"/>
+        <source>Only Existent</source>
+        <translation>既存だけ</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="208"/>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="307"/>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="383"/>
         <source>Disable</source>
-        <translation>Disable</translation>
+        <translation>無効</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="246"/>
         <source>Element</source>
-        <translation>Element</translation>
-    </message>
-    <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="198"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="291"/>
-        <source>Only Existent</source>
-        <translation>Only Existent</translation>
+        <translation>要素</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="346"/>
         <source>Folio</source>
-        <translation>Folio</translation>
+        <translation>フォリオ</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="363"/>
         <source>Existent</source>
-        <translation>Existent</translation>
+        <translation>既存</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="66"/>
         <source>Under Development</source>
-        <translation>Under Development</translation>
+        <translation>開発中</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="67"/>
         <source>Installing</source>
-        <translation>Installing</translation>
+        <translation>設置中</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="68"/>
         <source>Built</source>
-        <translation>Built</translation>
+        <translation>構築済</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="198"/>
         <source>Auto Numbering Management</source>
         <comment>title window</comment>
-        <translation>Auto Numbering Management</translation>
+        <translation>自動採番の管理</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="199"/>
@@ -580,237 +580,237 @@
 -Update Only Existent: only existent Elements will be updated. New Elements will be assigned their formula but will not update once created.
 -Disable: both New and Existent Element labels will not be updated. This is valid for new folios as well.
 Note: These options DO NOT allow or block Auto Numberings, only their Update Policy.</source>
-        <translation>In this menu you can set whether you want the auto numberings to be updated or not. For element auto numbering you have 4 options of update policy:
--Both: both new and existent element labels will be updated. This is the default option.
--Update only new: only new created elements will be updated. Existent element labels will be frozen.
--Update only existent: only existent elements will be updated. New elements will be assigned their formula but will not update once created.
--Disable: both new and existent element labels will not be updated. This is valid for new folios as well.
-Note: these options DO NOT allow or block auto numberings, only their update policy.</translation>
+        <translation>このメニューで自動採番の更新を設定できます。要素の自動採番では更新方針に 4 つの選択肢があります:
+-両方: 新規と既存の両方の要素のラベルが更新されます。これは既定値です。
+-新規だけ: 新規に作成された要素だけが更新されます。既存の要素のラベルは固定されます。
+-既存だけ:既存の要素のラベルだけが更新されます。新規の要素には式が代入されますが作成後は更新されません。
+-無効: 新規と既存の要素ラベルが更新されません。これは新規フォリオでも使用できます。
+注意: これらの設定は自動採番の更新方法についてで、自動採番の有効/無効についてではありません。</translation>
     </message>
 </context>
 <context>
     <name>BOMExportDialog</name>
     <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="14"/>
+        <source>Export CSV</source>
+        <translation>CSV エクスポート</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="38"/>
         <source>Informations disponibles</source>
-        <translation>Available information</translation>
+        <translation>使用可能な情報</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="48"/>
         <source>Informations à exporter</source>
-        <translation>Information to export</translation>
+        <translation>エクスポートする情報</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="88"/>
         <source>Monter la sélection</source>
-        <translation>go up the selection</translation>
+        <translation>選択を上に</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="105"/>
         <source>Ajouter la sélection</source>
-        <translation>Add selection</translation>
+        <translation>選択を追加</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="119"/>
         <source>Supprimer la sélection</source>
-        <translation>Delete selection</translation>
+        <translation>選択を削除</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="133"/>
         <source>Descendre la sélection</source>
-        <translation>go down the selection</translation>
+        <translation>選択を下に</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="187"/>
         <source>Type d&apos;éléments</source>
-        <translation>Type of elements</translation>
+        <translation>要素の種類</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="196"/>
         <source>Simples</source>
-        <translation>Simples</translation>
+        <translation>単純</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="206"/>
         <source>Tous</source>
-        <translation>all</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="246"/>
-        <source>Organes de protection</source>
-        <translation>Protection devices</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="269"/>
-        <source>Mise en page</source>
-        <translation>Page layout</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="297"/>
-        <source>Chaque élément portant la même référence sera listé</source>
-        <translation>Each element bearing the same reference will be listed</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="300"/>
-        <source>Formater en tant que nomenclature</source>
-        <translation>Format as a nomenclature</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="310"/>
-        <source>Une même référence utilisé par plusieurs éléments ne sera listé qu&apos;une fois</source>
-        <translation>The same reference used by several elements will only be listed once</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="313"/>
-        <source>Formater en tant que liste de matériel</source>
-        <translation>Format as a list of materials</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="339"/>
-        <source>Ouvrir la configuration sélectionné</source>
-        <translation>Open the selected configuration</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="287"/>
-        <source>Inclure les en-têtes</source>
-        <translation>Include headers</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="14"/>
-        <source>Export CSV</source>
-        <translation>Export CSV</translation>
+        <translation>全て</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="216"/>
         <source>Contacteurs et relais</source>
-        <translation>Contactors and relays</translation>
+        <translation>接点とリレー</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="226"/>
         <source>Boutons et commutateurs</source>
-        <translation>Buttons and switches</translation>
+        <translation>ボタンとスイッチ</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="236"/>
         <source>Borniers</source>
-        <translation>Terminal blocks</translation>
+        <translation>端子台</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="246"/>
+        <source>Organes de protection</source>
+        <translation>保護機構</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="269"/>
+        <source>Mise en page</source>
+        <translation>レイアウト</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="287"/>
+        <source>Inclure les en-têtes</source>
+        <translation>ヘッダを含める</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="297"/>
+        <source>Chaque élément portant la même référence sera listé</source>
+        <translation>同じ参照の各要素がリストされます</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="300"/>
+        <source>Formater en tant que nomenclature</source>
+        <translation>部品表としての書式</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="310"/>
+        <source>Une même référence utilisé par plusieurs éléments ne sera listé qu&apos;une fois</source>
+        <translation>複数の要素で使用されている同じ参照は一度だけリストされます</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="313"/>
+        <source>Formater en tant que liste de matériel</source>
+        <translation>ハードウェアリストとしての書式</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="330"/>
         <source>Configuration</source>
-        <translation>Configuration</translation>
+        <translation>設定</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.ui" line="339"/>
+        <source>Ouvrir la configuration sélectionné</source>
+        <translation>選択した設定を開く</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="366"/>
         <source>Sauvegarder la configuration actuelle</source>
-        <translation>Save the current configuration</translation>
+        <translation>現在の設定を保存</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="398"/>
         <source>Requête SQL personnalisée</source>
-        <translation>Custom SQL Query</translation>
+        <translation>カスタム SQL クエリ</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="408"/>
         <source>Requête SQL :</source>
-        <translation>SQL request  :</translation>
+        <translation>SQL リクエスト :</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="48"/>
+        <source>Position</source>
+        <translation>位置</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="49"/>
+        <source>Titre du folio</source>
+        <translation>フォリオの表題</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="50"/>
+        <source>Position de folio</source>
+        <translation>フォリオ位置</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="51"/>
+        <source>Numéro de folio</source>
+        <translation>フォリオ番号</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="52"/>
+        <source>Quantité (Numéro d&apos;article)</source>
+        <translation>数量 (商品コード)</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="134"/>
         <source>nomenclature_</source>
-        <translation>parts list_</translation>
+        <translation>parts_list_</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="138"/>
         <source>Enregister sous... </source>
-        <translation>Save As... </translation>
+        <translation>名前を付けて保存... </translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="138"/>
         <source>Fichiers csv (*.csv)</source>
-        <translation>Files csv (*.csv)</translation>
+        <translation>CSV ファイル (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="147"/>
         <source>Erreur</source>
-        <translation>Error</translation>
+        <translation>エラー</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="148"/>
         <source>Impossible de remplacer le fichier!
 
 </source>
-        <translation>Unable to replace the file!
+        <translation>ファイルを置き換えることができません!
 
 </translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="48"/>
-        <source>Position</source>
-        <translation>Position</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="49"/>
-        <source>Titre du folio</source>
-        <translation>Title of folio</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="50"/>
-        <source>Position de folio</source>
-        <translation>Folio position</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="51"/>
-        <source>Numéro de folio</source>
-        <translation>Folio number</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="52"/>
-        <source>Quantité (Numéro d&apos;article)</source>
-        <translation>Quantity (Article number)</translation>
     </message>
 </context>
 <context>
     <name>BorderPropertiesWidget</name>
+    <message>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="14"/>
+        <source>Form</source>
+        <translation>フォーム</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="20"/>
+        <source>Dimensions du folio</source>
+        <translation>フォリオの大きさ</translation>
+    </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="26"/>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="42"/>
         <source>px</source>
         <comment>pixel</comment>
         <extracomment>pixel</extracomment>
-        <translation>pixel</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="29"/>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="45"/>
         <source>x</source>
-        <translation>x</translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="72"/>
-        <source>Colonnes :</source>
-        <translation>Columns:</translation>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="55"/>
+        <source>Lignes :</source>
+        <translation>行 :</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="62"/>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="79"/>
         <source>Afficher les en-têtes</source>
-        <translation>Display headers</translation>
+        <translation>ヘッダ表示</translation>
     </message>
     <message>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="55"/>
-        <source>Lignes :</source>
-        <translation>Rows:</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="14"/>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="20"/>
-        <source>Dimensions du folio</source>
-        <translation>Dimensions of folio</translation>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="72"/>
+        <source>Colonnes :</source>
+        <translation>列 :</translation>
     </message>
 </context>
 <context>
@@ -818,18 +818,18 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/compositetexteditdialog.ui" line="14"/>
         <source>Texte composé</source>
-        <translation>Composite text</translation>
+        <translation>複合テキスト</translation>
     </message>
     <message>
         <location filename="../sources/ui/compositetexteditdialog.ui" line="23"/>
         <source>Ajouter une variable :</source>
-        <translation>Add a variable :</translation>
+        <translation>変数を追加 :</translation>
     </message>
     <message>
         <location filename="../sources/ui/compositetexteditdialog.cpp" line="18"/>
         <location filename="../sources/ui/compositetexteditdialog.cpp" line="29"/>
         <source>Entrée votre texte composé ici, en vous aidant des variables disponible</source>
-        <translation>Enter your composite text here, using the available variables</translation>
+        <translation>利用可能な変数を用いて複合テキストを入力してください</translation>
     </message>
 </context>
 <context>
@@ -838,13 +838,13 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1607"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation>Edit conductor properties</translation>
+        <translation>導体の属性変更</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1612"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation>Edit the properties of several conductors</translation>
+        <translation>複数の導体の属性変更</translation>
     </message>
 </context>
 <context>
@@ -852,261 +852,261 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/conductorpropertiesdialog.ui" line="14"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
-        <translation>Edit conductor properties</translation>
+        <translation>導体の属性編集</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertiesdialog.ui" line="20"/>
         <source>Appliquer les propriétés à l&apos;ensemble des conducteurs de ce potentiel</source>
-        <translation>Apply properties to all conductors of this potential</translation>
+        <translation>この電位の全ての導体に属性を適用</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertiesdialog.cpp" line="72"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation>Edit conductor properties</translation>
+        <translation>導体の属性変更</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertiesdialog.cpp" line="76"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation>Edit the properties of several conductors</translation>
+        <translation>複数の導体の属性変更</translation>
     </message>
 </context>
 <context>
     <name>ConductorPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="226"/>
-        <source>Taille du texte :</source>
-        <translation>Text size :</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="118"/>
-        <source>Tension / Protocole :</source>
-        <translation>Voltage / Protocol :</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="90"/>
-        <source>Texte :</source>
-        <translation>Text:</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="240"/>
-        <source>Fonction :</source>
-        <translation>Function :</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="254"/>
-        <source>Texte</source>
-        <translation>Text</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="281"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="293"/>
-        <source>Unifilaire</source>
-        <translation>Single line</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="68"/>
-        <source>Taille du texte</source>
-        <translation>Text size</translation>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="14"/>
+        <source>Form</source>
+        <translation>フォーム</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="24"/>
         <source>Type</source>
-        <translation>Type</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="132"/>
-        <source>Texte visible</source>
-        <translation>Visible text</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="161"/>
-        <source>Couleur du texte:</source>
-        <translation>Text color :</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="171"/>
-        <source>activer l&apos;option un texte par potentiel</source>
-        <translation>Activate the option text by potential</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="211"/>
-        <source>Horizontal en haut</source>
-        <translation>Horizontal at the top</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="216"/>
-        <source>Horizontal en bas</source>
-        <translation>Horizontal down</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="187"/>
-        <source>Vertical à gauche</source>
-        <translation>Vertical left</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="192"/>
-        <source>Vertical à droite</source>
-        <translation>Vertical right</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="200"/>
-        <source>Position et rotation du texte de conducteur :</source>
-        <translation>Position and rotation of the conductor text:</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="371"/>
-        <source>phase</source>
-        <translation>phase</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="225"/>
-        <source>Trait plein</source>
-        <comment>conductor style: solid line</comment>
-        <translation>Solid line</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="226"/>
-        <source>Trait en pointillés</source>
-        <comment>conductor style: dashed line</comment>
-        <translation>Dashed line</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="227"/>
-        <source>Traits et points</source>
-        <comment>conductor style: dashed and dotted line</comment>
-        <translation>Dots and dashes</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="357"/>
-        <source>terre</source>
-        <translation>ground</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="343"/>
-        <source>neutre</source>
-        <translation>neutral</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="14"/>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="97"/>
-        <source>Formule du texte :</source>
-        <translation>Text Formula :</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="174"/>
-        <source>Afficher un texte de potentiel par folio. </source>
-        <translation>Show one text per folio potential. </translation>
+        <translation>種類</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="34"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="46"/>
         <source>&amp;Multifilaire</source>
-        <translation>&amp;Multiline</translation>
+        <translation>複線 (&amp;M)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="151"/>
-        <source>Autonumérotation</source>
-        <translation>Auto Numbering</translation>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="68"/>
+        <source>Taille du texte</source>
+        <translation>テキストの大きさ</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="90"/>
+        <source>Texte :</source>
+        <translation>テキスト :</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="97"/>
+        <source>Formule du texte :</source>
+        <translation>テキストの式 :</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="104"/>
         <source>éditer les numérotations</source>
-        <translation>Edit numbering</translation>
+        <translation>採番の編集</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="233"/>
-        <source>Section du conducteur</source>
-        <translation>Conductor section</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="320"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="388"/>
-        <source>Nombre de phase</source>
-        <translation>Number of phase</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="340"/>
-        <source>Neutre</source>
-        <translation>Neutral</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="368"/>
-        <source>Phase</source>
-        <translation>Phase</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="404"/>
-        <source>Protective Earth Neutral</source>
-        <translation>Protective Earth Neutral</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="407"/>
-        <source>PEN</source>
-        <translation>PEN</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="354"/>
-        <source>Terre</source>
-        <translation>Ground</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="310"/>
-        <source>TextLabel</source>
-        <translation>TextLabel</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="446"/>
-        <source>Taille :</source>
-        <translation>Size :</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="466"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="537"/>
-        <source>Style du conducteur</source>
-        <translation>Conductor style</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="476"/>
-        <source>Couleur secondaire :</source>
-        <translation>Secondary color :</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="498"/>
-        <source>px</source>
-        <translation>px</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="491"/>
-        <source>Taille de trait :</source>
-        <translation>Line size :</translation>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="118"/>
+        <source>Tension / Protocole :</source>
+        <translation>電圧 / プロトコル :</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="125"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="544"/>
         <source>Couleur du conducteur</source>
-        <translation>Conductor color</translation>
+        <translation>導体色</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="132"/>
+        <source>Texte visible</source>
+        <translation>テキスト表示</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="151"/>
+        <source>Autonumérotation</source>
+        <translation>自動採番</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="161"/>
+        <source>Couleur du texte:</source>
+        <translation>テキストの色 :</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="171"/>
+        <source>activer l&apos;option un texte par potentiel</source>
+        <translation>電位ごとのテキストのオプションの有効化</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="174"/>
+        <source>Afficher un texte de potentiel par folio. </source>
+        <translation>電位のテキストをフォリオごとに1つ表示。 </translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="187"/>
+        <source>Vertical à gauche</source>
+        <translation>左に垂直</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="192"/>
+        <source>Vertical à droite</source>
+        <translation>右に垂直</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="200"/>
+        <source>Position et rotation du texte de conducteur :</source>
+        <translation>導体のテキストの位置と向き :</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="211"/>
+        <source>Horizontal en haut</source>
+        <translation>上に水平</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="216"/>
+        <source>Horizontal en bas</source>
+        <translation>下に水平</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="226"/>
+        <source>Taille du texte :</source>
+        <translation>テキストの大きさ :</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="233"/>
+        <source>Section du conducteur</source>
+        <translation>導体部</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="240"/>
+        <source>Fonction :</source>
+        <translation>機能 :</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="254"/>
+        <source>Texte</source>
+        <translation>テキスト</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="281"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="293"/>
+        <source>Unifilaire</source>
+        <translation>単線</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="310"/>
+        <source>TextLabel</source>
+        <translation>テキストラベル</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="320"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="388"/>
+        <source>Nombre de phase</source>
+        <translation>相数</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="340"/>
+        <source>Neutre</source>
+        <translation>中性</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="343"/>
+        <source>neutre</source>
+        <translation>中性</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="354"/>
+        <source>Terre</source>
+        <translation>接地</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="357"/>
+        <source>terre</source>
+        <translation>接地</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="368"/>
+        <source>Phase</source>
+        <translation>相</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="371"/>
+        <source>phase</source>
+        <translation>相</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="404"/>
+        <source>Protective Earth Neutral</source>
+        <translation>保護接地導体と中性線</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="407"/>
+        <source>PEN</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="437"/>
         <source>Apparence</source>
-        <translation>Appearance</translation>
+        <translation>外観</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="446"/>
+        <source>Taille :</source>
+        <translation>線幅 :</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="466"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="537"/>
+        <source>Style du conducteur</source>
+        <translation>導体の線種</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="469"/>
+        <source>Style :</source>
+        <translation>線種 :</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="476"/>
+        <source>Couleur secondaire :</source>
+        <translation>2つめの色 :</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="491"/>
+        <source>Taille de trait :</source>
+        <translation>間隔 :</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="498"/>
+        <source>px</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="508"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="547"/>
         <source>Couleur :</source>
-        <translation>Color:</translation>
+        <translation>色 :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="469"/>
-        <source>Style :</source>
-        <translation>Style:</translation>
+        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="225"/>
+        <source>Trait plein</source>
+        <comment>conductor style: solid line</comment>
+        <translation>実線</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="226"/>
+        <source>Trait en pointillés</source>
+        <comment>conductor style: dashed line</comment>
+        <translation>破線</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieswidget.cpp" line="227"/>
+        <source>Traits et points</source>
+        <comment>conductor style: dashed and dotted line</comment>
+        <translation>一点鎖線</translation>
     </message>
 </context>
 <context>
@@ -1114,12 +1114,12 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/configsaveloaderwidget.ui" line="14"/>
         <source>GroupBox</source>
-        <translation></translation>
+        <translation>GroupBox</translation>
     </message>
     <message>
         <location filename="../sources/ui/configsaveloaderwidget.ui" line="17"/>
         <source>Configuration</source>
-        <translation>Configuration</translation>
+        <translation>設定</translation>
     </message>
 </context>
 <context>
@@ -1127,7 +1127,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/editor/graphicspart/customelementgraphicpart.cpp" line="1308"/>
         <source>Déplacer une primitive</source>
-        <translation>Move a primitive</translation>
+        <translation>プリミティブを移動</translation>
     </message>
 </context>
 <context>
@@ -1135,7 +1135,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/diagram.cpp" line="1785"/>
         <source>Modifier la profondeur</source>
-        <translation>Change the depth</translation>
+        <translation>重なりの変更</translation>
     </message>
 </context>
 <context>
@@ -1143,23 +1143,23 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>フォーム</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="20"/>
         <location filename="../sources/ui/diagramcontextwidget.cpp" line="155"/>
         <source>Les noms ne peuvent contenir que des lettres minuscules, des chiffres et des tirets.</source>
-        <translation>Names may only contain lowercase letters, digits and dashes.</translation>
+        <translation>名前には半角の、英小文字、数字、ハイフンだけが使用できます。</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="50"/>
         <source>Nom</source>
-        <translation>Name</translation>
+        <translation>名前</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="55"/>
         <source>Valeur</source>
-        <translation>Value</translation>
+        <translation>値</translation>
     </message>
 </context>
 <context>
@@ -1167,7 +1167,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/diagramevent/diagrameventaddelement.cpp" line="230"/>
         <source>Ajouter %1</source>
-        <translation>insert %1</translation>
+        <translation>追加 %1</translation>
     </message>
 </context>
 <context>
@@ -1175,7 +1175,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="123"/>
         <source>une image</source>
-        <translation>image</translation>
+        <translation>画像</translation>
     </message>
 </context>
 <context>
@@ -1184,47 +1184,47 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <location filename="../sources/diagramprintdialog.cpp" line="127"/>
         <source>Options d&apos;impression</source>
         <comment>window title</comment>
-        <translation>Print options</translation>
+        <translation>印刷オプション</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="221"/>
         <source>Quel type d&apos;impression désirez-vous effectuer ?</source>
-        <translation>What kind of printing do you wish?</translation>
+        <translation>どの種類の印刷を行いますか?</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="226"/>
         <source>Impression sur une imprimante physique</source>
         <comment>Print type choice</comment>
-        <translation>Print to a physical printer</translation>
+        <translation>プリンタに印刷</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="227"/>
         <source>Impression vers un fichier au format PDF</source>
         <comment>Print type choice</comment>
-        <translation>Print to a PDF file</translation>
+        <translation>PDF ファイルに印刷</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="233"/>
         <source>Choix du type d&apos;impression</source>
-        <translation>Printing type choice</translation>
+        <translation>プリントの種類を選択</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="310"/>
         <source>Fichier manquant</source>
         <comment>message box title</comment>
-        <translation>File missing</translation>
+        <translation>ファイルが見つかりません</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="311"/>
         <source>Vous devez indiquer le chemin du fichier PDF/PS à créer.</source>
         <comment>message box content</comment>
-        <translation>You must enter the path of the PDF/PS file to create.</translation>
+        <translation>出力する PDF/PS ファイルのパスを入力する必要があります。</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="331"/>
         <source>Fichiers PDF (*.pdf)</source>
         <comment>file filter</comment>
-        <translation>Portable Document Format (*.pdf)</translation>
+        <translation>PDF ファイル (*.pdf)</translation>
     </message>
 </context>
 <context>
@@ -1233,7 +1233,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <location filename="../sources/ui/diagrampropertiesdialog.cpp" line="49"/>
         <source>Propriétés du folio</source>
         <comment>window title</comment>
-        <translation>Folio properties</translation>
+        <translation>フォリオの属性</translation>
     </message>
 </context>
 <context>
@@ -1241,49 +1241,49 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="56"/>
         <source>Maintenir ctrl pour un déplacement libre</source>
-        <translation>Hold ctrl to free movement</translation>
+        <translation>Ctrl を押している間は自由に移動</translation>
     </message>
 </context>
 <context>
     <name>DiagramView</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="87"/>
-        <source>Coller ici</source>
-        <comment>context menu action</comment>
-        <translation>Paste Here</translation>
-    </message>
-    <message>
         <location filename="../sources/diagramview.cpp" line="62"/>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
-        <translation>In this area you conceive your diagrams by adding elements and conductors between their terminals. You may also add independent texts.</translation>
+        <translation>この領域に要素を追加し端子間に導体を配置することで回路図を作成します。独立したテキストを追加することもできます。</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="87"/>
+        <source>Coller ici</source>
+        <comment>context menu action</comment>
+        <translation>ここに貼り付け</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="90"/>
         <source>Collage multiple</source>
-        <translation>Multiple paste</translation>
+        <translation>複数貼り付け</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="544"/>
         <source>Connecter les bornes sélectionnées</source>
-        <translation>Connect the selected terminals</translation>
+        <translation>選択された端子を接続</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="816"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
-        <translation>Untitled</translation>
+        <translation>無題</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="943"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
-        <translation>Choose the new color for this conductor</translation>
+        <translation>この導体の新しい色を選ぶ</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="962"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation>Edit conductor properties</translation>
+        <translation>導体の属性の変更</translation>
     </message>
 </context>
 <context>
@@ -1291,7 +1291,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/diagramschooser.cpp" line="165"/>
         <source>Folio sans titre</source>
-        <translation>Untitled folio</translation>
+        <translation>無題のフォリオ</translation>
     </message>
 </context>
 <context>
@@ -1299,17 +1299,17 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="14"/>
         <source>Merci de patienter</source>
-        <translation>Thank you for your patience</translation>
+        <translation>お待ちください</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="26"/>
         <source>Titre</source>
-        <translation>Title</translation>
+        <translation>タイトル</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="88"/>
         <source>TextLabel</source>
-        <translation>TextLabel</translation>
+        <translation>テキストラベル</translation>
     </message>
 </context>
 <context>
@@ -1317,12 +1317,12 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="43"/>
         <source>Texte</source>
-        <translation>Text</translation>
+        <translation>テキスト</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="53"/>
         <source>Éditer un texte d&apos;élément</source>
-        <translation>Edit an element text</translation>
+        <translation>要素テキストを編集</translation>
     </message>
 </context>
 <context>
@@ -1330,12 +1330,12 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>フォーム</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="22"/>
         <source>Exporter l&apos;actuelle configuration des textes</source>
-        <translation>Export the current text configuration</translation>
+        <translation>現在のテキスト設定をエクスポート</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="25"/>
@@ -1349,52 +1349,52 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="36"/>
         <source>Importer une configuration de texte</source>
-        <translation>Import a text configuration</translation>
+        <translation>テキスト設定のインポート</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="63"/>
         <source>Ajouter un texte</source>
-        <translation>Add text</translation>
+        <translation>テキストを追加</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="77"/>
         <source>Ajouter un groupe de textes</source>
-        <translation>Add a group of texts</translation>
+        <translation>テキスト・グループを追加</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="91"/>
         <source>Supprimer la sélection</source>
-        <translation>Delete selection</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.h" line="41"/>
-        <source>Textes</source>
-        <translation>texts</translation>
+        <translation>選択を削除</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="129"/>
         <source>Modifier des textes d&apos;élément</source>
-        <translation>Edit an element texts</translation>
+        <translation>複数の要素テキストを変更</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="172"/>
         <source>Modifier un texte d&apos;élément</source>
-        <translation>Edit element text</translation>
+        <translation>要素テキストを編集</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="182"/>
         <source>Modifier %1 textes d&apos;élément</source>
-        <translation>Edit %1 telement text</translation>
+        <translation>変更 %1 要素テキスト</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="244"/>
         <source>Nom du groupe</source>
-        <translation>Name of the group</translation>
+        <translation>グループ名</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="244"/>
         <source>Entrer le nom du nouveau groupe</source>
-        <translation>Enter the name of the new group</translation>
+        <translation>新規グループ名を入力してください</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.h" line="41"/>
+        <source>Textes</source>
+        <translation>テキスト</translation>
     </message>
 </context>
 <context>
@@ -1402,17 +1402,17 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="65"/>
         <source>Propriété</source>
-        <translation>Property</translation>
+        <translation>属性</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="66"/>
         <source>Valeur</source>
-        <translation>Value</translation>
+        <translation>値</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="135"/>
         <source>Source du texte</source>
-        <translation>Source of text</translation>
+        <translation>テキストのソース</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="139"/>
@@ -1421,7 +1421,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1176"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1312"/>
         <source>Texte utilisateur</source>
-        <translation>User text</translation>
+        <translation>ユーザ・テキスト</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="140"/>
@@ -1430,7 +1430,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1181"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1313"/>
         <source>Information de l&apos;élément</source>
-        <translation>Element information</translation>
+        <translation>要素の情報</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="141"/>
@@ -1439,163 +1439,163 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="480"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1314"/>
         <source>Texte composé</source>
-        <translation>Composite text</translation>
+        <translation>複合テキスト</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="150"/>
         <source>Texte</source>
-        <translation>Text</translation>
+        <translation>テキスト</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="162"/>
         <source>Information</source>
-        <translation>Information</translation>
+        <translation>情報</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="182"/>
         <source>Mon texte composé</source>
-        <translation>My composite text</translation>
+        <translation>自分の複合テキスト</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="193"/>
         <source>Taille</source>
-        <translation>Size</translation>
+        <translation>大きさ</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="206"/>
         <source>Police</source>
-        <translation>Font</translation>
+        <translation>フォント</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="220"/>
+        <source>Couleur</source>
+        <translation>色</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="234"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="724"/>
+        <source>Cadre</source>
+        <translation>枠</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="248"/>
         <source>Largeur</source>
-        <translation>Width</translation>
+        <translation>幅</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="263"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="674"/>
+        <source>Position X</source>
+        <translation>位置 X</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="276"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="687"/>
+        <source>Position Y</source>
+        <translation>位置 Y</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="289"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="700"/>
+        <source>Rotation</source>
+        <translation>回転</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="302"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="656"/>
+        <source>Alignement</source>
+        <translation>文字揃え</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="305"/>
         <source>Éditer</source>
-        <translation>Edit</translation>
+        <translation>編集</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="500"/>
-        <source>Modifier la police d&apos;un texte d&apos;élément</source>
-        <translation>Change the font of an element text</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="557"/>
-        <source>Modifier l&apos;alignement d&apos;un texte d&apos;élément</source>
-        <translation>Modify the alignment of an element text</translation>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="453"/>
+        <source>Éditer un texte d&apos;élément</source>
+        <translation>要素テキストの編集</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="493"/>
         <source>Modifier la taille d&apos;un texte d&apos;élément</source>
-        <translation>Change the size of an element text</translation>
+        <translation>要素テキストの大きさの変更</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="500"/>
+        <source>Modifier la police d&apos;un texte d&apos;élément</source>
+        <translation>要素テキストのフォントの変更</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="507"/>
         <source>Modifier la couleur d&apos;un texte d&apos;élément</source>
-        <translation>Change the color of an element text</translation>
+        <translation>要素テキストの色の変更</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="514"/>
         <source>Modifier le cadre d&apos;un texte d&apos;élément</source>
-        <translation>Modify the frame of an element text</translation>
+        <translation>要素テキストの枠の変更</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="522"/>
         <source>Modifier la largeur d&apos;un texte d&apos;élément</source>
-        <translation>Change the width of an element text</translation>
+        <translation>要素テキストの幅の変更</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="534"/>
         <source>Déplacer un texte d&apos;élément</source>
-        <translation>Move an item text</translation>
+        <translation>要素テキストの移動</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="546"/>
         <source>Pivoter un texte d&apos;élément</source>
-        <translation>Rotate element text</translation>
+        <translation>要素テキストの回転</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="557"/>
+        <source>Modifier l&apos;alignement d&apos;un texte d&apos;élément</source>
+        <translation>要素テキストの文字揃えの変更</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="578"/>
         <source>Éditer un groupe de textes</source>
-        <translation>Edit a group of texts</translation>
+        <translation>テキスト・グループの編集</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="586"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="661"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1404"/>
         <source>Gauche</source>
-        <translation>Left</translation>
+        <translation>左</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="588"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="662"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1405"/>
         <source>Droite</source>
-        <translation>Right</translation>
+        <translation>右</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="590"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="663"/>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1406"/>
         <source>Centre</source>
-        <translation>Middle</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="302"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="656"/>
-        <source>Alignement</source>
-        <translation>Alignment</translation>
+        <translation>中央</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="712"/>
         <source>Ajustement vertical</source>
-        <translation>Vertical adjustment</translation>
+        <translation>縦位置の調整</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="738"/>
         <source>Maintenir en bas de page</source>
-        <translation>Keep at the bottom of the page</translation>
+        <translation>ページの下部に保持</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1017"/>
         <source>Déplacer un texte dans un autre groupe</source>
-        <translation>Move a text to another group</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="220"/>
-        <source>Couleur</source>
-        <translation>Color</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="234"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="724"/>
-        <source>Cadre</source>
-        <translation>Frame</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="263"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="674"/>
-        <source>Position X</source>
-        <translation>Position X</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="276"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="687"/>
-        <source>Position Y</source>
-        <translation>Position Y</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="289"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="700"/>
-        <source>Rotation</source>
-        <translation>Rotation</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="453"/>
-        <source>Éditer un texte d&apos;élément</source>
-        <translation>Edit an element text</translation>
+        <translation>テキストを別のグループに移動</translation>
     </message>
 </context>
 <context>
@@ -1603,120 +1603,120 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="118"/>
-        <source>cadre</source>
-        <translation>Frame</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="79"/>
-        <source>Source du texte</source>
-        <translation>Source of text</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="39"/>
-        <source>Couleur</source>
-        <translation>Color</translation>
+        <translation>フォーム</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="21"/>
         <source>Texte utilisateur</source>
-        <translation>User text</translation>
+        <translation>ユーザ・テキスト</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="26"/>
         <source>Information de l&apos;élément</source>
-        <translation>Element information</translation>
+        <translation>要素の情報</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="31"/>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="65"/>
         <source>Texte composé</source>
-        <translation>Composite text</translation>
+        <translation>複合テキスト</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="39"/>
+        <source>Couleur</source>
+        <translation>色</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="72"/>
         <source>Police</source>
-        <translation>Font</translation>
+        <translation>フォント</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="142"/>
-        <source>X</source>
-        <translation>X</translation>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="79"/>
+        <source>Source du texte</source>
+        <translation>テキストのソース</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="162"/>
-        <source>Largeur</source>
-        <translation>Width</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="172"/>
-        <source>Y</source>
-        <translation>Y</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="192"/>
-        <source>Alignement</source>
-        <translation>Alignment</translation>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="118"/>
+        <source>cadre</source>
+        <translation>枠</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="132"/>
         <source>Rotation</source>
-        <translation>Rotation</translation>
+        <translation>回転</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="142"/>
+        <source>X</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="162"/>
+        <source>Largeur</source>
+        <translation>幅</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="172"/>
+        <source>Y</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="192"/>
+        <source>Alignement</source>
+        <translation>文字揃え</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="219"/>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="229"/>
         <source>Déplacer un champ texte</source>
-        <translation>Move a text field</translation>
+        <translation>テキスト領域を移動</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="239"/>
         <source>Pivoter un champ texte</source>
-        <translation>Rotate a text field</translation>
+        <translation>テキスト領域を回転</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="249"/>
         <source>Modifier le texte d&apos;un champ texte</source>
-        <translation>Edit the text of a text field</translation>
+        <translation>テキスト領域のテキストを変更</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="259"/>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="376"/>
         <source>Modifier la police d&apos;un champ texte</source>
-        <translation>Change the font of a text field</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="390"/>
-        <source>Modifier la couleur d&apos;un champ texte</source>
-        <translation>Change the color of a text field</translation>
+        <translation>テキスト領域のフォントを変更</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="270"/>
         <source>Modifier le cadre d&apos;un champ texte</source>
-        <translation>Modify the frame of a text field</translation>
+        <translation>テキスト領域の枠を変更</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="282"/>
         <source>Modifier la largeur d&apos;un texte</source>
-        <translation>Change the width of a text</translation>
+        <translation>テキスト領域の幅を変更</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="295"/>
         <source>Modifier l&apos;information d&apos;un texte</source>
-        <translation>Edit text information</translation>
+        <translation>テキスト領域の情報を変更</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="332"/>
         <source>Modifier la source de texte, d&apos;un texte</source>
-        <translation>Change text source, text</translation>
+        <translation>テキストのテキスト・ソースを変更</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="361"/>
         <source>Modifier l&apos;alignement d&apos;un champ texte</source>
-        <translation>Modify the alignment of a text field</translation>
+        <translation>テキスト領域の文字揃えを変更</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="390"/>
+        <source>Modifier la couleur d&apos;un champ texte</source>
+        <translation>テキスト領域の色を変更</translation>
     </message>
 </context>
 <context>
@@ -1724,32 +1724,32 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1459"/>
         <source>Texte utilisateur</source>
-        <translation>User text</translation>
+        <translation>ユーザ・テキスト</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1460"/>
         <source>Information de l&apos;élément</source>
-        <translation>Element information</translation>
+        <translation>要素の情報</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1461"/>
         <source>Texte composé</source>
-        <translation>Composite text</translation>
+        <translation>複合テキスト</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1581"/>
         <source>Gauche</source>
-        <translation>Left</translation>
+        <translation>左</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1582"/>
         <source>Centre</source>
-        <translation>Middle</translation>
+        <translation>中央</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1583"/>
         <source>Droite</source>
-        <translation>Right</translation>
+        <translation>右</translation>
     </message>
 </context>
 <context>
@@ -1758,7 +1758,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <location filename="../sources/qetgraphicsitem/element.cpp" line="1027"/>
         <location filename="../sources/qetgraphicsitem/element.cpp" line="1090"/>
         <source>Label + commentaire</source>
-        <translation>Label + comment</translation>
+        <translation>ラベル + コメント</translation>
     </message>
 </context>
 <context>
@@ -1767,107 +1767,107 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <location filename="../sources/elementdialog.cpp" line="62"/>
         <source>Ouvrir un élément</source>
         <comment>dialog title</comment>
-        <translation>Open an element</translation>
+        <translation>要素を開く</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="63"/>
         <source>Choisissez l&apos;élément que vous souhaitez ouvrir.</source>
         <comment>dialog content</comment>
-        <translation>Choose the element you wish to open.</translation>
+        <translation>開く要素を選択してください。</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="66"/>
         <source>Enregistrer un élément</source>
         <comment>dialog title</comment>
-        <translation>Save an element</translation>
+        <translation>要素を保存</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="67"/>
         <source>Choisissez l&apos;élément dans lequel vous souhaitez enregistrer votre définition.</source>
         <comment>dialog content</comment>
-        <translation>Choose the element you wish to save your definition into.</translation>
+        <translation>定義を保存したい要素を選択してください。</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="70"/>
         <source>Ouvrir une catégorie</source>
         <comment>dialog title</comment>
-        <translation>Open a category</translation>
+        <translation>カテゴリを開く</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="71"/>
         <location filename="../sources/elementdialog.cpp" line="75"/>
         <source>Choisissez une catégorie.</source>
         <comment>dialog content</comment>
-        <translation>Choose a category.</translation>
+        <translation>カテゴリを選んでください。</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="74"/>
         <source>Enregistrer une catégorie</source>
         <comment>dialog title</comment>
-        <translation>Save a category</translation>
+        <translation>カテゴリの保存</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="78"/>
         <source>Titre</source>
-        <translation>Title</translation>
+        <translation>タイトル</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="79"/>
         <source>Label</source>
-        <translation>Label</translation>
+        <translation>ラベル</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="113"/>
         <source>Nom du nouveau dossier</source>
-        <translation>Name the new folder</translation>
+        <translation>新規のフォルダ名</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="113"/>
         <source>Nom du nouvel élément</source>
-        <translation>New element name</translation>
-    </message>
-    <message>
-        <location filename="../sources/elementdialog.cpp" line="232"/>
-        <source>Vous devez sélectionner un élément ou une catégorie avec un nom pour l&apos;élément.</source>
-        <comment>message box content</comment>
-        <translation>You must select an element or category with a name for the element.</translation>
+        <translation>新規の要素名</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="200"/>
         <source>Sélection inexistante</source>
         <comment>message box title</comment>
-        <translation>Non-existent selection</translation>
+        <translation>存在しない選択</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="201"/>
         <source>La sélection n&apos;existe pas.</source>
         <comment>message box content</comment>
-        <translation>The selection does not exist.</translation>
+        <translation>選択は存在しません。</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="207"/>
         <location filename="../sources/elementdialog.cpp" line="231"/>
         <source>Sélection incorrecte</source>
         <comment>message box title</comment>
-        <translation>Wrong selection</translation>
+        <translation>誤った選択</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="208"/>
         <source>La sélection n&apos;est pas un élément.</source>
         <comment>message box content</comment>
-        <translation>The selection is not an element.</translation>
+        <translation>選択は要素ではありません。</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="219"/>
         <source>Écraser l&apos;élément ?</source>
         <comment>message box title</comment>
-        <translation>Overwrite the element?</translation>
+        <translation>要素を上書きしますか?</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="220"/>
         <source>L&apos;élément existe déjà. Voulez-vous l&apos;écraser ?</source>
         <comment>message box content</comment>
-        <translation>The element already exists. Do you want to overwrite it?</translation>
+        <translation>要素は既に存在します。上書きしますか?</translation>
+    </message>
+    <message>
+        <location filename="../sources/elementdialog.cpp" line="232"/>
+        <source>Vous devez sélectionner un élément ou une catégorie avec un nom pour l&apos;élément.</source>
+        <comment>message box content</comment>
+        <translation>要素または要素のためのカテゴリ名を選択しなければなりません。</translation>
     </message>
 </context>
 <context>
@@ -1875,17 +1875,17 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="20"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>フォーム</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="54"/>
         <source>TextLabel</source>
-        <translation>TextLabel</translation>
+        <translation>テキストラベル</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="61"/>
         <source>Supprimer ce texte</source>
-        <translation>Delete this text</translation>
+        <translation>このテキストを削除</translation>
     </message>
 </context>
 <context>
@@ -1893,12 +1893,12 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/elementinfowidget.ui" line="26"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>フォーム</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.h" line="50"/>
         <source>Informations</source>
-        <translation>Information</translation>
+        <translation>情報</translation>
     </message>
 </context>
 <context>
@@ -1906,143 +1906,143 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="14"/>
         <source>Propriété de l&apos;élément</source>
-        <translation>Element Property</translation>
+        <translation>要素の属性</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="27"/>
         <source>Type</source>
-        <translation>Type</translation>
+        <translation>種類</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="35"/>
         <source>Type de base :</source>
-        <translation>Base type:</translation>
+        <translation>基本の種類 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="47"/>
         <source>Élément esclave</source>
-        <translation>Slave element</translation>
+        <translation>子の要素</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="62"/>
         <source>Nombre de contact représenté</source>
-        <translation>Switch number represented</translation>
+        <translation>接点数</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="69"/>
         <source>Type de contact</source>
-        <translation>Type of switch</translation>
+        <translation>接点の種類</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="76"/>
         <source>État du contact</source>
-        <translation>switch state</translation>
+        <translation>接点の状態</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="94"/>
         <source>Élément maître</source>
-        <translation>Master element</translation>
+        <translation>親の要素</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="100"/>
         <source>Type concret</source>
-        <translation>concrete type</translation>
+        <translation>具体的な種類</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="127"/>
         <source>Informations</source>
-        <translation>Informations</translation>
+        <translation>情報</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="137"/>
         <source>Nom</source>
-        <translation>Name</translation>
+        <translation>名前</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="142"/>
         <source>Valeurs</source>
-        <translation>Values</translation>
+        <translation>値</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="102"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="113"/>
         <source>Simple</source>
-        <translation>Simple</translation>
+        <translation>単純</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="103"/>
         <source>Maître</source>
-        <translation>Master</translation>
+        <translation>親</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="104"/>
         <source>Esclave</source>
-        <translation>Slave</translation>
+        <translation>子</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="105"/>
         <source>Renvoi de folio suivant</source>
-        <translation>Reference folio following</translation>
+        <translation>次のフォリオ参照</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="106"/>
         <source>Renvoi de folio précédent</source>
-        <translation>Previous reference folio</translation>
+        <translation>前のフォリオ参照</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="107"/>
         <source>Bornier</source>
-        <translation>Terminal block</translation>
+        <translation>端子台</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="110"/>
         <source>Normalement ouvert</source>
-        <translation>Switch normally open</translation>
+        <translation>常開接点 (a接点)</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="111"/>
         <source>Normalement fermé</source>
-        <translation>Switch normally closed</translation>
+        <translation>常閉接点 (b接点)</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="112"/>
         <source>Inverseur</source>
-        <translation>switch</translation>
+        <translation>切替接点</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="114"/>
         <source>Puissance</source>
-        <translation>Power switch</translation>
+        <translation>動力</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="115"/>
         <source>Temporisé travail</source>
-        <translation>Switch-on delayed</translation>
+        <translation>オン・ディレイ</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="116"/>
         <source>Temporisé repos</source>
-        <translation>Switch-off delayed</translation>
+        <translation>オフ・ディレイ</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="117"/>
         <source>Temporisé travail &amp; repos</source>
-        <translation>Switch-on  and off delayed</translation>
+        <translation>オン・オフ・ディレイ</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="120"/>
         <source>Bobine</source>
-        <translation>coil</translation>
+        <translation>コイル</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="121"/>
         <source>Organe de protection</source>
-        <translation>Organ of protection</translation>
+        <translation>保護機構</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="122"/>
         <source>Commutateur / bouton</source>
-        <translation>Switch / button</translation>
+        <translation>スイッチ / ボタン</translation>
     </message>
 </context>
 <context>
@@ -2050,87 +2050,87 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="332"/>
         <source>Général</source>
-        <translation>General</translation>
+        <translation>全般</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="342"/>
         <source>Élement
 </source>
-        <translation>Element
+        <translation>要素
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="345"/>
         <source>Nom : %1
 </source>
-        <translation>Name : %1
+        <translation>名前 : %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="348"/>
         <source>Folio : %1
 </source>
-        <translation>Folio : %1
+        <translation>フォリオ : %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="350"/>
         <source>Type : %1
 </source>
-        <translation>Type: %1
+        <translation>種類 : %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="351"/>
         <source>Sous-type : %1
 </source>
-        <translation>Sub-type : %1
+        <translation>亜種 : %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="352"/>
         <source>Position : %1
 </source>
-        <translation>Position : %1
+        <translation>位置 : %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="353"/>
         <source>Rotation : %1°
 </source>
-        <translation>Rotation : %1°
+        <translation>回転 : %1°
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="354"/>
         <source>Dimensions : %1*%2
 </source>
-        <translation>Dimensions : %1*%2
+        <translation>大きさ : %1*%2
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="355"/>
         <source>Bornes : %1
 </source>
-        <translation>Terminals : %1
+        <translation>端子 : %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="356"/>
         <source>Emplacement : %1
 </source>
-        <translation>Location : %1
+        <translation>場所 : %1
 </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="375"/>
         <source>Retrouver dans le panel</source>
-        <translation>Find in the panel</translation>
+        <translation>パネル内を検索</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="377"/>
         <source>Éditer l&apos;élément</source>
-        <translation>Edit element</translation>
+        <translation>要素を編集</translation>
     </message>
 </context>
 <context>
@@ -2138,157 +2138,157 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>フォーム</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="35"/>
         <source>Informations disponibles</source>
-        <translation>Available information</translation>
+        <translation>使用可能な情報</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="45"/>
         <source>Informations à exporter</source>
-        <translation>Information to export</translation>
+        <translation>エクスポートする情報</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="85"/>
         <source>Monter la sélection</source>
-        <translation>go up the selection</translation>
+        <translation>選択を上に</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="102"/>
         <source>Ajouter la sélection</source>
-        <translation>Add selection</translation>
+        <translation>選択を追加</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="116"/>
         <source>Supprimer la sélection</source>
-        <translation>Delete selection</translation>
+        <translation>選択を削除</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="130"/>
         <source>Descendre la sélection</source>
-        <translation>go down the selection</translation>
+        <translation>選択を下に</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="173"/>
         <source>Pas de filtre</source>
-        <translation>No filter</translation>
+        <translation>フィルタなし</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="178"/>
         <source>N&apos;est pas vide</source>
-        <translation>Is not empty</translation>
+        <translation>空でない</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="183"/>
         <source>Est vide</source>
-        <translation>Is empty</translation>
+        <translation>空</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="188"/>
         <source>Contient</source>
-        <translation>Contain</translation>
+        <translation>含む</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="193"/>
         <source>Ne contient pas</source>
-        <translation>Does not contain</translation>
+        <translation>含まない</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="198"/>
         <source>Est égal à</source>
-        <translation>Is equal to</translation>
+        <translation>等しい</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="203"/>
         <source>N&apos;est pas égale à</source>
-        <translation>Is not equal to</translation>
+        <translation>等しくない</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="214"/>
         <source>Filtre :</source>
-        <translation>Filter :</translation>
+        <translation>フィルタ :</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="239"/>
         <source>Type d&apos;éléments</source>
-        <translation>Type of elements</translation>
+        <translation>要素の種類</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="248"/>
         <source>Simples</source>
-        <translation>Simples</translation>
+        <translation>単純</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="258"/>
         <source>Tous</source>
-        <translation>all</translation>
+        <translation>全て</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="268"/>
         <source>Contacteurs et relais</source>
-        <translation>Contactors and relays</translation>
+        <translation>接点とリレー</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="278"/>
         <source>Boutons et commutateurs</source>
-        <translation>Buttons and switches</translation>
+        <translation>ボタンとスイッチ</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="288"/>
         <source>Borniers</source>
-        <translation>Terminal blocks</translation>
+        <translation>端子台</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="298"/>
         <source>Organes de protection</source>
-        <translation>Protection devices</translation>
+        <translation>保護機構</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="321"/>
         <source>Configuration</source>
-        <translation>Configuration</translation>
+        <translation>設定</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="330"/>
         <source>Ouvrir la configuration sélectionné</source>
-        <translation>Open the selected configuration</translation>
+        <translation>選択した設定を開く</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="357"/>
         <source>Sauvegarder la configuration actuelle</source>
-        <translation>Save the current configuration</translation>
+        <translation>現在の設定を保存</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="389"/>
         <source>Requête SQL personnalisée</source>
-        <translation>Custom SQL Query</translation>
+        <translation>カスタム SQL クエリ</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="399"/>
         <source>Requête SQL :</source>
-        <translation>SQL request  :</translation>
+        <translation>SQL リクエスト :</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="34"/>
         <source>Position</source>
-        <translation>Position</translation>
+        <translation>位置</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="35"/>
         <source>Titre du folio</source>
-        <translation>Title of folio</translation>
+        <translation>フォリオの表題</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="36"/>
         <source>Position du folio</source>
-        <translation>Folio position</translation>
+        <translation>フォリオ位置</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.cpp" line="37"/>
         <source>Numéro du folio</source>
-        <translation></translation>
+        <translation>フォリオ番号</translation>
     </message>
 </context>
 <context>
@@ -2296,132 +2296,132 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="259"/>
         <source>Déplacer une primitive</source>
-        <translation>Move a primitive</translation>
+        <translation>プリミティブを移動</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="801"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <comment>window title</comment>
-        <translation>Edit author information</translation>
+        <translation>作成者の情報を編集</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="806"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
-        <translation>You can use this field to specify the authors of this element, its license, or any other information you may find useful.</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/elementscene.cpp" line="874"/>
-        <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
-        <translation>You may enter the element name in several languages.</translation>
+        <translation>この自由欄を要素の作成者、ライセンス、他の有用と考えられる情報などに利用できます。</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="872"/>
         <source>Éditer les noms</source>
         <comment>window title</comment>
-        <translation>Edit names</translation>
+        <translation>名前を編集</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/elementscene.cpp" line="874"/>
+        <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
+        <translation>要素名を複数の言語で入力できます。</translation>
     </message>
 </context>
 <context>
     <name>ElementsCategoryEditor</name>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="122"/>
-        <source>Vous pouvez spécifier un nom par langue pour la catégorie.</source>
-        <translation>You can add a name per language for the category.</translation>
-    </message>
-    <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="111"/>
-        <source>Nom interne : </source>
-        <translation>Internal name : </translation>
-    </message>
-    <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="46"/>
         <source>L&apos;item n&apos;est pas une catégorie</source>
         <comment>message box title</comment>
-        <translation>The item is not a category</translation>
+        <translation>カテゴリではありません</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="47"/>
         <source>L&apos;item demandé n&apos;est pas une categrie. Abandon.</source>
         <comment>message box content</comment>
-        <translation>The item requested is not a category. Abort.</translation>
+        <translation>要求された項目はカテゴリではありません。中止します。</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="53"/>
         <source>Catégorie inexistante</source>
         <comment>message box title</comment>
-        <translation>Non-existent category</translation>
+        <translation>存在しないカテゴリ</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="54"/>
         <source>La catégorie demandée n&apos;existe pas. Abandon.</source>
         <comment>message box content</comment>
-        <translation>The required category does not exist. Giving up.</translation>
+        <translation>要求されたカテゴリが存在しません。中止します。</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="59"/>
         <source>Éditer une catégorie</source>
         <comment>window title</comment>
-        <translation>Edit category</translation>
+        <translation>カテゴリの編集</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="66"/>
         <source>Créer une nouvelle catégorie</source>
         <comment>window title</comment>
-        <translation>Add a new category</translation>
+        <translation>新規カテゴリの追加</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="70"/>
         <source>Nom de la nouvelle catégorie</source>
         <comment>default name when creating a new category</comment>
-        <translation>Name of the new category</translation>
+        <translation>新規カテゴリ名</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="78"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
-        <translation>Read only edition</translation>
+        <translation>読み取り専用</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="79"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cette catégorie. Elle sera donc ouverte en lecture seule.</source>
         <comment>message box content</comment>
-        <translation>You are not allowed to modify this category. Thus it will be edited read-only.</translation>
+        <translation>このカテゴリを変更する権限がありません。読み取り専用で開きます。</translation>
+    </message>
+    <message>
+        <location filename="../sources/elementscategoryeditor.cpp" line="111"/>
+        <source>Nom interne : </source>
+        <translation>内部名 : </translation>
+    </message>
+    <message>
+        <location filename="../sources/elementscategoryeditor.cpp" line="122"/>
+        <source>Vous pouvez spécifier un nom par langue pour la catégorie.</source>
+        <translation>言語ごとにカテゴリの名前を追加できます。</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="145"/>
         <source>Nom interne manquant</source>
         <comment>message box title</comment>
-        <translation>Missing internal name</translation>
+        <translation>内部名なし</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="146"/>
         <source>Vous devez spécifier un nom interne.</source>
         <comment>message box content</comment>
-        <translation>You must provide an internal name.</translation>
+        <translation>内部名が必要です。</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="158"/>
         <source>Nom interne déjà utilisé</source>
         <comment>message box title</comment>
-        <translation>Internal name already used</translation>
+        <translation>内部名は使用済み</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="159"/>
         <source>Le nom interne que vous avez choisi est déjà utilisé par une catégorie existante. Veuillez en choisir un autre.</source>
         <comment>message box content</comment>
-        <translation>The internal name you chose is already used by another category. Please choose another one.</translation>
+        <translation>選んだ内部名は既に別のカテゴリに使われています。別の名前を選んでください。</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="170"/>
         <source>Erreur</source>
         <comment>message box title</comment>
-        <translation>Error</translation>
+        <translation>エラー</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="171"/>
         <source>Impossible de créer la catégorie</source>
         <comment>message box content</comment>
-        <translation>Unable to create the category</translation>
+        <translation>カテゴリを作成できません</translation>
     </message>
 </context>
 <context>
@@ -2429,200 +2429,198 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="140"/>
         <source>Ouvrir le dossier correspondant</source>
-        <translation>Open the underlying folder</translation>
+        <translation>対応するフォルダを開く</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="141"/>
         <source>Éditer l&apos;élément</source>
-        <translation>Edit element</translation>
+        <translation>要素を編集</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="142"/>
         <source>Supprimer l&apos;élément</source>
-        <translation>Delete element</translation>
+        <translation>要素を削除</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="143"/>
         <source>Supprimer le dossier</source>
-        <translation>Delete folder</translation>
+        <translation>フォルダを削除</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="144"/>
         <source>Recharger les collections</source>
-        <translation>Reload collections</translation>
+        <translation>コレクションを再読込</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="145"/>
         <source>Éditer le dossier</source>
-        <translation>Edit folder</translation>
+        <translation>フォルダを編集</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="146"/>
         <source>Nouveau dossier</source>
-        <translation>New folder</translation>
+        <translation>新規フォルダ</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="147"/>
         <source>Nouvel élément</source>
-        <translation>New element</translation>
+        <translation>新規要素</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="148"/>
         <source>Afficher uniquement ce dossier</source>
-        <translation>Show only this folder</translation>
+        <translation>このフォルダだけを表示</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="149"/>
         <source>Afficher tous les dossiers</source>
-        <translation>Show All Folders</translation>
+        <translation>全てのフォルダを表示</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="150"/>
         <source>Propriété du dossier</source>
-        <translation>Folder properties</translation>
+        <translation>フォルダの属性</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="164"/>
         <source>Rechercher</source>
-        <translation>Search</translation>
+        <translation>検索</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="344"/>
         <source>Supprimer l&apos;élément ?</source>
         <comment>message box title</comment>
-        <translation>Delete element?</translation>
+        <translation>要素を削除しますか?</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="345"/>
         <source>Êtes-vous sûr  de vouloir supprimer cet élément ?
 </source>
         <comment>message box content</comment>
-        <translation>Do you really wish to delete this element ?
+        <translation>本当にこの要素を削除しますか?
 </translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="356"/>
         <source>Suppression de l&apos;élément</source>
         <comment>message box title</comment>
-        <translation>Deleting element</translation>
+        <translation>要素を削除中</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="357"/>
         <source>La suppression de l&apos;élément a échoué.</source>
         <comment>message box content</comment>
-        <translation>Deleting element failed.</translation>
+        <translation>要素の削除に失敗しました。</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="376"/>
         <source>Supprimer le dossier?</source>
         <comment>message box title</comment>
-        <translation>Deleting folder?</translation>
+        <translation>フォルダを削除しますか?</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="377"/>
         <source>Êtes-vous sûr  de vouloir supprimer le dossier ?
 Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</source>
         <comment>message box content</comment>
-        <translation>Are you sure you want to delete the folder?
-All the elements and contents file in this folder will be deleted.</translation>
+        <translation>本当にこのフォルダを削除しますか?
+このフォルダに含まれる全ての要素や内容が削除されます。</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="390"/>
         <source>Suppression du dossier</source>
         <comment>message box title</comment>
-        <translation>Folder Delete</translation>
+        <translation>フォルダの削除</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="391"/>
         <source>La suppression du dossier a échoué.</source>
         <comment>message box content</comment>
-        <translation>Folder deletion failed.</translation>
+        <translation>フォルダの削除に失敗しました。</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="515"/>
         <source>Le dossier %1 contient</source>
-        <translation>the folder %1 contains</translation>
+        <translation>フォルダ %1 には</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="516"/>
         <source>%n élément(s), répartie(s)</source>
         <translation>
-            <numerusform>%n element, part</numerusform>
-            <numerusform>%n elements, parts</numerusform>
+            <numerusform>%n 要素, 部品</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="517"/>
         <source>dans %n dossier(s).</source>
         <translation>
-            <numerusform>in %n folder.</numerusform>
-            <numerusform>in %n folders.</numerusform>
+            <numerusform>%n フォルダが含まれます。</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="518"/>
         <source>Chemin de la collection :  %1</source>
-        <translation>Path of collection :  %1</translation>
+        <translation>コレクションのパス :  %1</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="521"/>
         <source>Chemin dans le système de fichiers :  %1</source>
-        <translation>Path in the file system :  %1</translation>
+        <translation>ファイル・システムでのパス :  %1</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="524"/>
         <source>Propriété du dossier %1</source>
-        <translation>Property of the folder %1</translation>
+        <translation>フォルダ %1 の属性</translation>
     </message>
 </context>
 <context>
     <name>ElementsPanel</name>
     <message>
+        <location filename="../sources/elementspanel.cpp" line="148"/>
+        <source>Double-cliquez pour réduire ou développer ce projet</source>
+        <comment>Status tip</comment>
+        <translation>ダブル・クリックでプロジェクトを折畳または展開</translation>
+    </message>
+    <message>
         <location filename="../sources/elementspanel.cpp" line="156"/>
         <source>Cartouches embarqués</source>
-        <translation>Embedded title blocks</translation>
+        <translation>埋込まれた表題欄</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="157"/>
         <source>Double-cliquez pour réduire ou développer cette collection de cartouches embarquée</source>
         <comment>Status tip</comment>
-        <translation>Double-click to collapse or expand this embedded title blocks collection</translation>
+        <translation>ダブル・クリックで埋込まれた表題欄を折畳または展開</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="166"/>
         <source>Glissez-déposez ce modèle de cartouche sur un folio pour l&apos;y appliquer.</source>
         <comment>Status tip displayed when selecting a title block template</comment>
-        <translation>Drag and drop this title block template onto a folio to apply it.</translation>
-    </message>
-    <message>
-        <location filename="../sources/elementspanel.cpp" line="148"/>
-        <source>Double-cliquez pour réduire ou développer ce projet</source>
-        <comment>Status tip</comment>
-        <translation>Double-click to collapse or expand this project</translation>
+        <translation>フォリオに表題欄をドラッグ・アンド・ドロップして適用できます。</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="203"/>
         <source>Double-cliquez pour réduire ou développer la collection de cartouches QElectroTech</source>
         <comment>Status tip</comment>
-        <translation>Double-click to collapse or expand the QElectrotech title blocks collection</translation>
+        <translation>ダブル・クリックで QElectrotech 表題欄を折畳または展開</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="204"/>
         <source>Ceci est la collection de cartouches fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>This is the title blocks collection provided along with QElectroTech. Installed as a system component, you normally cannot customize it.</translation>
+        <translation>これは QElectroTech で提供される表題欄コレクションです。システムの構成要素としてインストールされ、通常はカスタマイズできません。</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="211"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle de cartouches</source>
         <comment>Status tip</comment>
-        <translation>Double-click to collapse or expand your own title blocks collection</translation>
+        <translation>ダブル・クリックで個人の表題欄を折畳または展開</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="212"/>
         <source>Ceci est votre collection personnelle de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>This is your custom title blocks collection -- use it to create, store and edit your own title blocks.</translation>
+        <translation>これは個人の表題欄コレクションです -- 独自の表題欄の作成・保存・編集に利用できます。</translation>
     </message>
 </context>
 <context>
@@ -2630,87 +2628,87 @@ All the elements and contents file in this folder will be deleted.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="46"/>
         <source>Ouvrir le dossier correspondant</source>
-        <translation>Open the underlying directory</translation>
+        <translation>対応するフォルダを開く</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="47"/>
         <source>Copier le chemin</source>
-        <translation>Copy full path to clipboard</translation>
+        <translation>フル・パスをクリップボードにコピー</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="48"/>
         <source>Basculer vers ce projet</source>
-        <translation>Activate this project</translation>
-    </message>
-    <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="60"/>
-        <source>Éditer ce modèle</source>
-        <translation>Edit this template</translation>
-    </message>
-    <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="61"/>
-        <source>Supprimer ce modèle</source>
-        <translation>Delete this template</translation>
+        <translation>プロジェクトを作業中に</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="49"/>
         <source>Fermer ce projet</source>
-        <translation>Close this project</translation>
+        <translation>このプロジェクトを閉じる</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="50"/>
         <source>Propriétés du projet</source>
-        <translation>Project properties</translation>
+        <translation>プロジェクトの属性</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="51"/>
         <source>Propriétés du folio</source>
-        <translation>Folio properties</translation>
+        <translation>フォリオの属性</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="52"/>
         <source>Ajouter un folio</source>
-        <translation>Add a folio</translation>
+        <translation>フォリオを追加</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="53"/>
         <source>Supprimer ce folio</source>
-        <translation>Delete this folio</translation>
+        <translation>このフォリオを削除</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="54"/>
         <source>Remonter ce folio</source>
-        <translation>Move up  this folio</translation>
+        <translation>このフォリオを上に移動</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="55"/>
         <source>Abaisser ce folio</source>
-        <translation>Move down this folio</translation>
+        <translation>このフォリオを下に移動</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="56"/>
         <source>Remonter ce folio x10</source>
-        <translation>Move up  this folio x10</translation>
+        <translation>このフォリオを上に移動 x10</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="57"/>
         <source>Remonter ce folio au debut</source>
-        <translation>Move up  this folio to the beginning</translation>
+        <translation>このフォリオを最初に移動</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="58"/>
         <source>Abaisser ce folio x10</source>
-        <translation>Move down this folio x10</translation>
+        <translation>このフォリオを下に移動 x10</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="59"/>
         <source>Nouveau modèle</source>
-        <translation>New template</translation>
+        <translation>新規テンプレート</translation>
+    </message>
+    <message>
+        <location filename="../sources/elementspanelwidget.cpp" line="60"/>
+        <source>Éditer ce modèle</source>
+        <translation>このテンプレートを編集</translation>
+    </message>
+    <message>
+        <location filename="../sources/elementspanelwidget.cpp" line="61"/>
+        <source>Supprimer ce modèle</source>
+        <translation>このテンプレートを削除</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="73"/>
         <source>Filtrer</source>
-        <translation>Filter</translation>
+        <translation>フィルタ</translation>
     </message>
 </context>
 <context>
@@ -2718,22 +2716,22 @@ All the elements and contents file in this folder will be deleted.</translation>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="50"/>
         <source>Centre : </source>
-        <translation>Center: </translation>
+        <translation>中心 : </translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="55"/>
         <source>Diamètres : </source>
-        <translation>Diameters: </translation>
+        <translation>直径 : </translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="56"/>
         <source>horizontal :</source>
-        <translation>horizontal:</translation>
+        <translation>水平 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="58"/>
         <source>vertical :</source>
-        <translation>vertical:</translation>
+        <translation>垂直 :</translation>
     </message>
 </context>
 <context>
@@ -2742,98 +2740,99 @@ All the elements and contents file in this folder will be deleted.</translation>
         <location filename="../sources/configpages.cpp" line="274"/>
         <source>Export</source>
         <comment>configuration page title</comment>
-        <translation>Export</translation>
+        <translation>エクスポート</translation>
     </message>
 </context>
 <context>
     <name>ExportDialog</name>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="871"/>
-        <source>Aperçu</source>
-        <translation>Preview</translation>
-    </message>
-    <message>
-        <location filename="../sources/exportdialog.cpp" line="145"/>
-        <source>Dimensions</source>
-        <translation>Dimensions</translation>
-    </message>
-    <message>
-        <location filename="../sources/exportdialog.cpp" line="753"/>
-        <source>Impossible d&apos;écrire dans ce fichier</source>
-        <comment>message box title</comment>
-        <translation>Can not write to this file</translation>
+        <location filename="../sources/exportdialog.cpp" line="62"/>
+        <source>Exporter les folios du projet</source>
+        <comment>window title</comment>
+        <translation>プロジェクトのフォリオのエクスポート</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="72"/>
         <source>Exporter</source>
-        <translation>Export</translation>
+        <translation>エクスポート</translation>
+    </message>
+    <message>
+        <location filename="../sources/exportdialog.cpp" line="77"/>
+        <source>Choisissez les folios que vous désirez exporter ainsi que leurs dimensions :</source>
+        <translation>エクポートするフォリオを選び大きさを指定してください :</translation>
+    </message>
+    <message>
+        <location filename="../sources/exportdialog.cpp" line="80"/>
+        <source>Tout cocher</source>
+        <translation>全て選択</translation>
+    </message>
+    <message>
+        <location filename="../sources/exportdialog.cpp" line="81"/>
+        <source>Tout décocher</source>
+        <translation>全て解除</translation>
+    </message>
+    <message>
+        <location filename="../sources/exportdialog.cpp" line="143"/>
+        <source>Titre du folio</source>
+        <translation>フォリオの表題</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="144"/>
         <source>Nom de fichier</source>
-        <translation>Filename</translation>
+        <translation>ファイル名</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="975"/>
-        <location filename="../sources/exportdialog.cpp" line="980"/>
-        <source>px</source>
-        <translation>px</translation>
+        <location filename="../sources/exportdialog.cpp" line="145"/>
+        <source>Dimensions</source>
+        <translation>大きさ</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="695"/>
         <source>Noms des fichiers cibles</source>
         <comment>message box title</comment>
-        <translation>Target files names</translation>
-    </message>
-    <message>
-        <location filename="../sources/exportdialog.cpp" line="62"/>
-        <source>Exporter les folios du projet</source>
-        <comment>window title</comment>
-        <translation>Export the project folios</translation>
-    </message>
-    <message>
-        <location filename="../sources/exportdialog.cpp" line="77"/>
-        <source>Choisissez les folios que vous désirez exporter ainsi que leurs dimensions :</source>
-        <translation>Choose the folios you wish to export and specify their size :</translation>
-    </message>
-    <message>
-        <location filename="../sources/exportdialog.cpp" line="80"/>
-        <source>Tout cocher</source>
-        <translation>Check all</translation>
-    </message>
-    <message>
-        <location filename="../sources/exportdialog.cpp" line="81"/>
-        <source>Tout décocher</source>
-        <translation>Uncheck all</translation>
-    </message>
-    <message>
-        <location filename="../sources/exportdialog.cpp" line="143"/>
-        <source>Titre du folio</source>
-        <translation>Title of folio</translation>
+        <translation>出力ファイル名</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="696"/>
         <source>Vous devez entrer un nom de fichier non vide et unique pour chaque folio à exporter.</source>
         <comment>message box content</comment>
-        <translation>You must enter a non-empty, unique filename for each folio to export.</translation>
+        <translation>エクスポートする各フォリオに空ではない一意の名前を入力する必要があります。</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="711"/>
         <source>Dossier non spécifié</source>
         <comment>message box title</comment>
-        <translation>Directory missing</translation>
+        <translation>フォルダが見つかりません</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="712"/>
         <source>Vous devez spécifier le chemin du dossier dans lequel seront enregistrés les fichiers images.</source>
         <comment>message box content</comment>
+        <translatorcomment>画像ファイルを保存するフォルダのパスを指定する必要があります。</translatorcomment>
         <translation>You must specify the path of the directory in which the images files will be saved.</translation>
+    </message>
+    <message>
+        <location filename="../sources/exportdialog.cpp" line="753"/>
+        <source>Impossible d&apos;écrire dans ce fichier</source>
+        <comment>message box title</comment>
+        <translation>このファイルに書き込めません</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="755"/>
         <source>Il semblerait que vous n&apos;ayez pas les permissions nécessaires pour écrire dans le fichier %1.</source>
         <comment>message box content</comment>
-        <translation>It appears you do not have the required permissions to write the file %1.</translation>
+        <translation>ファイル %1 を書き込む権限がないようです。</translation>
+    </message>
+    <message>
+        <location filename="../sources/exportdialog.cpp" line="871"/>
+        <source>Aperçu</source>
+        <translation>プレビュー</translation>
+    </message>
+    <message>
+        <location filename="../sources/exportdialog.cpp" line="975"/>
+        <location filename="../sources/exportdialog.cpp" line="980"/>
+        <source>px</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -2842,88 +2841,88 @@ All the elements and contents file in this folder will be deleted.</translation>
         <location filename="../sources/exportpropertieswidget.cpp" line="126"/>
         <source>Exporter dans le dossier</source>
         <comment>dialog title</comment>
-        <translation>Export in the directory</translation>
+        <translation>フォルダにエクスポート</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="146"/>
         <source>Dossier cible :</source>
-        <translation>Target directory:</translation>
+        <translation>出力フォルダ :</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="151"/>
         <source>Parcourir</source>
-        <translation>Browse</translation>
+        <translation>参照</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="161"/>
         <source>Format :</source>
-        <translation>Format:</translation>
+        <translation>形式 :</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="164"/>
         <source>PNG (*.png)</source>
-        <translation>PNG (*.png)</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="165"/>
         <source>JPEG (*.jpg)</source>
-        <translation>JPEG (*.jpg)</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="166"/>
         <source>Bitmap (*.bmp)</source>
-        <translation>Bitmap (*.bmp)</translation>
+        <translation>ビットマップ (*.bmp)</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="167"/>
         <source>SVG (*.svg)</source>
-        <translation>SVG (*.svg)</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="168"/>
         <source>DXF (*.dxf)</source>
-        <translation>DXF (*.dxf)</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="174"/>
         <source>Options de rendu</source>
         <comment>groupbox title</comment>
-        <translation>Rendering options</translation>
+        <translation>描画オプション</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="179"/>
         <source>Exporter entièrement le folio</source>
-        <translation>Export fully folio</translation>
+        <translation>フォリオ全体をエクスポート</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="182"/>
         <source>Exporter seulement les éléments</source>
-        <translation>Export elements only</translation>
-    </message>
-    <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="203"/>
-        <source>Conserver les couleurs des conducteurs</source>
-        <translation>Keep conductors colors</translation>
+        <translation>要素だけをエクスポート</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="187"/>
         <source>Dessiner la grille</source>
-        <translation>Draw the grid</translation>
+        <translation>グリッドを描く</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="191"/>
         <source>Dessiner le cadre</source>
-        <translation>Draw the border</translation>
+        <translation>図枠を描く</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="195"/>
         <source>Dessiner le cartouche</source>
-        <translation>Draw the title block</translation>
+        <translation>表題欄を描く</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="199"/>
         <source>Dessiner les bornes</source>
-        <translation>Draw terminals</translation>
+        <translation>端子を描く</translation>
+    </message>
+    <message>
+        <location filename="../sources/exportpropertieswidget.cpp" line="203"/>
+        <source>Conserver les couleurs des conducteurs</source>
+        <translation>導体の色を保持</translation>
     </message>
 </context>
 <context>
@@ -2931,53 +2930,53 @@ All the elements and contents file in this folder will be deleted.</translation>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="26"/>
         <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="107"/>
-        <source> Options de numérotation</source>
-        <translation> Options of numbering</translation>
-    </message>
-    <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="78"/>
-        <source>C&amp;réer de nouveaux folios</source>
-        <translation>C&amp;reate new folios</translation>
-    </message>
-    <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="91"/>
-        <source>Numérotation automatique des folios sélectionnés</source>
-        <translation>Automatic numbering of selected folios</translation>
-    </message>
-    <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="132"/>
-        <source>Nouveaux folios</source>
-        <translation>New folios</translation>
-    </message>
-    <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="174"/>
-        <source>À</source>
-        <translation>From</translation>
-    </message>
-    <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="187"/>
-        <source>De</source>
-        <translation>To</translation>
-    </message>
-    <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="66"/>
-        <source>Sélection:</source>
-        <translation>Select:</translation>
+        <translation>フォーム</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="40"/>
         <source>Numérotation automatique de Folio :</source>
-        <translation>Folio Auto Numbering :</translation>
+        <translation>フォリオの自動採番 :</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="66"/>
+        <source>Sélection:</source>
+        <translation>選択:</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="78"/>
+        <source>C&amp;réer de nouveaux folios</source>
+        <translation>新規フォリオの作成 (&amp;C)</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="91"/>
+        <source>Numérotation automatique des folios sélectionnés</source>
+        <translation>選択されたフォリオの自動採番</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="107"/>
+        <source> Options de numérotation</source>
+        <translation> 採番のオプション</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="132"/>
+        <source>Nouveaux folios</source>
+        <translation>新規フォリオ</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="174"/>
+        <source>À</source>
+        <translation>始値</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="187"/>
+        <source>De</source>
+        <translation>終値</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.cpp" line="172"/>
         <source>Folio Autonumbering</source>
         <comment>title window</comment>
-        <translation></translation>
+        <translation>フォリオ自動採番</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.cpp" line="173"/>
@@ -2994,17 +2993,17 @@ Si le chiffre défini dans le champ Valeur possède moins de digits que le type 
 Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation>This is where you can define how the new folios will be numbered.
--A numbering is composed of a minimum variable.
--You can add or delete a dialing variable through the - and + buttons.
-A numbering variable includes: a type, a value and an increment.
+        <translation>ここで新規フォリオの採番を定義できます。
+-採番は最小の変数で構成されます。
+-ボタン - と + を用いて採番変数を削除または追加できます。
+採番変数は種類、値、増分で構成されます。
 
--the &quot;Digit 1&quot;, &quot;Digit 01&quot; and &quot;Digit 001&quot; types represent a numeric type defined in the &quot;Value&quot; field, which increments each new folio by the value of the &quot;Incrementation&quot; field.
-- &quot;Digit 01&quot; and &quot;Digit 001&quot;, are respectively represented on the diagram by two and three digits minimum.
-If the digit defined in the Value field has fewer digits than the chosen type, it will be preceded by one or two 0s in order to respect its type.
+-種類 &quot;Digit 1&quot;, &quot;Digit 01&quot; と &quot;Digit 001&quot; は値欄での数値の種類を表し、新規フォリオの作成ごとに増分欄の値だけ増えます。
+-&quot;Digit 01&quot; と &quot;Digit 001&quot; は、回路図ではそれぞれ最低 2 桁と 3 桁で表されます。
+選ばれた種類の桁数よりも値欄の数値が小さい場合には、種類に合わせて前に 1 つまたは 2 つの 0 が付きます。
 
--Type &quot;Text&quot;, represents a fixed text.
-The &quot;Incrementation&quot; field is not used.
+-種類 &quot;Text&quot; は固定したテキストを表します。
+増分欄は使用されません。
 </translation>
     </message>
 </context>
@@ -3013,17 +3012,17 @@ The &quot;Incrementation&quot; field is not used.
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="14"/>
         <source>Assistant de formule</source>
-        <translation>Formula Wizard</translation>
+        <translation>式ウィザード</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="20"/>
         <source>TextLabel</source>
-        <translation>TextLabel</translation>
+        <translation>テキストラベル</translation>
     </message>
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="27"/>
         <source>Formule</source>
-        <translation>Formula</translation>
+        <translation>式</translation>
     </message>
 </context>
 <context>
@@ -3031,22 +3030,22 @@ The &quot;Incrementation&quot; field is not used.
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="26"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>フォーム</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="41"/>
         <source>Dénomination automatique :</source>
-        <translation>Automatic name :</translation>
+        <translation>自動の名前 :</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="53"/>
         <source>Formule</source>
-        <translation>Formula</translation>
+        <translation>式</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="72"/>
         <source>Insert Formula Here e.g.: %prefix%l%c</source>
-        <translation>Insert Formula Here e.g.: %prefix%l%c</translation>
+        <translation>ここに式を入力 例: %prefix%l%c</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="101"/>
@@ -3060,402 +3059,411 @@ The &quot;Incrementation&quot; field is not used.
 You can also assign any other titleblock variable 
 that you create. Text and number inputs are
  also available.</source>
-        <translation></translation>
+        <translation>式に下記の変数が利用できます:
+ -%prefix: 既定の要素接頭辞
+ -%l: 要素の行
+ -%c: 要素の列
+ -%F: フォリオ名
+ -%f or %id: フォリオID
+ -%total: 合計のフォリオ数
+作成した表題欄の変数も利用できます。
+入力したテキストや数も利用できます。</translation>
     </message>
 </context>
 <context>
     <name>GeneralConfigurationPage</name>
     <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="14"/>
+        <source>Form</source>
+        <translation>フォーム</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="24"/>
         <source>Apparence</source>
-        <translation>Appearance</translation>
+        <translation>外観</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="30"/>
         <source>Utiliser les couleurs du système</source>
-        <translation>Use system colors</translation>
+        <translation>システムの色を使用</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="359"/>
-        <source>Chemin de la collection utilisateur</source>
-        <translation>User Collection Path</translation>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="44"/>
+        <source>Utiliser les gestes du pavé tactile</source>
+        <translation>タッチパッドのジェスチャーを使用</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="373"/>
-        <source>Chemin des cartouches utilisateur</source>
-        <translation>User Title blocks Path</translation>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="51"/>
+        <source>Autoriser le dézoom au delà du folio</source>
+        <translation>フォリオの領域を越えた縮小が可能</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="309"/>
-        <source>Langage</source>
-        <translation>Language</translation>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="65"/>
+        <source>Utiliser des fen&amp;êtres (appliqué au prochain lancement de QElectroTech)</source>
+        <translation>ウィンドウ (&amp;W) を使用 (QElectroTech の次回起動時に適用)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="345"/>
-        <source>Chemin de la collection commune</source>
-        <translation>Path of the Common Collection</translation>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="72"/>
+        <source>Utiliser des onglets (appliqué au prochain lance&amp;ment de QElectroTech)</source>
+        <translation>タブ (&amp;T) を使用 (QElectroTech の次回起動時に適用)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="93"/>
+        <source>Projets</source>
+        <translation>プロジェクト</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="112"/>
+        <source>Sauvegarde automatique des projets (appliqué au prochain lancement de QElectroTech)</source>
+        <translation>プロジェクトの自動保存 (QElectroTech の次回起動時に適用)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="119"/>
+        <source>Ne pas conserver les labels des éléments lors des copier coller</source>
+        <translation>コピーと貼り付けで項目のラベルを保持しない</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="126"/>
+        <source>Numéroter les colonnes de cartouche à partir de 0 (1 sinon)</source>
+        <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
+        <translation>表題欄の列番号は 0 から (そうでなければ 1 から)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="136"/>
+        <source>Désactivé</source>
+        <translation>無効</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="139"/>
+        <source> min</source>
+        <comment>minute</comment>
+        <translation> 分</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="146"/>
+        <source>Utiliser les numéros de folio à la place de leur position dans le projet</source>
+        <translation>フォリオ番号をプロジェクトでの位置の代わりに使用</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="166"/>
+        <source>Exporter les bornes dans la nomenclature</source>
+        <translation>部品表に端子をエクスポート</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="174"/>
+        <source>Collections</source>
+        <translation>コレクション</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="180"/>
+        <source>Accès aux collections</source>
+        <translation>コレクションへのアクセス</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="192"/>
+        <source>Répertoire de la collection commune</source>
+        <translation>共通コレクションのディレクトリ</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="200"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="221"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="235"/>
         <source>Par defaut</source>
-        <translation>By default</translation>
+        <translation>既定値</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="205"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="226"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="240"/>
         <source>Parcourir...</source>
-        <translation>Browse...</translation>
+        <translation>参照...</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="213"/>
+        <source>Répertoire de la collection utilisateur</source>
+        <translation>ユーザ・コレクションのディレクトリ</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="248"/>
         <source>(Recharger les collections d&apos;éléments pour appliquer les changements)</source>
-        <translation>(Reload the elements collections to apply the changes)</translation>
+        <translation>(変更を適用するには要素コレクションを再読込)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="93"/>
-        <source>Projets</source>
-        <translation>Projects</translation>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="255"/>
+        <source>Répertoire des cartouches utilisateur</source>
+        <translation>ユーザ表題欄のディレクトリ</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="44"/>
-        <source>Utiliser les gestes du pavé tactile</source>
-        <translation>Use gestures touchpad</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="146"/>
-        <source>Utiliser les numéros de folio à la place de leur position dans le projet</source>
-        <translation>Use folio numbers instead of their position in the project</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="126"/>
-        <source>Numéroter les colonnes de cartouche à partir de 0 (1 sinon)</source>
-        <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
-        <translation>Number the title block columns from 0 (1 otherwise)</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="136"/>
-        <source>Désactivé</source>
-        <translation>Disabled</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="139"/>
-        <source> min</source>
-        <comment>minute</comment>
-        <translation> min</translation>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="265"/>
+        <source>Gestion des éléments</source>
+        <translation>要素の管理</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="274"/>
         <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
-        <translation>Highlight freshly integrated elements in the panel</translation>
+        <translation>新たに加えられた要素をパネルで強調</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="281"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre.
 Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
-        <translation>Element may include information about its authors, license, or other useful information. Specify the default value of this textfield for new elements below:</translation>
+        <translation>各要素には作成者やライセンス、他の有用な情報を自由欄に含めることができます。
+この欄の既定値を以下で指定できます :</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="309"/>
+        <source>Langage</source>
+        <translation>言語</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="318"/>
         <source>Appliqué au prochain lancement de QElectroTech</source>
-        <translation>Applied to the next launch of QElectroTech</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="166"/>
-        <source>Exporter les bornes dans la nomenclature</source>
-        <translation>Export terminals in the parts list</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="14"/>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="112"/>
-        <source>Sauvegarde automatique des projets (appliqué au prochain lancement de QElectroTech)</source>
-        <translation>Automatic backup of projects (applied at the next launch of QElectroTech)</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="174"/>
-        <source>Collections</source>
-        <translation>Collections</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="180"/>
-        <source>Accès aux collections</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="192"/>
-        <source>Répertoire de la collection commune</source>
-        <translation>Common collection directory</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="213"/>
-        <source>Répertoire de la collection utilisateur</source>
-        <translation>User collection directory</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="255"/>
-        <source>Répertoire des cartouches utilisateur</source>
-        <translation>User title blocks directory</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="265"/>
-        <source>Gestion des éléments</source>
-        <translation>Elements management</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="358"/>
-        <source>Vous pouvez définir ici l&apos;apparence par defaut des differents textes de QElectroTech</source>
-        <translation>Here you can define the default appearance of the different texts of QElectroTech</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="541"/>
-        <source>Grille + Clavier</source>
-        <translation>Grid + Keyboard</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="547"/>
-        <source>Grille : 1 - 30</source>
-        <translation>Grid: 1 - 30</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="614"/>
-        <source>DiagramEditor xGrid</source>
-        <translation>DiagramEditor xGrid</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="581"/>
-        <source>DiagramEditor yGrid</source>
-        <translation>DiagramEditor yGrid</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="65"/>
-        <source>Utiliser des fen&amp;êtres (appliqué au prochain lancement de QElectroTech)</source>
-        <translation>Use &amp;Windows (applied at the next launch of QElectroTech)</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="72"/>
-        <source>Utiliser des onglets (appliqué au prochain lance&amp;ment de QElectroTech)</source>
-        <translation>Use &amp;tabs (applied at the next launch of QElectroTech)</translation>
+        <translation>QElectroTech の次回起動時に適用</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="352"/>
         <source>Textes</source>
-        <translation>texts</translation>
+        <translation>テキスト</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="358"/>
+        <source>Vous pouvez définir ici l&apos;apparence par defaut des differents textes de QElectroTech</source>
+        <translation>ここで QElectroTech のテキストの外観の既定値を設定できます</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="372"/>
         <source>Textes d&apos;éléments</source>
-        <translation>Elements texts</translation>
+        <translation>要素テキスト</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="385"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="451"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="497"/>
         <source>Police :</source>
-        <translation>Font:</translation>
+        <translation>フォント :</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="395"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="458"/>
         <source>°</source>
-        <translation>°</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="405"/>
         <source>Longueur :</source>
-        <translation>Length :</translation>
+        <translation>長さ :</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="415"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="444"/>
         <source>Rotation :</source>
-        <translation>Rotation :</translation>
+        <translation>回転 :</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="438"/>
         <source>Textes indépendants</source>
-        <translation>Independent texts</translation>
+        <translation>独立テキスト</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="491"/>
         <source>Autres textes</source>
-        <translation>Other texts</translation>
+        <translation>他のテキスト</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="541"/>
+        <source>Grille + Clavier</source>
+        <translation>グリッド + キーボード</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="547"/>
+        <source>Grille : 1 - 30</source>
+        <translation>グリッド : 1 - 30</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="581"/>
+        <source>DiagramEditor yGrid</source>
+        <translation>回路図エディタ yGrid</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="588"/>
         <source>La Grille doite etre active pour pouvoir voir les modifications.</source>
-        <translation>The Grid must be active to see the changes.</translation>
+        <translation>変更を確認するにはグリッドが有効でなければいけません。</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="614"/>
+        <source>DiagramEditor xGrid</source>
+        <translation>回路図エディタ xGrid</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="637"/>
         <source>Déplacement au clavier : 1 - 30</source>
-        <translation>Keyboard movement: 1 - 30</translation>
+        <translation>キーボードによる移動量 : 1 - 30</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="687"/>
         <source>DiagramEditor (touche :   gauche / droite)  xGrid</source>
-        <translation>DiagramEditor (key: left / right) xGrid</translation>
+        <translation>回路図エディタ (キー : 左 / 右)  xGrid</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="694"/>
         <source>DiagramEditor (touche :   haut / bas)  yGrid</source>
-        <translation>DiagramEditor (key: up / down) yGrid</translation>
+        <translation>回路図エディタ (キー : 上 / 下)  yGrid</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="717"/>
         <source>Déplacement au clavier avec la touche ALT : 1 - 9</source>
-        <translation>Keyboard movement with the ALT key: 1 - 9</translation>
+        <translation>キーボードによる移動量（ALT キー併用）: 1 - 9</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="723"/>
         <source>DiagramEditor (touche :   gauche / droite ) xGrid</source>
-        <translation>DiagramEditor (key: left / right) xGrid</translation>
+        <translation>回路図エディタ (キー : 左 / 右)  xGrid</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="752"/>
         <source>DiagramEditor (touche :  haut / bas)  yGrid</source>
-        <translation>DiagramEditor (key: up / down) yGrid</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="119"/>
-        <source>Ne pas conserver les labels des éléments lors des copier coller</source>
-        <translation>Do not store the labels of items in the copy paste</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="51"/>
-        <source>Autoriser le dézoom au delà du folio</source>
-        <translation>Allow unzoom beyond the folio</translation>
+        <translation>回路図エディタ (キー : 上 / 下)  yGrid</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="238"/>
         <source>Général</source>
         <comment>configuration page title</comment>
-        <translation>General</translation>
+        <translation>全般</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="255"/>
         <source>Système</source>
-        <translation>System</translation>
+        <translation>システム</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="259"/>
         <source>Arabe</source>
-        <translation>Arabic</translation>
+        <translation>アラビア語</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="260"/>
         <source>Brézilien</source>
-        <translation>Brazilian</translation>
+        <translation>ブラジル語</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="261"/>
         <source>Catalan</source>
-        <translation>Catalan</translation>
+        <translation>カタルーニャ語</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="262"/>
         <source>Tchèque</source>
-        <translation>Czech</translation>
+        <translation>チェコ語</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="263"/>
         <source>Allemand</source>
-        <translation>German</translation>
+        <translation>ドイツ語</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="264"/>
         <source>Danois</source>
-        <translation>Danish</translation>
+        <translation>デンマーク語</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="265"/>
         <source>Grec</source>
-        <translation>Greek</translation>
+        <translation>ギリシア語</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="266"/>
         <source>Anglais</source>
-        <translation>English</translation>
+        <translation>英語</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="267"/>
         <source>Espagnol</source>
-        <translation>Spanish</translation>
+        <translation>スペイン語</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="268"/>
         <source>Français</source>
-        <translation>French</translation>
+        <translation>フランス語</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="269"/>
         <source>Croate</source>
-        <translation>Croatian</translation>
+        <translation>クロアチア語</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="270"/>
         <source>Italien</source>
-        <translation>Italian</translation>
+        <translation>イタリア語</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="271"/>
         <source>Japonaise</source>
-        <translation>Japanese</translation>
+        <translation>日本語</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="272"/>
         <source>Polonais</source>
-        <translation>Polish</translation>
+        <translation>ポーランド語</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="273"/>
         <source>Portugais</source>
-        <translation>Portuguese</translation>
+        <translation>ポルトガル語</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="274"/>
         <source>Roumains</source>
-        <translation>Romanian</translation>
+        <translation>ルーマニア語</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="275"/>
         <source>Russe</source>
-        <translation>Russian</translation>
+        <translation>ロシア語</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="276"/>
         <source>Slovène</source>
-        <translation>Slovenian</translation>
+        <translation>スロベニア語</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="277"/>
         <source>Pays-Bas</source>
-        <translation>Dutch</translation>
+        <translation>オランダ語</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="278"/>
         <source>Norvege</source>
-        <translation>Norwegian</translation>
+        <translation>ノルウェー語</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="279"/>
         <source>Belgique-Flemish</source>
-        <translation>Belgium-Flemish</translation>
+        <translation>フラマン語</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="280"/>
         <source>Turc</source>
-        <translation>Turkish</translation>
+        <translation>トルコ語</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="281"/>
         <source>Hongrois</source>
-        <translation>Hungarian</translation>
+        <translation>ハンガリー語</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="345"/>
+        <source>Chemin de la collection commune</source>
+        <translation>共通コレクションのパス</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="359"/>
+        <source>Chemin de la collection utilisateur</source>
+        <translation>ユーザ・コレクションのパス</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="373"/>
+        <source>Chemin des cartouches utilisateur</source>
+        <translation>ユーザ表題欄のパス</translation>
     </message>
 </context>
 <context>
@@ -3464,48 +3472,48 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <location filename="../sources/genericpanel.cpp" line="204"/>
         <source>Pas de fichier</source>
         <comment>tooltip for a file-less project in the element panel</comment>
-        <translation>No file</translation>
+        <translation>ファイルなし</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="210"/>
         <source>Ceci est un projet QElectroTech, c&apos;est-à-dire un fichier d&apos;extension .qet regroupant plusieurs folios. Il embarque également les éléments et modèles de cartouches utilisés dans ces folios.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>This is a QElectroTech project, ie. a .qet file containing several folios. It also embeds elements and title block templates used in the folios.</translation>
+        <translation>これは QElectroTech プロジェクト、すなわち幾つかのフォリオを含む .qet ファイルです。フォリオで使用されている要素と表題欄テンプレートも埋め込まれます。</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="338"/>
         <source>Folio sans titre</source>
         <comment>Fallback label when a diagram has no title</comment>
-        <translation>Untitled folio</translation>
+        <translation>無題のフォリオ</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="350"/>
         <location filename="../sources/genericpanel.cpp" line="367"/>
         <source>%1 - %2</source>
         <comment>label displayed for a diagram in the panel ; %1 is the folio index, %2 is the diagram title</comment>
-        <translation>%1 - %2</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="489"/>
         <source>Modèles de cartouche</source>
-        <translation>Title block templates</translation>
+        <translation>表題欄テンプレート</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="627"/>
         <source>Modèle &quot;%1&quot;</source>
         <comment>used to display a title block template</comment>
-        <translation>&quot;%1&quot; template</translation>
+        <translation>テンプレート &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="630"/>
         <source>Ceci est un modèle de cartouche, qui peut être appliqué à un folio.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>This is a title block template, which can be applied to a folio.</translation>
+        <translation>これはフォリオに適用できる表題欄テンプレートです。</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="910"/>
         <source>%1 [non utilisé dans le projet]</source>
-        <translation>%1 [unused in the project]</translation>
+        <translation>%1 [プロジェクトで未使用]</translation>
     </message>
 </context>
 <context>
@@ -3513,186 +3521,186 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>フォーム</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="24"/>
         <source>Affichage</source>
-        <translation>Display</translation>
+        <translation>表示</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="33"/>
         <source>Nom du tableau</source>
-        <translation>Table name</translation>
+        <translation>表の名前</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="40"/>
+        <source>Géometrie et lignes</source>
+        <translation>形状と行</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="46"/>
+        <source>Toutes</source>
+        <translation>全て</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="59"/>
+        <source>Tableau suivant</source>
+        <translation>次の表</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="80"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="266"/>
         <source>Aucun</source>
-        <translation>None</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="46"/>
-        <source>Toutes</source>
-        <translation>All</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="224"/>
-        <source>Lignes à afficher :</source>
-        <translation>Lines to display :</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="128"/>
-        <source>Y :</source>
-        <translation>Y :</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="59"/>
-        <source>Tableau suivant</source>
-        <translation>Next table</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="138"/>
-        <source>X :</source>
-        <translation>X :</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="176"/>
-        <source>Tableau précédent</source>
-        <translation>Previous table</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="214"/>
-        <source>Tableau précédent :</source>
-        <translation>Previous table :</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="40"/>
-        <source>Géometrie et lignes</source>
-        <translation>Geometry and lines</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="200"/>
-        <source>Appliquer la géometrie à tous les tableaux liée à celui-ci</source>
-        <translation>Apply geometry to all tables linked to this one</translation>
+        <translation>なし</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="101"/>
         <source>Ajuster le tableau au folio</source>
-        <translation>Fit table to folio</translation>
+        <translation>表をフォリオに合わせる</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="128"/>
+        <source>Y :</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="138"/>
+        <source>X :</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="176"/>
+        <source>Tableau précédent</source>
+        <translation>前の表</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="200"/>
+        <source>Appliquer la géometrie à tous les tableaux liée à celui-ci</source>
+        <translation>この表にリンクされた全ての表に形状を適用</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="214"/>
+        <source>Tableau précédent :</source>
+        <translation>前の表 :</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="224"/>
+        <source>Lignes à afficher :</source>
+        <translation>表示する行 :</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="234"/>
         <source>TextLabel</source>
-        <translation>TextLabel</translation>
+        <translation>テキストラベル</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="250"/>
         <source>En tête</source>
-        <translation>Header</translation>
+        <translation>ヘッダ</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="274"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="433"/>
         <source>Marge</source>
-        <translation>Margin</translation>
+        <translation>余白</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="343"/>
         <source>Aligement :</source>
-        <translation>Alignment :</translation>
+        <translation>文字揃え :</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="350"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="493"/>
         <source>Gauche</source>
-        <translation>Left</translation>
+        <translation>左</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="357"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="500"/>
         <source>Centré</source>
-        <translation>Center</translation>
+        <translation>中央</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="364"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="507"/>
         <source>Droite</source>
-        <translation>Right</translation>
+        <translation>右</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="387"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="530"/>
         <source>Police</source>
-        <translation>Font</translation>
+        <translation>フォント</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="400"/>
         <source>Tableau</source>
-        <translation>Table</translation>
+        <translation>表</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="486"/>
         <source>Alignement :</source>
-        <translation>Alignment:</translation>
+        <translation>文字揃え :</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="557"/>
         <source>Contenu</source>
-        <translation>Content</translation>
+        <translation>内容</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="126"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="133"/>
         <source>Déplacer un tableau</source>
-        <translation>Move a table</translation>
+        <translation>表を移動</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="139"/>
         <source>Modifier le nombre de ligne affiché par un tableau</source>
-        <translation>Change the number of rows displayed by a table</translation>
+        <translation>表で表示されている行数を変更</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="152"/>
         <source>Modifier les marges d&apos;une en tête de tableau</source>
-        <translation>Change the margins of a table header</translation>
+        <translation>表のヘッダの余白を変更</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="165"/>
         <source>Modifier les marges d&apos;un tableau</source>
-        <translation>Change the margins of a table</translation>
+        <translation>表の余白を変更</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="173"/>
         <source>Modifier l&apos;alignement d&apos;une en tête de tableau</source>
-        <translation>Change the alignment of a table header</translation>
+        <translation>表のヘッダの文字揃えを変更</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="181"/>
         <source>Modifier l&apos;alignement des textes d&apos;un tableau</source>
-        <translation>Change the alignment of texts in a table</translation>
+        <translation>表の中のテキストの文字揃えを変更</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="215"/>
         <source>Modifier la police d&apos;une en tête de tableau</source>
-        <translation>Change the font of a table header</translation>
+        <translation>表のヘッダのフォントを変更</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="237"/>
         <source>Changer la police d&apos;un tableau</source>
-        <translation>Change the font of a table</translation>
+        <translation>表のフォントを変更</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="338"/>
         <source>&lt;center&gt;ATTENTION :&lt;/center&gt;
  il manque %1 lignes afin d&apos;afficher l&apos;intégralité des informations</source>
-        <translation>&lt;center&gt; ATTENTION: &lt;/center&gt;
- % 1 lines are missing to display all the informations</translation>
+        <translation>&lt;center&gt;注意 :&lt;/center&gt;
+全ての情報を表示するには %1 行が不足しています</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="450"/>
         <source>Appliquer la géometrie d&apos;un tableau aux tableau liée à celui-ci</source>
-        <translation>Apply the geometry of a table to the table linked to it</translation>
+        <translation>この表にリンクされた全ての表に形状を適用</translation>
     </message>
 </context>
 <context>
@@ -3700,27 +3708,27 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>フォーム</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="23"/>
         <source>Verrouiller la position</source>
-        <translation>Lock Position</translation>
+        <translation>位置を固定</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="30"/>
         <source>Dimension de l&apos;image</source>
-        <translation>Image size</translation>
+        <translation>画像の大きさ</translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="50"/>
         <source>%</source>
-        <translation>%</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/imagepropertieswidget.cpp" line="141"/>
         <source>Modifier la taille d&apos;une image</source>
-        <translation>Resizing an image</translation>
+        <translation>画像の大きさを変更</translation>
     </message>
 </context>
 <context>
@@ -3728,32 +3736,32 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="14"/>
         <source>Intégration d&apos;un élément</source>
-        <translation>Integration of an element</translation>
+        <translation>要素の統合</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="20"/>
         <source>L&apos;élément a déjà été intégré dans le projet. Toutefois, la version que vous tentez de poser semble différente. Que souhaitez-vous faire ?</source>
-        <translation>The element has already been integrated in the project. However, the version you&apos;re trying to drop appears to be different. What do you wish to do ?</translation>
+        <translation>要素は既にプロジェクトに統合されています。しかし適用しようとしたバージョンが異なるようです。どうしますか?</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="27"/>
         <source>Utiliser l&apos;élément déjà integré</source>
-        <translation>Using the already integrated element</translation>
+        <translation>既に統合された要素を使用</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="34"/>
         <source>Intégrer l&apos;élément déposé</source>
-        <translation>Integrate the dropped element</translation>
+        <translation>適用しようとした要素の統合</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="52"/>
         <source>Écraser l&apos;élément déjà intégé</source>
-        <translation>Overwrite the already integrated element</translation>
+        <translation>既に統合された要素に上書き</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="59"/>
         <source>Faire cohabiter les deux éléments</source>
-        <translation>Make the two elements coexist</translation>
+        <translation>両方の要素を共存させる</translation>
     </message>
 </context>
 <context>
@@ -3761,17 +3769,17 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>Dialog</translation>
+        <translation>ダイアログ</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="20"/>
         <source>TextLabel</source>
-        <translation>TextLabel</translation>
+        <translation>テキストラベル</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="30"/>
         <source>Écraser les textes existants</source>
-        <translation>Erase existing texts</translation>
+        <translation>既存のテキストに上書き</translation>
     </message>
 </context>
 <context>
@@ -3779,55 +3787,60 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>フォーム</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="20"/>
         <source>X :</source>
-        <translation>X :</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="30"/>
         <source>Éditeur avancé</source>
-        <translation>Advanced Editor</translation>
+        <translation>高度な編集</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="37"/>
         <source>Taille :</source>
-        <translation>Size :</translation>
+        <translation>大きさ :</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="47"/>
         <source>Angle :</source>
-        <translation>Angle:</translation>
+        <translation>角度 :</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="57"/>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="93"/>
         <source>px</source>
-        <translation>px</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="109"/>
         <source>°</source>
-        <translation>°</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="122"/>
         <source>Y :</source>
-        <translation>Y :</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="132"/>
         <source>Le contenu, la taille et la police du texte ne peuvent être modifié car formaté en html.
 Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
-        <translation>The contents, the size and the font of the text can not be modified because formatted in html.
-Please use the advanced editor for this.</translation>
+        <translation>HTML で書式が設定されていると、内容、大きさ、フォントを変更できません。
+この場合は高度な編集を使用してください。</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="146"/>
+        <source>Cliquez ici pour annuler le formatage html</source>
+        <translation>HTML 書式を解除</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="153"/>
         <source>Texte</source>
-        <translation>Text</translation>
+        <translation>テキスト</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="160"/>
@@ -3835,58 +3848,53 @@ Please use the advanced editor for this.</translation>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="407"/>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="454"/>
         <source>Police</source>
-        <translation>Font</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="146"/>
-        <source>Cliquez ici pour annuler le formatage html</source>
-        <translation>Click here to cancel html formatting</translation>
+        <translation>フォント</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="179"/>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="184"/>
         <source>Déplacer un champ texte</source>
-        <translation>Move a text field</translation>
+        <translation>テキスト領域を移動</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="189"/>
         <source>Pivoter un champ texte</source>
-        <translation>Rotate a text field</translation>
+        <translation>テキスト領域を回転</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="193"/>
         <source>Modifier un champ texte</source>
-        <translation>Edit the text field</translation>
+        <translation>テキスト領域を変更</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="199"/>
         <source>Modifier la taille d&apos;un champ texte</source>
-        <translation>Change the size of a text field</translation>
+        <translation>テキスト領域の大きさを変更</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="204"/>
         <source>Modifier la police d&apos;un champ texte</source>
-        <translation>Change the font of a text field</translation>
+        <translation>テキスト領域のフォントを変更</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="239"/>
         <source>Pivoter plusieurs champs texte</source>
-        <translation>Rotate multiple text fields</translation>
+        <translation>複数のテキスト領域を回転</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="254"/>
         <source>Modifier la taille de plusieurs champs texte</source>
-        <translation>Change the size of multiple text fields</translation>
+        <translation>複数のテキスト領域の大きさの変更</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="270"/>
         <source>Modifier la police de plusieurs champs texte</source>
-        <translation>Change the font of several text fields</translation>
+        <translation>複数のテキスト領域のフォントを変更</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="282"/>
         <source>Modifier les propriétés d&apos;un texte</source>
-        <translation>Modify the properties of a text</translation>
+        <translation>テキストの属性を変更</translation>
     </message>
 </context>
 <context>
@@ -3895,127 +3903,127 @@ Please use the advanced editor for this.</translation>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="45"/>
         <source>Impossible d&apos;accéder à la catégorie parente</source>
         <comment>error message</comment>
-        <translation>Unable to get the parent category</translation>
+        <translation>親カテゴリを取得できません</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="46"/>
         <source>Impossible d&apos;obtenir la description XML de ce modèle</source>
         <comment>error message</comment>
-        <translation>Unable to get this template&apos;s XML description</translation>
+        <translation>このテンプレートの XML 記述を取得できません</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="86"/>
         <source>Erreur</source>
         <comment>message box title</comment>
-        <translation>Error</translation>
+        <translation>エラー</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="148"/>
         <source>Intégration d&apos;un modèle de cartouche</source>
-        <translation>Integration of a title block template</translation>
+        <translation>表題欄テンプレートの統合</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="152"/>
         <source>Le modèle a déjà été intégré dans le projet. Toutefois, la version que vous tentez d&apos;appliquer semble différente. Que souhaitez-vous faire ?</source>
         <comment>dialog content - %1 is a title block template name</comment>
-        <translation>The template has already been integrated in the project. However, the version you are trying to apply appears to be different. What do you wish to do?</translation>
+        <translation>テンプレートは既にプロジェクトに統合されています。しかし適用しようとしたバージョンが異なるようです。どうしますか?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="164"/>
         <source>Utiliser le modèle déjà intégré</source>
         <comment>dialog content</comment>
-        <translation>Use the already integrated template</translation>
+        <translation>既に統合されたテンプレートを使用</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="173"/>
         <source>Intégrer le modèle déposé</source>
         <comment>dialog content</comment>
-        <translation>Integrate the dropped template</translation>
+        <translation>適用しようとしたテンプレートの統合</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="183"/>
         <source>Écraser le modèle déjà intégré</source>
         <comment>dialog content</comment>
-        <translation>Erase the already integrated template</translation>
+        <translation>既に統合されたテンプレートに上書き</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="193"/>
         <source>Faire cohabiter les deux modèles</source>
         <comment>dialog content</comment>
-        <translation>Make both templates coexist</translation>
+        <translation>両方のテンプレートを共存させる</translation>
     </message>
 </context>
 <context>
     <name>LineEditor</name>
     <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="76"/>
-        <source>Fin 1</source>
-        <translation>End 1</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/lineeditor.cpp" line="79"/>
-        <source>Fin 2</source>
-        <translation>End 2</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/lineeditor.cpp" line="50"/>
         <source>Normale</source>
         <comment>type of the 1st end of a line</comment>
-        <translation>Normal</translation>
+        <translation>なし</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="51"/>
         <source>Flèche simple</source>
         <comment>type of the 1st end of a line</comment>
-        <translation>Simple arrow</translation>
+        <translation>単純矢印</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="52"/>
         <source>Flèche triangulaire</source>
         <comment>type of the 1st end of a line</comment>
-        <translation>Triangle arrow</translation>
+        <translation>三角矢印</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="53"/>
         <source>Cercle</source>
         <comment>type of the 1st end of a line</comment>
-        <translation>Circle</translation>
+        <translation>円</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="54"/>
         <source>Carré</source>
         <comment>type of the 1st end of a line</comment>
-        <translation>Diamond</translation>
+        <translation>ダイヤモンド</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="56"/>
         <source>Normale</source>
         <comment>type of the 2nd end of a line</comment>
-        <translation>Normal</translation>
+        <translation>なし</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="57"/>
         <source>Flèche simple</source>
         <comment>type of the 2nd end of a line</comment>
-        <translation>Simple arrow</translation>
+        <translation>単純矢印</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="58"/>
         <source>Flèche triangulaire</source>
         <comment>type of the 2nd end of a line</comment>
-        <translation>Triangle arrow</translation>
+        <translation>三角矢印</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="59"/>
         <source>Cercle</source>
         <comment>type of the 2nd end of a line</comment>
-        <translation>Circle</translation>
+        <translation>貼り付け</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="60"/>
         <source>Carré</source>
         <comment>type of the 2nd end of a line</comment>
-        <translation>Diamond</translation>
+        <translation>ダイヤモンド</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/lineeditor.cpp" line="76"/>
+        <source>Fin 1</source>
+        <translation>端 1</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/lineeditor.cpp" line="79"/>
+        <source>Fin 2</source>
+        <translation>端 2</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="196"/>
@@ -4027,7 +4035,7 @@ Please use the advanced editor for this.</translation>
         <location filename="../sources/editor/lineeditor.cpp" line="335"/>
         <location filename="../sources/editor/lineeditor.cpp" line="360"/>
         <source>Modifier une ligne</source>
-        <translation>Edit a line</translation>
+        <translation>線を変更</translation>
     </message>
 </context>
 <context>
@@ -4035,49 +4043,80 @@ Please use the advanced editor for this.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>フォーム</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="20"/>
+        <source>Voir cet élément</source>
+        <translation>この要素を見る</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="42"/>
+        <source>Délier</source>
+        <translation>リンクを解除</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="49"/>
+        <source>Voir l&apos;élément lié</source>
+        <translation>リンクされた要素を見る</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="56"/>
         <source>Cet élément est déjà lié</source>
-        <translation>This element is already linked</translation>
+        <translation>要素はリンク済み</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="63"/>
         <source>Recherche</source>
-        <translation>Search</translation>
+        <translation>検索</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="44"/>
+        <source>Lier l&apos;élément</source>
+        <translation>要素をリンク</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="45"/>
+        <source>Montrer l&apos;élément</source>
+        <translation>要素を表示</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="46"/>
+        <source>Montrer l&apos;élément esclave</source>
+        <translation>子の要素を表示</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="47"/>
+        <source>Enregistrer la disposition</source>
+        <translation>レイアウトを保存</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="182"/>
+        <source>Report de folio</source>
+        <translation>フォリオ参照</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="184"/>
+        <source>Référence croisée (esclave)</source>
+        <translation>相互参照 (子)</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="418"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="422"/>
         <source>Label</source>
-        <translation>Label</translation>
+        <translation>ラベル</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="418"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="422"/>
         <source>Commentaire</source>
-        <translation>Annotation</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="422"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="434"/>
-        <source>N° de folio</source>
-        <translation>N° of folio</translation>
+        <translation>コメント</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="418"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="430"/>
         <source>Label de folio</source>
-        <translation>Label folio</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="418"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="422"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="430"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="434"/>
-        <source>Titre de folio</source>
-        <translation>Title of folio</translation>
+        <translation>フォリオのラベル</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="418"/>
@@ -4085,82 +4124,51 @@ Please use the advanced editor for this.</translation>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="430"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="434"/>
         <source>Position</source>
-        <translation>Position</translation>
+        <translation>位置</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="418"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="422"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="430"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="434"/>
+        <source>Titre de folio</source>
+        <translation>フォリオの表題</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="422"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="434"/>
+        <source>N° de folio</source>
+        <translation>フォリオ番号</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="430"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="434"/>
         <source>N° de fil</source>
-        <translation>N° wire</translation>
+        <translation>線番</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="430"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="434"/>
         <source>Fonction</source>
-        <translation>Function</translation>
+        <translation>機能</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="430"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="434"/>
         <source>Tension / Protocole</source>
-        <translation>Voltage / Protocol</translation>
+        <translation>電圧 / プロトコル</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="430"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="434"/>
         <source>Couleur du conducteur</source>
-        <translation>Conductor color</translation>
+        <translation>導体色</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="430"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="434"/>
         <source>Section du conducteur</source>
-        <translation>Conductor section</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="20"/>
-        <source>Voir cet élément</source>
-        <translation>View this item</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="49"/>
-        <source>Voir l&apos;élément lié</source>
-        <translation>See the linked item</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="44"/>
-        <source>Lier l&apos;élément</source>
-        <translation>Link the item</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="45"/>
-        <source>Montrer l&apos;élément</source>
-        <translation>Show item</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="46"/>
-        <source>Montrer l&apos;élément esclave</source>
-        <translation>Show slave element</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="47"/>
-        <source>Enregistrer la disposition</source>
-        <translation>Save the layout</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="182"/>
-        <source>Report de folio</source>
-        <translation>Folio referencing</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="184"/>
-        <source>Référence croisée (esclave)</source>
-        <translation>Cross Reference (slave)</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="42"/>
-        <source>Délier</source>
-        <translation>Unlink</translation>
+        <translation>導体部</translation>
     </message>
 </context>
 <context>
@@ -4168,12 +4176,12 @@ Please use the advanced editor for this.</translation>
     <message>
         <location filename="../sources/machine_info.cpp" line="79"/>
         <source>Compilation : </source>
-        <translation>Compilation: </translation>
+        <translation>コンパイル : </translation>
     </message>
     <message>
         <location filename="../sources/machine_info.cpp" line="282"/>
         <source>Compilation :   </source>
-        <translation></translation>
+        <translation>コンパイル :   </translation>
     </message>
 </context>
 <context>
@@ -4181,27 +4189,27 @@ Please use the advanced editor for this.</translation>
     <message>
         <location filename="../sources/ui/marginseditdialog.ui" line="14"/>
         <source>Editer les marges</source>
-        <translation>Edit margins</translation>
+        <translation>余白の編集</translation>
     </message>
     <message>
         <location filename="../sources/ui/marginseditdialog.ui" line="71"/>
         <source>Haut :</source>
-        <translation>Top :</translation>
+        <translation>上 :</translation>
     </message>
     <message>
         <location filename="../sources/ui/marginseditdialog.ui" line="78"/>
         <source>Gauche :</source>
-        <translation>Left :</translation>
+        <translation>左 :</translation>
     </message>
     <message>
         <location filename="../sources/ui/marginseditdialog.ui" line="85"/>
         <source>Droit :</source>
-        <translation>Right :</translation>
+        <translation>右 :</translation>
     </message>
     <message>
         <location filename="../sources/ui/marginseditdialog.ui" line="92"/>
         <source>Bas :</source>
-        <translation>Bottom :</translation>
+        <translation>下 :</translation>
     </message>
 </context>
 <context>
@@ -4209,85 +4217,85 @@ Please use the advanced editor for this.</translation>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="20"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>フォーム</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="32"/>
+        <source>Éléments liés</source>
+        <translation>リンクする要素</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="123"/>
+        <source>Éléments disponibles</source>
+        <translation>利用可能な要素</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="133"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Délier l&apos;élément sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Unlink the selected item&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;選択した要素のリンクを解除&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="147"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Lier l&apos;élément sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Link the selected item&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;選択した要素をリンク&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="46"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="52"/>
         <source>Vignette</source>
-        <translation>Thumbnail</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="53"/>
-        <source>N° de folio</source>
-        <translation>N° of folio</translation>
+        <translation>サムネイル</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="47"/>
         <source>Label de folio</source>
-        <translation>Label folio</translation>
+        <translation>フォリオのラベル</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="48"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="54"/>
         <source>Titre de folio</source>
-        <translation>Title of folio</translation>
+        <translation>フォリオの表題</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="49"/>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="55"/>
         <source>Position</source>
-        <translation>Position</translation>
+        <translation>位置</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="123"/>
-        <source>Éléments disponibles</source>
-        <translation>Available elements</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="32"/>
-        <source>Éléments liés</source>
-        <translation>Elements related</translation>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="53"/>
+        <source>N° de folio</source>
+        <translation>フォリオ番号</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="61"/>
         <source>Lier l&apos;élément</source>
-        <translation>Link the item</translation>
+        <translation>要素をリンク</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="62"/>
         <source>Délier l&apos;élément</source>
-        <translation>Unlink the item</translation>
+        <translation>要素のリンクを解除</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="63"/>
         <source>Montrer l&apos;élément</source>
-        <translation>Show item</translation>
+        <translation>要素を表示</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="64"/>
         <source>Montrer l&apos;élément maître</source>
-        <translation>Show master element</translation>
+        <translation>マスター要素を表示</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="65"/>
         <source>Enregistrer la disposition</source>
-        <translation>Save the layout</translation>
+        <translation>レイアウトを保存</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.h" line="61"/>
         <source>Référence croisée (maître)</source>
-        <translation>Cross-reference (master)</translation>
+        <translation>相互参照 (マスター)</translation>
     </message>
 </context>
 <context>
@@ -4295,12 +4303,12 @@ Please use the advanced editor for this.</translation>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="14"/>
         <source>Collage multiple</source>
-        <translation>Multiple paste</translation>
+        <translation>複数貼り付け</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="22"/>
         <source>Décalage</source>
-        <translation>offset</translation>
+        <translation>オフセット</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="29"/>
@@ -4321,27 +4329,27 @@ Please use the advanced editor for this.</translation>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="77"/>
         <source>Nombre de copie</source>
-        <translation>Number of copies</translation>
+        <translation>コピー数</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="93"/>
         <source>Auto-connexion</source>
-        <translation>Auto-connection</translation>
+        <translation>自動連結</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="100"/>
         <source>Auto-numérotation des éléments</source>
-        <translation>Self-numbering of elements</translation>
+        <translation>要素の自動採番</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="107"/>
         <source>Auto-numérotation des conducteurs</source>
-        <translation>Self-numbering of conductors</translation>
+        <translation>導体の自動採番</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.cpp" line="98"/>
         <source>Multi-collage</source>
-        <translation>Multi-paste</translation>
+        <translation>複数貼り付け</translation>
     </message>
 </context>
 <context>
@@ -4349,12 +4357,12 @@ Please use the advanced editor for this.</translation>
     <message>
         <location filename="../sources/NameList/ui/namelistdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>Dialog</translation>
+        <translation>ダイアログ</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistdialog.cpp" line="66"/>
         <source>Variables de cartouche</source>
-        <translation>Title block variables</translation>
+        <translation>表題欄の変数</translation>
     </message>
 </context>
 <context>
@@ -4362,27 +4370,27 @@ Please use the advanced editor for this.</translation>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>フォーム</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="21"/>
         <source>Langue</source>
-        <translation>Language</translation>
+        <translation>言語</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="26"/>
         <source>Texte</source>
-        <translation>Text</translation>
+        <translation>テキスト</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="36"/>
         <source>Ajouter une ligne</source>
-        <translation>Add a line</translation>
+        <translation>行を追加</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="48"/>
         <source>Copier dans le presse papier</source>
-        <translation>Copy to clipboard</translation>
+        <translation>クリップボードにコピー</translation>
     </message>
 </context>
 <context>
@@ -4390,42 +4398,72 @@ Please use the advanced editor for this.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="84"/>
         <source>Folio</source>
-        <translation>Folio</translation>
+        <translation>フォリオ</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="85"/>
         <source>Conducteur</source>
-        <translation>Conductor</translation>
+        <translation>導体</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="86"/>
         <source>Reports de folio</source>
-        <translation>Folio referencings</translation>
+        <translation>フォリオ参照</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="87"/>
         <source>Références croisées</source>
-        <translation>Cross References</translation>
+        <translation>相互参照</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="187"/>
         <source>Nouveau folio</source>
         <comment>configuration page title</comment>
-        <translation>New folio</translation>
+        <translation>新規フォリオ</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="188"/>
         <source>Nouveau projet</source>
         <comment>configuration page title</comment>
-        <translation>New project</translation>
+        <translation>新規プロジェクト</translation>
     </message>
 </context>
 <context>
     <name>NewElementWizard</name>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="111"/>
-        <source>Vous n&apos;êtes pas obligé de préciser l&apos;extension *.elmt. Elle sera ajoutée automatiquement.</source>
-        <translation>You don&apos;t have to specify the *.elmt extension. It will be added automatically.</translation>
+        <location filename="../sources/newelementwizard.cpp" line="43"/>
+        <source>Créer un nouvel élément : Assistant</source>
+        <comment>window title</comment>
+        <translation>新規要素作成ウィザード</translation>
+    </message>
+    <message>
+        <location filename="../sources/newelementwizard.cpp" line="44"/>
+        <source>&amp;Suivant &gt;</source>
+        <translation>次 &gt; (&amp;N)</translation>
+    </message>
+    <message>
+        <location filename="../sources/newelementwizard.cpp" line="79"/>
+        <source>Étape 1/3 : Catégorie parente</source>
+        <comment>wizard page title</comment>
+        <translation>ステップ 1/3: 親のカテゴリ</translation>
+    </message>
+    <message>
+        <location filename="../sources/newelementwizard.cpp" line="80"/>
+        <source>Sélectionnez une catégorie dans laquelle enregistrer le nouvel élément.</source>
+        <comment>wizard page subtitle</comment>
+        <translation>新規要素を保存するカテゴリを選択してください。</translation>
+    </message>
+    <message>
+        <location filename="../sources/newelementwizard.cpp" line="105"/>
+        <source>Étape 2/3 : Nom du fichier</source>
+        <comment>wizard page title</comment>
+        <translation>ステップ 2/3 : ファイル名</translation>
+    </message>
+    <message>
+        <location filename="../sources/newelementwizard.cpp" line="106"/>
+        <source>Indiquez le nom du fichier dans lequel enregistrer le nouvel élément.</source>
+        <comment>wizard page subtitle</comment>
+        <translation>新規要素のファイル名を入力してください。</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="109"/>
@@ -4433,57 +4471,27 @@ Please use the advanced editor for this.</translation>
         <translation>new_element</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="44"/>
-        <source>&amp;Suivant &gt;</source>
-        <translation>&amp;Next &gt;</translation>
-    </message>
-    <message>
-        <location filename="../sources/newelementwizard.cpp" line="43"/>
-        <source>Créer un nouvel élément : Assistant</source>
-        <comment>window title</comment>
-        <translation>Create a new element: wizard</translation>
-    </message>
-    <message>
-        <location filename="../sources/newelementwizard.cpp" line="79"/>
-        <source>Étape 1/3 : Catégorie parente</source>
-        <comment>wizard page title</comment>
-        <translation>Step 1 of 3: Parent category</translation>
-    </message>
-    <message>
-        <location filename="../sources/newelementwizard.cpp" line="80"/>
-        <source>Sélectionnez une catégorie dans laquelle enregistrer le nouvel élément.</source>
-        <comment>wizard page subtitle</comment>
-        <translation>Select a category which to save the new element in.</translation>
-    </message>
-    <message>
-        <location filename="../sources/newelementwizard.cpp" line="105"/>
-        <source>Étape 2/3 : Nom du fichier</source>
-        <comment>wizard page title</comment>
-        <translation>Step 2 of 3: Filename</translation>
-    </message>
-    <message>
-        <location filename="../sources/newelementwizard.cpp" line="106"/>
-        <source>Indiquez le nom du fichier dans lequel enregistrer le nouvel élément.</source>
-        <comment>wizard page subtitle</comment>
-        <translation>Enter the name of the file for the new element.</translation>
+        <location filename="../sources/newelementwizard.cpp" line="111"/>
+        <source>Vous n&apos;êtes pas obligé de préciser l&apos;extension *.elmt. Elle sera ajoutée automatiquement.</source>
+        <translation>拡張子 *.elmt を指定する必要はありません。自動的に付加されます。</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="129"/>
         <source>Étape 3/3 : Noms de l&apos;élément</source>
         <comment>wizard page title</comment>
-        <translation>Step 3 of 3: Element names</translation>
+        <translation>Étape 3/3 : 要素名</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="130"/>
         <source>Indiquez le ou les noms de l&apos;élément.</source>
         <comment>wizard page subtitle</comment>
-        <translation>Enter one or more names for the element.</translation>
+        <translation>ひとつまたは複数の要素名を入力してください。</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="135"/>
         <source>Nom du nouvel élément</source>
         <comment>default name when creating a new element</comment>
-        <translation>New element name</translation>
+        <translation>新規の要素名</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="193"/>
@@ -4491,24 +4499,24 @@ Please use the advanced editor for this.</translation>
         <location filename="../sources/newelementwizard.cpp" line="223"/>
         <source>Erreur</source>
         <comment>message box title</comment>
-        <translation>Error</translation>
+        <translation>エラー</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="194"/>
         <source>Vous devez sélectionner une catégorie.</source>
         <comment>message box content</comment>
-        <translation>You must select a category.</translation>
+        <translation>カテゴリを選択する必要があります。</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="211"/>
         <source>Vous devez entrer un nom de fichier</source>
         <comment>message box content</comment>
-        <translation>You must enter a filename</translation>
+        <translation>ファイル名を入力する必要があります</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="224"/>
         <source>Un élément portant le même nom existe déjà</source>
-        <translation>An element with the same name already exists</translation>
+        <translation>同名の要素が既に存在します</translation>
     </message>
 </context>
 <context>
@@ -4516,7 +4524,7 @@ Please use the advanced editor for this.</translation>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>フォーム</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="86"/>
@@ -4525,7 +4533,7 @@ Please use the advanced editor for this.</translation>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="178"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="295"/>
         <source>Chiffre 1</source>
-        <translation>number format 1</translation>
+        <translation>数の書式 1</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="86"/>
@@ -4534,7 +4542,7 @@ Please use the advanced editor for this.</translation>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="182"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="299"/>
         <source>Chiffre 01</source>
-        <translation>number format 01</translation>
+        <translation>数の書式 01</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="87"/>
@@ -4543,7 +4551,7 @@ Please use the advanced editor for this.</translation>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="186"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="303"/>
         <source>Chiffre 001</source>
-        <translation>number format 001</translation>
+        <translation>数の書式 001</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="88"/>
@@ -4552,23 +4560,7 @@ Please use the advanced editor for this.</translation>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="190"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="307"/>
         <source>Texte</source>
-        <translation>Text</translation>
-    </message>
-    <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="94"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="99"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="192"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="309"/>
-        <source>N° folio</source>
-        <translation>N° scheme</translation>
-    </message>
-    <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="94"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="99"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="194"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="311"/>
-        <source>Folio</source>
-        <translation>Folio</translation>
+        <translation>テキスト</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="92"/>
@@ -4576,7 +4568,7 @@ Please use the advanced editor for this.</translation>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="180"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="297"/>
         <source>Chiffre 1 - Folio</source>
-        <translation>number format 1 - Folio</translation>
+        <translation>数の書式 1 - フォリオ</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="93"/>
@@ -4584,7 +4576,7 @@ Please use the advanced editor for this.</translation>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="184"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="301"/>
         <source>Chiffre 01 - Folio</source>
-        <translation>number format 01 - Folio</translation>
+        <translation>数の書式 01 - フォリオ</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="93"/>
@@ -4592,15 +4584,23 @@ Please use the advanced editor for this.</translation>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="188"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="305"/>
         <source>Chiffre 001 - Folio</source>
-        <translation>number format 001 - Folio</translation>
+        <translation>数の書式 001 - フォリオ</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="94"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="99"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="198"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="315"/>
-        <source>Locmach</source>
-        <translation>Location</translation>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="192"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="309"/>
+        <source>N° folio</source>
+        <translation>フォリオ番号</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="94"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="99"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="194"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="311"/>
+        <source>Folio</source>
+        <translation>フォリオ名</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="94"/>
@@ -4608,28 +4608,36 @@ Please use the advanced editor for this.</translation>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="196"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="313"/>
         <source>Installation</source>
-        <translation>Plant</translation>
+        <translation>設備</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="94"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="99"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="198"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="315"/>
+        <source>Locmach</source>
+        <translation>場所</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="100"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="200"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="317"/>
         <source>Element Line</source>
-        <translation>Element Line</translation>
+        <translation>要素の行</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="100"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="202"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="319"/>
         <source>Element Column</source>
-        <translation>Element Column</translation>
+        <translation>要素の列</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="100"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="204"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="321"/>
         <source>Element Prefix</source>
-        <translation>Element Prefix</translation>
+        <translation>要素の接頭辞</translation>
     </message>
 </context>
 <context>
@@ -4640,7 +4648,7 @@ Please use the advanced editor for this.</translation>
         <location filename="../sources/editor/graphicspart/partarc.cpp" line="336"/>
         <location filename="../sources/editor/graphicspart/partarc.cpp" line="343"/>
         <source>Modifier un arc</source>
-        <translation>Edit an arc</translation>
+        <translation>弧を変更</translation>
     </message>
 </context>
 <context>
@@ -4649,12 +4657,12 @@ Please use the advanced editor for this.</translation>
         <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="53"/>
         <source>Champ de texte dynamique</source>
         <comment>element part name</comment>
-        <translation>Dynamic text field</translation>
+        <translation>動的テキスト領域</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="451"/>
         <source>Déplacer un champ texte</source>
-        <translation>Move a text field</translation>
+        <translation>テキスト領域を移動</translation>
     </message>
 </context>
 <context>
@@ -4662,7 +4670,7 @@ Please use the advanced editor for this.</translation>
     <message>
         <location filename="../sources/editor/graphicspart/partellipse.cpp" line="291"/>
         <source>Modifier un rectangle</source>
-        <translation>Change a rectangle</translation>
+        <translation>矩形を変更</translation>
     </message>
 </context>
 <context>
@@ -4670,7 +4678,7 @@ Please use the advanced editor for this.</translation>
     <message>
         <location filename="../sources/editor/graphicspart/partline.cpp" line="253"/>
         <source>Modifier une ligne</source>
-        <translation>Edit a line</translation>
+        <translation>線を変更</translation>
     </message>
 </context>
 <context>
@@ -4678,27 +4686,27 @@ Please use the advanced editor for this.</translation>
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="38"/>
         <source>Ajouter un point</source>
-        <translation>Add a point</translation>
+        <translation>点を追加</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="41"/>
         <source>Supprimer ce point</source>
-        <translation>Delete this point</translation>
+        <translation>この点を削除</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="423"/>
         <source>Modifier un polygone</source>
-        <translation>Change a polygon</translation>
+        <translation>多角形を変更</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="518"/>
         <source>Ajouter un point à un polygone</source>
-        <translation>Add a point to a polygon</translation>
+        <translation>多角形に点を追加</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="551"/>
         <source>Supprimer un point d&apos;un polygone</source>
-        <translation>Delete a point from a polygon</translation>
+        <translation>多角形から点を削除</translation>
     </message>
 </context>
 <context>
@@ -4706,12 +4714,12 @@ Please use the advanced editor for this.</translation>
     <message>
         <location filename="../sources/editor/graphicspart/parttext.cpp" line="273"/>
         <source>Déplacer un texte</source>
-        <translation>Move a text</translation>
+        <translation>テキストを移動</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/parttext.cpp" line="331"/>
         <source>Modifier un champ texte</source>
-        <translation>Edit the text field</translation>
+        <translation>テキスト領域を変更</translation>
     </message>
 </context>
 <context>
@@ -4719,65 +4727,65 @@ Please use the advanced editor for this.</translation>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/polygoneditor.ui" line="31"/>
-        <source>X</source>
-        <translation>X</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/polygoneditor.ui" line="36"/>
-        <source>Y</source>
-        <translation>Y</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/polygoneditor.ui" line="44"/>
-        <source>Polygone fermé</source>
-        <translation>Closed polygon</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/polygoneditor.ui" line="55"/>
-        <source>Ajouter un point</source>
-        <translation>Add a point</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/polygoneditor.ui" line="64"/>
-        <source>Supprimer ce point</source>
-        <translation>Delete this point</translation>
+        <translation>フォーム</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="20"/>
         <source>Points du polygone :</source>
-        <translation>Polygon points:</translation>
+        <translation>多角形の頂点 :</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/polygoneditor.ui" line="31"/>
+        <source>X</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/polygoneditor.ui" line="36"/>
+        <source>Y</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/polygoneditor.ui" line="44"/>
+        <source>Polygone fermé</source>
+        <translation>閉じた多角形</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/polygoneditor.ui" line="55"/>
+        <source>Ajouter un point</source>
+        <translation>点を追加</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/polygoneditor.ui" line="64"/>
+        <source>Supprimer ce point</source>
+        <translation>この点を削除</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.cpp" line="189"/>
         <location filename="../sources/editor/ui/polygoneditor.cpp" line="217"/>
         <source>Modifier un polygone</source>
-        <translation>Change a polygon</translation>
+        <translation>多角形を変更</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.cpp" line="210"/>
         <source>Erreur</source>
         <comment>message box title</comment>
-        <translation>Error</translation>
+        <translation>エラー</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.cpp" line="210"/>
         <source>Le polygone doit comporter au moins deux points.</source>
         <comment>message box content</comment>
-        <translation>The polygon must contain at least two points.</translation>
+        <translation>多角形は少なくても 2 点を含む必要があります。</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.cpp" line="278"/>
         <source>Ajouter un point à un polygone</source>
-        <translation>Add a point to a polygon</translation>
+        <translation>多角形に点を追加</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.cpp" line="297"/>
         <source>Supprimer un point d&apos;un polygone</source>
-        <translation>Delete a point from a polygon</translation>
+        <translation>多角形から点を削除</translation>
     </message>
 </context>
 <context>
@@ -4785,41 +4793,20 @@ Please use the advanced editor for this.</translation>
     <message>
         <location filename="../sources/ui/potentialselectordialog.ui" line="14"/>
         <source>Sélectionner le potentiel éléctrique</source>
-        <translation>Select the electric potential</translation>
+        <translation>電位を選択</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.ui" line="38"/>
         <source>Vous tentez de lier deux potentiels différents ensemble.
 Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
-        <translation>You try to link two different potentials together.
-Please select the properties to be applied to new potential.</translation>
+        <translation>異る 2 つの電位を接続しようとしています。
+新しい電位に適用する属性を選択してください。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="191"/>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="276"/>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="292"/>
-        <source>
-Fonction : %1</source>
-        <translation>
-Fonction : %1</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="193"/>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="278"/>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="294"/>
-        <source>
-Tension/protocole : %1</source>
-        <translation>
-Voltage / Protocol : %1</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="267"/>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="284"/>
-        <source>%n conducteurs composent le potentiel suivant :</source>
-        <translation>
-            <numerusform>%n conductor make up the following potential :</numerusform>
-            <numerusform>%n conductors make up the following potential :</numerusform>
-        </translation>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="180"/>
+        <source>Veuillez choisir un potentiel électrique de la liste 
+à utiliser pour le nouveau potentiel</source>
+        <translation>新な電位として使う電位をリストから選んでください</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="189"/>
@@ -4828,14 +4815,25 @@ Voltage / Protocol : %1</translation>
         <source>
 Numéro : %1</source>
         <translation>
-Numéro : %1</translation>
+番号 : %1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialselectordialog.cpp" line="180"/>
-        <source>Veuillez choisir un potentiel électrique de la liste 
-à utiliser pour le nouveau potentiel</source>
-        <translation>Please select an electrical potential from the list 
-to use for the new potential</translation>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="191"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="276"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="292"/>
+        <source>
+Fonction : %1</source>
+        <translation>
+機能 : %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="193"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="278"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="294"/>
+        <source>
+Tension/protocole : %1</source>
+        <translation>
+電圧 / プロトコル : %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="195"/>
@@ -4844,7 +4842,7 @@ to use for the new potential</translation>
         <source>
 Couleur du conducteur : %1</source>
         <translation>
-Conductor color : %1</translation>
+導体色 : %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="197"/>
@@ -4853,13 +4851,21 @@ Conductor color : %1</translation>
         <source>
 Section du conducteur : %1</source>
         <translation>
-Conductor section : %1</translation>
+導体部 : %1</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="267"/>
+        <location filename="../sources/ui/potentialselectordialog.cpp" line="284"/>
+        <source>%n conducteurs composent le potentiel suivant :</source>
+        <translation>
+            <numerusform>%n 導体が次の電位です :</numerusform>
+        </translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="351"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation>Edit the properties of several conductors</translation>
+        <translation>複数の導体の属性変更</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="387"/>
@@ -4867,9 +4873,9 @@ Conductor section : %1</translation>
 Veuillez saisir une formule compatible pour ce potentiel.
 Les variables suivantes sont incompatibles :
 %sequf_  %seqtf_  %seqhf_  %id  %F  %M  %LM</source>
-        <translation>The new potential formula contains variables incompatible with the folio reports.
-Please enter a compatible formula for this potential.
-The following variables are incompatible:
+        <translation>新規電位の式がフォリオ参照に適合しない変数を含んでいます。
+この電位に適合する式を入力してください。
+次の変数が使用できません:
 %sequf_  %seqtf_  %seqhf_  %id  %F  %M  %LM</translation>
     </message>
 </context>
@@ -4879,7 +4885,7 @@ The following variables are incompatible:
         <location filename="../sources/configpages.cpp" line="330"/>
         <source>Impression</source>
         <comment>configuration page title</comment>
-        <translation>Printing</translation>
+        <translation>印刷</translation>
     </message>
 </context>
 <context>
@@ -4887,43 +4893,32 @@ The following variables are incompatible:
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="235"/>
         <source>Numérotation auto</source>
-        <translation>Auto Numbering</translation>
+        <translation>自動採番</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="262"/>
         <source>Management</source>
-        <translation>Management</translation>
+        <translation>管理</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="266"/>
         <source>Conducteurs</source>
-        <translation>Conductors</translation>
+        <translation>導体</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="270"/>
         <source>Eléments</source>
-        <translation>Elements</translation>
+        <translation>要素</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="274"/>
         <source>Folios</source>
-        <translation>Folios</translation>
+        <translation>フォリオ</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="278"/>
         <source>Numérotation auto des folios</source>
-        <translation>Folio Auto Numbering</translation>
-    </message>
-    <message>
-        <location filename="../sources/projectconfigpages.cpp" line="389"/>
-        <location filename="../sources/projectconfigpages.cpp" line="393"/>
-        <location filename="../sources/projectconfigpages.cpp" line="433"/>
-        <location filename="../sources/projectconfigpages.cpp" line="434"/>
-        <location filename="../sources/projectconfigpages.cpp" line="435"/>
-        <location filename="../sources/projectconfigpages.cpp" line="461"/>
-        <location filename="../sources/projectconfigpages.cpp" line="462"/>
-        <source>Sans nom</source>
-        <translation>No name</translation>
+        <translation>フォリオ自動採番</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="348"/>
@@ -4936,7 +4931,18 @@ The following variables are incompatible:
         <location filename="../sources/projectconfigpages.cpp" line="600"/>
         <location filename="../sources/projectconfigpages.cpp" line="612"/>
         <source>Nom de la nouvelle numérotation</source>
-        <translation>Name the new numbering</translation>
+        <translation>新規採番の名前付け</translation>
+    </message>
+    <message>
+        <location filename="../sources/projectconfigpages.cpp" line="389"/>
+        <location filename="../sources/projectconfigpages.cpp" line="393"/>
+        <location filename="../sources/projectconfigpages.cpp" line="433"/>
+        <location filename="../sources/projectconfigpages.cpp" line="434"/>
+        <location filename="../sources/projectconfigpages.cpp" line="435"/>
+        <location filename="../sources/projectconfigpages.cpp" line="461"/>
+        <location filename="../sources/projectconfigpages.cpp" line="462"/>
+        <source>Sans nom</source>
+        <translation>無題</translation>
     </message>
 </context>
 <context>
@@ -4944,12 +4950,12 @@ The following variables are incompatible:
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="339"/>
         <source>Position</source>
-        <translation>Position</translation>
+        <translation>位置</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="341"/>
         <source>Position du folio</source>
-        <translation>Folio position</translation>
+        <translation>フォリオ位置</translation>
     </message>
 </context>
 <context>
@@ -4957,17 +4963,17 @@ The following variables are incompatible:
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>フォーム</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="20"/>
         <source>Requête</source>
-        <translation>Request</translation>
+        <translation>リクエスト</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="31"/>
         <source>Recharger</source>
-        <translation>Reload</translation>
+        <translation>再読込</translation>
     </message>
 </context>
 <context>
@@ -4976,131 +4982,131 @@ The following variables are incompatible:
         <location filename="../sources/projectconfigpages.cpp" line="121"/>
         <source>Général</source>
         <comment>configuration page title</comment>
-        <translation>General</translation>
+        <translation>全般</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="164"/>
         <source>Titre du projet :</source>
         <comment>label when configuring</comment>
-        <translation>Project title :</translation>
+        <translation>プロジェクト名 :</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="166"/>
         <source>Ce titre sera disponible pour tous les folios de ce projet en tant que %projecttitle.</source>
         <comment>informative label</comment>
-        <translation>This title is made available to all child folios as %projecttitle.</translation>
+        <translation>このプロジェクト名は全ての子のフォリオで %projecttitle として利用できます.</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="168"/>
         <source>Vous pouvez définir ci-dessous des propriétés personnalisées qui seront disponibles pour tous les folios de ce projet (typiquement pour les cartouches).</source>
         <comment>informative label</comment>
-        <translation>You may define below custom properties that will be made available to all folios of the project (typically to use within title blocks).</translation>
+        <translation>プロジェクトの全てのフォリオで利用可能なカスタム属性を以下で定義できます (表題欄で用いられることが多いです).</translation>
     </message>
 </context>
 <context>
     <name>ProjectView</name>
     <message>
-        <location filename="../sources/projectview.cpp" line="676"/>
-        <source>Supprimer les éléments inutilisés dans le projet</source>
-        <translation>Delete unused elements in  the project</translation>
-    </message>
-    <message>
-        <location filename="../sources/projectview.cpp" line="677"/>
-        <source>Supprimer les catégories vides</source>
-        <translation>Delete empty categories</translation>
-    </message>
-    <message>
         <location filename="../sources/projectview.cpp" line="299"/>
         <source>Le projet à été modifié.
 Voulez-vous enregistrer les modifications ?</source>
-        <translation>The project was modified.
-Do you want to save changes?</translation>
-    </message>
-    <message>
-        <location filename="../sources/projectview.cpp" line="320"/>
-        <source>sansnom</source>
-        <translation>untitled</translation>
-    </message>
-    <message>
-        <location filename="../sources/projectview.cpp" line="321"/>
-        <source>Projet QElectroTech (*.qet)</source>
-        <comment>filetypes allowed when saving a project file</comment>
-        <translation>Project QElectroTech (*.qet)</translation>
-    </message>
-    <message>
-        <location filename="../sources/projectview.cpp" line="365"/>
-        <source>Supprimer le folio ?</source>
-        <comment>message box title</comment>
-        <translation>Delete this folio ?</translation>
-    </message>
-    <message>
-        <location filename="../sources/projectview.cpp" line="366"/>
-        <source>Êtes-vous sûr  de vouloir supprimer ce folio du projet ? Ce changement est irréversible.</source>
-        <comment>message box content</comment>
-        <translation>Do you really want to delete this folio from the project? This change is irreversible.</translation>
-    </message>
-    <message>
-        <location filename="../sources/projectview.cpp" line="668"/>
-        <source>Projet en lecture seule</source>
-        <comment>message box title</comment>
-        <translation>Read-only project</translation>
-    </message>
-    <message>
-        <location filename="../sources/projectview.cpp" line="669"/>
-        <source>Ce projet est en lecture seule. Il n&apos;est donc pas possible de le nettoyer.</source>
-        <comment>message box content</comment>
-        <translation>This project is read-only. Thus it can not be cleaned.</translation>
-    </message>
-    <message>
-        <location filename="../sources/projectview.cpp" line="675"/>
-        <source>Supprimer les modèles de cartouche inutilisés dans le projet</source>
-        <translation>delete unused templates in the project</translation>
-    </message>
-    <message>
-        <location filename="../sources/projectview.cpp" line="689"/>
-        <source>Nettoyer le projet</source>
-        <comment>window title</comment>
-        <translation>Clean project</translation>
-    </message>
-    <message>
-        <location filename="../sources/projectview.cpp" line="723"/>
-        <source>Ajouter un folio</source>
-        <translation>Add a folio</translation>
-    </message>
-    <message>
-        <location filename="../sources/projectview.cpp" line="737"/>
-        <source>Ce projet ne contient aucun folio</source>
-        <comment>label displayed when a project contains no diagram</comment>
-        <translation>This project does not contain any folio</translation>
+        <translation>プロジェクトは変更されています。
+変更を保存しますか?</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="319"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
-        <translation>Save as</translation>
+        <translation>名前を付けて保存</translation>
+    </message>
+    <message>
+        <location filename="../sources/projectview.cpp" line="320"/>
+        <source>sansnom</source>
+        <translation>無題</translation>
+    </message>
+    <message>
+        <location filename="../sources/projectview.cpp" line="321"/>
+        <source>Projet QElectroTech (*.qet)</source>
+        <comment>filetypes allowed when saving a project file</comment>
+        <translation>QElectroTech プロジェクト (*.qet)</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="343"/>
         <source>aucun projet affiché</source>
         <comment>error message</comment>
-        <translation>no active project</translation>
+        <translation>作業中のプロジェクトがありません</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="800"/>
-        <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Création des onglets de folio :&lt;/p&gt;</source>
-        <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Opening the project ...&lt;/b&gt;&lt;br/&gt;Creating folio tabs :&lt;/p&gt;</translation>
+        <location filename="../sources/projectview.cpp" line="365"/>
+        <source>Supprimer le folio ?</source>
+        <comment>message box title</comment>
+        <translation>このフォリオを削除しますか?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="833"/>
-        <source>Projet</source>
-        <comment>window title for a project-less ProjectView</comment>
-        <translation>Project</translation>
+        <location filename="../sources/projectview.cpp" line="366"/>
+        <source>Êtes-vous sûr  de vouloir supprimer ce folio du projet ? Ce changement est irréversible.</source>
+        <comment>message box content</comment>
+        <translation>本当にこのフォリオをプロジェクトから削除しますか? この変更は元に戻せません。</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="576"/>
         <source>projet</source>
         <comment>string used to generate a filename</comment>
-        <translation>project</translation>
+        <translation>プロジェクト</translation>
+    </message>
+    <message>
+        <location filename="../sources/projectview.cpp" line="668"/>
+        <source>Projet en lecture seule</source>
+        <comment>message box title</comment>
+        <translation>読み取り専用プロジェクト</translation>
+    </message>
+    <message>
+        <location filename="../sources/projectview.cpp" line="669"/>
+        <source>Ce projet est en lecture seule. Il n&apos;est donc pas possible de le nettoyer.</source>
+        <comment>message box content</comment>
+        <translation>このプロジェクトは読み取り専用です。このため整理できません。</translation>
+    </message>
+    <message>
+        <location filename="../sources/projectview.cpp" line="675"/>
+        <source>Supprimer les modèles de cartouche inutilisés dans le projet</source>
+        <translation>プロジェクトで使用されていないテンプレートを削除</translation>
+    </message>
+    <message>
+        <location filename="../sources/projectview.cpp" line="676"/>
+        <source>Supprimer les éléments inutilisés dans le projet</source>
+        <translation>プロジェクトで使用されていない要素を削除</translation>
+    </message>
+    <message>
+        <location filename="../sources/projectview.cpp" line="677"/>
+        <source>Supprimer les catégories vides</source>
+        <translation>空のカテゴリの削除</translation>
+    </message>
+    <message>
+        <location filename="../sources/projectview.cpp" line="689"/>
+        <source>Nettoyer le projet</source>
+        <comment>window title</comment>
+        <translation>プロジェクトを整理</translation>
+    </message>
+    <message>
+        <location filename="../sources/projectview.cpp" line="723"/>
+        <source>Ajouter un folio</source>
+        <translation>フォリオを追加</translation>
+    </message>
+    <message>
+        <location filename="../sources/projectview.cpp" line="737"/>
+        <source>Ce projet ne contient aucun folio</source>
+        <comment>label displayed when a project contains no diagram</comment>
+        <translation>このプロジェクトにはフォリオがありません</translation>
+    </message>
+    <message>
+        <location filename="../sources/projectview.cpp" line="800"/>
+        <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Création des onglets de folio :&lt;/p&gt;</source>
+        <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;プロジェクトを開きます ...&lt;/b&gt;&lt;br/&gt;フォリオのタブの作成 :&lt;/p&gt;</translation>
+    </message>
+    <message>
+        <location filename="../sources/projectview.cpp" line="833"/>
+        <source>Projet</source>
+        <comment>window title for a project-less ProjectView</comment>
+        <translation>プロジェクト</translation>
     </message>
 </context>
 <context>
@@ -5108,245 +5114,360 @@ Do you want to save changes?</translation>
     <message>
         <location filename="../sources/PropertiesEditor/propertieseditordockwidget.ui" line="14"/>
         <source>Propriétés de la sélection</source>
-        <translation>Selection properties</translation>
+        <translation>選択の属性</translation>
     </message>
 </context>
 <context>
     <name>QETApp</name>
     <message>
-        <location filename="../sources/qetapp.cpp" line="415"/>
-        <source>Description textuelle</source>
-        <translation>Textual description</translation>
+        <location filename="../sources/qetapp.cpp" line="96"/>
+        <source>Chargement... Initialisation du cache des collections d&apos;éléments</source>
+        <comment>splash screen caption</comment>
+        <translation>読込中... 要素コレクションのキャッシュを初期化中</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="416"/>
-        <source>Numéro d&apos;article</source>
-        <translation>Article number</translation>
+        <location filename="../sources/qetapp.cpp" line="107"/>
+        <source>Chargement... Éditeur de schéma</source>
+        <comment>splash screen caption</comment>
+        <translation>読込中... フォリオ・エディタ</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="418"/>
-        <source>Numéro de commande</source>
-        <translation>Order number</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="420"/>
-        <source>Fournisseur</source>
-        <translation>Supplier</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="419"/>
-        <source>Numéro interne</source>
-        <translation>Internal number</translation>
+        <location filename="../sources/qetapp.cpp" line="112"/>
+        <source>Chargement... Ouverture des fichiers</source>
+        <comment>splash screen caption</comment>
+        <translation>読込中... ファイルを開いています</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="192"/>
         <source>LTR</source>
         <comment>Translate this string to RTL if you are translating 		 to a Right-to-Left language, else translate to LTR</comment>
-        <translation>LTR</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="402"/>
         <source>Formule du label</source>
-        <translation>Label formula</translation>
+        <translation>ラベルの式</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="403"/>
+        <source>Label</source>
+        <translation>ラベル</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="404"/>
         <location filename="../sources/qetapp.cpp" line="508"/>
         <source>Installation</source>
-        <translation>Plant</translation>
+        <translation>設備</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="405"/>
+        <location filename="../sources/qetapp.cpp" line="509"/>
+        <source>Localisation</source>
+        <translation>場所</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="407"/>
+        <source>Commentaire</source>
+        <translation>コメント</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="408"/>
+        <location filename="../sources/qetapp.cpp" line="469"/>
+        <source>Fonction</source>
+        <translation>機能</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="409"/>
         <location filename="../sources/qetapp.cpp" line="470"/>
         <source>Tension / Protocole</source>
-        <translation>Voltage / Protocol</translation>
+        <translation>電圧 / プロトコル</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="410"/>
+        <location filename="../sources/qetapp.cpp" line="471"/>
+        <source>Couleur du fil</source>
+        <translation>導体色</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="411"/>
+        <location filename="../sources/qetapp.cpp" line="472"/>
+        <source>Section du fil</source>
+        <translation>導体部</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="412"/>
+        <source>Bloc auxiliaire 1</source>
+        <translation>補助ブロック 1</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="413"/>
+        <source>Bloc auxiliaire 2</source>
+        <translation>補助ブロック 2</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="415"/>
+        <source>Description textuelle</source>
+        <translation>テキストによる記述</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="416"/>
+        <source>Numéro d&apos;article</source>
+        <translation>商品コード</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="417"/>
+        <source>Fabricant</source>
+        <translation>製造業者</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="418"/>
+        <source>Numéro de commande</source>
+        <translation>注文番号</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="419"/>
+        <source>Numéro interne</source>
+        <translation>内部番号</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="420"/>
+        <source>Fournisseur</source>
+        <translation>供給業者</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="421"/>
         <source>Quantité</source>
-        <translation>Quantity</translation>
+        <translation>数量</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="422"/>
         <source>Unité</source>
-        <translation>Unity</translation>
+        <translation>単位</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="467"/>
         <source>Formule du texte</source>
-        <translation>Text Formula</translation>
+        <translation>テキストの式</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="468"/>
         <source>Texte</source>
-        <translation>Text</translation>
+        <translation>テキスト</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="504"/>
         <source>Titre</source>
-        <translation>Title</translation>
+        <translation>表題</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="505"/>
         <source>Auteur</source>
-        <translation>Author</translation>
+        <translation>作成者</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="506"/>
         <source>Fichier</source>
-        <translation>File</translation>
+        <translation>ファイル</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="507"/>
         <source>Folio</source>
-        <translation>Folio</translation>
+        <translation>フォリオ</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="510"/>
+        <source>Indice de révision</source>
+        <translation>改訂番号</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="511"/>
         <source>Date</source>
-        <translation>Date</translation>
+        <translation>日付</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="512"/>
         <source>Position</source>
-        <translation>Position</translation>
+        <translation>位置</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="527"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates 					collection provided by QElectroTech</comment>
-        <translation>QET title blocks</translation>
+        <translation>QET 表題欄</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="546"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s 					title block templates collection</comment>
-        <translation>User title blocks</translation>
+        <translation>ユーザ表題欄</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="1276"/>
+        <source>Q</source>
+        <comment>Single-letter example text - translate length, not meaning</comment>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="1278"/>
+        <source>QET</source>
+        <comment>Small example text - translate length, not meaning</comment>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="1280"/>
+        <source>Schema</source>
+        <comment>Normal example text - translate length, not meaning</comment>
+        <translation>回路図</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="1282"/>
+        <source>Electrique</source>
+        <comment>Normal example text - translate length, not meaning</comment>
+        <translation>電気</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="1284"/>
+        <source>QElectroTech</source>
+        <comment>Long example text - translate length, not meaning</comment>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="1769"/>
+        <source>Configurer QElectroTech</source>
+        <comment>window title</comment>
+        <translation>QElectroTech の設定</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="1909"/>
+        <source>Chargement...</source>
+        <comment>splash screen caption</comment>
+        <translation>読込中...</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="2003"/>
+        <source>Chargement... icône du systray</source>
+        <comment>splash screen caption</comment>
+        <translation>読込中... システム・トレイ・アイコン</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="2007"/>
+        <source>QElectroTech</source>
+        <comment>systray menu title</comment>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2010"/>
         <source>&amp;Quitter</source>
-        <translation>&amp;Quit</translation>
+        <translation>終了 (&amp;Q)</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2012"/>
         <source>&amp;Masquer</source>
-        <translation>&amp;Hide</translation>
+        <translation>非表示 (&amp;H)</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2014"/>
         <source>&amp;Restaurer</source>
-        <translation>&amp;Show</translation>
+        <translation>表示 (&amp;S)</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2016"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
-        <translation>&amp;Hide diagram editor</translation>
+        <translation>回路図エディタを非表示 (&amp;H)</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2019"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
-        <translation>&amp;Show diagram editors</translation>
+        <translation>回路図エディタを表示 (&amp;S)</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2022"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
-        <translation>&amp;Hide element editor</translation>
+        <translation>要素エディタを非表示 (&amp;H)</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2025"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
-        <translation>&amp;Show element editor</translation>
+        <translation>要素エディタを表示 (&amp;S)</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2028"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
-        <translation>&amp;Hide title block template editor</translation>
+        <translation>表題欄テンプレート・エディタを非表示 (&amp;H)</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2031"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
-        <translation>&amp;Show title block template editors</translation>
+        <translation>表題欄テンプレート・エディタを表示 (&amp;S)</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2034"/>
         <source>&amp;Nouvel éditeur de schéma</source>
-        <translation>&amp;New diagram editor</translation>
+        <translation>新規の回路図エディタ (&amp;N)</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2036"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
-        <translation>&amp;New element editor</translation>
+        <translation>新規の要素エディタ (&amp;N)</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2038"/>
         <source>Ferme l&apos;application QElectroTech</source>
-        <translation>Closes QElectroTech</translation>
+        <translation>QElectroTech を終了</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2039"/>
         <source>Réduire QElectroTech dans le systray</source>
-        <translation>Reduces QElectroTech into the systray</translation>
+        <translation>QElectroTech をシステム・トレイに最小化</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2040"/>
         <source>Restaurer QElectroTech</source>
-        <translation>Restore QElectroTech</translation>
+        <translation>QElectroTech を復元</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="2057"/>
+        <source>QElectroTech</source>
+        <comment>systray icon tooltip</comment>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2137"/>
         <source>Éditeurs de schémas</source>
-        <translation>Diagram editors</translation>
+        <translation>回路図エディタ</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2147"/>
         <source>Éditeurs d&apos;élément</source>
-        <translation>Element editors</translation>
+        <translation>要素エディタ</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2158"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
-        <translation>Title block template editors</translation>
+        <translation>表題欄テンプレート・エディタ</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2207"/>
         <source>&lt;b&gt;Le fichier de restauration suivant a été trouvé,&lt;br&gt;Voulez-vous l&apos;ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
-        <translation>&lt;b&gt;The following restore file has been found,&lt;br&gt;Do you want to open it ?&lt;/b&gt;&lt;br&gt;</translation>
+        <translation>&lt;b&gt;次の復元ファイルが見つかりました。&lt;br&gt;これを開きますか?&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2210"/>
         <source>&lt;b&gt;Les fichiers de restauration suivant on été trouvé,&lt;br&gt;Voulez-vous les ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
-        <translation>&lt;b&gt;The following restore files have been found,&lt;br&gt;Do you want to open them ?&lt;/b&gt; &lt;br&gt;</translation>
+        <translation>&lt;b&gt;以下の復元ファイルが見つかりました。&lt;br&gt;これらを開きますか?&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2225"/>
         <source>Fichier de restauration</source>
-        <translation>Restore file</translation>
+        <translation>復元ファイル</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2325"/>
         <source>Usage : </source>
-        <translation>Usage: </translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="2328"/>
-        <source>QElectroTech, une application de réalisation de schémas électriques.
-
-Options disponibles : 
-  --help                        Afficher l&apos;aide sur les options
-  -v, --version                 Afficher la version
-  --license                     Afficher la licence
-</source>
-        <translation>QElectroTech, an application to design electric diagrams.
-
-Available options: 
-  --help                        Display this help
-  -v, --version                 Display the version
-  --license                     Display the license
-</translation>
+        <translation>使用法: </translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2327"/>
@@ -5358,431 +5479,536 @@ Available options:
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="417"/>
-        <source>Fabricant</source>
-        <translation>Manufacturer</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="412"/>
-        <source>Bloc auxiliaire 1</source>
-        <translation>Auxiliary block 1</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="413"/>
-        <source>Bloc auxiliaire 2</source>
-        <translation>Auxiliary block 2</translation>
+        <location filename="../sources/qetapp.cpp" line="2328"/>
+        <source>QElectroTech, une application de réalisation de schémas électriques.
+
+Options disponibles : 
+  --help                        Afficher l&apos;aide sur les options
+  -v, --version                 Afficher la version
+  --license                     Afficher la licence
+</source>
+        <translation>QElectroTech, 電気回路図を作成するアプリケーション。
+
+指定可能なオプション: 
+  --help                        ヘルプの表示
+  -v, --version                 バージョンの表示
+  --license                     ライセンスの表示
+</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2334"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
-        <translation>  --common-elements-dir=DIR     Define the elements collection directory
+        <translation>  --common-elements-dir=DIR     要素コレクションのディレクトリを指定
 </translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2337"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
-        <translation>  --common-tbt-dir=DIR          Define the title block templates collection directory
+        <translation>  --common-tbt-dir=DIR          表題欄テンプレート・コレクションのディレクトリを指定
 </translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2340"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
-        <translation>  --config-dir=DIR              Define configuration directory
+        <translation>  --config-dir=DIR              設定ディレクトリを指定
 </translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2342"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
-        <translation>  --lang-dir=DIR                Define the language files directory
+        <translation>  --lang-dir=DIR                言語ファイルのディレクトリを指定
 </translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="96"/>
-        <source>Chargement... Initialisation du cache des collections d&apos;éléments</source>
-        <comment>splash screen caption</comment>
-        <translation>Loading... Initializing the elements collection cache</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="107"/>
-        <source>Chargement... Éditeur de schéma</source>
-        <comment>splash screen caption</comment>
-        <translation>Loading... Folios editor</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="112"/>
-        <source>Chargement... Ouverture des fichiers</source>
-        <comment>splash screen caption</comment>
-        <translation>Loading... Opening files</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="403"/>
-        <source>Label</source>
-        <translation>Label</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="407"/>
-        <source>Commentaire</source>
-        <translation>Annotation</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="405"/>
-        <location filename="../sources/qetapp.cpp" line="509"/>
-        <source>Localisation</source>
-        <translation>Location</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="408"/>
-        <location filename="../sources/qetapp.cpp" line="469"/>
-        <source>Fonction</source>
-        <translation>Function</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="410"/>
-        <location filename="../sources/qetapp.cpp" line="471"/>
-        <source>Couleur du fil</source>
-        <translation>Wire color</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="411"/>
-        <location filename="../sources/qetapp.cpp" line="472"/>
-        <source>Section du fil</source>
-        <translation>Wire section</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="510"/>
-        <source>Indice de révision</source>
-        <translation>Revision index</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="1276"/>
-        <source>Q</source>
-        <comment>Single-letter example text - translate length, not meaning</comment>
-        <translation>Q</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="1278"/>
-        <source>QET</source>
-        <comment>Small example text - translate length, not meaning</comment>
-        <translation>QET</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="1280"/>
-        <source>Schema</source>
-        <comment>Normal example text - translate length, not meaning</comment>
-        <translation>Diagram</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="1282"/>
-        <source>Electrique</source>
-        <comment>Normal example text - translate length, not meaning</comment>
-        <translation>Electric</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="1284"/>
-        <source>QElectroTech</source>
-        <comment>Long example text - translate length, not meaning</comment>
-        <translation>QElectroTech</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="1769"/>
-        <source>Configurer QElectroTech</source>
-        <comment>window title</comment>
-        <translation>Configure QElectroTech</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="1909"/>
-        <source>Chargement...</source>
-        <comment>splash screen caption</comment>
-        <translation>Loading...</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="2003"/>
-        <source>Chargement... icône du systray</source>
-        <comment>splash screen caption</comment>
-        <translation>Loading... Systray icon</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="2007"/>
-        <source>QElectroTech</source>
-        <comment>systray menu title</comment>
-        <translation>QElectroTech</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetapp.cpp" line="2057"/>
-        <source>QElectroTech</source>
-        <comment>systray icon tooltip</comment>
-        <translation>QElectroTech</translation>
     </message>
 </context>
 <context>
     <name>QETDiagramEditor</name>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="719"/>
-        <source>Afficha&amp;ge</source>
-        <translation>Displ&amp;ay</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="89"/>
+        <source>QElectroTech</source>
+        <comment>window title</comment>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="780"/>
-        <source>Affiche ou non le panel d&apos;appareils</source>
-        <translation>Show or hide the elements panel</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="91"/>
+        <source>QElectroTech</source>
+        <comment>status bar message</comment>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="518"/>
-        <source>Ajouter une colonne</source>
-        <translation>Add a column</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="140"/>
+        <source>Projets</source>
+        <comment>dock title</comment>
+        <translation>プロジェクト</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="445"/>
-        <source>&amp;Cascade</source>
-        <translation>&amp;Cascade</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="171"/>
+        <source>Collections</source>
+        <translation>コレクション</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="277"/>
-        <source>C&amp;oller</source>
-        <translation>&amp;Paste</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="191"/>
+        <source>Aucune modification</source>
+        <translation>変更なし</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="276"/>
-        <source>Cop&amp;ier</source>
-        <translation>&amp;Copy</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="275"/>
-        <source>Co&amp;uper</source>
-        <translation>Cu&amp;t</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="593"/>
-        <source>Ctrl+0</source>
-        <translation>Ctrl+0</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="592"/>
-        <source>Ctrl+9</source>
-        <translation>Ctrl+9</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="569"/>
-        <source>Ctrl+I</source>
-        <translation>Ctrl+I</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="259"/>
-        <source>Ctrl+Q</source>
-        <translation>Ctrl+Q</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="237"/>
-        <source>Ctrl+Shift+X</source>
-        <translation>Ctrl+Shift+X</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="564"/>
-        <source>Désélectionner tout</source>
-        <translation>Select none</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="717"/>
-        <source>&amp;Édition</source>
-        <translation>&amp;Edit</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="519"/>
-        <source>Enlever une colonne</source>
-        <translation>Remove a column</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="492"/>
-        <source>&amp;Enregistrer</source>
-        <translation>&amp;Save</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="493"/>
-        <source>Enregistrer sous</source>
-        <translation>Save as</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="236"/>
-        <source>E&amp;xporter</source>
-        <translation>&amp;Export</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="721"/>
-        <source>Fe&amp;nêtres</source>
-        <translation>Wi&amp;ndows</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="494"/>
-        <source>&amp;Fermer</source>
-        <translation>&amp;Close</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="716"/>
-        <source>&amp;Fichier</source>
-        <translation>&amp;File</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="247"/>
-        <source>Imprimer</source>
-        <translation>Print</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="565"/>
-        <source>Inverser la sélection</source>
-        <translation>Invert selection</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="450"/>
-        <source>Mode Selection</source>
-        <translation>Select</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="192"/>
+        <source>Cliquez sur une action pour revenir en arrière dans l&apos;édition de votre schéma</source>
+        <comment>Status tip</comment>
+        <translation>操作をクリックすることで図への変更を元に戻します</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="193"/>
         <source>Ce panneau liste les différentes actions effectuées sur le folio courant. Cliquer sur une action permet de revenir à l&apos;état du schéma juste après son application.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>This panel lists the various changes applied to the current folio. Clicking a change gets the folio back to its state right after it was applied.</translation>
+        <translation>このパネルは現在のフォリオに適用された様々な変更のリストです。変更をクリックすると、それが適用された直後の状態にフォリオを戻します。</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="195"/>
+        <source>Annulations</source>
+        <comment>dock title</comment>
+        <translation>復元</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="236"/>
+        <source>E&amp;xporter</source>
+        <translation>エクスポート (&amp;E)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="237"/>
+        <source>Ctrl+Shift+X</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="238"/>
+        <source>Exporte le folio courant dans un autre format</source>
+        <comment>status bar tip</comment>
+        <translation>現在のフォリオを別の形式でエクスポート</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="247"/>
+        <source>Imprimer</source>
+        <translation>印刷</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="249"/>
+        <source>Imprime un ou plusieurs folios du projet courant</source>
+        <comment>status bar tip</comment>
+        <translation>現在のプロジェクトのフォリオを印刷</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="258"/>
+        <source>&amp;Quitter</source>
+        <translation>終了 (&amp;Q)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="259"/>
+        <source>Ctrl+Q</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="260"/>
+        <source>Ferme l&apos;application QElectroTech</source>
+        <comment>status bar tip</comment>
+        <translation>QElectroTech を終了</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="264"/>
+        <source>Annuler</source>
+        <translation>元に戻す</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="267"/>
+        <source>Annule l&apos;action précédente</source>
+        <comment>status bar tip</comment>
+        <translation>直前の操作を元に戻す</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="269"/>
+        <source>Refaire</source>
+        <translation>やり直す</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="272"/>
+        <source>Restaure l&apos;action annulée</source>
+        <comment>status bar tip</comment>
+        <translation>元に戻した操作をやり直す</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="275"/>
+        <source>Co&amp;uper</source>
+        <translation>切り取り (&amp;T)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="276"/>
+        <source>Cop&amp;ier</source>
+        <translation>コピー (&amp;C)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="277"/>
+        <source>C&amp;oller</source>
+        <translation>貼り付け (&amp;P)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="283"/>
+        <source>Transfère les éléments sélectionnés dans le presse-papier</source>
+        <comment>status bar tip</comment>
+        <translation>選択要素をクリップボードに移動</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="284"/>
+        <source>Copie les éléments sélectionnés dans le presse-papier</source>
+        <comment>status bar tip</comment>
+        <translation>選択要素をコピー</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="285"/>
+        <source>Place les éléments du presse-papier sur le folio</source>
+        <comment>status bar tip</comment>
+        <translation>クリップボードからフォリオに要素を貼り付け</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="301"/>
+        <source>Réinitialiser les conducteurs</source>
+        <translation>導体の整頓</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="302"/>
+        <source>Ctrl+K</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="303"/>
+        <source>Recalcule les chemins des conducteurs sans tenir compte des modifications</source>
+        <comment>status bar tip</comment>
+        <translation>ユーザの変更を無視して導体の経路をリセット</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="310"/>
+        <source>Création automatique de conducteur(s)</source>
+        <comment>Tool tip of auto conductor</comment>
+        <translation>導体の自動生成</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="311"/>
+        <source>Utiliser la création automatique de conducteur(s) quand cela est possible</source>
+        <comment>Status tip of auto conductor</comment>
+        <translation>可能であれば導体を自動生成</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="319"/>
         <source>Couleur de fond blanc/gris</source>
         <comment>Tool tip of white/grey background button</comment>
-        <translation>Background color white / gray</translation>
+        <translation>背景色 白/灰</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="320"/>
         <source>Affiche la couleur de fond du folio en blanc ou en gris</source>
         <comment>Status tip of white/grey background button</comment>
-        <translation>Displays the background color of the folio in white or gray</translation>
+        <translation>フォリオの背景色を白または灰で表示</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="329"/>
         <source>Afficher la grille</source>
-        <translation>Display the grid</translation>
+        <translation>グリッド表示</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="330"/>
         <source>Affiche ou masque la grille des folios</source>
-        <translation>Display or hide the grid of folio</translation>
+        <translation>フォリオのグリッドの表示/非表示</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="342"/>
         <source>Propriétés du folio</source>
-        <translation>Folio properties</translation>
+        <translation>フォリオの属性</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="343"/>
+        <source>Ctrl+L</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="344"/>
+        <source>Édite les propriétés du folio (dimensions, informations du cartouche, propriétés des conducteurs...)</source>
+        <comment>status bar tip</comment>
+        <translation>フォリオの属性の編集 (大きさ, 表題欄の情報, 導体の属性, ...)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="354"/>
+        <source>Propriétés du projet</source>
+        <translation>プロジェクトの属性</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="360"/>
         <source>Ajouter un folio</source>
-        <translation>Add a folio</translation>
+        <translation>フォリオを追加</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="361"/>
+        <source>Ctrl+T</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="369"/>
         <source>Supprimer le folio</source>
-        <translation>Delete this folio</translation>
+        <translation>このフォリオを削除</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="462"/>
-        <source>Mode Visualisation</source>
-        <translation>Move</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="441"/>
-        <source>&amp;Mosaïque</source>
-        <translation>&amp;Tile</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="373"/>
+        <source>Nettoyer le projet</source>
+        <translation>プロジェクトを整理</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="383"/>
         <source>Exporter au format CSV</source>
-        <translation>Export to CSV</translation>
+        <translation>CSV 形式でエクスポート</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="390"/>
+        <source>Ajouter une nomenclature</source>
+        <translation>部品表を追加</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="398"/>
+        <source>Ajouter un sommaire</source>
+        <translation>概要を追加</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="406"/>
         <source>Lancer le plugin de création de borniers</source>
-        <translation>Launch the terminal block creation plugin</translation>
+        <translation>端子台作成プラグインを起動</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="410"/>
         <source>Exporter la liste des noms de conducteurs</source>
-        <translation>Export the list of names of wires</translation>
+        <translation>線名リストをエクスポート</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="420"/>
         <source>Exporter la base de donnée interne du projet</source>
-        <translation>Export the internal project database</translation>
+        <translation>内部のプロジェクト・データベースをエクスポート</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="426"/>
+        <source>en utilisant des onglets</source>
+        <translation>タブを使用</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="427"/>
+        <source>Présente les différents projets ouverts des onglets</source>
+        <comment>status bar tip</comment>
+        <translation>開かれたプロジェクトをタブで表示</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="431"/>
+        <source>en utilisant des fenêtres</source>
+        <translation>ウィンドウを使用</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="432"/>
+        <source>Présente les différents projets ouverts dans des sous-fenêtres</source>
+        <comment>status bar tip</comment>
+        <translation>開かれたプロジェクトをウィンドウで表示</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="441"/>
+        <source>&amp;Mosaïque</source>
+        <translation>並べて (&amp;T)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="442"/>
+        <source>Dispose les fenêtres en mosaïque</source>
+        <comment>status bar tip</comment>
+        <translation>ウィンドウを並べて表示</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="445"/>
+        <source>&amp;Cascade</source>
+        <translation>重ねて (&amp;C)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="446"/>
+        <source>Dispose les fenêtres en cascade</source>
+        <comment>status bar tip</comment>
+        <translation>ウィンドウを重ねて表示</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="450"/>
+        <source>Mode Selection</source>
+        <translation>選択モード</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="451"/>
+        <source>Permet de sélectionner les éléments</source>
+        <comment>status bar tip</comment>
+        <translation>要素の選択が可能</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="462"/>
+        <source>Mode Visualisation</source>
+        <translation>閲覧モード</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="463"/>
+        <source>Permet de visualiser le folio sans pouvoir le modifier</source>
+        <comment>status bar tip</comment>
+        <translation>フォリオを修正せず閲覧だけを許可</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="479"/>
+        <source>Projet suivant</source>
+        <translation>次のプロジェクト</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="481"/>
+        <source>Active le projet suivant</source>
+        <comment>status bar tip</comment>
+        <translation>次のプロジェクトを作業中に</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="484"/>
+        <source>Projet précédent</source>
+        <translation>前のプロジェクト</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="486"/>
+        <source>Active le projet précédent</source>
+        <comment>status bar tip</comment>
+        <translation>前のプロジェクトを作業中に</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="490"/>
         <source>&amp;Nouveau</source>
-        <translation>&amp;New</translation>
+        <translation>新規作成 (&amp;N)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="491"/>
+        <source>&amp;Ouvrir</source>
+        <translation>開く (&amp;O)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="492"/>
+        <source>&amp;Enregistrer</source>
+        <translation>保存 (&amp;S)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="493"/>
+        <source>Enregistrer sous</source>
+        <translation>名前を付けて保存</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="494"/>
+        <source>&amp;Fermer</source>
+        <translation>閉じる (&amp;C)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="501"/>
         <source>Crée un nouveau projet</source>
         <comment>status bar tip</comment>
-        <translation>Creates a new project</translation>
+        <translation>新規プロジェクトを作成</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="502"/>
         <source>Ouvre un projet existant</source>
         <comment>status bar tip</comment>
-        <translation>Opens an existing project</translation>
+        <translation>既存のプロジェクトを開く</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="503"/>
         <source>Ferme le projet courant</source>
         <comment>status bar tip</comment>
-        <translation>Closes the current project</translation>
+        <translation>現在のプロジェクトを閉じる</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="504"/>
         <source>Enregistre le projet courant et tous ses folios</source>
         <comment>status bar tip</comment>
-        <translation>Saves the current project and all its folios</translation>
+        <translation>現在のプロジェクトとその全てのフォリオを保存</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="505"/>
         <source>Enregistre le projet courant avec un autre nom de fichier</source>
         <comment>status bar tip</comment>
-        <translation>Saves the current project with a different file name</translation>
+        <translation>現在のプロジェクトを別の名前で保存</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="518"/>
+        <source>Ajouter une colonne</source>
+        <translation>列を追加</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="519"/>
+        <source>Enlever une colonne</source>
+        <translation>列を削除</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="520"/>
         <source>Ajouter une ligne</source>
         <comment>Add row</comment>
-        <translation>Add row</translation>
+        <translation>行を追加</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="521"/>
         <source>Enlever une ligne</source>
         <comment>Remove row</comment>
-        <translation>Remove a row</translation>
+        <translation>行を削除</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="523"/>
         <source>Ajoute une colonne au folio</source>
         <comment>status bar tip</comment>
-        <translation>Add a column to the folio</translation>
+        <translation>フォリオに列を追加</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="524"/>
         <source>Enlève une colonne au folio</source>
         <comment>status bar tip</comment>
-        <translation>Remove a column from the folio</translation>
+        <translation>フォリオから最終列を削除</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="525"/>
         <source>Agrandit le folio en hauteur</source>
         <comment>status bar tip</comment>
-        <translation>Expands the folio height</translation>
+        <translation>フォリオに行を追加</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="526"/>
         <source>Rétrécit le folio en hauteur</source>
         <comment>status bar tip</comment>
-        <translation>Shrinks the folio height</translation>
+        <translation>フォリオから最終行を削除</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="536"/>
+        <source>Supprimer</source>
+        <translation>削除</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="537"/>
+        <source>Pivoter</source>
+        <translation>回転</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="538"/>
+        <source>Orienter les textes</source>
+        <translation>テキストの向きを選択</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="539"/>
+        <source>Retrouver dans le panel</source>
+        <translation>パネル内を検索</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="540"/>
+        <source>Éditer l&apos;item sélectionné</source>
+        <translation>選択項目を編集</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="541"/>
+        <source>Grouper les textes sélectionnés</source>
+        <translation>選択テキストをグループ化</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="544"/>
@@ -5795,877 +6021,530 @@ Available options:
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="548"/>
-        <source>Enlève les éléments sélectionnés du folio</source>
-        <comment>status bar tip</comment>
-        <translation>Removes selected elements from the folio</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="571"/>
-        <source>Sélectionne tous les éléments du folio</source>
-        <comment>status bar tip</comment>
-        <translation>Selects all elements on the folio</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="572"/>
-        <source>Désélectionne tous les éléments du folio</source>
-        <comment>status bar tip</comment>
-        <translation>Deselect all elements on the folio</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="595"/>
-        <source>Agrandit le folio</source>
-        <comment>status bar tip</comment>
-        <translation>Expand the folio</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="596"/>
-        <source>Rétrécit le folio</source>
-        <comment>status bar tip</comment>
-        <translation>Shrinks the folio</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="597"/>
-        <source>Adapte le zoom de façon à afficher tout le contenu du folio indépendamment du cadre</source>
-        <translation>Adjusts the zoom to display all the contents of folio regardless of context</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="598"/>
-        <source>Adapte le zoom exactement sur le cadre du folio</source>
-        <comment>status bar tip</comment>
-        <translation>Adjusts the zoom on exactly the part of the folio</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="612"/>
-        <source>Ajouter une ligne</source>
-        <comment>Draw line</comment>
-        <translation>Add line</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="613"/>
-        <source>Ajouter un rectangle</source>
-        <translation>Add a rectangle</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="614"/>
-        <source>Ajouter une ellipse</source>
-        <translation>Add an ellipse</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="615"/>
-        <source>Ajouter une polyligne</source>
-        <translation>Add a polygon</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="238"/>
-        <source>Exporte le folio courant dans un autre format</source>
-        <comment>status bar tip</comment>
-        <translation>Exports the current folio to another format</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="249"/>
-        <source>Imprime un ou plusieurs folios du projet courant</source>
-        <comment>status bar tip</comment>
-        <translation>Prints one or more folio of the current project</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="700"/>
-        <source>Profondeur</source>
-        <comment>toolbar title</comment>
-        <translation>Depth</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1399"/>
-        <source>Groupe</source>
-        <translation>Group</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2271"/>
-        <source>Error launching qet_tb_generator plugin</source>
+        <location filename="../sources/qetdiagrameditor.cpp" line="546"/>
+        <source>Ctrl+E</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="285"/>
-        <source>Place les éléments du presse-papier sur le folio</source>
+        <location filename="../sources/qetdiagrameditor.cpp" line="548"/>
+        <source>Enlève les éléments sélectionnés du folio</source>
         <comment>status bar tip</comment>
-        <translation>Pastes elements from the clipboard into the folio</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="344"/>
-        <source>Édite les propriétés du folio (dimensions, informations du cartouche, propriétés des conducteurs...)</source>
-        <comment>status bar tip</comment>
-        <translation>Edits the properties of the folio (size, title block informations, conductor properties...)</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="463"/>
-        <source>Permet de visualiser le folio sans pouvoir le modifier</source>
-        <comment>status bar tip</comment>
-        <translation>Allows to view the folio without modifying it</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="661"/>
-        <source>Outils</source>
-        <translation>Tools</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="491"/>
-        <source>&amp;Ouvrir</source>
-        <translation>&amp;Open</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="932"/>
-        <source>Ouvrir un fichier</source>
-        <translation>Open a file</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="586"/>
-        <source>Pas de zoom</source>
-        <translation>Reset zoom</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="537"/>
-        <source>Pivoter</source>
-        <translation>Rotate</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="258"/>
-        <source>&amp;Quitter</source>
-        <translation>&amp;Quit</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="536"/>
-        <source>Supprimer</source>
-        <translation>Delete</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="563"/>
-        <source>Tout sélectionner</source>
-        <translation>Select All</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="585"/>
-        <source>Zoom adapté</source>
-        <translation>Fit in view</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="583"/>
-        <source>Zoom arrière</source>
-        <translation>Zoom Out</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="582"/>
-        <source>Zoom avant</source>
-        <translation>Zoom In</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="264"/>
-        <source>Annuler</source>
-        <translation>Undo</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="269"/>
-        <source>Refaire</source>
-        <translation>Redo</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="301"/>
-        <source>Réinitialiser les conducteurs</source>
-        <translation>Reset conductors</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="302"/>
-        <source>Ctrl+K</source>
-        <translation>Ctrl+K</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="343"/>
-        <source>Ctrl+L</source>
-        <translation>Ctrl+L</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="777"/>
-        <source>Affiche ou non la barre d&apos;outils principale</source>
-        <translation>Display or hide the main toolbar</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="778"/>
-        <source>Affiche ou non la barre d&apos;outils Affichage</source>
-        <translation>Display or hide the Display toolbar</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="779"/>
-        <source>Affiche ou non la barre d&apos;outils Schéma</source>
-        <translation>Display or hide the Diagram toolbar</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="664"/>
-        <source>Affichage</source>
-        <translation>Display</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="667"/>
-        <source>Schéma</source>
-        <translation>Diagram</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="610"/>
-        <source>Ajouter un champ de texte</source>
-        <translation>Add a textfield</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="191"/>
-        <source>Aucune modification</source>
-        <translation>No modification</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="781"/>
-        <source>Affiche ou non la liste des modifications</source>
-        <translation>Display or hide the undo list</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="540"/>
-        <source>Éditer l&apos;item sélectionné</source>
-        <translation>Edit the selected item</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="361"/>
-        <source>Ctrl+T</source>
-        <translation>Ctrl+T</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="541"/>
-        <source>Grouper les textes sélectionnés</source>
-        <translation>Group selected texts</translation>
+        <translation>選択要素をフォリオから削除</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="549"/>
         <source>Pivote les éléments et textes sélectionnés</source>
         <comment>status bar tip</comment>
-        <translation>Rotate selected elements and texts</translation>
+        <translation>選択された要素とテキストを回転</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="550"/>
         <source>Pivote les textes sélectionnés à un angle précis</source>
         <comment>status bar tip</comment>
-        <translation>Rotate selected texts to a specific angle</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="644"/>
-        <source>Chercher/remplacer</source>
-        <translation>Search / Replace</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="718"/>
-        <source>&amp;Projet</source>
-        <translation>&amp;Project</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="730"/>
-        <source>&amp;Récemment ouverts</source>
-        <translation>&amp;Latest files</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="864"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="886"/>
-        <source>Projet %1 enregistré dans le repertoire: %2.</source>
-        <translation>Project %1 registered in the directory: %2.</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1030"/>
-        <source>Il semblerait que le fichier que vous essayez d&apos;ouvrir ne soit pas accessible en lecture. Il est donc impossible de l&apos;ouvrir. Veuillez vérifier les permissions du fichier.</source>
-        <translation>The file you try to open does not seem readable and can not be opened. Please check the file permissions.</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1045"/>
-        <source>Il semblerait que le projet que vous essayez d&apos;ouvrir ne soit pas accessible en écriture. Il sera donc ouvert en lecture seule.</source>
-        <translation>The project you try to open does not seem writable. It will be opened read-only.</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="426"/>
-        <source>en utilisant des onglets</source>
-        <translation>using tabs</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="431"/>
-        <source>en utilisant des fenêtres</source>
-        <translation>using windows</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="785"/>
-        <source>Afficher les projets</source>
-        <translation>Display projects</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="354"/>
-        <source>Propriétés du projet</source>
-        <translation>Project properties</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="373"/>
-        <source>Nettoyer le projet</source>
-        <translation>Clean project</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1062"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1769"/>
-        <source>Échec de l&apos;ouverture du projet</source>
-        <comment>message box title</comment>
-        <translation>Unable to open project</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1064"/>
-        <source>Il semblerait que le fichier %1 ne soit pas un fichier projet QElectroTech. Il ne peut donc être ouvert.</source>
-        <comment>message box content</comment>
-        <translation>The file %1 does not appear to be a QElectroTech project file. Thus it cannot be opened.</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="89"/>
-        <source>QElectroTech</source>
-        <comment>window title</comment>
-        <translation>QElectroTech</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="91"/>
-        <source>QElectroTech</source>
-        <comment>status bar message</comment>
-        <translation>QElectroTech</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="195"/>
-        <source>Annulations</source>
-        <comment>dock title</comment>
-        <translation>Undo</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="192"/>
-        <source>Cliquez sur une action pour revenir en arrière dans l&apos;édition de votre schéma</source>
-        <comment>Status tip</comment>
-        <translation>Click an action to get back in the changes you made to your diagram</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="538"/>
-        <source>Orienter les textes</source>
-        <translation>Choose texts orientation</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="539"/>
-        <source>Retrouver dans le panel</source>
-        <translation>Find in the panel</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="611"/>
-        <source>Ajouter une image</source>
-        <translation>Add a picture</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="398"/>
-        <source>Ajouter un sommaire</source>
-        <translation>Add a summary</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="584"/>
-        <source>Zoom sur le contenu</source>
-        <translation>Zoom content</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="546"/>
-        <source>Ctrl+E</source>
-        <translation>Ctrl+E</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="591"/>
-        <source>Ctrl+8</source>
-        <translatorcomment>Ctrl+8</translatorcomment>
-        <translation>Ctrl+8</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="260"/>
-        <source>Ferme l&apos;application QElectroTech</source>
-        <comment>status bar tip</comment>
-        <translation>Closes QElectroTech</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="267"/>
-        <source>Annule l&apos;action précédente</source>
-        <comment>status bar tip</comment>
-        <translation>Undoes the previous action</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="272"/>
-        <source>Restaure l&apos;action annulée</source>
-        <comment>status bar tip</comment>
-        <translation>Restores the undone action</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="283"/>
-        <source>Transfère les éléments sélectionnés dans le presse-papier</source>
-        <comment>status bar tip</comment>
-        <translation>Puts selected elements into the clipboard</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="284"/>
-        <source>Copie les éléments sélectionnés dans le presse-papier</source>
-        <comment>status bar tip</comment>
-        <translation>Copies selected elements</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="573"/>
-        <source>Désélectionne les éléments sélectionnés et sélectionne les éléments non sélectionnés</source>
-        <comment>status bar tip</comment>
-        <translation>Inverts selection of elements</translation>
+        <translation>選択テキストを指定した角度に回転</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="551"/>
         <source>Retrouve l&apos;élément sélectionné dans le panel</source>
         <comment>status bar tip</comment>
-        <translation>Find the selected item in the panel</translation>
+        <translation>選択要素をパネル内で検索</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="303"/>
-        <source>Recalcule les chemins des conducteurs sans tenir compte des modifications</source>
+        <location filename="../sources/qetdiagrameditor.cpp" line="563"/>
+        <source>Tout sélectionner</source>
+        <translation>全て選択</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="564"/>
+        <source>Désélectionner tout</source>
+        <translation>選択を解除</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="565"/>
+        <source>Inverser la sélection</source>
+        <translation>選択を反転</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="569"/>
+        <source>Ctrl+I</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="571"/>
+        <source>Sélectionne tous les éléments du folio</source>
         <comment>status bar tip</comment>
-        <translation>Reset the conductors path ignoring the user changes</translation>
+        <translation>フォリオの全ての要素を選択</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="310"/>
-        <source>Création automatique de conducteur(s)</source>
-        <comment>Tool tip of auto conductor</comment>
-        <translation>Automatic creation conductor (s)</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="572"/>
+        <source>Désélectionne tous les éléments du folio</source>
+        <comment>status bar tip</comment>
+        <translation>フォリオの全ての要素の選択を解除</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="140"/>
-        <source>Projets</source>
-        <comment>dock title</comment>
-        <translation>Projects</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="573"/>
+        <source>Désélectionne les éléments sélectionnés et sélectionne les éléments non sélectionnés</source>
+        <comment>status bar tip</comment>
+        <translation>要素の選択を反転</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="171"/>
-        <source>Collections</source>
-        <translation>Collections</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="582"/>
+        <source>Zoom avant</source>
+        <translation>ズームイン</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="311"/>
-        <source>Utiliser la création automatique de conducteur(s) quand cela est possible</source>
-        <comment>Status tip of auto conductor</comment>
-        <translation>Using the automatic creation of conductor (s) when possible</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="583"/>
+        <source>Zoom arrière</source>
+        <translation>ズームアウト</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="584"/>
+        <source>Zoom sur le contenu</source>
+        <translation>内容に合わせてズーム</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="585"/>
+        <source>Zoom adapté</source>
+        <translation>全体に合わせてズーム</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="586"/>
+        <source>Pas de zoom</source>
+        <translation>ズームのリセット</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="591"/>
+        <source>Ctrl+8</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="592"/>
+        <source>Ctrl+9</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="593"/>
+        <source>Ctrl+0</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="595"/>
+        <source>Agrandit le folio</source>
+        <comment>status bar tip</comment>
+        <translation>フォリオを拡大</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="596"/>
+        <source>Rétrécit le folio</source>
+        <comment>status bar tip</comment>
+        <translation>フォリオを縮小</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="597"/>
+        <source>Adapte le zoom de façon à afficher tout le contenu du folio indépendamment du cadre</source>
+        <translation>図枠は無視してフォリオの内容に合わせてズーム</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="598"/>
+        <source>Adapte le zoom exactement sur le cadre du folio</source>
+        <comment>status bar tip</comment>
+        <translation>フォリオの領域に合わせてズーム</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="599"/>
         <source>Restaure le zoom par défaut</source>
         <comment>status bar tip</comment>
-        <translation>Restores default zoom level</translation>
+        <translation>既定のズームに戻す</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="432"/>
-        <source>Présente les différents projets ouverts dans des sous-fenêtres</source>
-        <comment>status bar tip</comment>
-        <translation>Shows the various opened projects in windows</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="610"/>
+        <source>Ajouter un champ de texte</source>
+        <translation>テキスト領域を追加</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="390"/>
-        <source>Ajouter une nomenclature</source>
-        <translation>Add a nomenclature</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="611"/>
+        <source>Ajouter une image</source>
+        <translation>画像を追加</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="427"/>
-        <source>Présente les différents projets ouverts des onglets</source>
-        <comment>status bar tip</comment>
-        <translation>Shows the various opened projects in tabs</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="612"/>
+        <source>Ajouter une ligne</source>
+        <comment>Draw line</comment>
+        <translation>線を追加</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="451"/>
-        <source>Permet de sélectionner les éléments</source>
-        <comment>status bar tip</comment>
-        <translation>Allows to select elements</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="613"/>
+        <source>Ajouter un rectangle</source>
+        <translation>矩形を追加</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="614"/>
+        <source>Ajouter une ellipse</source>
+        <translation>楕円を追加</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="615"/>
+        <source>Ajouter une polyligne</source>
+        <translation>折れ線を追加</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="617"/>
         <source>Ajoute un champ de texte sur le folio actuel</source>
-        <translation>Adds a text field to the current folio</translation>
+        <translation>現在のフォリオにテキスト領域を追加</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="618"/>
         <source>Ajoute une image sur le folio actuel</source>
-        <translation>Add an image to the current folio</translation>
+        <translation>現在のフォリオに画像を追加</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="619"/>
         <source>Ajoute une ligne sur le folio actuel</source>
-        <translation>Add a line to the current folio</translation>
+        <translation>現在のフォリオに線を追加</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="620"/>
         <source>Ajoute un rectangle sur le folio actuel</source>
-        <translation>Adds a rectangle on the current folio</translation>
+        <translation>現在のフォリオに矩形を追加</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="621"/>
         <source>Ajoute une ellipse sur le folio actuel</source>
-        <translation>Add an ellipse to the current folio</translation>
+        <translation>現在のフォリオに楕円を追加</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="622"/>
         <source>Ajoute une polyligne sur le folio actuel</source>
-        <translation>Adds a polyline to the current folio</translation>
+        <translation>現在のフォリオに折れ線を追加</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="644"/>
+        <source>Chercher/remplacer</source>
+        <translation>検索 / 置換</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="661"/>
+        <source>Outils</source>
+        <translation>ツール</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="664"/>
+        <source>Affichage</source>
+        <translation>表示</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="667"/>
+        <source>Schéma</source>
+        <translation>図</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="696"/>
         <source>Ajouter</source>
-        <translation>Add</translation>
+        <translation>追加</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="700"/>
+        <source>Profondeur</source>
+        <comment>toolbar title</comment>
+        <translation>重なり</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="716"/>
+        <source>&amp;Fichier</source>
+        <translation>ファイル (&amp;F)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="717"/>
+        <source>&amp;Édition</source>
+        <translation>編集 (&amp;E)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="718"/>
+        <source>&amp;Projet</source>
+        <translation>プロジェクト (&amp;P)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="719"/>
+        <source>Afficha&amp;ge</source>
+        <translation>表示 (&amp;D)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="721"/>
+        <source>Fe&amp;nêtres</source>
+        <translation>ウィンドウ (&amp;W)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="730"/>
+        <source>&amp;Récemment ouverts</source>
+        <translation>最近のファイル (&amp;L)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="777"/>
+        <source>Affiche ou non la barre d&apos;outils principale</source>
+        <translation>メインツールバーの表示/非表示</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="778"/>
+        <source>Affiche ou non la barre d&apos;outils Affichage</source>
+        <translation>表示ツールバーの表示/非表示</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="779"/>
+        <source>Affiche ou non la barre d&apos;outils Schéma</source>
+        <translation>図ツールバーの表示/非表示</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="780"/>
+        <source>Affiche ou non le panel d&apos;appareils</source>
+        <translation>要素パネルの表示/非表示</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="781"/>
+        <source>Affiche ou non la liste des modifications</source>
+        <translation>復元リストの表示/非表示</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="785"/>
+        <source>Afficher les projets</source>
+        <translation>プロジェクトを表示</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="864"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="886"/>
+        <source>Projet %1 enregistré dans le repertoire: %2.</source>
+        <translation>プロジェクト %1 はディレクトリ %2 に保存されています。</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="932"/>
+        <source>Ouvrir un fichier</source>
+        <translation>ファイルを開く</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="934"/>
         <source>Projets QElectroTech (*.qet);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
-        <translation>QElectroTech project(*.qet);;XML Files (*.xml);;All files (*)</translation>
+        <translation>QElectroTech プロジェクト (*.qet);;XML ファイル (*.xml);;全てのファイル (*)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1013"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="1029"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
-        <translation>Unable to open file</translation>
+        <translation>ファイルを開けません</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1015"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
-        <translation>It appears the %1 file which you are trying to open does not exist or does not exist anymore.</translation>
+        <translation>開こうとしているファイル %1 は存在しないか、既に存在しないようです。</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1030"/>
+        <source>Il semblerait que le fichier que vous essayez d&apos;ouvrir ne soit pas accessible en lecture. Il est donc impossible de l&apos;ouvrir. Veuillez vérifier les permissions du fichier.</source>
+        <translation>開こうとしているファイルは読めないため開けません。ファイルの許可を確認してください。</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1044"/>
         <source>Ouverture du projet en lecture seule</source>
         <comment>message box title</comment>
-        <translation>Opening the file read-only</translation>
+        <translation>ファイルを読み取り専用で開く</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1045"/>
+        <source>Il semblerait que le projet que vous essayez d&apos;ouvrir ne soit pas accessible en écriture. Il sera donc ouvert en lecture seule.</source>
+        <translation>開こうとしているプロジェクトに書き込めないようです。読み取り専用で開きます。</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1062"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1769"/>
+        <source>Échec de l&apos;ouverture du projet</source>
+        <comment>message box title</comment>
+        <translation>プロジェクトを開けません</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1064"/>
+        <source>Il semblerait que le fichier %1 ne soit pas un fichier projet QElectroTech. Il ne peut donc être ouvert.</source>
+        <comment>message box content</comment>
+        <translation>ファイル %1 は QElectroTech のプロジェクト・ファイルではないようです。このため開けません。</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1334"/>
         <source>Double-click pour terminer la forme, Click droit pour annuler le dernier point</source>
-        <translation>Double-click to finish the shape, Right click to cancel the last point</translation>
+        <translation>ダブルクリックで完了、右クリックで最後の点をキャンセル</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1399"/>
+        <source>Groupe</source>
+        <translation>グループ</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1571"/>
         <source>Éditer l&apos;élement</source>
         <comment>edit element</comment>
-        <translation>Edit the element</translation>
+        <translation>要素を編集</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1577"/>
         <source>Éditer le champ de texte</source>
         <comment>edit text field</comment>
-        <translation>Edit the text field</translation>
+        <translation>テキスト領域を編集</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1583"/>
         <source>Éditer l&apos;image</source>
         <comment>edit image</comment>
-        <translation>Edit the image</translation>
+        <translation>画像を編集</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1589"/>
         <source>Éditer le conducteur</source>
         <comment>edit conductor</comment>
-        <translation>Edit conductor</translation>
+        <translation>導体を編集</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1596"/>
         <source>Éditer l&apos;objet sélectionné</source>
         <comment>edit selected item</comment>
-        <translation>Edit the selected object</translation>
+        <translation>選択対象を編集</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1770"/>
         <source>Une erreur est survenue lors de l&apos;ouverture du fichier %1.</source>
         <comment>message box content</comment>
-        <translation>An error occurred while opening file %1.</translation>
+        <translation>ファイル %1 を開く際にエラーが発生しました。</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1816"/>
         <source>Active le projet « %1 »</source>
-        <translation>Activates the project « %1 »</translation>
+        <translation>プロジェクト « %1 » を作業中に</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2176"/>
         <source>Erreur</source>
         <comment>message box title</comment>
-        <translation>Error</translation>
+        <translation>エラー</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="442"/>
-        <source>Dispose les fenêtres en mosaïque</source>
-        <comment>status bar tip</comment>
-        <translation>Arranges windows in a tile pattern</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="446"/>
-        <source>Dispose les fenêtres en cascade</source>
-        <comment>status bar tip</comment>
-        <translation>Arranges windows in a cascade pattern</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="479"/>
-        <source>Projet suivant</source>
-        <translation>Next project</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="484"/>
-        <source>Projet précédent</source>
-        <translation>Previous project</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="481"/>
-        <source>Active le projet suivant</source>
-        <comment>status bar tip</comment>
-        <translation>Activates the next project</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="486"/>
-        <source>Active le projet précédent</source>
-        <comment>status bar tip</comment>
-        <translation>Activates the previous project</translation>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2271"/>
+        <source>Error launching qet_tb_generator plugin</source>
+        <translation>qet_tb_generator プラグインの起動エラー</translation>
     </message>
 </context>
 <context>
     <name>QETElementEditor</name>
     <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="74"/>
+        <source>QElectroTech - Éditeur d&apos;élément</source>
+        <comment>window title</comment>
+        <translation>QElectroTech - 要素エディタ</translation>
+    </message>
+    <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="139"/>
         <source>&amp;Nouveau</source>
-        <translation>&amp;New</translation>
+        <translation>新規作成 (&amp;N)</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="140"/>
         <source>&amp;Ouvrir</source>
-        <translation>&amp;Open</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="143"/>
-        <source>&amp;Enregistrer</source>
-        <translation>&amp;Save</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="144"/>
-        <source>Enregistrer sous</source>
-        <translation>Save as</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="147"/>
-        <source>&amp;Quitter</source>
-        <translation>&amp;Quit</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="148"/>
-        <source>Tout sélectionner</source>
-        <translation>Select All</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="149"/>
-        <source>Désélectionner tout</source>
-        <translation>Select none</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="156"/>
-        <source>Inverser la sélection</source>
-        <translation>Invert selection</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="157"/>
-        <source>&amp;Supprimer</source>
-        <translation>&amp;Delete</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="288"/>
-        <source>Ajouter une ligne</source>
-        <translation>Add a line</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="290"/>
-        <source>Ajouter une ellipse</source>
-        <translation>Add an ellipse</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="291"/>
-        <source>Ajouter un polygone</source>
-        <translation>Add a polygon</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="292"/>
-        <source>Ajouter du texte</source>
-        <translation>Add text</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="293"/>
-        <source>Ajouter un arc de cercle</source>
-        <translation>Add an arc</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="294"/>
-        <source>Ajouter une borne</source>
-        <translation>Add a terminal</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="195"/>
-        <source>Annuler</source>
-        <translation>Undo</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="196"/>
-        <source>Refaire</source>
-        <translation>Redo</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="207"/>
-        <source>Ctrl+Q</source>
-        <translation>Ctrl+Q</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="209"/>
-        <source>Ctrl+Shift+A</source>
-        <translation>Ctrl+Shift+A</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="210"/>
-        <source>Ctrl+I</source>
-        <translation>Ctrl+I</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="765"/>
-        <source>&lt;br&gt;En l&apos;absence de borne, l&apos;élément ne pourra être relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
-        <comment>warning description</comment>
-        <translation>&lt;br&gt;Without terminal, the element can not be connected to other elements via conductors.</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="222"/>
-        <source>Ctrl+E</source>
-        <translation>Ctrl+E</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="564"/>
-        <source>Aucune modification</source>
-        <translation>No modification</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="146"/>
-        <source>Recharger</source>
-        <translation>Reload</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="267"/>
-        <source>Zoom avant</source>
-        <translation>Zoom In</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="268"/>
-        <source>Zoom arrière</source>
-        <translation>Zoom Out</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="269"/>
-        <source>Zoom adapté</source>
-        <translation>Fit in view</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="270"/>
-        <source>Pas de zoom</source>
-        <translation>Reset zoom</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="274"/>
-        <source>Ctrl+9</source>
-        <translation>Ctrl+9</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="275"/>
-        <source>Ctrl+0</source>
-        <translation>Ctrl+0</translation>
+        <translation>開く (&amp;O)</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="141"/>
         <source>&amp;Ouvrir depuis un fichier</source>
-        <translation>&amp;Open from a file</translation>
+        <translation>ファイルから開く (&amp;O)</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="142"/>
+        <source>&amp;Lancer le plugin convertisseur DXF</source>
+        <translation>DXF コンバータ・プラグインを開始 (&amp;S)</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="143"/>
+        <source>&amp;Enregistrer</source>
+        <translation>保存 (&amp;S)</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="144"/>
+        <source>Enregistrer sous</source>
+        <translation>名前を付けて保存</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="145"/>
         <source>Enregistrer dans un fichier</source>
-        <translation>Save to a file</translation>
+        <translation>ファイルへ保存</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="204"/>
-        <source>Ctrl+Shift+O</source>
-        <translation>Ctrl+Shift+O</translation>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="146"/>
+        <source>Recharger</source>
+        <translation>再読込</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="206"/>
-        <source>Ctrl+Shift+S</source>
-        <translation>Ctrl+Shift+S</translation>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="147"/>
+        <source>&amp;Quitter</source>
+        <translation>終了 (&amp;Q)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="74"/>
-        <source>QElectroTech - Éditeur d&apos;élément</source>
-        <comment>window title</comment>
-        <translation>QElectroTech - Element Editor</translation>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="148"/>
+        <source>Tout sélectionner</source>
+        <translation>全て選択</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="149"/>
+        <source>Désélectionner tout</source>
+        <translation>選択を解除</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="150"/>
+        <source>Co&amp;uper</source>
+        <translation>切り取り (&amp;T)</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="151"/>
+        <source>Cop&amp;ier</source>
+        <translation>コピー (&amp;C)</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="152"/>
+        <source>C&amp;oller</source>
+        <translation>貼り付け (&amp;P)</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="153"/>
+        <source>C&amp;oller dans la zone...</source>
+        <translation>領域に貼り付け (&amp;P)...</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="154"/>
         <source>un fichier</source>
-        <translation>a file</translation>
+        <translation>ファイル</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="155"/>
         <source>un élément</source>
-        <translation>an element</translation>
+        <translation>要素</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="159"/>
-        <source>Éditer les informations sur l&apos;auteur</source>
-        <translation>Edit author information</translation>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="156"/>
+        <source>Inverser la sélection</source>
+        <translation>選択を反転</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="219"/>
-        <source>Backspace</source>
-        <translation>Backspace</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="223"/>
-        <source>Ctrl+Y</source>
-        <translation>Ctrl+Y</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="312"/>
-        <source>Parties</source>
-        <comment>toolbar title</comment>
-        <translation>Parts</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="318"/>
-        <source>Outils</source>
-        <comment>toolbar title</comment>
-        <translation>Tools</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="320"/>
-        <source>Affichage</source>
-        <comment>toolbar title</comment>
-        <translation>Display</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="322"/>
-        <source>Élément</source>
-        <comment>toolbar title</comment>
-        <translation>Element</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="257"/>
-        <source>Profondeur</source>
-        <comment>toolbar title</comment>
-        <translation>Depth</translation>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="157"/>
+        <source>&amp;Supprimer</source>
+        <translation>削除 (&amp;D)</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="158"/>
         <source>Éditer le nom et les traductions de l&apos;élément</source>
-        <translation>Edit name and information of the element</translation>
+        <translation>要素の名前と情報を編集</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="159"/>
+        <source>Éditer les informations sur l&apos;auteur</source>
+        <translation>作成者の情報を編集</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="160"/>
         <source>Éditer les propriétés de l&apos;élément</source>
-        <translation>Edit element properties</translation>
+        <translation>要素の属性を編集</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="163"/>
@@ -6675,7 +6554,12 @@ Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 &gt;&gt; Install on Windows
 Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory 
 </source>
-        <translation></translation>
+        <translation>DXFtoQET プラグインをインストールするには
+https://download.tuxfamily.org/qet/builds/dxf_to_elmt/ を参照してください
+
+&gt;&gt; Windows でのインストール
+DXFtoQET.exe を C:\Users\user_name\AppData\Roaming\qet\ ディレクトリに置いてください 
+</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="169"/>
@@ -6685,7 +6569,12 @@ Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 &gt;&gt; Install on macOSX
 Put DXFtoQET.app binary on /Users/user_name/.qet/ directory 
 </source>
-        <translation></translation>
+        <translation>DXFtoQET プラグインをインストールするには
+https://download.tuxfamily.org/qet/builds/dxf_to_elmt/ を参照してください
+
+&gt;&gt; macOSX でのインストール
+DXFtoQET.app を /Users/user_name/.qet/ directory に置いてください 
+</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="175"/>
@@ -6696,223 +6585,13 @@ Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 Put DXFtoQET binary on your /home/user_name/.qet/ directory
 make it executable : chmod +x ./DXFtoQET
 </source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="295"/>
-        <source>Ajouter un champ texte dynamique</source>
-        <translation>Add a dynamic text field</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="308"/>
-        <source>Double-click pour terminer la forme, Click droit pour annuler le dernier point</source>
-        <translation>Double-click to finish the shape, Right click to cancel the last point</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="365"/>
-        <source>&amp;Fichier</source>
-        <translation>&amp;File</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="366"/>
-        <source>&amp;Édition</source>
-        <translation>&amp;Edit</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="367"/>
-        <source>Afficha&amp;ge</source>
-        <translation>Displ&amp;ay</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="368"/>
-        <source>O&amp;utils</source>
-        <translation>To&amp;ols</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="379"/>
-        <source>&amp;Récemment ouverts</source>
-        <translation>&amp;Recently opened</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="391"/>
-        <source>Coller depuis...</source>
-        <translation>Paste from...</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="504"/>
-        <source>[Modifié]</source>
-        <comment>window title tag</comment>
-        <translation>[Changed]</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="508"/>
-        <source> [lecture seule]</source>
-        <comment>window title tag</comment>
-        <translation> [Read only]</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="548"/>
-        <source>Informations</source>
-        <comment>dock title</comment>
-        <translation>Information</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="557"/>
-        <source>Annulations</source>
-        <comment>dock title</comment>
-        <translation>Undo</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="575"/>
-        <source>Parties</source>
-        <comment>dock title</comment>
-        <translation>Parts</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="587"/>
-        <source>Éditeur d&apos;éléments</source>
-        <comment>status bar message</comment>
-        <translation>Elements Editor</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="614"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="741"/>
-        <source>%n partie(s) sélectionnée(s).</source>
-        <translation>
-            <numerusform>%n selected part.</numerusform>
-            <numerusform>%n selected parts.</numerusform>
-        </translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="764"/>
-        <source>Absence de borne</source>
-        <comment>warning title</comment>
-        <translation>Missing terminal</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="786"/>
-        <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les reports de folio doivent posséder une seul borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Verifier que l&apos;élément ne possède qu&apos;une seul borne</source>
-        <translation>&lt;br&gt; &lt;b&gt; Error &lt;/ b&gt;: &lt;br&gt; folio referencings must have a single terminal &lt;br&gt; &lt;b&gt; Solution &lt;/ b&gt; :&lt;br&gt; Check that the element has only one terminal</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="798"/>
-        <source>La vérification de cet élément a généré</source>
-        <comment>message box content</comment>
-        <translation>The verification of this element generated</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="801"/>
-        <source> %n erreur(s)</source>
-        <comment>errors</comment>
-        <translation>
-            <numerusform> %n erreur</numerusform>
-            <numerusform> %n erreurs</numerusform>
-        </translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="806"/>
-        <source> et</source>
-        <translation> and</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="824"/>
-        <source>Erreurs</source>
-        <translation>Errors</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="785"/>
-        <source>Absence de borne</source>
-        <translation>Missing terminal</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="142"/>
-        <source>&amp;Lancer le plugin convertisseur DXF</source>
-        <translation>&amp;Starting the DXF converter plugin</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="309"/>
-        <source>Ajouter un texte d&apos;élément non éditable dans les schémas</source>
-        <translation>Add non-editable element text in diagrams</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="310"/>
-        <source>Ajouter un texte d&apos;élément pouvant être édité dans les schémas</source>
-        <translation>Add element text that can be edited in diagrams</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="808"/>
-        <source> %n avertissement(s)</source>
-        <comment>warnings</comment>
-        <translation>
-            <numerusform> %n Warning</numerusform>
-            <numerusform> %n Warnings</numerusform>
-        </translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="817"/>
-        <source>&lt;b&gt;%1&lt;/b&gt; : %2</source>
-        <comment>warning title: warning description</comment>
-        <translation>&lt;b&gt;%1&lt;/b&gt; : %2</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="849"/>
-        <source>Le fichier %1 n&apos;existe pas.</source>
-        <comment>message box content</comment>
-        <translation>The file %1 does not exist.</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="857"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1608"/>
-        <source>Impossible d&apos;ouvrir le fichier %1.</source>
-        <comment>message box content</comment>
-        <translation>Unable to open the file %1.</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="866"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1613"/>
-        <source>Ce fichier n&apos;est pas un document XML valide</source>
-        <comment>message box content</comment>
-        <translation>This file is not a valid XML document</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="872"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1619"/>
-        <source>Erreur</source>
-        <comment>toolbar title</comment>
-        <translation>Error</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="884"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1580"/>
-        <source>Édition en lecture seule</source>
-        <comment>message box title</comment>
-        <translation>Read only edition</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="885"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1581"/>
-        <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.</source>
-        <comment>message box content</comment>
-        <translation>You are not allowed to modify this element. Thus it will be edited read-only.</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="915"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="935"/>
-        <source>Erreur</source>
-        <comment>message box title</comment>
-        <translation>Error</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="916"/>
-        <source>Impossible d&apos;écrire dans ce fichier</source>
-        <comment>message box content</comment>
-        <translation>Unable to write to this file</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="936"/>
-        <source>Impossible d&apos;enregistrer l&apos;élément</source>
-        <comment>message box content</comment>
-        <translation>Unable to save the element</translation>
+        <translation>DXFtoQET プラグインをインストールするには
+https://download.tuxfamily.org/qet/builds/dxf_to_elmt/ を参照してください
+
+&gt;&gt; Linux でのインストール
+DXFtoQET のバイナリをあなたの /home/user_name/.qet/ ディレクトリに置いてください
+実行可能に設定してください : chmod +x ./DXFtoQET
+</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="183"/>
@@ -6928,25 +6607,422 @@ Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory
 &gt;&gt; Install on macOSX
 Put DXFtoQET.app binary on /Users/user_name/.qet/ directory 
 </source>
+        <translation>DXFtoQET プラグインをインストールするには
+https://download.tuxfamily.org/qet/builds/dxf_to_elmt/ を参照してください
+
+&gt;&gt; Linux でのインストール
+DXFtoQET のバイナリをあなたの /home/user_name/.qet/ ディレクトリに置いてください
+実行可能に設定してください : chmod +x ./DXFtoQET
+&gt;&gt; Windows でのインストール
+DXFtoQET.exe を C:\Users\user_name\AppData\Roaming\qet\ ディレクトリに置いてください 
+
+&gt;&gt; macOSX でのインストール
+DXFtoQET.app を /Users/user_name/.qet/ ディレクトリに置いてください 
+</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="195"/>
+        <source>Annuler</source>
+        <translation>元に戻す</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="196"/>
+        <source>Refaire</source>
+        <translation>やり直す</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="204"/>
+        <source>Ctrl+Shift+O</source>
         <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="206"/>
+        <source>Ctrl+Shift+S</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="207"/>
+        <source>Ctrl+Q</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="209"/>
+        <source>Ctrl+Shift+A</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="210"/>
+        <source>Ctrl+I</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="214"/>
+        <source>Ctrl+Shift+V</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="219"/>
+        <source>Backspace</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="222"/>
+        <source>Ctrl+E</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="223"/>
+        <source>Ctrl+Y</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="257"/>
+        <source>Profondeur</source>
+        <comment>toolbar title</comment>
+        <translation>重なり</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="267"/>
+        <source>Zoom avant</source>
+        <translation>ズームイン</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="268"/>
+        <source>Zoom arrière</source>
+        <translation>ズームアウト</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="269"/>
+        <source>Zoom adapté</source>
+        <translation>全体に合わせてズーム</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="270"/>
+        <source>Pas de zoom</source>
+        <translation>ズームのリセット</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="274"/>
+        <source>Ctrl+9</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="275"/>
+        <source>Ctrl+0</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="288"/>
+        <source>Ajouter une ligne</source>
+        <translation>線を追加</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="289"/>
+        <source>Ajouter un rectangle</source>
+        <translation>矩形を追加</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="290"/>
+        <source>Ajouter une ellipse</source>
+        <translation>楕円を追加</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="291"/>
+        <source>Ajouter un polygone</source>
+        <translation>多角形を追加</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="292"/>
+        <source>Ajouter du texte</source>
+        <translation>テキストを追加</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="293"/>
+        <source>Ajouter un arc de cercle</source>
+        <translation>弧を追加</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="294"/>
+        <source>Ajouter une borne</source>
+        <translation>端子を追加</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="295"/>
+        <source>Ajouter un champ texte dynamique</source>
+        <translation>動的なテキスト領域を追加</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="308"/>
+        <source>Double-click pour terminer la forme, Click droit pour annuler le dernier point</source>
+        <translation>ダブルクリックで完了、右クリックで最後の点をキャンセル</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="309"/>
+        <source>Ajouter un texte d&apos;élément non éditable dans les schémas</source>
+        <translation>図に編集不可能な要素テキストを追加</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="310"/>
+        <source>Ajouter un texte d&apos;élément pouvant être édité dans les schémas</source>
+        <translation>図に編集可能な要素テキストを追加</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="312"/>
+        <source>Parties</source>
+        <comment>toolbar title</comment>
+        <translation>部品</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="318"/>
+        <source>Outils</source>
+        <comment>toolbar title</comment>
+        <translation>ツール</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="320"/>
+        <source>Affichage</source>
+        <comment>toolbar title</comment>
+        <translation>表示</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="322"/>
+        <source>Élément</source>
+        <comment>toolbar title</comment>
+        <translation>要素</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="365"/>
+        <source>&amp;Fichier</source>
+        <translation>ファイル (&amp;F)</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="366"/>
+        <source>&amp;Édition</source>
+        <translation>編集 (&amp;E)</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="367"/>
+        <source>Afficha&amp;ge</source>
+        <translation>表示 (&amp;D)</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="368"/>
+        <source>O&amp;utils</source>
+        <translation>ツール (&amp;T)</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="379"/>
+        <source>&amp;Récemment ouverts</source>
+        <translation>最近のファイル (&amp;L)</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="391"/>
+        <source>Coller depuis...</source>
+        <translation>読み込んで貼り付け...</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="504"/>
+        <source>[Modifié]</source>
+        <comment>window title tag</comment>
+        <translation>[変更あり]</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="508"/>
+        <source> [lecture seule]</source>
+        <comment>window title tag</comment>
+        <translation> [読み取り専用]</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="548"/>
+        <source>Informations</source>
+        <comment>dock title</comment>
+        <translation>情報</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="557"/>
+        <source>Annulations</source>
+        <comment>dock title</comment>
+        <translation>復元</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="564"/>
+        <source>Aucune modification</source>
+        <translation>変更なし</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="575"/>
+        <source>Parties</source>
+        <comment>dock title</comment>
+        <translation>部品</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="587"/>
+        <source>Éditeur d&apos;éléments</source>
+        <comment>status bar message</comment>
+        <translation>要素エディタ</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/editor/qetelementeditor.cpp" line="614"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="741"/>
+        <source>%n partie(s) sélectionnée(s).</source>
+        <translation>
+            <numerusform>%n 選択部品.</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="764"/>
+        <source>Absence de borne</source>
+        <comment>warning title</comment>
+        <translation>端子がありません</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="765"/>
+        <source>&lt;br&gt;En l&apos;absence de borne, l&apos;élément ne pourra être relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
+        <comment>warning description</comment>
+        <translation>&lt;br&gt;端子がないと他の要素に導体で接続できません。</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="785"/>
+        <source>Absence de borne</source>
+        <translation>端子がありません</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="786"/>
+        <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les reports de folio doivent posséder une seul borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Verifier que l&apos;élément ne possède qu&apos;une seul borne</source>
+        <translation>&lt;br&gt; &lt;b&gt; エラー &lt;/ b&gt;: &lt;br&gt; フォリオ参照は端子が1つでなければなりません &lt;br&gt; &lt;b&gt; 解決法 &lt;/ b&gt; :&lt;br&gt; 要素の端子が1つだけであることを確認してください</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="798"/>
+        <source>La vérification de cet élément a généré</source>
+        <comment>message box content</comment>
+        <translation>この要素は検証されました</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/editor/qetelementeditor.cpp" line="801"/>
+        <source> %n erreur(s)</source>
+        <comment>errors</comment>
+        <translation>
+            <numerusform> %n エラー</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="806"/>
+        <source> et</source>
+        <translation> と</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/editor/qetelementeditor.cpp" line="808"/>
+        <source> %n avertissement(s)</source>
+        <comment>warnings</comment>
+        <translation>
+            <numerusform> %n 警告</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="817"/>
+        <source>&lt;b&gt;%1&lt;/b&gt; : %2</source>
+        <comment>warning title: warning description</comment>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="824"/>
+        <source>Erreurs</source>
+        <translation>エラー</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="827"/>
+        <source>Avertissements</source>
+        <translation>警告</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="849"/>
+        <source>Le fichier %1 n&apos;existe pas.</source>
+        <comment>message box content</comment>
+        <translation>ファイル %1 が存在しません。</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="857"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1608"/>
+        <source>Impossible d&apos;ouvrir le fichier %1.</source>
+        <comment>message box content</comment>
+        <translation>ファイル %1 を開けません。</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="866"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1613"/>
+        <source>Ce fichier n&apos;est pas un document XML valide</source>
+        <comment>message box content</comment>
+        <translation>このファイルは有効な XML 文書ではありません</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="872"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1619"/>
+        <source>Erreur</source>
+        <comment>toolbar title</comment>
+        <translation>エラー</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="884"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1580"/>
+        <source>Édition en lecture seule</source>
+        <comment>message box title</comment>
+        <translation>読み取り専用</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="885"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1581"/>
+        <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.</source>
+        <comment>message box content</comment>
+        <translation>この要素を変更する権限がありません。読み取り専用で開きます。</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="915"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="935"/>
+        <source>Erreur</source>
+        <comment>message box title</comment>
+        <translation>エラー</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="916"/>
+        <source>Impossible d&apos;écrire dans ce fichier</source>
+        <comment>message box content</comment>
+        <translation>このファイルに書き込めません</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="936"/>
+        <source>Impossible d&apos;enregistrer l&apos;élément</source>
+        <comment>message box content</comment>
+        <translation>要素を保存できません</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1162"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
-        <translation>Unable to open file</translation>
+        <translation>ファイルを開けません</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1164"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
-        <translation>It appears the %1 file which you are trying to open does not exist or does not exist anymore.</translation>
+        <translation>開こうとしているファイル %1 は存在しないか、既に存在しないようです。</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1180"/>
+        <source>Recharger l&apos;élément</source>
+        <comment>dialog title</comment>
+        <translation>要素を再読込</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1181"/>
+        <source>Vous avez efffectué des modifications sur cet élément. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l&apos;élément ?</source>
+        <comment>dialog content</comment>
+        <translation>この要素は最後に保存されてから変更されました。再読込を行うと変更が失われます。本当にこの要素の再読込を行いますか?</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1234"/>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1262"/>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1304"/>
         <source>Echec de l&apos;enregistrement</source>
-        <translation>Registration failed</translation>
+        <translation>保存に失敗しました</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1234"/>
@@ -6954,66 +7030,49 @@ Put DXFtoQET.app binary on /Users/user_name/.qet/ directory
         <location filename="../sources/editor/qetelementeditor.cpp" line="1304"/>
         <source>L&apos;enregistrement à échoué,
 les conditions requises ne sont pas valides</source>
-        <translation>The recording failed,
-the conditions are not valid</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1435"/>
-        <source>Trop de primitives, liste non générée.</source>
-        <translation>Too much parts, list not rendered.</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1537"/>
-        <source>Ouvrir un fichier</source>
-        <comment>dialog title</comment>
-        <translation>Open a file</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1539"/>
-        <source>Éléments QElectroTech (*.elmt);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
-        <comment>filetypes allowed when opening an element file</comment>
-        <translation>QElectroTech elements (*.elmt);;XML files (*.xml);;All files (*)</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1180"/>
-        <source>Recharger l&apos;élément</source>
-        <comment>dialog title</comment>
-        <translation>Reload element</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="827"/>
-        <source>Avertissements</source>
-        <translation>Warnings</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1181"/>
-        <source>Vous avez efffectué des modifications sur cet élément. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l&apos;élément ?</source>
-        <comment>dialog content</comment>
-        <translation>This element has been modified since last save. If you reload it, these changes will be lost. Do you really want to reload this element?</translation>
+        <translation>保存に失敗しました,
+条件を満たしません</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1277"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
-        <translation>Save as</translation>
+        <translation>名前を付けて保存</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1279"/>
         <source>Éléments QElectroTech (*.elmt)</source>
         <comment>filetypes allowed when saving an element file</comment>
-        <translation>QElectroTech elements (*.elmt)</translation>
+        <translation>QElectroTech 要素 (*.elmt)</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1321"/>
         <source>Enregistrer l&apos;élément en cours ?</source>
         <comment>dialog title</comment>
-        <translation>Save current element?</translation>
+        <translation>現在の要素を保存しますか?</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1323"/>
         <source>Voulez-vous enregistrer l&apos;élément %1 ?</source>
         <comment>dialog content - %1 is an element name</comment>
-        <translation>Do you wish to save the element %1?</translation>
+        <translation>要素 %1 を保存しますか?</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1435"/>
+        <source>Trop de primitives, liste non générée.</source>
+        <translation>部品が多すぎます、リストは表示されません。</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1537"/>
+        <source>Ouvrir un fichier</source>
+        <comment>dialog title</comment>
+        <translation>ファイルを開く</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1539"/>
+        <source>Éléments QElectroTech (*.elmt);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
+        <comment>filetypes allowed when opening an element file</comment>
+        <translation>QElectroTech 要素 (*.elmt);;XML ファイル (*.xml);;全てのファイル (*)</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1557"/>
@@ -7022,51 +7081,21 @@ the conditions are not valid</translation>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1644"/>
         <source>Élément inexistant.</source>
         <comment>message box title</comment>
-        <translation>Non-existent element.</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1564"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1645"/>
-        <source>L&apos;élément n&apos;existe pas.</source>
-        <comment>message box content</comment>
-        <translation>The element does not exist.</translation>
+        <translation>存在しない要素。</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1558"/>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1639"/>
         <source>Le chemin virtuel choisi ne correspond pas à un élément.</source>
         <comment>message box content</comment>
-        <translation>The chosen virtual path does not match an element.</translation>
+        <translation>選ばれたパスは要素に対応しません。</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="150"/>
-        <source>Co&amp;uper</source>
-        <translation>Cu&amp;t</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="151"/>
-        <source>Cop&amp;ier</source>
-        <translation>&amp;Copy</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="152"/>
-        <source>C&amp;oller</source>
-        <translation>&amp;Paste</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="153"/>
-        <source>C&amp;oller dans la zone...</source>
-        <translation>Pa&amp;ste in the area...</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="214"/>
-        <source>Ctrl+Shift+V</source>
-        <translation>Ctrl+Shift+V</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="289"/>
-        <source>Ajouter un rectangle</source>
-        <translation>Add a rectangle</translation>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1564"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1645"/>
+        <source>L&apos;élément n&apos;existe pas.</source>
+        <comment>message box content</comment>
+        <translation>要素が存在しません。</translation>
     </message>
 </context>
 <context>
@@ -7074,126 +7103,126 @@ the conditions are not valid</translation>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="57"/>
         <source>&amp;Configurer QElectroTech</source>
-        <translation>&amp;Configure QElectroTech</translation>
+        <translation>QElectroTech の環境設定 (&amp;C)</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="58"/>
         <source>Permet de régler différents paramètres de QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation>Allows to specify various parameters for QElectroTech</translation>
+        <translation>QElectroTech の様々なパラメータを指定</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="80"/>
         <source>À &amp;propos de QElectroTech</source>
-        <translation>A&amp;bout QElectroTech</translation>
+        <translation>QElectroTech について (&amp;A）</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="81"/>
         <source>Affiche des informations sur QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation>Displays information about QElectroTech</translation>
+        <translation>QElectroTech の情報の表示</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="84"/>
         <source>Manuel en ligne</source>
-        <translation>Online manual</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetmainwindow.cpp" line="94"/>
-        <source>Chaine Youtube</source>
-        <translation>Youtube channel</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetmainwindow.cpp" line="102"/>
-        <location filename="../sources/qetmainwindow.cpp" line="105"/>
-        <source>Télécharger une nouvelle version (dev)</source>
-        <translation>Download a new version (dev)</translation>
+        <translation>オンライン・マニュアル</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="85"/>
         <source>Lance le navigateur par défaut vers le manuel en ligne de QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation>Launches the default browser to the online manual QElectroTech</translation>
+        <translation>既定のブラウザを起動し QElectroTech のオンライン・マニュアルへ</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetmainwindow.cpp" line="94"/>
+        <source>Chaine Youtube</source>
+        <translation>Yotube チャンネル</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="95"/>
         <source>Lance le navigateur par défaut vers la chaine Youtube de QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation>Launches the default browser on the Youtube channel of QElectroTech</translation>
+        <translation>既定のブラウザを起動し QElectroTech の Youtube チャンネルへ</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetmainwindow.cpp" line="102"/>
+        <location filename="../sources/qetmainwindow.cpp" line="105"/>
+        <source>Télécharger une nouvelle version (dev)</source>
+        <translation>新しい (dev) バージョンのダウンロード</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="103"/>
         <location filename="../sources/qetmainwindow.cpp" line="106"/>
         <source>Lance le navigateur par défaut vers le dépot Nightly en ligne de QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation>Launches the default browser to the online repository Nightly QElectroTech</translation>
+        <translation>既定のブラウザを起動し Nightly QElectroTech のオンライン・リポジトリへ</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="118"/>
         <source>Soutenir le projet par un don</source>
-        <translation>Support the project with a donation</translation>
+        <translation>寄付によるプロジェクトの支援</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="119"/>
         <source>Soutenir le projet QElectroTech par un don</source>
         <comment>status bar tip</comment>
-        <translation>Support the QElectroTech project with a donation</translation>
+        <translation>寄付による QElectroTech プロジェクトの支援</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="126"/>
         <source>À propos de &amp;Qt</source>
-        <translation>About &amp;Qt</translation>
+        <translation>&amp;Qt について</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="127"/>
         <source>Affiche des informations sur la bibliothèque Qt</source>
         <comment>status bar tip</comment>
-        <translation>Displays information about Qt library</translation>
+        <translation>Qt ライブラリの情報の表示</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="135"/>
         <source>&amp;Configuration</source>
         <comment>window menu</comment>
-        <translation>&amp;Settings</translation>
+        <translation>設定 (&amp;C)</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="141"/>
         <source>&amp;Aide</source>
         <comment>window menu</comment>
-        <translation>&amp;Help</translation>
+        <translation>ヘルプ (&amp;H)</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="204"/>
         <source>Sortir du &amp;mode plein écran</source>
-        <translation>Leave F&amp;ullScreen Mode</translation>
+        <translation>全画面表示モードの終了 (&amp;F)</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="206"/>
         <source>Affiche QElectroTech en mode fenêtré</source>
         <comment>status bar tip</comment>
-        <translation>Displays QElectroTech in windowed mode</translation>
+        <translation>QElectroTech をウィンドウ・モードで表示</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="208"/>
         <source>Passer en &amp;mode plein écran</source>
-        <translation>F&amp;ullScreen Mode</translation>
+        <translation>全画面表示モード (&amp;F)</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="210"/>
         <source>Affiche QElectroTech en mode plein écran</source>
         <comment>status bar tip</comment>
-        <translation>Displays QElectroTech in full screen mode</translation>
+        <translation>QElectroTech を全画面モードで表示</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="212"/>
         <source>Ctrl+Shift+F</source>
-        <translation>Ctrl+Shift+F</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="224"/>
         <source>Afficher</source>
         <comment>menu entry</comment>
-        <translation>Display</translation>
+        <translation>表示</translation>
     </message>
 </context>
 <context>
@@ -7201,216 +7230,216 @@ the conditions are not valid</translation>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="40"/>
         <source>QElectroTech : Aperçu avant impression</source>
-        <translation>QElectroTech: Print preview</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="175"/>
-        <source>Tout cocher</source>
-        <translation>Check all</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="176"/>
-        <source>Tout décocher</source>
-        <translation>Uncheck all</translation>
+        <translation>QElectroTech: 印刷プレビュー</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="173"/>
         <source>Folios à imprimer :</source>
-        <translation>Folios to print :</translation>
+        <translation>印刷するフォリオ :</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="175"/>
+        <source>Tout cocher</source>
+        <translation>全て選択</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="176"/>
+        <source>Tout décocher</source>
+        <translation>全て解除</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="177"/>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="367"/>
         <source>Cacher la liste des folios</source>
-        <translation>Hide the folios list</translation>
+        <translation>フォリオ一覧を非表示</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="178"/>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="383"/>
         <source>Cacher les options d&apos;impression</source>
-        <translation>Hide the print options</translation>
+        <translation>印刷オプションを非表示</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="179"/>
         <source>Ajuster la largeur</source>
-        <translation>Fit to width</translation>
+        <translation>幅に合わせる</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="180"/>
         <source>Ajuster la page</source>
-        <translation>Fit to page</translation>
+        <translation>ページに合わせる</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="181"/>
         <source>Zoom arrière</source>
-        <translation>Zoom Out</translation>
+        <translation>ズームアウト</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="183"/>
         <source>Zoom avant</source>
-        <translation>Zoom In</translation>
+        <translation>ズームイン</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="184"/>
         <source>Paysage</source>
-        <translation>Landscape</translation>
+        <translation>横</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="185"/>
         <source>Portrait</source>
-        <translation>Portrait</translation>
+        <translation>縦</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="186"/>
         <source>Première page</source>
-        <translation>First page</translation>
+        <translation>最初のページ</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="187"/>
         <source>Page précédente</source>
-        <translation>Previous page</translation>
+        <translation>前のページ</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="188"/>
         <source>Page suivante</source>
-        <translation>Next page</translation>
+        <translation>次のページ</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="189"/>
         <source>Dernière page</source>
-        <translation>Last page</translation>
+        <translation>最後のページ</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="190"/>
         <source>Afficher une seule page</source>
-        <translation>Display a single page</translation>
+        <translation>単一ページ表示</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="191"/>
         <source>Afficher deux pages</source>
-        <translation>Display facing pages</translation>
+        <translation>見開きページ表示</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="192"/>
         <source>Afficher un aperçu de toutes les pages</source>
-        <translation>Display all pages</translation>
+        <translation>全てのページを表示</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="193"/>
         <source>Mise en page</source>
-        <translation>Page layout</translation>
+        <translation>ページ・レイアウト</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="210"/>
         <source>Mise en page (non disponible sous Windows pour l&apos;impression PDF/PS)</source>
-        <translation>Page layout (not available under Windows for PDF/PS printing)</translation>
+        <translation>ページ・レイアウト (Windows の PDF/PS 印刷では利用できません)</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="238"/>
         <source>Options d&apos;impression</source>
-        <translation>Print options</translation>
+        <translation>印刷オプション</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="239"/>
         <source>Utiliser toute la feuille</source>
-        <translation>Use the whole page</translation>
+        <translation>ページの全体を利用</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="241"/>
         <source>Si cette option est cochée, les marges de la feuille seront ignorées et toute sa surface sera utilisée pour l&apos;impression. Cela peut ne pas être supporté par votre imprimante.</source>
-        <translation>If this option is checked, the paper margins are ignored and its whole surface is used for the printing. This may not be supported by your printer.</translation>
+        <translation>このオプションを選ぶと余白が無視され用紙の全体が印刷に用いられます。あなたのプリンタでは使えないかもしれません。</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="248"/>
         <source>Adapter le folio à la page</source>
-        <translation>Fit folio to page</translation>
+        <translation>フォリオをページに合わせる</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="249"/>
         <source>Si cette option est cochée, le folio sera agrandi ou rétréci de façon à remplir toute la surface imprimable d&apos;une et une seule page.</source>
-        <translation>If this option is checked, the folio will be shrinked or expanded to fit the printable surface of a single page.</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="369"/>
-        <source>Afficher la liste des folios</source>
-        <translation>View a list of folios</translation>
+        <translation>このオプションを選ぶとページの大きさに合わせてフォリオが縮小または拡大されます。</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="265"/>
         <source>Imprimer</source>
-        <translation>Print</translation>
+        <translation>印刷</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="369"/>
+        <source>Afficher la liste des folios</source>
+        <translation>フォリオ一覧を表示</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="385"/>
         <source>Afficher les options d&apos;impression</source>
-        <translation>Display the print options</translation>
+        <translation>印刷オプションを表示</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="412"/>
         <source>%1 %</source>
-        <translation>%1%</translation>
+        <translation></translation>
     </message>
 </context>
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1216"/>
-        <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
-Que désirez vous faire ?</source>
-        <comment>message box content</comment>
-        <translation>This document appears to have been saved with a newer version of QElectroTech. All or a part of its opening may fail. What do you wish to do?</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetproject.cpp" line="1215"/>
-        <source>Avertissement</source>
-        <comment>message box title</comment>
-        <translation>Warning</translation>
-    </message>
-    <message>
         <location filename="../sources/qetproject.cpp" line="320"/>
         <source>Projet « %1 : %2»</source>
         <comment>displayed title for a ProjectView - %1 is the project title, -%2 is the project path</comment>
-        <translation>Project « %1 : %2»</translation>
+        <translation>プロジェクト « %1 : %2»</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="327"/>
         <source>Projet %1</source>
         <comment>displayed title for a title-less project - %1 is the file name</comment>
-        <translation>Project %1</translation>
+        <translation>プロジェクト %1</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="334"/>
         <source>Projet sans titre</source>
         <comment>displayed title for a project-less, file-less project</comment>
-        <translation>Untitled project</translation>
+        <translation>無題のプロジェクト</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="343"/>
         <source>%1 [lecture seule]</source>
         <comment>displayed title for a read-only project - %1 is a displayable title</comment>
-        <translation>%1 [read-only]</translation>
+        <translation>%1 [読み取り専用]</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="351"/>
         <source>%1 [modifié]</source>
         <comment>displayed title for a modified project - %1 is a displayable title</comment>
-        <translation>%1 [modified]</translation>
+        <translation>%1 [変更あり]</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1059"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
-        <translation>An error occurred during the template integration.</translation>
+        <translation>テンプレートを統合する際にエラーが発生しました。</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetproject.cpp" line="1215"/>
+        <source>Avertissement</source>
+        <comment>message box title</comment>
+        <translation>警告</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetproject.cpp" line="1216"/>
+        <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
+Que désirez vous faire ?</source>
+        <comment>message box content</comment>
+        <translation>この文書はより新しいバージョンの QElectroTech で保存されているようです。全てまたは一部を開くことに失敗するかもしれません。どうしますか?</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1274"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Création des folios&lt;/p&gt;</source>
-        <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Opening the project ...&lt;/b&gt;&lt;br/&gt;Creation of folios&lt;/p&gt;</translation>
+        <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;プロジェクトを開きます ...&lt;/b&gt;&lt;br/&gt;フォリオの作成&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1311"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Mise en place des références croisées&lt;/p&gt;</source>
-        <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Opening the project ...&lt;/b&gt;&lt;br/&gt;Setting up cross references&lt;/p&gt;</translation>
+        <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;プロジェクトを開きます ...&lt;/b&gt;&lt;br/&gt;相互参照の構成&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -7419,13 +7448,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="110"/>
         <source>Enregistrer le modèle en cours ?</source>
         <comment>dialog title</comment>
-        <translation>Save current template?</translation>
+        <translation>現在のテンプレートを保存しますか?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="112"/>
         <source>Voulez-vous enregistrer le modèle %1 ?</source>
         <comment>dialog content - %1 is a title block template name</comment>
-        <translation>Do you wish to save the template %1?</translation>
+        <translation>テンプレート %1 を保存しますか?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="162"/>
@@ -7437,318 +7466,318 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="170"/>
         <source>Dupliquer un modèle de cartouche</source>
         <comment>input dialog title</comment>
-        <translation>Duplicate a title block template</translation>
+        <translation>表題欄テンプレートの複製</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="171"/>
         <source>Pour dupliquer ce modèle, entrez le nom voulu pour sa copie</source>
         <comment>input dialog text</comment>
-        <translation>In order to duplicate this template, please enter a name for its copy</translation>
+        <translation>このテンプレートを複製するには、複製の名前を入力してください</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="332"/>
         <source>&amp;Nouveau</source>
         <comment>menu entry</comment>
-        <translation>&amp;New</translation>
+        <translation>新規作成 (&amp;N)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="333"/>
         <source>&amp;Ouvrir</source>
         <comment>menu entry</comment>
-        <translation>&amp;Open</translation>
+        <translation>開く (&amp;O)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="334"/>
         <source>Ouvrir depuis un fichier</source>
         <comment>menu entry</comment>
-        <translation>Open from a file</translation>
+        <translation>ファイルから開く</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="335"/>
         <source>&amp;Enregistrer</source>
         <comment>menu entry</comment>
-        <translation>&amp;Save</translation>
+        <translation>保存 (&amp;S)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="336"/>
         <source>Enregistrer sous</source>
         <comment>menu entry</comment>
-        <translation>Save as</translation>
+        <translation>名前を付けて保存</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="337"/>
         <source>Enregistrer vers un fichier</source>
         <comment>menu entry</comment>
-        <translation>Save to a file</translation>
+        <translation>ファイルへ保存</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="338"/>
         <source>&amp;Quitter</source>
         <comment>menu entry</comment>
-        <translation>&amp;Quit</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="344"/>
-        <source>Gérer les logos</source>
-        <comment>menu entry</comment>
-        <translation>Manage logos</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="346"/>
-        <source>Zoom avant</source>
-        <comment>menu entry</comment>
-        <translation>Zoom In</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="347"/>
-        <source>Zoom arrière</source>
-        <comment>menu entry</comment>
-        <translation>Zoom out</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="348"/>
-        <source>Zoom adapté</source>
-        <comment>menu entry</comment>
-        <translation>Fit in view</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="349"/>
-        <source>Pas de zoom</source>
-        <comment>menu entry</comment>
-        <translation>Reset zoom</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="369"/>
-        <source>Ctrl+T</source>
-        <comment>shortcut to manage embedded logos</comment>
-        <translation>Ctrl+T</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="371"/>
-        <source>Ctrl+J</source>
-        <comment>shortcut to merge cells</comment>
-        <translation>Ctrl+J</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="372"/>
-        <source>Ctrl+K</source>
-        <comment>shortcut to split merged cell</comment>
-        <translation>Ctrl+K</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="830"/>
-        <source>Enregistrer sous</source>
-        <comment>dialog title</comment>
-        <translation>Save as</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="832"/>
-        <source>Modèles de cartouches QElectroTech (*%1)</source>
-        <comment>filetypes allowed when saving a title block template file - %1 is the .titleblock extension</comment>
-        <translation>QElectroTech title block templates (*%1)</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="352"/>
-        <source>&amp;Fusionner les cellules</source>
-        <comment>menu entry</comment>
-        <translation>&amp;Merge cells</translation>
+        <translation>終了 (&amp;Q)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="341"/>
         <source>Co&amp;uper</source>
         <comment>menu entry</comment>
-        <translation>Cu&amp;t</translation>
+        <translation>切り取り (&amp;T)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="342"/>
         <source>Cop&amp;ier</source>
         <comment>menu entry</comment>
-        <translation>&amp;Copy</translation>
+        <translation>コピー (&amp;C)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="343"/>
         <source>C&amp;oller</source>
         <comment>menu entry</comment>
-        <translation>&amp;Paste</translation>
+        <translation>貼り付け (&amp;P)</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="344"/>
+        <source>Gérer les logos</source>
+        <comment>menu entry</comment>
+        <translation>ロゴの管理</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="345"/>
         <source>Éditer les informations complémentaires</source>
         <comment>menu entry</comment>
-        <translation>Edit extra information</translation>
+        <translation>補足情報を編集</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="346"/>
+        <source>Zoom avant</source>
+        <comment>menu entry</comment>
+        <translation>ズームイン</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="347"/>
+        <source>Zoom arrière</source>
+        <comment>menu entry</comment>
+        <translation>ズームアウト</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="348"/>
+        <source>Zoom adapté</source>
+        <comment>menu entry</comment>
+        <translation>全体に合わせてズーム</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="349"/>
+        <source>Pas de zoom</source>
+        <comment>menu entry</comment>
+        <translation>ズームのリセット</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="350"/>
         <source>Ajouter une &amp;ligne</source>
         <comment>menu entry</comment>
-        <translation>Add a &amp;row</translation>
+        <translation>行を追加 (&amp;R)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="351"/>
         <source>Ajouter une &amp;colonne</source>
         <comment>menu entry</comment>
-        <translation>Add a &amp;column</translation>
+        <translation>列を追加 (&amp;C)</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="352"/>
+        <source>&amp;Fusionner les cellules</source>
+        <comment>menu entry</comment>
+        <translation>セルの結合 (&amp;M)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="353"/>
         <source>&amp;Séparer les cellules</source>
         <comment>menu entry</comment>
-        <translation>&amp;Split cells</translation>
+        <translation>セルを分割 (&amp;S)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="360"/>
         <source>Ctrl+Shift+O</source>
         <comment>shortcut to open a template from a file</comment>
-        <translation>Ctrl+Shift+O</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="362"/>
         <source>Ctrl+Shift+S</source>
         <comment>shortcut to save a template to a file</comment>
-        <translation>Ctrl+Shift+S</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="363"/>
         <source>Ctrl+Q</source>
         <comment>shortcut to quit</comment>
-        <translation>Ctrl+Q</translation>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="369"/>
+        <source>Ctrl+T</source>
+        <comment>shortcut to manage embedded logos</comment>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="370"/>
         <source>Ctrl+Y</source>
         <comment>shortcut to edit extra information</comment>
-        <translation>Ctrl+Y</translation>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="371"/>
+        <source>Ctrl+J</source>
+        <comment>shortcut to merge cells</comment>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="372"/>
+        <source>Ctrl+K</source>
+        <comment>shortcut to split merged cell</comment>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="375"/>
         <source>Ctrl+9</source>
         <comment>shortcut to enable fit zoom</comment>
-        <translation>Ctrl+9</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="376"/>
         <source>Ctrl+0</source>
         <comment>shortcut to reset zoom</comment>
-        <translation>Ctrl+0</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="404"/>
         <source>&amp;Fichier</source>
         <comment>menu title</comment>
-        <translation>&amp;File</translation>
+        <translation>ファイル (&amp;F)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="405"/>
         <source>&amp;Édition</source>
         <comment>menu title</comment>
-        <translation>&amp;Edit</translation>
+        <translation>編集 (&amp;E)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="406"/>
         <source>Afficha&amp;ge</source>
         <comment>menu title</comment>
-        <translation>Displ&amp;ay</translation>
+        <translation>表示 (&amp;D)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="445"/>
         <source>Outils</source>
         <comment>toolbar title</comment>
-        <translation>Tools</translation>
+        <translation>ツール</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="453"/>
         <source>Édition</source>
         <comment>toolbar title</comment>
-        <translation>Edit</translation>
+        <translation>編集</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="462"/>
         <source>Affichage</source>
         <comment>toolbar title</comment>
-        <translation>Display</translation>
+        <translation>表示</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="481"/>
         <source>Aucune modification</source>
         <comment>label displayed in the undo list when empty</comment>
-        <translation>No modification</translation>
+        <translation>変更なし</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="483"/>
         <source>Annulations</source>
         <comment>dock title</comment>
-        <translation>Undo</translation>
+        <translation>復元</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="502"/>
         <source>Propriétés de la cellule</source>
         <comment>dock title</comment>
-        <translation>Cell properties</translation>
+        <translation>セルの属性</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="570"/>
         <source>[Modifié]</source>
         <comment>window title tag</comment>
-        <translation>[Changed]</translation>
+        <translation>[変更あり]</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="573"/>
         <source>[Lecture seule]</source>
         <comment>window title tag</comment>
-        <translation>[Read only]</translation>
+        <translation>[読み取り専用]</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="576"/>
         <source>%1 %2</source>
         <comment>part of the window title - %1 is the filepath or template name, %2 is the [Changed] or [Read only] tag</comment>
-        <translation>%1 %2</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="659"/>
         <source>QElectroTech - Éditeur de modèle de cartouche</source>
         <comment>titleblock template editor: base window title</comment>
-        <translation>QElectroTech - Title block template editor</translation>
+        <translation>QElectroTech - 表題欄テンプレート・エディタ</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="674"/>
         <source>%1 - %2</source>
         <comment>window title: %1 is the base window title, %2 is a template name</comment>
-        <translation>%1 - %2</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="751"/>
         <source>Ouvrir un modèle</source>
         <comment>File &gt; open dialog window title</comment>
-        <translation>Open a title block template</translation>
+        <translation>表題欄テンプレートを開く</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="770"/>
         <source>Ouvrir un fichier</source>
         <comment>dialog title</comment>
-        <translation>Open a file</translation>
+        <translation>ファイルを開く</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="772"/>
         <source>Modèles de cartouches QElectroTech (*%1);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening a title block template file - %1 is the .titleblock extension</comment>
-        <translation>QElectroTech title block templates (*%1);;XML files (*.xml);; All files (*)</translation>
+        <translation>QElectroTech 表題欄テンプレート (*%1);;XML ファイル (*.xml);; 全てのファイル (*)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="811"/>
         <source>Enregistrer le modèle sous</source>
         <comment>dialog window title</comment>
-        <translation>Save template as</translation>
+        <translation>テンプレートを名前を付けて保存</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="830"/>
+        <source>Enregistrer sous</source>
+        <comment>dialog title</comment>
+        <translation>名前を付けて保存</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="832"/>
+        <source>Modèles de cartouches QElectroTech (*%1)</source>
+        <comment>filetypes allowed when saving a title block template file - %1 is the .titleblock extension</comment>
+        <translation>QElectroTech 表題欄テンプレート (*%1)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="934"/>
         <source>Éditer les informations complémentaires</source>
         <comment>window title</comment>
-        <translation>Edit extra information</translation>
+        <translation>補足情報の編集</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="938"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs du cartouche, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
-        <translation>You can use this field to specify the authors of this template, its license, or any other information you may find useful.</translation>
+        <translation>この自由欄をテンプレートの作成者、ライセンス、他の有用と考えられる情報などに利用できます。</translation>
     </message>
 </context>
 <context>
@@ -7761,673 +7790,81 @@ Que désirez vous faire ?</source>
  - le tiret [-], l&apos;underscore [_] et le point [.]
 </source>
         <comment>tooltip content when editing a filename</comment>
-        <translation>The allowed characters are:
- - digits [0-9]
- - lower-case letters [a-z]
- - dash [-], underscore [_] and dot [.]
+        <translation>使用可能な文字:
+ - 数字 [0-9]
+ - 小文字 [a-z]
+ - ハイフン [-], アンダースコア [_], ドット [.]
 </translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1001"/>
-        <source>Exporter vers le presse-papier</source>
-        <translation>Export to clipboard</translation>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="182"/>
+        <source>chargement %p% (%v sur %m)</source>
+        <translation>読込 %p% (%v / %m)</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="359"/>
-        <source>Le fichier texte contenant la licence GNU/GPL est introuvable - bon bah de toute façon, vous la connaissez par coeur non ?</source>
-        <translation>The text file containing the GNU/GPL license could not be found - however, you know it by heart, don&apos;t you?</translation>
+        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="121"/>
+        <source>Collection QET</source>
+        <translation>QET コレクション</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="363"/>
-        <source>Le fichier texte contenant la licence GNU/GPL existe mais n&apos;a pas pu être ouvert - bon bah de toute façon, vous la connaissez par coeur non ?</source>
-        <translation>The text file containing the GNU/GPL license exists but could not be opened - however, you know it by heart, don&apos;t you?</translation>
+        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="123"/>
+        <source>Collection utilisateur</source>
+        <translation>ユーザ・コレクション</translation>
     </message>
     <message>
-        <location filename="../sources/factory/elementpicturefactory.cpp" line="156"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="396"/>
-        <source>Avertissement : l&apos;élément  a été enregistré avec une version ultérieure de QElectroTech.</source>
-        <translation>Warning: the element has been saved with a more recent version of QElectroTech.</translation>
+        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="125"/>
+        <source>Collection inconnue</source>
+        <translation>不明コレクション</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="37"/>
-        <source>un champ texte</source>
-        <translation>a text field</translation>
+        <location filename="../sources/ElementsCollection/xmlprojectelementcollectionitem.cpp" line="61"/>
+        <source>Projet sans titre</source>
+        <translation>無題のプロジェクト</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="42"/>
-        <source>un conducteur</source>
-        <translation>a conductor</translation>
+        <location filename="../sources/ElementsCollection/xmlprojectelementcollectionitem.cpp" line="91"/>
+        <source>Collection</source>
+        <translation>コレクション</translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/deleteqgraphicsitemcommand.cpp" line="99"/>
-        <source>supprimer %1</source>
-        <comment>undo caption - %1 is a sentence listing the removed content</comment>
-        <translation>delete %1</translation>
+        <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="54"/>
+        <source>Chercher/remplacer les propriétés de folio</source>
+        <translation>フォリオ属性の検索 / 置換</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="59"/>
-        <source>coller %1</source>
-        <comment>undo caption - %1 is a sentence listing the content to paste</comment>
-        <translation>paste %1</translation>
+        <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="116"/>
+        <source>Chercher/remplacer les propriétés d&apos;éléments.</source>
+        <translation>要素属性の検索 / 置換。</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="153"/>
-        <source>couper %1</source>
-        <comment>undo caption - %1 is a sentence listing the content to cut</comment>
-        <translation>cut %1</translation>
+        <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="168"/>
+        <source>Chercher/remplacer des textes independants</source>
+        <translation>独立テキストの検索 / 置換</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="201"/>
-        <location filename="../sources/diagramcommands.cpp" line="405"/>
-        <source>déplacer %1</source>
-        <comment>undo caption - %1 is a sentence listing the moved content</comment>
-        <translation>move %1</translation>
+        <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="206"/>
+        <source>Chercher/remplacer les propriétés de conducteurs.</source>
+        <translation>導体属性の検索 / 置換。</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="427"/>
-        <source>modifier le texte</source>
-        <comment>undo caption</comment>
-        <translation>modify text</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramcommands.cpp" line="477"/>
-        <source>modifier un conducteur</source>
-        <comment>undo caption</comment>
-        <translation>modify a conductor</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramcommands.cpp" line="544"/>
-        <source>Réinitialiser %1</source>
-        <comment>undo caption - %1 is a sentence listing the reset content</comment>
-        <translation>Reset %1</translation>
-    </message>
-    <message>
-        <location filename="../sources/undocommand/changetitleblockcommand.cpp" line="35"/>
-        <source>modifier le cartouche</source>
-        <comment>undo caption</comment>
-        <translation>modify the title block</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramcommands.cpp" line="592"/>
-        <source>modifier les dimensions du folio</source>
-        <comment>undo caption</comment>
-        <translation>change the folio size</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="89"/>
-        <source>suppression</source>
-        <comment>undo caption</comment>
-        <translation>deletion</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="157"/>
-        <source>déplacement</source>
-        <comment>undo caption</comment>
-        <translation>move</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="197"/>
-        <source>ajout %1</source>
-        <comment>undo caption</comment>
-        <translation>insert %1</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="245"/>
-        <source>modification noms</source>
-        <comment>undo caption</comment>
-        <translation>modify names</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="287"/>
-        <source>amener au premier plan</source>
-        <comment>undo caption</comment>
-        <translation>bring forward</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="290"/>
-        <source>rapprocher</source>
-        <comment>undo caption</comment>
-        <translation>raise</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="293"/>
-        <source>éloigner</source>
-        <comment>undo caption</comment>
-        <translation>lower</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="296"/>
-        <source>envoyer au fond</source>
-        <comment>undo caption</comment>
-        <translation>Send to back</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="406"/>
-        <source>modification informations complementaires</source>
-        <comment>undo caption</comment>
-        <translation>Modification complementary information</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="520"/>
-        <source>redimensionnement %1</source>
-        <comment>undo caption -- %1 is the resized primitive type name</comment>
-        <translation>scale %1</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="522"/>
-        <source>redimensionnement de %1 primitives</source>
-        <comment>undo caption -- %1 always &gt; 1</comment>
-        <translation>scale %1primitives</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="539"/>
-        <source>Modifier les propriétés</source>
-        <translation>Edit Properties</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/graphicspart/partarc.h" line="52"/>
-        <source>arc</source>
-        <comment>element part name</comment>
-        <translation>arc</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/graphicspart/partellipse.h" line="53"/>
-        <source>ellipse</source>
-        <comment>element part name</comment>
-        <translation>ellipse</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/graphicspart/partline.h" line="71"/>
-        <source>ligne</source>
-        <comment>element part name</comment>
-        <translation>line</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/graphicspart/partpolygon.h" line="62"/>
-        <source>polygone</source>
-        <comment>element part name</comment>
-        <translation>polygon</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/graphicspart/parttext.cpp" line="42"/>
-        <source>T</source>
-        <comment>default text when adding a text in the element editor</comment>
-        <translation>T</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/graphicspart/parttext.h" line="59"/>
-        <source>texte</source>
-        <comment>element part name</comment>
-        <translation>text</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="250"/>
-        <source>%n élément(s)</source>
-        <comment>part of a sentence listing the content of a diagram</comment>
-        <translation>
-            <numerusform>%n element</numerusform>
-            <numerusform>%n elements</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="259"/>
-        <source>%n conducteur(s)</source>
-        <comment>part of a sentence listing the content of a diagram</comment>
-        <translation>
-            <numerusform>%n conductor</numerusform>
-            <numerusform>%n conductors</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="268"/>
-        <source>%n champ(s) de texte</source>
-        <comment>part of a sentence listing the content of a diagram</comment>
-        <translation>
-            <numerusform>%n textfield</numerusform>
-            <numerusform>%n textfields</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="277"/>
-        <source>%n image(s)</source>
-        <comment>part of a sentence listing the content of a diagram</comment>
-        <translation>
-            <numerusform>%n.picture</numerusform>
-            <numerusform>%n.pictures</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="286"/>
-        <source>%n forme(s)</source>
-        <comment>part of a sentence listing the content of a diagram</comment>
-        <translation>
-            <numerusform>%n forme</numerusform>
-            <numerusform>%n formes</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="295"/>
-        <source>%n texte(s) d&apos;élément</source>
-        <comment>part of a sentence listing the content of a diagram</comment>
-        <translation>
-            <numerusform>%n text of element</numerusform>
-            <numerusform>%n texts of element</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="303"/>
-        <source>%n tableau(s)</source>
-        <comment>part of a sentence listing the content of diagram</comment>
-        <translation>
-            <numerusform>%n table</numerusform>
-            <numerusform>%n tables</numerusform>
-        </translation>
-    </message>
-    <message>
-        <location filename="../sources/qet.cpp" line="574"/>
-        <location filename="../sources/qet.cpp" line="696"/>
-        <location filename="../sources/qetxml.cpp" line="270"/>
-        <source>Impossible d&apos;ouvrir le fichier %1 en écriture, erreur %2 rencontrée.</source>
-        <comment>error message when attempting to write an XML file</comment>
-        <translation>Unable to open file %1 with write access, encountered error %2.</translation>
-    </message>
-    <message>
-        <location filename="../sources/qet.cpp" line="587"/>
-        <source>Une erreur est survenue lors de l&apos;écriture du fichier %1, erreur %2 rencontrée.</source>
-        <comment>error message when attempting to write an XML file</comment>
-        <translation>An error occurred while writing file %1, error %2 encountered.</translation>
-    </message>
-    <message>
-        <location filename="../sources/qet.cpp" line="660"/>
-        <source>Amener au premier plan</source>
-        <translation>Bring to front</translation>
-    </message>
-    <message>
-        <location filename="../sources/qet.cpp" line="661"/>
-        <source>Rapprocher</source>
-        <translation>Raise</translation>
-    </message>
-    <message>
-        <location filename="../sources/qet.cpp" line="662"/>
-        <source>Éloigner</source>
-        <translation>Lower</translation>
-    </message>
-    <message>
-        <location filename="../sources/qet.cpp" line="663"/>
-        <source>Envoyer au fond</source>
-        <translation>Send backward</translation>
-    </message>
-    <message>
-        <location filename="../sources/qet.cpp" line="665"/>
-        <source>Ramène la ou les sélections au premier plan</source>
-        <translation>Bring the selection (s) to front</translation>
-    </message>
-    <message>
-        <location filename="../sources/qet.cpp" line="666"/>
-        <source>Rapproche la ou les sélections</source>
-        <translation>Approach the selection (s)</translation>
-    </message>
-    <message>
-        <location filename="../sources/qet.cpp" line="667"/>
-        <source>Éloigne la ou les sélections</source>
-        <translation>Move away the selection (s)</translation>
-    </message>
-    <message>
-        <location filename="../sources/qet.cpp" line="668"/>
-        <source>Envoie en arrière plan la ou les sélections</source>
-        <translation>Send in the backward the selection (s)</translation>
-    </message>
-    <message>
-        <location filename="../sources/qet.cpp" line="670"/>
-        <source>Ctrl+Shift+Up</source>
-        <translation>Ctrl+Shift+Up</translation>
-    </message>
-    <message>
-        <location filename="../sources/qet.cpp" line="671"/>
-        <source>Ctrl+Shift+Down</source>
-        <translation>Ctrl+Shift+Down</translation>
-    </message>
-    <message>
-        <location filename="../sources/qet.cpp" line="672"/>
-        <source>Ctrl+Shift+End</source>
-        <translation>Ctrl+Shift+End</translation>
-    </message>
-    <message>
-        <location filename="../sources/qet.cpp" line="673"/>
-        <source>Ctrl+Shift+Home</source>
-        <translation>Ctrl+Shift+Home</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetgraphicsitem/terminal.cpp" line="70"/>
-        <source>Borne</source>
-        <comment>tooltip</comment>
-        <translation>Terminal</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="136"/>
-        <source>couper des parties</source>
-        <comment>undo caption</comment>
-        <translation>cut parts</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/graphicspart/partrectangle.h" line="60"/>
-        <source>rectangle</source>
-        <comment>element part name</comment>
-        <translation>rectangle</translation>
-    </message>
-    <message>
-        <location filename="../sources/exportdialog.cpp" line="962"/>
-        <source>Folio sans titre</source>
-        <translation>Folio Untitled</translation>
-    </message>
-    <message>
-        <location filename="../sources/exportdialog.cpp" line="964"/>
-        <source>schema</source>
-        <translation>diagram</translation>
-    </message>
-    <message>
-        <location filename="../sources/exportdialog.cpp" line="989"/>
-        <source>Conserver les proportions</source>
-        <translation>Keep aspect ratio</translation>
-    </message>
-    <message>
-        <location filename="../sources/exportdialog.cpp" line="993"/>
-        <source>Réinitialiser les dimensions</source>
-        <translation>Reset size</translation>
-    </message>
-    <message>
-        <location filename="../sources/exportdialog.cpp" line="997"/>
-        <source>Aperçu</source>
-        <translation>Preview</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/dimension.cpp" line="37"/>
-        <source>%1px</source>
-        <comment>titleblock: absolute width</comment>
-        <translation>%1px</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/dimension.cpp" line="39"/>
-        <source>%1%</source>
-        <comment>titleblock: width relative to total length</comment>
-        <translation>%1%</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/dimension.cpp" line="41"/>
-        <source>%1% du restant</source>
-        <comment>titleblock: width relative to remaining length</comment>
-        <translation>remaining %1%</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/templatecommands.cpp" line="415"/>
-        <source>Insertion d&apos;une ligne</source>
-        <comment>label used in the title block template editor undo list</comment>
-        <translation>Row insertion</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/templatecommands.cpp" line="417"/>
-        <source>Suppression d&apos;une ligne</source>
-        <comment>label used in the title block template editor undo list</comment>
-        <translation>Row deletion</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/templatecommands.cpp" line="421"/>
-        <source>Insertion d&apos;une colonne</source>
-        <comment>label used in the title block template editor undo list</comment>
-        <translation>Column insertion</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/templatecommands.cpp" line="423"/>
-        <source>Suppression d&apos;une colonne</source>
-        <comment>label used in the title block template editor undo list</comment>
-        <translation>Column deletion</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/templatecommands.cpp" line="556"/>
-        <source>Modification d&apos;une ligne</source>
-        <comment>label used in the title block template editor undo list</comment>
-        <translation>Row edition</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/templatecommands.cpp" line="558"/>
-        <source>Modification d&apos;une colonne</source>
-        <comment>label used in the title block template editor undo list</comment>
-        <translation>Column edition</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/templatecommands.cpp" line="623"/>
-        <source>Fusion de %1 cellules</source>
-        <comment>label used in the title block template editor undo list; %1 is the number of merged cells</comment>
-        <translation>Merge of %1 cells</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/templatecommands.cpp" line="763"/>
-        <source>Séparation d&apos;une cellule en %1</source>
-        <comment>label used in the title block template editor undo list; %1 is the number of cells after the split</comment>
-        <translation>Split of a cell into%1 ones</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/templatecommands.cpp" line="855"/>
-        <source>modification des informations complémentaires</source>
-        <comment>undo caption</comment>
-        <translation>modify extra information</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../sources/titleblock/templatecommands.cpp" line="928"/>
-        <source>Couper %n cellule(s)</source>
-        <comment>undo caption</comment>
-        <translation>
-            <numerusform>Cut %n cell</numerusform>
-            <numerusform>Cut %n cells</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../sources/titleblock/templatecommands.cpp" line="952"/>
-        <source>Coller %n cellule(s)</source>
-        <comment>undo caption</comment>
-        <translation>
-            <numerusform>Paste %n cell</numerusform>
-            <numerusform>Paste %n cells</numerusform>
-        </translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblockcell.cpp" line="110"/>
-        <source>type</source>
-        <comment>title block cell property human name</comment>
-        <translation>type</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblockcell.cpp" line="112"/>
-        <source>nom</source>
-        <comment>title block cell property human name</comment>
-        <translation>name</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblockcell.cpp" line="114"/>
-        <source>logo</source>
-        <comment>title block cell property human name</comment>
-        <translation>logo</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblockcell.cpp" line="116"/>
-        <source>label</source>
-        <comment>title block cell property human name</comment>
-        <translation>label</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblockcell.cpp" line="118"/>
-        <source>affichage du label</source>
-        <comment>title block cell property human name</comment>
-        <translation>label display</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblockcell.cpp" line="120"/>
-        <source>valeur affichée</source>
-        <comment>title block cell property human name</comment>
-        <translation>displayed value</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblockcell.cpp" line="122"/>
-        <source>alignement du texte</source>
-        <comment>title block cell property human name</comment>
-        <translation>text alignment</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblockcell.cpp" line="124"/>
-        <source>taille du texte</source>
-        <comment>title block cell property human name</comment>
-        <translation>font size</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblockcell.cpp" line="126"/>
-        <source>ajustement horizontal</source>
-        <comment>title block cell property human name</comment>
-        <translation>horizontal adjustment</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetinformation.cpp" line="62"/>
-        <source>Auteur</source>
-        <translation>Author</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetinformation.cpp" line="64"/>
-        <source>Titre</source>
-        <translation>Title</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="122"/>
-        <source>Installation</source>
-        <translation>Plants</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetinformation.cpp" line="63"/>
-        <source>Date</source>
-        <translation>Date</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/projectpropertiesdialog.cpp" line="34"/>
-        <source>Propriétés du projet</source>
-        <comment>window title</comment>
-        <translation>Project properties</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="158"/>
-        <source>Selectionner une image...</source>
-        <translation>Select an image ...</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="158"/>
-        <source>Image Files (*.png *.jpg  *.jpeg *.bmp *.svg)</source>
-        <translation>Image Files (*.png *.jpg  *.jpeg *.bmp *.svg)</translation>
-    </message>
-    <message>
-        <location filename="../sources/conductornumexport.cpp" line="61"/>
-        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="165"/>
-        <location filename="../sources/nomenclature.cpp" line="61"/>
-        <source>Erreur</source>
-        <translation>Error</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="165"/>
-        <source>Impossible de charger l&apos;image.</source>
-        <translation>Unable to load the image.</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramcommands.h" line="52"/>
-        <source>Ajouter </source>
-        <translation>Add </translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/esevent/eseventaddarc.cpp" line="70"/>
-        <source>Arc</source>
-        <translation>Arc</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/esevent/eseventaddellipse.cpp" line="64"/>
-        <source>Ellipse</source>
-        <translation>Ellipse</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/esevent/eseventaddline.cpp" line="67"/>
-        <source>ligne</source>
-        <translation>line</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/esevent/eseventaddpolygon.cpp" line="118"/>
-        <source>Polygone</source>
-        <translation>Polygon</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/esevent/eseventaddrect.cpp" line="67"/>
-        <source>Rectangle</source>
-        <translation>Rectangle</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/esevent/eseventaddterminal.cpp" line="63"/>
-        <source>Borne</source>
-        <translation>Terminal</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/esevent/eseventaddtext.cpp" line="63"/>
-        <source>Texte</source>
-        <translation>Text</translation>
-    </message>
-    <message>
-        <location filename="../sources/undocommand/changeelementinformationcommand.cpp" line="36"/>
-        <source>Modifier les informations de l&apos;élément : %1</source>
-        <translation>Edit information of the element : %1</translation>
-    </message>
-    <message>
-        <location filename="../sources/undocommand/linkelementcommand.cpp" line="37"/>
-        <source>Éditer les référence croisé</source>
-        <comment>edite the cross reference</comment>
-        <translation>Edit the cross reference</translation>
+        <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="289"/>
+        <source>Rechercher / remplacer avancé</source>
+        <translation>高度な検索 / 置換</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotation.cpp" line="101"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation>Edit conductor properties</translation>
+        <translation>導体の属性変更</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotation.cpp" line="110"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation>Edit the properties of several conductors</translation>
-    </message>
-    <message>
-        <location filename="../sources/elementtextsmover.cpp" line="139"/>
-        <source>Déplacer un texte d&apos;élément</source>
-        <translation>Move an item text</translation>
-    </message>
-    <message>
-        <location filename="../sources/elementtextsmover.cpp" line="141"/>
-        <source>Déplacer %1 textes d&apos;élément</source>
-        <translation>Move %1 an item text</translation>
-    </message>
-    <message>
-        <location filename="../sources/elementtextsmover.cpp" line="146"/>
-        <source>Déplacer</source>
-        <translation>Move</translation>
-    </message>
-    <message>
-        <location filename="../sources/elementtextsmover.cpp" line="148"/>
-        <location filename="../sources/undocommand/rotatetextscommand.cpp" line="65"/>
-        <source> et</source>
-        <translation> and</translation>
-    </message>
-    <message>
-        <location filename="../sources/elementtextsmover.cpp" line="151"/>
-        <source> un groupe de texte</source>
-        <translation> a group of text</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="51"/>
-        <source>nomenclature_</source>
-        <translation>parts list_</translation>
+        <translation>複数の導体の属性変更</translation>
     </message>
     <message>
         <location filename="../sources/conductornumexport.cpp" line="47"/>
@@ -8438,13 +7875,20 @@ Que désirez vous faire ?</source>
         <location filename="../sources/conductornumexport.cpp" line="52"/>
         <location filename="../sources/nomenclature.cpp" line="55"/>
         <source>Enregister sous... </source>
-        <translation>Save As... </translation>
+        <translation>名前を付けて保存... </translation>
     </message>
     <message>
         <location filename="../sources/conductornumexport.cpp" line="52"/>
         <location filename="../sources/nomenclature.cpp" line="55"/>
         <source>Fichiers csv (*.csv)</source>
-        <translation>Files csv (*.csv)</translation>
+        <translation>CSV ファイル (*.csv)</translation>
+    </message>
+    <message>
+        <location filename="../sources/conductornumexport.cpp" line="61"/>
+        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="165"/>
+        <location filename="../sources/nomenclature.cpp" line="61"/>
+        <source>Erreur</source>
+        <translation>エラー</translation>
     </message>
     <message>
         <location filename="../sources/conductornumexport.cpp" line="62"/>
@@ -8452,14 +7896,374 @@ Que désirez vous faire ?</source>
         <source>Impossible de remplacer le fichier!
 
 </source>
-        <translation>Unable to replace the file!
+        <translation>ファイルを置き換えることができません!
 
 </translation>
     </message>
     <message>
+        <location filename="../sources/diagramcommands.cpp" line="37"/>
+        <source>un champ texte</source>
+        <translation>テキスト領域</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramcommands.cpp" line="42"/>
+        <source>un conducteur</source>
+        <translation>導体</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramcommands.cpp" line="59"/>
+        <source>coller %1</source>
+        <comment>undo caption - %1 is a sentence listing the content to paste</comment>
+        <translation>貼り付け %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramcommands.cpp" line="153"/>
+        <source>couper %1</source>
+        <comment>undo caption - %1 is a sentence listing the content to cut</comment>
+        <translation>切り取り %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramcommands.cpp" line="201"/>
+        <location filename="../sources/diagramcommands.cpp" line="405"/>
+        <source>déplacer %1</source>
+        <comment>undo caption - %1 is a sentence listing the moved content</comment>
+        <translation>移動 %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramcommands.cpp" line="427"/>
+        <source>modifier le texte</source>
+        <comment>undo caption</comment>
+        <translation>テキストの変更</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramcommands.cpp" line="477"/>
+        <source>modifier un conducteur</source>
+        <comment>undo caption</comment>
+        <translation>導体の変更</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramcommands.cpp" line="544"/>
+        <source>Réinitialiser %1</source>
+        <comment>undo caption - %1 is a sentence listing the reset content</comment>
+        <translation>リセット %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramcommands.cpp" line="592"/>
+        <source>modifier les dimensions du folio</source>
+        <comment>undo caption</comment>
+        <translation>フォリオの大きさの変更</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramcommands.h" line="52"/>
+        <source>Ajouter </source>
+        <translation>追加 </translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="158"/>
+        <source>Selectionner une image...</source>
+        <translation>画像を選択...</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="158"/>
+        <source>Image Files (*.png *.jpg  *.jpeg *.bmp *.svg)</source>
+        <translation>画像ファイル (*.png *.jpg  *.jpeg *.bmp *.svg)</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="165"/>
+        <source>Impossible de charger l&apos;image.</source>
+        <translation>画像を読み込めません。</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/editorcommands.cpp" line="89"/>
+        <source>suppression</source>
+        <comment>undo caption</comment>
+        <translation>削除</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/editorcommands.cpp" line="136"/>
+        <source>couper des parties</source>
+        <comment>undo caption</comment>
+        <translation>部品を切り取り</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/editorcommands.cpp" line="157"/>
+        <source>déplacement</source>
+        <comment>undo caption</comment>
+        <translation>移動</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/editorcommands.cpp" line="197"/>
+        <source>ajout %1</source>
+        <comment>undo caption</comment>
+        <translation>追加 %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/editorcommands.cpp" line="245"/>
+        <source>modification noms</source>
+        <comment>undo caption</comment>
+        <translation>名前の変更</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/editorcommands.cpp" line="287"/>
+        <source>amener au premier plan</source>
+        <comment>undo caption</comment>
+        <translation>最前面へ移動</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/editorcommands.cpp" line="290"/>
+        <source>rapprocher</source>
+        <comment>undo caption</comment>
+        <translation>前面へ移動</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/editorcommands.cpp" line="293"/>
+        <source>éloigner</source>
+        <comment>undo caption</comment>
+        <translation>背面へ移動</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/editorcommands.cpp" line="296"/>
+        <source>envoyer au fond</source>
+        <comment>undo caption</comment>
+        <translation>最背面へ移動</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/editorcommands.cpp" line="406"/>
+        <source>modification informations complementaires</source>
+        <comment>undo caption</comment>
+        <translation>補足情報の変更</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/editorcommands.cpp" line="520"/>
+        <source>redimensionnement %1</source>
+        <comment>undo caption -- %1 is the resized primitive type name</comment>
+        <translation>スケール %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/editorcommands.cpp" line="522"/>
+        <source>redimensionnement de %1 primitives</source>
+        <comment>undo caption -- %1 always &gt; 1</comment>
+        <translation>スケール %1 プリミティブ</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/editorcommands.cpp" line="539"/>
+        <source>Modifier les propriétés</source>
+        <translation>属性の変更</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/esevent/eseventaddarc.cpp" line="70"/>
+        <source>Arc</source>
+        <translation>弧</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/esevent/eseventadddynamictextfield.cpp" line="66"/>
+        <source>Champ texte dynamique</source>
+        <translation>動的なテキスト領域</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/esevent/eseventaddellipse.cpp" line="64"/>
+        <source>Ellipse</source>
+        <translation>楕円</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/esevent/eseventaddline.cpp" line="67"/>
+        <source>ligne</source>
+        <translation>線</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/esevent/eseventaddpolygon.cpp" line="118"/>
+        <source>Polygone</source>
+        <translation>多角形</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/esevent/eseventaddrect.cpp" line="67"/>
+        <source>Rectangle</source>
+        <translation>矩形</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/esevent/eseventaddterminal.cpp" line="63"/>
+        <source>Borne</source>
+        <translation>端子</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/esevent/eseventaddtext.cpp" line="63"/>
+        <source>Texte</source>
+        <translation>テキスト</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/graphicspart/partarc.h" line="52"/>
+        <source>arc</source>
+        <comment>element part name</comment>
+        <translation>弧</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/graphicspart/partellipse.h" line="53"/>
+        <source>ellipse</source>
+        <comment>element part name</comment>
+        <translation>楕円</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/graphicspart/partline.h" line="71"/>
+        <source>ligne</source>
+        <comment>element part name</comment>
+        <translation>線</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/graphicspart/partpolygon.h" line="62"/>
+        <source>polygone</source>
+        <comment>element part name</comment>
+        <translation>多角形</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/graphicspart/partrectangle.h" line="60"/>
+        <source>rectangle</source>
+        <comment>element part name</comment>
+        <translation>矩形</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/graphicspart/parttext.cpp" line="42"/>
+        <source>T</source>
+        <comment>default text when adding a text in the element editor</comment>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/graphicspart/parttext.h" line="59"/>
+        <source>texte</source>
+        <comment>element part name</comment>
+        <translation>テキスト</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/elementsmover.cpp" line="184"/>
+        <source>Ajouter %n conducteur(s)</source>
+        <comment>add a numbers of conductor one or more</comment>
+        <translation>
+            <numerusform>追加 %n 導体</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/elementtextpattern.cpp" line="64"/>
+        <location filename="../sources/elementtextpattern.cpp" line="144"/>
+        <source>Configuration de textes</source>
+        <translation>テキスト設定</translation>
+    </message>
+    <message>
+        <location filename="../sources/elementtextpattern.cpp" line="65"/>
+        <source>Une configuration de textes nommée &lt;&lt; %1 &gt;&gt; existe déjà.
+Voulez-vous la remplacer ?</source>
+        <translation>名前が &lt;&lt;%1 &gt;&gt; のテキスト設定は既に存在します。
+置き換えますか?</translation>
+    </message>
+    <message>
+        <location filename="../sources/elementtextpattern.cpp" line="84"/>
+        <source>Nom de la configuration</source>
+        <translation>設定名</translation>
+    </message>
+    <message>
+        <location filename="../sources/elementtextpattern.cpp" line="85"/>
+        <source>Entrer le nom de la configuration à créer</source>
+        <translation>作成する設定名を入力してください</translation>
+    </message>
+    <message>
+        <location filename="../sources/elementtextpattern.cpp" line="145"/>
+        <source>Aucune configuration de textes existante.</source>
+        <translation>存在しないテキスト設定です。</translation>
+    </message>
+    <message>
+        <location filename="../sources/elementtextpattern.cpp" line="170"/>
+        <source>Sélectionner une configuration de textes</source>
+        <translation>テキスト設定を選択</translation>
+    </message>
+    <message>
+        <location filename="../sources/elementtextpattern.cpp" line="171"/>
+        <source>Sélectionner la configuration de textes à ajouter à l&apos;élément</source>
+        <translation>要素に追加するテキスト設定を選択</translation>
+    </message>
+    <message>
+        <location filename="../sources/elementtextpattern.cpp" line="239"/>
+        <source>Importer la configuration de texte : %1</source>
+        <translation>テキスト設定のインポート : %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/elementtextsmover.cpp" line="139"/>
+        <source>Déplacer un texte d&apos;élément</source>
+        <translation>要素テキストの移動</translation>
+    </message>
+    <message>
+        <location filename="../sources/elementtextsmover.cpp" line="141"/>
+        <source>Déplacer %1 textes d&apos;élément</source>
+        <translation>移動 %1 要素テキスト</translation>
+    </message>
+    <message>
+        <location filename="../sources/elementtextsmover.cpp" line="146"/>
+        <source>Déplacer</source>
+        <translation>移動</translation>
+    </message>
+    <message>
+        <location filename="../sources/elementtextsmover.cpp" line="148"/>
+        <location filename="../sources/undocommand/rotatetextscommand.cpp" line="65"/>
+        <source> et</source>
+        <translation> と</translation>
+    </message>
+    <message>
+        <location filename="../sources/elementtextsmover.cpp" line="151"/>
+        <source> un groupe de texte</source>
+        <translation> テキストのグループ</translation>
+    </message>
+    <message>
+        <location filename="../sources/exportdialog.cpp" line="962"/>
+        <source>Folio sans titre</source>
+        <translation>無題のフォリオ</translation>
+    </message>
+    <message>
+        <location filename="../sources/exportdialog.cpp" line="964"/>
+        <source>schema</source>
+        <translation>diagram</translation>
+    </message>
+    <message>
+        <location filename="../sources/exportdialog.cpp" line="989"/>
+        <source>Conserver les proportions</source>
+        <translation>縦横比を保持</translation>
+    </message>
+    <message>
+        <location filename="../sources/exportdialog.cpp" line="993"/>
+        <source>Réinitialiser les dimensions</source>
+        <translation>大きさをリセット</translation>
+    </message>
+    <message>
+        <location filename="../sources/exportdialog.cpp" line="997"/>
+        <source>Aperçu</source>
+        <translation>プレビュー</translation>
+    </message>
+    <message>
+        <location filename="../sources/exportdialog.cpp" line="1001"/>
+        <source>Exporter vers le presse-papier</source>
+        <translation>クリップボードにエクスポート</translation>
+    </message>
+    <message>
+        <location filename="../sources/factory/elementpicturefactory.cpp" line="156"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="396"/>
+        <source>Avertissement : l&apos;élément  a été enregistré avec une version ultérieure de QElectroTech.</source>
+        <translation>警告: より新しいバージョンの QElectroTech で要素が保存されています.</translation>
+    </message>
+    <message>
+        <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="45"/>
+        <source>Ajouter une nomenclature</source>
+        <translation>部品表を追加</translation>
+    </message>
+    <message>
+        <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="61"/>
+        <source>Ajouter un sommaire</source>
+        <translation>概要を追加</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="51"/>
+        <source>nomenclature_</source>
+        <translation>parts_list_</translation>
+    </message>
+    <message>
         <location filename="../sources/nomenclature.cpp" line="91"/>
         <source>NOMENCLATURE : </source>
-        <translation>PART LIST : </translation>
+        <translation>部品表 : </translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="92"/>
@@ -8570,398 +8374,613 @@ Que désirez vous faire ?</source>
         <location filename="../sources/nomenclature.cpp" line="113"/>
         <location filename="../sources/qetinformation.cpp" line="71"/>
         <source>Position du folio</source>
-        <translation>Folio position</translation>
+        <translation>フォリオ位置</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="114"/>
+        <source>Titre de folio</source>
+        <translation>フォリオ名</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="115"/>
         <location filename="../sources/qetinformation.cpp" line="70"/>
         <source>Numéro de folio</source>
-        <translation>Folio number</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="125"/>
-        <source>Numéro de commande</source>
-        <translation>Order number</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="131"/>
-        <source>Numéro interne</source>
-        <translation>Internal number</translation>
-    </message>
-    <message>
-        <location filename="../sources/nomenclature.cpp" line="114"/>
-        <source>Titre de folio</source>
-        <translation>Title of folio</translation>
+        <translation>フォリオ番号</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="116"/>
         <source>Désignation qet</source>
-        <translation>Designation.qet</translation>
+        <translation>qet での指定</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="117"/>
         <source>Position</source>
-        <translation>Position</translation>
+        <translation>位置</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="118"/>
         <source>Label</source>
-        <translation>Label</translation>
+        <translation>ラベル</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="119"/>
         <source>Formule du label</source>
-        <translation>Label formula</translation>
+        <translation>ラベルの式</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="120"/>
         <source>Désignation</source>
-        <translation>Designation</translation>
+        <translation>指定</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="121"/>
         <source>Description</source>
-        <translation>Description</translation>
+        <translation>記述</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="122"/>
+        <source>Installation</source>
+        <translation>設備</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="123"/>
         <source>Commentaire</source>
-        <translation>Annotation</translation>
+        <translation>コメント</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="124"/>
         <source>Fabricant</source>
-        <translation>Manufacturer</translation>
+        <translation>製造業者</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="125"/>
+        <source>Numéro de commande</source>
+        <translation>注文番号</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="126"/>
         <source>Fournisseur</source>
-        <translation>Supplier</translation>
+        <translation>供給業者</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="127"/>
         <source>Quantité</source>
-        <translation>Quantity</translation>
+        <translation>数量</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="128"/>
         <source>Unité</source>
-        <translation>Unity</translation>
+        <translation>単位</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="129"/>
         <source>Bloc auxiliaire 1</source>
-        <translation>Auxiliary block 1</translation>
+        <translation>補助ブロック 1</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="130"/>
         <source>Bloc auxiliaire 2</source>
-        <translation>Auxiliary block 2</translation>
+        <translation>補助ブロック 2</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="131"/>
+        <source>Numéro interne</source>
+        <translation>内部番号</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="132"/>
         <source>Localisation</source>
-        <translation>Location</translation>
+        <translation>場所</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="133"/>
         <source>Fonction</source>
-        <translation>Function</translation>
-    </message>
-    <message>
-        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="121"/>
-        <source>Collection QET</source>
-        <translation>QET Collection</translation>
-    </message>
-    <message>
-        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="123"/>
-        <source>Collection utilisateur</source>
-        <translation>User Collection</translation>
-    </message>
-    <message>
-        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="125"/>
-        <source>Collection inconnue</source>
-        <translation>Unknown collection</translation>
-    </message>
-    <message>
-        <location filename="../sources/ElementsCollection/xmlprojectelementcollectionitem.cpp" line="61"/>
-        <source>Projet sans titre</source>
-        <translation>Untitled project</translation>
-    </message>
-    <message>
-        <location filename="../sources/ElementsCollection/xmlprojectelementcollectionitem.cpp" line="91"/>
-        <source>Collection</source>
-        <translation>Collection</translation>
+        <translation>機能</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/elementsmover.cpp" line="184"/>
-        <source>Ajouter %n conducteur(s)</source>
-        <comment>add a numbers of conductor one or more</comment>
+        <location filename="../sources/qet.cpp" line="250"/>
+        <source>%n élément(s)</source>
+        <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
-            <numerusform>add %n conductor</numerusform>
-            <numerusform>add %n conductors</numerusform>
+            <numerusform>%n 要素</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/qet.cpp" line="259"/>
+        <source>%n conducteur(s)</source>
+        <comment>part of a sentence listing the content of a diagram</comment>
+        <translation>
+            <numerusform>%n 導体</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/qet.cpp" line="268"/>
+        <source>%n champ(s) de texte</source>
+        <comment>part of a sentence listing the content of a diagram</comment>
+        <translation>
+            <numerusform>%n テキスト領域</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/qet.cpp" line="277"/>
+        <source>%n image(s)</source>
+        <comment>part of a sentence listing the content of a diagram</comment>
+        <translation>
+            <numerusform>%n.画像</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/qet.cpp" line="286"/>
+        <source>%n forme(s)</source>
+        <comment>part of a sentence listing the content of a diagram</comment>
+        <translation>
+            <numerusform>%n 図形</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/qet.cpp" line="295"/>
+        <source>%n texte(s) d&apos;élément</source>
+        <comment>part of a sentence listing the content of a diagram</comment>
+        <translation>
+            <numerusform>%n 要素テキスト</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/qet.cpp" line="303"/>
+        <source>%n tableau(s)</source>
+        <comment>part of a sentence listing the content of diagram</comment>
+        <translation>
+            <numerusform>%n 表</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/esevent/eseventadddynamictextfield.cpp" line="66"/>
-        <source>Champ texte dynamique</source>
-        <translation>Dynamic text field</translation>
+        <location filename="../sources/qet.cpp" line="359"/>
+        <source>Le fichier texte contenant la licence GNU/GPL est introuvable - bon bah de toute façon, vous la connaissez par coeur non ?</source>
+        <translation>GNU/GPL ライセンスを含むテキストファイルが見つかりません - でも全て覚えていますよね?</translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="44"/>
-        <source>Ajouter un texte d&apos;élément</source>
-        <translation>Add element text</translation>
+        <location filename="../sources/qet.cpp" line="363"/>
+        <source>Le fichier texte contenant la licence GNU/GPL existe mais n&apos;a pas pu être ouvert - bon bah de toute façon, vous la connaissez par coeur non ?</source>
+        <translation>GNU/GPL ライセンスを含むテキストファイルが存在しますが開けません - でも全て覚えていますよね?</translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="95"/>
-        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="113"/>
-        <source>Ajouter un groupe de textes d&apos;élément</source>
-        <translation>Add a group of element texts</translation>
+        <location filename="../sources/qet.cpp" line="574"/>
+        <location filename="../sources/qet.cpp" line="696"/>
+        <location filename="../sources/qetxml.cpp" line="270"/>
+        <source>Impossible d&apos;ouvrir le fichier %1 en écriture, erreur %2 rencontrée.</source>
+        <comment>error message when attempting to write an XML file</comment>
+        <translation>ファイル %1 は書き込み許可で開けません, エラーが発生しました %2.</translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="142"/>
-        <source>Grouper des textes d&apos;élément</source>
-        <translation>Grouping element texts</translation>
+        <location filename="../sources/qet.cpp" line="587"/>
+        <source>Une erreur est survenue lors de l&apos;écriture du fichier %1, erreur %2 rencontrée.</source>
+        <comment>error message when attempting to write an XML file</comment>
+        <translation>ファイル %1 の書き込み中にエラーが発生しました, エラー %2 が発生しました.</translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="218"/>
-        <source>Supprimer un groupe de textes d&apos;élément</source>
-        <translation>Delete a group of element texts</translation>
+        <location filename="../sources/qet.cpp" line="660"/>
+        <source>Amener au premier plan</source>
+        <translation>最前面へ移動</translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="282"/>
-        <source>Insérer un texte d&apos;élément dans un groupe de textes</source>
-        <translation>Insert element text into a text group</translation>
+        <location filename="../sources/qet.cpp" line="661"/>
+        <source>Rapprocher</source>
+        <translation>前面へ移動</translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="342"/>
-        <source>Enlever un texte d&apos;élément d&apos;un groupe de textes</source>
-        <translation>Remove an element text from a group of texts</translation>
+        <location filename="../sources/qet.cpp" line="662"/>
+        <source>Éloigner</source>
+        <translation>背面へ移動</translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="396"/>
-        <source>Modifier l&apos;alignement d&apos;un groupe de textes</source>
-        <translation>Modify the alignment of a group of texts</translation>
+        <location filename="../sources/qet.cpp" line="663"/>
+        <source>Envoyer au fond</source>
+        <translation>最背面へ移動</translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/rotateselectioncommand.cpp" line="36"/>
-        <source>Pivoter la selection</source>
-        <translation>Rotate the selection</translation>
+        <location filename="../sources/qet.cpp" line="665"/>
+        <source>Ramène la ou les sélections au premier plan</source>
+        <translation>選択を最前面へ移動</translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/rotatetextscommand.cpp" line="59"/>
-        <source>Pivoter %1 textes</source>
-        <translation>Rotate %1 texts</translation>
+        <location filename="../sources/qet.cpp" line="666"/>
+        <source>Rapproche la ou les sélections</source>
+        <translation>選択を前面へ移動</translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/rotatetextscommand.cpp" line="63"/>
-        <source>Pivoter</source>
-        <translation>Rotate</translation>
+        <location filename="../sources/qet.cpp" line="667"/>
+        <source>Éloigne la ou les sélections</source>
+        <translation>選択を背面へ移動</translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/rotatetextscommand.cpp" line="67"/>
-        <source> %1 groupes de textes</source>
-        <translation> %1 groups of texts</translation>
+        <location filename="../sources/qet.cpp" line="668"/>
+        <source>Envoie en arrière plan la ou les sélections</source>
+        <translation>選択を最背面へ移動</translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/rotatetextscommand.cpp" line="114"/>
-        <source>Orienter les textes sélectionnés</source>
-        <comment>window title</comment>
-        <translation>Choose orientation for selected texts</translation>
+        <location filename="../sources/qet.cpp" line="670"/>
+        <source>Ctrl+Shift+Up</source>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../sources/elementtextpattern.cpp" line="64"/>
-        <location filename="../sources/elementtextpattern.cpp" line="144"/>
-        <source>Configuration de textes</source>
-        <translation>Text configuration</translation>
+        <location filename="../sources/qet.cpp" line="671"/>
+        <source>Ctrl+Shift+Down</source>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../sources/elementtextpattern.cpp" line="65"/>
-        <source>Une configuration de textes nommée &lt;&lt; %1 &gt;&gt; existe déjà.
-Voulez-vous la remplacer ?</source>
-        <translation>A text configuration named &lt;&lt;%1 &gt;&gt; already exists.
-Do you want to replace it ?</translation>
+        <location filename="../sources/qet.cpp" line="672"/>
+        <source>Ctrl+Shift+End</source>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../sources/elementtextpattern.cpp" line="84"/>
-        <source>Nom de la configuration</source>
-        <translation>Configuration name</translation>
-    </message>
-    <message>
-        <location filename="../sources/elementtextpattern.cpp" line="85"/>
-        <source>Entrer le nom de la configuration à créer</source>
-        <translation>Enter the name of the configuration to create</translation>
-    </message>
-    <message>
-        <location filename="../sources/elementtextpattern.cpp" line="145"/>
-        <source>Aucune configuration de textes existante.</source>
-        <translation>No existing text configuration.</translation>
-    </message>
-    <message>
-        <location filename="../sources/elementtextpattern.cpp" line="170"/>
-        <source>Sélectionner une configuration de textes</source>
-        <translation>Select a text configuration</translation>
-    </message>
-    <message>
-        <location filename="../sources/elementtextpattern.cpp" line="171"/>
-        <source>Sélectionner la configuration de textes à ajouter à l&apos;élément</source>
-        <translation>Select the text configuration to add to the element</translation>
-    </message>
-    <message>
-        <location filename="../sources/elementtextpattern.cpp" line="239"/>
-        <source>Importer la configuration de texte : %1</source>
-        <translation>Import the text configuration : %1</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/dialogwaiting.cpp" line="68"/>
-        <source>%p% effectué (%v sur %m)</source>
-        <translation>%p% done (%v on %m)</translation>
-    </message>
-    <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="182"/>
-        <source>chargement %p% (%v sur %m)</source>
-        <translation>load %p% (%v on %m)</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="54"/>
-        <source>Chercher/remplacer les propriétés de folio</source>
-        <translation>Find / replace folio properties</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="116"/>
-        <source>Chercher/remplacer les propriétés d&apos;éléments.</source>
-        <translation>Find / replace element properties.</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="206"/>
-        <source>Chercher/remplacer les propriétés de conducteurs.</source>
-        <translation>Search / replace conductors properties.</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="289"/>
-        <source>Rechercher / remplacer avancé</source>
-        <translation>Search / replace advanced</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="168"/>
-        <source>Chercher/remplacer des textes independants</source>
-        <translation>Search / replace independent texts</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetinformation.cpp" line="65"/>
-        <source>Fichier</source>
-        <translation>File</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetinformation.cpp" line="66"/>
-        <source>Installation (=)</source>
-        <translation>Plant (=)</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetinformation.cpp" line="67"/>
-        <source>Localisation (+)</source>
-        <translation>Location (+)</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetinformation.cpp" line="68"/>
-        <source>Indice de révision</source>
-        <translation>Revision index</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetinformation.cpp" line="69"/>
-        <source>Version de QElectroTech</source>
-        <translation>Version of QElectroTech</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetinformation.cpp" line="72"/>
-        <source>Nombre de folio</source>
-        <translation>Number of folios</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetinformation.cpp" line="73"/>
-        <source>Numéro du folio précédent</source>
-        <translation>Number of the previous folio</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetinformation.cpp" line="74"/>
-        <source>Numéro du folio suivant</source>
-        <translation>Number of the following folio</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetinformation.cpp" line="75"/>
-        <source>Titre du projet</source>
-        <translation>Project title</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetinformation.cpp" line="76"/>
-        <source>Chemin du fichier du projet</source>
-        <translation>Project file path</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetinformation.cpp" line="77"/>
-        <source>Nom du fichier</source>
-        <translation>File name</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetinformation.cpp" line="78"/>
-        <source>Date d&apos;enregistrement du fichier</source>
-        <translation>File saving date</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetinformation.cpp" line="79"/>
-        <source>Heure d&apos;enregistrement du fichier</source>
-        <translation>File saving time</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetinformation.cpp" line="80"/>
-        <source>Nom du fichier enregistré</source>
-        <translation>Name of the saved file</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetinformation.cpp" line="81"/>
-        <source>Chemin du fichier enregistré</source>
-        <translation>Saved file path</translation>
-    </message>
-    <message>
-        <location filename="../sources/utils/conductorcreator.cpp" line="48"/>
-        <source>Création de conducteurs</source>
-        <translation>Creation of conductors</translation>
+        <location filename="../sources/qet.cpp" line="673"/>
+        <source>Ctrl+Shift+Home</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2272"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</source>
-        <translation></translation>
+        <translation>qet_tb_generator プラグインをインストールするには&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;を参照してください。&lt;br&gt;python 3.5 以降が必要です。&lt;br&gt;&lt;B&gt;&lt;U&gt; Windows での最初のインストール&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. 必要であれば python 3.5 以降をインストール&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt; を参照してください。&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Windows での更新&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;ユーザはターミナルで次のディレクトリの中でスクリプトを実行できます。&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2307"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="2338"/>
         <source>Error launching qet_tb_generator plugin</source>
-        <translation></translation>
+        <translation>qet_tb_generator プラグインの起動でエラー</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2308"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.8 bundle only, because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
-        <translation></translation>
+        <translation>qet_tb_generator プラグインをインストールするには&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt; を参照してください。&lt;br&gt;&lt;B&gt;&lt;U&gt; macOSX での最初のインストール&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. 必要であれば python 3.8 をインストールしてください。プログラムが qet-tb-generator プラグインをローカライズする際にハードコードされた PATH を用いているためです。&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt; を参照してください。&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; macOSX での更新&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2339"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit : &lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
+        <translation>qet_tb_generator プラグインをインストールするには&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;を参照してください。&lt;br&gt;&lt;br&gt;python 3.5 以降が必要です。&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Linux での最初のインストール&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. pip3 がインストールされていることを確認してください: pip3 --version&lt;br&gt;インストールされていない場合は次を実行します: sudo apt-get install python3-pip&lt;br&gt;2. プログラムをインストールします: sudo pip3 install qet_tb_generator&lt;br&gt;3. プログラムを実行します: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Linux での更新&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/terminal.cpp" line="70"/>
+        <source>Borne</source>
+        <comment>tooltip</comment>
+        <translation>端子</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="62"/>
+        <source>Auteur</source>
+        <translation>作成者</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="63"/>
+        <source>Date</source>
+        <translation>日付</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="64"/>
+        <source>Titre</source>
+        <translation>表題</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="65"/>
+        <source>Fichier</source>
+        <translation>ファイル</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="66"/>
+        <source>Installation (=)</source>
+        <translation>設備 (=)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="67"/>
+        <source>Localisation (+)</source>
+        <translation>場所 (+)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="68"/>
+        <source>Indice de révision</source>
+        <translation>改訂番号</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="69"/>
+        <source>Version de QElectroTech</source>
+        <translation>QElectroTech のバージョン</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="72"/>
+        <source>Nombre de folio</source>
+        <translation>フォリオ数</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="73"/>
+        <source>Numéro du folio précédent</source>
+        <translation>前のフォリオ番号</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="74"/>
+        <source>Numéro du folio suivant</source>
+        <translation>次のフォリオ番号</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="75"/>
+        <source>Titre du projet</source>
+        <translation>プロジェクト名</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="76"/>
+        <source>Chemin du fichier du projet</source>
+        <translation>プロジェクト・パス</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="77"/>
+        <source>Nom du fichier</source>
+        <translation>ファイル名</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="78"/>
+        <source>Date d&apos;enregistrement du fichier</source>
+        <translation>ファイルの保存日</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="79"/>
+        <source>Heure d&apos;enregistrement du fichier</source>
+        <translation>ファイルの保存時刻</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="80"/>
+        <source>Nom du fichier enregistré</source>
+        <translation>保存されたファイル名</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="81"/>
+        <source>Chemin du fichier enregistré</source>
+        <translation>保存されたファイル・パス</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/dimension.cpp" line="37"/>
+        <source>%1px</source>
+        <comment>titleblock: absolute width</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="45"/>
-        <source>Ajouter une nomenclature</source>
-        <translation>Add a nomenclature</translation>
+        <location filename="../sources/titleblock/dimension.cpp" line="39"/>
+        <source>%1%</source>
+        <comment>titleblock: width relative to total length</comment>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="61"/>
-        <source>Ajouter un sommaire</source>
-        <translation>Add a summary</translation>
+        <location filename="../sources/titleblock/dimension.cpp" line="41"/>
+        <source>%1% du restant</source>
+        <comment>titleblock: width relative to remaining length</comment>
+        <translation>残り %1%</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/templatecommands.cpp" line="415"/>
+        <source>Insertion d&apos;une ligne</source>
+        <comment>label used in the title block template editor undo list</comment>
+        <translation>行を挿入</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/templatecommands.cpp" line="417"/>
+        <source>Suppression d&apos;une ligne</source>
+        <comment>label used in the title block template editor undo list</comment>
+        <translation>行を削除</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/templatecommands.cpp" line="421"/>
+        <source>Insertion d&apos;une colonne</source>
+        <comment>label used in the title block template editor undo list</comment>
+        <translation>列を挿入</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/templatecommands.cpp" line="423"/>
+        <source>Suppression d&apos;une colonne</source>
+        <comment>label used in the title block template editor undo list</comment>
+        <translation>列を削除</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/templatecommands.cpp" line="556"/>
+        <source>Modification d&apos;une ligne</source>
+        <comment>label used in the title block template editor undo list</comment>
+        <translation>行を変更</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/templatecommands.cpp" line="558"/>
+        <source>Modification d&apos;une colonne</source>
+        <comment>label used in the title block template editor undo list</comment>
+        <translation>列を変更</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/templatecommands.cpp" line="623"/>
+        <source>Fusion de %1 cellules</source>
+        <comment>label used in the title block template editor undo list; %1 is the number of merged cells</comment>
+        <translation>結合 %1 セル</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/templatecommands.cpp" line="763"/>
+        <source>Séparation d&apos;une cellule en %1</source>
+        <comment>label used in the title block template editor undo list; %1 is the number of cells after the split</comment>
+        <translation>分割 セルを %1 つに</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/templatecommands.cpp" line="855"/>
+        <source>modification des informations complémentaires</source>
+        <comment>undo caption</comment>
+        <translation>補足情報の変更</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/titleblock/templatecommands.cpp" line="928"/>
+        <source>Couper %n cellule(s)</source>
+        <comment>undo caption</comment>
+        <translation>
+            <numerusform>切り取り %n セル</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/titleblock/templatecommands.cpp" line="952"/>
+        <source>Coller %n cellule(s)</source>
+        <comment>undo caption</comment>
+        <translation>
+            <numerusform>貼り付け %n セル</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblockcell.cpp" line="110"/>
+        <source>type</source>
+        <comment>title block cell property human name</comment>
+        <translation>種類</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblockcell.cpp" line="112"/>
+        <source>nom</source>
+        <comment>title block cell property human name</comment>
+        <translation>名前</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblockcell.cpp" line="114"/>
+        <source>logo</source>
+        <comment>title block cell property human name</comment>
+        <translation>ロゴ</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblockcell.cpp" line="116"/>
+        <source>label</source>
+        <comment>title block cell property human name</comment>
+        <translation>ラベル</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblockcell.cpp" line="118"/>
+        <source>affichage du label</source>
+        <comment>title block cell property human name</comment>
+        <translation>ラベルの表示</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblockcell.cpp" line="120"/>
+        <source>valeur affichée</source>
+        <comment>title block cell property human name</comment>
+        <translation>表示される値</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblockcell.cpp" line="122"/>
+        <source>alignement du texte</source>
+        <comment>title block cell property human name</comment>
+        <translation>文字揃え</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblockcell.cpp" line="124"/>
+        <source>taille du texte</source>
+        <comment>title block cell property human name</comment>
+        <translation>フォント・サイズ</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblockcell.cpp" line="126"/>
+        <source>ajustement horizontal</source>
+        <comment>title block cell property human name</comment>
+        <translation>水平揃え</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dialogwaiting.cpp" line="68"/>
+        <source>%p% effectué (%v sur %m)</source>
+        <translation>%p% 完了 (%v / %m)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/projectpropertiesdialog.cpp" line="34"/>
+        <source>Propriétés du projet</source>
+        <comment>window title</comment>
+        <translation>プロジェクトの属性</translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="44"/>
+        <source>Ajouter un texte d&apos;élément</source>
+        <translation>要素テキストの追加</translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="95"/>
+        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="113"/>
+        <source>Ajouter un groupe de textes d&apos;élément</source>
+        <translation>要素テキストのグループの追加</translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="142"/>
+        <source>Grouper des textes d&apos;élément</source>
+        <translation>要素テキストのグループ化</translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="218"/>
+        <source>Supprimer un groupe de textes d&apos;élément</source>
+        <translation>要素テキストのグループの削除</translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="282"/>
+        <source>Insérer un texte d&apos;élément dans un groupe de textes</source>
+        <translation>テキスト・グループに要素テキストを挿入</translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="342"/>
+        <source>Enlever un texte d&apos;élément d&apos;un groupe de textes</source>
+        <translation>テキスト・グループから要素テキストを削除</translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/addelementtextcommand.cpp" line="396"/>
+        <source>Modifier l&apos;alignement d&apos;un groupe de textes</source>
+        <translation>グループ・テキストの文字揃えの変更</translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/changeelementinformationcommand.cpp" line="36"/>
+        <source>Modifier les informations de l&apos;élément : %1</source>
+        <translation>要素の情報の変更 : %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/changetitleblockcommand.cpp" line="35"/>
+        <source>modifier le cartouche</source>
+        <comment>undo caption</comment>
+        <translation>表題欄の変更</translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/deleteqgraphicsitemcommand.cpp" line="99"/>
+        <source>supprimer %1</source>
+        <comment>undo caption - %1 is a sentence listing the removed content</comment>
+        <translation>削除 %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/linkelementcommand.cpp" line="37"/>
+        <source>Éditer les référence croisé</source>
+        <comment>edite the cross reference</comment>
+        <translation>相互参照の編集</translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/rotateselectioncommand.cpp" line="36"/>
+        <source>Pivoter la selection</source>
+        <translation>選択を回転</translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/rotatetextscommand.cpp" line="59"/>
+        <source>Pivoter %1 textes</source>
+        <translation>回転 %1 テキスト</translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/rotatetextscommand.cpp" line="63"/>
+        <source>Pivoter</source>
+        <translation>回転</translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/rotatetextscommand.cpp" line="67"/>
+        <source> %1 groupes de textes</source>
+        <translation> %1 グループ・テキスト</translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/rotatetextscommand.cpp" line="114"/>
+        <source>Orienter les textes sélectionnés</source>
+        <comment>window title</comment>
+        <translation>選択されたテキストの向きを選ぶ</translation>
+    </message>
+    <message>
+        <location filename="../sources/utils/conductorcreator.cpp" line="48"/>
+        <source>Création de conducteurs</source>
+        <translation>導体の生成</translation>
     </message>
     <message>
         <location filename="../sources/editor/UndoCommand/pastepartscommand.cpp" line="42"/>
         <source>Coller</source>
-        <translation>Paste</translation>
+        <translation>貼り付け</translation>
     </message>
 </context>
 <context>
@@ -8970,13 +8989,13 @@ Do you want to replace it ?</translation>
         <location filename="../sources/qtextorientationwidget.cpp" line="37"/>
         <source>Ex.</source>
         <comment>Short example string</comment>
-        <translation>e.g.</translation>
+        <translation>例.</translation>
     </message>
     <message>
         <location filename="../sources/qtextorientationwidget.cpp" line="38"/>
         <source>Exemple</source>
         <comment>Longer example string</comment>
-        <translation>Example</translation>
+        <translation>例</translation>
     </message>
 </context>
 <context>
@@ -8985,122 +9004,122 @@ Do you want to replace it ?</translation>
         <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="105"/>
         <source>Les information à afficher sont supérieurs à la quantité maximal pouvant être affiché par les tableaux.
 Veuillez ajouter un nouveau tableau ou regler les tableaux existant afin d&apos;afficher l&apos;integralité des informations.</source>
-        <translation>The information to be displayed is greater than the maximum quantity that can be displayed by the tables.
-Please add a new table or adjust the existing tables to show all information.</translation>
+        <translation>情報が表で表示できる最大量を超えています。
+新しい表を追加するか既存の表が情報を表示できるよう調整して下さい。</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="108"/>
         <source>Les information à afficher sont supérieurs à la quantité maximal pouvant être affiché par le tableau.
 Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;afficher l&apos;integralité des informations.</source>
-        <translation>The information to be displayed is greater than the maximum quantity that can be displayed by the table.
-Please add a new table or adjust the existing table to display all information.</translation>
+        <translation>情報が表で表示できる最大量を超えています。
+新しい表を追加するか既存の表が情報を表示できるよう調整して下さい。</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="111"/>
         <source>Limitation de tableau</source>
-        <translation>Table limitation</translation>
+        <translation>テーブルの制限</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="754"/>
         <source>Modifier la géometrie d&apos;un tableau</source>
-        <translation>Modify the geometry of a table</translation>
+        <translation>表の形状を変更</translation>
     </message>
 </context>
 <context>
     <name>QetShapeItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="990"/>
-        <source>une shape</source>
-        <translation>an shape</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="986"/>
-        <source>une ligne</source>
-        <translation>a line</translation>
-    </message>
-    <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="56"/>
         <source>Ajouter un point</source>
-        <translation>Add a point</translation>
+        <translation>点を追加</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="59"/>
         <source>Supprimer ce point</source>
-        <translation>Delete this point</translation>
+        <translation>この点を削除</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="651"/>
         <source>Ajouter un point à un polygone</source>
-        <translation>Add a point to a polygon</translation>
+        <translation>多角形に点を追加</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="685"/>
         <source>Supprimer un point d&apos;un polygone</source>
-        <translation>Delete a point from a polygon</translation>
+        <translation>多角形から点を削除</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="827"/>
         <source>Modifier %1</source>
-        <translation>Edit %1</translation>
+        <translation>変更 %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="986"/>
+        <source>une ligne</source>
+        <translation>線</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="987"/>
         <source>un rectangle</source>
-        <translation>rectangle</translation>
+        <translation>矩形</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="988"/>
         <source>une éllipse</source>
-        <translation>an ellipse</translation>
+        <translation>楕円</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="989"/>
         <source>une polyligne</source>
-        <translation>polyline</translation>
+        <translation>折れ線</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="990"/>
+        <source>une shape</source>
+        <translation>図形</translation>
     </message>
 </context>
 <context>
     <name>RectangleEditor</name>
     <message>
+        <location filename="../sources/editor/ui/rectangleeditor.ui" line="32"/>
+        <source>Hauteur :</source>
+        <translation>高さ :</translation>
+    </message>
+    <message>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="42"/>
         <source>Dimensions :</source>
-        <translation>Dimensions :</translation>
+        <translation>大きさ :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="49"/>
         <source>y</source>
-        <translation>y</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="86"/>
         <source>Coin supérieur gauche :</source>
-        <translation>Upper left corner :</translation>
+        <translation>左上位置 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="93"/>
         <source>Largeur :</source>
-        <translation>Width:</translation>
+        <translation>幅 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="103"/>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="133"/>
         <source>Arrondi :</source>
-        <translation>Round :</translation>
+        <translation>丸み :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/rectangleeditor.ui" line="113"/>
         <source>x</source>
-        <translation>x</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/rectangleeditor.ui" line="32"/>
-        <source>Hauteur :</source>
-        <translation>Height:</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/rectangleeditor.cpp" line="168"/>
         <source>Modifier un rectangle</source>
-        <translation>Change a rectangle</translation>
+        <translation>矩形を変更</translation>
     </message>
 </context>
 <context>
@@ -9108,37 +9127,37 @@ Please add a new table or adjust the existing table to display all information.<
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>Dialog</translation>
+        <translation>ダイアログ</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="20"/>
         <source>Nouveau nom :</source>
-        <translation>new name :</translation>
+        <translation>新しい名前 :</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="30"/>
         <source>Écraser</source>
-        <translation>Erase</translation>
+        <translation>上書き</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="37"/>
         <source>Renommer</source>
-        <translation>Rename</translation>
+        <translation>改名</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="44"/>
         <source>Annuler</source>
-        <translation>Undo</translation>
+        <translation>元に戻す</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="54"/>
         <source>TextLabel</source>
-        <translation>TextLabel</translation>
+        <translation>テキストラベル</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.cpp" line="31"/>
         <source>L&apos;élément « %1 » existe déjà. Que souhaitez-vous faire ?</source>
-        <translation>The element « %1 » already exists. What do you wish to do?</translation>
+        <translation>要素 « %1 » は既に存在します。どうしますか?</translation>
     </message>
 </context>
 <context>
@@ -9146,12 +9165,12 @@ Please add a new table or adjust the existing table to display all information.<
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="21"/>
         <source>Type</source>
-        <translation>Type</translation>
+        <translation>種類</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="30"/>
         <source>&amp;Multifilaire</source>
-        <translation>&amp;Multiline</translation>
+        <translation>複線 (&amp;M)</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="42"/>
@@ -9168,27 +9187,38 @@ Please add a new table or adjust the existing table to display all information.<
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="590"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="184"/>
         <source>Ne pas modifier</source>
-        <translation>Do not change</translation>
+        <translation>変更なし</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="156"/>
-        <source>En haut</source>
-        <translation>Up</translation>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="52"/>
+        <source>Taille du texte :</source>
+        <translation>テキストの大きさ :</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="161"/>
-        <source>En bas</source>
-        <translation>Below</translation>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="68"/>
+        <source>À gauche</source>
+        <translation>左</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="298"/>
-        <source>Texte sur conducteur horizontal :</source>
-        <translation>Text on horizontal conductor :</translation>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="73"/>
+        <source>À droite</source>
+        <translation>右</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="305"/>
-        <source>Tension / protocol :</source>
-        <translation>Voltage / Protocol :</translation>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="81"/>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="268"/>
+        <source>Angle :</source>
+        <translation>角度 :</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="91"/>
+        <source>Couleur du conducteur</source>
+        <translation>導体色</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="98"/>
+        <source>Texte :</source>
+        <translation>テキスト :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="105"/>
@@ -9196,58 +9226,7 @@ Please add a new table or adjust the existing table to display all information.<
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="169"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="218"/>
         <source>Supprimer ce texte</source>
-        <translation>Delete this text</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="261"/>
-        <source>Fonction :</source>
-        <translation>Function :</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="211"/>
-        <source>Formule du texte :</source>
-        <translation>Text Formula :</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="278"/>
-        <source>Texte visible</source>
-        <translation>Visible text</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="81"/>
-        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="268"/>
-        <source>Angle :</source>
-        <translation>Angle:</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="238"/>
-        <source>Texte sur conducteur vertical :</source>
-        <translation>Text on vertical conductor :</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="52"/>
-        <source>Taille du texte :</source>
-        <translation>Text size :</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="98"/>
-        <source>Texte :</source>
-        <translation>Text:</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="68"/>
-        <source>À gauche</source>
-        <translation>To the left</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="73"/>
-        <source>À droite</source>
-        <translation>To the right</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="91"/>
-        <source>Couleur du conducteur</source>
-        <translation>Conductor color</translation>
+        <translation>このテキストを削除</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="121"/>
@@ -9256,130 +9235,170 @@ Please add a new table or adjust the existing table to display all information.<
         <translation></translation>
     </message>
     <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="156"/>
+        <source>En haut</source>
+        <translation>上</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="161"/>
+        <source>En bas</source>
+        <translation>下</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="211"/>
+        <source>Formule du texte :</source>
+        <translation>テキストの式 :</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="238"/>
+        <source>Texte sur conducteur vertical :</source>
+        <translation>垂直な導体のテキスト :</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="261"/>
+        <source>Fonction :</source>
+        <translation>機能 :</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="278"/>
+        <source>Texte visible</source>
+        <translation>テキスト表示</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="298"/>
+        <source>Texte sur conducteur horizontal :</source>
+        <translation>水平な導体のテキスト :</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="305"/>
+        <source>Tension / protocol :</source>
+        <translation>電圧 / プロトコル :</translation>
+    </message>
+    <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="312"/>
         <source>Section du conducteur</source>
-        <translation>Conductor section</translation>
+        <translation>導体部</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="342"/>
         <source>Unifilaire</source>
-        <translation>Single line</translation>
+        <translation>単線</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="357"/>
         <source>Protective Earth Neutral</source>
-        <translation>Protective Earth Neutral</translation>
+        <translation>保護接地導体と中性線</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="360"/>
         <source>PEN</source>
-        <translation>PEN</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="367"/>
         <source>Phase</source>
-        <translation>Phase</translation>
+        <translation>相</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="370"/>
         <source>phase</source>
-        <translation>phase</translation>
+        <translation>相</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="381"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="414"/>
         <source>Nombre de phase</source>
-        <translation>Number of phase</translation>
+        <translation>相数</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="394"/>
         <source>Neutre</source>
-        <translation>Neutral</translation>
+        <translation>中性</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="397"/>
         <source>neutre</source>
-        <translation>neutral</translation>
+        <translation>中性</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="430"/>
         <source>Terre</source>
-        <translation>Ground</translation>
+        <translation>接地</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="433"/>
         <source>terre</source>
-        <translation>ground</translation>
+        <translation>接地</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="444"/>
         <source>TextLabel</source>
-        <translation>TextLabel</translation>
+        <translation>テキストラベル</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="454"/>
         <source>PushButton</source>
-        <translation>PushButton</translation>
+        <translation>押しボタン</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="465"/>
         <source>Apparence</source>
-        <translation>Appearance</translation>
+        <translation>外観</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="471"/>
         <source>Taille :</source>
-        <translation>Size :</translation>
+        <translation>線幅 :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="478"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="554"/>
         <source>Couleur :</source>
-        <translation>Color:</translation>
+        <translation>色 :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="508"/>
         <source>Style :</source>
-        <translation>Style:</translation>
+        <translation>線種 :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="515"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="561"/>
         <source>Modifier</source>
-        <translation>Edit</translation>
+        <translation>変更</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="525"/>
         <source>Couleur secondaire :</source>
-        <translation>Secondary color :</translation>
+        <translation>2つめの色 :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="547"/>
         <source>Taille de trait :</source>
-        <translation>Line size :</translation>
+        <translation>間隔 :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="574"/>
         <source>px</source>
-        <translation>px</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="185"/>
         <source>Trait plein</source>
         <comment>conductor style: solid line</comment>
-        <translation>Solid line</translation>
+        <translation>実線</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="186"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
-        <translation>Dashed line</translation>
+        <translation>破線</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="187"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
-        <translation>Dots and dashes</translation>
+        <translation>一点鎖線</translation>
     </message>
 </context>
 <context>
@@ -9387,7 +9406,7 @@ Please add a new table or adjust the existing table to display all information.<
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceelementdialog.cpp" line="79"/>
         <source>Ne pas modifier</source>
-        <translation>Do not change</translation>
+        <translation>変更なし</translation>
     </message>
 </context>
 <context>
@@ -9395,32 +9414,32 @@ Please add a new table or adjust the existing table to display all information.<
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>フォーム</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="45"/>
         <source>Principales</source>
-        <translation>Main</translation>
+        <translation>主要</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="53"/>
         <source>Indice Rev</source>
-        <translation>Rev index</translation>
+        <translation>改訂番号</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="60"/>
         <source>Localisation</source>
-        <translation>Location</translation>
+        <translation>場所</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="67"/>
         <source>Fichier :</source>
-        <translation>File:</translation>
+        <translation>ファイル:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="74"/>
         <source>Disponible en tant que %title pour les modèles de cartouches</source>
-        <translation>Available as variable %title for title blocks template</translation>
+        <translation>表題欄で変数 %title として利用可能</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="77"/>
@@ -9432,67 +9451,62 @@ Please add a new table or adjust the existing table to display all information.<
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="217"/>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="227"/>
         <source>Ne pas modifier</source>
-        <translation>Do not change</translation>
+        <translation>変更なし</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="84"/>
         <source>Disponible en tant que %author pour les modèles de cartouches</source>
-        <translation>Available as variable %author for title blocks template</translation>
+        <translation>表題欄で変数 %author として利用可能</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="94"/>
         <source>Auteur :</source>
-        <translation>Author:</translation>
+        <translation>作成者:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="101"/>
         <source>Date :</source>
-        <translation>Date:</translation>
+        <translation>日付:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="111"/>
         <source>Installation :</source>
-        <translation>Plant:</translation>
+        <translation>設備:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="118"/>
         <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
-        <translation>Available as variable %indexrev for title blocks template</translation>
+        <translation>表題欄で変数 %indexrev として利用可能</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="128"/>
         <source>Disponible en tant que %filename pour les modèles de cartouches</source>
-        <translation>Available as variable %filename for title blocks template</translation>
+        <translation>表題欄で変数 %filename として利用可能</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="141"/>
         <source>Folio :</source>
-        <translation>Folio:</translation>
+        <translation>フォリオ:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="150"/>
         <source>Pas de date</source>
-        <translation>No date</translation>
+        <translation>日付なし</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="157"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
-        <translation>Available as variable %date for title blocks template</translation>
+        <translation>表題欄で変数 %date として利用可能</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="170"/>
         <source>Date fixe :</source>
-        <translation>Fixed date:</translation>
+        <translation>指定の日付:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="177"/>
         <source>Appliquer la date actuelle</source>
-        <translation>Set to current date</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="224"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disponible en tant que %plant pour les modèles de cartouches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Available as% plant for title block templates&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>現在の日付けを設定</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="200"/>
@@ -9501,21 +9515,26 @@ Les variables suivantes sont utilisables :
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
-        <translation>Available as % folio for titleblock models
-The following variables can be used:
--%id: current number of folios in the project
--%total: total number of folios in the project
--%autonum: folio auto numbering</translation>
+        <translation>表題欄のテンプレートで %folio として利用可能
+下記の変数が利用可能:
+-%id: プロジェクトでの現在のフォリオ番号
+-%total: プロジェクトでの合計のフォリオ数
+-%autonum: フォリオの自動採番</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="214"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
-        <translation>Available as variable %locmach for title blocks template</translation>
+        <translation>表題欄で変数 %locmach として利用可能</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="224"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disponible en tant que %plant pour les modèles de cartouches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;表題欄で %plant として利用可能&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="234"/>
         <source>Titre :</source>
-        <translation>Title:</translation>
+        <translation>表題:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="241"/>
@@ -9526,19 +9545,19 @@ The following variables can be used:
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="291"/>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="301"/>
         <source>Supprimer ce texte</source>
-        <translation>Delete this text</translation>
+        <translation>このテキストを削除</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="327"/>
         <source>Personnalisées</source>
-        <translation>Custom</translation>
+        <translation>自分で定義</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="335"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation>You may define here your own name/value associations so the title block takes them into account.
-E.g. associating the name &quot;volta&quot; with the value &quot;1745&quot; will replace %{volta} by 1745 within the title block.</translation>
+        <translation>表題欄で利用するために 名前/値 の関係を自分で定義できます。
+例えば名前 &quot;volta&quot; に値 &quot;1745&quot; を関係づけることで、表題欄で %{volta} は 1745 に置き換わります。</translation>
     </message>
 </context>
 <context>
@@ -9546,12 +9565,12 @@ E.g. associating the name &quot;volta&quot; with the value &quot;1745&quot; will
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>フォーム</translation>
     </message>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="20"/>
         <source>Label de report de folio</source>
-        <translation>Label of folio referencing</translation>
+        <translation>フォリオ参照のラベル</translation>
     </message>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="35"/>
@@ -9563,14 +9582,14 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %LM : la localisation
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation>You can define a custom label for folio reports.
-Create your own text by using the following variables:
-% f: the folio position in the project
-% F: the folio number
-% M: the installation
-% LM: the location
-% l: the line number
-% c: the column number</translation>
+        <translation>フォリオ参照のため自分で作成したラベルを定義できます。
+下記の変数を用いて独自のテキストを作成してください:
+% f: プロジェクト中のフォリオ位置
+% F: フォリオ番号
+% M: 設備
+% LM: 場所
+% l: 行番号
+% c: 列番号</translation>
     </message>
 </context>
 <context>
@@ -9578,167 +9597,177 @@ Create your own text by using the following variables:
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="103"/>
-        <source>Aller à la correspondance suivante</source>
-        <translation>Go to the next match</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="154"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Afficher les options avancées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Show advanced options&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="120"/>
-        <source>Aller à la correspondance précédente</source>
-        <translation>Go to previous match</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="336"/>
-        <source>Quitter</source>
-        <translation>Quit</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="201"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les éléments&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Define properties to replace in elements&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="264"/>
-        <source>Champ texte de folio</source>
-        <translation>Folio text field</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="211"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les conducteurs&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Define properties to replace in conductors&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="248"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les folios&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Define properties to replace in folios&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="251"/>
-        <source>Folio</source>
-        <translation>Folio</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="80"/>
-        <source>Texte brut</source>
-        <translation>Plain text</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="73"/>
-        <source>Mode</source>
-        <translation>Mode</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="85"/>
-        <source>Mots entiers</source>
-        <translation>Whole words</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="93"/>
-        <source>Sensible à la casse</source>
-        <translation>Case sensitive</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="277"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer la correspondance sélectionnée&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Replace the selected match&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="224"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer les correspondances cochées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Replace checked matches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="234"/>
-        <source>avancé</source>
-        <translation>advanced</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="204"/>
-        <source>Élément</source>
-        <translation>Element</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="214"/>
-        <source>Conducteur</source>
-        <translation>Conductor</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="241"/>
-        <source>Remplacer :</source>
-        <translation>Replace :</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="280"/>
-        <source>Remplacer</source>
-        <translation>Replace</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="227"/>
-        <source>Tout remplacer</source>
-        <translation>Replace all</translation>
+        <translation>フォーム</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="38"/>
         <source>Chercher :</source>
-        <translation>Find :</translation>
+        <translation>検索 :</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="73"/>
+        <source>Mode</source>
+        <translation>一致モード</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="80"/>
+        <source>Texte brut</source>
+        <translation>部分一致</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="85"/>
+        <source>Mots entiers</source>
+        <translation>完全一致</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="93"/>
+        <source>Sensible à la casse</source>
+        <translation>大/小文字の区別</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="103"/>
+        <source>Aller à la correspondance suivante</source>
+        <translation>次を検索</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="120"/>
+        <source>Aller à la correspondance précédente</source>
+        <translation>前を検索</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="137"/>
         <source>Actualiser</source>
-        <translation>Actualize</translation>
+        <translation>更新</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="154"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Afficher les options avancées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;高度なオプションの表示&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="201"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les éléments&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;要素の置換する属性を定義&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="204"/>
+        <source>Élément</source>
+        <translation>要素</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="211"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les conducteurs&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;導体の置換する属性を定義&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="214"/>
+        <source>Conducteur</source>
+        <translation>導体</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="224"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer les correspondances cochées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;チェックされた一致を置換&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="227"/>
+        <source>Tout remplacer</source>
+        <translation>全て置換</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="234"/>
+        <source>avancé</source>
+        <translation>高度</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="241"/>
+        <source>Remplacer :</source>
+        <translation>置換 :</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="248"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les folios&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;フォリオの置換する属性を定義&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="251"/>
+        <source>Folio</source>
+        <translation>フォリオ</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="264"/>
+        <source>Champ texte de folio</source>
+        <translation>フォリオのテキスト領域</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="277"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer la correspondance sélectionnée&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;選択された一致を置換&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="280"/>
+        <source>Remplacer</source>
+        <translation>置換</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="336"/>
+        <source>Quitter</source>
+        <translation>終了</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="147"/>
         <source>Correspondance :</source>
-        <translation>Correspondence:</translation>
+        <translation>一致 :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="153"/>
         <source>Folios</source>
-        <translation>Folios</translation>
+        <translation>フォリオ</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="159"/>
         <source>Champs texte</source>
-        <translation>Text fields</translation>
+        <translation>テキスト領域</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="165"/>
         <source>Eléments</source>
-        <translation>Elements</translation>
+        <translation>要素</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="170"/>
         <source>Eléments simple</source>
-        <translation>Simple elements</translation>
+        <translation>単純要素</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="176"/>
         <source>Eléments maître</source>
-        <translation>Master elements</translation>
+        <translation>親要素</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="182"/>
         <source>Eléments esclave</source>
-        <translation>Slave elements</translation>
+        <translation>子要素</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="188"/>
         <source>Eléments report de folio</source>
-        <translation>Folio referencings elements</translation>
+        <translation>フォリオ参照要素</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="194"/>
         <source>Eléments bornier</source>
-        <translation>Terminal elements</translation>
+        <translation>端子要素</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="202"/>
+        <source>Conducteurs</source>
+        <translation>導体</translation>
+    </message>
+    <message>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="337"/>
+        <source>Inconnue</source>
+        <translation>不明</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="975"/>
@@ -9766,17 +9795,7 @@ Create your own text by using the following variables:
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1214"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="1215"/>
         <source> [édité]</source>
-        <translation> [edited]</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="202"/>
-        <source>Conducteurs</source>
-        <translation>Conductors</translation>
-    </message>
-    <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="337"/>
-        <source>Inconnue</source>
-        <translation>Unknown</translation>
+        <translation> [変更あり]</translation>
     </message>
 </context>
 <context>
@@ -9784,68 +9803,68 @@ Create your own text by using the following variables:
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="20"/>
         <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="133"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimer une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Delete a variable numbering&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="150"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ajouter une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Add a variable numbering&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="100"/>
-        <source>Définition</source>
-        <translation>Definition</translation>
+        <translation>フォーム</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="28"/>
         <source>Numérotations disponibles :</source>
-        <translation>Availables numbering :</translation>
+        <translation>使用できる採番 :</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="52"/>
         <source>Nom de la nouvelle numérotation</source>
-        <translation>Name of the new numbering</translation>
+        <translation>新規採番名</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="60"/>
         <source>Supprimer la numérotation</source>
-        <translation>Delete numbering</translation>
+        <translation>採番を削除</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="100"/>
+        <source>Définition</source>
+        <translation>定義</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="133"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimer une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;採番変数を削除&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="150"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ajouter une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;採番変数を追加&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="167"/>
         <source>Précédent</source>
-        <translation>Previous</translation>
+        <translation>前</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="181"/>
         <source>Suivant</source>
-        <translation>Next</translation>
+        <translation>次</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="226"/>
         <source>Type</source>
-        <translation>Type</translation>
+        <translation>種類</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="236"/>
         <source>Valeur</source>
-        <translation>Value</translation>
+        <translation>値</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="252"/>
         <source>Incrémentation</source>
-        <translation>Incrementing</translation>
+        <translation>増分</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="187"/>
         <source>Folio Autonumérotation</source>
         <comment>title window</comment>
-        <translation>Folio Auto Numbering</translation>
+        <translation>フォリオの自動採番</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="188"/>
@@ -9862,18 +9881,24 @@ Si le chiffre défini dans le champ Valeur possède moins de digits que le type 
 Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation>This is where you can define how the new folios will be numbered.
--A numbering is composed of a minimum variable.
--You can add or delete a dialing variable through the - and + buttons.
-A numbering variable includes: a type, a value and an increment.
+        <translation>ここで新規フォリオの採番を定義できます。
+-採番は最小の変数で構成されます。
+-ボタン - と + を用いて採番変数を削除または追加できます。
+採番変数は種類、値、増分で構成されます。
 
--the &quot;Digit 1&quot;, &quot;Digit 01&quot; and &quot;Digit 001&quot; types represent a numeric type defined in the &quot;Value&quot; field, which increments each new folio by the value of the &quot;Incrementation&quot; field.
-- &quot;Digit 01&quot; and &quot;Digit 001&quot;, are respectively represented on the diagram by two and three digits minimum.
-If the digit defined in the Value field has fewer digits than the chosen type, it will be preceded by one or two 0s in order to respect its type.
+-種類 &quot;Digit 1&quot;, &quot;Digit 01&quot; と &quot;Digit 001&quot; は値欄での数値の種類を表し、新規フォリオの作成ごとに増分欄の値だけ増えます。
+-&quot;Digit 01&quot; と &quot;Digit 001&quot; は、回路図ではそれぞれ最低 2 桁と 3 桁で表されます。
+選ばれた種類の桁数よりも値欄の数値が小さい場合には、種類に合わせて前に 1 つまたは 2 つの 0 が付きます。
 
--Type &quot;Text&quot;, represents a fixed text.
-The &quot;Incrementation&quot; field is not used.
+-種類 &quot;Text&quot; は固定したテキストを表します。
+増分欄は使用されません。
 </translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="206"/>
+        <source>Conducteur Autonumérotation</source>
+        <comment>title window</comment>
+        <translation>導体の自動採番</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="207"/>
@@ -9895,29 +9920,23 @@ Les autres champs ne sont pas utilisés.
 -Le type &quot;Folio&quot; représente le nom du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the conductor autonumerotation</comment>
-        <translation>This is where you can define how new conductors will be numbered.
--A numbering is composed of a minimum variable.
--You can add or delete a dialing variable through the - and + buttons.
-A numbering variable includes: a type, a value and an increment.
+        <translation>ここで新規導体の採番を定義できます。
+-採番は最小の変数で構成されます。
+-ボタン - と + を用いて採番変数を削除または追加できます。
+採番変数は種類、値、増分で構成されます。
 
-the &quot;Digit 1&quot;, &quot;Digit 01&quot; and &quot;Digit 001&quot; types represent a numeric type defined in the &quot;Value&quot; field, which is incremented to each new conductor by the value of the &quot;Incrementation&quot; field.
-- &quot;Digit 01&quot; and &quot;Digit 001&quot;, are respectively represented on the diagram by two and three digits minimum.
-If the digit defined in the Value field has fewer digits than the chosen type, it will be preceded by one or two 0s in order to respect its type.
+-種類 &quot;Digit 1&quot;, &quot;Digit 01&quot; と &quot;Digit 001&quot; は値欄での数値の種類を表し、新規導体の作成ごとに増分欄の値だけ増えます。
+-&quot;Digit 01&quot; と &quot;Digit 001&quot; は、回路図ではそれぞれ最低 2 桁と 3 桁で表されます。
+選ばれた種類の桁数よりも値欄の数値が小さい場合には、種類に合わせて前に 1 つまたは 2 つの 0 が付きます。
 
--Type &quot;Text&quot;, represents a fixed text.
-The &quot;Incrementation&quot; field is not used.
+-種類 &quot;Text&quot; は固定したテキストを表します。
+増分欄は使用されません。
 
--The &quot;folio&quot; type represents the number of the current folio.
-The other fields are not used.
+-種類 &quot;folio&quot; は現在のフォリオの番号を表します。
+他の欄は使用されません。
 
--The &quot;Folio&quot; type represents the name of the current folio.
-The other fields are not used.</translation>
-    </message>
-    <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="206"/>
-        <source>Conducteur Autonumérotation</source>
-        <comment>title window</comment>
-        <translation>Numbering conductors</translation>
+-種類 &quot;Folio&quot; は現在のフォリオの名前を表します。
+他の欄は使用されません。</translation>
     </message>
 </context>
 <context>
@@ -9925,2173 +9944,2173 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>フォーム</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="20"/>
         <source>Trait</source>
-        <translation>Line</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="33"/>
-        <source>Épaisseur</source>
-        <translation>Thickness</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="85"/>
-        <source>Normal</source>
-        <translation>Normal</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="90"/>
-        <source>Tiret</source>
-        <translation>Dashed</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="95"/>
-        <source>Pointillé</source>
-        <translation>Dotted</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="100"/>
-        <source>Traits et points</source>
-        <translation>Dots and dashes</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="105"/>
-        <source>Traits points points</source>
-        <translation>Dash dot dot</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="110"/>
-        <source>Tiret custom</source>
-        <translation>Custom Dash Line</translation>
+        <translation>線</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="26"/>
         <source>Type</source>
-        <translation>Type</translation>
+        <translation>線種</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="33"/>
+        <source>Épaisseur</source>
+        <translation>太さ</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="40"/>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="213"/>
         <source>Couleur</source>
-        <translation>Color</translation>
+        <translation>色</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="85"/>
+        <source>Normal</source>
+        <translation>実線</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="90"/>
+        <source>Tiret</source>
+        <translation>破線</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="95"/>
+        <source>Pointillé</source>
+        <translation>点線</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="100"/>
+        <source>Traits et points</source>
+        <translation>1点鎖線</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="105"/>
+        <source>Traits points points</source>
+        <translation>2点鎖線</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="110"/>
+        <source>Tiret custom</source>
+        <translation>カスタム鎖線</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="121"/>
         <source>Remplissage</source>
-        <translation>Filling</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="206"/>
-        <source>Style</source>
-        <translation>Style</translation>
+        <translation>塗りつぶし</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="128"/>
         <source>Aucun</source>
-        <translation>None</translation>
+        <translation>なし</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="133"/>
         <source>Plein</source>
-        <translation>Solid line</translation>
+        <translation>単色</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="138"/>
         <source>Densité 1</source>
-        <translation>Dense 1</translation>
+        <translation>濃淡 1</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="143"/>
         <source>Densité 2</source>
-        <translation>Dense 2</translation>
+        <translation>濃淡 2</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="148"/>
         <source>Densité 3</source>
-        <translation>Dense 3</translation>
+        <translation>濃淡 3</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="153"/>
         <source>Densité 4</source>
-        <translation>Dense 4</translation>
+        <translation>濃淡 4</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="158"/>
         <source>Densité 5</source>
-        <translation>Dense 5</translation>
+        <translation>濃淡 5</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="163"/>
         <source>Densité 6</source>
-        <translation>Dense 6</translation>
+        <translation>濃淡 6</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="168"/>
         <source>Densité 7</source>
-        <translation>Dense 7</translation>
+        <translation>濃淡 7</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="173"/>
         <source>Horizontal</source>
-        <translation>Horizontal</translation>
+        <translation>水平</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="178"/>
         <source>Vertical</source>
-        <translation>Vertical</translation>
+        <translation>垂直</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="183"/>
         <source>Croix</source>
-        <translation>Cross</translation>
+        <translation>格子</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="188"/>
         <source>Diagonal arrière</source>
-        <translation>BDiag</translation>
+        <translation>斜め右上</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="193"/>
         <source>Diagonal avant</source>
-        <translation>FDiag</translation>
+        <translation>斜め左上</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="198"/>
         <source>Diagonal en croix</source>
-        <translation>CrossDiag</translation>
+        <translation>対角格子</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="206"/>
+        <source>Style</source>
+        <translation>種類</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="226"/>
         <source>Verrouiller la position</source>
-        <translation>Lock Position</translation>
+        <translation>位置を固定</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="233"/>
         <source>Polygone fermé</source>
-        <translation>Closed polygon</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.h" line="50"/>
-        <source>Éditer les propriétés d&apos;une primitive </source>
-        <translation>Edit the properties of a primitive </translation>
+        <translation>閉じた多角形</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="192"/>
         <source>Modifier le trait d&apos;une forme</source>
-        <translation>Edit line of a form</translation>
+        <translation>図形の線を変更</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="207"/>
         <source>Modifier le remplissage d&apos;une forme</source>
-        <translation>Edit filling a form</translation>
+        <translation>図形の塗りつぶしを変更</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="218"/>
         <source>Fermer le polygone</source>
-        <translation>Close the polygon</translation>
+        <translation>多角形を閉じる</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="274"/>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="306"/>
         <source>Modifier une forme simple</source>
-        <translation>Modify a simple form</translation>
+        <translation>単純な図形の変更</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="318"/>
         <source>Modifier les propriétés d&apos;une forme simple</source>
-        <translation>Modify the properties of a simple form</translation>
+        <translation>単純な図形の属性を変更</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.h" line="50"/>
+        <source>Éditer les propriétés d&apos;une primitive </source>
+        <translation>プリミティブの属性を編集 </translation>
     </message>
 </context>
 <context>
     <name>StyleEditor</name>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="376"/>
-        <source>Antialiasing</source>
-        <translation>Antialiasing</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="390"/>
-        <source>Remplissage :</source>
-        <translation>Filling:</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/styleeditor.cpp" line="39"/>
         <source>Noir</source>
         <comment>element part color</comment>
-        <translation>Black</translation>
+        <translation>黒</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="40"/>
         <source>Blanc</source>
         <comment>element part color</comment>
-        <translation>White</translation>
+        <translation>白</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="41"/>
         <source>Vert</source>
         <comment>element part color</comment>
-        <translation>Green</translation>
+        <translation>緑</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="42"/>
         <source>Rouge</source>
         <comment>element part color</comment>
-        <translation>Red</translation>
+        <translation>赤</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="43"/>
         <source>Bleu</source>
         <comment>element part color</comment>
-        <translation>Blue</translation>
+        <translation>青</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="44"/>
         <source>Gris</source>
         <comment>element part color</comment>
-        <translation>Gray</translation>
+        <translation>灰</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="45"/>
         <source>Marron</source>
         <comment>element part color</comment>
-        <translation>Brown</translation>
+        <translation>茶</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="46"/>
         <source>Jaune</source>
         <comment>element part color</comment>
-        <translation>Yellow</translation>
+        <translation>黄</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="47"/>
         <source>Cyan</source>
         <comment>element part color</comment>
-        <translation>Cyan</translation>
+        <translation>シアン</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="48"/>
         <source>Magenta</source>
         <comment>element part color</comment>
-        <translation>Magenta</translation>
+        <translation>マゼンタ</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="49"/>
         <source>Gris clair</source>
         <comment>element part color</comment>
-        <translation>Light gray</translation>
+        <translation>薄灰</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="50"/>
         <source>Orange</source>
         <comment>element part color</comment>
-        <translation>Orange</translation>
+        <translation>オレンジ</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="51"/>
         <source>Violet</source>
         <comment>element part color</comment>
-        <translation>Purple</translation>
+        <translation>紫</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="53"/>
         <source>Pink : Pink</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="54"/>
         <source>Pink : LightPink</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="55"/>
         <source>Pink : HotPink</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="56"/>
         <source>Pink : DeepPink</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="57"/>
         <source>Pink : PaleVioletRed</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="58"/>
         <source>Pink : MediumVioletRed</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="59"/>
         <source>Red : LightSalmon</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="60"/>
         <source>Red : Salmon</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="61"/>
         <source>Red : DarkSalmon</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="62"/>
         <source>Red : LightCoral</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="63"/>
         <source>Red : IndianRed</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="64"/>
         <source>Red : Crimson</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="65"/>
         <source>Red : Firebrick</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="66"/>
         <source>Red : DarkRed</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="67"/>
         <source>Red : Red</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="68"/>
         <source>Orange : OrangeRed</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="69"/>
         <source>Orange : Tomato</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="70"/>
         <source>Orange : Coral</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="71"/>
         <source>Orange : DarkOrange</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="72"/>
         <source>Orange : Orange</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="73"/>
         <source>Yellow : Yellow</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="74"/>
         <source>Yellow : LightYellow</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="75"/>
         <source>Yellow : LemonChiffon</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="76"/>
         <source>Yellow : LightGoldenrodYellow</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="77"/>
         <source>Yellow : PapayaWhip</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="78"/>
         <source>Yellow : Moccasin</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="79"/>
         <source>Yellow : PeachPuff</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="80"/>
         <source>Yellow : PaleGoldenrod</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="81"/>
         <source>Yellow : Khaki</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="82"/>
         <source>Yellow : DarkKhaki</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="83"/>
         <source>Yellow : Gold</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="84"/>
         <source>Brown : Cornsilk</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="85"/>
         <source>Brown : BlanchedAlmond</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="86"/>
         <source>Brown : Bisque</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="87"/>
         <source>Brown : NavajoWhite</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="88"/>
         <source>Brown : Wheat</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="89"/>
         <source>Brown : Burlywood</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="90"/>
         <source>Brown : Tan</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="91"/>
         <source>Brown : RosyBrown</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="92"/>
         <source>Brown : SandyBrown</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="93"/>
         <source>Brown : Goldenrod</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="94"/>
         <source>Brown : DarkGoldenrod</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="95"/>
         <source>Brown : Peru</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="96"/>
         <source>Brown : Chocolate</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="97"/>
         <source>Brown : SaddleBrown</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="98"/>
         <source>Brown : Sienna</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="99"/>
         <source>Brown : Brown</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="100"/>
         <source>Brown : Maroon</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="101"/>
         <source>Green : DarkOliveGreen</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="102"/>
         <source>Green : Olive</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="103"/>
         <source>Green : OliveDrab</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="104"/>
         <source>Green : YellowGreen</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="105"/>
         <source>Green : LimeGreen</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="106"/>
         <source>Green : Lime</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="107"/>
         <source>Green : LawnGreen</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="108"/>
         <source>Green : Chartreuse</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="109"/>
         <source>Green : GreenYellow</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="110"/>
         <source>Green : SpringGreen</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="111"/>
         <source>Green : MediumSpringGreen</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="112"/>
         <source>Green : LightGreen</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="113"/>
         <source>Green : PaleGreen</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="114"/>
         <source>Green : DarkSeaGreen</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="115"/>
         <source>Green : MediumAquamarine</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="116"/>
         <source>Green : MediumSeaGreen</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="117"/>
         <source>Green : SeaGreen</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="118"/>
         <source>Green : ForestGreen</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="119"/>
         <source>Green : Green</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="120"/>
         <source>Green : DarkGreen</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="121"/>
         <source>Cyan : Aqua</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="122"/>
         <source>Cyan : Cyan</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="123"/>
         <source>Cyan : LightCyan</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="124"/>
         <source>Cyan : PaleTurquoise</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="125"/>
         <source>Cyan : Aquamarine</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="126"/>
         <source>Cyan : Turquoise</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="127"/>
         <source>Cyan : MediumTurquoise</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="128"/>
         <source>Cyan : DarkTurquoise</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="129"/>
         <source>Cyan : LightSeaGreen</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="130"/>
         <source>Cyan : CadetBlue</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="131"/>
         <source>Cyan : DarkCyan</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="132"/>
         <source>Cyan : Teal</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="133"/>
         <source>Blue : LightSteelBlue</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="134"/>
         <source>Blue : PowderBlue</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="135"/>
         <source>Blue : LightBlue</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="136"/>
         <source>Blue : SkyBlue</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="137"/>
         <source>Blue : LightSkyBlue</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="138"/>
         <source>Blue : DeepSkyBlue</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="139"/>
         <source>Blue : DodgerBlue</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="140"/>
         <source>Blue : CornflowerBlue</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="141"/>
         <source>Blue : SteelBlue</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="142"/>
         <source>Blue : RoyalBlue</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="143"/>
         <source>Blue : Blue</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="144"/>
         <source>Blue : MediumBlue</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="145"/>
         <source>Blue : DarkBlue</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="146"/>
         <source>Blue : Navy</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="147"/>
         <source>Blue : MidnightBlue</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="148"/>
         <source>Purple : Lavender</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="149"/>
         <source>Purple : Thistle</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="150"/>
         <source>Purple : Plum</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="151"/>
         <source>Purple : Violet</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="152"/>
         <source>Purple : Orchid</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="153"/>
         <source>Purple : Fuchsia</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="154"/>
         <source>Purple : Magenta</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="155"/>
         <source>Purple : MediumOrchid</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="156"/>
         <source>Purple : MediumPurple</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="157"/>
         <source>Purple : BlueViolet</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="158"/>
         <source>Purple : DarkViolet</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="159"/>
         <source>Purple : DarkOrchid</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="160"/>
         <source>Purple : DarkMagenta</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="161"/>
         <source>Purple : Purple</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="162"/>
         <source>Purple : Indigo</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="163"/>
         <source>Purple : DarkSlateBlue</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="164"/>
         <source>Purple : SlateBlue</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="165"/>
         <source>Purple : MediumSlateBlue</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="166"/>
         <source>White : White</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="167"/>
         <source>White : Snow</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="168"/>
         <source>White : Honeydew</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="169"/>
         <source>White : MintCream</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="170"/>
         <source>White : Azure</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="171"/>
         <source>White : AliceBlue</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="172"/>
         <source>White : GhostWhite</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="173"/>
         <source>White : WhiteSmoke</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="174"/>
         <source>White : Seashell</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="175"/>
         <source>White : Beige</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="176"/>
         <source>White : OldLace</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="177"/>
         <source>White : FloralWhite</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="178"/>
         <source>White : Ivory</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="179"/>
         <source>White : AntiqueWhite</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="180"/>
         <source>White : Linen</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="181"/>
         <source>White : LavenderBlush</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="182"/>
         <source>White : MistyRose</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="183"/>
         <source>Gray : Gainsboro</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="184"/>
         <source>Gray : LightGray</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="185"/>
         <source>Gray : Silver</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="186"/>
         <source>Gray : DarkGray</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="187"/>
         <source>Gray : Gray</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="188"/>
         <source>Gray : DimGray</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="189"/>
         <source>Gray : LightSlateGray</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="190"/>
         <source>Gray : SlateGray</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="191"/>
         <source>Gray : DarkSlateGray</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="192"/>
         <source>Gray : Black</source>
         <comment>element part color</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="194"/>
         <source>Aucun</source>
         <comment>element part color</comment>
-        <translation>None</translation>
+        <translation>なし</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="198"/>
         <source>Normal</source>
         <comment>element part line style</comment>
-        <translation>Normal</translation>
+        <translation>実線</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="199"/>
         <source>Tiret</source>
         <comment>element part line style</comment>
-        <translation>Dashed</translation>
+        <translation>破線</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="200"/>
         <source>Pointillé</source>
         <comment>element part line style</comment>
-        <translation>Dotted</translation>
+        <translation>点線</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="201"/>
         <source>Traits et points</source>
         <comment>element part line style</comment>
-        <translation>Dots and dashes</translation>
+        <translation>一点鎖線</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="206"/>
         <source>Nulle</source>
         <comment>element part weight</comment>
-        <translation>None</translation>
+        <translation>なし</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="207"/>
         <source>Fine</source>
         <comment>element part weight</comment>
-        <translation>Thin</translation>
+        <translation>細</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="208"/>
         <source>Normale</source>
         <comment>element part weight</comment>
-        <translation>Normal</translation>
+        <translation>普通</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="209"/>
         <source>Forte</source>
         <comment>element part weight</comment>
-        <translation>Strong</translation>
+        <translation>太</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="210"/>
         <source>Élevé</source>
         <comment>element part weight</comment>
-        <translation>High</translation>
+        <translation>極太</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="214"/>
         <source>Aucun</source>
         <comment>element part filling</comment>
-        <translation>None</translation>
+        <translation>なし</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="215"/>
         <source>Noir</source>
         <comment>element part filling</comment>
-        <translation>Black</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="216"/>
         <source>Blanc</source>
         <comment>element part filling</comment>
-        <translation>White</translation>
+        <translation>白</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="217"/>
         <source>Vert</source>
         <comment>element part filling</comment>
-        <translation>Green</translation>
+        <translation>緑</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="218"/>
         <source>Rouge</source>
         <comment>element part filling</comment>
-        <translation>Red</translation>
+        <translation>赤</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="219"/>
         <source>Bleu</source>
         <comment>element part filling</comment>
-        <translation>Blue</translation>
+        <translation>青</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="220"/>
         <source>Gris</source>
         <comment>element part filling</comment>
-        <translation>Gray</translation>
+        <translation>灰</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="221"/>
         <source>Marron</source>
         <comment>element part filling</comment>
-        <translation>Brown</translation>
+        <translation>茶</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="222"/>
         <source>Jaune</source>
         <comment>element part filling</comment>
-        <translation>Yellow</translation>
+        <translation>黄</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="223"/>
         <source>Cyan</source>
         <comment>element part filling</comment>
-        <translation>Cyan</translation>
+        <translation>シアン</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="224"/>
         <source>Magenta</source>
         <comment>element part filling</comment>
-        <translation>Magenta</translation>
+        <translation>マゼンタ</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="225"/>
         <source>Gris clair</source>
         <comment>element part filling</comment>
-        <translation>Light gray</translation>
+        <translation>薄灰</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="226"/>
         <source>Orange</source>
         <comment>element part filling</comment>
-        <translation>Orange</translation>
+        <translation>オレンジ</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="227"/>
         <source>Violet</source>
         <comment>element part filling</comment>
-        <translation>Purple</translation>
+        <translation>紫</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="229"/>
         <source>Pink : Pink</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="230"/>
         <source>Pink : LightPink</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="231"/>
         <source>Pink : HotPink</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="232"/>
         <source>Pink : DeepPink</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="233"/>
         <source>Pink : PaleVioletRed</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="234"/>
         <source>Pink : MediumVioletRed</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="235"/>
         <source>Red : LightSalmon</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="236"/>
         <source>Red : Salmon</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="237"/>
         <source>Red : DarkSalmon</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="238"/>
         <source>Red : LightCoral</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="239"/>
         <source>Red : IndianRed</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="240"/>
         <source>Red : Crimson</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="241"/>
         <source>Red : Firebrick</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="242"/>
         <source>Red : DarkRed</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="243"/>
         <source>Red : Red</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="244"/>
         <source>Orange : OrangeRed</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="245"/>
         <source>Orange : Tomato</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="246"/>
         <source>Orange : Coral</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="247"/>
         <source>Orange : DarkOrange</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="248"/>
         <source>Orange : Orange</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="249"/>
         <source>Yellow : Yellow</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="250"/>
         <source>Yellow : LightYellow</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="251"/>
         <source>Yellow : LemonChiffon</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="252"/>
         <source>Yellow : LightGoldenrodYellow</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="253"/>
         <source>Yellow : PapayaWhip</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="254"/>
         <source>Yellow : Moccasin</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="255"/>
         <source>Yellow : PeachPuff</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="256"/>
         <source>Yellow : PaleGoldenrod</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="257"/>
         <source>Yellow : Khaki</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="258"/>
         <source>Yellow : DarkKhaki</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="259"/>
         <source>Yellow : Gold</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="260"/>
         <source>Brown : Cornsilk</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="261"/>
         <source>Brown : BlanchedAlmond</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="262"/>
         <source>Brown : Bisque</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="263"/>
         <source>Brown : NavajoWhite</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="264"/>
         <source>Brown : Wheat</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="265"/>
         <source>Brown : Burlywood</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="266"/>
         <source>Brown : Tan</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="267"/>
         <source>Brown : RosyBrown</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="268"/>
         <source>Brown : SandyBrown</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="269"/>
         <source>Brown : Goldenrod</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="270"/>
         <source>Brown : DarkGoldenrod</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="271"/>
         <source>Brown : Peru</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="272"/>
         <source>Brown : Chocolate</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="273"/>
         <source>Brown : SaddleBrown</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="274"/>
         <source>Brown : Sienna</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="275"/>
         <source>Brown : Brown</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="276"/>
         <source>Brown : Maroon</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="277"/>
         <source>Green : DarkOliveGreen</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="278"/>
         <source>Green : Olive</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="279"/>
         <source>Green : OliveDrab</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="280"/>
         <source>Green : YellowGreen</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="281"/>
         <source>Green : LimeGreen</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="282"/>
         <source>Green : Lime</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="283"/>
         <source>Green : LawnGreen</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="284"/>
         <source>Green : Chartreuse</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="285"/>
         <source>Green : GreenYellow</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="286"/>
         <source>Green : SpringGreen</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="287"/>
         <source>Green : MediumSpringGreen</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="288"/>
         <source>Green : LightGreen</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="289"/>
         <source>Green : PaleGreen</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="290"/>
         <source>Green : DarkSeaGreen</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="291"/>
         <source>Green : MediumAquamarine</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="292"/>
         <source>Green : MediumSeaGreen</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="293"/>
         <source>Green : SeaGreen</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="294"/>
         <source>Green : ForestGreen</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="295"/>
         <source>Green : Green</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="296"/>
         <source>Green : DarkGreen</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="297"/>
         <source>Cyan : Aqua</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="298"/>
         <source>Cyan : Cyan</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="299"/>
         <source>Cyan : LightCyan</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="300"/>
         <source>Cyan : PaleTurquoise</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="301"/>
         <source>Cyan : Aquamarine</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="302"/>
         <source>Cyan : Turquoise</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="303"/>
         <source>Cyan : MediumTurquoise</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="304"/>
         <source>Cyan : DarkTurquoise</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="305"/>
         <source>Cyan : LightSeaGreen</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="306"/>
         <source>Cyan : CadetBlue</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="307"/>
         <source>Cyan : DarkCyan</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="308"/>
         <source>Cyan : Teal</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="309"/>
         <source>Blue : LightSteelBlue</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="310"/>
         <source>Blue : PowderBlue</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="311"/>
         <source>Blue : LightBlue</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="312"/>
         <source>Blue : SkyBlue</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="313"/>
         <source>Blue : LightSkyBlue</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="314"/>
         <source>Blue : DeepSkyBlue</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="315"/>
         <source>Blue : DodgerBlue</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="316"/>
         <source>Blue : CornflowerBlue</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="317"/>
         <source>Blue : SteelBlue</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="318"/>
         <source>Blue : RoyalBlue</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="319"/>
         <source>Blue : Blue</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="320"/>
         <source>Blue : MediumBlue</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="321"/>
         <source>Blue : DarkBlue</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="322"/>
         <source>Blue : Navy</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="323"/>
         <source>Blue : MidnightBlue</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="324"/>
         <source>Purple : Lavender</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="325"/>
         <source>Purple : Thistle</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="326"/>
         <source>Purple : Plum</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="327"/>
         <source>Purple : Violet</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="328"/>
         <source>Purple : Orchid</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="329"/>
         <source>Purple : Fuchsia</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="330"/>
         <source>Purple : Magenta</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="331"/>
         <source>Purple : MediumOrchid</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="332"/>
         <source>Purple : MediumPurple</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="333"/>
         <source>Purple : BlueViolet</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="334"/>
         <source>Purple : DarkViolet</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="335"/>
         <source>Purple : DarkOrchid</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="336"/>
         <source>Purple : DarkMagenta</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="337"/>
         <source>Purple : Purple</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="338"/>
         <source>Purple : Indigo</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="339"/>
         <source>Purple : DarkSlateBlue</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="340"/>
         <source>Purple : SlateBlue</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="341"/>
         <source>Purple : MediumSlateBlue</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="342"/>
         <source>White : White</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="343"/>
         <source>White : Snow</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="344"/>
         <source>White : Honeydew</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="345"/>
         <source>White : MintCream</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="346"/>
         <source>White : Azure</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="347"/>
         <source>White : AliceBlue</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="348"/>
         <source>White : GhostWhite</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="349"/>
         <source>White : WhiteSmoke</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="350"/>
         <source>White : Seashell</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="351"/>
         <source>White : Beige</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="352"/>
         <source>White : OldLace</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="353"/>
         <source>White : FloralWhite</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="354"/>
         <source>White : Ivory</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="355"/>
         <source>White : AntiqueWhite</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="356"/>
         <source>White : Linen</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="357"/>
         <source>White : LavenderBlush</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="358"/>
         <source>White : MistyRose</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="359"/>
         <source>Gray : Gainsboro</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="360"/>
         <source>Gray : LightGray</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="361"/>
         <source>Gray : Silver</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="362"/>
         <source>Gray : DarkGray</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="363"/>
         <source>Gray : Gray</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="364"/>
         <source>Gray : DimGray</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="365"/>
         <source>Gray : LightSlateGray</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="366"/>
         <source>Gray : SlateGray</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="367"/>
         <source>Gray : DarkSlateGray</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="368"/>
         <source>Gray : Black</source>
         <comment>element part filling</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="370"/>
         <source>Lignes Horizontales</source>
         <comment>element part filling</comment>
-        <translation>Horizontal lines</translation>
+        <translation>横線</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="371"/>
         <source>Lignes Verticales</source>
         <comment>element part filling</comment>
-        <translation>Vertical Lines</translation>
+        <translation>縦線</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="372"/>
         <source>Hachures gauche</source>
         <comment>element part filling</comment>
-        <translation>Hatch left</translation>
+        <translation>ハッチング左</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="373"/>
         <source>Hachures droite</source>
         <comment>element part filling</comment>
-        <translation>Hatch right</translation>
+        <translation>ハッチング右</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/styleeditor.cpp" line="376"/>
+        <source>Antialiasing</source>
+        <translation>アンチエイリアス</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="383"/>
         <source>Apparence :</source>
-        <translation>appearance:</translation>
+        <translation>外観 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="388"/>
         <source>Contour :</source>
-        <translation>outline:</translation>
+        <translation>輪郭 :</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/styleeditor.cpp" line="390"/>
+        <source>Remplissage :</source>
+        <translation>塗りつぶし :</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="392"/>
         <source>Style :</source>
-        <translation>Style:</translation>
+        <translation>線種 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="394"/>
         <source>Épaisseur :</source>
-        <translation>Thickness :</translation>
+        <translation>太さ :</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="401"/>
         <source>Géométrie :</source>
-        <translation>geometry:</translation>
+        <translation>形状 :</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="411"/>
         <source>style antialiasing</source>
-        <translation>antialiasing style</translation>
+        <translation>アンチエイリアシングの様式</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="416"/>
         <source>style couleur</source>
-        <translation>color style</translation>
+        <translation>輪郭の様式</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="421"/>
         <source>style ligne</source>
-        <translation>line style</translation>
+        <translation>線種の様式</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="426"/>
         <source>style epaisseur</source>
-        <translation>weight style</translation>
+        <translation>太さの様式</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="431"/>
         <source>style remplissage</source>
-        <translation>filling style</translation>
+        <translation>塗りつぶしの様式</translation>
     </message>
 </context>
 <context>
@@ -12099,32 +12118,32 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>フォーム</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="38"/>
         <source>Informations disponibles</source>
-        <translation>Available information</translation>
+        <translation>使用可能な情報</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="51"/>
         <source>Information à afficher</source>
-        <translation>Information to display</translation>
+        <translation>表示する情報</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="145"/>
         <source>Configuration</source>
-        <translation>Configuration</translation>
+        <translation>設定</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="161"/>
         <source>Requête SQL :</source>
-        <translation>SQL request  :</translation>
+        <translation>SQL リクエスト :</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.cpp" line="130"/>
         <source>Position</source>
-        <translation>Position</translation>
+        <translation>位置</translation>
     </message>
 </context>
 <context>
@@ -12132,123 +12151,123 @@ The other fields are not used.</translation>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="56"/>
         <source>Nord</source>
-        <translation>North</translation>
+        <translation>北</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="57"/>
         <source>Est</source>
-        <translation>East</translation>
+        <translation>東</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="58"/>
         <source>Sud</source>
-        <translation>South</translation>
+        <translation>南</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="59"/>
         <source>Ouest</source>
-        <translation>West</translation>
+        <translation>西</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="62"/>
         <source>Position : </source>
-        <translation>Position: </translation>
+        <translation>位置 : </translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="65"/>
         <source>x : </source>
-        <translation>x: </translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="67"/>
         <source>y : </source>
-        <translation>y: </translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="72"/>
         <source>Orientation : </source>
-        <translation>Orientation: </translation>
+        <translation>向き : </translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="170"/>
         <source>Modifier l&apos;orientation d&apos;une borne</source>
-        <translation>Change the orientation of a terminal</translation>
+        <translation>端子の向きを変更</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="187"/>
         <location filename="../sources/editor/terminaleditor.cpp" line="205"/>
         <source>Déplacer une borne</source>
-        <translation>Move a terminal</translation>
+        <translation>端子を移動</translation>
     </message>
 </context>
 <context>
     <name>TextEditor</name>
     <message>
+        <location filename="../sources/editor/ui/texteditor.ui" line="14"/>
+        <source>Form</source>
+        <translation>フォーム</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/texteditor.ui" line="30"/>
+        <source>Y :</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/texteditor.ui" line="37"/>
+        <source>Police :</source>
+        <translation>フォント :</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/texteditor.ui" line="47"/>
+        <source>°</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/texteditor.ui" line="57"/>
+        <source>Rotation :</source>
+        <translation>回転 :</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/texteditor.ui" line="74"/>
+        <source>X :</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/texteditor.ui" line="84"/>
+        <source>Entrer votre texte ici</source>
+        <translation>ここにテキストを入力</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/texteditor.ui" line="97"/>
+        <source>Couleur :</source>
+        <translation>色 :</translation>
+    </message>
+    <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="179"/>
         <source>Modifier le contenu d&apos;un champ texte</source>
-        <translation>Modify the contents of a text field</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/texteditor.cpp" line="216"/>
-        <source>Pivoter un champ texte</source>
-        <translation>Rotate a text field</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/texteditor.cpp" line="229"/>
-        <location filename="../sources/editor/ui/texteditor.cpp" line="255"/>
-        <source>Modifier la police d&apos;un texte</source>
-        <translation>Change the font of a text</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/texteditor.cpp" line="271"/>
-        <source>Modifier la couleur d&apos;un texte</source>
-        <translation>Change the color of a text</translation>
+        <translation>テキスト領域の内容を変更</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="191"/>
         <location filename="../sources/editor/ui/texteditor.cpp" line="204"/>
         <source>Déplacer un champ texte</source>
-        <translation>Move a text field</translation>
+        <translation>テキスト領域を移動</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/texteditor.ui" line="14"/>
-        <source>Form</source>
-        <translation>Form</translation>
+        <location filename="../sources/editor/ui/texteditor.cpp" line="216"/>
+        <source>Pivoter un champ texte</source>
+        <translation>テキスト領域を回転</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/texteditor.ui" line="30"/>
-        <source>Y :</source>
-        <translation>Y :</translation>
+        <location filename="../sources/editor/ui/texteditor.cpp" line="229"/>
+        <location filename="../sources/editor/ui/texteditor.cpp" line="255"/>
+        <source>Modifier la police d&apos;un texte</source>
+        <translation>テキストのフォントを変更</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/texteditor.ui" line="37"/>
-        <source>Police :</source>
-        <translation>Font :</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/texteditor.ui" line="47"/>
-        <source>°</source>
-        <translation>°</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/texteditor.ui" line="57"/>
-        <source>Rotation :</source>
-        <translation>Rotation :</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/texteditor.ui" line="74"/>
-        <source>X :</source>
-        <translation>X :</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/texteditor.ui" line="84"/>
-        <source>Entrer votre texte ici</source>
-        <translation>Enter your text here</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/texteditor.ui" line="97"/>
-        <source>Couleur :</source>
-        <translation>Color :</translation>
+        <location filename="../sources/editor/ui/texteditor.cpp" line="271"/>
+        <source>Modifier la couleur d&apos;un texte</source>
+        <translation>テキストの色を変更</translation>
     </message>
 </context>
 <context>
@@ -12257,143 +12276,140 @@ The other fields are not used.</translation>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="118"/>
         <source>Largeur :</source>
         <comment>default dialog label</comment>
-        <translation>Width:</translation>
+        <translation>幅 :</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="125"/>
         <source>Absolu</source>
         <comment>a traditional, absolute measure</comment>
-        <translation>Absolute</translation>
+        <translation>絶対値</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="126"/>
         <source>Relatif au total</source>
         <comment>a percentage of the total width</comment>
-        <translation>Relative to total</translation>
+        <translation>全体に対する相対値</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="127"/>
         <source>Relatif au restant</source>
         <comment>a percentage of what remains from the total width</comment>
-        <translation>Relative to remaining</translation>
+        <translation>残りに対する相対値</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="167"/>
         <source>%</source>
         <comment>spinbox suffix when changing the dimension of a row/column</comment>
-        <translation>%</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="171"/>
         <source>px</source>
         <comment>spinbox suffix when changing the dimension of a row/column</comment>
-        <translation>px</translation>
+        <translation></translation>
     </message>
 </context>
 <context>
     <name>TitleBlockPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="366"/>
-        <source>Modèle par défaut</source>
-        <translation>Default template</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="296"/>
-        <source>Éditer ce modèle</source>
-        <comment>menu entry</comment>
-        <translation>Edit this template</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="297"/>
-        <source>Dupliquer et éditer ce modèle</source>
-        <comment>menu entry</comment>
-        <translation>Duplicate and edit this template</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="302"/>
-        <source>Title block templates actions</source>
-        <translation>Title block templates actions</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="313"/>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="431"/>
-        <source>Créer un Folio Numérotation Auto</source>
-        <translation>Create an auto folio numbering</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="49"/>
-        <source>Modèle :</source>
-        <translation>Template:</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="26"/>
         <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="258"/>
-        <source>Folio :</source>
-        <translation>Folio:</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="223"/>
-        <source>Auteur :</source>
-        <translation>Author:</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="230"/>
-        <source>Indice Rev:</source>
-        <translation>Rev index:</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="244"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disponible en tant que %plant pour les modèles de cartouches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Available as% plant for title block templates&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="279"/>
-        <source>Disponible en tant que %filename pour les modèles de cartouches</source>
-        <translation>Available as variable %filename for title blocks</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="288"/>
-        <source>Pas de date</source>
-        <translation>No date</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="295"/>
-        <source>Date courante</source>
-        <translation>Current date</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="302"/>
-        <source>Appliquer la date actuelle</source>
-        <translation>Set to current date</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="168"/>
-        <source>Principales</source>
-        <translation>Main</translation>
+        <translation>フォーム</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="32"/>
         <source>Informations des cartouches</source>
-        <translation>Title block informations</translation>
+        <translation>表題欄の情報</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="49"/>
+        <source>Modèle :</source>
+        <translation>テンプレート:</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="84"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Affiche le cartouche en bas (horizontalement) ou à droite (verticalement) du folio.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt; &lt;head/&gt;&lt;body&gt;&lt;p&gt;表題欄をフォリオの 下側 (横) または 右側 (縦) に設定します。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="168"/>
+        <source>Principales</source>
+        <translation>主要</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="176"/>
+        <source>Date :</source>
+        <translation>日付:</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="223"/>
+        <source>Auteur :</source>
+        <translation>作成者:</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="230"/>
+        <source>Indice Rev:</source>
+        <translation>改訂番号:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="237"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
-        <translation>Available as variable %locmach for title blocks</translation>
+        <translation>表題欄で変数 %locmach として利用可能</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="244"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disponible en tant que %plant pour les modèles de cartouches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;表題欄で %plant として利用可能&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="251"/>
+        <source>Disponible en tant que %title pour les modèles de cartouches</source>
+        <translation>表題欄で変数 %title として利用可能</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="258"/>
+        <source>Folio :</source>
+        <translation>フォリオ:</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="265"/>
+        <source>Fichier :</source>
+        <translation>ファイル:</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="272"/>
+        <source>Disponible en tant que %author pour les modèles de cartouches</source>
+        <translation>表題欄で変数 %author として利用可能</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="279"/>
+        <source>Disponible en tant que %filename pour les modèles de cartouches</source>
+        <translation>表題欄で変数 %filename として利用可能</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="288"/>
+        <source>Pas de date</source>
+        <translation>日付なし</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="295"/>
+        <source>Date courante</source>
+        <translation>現在の日付</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="302"/>
+        <source>Appliquer la date actuelle</source>
+        <translation>現在の日付けを設定</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="316"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
-        <translation>Available as variable %date for title blocks</translation>
+        <translation>表題欄で変数 %date として利用可能</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="329"/>
         <source>Date fixe :</source>
-        <translation>Fixed date:</translation>
+        <translation>指定の日付:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="338"/>
@@ -12402,72 +12418,76 @@ Les variables suivantes sont utilisables :
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
-        <translation>Available as % folio for titleblock models
-The following variables can be used:
--%id: current number of folios in the project
--%total: total number of folios in the project
--%autonum: folio auto numbering</translation>
+        <translation>表題欄のテンプレートで %folio として利用可能
+下記の変数が利用可能:
+-%id: プロジェクトでの現在のフォリオ番号
+-%total: プロジェクトでの合計のフォリオ数
+-%autonum: フォリオの自動採番</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="349"/>
         <source>Titre :</source>
-        <translation>Title:</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="84"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Affiche le cartouche en bas (horizontalement) ou à droite (verticalement) du folio.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt; &lt;head/&gt;&lt;body&gt;&lt;p&gt;Sets the title block at the bottom (horizontal) or right (vertically) of the folio.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="265"/>
-        <source>Fichier :</source>
-        <translation>File:</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="176"/>
-        <source>Date :</source>
-        <translation>Date:</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="272"/>
-        <source>Disponible en tant que %author pour les modèles de cartouches</source>
-        <translation>Available as variable %author for title blocks</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="251"/>
-        <source>Disponible en tant que %title pour les modèles de cartouches</source>
-        <translation>Available as variable %title for title blocks</translation>
+        <translation>表題:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="362"/>
         <source>Page Num:</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="376"/>
-        <source>Installation :</source>
-        <translation>Plant:</translation>
+        <translation>ページ番号:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="369"/>
         <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
-        <translation>Available as variable %indexrev for title blocks</translation>
+        <translation>表題欄で変数 %indexrev として利用可能</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="376"/>
+        <source>Installation :</source>
+        <translation>設備:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="383"/>
         <source>Localisation:</source>
-        <translation>Location :</translation>
+        <translation>場所:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="406"/>
         <source>Personnalisées</source>
-        <translation>Custom</translation>
+        <translation>自分で定義</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="414"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation>You may define here your own name/value associations so the title block takes them into account. E.g. associating the name &quot;volta&quot; with the value &quot;1745&quot; will replace %{volta} by 1745 within the title block.</translation>
+        <translation>表題欄で利用するために 名前/値 の関係を自分で定義できます。
+例えば名前 &quot;volta&quot; に値 &quot;1745&quot; を関係づけることで、表題欄で %{volta} は 1745 に置き換わります。</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="296"/>
+        <source>Éditer ce modèle</source>
+        <comment>menu entry</comment>
+        <translation>このテンプレートを編集</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="297"/>
+        <source>Dupliquer et éditer ce modèle</source>
+        <comment>menu entry</comment>
+        <translation>このテンプレートを複製して編集</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="302"/>
+        <source>Title block templates actions</source>
+        <translation>表題欄テンプレートの操作</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="313"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="431"/>
+        <source>Créer un Folio Numérotation Auto</source>
+        <translation>フォリオの自動採番を作成</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="366"/>
+        <source>Modèle par défaut</source>
+        <translation>既定のテンプレート</translation>
     </message>
 </context>
 <context>
@@ -12476,12 +12496,12 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <location filename="../sources/titleblocktemplate.cpp" line="1670"/>
         <source> %1 : %2</source>
         <comment>titleblock content - please let the blank space at the beginning</comment>
-        <translation> %1: %2</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/titleblocktemplate.cpp" line="1672"/>
         <source> %1</source>
-        <translation> %1</translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -12489,146 +12509,146 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="51"/>
         <source>Type de cellule :</source>
-        <translation>Cell type:</translation>
+        <translation>セルの種類 :</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="53"/>
         <source>Vide</source>
-        <translation>Empty</translation>
+        <translation>空</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="54"/>
         <source>Texte</source>
-        <translation>Text</translation>
+        <translation>テキスト</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="55"/>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="65"/>
         <source>Logo</source>
-        <translation>Logo</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="62"/>
-        <source>Attention : les bordures des cellules vides n&apos;apparaissent pas lors du rendu final sur le folio.</source>
-        <translation>Warning: the edges of empty cells do not appear in the final render the folio.</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="67"/>
-        <source>Aucun logo</source>
-        <translation>No logo</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="68"/>
-        <source>Gérer les logos</source>
-        <translation>Manage logos</translation>
+        <translation>ロゴ</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="58"/>
         <source>Nom :</source>
-        <translation>Name:</translation>
+        <translation>名前 :</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="62"/>
+        <source>Attention : les bordures des cellules vides n&apos;apparaissent pas lors du rendu final sur le folio.</source>
+        <translation>注意: 空のセルの境界は最終的に描画されません。</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="67"/>
+        <source>Aucun logo</source>
+        <translation>ロゴなし</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="68"/>
+        <source>Gérer les logos</source>
+        <translation>ロゴの管理</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="71"/>
         <source>Afficher un label :</source>
-        <translation>Display a label:</translation>
+        <translation>ラベルを表示 :</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="74"/>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="78"/>
         <source>Editer</source>
-        <translation>Edit</translation>
+        <translation>編集</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="75"/>
         <source>Texte :</source>
-        <translation>Text:</translation>
+        <translation>テキスト :</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="79"/>
         <source>Alignement :</source>
-        <translation>Alignment:</translation>
+        <translation>文字揃え :</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="80"/>
         <source>horizontal :</source>
-        <translation>horizontal:</translation>
+        <translation>水平 :</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="82"/>
         <source>Gauche</source>
-        <translation>Left</translation>
+        <translation>左</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="83"/>
         <source>Centré</source>
-        <translation>Center</translation>
+        <translation>中央</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="84"/>
         <source>Droite</source>
-        <translation>Right</translation>
+        <translation>右</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="88"/>
         <source>vertical :</source>
-        <translation>vertical:</translation>
+        <translation>垂直 :</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="90"/>
         <source>Haut</source>
-        <translation>Top</translation>
+        <translation>上</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="91"/>
         <source>Milieu</source>
-        <translation>Middle</translation>
+        <translation>中央</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="92"/>
         <source>Bas</source>
-        <translation>Bottom</translation>
+        <translation>下</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="96"/>
         <source>Police :</source>
-        <translation>Font:</translation>
+        <translation>フォント :</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="98"/>
         <source>Ajuster la taille de police si besoin</source>
-        <translation>Adjust font size if needed</translation>
+        <translation>適宜フォントの大きさを調整</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="250"/>
         <source>Label de cette cellule</source>
-        <translation>Label for this cell</translation>
+        <translation>このセルのラベル</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="260"/>
         <source>Valeur de cette cellule</source>
-        <translation>Value for this cell</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="423"/>
-        <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : numéro du folio précédent&lt;/li&gt;&lt;li&gt;%{next-folio-num} : numéro du folio suivant&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation>By default, the following variables are available :&lt;ul&gt;&lt;li&gt;%{author}: folio author&lt;/li&gt;&lt;li&gt;%{date}: folio date &lt;/li&gt;&lt;li&gt;%{title}: folio title &lt;/li&gt;&lt;li&gt;%{filename}: project file name&lt;/li&gt;&lt;li&gt;%{plant}: name of the installation (=) in which the folio is located&lt;/li&gt;&lt;li&gt;%{locmach}: name of the location (+) in which the folio&lt;/li&gt;&lt;li&gt;%{indexrev} : index revision of the folio&lt;/li&gt;&lt;li&gt;%{version}: software version&lt;/li&gt;&lt;li&gt;%{folio}: folio number&lt;/li&gt;&lt;li&gt;%{folio-id}: folio position in the project&lt;/li&gt;&lt;li&gt;%{folio-total }: total number of folios in the project&lt;/li&gt;&lt;li&gt;%{previous-folio-num}: number of the previous folio&lt;/li&gt;&lt;li&gt;%{next-folio-num}: number of the following folio&lt;/li&gt;&lt;li&gt;% {projecttitle}: project title&lt;/li&gt;&lt;li&gt;%{projectpath}: project path&lt;/li&gt;&lt;li&gt;%{projectfilename}: file name&lt;/li&gt;&lt;li&gt;%{saveddate}: file saving date&lt;/li&gt;&lt;li&gt;%{savedtime}: file saving time &lt;/li&gt;&lt;li&gt;%{savedfilename}: file name saved file&lt;/li&gt;&lt;li&gt;%{savedfilepath}: saved file path&lt;/li&gt;&lt;/ul&gt;</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="455"/>
-        <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
-        <translation>Each cell of a title block displays a value, optionally preceded by a label. Both can be translated to several languages.&lt;br/&gt;Since what you are currently editing is a title block &lt;em&gt;template&lt;/em&gt;, avoid entering raw data directly: prefer inserting variables like %{variable-name}, which will be replaced afterwards with adequate values in the folio.</translation>
+        <translation>このセルの値</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="307"/>
         <source>Aucun logo</source>
         <comment>text displayed in the combo box when a template has no logo</comment>
-        <translation>No logo</translation>
+        <translation>ロゴなし</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="412"/>
         <source>Édition d&apos;une cellule : %1</source>
         <comment>label of and undo command when editing a cell</comment>
-        <translation>Cell edition: %1</translation>
+        <translation>セルを編集: %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="423"/>
+        <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : numéro du folio précédent&lt;/li&gt;&lt;li&gt;%{next-folio-num} : numéro du folio suivant&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
+        <translation>初期設定では以下の変数が利用できます: &lt;ul&gt; &lt;li&gt;% {author}: フォリオの作成者 &lt;/li&gt; &lt;li&gt;% {date}: フォリオの日付 &lt;/li&gt; &lt;li&gt;% {title}: フォリオの表題 &lt;/li&gt; &lt;li&gt;% {filename}: プロジェクト・ファイル名 &lt;/li&gt; &lt;li&gt;% {plant}: 設備名 (=) その中にフォリオが位置する &lt;/li&gt; &lt;li&gt;% {locmach}: 場所の名前 (+) フォリオが位置する &lt;/li&gt; &lt;li&gt;% {indexrev}: フォリオの改訂番号 &lt;/li&gt; &lt;li&gt;% {version}: ソフトウェアのバージョン &lt;/li&gt; &lt;li&gt;% {folio}: フォリオ番号 &lt;/li&gt; &lt;li&gt;% {folio-id}: プロジェクトでのフォリオ位置 &lt;/li&gt; &lt;li&gt;% {folio-total }: プロジェクトの総フォリオ数 &lt;/li&gt; &lt;li&gt;% {previous-folio-num}: 前のフォリオの番号 &lt;/li&gt; &lt;li&gt;% {next-folio-num}: 次のフォリオの番号 &lt; / li&gt; &lt;li&gt;% {projecttitle}: プロジェクト名 &lt;/li&gt; &lt;li&gt;% {projectpath}: プロジェクトのパス &lt;/li&gt; &lt;li&gt;% {projectfilename}: ファイル名 &lt;/li&gt; &lt;li &gt;% {saveddate}: ファイル保存日 &lt;/li&gt; &lt;li&gt;% {savedtime}: ファイル保存時刻 &lt;/li&gt; &lt;li&gt;% {savedfilename}: 保存されたファイルの名前 &lt;/li&gt; &lt;li&gt;% {savedfilepath}: 保存されたファイルのパス &lt;/li&gt; &lt;/ul&gt;</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="455"/>
+        <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
+        <translation>表題欄の各セルは任意のラベルを付けて値を表示します。どちらも複数の言語に翻訳できます。&lt;br/&gt;現在編集しているのは表題欄&lt;em&gt;テンプレート&lt;/em&gt;なので、生データを直接入力しないでください: その代わり %{変数名} のように変数を挿入すると、フォリオでは適切な値に置き換えられます。</translation>
     </message>
 </context>
 <context>
@@ -12637,14 +12657,14 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <location filename="../sources/titleblock/templatedeleter.cpp" line="58"/>
         <source>Supprimer le modèle de cartouche ?</source>
         <comment>message box title</comment>
-        <translation>Delete the title block template?</translation>
+        <translation>この表題欄テンプレートを削除しますか?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatedeleter.cpp" line="60"/>
         <source>Êtes-vous sûr  de vouloir supprimer ce modèle de cartouche (%1) ?
 </source>
         <comment>message box content</comment>
-        <translation>Do you really want to delete this title block template (%1) ?
+        <translation>この表題欄テンプレート (%1) を本当に削除しますか?
 </translation>
     </message>
 </context>
@@ -12654,13 +12674,13 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <location filename="../sources/titleblock/templatelocationchooser.cpp" line="96"/>
         <source>Collection parente</source>
         <comment>used in save as form</comment>
-        <translation>Parent collection</translation>
+        <translation>親のコレクション</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelocationchooser.cpp" line="97"/>
         <source>Modèle existant</source>
         <comment>used in save as form</comment>
-        <translation>Existing template</translation>
+        <translation>既存のテンプレート</translation>
     </message>
 </context>
 <context>
@@ -12669,13 +12689,13 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <location filename="../sources/titleblock/templatelocationsaver.cpp" line="79"/>
         <source>ou nouveau nom</source>
         <comment>used in save as form</comment>
-        <translation>or new name</translation>
+        <translation>または新しい名前</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelocationsaver.cpp" line="91"/>
         <source>Nouveau modèle (entrez son nom)</source>
         <comment>combox box entry</comment>
-        <translation>New template (enter its name)</translation>
+        <translation>新規テンプレート (名前を入力してください)</translation>
     </message>
 </context>
 <context>
@@ -12683,125 +12703,125 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="77"/>
         <source>Gestionnaire de logos</source>
-        <translation>Logo manager</translation>
+        <translation>ロゴの管理</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="80"/>
         <source>Logos embarqués dans ce modèle :</source>
-        <translation>Logos embedded within this template:</translation>
+        <translation>このテンプレートに埋込まれたロゴ :</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="89"/>
         <source>Ajouter un logo</source>
-        <translation>Add a logo</translation>
+        <translation>ロゴを追加</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="90"/>
         <source>Exporter ce logo</source>
-        <translation>Export this logo</translation>
+        <translation>ロゴをエクスポート</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="91"/>
         <source>Supprimer ce logo</source>
-        <translation>Remove this logo</translation>
+        <translation>このロゴを削除</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="92"/>
         <source>Propriétés</source>
-        <translation>Properties</translation>
+        <translation>属性</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="93"/>
         <source>Nom :</source>
-        <translation>Name:</translation>
+        <translation>名前 :</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="95"/>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="197"/>
         <source>Renommer</source>
-        <translation>Rename</translation>
+        <translation>改名</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="96"/>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="256"/>
         <source>Type :</source>
-        <translation>Type:</translation>
+        <translation>種類 :</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="190"/>
         <source>Logo déjà existant</source>
-        <translation>Logo already existing</translation>
+        <translation>ロゴが既に存在します</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="196"/>
         <source>Remplacer</source>
-        <translation>Replace</translation>
+        <translation>置換</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="216"/>
         <source>Il existe déjà un logo portant le nom &quot;%1&quot; au sein de ce modèle de cartouche. Voulez-vous le remplacer ou préférez-vous spécifier un autre nom pour ce nouveau logo ?</source>
-        <translation>A logo named &quot;%1&quot; already exists. Do you wish to replace it or do you prefer specifying another name for the new logo?</translation>
+        <translation>この表題欄テンプレートには名前が &quot;%1&quot; のロゴが既に存在します。新規ロゴに置き換える、または、別の名前を指定しますか?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="252"/>
         <source>Type : %1</source>
-        <translation>Type: %1</translation>
+        <translation>種類 : %1</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="269"/>
         <source>Choisir une image / un logo</source>
-        <translation>Choose a picture /a logo</translation>
+        <translation>画像 / ロゴを選ぶ</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="271"/>
         <source>Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Tous les fichiers (*)</source>
-        <translation>Vector graphics (*.svg);;Bitmap graphics (*.png *.jpg *.jpeg *.gif *.xpm);;All files (*)</translation>
+        <translation>ベクトル・グラフィックス (*.svg);;ビットマップ・グラフィックス (*.png *.jpg *.jpeg *.gif *.xpm);;全てのファイル (*)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="278"/>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="310"/>
         <source>Erreur</source>
-        <translation>Error</translation>
+        <translation>エラー</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="278"/>
         <source>Impossible d&apos;ouvrir le fichier spécifié</source>
-        <translation>Unable to open the specified file</translation>
+        <translation>指定したファイルが開けません</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="302"/>
         <source>Choisir un fichier pour exporter ce logo</source>
-        <translation>Choose a file to export this logo</translation>
+        <translation>このロゴをエクスポートするファイルを選ぶ</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="304"/>
         <source>Tous les fichiers (*);;Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm)</source>
-        <translation>All files (*);;Vector graphics (*.svg);;Bitmap graphics (*.png *.jpg *.jpeg *.gif *.bmp *.xpm)</translation>
+        <translation>全てのファイル (*);;ベクトル・グラフィックス (*.svg);;ビットマップ・グラフィックス (*.png *.jpg *.jpeg *.gif *.bmp *.xpm)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="310"/>
         <source>Impossible d&apos;exporter vers le fichier spécifié</source>
-        <translation>Unable to export to the specified file</translation>
+        <translation>指定したファイルにエクスポートできません</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="337"/>
         <source>Renommer un logo</source>
-        <translation>Rename a logo</translation>
+        <translation>ロゴを改名</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="342"/>
         <source>Vous devez saisir un nouveau nom.</source>
-        <translation>You have to enter a new name.</translation>
+        <translation>新しい名前を入力する必要があります。</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="351"/>
         <source>Le nouveau nom ne peut pas être vide.</source>
-        <translation>The new name cannot be empty.</translation>
+        <translation>新しい名前は空にできません。</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="360"/>
         <source>Le nom saisi est déjà utilisé par un autre logo.</source>
-        <translation>The name you entered is already used by another logo.</translation>
+        <translation>入力された名前は既に他のロゴに使用されています。</translation>
     </message>
 </context>
 <context>
@@ -12810,112 +12830,112 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <location filename="../sources/titleblock/templateview.cpp" line="332"/>
         <source>Changer la largeur de la colonne</source>
         <comment>window title when changing a column with</comment>
-        <translation>Change the column width</translation>
+        <translation>列幅の変更</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="333"/>
         <source>Largeur :</source>
         <comment>text before the spinbox to change a column width</comment>
-        <translation>Width:</translation>
+        <translation>幅 :</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="358"/>
         <source>Changer la hauteur de la ligne</source>
         <comment>window title when changing a row height</comment>
-        <translation>Change the row height</translation>
+        <translation>行高さの変更</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="359"/>
         <source>Hauteur :</source>
         <comment>text before the spinbox to change a row height</comment>
-        <translation>Height:</translation>
+        <translation>高さ :</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="535"/>
         <source>Ajouter une colonne (avant)</source>
         <comment>context menu</comment>
-        <translation>Add a column (before)</translation>
+        <translation>列を追加 (前に)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="536"/>
         <source>Ajouter une ligne (avant)</source>
         <comment>context menu</comment>
-        <translation>Add a row (before)</translation>
+        <translation>行を追加 (前に)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="537"/>
         <source>Ajouter une colonne (après)</source>
         <comment>context menu</comment>
-        <translation>Add a column (after)</translation>
+        <translation>列を追加 (後に)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="538"/>
         <source>Ajouter une ligne (après)</source>
         <comment>context menu</comment>
-        <translation>Add a row (after)</translation>
+        <translation>行を追加 (後に)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="539"/>
         <source>Modifier les dimensions de cette colonne</source>
         <comment>context menu</comment>
-        <translation>Change this column dimension</translation>
+        <translation>この列の大きさを変更</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="540"/>
         <source>Modifier les dimensions de cette ligne</source>
         <comment>context menu</comment>
-        <translation>Change this row dimension</translation>
+        <translation>この行の大きさを変更</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="541"/>
         <source>Supprimer cette colonne</source>
         <comment>context menu</comment>
-        <translation>Delete this column</translation>
+        <translation>この列を削除</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="542"/>
         <source>Supprimer cette ligne</source>
         <comment>context menu</comment>
-        <translation>Delete this row</translation>
+        <translation>この行を削除</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="543"/>
         <source>Modifier la largeur de cet aperçu</source>
         <comment>context menu</comment>
-        <translation>Change this preview width</translation>
+        <translation>このプレビューの幅を変更</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="608"/>
         <source>[%1px]</source>
         <comment>content of the extra cell added when the total width of cells is less than the preview width</comment>
-        <translation>[%1px]</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="618"/>
         <source>[%1px]</source>
         <comment>content of the extra helper cell added when the total width of cells is greather than the preview width</comment>
-        <translation>[%1px]</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="671"/>
         <source>%1px</source>
         <comment>format displayed in rows helper cells</comment>
-        <translation>%1px</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="733"/>
         <source>%1px</source>
-        <translation>%1px</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="784"/>
         <source>Changer la largeur de l&apos;aperçu</source>
-        <translation>Change the width</translation>
+        <translation>プレビュー幅を変更</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="785"/>
         <source>Largeur de l&apos;aperçu :</source>
-        <translation>Width:</translation>
+        <translation>プレビュー幅 :</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="933"/>
@@ -12923,8 +12943,8 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
 Longueur maximale : %2px
 </source>
         <comment>tooltip showing the minimum and/or maximum width of the edited template</comment>
-        <translation>Minimum length : %1px
-Maximum length : %2px
+        <translation>最小長さ : %1px
+最大長さ : %2px
 </translation>
     </message>
     <message>
@@ -12932,14 +12952,14 @@ Maximum length : %2px
         <source>Longueur minimale : %1px
 </source>
         <comment>tooltip showing the minimum width of the edited template</comment>
-        <translation>Minimum length : %1px
+        <translation>最小長さ : %1px
 </translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="995"/>
         <source>Largeur totale pour cet aperçu : %1px</source>
         <comment>displayed at the top of the preview when editing a title block template</comment>
-        <translation>Total width: %1px</translation>
+        <translation>合計幅: %1px</translation>
     </message>
 </context>
 <context>
@@ -12948,13 +12968,13 @@ Maximum length : %2px
         <location filename="../sources/titleblock/templatescollection.cpp" line="138"/>
         <source>Cartouches du projet sans titre (id %1)</source>
         <comment>collection title when the parent project has an empty title -- %1 is the project internal id</comment>
-        <translation>Title blocks of untitled project (id %1)</translation>
+        <translation>無題のプロジェクト (id %1) の表題欄</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatescollection.cpp" line="146"/>
         <source>Cartouches du projet &quot;%1&quot;</source>
         <comment>collection title when the project has a suitable title -- %1 is the project title</comment>
-        <translation>Title blocks of project &quot;%1&quot;</translation>
+        <translation>プロジェクト %1 の表題欄</translation>
     </message>
 </context>
 <context>
@@ -12962,82 +12982,82 @@ Maximum length : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="6"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>フォーム</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="14"/>
         <source>Type :</source>
-        <translation>Type:</translation>
+        <translation>種類 :</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="26"/>
         <source>Représentation:</source>
-        <translation></translation>
+        <translation>表し方:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="34"/>
         <source>Positionner :</source>
-        <translation>Positioning :</translation>
+        <translation>位置 :</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="48"/>
         <source>XRef Vertical Offset:</source>
-        <translation>XRef Vertical Offset:</translation>
+        <translation>相互参照の縦のオフセット:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="55"/>
         <source>10px corresponds to 1 tile displacement</source>
-        <translation>10px corresponds to 1 tile displacement</translation>
+        <translation>10px はタイル 1 つの間隔に相当</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="58"/>
         <source>Set Vertical Offset for the Cross References. 10px corresponds to 1 tile displacement.</source>
-        <translation>Set Vertical Offset for the Cross References. 10px corresponds to 1 tile displacement.</translation>
+        <translation>相互参照のための縦のオフセットを設定します。10px はタイル 1 つの間隔に相当します。</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="61"/>
         <source>Default - Fit to XRef height</source>
-        <translation>Default - Fit to XRef height</translation>
+        <translation>既定値 - 相互参照の高さ</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="90"/>
         <source>XRef slave position</source>
-        <translation></translation>
+        <translation>相互参照の子の位置</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="106"/>
         <source>Affiche&amp;r en contacts</source>
-        <translation>&amp;View contacts</translation>
+        <translation>接点を表示 (&amp;V)</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="113"/>
         <source>Afficher en croix</source>
-        <translation>View cross</translation>
+        <translation>相互参照を表示</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="126"/>
         <source>Label des références croisées</source>
-        <translation>Label cross reference</translation>
+        <translation>相互参照のラベル</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="146"/>
         <source>Maitre</source>
-        <translation>Master</translation>
+        <translation>親</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="156"/>
         <source>%f-%l%c</source>
-        <translation>%f-%l%c</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="179"/>
         <source>Esclave</source>
-        <translation>Slave</translation>
+        <translation>子</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="189"/>
         <source>(%f-%l%c)</source>
-        <translation>(%f-%l%c)</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="198"/>
@@ -13048,88 +13068,89 @@ Maximum length : %2px
 %c : le numéro de colonne
 %M: Installation 
 %LM: Localisation </source>
-        <translation>Create your own text by helping you of the following variables :
-%f : the folio number 
-% F: folio label
-% l : the line number
-% c : column number
-% M: Plant 
-% LM: Location </translation>
+        <translation>下記の変数を用いて自分でテキストを作ることができます :
+%f : フォリオ番号 
+% F: フォリオ・ラベル
+% l : 行番号
+% c : 列番号
+% M: 設備 
+% LM: 場所 </translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="219"/>
         <source>Option d&apos;affichage en croix</source>
-        <translation>Option display cross</translation>
+        <translation>相互参照の表示オプション</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="225"/>
         <source>Afficher les contacts de puissance dans la croix</source>
-        <translation>Show the power contacts in the cross</translation>
+        <translation>相互参照に動力接点を表示</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="234"/>
         <source>Préfixe des contacts de puissance :</source>
-        <translation>Prefix of power contacts :</translation>
+        <translation>動力接点の接頭辞 :</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="241"/>
         <source>Préfixe des contacts temporisés :</source>
-        <translation>Prefix delayed contacts :</translation>
+        <translation>限時接点の接頭辞 :</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="254"/>
         <source>Préfixe des contacts inverseurs :</source>
-        <translation>Prefix changeover contacts :</translation>
+        <translation>切替接点 (c接点) の接頭辞 :</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="97"/>
         <source>Bobine</source>
-        <translation>Coil</translation>
+        <translation>コイル</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="98"/>
         <source>Organe de protection</source>
-        <translation>Organ of protection</translation>
+        <translation>保護機構</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="99"/>
         <source>Commutateur / bouton</source>
-        <translation>Switch / button</translation>
+        <translation>スイッチ / ボタン</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="101"/>
         <source>En bas de page</source>
-        <translation>Footer</translation>
+        <translation>フッタ</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="102"/>
         <source>Sous le label de l&apos;élément</source>
+        <translatorcomment>要素のラベルの下</translatorcomment>
         <translation>Under the label of the element</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="104"/>
         <source>Top</source>
-        <translation></translation>
+        <translation>上</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="105"/>
         <source>Bottom</source>
-        <translation></translation>
+        <translation>下</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="106"/>
         <source>Left</source>
-        <translation></translation>
+        <translation>左</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="107"/>
         <source>Rigth</source>
-        <translation></translation>
+        <translation>右</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="108"/>
         <source>Text alignment</source>
-        <translation></translation>
+        <translation>文字揃え</translation>
     </message>
 </context>
 <context>
@@ -13137,47 +13158,47 @@ Maximum length : %2px
     <message>
         <location filename="../sources/ui/diagramselection.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>フォーム</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.ui" line="22"/>
         <source>TextLabel</source>
-        <translation>TextLabel</translation>
+        <translation>テキストラベル</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="30"/>
         <source>Projet sans titre</source>
-        <translation>Untitled project</translation>
+        <translation>無題のプロジェクト</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="32"/>
         <source>Projet : </source>
-        <translation>project : </translation>
+        <translation>プロジェクト : </translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="60"/>
         <source>Sélection</source>
-        <translation>Choice</translation>
+        <translation>選択</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="60"/>
         <source>Nom</source>
-        <translation>Name</translation>
+        <translation>名前</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="69"/>
         <source>Folio sans titre</source>
-        <translation>Folio Untitled</translation>
+        <translation>無題のフォリオ</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="102"/>
         <source>Désélectionner tout</source>
-        <translation>Select none</translation>
+        <translation>全て解除</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="103"/>
         <source>Sélectionner tout</source>
-        <translation>Select all</translation>
+        <translation>全て選択</translation>
     </message>
 </context>
 <context>
@@ -13185,12 +13206,12 @@ Maximum length : %2px
     <message>
         <location filename="../sources/dataBase/projectdatabase.cpp" line="542"/>
         <source>Exporter la base de données interne du projet</source>
-        <translation>Export the internal project database</translation>
+        <translation>内部のプロジェクト・データベースをエクスポート</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/projectdatabase.cpp" line="550"/>
         <source>sans_nom</source>
-        <translation>untitled</translation>
+        <translation>無題</translation>
     </message>
 </context>
 <context>
@@ -13198,7 +13219,7 @@ Maximum length : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="349"/>
         <source>Text Color</source>
-        <translation>Text Color</translation>
+        <translation>テキストの色</translation>
     </message>
 </context>
 <context>
@@ -13206,7 +13227,7 @@ Maximum length : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="291"/>
         <source>Insert HTML entity</source>
-        <translation>Insert HTML entity</translation>
+        <translation>HTML 要素を挿入</translation>
     </message>
 </context>
 <context>
@@ -13214,105 +13235,105 @@ Maximum length : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="765"/>
         <source>Edit text</source>
-        <translation>Edit text</translation>
+        <translation>テキストの編集</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="788"/>
         <source>Rich Text</source>
-        <translation>Rich Text</translation>
+        <translation>リッチ・テキスト</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="789"/>
         <source>Source</source>
-        <translation>Source</translation>
+        <translation>ソース</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="795"/>
         <source>&amp;OK</source>
-        <translation>&amp;OK</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="797"/>
         <source>&amp;Cancel</source>
-        <translation>&amp;Cancel</translation>
+        <translation>キャンセル (&amp;C)</translation>
     </message>
 </context>
 <context>
     <name>qdesigner_internal::RichTextEditorToolBar</name>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="456"/>
-        <source>CTRL+B</source>
-        <translation>CTRL+B</translation>
-    </message>
-    <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="462"/>
-        <source>CTRL+I</source>
-        <translation>CTRL+I</translation>
-    </message>
-    <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="455"/>
         <source>Texte en gras</source>
-        <translation>Bold</translation>
+        <translation>太字</translation>
+    </message>
+    <message>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="456"/>
+        <source>CTRL+B</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="461"/>
         <source>Texte en italique</source>
-        <translation>Italic</translation>
+        <translation>斜体</translation>
+    </message>
+    <message>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="462"/>
+        <source>CTRL+I</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="467"/>
         <source>Texte souligé</source>
-        <translation>Underline</translation>
+        <translation>下線</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="468"/>
         <source>CTRL+U</source>
-        <translation>CTRL+U</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="480"/>
         <source>Left Align</source>
-        <translation>Left Align</translation>
+        <translation>左揃え</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="485"/>
         <source>Center</source>
-        <translation>Center</translation>
+        <translation>中央揃え</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="490"/>
         <source>Right Align</source>
-        <translation>Right Align</translation>
+        <translation>右揃え</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="495"/>
         <source>Justify</source>
-        <translation>Justify</translation>
+        <translation>両端揃え</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="507"/>
         <source>Superscript</source>
-        <translation>Superscript</translation>
+        <translation>上付き</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="513"/>
         <source>Subscript</source>
-        <translation>Subscript</translation>
+        <translation>下付き</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="522"/>
         <source>Insérer un lien</source>
-        <translation>Insert link</translation>
+        <translation>リンクを挿入</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="526"/>
         <source>Insert &amp;Image</source>
-        <translation>Insert &amp;Image</translation>
+        <translation>画像を挿入 (&amp;I)</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="542"/>
         <source>Simplify Rich Text</source>
-        <translation>Simplify Rich Text</translation>
+        <translation>リッチ・テキストを単純化</translation>
     </message>
 </context>
 <context>
@@ -13320,52 +13341,52 @@ Maximum length : %2px
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="14"/>
         <source>Rechercher/Remplacer avancé</source>
-        <translation>Search / replace advanced</translation>
+        <translation>高度な検索 / 置換</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="27"/>
         <source>par :</source>
-        <translation>by :</translation>
+        <translation>置換 :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="34"/>
         <source>Remplacer :</source>
-        <translation>Replace :</translation>
+        <translation>検索 :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="51"/>
         <source>Qui :</source>
-        <translation>Who :</translation>
+        <translation>対象 :</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="58"/>
         <source>Texte ou expression régulière</source>
-        <translation>Text or regular expression</translation>
+        <translation>テキストまたは正規表現</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="69"/>
         <source>Folio</source>
-        <translation>Folio</translation>
+        <translation>フォリオ</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="74"/>
         <source>Élément</source>
-        <translation>Element</translation>
+        <translation>要素</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="79"/>
         <source>Conducteur</source>
-        <translation>Conductor</translation>
+        <translation>導体</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="84"/>
         <source>Texte indépendant</source>
-        <translation>Independent text</translation>
+        <translation>独立テキスト</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="92"/>
         <source>Quoi :</source>
-        <translation>What :</translation>
+        <translation>項目 :</translation>
     </message>
 </context>
 </TS>

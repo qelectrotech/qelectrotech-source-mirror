@@ -50,3 +50,7 @@ QET gebruikt XML voor de elementen en schema's en omvat een schematische editor,
 [da]
 QElectroTech er et Qt5 program til at redigere elektriske diagrammer.
 Det bruger XML filer for symboler og diagrammer og inkluderer diagram, symbol og titelblok redigering.
+
+[ja]
+QElectroTech は電気回路図を作成する Qt5 アプリケーションです。
+QET は要素と回路図に XML 形式を利用し、回路図エディタ、要素エディタ、表題欄エディタを含みます。
