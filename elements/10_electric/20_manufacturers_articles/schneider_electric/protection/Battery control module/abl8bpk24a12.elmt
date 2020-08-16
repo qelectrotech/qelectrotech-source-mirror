@@ -1,0 +1,64 @@
+<definition width="120" type="element" version="0.80" orientation="dyyy" link_type="simple" height="60" hotspot_x="45" hotspot_y="31">
+    <uuid uuid="{ef831cf1-7dbf-445e-b168-f4db774fd3f3}"/>
+    <names>
+        <name lang="nl">Accu DC</name>
+        <name lang="fr">Pile 1 élément (court)</name>
+        <name lang="en">Battery one element (short)</name>
+        <name lang="cs">Akumulátor 1 prvek (krátký)</name>
+        <name lang="it">Batteria (un elemento corto)</name>
+        <name lang="be">Batterij een element (kort)</name>
+        <name lang="de">Batterie 1 Element</name>
+        <name lang="pl">Ogniwo elektrochemiczne</name>
+        <name lang="ar">بطارية خليّة واحدة (قصيرة)</name>
+        <name lang="el">Μπαταρία (1 στοιχείο, κοντό)</name>
+        <name lang="es">Bateria 1 elemento, terminales cortos</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="designation" show="1">ABL8BPK24A12</elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Schneider Electric</elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="description" show="1">Phaseo - module de batterie - 24Vcc - 75A - 7Ah - pour alimentation électrique</elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text text_from="ElementInfo" x="2" y="-26.5" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" frame="false" rotation="0" Halignment="AlignLeft" Valignment="AlignTop" z="1" text_width="-1" uuid="{3501094e-b75b-438f-9f9c-2798a812eea6}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text x="54" y="22" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="-" rotation="0"/>
+        <text x="4" y="22" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="-" rotation="0"/>
+        <text x="34" y="22" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="+" rotation="0"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="27" y="17" diameter="6"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="47" y="17" diameter="6"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-3" y="17" diameter="6"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="10" end1="none" length2="1.5" y2="0" y1="0" x2="3" end2="none" length1="1.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-3" end1="none" length2="1.5" y2="0" y1="0" x2="-10" end2="none" length1="1.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-3" end1="none" length2="1.5" y2="9" y1="-9" x2="-3" end2="none" length1="1.5"/>
+        <rect style="line-style:normal;line-weight:normal;filling:black;color:black" width="3" antialias="false" x="0" y="-6" ry="0" height="12" rx="0"/>
+        <text x="6" y="6.6666" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" text="-" rotation="0"/>
+        <text x="-11" y="6.6666" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" text="+" rotation="0"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" width="90" antialias="false" x="-30" y="-15" ry="0" height="30" rx="0"/>
+        <rect style="line-style:dotted;line-weight:normal;filling:none;color:black" width="115" antialias="false" x="-43" y="-28" ry="0" height="55" rx="0"/>
+        <text x="-40" y="-20" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="ABL8BPK24A12   24VDC 12Ah" rotation="0"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-23" y="17" diameter="6"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-20" end1="none" length2="1.5" y2="20" y1="15" x2="-20" end2="none" length1="1.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="0" end1="none" length2="1.5" y2="20" y1="15" x2="0" end2="none" length1="1.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="30" end1="none" length2="1.5" y2="20" y1="15" x2="30" end2="none" length1="1.5"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="50" end1="none" length2="1.5" y2="20" y1="15" x2="50" end2="none" length1="1.5"/>
+        <text x="-16" y="22" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="+" rotation="0"/>
+        <terminal name="" x="0" y="20" orientation="s" uuid="{6cfd9e0e-483f-4379-ae7c-c2f7f0bff757}"/>
+        <terminal name="" x="50" y="20" orientation="s" uuid="{e969fa8d-d08e-4aad-828f-10c16aadaf06}"/>
+        <terminal name="" x="-20" y="20" orientation="s" uuid="{f4143712-34b5-4bc1-a1b4-e83ab0bb2a5d}"/>
+        <terminal name="" x="-11" y="0" orientation="w" uuid="{a4d59aeb-8e98-44c3-83d3-afaac070b144}"/>
+        <terminal name="" x="11" y="0" orientation="e" uuid="{c694ad52-9d0f-454b-91c0-4a789e4b7b7d}"/>
+        <terminal name="" x="30" y="20" orientation="s" uuid="{4f4f3bbc-8428-42d3-a627-5a74b5ed1c2c}"/>
+    </description>
+</definition>
