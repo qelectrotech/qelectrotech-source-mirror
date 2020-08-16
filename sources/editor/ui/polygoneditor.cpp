@@ -24,11 +24,11 @@
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 
 /**
- * @brief PolygonEditor::PolygonEditor
- * @param editor
- * @param part
- * @param parent
- */
+	@brief PolygonEditor::PolygonEditor
+	@param editor
+	@param part
+	@param parent
+*/
 PolygonEditor::PolygonEditor(QETElementEditor *editor, PartPolygon *part, QWidget *parent) :
     ElementItemEditor(editor, parent),
     ui(new Ui::PolygonEditor),
@@ -44,8 +44,8 @@ PolygonEditor::PolygonEditor(QETElementEditor *editor, PartPolygon *part, QWidge
 }
 
 /**
- * @brief PolygonEditor::~PolygonEditor
- */
+	@brief PolygonEditor::~PolygonEditor
+*/
 PolygonEditor::~PolygonEditor() {
     delete ui;
 }
@@ -67,10 +67,10 @@ void PolygonEditor::disconnectChangeConnections()
 }
 
 /**
- * @brief PolygonEditor::setPart
- * @param new_part
- * @return
- */
+	@brief PolygonEditor::setPart
+	@param new_part
+	@return
+*/
 bool PolygonEditor::setPart(CustomElementPart *new_part)
 {
 	if (!new_part)
@@ -98,9 +98,9 @@ bool PolygonEditor::setPart(CustomElementPart *new_part)
 }
 
 /**
- * @brief PolygonEditor::currentPart
- * @return the curent edited part
- */
+	@brief PolygonEditor::currentPart
+	@return the curent edited part
+*/
 CustomElementPart *PolygonEditor::currentPart() const {
     return m_part;
 }
@@ -110,9 +110,9 @@ QList<CustomElementPart*> PolygonEditor::currentParts() const {
 }
 
 /**
- * @brief PolygonEditor::updateForm
- * Update the widget
- */
+	@brief PolygonEditor::updateForm
+	Update the widget
+*/
 void PolygonEditor::updateForm()
 {
     if (!m_part) {
@@ -135,10 +135,10 @@ void PolygonEditor::updateForm()
 }
 
 /**
- * @brief PolygonEditor::pointsFromTree
- * @return the point of polygon from the current value of the tree editor
- * if part coordinate.
- */
+	@brief PolygonEditor::pointsFromTree
+	@return the point of polygon from the current value of the tree editor
+	if part coordinate.
+*/
 QVector<QPointF> PolygonEditor::pointsFromTree()
 {
 	QVector<QPointF> points;
@@ -173,8 +173,8 @@ bool PolygonEditor::eventFilter(QObject *watched, QEvent *event)
 }
 
 /**
- * @brief PolygonEditor::on_m_close_polygon_cb_stateChanged
- */
+	@brief PolygonEditor::on_m_close_polygon_cb_stateChanged
+*/
 void PolygonEditor::on_m_close_polygon_cb_stateChanged(int arg1)
 {
 	Q_UNUSED(arg1);
@@ -192,9 +192,9 @@ void PolygonEditor::on_m_close_polygon_cb_stateChanged(int arg1)
 }
 
 /**
- * @brief PolygonEditor::on_m_points_list_tree_itemChanged
- * Update the polygon according to the current value of the tree editor
- */
+	@brief PolygonEditor::on_m_points_list_tree_itemChanged
+	Update the polygon according to the current value of the tree editor
+*/
 void PolygonEditor::on_m_points_list_tree_itemChanged(QTreeWidgetItem *item, int column)
 {
 	Q_UNUSED(item);
@@ -220,9 +220,9 @@ void PolygonEditor::on_m_points_list_tree_itemChanged(QTreeWidgetItem *item, int
 }
 
 /**
- * @brief PolygonEditor::on_m_points_list_tree_itemSelectionChanged
- * Used to change the color of the current selected point.
- */
+	@brief PolygonEditor::on_m_points_list_tree_itemSelectionChanged
+	Used to change the color of the current selected point.
+*/
 void PolygonEditor::on_m_points_list_tree_itemSelectionChanged()
 {
 	//Prevent when selection change but the widget ins't focused

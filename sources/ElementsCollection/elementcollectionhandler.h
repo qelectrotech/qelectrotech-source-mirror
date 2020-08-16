@@ -24,9 +24,9 @@
 class QWidget;
 
 /**
- * @brief The ECHStrategy class
- * Abstract class for manage copy of directory or element from a collection to another
- */
+	@brief The ECHStrategy class
+	Abstract class for manage copy of directory or element from a collection to another
+*/
 class ECHStrategy
 {
     public:
@@ -38,9 +38,9 @@ class ECHStrategy
 };
 
 /**
- * @brief The ECHSFileToFile class
- * Manage the copy of directory or element from a file system collection to another file system collection
- */
+	@brief The ECHSFileToFile class
+	Manage the copy of directory or element from a file system collection to another file system collection
+*/
 class ECHSFileToFile : public ECHStrategy
 {
     public:
@@ -53,9 +53,9 @@ class ECHSFileToFile : public ECHStrategy
 };
 
 /**
- * @brief The ECHSXmlToFile class
- * Manage the copy of a directory or element from an xml collection to a file.
- */
+	@brief The ECHSXmlToFile class
+	Manage the copy of a directory or element from an xml collection to a file.
+*/
 class ECHSXmlToFile : public ECHStrategy
 {
 	public:
@@ -68,10 +68,10 @@ class ECHSXmlToFile : public ECHStrategy
 };
 
 /**
- * @brief The ECHSToXml class
- * Manage the copy of a directory or element from a collection (no matter if the source is a file system collection or an xml collection)
- * to an xml collection
- */
+	@brief The ECHSToXml class
+	Manage the copy of a directory or element from a collection (no matter if the source is a file system collection or an xml collection)
+	to an xml collection
+*/
 class ECHSToXml : public ECHStrategy
 {
 	public:
@@ -80,10 +80,10 @@ class ECHSToXml : public ECHStrategy
 };
 
 /**
- * @brief The ElementCollectionHandler class
- * Provide several method to copy element or directory from a collection
- * to another collection.
- */
+	@brief The ElementCollectionHandler class
+	Provide several method to copy element or directory from a collection
+	to another collection.
+*/
 class ElementCollectionHandler
 {
     public:

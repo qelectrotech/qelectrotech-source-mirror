@@ -19,11 +19,11 @@
 #include <QWidget>
 
 /**
- * @brief QWidgetAnimation::QWidgetAnimation
- * @param widget : widget to animate
- * @param orientation : animate widget horizontally or vertically
- * @param duration : the duration of animation @see void QVariantAnimation::setDuration(int msecs)
- */
+	@brief QWidgetAnimation::QWidgetAnimation
+	@param widget : widget to animate
+	@param orientation : animate widget horizontally or vertically
+	@param duration : the duration of animation @see void QVariantAnimation::setDuration(int msecs)
+*/
 QWidgetAnimation::QWidgetAnimation(QWidget *widget, Qt::Orientation orientation, QWidgetAnimation::Behavior behavior, int duration) :
 	QPropertyAnimation(widget),
 	m_orientation(orientation),
@@ -51,10 +51,10 @@ QWidgetAnimation::QWidgetAnimation(QWidget *widget, Qt::Orientation orientation,
 }
 
 /**
- * @brief QWidgetAnimation::widgetToSubtract
- * Widget to subtract the size when the behavior is availableSpace
- * @param widgets
- */
+	@brief QWidgetAnimation::widgetToSubtract
+	Widget to subtract the size when the behavior is availableSpace
+	@param widgets
+*/
 void QWidgetAnimation::widgetToSubtract(QVector<QWidget *> widgets)
 {
 	m_widget_to_substract.clear();
@@ -62,9 +62,9 @@ void QWidgetAnimation::widgetToSubtract(QVector<QWidget *> widgets)
 }
 
 /**
- * @brief QWidgetAnimation::show
- * show the widget
- */
+	@brief QWidgetAnimation::show
+	show the widget
+*/
 void QWidgetAnimation::show()
 {
 	if (m_state == QWidgetAnimation::Showing)
@@ -113,9 +113,9 @@ void QWidgetAnimation::show()
 }
 
 /**
- * @brief QWidgetAnimation::hide
- * Hide the widget
- */
+	@brief QWidgetAnimation::hide
+	Hide the widget
+*/
 void QWidgetAnimation::hide()
 {
 	if (m_state == QWidgetAnimation::Hidding)
@@ -135,10 +135,10 @@ void QWidgetAnimation::hide()
 }
 
 /**
- * @brief QWidgetAnimation::setHidden
- * true hide, false show
- * @param hidden
- */
+	@brief QWidgetAnimation::setHidden
+	true hide, false show
+	@param hidden
+*/
 void QWidgetAnimation::setHidden(bool hidden)
 {
 	if (hidden)
@@ -148,10 +148,10 @@ void QWidgetAnimation::setHidden(bool hidden)
 }
 
 /**
- * @brief QWidgetAnimation::setLastShowSize
- * Force the last show size value to @size
- * @param size
- */
+	@brief QWidgetAnimation::setLastShowSize
+	Force the last show size value to @size
+	@param size
+*/
 void QWidgetAnimation::setLastShowSize(int size)
 {
 	if (m_orientation == Qt::Vertical) {

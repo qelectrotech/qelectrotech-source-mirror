@@ -28,7 +28,7 @@ class QAbstractItemModel;
 
 /**
  *This namespace contain some function to use xml with QET.
- */
+*/
 namespace QETXML
 {
 	QDomElement penToXml(QDomDocument &parent_document, const QPen& pen);

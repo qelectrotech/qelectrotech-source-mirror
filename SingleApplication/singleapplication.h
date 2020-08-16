@@ -36,10 +36,10 @@
 class SingleApplicationPrivate;
 
 /**
- * @brief The SingleApplication class handles multiple instances of the same
- * Application
- * @see QCoreApplication
- */
+	@brief The SingleApplication class handles multiple instances of the same
+	Application
+	@see QCoreApplication
+*/
 class SingleApplication : public QAPPLICATION_CLASS
 {
 	Q_OBJECT
@@ -48,15 +48,15 @@ class SingleApplication : public QAPPLICATION_CLASS
 	
 	public:
 	/**
-	 * @brief Mode of operation of SingleApplication.
-	 * Whether the block should be user-wide or system-wide and whether the
-	 * primary instance should be notified when a secondary instance had been
-	 * started.
-	 * @note Operating system can restrict the shared memory blocks to the same
-	 * user, in which case the User/System modes will have no effect and the
-	 * block will be user wide.
-	 * @enum
-	 */
+		@brief Mode of operation of SingleApplication.
+		Whether the block should be user-wide or system-wide and whether the
+		primary instance should be notified when a secondary instance had been
+		started.
+		@note Operating system can restrict the shared memory blocks to the same
+		user, in which case the User/System modes will have no effect and the
+		block will be user wide.
+		@enum
+	*/
 	enum Mode {
 		User                    = 1 << 0,
 		System                  = 1 << 1,
@@ -67,59 +67,59 @@ class SingleApplication : public QAPPLICATION_CLASS
 	Q_DECLARE_FLAGS(Options, Mode)
 	
 	/**
-	 * @brief Intitializes a SingleApplication instance with argc command line
-	 * arguments in argv
-	 * @arg {int &} argc - Number of arguments in argv
-	 * @arg {const char *[]} argv - Supplied command line arguments
-	 * @arg {bool} allowSecondary - Whether to start the instance as secondary
-	 * if there is already a primary instance.
-	 * @arg {Mode} mode - Whether for the SingleApplication block to be applied
-	 * User wide or System wide.
-	 * @arg {int} timeout - Timeout to wait in milliseconds.
-	 * @note argc and argv may be changed as Qt removes arguments that it
-	 * recognizes
-	 * @note Mode::SecondaryNotification only works if set on both the primary
-	 * instance and the secondary instance.
-	 * @note The timeout is just a hint for the maximum time of blocking
-	 * operations. It does not guarantee that the SingleApplication
-	 * initialisation will be completed in given time, though is a good hint.
-	 * Usually 4*timeout would be the worst case (fail) scenario.
-	 * @see See the corresponding QAPPLICATION_CLASS constructor for reference
-	 */
+		@brief Intitializes a SingleApplication instance with argc command line
+		arguments in argv
+		@arg {int &} argc - Number of arguments in argv
+		@arg {const char *[]} argv - Supplied command line arguments
+		@arg {bool} allowSecondary - Whether to start the instance as secondary
+		if there is already a primary instance.
+		@arg {Mode} mode - Whether for the SingleApplication block to be applied
+		User wide or System wide.
+		@arg {int} timeout - Timeout to wait in milliseconds.
+		@note argc and argv may be changed as Qt removes arguments that it
+		recognizes
+		@note Mode::SecondaryNotification only works if set on both the primary
+		instance and the secondary instance.
+		@note The timeout is just a hint for the maximum time of blocking
+		operations. It does not guarantee that the SingleApplication
+		initialisation will be completed in given time, though is a good hint.
+		Usually 4*timeout would be the worst case (fail) scenario.
+		@see See the corresponding QAPPLICATION_CLASS constructor for reference
+	*/
 	explicit SingleApplication( int &argc, char *argv[], bool allowSecondary = false, Options options = Mode::User, int timeout = 1000 );
 	~SingleApplication();
 	
 	/**
-	 * @brief Returns if the instance is the primary instance
-	 * @returns {bool}
-	 */
+		@brief Returns if the instance is the primary instance
+		@returns {bool}
+	*/
 	bool isPrimary();
 	
 	/**
-	 * @brief Returns if the instance is a secondary instance
-	 * @returns {bool}
-	 */
+		@brief Returns if the instance is a secondary instance
+		@returns {bool}
+	*/
 	bool isSecondary();
 	
 	/**
-	 * @brief Returns a unique identifier for the current instance
-	 * @returns {qint32}
-	 */
+		@brief Returns a unique identifier for the current instance
+		@returns {qint32}
+	*/
 	quint32 instanceId();
 	
 	/**
-	 * @brief Returns the process ID (PID) of the primary instance
-	 * @returns {qint64}
-	 */
+		@brief Returns the process ID (PID) of the primary instance
+		@returns {qint64}
+	*/
 	qint64 primaryPid();
 	
 	/**
-	 * @brief Sends a message to the primary instance. Returns true on success.
-	 * @param {int} timeout - Timeout for connecting
-	 * @returns {bool}
-	 * @note sendMessage() will return false if invoked from the primary
-	 * instance.
-	 */
+		@brief Sends a message to the primary instance. Returns true on success.
+		@param {int} timeout - Timeout for connecting
+		@returns {bool}
+		@note sendMessage() will return false if invoked from the primary
+		instance.
+	*/
 	bool sendMessage( QByteArray message, int timeout = 100 );
 	
 	Q_SIGNALS:

@@ -24,9 +24,9 @@
 class Element;
 
 /**
- * @brief The ChangeElementInformationCommand class
- * This class manage undo/redo to change the element information.
- */
+	@brief The ChangeElementInformationCommand class
+	This class manage undo/redo to change the element information.
+*/
 class ChangeElementInformationCommand : public QUndoCommand
 {
 	public:

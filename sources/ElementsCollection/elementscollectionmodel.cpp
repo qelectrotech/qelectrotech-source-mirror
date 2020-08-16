@@ -99,15 +99,15 @@ QStringList ElementsCollectionModel::mimeTypes() const
 }
 
 /**
- * @brief ElementsCollectionModel::canDropMimeData
- * Reimplemented from QStandardItemModel
- * @param data
- * @param action
- * @param row
- * @param column
- * @param parent
- * @return
- */
+	@brief ElementsCollectionModel::canDropMimeData
+	Reimplemented from QStandardItemModel
+	@param data
+	@param action
+	@param row
+	@param column
+	@param parent
+	@return
+*/
 bool ElementsCollectionModel::canDropMimeData(const QMimeData *data,
 					      Qt::DropAction action,
 					      int row,

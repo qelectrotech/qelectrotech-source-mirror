@@ -584,9 +584,9 @@ QString QETTitleBlockTemplateEditor::currentlyEditedTitle() const {
 }
 
 /**
- * @brief QETTitleBlockTemplateEditor::readSettings
- * Read settings
- */
+	@brief QETTitleBlockTemplateEditor::readSettings
+	Read settings
+*/
 void QETTitleBlockTemplateEditor::readSettings()
 {
 	QSettings settings;
@@ -601,9 +601,9 @@ void QETTitleBlockTemplateEditor::readSettings()
 }
 
 /**
- * @brief QETTitleBlockTemplateEditor::writeSettings
- * Write the settings
- */
+	@brief QETTitleBlockTemplateEditor::writeSettings
+	Write the settings
+*/
 void QETTitleBlockTemplateEditor::writeSettings()
 {
 	QSettings settings;
@@ -907,11 +907,11 @@ void QETTitleBlockTemplateEditor::quit() {
 }
 
 /**
- * @brief QETTitleBlockTemplateEditor::savePreviewWidthToApplicationSettings
- * Save the new preview width to application settings
- * @param former_preview_width : former_preview_width Unused, former preview width
- * @param new_preview_width : new_preview_width New preview width
- */
+	@brief QETTitleBlockTemplateEditor::savePreviewWidthToApplicationSettings
+	Save the new preview width to application settings
+	@param former_preview_width : former_preview_width Unused, former preview width
+	@param new_preview_width : new_preview_width New preview width
+*/
 void QETTitleBlockTemplateEditor::savePreviewWidthToApplicationSettings(int former_preview_width, int new_preview_width)
 {
 	Q_UNUSED(former_preview_width)

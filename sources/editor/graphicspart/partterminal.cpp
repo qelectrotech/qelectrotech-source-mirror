@@ -93,9 +93,9 @@ void PartTerminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, Q
 }
 
 /**
- * @brief PartTerminal::shape
- * @return the shape of this item
- */
+	@brief PartTerminal::shape
+	@return the shape of this item
+*/
 QPainterPath PartTerminal::shape() const {
 	QPainterPath shape;
 	shape.lineTo(d -> second_point);
@@ -107,9 +107,9 @@ QPainterPath PartTerminal::shape() const {
 }
 
 /**
- * @brief PartTerminal::boundingRect
- * @return the bounding rect of this item
- */
+	@brief PartTerminal::boundingRect
+	@return the bounding rect of this item
+*/
 QRectF PartTerminal::boundingRect() const {
 	QRectF br(QPointF(0, 0), d -> second_point);
 	br = br.normalized();

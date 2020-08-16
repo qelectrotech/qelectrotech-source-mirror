@@ -22,9 +22,9 @@
 #include <QStringList>
 
 /**
- * @brief The XRefProperties class
- * this class store properties used by XrefItem
- */
+	@brief The XRefProperties class
+	this class store properties used by XrefItem
+*/
 class XRefProperties : public PropertiesInterface
 {
 	public:

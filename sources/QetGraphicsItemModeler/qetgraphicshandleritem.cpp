@@ -21,9 +21,9 @@
 #include <utility>
 
 /**
- * @brief QetGraphicsHandlerItem::QetGraphicsHandlerItem
- * @param size, the size of the handler
- */
+	@brief QetGraphicsHandlerItem::QetGraphicsHandlerItem
+	@param size, the size of the handler
+*/
 QetGraphicsHandlerItem::QetGraphicsHandlerItem(qreal size) :
     m_size(size)
 {
@@ -34,17 +34,17 @@ QetGraphicsHandlerItem::QetGraphicsHandlerItem(qreal size) :
 }
 
 /**
- * @brief QetGraphicsHandlerItem::boundingRect
- * @return 
- */
+	@brief QetGraphicsHandlerItem::boundingRect
+	@return 
+*/
 QRectF QetGraphicsHandlerItem::boundingRect() const {
 	return m_br;
 }
 
 /**
- * @brief QetGraphicsHandlerItem::setColor
- * @param color, set the color of the handler
- */
+	@brief QetGraphicsHandlerItem::setColor
+	@param color, set the color of the handler
+*/
 void QetGraphicsHandlerItem::setColor(QColor color)
 {
 	m_color = std::move(color);
@@ -52,11 +52,11 @@ void QetGraphicsHandlerItem::setColor(QColor color)
 }
 
 /**
- * @brief QetGraphicsHandlerItem::paint
- * @param painter
- * @param option
- * @param widget
- */
+	@brief QetGraphicsHandlerItem::paint
+	@param painter
+	@param option
+	@param widget
+*/
 void QetGraphicsHandlerItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
 	Q_UNUSED(option)
@@ -73,10 +73,10 @@ void QetGraphicsHandlerItem::paint(QPainter *painter, const QStyleOptionGraphics
 }
 
 /**
- * @brief QetGraphicsHandlerItem::handlerForPoint
- * @param points
- * @return A list of handler with pos at point
- */
+	@brief QetGraphicsHandlerItem::handlerForPoint
+	@param points
+	@return A list of handler with pos at point
+*/
 QVector<QetGraphicsHandlerItem *> QetGraphicsHandlerItem::handlerForPoint(const QVector<QPointF> &points, int size)
 {
     QVector <QetGraphicsHandlerItem *> list_;

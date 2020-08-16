@@ -24,12 +24,12 @@
 
 
 /**
- * @brief DiagramEventAddElement::DiagramEventAddElement
- * Defaut constructor
- * @param location :location of diagram
- * @param diagram : diagram owner of this event
- * @param pos : first pos of item ( optional, by defaut QPointF(0,0) )
- */
+	@brief DiagramEventAddElement::DiagramEventAddElement
+	Defaut constructor
+	@param location :location of diagram
+	@param diagram : diagram owner of this event
+	@param pos : first pos of item ( optional, by defaut QPointF(0,0) )
+*/
 DiagramEventAddElement::DiagramEventAddElement(ElementsLocation &location, Diagram *diagram, QPointF pos) :
 	DiagramEventInterface(diagram),
 	m_location(location),
@@ -53,10 +53,10 @@ DiagramEventAddElement::DiagramEventAddElement(ElementsLocation &location, Diagr
 }
 
 /**
- * @brief DiagramEventAddElement::~DiagramEventAddElement
- * Destructor
- * Enable context menu for each view of diagram
- */
+	@brief DiagramEventAddElement::~DiagramEventAddElement
+	Destructor
+	Enable context menu for each view of diagram
+*/
 DiagramEventAddElement::~DiagramEventAddElement()
 {
 	if (m_element)
@@ -69,11 +69,11 @@ DiagramEventAddElement::~DiagramEventAddElement()
 }
 
 /**
- * @brief DiagramEventAddElement::mouseMoveEvent
- * Move the element to new pos of mouse
- * the event is always accepted
- * @param event
- */
+	@brief DiagramEventAddElement::mouseMoveEvent
+	Move the element to new pos of mouse
+	the event is always accepted
+	@param event
+*/
 void DiagramEventAddElement::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (m_element) {
@@ -83,22 +83,22 @@ void DiagramEventAddElement::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief DiagramEventAddElement::mousePressEvent
- * Do nothing, but return true for not transit the event to other thing in diagram.
- * the event is always accepted
- * @param event
- */
+	@brief DiagramEventAddElement::mousePressEvent
+	Do nothing, but return true for not transit the event to other thing in diagram.
+	the event is always accepted
+	@param event
+*/
 void DiagramEventAddElement::mousePressEvent(QGraphicsSceneMouseEvent *event) {
 	event->setAccepted(true);
 }
 
 /**
- * @brief DiagramEventAddElement::mouseReleaseEvent
- * Right button finish this event (isRunning = false) and emit finish.
- * Left button add an element to diagram
- * the event is always accepted
- * @param event
- */
+	@brief DiagramEventAddElement::mouseReleaseEvent
+	Right button finish this event (isRunning = false) and emit finish.
+	Left button add an element to diagram
+	the event is always accepted
+	@param event
+*/
 void DiagramEventAddElement::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (m_element)
@@ -121,11 +121,11 @@ void DiagramEventAddElement::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief DiagramEventAddElement::mouseDoubleClickEvent
- * If mouse left double clic, finish this event (isRunning = false) and emit finish
- * the event is always accepted
- * @param event
- */
+	@brief DiagramEventAddElement::mouseDoubleClickEvent
+	If mouse left double clic, finish this event (isRunning = false) and emit finish
+	the event is always accepted
+	@param event
+*/
 void DiagramEventAddElement::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (m_element && (event -> button() == Qt::LeftButton))
@@ -141,11 +141,11 @@ void DiagramEventAddElement::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *eve
 }
 
 /**
- * @brief DiagramEventAddElement::keyPressEvent
- * Press space key rotate the element to 90° (return true)
- * else  call DiagramEventInterface::keyPressEvent(event), and return the value.
- * @param event
- */
+	@brief DiagramEventAddElement::keyPressEvent
+	Press space key rotate the element to 90° (return true)
+	else  call DiagramEventInterface::keyPressEvent(event), and return the value.
+	@param event
+*/
 void DiagramEventAddElement::keyPressEvent(QKeyEvent *event)
 {
 	if (m_element && event->key() == Qt::Key_Space)
@@ -159,9 +159,9 @@ void DiagramEventAddElement::keyPressEvent(QKeyEvent *event)
 }
 
 /**
- * @brief DiagramEventAddElement::init
- * Init this event.
- */
+	@brief DiagramEventAddElement::init
+	Init this event.
+*/
 void DiagramEventAddElement::init()
 {
 	foreach(QGraphicsView *view, m_diagram->views())
@@ -169,9 +169,9 @@ void DiagramEventAddElement::init()
 }
 
 /**
- * @brief DiagramEventAddElement::buildElement
- * Build the element, if the element is build successfully, we return true, otherwise false
- */
+	@brief DiagramEventAddElement::buildElement
+	Build the element, if the element is build successfully, we return true, otherwise false
+*/
 bool DiagramEventAddElement::buildElement()
 {
 	ElementsLocation import_loc = m_diagram->project()->importElement(m_location);
@@ -196,10 +196,10 @@ bool DiagramEventAddElement::buildElement()
 }
 
 /**
- * @brief DiagramEventAddElement::addElement
- * Add an element at the current pos en current rotation,
- * if project autoconductor option is enable, and the element can be wired, we do it.
- */
+	@brief DiagramEventAddElement::addElement
+	Add an element at the current pos en current rotation,
+	if project autoconductor option is enable, and the element can be wired, we do it.
+*/
 void DiagramEventAddElement::addElement()
 {
 	int state;

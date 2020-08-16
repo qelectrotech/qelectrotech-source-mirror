@@ -27,16 +27,16 @@
 class QAbstractItemModel;
 
 /**
- * @brief The QetGraphicsHeaderItem class
- * The header have a few parameters to edit her visual aspect.
- * Margins, to edit the margin between the cell and the text.
- * Text font.
- * Text alignment in the cell
- * These three parameters are not settable directly with the header but trough the model to be displayed by the header.
- * Header search these parameters only in the section 0 for cell of header.
- * By consequence, set data in other section is useless also these parameter can't be set individually for each cell.
- * The margins is stored in the model in index Qt::UserRole+1 and for value a QString. See QETUtils::marginsFromString and  QETUtils::marginsToString
- */
+	@brief The QetGraphicsHeaderItem class
+	The header have a few parameters to edit her visual aspect.
+	Margins, to edit the margin between the cell and the text.
+	Text font.
+	Text alignment in the cell
+	These three parameters are not settable directly with the header but trough the model to be displayed by the header.
+	Header search these parameters only in the section 0 for cell of header.
+	By consequence, set data in other section is useless also these parameter can't be set individually for each cell.
+	The margins is stored in the model in index Qt::UserRole+1 and for value a QString. See QETUtils::marginsFromString and  QETUtils::marginsToString
+*/
 class QetGraphicsHeaderItem : public QGraphicsObject
 {
 	Q_OBJECT

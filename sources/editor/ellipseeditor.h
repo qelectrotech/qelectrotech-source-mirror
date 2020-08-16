@@ -62,10 +62,10 @@ class EllipseEditor : public ElementItemEditor
 	
 	private:
 		void activeConnections(bool);
-		/*!
-		 * \brief setUpChangeConnections
-		 * Setup the connection from the ellipse(s) to the widget, to update it when the ellipse(s) are changed (moved ...)
-		 */
+		/**
+			@brief setUpChangeConnections
+			Setup the connection from the ellipse(s) to the widget, to update it when the ellipse(s) are changed (moved ...)
+		*/
 		void setUpChangeConnections();
 		void disconnectChangeConnections();
 };

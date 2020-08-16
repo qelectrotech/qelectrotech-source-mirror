@@ -25,9 +25,9 @@ class PartPolygon;
 class QGraphicsSceneMouseEvent;
 
 /**
- * @brief The ESEventAddPolygon class
- * This ESEvent manage creation of polygon in an ElementScene
- */
+	@brief The ESEventAddPolygon class
+	This ESEvent manage creation of polygon in an ElementScene
+*/
 class ESEventAddPolygon : public ESEventInterface
 {
 	public:

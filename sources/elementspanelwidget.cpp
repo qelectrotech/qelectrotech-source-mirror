@@ -215,7 +215,7 @@ void ElementsPanelWidget::deleteDiagram() {
 
 /**
 	Emet le signal requestForDiagramMoveUpTop avec le schema selectionne
-+ */
++*/
 void ElementsPanelWidget::moveDiagramUpTop() {
 	if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
 		emit(requestForDiagramMoveUpTop(selected_diagram));

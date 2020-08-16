@@ -523,13 +523,13 @@ void ScalePartsCommand::adjustText() {
 	}
 }
 /**
- * @brief ChangePropertiesCommand::ChangePropertiesCommand
- * Change the properties of the drawed element
- * @param scene: scene to belong the property
- * @param type: new type of element.
- * @param context: new info about type.
- * @param parent: parent undo
- */
+	@brief ChangePropertiesCommand::ChangePropertiesCommand
+	Change the properties of the drawed element
+	@param scene: scene to belong the property
+	@param type: new type of element.
+	@param context: new info about type.
+	@param parent: parent undo
+*/
 ChangePropertiesCommand::ChangePropertiesCommand(ElementScene *scene, const QString& type, const DiagramContext& info, const DiagramContext& elmt_info, QUndoCommand *parent) :
 	ElementEditionCommand(scene, nullptr, parent)
 {

@@ -125,7 +125,7 @@ bool ElementsLocation::operator!=(const ElementsLocation &other) const {
 	this method don't return the extension name.
 	For exemple if this location represent an element they return myElement.
 	@see fileName()
- */
+*/
 QString ElementsLocation::baseName() const {
 	QRegExp regexp("^.*([^/]+)\\.elmt$");
 	if (regexp.exactMatch(m_collection_path)) {

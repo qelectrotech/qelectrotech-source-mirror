@@ -27,9 +27,9 @@ class ProjectDBModelPropertiesWidget;
 }
 
 /**
- * @brief The projectDBModelPropertiesWidget class
- * This class is an editor for a NomenclatureModel
- */
+	@brief The projectDBModelPropertiesWidget class
+	This class is an editor for a NomenclatureModel
+*/
 class ProjectDBModelPropertiesWidget : public PropertiesEditorWidget
 {
     Q_OBJECT

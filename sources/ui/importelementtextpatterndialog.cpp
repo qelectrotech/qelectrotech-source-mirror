@@ -30,16 +30,16 @@ ImportElementTextPatternDialog::~ImportElementTextPatternDialog()
 }
 
 /**
- * @brief ImportElementTextPatternDialog::getItem
- * For all arguments see QInputDialog::getItem, except for erase, they store the state of the check box.
- * @param parent
- * @param title
- * @param label
- * @param items
- * @param ok
- * @param erase
- * @return 
- */
+	@brief ImportElementTextPatternDialog::getItem
+	For all arguments see QInputDialog::getItem, except for erase, they store the state of the check box.
+	@param parent
+	@param title
+	@param label
+	@param items
+	@param ok
+	@param erase
+	@return 
+*/
 QString ImportElementTextPatternDialog::getItem(QWidget *parent, const QString &title, const QString &label, const QStringList &items, bool *ok, bool *erase)
 {
 	QString text(items.value(0));

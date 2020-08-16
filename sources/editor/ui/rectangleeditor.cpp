@@ -24,11 +24,11 @@
 #include "qeticons.h"
 
 /**
- * @brief RectangleEditor::RectangleEditor
- * @param editor
- * @param rect
- * @param parent
- */
+	@brief RectangleEditor::RectangleEditor
+	@param editor
+	@param rect
+	@param parent
+*/
 RectangleEditor::RectangleEditor(QETElementEditor *editor, PartRectangle *rect, QWidget *parent) :
 	ElementItemEditor(editor, parent),
 	m_part(rect),
@@ -40,8 +40,8 @@ RectangleEditor::RectangleEditor(QETElementEditor *editor, PartRectangle *rect, 
 }
 
 /**
- * @brief RectangleEditor::~RectangleEditor
- */
+	@brief RectangleEditor::~RectangleEditor
+*/
 RectangleEditor::~RectangleEditor() {
 	delete ui;
 }
@@ -64,10 +64,10 @@ void RectangleEditor::disconnectChangeConnections()
 }
 
 /**
- * @brief RectangleEditor::setPart
- * @param part
- * @return 
- */
+	@brief RectangleEditor::setPart
+	@param part
+	@return 
+*/
 bool RectangleEditor::setPart(CustomElementPart *part)
 {
 	if (!part)
@@ -109,9 +109,9 @@ bool RectangleEditor::setParts(QList <CustomElementPart *> parts)
 }
 
 /**
- * @brief RectangleEditor::currentPart
- * @return 
- */
+	@brief RectangleEditor::currentPart
+	@return 
+*/
 CustomElementPart *RectangleEditor::currentPart() const {
 	return m_part;
 }
@@ -121,16 +121,16 @@ QList<CustomElementPart*> RectangleEditor::currentParts() const {
 }
 
 /**
- * @brief RectangleEditor::topLeft
- * @return The edited topLeft already mapped to part coordinate
- */
+	@brief RectangleEditor::topLeft
+	@return The edited topLeft already mapped to part coordinate
+*/
 QPointF RectangleEditor::editedTopLeft() const {
 	return m_part->mapFromScene(ui->m_x_sb->value(), ui->m_y_sb->value());
 }
 
 /**
- * @brief RectangleEditor::updateForm
- */
+	@brief RectangleEditor::updateForm
+*/
 void RectangleEditor::updateForm()
 {
 	if (!m_part) {
@@ -153,10 +153,10 @@ void RectangleEditor::updateForm()
 }
 
 /**
- * @brief RectangleEditor::editingFinished
- * Slot called when a editor widget is finish to be edited
- * Update the geometry of the rectangle according to value of editing widget.
- */
+	@brief RectangleEditor::editingFinished
+	Slot called when a editor widget is finish to be edited
+	Update the geometry of the rectangle according to value of editing widget.
+*/
 void RectangleEditor::editingFinished()
 {
 	if (m_locked) {
@@ -340,11 +340,11 @@ void RectangleEditor::yRadiusChanged()
 
 
 /**
- * @brief RectangleEditor::activeConnections
- * Enable/disable connection between editor widget and slot editingFinished
- * True == enable | false == disable
- * @param active
- */
+	@brief RectangleEditor::activeConnections
+	Enable/disable connection between editor widget and slot editingFinished
+	True == enable | false == disable
+	@param active
+*/
 void RectangleEditor::activeConnections(bool active)
 {
 	if (active)

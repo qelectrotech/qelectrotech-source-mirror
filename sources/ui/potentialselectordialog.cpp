@@ -30,9 +30,9 @@
 //### BEGIN PRIVATE CLASS ###//
 
 /**
- * @brief The NewConductorPotentialSelector class
- * Use for get the conductor propertie when two potentials is linked by a conductor
- */
+	@brief The NewConductorPotentialSelector class
+	Use for get the conductor propertie when two potentials is linked by a conductor
+*/
 class NewConductorPotentialSelector : public AbstractPotentialSelector
 {
 	public:
@@ -60,12 +60,12 @@ class NewConductorPotentialSelector : public AbstractPotentialSelector
 		bool isValid() const override {return m_is_valid;}
 
 		/**
-		 * @brief getPotential
-		 * Get the conductor propertie of the potential at terminal, and the number of wire in this potential.
-		 * @param terminal
-		 * @param properties
-		 * @param number
-		 */
+			@brief getPotential
+			Get the conductor propertie of the potential at terminal, and the number of wire in this potential.
+			@param terminal
+			@param properties
+			@param number
+		*/
 		void getPotential(Terminal *terminal, autonum::sequentialNumbers &seq_num , int &number, QList<ConductorProperties> &properties_list, QList<Conductor*> &c_list)
 		{
 			Conductor *conductor_in_potential = nullptr;
@@ -117,9 +117,9 @@ class NewConductorPotentialSelector : public AbstractPotentialSelector
 };
 
 /**
- * @brief The LinkReportPotentialSelector class
- * Use for get the conductor propertie when two potentials is linked with a folio report
- */
+	@brief The LinkReportPotentialSelector class
+	Use for get the conductor propertie when two potentials is linked with a folio report
+*/
 class LinkReportPotentialSelector : public AbstractPotentialSelector
 {
 	public:
@@ -215,12 +215,12 @@ ConductorProperties PotentialSelectorDialog::chosenProperties(QList<ConductorPro
 }
 
 /**
- * @brief PotentialSelectorDialog::PotentialSelectorDialog
- * Constructor when we link two potentiels together, with a conductor
- * @param conductor : the new conductor who connect to existing potential
- * @param parent_undo : undo parent to use.
- * @param parent : parent widget.
- */
+	@brief PotentialSelectorDialog::PotentialSelectorDialog
+	Constructor when we link two potentiels together, with a conductor
+	@param conductor : the new conductor who connect to existing potential
+	@param parent_undo : undo parent to use.
+	@param parent : parent widget.
+*/
 PotentialSelectorDialog::PotentialSelectorDialog(Conductor *conductor, QUndoCommand *parent_undo, QWidget *parent) :
 	QDialog(parent),
 	ui(new Ui::PotentialSelectorDialog),
@@ -234,12 +234,12 @@ PotentialSelectorDialog::PotentialSelectorDialog(Conductor *conductor, QUndoComm
 }
 
 /**
- * @brief PotentialSelectorDialog::PotentialSelectorDialog
- * Constructor when we link two potentiels together, with a folio report.
- * @param report : one of the report used to link the potentials (report must be linked to another report)
- * @param parent_undo : undo parent to use
- * @param parent : parent widget
- */
+	@brief PotentialSelectorDialog::PotentialSelectorDialog
+	Constructor when we link two potentiels together, with a folio report.
+	@param report : one of the report used to link the potentials (report must be linked to another report)
+	@param parent_undo : undo parent to use
+	@param parent : parent widget
+*/
 PotentialSelectorDialog::PotentialSelectorDialog(Element *report, QUndoCommand *parent_undo, QWidget *parent) :
 	QDialog(parent),
 	ui(new Ui::PotentialSelectorDialog),
@@ -259,9 +259,9 @@ PotentialSelectorDialog::~PotentialSelectorDialog()
 }
 
 /**
- * @brief PotentialSelectorDialog::buildWidget
- * Build the dialog
- */
+	@brief PotentialSelectorDialog::buildWidget
+	Build the dialog
+*/
 void PotentialSelectorDialog::buildWidget()
 {
 	QString text1(tr("%n conducteurs composent le potentiel suivant :", "", m_potential_selector->m_conductor_number_1));
@@ -336,9 +336,9 @@ void PotentialSelectorDialog::buildWidget()
 }
 
 /**
- * @brief PotentialSelectorDialog::on_buttonBox_accepted
- * Action when user click on OK button
- */
+	@brief PotentialSelectorDialog::on_buttonBox_accepted
+	Action when user click on OK button
+*/
 void PotentialSelectorDialog::on_buttonBox_accepted()
 {
 	if (!m_potential_selector->isValid())

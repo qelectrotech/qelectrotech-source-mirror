@@ -38,10 +38,10 @@
 #include <QTimer>
 
 /**
- * @brief ElementsCollectionWidget::ElementsCollectionWidget
- * Default constructor.
- * @param parent : parent widget of this widget.
- */
+	@brief ElementsCollectionWidget::ElementsCollectionWidget
+	Default constructor.
+	@param parent : parent widget of this widget.
+*/
 ElementsCollectionWidget::ElementsCollectionWidget(QWidget *parent):
 	QWidget(parent),
 	m_model(nullptr)
@@ -66,9 +66,9 @@ ElementsCollectionWidget::ElementsCollectionWidget(QWidget *parent):
 }
 
 /**
- * @brief ElementsCollectionWidget::expandFirstItems
- * Expand each first item in the tree view
- */
+	@brief ElementsCollectionWidget::expandFirstItems
+	Expand each first item in the tree view
+*/
 void ElementsCollectionWidget::expandFirstItems()
 {
 	if (!m_model)
@@ -79,10 +79,10 @@ void ElementsCollectionWidget::expandFirstItems()
 }
 
 /**
- * @brief ElementsCollectionWidget::addProject
- * Add @project to be displayed
- * @param project
- */
+	@brief ElementsCollectionWidget::addProject
+	Add @project to be displayed
+	@param project
+*/
 void ElementsCollectionWidget::addProject(QETProject *project)
 {
 	if (m_model)
@@ -103,10 +103,10 @@ void ElementsCollectionWidget::removeProject(QETProject *project) {
 }
 
 /**
- * @brief ElementsCollectionWidget::highlightUnusedElement
- * highlight the unused element
- * @See ElementsCollectionModel::highlightUnusedElement()
- */
+	@brief ElementsCollectionWidget::highlightUnusedElement
+	highlight the unused element
+	@See ElementsCollectionModel::highlightUnusedElement()
+*/
 void ElementsCollectionWidget::highlightUnusedElement()
 {
 	if (m_model)
@@ -114,10 +114,10 @@ void ElementsCollectionWidget::highlightUnusedElement()
 }
 
 /**
- * @brief ElementsCollectionWidget::setCurrentLocation
- * Set the current item to be the item for @location
- * @param location
- */
+	@brief ElementsCollectionWidget::setCurrentLocation
+	Set the current item to be the item for @location
+	@param location
+*/
 void ElementsCollectionWidget::setCurrentLocation(const ElementsLocation &location)
 {
 	if (!location.exist())
@@ -151,9 +151,9 @@ void ElementsCollectionWidget::setUpAction()
 }
 
 /**
- * @brief ElementsCollectionWidget::setUpWidget
- * Setup this widget
- */
+	@brief ElementsCollectionWidget::setUpWidget
+	Setup this widget
+*/
 void ElementsCollectionWidget::setUpWidget()
 {
 		//Setup the main layout
@@ -188,9 +188,9 @@ void ElementsCollectionWidget::setUpWidget()
 }
 
 /**
- * @brief ElementsCollectionWidget::setUpConnection
- * Setup the connection used in this widget
- */
+	@brief ElementsCollectionWidget::setUpConnection
+	Setup the connection used in this widget
+*/
 void ElementsCollectionWidget::setUpConnection()
 {
 	connect(m_tree_view,      &QTreeView::customContextMenuRequested, this, &ElementsCollectionWidget::customContextMenu);
@@ -221,10 +221,10 @@ void ElementsCollectionWidget::setUpConnection()
 }
 
 /**
- * @brief ElementsCollectionWidget::customContextMenu
- * Display the context menu of this widget at @point
- * @param point
- */
+	@brief ElementsCollectionWidget::customContextMenu
+	Display the context menu of this widget at @point
+	@param point
+*/
 void ElementsCollectionWidget::customContextMenu(const QPoint &point)
 {
 	m_index_at_context_menu = m_tree_view->indexAt(point);
@@ -283,9 +283,9 @@ void ElementsCollectionWidget::customContextMenu(const QPoint &point)
 }
 
 /**
- * @brief ElementsCollectionWidget::openDir
- * Open the directory represented by the current selected item
- */
+	@brief ElementsCollectionWidget::openDir
+	Open the directory represented by the current selected item
+*/
 void ElementsCollectionWidget::openDir()
 {
 	ElementCollectionItem *eci = elementCollectionItemForIndex(m_index_at_context_menu);
@@ -309,9 +309,9 @@ void ElementsCollectionWidget::openDir()
 }
 
 /**
- * @brief ElementsCollectionWidget::editElement
- * Edit the element represented by the current selected item
- */
+	@brief ElementsCollectionWidget::editElement
+	Edit the element represented by the current selected item
+*/
 void ElementsCollectionWidget::editElement()
 {
 	ElementCollectionItem *eci = elementCollectionItemForIndex(m_index_at_context_menu);
@@ -328,9 +328,9 @@ void ElementsCollectionWidget::editElement()
 }
 
 /**
- * @brief ElementsCollectionWidget::deleteElement
- * Delete the element represented by the current selected item.
- */
+	@brief ElementsCollectionWidget::deleteElement
+	Delete the element represented by the current selected item.
+*/
 void ElementsCollectionWidget::deleteElement()
 {
 	ElementCollectionItem *eci = elementCollectionItemForIndex(m_index_at_context_menu);
@@ -360,9 +360,9 @@ void ElementsCollectionWidget::deleteElement()
 }
 
 /**
- * @brief ElementsCollectionWidget::deleteDirectory
- * Delete directory represented by the current selected item
- */
+	@brief ElementsCollectionWidget::deleteDirectory
+	Delete directory represented by the current selected item
+*/
 void ElementsCollectionWidget::deleteDirectory()
 {
 	ElementCollectionItem *eci = elementCollectionItemForIndex(m_index_at_context_menu);
@@ -394,9 +394,9 @@ void ElementsCollectionWidget::deleteDirectory()
 }
 
 /**
- * @brief ElementsCollectionWidget::editDirectory
- * Edit the directory represented by the current selected item
- */
+	@brief ElementsCollectionWidget::editDirectory
+	Edit the directory represented by the current selected item
+*/
 void ElementsCollectionWidget::editDirectory()
 {
 	ElementCollectionItem *eci = elementCollectionItemForIndex(m_index_at_context_menu);
@@ -414,9 +414,9 @@ void ElementsCollectionWidget::editDirectory()
 }
 
 /**
- * @brief ElementsCollectionWidget::newDirectory
- * Create a new directory
- */
+	@brief ElementsCollectionWidget::newDirectory
+	Create a new directory
+*/
 void ElementsCollectionWidget::newDirectory()
 {
 	ElementCollectionItem *eci = elementCollectionItemForIndex(m_index_at_context_menu);
@@ -433,9 +433,9 @@ void ElementsCollectionWidget::newDirectory()
 }
 
 /**
- * @brief ElementsCollectionWidget::newElement
- * Create a new element.
- */
+	@brief ElementsCollectionWidget::newElement
+	Create a new element.
+*/
 void ElementsCollectionWidget::newElement()
 {
 	ElementCollectionItem *eci = elementCollectionItemForIndex(m_index_at_context_menu);
@@ -459,9 +459,9 @@ void ElementsCollectionWidget::newElement()
 }
 
 /**
- * @brief ElementsCollectionWidget::showThisDir
- * Hide all directories except the pointed dir;
- */
+	@brief ElementsCollectionWidget::showThisDir
+	Hide all directories except the pointed dir;
+*/
 void ElementsCollectionWidget::showThisDir()
 {
 		//Disable the yellow background of the previous index
@@ -487,10 +487,10 @@ void ElementsCollectionWidget::showThisDir()
 }
 
 /**
- * @brief ElementsCollectionWidget::resetShowThisDir
- * reset show this dir, all collection are show.
- * If search field isn't empty, apply the search after show all collection
- */
+	@brief ElementsCollectionWidget::resetShowThisDir
+	reset show this dir, all collection are show.
+	If search field isn't empty, apply the search after show all collection
+*/
 void ElementsCollectionWidget::resetShowThisDir()
 {
 	if (m_showed_index.isValid())
@@ -505,9 +505,9 @@ void ElementsCollectionWidget::resetShowThisDir()
 }
 
 /**
- * @brief ElementsCollectionWidget::dirProperties
- * Open an informative dialog about the curent index
- */
+	@brief ElementsCollectionWidget::dirProperties
+	Open an informative dialog about the curent index
+*/
 void ElementsCollectionWidget::dirProperties()
 {
 	ElementCollectionItem *eci = elementCollectionItemForIndex(m_index_at_context_menu);
@@ -527,8 +527,8 @@ void ElementsCollectionWidget::dirProperties()
 }
 
 /**
- * @brief ElementsCollectionWidget::reload, the displayed collections.
- */
+	@brief ElementsCollectionWidget::reload, the displayed collections.
+*/
 void ElementsCollectionWidget::reload()
 {
 	m_progress_bar->show();
@@ -554,9 +554,9 @@ void ElementsCollectionWidget::reload()
 }
 
 /**
- * @brief ElementsCollectionWidget::loadingFinished
- * Process when collection finished to be loaded
- */
+	@brief ElementsCollectionWidget::loadingFinished
+	Process when collection finished to be loaded
+*/
 void ElementsCollectionWidget::loadingFinished()
 {
 	if (m_new_model)
@@ -579,11 +579,11 @@ void ElementsCollectionWidget::loadingFinished()
 }
 
 /**
- * @brief ElementsCollectionWidget::locationWasSaved
- * This method is connected with the signal savedToLocation of Element editor (see ElementsCollectionWidget::editElement())
- * Update or add the item represented by location to m_model
- * @param location
- */
+	@brief ElementsCollectionWidget::locationWasSaved
+	This method is connected with the signal savedToLocation of Element editor (see ElementsCollectionWidget::editElement())
+	Update or add the item represented by location to m_model
+	@param location
+*/
 void ElementsCollectionWidget::locationWasSaved(const ElementsLocation& location)
 {
 		//Because this method update an item in the model, location must
@@ -606,10 +606,10 @@ void ElementsCollectionWidget::locationWasSaved(const ElementsLocation& location
 }
 
 /**
- * @brief ElementsCollectionWidget::search
- * Search every item (directory or element) that match the text of m_search_field
- * and display it, other item who does not match @text is hidden
- */
+	@brief ElementsCollectionWidget::search
+	Search every item (directory or element) that match the text of m_search_field
+	and display it, other item who does not match @text is hidden
+*/
 void ElementsCollectionWidget::search()
 {
 	QString text = m_search_field->text();
@@ -655,10 +655,10 @@ void ElementsCollectionWidget::search()
 }
 
 /**
- * @brief ElementsCollectionWidget::hideCollection
- * Hide all collection displayed in this tree
- * @param hide- true = hide , false = visible
- */
+	@brief ElementsCollectionWidget::hideCollection
+	Hide all collection displayed in this tree
+	@param hide- true = hide , false = visible
+*/
 void ElementsCollectionWidget::hideCollection(bool hide)
 {
 	for (int i=0 ; i <m_model->rowCount() ; i++)
@@ -666,12 +666,12 @@ void ElementsCollectionWidget::hideCollection(bool hide)
 }
 
 /**
- * @brief ElementsCollectionWidget::hideItem
- * Hide the item @index. If @recursive is true, hide all subchilds of @index
- * @param hide- true = hide , false = visible
- * @param index- index to hide
- * @param recursive- true = apply to child , false = only for @index
- */
+	@brief ElementsCollectionWidget::hideItem
+	Hide the item @index. If @recursive is true, hide all subchilds of @index
+	@param hide- true = hide , false = visible
+	@param index- index to hide
+	@param recursive- true = apply to child , false = only for @index
+*/
 void ElementsCollectionWidget::hideItem(bool hide, const QModelIndex &index, bool recursive)
 {
 	m_tree_view->setRowHidden(index.row(), index.parent(), hide);
@@ -682,14 +682,14 @@ void ElementsCollectionWidget::hideItem(bool hide, const QModelIndex &index, boo
 }
 
 /**
- * @brief ElementsCollectionWidget::showAndExpandItem
- * Show the item @index and expand it.
- * If parent is true, ensure parents of @index is show and expanded
- * If child is true, ensure all childs of @index is show and expended
- * @param index- index to show
- * @param parent- Apply to parent
- * @param child- Apply to all childs
- */
+	@brief ElementsCollectionWidget::showAndExpandItem
+	Show the item @index and expand it.
+	If parent is true, ensure parents of @index is show and expanded
+	If child is true, ensure all childs of @index is show and expended
+	@param index- index to show
+	@param parent- Apply to parent
+	@param child- Apply to all childs
+*/
 void ElementsCollectionWidget::showAndExpandItem(const QModelIndex &index, bool parent, bool child)
 {
 	if (index.isValid()) {
@@ -702,10 +702,10 @@ void ElementsCollectionWidget::showAndExpandItem(const QModelIndex &index, bool 
 }
 
 /**
- * @brief ElementsCollectionWidget::elementCollectionItemForIndex
- * @param index
- * @return The internal pointer of index casted to ElementCollectionItem;
- */
+	@brief ElementsCollectionWidget::elementCollectionItemForIndex
+	@param index
+	@return The internal pointer of index casted to ElementCollectionItem;
+*/
 ElementCollectionItem *ElementsCollectionWidget::elementCollectionItemForIndex(const QModelIndex &index) {
 	if (!index.isValid())
 		return nullptr;

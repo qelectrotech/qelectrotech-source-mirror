@@ -26,9 +26,9 @@ class MarginsEditDialog;
 }
 
 /**
- * @brief The MarginsEditDialog class
- * A simple dialog to edit QMargins
- */
+	@brief The MarginsEditDialog class
+	A simple dialog to edit QMargins
+*/
 class MarginsEditDialog : public QDialog
 {
     Q_OBJECT

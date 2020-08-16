@@ -22,10 +22,10 @@
 #include "elementslocation.h"
 
 /**
- * @brief The FileElementCollectionItem class
- * This class specialise ElementCollectionItem for manage a collection in
- * a file system. They represente a directory or an element.
- */
+	@brief The FileElementCollectionItem class
+	This class specialise ElementCollectionItem for manage a collection in
+	a file system. They represente a directory or an element.
+*/
 class FileElementCollectionItem : public ElementCollectionItem
 {
 	public:

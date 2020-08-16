@@ -28,10 +28,10 @@ class QetGraphicsHandlerItem;
 class QAction;
 
 /**
- * @brief The QetShapeItem class
- * this class is used to draw a basic shape (line, rectangle, ellipse)
- * into a diagram, that can be saved to .qet file.
- */
+	@brief The QetShapeItem class
+	this class is used to draw a basic shape (line, rectangle, ellipse)
+	into a diagram, that can be saved to .qet file.
+*/
 class QetShapeItem : public QetGraphicsItem
 {
 	Q_OBJECT

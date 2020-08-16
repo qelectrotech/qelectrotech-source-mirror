@@ -36,10 +36,10 @@
 #include <QSettings>
 
 /**
- * @brief SearchAndReplaceWidget::SearchAndReplaceWidget
- * Constructor
- * @param parent
- */
+	@brief SearchAndReplaceWidget::SearchAndReplaceWidget
+	Constructor
+	@param parent
+*/
 SearchAndReplaceWidget::SearchAndReplaceWidget(QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::SearchAndReplaceWidget)
@@ -59,20 +59,20 @@ SearchAndReplaceWidget::SearchAndReplaceWidget(QWidget *parent) :
 }
 
 /**
- * @brief SearchAndReplaceWidget::~SearchAndReplaceWidget
- * Destructor
- */
+	@brief SearchAndReplaceWidget::~SearchAndReplaceWidget
+	Destructor
+*/
 SearchAndReplaceWidget::~SearchAndReplaceWidget() {
 	delete ui;
 }
 
 /**
- * @brief SearchAndReplaceWidget::event
- * Reimplemented to clear the the lines edit and hide
- * the advanced widgets, when this widget become hidden
- * @param event
- * @return 
- */
+	@brief SearchAndReplaceWidget::event
+	Reimplemented to clear the the lines edit and hide
+	the advanced widgets, when this widget become hidden
+	@param event
+	@return
+*/
 bool SearchAndReplaceWidget::event(QEvent *event)
 {
 	if (event->type() == QEvent::Hide)
@@ -95,10 +95,10 @@ bool SearchAndReplaceWidget::event(QEvent *event)
 }
 
 /**
- * @brief SearchAndReplaceWidget::clear
- * Clear the content of the search and replace line edit
- * Clear all tree items in the tree widget (except the category items).
- */
+	@brief SearchAndReplaceWidget::clear
+	Clear the content of the search and replace line edit
+	Clear all tree items in the tree widget (except the category items).
+*/
 void SearchAndReplaceWidget::clear()
 {
 	disconnect(ui->m_tree_widget, &QTreeWidget::itemChanged, this, &SearchAndReplaceWidget::itemChanged);
@@ -128,18 +128,18 @@ void SearchAndReplaceWidget::clear()
 }
 
 /**
- * @brief SearchAndReplaceWidget::setEditor
- * Set the diagram editor of this widget
- * @param editor
- */
+	@brief SearchAndReplaceWidget::setEditor
+	Set the diagram editor of this widget
+	@param editor
+*/
 void SearchAndReplaceWidget::setEditor(QETDiagramEditor *editor) {
 	m_editor = editor;
 }
 
 /**
- * @brief SearchAndReplaceWidget::setUpTreeItems
- * Set up the main tree widget items
- */
+	@brief SearchAndReplaceWidget::setUpTreeItems
+	Set up the main tree widget items
+*/
 void SearchAndReplaceWidget::setUpTreeItems()
 {
 	m_root_qtwi = new QTreeWidgetItem(ui->m_tree_widget);
@@ -207,10 +207,10 @@ void SearchAndReplaceWidget::setUpTreeItems()
 }
 
 /**
- * @brief SearchAndReplaceWidget::setHideAdvanced
- * Hide advanced widgets
- * @param hide
- */
+	@brief SearchAndReplaceWidget::setHideAdvanced
+	Hide advanced widgets
+	@param hide
+*/
 void SearchAndReplaceWidget::setHideAdvanced(bool hide)
 {
 	m_vertical_animation->setHidden(hide);
@@ -218,9 +218,9 @@ void SearchAndReplaceWidget::setHideAdvanced(bool hide)
 }
 
 /**
- * @brief SearchAndReplaceWidget::fillItemsList
- * Fill the tree
- */
+	@brief SearchAndReplaceWidget::fillItemsList
+	Fill the tree
+*/
 void SearchAndReplaceWidget::fillItemsList()
 {
 	disconnect(ui->m_tree_widget, &QTreeWidget::itemChanged, this, &SearchAndReplaceWidget::itemChanged);
@@ -296,10 +296,10 @@ void SearchAndReplaceWidget::fillItemsList()
 }
 
 /**
- * @brief SearchAndReplaceWidget::addElement
- * Add a tree widget item for @element
- * @param element
- */
+	@brief SearchAndReplaceWidget::addElement
+	Add a tree widget item for @element
+	@param element
+*/
 void SearchAndReplaceWidget::addElement(Element *element)
 {
 	QTreeWidgetItem *parent = m_elements_qtwi;
@@ -341,9 +341,9 @@ void SearchAndReplaceWidget::addElement(Element *element)
 }
 
 /**
- * @brief SearchAndReplaceWidget::search
- * Start the search
- */
+	@brief SearchAndReplaceWidget::search
+	Start the search
+*/
 void SearchAndReplaceWidget::search()
 {
 	QString str = ui->m_search_le->text();
@@ -413,11 +413,11 @@ void SearchAndReplaceWidget::search()
 }
 
 /**
- * @brief SearchAndReplaceWidget::setVisibleAllParents
- * Set visible all parents of @item until the invisible root item
- * @param item
- * @param expend_parent
- */
+	@brief SearchAndReplaceWidget::setVisibleAllParents
+	Set visible all parents of @item until the invisible root item
+	@param item
+	@param expend_parent
+*/
 void SearchAndReplaceWidget::setVisibleAllParents(QTreeWidgetItem *item, bool expend_parent)
 {
 	if (item->parent())
@@ -430,11 +430,13 @@ void SearchAndReplaceWidget::setVisibleAllParents(QTreeWidgetItem *item, bool ex
 }
 
 /**
- * @brief SearchAndReplaceWidget::nextItem
- * @param item : find the next item from @item, if @item is nullptr, start the search for the root of the tree
- * @param flags
- * @return the next item according to flag or nullptr if there is not a next item
- */
+	@brief SearchAndReplaceWidget::nextItem
+	@param item : find the next item from @item,
+	if @item is nullptr, start the search for the root of the tree
+	@param flags
+	@return the next item according to flag
+	or nullptr if there is not a next item
+*/
 QTreeWidgetItem *SearchAndReplaceWidget::nextItem(QTreeWidgetItem *item, QTreeWidgetItemIterator::IteratorFlag flags) const
 {
 	QTreeWidgetItem *qtwi = item;
@@ -459,11 +461,13 @@ QTreeWidgetItem *SearchAndReplaceWidget::nextItem(QTreeWidgetItem *item, QTreeWi
 }
 
 /**
- * @brief SearchAndReplaceWidget::previousItem
- * @param item : find the previous item from @item, if @item is nullptr, start the search for the root of the tree
- * @param flags
- * @return the previous item according to flag or nullptr if there is not a previous item
- */
+	@brief SearchAndReplaceWidget::previousItem
+	@param item : find the previous item from @item,
+	if @item is nullptr, start the search for the root of the tree
+	@param flags
+	@return the previous item according to flag
+	or nullptr if there is not a previous item
+*/
 QTreeWidgetItem *SearchAndReplaceWidget::previousItem(QTreeWidgetItem *item, QTreeWidgetItemIterator::IteratorFlag flags) const
 {
 	QTreeWidgetItem *qtwi = item;
@@ -488,10 +492,10 @@ QTreeWidgetItem *SearchAndReplaceWidget::previousItem(QTreeWidgetItem *item, QTr
 }
 
 /**
- * @brief SearchAndReplaceWidget::updateNextPreviousButtons
- * According to the current item, if there is a next or a previous item,
- * we enable/disable the buttons next/previous item. 
- */
+	@brief SearchAndReplaceWidget::updateNextPreviousButtons
+	According to the current item, if there is a next or a previous item,
+	we enable/disable the buttons next/previous item.
+*/
 void SearchAndReplaceWidget::updateNextPreviousButtons()
 {
 	QTreeWidgetItem *item_ = ui->m_tree_widget->currentItem();
@@ -536,12 +540,12 @@ void SearchAndReplaceWidget::updateNextPreviousButtons()
 }
 
 /**
- * @brief SearchAndReplaceWidget::itemChanged
- * Reimplemented from QTreeWidget.
- * Use to update the check state of items.
- * @param item
- * @param column
- */
+	@brief SearchAndReplaceWidget::itemChanged
+	Reimplemented from QTreeWidget.
+	Use to update the check state of items.
+	@param item
+	@param column
+*/
 void SearchAndReplaceWidget::itemChanged(QTreeWidgetItem *item, int column)
 {
 	Q_UNUSED(column);
@@ -554,11 +558,11 @@ void SearchAndReplaceWidget::itemChanged(QTreeWidgetItem *item, int column)
 }
 
 /**
- * @brief SearchAndReplaceWidget::setChildCheckState
- * @param item : Parent of the items to be evaluated
- * @param check : check state
- * @param deep : if true, we evaluate every subchilds.
- */
+	@brief SearchAndReplaceWidget::setChildCheckState
+	@param item : Parent of the items to be evaluated
+	@param check : check state
+	@param deep : if true, we evaluate every subchilds.
+*/
 void SearchAndReplaceWidget::setChildCheckState(QTreeWidgetItem *item, Qt::CheckState check, bool deep)
 {
 	for (int i=0 ; i<item->childCount() ; ++i)
@@ -571,10 +575,11 @@ void SearchAndReplaceWidget::setChildCheckState(QTreeWidgetItem *item, Qt::Check
 }
 
 /**
- * @brief SearchAndReplaceWidget::updateParentCheckState
- * @param item : a child item of the parent to be evaluated.
- * @param all_parents : if true, we evaluate every parents, until the root item.
- */
+	@brief SearchAndReplaceWidget::updateParentCheckState
+	@param item : a child item of the parent to be evaluated.
+	@param all_parents : if true, we evaluate every parents,
+	until the root item.
+*/
 void SearchAndReplaceWidget::updateParentCheckState(QTreeWidgetItem *item, bool all_parents)
 {
 	QTreeWidgetItem *parent = item->parent();
@@ -616,9 +621,9 @@ void SearchAndReplaceWidget::updateParentCheckState(QTreeWidgetItem *item, bool 
 }
 
 /**
- * @brief SearchAndReplaceWidget::activateNextChecked
- * Activate the next checked (and visible) item
- */
+	@brief SearchAndReplaceWidget::activateNextChecked
+	Activate the next checked (and visible) item
+*/
 void SearchAndReplaceWidget::activateNextChecked()
 {
 		//Next button is disabled, so there is not a next item.
@@ -632,9 +637,9 @@ void SearchAndReplaceWidget::activateNextChecked()
 }
 
 /**
- * @brief SearchAndReplaceWidget::selectedDiagram
- * @return The list of visible and selected diagram in the tree widget
- */
+	@brief SearchAndReplaceWidget::selectedDiagram
+	@return The list of visible and selected diagram in the tree widget
+*/
 QList<Diagram *> SearchAndReplaceWidget::selectedDiagram() const
 {
 	QList <Diagram *> diagram_list;
@@ -654,9 +659,9 @@ QList<Diagram *> SearchAndReplaceWidget::selectedDiagram() const
 }
 
 /**
- * @brief SearchAndReplaceWidget::selectedElement
- * @return The list of visible and selected element in the tree widget
- */
+	@brief SearchAndReplaceWidget::selectedElement
+	@return The list of visible and selected element in the tree widget
+*/
 QList<Element *> SearchAndReplaceWidget::selectedElement() const
 {
 	QList <Element *> element_list;
@@ -676,9 +681,9 @@ QList<Element *> SearchAndReplaceWidget::selectedElement() const
 }
 
 /**
- * @brief SearchAndReplaceWidget::selectedConductor
- * @return The list of visible and selected conductor in the tree widget
- */
+	@brief SearchAndReplaceWidget::selectedConductor
+	@return The list of visible and selected conductor in the tree widget
+*/
 QList<Conductor *> SearchAndReplaceWidget::selectedConductor() const
 {
 	QList <Conductor *> conductor_list;
@@ -698,9 +703,10 @@ QList<Conductor *> SearchAndReplaceWidget::selectedConductor() const
 }
 
 /**
- * @brief SearchAndReplaceWidget::selectedText
- * @return The list of visible and selected independant text in the tree widget
- */
+	@brief SearchAndReplaceWidget::selectedText
+	@return The list of visible and selected independant text
+	in the tree widget
+*/
 QList<IndependentTextItem *> SearchAndReplaceWidget::selectedText() const
 {
 	QList <IndependentTextItem *> text_list;
@@ -720,10 +726,10 @@ QList<IndependentTextItem *> SearchAndReplaceWidget::selectedText() const
 }
 
 /**
- * @brief SearchAndReplaceWidget::searchTerms
- * @param diagram
- * @return All QStrings use as terms for search.
- */
+	@brief SearchAndReplaceWidget::searchTerms
+	@param diagram
+	@return All QStrings use as terms for search.
+*/
 QStringList SearchAndReplaceWidget::searchTerms(Diagram *diagram)
 {
 	QStringList list;
@@ -744,10 +750,10 @@ QStringList SearchAndReplaceWidget::searchTerms(Diagram *diagram)
 }
 
 /**
- * @brief SearchAndReplaceWidget::searchTerms
- * @param element
- * @return All QString use as terms for search
- */
+	@brief SearchAndReplaceWidget::searchTerms
+	@param element
+	@return All QString use as terms for search
+*/
 QStringList SearchAndReplaceWidget::searchTerms(Element *element)
 {
 	QStringList list;
@@ -781,10 +787,10 @@ QStringList SearchAndReplaceWidget::searchTerms(Element *element)
 }
 
 /**
- * @brief SearchAndReplaceWidget::searchTerms
- * @param conductor
- * @return all QString use as terms for search.
- */
+	@brief SearchAndReplaceWidget::searchTerms
+	@param conductor
+	@return all QString use as terms for search.
+*/
 QStringList SearchAndReplaceWidget::searchTerms(Conductor *conductor)
 {
 	QStringList list;
@@ -800,8 +806,8 @@ QStringList SearchAndReplaceWidget::searchTerms(Conductor *conductor)
 }
 
 /**
- * @brief SearchAndReplaceWidget::on_m_quit_button_clicked
- */
+	@brief SearchAndReplaceWidget::on_m_quit_button_clicked
+*/
 void SearchAndReplaceWidget::on_m_quit_button_clicked()
 {
 	if (auto animator = this->findChild<QWidgetAnimation *>("search and replace animator")) {
@@ -990,9 +996,9 @@ void SearchAndReplaceWidget::on_m_folio_pb_clicked()
 }
 
 /**
- * @brief SearchAndReplaceWidget::on_m_replace_pb_clicked
- * Replace the current selection
- */
+	@brief SearchAndReplaceWidget::on_m_replace_pb_clicked
+	Replace the current selection
+*/
 void SearchAndReplaceWidget::on_m_replace_pb_clicked()
 {
 	QTreeWidgetItem *qtwi = ui->m_tree_widget->currentItem();	
@@ -1082,9 +1088,9 @@ void SearchAndReplaceWidget::on_m_replace_pb_clicked()
 }
 
 /**
- * @brief SearchAndReplaceWidget::on_m_replace_all_pb_clicked
- * Replace all checked item
- */
+	@brief SearchAndReplaceWidget::on_m_replace_all_pb_clicked
+	Replace all checked item
+*/
 void SearchAndReplaceWidget::on_m_replace_all_pb_clicked()
 {
 	if (ui->m_folio_pb->text().endsWith(tr(" [édité]"))) {
@@ -1140,10 +1146,10 @@ void SearchAndReplaceWidget::on_m_element_pb_clicked()
 }
 
 /**
- * @brief SearchAndReplaceWidget::on_m_mode_cb_currentIndexChanged
- * Update the search when user change mode.
- * @param index
- */
+	@brief SearchAndReplaceWidget::on_m_mode_cb_currentIndexChanged
+	Update the search when user change mode.
+	@param index
+*/
 void SearchAndReplaceWidget::on_m_mode_cb_currentIndexChanged(int index)
 {
 	Q_UNUSED(index);	
@@ -1151,10 +1157,10 @@ void SearchAndReplaceWidget::on_m_mode_cb_currentIndexChanged(int index)
 }
 
 /**
- * @brief SearchAndReplaceWidget::on_m_case_sensitive_cb_stateChanged
- * Update the search when change the case sensitive
- * @param arg1
- */
+	@brief SearchAndReplaceWidget::on_m_case_sensitive_cb_stateChanged
+	Update the search when change the case sensitive
+	@param arg1
+*/
 void SearchAndReplaceWidget::on_m_case_sensitive_cb_stateChanged(int arg1)
 {
 	Q_UNUSED(arg1);
@@ -1162,9 +1168,9 @@ void SearchAndReplaceWidget::on_m_case_sensitive_cb_stateChanged(int arg1)
 }
 
 /**
- * @brief SearchAndReplaceWidget::on_m_conductor_pb_clicked
- * Open a dialog to edit the condutor properties
- */
+	@brief SearchAndReplaceWidget::on_m_conductor_pb_clicked
+	Open a dialog to edit the condutor properties
+*/
 void SearchAndReplaceWidget::on_m_conductor_pb_clicked()
 {
     ReplaceConductorDialog *dialog = new ReplaceConductorDialog(m_worker.m_conductor_properties, this);
@@ -1191,9 +1197,9 @@ void SearchAndReplaceWidget::on_m_conductor_pb_clicked()
 }
 
 /**
- * @brief SearchAndReplaceWidget::on_m_advanced_replace_pb_clicked
- * Open the advanced editor.
- */
+	@brief SearchAndReplaceWidget::on_m_advanced_replace_pb_clicked
+	Open the advanced editor.
+*/
 void SearchAndReplaceWidget::on_m_advanced_replace_pb_clicked()
 {
 	replaceAdvancedDialog *dialog = new replaceAdvancedDialog(m_worker.m_advanced_struct, this);

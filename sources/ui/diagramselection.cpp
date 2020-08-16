@@ -38,8 +38,8 @@ diagramselection::~diagramselection() {
 }
 
 /**
- * @brief load all Diagrams of project in table
- */
+	@brief load all Diagrams of project in table
+*/
 void diagramselection::load_TableDiagram() {
 	// Clear all items
 	ui -> tableDiagram -> clear();
@@ -80,9 +80,9 @@ void diagramselection::load_TableDiagram() {
 }
 
 /**
- * @brief get list of Diagrams is selected
- * @return this list of Diagrams
- */
+	@brief get list of Diagrams is selected
+	@return this list of Diagrams
+*/
 QList<Diagram *> diagramselection::list_of_DiagramSelected() {
 	QList<Diagram *> listDiag;
 	for(int i=0; i<ui -> tableDiagram -> rowCount();i++){
@@ -94,9 +94,9 @@ QList<Diagram *> diagramselection::list_of_DiagramSelected() {
 }
 
 /**
- * @brief contextMenuRequested
- * @param pos
- */
+	@brief contextMenuRequested
+	@param pos
+*/
 void diagramselection::on_tableDiagram_customContextMenuRequested(const QPoint &pos){
 	QMenu menu(this);
 	QAction *desl = menu.addAction( tr("Désélectionner tout") );

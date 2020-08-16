@@ -23,11 +23,11 @@
 
 
 /**
- * @brief PartArc::PartArc
- * Constructor
- * @param editor : QETElementEditor of this part
- * @param parent : parent item
- */
+	@brief PartArc::PartArc
+	Constructor
+	@param editor : QETElementEditor of this part
+	@param parent : parent item
+*/
 PartArc::PartArc(QETElementEditor *editor, QGraphicsItem *parent) :
 	AbstractPartEllipse(editor, parent)
 {
@@ -36,9 +36,9 @@ PartArc::PartArc(QETElementEditor *editor, QGraphicsItem *parent) :
 }
 
 /**
- * @brief PartArc::~PartArc
- * Destructor
- */
+	@brief PartArc::~PartArc
+	Destructor
+*/
 PartArc::~PartArc()
 {
 	if(m_undo_command) delete m_undo_command;
@@ -46,12 +46,12 @@ PartArc::~PartArc()
 }
 
 /**
- * @brief PartArc::paint
- * Draw this arc
- * @param painter
- * @param options
- * @param widget
- */
+	@brief PartArc::paint
+	Draw this arc
+	@param painter
+	@param options
+	@param widget
+*/
 void PartArc::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *widget)
 {
 	Q_UNUSED(widget);
@@ -90,11 +90,11 @@ void PartArc::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, 
 }
 
 /**
- * @brief PartArc::toXml
- * Export this arc in xml
- * @param xml_document : Xml document to use for create the xml element.
- * @return : an xml element that describe this arc
- */
+	@brief PartArc::toXml
+	Export this arc in xml
+	@param xml_document : Xml document to use for create the xml element.
+	@return : an xml element that describe this arc
+*/
 const QDomElement PartArc::toXml(QDomDocument &xml_document) const {
 	QDomElement xml_element = xml_document.createElement("arc");
 	QPointF top_left(sceneTopLeft());
@@ -110,10 +110,10 @@ const QDomElement PartArc::toXml(QDomDocument &xml_document) const {
 }
 
 /**
- * @brief PartArc::fromXml
- * Import the properties of this arc from a xml element.
- * @param qde : Xml document to use.
- */
+	@brief PartArc::fromXml
+	Import the properties of this arc from a xml element.
+	@param qde : Xml document to use.
+*/
 void PartArc::fromXml(const QDomElement &qde) {
 	stylesFromXml(qde);
 	m_rect = QRectF(mapFromScene(qde.attribute("x", "0").toDouble(),
@@ -126,9 +126,9 @@ void PartArc::fromXml(const QDomElement &qde) {
 }
 
 /**
- * @brief PartArc::shape
- * @return the shape of this item
- */
+	@brief PartArc::shape
+	@return the shape of this item
+*/
 QPainterPath PartArc::shape() const
 {
 	QPainterPath shape;
@@ -155,10 +155,10 @@ QPainterPath PartArc::shadowShape() const
 }
 
 /**
- * @brief PartArc::mouseReleaseEvent
- * Handle mouse release event
- * @param event
- */
+	@brief PartArc::mouseReleaseEvent
+	Handle mouse release event
+	@param event
+*/
 void PartArc::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (event->button() == Qt::LeftButton && event->buttonDownPos(Qt::LeftButton) == event->pos())
@@ -168,11 +168,11 @@ void PartArc::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief PartArc::itemChange
- * @param change
- * @param value
- * @return 
- */
+	@brief PartArc::itemChange
+	@param change
+	@param value
+	@return
+*/
 QVariant PartArc::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value)
 {
 	if (change == ItemSelectedHasChanged && scene())
@@ -208,11 +208,11 @@ QVariant PartArc::itemChange(QGraphicsItem::GraphicsItemChange change, const QVa
 }
 
 /**
- * @brief PartArc::sceneEventFilter
- * @param watched
- * @param event
- * @return 
- */
+	@brief PartArc::sceneEventFilter
+	@param watched
+	@param event
+	@return
+*/
 bool PartArc::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 {
 		//Watched must be an handler
@@ -248,8 +248,8 @@ bool PartArc::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 }
 
 /**
- * @brief PartArc::switchResizeMode
- */
+	@brief PartArc::switchResizeMode
+*/
 void PartArc::switchResizeMode()
 {	
 	if (m_resize_mode == 1)
@@ -283,8 +283,8 @@ void PartArc::switchResizeMode()
 }
 
 /**
- * @brief PartArc::adjusteHandlerPos
- */
+	@brief PartArc::adjusteHandlerPos
+*/
 void PartArc::adjusteHandlerPos()
 {
 	if (m_handler_vector.isEmpty())
@@ -307,10 +307,10 @@ void PartArc::adjusteHandlerPos()
 }
 
 /**
- * @brief PartArc::handlerMousePressEvent
- * @param qghi
- * @param event
- */
+	@brief PartArc::handlerMousePressEvent
+	@param qghi
+	@param event
+*/
 void PartArc::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(qghi);
@@ -346,10 +346,10 @@ void PartArc::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsScen
 }
 
 /**
- * @brief PartArc::handlerMouseMoveEvent
- * @param qghi
- * @param event
- */
+	@brief PartArc::handlerMouseMoveEvent
+	@param qghi
+	@param event
+*/
 void PartArc::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(qghi);
@@ -380,10 +380,10 @@ void PartArc::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsScene
 }
 
 /**
- * @brief PartArc::handlerMouseReleaseEvent
- * @param qghi
- * @param event
- */
+	@brief PartArc::handlerMouseReleaseEvent
+	@param qghi
+	@param event
+*/
 void PartArc::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(qghi);
@@ -421,9 +421,9 @@ void PartArc::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphicsSc
 }
 
 /**
- * @brief PartArc::sceneSelectionChanged
- * When the scene selection change, if there are several primitive selected, we remove the handler of this item
- */
+	@brief PartArc::sceneSelectionChanged
+	When the scene selection change, if there are several primitive selected, we remove the handler of this item
+*/
 void PartArc::sceneSelectionChanged()
 {
 	if (this->isSelected() && scene()->selectedItems().size() == 1)
@@ -433,9 +433,9 @@ void PartArc::sceneSelectionChanged()
 }
 
 /**
- * @brief PartArc::addHandler
- * Add handlers for this item
- */
+	@brief PartArc::addHandler
+	Add handlers for this item
+*/
 void PartArc::addHandler()
 {
 	if (m_handler_vector.isEmpty() && scene())
@@ -464,9 +464,9 @@ void PartArc::addHandler()
 }
 
 /**
- * @brief PartArc::removeHandler
- * Remove the handlers of this item
- */
+	@brief PartArc::removeHandler
+	Remove the handlers of this item
+*/
 void PartArc::removeHandler()
 {
 	if (!m_handler_vector.isEmpty())

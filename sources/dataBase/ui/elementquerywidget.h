@@ -28,10 +28,10 @@ class ElementQueryWidget;
 }
 
 /**
- * @brief The ElementQueryWidget class
- * A widget use to edit a sql query for get element information
- * This widget only work to get information from ProjectDataBase
- */
+	@brief The ElementQueryWidget class
+	A widget use to edit a sql query for get element information
+	This widget only work to get information from ProjectDataBase
+*/
 class ElementQueryWidget : public QWidget
 {
     Q_OBJECT

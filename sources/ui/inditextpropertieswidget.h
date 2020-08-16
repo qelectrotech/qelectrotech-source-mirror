@@ -27,9 +27,9 @@ namespace Ui {
 }
 
 /**
- * @brief The IndiTextPropertiesWidget class
- * This widget is used to edit the properties of one or several independent text item
- */
+	@brief The IndiTextPropertiesWidget class
+	This widget is used to edit the properties of one or several independent text item
+*/
 class IndiTextPropertiesWidget : public PropertiesEditorWidget
 {
 	Q_OBJECT

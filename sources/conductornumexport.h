@@ -24,9 +24,9 @@ class QETProject;
 class QWidget;
 
 /**
- * @brief The ConductorNumExport class
- * A class to export the num of conductors into a csv file.
- */
+	@brief The ConductorNumExport class
+	A class to export the num of conductors into a csv file.
+*/
 class ConductorNumExport
 {
 	public:

@@ -58,22 +58,24 @@ QString PartDynamicTextField::xmlName() const {
 }
 
 /**
- * @brief PartDynamicTextField::startUserTransformation
- * @param initial_selection_rect
- * Start the user-induced transformation, provided this primitive is contained
- * within the initial_selection_rect bounding rectangle.
- */
+	@brief PartDynamicTextField::startUserTransformation
+	@param initial_selection_rect
+	Start the user-induced transformation,
+	provided this primitive is contained
+	within the initial_selection_rect bounding rectangle.
+*/
 void PartDynamicTextField::startUserTransformation(const QRectF &initial_selection_rect) {
 	Q_UNUSED(initial_selection_rect)
 	m_saved_point = pos(); // scene coordinates, no need to mapFromScene()
 }
 
 /**
- * @brief PartDynamicTextField::handleUserTransformation
- * @param initial_selection_rect
- * @param new_selection_rect
- * Handle the user-induced transformation from initial_selection_rect to new_selection_rect
- */
+	@brief PartDynamicTextField::handleUserTransformation
+	@param initial_selection_rect
+	@param new_selection_rect
+	Handle the user-induced transformation
+	from initial_selection_rect to new_selection_rect
+*/
 void PartDynamicTextField::handleUserTransformation(
 	const QRectF &initial_selection_rect,
 	const QRectF &new_selection_rect)
@@ -84,10 +86,10 @@ void PartDynamicTextField::handleUserTransformation(
 }
 
 /**
- * @brief PartDynamicTextField::toXml
- * @param document
- * @return 
- */
+	@brief PartDynamicTextField::toXml
+	@param document
+	@return
+*/
 const QDomElement PartDynamicTextField::toXml(QDomDocument &dom_doc) const {
 	QDomElement root_element = dom_doc.createElement(xmlName());
 
@@ -147,9 +149,9 @@ const QDomElement PartDynamicTextField::toXml(QDomDocument &dom_doc) const {
 }
 
 /**
- * @brief PartDynamicTextField::fromXml
- * @param element
- */
+	@brief PartDynamicTextField::fromXml
+	@param element
+*/
 void PartDynamicTextField::fromXml(const QDomElement &dom_elmt) {
 	if (dom_elmt.tagName() != xmlName()) {
 		qDebug() << "PartDynamicTextField::fromXml : Wrong tagg name";
@@ -215,10 +217,11 @@ void PartDynamicTextField::fromXml(const QDomElement &dom_elmt) {
 }
 
 /**
- * @brief PartDynamicTextField::fromTextFieldXml
- * Setup this text from the xml definition of a text field (The xml tagg of a text field is "input");
- * @param dom_element
- */
+	@brief PartDynamicTextField::fromTextFieldXml
+	Setup this text from the xml definition
+	of a text field (The xml tagg of a text field is "input");
+	@param dom_element
+*/
 void PartDynamicTextField::fromTextFieldXml(const QDomElement &dom_element)
 {
 	if(dom_element.tagName() != "input")
@@ -254,18 +257,18 @@ void PartDynamicTextField::fromTextFieldXml(const QDomElement &dom_element)
 }
 
 /**
- * @brief PartDynamicTextField::textFrom
- * @return what the final text is created from.
- */
+	@brief PartDynamicTextField::textFrom
+	@return what the final text is created from.
+*/
 DynamicElementTextItem::TextFrom PartDynamicTextField::textFrom() const {
 	return m_text_from;
 }
 
 /**
- * @brief PartDynamicTextField::setTextFrom
- * Set the final text is created from.
- * @param text_from
- */
+	@brief PartDynamicTextField::setTextFrom
+	Set the final text is created from.
+	@param text_from
+*/
 void PartDynamicTextField::setTextFrom(DynamicElementTextItem::TextFrom text_from) {
 	m_text_from = text_from;
 	switch (m_text_from) {
@@ -285,18 +288,18 @@ void PartDynamicTextField::setTextFrom(DynamicElementTextItem::TextFrom text_fro
 }
 
 /**
- * @brief PartDynamicTextField::text
- * @return the text of this text
- */
+	@brief PartDynamicTextField::text
+	@return the text of this text
+*/
 QString PartDynamicTextField::text() const {
 	return m_text;
 }
 
 /**
- * @brief PartDynamicTextField::setText
- * Set the text of this text
- * @param text
- */
+	@brief PartDynamicTextField::setText
+	Set the text of this text
+	@param text
+*/
 void PartDynamicTextField::setText(const QString &text) {
 	m_text = text;
 	setPlainText(m_text);
@@ -311,18 +314,18 @@ void PartDynamicTextField::setInfoName(const QString &info_name) {
 }
 
 /**
- * @brief PartDynamicTextField::infoName
- * @return the info name of this text
- */
+	@brief PartDynamicTextField::infoName
+	@return the info name of this text
+*/
 QString PartDynamicTextField::infoName() const{
 	return m_info_name;
 }
 
 /**
- * @brief PartDynamicTextField::setCompositeText
- * Set the composite text of this text item to @text
- * @param text
- */
+	@brief PartDynamicTextField::setCompositeText
+	Set the composite text of this text item to @text
+	@param text
+*/
 void PartDynamicTextField::setCompositeText(const QString &text) {
 	m_composite_text = text;
 	if(m_text_from == DynamicElementTextItem::CompositeText && elementScene())
@@ -331,26 +334,26 @@ void PartDynamicTextField::setCompositeText(const QString &text) {
 }
 
 /**
- * @brief PartDynamicTextField::compositeText
- * @return the composite text of this text
- */
+	@brief PartDynamicTextField::compositeText
+	@return the composite text of this text
+*/
 QString PartDynamicTextField::compositeText() const {
 	return m_composite_text;
 }
 
 /**
- * @brief PartDynamicTextField::setColor
- * @param color set text color to color
- */
+	@brief PartDynamicTextField::setColor
+	@param color set text color to color
+*/
 void PartDynamicTextField::setColor(const QColor& color) {
 	setDefaultTextColor(color);
 	emit colorChanged(color);
 }
 
 /**
- * @brief PartDynamicTextField::color
- * @return The color of this text
- */
+	@brief PartDynamicTextField::color
+	@return The color of this text
+*/
 QColor PartDynamicTextField::color() const {
 	return defaultTextColor();
 }
@@ -415,9 +418,9 @@ void PartDynamicTextField::setFont(const QFont &font) {
 }
 
 /**
- * @brief PartDynamicTextField::mouseMoveEvent
- * @param event
- */
+	@brief PartDynamicTextField::mouseMoveEvent
+	@param event
+*/
 void PartDynamicTextField::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 	if((event -> buttons() & Qt::LeftButton) && (flags() & QGraphicsItem::ItemIsMovable)) {
 		QPointF pos = event -> scenePos() + (m_origine_pos - event -> buttonDownScenePos(Qt::LeftButton));
@@ -428,9 +431,9 @@ void PartDynamicTextField::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 }
 
 /**
- * @brief PartDynamicTextField::mousePressEvent
- * @param event
- */
+	@brief PartDynamicTextField::mousePressEvent
+	@param event
+*/
 void PartDynamicTextField::mousePressEvent(QGraphicsSceneMouseEvent *event) {
 	if(event -> button() == Qt::LeftButton)
 		m_origine_pos = this -> pos();
@@ -439,9 +442,9 @@ void PartDynamicTextField::mousePressEvent(QGraphicsSceneMouseEvent *event) {
 }
 
 /**
- * @brief PartDynamicTextField::mouseReleaseEvent
- * @param event
- */
+	@brief PartDynamicTextField::mouseReleaseEvent
+	@param event
+*/
 void PartDynamicTextField::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
 	if((event -> button() & Qt::LeftButton) &&
 		(flags() & QGraphicsItem::ItemIsMovable) &&
@@ -457,11 +460,11 @@ void PartDynamicTextField::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
 }
 
 /**
- * @brief PartDynamicTextField::itemChange
- * @param change
- * @param value
- * @return 
- */
+	@brief PartDynamicTextField::itemChange
+	@param change
+	@param value
+	@return
+*/
 QVariant PartDynamicTextField::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value) {
 	if (change == QGraphicsItem::ItemPositionHasChanged || change == QGraphicsItem::ItemSceneHasChanged) {
 		updateCurrentPartEditor();
@@ -525,9 +528,10 @@ void PartDynamicTextField::paint(QPainter *painter, const QStyleOptionGraphicsIt
 }
 
 /**
- * @brief PartDynamicTextField::elementInfoChanged
- * Used to up to date this text field, when the element information (see elementScene) changed
- */
+	@brief PartDynamicTextField::elementInfoChanged
+	Used to up to date this text field,
+	when the element information (see elementScene) changed
+*/
 void PartDynamicTextField::elementInfoChanged() {
 	if(!elementScene())
 		return;

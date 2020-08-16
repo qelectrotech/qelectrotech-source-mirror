@@ -811,8 +811,8 @@ RichTextEditorDialog::~RichTextEditorDialog()
 }
 
 /**
- * @brief RichTextEditorDialog::on_buttonBox_accepted
- */ 
+	@brief RichTextEditorDialog::on_buttonBox_accepted
+*/
 void RichTextEditorDialog::on_buttonBox_accepted() {
 	emit applyEditText( text(Qt::RichText) );
 	this->close();

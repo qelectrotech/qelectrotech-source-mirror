@@ -75,7 +75,7 @@ ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 
 /**
 	@brief ElementScene::~ElementScene
- */
+*/
 ElementScene::~ElementScene()
 {
 	//Disconnect to avoid crash, see bug report N° 122.

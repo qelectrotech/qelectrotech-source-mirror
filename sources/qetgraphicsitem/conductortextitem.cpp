@@ -62,10 +62,10 @@ Conductor *ConductorTextItem::parentConductor() const {
 }
 
 /**
- * @brief ConductorTextItem::fromXml
- * Read the properties stored in the xml element given in parameter
- * @param e
- */
+	@brief ConductorTextItem::fromXml
+	Read the properties stored in the xml element given in parameter
+	@param e
+*/
 void ConductorTextItem::fromXml(const QDomElement &e) {
 	if (e.hasAttribute("userx")) {
 		setPos(e.attribute("userx").toDouble(),
@@ -87,9 +87,9 @@ bool ConductorTextItem::wasMovedByUser() const {
 }
 
 /**
- * @brief ConductorTextItem::wasRotateByUser
- * @return true if text was explicit moved by user else false
- */
+	@brief ConductorTextItem::wasRotateByUser
+	@return true if text was explicit moved by user else false
+*/
 bool ConductorTextItem::wasRotateByUser() const {
 	return(rotate_by_user_);
 }
@@ -110,11 +110,11 @@ void ConductorTextItem::forceMovedByUser(bool moved_by_user) {
 }
 
 /**
- * @brief ConductorTextItem::forceRotateByUser
- * @param rotate_by_user true pour que la rotation du texte soit consideree
+	@brief ConductorTextItem::forceRotateByUser
+	@param rotate_by_user true pour que la rotation du texte soit consideree
 	comme ayant ete definie par l'utilisateur (et donc soit sauvegardee), false
 	pour remettre le texte a sont angle originelle
- */
+*/
 void ConductorTextItem::forceRotateByUser(bool rotate_by_user) {
 	if (rotate_by_user == rotate_by_user_) return;
 
@@ -125,9 +125,9 @@ void ConductorTextItem::forceRotateByUser(bool rotate_by_user) {
 }
 
 /**
- * @brief ConductorTextItem::setPos
- * @param pos
- */
+	@brief ConductorTextItem::setPos
+	@param pos
+*/
 void ConductorTextItem::setPos(const QPointF &pos)
 {
 	/*
@@ -149,10 +149,10 @@ void ConductorTextItem::setPos(const QPointF &pos)
 }
 
 /**
- * @brief ConductorTextItem::setPos
- * @param x
- * @param y
- */
+	@brief ConductorTextItem::setPos
+	@param x
+	@param y
+*/
 void ConductorTextItem::setPos(qreal x, qreal y)
 {
     QPointF p(x,y);
@@ -160,18 +160,18 @@ void ConductorTextItem::setPos(qreal x, qreal y)
 }
 
 /**
- * @brief ConductorTextItem::mousePressEvent
- * @param event
- */
+	@brief ConductorTextItem::mousePressEvent
+	@param event
+*/
 void ConductorTextItem::mousePressEvent(QGraphicsSceneMouseEvent *event) {
 	before_mov_pos_ = pos();
 	DiagramTextItem::mousePressEvent(event);
 }
 
 /**
- * @brief ConductorTextItem::mouseMoveEvent
- * @param event
- */
+	@brief ConductorTextItem::mouseMoveEvent
+	@param event
+*/
 void ConductorTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 	if (textInteractionFlags() & Qt::TextEditable) QGraphicsTextItem::mouseMoveEvent(event);
 
@@ -194,9 +194,9 @@ void ConductorTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 }
 
 /**
- * @brief ConductorTextItem::mouseReleaseEvent
- * @param e
- */
+	@brief ConductorTextItem::mouseReleaseEvent
+	@param e
+*/
 void ConductorTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	if (flags() & QGraphicsItem::ItemIsMovable) {
 

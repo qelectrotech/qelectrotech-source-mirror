@@ -23,9 +23,9 @@
 class Diagram;
 
 /**
- * @brief The DiagramEventAddText class
- * This diagram event handle the creation of a new text in a diagram
- */
+	@brief The DiagramEventAddText class
+	This diagram event handle the creation of a new text in a diagram
+*/
 class DiagramEventAddText : public DiagramEventInterface
 {
         Q_OBJECT

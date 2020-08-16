@@ -26,10 +26,10 @@ class QetGraphicsHandlerItem;
 class QAction;
 
 /**
- * @brief The PartPolygon class
- * This class represents a polygon primitive which may be used to compose the
- * drawing of an electrical element within the element editor.
- */
+	@brief The PartPolygon class
+	This class represents a polygon primitive which may be used to compose the
+	drawing of an electrical element within the element editor.
+*/
 class PartPolygon : public CustomElementGraphicPart
 {
 		Q_OBJECT

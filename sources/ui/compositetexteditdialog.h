@@ -10,12 +10,12 @@ namespace Ui {
 class DynamicElementTextItem;
 
 /**
- * @brief The CompositeTextEditDialog class
- * CompositeTextEditDialog display a dialog use to write the complex text
- * of a dynamic element text item.
- * This dialog provide a QComboBox to quickly add an information of the element
- * in the composite text.
- */
+	@brief The CompositeTextEditDialog class
+	CompositeTextEditDialog display a dialog use to write the complex text
+	of a dynamic element text item.
+	This dialog provide a QComboBox to quickly add an information of the element
+	in the composite text.
+*/
 class CompositeTextEditDialog : public QDialog
 {
 	Q_OBJECT

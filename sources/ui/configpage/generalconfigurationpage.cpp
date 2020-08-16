@@ -25,9 +25,9 @@
 #include <QFileDialog>
 
 /**
- * @brief GeneralConfigurationPage::GeneralConfigurationPage
- * @param parent
- */
+	@brief GeneralConfigurationPage::GeneralConfigurationPage
+	@param parent
+*/
 GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ConfigPage(parent),
 	ui(new Ui::GeneralConfigurationPage)
@@ -131,9 +131,9 @@ GeneralConfigurationPage::~GeneralConfigurationPage()
 }
 
 /**
- * @brief GeneralConfigurationPage::applyConf
- * Write all configuration in settings file
- */
+	@brief GeneralConfigurationPage::applyConf
+	Write all configuration in settings file
+*/
 void GeneralConfigurationPage::applyConf()
 {
 	QSettings settings;
@@ -231,25 +231,25 @@ void GeneralConfigurationPage::applyConf()
 }
 
 /**
- * @brief GeneralConfigurationPage::title
- * @return The title of this page
- */
+	@brief GeneralConfigurationPage::title
+	@return The title of this page
+*/
 QString GeneralConfigurationPage::title() const {
 	return(tr("Général", "configuration page title"));
 }
 
 /**
- * @brief GeneralConfigurationPage::icon
- * @return The icon of this page
- */
+	@brief GeneralConfigurationPage::icon
+	@return The icon of this page
+*/
 QIcon GeneralConfigurationPage::icon() const {
 	return(QET::Icons::Settings);
 }
 
 /**
- * @brief GeneralConfigurationPage::fillLang
- * fill all available lang
- */
+	@brief GeneralConfigurationPage::fillLang
+	fill all available lang
+*/
 void GeneralConfigurationPage::fillLang()
 {
 	ui->m_lang_cb->addItem(QET::Icons::translation,  tr("Système"), "system");
@@ -295,9 +295,9 @@ void GeneralConfigurationPage::fillLang()
 }
 
 /**
- * @brief GeneralConfigurationPage::on_m_font_pb_clicked
- * Apply font to config
- */
+	@brief GeneralConfigurationPage::on_m_font_pb_clicked
+	Apply font to config
+*/
 void GeneralConfigurationPage::on_m_font_pb_clicked()
 {
 	bool ok;
@@ -317,9 +317,9 @@ void GeneralConfigurationPage::on_m_font_pb_clicked()
 }
 
 /**
- * @brief GeneralConfigurationPage::m_dyn_text_font_pb_clicked
- *  Apply font to config
- */
+	@brief GeneralConfigurationPage::m_dyn_text_font_pb_clicked
+	 Apply font to config
+*/
 void GeneralConfigurationPage::on_m_dyn_text_font_pb_clicked()
 {
 	bool ok;

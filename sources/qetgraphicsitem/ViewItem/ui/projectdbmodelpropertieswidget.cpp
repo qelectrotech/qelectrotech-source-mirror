@@ -25,10 +25,10 @@
 #include <QDialogButtonBox>
 
 /**
- * @brief projectDBModelPropertiesWidget::projectDBModelPropertiesWidget
- * @param model
- * @param parent
- */
+	@brief projectDBModelPropertiesWidget::projectDBModelPropertiesWidget
+	@param model
+	@param parent
+*/
 ProjectDBModelPropertiesWidget::ProjectDBModelPropertiesWidget(ProjectDBModel *model, QWidget *parent) :
 	PropertiesEditorWidget(parent),
 	ui(new Ui::ProjectDBModelPropertiesWidget)
@@ -38,16 +38,16 @@ ProjectDBModelPropertiesWidget::ProjectDBModelPropertiesWidget(ProjectDBModel *m
 }
 
 /**
- * @brief projectDBModelPropertiesWidget::~projectDBModelPropertiesWidget
- */
+	@brief projectDBModelPropertiesWidget::~projectDBModelPropertiesWidget
+*/
 ProjectDBModelPropertiesWidget::~ProjectDBModelPropertiesWidget() {
     delete ui;
 }
 
 /**
- * @brief projectDBModelPropertiesWidget::setModel
- * @param model
- */
+	@brief projectDBModelPropertiesWidget::setModel
+	@param model
+*/
 void ProjectDBModelPropertiesWidget::setModel(ProjectDBModel *model) {
     m_model = model;
 	ui->m_edit_query_pb->setEnabled(m_model);
@@ -55,8 +55,8 @@ void ProjectDBModelPropertiesWidget::setModel(ProjectDBModel *model) {
 }
 
 /**
- * @brief projectDBModelPropertiesWidget::on_m_edit_query_pb_clicked
- */
+	@brief projectDBModelPropertiesWidget::on_m_edit_query_pb_clicked
+*/
 void ProjectDBModelPropertiesWidget::on_m_edit_query_pb_clicked()
 {
 	QDialog d(this);

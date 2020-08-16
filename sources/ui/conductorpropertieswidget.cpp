@@ -22,10 +22,10 @@
 #include "qtextorientationspinboxwidget.h"
 
 /**
- * @brief ConductorPropertiesWidget::ConductorPropertiesWidget
- * Constructor
- * @param parent, paretn widget
- */
+	@brief ConductorPropertiesWidget::ConductorPropertiesWidget
+	Constructor
+	@param parent, paretn widget
+*/
 ConductorPropertiesWidget::ConductorPropertiesWidget(QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::ConductorPropertiesWidget)
@@ -38,11 +38,11 @@ ConductorPropertiesWidget::ConductorPropertiesWidget(QWidget *parent) :
 
 
 /**
- * @brief ConductorPropertiesWidget::ConductorPropertiesWidget
- * Constructor with properties
- * @param properties, properties to edit
- * @param parent, parent widget
- */
+	@brief ConductorPropertiesWidget::ConductorPropertiesWidget
+	Constructor with properties
+	@param properties, properties to edit
+	@param parent, parent widget
+*/
 ConductorPropertiesWidget::ConductorPropertiesWidget(const ConductorProperties &properties, QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::ConductorPropertiesWidget)
@@ -53,19 +53,19 @@ ConductorPropertiesWidget::ConductorPropertiesWidget(const ConductorProperties &
 }
 
 /**
- * @brief ConductorPropertiesWidget::~ConductorPropertiesWidget
- * destructor
- */
+	@brief ConductorPropertiesWidget::~ConductorPropertiesWidget
+	destructor
+*/
 ConductorPropertiesWidget::~ConductorPropertiesWidget()
 {
 	delete ui;
 }
 
 /**
- * @brief ConductorPropertiesWidget::setProperties
- * Set the properties
- * @param properties
- */
+	@brief ConductorPropertiesWidget::setProperties
+	Set the properties
+	@param properties
+*/
 void ConductorPropertiesWidget::setProperties(const ConductorProperties &properties)
 {
 	if (m_properties == properties)
@@ -107,9 +107,9 @@ void ConductorPropertiesWidget::setProperties(const ConductorProperties &propert
 }
 
 /**
- * @brief ConductorPropertiesWidget::properties
- * @return the edited properties
- */
+	@brief ConductorPropertiesWidget::properties
+	@return the edited properties
+*/
 ConductorProperties ConductorPropertiesWidget::properties() const
 {
 	ConductorProperties properties_;
@@ -146,10 +146,10 @@ ConductorProperties ConductorPropertiesWidget::properties() const
 }
 
 /**
- * @brief ConductorPropertiesWidget::event
- * @param event
- * @return
- */
+	@brief ConductorPropertiesWidget::event
+	@param event
+	@return
+*/
 bool ConductorPropertiesWidget::event(QEvent *event)
 {
 	if (event->type() == QEvent::WindowActivate) {
@@ -160,42 +160,42 @@ bool ConductorPropertiesWidget::event(QEvent *event)
 
 
 /**
- * @brief ConductorPropertiesWidget::setReadOnly
- * @param ro if true this widget is disabled
- */
+	@brief ConductorPropertiesWidget::setReadOnly
+	@param ro if true this widget is disabled
+*/
 void ConductorPropertiesWidget::setReadOnly(const bool &ro) {
 	this->setDisabled(ro);
 }
 
 /**
- * @brief ConductorPropertiesWidget::addAutonumWidget
- * @param widget
- */
+	@brief ConductorPropertiesWidget::addAutonumWidget
+	@param widget
+*/
 void ConductorPropertiesWidget::addAutonumWidget(QWidget *widget) {
 	ui->m_autonum_layout->addWidget(widget);
 }
 
 /**
- * @brief ConductorPropertiesWidget::setHiddenOneTextPerFolio
- * @param hide
- */
+	@brief ConductorPropertiesWidget::setHiddenOneTextPerFolio
+	@param hide
+*/
 void ConductorPropertiesWidget::setHiddenOneTextPerFolio(const bool &hide) {
 	ui -> m_one_text_per_folio_cb -> setHidden(hide);
 }
 
 /**
- * @brief ConductorPropertiesWidget::setDisabledShowText
- * @param disable
- */
+	@brief ConductorPropertiesWidget::setDisabledShowText
+	@param disable
+*/
 void ConductorPropertiesWidget::setDisabledShowText(const bool &disable) {
 	ui->m_show_text_cb->setDisabled(disable==true? true : false);
 }
 
 /**
- * @brief ConductorPropertiesWidget::setHiddenAvailableAutonum
- * Hide the label, combo box and push button of available autonum
- * @param hide
- */
+	@brief ConductorPropertiesWidget::setHiddenAvailableAutonum
+	Hide the label, combo box and push button of available autonum
+	@param hide
+*/
 void ConductorPropertiesWidget::setHiddenAvailableAutonum(const bool &hide)
 {
 	ui->m_autonum_label->setHidden(hide);
@@ -214,8 +214,8 @@ QPushButton *ConductorPropertiesWidget::editAutonumPushButton() const
 }
 
 /**
- * @brief ConductorPropertiesWidget::initWidget
- */
+	@brief ConductorPropertiesWidget::initWidget
+*/
 void ConductorPropertiesWidget::initWidget() {
 	m_verti_select = QETApp::createTextOrientationSpinBoxWidget();
 	ui -> m_text_angle_gl -> addWidget(m_verti_select, 2, 0, Qt::AlignHCenter);
@@ -236,10 +236,10 @@ void ConductorPropertiesWidget::initWidget() {
 }
 
 /**
- * @brief ConductorPropertiesWidget::setConductorType
- * Update this widget to the new conductor type
- * @param type
- */
+	@brief ConductorPropertiesWidget::setConductorType
+	Update this widget to the new conductor type
+	@param type
+*/
 void ConductorPropertiesWidget::setConductorType(ConductorProperties::ConductorType type) {
 	switch (type) {
 		case ConductorProperties::Multi:
@@ -255,11 +255,11 @@ void ConductorPropertiesWidget::setConductorType(ConductorProperties::ConductorT
 }
 
 /**
- * @brief ConductorPropertiesWidget::updatePreview
- * Update the preview for single lien
- * @param b true: update from the value displayed by this widget
- *          false: update from the properties given at the constructor of this widget
- */
+	@brief ConductorPropertiesWidget::updatePreview
+	Update the preview for single lien
+	@param b true: update from the value displayed by this widget
+	         false: update from the properties given at the constructor of this widget
+*/
 void ConductorPropertiesWidget::updatePreview(bool b) {
 	const QRect pixmap_rect(0, 0, 96, 96);
 	QPixmap pixmap(pixmap_rect.width(), pixmap_rect.height());
@@ -277,10 +277,10 @@ void ConductorPropertiesWidget::updatePreview(bool b) {
 }
 
 /**
- * @brief ConductorPropertiesWidget::on_m_earth_cb_toggled
- * Update the widget when toggled
- * @param checked
- */
+	@brief ConductorPropertiesWidget::on_m_earth_cb_toggled
+	Update the widget when toggled
+	@param checked
+*/
 void ConductorPropertiesWidget::on_m_earth_cb_toggled(bool checked) {
 	if (checked && ui -> m_neutral_cb -> isChecked())
 		 ui -> m_pen_cb -> setEnabled(true);
@@ -288,10 +288,10 @@ void ConductorPropertiesWidget::on_m_earth_cb_toggled(bool checked) {
 }
 
 /**
- * @brief ConductorPropertiesWidget::on_m_neutral_cb_toggled
- * Update the widget when toggled
- * @param checked
- */
+	@brief ConductorPropertiesWidget::on_m_neutral_cb_toggled
+	Update the widget when toggled
+	@param checked
+*/
 void ConductorPropertiesWidget::on_m_neutral_cb_toggled(bool checked) {
 	if (checked && ui -> m_earth_cb -> isChecked())
 		ui -> m_pen_cb -> setEnabled(true);
@@ -299,12 +299,12 @@ void ConductorPropertiesWidget::on_m_neutral_cb_toggled(bool checked) {
 }
 
 /**
- * @brief ConductorPropertiesWidget::on_m_update_preview_pb_clicked
- * Update the preview of single line.
- * m_update_preview_pb is a no used button and hidden, his role is only
- * to centralize signal from various widget to edit single ligne properties,
- * for update the preview
- */
+	@brief ConductorPropertiesWidget::on_m_update_preview_pb_clicked
+	Update the preview of single line.
+	m_update_preview_pb is a no used button and hidden, his role is only
+	to centralize signal from various widget to edit single ligne properties,
+	for update the preview
+*/
 void ConductorPropertiesWidget::on_m_update_preview_pb_clicked() {
 	updatePreview();
 }

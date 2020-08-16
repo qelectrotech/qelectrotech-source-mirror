@@ -39,9 +39,9 @@ ReplaceFolioWidget::~ReplaceFolioWidget()
 }
 
 /**
- * @brief ReplaceFolioWidget::titleBlockProperties
- * @return the title block properties edited by this widget
- */
+	@brief ReplaceFolioWidget::titleBlockProperties
+	@return the title block properties edited by this widget
+*/
 TitleBlockProperties ReplaceFolioWidget::titleBlockProperties() const
 {
 	TitleBlockProperties prop;
@@ -71,10 +71,10 @@ TitleBlockProperties ReplaceFolioWidget::titleBlockProperties() const
 }
 
 /**
- * @brief ReplaceFolioWidget::setTitleBlockProperties
- * Set the title block properties edited by this widget
- * @param properties
- */
+	@brief ReplaceFolioWidget::setTitleBlockProperties
+	Set the title block properties edited by this widget
+	@param properties
+*/
 void ReplaceFolioWidget::setTitleBlockProperties(const TitleBlockProperties &properties)
 {
 	sarw::setupLineEdit(ui->m_title_le, ui->m_title_cb, properties.title);
@@ -130,17 +130,17 @@ ReplaceFolioDialog::~ReplaceFolioDialog()
 {}
 
 /**
- * @brief ReplaceFolioDialog::titleBlockProperties
- * @return The title block properties edited by this dialog
- */
+	@brief ReplaceFolioDialog::titleBlockProperties
+	@return The title block properties edited by this dialog
+*/
 TitleBlockProperties ReplaceFolioDialog::titleBlockProperties() const {
 	return m_widget->titleBlockProperties();
 }
 
 /**
- * @brief ReplaceFolioDialog::setTitleBlockProperties
- * @param properties : set the title block properties edited by this dialog
- */
+	@brief ReplaceFolioDialog::setTitleBlockProperties
+	@param properties : set the title block properties edited by this dialog
+*/
 void ReplaceFolioDialog::setTitleBlockProperties(const TitleBlockProperties &properties) {
 	m_widget->setTitleBlockProperties(properties);
 }

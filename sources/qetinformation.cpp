@@ -21,9 +21,9 @@
 #include <QHash>
 
 /**
- * @brief QETInformation::titleblockInfoKeys
- * @return all available key for use with a titleblock
- */
+	@brief QETInformation::titleblockInfoKeys
+	@return all available key for use with a titleblock
+*/
 QStringList QETInformation::titleblockInfoKeys()
 {
 	QStringList info_list;
@@ -52,11 +52,11 @@ QStringList QETInformation::titleblockInfoKeys()
 }
 
 /**
- * @brief QETInformation::titleblockTranslatedInfoKey
- * @param info : info key to be translated
- * @return the translated information given by @info
- * If  @info don't match, return an empty string
- */
+	@brief QETInformation::titleblockTranslatedInfoKey
+	@param info : info key to be translated
+	@return the translated information given by @info
+	If  @info don't match, return an empty string
+*/
 QString QETInformation::titleblockTranslatedInfoKey(const QString &info)
 {
 	if      (info == "author")             return QObject::tr("Auteur");
@@ -83,11 +83,11 @@ QString QETInformation::titleblockTranslatedInfoKey(const QString &info)
 }
 
 /**
- * @brief QETInformation::titleblockInfoKeysToVar
- * @param info
- * @return var in form %{my-var} corresponding to the info.
- * if there is not available var for the given info, the returned var is %{void}
- */
+	@brief QETInformation::titleblockInfoKeysToVar
+	@param info
+	@return var in form %{my-var} corresponding to the info.
+	if there is not available var for the given info, the returned var is %{void}
+*/
 QString QETInformation::titleblockInfoKeysToVar(const QString &info)
 {
 	if      (info == "author")             return QString("%{author}");
@@ -114,10 +114,10 @@ QString QETInformation::titleblockInfoKeysToVar(const QString &info)
 }
 
 /**
- * @brief QETInformation::titleblockTranslatedKeyHashVar
- * @return a QHash with for key, the translated information key of title block,
- * and for value the corresponding var.
- */
+	@brief QETInformation::titleblockTranslatedKeyHashVar
+	@return a QHash with for key, the translated information key of title block,
+	and for value the corresponding var.
+*/
 QHash<QString, QString> QETInformation::titleblockTranslatedKeyHashVar()
 {
 	QHash <QString, QString> hash_;

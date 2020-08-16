@@ -111,9 +111,9 @@ void RecentFiles::fileWasOpened(const QString &filepath) {
 }
 
 /**
- * @brief RecentFiles::extractFilesFromSettings
- * Read the list of recent file from settings
- */
+	@brief RecentFiles::extractFilesFromSettings
+	Read the list of recent file from settings
+*/
 void RecentFiles::extractFilesFromSettings()
 {
 		//Forget the list of recent files
@@ -148,9 +148,9 @@ void RecentFiles::insertFile(const QString &filepath) {
 }
 
 /**
- * @brief RecentFiles::saveFilesToSettings
- * Write the list of recent files to settings
- */
+	@brief RecentFiles::saveFilesToSettings
+	Write the list of recent files to settings
+*/
 void RecentFiles::saveFilesToSettings()
 {
 	QSettings settings;

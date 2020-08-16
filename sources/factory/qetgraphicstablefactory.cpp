@@ -34,11 +34,11 @@ QetGraphicsTableFactory::QetGraphicsTableFactory()
 }
 
 /**
- * @brief QetGraphicsTableFactory::createAndAddNomenclature
- * Open a dialog for ask user the config of the table ,create a nomenclature table
- * and add it to diagram @diagram;
- * @param diagram
- */
+	@brief QetGraphicsTableFactory::createAndAddNomenclature
+	Open a dialog for ask user the config of the table ,create a nomenclature table
+	and add it to diagram @diagram;
+	@param diagram
+*/
 void QetGraphicsTableFactory::createAndAddNomenclature(Diagram *diagram)
 {
 	QScopedPointer<AddTableDialog> d(new AddTableDialog(new ElementQueryWidget(), diagram->views().first()));
@@ -50,11 +50,11 @@ void QetGraphicsTableFactory::createAndAddNomenclature(Diagram *diagram)
 }
 
 /**
- * @brief QetGraphicsTableFactory::createAndAddSummary
- * Open a dialog for ask user the config of the table ,create a summary table
- * and add it to diagram @diagram;
- * @param diagram
- */
+	@brief QetGraphicsTableFactory::createAndAddSummary
+	Open a dialog for ask user the config of the table ,create a summary table
+	and add it to diagram @diagram;
+	@param diagram
+*/
 void QetGraphicsTableFactory::createAndAddSummary(Diagram *diagram)
 {
 	QScopedPointer<AddTableDialog> d(new AddTableDialog(new SummaryQueryWidget(), diagram->views().first()));
@@ -104,14 +104,14 @@ void QetGraphicsTableFactory::create(Diagram *diagram, AddTableDialog *dialog)
 }
 
 /**
- * @brief QetGraphicsTableFactory::newTable
- * Create a new table .
- * @param diagram : Diagram where we must add the new table.
- * @param dialog : dialog conf, it's used to setup the model.
- * @param previous_table : If you know that the new table will have a previous table and you already now the previous table,
- * set it now they will improve time needed for creating the new table by avoiding to create a new model.
- * @return the new table
- */
+	@brief QetGraphicsTableFactory::newTable
+	Create a new table .
+	@param diagram : Diagram where we must add the new table.
+	@param dialog : dialog conf, it's used to setup the model.
+	@param previous_table : If you know that the new table will have a previous table and you already now the previous table,
+	set it now they will improve time needed for creating the new table by avoiding to create a new model.
+	@return the new table
+*/
 QetGraphicsTableItem *QetGraphicsTableFactory::newTable(Diagram *diagram, AddTableDialog *dialog, QetGraphicsTableItem *previous_table)
 {
 	auto table = new QetGraphicsTableItem();

@@ -30,11 +30,11 @@ class ElementTextItemGroup;
 class CrossRefItem;
 
 /**
- * @brief The DynamicElementTextItem class
- * This class provide a simple text field of element who can be added or removed directly from the diagram editor.
- * This text is created to compensate a big lack of the ElementTextItem : ElementTextItem can't be added or removed directly in the diagram editor
- * 
- */
+	@brief The DynamicElementTextItem class
+	This class provide a simple text field of element who can be added or removed directly from the diagram editor.
+	This text is created to compensate a big lack of the ElementTextItem : ElementTextItem can't be added or removed directly in the diagram editor
+	
+*/
 class DynamicElementTextItem : public DiagramTextItem
 {
 	friend class DynamicTextItemDelegate;

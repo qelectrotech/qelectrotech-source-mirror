@@ -25,16 +25,16 @@
 class QETProject;
 
 /**
- * @brief The ProjectDBModel class
- * This model is intended to be use with the @class projectDataBase
- * and is designed to be displayed by the @class QetGraphicsTableItem (but can be use by other view class since it inherit from QAbstractTableModel).
- * This class should be sufficient to display the content of the project data base from a query set by the method void ProjectDBModel::setQuery(const QString &query).
- * The indentifier method is used by widget editor to retrieve the good widget for edit the query. By defaut identifer return the string 'unknow'.
- * You should use setIdentfier method to set your custom identifier.
- * At the time this sentence is written, there is two identifier :
- * nomenclature
- * summary
- */
+	@brief The ProjectDBModel class
+	This model is intended to be use with the @class projectDataBase
+	and is designed to be displayed by the @class QetGraphicsTableItem (but can be use by other view class since it inherit from QAbstractTableModel).
+	This class should be sufficient to display the content of the project data base from a query set by the method void ProjectDBModel::setQuery(const QString &query).
+	The indentifier method is used by widget editor to retrieve the good widget for edit the query. By defaut identifer return the string 'unknow'.
+	You should use setIdentfier method to set your custom identifier.
+	At the time this sentence is written, there is two identifier :
+	nomenclature
+	summary
+*/
 class ProjectDBModel : public QAbstractTableModel
 {
     Q_OBJECT

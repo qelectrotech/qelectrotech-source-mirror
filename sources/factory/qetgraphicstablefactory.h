@@ -23,8 +23,8 @@ class QetGraphicsTableItem;
 class AddTableDialog;
 
 /**
- * @brief The QetGraphicsTableFactory class
- */
+	@brief The QetGraphicsTableFactory class
+*/
 class QetGraphicsTableFactory
 {
     public:

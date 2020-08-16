@@ -34,11 +34,11 @@ class QETProject;
 class ElementsTreeView;
 
 /**
- * @brief The ElementsCollectionWidget class
- * This widget embedd a tree view that display the element collection (common, custom, embedded)
- * and all action needed to use this widget.
- * This is the element collection widget used in the diagram editor.
- */
+	@brief The ElementsCollectionWidget class
+	This widget embedd a tree view that display the element collection (common, custom, embedded)
+	and all action needed to use this widget.
+	This is the element collection widget used in the diagram editor.
+*/
 class ElementsCollectionWidget : public QWidget
 {
         Q_OBJECT

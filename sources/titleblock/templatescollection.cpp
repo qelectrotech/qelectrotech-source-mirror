@@ -67,18 +67,18 @@ void TitleBlockTemplatesCollection::setProtocol(const QString &protocol) {
 }
 
 /**
- * @brief TitleBlockTemplatesCollection::collection
- * @return the collection where is stored this collection.
- */
+	@brief TitleBlockTemplatesCollection::collection
+	@return the collection where is stored this collection.
+*/
 QET::QetCollection TitleBlockTemplatesCollection::collection() const {
 	return m_collection;
 }
 
 /**
- * @brief TitleBlockTemplatesCollection::setCollection
- * Set the storage of this collection
- * @param c
- */
+	@brief TitleBlockTemplatesCollection::setCollection
+	Set the storage of this collection
+	@param c
+*/
 void TitleBlockTemplatesCollection::setCollection(QET::QetCollection c) {
 	m_collection = c;
 }

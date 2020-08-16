@@ -23,11 +23,11 @@
 #include "potentialselectordialog.h"
 
 /**
- * @brief LinkElementCommand::LinkElementCommand
- * Constructor
- * @param element_ : element where we work the link / unlink
- * @param parent : parent undo
- */
+	@brief LinkElementCommand::LinkElementCommand
+	Constructor
+	@param element_ : element where we work the link / unlink
+	@param parent : parent undo
+*/
 LinkElementCommand::LinkElementCommand(Element *element_, QUndoCommand *parent):
 	QUndoCommand(parent),
 	m_element(element_),
@@ -38,10 +38,10 @@ LinkElementCommand::LinkElementCommand(Element *element_, QUndoCommand *parent):
 }
 
 /**
- * @brief LinkElementCommand::mergeWith
- * @param other try to merge this command with other
- * @return true if merge with success else false
- */
+	@brief LinkElementCommand::mergeWith
+	@param other try to merge this command with other
+	@return true if merge with success else false
+*/
 bool LinkElementCommand::mergeWith(const QUndoCommand *other)
 {
 	if (id() != other->id() || other->childCount()) return false;
@@ -52,17 +52,17 @@ bool LinkElementCommand::mergeWith(const QUndoCommand *other)
 }
 
 /**
- * @brief LinkElementCommand::isLinkable
- * @param element_a
- * @param element_b
- * @param already_linked
- * @return true if element_a and element_b can be linked between them.
- * There is few condition to be linked :
- * 1- element_a and element_b must be linkable type. (Ex : A is master and B is slave 'OK', A and B is master 'KO')
- * 2- For element type slave and report (no matter if element is 'A' or 'B'), the element must be free (not connected to an element)
- * 3- we can override the section 2 by set already_linked to true. In this case, if slave or report is already
- * linked to the other element ('A' or 'B') return true, but if linked to another element (not 'A' or 'B') return false
- */
+	@brief LinkElementCommand::isLinkable
+	@param element_a
+	@param element_b
+	@param already_linked
+	@return true if element_a and element_b can be linked between them.
+	There is few condition to be linked :
+	1- element_a and element_b must be linkable type. (Ex : A is master and B is slave 'OK', A and B is master 'KO')
+	2- For element type slave and report (no matter if element is 'A' or 'B'), the element must be free (not connected to an element)
+	3- we can override the section 2 by set already_linked to true. In this case, if slave or report is already
+	linked to the other element ('A' or 'B') return true, but if linked to another element (not 'A' or 'B') return false
+*/
 bool LinkElementCommand::isLinkable(Element *element_a, Element *element_b, bool already_linked)
 {
 	switch(element_a->linkType())
@@ -124,11 +124,11 @@ bool LinkElementCommand::isLinkable(Element *element_a, Element *element_b, bool
 }
 
 /**
- * @brief LinkElementCommand::setLink
- * Replace all linked elements of edited element by elements stored in @element_list
- * This method do several check to know if element can be linked or not.
- * @param element_list
- */
+	@brief LinkElementCommand::setLink
+	Replace all linked elements of edited element by elements stored in @element_list
+	This method do several check to know if element can be linked or not.
+	@param element_list
+*/
 void LinkElementCommand::setLink(const QList<Element *>& element_list)
 {
 	m_linked_after.clear();
@@ -136,10 +136,10 @@ void LinkElementCommand::setLink(const QList<Element *>& element_list)
 }
 
 /**
- * @brief LinkElementCommand::setLink
- * This is an overloaded function.
- * @param element_
- */
+	@brief LinkElementCommand::setLink
+	This is an overloaded function.
+	@param element_
+*/
 void LinkElementCommand::setLink(Element *element_)
 {
 	QList<Element *> list;
@@ -148,10 +148,10 @@ void LinkElementCommand::setLink(Element *element_)
 }
 
 /**
- * @brief LinkElementCommand::unlink
- * Unlink all elements of element_list from the edited element.
- * @param element_list
- */
+	@brief LinkElementCommand::unlink
+	Unlink all elements of element_list from the edited element.
+	@param element_list
+*/
 void LinkElementCommand::unlink(QList<Element *> element_list)
 {
 	foreach(Element *elmt, element_list)
@@ -159,17 +159,17 @@ void LinkElementCommand::unlink(QList<Element *> element_list)
 }
 
 /**
- * @brief LinkElementCommand::unlinkAll
- * Unlink all element of the edited element
- */
+	@brief LinkElementCommand::unlinkAll
+	Unlink all element of the edited element
+*/
 void LinkElementCommand::unlinkAll() {
 	m_linked_after.clear();
 }
 
 /**
- * @brief LinkElementCommand::undo
- * Undo this command
- */
+	@brief LinkElementCommand::undo
+	Undo this command
+*/
 void LinkElementCommand::undo()
 {
 	if(m_element->diagram()) m_element->diagram()->showMe();
@@ -178,9 +178,9 @@ void LinkElementCommand::undo()
 }
 
 /**
- * @brief LinkElementCommand::redo
- * Redo this command
- */
+	@brief LinkElementCommand::redo
+	Redo this command
+*/
 void LinkElementCommand::redo()
 {
 	if(m_element->diagram()) m_element->diagram()->showMe();
@@ -221,13 +221,13 @@ void LinkElementCommand::redo()
 }
 
 /**
- * @brief LinkElementCommand::setUpNewLink
- * Update the content of m_link_after with the content of @element_list.
- * Each linkable element (know via the static method isLinkable) is added to m_linked_after
- * @already_link is used for the static method isLinkable.
- * @param element_list
- * @param already_link
- */
+	@brief LinkElementCommand::setUpNewLink
+	Update the content of m_link_after with the content of @element_list.
+	Each linkable element (know via the static method isLinkable) is added to m_linked_after
+	@already_link is used for the static method isLinkable.
+	@param element_list
+	@param already_link
+*/
 void LinkElementCommand::setUpNewLink(const QList<Element *> &element_list, bool already_link)
 {
 		//m_element is a master we can connect several element to it
@@ -252,11 +252,11 @@ void LinkElementCommand::setUpNewLink(const QList<Element *> &element_list, bool
 }
 
 /**
- * @brief LinkElementCommand::makeLink
- * Make the link between m_element and element_list;
- * This method unlink elements if needed.
- * @param element_list
- */
+	@brief LinkElementCommand::makeLink
+	Make the link between m_element and element_list;
+	This method unlink elements if needed.
+	@param element_list
+*/
 void LinkElementCommand::makeLink(const QList<Element *> &element_list)
 {
 		//List is empty, that mean m_element must be free, so we unlink all elements

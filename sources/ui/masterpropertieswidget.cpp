@@ -168,7 +168,7 @@ void MasterPropertiesWidget::setElement(Element *element)
 	pushed to the stack of element project.
 	Return true if link change, else false
 	@note is void no Return ???
- */
+*/
 void MasterPropertiesWidget::apply() {
 	if (QUndoCommand *undo = associatedUndo())
 		m_element -> diagram() -> undoStack().push(undo);

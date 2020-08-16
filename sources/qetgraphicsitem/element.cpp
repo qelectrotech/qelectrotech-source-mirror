@@ -70,11 +70,11 @@ class ElementXmlRetroCompatibility
 };
 
 /**
- * @brief Element::Element
- * @param location, location of this element
- * @param parent, parent graphics item
- * @param state, state of the instanciation
- */
+	@brief Element::Element
+	@param location, location of this element
+	@param parent, parent graphics item
+	@param state, state of the instanciation
+*/
 Element::Element(const ElementsLocation &location,
 		 QGraphicsItem *parent,
 		 int *state,
@@ -120,8 +120,8 @@ Element::Element(const ElementsLocation &location,
 }
 
 /**
- * @brief Element::~Element
- */
+	@brief Element::~Element
+*/
 Element::~Element()
 {
 	qDeleteAll (m_dynamic_text_list);
@@ -129,19 +129,19 @@ Element::~Element()
 }
 
 /**
- * @brief Element::terminals
- * @return the list of terminals of this element.
- */
+	@brief Element::terminals
+	@return the list of terminals of this element.
+*/
 QList<Terminal *> Element::terminals() const {
 	return m_terminals;
 }
 
 /**
- * @brief Element::conductors
- * @return The list of conductors docked to this element
- * the list is sorted according to the position of the terminal where the conductor is docked
- * from top to bottom, and left to right.
- */
+	@brief Element::conductors
+	@return The list of conductors docked to this element
+	the list is sorted according to the position of the terminal where the conductor is docked
+	from top to bottom, and left to right.
+*/
 QList<Conductor *> Element::conductors() const
 {
 	QList<Conductor *> conductors;
@@ -179,10 +179,10 @@ void Element::setHighlighted(bool hl) {
 }
 
 /**
- * @brief Element::displayHelpLine
- * Display the help line of each terminal if b is true
- * @param b
- */
+	@brief Element::displayHelpLine
+	Display the help line of each terminal if b is true
+	@param b
+*/
 void Element::displayHelpLine(bool b)
 {
 	foreach (Terminal *t, terminals())
@@ -190,11 +190,11 @@ void Element::displayHelpLine(bool b)
 }
 
 /**
- * @brief Element::paint
- * @param painter
- * @param options
- * @param widget
- */
+	@brief Element::paint
+	@param painter
+	@param options
+	@param widget
+*/
 void Element::paint(QPainter *painter,
 		    const QStyleOptionGraphicsItem *options,
 		    QWidget *)
@@ -224,13 +224,13 @@ QRectF Element::boundingRect() const {
 }
 
 /**
- * @brief Element::setSize
- * Define the size of the element.
- * The size must be a multiple of 10.
- * If not, the dimensions indicated will be arrrondies to higher tens.
- * @param wid
- * @param hei 
- */
+	@brief Element::setSize
+	Define the size of the element.
+	The size must be a multiple of 10.
+	If not, the dimensions indicated will be arrrondies to higher tens.
+	@param wid
+	@param hei
+*/
 void Element::setSize(int wid, int hei)
 {
 	prepareGeometryChange();
@@ -273,9 +273,9 @@ QPoint Element::hotspot() const {
 }
 
 /**
- * @brief Element::pixmap
- * @return the pixmap of this element
- */
+	@brief Element::pixmap
+	@return the pixmap of this element
+*/
 QPixmap Element::pixmap() {
 	return ElementPictureFactory::instance()->pixmap(m_location);
 }
@@ -306,7 +306,7 @@ void Element::drawAxes(QPainter *painter,
 	Dessine le cadre de selection de l'element de maniere systematiquement non antialiasee.
 	@param painter Le QPainter a utiliser pour dessiner les bornes.
 	@param options Les options de style a prendre en compte
- */
+*/
 void Element::drawSelection(QPainter *painter,
 			    const QStyleOptionGraphicsItem *options) {
 	Q_UNUSED(options);
@@ -332,7 +332,7 @@ void Element::drawSelection(QPainter *painter,
 	Dessine le cadre de selection de l'element de maniere systematiquement non antialiasee.
 	@param painter Le QPainter a utiliser pour dessiner les bornes.
 	@param options Les options de style a prendre en compte
- */
+*/
 void Element::drawHighlight(QPainter *painter,
 			    const QStyleOptionGraphicsItem *options) {
 	Q_UNUSED(options);
@@ -359,19 +359,19 @@ void Element::drawHighlight(QPainter *painter,
 }
 
 /**
- * @brief Element::buildFromXml
- * Build this element from an xml description
- * @param xml_def_elmt
- * @param state
- * Optional pointer which define the status of build
- * 0 - evreything all right
- * 4 - xml isn't a "definition"
- * 5 - attribute of the definition isn't present or valid
- * 6 - the definition is empty
- * 7 - parsing of a xml node who describe a graphical part failed.
- * 8 - No part of the drawing could be loaded
- * @return 
- */
+	@brief Element::buildFromXml
+	Build this element from an xml description
+	@param xml_def_elmt
+	@param state
+	Optional pointer which define the status of build
+	0 - evreything all right
+	4 - xml isn't a "definition"
+	5 - attribute of the definition isn't present or valid
+	6 - the definition is empty
+	7 - parsing of a xml node who describe a graphical part failed.
+	8 - No part of the drawing could be loaded
+	@return
+*/
 bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 {
 	m_state = QET::GIBuildingFromXml;
@@ -517,11 +517,11 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 }
 
 /**
- * @brief Element::parseElement
- * Parse the element of the xml description of this element
- * @param dom
- * @return 
- */
+	@brief Element::parseElement
+	Parse the element of the xml description of this element
+	@param dom
+	@return
+*/
 bool Element::parseElement(const QDomElement &dom)
 {
 	if      (dom.tagName() == "terminal")     return(parseTerminal(dom));
@@ -531,13 +531,13 @@ bool Element::parseElement(const QDomElement &dom)
 }
 
 /**
- * @brief Element::parseInput
- * Parse the input (old text field)
- * the parsed input are converted to dynamic text field, this function
- * is only here to keep compatibility with old text.
- * @param dom_element
- * @return 
- */
+	@brief Element::parseInput
+	Parse the input (old text field)
+	the parsed input are converted to dynamic text field, this function
+	is only here to keep compatibility with old text.
+	@param dom_element
+	@return
+*/
 bool Element::parseInput(const QDomElement &dom_element)
 {
 	qreal pos_x, pos_y;
@@ -588,11 +588,11 @@ bool Element::parseInput(const QDomElement &dom_element)
 }
 
 /**
- * @brief Element::parseDynamicText
- * Create the dynamic text field describ in @dom_element
- * @param dom_element
- * @return 
- */
+	@brief Element::parseDynamicText
+	Create the dynamic text field describ in @dom_element
+	@param dom_element
+	@return
+*/
 DynamicElementTextItem *Element::parseDynamicText(
 		const QDomElement &dom_element)
 {
@@ -610,11 +610,11 @@ DynamicElementTextItem *Element::parseDynamicText(
 }
 
 /*!
- * \brief Element::parseTerminal
- * Parse partTerminal from xml structure
- * \param dom_element
- * \return
- */
+	\brief Element::parseTerminal
+	Parse partTerminal from xml structure
+	\param dom_element
+	\return
+*/
 Terminal *Element::parseTerminal(const QDomElement &dom_element)
 {
 
@@ -668,18 +668,18 @@ bool Element::valideXml(QDomElement &e) {
 }
 
 /**
- * @brief Element::fromXml
- * Import the parameters of this element from a xml document.
- * When call this function ensure this element is already in a scene, because
- * the dynamic text item and element text item group (in the xml file) are created in this function
- * and need a diagram for create their Xref, when this element is linked to another.
- * If not the Xref can be not displayed, until the next call of update Xref of the group or text item.
- * @param e : the dom element where the parameter is stored
- * @param table_id_adr : Reference to the mapping table between IDs of the XML file
- * and the addresses in memory. If the import succeeds, it must be add the right couples (id, address).
- * @param handle_inputs_rotation : apply the rotation of this element to his child text
- * @return 
- */
+	@brief Element::fromXml
+	Import the parameters of this element from a xml document.
+	When call this function ensure this element is already in a scene, because
+	the dynamic text item and element text item group (in the xml file) are created in this function
+	and need a diagram for create their Xref, when this element is linked to another.
+	If not the Xref can be not displayed, until the next call of update Xref of the group or text item.
+	@param e : the dom element where the parameter is stored
+	@param table_id_adr : Reference to the mapping table between IDs of the XML file
+	and the addresses in memory. If the import succeeds, it must be add the right couples (id, address).
+	@param handle_inputs_rotation : apply the rotation of this element to his child text
+	@return
+*/
 bool Element::fromXml(QDomElement &e,
 		      QHash<int,
 		      Terminal *> &table_id_adr,
@@ -1245,11 +1245,11 @@ QDomElement Element::toXml(QDomDocument &document,
 }
 
 /**
- * @brief Element::addDynamiqueTextItem
- * Add @deti as a dynamic text item of this element, @deti is reparented to this
- * If @deti is null, a new DynamicElementTextItem is created and added to this element.
- * @param deti
- */
+	@brief Element::addDynamiqueTextItem
+	Add @deti as a dynamic text item of this element, @deti is reparented to this
+	If @deti is null, a new DynamicElementTextItem is created and added to this element.
+	@param deti
+*/
 void Element::addDynamicTextItem(DynamicElementTextItem *deti)
 {
 	if (deti && !m_dynamic_text_list.contains(deti))
@@ -1267,11 +1267,11 @@ void Element::addDynamicTextItem(DynamicElementTextItem *deti)
 }
 
 /**
- * @brief Element::removeDynamicTextItem
- * Remove @deti, no matter if is a child of this element or a child of a group of this element.
- * Set he parent item of @deti to 0, @deti is not deleted.
- * @param deti
- */
+	@brief Element::removeDynamicTextItem
+	Remove @deti, no matter if is a child of this element or a child of a group of this element.
+	Set he parent item of @deti to 0, @deti is not deleted.
+	@param deti
+*/
 void Element::removeDynamicTextItem(DynamicElementTextItem *deti)
 {
 	if (m_dynamic_text_list.contains(deti))
@@ -1296,23 +1296,23 @@ void Element::removeDynamicTextItem(DynamicElementTextItem *deti)
 }
 
 /**
- * @brief Element::dynamicTextItems
- * @return all dynamic text items of this element directly child of this element.
- * Texts in text-groups belonging to this element are not returned by this function.
- * @see ElementTextItemGroup::texts
- */
+	@brief Element::dynamicTextItems
+	@return all dynamic text items of this element directly child of this element.
+	Texts in text-groups belonging to this element are not returned by this function.
+	@see ElementTextItemGroup::texts
+*/
 QList<DynamicElementTextItem *> Element::dynamicTextItems() const {
 	return m_dynamic_text_list;
 }
 
 /**
- * @brief Element::addTextGroup
- * Create and add an element text item group to this element.
- * If this element already have a group with the same name,
- * then @name will renamed to name1 or name2 etc....
- * @param name : the name of the group
- * @return the created group.
- */
+	@brief Element::addTextGroup
+	Create and add an element text item group to this element.
+	If this element already have a group with the same name,
+	then @name will renamed to name1 or name2 etc....
+	@param name : the name of the group
+	@return the created group.
+*/
 ElementTextItemGroup *Element::addTextGroup(const QString &name)
 {
 	if(m_texts_group.isEmpty())
@@ -1341,10 +1341,10 @@ ElementTextItemGroup *Element::addTextGroup(const QString &name)
 }
 
 /**
- * @brief Element::addTextGroup
- * @param group add group @group to the group of this element.
- * the group must not be owned by an element.
- */
+	@brief Element::addTextGroup
+	@param group add group @group to the group of this element.
+	the group must not be owned by an element.
+*/
 void Element::addTextGroup(ElementTextItemGroup *group)
 {
 	if(group->parentElement())
@@ -1356,12 +1356,12 @@ void Element::addTextGroup(ElementTextItemGroup *group)
 }
 
 /**
- * @brief Element::removeTextGroup
- * Remove the text group @group from this element, and set the parent of group to 0.
- * group is not deleted.
- * All texts owned by the group will be reparented to this element
- * @param name
- */
+	@brief Element::removeTextGroup
+	Remove the text group @group from this element, and set the parent of group to 0.
+	group is not deleted.
+	All texts owned by the group will be reparented to this element
+	@param name
+*/
 void Element::removeTextGroup(ElementTextItemGroup *group)
 {
 	if(!m_texts_group.contains(group))
@@ -1386,11 +1386,11 @@ void Element::removeTextGroup(ElementTextItemGroup *group)
 }
 
 /**
- * @brief Element::textGroup
- * @param name
- * @return the text group named @name or nullptr if this element
- * haven't got a group with this name
- */
+	@brief Element::textGroup
+	@param name
+	@return the text group named @name or nullptr if this element
+	haven't got a group with this name
+*/
 ElementTextItemGroup *Element::textGroup(const QString &name) const
 {
 	for (ElementTextItemGroup *group : m_texts_group)
@@ -1401,21 +1401,21 @@ ElementTextItemGroup *Element::textGroup(const QString &name) const
 }
 
 /**
- * @brief Element::textGroups
- * @return All texts groups of this element
- */
+	@brief Element::textGroups
+	@return All texts groups of this element
+*/
 QList<ElementTextItemGroup *> Element::textGroups() const
 {
 	return m_texts_group;
 }
 
 /**
- * @brief Element::addTextToGroup
- * Add the text @text to the group @group;
- * If @group isn't owned by this element return false.
- * The text must be a text of this element.
- * @return : true if the text was succesfully added to the group.
- */
+	@brief Element::addTextToGroup
+	Add the text @text to the group @group;
+	If @group isn't owned by this element return false.
+	The text must be a text of this element.
+	@return : true if the text was succesfully added to the group.
+*/
 bool Element::addTextToGroup(DynamicElementTextItem *text,
 			     ElementTextItemGroup *group)
 {
@@ -1434,10 +1434,10 @@ bool Element::addTextToGroup(DynamicElementTextItem *text,
 }
 
 /**
- * @brief Element::removeTextFromGroup
- * Remove the text @text from the group @group, en reparent @text to this element
- * @return true if text was succesfully removed
- */
+	@brief Element::removeTextFromGroup
+	Remove the text @text from the group @group, en reparent @text to this element
+	@return true if text was succesfully removed
+*/
 bool Element::removeTextFromGroup(DynamicElementTextItem *text,
 				  ElementTextItemGroup *group)
 {
@@ -1456,13 +1456,13 @@ bool Element::removeTextFromGroup(DynamicElementTextItem *text,
 }
 
 /**
- * @brief Element::AlignedFreeTerminals
- * @return a list of terminal (owned by this element) aligned to other terminal (from other element)
- * The first Terminal of QPair is a Terminal owned by this element,
- * this terminal haven't got any conductor docked.
- * The second Terminal of QPair is a Terminal owned by an other element,
- * which is aligned with the first Terminal. The second Terminal can have or not docked conductors.
- */
+	@brief Element::AlignedFreeTerminals
+	@return a list of terminal (owned by this element) aligned to other terminal (from other element)
+	The first Terminal of QPair is a Terminal owned by this element,
+	this terminal haven't got any conductor docked.
+	The second Terminal of QPair is a Terminal owned by an other element,
+	which is aligned with the first Terminal. The second Terminal can have or not docked conductors.
+*/
 QList <QPair <Terminal *, Terminal *> > Element::AlignedFreeTerminals() const
 {
 	QList <QPair <Terminal *, Terminal *> > list;
@@ -1482,14 +1482,14 @@ QList <QPair <Terminal *, Terminal *> > Element::AlignedFreeTerminals() const
 }
 
 /**
- * @brief Element::initLink
- * Initialise the link between this element and other elements.
- * This method can be call once because init the link according to
- * uuid store in a private list, after link, the list is clear, so
- * call another time do nothing.
+	@brief Element::initLink
+	Initialise the link between this element and other elements.
+	This method can be call once because init the link according to
+	uuid store in a private list, after link, the list is clear, so
+	call another time do nothing.
  *
- * @param prj, ownership project of this element and other element to be linked
- */
+	@param prj, ownership project of this element and other element to be linked
+*/
 void Element::initLink(QETProject *prj)
 {
 		// if nothing to link return now
@@ -1524,11 +1524,11 @@ QString Element::linkTypeToString() const
 }
 
 /**
- * @brief Element::setElementInformations
- * Set new information for this element.
- * If new information is different of current infotmation emit @elementInfoChange
- * @param dc
- */
+	@brief Element::setElementInformations
+	Set new information for this element.
+	If new information is different of current infotmation emit @elementInfoChange
+	@param dc
+*/
 void Element::setElementInformations(DiagramContext dc)
 {
     if (m_element_informations == dc) {
@@ -1542,12 +1542,12 @@ void Element::setElementInformations(DiagramContext dc)
 }
 
 /**
- * @brief comparPos
- * Compare position of the two elements. Compare 3 points:
- * 1 folio - 2 row - 3 line
- * returns a response when a comparison is found.
- * @return true if elmt1 is at lower position than elmt 2, else false
- */
+	@brief comparPos
+	Compare position of the two elements. Compare 3 points:
+	1 folio - 2 row - 3 line
+	returns a response when a comparison is found.
+	@return true if elmt1 is at lower position than elmt 2, else false
+*/
 bool comparPos(const Element *elmt1, const Element *elmt2) {
 	//Compare folio first
 	if (elmt1->diagram()->folioIndex() != elmt2->diagram()->folioIndex())
@@ -1570,9 +1570,9 @@ bool comparPos(const Element *elmt1, const Element *elmt2) {
 }
 
 /**
- * @brief Element::mouseMoveEvent
- * @param event
- */
+	@brief Element::mouseMoveEvent
+	@param event
+*/
 void Element::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
 	QetGraphicsItem::mouseMoveEvent(event);
@@ -1583,9 +1583,9 @@ void Element::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief Element::mouseReleaseEvent
- * @param event
- */
+	@brief Element::mouseReleaseEvent
+	@param event
+*/
 void Element::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
 	QetGraphicsItem::mouseReleaseEvent(event);
@@ -1596,10 +1596,10 @@ void Element::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * When mouse over element
- * change m_mouse_over to true   (used in paint() function )
- * Also highlight linked elements
- * @param e QGraphicsSceneHoverEvent
+	When mouse over element
+	change m_mouse_over to true   (used in paint() function )
+	Also highlight linked elements
+	@param e QGraphicsSceneHoverEvent
 */
 void Element::hoverEnterEvent(QGraphicsSceneHoverEvent *e) {
     Q_UNUSED(e)
@@ -1613,10 +1613,10 @@ void Element::hoverEnterEvent(QGraphicsSceneHoverEvent *e) {
 }
 
 /**
- * When mouse over element leave the position
- * change m_mouse_over to false(used in paint() function )
- * Also un-highlight linked elements
- * @param e QGraphicsSceneHoverEvent
+	When mouse over element leave the position
+	change m_mouse_over to false(used in paint() function )
+	Also un-highlight linked elements
+	@param e QGraphicsSceneHoverEvent
 */
 void Element::hoverLeaveEvent(QGraphicsSceneHoverEvent *e) {
     Q_UNUSED(e)
@@ -1629,11 +1629,11 @@ void Element::hoverLeaveEvent(QGraphicsSceneHoverEvent *e) {
 }
 
 /**
- * @brief Element::setUpFormula
- * Set up the formula used to create the label of this element
- * @param : if true set tagged text to code letter (ex K for coil) with condition :
- * formula is empty, text tagged "label" is emptty or "_";
- */
+	@brief Element::setUpFormula
+	Set up the formula used to create the label of this element
+	@param : if true set tagged text to code letter (ex K for coil) with condition :
+	formula is empty, text tagged "label" is emptty or "_";
+*/
 void Element::setUpFormula(bool code_letter)
 {
 	Q_UNUSED(code_letter)
@@ -1676,34 +1676,34 @@ void Element::setUpFormula(bool code_letter)
 }
 
 /**
- * @brief Element::getPrefix
- * get Element Prefix
- */
+	@brief Element::getPrefix
+	get Element Prefix
+*/
 QString Element::getPrefix() const{
 	return m_prefix;
 }
 
 /**
- * @brief Element::setPrefix
- * set Element Prefix
- */
+	@brief Element::setPrefix
+	set Element Prefix
+*/
 void Element::setPrefix(QString prefix) {
 	m_prefix = std::move(prefix);
 }
 
 /**
- * @brief Element::freezeLabel
- * Freeze this element label
- */
+	@brief Element::freezeLabel
+	Freeze this element label
+*/
 void Element::freezeLabel(bool freeze)
 {
 	m_freeze_label = freeze;
 }
 
 /**
- * @brief Element::freezeNewAddedElement
- * Freeze this label if needed
- */
+	@brief Element::freezeNewAddedElement
+	Freeze this label if needed
+*/
 void Element::freezeNewAddedElement() {
 	if (this->diagram()->freezeNewElements()
 			|| this->diagram()->project()->isFreezeNewElements()) {
@@ -1713,11 +1713,11 @@ void Element::freezeNewAddedElement() {
 }
 
 /**
- * @brief Element::actualLabel
- * Always return the current label to be displayed.
- * This function is usefull when label is based on formula, because label can change at any time.
- * @return
- */
+	@brief Element::actualLabel
+	Always return the current label to be displayed.
+	This function is usefull when label is based on formula, because label can change at any time.
+	@return
+*/
 QString Element::actualLabel()
 {
 	if (m_element_informations.value("formula").toString().isEmpty()) {
@@ -1733,9 +1733,9 @@ QString Element::actualLabel()
 }
 
 /**
- * @brief Element::name
- * @return the human name of this element
- */
+	@brief Element::name
+	@return the human name of this element
+*/
 QString Element::name() const {
 	return m_names.name(m_location.baseName());
 }

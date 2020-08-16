@@ -20,9 +20,9 @@
 #include <QMetaEnum>
 
 /**
- * @brief XRefProperties::XRefProperties
- * Default Constructor
- */
+	@brief XRefProperties::XRefProperties
+	Default Constructor
+*/
 XRefProperties::XRefProperties()
 {
 	m_show_power_ctc = true;
@@ -36,11 +36,11 @@ XRefProperties::XRefProperties()
 }
 
 /**
- * @brief XRefProperties::toSettings
- * Save to settings
- * @param settings: QSettings to use
- * @param prefix: prefix before properties name
- */
+	@brief XRefProperties::toSettings
+	Save to settings
+	@param settings: QSettings to use
+	@param prefix: prefix before properties name
+*/
 void XRefProperties::toSettings(QSettings &settings, const QString prefix) const {
 	settings.setValue(prefix + "showpowerctc", m_show_power_ctc);
 	QString display = m_display == Cross? "cross" : "contacts";
@@ -64,11 +64,11 @@ void XRefProperties::toSettings(QSettings &settings, const QString prefix) const
 }
 
 /**
- * @brief XRefProperties::fromSettings
- * load from settings
- * @param settings: QSettings to use
- * @param prefix: prefix before properties name
- */
+	@brief XRefProperties::fromSettings
+	load from settings
+	@param settings: QSettings to use
+	@param prefix: prefix before properties name
+*/
 void XRefProperties::fromSettings(const QSettings &settings, const QString prefix)
 {
 	m_show_power_ctc = settings.value(prefix + "showpowerctc", true).toBool();
@@ -89,10 +89,10 @@ void XRefProperties::fromSettings(const QSettings &settings, const QString prefi
 }
 
 /**
- * @brief XRefProperties::toXml
- * Save to xml
- * @param xml_element: QDomElement to use for saving
- */
+	@brief XRefProperties::toXml
+	Save to xml
+	@param xml_element: QDomElement to use for saving
+*/
 QDomElement XRefProperties::toXml(QDomDocument &xml_document) const {
 
     QDomElement xml_element = xml_document.createElement("xref");
@@ -123,10 +123,10 @@ QDomElement XRefProperties::toXml(QDomDocument &xml_document) const {
 }
 
 /**
- * @brief XRefProperties::fromXml
- * Load from xml
- * @param xml_element: QDomElement to use for load
- */
+	@brief XRefProperties::fromXml
+	Load from xml
+	@param xml_element: QDomElement to use for load
+*/
 bool XRefProperties::fromXml(const QDomElement &xml_element) {
 	m_show_power_ctc = xml_element.attribute("showpowerctc")  == "true";
 	QString display = xml_element.attribute("displayhas", "cross");
@@ -153,12 +153,12 @@ bool XRefProperties::fromXml(const QDomElement &xml_element) {
 }
 
 /**
- * @brief XRefProperties::defaultProperties
- * @return the default properties stored in the setting file
- * For the xref, there is 2 propreties.
- * For coil, stored with the string "coil" in the returned QHash.
- * For protection, stored with the string "protection" in the returned QHash.
- */
+	@brief XRefProperties::defaultProperties
+	@return the default properties stored in the setting file
+	For the xref, there is 2 propreties.
+	For coil, stored with the string "coil" in the returned QHash.
+	For protection, stored with the string "protection" in the returned QHash.
+*/
 QHash<QString, XRefProperties> XRefProperties::defaultProperties()
 {
 	QHash <QString, XRefProperties> hash;

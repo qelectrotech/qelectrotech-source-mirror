@@ -24,11 +24,11 @@
 #include "qgimanager.h"
 
 /**
- * @brief The ElementEditionCommand class
- * 	ElementEditionCommand is the base class for all commands classes involved in
+	@brief The ElementEditionCommand class
+	ElementEditionCommand is the base class for all commands classes involved in
 	the edition of an electrical element. It provides commonly required methods
 	and attributes, such as accessors to the modified scene and view.
- */
+*/
 class ElementEditionCommand : public QUndoCommand
 {
 		// constructors, destructor

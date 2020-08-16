@@ -110,12 +110,12 @@ void LineEditor::disconnectChangeConnections()
 }
 
 /**
- * @brief LineEditor::setPart
- * Specifie to this editor the part to edit.
- * Note that an editor can accept or refuse to edit a part. This editor accept only PartLine.
- * @param new_part
- * @return
- */
+	@brief LineEditor::setPart
+	Specifie to this editor the part to edit.
+	Note that an editor can accept or refuse to edit a part. This editor accept only PartLine.
+	@param new_part
+	@return
+*/
 bool LineEditor::setPart(CustomElementPart *new_part)
 {
 	if (!new_part)
@@ -164,17 +164,17 @@ QList<CustomElementPart*> LineEditor::currentParts() const {
 }
 
 /**
- * @brief LineEditor::editedP1
- * @return The edited P1 in item coordinate
- */
+	@brief LineEditor::editedP1
+	@return The edited P1 in item coordinate
+*/
 QPointF LineEditor::editedP1() const {
 	return part -> mapFromScene(x1->value(), y1->value());
 }
 
 /**
- * @brief LineEditor::editedP2
- * @return The edited P2 in item coordinate
- */
+	@brief LineEditor::editedP2
+	@return The edited P2 in item coordinate
+*/
 QPointF LineEditor::editedP2() const {
 	return part -> mapFromScene(x2->value(), y2->value());
 }
@@ -366,9 +366,9 @@ void LineEditor::lineEditingFinishedY2()
 }
 
 /**
- * @brief LineEditor::updateForm
- * Update the value of the widgets
- */
+	@brief LineEditor::updateForm
+	Update the value of the widgets
+*/
 void LineEditor::updateForm()
 {
 	if (!part) return;
@@ -387,11 +387,11 @@ void LineEditor::updateForm()
 }
 
 /**
- * @brief LineEditor::activeConnections
- * Enable/disable connection between editor widget and slot editingFinished
- * True == enable | false == disable
- * @param active
- */
+	@brief LineEditor::activeConnections
+	Enable/disable connection between editor widget and slot editingFinished
+	True == enable | false == disable
+	@param active
+*/
 void LineEditor::activeConnections(bool active)
 {
 	if (active)

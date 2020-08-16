@@ -21,12 +21,12 @@
 #include <QObject>
 
 /**
- * @brief ChangeElementInformationCommand::ChangeElementInformationCommand
- * Default constructor
- * @param elmt : element to change information
- * @param old_info : old info of element
- * @param new_info : new info of element
- */
+	@brief ChangeElementInformationCommand::ChangeElementInformationCommand
+	Default constructor
+	@param elmt : element to change information
+	@param old_info : old info of element
+	@param new_info : new info of element
+*/
 ChangeElementInformationCommand::ChangeElementInformationCommand(Element *elmt, DiagramContext &old_info, DiagramContext &new_info, QUndoCommand *parent) :
 	QUndoCommand (parent),
 	m_element    (elmt),
@@ -46,16 +46,16 @@ bool ChangeElementInformationCommand::mergeWith(const QUndoCommand *other)
 }
 
 /**
- * @brief ChangeElementInformationCommand::undo
- */
+	@brief ChangeElementInformationCommand::undo
+*/
 void ChangeElementInformationCommand::undo() {
 	m_element -> setElementInformations(m_old_info);
 	updateProjectDB();
 }
 
 /**
- * @brief ChangeElementInformationCommand::redo
- */
+	@brief ChangeElementInformationCommand::redo
+*/
 void ChangeElementInformationCommand::redo() {
 	m_element -> setElementInformations(m_new_info);
 	updateProjectDB();

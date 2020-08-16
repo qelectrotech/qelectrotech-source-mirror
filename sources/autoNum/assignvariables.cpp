@@ -29,8 +29,8 @@
 namespace autonum
 {
 	/**
-	 * @brief sequentialNumbers::sequentialNumbers
-	 */
+		@brief sequentialNumbers::sequentialNumbers
+	*/
 	sequentialNumbers::sequentialNumbers()
 	{}
 
@@ -83,12 +83,13 @@ namespace autonum
 	}
 
 	/**
-	 * @brief sequentialNumbers::toXml
-	 * export this sequential numbers into a QDomElement.
-	 * @param document : QDomDocument used to create the QDomElement
-	 * @param tag_name : the tag name used for the QDomElement.
-	 * @return A QDomElement, if this sequential have no value, the returned QDomELement is empty
-	 */
+		@brief sequentialNumbers::toXml
+		export this sequential numbers into a QDomElement.
+		@param document : QDomDocument used to create the QDomElement
+		@param tag_name : the tag name used for the QDomElement.
+		@return A QDomElement, if this sequential have no value,
+		the returned QDomELement is empty
+	*/
 	QDomElement sequentialNumbers::toXml(QDomDocument &document, const QString& tag_name) const
 	{
 		QDomElement element = document.createElement(tag_name);
@@ -110,10 +111,10 @@ namespace autonum
 	}
 
 	/**
-	 * @brief sequentialNumbers::fromXml
-	 * Import sequential values from a QDomElement
-	 * @param element
-	 */
+		@brief sequentialNumbers::fromXml
+		Import sequential values from a QDomElement
+		@param element
+	*/
 	void sequentialNumbers::fromXml(const QDomElement &element)
 	{
 		if (!element.hasChildNodes())
@@ -152,14 +153,17 @@ namespace autonum
 	}
 
 	/**
-	 * @brief AssignVariables::formulaToLabel
-	 * Return the @formula with variable assigned (ready to be displayed)
-	 * @param formula - the formula to work
-	 * @param seqStruct - struct where is stocked int values (struct is passed as a reference and modified by this static method)
-	 * @param diagram - the diagram where occure the formula.
-	 * @param elmt - parent element (if any) of the formula
-	 * @return the string with variable assigned.
-	 */
+		@brief AssignVariables::formulaToLabel
+		Return the @formula with variable assigned
+		(ready to be displayed)
+		@param formula - the formula to work
+		@param seqStruct - struct where is stocked int values
+		(struct is passed as a reference
+		and modified by this static method)
+		@param diagram - the diagram where occure the formula.
+		@param elmt - parent element (if any) of the formula
+		@return the string with variable assigned.
+	*/
 	QString AssignVariables::formulaToLabel(QString formula, sequentialNumbers &seqStruct, Diagram *diagram, const Element *elmt)
 	{
 		AssignVariables av(std::move(formula), seqStruct, diagram, elmt);
@@ -168,12 +172,13 @@ namespace autonum
 	}
 	
 	/**
-	 * @brief AssignVariables::replaceVariable
-	 * Replace the variables in @formula in form %{my-var} to the corresponding value stored in @dc
-	 * @param formula
-	 * @param dc
-	 * @return 
-	 */
+		@brief AssignVariables::replaceVariable
+		Replace the variables in @formula in form %{my-var}
+		to the corresponding value stored in @dc
+		@param formula
+		@param dc
+		@return
+	*/
 	QString AssignVariables::replaceVariable(const QString &formula, const DiagramContext &dc)
 	{
 		QString str = formula;
@@ -297,12 +302,13 @@ namespace autonum
 	}
 
 	/**
-	 * @brief setSequentialToList
-	 * Append all sequential of type @type owned by @context in list
-	 * @param list : list to have value inserted
-	 * @param context : numerotation context to retrieve value
-	 * @param type : type of sequential (unit, unitfolio, ten, tenfolio, hundred, hundredfolio)
-	 */
+		@brief setSequentialToList
+		Append all sequential of type @type owned by @context in list
+		@param list : list to have value inserted
+		@param context : numerotation context to retrieve value
+		@param type : type of sequential
+		(unit, unitfolio, ten, tenfolio, hundred, hundredfolio)
+	*/
 	void setSequentialToList(QStringList &list, NumerotationContext &context, const QString& type)
 	{
 		for (int i = 0; i < context.size(); i++)
@@ -321,12 +327,12 @@ namespace autonum
 	}
 
 	/**
-	 * @brief setFolioSequentialToHash
-	 * Insert all value of @list in @hash with key @autoNumName
-	 * @param list : list to get values from
-	 * @param hash : hash to have values inserted
-	 * @param autoNumName : name to use as key of hash
-	 */
+		@brief setFolioSequentialToHash
+		Insert all value of @list in @hash with key @autoNumName
+		@param list : list to get values from
+		@param hash : hash to have values inserted
+		@param autoNumName : name to use as key of hash
+	*/
 	void setFolioSequentialToHash(QStringList &list, QHash<QString, QStringList> &hash, const QString& autoNumName)
 	{
 		if (hash.isEmpty() || !hash.contains(autoNumName))
@@ -355,15 +361,20 @@ namespace autonum
 	}
 
 	/**
-	 * @brief setSequential
-	 * Fill seqStruct
-	 * @param label : label of sequential to fill (%sequ_, %sequf_, %seqt_, ect....)
-	 * @param seqStruct : struct to fill
-	 * @param context : numerotation context use to know the current sequential num.
-	 * @param diagram : diagram where the sequential occur, notably use when label is folio type (%sequf_, %seqtf_, %seqhf_),
-	 * to keep up to date the current sequential of folio.
-	 * @param hashKey : the hash key used to store the sequential for folio type.
-	 */
+		@brief setSequential
+		Fill seqStruct
+		@param label : label of sequential to fill
+		(%sequ_, %sequf_, %seqt_, ect....)
+		@param seqStruct : struct to fill
+		@param context : numerotation context use
+		to know the current sequential num.
+		@param diagram : diagram where the sequential occur,
+		notably use when label is folio type
+		(%sequf_, %seqtf_, %seqhf_),
+		to keep up to date the current sequential of folio.
+		@param hashKey :
+		the hash key used to store the sequential for folio type.
+	*/
 	void setSequential(const QString& label, sequentialNumbers &seqStruct, NumerotationContext &context, Diagram *diagram, const QString& hashKey)
 	{
 		if (!context.isEmpty())
@@ -399,10 +410,10 @@ namespace autonum
 	}
 
 	/**
-	 * @brief numerotationContextToFormula
-	 * @param nc
-	 * @return the numerotation context, converted to formula
-	 */
+		@brief numerotationContextToFormula
+		@param nc
+		@return the numerotation context, converted to formula
+	*/
 	QString numerotationContextToFormula(const NumerotationContext &nc)
 	{
 		QString type;
@@ -476,11 +487,13 @@ namespace autonum
 	}
 
 	/**
-	 * @brief elementPrefixForLocation
-	 * @param location
-	 * @return the prefix for an element represented by location, prefix can be null.
-	 * Search for a prefix only if @location represent an element embedded in a project
-	 */
+		@brief elementPrefixForLocation
+		@param location
+		@return the prefix for an element represented by location,
+			prefix can be null.
+		Search for a prefix only if @location represent
+		an element embedded in a project
+	*/
 	QString elementPrefixForLocation(const ElementsLocation &location)
 	{
 		if (!location.isProject())

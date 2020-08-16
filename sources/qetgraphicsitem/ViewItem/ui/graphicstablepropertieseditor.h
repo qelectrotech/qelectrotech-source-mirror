@@ -32,9 +32,9 @@ class QUndoStack;
 class QButtonGroup;
 
 /**
- * @brief The GraphicsTablePropertiesEditor class
- * This widget is used to edit the property of both QetGraphicsTableItem and QetGraphicsHeaderItem
- */
+	@brief The GraphicsTablePropertiesEditor class
+	This widget is used to edit the property of both QetGraphicsTableItem and QetGraphicsHeaderItem
+*/
 class GraphicsTablePropertiesEditor : public PropertiesEditorWidget
 {
     Q_OBJECT

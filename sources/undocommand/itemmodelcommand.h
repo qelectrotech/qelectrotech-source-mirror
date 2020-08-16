@@ -25,9 +25,9 @@
 class QAbstractItemModel;
 
 /**
- * @brief The ModelIndexCommand class
- * Change a data of an index of QAbstractItemModel
- */
+	@brief The ModelIndexCommand class
+	Change a data of an index of QAbstractItemModel
+*/
 class ModelIndexCommand : public QUndoCommand
 {
     public:
@@ -46,9 +46,9 @@ class ModelIndexCommand : public QUndoCommand
 };
 
 /**
- * @brief The ModelHeaderDataCommand class
- * Change the data of a header
- */
+	@brief The ModelHeaderDataCommand class
+	Change the data of a header
+*/
 class ModelHeaderDataCommand : public QUndoCommand
 {
 	public:

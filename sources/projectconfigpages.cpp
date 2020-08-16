@@ -204,7 +204,7 @@ void ProjectMainConfigPage::readValuesFromProject() {
 /**
 	Set the content of this page read only if the project is read only,
 	editable if the project is editable.
- */
+*/
 void ProjectMainConfigPage::adjustReadOnly() {
 	bool is_read_only = m_project -> isReadOnly();
 	title_value_ -> setReadOnly(is_read_only);
@@ -213,11 +213,11 @@ void ProjectMainConfigPage::adjustReadOnly() {
 //######################################################################################//
 
 /**
- * @brief ProjectAutoNumConfigPage::ProjectAutoNumConfigPage
- * Default constructor
- * @param project, project to edit
- * @param parent, parent widget
- */
+	@brief ProjectAutoNumConfigPage::ProjectAutoNumConfigPage
+	Default constructor
+	@param project, project to edit
+	@param parent, parent widget
+*/
 ProjectAutoNumConfigPage::ProjectAutoNumConfigPage (QETProject *project, QWidget *parent) :
 	ProjectConfigPage(project, parent)
 {
@@ -227,32 +227,32 @@ ProjectAutoNumConfigPage::ProjectAutoNumConfigPage (QETProject *project, QWidget
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::title
- * Title of this config page
- * @return
- */
+	@brief ProjectAutoNumConfigPage::title
+	Title of this config page
+	@return
+*/
 QString ProjectAutoNumConfigPage::title() const {
     return tr("Numérotation auto");
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::icon
- * Icon of this config pafe
- * @return
- */
+	@brief ProjectAutoNumConfigPage::icon
+	Icon of this config pafe
+	@return
+*/
 QIcon ProjectAutoNumConfigPage::icon() const {
 	return QIcon (QET::Icons::AutoNum);
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::applyProjectConf
- */
+	@brief ProjectAutoNumConfigPage::applyProjectConf
+*/
 void ProjectAutoNumConfigPage::applyProjectConf() {}
 
 /**
- * @brief ProjectAutoNumConfigPage::initWidgets
- * Init some widget of this page
- */
+	@brief ProjectAutoNumConfigPage::initWidgets
+	Init some widget of this page
+*/
 void ProjectAutoNumConfigPage::initWidgets()
 {
 	QTabWidget *tab_widget = new QTabWidget(this);
@@ -283,9 +283,9 @@ void ProjectAutoNumConfigPage::initWidgets()
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::readValuesFromProject
- * Read value stored on project, and update display
- */
+	@brief ProjectAutoNumConfigPage::readValuesFromProject
+	Read value stored on project, and update display
+*/
 void ProjectAutoNumConfigPage::readValuesFromProject()
 {
 		//Conductor Tab
@@ -305,16 +305,16 @@ void ProjectAutoNumConfigPage::readValuesFromProject()
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::adjustReadOnly
- * set this config page disable if project is read only
- */
+	@brief ProjectAutoNumConfigPage::adjustReadOnly
+	set this config page disable if project is read only
+*/
 void ProjectAutoNumConfigPage::adjustReadOnly() {
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::buildConnections
- * setup some connections
- */
+	@brief ProjectAutoNumConfigPage::buildConnections
+	setup some connections
+*/
 void ProjectAutoNumConfigPage::buildConnections()
 {
 		//Management Tab
@@ -340,30 +340,30 @@ void ProjectAutoNumConfigPage::buildConnections()
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::updateContext_conductor
- * Display the current selected context for conductor
- * @param str, key of context stored in project
- */
+	@brief ProjectAutoNumConfigPage::updateContext_conductor
+	Display the current selected context for conductor
+	@param str, key of context stored in project
+*/
 void ProjectAutoNumConfigPage::updateContextConductor(const QString& str) {
 	if (str == tr("Nom de la nouvelle numérotation")) m_saw_conductor -> setContext(NumerotationContext());
 	else m_saw_conductor ->setContext(m_project->conductorAutoNum(str));
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::updateContext_folio
- * Display the current selected context for folio
- * @param str, key of context stored in project
- */
+	@brief ProjectAutoNumConfigPage::updateContext_folio
+	Display the current selected context for folio
+	@param str, key of context stored in project
+*/
 void ProjectAutoNumConfigPage::updateContextFolio(const QString& str) {
 	if (str == tr("Nom de la nouvelle numérotation")) m_saw_folio -> setContext(NumerotationContext());
 	else m_saw_folio ->setContext(m_project->folioAutoNum(str));
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::updateContextElement
- * Display the current selected context for element
- * @param str, key of context stored in project
- */
+	@brief ProjectAutoNumConfigPage::updateContextElement
+	Display the current selected context for element
+	@param str, key of context stored in project
+*/
 void ProjectAutoNumConfigPage::updateContextElement(const QString& str)
 {
 	if (str == tr("Nom de la nouvelle numérotation"))
@@ -377,9 +377,9 @@ void ProjectAutoNumConfigPage::updateContextElement(const QString& str)
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::saveContextElement
- * Save the current displayed Element formula in project
- */
+	@brief ProjectAutoNumConfigPage::saveContextElement
+	Save the current displayed Element formula in project
+*/
 void ProjectAutoNumConfigPage::saveContextElement()
 {
 		// If the text is the default text "Name of new numerotation" save the edited context
@@ -408,9 +408,9 @@ void ProjectAutoNumConfigPage::saveContextElement()
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::removeContextElement
- * Remove from project the current element numerotation context
- */
+	@brief ProjectAutoNumConfigPage::removeContextElement
+	Remove from project the current element numerotation context
+*/
 void ProjectAutoNumConfigPage::removeContextElement()
 {
 		//if default text, return
@@ -421,9 +421,9 @@ void ProjectAutoNumConfigPage::removeContextElement()
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::saveContext_conductor
- * Save the current displayed conductor context in project
- */
+	@brief ProjectAutoNumConfigPage::saveContext_conductor
+	Save the current displayed conductor context in project
+*/
 void ProjectAutoNumConfigPage::saveContextConductor()
 {
 		// If the text is the default text "Name of new numerotation" save the edited context
@@ -451,9 +451,9 @@ void ProjectAutoNumConfigPage::saveContextConductor()
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::saveContext_folio
- * Save the current displayed folio context in project
- */
+	@brief ProjectAutoNumConfigPage::saveContext_folio
+	Save the current displayed folio context in project
+*/
 void ProjectAutoNumConfigPage::saveContextFolio() {
 	// If the text is the default text "Name of new numerotation" save the edited context
 	// With the the name "No name"
@@ -474,9 +474,9 @@ void ProjectAutoNumConfigPage::saveContextFolio() {
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::applyAutoNum
- * Apply auto folio numbering, New Folios or Selected Folios
- */
+	@brief ProjectAutoNumConfigPage::applyAutoNum
+	Apply auto folio numbering, New Folios or Selected Folios
+*/
 void ProjectAutoNumConfigPage::applyAutoNum() {
 
 	if (m_faw->newFolios){
@@ -498,9 +498,9 @@ void ProjectAutoNumConfigPage::applyAutoNum() {
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::applyAutoManagement
- * Apply Management Options in Selected Folios
- */
+	@brief ProjectAutoNumConfigPage::applyAutoManagement
+	Apply Management Options in Selected Folios
+*/
 void ProjectAutoNumConfigPage::applyManagement() {
 	int from;
 	int to;
@@ -592,9 +592,9 @@ void ProjectAutoNumConfigPage::applyManagement() {
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::removeContext
- * Remove from project the current conductor numerotation context
- */
+	@brief ProjectAutoNumConfigPage::removeContext
+	Remove from project the current conductor numerotation context
+*/
 void ProjectAutoNumConfigPage::removeContextConductor() {
 	//if default text, return
 	if ( m_saw_conductor->contextComboBox()-> currentText() == tr("Nom de la nouvelle numérotation") ) return;
@@ -604,9 +604,9 @@ void ProjectAutoNumConfigPage::removeContextConductor() {
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::removeContext_folio
- * Remove from project the current folio numerotation context
- */
+	@brief ProjectAutoNumConfigPage::removeContext_folio
+	Remove from project the current folio numerotation context
+*/
 void ProjectAutoNumConfigPage::removeContextFolio() {
 	//if default text, return
 	if ( m_saw_folio->contextComboBox() -> currentText() == tr("Nom de la nouvelle numérotation") ) return;
@@ -616,10 +616,10 @@ void ProjectAutoNumConfigPage::removeContextFolio() {
 }
 
 /**
- * @brief ProjectAutoNumConfigPage::changeToTab
- * @param tab index
- * Change to Selected Tab
- */
+	@brief ProjectAutoNumConfigPage::changeToTab
+	@param tab index
+	Change to Selected Tab
+*/
 void ProjectAutoNumConfigPage::changeToTab(int i)
 {
 	Q_UNUSED(i);

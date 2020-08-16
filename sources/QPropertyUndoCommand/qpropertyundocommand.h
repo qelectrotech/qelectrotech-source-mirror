@@ -24,12 +24,12 @@
 class QObject;
 
 /**
- * @brief The QPropertyUndoCommand class
- * This undo command manage QProperty of a QObject.
- * This undo command can use QPropertyAnimation to animate the change when undo/redo is call
- * To use animation call setAnimated(true). By default animation is disable.
- * Some QVariant date can't be animated and result this command don't work.
- */
+	@brief The QPropertyUndoCommand class
+	This undo command manage QProperty of a QObject.
+	This undo command can use QPropertyAnimation to animate the change when undo/redo is call
+	To use animation call setAnimated(true). By default animation is disable.
+	Some QVariant date can't be animated and result this command don't work.
+*/
 class QPropertyUndoCommand : public QUndoCommand
 {
 	public:

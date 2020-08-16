@@ -106,10 +106,10 @@ QETElementEditor::~QETElementEditor() {
 }
 
 /**
- * @brief QETElementEditor::setLocation
- * The new location to edit
- * @param el
- */
+	@brief QETElementEditor::setLocation
+	The new location to edit
+	@param el
+*/
 void QETElementEditor::setLocation(const ElementsLocation &el) {
 	location_ = el;
 	opened_from_file = false;
@@ -132,9 +132,9 @@ void QETElementEditor::setFileName(const QString &fn) {
 }
 
 /**
- * @brief QETElementEditor::setupActions
- * Create action used in Element editor
- */
+	@brief QETElementEditor::setupActions
+	Create action used in Element editor
+*/
 void QETElementEditor::setupActions() {
 	new_element       = new QAction(QET::Icons::DocumentNew,          tr("&Nouveau"),                                      this);
 	open              = new QAction(QET::Icons::FolderOpen,           tr("&Ouvrir"),                                       this);
@@ -260,7 +260,7 @@ void QETElementEditor::setupActions() {
 	addToolBar(Qt::TopToolBarArea, depth_toolbar);
 
 	/*
-	 * Action related to zoom
+		Action related to zoom
 	 */
 	m_zoom_ag = new QActionGroup(this);
 
@@ -280,7 +280,7 @@ void QETElementEditor::setupActions() {
 	connect(zoom_reset, SIGNAL(triggered()), m_view,  SLOT(zoomReset() ));
 
 	/*
-	 * Action related to primitive creation
+		Action related to primitive creation
 	 */
 	connect (m_elmt_scene, SIGNAL(partsAdded()), this, SLOT(UncheckAddPrimitive()));
 	parts = new QActionGroup(this);
@@ -359,8 +359,8 @@ void QETElementEditor::setupActions() {
 }
 
 /**
- * @brief QETElementEditor::setupMenus
- */
+	@brief QETElementEditor::setupMenus
+*/
 void QETElementEditor::setupMenus() {
 	file_menu    = new QMenu(tr("&Fichier"),   this);
 	edit_menu    = new QMenu(tr("&Édition"),   this);
@@ -422,11 +422,11 @@ void QETElementEditor::setupMenus() {
 }
 
 /**
- * @brief QETElementEditor::contextMenu
- * Display a context menu, with all available action.
- * @param p, the pos of the menu, in screen coordinate
- * @param actions, a list of actions who can be prepended to the context menu.
- */
+	@brief QETElementEditor::contextMenu
+	Display a context menu, with all available action.
+	@param p, the pos of the menu, in screen coordinate
+	@param actions, a list of actions who can be prepended to the context menu.
+*/
 void QETElementEditor::contextMenu(QPoint p, QList<QAction *> actions) {
 	QMenu menu(this);
 	menu.addActions(std::move(actions));
@@ -511,8 +511,8 @@ void QETElementEditor::slot_updateTitle() {
 }
 
 /**
- * @brief QETElementEditor::setupInterface
- */
+	@brief QETElementEditor::setupInterface
+*/
 void QETElementEditor::setupInterface() {
 		// editeur
 	m_elmt_scene = new ElementScene(this, this);
@@ -747,10 +747,10 @@ void QETElementEditor::slot_updateInformations() {
 }
 
 /**
- * @brief QETElementEditor::checkElement
- * Do several check about element.
- * If error is occurred return false
- */
+	@brief QETElementEditor::checkElement
+	Do several check about element.
+	If error is occurred return false
+*/
 bool QETElementEditor::checkElement() {
 		//List of warning and error
 	typedef QPair<QString, QString> QETWarning;
@@ -897,11 +897,11 @@ void QETElementEditor::fromFile(const QString &filepath) {
 }
 
 /**
- * @brief QETElementEditor::toFile
- * Save to file the drawed element.
- * @param fn : path of the file
- * @return : true if succesfully save.
- */
+	@brief QETElementEditor::toFile
+	Save to file the drawed element.
+	@param fn : path of the file
+	@return : true if succesfully save.
+*/
 bool QETElementEditor::toFile(const QString &fn) {
 	m_elmt_scene -> clearEventInterface();
 	m_elmt_scene -> clearSelection();
@@ -920,11 +920,11 @@ bool QETElementEditor::toFile(const QString &fn) {
 }
 
 /**
- * @brief QETElementEditor::toLocation
- * Save the element to Location
- * @param location : location where we must save the current element
- * @return true if succesfully saved
- */
+	@brief QETElementEditor::toLocation
+	Save the element to Location
+	@param location : location where we must save the current element
+	@return true if succesfully saved
+*/
 bool QETElementEditor::toLocation(const ElementsLocation &location) {
 	m_elmt_scene -> clearEventInterface();
 	m_elmt_scene -> clearSelection();
@@ -1002,73 +1002,73 @@ bool QETElementEditor::isReadOnly() const {
 }
 
 /**
- * @brief QETElementEditor::addLine
- * Set line creation interface to scene
- */
+	@brief QETElementEditor::addLine
+	Set line creation interface to scene
+*/
 void QETElementEditor::addLine() {
 	m_elmt_scene -> setEventInterface(new ESEventAddLine(m_elmt_scene));
 }
 
 /**
- * @brief QETElementEditor::addRect
- * Set rectangle creation interface to scene
- */
+	@brief QETElementEditor::addRect
+	Set rectangle creation interface to scene
+*/
 void QETElementEditor::addRect() {
 	m_elmt_scene -> setEventInterface(new ESEventAddRect(m_elmt_scene));
 }
 
 /**
- * @brief QETElementEditor::addEllipse
- * Set ellipse creation interface to scene
- */
+	@brief QETElementEditor::addEllipse
+	Set ellipse creation interface to scene
+*/
 void QETElementEditor::addEllipse() {
 	m_elmt_scene -> setEventInterface(new ESEventAddEllipse(m_elmt_scene));
 }
 
 /**
- * @brief QETElementEditor::addPolygon
- * Set polygon creation interface to scene
- */
+	@brief QETElementEditor::addPolygon
+	Set polygon creation interface to scene
+*/
 void QETElementEditor::addPolygon() {
 	m_elmt_scene -> setEventInterface(new ESEventAddPolygon(m_elmt_scene));
 }
 
 /**
- * @brief QETElementEditor::addArc
- * Set arc creation interface to scene
- */
+	@brief QETElementEditor::addArc
+	Set arc creation interface to scene
+*/
 void QETElementEditor::addArc() {
 	m_elmt_scene -> setEventInterface(new ESEventAddArc(m_elmt_scene));
 }
 
 /**
- * @brief QETElementEditor::addText
- * Set text creation interface to scene
- */
+	@brief QETElementEditor::addText
+	Set text creation interface to scene
+*/
 void QETElementEditor::addText() {
 	m_elmt_scene -> setEventInterface(new ESEventAddText(m_elmt_scene));
 }
 
 /**
- * @brief QETElementEditor::addTerminal
- * Set terminal creation interface to scene
- */
+	@brief QETElementEditor::addTerminal
+	Set terminal creation interface to scene
+*/
 void QETElementEditor::addTerminal() {
 	m_elmt_scene -> setEventInterface(new ESEventAddTerminal(m_elmt_scene));
 }
 
 /**
- * @brief QETElementEditor::addDynamicTextField
- * Set dynamic text field creation interface to scene
- */
+	@brief QETElementEditor::addDynamicTextField
+	Set dynamic text field creation interface to scene
+*/
 void QETElementEditor::addDynamicTextField() {
 	m_elmt_scene -> setEventInterface(new ESEventAddDynamicTextField(m_elmt_scene));
 }
 
 /**
- * @brief QETElementEditor::UncheckAddPrimitive
- * Uncheck all action related to primitive
- */
+	@brief QETElementEditor::UncheckAddPrimitive
+	Uncheck all action related to primitive
+*/
 void QETElementEditor::UncheckAddPrimitive() {
 	foreach(QAction *action, parts -> actions()) {
 		action -> setChecked(false);
@@ -1126,8 +1126,8 @@ void QETElementEditor::openRecentFile(const QString &filepath) {
 }
 
 /**
- * @brief QETElementEditor::slot_openDxf
- */
+	@brief QETElementEditor::slot_openDxf
+*/
 void QETElementEditor::slot_openDxf (){
 
 #if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
@@ -1170,9 +1170,9 @@ void QETElementEditor::openElement(const QString &filepath) {
 }
 
 /**
- * @brief QETElementEditor::slot_reload
- * Reload the element from the file or location
- */
+	@brief QETElementEditor::slot_reload
+	Reload the element from the file or location
+*/
 void QETElementEditor::slot_reload() {
 		//If user already edit the element, ask confirmation to reload
 	if (!m_elmt_scene -> undoStack().isClean()) {
@@ -1197,11 +1197,11 @@ void QETElementEditor::slot_reload() {
 }
 
 /**
- * @brief QETElementEditor::slot_save
- * Save the current editing element.
- * If the filepath or location is unknown, use save_as instead
- * @return true if save with success
- */
+	@brief QETElementEditor::slot_save
+	Save the current editing element.
+	If the filepath or location is unknown, use save_as instead
+	@return true if save with success
+*/
 bool QETElementEditor::slot_save() {
 		// Check element befor writing
 	if (checkElement()) {
@@ -1236,11 +1236,11 @@ bool QETElementEditor::slot_save() {
 }
 
 /**
- * @brief QETElementEditor::slot_saveAs
- * Ask a location to user and save the current edited element
- * to this location
- * @return true if save with success
- */
+	@brief QETElementEditor::slot_saveAs
+	Ask a location to user and save the current edited element
+	to this location
+	@return true if save with success
+*/
 bool QETElementEditor::slot_saveAs() {
 		// Check element befor writing
 	if (checkElement()) {
@@ -1264,10 +1264,10 @@ bool QETElementEditor::slot_saveAs() {
 }
 
 /**
- * @brief QETElementEditor::slot_saveAsFile
- * Ask a file to user and save the current edited element to this file
- * @return true if save with success
- */
+	@brief QETElementEditor::slot_saveAsFile
+	Ask a file to user and save the current edited element to this file
+	@return true if save with success
+*/
 bool QETElementEditor::slot_saveAsFile() {
 		// Check element befor writing
 	if (checkElement()) {
@@ -1480,9 +1480,9 @@ void QETElementEditor::slot_updateSelectionFromPartsList() {
 }
 
 /**
- * @brief QETElementEditor::readSettings
- * Read settings
- */
+	@brief QETElementEditor::readSettings
+	Read settings
+*/
 void QETElementEditor::readSettings() {
 	QSettings settings;
 
@@ -1503,9 +1503,9 @@ void QETElementEditor::readSettings() {
 }
 
 /**
- * @brief QETElementEditor::writeSettings
- * Write the settings
- */
+	@brief QETElementEditor::writeSettings
+	Write the settings
+*/
 void QETElementEditor::writeSettings() {
 	QSettings settings;
 	settings.setValue("elementeditor/geometry", saveGeometry());
@@ -1547,10 +1547,10 @@ QString QETElementEditor::getOpenElementFileName(QWidget *parent, const QString 
 }
 
 /**
- * @brief QETElementEditor::fromLocation
- * Location of the element to edit
- * @param location
- */
+	@brief QETElementEditor::fromLocation
+	Location of the element to edit
+	@param location
+*/
 void QETElementEditor::fromLocation(const ElementsLocation &location) {
 	if (!location.isElement()) {
 		QET::QetMessageBox::critical(this,
@@ -1622,10 +1622,10 @@ void QETElementEditor::pasteFromFile() {
 }
 
 /**
- * @brief QETElementEditor::pasteFromElement
- * Ask an element to user, copy the xml definition of the element
- * to the clipboard and call ElementView::PasteInArea
- */
+	@brief QETElementEditor::pasteFromElement
+	Ask an element to user, copy the xml definition of the element
+	to the clipboard and call ElementView::PasteInArea
+*/
 void QETElementEditor::pasteFromElement() {
 		//Ask for a location
 	ElementsLocation location = ElementDialog::getOpenElementLocation(this);

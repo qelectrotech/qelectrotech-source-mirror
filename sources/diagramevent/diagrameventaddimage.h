@@ -24,9 +24,9 @@ class Diagram;
 class DiagramImageItem;
 
 /**
- * @brief The DiagramEventAddImage class
- * This diagram event, handle the adding of an image in a diagram.
- */
+	@brief The DiagramEventAddImage class
+	This diagram event, handle the adding of an image in a diagram.
+*/
 class DiagramEventAddImage : public DiagramEventInterface
 {
         Q_OBJECT

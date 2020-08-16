@@ -68,10 +68,12 @@ class Conductor : public QGraphicsObject
 		Terminal *terminal2;
 	
 	public:
-			/**
-			 * Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a conductor.
-			 * @return the QGraphicsItem type
-			*/
+		/**
+			@brief type
+			Enable the use of qgraphicsitem_cast
+			to safely cast a QGraphicsItem into a conductor.
+			@return the QGraphicsItem type
+		*/
 		int type() const override { return Type; }
 		Diagram *diagram() const;
 		ConductorTextItem *textItem() const;

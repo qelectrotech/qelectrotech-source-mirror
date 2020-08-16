@@ -24,11 +24,11 @@
 #include <QFontDialog>
 
 /**
- * @brief AddTableDialog::AddTableDialog
- * @param content_widget : the widget to display in the "content" tab.
- * This dialog take ownership of @content_widget.
- * @param parent : parent widget.
- */
+	@brief AddTableDialog::AddTableDialog
+	@param content_widget : the widget to display in the "content" tab.
+	This dialog take ownership of @content_widget.
+	@param parent : parent widget.
+*/
 AddTableDialog::AddTableDialog(QWidget *content_widget, QWidget *parent) :
     QDialog(parent),
 	ui(new Ui::AddTableDialog)
@@ -46,57 +46,57 @@ AddTableDialog::AddTableDialog(QWidget *content_widget, QWidget *parent) :
 }
 
 /**
- * @brief AddTableDialog::~AddNomenclatureDialog
- */
+	@brief AddTableDialog::~AddNomenclatureDialog
+*/
 AddTableDialog::~AddTableDialog() {
 	delete ui;
 }
 
 /**
- * @brief AddTableDialog::setQueryWidget
- * Not implemented yet
- * @param widget
- */
+	@brief AddTableDialog::setQueryWidget
+	Not implemented yet
+	@param widget
+*/
 void AddTableDialog::setQueryWidget(QWidget *widget) {
 	Q_UNUSED(widget)
 }
 
 /**
- * @brief AddTableDialog::adjustTableToFolio
- * @return
- */
+	@brief AddTableDialog::adjustTableToFolio
+	@return
+*/
 bool AddTableDialog::adjustTableToFolio() const {
 	return ui->m_adjust_table_size_cb->isChecked();
 }
 
 /**
- * @brief AddTableDialog::addNewTableToNewDiagram
- * @return
- */
+	@brief AddTableDialog::addNewTableToNewDiagram
+	@return
+*/
 bool AddTableDialog::addNewTableToNewDiagram() const {
 	return ui->m_add_table_and_folio->isChecked();
 }
 
 /**
- * @brief AddTableDialog::tableName
- * @return
- */
+	@brief AddTableDialog::tableName
+	@return
+*/
 QString AddTableDialog::tableName() const {
 	return ui->m_table_name_le->text();
 }
 
 /**
- * @brief AddTableDialog::headerMargins
- * @return
- */
+	@brief AddTableDialog::headerMargins
+	@return
+*/
 QMargins AddTableDialog::headerMargins() const {
 	return  m_header_margins;
 }
 
 /**
- * @brief AddTableDialog::headerAlignment
- * @return
- */
+	@brief AddTableDialog::headerAlignment
+	@return
+*/
 Qt::Alignment AddTableDialog::headerAlignment() const
 {
 	switch (ui->m_header_alignment_cb->currentIndex()) {
@@ -110,25 +110,25 @@ Qt::Alignment AddTableDialog::headerAlignment() const
 }
 
 /**
- * @brief AddTableDialog::headerFont
- * @return
- */
+	@brief AddTableDialog::headerFont
+	@return
+*/
 QFont AddTableDialog::headerFont() const {
 	return m_header_font;
 }
 
 /**
- * @brief AddTableDialog::tableMargins
- * @return
- */
+	@brief AddTableDialog::tableMargins
+	@return
+*/
 QMargins AddTableDialog::tableMargins() const {
 	return m_table_margins;
 }
 
 /**
- * @brief AddTableDialog::tableAlignment
- * @return
- */
+	@brief AddTableDialog::tableAlignment
+	@return
+*/
 Qt::Alignment AddTableDialog::tableAlignment() const
 {
 	switch (ui->m_table_alignment_cb->currentIndex()) {
@@ -142,9 +142,9 @@ Qt::Alignment AddTableDialog::tableAlignment() const
 }
 
 /**
- * @brief AddTableDialog::tableFont
- * @return
- */
+	@brief AddTableDialog::tableFont
+	@return
+*/
 QFont AddTableDialog::tableFont() const {
 	return m_table_font;
 }

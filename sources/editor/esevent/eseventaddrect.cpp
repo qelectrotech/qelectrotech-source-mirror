@@ -23,27 +23,27 @@
 #include "editorcommands.h"
 
 /**
- * @brief ESEventAddRect::ESEventAddRect
- * @param scene
- */
+	@brief ESEventAddRect::ESEventAddRect
+	@param scene
+*/
 ESEventAddRect::ESEventAddRect(ElementScene *scene) :
 	ESEventInterface(scene),
 	m_rect(nullptr)
 {}
 
 /**
- * @brief ESEventAddRect::~ESEventAddRect
- */
+	@brief ESEventAddRect::~ESEventAddRect
+*/
 ESEventAddRect::~ESEventAddRect() {
 	if (m_running || m_abort)
 		delete m_rect;
 }
 
 /**
- * @brief ESEventAddRect::mousePressEvent
- * @param event
- * @return
- */
+	@brief ESEventAddRect::mousePressEvent
+	@param event
+	@return
+*/
 bool ESEventAddRect::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (event -> button() == Qt::LeftButton)
@@ -75,10 +75,10 @@ bool ESEventAddRect::mousePressEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief ESEventAddRect::mouseMoveEvent
- * @param event
- * @return
- */
+	@brief ESEventAddRect::mouseMoveEvent
+	@param event
+	@return
+*/
 bool ESEventAddRect::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 	updateHelpCross(event -> scenePos());
 	if (!m_rect) return false;
@@ -89,10 +89,10 @@ bool ESEventAddRect::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 }
 
 /**
- * @brief ESEventAddRect::mouseReleaseEvent
- * @param event
- * @return
- */
+	@brief ESEventAddRect::mouseReleaseEvent
+	@param event
+	@return
+*/
 bool ESEventAddRect::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
 	if (event -> button() == Qt::RightButton) {
 		if (m_rect) {delete m_rect; m_rect = nullptr;}

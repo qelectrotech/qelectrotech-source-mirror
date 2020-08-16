@@ -25,29 +25,29 @@
 #include "editorcommands.h"
 
 /**
- * @brief ESEventAddLine::ESEventAddLine
- * Constructor
- * @param scene : scene where we operate this action
- */
+	@brief ESEventAddLine::ESEventAddLine
+	Constructor
+	@param scene : scene where we operate this action
+*/
 ESEventAddLine::ESEventAddLine(ElementScene *scene) :
 	ESEventInterface (scene),
 	m_line           (nullptr)
 {}
 
 /**
- * @brief ESEventAddLine::~ESEventAddLine
- * destructor
- */
+	@brief ESEventAddLine::~ESEventAddLine
+	destructor
+*/
 ESEventAddLine::~ESEventAddLine() {
 	if (m_running || m_abort)
 		delete m_line;
 }
 
 /**
- * @brief ESEventAddLine::mousePressEvent
- * @param event
- * @return
- */
+	@brief ESEventAddLine::mousePressEvent
+	@param event
+	@return
+*/
 bool ESEventAddLine::mousePressEvent(QGraphicsSceneMouseEvent *event) {
 
 	if (event -> button() == Qt::LeftButton) {
@@ -76,10 +76,10 @@ bool ESEventAddLine::mousePressEvent(QGraphicsSceneMouseEvent *event) {
 }
 
 /**
- * @brief ESEventAddLine::mouseMoveEvent
- * @param event
- * @return
- */
+	@brief ESEventAddLine::mouseMoveEvent
+	@param event
+	@return
+*/
 bool ESEventAddLine::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
 	updateHelpCross (event -> scenePos());
@@ -92,10 +92,10 @@ bool ESEventAddLine::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief ESEventAddLine::mouseReleaseEvent
- * @param event
- * @return
- */
+	@brief ESEventAddLine::mouseReleaseEvent
+	@param event
+	@return
+*/
 bool ESEventAddLine::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
 	if (event -> button() == Qt::RightButton) {
 		if (m_line) {delete m_line; m_line = nullptr;}

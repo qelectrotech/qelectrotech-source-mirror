@@ -41,12 +41,12 @@ QMargins MarginsEditDialog::margins() const {
 }
 
 /**
- * @brief MarginsEditDialog::getMargins
- * @param margins : margins to set by default
- * @param accepted : bool to know if dialog is accepted
- * @param parent : parent widget.
- * @return The a margins with the edited value if dialog is accepted or a default constructed QMargins() if dialog is rejected
- */
+	@brief MarginsEditDialog::getMargins
+	@param margins : margins to set by default
+	@param accepted : bool to know if dialog is accepted
+	@param parent : parent widget.
+	@return The a margins with the edited value if dialog is accepted or a default constructed QMargins() if dialog is rejected
+*/
 QMargins MarginsEditDialog::getMargins(QMargins margins, bool *accepted, QWidget *parent)
 {
 	QScopedPointer<MarginsEditDialog> d(new MarginsEditDialog(margins, parent));

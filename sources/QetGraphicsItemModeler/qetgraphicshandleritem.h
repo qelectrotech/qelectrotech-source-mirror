@@ -22,12 +22,12 @@
 #include <QPen>
 
 /**
- * @brief The QetGraphicsHandlerItem class
- * This graphics item represents a point, destined to be used as an handler,
- * for modifie the geometrie of a another graphics item (like shapes).
- * The graphics item to be modified, must call "installSceneEventFilter" of this item with itself for argument,.
- * The ghraphics item to be modified, need to reimplement "sceneEventFilter" for create the modification behavior.
- */
+	@brief The QetGraphicsHandlerItem class
+	This graphics item represents a point, destined to be used as an handler,
+	for modifie the geometrie of a another graphics item (like shapes).
+	The graphics item to be modified, must call "installSceneEventFilter" of this item with itself for argument,.
+	The ghraphics item to be modified, need to reimplement "sceneEventFilter" for create the modification behavior.
+*/
 class QetGraphicsHandlerItem : public QGraphicsItem
 {
     public:

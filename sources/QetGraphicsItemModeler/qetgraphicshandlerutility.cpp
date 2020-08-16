@@ -20,19 +20,19 @@
 
 
 /**
- * @brief QetGraphicsHandlerUtility::pointsForRect
- * Return the keys points of the rectangle, stored in a vector.
- * The points in the vector are stored like this :
- * **********
- *   0---1---2
- *   |       |
- *   3       4
- *   |       |
- *   5---6---7
- * ************
- * @param rect
- * @return
- */
+	@brief QetGraphicsHandlerUtility::pointsForRect
+	Return the keys points of the rectangle, stored in a vector.
+	The points in the vector are stored like this :
+	**********
+	  0---1---2
+	  |       |
+	  3       4
+	  |       |
+	  5---6---7
+	************
+	@param rect
+	@return
+*/
 QVector<QPointF> QetGraphicsHandlerUtility::pointsForRect(const QRectF &rect)
 {
 	QVector<QPointF> vector;
@@ -56,25 +56,26 @@ QVector<QPointF> QetGraphicsHandlerUtility::pointsForRect(const QRectF &rect)
 }
 
 /**
- * @brief QetGraphicsHandlerUtility::pointsForLine
- * The point that define a line in a QVector.
- * there is two points.
- * @param line
- * @return
- */
+	@brief QetGraphicsHandlerUtility::pointsForLine
+	The point that define a line in a QVector.
+	there is two points.
+	@param line
+	@return
+*/
 QVector<QPointF> QetGraphicsHandlerUtility::pointsForLine(const QLineF &line) {
 	return (QVector<QPointF> {line.p1(), line.p2()});
 }
 
 /**
- * @brief QetGraphicsHandlerUtility::pointsForArc
- * Return the points for the given arc.
- * The first value in the vector is the start point, the second the end point.
- * @param rect
- * @param start_angle : start angle in degree
- * @param span_angle : span angle in degree;
- * @return
- */
+	@brief QetGraphicsHandlerUtility::pointsForArc
+	Return the points for the given arc.
+	The first value in the vector is the start point,
+	the second the end point.
+	@param rect
+	@param start_angle : start angle in degree
+	@param span_angle : span angle in degree;
+	@return
+*/
 QVector<QPointF> QetGraphicsHandlerUtility::pointsForArc(const QRectF &rect, qreal start_angle, qreal span_angle)
 {
 	QVector<QPointF> vector;
@@ -88,14 +89,18 @@ QVector<QPointF> QetGraphicsHandlerUtility::pointsForArc(const QRectF &rect, qre
 }
 
 /**
- * @brief QetGraphicsHandlerUtility::rectForPosAtIndex
- * Return a rectangle after modification of the point '@pos' at index '@index' of original rectangle '@old_rect'.
- * @param old_rect - the rectangle befor modification
- * @param pos - the new position of a key point
- * @param index - the index of the key point to modifie see QetGraphicsHandlerUtility::pointsForRect to know
- * the index of each keys points of a rectangle)
- * @return : the rectangle with modification. If index is lower than 0 or higher than 7, this method return old_rect.
- */
+	@brief QetGraphicsHandlerUtility::rectForPosAtIndex
+	Return a rectangle after modification
+	of the point '@pos' at index '@index' of original rectangle '@old_rect'.
+	@param old_rect - the rectangle befor modification
+	@param pos - the new position of a key point
+	@param index - the index of the key point to modifie
+	@see QetGraphicsHandlerUtility::pointsForRect to know
+	the index of each keys points of a rectangle)
+	@return : the rectangle with modification.
+	If index is lower than 0 or higher than 7,
+	this method return old_rect.
+*/
 QRectF QetGraphicsHandlerUtility::rectForPosAtIndex(const QRectF &old_rect, const QPointF &pos, int index)
 {
 	if (index < 0 || index > 7) return old_rect;
@@ -114,15 +119,19 @@ QRectF QetGraphicsHandlerUtility::rectForPosAtIndex(const QRectF &old_rect, cons
 }
 
 /**
- * @brief QetGraphicsHandlerUtility::mirrorRectForPosAtIndex
- * Return a rectangle after modification of the point '@pos' at index '@index' of original rectangle '@old_rect'.
- * the opposite edge is modified inversely (like a mirror)
- * @param old_rect : the rectangle befor modification
- * @param pos : the new position of a key point
- * @param index : the index of the key point to modifie see QetGraphicsHandlerUtility::pointsForRect to know
- * the index of each keys points of a rectangle)
- * @return : the rectangle with modification. If index is lower than 0 or higher than 7, this method return old_rect.
- */
+	@brief QetGraphicsHandlerUtility::mirrorRectForPosAtIndex
+	Return a rectangle after modification of the point '@pos'
+	at index '@index' of original rectangle '@old_rect'.
+	the opposite edge is modified inversely (like a mirror)
+	@param old_rect : the rectangle befor modification
+	@param pos : the new position of a key point
+	@param index : the index of the key point to modifie
+	@see QetGraphicsHandlerUtility::pointsForRect to know
+	the index of each keys points of a rectangle)
+	@return : the rectangle with modification.
+	If index is lower than 0 or higher than 7,
+	this method return old_rect.
+*/
 QRectF QetGraphicsHandlerUtility::mirrorRectForPosAtIndex(const QRectF &old_rect, const QPointF &pos, int index)
 {
 	if (index < 0 || index > 7) return old_rect;
@@ -172,13 +181,13 @@ QRectF QetGraphicsHandlerUtility::mirrorRectForPosAtIndex(const QRectF &old_rect
 }
 
 /**
- * @brief QetGraphicsHandlerUtility::lineForPosAtIndex
- * Return a line after modification of @pos at index @index of @old_line.
- * @param old_line
- * @param pos
- * @param index
- * @return
- */
+	@brief QetGraphicsHandlerUtility::lineForPosAtIndex
+	Return a line after modification of @pos at index @index of @old_line.
+	@param old_line
+	@param pos
+	@param index
+	@return
+*/
 QLineF QetGraphicsHandlerUtility::lineForPosAtIndex(const QLineF &old_line, const QPointF &pos, int index) {
 	QLineF line = old_line;
 	index == 0 ? line.setP1(pos) : line.setP2(pos);
@@ -186,12 +195,12 @@ QLineF QetGraphicsHandlerUtility::lineForPosAtIndex(const QLineF &old_line, cons
 }
 
 /**
- * @brief QetGraphicsHandlerUtility::polygonForInsertPoint
- * @param old_polygon : the polygon which we insert a new point. 
- * @param closed : polygon is closed or not
- * @param pos : the pos where the new point must be added
- * @return the new polygon
- */
+	@brief QetGraphicsHandlerUtility::polygonForInsertPoint
+	@param old_polygon : the polygon which we insert a new point.
+	@param closed : polygon is closed or not
+	@param pos : the pos where the new point must be added
+	@return the new polygon
+*/
 QPolygonF QetGraphicsHandlerUtility::polygonForInsertPoint(const QPolygonF &old_polygon, bool closed, const QPointF &pos)
 {
 	qreal max_angle = 0;
@@ -241,15 +250,17 @@ QPolygonF QetGraphicsHandlerUtility::polygonForInsertPoint(const QPolygonF &old_
 }
 
 /**
- * @brief QetGraphicsHandlerUtility::pointForRadiusRect
- * @param rect the rectangle.
- * @param xRadius : x radius
- * @param yRadius : y radius
- * @param mode : absolute or relative size: NOTE this argument is not used, this function always compute with relative size.
- * @return the points of x and y radius of a rounded rect.
- * The points are always based on the top right corner of the rect.
- * the first point of vector is X the second Y
- */
+	@brief QetGraphicsHandlerUtility::pointForRadiusRect
+	@param rect the rectangle.
+	@param xRadius : x radius
+	@param yRadius : y radius
+	@param mode :
+	absolute or relative size: NOTE this argument is not used,
+	this function always compute with relative size.
+	@return the points of x and y radius of a rounded rect.
+	The points are always based on the top right corner of the rect.
+	the first point of vector is X the second Y
+*/
 QVector<QPointF> QetGraphicsHandlerUtility::pointForRadiusRect(const QRectF &rect, qreal xRadius, qreal yRadius, Qt::SizeMode mode)
 {
 	QVector<QPointF> v;
@@ -283,13 +294,13 @@ QVector<QPointF> QetGraphicsHandlerUtility::pointForRadiusRect(const QRectF &rec
 }
 
 /**
- * @brief QetGraphicsHandlerUtility::radiusForPosAtIndex
- * @param rect the rectangle
- * @param pos : the pos of the new radius
- * @param index : index of radius  0=X 1=Y
- * @param mode
- * @return 
- */
+	@brief QetGraphicsHandlerUtility::radiusForPosAtIndex
+	@param rect the rectangle
+	@param pos : the pos of the new radius
+	@param index : index of radius  0=X 1=Y
+	@param mode
+	@return
+*/
 qreal QetGraphicsHandlerUtility::radiusForPosAtIndex(const QRectF &rect, const QPointF &pos, int index, Qt::SizeMode mode)
 {
 	if (mode == Qt::AbsoluteSize)

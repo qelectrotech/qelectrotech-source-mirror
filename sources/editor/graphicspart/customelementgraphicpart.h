@@ -26,10 +26,12 @@ class QPainter;
 
 
 /**
- * @brief The CustomElementGraphicPart class
- * This class is the base for all home-made primitive like line, rectangle, ellipse etc....
- * It provides methods and enums to manage style attributes available for primitive (color, pen style, etc...)
- */
+	@brief The CustomElementGraphicPart class
+	This class is the base for all home-made primitive like line,
+	rectangle, ellipse etc....
+	It provides methods and enums to manage style attributes available
+	for primitive (color, pen style, etc...)
+*/
 class CustomElementGraphicPart : public QGraphicsObject, public CustomElementPart
 {
 		#define SHADOWS_HEIGHT 4.0

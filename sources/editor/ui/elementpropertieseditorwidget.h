@@ -27,10 +27,10 @@ namespace Ui {
 }
 
 /**
- * @brief The ElementPropertiesEditorWidget class
- * This class provide a dialog for edit various property of element, like
- * the type (master, slave, report etc....) and kind info.
- */
+	@brief The ElementPropertiesEditorWidget class
+	This class provide a dialog for edit various property of element, like
+	the type (master, slave, report etc....) and kind info.
+*/
 class ElementPropertiesEditorWidget : public QDialog
 {
 	Q_OBJECT

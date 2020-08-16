@@ -25,9 +25,9 @@
 typedef SearchAndReplaceWorker sarw;
 
 /**
- * @brief ReplaceConductorDialog::ReplaceConductorDialog
- * @param parent
- */
+	@brief ReplaceConductorDialog::ReplaceConductorDialog
+	@param parent
+*/
 ReplaceConductorDialog::ReplaceConductorDialog(const ConductorProperties &properties, QWidget *parent) :
 	QDialog(parent),
 	ui(new Ui::ReplaceConductorDialog)
@@ -43,11 +43,11 @@ ReplaceConductorDialog::~ReplaceConductorDialog()
 }
 
 /**
- * @brief ReplaceConductorDialog::updatePreview
- * Update the preview for single line
- * @param b true: update from the value displayed by this widget
- *          false: update from the properties given at the constructor of this widget
- */
+	@brief ReplaceConductorDialog::updatePreview
+	Update the preview for single line
+	@param b true: update from the value displayed by this widget
+	         false: update from the properties given at the constructor of this widget
+*/
 void ReplaceConductorDialog::updatePreview(bool b)
 {
 	const QRect pixmap_rect(0, 0, 96, 96);
@@ -124,9 +124,9 @@ void ReplaceConductorDialog::setProperties(const ConductorProperties &properties
 }
 
 /**
- * @brief ReplaceConductorDialog::properties
- * @return the properties edited by this widget
- */
+	@brief ReplaceConductorDialog::properties
+	@return the properties edited by this widget
+*/
 ConductorProperties ReplaceConductorDialog::properties() const
 {
 	ConductorProperties properties_;

@@ -34,11 +34,11 @@ static int no_model_height = 20;
 static int no_model_width = 40;
 
 /**
- * @brief QetGraphicsTableItem::adjustTableToFolio
- * Adjust the table @table to fit at best the folio
- * @param table : table to adjust
- * @param margins : margins between table and folio.
- */
+	@brief QetGraphicsTableItem::adjustTableToFolio
+	Adjust the table @table to fit at best the folio
+	@param table : table to adjust
+	@param margins : margins between table and folio.
+*/
 void QetGraphicsTableItem::adjustTableToFolio(QetGraphicsTableItem *table, QMargins margins)
 {
 	if (!table->diagram()) {
@@ -62,11 +62,11 @@ void QetGraphicsTableItem::adjustTableToFolio(QetGraphicsTableItem *table, QMarg
 }
 
 /**
- * @brief QetGraphicsTableItem::checkInsufficientRowsCount
- * Check if the number of rows of @table + linked table is enough to display all
- * content of the model, if not open a dialog to advise user what to do.
- * @param table
- */
+	@brief QetGraphicsTableItem::checkInsufficientRowsCount
+	Check if the number of rows of @table + linked table is enough to display all
+	content of the model, if not open a dialog to advise user what to do.
+	@param table
+*/
 void QetGraphicsTableItem::checkInsufficientRowsCount(QetGraphicsTableItem *table)
 {
 	if (!table->diagram() || !table->model()) {
@@ -114,10 +114,10 @@ void QetGraphicsTableItem::checkInsufficientRowsCount(QetGraphicsTableItem *tabl
 }
 
 /**
- * @brief QetGraphicsTableItem::QetGraphicsTableItem
- * Default constructor
- * @param parent
- */
+	@brief QetGraphicsTableItem::QetGraphicsTableItem
+	Default constructor
+	@param parent
+*/
 QetGraphicsTableItem::QetGraphicsTableItem(QGraphicsItem *parent) :
 	QetGraphicsItem(parent)
 {
@@ -146,12 +146,12 @@ QetGraphicsTableItem::~QetGraphicsTableItem()
 {}
 
 /**
- * @brief QetGraphicsTableItem::setModel
- * Set the model presented by this item.
- * Since QetGraphicsTableItem don't take ownership of model,
- * if item already have a model, it's your responsibility to delete it.
- * @param model
- */
+	@brief QetGraphicsTableItem::setModel
+	Set the model presented by this item.
+	Since QetGraphicsTableItem don't take ownership of model,
+	if item already have a model, it's your responsibility to delete it.
+	@param model
+*/
 void QetGraphicsTableItem::setModel(QAbstractItemModel *model)
 {
 	if (m_model)
@@ -178,29 +178,29 @@ void QetGraphicsTableItem::setModel(QAbstractItemModel *model)
 }
 
 /**
- * @brief QetGraphicsTableItem::model
- * @return The model that this item is presenting
- */
+	@brief QetGraphicsTableItem::model
+	@return The model that this item is presenting
+*/
 QAbstractItemModel *QetGraphicsTableItem::model() const {
 	return m_model;
 }
 
 /**
- * @brief QetGraphicsTableItem::boundingRect
- * Reimplemented from QGraphicsObject
- * @return
- */
+	@brief QetGraphicsTableItem::boundingRect
+	Reimplemented from QGraphicsObject
+	@return
+*/
 QRectF QetGraphicsTableItem::boundingRect() const {
 	return m_bounding_rect;
 }
 
 /**
- * @brief QetGraphicsTableItem::paint
- * Draw the table
- * @param painter
- * @param option
- * @param widget
- */
+	@brief QetGraphicsTableItem::paint
+	Draw the table
+	@param painter
+	@param option
+	@param widget
+*/
 void QetGraphicsTableItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
 	Q_UNUSED(option)
@@ -285,10 +285,10 @@ void QetGraphicsTableItem::paint(QPainter *painter, const QStyleOptionGraphicsIt
 }
 
 /**
- * @brief QetGraphicsTableItem::setSize
- * Set the current size of the table to @size
- * @param size
- */
+	@brief QetGraphicsTableItem::setSize
+	Set the current size of the table to @size
+	@param size
+*/
 void QetGraphicsTableItem::setSize(const QSize &size)
 {
 	auto new_size = size;
@@ -309,9 +309,9 @@ void QetGraphicsTableItem::setSize(const QSize &size)
 }
 
 /**
- * @brief QetGraphicsTableItem::size
- * @return The current size of the table
- */
+	@brief QetGraphicsTableItem::size
+	@return The current size of the table
+*/
 QSize QetGraphicsTableItem::size() const
 {
 	QSize size_(m_header_item->rect().width(), m_current_size.height());
@@ -319,10 +319,10 @@ QSize QetGraphicsTableItem::size() const
 }
 
 /**
- * @brief QetGraphicsTableItem::minimumSize
- * @return the minimum size the table can be
- * The returned size take care of the table's minimum width, but also the header item's minimum width
- */
+	@brief QetGraphicsTableItem::minimumSize
+	@return the minimum size the table can be
+	The returned size take care of the table's minimum width, but also the header item's minimum width
+*/
 QSize QetGraphicsTableItem::minimumSize() const
 {
 	if (!m_model) {
@@ -348,10 +348,10 @@ QSize QetGraphicsTableItem::minimumSize() const
 }
 
 /**
- * @brief QetGraphicsTableItem::setDisplayNRow
- * Limit the number of row to display
- * @param number : set to 0 or less to disabled the limit of row to display
- */
+	@brief QetGraphicsTableItem::setDisplayNRow
+	Limit the number of row to display
+	@param number : set to 0 or less to disabled the limit of row to display
+*/
 void QetGraphicsTableItem::setDisplayNRow(const int &number) {
 	m_number_of_displayed_row = number;
 	setToMinimumHeight();
@@ -360,25 +360,25 @@ void QetGraphicsTableItem::setDisplayNRow(const int &number) {
 }
 
 /**
- * @brief QetGraphicsTableItem::displayNRow
- * @return the number of row displayed.
- * A value of 0 or less mean there is no limit
- */
+	@brief QetGraphicsTableItem::displayNRow
+	@return the number of row displayed.
+	A value of 0 or less mean there is no limit
+*/
 int QetGraphicsTableItem::displayNRow() const {
 	return m_number_of_displayed_row;
 }
 
 /**
- * @brief QetGraphicsTableItem::setPreviousTable
- * Set the previous table to @table.
- * If this table already have a previous table, the previous table will be replaced.
- * Set new table to nullptr to remove an existing previous table.
- * The table uses the model of the new previous table.
- * Since the table does not take ownership of the model, it is your responsibility to manage the old model.
- * Linked tables (table with next and/or previous table) share the same model, a table always take the model of the previous table..
- * When remove a previous table (set to nullptr) from a table, the model is also removed, you need to set a new model
- * @param table
- */
+	@brief QetGraphicsTableItem::setPreviousTable
+	Set the previous table to @table.
+	If this table already have a previous table, the previous table will be replaced.
+	Set new table to nullptr to remove an existing previous table.
+	The table uses the model of the new previous table.
+	Since the table does not take ownership of the model, it is your responsibility to manage the old model.
+	Linked tables (table with next and/or previous table) share the same model, a table always take the model of the previous table..
+	When remove a previous table (set to nullptr) from a table, the model is also removed, you need to set a new model
+	@param table
+*/
 void QetGraphicsTableItem::setPreviousTable(QetGraphicsTableItem *table)
 {
 	if (m_previous_table == table ||
@@ -405,11 +405,11 @@ void QetGraphicsTableItem::setPreviousTable(QetGraphicsTableItem *table)
 }
 
 /**
- * @brief QetGraphicsTableItem::setNextTable
- * Set the next table to @table
- * nullptr will remove an existing next table.
- * @param table
- */
+	@brief QetGraphicsTableItem::setNextTable
+	Set the next table to @table
+	nullptr will remove an existing next table.
+	@param table
+*/
 void QetGraphicsTableItem::setNextTable(QetGraphicsTableItem *table)
 {
 	if (m_next_table == table ||
@@ -440,10 +440,10 @@ QString QetGraphicsTableItem::tableName() const {
 }
 
 /**
- * @brief QetGraphicsTableItem::displayNRowOffset
- * @return the offset (aka the last displayed row) of displayed row.
- * If this item have a previous table, the previous offset is added.
- */
+	@brief QetGraphicsTableItem::displayNRowOffset
+	@return the offset (aka the last displayed row) of displayed row.
+	If this item have a previous table, the previous offset is added.
+*/
 int QetGraphicsTableItem::displayNRowOffset() const
 {
 	auto offset_ = m_number_of_displayed_row;
@@ -462,10 +462,10 @@ QetGraphicsTableItem *QetGraphicsTableItem::nextTable() const {
 }
 
 /**
- * @brief QetGraphicsTableItem::setToMinimumHeight
- * Set the height to the the minimum.
- * The width stay unchanged.
- */
+	@brief QetGraphicsTableItem::setToMinimumHeight
+	Set the height to the the minimum.
+	The width stay unchanged.
+*/
 void QetGraphicsTableItem::setToMinimumHeight()
 {
 	auto size_ = size();
@@ -487,19 +487,19 @@ void QetGraphicsTableItem::initLink()
 }
 
 /**
- * @brief QetGraphicsTableItem::minimumRowHeigth
- * @return the minimum height of a row
- */
+	@brief QetGraphicsTableItem::minimumRowHeigth
+	@return the minimum height of a row
+*/
 int QetGraphicsTableItem::minimumRowHeigth() const {
 	return m_minimum_row_height;
 }
 
 /**
- * @brief QetGraphicsTableItem::toXml
- * Save the table to xml
- * @param dom_document : parent document
- * @return the dom_element that describe the table
- */
+	@brief QetGraphicsTableItem::toXml
+	Save the table to xml
+	@param dom_document : parent document
+	@return the dom_element that describe the table
+*/
 QDomElement QetGraphicsTableItem::toXml(QDomDocument &dom_document) const
 {
 	auto dom_table = dom_document.createElement(xmlTagName());
@@ -535,11 +535,11 @@ QDomElement QetGraphicsTableItem::toXml(QDomDocument &dom_document) const
 }
 
 /**
- * @brief QetGraphicsTableItem::fromXml
- * Restore the table from xml.
- * Make this item is already in a diagram to
- * @param dom_element
- */
+	@brief QetGraphicsTableItem::fromXml
+	Restore the table from xml.
+	Make this item is already in a diagram to
+	@param dom_element
+*/
 void QetGraphicsTableItem::fromXml(const QDomElement &dom_element)
 {
 	if (dom_element.tagName() != xmlTagName()) {
@@ -573,10 +573,10 @@ void QetGraphicsTableItem::fromXml(const QDomElement &dom_element)
 }
 
 /**
- * @brief QetGraphicsTableItem::hoverEnterEvent
- * Reimplemented from QetGraphicsItem
- * @param event
- */
+	@brief QetGraphicsTableItem::hoverEnterEvent
+	Reimplemented from QetGraphicsItem
+	@param event
+*/
 void QetGraphicsTableItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 {
 	if (m_model)
@@ -589,10 +589,10 @@ void QetGraphicsTableItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 }
 
 /**
- * @brief QetGraphicsTableItem::hoverLeaveEvent
- * Reimplemented from QetGraphicsItem
- * @param event
- */
+	@brief QetGraphicsTableItem::hoverLeaveEvent
+	Reimplemented from QetGraphicsItem
+	@param event
+*/
 void QetGraphicsTableItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
 {
 	if (m_model) {
@@ -602,12 +602,12 @@ void QetGraphicsTableItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
 }
 
 /**
- * @brief QetGraphicsTableItem::sceneEventFilter
- * Reimplemented from QetGraphicsItem
- * @param watched
- * @param event
- * @return
- */
+	@brief QetGraphicsTableItem::sceneEventFilter
+	Reimplemented from QetGraphicsItem
+	@param watched
+	@param event
+	@return
+*/
 bool QetGraphicsTableItem::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 {
 	if (watched == &m_handler_item)
@@ -633,11 +633,11 @@ bool QetGraphicsTableItem::sceneEventFilter(QGraphicsItem *watched, QEvent *even
 }
 
 /**
- * @brief QetGraphicsTableItem::itemChange
- * @param change
- * @param value
- * @return
- */
+	@brief QetGraphicsTableItem::itemChange
+	@param change
+	@param value
+	@return
+*/
 QVariant QetGraphicsTableItem::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value)
 {
 		//item was removed from scene, we remove the handler
@@ -660,10 +660,10 @@ void QetGraphicsTableItem::modelReseted() {
 }
 
 /**
- * @brief QetGraphicsTableItem::setUpColumnAndRowMinimumSize
- * Calcule the minimum row height and the minimum column width for each columns
- * this function doesn't change the geometry of the table.
- */
+	@brief QetGraphicsTableItem::setUpColumnAndRowMinimumSize
+	Calcule the minimum row height and the minimum column width for each columns
+	this function doesn't change the geometry of the table.
+*/
 void QetGraphicsTableItem::setUpColumnAndRowMinimumSize()
 {
 	if (!m_model)
@@ -693,8 +693,8 @@ void QetGraphicsTableItem::setUpColumnAndRowMinimumSize()
 }
 
 /**
- * @brief QetGraphicsTableItem::setUpBoundingRect
- */
+	@brief QetGraphicsTableItem::setUpBoundingRect
+*/
 void QetGraphicsTableItem::setUpBoundingRect()
 {
 	QSize header_size = m_header_item->rect().size();
@@ -703,16 +703,16 @@ void QetGraphicsTableItem::setUpBoundingRect()
 }
 
 /**
- * @brief QetGraphicsTableItem::adjustHandlerPos
- * Adjust the pos of the handler item
- */
+	@brief QetGraphicsTableItem::adjustHandlerPos
+	Adjust the pos of the handler item
+*/
 void QetGraphicsTableItem::adjustHandlerPos() {
 	m_handler_item.setPos(mapToScene(QRect(QPoint(0,0), size()).bottomRight()));
 }
 
 /**
- * @brief QetGraphicsTableItem::setUpHandler
- */
+	@brief QetGraphicsTableItem::setUpHandler
+*/
 void QetGraphicsTableItem::setUpHandler()
 {
 	m_handler_item.setColor(Qt::blue);
@@ -759,9 +759,9 @@ void QetGraphicsTableItem::handlerMouseReleaseEvent(QGraphicsSceneMouseEvent *ev
 }
 
 /**
- * @brief QetGraphicsTableItem::adjustColumnsWidth
- * Adjust the size of each column according to the current table width by setting the sectionSize of the header item
- */
+	@brief QetGraphicsTableItem::adjustColumnsWidth
+	Adjust the size of each column according to the current table width by setting the sectionSize of the header item
+*/
 void QetGraphicsTableItem::adjustColumnsWidth()
 {
 	if (!m_model)
@@ -819,9 +819,9 @@ void QetGraphicsTableItem::dataChanged(const QModelIndex &topLeft, const QModelI
 }
 
 /**
- * @brief QetGraphicsTableItem::headerSectionResized
- * Connected to the header signal QetGraphicsTableItem sectionResized
- */
+	@brief QetGraphicsTableItem::headerSectionResized
+	Connected to the header signal QetGraphicsTableItem sectionResized
+*/
 void QetGraphicsTableItem::headerSectionResized()
 {
 	auto header_size = m_header_item->rect().size();
@@ -834,10 +834,10 @@ void QetGraphicsTableItem::headerSectionResized()
 }
 
 /**
- * @brief QetGraphicsTableItem::adjustSize
- * If needed, this function resize the current height and width of table and/or the size of columns.
- * according to there minimum
- */
+	@brief QetGraphicsTableItem::adjustSize
+	If needed, this function resize the current height and width of table and/or the size of columns.
+	according to there minimum
+*/
 void QetGraphicsTableItem::adjustSize()
 {
 		//If there is no model, set the size to minimum

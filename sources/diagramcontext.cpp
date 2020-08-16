@@ -21,13 +21,13 @@
 #include <QDebug>
 
 /**
- * @brief DiagramContext::add
- * Add all value of @other to this.
- * If a key already exist, the value is replaced.
- * If a key doesn't exist, she will be added.
- * All other keys of this context, which are not present in @other, stay unchanged.
- * @param other
- */
+	@brief DiagramContext::add
+	Add all value of @other to this.
+	If a key already exist, the value is replaced.
+	If a key doesn't exist, she will be added.
+	All other keys of this context, which are not present in @other, stay unchanged.
+	@param other
+*/
 void DiagramContext::add(DiagramContext other)
 {
 	for (QString key : other.keys()) {
@@ -36,9 +36,9 @@ void DiagramContext::add(DiagramContext other)
 }
 
 /**
- * @brief DiagramContext::remove
- * @param key
- */
+	@brief DiagramContext::remove
+	@param key
+*/
 void DiagramContext::remove(const QString &key) {
 	m_content.remove(key);
 }
@@ -117,9 +117,9 @@ int DiagramContext::count() {
 }
 
 /**
- * @brief DiagramContext::keyMustShow
- * @return the value pairs with key, if key no found, return false
- */
+	@brief DiagramContext::keyMustShow
+	@return the value pairs with key, if key no found, return false
+*/
 bool DiagramContext::keyMustShow(const QString &key) const {
 	if (m_content_show.contains(key))
 		return m_content_show[key];
@@ -163,11 +163,11 @@ void DiagramContext::fromXml(const QDomElement &e, const QString &tag_name) {
 }
 
 /**
- * @brief DiagramContext::fromXml
- * Read this context properties from the @dom_element, looking for tags named @tag_name
- * @param dom_element : dom element to parse
- * @param tag_name : tag name to find, by default "property"
- */
+	@brief DiagramContext::fromXml
+	Read this context properties from the @dom_element, looking for tags named @tag_name
+	@param dom_element : dom element to parse
+	@param tag_name : tag name to find, by default "property"
+*/
 void DiagramContext::fromXml(const pugi::xml_node &dom_element, const QString &tag_name)
 {
 	for(auto node = dom_element.child(tag_name.toStdString().c_str()) ; node ; node = node.next_sibling(tag_name.toStdString().c_str()))

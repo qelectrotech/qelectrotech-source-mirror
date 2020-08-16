@@ -28,10 +28,10 @@ class Diagram;
 class CrossRefItem;
 
 /**
- * @brief The ElementTextItemGroup class
- * This class represent a group of element text
- * Texts in the group can be aligned left / center /right
- */
+	@brief The ElementTextItemGroup class
+	This class represent a group of element text
+	Texts in the group can be aligned left / center /right
+*/
 class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 {
 	Q_OBJECT

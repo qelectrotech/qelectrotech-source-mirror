@@ -26,11 +26,11 @@
 #include <QSqlError>
 
 /**
- * @brief projectDataBase::projectDataBase
- * Default constructor
- * @param project : project from the database work
- * @param parent : parent QObject
- */
+	@brief projectDataBase::projectDataBase
+	Default constructor
+	@param project : project from the database work
+	@param parent : parent QObject
+*/
 projectDataBase::projectDataBase(QETProject *project, QObject *parent) :
 	QObject(parent),
 	m_project(project)
@@ -46,18 +46,18 @@ projectDataBase::projectDataBase(QETProject *project, const QString &connection_
 }
 
 /**
- * @brief projectDataBase::~projectDataBase
- * Destructor
- */
+	@brief projectDataBase::~projectDataBase
+	Destructor
+*/
 projectDataBase::~projectDataBase() {
 	m_data_base.close();
 }
 
 /**
- * @brief projectDataBase::updateDB
- * Up to date the content of the data base.
- * Emit the signal dataBaseUpdated
- */
+	@brief projectDataBase::updateDB
+	Up to date the content of the data base.
+	Emit the signal dataBaseUpdated
+*/
 void projectDataBase::updateDB()
 {
 	populateDiagramTable();
@@ -68,25 +68,25 @@ void projectDataBase::updateDB()
 }
 
 /**
- * @brief projectDataBase::project
- * @return the project of this  database
- */
+	@brief projectDataBase::project
+	@return the project of this  database
+*/
 QETProject *projectDataBase::project() const {
 	return m_project;
 }
 
 /**
- * @brief projectDataBase::newQuery
- * @return a QSqlquery with @query as query and the internal database of this class as database to use.
- */
+	@brief projectDataBase::newQuery
+	@return a QSqlquery with @query as query and the internal database of this class as database to use.
+*/
 QSqlQuery projectDataBase::newQuery(const QString &query) {
 	return QSqlQuery(query, m_data_base);
 }
 
 /**
- * @brief projectDataBase::addElement
- * @param element
- */
+	@brief projectDataBase::addElement
+	@param element
+*/
 void projectDataBase::addElement(Element *element)
 {
 	m_insert_elements_query.bindValue(":uuid", element->uuid().toString());
@@ -115,9 +115,9 @@ void projectDataBase::addElement(Element *element)
 }
 
 /**
- * @brief projectDataBase::removeElement
- * @param element
- */
+	@brief projectDataBase::removeElement
+	@param element
+*/
 void projectDataBase::removeElement(Element *element)
 {
 	m_remove_element_query.bindValue(":uuid", element->uuid().toString());
@@ -129,9 +129,9 @@ void projectDataBase::removeElement(Element *element)
 }
 
 /**
- * @brief projectDataBase::elementInfoChanged
- * @param element
- */
+	@brief projectDataBase::elementInfoChanged
+	@param element
+*/
 void projectDataBase::elementInfoChanged(Element *element)
 {
 	auto hash = elementInfoToString(element);
@@ -186,10 +186,10 @@ void projectDataBase::removeDiagram(Diagram *diagram)
 }
 
 /**
- * @brief projectDataBase::createDataBase
- * Create the data base
- * @return : true if the data base was successfully created.
- */
+	@brief projectDataBase::createDataBase
+	Create the data base
+	@return : true if the data base was successfully created.
+*/
 bool projectDataBase::createDataBase(const QString &connection_name, const QString &name)
 {
 
@@ -285,8 +285,8 @@ bool projectDataBase::createDataBase(const QString &connection_name, const QStri
 }
 
 /**
- * @brief projectDataBase::createElementNomenclatureView
- */
+	@brief projectDataBase::createElementNomenclatureView
+*/
 void projectDataBase::createElementNomenclatureView()
 {
 	QString create_view ("CREATE VIEW element_nomenclature_view AS SELECT "
@@ -322,8 +322,8 @@ void projectDataBase::createElementNomenclatureView()
 }
 
 /**
- * @brief projectDataBase::createSummaryView
- */
+	@brief projectDataBase::createSummaryView
+*/
 void projectDataBase::createSummaryView()
 {
 	QString create_view ("CREATE VIEW project_summary_view AS SELECT "
@@ -360,9 +360,9 @@ void projectDataBase::populateDiagramTable()
 }
 
 /**
- * @brief projectDataBase::populateElementTable
- * Populate the element table
- */
+	@brief projectDataBase::populateElementTable
+	Populate the element table
+*/
 void projectDataBase::populateElementTable()
 {
 	QSqlQuery query_(m_data_base);
@@ -388,9 +388,9 @@ void projectDataBase::populateElementTable()
 }
 
 /**
- * @brief projectDataBase::populateElementsTable
- * Populate the elements table
- */
+	@brief projectDataBase::populateElementsTable
+	Populate the elements table
+*/
 void projectDataBase::populateElementInfoTable()
 {
 	QSqlQuery query(m_data_base);
@@ -506,10 +506,10 @@ void projectDataBase::prepareQuery()
 }
 
 /**
- * @brief projectDataBase::elementInfoToString
- * @param elmt
- * @return the element information in hash as key for the info name and value as the information value.
- */
+	@brief projectDataBase::elementInfoToString
+	@param elmt
+	@return the element information in hash as key for the info name and value as the information value.
+*/
 QHash<QString, QString> projectDataBase::elementInfoToString(Element *elmt)
 {
 	QHash<QString, QString> hash; //Store the value for each columns
@@ -527,14 +527,14 @@ QHash<QString, QString> projectDataBase::elementInfoToString(Element *elmt)
 }
 
 /**
- * @brief projectDataBase::exportDb
- * @param parent
- * @param caption
- * @param dir
- * @param filter
- * @param selectedFilter
- * @param options
- */
+	@brief projectDataBase::exportDb
+	@param parent
+	@param caption
+	@param dir
+	@param filter
+	@param selectedFilter
+	@param options
+*/
 void projectDataBase::exportDb(projectDataBase *db, QWidget *parent, const QString &caption, const QString &dir)
 {
 	auto caption_ = caption;

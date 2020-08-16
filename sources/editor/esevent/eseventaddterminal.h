@@ -25,9 +25,9 @@ class PartTerminal;
 class QGraphicsSceneMouseEvent;
 
 /**
- * @brief The ESEventAddTerminal class
- * This ESEvent manage creation of terminal in an ElementScene
- */
+	@brief The ESEventAddTerminal class
+	This ESEvent manage creation of terminal in an ElementScene
+*/
 class ESEventAddTerminal : public ESEventInterface
 {
 	public:

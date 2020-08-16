@@ -25,10 +25,10 @@
 #include "projectpropertiesdialog.h"
 
 /**
- * @brief AutoNumberingDockWidget::AutoNumberingDockWidget
- * Constructor
- * @param parent : parent widget
- */
+	@brief AutoNumberingDockWidget::AutoNumberingDockWidget
+	Constructor
+	@param parent : parent widget
+*/
 AutoNumberingDockWidget::AutoNumberingDockWidget(QWidget *parent) :
 	QDockWidget(parent),
 	ui(new Ui::AutoNumberingDockWidget)
@@ -38,9 +38,9 @@ AutoNumberingDockWidget::AutoNumberingDockWidget(QWidget *parent) :
 }
 
 /**
- * @brief AutoNumberingDockWidget::~AutoNumberingDockWidget
- * Destructor
- */
+	@brief AutoNumberingDockWidget::~AutoNumberingDockWidget
+	Destructor
+*/
 AutoNumberingDockWidget::~AutoNumberingDockWidget()
 {
 	this->disconnect();
@@ -48,9 +48,9 @@ AutoNumberingDockWidget::~AutoNumberingDockWidget()
 }
 
 /**
- * @brief AutoNumberingDockWidget::clear
- * Remove all combo box values
- */
+	@brief AutoNumberingDockWidget::clear
+	Remove all combo box values
+*/
 void AutoNumberingDockWidget::clear()
 {
 	ui->m_conductor_cb->clear();
@@ -67,11 +67,11 @@ void AutoNumberingDockWidget::projectClosed()
 }
 
 /**
- * @brief AutoNumberingDockWidget::setProject
- * @param project: project to be setted
- * @param projectview: projectview to be setted
- * assign Project and ProjectView, connect all signals and setContext
- */
+	@brief AutoNumberingDockWidget::setProject
+	@param project: project to be setted
+	@param projectview: projectview to be setted
+	assign Project and ProjectView, connect all signals and setContext
+*/
 void AutoNumberingDockWidget::setProject(QETProject *project, ProjectView *projectview)
 {
 		//Disconnect previous project
@@ -133,9 +133,9 @@ void AutoNumberingDockWidget::setProject(QETProject *project, ProjectView *proje
 }
 
 /**
- * @brief AutoNumberingDockWidget::setContext
- * Add all itens to comboboxes
- */
+	@brief AutoNumberingDockWidget::setContext
+	Add all itens to comboboxes
+*/
 void AutoNumberingDockWidget::setContext() {
 
 	this->clear();
@@ -165,9 +165,9 @@ void AutoNumberingDockWidget::setContext() {
 }
 
 /**
- * @brief AutoNumberingDockWidget::setConductorActive
- * @param dv: activated diagramview
- */
+	@brief AutoNumberingDockWidget::setConductorActive
+	@param dv: activated diagramview
+*/
 void AutoNumberingDockWidget::setConductorActive(DiagramView* dv) {
 	if (dv!=nullptr) {
 		QString conductor_autonum = dv->diagram()->conductorsAutonumName();
@@ -177,9 +177,9 @@ void AutoNumberingDockWidget::setConductorActive(DiagramView* dv) {
 }
 
 /**
- * @brief AutoNumberingDockWidget::setActive
- * Set current used autonumberings
- */
+	@brief AutoNumberingDockWidget::setActive
+	Set current used autonumberings
+*/
 void AutoNumberingDockWidget::setActive() {
 
 	if (m_project_view!=nullptr) {
@@ -206,9 +206,9 @@ void AutoNumberingDockWidget::setActive() {
 }
 
 /**
- * @brief AutoNumberingDockWidget::conductorAutoNumChanged
- * Add new or remove conductor auto num from combobox
- */
+	@brief AutoNumberingDockWidget::conductorAutoNumChanged
+	Add new or remove conductor auto num from combobox
+*/
 void AutoNumberingDockWidget::conductorAutoNumChanged() {
 	ui->m_conductor_cb->clear();
 
@@ -222,10 +222,10 @@ void AutoNumberingDockWidget::conductorAutoNumChanged() {
 }
 
 /**
- * @brief AutoNumberingDockWidget::on_m_conductor_cb_activated
- * @param unused
- * Set new conductor AutoNum
- */
+	@brief AutoNumberingDockWidget::on_m_conductor_cb_activated
+	@param unused
+	Set new conductor AutoNum
+*/
 void AutoNumberingDockWidget::on_m_conductor_cb_activated(int)
 {
 	QString current_autonum = ui->m_conductor_cb->currentText();
@@ -236,9 +236,9 @@ void AutoNumberingDockWidget::on_m_conductor_cb_activated(int)
 }
 
 /**
- * @brief AutoNumberingDockWidget::elementAutoNumChanged
- * Add new or remove element auto num from combobox
- */
+	@brief AutoNumberingDockWidget::elementAutoNumChanged
+	Add new or remove element auto num from combobox
+*/
 void AutoNumberingDockWidget::elementAutoNumChanged() {
 
 	ui->m_element_cb->clear();
@@ -253,10 +253,10 @@ void AutoNumberingDockWidget::elementAutoNumChanged() {
 }
 
 /**
- * @brief AutoNumberingDockWidget::on_m_element_cb_activated
- * @param unused
- * Set new element AutoNum
- */
+	@brief AutoNumberingDockWidget::on_m_element_cb_activated
+	@param unused
+	Set new element AutoNum
+*/
 void AutoNumberingDockWidget::on_m_element_cb_activated(int)
 {
 	m_project->setCurrrentElementAutonum(ui->m_element_cb->currentText());
@@ -264,9 +264,9 @@ void AutoNumberingDockWidget::on_m_element_cb_activated(int)
 }
 
 /**
- * @brief AutoNumberingDockWidget::folioAutoNumChanged
- * Add new or remove folio auto num from combobox
- */
+	@brief AutoNumberingDockWidget::folioAutoNumChanged
+	Add new or remove folio auto num from combobox
+*/
 void AutoNumberingDockWidget::folioAutoNumChanged() {
 
 	ui->m_folio_cb->clear();
@@ -281,10 +281,10 @@ void AutoNumberingDockWidget::folioAutoNumChanged() {
 }
 
 /**
- * @brief AutoNumberingDockWidget::on_m_folio_cb_activated
- * @param unused
- * Set new folio AutoNum
- */
+	@brief AutoNumberingDockWidget::on_m_folio_cb_activated
+	@param unused
+	Set new folio AutoNum
+*/
 void AutoNumberingDockWidget::on_m_folio_cb_activated(int) {
 	QString current_autonum = ui->m_folio_cb->currentText();
 	TitleBlockProperties ip = m_project -> defaultTitleBlockProperties();

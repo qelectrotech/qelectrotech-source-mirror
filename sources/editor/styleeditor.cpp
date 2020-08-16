@@ -432,9 +432,9 @@ void StyleEditor::updatePartFilling() {
 }
 
 /**
- * @brief StyleEditor::updateForm
- * Update the edition form according to the value of edited part(s)
- */
+	@brief StyleEditor::updateForm
+	Update the edition form according to the value of edited part(s)
+*/
 void StyleEditor::updateForm()
 {
 	if (!part && m_part_list.isEmpty()) return;
@@ -471,12 +471,12 @@ void StyleEditor::updateForm()
 }
 
 /**
- * @brief StyleEditor::setPart
- * Set the part to edit by this editor.
- * Note : editor can accept or refuse to edit a part
- * @param new_part : part to edit
- * @return  true if editor accept to edit this CustomElementPart otherwise false
- */
+	@brief StyleEditor::setPart
+	Set the part to edit by this editor.
+	Note : editor can accept or refuse to edit a part
+	@param new_part : part to edit
+	@return  true if editor accept to edit this CustomElementPart otherwise false
+*/
 bool StyleEditor::setPart(CustomElementPart *new_part) {
 	m_part_list.clear();
 	m_cep_list.clear();
@@ -499,14 +499,14 @@ bool StyleEditor::setPart(CustomElementPart *new_part) {
 }
 
 /**
- * @brief StyleEditor::setParts
- * Set several parts to edit by this editor.
- * Note : editor can accept or refuse to edit several parts.
- * @param part_list
- * @return true if every customeElementPart stored in part_list can
- * be edited by this part editor, otherwise return false
- * (see StyleEditor::isStyleEditable)
- */
+	@brief StyleEditor::setParts
+	Set several parts to edit by this editor.
+	Note : editor can accept or refuse to edit several parts.
+	@param part_list
+	@return true if every customeElementPart stored in part_list can
+	be edited by this part editor, otherwise return false
+	(see StyleEditor::isStyleEditable)
+*/
 bool StyleEditor::setParts(QList<CustomElementPart *> part_list)
 {
 	if (part_list.isEmpty()) return false;
@@ -545,10 +545,10 @@ QList<CustomElementPart*> StyleEditor::currentParts() const {
 }
 
 /**
- * @brief StyleEditor::isStyleEditable
- * @param cep_list
- * @return true if all of the content of cep_list can be edited by style editor, else return false.
- */
+	@brief StyleEditor::isStyleEditable
+	@param cep_list
+	@return true if all of the content of cep_list can be edited by style editor, else return false.
+*/
 bool StyleEditor::isStyleEditable(QList<CustomElementPart *> cep_list)
 {
 	QStringList str;

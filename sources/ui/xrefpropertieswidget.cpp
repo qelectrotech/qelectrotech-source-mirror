@@ -23,11 +23,11 @@
 #include <QMetaEnum>
 
 /**
- * @brief XRefPropertiesWidget::XRefPropertiesWidget
- * Default constructor
- * @param properties: properties to use
- * @param parent: parent widget
- */
+	@brief XRefPropertiesWidget::XRefPropertiesWidget
+	Default constructor
+	@param properties: properties to use
+	@param parent: parent widget
+*/
 XRefPropertiesWidget::XRefPropertiesWidget(QHash <QString, XRefProperties> properties, QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::XRefPropertiesWidget),
@@ -42,9 +42,9 @@ XRefPropertiesWidget::XRefPropertiesWidget(QHash <QString, XRefProperties> prope
 }
 
 /**
- * @brief XRefPropertiesWidget::~XRefPropertiesWidget
- * Default destructor
- */
+	@brief XRefPropertiesWidget::~XRefPropertiesWidget
+	Default destructor
+*/
 XRefPropertiesWidget::~XRefPropertiesWidget()
 {
 	disconnect(ui->m_display_has_cross_rb, SIGNAL(toggled(bool)),            ui->m_cross_properties_gb, SLOT(setEnabled(bool)));
@@ -54,10 +54,10 @@ XRefPropertiesWidget::~XRefPropertiesWidget()
 }
 
 /**
- * @brief XRefPropertiesWidget::setProperties
- * set new properties for this widget
- * @param properties
- */
+	@brief XRefPropertiesWidget::setProperties
+	set new properties for this widget
+	@param properties
+*/
 void XRefPropertiesWidget::setProperties(const QHash <QString, XRefProperties> &properties) {
 	m_properties = properties;
 	updateDisplay();
@@ -65,19 +65,19 @@ void XRefPropertiesWidget::setProperties(const QHash <QString, XRefProperties> &
 }
 
 /**
- * @brief XRefPropertiesWidget::properties
- * @return the properties edited by this widget
- */
+	@brief XRefPropertiesWidget::properties
+	@return the properties edited by this widget
+*/
 QHash <QString, XRefProperties> XRefPropertiesWidget::properties(){
 	saveProperties(ui->m_type_cb->currentIndex());
 	return m_properties;
 }
 
 /**
- * @brief XRefPropertiesWidget::setReadOnly
- * Set all of this widget disable if true
- * @param ro
- */
+	@brief XRefPropertiesWidget::setReadOnly
+	Set all of this widget disable if true
+	@param ro
+*/
 void XRefPropertiesWidget::setReadOnly(bool ro) {
 	ui->m_type_cb->setDisabled(ro);
 	ui->m_display_gb->setDisabled(ro);
@@ -89,9 +89,9 @@ void XRefPropertiesWidget::setReadOnly(bool ro) {
 }
 
 /**
- * @brief XRefPropertiesWidget::buildUi
- * Build some widget of this ui.
- */
+	@brief XRefPropertiesWidget::buildUi
+	Build some widget of this ui.
+*/
 void XRefPropertiesWidget::buildUi()
 {
 	ui -> m_type_cb -> addItem(tr("Bobine"),			   "coil");
@@ -110,10 +110,10 @@ void XRefPropertiesWidget::buildUi()
 }
 
 /**
- * @brief XRefPropertiesWidget::saveProperties
- * Save the properties of the type define at @index of the combo box m_type_cb
- * @param index
- */
+	@brief XRefPropertiesWidget::saveProperties
+	Save the properties of the type define at @index of the combo box m_type_cb
+	@param index
+*/
 void XRefPropertiesWidget::saveProperties(int index) {
 	QString type = ui->m_type_cb->itemData(index).toString();
 	XRefProperties xrp = m_properties[type];
@@ -145,9 +145,9 @@ void XRefPropertiesWidget::saveProperties(int index) {
 }
 
 /**
- * @brief XRefPropertiesWidget::updateDisplay
- * Update display with the curent displayed type.
- */
+	@brief XRefPropertiesWidget::updateDisplay
+	Update display with the curent displayed type.
+*/
 void XRefPropertiesWidget::updateDisplay() {
 	QString type = ui->m_type_cb->itemData(ui->m_type_cb->currentIndex()).toString();
 	XRefProperties xrp = m_properties[type];
@@ -191,10 +191,10 @@ void XRefPropertiesWidget::updateDisplay() {
 }
 
 /**
- * @brief XRefPropertiesWidget::typeChanged
- * manage the save of the current properties,
- * when the combo box of type change.
- */
+	@brief XRefPropertiesWidget::typeChanged
+	manage the save of the current properties,
+	when the combo box of type change.
+*/
 void XRefPropertiesWidget::typeChanged() {
 	//save the properties of the previous xref type
 	saveProperties(m_previous_type_index);
@@ -206,9 +206,9 @@ void XRefPropertiesWidget::typeChanged() {
 }
 
 /**
- * @brief XRefPropertiesWidget::enableOffsetSB
- * Enable Offset SB only if Snap to Footer is selected
- */
+	@brief XRefPropertiesWidget::enableOffsetSB
+	Enable Offset SB only if Snap to Footer is selected
+*/
 void XRefPropertiesWidget::enableOffsetSB(int i){
 	if (i)
 		ui->m_offset_sb->setEnabled(false);

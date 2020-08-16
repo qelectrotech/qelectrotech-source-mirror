@@ -186,10 +186,10 @@ bool ElementsPanel::matchesFilter(const QTreeWidgetItem *item, const QString& fi
 }
 
 /**
- * @brief ElementsPanel::reload
- * Reload the elements tree
- * @param reload_collections true for read all collections since their sources (files, projects ...)
- */
+	@brief ElementsPanel::reload
+	Reload the elements tree
+	@param reload_collections true for read all collections since their sources (files, projects ...)
+*/
 void ElementsPanel::reload(bool reload_collections) {
 	Q_UNUSED(reload_collections);
 	

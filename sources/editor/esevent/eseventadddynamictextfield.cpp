@@ -23,9 +23,9 @@
 #include <QUndoStack>
 
 /**
- * @brief ESEventAddDynamicTextField::ESEventAddDynamicTextField
- * @param scene
- */
+	@brief ESEventAddDynamicTextField::ESEventAddDynamicTextField
+	@param scene
+*/
 ESEventAddDynamicTextField::ESEventAddDynamicTextField(ElementScene *scene) :
 	ESEventInterface(scene)
 {
@@ -35,17 +35,17 @@ ESEventAddDynamicTextField::ESEventAddDynamicTextField(ElementScene *scene) :
 }
 
 /**
- * @brief ESEventAddDynamicTextField::~ESEventAddDynamicTextField
- */
+	@brief ESEventAddDynamicTextField::~ESEventAddDynamicTextField
+*/
 ESEventAddDynamicTextField::~ESEventAddDynamicTextField() {
 	delete m_text;
 }
 
 /**
- * @brief ESEventAddDynamicTextField::mouseMoveEvent
- * @param event
- * @return 
- */
+	@brief ESEventAddDynamicTextField::mouseMoveEvent
+	@param event
+	@return
+*/
 bool ESEventAddDynamicTextField::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
 	QPointF pos = m_scene->snapToGrid(event->scenePos());
@@ -55,10 +55,10 @@ bool ESEventAddDynamicTextField::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief ESEventAddDynamicTextField::mouseReleaseEvent
- * @param event
- * @return 
- */
+	@brief ESEventAddDynamicTextField::mouseReleaseEvent
+	@param event
+	@return
+*/
 bool ESEventAddDynamicTextField::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (event->button() == Qt::LeftButton)

@@ -35,17 +35,17 @@ CompositeTextEditDialog::~CompositeTextEditDialog() {
 }
 
 /**
- * @brief CompositeTextEditDialog::plainText
- * @return The edited text
- */
+	@brief CompositeTextEditDialog::plainText
+	@return The edited text
+*/
 QString CompositeTextEditDialog::plainText() const {
 	return ui->m_plain_text_edit->toPlainText();
 }
 
 /**
- * @brief CompositeTextEditDialog::setUpComboBox
- * Add the available element information in the combo box
- */
+	@brief CompositeTextEditDialog::setUpComboBox
+	Add the available element information in the combo box
+*/
 void CompositeTextEditDialog::setUpComboBox()
 {
 	QStringList qstrl;
@@ -78,10 +78,10 @@ void CompositeTextEditDialog::on_m_info_cb_activated(const QString &arg1)
 }
 
 /**
- * @brief CompositeTextEditDialog::focusInEvent
- * Reimplemented from QWidget::focusInEvent
- * @param event
- */
+	@brief CompositeTextEditDialog::focusInEvent
+	Reimplemented from QWidget::focusInEvent
+	@param event
+*/
 void CompositeTextEditDialog::focusInEvent(QFocusEvent *event)
 {
 	ui->m_plain_text_edit->setFocus();

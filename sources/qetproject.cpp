@@ -38,10 +38,10 @@
 static int BACKUP_INTERVAL = 120000; //interval in ms of backup = 2min
 
 /**
- * @brief QETProject::QETProject
- * Create a empty project
- * @param parent
- */
+	@brief QETProject::QETProject
+	Create a empty project
+	@param parent
+*/
 QETProject::QETProject(QObject *parent) :
 	QObject              (parent),
 	m_titleblocks_collection(this),
@@ -54,11 +54,11 @@ QETProject::QETProject(QObject *parent) :
 }
 
 /**
- * @brief QETProject::QETProject
- * Construct a project from a .qet file
- * @param path : path of the file
- * @param parent : parent QObject
- */
+	@brief QETProject::QETProject
+	Construct a project from a .qet file
+	@param path : path of the file
+	@param parent : parent QObject
+*/
 QETProject::QETProject(const QString &path, QObject *parent) :
 	QObject              (parent),
 	m_titleblocks_collection(this),
@@ -74,10 +74,10 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 }
 
 /**
- * @brief QETProject::QETProject
- * @param backup : backup file to open, QETProject take ownership of backup.
- * @param parent : parent QObject
- */
+	@brief QETProject::QETProject
+	@param backup : backup file to open, QETProject take ownership of backup.
+	@param parent : parent QObject
+*/
 QETProject::QETProject(KAutoSaveFile *backup, QObject *parent) :
 	QObject              (parent),
 	m_titleblocks_collection(this),
@@ -108,9 +108,9 @@ QETProject::QETProject(KAutoSaveFile *backup, QObject *parent) :
 }
 
 /**
- * @brief QETProject::~QETProject
- * Destructor
- */
+	@brief QETProject::~QETProject
+	Destructor
+*/
 QETProject::~QETProject()
 {
 	for (auto diagram : m_diagrams_list)
@@ -118,24 +118,24 @@ QETProject::~QETProject()
 }
 
 /**
- * @brief QETProject::dataBase
- * @return The data base of this project
- */
+	@brief QETProject::dataBase
+	@return The data base of this project
+*/
 projectDataBase *QETProject::dataBase() {
 	return &m_data_base;
 }
 
 /**
- * @brief QETProject::uuid
- * @return the uuid of this project
- */
+	@brief QETProject::uuid
+	@return the uuid of this project
+*/
 QUuid QETProject::uuid() const {
 	return m_uuid;
 }
 
 /**
- * @brief QETProject::init
- */
+	@brief QETProject::init
+*/
 void QETProject::init()
 {
 	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::changed, this, &QETProject::updateDiagramsTitleBlockTemplate);
@@ -165,10 +165,10 @@ void QETProject::init()
 }
 
 /**
- * @brief QETProject::openFile
- * @param file
- * @return
- */
+	@brief QETProject::openFile
+	@param file
+	@return
+*/
 QETProject::ProjectState QETProject::openFile(QFile *file)
 {
 	bool opened_here = file->isOpen() ? false : true;
@@ -228,9 +228,9 @@ int QETProject::folioIndex(const Diagram *diagram) const {
 }
 
 /**
- * @brief QETProject::embeddedCollection
- * @return The embedded collection
- */
+	@brief QETProject::embeddedCollection
+	@return The embedded collection
+*/
 XmlElementCollection *QETProject::embeddedElementCollection() const {
 	return m_elements_collection;
 }
@@ -250,13 +250,13 @@ QString QETProject::filePath() {
 }
 
 /**
- * @brief QETProject::setFilePath
- * Set the filepath of this project file
- * Set a file path also create a backup file according to the path.
- * If a previous path was set, the previous backup file is deleted and a new one
- * is created according to the path.
- * @param filepath
- */
+	@brief QETProject::setFilePath
+	Set the filepath of this project file
+	Set a file path also create a backup file according to the path.
+	If a previous path was set, the previous backup file is deleted and a new one
+	is created according to the path.
+	@param filepath
+*/
 void QETProject::setFilePath(const QString &filepath)
 {
 	if (filepath == m_file_path) {
@@ -416,10 +416,10 @@ TitleBlockProperties QETProject::defaultTitleBlockProperties() const {
 }
 
 /**
- * @brief QETProject::setDefaultTitleBlockProperties
- * Specify the title block to be used at the creation of a new diagram for this project
- * @param titleblock
- */
+	@brief QETProject::setDefaultTitleBlockProperties
+	Specify the title block to be used at the creation of a new diagram for this project
+	@param titleblock
+*/
 void QETProject::setDefaultTitleBlockProperties(const TitleBlockProperties &titleblock) {
 	default_titleblock_properties_ = titleblock;
 		//Integrate the title block in this project
@@ -485,26 +485,26 @@ void QETProject::setDefaultXRefProperties(QHash<QString, XRefProperties> hash)
 }
 
 /**
- * @brief QETProject::conductorAutoNum
- * @return All value of conductor autonum stored in project
- */
+	@brief QETProject::conductorAutoNum
+	@return All value of conductor autonum stored in project
+*/
 QHash <QString, NumerotationContext> QETProject::conductorAutoNum() const {
 	return m_conductor_autonum;
 }
 
 /**
- * @brief QETProject::elementAutoNum
- * @return All value of element autonum stored in project
- */
+	@brief QETProject::elementAutoNum
+	@return All value of element autonum stored in project
+*/
 QHash <QString, NumerotationContext> QETProject::elementAutoNum() const {
 	return m_element_autonum;
 }
 
 /**
- * @brief QETProject::elementAutoNumFormula
- * @param element autonum title
- * @return Formula of element autonum stored in element autonum
- */
+	@brief QETProject::elementAutoNumFormula
+	@param element autonum title
+	@return Formula of element autonum stored in element autonum
+*/
 QString QETProject::elementAutoNumFormula (const QString& key) const
 {
 	if (m_element_autonum.contains(key)) {
@@ -515,34 +515,34 @@ QString QETProject::elementAutoNumFormula (const QString& key) const
 }
 
 /**
- * @brief QETProject::elementAutoNumCurrentFormula
- * @return current formula being used by project
- */
+	@brief QETProject::elementAutoNumCurrentFormula
+	@return current formula being used by project
+*/
 QString QETProject::elementAutoNumCurrentFormula() const {
 	return elementAutoNumFormula(m_current_element_autonum);
 }
 
 /**
- * @brief QETProject::elementCurrentAutoNum
- * @return current element autonum title
- */
+	@brief QETProject::elementCurrentAutoNum
+	@return current element autonum title
+*/
 QString QETProject::elementCurrentAutoNum () const {
 	return m_current_element_autonum;
 }
 
 /**
- * @brief QETProject::setCurrrentElementAutonum
- * @param autoNum : set the current element autonum to @autonum
- */
+	@brief QETProject::setCurrrentElementAutonum
+	@param autoNum : set the current element autonum to @autonum
+*/
 void QETProject::setCurrrentElementAutonum(QString autoNum) {
 	m_current_element_autonum = std::move(autoNum);
 }
 
 /**
- * @brief QETProject::conductorAutoNumFormula
- * @param conductor autonum title
- * @return Formula of element autonum stored in conductor autonum
- */
+	@brief QETProject::conductorAutoNumFormula
+	@param conductor autonum title
+	@return Formula of element autonum stored in conductor autonum
+*/
 QString QETProject::conductorAutoNumFormula (const QString& key) const
 {
 	if (m_conductor_autonum.contains(key))
@@ -552,47 +552,47 @@ QString QETProject::conductorAutoNumFormula (const QString& key) const
 }
 
 /**
- * @brief QETProject::conductorCurrentAutoNum
- * @return current conductor autonum title
- */
+	@brief QETProject::conductorCurrentAutoNum
+	@return current conductor autonum title
+*/
 QString QETProject::conductorCurrentAutoNum () const {
 	return m_current_conductor_autonum;
 }
 
 /**
- * @brief QETProject::setCurrentConductorAutoNum
- * @param autoNum set the current conductor autonum to @autonum
- */
+	@brief QETProject::setCurrentConductorAutoNum
+	@param autoNum set the current conductor autonum to @autonum
+*/
 void QETProject::setCurrentConductorAutoNum(QString autoNum) {
 	m_current_conductor_autonum = std::move(autoNum);
 }
 
 /**
- * @brief QETProject::folioAutoNum
- * @return All value of folio autonum stored in project
- */
+	@brief QETProject::folioAutoNum
+	@return All value of folio autonum stored in project
+*/
 QHash <QString, NumerotationContext> QETProject::folioAutoNum() const {
 	return  m_folio_autonum;
 }
 
 /**
- * @brief QETProject::addConductorAutoNum
- * Add a new conductor numerotation context. If key already exist,
- * replace old context by the new context
- * @param key
- * @param context
- */
+	@brief QETProject::addConductorAutoNum
+	Add a new conductor numerotation context. If key already exist,
+	replace old context by the new context
+	@param key
+	@param context
+*/
 void QETProject::addConductorAutoNum(const QString& key, const NumerotationContext& context) {
 	m_conductor_autonum.insert(key, context);
 }
 
 /**
- * @brief QETProject::addElementAutoNum
- * Add a new element numerotation context. If key already exist,
- * replace old context by the new context
- * @param key
- * @param context
- */
+	@brief QETProject::addElementAutoNum
+	Add a new element numerotation context. If key already exist,
+	replace old context by the new context
+	@param key
+	@param context
+*/
 void QETProject::addElementAutoNum(const QString& key, const NumerotationContext& context)
 {
 	m_element_autonum.insert(key, context);
@@ -600,30 +600,30 @@ void QETProject::addElementAutoNum(const QString& key, const NumerotationContext
 }
 
 /**
- * @brief QETProject::addFolioAutoNum
- * Add a new folio numerotation context. If key already exist,
- * replace old context by the new context
- * @param key
- * @param context
- */
+	@brief QETProject::addFolioAutoNum
+	Add a new folio numerotation context. If key already exist,
+	replace old context by the new context
+	@param key
+	@param context
+*/
 void QETProject::addFolioAutoNum(const QString& key, const NumerotationContext& context) {
 	m_folio_autonum.insert(key, context);
 }
 
 /**
- * @brief QETProject::removeConductorAutoNum
- * Remove Conductor Numerotation Context stored with key
- * @param key
- */
+	@brief QETProject::removeConductorAutoNum
+	Remove Conductor Numerotation Context stored with key
+	@param key
+*/
 void QETProject::removeConductorAutoNum(const QString& key) {
 	m_conductor_autonum.remove(key);
 }
 
 /**
- * @brief QETProject::removeElementAutonum
- * Remove Element Numerotation Context stored with key
- * @param key
- */
+	@brief QETProject::removeElementAutonum
+	Remove Element Numerotation Context stored with key
+	@param key
+*/
 void QETProject::removeElementAutoNum(const QString& key)
 {
 	m_element_autonum.remove(key);
@@ -631,53 +631,53 @@ void QETProject::removeElementAutoNum(const QString& key)
 }
 
 /**
- * @brief QETProject::removeFolioAutonum
- * Remove Folio Numerotation Context stored with key
- * @param key
- */
+	@brief QETProject::removeFolioAutonum
+	Remove Folio Numerotation Context stored with key
+	@param key
+*/
 void QETProject::removeFolioAutoNum(const QString& key) {
 	m_folio_autonum.remove(key);
 }
 
 /**
- * @brief QETProject::conductorAutoNum
- * Return conductor numerotation context stored with @key.
- * If key is not found, return an empty numerotation context
- * @param key
- */
+	@brief QETProject::conductorAutoNum
+	Return conductor numerotation context stored with @key.
+	If key is not found, return an empty numerotation context
+	@param key
+*/
 NumerotationContext QETProject::conductorAutoNum (const QString &key) const {
 	if (m_conductor_autonum.contains(key)) return m_conductor_autonum[key];
 	else return NumerotationContext();
 }
 
 /**
- * @brief QETProject::elementAutoNum
- * Return element numerotation context stored with @key.
- * If key is not found, return an empty numerotation context
- * @param key
- */
+	@brief QETProject::elementAutoNum
+	Return element numerotation context stored with @key.
+	If key is not found, return an empty numerotation context
+	@param key
+*/
 NumerotationContext QETProject::elementAutoNum (const QString &key) {
 	if (m_element_autonum.contains(key)) return m_element_autonum[key];
 	else return NumerotationContext();
 }
 
 /**
- * @brief QETProject::folioAutoNum
- * Return folio numerotation context stored with @key.
- * If key is not found, return an empty numerotation context
- * @param key
- */
+	@brief QETProject::folioAutoNum
+	Return folio numerotation context stored with @key.
+	If key is not found, return an empty numerotation context
+	@param key
+*/
 NumerotationContext QETProject::folioAutoNum (const QString &key) const {
 	if (m_folio_autonum.contains(key)) return m_folio_autonum[key];
 	else return NumerotationContext();
 }
 
 /**
- * @brief QETProject::freezeExistentConductorLabel
- * Freeze Existent Conductors in the selected folios
- * @param from - first folio index to apply freeze
- * @param to - last folio index to apply freeze
- */
+	@brief QETProject::freezeExistentConductorLabel
+	Freeze Existent Conductors in the selected folios
+	@param from - first folio index to apply freeze
+	@param to - last folio index to apply freeze
+*/
 void QETProject::freezeExistentConductorLabel(bool freeze, int from, int to) {
 	for (int i = from; i <= to; i++) {
 		m_diagrams_list.at(i)->freezeConductors(freeze);
@@ -685,11 +685,11 @@ void QETProject::freezeExistentConductorLabel(bool freeze, int from, int to) {
 }
 
 /**
- * @brief QETProject::freezeNewConductorLabel
- * Freeze New Conductors in the selected folios
- * @param from - first folio index to apply freeze
- * @param to - last folio index to apply freeze
- */
+	@brief QETProject::freezeNewConductorLabel
+	Freeze New Conductors in the selected folios
+	@param from - first folio index to apply freeze
+	@param to - last folio index to apply freeze
+*/
 void QETProject::freezeNewConductorLabel(bool freeze, int from, int to) {
 	for (int i = from; i <= to; i++) {
 		m_diagrams_list.at(i)->setFreezeNewConductors(freeze);
@@ -697,27 +697,27 @@ void QETProject::freezeNewConductorLabel(bool freeze, int from, int to) {
 }
 
 /**
- * @brief QETProject::isFreezeNewConductors
- * @return freeze new conductors Project Wide status
- */
+	@brief QETProject::isFreezeNewConductors
+	@return freeze new conductors Project Wide status
+*/
 bool QETProject::isFreezeNewConductors() {
 	return m_freeze_new_conductors;
 }
 
 /**
- * @brief QETProject::setfreezeNewConductors
- * Set Project Wide freeze new conductors
- */
+	@brief QETProject::setfreezeNewConductors
+	Set Project Wide freeze new conductors
+*/
 void QETProject::setFreezeNewConductors(bool set) {
 	m_freeze_new_conductors = set;
 }
 
 /**
- * @brief QETProject::freezeExistentElementLabel
- * Freeze Existent Elements in the selected folios
- * @param from - first folio index to apply freeze
- * @param to - last folio index to apply freeze
- */
+	@brief QETProject::freezeExistentElementLabel
+	Freeze Existent Elements in the selected folios
+	@param from - first folio index to apply freeze
+	@param to - last folio index to apply freeze
+*/
 void QETProject::freezeExistentElementLabel(bool freeze, int from, int to) {
 	for (int i = from; i <= to; i++) {
 		m_diagrams_list.at(i)->freezeElements(freeze);
@@ -725,11 +725,11 @@ void QETProject::freezeExistentElementLabel(bool freeze, int from, int to) {
 }
 
 /**
- * @brief QETProject::freezeNewElementLabel
- * Freeze New Elements in the selected folios
- * @param from - first folio index to apply freeze
- * @param to - last folio index to apply freeze
- */
+	@brief QETProject::freezeNewElementLabel
+	Freeze New Elements in the selected folios
+	@param from - first folio index to apply freeze
+	@param to - last folio index to apply freeze
+*/
 void QETProject::freezeNewElementLabel(bool freeze, int from, int to) {
 	for (int i = from; i <= to; i++) {
 		m_diagrams_list.at(i)->setFreezeNewElements(freeze);
@@ -737,37 +737,37 @@ void QETProject::freezeNewElementLabel(bool freeze, int from, int to) {
 }
 
 /**
- * @brief QETProject::freezeNewElements
- * @return freeze new elements Project Wide status
- */
+	@brief QETProject::freezeNewElements
+	@return freeze new elements Project Wide status
+*/
 bool QETProject::isFreezeNewElements() {
 	return m_freeze_new_elements;
 }
 
 /**
- * @brief QETProject::setfreezeNewElements
- * Set Project Wide freeze new elements
- */
+	@brief QETProject::setfreezeNewElements
+	Set Project Wide freeze new elements
+*/
 void QETProject::setFreezeNewElements(bool set) {
 	m_freeze_new_elements = set;
 }
 
 /**
- * @brief QETProject::autoConductor
- * @return true if use of auto conductor is authorized.
- * See also Q_PROPERTY autoConductor
- */
+	@brief QETProject::autoConductor
+	@return true if use of auto conductor is authorized.
+	See also Q_PROPERTY autoConductor
+*/
 bool QETProject::autoConductor() const
 {
 	return m_auto_conductor;
 }
 
 /**
- * @brief QETProject::setAutoConductor
- * @param ac
- * Enable the use of auto conductor if true
- * See also Q_PROPERTY autoConductor
- */
+	@brief QETProject::setAutoConductor
+	@param ac
+	Enable the use of auto conductor if true
+	See also Q_PROPERTY autoConductor
+*/
 void QETProject::setAutoConductor(bool ac)
 {
 	if (ac != m_auto_conductor)
@@ -775,19 +775,19 @@ void QETProject::setAutoConductor(bool ac)
 }
 
 /**
- * @brief QETProject::autoFolioNumberingNewFolios
- * emit Signal to add new Diagram with autonum
- * properties
- */
+	@brief QETProject::autoFolioNumberingNewFolios
+	emit Signal to add new Diagram with autonum
+	properties
+*/
 void QETProject::autoFolioNumberingNewFolios(){
 	emit addAutoNumDiagram();
 }
 
 /**
- * @brief QETProject::autoFolioNumberingNewFolios
- * @param autonum used, index from selected tabs "from" and "to"
- * rename folios with selected autonum
- */
+	@brief QETProject::autoFolioNumberingNewFolios
+	@param autonum used, index from selected tabs "from" and "to"
+	rename folios with selected autonum
+*/
 void QETProject::autoFolioNumberingSelectedFolios(int from, int to, const QString& autonum){
 	int total_folio = m_diagrams_list.count();
 	DiagramContext project_wide_properties = m_project_properties;
@@ -862,12 +862,12 @@ bool QETProject::close() {
 }
 
 /**
- * @brief QETProject::write
- * Save the project in a file
- * @see filePath()
- * @see setFilePath()
- * @return true if the project was successfully saved, else false
- */
+	@brief QETProject::write
+	Save the project in a file
+	@see filePath()
+	@see setFilePath()
+	@return true if the project was successfully saved, else false
+*/
 QETResult QETProject::write()
 {
 		// this operation requires a filepath
@@ -903,10 +903,10 @@ bool QETProject::isReadOnly() const {
 }
 
 /**
- * @brief QETProject::setReadOnly
- * Set this project to read only if @read_only = true
- * @param read_only
- */
+	@brief QETProject::setReadOnly
+	Set this project to read only if @read_only = true
+	@param read_only
+*/
 void QETProject::setReadOnly(bool read_only)
 {
 	if (m_read_only != read_only)
@@ -940,11 +940,11 @@ bool QETProject::isEmpty() const {
 }
 
 /**
- * @brief QETProject::importElement
- * Import the element represented by @location to the embbeded collection of this project
- * @param location
- * @return the location of the imported element, location can be null.
- */
+	@brief QETProject::importElement
+	Import the element represented by @location to the embbeded collection of this project
+	@param location
+	@return the location of the imported element, location can be null.
+*/
 ElementsLocation QETProject::importElement(ElementsLocation &location)
 {
 		//Location isn't an element or doesn't exist
@@ -1079,12 +1079,12 @@ bool QETProject::usesElement(const ElementsLocation &location) const
 }
 
 /**
- * @brief QETProject::unusedElements
- * @return the list of unused element (exactly her location)
- * An unused element, is an element present in the embedded collection but not present in a diagram of this project.
- * Be aware that an element can be not present in a diagram,
- * but managed by an undo command (delete an element), so an unused element can be used after an undo.
- */
+	@brief QETProject::unusedElements
+	@return the list of unused element (exactly her location)
+	An unused element, is an element present in the embedded collection but not present in a diagram of this project.
+	Be aware that an element can be not present in a diagram,
+	but managed by an undo command (delete an element), so an unused element can be used after an undo.
+*/
 QList<ElementsLocation> QETProject::unusedElements() const
 {
 	QList <ElementsLocation> unused_list;
@@ -1114,11 +1114,11 @@ bool QETProject::usesTitleBlockTemplate(const TitleBlockTemplateLocation &locati
 }
 
 /**
- * @brief QETProject::addNewDiagram
- * Add a new diagram in project at position pos.
- * @param pos
- * @return the new created diagram
- */
+	@brief QETProject::addNewDiagram
+	Add a new diagram in project at position pos.
+	@param pos
+	@return the new created diagram
+*/
 Diagram *QETProject::addNewDiagram(int pos)
 {
 	if (isReadOnly()) {
@@ -1137,10 +1137,10 @@ Diagram *QETProject::addNewDiagram(int pos)
 }
 
 /**
- * @brief QETProject::removeDiagram
- * Remove @diagram from project
- * @param diagram
- */
+	@brief QETProject::removeDiagram
+	Remove @diagram from project
+	@param diagram
+*/
 void QETProject::removeDiagram(Diagram *diagram)
 {
 	if (isReadOnly() ||
@@ -1190,10 +1190,10 @@ void QETProject::setModified(bool modified) {
 }
 
 /**
- * @brief QETProject::readProjectXml
- * Read and make the project from an xml description
- * @param xml_project : the description of the project from an xml
- */
+	@brief QETProject::readProjectXml
+	Read and make the project from an xml description
+	@param xml_project : the description of the project from an xml
+*/
 void QETProject::readProjectXml(QDomDocument &xml_project)
 {
 	QDomElement root_elmt = xml_project.documentElement();
@@ -1256,11 +1256,11 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 }
 
 /**
- * @brief QETProject::readDiagramsXml
- * Load the diagrams from the xml description of the project.
- * Note a project can have 0 diagram
- * @param xml_project
- */
+	@brief QETProject::readDiagramsXml
+	Load the diagrams from the xml description of the project.
+	Note a project can have 0 diagram
+	@param xml_project
+*/
 void QETProject::readDiagramsXml(QDomDocument &xml_project)
 {
 	//@TODO try to solve a weird bug (dialog is black) since port to Qt5 with the DialogWaiting
@@ -1328,10 +1328,10 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 }
 
 /**
- * @brief QETProject::readElementsCollectionXml
- * Load the diagrams from the xml description of the project
- * @param xml_project : the xml description of the project
- */
+	@brief QETProject::readElementsCollectionXml
+	Load the diagrams from the xml description of the project
+	@param xml_project : the xml description of the project
+*/
 void QETProject::readElementsCollectionXml(QDomDocument &xml_project)
 {
 		//Get the embedded elements collection of the project
@@ -1354,10 +1354,10 @@ void QETProject::readElementsCollectionXml(QDomDocument &xml_project)
 }
 
 /**
- * @brief QETProject::readProjectPropertiesXml
- * Load project properties from the XML description of the project
- * @param xml_project : the xml description of the project
- */
+	@brief QETProject::readProjectPropertiesXml
+	Load project properties from the XML description of the project
+	@param xml_project : the xml description of the project
+*/
 void QETProject::readProjectPropertiesXml(QDomDocument &xml_project)
 {
 	foreach (QDomElement e, QET::findInDomElement(xml_project.documentElement(), "properties"))
@@ -1365,11 +1365,11 @@ void QETProject::readProjectPropertiesXml(QDomDocument &xml_project)
 }
 
 /**
- * @brief QETProject::readDefaultPropertiesXml
- * load default properties for new diagram, found in the xml of this project
- * or by default find in the QElectroTech global conf
- * @param xml_project : the xml description of the project
- */
+	@brief QETProject::readDefaultPropertiesXml
+	load default properties for new diagram, found in the xml of this project
+	or by default find in the QElectroTech global conf
+	@param xml_project : the xml description of the project
+*/
 void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 {
 		// Find xml element where is stored properties for new diagram

@@ -29,11 +29,11 @@
 #include "qetdiagrameditor.h"
 
 /**
- * @brief DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand
- * @param diagram : deigram where this undo work
- * @param content : content to remove
- * @param parent : parent undo
- */
+	@brief DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand
+	@param diagram : deigram where this undo work
+	@param content : content to remove
+	@param parent : parent undo
+*/
 DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand(Diagram *diagram, const DiagramContent &content, QUndoCommand *parent) :
 	QUndoCommand(parent),
 	m_removed_contents(content),
@@ -107,10 +107,10 @@ DeleteQGraphicsItemCommand::~DeleteQGraphicsItemCommand() {
 }
 
 /**
- * @brief DeleteQGraphicsItemCommand::setPotentialsOfRemovedElements
- * This function creates new conductors (if needed) for conserve the electrical potentials
- * present at the terminals of each removed elements.
- */
+	@brief DeleteQGraphicsItemCommand::setPotentialsOfRemovedElements
+	This function creates new conductors (if needed) for conserve the electrical potentials
+	present at the terminals of each removed elements.
+*/
 void DeleteQGraphicsItemCommand::setPotentialsOfRemovedElements()
 {
 	for (Element *elmt : m_removed_contents.m_elements)
@@ -194,14 +194,14 @@ void DeleteQGraphicsItemCommand::setPotentialsOfRemovedElements()
 }
 
 /**
- * @brief DeleteQGraphicsItemCommand::terminalInSamePotential
- * Return a terminal at the same potential of @terminal, by traveling through the conductors connected to @terminal
- * only if the owner element of the terminal is not delete by this undo command.
- * Return nullptr if a terminal can't be found.
- * @param terminal - terminal from search
- * @param conductor_to_exclude - a conductor to exlcude from search.
- * @return 
- */
+	@brief DeleteQGraphicsItemCommand::terminalInSamePotential
+	Return a terminal at the same potential of @terminal, by traveling through the conductors connected to @terminal
+	only if the owner element of the terminal is not delete by this undo command.
+	Return nullptr if a terminal can't be found.
+	@param terminal - terminal from search
+	@param conductor_to_exclude - a conductor to exlcude from search.
+	@return 
+*/
 Terminal *DeleteQGraphicsItemCommand::terminalInSamePotential(Terminal *terminal, Conductor *conductor_to_exclude)
 {
 	QList<Conductor *> conductor_list = terminal->conductors();
@@ -227,9 +227,9 @@ Terminal *DeleteQGraphicsItemCommand::terminalInSamePotential(Terminal *terminal
 }
 
 /**
- * @brief DeleteQGraphicsItemCommand::undo
- * Undo this command
- */
+	@brief DeleteQGraphicsItemCommand::undo
+	Undo this command
+*/
 void DeleteQGraphicsItemCommand::undo()
 {
 	m_diagram->showMe();
@@ -265,9 +265,9 @@ void DeleteQGraphicsItemCommand::undo()
 }
 
 /**
- * @brief DeleteQGraphicsItemCommand::redo
- * Redo the delete command
- */
+	@brief DeleteQGraphicsItemCommand::redo
+	Redo the delete command
+*/
 void DeleteQGraphicsItemCommand::redo()
 {
 	m_diagram -> showMe();

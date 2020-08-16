@@ -25,9 +25,9 @@ class PartArc;
 class QGraphicsSceneMouseEvent;
 
 /**
- * @brief The ESEventAddArc class
- * This ESEvent manage creation of arc in an ElementScene
- */
+	@brief The ESEventAddArc class
+	This ESEvent manage creation of arc in an ElementScene
+*/
 class ESEventAddArc : public ESEventInterface
 {
 	public:

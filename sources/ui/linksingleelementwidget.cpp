@@ -26,13 +26,13 @@
 #include <QTreeWidgetItem>
 
 /**
- * @brief LinkSingleElementWidget::LinkSingleElementWidget
- * Default constructor
- * @param elmt
- * the edited element
- * @param parent
- * the parent widget
- */
+	@brief LinkSingleElementWidget::LinkSingleElementWidget
+	Default constructor
+	@param elmt
+	the edited element
+	@param parent
+	the parent widget
+*/
 LinkSingleElementWidget::LinkSingleElementWidget(Element *elmt, QWidget *parent) :
 	AbstractElementPropertiesEditorWidget(parent),
 	ui(new Ui::LinkSingleElementWidget)
@@ -75,9 +75,9 @@ LinkSingleElementWidget::LinkSingleElementWidget(Element *elmt, QWidget *parent)
 }
 
 /**
- * @brief LinkSingleElementWidget::~LinkSingleElementWidget
- * Default destructor
- */
+	@brief LinkSingleElementWidget::~LinkSingleElementWidget
+	Default destructor
+*/
 LinkSingleElementWidget::~LinkSingleElementWidget()
 {
 	if(m_showed_element)
@@ -93,10 +93,10 @@ LinkSingleElementWidget::~LinkSingleElementWidget()
 }
 
 /**
- * @brief LinkSingleElementWidget::setElement
- * Set element to be the edited element.
- * @param element
- */
+	@brief LinkSingleElementWidget::setElement
+	Set element to be the edited element.
+	@param element
+*/
 void LinkSingleElementWidget::setElement(Element *element)
 {
 	if (m_element == element)
@@ -135,10 +135,10 @@ void LinkSingleElementWidget::setElement(Element *element)
 }
 
 /**
- * @brief LinkSingleElementWidget::apply
- * Apply the new property of the edited element by pushing
- * the associated undo command to parent project undo stack
- */
+	@brief LinkSingleElementWidget::apply
+	Apply the new property of the edited element by pushing
+	the associated undo command to parent project undo stack
+*/
 void LinkSingleElementWidget::apply()
 {
 	QUndoCommand *undo = associatedUndo();
@@ -151,10 +151,10 @@ void LinkSingleElementWidget::apply()
 }
 
 /**
- * @brief LinkSingleElementWidget::associatedUndo
- * @return the undo command associated to the current edition
- * if there isn't change, return nulptr
- */
+	@brief LinkSingleElementWidget::associatedUndo
+	@return the undo command associated to the current edition
+	if there isn't change, return nulptr
+*/
 QUndoCommand *LinkSingleElementWidget::associatedUndo() const
 {
 	LinkElementCommand *undo = new LinkElementCommand(m_element);
@@ -173,9 +173,9 @@ QUndoCommand *LinkSingleElementWidget::associatedUndo() const
 }
 
 /**
- * @brief LinkSingleElementWidget::title
- * @return the title used for this editor
- */
+	@brief LinkSingleElementWidget::title
+	@return the title used for this editor
+*/
 QString LinkSingleElementWidget::title() const
 {
 	if (m_element->linkType() & Element::AllReport)
@@ -185,9 +185,9 @@ QString LinkSingleElementWidget::title() const
 }
 
 /**
- * @brief LinkSingleElementWidget::updateUi
- * Update the content of this widget
- */
+	@brief LinkSingleElementWidget::updateUi
+	Update the content of this widget
+*/
 void LinkSingleElementWidget::updateUi()
 {
 	m_unlink = false;
@@ -202,9 +202,9 @@ void LinkSingleElementWidget::updateUi()
 }
 
 /**
- * @brief LinkSingleElementWidget::buildTree
- * Build the content of the QTreeWidget
- */
+	@brief LinkSingleElementWidget::buildTree
+	Build the content of the QTreeWidget
+*/
 void LinkSingleElementWidget::buildTree()
 {
 	clearTreeWidget();
@@ -324,10 +324,10 @@ void LinkSingleElementWidget::buildTree()
 }
 
 /**
- * @brief LinkSingleElementWidget::setLiveEdit
- * @param live_edit
- * @return
- */
+	@brief LinkSingleElementWidget::setLiveEdit
+	@param live_edit
+	@return
+*/
 bool LinkSingleElementWidget::setLiveEdit(bool live_edit)
 {
 	if (m_live_edit == live_edit)
@@ -339,11 +339,11 @@ bool LinkSingleElementWidget::setLiveEdit(bool live_edit)
 }
 
 /**
- * @brief LinkSingleElementWidget::availableElements
- * @return A QList with all available element
- * to be linked with the edited element.
- * This methode take care of the combo box "find in diagram"
- */
+	@brief LinkSingleElementWidget::availableElements
+	@return A QList with all available element
+	to be linked with the edited element.
+	This methode take care of the combo box "find in diagram"
+*/
 QList <Element *> LinkSingleElementWidget::availableElements()
 {
 	QList <Element *> elmt_list;
@@ -366,9 +366,9 @@ QList <Element *> LinkSingleElementWidget::availableElements()
 }
 
 /**
- * @brief LinkSingleElementWidget::setUpCompleter
- * Setup the completer of search_field
- */
+	@brief LinkSingleElementWidget::setUpCompleter
+	Setup the completer of search_field
+*/
 void LinkSingleElementWidget::setUpCompleter()
 {
 	ui->m_search_field->clear();
@@ -385,11 +385,11 @@ void LinkSingleElementWidget::setUpCompleter()
 }
 
 /**
- * @brief LinkSingleElementWidget::clearTreeWidget
- * Clear the tree widget.
- * Delete all QTreeWidget (in the tree widget and in the hash).
- * Clear the hash.
- */
+	@brief LinkSingleElementWidget::clearTreeWidget
+	Clear the tree widget.
+	Delete all QTreeWidget (in the tree widget and in the hash).
+	Clear the hash.
+*/
 void LinkSingleElementWidget::clearTreeWidget()
 {
 	while(ui->m_tree_widget->topLevelItemCount())
@@ -439,10 +439,10 @@ void LinkSingleElementWidget::setUpHeaderLabels()
 }
 
 /**
- * @brief LinkSingleElementWidget::diagramWasRemovedFromProject
- *  * This slot is called when a diagram is removed from the parent project of edited element
- * to update the content of this widget
- */
+	@brief LinkSingleElementWidget::diagramWasRemovedFromProject
+	 * This slot is called when a diagram is removed from the parent project of edited element
+	to update the content of this widget
+*/
 void LinkSingleElementWidget::diagramWasRemovedFromProject()
 {
 	//We use a timer because if the removed diagram contain the master element linked to the edited element
@@ -456,9 +456,9 @@ void LinkSingleElementWidget::showedElementWasDeleted()
 }
 
 /**
- * @brief LinkSingleElementWidget::linkTriggered
- * Action linkis triggered
- */
+	@brief LinkSingleElementWidget::linkTriggered
+	Action linkis triggered
+*/
 void LinkSingleElementWidget::linkTriggered()
 {
 	if(!m_qtwi_at_context_menu)
@@ -493,9 +493,9 @@ void LinkSingleElementWidget::linkTriggered()
 }
 
 /**
- * @brief LinkSingleElementWidget::hideButtons
- * Hide the button displayed when element is already linked
- */
+	@brief LinkSingleElementWidget::hideButtons
+	Hide the button displayed when element is already linked
+*/
 void LinkSingleElementWidget::hideButtons()
 {
 	ui->m_label->hide();
@@ -506,9 +506,9 @@ void LinkSingleElementWidget::hideButtons()
 }
 
 /**
- * @brief LinkSingleElementWidget::showButtons
- * Show the button displayed when element is already linked
- */
+	@brief LinkSingleElementWidget::showButtons
+	Show the button displayed when element is already linked
+*/
 void LinkSingleElementWidget::showButtons()
 {
 	ui->m_label->show();
@@ -539,11 +539,11 @@ void LinkSingleElementWidget::on_m_unlink_pb_clicked()
 }
 
 /**
- * @brief LinkSingleElementWidget::on_m_tree_widget_itemDoubleClicked
- * Highlight the element represented by @item
- * @param item
- * @param column
- */
+	@brief LinkSingleElementWidget::on_m_tree_widget_itemDoubleClicked
+	Highlight the element represented by @item
+	@param item
+	@param column
+*/
 void LinkSingleElementWidget::on_m_tree_widget_itemDoubleClicked(QTreeWidgetItem *item, int column)
 {
 	Q_UNUSED(column);
@@ -599,11 +599,11 @@ void LinkSingleElementWidget::on_m_show_this_pb_clicked()
 }
 
 /**
- * @brief LinkSingleElementWidget::on_m_search_field_textEdited
- * Search all items which match with @arg1 and shows it, other items is hidden.
- * If @arg1 is empty, show all items.
- * @param arg1
- */
+	@brief LinkSingleElementWidget::on_m_search_field_textEdited
+	Search all items which match with @arg1 and shows it, other items is hidden.
+	If @arg1 is empty, show all items.
+	@param arg1
+*/
 void LinkSingleElementWidget::on_m_search_field_textEdited(const QString &arg1)
 {
 	//Show all items if arg1 is empty, if not hide all items

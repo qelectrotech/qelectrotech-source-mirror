@@ -26,7 +26,7 @@
 	This class represents a numerotation context, i.e. the data (type, value, increase)
 	of a numerotation at a given time. It is notably used by conductor
 	to store the informations they need to do their autonumerotation.
- */
+*/
 class NumerotationContext
 {
 	public:

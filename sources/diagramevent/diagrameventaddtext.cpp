@@ -22,24 +22,24 @@
 #include "diagram.h"
 
 /**
- * @brief DiagramEventAddText::DiagramEventAddText
- * Default constructor
- * @param diagram : the diagram where this event must operate
- */
+	@brief DiagramEventAddText::DiagramEventAddText
+	Default constructor
+	@param diagram : the diagram where this event must operate
+*/
 DiagramEventAddText::DiagramEventAddText(Diagram *diagram) :
     DiagramEventInterface(diagram)
 {}
 
 /**
- * @brief DiagramEventAddText::~DiagramEventAddText
- */
+	@brief DiagramEventAddText::~DiagramEventAddText
+*/
 DiagramEventAddText::~DiagramEventAddText()
 {}
 
 /**
- * @brief DiagramEventAddText::mousePressEvent
- * @param event : event of mouse press event.
- */
+	@brief DiagramEventAddText::mousePressEvent
+	@param event : event of mouse press event.
+*/
 void DiagramEventAddText::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton)

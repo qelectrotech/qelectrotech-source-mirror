@@ -92,10 +92,10 @@ DynamicElementTextModel::~DynamicElementTextModel()
 }
 
 /**
- * @brief DynamicElementTextModel::indexIsInGroup
- * @param index
- * @return True if the index represent a group or an item in a group
- */
+	@brief DynamicElementTextModel::indexIsInGroup
+	@param index
+	@return True if the index represent a group or an item in a group
+*/
 bool DynamicElementTextModel::indexIsInGroup(const QModelIndex &index) const
 {
 	QStandardItem *item = itemFromIndex(index);
@@ -113,12 +113,12 @@ bool DynamicElementTextModel::indexIsInGroup(const QModelIndex &index) const
 }
 
 /**
- * @brief DynamicElementTextModel::itemsForText
- * @param deti
- * @return The items for the text @deti, if the text @deti is already managed by this model
- * the returned list is empty
- * The returned items haven't got the same number of childs if the text is in a group or not.
- */
+	@brief DynamicElementTextModel::itemsForText
+	@param deti
+	@return The items for the text @deti, if the text @deti is already managed by this model
+	the returned list is empty
+	The returned items haven't got the same number of childs if the text is in a group or not.
+*/
 QList<QStandardItem *> DynamicElementTextModel::itemsForText(DynamicElementTextItem *deti)
 {
 	QList <QStandardItem *> qsi_list;
@@ -328,18 +328,18 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(DynamicElementTextI
 }
 
 /**
- * @brief DynamicElementTextModel::addText
- * @param deti
- */
+	@brief DynamicElementTextModel::addText
+	@param deti
+*/
 void DynamicElementTextModel::addText(DynamicElementTextItem *deti)
 {
 	this->appendRow(itemsForText(deti));
 }
 
 /**
- * @brief DynamicElementTextModel::removeText
- * @param deti
- */
+	@brief DynamicElementTextModel::removeText
+	@param deti
+*/
 void DynamicElementTextModel::removeText(DynamicElementTextItem *deti)
 {
 	if (!m_texts_list.contains(deti))
@@ -352,11 +352,11 @@ void DynamicElementTextModel::removeText(DynamicElementTextItem *deti)
 }
 
 /**
- * @brief DynamicElementTextModel::textFromIndex
- * @param index
- * @return the text associated with @index. Returned value can be nullptr
- * @Index can be a child of an index associated with a text and can be the column 0 or 1. 
- */
+	@brief DynamicElementTextModel::textFromIndex
+	@param index
+	@return the text associated with @index. Returned value can be nullptr
+	@Index can be a child of an index associated with a text and can be the column 0 or 1. 
+*/
 DynamicElementTextItem *DynamicElementTextModel::textFromIndex(const QModelIndex &index) const
 {
     if(!index.isValid())
@@ -369,12 +369,12 @@ DynamicElementTextItem *DynamicElementTextModel::textFromIndex(const QModelIndex
 }
 
 /**
- * @brief DynamicElementTextModel::textFromItem
- * @param item
- * @return the text associated with @item. Return value can be nullptr
- * @item can be a child of an item associated with a text and can be the column 0 or 1. 
- * Note can return nullptr
- */
+	@brief DynamicElementTextModel::textFromItem
+	@param item
+	@return the text associated with @item. Return value can be nullptr
+	@item can be a child of an item associated with a text and can be the column 0 or 1. 
+	Note can return nullptr
+*/
 DynamicElementTextItem *DynamicElementTextModel::textFromItem(QStandardItem *item) const
 {
 		//Get the item of the column 0
@@ -424,10 +424,10 @@ DynamicElementTextItem *DynamicElementTextModel::textFromItem(QStandardItem *ite
 }
 
 /**
- * @brief DynamicElementTextModel::indexFromText
- * @param text
- * @return the QModelIndex for @text, or a default QModelIndex if not match
- */
+	@brief DynamicElementTextModel::indexFromText
+	@param text
+	@return the QModelIndex for @text, or a default QModelIndex if not match
+*/
 QModelIndex DynamicElementTextModel::indexFromText(DynamicElementTextItem *text) const
 {
 	if(m_texts_list.contains(text))
@@ -437,12 +437,12 @@ QModelIndex DynamicElementTextModel::indexFromText(DynamicElementTextItem *text)
 }
 
 /**
- * @brief DynamicElementTextModel::undoForEditedText
- * @param deti
- * @return A QUndoCommand that describe all changes made for @deti.
- * Each change made for @deti is append as a child of the returned QUndoCommand.
- * In other word, if the returned QUndoCommand have no child, that mean there is no change.
- */
+	@brief DynamicElementTextModel::undoForEditedText
+	@param deti
+	@return A QUndoCommand that describe all changes made for @deti.
+	Each change made for @deti is append as a child of the returned QUndoCommand.
+	In other word, if the returned QUndoCommand have no child, that mean there is no change.
+*/
 QUndoCommand *DynamicElementTextModel::undoForEditedText(DynamicElementTextItem *deti, QUndoCommand *parent_undo) const
 {
 	
@@ -562,13 +562,13 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(DynamicElementTextItem 
 }
 
 /**
- * @brief DynamicElementTextModel::undoForEditedGroup
- * @param group
- * @param parent_undo
- * @return A QUndoCommand that describe all changes made for @group.
- * Each change made for @group is append as a child of the returned QUndoCommand.
- * In other word, if the returned QUndoCommand have no child, that mean there is no change.
- */
+	@brief DynamicElementTextModel::undoForEditedGroup
+	@param group
+	@param parent_undo
+	@return A QUndoCommand that describe all changes made for @group.
+	Each change made for @group is append as a child of the returned QUndoCommand.
+	In other word, if the returned QUndoCommand have no child, that mean there is no change.
+*/
 QUndoCommand *DynamicElementTextModel::undoForEditedGroup(ElementTextItemGroup *group, QUndoCommand *parent_undo) const
 {
 	QUndoCommand *undo = nullptr;
@@ -629,10 +629,10 @@ QUndoCommand *DynamicElementTextModel::undoForEditedGroup(ElementTextItemGroup *
 }
 
 /**
- * @brief DynamicElementTextModel::AddGroup
- * Add a text item group to this model
- * @param group
- */
+	@brief DynamicElementTextModel::AddGroup
+	Add a text item group to this model
+	@param group
+*/
 void DynamicElementTextModel::addGroup(ElementTextItemGroup *group)
 {
 	if(m_groups_list.keys().contains(group))
@@ -759,10 +759,10 @@ void DynamicElementTextModel::addGroup(ElementTextItemGroup *group)
 }
 
 /**
- * @brief DynamicElementTextModel::removeGroup
- * Remove the text item group from this model
- * @param group
- */
+	@brief DynamicElementTextModel::removeGroup
+	Remove the text item group from this model
+	@param group
+*/
 void DynamicElementTextModel::removeGroup(ElementTextItemGroup *group)
 {
 	if(m_groups_list.keys().contains(group))
@@ -775,11 +775,11 @@ void DynamicElementTextModel::removeGroup(ElementTextItemGroup *group)
 }
 
 /**
- * @brief DynamicElementTextModel::textAddedToGroup
- * Add the text @text to the group @group
- * @param deti
- * @param group
- */
+	@brief DynamicElementTextModel::textAddedToGroup
+	Add the text @text to the group @group
+	@param deti
+	@param group
+*/
 void DynamicElementTextModel::addTextToGroup(DynamicElementTextItem *deti, ElementTextItemGroup *group)
 {
 	QStandardItem *group_item = m_groups_list.value(group);
@@ -800,11 +800,11 @@ void DynamicElementTextModel::removeTextFromGroup(DynamicElementTextItem *deti, 
 }
 
 /**
- * @brief DynamicElementTextModel::groupFromIndex
- * @param index
- * @return the group associated with @index. Return value can be nullptr
- * @Index can be a child of an index associated with a group and can be the column 0 or 1.
- */
+	@brief DynamicElementTextModel::groupFromIndex
+	@param index
+	@return the group associated with @index. Return value can be nullptr
+	@Index can be a child of an index associated with a group and can be the column 0 or 1.
+*/
 ElementTextItemGroup *DynamicElementTextModel::groupFromIndex(const QModelIndex &index) const
 {
 	if(!index.isValid())
@@ -817,11 +817,11 @@ ElementTextItemGroup *DynamicElementTextModel::groupFromIndex(const QModelIndex 
 }
 
 /**
- * @brief DynamicElementTextModel::groupFromItem
- * @param item
- * @return the group associated with @item. Return value can be nullptr
- * @item can be a child of an item associated with a group and can be the column 0 or 1.
- */
+	@brief DynamicElementTextModel::groupFromItem
+	@param item
+	@return the group associated with @item. Return value can be nullptr
+	@item can be a child of an item associated with a group and can be the column 0 or 1.
+*/
 ElementTextItemGroup *DynamicElementTextModel::groupFromItem(QStandardItem *item) const
 {
 		//Get the item of the column 0
@@ -843,11 +843,11 @@ ElementTextItemGroup *DynamicElementTextModel::groupFromItem(QStandardItem *item
 }
 
 /**
- * @brief DynamicElementTextModel::indexFromGroup
- * @param group
- * @return The index associated to the group @group
- * or a default QModelIndex if not match
- */
+	@brief DynamicElementTextModel::indexFromGroup
+	@param group
+	@return The index associated to the group @group
+	or a default QModelIndex if not match
+*/
 QModelIndex DynamicElementTextModel::indexFromGroup(ElementTextItemGroup *group) const
 {
 	if(m_groups_list.keys().contains(group))
@@ -857,11 +857,11 @@ QModelIndex DynamicElementTextModel::indexFromGroup(ElementTextItemGroup *group)
 }
 
 /**
- * @brief DynamicElementTextModel::indexIsText
- * @param index
- * @return True if @index represente a text, both for the column 0 and 1.
- * Return false if @index is a child of an index associated to a text.
- */
+	@brief DynamicElementTextModel::indexIsText
+	@param index
+	@return True if @index represente a text, both for the column 0 and 1.
+	Return false if @index is a child of an index associated to a text.
+*/
 bool DynamicElementTextModel::indexIsText(const QModelIndex &index) const
 {
 	QStandardItem *item = nullptr;
@@ -884,11 +884,11 @@ bool DynamicElementTextModel::indexIsText(const QModelIndex &index) const
 }
 
 /**
- * @brief DynamicElementTextModel::indexIsGroup
- * @param index
- * @return True if @index represente a group, both for the column 0 and 1.
- * Return false if @index is a child of an index associated to a group.
- */
+	@brief DynamicElementTextModel::indexIsGroup
+	@param index
+	@return True if @index represente a group, both for the column 0 and 1.
+	Return false if @index is a child of an index associated to a group.
+*/
 bool DynamicElementTextModel::indexIsGroup(const QModelIndex &index) const
 {
 	QStandardItem *item = nullptr;
@@ -957,14 +957,14 @@ bool DynamicElementTextModel::canDropMimeData(const QMimeData *data, Qt::DropAct
 }
 
 /**
- * @brief DynamicElementTextModel::dropMimeData
- * @param data
- * @param action
- * @param row
- * @param column
- * @param parent
- * @return In any case return false, for overwrite the default behavior of model.
- */
+	@brief DynamicElementTextModel::dropMimeData
+	@param data
+	@param action
+	@param row
+	@param column
+	@param parent
+	@return In any case return false, for overwrite the default behavior of model.
+*/
 bool DynamicElementTextModel::dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent)
 {
 	Q_UNUSED(action)
@@ -1081,9 +1081,9 @@ QMimeData *DynamicElementTextModel::mimeData(const QModelIndexList &indexes) con
 }
 
 /**
- * @brief DynamicElementTextModel::mimeTypes
- * @return 
- */
+	@brief DynamicElementTextModel::mimeTypes
+	@return 
+*/
 QStringList DynamicElementTextModel::mimeTypes() const
 {
 	QStringList mime_list = QAbstractItemModel::mimeTypes();
@@ -1092,11 +1092,11 @@ QStringList DynamicElementTextModel::mimeTypes() const
 }
 
 /**
- * @brief DynamicElementTextModel::enableSourceText
- * Enable the good field, according to the current source of text, for the edited text @deti
- * @param deti
- * @param tf
- */
+	@brief DynamicElementTextModel::enableSourceText
+	Enable the good field, according to the current source of text, for the edited text @deti
+	@param deti
+	@param tf
+*/
 void DynamicElementTextModel::enableSourceText(DynamicElementTextItem *deti, DynamicElementTextItem::TextFrom tf)
 {
 	if (!m_texts_list.contains(deti))
@@ -1124,10 +1124,10 @@ void DynamicElementTextModel::enableSourceText(DynamicElementTextItem *deti, Dyn
 }
 
 /**
- * @brief DynamicElementTextModel::enableGroupRotation
- * Enable/disable the item "group rotation" according the option hold to bottom 
- * @param group
- */
+	@brief DynamicElementTextModel::enableGroupRotation
+	Enable/disable the item "group rotation" according the option hold to bottom 
+	@param group
+*/
 void DynamicElementTextModel::enableGroupRotationAndPos(ElementTextItemGroup *group)
 {
 	if(!m_groups_list.contains(group))
@@ -1218,12 +1218,12 @@ void DynamicElementTextModel::itemDataChanged(QStandardItem *qsi)
 }
 
 /**
- * @brief DynamicElementTextModel::setConnection
- * Set up the connection for @deti to keep up to date the data of this model and the text.
- * Is notably use with the use of QUndoCommand.
- * @param deti - text to setup connection
- * @param set - true = set connection - false unset connection
- */
+	@brief DynamicElementTextModel::setConnection
+	Set up the connection for @deti to keep up to date the data of this model and the text.
+	Is notably use with the use of QUndoCommand.
+	@param deti - text to setup connection
+	@param set - true = set connection - false unset connection
+*/
 void DynamicElementTextModel::setConnection(DynamicElementTextItem *deti, bool set)
 {
 	if(set)
@@ -1258,12 +1258,12 @@ void DynamicElementTextModel::setConnection(DynamicElementTextItem *deti, bool s
 }
 
 /**
- * @brief DynamicElementTextModel::setConnection
- * Set up the connection for @group to keep up to date the data of this model and the group.
- * Is notably use with the use of QUndoCommand.
- * @param group group to setup the connection
- * @param set true = set connection - false unset connection
- */
+	@brief DynamicElementTextModel::setConnection
+	Set up the connection for @group to keep up to date the data of this model and the group.
+	Is notably use with the use of QUndoCommand.
+	@param group group to setup the connection
+	@param set true = set connection - false unset connection
+*/
 void DynamicElementTextModel::setConnection(ElementTextItemGroup *group, bool set)
 {
 	if(set)
@@ -1440,8 +1440,8 @@ void DynamicElementTextModel::updateDataFromGroup(ElementTextItemGroup *group, D
 
 
 /***************************************************
- * A little delegate only for add a combobox and a color dialog,
- * for use with the model
+	A little delegate only for add a combobox and a color dialog,
+	for use with the model
  ***************************************************/
 
 DynamicTextItemDelegate::DynamicTextItemDelegate(QObject *parent) :
@@ -1763,10 +1763,10 @@ bool DynamicTextItemDelegate::eventFilter(QObject *object, QEvent *event)
 }
 
 /**
- * @brief DynamicTextItemDelegate::availableInfo
- * @param deti
- * @return A list of available info of element
- */
+	@brief DynamicTextItemDelegate::availableInfo
+	@param deti
+	@return A list of available info of element
+*/
 QStringList DynamicTextItemDelegate::availableInfo(DynamicElementTextItem *deti) const
 {
 	QStringList qstrl;

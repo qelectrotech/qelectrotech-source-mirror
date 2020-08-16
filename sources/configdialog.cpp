@@ -137,10 +137,10 @@ void ConfigDialog::addPage(ConfigPage *page) {
 }
 
 /**
- * @brief ConfigDialog::setCurrentPage
- * Set the current index to @index
- * @param index
- */
+	@brief ConfigDialog::setCurrentPage
+	Set the current index to @index
+	@param index
+*/
 void ConfigDialog::setCurrentPage(const int index) {
 	pages_list->setCurrentRow(index);
 }

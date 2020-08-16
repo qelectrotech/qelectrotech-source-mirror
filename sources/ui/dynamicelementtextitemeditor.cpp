@@ -135,10 +135,10 @@ void DynamicElementTextItemEditor::apply()
 }
 
 /**
- * @brief DynamicElementTextItemEditor::setCurrentText
- * Expand and select the item for text @text
- * @param text
- */
+	@brief DynamicElementTextItemEditor::setCurrentText
+	Expand and select the item for text @text
+	@param text
+*/
 void DynamicElementTextItemEditor::setCurrentText(DynamicElementTextItem *text)
 {
 	QModelIndex index = m_model->indexFromText(text);
@@ -152,10 +152,10 @@ void DynamicElementTextItemEditor::setCurrentText(DynamicElementTextItem *text)
 }
 
 /**
- * @brief DynamicElementTextItemEditor::setCurrentGroup
- * Expand and select the item for group @group
- * @param group
- */
+	@brief DynamicElementTextItemEditor::setCurrentGroup
+	Expand and select the item for group @group
+	@param group
+*/
 void DynamicElementTextItemEditor::setCurrentGroup(ElementTextItemGroup *group)
 {
 	QModelIndex index = m_model->indexFromGroup(group);
@@ -193,9 +193,9 @@ void DynamicElementTextItemEditor::dataEdited()
 }
 
 /**
- * @brief DynamicElementTextItemEditor::on_m_add_text_clicked
- * Add a new dynamic text
- */
+	@brief DynamicElementTextItemEditor::on_m_add_text_clicked
+	Add a new dynamic text
+*/
 void DynamicElementTextItemEditor::on_m_add_text_clicked()
 {
     if (!m_element)
@@ -214,9 +214,9 @@ void DynamicElementTextItemEditor::on_m_add_text_clicked()
 }
 
 /**
- * @brief DynamicElementTextItemEditor::on_m_remove_selection_clicked
- * Remove the selected item
- */
+	@brief DynamicElementTextItemEditor::on_m_remove_selection_clicked
+	Remove the selected item
+*/
 void DynamicElementTextItemEditor::on_m_remove_selection_clicked()
 {
     DynamicElementTextItem *deti = m_model->textFromIndex(ui->m_tree_view->currentIndex());
@@ -236,9 +236,9 @@ void DynamicElementTextItemEditor::on_m_remove_selection_clicked()
 }
 
 /**
- * @brief DynamicElementTextItemEditor::on_m_add_group_clicked
- * Add a new group
- */
+	@brief DynamicElementTextItemEditor::on_m_add_group_clicked
+	Add a new group
+*/
 void DynamicElementTextItemEditor::on_m_add_group_clicked()
 {
 	QString name = QInputDialog::getText(this, tr("Nom du groupe"), tr("Entrer le nom du nouveau groupe"));

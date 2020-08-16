@@ -34,12 +34,12 @@
 #include "singleapplication_p.h"
 
 /**
- * @brief Constructor. Checks and fires up LocalServer or closes the program
- * if another instance already exists
- * @param argc
- * @param argv
- * @param {bool} allowSecondaryInstances
- */
+	@brief Constructor. Checks and fires up LocalServer or closes the program
+	if another instance already exists
+	@param argc
+	@param argv
+	@param {bool} allowSecondaryInstances
+*/
 SingleApplication::SingleApplication( int &argc, char *argv[], bool allowSecondary, Options options, int timeout )
 	: app_t( argc, argv ), d_ptr( new SingleApplicationPrivate( this ) )
 {
@@ -142,8 +142,8 @@ SingleApplication::SingleApplication( int &argc, char *argv[], bool allowSeconda
 }
 
 /**
- * @brief Destructor
- */
+	@brief Destructor
+*/
 SingleApplication::~SingleApplication()
 {
 	Q_D(SingleApplication);

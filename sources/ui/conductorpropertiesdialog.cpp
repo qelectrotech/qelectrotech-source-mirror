@@ -24,11 +24,11 @@
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 
 /**
- * @brief ConductorPropertiesDialog::ConductorPropertiesDialog
- * Constructor
- * @param conductor, conductor to edit propertie
- * @param parent, parent widget
- */
+	@brief ConductorPropertiesDialog::ConductorPropertiesDialog
+	Constructor
+	@param conductor, conductor to edit propertie
+	@param parent, parent widget
+*/
 ConductorPropertiesDialog::ConductorPropertiesDialog(Conductor *conductor, QWidget *parent) :
 	QDialog(parent),
 	ui(new Ui::ConductorPropertiesDialog)
@@ -45,19 +45,19 @@ ConductorPropertiesDialog::ConductorPropertiesDialog(Conductor *conductor, QWidg
 }
 
 /**
- * @brief ConductorPropertiesDialog::~ConductorPropertiesDialog
- */
+	@brief ConductorPropertiesDialog::~ConductorPropertiesDialog
+*/
 ConductorPropertiesDialog::~ConductorPropertiesDialog()
 {
 	delete ui;
 }
 
 /**
- * @brief ConductorPropertiesDialog::PropertiesDialog
- * Static method for open and apply properties.
- * @param conductor, conductor to edit propertie
- * @param parent, parent widget
- */
+	@brief ConductorPropertiesDialog::PropertiesDialog
+	Static method for open and apply properties.
+	@param conductor, conductor to edit propertie
+	@param parent, parent widget
+*/
 void ConductorPropertiesDialog::PropertiesDialog(Conductor *conductor, QWidget *parent)
 {
 	ConductorPropertiesDialog cpd (conductor, parent);
@@ -86,19 +86,19 @@ void ConductorPropertiesDialog::PropertiesDialog(Conductor *conductor, QWidget *
 }
 
 /**
- * @brief ConductorPropertiesDialog::properties
- * @return the edited properties
- */
+	@brief ConductorPropertiesDialog::properties
+	@return the edited properties
+*/
 ConductorProperties ConductorPropertiesDialog::properties() const {
 	return m_cpw -> properties();
 }
 
 /**
- * @brief ConductorPropertiesDialog::applyAll
- * @return
- * true -> must apply the propertie to all conductor at the same potential
- * false -> must apply properties only for the edited conductor
- */
+	@brief ConductorPropertiesDialog::applyAll
+	@return
+	true -> must apply the propertie to all conductor at the same potential
+	false -> must apply properties only for the edited conductor
+*/
 bool ConductorPropertiesDialog::applyAll() const {
 	return ui -> m_apply_all_cb -> isChecked();
 }

@@ -26,20 +26,20 @@
 static int no_model_height = 20;
 static int no_model_width = 40;
 /**
- * @brief QetGraphicsHeaderItem::QetGraphicsHeaderItem
- * @param parent
- */
+	@brief QetGraphicsHeaderItem::QetGraphicsHeaderItem
+	@param parent
+*/
 QetGraphicsHeaderItem::QetGraphicsHeaderItem(QGraphicsItem *parent) :
     QGraphicsObject(parent)
 {}
 
 /**
- * @brief QetGraphicsHeaderItem::setModel
- * Set the model presented by this item
- * Since QetGraphicsHeaderItem don't take ownership of model,
- * if item already have a model, it's your responsability to delete it.
- * @param model
- */
+	@brief QetGraphicsHeaderItem::setModel
+	Set the model presented by this item
+	Since QetGraphicsHeaderItem don't take ownership of model,
+	if item already have a model, it's your responsability to delete it.
+	@param model
+*/
 void QetGraphicsHeaderItem::setModel(QAbstractItemModel *model)
 {
 	if (m_model) {
@@ -65,29 +65,29 @@ void QetGraphicsHeaderItem::setModel(QAbstractItemModel *model)
 }
 
 /**
- * @brief QetGraphicsHeaderItem::model
- * @return the model that this item is presenting
- */
+	@brief QetGraphicsHeaderItem::model
+	@return the model that this item is presenting
+*/
 QAbstractItemModel *QetGraphicsHeaderItem::model() const {
 	return m_model;
 }
 
 /**
- * @brief QetGraphicsHeaderItem::boundingRect
- * Reimplemented from QGraphicsObject::boundingRect() const;
- * @return
- */
+	@brief QetGraphicsHeaderItem::boundingRect
+	Reimplemented from QGraphicsObject::boundingRect() const;
+	@return
+*/
 QRectF QetGraphicsHeaderItem::boundingRect() const {
 	return m_bounding_rect;
 }
 
 /**
- * @brief QetGraphicsHeaderItem::paint
- * Reimplemented from QGraphicsObject::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) const;
- * @param painter
- * @param option
- * @param widget
- */
+	@brief QetGraphicsHeaderItem::paint
+	Reimplemented from QGraphicsObject::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) const;
+	@param painter
+	@param option
+	@param widget
+*/
 void QetGraphicsHeaderItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
 	Q_UNUSED(option)
@@ -141,18 +141,18 @@ void QetGraphicsHeaderItem::paint(QPainter *painter, const QStyleOptionGraphicsI
 }
 
 /**
- * @brief QetGraphicsHeaderItem::rect
- * @return the current rect of the item aka the size of rectangle painted.
- */
+	@brief QetGraphicsHeaderItem::rect
+	@return the current rect of the item aka the size of rectangle painted.
+*/
 QRect QetGraphicsHeaderItem::rect() const {
 	return m_current_rect;
 }
 
 /**
- * @brief QetGraphicsHeaderItem::resizeSection
- * @param logicalIndex
- * @param size
- */
+	@brief QetGraphicsHeaderItem::resizeSection
+	@param logicalIndex
+	@param size
+*/
 void QetGraphicsHeaderItem::resizeSection(int logicalIndex, int size)
 {
 	if (!m_model)
@@ -187,10 +187,10 @@ void QetGraphicsHeaderItem::resizeSection(int logicalIndex, int size)
 }
 
 /**
- * @brief QetGraphicsHeaderItem::sectionSize
- * @param logical_index
- * @return the width (or height for vertical headers) of the given logicalIndex.
- */
+	@brief QetGraphicsHeaderItem::sectionSize
+	@param logical_index
+	@return the width (or height for vertical headers) of the given logicalIndex.
+*/
 int QetGraphicsHeaderItem::sectionSize(int logical_index) const
 {
 	if (logical_index>=0 && logical_index<m_current_sections_width.size()) {
@@ -201,11 +201,11 @@ int QetGraphicsHeaderItem::sectionSize(int logical_index) const
 }
 
 /**
- * @brief QetGraphicsHeaderItem::toXml
- * save the header to xml
- * @param document
- * @return
- */
+	@brief QetGraphicsHeaderItem::toXml
+	save the header to xml
+	@param document
+	@return
+*/
 QDomElement QetGraphicsHeaderItem::toXml(QDomDocument &document) const
 {
 	auto dom_element = document.createElement(xmlTagName());
@@ -217,10 +217,10 @@ QDomElement QetGraphicsHeaderItem::toXml(QDomDocument &document) const
 }
 
 /**
- * @brief QetGraphicsHeaderItem::fromXml
- * Restore the header from xml
- * @param element
- */
+	@brief QetGraphicsHeaderItem::fromXml
+	Restore the header from xml
+	@param element
+*/
 void QetGraphicsHeaderItem::fromXml(const QDomElement &element)
 {
 	if ((element.tagName() != xmlTagName()) || !m_model) {
@@ -232,10 +232,10 @@ void QetGraphicsHeaderItem::fromXml(const QDomElement &element)
 }
 
 /**
- * @brief QetGraphicsHeaderItem::setUpMinimumSectionsSize
- * Setup the minimum section size and height of the item.
- * Not that this function doesn't change the current size of this item.
- */
+	@brief QetGraphicsHeaderItem::setUpMinimumSectionsSize
+	Setup the minimum section size and height of the item.
+	Not that this function doesn't change the current size of this item.
+*/
 void QetGraphicsHeaderItem::setUpMinimumSectionsSize()
 {
 	if (!m_model)
@@ -265,20 +265,20 @@ void QetGraphicsHeaderItem::setUpMinimumSectionsSize()
 }
 
 /**
- * @brief QetGraphicsHeaderItem::setUpBoundingRect
- * Setup the bounding rect of the item
- */
+	@brief QetGraphicsHeaderItem::setUpBoundingRect
+	Setup the bounding rect of the item
+*/
 void QetGraphicsHeaderItem::setUpBoundingRect() {
 	m_bounding_rect = m_current_rect.adjusted(-10, -10, 10, 10);
 }
 
 /**
- * @brief QetGraphicsHeaderItem::headerDataChanged
- * Update the header when data of displayed model change
- * @param orientation
- * @param first
- * @param last
- */
+	@brief QetGraphicsHeaderItem::headerDataChanged
+	Update the header when data of displayed model change
+	@param orientation
+	@param first
+	@param last
+*/
 void QetGraphicsHeaderItem::headerDataChanged(Qt::Orientations orientation, int first, int last)
 {
 	Q_UNUSED(orientation)
@@ -291,10 +291,10 @@ void QetGraphicsHeaderItem::headerDataChanged(Qt::Orientations orientation, int 
 }
 
 /**
- * @brief QetGraphicsHeaderItem::adjustSize
- * If needed, this function resize the current height and section
- * according to there minimum
- */
+	@brief QetGraphicsHeaderItem::adjustSize
+	If needed, this function resize the current height and section
+	according to there minimum
+*/
 void QetGraphicsHeaderItem::adjustSize()
 {
 	if (m_section_height != m_minimum_section_height)

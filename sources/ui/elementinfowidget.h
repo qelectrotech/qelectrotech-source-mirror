@@ -32,9 +32,9 @@ namespace Ui {
 }
 
 /**
- * @brief The ElementInfoWidget class
- * this class is a widget to edit an element informations.
- */
+	@brief The ElementInfoWidget class
+	this class is a widget to edit an element informations.
+*/
 class ElementInfoWidget : public AbstractElementPropertiesEditorWidget
 {
 	Q_OBJECT

@@ -32,7 +32,7 @@ const TitleBlockTemplate *TitleBlockTemplateRenderer::titleBlockTemplate() const
 /**
 	@brief TitleBlockTemplateRenderer::setTitleBlockTemplate
 	@param titleblock_template : TitleBlock template to render.
- */
+*/
 void TitleBlockTemplateRenderer::setTitleBlockTemplate(
 		const TitleBlockTemplate *titleblock_template) {
 	if (titleblock_template != m_titleblock_template) {

@@ -23,15 +23,19 @@
 class QetGraphicsHandlerItem;
 
 /**
- * @brief The AbstractPartEllipse class
- * This is the base class for all ellipse based item like ellipse, circle, arc.
- * This class only provide common method for edit the ellipse like rect that contain the ellipse.
- * All coordinates is in item coordinate, except pos(), center(), centerX() and centerY()
- * which are in parent coordinate (or scene if no parent).
- *
- * In several points, this class is a copy of QGraphicsEllipseItem with some change,
- * (the use of Q_PROPERTY) to be easily used with Element editor.
- */
+	@brief The AbstractPartEllipse class
+	This is the base class for all ellipse based item like ellipse,
+	circle, arc.
+	This class only provide common method for edit the ellipse
+	like rect that contain the ellipse.
+	All coordinates is in item coordinate, except pos(),
+	center(), centerX() and centerY()
+	which are in parent coordinate (or scene if no parent).
+
+	In several points,
+	this class is a copy of QGraphicsEllipseItem with some change,
+	(the use of Q_PROPERTY) to be easily used with Element editor.
+*/
 class AbstractPartEllipse : public CustomElementGraphicPart
 {
 		Q_OBJECT

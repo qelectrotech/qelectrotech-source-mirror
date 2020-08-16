@@ -26,10 +26,10 @@
 #include <QFileDialog>
 
 /**
- * @brief ConductorNumExport::ConductorNumExport
- * @param project : the project to export the conductors num
- * @param parent : parent widget
- */
+	@brief ConductorNumExport::ConductorNumExport
+	@param project : the project to export the conductors num
+	@param parent : parent widget
+*/
 ConductorNumExport::ConductorNumExport(QETProject *project, QWidget *parent) :
 	m_project(project),
 	m_parent_widget(parent)
@@ -38,10 +38,10 @@ ConductorNumExport::ConductorNumExport(QETProject *project, QWidget *parent) :
 }
 
 /**
- * @brief ConductorNumExport::toCsv
- * Export the num of conductors into a csv file.
- * @return true if suceesfully exported.
- */
+	@brief ConductorNumExport::toCsv
+	Export the num of conductors into a csv file.
+	@return true if suceesfully exported.
+*/
 bool ConductorNumExport::toCsv()
 {
 	QString name = QObject::tr("numero_de_fileries_") + m_project->title() + ".csv";
@@ -86,9 +86,9 @@ bool ConductorNumExport::toCsv()
 }
 
 /**
- * @brief ConductorNumExport::wiresNum
- * @return the wire num formated in csv
- */
+	@brief ConductorNumExport::wiresNum
+	@return the wire num formated in csv
+*/
 QString ConductorNumExport::wiresNum() const
 {
 	QString csv;
@@ -106,9 +106,9 @@ QString ConductorNumExport::wiresNum() const
 }
 
 /**
- * @brief ConductorNumExport::fillHash
- * @value m_hash
- */
+	@brief ConductorNumExport::fillHash
+	@value m_hash
+*/
 void ConductorNumExport::fillHash()
 {
 	//We used this rx to avoid insert num composed only withe white space.

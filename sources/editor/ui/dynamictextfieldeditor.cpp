@@ -53,11 +53,11 @@ DynamicTextFieldEditor::~DynamicTextFieldEditor() {
 }
 
 /**
- * @brief DynamicTextFieldEditor::setPart
- * Set @part as current edited part of this widget.
- * @param part
- * @return true if @part can be edited by this widget
- */
+	@brief DynamicTextFieldEditor::setPart
+	Set @part as current edited part of this widget.
+	@param part
+	@return true if @part can be edited by this widget
+*/
 bool DynamicTextFieldEditor::setPart(CustomElementPart *part) {
 	disconnectConnections();
 
@@ -104,10 +104,10 @@ bool DynamicTextFieldEditor::setParts(QList <CustomElementPart *> parts) {
 }
 
 /**
- * @brief DynamicTextFieldEditor::currentPart
- * @return The current edited part, note they can return nullptr if
- * there is not a currently edited part.
- */
+	@brief DynamicTextFieldEditor::currentPart
+	@return The current edited part, note they can return nullptr if
+	there is not a currently edited part.
+*/
 CustomElementPart *DynamicTextFieldEditor::currentPart() const {
 	return m_text_field.data();
 }
@@ -187,9 +187,9 @@ void DynamicTextFieldEditor::disconnectConnections() {
 }
 
 /**
- * @brief DynamicTextFieldEditor::fillInfoComboBox
- * Fill the combo box "element information"
- */
+	@brief DynamicTextFieldEditor::fillInfoComboBox
+	Fill the combo box "element information"
+*/
 void DynamicTextFieldEditor::fillInfoComboBox() {
 	ui -> m_elmt_info_cb -> clear();
 

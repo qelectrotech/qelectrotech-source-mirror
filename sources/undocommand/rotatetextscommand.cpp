@@ -25,11 +25,11 @@
 #include "qtextorientationspinboxwidget.h"
 
 /**
- * @brief RotateTextsCommand::RotateTextsCommand
- * @param diagram : Apply the rotation to the selected texts and group of texts
- * of diagram at construction time. 
- * @param parent : undo parent
- */
+	@brief RotateTextsCommand::RotateTextsCommand
+	@param diagram : Apply the rotation to the selected texts and group of texts
+	of diagram at construction time. 
+	@param parent : undo parent
+*/
 RotateTextsCommand::RotateTextsCommand(Diagram *diagram, QUndoCommand *parent) :
 QUndoCommand(parent),
 m_diagram(diagram)

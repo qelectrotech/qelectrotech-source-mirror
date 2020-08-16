@@ -32,9 +32,9 @@ DiagramContextWidget::~DiagramContextWidget()
 }
 
 /**
- * @brief DiagramContextWidget::context
- * @return The diagram context object edited by this widget
- */
+	@brief DiagramContextWidget::context
+	@return The diagram context object edited by this widget
+*/
 DiagramContext DiagramContextWidget::context() const
 {
 	DiagramContext context;
@@ -60,10 +60,10 @@ DiagramContext DiagramContextWidget::context() const
 }
 
 /**
- * @brief DiagramContextWidget::setContext
- * Load the content from @context into this widget
- * @param context
- */
+	@brief DiagramContextWidget::setContext
+	Load the content from @context into this widget
+	@param context
+*/
 void DiagramContextWidget::setContext (const DiagramContext &context)
 {
 	clear();
@@ -80,9 +80,9 @@ void DiagramContextWidget::setContext (const DiagramContext &context)
 }
 
 /**
- * @brief DiagramContextWidget::nameLessRowsCount
- * @return The count of name-less rows in the table
- */
+	@brief DiagramContextWidget::nameLessRowsCount
+	@return The count of name-less rows in the table
+*/
 int DiagramContextWidget::nameLessRowsCount() const
 {
 	int name_less_rows_count = 0;
@@ -98,9 +98,9 @@ int DiagramContextWidget::nameLessRowsCount() const
 }
 
 /**
- * @brief DiagramContextWidget::clear
- * Clear any values entered within this widget
- */
+	@brief DiagramContextWidget::clear
+	Clear any values entered within this widget
+*/
 void DiagramContextWidget::clear()
 {
 	ui->m_table->clearContents();
@@ -112,10 +112,10 @@ void DiagramContextWidget::clear()
 }
 
 /**
- * @brief DiagramContextWidget::highlightNonAcceptableKeys
- * Highlight keys that would not be accepted by a DiagramContext object.
- * @return the number of highlighted keys.
- */
+	@brief DiagramContextWidget::highlightNonAcceptableKeys
+	Highlight keys that would not be accepted by a DiagramContext object.
+	@return the number of highlighted keys.
+*/
 int DiagramContextWidget::highlightNonAcceptableKeys()
 {
 	static QRegExp re(DiagramContext::validKeyRegExp());
@@ -146,10 +146,10 @@ int DiagramContextWidget::highlightNonAcceptableKeys()
 }
 
 /**
- * @brief DiagramContextWidget::refreshFormatLabel
- * Sets the text describing the acceptable format for keys when adding extra
- * key/value pairs.
- */
+	@brief DiagramContextWidget::refreshFormatLabel
+	Sets the text describing the acceptable format for keys when adding extra
+	key/value pairs.
+*/
 void DiagramContextWidget::refreshFormatLabel()
 {
 	QString format_text = tr(
@@ -164,9 +164,9 @@ void DiagramContextWidget::refreshFormatLabel()
 }
 
 /**
- * @brief DiagramContextWidget::checkTableRows
- * Adds a row in the additional fields table if needed
- */
+	@brief DiagramContextWidget::checkTableRows
+	Adds a row in the additional fields table if needed
+*/
 void DiagramContextWidget::checkTableRows()
 {
 	refreshFormatLabel();

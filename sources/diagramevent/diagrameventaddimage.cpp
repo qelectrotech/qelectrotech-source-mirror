@@ -22,10 +22,10 @@
 #include "diagramcommands.h"
 
 /**
- * @brief DiagramEventAddImage::DiagramEventAddImage
- * Default constructor
- * @param diagram : diagram where operate this event
- */
+	@brief DiagramEventAddImage::DiagramEventAddImage
+	Default constructor
+	@param diagram : diagram where operate this event
+*/
 DiagramEventAddImage::DiagramEventAddImage(Diagram *diagram) :
     DiagramEventInterface(diagram),
     m_image (nullptr),
@@ -35,8 +35,8 @@ DiagramEventAddImage::DiagramEventAddImage(Diagram *diagram) :
 }
 
 /**
- * @brief DiagramEventAddImage::~DiagramEventAddImage
- */
+	@brief DiagramEventAddImage::~DiagramEventAddImage
+*/
 DiagramEventAddImage::~DiagramEventAddImage()
 {
     if (m_running || m_abort)
@@ -50,10 +50,10 @@ DiagramEventAddImage::~DiagramEventAddImage()
 }
 
 /**
- * @brief DiagramEventAddImage::mousePressEvent
- * Action when mouse is pressed
- * @param event : event of mouse pressed
- */
+	@brief DiagramEventAddImage::mousePressEvent
+	Action when mouse is pressed
+	@param event : event of mouse pressed
+*/
 void DiagramEventAddImage::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (m_image && event -> button() == Qt::LeftButton)
@@ -79,10 +79,10 @@ void DiagramEventAddImage::mousePressEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief DiagramEventAddImage::mouseMoveEvent
- * Action when mouse move
- * @param event : event of mouse move
- */
+	@brief DiagramEventAddImage::mouseMoveEvent
+	Action when mouse move
+	@param event : event of mouse move
+*/
 void DiagramEventAddImage::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (!m_image || event->buttons() != Qt::NoButton) {
@@ -106,20 +106,20 @@ void DiagramEventAddImage::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief DiagramEventAddImage::mouseDoubleClickEvent
- * This method is only use to overwrite double click.
- * When double click, image propertie dialog isn't open.
- * @param event : event of mouse double click.
- */
+	@brief DiagramEventAddImage::mouseDoubleClickEvent
+	This method is only use to overwrite double click.
+	When double click, image propertie dialog isn't open.
+	@param event : event of mouse double click.
+*/
 void DiagramEventAddImage::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 	event->setAccepted(true);
 }
 
 /**
- * @brief DiagramEventAddImage::wheelEvent
- * Action when mouse wheel is rotate
- * @param event: evet of mouse wheel
- */
+	@brief DiagramEventAddImage::wheelEvent
+	Action when mouse wheel is rotate
+	@param event: evet of mouse wheel
+*/
 void DiagramEventAddImage::wheelEvent(QGraphicsSceneWheelEvent *event)
 {
 	if (!m_is_added || !m_image || event -> modifiers() != Qt::CTRL) {
@@ -136,9 +136,9 @@ void DiagramEventAddImage::wheelEvent(QGraphicsSceneWheelEvent *event)
 }
 
 /**
- * @brief DiagramEventAddImage::isNull
- * @return : true if image can't be loaded, otherwise return false.
- */
+	@brief DiagramEventAddImage::isNull
+	@return : true if image can't be loaded, otherwise return false.
+*/
 bool DiagramEventAddImage::isNull() const
 {
 	if (!m_image) return true;
@@ -146,9 +146,9 @@ bool DiagramEventAddImage::isNull() const
 }
 
 /**
- * @brief DiagramEventAddImage::openDialog
- * Open dialog for select the image to add.
- */
+	@brief DiagramEventAddImage::openDialog
+	Open dialog for select the image to add.
+*/
 void DiagramEventAddImage::openDialog()
 {
 	if (m_diagram -> isReadOnly()) return;

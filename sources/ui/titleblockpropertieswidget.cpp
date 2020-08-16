@@ -25,12 +25,12 @@
 #include <utility>
 
 /**
- * @brief TitleBlockPropertiesWidget::TitleBlockPropertiesWidget
- * default constructor
- * @param titleblock properties to edit
- * @param current_date if true, display the radio button "current date"
- * @param parent parent widget
- */
+	@brief TitleBlockPropertiesWidget::TitleBlockPropertiesWidget
+	default constructor
+	@param titleblock properties to edit
+	@param current_date if true, display the radio button "current date"
+	@param parent parent widget
+*/
 TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(const TitleBlockProperties &titleblock, bool current_date, QETProject *project, QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::TitleBlockPropertiesWidget)
@@ -41,13 +41,13 @@ TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(const TitleBlockPropertie
 }
 
 /**
- * @brief TitleBlockPropertiesWidget::TitleBlockPropertiesWidget
- * default constructor with tempalte list
- * @param tbt_collection template list
- * @param titleblock properties to edit
- * @param current_date if true, display the radio button "current date"
- * @param parent parent widget
- */
+	@brief TitleBlockPropertiesWidget::TitleBlockPropertiesWidget
+	default constructor with tempalte list
+	@param tbt_collection template list
+	@param titleblock properties to edit
+	@param current_date if true, display the radio button "current date"
+	@param parent parent widget
+*/
 TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(TitleBlockTemplatesCollection *tbt_collection, const TitleBlockProperties &titleblock, bool current_date, QETProject *project, QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::TitleBlockPropertiesWidget)
@@ -60,13 +60,13 @@ TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(TitleBlockTemplatesCollec
 }
 
 /**
- * @brief TitleBlockPropertiesWidget::TitleBlockPropertiesWidget
- * Default constructor with several template collection
- * @param tbt_collection template list
- * @param titleblock properties to edit
- * @param current_date if true, display the radio button "current date"
- * @param parent parent widget
- */
+	@brief TitleBlockPropertiesWidget::TitleBlockPropertiesWidget
+	Default constructor with several template collection
+	@param tbt_collection template list
+	@param titleblock properties to edit
+	@param current_date if true, display the radio button "current date"
+	@param parent parent widget
+*/
 TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(QList<TitleBlockTemplatesCollection *> tbt_collection, const TitleBlockProperties &titleblock, bool current_date, QETProject *project, QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::TitleBlockPropertiesWidget)
@@ -80,18 +80,18 @@ TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(QList<TitleBlockTemplates
 }
 
 /**
- * @brief TitleBlockPropertiesWidget::~TitleBlockPropertiesWidget
- * destructor
- */
+	@brief TitleBlockPropertiesWidget::~TitleBlockPropertiesWidget
+	destructor
+*/
 TitleBlockPropertiesWidget::~TitleBlockPropertiesWidget()
 {
 	delete ui;
 }
 
 /**
- * @brief TitleBlockPropertiesWidget::setProperties
- * @param properties
- */
+	@brief TitleBlockPropertiesWidget::setProperties
+	@param properties
+*/
 void TitleBlockPropertiesWidget::setProperties(const TitleBlockProperties &properties) {
 	ui -> m_title_le  -> setText (properties.title);
 	ui -> m_author_le -> setText (properties.author);
@@ -146,9 +146,9 @@ void TitleBlockPropertiesWidget::setProperties(const TitleBlockProperties &prope
 }
 
 /**
- * @brief TitleBlockPropertiesWidget::properties
- * @return the edited properties
- */
+	@brief TitleBlockPropertiesWidget::properties
+	@return the edited properties
+*/
 TitleBlockProperties TitleBlockPropertiesWidget::properties() const {
 	TitleBlockProperties prop;
 	prop.title    = ui -> m_title_le  -> text();
@@ -187,9 +187,9 @@ TitleBlockProperties TitleBlockPropertiesWidget::properties() const {
 }
 
 /**
- * @brief TitleBlockPropertiesWidget::properties
- * @return return properties to enable folio autonum
- */
+	@brief TitleBlockPropertiesWidget::properties
+	@return return properties to enable folio autonum
+*/
 TitleBlockProperties TitleBlockPropertiesWidget::propertiesAutoNum(QString autoNum) const {
 	TitleBlockProperties prop;
 	prop.title    = ui -> m_title_le  -> text();
@@ -242,9 +242,9 @@ TitleBlockTemplateLocation TitleBlockPropertiesWidget::currentTitleBlockLocation
 }
 
 /**
- * @brief TitleBlockPropertiesWidget::setTitleBlockTemplatesVisible
- * if true, title block template combo box and menu button is visible
- */
+	@brief TitleBlockPropertiesWidget::setTitleBlockTemplatesVisible
+	if true, title block template combo box and menu button is visible
+*/
 void TitleBlockPropertiesWidget::setTitleBlockTemplatesVisible(const bool &visible) {
 	ui -> m_tbt_label -> setVisible(visible);
 	ui -> m_tbt_cb    -> setVisible(visible);
@@ -252,17 +252,17 @@ void TitleBlockPropertiesWidget::setTitleBlockTemplatesVisible(const bool &visib
 }
 
 /**
- * @brief TitleBlockPropertiesWidget::setReadOnly
- * if true, this widget is disable
- */
+	@brief TitleBlockPropertiesWidget::setReadOnly
+	if true, this widget is disable
+*/
 void TitleBlockPropertiesWidget::setReadOnly(const bool &ro) {
 	ui->m_tbt_gb->setDisabled(ro);
 }
 
 /**
- * @brief TitleBlockPropertiesWidget::currentTitleBlockTemplateName
- * @return the current title block name
- */
+	@brief TitleBlockPropertiesWidget::currentTitleBlockTemplateName
+	@return the current title block name
+*/
 QString TitleBlockPropertiesWidget::currentTitleBlockTemplateName() const {
 	int index = ui -> m_tbt_cb -> currentIndex();
 	if(index != -1)
@@ -271,10 +271,10 @@ QString TitleBlockPropertiesWidget::currentTitleBlockTemplateName() const {
 }
 
 /**
- * @brief TitleBlockPropertiesWidget::addCollection
- * add a collection of title block available in the combo box
- * @param tbt_collection
- */
+	@brief TitleBlockPropertiesWidget::addCollection
+	add a collection of title block available in the combo box
+	@param tbt_collection
+*/
 void TitleBlockPropertiesWidget::addCollection(TitleBlockTemplatesCollection *tbt_collection)
 {
 	if (!tbt_collection || m_tbt_collection_list.contains(tbt_collection)) return;
@@ -282,10 +282,10 @@ void TitleBlockPropertiesWidget::addCollection(TitleBlockTemplatesCollection *tb
 }
 
 /**
- * @brief TitleBlockPropertiesWidget::initDialog
- * Init this dialog
- * @param current_date true for display current date radio button
- */
+	@brief TitleBlockPropertiesWidget::initDialog
+	Init this dialog
+	@param current_date true for display current date radio button
+*/
 void TitleBlockPropertiesWidget::initDialog(const bool &current_date,  QETProject *project) {
 	m_dcw = new DiagramContextWidget();
 	ui -> m_tab2_vlayout -> addWidget(m_dcw);
@@ -321,12 +321,12 @@ void TitleBlockPropertiesWidget::initDialog(const bool &current_date,  QETProjec
 }
 
 /**
- * @brief TitleBlockPropertiesWidget::getIndexFor
- * Find the index of the combo box for the title block @tbt_name available on the collection @collection
- * @param tbt_name : title block name
- * @param collection : title block collection
- * @return the index of the title block or -1 if no match
- */
+	@brief TitleBlockPropertiesWidget::getIndexFor
+	Find the index of the combo box for the title block @tbt_name available on the collection @collection
+	@param tbt_name : title block name
+	@param collection : title block collection
+	@return the index of the title block or -1 if no match
+*/
 int TitleBlockPropertiesWidget::getIndexFor(const QString &tbt_name, const QET::QetCollection collection) const
 {
 	for (int i = 0; i<ui->m_tbt_cb->count(); i++) {
@@ -346,9 +346,9 @@ void TitleBlockPropertiesWidget::duplicateCurrentTitleBlockTemplate() {
 }
 
 /**
- * @brief TitleBlockPropertiesWidget::updateTemplateList
- * Update the title block template list available in the combo box
- */
+	@brief TitleBlockPropertiesWidget::updateTemplateList
+	Update the title block template list available in the combo box
+*/
 void TitleBlockPropertiesWidget::updateTemplateList()
 {
 	ui -> m_tbt_cb ->clear();
@@ -386,9 +386,9 @@ void TitleBlockPropertiesWidget::updateTemplateList()
 }
 
 /**
- * @brief TitleBlockPropertiesWidget::changeCurrentTitleBlockTemplate
- * Load the additionnal field of title block "text"
- */
+	@brief TitleBlockPropertiesWidget::changeCurrentTitleBlockTemplate
+	Load the additionnal field of title block "text"
+*/
 void TitleBlockPropertiesWidget::changeCurrentTitleBlockTemplate(int index)
 {
 	m_dcw -> clear();
@@ -415,17 +415,17 @@ void TitleBlockPropertiesWidget::changeCurrentTitleBlockTemplate(int index)
 }
 
 /**
- * @brief TitleBlockPropertiesWidget::on_m_date_now_pb_clicked
- * Set the date to current date
- */
+	@brief TitleBlockPropertiesWidget::on_m_date_now_pb_clicked
+	Set the date to current date
+*/
 void TitleBlockPropertiesWidget::on_m_date_now_pb_clicked() {
 	ui -> m_date_edit -> setDate(QDate::currentDate());
 }
 
 /**
- * @brief TitleBlockPropertiesWidget::on_m_edit_autofolionum_pb_clicked
- * Open Auto Folio Num dialog
- */
+	@brief TitleBlockPropertiesWidget::on_m_edit_autofolionum_pb_clicked
+	Open Auto Folio Num dialog
+*/
 void TitleBlockPropertiesWidget::on_m_edit_autofolionum_pb_clicked() {
     emit openAutoNumFolioEditor(ui->auto_page_cb->currentText());
 	if (ui->auto_page_cb->currentText()!=tr("Créer un Folio Numérotation Auto"))

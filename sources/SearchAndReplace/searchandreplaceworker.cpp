@@ -32,11 +32,12 @@ SearchAndReplaceWorker::SearchAndReplaceWorker()
 }
 
 /**
- * @brief SearchAndReplaceWorker::replaceDiagram
- * Replace all properties of each diagram in @diagram_list,
- * by the current titleblock propertie of this worker
- * @param diagram_list, list of diagram to be changed, all diagrams must belong to the same project;
- */
+	@brief SearchAndReplaceWorker::replaceDiagram
+	Replace all properties of each diagram in @diagram_list,
+	by the current titleblock propertie of this worker
+	@param diagram_list, list of diagram to be changed,
+	all diagrams must belong to the same project;
+*/
 void SearchAndReplaceWorker::replaceDiagram(QList<Diagram *> diagram_list)
 {
 	if (diagram_list.isEmpty()) {
@@ -91,12 +92,14 @@ void SearchAndReplaceWorker::replaceDiagram(Diagram *diagram)
 }
 
 /**
- * @brief SearchAndReplaceWorker::replaceElement
- * Replace all properties of each elements in @list
- * All element must belong to the same project, if not this function do nothing.
- * All change are made through a undo command append to undo list of the project.
- * @param list
- */
+	@brief SearchAndReplaceWorker::replaceElement
+	Replace all properties of each elements in @list
+	All element must belong to the same project,
+	if not this function do nothing.
+	All change are made through a undo command append
+	to undo list of the project.
+	@param list
+*/
 void SearchAndReplaceWorker::replaceElement(QList<Element *> list)
 {
 	if (list.isEmpty() || !list.first()->diagram()) {
@@ -147,11 +150,11 @@ void SearchAndReplaceWorker::replaceElement(Element *element)
 }
 
 /**
- * @brief SearchAndReplaceWorker::replaceIndiText
- * Replace all displayed text of independent text of @list
- * Each must belong to the same project, if not this function do nothing
- * @param list
- */
+	@brief SearchAndReplaceWorker::replaceIndiText
+	Replace all displayed text of independent text of @list
+	Each must belong to the same project, if not this function do nothing
+	@param list
+*/
 void SearchAndReplaceWorker::replaceIndiText(QList<IndependentTextItem *> list)
 {
 	if (list.isEmpty() || !list.first()->diagram()) {
@@ -183,12 +186,14 @@ void SearchAndReplaceWorker::replaceIndiText(IndependentTextItem *text)
 }
 
 /**
- * @brief SearchAndReplaceWorker::replaceConductor
- * Replace all properties of each conductor in @list
- * All conductor must belong to the same project, if not this function do nothing.
- * All change are made through a undo command append to undo list of the project.
- * @param list
- */
+	@brief SearchAndReplaceWorker::replaceConductor
+	Replace all properties of each conductor in @list
+	All conductor must belong to the same project,
+	if not this function do nothing.
+	All change are made through a undo command append
+	to undo list of the project.
+	@param list
+*/
 void SearchAndReplaceWorker::replaceConductor(QList<Conductor *> list)
 {
 	if (list.isEmpty() || !list.first()->diagram()) {
@@ -232,15 +237,15 @@ void SearchAndReplaceWorker::replaceConductor(Conductor *conductor)
 }
 
 /**
- * @brief SearchAndReplaceWorker::replaceAdvanced
- * Apply the change of text according to the current advancedStruct
- * All items in the 4 list must belong to the same QETProject,
- * if not this function do nothing
- * @param d
- * @param e
- * @param t
- * @param c
- */
+	@brief SearchAndReplaceWorker::replaceAdvanced
+	Apply the change of text according to the current advancedStruct
+	All items in the 4 list must belong to the same QETProject,
+	if not this function do nothing
+	@param d
+	@param e
+	@param t
+	@param c
+*/
 void SearchAndReplaceWorker::replaceAdvanced(QList<Diagram *> diagrams, QList<Element *> elements, QList<IndependentTextItem *> texts, QList<Conductor *> conductors)
 {
 	QETProject *project_ = nullptr;
@@ -348,15 +353,17 @@ void SearchAndReplaceWorker::replaceAdvanced(QList<Diagram *> diagrams, QList<El
 }
 
 /**
- * @brief SearchAndReplaceWorker::setupLineEdit
- * With search and replace, when the variable to edit is a text,
- * the editor is always the same no matter if it is for a folio, element or conductor.
- * The editor is a QLineEdit to edit the text and checkbox to erase the text if checked.
- * This function fill the editor, from the current string
- * @param l
- * @param cb
- * @param str
- */
+	@brief SearchAndReplaceWorker::setupLineEdit
+	With search and replace, when the variable to edit is a text,
+	the editor is always the same no matter if it is for a folio,
+	element or conductor.
+	The editor is a QLineEdit to edit the text
+	and checkbox to erase the text if checked.
+	This function fill the editor, from the current string
+	@param l
+	@param cb
+	@param str
+*/
 void SearchAndReplaceWorker::setupLineEdit(QLineEdit *l, QCheckBox *cb, QString str)
 {
 	l->setText(str);
@@ -385,11 +392,11 @@ ConductorProperties SearchAndReplaceWorker::invalidConductorProperties()
 }
 
 /**
- * @brief SearchAndReplaceWorker::applyChange
- * @param original : the original properties
- * @param change : the change properties, to be merged with @original
- * @return a new conductor properties with the change applyed.
- */
+	@brief SearchAndReplaceWorker::applyChange
+	@param original : the original properties
+	@param change : the change properties, to be merged with @original
+	@return a new conductor properties with the change applyed.
+*/
 ConductorProperties SearchAndReplaceWorker::applyChange(const ConductorProperties &original, const ConductorProperties &change)
 {
 	ConductorProperties new_properties = original;
@@ -420,11 +427,11 @@ ConductorProperties SearchAndReplaceWorker::applyChange(const ConductorPropertie
 }
 
 /**
- * @brief SearchAndReplaceWorker::applyChange
- * @param original : the original string
- * @param change : the changed string:
- * @return the string to be use in the properties
- */
+	@brief SearchAndReplaceWorker::applyChange
+	@param original : the original string
+	@param change : the changed string:
+	@return the string to be use in the properties
+*/
 QString SearchAndReplaceWorker::applyChange(const QString &original, const QString &change)
 {
 	if (change.isEmpty())           {return original;}
@@ -433,11 +440,11 @@ QString SearchAndReplaceWorker::applyChange(const QString &original, const QStri
 }
 
 /**
- * @brief SearchAndReplaceWorker::replaceAdvanced
- * @param diagram
- * @return the titleblock properties with the change applied,
- * according to the state of @m_advanced_struct
- */
+	@brief SearchAndReplaceWorker::replaceAdvanced
+	@param diagram
+	@return the titleblock properties with the change applied,
+	according to the state of @m_advanced_struct
+*/
 TitleBlockProperties SearchAndReplaceWorker::replaceAdvanced(Diagram *diagram)
 {
 	TitleBlockProperties p = diagram->border_and_titleblock.exportTitleBlock();
@@ -459,11 +466,11 @@ TitleBlockProperties SearchAndReplaceWorker::replaceAdvanced(Diagram *diagram)
 }
 
 /**
- * @brief SearchAndReplaceWorker::replaceAdvanced
- * @param element
- * @return The diagram context with the change applied,
- * according to the state of @m_advanced_struct
- */
+	@brief SearchAndReplaceWorker::replaceAdvanced
+	@param element
+	@return The diagram context with the change applied,
+	according to the state of @m_advanced_struct
+*/
 DiagramContext SearchAndReplaceWorker::replaceAdvanced(Element *element)
 {
 	DiagramContext context = element->elementInformations();
@@ -484,11 +491,11 @@ DiagramContext SearchAndReplaceWorker::replaceAdvanced(Element *element)
 }
 
 /**
- * @brief SearchAndReplaceWorker::replaceAdvanced
- * @param conductor
- * @return the conductor properties with the change applied,
- * according to the state of @m_advanced_struct
- */
+	@brief SearchAndReplaceWorker::replaceAdvanced
+	@param conductor
+	@return the conductor properties with the change applied,
+	according to the state of @m_advanced_struct
+*/
 ConductorProperties SearchAndReplaceWorker::replaceAdvanced(Conductor *conductor)
 {
 	ConductorProperties properties = conductor->properties();

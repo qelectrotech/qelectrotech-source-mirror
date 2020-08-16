@@ -43,20 +43,20 @@ namespace Ui {
 }
 
 /**
- * @brief The PotentialSelectorDialog class
- * This dialog is used when user try to connect two existing potential together.
- * The dialog ask to user to make a choice between the properties of the two existing potential,
- * to apply it for the new potential.
+	@brief The PotentialSelectorDialog class
+	This dialog is used when user try to connect two existing potential together.
+	The dialog ask to user to make a choice between the properties of the two existing potential,
+	to apply it for the new potential.
  *
- * Each constructor have a QUndoCommand @parent_undo for parameter
- * If @parent_undo isn't null, when user click on OK button, the dialog will use the parent-undo
- * as parent of the undo command that describe the changes.
- * If @parent_undo is null, the created undo-command is push to the undo stack of the parent diagram of a conductor in potential.
- * else we apply the change without a QUndoCommand.
- * 
- * the static function chosenProperties, open a dialog who ask user to make a choice between the given
- * properties
- */
+	Each constructor have a QUndoCommand @parent_undo for parameter
+	If @parent_undo isn't null, when user click on OK button, the dialog will use the parent-undo
+	as parent of the undo command that describe the changes.
+	If @parent_undo is null, the created undo-command is push to the undo stack of the parent diagram of a conductor in potential.
+	else we apply the change without a QUndoCommand.
+
+	the static function chosenProperties, open a dialog who ask user to make a choice between the given
+	properties
+*/
 class PotentialSelectorDialog : public QDialog
 {
         Q_OBJECT
