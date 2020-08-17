@@ -258,8 +258,8 @@ qint64 SingleApplicationPrivate::primaryPid()
 }
 
 /**
- * @brief Executed when a connection has been made to the LocalServer
- */
+	@brief Executed when a connection has been made to the LocalServer
+*/
 void SingleApplicationPrivate::slotConnectionEstablished()
 {
 	QLocalSocket *nextConnSocket = server->nextPendingConnection();

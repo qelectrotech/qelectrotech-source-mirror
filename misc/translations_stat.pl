@@ -203,7 +203,7 @@ our %languages = (
 		'qt'                 => 1
 	},
 	'ja' => {
-		'name'               => '日本人',
+		'name'               => '日本語',
 		'french_name'        => 'Japonais',
 		'translator_name'    => 'Yuki',
 		'translator_mail_ml' => 'yuki.atoh@gmail.com',

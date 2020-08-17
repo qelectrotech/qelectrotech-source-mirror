@@ -23,11 +23,11 @@
 
 
 /**
- * @brief PartLine::PartLine
- * Constructor
- * @param editor : QETElementEditor of this part
- * @param parent : parent item
- */
+	@brief PartLine::PartLine
+	Constructor
+	@param editor : QETElementEditor of this part
+	@param parent : parent item
+*/
 PartLine::PartLine(QETElementEditor *editor, QGraphicsItem *parent) :
 	CustomElementGraphicPart(editor, parent),
 	first_end(Qet::None),
@@ -47,10 +47,10 @@ PartLine::~PartLine()
 }
 
 /**
- * @brief PartLine::requiredLengthForEndType
- * @param end_type
- * @return the number of "length" needed to draw a extremity of type Qet::EndType.
- */
+	@brief PartLine::requiredLengthForEndType
+	@param end_type
+	@return the number of "length" needed to draw a extremity of type Qet::EndType.
+*/
 uint PartLine::requiredLengthForEndType(const Qet::EndType &end_type)
 {
 	uint length_count_required = 0;
@@ -64,12 +64,12 @@ uint PartLine::requiredLengthForEndType(const Qet::EndType &end_type)
 }
 
 /**
- * @brief PartLine::paint
- * Draw this line
- * @param painter
- * @param options
- * @param widget
- */
+	@brief PartLine::paint
+	Draw this line
+	@param painter
+	@param options
+	@param widget
+*/
 void PartLine::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *widget)
 {
 	Q_UNUSED(widget);
@@ -97,11 +97,11 @@ void PartLine::paint(QPainter *painter, const QStyleOptionGraphicsItem *options,
 }
 
 /**
- * @brief PartLine::toXml
- * Export this line in xml
- * @param xml_document : Xml document to use for create the xml element.
- * @return an xml element that describe this line
- */
+	@brief PartLine::toXml
+	Export this line in xml
+	@param xml_document : Xml document to use for create the xml element.
+	@return an xml element that describe this line
+*/
 const QDomElement PartLine::toXml(QDomDocument &xml_document) const
 {
 	QPointF p1(sceneP1());
@@ -122,10 +122,10 @@ const QDomElement PartLine::toXml(QDomDocument &xml_document) const
 }
 
 /**
- * @brief PartLine::fromXml
- * Import the properties of this line from a xml element.
- * @param qde : Xml document to use
- */
+	@brief PartLine::fromXml
+	Import the properties of this line from a xml element.
+	@param qde : Xml document to use
+*/
 void PartLine::fromXml(const QDomElement &qde) {
 	stylesFromXml(qde);
 	m_line = QLineF(mapFromScene(qde.attribute("x1", "0").toDouble(),
@@ -140,11 +140,11 @@ void PartLine::fromXml(const QDomElement &qde) {
 }
 
 /**
- * @brief PartLine::itemChange
- * @param change
- * @param value
- * @return 
- */
+	@brief PartLine::itemChange
+	@param change
+	@param value
+	@return
+*/
 QVariant PartLine::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value)
 {
 	if (change == ItemSelectedHasChanged && scene())
@@ -180,11 +180,11 @@ QVariant PartLine::itemChange(QGraphicsItem::GraphicsItemChange change, const QV
 }
 
 /**
- * @brief PartLine::sceneEventFilter
- * @param watched
- * @param event
- * @return 
- */
+	@brief PartLine::sceneEventFilter
+	@param watched
+	@param event
+	@return
+*/
 bool PartLine::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 {
 	//Watched must be an handler
@@ -220,9 +220,9 @@ bool PartLine::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 }
 
 /**
- * @brief PartLine::adjusteHandlerPos
- * Adjust the position of the handler item
- */
+	@brief PartLine::adjusteHandlerPos
+	Adjust the position of the handler item
+*/
 void PartLine::adjusteHandlerPos()
 {
 	if(m_handler_vector.isEmpty())
@@ -240,10 +240,10 @@ void PartLine::adjusteHandlerPos()
 }
 
 /**
- * @brief PartLine::handlerMousePressEvent
- * @param qghi
- * @param event
- */
+	@brief PartLine::handlerMousePressEvent
+	@param qghi
+	@param event
+*/
 void PartLine::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(qghi);
@@ -256,10 +256,10 @@ void PartLine::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsSce
 }
 
 /**
- * @brief PartLine::handlerMouseMoveEvent
- * @param qghi
- * @param event
- */
+	@brief PartLine::handlerMouseMoveEvent
+	@param qghi
+	@param event
+*/
 void PartLine::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(qghi);
@@ -279,10 +279,10 @@ void PartLine::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsScen
 }
 
 /**
- * @brief PartLine::handlerMouseReleaseEvent
- * @param qghi
- * @param event
- */
+	@brief PartLine::handlerMouseReleaseEvent
+	@param qghi
+	@param event
+*/
 void PartLine::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(qghi);
@@ -295,9 +295,9 @@ void PartLine::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphicsS
 }
 
 /**
- * @brief PartLine::sceneSelectionChanged
- * When the scene selection change, if there are several primitive selected, we remove the handler of this item
- */
+	@brief PartLine::sceneSelectionChanged
+	When the scene selection change, if there are several primitive selected, we remove the handler of this item
+*/
 void PartLine::sceneSelectionChanged()
 {
 	if (this->isSelected() && scene()->selectedItems().size() == 1)
@@ -307,9 +307,9 @@ void PartLine::sceneSelectionChanged()
 }
 
 /**
- * @brief PartLine::addHandler
- * Add handlers for this item
- */
+	@brief PartLine::addHandler
+	Add handlers for this item
+*/
 void PartLine::addHandler()
 {
 	if (m_handler_vector.isEmpty() && scene())
@@ -330,9 +330,9 @@ void PartLine::addHandler()
 }
 
 /**
- * @brief PartLine::removeHandler
- * Remove the handlers of this item
- */
+	@brief PartLine::removeHandler
+	Remove the handlers of this item
+*/
 void PartLine::removeHandler()
 {
 	if (!m_handler_vector.isEmpty())
@@ -343,25 +343,25 @@ void PartLine::removeHandler()
 }
 
 /**
- * @brief PartLine::sceneP1
- * @return the point p1 in scene coordinate
- */
+	@brief PartLine::sceneP1
+	@return the point p1 in scene coordinate
+*/
 QPointF PartLine::sceneP1() const {
 	return(mapToScene(m_line.p1()));
 }
 
 /**
- * @brief PartLine::sceneP2
- * @return the point p2 in scen coordinate
- */
+	@brief PartLine::sceneP2
+	@return the point p2 in scen coordinate
+*/
 QPointF PartLine::sceneP2() const {
 	return(mapToScene(m_line.p2()));
 }
 
 /**
- * @brief PartLine::shape
- * @return the shape of this item
- */
+	@brief PartLine::shape
+	@return the shape of this item
+*/
 QPainterPath PartLine::shape() const
 {
 	QPainterPath shape;
@@ -404,10 +404,10 @@ QPainterPath PartLine::shadowShape() const
 }
 
 /**
- * @brief PartLine::fourShapePoints
- * @return a list with the two points that delimite the line
- * + the four points surrounding these two points
- */
+	@brief PartLine::fourShapePoints
+	@return a list with the two points that delimite the line
+	+ the four points surrounding these two points
+*/
 QList<QPointF> PartLine::fourShapePoints() const
 {
 	const qreal marge = 2.0;
@@ -452,9 +452,9 @@ QList<QPointF> PartLine::fourShapePoints() const
 }
 
 /**
- * @brief PartLine::firstEndCircleRect
- * @return the rectangle bordering the entirety of the first extremity
- */
+	@brief PartLine::firstEndCircleRect
+	@return the rectangle bordering the entirety of the first extremity
+*/
 QRectF PartLine::firstEndCircleRect() const
 {
 	QList<QPointF> interesting_points = fourEndPoints(m_line.p1(),
@@ -470,9 +470,9 @@ QRectF PartLine::firstEndCircleRect() const
 }
 
 /**
- * @brief PartLine::secondEndCircleRect
- * @return the rectangle bordering the entirety of the second extremity
- */
+	@brief PartLine::secondEndCircleRect
+	@return the rectangle bordering the entirety of the second extremity
+*/
 QRectF PartLine::secondEndCircleRect() const {
 	QList<QPointF> interesting_points = fourEndPoints(m_line.p2(),
 													  m_line.p1(),
@@ -487,13 +487,13 @@ QRectF PartLine::secondEndCircleRect() const {
 }
 
 /**
- * @brief PartLine::debugPaint
- * Display several composante of the drawing
- * -the bounding rect
- * -special points at each extremity
- * -the quadrature of the circle at each extremity, even if itself is an other type
- * @param painter
- */
+	@brief PartLine::debugPaint
+	Display several composante of the drawing
+	-the bounding rect
+	-special points at each extremity
+	-the quadrature of the circle at each extremity, even if itself is an other type
+	@param painter
+*/
 void PartLine::debugPaint(QPainter *painter)
 {
 	painter -> save();
@@ -516,9 +516,9 @@ void PartLine::debugPaint(QPainter *painter)
 }
 
 /**
- * @brief PartLine::boundingRect
- * @return the bounding rect of this part
- */
+	@brief PartLine::boundingRect
+	@return the bounding rect of this part
+*/
 QRectF PartLine::boundingRect() const
 {	
 	QRectF bound;
@@ -539,31 +539,31 @@ QRectF PartLine::boundingRect() const
 }
 
 /**
- * @brief PartLine::isUseless
- * @return true if this part is irrelevant and does not deserve to be Retained / registered.
- * A line is relevant when is two point is different
- */
+	@brief PartLine::isUseless
+	@return true if this part is irrelevant and does not deserve to be Retained / registered.
+	A line is relevant when is two point is different
+*/
 bool PartLine::isUseless() const {
 	return(m_line.p1() == m_line.p2());
 }
 
 /**
- * @brief PartLine::sceneGeometricRect
- * @return the minimum, margin-less rectangle this part can fit into, in scene
- * coordinates. It is different from boundingRect() because it is not supposed
- * to imply any margin, and it is different from shape because it is a regular
- * rectangle, not a complex shape.
- */
+	@brief PartLine::sceneGeometricRect
+	@return the minimum, margin-less rectangle this part can fit into, in scene
+	coordinates. It is different from boundingRect() because it is not supposed
+	to imply any margin, and it is different from shape because it is a regular
+	rectangle, not a complex shape.
+*/
 QRectF PartLine::sceneGeometricRect() const {
 	return(QRectF(sceneP1(), sceneP2()));
 }
 
 /**
- * @brief PartLine::startUserTransformation
- * Start the user-induced transformation, provided this primitive is contained
- * within the \a initial_selection_rect bounding rectangle.
- * @param initial_selection_rect
- */
+	@brief PartLine::startUserTransformation
+	Start the user-induced transformation, provided this primitive is contained
+	within the \a initial_selection_rect bounding rectangle.
+	@param initial_selection_rect
+*/
 void PartLine::startUserTransformation(const QRectF &initial_selection_rect)
 {
 	Q_UNUSED(initial_selection_rect)
@@ -572,11 +572,11 @@ void PartLine::startUserTransformation(const QRectF &initial_selection_rect)
 }
 
 /**
- * @brief PartLine::handleUserTransformation
- * Handle the user-induced transformation from \a initial_selection_rect to \a new_selection_rect
- * @param initial_selection_rect
- * @param new_selection_rect
- */
+	@brief PartLine::handleUserTransformation
+	Handle the user-induced transformation from \a initial_selection_rect to \a new_selection_rect
+	@param initial_selection_rect
+	@param new_selection_rect
+*/
 void PartLine::handleUserTransformation(const QRectF &initial_selection_rect, const QRectF &new_selection_rect)
 {
 	QList<QPointF> mapped_points = mapPoints(initial_selection_rect, new_selection_rect, saved_points_);
@@ -585,19 +585,19 @@ void PartLine::handleUserTransformation(const QRectF &initial_selection_rect, co
 }
 
 /**
- * @brief PartLine::fourEndPoints
- * Return the four interesting point needed to draw the shape
- * at extremity of line (circle, diamond, arrow, triangle)
- * This points are in order :
+	@brief PartLine::fourEndPoints
+	Return the four interesting point needed to draw the shape
+	at extremity of line (circle, diamond, arrow, triangle)
+	This points are in order :
  *		O : point on the line, at a distance 'length' of the extremity
  *		A : point on the line at a 'length' of 2x the extremity length
  *		B : point at a distance of length O - O is the projection of B on the line
  *		C : point at a distance of length O - O is the projection of C on the line
- * @param end_point : The concerned extremity
- * @param other_point : other needed point to define the line
- * @param length : length to use between the extremity and the point O
- * @return
- */
+	@param end_point : The concerned extremity
+	@param other_point : other needed point to define the line
+	@param length : length to use between the extremity and the point O
+	@return
+*/
 QList<QPointF> PartLine::fourEndPoints(const QPointF &end_point, const QPointF &other_point, const qreal &length)
 {
 		//Vector and length of the line
@@ -665,12 +665,12 @@ void PartLine::setSecondEndLength(const qreal &l)
 }
 
 /**
- * @brief PartLine::path
- * @return this line has a QPainterPath.
- * It's notably use when this line have an end type (circle, triangle etc....),
- * because return a QPainterPath with end already draw.
- * Else if there isn't an end type get P1 and P2 of line is better (faster).
- */
+	@brief PartLine::path
+	@return this line has a QPainterPath.
+	It's notably use when this line have an end type (circle, triangle etc....),
+	because return a QPainterPath with end already draw.
+	Else if there isn't an end type get P1 and P2 of line is better (faster).
+*/
 QPainterPath PartLine::path() const
 {
 	QPainterPath path;

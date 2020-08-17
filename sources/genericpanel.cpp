@@ -628,7 +628,7 @@ QTreeWidgetItem *GenericPanel::updateTemplateItem(
 		   "used to display a title block template").arg(
 					    tb_template.name()));
 	QString tbt_whatsthis = tr(
-        "Ceci est un modèle de cartouche, qui peut être appliqué à un folio.",
+		"Ceci est un modèle de cartouche, qui peut être appliqué à un folio.",
 		"\"What's this\" tip"
 	);
 	tb_template_qtwi -> setWhatsThis(0, tbt_whatsthis);

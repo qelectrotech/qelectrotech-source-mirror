@@ -27,9 +27,9 @@ class QFile;
 class QETProject;
 
 /**
- * @brief The XmlElementCollection class
- * This class represent a collection of elements stored to xml
- */
+	@brief The XmlElementCollection class
+	This class represent a collection of elements stored to xml
+*/
 class XmlElementCollection : public QObject
 {
 		Q_OBJECT
@@ -68,34 +68,34 @@ class XmlElementCollection : public QObject
 
 	signals:
 			/**
-			 * @brief elementAdded
-			 * This signal is emited when a element is added to this collection
-			 * @param collection_path, the path of element in this collection
-			 */
+				@brief elementAdded
+				This signal is emited when a element is added to this collection
+				@param collection_path, the path of element in this collection
+			*/
 		void elementAdded(QString collection_path);
 			/**
-			 * @brief elementChanged
-			 * This signal is emited when the defintion of the element at path was changed
-			 * @param collection_path, the path of this element in this collection
-			 */
+				@brief elementChanged
+				This signal is emited when the defintion of the element at path was changed
+				@param collection_path, the path of this element in this collection
+			*/
 		void elementChanged (QString collection_path);
 			/**
-			 * @brief elementRemoved
-			 * This signal is emited when an element is removed to this collection
-			 * @param collection_path, the path of the removed element in this collection
-			 */
+				@brief elementRemoved
+				This signal is emited when an element is removed to this collection
+				@param collection_path, the path of the removed element in this collection
+			*/
 		void elementRemoved(QString collection_path);
 			/**
-			 * @brief directorieAdded
-			 * This signal is emited when a directorie is added to this collection
-			 * @param collection_path, the path of the new directorie
-			 */
+				@brief directorieAdded
+				This signal is emited when a directorie is added to this collection
+				@param collection_path, the path of the new directorie
+			*/
 		void directorieAdded(QString collection_path);
 			/**
-			 * @brief directoryRemoved
-			 * This signal is emited when a directory is removed to this collection
-			 * @param collection_path, the path of the removed directory
-			 */
+				@brief directoryRemoved
+				This signal is emited when a directory is removed to this collection
+				@param collection_path, the path of the removed directory
+			*/
 		void directoryRemoved(QString collection_path);
 
 	private:

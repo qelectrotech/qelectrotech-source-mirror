@@ -284,7 +284,7 @@ void QETApp::restoreEveryEditor() {
 	@brief QETApp::reduceDiagramEditors
 	Minimize all schema editors in the systray
 	\~French Reduit tous les editeurs de schemas dans le systray
- */
+*/
 void QETApp::reduceDiagramEditors() {
 	setMainWindowsVisible<QETDiagramEditor>(false);
 }
@@ -312,7 +312,7 @@ void QETApp::reduceElementEditors() {
 	@brief QETApp::restoreElementEditors
 	Restore all element editors in the systray
 	\~French Restaure tous les editeurs d'element dans le systray
- */
+*/
 void QETApp::restoreElementEditors() {
 	setMainWindowsVisible<QETElementEditor>(true);
 }
@@ -870,7 +870,7 @@ QString QETApp::realPath(const QString &sym_path) {
 	or the path symbolic designating the element.
 	\~French Une chaine de caracteres vide en cas d'erreur ou le chemin
 	symbolique designant l'element.
- */
+*/
 QString QETApp::symbolicPath(const QString &real_path) {
 	// get the common and custom folders
 	// recupere les dossier common et custom
@@ -895,7 +895,7 @@ QString QETApp::symbolicPath(const QString &real_path) {
 	@brief QETApp::handledFileExtensions
 	@return the list of file extensions QElectroTech is able to open and
 	supposed to handle. Note they are provided with no leading point.
- */
+*/
 QStringList QETApp::handledFileExtensions() {
 	static QStringList ext;
 	if (!ext.count()) {
@@ -936,7 +936,7 @@ QStringList QETApp::handledFiles(const QList<QUrl> &urls) {
 	or 0 if this file is not edited by the application.
 	\~French le QETDiagramEditor editant le fichier filepath,
 	ou 0 si ce fichier n'est pas edite par l'application.
- */
+*/
 QETDiagramEditor *QETApp::diagramEditorForFile(const QString &filepath) {
 	if (filepath.isEmpty()) return(nullptr);
 
@@ -1043,7 +1043,7 @@ void QETApp::overrideLangDir(const QString &new_ld) {
 	@brief QETApp::languagesPath
 	@return The path of the folder containing the language files
 	\~French Le chemin du dossier contenant les fichiers de langue
- */
+*/
 QString QETApp::languagesPath() {
 	if (!lang_dir.isEmpty()) {
 		return(lang_dir);
@@ -2259,7 +2259,7 @@ void QETApp::checkBackupFiles()
 	\~ @param diagrams : QList<QETDiagramEditor *>
 	\~ @param elements : QList<QETElementEditor *>
 	\~ @param tbtemplates : QList<QETTitleBlockTemplateEditor *>
- */
+*/
 void QETApp::fetchWindowStats(
 	const QList<QETDiagramEditor *> &diagrams,
 	const QList<QETElementEditor *> &elements,

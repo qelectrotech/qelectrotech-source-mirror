@@ -28,10 +28,10 @@ class QetGraphicsHandlerItem;
 class QAction;
 
 /**
- * @brief The QetShapeItem class
- * this class is used to draw a basic shape (line, rectangle, ellipse)
- * into a diagram, that can be saved to .qet file.
- */
+	@brief The QetShapeItem class
+	this class is used to draw a basic shape (line, rectangle, ellipse)
+	into a diagram, that can be saved to .qet file.
+*/
 class QetShapeItem : public QetGraphicsItem
 {
 	Q_OBJECT
@@ -109,8 +109,8 @@ class QetShapeItem : public QetGraphicsItem
 		void hoverEnterEvent   (QGraphicsSceneHoverEvent *event) override;
 		void hoverLeaveEvent   (QGraphicsSceneHoverEvent *event) override;
 		void mousePressEvent   (QGraphicsSceneMouseEvent *event) override;
-        QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
-        bool sceneEventFilter(QGraphicsItem *watched, QEvent *event) override;
+		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
+		bool sceneEventFilter(QGraphicsItem *watched, QEvent *event) override;
 		void contextMenuEvent(QGraphicsSceneContextMenuEvent *event) override;
 
 	private:
@@ -140,7 +140,7 @@ class QetShapeItem : public QetGraphicsItem
 		bool m_closed = false,
 			 m_modifie_radius_equaly = false;
 		int m_resize_mode = 1;
-        QVector<QetGraphicsHandlerItem *> m_handler_vector;
+		QVector<QetGraphicsHandlerItem *> m_handler_vector;
 		QAction *m_insert_point,
 				*m_remove_point;
 		qreal m_xRadius = 0,

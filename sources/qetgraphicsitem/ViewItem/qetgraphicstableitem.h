@@ -1,19 +1,19 @@
 /*
-		Copyright 2006-2020 QElectroTech Team
-        This file is part of QElectroTech.
+	Copyright 2006-2020 The QElectroTech Team
+	This file is part of QElectroTech.
 
-        QElectroTech is free software: you can redistribute it and/or modify
-        it under the terms of the GNU General Public License as published by
-        the Free Software Foundation, either version 2 of the License, or
-        (at your option) any later version.
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
 
-        QElectroTech is distributed in the hope that it will be useful,
-        but WITHOUT ANY WARRANTY; without even the implied warranty of
-        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-        GNU General Public License for more details.
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+	GNU General Public License for more details.
 
-        You should have received a copy of the GNU General Public License
-        along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #ifndef QetGraphicsTableItem_H
 #define QetGraphicsTableItem_H
@@ -28,17 +28,17 @@ class QAbstractItemModel;
 class QetGraphicsHeaderItem;
 
 /**
- * @brief The QetGraphicsTableItem class
- * This item display a table destined to represent the content of a QAbstractItemModel
- * The table have a few parameters to edit her visual aspect.
- * Margins, to edit the margin between the cell and the text.
- * Text font.
- * Text alignment in the cell
- * These three parameters are not settable directly with the table but trough the model to be displayed by the table.
- * The table search these parameters only in the index(0,0) for all the table.
- * By consequence, set data in other index than 0,0 is useless also these parameter can't be set individually for each cell.
- * The margins is stored in the model in index Qt::UserRole+1 and for value a QString. See QETUtils::marginsFromString and  QETUtils::marginsToString
- */
+	@brief The QetGraphicsTableItem class
+	This item display a table destined to represent the content of a QAbstractItemModel
+	The table have a few parameters to edit her visual aspect.
+	Margins, to edit the margin between the cell and the text.
+	Text font.
+	Text alignment in the cell
+	These three parameters are not settable directly with the table but trough the model to be displayed by the table.
+	The table search these parameters only in the index(0,0) for all the table.
+	By consequence, set data in other index than 0,0 is useless also these parameter can't be set individually for each cell.
+	The margins is stored in the model in index Qt::UserRole+1 and for value a QString. See QETUtils::marginsFromString and  QETUtils::marginsToString
+*/
 class QetGraphicsTableItem : public QetGraphicsItem
 {
 	Q_OBJECT

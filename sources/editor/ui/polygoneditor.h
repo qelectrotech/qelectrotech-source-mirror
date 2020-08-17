@@ -1,19 +1,19 @@
 ﻿/*
-    Copyright 2006-2020 The QElectroTech Team
-    This file is part of QElectroTech.
+	Copyright 2006-2020 The QElectroTech Team
+	This file is part of QElectroTech.
 
-    QElectroTech is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 2 of the License, or
-    (at your option) any later version.
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
 
-    QElectroTech is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #ifndef POLYGONEDITOR_H
 #define POLYGONEDITOR_H
@@ -25,7 +25,7 @@ class PartPolygon;
 class QTreeWidgetItem;
 
 namespace Ui {
-    class PolygonEditor;
+	class PolygonEditor;
 }
 
 class PolygonEditor : public ElementItemEditor
@@ -51,10 +51,11 @@ class PolygonEditor : public ElementItemEditor
 	void on_m_remove_point_action_triggered();
 	
 	private:
-	/*!
-		 * \brief setUpChangeConnections
-		 * Setup the connection from the line(s) to the widget, to update it when the line(s) are changed (moved ...)
-		 */
+	/**
+			@brief setUpChangeConnections
+			Setup the connection from the line(s) to the widget,
+			to update it when the line(s) are changed (moved ...)
+	*/
 	void setUpChangeConnections();
 	void disconnectChangeConnections();
 	

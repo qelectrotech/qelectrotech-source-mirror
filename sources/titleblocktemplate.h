@@ -189,7 +189,7 @@ class TitleBlockTemplate : public QObject {
 	QHash<QString, QSvgRenderer *> vector_logos_;
 	/**
 		@brief bitmap_logos_ : Pixmaps for bitmap logos
-	 */
+	*/
 	QHash<QString, QPixmap>        bitmap_logos_;
 	
 	QList<int> rows_heights_; ///< rows heights -- simple integers
@@ -201,7 +201,7 @@ class TitleBlockTemplate : public QObject {
 	/**
 		@brief registered_cells_ : Cells objects created rattached
 		to this template, but not mandatorily used
-	 */
+	*/
 	QList<TitleBlockCell *> registered_cells_;
 	QList< QList<TitleBlockCell *> > cells_;         ///< Cells grid
 };

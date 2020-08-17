@@ -22,12 +22,12 @@
 #include <cassert>
 
 /**
- * @brief TextEditor::TextEditor
- * Default constructor
- * @param editor : the element editor who use this editor
- * @param text : the text to edit
- * @param parent : the parent widget
- */
+	@brief TextEditor::TextEditor
+	Default constructor
+	@param editor : the element editor who use this editor
+	@param text : the text to edit
+	@param parent : the parent widget
+*/
 TextEditor::TextEditor(QETElementEditor *editor,  PartText *text, QWidget *parent) :
 	ElementItemEditor(editor, parent),
 	ui(new Ui::TextEditor) {
@@ -40,16 +40,16 @@ TextEditor::TextEditor(QETElementEditor *editor,  PartText *text, QWidget *paren
 }
 
 /**
- * @brief TextEditor::~TextEditor
- */
+	@brief TextEditor::~TextEditor
+*/
 TextEditor::~TextEditor() {
 	delete ui;
 }
 
 /**
- * @brief TextEditor::updateForm
- * Update the gui
- */
+	@brief TextEditor::updateForm
+	Update the gui
+*/
 void TextEditor::updateForm()
 {
 	if (m_text.isNull()) {
@@ -94,12 +94,12 @@ void TextEditor::disconnectEditConnection() {
 }
 
 /**
- * @brief TextEditor::setPart
- * Set the current text to edit.
- * Set @part to nullptr to clear the current text.
- * @param part : part to edit
- * @return : return if @part is a partext or nullptr, else return false
- */
+	@brief TextEditor::setPart
+	Set the current text to edit.
+	Set @part to nullptr to clear the current text.
+	@param part : part to edit
+	@return : return if @part is a partext or nullptr, else return false
+*/
 bool TextEditor::setPart(CustomElementPart *part) {
 	if (!part) {
 		m_text = nullptr;
@@ -147,9 +147,9 @@ bool TextEditor::setParts(QList <CustomElementPart *> parts) {
 }
 
 /**
- * @brief TextEditor::currentPart
- * @return The current part
- */
+	@brief TextEditor::currentPart
+	@return The current part
+*/
 CustomElementPart *TextEditor::currentPart() const {
 	return m_text;
 }
@@ -163,10 +163,10 @@ QList<CustomElementPart*> TextEditor::currentParts() const {
 }
 
 /**
- * @brief TextEditor::setUpEditConnection
- * Setup the connection between the widgets of this editor and the undo command
- * use to apply the change to the edited text.
- */
+	@brief TextEditor::setUpEditConnection
+	Setup the connection between the widgets of this editor and the undo command
+	use to apply the change to the edited text.
+*/
 void TextEditor::setUpEditConnection() {
 	disconnectEditConnection();
 
@@ -234,8 +234,8 @@ void TextEditor::setUpEditConnection() {
 }
 
 /**
- * @brief TextEditor::on_m_font_pb_clicked
- */
+	@brief TextEditor::on_m_font_pb_clicked
+*/
 void TextEditor::on_m_font_pb_clicked() {
 	bool ok;
 	QFont font_ = QFontDialog::getFont(&ok, m_text -> font(), this);
@@ -259,9 +259,9 @@ void TextEditor::on_m_font_pb_clicked() {
 }
 
 /**
- * @brief TextEditor::on_m_color_pb_changed
- * @param newColor
- */
+	@brief TextEditor::on_m_color_pb_changed
+	@param newColor
+*/
 void TextEditor::on_m_color_pb_changed(const QColor &newColor) {
 	for (int i=0; i < m_parts.length(); i++) {
 		PartText* partText = m_parts[i];

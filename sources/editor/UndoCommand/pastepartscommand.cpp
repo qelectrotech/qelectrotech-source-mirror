@@ -20,14 +20,14 @@
 #include "partterminal.h"
 
 /**
- * @brief PastePartsCommand::PastePartsCommand
- * @param view : view where this command work
- * @param content_to_paste : content to paste
- * @param parent : parent undo command
+	@brief PastePartsCommand::PastePartsCommand
+	@param view : view where this command work
+	@param content_to_paste : content to paste
+	@param parent : parent undo command
  *
- * Note : all terminal stored in @content_to_paste get a new uuid in the constructor of this class to avoid have
- * several terminal of an element with the same uuid.
- */
+	Note : all terminal stored in @content_to_paste get a new uuid in the constructor of this class to avoid have
+	several terminal of an element with the same uuid.
+*/
 PastePartsCommand::PastePartsCommand(ElementView *view, const ElementContent &content_to_paste, QUndoCommand *parent) :
 	ElementEditionCommand(view ? view -> scene() : nullptr, view, parent)
 {
@@ -44,16 +44,16 @@ PastePartsCommand::PastePartsCommand(ElementView *view, const ElementContent &co
 }
 
 /**
- * @brief PastePartsCommand::~PastePartsCommand
- */
+	@brief PastePartsCommand::~PastePartsCommand
+*/
 PastePartsCommand::~PastePartsCommand()
 {
 	m_scene->qgiManager().release(m_pasted_content);
 }
 
 /**
- * @brief PastePartsCommand::undo
- */
+	@brief PastePartsCommand::undo
+*/
 void PastePartsCommand::undo()
 {
 	m_scene->blockSignals(true);
@@ -72,8 +72,8 @@ void PastePartsCommand::undo()
 }
 
 /**
- * @brief PastePartsCommand::redo
- */
+	@brief PastePartsCommand::redo
+*/
 void PastePartsCommand::redo()
 {
 	if (m_first_redo) {
@@ -97,13 +97,13 @@ void PastePartsCommand::redo()
 }
 
 /**
- * @brief PastePartsCommand::setOffset
- * Describe the offset to use with this undo command
- * @param old_offset_paste_count
- * @param old_start_top_left_corner
- * @param new_offset_paste_count
- * @param new_start_top_left_corner
- */
+	@brief PastePartsCommand::setOffset
+	Describe the offset to use with this undo command
+	@param old_offset_paste_count
+	@param old_start_top_left_corner
+	@param new_offset_paste_count
+	@param new_start_top_left_corner
+*/
 void PastePartsCommand::setOffset(int old_offset_paste_count, const QPointF &old_start_top_left_corner, int new_offset_paste_count, const QPointF &new_start_top_left_corner)
 {
 	m_old_offset_paste_count    = old_offset_paste_count;

@@ -1,19 +1,19 @@
 /*
-   Copyright 2006-2020 The QElectroTech Team
-   This file is part of QElectroTech.
+	Copyright 2006-2020 The QElectroTech Team
+	This file is part of QElectroTech.
 
-   QElectroTech is free software: you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation, either version 2 of the License, or
-   (at your option) any later version.
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
 
-   QElectroTech is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
 
-   You should have received a copy of the GNU General Public License
-   along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetgraphicstablefactory.h"
 #include "qetgraphicstableitem.h"
@@ -34,11 +34,11 @@ QetGraphicsTableFactory::QetGraphicsTableFactory()
 }
 
 /**
- * @brief QetGraphicsTableFactory::createAndAddNomenclature
- * Open a dialog for ask user the config of the table ,create a nomenclature table
- * and add it to diagram @diagram;
- * @param diagram
- */
+	@brief QetGraphicsTableFactory::createAndAddNomenclature
+	Open a dialog for ask user the config of the table ,create a nomenclature table
+	and add it to diagram @diagram;
+	@param diagram
+*/
 void QetGraphicsTableFactory::createAndAddNomenclature(Diagram *diagram)
 {
 	QScopedPointer<AddTableDialog> d(new AddTableDialog(new ElementQueryWidget(), diagram->views().first()));
@@ -50,11 +50,11 @@ void QetGraphicsTableFactory::createAndAddNomenclature(Diagram *diagram)
 }
 
 /**
- * @brief QetGraphicsTableFactory::createAndAddSummary
- * Open a dialog for ask user the config of the table ,create a summary table
- * and add it to diagram @diagram;
- * @param diagram
- */
+	@brief QetGraphicsTableFactory::createAndAddSummary
+	Open a dialog for ask user the config of the table ,create a summary table
+	and add it to diagram @diagram;
+	@param diagram
+*/
 void QetGraphicsTableFactory::createAndAddSummary(Diagram *diagram)
 {
 	QScopedPointer<AddTableDialog> d(new AddTableDialog(new SummaryQueryWidget(), diagram->views().first()));
@@ -104,14 +104,14 @@ void QetGraphicsTableFactory::create(Diagram *diagram, AddTableDialog *dialog)
 }
 
 /**
- * @brief QetGraphicsTableFactory::newTable
- * Create a new table .
- * @param diagram : Diagram where we must add the new table.
- * @param dialog : dialog conf, it's used to setup the model.
- * @param previous_table : If you know that the new table will have a previous table and you already now the previous table,
- * set it now they will improve time needed for creating the new table by avoiding to create a new model.
- * @return the new table
- */
+	@brief QetGraphicsTableFactory::newTable
+	Create a new table .
+	@param diagram : Diagram where we must add the new table.
+	@param dialog : dialog conf, it's used to setup the model.
+	@param previous_table : If you know that the new table will have a previous table and you already now the previous table,
+	set it now they will improve time needed for creating the new table by avoiding to create a new model.
+	@return the new table
+*/
 QetGraphicsTableItem *QetGraphicsTableFactory::newTable(Diagram *diagram, AddTableDialog *dialog, QetGraphicsTableItem *previous_table)
 {
 	auto table = new QetGraphicsTableItem();

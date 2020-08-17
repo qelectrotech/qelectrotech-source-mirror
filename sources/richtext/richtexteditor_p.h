@@ -69,33 +69,33 @@ class RichTextEditor;
 
 class RichTextEditorDialog : public QDialog
 {
-    Q_OBJECT
-public:
-    explicit RichTextEditorDialog(QWidget *parent = nullptr);
-    ~RichTextEditorDialog() override;
+	Q_OBJECT
+	public:
+		explicit RichTextEditorDialog(QWidget *parent = nullptr);
+		~RichTextEditorDialog() override;
 
-    int showDialog();
-    void setDefaultFont(const QFont &font);
-    void setText(const QString &text);
-    QString text(Qt::TextFormat format = Qt::AutoText) const;
+		int showDialog();
+		void setDefaultFont(const QFont &font);
+		void setText(const QString &text);
+		QString text(Qt::TextFormat format = Qt::AutoText) const;
 
-signals:
-	void applyEditText(const QString &);
+	signals:
+		void applyEditText(const QString &);
 
-private slots:
-    void tabIndexChanged(int newIndex);
-    void richTextChanged();
-    void sourceChanged();
-	void on_buttonBox_accepted();
-	
-private:
-    enum TabIndex { RichTextIndex, SourceIndex };
-    enum State { Clean, RichTextChanged, SourceChanged };
-    RichTextEditor *m_editor;
-    QTextEdit      *m_text_edit;
-    QTabWidget     *m_tab_widget;
-    State m_state;
-    };
+	private slots:
+		void tabIndexChanged(int newIndex);
+		void richTextChanged();
+		void sourceChanged();
+		void on_buttonBox_accepted();
+
+	private:
+		enum TabIndex { RichTextIndex, SourceIndex };
+		enum State { Clean, RichTextChanged, SourceChanged };
+		RichTextEditor *m_editor;
+		QTextEdit      *m_text_edit;
+		QTabWidget     *m_tab_widget;
+		State m_state;
+};
 
 } // namespace qdesigner_internal
 

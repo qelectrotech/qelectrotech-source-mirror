@@ -21,10 +21,10 @@
 #include "propertieseditorfactory.h"
 
 /**
- * @brief DiagramPropertiesEditorDockWidget::DiagramPropertiesEditorDockWidget
- * Constructor
- * @param parent : parent widget
- */
+	@brief DiagramPropertiesEditorDockWidget::DiagramPropertiesEditorDockWidget
+	Constructor
+	@param parent : parent widget
+*/
 DiagramPropertiesEditorDockWidget::DiagramPropertiesEditorDockWidget(QWidget *parent) :
 	PropertiesEditorDockWidget(parent),
 	m_diagram(nullptr),
@@ -32,13 +32,13 @@ DiagramPropertiesEditorDockWidget::DiagramPropertiesEditorDockWidget(QWidget *pa
 {}
 
 /**
- * @brief DiagramPropertiesEditorDockWidget::setDiagram
- * Set the diagram to edit the selection.
- * Connect the diagram signal selectionChanged() to this slot selectionChanged();
- * If diagram = nullptr, we just disconnect all signal and remove editor.
- * @param diagram
- * @param diagram
- */
+	@brief DiagramPropertiesEditorDockWidget::setDiagram
+	Set the diagram to edit the selection.
+	Connect the diagram signal selectionChanged() to this slot selectionChanged();
+	If diagram = nullptr, we just disconnect all signal and remove editor.
+	@param diagram
+	@param diagram
+*/
 void DiagramPropertiesEditorDockWidget::setDiagram(Diagram *diagram)
 {
 	if (m_diagram == diagram) return;
@@ -65,10 +65,10 @@ void DiagramPropertiesEditorDockWidget::setDiagram(Diagram *diagram)
 }
 
 /**
- * @brief DiagramPropertiesEditorDockWidget::selectionChanged
- * The current selection of diagram was changed.
- * We fill the dock with the appropriate ElementPropertiesWidget of the current selection.
- */
+	@brief DiagramPropertiesEditorDockWidget::selectionChanged
+	The current selection of diagram was changed.
+	We fill the dock with the appropriate ElementPropertiesWidget of the current selection.
+*/
 void DiagramPropertiesEditorDockWidget::selectionChanged()
 {
 	if (!m_diagram) {
@@ -92,9 +92,9 @@ void DiagramPropertiesEditorDockWidget::selectionChanged()
 }
 
 /**
- * @brief DiagramPropertiesEditorDockWidget::diagramWasDeleted
- * Remove current editor and set m_diagram to nullptr.
- */
+	@brief DiagramPropertiesEditorDockWidget::diagramWasDeleted
+	Remove current editor and set m_diagram to nullptr.
+*/
 void DiagramPropertiesEditorDockWidget::diagramWasDeleted()
 {
 	m_diagram = nullptr;

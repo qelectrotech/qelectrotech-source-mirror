@@ -27,9 +27,9 @@ namespace Ui {
 }
 
 /**
- * @brief The NameListDialog class
- * Provide a dialog for let user define localized string;
- */
+	@brief The NameListDialog class
+	Provide a dialog for let user define localized string;
+*/
 class NameListDialog : public QDialog
 {
 	Q_OBJECT

@@ -19,13 +19,13 @@
 #include <QPropertyAnimation>
 
 /**
- * @brief QPropertyUndoCommand::QPropertyUndoCommand
- * Default constructor with old and new value
- * This command don't take ownership of @object
- * @param object
- * @param old_value
- * @param new_value
- */
+	@brief QPropertyUndoCommand::QPropertyUndoCommand
+	Default constructor with old and new value
+	This command don't take ownership of @object
+	@param object
+	@param old_value
+	@param new_value
+*/
 QPropertyUndoCommand::QPropertyUndoCommand(QObject *object, const char *property_name, const QVariant &old_value, const QVariant &new_value, QUndoCommand *parent) :
 	QUndoCommand(parent),
 	m_object(object),
@@ -35,14 +35,14 @@ QPropertyUndoCommand::QPropertyUndoCommand(QObject *object, const char *property
 {}
 
 /**
- * @brief QPropertyUndoCommand::QPropertyUndoCommand
- * Default constructor with old value.
- * Call setNewValue to setup the new value of the edited QObject
- * This command don't take ownership of @object
- * @param object
- * @param old_value
- * @param parent
- */
+	@brief QPropertyUndoCommand::QPropertyUndoCommand
+	Default constructor with old value.
+	Call setNewValue to setup the new value of the edited QObject
+	This command don't take ownership of @object
+	@param object
+	@param old_value
+	@param parent
+*/
 QPropertyUndoCommand::QPropertyUndoCommand(QObject *object, const char *property_name, const QVariant &old_value, QUndoCommand *parent) :
 	QUndoCommand(parent),
 	m_object(object),
@@ -62,29 +62,29 @@ QPropertyUndoCommand::QPropertyUndoCommand(const QPropertyUndoCommand *other)
 }
 
 /**
- * @brief QPropertyUndoCommand::setNewValue
- * Set the new value of the property (set with redo) to @new_value
- * @param new_value
- */
+	@brief QPropertyUndoCommand::setNewValue
+	Set the new value of the property (set with redo) to @new_value
+	@param new_value
+*/
 void QPropertyUndoCommand::setNewValue(const QVariant &new_value) {
 	m_new_value = new_value;
 }
 
 /**
- * @brief QPropertyUndoCommand::enableAnimation
- * True to enable animation
- * @param animate
- */
+	@brief QPropertyUndoCommand::enableAnimation
+	True to enable animation
+	@param animate
+*/
 void QPropertyUndoCommand::enableAnimation (bool animate) {
 	m_animate = animate;
 }
 
 /**
- * @brief QPropertyUndoCommand::setAnimated
- * @param animate = true for animate this undo
- * @param first_time = if true, the first animation is done at the first call of redo  
- * if false, the first animation is done at the second call of redo.
- */
+	@brief QPropertyUndoCommand::setAnimated
+	@param animate = true for animate this undo
+	@param first_time = if true, the first animation is done at the first call of redo  
+	if false, the first animation is done at the second call of redo.
+*/
 void QPropertyUndoCommand::setAnimated(bool animate, bool first_time)
 {
 	m_animate = animate;
@@ -92,11 +92,11 @@ void QPropertyUndoCommand::setAnimated(bool animate, bool first_time)
 }
 
 /**
- * @brief QPropertyUndoCommand::mergeWith
- * Try to merge this command with other command
- * @param other
- * @return true if was merged, else false
- */
+	@brief QPropertyUndoCommand::mergeWith
+	Try to merge this command with other command
+	@param other
+	@return true if was merged, else false
+*/
 bool QPropertyUndoCommand::mergeWith(const QUndoCommand *other)
 {
 	if (id() != other->id() || other->childCount()) return false;
@@ -107,9 +107,9 @@ bool QPropertyUndoCommand::mergeWith(const QUndoCommand *other)
 }
 
 /**
- * @brief QPropertyUndoCommand::redo
- * Redo this command
- */
+	@brief QPropertyUndoCommand::redo
+	Redo this command
+*/
 void QPropertyUndoCommand::redo()
 {
 	if (m_object->property(m_property_name) != m_new_value)
@@ -132,9 +132,9 @@ void QPropertyUndoCommand::redo()
 }
 
 /**
- * @brief QPropertyUndoCommand::undo
- * Undo this command
- */
+	@brief QPropertyUndoCommand::undo
+	Undo this command
+*/
 void QPropertyUndoCommand::undo()
 {
 	if (m_object->property(m_property_name) != m_old_value)

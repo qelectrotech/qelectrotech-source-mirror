@@ -22,9 +22,9 @@
 #include <QStringList>
 
 /**
- * @brief The XRefProperties class
- * this class store properties used by XrefItem
- */
+	@brief The XRefProperties class
+	this class store properties used by XrefItem
+*/
 class XRefProperties : public PropertiesInterface
 {
 	public:
@@ -42,8 +42,8 @@ class XRefProperties : public PropertiesInterface
 
 	void toSettings	  (QSettings &settings, const QString = QString()) const override;
 	void fromSettings (const QSettings &settings, const QString = QString()) override;
-    QDomElement toXml		  (QDomDocument &xml_document) const override;
-    bool fromXml(const QDomElement &xml_element) override;
+	QDomElement toXml		  (QDomDocument &xml_document) const override;
+	bool fromXml(const QDomElement &xml_element) override;
 
 	static QHash<QString, XRefProperties> defaultProperties();
 
@@ -73,7 +73,7 @@ class XRefProperties : public PropertiesInterface
 	void setOffset(const int offset) {m_offset = offset;}
 	int offset() const				 {return m_offset;}
 
-    void setKey(QString& key) {m_key = key;}
+	void setKey(QString& key) {m_key = key;}
 
 	private:
 	bool m_show_power_ctc;
@@ -85,7 +85,7 @@ class XRefProperties : public PropertiesInterface
 	QString m_master_label;
 	QString m_slave_label;
 	int     m_offset;
-    QString m_key;
+	QString m_key;
 };
 
 #endif // XREFPROPERTIES_H

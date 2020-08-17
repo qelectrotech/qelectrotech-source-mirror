@@ -24,8 +24,9 @@ class NumStrategy;
 class Diagram;
 
 /**
- * this class provide methods to handle content of NumerotationContext.
- */
+	@brief The NumerotationContextCommands class
+	this class provide methods to handle content of NumerotationContext.
+*/
 class NumerotationContextCommands
 {
 	public:

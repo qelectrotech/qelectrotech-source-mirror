@@ -29,12 +29,12 @@ class QETProject;
 class Diagram;
 
 /**
- * @brief The projectDataBase class
- * This class wrap a sqlite data base where you can find several thing about
- * the content of a project.
+	@brief The projectDataBase class
+	This class wrap a sqlite data base where you can find several thing about
+	the content of a project.
  *
- * NOTE this class is still in developement.
- */
+	@note this class is still in developement.
+*/
 class projectDataBase : public QObject
 {
 	Q_OBJECT

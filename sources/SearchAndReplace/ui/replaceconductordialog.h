@@ -27,9 +27,9 @@ namespace Ui {
 }
 
 /**
- * @brief The ReplaceConductorDialog class
- * A Qdialog to edit a conductor properties, use for the search and replace feature of QElectrotech.
- */
+	@brief The ReplaceConductorDialog class
+	A Qdialog to edit a conductor properties, use for the search and replace feature of QElectrotech.
+*/
 class ReplaceConductorDialog : public QDialog
 {
 	Q_OBJECT

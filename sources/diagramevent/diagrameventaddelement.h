@@ -24,10 +24,10 @@
 class Element;
 
 /**
- * @brief The DiagramEventAddElement class
- * This diagram event add a new element, for each left click button at the position of click.
- * Space key rotate current element by 90°, right click button finish this event.
- */
+	@brief The DiagramEventAddElement class
+	This diagram event add a new element, for each left click button at the position of click.
+	Space key rotate current element by 90°, right click button finish this event.
+*/
 class DiagramEventAddElement : public DiagramEventInterface
 {
 		Q_OBJECT

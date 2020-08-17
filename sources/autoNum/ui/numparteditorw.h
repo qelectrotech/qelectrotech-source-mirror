@@ -26,7 +26,7 @@
  *This class represent a single part num widget. By this widget, we can define and edit
  *how the num auto must work .
  *This widget is called by selectautonumw.
- */
+*/
 namespace Ui {
 	class NumPartEditorW;
 }

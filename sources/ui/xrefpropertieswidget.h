@@ -26,9 +26,9 @@ namespace Ui {
 }
 
 /**
- * @brief The XRefPropertiesWidget class
- * This class provide a widget to edit the XRefProperties
- */
+	@brief The XRefPropertiesWidget class
+	This class provide a widget to edit the XRefProperties
+*/
 class XRefPropertiesWidget : public QWidget
 {
 	Q_OBJECT

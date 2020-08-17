@@ -25,8 +25,8 @@
 #include "assignvariables.h"
 
 /**
- * Constructor
- */
+	Constructor
+*/
 SelectAutonumW::SelectAutonumW(int type, QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::SelectAutonumW),
@@ -72,17 +72,17 @@ SelectAutonumW::SelectAutonumW(const NumerotationContext &context, int type, QWi
 }
 
 /**
- * Destructor
- */
+	Destructor
+*/
 SelectAutonumW::~SelectAutonumW()
 {
 	delete ui;
 }
 
 /**
- * @brief SelectAutonumW::setCurrentContext
- * build the context of current diagram selected in the @diagram_chooser QcomboBox
- */
+	@brief SelectAutonumW::setCurrentContext
+	build the context of current diagram selected in the @diagram_chooser QcomboBox
+*/
 void SelectAutonumW::setContext(const NumerotationContext &context) {
 	m_context = context;
 
@@ -109,9 +109,9 @@ void SelectAutonumW::setContext(const NumerotationContext &context) {
 }
 
 /**
- * @brief SelectAutonumW::toNumContext
- * @return the content to @num_part_list to NumerotationContext
- */
+	@brief SelectAutonumW::toNumContext
+	@return the content to @num_part_list to NumerotationContext
+*/
 NumerotationContext SelectAutonumW::toNumContext() const {
 	NumerotationContext nc;
 	foreach (NumPartEditorW *npew, num_part_list_) nc << npew -> toNumContext();
@@ -119,9 +119,9 @@ NumerotationContext SelectAutonumW::toNumContext() const {
 }
 
 /**
- * @brief SelectAutonumW::on_add_button_clicked
+	@brief SelectAutonumW::on_add_button_clicked
  *	Action on add_button, add a @NumPartEditor
- */
+*/
 void SelectAutonumW::on_add_button_clicked()
 {
 	applyEnable(false);
@@ -133,9 +133,9 @@ void SelectAutonumW::on_add_button_clicked()
 }
 
 /**
- * @brief SelectAutonumW::on_remove_button_clicked
+	@brief SelectAutonumW::on_remove_button_clicked
  *	Action on remove button, remove the last @NumPartEditor
- */
+*/
 void SelectAutonumW::on_remove_button_clicked() {
 	//remove if @num_part_list contains more than one item
 	if (num_part_list_.size() > 1) {
@@ -150,9 +150,9 @@ void SelectAutonumW::on_remove_button_clicked() {
 }
 
 /**
- * @brief SelectAutonumW::formula
- * @return autonumbering widget formula
- */
+	@brief SelectAutonumW::formula
+	@return autonumbering widget formula
+*/
 QString SelectAutonumW::formula()
 {
 	if (m_edited_type == 0)
@@ -169,9 +169,9 @@ QComboBox *SelectAutonumW::contextComboBox() const
 }
 
 /**
- * @brief SelectAutonumW::on_buttonBox_clicked
- * Action on @buttonBox clicked
- */
+	@brief SelectAutonumW::on_buttonBox_clicked
+	Action on @buttonBox clicked
+*/
 void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button) {
 	//transform button to int
 	int answer = ui -> buttonBox -> buttonRole(button);
@@ -233,9 +233,9 @@ void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button) {
 }
 
 /**
- * @brief SelectAutonumW::applyEnable
- * enable/disable the apply button
- */
+	@brief SelectAutonumW::applyEnable
+	enable/disable the apply button
+*/
 void SelectAutonumW::applyEnable(bool b) {
 	if (b){
 		bool valid= true;
@@ -252,9 +252,9 @@ void SelectAutonumW::applyEnable(bool b) {
 }
 
 /**
- * @brief SelectAutonumW::contextToFormula
- * Apply formula to ElementAutonumbering Widget
- */
+	@brief SelectAutonumW::contextToFormula
+	Apply formula to ElementAutonumbering Widget
+*/
 void SelectAutonumW::contextToFormula()
 {
 	FormulaAutonumberingW* m_faw = nullptr;
@@ -271,9 +271,9 @@ void SelectAutonumW::contextToFormula()
 }
 
 /**
- * @brief SelectAutonumW::on_m_next_pb_clicked
- * Increase NumerotationContext
- */
+	@brief SelectAutonumW::on_m_next_pb_clicked
+	Increase NumerotationContext
+*/
 void SelectAutonumW::on_m_next_pb_clicked()
 {
 	NumerotationContextCommands ncc (toNumContext());
@@ -282,9 +282,9 @@ void SelectAutonumW::on_m_next_pb_clicked()
 }
 
 /**
- * @brief SelectAutonumW::on_m_previous_pb_clicked
- * Decrease NumerotationContext
- */
+	@brief SelectAutonumW::on_m_previous_pb_clicked
+	Decrease NumerotationContext
+*/
 void SelectAutonumW::on_m_previous_pb_clicked()
 {
 	NumerotationContextCommands ncc (toNumContext());

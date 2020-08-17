@@ -378,14 +378,14 @@ long Createdxf::RGBcodeTable[255]{
 };
 
 /**
- * @brief Createdxf::getcolorCode
- * This function returns the ACI color which is the "nearest" color to
- * the color defined by the red, green and blue (RGB) values passed
- * in argument.
- * @param red
- * @param green
- * @param blue
- */
+	@brief Createdxf::getcolorCode
+	This function returns the ACI color which is the "nearest" color to
+	the color defined by the red, green and blue (RGB) values passed
+	in argument.
+	@param red
+	@param green
+	@param blue
+*/
 int Createdxf::getcolorCode (const long red, const long green, const long blue)
 {
 	long acirgb, r,g,b;
@@ -409,12 +409,12 @@ int Createdxf::getcolorCode (const long red, const long green, const long blue)
 }
 
 /**
- * @brief Createdxf::drawLine
- * Conveniance function to draw line
- * @param filepath
- * @param line
- * @param colorcode
- */
+	@brief Createdxf::drawLine
+	Conveniance function to draw line
+	@param filepath
+	@param line
+	@param colorcode
+*/
 void Createdxf::drawLine(const QString &filepath, const QLineF &line, const int &colorcode) {
 	drawLine(filepath, line.p1().x() * xScale,
 			 sheetHeight - (line.p1().y() * yScale),
@@ -547,12 +547,12 @@ void Createdxf::drawArcEllipse(const QString &file_path, qreal x, qreal y, qreal
 }
 
 /**
- * @brief Createdxf::drawEllipse
- * Conveniance function for draw ellipse
- * @param filepath
- * @param rect
- * @param colorcode
- */
+	@brief Createdxf::drawEllipse
+	Conveniance function for draw ellipse
+	@param filepath
+	@param rect
+	@param colorcode
+*/
 void Createdxf::drawEllipse(const QString &filepath, const QRectF &rect, const int &colorcode) {
 	drawArcEllipse(filepath, rect.topLeft().x() * xScale,
 				   sheetHeight - (rect.topLeft().y() * yScale),
@@ -653,12 +653,12 @@ void Createdxf::drawRectangle (const QString &fileName, double x1, double y1, do
 }
 
 /**
- * @brief Createdxf::drawRectangle
- * Conveniance function for draw rectangle
- * @param filepath
- * @param rect
- * @param color
- */
+	@brief Createdxf::drawRectangle
+	Conveniance function for draw rectangle
+	@param filepath
+	@param rect
+	@param color
+*/
 void Createdxf::drawRectangle(const QString &filepath, const QRectF &rect, const int &colorcode) {
 	drawRectangle(filepath, rect.bottomLeft().x() * xScale,
 				  sheetHeight - (rect.bottomLeft().y() * yScale),

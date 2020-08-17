@@ -47,9 +47,9 @@ class PartTerminal : public CustomElementGraphicPart {
 	public:
 		enum { Type = UserType + 1106 };
 			/**
-			 * Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a PartTerminal.
-			 * @return the QGraphicsItem type
-			 */
+				Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a PartTerminal.
+				@return the QGraphicsItem type
+			*/
 		int type() const override { return Type; }
 		QString name() const override { return d -> m_name; }
 		QString xmlName() const override { return(QString("terminal")); }

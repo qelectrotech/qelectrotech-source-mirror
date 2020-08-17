@@ -25,11 +25,11 @@
 #include "changetitleblockcommand.h"
 
 /**
- * @brief DiagramPropertiesDialog::DiagramPropertiesDialog
- * Deafult constructor
- * @param diagram : diagram to edit properties
- * @param parent : parent widget
- */
+	@brief DiagramPropertiesDialog::DiagramPropertiesDialog
+	Deafult constructor
+	@param diagram : diagram to edit properties
+	@param parent : parent widget
+*/
 DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *parent) :
 	QDialog (parent),
 	m_diagram (diagram)
@@ -46,7 +46,7 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 	setWindowFlags(Qt::Sheet);
 #endif
 
-    setWindowTitle(tr("Propriétés du folio", "window title"));
+	setWindowTitle(tr("Propriétés du folio", "window title"));
 
 	//Border widget
 	BorderPropertiesWidget *border_infos = new BorderPropertiesWidget(border, this);
@@ -121,19 +121,19 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 }
 
 /**
- * @brief DiagramPropertiesDialog::diagramPropertiesDialog
- * Static method to get a DiagramPropertiesDialog.
- * @param diagram : diagram to edit properties
- * @param parent : parent widget
- */
+	@brief DiagramPropertiesDialog::diagramPropertiesDialog
+	Static method to get a DiagramPropertiesDialog.
+	@param diagram : diagram to edit properties
+	@param parent : parent widget
+*/
 void DiagramPropertiesDialog::diagramPropertiesDialog(Diagram *diagram, QWidget *parent) {
 	DiagramPropertiesDialog dialog(diagram, parent);
 }
 
 /**
- * @brief DiagramPropertiesDialog::editAutonum
- * Open conductor autonum editor
- */
+	@brief DiagramPropertiesDialog::editAutonum
+	Open conductor autonum editor
+*/
 void DiagramPropertiesDialog::editAutonum()
 {
 	ProjectPropertiesDialog ppd (m_diagram->project(), this);
@@ -144,12 +144,12 @@ void DiagramPropertiesDialog::editAutonum()
 }
 
 /**
- * @brief DiagramPropertiesDialog::editAutonum
- * Open folio autonum editor
- */
+	@brief DiagramPropertiesDialog::editAutonum
+	Open folio autonum editor
+*/
 void DiagramPropertiesDialog::editAutoFolioNum () {
-    ProjectPropertiesDialog ppd (m_diagram->project(), this);
-    ppd.setCurrentPage(ProjectPropertiesDialog::Autonum);
-    ppd.changeToFolio();
-    ppd.exec();
+	ProjectPropertiesDialog ppd (m_diagram->project(), this);
+	ppd.setCurrentPage(ProjectPropertiesDialog::Autonum);
+	ppd.changeToFolio();
+	ppd.exec();
 }

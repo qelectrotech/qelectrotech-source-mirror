@@ -22,20 +22,20 @@
 #include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 
 /**
- * @brief PartEllipse::PartEllipse
- * Constructor
- * @param editor : QETElementEditor of this part
- * @param parent : parent item
- */
+	@brief PartEllipse::PartEllipse
+	Constructor
+	@param editor : QETElementEditor of this part
+	@param parent : parent item
+*/
 PartEllipse::PartEllipse(QETElementEditor *editor, QGraphicsItem *parent) :
 	AbstractPartEllipse(editor, parent),
 	m_undo_command(nullptr)
 {}
 
 /**
- * @brief PartEllipse::~PartEllipse
- * Destructor
- */
+	@brief PartEllipse::~PartEllipse
+	Destructor
+*/
 PartEllipse::~PartEllipse()
 {
 	if(m_undo_command) delete m_undo_command;
@@ -43,12 +43,12 @@ PartEllipse::~PartEllipse()
 }
 
 /**
- * @brief PartEllipse::paint
- * Draw this ellpise
- * @param painter
- * @param options
- * @param widget
- */
+	@brief PartEllipse::paint
+	Draw this ellpise
+	@param painter
+	@param options
+	@param widget
+*/
 void PartEllipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *widget)
 {
 	Q_UNUSED(widget);
@@ -71,11 +71,11 @@ void PartEllipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 }
 
 /**
- * @brief PartEllipse::toXml
- * Export this ellipse in xml
- * @param xml_document : Xml document to use for create the xml element.
- * @return : an xml element that describe this ellipse
- */
+	@brief PartEllipse::toXml
+	Export this ellipse in xml
+	@param xml_document : Xml document to use for create the xml element.
+	@return : an xml element that describe this ellipse
+*/
 const QDomElement PartEllipse::toXml(QDomDocument &xml_document) const
 {
 	QDomElement xml_element;
@@ -101,10 +101,10 @@ const QDomElement PartEllipse::toXml(QDomDocument &xml_document) const
 }
 
 /**
- * @brief PartEllipse::fromXml
- * Import the properties of this ellipse from a xml element.
- * @param qde : Xml document to use.
- */
+	@brief PartEllipse::fromXml
+	Import the properties of this ellipse from a xml element.
+	@param qde : Xml document to use.
+*/
 void PartEllipse::fromXml(const QDomElement &qde)
 {
 	stylesFromXml(qde);
@@ -124,9 +124,9 @@ void PartEllipse::fromXml(const QDomElement &qde)
 }
 
 /**
- * @brief PartEllipse::shape
- * @return the shape of this item
- */
+	@brief PartEllipse::shape
+	@return the shape of this item
+*/
 QPainterPath PartEllipse::shape() const
 {
 	QPainterPath shape;
@@ -151,10 +151,10 @@ QPainterPath PartEllipse::shadowShape() const
 }
 
 /**
- * @brief PartEllipse::mouseReleaseEvent
- * Handle mouse release event
- * @param event
- */
+	@brief PartEllipse::mouseReleaseEvent
+	Handle mouse release event
+	@param event
+*/
 void PartEllipse::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (event->button() == Qt::LeftButton && event->buttonDownPos(Qt::LeftButton) == event->pos())
@@ -164,11 +164,11 @@ void PartEllipse::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief PartEllipse::itemChange
- * @param change
- * @param value
- * @return 
- */
+	@brief PartEllipse::itemChange
+	@param change
+	@param value
+	@return
+*/
 QVariant PartEllipse::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value)
 {
 	if (change == ItemSelectedHasChanged && scene())
@@ -204,11 +204,11 @@ QVariant PartEllipse::itemChange(QGraphicsItem::GraphicsItemChange change, const
 }
 
 /**
- * @brief PartEllipse::sceneEventFilter
- * @param watched
- * @param event
- * @return 
- */
+	@brief PartEllipse::sceneEventFilter
+	@param watched
+	@param event
+	@return
+*/
 bool PartEllipse::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 {
 		//Watched must be an handler
@@ -260,8 +260,8 @@ void PartEllipse::switchResizeMode()
 }
 
 /**
- * @brief PartEllipse::adjusteHandlerPos
- */
+	@brief PartEllipse::adjusteHandlerPos
+*/
 void PartEllipse::adjusteHandlerPos()
 {
 	if (m_handler_vector.isEmpty())
@@ -278,10 +278,10 @@ void PartEllipse::adjusteHandlerPos()
 }
 
 /**
- * @brief PartEllipse::handlerMousePressEvent
- * @param qghi
- * @param event
- */
+	@brief PartEllipse::handlerMousePressEvent
+	@param qghi
+	@param event
+*/
 void PartEllipse::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(qghi);
@@ -294,10 +294,10 @@ void PartEllipse::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphics
 }
 
 /**
- * @brief PartEllipse::handlerMouseMoveEvent
- * @param qghi
- * @param event
- */
+	@brief PartEllipse::handlerMouseMoveEvent
+	@param qghi
+	@param event
+*/
 void PartEllipse::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(qghi);
@@ -316,10 +316,10 @@ void PartEllipse::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsS
 }
 
 /**
- * @brief PartEllipse::handlerMouseReleaseEvent
- * @param qghi
- * @param event
- */
+	@brief PartEllipse::handlerMouseReleaseEvent
+	@param qghi
+	@param event
+*/
 void PartEllipse::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(qghi);
@@ -332,9 +332,9 @@ void PartEllipse::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphi
 }
 
 /**
- * @brief PartEllipse::sceneSelectionChanged
- * When the scene selection change, if there are several primitive selected, we remove the handler of this item
- */
+	@brief PartEllipse::sceneSelectionChanged
+	When the scene selection change, if there are several primitive selected, we remove the handler of this item
+*/
 void PartEllipse::sceneSelectionChanged()
 {
 	if (this->isSelected() && scene()->selectedItems().size() == 1)
@@ -344,9 +344,9 @@ void PartEllipse::sceneSelectionChanged()
 }
 
 /**
- * @brief PartEllipse::addHandler
- * Add handlers for this item
- */
+	@brief PartEllipse::addHandler
+	Add handlers for this item
+*/
 void PartEllipse::addHandler()
 {
 	if (m_handler_vector.isEmpty() && scene())
@@ -368,9 +368,9 @@ void PartEllipse::addHandler()
 }
 
 /**
- * @brief PartEllipse::removeHandler
- * Remove the handlers of this item
- */
+	@brief PartEllipse::removeHandler
+	Remove the handlers of this item
+*/
 void PartEllipse::removeHandler()
 {
 	if (!m_handler_vector.isEmpty())

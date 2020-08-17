@@ -605,13 +605,13 @@ void BorderTitleBlock::draw(QPainter *painter)
 }
 
 /**
- * @brief BorderTitleBlock::drawDxf
- * @param width
- * @param height
- * @param keep_aspect_ratio
- * @param file_path
- * @param color
- */
+	@brief BorderTitleBlock::drawDxf
+	@param width
+	@param height
+	@param keep_aspect_ratio
+	@param file_path
+	@param color
+*/
 void BorderTitleBlock::drawDxf(
 		int width,
 		int height,

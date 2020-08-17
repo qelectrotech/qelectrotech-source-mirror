@@ -31,10 +31,10 @@ class Conductor;
 
 
 /**
- * @brief The ConductorCreator class
- * This class create one or several or several conductors
- * in a given context
- */
+	@brief The ConductorCreator class
+	This class create one or several or several conductors
+	in a given context
+*/
 class ConductorCreator
 {
 	public:

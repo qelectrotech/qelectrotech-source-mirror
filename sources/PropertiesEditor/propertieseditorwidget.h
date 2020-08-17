@@ -23,10 +23,10 @@
 class QUndoCommand;
 
 /**
- * @brief The PropertiesEditorWidget class
- * This class extend QWidget method for have common way
- * to edit propertie.
- */
+	@brief The PropertiesEditorWidget class
+	This class extend QWidget method for have common way
+	to edit propertie.
+*/
 class PropertiesEditorWidget : public QWidget
 {
 		Q_OBJECT

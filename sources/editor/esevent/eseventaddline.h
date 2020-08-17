@@ -25,9 +25,9 @@ class PartLine;
 class QGraphicsSceneMouseEvent;
 
 /**
- * @brief The ESEventAddLine class
- * This ESEvent manage creation of line in a ElementScene
- */
+	@brief The ESEventAddLine class
+	This ESEvent manage creation of line in a ElementScene
+*/
 class ESEventAddLine : public ESEventInterface
 {
 	public:

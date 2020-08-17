@@ -22,16 +22,16 @@
 #include "qetproject.h"
 
 /**
- * @brief XmlElementCollection::XmlElementCollection
- * Build an empty collection.
- * The collection start by :
+	@brief XmlElementCollection::XmlElementCollection
+	Build an empty collection.
+	The collection start by :
  *		<collection>
  *			<category name="import>
  *			</category>
  *		</collection>
- * All elements and category are stored as child of <category name="import>
- * @param project : the project of this collection
- */
+	All elements and category are stored as child of <category name="import>
+	@param project : the project of this collection
+*/
 XmlElementCollection::XmlElementCollection(QETProject *project) :
 	QObject(project),
 	m_project(project)
@@ -71,11 +71,11 @@ XmlElementCollection::XmlElementCollection(QETProject *project) :
 }
 
 /**
- * @brief XmlElementCollection::XmlElementCollection
- * Constructor with an collection. The tagName of @dom_element must be "collection"
- * @param dom_element -the collection in a dom_element (the dom element in cloned)
- * @param project : the project of this collection
- */
+	@brief XmlElementCollection::XmlElementCollection
+	Constructor with an collection. The tagName of @dom_element must be "collection"
+	@param dom_element -the collection in a dom_element (the dom element in cloned)
+	@param project : the project of this collection
+*/
 XmlElementCollection::XmlElementCollection(const QDomElement &dom_element, QETProject *project) :
 	QObject(project),
 	m_project(project)
@@ -87,29 +87,29 @@ XmlElementCollection::XmlElementCollection(const QDomElement &dom_element, QETPr
 }
 
 /**
- * @brief XmlElementCollection::root
- * The root is the first DOM-Element the xml collection, the tag name
- * of the dom element is : collection
- * @return The root QDomElement of the collection
- */
+	@brief XmlElementCollection::root
+	The root is the first DOM-Element the xml collection, the tag name
+	of the dom element is : collection
+	@return The root QDomElement of the collection
+*/
 QDomElement XmlElementCollection::root() const {
 	return m_dom_document.documentElement();
 }
 
 /**
- * @brief XmlElementCollection::importCategory
- * @return The QDomElement import (the begining of a xml collection) or
- * a null QDomElement if doesn't exist.
- */
+	@brief XmlElementCollection::importCategory
+	@return The QDomElement import (the begining of a xml collection) or
+	a null QDomElement if doesn't exist.
+*/
 QDomElement XmlElementCollection::importCategory() const {
 	return root().firstChildElement("category");
 }
 
 /**
- * @brief XmlElementCollection::childs
- * @param parent_element
- * @return All childs element in the @parent_element tree
- */
+	@brief XmlElementCollection::childs
+	@param parent_element
+	@return All childs element in the @parent_element tree
+*/
 QDomNodeList XmlElementCollection::childs(const QDomElement &parent_element) const
 {
 	if (parent_element.ownerDocument() != m_dom_document) return QDomNodeList();
@@ -117,14 +117,14 @@ QDomNodeList XmlElementCollection::childs(const QDomElement &parent_element) con
 }
 
 /**
- * @brief XmlElementCollection::child
- * If parent_element have child element with an attribute name = @child_name, return it, else return a null QDomElement.
- * Only search for element with tag-name "category" and "element" (if child_name end with ".elmt")
- * @param parent_element : the parent DomElement where we search for child.
- * @parent_element must be a child node of this XmlElementCollection.
- * @param child_name : name of child to search.
- * @return The child QDomElement or a null QDomElement if not found
- */
+	@brief XmlElementCollection::child
+	If parent_element have child element with an attribute name = @child_name, return it, else return a null QDomElement.
+	Only search for element with tag-name "category" and "element" (if child_name end with ".elmt")
+	@param parent_element : the parent DomElement where we search for child.
+	@parent_element must be a child node of this XmlElementCollection.
+	@param child_name : name of child to search.
+	@return The child QDomElement or a null QDomElement if not found
+*/
 QDomElement XmlElementCollection::child(const QDomElement &parent_element, const QString &child_name) const
 {
 	if (parent_element.ownerDocument() != m_dom_document) return QDomElement();
@@ -149,10 +149,10 @@ QDomElement XmlElementCollection::child(const QDomElement &parent_element, const
 }
 
 /**
- * @brief XmlElementCollection::child
- * @param path
- * @return the DomElement at path if exist, else return a null QDomElement
- */
+	@brief XmlElementCollection::child
+	@param path
+	@return the DomElement at path if exist, else return a null QDomElement
+*/
 QDomElement XmlElementCollection::child(const QString &path) const
 {
 	QStringList path_list = path.split("/");
@@ -173,10 +173,10 @@ QDomElement XmlElementCollection::child(const QString &path) const
 }
 
 /**
- * @brief XmlElementCollection::directories
- * @param parent_element
- * @return A list of directory stored in @parent_element
- */
+	@brief XmlElementCollection::directories
+	@param parent_element
+	@return A list of directory stored in @parent_element
+*/
 QList<QDomElement> XmlElementCollection::directories(const QDomElement &parent_element) const
 {
 	QList <QDomElement> directory_list;
@@ -194,10 +194,10 @@ QList<QDomElement> XmlElementCollection::directories(const QDomElement &parent_e
 }
 
 /**
- * @brief XmlElementCollection::directoriesNames
- * @param parent_element
- * @return a list of names for every child directories of @parent_element
- */
+	@brief XmlElementCollection::directoriesNames
+	@param parent_element
+	@return a list of names for every child directories of @parent_element
+*/
 QStringList XmlElementCollection::directoriesNames(const QDomElement &parent_element) const
 {
 	QList <QDomElement> childs = directories(parent_element);
@@ -214,10 +214,10 @@ QStringList XmlElementCollection::directoriesNames(const QDomElement &parent_ele
 }
 
 /**
- * @brief XmlElementCollection::elements
- * @param parent_element
- * @return A list of element stored in @parent_element
- */
+	@brief XmlElementCollection::elements
+	@param parent_element
+	@return A list of element stored in @parent_element
+*/
 QList<QDomElement> XmlElementCollection::elements(const QDomElement &parent_element) const
 {
 	QList <QDomElement> element_list;
@@ -235,10 +235,10 @@ QList<QDomElement> XmlElementCollection::elements(const QDomElement &parent_elem
 }
 
 /**
- * @brief XmlElementCollection::elementsNames
- * @param parent_element
- * @return A list of names fr every childs element of @parent_element
- */
+	@brief XmlElementCollection::elementsNames
+	@param parent_element
+	@return A list of names fr every childs element of @parent_element
+*/
 QStringList XmlElementCollection::elementsNames(const QDomElement &parent_element) const
 {
 	QList <QDomElement> childs = elements(parent_element);
@@ -255,11 +255,11 @@ QStringList XmlElementCollection::elementsNames(const QDomElement &parent_elemen
 }
 
 /**
- * @brief XmlElementCollection::element
- * @param path : path of the element in this collection
- * @return the QDomElement that represent the element at path @path
- * or a null QDomElement if not found or doesn't represent an element
- */
+	@brief XmlElementCollection::element
+	@param path : path of the element in this collection
+	@return the QDomElement that represent the element at path @path
+	or a null QDomElement if not found or doesn't represent an element
+*/
 QDomElement XmlElementCollection::element(const QString &path) const
 {
 	if (!path.endsWith(".elmt")) return QDomElement();
@@ -273,11 +273,11 @@ QDomElement XmlElementCollection::element(const QString &path) const
 }
 
 /**
- * @brief XmlElementCollection::directory
- * @param path : path of the directory in this collection
- * @return the QDomElement that represent the directory at path @path
- * or a null QDomElement if not found.
- */
+	@brief XmlElementCollection::directory
+	@param path : path of the directory in this collection
+	@return the QDomElement that represent the directory at path @path
+	or a null QDomElement if not found.
+*/
 QDomElement XmlElementCollection::directory(const QString &path) const
 {
 	QDomElement directory = child(path);
@@ -289,15 +289,15 @@ QDomElement XmlElementCollection::directory(const QString &path) const
 }
 
 /**
- * @brief XmlElementCollection::addElement
- * Add the element at location to this collection.
- * The element is copied in this collection in "import" dir with the same path, in other word
- * if the path is dir1/dir2/dir3/myElement.elmt, myElement is copied to this collection at the path : import/dir1/dir2/dir3/myElement.elmt
- * If the path doesn't exist, he was created.
- * If the element already exist, do nothing.
- * @param location, location of the element
- * @return the collection path of the added item or a null QString if element can't be added.
- */
+	@brief XmlElementCollection::addElement
+	Add the element at location to this collection.
+	The element is copied in this collection in "import" dir with the same path, in other word
+	if the path is dir1/dir2/dir3/myElement.elmt, myElement is copied to this collection at the path : import/dir1/dir2/dir3/myElement.elmt
+	If the path doesn't exist, he was created.
+	If the element already exist, do nothing.
+	@param location, location of the element
+	@return the collection path of the added item or a null QString if element can't be added.
+*/
 QString XmlElementCollection::addElement(ElementsLocation &location)
 {
 		//location must be an element and exist
@@ -423,15 +423,15 @@ QString XmlElementCollection::addElement(ElementsLocation &location)
 }
 
 /**
- * @brief XmlElementCollection::addElementDefinition
- * Add the élément defintion @xml_definition in the directory at path @dir_path with the name @elmt_name.
- * @param dir_path : the path of the directory where we must add the element.
- * The path must be an existing directory of this collection.
- * @param elmt_name : The name used to store the element (the name must end with .elmt, if not, .elmt will be append to @elmt_name)
- * @param xml_definition : The xml definition of the element.
- * The tag name of @xml_definition must be "definition".
- * @return True if the element is added with success.
- */
+	@brief XmlElementCollection::addElementDefinition
+	Add the élément defintion @xml_definition in the directory at path @dir_path with the name @elmt_name.
+	@param dir_path : the path of the directory where we must add the element.
+	The path must be an existing directory of this collection.
+	@param elmt_name : The name used to store the element (the name must end with .elmt, if not, .elmt will be append to @elmt_name)
+	@param xml_definition : The xml definition of the element.
+	The tag name of @xml_definition must be "definition".
+	@return True if the element is added with success.
+*/
 bool XmlElementCollection::addElementDefinition(const QString &dir_path, const QString &elmt_name, const QDomElement &xml_definition)
 {
 	QDomElement dom_dir = directory(dir_path);
@@ -461,12 +461,12 @@ bool XmlElementCollection::addElementDefinition(const QString &dir_path, const Q
 }
 
 /**
- * @brief XmlElementCollection::removeElement
- * Remove the element at path @path.
- * @param path
- * @return True if element is removed and emit the signal elementRemoved.
- * else false.
- */
+	@brief XmlElementCollection::removeElement
+	Remove the element at path @path.
+	@param path
+	@return True if element is removed and emit the signal elementRemoved.
+	else false.
+*/
 bool XmlElementCollection::removeElement(const QString& path)
 {
 	QDomElement elmt = element(path);
@@ -481,16 +481,16 @@ bool XmlElementCollection::removeElement(const QString& path)
 }
 
 /**
- * @brief XmlElementCollection::copy
- * Copy the content represented by source (an element or a directory) to destination.
- * Destination must be a directory of this collection.
- * If the destination already have an item at the same path of source, he will be replaced by source.
- * @param source : content to copy
- * @param destination : destination of the copy, must be a directory of this collection
- * @param rename : rename the copy with @rename else use the name of source
- * @param deep_copy : if true copy all childs of source (only if source is directory)
- * @return the ElementLocation that represent the copy, if copy failed return a null ElementLocation
- */
+	@brief XmlElementCollection::copy
+	Copy the content represented by source (an element or a directory) to destination.
+	Destination must be a directory of this collection.
+	If the destination already have an item at the same path of source, he will be replaced by source.
+	@param source : content to copy
+	@param destination : destination of the copy, must be a directory of this collection
+	@param rename : rename the copy with @rename else use the name of source
+	@param deep_copy : if true copy all childs of source (only if source is directory)
+	@return the ElementLocation that represent the copy, if copy failed return a null ElementLocation
+*/
 ElementsLocation XmlElementCollection::copy(ElementsLocation &source, ElementsLocation &destination, const QString& rename, bool deep_copy)
 {
 	if (!(source.exist() && destination.isDirectory() && destination.isProject() && destination.projectCollection() == this))
@@ -503,11 +503,11 @@ ElementsLocation XmlElementCollection::copy(ElementsLocation &source, ElementsLo
 }
 
 /**
- * @brief XmlElementCollection::exist
- * Return true if the path @path exist in this collection
- * @param path
- * @return
- */
+	@brief XmlElementCollection::exist
+	Return true if the path @path exist in this collection
+	@param path
+	@return
+*/
 bool XmlElementCollection::exist(const QString &path) const
 {
 	if (child(path).isNull())
@@ -517,14 +517,14 @@ bool XmlElementCollection::exist(const QString &path) const
 }
 
 /**
- * @brief XmlElementCollection::createDir
- * Create a child directorie at path @path with the name @name.
- * Emit directorieAdded if success.
- * @param path : path of parent diectorie
- * @param name : name of the directori to create.
- * @param name_list : translation of the directorie name.
- * @return true if creation success, if directorie already exist return true.
- */
+	@brief XmlElementCollection::createDir
+	Create a child directorie at path @path with the name @name.
+	Emit directorieAdded if success.
+	@param path : path of parent diectorie
+	@param name : name of the directori to create.
+	@param name_list : translation of the directorie name.
+	@return true if creation success, if directorie already exist return true.
+*/
 bool XmlElementCollection::createDir(const QString& path, const QString& name, const NamesList &name_list)
 {
 	QString new_dir_path = path + "/" + name;
@@ -551,12 +551,12 @@ bool XmlElementCollection::createDir(const QString& path, const QString& name, c
 }
 
 /**
- * @brief XmlElementCollection::removeDir
- * Remove the directory at path @path.
- * @param path
- * @return true if successfuly removed and emit directoryRemoved(QString),
- * else false.
- */
+	@brief XmlElementCollection::removeDir
+	Remove the directory at path @path.
+	@param path
+	@return true if successfuly removed and emit directoryRemoved(QString),
+	else false.
+*/
 bool XmlElementCollection::removeDir(const QString& path)
 {
 	QDomElement dir = directory(path);
@@ -569,14 +569,14 @@ bool XmlElementCollection::removeDir(const QString& path)
 }
 
 /**
- * @brief XmlElementCollection::elementsLocation
- * Return all locations stored in dom_element (element and directory).
- * If dom_element is null, return all location owned by this collection
- * dom_element must be a child of this collection.
- * @param dom_element : dom_element where we must to search location.
- * @param childs = if true return all childs location of dom_element, if false, only return the direct childs location of dom_element.
- * @return
- */
+	@brief XmlElementCollection::elementsLocation
+	Return all locations stored in dom_element (element and directory).
+	If dom_element is null, return all location owned by this collection
+	dom_element must be a child of this collection.
+	@param dom_element : dom_element where we must to search location.
+	@param childs = if true return all childs location of dom_element, if false, only return the direct childs location of dom_element.
+	@return
+*/
 QList<ElementsLocation> XmlElementCollection::elementsLocation(QDomElement dom_element, bool childs) const
 {
 	QList <ElementsLocation> location_list;
@@ -612,13 +612,13 @@ QList<ElementsLocation> XmlElementCollection::elementsLocation(QDomElement dom_e
 }
 
 /**
- * @brief XmlElementCollection::domToLocation
- * Return the element location who represent the xml element : dom_element
- * dom_element must be owned by this collection
- * @param dom_element : the dom_element of this collection that represent an element.
- * The tag name of dom_element must be "element"
- * @return the element location, location can be null if fail.
- */
+	@brief XmlElementCollection::domToLocation
+	Return the element location who represent the xml element : dom_element
+	dom_element must be owned by this collection
+	@param dom_element : the dom_element of this collection that represent an element.
+	The tag name of dom_element must be "element"
+	@return the element location, location can be null if fail.
+*/
 ElementsLocation XmlElementCollection::domToLocation(QDomElement dom_element) const
 {
 	if (dom_element.ownerDocument() == m_dom_document) {
@@ -638,9 +638,9 @@ ElementsLocation XmlElementCollection::domToLocation(QDomElement dom_element) co
 }
 
 /**
- * @brief XmlElementCollection::cleanUnusedElement
- * Remove elements in this collection which is not used in the owner project
- */
+	@brief XmlElementCollection::cleanUnusedElement
+	Remove elements in this collection which is not used in the owner project
+*/
 void XmlElementCollection::cleanUnusedElement()
 {
 	foreach (ElementsLocation loc, m_project->unusedElements())
@@ -648,9 +648,9 @@ void XmlElementCollection::cleanUnusedElement()
 }
 
 /**
- * @brief XmlElementCollection::cleanUnusedDirectory
- * Remove the empty directories of this collection
- */
+	@brief XmlElementCollection::cleanUnusedDirectory
+	Remove the empty directories of this collection
+*/
 void XmlElementCollection::cleanUnusedDirectory()
 {
 	QDomNodeList lst = importCategory().elementsByTagName("category");
@@ -666,15 +666,15 @@ void XmlElementCollection::cleanUnusedDirectory()
 }
 
 /**
- * @brief XmlElementCollection::copyDirectory
- * Copy the directory represented by source to destination.
- * if destination have a directory with the same name as source, then this directory is removed
- * @param source : directory to copy
- * @param destination : destination of the copy
- * @param rename : rename the copy with @rename else use the name of source
- * @param deep_copy :if true copy all childs of source
- * @return the ElementLocation that represent the copy, if copy failed return a null ElementLocation
- */
+	@brief XmlElementCollection::copyDirectory
+	Copy the directory represented by source to destination.
+	if destination have a directory with the same name as source, then this directory is removed
+	@param source : directory to copy
+	@param destination : destination of the copy
+	@param rename : rename the copy with @rename else use the name of source
+	@param deep_copy :if true copy all childs of source
+	@return the ElementLocation that represent the copy, if copy failed return a null ElementLocation
+*/
 ElementsLocation XmlElementCollection::copyDirectory(ElementsLocation &source, ElementsLocation &destination, const QString& rename, bool deep_copy)
 {
 	QString new_dir_name = rename.isEmpty() ? source.fileName() : rename;
@@ -754,14 +754,14 @@ ElementsLocation XmlElementCollection::copyDirectory(ElementsLocation &source, E
 }
 
 /**
- * @brief XmlElementCollection::copyElement
- * Copy the element represented by source to destination (must be a directory)
- * If element already exist in destination he will be replaced by the new.
- * @param source : element to copy
- * @param destination : destination of the copy
- * @param rename : rename the copy with @rename else use the name of source
- * @return The ElementsLocation of the copy
- */
+	@brief XmlElementCollection::copyElement
+	Copy the element represented by source to destination (must be a directory)
+	If element already exist in destination he will be replaced by the new.
+	@param source : element to copy
+	@param destination : destination of the copy
+	@param rename : rename the copy with @rename else use the name of source
+	@return The ElementsLocation of the copy
+*/
 ElementsLocation XmlElementCollection::copyElement(ElementsLocation &source, ElementsLocation &destination, const QString& rename)
 {
 	QString new_elmt_name = rename.isEmpty() ? source.fileName() : rename;

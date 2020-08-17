@@ -26,9 +26,9 @@ class ConductorTextItem;
 class QPropertyUndoCommand;
 
 /**
- * @brief The RotateSelectionCommand class
- * Rotate the selected items in the given diagram
- */
+	@brief The RotateSelectionCommand class
+	Rotate the selected items in the given diagram
+*/
 class RotateSelectionCommand : public QUndoCommand
 {
 	public:

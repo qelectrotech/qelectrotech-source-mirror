@@ -23,9 +23,9 @@
 #include "elementscene.h"
 
 /**
- * @brief ESEventAddText::ESEventAddText
- * @param scene
- */
+	@brief ESEventAddText::ESEventAddText
+	@param scene
+*/
 ESEventAddText::ESEventAddText(ElementScene *scene) :
 	ESEventInterface(scene)
 {
@@ -35,17 +35,17 @@ ESEventAddText::ESEventAddText(ElementScene *scene) :
 }
 
 /**
- * @brief ESEventAddText::~ESEventAddText
- */
+	@brief ESEventAddText::~ESEventAddText
+*/
 ESEventAddText::~ESEventAddText() {
 		delete m_text;
 }
 
 /**
- * @brief ESEventAddText::mouseMoveEvent
- * @param event
- * @return
- */
+	@brief ESEventAddText::mouseMoveEvent
+	@param event
+	@return
+*/
 bool ESEventAddText::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 	QPointF pos = m_scene -> snapToGrid(event -> scenePos());
 	updateHelpCross(pos);
@@ -54,10 +54,10 @@ bool ESEventAddText::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 }
 
 /**
- * @brief ESEventAddText::mouseReleaseEvent
- * @param event
- * @return
- */
+	@brief ESEventAddText::mouseReleaseEvent
+	@param event
+	@return
+*/
 bool ESEventAddText::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
 	if (event->button() == Qt::LeftButton) {
 		m_scene -> undoStack().push(new AddPartCommand(QObject::tr("Texte"), m_scene, m_text));

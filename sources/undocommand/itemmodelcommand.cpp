@@ -1,28 +1,28 @@
 /*
-        Copyright 2006-2020 QElectroTech Team
-        This file is part of QElectroTech.
+	Copyright 2006-2020 The QElectroTech Team
+	This file is part of QElectroTech.
 
-        QElectroTech is free software: you can redistribute it and/or modify
-        it under the terms of the GNU General Public License as published by
-        the Free Software Foundation, either version 2 of the License, or
-        (at your option) any later version.
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
 
-        QElectroTech is distributed in the hope that it will be useful,
-        but WITHOUT ANY WARRANTY; without even the implied warranty of
-        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-        GNU General Public License for more details.
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+	GNU General Public License for more details.
 
-        You should have received a copy of the GNU General Public License
-        along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "itemmodelcommand.h"
 
 /**
- * @brief ModelIndexCommand::ModelIndexCommand
- * @param model
- * @param index
- * @param parent
- */
+	@brief ModelIndexCommand::ModelIndexCommand
+	@param model
+	@param index
+	@param parent
+*/
 ModelIndexCommand::ModelIndexCommand(QAbstractItemModel *model, const QModelIndex &index, QUndoCommand *parent):
 	QUndoCommand(parent),
 	m_model(model),
@@ -30,10 +30,10 @@ ModelIndexCommand::ModelIndexCommand(QAbstractItemModel *model, const QModelInde
 {}
 
 /**
- * @brief ModelIndexCommand::setData
- * @param value
- * @param role
- */
+	@brief ModelIndexCommand::setData
+	@param value
+	@param role
+*/
 void ModelIndexCommand::setData(const QVariant &value, int role)
 {
 	m_new_value = value;
@@ -47,9 +47,9 @@ void ModelIndexCommand::setData(const QVariant &value, int role)
 }
 
 /**
- * @brief ModelIndexCommand::redo
- * Reimplemented from QUndoCommand
- */
+	@brief ModelIndexCommand::redo
+	Reimplemented from QUndoCommand
+*/
 void ModelIndexCommand::redo() {
 	if (m_model && m_index.isValid()) {
 		m_model->setData(m_index, m_new_value, m_role);
@@ -57,9 +57,9 @@ void ModelIndexCommand::redo() {
 }
 
 /**
- * @brief ModelIndexCommand::undo
- * Reimplemented from QUndoCommand
- */
+	@brief ModelIndexCommand::undo
+	Reimplemented from QUndoCommand
+*/
 void ModelIndexCommand::undo() {
 	if (m_model && m_index.isValid()) {
 		m_model->setData(m_index, m_old_value, m_role);
@@ -67,23 +67,23 @@ void ModelIndexCommand::undo() {
 }
 
 /**
- * @brief ModelHeaderDataCommand::ModelHeaderDataCommand
- * @param model
- * @param parent
- */
+	@brief ModelHeaderDataCommand::ModelHeaderDataCommand
+	@param model
+	@param parent
+*/
 ModelHeaderDataCommand::ModelHeaderDataCommand(QAbstractItemModel *model, QUndoCommand *parent) :
 	QUndoCommand(parent),
 	m_model(model)
 {}
 
 /**
- * @brief ModelHeaderDataCommand::setData
- * See QAbstractItemModel::setHeaderData
- * @param section
- * @param orientation
- * @param value
- * @param role
- */
+	@brief ModelHeaderDataCommand::setData
+	See QAbstractItemModel::setHeaderData
+	@param section
+	@param orientation
+	@param value
+	@param role
+*/
 void ModelHeaderDataCommand::setData(int section, Qt::Orientation orientation, const QVariant &value, int role)
 {
 	m_section = section;
@@ -98,9 +98,9 @@ void ModelHeaderDataCommand::setData(int section, Qt::Orientation orientation, c
 }
 
 /**
- * @brief ModelHeaderDataCommand::redo
- * Reimplemented from QUndoCommand
- */
+	@brief ModelHeaderDataCommand::redo
+	Reimplemented from QUndoCommand
+*/
 void ModelHeaderDataCommand::redo()
 {
 	if (m_model) {
@@ -109,9 +109,9 @@ void ModelHeaderDataCommand::redo()
 }
 
 /**
- * @brief ModelHeaderDataCommand::undo
- * Reimplemented from QUndoCommand
- */
+	@brief ModelHeaderDataCommand::undo
+	Reimplemented from QUndoCommand
+*/
 void ModelHeaderDataCommand::undo()
 {
 	if (m_model) {

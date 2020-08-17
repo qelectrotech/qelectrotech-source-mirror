@@ -19,10 +19,10 @@
 #include "ui_configsaveloaderwidget.h"
 
 ConfigSaveLoaderWidget::ConfigSaveLoaderWidget(QWidget *parent) :
-    QGroupBox(parent),
-    ui(new Ui::ConfigSaveLoaderWidget)
+	QGroupBox(parent),
+	ui(new Ui::ConfigSaveLoaderWidget)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 }
 
 ConfigSaveLoaderWidget::~ConfigSaveLoaderWidget()

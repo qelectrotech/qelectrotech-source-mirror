@@ -46,7 +46,7 @@ class Element : public QetGraphicsItem
 			/**
 			 * @brief The kind enum
 			 * Used to know the kind of this element (master, slave, report ect...)
-			 */
+			*/
 		enum kind {Simple = 1,
 			   NextReport = 2,
 			   PreviousReport = 4,
@@ -68,7 +68,7 @@ class Element : public QetGraphicsItem
 			/**
 			 * Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into an Element.
 			 * @return the QGraphicsItem type
-			 */
+			*/
 		enum { Type = UserType + 1000 };
 		int type() const override { return Type; }
 		
@@ -243,7 +243,7 @@ inline int Element::orientation() const {
 /**
  * @brief Element::uuid
  * @return the uuid of this element
- */
+*/
 inline QUuid Element::uuid() const {
 	return m_uuid;
 }
@@ -251,7 +251,7 @@ inline QUuid Element::uuid() const {
 /**
  * @brief Element::linkedElements
  * @return the list of linked elements, the list is sorted by position
- */
+*/
 inline QList <Element *> Element::linkedElements() {
 	 std::sort(connected_elements.begin(),
 		   connected_elements.end(),

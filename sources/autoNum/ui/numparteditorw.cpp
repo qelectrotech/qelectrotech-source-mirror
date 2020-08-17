@@ -20,8 +20,8 @@
 #include "ui_numparteditorw.h"
 
 /**
- * Constructor
- */
+	Constructor
+*/
 NumPartEditorW::NumPartEditorW(int type, QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::NumPartEditorW),
@@ -34,9 +34,9 @@ NumPartEditorW::NumPartEditorW(int type, QWidget *parent) :
 }
 
 /**
- * Constructor
- * Build with value of @context at position i
- */
+	Constructor
+	Build with value of @context at position i
+*/
 NumPartEditorW::NumPartEditorW (NumerotationContext &context, int i, int type, QWidget *parent):
 	QWidget(parent),
 	ui(new Ui::NumPartEditorW),
@@ -69,8 +69,8 @@ NumPartEditorW::NumPartEditorW (NumerotationContext &context, int i, int type, Q
 }
 
 /**
- * Destructor
- */
+	Destructor
+*/
 NumPartEditorW::~NumPartEditorW()
 {
 	delete intValidator;
@@ -102,9 +102,9 @@ void NumPartEditorW::setVisibleItems()
 }
 
 /**
- * @brief NumPartEditorW::toNumContext
- * @return the display to NumerotationContext
- */
+	@brief NumPartEditorW::toNumContext
+	@return the display to NumerotationContext
+*/
 NumerotationContext NumPartEditorW::toNumContext() {
 	NumerotationContext nc;
 	QString type_str;
@@ -160,9 +160,9 @@ NumerotationContext NumPartEditorW::toNumContext() {
 }
 
 /**
- * @brief NumPartEditorW::isValid
- * @return true if value field isn't empty or if type is folio
- */
+	@brief NumPartEditorW::isValid
+	@return true if value field isn't empty or if type is folio
+*/
 bool NumPartEditorW::isValid() {
 	if (type_ == folio || type_ == idfolio || type_ == elementline || type_ == plant || type_ == locmach ||
 		type_ == elementcolumn || type_ == elementprefix) {return true;}
@@ -171,9 +171,9 @@ bool NumPartEditorW::isValid() {
 }
 
 /**
- * @brief NumPartEditorW::on_type_cb_activated
- * Action when user change the type comboBox
- */
+	@brief NumPartEditorW::on_type_cb_activated
+	Action when user change the type comboBox
+*/
 void NumPartEditorW::on_type_cb_activated(int) {
 	if (ui->type_cb->currentText() == tr("Chiffre 1"))
 		setType(unit);
@@ -207,27 +207,27 @@ void NumPartEditorW::on_type_cb_activated(int) {
 }
 
 /**
- * @brief NumPartEditorW::on_value_field_textChanged
- * emit changed when @value_field text changed
- */
+	@brief NumPartEditorW::on_value_field_textChanged
+	emit changed when @value_field text changed
+*/
 void NumPartEditorW::on_value_field_textEdited() {
 	emit changed();
 }
 
 /**
- * @brief NumPartEditorW::on_increase_spinBox_valueChanged
- * emit changed when @increase_spinBox value changed
- */
+	@brief NumPartEditorW::on_increase_spinBox_valueChanged
+	emit changed when @increase_spinBox value changed
+*/
 void NumPartEditorW::on_increase_spinBox_valueChanged(int) {
 	if (!ui -> value_field -> text().isEmpty()) emit changed();
 }
 
 /**
- * @brief NumPartEditorW::setType
- * Set good behavior by type @t
- * @param t, type used
- * @param fnum, force the behavior of numeric type
- */
+	@brief NumPartEditorW::setType
+	Set good behavior by type @t
+	@param t, type used
+	@param fnum, force the behavior of numeric type
+*/
 void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 	setCurrentIndex(t);
 
@@ -285,10 +285,10 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 }
 
 /**
- * @brief NumPartEditorW::setCurrentIndex
- * Set Current Index of type_cb
- * @param t, type used
- */
+	@brief NumPartEditorW::setCurrentIndex
+	Set Current Index of type_cb
+	@param t, type used
+*/
 void NumPartEditorW::setCurrentIndex(NumPartEditorW::type t) {
 	int i=-1;
 	if (t == unit)

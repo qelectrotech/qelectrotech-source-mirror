@@ -54,9 +54,9 @@ class MasterPropertiesWidget : public AbstractElementPropertiesEditorWidget
 		void reset() override;
 		QUndoCommand *associatedUndo () const override;
 		/**
-		 * @brief title
-		 * @return QString title
-		 */
+			@brief title
+			@return QString title
+		*/
 		QString title() const override {
 			return tr("Référence croisée (maître)");}
 		bool setLiveEdit(bool live_edit) override;

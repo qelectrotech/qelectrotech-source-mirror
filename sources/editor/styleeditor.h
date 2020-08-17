@@ -53,9 +53,9 @@ class StyleEditor : public ElementItemEditor
 		// methods
 	public:
 		bool setPart(CustomElementPart *) override;
-        bool setParts(QList<CustomElementPart *>);
+		bool setParts(QList<CustomElementPart *>) override;
 		CustomElementPart *currentPart() const override;
-        QList<CustomElementPart*> currentParts() const override;
+		QList<CustomElementPart*> currentParts() const override;
 
 		static bool isStyleEditable (QList <CustomElementPart *> cep_list);
 	

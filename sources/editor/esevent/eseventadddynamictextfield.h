@@ -25,9 +25,9 @@ class PartDynamicTextField;
 class QGraphicsSceneMouseEvent;
 
 /**
- * @brief The ESEventAddDynamicTextField class
- * This ESEvent manage creation of dynamic text field in an ElementScene
- */
+	@brief The ESEventAddDynamicTextField class
+	This ESEvent manage creation of dynamic text field in an ElementScene
+*/
 class ESEventAddDynamicTextField : public ESEventInterface
 {
 	public:

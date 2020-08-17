@@ -23,11 +23,11 @@
 class CrossRefItem;
 
 /**
- * @brief The MasterElement class
- * This class is a custom element, with extended behavior
- * to be a master element. Master element can be linked with slave element
- * and display a cross ref item for know with what other element he is linked
- */
+	@brief The MasterElement class
+	This class is a custom element, with extended behavior
+	to be a master element. Master element can be linked with slave element
+	and display a cross ref item for know with what other element he is linked
+*/
 class MasterElement : public Element
 {
 	Q_OBJECT

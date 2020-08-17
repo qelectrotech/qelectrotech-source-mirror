@@ -258,7 +258,7 @@ void Machine_info::init_get_cpu_info_macos()
 /**
 	@brief Machine_info::i_max_screen_width
 	@return max screen width
- */
+*/
 int32_t Machine_info::i_max_screen_width()
 {
 	return pc.screen.Max_width;

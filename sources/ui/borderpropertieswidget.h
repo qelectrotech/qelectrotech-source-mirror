@@ -26,9 +26,9 @@ namespace Ui {
 }
 
 /**
- * @brief The BorderPropertiesWidget class
- * this widget edit the properties of a border
- */
+	@brief The BorderPropertiesWidget class
+	this widget edit the properties of a border
+*/
 class BorderPropertiesWidget : public QWidget
 {
 		Q_OBJECT

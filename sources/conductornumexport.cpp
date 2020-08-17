@@ -1,19 +1,19 @@
 /*
-        Copyright 2006-2020 The QElectroTech Team
-        This file is part of QElectroTech.
+	Copyright 2006-2020 The QElectroTech Team
+	This file is part of QElectroTech.
 
-        QElectroTech is free software: you can redistribute it and/or modify
-        it under the terms of the GNU General Public License as published by
-        the Free Software Foundation, either version 2 of the License, or
-        (at your option) any later version.
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
 
-        QElectroTech is distributed in the hope that it will be useful,
-        but WITHOUT ANY WARRANTY; without even the implied warranty of
-        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-        GNU General Public License for more details.
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+	GNU General Public License for more details.
 
-        You should have received a copy of the GNU General Public License
-        along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "conductornumexport.h"
 #include "diagram.h"
@@ -26,10 +26,10 @@
 #include <QFileDialog>
 
 /**
- * @brief ConductorNumExport::ConductorNumExport
- * @param project : the project to export the conductors num
- * @param parent : parent widget
- */
+	@brief ConductorNumExport::ConductorNumExport
+	@param project : the project to export the conductors num
+	@param parent : parent widget
+*/
 ConductorNumExport::ConductorNumExport(QETProject *project, QWidget *parent) :
 	m_project(project),
 	m_parent_widget(parent)
@@ -38,10 +38,10 @@ ConductorNumExport::ConductorNumExport(QETProject *project, QWidget *parent) :
 }
 
 /**
- * @brief ConductorNumExport::toCsv
- * Export the num of conductors into a csv file.
- * @return true if suceesfully exported.
- */
+	@brief ConductorNumExport::toCsv
+	Export the num of conductors into a csv file.
+	@return true if suceesfully exported.
+*/
 bool ConductorNumExport::toCsv()
 {
 	QString name = QObject::tr("numero_de_fileries_") + m_project->title() + ".csv";
@@ -86,9 +86,9 @@ bool ConductorNumExport::toCsv()
 }
 
 /**
- * @brief ConductorNumExport::wiresNum
- * @return the wire num formated in csv
- */
+	@brief ConductorNumExport::wiresNum
+	@return the wire num formated in csv
+*/
 QString ConductorNumExport::wiresNum() const
 {
 	QString csv;
@@ -106,9 +106,9 @@ QString ConductorNumExport::wiresNum() const
 }
 
 /**
- * @brief ConductorNumExport::fillHash
- * @value m_hash
- */
+	@brief ConductorNumExport::fillHash
+	@value m_hash
+*/
 void ConductorNumExport::fillHash()
 {
 	//We used this rx to avoid insert num composed only withe white space.

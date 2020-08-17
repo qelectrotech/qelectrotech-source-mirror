@@ -27,9 +27,9 @@ class QDialogButtonBox;
 class QLabel;
 
 /**
- * @brief The ElementsCategoryEditor class
- * This class provides a dialog to edit an existing category or create a new one.
- */
+	@brief The ElementsCategoryEditor class
+	This class provides a dialog to edit an existing category or create a new one.
+*/
 class ElementsCategoryEditor : public QDialog
 {
 	Q_OBJECT

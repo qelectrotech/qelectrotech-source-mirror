@@ -24,9 +24,9 @@
 class Element;
 
 /**
- * @brief The AbstractElementPropertiesEditorWidget class
- * This class provide common method for all widget used to edit some properties of an element
- */
+	@brief The AbstractElementPropertiesEditorWidget class
+	This class provide common method for all widget used to edit some properties of an element
+*/
 class AbstractElementPropertiesEditorWidget : public PropertiesEditorWidget
 {
 		Q_OBJECT

@@ -69,11 +69,11 @@ class ConductorXmlRetroCompatibility
 };
 
 /**
- * @brief Conductor::Conductor
- * Default constructor.
- * @param p1 : first terminal of this conductor.
- * @param p2 : second terminal of this conductor.
- */
+	@brief Conductor::Conductor
+	Default constructor.
+	@param p1 : first terminal of this conductor.
+	@param p2 : second terminal of this conductor.
+*/
 Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	terminal1(p1),
 	terminal2(p2),
@@ -131,9 +131,9 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 }
 
 /**
- * @brief Conductor::~Conductor
- * Destructor. The conductor is removed from is terminal
- */
+	@brief Conductor::~Conductor
+	Destructor. The conductor is removed from is terminal
+*/
 Conductor::~Conductor()
 {
 	removeHandler();
@@ -143,10 +143,10 @@ Conductor::~Conductor()
 }
 
 /**
- * @brief Conductor::isValid
- * @return true if conductor is valid else false;
- * A non valid conductor, is a conductor without two terminal
- */
+	@brief Conductor::isValid
+	@return true if conductor is valid else false;
+	A non valid conductor, is a conductor without two terminal
+*/
 bool Conductor::isValid() const {
 	return m_valid;
 }
@@ -171,9 +171,9 @@ void Conductor::updatePath(const QRectF &rect) {
 }
 
 /**
- * @brief Conductor::segmentsToPath
- * Generate the QPainterPath from the list of points
- */
+	@brief Conductor::segmentsToPath
+	Generate the QPainterPath from the list of points
+*/
 void Conductor::segmentsToPath()
 {
 	QPainterPath path;
@@ -606,20 +606,20 @@ bool Conductor::valideXml(QDomElement &e){
 }
 
 /**
- * @brief Conductor::mouseDoubleClickEvent
- * Manage the mouse double click
- * @param event
- */
+	@brief Conductor::mouseDoubleClickEvent
+	Manage the mouse double click
+	@param event
+*/
 void Conductor::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 	event->accept();
 	editProperty();
 }
 
 /**
- * @brief Conductor::mousePressEvent
- * Manage the mouse press event
- * @param event
- */
+	@brief Conductor::mousePressEvent
+	Manage the mouse press event
+	@param event
+*/
 void Conductor::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
 	QGraphicsObject::mousePressEvent(event);
@@ -629,9 +629,9 @@ void Conductor::mousePressEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief Conductor::mouseReleaseEvent
- * @param event
- */
+	@brief Conductor::mouseReleaseEvent
+	@param event
+*/
 void Conductor::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (!(event -> modifiers() & Qt::ControlModifier))
@@ -639,10 +639,10 @@ void Conductor::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief Conductor::hoverEnterEvent
- * Manage the hover enter event
- * @param event
- */
+	@brief Conductor::hoverEnterEvent
+	Manage the hover enter event
+	@param event
+*/
 void Conductor::hoverEnterEvent(QGraphicsSceneHoverEvent *event) {
 	Q_UNUSED(event);
 	m_mouse_over = true;
@@ -650,10 +650,10 @@ void Conductor::hoverEnterEvent(QGraphicsSceneHoverEvent *event) {
 }
 
 /**
- * @brief Conductor::hoverLeaveEvent
- * Manage the mouse leave event
- * @param event
- */
+	@brief Conductor::hoverLeaveEvent
+	Manage the mouse leave event
+	@param event
+*/
 void Conductor::hoverLeaveEvent(QGraphicsSceneHoverEvent *event) {
 	Q_UNUSED(event);
 	update();
@@ -661,11 +661,11 @@ void Conductor::hoverLeaveEvent(QGraphicsSceneHoverEvent *event) {
 }
 
 /**
- * @brief Conductor::itemChange
- * @param change
- * @param value
- * @return 
- */
+	@brief Conductor::itemChange
+	@param change
+	@param value
+	@return 
+*/
 QVariant Conductor::itemChange(GraphicsItemChange change, const QVariant &value)
 {
 	if (change == QGraphicsItem::ItemSelectedChange)
@@ -702,11 +702,11 @@ QVariant Conductor::itemChange(GraphicsItemChange change, const QVariant &value)
 }
 
 /**
- * @brief Conductor::sceneEventFilter
- * @param watched
- * @param event
- * @return 
- */
+	@brief Conductor::sceneEventFilter
+	@param watched
+	@param event
+	@return 
+*/
 bool Conductor::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 {
 		//Watched must be an handler
@@ -747,9 +747,9 @@ bool Conductor::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 }
 
 /**
- * @brief Conductor::adjusteHandlerPos
- * Adjust the position of the handler item
- */
+	@brief Conductor::adjusteHandlerPos
+	Adjust the position of the handler item
+*/
 void Conductor::adjusteHandlerPos()
 {
 	if (m_handler_vector.isEmpty())
@@ -764,10 +764,10 @@ void Conductor::adjusteHandlerPos()
 }
 
 /**
- * @brief Conductor::handlerMousePressEvent
- * @param qghi
- * @param event
- */
+	@brief Conductor::handlerMousePressEvent
+	@param qghi
+	@param event
+*/
 void Conductor::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(event);
@@ -787,10 +787,10 @@ void Conductor::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsSc
 }
 
 /**
- * @brief Conductor::handlerMouseMoveEvent
- * @param qghi
- * @param event
- */
+	@brief Conductor::handlerMouseMoveEvent
+	@param qghi
+	@param event
+*/
 void Conductor::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	if (m_moving_segment)
@@ -815,10 +815,10 @@ void Conductor::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsSce
 }
 
 /**
- * @brief Conductor::handlerMouseReleaseEvent
- * @param qghi
- * @param event
- */
+	@brief Conductor::handlerMouseReleaseEvent
+	@param qghi
+	@param event
+*/
 void Conductor::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(event);
@@ -839,9 +839,9 @@ void Conductor::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphics
 }
 
 /**
- * @brief Conductor::addHandler
- * Add handlers for this item
- */
+	@brief Conductor::addHandler
+	Add handlers for this item
+*/
 void Conductor::addHandler()
 {
 	if (m_handler_vector.isEmpty() && scene())
@@ -859,9 +859,9 @@ void Conductor::addHandler()
 }
 
 /**
- * @brief Conductor::removeHandler
- * Remove the handlers of this item
- */
+	@brief Conductor::removeHandler
+	Remove the handlers of this item
+*/
 void Conductor::removeHandler()
 {
 	if (!m_handler_vector.isEmpty())
@@ -872,9 +872,9 @@ void Conductor::removeHandler()
 }
 
 /**
- * @brief Conductor::boundingRect
- * @return
- */
+	@brief Conductor::boundingRect
+	@return
+*/
 QRectF Conductor::boundingRect() const
 {
 	QRectF br = shape().boundingRect();
@@ -882,10 +882,10 @@ QRectF Conductor::boundingRect() const
 }
 
 /**
- * @brief Conductor::shape
- * @return the shape of conductor.
- * The shape thickness is bigger when conductor is hovered
- */
+	@brief Conductor::shape
+	@return the shape of conductor.
+	The shape thickness is bigger when conductor is hovered
+*/
 QPainterPath Conductor::shape() const
 {
 	QPainterPathStroker pps;
@@ -898,9 +898,9 @@ QPainterPath Conductor::shape() const
 }
 
 /**
- * @brief Conductor::nearShape
- * @return : An area in which it is considered a point is near this conductor.
- */
+	@brief Conductor::nearShape
+	@return : An area in which it is considered a point is near this conductor.
+*/
 QPainterPath Conductor::nearShape() const
 {
 	QPainterPathStroker pps;
@@ -968,11 +968,11 @@ void Conductor::pointsToSegments(const QList<QPointF>& points_list) {
 }
 
 /**
- * @brief Conductor::fromXml
- * Load the conductor and her information from xml element
- * @param e
- * @return true is loading success else return false
- */
+	@brief Conductor::fromXml
+	Load the conductor and her information from xml element
+	@param e
+	@return true is loading success else return false
+*/
 bool Conductor::fromXml(QDomElement &dom_element)
 {
 	setPos(dom_element.attribute("x", nullptr).toDouble(),
@@ -1011,22 +1011,22 @@ QDomElement Conductor::toXml(QDomDocument &dom_document, QHash<Terminal *, int> 
 	dom_element.setAttribute("x", QString::number(pos().x()));
 	dom_element.setAttribute("y", QString::number(pos().y()));
 
-    // Terminal is uniquely identified by the uuid of the terminal and the element
-    if (terminal1->uuid().isNull()) {
-        // legacy method to identify the terminal
-        dom_element.setAttribute("terminal1", table_adr_id.value(terminal1)); // for backward compability
-    } else {
-        dom_element.setAttribute("element1", terminal1->parentElement()->uuid().toString());
-        dom_element.setAttribute("terminal1", terminal1->uuid().toString());
-    }
+	// Terminal is uniquely identified by the uuid of the terminal and the element
+	if (terminal1->uuid().isNull()) {
+		// legacy method to identify the terminal
+		dom_element.setAttribute("terminal1", table_adr_id.value(terminal1)); // for backward compability
+	} else {
+		dom_element.setAttribute("element1", terminal1->parentElement()->uuid().toString());
+		dom_element.setAttribute("terminal1", terminal1->uuid().toString());
+	}
 
-    if (terminal2->uuid().isNull()) {
-        // legacy method to identify the terminal
-        dom_element.setAttribute("terminal2", table_adr_id.value(terminal2)); // for backward compability
-    } else {
-        dom_element.setAttribute("element2", terminal2->parentElement()->uuid().toString());
-        dom_element.setAttribute("terminal2", terminal2->uuid().toString());
-    }
+	if (terminal2->uuid().isNull()) {
+		// legacy method to identify the terminal
+		dom_element.setAttribute("terminal2", table_adr_id.value(terminal2)); // for backward compability
+	} else {
+		dom_element.setAttribute("element2", terminal2->parentElement()->uuid().toString());
+		dom_element.setAttribute("terminal2", terminal2->uuid().toString());
+	}
 	dom_element.setAttribute("freezeLabel", m_freeze_label? "true" : "false");
 	
 	// on n'exporte les segments du conducteur que si ceux-ci ont
@@ -1061,12 +1061,12 @@ QDomElement Conductor::toXml(QDomDocument &dom_document, QHash<Terminal *, int> 
 }
 
 /**
- * @brief Conductor::pathFromXml
- * Generate the path (of the line) from xml file by checking the segments in the xml
- * file
- * @param e
- * @return true if generate path success else return false
- */
+	@brief Conductor::pathFromXml
+	Generate the path (of the line) from xml file by checking the segments in the xml
+	file
+	@param e
+	@return true if generate path success else return false
+*/
 bool Conductor::pathFromXml(const QDomElement &e) {
 	// parcourt les elements XML "segment" et en extrait deux listes de longueurs
 	// les segments non valides sont ignores
@@ -1139,12 +1139,12 @@ bool Conductor::pathFromXml(const QDomElement &e) {
 }
 
 /**
- * @brief Conductor::handlerPoints
- * @return The points used to draw the handler square, used to modify
- * the path of the conductor.
- * The points stored in the QVector are the middle point of each segments that compose the conductor,
- * at exception of the first and last segment because there just here to extend the terminal.
- */
+	@brief Conductor::handlerPoints
+	@return The points used to draw the handler square, used to modify
+	the path of the conductor.
+	The points stored in the QVector are the middle point of each segments that compose the conductor,
+	at exception of the first and last segment because there just here to extend the terminal.
+*/
 QVector<QPointF> Conductor::handlerPoints() const
 {
 	QList <ConductorSegment *> sl = segmentsList();
@@ -1178,9 +1178,9 @@ const QList<ConductorSegment *> Conductor::segmentsList() const {
 }
 
 /**
- * @brief Conductor::length
- * @return the length of this conductor
- */
+	@brief Conductor::length
+	@return the length of this conductor
+*/
 qreal Conductor::length() const{
 	return path().length();
 }
@@ -1206,11 +1206,11 @@ ConductorSegment *Conductor::middleSegment() {
 }
 
 /**
- * @brief Conductor::posForText
- * Calculate and return the better pos for text.
- * @param flag : flag is used to know if text pos is near of
- * a vertical or horizontal conductor segment.
- */
+	@brief Conductor::posForText
+	Calculate and return the better pos for text.
+	@param flag : flag is used to know if text pos is near of
+	a vertical or horizontal conductor segment.
+*/
 QPointF Conductor::posForText(Qt::Orientations &flag)
 {
 
@@ -1277,11 +1277,11 @@ QPointF Conductor::posForText(Qt::Orientations &flag)
 }
 
 /**
- * @brief Conductor::calculateTextItemPosition
- * Move the text at middle of conductor (if is vertical or horizontal)
- * otherwise, move conductor at the middle of the longest segment of conductor.
- * If text was moved by user, this function do nothing, except check if text is near conductor.
- */
+	@brief Conductor::calculateTextItemPosition
+	Move the text at middle of conductor (if is vertical or horizontal)
+	otherwise, move conductor at the middle of the longest segment of conductor.
+	If text was moved by user, this function do nothing, except check if text is near conductor.
+*/
 void Conductor::calculateTextItemPosition()
 {
 	if (!m_text_item || !diagram() || m_properties.type != ConductorProperties::Multi)
@@ -1440,10 +1440,10 @@ ConductorProfile Conductor::profile(Qt::Corner path_type) const {
 }
 
 /**
- * @brief Conductor::refreshText
- * Refresh the text of this conductor.
- * recalcule and set the text according to the formula.
- */
+	@brief Conductor::refreshText
+	Refresh the text of this conductor.
+	recalcule and set the text according to the formula.
+*/
 void Conductor::refreshText()
 {
 	if (m_freeze_label)
@@ -1489,13 +1489,13 @@ QPainterPath Conductor::path() const
 }
 
 /**
- * @brief Conductor::setPropertiesToPotential
- * @param properties
- * @param only_text
- * Set @propertie to conductor and every conductors in the same potential of @conductor.
- * If @only_text is true only formula, text, function and tension/protocol is set
- * to other conductor in the same potential, the other values of property stay unmodified
- */
+	@brief Conductor::setPropertiesToPotential
+	@param properties
+	@param only_text
+	Set @propertie to conductor and every conductors in the same potential of @conductor.
+	If @only_text is true only formula, text, function and tension/protocol is set
+	to other conductor in the same potential, the other values of property stay unmodified
+*/
 void Conductor::setPropertyToPotential(const ConductorProperties &property, bool only_text)
 {
 	setProperties(property);
@@ -1522,10 +1522,10 @@ void Conductor::setPropertyToPotential(const ConductorProperties &property, bool
 }
 
 /**
- * @brief Conductor::setProperties
- * Set @property as current property of conductor
- * @param properties : properties
- */
+	@brief Conductor::setProperties
+	Set @property as current property of conductor
+	@param properties : properties
+*/
 void Conductor::setProperties(const ConductorProperties &property)
 {
 	if (m_properties == property) return;
@@ -1566,9 +1566,9 @@ void Conductor::setProperties(const ConductorProperties &property)
 }
 
 /**
- * @brief Conductor::properties
- * @return the properties of this Conductor
- */
+	@brief Conductor::properties
+	@return the properties of this Conductor
+*/
 ConductorProperties Conductor::properties() const
 {
 	return(m_properties);
@@ -1590,10 +1590,10 @@ void Conductor::setHighlighted(Conductor::Highlight hl) {
 }
 
 /**
- * @brief Conductor::displayedTextChanged
- * Update the properties (text) of this conductor and other conductors
- * at the same potential of this conductor.
- */
+	@brief Conductor::displayedTextChanged
+	Update the properties (text) of this conductor and other conductors
+	at the same potential of this conductor.
+*/
 void Conductor::displayedTextChanged()
 {
 	QVariant old_value, new_value;
@@ -1627,14 +1627,14 @@ void Conductor::displayedTextChanged()
 
 
 /**
- * @brief Conductor::relatedPotentialConductors
- * Return all conductors at the same potential of this conductor, this conductor isn't
- * part of the returned QSet.
- * @param all_diagram : if true search in all diagram of the project,
- * false search only in the parent diagram of this conductor
- * @param t_list, a list of terminal already found for this potential.
- * @return  a QSet of conductor at the same potential.
- */
+	@brief Conductor::relatedPotentialConductors
+	Return all conductors at the same potential of this conductor, this conductor isn't
+	part of the returned QSet.
+	@param all_diagram : if true search in all diagram of the project,
+	false search only in the parent diagram of this conductor
+	@param t_list, a list of terminal already found for this potential.
+	@return  a QSet of conductor at the same potential.
+*/
 QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram, QList <Terminal *> *t_list)
 {
 	bool declar_t_list = false;
@@ -1688,9 +1688,9 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram, 
 }
 
 /**
- * @brief Conductor::diagramEditor
- * @return The parent diagram editor or nullptr;
- */
+	@brief Conductor::diagramEditor
+	@return The parent diagram editor or nullptr;
+*/
 QETDiagramEditor* Conductor::diagramEditor() const {
 	if (!diagram())                     return nullptr;
 	if (diagram() -> views().isEmpty()) return nullptr;
@@ -1703,8 +1703,8 @@ QETDiagramEditor* Conductor::diagramEditor() const {
 }
 
 /**
- * @brief Conductor::editProperty
- */
+	@brief Conductor::editProperty
+*/
 void Conductor::editProperty() {
 	ConductorPropertiesDialog::PropertiesDialog(this, diagramEditor());
 }
@@ -1716,11 +1716,11 @@ void Conductor::setSequenceNum(const autonum::sequentialNumbers& sn)
 }
 
 /**
- * @brief Conductor::setUpConnectionForFormula
- * setup connection according to the variable of formula
- * @param old_formula
- * @param new_formula
- */
+	@brief Conductor::setUpConnectionForFormula
+	setup connection according to the variable of formula
+	@param old_formula
+	@param new_formula
+*/
 void Conductor::setUpConnectionForFormula(QString old_formula, QString new_formula)
 {
 	if (diagram())
@@ -1909,9 +1909,9 @@ ConductorProfilesGroup Conductor::profiles() const {
 }
 
 /**
- * @brief Conductor::setProfiles
- * @param cpg : the new profils of conductor
- */
+	@brief Conductor::setProfiles
+	@param cpg : the new profils of conductor
+*/
 void Conductor::setProfiles(const ConductorProfilesGroup &cpg) {
 	conductor_profiles = cpg;
 	if (conductor_profiles[currentPathType()].isNull()) {
@@ -1988,11 +1988,11 @@ QPointF Conductor::movePointIntoPolygon(const QPointF &point, const QPainterPath
 }
 
 /**
- * @brief longuestConductorInPotential
- * @param conductor : a conductor in the potential to search
- * @param all_diagram : true -> search in the whole project, false -> search only in the diagram of conductor
- * @return the longuest conductor in the same potential of conductor
- */
+	@brief longuestConductorInPotential
+	@param conductor : a conductor in the potential to search
+	@param all_diagram : true -> search in the whole project, false -> search only in the diagram of conductor
+	@return the longuest conductor in the same potential of conductor
+*/
 Conductor * longuestConductorInPotential(Conductor *conductor, bool all_diagram) {
 	Conductor *longuest_conductor = conductor;
 	//Search the longuest conductor
@@ -2004,11 +2004,12 @@ Conductor * longuestConductorInPotential(Conductor *conductor, bool all_diagram)
 }
 
 /**
- * @brief relatedConductors
- * @param conductor
- * @return return all conductors who share the same terminals of @conductor given as parametre,
- * except @conductor himself.
- */
+	@brief relatedConductors
+	@param conductor
+	@return return all conductors who share the same terminals
+	of conductor given as parametre,
+	except conductor himself.
+*/
 QList <Conductor *> relatedConductors(const Conductor *conductor) {
 	QList<Conductor *> other_conductors_list = conductor -> terminal1 -> conductors();
 	other_conductors_list << conductor -> terminal2->conductors();
@@ -2017,11 +2018,11 @@ QList <Conductor *> relatedConductors(const Conductor *conductor) {
 }
 
 /**
- * @brief Conductor::setFreezeLabel
- * Freeze this conductor label if true
- * Unfreeze this conductor label if false
- * @param freeze
- */
+	@brief Conductor::setFreezeLabel
+	Freeze this conductor label if true
+	Unfreeze this conductor label if false
+	@param freeze
+*/
 void Conductor::setFreezeLabel(bool freeze)
 {
 	m_freeze_label = freeze;

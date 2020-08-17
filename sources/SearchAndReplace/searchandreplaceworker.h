@@ -44,9 +44,10 @@ struct advancedReplaceStruct
 };
 
 /**
- * @brief The SearchAndReplaceWorker class
- * This class is the worker use to change properties when use the search and replace function of QET
- */
+	@brief The SearchAndReplaceWorker class
+	This class is the worker use to change properties
+	when use the search and replace function of QET
+*/
 class SearchAndReplaceWorker
 {
 	public:

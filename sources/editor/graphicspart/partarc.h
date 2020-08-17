@@ -24,10 +24,10 @@ class QPropertyUndoCommand;
 class QetGraphicsHandlerItem;
 
 /**
- * @brief The PartArc class
- * This class represents an elliptical arc primitive which may be used to
- * compose the drawing of an electrical element within the element editor.
- */
+	@brief The PartArc class
+	This class represents an elliptical arc primitive which may be used to
+	compose the drawing of an electrical element within the element editor.
+*/
 class PartArc : public AbstractPartEllipse
 {
 		Q_OBJECT
@@ -42,9 +42,9 @@ class PartArc : public AbstractPartEllipse
 	public:
 		enum { Type = UserType + 1101 };
 			/**
-			 * Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a PartArc.
-			 * @return the QGraphicsItem type
-			 */
+				Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a PartArc.
+				@return the QGraphicsItem type
+			*/
 		int type() const override { return Type; }
 		void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr) override;
 

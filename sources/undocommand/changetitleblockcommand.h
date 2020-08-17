@@ -24,9 +24,9 @@
 
 class Diagram;
 /**
- * @brief The ChangeTitleBlockCommand class
- * This command changes the title block properties for a particular diagram.
- */
+	@brief The ChangeTitleBlockCommand class
+	This command changes the title block properties for a particular diagram.
+*/
 class ChangeTitleBlockCommand : public QUndoCommand
 {
 	public:

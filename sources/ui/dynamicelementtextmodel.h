@@ -27,11 +27,11 @@ class ElementTextItemGroup;
 class Element;
 
 /**
- * @brief The DynamicElementTextModel class
- * A model to use with QtView.
- * This model display and can edit the value of dynamic text of an element.
- * Set the delegate DynamicTextItemDelegate as delegate of this model.
- */
+	@brief The DynamicElementTextModel class
+	A model to use with QtView.
+	This model display and can edit the value of dynamic text of an element.
+	Set the delegate DynamicTextItemDelegate as delegate of this model.
+*/
 class DynamicElementTextModel : public QStandardItemModel
 {
 	Q_OBJECT

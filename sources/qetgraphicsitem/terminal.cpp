@@ -72,14 +72,14 @@ void Terminal::init(QString number, QString name, bool hiddenName) {
 }
 
 /*!
- * \brief Terminal::init
- * Additionaly to the init above, this method stores position and orientation into the data class
- * \param pf
- * \param o
- * \param number
- * \param name
- * \param hiddenName
- */
+	\brief Terminal::init
+	Additionaly to the init above, this method stores position and orientation into the data class
+	\param pf
+	\param o
+	\param number
+	\param name
+	\param hiddenName
+*/
 void Terminal::init(QPointF pf, Qet::Orientation o, QString number, QString name, bool hiddenName)
 {
 	// definition du pount d'amarrage pour un conducteur

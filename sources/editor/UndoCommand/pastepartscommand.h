@@ -24,9 +24,9 @@
 class ElementView;
 
 /**
- * @brief The PastePartsCommand class
- * Undo command for paste element primitive in an element editor
- */
+	@brief The PastePartsCommand class
+	Undo command for paste element primitive in an element editor
+*/
 class PastePartsCommand : public ElementEditionCommand
 {
 	public:

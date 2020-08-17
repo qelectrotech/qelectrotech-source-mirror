@@ -36,12 +36,12 @@
 #include "projectdbmodel.h"
 
 /**
- * @brief PropertiesEditorFactory::propertiesEditor
- * @param model : the model to be edited
- * @param editor : if the properties editor to be created is the same class as @editor, the this function set @item as edited item of @editor and return editor
- * @param parent : parent widget of the returned editor
- * @return an editor or nullptr
- */
+	@brief PropertiesEditorFactory::propertiesEditor
+	@param model : the model to be edited
+	@param editor : if the properties editor to be created is the same class as @editor, the this function set @item as edited item of @editor and return editor
+	@param parent : parent widget of the returned editor
+	@return an editor or nullptr
+*/
 PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(QAbstractItemModel *model, PropertiesEditorWidget *editor, QWidget *parent)
 {
 	Q_UNUSED(model)

@@ -63,9 +63,9 @@ class PartLine : public CustomElementGraphicPart
 		enum { Type = UserType + 1104 };
 	
 		 /**
-		  * Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a PartLine.
-		  * @return the QGraphicsItem type
-		  */
+			Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a PartLine.
+			@return the QGraphicsItem type
+		 */
 		int type() const override { return Type; }
 		void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr) override;
 		QString name() const override { return(QObject::tr("ligne", "element part name")); }

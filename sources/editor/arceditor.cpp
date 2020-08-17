@@ -95,12 +95,12 @@ void ArcEditor::disconnectChangeConnections()
 }
 
 /**
- * @brief ArcEditor::setPart
- * Specifie to this editor the part to edit.
- * Note that an editor can accept or refuse to edit a part. This editor accept only partArc.
- * @param new_part
- * @return
- */
+	@brief ArcEditor::setPart
+	Specifie to this editor the part to edit.
+	Note that an editor can accept or refuse to edit a part. This editor accept only partArc.
+	@param new_part
+	@return
+*/
 bool ArcEditor::setPart(CustomElementPart *new_part)
 {
 	if (!new_part)
@@ -137,9 +137,9 @@ bool ArcEditor::setParts(QList <CustomElementPart *> parts)
 }
 
 /**
- * @brief ArcEditor::currentPart
- * @return the curent edited part, or 0 if there is no edited part
- */
+	@brief ArcEditor::currentPart
+	@return the curent edited part, or 0 if there is no edited part
+*/
 CustomElementPart *ArcEditor::currentPart() const {
 	return(part);
 }
@@ -149,9 +149,9 @@ QList<CustomElementPart*> ArcEditor::currentParts() const {
 }
 
 /**
- * @brief ArcEditor::updateArcS
- * Update the start angle of the arc according to  the edited value.
- */
+	@brief ArcEditor::updateArcS
+	Update the start angle of the arc according to  the edited value.
+*/
 void ArcEditor::updateArcS()
 {
 	if (m_locked) return;
@@ -175,9 +175,9 @@ void ArcEditor::updateArcS()
 }
 
 /**
- * @brief ArcEditor::updateArcA
- * Update the span angle of the arc according to  the edited value.
- */
+	@brief ArcEditor::updateArcA
+	Update the span angle of the arc according to  the edited value.
+*/
 void ArcEditor::updateArcA()
 {
 	if (m_locked) return;
@@ -200,9 +200,9 @@ void ArcEditor::updateArcA()
 }
 
 /**
- * @brief ArcEditor::updateArcRect
- * Update the geometrie of the rect that define this arc according the the edited values
- */
+	@brief ArcEditor::updateArcRect
+	Update the geometrie of the rect that define this arc according the the edited values
+*/
 void ArcEditor::updateArcRectX()
 {
 	if (m_locked) return;
@@ -300,9 +300,9 @@ void ArcEditor::updateArcRectV()
 }
 
 /**
- * @brief ArcEditor::updateForm
- * Update the value of the widgets
- */
+	@brief ArcEditor::updateForm
+	Update the value of the widgets
+*/
 void ArcEditor::updateForm()
 {
 	if (!part) return;
@@ -318,11 +318,11 @@ void ArcEditor::updateForm()
 }
 
 /**
- * @brief ArcEditor::activeConnections
- * Enable/disable connection between editor widget and slot editingFinished
- * True == enable | false == disable
- * @param active
- */
+	@brief ArcEditor::activeConnections
+	Enable/disable connection between editor widget and slot editingFinished
+	True == enable | false == disable
+	@param active
+*/
 void ArcEditor::activeConnections(bool active)
 {
 	if (active)

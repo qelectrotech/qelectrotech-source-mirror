@@ -25,9 +25,9 @@ class PartText;
 class QGraphicsSceneMouseEvent;
 
 /**
- * @brief The ESEventAddText class
- * This ESEvent manage creation of text in an ElementScene
- */
+	@brief The ESEventAddText class
+	This ESEvent manage creation of text in an ElementScene
+*/
 class ESEventAddText : public ESEventInterface
 {
 	public:

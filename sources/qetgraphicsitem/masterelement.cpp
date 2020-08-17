@@ -22,31 +22,31 @@
 #include <QRegularExpression>
 
 /**
- * @brief MasterElement::MasterElement
- * Default constructor
- * @param location location of xml definition
- * @param qgi parent QGraphicItem
- * @param s parent diagram
- * @param state int used to know if the creation of element have error
- */
+	@brief MasterElement::MasterElement
+	Default constructor
+	@param location location of xml definition
+	@param qgi parent QGraphicItem
+	@param s parent diagram
+	@param state int used to know if the creation of element have error
+*/
 MasterElement::MasterElement(const ElementsLocation &location, QGraphicsItem *qgi, int *state) :
 	Element(location, qgi, state, Element::Master)
 {}
 
 /**
- * @brief MasterElement::~MasterElement
- * default destructor
- */
+	@brief MasterElement::~MasterElement
+	default destructor
+*/
 MasterElement::~MasterElement() {
 	unlinkAllElements();
 }
 
 /**
- * @brief MasterElement::linkToElement
- * Link this master to another element
- * For this class element must be a slave
- * @param elmt
- */
+	@brief MasterElement::linkToElement
+	Link this master to another element
+	For this class element must be a slave
+	@param elmt
+*/
 void MasterElement::linkToElement(Element *elmt)
 {
 		// check if element is slave and if isn't already linked
@@ -65,9 +65,9 @@ void MasterElement::linkToElement(Element *elmt)
 }
 
 /**
- * @brief MasterElement::unlinkAllElements
- * Unlink all of the element in the QList connected_elements
- */
+	@brief MasterElement::unlinkAllElements
+	Unlink all of the element in the QList connected_elements
+*/
 void MasterElement::unlinkAllElements()
 {
 		// if this element is free no need to do something
@@ -80,10 +80,10 @@ void MasterElement::unlinkAllElements()
 }
 
 /**
- * @brief MasterElement::unlinkElement
- * Unlink the given elmt in parametre
- * @param elmt element to unlink from this
- */
+	@brief MasterElement::unlinkElement
+	Unlink the given elmt in parametre
+	@param elmt element to unlink from this
+*/
 void MasterElement::unlinkElement(Element *elmt)
 {
 		//Ensure elmt is linked to this element
@@ -99,21 +99,21 @@ void MasterElement::unlinkElement(Element *elmt)
 }
 
 /**
- * @brief MasterElement::initLink
- * @param project
- * Call init Link from custom element and after
- * call update label for setup it.
- */
+	@brief MasterElement::initLink
+	@param project
+	Call init Link from custom element and after
+	call update label for setup it.
+*/
 void MasterElement::initLink(QETProject *project) {
 	//Create the link with other element if needed
 	Element::initLink(project);
 }
 
 /**
- * @brief MasterElement::XrefBoundingRect
- * @return The bounding rect of the Xref, if this element
- * haven't got a xref, return a default QRectF
- */
+	@brief MasterElement::XrefBoundingRect
+	@return The bounding rect of the Xref, if this element
+	haven't got a xref, return a default QRectF
+*/
 QRectF MasterElement::XrefBoundingRect() const
 {
 	if(m_Xref_item)
@@ -149,15 +149,15 @@ void MasterElement::xrefPropertiesChanged()
 }
 
 /**
- * @brief MasterElement::aboutDeleteXref
- * Check if Xref item must be displayed, if not, delete it.
- * If Xref item is deleted or already not used (nullptr) return true;
- * Else return false if Xref item is used
- * NOTICE : Xref can display nothing but not be deleted so far.
- * For exemple, if Xref is display has cross, only power contact are linked and
- * option show power contact is disable, the cross isn't draw.
- * @return
- */
+	@brief MasterElement::aboutDeleteXref
+	Check if Xref item must be displayed, if not, delete it.
+	If Xref item is deleted or already not used (nullptr) return true;
+	Else return false if Xref item is used
+	NOTICE : Xref can display nothing but not be deleted so far.
+	For exemple, if Xref is display has cross, only power contact are linked and
+	option show power contact is disable, the cross isn't draw.
+	@return
+*/
 void MasterElement::aboutDeleteXref()
 {
 	if(!m_Xref_item)

@@ -23,26 +23,26 @@
 #include <QObject>
 
 /**
- * @brief ElementTextsMover::ElementTextsMover
- */
+	@brief ElementTextsMover::ElementTextsMover
+*/
 ElementTextsMover::ElementTextsMover() {}
 
 /**
- * @brief ElementTextsMover::isReady
- * @return true if this ElementTextsMover is ready to process a new movement.
- * False if this ElementTextsMover is actually process a movement
- */
+	@brief ElementTextsMover::isReady
+	@return true if this ElementTextsMover is ready to process a new movement.
+	False if this ElementTextsMover is actually process a movement
+*/
 bool ElementTextsMover::isReady() const {
 	return(!m_movement_running);
 }
 
 /**
- * @brief ElementTextsMover::beginMovement
- * Begin a movement
- * @param diagram : diagram where the movement is apply
- * @param driver_item : item moved by the mouse
- * @return : the number of moved text (driver_item include), or -1 if this ElementTextsMover can't begin a movement
- */
+	@brief ElementTextsMover::beginMovement
+	Begin a movement
+	@param diagram : diagram where the movement is apply
+	@param driver_item : item moved by the mouse
+	@return : the number of moved text (driver_item include), or -1 if this ElementTextsMover can't begin a movement
+*/
 int ElementTextsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item)
 {
 	if (m_movement_running || !diagram)
@@ -101,9 +101,9 @@ void ElementTextsMover::continueMovement(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief ElementTextsMover::endMovement
- * Finish the movement by pushing an undo command to the parent diagram of text item
- */
+	@brief ElementTextsMover::endMovement
+	Finish the movement by pushing an undo command to the parent diagram of text item
+*/
 void ElementTextsMover::endMovement()
 {	
 		//No movement or no items to move

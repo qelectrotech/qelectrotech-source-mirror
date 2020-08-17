@@ -198,10 +198,10 @@ void DiagramView::handleElementDrop(QDropEvent *event)
 }
 
 /**
- * @brief DiagramView::handleTitleBlockDrop
- * Handle the dropEvent that contain data of a titleblock
- * @param e
- */
+	@brief DiagramView::handleTitleBlockDrop
+	Handle the dropEvent that contain data of a titleblock
+	@param e
+*/
 void DiagramView::handleTitleBlockDrop(QDropEvent *e) {
 		// fetch the title block template location from the drop event
 	TitleBlockTemplateLocation tbt_loc;
@@ -247,10 +247,10 @@ void DiagramView::handleTitleBlockDrop(QDropEvent *e) {
 }
 
 /**
- * @brief DiagramView::handleTextDrop
+	@brief DiagramView::handleTextDrop
  *handle the drop of text
- * @param e the QDropEvent describing the current drag'n drop
- */
+	@param e the QDropEvent describing the current drag'n drop
+*/
 void DiagramView::handleTextDrop(QDropEvent *e) {
 	if (m_diagram -> isReadOnly() || (e -> mimeData() -> hasText() == false) ) return;
 
@@ -284,12 +284,12 @@ void DiagramView::setSelectionMode() {
 }
 
 /**
- * @brief DiagramView::zoom
- * Zomm the view.
- * A zoom_factor > 1 zoom in.
- * A zoom_factor < 1 zoom out
- * @param zoom_factor
- */
+	@brief DiagramView::zoom
+	Zomm the view.
+	A zoom_factor > 1 zoom in.
+	A zoom_factor < 1 zoom out
+	@param zoom_factor
+*/
 void DiagramView::zoom(const qreal zoom_factor)
 {
 	if (zoom_factor >= 1){
@@ -357,11 +357,11 @@ void DiagramView::copy() {
 }
 
 /**
- * @brief DiagramView::paste
- * Import the element stored in the clipboard to the diagram.
- * @param pos : top left corner of the bounding rect of imported elements
- * @param clipboard_mode
- */
+	@brief DiagramView::paste
+	Import the element stored in the clipboard to the diagram.
+	@param pos : top left corner of the bounding rect of imported elements
+	@param clipboard_mode
+*/
 void DiagramView::paste(const QPointF &pos, QClipboard::Mode clipboard_mode) {
 	if (!isInteractive() || m_diagram -> isReadOnly()) return;
 
@@ -448,9 +448,9 @@ void DiagramView::mousePressEvent(QMouseEvent *e)
 }
 
 /**
- * @brief DiagramView::mouseMoveEvent
- * Manage the event move mouse
- */
+	@brief DiagramView::mouseMoveEvent
+	Manage the event move mouse
+*/
 void DiagramView::mouseMoveEvent(QMouseEvent *e)
 {
 	if (m_event_interface && m_event_interface->mouseMoveEvent(e)) return;
@@ -509,9 +509,9 @@ void DiagramView::mouseMoveEvent(QMouseEvent *e)
 }
 
 /**
- * @brief DiagramView::mouseReleaseEvent
- * Manage event release click mouse
- */
+	@brief DiagramView::mouseReleaseEvent
+	Manage event release click mouse
+*/
 void DiagramView::mouseReleaseEvent(QMouseEvent *e)
 {
 	if (m_event_interface && m_event_interface->mouseReleaseEvent(e)) return;
@@ -563,9 +563,9 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e)
 }
 
 /**
- * @brief DiagramView::gestures
- * @return
- */
+	@brief DiagramView::gestures
+	@return
+*/
 bool DiagramView::gestures() const
 {
 	QSettings settings;
@@ -606,11 +606,11 @@ void DiagramView::wheelEvent(QWheelEvent *event)
 }
 
 /**
- * @brief DiagramView::gestureEvent
- * Use the pinch of the trackpad for zoom
- * @param event
- * @return
- */
+	@brief DiagramView::gestureEvent
+	Use the pinch of the trackpad for zoom
+	@param event
+	@return
+*/
 bool DiagramView::gestureEvent(QGestureEvent *event)
 {
 	if (QGesture *gesture = event->gesture(Qt::PinchGesture))
@@ -639,11 +639,11 @@ void DiagramView::focusInEvent(QFocusEvent *e) {
 }
 
 /**
- * @brief DiagramView::keyPressEvent
- * 	Handles "key press" events. Reimplemented here to switch to visualisation
- *	mode if needed.
- * @param e
- */
+	@brief DiagramView::keyPressEvent
+	Handles "key press" events. Reimplemented here to switch to visualisation
+	mode if needed.
+	@param e
+*/
 void DiagramView::keyPressEvent(QKeyEvent *e)
 {
 	if (m_event_interface && m_event_interface->keyPressEvent(e))
@@ -821,17 +821,17 @@ QString DiagramView::title() const {
 }
 
 /**
- * @brief DiagramView::editDiagramProperties
- * Edit the properties of the viewed digram
- */
+	@brief DiagramView::editDiagramProperties
+	Edit the properties of the viewed digram
+*/
 void DiagramView::editDiagramProperties() {
 	DiagramPropertiesDialog::diagramPropertiesDialog(m_diagram, diagramEditor());
 }
 
 /**
- * @brief DiagramView::adjustSceneRect
- * Calcul and set the area of the scene visualized by this view
- */
+	@brief DiagramView::adjustSceneRect
+	Calcul and set the area of the scene visualized by this view
+*/
 void DiagramView::adjustSceneRect()
 {
 	QRectF scene_rect = m_diagram->sceneRect();
@@ -912,9 +912,9 @@ void DiagramView::applyReadOnly() {
 }
 
 /**
- * @brief DiagramView::editSelectedConductorColor
- * Edit the color of the selected conductor; does nothing if multiple conductors are selected
- */
+	@brief DiagramView::editSelectedConductorColor
+	Edit the color of the selected conductor; does nothing if multiple conductors are selected
+*/
 void DiagramView::editSelectedConductorColor()
 {
 		//retrieve selected content
@@ -996,14 +996,14 @@ void DiagramView::resetConductors() {
 	@param e Evenement
 */
 /**
- * @brief DiagramView::event
- * Manage the event on this diagram view.
- * -At first activation (QEvent::WindowActivate or QEvent::Show) we zoomFit.
- * -Convert event interpreted to mouse event to gesture event if needed.
- * -send Shortcut to view (by default send to QMenu /QAction)
- * @param e the event.
- * @return
- */
+	@brief DiagramView::event
+	Manage the event on this diagram view.
+	-At first activation (QEvent::WindowActivate or QEvent::Show) we zoomFit.
+	-Convert event interpreted to mouse event to gesture event if needed.
+	-send Shortcut to view (by default send to QMenu /QAction)
+	@param e the event.
+	@return
+*/
 bool DiagramView::event(QEvent *e) {
 	if (Q_UNLIKELY(m_first_activation)) {
 		if (e -> type() == QEvent::Show) {
@@ -1031,10 +1031,10 @@ bool DiagramView::event(QEvent *e) {
 }
 
 /**
- * @brief DiagramView::paintEvent
- * Reimplemented from QGraphicsView
- * @param event
- */
+	@brief DiagramView::paintEvent
+	Reimplemented from QGraphicsView
+	@param event
+*/
 void DiagramView::paintEvent(QPaintEvent *event)
 {
 	QGraphicsView::paintEvent(event);
@@ -1113,9 +1113,9 @@ bool DiagramView::selectedItemHasFocus() {
 }
 
 /**
- * @brief DiagramView::editSelection
- * Edit the selected item if he can be edited and if only  one item is selected
- */
+	@brief DiagramView::editSelection
+	Edit the selected item if he can be edited and if only  one item is selected
+*/
 void DiagramView::editSelection() {
 	if (m_diagram -> isReadOnly() || m_diagram -> selectedItems().size() != 1 ) return;
 
@@ -1133,11 +1133,11 @@ void DiagramView::editSelection() {
 }
 
 /**
- * @brief DiagramView::setEventInterface
- * Set an event interface to diagram view.
- * If diagram view already have an event interface, he delete it before.
- * Diagram view take ownership of event interface and delete it when event interface is finish
- */
+	@brief DiagramView::setEventInterface
+	Set an event interface to diagram view.
+	If diagram view already have an event interface, he delete it before.
+	Diagram view take ownership of event interface and delete it when event interface is finish
+*/
 void DiagramView::setEventInterface(DVEventInterface *event_interface)
 {
 	if (m_event_interface) delete m_event_interface;
@@ -1146,10 +1146,10 @@ void DiagramView::setEventInterface(DVEventInterface *event_interface)
 }
 
 /**
- * @brief DiagramView::contextMenuActions
- * @return a list of actions currently available for a context menu.
- * 
- */
+	@brief DiagramView::contextMenuActions
+	@return a list of actions currently available for a context menu.
+
+*/
 QList<QAction *> DiagramView::contextMenuActions() const
 {
 	QList<QAction *> list;
@@ -1189,9 +1189,9 @@ QList<QAction *> DiagramView::contextMenuActions() const
 }
 
 /**
- * @brief DiagramView::contextMenuEvent
- * @param e
- */
+	@brief DiagramView::contextMenuEvent
+	@param e
+*/
 void DiagramView::contextMenuEvent(QContextMenuEvent *e)
 {
 	QGraphicsView::contextMenuEvent(e);
@@ -1237,9 +1237,9 @@ QETDiagramEditor *DiagramView::diagramEditor() const {
 }
 
 /**
- * @brief DiagramView::mouseDoubleClickEvent
- * @param e
- */
+	@brief DiagramView::mouseDoubleClickEvent
+	@param e
+*/
 void DiagramView::mouseDoubleClickEvent(QMouseEvent *e)
 {
 	if (m_event_interface && m_event_interface -> mouseDoubleClickEvent(e)) return;

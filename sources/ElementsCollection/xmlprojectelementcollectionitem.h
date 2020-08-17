@@ -24,9 +24,9 @@
 class QETProject;
 
 /**
- * @brief The XmlProjectElementCollectionItem class
- * This class specialise ElementCollectionItem for manage an xml collection embedded in a project.
- */
+	@brief The XmlProjectElementCollectionItem class
+	This class specialise ElementCollectionItem for manage an xml collection embedded in a project.
+*/
 class XmlProjectElementCollectionItem : public ElementCollectionItem
 {
 	public:

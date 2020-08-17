@@ -29,18 +29,18 @@ static int MAX_DND_PIXMAP_WIDTH = 500;
 static int MAX_DND_PIXMAP_HEIGHT = 375;
 
 /**
- * @brief ElementsTreeView::ElementsTreeView
- * @param parent
- */
+	@brief ElementsTreeView::ElementsTreeView
+	@param parent
+*/
 ElementsTreeView::ElementsTreeView(QWidget *parent) :
 	QTreeView(parent)
 {}
 
 /**
- * @brief ElementsTreeView::startDrag
- * Reimplemented from QTreeView
- * @param supportedActions
- */
+	@brief ElementsTreeView::startDrag
+	Reimplemented from QTreeView
+	@param supportedActions
+*/
 void ElementsTreeView::startDrag(Qt::DropActions supportedActions)
 {
 	QModelIndex index = currentIndex();
@@ -63,10 +63,10 @@ void ElementsTreeView::startDrag(Qt::DropActions supportedActions)
 }
 
 /**
- * @brief ElementsTreeView::startElementDrag
- * Build a QDrag according to the content of @location
- * @param location : location to use for create the content of the QDrag
- */
+	@brief ElementsTreeView::startElementDrag
+	Build a QDrag according to the content of @location
+	@param location : location to use for create the content of the QDrag
+*/
 void ElementsTreeView::startElementDrag(const ElementsLocation &location)
 {
 	if (!location.exist())
