@@ -365,8 +365,47 @@ QString ElementQueryWidget::queryStr() const
 		filter_.prepend( " WHERE");
 	}
 
-	QString q(select + column + from + where + filter_ + order_by);
+	QString q(select + column + m_count + from + where + filter_ + m_group_by + order_by);
 	return q;
+}
+
+/**
+ * @brief ElementQueryWidget::setGroupBy
+ * Add the query instruction GROUP BY.
+ * @param text : the text of the GROUP BY instruction:
+ * ex : if @text = designation, the query will contain "GROUP BY designation"
+ * @param set :
+ * true by default -> GROUP BY will be used.
+ * false -> GROUP BY will be not used
+ */
+void ElementQueryWidget::setGroupBy(QString text, bool set)
+{
+	if (set) {
+		m_group_by = QString(" GROUP BY ") + text;
+	} else {
+		m_group_by.clear();
+	}
+	updateQueryLine();
+}
+
+/**
+ * @brief ElementQueryWidget::setCount
+ * Add the query instruction COUNT.
+ * Unlike setGroupBy, you have to write the entire sentance.
+ * ex : text = "COUNT(*) AS designation_qty". the query will contain what you write.
+ * @param text : the count instruction
+ * @param set :
+ * true by default -> count will be used.
+ * false -> count will be not used.
+ */
+void ElementQueryWidget::setCount(QString text, bool set)
+{
+	if (set) {
+		m_count = QString(", " + text + " ");
+	} else {
+		m_count.clear();
+	}
+	updateQueryLine();
 }
 
 /**

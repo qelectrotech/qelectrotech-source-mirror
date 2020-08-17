@@ -42,6 +42,8 @@ class ElementQueryWidget : public QWidget
 
 		void setQuery(const QString &query);
 		QString queryStr() const;
+		void setGroupBy(QString text, bool set = true);
+		void setCount(QString text, bool set = true);
 
 		static QString modelIdentifier() {return "nomenclature";}
 
@@ -74,7 +76,9 @@ class ElementQueryWidget : public QWidget
 		QHash <QString, QString> m_export_info;
 		QButtonGroup m_button_group;
 		QList <QListWidgetItem *> m_items_list;
-		QString m_custom_query;
+		QString m_custom_query,
+				m_group_by,
+				m_count;
 		QHash <QString, QPair<int, QString>> m_filter;
 };
 
