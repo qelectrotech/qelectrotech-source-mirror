@@ -161,11 +161,6 @@ void delete_old_log_files(int days)
 */
 int main(int argc, char **argv)
 {
-	// for debugging
-	qInstallMessageHandler(myMessageOutput);
-	qInfo("Start-up");
-	// delete old log files of max 7 days old.
-	delete_old_log_files(7);
 	//Some setup, notably to use with QSetting.
 	QCoreApplication::setOrganizationName("QElectroTech");
 	QCoreApplication::setOrganizationDomain("qelectrotech.org");
@@ -174,12 +169,6 @@ int main(int argc, char **argv)
 	//HighDPI
 	QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 	SingleApplication app(argc, argv, true);
-	// for debugging
-	{
-		Machine_info *my_ma =new Machine_info();
-		my_ma->send_info_to_debug();
-		delete my_ma;
-	}
 #ifdef Q_OS_MACOS
 	//Handle the opening of QET when user double click on a .qet .elmt .tbt file
 	//or drop these same files to the QET icon of the dock
@@ -187,7 +176,7 @@ int main(int argc, char **argv)
 	app.installEventFilter(&open_event);
 	app.setStyle(QStyleFactory::create("Fusion"));
 #endif
-	
+
 	if (app.isSecondary())
 	{
 		QStringList arg_list = app.arguments();
@@ -199,12 +188,23 @@ int main(int argc, char **argv)
 		app.sendMessage(message.toUtf8());
 		return 0;
 	}
-	
+
 	QETApp qetapp;
 	QETApp::instance()->installEventFilter(&qetapp);
 	QObject::connect(&app, &SingleApplication::receivedMessage,
 			 &qetapp, &QETApp::receiveMessage);
-	
+
+	// for debugging
+	qInstallMessageHandler(myMessageOutput);
+	qInfo("Start-up");
+	// delete old log files of max 7 days old.
+	delete_old_log_files(7);
+	{
+		Machine_info *my_ma =new Machine_info();
+		my_ma->send_info_to_debug();
+		delete my_ma;
+	}
+
 	return app.exec();
 }
 
