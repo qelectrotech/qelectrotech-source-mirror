@@ -836,12 +836,16 @@ QDomDocument QETProject::toXml() {
 	
 	// schemas
 	
-	// qDebug() << "Export XML de" << diagrams_.count() << "schemas";
+	qDebug() << "Export XML de" << m_diagrams_list.count() << "schemas";
 	int order_num = 1;
 	const QList<Diagram *> diagrams_list = m_diagrams_list;
 	for(Diagram *diagram : diagrams_list)
 	{
-		qDebug() << qPrintable(QString("QETProject::toXml() : exporting diagram \"%1\"").arg(diagram -> title())) << "[" << diagram << "]";
+		qDebug() << QString("exporting diagram \"%1\""
+				    ).arg(diagram -> title())
+			 << "["
+			 << diagram
+			 << "]";
 		QDomElement xml_diagram = diagram->toXml().documentElement();
 		QDomNode xml_node = xml_doc.importNode(xml_diagram, true);
 
@@ -849,7 +853,7 @@ QDomDocument QETProject::toXml() {
 		appended_diagram.toElement().setAttribute("order", order_num ++);
 	}
 	
-		//Write the elements collection.
+	// Write the elements collection.
 	project_root.appendChild(m_elements_collection->root().cloneNode(true));
 	
 	return(xml_doc);
@@ -952,12 +956,12 @@ bool QETProject::isEmpty() const {
 */
 ElementsLocation QETProject::importElement(ElementsLocation &location)
 {
-		//Location isn't an element or doesn't exist
+	//Location isn't an element or doesn't exist
 	if (! (location.isElement() && location.exist()) ) {
 		return ElementsLocation();
 	}
 
-		//Get the path where the element must be imported
+	//Get the path where the element must be imported
 	QString import_path;
 	if (location.isFileSystem()) {
 		import_path = "import/" + location.collectionPath(false);
@@ -970,11 +974,11 @@ ElementsLocation QETProject::importElement(ElementsLocation &location)
 		import_path = location.collectionPath(false);
 	}
 
-		//Element already exist in the embedded collection, we ask what to do to user
+	//Element already exist in the embedded collection, we ask what to do to user
 	if (m_elements_collection->exist(import_path)) {
 		ElementsLocation existing_location(import_path, this);
 
-			//@existing_location and @location have the same uuid, so it is the same element
+		//@existing_location and @location have the same uuid, so it is the same element
 		if (existing_location.uuid() == location.uuid()) {
 			return existing_location;
 		}
@@ -983,16 +987,16 @@ ElementsLocation QETProject::importElement(ElementsLocation &location)
 		if (ied.exec() == QDialog::Accepted) {
 			QET::Action action = ied.action();
 
-				//Use the exisitng element
+			//Use the exisitng element
 			if (action == QET::Ignore) {
 				return existing_location;
 			}
-				//Erase the existing element, and use the newer instead
+			//Erase the existing element, and use the newer instead
 			else if (action == QET::Erase) {
 				ElementsLocation parent_loc = existing_location.parent();
 				return m_elements_collection->copy(location, parent_loc);
 			}
-				//Add the new element with an other name.
+			//Add the new element with an other name.
 			else if (action == QET::Rename) {
 				int a = 0;
 				QString parent_path = existing_location.parent().projectCollectionPath();
@@ -1018,12 +1022,14 @@ ElementsLocation QETProject::importElement(ElementsLocation &location)
 			return ElementsLocation();
 		}
 	}
-		//Element doesn't exist in the collection, we just import it
+	//Element doesn't exist in the collection, we just import it
 	else {
-		ElementsLocation loc(m_elements_collection->addElement(location), this);
+		ElementsLocation loc(m_elements_collection->addElement(
+					     location), this);
 
 		if (!loc.exist()) {
-			qDebug() << "QETProject::importElement : failed to import location. " << location;
+			qDebug() << "failed to import location. "
+				 << location;
 			return ElementsLocation();
 		}
 		else {
