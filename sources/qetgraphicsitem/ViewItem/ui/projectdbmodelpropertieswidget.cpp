@@ -1,19 +1,19 @@
 /*
-        Copyright 2006-2020 The QElectroTech Team
-        This file is part of QElectroTech.
+	Copyright 2006-2020 The QElectroTech Team
+	This file is part of QElectroTech.
 
-        QElectroTech is free software: you can redistribute it and/or modify
-        it under the terms of the GNU General Public License as published by
-        the Free Software Foundation, either version 2 of the License, or
-        (at your option) any later version.
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
 
-        QElectroTech is distributed in the hope that it will be useful,
-        but WITHOUT ANY WARRANTY; without even the implied warranty of
-        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-        GNU General Public License for more details.
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+	GNU General Public License for more details.
 
-        You should have received a copy of the GNU General Public License
-        along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "projectdbmodelpropertieswidget.h"
 #include "ui_projectdbmodelpropertieswidget.h"
@@ -25,10 +25,10 @@
 #include <QDialogButtonBox>
 
 /**
- * @brief projectDBModelPropertiesWidget::projectDBModelPropertiesWidget
- * @param model
- * @param parent
- */
+	@brief projectDBModelPropertiesWidget::projectDBModelPropertiesWidget
+	@param model
+	@param parent
+*/
 ProjectDBModelPropertiesWidget::ProjectDBModelPropertiesWidget(ProjectDBModel *model, QWidget *parent) :
 	PropertiesEditorWidget(parent),
 	ui(new Ui::ProjectDBModelPropertiesWidget)
@@ -38,16 +38,16 @@ ProjectDBModelPropertiesWidget::ProjectDBModelPropertiesWidget(ProjectDBModel *m
 }
 
 /**
- * @brief projectDBModelPropertiesWidget::~projectDBModelPropertiesWidget
- */
+	@brief projectDBModelPropertiesWidget::~projectDBModelPropertiesWidget
+*/
 ProjectDBModelPropertiesWidget::~ProjectDBModelPropertiesWidget() {
     delete ui;
 }
 
 /**
- * @brief projectDBModelPropertiesWidget::setModel
- * @param model
- */
+	@brief projectDBModelPropertiesWidget::setModel
+	@param model
+*/
 void ProjectDBModelPropertiesWidget::setModel(ProjectDBModel *model) {
     m_model = model;
 	ui->m_edit_query_pb->setEnabled(m_model);
@@ -55,8 +55,8 @@ void ProjectDBModelPropertiesWidget::setModel(ProjectDBModel *model) {
 }
 
 /**
- * @brief projectDBModelPropertiesWidget::on_m_edit_query_pb_clicked
- */
+	@brief projectDBModelPropertiesWidget::on_m_edit_query_pb_clicked
+*/
 void ProjectDBModelPropertiesWidget::on_m_edit_query_pb_clicked()
 {
 	QDialog d(this);

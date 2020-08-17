@@ -36,9 +36,9 @@ bool sorting(QGraphicsItem *qgia, QGraphicsItem *qgib)
 }
 
 /**
- * @brief ElementTextItemGroup::ElementTextItemGroup
- * @param parent
- */
+	@brief ElementTextItemGroup::ElementTextItemGroup
+	@param parent
+*/
 ElementTextItemGroup::ElementTextItemGroup(const QString &name, Element *parent) :
 	QGraphicsItemGroup(parent),
 	m_name(name),
@@ -52,9 +52,9 @@ ElementTextItemGroup::~ElementTextItemGroup()
 {}
 
 /**
- * @brief ElementTextItemGroup::addToGroup
- * @param item
- */
+	@brief ElementTextItemGroup::addToGroup
+	@param item
+*/
 void ElementTextItemGroup::addToGroup(QGraphicsItem *item)
 {
 	if(item->type() == DynamicElementTextItem::Type)
@@ -83,9 +83,9 @@ void ElementTextItemGroup::addToGroup(QGraphicsItem *item)
 }
 
 /**
- * @brief ElementTextItemGroup::removeFromGroup
- * @param item
- */
+	@brief ElementTextItemGroup::removeFromGroup
+	@param item
+*/
 void ElementTextItemGroup::removeFromGroup(QGraphicsItem *item)
 {
 	QGraphicsItemGroup::removeFromGroup(item);
@@ -114,21 +114,21 @@ void ElementTextItemGroup::removeFromGroup(QGraphicsItem *item)
 }
 
 /**
- * @brief ElementTextItemGroup::blockAlignmentUpdate
- * If true, the texts in this group are never aligned, moved, rotated etc...
- * the texts stay as it was, until blockAlignmentUpdate is set to false.
- * @param block
- */
+	@brief ElementTextItemGroup::blockAlignmentUpdate
+	If true, the texts in this group are never aligned, moved, rotated etc...
+	the texts stay as it was, until blockAlignmentUpdate is set to false.
+	@param block
+*/
 void ElementTextItemGroup::blockAlignmentUpdate(bool block)
 {
 	m_block_alignment_update = block;
 }
 
 /**
- * @brief ElementTextItemGroup::setAlignement
- * Set the alignement of this group
- * @param alignement
- */
+	@brief ElementTextItemGroup::setAlignement
+	Set the alignement of this group
+	@param alignement
+*/
 void ElementTextItemGroup::setAlignment(Qt::Alignment alignement)
 {
 	m_alignment = alignement;
@@ -142,11 +142,11 @@ Qt::Alignment ElementTextItemGroup::alignment() const
 }
 
 /**
- * @brief ElementTextItemGroup::setAlignment
- * Update the alignement of the items in this group, according
- * to the current alignement.
- * @param alignement
- */
+	@brief ElementTextItemGroup::setAlignment
+	Update the alignement of the items in this group, according
+	to the current alignement.
+	@param alignement
+*/
 void ElementTextItemGroup::updateAlignment()
 {
 	if(m_block_alignment_update)
@@ -235,11 +235,11 @@ void ElementTextItemGroup::updateAlignment()
 }
 
 /**
- * @brief ElementTextItemGroup::setVerticalAdjustment
- * Set the value of the vertical adjustment to @v.
- * The vertical adjutment is use to adjust the space between the texts of this group.
- * @param v
- */
+	@brief ElementTextItemGroup::setVerticalAdjustment
+	Set the value of the vertical adjustment to @v.
+	The vertical adjutment is use to adjust the space between the texts of this group.
+	@param v
+*/
 void ElementTextItemGroup::setVerticalAdjustment(int v)
 {
 	prepareGeometryChange();
@@ -249,9 +249,9 @@ void ElementTextItemGroup::setVerticalAdjustment(int v)
 }
 
 /**
- * @brief ElementTextItemGroup::setName
- * @param name Set the name of this group
- */
+	@brief ElementTextItemGroup::setName
+	@param name Set the name of this group
+*/
 void ElementTextItemGroup::setName(QString name)
 {
 	m_name = std::move(name);
@@ -311,9 +311,9 @@ bool ElementTextItemGroup::frame() const {
 }
 
 /**
- * @brief ElementTextItemGroup::texts
- * @return Every texts in this group
- */
+	@brief ElementTextItemGroup::texts
+	@return Every texts in this group
+*/
 QList<DynamicElementTextItem *> ElementTextItemGroup::texts() const
 {
 	QList<DynamicElementTextItem *> list;
@@ -326,9 +326,9 @@ QList<DynamicElementTextItem *> ElementTextItemGroup::texts() const
 }
 
 /**
- * @brief ElementTextItemGroup::diagram
- * @return The diagram of this group, or nullptr if this group is not in a diagram
- */
+	@brief ElementTextItemGroup::diagram
+	@return The diagram of this group, or nullptr if this group is not in a diagram
+*/
 Diagram *ElementTextItemGroup::diagram() const
 {
 	if(scene())
@@ -338,9 +338,9 @@ Diagram *ElementTextItemGroup::diagram() const
 }
 
 /**
- * @brief ElementTextItemGroup::parentElement
- * @return The parent element of this group or nullptr
- */
+	@brief ElementTextItemGroup::parentElement
+	@return The parent element of this group or nullptr
+*/
 Element *ElementTextItemGroup::parentElement() const
 {
 	if(parentItem() && parentItem()->type() == Element::Type)
@@ -350,11 +350,11 @@ Element *ElementTextItemGroup::parentElement() const
 }
 
 /**
- * @brief ElementTextItemGroup::toXml
- * Export data of this group to xml
- * @param dom_document
- * @return 
- */
+	@brief ElementTextItemGroup::toXml
+	Export data of this group to xml
+	@param dom_document
+	@return 
+*/
 QDomElement ElementTextItemGroup::toXml(QDomDocument &dom_document) const
 {
 	QDomElement dom_element = dom_document.createElement(this->xmlTaggName());
@@ -385,10 +385,10 @@ QDomElement ElementTextItemGroup::toXml(QDomDocument &dom_document) const
 }
 
 /**
- * @brief ElementTextItemGroup::fromXml
- * Import data of this group from xml
- * @param dom_element
- */
+	@brief ElementTextItemGroup::fromXml
+	Import data of this group from xml
+	@param dom_element
+*/
 void ElementTextItemGroup::fromXml(QDomElement &dom_element)
 {
 	if (dom_element.tagName() != xmlTaggName()) {
@@ -430,11 +430,11 @@ void ElementTextItemGroup::fromXml(QDomElement &dom_element)
 }
 
 /**
- * @brief ElementTextItemGroup::paint
- * @param painter
- * @param option
- * @param widget
- */
+	@brief ElementTextItemGroup::paint
+	@param painter
+	@param option
+	@param widget
+*/
 void ElementTextItemGroup::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
 	Q_UNUSED(option);
@@ -484,9 +484,9 @@ void ElementTextItemGroup::paint(QPainter *painter, const QStyleOptionGraphicsIt
 }
 
 /**
- * @brief ElementTextItemGroup::boundingRect
- * @return 
- */
+	@brief ElementTextItemGroup::boundingRect
+	@return 
+*/
 QRectF ElementTextItemGroup::boundingRect() const
 {
 		//If we refer to the Qt doc, the bounding rect of a QGraphicsItemGroup,
@@ -530,9 +530,9 @@ void ElementTextItemGroup::setPos(qreal x, qreal y)
 }
 
 /**
- * @brief ElementTextItemGroup::mousePressEvent
- * @param event
- */
+	@brief ElementTextItemGroup::mousePressEvent
+	@param event
+*/
 void ElementTextItemGroup::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {	
 	if(event->button() == Qt::LeftButton)
@@ -546,9 +546,9 @@ void ElementTextItemGroup::mousePressEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief ElementTextItemGroup::mouseMoveEvent
- * @param event
- */
+	@brief ElementTextItemGroup::mouseMoveEvent
+	@param event
+*/
 void ElementTextItemGroup::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
 	if((event->buttons() & Qt::LeftButton) && (flags() & ItemIsMovable))
@@ -582,9 +582,9 @@ void ElementTextItemGroup::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief ElementTextItemGroup::mouseReleaseEvent
- * @param event
- */
+	@brief ElementTextItemGroup::mouseReleaseEvent
+	@param event
+*/
 void ElementTextItemGroup::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
 	if(diagram())
@@ -631,9 +631,9 @@ void ElementTextItemGroup::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event
 }
 
 /**
- * @brief ElementTextItemGroup::keyPressEvent
- * @param event
- */
+	@brief ElementTextItemGroup::keyPressEvent
+	@param event
+*/
 void ElementTextItemGroup::keyPressEvent(QKeyEvent *event)
 {	
  	if(event->modifiers() == Qt::ControlModifier)

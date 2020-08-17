@@ -22,29 +22,29 @@
 #include "QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 
 /**
- * @brief PartRectangle::PartRectangle
- * Constructor
- * @param editor the QETElementEditor of this item
- * @param parent parent item
- */
+	@brief PartRectangle::PartRectangle
+	Constructor
+	@param editor the QETElementEditor of this item
+	@param parent parent item
+*/
 PartRectangle::PartRectangle(QETElementEditor *editor, QGraphicsItem *parent) :
 	CustomElementGraphicPart(editor, parent)
 {}
 
 /**
- * @brief PartRectangle::~PartRectangle
- */
+	@brief PartRectangle::~PartRectangle
+*/
 PartRectangle::~PartRectangle() {
 	removeHandler();
 }
 
 /**
- * @brief PartRectangle::paint
- * Draw this Rectangle
- * @param painter
- * @param options
- * @param widget
- */
+	@brief PartRectangle::paint
+	Draw this Rectangle
+	@param painter
+	@param options
+	@param widget
+*/
 void PartRectangle::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *widget)
 {
 	Q_UNUSED(widget);
@@ -72,11 +72,11 @@ void PartRectangle::paint(QPainter *painter, const QStyleOptionGraphicsItem *opt
 }
 
 /**
- * @brief PartRectangle::toXml
- * Export this rectangle in xml
- * @param xml_document : Xml document to use for create the xml element.
- * @return an xml element that describe this ellipse
- */
+	@brief PartRectangle::toXml
+	Export this rectangle in xml
+	@param xml_document : Xml document to use for create the xml element.
+	@return an xml element that describe this ellipse
+*/
 const QDomElement PartRectangle::toXml(QDomDocument &xml_document) const
 {
 	QDomElement xml_element = xml_document.createElement("rect");
@@ -104,10 +104,10 @@ const QDomElement PartRectangle::toXml(QDomDocument &xml_document) const
 }
 
 /**
- * @brief PartRectangle::fromXml
- * Import the properties of this rectangle from a xml element.
- * @param qde : Xml document to use.
- */
+	@brief PartRectangle::fromXml
+	Import the properties of this rectangle from a xml element.
+	@param qde : Xml document to use.
+*/
 void PartRectangle::fromXml(const QDomElement &qde)
 {
 	stylesFromXml(qde);
@@ -123,18 +123,18 @@ void PartRectangle::fromXml(const QDomElement &qde)
 }
 
 /**
- * @brief PartRectangle::rect
- * @return : Returns the item's rectangle.
- */
+	@brief PartRectangle::rect
+	@return : Returns the item's rectangle.
+*/
 QRectF PartRectangle::rect() const {
 	return m_rect;
 }
 
 /**
- * @brief PartRectangle::setRect
- * Sets the item's rectangle to be the given rectangle.
- * @param rect
- */
+	@brief PartRectangle::setRect
+	Sets the item's rectangle to be the given rectangle.
+	@param rect
+*/
 void PartRectangle::setRect(const QRectF &rect)
 {
 	if (rect == m_rect) return;
@@ -161,28 +161,28 @@ void PartRectangle::setYRadius(qreal Y)
 }
 
 /**
- * @brief PartRectangle::sceneGeometricRect
- * @return the minimum, margin-less rectangle this part can fit into, in scene
- * coordinates. It is different from boundingRect() because it is not supposed
- * to imply any margin, and it is different from shape because it is a regular
- * rectangle, not a complex shape.
- */
+	@brief PartRectangle::sceneGeometricRect
+	@return the minimum, margin-less rectangle this part can fit into, in scene
+	coordinates. It is different from boundingRect() because it is not supposed
+	to imply any margin, and it is different from shape because it is a regular
+	rectangle, not a complex shape.
+*/
 QRectF PartRectangle::sceneGeometricRect() const {
 	return(mapToScene(rect()).boundingRect());
 }
 
 /**
- * @brief PartRectangle::sceneTopLeft
- * @return the top left of rectangle, in scene coordinate
- */
+	@brief PartRectangle::sceneTopLeft
+	@return the top left of rectangle, in scene coordinate
+*/
 QPointF PartRectangle::sceneTopLeft() const {
 	return(mapToScene(rect().topLeft()));
 }
 
 /**
- * @brief PartRectangle::shape
- * @return the shape of this item
- */
+	@brief PartRectangle::shape
+	@return the shape of this item
+*/
 QPainterPath PartRectangle::shape() const
 {
 	QPainterPath shape;
@@ -207,9 +207,9 @@ QPainterPath PartRectangle::shadowShape() const
 }
 
 /**
- * @brief PartRectangle::boundingRect
- * @return Bounding rectangle this part can fit into
- */
+	@brief PartRectangle::boundingRect
+	@return Bounding rectangle this part can fit into
+*/
 QRectF PartRectangle::boundingRect() const
 {
 	qreal adjust = (SHADOWS_HEIGHT + penWeight()) / 2;
@@ -224,20 +224,20 @@ QRectF PartRectangle::boundingRect() const
 }
 
 /**
- * @brief PartRectangle::isUseless
- * @return true if this part is irrelevant and does not deserve to be Retained / registered.
- * An rectangle is relevant when he's not null.
- */
+	@brief PartRectangle::isUseless
+	@return true if this part is irrelevant and does not deserve to be Retained / registered.
+	An rectangle is relevant when he's not null.
+*/
 bool PartRectangle::isUseless() const {
 	return(rect().isNull());
 }
 
 /**
- * @brief PartRectangle::startUserTransformation
- * Start the user-induced transformation, provided this primitive is contained
- * within the initial_selection_rect bounding rectangle.
- * @param initial_selection_rect
- */
+	@brief PartRectangle::startUserTransformation
+	Start the user-induced transformation, provided this primitive is contained
+	within the initial_selection_rect bounding rectangle.
+	@param initial_selection_rect
+*/
 void PartRectangle::startUserTransformation(const QRectF &initial_selection_rect)
 {
 	Q_UNUSED(initial_selection_rect)
@@ -247,11 +247,11 @@ void PartRectangle::startUserTransformation(const QRectF &initial_selection_rect
 }
 
 /**
- * @brief PartRectangle::handleUserTransformation
- * Handle the user-induced transformation from \a initial_selection_rect to \a new_selection_rect
- * @param initial_selection_rect
- * @param new_selection_rect
- */
+	@brief PartRectangle::handleUserTransformation
+	Handle the user-induced transformation from \a initial_selection_rect to \a new_selection_rect
+	@param initial_selection_rect
+	@param new_selection_rect
+*/
 void PartRectangle::handleUserTransformation(const QRectF &initial_selection_rect, const QRectF &new_selection_rect)
 {
 	QList<QPointF> mapped_points = mapPoints(initial_selection_rect, new_selection_rect, saved_points_);
@@ -259,10 +259,10 @@ void PartRectangle::handleUserTransformation(const QRectF &initial_selection_rec
 }
 
 /**
- * @brief PartRectangle::mouseReleaseEvent
- * Handle mouse release event
- * @param event
- */
+	@brief PartRectangle::mouseReleaseEvent
+	Handle mouse release event
+	@param event
+*/
 void PartRectangle::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (event->button() == Qt::LeftButton && event->buttonDownPos(Qt::LeftButton) == event->pos())
@@ -272,11 +272,11 @@ void PartRectangle::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief PartRectangle::itemChange
- * @param change
- * @param value
- * @return 
- */
+	@brief PartRectangle::itemChange
+	@param change
+	@param value
+	@return 
+*/
 QVariant PartRectangle::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value)
 {
 	if (change == ItemSelectedHasChanged && scene())
@@ -312,11 +312,11 @@ QVariant PartRectangle::itemChange(QGraphicsItem::GraphicsItemChange change, con
 }
 
 /**
- * @brief PartRectangle::sceneEventFilter
- * @param watched
- * @param event
- * @return 
- */
+	@brief PartRectangle::sceneEventFilter
+	@param watched
+	@param event
+	@return 
+*/
 bool PartRectangle::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 {
 		//Watched must be an handler
@@ -352,8 +352,8 @@ bool PartRectangle::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 }
 
 /**
- * @brief PartRectangle::switchResizeMode
- */
+	@brief PartRectangle::switchResizeMode
+*/
 void PartRectangle::switchResizeMode()
 {
 	if (m_resize_mode == 1)
@@ -385,8 +385,8 @@ void PartRectangle::switchResizeMode()
 }
 
 /**
- * @brief PartRectangle::adjusteHandlerPos
- */
+	@brief PartRectangle::adjusteHandlerPos
+*/
 void PartRectangle::adjusteHandlerPos()
 {
 	if (m_handler_vector.isEmpty()) {
@@ -417,10 +417,10 @@ void PartRectangle::adjusteHandlerPos()
 }
 
 /**
- * @brief PartRectangle::handlerMousePressEvent
- * @param qghi
- * @param event
- */
+	@brief PartRectangle::handlerMousePressEvent
+	@param qghi
+	@param event
+*/
 void PartRectangle::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(qghi)
@@ -435,10 +435,10 @@ void PartRectangle::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphi
 }
 
 /**
- * @brief PartRectangle::handlerMouseMoveEvent
- * @param qghi
- * @param event
- */
+	@brief PartRectangle::handlerMouseMoveEvent
+	@param qghi
+	@param event
+*/
 void PartRectangle::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(qghi)
@@ -496,9 +496,9 @@ void PartRectangle::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGrap
 }
 
 /**
- * @brief PartRectangle::sceneSelectionChanged
- * When the scene selection change, if there are several primitive selected, we remove the handler of this item
- */
+	@brief PartRectangle::sceneSelectionChanged
+	When the scene selection change, if there are several primitive selected, we remove the handler of this item
+*/
 void PartRectangle::sceneSelectionChanged()
 {
 	if (this->isSelected() && scene()->selectedItems().size() == 1)
@@ -508,9 +508,9 @@ void PartRectangle::sceneSelectionChanged()
 }
 
 /**
- * @brief PartRectangle::addHandler
- * Add handlers for this item
- */
+	@brief PartRectangle::addHandler
+	Add handlers for this item
+*/
 void PartRectangle::addHandler()
 {
 	if (m_handler_vector.isEmpty() && scene())
@@ -538,9 +538,9 @@ void PartRectangle::addHandler()
 }
 
 /**
- * @brief PartRectangle::removeHandler
- * Remove the handlers of this item
- */
+	@brief PartRectangle::removeHandler
+	Remove the handlers of this item
+*/
 void PartRectangle::removeHandler()
 {
 	if (!m_handler_vector.isEmpty())

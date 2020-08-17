@@ -29,9 +29,9 @@ namespace Ui {
 }
 
 /**
- * @brief The RectangleEditor class
- * This class provides a widget to edit rectangles within the element editor.
- */
+	@brief The RectangleEditor class
+	This class provides a widget to edit rectangles within the element editor.
+*/
 class RectangleEditor : public ElementItemEditor
 {
 	Q_OBJECT
@@ -58,9 +58,9 @@ class RectangleEditor : public ElementItemEditor
 	void xRadiusChanged();
 	void yRadiusChanged();
 	/*!
-		 * \brief setUpChangeConnections
-		 * Setup the connection from the rectangles(s) to the widget, to update it when the rectangles(s) are changed (moved ...)
-		 */
+			\brief setUpChangeConnections
+			Setup the connection from the rectangles(s) to the widget, to update it when the rectangles(s) are changed (moved ...)
+	*/
 	void setUpChangeConnections();
 	void disconnectChangeConnections();
 	

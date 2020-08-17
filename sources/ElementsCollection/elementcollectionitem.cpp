@@ -19,16 +19,16 @@
 #include "elementcollectionitem.h"
 
 /**
- * @brief ElementCollectionItem::ElementCollectionItem
- * Constructor
- */
+	@brief ElementCollectionItem::ElementCollectionItem
+	Constructor
+*/
 ElementCollectionItem::ElementCollectionItem()
 {}
 
 /**
- * @brief ElementCollectionItem::clearData
- * Reset the data
- */
+	@brief ElementCollectionItem::clearData
+	Reset the data
+*/
 void ElementCollectionItem::clearData()
 {
 	setText(QString());
@@ -38,13 +38,13 @@ void ElementCollectionItem::clearData()
 }
 
 /**
- * @brief ElementCollectionItem::lastItemForPath
- * Return the last existing item in this ElementCollectionItem hierarchy according to the given path.
- * Next_item is the first non existing item in this hierarchy according to the given path.
- * @param path : The path to find last item. The path must be in form : path/otherPath/.../.../myElement.elmt.
- * @param no_found_path : The first item that not exist in this hierarchy
- * @return : The last item that exist in this hierarchy, or nullptr can't find (an error was occurred, or path already exist)
- */
+	@brief ElementCollectionItem::lastItemForPath
+	Return the last existing item in this ElementCollectionItem hierarchy according to the given path.
+	Next_item is the first non existing item in this hierarchy according to the given path.
+	@param path : The path to find last item. The path must be in form : path/otherPath/.../.../myElement.elmt.
+	@param no_found_path : The first item that not exist in this hierarchy
+	@return : The last item that exist in this hierarchy, or nullptr can't find (an error was occurred, or path already exist)
+*/
 ElementCollectionItem *ElementCollectionItem::lastItemForPath(const QString &path, QString &no_found_path)
 {
 	QStringList str_list = path.split("/");
@@ -67,11 +67,11 @@ ElementCollectionItem *ElementCollectionItem::lastItemForPath(const QString &pat
 }
 
 /**
- * @brief ElementCollectionItem::childWithCollectionName
- * Return the child with the collection name @name, else return nullptr
- * @param name
- * @return
- */
+	@brief ElementCollectionItem::childWithCollectionName
+	Return the child with the collection name @name, else return nullptr
+	@param name
+	@return
+*/
 ElementCollectionItem *ElementCollectionItem::childWithCollectionName(const QString& name) const
 {
 	rowCount();
@@ -85,10 +85,10 @@ ElementCollectionItem *ElementCollectionItem::childWithCollectionName(const QStr
 }
 
 /**
- * @brief ElementCollectionItem::directChilds
- * Return the direct child of this item
- * @return
- */
+	@brief ElementCollectionItem::directChilds
+	Return the direct child of this item
+	@return
+*/
 QList<QStandardItem *> ElementCollectionItem::directChilds() const
 {
 	QList <QStandardItem *> item_list;
@@ -100,12 +100,12 @@ QList<QStandardItem *> ElementCollectionItem::directChilds() const
 }
 
 /**
- * @brief ElementCollectionItem::rowForInsertItem
- * Return the row for insert a new child item to this item with name @collection_name.
- * If row can't be found (collection_name is null, or already exist) return -1;
- * @param collection_name
- * @return
- */
+	@brief ElementCollectionItem::rowForInsertItem
+	Return the row for insert a new child item to this item with name @collection_name.
+	If row can't be found (collection_name is null, or already exist) return -1;
+	@param collection_name
+	@return
+*/
 int ElementCollectionItem::rowForInsertItem(const QString &name)
 {
 	if (name.isEmpty())
@@ -137,10 +137,10 @@ int ElementCollectionItem::rowForInsertItem(const QString &name)
 }
 
 /**
- * @brief ElementCollectionItem::itemAtPath
- * @param path
- * @return the item at path or nullptr if doesn't exist
- */
+	@brief ElementCollectionItem::itemAtPath
+	@param path
+	@return the item at path or nullptr if doesn't exist
+*/
 ElementCollectionItem *ElementCollectionItem::itemAtPath(const QString &path)
 {
 	QStringList str_list = path.split("/");
@@ -160,9 +160,9 @@ ElementCollectionItem *ElementCollectionItem::itemAtPath(const QString &path)
 }
 
 /**
- * @brief ElementCollectionItem::elementsDirectChild
- * @return The direct element child of this item
- */
+	@brief ElementCollectionItem::elementsDirectChild
+	@return The direct element child of this item
+*/
 QList<ElementCollectionItem *> ElementCollectionItem::elementsDirectChild() const
 {
 	QList <ElementCollectionItem *> element_child;
@@ -177,9 +177,9 @@ QList<ElementCollectionItem *> ElementCollectionItem::elementsDirectChild() cons
 }
 
 /**
- * @brief ElementCollectionItem::directoriesDirectChild
- * @return the direct directory child of this item
- */
+	@brief ElementCollectionItem::directoriesDirectChild
+	@return the direct directory child of this item
+*/
 QList<ElementCollectionItem *> ElementCollectionItem::directoriesDirectChild() const
 {
 	QList <ElementCollectionItem *> dir_child;
@@ -194,9 +194,9 @@ QList<ElementCollectionItem *> ElementCollectionItem::directoriesDirectChild() c
 }
 
 /**
- * @brief ElementCollectionItem::elementsChild
- * @return Every elements child (direct and indirect) of this item
- */
+	@brief ElementCollectionItem::elementsChild
+	@return Every elements child (direct and indirect) of this item
+*/
 QList<ElementCollectionItem *> ElementCollectionItem::elementsChild() const
 {
 	QList <ElementCollectionItem *> list = elementsDirectChild();
@@ -208,9 +208,9 @@ QList<ElementCollectionItem *> ElementCollectionItem::elementsChild() const
 }
 
 /**
- * @brief ElementCollectionItem::directoriesChild
- * @return Every directories child (direct and indirect) of this item
- */
+	@brief ElementCollectionItem::directoriesChild
+	@return Every directories child (direct and indirect) of this item
+*/
 QList<ElementCollectionItem *> ElementCollectionItem::directoriesChild() const
 {
 	QList<ElementCollectionItem *> list = directoriesDirectChild();
@@ -224,9 +224,9 @@ QList<ElementCollectionItem *> ElementCollectionItem::directoriesChild() const
 }
 
 /**
- * @brief ElementCollectionItem::items
- * @return every childs of this item (direct and indirect childs)
- */
+	@brief ElementCollectionItem::items
+	@return every childs of this item (direct and indirect childs)
+*/
 QList<ElementCollectionItem *> ElementCollectionItem::items() const
 {
 	QList <ElementCollectionItem *> list;

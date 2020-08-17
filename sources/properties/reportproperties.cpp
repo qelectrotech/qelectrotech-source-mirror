@@ -22,9 +22,9 @@ ReportProperties::ReportProperties()
 {}
 
 /**
- * @brief ReportProperties::defaultProperties
- * @return the default properties stored in the setting file
- */
+	@brief ReportProperties::defaultProperties
+	@return the default properties stored in the setting file
+*/
 QString ReportProperties::defaultProperties()
 {
 	QSettings settings;

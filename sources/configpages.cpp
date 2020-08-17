@@ -33,12 +33,12 @@
 #include <utility>
 
 /**
- * @brief NewDiagramPage::NewDiagramPage
- * Default constructor
- * @param project, If project, edit the propertie of Project
- * else edit the properties by default of QElectroTech
- * @param parent, parent widget
- */
+	@brief NewDiagramPage::NewDiagramPage
+	Default constructor
+	@param project, If project, edit the propertie of Project
+	else edit the properties by default of QElectroTech
+	@param parent, parent widget
+*/
 NewDiagramPage::NewDiagramPage(QETProject *project, QWidget *parent, ProjectPropertiesDialog *ppd) :
 	ConfigPage (parent),
 	ppd_ (ppd),
@@ -93,18 +93,18 @@ NewDiagramPage::NewDiagramPage(QETProject *project, QWidget *parent, ProjectProp
 }
 
 /**
- * @brief NewDiagramPage::~NewDiagramPage
- */
+	@brief NewDiagramPage::~NewDiagramPage
+*/
 NewDiagramPage::~NewDiagramPage() {
 	disconnect(ipw,SIGNAL(openAutoNumFolioEditor(QString)),this,SLOT(changeToAutoFolioTab()));
 }
 
 /**
- * @brief NewDiagramPage::applyConf
- * Apply conf for this page.
- * If there is a project, save in the project,
- * else save to the default conf of QElectroTech
- */
+	@brief NewDiagramPage::applyConf
+	Apply conf for this page.
+	If there is a project, save in the project,
+	else save to the default conf of QElectroTech
+*/
 void NewDiagramPage::applyConf() {
 	if (m_project) { //If project we save to the project
 		if (m_project -> isReadOnly()) return;
@@ -171,27 +171,27 @@ void NewDiagramPage::applyConf() {
 }
 
 /**
- * @brief NewDiagramPage::icon
- * @return  icon of this page
- */
+	@brief NewDiagramPage::icon
+	@return  icon of this page
+*/
 QIcon NewDiagramPage::icon() const {
 	if (m_project) return(QET::Icons::NewDiagram);
 	return(QET::Icons::Projects);
 }
 
 /**
- * @brief NewDiagramPage::title
- * @return title of this page
- */
+	@brief NewDiagramPage::title
+	@return title of this page
+*/
 QString NewDiagramPage::title() const {
 	if (m_project) return(tr("Nouveau folio", "configuration page title"));
 	return(tr("Nouveau projet", "configuration page title"));
 }
 
 /**
- * @brief NewDiagramPage::changeToAutoFolioTab
- * Set the current tab to Autonum
- */
+	@brief NewDiagramPage::changeToAutoFolioTab
+	Set the current tab to Autonum
+*/
 void NewDiagramPage::changeToAutoFolioTab(){
 	if (m_project){
 		ppd_->setCurrentPage(ProjectPropertiesDialog::Autonum);
@@ -201,9 +201,9 @@ void NewDiagramPage::changeToAutoFolioTab(){
 }
 
 /**
- * @brief NewDiagramPage::setFolioAutonum
- * Set temporary TBP to use in auto folio num
- */
+	@brief NewDiagramPage::setFolioAutonum
+	Set temporary TBP to use in auto folio num
+*/
 void NewDiagramPage::setFolioAutonum(QString autoNum){
 	TitleBlockProperties tbptemp = ipw->propertiesAutoNum(std::move(autoNum));
 	ipw->setProperties(tbptemp);
@@ -211,17 +211,17 @@ void NewDiagramPage::setFolioAutonum(QString autoNum){
 }
 
 /**
- * @brief NewDiagramPage::saveCurrentTbp
- * Save current TBP to retrieve after auto folio	num
- */
+	@brief NewDiagramPage::saveCurrentTbp
+	Save current TBP to retrieve after auto folio	num
+*/
 void NewDiagramPage::saveCurrentTbp(){
 	savedTbp = ipw->properties();
 }
 
 /**
- * @brief NewDiagramPage::loadSavedTbp
- * Retrieve saved auto folio num
- */
+	@brief NewDiagramPage::loadSavedTbp
+	Retrieve saved auto folio num
+*/
 void NewDiagramPage::loadSavedTbp(){
 	ipw->setProperties(savedTbp);
 	applyConf();
@@ -304,9 +304,9 @@ PrintConfigPage::~PrintConfigPage() {
 }
 
 /**
- * @brief PrintConfigPage::applyConf
- * Apply the config of this page
- */
+	@brief PrintConfigPage::applyConf
+	Apply the config of this page
+*/
 void PrintConfigPage::applyConf()
 {
 	QString prefix = "print/default";

@@ -23,11 +23,11 @@
 class Element;
 
 /**
- * @brief The LinkElementCommand class
- * This undo class manage link between elements.
- * In the same instance of this class, we can link and unlink elements from an edited element
- * This undo class support the merge.
- */
+	@brief The LinkElementCommand class
+	This undo class manage link between elements.
+	In the same instance of this class, we can link and unlink elements from an edited element
+	This undo class support the merge.
+*/
 class LinkElementCommand : public QUndoCommand
 {
 	public:

@@ -168,7 +168,7 @@ class QETApp : public QObject
 	protected:
 		
 #ifdef Q_OS_DARWIN
-    bool eventFiltrer(QObject *object, QEvent *);
+	bool eventFiltrer(QObject *object, QEvent *);
 #endif
 	
 		// attributes

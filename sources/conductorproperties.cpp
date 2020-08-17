@@ -241,10 +241,10 @@ ConductorProperties::~ConductorProperties() {
 
 
 /**
- * @brief ConductorProperties::toXml
- * Export conductor propertie, in the XML element 'e'
- * @param e the xml element
- */
+	@brief ConductorProperties::toXml
+	Export conductor propertie, in the XML element 'e'
+	@param e the xml element
+*/
 void ConductorProperties::toXml(QDomElement &e) const
 {
 	e.setAttribute("type", typeToString(type));
@@ -284,10 +284,10 @@ void ConductorProperties::toXml(QDomElement &e) const
 
 
 /**
- * @brief ConductorProperties::fromXml
- * Import conductor propertie, from the attribute of the xml element 'e'
- * @param e the xml document
- */
+	@brief ConductorProperties::fromXml
+	Import conductor propertie, from the attribute of the xml element 'e'
+	@param e the xml document
+*/
 void ConductorProperties::fromXml(QDomElement &e)
 {
 		// get conductor color
@@ -440,11 +440,11 @@ QString ConductorProperties::typeToString(ConductorType t)
 }
 
 /**
- * @brief ConductorProperties::applyForEqualAttributes
- * Test each attribute of properties in the list separatly.
- * For each attributes, if is equal, the attribute is apply to this.
- * @param list
- */
+	@brief ConductorProperties::applyForEqualAttributes
+	Test each attribute of properties in the list separatly.
+	For each attributes, if is equal, the attribute is apply to this.
+	@param list
+*/
 void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> list)
 {
 	const QList<ConductorProperties> clist = std::move(list);
@@ -698,9 +698,9 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 }
 
 /**
- * @brief ConductorProperties::defaultProperties
- * @return the default properties stored in the setting file
- */
+	@brief ConductorProperties::defaultProperties
+	@return the default properties stored in the setting file
+*/
 ConductorProperties ConductorProperties::defaultProperties()
 {
 	QSettings settings;
@@ -712,10 +712,10 @@ ConductorProperties ConductorProperties::defaultProperties()
 }
 
 /**
- * @brief ConductorProperties::operator ==
- * @param other
- * @return true if other == this
- */
+	@brief ConductorProperties::operator ==
+	@param other
+	@return true if other == this
+*/
 bool ConductorProperties::operator==(const ConductorProperties &other) const
 {
 	return(

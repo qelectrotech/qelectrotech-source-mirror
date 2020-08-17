@@ -1,19 +1,19 @@
 /*
-        Copyright 2006-2020 The QElectroTech Team
-        This file is part of QElectroTech.
+	Copyright 2006-2020 The QElectroTech Team
+	This file is part of QElectroTech.
 
-        QElectroTech is free software: you can redistribute it and/or modify
-        it under the terms of the GNU General Public License as published by
-        the Free Software Foundation, either version 2 of the License, or
-        (at your option) any later version.
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
 
-        QElectroTech is distributed in the hope that it will be useful,
-        but WITHOUT ANY WARRANTY; without even the implied warranty of
-        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-        GNU General Public License for more details.
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+	GNU General Public License for more details.
 
-        You should have received a copy of the GNU General Public License
-        along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include "diagrameventaddimage.h"
@@ -22,38 +22,38 @@
 #include "diagramcommands.h"
 
 /**
- * @brief DiagramEventAddImage::DiagramEventAddImage
- * Default constructor
- * @param diagram : diagram where operate this event
- */
+	@brief DiagramEventAddImage::DiagramEventAddImage
+	Default constructor
+	@param diagram : diagram where operate this event
+*/
 DiagramEventAddImage::DiagramEventAddImage(Diagram *diagram) :
-    DiagramEventInterface(diagram),
-    m_image (nullptr),
-    m_is_added (false)
+	DiagramEventInterface(diagram),
+	m_image (nullptr),
+	m_is_added (false)
 {
-    openDialog();
+	openDialog();
 }
 
 /**
- * @brief DiagramEventAddImage::~DiagramEventAddImage
- */
+	@brief DiagramEventAddImage::~DiagramEventAddImage
+*/
 DiagramEventAddImage::~DiagramEventAddImage()
 {
-    if (m_running || m_abort)
-    {
-        if (m_is_added) m_diagram->removeItem(m_image);
-        delete m_image;
-    }
+	if (m_running || m_abort)
+	{
+		if (m_is_added) m_diagram->removeItem(m_image);
+		delete m_image;
+	}
 
-    foreach (QGraphicsView *view, m_diagram->views())
-        view->setContextMenuPolicy((Qt::DefaultContextMenu));
+	foreach (QGraphicsView *view, m_diagram->views())
+		view->setContextMenuPolicy((Qt::DefaultContextMenu));
 }
 
 /**
- * @brief DiagramEventAddImage::mousePressEvent
- * Action when mouse is pressed
- * @param event : event of mouse pressed
- */
+	@brief DiagramEventAddImage::mousePressEvent
+	Action when mouse is pressed
+	@param event : event of mouse pressed
+*/
 void DiagramEventAddImage::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (m_image && event -> button() == Qt::LeftButton)
@@ -79,10 +79,10 @@ void DiagramEventAddImage::mousePressEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief DiagramEventAddImage::mouseMoveEvent
- * Action when mouse move
- * @param event : event of mouse move
- */
+	@brief DiagramEventAddImage::mouseMoveEvent
+	Action when mouse move
+	@param event : event of mouse move
+*/
 void DiagramEventAddImage::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (!m_image || event->buttons() != Qt::NoButton) {
@@ -106,20 +106,20 @@ void DiagramEventAddImage::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief DiagramEventAddImage::mouseDoubleClickEvent
- * This method is only use to overwrite double click.
- * When double click, image propertie dialog isn't open.
- * @param event : event of mouse double click.
- */
+	@brief DiagramEventAddImage::mouseDoubleClickEvent
+	This method is only use to overwrite double click.
+	When double click, image propertie dialog isn't open.
+	@param event : event of mouse double click.
+*/
 void DiagramEventAddImage::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 	event->setAccepted(true);
 }
 
 /**
- * @brief DiagramEventAddImage::wheelEvent
- * Action when mouse wheel is rotate
- * @param event: evet of mouse wheel
- */
+	@brief DiagramEventAddImage::wheelEvent
+	Action when mouse wheel is rotate
+	@param event: evet of mouse wheel
+*/
 void DiagramEventAddImage::wheelEvent(QGraphicsSceneWheelEvent *event)
 {
 	if (!m_is_added || !m_image || event -> modifiers() != Qt::CTRL) {
@@ -136,9 +136,9 @@ void DiagramEventAddImage::wheelEvent(QGraphicsSceneWheelEvent *event)
 }
 
 /**
- * @brief DiagramEventAddImage::isNull
- * @return : true if image can't be loaded, otherwise return false.
- */
+	@brief DiagramEventAddImage::isNull
+	@return : true if image can't be loaded, otherwise return false.
+*/
 bool DiagramEventAddImage::isNull() const
 {
 	if (!m_image) return true;
@@ -146,9 +146,9 @@ bool DiagramEventAddImage::isNull() const
 }
 
 /**
- * @brief DiagramEventAddImage::openDialog
- * Open dialog for select the image to add.
- */
+	@brief DiagramEventAddImage::openDialog
+	Open dialog for select the image to add.
+*/
 void DiagramEventAddImage::openDialog()
 {
 	if (m_diagram -> isReadOnly()) return;

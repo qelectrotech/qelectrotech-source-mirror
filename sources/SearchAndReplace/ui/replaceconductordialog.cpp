@@ -25,9 +25,9 @@
 typedef SearchAndReplaceWorker sarw;
 
 /**
- * @brief ReplaceConductorDialog::ReplaceConductorDialog
- * @param parent
- */
+	@brief ReplaceConductorDialog::ReplaceConductorDialog
+	@param parent
+*/
 ReplaceConductorDialog::ReplaceConductorDialog(const ConductorProperties &properties, QWidget *parent) :
 	QDialog(parent),
 	ui(new Ui::ReplaceConductorDialog)
@@ -43,11 +43,12 @@ ReplaceConductorDialog::~ReplaceConductorDialog()
 }
 
 /**
- * @brief ReplaceConductorDialog::updatePreview
- * Update the preview for single line
- * @param b true: update from the value displayed by this widget
- *          false: update from the properties given at the constructor of this widget
- */
+	@brief ReplaceConductorDialog::updatePreview
+	Update the preview for single line
+	@param b :
+	true: update from the value displayed by this widget
+	false: update from the properties given at the constructor of this widget
+*/
 void ReplaceConductorDialog::updatePreview(bool b)
 {
 	const QRect pixmap_rect(0, 0, 96, 96);
@@ -124,9 +125,9 @@ void ReplaceConductorDialog::setProperties(const ConductorProperties &properties
 }
 
 /**
- * @brief ReplaceConductorDialog::properties
- * @return the properties edited by this widget
- */
+	@brief ReplaceConductorDialog::properties
+	@return the properties edited by this widget
+*/
 ConductorProperties ReplaceConductorDialog::properties() const
 {
 	ConductorProperties properties_;
@@ -158,37 +159,66 @@ ConductorProperties ReplaceConductorDialog::properties() const
 	}
 	properties_.verti_rotate_text = ui->m_vertical_angle_sb->value();
 	properties_.horiz_rotate_text = ui->m_horizontal_angle_sb->value();
-	properties_.color = ui->m_mod_color_cb->isChecked() ? ui->m_color_pb->palette().color(QPalette::Button) : QColor();
-	properties_.style = ui->m_line_style_cb->itemData(ui->m_line_style_cb->currentIndex()).value<QPen>().style();
+	properties_.color = ui->m_mod_color_cb->isChecked()
+			? ui->m_color_pb->palette().color(QPalette::Button)
+			: QColor();
+	properties_.style = ui->m_line_style_cb->itemData(
+				ui->m_line_style_cb->currentIndex())
+			.value<QPen>()
+			.style();
 	properties_.cond_size = ui->m_cond_size_sb->value();
 	properties_.m_bicolor = ui->m_second_color_gb->isChecked();
-	properties_.m_color_2 = ui->m_mod_color_2_cb->isChecked() ? ui->m_color_2_pb->palette().color(QPalette::Button) : QColor();
+	properties_.m_color_2 = ui->m_mod_color_2_cb->isChecked()
+			? ui->m_color_2_pb->palette().color(QPalette::Button)
+			: QColor();
 	properties_.m_dash_size = ui->m_color_2_dash_size_sb->value();
 	
-	properties_.singleLineProperties.hasGround  = ui->m_earth_cb->isChecked();
-	properties_.singleLineProperties.hasNeutral = ui->m_neutral_cb->isChecked();
-	properties_.singleLineProperties.is_pen     = ui->m_pen_cb->isChecked();
-	properties_.singleLineProperties.setPhasesCount(ui->m_phase_cb->isChecked() ? ui->m_phase_sb->value() : 0);
+	properties_.singleLineProperties.hasGround  =
+			ui->m_earth_cb->isChecked();
+	properties_.singleLineProperties.hasNeutral =
+			ui->m_neutral_cb->isChecked();
+	properties_.singleLineProperties.is_pen     =
+			ui->m_pen_cb->isChecked();
+	properties_.singleLineProperties.setPhasesCount(
+				ui->m_phase_cb->isChecked()
+				? ui->m_phase_sb->value()
+				: 0);
 	
 	return properties_;
 }
 
 void ReplaceConductorDialog::initWidget()
 {
-	connect(ui->m_button_box, &QDialogButtonBox::clicked, [this](QAbstractButton *button_) {
+	connect(ui->m_button_box, &QDialogButtonBox::clicked,
+		[this](QAbstractButton *button_) {
 		this->done(ui->m_button_box->buttonRole(button_));
 	});
 	
 	ui->m_update_preview_pb->setHidden(true);
 	
 	ui->m_line_style_cb->addItem(tr("Ne pas modifier"), QPen(Qt::NoPen));
-	ui->m_line_style_cb->addItem(tr("Trait plein", "conductor style: solid line"), QPen(Qt::SolidLine));
-	ui->m_line_style_cb->addItem(tr("Trait en pointillés", "conductor style: dashed line"), QPen(Qt::DashLine));
-	ui->m_line_style_cb->addItem(tr("Traits et points", "conductor style: dashed and dotted line"), QPen(Qt::DashDotLine));
+	ui->m_line_style_cb->addItem(tr("Trait plein",
+					"conductor style: solid line"),
+				     QPen(Qt::SolidLine));
+	ui->m_line_style_cb->addItem(tr("Trait en pointillés",
+					"conductor style: dashed line"),
+				     QPen(Qt::DashLine));
+	ui->m_line_style_cb->addItem(tr("Traits et points",
+					"conductor style: dashed and dotted line"),
+				     QPen(Qt::DashDotLine));
 	
-	connect(ui->m_multi_gb,      &QGroupBox::toggled,     [this](bool toggle)  {this->ui->m_singlewire_gb->setChecked(!toggle);});
-	connect(ui->m_singlewire_gb, &QGroupBox::toggled,     [this](bool toggle)  {this->ui->m_multi_gb->setChecked(!toggle);});
-	connect(ui->m_formula_le,    &QLineEdit::textChanged, [this](QString text) {this->ui->m_text_le->setEnabled(text.isEmpty());});
+	connect(ui->m_multi_gb,
+		&QGroupBox::toggled,
+		[this](bool toggle)
+	{this->ui->m_singlewire_gb->setChecked(!toggle);});
+	connect(ui->m_singlewire_gb,
+		&QGroupBox::toggled,
+		[this](bool toggle)
+	{this->ui->m_multi_gb->setChecked(!toggle);});
+	connect(ui->m_formula_le,
+		&QLineEdit::textChanged,
+		[this](QString text)
+	{this->ui->m_text_le->setEnabled(text.isEmpty());});
 	ui->m_multi_gb->setChecked(true);
 	ui->m_singlewire_gb->setChecked(true);
 }
@@ -197,50 +227,75 @@ void ReplaceConductorDialog::setColorButton(const QColor &color)
 {
 	QPalette palette;
 	palette.setColor(QPalette::Button, color);
-	ui->m_color_pb->setStyleSheet(QString("background-color: %1; min-height: 1.5em; border-style: outset; border-width: 2px; border-color: gray; border-radius: 4px;").arg(color.name()));
+	ui->m_color_pb->setStyleSheet(
+		QString("background-color: %1; min-height: 1.5em; border-style:"
+			" outset; border-width: 2px; border-color: gray;"
+			" border-radius: 4px;").arg(color.name()));
 }
 
 void ReplaceConductorDialog::setColorButton2(const QColor &color)
 {
 	QPalette palette;
 	palette.setColor(QPalette::Button, color);
-	ui->m_color_2_pb->setStyleSheet(QString("background-color: %1; min-height: 1.5em; border-style: outset; border-width: 2px; border-color: gray; border-radius: 4px;").arg(color.name()));
+	ui->m_color_2_pb->setStyleSheet(
+				QString("background-color: %1;"
+					" min-height: 1.5em; border-style:"
+					" outset; border-width: 2px;"
+					" border-color: gray;"
+					" border-radius: 4px;").arg(
+					color.name()));
 }
 
 void ReplaceConductorDialog::on_m_erase_formula_cb_clicked()
 {
-    ui->m_formula_le->setText(ui->m_erase_formula_cb->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
+    ui->m_formula_le->setText(ui->m_erase_formula_cb->isChecked()
+			      ? SearchAndReplaceWorker::eraseText()
+			      : QString());
 	ui->m_formula_le->setDisabled(ui->m_erase_formula_cb->isChecked());
 }
 
 void ReplaceConductorDialog::on_m_erase_text_cb_clicked()
 {
-	ui->m_text_le->setText(ui->m_erase_text_cb->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
+	ui->m_text_le->setText(ui->m_erase_text_cb->isChecked()
+			       ? SearchAndReplaceWorker::eraseText()
+			       : QString());
 	ui->m_text_le->setDisabled(ui->m_erase_text_cb->isChecked());
 }
 
 void ReplaceConductorDialog::on_m_erase_function_cb_clicked()
 {
-	ui->m_function_le->setText(ui->m_erase_function_cb->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
+	ui->m_function_le->setText(ui->m_erase_function_cb->isChecked()
+				   ? SearchAndReplaceWorker::eraseText()
+				   : QString());
 	ui->m_function_le->setDisabled(ui->m_erase_function_cb->isChecked());
 }
 
 void ReplaceConductorDialog::on_m_erase_tension_protocol_cb_clicked()
 {
-	ui->m_tension_protocol_le->setText(ui->m_erase_tension_protocol_cb->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
-	ui->m_tension_protocol_le->setDisabled(ui->m_erase_tension_protocol_cb->isChecked());
+	ui->m_tension_protocol_le->setText(
+				ui->m_erase_tension_protocol_cb->isChecked()
+				? SearchAndReplaceWorker::eraseText()
+				: QString());
+	ui->m_tension_protocol_le->setDisabled(
+				ui->m_erase_tension_protocol_cb->isChecked());
 }
 
 void ReplaceConductorDialog::on_m_erase_m_wire_color_cb_clicked()
 {
-	ui->m_wire_color_le->setText(ui->m_erase_wire_color_cb->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
-	ui->m_wire_color_le->setDisabled(ui->m_erase_wire_color_cb->isChecked());
+	ui->m_wire_color_le->setText(ui->m_erase_wire_color_cb->isChecked()
+				     ? SearchAndReplaceWorker::eraseText()
+				     : QString());
+	ui->m_wire_color_le->setDisabled(
+				ui->m_erase_wire_color_cb->isChecked());
 }
 
 void ReplaceConductorDialog::on_m_erase_m_wire_section_cb_clicked()
 {
-	ui->m_wire_section_le->setText(ui->m_erase_wire_section_cb->isChecked() ? SearchAndReplaceWorker::eraseText() : QString());
-	ui->m_wire_section_le->setDisabled(ui->m_erase_wire_section_cb->isChecked());
+	ui->m_wire_section_le->setText(ui->m_erase_wire_section_cb->isChecked()
+				       ? SearchAndReplaceWorker::eraseText()
+				       : QString());
+	ui->m_wire_section_le->setDisabled(
+				ui->m_erase_wire_section_cb->isChecked());
 }
 
 void ReplaceConductorDialog::on_m_earth_cb_toggled(bool checked)
@@ -262,7 +317,7 @@ void ReplaceConductorDialog::on_m_neutral_cb_toggled(bool checked)
 }
 
 void ReplaceConductorDialog::on_m_update_preview_pb_clicked() {
-    updatePreview();
+	updatePreview();
 }
 
 void ReplaceConductorDialog::on_m_color_pb_clicked()

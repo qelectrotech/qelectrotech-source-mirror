@@ -30,10 +30,10 @@
 #include <QFontDialog>
 
 /**
- * @brief GraphicsTablePropertiesEditor::GraphicsTablePropertiesEditor
- * @param table
- * @param parent
- */
+	@brief GraphicsTablePropertiesEditor::GraphicsTablePropertiesEditor
+	@param table
+	@param parent
+*/
 GraphicsTablePropertiesEditor::GraphicsTablePropertiesEditor(QetGraphicsTableItem *table, QWidget *parent) :
 	PropertiesEditorWidget(parent),
     ui(new Ui::GraphicsTablePropertiesEditor)
@@ -57,17 +57,17 @@ GraphicsTablePropertiesEditor::GraphicsTablePropertiesEditor(QetGraphicsTableIte
 }
 
 /**
- * @brief GraphicsTablePropertiesEditor::~GraphicsTablePropertiesEditor
- */
+	@brief GraphicsTablePropertiesEditor::~GraphicsTablePropertiesEditor
+*/
 GraphicsTablePropertiesEditor::~GraphicsTablePropertiesEditor() {
 	delete ui;
 }
 
 /**
- * @brief GraphicsTablePropertiesEditor::setTable
- * Set the table to be edited
- * @param table
- */
+	@brief GraphicsTablePropertiesEditor::setTable
+	Set the table to be edited
+	@param table
+*/
 void GraphicsTablePropertiesEditor::setTable(QetGraphicsTableItem *table)
 {
 	if (m_table_item) {
@@ -97,9 +97,9 @@ void GraphicsTablePropertiesEditor::setTable(QetGraphicsTableItem *table)
 }
 
 /**
- * @brief GraphicsTablePropertiesEditor::apply
- * Apply the current edition
- */
+	@brief GraphicsTablePropertiesEditor::apply
+	Apply the current edition
+*/
 void GraphicsTablePropertiesEditor::apply()
 {
 	if(!m_table_item && m_table_item->diagram()) {
@@ -113,9 +113,9 @@ void GraphicsTablePropertiesEditor::apply()
 }
 
 /**
- * @brief GraphicsTablePropertiesEditor::associatedUndo
- * @return the undo command associated to the edition
- */
+	@brief GraphicsTablePropertiesEditor::associatedUndo
+	@return the undo command associated to the edition
+*/
 QUndoCommand *GraphicsTablePropertiesEditor::associatedUndo() const
 {
 	if (m_live_edit)
@@ -198,8 +198,8 @@ bool GraphicsTablePropertiesEditor::setLiveEdit(bool live_edit)
 }
 
 /**
- * @brief GraphicsTablePropertiesEditor::on_m_header_font_pb_clicked
- */
+	@brief GraphicsTablePropertiesEditor::on_m_header_font_pb_clicked
+*/
 void GraphicsTablePropertiesEditor::on_m_header_font_pb_clicked()
 {
 	if (m_table_item && m_table_item->model())
@@ -219,8 +219,8 @@ void GraphicsTablePropertiesEditor::on_m_header_font_pb_clicked()
 }
 
 /**
- * @brief GraphicsTablePropertiesEditor::on_m_table_font_pb_clicked
- */
+	@brief GraphicsTablePropertiesEditor::on_m_table_font_pb_clicked
+*/
 void GraphicsTablePropertiesEditor::on_m_table_font_pb_clicked()
 {
 	if (m_table_item && m_table_item->model())
@@ -241,8 +241,8 @@ void GraphicsTablePropertiesEditor::on_m_table_font_pb_clicked()
 }
 
 /**
- * @brief GraphicsTablePropertiesEditor::updateUi
- */
+	@brief GraphicsTablePropertiesEditor::updateUi
+*/
 void GraphicsTablePropertiesEditor::updateUi()
 {
 		//Disconnect every connections of editor widgets
@@ -343,8 +343,8 @@ void GraphicsTablePropertiesEditor::updateInfoLabel()
 }
 
 /**
- * @brief GraphicsTablePropertiesEditor::setUpEditConnection
- */
+	@brief GraphicsTablePropertiesEditor::setUpEditConnection
+*/
 void GraphicsTablePropertiesEditor::setUpEditConnection()
 {
 	for (QMetaObject::Connection c : m_edit_connection) {
@@ -410,8 +410,8 @@ void GraphicsTablePropertiesEditor::on_m_next_pb_clicked()
 }
 
 /**
- * @brief GraphicsTablePropertiesEditor::on_m_auto_geometry_pb_clicked
- */
+	@brief GraphicsTablePropertiesEditor::on_m_auto_geometry_pb_clicked
+*/
 void GraphicsTablePropertiesEditor::on_m_auto_geometry_pb_clicked()
 {
 	if (m_table_item) {
@@ -420,8 +420,8 @@ void GraphicsTablePropertiesEditor::on_m_auto_geometry_pb_clicked()
 }
 
 /**
- * @brief GraphicsTablePropertiesEditor::on_m_apply_geometry_to_linked_table_pb_clicked
- */
+	@brief GraphicsTablePropertiesEditor::on_m_apply_geometry_to_linked_table_pb_clicked
+*/
 void GraphicsTablePropertiesEditor::on_m_apply_geometry_to_linked_table_pb_clicked()
 {
 	if (m_table_item.isNull() || !m_table_item->diagram() || (!m_table_item->nextTable() && !m_table_item->previousTable())) {

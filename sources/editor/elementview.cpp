@@ -114,14 +114,14 @@ void ElementView::zoomOut() {
 	Agrandit le schema avec le trackpad
 */
 void ElementView::zoomInSlowly() {
-    scale(1.02, 1.02);
+	scale(1.02, 1.02);
 }
 
 /**
 	Retrecit le schema avec le trackpad
 */
 void ElementView::zoomOutSlowly() {
-    scale(0.98, 0.98);
+	scale(0.98, 0.98);
 }
 
 /**
@@ -144,10 +144,10 @@ void ElementView::zoomReset() {
 }
 
 /**
- * @brief ElementView::adjustSceneRect
- * Adjust the scenRect, so that he include all primitives of element
- * plus the viewport of the scene with a margin of 1/3 of herself
- */
+	@brief ElementView::adjustSceneRect
+	Adjust the scenRect, so that he include all primitives of element
+	plus the viewport of the scene with a margin of 1/3 of herself
+*/
 void ElementView::adjustSceneRect() {
 	QRectF esgr = m_scene -> elementSceneGeometricRect();
 	QRectF vpbr = mapToScene(this -> viewport()->rect()).boundingRect();
@@ -156,10 +156,10 @@ void ElementView::adjustSceneRect() {
 }
 
 /**
- * @brief ElementView::resetSceneRect
- * reset le sceneRect (zone du schéma visualisée par l'ElementView) afin que
- * celui-ci inclut uniquement les primitives de l'élément dessiné.
- */
+	@brief ElementView::resetSceneRect
+	reset le sceneRect (zone du schéma visualisée par l'ElementView) afin que
+	celui-ci inclut uniquement les primitives de l'élément dessiné.
+*/
 void ElementView::resetSceneRect() {
 	setSceneRect(m_scene -> elementSceneGeometricRect());
 }
@@ -366,9 +366,9 @@ void ElementView::mousePressEvent(QMouseEvent *e) {
 }
 
 /**
- * @brief ElementView::mouseMoveEvent
- * Manage the event move mouse
- */
+	@brief ElementView::mouseMoveEvent
+	Manage the event move mouse
+*/
 void ElementView::mouseMoveEvent(QMouseEvent *e) {
 	if (e->buttons() == Qt::MidButton)
 	{
@@ -384,9 +384,9 @@ void ElementView::mouseMoveEvent(QMouseEvent *e) {
 }
 
 /**
- * @brief ElementView::mouseReleaseEvent
- * Manage event release click mouse
- */
+	@brief ElementView::mouseReleaseEvent
+	Manage event release click mouse
+*/
 void ElementView::mouseReleaseEvent(QMouseEvent *e) {
 	if (e -> button() == Qt::MidButton) {
 		setCursor(Qt::ArrowCursor);
@@ -397,9 +397,9 @@ void ElementView::mouseReleaseEvent(QMouseEvent *e) {
 }
 
 /**
- * @brief ElementView::gestures
- * @return
- */
+	@brief ElementView::gestures
+	@return
+*/
 bool ElementView::gestures() const
 {
 	QSettings settings;
@@ -408,9 +408,9 @@ bool ElementView::gestures() const
 
 
 /**
- * @brief ElementView::wheelEvent
- * @param e
- */
+	@brief ElementView::wheelEvent
+	@param e
+*/
 void ElementView::wheelEvent(QWheelEvent *e) {
 	//Zoom and scrolling
 	if ( gestures() ) {
@@ -439,11 +439,11 @@ bool ElementView::event(QEvent *e) {
 }
 
 /**
- * Utilise le pincement du trackpad pour zoomer
- * @brief ElementView::gestureEvent
- * @param event
- * @return
- */
+	Utilise le pincement du trackpad pour zoomer
+	@brief ElementView::gestureEvent
+	@param event
+	@return
+*/
 bool ElementView::gestureEvent(QGestureEvent *event){
 	if (QGesture *gesture = event->gesture(Qt::PinchGesture)) {
 		QPinchGesture *pinch = static_cast<QPinchGesture *>(gesture);

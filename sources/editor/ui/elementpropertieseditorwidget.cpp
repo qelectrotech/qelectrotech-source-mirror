@@ -22,10 +22,10 @@
 #include <QItemDelegate>
 
 /**
- * @brief The EditorDelegate class
- * This delegate is only use for disable the edition of the first
- * column of the information tree widget
- */
+	@brief The EditorDelegate class
+	This delegate is only use for disable the edition of the first
+	column of the information tree widget
+*/
 class EditorDelegate : public QItemDelegate
 {
 	public:
@@ -44,13 +44,13 @@ class EditorDelegate : public QItemDelegate
 };
 
 /**
- * @brief ElementPropertiesEditorWidget::ElementPropertiesEditorWidget
- * Default constructor
- * @param basic_type : QString of the drawed element
- * @param kind_info : DiagramContext to store kindInfo of drawed element
- * @param elmt_info : the information of element (label, manufacturer etc...]
- * @param parent : parent widget
- */
+	@brief ElementPropertiesEditorWidget::ElementPropertiesEditorWidget
+	Default constructor
+	@param basic_type : QString of the drawed element
+	@param kind_info : DiagramContext to store kindInfo of drawed element
+	@param elmt_info : the information of element (label, manufacturer etc...]
+	@param parent : parent widget
+*/
 ElementPropertiesEditorWidget::ElementPropertiesEditorWidget(QString &basic_type, DiagramContext &kind_info, DiagramContext &elmt_info, QWidget *parent) :
 	QDialog(parent),
 	ui(new Ui::ElementPropertiesEditorWidget),
@@ -64,18 +64,18 @@ ElementPropertiesEditorWidget::ElementPropertiesEditorWidget(QString &basic_type
 }
 
 /**
- * @brief ElementPropertiesEditorWidget::~ElementPropertiesEditorWidget
- * Default destructor
- */
+	@brief ElementPropertiesEditorWidget::~ElementPropertiesEditorWidget
+	Default destructor
+*/
 ElementPropertiesEditorWidget::~ElementPropertiesEditorWidget()
 {
 	delete ui;
 }
 
 /**
- * @brief ElementPropertiesEditorWidget::upDateInterface
- * Update the interface with the curent value
- */
+	@brief ElementPropertiesEditorWidget::upDateInterface
+	Update the interface with the curent value
+*/
 void ElementPropertiesEditorWidget::upDateInterface()
 {
 	ui->m_base_type_cb->setCurrentIndex(ui->m_base_type_cb->findData(QVariant(m_basic_type)));
@@ -94,8 +94,8 @@ void ElementPropertiesEditorWidget::upDateInterface()
 }
 
 /**
- * @brief ElementPropertiesEditorWidget::setUpInterface
- */
+	@brief ElementPropertiesEditorWidget::setUpInterface
+*/
 void ElementPropertiesEditorWidget::setUpInterface()
 {
 		// Type combo box
@@ -147,9 +147,9 @@ void ElementPropertiesEditorWidget::updateTree()
 }
 
 /**
- * @brief ElementPropertiesEditorWidget::populateTree
- * Create QTreeWidgetItem of the tree widget and populate it
- */
+	@brief ElementPropertiesEditorWidget::populateTree
+	Create QTreeWidgetItem of the tree widget and populate it
+*/
 void ElementPropertiesEditorWidget::populateTree()
 {
 	QStringList keys{"label", "plant", "comment", "description", "designation", "manufacturer", "manufacturer_reference", "supplier", "quantity", "unity", "machine_manufacturer_reference"};
@@ -165,9 +165,9 @@ void ElementPropertiesEditorWidget::populateTree()
 }
 
 /**
- * @brief ElementPropertiesEditorWidget::on_m_buttonBox_accepted
- * Action on button accepted : the new information is set
- */
+	@brief ElementPropertiesEditorWidget::on_m_buttonBox_accepted
+	Action on button accepted : the new information is set
+*/
 void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
 {
 	m_basic_type = ui -> m_base_type_cb -> itemData(ui -> m_base_type_cb -> currentIndex()).toString();
@@ -194,9 +194,9 @@ void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
 }
 
 /**
- * @brief ElementPropertiesEditorWidget::on_m_base_type_cb_currentIndexChanged
- * @param index : Action when combo-box base type index change
- */
+	@brief ElementPropertiesEditorWidget::on_m_base_type_cb_currentIndexChanged
+	@param index : Action when combo-box base type index change
+*/
 void ElementPropertiesEditorWidget::on_m_base_type_cb_currentIndexChanged(int index)
 {
 	bool slave = false , master = false;

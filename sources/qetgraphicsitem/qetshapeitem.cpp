@@ -28,13 +28,13 @@
 #include "qeticons.h"
 
 /**
- * @brief QetShapeItem::QetShapeItem
- * Constructor of shape item. point 1 and 2 must be in scene coordinate
- * @param p1 first point
- * @param p2 second point
- * @param type type of item (line, rectangle, ellipse)
- * @param parent parent item
- */
+	@brief QetShapeItem::QetShapeItem
+	Constructor of shape item. point 1 and 2 must be in scene coordinate
+	@param p1 first point
+	@param p2 second point
+	@param type type of item (line, rectangle, ellipse)
+	@param parent parent item
+*/
 QetShapeItem::QetShapeItem(QPointF p1, QPointF p2, ShapeType type, QGraphicsItem *parent) :
 	QetGraphicsItem(parent),
 	m_shapeType(type),
@@ -64,15 +64,15 @@ QetShapeItem::QetShapeItem(QPointF p1, QPointF p2, ShapeType type, QGraphicsItem
 
 QetShapeItem::~QetShapeItem()
 {
-    if(!m_handler_vector.isEmpty())
-        qDeleteAll(m_handler_vector);
+	if(!m_handler_vector.isEmpty())
+		qDeleteAll(m_handler_vector);
 }
 
 /**
- * @brief QetShapeItem::setPen
- * Set the pen to use for draw the shape
- * @param pen
- */
+	@brief QetShapeItem::setPen
+	Set the pen to use for draw the shape
+	@param pen
+*/
 void QetShapeItem::setPen(const QPen &pen)
 {
 	if (m_pen == pen) return;
@@ -82,10 +82,10 @@ void QetShapeItem::setPen(const QPen &pen)
 }
 
 /**
- * @brief QetShapeItem::setBrush
- * Set the brush to use for the fill the shape
- * @param brush
- */
+	@brief QetShapeItem::setBrush
+	Set the brush to use for the fill the shape
+	@param brush
+*/
 void QetShapeItem::setBrush(const QBrush &brush)
 {
 	if (m_brush == brush) return;
@@ -95,12 +95,12 @@ void QetShapeItem::setBrush(const QBrush &brush)
 }
 
 /**
- * @brief QetShapeItem::setP2
- * Set the second point of this item.
- * If this item is a polyline,
- * the last point of the polyline is replaced by P2.
- * @param P2
- */
+	@brief QetShapeItem::setP2
+	Set the second point of this item.
+	If this item is a polyline,
+	the last point of the polyline is replaced by P2.
+	@param P2
+*/
 void QetShapeItem::setP2(const QPointF &P2)
 {
 	if (m_shapeType == Polygon && m_polygon.last() != P2)
@@ -116,11 +116,11 @@ void QetShapeItem::setP2(const QPointF &P2)
 }
 
 /**
- * @brief QetShapeItem::setLine
- * Set item geometry to line (only available for line shape)
- * @param line
- * @return  : true when shape is a Line, else false
- */
+	@brief QetShapeItem::setLine
+	Set item geometry to line (only available for line shape)
+	@param line
+	@return  : true when shape is a Line, else false
+*/
 bool QetShapeItem::setLine(const QLineF &line)
 {
 	if (Q_UNLIKELY(m_shapeType != Line)) return false;
@@ -132,11 +132,11 @@ bool QetShapeItem::setLine(const QLineF &line)
 }
 
 /**
- * @brief QetShapeItem::setRect
- * Set this item geometry to rect (only available if shape is a rectangle or an ellipse)
- * @param rect : new rect
- * @return  : true when shape is rectangle or ellipse, else false
- */
+	@brief QetShapeItem::setRect
+	Set this item geometry to rect (only available if shape is a rectangle or an ellipse)
+	@param rect : new rect
+	@return  : true when shape is rectangle or ellipse, else false
+*/
 bool QetShapeItem::setRect(const QRectF &rect)
 {
 	if (Q_LIKELY(m_shapeType == Rectangle || m_shapeType == Ellipse))
@@ -152,11 +152,11 @@ bool QetShapeItem::setRect(const QRectF &rect)
 }
 
 /**
- * @brief QetShapeItem::setPolygon
- * Set this item geometry to polygon (only available if shape is a polyline)
- * @param polygon : new polygon
- * @return true if item is polygon, else false
- */
+	@brief QetShapeItem::setPolygon
+	Set this item geometry to polygon (only available if shape is a polyline)
+	@param polygon : new polygon
+	@return true if item is polygon, else false
+*/
 bool QetShapeItem::setPolygon(const QPolygonF &polygon)
 {
 	if (Q_UNLIKELY(m_shapeType != Polygon)) {
@@ -169,10 +169,10 @@ bool QetShapeItem::setPolygon(const QPolygonF &polygon)
 }
 
 /**
- * @brief QetShapeItem::setClosed
- * Close this item, have effect only if this item is a polygon.
- * @param close
- */
+	@brief QetShapeItem::setClosed
+	Close this item, have effect only if this item is a polygon.
+	@param close
+*/
 void QetShapeItem::setClosed(bool close)
 {
 	if (m_shapeType == Polygon && close != m_closed)
@@ -200,18 +200,18 @@ void QetShapeItem::setYRadius(qreal Y)
 }
 
 /**
- * @brief QetShapeItem::pointCount
- * @return the number of point in the polygon
- */
+	@brief QetShapeItem::pointCount
+	@return the number of point in the polygon
+*/
 int QetShapeItem::pointsCount() const {
 	return m_polygon.size();
 }
 
 /**
- * @brief QetShapeItem::setNextPoint
- * Add a new point to the curent polygon
- * @param P the new point.
- */
+	@brief QetShapeItem::setNextPoint
+	Add a new point to the curent polygon
+	@param P the new point.
+*/
 void QetShapeItem::setNextPoint(QPointF P)
 {
 	prepareGeometryChange();
@@ -219,11 +219,12 @@ void QetShapeItem::setNextPoint(QPointF P)
 }
 
 /**
- * @brief QetShapeItem::removePoints
- * Number of point to remove on the polygon
- * If @number is superior to number of polygon points-2,
- * all points of polygon will be removed except the first two (minimum point for the polygon);
- */
+	@brief QetShapeItem::removePoints
+	Number of point to remove on the polygon
+	If number is superior to number of polygon points-2,
+	all points of polygon will be removed except
+	the first two (minimum point for the polygon);
+*/
 void QetShapeItem::removePoints(int number)
 {
 	if (pointsCount() == 2 || number < 1) return;
@@ -242,29 +243,31 @@ void QetShapeItem::removePoints(int number)
 }
 
 /**
- * @brief QetShapeItem::boundingRect
- * @return the bounding rect of this item
- */
+	@brief QetShapeItem::boundingRect
+	@return the bounding rect of this item
+*/
 QRectF QetShapeItem::boundingRect() const {
 	return shape().boundingRect().adjusted(-6, -6, 6, 6);
 }
 
 /**
- * @brief QetShapeItem::shape
- * @return the shape of this item
- */
+	@brief QetShapeItem::shape
+	@return the shape of this item
+*/
 QPainterPath QetShapeItem::shape() const
 {
 	QPainterPath path;
 
 	switch (m_shapeType)
 	{
-		case Line:      
+		case Line:
 			path.moveTo(m_P1);
-			path.lineTo(m_P2);                   
+			path.lineTo(m_P2);
 			break;
 		case Rectangle: 
-			path.addRoundedRect(QRectF(m_P1, m_P2), m_xRadius, m_yRadius);
+			path.addRoundedRect(QRectF(m_P1, m_P2),
+					    m_xRadius,
+					    m_yRadius);
 			break;
 		case Ellipse:
 			path.addEllipse(QRectF(m_P1, m_P2));
@@ -286,13 +289,15 @@ QPainterPath QetShapeItem::shape() const
 }
 
 /**
- * @brief QetShapeItem::paint
- * Paint this item
- * @param painter
- * @param option
- * @param widget
- */
-void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+	@brief QetShapeItem::paint
+	Paint this item
+	@param painter
+	@param option
+	@param widget
+*/
+void QetShapeItem::paint(QPainter *painter,
+			 const QStyleOptionGraphicsItem *option,
+			 QWidget *widget)
 {
 	Q_UNUSED(option)
 	Q_UNUSED(widget)
@@ -317,19 +322,22 @@ void QetShapeItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
     switch (m_shapeType)
     {
         case Line:      painter->drawLine(QLineF(m_P1, m_P2)); break;
-        case Rectangle: painter->drawRoundedRect(QRectF(m_P1, m_P2), m_xRadius, m_yRadius); break;
+	case Rectangle: painter->drawRoundedRect(QRectF(m_P1, m_P2),
+						 m_xRadius,
+						 m_yRadius); break;
         case Ellipse:   painter->drawEllipse(QRectF(m_P1, m_P2)); break;
-        case Polygon:   m_closed ? painter->drawPolygon(m_polygon) : painter->drawPolyline(m_polygon); break;
+	case Polygon:   m_closed ? painter->drawPolygon(m_polygon)
+				 : painter->drawPolyline(m_polygon); break;
     }
     
     painter->restore();
 }
 
 /**
- * @brief QetShapeItem::hoverEnterEvent
- * Handle hover enter event
- * @param event
- */
+	@brief QetShapeItem::hoverEnterEvent
+	Handle hover enter event
+	@param event
+*/
 void QetShapeItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 {
 	m_hovered = true;
@@ -337,10 +345,10 @@ void QetShapeItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 }
 
 /**
- * @brief QetShapeItem::hoverLeaveEvent
- * Handle hover leave event
- * @param event
- */
+	@brief QetShapeItem::hoverLeaveEvent
+	Handle hover leave event
+	@param event
+*/
 void QetShapeItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
 {
 	m_hovered = false;
@@ -359,16 +367,18 @@ void QetShapeItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /**
- * @brief QetShapeItem::itemChange
- * @param change
- * @param value
- * @return 
- */
-QVariant QetShapeItem::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value)
+	@brief QetShapeItem::itemChange
+	@param change
+	@param value
+	@return 
+*/
+QVariant QetShapeItem::itemChange(QGraphicsItem::GraphicsItemChange change,
+				  const QVariant &value)
 {
 	if (change == ItemSelectedHasChanged)
 	{
-		if (value.toBool() == true) { //If this is selected, wa add handlers.
+		if (value.toBool() == true) {
+			//If this is selected, wa add handlers.
 			addHandler();
 		}
 		else //Else this is deselected, we remove handlers
@@ -396,11 +406,11 @@ QVariant QetShapeItem::itemChange(QGraphicsItem::GraphicsItemChange change, cons
 }
 
 /**
- * @brief QetShapeItem::sceneEventFilter
- * @param watched
- * @param event
- * @return 
- */
+	@brief QetShapeItem::sceneEventFilter
+	@param watched
+	@param event
+	@return 
+*/
 bool QetShapeItem::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 {
 		//Watched must be an handler
@@ -436,9 +446,9 @@ bool QetShapeItem::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 }
 
 /**
- * @brief QetShapeItem::contextMenuEvent
- * @param event
- */
+	@brief QetShapeItem::contextMenuEvent
+	@param event
+*/
 void QetShapeItem::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 {
 	m_context_menu_pos = event->pos();
@@ -495,8 +505,8 @@ void QetShapeItem::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 }
 
 /**
- * @brief QetShapeItem::switchResizeMode
- */
+	@brief QetShapeItem::switchResizeMode
+*/
 void QetShapeItem::switchResizeMode()
 {
 	if (m_shapeType == Ellipse)
@@ -590,9 +600,9 @@ void QetShapeItem::addHandler()
 }
 
 /**
- * @brief QetShapeItem::adjusteHandlerPos
- * Adjust the position of the handler item
- */
+	@brief QetShapeItem::adjusteHandlerPos
+	Adjust the position of the handler item
+*/
 void QetShapeItem::adjusteHandlerPos()
 {
 	if (m_handler_vector.isEmpty()) {
@@ -689,10 +699,10 @@ void QetShapeItem::removePoint()
 }
 
 /**
- * @brief QetShapeItem::handlerMousePressEvent
- * @param qghi
- * @param event
- */
+	@brief QetShapeItem::handlerMousePressEvent
+	@param qghi
+	@param event
+*/
 void QetShapeItem::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(qghi)
@@ -709,10 +719,10 @@ void QetShapeItem::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphic
 }
 
 /**
- * @brief QetShapeItem::handlerMouseMoveEvent
- * @param qghi
- * @param event
- */
+	@brief QetShapeItem::handlerMouseMoveEvent
+	@param qghi
+	@param event
+*/
 void QetShapeItem::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(qghi)
@@ -773,10 +783,10 @@ void QetShapeItem::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphics
 }
 
 /**
- * @brief QetShapeItem::handlerMouseReleaseEvent
- * @param qghi
- * @param event
- */
+	@brief QetShapeItem::handlerMouseReleaseEvent
+	@param qghi
+	@param event
+*/
 void QetShapeItem::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(qghi);
@@ -831,11 +841,11 @@ void QetShapeItem::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraph
 }
 
 /**
- * @brief QetShapeItem::fromXml
- * Build this item from the xml description
- * @param e element where is stored this item
- * @return true if load success
- */
+	@brief QetShapeItem::fromXml
+	Build this item from the xml description
+	@param e element where is stored this item
+	@return true if load success
+*/
 bool QetShapeItem::fromXml(const QDomElement &e)
 {
 	if (e.tagName() != "shape") return (false);
@@ -888,11 +898,11 @@ bool QetShapeItem::fromXml(const QDomElement &e)
 }
 
 /**
- * @brief QetShapeItem::toXml
- * Save this item to xml element
- * @param document parent document xml
- * @return element xml where is write this item
- */
+	@brief QetShapeItem::toXml
+	Save this item to xml element
+	@param document parent document xml
+	@return element xml where is write this item
+*/
 QDomElement QetShapeItem::toXml(QDomDocument &document) const
 {
 	QDomElement result = document.createElement("shape");
@@ -948,27 +958,48 @@ QDomElement QetShapeItem::toXml(QDomDocument &document) const
 }
 
 /**
- * @brief QetShapeItem::toDXF
- * Draw this element to the dxf document
- * @param filepath file path of the the dxf document
- * @return true if draw success
- */
+	@brief QetShapeItem::toDXF
+	Draw this element to the dxf document
+	@param filepath file path of the the dxf document
+	@return true if draw success
+*/
 bool QetShapeItem::toDXF(const QString &filepath,const QPen &pen)
 {
 
-    switch (m_shapeType)
+	switch (m_shapeType)
 	{
-        case Line:      Createdxf::drawLine     (filepath, QLineF(mapToScene(m_P1), mapToScene(m_P2)), Createdxf::getcolorCode(pen.color().red(),pen.color().green(),pen.color().blue()));              return true;
-        case Rectangle: Createdxf::drawRectangle(filepath, QRectF(mapToScene(m_P1), mapToScene(m_P2)).normalized(), Createdxf::getcolorCode(pen.color().red(),pen.color().green(),pen.color().blue())); return true;
-        case Ellipse:   Createdxf::drawEllipse  (filepath, QRectF(mapToScene(m_P1), mapToScene(m_P2)).normalized(), Createdxf::getcolorCode(pen.color().red(),pen.color().green(),pen.color().blue())); return true;
+		case Line:
+		Createdxf::drawLine(filepath,
+				    QLineF(mapToScene(m_P1),
+					   mapToScene(m_P2)),
+				    Createdxf::getcolorCode(pen.color().red(),
+							    pen.color().green(),
+							    pen.color().blue()));
+		return true;
+		case Rectangle:
+		Createdxf::drawRectangle(filepath,
+					 QRectF(mapToScene(m_P1),
+						mapToScene(m_P2)).normalized(),
+					 Createdxf::getcolorCode(pen.color().red(),
+								 pen.color().green(),
+								 pen.color().blue()));
+		return true;
+		case Ellipse:
+		Createdxf::drawEllipse  (filepath,
+					 QRectF(mapToScene(m_P1),
+						mapToScene(m_P2)).normalized(),
+					 Createdxf::getcolorCode(pen.color().red(),
+								 pen.color().green(),
+								 pen.color().blue()));
+		return true;
 		default: return false;
 	}
 }
 
 /**
- * @brief QetShapeItem::editProperty
- * Edit the property of this item
- */
+	@brief QetShapeItem::editProperty
+	Edit the property of this item
+*/
 void QetShapeItem::editProperty()
 {
 	if (diagram() -> isReadOnly()) return;
@@ -978,9 +1009,9 @@ void QetShapeItem::editProperty()
 }
 
 /**
- * @brief QetShapeItem::name
- * @return the name of the curent shape.
- */
+	@brief QetShapeItem::name
+	@return the name of the curent shape.
+*/
 QString QetShapeItem::name() const {
 	switch (m_shapeType) {
 		case Line:	    return tr("une ligne");

@@ -26,9 +26,9 @@ namespace Ui {
 }
 
 /**
- * @brief The DynamicTextFieldEditor class
- * This class provide a widget used to edit the property of a dynamic text field
- */
+	@brief The DynamicTextFieldEditor class
+	This class provide a widget used to edit the property of a dynamic text field
+*/
 class DynamicTextFieldEditor : public ElementItemEditor {
 	Q_OBJECT
 

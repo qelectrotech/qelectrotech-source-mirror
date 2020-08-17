@@ -39,10 +39,10 @@ ReplaceElementDialog::~ReplaceElementDialog()
 }
 
 /**
- * @brief ReplaceElementDialog::setContext
- * Set the current diagram context to be edited
- * @param context
- */
+	@brief ReplaceElementDialog::setContext
+	Set the current diagram context to be edited
+	@param context
+*/
 void ReplaceElementDialog::setContext(DiagramContext context)
 {
 	m_context = context;
@@ -53,9 +53,9 @@ void ReplaceElementDialog::setContext(DiagramContext context)
 }
 
 /**
- * @brief ReplaceElementDialog::context
- * @return The edited diagram context
- */
+	@brief ReplaceElementDialog::context
+	@return The edited diagram context
+*/
 DiagramContext ReplaceElementDialog::context() const
 {
 	DiagramContext context;

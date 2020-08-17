@@ -24,16 +24,16 @@
 #include <QAbstractButton>
 
 /**
- * @brief The PropertiesEditorDialog class
- * Create a dialog to edit some properties of a thing.
- * Only create a instance of this class and call exec, all is done for you in this class.
- * The first argument (a template) must be a subclass of QWidget and provide the 3 methods bellow :
- * QString::title()
- * void::apply()
- * void::reset()
- * You can subclass the interface PropertiesEditorWidget who provide all this methods.
- * This dialog take ownership of the editor, so the editor will be deleted by this dialog
- */
+	@brief The PropertiesEditorDialog class
+	Create a dialog to edit some properties of a thing.
+	Only create a instance of this class and call exec, all is done for you in this class.
+	The first argument (a template) must be a subclass of QWidget and provide the 3 methods bellow :
+	QString::title()
+	void::apply()
+	void::reset()
+	You can subclass the interface PropertiesEditorWidget who provide all this methods.
+	This dialog take ownership of the editor, so the editor will be deleted by this dialog
+*/
 class PropertiesEditorDialog : public QDialog
 {
 		Q_OBJECT

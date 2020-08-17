@@ -21,10 +21,10 @@
 #include "imagepropertieswidget.h"
 
 /**
- * @brief DiagramImageItem::DiagramImageItem
- * Constructor without pixmap
- * @param parent_item the parent graphics item
- */
+	@brief DiagramImageItem::DiagramImageItem
+	Constructor without pixmap
+	@param parent_item the parent graphics item
+*/
 DiagramImageItem::DiagramImageItem(QetGraphicsItem *parent_item):
 	QetGraphicsItem(parent_item)
 {
@@ -32,11 +32,11 @@ DiagramImageItem::DiagramImageItem(QetGraphicsItem *parent_item):
 }
 
 /**
- * @brief DiagramImageItem::DiagramImageItem
- * Constructor with pixmap
- * @param pixmap the pixmap to be draw
- * @param parent_item the parent graphic item
- */
+	@brief DiagramImageItem::DiagramImageItem
+	Constructor with pixmap
+	@param pixmap the pixmap to be draw
+	@param parent_item the parent graphic item
+*/
 DiagramImageItem::DiagramImageItem(const QPixmap &pixmap, QetGraphicsItem *parent_item):
 	QetGraphicsItem(parent_item),
 	pixmap_(pixmap)
@@ -46,19 +46,19 @@ DiagramImageItem::DiagramImageItem(const QPixmap &pixmap, QetGraphicsItem *paren
 }
 
 /**
- * @brief DiagramImageItem::~DiagramImageItem
- * Destructor
- */
+	@brief DiagramImageItem::~DiagramImageItem
+	Destructor
+*/
 DiagramImageItem::~DiagramImageItem() {
 }
 
 /**
- * @brief DiagramImageItem::paint
- * Draw the pixmap.
- * @param painter the Qpainter to use for draw the pixmap
- * @param option the style option
- * @param widget the QWidget where we draw the pixmap
- */
+	@brief DiagramImageItem::paint
+	Draw the pixmap.
+	@param painter the Qpainter to use for draw the pixmap
+	@param option the style option
+	@param widget the QWidget where we draw the pixmap
+*/
 void DiagramImageItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
 	painter -> drawPixmap(pixmap_.rect(),pixmap_);
 
@@ -70,7 +70,7 @@ void DiagramImageItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *
 		painter -> setRenderHint(QPainter::Antialiasing,          false);
 		painter -> setRenderHint(QPainter::TextAntialiasing,      false);
 		painter -> setRenderHint(QPainter::SmoothPixmapTransform, false);
-        // Dessin du cadre de selection en noir à partir du boundingrect
+		// Dessin du cadre de selection en noir à partir du boundingrect
 		QPen t(Qt::black);
 		t.setStyle(Qt::DashLine);
 		painter -> setPen(t);
@@ -80,9 +80,9 @@ void DiagramImageItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *
 }
 
 /**
- * @brief DiagramImageItem::editProperty
- * Open the approriate dialog to edit this image
- */
+	@brief DiagramImageItem::editProperty
+	Open the approriate dialog to edit this image
+*/
 void DiagramImageItem::editProperty()
 {
 	if (diagram() -> isReadOnly()) return;
@@ -91,21 +91,21 @@ void DiagramImageItem::editProperty()
 }
 
 /**
- * @brief DiagramImageItem::setPixmap
- * Set the new pixmap to be draw
- * @param pixmap the new pixmap
- */
+	@brief DiagramImageItem::setPixmap
+	Set the new pixmap to be draw
+	@param pixmap the new pixmap
+*/
 void DiagramImageItem::setPixmap(const QPixmap &pixmap) {
 	pixmap_ = pixmap;
 	setTransformOriginPoint(boundingRect().center());
 }
 
 /**
- * @brief DiagramImageItem::boundingRect
- * the outer bounds of the item as a rectangle,
- * if no pixmap are set, return a default QRectF
- * @return a QRectF represent the bounding rectangle
- */
+	@brief DiagramImageItem::boundingRect
+	the outer bounds of the item as a rectangle,
+	if no pixmap are set, return a default QRectF
+	@return a QRectF represent the bounding rectangle
+*/
 QRectF DiagramImageItem::boundingRect() const {
 	if (!pixmap_.isNull()) {
 		return (QRectF(pixmap_.rect()));
@@ -116,19 +116,19 @@ QRectF DiagramImageItem::boundingRect() const {
 }
 
 /**
- * @brief DiagramImageItem::name
- * @return the generic name of this item (picture)
- */
+	@brief DiagramImageItem::name
+	@return the generic name of this item (picture)
+*/
 QString DiagramImageItem::name() const {
 	return tr("une image");
 }
 
 /**
- * @brief DiagramImageItem::fromXml
- * Load this image fro xml elemebt @e
- * @param e
- * @return true if succesfully load.
- */
+	@brief DiagramImageItem::fromXml
+	Load this image fro xml elemebt @e
+	@param e
+	@return true if succesfully load.
+*/
 bool DiagramImageItem::fromXml(const QDomElement &e)
 {
 	if (e.tagName() != "image") {

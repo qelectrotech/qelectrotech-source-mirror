@@ -67,10 +67,11 @@ class ArcEditor : public ElementItemEditor
 	
 	private:
 		void activeConnections(bool);
-		/*!
-		 * \brief setUpChangeConnections
-		 * Setup the connection from the arc(s) to the widget, to update it when the arc(s) are changed (moved ...)
-		 */
+		/**
+			@brief setUpChangeConnections
+			Setup the connection from the arc(s) to the widget,
+			to update it when the arc(s) are changed (moved ...)
+		*/
 		void setUpChangeConnections();
 		void disconnectChangeConnections();
 };

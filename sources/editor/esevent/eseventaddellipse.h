@@ -26,9 +26,9 @@ class PartEllipse;
 class QGraphicsSceneMouseEvent;
 
 /**
- * @brief The ESEventAddEllipse class
- * This ESEvent manage creation of ellpise in an ElementScene
- */
+	@brief The ESEventAddEllipse class
+	This ESEvent manage creation of ellpise in an ElementScene
+*/
 class ESEventAddEllipse : public ESEventInterface
 {
 	public:

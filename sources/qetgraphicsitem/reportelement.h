@@ -21,10 +21,10 @@
 #include "element.h"
 
 /**
- * @brief The ReportElement class
+	@brief The ReportElement class
  *this class represent an element that can be linked to an other ReportElement
- * a folio report in a diagram is a element that show a wire go on an other folio
- */
+	a folio report in a diagram is a element that show a wire go on an other folio
+*/
 class ReportElement : public Element
 {
 	Q_OBJECT

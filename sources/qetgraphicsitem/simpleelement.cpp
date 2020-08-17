@@ -19,27 +19,27 @@
 #include "diagram.h"
 
 /**
- * @brief SimpleElement::SimpleElement
- * @param location
- * @param qgi
- * @param s
- * @param state
- */
+	@brief SimpleElement::SimpleElement
+	@param location
+	@param qgi
+	@param s
+	@param state
+*/
 SimpleElement::SimpleElement(const ElementsLocation &location, QGraphicsItem *qgi, int *state) :
 	Element(location, qgi, state, Element::Simple)
 {}
 
 /**
- * @brief SimpleElement::~SimpleElement
- */
+	@brief SimpleElement::~SimpleElement
+*/
 SimpleElement::~SimpleElement() {}
 
 /**
- * @brief SimpleElement::initLink
- * @param project
- * Call init Link from custom element and after
- * call update label for setup it.
- */
+	@brief SimpleElement::initLink
+	@param project
+	Call init Link from custom element and after
+	call update label for setup it.
+*/
 void SimpleElement::initLink(QETProject *project) {
 	Element::initLink(project);
 }

@@ -69,11 +69,11 @@ bool Qet::surLeMemeAxe(Qet::Orientation a, Qet::Orientation b) {
 }
 
 /**
- * @brief Qet::isOpposed
- * @param a
- * @param b
- * @return true if a and b is opposed, else false;
- */
+	@brief Qet::isOpposed
+	@param a
+	@param b
+	@return true if a and b is opposed, else false;
+*/
 bool Qet::isOpposed(Qet::Orientation a, Qet::Orientation b)
 {
 	bool result = false;
@@ -100,19 +100,19 @@ bool Qet::isOpposed(Qet::Orientation a, Qet::Orientation b)
 }
 
 /**
- * @brief Qet::isHorizontal
- * @param a
- * @return true if @a is horizontal, else false.
- */
+	@brief Qet::isHorizontal
+	@param a
+	@return true if @a is horizontal, else false.
+*/
 bool Qet::isHorizontal(Qet::Orientation a) {
 	return(a == Qet::East || a == Qet::West);
 }
 
 /**
- * @brief Qet::isVertical
- * @param a
- * @return true if @a is vertical, else false.
- */
+	@brief Qet::isVertical
+	@param a
+	@return true if @a is vertical, else false.
+*/
 bool Qet::isVertical(Qet::Orientation a) {
 	return(a == Qet::North || a == Qet::South);
 }
@@ -595,12 +595,12 @@ bool QET::writeXmlFile(QDomDocument &xml_doc, const QString &filepath, QString *
 }
 
 /**
- * @brief QET::eachStrIsEqual
- * @param qsl list of string to compare
- * @return true if every string is identical, else false;
- * The list must not be empty
- * If the list can be empty, call isEmpty() before calling this function
- */
+	@brief QET::eachStrIsEqual
+	@param qsl list of string to compare
+	@return true if every string is identical, else false;
+	The list must not be empty
+	If the list can be empty, call isEmpty() before calling this function
+*/
 bool QET::eachStrIsEqual(const QStringList &qsl) {
 	if (qsl.size() == 1) return true;
 	foreach (const QString t, qsl) {
@@ -610,10 +610,10 @@ bool QET::eachStrIsEqual(const QStringList &qsl) {
 }
 
 /**
- * @brief QET::qetCollectionToString
- * @param c QetCollection value to convert
- * @return The QetCollection enum value converted to a QString
- */
+	@brief QET::qetCollectionToString
+	@param c QetCollection value to convert
+	@return The QetCollection enum value converted to a QString
+*/
 QString QET::qetCollectionToString(const QET::QetCollection &c)
 {
 	switch (c)
@@ -630,11 +630,11 @@ QString QET::qetCollectionToString(const QET::QetCollection &c)
 }
 
 /**
- * @brief QET::qetCollectionFromString
- * @param str string to convert
- * @return The corresponding QetCollection value from a string.
- * If the string don't match anything, we return the failsafe value QetCollection::Common
- */
+	@brief QET::qetCollectionFromString
+	@param str string to convert
+	@return The corresponding QetCollection value from a string.
+	If the string don't match anything, we return the failsafe value QetCollection::Common
+*/
 QET::QetCollection QET::qetCollectionFromString(const QString &str)
 {
 	if (str == "common")
@@ -648,11 +648,11 @@ QET::QetCollection QET::qetCollectionFromString(const QString &str)
 }
 
 /**
- * @brief QET::depthActionGroup
- * @param parent
- * @return an action group which contain 4 actions (forward, raise, lower, backward)
- * already made with icon, shortcut and data (see QET::DepthOption)
- */
+	@brief QET::depthActionGroup
+	@param parent
+	@return an action group which contain 4 actions (forward, raise, lower, backward)
+	already made with icon, shortcut and data (see QET::DepthOption)
+*/
 QActionGroup *QET::depthActionGroup(QObject *parent)
 {
 	QActionGroup *action_group = new QActionGroup(parent);

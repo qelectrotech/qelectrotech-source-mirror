@@ -1,19 +1,19 @@
 /*
-    Copyright 2006-2020 The QElectroTech Team
-    This file is part of QElectroTech.
+	Copyright 2006-2020 The QElectroTech Team
+	This file is part of QElectroTech.
 
-    QElectroTech is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 2 of the License, or
-    (at your option) any later version.
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
 
-    QElectroTech is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetgraphicshandleritem.h"
 #include <QPainter>
@@ -21,9 +21,9 @@
 #include <utility>
 
 /**
- * @brief QetGraphicsHandlerItem::QetGraphicsHandlerItem
- * @param size, the size of the handler
- */
+	@brief QetGraphicsHandlerItem::QetGraphicsHandlerItem
+	@param size, the size of the handler
+*/
 QetGraphicsHandlerItem::QetGraphicsHandlerItem(qreal size) :
     m_size(size)
 {
@@ -34,17 +34,17 @@ QetGraphicsHandlerItem::QetGraphicsHandlerItem(qreal size) :
 }
 
 /**
- * @brief QetGraphicsHandlerItem::boundingRect
- * @return 
- */
+	@brief QetGraphicsHandlerItem::boundingRect
+	@return 
+*/
 QRectF QetGraphicsHandlerItem::boundingRect() const {
 	return m_br;
 }
 
 /**
- * @brief QetGraphicsHandlerItem::setColor
- * @param color, set the color of the handler
- */
+	@brief QetGraphicsHandlerItem::setColor
+	@param color, set the color of the handler
+*/
 void QetGraphicsHandlerItem::setColor(QColor color)
 {
 	m_color = std::move(color);
@@ -52,40 +52,48 @@ void QetGraphicsHandlerItem::setColor(QColor color)
 }
 
 /**
- * @brief QetGraphicsHandlerItem::paint
- * @param painter
- * @param option
- * @param widget
- */
-void QetGraphicsHandlerItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+	@brief QetGraphicsHandlerItem::paint
+	@param painter
+	@param option
+	@param widget
+*/
+void QetGraphicsHandlerItem::paint(QPainter *painter,
+				   const QStyleOptionGraphicsItem *option,
+				   QWidget *widget)
 {
 	Q_UNUSED(option)
 	Q_UNUSED(widget)
 
-    painter->save();
-    painter->setBrush(QBrush(m_color));
-    QPen pen(QBrush(m_color), 2, Qt::SolidLine, Qt::SquareCap, Qt::MiterJoin);
+	painter->save();
+	painter->setBrush(QBrush(m_color));
+	QPen pen(QBrush(m_color),
+		 2,
+		 Qt::SolidLine,
+		 Qt::SquareCap,
+		 Qt::MiterJoin);
 	pen.setCosmetic(true);
-    painter->setPen(pen);
+	painter->setPen(pen);
 	painter->setRenderHint(QPainter::Antialiasing, true);
-    painter->drawEllipse(m_handler_rect);
+	painter->drawEllipse(m_handler_rect);
 	painter->restore();
 }
 
 /**
- * @brief QetGraphicsHandlerItem::handlerForPoint
- * @param points
- * @return A list of handler with pos at point
- */
-QVector<QetGraphicsHandlerItem *> QetGraphicsHandlerItem::handlerForPoint(const QVector<QPointF> &points, int size)
+	@brief QetGraphicsHandlerItem::handlerForPoint
+	@param points
+	@return A list of handler with pos at point
+*/
+QVector<QetGraphicsHandlerItem *> QetGraphicsHandlerItem::handlerForPoint(
+		const QVector<QPointF> &points,
+		int size)
 {
-    QVector <QetGraphicsHandlerItem *> list_;
-    for (QPointF point : points)
-    {
-        QetGraphicsHandlerItem *qghi = new QetGraphicsHandlerItem(size);
-        qghi->setPos(point);
-        list_ << qghi;
-    }
+	QVector <QetGraphicsHandlerItem *> list_;
+	for (QPointF point : points)
+	{
+		QetGraphicsHandlerItem *qghi = new QetGraphicsHandlerItem(size);
+		qghi->setPos(point);
+		list_ << qghi;
+	}
 
 	return list_;
 }

@@ -150,14 +150,14 @@ QString ElementsCollectionCache::pixmapStorageFormat() const {
 }
 
 /**
- * @brief ElementsCollectionCache::fetchElement
- * Retrieve the data for a given element, using the cache if available,
- * filling it otherwise. Data are then available through pixmap() and name() methods.
- * @param location The definition of an element.
- * @see pixmap()
- * @see name()
- * @return True if the retrieval succeeded, false otherwise.
- */
+	@brief ElementsCollectionCache::fetchElement
+	Retrieve the data for a given element, using the cache if available,
+	filling it otherwise. Data are then available through pixmap() and name() methods.
+	@param location The definition of an element.
+	@see pixmap()
+	@see name()
+	@return True if the retrieval succeeded, false otherwise.
+*/
 bool ElementsCollectionCache::fetchElement(ElementsLocation &location)
 {
 		// can we use the cache with this element?
@@ -222,13 +222,13 @@ bool ElementsCollectionCache::fetchData(const ElementsLocation &location) {
 }
 
 /**
- * @brief ElementsCollectionCache::fetchNameFromCache
- * Retrieve the name for an element, given its path and uuid
- * The value is then available through the name() method.
- * @param path : Element path (as obtained using ElementsLocation::toString())
- * @param uuid : Element uuid
- * @return True if the retrieval succeeded, false otherwise.
- */
+	@brief ElementsCollectionCache::fetchNameFromCache
+	Retrieve the name for an element, given its path and uuid
+	The value is then available through the name() method.
+	@param path : Element path (as obtained using ElementsLocation::toString())
+	@param uuid : Element uuid
+	@return True if the retrieval succeeded, false otherwise.
+*/
 bool ElementsCollectionCache::fetchNameFromCache(const QString &path, const QUuid &uuid)
 {
 	select_name_ -> bindValue(":path", path);
@@ -250,13 +250,13 @@ bool ElementsCollectionCache::fetchNameFromCache(const QString &path, const QUui
 }
 
 /**
- * @brief ElementsCollectionCache::fetchPixmapFromCache
- * Retrieve the pixmap for an element, given its path and uuid.
- * It is then available through the pixmap() method.
- * @param path : Element path (as obtained using ElementsLocation::toString())
- * @param uuid : Element uuid
- * @return True if the retrieval succeeded, false otherwise.
- */
+	@brief ElementsCollectionCache::fetchPixmapFromCache
+	Retrieve the pixmap for an element, given its path and uuid.
+	It is then available through the pixmap() method.
+	@param path : Element path (as obtained using ElementsLocation::toString())
+	@param uuid : Element uuid
+	@return True if the retrieval succeeded, false otherwise.
+*/
 bool ElementsCollectionCache::fetchPixmapFromCache(const QString &path, const QUuid &uuid)
 {
 	select_pixmap_ -> bindValue(":path", path);
@@ -280,13 +280,13 @@ bool ElementsCollectionCache::fetchPixmapFromCache(const QString &path, const QU
 }
 
 /**
- * @brief ElementsCollectionCache::cacheName
- * Cache the current (i.e. last retrieved) name The cache entry will use the locale set via setLocale().
- * @param path : Element path (as obtained using ElementsLocation::toString())
- * @param uuid :Element uuid
- * @return True if the caching succeeded, false otherwise.
- * @see name()
- */
+	@brief ElementsCollectionCache::cacheName
+	Cache the current (i.e. last retrieved) name The cache entry will use the locale set via setLocale().
+	@param path : Element path (as obtained using ElementsLocation::toString())
+	@param uuid :Element uuid
+	@return True if the caching succeeded, false otherwise.
+	@see name()
+*/
 bool ElementsCollectionCache::cacheName(const QString &path, const QUuid &uuid)
 {
 	insert_name_ -> bindValue(":path",   path);
@@ -302,13 +302,13 @@ bool ElementsCollectionCache::cacheName(const QString &path, const QUuid &uuid)
 }
 
 /**
- * @brief ElementsCollectionCache::cachePixmap
- * Cache the current (i.e. last retrieved) pixmap
- * @param path : Element path (as obtained using ElementsLocation::toString())
- * @param uuid : Element uuid
- * @return True if the caching succeeded, false otherwise.
- * @see pixmap()
- */
+	@brief ElementsCollectionCache::cachePixmap
+	Cache the current (i.e. last retrieved) pixmap
+	@param path : Element path (as obtained using ElementsLocation::toString())
+	@param uuid : Element uuid
+	@return True if the caching succeeded, false otherwise.
+	@see pixmap()
+*/
 bool ElementsCollectionCache::cachePixmap(const QString &path, const QUuid &uuid)
 {
 	QByteArray ba;

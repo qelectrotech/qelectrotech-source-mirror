@@ -44,11 +44,11 @@
 
 
 /**
- * @brief QETDiagramEditor::QETDiagramEditor
- * Constructor
- * @param files, list of files to open
- * @param parent, parent widget
- */
+	@brief QETDiagramEditor::QETDiagramEditor
+	Constructor
+	@param files : list of files to open
+	@param parent : parent widget
+*/
 QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	QETMainWindow(parent),
 	m_row_column_actions_group (this),
@@ -132,9 +132,9 @@ QETDiagramEditor::~QETDiagramEditor() {
 }
 
 /**
- * @brief QETDiagramEditor::setUpElementsPanel
- * Setup the element panel and element panel widget
- */
+	@brief QETDiagramEditor::setUpElementsPanel
+	Setup the element panel and element panel widget
+*/
 void QETDiagramEditor::setUpElementsPanel() {
 	//Add the element panel as a QDockWidget
 	qdw_pa = new QDockWidget(tr("Projets", "dock title"), this);
@@ -163,9 +163,9 @@ void QETDiagramEditor::setUpElementsPanel() {
 }
 
 /**
- * @brief QETDiagramEditor::setUpElementsCollectionWidget
- * Set up the dock widget of element collection
- */
+	@brief QETDiagramEditor::setUpElementsCollectionWidget
+	Set up the dock widget of element collection
+*/
 void QETDiagramEditor::setUpElementsCollectionWidget()
 {
 	m_qdw_elmt_collection = new QDockWidget(tr("Collections"), this);
@@ -181,9 +181,9 @@ void QETDiagramEditor::setUpElementsCollectionWidget()
 }
 
 /**
- * @brief QETDiagramEditor::setUpUndoStack
- * Setup the undostack and undo stack widget
- */
+	@brief QETDiagramEditor::setUpUndoStack
+	Setup the undostack and undo stack widget
+*/
 void QETDiagramEditor::setUpUndoStack() {
 
 	QUndoView *undo_view = new QUndoView(&undo_group, this);
@@ -204,9 +204,9 @@ void QETDiagramEditor::setUpUndoStack() {
 }
 
 /**
- * @brief QETDiagramEditor::setUpSelectionPropertiesEditor
- * Setup the dock for edit the current selection
- */
+	@brief QETDiagramEditor::setUpSelectionPropertiesEditor
+	Setup the dock for edit the current selection
+*/
 void QETDiagramEditor::setUpSelectionPropertiesEditor()
 {
 	m_selection_properties_editor = new DiagramPropertiesEditorDockWidget(this);
@@ -215,9 +215,9 @@ void QETDiagramEditor::setUpSelectionPropertiesEditor()
 }
 
 /**
- * @brief QETDiagramEditor::setUpAutonumberingWidget
- * Setup the dock for AutoNumbering Selection
- */
+	@brief QETDiagramEditor::setUpAutonumberingWidget
+	Setup the dock for AutoNumbering Selection
+*/
 void QETDiagramEditor::setUpAutonumberingWidget()
 {
 	m_autonumbering_dock = new AutoNumberingDockWidget(this);
@@ -227,9 +227,9 @@ void QETDiagramEditor::setUpAutonumberingWidget()
 }
 
 /**
- * @brief QETDiagramEditor::setUpActions
- * Set up all Qaction
- */
+	@brief QETDiagramEditor::setUpActions
+	Set up all Qaction
+*/
 void QETDiagramEditor::setUpActions()
 {
 		//Export to another file type (jpeg, dxf etc...)
@@ -382,8 +382,8 @@ void QETDiagramEditor::setUpActions()
 		//Export nomenclature to CSV
 	m_csv_export = new QAction(QET::Icons::DocumentSpreadsheet, tr("Exporter au format CSV"), this);
 	connect(m_csv_export, &QAction::triggered, [this]() {
-        BOMExportDialog bom(currentProjectView()->project(), this);
-        bom.exec();
+		BOMExportDialog bom(currentProjectView()->project(), this);
+		bom.exec();
 	});
 	
 		//Add a nomenclature item
@@ -654,8 +654,8 @@ void QETDiagramEditor::setUpActions()
 }
 
 /**
- * @brief QETDiagramEditor::setUpToolBar
- */
+	@brief QETDiagramEditor::setUpToolBar
+*/
 void QETDiagramEditor::setUpToolBar()
 {
 	main_tool_bar = new QToolBar(tr("Outils"), this);
@@ -709,8 +709,8 @@ void QETDiagramEditor::setUpToolBar()
 }
 
 /**
- * @brief QETDiagramEditor::setUpMenu
- */
+	@brief QETDiagramEditor::setUpMenu
+*/
 void QETDiagramEditor::setUpMenu() {
 
 	QMenu *menu_fichier   = new QMenu(tr("&Fichier"));
@@ -830,12 +830,12 @@ void QETDiagramEditor::closeEvent(QCloseEvent *qce) {
 }
 
 /**
- * @brief QETDiagramEditor::event
- * Reimplemented to :
- * -Load elements collection when WindowActivate.
- * @param e
- * @return 
- */
+	@brief QETDiagramEditor::event
+	Reimplemented to :
+	-Load elements collection when WindowActivate.
+	@param e
+	@return 
+*/
 bool QETDiagramEditor::event(QEvent *e)
 {
 	if (m_first_show && e->type() == QEvent::WindowActivate)
@@ -847,9 +847,9 @@ bool QETDiagramEditor::event(QEvent *e)
 }
 
 /**
- * @brief QETDiagramEditor::save
- * Ask the current active project to save
- */
+	@brief QETDiagramEditor::save
+	Ask the current active project to save
+*/
 void QETDiagramEditor::save() {
 	if (ProjectView *project_view = currentProjectView()) {
 		QETResult saved = project_view -> save();
@@ -871,9 +871,9 @@ void QETDiagramEditor::save() {
 }
 
 /**
- * @brief QETDiagramEditor::saveAs
- * Ask the current active project to save as
- */
+	@brief QETDiagramEditor::saveAs
+	Ask the current active project to save as
+*/
 void QETDiagramEditor::saveAs() {
 	if (ProjectView *project_view = currentProjectView()) {
 		QETResult save_file = project_view -> saveAs();
@@ -893,10 +893,10 @@ void QETDiagramEditor::saveAs() {
 }
 
 /**
- * @brief QETDiagramEditor::newProject
- * Create a new project with an empty diagram
- * @return
- */
+	@brief QETDiagramEditor::newProject
+	Create a new project with an empty diagram
+	@return
+*/
 bool QETDiagramEditor::newProject()
 {
 	auto new_project = new QETProject(this);
@@ -1140,10 +1140,10 @@ ProjectView *QETDiagramEditor::currentProjectView() const {
 }
 
 /**
- * @brief QETDiagramEditor::currentProject
- * @return the current edited project.
- * This function can return nullptr.
- */
+	@brief QETDiagramEditor::currentProject
+	@return the current edited project.
+	This function can return nullptr.
+*/
 QETProject *QETDiagramEditor::currentProject() const
 {
 	ProjectView *view = currentProjectView();
@@ -1288,10 +1288,10 @@ void QETDiagramEditor::zoomGroupTriggered(QAction *action)
 }
 
 /**
- * @brief QETDiagramEditor::selectGroupTriggered
- * This slot is called when selection need to change.
- * @param action : Action that describes what to do.
- */
+	@brief QETDiagramEditor::selectGroupTriggered
+	This slot is called when selection need to change.
+	@param action : Action that describes what to do.
+*/
 void QETDiagramEditor::selectGroupTriggered(QAction *action)
 {
 	QString value = action->data().toString();
@@ -1308,11 +1308,11 @@ void QETDiagramEditor::selectGroupTriggered(QAction *action)
 }
 
 /**
- * @brief QETDiagramEditor::addItemGroupTriggered
- * This slot is called when an item must be added to the curent diagram,
- * this slot use the DVEventInterface to add item
- * @param action : Action that describe the item to add.
- */
+	@brief QETDiagramEditor::addItemGroupTriggered
+	This slot is called when an item must be added to the curent diagram,
+	this slot use the DVEventInterface to add item
+	@param action : Action that describe the item to add.
+*/
 void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 {
 	QString value = action->data().toString();
@@ -1359,10 +1359,10 @@ void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 }
 
 /**
- * @brief QETDiagramEditor::selectionGroupTriggered
- * This slot is called when an action should be made on the current selection
- * @param action : Action that describe the action to do.
- */
+	@brief QETDiagramEditor::selectionGroupTriggered
+	This slot is called when an action should be made on the current selection
+	@param action : Action that describe the action to do.
+*/
 void QETDiagramEditor::selectionGroupTriggered(QAction *action)
 {
 	QString value = action->data().toString();
@@ -1424,9 +1424,9 @@ void QETDiagramEditor::rowColumnGroupTriggered(QAction *action)
 }
 
 /**
- * @brief QETDiagramEditor::slot_updateActions
- * Manage actions
- */
+	@brief QETDiagramEditor::slot_updateActions
+	Manage actions
+*/
 void QETDiagramEditor::slot_updateActions()
 {
 	DiagramView *dv = currentDiagramView();
@@ -1467,9 +1467,9 @@ void QETDiagramEditor::slot_updateActions()
 }
 
 /**
- * @brief QETDiagramEditor::slot_updateAutoNumDock
- * Update Auto Num Dock Widget when changing Project
- */
+	@brief QETDiagramEditor::slot_updateAutoNumDock
+	Update Auto Num Dock Widget when changing Project
+*/
 void QETDiagramEditor::slot_updateAutoNumDock() {
 	if ( m_workspace.subWindowList().indexOf(m_workspace.activeSubWindow()) != activeSubWindowIndex) {
 			activeSubWindowIndex = m_workspace.subWindowList().indexOf(m_workspace.activeSubWindow());
@@ -1480,9 +1480,9 @@ void QETDiagramEditor::slot_updateAutoNumDock() {
 }
 
 /**
- * @brief QETDiagramEditor::slot_updateUndoStack
- * Update the undo stack view
- */
+	@brief QETDiagramEditor::slot_updateUndoStack
+	Update the undo stack view
+*/
 void QETDiagramEditor::slot_updateUndoStack()
 {
 	if(currentProjectView())
@@ -1490,10 +1490,10 @@ void QETDiagramEditor::slot_updateUndoStack()
 }
 
 /**
- * @brief QETDiagramEditor::slot_updateComplexActions
- * Manage the actions who need some conditions to be enable or not.
- * This method does nothing if there is no project opened
- */
+	@brief QETDiagramEditor::slot_updateComplexActions
+	Manage the actions who need some conditions to be enable or not.
+	This method does nothing if there is no project opened
+*/
 void QETDiagramEditor::slot_updateComplexActions()
 {
 	DiagramView *dv = currentDiagramView();
@@ -1607,9 +1607,9 @@ void QETDiagramEditor::slot_updateComplexActions()
 }
 
 /**
- * @brief QETDiagramEditor::slot_updateModeActions
- * Manage action who need an opened diagram or project to be updated
- */
+	@brief QETDiagramEditor::slot_updateModeActions
+	Manage action who need an opened diagram or project to be updated
+*/
 void QETDiagramEditor::slot_updateModeActions()
 {
 	DiagramView *dv = currentDiagramView();
@@ -1655,11 +1655,11 @@ void QETDiagramEditor::slot_updatePasteAction() {
 }
 
 /**
- * @brief QETDiagramEditor::addProjectView
- * Add a new project view to workspace and
- * build the connection between the projectview / project and this QETDiagramEditor.
- * @param project_view, project view to add
- */
+	@brief QETDiagramEditor::addProjectView
+	Add a new project view to workspace and
+	build the connection between the projectview / project and this QETDiagramEditor.
+	@param project_view, project view to add
+*/
 void QETDiagramEditor::addProjectView(ProjectView *project_view)
 {
 	if (!project_view) return;
@@ -1743,17 +1743,17 @@ ProjectView *QETDiagramEditor::viewForFile(const QString &filepath) const {
 }
 
 /**
- * @brief QETDiagramEditor::drawGrid
- * @return true if the grid of folio must be displayed
- */
+	@brief QETDiagramEditor::drawGrid
+	@return true if the grid of folio must be displayed
+*/
 bool QETDiagramEditor::drawGrid() const {
 	return m_draw_grid->isChecked();
 }
 
 /**
- * @brief QETDiagramEditor::openBackupFiles
- * @param backup_files
- */
+	@brief QETDiagramEditor::openBackupFiles
+	@param backup_files
+*/
 void QETDiagramEditor::openBackupFiles(QList<KAutoSaveFile *> backup_files)
 {
 	for (KAutoSaveFile *file : backup_files)
@@ -1862,9 +1862,9 @@ void QETDiagramEditor::setTabbedMode() {
 }
 
 /**
- * @brief QETDiagramEditor::readSettings
- * Read the settings
- */
+	@brief QETDiagramEditor::readSettings
+	Read the settings
+*/
 void QETDiagramEditor::readSettings()
 {
 	QSettings settings;
@@ -1887,9 +1887,9 @@ void QETDiagramEditor::readSettings()
 }
 
 /**
- * @brief QETDiagramEditor::writeSettings
- * Write the settings
- */
+	@brief QETDiagramEditor::writeSettings
+	Write the settings
+*/
 void QETDiagramEditor::writeSettings()
 {
 	QSettings settings;
@@ -1930,9 +1930,9 @@ void QETDiagramEditor::activateProject(ProjectView *project_view) {
 }
 
 /*** @brief QETDiagramEditor::projectWasClosed
- * Manage the close of a project.
- * @param project_view
- */
+	Manage the close of a project.
+	@param project_view
+*/
 void QETDiagramEditor::projectWasClosed(ProjectView *project_view)
 {
 	QETProject *project = project_view -> project();
@@ -1971,10 +1971,10 @@ void QETDiagramEditor::editProjectProperties(QETProject *project) {
 }
 
 /**
- * @brief QETDiagramEditor::addDiagramToProject
- * Add a diagram to project
- * @param project
- */
+	@brief QETDiagramEditor::addDiagramToProject
+	Add a diagram to project
+	@param project
+*/
 void QETDiagramEditor::addDiagramToProject(QETProject *project)
 {
 	if (!project) {
@@ -2051,7 +2051,7 @@ void QETDiagramEditor::moveDiagramDown(Diagram *diagram) {
 	Change l'ordre des schemas d'un projet, en decalant le schema vers le haut /
 	la gauche en position 0
 	@param diagram Schema a decaler vers le haut / la gauche en position 0
- */
+*/
 void QETDiagramEditor::moveDiagramUpTop(Diagram *diagram) {
 	if (!diagram) return;
 
@@ -2122,10 +2122,10 @@ void QETDiagramEditor::removeDiagramFromProject()
 }
 
 /**
- * @brief QETDiagramEditor::diagramWasAdded
- * Manage the adding of diagram view in a project
- * @param dv, added diagram view
- */
+	@brief QETDiagramEditor::diagramWasAdded
+	Manage the adding of diagram view in a project
+	@param dv, added diagram view
+*/
 void QETDiagramEditor::diagramWasAdded(DiagramView *dv)
 {
 	connect(dv->diagram(), &QGraphicsScene::selectionChanged, this, &QETDiagramEditor::selectionChanged, Qt::DirectConnection);
@@ -2133,10 +2133,10 @@ void QETDiagramEditor::diagramWasAdded(DiagramView *dv)
 }
 
 /**
- * @brief QETDiagramEditor::findElementInPanel
- * Find the item for @location in the element panel
- * @param location
- */
+	@brief QETDiagramEditor::findElementInPanel
+	Find the item for @location in the element panel
+	@param location
+*/
 void QETDiagramEditor::findElementInPanel(const ElementsLocation &location)
 {
 	m_element_collection_widget->setCurrentLocation(location);
@@ -2177,10 +2177,10 @@ void QETDiagramEditor::showError(const QString &error) {
 }
 
 /**
- * @brief QETDiagramEditor::subWindowActivated
- * Slot used to update menu and undo stack when subwindows of MDIarea was activated
- * @param subWindows
- */
+	@brief QETDiagramEditor::subWindowActivated
+	Slot used to update menu and undo stack when subwindows of MDIarea was activated
+	@param subWindows
+*/
 void QETDiagramEditor::subWindowActivated(QMdiSubWindow *subWindows)
 {
 	Q_UNUSED(subWindows);
@@ -2190,9 +2190,9 @@ void QETDiagramEditor::subWindowActivated(QMdiSubWindow *subWindows)
 }
 
 /**
- * @brief QETDiagramEditor::selectionChanged
- * This slot is called when a diagram selection was changed.
- */
+	@brief QETDiagramEditor::selectionChanged
+	This slot is called when a diagram selection was changed.
+*/
 void QETDiagramEditor::selectionChanged()
 {
 	slot_updateComplexActions();
@@ -2204,8 +2204,8 @@ void QETDiagramEditor::selectionChanged()
 
 
 /**
- * @brief QETDiagramEditor::generateTerminalBlock
- */
+	@brief QETDiagramEditor::generateTerminalBlock
+*/
 void QETDiagramEditor::generateTerminalBlock()
 {
 	bool success;

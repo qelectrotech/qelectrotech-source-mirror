@@ -20,11 +20,11 @@
 #include "diagram.h"
 
 /**
- * @brief BorderPropertiesWidget::BorderPropertiesWidget
- * default constructor
- * @param bp properties
- * @param parent paretn widget
- */
+	@brief BorderPropertiesWidget::BorderPropertiesWidget
+	default constructor
+	@param bp properties
+	@param parent paretn widget
+*/
 BorderPropertiesWidget::BorderPropertiesWidget(const BorderProperties &bp, QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::BorderPropertiesWidget)
@@ -34,19 +34,19 @@ BorderPropertiesWidget::BorderPropertiesWidget(const BorderProperties &bp, QWidg
 }
 
 /**
- * @brief BorderPropertiesWidget::~BorderPropertiesWidget
- * default destructor
- */
+	@brief BorderPropertiesWidget::~BorderPropertiesWidget
+	default destructor
+*/
 BorderPropertiesWidget::~BorderPropertiesWidget()
 {
 	delete ui;
 }
 
 /**
- * @brief BorderPropertiesWidget::setProperties
- * Set the current properties to edit
- * @param bp properties to edit
- */
+	@brief BorderPropertiesWidget::setProperties
+	Set the current properties to edit
+	@param bp properties to edit
+*/
 void BorderPropertiesWidget::setProperties(const BorderProperties &bp) {
 	m_properties = bp;
 	ui -> m_colums_count_sp    ->setValue   (m_properties.columns_count);
@@ -58,9 +58,9 @@ void BorderPropertiesWidget::setProperties(const BorderProperties &bp) {
 }
 
 /**
- * @brief BorderPropertiesWidget::properties
- * @return the edited border properties
- */
+	@brief BorderPropertiesWidget::properties
+	@return the edited border properties
+*/
 const BorderProperties &BorderPropertiesWidget::properties () {
 	m_properties.columns_count   = ui -> m_colums_count_sp    -> value();
 	m_properties.columns_width   = ui -> m_columns_width_sp   -> value();
@@ -72,10 +72,10 @@ const BorderProperties &BorderPropertiesWidget::properties () {
 }
 
 /**
- * @brief BorderPropertiesWidget::setReadOnly
- * Enable or disable this widget
- * @param ro true-disable / false-enable
- */
+	@brief BorderPropertiesWidget::setReadOnly
+	Enable or disable this widget
+	@param ro true-disable / false-enable
+*/
 void BorderPropertiesWidget::setReadOnly(const bool &ro) {
 	ui->border_gb->setDisabled(ro);
 }

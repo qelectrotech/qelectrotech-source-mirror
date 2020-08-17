@@ -24,9 +24,9 @@ class Diagram;
 class ConductorPropertiesWidget;
 
 /**
- * @brief The DiagramPropertiesDialog class
- * This dialog open a windows for edit properties of a diagram.
- */
+	@brief The DiagramPropertiesDialog class
+	This dialog open a windows for edit properties of a diagram.
+*/
 class DiagramPropertiesDialog : public QDialog {
 		Q_OBJECT
 
@@ -37,7 +37,7 @@ class DiagramPropertiesDialog : public QDialog {
 
 	public slots:
 		void editAutonum ();
-        void editAutoFolioNum ();
+		void editAutoFolioNum ();
 
 	private:
 		Diagram               *m_diagram;

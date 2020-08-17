@@ -30,16 +30,16 @@
 #include "qetgraphicstableitem.h"
 
 /**
- * @brief DiagramContent::DiagramContent
- */
+	@brief DiagramContent::DiagramContent
+*/
 DiagramContent::DiagramContent() {}
 
 /**
- * @brief DiagramContent::DiagramContent
- * Constructor
- * @param diagram : Construct a diagramContent and fill it with the selected item of @diagram
- * @param selected : this diagramcontent get only selected items if true.
- */
+	@brief DiagramContent::DiagramContent
+	Constructor
+	@param diagram : Construct a diagramContent and fill it with the selected item of @diagram
+	@param selected : this diagramcontent get only selected items if true.
+*/
 DiagramContent::DiagramContent(Diagram *diagram, bool selected) :
 	m_selected_items(diagram->selectedItems())
 {
@@ -120,12 +120,12 @@ DiagramContent::~DiagramContent()
 {}
 
 /**
- * @brief DiagramContent::selectedTexts
- * @return a list of every selected texts (every kind of texts)
- * Note that the returned list of texts, correspond to the selected texts
- * at the moment of the creation of this DiagramContent,
- * with the constructor :  DiagramContent::DiagramContent(Diagram *diagram)
- */
+	@brief DiagramContent::selectedTexts
+	@return a list of every selected texts (every kind of texts)
+	Note that the returned list of texts, correspond to the selected texts
+	at the moment of the creation of this DiagramContent,
+	with the constructor :  DiagramContent::DiagramContent(Diagram *diagram)
+*/
 QList<DiagramTextItem *> DiagramContent::selectedTexts() const
 {
 	QList<DiagramTextItem *> selected_texts;
@@ -140,12 +140,12 @@ QList<DiagramTextItem *> DiagramContent::selectedTexts() const
 }
 
 /**
- * @brief DiagramContent::selectedTextsGroup
- * @return a list of selected texts group
- * Note that the returned list of texts group, correspond to the selected texts group
- * at the moment of the creation of this DiagramContent,
- * with the constructor :  DiagramContent::DiagramContent(Diagram *diagram)
- */
+	@brief DiagramContent::selectedTextsGroup
+	@return a list of selected texts group
+	Note that the returned list of texts group, correspond to the selected texts group
+	at the moment of the creation of this DiagramContent,
+	with the constructor :  DiagramContent::DiagramContent(Diagram *diagram)
+*/
 QList<ElementTextItemGroup *> DiagramContent::selectedTextsGroup() const
 {
 	QList<ElementTextItemGroup *> groups;
@@ -159,10 +159,10 @@ QList<ElementTextItemGroup *> DiagramContent::selectedTextsGroup() const
 }
 
 /**
- * @brief DiagramContent::conductors
- * @param filter
- * @return Every conductors according to the filter
- */
+	@brief DiagramContent::conductors
+	@param filter
+	@return Every conductors according to the filter
+*/
 QList<Conductor *> DiagramContent::conductors(int filter) const
 {
 	QList<Conductor *> result;
@@ -180,12 +180,12 @@ QList<Conductor *> DiagramContent::conductors(int filter) const
 }
 
 /**
- * @brief DiagramContent::hasDeletableItems
- * @return true if this diagram content have deletable item
- * The deletable items correspond to the selected items of diagram
- * at the moment of the creation of this DiagramContent,
- * with the constructor :  DiagramContent::DiagramContent(Diagram *diagram)
- */
+	@brief DiagramContent::hasDeletableItems
+	@return true if this diagram content have deletable item
+	The deletable items correspond to the selected items of diagram
+	at the moment of the creation of this DiagramContent,
+	with the constructor :  DiagramContent::DiagramContent(Diagram *diagram)
+*/
 bool DiagramContent::hasDeletableItems() const
 {
 	for(QGraphicsItem *qgi : m_selected_items)
@@ -206,9 +206,9 @@ bool DiagramContent::hasDeletableItems() const
 }
 
 /**
- * @brief DiagramContent::hasCopiableItems
- * @return true if this diagram content have copiable items.
- */
+	@brief DiagramContent::hasCopiableItems
+	@return true if this diagram content have copiable items.
+*/
 bool DiagramContent::hasCopiableItems() const
 {
 	if(!m_images.isEmpty())      return true;
@@ -220,9 +220,9 @@ bool DiagramContent::hasCopiableItems() const
 }
 
 /**
- * @brief DiagramContent::clear
- * Remove all items from the diagram content
- */
+	@brief DiagramContent::clear
+	Remove all items from the diagram content
+*/
 void DiagramContent::clear()
 {
 	m_elements.clear();
@@ -239,10 +239,10 @@ void DiagramContent::clear()
 }
 
 /**
- * @brief DiagramContent::removeNonMovableItems
- * Remove all non movable item.
- * @return : return the numbers of removed item
- */
+	@brief DiagramContent::removeNonMovableItems
+	Remove all non movable item.
+	@return : return the numbers of removed item
+*/
 int DiagramContent::removeNonMovableItems()
 {
 	int count_ = 0;
@@ -333,10 +333,10 @@ DiagramContent &DiagramContent::operator+=(const DiagramContent &other)
 }
 
 /**
- * @brief DiagramContent::potentialIsManaged
- * @param conductors a list of conductors at the same potential.
- * @return true, if m_potential_conductors already have a conductor of this potential.
- */
+	@brief DiagramContent::potentialIsManaged
+	@param conductors a list of conductors at the same potential.
+	@return true, if m_potential_conductors already have a conductor of this potential.
+*/
 bool DiagramContent::potentialIsManaged(QList<Conductor *> conductors)
 {
 	bool b = false;
@@ -351,9 +351,9 @@ bool DiagramContent::potentialIsManaged(QList<Conductor *> conductors)
 }
 
 /**
- * @brief DiagramContent::hasTextEditing
- * @return true if handle a text currently in editing intercation
- */
+	@brief DiagramContent::hasTextEditing
+	@return true if handle a text currently in editing intercation
+*/
 bool DiagramContent::hasTextEditing()
 {
 	for (DiagramTextItem *dti : selectedTexts()) {
@@ -366,10 +366,10 @@ bool DiagramContent::hasTextEditing()
 }
 
 /**
- * @brief DiagramContent::items
- * @param filter
- * @return The items of this diagram content according to @filter
- */
+	@brief DiagramContent::items
+	@param filter
+	@return The items of this diagram content according to @filter
+*/
 QList<QGraphicsItem *> DiagramContent::items(int filter) const
 {
 	QList<QGraphicsItem *> items_list;
@@ -393,10 +393,10 @@ QList<QGraphicsItem *> DiagramContent::items(int filter) const
 }
 
 /**
- * @brief DiagramContent::count
- * @param filter
- * @return The number of items, according to @filter
- */
+	@brief DiagramContent::count
+	@param filter
+	@return The number of items, according to @filter
+*/
 int DiagramContent::count(int filter) const
 {
 	int count = 0;
@@ -428,11 +428,11 @@ int DiagramContent::count(int filter) const
 }
 
 /**
- * @brief DiagramContent::sentence
- * @param filter
- * @return A string that describe the items of the diagram content according to @filter.
- * Exemple : X elements, Y conductors etc....
- */
+	@brief DiagramContent::sentence
+	@param filter
+	@return A string that describe the items of the diagram content according to @filter.
+	Exemple : X elements, Y conductors etc....
+*/
 QString DiagramContent::sentence(int filter) const
 {
 	int elements_count   = (filter & Elements) ? m_elements.count() : 0;
@@ -457,11 +457,11 @@ QString DiagramContent::sentence(int filter) const
 }
 
 /**
- * @brief operator << Use to debug a diagram content
- * @param d : QDebug to use for display the debug info
- * @param content : content to debug
- * @return 
- */
+	@brief operator << Use to debug a diagram content
+	@param d : QDebug to use for display the debug info
+	@param content : content to debug
+	@return
+*/
 QDebug &operator<<(QDebug d, DiagramContent &content) {
 	Q_UNUSED(content)
 	d << "DiagramContent {" << "\n";

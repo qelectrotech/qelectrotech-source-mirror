@@ -1484,7 +1484,7 @@ bool Diagram::fromXml(QDomElement &document,
  * @param folioSeq type
  * @param seq type
  * @param type of sequential
- */
+*/
 void Diagram::folioSequentialsFromXml(const QDomElement &root,
 				      QHash<QString,
 				      QStringList>* hash,
@@ -1727,7 +1727,7 @@ void Diagram::updateLabels()
  * @param sequential to be treated
  * @param type to be treated
  * @param Numerotation Context to be manipulated
- */
+*/
 void Diagram::insertFolioSeqHash(QHash<QString,
 				 QStringList> *hash,
 				 const QString& title,

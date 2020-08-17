@@ -57,12 +57,12 @@ bool DVEventInterface::wheelEvent(QWheelEvent *event) {
 }
 
 /**
- * @brief DVEventInterface::keyPressEvent
- * By default, press escape key abort the curent action.
- * isFinish return true, and emit finish
- * @param event
- * @return
- */
+	@brief DVEventInterface::keyPressEvent
+	By default, press escape key abort the curent action.
+	isFinish return true, and emit finish
+	@param event
+	@return
+*/
 bool DVEventInterface::keyPressEvent(QKeyEvent *event)
 {
 	if (event->key() == Qt::Key_Escape)

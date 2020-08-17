@@ -23,12 +23,13 @@
 #include "dynamicelementtextitem.h"
 
 /**
- * @brief The PartDynamicTextField class
- * This class represents an editable dynamic text field which may be used to compose the
- * drawing of an electrical element within the element editor.
- * The field will remain editable once the element is added onto
- * a diagram
- */
+	@brief The PartDynamicTextField class
+	This class represents an editable dynamic text field
+	which may be used to compose the
+	drawing of an electrical element within the element editor.
+	The field will remain editable once the element is added onto
+	a diagram
+*/
 class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 {
 	Q_OBJECT

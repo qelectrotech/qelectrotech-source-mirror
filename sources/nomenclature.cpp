@@ -81,10 +81,10 @@ bool nomenclature::saveToCSVFile()
 }
 
 /**
- * @brief nomenclature::getNomenclature
- * Create and formated a nomenclature to csv file.
- * @return The QString of nomenclature
- */
+	@brief nomenclature::getNomenclature
+	Create and formated a nomenclature to csv file.
+	@return The QString of nomenclature
+*/
 QString nomenclature::getNomenclature()
 {
 	//Process...
@@ -161,10 +161,10 @@ QString nomenclature::getNomenclature()
 }
 
 /**
- * @brief nomenclature::getElementInfo
- * @param elmt : the element to getinfo
- * @return : QString with information about element formated to csv file
- */
+	@brief nomenclature::getElementInfo
+	@param elmt : the element to getinfo
+	@return : QString with information about element formated to csv file
+*/
 QString nomenclature::getElementInfo(Element *elmt) {
 	QString info;
 

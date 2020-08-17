@@ -27,9 +27,9 @@ namespace Ui {
 }
 
 /**
- * @brief The ImagePropertiesWidget class
- * This class provide a widget to edit the propertie of a DiagramImageItem
- */
+	@brief The ImagePropertiesWidget class
+	This class provide a widget to edit the propertie of a DiagramImageItem
+*/
 class ImagePropertiesWidget : public PropertiesEditorWidget
 {
 		Q_OBJECT

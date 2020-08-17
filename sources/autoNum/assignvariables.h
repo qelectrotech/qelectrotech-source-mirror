@@ -55,10 +55,10 @@ namespace autonum
 	};
 
 	/**
-	 * @brief The AssignVariables class
-	 * This class assign variable of a formula string.
-	 * Return the final string used to be displayed from a formula string.
-	 */
+		@brief The AssignVariables class
+		This class assign variable of a formula string.
+		Return the final string used to be displayed from a formula string.
+	*/
 	class AssignVariables
 	{
 		public:

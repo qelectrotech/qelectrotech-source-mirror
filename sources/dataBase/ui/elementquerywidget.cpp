@@ -1,19 +1,19 @@
 /*
-   Copyright 2006-2020 The QElectroTech Team
-   This file is part of QElectroTech.
+	Copyright 2006-2020 The QElectroTech Team
+	This file is part of QElectroTech.
 
-   QElectroTech is free software: you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation, either version 2 of the License, or
-   (at your option) any later version.
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
 
-   QElectroTech is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
 
-   You should have received a copy of the GNU General Public License
-   along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementquerywidget.h"
 #include "ui_elementquerywidget.h"
@@ -22,14 +22,14 @@
 #include <QRegularExpression>
 
 /**
- * @brief ElementQueryWidget::ElementQueryWidget
- * @param parent
- */
+	@brief ElementQueryWidget::ElementQueryWidget
+	@param parent
+*/
 ElementQueryWidget::ElementQueryWidget(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::ElementQueryWidget)
+	QWidget(parent),
+	ui(new Ui::ElementQueryWidget)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 
 	m_export_info.insert("position", tr("Position"));
 	m_export_info.insert("title", tr("Titre du folio"));
@@ -96,18 +96,18 @@ ElementQueryWidget::ElementQueryWidget(QWidget *parent) :
 }
 
 /**
- * @brief ElementQueryWidget::~ElementQueryWidget
- */
+	@brief ElementQueryWidget::~ElementQueryWidget
+*/
 ElementQueryWidget::~ElementQueryWidget() {
 	delete ui;
 }
 
 /**
- * @brief ElementQueryWidget::setQuery
- * @param query
- * Set the current query to @query.
- * If it's possible, rebuild the state of the widget from the query
- */
+	@brief ElementQueryWidget::setQuery
+	@param query
+	Set the current query to @query.
+	If it's possible, rebuild the state of the widget from the query
+*/
 void ElementQueryWidget::setQuery(const QString &query)
 {
 	if (query.startsWith("SELECT"))
@@ -271,9 +271,9 @@ void ElementQueryWidget::setQuery(const QString &query)
 }
 
 /**
- * @brief ElementQueryWidget::queryStr
- * @return The current query
- */
+	@brief ElementQueryWidget::queryStr
+	@return The current query
+*/
 QString ElementQueryWidget::queryStr() const
 {
 		//User define is own query
@@ -370,16 +370,16 @@ QString ElementQueryWidget::queryStr() const
 }
 
 /**
- * @brief ElementQueryWidget::updateQueryLine
- */
+	@brief ElementQueryWidget::updateQueryLine
+*/
 void ElementQueryWidget::updateQueryLine() {
 	ui->m_sql_query->setText(queryStr());
 }
 
 /**
- * @brief ElementQueryWidget::selectedKeys
- * @return the current keys of selected infos to be exported
- */
+	@brief ElementQueryWidget::selectedKeys
+	@return the current keys of selected infos to be exported
+*/
 QStringList ElementQueryWidget::selectedKeys() const
 {
 		//Made a string list with the colomns (keys) choosen by the user
@@ -395,8 +395,8 @@ QStringList ElementQueryWidget::selectedKeys() const
 }
 
 /**
- * @brief ElementQueryWidget::setUpItems
- */
+	@brief ElementQueryWidget::setUpItems
+*/
 void ElementQueryWidget::setUpItems()
 {
 	for(QString key : QETApp::elementInfoKeys())
@@ -419,18 +419,18 @@ void ElementQueryWidget::setUpItems()
 }
 
 /**
- * @brief ElementQueryWidget::FilterFor
- * @param key
- * @return the filter associated to key
- */
+	@brief ElementQueryWidget::FilterFor
+	@param key
+	@return the filter associated to key
+*/
 QPair<int, QString> ElementQueryWidget::FilterFor(const QString &key) const {
 	return m_filter.value(key, qMakePair(0, QString()));
 }
 
 /**
- * @brief ElementQueryWidget::fillSavedQuery
- * Fill the combobox of saved queries
- */
+	@brief ElementQueryWidget::fillSavedQuery
+	Fill the combobox of saved queries
+*/
 void ElementQueryWidget::fillSavedQuery()
 {
 	QFile file(QETApp::configDir() + "/nomenclature.json");
@@ -446,8 +446,8 @@ void ElementQueryWidget::fillSavedQuery()
 }
 
 /**
- * @brief ElementQueryWidget::on_m_up_pb_clicked
- */
+	@brief ElementQueryWidget::on_m_up_pb_clicked
+*/
 void ElementQueryWidget::on_m_up_pb_clicked()
 {
 	auto row = ui->m_choosen_list->currentRow();
@@ -463,8 +463,8 @@ void ElementQueryWidget::on_m_up_pb_clicked()
 }
 
 /**
- * @brief ElementQueryWidget::on_m_add_pb_clicked
- */
+	@brief ElementQueryWidget::on_m_add_pb_clicked
+*/
 void ElementQueryWidget::on_m_add_pb_clicked()
 {
 	if (auto *item = ui->m_var_list->takeItem(ui->m_var_list->currentRow())) {
@@ -475,8 +475,8 @@ void ElementQueryWidget::on_m_add_pb_clicked()
 }
 
 /**
- * @brief ElementQueryWidget::on_m_remove_pb_clicked
- */
+	@brief ElementQueryWidget::on_m_remove_pb_clicked
+*/
 void ElementQueryWidget::on_m_remove_pb_clicked()
 {
 	if (auto *item = ui->m_choosen_list->takeItem(ui->m_choosen_list->currentRow())) {
@@ -487,8 +487,8 @@ void ElementQueryWidget::on_m_remove_pb_clicked()
 }
 
 /**
- * @brief ElementQueryWidget::on_m_down_pb_clicked
- */
+	@brief ElementQueryWidget::on_m_down_pb_clicked
+*/
 void ElementQueryWidget::on_m_down_pb_clicked()
 {
 	auto row = ui->m_choosen_list->currentRow();
@@ -504,8 +504,8 @@ void ElementQueryWidget::on_m_down_pb_clicked()
 }
 
 /**
- * @brief ElementQueryWidget::on_m_edit_sql_query_cb_clicked
- */
+	@brief ElementQueryWidget::on_m_edit_sql_query_cb_clicked
+*/
 void ElementQueryWidget::on_m_edit_sql_query_cb_clicked()
 {
 	ui->m_sql_query->setEnabled(ui->m_edit_sql_query_cb->isChecked());
@@ -524,9 +524,9 @@ void ElementQueryWidget::on_m_edit_sql_query_cb_clicked()
 }
 
 /**
- * @brief ElementQueryWidget::on_m_filter_le_textEdited
- * @param arg1
- */
+	@brief ElementQueryWidget::on_m_filter_le_textEdited
+	@param arg1
+*/
 void ElementQueryWidget::on_m_filter_le_textEdited(const QString &arg1)
 {
 	if (auto item = ui->m_choosen_list->currentItem())
@@ -541,9 +541,9 @@ void ElementQueryWidget::on_m_filter_le_textEdited(const QString &arg1)
 }
 
 /**
- * @brief ElementQueryWidget::on_m_filter_type_cb_activated
- * @param index
- */
+	@brief ElementQueryWidget::on_m_filter_type_cb_activated
+	@param index
+*/
 void ElementQueryWidget::on_m_filter_type_cb_activated(int index)
 {
 	if (auto item = ui->m_choosen_list->currentItem())
@@ -559,9 +559,9 @@ void ElementQueryWidget::on_m_filter_type_cb_activated(int index)
 }
 
 /**
- * @brief ElementQueryWidget::on_m_load_pb_clicked
- * Load a query from nomenclature.json file
- */
+	@brief ElementQueryWidget::on_m_load_pb_clicked
+	Load a query from nomenclature.json file
+*/
 void ElementQueryWidget::on_m_load_pb_clicked()
 {
 	auto name = ui->m_conf_cb->currentText();
@@ -589,9 +589,9 @@ void ElementQueryWidget::on_m_load_pb_clicked()
 }
 
 /**
- * @brief ElementQueryWidget::on_m_save_current_conf_pb_clicked
- * Save the actual query to nomenclature.json file
- */
+	@brief ElementQueryWidget::on_m_save_current_conf_pb_clicked
+	Save the actual query to nomenclature.json file
+*/
 void ElementQueryWidget::on_m_save_current_conf_pb_clicked()
 {
 	QFile file_(QETApp::configDir() + "/nomenclature.json");
@@ -648,9 +648,9 @@ void ElementQueryWidget::on_m_choosen_list_itemDoubleClicked(QListWidgetItem *it
 }
 
 /**
- * @brief ElementQueryWidget::reset
- * Clear this widget aka set to initial state
- */
+	@brief ElementQueryWidget::reset
+	Clear this widget aka set to initial state
+*/
 void ElementQueryWidget::reset()
 {
 		//Ugly hack to force to remove all selected infos

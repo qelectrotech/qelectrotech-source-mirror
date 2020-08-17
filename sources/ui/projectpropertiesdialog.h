@@ -24,9 +24,9 @@ class QWidget;
 class ConfigDialog;
 
 /**
- * @brief The ProjectPropertiesDialog class
- * this class builds a dialog to edit whole properties of a project
- */
+	@brief The ProjectPropertiesDialog class
+	this class builds a dialog to edit whole properties of a project
+*/
 class ProjectPropertiesDialog : public QObject {
 	public:
 		enum Page {
@@ -39,7 +39,7 @@ class ProjectPropertiesDialog : public QObject {
 		~ProjectPropertiesDialog() override;
 		void exec();
 		void setCurrentPage(ProjectPropertiesDialog::Page);
-        void changeToFolio();
+		void changeToFolio();
 
 	private:
 		ConfigDialog *m_properties_dialog;

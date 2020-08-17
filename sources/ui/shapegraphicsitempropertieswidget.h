@@ -27,9 +27,9 @@ namespace Ui {
 class QetShapeItem;
 
 /**
- * @brief The ShapeGraphicsItemPropertiesWidget class
- * Provide a widget to edit the properties of a QetShapeItem
- */
+	@brief The ShapeGraphicsItemPropertiesWidget class
+	Provide a widget to edit the properties of a QetShapeItem
+*/
 class ShapeGraphicsItemPropertiesWidget : public PropertiesEditorWidget
 {
 		Q_OBJECT

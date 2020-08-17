@@ -25,10 +25,10 @@
 #include <QSqlRecord>
 
 /**
- * @brief ProjectDBModel::ProjectDBModel
- * @param project :project of this nomenclature
- * @param parent : parent QObject
- */
+	@brief ProjectDBModel::ProjectDBModel
+	@param project :project of this nomenclature
+	@param parent : parent QObject
+*/
 ProjectDBModel::ProjectDBModel(QETProject *project, QObject *parent) :
 	QAbstractTableModel(parent),
 	m_project(project)
@@ -37,9 +37,9 @@ ProjectDBModel::ProjectDBModel(QETProject *project, QObject *parent) :
 }
 
 /**
- * @brief ProjectDBModel::ProjectDBModel
- * @param other_model
- */
+	@brief ProjectDBModel::ProjectDBModel
+	@param other_model
+*/
 ProjectDBModel::ProjectDBModel(const ProjectDBModel &other_model) :
 	QAbstractTableModel(other_model.parent())
 {
@@ -51,11 +51,11 @@ ProjectDBModel::ProjectDBModel(const ProjectDBModel &other_model) :
 }
 
 /**
- * @brief ProjectDBModel::rowCount
- * Reimplemented for QAbstractTableModel
- * @param parent
- * @return
- */
+	@brief ProjectDBModel::rowCount
+	Reimplemented for QAbstractTableModel
+	@param parent
+	@return
+*/
 int ProjectDBModel::rowCount(const QModelIndex &parent) const
 {
 	if (parent.isValid())
@@ -65,11 +65,11 @@ int ProjectDBModel::rowCount(const QModelIndex &parent) const
 }
 
 /**
- * @brief ProjectDBModel::columnCount
- * Reimplemented for QAbstractTableModel
- * @param parent
- * @return
- */
+	@brief ProjectDBModel::columnCount
+	Reimplemented for QAbstractTableModel
+	@param parent
+	@return
+*/
 int ProjectDBModel::columnCount(const QModelIndex &parent) const
 {
 	if (parent.isValid())
@@ -83,15 +83,15 @@ int ProjectDBModel::columnCount(const QModelIndex &parent) const
 }
 
 /**
- * @brief ProjectDBModel::setHeaderData
- * Reimplemented from QAbstractTableModel.
- * Only horizontal orientation is accepted.
- * @param section
- * @param orientation
- * @param value
- * @param role
- * @return
- */
+	@brief ProjectDBModel::setHeaderData
+	Reimplemented from QAbstractTableModel.
+	Only horizontal orientation is accepted.
+	@param section
+	@param orientation
+	@param value
+	@param role
+	@return
+*/
 bool ProjectDBModel::setHeaderData(int section, Qt::Orientation orientation, const QVariant &value, int role)
 {
 	if (orientation == Qt::Vertical) {
@@ -105,13 +105,13 @@ bool ProjectDBModel::setHeaderData(int section, Qt::Orientation orientation, con
 }
 
 /**
- * @brief ProjectDBModel::headerData
- * Reimplemented from QAbstractTableModel.
- * @param section
- * @param orientation
- * @param role
- * @return
- */
+	@brief ProjectDBModel::headerData
+	Reimplemented from QAbstractTableModel.
+	@param section
+	@param orientation
+	@param role
+	@return
+*/
 QVariant ProjectDBModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
 	if (orientation == Qt::Vertical) {
@@ -130,13 +130,13 @@ QVariant ProjectDBModel::headerData(int section, Qt::Orientation orientation, in
 }
 
 /**
- * @brief ProjectDBModel::setData
- * Only store the data for the index 0.0
- * @param index
- * @param value
- * @param role
- * @return
- */
+	@brief ProjectDBModel::setData
+	Only store the data for the index 0.0
+	@param index
+	@param value
+	@param role
+	@return
+*/
 bool ProjectDBModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
 	if (!index.isValid() || index.row() != 0 || index.column() != 0) {
@@ -148,12 +148,12 @@ bool ProjectDBModel::setData(const QModelIndex &index, const QVariant &value, in
 }
 
 /**
- * @brief ProjectDBModel::data
- * Reimplemented for QAbstractTableModel
- * @param index
- * @param role
- * @return
- */
+	@brief ProjectDBModel::data
+	Reimplemented for QAbstractTableModel
+	@param index
+	@param role
+	@return
+*/
 QVariant ProjectDBModel::data(const QModelIndex &index, int role) const
 {
 	if (!index.isValid())
@@ -174,10 +174,10 @@ QVariant ProjectDBModel::data(const QModelIndex &index, int role) const
 }
 
 /**
- * @brief ProjectDBModel::setQuery
- * Query the internall bd with @query.
- * @param query
- */
+	@brief ProjectDBModel::setQuery
+	Query the internall bd with @query.
+	@param query
+*/
 void ProjectDBModel::setQuery(const QString &query)
 {
 	auto rm_ = m_query != query;
@@ -206,9 +206,9 @@ void ProjectDBModel::setQuery(const QString &query)
 }
 
 /**
- * @brief ProjectDBModel::queryString
- * @return the current query used by this model
- */
+	@brief ProjectDBModel::queryString
+	@return the current query used by this model
+*/
 QString ProjectDBModel::queryString() const {
 	return m_query;
 }
@@ -218,12 +218,12 @@ QETProject *ProjectDBModel::project() const {
 }
 
 /**
- * @brief ProjectDBModel::toXml
- * Save the model to xml,since model can have unlimited data we only save few data (only these used by qelectrotech).
- * The query, all header data. and some data of index::(0,0). All other data are not saved.
- * @param document
- * @return
- */
+	@brief ProjectDBModel::toXml
+	Save the model to xml,since model can have unlimited data we only save few data (only these used by qelectrotech).
+	The query, all header data. and some data of index::(0,0). All other data are not saved.
+	@param document
+	@return
+*/
 QDomElement ProjectDBModel::toXml(QDomDocument &document) const
 {
 	auto dom_element = document.createElement(xmlTagName());
@@ -265,10 +265,10 @@ QDomElement ProjectDBModel::toXml(QDomDocument &document) const
 }
 
 /**
- * @brief ProjectDBModel::fromXml
- * Restore the model from xml
- * @param element
- */
+	@brief ProjectDBModel::fromXml
+	Restore the model from xml
+	@param element
+*/
 void ProjectDBModel::fromXml(const QDomElement &element)
 {
 	if (element.tagName() != xmlTagName())
@@ -290,18 +290,18 @@ void ProjectDBModel::fromXml(const QDomElement &element)
 }
 
 /**
- * @brief ProjectDBModel::setIdentifier
- * Set the identifier of this model to @identifier
- * @param identifier
- */
+	@brief ProjectDBModel::setIdentifier
+	Set the identifier of this model to @identifier
+	@param identifier
+*/
 void ProjectDBModel::setIdentifier(const QString &identifier) {
 	m_identifier = identifier;
 }
 
 /**
- * @brief ProjectDBModel::dataBaseUpdated
- * slot called when the project database is updated
- */
+	@brief ProjectDBModel::dataBaseUpdated
+	slot called when the project database is updated
+*/
 void ProjectDBModel::dataBaseUpdated()
 {
 	auto original_record = m_record;

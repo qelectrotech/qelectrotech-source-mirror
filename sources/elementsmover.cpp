@@ -28,8 +28,8 @@
 #include "elementtextitemgroup.h"
 
 /**
- * @brief ElementsMover::ElementsMover Constructor
- */
+	@brief ElementsMover::ElementsMover Constructor
+*/
 ElementsMover::ElementsMover() :
 	movement_running_(false),
 	current_movement_(),
@@ -41,27 +41,27 @@ ElementsMover::ElementsMover() :
 }
 
 /**
- * @brief ElementsMover::~ElementsMover Destructor
- */
+	@brief ElementsMover::~ElementsMover Destructor
+*/
 ElementsMover::~ElementsMover() {
 }
 
 /**
- * @brief ElementsMover::isReady
- * @return True if this element mover is ready to be used.
- * A element mover is ready when the previous managed movement is finish.
- */
+	@brief ElementsMover::isReady
+	@return True if this element mover is ready to be used.
+	A element mover is ready when the previous managed movement is finish.
+*/
 bool ElementsMover::isReady() const {
 	return(!movement_running_);
 }
 
 /**
- * @brief ElementsMover::beginMovement
- * Start a new movement
- * @param diagram diagram where the movement is applied
- * @param driver_item item moved by mouse and don't be moved by Element mover
- * @return the numbers of items to be moved or -1 if movement can't be init.
- */
+	@brief ElementsMover::beginMovement
+	Start a new movement
+	@param diagram diagram where the movement is applied
+	@param driver_item item moved by mouse and don't be moved by Element mover
+	@return the numbers of items to be moved or -1 if movement can't be init.
+*/
 int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item)
 {
 		// They must be no movement in progress
@@ -88,7 +88,7 @@ int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item)
 		}
 	}
 
-       QList<ElementTextItemGroup *> etig_list = m_moved_content.m_texts_groups.values();
+	QList<ElementTextItemGroup *> etig_list = m_moved_content.m_texts_groups.values();
 	for(ElementTextItemGroup *etig : etig_list) {
 		if (m_moved_content.m_elements.contains(etig->parentElement())) {
 			m_moved_content.m_texts_groups.remove(etig);
@@ -105,10 +105,10 @@ int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item)
 }
 
 /**
- * @brief ElementsMover::continueMovement
- * Add a move to the current movement.
- * @param movement movement to applied
- */
+	@brief ElementsMover::continueMovement
+	Add a move to the current movement.
+	@param movement movement to applied
+*/
 void ElementsMover::continueMovement(const QPointF &movement)
 {
 	if (!movement_running_ || movement.isNull()) return;
@@ -142,11 +142,11 @@ void ElementsMover::continueMovement(const QPointF &movement)
 }
 
 /**
- * @brief ElementsMover::endMovement
- * Ended the current movement by creating an undo added to the undostack of the diagram.
- * If there is only one element moved, we try to auto-connect new conductor from this element
- * and other possible element.
- */
+	@brief ElementsMover::endMovement
+	Ended the current movement by creating an undo added to the undostack of the diagram.
+	If there is only one element moved, we try to auto-connect new conductor from this element
+	and other possible element.
+*/
 void ElementsMover::endMovement()
 {
 		// A movement must be inited

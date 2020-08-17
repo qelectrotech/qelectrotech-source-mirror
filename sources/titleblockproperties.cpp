@@ -131,11 +131,11 @@ void TitleBlockProperties::fromXml(const QDomElement &e) {
 }
 
 /**
- * @brief TitleBlockProperties::toSettings
- * Export the TitleBlockProperties into a QSettings
- * @param settings : setting to use
- * @param prefix : name to use as prefix for this property
- */
+	@brief TitleBlockProperties::toSettings
+	Export the TitleBlockProperties into a QSettings
+	@param settings : setting to use
+	@param prefix : name to use as prefix for this property
+*/
 void TitleBlockProperties::toSettings(QSettings &settings, const QString &prefix) const {
 	settings.setValue(prefix + "title",    title);
 	settings.setValue(prefix + "author",   author);
@@ -176,9 +176,9 @@ void TitleBlockProperties::fromSettings(QSettings &settings, const QString &pref
 }
 
 /**
- * @brief TitleBlockProperties::defaultProperties
- * Return the default properties stored in the setting file
- */
+	@brief TitleBlockProperties::defaultProperties
+	Return the default properties stored in the setting file
+*/
 TitleBlockProperties TitleBlockProperties::defaultProperties()
 {
 	QSettings settings;

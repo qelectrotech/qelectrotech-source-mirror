@@ -23,8 +23,8 @@
 #include <utility>
 
 /**
- * Constructor
- */
+	Constructor
+*/
 FormulaAutonumberingW::FormulaAutonumberingW(QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::FormulaAutonumberingW)
@@ -35,41 +35,41 @@ FormulaAutonumberingW::FormulaAutonumberingW(QWidget *parent) :
 }
 
 /**
- * Destructor
- */
+	Destructor
+*/
 FormulaAutonumberingW::~FormulaAutonumberingW()
 {
 	delete ui;
 }
 
 /**
- * @brief FormulaAutonumberingW::setContext
- * @param formula to be inserted into context
- */
+	@brief FormulaAutonumberingW::setContext
+	@param formula to be inserted into context
+*/
 void FormulaAutonumberingW::setContext(const QString& formula) {
 	ui->m_formula_le->insert(formula);
 }
 
 /**
- * @brief FormulaAutonumberingW::clearContext
- * @param clear formula line edit text
- */
+	@brief FormulaAutonumberingW::clearContext
+	@param clear formula line edit text
+*/
 void FormulaAutonumberingW::clearContext() {
 	ui->m_formula_le->clear();
 }
 
 /**
- * @brief FormulaAutonumberingW::formula
- * @return formula to be stored into project
- */
+	@brief FormulaAutonumberingW::formula
+	@return formula to be stored into project
+*/
 QString FormulaAutonumberingW::formula() {
 	return ui->m_formula_le->text();
 }
 
 /**
- * @brief FormulaAutonumberingW::on_m_formula_le_textChanged
- * Update Apply Button
- */
+	@brief FormulaAutonumberingW::on_m_formula_le_textChanged
+	Update Apply Button
+*/
 void FormulaAutonumberingW::on_m_formula_le_textChanged(QString text) {
 	emit (textChanged(std::move(text)));
 }

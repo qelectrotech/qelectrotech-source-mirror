@@ -83,9 +83,9 @@ void ExportProperties::fromSettings(QSettings &settings, const QString &prefix) 
 }
 
 /**
- * @brief ExportProperties::defaultProperties
- * @return the default properties stored in the setting file
- */
+	@brief ExportProperties::defaultProperties
+	@return the default properties stored in the setting file
+*/
 ExportProperties ExportProperties::defaultExportProperties()
 {
 	QSettings settings;
@@ -97,9 +97,9 @@ ExportProperties ExportProperties::defaultExportProperties()
 }
 
 /**
- * @brief ExportProperties::defaultPrintProperties
- * @return the default properties stored in the setting file
- */
+	@brief ExportProperties::defaultPrintProperties
+	@return the default properties stored in the setting file
+*/
 ExportProperties ExportProperties::defaultPrintProperties()
 {
 	QSettings settings;

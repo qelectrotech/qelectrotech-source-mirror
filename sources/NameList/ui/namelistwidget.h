@@ -26,9 +26,9 @@ namespace Ui {
 }
 
 /**
- * @brief The NameListWidget class
- * Provide a widget for let user define localized string;
- */
+	@brief The NameListWidget class
+	Provide a widget for let user define localized string;
+*/
 class NameListWidget : public QWidget
 {
 	Q_OBJECT

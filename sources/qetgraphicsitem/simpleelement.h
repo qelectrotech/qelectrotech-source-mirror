@@ -23,9 +23,9 @@
 class QETProject;
 
 /**
- * @brief The SimpleElement class
- *this class represente a simple element with no specific attribute
- */
+	@brief The SimpleElement class
+	this class represente a simple element with no specific attribute
+*/
 class SimpleElement : public Element {
 
 	Q_OBJECT

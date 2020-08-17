@@ -51,9 +51,9 @@ AlignmentTextDialog::~AlignmentTextDialog()
 }
 
 /**
- * @brief AlignmentTextDialog::alignment
- * @return the selected alignment
- */
+	@brief AlignmentTextDialog::alignment
+	@return the selected alignment
+*/
 Qt::Alignment AlignmentTextDialog::alignment() const
 {
 	if(ui->top_left->isChecked())

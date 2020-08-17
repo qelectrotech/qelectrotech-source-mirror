@@ -1,19 +1,19 @@
 /*
-                Copyright 2006-2020 The QElectroTech Team
-                This file is part of QElectroTech.
+	Copyright 2006-2020 The QElectroTech Team
+	This file is part of QElectroTech.
 
-                QElectroTech is free software: you can redistribute it and/or modify
-                it under the terms of the GNU General Public License as published by
-                the Free Software Foundation, either version 2 of the License, or
-                (at your option) any later version.
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
 
-                QElectroTech is distributed in the hope that it will be useful,
-                but WITHOUT ANY WARRANTY; without even the implied warranty of
-                MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-                GNU General Public License for more details.
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+	GNU General Public License for more details.
 
-                You should have received a copy of the GNU General Public License
-                along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementcollectionhandler.h"
 #include "renamedialog.h"
@@ -25,7 +25,8 @@
 
 /******************************************************/
 
-ECHStrategy::ECHStrategy(ElementsLocation &source, ElementsLocation &destination) :
+ECHStrategy::ECHStrategy(ElementsLocation &source,
+			 ElementsLocation &destination) :
 	m_source(source),
 	m_destination (destination)
 {}
@@ -298,9 +299,9 @@ ElementsLocation ECHSToXml::copy()
 /******************************************************/
 
 /**
- * @brief ElementCollectionHandler::ElementCollectionHandler
- * @param widget
- */
+	@brief ElementCollectionHandler::ElementCollectionHandler
+	@param widget
+*/
 ElementCollectionHandler::ElementCollectionHandler() {}
 
 ElementCollectionHandler::~ElementCollectionHandler()
@@ -309,14 +310,14 @@ ElementCollectionHandler::~ElementCollectionHandler()
 }
 
 /**
- * @brief ElementCollectionHandler::copy
- * Copy the content of collection represented by source to the collection represented by destination.
- * Destination must be a directory, else the copy do nothing and return a null ElementLocation
- * if destination have an item with the same name of source, a dialog ask to user what to do.
- * @param source
- * @param destination
- * @return
- */
+	@brief ElementCollectionHandler::copy
+	Copy the content of collection represented by source to the collection represented by destination.
+	Destination must be a directory, else the copy do nothing and return a null ElementLocation
+	if destination have an item with the same name of source, a dialog ask to user what to do.
+	@param source
+	@param destination
+	@return
+*/
 ElementsLocation ElementCollectionHandler::copy(ElementsLocation &source, ElementsLocation &destination)
 {
 	if (!source.exist() || !destination.exist() || destination.isElement()) return ElementsLocation();
@@ -332,14 +333,14 @@ ElementsLocation ElementCollectionHandler::copy(ElementsLocation &source, Elemen
 }
 
 /**
- * @brief ElementCollectionHandler::createDir
- * Create a directorie with name @name as child of @parent.
- * Parent must be a directory
- * @param parent : parent of the dir to create
- * @param name : name of directorie to create
- * @param name_list : translations of the directorie name
- * @return : ElementsLocation that represent the new directorie, location can be null if an error was occurred
- */
+	@brief ElementCollectionHandler::createDir
+	Create a directorie with name @name as child of @parent.
+	Parent must be a directory
+	@param parent : parent of the dir to create
+	@param name : name of directorie to create
+	@param name_list : translations of the directorie name
+	@return : ElementsLocation that represent the new directorie, location can be null if an error was occurred
+*/
 ElementsLocation ElementCollectionHandler::createDir(ElementsLocation &parent, const QString &name, const NamesList &name_list)
 {
 	//Parent must be a directorie and writable
@@ -393,13 +394,13 @@ ElementsLocation ElementCollectionHandler::createDir(ElementsLocation &parent, c
 }
 
 /**
- * @brief ElementCollectionHandler::importFromProject
- * Import the element represented by @location to the embedded collection of @project at the same path.
- * @location must represente an element owned by a project embedded collection
- * @param project : project where copy the element
- * @param location : location to copy
- * @return true if import with success
- */
+	@brief ElementCollectionHandler::importFromProject
+	Import the element represented by @location to the embedded collection of @project at the same path.
+	@location must represente an element owned by a project embedded collection
+	@param project : project where copy the element
+	@param location : location to copy
+	@return true if import with success
+*/
 bool ElementCollectionHandler::importFromProject(QETProject *project, ElementsLocation &location)
 {
 	if (!(location.isElement() && location.exist() && location.isProject())) return false;
@@ -436,12 +437,12 @@ bool ElementCollectionHandler::importFromProject(QETProject *project, ElementsLo
 }
 
 /**
- * @brief ElementCollectionHandler::setNames
- * Set the names stored in @name_list as the names of the item represented by location
- * @param location : location to change the names
- * @param name_list : NamesList to use
- * @return return true if success
- */
+	@brief ElementCollectionHandler::setNames
+	Set the names stored in @name_list as the names of the item represented by location
+	@param location : location to change the names
+	@param name_list : NamesList to use
+	@return return true if success
+*/
 bool ElementCollectionHandler::setNames(ElementsLocation &location, const NamesList &name_list)
 {
 	if ( !(location.exist() && location.isWritable()) ) {

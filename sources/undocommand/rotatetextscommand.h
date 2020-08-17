@@ -26,10 +26,10 @@ class Diagram;
 class QParallelAnimationGroup;
 
 /**
- * @brief The RotateTextsCommand class
- * Open a dialog for edit the rotation of the current selected texts and texts group in diagram.
- * Just instantiate this undo command and push it in a QUndoStack.
- */
+	@brief The RotateTextsCommand class
+	Open a dialog for edit the rotation of the current selected texts and texts group in diagram.
+	Just instantiate this undo command and push it in a QUndoStack.
+*/
 class RotateTextsCommand : public QUndoCommand
 {
 	public:

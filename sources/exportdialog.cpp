@@ -399,7 +399,11 @@ void ExportDialog::generateSvg(Diagram *diagram, int width, int height, bool kee
 	@param keep_aspect_ratio True pour conserver le ratio, false sinon
 	@param io_device Peripherique de sortie pour le code DXF (souvent : un fichier)
 */
-void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool keep_aspect_ratio, QString &file_path) {
+void ExportDialog::generateDxf(Diagram *diagram,
+			       int width,
+			       int height,
+			       bool keep_aspect_ratio,
+			       QString &file_path) {
     saveReloadDiagramParameters(diagram, true);
 
 	width  -= 2*Diagram::margin;
@@ -651,7 +655,11 @@ void ExportDialog::generateDxf(Diagram *diagram, int width, int height, bool kee
     saveReloadDiagramParameters(diagram, false);
 }
 
-QPointF ExportDialog::rotation_transformed(qreal px, qreal py , qreal origin_x, qreal origin_y, qreal angle) {
+QPointF ExportDialog::rotation_transformed(qreal px,
+					   qreal py,
+					   qreal origin_x,
+					   qreal origin_y,
+					   qreal angle) {
 
 	angle *= -3.14159265 / 180;
 

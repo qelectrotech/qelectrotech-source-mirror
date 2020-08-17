@@ -25,11 +25,11 @@ namespace Ui {
 }
 
 /**
- * @brief The ImportElementTextPatternDialog class
- * A dialog use for ask user to select a element text pattern.
- * This dialog is highly inspired from QInputDialog::getItem.
- * In fact this the same + a check box.
- */
+	@brief The ImportElementTextPatternDialog class
+	A dialog use for ask user to select a element text pattern.
+	This dialog is highly inspired from QInputDialog::getItem.
+	In fact this the same + a check box.
+*/
 class ImportElementTextPatternDialog : public QDialog
 {
 	Q_OBJECT

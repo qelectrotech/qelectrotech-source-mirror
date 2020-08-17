@@ -26,10 +26,12 @@ class QPainter;
 
 
 /**
- * @brief The CustomElementGraphicPart class
- * This class is the base for all home-made primitive like line, rectangle, ellipse etc....
- * It provides methods and enums to manage style attributes available for primitive (color, pen style, etc...)
- */
+	@brief The CustomElementGraphicPart class
+	This class is the base for all home-made primitive like line,
+	rectangle, ellipse etc....
+	It provides methods and enums to manage style attributes available
+	for primitive (color, pen style, etc...)
+*/
 class CustomElementGraphicPart : public QGraphicsObject, public CustomElementPart
 {
 		#define SHADOWS_HEIGHT 4.0
@@ -91,8 +93,8 @@ class CustomElementGraphicPart : public QGraphicsObject, public CustomElementPar
 		QVariant property    (const char *name) const override                  {return QObject::property(name);}
 
 		virtual QPainterPath shadowShape ()const = 0;
-        virtual void setHandlerColor(QPointF /*pos*/, const QColor &/*color*/) {}
-        virtual void resetAllHandlerColor() {}
+		virtual void setHandlerColor(QPointF /*pos*/, const QColor &/*color*/) {}
+		virtual void resetAllHandlerColor() {}
 
 	protected:
 		void stylesToXml  (QDomElement &) const;
@@ -117,7 +119,7 @@ class CustomElementGraphicPart : public QGraphicsObject, public CustomElementPar
 		Filling _filling ;
 		Color _color;
 		bool _antialiased;
-        QPointF m_origin_pos;
+		QPointF m_origin_pos;
 };
 
 typedef CustomElementGraphicPart CEGP;

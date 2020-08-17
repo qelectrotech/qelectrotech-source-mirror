@@ -472,8 +472,8 @@ QVector<QPointF> ElementPrimitiveDecorator::getResizingsPoints() const
 }
 
 /**
- * @brief ElementPrimitiveDecorator::adjusteHandlerPos
- */
+	@brief ElementPrimitiveDecorator::adjusteHandlerPos
+*/
 void ElementPrimitiveDecorator::adjusteHandlerPos()
 {
 	QVector <QPointF> points_vector = mapToScene(getResizingsPoints());
@@ -482,10 +482,10 @@ void ElementPrimitiveDecorator::adjusteHandlerPos()
 }
 
 /**
- * @brief ElementPrimitiveDecorator::handlerMousePressEvent
- * @param qghi
- * @param event
- */
+	@brief ElementPrimitiveDecorator::handlerMousePressEvent
+	@param qghi
+	@param event
+*/
 void ElementPrimitiveDecorator::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(event);
@@ -499,10 +499,10 @@ void ElementPrimitiveDecorator::handlerMousePressEvent(QetGraphicsHandlerItem *q
 }
 
 /**
- * @brief ElementPrimitiveDecorator::handlerMouseMoveEvent
- * @param qghi
- * @param event
- */
+	@brief ElementPrimitiveDecorator::handlerMouseMoveEvent
+	@param qghi
+	@param event
+*/
 void ElementPrimitiveDecorator::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(qghi);
@@ -554,10 +554,10 @@ void ElementPrimitiveDecorator::handlerMouseMoveEvent(QetGraphicsHandlerItem *qg
 }
 
 /**
- * @brief ElementPrimitiveDecorator::handlerMouseReleaseEvent
- * @param qghi
- * @param event
- */
+	@brief ElementPrimitiveDecorator::handlerMouseReleaseEvent
+	@param qghi
+	@param event
+*/
 void ElementPrimitiveDecorator::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED(qghi);
@@ -585,9 +585,9 @@ void ElementPrimitiveDecorator::handlerMouseReleaseEvent(QetGraphicsHandlerItem 
 }
 
 /**
- * @brief ElementPrimitiveDecorator::addHandler
- * Add handlers for this item
- */
+	@brief ElementPrimitiveDecorator::addHandler
+	Add handlers for this item
+*/
 void ElementPrimitiveDecorator::addHandler()
 {
 	if (m_handler_vector.isEmpty() && scene())
@@ -605,9 +605,9 @@ void ElementPrimitiveDecorator::addHandler()
 }
 
 /**
- * @brief ElementPrimitiveDecorator::removeHandler
- * Remove the handlers of this item
- */
+	@brief ElementPrimitiveDecorator::removeHandler
+	Remove the handlers of this item
+*/
 void ElementPrimitiveDecorator::removeHandler()
 {
 	if (!m_handler_vector.isEmpty())
@@ -688,11 +688,11 @@ QET::ScalingMethod ElementPrimitiveDecorator::scalingMethod(QGraphicsSceneMouseE
 }
 
 /**
- * @brief ElementPrimitiveDecorator::itemChange
- * @param change
- * @param value
- * @return 
- */
+	@brief ElementPrimitiveDecorator::itemChange
+	@param change
+	@param value
+	@return
+*/
 QVariant ElementPrimitiveDecorator::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value)
 {
 	if (change == ItemSceneHasChanged)
@@ -718,11 +718,11 @@ QVariant ElementPrimitiveDecorator::itemChange(QGraphicsItem::GraphicsItemChange
 }
 
 /**
- * @brief ElementPrimitiveDecorator::sceneEventFilter
- * @param watched
- * @param event
- * @return 
- */
+	@brief ElementPrimitiveDecorator::sceneEventFilter
+	@param watched
+	@param event
+	@return
+*/
 bool ElementPrimitiveDecorator::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 {
 	//Watched must be an handler

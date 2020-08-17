@@ -51,7 +51,7 @@
  * location                       -> the location assigned to the element
  * frozenLabel                    -> label locked at a given time
  *
- */
+*/
 class DiagramContext
 {
 	public:

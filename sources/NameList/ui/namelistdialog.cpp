@@ -44,10 +44,10 @@ void NameListDialog::setInformationText(const QString &text) {
 }
 
 /**
- * @brief NameListDialog::namelistWidget
- * @return the name list widget used by this dialog.
- * The ownership of the namelistwidget stay to this dialog
- */
+	@brief NameListDialog::namelistWidget
+	@return the name list widget used by this dialog.
+	The ownership of the namelistwidget stay to this dialog
+*/
 NameListWidget *NameListDialog::namelistWidget() const {
 	return m_namelist_widget;
 }

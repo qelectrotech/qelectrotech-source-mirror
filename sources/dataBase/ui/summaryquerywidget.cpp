@@ -22,14 +22,14 @@
 #include <QListWidgetItem>
 
 /**
- * @brief SummaryQueryWidget::SummaryQueryWidget
- * @param parent
- */
+	@brief SummaryQueryWidget::SummaryQueryWidget
+	@param parent
+*/
 SummaryQueryWidget::SummaryQueryWidget(QWidget *parent) :
-    QWidget(parent),
+	QWidget(parent),
 	ui(new Ui::SummaryQueryWidget)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 
 	setUpItems();
 	fillSavedQuery();
@@ -39,17 +39,17 @@ SummaryQueryWidget::SummaryQueryWidget(QWidget *parent) :
 }
 
 /**
- * @brief SummaryQueryWidget::~SummaryQueryWidget
- */
+	@brief SummaryQueryWidget::~SummaryQueryWidget
+*/
 SummaryQueryWidget::~SummaryQueryWidget()
 {
 	delete ui;
 }
 
 /**
- * @brief SummaryQueryWidget::queryStr
- * @return The current query string
- */
+	@brief SummaryQueryWidget::queryStr
+	@return The current query string
+*/
 QString SummaryQueryWidget::queryStr() const
 {
 		//User define is own query
@@ -80,11 +80,11 @@ QString SummaryQueryWidget::queryStr() const
 }
 
 /**
- * @brief SummaryQueryWidget::setQuery
- * @param query
- * set the current query to @query.
- * If it's possible, rebuild the state of the widget from the query
- */
+	@brief SummaryQueryWidget::setQuery
+	@param query
+	set the current query to @query.
+	If it's possible, rebuild the state of the widget from the query
+*/
 void SummaryQueryWidget::setQuery(const QString &query)
 {
 	if (query.startsWith("SELECT"))
@@ -114,8 +114,8 @@ void SummaryQueryWidget::setQuery(const QString &query)
 }
 
 /**
- * @brief SummaryQueryWidget::setUpItems
- */
+	@brief SummaryQueryWidget::setUpItems
+*/
 void SummaryQueryWidget::setUpItems()
 {
 	for (auto key : QETApp::diagramInfoKeys())
@@ -133,9 +133,9 @@ void SummaryQueryWidget::setUpItems()
 }
 
 /**
- * @brief SummaryQueryWidget::fillSavedQuery
- * Fill the combo box of the saved query
- */
+	@brief SummaryQueryWidget::fillSavedQuery
+	Fill the combo box of the saved query
+*/
 void SummaryQueryWidget::fillSavedQuery()
 {
 	QFile file(QETApp::configDir() + "/summary.json");
@@ -151,16 +151,16 @@ void SummaryQueryWidget::fillSavedQuery()
 }
 
 /**
- * @brief SummaryQueryWidget::updateQueryLine
- */
+	@brief SummaryQueryWidget::updateQueryLine
+*/
 void SummaryQueryWidget::updateQueryLine() {
 	ui->m_user_query_le->setText(queryStr());
 }
 
 /**
- * @brief SummaryQueryWidget::selectedKeys
- * @return
- */
+	@brief SummaryQueryWidget::selectedKeys
+	@return
+*/
 QStringList SummaryQueryWidget::selectedKeys() const
 {
 		//Made a string list with the colomns (keys) choosen by the user
@@ -176,9 +176,9 @@ QStringList SummaryQueryWidget::selectedKeys() const
 }
 
 /**
- * @brief SummaryQueryWidget::on_m_available_list_itemDoubleClicked
- * @param item
- */
+	@brief SummaryQueryWidget::on_m_available_list_itemDoubleClicked
+	@param item
+*/
 void SummaryQueryWidget::on_m_available_list_itemDoubleClicked(QListWidgetItem *item)
 {
 	Q_UNUSED(item)
@@ -186,9 +186,9 @@ void SummaryQueryWidget::on_m_available_list_itemDoubleClicked(QListWidgetItem *
 }
 
 /**
- * @brief SummaryQueryWidget::on_m_choosen_list_itemDoubleClicked
- * @param item
- */
+	@brief SummaryQueryWidget::on_m_choosen_list_itemDoubleClicked
+	@param item
+*/
 void SummaryQueryWidget::on_m_choosen_list_itemDoubleClicked(QListWidgetItem *item)
 {
 	Q_UNUSED(item)
@@ -196,8 +196,8 @@ void SummaryQueryWidget::on_m_choosen_list_itemDoubleClicked(QListWidgetItem *it
 }
 
 /**
- * @brief SummaryQueryWidget::on_m_up_pb_clicked
- */
+	@brief SummaryQueryWidget::on_m_up_pb_clicked
+*/
 void SummaryQueryWidget::on_m_up_pb_clicked()
 {
 	auto row = ui->m_choosen_list->currentRow();
@@ -213,8 +213,8 @@ void SummaryQueryWidget::on_m_up_pb_clicked()
 }
 
 /**
- * @brief SummaryQueryWidget::on_m_add_pb_clicked
- */
+	@brief SummaryQueryWidget::on_m_add_pb_clicked
+*/
 void SummaryQueryWidget::on_m_add_pb_clicked()
 {
 	if (auto *item = ui->m_available_list->takeItem(ui->m_available_list->currentRow())) {
@@ -225,8 +225,8 @@ void SummaryQueryWidget::on_m_add_pb_clicked()
 }
 
 /**
- * @brief SummaryQueryWidget::on_m_remove_pb_clicked
- */
+	@brief SummaryQueryWidget::on_m_remove_pb_clicked
+*/
 void SummaryQueryWidget::on_m_remove_pb_clicked()
 {
 	if (auto *item = ui->m_choosen_list->takeItem(ui->m_choosen_list->currentRow())) {
@@ -237,8 +237,8 @@ void SummaryQueryWidget::on_m_remove_pb_clicked()
 }
 
 /**
- * @brief SummaryQueryWidget::on_m_down_pb_clicked
- */
+	@brief SummaryQueryWidget::on_m_down_pb_clicked
+*/
 void SummaryQueryWidget::on_m_down_pb_clicked()
 {
 	auto row = ui->m_choosen_list->currentRow();
@@ -254,8 +254,8 @@ void SummaryQueryWidget::on_m_down_pb_clicked()
 }
 
 /**
- * @brief SummaryQueryWidget::on_m_edit_sql_query_cb_clicked
- */
+	@brief SummaryQueryWidget::on_m_edit_sql_query_cb_clicked
+*/
 void SummaryQueryWidget::on_m_edit_sql_query_cb_clicked()
 {
 	ui->m_user_query_le->setEnabled(ui->m_edit_sql_query_cb->isChecked());
@@ -273,9 +273,9 @@ void SummaryQueryWidget::on_m_edit_sql_query_cb_clicked()
 }
 
 /**
- * @brief SummaryQueryWidget::reset
- * Clear this widget aka set to initial state
- */
+	@brief SummaryQueryWidget::reset
+	Clear this widget aka set to initial state
+*/
 void SummaryQueryWidget::reset()
 {
 		//Ugly hack to force to remove all selected infos
@@ -286,8 +286,8 @@ void SummaryQueryWidget::reset()
 }
 
 /**
- * @brief SummaryQueryWidget::saveConfig
- */
+	@brief SummaryQueryWidget::saveConfig
+*/
 void SummaryQueryWidget::saveConfig()
 {
 	QFile file_(QETApp::configDir() + "/summary.json");
@@ -316,8 +316,8 @@ void SummaryQueryWidget::saveConfig()
 }
 
 /**
- * @brief SummaryQueryWidget::loadConfig
- */
+	@brief SummaryQueryWidget::loadConfig
+*/
 void SummaryQueryWidget::loadConfig()
 {
 	auto name = ui->m_config_gb->selectedText();
