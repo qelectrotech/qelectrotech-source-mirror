@@ -744,7 +744,7 @@ void Createdxf::drawText(const QString& fileName, const QString& text,double x, 
 /* draw aligned text in DXF Format */
 // leftAlign flag added. If the alignment requested is 'fit to width' and the text length is very small,
 // then the text is either centered or left-aligned, depnding on the value of leftAlign.
-void Createdxf::drawTextAligned(const QString& fileName, const QString& text,double x, double y, double height, double rotation, double oblique,int hAlign, int vAlign, double xAlign,int colour,
+void Createdxf::drawTextAligned(const QString& fileName, const QString& text,double x, double y, double height, double rotation, double oblique,int hAlign, int vAlign, double xAlign, double xScale, int colour,
 								bool leftAlign, float scale)
 {
 	Q_UNUSED(scale);
@@ -774,6 +774,8 @@ void Createdxf::drawTextAligned(const QString& fileName, const QString& text,dou
 			To_Dxf << 0.0       << "\r\n";    // Z in UCS (User Coordinate System)coordinates
 			To_Dxf << 40        << "\r\n";
 			To_Dxf << height    << "\r\n";    // Text Height
+            To_Dxf << 41        << "\r\n";
+            To_Dxf << xScale    << "\r\n";    // X Scale
 			To_Dxf << 1         << "\r\n";
 			To_Dxf << text      << "\r\n";    // Text Value
 			To_Dxf << 50        << "\r\n";

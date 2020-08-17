@@ -46,7 +46,7 @@ class Createdxf
 	static void drawLine(const QString &filepath, const QLineF &line,const int &colorcode);
 
 	static void drawText(const QString&,const QString&,double,double,double,double,int);
-	static void drawTextAligned(const QString& fileName, const QString& text,double x, double y, double height, double rotation, double oblique,int hAlign, int vAlign, double xAlign, int colour, bool leftAlign = false, float scale = 0);
+    static void drawTextAligned(const QString& fileName, const QString& text,double x, double y, double height, double rotation, double oblique,int hAlign, int vAlign, double xAlign, double xScale, int colour, bool leftAlign = false, float scale = 0);
 
 
     static int getcolorCode (const long red, const long green, const long blue);

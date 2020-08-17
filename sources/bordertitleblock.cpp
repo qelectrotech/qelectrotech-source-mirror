@@ -673,7 +673,8 @@ void BorderTitleBlock::drawDxf(
 						   1,
 						   2,
                            xCoord+recWidth/2,
-						   color,
+                           1,
+                           color,
 						   0);
 			}else{
 			Createdxf::drawTextAligned(file_path,
@@ -686,7 +687,8 @@ void BorderTitleBlock::drawDxf(
 						   1,
 						   2,
                            xCoord+recWidth/2,
-						   color,
+                           1,
+                           color,
 						   0);
 			}
 		}
@@ -721,7 +723,8 @@ void BorderTitleBlock::drawDxf(
 						   1,
 						   2,
 						   xCoord+recWidth/2,
-						   color,
+                           1,
+                           color,
 						   0);
 			row_string = incrementLetters(row_string);
 		}
