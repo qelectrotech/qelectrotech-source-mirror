@@ -24,13 +24,13 @@
 
 /* This class exports the project to DXF Format */
 class Createdxf
-{
-	public:
-		Createdxf();
-		~Createdxf();
-		static void dxfBegin (const QString&);
-		static void dxfEnd(const QString&);
-		// you can add more functions to create more drawings.
+{    
+    public:
+    Createdxf();
+    ~Createdxf();
+	static void dxfBegin (const QString&);
+	static void dxfEnd(const QString&);
+    // you can add more functions to create more drawings.
 		static void drawCircle(const QString&,
 				       double,
 				       double,
@@ -43,7 +43,7 @@ class Createdxf
 				    double startAngle,
 				    double endAngle,
 				    int color);
-		static void drawDonut(QString,double,double,double,int);
+	static void drawDonut(QString,double,double,double,int);
 
 		static void drawArcEllipse (const QString &file_path,
 					    qreal x,
@@ -97,6 +97,7 @@ class Createdxf
 					    int hAlign,
 					    int vAlign,
 					    double xAlign,
+					    double xScale,
 					    int colour,
 					    bool leftAlign = false,
 					    float scale = 0);
@@ -105,12 +106,12 @@ class Createdxf
 		static int getcolorCode (const long red,
 					 const long green,
 					 const long blue);
-		static long RGBcodeTable[];
+    static long RGBcodeTable[];
 
-		static const double sheetWidth;
-		static const double sheetHeight;
-		static double		xScale;
-		static double		yScale;
+    static const double sheetWidth;
+	static const double sheetHeight;
+	static double		xScale;
+	static double		yScale;
 };
 
 #endif // CREATEDXF_H

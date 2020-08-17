@@ -1833,34 +1833,28 @@ void TitleBlockTemplate::renderTextCellDxf(QString &file_path,
 			x2 = x;
 	} else if ( cell.alignment & Qt::AlignBottom ) {}
 
-
 	//painter.setFont(text_font);
-
+    qreal ratio = 1.0;
 	if (cell.hadjust) {
-		QFontMetricsF font_metrics(text_font);
-		QRectF font_rect = font_metrics.boundingRect(
-					QRect(-10000, -10000, 10000, 10000),
-					cell.alignment,
-					text);
-
-		if (font_rect.width()*Createdxf::xScale > w) {
-			qreal ratio = qreal(w)
-					/ qreal(font_rect.width()
-						*Createdxf::xScale);
-			textHeight *= ratio;
+        // Scale font width to fit string in cell width w
+        QFontMetricsF font_metrics(text_font);
+        qreal textw = font_metrics.width(text)*Createdxf::xScale;
+        if (textw > w) {
+            ratio = (w / textw) * 0.8; // Allow some space around text in cell
 		}
 	}
-
+    // x & y offset values below (1 & 3) currently set heuristically based on appearance...
 	Createdxf::drawTextAligned(file_path,
 				   text,
-				   x,
-				   y,
+                   x - 1*Createdxf::xScale,
+                   y - 3*Createdxf::yScale,
 				   textHeight*Createdxf::yScale,
 				   0,
 				   0,
 				   hAlign,
 				   vAlign,
 				   x2,
+                   ratio,
 				   color,
 				   0);
 
