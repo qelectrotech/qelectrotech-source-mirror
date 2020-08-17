@@ -502,7 +502,7 @@ QHash <QString, NumerotationContext> QETProject::elementAutoNum() const {
 
 /**
 	@brief QETProject::elementAutoNumFormula
-	@param element autonum title
+	@param key : autonum title
 	@return Formula of element autonum stored in element autonum
 */
 QString QETProject::elementAutoNumFormula (const QString& key) const
@@ -532,7 +532,7 @@ QString QETProject::elementCurrentAutoNum () const {
 
 /**
 	@brief QETProject::setCurrrentElementAutonum
-	@param autoNum : set the current element autonum to @autonum
+	@param autoNum : set the current element autonum to autonum
 */
 void QETProject::setCurrrentElementAutonum(QString autoNum) {
 	m_current_element_autonum = std::move(autoNum);
@@ -540,7 +540,7 @@ void QETProject::setCurrrentElementAutonum(QString autoNum) {
 
 /**
 	@brief QETProject::conductorAutoNumFormula
-	@param conductor autonum title
+	@param key : autonum title
 	@return Formula of element autonum stored in conductor autonum
 */
 QString QETProject::conductorAutoNumFormula (const QString& key) const
@@ -561,7 +561,7 @@ QString QETProject::conductorCurrentAutoNum () const {
 
 /**
 	@brief QETProject::setCurrentConductorAutoNum
-	@param autoNum set the current conductor autonum to @autonum
+	@param autoNum set the current conductor autonum to autonum
 */
 void QETProject::setCurrentConductorAutoNum(QString autoNum) {
 	m_current_conductor_autonum = std::move(autoNum);
@@ -641,7 +641,7 @@ void QETProject::removeFolioAutoNum(const QString& key) {
 
 /**
 	@brief QETProject::conductorAutoNum
-	Return conductor numerotation context stored with @key.
+	Return conductor numerotation context stored with key.
 	If key is not found, return an empty numerotation context
 	@param key
 */
@@ -652,7 +652,7 @@ NumerotationContext QETProject::conductorAutoNum (const QString &key) const {
 
 /**
 	@brief QETProject::elementAutoNum
-	Return element numerotation context stored with @key.
+	Return element numerotation context stored with key.
 	If key is not found, return an empty numerotation context
 	@param key
 */
@@ -663,7 +663,7 @@ NumerotationContext QETProject::elementAutoNum (const QString &key) {
 
 /**
 	@brief QETProject::folioAutoNum
-	Return folio numerotation context stored with @key.
+	Return folio numerotation context stored with key.
 	If key is not found, return an empty numerotation context
 	@param key
 */
@@ -803,7 +803,8 @@ void QETProject::autoFolioNumberingSelectedFolios(int from, int to, const QStrin
 }
 
 /**
-	@return un document XML representant le projet 
+	@brief QETProject::toXml
+	@return un document XML representant le projet
 */
 QDomDocument QETProject::toXml() {
 	// racine du projet
@@ -898,6 +899,7 @@ QETResult QETProject::write()
 }
 
 /**
+	@brief QETProject::isReadOnly
 	@return true si le projet est en mode readonly, false sinon
 */
 bool QETProject::isReadOnly() const {
@@ -906,7 +908,7 @@ bool QETProject::isReadOnly() const {
 
 /**
 	@brief QETProject::setReadOnly
-	Set this project to read only if @read_only = true
+	Set this project to read only if read_only = true
 	@param read_only
 */
 void QETProject::setReadOnly(bool read_only)
@@ -943,7 +945,8 @@ bool QETProject::isEmpty() const {
 
 /**
 	@brief QETProject::importElement
-	Import the element represented by @location to the embbeded collection of this project
+	Import the element represented by location
+	to the embbeded collection of this project
 	@param location
 	@return the location of the imported element, location can be null.
 */
@@ -1030,10 +1033,13 @@ ElementsLocation QETProject::importElement(ElementsLocation &location)
 }
 
 /**
+	@brief QETProject::integrateTitleBlockTemplate
 	Integrate a title block template into this project.
-	@param src_tbt The location of the title block template to be integrated into this project
+	@param src_tbt The location of the title block template
+	to be integrated into this project
 	@param handler 
-	@return the name of the template after integration, or an empty QString if a problem occurred.
+	@return the name of the template after integration,
+	or an empty QString if a problem occurred.
 */
 QString QETProject::integrateTitleBlockTemplate(const TitleBlockTemplateLocation &src_tbt, MoveTitleBlockTemplatesHandler *handler) {
 	TitleBlockTemplateLocation dst_tbt(src_tbt.name(), &m_titleblocks_collection);
@@ -1140,7 +1146,7 @@ Diagram *QETProject::addNewDiagram(int pos)
 
 /**
 	@brief QETProject::removeDiagram
-	Remove @diagram from project
+	Remove diagram from project
 	@param diagram
 */
 void QETProject::removeDiagram(Diagram *diagram)
@@ -1470,12 +1476,12 @@ void QETProject::writeProjectPropertiesXml(QDomElement &xml_element) {
 /**
 	@brief QETProject::writeDefaultPropertiesXml
 	Export all defaults properties used by a new diagram and his content
-	#size of border
-	#content of titleblock
-	#default conductor
-	#defaut folio report
-	#default Xref
-	@param xml_element xml element to use for store default propertie.
+	size of border
+	content of titleblock
+	default conductor
+	defaut folio report
+	default Xref
+	@param xml_element : xml element to use for store default propertie.
 */
 void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 {
