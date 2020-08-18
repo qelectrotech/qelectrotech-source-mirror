@@ -46,21 +46,22 @@ ElementsCollectionWidget::ElementsCollectionWidget(QWidget *parent):
 	QWidget(parent),
 	m_model(nullptr)
 {
-		//The connection in the method ElementsCollectionWidget::reload  return a warning message at compilation :
-		//**********
-		//QObject::connect: Cannot queue arguments of type 'QVector<int>'
-		//(Make sure 'QVector<int>' is registered using qRegisterMetaType().)
-		//**********
-		//Register meta type has recommended by the message.
+	//The connection in the method ElementsCollectionWidget::reload
+	//return a warning message at compilation :
+	//**********
+	//QObject::connect: Cannot queue arguments of type 'QVector<int>'
+	//(Make sure 'QVector<int>' is registered using qRegisterMetaType().)
+	//**********
+	//Register meta type has recommended by the message.
 	qRegisterMetaType<QVector<int>>();
 	
 	setUpWidget();
 	setUpAction();
 	setUpConnection();
 
-		//Timer is used to avoid launching a new search for each letter typed by user
-		//Timer is started or restarted at every time user type a new letter.
-		//When the timer emit timeout, we start the search.
+	//Timer is used to avoid launching a new search for each letter typed by user
+	//Timer is started or restarted at every time user type a new letter.
+	//When the timer emit timeout, we start the search.
 	m_search_timer.setInterval(500);
 	m_search_timer.setSingleShot(true);
 }
@@ -80,7 +81,7 @@ void ElementsCollectionWidget::expandFirstItems()
 
 /**
 	@brief ElementsCollectionWidget::addProject
-	Add @project to be displayed
+	Add project to be displayed
 	@param project
 */
 void ElementsCollectionWidget::addProject(QETProject *project)
@@ -105,7 +106,7 @@ void ElementsCollectionWidget::removeProject(QETProject *project) {
 /**
 	@brief ElementsCollectionWidget::highlightUnusedElement
 	highlight the unused element
-	@See ElementsCollectionModel::highlightUnusedElement()
+	@see ElementsCollectionModel::highlightUnusedElement()
 */
 void ElementsCollectionWidget::highlightUnusedElement()
 {
@@ -115,7 +116,7 @@ void ElementsCollectionWidget::highlightUnusedElement()
 
 /**
 	@brief ElementsCollectionWidget::setCurrentLocation
-	Set the current item to be the item for @location
+	Set the current item to be the item for location
 	@param location
 */
 void ElementsCollectionWidget::setCurrentLocation(
@@ -771,11 +772,11 @@ void ElementsCollectionWidget::hideCollection(bool hide)
 
 /**
 	@brief ElementsCollectionWidget::hideItem
-	Hide the item index. If @recursive is true,
+	Hide the item index. If recursive is true,
 	hide all subchilds of index
-	@param hide- true = hide , false = visible
-	@param index- index to hide
-	@param recursive- true = apply to child , false = only for index
+	@param hide : - true = hide , false = visible
+	@param index : - index to hide
+	@param recursive : - true = apply to child , false = only for index
 */
 void ElementsCollectionWidget::hideItem(bool hide,
 					const QModelIndex &index,

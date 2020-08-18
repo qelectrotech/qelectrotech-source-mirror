@@ -174,7 +174,7 @@ namespace autonum
 
 	/**
 		@brief AssignVariables::formulaToLabel
-		Return the @formula with variable assigned
+		Return the formula with variable assigned
 		(ready to be displayed)
 		@param formula - the formula to work
 		@param seqStruct - struct where is stocked int values
@@ -199,7 +199,7 @@ namespace autonum
 	
 	/**
 		@brief AssignVariables::replaceVariable
-		Replace the variables in @formula in form %{my-var}
+		Replace the variables in formula in form %{my-var}
 		to the corresponding value stored in dc
 		@param formula
 		@param dc
@@ -354,7 +354,7 @@ namespace autonum
 
 	/**
 		@brief setSequentialToList
-		Append all sequential of type @type owned by @context in list
+		Append all sequential of type type owned by context in list
 		@param list : list to have value inserted
 		@param context : numerotation context to retrieve value
 		@param type : type of sequential
@@ -379,7 +379,7 @@ namespace autonum
 
 	/**
 		@brief setFolioSequentialToHash
-		Insert all value of @list in @hash with key @autoNumName
+		Insert all value of list in hash with key autoNumName
 		@param list : list to get values from
 		@param hash : hash to have values inserted
 		@param autoNumName : name to use as key of hash
@@ -542,7 +542,7 @@ namespace autonum
 		@param location
 		@return the prefix for an element represented by location,
 			prefix can be null.
-		Search for a prefix only if @location represent
+		Search for a prefix only if location represent
 		an element embedded in a project
 	*/
 	QString elementPrefixForLocation(const ElementsLocation &location)

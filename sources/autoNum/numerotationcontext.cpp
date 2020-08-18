@@ -59,7 +59,8 @@ bool NumerotationContext::addValue(const QString &type, const QVariant &value, c
 
 /**
 	@brief NumerotationContext::operator []
-	@return the string at position @i
+	@param i
+	@return the string at position i
 */
 QString NumerotationContext::operator [] (const int &i) const {
 	return (content_.at(i));
@@ -90,7 +91,8 @@ bool NumerotationContext::isEmpty() const {
 }
 /**
 	@brief NumerotationContext::itemAt
-	@return the content at position @i 1:type 2:value 3:increase
+	@param i
+	@return the content at position i 1:type 2:value 3:increase
 */
 QStringList NumerotationContext::itemAt(const int i) const {
 	return (content_.at(i).split("|"));
@@ -114,7 +116,7 @@ QString NumerotationContext::validRegExpNumber() const {
 
 /**
 	@brief NumerotationContext::keyIsAcceptable
-	@return true if @type is acceptable
+	@return true if type is acceptable
 */
 bool NumerotationContext::keyIsAcceptable(const QString &type) const {
 	return (type.contains(QRegExp(validRegExpNum())));
@@ -122,7 +124,7 @@ bool NumerotationContext::keyIsAcceptable(const QString &type) const {
 
 /**
 	@brief NumerotationContext::keyIsNumber
-	@return true if @type represent a number
+	@return true if type represent a number
 */
 bool NumerotationContext::keyIsNumber(const QString &type) const {
 	return (type.contains(QRegExp(validRegExpNumber())));
@@ -130,7 +132,7 @@ bool NumerotationContext::keyIsNumber(const QString &type) const {
 
 /**
 	@brief NumerotationContext::toXml
-	Save the numerotation context in a QDomElement under the element name @str
+	Save the numerotation context in a QDomElement under the element name str
 */
 QDomElement NumerotationContext::toXml(QDomDocument &d, const QString& str) {
 	QDomElement num_auto = d.createElement(str);
@@ -152,7 +154,7 @@ QDomElement NumerotationContext::toXml(QDomDocument &d, const QString& str) {
 
 /**
 	@brief NumerotationContext::fromXml
-	load numerotation context from @e
+	load numerotation context from e
 */
 void NumerotationContext::fromXml(QDomElement &e) {
 	clear();
@@ -163,7 +165,7 @@ void NumerotationContext::fromXml(QDomElement &e) {
 	@brief NumerotationContext::replaceValue
 	This class replaces the current NC field value with content
 	@param index of NC Item
-	@param QString content to replace current value
+	@param content to replace current value
 */
 void NumerotationContext::replaceValue(int index, QString content) {
 	QString sep = "|";

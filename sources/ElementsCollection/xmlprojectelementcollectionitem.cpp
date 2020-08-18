@@ -129,7 +129,7 @@ bool XmlProjectElementCollectionItem::isCollectionRoot() const
 
 /**
 	@brief XmlProjectElementCollectionItem::addChildAtPath
-	Ask to this item item to add a new child with collection name @collection_name
+	Ask to this item item to add a new child with collection name collection_name
 	(the child must exist in the xml element collection)
 	@param collection_name : name of the child item to add.
 */

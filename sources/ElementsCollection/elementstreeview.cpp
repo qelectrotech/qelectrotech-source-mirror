@@ -64,7 +64,7 @@ void ElementsTreeView::startDrag(Qt::DropActions supportedActions)
 
 /**
 	@brief ElementsTreeView::startElementDrag
-	Build a QDrag according to the content of @location
+	Build a QDrag according to the content of location
 	@param location : location to use for create the content of the QDrag
 */
 void ElementsTreeView::startElementDrag(const ElementsLocation &location)

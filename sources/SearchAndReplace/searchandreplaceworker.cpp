@@ -33,7 +33,7 @@ SearchAndReplaceWorker::SearchAndReplaceWorker()
 
 /**
 	@brief SearchAndReplaceWorker::replaceDiagram
-	Replace all properties of each diagram in @diagram_list,
+	Replace all properties of each diagram in diagram_list,
 	by the current titleblock propertie of this worker
 	@param diagram_list, list of diagram to be changed,
 	all diagrams must belong to the same project;
@@ -93,7 +93,7 @@ void SearchAndReplaceWorker::replaceDiagram(Diagram *diagram)
 
 /**
 	@brief SearchAndReplaceWorker::replaceElement
-	Replace all properties of each elements in @list
+	Replace all properties of each elements in list
 	All element must belong to the same project,
 	if not this function do nothing.
 	All change are made through a undo command append
@@ -151,7 +151,7 @@ void SearchAndReplaceWorker::replaceElement(Element *element)
 
 /**
 	@brief SearchAndReplaceWorker::replaceIndiText
-	Replace all displayed text of independent text of @list
+	Replace all displayed text of independent text of list
 	Each must belong to the same project, if not this function do nothing
 	@param list
 */
@@ -187,7 +187,7 @@ void SearchAndReplaceWorker::replaceIndiText(IndependentTextItem *text)
 
 /**
 	@brief SearchAndReplaceWorker::replaceConductor
-	Replace all properties of each conductor in @list
+	Replace all properties of each conductor in list
 	All conductor must belong to the same project,
 	if not this function do nothing.
 	All change are made through a undo command append
@@ -394,7 +394,7 @@ ConductorProperties SearchAndReplaceWorker::invalidConductorProperties()
 /**
 	@brief SearchAndReplaceWorker::applyChange
 	@param original : the original properties
-	@param change : the change properties, to be merged with @original
+	@param change : the change properties, to be merged with original
 	@return a new conductor properties with the change applyed.
 */
 ConductorProperties SearchAndReplaceWorker::applyChange(const ConductorProperties &original, const ConductorProperties &change)
@@ -443,7 +443,7 @@ QString SearchAndReplaceWorker::applyChange(const QString &original, const QStri
 	@brief SearchAndReplaceWorker::replaceAdvanced
 	@param diagram
 	@return the titleblock properties with the change applied,
-	according to the state of @m_advanced_struct
+	according to the state of m_advanced_struct
 */
 TitleBlockProperties SearchAndReplaceWorker::replaceAdvanced(Diagram *diagram)
 {
@@ -469,7 +469,7 @@ TitleBlockProperties SearchAndReplaceWorker::replaceAdvanced(Diagram *diagram)
 	@brief SearchAndReplaceWorker::replaceAdvanced
 	@param element
 	@return The diagram context with the change applied,
-	according to the state of @m_advanced_struct
+	according to the state of m_advanced_struct
 */
 DiagramContext SearchAndReplaceWorker::replaceAdvanced(Element *element)
 {
@@ -494,7 +494,7 @@ DiagramContext SearchAndReplaceWorker::replaceAdvanced(Element *element)
 	@brief SearchAndReplaceWorker::replaceAdvanced
 	@param conductor
 	@return the conductor properties with the change applied,
-	according to the state of @m_advanced_struct
+	according to the state of m_advanced_struct
 */
 ConductorProperties SearchAndReplaceWorker::replaceAdvanced(Conductor *conductor)
 {

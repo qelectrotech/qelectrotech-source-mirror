@@ -22,7 +22,8 @@
 	@brief QWidgetAnimation::QWidgetAnimation
 	@param widget : widget to animate
 	@param orientation : animate widget horizontally or vertically
-	@param duration : the duration of animation @see void QVariantAnimation::setDuration(int msecs)
+	@param duration : the duration of animation
+	@see void QVariantAnimation::setDuration(int msecs)
 */
 QWidgetAnimation::QWidgetAnimation(QWidget *widget, Qt::Orientation orientation, QWidgetAnimation::Behavior behavior, int duration) :
 	QPropertyAnimation(widget),
@@ -149,7 +150,7 @@ void QWidgetAnimation::setHidden(bool hidden)
 
 /**
 	@brief QWidgetAnimation::setLastShowSize
-	Force the last show size value to @size
+	Force the last show size value to size
 	@param size
 */
 void QWidgetAnimation::setLastShowSize(int size)

@@ -54,7 +54,7 @@ void NameListWidget::addLine()
 
 /**
 	@brief NameListWidget::setNames
-	Set the current names of this dialog from @name_list
+	Set the current names of this dialog from name_list
 	@param name_list
 */
 void NameListWidget::setNames(const NamesList &name_list)

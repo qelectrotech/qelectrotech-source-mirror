@@ -21,7 +21,7 @@
 /**
 	@brief QPropertyUndoCommand::QPropertyUndoCommand
 	Default constructor with old and new value
-	This command don't take ownership of @object
+	This command don't take ownership of object
 	@param object
 	@param old_value
 	@param new_value
@@ -38,7 +38,7 @@ QPropertyUndoCommand::QPropertyUndoCommand(QObject *object, const char *property
 	@brief QPropertyUndoCommand::QPropertyUndoCommand
 	Default constructor with old value.
 	Call setNewValue to setup the new value of the edited QObject
-	This command don't take ownership of @object
+	This command don't take ownership of object
 	@param object
 	@param old_value
 	@param parent
@@ -63,7 +63,7 @@ QPropertyUndoCommand::QPropertyUndoCommand(const QPropertyUndoCommand *other)
 
 /**
 	@brief QPropertyUndoCommand::setNewValue
-	Set the new value of the property (set with redo) to @new_value
+	Set the new value of the property (set with redo) to new_value
 	@param new_value
 */
 void QPropertyUndoCommand::setNewValue(const QVariant &new_value) {

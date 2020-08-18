@@ -500,7 +500,7 @@ QList <ElementCollectionItem *> ElementsCollectionModel::items() const
 /**
 	@brief ElementsCollectionModel::projectItems
 	@param project
-	@return return all items for project @project. the list can be empty
+	@return return all items for project. the list can be empty
 */
 QList<ElementCollectionItem *> ElementsCollectionModel::projectItems(QETProject *project) const
 {
@@ -531,7 +531,7 @@ void ElementsCollectionModel::hideElement()
 
 /**
 	@brief ElementsCollectionModel::indexFromLocation
-	Return the index who represent @location.
+	Return the index who represent location.
 	Index can be non valid
 	@param location
 	@return

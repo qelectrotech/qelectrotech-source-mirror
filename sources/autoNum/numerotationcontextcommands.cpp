@@ -84,7 +84,7 @@ QString NumerotationContextCommands::toRepresentedString() {
 
 /**
 	@brief NumerotationContextCommands::setNumStrategy
-	apply the good strategy relative to @str
+	apply the good strategy relative to str
 */
 void NumerotationContextCommands::setNumStrategy(const QString &str) {
 	if (strategy_) delete strategy_;
@@ -159,7 +159,7 @@ NumStrategy::~NumStrategy() {}
 
 /**
 	@brief NumStrategy::nextString
-	@return the next value of @nc at position @i
+	@return the next value of nc at position i
 */
 NumerotationContext NumStrategy::nextString (const NumerotationContext &nc, const int i) const {
 	QStringList strl = nc.itemAt(i);
@@ -182,7 +182,7 @@ NumerotationContext NumStrategy::nextNumber (const NumerotationContext &nc, cons
 
 /**
 	@brief NumStrategy::previousNumber
-	@return  the previous value of @nc at position @i
+	@return  the previous value of nc at position i
 */
 NumerotationContext NumStrategy::previousNumber(const NumerotationContext &nc, const int i) const {
 	QStringList strl = nc.itemAt(i);

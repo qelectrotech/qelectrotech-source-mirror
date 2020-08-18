@@ -80,12 +80,13 @@ void PropertiesEditorDockWidget::reset()
 
 /**
 	@brief PropertiesEditorDockWidget::addEditor
-	Add an @editor in this dock at @index in the main vertical layout (note the button box
-	are displayed at bottom of this layout by default)
+	Add an editor in this dock at index in the main vertical layout
+	(note the button box are displayed at bottom of this layout by default)
 	When an editor is added, we enable the button box
 	@param editor : editor to add;
 	@param index : index of editor in the layout
-	@return true if was added (or already add) or false if can't be add (editor = nullptr)
+	@return true if was added (or already add)
+	or false if can't be add (editor = nullptr)
 */
 bool PropertiesEditorDockWidget::addEditor(PropertiesEditorWidget *editor, int index)
 {
@@ -107,7 +108,8 @@ QList<PropertiesEditorWidget *> PropertiesEditorDockWidget::editors() const {
 
 /**
 	@brief PropertiesEditorDockWidget::removeEditor
-	Remove @editor from this dock. The editor wasn't delete a the end of this method
+	Remove editor from this dock.
+	The editor wasn't delete a the end of this method
 	If the editor was the last on this widget, we disabled the button box
 	@param editor : editor to remove
 	@return true on success, else false

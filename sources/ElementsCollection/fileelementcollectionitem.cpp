@@ -241,7 +241,7 @@ bool FileElementCollectionItem::isCustomCollection() const
 /**
 	@brief FileElementCollectionItem::addChildAtPath
 	Ask to this item item to add a child
-	with collection name @collection_name
+	with collection name collection_name
 	@param collection_name
 */
 void FileElementCollectionItem::addChildAtPath(const QString &collection_name)

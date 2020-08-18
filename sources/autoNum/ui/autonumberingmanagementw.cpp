@@ -182,14 +182,14 @@ void AutoNumberingManagementW::on_m_apply_project_rb_clicked() {
 
 /**
 	@brief AutoNumberingManagementW::on_buttonBox_clicked
-	Action on @buttonBox clicked
+	Action on buttonBox clicked
 	@param button
 */
 void AutoNumberingManagementW::on_buttonBox_clicked(QAbstractButton *button) {
 	//transform button to int
 	int answer = ui -> buttonBox -> buttonRole(button);
 	switch (answer) {
-			//apply the context in the diagram displayed by @diagram_chooser.
+			//apply the context in the diagram displayed by diagram_chooser.
 		case QDialogButtonBox::ApplyRole:
 			applyEnable(false);
 			emit applyPressed();

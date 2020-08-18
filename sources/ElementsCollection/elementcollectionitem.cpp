@@ -39,11 +39,15 @@ void ElementCollectionItem::clearData()
 
 /**
 	@brief ElementCollectionItem::lastItemForPath
-	Return the last existing item in this ElementCollectionItem hierarchy according to the given path.
-	Next_item is the first non existing item in this hierarchy according to the given path.
-	@param path : The path to find last item. The path must be in form : path/otherPath/.../.../myElement.elmt.
+	Return the last existing item in this ElementCollectionItem hierarchy
+	according to the given path.
+	Next_item is the first non existing item in this hierarchy according
+	to the given path.
+	@param path : The path to find last item.
+	The path must be in form : path/otherPath/.../.../myElement.elmt.
 	@param no_found_path : The first item that not exist in this hierarchy
-	@return : The last item that exist in this hierarchy, or nullptr can't find (an error was occurred, or path already exist)
+	@return : The last item that exist in this hierarchy,
+	or nullptr can't find (an error was occurred, or path already exist)
 */
 ElementCollectionItem *ElementCollectionItem::lastItemForPath(const QString &path, QString &no_found_path)
 {
@@ -68,7 +72,7 @@ ElementCollectionItem *ElementCollectionItem::lastItemForPath(const QString &pat
 
 /**
 	@brief ElementCollectionItem::childWithCollectionName
-	Return the child with the collection name @name, else return nullptr
+	Return the child with the collection name name, else return nullptr
 	@param name
 	@return
 */
@@ -101,10 +105,10 @@ QList<QStandardItem *> ElementCollectionItem::directChilds() const
 
 /**
 	@brief ElementCollectionItem::rowForInsertItem
-	Return the row for insert a new child item to this item with name @collection_name.
-	If row can't be found (collection_name is null, or already exist) return -1;
-	@param collection_name
+	Return the row for insert a new child item to this item with name.
+	@param name
 	@return
+	If row can't be found (name is null, or already exist) return -1;
 */
 int ElementCollectionItem::rowForInsertItem(const QString &name)
 {
@@ -112,7 +116,7 @@ int ElementCollectionItem::rowForInsertItem(const QString &name)
 		return -1;
 
 	QList <ElementCollectionItem *> child;
-		//The item to insert is an element we search from element child
+	//The item to insert is an element we search from element child
 	if (name.endsWith(".elmt"))
 	{
 		child = elementsDirectChild();
@@ -120,7 +124,7 @@ int ElementCollectionItem::rowForInsertItem(const QString &name)
 		if (child.isEmpty())
 			return rowCount();
 	}
-		//The item is a directory, we search from directory child
+	//The item is a directory, we search from directory child
 	else
 	{
 		child = directoriesDirectChild();

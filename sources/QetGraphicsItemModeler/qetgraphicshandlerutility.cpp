@@ -182,7 +182,7 @@ QRectF QetGraphicsHandlerUtility::mirrorRectForPosAtIndex(const QRectF &old_rect
 
 /**
 	@brief QetGraphicsHandlerUtility::lineForPosAtIndex
-	Return a line after modification of @pos at index @index of @old_line.
+	Return a line after modification of pos at index index of old_line.
 	@param old_line
 	@param pos
 	@param index

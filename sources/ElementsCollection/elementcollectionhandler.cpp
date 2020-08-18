@@ -334,7 +334,7 @@ ElementsLocation ElementCollectionHandler::copy(ElementsLocation &source, Elemen
 
 /**
 	@brief ElementCollectionHandler::createDir
-	Create a directorie with name @name as child of @parent.
+	Create a directorie with name as child of parent.
 	Parent must be a directory
 	@param parent : parent of the dir to create
 	@param name : name of directorie to create
@@ -395,8 +395,9 @@ ElementsLocation ElementCollectionHandler::createDir(ElementsLocation &parent, c
 
 /**
 	@brief ElementCollectionHandler::importFromProject
-	Import the element represented by @location to the embedded collection of @project at the same path.
-	@location must represente an element owned by a project embedded collection
+	Import the element represented by location to the embedded collection
+	of project at the same path.
+	location must represente an element owned by a project embedded collection
 	@param project : project where copy the element
 	@param location : location to copy
 	@return true if import with success
@@ -438,7 +439,8 @@ bool ElementCollectionHandler::importFromProject(QETProject *project, ElementsLo
 
 /**
 	@brief ElementCollectionHandler::setNames
-	Set the names stored in @name_list as the names of the item represented by location
+	Set the names stored in name_list as the names
+	of the item represented by location
 	@param location : location to change the names
 	@param name_list : NamesList to use
 	@return return true if success

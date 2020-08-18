@@ -48,10 +48,13 @@ QString PropertiesEditorWidget::title() const {
 /**
 	@brief PropertiesEditorWidget::setLiveEdit
 	Set the editor in live edit mode.
-	When an editor is in live edit mode, every change is applied immediately (no need to call apply).
+	When an editor is in live edit mode,
+	every change is applied immediately (no need to call apply).
 	If live edit can be enable, return true, else false.
-	By default this method do nothing and return false (live edit is disable).
-	Herited class of PropertiesEditorWidget must reimplemente this methode to manage the live edit mode.
+	By default this method do nothing and return false
+	(live edit is disable).
+	Herited class of PropertiesEditorWidget must reimplemente
+	this methode to manage the live edit mode.
 	@param live_edit true to enable live edit
 	@return true if live edit is enable, else false.
 */

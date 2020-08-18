@@ -309,7 +309,7 @@ void SearchAndReplaceWidget::fillItemsList()
 
 /**
 	@brief SearchAndReplaceWidget::addElement
-	Add a tree widget item for @element
+	Add a tree widget item for element
 	@param element
 */
 void SearchAndReplaceWidget::addElement(Element *element)
@@ -434,7 +434,7 @@ void SearchAndReplaceWidget::search()
 
 /**
 	@brief SearchAndReplaceWidget::setVisibleAllParents
-	Set visible all parents of @item until the invisible root item
+	Set visible all parents of item until the invisible root item
 	@param item
 	@param expend_parent
 */
@@ -452,8 +452,8 @@ void SearchAndReplaceWidget::setVisibleAllParents(QTreeWidgetItem *item,
 
 /**
 	@brief SearchAndReplaceWidget::nextItem
-	@param item : find the next item from @item,
-	if @item is nullptr, start the search for the root of the tree
+	@param item : find the next item from item,
+	if item is nullptr, start the search for the root of the tree
 	@param flags
 	@return the next item according to flag
 	or nullptr if there is not a next item
@@ -485,8 +485,8 @@ QTreeWidgetItem *SearchAndReplaceWidget::nextItem(
 
 /**
 	@brief SearchAndReplaceWidget::previousItem
-	@param item : find the previous item from @item,
-	if @item is nullptr, start the search for the root of the tree
+	@param item : find the previous item from item,
+	if item is nullptr, start the search for the root of the tree
 	@param flags
 	@return the previous item according to flag
 	or nullptr if there is not a previous item
