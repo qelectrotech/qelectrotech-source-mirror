@@ -55,8 +55,8 @@ QDomElement QETXML::penToXml(QDomDocument &parent_document,const QPen& pen)
 /**
 	@brief QETXML::penFromXml
 	Build a QPen from a xml description
-	@param element, The QDomElement that describe the pen
-	@return the created pen. If @element is null or tagName isn't "pen"
+	@param element : The QDomElement that describe the pen
+	@return the created pen. If element is null or tagName isn't "pen"
 	return a default constructed QPen
 */
 QPen QETXML::penFromXml(const QDomElement &element)
@@ -128,8 +128,8 @@ QDomElement QETXML::brushToXml(QDomDocument &parent_document,
 /**
 	@brief QETXML::brushFromXml
 	Build a QBrush from a xml description
-	@param element, the QDomElement that describe the pen
-	@return the created brush. If @element is null or tagName isn't "brush"
+	@param element : the QDomElement that describe the pen
+	@return the created brush. If element is null or tagName isn't "brush"
 	return a default constructed QBrush
 */
 QBrush QETXML::brushFromXml(const QDomElement &element)
@@ -167,7 +167,7 @@ QBrush QETXML::brushFromXml(const QDomElement &element)
 	@param dir : file system direcory to convert to QDomElement directory
 	@param rename : by default the attribute "name" of the returned
 	QDomElement is the same name of @dir
-	but we can override itwith @rename
+	but we can override itwith rename
 	@return A file system directory converted to a QDomElement directory
 	ready to be inserted into a XmlElementCollection.
 	If the QDomElement can't be created, return a null QDomElement.
@@ -212,7 +212,7 @@ QDomElement QETXML::fileSystemDirToXmlCollectionDir(QDomDocument &document,
 	@param file : file system element file to convert to QDomElement;
 	@param rename : by default the attribute "name" of
 	the returned QDomElement is the same name of @file
-	but we can override itwith @rename
+	but we can override itwith rename
 	@return A file system element converted to a QDomElement
 	ready to be inserted into a XmlElementCollection
 	If the QDomElement can't be created, return a null QDomElement
@@ -286,12 +286,12 @@ bool QETXML::writeXmlFile(const QDomDocument &xml_document,
 
 /**
 	@brief QETXML::textToDomElement
-	Return a QDomElement, created from @document,
-	with tag name @tag_name and text @value.
+	Return a QDomElement, created from document,
+	with tag name tag_name and text value.
 	@param document
 	@param tag_name
 	@param value
-	@return a QDomElement, created from @document
+	@return a QDomElement, created from document
 */
 QDomElement QETXML::textToDomElement(QDomDocument &document,
 				     const QString& tag_name,
@@ -308,7 +308,7 @@ QDomElement QETXML::textToDomElement(QDomDocument &document,
 	@brief QETXML::directChild
 	@param element
 	@param tag_name
-	@return All direct child of @element  with the tag name @tag_name
+	@return All direct child of element  with the tag name tag_name
 */
 QVector<QDomElement> QETXML::directChild(const QDomElement &element,
 					 const QString &tag_name)
@@ -333,10 +333,10 @@ QVector<QDomElement> QETXML::directChild(const QDomElement &element,
 	@param element
 	@param parent_tag_name
 	@param children_tag_name
-	@return When given an xml dom element @element,
-	returns a vector of all children dom_elements tagged @children_tag_name
+	@return When given an xml dom element element,
+	returns a vector of all children dom_elements tagged children_tag_name
 	nested in the parent dom elements tagged parent_tag_name,
-	themselves children of the dom element @element.
+	themselves children of the dom element element.
 */
 QVector<QDomElement> QETXML::subChild(const QDomElement &element,
 				      const QString parent_tag_name,
@@ -417,7 +417,7 @@ QMargins QETXML::marginsFromXml(const QDomElement &element)
 /**
 	@brief QETXML::modelHeaderDataToXml
 	Save to xml element all header data specified
-	by @horizontal_section_role and @vertical_section_role
+	by horizontal_section_role and vertical_section_role
 	@param parent_document
 	@param model
 	@param horizontal_section_role : key as header section and value

@@ -851,7 +851,7 @@ void DynamicElementTextModel::removeGroup(ElementTextItemGroup *group)
 
 /**
 	@brief DynamicElementTextModel::textAddedToGroup
-	Add the text @text to the group @group
+	Add the text text to the group group
 	@param deti
 	@param group
 */
@@ -880,7 +880,7 @@ void DynamicElementTextModel::removeTextFromGroup(DynamicElementTextItem *deti,
 	@brief DynamicElementTextModel::groupFromIndex
 	@param index
 	@return the group associated with index. Return value can be nullptr
-	@Index can be a child of an index associated with a group
+	Index can be a child of an index associated with a group
 	and can be the column 0 or 1.
 */
 ElementTextItemGroup *DynamicElementTextModel::groupFromIndex(
@@ -941,8 +941,8 @@ QModelIndex DynamicElementTextModel::indexFromGroup(
 /**
 	@brief DynamicElementTextModel::indexIsText
 	@param index
-	@return True if @index represente a text, both for the column 0 and 1.
-	Return false if @index is a child of an index associated to a text.
+	@return True if index represente a text, both for the column 0 and 1.
+	Return false if index is a child of an index associated to a text.
 */
 bool DynamicElementTextModel::indexIsText(const QModelIndex &index) const
 {
@@ -1191,7 +1191,7 @@ QStringList DynamicElementTextModel::mimeTypes() const
 /**
 	@brief DynamicElementTextModel::enableSourceText
 	Enable the good field, according to the current source of text,
-	for the edited text @deti
+	for the edited text deti
 	@param deti
 	@param tf
 */
@@ -1320,7 +1320,7 @@ void DynamicElementTextModel::itemDataChanged(QStandardItem *qsi)
 		}
 	}
 	
-	//We emit the signal only if @qsi is in the second column,
+	//We emit the signal only if qsi is in the second column,
 	//because the data are stored on this column
 	//the first column is use only for display the title of the property,
 	//except for the name of texts group
@@ -1332,7 +1332,8 @@ void DynamicElementTextModel::itemDataChanged(QStandardItem *qsi)
 
 /**
 	@brief DynamicElementTextModel::setConnection
-	Set up the connection for @deti to keep up to date the data of this model and the text.
+	Set up the connection for deti to keep up to date
+	the data of this model and the text.
 	Is notably use with the use of QUndoCommand.
 	@param deti - text to setup connection
 	@param set - true = set connection - false unset connection
@@ -1372,7 +1373,8 @@ void DynamicElementTextModel::setConnection(DynamicElementTextItem *deti, bool s
 
 /**
 	@brief DynamicElementTextModel::setConnection
-	Set up the connection for @group to keep up to date the data of this model and the group.
+	Set up the connection for group to keep up to date
+	the data of this model and the group.
 	Is notably use with the use of QUndoCommand.
 	@param group group to setup the connection
 	@param set true = set connection - false unset connection

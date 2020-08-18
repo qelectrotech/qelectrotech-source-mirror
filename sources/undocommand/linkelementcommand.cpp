@@ -125,7 +125,8 @@ bool LinkElementCommand::isLinkable(Element *element_a, Element *element_b, bool
 
 /**
 	@brief LinkElementCommand::setLink
-	Replace all linked elements of edited element by elements stored in @element_list
+	Replace all linked elements of edited element
+	by elements stored in element_list
 	This method do several check to know if element can be linked or not.
 	@param element_list
 */
@@ -259,7 +260,7 @@ void LinkElementCommand::setUpNewLink(const QList<Element *> &element_list, bool
 */
 void LinkElementCommand::makeLink(const QList<Element *> &element_list)
 {
-		//List is empty, that mean m_element must be free, so we unlink all elements
+	//List is empty, that mean m_element must be free, so we unlink all elements
 	if (element_list.isEmpty())
 	{
 		m_element->unlinkAllElements();
@@ -270,13 +271,16 @@ void LinkElementCommand::makeLink(const QList<Element *> &element_list)
 	foreach(Element *elmt, element_list)
 		m_element->linkToElement(elmt);
 
-		//At this point may be there are unwanted linked elements to m_element. We must to unlink it.
-		//Elements from @element_list are wanted so we compare @element_list to current linked element of @m_element
+	/* At this point may be there are unwanted linked elements to m_element.
+	 * We must to unlink it.
+	 * Elements from element_list are wanted so we compare element_list
+	 *  to current linked element of m_element
+	 */
 	QList<Element *> to_unlink = m_element->linkedElements();
 	foreach(Element *elmt, element_list)
 		to_unlink.removeAll(elmt);
 
-		//All elements stored in to_unlink is unwanted we unlink it from m_element
+	//All elements stored in to_unlink is unwanted we unlink it from m_element
 	if (!to_unlink.isEmpty())
 		foreach(Element *elmt, to_unlink)
 			m_element->unlinkElement(elmt);

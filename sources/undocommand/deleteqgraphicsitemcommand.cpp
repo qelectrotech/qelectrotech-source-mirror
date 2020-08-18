@@ -39,8 +39,8 @@ DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand(Diagram *diagram, const D
 	m_removed_contents(content),
 	m_diagram(diagram)
 {
-		//If parent element of a dynamic element text item is also in @m_removed_content,
-		//we remove it, because when the element will be removed from the scene every child's will also be removed.
+	//If parent element of a dynamic element text item is also in m_removed_content,
+	//we remove it, because when the element will be removed from the scene every child's will also be removed.
 	const QSet<DynamicElementTextItem *> elmt_set = m_removed_contents.m_element_texts;
 	for(DynamicElementTextItem *deti : elmt_set)
 	{
@@ -59,8 +59,8 @@ DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand(Diagram *diagram, const D
 			m_elmt_text_hash.insert(deti, deti->parentElement());
 	}
 	
-		//If parent element of ElementTextItemGroup is also in @m_removed_content,
-		//we remove it, because when the element will be removed from the scene every child's will also be removed.
+	//If parent element of ElementTextItemGroup is also in m_removed_content,
+	//we remove it, because when the element will be removed from the scene every child's will also be removed.
 	const QSet<ElementTextItemGroup *> group_set = m_removed_contents.m_texts_groups;
 	for(ElementTextItemGroup *group : group_set)
 	{

@@ -61,7 +61,7 @@ DiagramContext DiagramContextWidget::context() const
 
 /**
 	@brief DiagramContextWidget::setContext
-	Load the content from @context into this widget
+	Load the content from context into this widget
 	@param context
 */
 void DiagramContextWidget::setContext (const DiagramContext &context)

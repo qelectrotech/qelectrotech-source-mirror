@@ -125,7 +125,7 @@ QString DiagramImageItem::name() const {
 
 /**
 	@brief DiagramImageItem::fromXml
-	Load this image fro xml elemebt @e
+	Load this image fro xml elemebt e
 	@param e
 	@return true if succesfully load.
 */
@@ -140,11 +140,11 @@ bool DiagramImageItem::fromXml(const QDomElement &e)
 		return (false);
 	}
 
-		//load xml image to QByteArray
+	//load xml image to QByteArray
 	QByteArray array;
 	array = QByteArray::fromBase64(e.text().toLatin1());
 
-		//Set QPixmap from the @array
+	//Set QPixmap from the array
 	QPixmap pixmap;
 	pixmap.loadFromData(array);
 	setPixmap(pixmap);

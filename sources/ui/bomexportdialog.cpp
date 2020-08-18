@@ -25,10 +25,12 @@
 #include <QSqlError>
 #include <QSqlRecord>
 
+
 /**
- * @brief BOMExportDialog::BOMExportDialog
- * @param parent
- */
+	@brief BOMExportDialog::BOMExportDialog
+	@param project
+	@param parent
+*/
 BOMExportDialog::BOMExportDialog(QETProject *project, QWidget *parent) :
     QDialog(parent),
 	ui(new Ui::BOMExportDialog),
@@ -43,17 +45,17 @@ BOMExportDialog::BOMExportDialog(QETProject *project, QWidget *parent) :
 }
 
 /**
- * @brief BOMExportDialog::~BOMExportDialog
- */
+	@brief BOMExportDialog::~BOMExportDialog
+*/
 BOMExportDialog::~BOMExportDialog()
 {
 	delete ui;
 }
 
 /**
- * @brief BOMExportDialog::exec
- * @return
- */
+	@brief BOMExportDialog::exec
+	@return
+*/
 int BOMExportDialog::exec()
 {
 	auto r = QDialog::exec();
@@ -156,6 +158,10 @@ QString BOMExportDialog::getBom()
 	return return_string;
 }
 
+/**
+	@brief BOMExportDialog::on_m_format_as_bom_clicked
+	@param checked
+*/
 void BOMExportDialog::on_m_format_as_bom_clicked(bool checked) {
 	m_query_widget->setGroupBy("designation", checked);
 	m_query_widget->setCount("COUNT(*) AS designation_qty", checked);

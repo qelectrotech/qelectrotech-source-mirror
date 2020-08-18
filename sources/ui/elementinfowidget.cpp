@@ -51,7 +51,7 @@ ElementInfoWidget::~ElementInfoWidget()
 
 /**
 	@brief ElementInfoWidget::setElement
-	Set @element to be the edited element
+	Set element to be the edited element
 	@param element
 */
 void ElementInfoWidget::setElement(Element *element)
@@ -189,7 +189,8 @@ void ElementInfoWidget::buildInterface()
 /**
 	@brief ElementInfoWidget::infoPartWidgetForKey
 	@param key
-	@return the ElementInfoPartWidget with key @key, if not found return nullptr;
+	@return the ElementInfoPartWidget with key key,
+	if not found return nullptr;
 */
 ElementInfoPartWidget *ElementInfoWidget::infoPartWidgetForKey(const QString &key) const
 {

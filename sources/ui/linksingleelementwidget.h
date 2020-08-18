@@ -28,12 +28,13 @@ namespace Ui {
 }
 
 /**
-* @brief The LinkSingleElementWidget class
+	@brief The LinkSingleElementWidget class
 	this class provide a widget to select an element to be linked
 	to the element given in the constructor.
-	The element given in constructor must be linked with only one other element (like report or slave element).
-	This widget detect automaticaly the kind of element given in the constructor and
-	search all element that can be linked with it.
+	The element given in constructor must be linked with only
+	one other element (like report or slave element).
+	This widget detect automaticaly the kind of element given in
+	the constructor and search all element that can be linked with it.
 	If the element is already linked, the widget ask user to unlink.
 	This widget embedded the diagram command for undo/redo the action
 */

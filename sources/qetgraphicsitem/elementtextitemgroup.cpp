@@ -236,8 +236,9 @@ void ElementTextItemGroup::updateAlignment()
 
 /**
 	@brief ElementTextItemGroup::setVerticalAdjustment
-	Set the value of the vertical adjustment to @v.
-	The vertical adjutment is use to adjust the space between the texts of this group.
+	Set the value of the vertical adjustment to v.
+	The vertical adjutment is use to adjust
+	the space between the texts of this group.
 	@param v
 */
 void ElementTextItemGroup::setVerticalAdjustment(int v)

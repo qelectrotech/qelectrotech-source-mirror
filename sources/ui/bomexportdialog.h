@@ -28,8 +28,8 @@ class BOMExportDialog;
 }
 
 /**
- * @brief The BOMExportDialog class
- */
+	@brief The BOMExportDialog class
+*/
 class BOMExportDialog : public QDialog
 {
 		Q_OBJECT

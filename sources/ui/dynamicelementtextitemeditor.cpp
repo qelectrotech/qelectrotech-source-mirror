@@ -136,7 +136,7 @@ void DynamicElementTextItemEditor::apply()
 
 /**
 	@brief DynamicElementTextItemEditor::setCurrentText
-	Expand and select the item for text @text
+	Expand and select the item for text text
 	@param text
 */
 void DynamicElementTextItemEditor::setCurrentText(DynamicElementTextItem *text)
@@ -153,7 +153,7 @@ void DynamicElementTextItemEditor::setCurrentText(DynamicElementTextItem *text)
 
 /**
 	@brief DynamicElementTextItemEditor::setCurrentGroup
-	Expand and select the item for group @group
+	Expand and select the item for group group
 	@param group
 */
 void DynamicElementTextItemEditor::setCurrentGroup(ElementTextItemGroup *group)

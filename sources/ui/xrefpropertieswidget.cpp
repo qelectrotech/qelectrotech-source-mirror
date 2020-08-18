@@ -112,7 +112,7 @@ void XRefPropertiesWidget::buildUi()
 
 /**
 	@brief XRefPropertiesWidget::saveProperties
-	Save the properties of the type define at @index of the combo box m_type_cb
+	Save the properties of the type define at index of the combo box m_type_cb
 	@param index
 */
 void XRefPropertiesWidget::saveProperties(int index) {
@@ -129,10 +129,6 @@ void XRefPropertiesWidget::saveProperties(int index) {
 		xrp.setSnapTo(XRefProperties::Bottom);
 	else
 		xrp.setSnapTo(XRefProperties::Label);
-
-
-
-
 
 	if(ui->m_xrefpos_cb->itemData(ui->m_xrefpos_cb->currentIndex()).toString() == "bottom") xrp.setXrefPos(Qt::AlignBottom);
 	else if(ui->m_xrefpos_cb->itemData(ui->m_xrefpos_cb->currentIndex()).toString() == "top") xrp.setXrefPos(Qt::AlignTop);

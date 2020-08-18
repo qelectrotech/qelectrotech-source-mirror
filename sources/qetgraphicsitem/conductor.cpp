@@ -970,7 +970,7 @@ void Conductor::pointsToSegments(const QList<QPointF>& points_list) {
 /**
 	@brief Conductor::fromXml
 	Load the conductor and her information from xml element
-	@param e
+	@param dom_element
 	@return true is loading success else return false
 */
 bool Conductor::fromXml(QDomElement &dom_element)
@@ -998,9 +998,12 @@ bool Conductor::fromXml(QDomElement &dom_element)
 }
 
 /**
+	@brief Conductor::toXml
 	Exporte les caracteristiques du conducteur sous forme d'une element XML.
-	@param d Le document XML a utiliser pour creer l'element XML
-	@param table_adr_id Hash stockant les correspondances entre les ids des
+	@param dom_document :
+	Le document XML a utiliser pour creer l'element XML
+	@param table_adr_id :
+	Hash stockant les correspondances entre les ids des
 	bornes dans le document XML et leur adresse en memoire
 	@return Un element XML representant le conducteur
 */
@@ -1492,9 +1495,12 @@ QPainterPath Conductor::path() const
 	@brief Conductor::setPropertiesToPotential
 	@param properties
 	@param only_text
-	Set @propertie to conductor and every conductors in the same potential of @conductor.
-	If @only_text is true only formula, text, function and tension/protocol is set
-	to other conductor in the same potential, the other values of property stay unmodified
+	Set propertie to conductor and every conductors in
+	the same potential of conductor.
+	If only_text is true only formula, text,
+	function and tension/protocol is set
+	to other conductor in the same potential,
+	the other values of property stay unmodified
 */
 void Conductor::setPropertyToPotential(const ConductorProperties &property, bool only_text)
 {
@@ -1523,7 +1529,7 @@ void Conductor::setPropertyToPotential(const ConductorProperties &property, bool
 
 /**
 	@brief Conductor::setProperties
-	Set @property as current property of conductor
+	Set property as current property of conductor
 	@param properties : properties
 */
 void Conductor::setProperties(const ConductorProperties &property)
@@ -1628,11 +1634,11 @@ void Conductor::displayedTextChanged()
 
 /**
 	@brief Conductor::relatedPotentialConductors
-	Return all conductors at the same potential of this conductor, this conductor isn't
-	part of the returned QSet.
+	Return all conductors at the same potential of this conductor,
+	this conductor isn't part of the returned QSet.
 	@param all_diagram : if true search in all diagram of the project,
 	false search only in the parent diagram of this conductor
-	@param t_list, a list of terminal already found for this potential.
+	@param t_list : a list of terminal already found for this potential.
 	@return  a QSet of conductor at the same potential.
 */
 QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram, QList <Terminal *> *t_list)

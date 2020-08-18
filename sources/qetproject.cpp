@@ -978,7 +978,7 @@ ElementsLocation QETProject::importElement(ElementsLocation &location)
 	if (m_elements_collection->exist(import_path)) {
 		ElementsLocation existing_location(import_path, this);
 
-		//@existing_location and @location have the same uuid, so it is the same element
+		//existing_location and location have the same uuid, so it is the same element
 		if (existing_location.uuid() == location.uuid()) {
 			return existing_location;
 		}

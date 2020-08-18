@@ -55,7 +55,7 @@ ShapeGraphicsItemPropertiesWidget::~ShapeGraphicsItemPropertiesWidget()
 
 /**
 	@brief ShapeGraphicsItemPropertiesWidget::setItem
-	Set @shape as the current edited item
+	Set shape as the current edited item
 	@param shape
 */
 void ShapeGraphicsItemPropertiesWidget::setItem(QetShapeItem *shape)

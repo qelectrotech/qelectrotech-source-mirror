@@ -593,7 +593,7 @@ void LinkSingleElementWidget::on_m_unlink_pb_clicked()
 
 /**
 	@brief LinkSingleElementWidget::on_m_tree_widget_itemDoubleClicked
-	Highlight the element represented by @item
+	Highlight the element represented by item
 	@param item
 	@param column
 */

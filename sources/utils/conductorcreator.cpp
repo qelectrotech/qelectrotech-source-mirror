@@ -29,7 +29,7 @@
 
 /**
 	@brief ConductorCreator::ConductorCreator
-	Create an electrical potential between all terminals of @terminals_list.
+	Create an electrical potential between all terminals of terminals_list.
 	the terminals of the list must be in the same diagram.
 	@param d Diagram
 	@param terminals_list QList<Terminal *>

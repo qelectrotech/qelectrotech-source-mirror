@@ -100,7 +100,7 @@ AddTextsGroupCommand::AddTextsGroupCommand(Element *element,
 	@param element : The element to add a new group
 	@param dom_element : the first time the group is created,
 	we call the function fromXml of the group,
-	and give @dom_element has argument.
+	and give dom_element has argument.
 	@param parent : parent undo
 */
 AddTextsGroupCommand::AddTextsGroupCommand(Element *element,
@@ -326,7 +326,7 @@ void AddTextToGroupCommand::redo()
  * ***************************/
 /**
 	@brief RemoveTextFromGroupCommand::RemoveTextFromGroupCommand
-	@param text : text to add to @group
+	@param text : text to add to group
 	@param group
 	@param parent : parent undo command
 */

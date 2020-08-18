@@ -382,7 +382,7 @@ QString DynamicElementTextItem::text() const {
 /**
 	@brief DynamicElementTextItem::setText
 	Set the text of this text
-	@param formula
+	@param text
 */
 void DynamicElementTextItem::setText(const QString &text)
 {
@@ -448,7 +448,7 @@ QString DynamicElementTextItem::infoName() const {
 
 /**
 	@brief DynamicElementTextItem::setCompositeText
-	Set the composite text of this text item to @text
+	Set the composite text of this text item to text
 	@param text
 */
 void DynamicElementTextItem::setCompositeText(const QString &text)

@@ -54,8 +54,8 @@ QStringList QETInformation::titleblockInfoKeys()
 /**
 	@brief QETInformation::titleblockTranslatedInfoKey
 	@param info : info key to be translated
-	@return the translated information given by @info
-	If  @info don't match, return an empty string
+	@return the translated information given by info
+	If info don't match, return an empty string
 */
 QString QETInformation::titleblockTranslatedInfoKey(const QString &info)
 {

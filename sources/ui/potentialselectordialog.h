@@ -53,8 +53,8 @@ namespace Ui {
 	the properties of the two existing potential,
 	to apply it for the new potential.
 
-	Each constructor have a QUndoCommand @parent_undo for parameter
-	If @parent_undo isn't null, when user click on OK button,
+	Each constructor have a QUndoCommand parent_undo for parameter
+	If parent_undo isn't null, when user click on OK button,
 	the dialog will use the parent-undo
 	as parent of the undo command that describe the changes.
 	If parent_undo is null, the created undo-command is push

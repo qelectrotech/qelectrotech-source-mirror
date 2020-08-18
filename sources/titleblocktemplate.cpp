@@ -110,7 +110,7 @@ bool TitleBlockTemplate::loadFromXmlFile(const QString &filepath) {
 }
 
 /**
-	 @brief TitleBlockTemplate::loadFromXmlElement
+	@brief TitleBlockTemplate::loadFromXmlElement
 	@param xml_element : An XML document to read the template from.
 	@return true if the reading succeeds, false otherwise.
 */

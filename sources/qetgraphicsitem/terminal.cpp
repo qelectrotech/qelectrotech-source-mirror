@@ -34,11 +34,11 @@ const qreal Terminal::terminalSize = 4.0;
 const qreal Terminal::Z = 1000;
 
 /**
+	@brief Terminal::init
 	Methode privee pour initialiser la borne.
-	@param pf  position du point d'amarrage pour un conducteur
-	@param o   orientation de la borne : Qt::Horizontal ou Qt::Vertical
 	@param number of terminal
 	@param name of terminal
+	@param hiddenName
 */
 void Terminal::init(QString number, QString name, bool hiddenName) {
 
@@ -97,7 +97,6 @@ void Terminal::init(QPointF pf, Qet::Orientation o, QString number, QString name
 	@param pf  position du point d'amarrage pour un conducteur
 	@param o   orientation de la borne : Qt::Horizontal ou Qt::Vertical
 	@param e   Element auquel cette borne appartient
-	@param s   Scene sur laquelle figure cette borne
 */
 Terminal::Terminal(QPointF pf, Qet::Orientation o, Element *e) :
 	QGraphicsObject(e),
@@ -690,7 +689,7 @@ bool Terminal::isLinkedTo(Terminal *other_terminal) {
 	 - \p other_terminal is this terminal
 	 - this terminal is already connected to \p other_terminal
 	@param other_terminal
-	@return true if this terminal can be linked to @other_terminal,
+	@return true if this terminal can be linked to other_terminal,
 	otherwise false
 */
 bool Terminal::canBeLinkedTo(Terminal *other_terminal)
@@ -823,12 +822,12 @@ QUuid Terminal::uuid() const {
 /**
 	@brief Conductor::relatedPotentialTerminal
 	Return terminal at the same potential from the same
-	parent element of @terminal.
+	parent element of terminal.
 	For folio report, return the terminal of linked other report.
 	For Terminal element, return the other terminal of terminal element.
 	@param terminal : to start search
 	@param all_diagram :if true return all related terminal,
-	false return only terminal in the same diagram of @t
+	false return only terminal in the same diagram of t
 	@return the list of terminal at the same potential
 */
 QList<Terminal *> relatedPotentialTerminal (const Terminal *terminal, const bool all_diagram)

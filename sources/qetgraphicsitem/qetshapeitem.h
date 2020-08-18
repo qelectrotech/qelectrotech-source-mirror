@@ -65,7 +65,8 @@ class QetShapeItem : public QetGraphicsItem
 		QetShapeItem(QPointF, QPointF = QPointF(0,0), ShapeType = Line, QGraphicsItem *parent = nullptr);
 		~QetShapeItem() override;
 
-			//Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a QetShapeItem @return the QGraphicsItem type
+		//Enable the use of qgraphicsitem_cast to safely cast a
+		//QGraphicsItem into a QetShapeItem return the QGraphicsItem type
 		int type() const override { return Type; }
 
 			///METHODS

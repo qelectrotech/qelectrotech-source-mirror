@@ -61,7 +61,7 @@ IndiTextPropertiesWidget::~IndiTextPropertiesWidget() {
 
 /**
 	@brief IndiTextPropertiesWidget::setText
-	@param text : set @text as edited text
+	@param text : set text as edited text
 */
 void IndiTextPropertiesWidget::setText(IndependentTextItem *text)
 {

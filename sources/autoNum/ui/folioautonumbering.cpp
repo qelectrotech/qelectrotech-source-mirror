@@ -48,7 +48,7 @@ FolioAutonumberingW::~FolioAutonumberingW()
 
 /**
 	@brief FolioAutonumberingW::setContext
-	construct autonums in the comboBox selected in the @autonum_chooser QcomboBox
+	construct autonums in the comboBox selected in the autonum_chooser QcomboBox
 */
 void FolioAutonumberingW::setContext(QList <QString> autonums) {
 	foreach (QString str, autonums) { ui->m_autonums_cb->addItem(str);}
@@ -160,7 +160,7 @@ void FolioAutonumberingW::on_m_from_cb_currentIndexChanged(int){
 
 /**
 	@brief SelectAutonumW::on_buttonBox_clicked
-	Action on @buttonBox clicked
+	Action on buttonBox clicked
 */
 void FolioAutonumberingW::on_buttonBox_clicked(QAbstractButton *button) {
 	//transform button to int

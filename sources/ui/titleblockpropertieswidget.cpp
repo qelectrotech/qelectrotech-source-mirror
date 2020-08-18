@@ -322,7 +322,8 @@ void TitleBlockPropertiesWidget::initDialog(const bool &current_date,  QETProjec
 
 /**
 	@brief TitleBlockPropertiesWidget::getIndexFor
-	Find the index of the combo box for the title block @tbt_name available on the collection @collection
+	Find the index of the combo box for
+	the title block tbt_name available on the collection collection
 	@param tbt_name : title block name
 	@param collection : title block collection
 	@return the index of the title block or -1 if no match

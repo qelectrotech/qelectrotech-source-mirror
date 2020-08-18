@@ -44,8 +44,9 @@ class Element : public QetGraphicsItem
 	Q_OBJECT
 	public:
 			/**
-			 * @brief The kind enum
-			 * Used to know the kind of this element (master, slave, report ect...)
+				@brief The kind enum
+				Used to know the kind of this element
+				(master, slave, report ect...)
 			*/
 		enum kind {Simple = 1,
 			   NextReport = 2,
@@ -66,8 +67,9 @@ class Element : public QetGraphicsItem
 		// attributes
 	public:
 			/**
-			 * Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into an Element.
-			 * @return the QGraphicsItem type
+				Enable the use of qgraphicsitem_cast
+				to safely cast a QGraphicsItem into an Element.
+				@return the QGraphicsItem type
 			*/
 		enum { Type = UserType + 1000 };
 		int type() const override { return Type; }
@@ -153,7 +155,7 @@ class Element : public QetGraphicsItem
 		virtual void unlinkElement(Element *) {}
 		virtual void initLink(QETProject *);
 		QList<Element *> linkedElements ();
-		virtual kind linkType() const {return m_link_type;} // @return the linkable type
+		virtual kind linkType() const {return m_link_type;} // return the linkable type
 		QString linkTypeToString() const;
 		void newUuid() {m_uuid = QUuid::createUuid();} 	//create new uuid for this element
 
@@ -187,7 +189,7 @@ class Element : public QetGraphicsItem
 		void hoverLeaveEvent(QGraphicsSceneHoverEvent *) override;
 
 	protected:
-			// @m_converted_text_from_description, when a element is created from his description, the old element text item (tagged as 'input' in the xml)
+			// m_converted_text_from_description, when a element is created from his description, the old element text item (tagged as 'input' in the xml)
 			// are converted to dynamic text field, the QPointF is the original position of the text item, because the origin transformation point of text item
 			// and dynamic text item are not the same, so we must to keep a track of this value, to be use in the function element::fromXml
 		QHash <DynamicElementTextItem *, QPointF>
@@ -241,16 +243,16 @@ inline int Element::orientation() const {
 }
 
 /**
- * @brief Element::uuid
- * @return the uuid of this element
+	@brief Element::uuid
+	@return the uuid of this element
 */
 inline QUuid Element::uuid() const {
 	return m_uuid;
 }
 
 /**
- * @brief Element::linkedElements
- * @return the list of linked elements, the list is sorted by position
+	@brief Element::linkedElements
+	@return the list of linked elements, the list is sorted by position
 */
 inline QList <Element *> Element::linkedElements() {
 	 std::sort(connected_elements.begin(),

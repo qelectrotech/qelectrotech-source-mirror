@@ -961,6 +961,7 @@ QDomElement QetShapeItem::toXml(QDomDocument &document) const
 	@brief QetShapeItem::toDXF
 	Draw this element to the dxf document
 	@param filepath file path of the the dxf document
+	@param pen
 	@return true if draw success
 */
 bool QetShapeItem::toDXF(const QString &filepath,const QPen &pen)

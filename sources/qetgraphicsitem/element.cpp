@@ -71,9 +71,10 @@ class ElementXmlRetroCompatibility
 
 /**
 	@brief Element::Element
-	@param location, location of this element
-	@param parent, parent graphics item
-	@param state, state of the instanciation
+	@param location : location of this element
+	@param parent : parent graphics item
+	@param state : state of the instanciation
+	@param link_type
 */
 Element::Element(const ElementsLocation &location,
 		 QGraphicsItem *parent,
@@ -589,7 +590,7 @@ bool Element::parseInput(const QDomElement &dom_element)
 
 /**
 	@brief Element::parseDynamicText
-	Create the dynamic text field describ in @dom_element
+	Create the dynamic text field describ in dom_element
 	@param dom_element
 	@return
 */
@@ -868,7 +869,7 @@ bool Element::fromXml(QDomElement &e,
 				transform.translate(xml_pos.x(), xml_pos.y());
 				deti->setPos(transform.map(pos));
 				
-					//dom_input and deti matched we remove the dom_input from @inputs list,
+					//dom_input and deti matched we remove the dom_input from inputs list,
 					//to avoid unnecessary checking made below
 					//we also move deti from the m_converted_text_from_xml_description to m_dynamic_text_list
 				inputs.removeAll(dom_input);
@@ -905,12 +906,15 @@ bool Element::fromXml(QDomElement &e,
 	DiagramContext dc;
 	dc.fromXml(e.firstChildElement("elementInformations"),
 		   "elementInformation");
-		/**
-		 * Since the commit 4791, the value used as "label" and "formula" is stored in differents keys (instead of the same key, "label" in previous version),
-		 * so, if "label" contain "%" (Use variable value), and "formula" does not exist,
-		 * this mean the label was made before commit 4791 (0.51 dev). So we swap the value stored in "label" to "formula" as expected.
-		 * @TODO remove this code at version 0.7 or more (probably useless).
-		 */
+	/*
+	 * Since the commit 4791, the value used as "label" and "formula"
+	 * is stored in differents keys (instead of the same key,
+	 * "label" in previous version), so, if "label" contain "%"
+	 * (Use variable value), and "formula" does not exist,
+	 * this mean the label was made before commit 4791 (0.51 dev).
+	 * So we swap the value stored in "label" to "formula" as expected.
+	 * @TODO remove this code at version 0.7 or more (probably useless).
+	 */
 #pragma message("@TODO remove this code for qet 0.7 or later")
 	if (dc["label"].toString().contains("%")
 			&& dc["formula"].toString().isNull())
@@ -922,8 +926,8 @@ bool Element::fromXml(QDomElement &e,
 	   !m_element_informations.value("label").toString().isEmpty())
 		dc.addValue("label", m_element_informations.value("label"));
 	
-		//We must to block the update of the alignment when load the information
-		//otherwise the pos of the text will not be the same as it was at save time.
+	//We must to block the update of the alignment when load the information
+	//otherwise the pos of the text will not be the same as it was at save time.
 	for(DynamicElementTextItem *deti : m_dynamic_text_list)
 		deti->m_block_alignment = true;
 	setElementInformations(dc);
@@ -931,17 +935,21 @@ bool Element::fromXml(QDomElement &e,
 		deti->m_block_alignment = false;
 	
 	
-	/**
-	  During the devel of the version 0.7, the "old text" was replaced by the dynamic element text item.
-	  When open a project made befor the 0.7, we must to reproduce the same visual when the label are not empty and visible,
-      and comment are not empty and visible and/or location are not empty and visible.
-	  we create a text group with inside the needed texts, label and comment and/or location.
-	  */
-		//#1 There must be old text converted to dynamic text
+	/* During the devel of the version 0.7,
+	 * the "old text" was replaced by the dynamic element text item.
+	 * When open a project made befor the 0.7,
+	 * we must to reproduce the same visual when
+	 * the label are not empty and visible,
+	 * and comment are not empty
+	 * and visible and/or location are not empty and visible.
+	 * we create a text group with inside the needed texts,
+	 * label and comment and/or location.
+	 */
+	//#1 There must be old text converted to dynamic text
 	if(!successfully_converted.isEmpty())
 	{
-			//#2 the element information must have label not empty and visible
-			//and a least comment or location not empty and visible
+		//#2 the element information must have label not empty and visible
+		//and a least comment or location not empty and visible
 		QString label = m_element_informations.value(
 					"label").toString();
 		QString comment = m_element_informations.value(
@@ -963,7 +971,7 @@ bool Element::fromXml(QDomElement &e,
 			   ((!comment.isEmpty() && c)
 			    || (!location.isEmpty() && lo)))
 			{
-					//#2 in the converted list one text must have text from = element info and info name = label
+				//#2 in the converted list one text must have text from = element info and info name = label
 				for(DynamicElementTextItem *deti
 				    : successfully_converted)
 				{
@@ -994,7 +1002,7 @@ bool Element::fromXml(QDomElement &e,
 							comment_text->setPos(deti->x(), deti->y()+10); //+10 is arbitrary, comment_text must be below deti
 							addDynamicTextItem(comment_text);
 						}
-							//create the location item
+						//create the location item
 						DynamicElementTextItem *location_text = nullptr;
 						if (m_link_type !=PreviousReport || m_link_type !=NextReport)
 						{
@@ -1022,7 +1030,7 @@ bool Element::fromXml(QDomElement &e,
 							m_state = QET::GIOK;
 							return(true);
 						}
-							//Create the group
+						//Create the group
 						ElementTextItemGroup *group =
 							addTextGroup(tr("Label + commentaire"));
 						addTextToGroup(deti, group);
@@ -1035,8 +1043,9 @@ bool Element::fromXml(QDomElement &e,
 						group->setAlignment(Qt::AlignVCenter);
 						group->setVerticalAdjustment(-4);
 						group->setRotation(rotation);
-							//Change the position of the group, so that the text "label" stay in the same
-							//position in scene coordinate
+						//Change the position of the group,
+						//so that the text "label" stay in the same
+						//position in scene coordinate
 						group->setPos(pos - deti->pos());
 						
 						break;
@@ -1046,10 +1055,10 @@ bool Element::fromXml(QDomElement &e,
 		}
 		else
 		{
-				//This element is supposed to be a master and Xref property snap to bottom
+			//This element is supposed to be a master and Xref property snap to bottom
 			if((!comment.isEmpty() && c) || (!location.isEmpty() && lo))
 			{
-					//Create the comment item
+				//Create the comment item
 				DynamicElementTextItem *comment_text = nullptr;
 				if(!comment.isEmpty() && c)
 				{
@@ -1065,7 +1074,7 @@ bool Element::fromXml(QDomElement &e,
 					comment_text->setTextWidth(80);
 					addDynamicTextItem(comment_text);
 				}
-					//create the location item
+				//create the location item
 				DynamicElementTextItem *location_text = nullptr;
 				if(!location.isEmpty() && lo)
 				{
@@ -1085,7 +1094,7 @@ bool Element::fromXml(QDomElement &e,
 					addDynamicTextItem(location_text);
 				}
 				
-					//Create the group
+				//Create the group
 				ElementTextItemGroup *group =
 					addTextGroup(tr("Label + commentaire"));
 				if(comment_text)
@@ -1246,8 +1255,10 @@ QDomElement Element::toXml(QDomDocument &document,
 
 /**
 	@brief Element::addDynamiqueTextItem
-	Add @deti as a dynamic text item of this element, @deti is reparented to this
-	If @deti is null, a new DynamicElementTextItem is created and added to this element.
+	Add deti as a dynamic text item of this element,
+	deti is reparented to this
+	If deti is null, a new DynamicElementTextItem is created
+	and added to this element.
 	@param deti
 */
 void Element::addDynamicTextItem(DynamicElementTextItem *deti)
@@ -1268,8 +1279,9 @@ void Element::addDynamicTextItem(DynamicElementTextItem *deti)
 
 /**
 	@brief Element::removeDynamicTextItem
-	Remove @deti, no matter if is a child of this element or a child of a group of this element.
-	Set he parent item of @deti to 0, @deti is not deleted.
+	Remove deti, no matter if is a child of this element
+	or a child of a group of this element.
+	Set he parent item of deti to 0, deti is not deleted.
 	@param deti
 */
 void Element::removeDynamicTextItem(DynamicElementTextItem *deti)
@@ -1309,7 +1321,7 @@ QList<DynamicElementTextItem *> Element::dynamicTextItems() const {
 	@brief Element::addTextGroup
 	Create and add an element text item group to this element.
 	If this element already have a group with the same name,
-	then @name will renamed to name1 or name2 etc....
+	then name will renamed to name1 or name2 etc....
 	@param name : the name of the group
 	@return the created group.
 */
@@ -1342,7 +1354,7 @@ ElementTextItemGroup *Element::addTextGroup(const QString &name)
 
 /**
 	@brief Element::addTextGroup
-	@param group add group @group to the group of this element.
+	@param group add group to the group of this element.
 	the group must not be owned by an element.
 */
 void Element::addTextGroup(ElementTextItemGroup *group)
@@ -1357,7 +1369,8 @@ void Element::addTextGroup(ElementTextItemGroup *group)
 
 /**
 	@brief Element::removeTextGroup
-	Remove the text group @group from this element, and set the parent of group to 0.
+	Remove the text group group from this element,
+	and set the parent of group to 0.
 	group is not deleted.
 	All texts owned by the group will be reparented to this element
 	@param name
@@ -1388,7 +1401,7 @@ void Element::removeTextGroup(ElementTextItemGroup *group)
 /**
 	@brief Element::textGroup
 	@param name
-	@return the text group named @name or nullptr if this element
+	@return the text group named name or nullptr if this element
 	haven't got a group with this name
 */
 ElementTextItemGroup *Element::textGroup(const QString &name) const
@@ -1411,8 +1424,8 @@ QList<ElementTextItemGroup *> Element::textGroups() const
 
 /**
 	@brief Element::addTextToGroup
-	Add the text @text to the group @group;
-	If @group isn't owned by this element return false.
+	Add the text text to the group group;
+	If group isn't owned by this element return false.
 	The text must be a text of this element.
 	@return : true if the text was succesfully added to the group.
 */
@@ -1435,7 +1448,8 @@ bool Element::addTextToGroup(DynamicElementTextItem *text,
 
 /**
 	@brief Element::removeTextFromGroup
-	Remove the text @text from the group @group, en reparent @text to this element
+	Remove the text text from the group group,
+	en reparent text to this element
 	@return true if text was succesfully removed
 */
 bool Element::removeTextFromGroup(DynamicElementTextItem *text,
@@ -1526,7 +1540,7 @@ QString Element::linkTypeToString() const
 /**
 	@brief Element::setElementInformations
 	Set new information for this element.
-	If new information is different of current infotmation emit @elementInfoChange
+	If new information is different of current infotmation emit elementInfoChange
 	@param dc
 */
 void Element::setElementInformations(DiagramContext dc)
