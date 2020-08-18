@@ -39,7 +39,9 @@
 	else edit the properties by default of QElectroTech
 	@param parent, parent widget
 */
-NewDiagramPage::NewDiagramPage(QETProject *project, QWidget *parent, ProjectPropertiesDialog *ppd) :
+NewDiagramPage::NewDiagramPage(QETProject *project,
+			       QWidget *parent,
+			       ProjectPropertiesDialog *ppd) :
 	ConfigPage (parent),
 	ppd_ (ppd),
 	m_project  (project)
@@ -50,9 +52,15 @@ NewDiagramPage::NewDiagramPage(QETProject *project, QWidget *parent, ProjectProp
 	bpw = new BorderPropertiesWidget(BorderProperties::defaultProperties());
 	// default titleblock properties
 	QList <TitleBlockTemplatesCollection *> c;
-	c << QETApp::commonTitleBlockTemplatesCollection() << QETApp::customTitleBlockTemplatesCollection();
+	c << QETApp::commonTitleBlockTemplatesCollection()
+	  << QETApp::customTitleBlockTemplatesCollection();
 	if (m_project) c << m_project->embeddedTitleBlockTemplatesCollection();
-	ipw = new TitleBlockPropertiesWidget(c, TitleBlockProperties::defaultProperties(), true, project, parent);
+	ipw = new TitleBlockPropertiesWidget(
+				c,
+				TitleBlockProperties::defaultProperties(),
+				true,
+				project,
+				parent);
 	// default conductor properties
 	m_cpw = new ConductorPropertiesWidget(ConductorProperties::defaultProperties());
 	m_cpw->setHiddenAvailableAutonum(true);
@@ -63,11 +71,11 @@ NewDiagramPage::NewDiagramPage(QETProject *project, QWidget *parent, ProjectProp
 
 	//If there is a project, we edit his properties
 	if (m_project) {
-		bpw	   -> setProperties		  (m_project -> defaultBorderProperties());
-		m_cpw	   -> setProperties       (m_project -> defaultConductorProperties());
-		ipw    -> setProperties       (m_project -> defaultTitleBlockProperties());
-		rpw	   -> setReportProperties (m_project -> defaultReportProperties());
-		xrefpw -> setProperties		  (m_project -> defaultXRefProperties());
+		bpw -> setProperties (m_project -> defaultBorderProperties());
+		m_cpw -> setProperties (m_project -> defaultConductorProperties());
+		ipw -> setProperties (m_project -> defaultTitleBlockProperties());
+		rpw -> setReportProperties (m_project -> defaultReportProperties());
+		xrefpw -> setProperties (m_project -> defaultXRefProperties());
 	}
 
 	connect(ipw,SIGNAL(openAutoNumFolioEditor(QString)),this,SLOT(changeToAutoFolioTab()));

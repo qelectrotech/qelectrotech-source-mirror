@@ -163,7 +163,9 @@ bool QET::lineContainsPoint(const QLineF &line, const QPointF &point) {
 	@return true si le projete orthogonal du point sur la droite appartient au
 	segment de droite.
 */
-bool QET::orthogonalProjection(const QPointF &point, const QLineF &line, QPointF *intersection) {
+bool QET::orthogonalProjection(const QPointF &point,
+			       const QLineF &line,
+			       QPointF *intersection) {
 	// recupere le vecteur normal de `line'
 	QLineF line_normal_vector(line.normalVector());
 	QPointF normal_vector(line_normal_vector.dx(), line_normal_vector.dy());
@@ -174,10 +176,12 @@ bool QET::orthogonalProjection(const QPointF &point, const QLineF &line, QPointF
 	// determine le point d'intersection des deux droites = le projete orthogonal
 	QPointF intersection_point;
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
-	QLineF::IntersectType it = line.intersect(perpendicular_line, &intersection_point); // ### Qt 6: remove
+	QLineF::IntersectType it = line.intersect(perpendicular_line,
+						  &intersection_point); // ### Qt 6: remove
 #else
 #pragma message("@TODO remove code for QT 5.14 or later")
-	QLineF::IntersectType it = line.intersects(perpendicular_line, &intersection_point);
+	QLineF::IntersectType it = line.intersects(perpendicular_line,
+						   &intersection_point);
 #endif
 	
 	// ne devrait pas arriver (mais bon...)
@@ -203,7 +207,9 @@ bool QET::orthogonalProjection(const QPointF &point, const QLineF &line, QPointF
 	@param entier Pointeur facultatif vers un entier
 	@return true si l'attribut est bien un entier, false sinon
 */
-bool QET::attributeIsAnInteger(const QDomElement &e, const QString& nom_attribut, int *entier) {
+bool QET::attributeIsAnInteger(const QDomElement &e,
+			       const QString& nom_attribut,
+			       int *entier) {
 	// verifie la presence de l'attribut
 	if (!e.hasAttribute(nom_attribut)) return(false);
 	// verifie la validite de l'attribut
@@ -222,7 +228,9 @@ bool QET::attributeIsAnInteger(const QDomElement &e, const QString& nom_attribut
 	@param reel Pointeur facultatif vers un double
 	@return true si l'attribut est bien un reel, false sinon
 */
-bool QET::attributeIsAReal(const QDomElement &e, const QString& nom_attribut, qreal *reel) {
+bool QET::attributeIsAReal(const QDomElement &e,
+			   const QString& nom_attribut,
+			   qreal *reel) {
 	// verifie la presence de l'attribut
 	if (!e.hasAttribute(nom_attribut)) return(false);
 	// verifie la validite de l'attribut
@@ -243,7 +251,13 @@ bool QET::attributeIsAReal(const QDomElement &e, const QString& nom_attribut, qr
 	@return la proposition decrivant le nombre d'elements, de conducteurs et de
 	textes
 */
-QString QET::ElementsAndConductorsSentence(int elements_count, int conductors_count, int texts_count, int images_count, int shapes_count, int element_text_count, int tables_count)
+QString QET::ElementsAndConductorsSentence(int elements_count,
+					   int conductors_count,
+					   int texts_count,
+					   int images_count,
+					   int shapes_count,
+					   int element_text_count,
+					   int tables_count)
 {
 	QString text;
 	if (elements_count) {
@@ -331,7 +345,9 @@ QList<QDomElement> QET::findInDomElement(const QDomElement &e, const QString &ta
 	@param children tag XML a rechercher
 	@return La liste des elements XML children
 */
-QList<QDomElement> QET::findInDomElement(const QDomElement &e, const QString &parent, const QString &children) {
+QList<QDomElement> QET::findInDomElement(const QDomElement &e,
+					 const QString &parent,
+					 const QString &children) {
 	QList<QDomElement> return_list;
 	
 	// parcours des elements parents

@@ -39,7 +39,9 @@ class NewDiagramPage : public ConfigPage {
 	Q_OBJECT
 	// constructors, destructor
 	public:
-	NewDiagramPage(QETProject *project = nullptr, QWidget * = nullptr, ProjectPropertiesDialog *teste = nullptr);
+	NewDiagramPage(QETProject *project = nullptr,
+		       QWidget * = nullptr,
+		       ProjectPropertiesDialog *teste = nullptr);
 	~NewDiagramPage() override;
 	private:
 	NewDiagramPage(const NewDiagramPage &);

@@ -62,7 +62,9 @@ bool SingleLineProperties::isPen() const {
 	@param direction direction du segment sur lequel les symboles apparaitront
 	@param rect rectangle englobant le dessin ; utilise pour specifier a la fois la position et la taille du dessin
 */
-void SingleLineProperties::draw(QPainter *painter, QET::ConductorSegmentType direction, const QRectF &rect) {
+void SingleLineProperties::draw(QPainter *painter,
+				QET::ConductorSegmentType direction,
+				const QRectF &rect) {
 	// s'il n'y a rien a dessiner, on retourne immediatement
 	if (!hasNeutral && !hasGround && !phases) return;
 	
@@ -116,7 +118,10 @@ void SingleLineProperties::draw(QPainter *painter, QET::ConductorSegmentType dir
 	@param center centre du segment
 	@param size taille du segment
 */
-void SingleLineProperties::drawGround(QPainter *painter, QET::ConductorSegmentType direction, QPointF center, qreal size) {
+void SingleLineProperties::drawGround(QPainter *painter,
+				      QET::ConductorSegmentType direction,
+				      QPointF center,
+				      qreal size) {
 	painter -> save();
 	
 	// prepare le QPainter
@@ -148,7 +153,10 @@ void SingleLineProperties::drawGround(QPainter *painter, QET::ConductorSegmentTy
 	@param center centre du cercle
 	@param size diametre du cercle
 */
-void SingleLineProperties::drawNeutral(QPainter *painter, QET::ConductorSegmentType direction, QPointF center, qreal size) {
+void SingleLineProperties::drawNeutral(QPainter *painter,
+				       QET::ConductorSegmentType direction,
+				       QPointF center,
+				       qreal size) {
 	Q_UNUSED(direction);
 	painter -> save();
 	
@@ -172,7 +180,10 @@ void SingleLineProperties::drawNeutral(QPainter *painter, QET::ConductorSegmentT
 	center, using a size hint of \a size.
 	@param direction Indicate the direction of the underlying conductor segment
 */
-void SingleLineProperties::drawPen(QPainter *painter, QET::ConductorSegmentType direction, QPointF center, qreal size) {
+void SingleLineProperties::drawPen(QPainter *painter,
+				   QET::ConductorSegmentType direction,
+				   QPointF center,
+				   qreal size) {
 	painter -> save();
 	
 	//painter -> setBrush(Qt::white);
@@ -822,7 +833,8 @@ int SingleLineProperties::operator!=(const SingleLineProperties &other) const {
 	@param settings Parametres a ecrire
 	@param prefix prefix a ajouter devant les noms des parametres
 */
-void SingleLineProperties::toSettings(QSettings &settings, const QString &prefix) const {
+void SingleLineProperties::toSettings(QSettings &settings,
+				      const QString &prefix) const {
 	settings.setValue(prefix + "hasGround",  hasGround);
 	settings.setValue(prefix + "hasNeutral", hasNeutral);
 	settings.setValue(prefix + "phases",     phases);
@@ -833,7 +845,8 @@ void SingleLineProperties::toSettings(QSettings &settings, const QString &prefix
 	@param settings Parametres a lire
 	@param prefix prefix a ajouter devant les noms des parametres
 */
-void SingleLineProperties::fromSettings(QSettings &settings, const QString &prefix) {
+void SingleLineProperties::fromSettings(QSettings &settings,
+					const QString &prefix) {
 	hasGround  = settings.value(prefix + "hasGround",  true).toBool();
 	hasNeutral = settings.value(prefix + "hasNeutral", true).toBool();
 	phases     = settings.value(prefix + "phases",     1).toInt();
