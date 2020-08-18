@@ -1007,7 +1007,9 @@ bool Conductor::fromXml(QDomElement &dom_element)
 	bornes dans le document XML et leur adresse en memoire
 	@return Un element XML representant le conducteur
 */
-QDomElement Conductor::toXml(QDomDocument &dom_document, QHash<Terminal *, int> &table_adr_id) const
+QDomElement Conductor::toXml(QDomDocument &dom_document,
+			     QHash<Terminal *,
+			     int> &table_adr_id) const
 {
 	QDomElement dom_element = dom_document.createElement("conductor");
 

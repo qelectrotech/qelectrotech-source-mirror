@@ -34,7 +34,10 @@
 	@param content : content to remove
 	@param parent : parent undo
 */
-DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand(Diagram *diagram, const DiagramContent &content, QUndoCommand *parent) :
+DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand(
+		Diagram *diagram,
+		const DiagramContent &content,
+		QUndoCommand *parent) :
 	QUndoCommand(parent),
 	m_removed_contents(content),
 	m_diagram(diagram)
@@ -96,8 +99,12 @@ DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand(Diagram *diagram, const D
 		}
 	}
 	
-	setText(QString(QObject::tr("supprimer %1", "undo caption - %1 is a sentence listing the removed content")).arg(m_removed_contents.sentence(DiagramContent::All)));
-		//Table is now managed by @m_table_scene_hash, we clear the tables of m_removed_content
+	setText(QString(QObject::tr(
+				"supprimer %1",
+				"undo caption - %1 is a sentence listing the removed content"))
+		.arg(m_removed_contents.sentence(DiagramContent::All)));
+	//Table is now managed by m_table_scene_hash,
+	//we clear the tables of m_removed_content
 	m_removed_contents.m_tables.clear();
 	m_diagram->qgiManager().manage(m_removed_contents.items(DiagramContent::All));
 }
@@ -195,14 +202,18 @@ void DeleteQGraphicsItemCommand::setPotentialsOfRemovedElements()
 
 /**
 	@brief DeleteQGraphicsItemCommand::terminalInSamePotential
-	Return a terminal at the same potential of @terminal, by traveling through the conductors connected to @terminal
-	only if the owner element of the terminal is not delete by this undo command.
+	Return a terminal at the same potential of terminal,
+	by traveling through the conductors connected to terminal
+	only if the owner element of the terminal
+	is not delete by this undo command.
 	Return nullptr if a terminal can't be found.
 	@param terminal - terminal from search
 	@param conductor_to_exclude - a conductor to exlcude from search.
 	@return 
 */
-Terminal *DeleteQGraphicsItemCommand::terminalInSamePotential(Terminal *terminal, Conductor *conductor_to_exclude)
+Terminal *DeleteQGraphicsItemCommand::terminalInSamePotential(
+		Terminal *terminal,
+		Conductor *conductor_to_exclude)
 {
 	QList<Conductor *> conductor_list = terminal->conductors();
 	conductor_list.removeAll(conductor_to_exclude);

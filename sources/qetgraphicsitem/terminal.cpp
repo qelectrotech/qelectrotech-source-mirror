@@ -40,7 +40,9 @@ const qreal Terminal::Z = 1000;
 	@param name of terminal
 	@param hiddenName
 */
-void Terminal::init(QString number, QString name, bool hiddenName) {
+void Terminal::init(QString number,
+		    QString name,
+		    bool hiddenName) {
 
 	hovered_color_  = Terminal::neutralColor;
 	
@@ -129,9 +131,13 @@ Terminal::Terminal(qreal pf_x, qreal pf_y, Qet::Orientation o, Element *e) :
 	@param name of terminal
 	@param hiddenName hide or show the name
 	@param e   Element auquel cette borne appartient
-	@param s   Scene sur laquelle figure cette borne
 */
-Terminal::Terminal(QPointF pf, Qet::Orientation o, QString num, QString name, bool hiddenName, Element *e) :
+Terminal::Terminal(QPointF pf,
+		   Qet::Orientation o,
+		   QString num,
+		   QString name,
+		   bool hiddenName,
+		   Element *e) :
 	QGraphicsObject    (e),
 	d(new TerminalData(this)),
 	parent_element_  (e)
@@ -242,9 +248,10 @@ void Terminal::removeConductor(Conductor *conductor)
 	Fonction de dessin des bornes
 	@param p Le QPainter a utiliser
 	@param options Les options de dessin
-	@param widget Le widget sur lequel on dessine
 */
-void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidget *) {
+void Terminal::paint(QPainter *p,
+		     const QStyleOptionGraphicsItem *options,
+		     QWidget *) {
 	// en dessous d'un certain zoom, les bornes ne sont plus dessinees
 	if (options && options -> levelOfDetail < 0.5) return;
 	

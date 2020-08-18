@@ -32,11 +32,11 @@
 	@param parent
 */
 BOMExportDialog::BOMExportDialog(QETProject *project, QWidget *parent) :
-    QDialog(parent),
+	QDialog(parent),
 	ui(new Ui::BOMExportDialog),
 	m_project(project)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 
 	m_query_widget = new ElementQueryWidget(this);
 	ui->m_main_layout->insertWidget(0, m_query_widget);

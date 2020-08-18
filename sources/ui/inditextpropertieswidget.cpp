@@ -44,7 +44,9 @@ IndiTextPropertiesWidget::IndiTextPropertiesWidget(IndependentTextItem *text, QW
 	@param text_list : a list of texts to edit
 	@param parent : the parent widget of this widget
 */
-IndiTextPropertiesWidget::IndiTextPropertiesWidget(QList<IndependentTextItem *> text_list, QWidget *parent) :
+IndiTextPropertiesWidget::IndiTextPropertiesWidget(
+		QList<IndependentTextItem *> text_list,
+		QWidget *parent) :
 	PropertiesEditorWidget (parent),
 	ui(new Ui::IndiTextPropertiesWidget)
 {

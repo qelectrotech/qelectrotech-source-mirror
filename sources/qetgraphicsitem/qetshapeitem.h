@@ -77,8 +77,8 @@ class QetShapeItem : public QetGraphicsItem
 		ShapeType shapeType() const {return m_shapeType;}
 
 		virtual bool	    fromXml (const QDomElement &);
-		virtual QDomElement toXml	(QDomDocument &document) const;
-		virtual bool		toDXF	(const QString &filepath,const QPen &pen);
+		virtual QDomElement toXml (QDomDocument &document) const;
+		virtual bool toDXF (const QString &filepath,const QPen &pen);
 
 		void editProperty() override;
 		QString name() const override;

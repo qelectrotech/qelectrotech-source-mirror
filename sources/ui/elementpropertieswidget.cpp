@@ -37,7 +37,8 @@
 	@param elmt
 	@param parent
 */
-ElementPropertiesWidget::ElementPropertiesWidget(Element *elmt, QWidget *parent) :
+ElementPropertiesWidget::ElementPropertiesWidget(Element *elmt,
+						 QWidget *parent) :
 	AbstractElementPropertiesEditorWidget (parent),
 	m_diagram (elmt->diagram()),
 	m_tab (nullptr),
@@ -57,7 +58,8 @@ ElementPropertiesWidget::ElementPropertiesWidget(Element *elmt, QWidget *parent)
 	@param text
 	@param parent
 */
-ElementPropertiesWidget::ElementPropertiesWidget(DynamicElementTextItem *text, QWidget *parent) :
+ElementPropertiesWidget::ElementPropertiesWidget(DynamicElementTextItem *text,
+						 QWidget *parent) :
 	AbstractElementPropertiesEditorWidget (parent),
 	m_tab (nullptr),
 	m_general_widget(nullptr)
@@ -80,7 +82,8 @@ ElementPropertiesWidget::ElementPropertiesWidget(DynamicElementTextItem *text, Q
 	@param group
 	@param parent
 */
-ElementPropertiesWidget::ElementPropertiesWidget(ElementTextItemGroup *group, QWidget *parent) :
+ElementPropertiesWidget::ElementPropertiesWidget(ElementTextItemGroup *group,
+						 QWidget *parent) :
 	AbstractElementPropertiesEditorWidget (parent),
 	m_tab (nullptr),
 	m_general_widget(nullptr)

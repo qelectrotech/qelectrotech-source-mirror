@@ -223,13 +223,15 @@ void LinkElementCommand::redo()
 
 /**
 	@brief LinkElementCommand::setUpNewLink
-	Update the content of m_link_after with the content of @element_list.
-	Each linkable element (know via the static method isLinkable) is added to m_linked_after
-	@already_link is used for the static method isLinkable.
+	Update the content of m_link_after with the content of element_list.
+	Each linkable element (know via the static method isLinkable)
+	is added to m_linked_after
+	already_link is used for the static method isLinkable.
 	@param element_list
 	@param already_link
 */
-void LinkElementCommand::setUpNewLink(const QList<Element *> &element_list, bool already_link)
+void LinkElementCommand::setUpNewLink(const QList<Element *> &element_list,
+				      bool already_link)
 {
 		//m_element is a master we can connect several element to it
 		//if m_element isn't master (may be a report or slave) we can connect only one element

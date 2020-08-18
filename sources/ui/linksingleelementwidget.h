@@ -44,7 +44,8 @@ class LinkSingleElementWidget : public AbstractElementPropertiesEditorWidget
 
 		///Methods
 	public:
-		explicit LinkSingleElementWidget(Element *elmt, QWidget *parent = nullptr);
+		explicit LinkSingleElementWidget(Element *elmt,
+						 QWidget *parent = nullptr);
 		~LinkSingleElementWidget() override;
 
 		void setElement (Element *element) override;

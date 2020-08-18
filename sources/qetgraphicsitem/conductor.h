@@ -84,7 +84,9 @@ class Conductor : public QGraphicsObject
 		void updatePathAnimate(const int = 1) {updatePath();}
 		int fakePath() {return 1;}
 
-		void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *) override;
+		void paint(QPainter *,
+			   const QStyleOptionGraphicsItem *,
+			   QWidget *) override;
 		QRectF boundingRect() const override;
 		QPainterPath shape() const override;
 		virtual QPainterPath nearShape() const;
@@ -97,8 +99,10 @@ class Conductor : public QGraphicsObject
 
 	public:
 		static bool valideXml (QDomElement &);
-		bool        fromXml   (QDomElement &);
-		QDomElement toXml     (QDomDocument &, QHash<Terminal *, int> &) const;
+		bool fromXml (QDomElement &);
+		QDomElement toXml (QDomDocument &,
+				   QHash<Terminal *,
+				   int> &) const;
 	private:
 		bool pathFromXml(const QDomElement &);
 
@@ -106,7 +110,8 @@ class Conductor : public QGraphicsObject
 		QVector <QPointF> handlerPoints() const;
 		const QList<ConductorSegment *> segmentsList() const;
 
-		void setPropertyToPotential(const ConductorProperties &property, bool only_text = false);
+		void setPropertyToPotential(const ConductorProperties &property,
+					    bool only_text = false);
 		void setProperties(const ConductorProperties &property);
 		ConductorProperties properties() const;
 
@@ -117,7 +122,9 @@ class Conductor : public QGraphicsObject
 		void calculateTextItemPosition();
 		virtual Highlight highlight() const;
 		virtual void setHighlighted(Highlight);
-		QSet<Conductor *> relatedPotentialConductors(const bool all_diagram = true, QList <Terminal *> *t_list=nullptr);
+		QSet<Conductor *> relatedPotentialConductors(
+				const bool all_diagram = true,
+				QList <Terminal *> *t_list=nullptr);
 		QETDiagramEditor* diagramEditor() const;
 		void editProperty ();
 
