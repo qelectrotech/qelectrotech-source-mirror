@@ -188,7 +188,9 @@ QRectF QetGraphicsHandlerUtility::mirrorRectForPosAtIndex(const QRectF &old_rect
 	@param index
 	@return
 */
-QLineF QetGraphicsHandlerUtility::lineForPosAtIndex(const QLineF &old_line, const QPointF &pos, int index) {
+QLineF QetGraphicsHandlerUtility::lineForPosAtIndex(const QLineF &old_line,
+						    const QPointF &pos,
+						    int index) {
 	QLineF line = old_line;
 	index == 0 ? line.setP1(pos) : line.setP2(pos);
 	return line;
@@ -201,7 +203,10 @@ QLineF QetGraphicsHandlerUtility::lineForPosAtIndex(const QLineF &old_line, cons
 	@param pos : the pos where the new point must be added
 	@return the new polygon
 */
-QPolygonF QetGraphicsHandlerUtility::polygonForInsertPoint(const QPolygonF &old_polygon, bool closed, const QPointF &pos)
+QPolygonF QetGraphicsHandlerUtility::polygonForInsertPoint(
+		const QPolygonF &old_polygon,
+		bool closed,
+		const QPointF &pos)
 {
 	qreal max_angle = 0;
 	int index = 0;

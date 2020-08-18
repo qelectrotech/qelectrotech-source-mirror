@@ -55,11 +55,18 @@ class PropertiesEditorDialog : public QDialog
 			//Build the dialog
 			QVBoxLayout *vlayout = new QVBoxLayout(this);
 			vlayout->addWidget(editor);
-			QDialogButtonBox *button_box = new QDialogButtonBox (QDialogButtonBox::Apply | QDialogButtonBox::Cancel | QDialogButtonBox::Reset, this);
+			QDialogButtonBox *button_box = new QDialogButtonBox (
+						QDialogButtonBox::Apply
+						| QDialogButtonBox::Cancel
+						| QDialogButtonBox::Reset,
+						this);
 			vlayout->addWidget(button_box);
 
-				//Setup connection between button box and the editor
-			connect(button_box, &QDialogButtonBox::clicked, [editor, button_box, this](QAbstractButton *button)
+			//Setup connection between button box and the editor
+			connect(button_box,
+				&QDialogButtonBox::clicked,
+				[editor, button_box, this]
+				(QAbstractButton *button)
 			{
 				switch(button_box->buttonRole(button))
 				{

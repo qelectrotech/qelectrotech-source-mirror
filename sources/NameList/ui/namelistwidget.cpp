@@ -66,7 +66,9 @@ void NameListWidget::setNames(const NamesList &name_list)
 		values << lang << value;
 		QTreeWidgetItem *qtwi = new QTreeWidgetItem(values);
 		if (!m_read_only) {
-			qtwi->setFlags(Qt::ItemIsEditable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
+			qtwi->setFlags(Qt::ItemIsEditable
+				       | Qt::ItemIsEnabled
+				       | Qt::ItemIsSelectable);
 		}
 		ui->m_tree->addTopLevelItem(qtwi);
 		ui->m_tree->sortItems(0, Qt::AscendingOrder);

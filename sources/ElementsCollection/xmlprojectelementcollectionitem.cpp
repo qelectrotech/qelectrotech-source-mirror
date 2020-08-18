@@ -133,7 +133,8 @@ bool XmlProjectElementCollectionItem::isCollectionRoot() const
 	(the child must exist in the xml element collection)
 	@param collection_name : name of the child item to add.
 */
-void XmlProjectElementCollectionItem::addChildAtPath(const QString &collection_name)
+void XmlProjectElementCollectionItem::addChildAtPath(
+		const QString &collection_name)
 {
 	if (collection_name.isEmpty())
 		return;

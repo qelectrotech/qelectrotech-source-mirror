@@ -195,16 +195,18 @@ void AutoNumberingManagementW::on_buttonBox_clicked(QAbstractButton *button) {
 			emit applyPressed();
 			break;
 		case QDialogButtonBox::HelpRole:
-			QMessageBox::information(this, tr("Auto Numbering Management", "title window"),
-									tr("In this Menu you can set whether you want the Auto Numberings to be updated or not."
-									   " For Element Auto Numbering you have 4 options of Update Policy:\n"
-									   "-Both: both New and Existent Element labels will be updated. This is the default option.\n"
-									   "-Update Only New: only new created Elements will be updated. Existent Element labels will be frozen.\n"
-									   "-Update Only Existent: only existent Elements will be updated. New Elements will be assigned "
-									   "their formula but will not update once created.\n"
-									   "-Disable: both New and Existent Element labels will not be updated. This is valid for new folios as well.\n"
-									   "Note: These options DO NOT allow or block Auto Numberings, only their Update Policy."
-									   ));
+			QMessageBox::information(
+						this,
+						tr("Auto Numbering Management", "title window"),
+						tr("In this Menu you can set whether you want the Auto Numberings to be updated or not."
+						   " For Element Auto Numbering you have 4 options of Update Policy:\n"
+						   "-Both: both New and Existent Element labels will be updated. This is the default option.\n"
+						   "-Update Only New: only new created Elements will be updated. Existent Element labels will be frozen.\n"
+						   "-Update Only Existent: only existent Elements will be updated. New Elements will be assigned "
+						   "their formula but will not update once created.\n"
+						   "-Disable: both New and Existent Element labels will not be updated. This is valid for new folios as well.\n"
+						   "Note: These options DO NOT allow or block Auto Numberings, only their Update Policy."
+						   ));
 			break;
 	}
 }

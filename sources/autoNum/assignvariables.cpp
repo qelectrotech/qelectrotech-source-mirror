@@ -360,7 +360,9 @@ namespace autonum
 		@param type : type of sequential
 		(unit, unitfolio, ten, tenfolio, hundred, hundredfolio)
 	*/
-	void setSequentialToList(QStringList &list, NumerotationContext &context, const QString& type)
+	void setSequentialToList(QStringList &list,
+				 NumerotationContext &context,
+				 const QString& type)
 	{
 		for (int i = 0; i < context.size(); i++)
 		{
@@ -384,7 +386,10 @@ namespace autonum
 		@param hash : hash to have values inserted
 		@param autoNumName : name to use as key of hash
 	*/
-	void setFolioSequentialToHash(QStringList &list, QHash<QString, QStringList> &hash, const QString& autoNumName)
+	void setFolioSequentialToHash(QStringList &list,
+				      QHash<QString,
+				      QStringList> &hash,
+				      const QString& autoNumName)
 	{
 		if (hash.isEmpty() || !hash.contains(autoNumName))
 		{

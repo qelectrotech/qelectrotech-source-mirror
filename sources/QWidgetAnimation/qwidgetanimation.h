@@ -53,7 +53,12 @@ class QWidgetAnimation : public QPropertyAnimation
 			lastSize,
 		};
 
-		QWidgetAnimation(QWidget *widget, Qt::Orientation orientation, QWidgetAnimation::Behavior behavior = QWidgetAnimation::minimumSizeHint, int duration = 250);
+		QWidgetAnimation(
+				QWidget *widget,
+				Qt::Orientation orientation,
+				QWidgetAnimation::Behavior
+				  behavior = QWidgetAnimation::minimumSizeHint,
+				int duration = 250);
 		void widgetToSubtract (QVector<QWidget *> widgets);
 
 		void show();

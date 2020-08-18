@@ -49,7 +49,9 @@ void ElementCollectionItem::clearData()
 	@return : The last item that exist in this hierarchy,
 	or nullptr can't find (an error was occurred, or path already exist)
 */
-ElementCollectionItem *ElementCollectionItem::lastItemForPath(const QString &path, QString &no_found_path)
+ElementCollectionItem *ElementCollectionItem::lastItemForPath(
+		const QString &path,
+		QString &no_found_path)
 {
 	QStringList str_list = path.split("/");
 	if (str_list.isEmpty()) return nullptr;
@@ -76,7 +78,8 @@ ElementCollectionItem *ElementCollectionItem::lastItemForPath(const QString &pat
 	@param name
 	@return
 */
-ElementCollectionItem *ElementCollectionItem::childWithCollectionName(const QString& name) const
+ElementCollectionItem *ElementCollectionItem::childWithCollectionName(
+		const QString& name) const
 {
 	rowCount();
 	foreach (QStandardItem *qsi, directChilds()) {

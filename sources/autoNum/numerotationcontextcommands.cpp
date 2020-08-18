@@ -161,7 +161,8 @@ NumStrategy::~NumStrategy() {}
 	@brief NumStrategy::nextString
 	@return the next value of nc at position i
 */
-NumerotationContext NumStrategy::nextString (const NumerotationContext &nc, const int i) const {
+NumerotationContext NumStrategy::nextString (const NumerotationContext &nc,
+					     const int i) const {
 	QStringList strl = nc.itemAt(i);
 	NumerotationContext newnc;
 	newnc.addValue(strl.at(0), strl.at(1), strl.at(2).toInt());
@@ -170,9 +171,10 @@ NumerotationContext NumStrategy::nextString (const NumerotationContext &nc, cons
 
 /**
 	@brief NumStrategy::nextNumber
-	@return the next value of @nc at position @i
+	@return the next value of nc at position i
 */
-NumerotationContext NumStrategy::nextNumber (const NumerotationContext &nc, const int i) const {
+NumerotationContext NumStrategy::nextNumber (const NumerotationContext &nc,
+					     const int i) const {
 	QStringList strl = nc.itemAt(i);
 	NumerotationContext newnc;
 	QString value = QString::number( (strl.at(1).toInt()) + (strl.at(2).toInt()) );
@@ -184,7 +186,8 @@ NumerotationContext NumStrategy::nextNumber (const NumerotationContext &nc, cons
 	@brief NumStrategy::previousNumber
 	@return  the previous value of nc at position i
 */
-NumerotationContext NumStrategy::previousNumber(const NumerotationContext &nc, const int i) const {
+NumerotationContext NumStrategy::previousNumber(const NumerotationContext &nc,
+						const int i) const {
 	QStringList strl = nc.itemAt(i);
 	NumerotationContext newnc;
 	QString value = QString::number( (strl.at(1).toInt()) - (strl.at(2).toInt()) );

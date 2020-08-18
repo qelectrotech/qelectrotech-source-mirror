@@ -46,9 +46,18 @@ XmlElementCollection::XmlElementCollection(QETProject *project) :
 
 	NamesList names;
 
-	const QChar russian_data[24] = { 0x0418, 0x043C, 0x043F, 0x043E, 0x0440, 0x0442, 0x0438, 0x0440, 0x043E, 0x0432, 0x0430, 0x043D, 0x043D, 0x044B, 0x0435, 0x0020, 0x044D, 0x043B, 0x0435, 0x043C, 0x0435, 0x043D, 0x0442, 0x044B };
-	const QChar greek_data[18] = { 0x0395, 0x03b9, 0x03c3, 0x03b7, 0x03b3, 0x03bc, 0x03ad, 0x03bd, 0x03b1, 0x0020, 0x03c3, 0x03c4, 0x03bf, 0x03b9, 0x03c7, 0x03b5, 0x03af, 0x03b1 };
-	const QChar turkish_data[12] ={ 0x0130, 0x0074, 0x0068, 0x0061, 0x006C, 0x0020, 0x00F6, 0x011F, 0x0065, 0x006C, 0x0065, 0x0072 };
+	const QChar russian_data[24] = { 0x0418, 0x043C, 0x043F, 0x043E, 0x0440,
+					 0x0442, 0x0438, 0x0440, 0x043E, 0x0432,
+					 0x0430, 0x043D, 0x043D, 0x044B, 0x0435,
+					 0x0020, 0x044D, 0x043B, 0x0435, 0x043C,
+					 0x0435, 0x043D, 0x0442, 0x044B };
+	const QChar greek_data[18] = { 0x0395, 0x03b9, 0x03c3, 0x03b7, 0x03b3,
+				       0x03bc, 0x03ad, 0x03bd, 0x03b1, 0x0020,
+				       0x03c3, 0x03c4, 0x03bf, 0x03b9, 0x03c7,
+				       0x03b5, 0x03af, 0x03b1 };
+	const QChar turkish_data[12] ={ 0x0130, 0x0074, 0x0068, 0x0061, 0x006C,
+					0x0020, 0x00F6, 0x011F, 0x0065, 0x006C,
+					0x0065, 0x0072 };
 	names.addName("fr", "Éléments importés");
 	names.addName("en", "Imported elements");
 	names.addName("de", "Importierte elemente");
@@ -80,12 +89,14 @@ XmlElementCollection::XmlElementCollection(QETProject *project) :
 	-the collection in a dom_element (the dom element in cloned)
 	@param project : the project of this collection
 */
-XmlElementCollection::XmlElementCollection(const QDomElement &dom_element, QETProject *project) :
+XmlElementCollection::XmlElementCollection(const QDomElement &dom_element,
+					   QETProject *project) :
 	QObject(project),
 	m_project(project)
 {
 	if (dom_element.tagName() == "collection")
-		m_dom_document.appendChild(m_dom_document.importNode(dom_element, true));
+		m_dom_document.appendChild(m_dom_document.importNode(
+						   dom_element, true));
 	else
 		qDebug() << "XmlElementCollection : tagName of dom_element is not collection";
 }
@@ -114,9 +125,11 @@ QDomElement XmlElementCollection::importCategory() const {
 	@param parent_element
 	@return All childs element in the parent_element tree
 */
-QDomNodeList XmlElementCollection::childs(const QDomElement &parent_element) const
+QDomNodeList XmlElementCollection::childs(
+		const QDomElement &parent_element) const
 {
-	if (parent_element.ownerDocument() != m_dom_document) return QDomNodeList();
+	if (parent_element.ownerDocument() != m_dom_document)
+		return QDomNodeList();
 	return parent_element.childNodes();
 }
 
@@ -132,9 +145,11 @@ QDomNodeList XmlElementCollection::childs(const QDomElement &parent_element) con
 	@param child_name : name of child to search.
 	@return The child QDomElement or a null QDomElement if not found
 */
-QDomElement XmlElementCollection::child(const QDomElement &parent_element, const QString &child_name) const
+QDomElement XmlElementCollection::child(const QDomElement &parent_element,
+					const QString &child_name) const
 {
-	if (parent_element.ownerDocument() != m_dom_document) return QDomElement();
+	if (parent_element.ownerDocument() != m_dom_document)
+		return QDomElement();
 
 		//Get all childs element of parent_element
 	QDomNodeList child_list = parent_element.childNodes();
@@ -143,7 +158,8 @@ QDomElement XmlElementCollection::child(const QDomElement &parent_element, const
 	for (int i=0 ; i<child_list.length() ; i++)
 	{
 		QDomElement child_element = child_list.item(i).toElement();
-		if (child_element.tagName() == tag_name) found_dom_element << child_element;
+		if (child_element.tagName() == tag_name)
+			found_dom_element << child_element;
 	}
 
 	if (found_dom_element.isEmpty()) return QDomElement();
@@ -184,7 +200,8 @@ QDomElement XmlElementCollection::child(const QString &path) const
 	@param parent_element
 	@return A list of directory stored in parent_element
 */
-QList<QDomElement> XmlElementCollection::directories(const QDomElement &parent_element) const
+QList<QDomElement> XmlElementCollection::directories(
+		const QDomElement &parent_element) const
 {
 	QList <QDomElement> directory_list;
 	QDomNodeList node_list = childs(parent_element);
@@ -193,7 +210,8 @@ QList<QDomElement> XmlElementCollection::directories(const QDomElement &parent_e
 	for (int i=0 ; i < node_list.count() ; i++)
 	{
 		QDomNode node = node_list.at(i);
-		if (node.isElement() &&  node.toElement().tagName() == "category")
+		if (node.isElement()
+				&& node.toElement().tagName() == "category")
 			directory_list << node.toElement();
 	}
 
@@ -205,7 +223,8 @@ QList<QDomElement> XmlElementCollection::directories(const QDomElement &parent_e
 	@param parent_element
 	@return a list of names for every child directories of parent_element
 */
-QStringList XmlElementCollection::directoriesNames(const QDomElement &parent_element) const
+QStringList XmlElementCollection::directoriesNames(
+		const QDomElement &parent_element) const
 {
 	QList <QDomElement> childs = directories(parent_element);
 	QStringList names;
@@ -225,7 +244,8 @@ QStringList XmlElementCollection::directoriesNames(const QDomElement &parent_ele
 	@param parent_element
 	@return A list of element stored in parent_element
 */
-QList<QDomElement> XmlElementCollection::elements(const QDomElement &parent_element) const
+QList<QDomElement> XmlElementCollection::elements(
+		const QDomElement &parent_element) const
 {
 	QList <QDomElement> element_list;
 	QDomNodeList node_list = childs(parent_element);
@@ -234,7 +254,7 @@ QList<QDomElement> XmlElementCollection::elements(const QDomElement &parent_elem
 	for (int i=0 ; i < node_list.count() ; i++)
 	{
 		QDomNode node = node_list.at(i);
-		if (node.isElement() &&  node.toElement().tagName() == "element")
+		if (node.isElement() && node.toElement().tagName() == "element")
 			element_list << node.toElement();
 	}
 
@@ -246,7 +266,8 @@ QList<QDomElement> XmlElementCollection::elements(const QDomElement &parent_elem
 	@param parent_element
 	@return A list of names fr every childs element of parent_element
 */
-QStringList XmlElementCollection::elementsNames(const QDomElement &parent_element) const
+QStringList XmlElementCollection::elementsNames(
+		const QDomElement &parent_element) const
 {
 	QList <QDomElement> childs = elements(parent_element);
 	QStringList names;
@@ -336,8 +357,9 @@ QString XmlElementCollection::addElement(ElementsLocation &location)
 		return QString();
 
 	if (location.isFileSystem()) {
-			//Get the root dir of the filesystem collection
-		QDir dir(location.fileSystemPath().remove(location.collectionPath(false)));
+		//Get the root dir of the filesystem collection
+		QDir dir(location.fileSystemPath().remove(
+				 location.collectionPath(false)));
 		if (!dir.exists())
 			return QString();
 
@@ -446,11 +468,15 @@ QString XmlElementCollection::addElement(ElementsLocation &location)
 	The tag name of xml_definition must be "definition".
 	@return True if the element is added with success.
 */
-bool XmlElementCollection::addElementDefinition(const QString &dir_path, const QString &elmt_name, const QDomElement &xml_definition)
+bool XmlElementCollection::addElementDefinition(
+		const QString &dir_path,
+		const QString &elmt_name,
+		const QDomElement &xml_definition)
 {
 	QDomElement dom_dir = directory(dir_path);
 	if (dom_dir.isNull()) {
-		qDebug() << "XmlElementCollection::addElementDefinition : No directory at path : " << dir_path;
+		qDebug() << "XmlElementCollection::addElementDefinition : No directory at path : "
+			 << dir_path;
 		return false;
 	}
 
@@ -510,9 +536,16 @@ bool XmlElementCollection::removeElement(const QString& path)
 	@return the ElementLocation that represent the copy,
 	if copy failed return a null ElementLocation
 */
-ElementsLocation XmlElementCollection::copy(ElementsLocation &source, ElementsLocation &destination, const QString& rename, bool deep_copy)
+ElementsLocation XmlElementCollection::copy(
+		ElementsLocation &source,
+		ElementsLocation &destination,
+		const QString& rename,
+		bool deep_copy)
 {
-	if (!(source.exist() && destination.isDirectory() && destination.isProject() && destination.projectCollection() == this))
+	if (!(source.exist()
+	      && destination.isDirectory()
+	      && destination.isProject()
+	      && destination.projectCollection() == this))
 		return ElementsLocation();
 
 	if (source.isElement())
@@ -537,14 +570,17 @@ bool XmlElementCollection::exist(const QString &path) const
 
 /**
 	@brief XmlElementCollection::createDir
-	Create a child directorie at path @path with the name @name.
+	Create a child directorie at path path with the name name.
 	Emit directorieAdded if success.
 	@param path : path of parent diectorie
 	@param name : name of the directori to create.
 	@param name_list : translation of the directorie name.
-	@return true if creation success, if directorie already exist return true.
+	@return true if creation success,
+	if directorie already exist return true.
 */
-bool XmlElementCollection::createDir(const QString& path, const QString& name, const NamesList &name_list)
+bool XmlElementCollection::createDir(const QString& path,
+				     const QString& name,
+				     const NamesList &name_list)
 {
 	QString new_dir_path = path + "/" + name;
 
@@ -597,7 +633,9 @@ bool XmlElementCollection::removeDir(const QString& path)
 	if false, only return the direct childs location of dom_element.
 	@return
 */
-QList<ElementsLocation> XmlElementCollection::elementsLocation(QDomElement dom_element, bool childs) const
+QList<ElementsLocation> XmlElementCollection::elementsLocation(
+		QDomElement dom_element,
+		bool childs) const
 {
 	QList <ElementsLocation> location_list;
 
@@ -640,12 +678,14 @@ QList<ElementsLocation> XmlElementCollection::elementsLocation(QDomElement dom_e
 	The tag name of dom_element must be "element"
 	@return the element location, location can be null if fail.
 */
-ElementsLocation XmlElementCollection::domToLocation(QDomElement dom_element) const
+ElementsLocation XmlElementCollection::domToLocation(
+		QDomElement dom_element) const
 {
 	if (dom_element.ownerDocument() == m_dom_document) {
 		QString path = dom_element.attribute("name");
 
-		while (!dom_element.parentNode().isNull() && dom_element.parentNode().isElement()) {
+		while (!dom_element.parentNode().isNull()
+				&& dom_element.parentNode().isElement()) {
 			dom_element = dom_element.parentNode().toElement();
 
 			if (dom_element.tagName() == "category")
@@ -678,8 +718,10 @@ void XmlElementCollection::cleanUnusedDirectory()
 
 	for(int i=0 ; i<lst.size() ; i++) {
 		QDomElement dir = lst.item(i).toElement();
-			//elmt haven't got child node "element" or "category", so he is emty, we can remove it
-		if (dir.elementsByTagName("element").isEmpty() && dir.elementsByTagName("category").isEmpty()) {
+		//elmt haven't got child node "element" or "category",
+		//so he is emty, we can remove it
+		if (dir.elementsByTagName("element").isEmpty()
+				&& dir.elementsByTagName("category").isEmpty()) {
 			if (removeDir(domToLocation(dir).collectionPath(false)))
 				i=-1;
 		}
@@ -698,7 +740,11 @@ void XmlElementCollection::cleanUnusedDirectory()
 	@return the ElementLocation that represent the copy,
 	if copy failed return a null ElementLocation
 */
-ElementsLocation XmlElementCollection::copyDirectory(ElementsLocation &source, ElementsLocation &destination, const QString& rename, bool deep_copy)
+ElementsLocation XmlElementCollection::copyDirectory(
+		ElementsLocation &source,
+		ElementsLocation &destination,
+		const QString& rename,
+		bool deep_copy)
 {
 	QString new_dir_name = rename.isEmpty() ? source.fileName() : rename;
 
@@ -706,11 +752,13 @@ ElementsLocation XmlElementCollection::copyDirectory(ElementsLocation &source, E
 	QDomElement parent_dir_dom = directory(destination.collectionPath(false));
 	if (parent_dir_dom.isNull()) return ElementsLocation();
 
-		//Remove the previous directory with the same path
-	QDomElement element = child(destination.collectionPath(false) + "/" + new_dir_name);
+	//Remove the previous directory with the same path
+	QDomElement element = child(destination.collectionPath(false)
+				    + "/" + new_dir_name);
 	if (!element.isNull()) {
 		element.parentNode().removeChild(element);
-		emit directoryRemoved(destination.collectionPath(false) + "/" + new_dir_name);
+		emit directoryRemoved(destination.collectionPath(false)
+				      + "/" + new_dir_name);
 	}
 
 	ElementsLocation created_location;
@@ -723,27 +771,35 @@ ElementsLocation XmlElementCollection::copyDirectory(ElementsLocation &source, E
 
 
 		QDir dir(source.fileSystemPath());
-		QDomElement elmt_dom = QETXML::fileSystemDirToXmlCollectionDir(m_dom_document, dir, new_dir_name);
+		QDomElement elmt_dom = QETXML::fileSystemDirToXmlCollectionDir(
+					m_dom_document, dir, new_dir_name);
 		if (elmt_dom.isNull()) return ElementsLocation();
 
 		parent_dir_dom.appendChild(elmt_dom);
 
-		created_location.setPath(destination.projectCollectionPath() + "/" + new_dir_name);
+		created_location.setPath(destination.projectCollectionPath()
+					 + "/" + new_dir_name);
 
 		if (deep_copy)
 		{
-				//Append all directories of source to the new created directory
-			foreach(QString str, source_dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::Name))
+			//Append all directories of source to the new created directory
+			foreach(QString str, source_dir.entryList(
+						QDir::Dirs | QDir::NoDotAndDotDot,
+						QDir::Name))
 			{
-				ElementsLocation sub_source(source.fileSystemPath() + "/" + str);
+				ElementsLocation sub_source(source.fileSystemPath()
+							    + "/" + str);
 				copyDirectory(sub_source, created_location);
 			}
 
 			//Append all elements of source to the new created directory
 			source_dir.setNameFilters(QStringList() << "*.elmt");
-			foreach(QString str, source_dir.entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name))
+			foreach(QString str, source_dir.entryList(
+						QDir::Files | QDir::NoDotAndDotDot,
+						QDir::Name))
 			{
-				ElementsLocation sub_source(source.fileSystemPath() + "/" + str);
+				ElementsLocation sub_source(source.fileSystemPath()
+							    + "/" + str);
 				copyElement(sub_source, created_location);
 			}
 		}
@@ -786,7 +842,10 @@ ElementsLocation XmlElementCollection::copyDirectory(ElementsLocation &source, E
 	@param rename : rename the copy with rename else use the name of source
 	@return The ElementsLocation of the copy
 */
-ElementsLocation XmlElementCollection::copyElement(ElementsLocation &source, ElementsLocation &destination, const QString& rename)
+ElementsLocation XmlElementCollection::copyElement(
+		ElementsLocation &source,
+		ElementsLocation &destination,
+		const QString& rename)
 {
 	QString new_elmt_name = rename.isEmpty() ? source.fileName() : rename;
 
@@ -796,7 +855,8 @@ ElementsLocation XmlElementCollection::copyElement(ElementsLocation &source, Ele
 	if (source.isFileSystem())
 	{
 		QFile file(source.fileSystemPath());
-		elmt_dom = QETXML::fileSystemElementToXmlCollectionElement(m_dom_document, file, new_elmt_name);
+		elmt_dom = QETXML::fileSystemElementToXmlCollectionElement(
+					m_dom_document, file, new_elmt_name);
 		if (elmt_dom.isNull()) return ElementsLocation();
 	}
 	//Copy with a xml collection source
@@ -809,20 +869,22 @@ ElementsLocation XmlElementCollection::copyElement(ElementsLocation &source, Ele
 	}
 
 
-		//Remove the previous element with the same path
-	QDomElement element = child(destination.collectionPath(false) + "/" + new_elmt_name);
+	//Remove the previous element with the same path
+	QDomElement element = child(destination.collectionPath(false)
+				    + "/" + new_elmt_name);
 	bool removed = false;
 	if (!element.isNull()) {
 		element.parentNode().removeChild(element);
 		removed = true;
 	}
 
-		//Get the xml directory where the new element must be added
+	//Get the xml directory where the new element must be added
 	QDomElement dir_dom = directory(destination.collectionPath(false));
 	if (dir_dom.isNull()) return ElementsLocation();
 	dir_dom.appendChild(elmt_dom);
 
-	ElementsLocation copy_loc(destination.projectCollectionPath() + "/" + new_elmt_name);
+	ElementsLocation copy_loc(destination.projectCollectionPath()
+				  + "/" + new_elmt_name);
 
 	if (removed) {
 		emit elementChanged(copy_loc.collectionPath(false));

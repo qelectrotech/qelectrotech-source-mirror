@@ -88,7 +88,8 @@ void PropertiesEditorDockWidget::reset()
 	@return true if was added (or already add)
 	or false if can't be add (editor = nullptr)
 */
-bool PropertiesEditorDockWidget::addEditor(PropertiesEditorWidget *editor, int index)
+bool PropertiesEditorDockWidget::addEditor(PropertiesEditorWidget *editor,
+					   int index)
 {
 	if (!editor) return false;
 	if (m_editor_list.contains(editor)) return true;

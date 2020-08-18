@@ -26,7 +26,11 @@
 	@param old_value
 	@param new_value
 */
-QPropertyUndoCommand::QPropertyUndoCommand(QObject *object, const char *property_name, const QVariant &old_value, const QVariant &new_value, QUndoCommand *parent) :
+QPropertyUndoCommand::QPropertyUndoCommand(QObject *object,
+					   const char *property_name,
+					   const QVariant &old_value,
+					   const QVariant &new_value,
+					   QUndoCommand *parent) :
 	QUndoCommand(parent),
 	m_object(object),
 	m_property_name(property_name),
@@ -43,7 +47,10 @@ QPropertyUndoCommand::QPropertyUndoCommand(QObject *object, const char *property
 	@param old_value
 	@param parent
 */
-QPropertyUndoCommand::QPropertyUndoCommand(QObject *object, const char *property_name, const QVariant &old_value, QUndoCommand *parent) :
+QPropertyUndoCommand::QPropertyUndoCommand(QObject *object,
+					   const char *property_name,
+					   const QVariant &old_value,
+					   QUndoCommand *parent) :
 	QUndoCommand(parent),
 	m_object(object),
 	m_property_name(property_name),

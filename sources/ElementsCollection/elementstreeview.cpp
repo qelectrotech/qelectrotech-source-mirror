@@ -80,16 +80,20 @@ void ElementsTreeView::startElementDrag(const ElementsLocation &location)
 
 	if (location.isDirectory())
 	{
-		mime_data->setData("application/x-qet-category-uri", location_str.toLatin1());
+		mime_data->setData("application/x-qet-category-uri",
+				   location_str.toLatin1());
 		drag->setPixmap(QET::Icons::Folder.pixmap(22, 22));
 	}
 	else if (location.isElement())
 	{
-		mime_data->setData("application/x-qet-element-uri", location_str.toLatin1());
+		mime_data->setData("application/x-qet-element-uri",
+				   location_str.toLatin1());
 
 			//Build the element for set the pixmap of the QDrag
 		int elmt_creation_state;
-		Element *temp_elmt = ElementFactory::Instance()->createElement(location, nullptr, &elmt_creation_state);
+		Element *temp_elmt = ElementFactory::Instance()->createElement(
+					location, nullptr,
+					&elmt_creation_state);
 		if (elmt_creation_state)
 		{
 			delete temp_elmt;
@@ -100,10 +104,17 @@ void ElementsTreeView::startElementDrag(const ElementsLocation &location)
 		QPoint elmt_hotspot(temp_elmt->hotspot());
 
 			//Adjust the size of the pixmap if he is too big
-		QPoint elmt_pixmap_size(elmt_pixmap.width(), elmt_pixmap.height());
-		if (elmt_pixmap.width() > MAX_DND_PIXMAP_WIDTH || elmt_pixmap.height() > MAX_DND_PIXMAP_HEIGHT)
+		QPoint elmt_pixmap_size(elmt_pixmap.width(),
+					elmt_pixmap.height());
+		if (elmt_pixmap.width()
+				> MAX_DND_PIXMAP_WIDTH
+				|| elmt_pixmap.height()
+				> MAX_DND_PIXMAP_HEIGHT)
 		{
-			elmt_pixmap = elmt_pixmap.scaled(MAX_DND_PIXMAP_WIDTH, MAX_DND_PIXMAP_HEIGHT, Qt::KeepAspectRatio);
+			elmt_pixmap = elmt_pixmap.scaled(
+						MAX_DND_PIXMAP_WIDTH,
+						MAX_DND_PIXMAP_HEIGHT,
+						Qt::KeepAspectRatio);
 			elmt_hotspot = QPoint(
 				elmt_hotspot.x() * elmt_pixmap.width() / elmt_pixmap_size.x(),
 				elmt_hotspot.y() * elmt_pixmap.height() / elmt_pixmap_size.y()

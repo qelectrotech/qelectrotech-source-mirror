@@ -402,9 +402,11 @@ ElementsLocation ElementCollectionHandler::createDir(ElementsLocation &parent, c
 	@param location : location to copy
 	@return true if import with success
 */
-bool ElementCollectionHandler::importFromProject(QETProject *project, ElementsLocation &location)
+bool ElementCollectionHandler::importFromProject(QETProject *project,
+						 ElementsLocation &location)
 {
-	if (!(location.isElement() && location.exist() && location.isProject())) return false;
+	if (!(location.isElement() && location.exist() && location.isProject()))
+		return false;
 	
 	ElementsLocation destination(location.collectionPath(false), project);
 	if (destination.exist()) return true;
@@ -421,14 +423,18 @@ bool ElementCollectionHandler::importFromProject(QETProject *project, ElementsLo
 	while (!destination.exist()) {
 		names.append(source.fileName());
 		source = source.parent();
-		destination = ElementsLocation(source.collectionPath(), project);
+		destination = ElementsLocation(source.collectionPath(),
+					       project);
 	}
 	
 	XmlElementCollection *collection = project->embeddedElementCollection();
 	
 	while (!names.isEmpty()) {
 		source.addToPath(names.takeLast());
-		destination = collection->copy(source, destination, QString(), false);
+		destination = collection->copy(source,
+					       destination,
+					       QString(),
+					       false);
 		
 		if (!destination.exist())
 			return false;
@@ -445,7 +451,8 @@ bool ElementCollectionHandler::importFromProject(QETProject *project, ElementsLo
 	@param name_list : NamesList to use
 	@return return true if success
 */
-bool ElementCollectionHandler::setNames(ElementsLocation &location, const NamesList &name_list)
+bool ElementCollectionHandler::setNames(ElementsLocation &location,
+					const NamesList &name_list)
 {
 	if ( !(location.exist() && location.isWritable()) ) {
 		return false;
@@ -454,11 +461,13 @@ bool ElementCollectionHandler::setNames(ElementsLocation &location, const NamesL
 	if (location.isFileSystem()) {
 		if (location.isDirectory()) {
 			QDomDocument document;
-			QDomElement root = document.createElement("qet-directory");
+			QDomElement root = document.createElement(
+						"qet-directory");
 			document.appendChild(root);
 			root.appendChild(name_list.toXml(document));
 			
-			QString filepath = location.fileSystemPath() + "/qet_directory";
+			QString filepath = location.fileSystemPath()
+					+ "/qet_directory";
 			if (!QET::writeXmlFile(document, filepath)) {
 				qDebug() << "ElementCollectionHandler::setNames : write qet-directory file failed";
 				return false;
@@ -469,14 +478,18 @@ bool ElementCollectionHandler::setNames(ElementsLocation &location, const NamesL
 		
 		if (location.isElement()) {
 			QDomDocument document;
-			document.appendChild(document.importNode(location.xml(), true));
+			document.appendChild(document.importNode(location.xml(),
+								 true));
 			if (document.isNull()) {
 				qDebug() << "ElementCollectionHandler::setNames : failed to load xml document from file";
 				return false;
 			}
 			
 			QDomElement document_element = document.documentElement();
-			document_element.replaceChild(name_list.toXml(document), document_element.firstChildElement("names"));
+			document_element.replaceChild(
+						name_list.toXml(document),
+						document_element
+						.firstChildElement("names"));
 			return true;
 		}
 	}
@@ -484,7 +497,8 @@ bool ElementCollectionHandler::setNames(ElementsLocation &location, const NamesL
 	if (location.isProject()) {
 		QDomElement element = location.xml();
 		QDomDocument document = element.ownerDocument();
-		element.replaceChild(name_list.toXml(document), element.firstChildElement("names"));
+		element.replaceChild(name_list.toXml(document),
+				     element.firstChildElement("names"));
 		return true;
 	}
 	

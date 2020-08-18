@@ -64,7 +64,8 @@ QVariant ElementsCollectionModel::data(const QModelIndex &index, int role) const
 	@param indexes
 	@return
 */
-QMimeData *ElementsCollectionModel::mimeData(const QModelIndexList &indexes) const
+QMimeData *ElementsCollectionModel::mimeData(
+		const QModelIndexList &indexes) const
 {
 	QModelIndex index = indexes.first();
 	if (index.isValid())
@@ -315,7 +316,9 @@ void ElementsCollectionModel::addCommonCollection(bool set_data)
 void ElementsCollectionModel::addCustomCollection(bool set_data)
 {
 	FileElementCollectionItem *feci = new FileElementCollectionItem();
-	if (feci->setRootPath(QETApp::customElementsDirN(), set_data, m_hide_element)) {
+	if (feci->setRootPath(QETApp::customElementsDirN(),
+			      set_data,
+			      m_hide_element)) {
 		invisibleRootItem()->appendRow(feci);
 		if (set_data)
 			feci->setUpData();
@@ -502,7 +505,8 @@ QList <ElementCollectionItem *> ElementsCollectionModel::items() const
 	@param project
 	@return return all items for project. the list can be empty
 */
-QList<ElementCollectionItem *> ElementsCollectionModel::projectItems(QETProject *project) const
+QList<ElementCollectionItem *> ElementsCollectionModel::projectItems(
+		QETProject *project) const
 {
 	QList <ElementCollectionItem *> list;
 
@@ -596,7 +600,9 @@ void ElementsCollectionModel::elementIntegratedToCollection(const QString& path)
 		XmlProjectElementCollectionItem *xpeci = m_project_hash.value(project);
 
 		QString collection_name;
-		ElementCollectionItem *eci = xpeci->lastItemForPath(path, collection_name);
+		ElementCollectionItem *eci = xpeci->lastItemForPath(
+					path,
+					collection_name);
 		if (!eci)
 			return;
 
@@ -626,7 +632,8 @@ void ElementsCollectionModel::itemRemovedFromCollection(const QString& path)
 	}
 
 	if (project) {
-		QModelIndex index = indexFromLocation(ElementsLocation(path, project));
+		QModelIndex index = indexFromLocation(
+					ElementsLocation(path, project));
 		if (index.isValid())
 			removeRow(index.row(), index.parent());
 	}

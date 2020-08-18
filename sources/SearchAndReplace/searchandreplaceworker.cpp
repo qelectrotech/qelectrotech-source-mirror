@@ -397,7 +397,9 @@ ConductorProperties SearchAndReplaceWorker::invalidConductorProperties()
 	@param change : the change properties, to be merged with original
 	@return a new conductor properties with the change applyed.
 */
-ConductorProperties SearchAndReplaceWorker::applyChange(const ConductorProperties &original, const ConductorProperties &change)
+ConductorProperties SearchAndReplaceWorker::applyChange(
+		const ConductorProperties &original,
+		const ConductorProperties &change)
 {
 	ConductorProperties new_properties = original;
 	
@@ -432,7 +434,8 @@ ConductorProperties SearchAndReplaceWorker::applyChange(const ConductorPropertie
 	@param change : the changed string:
 	@return the string to be use in the properties
 */
-QString SearchAndReplaceWorker::applyChange(const QString &original, const QString &change)
+QString SearchAndReplaceWorker::applyChange(const QString &original,
+					    const QString &change)
 {
 	if (change.isEmpty())           {return original;}
 	else if (change == eraseText()) {return QString();}
@@ -496,7 +499,8 @@ DiagramContext SearchAndReplaceWorker::replaceAdvanced(Element *element)
 	@return the conductor properties with the change applied,
 	according to the state of m_advanced_struct
 */
-ConductorProperties SearchAndReplaceWorker::replaceAdvanced(Conductor *conductor)
+ConductorProperties SearchAndReplaceWorker::replaceAdvanced(
+		Conductor *conductor)
 {
 	ConductorProperties properties = conductor->properties();
 	
