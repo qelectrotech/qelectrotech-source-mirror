@@ -24,6 +24,8 @@
 #include <QStorageInfo>
 #include <QLibraryInfo>
 
+#include "qet.h"
+
 /**
 	@brief Machine_info::Machine_info
 	@param parent
@@ -76,6 +78,7 @@ void Machine_info::send_info_to_debug()
 	qInfo()<< "Qt library location Qt settings:"
 		<< QLibraryInfo::location(QLibraryInfo::SettingsPath);
 #endif
+	qInfo()<< "QElectroTech V " + QET::displayedVersion;
 	qInfo()<< tr("Compilation : ") + pc.built.version;
 	qInfo()<< "Built with Qt " + pc.built.QT
 		  + " - Date : " + pc.built.date
