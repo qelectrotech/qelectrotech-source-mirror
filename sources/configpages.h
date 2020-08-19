@@ -32,6 +32,7 @@ class QETProject;
 class TitleBlockProperties;
 
 /**
+	@brief The NewDiagramPage class
 	This configuration page enables users to define the properties of new
 	diagrams to come.
 */
@@ -72,6 +73,7 @@ public slots:
 };
 
 /**
+	@brief The ExportConfigPage class
 	This configuration page enables users to set default export options.
 */
 class ExportConfigPage : public ConfigPage {
@@ -95,6 +97,7 @@ class ExportConfigPage : public ConfigPage {
 };
 
 /**
+	@brief The PrintConfigPage class
 	This configuration page enables users to set default printing options.
 */
 class PrintConfigPage : public ConfigPage {

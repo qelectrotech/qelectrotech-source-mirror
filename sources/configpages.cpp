@@ -35,9 +35,9 @@
 /**
 	@brief NewDiagramPage::NewDiagramPage
 	Default constructor
-	@param project, If project, edit the propertie of Project
-	else edit the properties by default of QElectroTech
-	@param parent, parent widget
+	@param project : QETProject
+	@param parent : QWidget
+	@param ppd : ProjectPropertiesDialog
 */
 NewDiagramPage::NewDiagramPage(QETProject *project,
 			       QWidget *parent,

@@ -176,9 +176,14 @@ void SingleLineProperties::drawNeutral(QPainter *painter,
 }
 
 /**
-	Draw the PEN (Protective Earth Neutral) symbol using \a painter at position \a
-	center, using a size hint of \a size.
-	@param direction Indicate the direction of the underlying conductor segment
+	@brief SingleLineProperties::drawPen
+	Draw the PEN (Protective Earth Neutral) symbol using
+	\a painter at position \a center, using a size hint of \a size.
+	@param painter
+	@param direction :
+	Indicate the direction of the underlying conductor segment
+	@param center
+	@param size
 */
 void SingleLineProperties::drawPen(QPainter *painter,
 				   QET::ConductorSegmentType direction,

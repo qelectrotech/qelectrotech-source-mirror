@@ -242,12 +242,16 @@ bool QET::attributeIsAReal(const QDomElement &e,
 }
 
 /**
+	@brief QET::ElementsAndConductorsSentence
 	Permet de composer rapidement la proposition "x elements et y conducteurs"
 	ou encore "x elements, y conducteurs et z champs de texte".
 	@param elements_count nombre d'elements
 	@param conductors_count nombre de conducteurs
 	@param texts_count nombre de champs de texte
 	@param images_count nombre d'images
+	@param shapes_count
+	@param element_text_count
+	@param tables_count
 	@return la proposition decrivant le nombre d'elements, de conducteurs et de
 	textes
 */
