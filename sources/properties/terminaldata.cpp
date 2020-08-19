@@ -38,11 +38,13 @@ void TerminalData::setParent(QGraphicsObject* parent)
 
 	QString is use for prefix a word befor the name of each paramètre
 	@param settings UNUSED
+	@param prefix UNUSED
 */
-void TerminalData::toSettings(QSettings &settings, const QString) const
+void TerminalData::toSettings(QSettings &settings, const QString prefix) const
 
 {
 	Q_UNUSED(settings);
+	Q_UNUSED(prefix);
 }
 
 /**
@@ -51,10 +53,12 @@ void TerminalData::toSettings(QSettings &settings, const QString) const
 
 	QString is use for prefix a word befor the name of each paramètre
 	@param settings UNUSED
+	@param prefix UNUSED
 */
-void TerminalData::fromSettings(const QSettings &settings, const QString)
+void TerminalData::fromSettings(const QSettings &settings, const QString prefix)
 {
 	Q_UNUSED(settings);
+	Q_UNUSED(prefix);
 }
 
 /**
