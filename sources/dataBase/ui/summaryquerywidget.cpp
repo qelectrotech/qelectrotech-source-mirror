@@ -82,7 +82,7 @@ QString SummaryQueryWidget::queryStr() const
 /**
 	@brief SummaryQueryWidget::setQuery
 	@param query
-	set the current query to @query.
+	set the current query to query.
 	If it's possible, rebuild the state of the widget from the query
 */
 void SummaryQueryWidget::setQuery(const QString &query)

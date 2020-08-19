@@ -52,7 +52,8 @@ TitleBlockTemplateView::TitleBlockTemplateView(QWidget *parent) :
 }
 
 /**
-	Constructor
+	@brief TitleBlockTemplateView::TitleBlockTemplateView
+	@param scene
 	@param parent Parent QWidget.
 */
 TitleBlockTemplateView::TitleBlockTemplateView(QGraphicsScene *scene, QWidget *parent) :
@@ -444,9 +445,13 @@ TitleBlockTemplateCellsSet TitleBlockTemplateView::cells(const QRectF &rect) con
 }
 
 /**
-	@param can_merge If non-zero, will be changed to reflect whether selected cells may be merged
-	@param can_merge If non-zero, will be changed to reflect whether selected cells may be splitted
-	@param count     If non-zero, will be changed to reflect the number of selected cells
+	@brief TitleBlockTemplateView::analyzeSelectedCells
+	@param can_merge :
+	If non-zero, will be changed to reflect whether selected cells may be merged
+	@param can_split :
+	If non-zero, will be changed to reflect whether selected cells may be splitted
+	@param count :
+	If non-zero, will be changed to reflect the number of selected cells
 */
 void TitleBlockTemplateView::analyzeSelectedCells(bool *can_merge, bool *can_split, int *count) {
 	if (!can_merge && !can_split) return;
@@ -822,8 +827,12 @@ bool TitleBlockTemplateView::event(QEvent *event) {
 }
 
 /**
-	Given a cells list, change their position so the top left one is at row \a x and column \a y.
+	@brief TitleBlockTemplateView::normalizeCells
+	Given a cells list,
+	change their position so the top left one is at row \a x and column \a y.
 	@param cells Cells list
+	@param x : row
+	@param y : column
 */
 void TitleBlockTemplateView::normalizeCells(QList<TitleBlockCell> &cells, int x, int y) const {
 	if (!cells.count()) return;
@@ -1051,7 +1060,8 @@ void TitleBlockTemplateView::removeItem(QGraphicsLayoutItem *item) {
 }
 
 /**
-	@param a list of QGraphicsItem
+	@brief TitleBlockTemplateView::makeCellsSetFromGraphicsItems
+	@param items : a list of QGraphicsItem
 	@return the corresponding TitleBlockTemplateCellsSet
 */
 TitleBlockTemplateCellsSet TitleBlockTemplateView::makeCellsSetFromGraphicsItems(const QList<QGraphicsItem *> &items) const {
@@ -1066,8 +1076,9 @@ TitleBlockTemplateCellsSet TitleBlockTemplateView::makeCellsSetFromGraphicsItems
 	return(set);
 }
 
-/*
-	@param a text string
+/**
+	@brief TitleBlockTemplateView::makePrettyToolTip
+	@param string : a text string
 	@return an HTML string that can be passed to setToolTip()
 */
 QString TitleBlockTemplateView::makePrettyToolTip(const QString &string) {

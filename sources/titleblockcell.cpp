@@ -217,7 +217,8 @@ void TitleBlockCell::loadContentFromXml(const QDomElement &cell_element) {
 }
 
 /**
-	@param xml_element XML element to which cell content will be exported
+	@brief TitleBlockCell::saveContentToXml
+	@param cell_elmt : XML element to which cell content will be exported
 */
 void TitleBlockCell::saveContentToXml(QDomElement &cell_elmt) {
 	cell_elmt.setAttribute("name", value_name);

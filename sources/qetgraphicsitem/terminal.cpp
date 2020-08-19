@@ -198,7 +198,8 @@ void Terminal::setNumber(QString number) {
 
 /**
 	@brief Terminal::setName
-	@param name
+	@param name : QString
+	@param hiddenName : bool
 */
 void Terminal::setName(QString name, bool hiddenName) {
 	name_terminal_ = std::move(name);

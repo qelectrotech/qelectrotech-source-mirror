@@ -25,6 +25,7 @@ class QDoubleSpinBox;
 class QComboBox;
 
 /**
+	@brief The TerminalEditor class
 	This class provides a widget to edit terminals within the element editor.
 	The class is capable to change the values of multiple parts of the same time.
 	The displayed values are from the first selected element

@@ -80,8 +80,10 @@ SelectAutonumW::~SelectAutonumW()
 }
 
 /**
-	@brief SelectAutonumW::setCurrentContext
-	build the context of current diagram selected in the @diagram_chooser QcomboBox
+	@brief SelectAutonumW::setContext
+	build the context of current diagram
+	selected in the diagram_chooser QcomboBox
+	@param context
 */
 void SelectAutonumW::setContext(const NumerotationContext &context) {
 	m_context = context;
@@ -110,7 +112,7 @@ void SelectAutonumW::setContext(const NumerotationContext &context) {
 
 /**
 	@brief SelectAutonumW::toNumContext
-	@return the content to @num_part_list to NumerotationContext
+	@return the content to num_part_list to NumerotationContext
 */
 NumerotationContext SelectAutonumW::toNumContext() const {
 	NumerotationContext nc;
@@ -120,7 +122,7 @@ NumerotationContext SelectAutonumW::toNumContext() const {
 
 /**
 	@brief SelectAutonumW::on_add_button_clicked
- *	Action on add_button, add a @NumPartEditor
+ *	Action on add_button, add a NumPartEditor
 */
 void SelectAutonumW::on_add_button_clicked()
 {
@@ -134,7 +136,7 @@ void SelectAutonumW::on_add_button_clicked()
 
 /**
 	@brief SelectAutonumW::on_remove_button_clicked
- *	Action on remove button, remove the last @NumPartEditor
+ *	Action on remove button, remove the last NumPartEditor
 */
 void SelectAutonumW::on_remove_button_clicked() {
 	//remove if @num_part_list contains more than one item
@@ -170,7 +172,8 @@ QComboBox *SelectAutonumW::contextComboBox() const
 
 /**
 	@brief SelectAutonumW::on_buttonBox_clicked
-	Action on @buttonBox clicked
+	Action on button clicked
+	@param button
 */
 void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button) {
 	//transform button to int

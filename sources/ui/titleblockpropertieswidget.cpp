@@ -29,6 +29,7 @@
 	default constructor
 	@param titleblock properties to edit
 	@param current_date if true, display the radio button "current date"
+	@param project : QETProject
 	@param parent parent widget
 */
 TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(const TitleBlockProperties &titleblock, bool current_date, QETProject *project, QWidget *parent) :
@@ -46,6 +47,7 @@ TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(const TitleBlockPropertie
 	@param tbt_collection template list
 	@param titleblock properties to edit
 	@param current_date if true, display the radio button "current date"
+	@param project : QETProject
 	@param parent parent widget
 */
 TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(TitleBlockTemplatesCollection *tbt_collection, const TitleBlockProperties &titleblock, bool current_date, QETProject *project, QWidget *parent) :
@@ -65,6 +67,7 @@ TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(TitleBlockTemplatesCollec
 	@param tbt_collection template list
 	@param titleblock properties to edit
 	@param current_date if true, display the radio button "current date"
+	@param project : QETProject
 	@param parent parent widget
 */
 TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(QList<TitleBlockTemplatesCollection *> tbt_collection, const TitleBlockProperties &titleblock, bool current_date, QETProject *project, QWidget *parent) :
@@ -284,7 +287,8 @@ void TitleBlockPropertiesWidget::addCollection(TitleBlockTemplatesCollection *tb
 /**
 	@brief TitleBlockPropertiesWidget::initDialog
 	Init this dialog
-	@param current_date true for display current date radio button
+	@param current_date : true for display current date radio button
+	@param project
 */
 void TitleBlockPropertiesWidget::initDialog(const bool &current_date,  QETProject *project) {
 	m_dcw = new DiagramContextWidget();

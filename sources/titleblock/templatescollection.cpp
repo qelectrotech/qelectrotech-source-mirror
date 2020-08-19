@@ -44,7 +44,8 @@ QString TitleBlockTemplatesCollection::title() const {
 }
 
 /**
-	@oaram title New title for this collection
+	@brief TitleBlockTemplatesCollection::setTitle
+	@param title : New title for this collection
 */
 void TitleBlockTemplatesCollection::setTitle(const QString &title) {
 	title_ = title;

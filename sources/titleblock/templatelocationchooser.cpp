@@ -21,9 +21,10 @@
 #include "templatescollection.h"
 
 /**
+	@brief TitleBlockTemplateLocationChooser::TitleBlockTemplateLocationChooser
 	Constructor
-	@param location Initial location displayed by the widget
-	@param widget Parent QWidget
+	@param location : Initial location displayed by the widget
+	@param parent : Parent QWidget
 */
 TitleBlockTemplateLocationChooser::TitleBlockTemplateLocationChooser(
 	const TitleBlockTemplateLocation &location,
@@ -99,8 +100,11 @@ void TitleBlockTemplateLocationChooser::init() {
 }
 
 /**
-	@param coll A Title block templates collection which we want to know the index within the combo box of this dialog.
-	@return -1 if the collection is unknown to this dialog, or the index of \a coll
+	@brief TitleBlockTemplateLocationChooser::indexForCollection
+	@param coll : A Title block templates collection
+	which we want to know the index within the combo box of this dialog.
+	@return -1 if the collection is unknown to this dialog,
+	or the index of \a coll
 */
 int TitleBlockTemplateLocationChooser::indexForCollection(TitleBlockTemplatesCollection *coll) const {
 	QList<int> indexes = collections_index_.keys(coll);

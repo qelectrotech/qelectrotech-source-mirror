@@ -21,9 +21,10 @@
 #include "templatescollection.h"
 
 /**
+	@brief TitleBlockTemplateLocationSaver::TitleBlockTemplateLocationSaver
 	Constructor
-	@param location Initial location displayed by the widget
-	@param widget Parent QWidget
+	@param location
+	@param parent : QWidget
 */
 TitleBlockTemplateLocationSaver::TitleBlockTemplateLocationSaver(
 	const TitleBlockTemplateLocation &location,

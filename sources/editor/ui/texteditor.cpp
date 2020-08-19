@@ -96,9 +96,9 @@ void TextEditor::disconnectEditConnection() {
 /**
 	@brief TextEditor::setPart
 	Set the current text to edit.
-	Set @part to nullptr to clear the current text.
+	Set part to nullptr to clear the current text.
 	@param part : part to edit
-	@return : return if @part is a partext or nullptr, else return false
+	@return if part is a partext or nullptr, else return false
 */
 bool TextEditor::setPart(CustomElementPart *part) {
 	if (!part) {

@@ -91,7 +91,8 @@ void XRefProperties::fromSettings(const QSettings &settings, const QString prefi
 /**
 	@brief XRefProperties::toXml
 	Save to xml
-	@param xml_element: QDomElement to use for saving
+	@param xml_document : QDomElement to use for saving
+	@return QDomElement
 */
 QDomElement XRefProperties::toXml(QDomDocument &xml_document) const {
 

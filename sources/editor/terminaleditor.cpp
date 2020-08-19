@@ -25,6 +25,11 @@
 #include <QHBoxLayout>
 #include <QLabel>
 
+/**
+	@brief TerminalEditor::TerminalEditor
+	@param editor
+	@param parent
+*/
 TerminalEditor::TerminalEditor(QETElementEditor* editor, QWidget* parent):
 	ElementItemEditor(editor, parent) {
 	m_part = nullptr;
@@ -33,10 +38,14 @@ TerminalEditor::TerminalEditor(QETElementEditor* editor, QWidget* parent):
 }
 
 /**
+	@brief TerminalEditor::TerminalEditor
 	Constructeur
-	@param editor L'editeur d'element concerne
-	@param term La borne a editer
-	@param parent QWidget parent de ce widget
+	@param editor :
+	L'editeur d'element concerne
+	@param terms :
+	La borne a editer
+	@param parent :
+	QWidget parent de ce widget
 */
 TerminalEditor::TerminalEditor(QETElementEditor *editor, QList<PartTerminal *> &terms, QWidget *parent) :
 	ElementItemEditor(editor, parent),
@@ -45,6 +54,9 @@ TerminalEditor::TerminalEditor(QETElementEditor *editor, QList<PartTerminal *> &
 	init();
 }
 
+/**
+	@brief TerminalEditor::init
+*/
 void TerminalEditor::init() {
 	qle_x = new QDoubleSpinBox();
 	qle_y = new QDoubleSpinBox();
@@ -80,7 +92,10 @@ void TerminalEditor::init() {
 	updateForm();
 }
 
-/// Destructeur
+/**
+	@brief TerminalEditor::~TerminalEditor
+	Destructeur
+*/
 TerminalEditor::~TerminalEditor() {
 }
 
@@ -174,6 +189,9 @@ void TerminalEditor::updateTerminalO() {
 	m_locked = false;
 }
 
+/**
+	@brief TerminalEditor::updateXPos
+*/
 void TerminalEditor::updateXPos() {
 	if (m_locked) return;
 	m_locked = true;
@@ -192,6 +210,9 @@ void TerminalEditor::updateXPos() {
 	m_locked=false;
 }
 
+/**
+	@brief TerminalEditor::updateYPos
+*/
 void TerminalEditor::updateYPos() {
 	if (m_locked) return;
 	m_locked = true;

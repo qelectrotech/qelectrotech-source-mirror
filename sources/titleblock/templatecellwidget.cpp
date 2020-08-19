@@ -26,8 +26,10 @@
 #include "qetinformation.h"
 
 /**
+	@brief TitleBlockTemplateCellWidget::TitleBlockTemplateCellWidget
 	Constructor
-	@param parent Parent QWidget
+	@param parent_template : TitleBlockTemplate
+	@param parent : QWidget
 */
 TitleBlockTemplateCellWidget::TitleBlockTemplateCellWidget(TitleBlockTemplate *parent_template, QWidget *parent) :
 	QWidget(parent),

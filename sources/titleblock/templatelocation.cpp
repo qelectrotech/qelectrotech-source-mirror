@@ -56,8 +56,8 @@ TitleBlockTemplatesCollection *TitleBlockTemplateLocation::parentCollection() co
 }
 
 /**
-	@param project The new parent collection of the template, or 0 if none
-	applies.
+	@brief TitleBlockTemplateLocation::setParentCollection
+	@param collection : TitleBlockTemplatesCollection
 */
 void TitleBlockTemplateLocation::setParentCollection(TitleBlockTemplatesCollection *collection) {
 	collection_ = collection;

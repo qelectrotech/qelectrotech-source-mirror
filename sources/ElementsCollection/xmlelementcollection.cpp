@@ -326,7 +326,7 @@ QDomElement XmlElementCollection::directory(const QString &path) const
 	path : import/dir1/dir2/dir3/myElement.elmt
 	If the path doesn't exist, he was created.
 	If the element already exist, do nothing.
-	@param location, location of the element
+	@param location : location of the element
 	@return the collection path of the added item
 	or a null QString if element can't be added.
 */
