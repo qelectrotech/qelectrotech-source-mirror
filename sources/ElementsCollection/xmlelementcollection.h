@@ -36,35 +36,56 @@ class XmlElementCollection : public QObject
 
 	public:
 		XmlElementCollection (QETProject *project);
-		XmlElementCollection (const QDomElement &dom_element, QETProject *project);
+		XmlElementCollection (const QDomElement &dom_element,
+				      QETProject *project);
 		QDomElement root() const;
 		QDomElement importCategory() const;
 		QDomNodeList childs(const QDomElement &parent_element) const;
-		QDomElement child(const QDomElement &parent_element, const QString &child_name) const;
+		QDomElement child(const QDomElement &parent_element,
+				  const QString &child_name) const;
 		QDomElement child(const QString &path) const;
-		QList<QDomElement> directories(const QDomElement &parent_element) const;
-		QStringList directoriesNames(const QDomElement &parent_element) const;
-		QList<QDomElement> elements(const QDomElement &parent_element) const;
-		QStringList elementsNames(const QDomElement &parent_element) const;
+		QList<QDomElement> directories(
+				const QDomElement &parent_element) const;
+		QStringList directoriesNames(
+				const QDomElement &parent_element) const;
+		QList<QDomElement> elements(
+				const QDomElement &parent_element) const;
+		QStringList elementsNames(
+				const QDomElement &parent_element) const;
 		QDomElement element(const QString &path) const;
 		QDomElement directory(const QString &path) const;
 		QString addElement (ElementsLocation &location);
-		bool addElementDefinition (const QString &dir_path, const QString &elmt_name, const QDomElement &xml_definition);
+		bool addElementDefinition (const QString &dir_path,
+					   const QString &elmt_name,
+					   const QDomElement &xml_definition);
 		bool removeElement(const QString& path);
-		ElementsLocation copy (ElementsLocation &source, ElementsLocation &destination, const QString& rename = QString(), bool deep_copy = true);
+		ElementsLocation copy (ElementsLocation &source,
+				       ElementsLocation &destination,
+				       const QString& rename = QString(),
+				       bool deep_copy = true);
 		bool exist (const QString &path) const;
-		bool createDir (const QString& path, const QString& name, const NamesList &name_list);
+		bool createDir (const QString& path,
+				const QString& name,
+				const NamesList &name_list);
 		bool removeDir (const QString& path);
 
-		QList <ElementsLocation> elementsLocation (QDomElement dom_element = QDomElement(), bool childs = true) const;
+		QList <ElementsLocation> elementsLocation (
+				QDomElement dom_element = QDomElement(),
+				bool childs = true) const;
 		ElementsLocation domToLocation(QDomElement dom_element) const;
 
 		void cleanUnusedElement();
 		void cleanUnusedDirectory();
 
 	private:
-		ElementsLocation copyDirectory(ElementsLocation &source, ElementsLocation &destination, const QString& rename = QString(), bool deep_copy = true);
-		ElementsLocation copyElement(ElementsLocation &source, ElementsLocation &destination, const QString& rename = QString());
+		ElementsLocation copyDirectory(
+				ElementsLocation &source,
+				ElementsLocation &destination,
+				const QString& rename = QString(),
+				bool deep_copy = true);
+		ElementsLocation copyElement(ElementsLocation &source,
+					     ElementsLocation &destination,
+					     const QString& rename = QString());
 
 	signals:
 		/**

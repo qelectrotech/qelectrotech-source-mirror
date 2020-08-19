@@ -25,7 +25,9 @@ class SlaveElement : public Element
 {
 	Q_OBJECT
 	public:
-		explicit SlaveElement (const ElementsLocation &, QGraphicsItem * = nullptr, int * = nullptr);
+		explicit SlaveElement (const ElementsLocation &,
+				       QGraphicsItem * = nullptr,
+				       int * = nullptr);
 		~SlaveElement() override;
 		void linkToElement(Element *elmt) override;
 		void unlinkAllElements() override;

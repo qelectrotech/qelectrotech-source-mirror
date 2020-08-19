@@ -47,7 +47,9 @@ TerminalEditor::TerminalEditor(QETElementEditor* editor, QWidget* parent):
 	@param parent :
 	QWidget parent de ce widget
 */
-TerminalEditor::TerminalEditor(QETElementEditor *editor, QList<PartTerminal *> &terms, QWidget *parent) :
+TerminalEditor::TerminalEditor(QETElementEditor *editor,
+			       QList<PartTerminal *> &terms,
+			       QWidget *parent) :
 	ElementItemEditor(editor, parent),
 	m_terminals(terms),
 	m_part(terms.first()) {

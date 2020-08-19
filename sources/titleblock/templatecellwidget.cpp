@@ -31,7 +31,9 @@
 	@param parent_template : TitleBlockTemplate
 	@param parent : QWidget
 */
-TitleBlockTemplateCellWidget::TitleBlockTemplateCellWidget(TitleBlockTemplate *parent_template, QWidget *parent) :
+TitleBlockTemplateCellWidget::TitleBlockTemplateCellWidget(
+		TitleBlockTemplate *parent_template,
+		QWidget *parent) :
 	QWidget(parent),
 	read_only_(false)
 {

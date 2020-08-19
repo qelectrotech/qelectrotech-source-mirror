@@ -68,7 +68,8 @@ QString TitleBlockTemplateLocationChooser::name() const {
 	Set the location displayed by this widget
 	@param location to be displayed by this widget
 */
-void TitleBlockTemplateLocationChooser::setLocation(const TitleBlockTemplateLocation &location) {
+void TitleBlockTemplateLocationChooser::setLocation(
+		const TitleBlockTemplateLocation &location) {
 	int index = indexForCollection(location.parentCollection());
 	collections_ -> setCurrentIndex(index);
 	
@@ -91,11 +92,14 @@ void TitleBlockTemplateLocationChooser::init() {
 	templates_ = new QComboBox();
 	
 	updateCollections();
-	connect(collections_, SIGNAL(currentIndexChanged(int)), this, SLOT(updateTemplates()));
+	connect(collections_, SIGNAL(currentIndexChanged(int)),
+		this, SLOT(updateTemplates()));
 	
 	form_layout_ = new QFormLayout();
-	form_layout_ -> addRow(tr("Collection parente",   "used in save as form"), collections_);
-	form_layout_ -> addRow(tr("Modèle existant",   "used in save as form"), templates_);
+	form_layout_ -> addRow(tr("Collection parente","used in save as form"),
+			       collections_);
+	form_layout_ -> addRow(tr("Modèle existant","used in save as form"),
+			       templates_);
 	setLayout(form_layout_);
 }
 
@@ -106,7 +110,8 @@ void TitleBlockTemplateLocationChooser::init() {
 	@return -1 if the collection is unknown to this dialog,
 	or the index of \a coll
 */
-int TitleBlockTemplateLocationChooser::indexForCollection(TitleBlockTemplatesCollection *coll) const {
+int TitleBlockTemplateLocationChooser::indexForCollection(
+		TitleBlockTemplatesCollection *coll) const {
 	QList<int> indexes = collections_index_.keys(coll);
 	if (indexes.count()) return(indexes.first());
 	return(-1);
@@ -120,7 +125,8 @@ void TitleBlockTemplateLocationChooser::updateCollections() {
 	collections_index_.clear();
 	
 	int index = 0;
-	foreach(TitleBlockTemplatesCollection *collection, QETApp::availableTitleBlockTemplatesCollections()) {
+	foreach(TitleBlockTemplatesCollection *collection,
+			QETApp::availableTitleBlockTemplatesCollections()) {
 		collections_ -> addItem(collection -> title());
 		collections_index_.insert(index, collection);
 		++ index;

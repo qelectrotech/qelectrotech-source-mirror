@@ -27,7 +27,9 @@ int TitleBlockTemplateLocation::MetaTypeId = qRegisterMetaType<TitleBlockTemplat
 	@param collection Parent collection of the title block template
 	@param name Name of the title block template within its parent project or collection
 */
-TitleBlockTemplateLocation::TitleBlockTemplateLocation(const QString &name, TitleBlockTemplatesCollection *collection) :
+TitleBlockTemplateLocation::TitleBlockTemplateLocation(
+		const QString &name,
+		TitleBlockTemplatesCollection *collection) :
 	collection_(collection),
 	name_(name)
 {
@@ -42,7 +44,8 @@ TitleBlockTemplateLocation::~TitleBlockTemplateLocation() {
 /**
 	@param loc_str String describing the location of a title block template.
 */
-TitleBlockTemplateLocation TitleBlockTemplateLocation::locationFromString(const QString &loc_str) {
+TitleBlockTemplateLocation TitleBlockTemplateLocation::locationFromString(
+		const QString &loc_str) {
 	TitleBlockTemplateLocation loc;
 	loc.fromString(loc_str);
 	return(loc);
@@ -59,7 +62,8 @@ TitleBlockTemplatesCollection *TitleBlockTemplateLocation::parentCollection() co
 	@brief TitleBlockTemplateLocation::setParentCollection
 	@param collection : TitleBlockTemplatesCollection
 */
-void TitleBlockTemplateLocation::setParentCollection(TitleBlockTemplatesCollection *collection) {
+void TitleBlockTemplateLocation::setParentCollection(
+		TitleBlockTemplatesCollection *collection) {
 	collection_ = collection;
 }
 
@@ -158,7 +162,8 @@ bool TitleBlockTemplateLocation::isReadOnly() const {
 	@param location other location that should be compared to this one
 	@return true if locations are equal, false otherwise
 */
-bool TitleBlockTemplateLocation::operator==(const TitleBlockTemplateLocation &location) const {
+bool TitleBlockTemplateLocation::operator==(
+		const TitleBlockTemplateLocation &location) const {
 	return(location.collection_ == collection_ && location.name_ == name_);
 }
 

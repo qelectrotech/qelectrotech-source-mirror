@@ -22,10 +22,11 @@
 	@brief SimpleElement::SimpleElement
 	@param location
 	@param qgi
-	@param s
 	@param state
 */
-SimpleElement::SimpleElement(const ElementsLocation &location, QGraphicsItem *qgi, int *state) :
+SimpleElement::SimpleElement(const ElementsLocation &location,
+			     QGraphicsItem *qgi,
+			     int *state) :
 	Element(location, qgi, state, Element::Simple)
 {}
 

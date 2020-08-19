@@ -46,13 +46,18 @@ class XmlProjectElementCollectionItem : public ElementCollectionItem
 		void addChildAtPath(const QString &collection_name) override;
 		QETProject * project() const;
 
-		void setProject (QETProject *project, bool set_data = true, bool hide_element = false);
+		void setProject (QETProject *project,
+				 bool set_data = true,
+				 bool hide_element = false);
 		void setUpData() override;
 		void setUpIcon() override;
 
 	private:
 		void populate(bool set_data = true, bool hide_element = false);
-		void setXmlElement(const QDomElement& element, QETProject *project, bool set_data = true, bool hide_element = false);
+		void setXmlElement(const QDomElement& element,
+				   QETProject *project,
+				   bool set_data = true,
+				   bool hide_element = false);
 
 	private:
 		QETProject *m_project = nullptr;

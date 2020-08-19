@@ -29,7 +29,8 @@ class TitleBlockTemplatesCollection;
 class TitleBlockTemplateLocation {
 	// constructor, destructor
 	public:
-	TitleBlockTemplateLocation(const QString & = QString(), TitleBlockTemplatesCollection * = nullptr);
+	TitleBlockTemplateLocation(const QString & = QString(),
+				   TitleBlockTemplatesCollection * = nullptr);
 	virtual ~TitleBlockTemplateLocation();
 	
 	// static methods
@@ -54,8 +55,9 @@ class TitleBlockTemplateLocation {
 	
 	// attributes
 	private:
-	TitleBlockTemplatesCollection *collection_; ///< Collection the template belongs to
-	QString name_;                              ///< Name of the template
+	TitleBlockTemplatesCollection
+	*collection_; ///< Collection the template belongs to
+	QString name_;///< Name of the template
 	
 	public:
 	static int MetaTypeId; ///< Id of the corresponding Qt meta type

@@ -35,7 +35,9 @@ class TerminalEditor : public ElementItemEditor {
 
 	// Constructors, destructor
 	public:
-		TerminalEditor(QETElementEditor *, QList<PartTerminal *>& terms, QWidget * = nullptr);
+		TerminalEditor(QETElementEditor *,
+			       QList<PartTerminal *>& terms,
+			       QWidget * = nullptr);
 		TerminalEditor(QETElementEditor *, QWidget * = nullptr);
 		~TerminalEditor() override;
 	private:

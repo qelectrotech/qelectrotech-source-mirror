@@ -376,7 +376,10 @@ QString XmlElementCollection::addElement(ElementsLocation &location)
 					if (!element_file.exists())
 						return QString();
 
-					created_child = QETXML::fileSystemElementToXmlCollectionElement(m_dom_document, element_file);
+					created_child = QETXML::
+							fileSystemElementToXmlCollectionElement(
+								m_dom_document,
+								element_file);
 				}
 
 				//str is the path of a directory, we integrate a directory.
@@ -385,7 +388,10 @@ QString XmlElementCollection::addElement(ElementsLocation &location)
 					if (!dir.cd(str))
 						return QString();
 
-					created_child = QETXML::fileSystemDirToXmlCollectionDir(m_dom_document, dir);
+					created_child = QETXML::
+							fileSystemDirToXmlCollectionDir(
+								m_dom_document,
+								dir);
 				}
 
 				if(created_child.isNull())

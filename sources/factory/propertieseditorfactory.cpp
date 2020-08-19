@@ -44,16 +44,16 @@
 	@param parent : parent widget of the returned editor
 	@return an editor or nullptr
 */
-PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(QAbstractItemModel *model, PropertiesEditorWidget *editor, QWidget *parent)
+PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(
+		QAbstractItemModel *model,
+		PropertiesEditorWidget *editor,
+		QWidget *parent)
 {
-	Q_UNUSED(model)
-	Q_UNUSED(editor)
-	Q_UNUSED(parent)
-
 	if (auto m = static_cast<ProjectDBModel *>(model))
 	{
 		if (editor &&
-			editor->metaObject()->className() == ProjectDBModelPropertiesWidget::staticMetaObject.className())
+			editor->metaObject()->className()
+				== ProjectDBModelPropertiesWidget::staticMetaObject.className())
 		{
 			static_cast<ProjectDBModelPropertiesWidget *>(editor)->setModel(m);
 			return editor;
@@ -72,7 +72,10 @@ PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(QAbstractItemM
 	@param parent : parent widget of the returned editor
 	@return : an editor or nullptr;
 */
-PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(QList<QGraphicsItem *> items, PropertiesEditorWidget *editor, QWidget *parent)
+PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(
+		QList<QGraphicsItem *> items,
+		PropertiesEditorWidget *editor,
+		QWidget *parent)
 {
 	int count_ = items.size();
 

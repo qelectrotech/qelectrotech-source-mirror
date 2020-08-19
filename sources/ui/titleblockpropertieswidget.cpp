@@ -32,7 +32,11 @@
 	@param project : QETProject
 	@param parent parent widget
 */
-TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(const TitleBlockProperties &titleblock, bool current_date, QETProject *project, QWidget *parent) :
+TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(
+		const TitleBlockProperties &titleblock,
+		bool current_date,
+		QETProject *project,
+		QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::TitleBlockPropertiesWidget)
 {
@@ -50,7 +54,12 @@ TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(const TitleBlockPropertie
 	@param project : QETProject
 	@param parent parent widget
 */
-TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(TitleBlockTemplatesCollection *tbt_collection, const TitleBlockProperties &titleblock, bool current_date, QETProject *project, QWidget *parent) :
+TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(
+		TitleBlockTemplatesCollection *tbt_collection,
+		const TitleBlockProperties &titleblock,
+		bool current_date,
+		QETProject *project,
+		QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::TitleBlockPropertiesWidget)
 {
@@ -70,7 +79,12 @@ TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(TitleBlockTemplatesCollec
 	@param project : QETProject
 	@param parent parent widget
 */
-TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(QList<TitleBlockTemplatesCollection *> tbt_collection, const TitleBlockProperties &titleblock, bool current_date, QETProject *project, QWidget *parent) :
+TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(
+		QList<TitleBlockTemplatesCollection *> tbt_collection,
+		const TitleBlockProperties &titleblock,
+		bool current_date,
+		QETProject *project,
+		QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::TitleBlockPropertiesWidget)
 {
@@ -95,7 +109,8 @@ TitleBlockPropertiesWidget::~TitleBlockPropertiesWidget()
 	@brief TitleBlockPropertiesWidget::setProperties
 	@param properties
 */
-void TitleBlockPropertiesWidget::setProperties(const TitleBlockProperties &properties) {
+void TitleBlockPropertiesWidget::setProperties(
+		const TitleBlockProperties &properties) {
 	ui -> m_title_le  -> setText (properties.title);
 	ui -> m_author_le -> setText (properties.author);
 	ui -> m_file_le   -> setText (properties.filename);
@@ -193,7 +208,8 @@ TitleBlockProperties TitleBlockPropertiesWidget::properties() const {
 	@brief TitleBlockPropertiesWidget::properties
 	@return return properties to enable folio autonum
 */
-TitleBlockProperties TitleBlockPropertiesWidget::propertiesAutoNum(QString autoNum) const {
+TitleBlockProperties TitleBlockPropertiesWidget::propertiesAutoNum(
+		QString autoNum) const {
 	TitleBlockProperties prop;
 	prop.title    = ui -> m_title_le  -> text();
 	prop.author   = ui -> m_author_le -> text();
@@ -248,7 +264,8 @@ TitleBlockTemplateLocation TitleBlockPropertiesWidget::currentTitleBlockLocation
 	@brief TitleBlockPropertiesWidget::setTitleBlockTemplatesVisible
 	if true, title block template combo box and menu button is visible
 */
-void TitleBlockPropertiesWidget::setTitleBlockTemplatesVisible(const bool &visible) {
+void TitleBlockPropertiesWidget::setTitleBlockTemplatesVisible(
+		const bool &visible) {
 	ui -> m_tbt_label -> setVisible(visible);
 	ui -> m_tbt_cb    -> setVisible(visible);
 	ui -> m_tbt_pb    -> setVisible(visible);
@@ -278,7 +295,8 @@ QString TitleBlockPropertiesWidget::currentTitleBlockTemplateName() const {
 	add a collection of title block available in the combo box
 	@param tbt_collection
 */
-void TitleBlockPropertiesWidget::addCollection(TitleBlockTemplatesCollection *tbt_collection)
+void TitleBlockPropertiesWidget::addCollection(
+		TitleBlockTemplatesCollection *tbt_collection)
 {
 	if (!tbt_collection || m_tbt_collection_list.contains(tbt_collection)) return;
 	m_tbt_collection_list << tbt_collection;
@@ -290,7 +308,8 @@ void TitleBlockPropertiesWidget::addCollection(TitleBlockTemplatesCollection *tb
 	@param current_date : true for display current date radio button
 	@param project
 */
-void TitleBlockPropertiesWidget::initDialog(const bool &current_date,  QETProject *project) {
+void TitleBlockPropertiesWidget::initDialog(const bool &current_date,
+					    QETProject *project) {
 	m_dcw = new DiagramContextWidget();
 	ui -> m_tab2_vlayout -> addWidget(m_dcw);
 
@@ -298,17 +317,28 @@ void TitleBlockPropertiesWidget::initDialog(const bool &current_date,  QETProjec
 	ui -> m_current_date_rb -> setVisible(current_date);
 
 	m_tbt_edit = new QAction(tr("Éditer ce modèle", "menu entry"), this);
-	m_tbt_duplicate = new QAction(tr("Dupliquer et éditer ce modèle", "menu entry"), this);
+	m_tbt_duplicate = new QAction(tr("Dupliquer et éditer ce modèle",
+					 "menu entry"),
+				      this);
 
-	connect(m_tbt_edit, SIGNAL(triggered()), this, SLOT(editCurrentTitleBlockTemplate()));
-	connect(m_tbt_duplicate, SIGNAL(triggered()), this, SLOT(duplicateCurrentTitleBlockTemplate()));
+	connect(m_tbt_edit,
+		SIGNAL(triggered()),
+		this,
+		SLOT(editCurrentTitleBlockTemplate()));
+	connect(m_tbt_duplicate,
+		SIGNAL(triggered()),
+		this,
+		SLOT(duplicateCurrentTitleBlockTemplate()));
 
 	m_tbt_menu = new QMenu(tr("Title block templates actions"));
 	m_tbt_menu -> addAction(m_tbt_edit);
 	m_tbt_menu -> addAction(m_tbt_duplicate);
 	ui -> m_tbt_pb -> setMenu(m_tbt_menu);
 
-	connect(ui->m_tbt_cb, SIGNAL(currentIndexChanged(int)), this, SLOT(changeCurrentTitleBlockTemplate(int)));
+	connect(ui->m_tbt_cb,
+		SIGNAL(currentIndexChanged(int)),
+		this,
+		SLOT(changeCurrentTitleBlockTemplate(int)));
 
 	if (project!= nullptr){
 		keys_2 = project -> folioAutoNum().keys();
@@ -332,7 +362,9 @@ void TitleBlockPropertiesWidget::initDialog(const bool &current_date,  QETProjec
 	@param collection : title block collection
 	@return the index of the title block or -1 if no match
 */
-int TitleBlockPropertiesWidget::getIndexFor(const QString &tbt_name, const QET::QetCollection collection) const
+int TitleBlockPropertiesWidget::getIndexFor(
+		const QString &tbt_name,
+		const QET::QetCollection collection) const
 {
 	for (int i = 0; i<ui->m_tbt_cb->count(); i++) {
 		if (ui->m_tbt_cb->itemData(i).toString() == tbt_name)

@@ -170,8 +170,11 @@ QETProject *XmlProjectElementCollectionItem::project() const
 	Use this method for set this item the root of the collection
 	@param project : project to manage the collection
 	@param set_data : if true, call setUpData for every child of this item
+	@param hide_element : bool
 */
-void XmlProjectElementCollectionItem::setProject(QETProject *project, bool set_data, bool hide_element)
+void XmlProjectElementCollectionItem::setProject(QETProject *project,
+						 bool set_data,
+						 bool hide_element)
 {
 	if (m_project)
 		return;
@@ -271,11 +274,16 @@ void XmlProjectElementCollectionItem::populate(bool set_data, bool hide_element)
 /**
 	@brief XmlProjectElementCollectionItem::setXmlElement
 	Set the managed content of this item
-	@param element : the dom element (directory or element), to be managed by this item
+	@param element :
+	the dom element (directory or element), to be managed by this item
 	@param project : the parent project of managed collection
 	@param set_data : if true, call setUpData for every child of this item
+	@param hide_element : bool
 */
-void XmlProjectElementCollectionItem::setXmlElement(const QDomElement& element, QETProject *project, bool set_data, bool hide_element)
+void XmlProjectElementCollectionItem::setXmlElement(const QDomElement& element,
+						    QETProject *project,
+						    bool set_data,
+						    bool hide_element)
 {
 	m_dom_element = element;
 	m_project = project;

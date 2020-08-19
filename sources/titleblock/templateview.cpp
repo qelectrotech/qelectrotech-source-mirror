@@ -56,7 +56,8 @@ TitleBlockTemplateView::TitleBlockTemplateView(QWidget *parent) :
 	@param scene
 	@param parent Parent QWidget.
 */
-TitleBlockTemplateView::TitleBlockTemplateView(QGraphicsScene *scene, QWidget *parent) :
+TitleBlockTemplateView::TitleBlockTemplateView(QGraphicsScene *scene,
+					       QWidget *parent) :
 	QGraphicsView(scene, parent),
 	tbtemplate_(nullptr),
 	tbgrid_(nullptr),
@@ -453,7 +454,9 @@ TitleBlockTemplateCellsSet TitleBlockTemplateView::cells(const QRectF &rect) con
 	@param count :
 	If non-zero, will be changed to reflect the number of selected cells
 */
-void TitleBlockTemplateView::analyzeSelectedCells(bool *can_merge, bool *can_split, int *count) {
+void TitleBlockTemplateView::analyzeSelectedCells(bool *can_merge,
+						  bool *can_split,
+						  int *count) {
 	if (!can_merge && !can_split) return;
 	
 	if (!tbtemplate_) {
@@ -834,7 +837,10 @@ bool TitleBlockTemplateView::event(QEvent *event) {
 	@param x : row
 	@param y : column
 */
-void TitleBlockTemplateView::normalizeCells(QList<TitleBlockCell> &cells, int x, int y) const {
+void TitleBlockTemplateView::normalizeCells(
+		QList<TitleBlockCell> &cells,
+		int x,
+		int y) const {
 	if (!cells.count()) return;
 	
 	int min_row = cells.at(0).num_row;
@@ -1064,7 +1070,8 @@ void TitleBlockTemplateView::removeItem(QGraphicsLayoutItem *item) {
 	@param items : a list of QGraphicsItem
 	@return the corresponding TitleBlockTemplateCellsSet
 */
-TitleBlockTemplateCellsSet TitleBlockTemplateView::makeCellsSetFromGraphicsItems(const QList<QGraphicsItem *> &items) const {
+TitleBlockTemplateCellsSet TitleBlockTemplateView::makeCellsSetFromGraphicsItems(
+		const QList<QGraphicsItem *> &items) const {
 	TitleBlockTemplateCellsSet set(this);
 	foreach (QGraphicsItem *item, items) {
 		if (TitleBlockTemplateVisualCell *cell_view = dynamic_cast<TitleBlockTemplateVisualCell *>(item)) {

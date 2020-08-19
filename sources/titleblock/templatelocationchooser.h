@@ -29,10 +29,12 @@ class TitleBlockTemplateLocationChooser : public QWidget {
 	Q_OBJECT
 	// Constructor, destructor
 	public:
-	TitleBlockTemplateLocationChooser(const TitleBlockTemplateLocation &, QWidget * = nullptr);
+	TitleBlockTemplateLocationChooser(const TitleBlockTemplateLocation &,
+					  QWidget * = nullptr);
 	~TitleBlockTemplateLocationChooser() override;
 	private:
-	TitleBlockTemplateLocationChooser(const TitleBlockTemplateLocationChooser &);
+	TitleBlockTemplateLocationChooser(
+			const TitleBlockTemplateLocationChooser &);
 	
 	// methods
 	public:
