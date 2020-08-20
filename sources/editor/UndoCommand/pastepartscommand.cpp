@@ -24,9 +24,9 @@
 	@param view : view where this command work
 	@param content_to_paste : content to paste
 	@param parent : parent undo command
- *
-	Note : all terminal stored in @content_to_paste get a new uuid in the constructor of this class to avoid have
-	several terminal of an element with the same uuid.
+	@note all terminal stored in content_to_paste get a new uuid
+	in the constructor of this class to avoid have several terminal
+	of an element with the same uuid.
 */
 PastePartsCommand::PastePartsCommand(ElementView *view, const ElementContent &content_to_paste, QUndoCommand *parent) :
 	ElementEditionCommand(view ? view -> scene() : nullptr, view, parent)

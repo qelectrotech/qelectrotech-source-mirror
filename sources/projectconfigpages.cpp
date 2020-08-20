@@ -57,8 +57,12 @@ QETProject *ProjectConfigPage::project() const {
 }
 
 /**
+	@brief ProjectConfigPage::setProject
 	Set \a new_project as the project being edited by this page.
-	@param read_values True to read values from the project into widgets before setting them read only accordingly, false otherwise. Defaults to true.
+	@param new_project : True to read values from the project
+	into widgets before setting them read only accordingly,
+	false otherwise. Defaults to true.
+	@param read_values
 	@return the former project
 */
 QETProject *ProjectConfigPage::setProject(QETProject *new_project, bool read_values) {
@@ -215,8 +219,8 @@ void ProjectMainConfigPage::adjustReadOnly() {
 /**
 	@brief ProjectAutoNumConfigPage::ProjectAutoNumConfigPage
 	Default constructor
-	@param project, project to edit
-	@param parent, parent widget
+	@param project : project to edit
+	@param parent : parent widget
 */
 ProjectAutoNumConfigPage::ProjectAutoNumConfigPage (QETProject *project, QWidget *parent) :
 	ProjectConfigPage(project, parent)
@@ -342,7 +346,7 @@ void ProjectAutoNumConfigPage::buildConnections()
 /**
 	@brief ProjectAutoNumConfigPage::updateContext_conductor
 	Display the current selected context for conductor
-	@param str, key of context stored in project
+	@param str : key of context stored in project
 */
 void ProjectAutoNumConfigPage::updateContextConductor(const QString& str) {
 	if (str == tr("Nom de la nouvelle numérotation")) m_saw_conductor -> setContext(NumerotationContext());
@@ -352,7 +356,7 @@ void ProjectAutoNumConfigPage::updateContextConductor(const QString& str) {
 /**
 	@brief ProjectAutoNumConfigPage::updateContext_folio
 	Display the current selected context for folio
-	@param str, key of context stored in project
+	@param str : key of context stored in project
 */
 void ProjectAutoNumConfigPage::updateContextFolio(const QString& str) {
 	if (str == tr("Nom de la nouvelle numérotation")) m_saw_folio -> setContext(NumerotationContext());
@@ -362,7 +366,7 @@ void ProjectAutoNumConfigPage::updateContextFolio(const QString& str) {
 /**
 	@brief ProjectAutoNumConfigPage::updateContextElement
 	Display the current selected context for element
-	@param str, key of context stored in project
+	@param str : key of context stored in project
 */
 void ProjectAutoNumConfigPage::updateContextElement(const QString& str)
 {
@@ -617,7 +621,7 @@ void ProjectAutoNumConfigPage::removeContextFolio() {
 
 /**
 	@brief ProjectAutoNumConfigPage::changeToTab
-	@param tab index
+	@param i index
 	Change to Selected Tab
 */
 void ProjectAutoNumConfigPage::changeToTab(int i)

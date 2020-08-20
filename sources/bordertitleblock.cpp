@@ -499,7 +499,7 @@ void BorderTitleBlock::updateRectangles()
 /**
 	@brief BorderTitleBlock::draw
 	Draw the border and the titleblock.
-	@param painter, QPainter to use for draw this.
+	@param painter : QPainter to use for draw this.
 */
 void BorderTitleBlock::draw(QPainter *painter)
 {

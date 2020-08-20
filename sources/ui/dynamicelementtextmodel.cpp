@@ -487,6 +487,7 @@ QModelIndex DynamicElementTextModel::indexFromText(
 /**
 	@brief DynamicElementTextModel::undoForEditedText
 	@param deti
+	@param parent_undo
 	@return A QUndoCommand that describe all changes made for deti.
 	Each change made for deti is append as a child of the returned QUndoCommand.
 	In other word, if the returned QUndoCommand have no child,

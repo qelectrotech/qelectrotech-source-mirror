@@ -242,7 +242,7 @@ void MoveElementsCommand::redo() {
 
 /**
 	@brief MoveElementsCommand::move
-	Move item and conductor to @actual_movement
+	Move item and conductor to actual_movement
 	@param actual_movement movement to be applied
 */
 void MoveElementsCommand::move(const QPointF &actual_movement)
@@ -375,7 +375,7 @@ void MoveConductorsTextsCommand::redo() {
 	il sera ignore
 	@param old_pos Position du champ de texte avant le mouvement
 	@param new_pos Position du champ de texte apres le mouvement
-	@param alread_moved true si le champ de texte etait deja a une position
+	@param already_moved true si le champ de texte etait deja a une position
 	personnalisee par l'utilisateur, false sinon
 */
 void MoveConductorsTextsCommand::addTextMovement(ConductorTextItem *text_item,

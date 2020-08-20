@@ -116,9 +116,10 @@ QPointF PartText::margin() const {
 }
 
 /**
-	@reimp QGraphicsItem::focusInEvent(QFocusEvent *)
-	@param e The QFocusEvent object describing the focus gain.
+	@brief PartText::focusInEvent
+	@param e : The QFocusEvent object describing the focus gain.
 	Start text edition when the item gains focus.
+	@see QGraphicsItem::focusInEvent(QFocusEvent *)
 */
 void PartText::focusInEvent(QFocusEvent *e) {
 	startEdition();
@@ -126,9 +127,10 @@ void PartText::focusInEvent(QFocusEvent *e) {
 }
 
 /**
-	@reimp QGraphicsItem::focusOutEvent(QFocusEvent *)
-	@param e The QFocusEvent object describing the focus loss.
+	@brief PartText::focusOutEvent
+	@param e : The QFocusEvent object describing the focus loss.
 	End text edition when the item loses focus.
+	@see QGraphicsItem::focusOutEvent(QFocusEvent *)
 */
 void PartText::focusOutEvent(QFocusEvent *e) {
 	QGraphicsTextItem::focusOutEvent(e);
@@ -136,9 +138,11 @@ void PartText::focusOutEvent(QFocusEvent *e) {
 }
 
 /**
-	@reimp QGraphicsTextItem::keyPressEvent()
-	Used to handle the escape key when the event is delivered to the field, not
-	to the decorator.
+	@brief PartText::keyPressEvent
+	Used to handle the escape key when the event is delivered to the field,
+	not to the decorator.
+	@param event
+	@see QGraphicsTextItem::keyPressEvent()
 */
 void PartText::keyPressEvent(QKeyEvent *event) {
 	if (event -> key() == Qt::Key_Escape) {

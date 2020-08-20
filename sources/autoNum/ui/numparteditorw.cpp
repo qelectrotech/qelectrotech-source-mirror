@@ -20,7 +20,10 @@
 #include "ui_numparteditorw.h"
 
 /**
+	@brief NumPartEditorW::NumPartEditorW
 	Constructor
+	@param type
+	@param parent
 */
 NumPartEditorW::NumPartEditorW(int type, QWidget *parent) :
 	QWidget(parent),
@@ -208,7 +211,7 @@ void NumPartEditorW::on_type_cb_activated(int) {
 
 /**
 	@brief NumPartEditorW::on_value_field_textChanged
-	emit changed when @value_field text changed
+	emit changed when value_field text changed
 */
 void NumPartEditorW::on_value_field_textEdited() {
 	emit changed();
@@ -216,7 +219,7 @@ void NumPartEditorW::on_value_field_textEdited() {
 
 /**
 	@brief NumPartEditorW::on_increase_spinBox_valueChanged
-	emit changed when @increase_spinBox value changed
+	emit changed when increase_spinBox value changed
 */
 void NumPartEditorW::on_increase_spinBox_valueChanged(int) {
 	if (!ui -> value_field -> text().isEmpty()) emit changed();
@@ -224,9 +227,9 @@ void NumPartEditorW::on_increase_spinBox_valueChanged(int) {
 
 /**
 	@brief NumPartEditorW::setType
-	Set good behavior by type @t
-	@param t, type used
-	@param fnum, force the behavior of numeric type
+	Set good behavior by type t
+	@param t : type used
+	@param fnum : force the behavior of numeric type
 */
 void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 	setCurrentIndex(t);
@@ -287,7 +290,7 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 /**
 	@brief NumPartEditorW::setCurrentIndex
 	Set Current Index of type_cb
-	@param t, type used
+	@param t : type used
 */
 void NumPartEditorW::setCurrentIndex(NumPartEditorW::type t) {
 	int i=-1;

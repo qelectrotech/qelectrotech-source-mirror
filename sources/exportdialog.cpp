@@ -397,7 +397,7 @@ void ExportDialog::generateSvg(Diagram *diagram, int width, int height, bool kee
 	@param width  Largeur de l'export DXF
 	@param height Hauteur de l'export DXF
 	@param keep_aspect_ratio True pour conserver le ratio, false sinon
-	@param io_device Peripherique de sortie pour le code DXF (souvent : un fichier)
+	@param file_path
 */
 void ExportDialog::generateDxf(Diagram *diagram,
 			       int width,

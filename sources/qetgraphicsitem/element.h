@@ -98,9 +98,10 @@ class Element : public QetGraphicsItem
 		{return m_element_informations;}
 		virtual void setElementInformations(DiagramContext dc);
 		DiagramContext kindInformations() const
-		{return m_kind_informations;}	//@kind_information_ is used to store more information
-																									//about the herited class like contactelement for know
-																									// kind of contact (simple tempo) or number of contact show by the element.
+		{return m_kind_informations;}
+		//@kind_information_ is used to store more information
+		//about the herited class like contactelement for know
+		// kind of contact (simple tempo) or number of contact show by the element.
 
 		autonum::sequentialNumbers sequenceStruct() const
 		{return m_autoNum_seq;}

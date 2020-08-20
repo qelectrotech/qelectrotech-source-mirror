@@ -54,9 +54,9 @@ DynamicTextFieldEditor::~DynamicTextFieldEditor() {
 
 /**
 	@brief DynamicTextFieldEditor::setPart
-	Set @part as current edited part of this widget.
+	Set part as current edited part of this widget.
 	@param part
-	@return true if @part can be edited by this widget
+	@return true if part can be edited by this widget
 */
 bool DynamicTextFieldEditor::setPart(CustomElementPart *part) {
 	disconnectConnections();

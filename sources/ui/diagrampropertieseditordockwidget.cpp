@@ -37,7 +37,6 @@ DiagramPropertiesEditorDockWidget::DiagramPropertiesEditorDockWidget(QWidget *pa
 	Connect the diagram signal selectionChanged() to this slot selectionChanged();
 	If diagram = nullptr, we just disconnect all signal and remove editor.
 	@param diagram
-	@param diagram
 */
 void DiagramPropertiesEditorDockWidget::setDiagram(Diagram *diagram)
 {

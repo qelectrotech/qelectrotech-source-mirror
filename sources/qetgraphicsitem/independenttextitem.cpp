@@ -37,9 +37,9 @@ IndependentTextItem::IndependentTextItem() :
 }
 
 /**
+	@brief IndependentTextItem::IndependentTextItem
 	Constructeur
 	@param text Le texte affiche par le champ de texte
-	@param parent_diagram Le schema auquel est rattache le champ de texte
 */
 IndependentTextItem::IndependentTextItem(const QString &text) :
 	DiagramTextItem(text, nullptr)

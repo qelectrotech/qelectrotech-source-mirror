@@ -33,8 +33,9 @@ class FormulaAutonumberingW;
 class AutoNumberingManagementW;
 
 /**
-	This class, derived from ConfigPage, aims at providing the basic skeleton
-	for a project configuration page.
+	@brief The ProjectConfigPage class
+	This class, derived from ConfigPage,
+	aims at providing the basic skeleton for a project configuration page.
 */
 class ProjectConfigPage : public ConfigPage {
 	Q_OBJECT

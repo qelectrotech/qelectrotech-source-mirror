@@ -37,6 +37,7 @@ class PropertiesInterface
 			Save properties to setting file.
 			@param settings : is use for prefix a word
 			befor the name of each paramètre
+			@param QString
 		*/
 		virtual void toSettings (QSettings &settings,
 					 const QString = QString()) const =0;
@@ -45,6 +46,7 @@ class PropertiesInterface
 			load properties to setting file.
 			@param settings : is use for prefix a word
 			befor the name of each paramètre
+			@param QString
 		*/
 		virtual void fromSettings (const QSettings &settings,
 					   const QString = QString()) =0;

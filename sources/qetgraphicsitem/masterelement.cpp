@@ -24,10 +24,9 @@
 /**
 	@brief MasterElement::MasterElement
 	Default constructor
-	@param location location of xml definition
-	@param qgi parent QGraphicItem
-	@param s parent diagram
-	@param state int used to know if the creation of element have error
+	@param location : location of xml definition
+	@param qgi : parent QGraphicItem
+	@param state : int used to know if the creation of element have error
 */
 MasterElement::MasterElement(const ElementsLocation &location, QGraphicsItem *qgi, int *state) :
 	Element(location, qgi, state, Element::Master)

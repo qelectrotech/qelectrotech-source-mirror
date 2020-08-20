@@ -26,8 +26,8 @@
 /**
 	@brief ConductorPropertiesDialog::ConductorPropertiesDialog
 	Constructor
-	@param conductor, conductor to edit propertie
-	@param parent, parent widget
+	@param conductor : conductor to edit propertie
+	@param parent : parent widget
 */
 ConductorPropertiesDialog::ConductorPropertiesDialog(Conductor *conductor, QWidget *parent) :
 	QDialog(parent),
@@ -55,8 +55,8 @@ ConductorPropertiesDialog::~ConductorPropertiesDialog()
 /**
 	@brief ConductorPropertiesDialog::PropertiesDialog
 	Static method for open and apply properties.
-	@param conductor, conductor to edit propertie
-	@param parent, parent widget
+	@param conductor : conductor to edit propertie
+	@param parent : parent widget
 */
 void ConductorPropertiesDialog::PropertiesDialog(Conductor *conductor, QWidget *parent)
 {

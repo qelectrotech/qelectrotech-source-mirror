@@ -73,9 +73,12 @@ QRectF ElementPrimitiveDecorator::boundingRect() const
 }
 
 /**
-	Paint the contents of an item in local coordinates, using \a painter, with
-	respect to \a option and
-	@param option The option parameter provides style options for the item, such
+	@brief ElementPrimitiveDecorator::paint
+	Paint the contents of an item in local coordinates, using \a painter,
+	with respect to \a option and
+	@param painter :
+	@param option :
+	The option parameter provides style options for the item, such
 	as its state, exposed area and its level-of-detail hints.
 	@param The widget argument is optional. If provided, it points to the
 	widget that is being painted on; otherwise, it is 0. For cached painting,
@@ -244,7 +247,9 @@ void ElementPrimitiveDecorator::mouseReleaseEvent(QGraphicsSceneMouseEvent *even
 }
 
 /**
-	@reimp QGraphicsItem::keyPressEvent
+	@brief ElementPrimitiveDecorator::keyPressEvent
+	@param e
+	@see QGraphicsItem::keyPressEvent
 */
 void ElementPrimitiveDecorator::keyPressEvent(QKeyEvent *e)
 {
@@ -295,7 +300,9 @@ void ElementPrimitiveDecorator::keyPressEvent(QKeyEvent *e)
 }
 
 /**
-	@reimp QGraphicsItem::keyReleaseEvent
+	@brief ElementPrimitiveDecorator::keyReleaseEvent
+	@param e
+	@see QGraphicsItem::keyReleaseEvent
 */
 void ElementPrimitiveDecorator::keyReleaseEvent(QKeyEvent *e) {
 	// detecte le relachement d'une touche de direction ( = deplacement de parties)

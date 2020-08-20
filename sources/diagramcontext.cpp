@@ -22,10 +22,10 @@
 
 /**
 	@brief DiagramContext::add
-	Add all value of @other to this.
+	Add all value of other to this.
 	If a key already exist, the value is replaced.
 	If a key doesn't exist, she will be added.
-	All other keys of this context, which are not present in @other, stay unchanged.
+	All other keys of this context, which are not present in other, stay unchanged.
 	@param other
 */
 void DiagramContext::add(DiagramContext other)
@@ -164,7 +164,8 @@ void DiagramContext::fromXml(const QDomElement &e, const QString &tag_name) {
 
 /**
 	@brief DiagramContext::fromXml
-	Read this context properties from the @dom_element, looking for tags named @tag_name
+	Read this context properties from the dom_element,
+	looking for tags named tag_name
 	@param dom_element : dom element to parse
 	@param tag_name : tag name to find, by default "property"
 */

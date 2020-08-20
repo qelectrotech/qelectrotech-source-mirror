@@ -30,6 +30,12 @@
 #include <QGraphicsSceneMouseEvent>
 #include <utility>
 
+/**
+	@brief sorting
+	@param qgia
+	@param qgib
+	@return
+*/
 bool sorting(QGraphicsItem *qgia, QGraphicsItem *qgib)
 {
 	return qgia->pos().y() < qgib->pos().y();
@@ -37,7 +43,8 @@ bool sorting(QGraphicsItem *qgia, QGraphicsItem *qgib)
 
 /**
 	@brief ElementTextItemGroup::ElementTextItemGroup
-	@param parent
+	@param name :
+	@param parent :
 */
 ElementTextItemGroup::ElementTextItemGroup(const QString &name, Element *parent) :
 	QGraphicsItemGroup(parent),
@@ -59,7 +66,7 @@ void ElementTextItemGroup::addToGroup(QGraphicsItem *item)
 {
 	if(item->type() == DynamicElementTextItem::Type)
 	{
-			//Befor add text to this group we must to set the text at the same rotation of this group		
+		//Befor add text to this group we must to set the text at the same rotation of this group
 		if((item->rotation() != rotation()) && !m_block_alignment_update)
 			item->setRotation(rotation());
 		

@@ -26,7 +26,7 @@
 /**
 	@brief AddTableDialog::AddTableDialog
 	@param content_widget : the widget to display in the "content" tab.
-	This dialog take ownership of @content_widget.
+	This dialog take ownership of content_widget.
 	@param parent : parent widget.
 */
 AddTableDialog::AddTableDialog(QWidget *content_widget, QWidget *parent) :

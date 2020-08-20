@@ -223,7 +223,6 @@ void AutoNumberingDockWidget::conductorAutoNumChanged() {
 
 /**
 	@brief AutoNumberingDockWidget::on_m_conductor_cb_activated
-	@param unused
 	Set new conductor AutoNum
 */
 void AutoNumberingDockWidget::on_m_conductor_cb_activated(int)
@@ -254,7 +253,6 @@ void AutoNumberingDockWidget::elementAutoNumChanged() {
 
 /**
 	@brief AutoNumberingDockWidget::on_m_element_cb_activated
-	@param unused
 	Set new element AutoNum
 */
 void AutoNumberingDockWidget::on_m_element_cb_activated(int)
@@ -282,7 +280,6 @@ void AutoNumberingDockWidget::folioAutoNumChanged() {
 
 /**
 	@brief AutoNumberingDockWidget::on_m_folio_cb_activated
-	@param unused
 	Set new folio AutoNum
 */
 void AutoNumberingDockWidget::on_m_folio_cb_activated(int) {

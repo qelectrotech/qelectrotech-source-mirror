@@ -392,8 +392,8 @@ QStringList QETApp::elementInfoKeys()
 
 /**
 	@brief ElementsProperties::translatedInfo
-	Return the translated information key given by @info
-	If @info don't match, return an empty string
+	Return the translated information key given by info
+	If info don't match, return an empty string
 	@param info the key to be translated
 	@return
 */
@@ -459,8 +459,8 @@ QStringList QETApp::conductorInfoKeys()
 /**
 	@brief QETApp::conductorTranslatedInfoKey
 	@param key
-	@return the translated information key given by @key
-	If @key don't match, return an empty string
+	@return the translated information key given by key
+	If key don't match, return an empty string
 */
 QString QETApp::conductorTranslatedInfoKey(const QString &key)
 {
@@ -496,8 +496,8 @@ QStringList QETApp::diagramInfoKeys()
 /**
 	@brief QETApp::diagramTranslatedInfoKey
 	@param key
-	@return the translated information key given by @key
-	If @key don't match, return an empty string
+	@return the translated information key given by key
+	If key don't match, return an empty string
 */
 QString QETApp::diagramTranslatedInfoKey(const QString &key)
 {
@@ -1369,7 +1369,7 @@ template <class T> QList<T *> QETApp::detectWindows() const {
 }
 
 /**
-	@param T a class inheriting QMainWindow
+	T a class inheriting QMainWindow
 	@param visible whether detected main windows should be visible
 */
 template <class T> void QETApp::setMainWindowsVisible(bool visible) {
@@ -2048,7 +2048,7 @@ void QETApp::initSystemTray() {
 	Add a list of \a windows to \a menu.
 	This template function assumes it will be given a QList of pointers to
 	objects inheriting the QMainWindow class.
-	@param T the class inheriting QMainWindow
+	T the class inheriting QMainWindow
 	@param menu the menu windows will be added to
 	@param windows A list of top-level windows.
 */

@@ -164,8 +164,9 @@ void Element::editProperty()
 			&ElementPropertiesWidget::findEditClicked,
 			&dialog,
 			&QDialog::reject);
-			//Must be windowModal, else when user do a drag and drop
-			//with the "text" tab of ElementPropertiesWidget, the ui freeze, until user press escape key
+		//Must be windowModal, else when user do a drag and drop
+		//with the "text" tab of ElementPropertiesWidget,
+		//the ui freeze, until user press escape key
 		dialog.setWindowModality(Qt::WindowModal);
 		dialog.exec();
 	}
@@ -194,7 +195,6 @@ void Element::displayHelpLine(bool b)
 	@brief Element::paint
 	@param painter
 	@param options
-	@param widget
 */
 void Element::paint(QPainter *painter,
 		    const QStyleOptionGraphicsItem *options,
@@ -1373,7 +1373,7 @@ void Element::addTextGroup(ElementTextItemGroup *group)
 	and set the parent of group to 0.
 	group is not deleted.
 	All texts owned by the group will be reparented to this element
-	@param name
+	@param group
 */
 void Element::removeTextGroup(ElementTextItemGroup *group)
 {
@@ -1501,8 +1501,9 @@ QList <QPair <Terminal *, Terminal *> > Element::AlignedFreeTerminals() const
 	This method can be call once because init the link according to
 	uuid store in a private list, after link, the list is clear, so
 	call another time do nothing.
- *
-	@param prj, ownership project of this element and other element to be linked
+
+	@param prj :
+	ownership project of this element and other element to be linked
 */
 void Element::initLink(QETProject *prj)
 {
@@ -1645,7 +1646,9 @@ void Element::hoverLeaveEvent(QGraphicsSceneHoverEvent *e) {
 /**
 	@brief Element::setUpFormula
 	Set up the formula used to create the label of this element
-	@param : if true set tagged text to code letter (ex K for coil) with condition :
+	@param code_letter : Q_UNUSED(code_letter)
+	if true set tagged text to code letter
+	(ex K for coil) with condition :
 	formula is empty, text tagged "label" is emptty or "_";
 */
 void Element::setUpFormula(bool code_letter)

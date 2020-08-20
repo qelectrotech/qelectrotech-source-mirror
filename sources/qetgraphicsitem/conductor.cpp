@@ -1495,7 +1495,7 @@ QPainterPath Conductor::path() const
 
 /**
 	@brief Conductor::setPropertiesToPotential
-	@param properties
+	@param property
 	@param only_text
 	Set propertie to conductor and every conductors in
 	the same potential of conductor.
@@ -1532,7 +1532,7 @@ void Conductor::setPropertyToPotential(const ConductorProperties &property, bool
 /**
 	@brief Conductor::setProperties
 	Set property as current property of conductor
-	@param properties : properties
+	@param property : properties
 */
 void Conductor::setProperties(const ConductorProperties &property)
 {

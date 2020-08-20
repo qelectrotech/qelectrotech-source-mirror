@@ -24,8 +24,10 @@
 #define PR(x) qDebug() << #x " = " << x;
 
 /**
-		Constructor
-		@param an project (QETProject) of QET file 
+	@brief nomenclature::nomenclature
+	Constructor
+	@param project : an project (QETProject) of QET file
+	@param parent
 */
 nomenclature::nomenclature(QETProject *project, QWidget *parent):
 	m_project(project)

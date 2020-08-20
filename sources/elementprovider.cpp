@@ -43,11 +43,12 @@ ElementProvider::ElementProvider(Diagram *diag) {
 
 /**
 	@brief ElementProvider::FreeElement
-	Search and return the asked element corresponding  with the given filter
-	All returned element are free, ie element aren't connected with another element
+	Search and return the asked element corresponding with the given filter
+	All returned element are free,
+	ie element aren't connected with another element
 	@param filter
 	the filter for search element
-	(You can find all filter with the #define in Element.h)
+	(You can find all filter with the define in Element.h)
 	@return
 */
 QList <Element *> ElementProvider::freeElement(const int filter) const{
@@ -69,7 +70,7 @@ QList <Element *> ElementProvider::freeElement(const int filter) const{
 /**
 	@brief ElementProvider::fromUuids
 	@param uuid_list list of uuid must be found
-	@return all elements with uuid corresponding to uuid in @uuid_list
+	@return all elements with uuid corresponding to uuid in uuid_list
 */
 QList <Element *> ElementProvider::fromUuids(QList<QUuid> uuid_list) const {
 	QList <Element *> found_element;
@@ -90,7 +91,7 @@ QList <Element *> ElementProvider::fromUuids(QList<QUuid> uuid_list) const {
 	Search and return the asked element corresponding  with the given filter
 	@param filter
 	the filter for search element
-	(You can find all filter with the #define in Element.h)
+	(You can find all filter with the define in Element.h)
 */
 QList <Element *> ElementProvider::find(const int filter) const {
 	QList <Element *> elmt_;
@@ -112,7 +113,8 @@ QList <Element *> ElementProvider::find(const int filter) const {
 	@brief ElementProvider::table
 	@param table
 	@param model
-	@return All tables wich display the derivated class of @model (if set) and not already in all the chain of  next/previous table of @table (if set)
+	@return All tables wich display the derivated class of model (if set)
+	and not already in all the chain of next/previous table of table (if set)
 	If table and model are nullptr, return every tables
 */
 QVector<QetGraphicsTableItem *> ElementProvider::table(QetGraphicsTableItem *table, QAbstractItemModel *model)
@@ -160,7 +162,7 @@ QVector<QetGraphicsTableItem *> ElementProvider::table(QetGraphicsTableItem *tab
 /**
 	@brief ElementProvider::tableFromUuid
 	@param uuid
-	@return the table with uuid @uuid or nullptr if not found
+	@return the table with uuid uuid or nullptr if not found
 */
 QetGraphicsTableItem *ElementProvider::tableFromUuid(const QUuid &uuid)
 {

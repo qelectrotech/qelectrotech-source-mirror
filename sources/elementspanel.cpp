@@ -118,10 +118,15 @@ void ElementsPanel::panelContentChange() {
 }
 
 /**
+	@brief ElementsPanel::addProject
 	Methode permettant d'ajouter un projet au panel d'elements.
-	@param qtwi_parent QTreeWidgetItem parent sous lequel sera insere le projet
-	@param project Projet a inserer dans le panel d'elements
-	@return Le QTreeWidgetItem insere le plus haut
+	@param project :
+	project Projet a inserer dans le panel d'elements
+	@param parent_item : Q_UNUSED
+	QTreeWidgetItem parent sous lequel sera insere le projet
+	@param options : Q_UNUSED
+	@return
+	Le QTreeWidgetItem insere le plus haut
 */
 QTreeWidgetItem *ElementsPanel::addProject(QETProject *project, QTreeWidgetItem *parent_item, PanelOptions options)
 {
@@ -188,7 +193,8 @@ bool ElementsPanel::matchesFilter(const QTreeWidgetItem *item, const QString& fi
 /**
 	@brief ElementsPanel::reload
 	Reload the elements tree
-	@param reload_collections true for read all collections since their sources (files, projects ...)
+	@param reload_collections :
+	true for read all collections since their sources (files, projects ...)
 */
 void ElementsPanel::reload(bool reload_collections) {
 	Q_UNUSED(reload_collections);
@@ -244,8 +250,9 @@ void ElementsPanel::slot_doubleClick(QTreeWidgetItem *qtwi, int) {
 }
 
 /**
-	@param qtwi a QTreeWidgetItem
-	@return the directory path of the object represented by \a qtwi
+	@brief ElementsPanel::dirPathForItem
+	@param item : a QTreeWidgetItem
+	@return the directory path of the object represented by \a item
 */
 QString ElementsPanel::dirPathForItem(QTreeWidgetItem *item) {
 	QString file_path = filePathForItem(item);
@@ -262,8 +269,9 @@ QString ElementsPanel::dirPathForItem(QTreeWidgetItem *item) {
 }
 
 /**
-	@param qtwi a QTreeWidgetItem
-	@return the filepath of the object represented by \a qtwi
+	@brief ElementsPanel::filePathForItem
+	@param item : a QTreeWidgetItem
+	@return the filepath of the object represented by \a item
 */
 QString ElementsPanel::filePathForItem(QTreeWidgetItem *item) {
 	if (!item) return(QString());

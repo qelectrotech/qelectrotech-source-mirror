@@ -105,7 +105,7 @@ ElementQueryWidget::~ElementQueryWidget() {
 /**
 	@brief ElementQueryWidget::setQuery
 	@param query
-	Set the current query to @query.
+	Set the current query to query.
 	If it's possible, rebuild the state of the widget from the query
 */
 void ElementQueryWidget::setQuery(const QString &query)
@@ -370,14 +370,15 @@ QString ElementQueryWidget::queryStr() const
 }
 
 /**
- * @brief ElementQueryWidget::setGroupBy
- * Add the query instruction GROUP BY.
- * @param text : the text of the GROUP BY instruction:
- * ex : if @text = designation, the query will contain "GROUP BY designation"
- * @param set :
- * true by default -> GROUP BY will be used.
- * false -> GROUP BY will be not used
- */
+	@brief ElementQueryWidget::setGroupBy
+	Add the query instruction GROUP BY.
+	@param text : the text of the GROUP BY instruction:
+	ex : if text = designation,
+	the query will contain "GROUP BY designation"
+	@param set :
+	true by default -> GROUP BY will be used.
+	false -> GROUP BY will be not used
+*/
 void ElementQueryWidget::setGroupBy(QString text, bool set)
 {
 	if (set) {
@@ -389,15 +390,16 @@ void ElementQueryWidget::setGroupBy(QString text, bool set)
 }
 
 /**
- * @brief ElementQueryWidget::setCount
- * Add the query instruction COUNT.
- * Unlike setGroupBy, you have to write the entire sentance.
- * ex : text = "COUNT(*) AS designation_qty". the query will contain what you write.
- * @param text : the count instruction
- * @param set :
- * true by default -> count will be used.
- * false -> count will be not used.
- */
+	@brief ElementQueryWidget::setCount
+	Add the query instruction COUNT.
+	Unlike setGroupBy, you have to write the entire sentance.
+	ex : text = "COUNT(*) AS designation_qty".
+	the query will contain what you write.
+	@param text : the count instruction
+	@param set :
+	true by default -> count will be used.
+	false -> count will be not used.
+*/
 void ElementQueryWidget::setCount(QString text, bool set)
 {
 	if (set) {

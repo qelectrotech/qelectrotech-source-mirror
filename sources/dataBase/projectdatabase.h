@@ -30,8 +30,8 @@ class Diagram;
 
 /**
 	@brief The projectDataBase class
-	This class wrap a sqlite data base where you can find several thing about
-	the content of a project.
+	This class wrap a sqlite data base where you can find several thing
+	about the content of a project.
  *
 	@note this class is still in developement.
 */

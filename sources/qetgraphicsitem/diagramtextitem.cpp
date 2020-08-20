@@ -262,7 +262,7 @@ void DiagramTextItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *o
 
 /**
 	@brief DiagramTextItem::focusInEvent
-	@param e
+	@param event
 */
 void DiagramTextItem::focusInEvent(QFocusEvent *event)
 {

@@ -19,10 +19,11 @@
 #include "terminal.h"
 
 /**
-	Constructeur
-	@param editor L'editeur d'element concerne
-	@param parent Le QGraphicsItem parent de cette borne
-	@param scene La scene sur laquelle figure cette borne
+	@brief PartTerminal::PartTerminal
+	@param editor :
+	L'editeur d'element concerne
+	@param parent :
+	Le QGraphicsItem parent de cette borne
 */
 PartTerminal::PartTerminal(QETElementEditor *editor, QGraphicsItem *parent) :
 	CustomElementGraphicPart(editor, parent)

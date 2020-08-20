@@ -175,7 +175,7 @@ QVariant ProjectDBModel::data(const QModelIndex &index, int role) const
 
 /**
 	@brief ProjectDBModel::setQuery
-	Query the internall bd with @query.
+	Query the internall bd with query.
 	@param query
 */
 void ProjectDBModel::setQuery(const QString &query)
@@ -291,7 +291,7 @@ void ProjectDBModel::fromXml(const QDomElement &element)
 
 /**
 	@brief ProjectDBModel::setIdentifier
-	Set the identifier of this model to @identifier
+	Set the identifier of this model to identifier
 	@param identifier
 */
 void ProjectDBModel::setIdentifier(const QString &identifier) {

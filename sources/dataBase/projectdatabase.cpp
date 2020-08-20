@@ -77,7 +77,8 @@ QETProject *projectDataBase::project() const {
 
 /**
 	@brief projectDataBase::newQuery
-	@return a QSqlquery with @query as query and the internal database of this class as database to use.
+	@return a QSqlquery with query as query
+	and the internal database of this class as database to use.
 */
 QSqlQuery projectDataBase::newQuery(const QString &query) {
 	return QSqlQuery(query, m_data_base);
@@ -528,12 +529,10 @@ QHash<QString, QString> projectDataBase::elementInfoToString(Element *elmt)
 
 /**
 	@brief projectDataBase::exportDb
+	@param db
 	@param parent
 	@param caption
 	@param dir
-	@param filter
-	@param selectedFilter
-	@param options
 */
 void projectDataBase::exportDb(projectDataBase *db, QWidget *parent, const QString &caption, const QString &dir)
 {

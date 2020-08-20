@@ -70,7 +70,7 @@ void ElementPictureFactory::getPictures(const ElementsLocation &location, QPictu
 /**
 	@brief ElementPictureFactory::pixmap
 	@param location
-	@return the pixmap of the element at @location
+	@return the pixmap of the element at location
 	Note pixmap can be null
 */
 QPixmap ElementPictureFactory::pixmap(const ElementsLocation &location)
@@ -115,7 +115,7 @@ QPixmap ElementPictureFactory::pixmap(const ElementsLocation &location)
 /**
 	@brief ElementPictureFactory::getPrimitives
 	@param location
-	@return The primtive used to draw the element at @location
+	@return The primtive used to draw the element at location
 */
 ElementPictureFactory::primitives ElementPictureFactory::getPrimitives(const ElementsLocation &location)
 {
@@ -137,8 +137,10 @@ ElementPictureFactory::~ElementPictureFactory() {
 	@param location
 	@param picture
 	@param low_picture
-	if @picture and/or @low_picture are not null this function draw on it and don't store it.
-	if null, this function create a QPicture for normal and low zoom, draw on it and store it in m_pictures_H and m_low_pictures_H
+	if picture and/or low_picture are not null
+	this function draw on it and don't store it.
+	if null, this function create a QPicture for normal and low zoom,
+	draw on it and store it in m_pictures_H and m_low_pictures_H
 	@return 
 */
 bool ElementPictureFactory::build(const ElementsLocation &location, QPicture *picture, QPicture *low_picture)

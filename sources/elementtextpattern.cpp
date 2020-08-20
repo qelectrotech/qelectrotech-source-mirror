@@ -161,8 +161,10 @@ ImportElementTextPattern::ImportElementTextPattern(Element *elmt):
 /**
 	@brief ImportElementTextPattern::getName
 	Open a dialog to let user select a conf
+	@param list
 	@param ok
-	@return 
+	@param erase
+	@return
 */
 QString ImportElementTextPattern::getName(const QStringList& list, bool *ok, bool *erase) const
 {

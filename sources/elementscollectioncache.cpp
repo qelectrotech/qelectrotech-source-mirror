@@ -205,7 +205,7 @@ QPixmap ElementsCollectionCache::pixmap() const {
 	Retrieve the data by building the full CustomElement object matching the
 	given location, without using the cache. Data are then available through
 	pixmap() and name() methods.
-	@param Location Location of a given Element.
+	@param location Location of a given Element.
 	@return True if the retrieval succeeded, false otherwise.
 */
 bool ElementsCollectionCache::fetchData(const ElementsLocation &location) {

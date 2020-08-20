@@ -224,7 +224,7 @@ void PartPolygon::addPoint(const QPointF &point)
 
 /**
 	@brief PartPolygon::setLastPoint
-	Set the last point of polygon to @point
+	Set the last point of polygon to point
 	@param point
 */
 void PartPolygon::setLastPoint(const QPointF &point)
@@ -259,7 +259,7 @@ void PartPolygon::setClosed(bool close)
 
 /**
 	@brief PartPolygon::setHandlerColor
-	Set the handler at pos @pos (in polygon coordinate) to color @color.
+	Set the handler at pos pos (in polygon coordinate) to color color.
 	@param pos
 	@param color
 */

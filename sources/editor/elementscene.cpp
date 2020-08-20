@@ -312,7 +312,7 @@ void ElementScene::drawForeground(QPainter *p, const QRectF &rect) {
 /**
 	@brief ElementScene::setEventInterface
 	Set a new event interface
-	@param interface
+	@param event_interface
 */
 void ElementScene::setEventInterface(ESEventInterface *event_interface)
 {

@@ -26,6 +26,7 @@
 	@param elmt : element to change information
 	@param old_info : old info of element
 	@param new_info : new info of element
+	@param parent
 */
 ChangeElementInformationCommand::ChangeElementInformationCommand(
 		Element *elmt,

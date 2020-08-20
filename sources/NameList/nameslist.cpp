@@ -128,7 +128,7 @@ void NamesList::fromXml(const QDomElement &xml_element, const QHash<QString, QSt
 /**
 	@brief NamesList::fromXml
 	Load the list of lang <-> name from an xml description.
-	@xml_element must be the parent of a child element tagged "names"
+	xml_element must be the parent of a child element tagged "names"
 	If a couple lang <-> name already exist, they will overwrited, else
 	they will be appened.
 	@param xml_element : xml element to analyze

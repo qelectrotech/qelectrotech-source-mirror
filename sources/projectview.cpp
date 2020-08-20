@@ -882,8 +882,8 @@ void ProjectView::diagramAdded(Diagram *diagram)
 
 /**
 	@brief ProjectView::updateTabTitle
-	Update the title of the tab which display the diagram view @diagram_view.
-	@param diagram : The diagram view.
+	Update the title of the tab which display the diagram view.
+	@param diagram_view : The diagram view.
 */
 void ProjectView::updateTabTitle(DiagramView *diagram_view)
 {

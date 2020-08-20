@@ -41,10 +41,12 @@ void NumerotationContext::clear () {
 }
 
 /**
-	@brief NumerotationContext::addValue, add a new value on the contexte
+	@brief NumerotationContext::addValue
+	add a new value on the contexte
 	@param type the type of value
 	@param value the value itself
 	@param increase the increase number of value
+	@param initialvalue
 	@return true if value is append
 */
 bool NumerotationContext::addValue(const QString &type, const QVariant &value, const int increase, const int initialvalue) {

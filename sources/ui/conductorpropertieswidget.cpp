@@ -24,7 +24,7 @@
 /**
 	@brief ConductorPropertiesWidget::ConductorPropertiesWidget
 	Constructor
-	@param parent, paretn widget
+	@param parent : paretn widget
 */
 ConductorPropertiesWidget::ConductorPropertiesWidget(QWidget *parent) :
 	QWidget(parent),
@@ -40,8 +40,8 @@ ConductorPropertiesWidget::ConductorPropertiesWidget(QWidget *parent) :
 /**
 	@brief ConductorPropertiesWidget::ConductorPropertiesWidget
 	Constructor with properties
-	@param properties, properties to edit
-	@param parent, parent widget
+	@param properties : properties to edit
+	@param parent : parent widget
 */
 ConductorPropertiesWidget::ConductorPropertiesWidget(const ConductorProperties &properties, QWidget *parent) :
 	QWidget(parent),

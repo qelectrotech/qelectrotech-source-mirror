@@ -35,6 +35,8 @@ FileElementCollectionItem::FileElementCollectionItem()
 	Set path has root path for this file item.
 	Use this function only to set the beginning of a file collection.
 	@param path
+	@param set_data
+	@param hide_element
 	@return true if path exist.
 */
 bool FileElementCollectionItem::setRootPath(const QString& path,

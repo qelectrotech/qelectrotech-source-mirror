@@ -61,10 +61,13 @@ class NewConductorPotentialSelector : public AbstractPotentialSelector
 
 		/**
 			@brief getPotential
-			Get the conductor propertie of the potential at terminal, and the number of wire in this potential.
+			Get the conductor propertie of the potential at terminal,
+			and the number of wire in this potential.
 			@param terminal
-			@param properties
+			@param seq_num
 			@param number
+			@param properties_list
+			@param c_list
 		*/
 		void getPotential(Terminal *terminal, autonum::sequentialNumbers &seq_num , int &number, QList<ConductorProperties> &properties_list, QList<Conductor*> &c_list)
 		{

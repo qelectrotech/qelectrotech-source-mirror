@@ -23,7 +23,6 @@
 /**
 	Constructeur
 	@param parent_conductor  Conducteur auquel ce texte est rattache
-	@param parent_diagram    Schema auquel ce texte et son conducteur parent sont rattaches
 */
 ConductorTextItem::ConductorTextItem(Conductor *parent_conductor) :
 	DiagramTextItem(parent_conductor),

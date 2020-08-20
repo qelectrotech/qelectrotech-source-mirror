@@ -116,6 +116,7 @@ AddTextsGroupCommand::AddTextsGroupCommand(Element *element,
 /**
 	@brief AddTextsGroupCommand::AddTextsGroupCommand
 	@param element : The element to add a new group
+	@param groupe_name
 	@param texts_list : a list of texts to add to the created group
 	(texts must be child of element)
 	@param parent : parent undo

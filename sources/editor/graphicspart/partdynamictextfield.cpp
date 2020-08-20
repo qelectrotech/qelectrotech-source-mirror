@@ -87,7 +87,7 @@ void PartDynamicTextField::handleUserTransformation(
 
 /**
 	@brief PartDynamicTextField::toXml
-	@param document
+	@param dom_doc
 	@return
 */
 const QDomElement PartDynamicTextField::toXml(QDomDocument &dom_doc) const {
@@ -150,7 +150,7 @@ const QDomElement PartDynamicTextField::toXml(QDomDocument &dom_doc) const {
 
 /**
 	@brief PartDynamicTextField::fromXml
-	@param element
+	@param dom_elmt
 */
 void PartDynamicTextField::fromXml(const QDomElement &dom_elmt) {
 	if (dom_elmt.tagName() != xmlName()) {
@@ -323,7 +323,7 @@ QString PartDynamicTextField::infoName() const{
 
 /**
 	@brief PartDynamicTextField::setCompositeText
-	Set the composite text of this text item to @text
+	Set the composite text of this text item to text
 	@param text
 */
 void PartDynamicTextField::setCompositeText(const QString &text) {

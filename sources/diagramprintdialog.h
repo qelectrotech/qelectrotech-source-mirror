@@ -26,8 +26,9 @@
 class QPrinter;
 
 /**
-	This class implements both the dialog allowing users to configure the printing
-	of a project file and the printing itself.
+	@brief The DiagramPrintDialog class
+	This class implements both the dialog allowing users to configure
+	the printing of a project file and the printing itself.
 */
 class DiagramPrintDialog : public QWidget
 {

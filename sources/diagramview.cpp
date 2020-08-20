@@ -178,8 +178,9 @@ void DiagramView::dropEvent(QDropEvent *e) {
 }
 
 /**
+	@brief DiagramView::handleElementDrop
 	Handle the drop of an element.
-	@param e the QDropEvent describing the current drag'n drop
+	@param event the QDropEvent describing the current drag'n drop
 */
 void DiagramView::handleElementDrop(QDropEvent *event)
 {
@@ -573,8 +574,9 @@ bool DiagramView::gestures() const
 }
 
 /**
+	@brief DiagramView::wheelEvent
 	Manage wheel event of mouse
-	@param e QWheelEvent
+	@param event QWheelEvent
 */
 void DiagramView::wheelEvent(QWheelEvent *event)
 {
@@ -1001,7 +1003,7 @@ void DiagramView::resetConductors() {
 	-At first activation (QEvent::WindowActivate or QEvent::Show) we zoomFit.
 	-Convert event interpreted to mouse event to gesture event if needed.
 	-send Shortcut to view (by default send to QMenu /QAction)
-	@param e the event.
+	@param e : the event.
 	@return
 */
 bool DiagramView::event(QEvent *e) {

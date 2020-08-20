@@ -25,6 +25,7 @@
 	By default, item is selectable, send geometry change (Qt > 4.6),
 	accept mouse left button and accept hover event
 	@param editor QETElement editor that belong this.
+	@param parent
 */
 CustomElementGraphicPart::CustomElementGraphicPart(QETElementEditor *editor, QGraphicsItem *parent) :
 	QGraphicsObject (parent),

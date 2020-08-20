@@ -539,10 +539,13 @@ void ElementView::drawBackground(QPainter *p, const QRectF &r) {
 }
 
 /**
+	@brief ElementView::applyMovement
 	Applique le decalage offset dans le sens movement au rectangle start
-	@param start rectangle a decaler
-	@param movement Orientation du decalage a appliquer
-	@param offset Decalage a appliquer
+	@param start :
+	rectangle a decaler
+	@param offset :
+	Decalage a appliquer
+	@return
 */
 QRectF ElementView::applyMovement(const QRectF &start, const QPointF &offset) {
 	// calcule le decalage a appliquer a partir de l'offset

@@ -37,7 +37,8 @@ DiagramContent::DiagramContent() {}
 /**
 	@brief DiagramContent::DiagramContent
 	Constructor
-	@param diagram : Construct a diagramContent and fill it with the selected item of @diagram
+	@param diagram :
+	Construct a diagramContent and fill it with the selected item of diagram
 	@param selected : this diagramcontent get only selected items if true.
 */
 DiagramContent::DiagramContent(Diagram *diagram, bool selected) :
@@ -368,7 +369,7 @@ bool DiagramContent::hasTextEditing()
 /**
 	@brief DiagramContent::items
 	@param filter
-	@return The items of this diagram content according to @filter
+	@return The items of this diagram content according to filter
 */
 QList<QGraphicsItem *> DiagramContent::items(int filter) const
 {
@@ -395,7 +396,7 @@ QList<QGraphicsItem *> DiagramContent::items(int filter) const
 /**
 	@brief DiagramContent::count
 	@param filter
-	@return The number of items, according to @filter
+	@return The number of items, according to filter
 */
 int DiagramContent::count(int filter) const
 {
@@ -430,7 +431,8 @@ int DiagramContent::count(int filter) const
 /**
 	@brief DiagramContent::sentence
 	@param filter
-	@return A string that describe the items of the diagram content according to @filter.
+	@return A string that describe the items of the diagram
+	content according to filter.
 	Exemple : X elements, Y conductors etc....
 */
 QString DiagramContent::sentence(int filter) const

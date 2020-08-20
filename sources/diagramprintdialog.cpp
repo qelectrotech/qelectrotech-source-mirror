@@ -83,9 +83,9 @@ QString DiagramPrintDialog::docName() const {
 }
 
 /**
-	@param diagram Diagram to be printed
-	@param include_titleblock (Optional, defaults to true) Whether the diagram
-	titleblock should be printed.
+	@brief DiagramPrintDialog::diagramRect
+	@param diagram : Diagram to be printed
+	@param options :
 	@return the rectangle to be printed
 */
 QRect DiagramPrintDialog::diagramRect(Diagram *diagram, const ExportProperties &options) const {

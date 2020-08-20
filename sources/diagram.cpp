@@ -319,7 +319,7 @@ void Diagram::wheelEvent(QGraphicsSceneWheelEvent *event)
 	@brief Diagram::keyPressEvent
 	This event is managed by diagram event interface if any.
 	Else move selected elements
-	@param e
+	@param event
 */
 void Diagram::keyPressEvent(QKeyEvent *event)
 {
@@ -567,7 +567,7 @@ QString Diagram::conductorsAutonumName() const {
 
 /**
 	@brief Diagram::setConductorsAutonumName
-	@param name, name of autonum to use.
+	@param name : name of autonum to use.
 */
 void Diagram::setConductorsAutonumName(const QString &name) {
 	m_conductors_autonum_name= name;
@@ -971,9 +971,11 @@ QDomDocument Diagram::toXml(bool whole_content) {
 /**
 	@brief Diagram::folioSequentialsToXml
 	Add folio sequential to QDomElement
-	@param domElement to add attributes
 	@param hash to retrieve content with content
-	@param sequential type
+	@param domElement to add attributes
+	@param seq_type type
+	@param type
+	@param doc
 */
 void Diagram::folioSequentialsToXml(QHash<QString,
 				    QStringList> *hash,
@@ -1477,13 +1479,14 @@ bool Diagram::fromXml(QDomElement &document,
 }
 
 /**
- * @brief Diagram::folioSequentialsFromXml
- * Load folio sequential from QDomElement
- * @param root containing all folio sequentials
- * @param hash to be loaded with content
- * @param folioSeq type
- * @param seq type
- * @param type of sequential
+	@brief Diagram::folioSequentialsFromXml
+	Load folio sequential from QDomElement
+	@param root containing all folio sequentials
+	@param hash : to be loaded with content
+	@param folioSeq type
+	@param seq type
+	@param type of sequential
+	@param autonumFolioSeqType
 */
 void Diagram::folioSequentialsFromXml(const QDomElement &root,
 				      QHash<QString,
@@ -1719,14 +1722,13 @@ void Diagram::updateLabels()
 }
 
 /**
- * @brief Diagram::insertFolioSeqHash
- * This class inserts a stringlist containing all
- * sequential variables related to an autonum in a QHash
- * @param Hash to be accessed
- * @param autonum title
- * @param sequential to be treated
- * @param type to be treated
- * @param Numerotation Context to be manipulated
+	@brief Diagram::insertFolioSeqHash
+	This class inserts a stringlist containing all
+	sequential variables related to an autonum in a QHash
+	@param hash : to be accessed
+	@param title : autonum title
+	@param type : to be treated
+	@param nc : Context to be manipulated
 */
 void Diagram::insertFolioSeqHash(QHash<QString,
 				 QStringList> *hash,
@@ -1750,11 +1752,10 @@ void Diagram::insertFolioSeqHash(QHash<QString,
 	@brief Diagram::loadFolioSeqHash
 	This class loads all folio sequential variables
 	related to the current autonum
-	@param Hash to be accessed
-	@param autonum title
-	@param sequential to be treated
-	@param type to be treated
-	@param Numerotation Context to be manipulated
+	@param hash : to be accessed
+	@param title : autonum title
+	@param type : to be treated
+	@param nc : Context to be manipulated
 */
 void Diagram::loadFolioSeqHash(QHash<QString,
 			       QStringList> *hash,
@@ -1777,7 +1778,8 @@ void Diagram::loadFolioSeqHash(QHash<QString,
 
 /**
 	@brief Diagram::changeZValue
-	Change the Z value of the current selected item, according to @option
+	Change the Z value of the current selected item, according to option
+	@param option
 */
 void Diagram::changeZValue(QET::DepthOption option)
 {
