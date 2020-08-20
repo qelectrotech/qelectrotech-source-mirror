@@ -1440,23 +1440,6 @@ void QETApp::invertMainWindowVisibility(QWidget *window) {
 }
 
 /**
-	Autodetec Windows style
-	@param Windows style
-*/
-#if defined(Q_OS_WIN) && defined(Q_OS_WINCE)
-
-if defined(Q_OS_WIN)
-			if ((QSysInfo::WindowsVersion >= QSysInfo::WV_VISTA
-				&& QSysInfo::WindowsVersion < QSysInfo::WV_NT_based))
-				style = QLatin1String("WindowsVista");
-			else if ((QSysInfo::WindowsVersion >= QSysInfo::WV_XP
-				&& QSysInfo::WindowsVersion < QSysInfo::WV_NT_based))
-				style = QLatin1String("WindowsXP");
-			else
-				style = QLatin1String("Windows");// default styles for Windows
-#endif
-
-/**
 	@brief QETApp::useSystemPalette
 	Change the application palette
 	\~French Change la palette de l'application
