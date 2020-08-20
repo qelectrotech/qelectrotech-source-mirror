@@ -19,10 +19,9 @@
 #include "diagram.h"
 
 /**
-	@brief QetGraphicsItem::QetGraphicsItem Default constructor
-	@param uuid, uuid of the item
-	@param diagram, diagram aka QGraphicsScene of the item
-	@param parent, Parent Item
+	@brief QetGraphicsItem::QetGraphicsItem
+	Default constructor
+	@param parent : Parent Item
 */
 QetGraphicsItem::QetGraphicsItem(QGraphicsItem *parent):
 	QGraphicsObject(parent),
@@ -144,8 +143,8 @@ void QetGraphicsItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 
 /**
 	@brief QetGraphicsItem::mouseReleaseEvent
- *handle mouse release click
-	@param e
+	handle mouse release click
+	@param event
 */
 void QetGraphicsItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {

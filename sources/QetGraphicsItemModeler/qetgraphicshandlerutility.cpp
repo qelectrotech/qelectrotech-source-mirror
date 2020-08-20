@@ -91,7 +91,7 @@ QVector<QPointF> QetGraphicsHandlerUtility::pointsForArc(const QRectF &rect, qre
 /**
 	@brief QetGraphicsHandlerUtility::rectForPosAtIndex
 	Return a rectangle after modification
-	of the point '@pos' at index '@index' of original rectangle '@old_rect'.
+	of the point 'pos' at index 'index' of original rectangle 'old_rect'.
 	@param old_rect - the rectangle befor modification
 	@param pos - the new position of a key point
 	@param index - the index of the key point to modifie
@@ -120,8 +120,8 @@ QRectF QetGraphicsHandlerUtility::rectForPosAtIndex(const QRectF &old_rect, cons
 
 /**
 	@brief QetGraphicsHandlerUtility::mirrorRectForPosAtIndex
-	Return a rectangle after modification of the point '@pos'
-	at index '@index' of original rectangle '@old_rect'.
+	Return a rectangle after modification of the point 'pos'
+	at index 'index' of original rectangle 'old_rect'.
 	the opposite edge is modified inversely (like a mirror)
 	@param old_rect : the rectangle befor modification
 	@param pos : the new position of a key point

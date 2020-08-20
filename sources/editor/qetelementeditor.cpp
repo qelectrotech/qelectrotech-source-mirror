@@ -424,8 +424,9 @@ void QETElementEditor::setupMenus() {
 /**
 	@brief QETElementEditor::contextMenu
 	Display a context menu, with all available action.
-	@param p, the pos of the menu, in screen coordinate
-	@param actions, a list of actions who can be prepended to the context menu.
+	@param p : the pos of the menu, in screen coordinate
+	@param actions :
+	a list of actions who can be prepended to the context menu.
 */
 void QETElementEditor::contextMenu(QPoint p, QList<QAction *> actions) {
 	QMenu menu(this);

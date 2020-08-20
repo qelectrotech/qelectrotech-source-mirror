@@ -1512,15 +1512,15 @@ void QETDiagramEditor::slot_updateComplexActions()
 	bool ro = diagram_->isReadOnly();
 	
 
-		//Number of selected conductors
+	//Number of selected conductors
 	int selected_conductors_count = diagram_->selectedConductors().count();
 	m_conductor_reset->setEnabled(!ro && selected_conductors_count);
 	
-		// number of selected elements
+	// number of selected elements
 	int selected_elements_count = dc.count(DiagramContent::Elements);
 	m_find_element->setEnabled(selected_elements_count == 1);
 	
-		//Action that need items (elements, conductors, texts...) selected, to be enabled
+	//Action that need items (elements, conductors, texts...) selected, to be enabled
 	bool copiable_items  = dc.hasCopiableItems();
 	bool deletable_items = dc.hasDeletableItems();
 	m_cut              -> setEnabled(!ro && copiable_items);
@@ -1552,7 +1552,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 	else
 		m_group_selected_texts->setDisabled(true);
 
-		// actions need only one editable item
+	// actions need only one editable item
 	int selected_image = dc.count(DiagramContent::Images);
 
 	int selected_shape = dc.count(DiagramContent::Shapes);
@@ -1565,32 +1565,32 @@ void QETDiagramEditor::slot_updateComplexActions()
 	if (selected_editable == 1)
 	{
 		m_edit_selection -> setEnabled(true);
-			//edit element
+		//edit element
 		if (selected_elements_count)
 		{
 			m_edit_selection -> setText(tr("Éditer l'élement", "edit element"));
 			m_edit_selection -> setIcon(QET::Icons::ElementEdit);
 		}
-			//edit text field
+		//edit text field
 		else if (selected_texts)
 		{
 			m_edit_selection -> setText(tr("Éditer le champ de texte", "edit text field"));
 			m_edit_selection -> setIcon(QET::Icons::EditText);
 		}
-			//edit image
+		//edit image
 		else if (selected_image)
 		{
 			m_edit_selection -> setText(tr("Éditer l'image", "edit image"));
 			m_edit_selection -> setIcon(QET::Icons::resize_image);
 		}
-			//edit conductor
+		//edit conductor
 		else if (selected_conductors_count)
 		{
 			m_edit_selection -> setText(tr("Éditer le conducteur", "edit conductor"));
 			m_edit_selection -> setIcon(QET::Icons::ConductorEdit);
 		}
 	}
-		//not an editable item
+	//not an editable item
 	else
 	{
 		m_edit_selection -> setText(tr("Éditer l'objet sélectionné", "edit selected item"));
@@ -1644,6 +1644,7 @@ void QETDiagramEditor::slot_updateModeActions()
 }
 
 /**
+	@brief QETDiagramEditor::slot_updatePasteAction
 	Gere les actions ayant besoin du presse-papier
 */
 void QETDiagramEditor::slot_updatePasteAction() {
@@ -1656,9 +1657,9 @@ void QETDiagramEditor::slot_updatePasteAction() {
 
 /**
 	@brief QETDiagramEditor::addProjectView
-	Add a new project view to workspace and
-	build the connection between the projectview / project and this QETDiagramEditor.
-	@param project_view, project view to add
+	Add a new project view to workspace and build the connection between
+	the projectview / project and this QETDiagramEditor.
+	@param project_view : project view to add
 */
 void QETDiagramEditor::addProjectView(ProjectView *project_view)
 {
@@ -1682,7 +1683,7 @@ void QETDiagramEditor::addProjectView(ProjectView *project_view)
 		// display error messages sent by the project view
 	connect(project_view, SIGNAL(errorEncountered(QString)), this, SLOT(showError(const QString &)));
 
-		//We maximise the new window if the current window is inexistent or maximized
+	//We maximise the new window if the current window is inexistent or maximized
 	QWidget *current_window = m_workspace.activeSubWindow();
 	bool     maximise       = ((!current_window) || (current_window -> windowState() & Qt::WindowMaximized));
 
@@ -1691,9 +1692,9 @@ void QETDiagramEditor::addProjectView(ProjectView *project_view)
 	sub_window -> setWindowIcon(project_view -> windowIcon());
 	sub_window -> systemMenu() -> clear();
 	
-		//By defaut QMdiSubWindow have a QAction "close" with shortcut QKeySequence::Close
-		//But the QAction m_close_file of this class have the same shortcut too.
-		//We remove the shortcut of the QAction of QMdiSubWindow for avoid conflic
+	//By defaut QMdiSubWindow have a QAction "close" with shortcut QKeySequence::Close
+	//But the QAction m_close_file of this class have the same shortcut too.
+	//We remove the shortcut of the QAction of QMdiSubWindow for avoid conflic
 	for(QAction *act : sub_window->actions())
 	{
 		if(act->shortcut() == QKeySequence::Close)
@@ -2124,7 +2125,7 @@ void QETDiagramEditor::removeDiagramFromProject()
 /**
 	@brief QETDiagramEditor::diagramWasAdded
 	Manage the adding of diagram view in a project
-	@param dv, added diagram view
+	@param dv : added diagram view
 */
 void QETDiagramEditor::diagramWasAdded(DiagramView *dv)
 {
@@ -2134,7 +2135,7 @@ void QETDiagramEditor::diagramWasAdded(DiagramView *dv)
 
 /**
 	@brief QETDiagramEditor::findElementInPanel
-	Find the item for @location in the element panel
+	Find the item for location in the element panel
 	@param location
 */
 void QETDiagramEditor::findElementInPanel(const ElementsLocation &location)

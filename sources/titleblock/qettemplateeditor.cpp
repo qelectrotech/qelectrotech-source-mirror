@@ -82,16 +82,18 @@ bool QETTitleBlockTemplateEditor::isEditing(const QString &filepath) {
 }
 
 /**
-	@param true for this editor to prompt the user for a new template name as
-	soon as the window appears in order to duplicate the edited one.
+	@brief QETTitleBlockTemplateEditor::setOpenForDuplication
+	@param duplicate : true for this editor to prompt the user for a
+	new template name as soon as the window appears in order to duplicate
+	the edited one.
 */
 void QETTitleBlockTemplateEditor::setOpenForDuplication(bool duplicate) {
 	duplicate_ = duplicate;
 }
 
 /**
-	@return true if this editor will prompt the user for a new template name as
-	soon as the window appears in order to duplicate the edited one.
+	@return true if this editor will prompt the user for a new template
+	name as soon as the window appears in order to duplicate the edited one.
 */
 bool QETTitleBlockTemplateEditor::openForDuplication() const {
 	return(duplicate_);

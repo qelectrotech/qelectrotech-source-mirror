@@ -480,6 +480,7 @@ QList<CustomElementPart *> ScalePartsCommand::scaledPrimitives() const {
 }
 
 /**
+	@brief ScalePartsCommand::setTransformation
 	Define the transformation applied by this command
 	@param original_rect Bounding rectangle for all scaled primitives before the operation
 	@param original_rect Bounding rectangle for all scaled primitives after the operation

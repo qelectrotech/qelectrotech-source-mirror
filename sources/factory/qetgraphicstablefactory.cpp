@@ -35,8 +35,8 @@ QetGraphicsTableFactory::QetGraphicsTableFactory()
 
 /**
 	@brief QetGraphicsTableFactory::createAndAddNomenclature
-	Open a dialog for ask user the config of the table ,create a nomenclature table
-	and add it to diagram @diagram;
+	Open a dialog for ask user the config of the table,
+	create a nomenclature table and add it to diagram
 	@param diagram
 */
 void QetGraphicsTableFactory::createAndAddNomenclature(Diagram *diagram)
@@ -51,8 +51,8 @@ void QetGraphicsTableFactory::createAndAddNomenclature(Diagram *diagram)
 
 /**
 	@brief QetGraphicsTableFactory::createAndAddSummary
-	Open a dialog for ask user the config of the table ,create a summary table
-	and add it to diagram @diagram;
+	Open a dialog for ask user the config of the table,
+	create a summary table and add it to diagram
 	@param diagram
 */
 void QetGraphicsTableFactory::createAndAddSummary(Diagram *diagram)

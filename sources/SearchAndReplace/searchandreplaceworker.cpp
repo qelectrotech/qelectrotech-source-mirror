@@ -35,7 +35,7 @@ SearchAndReplaceWorker::SearchAndReplaceWorker()
 	@brief SearchAndReplaceWorker::replaceDiagram
 	Replace all properties of each diagram in diagram_list,
 	by the current titleblock propertie of this worker
-	@param diagram_list, list of diagram to be changed,
+	@param diagram_list : list of diagram to be changed,
 	all diagrams must belong to the same project;
 */
 void SearchAndReplaceWorker::replaceDiagram(QList<Diagram *> diagram_list)
@@ -241,17 +241,17 @@ void SearchAndReplaceWorker::replaceConductor(Conductor *conductor)
 	Apply the change of text according to the current advancedStruct
 	All items in the 4 list must belong to the same QETProject,
 	if not this function do nothing
-	@param d
-	@param e
-	@param t
-	@param c
+	@param diagrams :
+	@param elements :
+	@param texts :
+	@param conductors :
 */
 void SearchAndReplaceWorker::replaceAdvanced(QList<Diagram *> diagrams, QList<Element *> elements, QList<IndependentTextItem *> texts, QList<Conductor *> conductors)
 {
 	QETProject *project_ = nullptr;
 	
-		//Some test to check if a least one list have one item
-		//and if all items belong to the same project
+	//Some test to check if a least one list have one item
+	//and if all items belong to the same project
 	if (!diagrams.isEmpty()) {
 		project_ = diagrams.first()->project();
 	} else if (!elements.isEmpty() && elements.first()->diagram()) {
@@ -284,7 +284,7 @@ void SearchAndReplaceWorker::replaceAdvanced(QList<Diagram *> diagrams, QList<El
 			return;
 		}
 	}
-		//The end of the test
+	//The end of the test
 	
 	int who = m_advanced_struct.who;
 	if (who == -1) {

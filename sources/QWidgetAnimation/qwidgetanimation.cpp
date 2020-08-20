@@ -22,6 +22,7 @@
 	@brief QWidgetAnimation::QWidgetAnimation
 	@param widget : widget to animate
 	@param orientation : animate widget horizontally or vertically
+	@param behavior :
 	@param duration : the duration of animation
 	@see void QVariantAnimation::setDuration(int msecs)
 */

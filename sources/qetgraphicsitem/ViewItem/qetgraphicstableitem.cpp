@@ -35,7 +35,7 @@ static int no_model_width = 40;
 
 /**
 	@brief QetGraphicsTableItem::adjustTableToFolio
-	Adjust the table @table to fit at best the folio
+	Adjust the table to fit at best the folio
 	@param table : table to adjust
 	@param margins : margins between table and folio.
 */
@@ -63,8 +63,9 @@ void QetGraphicsTableItem::adjustTableToFolio(QetGraphicsTableItem *table, QMarg
 
 /**
 	@brief QetGraphicsTableItem::checkInsufficientRowsCount
-	Check if the number of rows of @table + linked table is enough to display all
-	content of the model, if not open a dialog to advise user what to do.
+	Check if the number of rows of table + linked table is enough
+	to display all content of the model,
+	if not open a dialog to advise user what to do.
 	@param table
 */
 void QetGraphicsTableItem::checkInsufficientRowsCount(QetGraphicsTableItem *table)
@@ -286,7 +287,7 @@ void QetGraphicsTableItem::paint(QPainter *painter, const QStyleOptionGraphicsIt
 
 /**
 	@brief QetGraphicsTableItem::setSize
-	Set the current size of the table to @size
+	Set the current size of the table to size
 	@param size
 */
 void QetGraphicsTableItem::setSize(const QSize &size)
@@ -370,13 +371,17 @@ int QetGraphicsTableItem::displayNRow() const {
 
 /**
 	@brief QetGraphicsTableItem::setPreviousTable
-	Set the previous table to @table.
-	If this table already have a previous table, the previous table will be replaced.
+	Set the previous table to table.
+	If this table already have a previous table,
+	the previous table will be replaced.
 	Set new table to nullptr to remove an existing previous table.
 	The table uses the model of the new previous table.
-	Since the table does not take ownership of the model, it is your responsibility to manage the old model.
-	Linked tables (table with next and/or previous table) share the same model, a table always take the model of the previous table..
-	When remove a previous table (set to nullptr) from a table, the model is also removed, you need to set a new model
+	Since the table does not take ownership of the model,
+	it is your responsibility to manage the old model.
+	Linked tables (table with next and/or previous table)
+	share the same model, a table always take the model of the previous table.
+	When remove a previous table (set to nullptr) from a table,
+	the model is also removed, you need to set a new model
 	@param table
 */
 void QetGraphicsTableItem::setPreviousTable(QetGraphicsTableItem *table)
@@ -406,7 +411,7 @@ void QetGraphicsTableItem::setPreviousTable(QetGraphicsTableItem *table)
 
 /**
 	@brief QetGraphicsTableItem::setNextTable
-	Set the next table to @table
+	Set the next table to table
 	nullptr will remove an existing next table.
 	@param table
 */

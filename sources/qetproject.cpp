@@ -675,6 +675,7 @@ NumerotationContext QETProject::folioAutoNum (const QString &key) const {
 /**
 	@brief QETProject::freezeExistentConductorLabel
 	Freeze Existent Conductors in the selected folios
+	@param freeze
 	@param from - first folio index to apply freeze
 	@param to - last folio index to apply freeze
 */
@@ -687,6 +688,7 @@ void QETProject::freezeExistentConductorLabel(bool freeze, int from, int to) {
 /**
 	@brief QETProject::freezeNewConductorLabel
 	Freeze New Conductors in the selected folios
+	@param freeze
 	@param from - first folio index to apply freeze
 	@param to - last folio index to apply freeze
 */
@@ -715,6 +717,7 @@ void QETProject::setFreezeNewConductors(bool set) {
 /**
 	@brief QETProject::freezeExistentElementLabel
 	Freeze Existent Elements in the selected folios
+	@param freeze
 	@param from - first folio index to apply freeze
 	@param to - last folio index to apply freeze
 */
@@ -727,6 +730,7 @@ void QETProject::freezeExistentElementLabel(bool freeze, int from, int to) {
 /**
 	@brief QETProject::freezeNewElementLabel
 	Freeze New Elements in the selected folios
+	@param freeze
 	@param from - first folio index to apply freeze
 	@param to - last folio index to apply freeze
 */
@@ -785,7 +789,9 @@ void QETProject::autoFolioNumberingNewFolios(){
 
 /**
 	@brief QETProject::autoFolioNumberingNewFolios
-	@param autonum used, index from selected tabs "from" and "to"
+	@param from
+	@param to
+	@param autonum : used, index from selected tabs "from" and "to"
 	rename folios with selected autonum
 */
 void QETProject::autoFolioNumberingSelectedFolios(int from, int to, const QString& autonum){

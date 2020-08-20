@@ -62,7 +62,7 @@ void ConductorAutoNumerotation::numerate() {
 
 /**
 	@brief ConductorAutoNumerotation::applyText
-	apply the text @t to @conductor_
+	apply the text t to conductor_
 	and all conductors at the same potential
 	@param t : Conductor text
 */
@@ -215,7 +215,7 @@ void ConductorAutoNumerotation::numeratePotential()
 
 /**
 	@brief ConductorAutoNumerotation::numerateNewConductor
-	create and apply a new numerotation to @m_conductor
+	create and apply a new numerotation to m_conductor
 */
 void ConductorAutoNumerotation::numerateNewConductor()
 {

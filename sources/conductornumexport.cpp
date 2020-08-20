@@ -107,7 +107,7 @@ QString ConductorNumExport::wiresNum() const
 
 /**
 	@brief ConductorNumExport::fillHash
-	@value m_hash
+	make/fill of m_hash
 */
 void ConductorNumExport::fillHash()
 {

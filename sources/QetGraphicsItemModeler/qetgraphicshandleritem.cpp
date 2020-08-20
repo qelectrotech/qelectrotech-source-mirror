@@ -22,7 +22,7 @@
 
 /**
 	@brief QetGraphicsHandlerItem::QetGraphicsHandlerItem
-	@param size, the size of the handler
+	@param size : the size of the handler
 */
 QetGraphicsHandlerItem::QetGraphicsHandlerItem(qreal size) :
     m_size(size)
@@ -43,7 +43,7 @@ QRectF QetGraphicsHandlerItem::boundingRect() const {
 
 /**
 	@brief QetGraphicsHandlerItem::setColor
-	@param color, set the color of the handler
+	@param color : set the color of the handler
 */
 void QetGraphicsHandlerItem::setColor(QColor color)
 {
@@ -81,6 +81,7 @@ void QetGraphicsHandlerItem::paint(QPainter *painter,
 /**
 	@brief QetGraphicsHandlerItem::handlerForPoint
 	@param points
+	@param size
 	@return A list of handler with pos at point
 */
 QVector<QetGraphicsHandlerItem *> QetGraphicsHandlerItem::handlerForPoint(
