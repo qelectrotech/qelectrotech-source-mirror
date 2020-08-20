@@ -1640,12 +1640,10 @@ NamesList QETProject::namesListForIntegrationCategory() {
 void QETProject::writeBackup()
 {
 	QDomDocument xml_project(toXml());
-	QString temp;
-	QFuture<void> bac = QtConcurrent::run(QET::writeToFile,
-					      xml_project,
-					      &m_backup_file,
-					      &temp);
-	bac.waitForFinished();
+	QtConcurrent::run(QET::writeToFile,
+					  xml_project,
+					  &m_backup_file,
+					  nullptr);
 }
 
 /**
