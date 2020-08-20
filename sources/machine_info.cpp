@@ -24,6 +24,9 @@
 #include <QStorageInfo>
 #include <QLibraryInfo>
 
+#ifdef Q_OS_WIN
+#include <windows.h>
+#endif
 #include "qet.h"
 
 /**
@@ -230,6 +233,19 @@ void Machine_info::init_get_cpu_info_winnt()
 	pc.gpu.RAM=QString("RAM Total : %1 MB").arg(
 	WinGPURAMOutput.toLongLong() /1024 / 1024);
 	wingpuraminfo.close();
+	
+#ifdef Q_OS_WIN
+	MEMORYSTATUSEX memory_status;
+	ZeroMemory(&memory_status, sizeof(MEMORYSTATUSEX));
+	memory_status.dwLength = sizeof(MEMORYSTATUSEX);
+	if (GlobalMemoryStatusEx(&memory_status)) {
+		pc.ram.Total .append(
+					QString("RAM: %1 MB")
+					.arg(memory_status.ullTotalPhys / (1024 * 1024)));
+	} else {
+		pc.ram.Total.append("Unknown RAM");
+	}
+#endif
 }
 
 /**
