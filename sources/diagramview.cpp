@@ -994,15 +994,12 @@ void DiagramView::resetConductors() {
 }
 
 /**
-	Gere les evenements de la DiagramView
-	@param e Evenement
-*/
-/**
 	@brief DiagramView::event
 	Manage the event on this diagram view.
 	-At first activation (QEvent::WindowActivate or QEvent::Show) we zoomFit.
 	-Convert event interpreted to mouse event to gesture event if needed.
 	-send Shortcut to view (by default send to QMenu /QAction)
+	Gere les evenements de la DiagramView
 	@param e : the event.
 	@return
 */
