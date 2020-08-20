@@ -1500,7 +1500,14 @@ void QETDiagramEditor::slot_updateComplexActions()
 	if(!dv)
 	{
 		QList <QAction *> action_list;
-		action_list << m_conductor_reset << m_find_element << m_cut << m_copy << m_delete_selection << m_rotate_selection << m_edit_selection << m_group_selected_texts;
+		action_list << m_conductor_reset
+			    << m_find_element
+			    << m_cut
+			    << m_copy
+			    << m_delete_selection
+			    << m_rotate_selection
+			    << m_edit_selection
+			    << m_group_selected_texts;
 		for(QAction *action : action_list)
 			action->setEnabled(false);
 		
@@ -1532,8 +1539,18 @@ void QETDiagramEditor::slot_updateComplexActions()
 	QList<DiagramTextItem *> texts = DiagramContent(diagram_).selectedTexts();
 	QList<ElementTextItemGroup *> groups = DiagramContent(diagram_).selectedTextsGroup();
 	int selected_texts = texts.count();
-	int selected_conductor_texts   = 0; for(DiagramTextItem *dti : texts) {if(dti->type() == ConductorTextItem::Type) selected_conductor_texts++;}
-	int selected_dynamic_elmt_text = 0; for(DiagramTextItem *dti : texts) {if(dti->type() == DynamicElementTextItem::Type) selected_dynamic_elmt_text++;}
+	int selected_conductor_texts   = 0;
+	for(DiagramTextItem *dti : texts)
+	{
+		if(dti->type() == ConductorTextItem::Type)
+			selected_conductor_texts++;
+	}
+	int selected_dynamic_elmt_text = 0;
+	for(DiagramTextItem *dti : texts)
+	{
+		if(dti->type() == DynamicElementTextItem::Type)
+			selected_dynamic_elmt_text++;
+	}
 	m_rotate_texts->setEnabled(!ro && (selected_texts || groups.size()));
 	
 	//Action that need only element text selected
@@ -1556,11 +1573,13 @@ void QETDiagramEditor::slot_updateComplexActions()
 	int selected_image = dc.count(DiagramContent::Images);
 
 	int selected_shape = dc.count(DiagramContent::Shapes);
-	int selected_editable = selected_elements_count +
-							(selected_texts - selected_conductor_texts - selected_dynamic_elmt_text) +
-							selected_image +
-							selected_shape +
-							selected_conductors_count;
+	int selected_editable = selected_elements_count
+			+ (selected_texts
+			   - selected_conductor_texts
+			   - selected_dynamic_elmt_text)
+			+ selected_image
+			+ selected_shape
+			+ selected_conductors_count;
 
 	if (selected_editable == 1)
 	{
@@ -1568,41 +1587,47 @@ void QETDiagramEditor::slot_updateComplexActions()
 		//edit element
 		if (selected_elements_count)
 		{
-			m_edit_selection -> setText(tr("Éditer l'élement", "edit element"));
+			m_edit_selection -> setText(tr("Éditer l'élement",
+						       "edit element"));
 			m_edit_selection -> setIcon(QET::Icons::ElementEdit);
 		}
 		//edit text field
 		else if (selected_texts)
 		{
-			m_edit_selection -> setText(tr("Éditer le champ de texte", "edit text field"));
+			m_edit_selection -> setText(tr("Éditer le champ de texte",
+						       "edit text field"));
 			m_edit_selection -> setIcon(QET::Icons::EditText);
 		}
 		//edit image
 		else if (selected_image)
 		{
-			m_edit_selection -> setText(tr("Éditer l'image", "edit image"));
+			m_edit_selection -> setText(tr("Éditer l'image",
+						       "edit image"));
 			m_edit_selection -> setIcon(QET::Icons::resize_image);
 		}
 		//edit conductor
 		else if (selected_conductors_count)
 		{
-			m_edit_selection -> setText(tr("Éditer le conducteur", "edit conductor"));
+			m_edit_selection -> setText(tr("Éditer le conducteur",
+						       "edit conductor"));
 			m_edit_selection -> setIcon(QET::Icons::ConductorEdit);
 		}
 	}
 	//not an editable item
 	else
 	{
-		m_edit_selection -> setText(tr("Éditer l'objet sélectionné", "edit selected item"));
+		m_edit_selection -> setText(tr("Éditer l'objet sélectionné",
+					       "edit selected item"));
 		m_edit_selection -> setIcon(QET::Icons::ElementEdit);
 		m_edit_selection -> setEnabled(false);
 	}
 	
-		//Actions for edit Z value
-	QList<QGraphicsItem *> list = dc.items(DiagramContent::SelectedOnly | \
-											 DiagramContent::Elements | \
-											 DiagramContent::Shapes | \
-											 DiagramContent::Images);
+	//Actions for edit Z value
+	QList<QGraphicsItem *> list = dc.items(
+				DiagramContent::SelectedOnly
+				| DiagramContent::Elements
+				| DiagramContent::Shapes
+				| DiagramContent::Images);
 	m_depth_action_group->setEnabled(list.isEmpty()? false : true);
 }
 
@@ -1668,24 +1693,32 @@ void QETDiagramEditor::addProjectView(ProjectView *project_view)
 	foreach(DiagramView *dv, project_view -> diagram_views())
 		diagramWasAdded(dv);
 	
-		//Manage the close event of project
-	connect(project_view, SIGNAL(projectClosed(ProjectView*)), this, SLOT(projectWasClosed(ProjectView *)));
-		//Manage the adding  of diagram
-	connect(project_view, SIGNAL(diagramAdded(DiagramView *)), this, SLOT(diagramWasAdded(DiagramView *)));
+	//Manage the close event of project
+	connect(project_view, SIGNAL(projectClosed(ProjectView*)),
+		this, SLOT(projectWasClosed(ProjectView *)));
+	//Manage the adding  of diagram
+	connect(project_view, SIGNAL(diagramAdded(DiagramView *)),
+		this, SLOT(diagramWasAdded(DiagramView *)));
 
 	if (QETProject *project = project_view -> project())
-		connect(project, SIGNAL(readOnlyChanged(QETProject *, bool)), this, SLOT(slot_updateActions()));
+		connect(project, SIGNAL(readOnlyChanged(QETProject *, bool)),
+			this, SLOT(slot_updateActions()));
 	
-		//Manage request for edit or find element and titleblock
-	connect (project_view, &ProjectView::findElementRequired, this, &QETDiagramEditor::findElementInPanel);
-	connect (project_view, &ProjectView::editElementRequired, this, &QETDiagramEditor::editElementInEditor);
+	//Manage request for edit or find element and titleblock
+	connect (project_view, &ProjectView::findElementRequired,
+		 this, &QETDiagramEditor::findElementInPanel);
+	connect (project_view, &ProjectView::editElementRequired,
+		 this, &QETDiagramEditor::editElementInEditor);
 	
-		// display error messages sent by the project view
-	connect(project_view, SIGNAL(errorEncountered(QString)), this, SLOT(showError(const QString &)));
+	// display error messages sent by the project view
+	connect(project_view, SIGNAL(errorEncountered(QString)),
+		this, SLOT(showError(const QString &)));
 
 	//We maximise the new window if the current window is inexistent or maximized
 	QWidget *current_window = m_workspace.activeSubWindow();
-	bool     maximise       = ((!current_window) || (current_window -> windowState() & Qt::WindowMaximized));
+	bool maximise = ((!current_window)
+			 || (current_window -> windowState()
+			     & Qt::WindowMaximized));
 
 		//Add the new window
 	QMdiSubWindow *sub_window = m_workspace.addSubWindow(project_view);
@@ -2129,8 +2162,15 @@ void QETDiagramEditor::removeDiagramFromProject()
 */
 void QETDiagramEditor::diagramWasAdded(DiagramView *dv)
 {
-	connect(dv->diagram(), &QGraphicsScene::selectionChanged, this, &QETDiagramEditor::selectionChanged, Qt::DirectConnection);
-	connect(dv, SIGNAL(modeChanged()),      this, SLOT(slot_updateModeActions()));
+	connect(dv->diagram(),
+		&QGraphicsScene::selectionChanged,
+		this,
+		&QETDiagramEditor::selectionChanged,
+		Qt::DirectConnection);
+	connect(dv,
+		SIGNAL(modeChanged()),
+		this,
+		SLOT(slot_updateModeActions()));
 }
 
 /**
@@ -2148,7 +2188,8 @@ void QETDiagramEditor::findElementInPanel(const ElementsLocation &location)
 	@param location Emplacement de l'element a editer
 */
 void QETDiagramEditor::editElementInEditor(const ElementsLocation &location) {
-	QETApp::instance() -> openElementLocations(QList<ElementsLocation>() << location);
+	QETApp::instance() -> openElementLocations(QList<ElementsLocation>()
+						   << location);
 }
 
 /**

@@ -41,7 +41,10 @@ QetGraphicsTableFactory::QetGraphicsTableFactory()
 */
 void QetGraphicsTableFactory::createAndAddNomenclature(Diagram *diagram)
 {
-	QScopedPointer<AddTableDialog> d(new AddTableDialog(new ElementQueryWidget(), diagram->views().first()));
+	QScopedPointer<AddTableDialog> d(
+				new AddTableDialog(
+					new ElementQueryWidget(),
+					diagram->views().first()));
 	d->setWindowTitle(QObject::tr("Ajouter une nomenclature"));
 
 	if (d->exec()) {
@@ -57,7 +60,10 @@ void QetGraphicsTableFactory::createAndAddNomenclature(Diagram *diagram)
 */
 void QetGraphicsTableFactory::createAndAddSummary(Diagram *diagram)
 {
-	QScopedPointer<AddTableDialog> d(new AddTableDialog(new SummaryQueryWidget(), diagram->views().first()));
+	QScopedPointer<AddTableDialog> d(
+				new AddTableDialog(
+					new SummaryQueryWidget(),
+					diagram->views().first()));
 	d->setWindowTitle(QObject::tr("Ajouter un sommaire"));
 
 	if (d->exec()) {

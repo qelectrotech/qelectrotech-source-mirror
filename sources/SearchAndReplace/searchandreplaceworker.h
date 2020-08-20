@@ -61,16 +61,27 @@ class SearchAndReplaceWorker
 		void replaceIndiText(IndependentTextItem *text);
 		void replaceConductor(QList <Conductor *> list);
 		void replaceConductor(Conductor *conductor);
-		void replaceAdvanced (QList<Diagram *> diagrams = QList<Diagram *>(), QList<Element *> elements = QList<Element *>(),\
-							  QList<IndependentTextItem *> texts = QList<IndependentTextItem *>(), QList<Conductor *> conductors = QList<Conductor *>());
+		void replaceAdvanced (
+				QList<Diagram *> diagrams = QList<Diagram *>(),
+				QList<Element *> elements = QList<Element *>(),
+				QList<IndependentTextItem *>
+					texts = QList<IndependentTextItem *>(),
+				QList<Conductor *>
+					conductors = QList<Conductor *>());
 		
-		static QString eraseText() {return QString("XXXXXXXXXXXXXXXXXXX");}
+		static QString eraseText()
+			{return QString("XXXXXXXXXXXXXXXXXXX");}
 		static QDate eraseDate() {return QDate(1900, 1, 1);}
-		static void setupLineEdit(QLineEdit *l, QCheckBox *cb, QString str);
+		static void setupLineEdit(QLineEdit *l,
+					  QCheckBox *cb,
+					  QString str);
 		static ConductorProperties invalidConductorProperties();
 		
-		static ConductorProperties applyChange(const ConductorProperties &original, const ConductorProperties &change);
-		static QString applyChange(const QString &original, const QString &change);
+		static ConductorProperties applyChange(
+				const ConductorProperties &original,
+				const ConductorProperties &change);
+		static QString applyChange(const QString &original,
+					   const QString &change);
 		
 	private:
 		TitleBlockProperties replaceAdvanced (Diagram *diagram);

@@ -482,10 +482,13 @@ QList<CustomElementPart *> ScalePartsCommand::scaledPrimitives() const {
 /**
 	@brief ScalePartsCommand::setTransformation
 	Define the transformation applied by this command
-	@param original_rect Bounding rectangle for all scaled primitives before the operation
-	@param original_rect Bounding rectangle for all scaled primitives after the operation
-*/
-void ScalePartsCommand::setTransformation(const QRectF &original_rect, const QRectF &new_rect) {
+	@param original_rect :
+	Bounding rectangle for all scaled primitives before the operation
+	@param new_rect :
+	Bounding rectangle for all scaled primitives after the operation
+ */
+void ScalePartsCommand::setTransformation(const QRectF &original_rect,
+					  const QRectF &new_rect) {
 	original_rect_ = original_rect;
 	new_rect_ = new_rect;
 }

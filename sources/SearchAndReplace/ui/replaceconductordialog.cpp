@@ -29,7 +29,9 @@ typedef SearchAndReplaceWorker sarw;
 	@param properties
 	@param parent
 */
-ReplaceConductorDialog::ReplaceConductorDialog(const ConductorProperties &properties, QWidget *parent) :
+ReplaceConductorDialog::ReplaceConductorDialog(
+		const ConductorProperties &properties,
+		QWidget *parent) :
 	QDialog(parent),
 	ui(new Ui::ReplaceConductorDialog)
 {

@@ -39,7 +39,8 @@ static int no_model_width = 40;
 	@param table : table to adjust
 	@param margins : margins between table and folio.
 */
-void QetGraphicsTableItem::adjustTableToFolio(QetGraphicsTableItem *table, QMargins margins)
+void QetGraphicsTableItem::adjustTableToFolio(QetGraphicsTableItem *table,
+					      QMargins margins)
 {
 	if (!table->diagram()) {
 		return;
@@ -68,7 +69,8 @@ void QetGraphicsTableItem::adjustTableToFolio(QetGraphicsTableItem *table, QMarg
 	if not open a dialog to advise user what to do.
 	@param table
 */
-void QetGraphicsTableItem::checkInsufficientRowsCount(QetGraphicsTableItem *table)
+void QetGraphicsTableItem::checkInsufficientRowsCount(
+		QetGraphicsTableItem *table)
 {
 	if (!table->diagram() || !table->model()) {
 		return;

@@ -35,7 +35,9 @@ class ReplaceConductorDialog : public QDialog
 	Q_OBJECT
 	
 	public:
-		explicit ReplaceConductorDialog(const ConductorProperties &properties, QWidget *parent = 0);
+		explicit ReplaceConductorDialog(
+			const ConductorProperties &properties,
+			QWidget *parent = 0);
 		~ReplaceConductorDialog();
 		void updatePreview(bool b=true);
 		void setProperties(const ConductorProperties &properties);

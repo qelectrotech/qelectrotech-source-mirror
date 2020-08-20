@@ -794,7 +794,9 @@ void QETProject::autoFolioNumberingNewFolios(){
 	@param autonum : used, index from selected tabs "from" and "to"
 	rename folios with selected autonum
 */
-void QETProject::autoFolioNumberingSelectedFolios(int from, int to, const QString& autonum){
+void QETProject::autoFolioNumberingSelectedFolios(int from,
+						  int to,
+						  const QString& autonum){
 	int total_folio = m_diagrams_list.count();
 	DiagramContext project_wide_properties = m_project_properties;
 	for (int i=from; i<=to; i++) {
@@ -802,8 +804,13 @@ void QETProject::autoFolioNumberingSelectedFolios(int from, int to, const QStrin
 		NumerotationContext nC = folioAutoNum(autonum);
 		NumerotationContextCommands nCC = NumerotationContextCommands(nC);
 		m_diagrams_list[i] -> border_and_titleblock.setFolio("%autonum");
-		m_diagrams_list[i] -> border_and_titleblock.setFolioData(i + 1, total_folio, nCC.toRepresentedString(), project_wide_properties);
-		m_diagrams_list[i] -> project() -> addFolioAutoNum(autonum,nCC.next());
+		m_diagrams_list[i] -> border_and_titleblock.setFolioData(
+					i + 1,
+					total_folio,
+					nCC.toRepresentedString(),
+					project_wide_properties);
+		m_diagrams_list[i] -> project() -> addFolioAutoNum(
+					autonum,nCC.next());
 		m_diagrams_list[i] -> update();
 	}
 }

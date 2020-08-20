@@ -246,7 +246,11 @@ void SearchAndReplaceWorker::replaceConductor(Conductor *conductor)
 	@param texts :
 	@param conductors :
 */
-void SearchAndReplaceWorker::replaceAdvanced(QList<Diagram *> diagrams, QList<Element *> elements, QList<IndependentTextItem *> texts, QList<Conductor *> conductors)
+void SearchAndReplaceWorker::replaceAdvanced(
+		QList<Diagram *> diagrams,
+		QList<Element *> elements,
+		QList<IndependentTextItem *> texts,
+		QList<Conductor *> conductors)
 {
 	QETProject *project_ = nullptr;
 	
@@ -364,7 +368,9 @@ void SearchAndReplaceWorker::replaceAdvanced(QList<Diagram *> diagrams, QList<El
 	@param cb
 	@param str
 */
-void SearchAndReplaceWorker::setupLineEdit(QLineEdit *l, QCheckBox *cb, QString str)
+void SearchAndReplaceWorker::setupLineEdit(QLineEdit *l,
+					   QCheckBox *cb,
+					   QString str)
 {
 	l->setText(str);
 	cb->setChecked(str == eraseText() ? true : false);

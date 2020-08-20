@@ -76,7 +76,9 @@ QVector<QPointF> QetGraphicsHandlerUtility::pointsForLine(const QLineF &line) {
 	@param span_angle : span angle in degree;
 	@return
 */
-QVector<QPointF> QetGraphicsHandlerUtility::pointsForArc(const QRectF &rect, qreal start_angle, qreal span_angle)
+QVector<QPointF> QetGraphicsHandlerUtility::pointsForArc(const QRectF &rect,
+							 qreal start_angle,
+							 qreal span_angle)
 {
 	QVector<QPointF> vector;
 	QPainterPath path;
@@ -101,7 +103,9 @@ QVector<QPointF> QetGraphicsHandlerUtility::pointsForArc(const QRectF &rect, qre
 	If index is lower than 0 or higher than 7,
 	this method return old_rect.
 */
-QRectF QetGraphicsHandlerUtility::rectForPosAtIndex(const QRectF &old_rect, const QPointF &pos, int index)
+QRectF QetGraphicsHandlerUtility::rectForPosAtIndex(const QRectF &old_rect,
+						    const QPointF &pos,
+						    int index)
 {
 	if (index < 0 || index > 7) return old_rect;
 
@@ -132,7 +136,10 @@ QRectF QetGraphicsHandlerUtility::rectForPosAtIndex(const QRectF &old_rect, cons
 	If index is lower than 0 or higher than 7,
 	this method return old_rect.
 */
-QRectF QetGraphicsHandlerUtility::mirrorRectForPosAtIndex(const QRectF &old_rect, const QPointF &pos, int index)
+QRectF QetGraphicsHandlerUtility::mirrorRectForPosAtIndex(
+		const QRectF &old_rect,
+		const QPointF &pos,
+		int index)
 {
 	if (index < 0 || index > 7) return old_rect;
 
