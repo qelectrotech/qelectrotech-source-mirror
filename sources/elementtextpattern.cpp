@@ -140,9 +140,10 @@ ImportElementTextPattern::ImportElementTextPattern(Element *elmt):
 	
 	if(!exist)
 	{
-		QMessageBox::information(parentWidget(),
-								 QObject::tr("Configuration de textes"),
-								 QObject::tr("Aucune configuration de textes existante."));
+		QMessageBox::information(
+					parentWidget(),
+					QObject::tr("Configuration de textes"),
+					QObject::tr("Aucune configuration de textes existante."));
 		return;
 	}
 	
@@ -166,14 +167,17 @@ ImportElementTextPattern::ImportElementTextPattern(Element *elmt):
 	@param erase
 	@return
 */
-QString ImportElementTextPattern::getName(const QStringList& list, bool *ok, bool *erase) const
+QString ImportElementTextPattern::getName(const QStringList& list,
+					  bool *ok,
+					  bool *erase) const
 {
-	return ImportElementTextPatternDialog::getItem(parentWidget(),
-												   QObject::tr("Sélectionner une configuration de textes"),
-												   QObject::tr("Sélectionner la configuration de textes à ajouter à l'élément"),
-												   list,
-												   ok,
-												   erase);
+	return ImportElementTextPatternDialog::getItem(
+				parentWidget(),
+				QObject::tr("Sélectionner une configuration de textes"),
+				QObject::tr("Sélectionner la configuration de textes à ajouter à l'élément"),
+				list,
+				ok,
+				erase);
 }
 
 QWidget *ImportElementTextPattern::parentWidget() const

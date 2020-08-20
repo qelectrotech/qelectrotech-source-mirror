@@ -50,7 +50,9 @@ class ElementPrimitiveDecorator : public QGraphicsObject
 			// methods
 		QRectF internalBoundingRect() const;
 		QRectF boundingRect () const override;
-		void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = nullptr) override;
+		void paint(QPainter *,
+			   const QStyleOptionGraphicsItem *,
+			   QWidget * = nullptr) override;
 		int type() const override { return Type; }
 		void setItems(const QList<QGraphicsItem *> &);
 		void setItems(const QList<CustomElementPart *> &);

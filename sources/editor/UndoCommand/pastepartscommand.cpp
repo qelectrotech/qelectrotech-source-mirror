@@ -28,7 +28,10 @@
 	in the constructor of this class to avoid have several terminal
 	of an element with the same uuid.
 */
-PastePartsCommand::PastePartsCommand(ElementView *view, const ElementContent &content_to_paste, QUndoCommand *parent) :
+PastePartsCommand::PastePartsCommand(
+		ElementView *view,
+		const ElementContent &content_to_paste,
+		QUndoCommand *parent) :
 	ElementEditionCommand(view ? view -> scene() : nullptr, view, parent)
 {
 	for (auto qgi : content_to_paste)

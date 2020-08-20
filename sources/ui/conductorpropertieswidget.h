@@ -34,7 +34,9 @@ class ConductorPropertiesWidget : public QWidget
 
 	public:
 		explicit ConductorPropertiesWidget(QWidget *parent = nullptr);
-		explicit ConductorPropertiesWidget(const ConductorProperties &properties, QWidget *parent = nullptr);
+		explicit ConductorPropertiesWidget(
+			const ConductorProperties &properties,
+			QWidget *parent = nullptr);
 		~ConductorPropertiesWidget() override;
 
 	//METHODS

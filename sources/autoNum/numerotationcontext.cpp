@@ -49,13 +49,24 @@ void NumerotationContext::clear () {
 	@param initialvalue
 	@return true if value is append
 */
-bool NumerotationContext::addValue(const QString &type, const QVariant &value, const int increase, const int initialvalue) {
-	if (!keyIsAcceptable(type) && !value.canConvert(QVariant::String)) return false;
-	if (keyIsNumber(type) && !value.canConvert(QVariant::Int)) return false;
+bool NumerotationContext::addValue(const QString &type,
+				   const QVariant &value,
+				   const int increase,
+				   const int initialvalue) {
+	if (!keyIsAcceptable(type) && !value.canConvert(QVariant::String))
+		return false;
+	if (keyIsNumber(type) && !value.canConvert(QVariant::Int))
+		return false;
 
 	QString valuestr = value.toString();
 	valuestr.remove("|");
-	content_ << type + "|" + valuestr + "|" + QString::number(increase) + "|" + QString::number(initialvalue);
+	content_ << type
+		    + "|"
+		    + valuestr
+		    + "|"
+		    + QString::number(increase)
+		    + "|"
+		    + QString::number(initialvalue);
 	return true;
 }
 

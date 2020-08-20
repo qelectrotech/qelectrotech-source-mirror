@@ -42,7 +42,10 @@ class projectDataBase : public QObject
 	public:
 		projectDataBase(QETProject *project, QObject *parent = nullptr);
 	private:
-		projectDataBase(QETProject *project, const QString &connection_name, const QString &path, QObject *parent = nullptr);
+		projectDataBase(QETProject *project,
+				const QString &connection_name,
+				const QString &path,
+				QObject *parent = nullptr);
 	public:
 		virtual ~projectDataBase() override;
 
@@ -59,7 +62,8 @@ class projectDataBase : public QObject
 		void dataBaseUpdated();
 
 	private:
-		bool createDataBase(const QString &connection_name= QString(), const QString &name = QString());
+		bool createDataBase(const QString &connection_name= QString(),
+				    const QString &name = QString());
 		void createElementNomenclatureView();
 		void createSummaryView();
 		void populateDiagramTable();
@@ -67,7 +71,8 @@ class projectDataBase : public QObject
 		void populateElementInfoTable();
 		void populateDiagramInfoTable();
 		void prepareQuery();
-		static QHash<QString, QString> elementInfoToString(Element *elmt);
+		static QHash<QString, QString> elementInfoToString(
+				Element *elmt);
 
 	private:
 		QPointer<QETProject> m_project;
@@ -81,7 +86,10 @@ class projectDataBase : public QObject
 				  m_insert_diagram_info_query;
 
 	public:
-		static void exportDb(projectDataBase *db, QWidget *parent = nullptr, const QString &caption = QString(), const QString &dir = QString());
+		static void exportDb(projectDataBase *db,
+				     QWidget *parent = nullptr,
+				     const QString &caption = QString(),
+				     const QString &dir = QString());
 };
 
 #endif // PROJECTDATABASE_H

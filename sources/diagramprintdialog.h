@@ -49,22 +49,34 @@ class DiagramPrintDialog : public QWidget
 	void setDocName(const QString &);
 	QString docName() const;
 	QRect diagramRect(Diagram *, const ExportProperties &) const;
-	int pagesCount(Diagram *, const ExportProperties &, bool = false) const;
-	int horizontalPagesCount(Diagram *, const ExportProperties &, bool = false) const;
-	int verticalPagesCount(Diagram *, const ExportProperties &, bool = false) const;
+	int pagesCount(Diagram *,
+		       const ExportProperties &,
+		       bool = false) const;
+	int horizontalPagesCount(Diagram *,
+				 const ExportProperties &,
+				 bool = false) const;
+	int verticalPagesCount(Diagram *,
+			       const ExportProperties &,
+			       bool = false) const;
 	void exec();
 	
 	private:
 	void buildPrintTypeDialog();
 	void buildDialog();
-	void saveReloadDiagramParameters(Diagram *, const ExportProperties&, bool);
+	void saveReloadDiagramParameters(Diagram *,
+					 const ExportProperties&,
+					 bool);
 	void savePageSetupForCurrentPrinter();
 	void loadPageSetupForCurrentPrinter();
 	QString settingsSectionName(const QPrinter *);
 	
 	private slots:
 	void print(const QList<Diagram *> &, bool, const ExportProperties&);
-	void printDiagram(Diagram *, bool, const ExportProperties &, QPainter *, QPrinter * = nullptr);
+	void printDiagram(Diagram *,
+			  bool,
+			  const ExportProperties &,
+			  QPainter *,
+			  QPrinter * = nullptr);
 	void updatePrintTypeDialog();
 	void acceptPrintTypeDialog();
 	void browseFilePrintTypeDialog();

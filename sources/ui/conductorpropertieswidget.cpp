@@ -43,7 +43,9 @@ ConductorPropertiesWidget::ConductorPropertiesWidget(QWidget *parent) :
 	@param properties : properties to edit
 	@param parent : parent widget
 */
-ConductorPropertiesWidget::ConductorPropertiesWidget(const ConductorProperties &properties, QWidget *parent) :
+ConductorPropertiesWidget::ConductorPropertiesWidget(
+		const ConductorProperties &properties,
+		QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::ConductorPropertiesWidget)
 {
@@ -66,7 +68,8 @@ ConductorPropertiesWidget::~ConductorPropertiesWidget()
 	Set the properties
 	@param properties
 */
-void ConductorPropertiesWidget::setProperties(const ConductorProperties &properties)
+void ConductorPropertiesWidget::setProperties(
+		const ConductorProperties &properties)
 {
 	if (m_properties == properties)
 		return;

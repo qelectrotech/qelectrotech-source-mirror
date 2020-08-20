@@ -117,14 +117,19 @@ QList <Element *> ElementProvider::find(const int filter) const {
 	and not already in all the chain of next/previous table of table (if set)
 	If table and model are nullptr, return every tables
 */
-QVector<QetGraphicsTableItem *> ElementProvider::table(QetGraphicsTableItem *table, QAbstractItemModel *model)
+QVector<QetGraphicsTableItem *> ElementProvider::table(
+		QetGraphicsTableItem *table,
+		QAbstractItemModel *model)
 {
 	QVector<QetGraphicsTableItem *> v_;
 	QVector<QetGraphicsTableItem *> linked_vector;
 
 	if (table)
 	{
-		auto linked_table = table->previousTable() ? table->previousTable() : table->nextTable(); //table can be inside a chain, at the head of a chain or alone
+		 //table can be inside a chain, at the head of a chain or alone
+		auto linked_table = table->previousTable()
+				? table->previousTable()
+				: table->nextTable();
 		while (linked_table) { //Go to the first table
 			if (linked_table->previousTable())
 				linked_table = linked_table->previousTable();

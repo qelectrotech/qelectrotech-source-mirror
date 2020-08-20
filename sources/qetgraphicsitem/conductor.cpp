@@ -1504,7 +1504,8 @@ QPainterPath Conductor::path() const
 	to other conductor in the same potential,
 	the other values of property stay unmodified
 */
-void Conductor::setPropertyToPotential(const ConductorProperties &property, bool only_text)
+void Conductor::setPropertyToPotential(const ConductorProperties &property,
+				       bool only_text)
 {
 	setProperties(property);
 	QSet <Conductor *> potential_list = relatedPotentialConductors();

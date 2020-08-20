@@ -65,7 +65,8 @@ QETProject *ProjectConfigPage::project() const {
 	@param read_values
 	@return the former project
 */
-QETProject *ProjectConfigPage::setProject(QETProject *new_project, bool read_values) {
+QETProject *ProjectConfigPage::setProject(QETProject *new_project,
+					  bool read_values) {
 	if (new_project == m_project) return(m_project);
 	
 	QETProject *former_project = m_project;
@@ -222,7 +223,8 @@ void ProjectMainConfigPage::adjustReadOnly() {
 	@param project : project to edit
 	@param parent : parent widget
 */
-ProjectAutoNumConfigPage::ProjectAutoNumConfigPage (QETProject *project, QWidget *parent) :
+ProjectAutoNumConfigPage::ProjectAutoNumConfigPage (QETProject *project,
+						    QWidget *parent) :
 	ProjectConfigPage(project, parent)
 {
 	initWidgets();
@@ -626,5 +628,5 @@ void ProjectAutoNumConfigPage::removeContextFolio() {
 */
 void ProjectAutoNumConfigPage::changeToTab(int i)
 {
-	Q_UNUSED(i);
+	qDebug()<<"Q_UNUSED"<<i;
 }

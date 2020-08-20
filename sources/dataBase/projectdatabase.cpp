@@ -534,7 +534,10 @@ QHash<QString, QString> projectDataBase::elementInfoToString(Element *elmt)
 	@param caption
 	@param dir
 */
-void projectDataBase::exportDb(projectDataBase *db, QWidget *parent, const QString &caption, const QString &dir)
+void projectDataBase::exportDb(projectDataBase *db,
+			       QWidget *parent,
+			       const QString &caption,
+			       const QString &dir)
 {
 	auto caption_ = caption;
 	if (caption_.isEmpty()) {

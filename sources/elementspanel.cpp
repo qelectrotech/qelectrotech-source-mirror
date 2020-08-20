@@ -128,7 +128,9 @@ void ElementsPanel::panelContentChange() {
 	@return
 	Le QTreeWidgetItem insere le plus haut
 */
-QTreeWidgetItem *ElementsPanel::addProject(QETProject *project, QTreeWidgetItem *parent_item, PanelOptions options)
+QTreeWidgetItem *ElementsPanel::addProject(QETProject *project,
+					   QTreeWidgetItem *parent_item,
+					   PanelOptions options)
 {
 	Q_UNUSED(parent_item)
 	Q_UNUSED(options)
@@ -155,8 +157,16 @@ QTreeWidgetItem *ElementsPanel::addProject(QETProject *project, QTreeWidgetItem 
 	return(qtwi_project);
 }
 
-QTreeWidgetItem *ElementsPanel::updateTemplatesCollectionItem(QTreeWidgetItem *tbt_collection_qtwi, TitleBlockTemplatesCollection *tbt_collection, PanelOptions options, bool freshly_created) {
-	QTreeWidgetItem *tbtc_qtwi = GenericPanel::updateTemplatesCollectionItem(tbt_collection_qtwi, tbt_collection, options, freshly_created);
+QTreeWidgetItem *ElementsPanel::updateTemplatesCollectionItem(
+		QTreeWidgetItem *tbt_collection_qtwi,
+		TitleBlockTemplatesCollection *tbt_collection,
+		PanelOptions options,
+		bool freshly_created) {
+	QTreeWidgetItem *tbtc_qtwi = GenericPanel::
+			updateTemplatesCollectionItem(tbt_collection_qtwi,
+						      tbt_collection,
+						      options,
+						      freshly_created);
 	if (tbt_collection && tbt_collection -> parentProject()) {
 		tbtc_qtwi -> setText(0, tr("Cartouches embarqués"));
 		tbtc_qtwi -> setStatusTip(0, tr("Double-cliquez pour réduire ou développer cette collection de cartouches embarquée", "Status tip"));
@@ -164,13 +174,20 @@ QTreeWidgetItem *ElementsPanel::updateTemplatesCollectionItem(QTreeWidgetItem *t
 	return(tbtc_qtwi);
 }
 
-QTreeWidgetItem *ElementsPanel::updateTemplateItem(QTreeWidgetItem *tb_template_qtwi, const TitleBlockTemplateLocation &tb_template, PanelOptions options, bool freshly_created) {
-	QTreeWidgetItem *item = GenericPanel::updateTemplateItem(tb_template_qtwi, tb_template, options, freshly_created);
+QTreeWidgetItem *ElementsPanel::updateTemplateItem(
+		QTreeWidgetItem *tb_template_qtwi,
+		const TitleBlockTemplateLocation &tb_template,
+		PanelOptions options,
+		bool freshly_created) {
+	QTreeWidgetItem *item = GenericPanel::updateTemplateItem(
+				tb_template_qtwi,
+				tb_template,
+				options,
+				freshly_created);
 	item -> setStatusTip(
 		0,
-		tr(
-					"Glissez-déposez ce modèle de cartouche sur un folio pour l'y appliquer.",
-			"Status tip displayed when selecting a title block template"
+		tr("Glissez-déposez ce modèle de cartouche sur un folio pour l'y appliquer.",
+		   "Status tip displayed when selecting a title block template"
 		)
 	);
 	return(item);
@@ -179,13 +196,15 @@ QTreeWidgetItem *ElementsPanel::updateTemplateItem(QTreeWidgetItem *tb_template_
 /**
 	@return true if \a item matches the  filter, false otherwise
 */
-bool ElementsPanel::matchesFilter(const QTreeWidgetItem *item, const QString& filter) const {
+bool ElementsPanel::matchesFilter(const QTreeWidgetItem *item,
+				  const QString& filter) const {
 	if (!item) return(false);
 	
 	// no filter => we consider the item matches
 	if (filter.isEmpty()) return(true);
 	
-	bool item_matches = item -> text(0).contains(filter, Qt::CaseInsensitive);
+	bool item_matches = item -> text(0).contains(filter,
+						     Qt::CaseInsensitive);
 	
 	return(item_matches);
 }

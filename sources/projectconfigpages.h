@@ -123,12 +123,13 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 
 	//Methods
 	public:
-		ProjectAutoNumConfigPage (QETProject *project, QWidget *parent = nullptr);
+		ProjectAutoNumConfigPage (QETProject *project,
+					  QWidget *parent = nullptr);
 
 		QString title() const override;
-		QIcon   icon() const override;
-		void    applyProjectConf() override;
-		virtual void    changeToTab(int);
+		QIcon icon() const override;
+		void applyProjectConf() override;
+		virtual void changeToTab(int);
 	protected:
 		void initWidgets() override;
 		void initLayout() override {}

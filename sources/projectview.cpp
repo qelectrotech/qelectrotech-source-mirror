@@ -899,7 +899,10 @@ void ProjectView::updateTabTitle(DiagramView *diagram_view)
 		{
 			QString formula = diagram->border_and_titleblock.folio();
 			autonum::sequentialNumbers seq;
-			title = autonum::AssignVariables::formulaToLabel(formula, seq, diagram);
+			title = autonum::AssignVariables::formulaToLabel(
+						formula,
+						seq,
+						diagram);
 		}
 		else
 			title = QString::number(diagram->folioIndex() + 1);

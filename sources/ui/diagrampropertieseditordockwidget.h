@@ -32,8 +32,10 @@ class DiagramPropertiesEditorDockWidget : public PropertiesEditorDockWidget
 		void setDiagram(Diagram *diagram);
 
 	private: //Make this method private because only this class manage the editor widget.
-		bool addEditor(PropertiesEditorWidget *editor, int index = 0) { return PropertiesEditorDockWidget::addEditor(editor, index); }
-		bool removeEditor(PropertiesEditorWidget *editor) { return PropertiesEditorDockWidget::removeEditor(editor); }
+		bool addEditor(PropertiesEditorWidget *editor,int index = 0)
+		{return PropertiesEditorDockWidget::addEditor(editor,index); }
+		bool removeEditor(PropertiesEditorWidget *editor)
+		{ return PropertiesEditorDockWidget::removeEditor(editor); }
 
 	private slots:
 		void selectionChanged();

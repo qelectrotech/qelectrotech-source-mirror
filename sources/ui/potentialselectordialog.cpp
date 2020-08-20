@@ -41,15 +41,25 @@ class NewConductorPotentialSelector : public AbstractPotentialSelector
 		{
 			Terminal *terminal_1 = conductor->terminal1;
 			Terminal *terminal_2 = conductor->terminal2;
-				//We temporarily remove the conductor of his two terminals, to get the two existing potential
+			//We temporarily remove the conductor of his two terminals,
+			//to get the two existing potential
 			terminal_1->removeConductor(conductor);
 			terminal_2->removeConductor(conductor);
 
-			getPotential(terminal_1, m_seq_num_1, m_conductor_number_1, m_properties_list_1, m_conductors_list_1);
-			getPotential(terminal_2, m_seq_num_2, m_conductor_number_2, m_properties_list_2, m_conductors_list_2);
+			getPotential(terminal_1,
+				     m_seq_num_1,
+				     m_conductor_number_1,
+				     m_properties_list_1,
+				     m_conductors_list_1);
+			getPotential(terminal_2,
+				     m_seq_num_2,
+				     m_conductor_number_2,
+				     m_properties_list_2,
+				     m_conductors_list_2);
 
 				//There isn't a potential at terminal 1 or 2.
-			if (m_conductor_number_1 == 0 && m_conductor_number_2 == 0) return;
+			if (m_conductor_number_1 == 0
+					&& m_conductor_number_2 == 0) return;
 
 				//Re-add conductor to his terminals.
 			terminal_1->addConductor(conductor);
@@ -69,7 +79,11 @@ class NewConductorPotentialSelector : public AbstractPotentialSelector
 			@param properties_list
 			@param c_list
 		*/
-		void getPotential(Terminal *terminal, autonum::sequentialNumbers &seq_num , int &number, QList<ConductorProperties> &properties_list, QList<Conductor*> &c_list)
+		void getPotential(
+				Terminal *terminal,
+				autonum::sequentialNumbers &seq_num ,
+				int &number, QList<ConductorProperties> &properties_list,
+				QList<Conductor*> &c_list)
 		{
 			Conductor *conductor_in_potential = nullptr;
 
@@ -105,7 +119,8 @@ class NewConductorPotentialSelector : public AbstractPotentialSelector
 			if (!conductor_in_potential)
 				return;
 			seq_num = conductor_in_potential->sequenceNum();
-			number = conductor_in_potential->relatedPotentialConductors().size()+1; //We add +1 because conductor_in_potential isn't count by relatedPotentialConductors
+			//We add +1 because conductor_in_potential isn't count by relatedPotentialConductors
+			number = conductor_in_potential->relatedPotentialConductors().size()+1;
 
 			c_list = conductor_in_potential->relatedPotentialConductors().values();
 			c_list.append(conductor_in_potential);
@@ -131,7 +146,7 @@ class LinkReportPotentialSelector : public AbstractPotentialSelector
 		{
 			if ((report->linkType() & Element::AllReport) && !report->isFree())
 			{
-					//We temporarily unlink report to get the two existing potential
+				//We temporarily unlink report to get the two existing potential
 				Element *other_report = report->linkedElements().first();
 				report->unlinkAllElements();
 

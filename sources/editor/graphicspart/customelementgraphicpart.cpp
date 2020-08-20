@@ -27,7 +27,8 @@
 	@param editor QETElement editor that belong this.
 	@param parent
 */
-CustomElementGraphicPart::CustomElementGraphicPart(QETElementEditor *editor, QGraphicsItem *parent) :
+CustomElementGraphicPart::CustomElementGraphicPart(QETElementEditor *editor,
+						   QGraphicsItem *parent) :
 	QGraphicsObject (parent),
 	CustomElementPart(editor),
 	m_hovered (false),
@@ -37,7 +38,9 @@ CustomElementGraphicPart::CustomElementGraphicPart(QETElementEditor *editor, QGr
 	_color(BlackColor),
 	_antialiased(false)
 {
-	setFlags(QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemSendsGeometryChanges);
+	setFlags(QGraphicsItem::ItemIsSelectable
+		 | QGraphicsItem::ItemIsMovable
+		 | QGraphicsItem::ItemSendsGeometryChanges);
 	setAcceptHoverEvents(true);
 }
 
@@ -54,13 +57,24 @@ CustomElementGraphicPart::~CustomElementGraphicPart() {}
 	@param painter : painter to use for draw cross,
 	the painter state is restored at end of this method.
 */
-void CustomElementGraphicPart::drawCross(const QPointF &center, QPainter *painter)
+void CustomElementGraphicPart::drawCross(const QPointF &center,
+					 QPainter *painter)
 {
 	painter -> save();
 	painter -> setRenderHint(QPainter::Antialiasing, false);
-	painter -> setPen((painter -> brush().color() == QColor(Qt::black) && painter -> brush().isOpaque()) ? Qt::yellow : Qt::blue);
-	painter -> drawLine(QLineF(center.x() - 2.0, center.y(), center.x() + 2.0, center.y()));
-	painter -> drawLine(QLineF(center.x(), center.y() - 2.0, center.x(), center.y() + 2.0));
+	painter -> setPen((painter -> brush().color()
+			   == QColor(Qt::black)
+			   && painter -> brush().isOpaque())
+			  ? Qt::yellow
+			  : Qt::blue);
+	painter -> drawLine(QLineF(center.x() - 2.0,
+				   center.y(),
+				   center.x() + 2.0,
+				   center.y()));
+	painter -> drawLine(QLineF(center.x(),
+				   center.y() - 2.0,
+				   center.x(),
+				   center.y() + 2.0));
 	painter -> restore();
 }
 
@@ -94,7 +108,7 @@ void CustomElementGraphicPart::setLineWeight(const LineWeight lw)
 */
 qreal CustomElementGraphicPart::penWeight() const
 {
-	if      (_lineweight == NoneWeight || _lineweight == ThinWeight) return 0;
+	if (_lineweight == NoneWeight || _lineweight == ThinWeight) return 0;
 	else if (_lineweight == NormalWeight) return 1;
 	else if (_lineweight == UltraWeight)  return 2;
 	else if (_lineweight == BigWeight)    return 5;

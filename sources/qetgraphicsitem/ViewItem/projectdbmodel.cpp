@@ -190,13 +190,19 @@ void ProjectDBModel::setQuery(const QString &query)
 	if (m_project)
 	{
 		if (rm_) {
-			disconnect(m_project->dataBase(), &projectDataBase::dataBaseUpdated, this, &ProjectDBModel::dataBaseUpdated);
+			disconnect(m_project->dataBase(),
+				   &projectDataBase::dataBaseUpdated,
+				   this,
+				   &ProjectDBModel::dataBaseUpdated);
 		}
 		m_project->dataBase()->updateDB();
 		if (rm_) {
 			setHeaderString();
 			fillValue();
-			connect(m_project->dataBase(), &projectDataBase::dataBaseUpdated, this, &ProjectDBModel::dataBaseUpdated);
+			connect(m_project->dataBase(),
+				&projectDataBase::dataBaseUpdated,
+				this,
+				&ProjectDBModel::dataBaseUpdated);
 		}
 	}
 	

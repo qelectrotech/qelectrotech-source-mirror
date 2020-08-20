@@ -46,13 +46,18 @@ bool sorting(QGraphicsItem *qgia, QGraphicsItem *qgib)
 	@param name :
 	@param parent :
 */
-ElementTextItemGroup::ElementTextItemGroup(const QString &name, Element *parent) :
+ElementTextItemGroup::ElementTextItemGroup(const QString &name,
+					   Element *parent) :
 	QGraphicsItemGroup(parent),
 	m_name(name),
 	m_parent_element(parent)
 {
-	setFlags(QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemIsMovable);
-	connect(parent, &Element::linkedElementChanged, this, &ElementTextItemGroup::updateXref);
+	setFlags(QGraphicsItem::ItemIsSelectable
+		 | QGraphicsItem::ItemIsMovable);
+	connect(parent,
+		&Element::linkedElementChanged,
+		this,
+		&ElementTextItemGroup::updateXref);
 }
 
 ElementTextItemGroup::~ElementTextItemGroup()

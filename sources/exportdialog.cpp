@@ -404,7 +404,7 @@ void ExportDialog::generateDxf(Diagram *diagram,
 			       int height,
 			       bool keep_aspect_ratio,
 			       QString &file_path) {
-    saveReloadDiagramParameters(diagram, true);
+	saveReloadDiagramParameters(diagram, true);
 
 	width  -= 2*Diagram::margin;
 	height -= 2*Diagram::margin;
@@ -415,12 +415,22 @@ void ExportDialog::generateDxf(Diagram *diagram,
 	Createdxf::dxfBegin(file_path);
 
 	//Add project elements (lines, rectangles, circles, texts) to dxf file
-    if (epw -> exportProperties().draw_border) {
-        double bx0 = Diagram::margin * Createdxf::xScale;
-        double by0 = Diagram::margin * Createdxf::yScale;
-    Createdxf::drawRectangle(file_path, bx0, -by0, double(width)*Createdxf::xScale, double(height)*Createdxf::yScale, 0);
-    }
-    diagram -> border_and_titleblock.drawDxf(width, height, keep_aspect_ratio, file_path, 0);
+	if (epw -> exportProperties().draw_border) {
+		double bx0 = Diagram::margin * Createdxf::xScale;
+		double by0 = Diagram::margin * Createdxf::yScale;
+		Createdxf::drawRectangle(
+					file_path,
+					bx0,
+					-by0,
+					double(width)*Createdxf::xScale,
+					double(height)*Createdxf::yScale,
+					0);
+	}
+	diagram -> border_and_titleblock.drawDxf(width,
+						 height,
+						 keep_aspect_ratio,
+						 file_path,
+						 0);
 
 	// Build the lists of elements.
 	QList<Element *> list_elements;

@@ -88,7 +88,8 @@ QString DiagramPrintDialog::docName() const {
 	@param options :
 	@return the rectangle to be printed
 */
-QRect DiagramPrintDialog::diagramRect(Diagram *diagram, const ExportProperties &options) const {
+QRect DiagramPrintDialog::diagramRect(Diagram *diagram,
+				      const ExportProperties &options) const {
 	if (!diagram) return(QRect());
 	
 	QRectF diagram_rect = diagram -> border_and_titleblock.borderAndTitleBlockRect();

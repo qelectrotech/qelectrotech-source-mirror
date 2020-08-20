@@ -31,7 +31,8 @@ class ElementsCollectionCache : public QObject
 {
 	public:
 	// constructor, destructor
-	ElementsCollectionCache(const QString &database_path, QObject * = nullptr);
+	ElementsCollectionCache(const QString &database_path,
+				QObject * = nullptr);
 	~ElementsCollectionCache() override;
 	
 	// methods
@@ -46,8 +47,10 @@ class ElementsCollectionCache : public QObject
 	bool fetchData(const ElementsLocation &);
 	bool fetchNameFromCache(const QString &path, const QUuid &uuid);
 	bool fetchPixmapFromCache(const QString &path, const QUuid &uuid);
-	bool cacheName(const QString &path, const QUuid &uuid = QUuid::createUuid());
-	bool cachePixmap(const QString &path, const QUuid &uuid = QUuid::createUuid());
+	bool cacheName(const QString &path,
+		       const QUuid &uuid = QUuid::createUuid());
+	bool cachePixmap(const QString &path,
+			 const QUuid &uuid = QUuid::createUuid());
 	
 	// attributes
 	private:

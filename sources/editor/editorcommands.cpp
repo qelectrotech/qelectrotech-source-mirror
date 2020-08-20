@@ -25,7 +25,9 @@
 	@param view
 	@param parent : Parent command
 */
-ElementEditionCommand::ElementEditionCommand(ElementScene *scene, ElementView *view, QUndoCommand *parent):
+ElementEditionCommand::ElementEditionCommand(ElementScene *scene,
+					     ElementView *view,
+					     QUndoCommand *parent):
 	QUndoCommand(parent),
 	m_scene(scene),
 	m_view(view)
@@ -41,7 +43,10 @@ ElementEditionCommand::ElementEditionCommand(ElementScene *scene, ElementView *v
 	@param view
 	@param parent : Parent command
 */
-ElementEditionCommand::ElementEditionCommand(const QString &text, ElementScene *scene, ElementView *view, QUndoCommand *parent):
+ElementEditionCommand::ElementEditionCommand(const QString &text,
+					     ElementScene *scene,
+					     ElementView *view,
+					     QUndoCommand *parent):
 	QUndoCommand(text, parent),
 	m_scene(scene),
 	m_view(view)
@@ -543,7 +548,12 @@ void ScalePartsCommand::adjustText() {
 	@param elmt_info : new info about type.
 	@param parent : parent undo
 */
-ChangePropertiesCommand::ChangePropertiesCommand(ElementScene *scene, const QString& type, const DiagramContext& info, const DiagramContext& elmt_info, QUndoCommand *parent) :
+ChangePropertiesCommand::ChangePropertiesCommand(
+		ElementScene *scene,
+		const QString& type,
+		const DiagramContext& info,
+		const DiagramContext& elmt_info,
+		QUndoCommand *parent) :
 	ElementEditionCommand(scene, nullptr, parent)
 {
 	m_type << scene->m_elmt_type << type;

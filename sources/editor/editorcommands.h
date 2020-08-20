@@ -33,8 +33,13 @@ class ElementEditionCommand : public QUndoCommand
 {
 		// constructors, destructor
 	public:
-		ElementEditionCommand(ElementScene * = nullptr, ElementView * = nullptr, QUndoCommand * = nullptr);
-		ElementEditionCommand(const QString &, ElementScene * = nullptr, ElementView * = nullptr, QUndoCommand * = nullptr);
+		ElementEditionCommand(ElementScene * = nullptr,
+				      ElementView * = nullptr,
+				      QUndoCommand * = nullptr);
+		ElementEditionCommand(const QString &,
+				      ElementScene * = nullptr,
+				      ElementView * = nullptr,
+				      QUndoCommand * = nullptr);
 		~ElementEditionCommand() override;
 	private:
 		ElementEditionCommand(const ElementEditionCommand &);
@@ -259,7 +264,12 @@ class ScalePartsCommand : public ElementEditionCommand {
 
 class ChangePropertiesCommand : public ElementEditionCommand {
 	public:
-	ChangePropertiesCommand (ElementScene *scene, const QString& type, const DiagramContext& info, const DiagramContext& elmt_info, QUndoCommand *parent=nullptr);
+	ChangePropertiesCommand (
+			ElementScene *scene,
+			const QString& type,
+			const DiagramContext& info,
+			const DiagramContext& elmt_info,
+			QUndoCommand *parent=nullptr);
 	~ChangePropertiesCommand () override;
 
 	void undo() override;

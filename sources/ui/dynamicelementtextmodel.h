@@ -66,8 +66,12 @@ class DynamicElementTextModel : public QStandardItemModel
 	DynamicElementTextItem *textFromIndex(const QModelIndex &index) const;
 	DynamicElementTextItem *textFromItem(QStandardItem *item) const;
 	QModelIndex indexFromText(DynamicElementTextItem *text) const;
-	QUndoCommand *undoForEditedText(DynamicElementTextItem *deti, QUndoCommand *parent_undo = nullptr) const;
-	QUndoCommand *undoForEditedGroup(ElementTextItemGroup *group, QUndoCommand *parent_undo = nullptr) const;
+	QUndoCommand *undoForEditedText(
+			DynamicElementTextItem *deti,
+			QUndoCommand *parent_undo = nullptr) const;
+	QUndoCommand *undoForEditedGroup(
+			ElementTextItemGroup *group,
+			QUndoCommand *parent_undo = nullptr) const;
 	
 	ElementTextItemGroup *groupFromIndex(const QModelIndex &index) const;
 	ElementTextItemGroup *groupFromItem(QStandardItem *item) const;
@@ -75,8 +79,16 @@ class DynamicElementTextModel : public QStandardItemModel
 	bool indexIsText(const QModelIndex &index) const;
 	bool indexIsGroup(const QModelIndex &index) const;
 	
-	bool canDropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent) const override;
-	bool dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent) override;
+	bool canDropMimeData(const QMimeData *data,
+			     Qt::DropAction action,
+			     int row,
+			     int column,
+			     const QModelIndex &parent) const override;
+	bool dropMimeData(const QMimeData *data,
+			  Qt::DropAction action,
+			  int row,
+			  int column,
+			  const QModelIndex &parent) override;
 	QMimeData *mimeData(const QModelIndexList &indexes) const override;
 	QStringList mimeTypes() const override;
 	
@@ -89,22 +101,29 @@ class DynamicElementTextModel : public QStandardItemModel
 	void removeText(DynamicElementTextItem *deti);
 	void addGroup(ElementTextItemGroup *group);
 	void removeGroup(ElementTextItemGroup *group);
-	void addTextToGroup(DynamicElementTextItem *deti, ElementTextItemGroup *group);
-	void removeTextFromGroup(DynamicElementTextItem *deti, ElementTextItemGroup *group);
-	void enableSourceText(DynamicElementTextItem *deti, DynamicElementTextItem::TextFrom tf );
+	void addTextToGroup(DynamicElementTextItem *deti,
+			    ElementTextItemGroup *group);
+	void removeTextFromGroup(DynamicElementTextItem *deti,
+				 ElementTextItemGroup *group);
+	void enableSourceText(DynamicElementTextItem *deti,
+			      DynamicElementTextItem::TextFrom tf );
 	void enableGroupRotationAndPos(ElementTextItemGroup *group);
 	void itemDataChanged(QStandardItem *qsi);
 	void setConnection(DynamicElementTextItem *deti, bool set);
 	void setConnection(ElementTextItemGroup *group, bool set);
-	void updateDataFromText(DynamicElementTextItem *deti, DynamicElementTextModel::ValueType type);
-	void updateDataFromGroup(ElementTextItemGroup *group, DynamicElementTextModel::ValueType type);
+	void updateDataFromText(DynamicElementTextItem *deti,
+				DynamicElementTextModel::ValueType type);
+	void updateDataFromGroup(ElementTextItemGroup *group,
+				 DynamicElementTextModel::ValueType type);
 	
 	private:
 	QPointer<Element> m_element;
 	QHash <DynamicElementTextItem *, QStandardItem *> m_texts_list;
 	QHash <ElementTextItemGroup *, QStandardItem *> m_groups_list;
-	QHash <DynamicElementTextItem *, QList<QMetaObject::Connection>> m_hash_text_connect;
-	QHash <ElementTextItemGroup *, QList<QMetaObject::Connection>> m_hash_group_connect;
+	QHash <DynamicElementTextItem *,
+	QList<QMetaObject::Connection>> m_hash_text_connect;
+	QHash <ElementTextItemGroup *,
+	QList<QMetaObject::Connection>> m_hash_group_connect;
 	bool m_block_dataChanged = false;
 };
 
@@ -115,8 +134,12 @@ class DynamicTextItemDelegate : public QStyledItemDelegate
 	public:
 	DynamicTextItemDelegate(QObject *parent = Q_NULLPTR);
 	
-	QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const override;
-	void setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const override;
+	QWidget *createEditor(QWidget *parent,
+			      const QStyleOptionViewItem &option,
+			      const QModelIndex &index) const override;
+	void setModelData(QWidget *editor,
+			  QAbstractItemModel *model,
+			  const QModelIndex &index) const override;
 	
 	protected:
 	bool eventFilter(QObject *object, QEvent *event) override;

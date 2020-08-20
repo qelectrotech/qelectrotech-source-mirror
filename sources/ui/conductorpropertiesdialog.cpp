@@ -29,7 +29,8 @@
 	@param conductor : conductor to edit propertie
 	@param parent : parent widget
 */
-ConductorPropertiesDialog::ConductorPropertiesDialog(Conductor *conductor, QWidget *parent) :
+ConductorPropertiesDialog::ConductorPropertiesDialog(Conductor *conductor,
+						     QWidget *parent) :
 	QDialog(parent),
 	ui(new Ui::ConductorPropertiesDialog)
 {
@@ -58,11 +59,13 @@ ConductorPropertiesDialog::~ConductorPropertiesDialog()
 	@param conductor : conductor to edit propertie
 	@param parent : parent widget
 */
-void ConductorPropertiesDialog::PropertiesDialog(Conductor *conductor, QWidget *parent)
+void ConductorPropertiesDialog::PropertiesDialog(Conductor *conductor,
+						 QWidget *parent)
 {
 	ConductorPropertiesDialog cpd (conductor, parent);
 
-	if (cpd.exec() == QDialog::Rejected || cpd.properties() == conductor->properties()) return;
+	if (cpd.exec() == QDialog::Rejected
+			|| cpd.properties() == conductor->properties()) return;
 
 	QVariant old_value, new_value;
 	old_value.setValue(conductor->properties());

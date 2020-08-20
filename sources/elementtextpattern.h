@@ -45,7 +45,9 @@ class ImportElementTextPattern
 		ImportElementTextPattern(Element *elmt);
 		
 	private:
-		QString getName(const QStringList& list, bool *ok, bool *erase) const;
+		QString getName(const QStringList& list,
+				bool *ok,
+				bool *erase) const;
 		QWidget *parentWidget() const;
 		void apply(QString name, bool erase = false) const;
 		

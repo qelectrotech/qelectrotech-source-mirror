@@ -117,7 +117,8 @@ QPixmap ElementPictureFactory::pixmap(const ElementsLocation &location)
 	@param location
 	@return The primtive used to draw the element at location
 */
-ElementPictureFactory::primitives ElementPictureFactory::getPrimitives(const ElementsLocation &location)
+ElementPictureFactory::primitives ElementPictureFactory::getPrimitives(
+		const ElementsLocation &location)
 {
 	if(!m_primitives_H.contains(location.uuid()))
 		build(location);
@@ -143,7 +144,9 @@ ElementPictureFactory::~ElementPictureFactory() {
 	draw on it and store it in m_pictures_H and m_low_pictures_H
 	@return 
 */
-bool ElementPictureFactory::build(const ElementsLocation &location, QPicture *picture, QPicture *low_picture)
+bool ElementPictureFactory::build(const ElementsLocation &location,
+				  QPicture *picture,
+				  QPicture *low_picture)
 {
 	QDomElement dom = location.xml();
 	

@@ -80,11 +80,14 @@ QRectF ElementPrimitiveDecorator::boundingRect() const
 	@param option :
 	The option parameter provides style options for the item, such
 	as its state, exposed area and its level-of-detail hints.
-	@param The widget argument is optional. If provided, it points to the
-	widget that is being painted on; otherwise, it is 0. For cached painting,
-	widget is always 0.
+	@param widget :
+	The widget argument is optional. If provided,
+	it points to the widget that is being painted on; otherwise, it is 0.
+	For cached painting, widget is always 0.
 */
-void ElementPrimitiveDecorator::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void ElementPrimitiveDecorator::paint(QPainter *painter,
+				      const QStyleOptionGraphicsItem *option,
+				      QWidget *widget)
 {
 	Q_UNUSED(option)
 	Q_UNUSED(widget)

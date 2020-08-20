@@ -133,12 +133,14 @@ class Diagram : public QGraphicsScene
 	protected:
 		void drawBackground(QPainter *, const QRectF &) override;
 
-		void mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event) override;
-		void mousePressEvent       (QGraphicsSceneMouseEvent *event) override;
-		void mouseMoveEvent        (QGraphicsSceneMouseEvent *event) override;
-		void mouseReleaseEvent     (QGraphicsSceneMouseEvent *event) override;
-		void wheelEvent            (QGraphicsSceneWheelEvent *event) override;
-		void keyPressEvent   (QKeyEvent *event) override;
+		void mouseDoubleClickEvent (
+				QGraphicsSceneMouseEvent *event) override;
+		void mousePressEvent (QGraphicsSceneMouseEvent *event) override;
+		void mouseMoveEvent (QGraphicsSceneMouseEvent *event) override;
+		void mouseReleaseEvent (
+				QGraphicsSceneMouseEvent *event) override;
+		void wheelEvent (QGraphicsSceneWheelEvent *event) override;
+		void keyPressEvent (QKeyEvent *event) override;
 		void keyReleaseEvent (QKeyEvent *) override;
 	
 	public:
@@ -167,18 +169,30 @@ class Diagram : public QGraphicsScene
 	
 		// methods related to XML import/export
 		QDomDocument toXml(bool = true);
-		bool initFromXml(QDomElement &, QPointF = QPointF(),
-				bool = true, DiagramContent * = nullptr);
-		bool fromXml(QDomDocument &, QPointF = QPointF(),
-			     bool = true, DiagramContent * = nullptr);
-		bool fromXml(QDomElement &, QPointF = QPointF(),
-			     bool = true, DiagramContent * = nullptr);
-		void folioSequentialsToXml(QHash<QString, QStringList>*,
-					   QDomElement *, const QString&,
-					   const QString&, QDomDocument *);
-		void folioSequentialsFromXml(const QDomElement&, QHash<QString,
-					     QStringList>*, const QString&,
-					     const QString&, const QString&,
+		bool initFromXml(QDomElement &,
+				 QPointF = QPointF(),
+				 bool = true,
+				 DiagramContent * = nullptr);
+		bool fromXml(QDomDocument &,
+			     QPointF = QPointF(),
+			     bool = true,
+			     DiagramContent * = nullptr);
+		bool fromXml(QDomElement &,
+			     QPointF = QPointF(),
+			     bool = true,
+			     DiagramContent * = nullptr);
+		void folioSequentialsToXml(QHash<QString,
+					   QStringList>*,
+					   QDomElement *,
+					   const QString&,
+					   const QString&,
+					   QDomDocument *);
+		void folioSequentialsFromXml(const QDomElement&,
+					     QHash<QString,
+					     QStringList>*,
+					     const QString&,
+					     const QString&,
+					     const QString&,
 					     const QString&);
 	
 		void refreshContents();

@@ -212,7 +212,10 @@ bool ElementsCollectionCache::fetchData(const ElementsLocation &location) {
 	int state;
 	Element *custom_elmt = ElementFactory::Instance() -> createElement(location, nullptr, &state);
 	if (state) {
-		qDebug() << "ElementsCollectionCache::fetchData() : Le chargement du composant" << qPrintable(location.toString()) << "a echoue avec le code d'erreur" << state;
+		qDebug() << "ElementsCollectionCache::fetchData() : Le chargement du composant"
+			 << qPrintable(location.toString())
+			 << "a echoue avec le code d'erreur"
+			 << state;
 	} else {
 		current_name_   = custom_elmt -> name();
 		current_pixmap_ = custom_elmt -> pixmap();
@@ -229,7 +232,8 @@ bool ElementsCollectionCache::fetchData(const ElementsLocation &location) {
 	@param uuid : Element uuid
 	@return True if the retrieval succeeded, false otherwise.
 */
-bool ElementsCollectionCache::fetchNameFromCache(const QString &path, const QUuid &uuid)
+bool ElementsCollectionCache::fetchNameFromCache(const QString &path,
+						 const QUuid &uuid)
 {
 	select_name_ -> bindValue(":path", path);
 	select_name_ -> bindValue(":locale", locale_);
@@ -257,7 +261,8 @@ bool ElementsCollectionCache::fetchNameFromCache(const QString &path, const QUui
 	@param uuid : Element uuid
 	@return True if the retrieval succeeded, false otherwise.
 */
-bool ElementsCollectionCache::fetchPixmapFromCache(const QString &path, const QUuid &uuid)
+bool ElementsCollectionCache::fetchPixmapFromCache(const QString &path,
+						   const QUuid &uuid)
 {
 	select_pixmap_ -> bindValue(":path", path);
 	select_pixmap_ -> bindValue(":uuid", uuid.toString());
@@ -287,7 +292,8 @@ bool ElementsCollectionCache::fetchPixmapFromCache(const QString &path, const QU
 	@return True if the caching succeeded, false otherwise.
 	@see name()
 */
-bool ElementsCollectionCache::cacheName(const QString &path, const QUuid &uuid)
+bool ElementsCollectionCache::cacheName(const QString &path,
+					const QUuid &uuid)
 {
 	insert_name_ -> bindValue(":path",   path);
 	insert_name_ -> bindValue(":locale", locale_);
@@ -309,7 +315,8 @@ bool ElementsCollectionCache::cacheName(const QString &path, const QUuid &uuid)
 	@return True if the caching succeeded, false otherwise.
 	@see pixmap()
 */
-bool ElementsCollectionCache::cachePixmap(const QString &path, const QUuid &uuid)
+bool ElementsCollectionCache::cachePixmap(const QString &path,
+					  const QUuid &uuid)
 {
 	QByteArray ba;
 	QBuffer buffer(&ba);

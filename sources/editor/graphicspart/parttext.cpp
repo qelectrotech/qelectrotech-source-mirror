@@ -36,15 +36,25 @@ PartText::PartText(QETElementEditor *editor, QGraphicsItem *parent) :
 	setDefaultTextColor(Qt::black);
 	setFont(QETApp::diagramTextsFont());
 	real_font_size_ = font().pointSize();
-	setFlags(QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemSendsGeometryChanges | QGraphicsItem::ItemIsMovable);
+	setFlags(QGraphicsItem::ItemIsSelectable
+		 | QGraphicsItem::ItemSendsGeometryChanges
+		 | QGraphicsItem::ItemIsMovable);
 	setAcceptHoverEvents(true);
 	setDefaultTextColor(Qt::black);
-	setPlainText(QObject::tr("T", "default text when adding a text in the element editor"));
+	setPlainText(QObject::tr(
+			     "T",
+			     "default text when adding a text in the element editor"));
 
 	adjustItemPosition(1);
 	// adjust textfield position after line additions/deletions
-	connect(document(), SIGNAL(blockCountChanged(int)), this, SLOT(adjustItemPosition(int)));
-	connect(document(), SIGNAL(contentsChanged()),      this, SLOT(adjustItemPosition()));
+	connect(document(),
+		SIGNAL(blockCountChanged(int)),
+		this,
+		SLOT(adjustItemPosition(int)));
+	connect(document(),
+		SIGNAL(contentsChanged()),
+		this,
+		SLOT(adjustItemPosition()));
 }
 
 /// Destructeur

@@ -37,10 +37,18 @@ NumPartEditorW::NumPartEditorW(int type, QWidget *parent) :
 }
 
 /**
+	@brief NumPartEditorW::NumPartEditorW
 	Constructor
-	Build with value of @context at position i
+	Build with value of context at position i
+	@param context
+	@param i
+	@param type
+	@param parent
 */
-NumPartEditorW::NumPartEditorW (NumerotationContext &context, int i, int type, QWidget *parent):
+NumPartEditorW::NumPartEditorW (NumerotationContext &context,
+				int i,
+				int type,
+				QWidget *parent):
 	QWidget(parent),
 	ui(new Ui::NumPartEditorW),
 	intValidator (new QIntValidator(0,99999,this)),
@@ -86,21 +94,40 @@ void NumPartEditorW::setVisibleItems()
 	QStringList items;
 	if (m_edited_type == 2)
 	{
-		items	<< tr("Chiffre 1") << tr("Chiffre 01")
-				<< tr("Chiffre 001")
-				<< tr("Texte");
+		items	<< tr("Chiffre 1")
+			<< tr("Chiffre 01")
+			<< tr("Chiffre 001")
+			<< tr("Texte");
 	}
 	else if (m_edited_type == 1)
 	{
-		items	<< tr("Chiffre 1") << tr("Chiffre 1 - Folio") << tr("Chiffre 01")
-				<< tr("Chiffre 01 - Folio") << tr("Chiffre 001") << tr("Chiffre 001 - Folio")
-				<< tr("Texte") << tr("N° folio") << tr("Folio") << tr("Installation") << tr("Locmach");
+		items	<< tr("Chiffre 1")
+			<< tr("Chiffre 1 - Folio")
+			<< tr("Chiffre 01")
+			<< tr("Chiffre 01 - Folio")
+			<< tr("Chiffre 001")
+			<< tr("Chiffre 001 - Folio")
+			<< tr("Texte")
+			<< tr("N° folio")
+			<< tr("Folio")
+			<< tr("Installation")
+			<< tr("Locmach");
 	}
 	else
-		items << tr("Chiffre 1") << tr("Chiffre 1 - Folio") << tr("Chiffre 01")
-			  << tr("Chiffre 01 - Folio") << tr("Chiffre 001") << tr("Chiffre 001 - Folio")
-			  << tr("Texte") << tr("N° folio") << tr("Folio") << tr("Installation") << tr("Locmach")
-			  << tr("Element Line") << tr("Element Column") << tr("Element Prefix");
+		items << tr("Chiffre 1")
+		      << tr("Chiffre 1 - Folio")
+		      << tr("Chiffre 01")
+		      << tr("Chiffre 01 - Folio")
+		      << tr("Chiffre 001")
+		      << tr("Chiffre 001 - Folio")
+		      << tr("Texte")
+		      << tr("N° folio")
+		      << tr("Folio")
+		      << tr("Installation")
+		      << tr("Locmach")
+		      << tr("Element Line")
+		      << tr("Element Column")
+		      << tr("Element Prefix");
 	ui->type_cb->insertItems(0,items);
 }
 
@@ -155,10 +182,17 @@ NumerotationContext NumPartEditorW::toNumContext() {
 			type_str = "elementprefix";
 			break;
 	}
-	if (type_str == "unitfolio" || type_str == "tenfolio" || type_str == "hundredfolio")
-		nc.addValue(type_str, ui -> value_field -> displayText(), ui -> increase_spinBox -> value(), ui->value_field->displayText().toInt());
+	if (type_str == "unitfolio"
+			|| type_str == "tenfolio"
+			|| type_str == "hundredfolio")
+		nc.addValue(type_str,
+			    ui -> value_field -> displayText(),
+			    ui -> increase_spinBox -> value(),
+			    ui->value_field->displayText().toInt());
 	else
-	nc.addValue(type_str, ui -> value_field -> displayText(), ui -> increase_spinBox -> value());
+	nc.addValue(type_str,
+		    ui -> value_field -> displayText(),
+		    ui -> increase_spinBox -> value());
 	return nc;
 }
 
@@ -167,8 +201,13 @@ NumerotationContext NumPartEditorW::toNumContext() {
 	@return true if value field isn't empty or if type is folio
 */
 bool NumPartEditorW::isValid() {
-	if (type_ == folio || type_ == idfolio || type_ == elementline || type_ == plant || type_ == locmach ||
-		type_ == elementcolumn || type_ == elementprefix) {return true;}
+	if (type_ == folio
+			|| type_ == idfolio
+			|| type_ == elementline
+			|| type_ == plant
+			|| type_ == locmach
+			|| type_ == elementcolumn
+			|| type_ == elementprefix) {return true;}
 	else if(ui -> value_field -> text().isEmpty()) {return false;}
 	else return true;
 }

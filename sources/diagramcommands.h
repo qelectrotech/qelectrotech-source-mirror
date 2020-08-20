@@ -181,8 +181,10 @@ class MoveConductorsTextsCommand : public QUndoCommand {
 	public:
 	void undo() override;
 	void redo() override;
-	virtual void addTextMovement(ConductorTextItem *, const QPointF &,
-				     const QPointF &, bool = false);
+	virtual void addTextMovement(ConductorTextItem *,
+				     const QPointF &,
+				     const QPointF &,
+				     bool = false);
 	
 	private:
 	void regenerateTextLabel();

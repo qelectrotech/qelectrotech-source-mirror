@@ -657,9 +657,11 @@ void Createdxf::drawRectangle (const QString &fileName, double x1, double y1, do
 	Conveniance function for draw rectangle
 	@param filepath
 	@param rect
-	@param color
+	@param colorcode
 */
-void Createdxf::drawRectangle(const QString &filepath, const QRectF &rect, const int &colorcode) {
+void Createdxf::drawRectangle(const QString &filepath,
+			      const QRectF &rect,
+			      const int &colorcode) {
 	drawRectangle(filepath, rect.bottomLeft().x() * xScale,
 				  sheetHeight - (rect.bottomLeft().y() * yScale),
 				  rect.width() * xScale,
@@ -667,8 +669,24 @@ void Createdxf::drawRectangle(const QString &filepath, const QRectF &rect, const
 				  colorcode);
 }
 
-/* draw arc in dx format */
-void Createdxf::drawArc(const QString& fileName,double x,double y,double rad,double startAngle,double endAngle,int color)
+/**
+	@brief Createdxf::drawArc
+	draw arc in dx format
+	@param fileName
+	@param x
+	@param y
+	@param rad
+	@param startAngle
+	@param endAngle
+	@param color
+*/
+void Createdxf::drawArc(const QString& fileName,
+			double x,
+			double y,
+			double rad,
+			double startAngle,
+			double endAngle,
+			int color)
 {
 	if (!fileName.isEmpty()) {
 		QFile file(fileName);
@@ -704,8 +722,24 @@ void Createdxf::drawArc(const QString& fileName,double x,double y,double rad,dou
 	}
 }
 
-/* draw simple text in dxf format without any alignment specified */
-void Createdxf::drawText(const QString& fileName, const QString& text,double x, double y, double height, double rotation, int colour)
+/**
+	@brief Createdxf::drawText
+	draw simple text in dxf format without any alignment specified
+	@param fileName
+	@param text
+	@param x
+	@param y
+	@param height
+	@param rotation
+	@param colour
+*/
+void Createdxf::drawText(const QString& fileName,
+			 const QString& text,
+			 double x,
+			 double y,
+			 double height,
+			 double rotation,
+			 int colour)
 {
 	if (!fileName.isEmpty()) {
 		QFile file(fileName);
@@ -744,8 +778,20 @@ void Createdxf::drawText(const QString& fileName, const QString& text,double x, 
 /* draw aligned text in DXF Format */
 // leftAlign flag added. If the alignment requested is 'fit to width' and the text length is very small,
 // then the text is either centered or left-aligned, depnding on the value of leftAlign.
-void Createdxf::drawTextAligned(const QString& fileName, const QString& text,double x, double y, double height, double rotation, double oblique,int hAlign, int vAlign, double xAlign, double xScale, int colour,
-								bool leftAlign, float scale)
+void Createdxf::drawTextAligned(const QString& fileName,
+				const QString& text,
+				double x,
+				double y,
+				double height,
+				double rotation,
+				double oblique,
+				int hAlign,
+				int vAlign,
+				double xAlign,
+				double xScale,
+				int colour,
+				bool leftAlign,
+				float scale)
 {
 	Q_UNUSED(scale);
 	
@@ -774,8 +820,8 @@ void Createdxf::drawTextAligned(const QString& fileName, const QString& text,dou
 			To_Dxf << 0.0       << "\r\n";    // Z in UCS (User Coordinate System)coordinates
 			To_Dxf << 40        << "\r\n";
 			To_Dxf << height    << "\r\n";    // Text Height
-            To_Dxf << 41        << "\r\n";
-            To_Dxf << xScale    << "\r\n";    // X Scale
+			To_Dxf << 41        << "\r\n";
+			To_Dxf << xScale    << "\r\n";    // X Scale
 			To_Dxf << 1         << "\r\n";
 			To_Dxf << text      << "\r\n";    // Text Value
 			To_Dxf << 50        << "\r\n";
