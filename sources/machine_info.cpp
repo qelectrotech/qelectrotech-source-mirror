@@ -230,8 +230,8 @@ void Machine_info::init_get_cpu_info_winnt()
 			    << "AdapterRAM ");
 	wingpuraminfo.waitForFinished();
 	QString WinGPURAMOutput = wingpuraminfo.readAllStandardOutput();
-	pc.gpu.RAM=QString("RAM Total : %1 MB").arg(
-	WinGPURAMOutput.toLongLong() /1024 / 1024);
+	pc.gpu.RAM=QString("RAM Total : %1 B").arg(
+	WinGPURAMOutput.toLocal8Bit().constData());
 	wingpuraminfo.close();
 	
 #ifdef Q_OS_WIN
@@ -240,10 +240,18 @@ void Machine_info::init_get_cpu_info_winnt()
 	memory_status.dwLength = sizeof(MEMORYSTATUSEX);
 	if (GlobalMemoryStatusEx(&memory_status)) {
 		pc.ram.Total .append(
-					QString("RAM: %1 MB")
+					QString("RAM Total : %1 MB")
 					.arg(memory_status.ullTotalPhys / (1024 * 1024)));
 	} else {
 		pc.ram.Total.append("Unknown RAM");
+	}
+	
+	if (GlobalMemoryStatusEx(&memory_status)) {
+		pc.ram.Available .append(
+					QString("RAM Available : %1 MB")
+					.arg(memory_status.ullAvailPhys / (1024 * 1024)));
+	} else {
+		pc.ram.Available.append("Unknown RAM");
 	}
 #endif
 }
