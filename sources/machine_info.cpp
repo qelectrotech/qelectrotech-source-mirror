@@ -230,7 +230,7 @@ void Machine_info::init_get_cpu_info_winnt()
 			    << "AdapterRAM ");
 	wingpuraminfo.waitForFinished();
 	QString WinGPURAMOutput = wingpuraminfo.readAllStandardOutput();
-	pc.gpu.RAM=QString("RAM Total : (%1/1024) B").arg(
+	pc.gpu.RAM=QString("RAM Total : %1 B").arg(
 	WinGPURAMOutput.toLocal8Bit().constData());
 	wingpuraminfo.close();
 	
