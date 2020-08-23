@@ -39,8 +39,8 @@ DynamicTextFieldEditor::DynamicTextFieldEditor(
 	ui -> m_elmt_info_cb -> setDisabled(true);
 	if(text_field) {
 		setPart(text_field);
-		fillInfoComboBox();
 	}
+	fillInfoComboBox();
 }
 
 DynamicTextFieldEditor::~DynamicTextFieldEditor() {
