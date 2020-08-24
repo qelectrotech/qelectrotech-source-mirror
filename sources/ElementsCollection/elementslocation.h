@@ -33,9 +33,14 @@ class XmlElementCollection;
 
 /**
 	@brief The ElementsLocation class
+	This class represents the location,
+	the location of an element or of a category,
+	even of a collection ... in a collection.
+	She encapsulates a virtual path.
+	\~French
 	Cette classe represente la localisation, l'emplacement d'un element ou
-	d'une categorie, voire d'une collection... dans une collection. Elle
-	encapsule un chemin virtuel.
+	d'une categorie, voire d'une collection... dans une collection.
+	Elle encapsule un chemin virtuel.
 */
 class ElementsLocation
 {

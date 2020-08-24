@@ -37,10 +37,10 @@ ElementsLocation::ElementsLocation()
 
 /**
 	@brief ElementsLocation::ElementsLocation
-	@param path :
-	Chemin de l'emplacement de l'element
-	@param project :
-	Projet de l'emplacement de l'element
+	\~ @param path : Item location path
+	\~French Chemin de l'emplacement de l'element
+	\~ @param project : Project of the location of the element
+	\~French Projet de l'emplacement de l'element
 */
 ElementsLocation::ElementsLocation(const QString &path, QETProject *project) :
 	m_project(project)
@@ -49,14 +49,18 @@ ElementsLocation::ElementsLocation(const QString &path, QETProject *project) :
 }
 
 /**
+	@brief ElementsLocation::~ElementsLocation
 	Destructeur
 */
 ElementsLocation::~ElementsLocation() {
 }
 
 /**
-	Constructeur de copie
-	@param other Autre emplacement d'element a copier
+	@brief ElementsLocation::ElementsLocation
+	The copy constructor
+	\~French Constructeur de copie
+	\~ @param other : Alternate item location to copy
+	\~French Autre emplacement d'element a copier
 */
 ElementsLocation::ElementsLocation(const ElementsLocation &other) :
 	m_collection_path(other.m_collection_path),
@@ -80,8 +84,13 @@ ElementsLocation::ElementsLocation(const QMimeData *data)
 }
 
 /**
-	Operateur d'affectation
-	@param other Autre emplacement d'element a affecter
+	@brief ElementsLocation::operator =
+	Assignment operator
+	\~French Operateur d'affectation
+	\~ @param other :
+	Other item location to assign
+	\~French Autre emplacement d'element a affecter
+	\~ @return *this ElementsLocation
 */
 ElementsLocation &ElementsLocation::operator=(const ElementsLocation &other) {
 	m_collection_path = other.m_collection_path;
@@ -92,9 +101,12 @@ ElementsLocation &ElementsLocation::operator=(const ElementsLocation &other) {
 
 /**
 	@brief ElementsLocation::operator ==
-	Operateur de comparaison
-	@param other Autre emplacement d'element a comparer
-	@return true si other et cet ElementsLocation sont identiques,
+	\~French Operateur de comparaison
+	\~ @param other : other item location to compare
+	\~French Autre emplacement d'element a comparer
+	\~ @return true if other and this ElementsLocation are identical,
+	false otherwise
+	\~French true si other et cet ElementsLocation sont identiques,
 	false sinon
 */
 bool ElementsLocation::operator==(const ElementsLocation &other) const {
@@ -203,18 +215,18 @@ QString ElementsLocation::path() const {
 */
 void ElementsLocation::setPath(const QString &path)
 {
-		QString tmp_path = path;
+	QString tmp_path = path;
 #ifdef Q_OS_WIN32
 		//On windows, we convert backslash to slash
 	tmp_path = QDir::fromNativeSeparators(path);
 
 #endif
 
-		//There is a project, the path is for an embedded coolection.
+	//There is a project, the path is for an embedded coolection.
 	if (m_project)
 	{
 		m_collection_path = path;
-			//Add the protocol to the collection path
+		//Add the protocol to the collection path
 		if (!path.startsWith("embed://"))
 			m_collection_path.prepend("embed://");
 
@@ -308,7 +320,8 @@ bool ElementsLocation::addToPath(const QString &string)
 {
 	if (m_collection_path.endsWith(".elmt", Qt::CaseInsensitive))
 	{
-		qDebug() << "ElementsLocation::addToPath : Can't add string to the path of an element";
+		qDebug() << "ElementsLocation::addToPath :"
+			    " Can't add string to the path of an element";
 		return(false);
 	}
 
@@ -343,8 +356,10 @@ ElementsLocation ElementsLocation::parent() const {
 
 /**
 	@brief ElementsLocation::project
-	@return le projet de cet emplacement ou 0 si celui-ci n'est pas lie a
-	un projet.
+	@return
+	the project of this location or 0 if it is not linked to a project.
+	\~French
+	le projet de cet emplacement ou 0 si celui-ci n'est pas lie a un projet.
 */
 QETProject *ElementsLocation::project() const {
 	return(m_project);
@@ -353,7 +368,9 @@ QETProject *ElementsLocation::project() const {
 /**
 	@brief ElementsLocation::setProject
 	@param project :
-	le nouveau projet pointe par cet emplacement
+	the new project points to this location
+	Indicate 0 so that this location is no longer linked to a project.
+	\~French le nouveau projet pointe par cet emplacement
 	Indiquer 0 pour que cet emplacement ne soit plus lie a un projet.
 */
 void ElementsLocation::setProject(QETProject *project) {
@@ -362,7 +379,9 @@ void ElementsLocation::setProject(QETProject *project) {
 
 /**
 	@brief ElementsLocation::isNull
-	@return true si l'emplacement semble utilisable (chemin virtuel non vide).
+	@return true if the location seems usable (virtual path not empty).
+	\~French
+	true si l'emplacement semble utilisable (chemin virtuel non vide).
 */
 bool ElementsLocation::isNull() const {
 	return(m_collection_path.isEmpty());
@@ -370,7 +389,8 @@ bool ElementsLocation::isNull() const {
 
 /**
 	@brief ElementsLocation::toString
-	@return Une chaine de caracteres representant l'emplacement
+	@return A character string representing the location
+	\~French Une chaine de caracteres representant l'emplacement
 */
 QString ElementsLocation::toString() const {
 	QString result;
@@ -452,7 +472,8 @@ bool ElementsLocation::exist() const
 {
 	if (m_project)
 	{
-		return m_project->embeddedElementCollection()->exist(collectionPath(false));
+		return m_project->embeddedElementCollection()
+				->exist(collectionPath(false));
 	}
 	else
 	{
@@ -518,18 +539,23 @@ NamesList ElementsLocation::nameList()
 	if (isDirectory())
 	{
 		if (m_project)
-			nl.fromXml(m_project->embeddedElementCollection()->directory(collectionPath(false)));
+			nl.fromXml(m_project->embeddedElementCollection()
+				   ->directory(collectionPath(false)));
 		else
 		{
-				//Open the qet_directory file, to get the traductions name of this dir
+			//Open the qet_directory file,
+			// to get the traductions name of this dir
 			QFile dir_conf(fileSystemPath() + "/qet_directory");
-			if (dir_conf.exists() && dir_conf.open(QIODevice::ReadOnly | QIODevice::Text))
+			if (dir_conf.exists() && dir_conf.open(
+						QIODevice::ReadOnly
+						| QIODevice::Text))
 			{
 					//Get the content of the file
 				QDomDocument document;
 				if (document.setContent(&dir_conf))
 				{
-					QDomElement root = document.documentElement();
+					QDomElement root = document
+							.documentElement();
 					if (root.tagName() == "qet-directory")
 						nl.fromXml(root);
 				}
@@ -559,16 +585,19 @@ QDomElement ElementsLocation::xml() const
 		QString str = m_collection_path;
 		if (isElement())
 		{
-			QDomElement element = m_project->embeddedElementCollection()->element(str.remove("embed://"));
+			QDomElement element = m_project
+					->embeddedElementCollection()
+					->element(str.remove("embed://"));
 			return element.firstChildElement("definition");
 		}
 		else
 		{
-			QDomElement element = m_project->embeddedElementCollection()->directory(str.remove("embed://"));
+			QDomElement element = m_project
+					->embeddedElementCollection()
+					->directory(str.remove("embed://"));
 			return element;
 		}
 	}
-
 	return QDomElement();
 }
 
@@ -650,7 +679,8 @@ bool ElementsLocation::setXml(const QDomDocument &xml_document) const
 
 	if (xml_document.documentElement().tagName() != "definition")
 	{
-		qDebug() << "ElementsLocation::setXml : tag name of document element isn't 'definition'";
+		qDebug() << "ElementsLocation::setXml :"
+			    " tag name of document element isn't 'definition'";
 		return false;
 	}
 
@@ -660,7 +690,8 @@ bool ElementsLocation::setXml(const QDomDocument &xml_document) const
 		QETXML::writeXmlFile(xml_document, fileSystemPath(), &error);
 
 		if (!error.isEmpty()) {
-			qDebug() << "ElementsLocation::setXml error : " << error;
+			qDebug() << "ElementsLocation::setXml error : "
+				 << error;
 			return false;
 		}
 		else {
@@ -675,20 +706,29 @@ bool ElementsLocation::setXml(const QDomDocument &xml_document) const
 			QDomElement dom_element = xml();
 			QDomNode parent_node = dom_element.parentNode();
 			parent_node.removeChild(dom_element);
-			parent_node.appendChild(xml_document.documentElement().cloneNode(true));
+			parent_node.appendChild(xml_document
+						.documentElement()
+						.cloneNode(true));
 			return true;
 		}
-			//Element doesn't exist, we create the element
+		//Element doesn't exist, we create the element
 		else
 		{
 			QString path_ = collectionPath(false);
 			QRegExp rx ("^(.*)/(.*\\.elmt)$");
 
 			if (rx.exactMatch(path_)) {
-				return project()->embeddedElementCollection()->addElementDefinition(rx.cap(1), rx.cap(2), xml_document.documentElement());
+				return project()
+						->embeddedElementCollection()
+						->addElementDefinition(
+							rx.cap(1),
+							rx.cap(2),
+							xml_document
+							.documentElement());
 			}
 			else {
-				qDebug() << "ElementsLocation::setXml : rx don't match";
+				qDebug() << "ElementsLocation::setXml :"
+					    " rx don't match";
 			}
 
 		}
@@ -730,8 +770,7 @@ QIcon ElementsLocation::icon() const
 		ElementsLocation loc(*this);
 		if (cache->fetchElement(loc))
 			return QIcon(cache->pixmap());
-	}
-	else {
+	} else {
 		return QIcon(ElementPictureFactory::instance()->pixmap(*this));
 	}
 
@@ -761,11 +800,14 @@ QString ElementsLocation::name() const
 */
 QString ElementsLocation::fileName() const
 {
-	if (m_collection_path.isEmpty()) return QString();
+	if (m_collection_path.isEmpty())
+		return QString();
 
 	QStringList qsl = m_collection_path.split("/");
-	if (qsl.isEmpty()) return QString();
-	else return qsl.last();
+	if (qsl.isEmpty())
+		return QString();
+	else
+		return qsl.last();
 }
 
 /**
@@ -780,7 +822,6 @@ DiagramContext ElementsLocation::elementInformations() const
 	if (isDirectory()) {
 		return context;
 	}
-
 	context.fromXml(pugiXml().document_element().child(
 				"elementInformations"),
 			"elementInformation");
@@ -789,9 +830,10 @@ DiagramContext ElementsLocation::elementInformations() const
 
 /**
 	@brief operator <<
+	debug for processing ElementsLocation
 	@param debug
 	@param location
-	@return
+	@return debug msg
 */
 QDebug operator<< (QDebug debug, const ElementsLocation &location)
 {
