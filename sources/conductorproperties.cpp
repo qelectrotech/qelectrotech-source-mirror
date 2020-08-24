@@ -245,8 +245,10 @@ ConductorProperties::~ConductorProperties() {
  * Export conductor propertie, in the XML element 'e'
  * @param e the xml element
  */
-void ConductorProperties::toXml(QDomElement &e) const
+void ConductorProperties::toXml(QDomDocument& doc) const
 {
+
+    QDomElement conductor_elmt = xml_document.createElement("conductors");
 	e.setAttribute("type", typeToString(type));
 
 	if (color != QColor(Qt::black))

@@ -41,7 +41,7 @@ XRefProperties::XRefProperties()
  * @param settings: QSettings to use
  * @param prefix: prefix before properties name
  */
-void XRefProperties::toSettings(QSettings &settings, const QString prefix) const {
+void XRefProperties::toSettings(QSettings &settings, const QString &prefix) const {
 	settings.setValue(prefix + "showpowerctc", m_show_power_ctc);
 	QString display = m_display == Cross? "cross" : "contacts";
 	settings.setValue(prefix + "displayhas", display);
@@ -69,7 +69,7 @@ void XRefProperties::toSettings(QSettings &settings, const QString prefix) const
  * @param settings: QSettings to use
  * @param prefix: prefix before properties name
  */
-void XRefProperties::fromSettings(const QSettings &settings, const QString prefix)
+void XRefProperties::fromSettings(const QSettings &settings, const QString &prefix)
 {
 	m_show_power_ctc = settings.value(prefix + "showpowerctc", true).toBool();
 	QString display = settings.value(prefix + "displayhas", "cross").toString();

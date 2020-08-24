@@ -55,10 +55,8 @@ PartText::~PartText() {
 	Importe les proprietes d'un texte statique depuis un element XML
 	@param xml_element Element XML a lire
 */
-void PartText::fromXml(const QDomElement &xml_element)
+bool PartText::fromXml(const QDomElement &xml_element)
 {
-	bool ok;
-
     int size;
     QString font;
 
@@ -76,6 +74,8 @@ void PartText::fromXml(const QDomElement &xml_element)
 		QFont font_;
         font_.fromString(font);
 		setFont(font_);
+    } else {
+        return false;
     }
 	
     QString color;
@@ -88,12 +88,16 @@ void PartText::fromXml(const QDomElement &xml_element)
     setPlainText(text);
 
     double x, y, rot;
-    propertyDouble(xml_element, "x", &x, 0);
-    propertyDouble(xml_element, "y", &y, 0);
+    if (propertyDouble(xml_element, "x", &x, 0) == PropertyFlags::NoValidConversion ||
+        propertyDouble(xml_element, "y", &y, 0) == PropertyFlags::NoValidConversion)
+        return false;
     setPos(x, y);
 
-    propertyDouble(xml_element, "rotation", &rot, 0);
+    if (propertyDouble(xml_element, "rotation", &rot, 0) == PropertyFlags::NoValidConversion)
+        return false;
     setRotation(rot);
+
+    return true;
 }
 
 /**
@@ -101,7 +105,7 @@ void PartText::fromXml(const QDomElement &xml_element)
 	@param xml_document Document XML a utiliser pour creer l'element XML
 	@return un element XML decrivant le texte statique
 */
-const QDomElement PartText::toXml(QDomDocument &xml_document) const
+QDomElement PartText::toXml(QDomDocument &xml_document) const
 {
 	QDomElement xml_element = xml_document.createElement(xmlName());
 

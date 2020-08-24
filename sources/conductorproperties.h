@@ -22,12 +22,14 @@
 #include <QColor>
 #include <QSettings>
 
+#include "propertiesinterface.h"
+
 class QPainter;
 
 /**
 	This class represents the properties of a singleline conductor.
 */
-class SingleLineProperties {
+class SingleLineProperties: public PropertiesInterface {
 	public:
 	SingleLineProperties();
 	virtual ~SingleLineProperties();
@@ -36,10 +38,10 @@ class SingleLineProperties {
 	unsigned short int phasesCount();
 	bool isPen() const;
 	void draw(QPainter *, QET::ConductorSegmentType, const QRectF &);
-	void toXml(QDomElement &) const;
-	void fromXml(QDomElement &);
-	void toSettings(QSettings &, const QString & = QString()) const;
-	void fromSettings(QSettings &, const QString & = QString());
+    void toXml(QDomElement &) const override;
+    void fromXml(QDomElement &) override;
+    void toSettings(QSettings &, const QString & = QString()) const override;
+    void fromSettings(QSettings &, const QString & = QString()) override;
 	
 	/// Whether the singleline conductor should display the ground symbol
 	bool hasGround;
@@ -62,7 +64,7 @@ class SingleLineProperties {
 	This class represents the functional properties of a particular conductor,
 	i.e. properties other than path and terminals.
 */
-class ConductorProperties
+class ConductorProperties: public PropertiesInterface
 {
 	public:
 		ConductorProperties();
@@ -109,10 +111,10 @@ class ConductorProperties
 		SingleLineProperties singleLineProperties;
 	
 			// methods
-		void toXml(QDomElement &) const;
-		void fromXml(QDomElement &);
-		void toSettings(QSettings &, const QString & = QString()) const;
-		void fromSettings(QSettings &, const QString & = QString());
+        void toXml(QDomDocument &doc) const override;
+        void fromXml(QDomElement &) override;
+        void toSettings(QSettings &, const QString & = QString()) const override;
+        void fromSettings(QSettings &, const QString & = QString()) override;
 		static QString typeToString(ConductorType);
 		void applyForEqualAttributes(QList<ConductorProperties> list);
 

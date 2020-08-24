@@ -61,8 +61,8 @@ class PartPolygon : public CustomElementGraphicPart
 
 		QString name() const override { return(QObject::tr("polygone", "element part name")); }
 		QString xmlName() const override { return(QString("polygon")); }
-		void fromXml(const QDomElement &) override;
-		const QDomElement toXml(QDomDocument &) const override;
+        bool fromXml(const QDomElement &) override;
+        QDomElement toXml(QDomDocument &) const override;
 
 		QPainterPath shape () const override;
 		QPainterPath shadowShape() const override;

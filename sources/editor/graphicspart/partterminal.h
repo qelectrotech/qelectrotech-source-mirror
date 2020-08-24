@@ -57,8 +57,8 @@ class PartTerminal : public CustomElementGraphicPart
 		int type() const override { return Type; }
         QString name() const override { return d->m_name; }
 		QString xmlName() const override { return(QString("terminal")); }
-		void fromXml(const QDomElement &) override;
-		const QDomElement toXml(QDomDocument &) const override;
+        bool fromXml(const QDomElement &) override;
+        QDomElement toXml(QDomDocument &) const override;
 		void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *) override;
 
 		QPainterPath shape() const override;

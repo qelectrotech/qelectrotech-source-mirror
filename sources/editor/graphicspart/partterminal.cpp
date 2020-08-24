@@ -42,10 +42,14 @@ PartTerminal::~PartTerminal() {
 	Importe les proprietes d'une borne depuis un element XML
 	@param xml_elmt Element XML a lire
 */
-void PartTerminal::fromXml(const QDomElement &xml_elmt) {
-    d->fromXml(xml_elmt);
+bool PartTerminal::fromXml(const QDomElement &xml_elmt) {
+    if (!d->fromXml(xml_elmt))
+        return false;
+
     setPos(d->m_pos);
 	updateSecondPoint();
+
+    return true;
 }
 
 /**
@@ -53,7 +57,7 @@ void PartTerminal::fromXml(const QDomElement &xml_elmt) {
 	@param xml_document Document XML a utiliser pour creer l'element XML
 	@return un element XML decrivant la borne
 */
-const QDomElement PartTerminal::toXml(QDomDocument &xml_document) const {
+QDomElement PartTerminal::toXml(QDomDocument &xml_document) const {
     return d->toXml(xml_document);
 }
 

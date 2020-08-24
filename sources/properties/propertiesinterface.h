@@ -23,6 +23,7 @@
 #include <QDomElement>
 #include <limits>
 #include "qet.h"
+#include <QUuid>
 
 /**
  * @brief The PropertiesInterface class
@@ -33,8 +34,8 @@ class PropertiesInterface
 	public:
 	PropertiesInterface();
 	// Save/load properties to setting file. QString is use for prefix a word befor the name of each paramètre
-	virtual void toSettings	  (QSettings &settings, const QString = QString()) const =0;
-	virtual void fromSettings (const QSettings &settings, const QString = QString()) =0;
+    virtual void toSettings	  (QSettings &settings, const QString& = QString()) const =0;
+    virtual void fromSettings (const QSettings &settings, const QString& = QString()) =0;
 	// Save/load properties to xml element
     virtual QDomElement toXml		  (QDomDocument &xml_document) const =0;
     virtual bool fromXml	  (const QDomElement &xml_element) =0;
@@ -47,12 +48,13 @@ class PropertiesInterface
     QDomElement createXmlProperty(QDomDocument& doc, const QString& name, const int value) const;
     QDomElement createXmlProperty(QDomDocument& doc, const QString& name, const double value) const;
     QDomElement createXmlProperty(QDomDocument& doc, const QString& name, const bool value) const;
+    QDomElement createXmlProperty(QDomDocument& doc, const QString& name, const QUuid value) const;
 
     static QDomElement property(const QDomElement& e, const QString& name);
     static bool attribute(const QDomElement& e, const QString& attribute_name, const QString& type, QString* attr);
 
     typedef enum PropertyFlags {
-        Success,
+        Success = 0,
         NotFound,
         NoValidConversion,
     };
@@ -60,7 +62,8 @@ class PropertiesInterface
     static PropertyFlags propertyInteger(const QDomElement &e, const QString& attribute_name, int *entier = nullptr, int defaultValue = std::numeric_limits<int>::quiet_NaN());
     static PropertyFlags propertyDouble(const QDomElement &e, const QString& attribute_name, double *reel = nullptr, double defaultValue = std::numeric_limits<double>::quiet_NaN());
     static PropertyFlags propertyString(const QDomElement& e, const QString& attribute_name, QString* string = nullptr, QString defaultValue = QString());
-    static PropertyFlags propertyBool(const QDomElement &e, const QString& attribute_name, bool* boolean = nullptr, bool defaulValue = false);
+    static PropertyFlags propertyBool(const QDomElement &e, const QString& attribute_name, bool* boolean = nullptr, bool defaultValue = false);
+    static PropertyFlags propertyUuid(const QDomElement &e, const QString& attribute_name, QUuid* uuid = nullptr, QUuid defaultValue = QUuid());
 
     static bool validXmlProperty(const QDomElement& e);
 

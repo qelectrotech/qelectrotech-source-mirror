@@ -76,7 +76,7 @@ void PartEllipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
  * @param xml_document : Xml document to use for create the xml element.
  * @return : an xml element that describe this ellipse
  */
-const QDomElement PartEllipse::toXml(QDomDocument &xml_document) const
+QDomElement PartEllipse::toXml(QDomDocument &xml_document) const
 {
 	QDomElement xml_element;
 	if (qFuzzyCompare(rect().width(), rect().height()))
@@ -105,26 +105,31 @@ const QDomElement PartEllipse::toXml(QDomDocument &xml_document) const
  * Import the properties of this ellipse from a xml element.
  * @param qde : Xml document to use.
  */
-void PartEllipse::fromXml(const QDomElement &qde)
+bool PartEllipse::fromXml(const QDomElement &qde)
 {
 	stylesFromXml(qde);
-    double x = 0, y = 0, width = 0, height = 0;
+    double x, y, width, height;
 
 	if (qde.tagName() == "ellipse")
 	{
-        propertyDouble(qde, "width", &width);
-        propertyDouble(qde, "height", &height);
+        if (propertyDouble(qde, "width", &width, 0) == PropertyFlags::NoValidConversion ||
+            propertyDouble(qde, "height", &height, 0) == PropertyFlags::NoValidConversion)
+            return false;
 	}
     else {
-        propertyDouble(qde, "diameter", &width);
+        if (propertyDouble(qde, "diameter", &width, 0) == PropertyFlags::NoValidConversion)
+            return false;
         height = width;
     }
 
 
-    propertyDouble(qde, "x", &x);
-    propertyDouble(qde, "y", &y);
+    if (propertyDouble(qde, "x", &x, 0) == PropertyFlags::NoValidConversion ||
+        propertyDouble(qde, "y", &y, 0) == PropertyFlags::NoValidConversion)
+        return false;
 
     m_rect = QRectF(mapFromScene(x, y), QSizeF(width, height));
+
+    return true;
 }
 
 /**

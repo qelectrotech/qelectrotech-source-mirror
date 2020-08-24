@@ -21,12 +21,14 @@
 #include "diagramcontext.h"
 #include "qet.h"
 
+#include "propertiesinterface.h"
+
 /**
 	This class provides a container for the properties of a particular title
 	block, i.e. title, author, date, filename, folio, template, custom
 	properties, ...
 */
-class TitleBlockProperties {
+class TitleBlockProperties: public PropertiesInterface {
 	public:
 	TitleBlockProperties();
 	virtual ~TitleBlockProperties();
@@ -39,8 +41,8 @@ class TitleBlockProperties {
 	bool operator==(const TitleBlockProperties &);
 	bool operator!=(const TitleBlockProperties &);
 	
-	void toXml(QDomElement &) const;
-	void fromXml(const QDomElement &);
+    QDomElement toXml(QDomDocument &xml_document) const override;
+    bool fromXml(const QDomElement &) override;
 	void toSettings(QSettings &, const QString & = QString()) const;
 	void fromSettings(QSettings &, const QString & = QString());
 

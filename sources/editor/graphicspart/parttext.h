@@ -59,8 +59,8 @@ class PartText : public QGraphicsTextItem, public CustomElementPart
 		int type() const override { return Type; }
 		QString name() const override { return(QObject::tr("texte", "element part name")); }
 		QString xmlName() const override { return(QString("text")); }
-		void fromXml(const QDomElement &) override;
-		const QDomElement toXml(QDomDocument &) const override;
+        bool fromXml(const QDomElement &) override;
+        QDomElement toXml(QDomDocument &) const override;
 		void setRotation(qreal angle) {(QGraphicsObject::setRotation(QET::correctAngle(angle)));}
 		bool isUseless() const override;
 		QRectF sceneGeometricRect() const override;

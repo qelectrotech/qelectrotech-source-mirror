@@ -25,6 +25,7 @@ namespace  {
     const QString doubleS = "double";
     const QString boolS = "bool";
     const QString stringS = "string";
+    const QString uuidS = "uuid";
 }
 
 PropertiesInterface::PropertiesInterface()
@@ -63,11 +64,19 @@ QDomElement PropertiesInterface::createXmlProperty(QDomDocument& doc, const QStr
     return p;
 }
 
+QDomElement PropertiesInterface::createXmlProperty(QDomDocument& doc, const QString& name, const QUuid value) const {
+    QDomElement p = doc.createElement("property");
+    p.setAttribute("name", name);
+    p.setAttribute("type", uuidS);
+    p.setAttribute("value", value.toString());
+    return p;
+}
+
 QDomElement PropertiesInterface::property(const QDomElement& e, const QString& name) {
     for (int i=0; i < e.childNodes().count(); i++) {
         QDomElement child = e.childNodes().at(i).toElement();
         if (!validXmlProperty(child))
-            return QDomElement();
+            continue; // there might also non property childs
 
         if (child.attribute("name") == name)
             return child;
@@ -155,12 +164,12 @@ PropertiesInterface::PropertyFlags PropertiesInterface::propertyDouble(const QDo
     return PropertyFlags::Success;
 }
 
-PropertiesInterface::PropertyFlags PropertiesInterface::propertyBool(const QDomElement &e, const QString& attribute_name, bool* boolean, bool defaulValue) {
+PropertiesInterface::PropertyFlags PropertiesInterface::propertyBool(const QDomElement &e, const QString& attribute_name, bool* boolean, bool defaultValue) {
 
     QString attr;
 
     if (!attribute(e, attribute_name, integerS, &attr)) {
-        *boolean = defaulValue;
+        *boolean = defaultValue;
         return PropertyFlags::NotFound;
     }
 
@@ -172,6 +181,20 @@ PropertiesInterface::PropertyFlags PropertiesInterface::propertyBool(const QDomE
 
     if (boolean != nullptr)
         *boolean = tmp;
+
+    return PropertyFlags::Success;
+}
+
+PropertiesInterface::PropertyFlags PropertiesInterface::propertyUuid(const QDomElement &e, const QString& attribute_name, QUuid* uuid, QUuid defaultValue) {
+    QString attr;
+
+    if (!attribute(e, attribute_name, uuidS, &attr)) {
+        *uuid = defaultValue;
+        return PropertyFlags::NotFound;
+    }
+
+    if (uuid != nullptr)
+        *uuid = QUuid(attr);
 
     return PropertyFlags::Success;
 }

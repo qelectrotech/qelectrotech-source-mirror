@@ -102,7 +102,7 @@ void PartLine::paint(QPainter *painter, const QStyleOptionGraphicsItem *options,
  * @param xml_document : Xml document to use for create the xml element.
  * @return an xml element that describe this line
  */
-const QDomElement PartLine::toXml(QDomDocument &xml_document) const
+QDomElement PartLine::toXml(QDomDocument &xml_document) const
 {
 	QPointF p1(sceneP1());
 	QPointF p2(sceneP2());
@@ -128,30 +128,37 @@ const QDomElement PartLine::toXml(QDomDocument &xml_document) const
  * Import the properties of this line from a xml element.
  * @param qde : Xml document to use
  */
-void PartLine::fromXml(const QDomElement &qde) {
+bool PartLine::fromXml(const QDomElement &qde) {
 	stylesFromXml(qde);
 
     double x1 = 0, y1 = 0, x2 = 0, y2 = 0;
-    propertyDouble(qde, "x1", &x1);
-    propertyDouble(qde, "y1", &y1);
-    propertyDouble(qde, "x2", &x2);
-    propertyDouble(qde, "y2", &y2);
+    if (propertyDouble(qde, "x1", &x1) == PropertyFlags::NoValidConversion ||
+    propertyDouble(qde, "y1", &y1) == PropertyFlags::NoValidConversion ||
+    propertyDouble(qde, "x2", &x2) == PropertyFlags::NoValidConversion ||
+    propertyDouble(qde, "y2", &y2) == PropertyFlags::NoValidConversion)
+        return false;
 
     m_line = QLineF(mapFromScene(x1, y1),
                     mapFromScene(x2, y2));
 
     QString s;
-    propertyString(qde, "end1", &s);
+    if (propertyString(qde, "end1", &s) != PropertyFlags::Success)
+        return false;
     first_end = Qet::endTypeFromString(s);
 
-    propertyString(qde, "end2", &s);
+    if (propertyString(qde, "end2", &s) != PropertyFlags::Success)
+        return false;
+
     first_end = Qet::endTypeFromString(s);
 
     first_length = 1.5;
     second_length = 1.5;
 
-    propertyDouble(qde, "length1", &first_length);
-    propertyDouble(qde, "length2", &second_length);
+    if (propertyDouble(qde, "length1", &first_length) == PropertyFlags::NoValidConversion ||
+        propertyDouble(qde, "length2", &second_length) == PropertyFlags::NoValidConversion)
+        return false;
+
+    return true;
 }
 
 /**

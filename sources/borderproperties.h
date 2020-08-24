@@ -20,13 +20,15 @@
 #include <QtCore>
 #include <QtXml>
 
+#include "propertiesinterface.h"
+
 /**
 	@brief The BorderProperties class
 	This class is a container for dimensions and display properties of a
 	diagram.
 	@remark Attributes are public
 */
-class BorderProperties {
+class BorderProperties : public PropertiesInterface {
 	public:
 		// constructor, destructor, operators
 		BorderProperties();
@@ -35,10 +37,11 @@ class BorderProperties {
 		bool operator==(const BorderProperties &);
 		bool operator!=(const BorderProperties &);
 	
-		void toXml(QDomElement &) const;
-		void fromXml(QDomElement &);
-		void toSettings(QSettings &, const QString & = QString()) const;
-		void fromSettings(QSettings &, const QString & = QString());
+        QDomElement toXml(QDomDocument &dom_doc) const override;
+        bool fromXml(const QDomElement &) override;
+        bool valideXml(QDomElement& e) const override;
+        void toSettings(QSettings &, const QString & = QString()) const override;
+        void fromSettings(const QSettings &, const QString & = QString()) override;
 
 		static BorderProperties defaultProperties();
 	
