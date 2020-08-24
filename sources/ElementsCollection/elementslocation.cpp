@@ -24,6 +24,7 @@
 #include "element.h"
 #include "qetxml.h"
 #include <QPicture>
+#include <QDebug>
 
 // make this class usable with QVariant
 int ElementsLocation::MetaTypeId = qRegisterMetaType<ElementsLocation>("ElementsLocation");
@@ -608,6 +609,7 @@ QDomElement ElementsLocation::xml() const
 */
 pugi::xml_document ElementsLocation::pugiXml() const
 {
+	pugi::xml_document docu; //empty xml_document();
 	/* Except for linux OS (because linux keep in cache the file),
 	 * we keep in memory the xml
 	 * to avoid multiple access to file.
@@ -618,49 +620,39 @@ pugi::xml_document ElementsLocation::pugiXml() const
 #ifndef Q_OS_LINUX
 	if (!m_string_stream.str().empty())
 	{
-		pugi::xml_document docu;
 		docu.load_string(m_string_stream.str().c_str());
 		return docu;
 	}
 #endif
 	if (!m_project)
 	{
-		pugi::xml_document docu;
 		if (docu.load_file(m_file_system_path.toStdString().c_str()))
 		{
 #ifndef Q_OS_LINUX
 			docu.save(m_string_stream);
 #endif
-			return docu;
 		}
 	}
 	else
 	{
 		QString str = m_collection_path;
+		//Get the xml dom from Qt xml and copie to pugi xml
+		QDomElement element = m_project
+				->embeddedElementCollection()
+				->element(str.remove("embed://"));
+		QDomDocument qdoc;
 		if (isElement())
 		{
-			//Get the xml dom from Qt xml and copie to pugi xml
-			QDomElement element = m_project->embeddedElementCollection()->element(str.remove("embed://"));
-			QDomDocument qdoc;
-			qdoc.appendChild(qdoc.importNode(element.firstChildElement("definition"), true));
-
-			pugi::xml_document docu;
-			docu.load_string(qdoc.toString(4).toStdString().c_str());
-			return docu;
-		}
-		else
-		{
-			QDomElement element = m_project->embeddedElementCollection()->directory(str.remove("embed://"));
-			QDomDocument qdoc;
+			qdoc.appendChild(qdoc.importNode(
+						 element.firstChildElement(
+							 "definition"),
+						 true));
+		} else {
 			qdoc.appendChild(qdoc.importNode(element, true));
-
-			pugi::xml_document docu;
-			docu.load_string(qdoc.toString(4).toStdString().c_str());
-			return docu;
 		}
+		docu.load_string(qdoc.toString(4).toStdString().c_str());
 	}
-
-	return pugi::xml_document();
+	return docu;
 }
 
 /**
