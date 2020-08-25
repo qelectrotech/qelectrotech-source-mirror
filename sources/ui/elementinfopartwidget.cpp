@@ -30,7 +30,9 @@ typedef SearchAndReplaceWorker sarw;
 	@param translated_key the string key translated
 	@param parent parent widget
 */
-ElementInfoPartWidget::ElementInfoPartWidget(QString key, const QString& translated_key, QWidget *parent):
+ElementInfoPartWidget::ElementInfoPartWidget(QString key,
+					     const QString& translated_key,
+					     QWidget *parent):
 	QWidget(parent),
 	ui(new Ui::ElementInfoPartWidget),
 	key_(std::move(key))
@@ -39,8 +41,10 @@ ElementInfoPartWidget::ElementInfoPartWidget(QString key, const QString& transla
 	ui->label_->setText(translated_key);
 	ui->m_erase_text->setVisible(false);
 
-	connect(ui->line_edit, &QLineEdit::textEdited,  this, &ElementInfoPartWidget::textEdited);
-	connect(ui->line_edit, &QLineEdit::textChanged, this, &ElementInfoPartWidget::textChanged);
+	connect(ui->line_edit, &QLineEdit::textEdited,
+		this, &ElementInfoPartWidget::textEdited);
+	connect(ui->line_edit, &QLineEdit::textChanged,
+		this, &ElementInfoPartWidget::textChanged);
 }
 
 /**
@@ -50,6 +54,15 @@ ElementInfoPartWidget::ElementInfoPartWidget(QString key, const QString& transla
 ElementInfoPartWidget::~ElementInfoPartWidget()
 {
 	delete ui;
+}
+
+/**
+	@brief ElementInfoPartWidget::text
+	@return the text in the line edit
+*/
+QString ElementInfoPartWidget::text() const
+{
+	return (ui->line_edit->text());
 }
 
 /**
@@ -67,18 +80,11 @@ void ElementInfoPartWidget::setText(const QString &txt)
 }
 
 /**
-	@brief ElementInfoPartWidget::text
-	@return the text in the line edit
-*/
-QString ElementInfoPartWidget::text() const {
-	return (ui->line_edit->text());
-}
-
-/**
 	@brief ElementInfoPartWidget::setPlaceHolderText
 	@param text
 */
-void ElementInfoPartWidget::setPlaceHolderText(const QString &text) {
+void ElementInfoPartWidget::setPlaceHolderText(const QString &text)
+{
 	ui->line_edit->setPlaceholderText(text);
 }
 
@@ -86,7 +92,8 @@ void ElementInfoPartWidget::setPlaceHolderText(const QString &text) {
 	@brief ElementInfoPartWidget::setFocusTolineEdit
 	Set the focus to the line edit
 */
-void ElementInfoPartWidget::setFocusTolineEdit() {
+void ElementInfoPartWidget::setFocusTolineEdit()
+{
 	ui->line_edit->setFocus();
 }
 
@@ -95,7 +102,8 @@ void ElementInfoPartWidget::setFocusTolineEdit() {
 	enable the line edit
 	@param e
 */
-void ElementInfoPartWidget::setEnabled(bool e) {
+void ElementInfoPartWidget::setEnabled(bool e)
+{
 	ui->line_edit->setEnabled(e);
 }
 
@@ -104,7 +112,8 @@ void ElementInfoPartWidget::setEnabled(bool e) {
 	disable the line edit
 	@param d
 */
-void ElementInfoPartWidget::setDisabled(bool d) {
+void ElementInfoPartWidget::setDisabled(bool d)
+{
 	ui->line_edit->setDisabled(d);
 }
 
@@ -112,7 +121,8 @@ void ElementInfoPartWidget::setDisabled(bool d) {
 	@brief ElementInfoPartWidget::setEraseTextVisible
 	@param visible
 */
-void ElementInfoPartWidget::setEraseTextVisible(bool visible) {
+void ElementInfoPartWidget::setEraseTextVisible(bool visible)
+{
 	ui->m_erase_text->setVisible(visible);
 	m_show_erase = visible;
 }
@@ -121,7 +131,8 @@ void ElementInfoPartWidget::setEraseTextVisible(bool visible) {
 	@brief ElementInfoPartWidget::setEraseTextChecked
 	@param check
 */
-void ElementInfoPartWidget::setEraseTextChecked(bool check) {
+void ElementInfoPartWidget::setEraseTextChecked(bool check)
+{
 	ui->m_erase_text->setChecked(check);
 }
 
@@ -129,7 +140,8 @@ void ElementInfoPartWidget::setEraseTextChecked(bool check) {
 	@brief ElementInfoPartWidget::EraseTextCheckState
 	@return 
 */
-Qt::CheckState ElementInfoPartWidget::EraseTextCheckState() const {
+Qt::CheckState ElementInfoPartWidget::EraseTextCheckState() const
+{
 	return ui->m_erase_text->checkState();
 }
 

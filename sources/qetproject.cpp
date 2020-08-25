@@ -172,7 +172,9 @@ void QETProject::init()
 QETProject::ProjectState QETProject::openFile(QFile *file)
 {
 	bool opened_here = file->isOpen() ? false : true;
-	if (!file->isOpen() && !file->open(QIODevice::ReadOnly | QIODevice::Text)) {
+	if (!file->isOpen()
+			&& !file->open(QIODevice::ReadOnly
+				       | QIODevice::Text)) {
 		return FileOpenFailed;
 	}
 	QFileInfo fi(*file);
@@ -1226,28 +1228,27 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	QDomElement root_elmt = xml_project.documentElement();
 	m_state = ProjectParsingRunning;
 	
-		//The roots of the xml document must be a "project" element
+	//The roots of the xml document must be a "project" element
 	if (root_elmt.tagName() == "project")
-	  {
-			//Normal opening mode
+	{
+		//Normal opening mode
 		if (root_elmt.hasAttribute("version"))
 		{
 			bool conv_ok;
 			m_project_qet_version = root_elmt.attribute("version").toDouble(&conv_ok);
-
+#pragma message("@TODO use of version convert")
 			if (conv_ok && QET::version.toDouble() < m_project_qet_version)
 			{
 				int ret = QET::QetMessageBox::warning(
-							  nullptr,
-							  tr("Avertissement", "message box title"),
-							  tr(
-								  "Ce document semble avoir été enregistré avec "
-								  "une version ultérieure de QElectroTech. Il est "
-								  "possible que l'ouverture de tout ou partie de ce "
-								  "document échoue.\n"
-								  "Que désirez vous faire ?",
-								  "message box content"
-								  ),
+							nullptr,
+							tr("Avertissement",
+							   "message box title"),
+							tr("Ce document semble avoir été enregistré avec "
+							   "une version ultérieure de QElectroTech. Il est "
+							   "possible que l'ouverture de tout ou partie de ce "
+							   "document échoue.\n"
+							   "Que désirez vous faire ?",
+							   "message box content"),
 							  QMessageBox::Open | QMessageBox::Cancel
 							  );
 				
@@ -1290,6 +1291,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 */
 void QETProject::readDiagramsXml(QDomDocument &xml_project)
 {
+#pragma message("@TODO try to solve a weird bug (dialog is black) since port to Qt5 with the DialogWaiting")
 	//@TODO try to solve a weird bug (dialog is black) since port to Qt5 with the DialogWaiting
 	//show DialogWaiting
 	DialogWaiting *dlgWaiting = nullptr;
@@ -1298,13 +1300,13 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 		dlgWaiting = DialogWaiting::instance();
 		dlgWaiting -> setModal(true);
 		dlgWaiting -> show();
-		dlgWaiting -> setTitle( tr("<p align=\"center\">"
-								   "<b>Ouverture du projet en cours...</b><br/>"
-								   "Création des folios"
-								   "</p>"));
+		dlgWaiting -> setTitle(tr("<p align=\"center\">"
+					  "<b>Ouverture du projet en cours...</b><br/>"
+					  "Création des folios"
+					  "</p>"));
 	}
 	
-		//Search the diagrams in the project
+	//Search the diagrams in the project
 	QDomNodeList diagram_nodes = xml_project.elementsByTagName("diagram");
 	
 	if(dlgWaiting)
@@ -1317,11 +1319,16 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 		
 		if (diagram_nodes.at(i).isElement())
 		{
-			QDomElement diagram_xml_element = diagram_nodes.at(i).toElement();
+			QDomElement diagram_xml_element = diagram_nodes
+					.at(i)
+					.toElement();
 			Diagram *diagram = new Diagram(this);
 
 			int diagram_order = -1;
-			if (!QET::attributeIsAnInteger(diagram_xml_element, "order", &diagram_order)) diagram_order = 500000;
+			if (!QET::attributeIsAnInteger(diagram_xml_element,
+						       "order",
+						       &diagram_order))
+				diagram_order = 500000;
 
 			addDiagram(diagram, diagram_order-1);
 
