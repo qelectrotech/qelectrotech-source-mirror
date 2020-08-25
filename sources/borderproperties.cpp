@@ -128,13 +128,13 @@ bool BorderProperties::fromXml(const QDomElement &e) {
     return true;
 }
 
-bool BorderProperties::valideXml(QDomElement& e) const {
+bool BorderProperties::valideXml(QDomElement& e) {
 
-    if (propertyInteger(e, "cols") == PropertyFlags::Success &&
-        propertyDouble(e, "colsize") == PropertyFlags::Success &&
-        propertyInteger(e, "rows") == PropertyFlags::Success &&
-        propertyDouble(e, "rowsize") == PropertyFlags::Success &&
-        propertyBool(e, "displaycols") == PropertyFlags::Success &&
+    if (propertyInteger(e, "cols") == PropertyFlags::Success ||
+        propertyDouble(e, "colsize") == PropertyFlags::Success ||
+        propertyInteger(e, "rows") == PropertyFlags::Success ||
+        propertyDouble(e, "rowsize") == PropertyFlags::Success ||
+        propertyBool(e, "displaycols") == PropertyFlags::Success ||
         propertyBool(e, "displayrows") == PropertyFlags::Success)
         return true;
 }

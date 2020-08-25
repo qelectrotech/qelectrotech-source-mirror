@@ -141,6 +141,18 @@ bool PartArc::fromXml(const QDomElement &qde) {
     m_span_angle *= 16;
 }
 
+bool PartArc::valideXml(QDomElement& element) {
+
+    if (propertyDouble(element, "x") == PropertyFlags::NoValidConversion ||
+        propertyDouble(element, "y") == PropertyFlags::NoValidConversion ||
+        propertyDouble(element, "width") == PropertyFlags::NoValidConversion ||
+        propertyDouble(element, "height") == PropertyFlags::NoValidConversion ||
+        propertyDouble(element, "start")  == PropertyFlags::NoValidConversion ||
+        propertyDouble(element, "angle") == PropertyFlags::NoValidConversion)
+        return false;
+    return true;
+}
+
 /**
  * @brief PartArc::shape
  * @return the shape of this item

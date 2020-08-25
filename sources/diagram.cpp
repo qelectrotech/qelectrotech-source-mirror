@@ -624,13 +624,12 @@ QDomDocument Diagram::toXml(bool whole_content) {
 	
 	// proprietes du schema
 	if (whole_content) {
-		border_and_titleblock.titleBlockToXml(dom_root);
+        // TODO: compare with old version
+        border_and_titleblock.titleBlockToXml(document);
 		border_and_titleblock.borderToXml(dom_root);
 		
 		// Default conductor properties
-		QDomElement default_conductor = document.createElement("defaultconductor");
-		defaultConductorProperties.toXml(default_conductor);
-		dom_root.appendChild(default_conductor);
+        dom_root.appendChild(defaultConductorProperties.toXml(document));
 
 		// Conductor autonum
 		if (!m_conductors_autonum_name.isEmpty()) {
@@ -764,7 +763,8 @@ QDomDocument Diagram::toXml(bool whole_content) {
 	if (!list_conductors.isEmpty()) {
 		auto dom_conductors = document.createElement("conductors");
 		for (auto cond : list_conductors) {
-			dom_conductors.appendChild(cond->toXml(document, table_adr_id));
+            //dom_conductors.appendChild(cond->toXml(document, table_adr_id));
+            dom_conductors.appendChild(cond->toXml(document));
 		}
 		dom_root.appendChild(dom_conductors);
 	}
@@ -947,6 +947,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		if (!default_conductor_elmt.isNull()) {
 			defaultConductorProperties.fromXml(default_conductor_elmt);
 		}
+
 
 		// Load the autonum
 		m_conductors_autonum_name = root.attribute("conductorAutonum");

@@ -61,6 +61,10 @@ QDomElement PartTerminal::toXml(QDomDocument &xml_document) const {
     return d->toXml(xml_document);
 }
 
+bool PartTerminal::valideXml(QDomElement& element) {
+    return TerminalData::valideXml(element);
+}
+
 /**
 	Dessine la borne
 	@param p QPainter a utiliser pour rendre le dessin

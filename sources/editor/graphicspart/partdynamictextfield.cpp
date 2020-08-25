@@ -183,12 +183,17 @@ bool PartDynamicTextField::fromXml(const QDomElement &dom_elmt)
 	}
 
     propertyUuid(dom_elmt, "uuid", &m_uuid, QUuid::createUuid());
-	m_uuid = QUuid(dom_elmt.attribute("uuid", QUuid::createUuid().toString()));
-	setFrame(dom_elmt.attribute("frame", "false") == "true"? true : false);
-	setTextWidth(dom_elmt.attribute("text_width", QString::number(-1)).toDouble());
+    bool frame;
+    propertyBool(dom_elmt, "frame", &frame);
+
+    double text_width;
+    propertyDouble(dom_elmt, "text_width", &text_width, -1);
+    setTextWidth(text_width);
 	
 	QMetaEnum me = DynamicElementTextItem::textFromMetaEnum();
-	m_text_from = DynamicElementTextItem::TextFrom(me.keyToValue(dom_elmt.attribute("text_from").toStdString().data()));
+    QString text_from;
+    propertyString(dom_elmt, "text_from", &text_from);
+    m_text_from = DynamicElementTextItem::TextFrom(me.keyToValue(text_from.toStdString().data()));
 	
 	me = QMetaEnum::fromType<Qt::Alignment>();
     QString alignment;
@@ -221,6 +226,27 @@ bool PartDynamicTextField::fromXml(const QDomElement &dom_elmt)
 	QDomElement dom_color = dom_elmt.firstChildElement("color");
 	if(!dom_color.isNull())
 		setColor(QColor(dom_color.text()));
+}
+
+bool PartDynamicTextField::valideXml(QDomElement& dom_elmt) {
+    if (propertyDouble(dom_elmt, "x") == PropertyFlags::NoValidConversion ||
+        propertyDouble(dom_elmt, "y") == PropertyFlags::NoValidConversion ||
+        propertyDouble(dom_elmt, "z") == PropertyFlags::NoValidConversion ||
+        propertyDouble(dom_elmt, "rotation") == PropertyFlags::NoValidConversion)
+        return false;
+
+    if (propertyUuid(dom_elmt, "uuid") == PropertyFlags::NoValidConversion)
+        return false;
+
+    if (propertyString(dom_elmt, "text_from"))
+        return false;
+
+    if(propertyString(dom_elmt, "Halignment") == PropertyFlags::NotFound)
+        return false;
+    if(propertyString(dom_elmt, "Valignment") == PropertyFlags::NotFound)
+        return false;
+
+    return true;
 }
 
 /**

@@ -28,13 +28,13 @@ void TerminalData::setParent(QGraphicsObject* parent)
     q = parent;
 }
 
-void TerminalData::toSettings(QSettings &settings, const QString) const
+void TerminalData::toSettings(QSettings& settings, const QString&) const
 
 {
 	Q_UNUSED(settings);
 }
 
-void TerminalData::fromSettings(const QSettings &settings, const QString)
+void TerminalData::fromSettings(const QSettings& settings, const QString&)
 {
 	Q_UNUSED(settings);
 }
@@ -89,6 +89,20 @@ bool TerminalData::fromXml (const QDomElement &xml_element)
     return true;
 }
 
-bool TerminalData::valideXml(QDomElement& element) const {
+bool TerminalData::valideXml(QDomElement& xml_element) {
+    if (propertyDouble(xml_element, "x"))
+        return false;
+
+    if (propertyDouble(xml_element, "y"))
+        return false;
+
+    if (propertyString(xml_element, "uuid"))
+        return false;
+
+    if (propertyString(xml_element, "name"))
+        return false;
+
+    if (propertyString(xml_element, "orientation"))
+        return false;
     return true;
 }

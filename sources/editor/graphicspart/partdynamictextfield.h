@@ -77,6 +77,7 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
         QDomElement toXml(QDomDocument &dom_doc) const override;
         bool fromXml(const QDomElement &dom_elmt) override;
 		void fromTextFieldXml(const QDomElement &dom_element);
+        static bool valideXml(QDomElement& dom_elmt);
 		
 		DynamicElementTextItem::TextFrom textFrom() const;
 		void setTextFrom (DynamicElementTextItem::TextFrom text_from);

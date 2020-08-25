@@ -53,6 +53,7 @@ class PartArc : public AbstractPartEllipse
 		QString xmlName() const override { return(QString("arc")); }
         QDomElement toXml   (QDomDocument &) const override;
         bool fromXml (const QDomElement &) override;
+        static bool valideXml(QDomElement& element);
 
 		QPainterPath shape() const override;
 		QPainterPath shadowShape() const override;

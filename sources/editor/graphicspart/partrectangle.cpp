@@ -141,6 +141,18 @@ bool PartRectangle::fromXml(const QDomElement &qde)
     return true;
 }
 
+bool PartRectangle::valideXml(QDomElement& element) {
+    // parameters have default values so no value is not a non valid xml element
+    if ((propertyDouble(element, "x") & PropertyFlags::NoValidConversion) |
+        (propertyDouble(element, "y") & PropertyFlags::NoValidConversion) |
+        (propertyDouble(element, "width") & PropertyFlags::NoValidConversion) |
+        (propertyDouble(element, "width") & PropertyFlags::NoValidConversion) |
+        (propertyDouble(element, "rx") & PropertyFlags::NoValidConversion) |
+        (propertyDouble(element, "ry") & PropertyFlags::NoValidConversion))
+        return false;
+    return true;
+}
+
 /**
  * @brief PartRectangle::rect
  * @return : Returns the item's rectangle.

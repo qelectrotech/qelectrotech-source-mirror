@@ -573,36 +573,16 @@ ConductorTextItem *Conductor::textItem() const {
 	@return true si l'element XML represente bien un Conducteur ; false sinon
 */
 bool Conductor::valideXml(QDomElement &e){
-	// verifie le nom du tag
-	if (e.tagName() != "conductor") return(false);
-	
-	// verifie la presence des attributs minimaux
-	if (!e.hasAttribute("terminal1")) return(false);
-	if (!e.hasAttribute("terminal2")) return(false);
-	
-	bool conv_ok;
-	// parse l'abscisse
-	if (e.hasAttribute("element1")) {
-		if (QUuid(e.attribute("element1")).isNull())
-			return false;
-		if (QUuid(e.attribute("terminal1")).isNull())
-			return false;
-	} else {
-		e.attribute("terminal1").toInt(&conv_ok);
-		if (!conv_ok) return(false);
-	}
-	
-	// parse l'ordonnee
-	if (e.hasAttribute("element2")) {
-		if (QUuid(e.attribute("element2")).isNull())
-			return false;
-		if (QUuid(e.attribute("terminal2")).isNull())
-			return false;
-	} else {
-		e.attribute("terminal2").toInt(&conv_ok);
-		if (!conv_ok) return(false);
-	}
-	return(true);
+
+    // TODO: seems to short! (see fromXML)
+    if (propertyDouble(e, "x") ||
+        propertyDouble(e, "y"))
+        return false;
+
+    if (propertyBool(e, "freezeLabel"))
+        return false;
+
+    return true;
 }
 
 /**
@@ -973,8 +953,9 @@ void Conductor::pointsToSegments(const QList<QPointF>& points_list) {
  * @param e
  * @return true is loading success else return false
  */
-bool Conductor::fromXml(QDomElement &dom_element)
+bool Conductor::fromXml(const QDomElement &dom_element)
 {
+    // TODO: seems to short!
 	setPos(dom_element.attribute("x", nullptr).toDouble(),
 		   dom_element.attribute("y", nullptr).toDouble());
 
@@ -997,6 +978,54 @@ bool Conductor::fromXml(QDomElement &dom_element)
 	return return_;
 }
 
+// does not support legacy method
+// dom_element.setAttribute("terminal1", table_adr_id.value(terminal1));
+QDomElement Conductor::toXml(QDomDocument & doc) const {
+    QDomElement dom_element = doc.createElement("conductor");
+
+    dom_element.appendChild(createXmlProperty(doc, "x", pos().x()));
+    dom_element.appendChild(createXmlProperty(doc, "y", pos().y()));
+
+    // Terminal is uniquely identified by the uuid of the terminal and the element
+    dom_element.appendChild(createXmlProperty(doc, "element1", terminal1->parentElement()->uuid()));
+    dom_element.appendChild(createXmlProperty(doc, "terminal1", terminal1->uuid()));
+
+    dom_element.appendChild(createXmlProperty(doc, "element2", terminal2->parentElement()->uuid()));
+    dom_element.appendChild(createXmlProperty(doc, "terminal2", terminal2->uuid()));
+
+    dom_element.appendChild(createXmlProperty(doc, "freezeLabel", m_freeze_label));
+
+    // on n'exporte les segments du conducteur que si ceux-ci ont
+    // ete modifies par l'utilisateur
+    if (modified_path)
+    {
+        // parcours et export des segments
+        QDomElement current_segment;
+        foreach(ConductorSegment *segment, segmentsList())
+        {
+            current_segment = doc.createElement("segment");
+            current_segment.appendChild(createXmlProperty(doc, "orientation", segment->isHorizontal()));
+            current_segment.appendChild(createXmlProperty(doc, "length", segment -> length()));
+            dom_element.appendChild(current_segment);
+        }
+    }
+
+    QDomElement dom_seq = m_autoNum_seq.toXml(doc);
+    dom_element.appendChild(dom_seq);
+
+        // Export the properties and text
+    dom_element.appendChild(m_properties.toXml(doc));
+    if(m_text_item->wasMovedByUser())
+    {
+        dom_element.appendChild(createXmlProperty(doc, "userx", m_text_item->pos().x()));
+        dom_element.appendChild(createXmlProperty(doc, "usery", m_text_item->pos().y()));
+    }
+    if(m_text_item->wasRotateByUser())
+        dom_element.appendChild(createXmlProperty(doc, "rotation", m_text_item->rotation()));
+
+    return(dom_element);
+}
+
 /**
 	Exporte les caracteristiques du conducteur sous forme d'une element XML.
 	@param d Le document XML a utiliser pour creer l'element XML
@@ -1004,61 +1033,61 @@ bool Conductor::fromXml(QDomElement &dom_element)
 	bornes dans le document XML et leur adresse en memoire
 	@return Un element XML representant le conducteur
 */
-QDomElement Conductor::toXml(QDomDocument &dom_document, QHash<Terminal *, int> &table_adr_id) const
-{
-	QDomElement dom_element = dom_document.createElement("conductor");
+//QDomElement Conductor::toXml(QDomDocument &dom_document, QHash<Terminal *, int> &table_adr_id) const
+//{
+//	QDomElement dom_element = dom_document.createElement("conductor");
 
-	dom_element.setAttribute("x", QString::number(pos().x()));
-	dom_element.setAttribute("y", QString::number(pos().y()));
+//	dom_element.setAttribute("x", QString::number(pos().x()));
+//	dom_element.setAttribute("y", QString::number(pos().y()));
 
-    // Terminal is uniquely identified by the uuid of the terminal and the element
-    if (terminal1->uuid().isNull()) {
-        // legacy method to identify the terminal
-        dom_element.setAttribute("terminal1", table_adr_id.value(terminal1)); // for backward compability
-    } else {
-        dom_element.setAttribute("element1", terminal1->parentElement()->uuid().toString());
-        dom_element.setAttribute("terminal1", terminal1->uuid().toString());
-    }
+//    // Terminal is uniquely identified by the uuid of the terminal and the element
+//    if (terminal1->uuid().isNull()) {
+//        // legacy method to identify the terminal
+//        dom_element.setAttribute("terminal1", table_adr_id.value(terminal1)); // for backward compability
+//    } else {
+//        dom_element.setAttribute("element1", terminal1->parentElement()->uuid().toString());
+//        dom_element.setAttribute("terminal1", terminal1->uuid().toString());
+//    }
 
-    if (terminal2->uuid().isNull()) {
-        // legacy method to identify the terminal
-        dom_element.setAttribute("terminal2", table_adr_id.value(terminal2)); // for backward compability
-    } else {
-        dom_element.setAttribute("element2", terminal2->parentElement()->uuid().toString());
-        dom_element.setAttribute("terminal2", terminal2->uuid().toString());
-    }
-	dom_element.setAttribute("freezeLabel", m_freeze_label? "true" : "false");
+//    if (terminal2->uuid().isNull()) {
+//        // legacy method to identify the terminal
+//        dom_element.setAttribute("terminal2", table_adr_id.value(terminal2)); // for backward compability
+//    } else {
+//        dom_element.setAttribute("element2", terminal2->parentElement()->uuid().toString());
+//        dom_element.setAttribute("terminal2", terminal2->uuid().toString());
+//    }
+//	dom_element.setAttribute("freezeLabel", m_freeze_label? "true" : "false");
 	
-	// on n'exporte les segments du conducteur que si ceux-ci ont
-	// ete modifies par l'utilisateur
-	if (modified_path)
-	{
-		// parcours et export des segments
-		QDomElement current_segment;
-		foreach(ConductorSegment *segment, segmentsList())
-		{
-			current_segment = dom_document.createElement("segment");
-			current_segment.setAttribute("orientation", segment -> isHorizontal() ? "horizontal" : "vertical");
-			current_segment.setAttribute("length", QString("%1").arg(segment -> length()));
-			dom_element.appendChild(current_segment);
-		}
-	}
+//	// on n'exporte les segments du conducteur que si ceux-ci ont
+//	// ete modifies par l'utilisateur
+//	if (modified_path)
+//	{
+//		// parcours et export des segments
+//		QDomElement current_segment;
+//		foreach(ConductorSegment *segment, segmentsList())
+//		{
+//			current_segment = dom_document.createElement("segment");
+//			current_segment.setAttribute("orientation", segment -> isHorizontal() ? "horizontal" : "vertical");
+//			current_segment.setAttribute("length", QString("%1").arg(segment -> length()));
+//			dom_element.appendChild(current_segment);
+//		}
+//	}
 
-	QDomElement dom_seq = m_autoNum_seq.toXml(dom_document);
-	dom_element.appendChild(dom_seq);
+//	QDomElement dom_seq = m_autoNum_seq.toXml(dom_document);
+//	dom_element.appendChild(dom_seq);
 	
-		// Export the properties and text
-	m_properties. toXml(dom_element);
-	if(m_text_item->wasMovedByUser())
-	{
-		dom_element.setAttribute("userx", QString::number(m_text_item->pos().x()));
-		dom_element.setAttribute("usery", QString::number(m_text_item->pos().y()));
-	}
-	if(m_text_item->wasRotateByUser())
-		dom_element.setAttribute("rotation", QString::number(m_text_item->rotation()));
+//		// Export the properties and text
+//    m_properties.toXml(dom_document);
+//	if(m_text_item->wasMovedByUser())
+//	{
+//		dom_element.setAttribute("userx", QString::number(m_text_item->pos().x()));
+//		dom_element.setAttribute("usery", QString::number(m_text_item->pos().y()));
+//	}
+//	if(m_text_item->wasRotateByUser())
+//		dom_element.setAttribute("rotation", QString::number(m_text_item->rotation()));
 
-	return(dom_element);
-}
+//	return(dom_element);
+//}
 
 /**
  * @brief Conductor::pathFromXml
@@ -1077,14 +1106,14 @@ bool Conductor::pathFromXml(const QDomElement &e) {
 		if (current_segment.isNull() || current_segment.tagName() != "segment") continue;
 
 		// le segment doit avoir une longueur
-		if (!current_segment.hasAttribute("length")) continue;
+        qreal segment_length;
+        if (propertyDouble(e, "length", & segment_length))
+            continue;
 
-		// cette longueur doit etre un reel
-		bool ok;
-		qreal segment_length = current_segment.attribute("length").toDouble(&ok);
-		if (!ok) continue;
+        bool isHorizontal;
+        propertyBool(e, "orientation", &isHorizontal);
 
-		if (current_segment.attribute("orientation") == "horizontal") {
+        if (isHorizontal) {
 			segments_x << segment_length;
 			segments_y << 0.0;
 		} else {

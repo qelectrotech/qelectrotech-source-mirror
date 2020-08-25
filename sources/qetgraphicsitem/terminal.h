@@ -90,7 +90,7 @@ class Terminal : public QGraphicsObject, public PropertiesInterface
 		bool canBeLinkedTo(Terminal *);
 	
 		// methods related to XML import/export
-        bool valideXml(QDomElement  &) const override;
+        static bool valideXml(QDomElement  &);
         bool fromXml (const QDomElement &) override;
         QDomElement toXml (QDomDocument &) const override;
 	

@@ -166,7 +166,7 @@ class Diagram : public QGraphicsScene
 		QList < QSet <Conductor *> > potentials();
 	
 		// methods related to XML import/export
-		QDomDocument toXml(bool = true);
+        QDomDocument toXml(bool = true);
 		bool initFromXml(QDomElement &, QPointF = QPointF(),
 				bool = true, DiagramContent * = nullptr);
 		bool fromXml(QDomDocument &, QPointF = QPointF(),

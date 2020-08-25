@@ -161,6 +161,20 @@ bool PartLine::fromXml(const QDomElement &qde) {
     return true;
 }
 
+bool PartLine::valideXml(QDomElement& element) const {
+    if (propertyDouble(element, "x1") ||
+        propertyDouble(element, "y1") ||
+        propertyDouble(element, "x2") ||
+        propertyDouble(element, "y2") ||
+        propertyString(element, "end1") ||
+        propertyString(element, "end2") ||
+        propertyDouble(element, "length1") ||
+        propertyDouble(element, "length2") )
+        return false;
+
+    return true;
+}
+
 /**
  * @brief PartLine::itemChange
  * @param change

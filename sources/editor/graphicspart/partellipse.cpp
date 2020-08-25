@@ -132,6 +132,26 @@ bool PartEllipse::fromXml(const QDomElement &qde)
     return true;
 }
 
+bool PartEllipse::valideXml(QDomElement& element) {
+    if (element.tagName() == "ellipse")
+    {
+        if (propertyDouble(element, "width") & PropertyFlags::NoValidConversion ||
+            propertyDouble(element, "height") & PropertyFlags::NoValidConversion)
+            return false;
+    }
+    else {
+        if (propertyDouble(element, "diameter") & PropertyFlags::NoValidConversion)
+            return false;
+    }
+
+
+    if ((propertyDouble(element, "x") & PropertyFlags::NoValidConversion) ||
+        (propertyDouble(element, "y") & PropertyFlags::NoValidConversion))
+        return false;
+
+    return true;
+}
+
 /**
  * @brief PartEllipse::shape
  * @return the shape of this item

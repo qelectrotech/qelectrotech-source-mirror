@@ -138,6 +138,11 @@ QDomElement PartPolygon::toXml(QDomDocument &xml_document) const
 	return(xml_element);
 }
 
+bool PartPolygon::valideXml(QDomElement& element) {
+    // TODO: implement
+    return true;
+}
+
 /**
  * @brief PartPolygon::isUseless
  * @return true if this part is irrelevant and does not deserve to be Retained / registered.

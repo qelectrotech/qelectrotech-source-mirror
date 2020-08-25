@@ -43,8 +43,8 @@ class TitleBlockProperties: public PropertiesInterface {
 	
     QDomElement toXml(QDomDocument &xml_document) const override;
     bool fromXml(const QDomElement &) override;
-	void toSettings(QSettings &, const QString & = QString()) const;
-	void fromSettings(QSettings &, const QString & = QString());
+    void toSettings(QSettings &, const QString & = QString()) const override;
+    void fromSettings(const QSettings &, const QString & = QString()) override;
 
 	void setAutoPageNum(QString autonum) {auto_page_num = autonum;}
 

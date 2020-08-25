@@ -28,30 +28,14 @@ public:
     void setParent(QGraphicsObject* parent);
 
     // Save/load properties to setting file. QString is use for prefix a word befor the name of each paramètre
-    void toSettings(QSettings &settings, const QString = QString()) const override;
-    void fromSettings(const QSettings &settings, const QString = QString()) override;
+    void toSettings(QSettings &settings, const QString& = QString()) const override;
+    void fromSettings(const QSettings &settings, const QString& = QString()) override;
     // Save/load properties to xml element
     // This method is only called from the PartTerminal and should never called from the Terminal class
     QDomElement toXml(QDomDocument &xml_element) const override;
     bool fromXml(const QDomElement &xml_element) override;
 
-    bool valideXml(QDomElement  &element) const override;
-
-    /**
-        Permet de convertir une chaine de caracteres ("n", "s", "e" ou "w")
-        en orientation. Si la chaine fait plusieurs caracteres, seul le
-        premier est pris en compte. En cas d'incoherence, Qet::North est
-        retourne.
-        @param s Chaine de caractere cense representer une orientation
-        @return l'orientation designee par la chaine de caractere
-    */
-    static Qet::Orientation orientationFromString(const QString &s);
-
-    /**
-        @param o une orientation
-        @return une chaine de caractere representant l'orientation
-    */
-    static QString orientationToString(Qet::Orientation o);
+    static bool valideXml(QDomElement  &xml_element);
 
     // must be public, because this class is a private member of PartTerminal/Terminal and they must
     // access this data

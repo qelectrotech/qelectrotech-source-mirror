@@ -72,6 +72,7 @@ class PartLine : public CustomElementGraphicPart
 		QString xmlName() const override { return(QString("line")); }
         QDomElement toXml(QDomDocument &) const override;
         bool fromXml(const QDomElement &) override;
+        bool valideXml(QDomElement& element) const;
 		virtual QPointF sceneP1() const;
 		virtual QPointF sceneP2() const;
 		QPainterPath shape() const override;

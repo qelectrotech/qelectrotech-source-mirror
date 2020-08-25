@@ -37,7 +37,7 @@ class ElementTextItemGroup;
 /**
 	This is the base class for electrical elements.
 */
-class Element : public QetGraphicsItem
+class Element : public QetGraphicsItem // TODO: derive from propertiesInterface!
 {
 	friend class DiagramEventAddElement;
 	

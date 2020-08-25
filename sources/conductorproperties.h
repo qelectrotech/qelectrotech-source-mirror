@@ -38,10 +38,11 @@ class SingleLineProperties: public PropertiesInterface {
 	unsigned short int phasesCount();
 	bool isPen() const;
 	void draw(QPainter *, QET::ConductorSegmentType, const QRectF &);
-    void toXml(QDomElement &) const override;
-    void fromXml(QDomElement &) override;
+    QDomElement toXml(QDomDocument& doc) const override;
+    bool fromXml(const QDomElement &) override;
+    static bool valideXml(QDomElement& element);
     void toSettings(QSettings &, const QString & = QString()) const override;
-    void fromSettings(QSettings &, const QString & = QString()) override;
+    void fromSettings(const QSettings &, const QString & = QString()) override;  
 	
 	/// Whether the singleline conductor should display the ground symbol
 	bool hasGround;
@@ -111,10 +112,11 @@ class ConductorProperties: public PropertiesInterface
 		SingleLineProperties singleLineProperties;
 	
 			// methods
-        void toXml(QDomDocument &doc) const override;
-        void fromXml(QDomElement &) override;
+        QDomElement toXml(QDomDocument &doc) const override;
+        bool fromXml(const QDomElement &) override;
+        static bool valideXml(QDomElement& element);
         void toSettings(QSettings &, const QString & = QString()) const override;
-        void fromSettings(QSettings &, const QString & = QString()) override;
+        void fromSettings(const QSettings &, const QString & = QString()) override;
 		static QString typeToString(ConductorType);
 		void applyForEqualAttributes(QList<ConductorProperties> list);
 

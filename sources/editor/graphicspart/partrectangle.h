@@ -62,6 +62,7 @@ class PartRectangle :  public CustomElementGraphicPart
 		QString           xmlName () const override { return(QString("rect")); }
         QDomElement toXml   (QDomDocument &) const override;
         bool fromXml (const QDomElement &) override;
+        static bool valideXml(QDomElement& element);
 
 		QRectF rect() const;
 		void   setRect(const QRectF &rect);

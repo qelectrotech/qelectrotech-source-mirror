@@ -119,6 +119,30 @@ QDomElement PartText::toXml(QDomDocument &xml_document) const
 	return(xml_element);
 }
 
+bool PartText::valideXml(QDomElement& element) {
+
+    if (propertyInteger(element, "size") == PropertyFlags::NotFound ||
+        propertyString(element, "font") == PropertyFlags::NotFound) {
+        return false;
+    }
+
+    if (propertyString(element, "color") == PropertyFlags::NoValidConversion)
+        return false;
+
+
+    if (propertyString(element, "text"))
+        return false;
+
+    if (propertyDouble(element, "x") == PropertyFlags::NoValidConversion ||
+        propertyDouble(element, "y") == PropertyFlags::NoValidConversion)
+        return false;
+
+    if (propertyDouble(element, "rotation", 0) == PropertyFlags::NoValidConversion)
+        return false;
+
+    return true;
+}
+
 /**
 	@return Les coordonnees du point situe en bas a gauche du texte.
 */

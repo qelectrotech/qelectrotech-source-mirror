@@ -735,21 +735,21 @@ QDomElement Terminal::toXml(QDomDocument &doc) const {
 	@param terminal Le QDomElement a analyser
 	@return true si le QDomElement passe en parametre est une borne, false sinon
 */
-bool Terminal::valideXml(QDomElement &terminal) const {
+bool Terminal::valideXml(QDomElement &terminal) {
 	if (terminal.tagName() != "terminal") return(false);
 
-    if (!propertyString(terminal, "number", nullptr))
+    if (propertyString(terminal, "number"))
         return false;
 
-    if (!propertyString(terminal, "name", nullptr))
+    if (propertyString(terminal, "name"))
         return false;
 
-    if (!propertyBool(terminal, "nameHidden", nullptr))
+    if (propertyBool(terminal, "nameHidden"))
         return false;
 
-    if (!propertyDouble(terminal, "x", nullptr))
+    if (propertyDouble(terminal, "x"))
         return false;
-    if (!propertyDouble(terminal, "y", nullptr))
+    if (propertyDouble(terminal, "y"))
         return false;
 
     QString o;
@@ -776,23 +776,23 @@ bool Terminal::valideXml(QDomElement &terminal) const {
 	(memes coordonnes, meme orientation), false sinon
 */
 bool Terminal::fromXml(const QDomElement &terminal) {
-    if (!propertyString(terminal, "number", &number_terminal_))
+    if (propertyString(terminal, "number", &number_terminal_))
         return false;
 
-    if (!propertyString(terminal, "name", &name_terminal_))
+    if (propertyString(terminal, "name", &name_terminal_))
         return false;
 
-    if (!propertyBool(terminal, "nameHidden", &name_terminal_hidden))
+    if (propertyBool(terminal, "nameHidden", &name_terminal_hidden))
         return false;
 
     double x, y;
-    if (!propertyDouble(terminal, "x", &x))
+    if (propertyDouble(terminal, "x", &x))
         return false;
-    if (!propertyDouble(terminal, "y", &y))
+    if (propertyDouble(terminal, "y", &y))
         return false;
 
     QString o;
-    if (!propertyString(terminal, "orientation", &o))
+    if (propertyString(terminal, "orientation", &o))
         return false;
 
     return (

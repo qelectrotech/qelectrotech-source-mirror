@@ -19,6 +19,7 @@
 #define CONDUCTOR_H
 
 #include "conductorproperties.h"
+#include "propertiesinterface.h"
 #include <QGraphicsPathItem>
 #include "assignvariables.h"
 
@@ -39,7 +40,7 @@ typedef QHash<Qt::Corner, ConductorProfile> ConductorProfilesGroup;
 	This class represents a conductor, i.e. a wire between two element
 	terminals.
 */
-class Conductor : public QGraphicsObject
+class Conductor : public QGraphicsObject, public PropertiesInterface
 {
 	Q_OBJECT
 
@@ -95,8 +96,9 @@ class Conductor : public QGraphicsObject
 
 	public:
 		static bool valideXml (QDomElement &);
-		bool        fromXml   (QDomElement &);
-		QDomElement toXml     (QDomDocument &, QHash<Terminal *, int> &) const;
+        bool        fromXml   (const QDomElement &) override;
+        //QDomElement toXml     (QDomDocument &, QHash<Terminal *, int> &) const;
+        QDomElement toXml     (QDomDocument &doc) const override;
 	private:
 		bool pathFromXml(const QDomElement &);
 

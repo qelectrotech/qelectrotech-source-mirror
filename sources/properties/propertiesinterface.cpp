@@ -26,10 +26,16 @@ namespace  {
     const QString boolS = "bool";
     const QString stringS = "string";
     const QString uuidS = "uuid";
+    const QString colorS = "color";
 }
 
 PropertiesInterface::PropertiesInterface()
 {
+}
+
+bool PropertiesInterface::valideXml(QDomElement& element) {
+    qDebug(QString("ValideXml() is not implemented. File: %1, Line: %2").arg(__FILE__).arg(__LINE__).toStdString().data());
+    return false;
 }
 
 QDomElement PropertiesInterface::createXmlProperty(QDomDocument &doc, const QString& name, const QString value) const {
@@ -44,7 +50,7 @@ QDomElement PropertiesInterface::createXmlProperty(QDomDocument& doc, const QStr
     QDomElement p = doc.createElement("property");
     p.setAttribute("name", name);
     p.setAttribute("type", integerS);
-    p.setAttribute("value", value);
+    p.setAttribute("value", QString::number(value));
     return p;
 }
 
@@ -52,7 +58,7 @@ QDomElement PropertiesInterface::createXmlProperty(QDomDocument& doc, const QStr
     QDomElement p = doc.createElement("property");
     p.setAttribute("name", name);
     p.setAttribute("type", doubleS);
-    p.setAttribute("value", value);
+    p.setAttribute("value", QString::number(value));
     return p;
 }
 
@@ -60,7 +66,7 @@ QDomElement PropertiesInterface::createXmlProperty(QDomDocument& doc, const QStr
     QDomElement p = doc.createElement("property");
     p.setAttribute("name", name);
     p.setAttribute("type", boolS);
-    p.setAttribute("value", value);
+    p.setAttribute("value", QString::number(value));
     return p;
 }
 
@@ -69,6 +75,14 @@ QDomElement PropertiesInterface::createXmlProperty(QDomDocument& doc, const QStr
     p.setAttribute("name", name);
     p.setAttribute("type", uuidS);
     p.setAttribute("value", value.toString());
+    return p;
+}
+
+QDomElement PropertiesInterface::createXmlProperty(QDomDocument& doc, const QString& name, const QColor value) const {
+    QDomElement p = doc.createElement("property");
+    p.setAttribute("name", name);
+    p.setAttribute("type", colorS);
+    p.setAttribute("value", value.name());
     return p;
 }
 
@@ -86,7 +100,7 @@ QDomElement PropertiesInterface::property(const QDomElement& e, const QString& n
 
 /*!
  * \brief PropertiesInterface::attribute
- * Returns the property with the name \p attribute_name
+ * Returns the property with the name \p attribute_name and type \p type
  * \param e Xml element which contains the property
  * \param attribute_name
  * \param type Type of the property
@@ -181,6 +195,26 @@ PropertiesInterface::PropertyFlags PropertiesInterface::propertyBool(const QDomE
 
     if (boolean != nullptr)
         *boolean = tmp;
+
+    return PropertyFlags::Success;
+}
+
+PropertiesInterface::PropertyFlags PropertiesInterface::propertyColor(const QDomElement &e, const QString& attribute_name, QColor* color, QColor defaultValue) {
+
+    QString attr;
+
+    if (!attribute(e, attribute_name, colorS, &attr)) {
+        *color = defaultValue;
+        return PropertyFlags::NotFound;
+    }
+
+    // verifie la validite de l'attribut
+    QColor tmp = QColor(attr);
+    if (!tmp.isValid())
+        return PropertyFlags::NoValidConversion;
+
+    if (color != nullptr)
+        *color = tmp;
 
     return PropertyFlags::Success;
 }

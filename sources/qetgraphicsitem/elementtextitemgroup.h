@@ -32,7 +32,7 @@ class CrossRefItem;
  * This class represent a group of element text
  * Texts in the group can be aligned left / center /right
  */
-class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
+class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup // TODO: derive from PropertiesInterface
 {
 	Q_OBJECT
 	

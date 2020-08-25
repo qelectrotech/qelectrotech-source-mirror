@@ -153,11 +153,6 @@ bool XRefProperties::fromXml(const QDomElement &xml_element) {
     return true;
 }
 
-bool XRefProperties::valideXml(QDomElement& element) const {
-    // TODO: implement
-    return true;
-}
-
 /**
  * @brief XRefProperties::defaultProperties
  * @return the default properties stored in the setting file
