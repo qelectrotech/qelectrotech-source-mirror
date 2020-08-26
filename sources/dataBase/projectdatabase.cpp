@@ -297,6 +297,8 @@ void projectDataBase::createElementNomenclatureView()
 						 "ei.comment AS comment,"
 						 "ei.function AS function,"
 						 "ei.tension_protocol AS tension_protocol,"
+						 "ei.conductor_color AS conductor_color,"
+						 "ei.conductor_section AS conductor_section,"
 						 "ei.auxiliary1 AS auxiliary1,"
 						 "ei.auxiliary2 AS auxiliary2,"
 						 "ei.description AS description,"
