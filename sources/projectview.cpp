@@ -817,8 +817,7 @@ void ProjectView::loadDiagrams()
 		dv->diagram()->loadElmtFolioSeq();
 		dv->diagram()->loadCndFolioSeq();
 	}
-	
-	QSettings settings;
+	m_tab->setCurrentWidget(firstDiagram());
 }
 
 /**
