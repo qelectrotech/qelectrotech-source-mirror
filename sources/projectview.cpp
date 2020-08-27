@@ -722,6 +722,12 @@ void ProjectView::initActions()
 {
 	m_add_new_diagram = new QAction(QET::Icons::AddFolio, tr("Ajouter un folio"), this);
 	connect(m_add_new_diagram, &QAction::triggered, [this](){this->m_project->addNewDiagram();});
+	
+	m_first_view = new QAction(QET::Icons::ArrowLeftDouble, tr("Revenir au debut du projet"),this);
+	connect(m_first_view, &QAction::triggered, [this](){this->m_tab->setCurrentWidget(firstDiagram());});
+	
+	m_end_view = new QAction(QET::Icons::ArrowRightDouble, tr("Aller à la fin du projet"),this);
+	connect(m_end_view, &QAction::triggered, [this](){this->m_tab->setCurrentWidget(lastDiagram());});
 }
 
 /**
@@ -752,11 +758,24 @@ void ProjectView::initWidgets() {
 	QToolButton *add_new_diagram_button = new QToolButton;
 	add_new_diagram_button -> setDefaultAction(m_add_new_diagram);
 	add_new_diagram_button -> setAutoRaise(true);
-	m_tab -> setCornerWidget(add_new_diagram_button, Qt::TopRightCorner);
+	// @ TODO find a solution to restore this button in a new QHBoxLayout group with the last view button
+	//m_tab -> setCornerWidget(add_new_diagram_button, Qt::TopRightCorner);
 
 	connect(m_tab, SIGNAL(currentChanged(int)), this, SLOT(tabChanged(int)));
 	connect(m_tab, SIGNAL(tabBarDoubleClicked(int)), this, SLOT(tabDoubleClicked(int)));
 	connect(m_tab->tabBar(), SIGNAL(tabMoved(int, int)), this, SLOT(tabMoved(int, int)), Qt::QueuedConnection);
+	
+	//arrows buttton to return on first view
+	QToolButton *m_first_view_button =new QToolButton;
+	m_first_view_button->setDefaultAction(m_first_view);
+	m_first_view_button->setAutoRaise(true);
+	m_tab->setCornerWidget(m_first_view_button, Qt::TopLeftCorner);
+	
+	//arrows buttton to go on last view
+	QToolButton *m_end_view_button =new QToolButton;
+	m_end_view_button->setDefaultAction(m_end_view);
+	m_end_view_button->setAutoRaise(true);
+	m_tab->setCornerWidget(m_end_view_button, Qt::TopRightCorner);
 
 	fallback_widget_ -> setVisible(false);
 	m_tab -> setVisible(false);
