@@ -755,11 +755,12 @@ void ProjectView::initWidgets() {
 #endif
 	m_tab -> setMovable(true);
 
+	QHBoxLayout *TopRightCorner_Layout = new QHBoxLayout();
+
 	QToolButton *add_new_diagram_button = new QToolButton;
 	add_new_diagram_button -> setDefaultAction(m_add_new_diagram);
 	add_new_diagram_button -> setAutoRaise(true);
-	// @ TODO find a solution to restore this button in a new QHBoxLayout group with the last view button
-	//m_tab -> setCornerWidget(add_new_diagram_button, Qt::TopRightCorner);
+	TopRightCorner_Layout->addWidget(add_new_diagram_button);
 
 	connect(m_tab, SIGNAL(currentChanged(int)), this, SLOT(tabChanged(int)));
 	connect(m_tab, SIGNAL(tabBarDoubleClicked(int)), this, SLOT(tabDoubleClicked(int)));
@@ -775,7 +776,11 @@ void ProjectView::initWidgets() {
 	QToolButton *m_end_view_button =new QToolButton;
 	m_end_view_button->setDefaultAction(m_end_view);
 	m_end_view_button->setAutoRaise(true);
-	m_tab->setCornerWidget(m_end_view_button, Qt::TopRightCorner);
+	TopRightCorner_Layout->addWidget(m_end_view_button);
+
+	QWidget *tabwidget=new QWidget(this);
+	tabwidget->setLayout(TopRightCorner_Layout);
+	m_tab -> setCornerWidget(tabwidget, Qt::TopRightCorner);
 
 	fallback_widget_ -> setVisible(false);
 	m_tab -> setVisible(false);

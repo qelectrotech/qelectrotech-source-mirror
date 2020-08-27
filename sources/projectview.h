@@ -71,6 +71,7 @@ class QVBoxLayout;
 
 
 /**
+	@brief The ProjectView class
 	This class provides a widget displaying the diagrams of a particular
 	project using tabs.
 */
