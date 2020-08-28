@@ -175,14 +175,15 @@ bool QET::orthogonalProjection(const QPointF &point,
 	
 	// determine le point d'intersection des deux droites = le projete orthogonal
 	QPointF intersection_point;
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
-	QLineF::IntersectType it = line.intersect(perpendicular_line,
-						  &intersection_point); // ### Qt 6: remove
-#else
+
 #pragma message("@TODO remove code for QT 5.14 or later")
-	QLineF::IntersectType it = line.intersects(perpendicular_line,
-						   &intersection_point);
+	QLineF::IntersectType it = line.
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
+			intersect // ### Qt 6: remove
+#else
+			intersects
 #endif
+			(perpendicular_line, &intersection_point);
 	
 	// ne devrait pas arriver (mais bon...)
 	if (it == QLineF::NoIntersection) return(false);
@@ -399,7 +400,8 @@ QString QET::license() {
 	Windows
 */
 QList<QChar> QET::forbiddenCharacters() {
-	return(QList<QChar>() << '\\' << '/' << ':' << '*' << '?' << '"' << '<' << '>' << '|');
+	return(QList<QChar>() << '\\' << '/' << ':' << '*' << '?' << '"'
+	       << '<' << '>' << '|');
 }
 
 /**
@@ -467,13 +469,17 @@ QString QET::joinWithSpaces(const QStringList &string_list) {
 	@return La liste des sous-chaines, sans echappement.
 */
 QStringList QET::splitWithSpaces(const QString &string) {
-	// les chaines sont separees par des espaces non echappes = avec un nombre nul ou pair de backslashes devant
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
-	QStringList escaped_strings = string.split(QRegExp("[^\\]?(?:\\\\)* "), QString::SkipEmptyParts);
-#else
+	// les chaines sont separees par des espaces non echappes
+	// = avec un nombre nul ou pair de backslashes devant
+
 #pragma message("@TODO remove code for QT 5.14 or later")
-	QStringList escaped_strings = string.split(QRegExp("[^\\]?(?:\\\\)* "), Qt::SkipEmptyParts);
+	QStringList escaped_strings = string.split(QRegExp("[^\\]?(?:\\\\)* "),
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
+						   QString
+#else
+						   Qt
 #endif
+						   ::SkipEmptyParts);
 
 	QStringList returned_list;
 	foreach(QString escaped_string, escaped_strings) {
@@ -591,8 +597,9 @@ bool QET::writeXmlFile(QDomDocument &xml_doc, const QString &filepath, QString *
 	{
 		if (error_message)
 		{
-			*error_message = QString(QObject::tr("Impossible d'ouvrir le fichier %1 en écriture, erreur %2 rencontrée.",
-												 "error message when attempting to write an XML file")).arg(filepath).arg(file.error());
+			*error_message = QString(QObject::tr(
+							 "Impossible d'ouvrir le fichier %1 en écriture, erreur %2 rencontrée.",
+							 "error message when attempting to write an XML file")).arg(filepath).arg(file.error());
 		}
 		return(false);
 	}
@@ -604,8 +611,9 @@ bool QET::writeXmlFile(QDomDocument &xml_doc, const QString &filepath, QString *
 	if  (!file.commit())
 	{
 		if (error_message) {
-			*error_message = QString(QObject::tr("Une erreur est survenue lors de l'écriture du fichier %1, erreur %2 rencontrée.",
-												 "error message when attempting to write an XML file")).arg(filepath).arg(file.error());
+			*error_message = QString(QObject::tr(
+							 "Une erreur est survenue lors de l'écriture du fichier %1, erreur %2 rencontrée.",
+							 "error message when attempting to write an XML file")).arg(filepath).arg(file.error());
 		}
 		
 		return false;
@@ -713,8 +721,9 @@ bool QET::writeToFile(QDomDocument &xml_doc, QFile *file, QString *error_message
 			{
 				QFileInfo info_(*file);
 				*error_message = QString(
-							QObject::tr("Impossible d'ouvrir le fichier %1 en écriture, erreur %2 rencontrée.",
-										"error message when attempting to write an XML file")
+							QObject::tr(
+								"Impossible d'ouvrir le fichier %1 en écriture, erreur %2 rencontrée.",
+								"error message when attempting to write an XML file")
 				).arg(info_.absoluteFilePath()).arg(file->error());
 			}
 			return false;

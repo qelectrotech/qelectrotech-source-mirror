@@ -50,7 +50,9 @@ SelectAutonumW::SelectAutonumW(int type, QWidget *parent) :
 	setContext(NumerotationContext());
 }
 
-SelectAutonumW::SelectAutonumW(const NumerotationContext &context, int type, QWidget *parent) :
+SelectAutonumW::SelectAutonumW(const NumerotationContext &context,
+			       int type,
+			       QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::SelectAutonumW),
 	m_edited_type(type)
@@ -85,7 +87,8 @@ SelectAutonumW::~SelectAutonumW()
 	selected in the diagram_chooser QcomboBox
 	@param context
 */
-void SelectAutonumW::setContext(const NumerotationContext &context) {
+void SelectAutonumW::setContext(const NumerotationContext &context)
+{
 	m_context = context;
 
 	qDeleteAll(num_part_list_);
@@ -114,7 +117,8 @@ void SelectAutonumW::setContext(const NumerotationContext &context) {
 	@brief SelectAutonumW::toNumContext
 	@return the content to num_part_list to NumerotationContext
 */
-NumerotationContext SelectAutonumW::toNumContext() const {
+NumerotationContext SelectAutonumW::toNumContext() const
+{
 	NumerotationContext nc;
 	foreach (NumPartEditorW *npew, num_part_list_)
 		nc << npew -> toNumContext();
@@ -139,7 +143,8 @@ void SelectAutonumW::on_add_button_clicked()
 	@brief SelectAutonumW::on_remove_button_clicked
  *	Action on remove button, remove the last NumPartEditor
 */
-void SelectAutonumW::on_remove_button_clicked() {
+void SelectAutonumW::on_remove_button_clicked()
+{
 	//remove if @num_part_list contains more than one item
 	if (num_part_list_.size() > 1) {
 		NumPartEditorW *part = num_part_list_.takeLast();
@@ -246,17 +251,20 @@ void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button) {
 	@brief SelectAutonumW::applyEnable
 	enable/disable the apply button
 */
-void SelectAutonumW::applyEnable(bool b) {
+void SelectAutonumW::applyEnable(bool b)
+{
 	if (b){
 		bool valid= true;
 		foreach (NumPartEditorW *npe, num_part_list_)
 			if (!npe -> isValid())
 				valid= false;
 
-		ui -> buttonBox -> button(QDialogButtonBox::Apply) -> setEnabled(valid);
+		ui->buttonBox->button(QDialogButtonBox::Apply)
+				->setEnabled(valid);
 	}
 	else {
-		ui -> buttonBox -> button(QDialogButtonBox::Apply) -> setEnabled(b);
+		ui->buttonBox->button(QDialogButtonBox::Apply)
+				->setEnabled(b);
 	}
 	if (m_edited_type == 0)
 		contextToFormula();
@@ -279,7 +287,8 @@ void SelectAutonumW::contextToFormula()
 	if (m_faw)
 	{
 		m_faw->clearContext();
-		m_faw->setContext(autonum::numerotationContextToFormula(toNumContext()));
+		m_faw->setContext(autonum::numerotationContextToFormula(
+					  toNumContext()));
 	}
 }
 
