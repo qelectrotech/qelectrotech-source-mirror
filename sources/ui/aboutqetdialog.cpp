@@ -69,13 +69,18 @@ void AboutQETDialog::setAbout()
 */
 void AboutQETDialog::setAuthors()
 {
-	addAuthor(ui->m_author_label, "Benoît Ansieau",     "benoit@qelectrotech.org",     tr("Idée originale"));
-	addAuthor(ui->m_author_label, "Laurent Trinques",   "scorpio@qelectrotech.org",    tr("Développement"));
-	addAuthor(ui->m_author_label, "Joshua Claveau",     "Joshua@qelectrotech.org",     tr("Développement"));
-	addAuthor(ui->m_author_label, "Davi Fochi",         "davi@fochi.com.br",           tr("Développement"));
-	addAuthor(ui->m_author_label, "Ronny Desmedt",      "r.desmedt@live.be",           tr("Convertisseur DXF"));
-	addAuthor(ui->m_author_label, "Raul Roda",          "raulroda8@gmail.com",         tr("Plugin Bornier"));
-	addAuthor(ui->m_author_label, "Abhishek Bansal",    "abhishek@qelectrotech.org",   tr("Développement"));
+	addAuthor(ui->m_author_label, "Benoît Ansieau",     "benoit@qelectrotech.org",         tr("Idée originale"));
+	addAuthor(ui->m_author_label, "Laurent Trinques",   "scorpio@qelectrotech.org",        tr("Développement"));
+	addAuthor(ui->m_author_label, "Joshua Claveau",     "Joshua@qelectrotech.org",         tr("Développement"));
+	addAuthor(ui->m_author_label, "Davi Fochi",         "davi@fochi.com.br",               tr("Développement"));
+	addAuthor(ui->m_author_label, "Ronny Desmedt",      "r.desmedt@live.be",               tr("Convertisseur DXF"));
+	addAuthor(ui->m_author_label, "Raul Roda",          "raulroda8@gmail.com",             tr("Plugin Bornier"));
+	addAuthor(ui->m_author_label, "Abhishek Bansal",    "abhishek@qelectrotech.org",       tr("Développement"));
+	addAuthor(ui->m_author_label, "Simon De Backer",    "￼￼debacker@qelectrotech.org",       tr("Développement"));
+	addAuthor(ui->m_author_label, "David Varley",       "David.Varley@cborn.com",          tr("Développement"));
+	addAuthor(ui->m_author_label, "Damian Caceres",     "damiancaceresmoreno@yahoo.es",    tr("Développement"));
+	addAuthor(ui->m_author_label, "Martin Marmsoler",   "martin.marmsoler@gmail.com",      tr("Développement"));
+	addAuthor(ui->m_author_label, "Sébastien Deffaux",  "s.deffaux@live.fr",               tr("Collection"));
 }
 
 /**
