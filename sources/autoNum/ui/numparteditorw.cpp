@@ -60,20 +60,34 @@ NumPartEditorW::NumPartEditorW (NumerotationContext &context,
 
 	else {
 		QStringList strl = context.itemAt(i);
-		if (strl.at(0)=="unit") setType(NumPartEditorW::unit, true);
-		else if (strl.at(0)=="unitfolio") setType(NumPartEditorW::unitfolio, true);
-		else if (strl.at(0)=="ten") setType(NumPartEditorW::ten, true);
-		else if (strl.at(0)=="tenfolio") setType(NumPartEditorW::tenfolio, true);
-		else if (strl.at(0)=="hundred") setType(NumPartEditorW::hundred, true);
-		else if (strl.at(0)=="hundredfolio") setType(NumPartEditorW::hundredfolio, true);
-		else if (strl.at(0)=="string") setType(NumPartEditorW::string);
-		else if (strl.at(0)=="idfolio") setType(NumPartEditorW::idfolio);
-		else if (strl.at(0)=="folio") setType(NumPartEditorW::folio);
-		else if (strl.at(0)=="plant") setType(NumPartEditorW::plant);
-		else if (strl.at(0)=="locmach") setType(NumPartEditorW::locmach);
-		else if (strl.at(0)=="elementline") setType(NumPartEditorW::elementline);
-		else if (strl.at(0)=="elementcolumn") setType(NumPartEditorW::elementcolumn);
-		else if (strl.at(0)=="elementprefix") setType(NumPartEditorW::elementprefix);
+		if (strl.at(0)=="unit")
+			setType(NumPartEditorW::unit, true);
+		else if (strl.at(0)=="unitfolio")
+			setType(NumPartEditorW::unitfolio, true);
+		else if (strl.at(0)=="ten")
+			setType(NumPartEditorW::ten, true);
+		else if (strl.at(0)=="tenfolio")
+			setType(NumPartEditorW::tenfolio, true);
+		else if (strl.at(0)=="hundred")
+			setType(NumPartEditorW::hundred, true);
+		else if (strl.at(0)=="hundredfolio")
+			setType(NumPartEditorW::hundredfolio, true);
+		else if (strl.at(0)=="string")
+			setType(NumPartEditorW::string);
+		else if (strl.at(0)=="idfolio")
+			setType(NumPartEditorW::idfolio);
+		else if (strl.at(0)=="folio")
+			setType(NumPartEditorW::folio);
+		else if (strl.at(0)=="plant")
+			setType(NumPartEditorW::plant);
+		else if (strl.at(0)=="locmach")
+			setType(NumPartEditorW::locmach);
+		else if (strl.at(0)=="elementline")
+			setType(NumPartEditorW::elementline);
+		else if (strl.at(0)=="elementcolumn")
+			setType(NumPartEditorW::elementcolumn);
+		else if (strl.at(0)=="elementprefix")
+			setType(NumPartEditorW::elementprefix);
 		ui -> value_field -> setText(strl.at(1));
 		ui -> increase_spinBox -> setValue(strl.at(2).toInt());
 	}
@@ -275,10 +289,27 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 
 	//if @t is a numeric type and preview type @type_ isn't a numeric type
 	//or @fnum is true, we set numeric behavior
-	if ( ((t==unit || t==unitfolio || t==ten || t==tenfolio || t==hundred || t==hundredfolio) &&
-		  (type_==string || type_==folio || type_==plant || type_==locmach ||type_==idfolio ||
-		   type_==elementcolumn || type_==elementline || type_==elementprefix))
-		 || fnum) {
+	if (
+			(
+				(t==unit
+				 || t==unitfolio
+				 || t==ten
+				 || t==tenfolio
+				 || t==hundred
+				 || t==hundredfolio
+				 )
+				&& (type_==string
+				    || type_==folio
+				    || type_==plant
+				    || type_==locmach
+				    || type_==idfolio
+				    || type_==elementcolumn
+				    || type_==elementline
+				    || type_==elementprefix)
+			)
+			|| fnum
+	)
+	{
 		ui -> value_field -> clear();
 		ui -> value_field -> setEnabled(true);
 		ui -> value_field -> setValidator(intValidator);
@@ -286,8 +317,14 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 		ui -> increase_spinBox -> setValue(1);
 	}
 	//@t isn't a numeric type
-	else if (t == string || t == folio || t == idfolio || t == elementline || t == plant || t == locmach ||
-			 t == elementcolumn || t == elementprefix) {
+	else if (t == string
+		 || t == folio
+		 || t == idfolio
+		 || t == elementline
+		 || t == plant
+		 || t == locmach
+		 || t == elementcolumn
+		 || t == elementprefix) {
 		ui -> value_field -> clear();
 		ui -> increase_spinBox -> setDisabled(true);
 		if (t==string) {

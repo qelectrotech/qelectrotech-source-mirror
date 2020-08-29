@@ -72,32 +72,43 @@ void AutoNumberingDockWidget::projectClosed()
 	@param projectview: projectview to be setted
 	assign Project and ProjectView, connect all signals and setContext
 */
-void AutoNumberingDockWidget::setProject(QETProject *project, ProjectView *projectview)
+void AutoNumberingDockWidget::setProject(QETProject *project,
+					 ProjectView *projectview)
 {
 		//Disconnect previous project
 	if (m_project && m_project_view)
 	{
 			//Conductor Signals
-		disconnect(m_project, SIGNAL(conductorAutoNumChanged()),this,SLOT(conductorAutoNumChanged()));
-		disconnect (m_project,SIGNAL(conductorAutoNumRemoved()), this,SLOT(conductorAutoNumChanged()));
-		disconnect (m_project,SIGNAL(conductorAutoNumAdded()),   this,SLOT(conductorAutoNumChanged()));
-		disconnect(m_project_view,SIGNAL(diagramActivated(DiagramView*)),this,SLOT(setConductorActive(DiagramView*)));
+		disconnect(m_project, SIGNAL(conductorAutoNumChanged()),
+			   this,SLOT(conductorAutoNumChanged()));
+		disconnect (m_project,SIGNAL(conductorAutoNumRemoved()),
+			    this,SLOT(conductorAutoNumChanged()));
+		disconnect (m_project,SIGNAL(conductorAutoNumAdded()),
+			    this,SLOT(conductorAutoNumChanged()));
+		disconnect(m_project_view,SIGNAL(diagramActivated(DiagramView*)),
+			   this,SLOT(setConductorActive(DiagramView*)));
 	
 			//Element Signals
-		disconnect (m_project,SIGNAL(elementAutoNumRemoved(QString)),   this,SLOT(elementAutoNumChanged()));
-		disconnect (m_project,SIGNAL(elementAutoNumAdded(QString)),     this,SLOT(elementAutoNumChanged()));
+		disconnect (m_project,SIGNAL(elementAutoNumRemoved(QString)),
+			    this,SLOT(elementAutoNumChanged()));
+		disconnect (m_project,SIGNAL(elementAutoNumAdded(QString)),
+			    this,SLOT(elementAutoNumChanged()));
 	
 			//Folio Signals
-		disconnect (m_project,SIGNAL(folioAutoNumRemoved()),     this,SLOT(folioAutoNumChanged()));
-		disconnect (m_project,SIGNAL(folioAutoNumAdded()),       this,SLOT(folioAutoNumChanged()));
+		disconnect (m_project,SIGNAL(folioAutoNumRemoved()),
+			    this,SLOT(folioAutoNumChanged()));
+		disconnect (m_project,SIGNAL(folioAutoNumAdded()),
+			    this,SLOT(folioAutoNumChanged()));
 		disconnect (this,
-				 SIGNAL(folioAutoNumChanged(QString)),
-				 &m_project_view->currentDiagram()->diagram()->border_and_titleblock,
-				 SLOT (slot_setAutoPageNum(QString)));
-		disconnect(m_project, SIGNAL(defaultTitleBlockPropertiesChanged()),this,SLOT(setActive()));
+			    SIGNAL(folioAutoNumChanged(QString)),
+			    &m_project_view->currentDiagram()->diagram()->border_and_titleblock,
+			    SLOT (slot_setAutoPageNum(QString)));
+		disconnect(m_project, SIGNAL(defaultTitleBlockPropertiesChanged()),
+			   this,SLOT(setActive()));
 	
 			//Conductor, Element and Folio Signals
-		disconnect(m_project, &QETProject::destroyed, this, &AutoNumberingDockWidget::projectClosed);
+		disconnect(m_project, &QETProject::destroyed,
+			   this, &AutoNumberingDockWidget::projectClosed);
 	}
 	
 	m_project = project;
@@ -105,26 +116,36 @@ void AutoNumberingDockWidget::setProject(QETProject *project, ProjectView *proje
 	this->setEnabled(true);
 
 		//Conductor Signals
-	connect(m_project, SIGNAL(conductorAutoNumChanged()),this,SLOT(conductorAutoNumChanged()));
-	connect(m_project,SIGNAL(conductorAutoNumRemoved()), this,SLOT(conductorAutoNumChanged()));
-	connect(m_project,SIGNAL(conductorAutoNumAdded()),   this,SLOT(conductorAutoNumChanged()));
-	connect(m_project_view,SIGNAL(diagramActivated(DiagramView*)),this,SLOT(setConductorActive(DiagramView*)));
+	connect(m_project, SIGNAL(conductorAutoNumChanged()),
+		this,SLOT(conductorAutoNumChanged()));
+	connect(m_project,SIGNAL(conductorAutoNumRemoved()),
+		this,SLOT(conductorAutoNumChanged()));
+	connect(m_project,SIGNAL(conductorAutoNumAdded()),
+		this,SLOT(conductorAutoNumChanged()));
+	connect(m_project_view,SIGNAL(diagramActivated(DiagramView*)),
+		this,SLOT(setConductorActive(DiagramView*)));
 
 		//Element Signals
-	connect (m_project,SIGNAL(elementAutoNumRemoved(QString)),   this,SLOT(elementAutoNumChanged()));
-	connect (m_project,SIGNAL(elementAutoNumAdded(QString)),     this,SLOT(elementAutoNumChanged()));
+	connect (m_project,SIGNAL(elementAutoNumRemoved(QString)),
+		 this,SLOT(elementAutoNumChanged()));
+	connect (m_project,SIGNAL(elementAutoNumAdded(QString)),
+		 this,SLOT(elementAutoNumChanged()));
 
 		//Folio Signals
-	connect (m_project,SIGNAL(folioAutoNumRemoved()),     this,SLOT(folioAutoNumChanged()));
-	connect (m_project,SIGNAL(folioAutoNumAdded()),       this,SLOT(folioAutoNumChanged()));
+	connect (m_project,SIGNAL(folioAutoNumRemoved()),
+		 this,SLOT(folioAutoNumChanged()));
+	connect (m_project,SIGNAL(folioAutoNumAdded()),
+		 this,SLOT(folioAutoNumChanged()));
 	connect (this,
-			 SIGNAL(folioAutoNumChanged(QString)),
-			 &m_project_view->currentDiagram()->diagram()->border_and_titleblock,
-			 SLOT (slot_setAutoPageNum(QString)));
-	connect(m_project, SIGNAL(defaultTitleBlockPropertiesChanged()),this,SLOT(setActive()));
+		 SIGNAL(folioAutoNumChanged(QString)),
+		 &m_project_view->currentDiagram()->diagram()->border_and_titleblock,
+		 SLOT (slot_setAutoPageNum(QString)));
+	connect(m_project, SIGNAL(defaultTitleBlockPropertiesChanged()),
+		this,SLOT(setActive()));
 
 		//Conductor, Element and Folio Signals
-	connect(m_project, &QETProject::destroyed, this, &AutoNumberingDockWidget::projectClosed);
+	connect(m_project, &QETProject::destroyed,
+		this, &AutoNumberingDockWidget::projectClosed);
 
 		//Set Combobox Context
 	setContext();
@@ -144,21 +165,24 @@ void AutoNumberingDockWidget::setContext() {
 	ui->m_conductor_cb->addItem("");
 	QList <QString> keys_conductor = m_project->conductorAutoNum().keys();
 	if (!keys_conductor.isEmpty()) {
-		foreach (QString str, keys_conductor) { ui->m_conductor_cb-> addItem(str); }
+		foreach (QString str, keys_conductor)
+		{ ui->m_conductor_cb-> addItem(str); }
 	}
 
 	//Element Combobox
 	ui->m_element_cb->addItem("");
 	QList <QString> keys_element = m_project->elementAutoNum().keys();
 	if (!keys_element.isEmpty()) {
-		foreach (QString str, keys_element) {ui->m_element_cb -> addItem(str);}
+		foreach (QString str, keys_element)
+		{ui->m_element_cb -> addItem(str);}
 	}
 
 	//Folio Combobox
 	ui->m_folio_cb->addItem("");
 	QList <QString> keys_folio = m_project->folioAutoNum().keys();
 	if (!keys_folio.isEmpty()) {
-		foreach (QString str, keys_folio) { ui->m_folio_cb -> addItem(str);}
+		foreach (QString str, keys_folio)
+		{ ui->m_folio_cb -> addItem(str);}
 	}
 
 	this->setActive();
@@ -216,7 +240,8 @@ void AutoNumberingDockWidget::conductorAutoNumChanged() {
 	ui->m_conductor_cb->addItem("");
 	QList <QString> keys_conductor = m_project->conductorAutoNum().keys();
 	if (!keys_conductor.isEmpty()) {
-		foreach (QString str, keys_conductor) { ui->m_conductor_cb-> addItem(str); }
+		foreach (QString str, keys_conductor)
+		{ ui->m_conductor_cb-> addItem(str); }
 	}
 	setActive();
 }

@@ -50,7 +50,8 @@ FolioAutonumberingW::~FolioAutonumberingW()
 	@brief FolioAutonumberingW::setContext
 	construct autonums in the comboBox selected in the autonum_chooser QcomboBox
 */
-void FolioAutonumberingW::setContext(QList <QString> autonums) {
+void FolioAutonumberingW::setContext(QList <QString> autonums)
+{
 	foreach (QString str, autonums) { ui->m_autonums_cb->addItem(str);}
 }
 
@@ -58,7 +59,8 @@ void FolioAutonumberingW::setContext(QList <QString> autonums) {
 	@brief FolioAutonumberingW::autoNumSelected
 	returns the current autonum selected
 */
-QString FolioAutonumberingW::autoNumSelected(){
+QString FolioAutonumberingW::autoNumSelected()
+{
 	return ui->m_autonums_cb->currentText();
 }
 
@@ -66,7 +68,8 @@ QString FolioAutonumberingW::autoNumSelected(){
 	@brief FolioAutonumberingW::fromFolio
 	returns the current "From Folio" index
 */
-int FolioAutonumberingW::fromFolio(){
+int FolioAutonumberingW::fromFolio()
+{
 	return ui->m_from_cb->currentIndex()-1;
 }
 
@@ -74,7 +77,8 @@ int FolioAutonumberingW::fromFolio(){
 	@brief FolioAutonumberingW::toFolio
 	returns the current "To Folio" index
 */
-int FolioAutonumberingW::toFolio(){
+int FolioAutonumberingW::toFolio()
+{
 	return ui->m_to_cb->currentIndex()+this->fromFolio()+1;
 }
 
@@ -82,14 +86,16 @@ int FolioAutonumberingW::toFolio(){
 	@brief FolioAutonumberingW::newFoliosNumber
 	returns the number of folios to create
 */
-int FolioAutonumberingW::newFoliosNumber(){
+int FolioAutonumberingW::newFoliosNumber()
+{
 	return ui->m_new_tabs_sb->value();
 }
 /**
 	@brief FolioAutonumberingW::updateFolioList
 	update Folio List in From and To ComboBox
 */
-void FolioAutonumberingW::updateFolioList(){
+void FolioAutonumberingW::updateFolioList()
+{
 	ui   -> m_from_cb->clear();
 	ui   -> m_to_cb->clear();
 	if (newFolios){
@@ -103,7 +109,8 @@ void FolioAutonumberingW::updateFolioList(){
 	@brief FolioAutonumberingW::on_m_create_new_tabs_rb_clicked
  *	Enable New Tabs SpinBox
 */
-void FolioAutonumberingW::on_m_create_new_tabs_rb_clicked() {
+void FolioAutonumberingW::on_m_create_new_tabs_rb_clicked()
+{
 	ui->m_from_cb->setEnabled(false);
 	ui->m_to_cb->setEnabled(false);
 	ui->m_new_tabs_sb->setEnabled(true);
@@ -115,7 +122,8 @@ void FolioAutonumberingW::on_m_create_new_tabs_rb_clicked() {
 	@brief FolioAutonumberingW::on_m_autonumber_tabs_rb_clicked
  *	Enable From ComboBox, fill From ComboBox
 */
-void FolioAutonumberingW::on_m_autonumber_tabs_rb_clicked() {
+void FolioAutonumberingW::on_m_autonumber_tabs_rb_clicked()
+{
 	ui->m_new_tabs_sb->setEnabled(false);
 	ui->m_from_cb->setEnabled(true);
 	ui->m_to_cb->setEnabled(true);
@@ -134,7 +142,8 @@ void FolioAutonumberingW::on_m_autonumber_tabs_rb_clicked() {
 	@brief FolioAutonumberingW::on_m_new_tabs_sb_valueChanged
  *	Enable Apply if any new folio is to be created
 */
-void FolioAutonumberingW::on_m_new_tabs_sb_valueChanged(int){
+void FolioAutonumberingW::on_m_new_tabs_sb_valueChanged(int)
+{
 	if (ui->m_new_tabs_sb->value()>0) applyEnable(true);
 	else applyEnable(false);
 }
@@ -143,13 +152,15 @@ void FolioAutonumberingW::on_m_new_tabs_sb_valueChanged(int){
 	@brief FolioAutonumberingW::on_m_from_cb_currentIndexChanged
  *	Enable To ComboBox
 */
-void FolioAutonumberingW::on_m_from_cb_currentIndexChanged(int){
+void FolioAutonumberingW::on_m_from_cb_currentIndexChanged(int)
+{
 	int index = ui->m_from_cb->currentIndex();
 	ui->m_to_cb->clear();
 	if (index > 0){
 		ui->m_to_cb->setEnabled(true);
 		for (int i=index;i<project_->diagrams().size();i++)
-			ui->m_to_cb->addItem(project_->diagrams().at(i)->title());
+			ui->m_to_cb->addItem(project_
+					     ->diagrams().at(i)->title());
 		applyEnable(true);
 	}
 	else{
@@ -162,7 +173,8 @@ void FolioAutonumberingW::on_m_from_cb_currentIndexChanged(int){
 	@brief SelectAutonumW::on_buttonBox_clicked
 	Action on buttonBox clicked
 */
-void FolioAutonumberingW::on_buttonBox_clicked(QAbstractButton *button) {
+void FolioAutonumberingW::on_buttonBox_clicked(QAbstractButton *button)
+{
 	//transform button to int
 	int answer = ui -> buttonBox -> buttonRole(button);
 
@@ -200,19 +212,23 @@ void FolioAutonumberingW::on_buttonBox_clicked(QAbstractButton *button) {
 	@brief SelectAutonumW::applyEnable
 	enable/disable the apply button
 */
-void FolioAutonumberingW::applyEnable(bool b) {
+void FolioAutonumberingW::applyEnable(bool b)
+{
 	if (b){
 		bool valid = true;
 		if (ui->m_create_new_tabs_rb->isChecked()){
 			if (ui->m_new_tabs_sb->value()==0) valid = false;
-			ui->buttonBox->button(QDialogButtonBox::Apply)->setEnabled(valid);
+			ui->buttonBox->button(QDialogButtonBox::Apply)
+					->setEnabled(valid);
 		}
 		else{
 			if (ui->m_to_cb->currentText()=="") valid = false;
-			ui->buttonBox->button(QDialogButtonBox::Apply)->setEnabled(valid);
+			ui->buttonBox->button(QDialogButtonBox::Apply)
+					->setEnabled(valid);
 		}
 	}
 	else{
-		ui -> buttonBox -> button(QDialogButtonBox::Apply) -> setEnabled(b);
+		ui->buttonBox->button(QDialogButtonBox::Apply)
+				->setEnabled(b);
 		}
 }

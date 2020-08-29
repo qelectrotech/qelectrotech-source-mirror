@@ -24,15 +24,18 @@
 #include "ui_formulaautonumberingw.h"
 #include "assignvariables.h"
 
+
 /**
+	@brief SelectAutonumW::SelectAutonumW
 	Constructor
+	@param type : int m_edited_type
+	@param parent : QWidget
 */
 SelectAutonumW::SelectAutonumW(int type, QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::SelectAutonumW),
 	m_edited_type(type)
 {
-
 	ui->setupUi(this);
 	ui->m_comboBox->lineEdit()->setClearButtonEnabled(true);
 	if (m_edited_type == 0)
@@ -50,6 +53,13 @@ SelectAutonumW::SelectAutonumW(int type, QWidget *parent) :
 	setContext(NumerotationContext());
 }
 
+/**
+	@brief SelectAutonumW::SelectAutonumW
+	Constructor
+	@param context : NumerotationContext
+	@param type : int m_edited_type
+	@param parent : QWidget
+*/
 SelectAutonumW::SelectAutonumW(const NumerotationContext &context,
 			       int type,
 			       QWidget *parent) :
@@ -74,6 +84,7 @@ SelectAutonumW::SelectAutonumW(const NumerotationContext &context,
 }
 
 /**
+	@brief SelectAutonumW::~SelectAutonumW
 	Destructor
 */
 SelectAutonumW::~SelectAutonumW()
@@ -181,7 +192,8 @@ QComboBox *SelectAutonumW::contextComboBox() const
 	Action on button clicked
 	@param button
 */
-void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button) {
+void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button)
+{
 	//transform button to int
 	int answer = ui -> buttonBox -> buttonRole(button);
 	switch (answer) {

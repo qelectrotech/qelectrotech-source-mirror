@@ -28,7 +28,6 @@
 FormulaAutonumberingW::FormulaAutonumberingW(QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::FormulaAutonumberingW)
-
 {
 	ui->setupUi(this);
 	setContext(formula_);
@@ -46,7 +45,8 @@ FormulaAutonumberingW::~FormulaAutonumberingW()
 	@brief FormulaAutonumberingW::setContext
 	@param formula to be inserted into context
 */
-void FormulaAutonumberingW::setContext(const QString& formula) {
+void FormulaAutonumberingW::setContext(const QString& formula)
+{
 	ui->m_formula_le->insert(formula);
 }
 
@@ -54,7 +54,8 @@ void FormulaAutonumberingW::setContext(const QString& formula) {
 	@brief FormulaAutonumberingW::clearContext
 	@param clear formula line edit text
 */
-void FormulaAutonumberingW::clearContext() {
+void FormulaAutonumberingW::clearContext()
+{
 	ui->m_formula_le->clear();
 }
 
@@ -62,7 +63,8 @@ void FormulaAutonumberingW::clearContext() {
 	@brief FormulaAutonumberingW::formula
 	@return formula to be stored into project
 */
-QString FormulaAutonumberingW::formula() {
+QString FormulaAutonumberingW::formula()
+{
 	return ui->m_formula_le->text();
 }
 
@@ -70,6 +72,7 @@ QString FormulaAutonumberingW::formula() {
 	@brief FormulaAutonumberingW::on_m_formula_le_textChanged
 	Update Apply Button
 */
-void FormulaAutonumberingW::on_m_formula_le_textChanged(QString text) {
+void FormulaAutonumberingW::on_m_formula_le_textChanged(QString text)
+{
 	emit (textChanged(std::move(text)));
 }
