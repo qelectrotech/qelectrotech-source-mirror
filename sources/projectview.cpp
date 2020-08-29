@@ -756,6 +756,7 @@ void ProjectView::initWidgets() {
 	m_tab -> setMovable(true);
 
 	QHBoxLayout *TopRightCorner_Layout = new QHBoxLayout();
+	TopRightCorner_Layout->setMargin(0);
 
 	QToolButton *add_new_diagram_button = new QToolButton;
 	add_new_diagram_button -> setDefaultAction(m_add_new_diagram);
