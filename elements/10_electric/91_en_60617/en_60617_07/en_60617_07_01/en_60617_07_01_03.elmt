@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="20" height="10" hotspot_y="5" hotspot_x="10" version="0.70" link_type="simple">
+<definition type="element" width="20" height="10" hotspot_y="5" hotspot_x="10" version="0.70" link_type="simple">
     <uuid uuid="{22c144a5-bb9f-468f-918f-26250bd84950}"/>
     <names>
         <name lang="de">Trennschalter-Funktion</name>

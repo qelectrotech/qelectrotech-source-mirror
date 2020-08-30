@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.5" type="element" hotspot_y="51" hotspot_x="305" link_type="simple" width="610" height="100">
+<definition version="0.5" type="element" hotspot_y="51" hotspot_x="305" link_type="simple" width="610" height="100">
 <uuid uuid="{59F6537F-EFEC-4747-B357-BFC9A5A5B30F}"/><names>
         <name lang="en">SACB-4/8-L-C SCO P (1452819)</name>
     </names>

@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="23" hotspot_y="14" width="30" orientation="dyyy" height="30" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="23" hotspot_y="14" width="30" height="30" link_type="simple" type="element">
     <uuid uuid="{ff21f2ce-0360-4d43-8123-c0549149ae8c}"/>
     <names>
         <name lang="en">Pedal two voices</name>

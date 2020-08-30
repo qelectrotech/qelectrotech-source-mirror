@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="78" hotspot_y="86" version="0.70" width="100" type="element" height="90">
+<definition link_type="simple" hotspot_x="78" hotspot_y="86" version="0.70" width="100" type="element" height="90">
     <uuid uuid="{544e4e45-ecba-4d8e-a51a-1536e9e2bdb1}"/>
     <names>
         <name lang="fr">Moteur série, monophasé</name>

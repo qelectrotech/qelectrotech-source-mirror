@@ -1,4 +1,4 @@
-<definition width="100" height="130" link_type="simple" orientation="dyyy" hotspot_x="55" version="0.5" hotspot_y="66" type="element">
+<definition width="100" height="130" link_type="simple" hotspot_x="55" version="0.5" hotspot_y="66" type="element">
     <uuid uuid="{7449947f-70c0-401a-8bb9-bb4e1a9ca572}"/>
     <names>
         <name lang="it">cRIO 9024 - controller real-time</name>

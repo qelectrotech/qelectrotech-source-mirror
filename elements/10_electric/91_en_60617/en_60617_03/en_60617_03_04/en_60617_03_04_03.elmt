@@ -1,4 +1,4 @@
-<definition hotspot_x="105" version="0.70" orientation="dyyy" height="60" hotspot_y="47" width="130" type="element" link_type="simple">
+<definition hotspot_x="105" version="0.70" height="60" hotspot_y="47" width="130" type="element" link_type="simple">
     <uuid uuid="{712fbf74-d3e9-4d36-b3a2-615fed91d6db}"/>
     <names>
         <name lang="fr">Boîte de jonction avec trois conducteurs</name>

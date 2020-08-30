@@ -1,4 +1,4 @@
-<definition width="60" link_type="simple" version="0.5" hotspot_x="21" orientation="dyyy" height="10" hotspot_y="-6" type="element">
+<definition width="60" link_type="simple" version="0.5" hotspot_x="21" height="10" hotspot_y="-6" type="element">
     <uuid uuid="{822e6fc1-0104-4d3a-ba3c-995c24c79cf2}"/>
     <names>
         <name lang="nl">Scherm</name>

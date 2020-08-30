@@ -1,4 +1,4 @@
-<definition width="20" link_type="simple" version="0.5" hotspot_x="10" orientation="dyyy" height="30" hotspot_y="26" type="element">
+<definition width="20" link_type="simple" version="0.5" hotspot_x="10" height="30" hotspot_y="26" type="element">
     <uuid uuid="{2221ca32-7aa2-4c19-82f7-99951ab7387d}"/>
     <names>
         <name lang="pt">Terminal de entrada</name>

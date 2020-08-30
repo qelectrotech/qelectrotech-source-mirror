@@ -1,4 +1,4 @@
-<definition height="30" orientation="dyyy" hotspot_y="15" width="60" version="0.51" hotspot_x="12" type="element" link_type="simple">
+<definition height="30" hotspot_y="15" width="60" version="0.51" hotspot_x="12" type="element" link_type="simple">
     <uuid uuid="{953e0b58-5009-4201-9b7a-3ca618e451a4}"/>
     <names>
         <name lang="fr">Flexible eau filetage</name>

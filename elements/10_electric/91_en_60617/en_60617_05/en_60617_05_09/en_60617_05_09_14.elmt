@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" height="80" width="110" version="0.70" orientation="dyyy" hotspot_x="98" hotspot_y="70">
+<definition type="element" link_type="simple" height="80" width="110" version="0.70" hotspot_x="98" hotspot_y="70">
     <uuid uuid="{a86d1383-d256-4e65-a938-6fb1ee22d256}"/>
     <names>
         <name lang="fr">Tétrapôle avec boucle de couplage</name>

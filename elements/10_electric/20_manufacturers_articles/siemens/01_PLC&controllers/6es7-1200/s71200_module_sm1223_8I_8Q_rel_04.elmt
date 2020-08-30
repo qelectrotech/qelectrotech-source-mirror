@@ -1,4 +1,4 @@
-<definition width="140" orientation="dyyy" hotspot_y="152" link_type="simple" version="0.80" height="310" hotspot_x="64" type="element">
+<definition width="140" hotspot_y="152" link_type="simple" version="0.80" height="310" hotspot_x="64" type="element">
     <uuid uuid="{cbf1a509-77ef-49ff-8e93-7a7f12e88ee3}"/>
     <names>
         <name lang="it">S7-1200 modulo sm1223-8i-8Q rel/04</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.51" width="240" height="190" type="element" hotspot_x="120" link_type="simple" hotspot_y="112">
+<definition version="0.51" width="240" height="190" type="element" hotspot_x="120" link_type="simple" hotspot_y="112">
     <uuid uuid="{08d76078-b01a-4e38-9c6d-95f7b406afd2}"/>
     <names>
         <name lang="en">Siemens Box PN Plus (6AV6671-5AE11-0AX0)</name>

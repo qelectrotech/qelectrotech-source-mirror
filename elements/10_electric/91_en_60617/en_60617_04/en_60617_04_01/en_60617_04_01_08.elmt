@@ -1,4 +1,4 @@
-<definition width="60" height="40" type="element" hotspot_x="24" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="26">
+<definition width="60" height="40" type="element" hotspot_x="24" version="0.70" link_type="simple" hotspot_y="26">
     <uuid uuid="{c95fa867-dbe6-4802-b2a1-d2465ea3be7b}"/>
     <names>
         <name lang="de">einstellbares Potentiometer</name>

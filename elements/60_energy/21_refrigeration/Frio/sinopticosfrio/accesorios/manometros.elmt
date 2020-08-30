@@ -1,4 +1,4 @@
-<definition width="50" orientation="dyyy" hotspot_y="25" link_type="simple" version="0.80" height="40" hotspot_x="24" type="element">
+<definition width="50" hotspot_y="25" link_type="simple" version="0.80" height="40" hotspot_x="24" type="element">
     <uuid uuid="{f21360f1-6547-4b61-a280-b72736a6d7ad}"/>
     <names>
         <name lang="fr">Manometres</name>

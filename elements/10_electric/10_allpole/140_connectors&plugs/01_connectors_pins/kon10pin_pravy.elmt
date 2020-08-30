@@ -1,4 +1,4 @@
-<definition type="element" orientation="dyyy" height="110" hotspot_y="73" version="0.70" width="40" hotspot_x="18" link_type="simple">
+<definition type="element" height="110" hotspot_y="73" version="0.70" width="40" hotspot_x="18" link_type="simple">
     <uuid uuid="{f97a8793-ff72-4408-9a5d-432b2ed9ce13}"/>
     <names>
         <name lang="cs">Konektor 10 pin pravý</name>

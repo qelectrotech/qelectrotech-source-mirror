@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="master" type="element" height="300" width="130" hotspot_y="295" version="0.80" hotspot_x="5">
+<definition link_type="master" type="element" height="300" width="130" hotspot_y="295" version="0.80" hotspot_x="5">
     <uuid uuid="{a10706c9-15f6-41e1-a5e2-d4f2b9bff227}"/>
     <names>
         <name lang="fr">Porte Garage</name>

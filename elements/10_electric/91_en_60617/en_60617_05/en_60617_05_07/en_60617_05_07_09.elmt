@@ -1,4 +1,4 @@
-<definition height="70" version="0.70" orientation="dyyy" width="30" hotspot_x="15" type="element" hotspot_y="65" link_type="simple">
+<definition height="70" version="0.70" width="30" hotspot_x="15" type="element" hotspot_y="65" link_type="simple">
     <uuid uuid="{6f122152-ad17-4360-8dc0-6d33f8ff9be5}"/>
     <names>
         <name lang="fr">Cathode froide

@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="12" hotspot_y="44" orientation="dyyy" type="element" height="50" width="40">
+<definition link_type="simple" version="0.70" hotspot_x="12" hotspot_y="44" type="element" height="50" width="40">
     <uuid uuid="{52cf23a8-aef4-49f5-8720-1939bc9d3815}"/>
     <names>
         <name lang="fr">Diode électroluminescente (LED), (symbole

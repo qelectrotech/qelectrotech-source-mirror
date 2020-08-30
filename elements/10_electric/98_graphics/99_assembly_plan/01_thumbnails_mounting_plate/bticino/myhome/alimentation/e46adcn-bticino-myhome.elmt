@@ -1,4 +1,4 @@
-<definition height="250" hotspot_y="124" type="element" hotspot_x="165" width="330" orientation="dyyy" link_type="simple" version="0.80">
+<definition height="250" hotspot_y="124" type="element" hotspot_x="165" width="330" link_type="simple" version="0.80">
     <uuid uuid="{36b5d10e-7724-4cac-9b37-8d3697dd34d4}"/>
     <names>
         <name lang="fr">E46ADCN - Alimentation modulaire BUS 230V~ 27V= 1,2A - 8 modules</name>

@@ -1,4 +1,4 @@
-<definition type="element" width="80" hotspot_y="26" hotspot_x="40" version="0.51" link_type="simple" orientation="dyyy" height="60">
+<definition type="element" width="80" hotspot_y="26" hotspot_x="40" version="0.51" link_type="simple" height="60">
     <uuid uuid="{441cf5f7-82a2-451a-abb9-11dd96e6a1d9}"/>
     <names>
         <name lang="fr">Robinet de puisage</name>

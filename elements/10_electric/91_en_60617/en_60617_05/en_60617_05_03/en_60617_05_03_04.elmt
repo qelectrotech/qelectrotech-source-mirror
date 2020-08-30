@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="15" hotspot_y="44" orientation="dyyy" type="element" height="50" width="40">
+<definition link_type="simple" version="0.70" hotspot_x="15" hotspot_y="44" type="element" height="50" width="40">
     <uuid uuid="{0497ec2f-8942-4c6e-9e4b-7c327302fc0b}"/>
     <names>
         <name lang="fr">Diode à capacité variable

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" type="element" height="60" width="40" hotspot_y="36" version="0.80" hotspot_x="20">
+<definition link_type="simple" type="element" height="60" width="40" hotspot_y="36" version="0.80" hotspot_x="20">
     <uuid uuid="{a2e9adbc-1fba-452d-ae7a-43dc9831202c}"/>
     <names>
         <name lang="ar">عدّاد زمني</name>

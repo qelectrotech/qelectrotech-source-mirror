@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" height="50" width="50" version="0.70" orientation="dyyy" hotspot_x="45" hotspot_y="45">
+<definition type="element" link_type="simple" height="50" width="50" version="0.70" hotspot_x="45" hotspot_y="45">
     <uuid uuid="{700f651c-8869-4e77-8462-ed0780264d4c}"/>
     <names>
         <name lang="fr">Redresseur</name>

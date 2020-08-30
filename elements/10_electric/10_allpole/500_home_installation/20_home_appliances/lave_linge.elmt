@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="14" link_type="simple" type="element" height="50" version="0.80" hotspot_y="14" width="30">
+<definition hotspot_x="14" link_type="simple" type="element" height="50" version="0.80" hotspot_y="14" width="30">
     <uuid uuid="{470e988c-635b-49b3-bb1d-be230244e547}"/>
     <names>
         <name lang="ru">Стиральная машина</name>

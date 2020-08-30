@@ -1,4 +1,4 @@
-<definition width="20" link_type="simple" version="0.5" hotspot_x="10" orientation="dyyy" height="80" hotspot_y="39" type="element">
+<definition width="20" link_type="simple" version="0.5" hotspot_x="10" height="80" hotspot_y="39" type="element">
     <uuid uuid="{7ae24759-36ff-414f-bf1f-3a9861e75f73}"/>
     <names>
         <name lang="es">Barra de interconexión TN</name>

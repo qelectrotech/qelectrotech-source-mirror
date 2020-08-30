@@ -1,4 +1,4 @@
-<definition width="40" hotspot_x="19" type="element" link_type="simple" orientation="dyyy" version="0.5" height="50" hotspot_y="31">
+<definition width="40" hotspot_x="19" type="element" link_type="simple" version="0.5" height="50" hotspot_y="31">
     <uuid uuid="{3e3e707a-4126-46b9-bc31-2ee3e0843233}"/>
     <names>
         <name lang="cs">Směšovač 01 ECS</name>

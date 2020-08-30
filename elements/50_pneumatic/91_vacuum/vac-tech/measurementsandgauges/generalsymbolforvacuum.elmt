@@ -1,4 +1,4 @@
-<definition hotspot_x="24" height="50" type="element" orientation="dyyy" hotspot_y="25" version="0.80" link_type="simple" width="50">
+<definition hotspot_x="24" height="50" type="element" hotspot_y="25" version="0.80" link_type="simple" width="50">
     <uuid uuid="{b1b2ba6d-9ff5-4cf4-8bce-2b9a527ea141}"/>
     <names>
         <name lang="en">General symbol for vacuum</name>

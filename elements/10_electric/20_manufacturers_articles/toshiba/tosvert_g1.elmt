@@ -1,4 +1,4 @@
-<definition type="element" width="520" version="0.70" orientation="dyyy" link_type="simple" hotspot_y="42" hotspot_x="253" height="100">
+<definition type="element" width="520" version="0.70" link_type="simple" hotspot_y="42" hotspot_x="253" height="100">
     <uuid uuid="{0ed4f761-5345-4a89-91cf-1cdb53164d81}"/>
     <names>
         <name lang="hu">TOSVERT 130G1</name>

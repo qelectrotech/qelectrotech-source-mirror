@@ -1,4 +1,4 @@
-<definition width="390" height="100" link_type="simple" orientation="dyyy" hotspot_x="14" version="0.5" hotspot_y="24" type="element">
+<definition width="390" height="100" link_type="simple" hotspot_x="14" version="0.5" hotspot_y="24" type="element">
     <uuid uuid="{03e48b2b-ea99-4695-a862-ef083d288b0b}"/>
     <names>
         <name lang="it">DIGIDRIVE SE</name>

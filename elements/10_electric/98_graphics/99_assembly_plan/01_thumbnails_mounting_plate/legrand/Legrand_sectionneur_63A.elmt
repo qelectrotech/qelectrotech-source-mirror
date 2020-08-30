@@ -1,4 +1,4 @@
-<definition version="0.5" orientation="dyyy" hotspot_y="4" link_type="simple" hotspot_x="5" width="90" type="element" height="210">
+<definition version="0.5" hotspot_y="4" link_type="simple" hotspot_x="5" width="90" type="element" height="210">
     <uuid uuid="{a378ecf3-791a-4c7c-9544-ea321453cf9a}"/>
     <names>
         <name lang="fr">sectionneur bipolaire 63A Legrand</name>

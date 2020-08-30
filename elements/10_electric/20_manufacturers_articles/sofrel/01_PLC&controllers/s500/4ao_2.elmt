@@ -1,4 +1,4 @@
-<definition link_type="simple" orientation="dyyy" width="80" hotspot_y="34" height="230" hotspot_x="6" version="0.80" type="element">
+<definition link_type="simple" width="80" hotspot_y="34" height="230" hotspot_x="6" version="0.80" type="element">
     <uuid uuid="{2b177598-8bf5-4eac-a662-f03a97e24223}"/>
     <names>
         <name lang="fr">Sofrel 4 DO</name>

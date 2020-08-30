@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="347" orientation="dyyy" hotspot_y="75" type="element" height="130" width="610" version="0.5">
+<definition link_type="simple" hotspot_x="347" hotspot_y="75" type="element" height="130" width="610" version="0.5">
     <uuid uuid="{751669a4-8f63-48cf-bc6a-a95088d3389a}"/>
     <names>
         <name lang="pl">AKCC 550 - wyjścia</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="81" hotspot_y="137" version="0.70" width="110" type="element" height="170">
+<definition link_type="simple" hotspot_x="81" hotspot_y="137" version="0.70" width="110" type="element" height="170">
     <uuid uuid="{feb5205b-f916-4b24-823b-27b263219504}"/>
     <names>
         <name lang="fr">Autotransformateur</name>

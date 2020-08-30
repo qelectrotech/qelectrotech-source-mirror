@@ -1,4 +1,4 @@
-<definition height="80" version="0.70" orientation="dyyy" width="50" hotspot_x="45" type="element" hotspot_y="75" link_type="simple">
+<definition height="80" version="0.70" width="50" hotspot_x="45" type="element" hotspot_y="75" link_type="simple">
     <uuid uuid="{9f3d1fb7-bdb4-489c-957a-4c1764ceaf6a}"/>
     <names>
         <name lang="fr">Filament chauffant d'une cathode chaude à

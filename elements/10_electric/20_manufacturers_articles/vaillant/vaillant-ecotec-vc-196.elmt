@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" link_type="simple" hotspot_x="285" height="110" hotspot_y="56" width="650" version="0.70">
+<definition type="element" link_type="simple" hotspot_x="285" height="110" hotspot_y="56" width="650" version="0.70">
     <uuid uuid="{e86a32d7-9d91-4015-ab07-bb4fa9f1c0a4}"/>
     <names>
         <name lang="de">Vaillant Gastherme ecoTEC VC AT 196/3-5</name>

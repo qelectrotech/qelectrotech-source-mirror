@@ -1,4 +1,4 @@
-<definition height="70" type="element" orientation="dyyy" hotspot_x="40" version="0.51" hotspot_y="29" link_type="simple" width="90">
+<definition height="70" type="element" hotspot_x="40" version="0.51" hotspot_y="29" link_type="simple" width="90">
     <uuid uuid="{ec372b24-376d-4d5c-b6fc-740773b3de74}"/>
     <names>
         <name lang="en">Level Shifter 4 ways</name>

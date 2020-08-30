@@ -1,4 +1,4 @@
-<definition hotspot_y="28" version="0.51" width="60" height="40" type="element" orientation="dyyy" link_type="simple" hotspot_x="24">
+<definition hotspot_y="28" version="0.51" width="60" height="40" type="element" link_type="simple" hotspot_x="24">
     <uuid uuid="{2395f13c-c343-4cda-86a4-98b0b5941a69}"/>
     <names>
         <name lang="fr">Vanne compteur mâle</name>

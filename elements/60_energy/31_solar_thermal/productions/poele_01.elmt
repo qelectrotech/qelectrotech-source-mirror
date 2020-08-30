@@ -1,4 +1,4 @@
-<definition width="90" hotspot_x="54" type="element" link_type="simple" orientation="dyyy" version="0.5" height="130" hotspot_y="75">
+<definition width="90" hotspot_x="54" type="element" link_type="simple" version="0.5" height="130" hotspot_y="75">
     <uuid uuid="{ae98430d-d63a-4a8f-a0d6-528ba1be7388}"/>
     <names>
         <name lang="cs">Kamna</name>

@@ -1,4 +1,4 @@
-<definition type="element" width="30" height="10" version="0.70" hotspot_x="15" hotspot_y="5" orientation="dyyy" link_type="simple">
+<definition type="element" width="30" height="10" version="0.70" hotspot_x="15" hotspot_y="5" link_type="simple">
     <uuid uuid="{5fc0c1c9-2d75-4548-a75f-3e79c411cf5d}"/>
     <names>
         <name lang="fr">Propagations simultanées dans les deux sens Emission et réception simultanées</name>

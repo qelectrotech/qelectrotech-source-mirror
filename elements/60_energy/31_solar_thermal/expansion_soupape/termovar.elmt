@@ -1,4 +1,4 @@
-<definition width="40" hotspot_x="19" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="17">
+<definition width="40" hotspot_x="19" type="element" link_type="simple" version="0.5" height="40" hotspot_y="17">
     <uuid uuid="{e7403431-f9ee-40ab-99cb-33c6dd69e027}"/>
     <names>
         <name lang="cs">Thermovar</name>

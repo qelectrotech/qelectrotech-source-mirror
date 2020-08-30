@@ -1,4 +1,4 @@
-<definition hotspot_x="26" height="40" type="element" orientation="dyyy" hotspot_y="15" version="0.80" link_type="simple" width="50">
+<definition hotspot_x="26" height="40" type="element" hotspot_y="15" version="0.80" link_type="simple" width="50">
     <uuid uuid="{537d0fb5-463d-4b8e-90b5-feedd11a18d6}"/>
     <names>
         <name lang="en">Right-angle stop cock</name>

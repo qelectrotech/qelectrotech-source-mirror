@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="235" orientation="dyyy" hotspot_y="39" type="element" height="90" width="440" version="0.5">
+<definition link_type="simple" hotspot_x="235" hotspot_y="39" type="element" height="90" width="440" version="0.5">
     <uuid uuid="{d7662893-73b3-4980-8ec2-be51b757f937}"/>
     <names>
         <name lang="ru">msr178dp</name>

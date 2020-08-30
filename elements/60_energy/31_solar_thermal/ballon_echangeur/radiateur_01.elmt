@@ -1,4 +1,4 @@
-<definition width="120" hotspot_x="26" type="element" link_type="simple" orientation="dyyy" version="0.5" height="90" hotspot_y="9">
+<definition width="120" hotspot_x="26" type="element" link_type="simple" version="0.5" height="90" hotspot_y="9">
     <uuid uuid="{2456e748-44c7-4ba9-85d9-28c83515eac4}"/>
     <names>
         <name lang="cs">Deskové topné těleso</name>

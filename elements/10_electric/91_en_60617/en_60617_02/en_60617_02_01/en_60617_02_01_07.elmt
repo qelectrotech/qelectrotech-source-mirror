@@ -1,4 +1,4 @@
-<definition version="0.70" width="50" hotspot_x="25" type="element" link_type="simple" height="30" orientation="dyyy" hotspot_y="15">
+<definition version="0.70" width="50" hotspot_x="25" type="element" link_type="simple" height="30" hotspot_y="15">
     <uuid uuid="{c38edb8f-aa58-4602-aa55-1fd62159ae14}"/>
     <names>
         <name lang="de">Abschirmung Schirm</name>

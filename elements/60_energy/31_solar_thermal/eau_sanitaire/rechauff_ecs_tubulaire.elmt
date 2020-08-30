@@ -1,4 +1,4 @@
-<definition width="100" hotspot_x="30" type="element" link_type="simple" orientation="dyyy" version="0.5" height="70" hotspot_y="36">
+<definition width="100" hotspot_x="30" type="element" link_type="simple" version="0.5" height="70" hotspot_y="36">
     <uuid uuid="{010cb92b-beac-4052-a73e-f670c188f7ec}"/>
     <names>
         <name lang="cs">Trubkový ohřívač ECS</name>

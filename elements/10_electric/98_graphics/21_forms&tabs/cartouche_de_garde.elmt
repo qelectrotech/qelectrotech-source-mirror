@@ -1,4 +1,4 @@
-<definition width="400" link_type="simple" version="0.5" hotspot_x="15" orientation="dyyy" height="100" hotspot_y="34" type="element">
+<definition width="400" link_type="simple" version="0.5" hotspot_x="15" height="100" hotspot_y="34" type="element">
     <uuid uuid="{36fae55a-5576-4f93-804d-a404bdebc6cb}"/>
     <names>
         <name lang="de">Deckblatt</name>

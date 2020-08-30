@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="master" type="element" height="40" width="30" hotspot_y="14" version="0.80" hotspot_x="14">
+<definition link_type="master" type="element" height="40" width="30" hotspot_y="14" version="0.80" hotspot_x="14">
     <uuid uuid="{46e0c121-1833-489f-956b-14afcb9860cb}"/>
     <names>
         <name lang="nl">Energiemanagement</name>

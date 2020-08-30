@@ -1,4 +1,4 @@
-<definition width="250" orientation="dyyy" hotspot_y="114" link_type="master" version="0.80" height="220" hotspot_x="105" type="element">
+<definition width="250" hotspot_y="114" link_type="master" version="0.80" height="220" hotspot_x="105" type="element">
     <uuid uuid="{0b6b5c6b-ace6-4f7d-89eb-f982a11786df}"/>
     <names>
         <name lang="fr">SPS-Steuerung SM 43 T</name>

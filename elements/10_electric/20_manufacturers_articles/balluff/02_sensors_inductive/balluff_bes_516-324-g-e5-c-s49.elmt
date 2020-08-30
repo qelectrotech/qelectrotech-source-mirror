@@ -1,4 +1,4 @@
-<definition width="80" hotspot_x="39" orientation="dyyy" type="element" link_type="simple" height="70" hotspot_y="36" version="0.51">
+<definition width="80" hotspot_x="39" type="element" link_type="simple" height="70" hotspot_y="36" version="0.51">
     <uuid uuid="{b5d9bdc3-de5d-45b4-8906-1c245d0110c7}"/>
     <names>
        <name lang="en">BES 516-324-G-E5-C-S49 (BES00P7)</name>

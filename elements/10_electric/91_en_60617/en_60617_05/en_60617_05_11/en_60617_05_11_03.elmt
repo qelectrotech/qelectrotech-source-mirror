@@ -1,4 +1,4 @@
-<definition width="150" height="260" orientation="dyyy" hotspot_y="95" hotspot_x="85" link_type="simple" type="element" version="0.70">
+<definition width="150" height="260" hotspot_y="95" hotspot_x="85" link_type="simple" type="element" version="0.70">
     <uuid uuid="{8321fb63-6513-4252-846d-7586976780ce}"/>
     <names>
         <name lang="de">Pentode</name>

@@ -1,4 +1,4 @@
-<definition height="80" hotspot_x="215" hotspot_y="35" type="element" orientation="dyyy" width="440" version="0.51" link_type="simple">
+<definition height="80" hotspot_x="215" hotspot_y="35" type="element" width="440" version="0.51" link_type="simple">
     <uuid uuid="{46d14b25-bb1e-4452-9fd9-ff669b8fe63a}"/>
     <names>
         <name lang="fr">Box Orange</name>

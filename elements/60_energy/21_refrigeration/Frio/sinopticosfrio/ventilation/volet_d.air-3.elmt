@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="50" hotspot_y="25">
+<definition width="30" hotspot_x="14" type="element" link_type="simple" version="0.5" height="50" hotspot_y="25">
     <uuid uuid="{cd48e9a1-d7b9-4237-8d60-54bea94df462}"/>
     <names>
         <name lang="cs">Vzduchová klapka</name>

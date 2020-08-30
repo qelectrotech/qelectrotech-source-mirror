@@ -1,4 +1,4 @@
-<definition hotspot_x="24" height="30" type="element" orientation="dyyy" hotspot_y="15" version="0.80" link_type="simple" width="50">
+<definition hotspot_x="24" height="30" type="element" hotspot_y="15" version="0.80" link_type="simple" width="50">
     <uuid uuid="{e528b437-6d74-4064-9129-1961dea01167}"/>
     <names>
         <name lang="en">Shut-off valve, straight-through valve</name>

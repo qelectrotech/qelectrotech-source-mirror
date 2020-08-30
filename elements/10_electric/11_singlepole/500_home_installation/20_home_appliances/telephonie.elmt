@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" hotspot_y="296" hotspot_x="5" height="300" link_type="master" width="130" version="0.51">
+<definition type="element" hotspot_y="296" hotspot_x="5" height="300" link_type="master" width="130" version="0.51">
     <uuid uuid="{d05d8591-ccbb-44cb-9e0c-0216f872fbbd}"/>
     <names>
         <name lang="fr">Téléphonie</name>

@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="15" orientation="dyyy" hotspot_y="24" type="element" height="100" width="450" version="0.5">
+<definition link_type="simple" hotspot_x="15" hotspot_y="24" type="element" height="100" width="450" version="0.5">
     <uuid uuid="{14028992-9ee6-46ce-9277-2208de8c524d}"/>
     <names>
         <name lang="pl">FVR-E11S</name>

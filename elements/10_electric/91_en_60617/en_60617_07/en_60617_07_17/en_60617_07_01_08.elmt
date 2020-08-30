@@ -1,4 +1,4 @@
-<definition hotspot_x="65" hotspot_y="65" orientation="dyyy" height="70" link_type="simple" version="0.70" type="element" width="70">
+<definition hotspot_x="65" hotspot_y="65" height="70" link_type="simple" version="0.70" type="element" width="70">
     <uuid uuid="{c9c1e8b9-8105-408e-bc0a-c260bf460e5f}"/>
     <names>
         <name lang="de">Stromrelais mit einstellbarem Höchst- und

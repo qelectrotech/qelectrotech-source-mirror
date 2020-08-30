@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" hotspot_y="6" height="320" hotspot_x="6" orientation="dyyy" version="0.80" width="320">
+<definition type="element" link_type="simple" hotspot_y="6" height="320" hotspot_x="6" version="0.80" width="320">
     <uuid uuid="{432c501e-389a-4f34-adb7-e87578cce279}"/>
     <names>
         <name lang="fr">RVL</name>

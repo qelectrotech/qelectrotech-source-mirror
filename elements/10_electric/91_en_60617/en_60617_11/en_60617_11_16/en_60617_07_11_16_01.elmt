@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="50" link_type="simple" hotspot_x="75" width="80" hotspot_y="45">
+<definition type="element" version="0.70" height="50" link_type="simple" hotspot_x="75" width="80" hotspot_y="45">
     <uuid uuid="{5c9e98b8-b16b-4123-a3e3-f936321ca695}"/>
     <names>
         <name lang="de">Heißwassergerät</name>

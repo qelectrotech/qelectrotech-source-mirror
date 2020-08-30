@@ -1,4 +1,4 @@
-<definition width="50" hotspot_x="22" type="element" link_type="simple" orientation="dyyy" version="0.5" height="90" hotspot_y="44">
+<definition width="50" hotspot_x="22" type="element" link_type="simple" version="0.5" height="90" hotspot_y="44">
     <uuid uuid="{74b612f7-8009-42fc-8c2b-845504bc1e3f}"/>
     <names>
         <name lang="cs">Samočinně se vyprazdňující zásobník Guy Delsol</name>

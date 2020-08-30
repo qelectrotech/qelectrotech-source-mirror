@@ -1,4 +1,4 @@
-<definition version="0.51" hotspot_y="24" orientation="dyyy" type="element" width="30" height="70" link_type="simple" hotspot_x="15">
+<definition version="0.51" hotspot_y="24" type="element" width="30" height="70" link_type="simple" hotspot_x="15">
     <uuid uuid="{d16880c8-c9c1-408c-a560-27b75b37fbd1}"/>
     <names>
         <name lang="fr">Fiche RJ45 Cat 6e T568B</name>

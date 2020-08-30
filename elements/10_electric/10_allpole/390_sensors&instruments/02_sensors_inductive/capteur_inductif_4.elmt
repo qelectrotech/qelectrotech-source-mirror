@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="39" version="0.5" hotspot_y="37" link_type="simple" width="60" orientation="dyyy" height="60">
+<definition type="element" hotspot_x="39" version="0.5" hotspot_y="37" link_type="simple" width="60" height="60">
     <uuid uuid="{2e304f7f-0f03-4ac7-9a37-45a3d7fb54f6}"/>
     <names>
         <name lang="de">Induktiver Sensor 4-Leiter</name>

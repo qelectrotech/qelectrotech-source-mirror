@@ -1,4 +1,4 @@
-<definition width="40" height="60" orientation="dyyy" hotspot_y="27" hotspot_x="10" link_type="simple" type="element" version="0.70">
+<definition width="40" height="60" hotspot_y="27" hotspot_x="10" link_type="simple" type="element" version="0.70">
     <uuid uuid="{f2375a24-968a-4832-98a7-5fc27d4a2412}"/>
     <names>
         <name lang="de">Röntgenanode</name>

@@ -1,4 +1,4 @@
-<definition width="710" orientation="dyyy" link_type="simple" hotspot_x="377" hotspot_y="42" type="element" height="100" version="0.5">
+<definition width="710" link_type="simple" hotspot_x="377" hotspot_y="42" type="element" height="100" version="0.5">
     <uuid uuid="{611712c7-afdf-44c9-affe-6c59294ef5f3}"/>
     <names>
         <name lang="en">CU-240E-2</name>

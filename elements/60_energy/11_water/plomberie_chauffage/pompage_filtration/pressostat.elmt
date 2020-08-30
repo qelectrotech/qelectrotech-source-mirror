@@ -1,4 +1,4 @@
-<definition type="element" width="60" hotspot_y="26" hotspot_x="30" version="0.51" link_type="simple" orientation="dyyy" height="140">
+<definition type="element" width="60" hotspot_y="26" hotspot_x="30" version="0.51" link_type="simple" height="140">
     <uuid uuid="{b7900ff5-29df-4f5a-9327-e1b29c1a23d0}"/>
     <names>
         <name lang="cs">Manometr 3/8"</name>

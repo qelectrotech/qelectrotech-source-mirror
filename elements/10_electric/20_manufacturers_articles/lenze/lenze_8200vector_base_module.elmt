@@ -1,4 +1,4 @@
-<definition width="250" orientation="dyyy" version="0.5" height="100" type="element" hotspot_y="34" link_type="simple" hotspot_x="15">
+<definition width="250" version="0.5" height="100" type="element" hotspot_y="34" link_type="simple" hotspot_x="15">
     <uuid uuid="{55dd9654-4b51-4054-a3b5-271c373515a8}"/>
     <names>
         <name lang="it">8200 vector base module</name>

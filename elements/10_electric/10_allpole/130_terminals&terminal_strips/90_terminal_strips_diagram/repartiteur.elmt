@@ -1,4 +1,4 @@
-<definition width="50" link_type="simple" version="0.5" hotspot_x="20" orientation="dyyy" height="30" hotspot_y="4" type="element">
+<definition width="50" link_type="simple" version="0.5" hotspot_x="20" height="30" hotspot_y="4" type="element">
     <uuid uuid="{5953974b-d91b-4358-b6e6-7ab44e9c46ca}"/>
     <names>
         <name lang="es">Distribuidor</name>

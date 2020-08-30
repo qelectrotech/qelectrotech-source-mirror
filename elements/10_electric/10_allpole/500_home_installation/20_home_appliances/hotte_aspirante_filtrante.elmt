@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="14" link_type="simple" type="element" height="50" version="0.80" hotspot_y="14" width="30">
+<definition hotspot_x="14" link_type="simple" type="element" height="50" version="0.80" hotspot_y="14" width="30">
     <uuid uuid="{471ec520-a632-48d8-8067-212c38867d07}"/>
     <names>
         <name lang="cs">Odsávač par s filtrem</name>

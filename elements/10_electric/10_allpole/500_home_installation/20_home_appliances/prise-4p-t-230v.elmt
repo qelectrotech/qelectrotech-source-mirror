@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="master" type="element" height="200" width="130" hotspot_y="195" version="0.80" hotspot_x="5">
+<definition link_type="master" type="element" height="200" width="130" hotspot_y="195" version="0.80" hotspot_x="5">
     <uuid uuid="{ebc4aa32-17ab-4791-9f66-2fc481552e71}"/>
     <names>
         <name lang="fr">Prise 3 P+ N+ T 230 V</name>

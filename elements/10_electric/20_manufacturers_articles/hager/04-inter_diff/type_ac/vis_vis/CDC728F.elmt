@@ -1,4 +1,4 @@
-<definition height="90" hotspot_x="46" width="120" link_type="master" version="0.80" type="element" orientation="dyyy" hotspot_y="37">
+<definition height="90" hotspot_x="46" width="120" link_type="master" version="0.80" type="element" hotspot_y="37">
     <uuid uuid="{0333d9b1-773f-4e8e-ad62-8958080111e5}"/>
     <names>
         <name lang="fr">CDC728F-Interrupteur différentiel 2P 25A 30mA type AC</name>

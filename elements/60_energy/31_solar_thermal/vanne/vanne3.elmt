@@ -1,4 +1,4 @@
-<definition width="40" hotspot_x="19" type="element" link_type="simple" orientation="dyyy" version="0.5" height="60" hotspot_y="37">
+<definition width="40" hotspot_x="19" type="element" link_type="simple" version="0.5" height="60" hotspot_y="37">
     <uuid uuid="{476d1e32-907e-402b-8c68-27057bc80408}"/>
     <names>
         <name lang="cs">Třícestný ventil</name>

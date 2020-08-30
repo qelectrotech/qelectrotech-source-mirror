@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="37" version="0.5" link_type="simple" type="element" hotspot_y="15" height="30" width="70">
+<definition hotspot_x="37" version="0.5" link_type="simple" type="element" hotspot_y="15" height="30" width="70">
     <uuid uuid="{fdac4891-06ce-4e45-af34-5590229b499f}"/>
     <names>
         <name lang="en">Output Jack</name>

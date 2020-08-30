@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="15" version="0.5" hotspot_y="14" link_type="simple" width="110" orientation="dyyy" height="60">
+<definition type="element" hotspot_x="15" version="0.5" hotspot_y="14" link_type="simple" width="110" height="60">
     <uuid uuid="{0c526714-b1ee-41ed-9742-3fcca0a7fa62}"/>
     <names>
         <name lang="el">Υποπρόγραμμα</name>

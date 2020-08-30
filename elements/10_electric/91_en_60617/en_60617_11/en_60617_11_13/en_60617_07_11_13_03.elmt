@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="70" link_type="simple" hotspot_x="46" width="50" hotspot_y="56">
+<definition type="element" version="0.70" height="70" link_type="simple" hotspot_x="46" width="50" hotspot_y="56">
     <uuid uuid="{3197f4bd-00ab-4143-9e1a-ae011ce549e6}"/>
     <names>
         <name lang="de">Mehrfachsteckdose</name>

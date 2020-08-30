@@ -1,4 +1,4 @@
-<definition width="110" hotspot_x="47" type="element" link_type="simple" orientation="dyyy" version="0.5" height="70" hotspot_y="37">
+<definition width="110" hotspot_x="47" type="element" link_type="simple" version="0.5" height="70" hotspot_y="37">
     <uuid uuid="{8205a137-368a-4d61-80af-d625248dd5b2}"/>
     <names>
         <name lang="cs">F lahvový výměník</name>

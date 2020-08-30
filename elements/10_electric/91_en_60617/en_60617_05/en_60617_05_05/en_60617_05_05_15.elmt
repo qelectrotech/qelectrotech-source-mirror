@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="25" hotspot_y="10" orientation="dyyy" type="element" height="40" width="50">
+<definition link_type="simple" version="0.70" hotspot_x="25" hotspot_y="10" type="element" height="40" width="50">
     <uuid uuid="{ed574652-8d7e-48d9-a1c4-bcdcbe7b13a0}"/>
     <names>
         <name lang="fr">Transistor IGFET à déplétion à une seule grille,

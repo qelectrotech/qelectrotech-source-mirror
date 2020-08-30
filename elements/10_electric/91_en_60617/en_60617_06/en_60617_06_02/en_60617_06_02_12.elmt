@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="20" hotspot_y="25" version="0.70" width="30" type="element" height="30">
+<definition link_type="simple" hotspot_x="20" hotspot_y="25" version="0.70" width="30" type="element" height="30">
     <uuid uuid="{cede6b8a-96e2-454b-b78f-0550e8588ff2}"/>
     <names>
         <name lang="fr">Enroulement hexaphasé, en étoile</name>

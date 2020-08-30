@@ -1,4 +1,4 @@
-<definition orientation="dyyy" width="50" version="0.51" height="30" type="element" hotspot_x="14" link_type="simple" hotspot_y="8">
+<definition width="50" version="0.51" height="30" type="element" hotspot_x="14" link_type="simple" hotspot_y="8">
     <uuid uuid="{99a2a8ea-f5aa-4ee9-b217-a000b8f37e17}"/>
     <names>
         <name lang="fr">Nourrice centre</name>

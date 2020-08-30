@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="14">
+<definition width="30" hotspot_x="14" type="element" link_type="simple" version="0.5" height="30" hotspot_y="14">
     <uuid uuid="{e2d5ccb0-f91e-4aae-b669-cb2126ee6df3}"/>
     <names>
         <name lang="cs">Kapacitní ukazatel přítomnosti napětí</name>

@@ -1,4 +1,4 @@
-<definition hotspot_y="47" type="element" link_type="simple" orientation="dyyy" hotspot_x="25" width="50" height="110" version="0.51">
+<definition hotspot_y="47" type="element" link_type="simple" hotspot_x="25" width="50" height="110" version="0.51">
     <uuid uuid="{cec235b5-ce60-4f56-a5cd-8e890384e797}"/>
     <names>
         <name lang="fr">Ballon à vessie</name>

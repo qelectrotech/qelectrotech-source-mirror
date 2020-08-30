@@ -1,4 +1,4 @@
-<definition height="80" link_type="simple" hotspot_x="50" hotspot_y="39" width="100" orientation="dyyy" type="element" version="0.5">
+<definition height="80" link_type="simple" hotspot_x="50" hotspot_y="39" width="100" type="element" version="0.5">
 <uuid uuid="{D82AD720-1B0C-440F-A41B-C970258A8D23}"/><names>
         <name lang="en">Line choke 3 pole</name>
         <name lang="fr">Self réseau tripolaire</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_y="31" hotspot_x="29" width="80" version="0.80" type="element" height="60" link_type="simple">
+<definition hotspot_y="31" hotspot_x="29" width="80" version="0.80" type="element" height="60" link_type="simple">
     <uuid uuid="{b4edcab9-dda2-4ef4-839d-e3875c61fed7}"/>
     <names>
         <name lang="ar">زرّ توقف طارئ (NC)</name>

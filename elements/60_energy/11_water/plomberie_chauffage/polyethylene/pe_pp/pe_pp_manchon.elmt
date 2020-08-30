@@ -1,4 +1,4 @@
-<definition height="40" hotspot_x="54" orientation="dyyy" hotspot_y="20" version="0.51" link_type="simple" width="80" type="element">
+<definition height="40" hotspot_x="54" hotspot_y="20" version="0.51" link_type="simple" width="80" type="element">
     <uuid uuid="{0377c62f-e71e-4aba-a7cf-b4be01a88fae}"/>
     <names>
         <name lang="fr">Manchon PE PP</name>

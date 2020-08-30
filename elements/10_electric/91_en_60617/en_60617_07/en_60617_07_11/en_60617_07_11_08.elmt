@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="65" hotspot_y="65" orientation="dyyy" type="element" height="70" width="70">
+<definition link_type="simple" version="0.70" hotspot_x="65" hotspot_y="65" type="element" height="70" width="70">
     <uuid uuid="{1cf2706d-b9a9-49a9-9ea1-1840f8d8c4d0}"/>
     <names>
         <name lang="fr">Élément de commutateur à quatre directions</name>

@@ -1,4 +1,4 @@
-<definition hotspot_x="35" height="60" hotspot_y="30" orientation="dyyy" link_type="slave" type="element" width="80" version="0.51">
+<definition hotspot_x="35" height="60" hotspot_y="30" link_type="slave" type="element" width="80" version="0.51">
     <uuid uuid="{79cc895c-d760-4703-bedc-a30c67242e5d}"/>
     <names>
         <name lang="pt">Interruptor de potência contactor (NC)</name>

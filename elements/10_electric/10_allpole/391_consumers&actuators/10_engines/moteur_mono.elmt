@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="14" version="0.5" hotspot_y="28" link_type="simple" width="40" orientation="dyyy" height="60">
+<definition type="element" hotspot_x="14" version="0.5" hotspot_y="28" link_type="simple" width="40" height="60">
     <uuid uuid="{701e7c7a-c280-4313-9273-61a12213def9}"/>
     <names>
         <name lang="de">Wechselstrom Motor</name>

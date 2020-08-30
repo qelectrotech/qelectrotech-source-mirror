@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="2" hotspot_y="14" version="0.70" width="20" type="element" height="30">
+<definition link_type="simple" hotspot_x="2" hotspot_y="14" version="0.70" width="20" type="element" height="30">
     <uuid uuid="{f0180e10-3486-43e0-bdc5-77e5900bf788}"/>
     <names>
         <name lang="fr">Enroulement triphasé, en zigzag</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="50" height="70" hotspot_y="35" hotspot_x="25" version="0.70" link_type="simple">
+<definition type="element" width="50" height="70" hotspot_y="35" hotspot_x="25" version="0.70" link_type="simple">
     <uuid uuid="{eb9b29aa-6ff5-40b5-9a97-68dddfe7e0ec}"/>
     <names>
         <name lang="de">Koppler mit galvanischer Trennung</name>

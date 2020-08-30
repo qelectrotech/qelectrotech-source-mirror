@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="16" link_type="simple" type="element" height="60" version="0.80" hotspot_y="34" width="40">
+<definition hotspot_x="16" link_type="simple" type="element" height="60" version="0.80" hotspot_y="34" width="40">
     <uuid uuid="{138eba03-d63b-4598-be56-b19c39190fa4}"/>
     <names>
         <name lang="es">Lavadora</name>

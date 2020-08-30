@@ -1,4 +1,4 @@
-<definition height="100" orientation="dyyy" type="element" width="920" version="0.70" hotspot_y="39" hotspot_x="23" link_type="simple">
+<definition height="100" type="element" width="920" version="0.70" hotspot_y="39" hotspot_x="23" link_type="simple">
     <uuid uuid="{b443c0f4-9e17-43e3-8eee-e3962b8325e6}"/>
     <names>
         <name lang="ar">ABE7 CPA03-2</name>

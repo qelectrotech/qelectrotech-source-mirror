@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="27" hotspot_y="61" type="element" version="0.51" width="60" height="100">
+<definition link_type="simple" hotspot_x="27" hotspot_y="61" type="element" version="0.51" width="60" height="100">
     <uuid uuid="{7cc8ef71-4d55-4c5d-9277-b3f37c10db46}"/>
     <names>
         <name lang="cs">Elektrický ohřívač</name>

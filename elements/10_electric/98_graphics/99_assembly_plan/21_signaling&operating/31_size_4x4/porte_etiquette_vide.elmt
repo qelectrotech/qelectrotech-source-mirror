@@ -1,4 +1,4 @@
-<definition width="50" link_type="simple" version="0.5" hotspot_x="25" orientation="dyyy" height="60" hotspot_y="54" type="element">
+<definition width="50" link_type="simple" version="0.5" hotspot_x="25" height="60" hotspot_y="54" type="element">
     <uuid uuid="{367b676c-1276-4711-81d4-2c41711b9562}"/>
     <names>
         <name lang="el">Ετικέτα πόρτας, κενή</name>

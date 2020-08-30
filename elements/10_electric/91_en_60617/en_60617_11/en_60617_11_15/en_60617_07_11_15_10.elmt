@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="30" link_type="simple" hotspot_x="45" width="50" hotspot_y="25">
+<definition type="element" version="0.70" height="30" link_type="simple" hotspot_x="45" width="50" hotspot_y="25">
     <uuid uuid="{bd48e992-916e-49fe-8a25-478cceb987c5}"/>
     <names>
         <name lang="de">Vorschaltgerät für Entladungslampen</name>

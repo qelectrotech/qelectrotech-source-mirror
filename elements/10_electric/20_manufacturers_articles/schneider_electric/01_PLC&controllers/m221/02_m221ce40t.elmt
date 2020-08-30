@@ -1,4 +1,4 @@
-<definition hotspot_x="4" type="element" width="390" hotspot_y="4" orientation="dyyy" version="0.70" link_type="simple" height="260">
+<definition hotspot_x="4" type="element" width="390" hotspot_y="4" version="0.70" link_type="simple" height="260">
     <uuid uuid="{a34fcd5d-d0c4-437c-ac54-dd619d05c881}"/>
     <names>
         <name lang="fr">API M221CE40T</name>

@@ -1,4 +1,4 @@
-<definition hotspot_x="15" hotspot_y="21" orientation="dyyy" height="50" type="element" link_type="simple" width="30" version="0.5">
+<definition hotspot_x="15" hotspot_y="21" height="50" type="element" link_type="simple" width="30" version="0.5">
     <uuid uuid="{a4d01446-fd3f-414b-adc6-a3fb89e1f9bb}"/>
     <names>
         <name lang="fr">Armoire sèche-linge</name>

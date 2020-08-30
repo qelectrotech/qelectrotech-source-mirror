@@ -1,4 +1,4 @@
-<definition width="720" orientation="dyyy" link_type="simple" hotspot_x="15" hotspot_y="34" type="element" height="100" version="0.5">
+<definition width="720" link_type="simple" hotspot_x="15" hotspot_y="34" type="element" height="100" version="0.5">
     <uuid uuid="{621d8a47-70dc-40f0-ae6d-e185323d636d}"/>
     <names>
         <name lang="ar">CU-230P-2-HVAC</name>

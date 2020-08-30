@@ -1,4 +1,4 @@
-<definition height="60" type="element" width="70" hotspot_y="45" orientation="dyyy" link_type="simple" version="0.70" hotspot_x="55">
+<definition height="60" type="element" width="70" hotspot_y="45" link_type="simple" version="0.70" hotspot_x="55">
     <uuid uuid="{7d1dbe0b-18bb-45af-9bef-65fec6d80ba2}"/>
     <names>
         <name lang="fr">Variomètre</name>

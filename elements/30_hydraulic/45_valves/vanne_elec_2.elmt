@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="14" hotspot_y="22" width="50" orientation="dyyy" height="60" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="14" hotspot_y="22" width="50" height="60" link_type="simple" type="element">
     <uuid uuid="{10ede03b-8b3e-47ec-8788-328324dfd6e0}"/>
     <names>
         <name lang="en">Three-way valve-control electromagnetic</name>

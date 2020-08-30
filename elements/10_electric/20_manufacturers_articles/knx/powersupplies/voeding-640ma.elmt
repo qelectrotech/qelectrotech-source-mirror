@@ -1,4 +1,4 @@
-<definition width="120" version="0.4" hotspot_x="50" hotspot_y="50" height="100" type="element" ic="true" orientation="dyyy" link_type="master">
+<definition width="120" version="0.4" hotspot_x="50" hotspot_y="50" height="100" type="element" ic="true" link_type="master">
 <uuid uuid="{6574C7AB-1C41-4E09-88D9-712ED65F170C}"/><names>
         <name lang="nl">KNX voeding 640mA</name>
         <name lang="be">KNX voeding 640mA</name>

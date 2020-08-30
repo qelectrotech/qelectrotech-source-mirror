@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" link_type="simple" hotspot_x="5" width="90" version="0.80" hotspot_y="6" height="220">
+<definition type="element" link_type="simple" hotspot_x="5" width="90" version="0.80" hotspot_y="6" height="220">
     <uuid uuid="{2bf13542-9b0d-4fb2-a0d0-5b337d4c0cac}"/>
     <names>
         <name lang="fr">415907 - Disjoncteur STOP ARC 16A C 6kA - Vis/Vis</name>

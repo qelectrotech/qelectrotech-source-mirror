@@ -1,4 +1,4 @@
-<definition width="110" height="110" type="element" hotspot_x="75" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="107">
+<definition width="110" height="110" type="element" hotspot_x="75" version="0.70" link_type="simple" hotspot_y="107">
     <uuid uuid="{b01ead0f-f700-4817-84e8-0b6eceed20e4}"/>
     <names>
         <name lang="de">Magnetspeicher-Matrix</name>

@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="76" orientation="dyyy" hotspot_y="41" type="element" height="80" width="120" version="0.5">
+<definition link_type="simple" hotspot_x="76" hotspot_y="41" type="element" height="80" width="120" version="0.5">
     <uuid uuid="{6128581f-5509-4b4b-a15a-c92e95af61a5}"/>
     <names>
         <name lang="pl">Wyświetlacz EKA 163A</name>

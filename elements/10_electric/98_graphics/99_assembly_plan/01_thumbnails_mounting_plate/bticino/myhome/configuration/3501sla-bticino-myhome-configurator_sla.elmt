@@ -1,4 +1,4 @@
-<definition version="0.70" link_type="simple" hotspot_x="5" hotspot_y="29" width="10" height="40" orientation="dyyy" type="element">
+<definition version="0.70" link_type="simple" hotspot_x="5" hotspot_y="29" width="10" height="40" type="element">
     <uuid uuid="{1a822dec-55b0-43fa-b9a4-3749fbe6e66d}"/>
     <names>
         <name lang="fr">3501/SLA - Configurateur SLA</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" height="210" type="element" width="110" hotspot_y="8" version="0.70" hotspot_x="8" link_type="simple">
+<definition height="210" type="element" width="110" hotspot_y="8" version="0.70" hotspot_x="8" link_type="simple">
     <uuid uuid="{83a4ac94-8fae-4330-9862-d1997f33df97}"/>
     <names>
         <name lang="fr">cTRON 08 grand</name>

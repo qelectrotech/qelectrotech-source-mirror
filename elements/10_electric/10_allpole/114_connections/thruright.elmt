@@ -1,4 +1,4 @@
-<definition link_type="terminal" width="30" hotspot_x="14" orientation="dyyy" height="20" version="0.70" hotspot_y="4" type="element">
+<definition link_type="terminal" width="30" hotspot_x="14" height="20" version="0.70" hotspot_y="4" type="element">
     <uuid uuid="{6e40fff3-691c-4622-b9aa-4ff930a5b981}"/>
     <names>
         <name lang="en">Thru right</name>

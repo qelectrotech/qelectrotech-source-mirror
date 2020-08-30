@@ -1,4 +1,4 @@
-<definition type="element" height="260" version="0.5" width="160" orientation="dyyy" link_type="simple" hotspot_x="5" hotspot_y="2">
+<definition type="element" height="260" version="0.5" width="160" link_type="simple" hotspot_x="5" hotspot_y="2">
     <uuid uuid="{a0e9fc6c-53a9-4c32-81e6-a78acbe91d18}"/>
     <names>
         <name lang="fr">Contrôleur M251 schneider</name>

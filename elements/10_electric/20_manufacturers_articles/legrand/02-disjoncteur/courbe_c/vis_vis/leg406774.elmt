@@ -1,4 +1,4 @@
-<definition hotspot_y="40" link_type="master" type="element" height="70" width="50" orientation="dyyy" version="0.80" hotspot_x="19">
+<definition hotspot_y="40" link_type="master" type="element" height="70" width="50" version="0.80" hotspot_x="19">
     <uuid uuid="{57354a38-09bf-483b-a907-0b55a10ead43}"/>
     <names>
         <name lang="es">Disyuntor termico magnetico en polo P+N</name>

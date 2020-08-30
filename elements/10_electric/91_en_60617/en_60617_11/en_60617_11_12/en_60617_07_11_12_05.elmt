@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="30" height="30" hotspot_x="25" hotspot_y="25" orientation="dyyy" version="0.70">
+<definition link_type="simple" type="element" width="30" height="30" hotspot_x="25" hotspot_y="25" version="0.70">
     <uuid uuid="{526c8b69-3c7d-4218-8fa1-d0bc181f3fda}"/>
     <names>
         <name lang="de">Anschlußdose,

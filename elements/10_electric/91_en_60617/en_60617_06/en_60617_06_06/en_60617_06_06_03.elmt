@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="80" hotspot_y="106" version="0.70" width="100" type="element" height="120">
+<definition link_type="simple" hotspot_x="80" hotspot_y="106" version="0.70" width="100" type="element" height="120">
     <uuid uuid="{6b72ec52-a806-40a0-87f5-7bae8757e551}"/>
     <names>
         <name lang="fr">Moteur série, triphasé</name>

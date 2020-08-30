@@ -1,4 +1,4 @@
-<definition hotspot_x="35" version="0.70" orientation="dyyy" height="40" hotspot_y="15" width="60" type="element" link_type="simple">
+<definition hotspot_x="35" version="0.70" height="40" hotspot_y="15" width="60" type="element" link_type="simple">
     <uuid uuid="{482f3f0b-cebf-49cd-a3a0-33eda73baae4}"/>
     <names>
         <name lang="fr">Engrenage</name>

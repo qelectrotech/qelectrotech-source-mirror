@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="10" hotspot_y="0" width="40" orientation="dyyy" height="10" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="10" hotspot_y="0" width="40" height="10" link_type="simple" type="element">
     <uuid uuid="{edc1dda1-52db-4634-ac93-7e6478f84780}"/>
     <names>
         <name lang="en">Control air pressure</name>

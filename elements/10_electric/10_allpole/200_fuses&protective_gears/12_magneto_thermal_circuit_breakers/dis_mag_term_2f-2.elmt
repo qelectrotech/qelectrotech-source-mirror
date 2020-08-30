@@ -1,4 +1,4 @@
-<definition hotspot_y="52" width="70" version="0.51" orientation="dyyy" type="element" height="100" hotspot_x="56" link_type="simple">
+<definition hotspot_y="52" width="70" version="0.51" type="element" height="100" hotspot_x="56" link_type="simple">
     <uuid uuid="{ec5fa3cd-6769-4a35-aaa9-6bc5ba4fc779}"/>
     <names>
         <name lang="fr">Disjoncteur Magnéto-thermique GV 2P</name>

@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="25" orientation="dyyy" hotspot_y="12" type="element" height="30" width="60" version="0.5">
+<definition link_type="simple" hotspot_x="25" hotspot_y="12" type="element" height="30" width="60" version="0.5">
     <uuid uuid="{62c03a8b-4f5a-4ecf-8039-9d9eecfe5640}"/>
     <names>
         <name lang="pl">Łączówka +5V</name>

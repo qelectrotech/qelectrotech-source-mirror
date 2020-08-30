@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="110" height="80" hotspot_x="105" hotspot_y="45" orientation="dyyy" version="0.70">
+<definition link_type="simple" type="element" width="110" height="80" hotspot_x="105" hotspot_y="45" version="0.70">
     <uuid uuid="{941c76d4-f4be-4e9d-8a10-d044a9df2317}"/>
     <names>
         <name lang="de">Einspeisepunkt</name>

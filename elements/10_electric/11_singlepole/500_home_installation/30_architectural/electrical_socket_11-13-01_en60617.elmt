@@ -1,4 +1,4 @@
-<definition hotspot_x="15" hotspot_y="18" orientation="dyyy" height="50" type="element" link_type="simple" width="30" version="0.5">
+<definition hotspot_x="15" hotspot_y="18" height="50" type="element" link_type="simple" width="30" version="0.5">
     <uuid uuid="{b3158290-ee31-4b4e-8aec-83e20e09498a}"/>
     <names>
         <name lang="fr">Socle de prise de courant (puissance), symbole general (EN 60617 11-13-01)</name>

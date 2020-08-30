@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="40" hotspot_y="10" orientation="dyyy" height="20" version="0.70" hotspot_x="27">
+<definition link_type="simple" type="element" width="40" hotspot_y="10" height="20" version="0.70" hotspot_x="27">
     <uuid uuid="{8d5cec9e-78e0-4839-a213-279e8a663472}"/>
     <names>
         <name lang="fr">Commande par tirette</name>

@@ -1,4 +1,4 @@
-<definition width="90" link_type="simple" version="0.5" hotspot_x="45" orientation="dyyy" height="90" hotspot_y="45" type="element">
+<definition width="90" link_type="simple" version="0.5" hotspot_x="45" height="90" hotspot_y="45" type="element">
     <uuid uuid="{f53dffe0-4e1a-4a53-aefb-42719976cbe3}"/>
     <names>
         <name lang="de">Rundstecker 17-polig</name>

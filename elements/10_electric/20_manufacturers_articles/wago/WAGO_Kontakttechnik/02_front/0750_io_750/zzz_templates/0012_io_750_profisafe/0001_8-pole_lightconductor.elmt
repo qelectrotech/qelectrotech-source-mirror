@@ -1,4 +1,4 @@
-<definition hotspot_x="29" type="element" hotspot_y="180" orientation="dyyy" link_type="simple" height="360" version="0.80" width="60">
+<definition hotspot_x="29" type="element" hotspot_y="180" link_type="simple" height="360" version="0.80" width="60">
     <names>
         <name lang="de">8-fach / Lichtleiter</name>
         <name lang="en">8-fold / Light-Conductor</name>

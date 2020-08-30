@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="5" hotspot_y="5" version="0.70" width="10" type="element" height="30">
+<definition link_type="simple" hotspot_x="5" hotspot_y="5" version="0.70" width="10" type="element" height="30">
     <uuid uuid="{f9095cc3-da28-4ff5-aade-77fbf0b5985c}"/>
     <names>
         <name lang="fr">Enroulement, symbole distinctif</name>

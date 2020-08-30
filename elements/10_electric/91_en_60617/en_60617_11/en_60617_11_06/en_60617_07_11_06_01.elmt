@@ -1,4 +1,4 @@
-<definition hotspot_y="27" hotspot_x="85" height="30" version="0.70" width="90" orientation="dyyy" link_type="simple" type="element">
+<definition hotspot_y="27" hotspot_x="85" height="30" version="0.70" width="90" link_type="simple" type="element">
     <uuid uuid="{1051c32a-6fe8-4f19-8118-a88d7013f923}"/>
     <names>
         <name lang="de">Abzweigverstärker</name>

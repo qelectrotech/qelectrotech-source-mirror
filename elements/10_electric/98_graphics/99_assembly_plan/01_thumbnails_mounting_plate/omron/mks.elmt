@@ -1,4 +1,4 @@
-<definition width="40" height="40" link_type="simple" orientation="dyyy" hotspot_x="20" version="0.5" hotspot_y="15" type="element">
+<definition width="40" height="40" link_type="simple" hotspot_x="20" version="0.5" hotspot_y="15" type="element">
     <uuid uuid="{b0de7686-3b20-4532-9d1c-6832fe86f8d0}"/>
     <names>
         <name lang="it">MKS</name>

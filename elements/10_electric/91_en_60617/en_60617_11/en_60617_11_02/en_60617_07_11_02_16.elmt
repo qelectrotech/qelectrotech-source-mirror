@@ -1,4 +1,4 @@
-<definition hotspot_x="44" hotspot_y="57" orientation="dyyy" height="60" link_type="simple" version="0.70" type="element" width="50">
+<definition hotspot_x="44" hotspot_y="57" height="60" link_type="simple" version="0.70" type="element" width="50">
     <uuid uuid="{dda8acfe-6946-4855-8466-c3f7a1cfaf15}"/>
     <names>
         <name lang="de">Umrichterstation (in Betrieb oder undefiniert)</name>

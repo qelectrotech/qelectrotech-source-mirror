@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="14" link_type="simple" type="element" height="40" version="0.80" hotspot_y="14" width="30">
+<definition hotspot_x="14" link_type="simple" type="element" height="40" version="0.80" hotspot_y="14" width="30">
     <uuid uuid="{c1e87e51-f68d-4b30-8c36-f0d4c6fa9452}"/>
     <names>
         <name lang="ru">Эл. конвектор</name>

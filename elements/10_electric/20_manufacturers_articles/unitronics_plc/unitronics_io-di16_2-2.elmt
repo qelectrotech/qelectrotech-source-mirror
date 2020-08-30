@@ -1,4 +1,4 @@
-<definition width="750" hotspot_y="97" orientation="dyyy" link_type="simple" height="100" hotspot_x="405" type="element" version="0.70">
+<definition width="750" hotspot_y="97" link_type="simple" height="100" hotspot_x="405" type="element" version="0.70">
     <uuid uuid="{bf6ae569-8ff9-459d-b0f8-1a7c8d3b90c5}"/>
     <names>
         <name lang="hu">Unitronics IO-DI16 2/2</name>

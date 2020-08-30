@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="20" link_type="simple" hotspot_x="34" width="90" hotspot_y="10">
+<definition type="element" version="0.70" height="20" link_type="simple" hotspot_x="34" width="90" hotspot_y="10">
     <uuid uuid="{c2e8bc74-f417-4957-9b75-d73afcca8790}"/>
     <names>
         <name lang="de">Elektro-Installationskanäle, zusammengesetzt</name>

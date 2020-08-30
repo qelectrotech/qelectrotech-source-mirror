@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="15" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="6">
+<definition width="30" hotspot_x="15" type="element" link_type="simple" version="0.5" height="20" hotspot_y="6">
     <uuid uuid="{97536d28-5875-482c-a1ab-2b9d89388a9f}"/>
     <names>
         <name lang="cs">Sprcha</name>

@@ -1,4 +1,4 @@
-<definition hotspot_y="54" orientation="dyyy" version="0.80" hotspot_x="25" link_type="simple" height="60" type="element" width="50">
+<definition hotspot_y="54" version="0.80" hotspot_x="25" link_type="simple" height="60" type="element" width="50">
     <uuid uuid="{a786eb77-296b-4e2d-a8d0-a2fbab36ce63}"/>
     <names>
         <name lang="fr">Porte étiquette AUTO-0-MAIN</name>

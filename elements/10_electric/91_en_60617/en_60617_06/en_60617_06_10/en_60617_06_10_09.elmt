@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="81" hotspot_y="180" version="0.70" width="110" type="element" height="200">
+<definition link_type="simple" hotspot_x="81" hotspot_y="180" version="0.70" width="110" type="element" height="200">
     <uuid uuid="{d1941b5c-7f13-4cf6-8701-cc0d6948a4fd}"/>
     <names>
         <name lang="fr">Transformateur triphasé à quatre prises,

@@ -1,4 +1,4 @@
-<definition width="50" height="120" link_type="simple" orientation="dyyy" hotspot_x="25" version="0.5" hotspot_y="55" type="element">
+<definition width="50" height="120" link_type="simple" hotspot_x="25" version="0.5" hotspot_y="55" type="element">
     <uuid uuid="{c34b50b3-5b09-4dbd-87ec-35d43ddf4562}"/>
     <names>
         <name lang="it">cRIO 9xxx - modulo vuoto</name>

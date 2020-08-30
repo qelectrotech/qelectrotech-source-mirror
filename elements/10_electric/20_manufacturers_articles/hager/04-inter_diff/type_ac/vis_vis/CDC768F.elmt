@@ -1,4 +1,4 @@
-<definition height="90" hotspot_x="46" width="120" link_type="master" version="0.80" type="element" orientation="dyyy" hotspot_y="37">
+<definition height="90" hotspot_x="46" width="120" link_type="master" version="0.80" type="element" hotspot_y="37">
     <uuid uuid="{cb1f6a1b-760e-427d-8a03-5ca689f6b4f1}"/>
     <names>
         <name lang="fr">CDC768F-Interrupteur différentiel 2P 63A 30mA type AC</name>

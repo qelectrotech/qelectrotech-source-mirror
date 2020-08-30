@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" orientation="dyyy" hotspot_x="81" height="170" width="110" hotspot_y="137" version="0.70">
+<definition link_type="simple" type="element" hotspot_x="81" height="170" width="110" hotspot_y="137" version="0.70">
     <uuid uuid="{86b4ca6a-01b8-4087-b53f-a4562e1947f4}"/>
     <names>
         <name lang="de">Spartransformator, einphasig, mit

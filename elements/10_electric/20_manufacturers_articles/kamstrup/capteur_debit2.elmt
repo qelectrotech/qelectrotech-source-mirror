@@ -1,4 +1,4 @@
-<definition version="0.80" hotspot_y="32" link_type="simple" hotspot_x="37" height="60" orientation="dyyy" width="110" type="element">
+<definition version="0.80" hotspot_y="32" link_type="simple" hotspot_x="37" height="60" width="110" type="element">
     <uuid uuid="{fc9b2a9a-d095-435f-a8e8-1b3a6a635881}"/>
     <names>
         <name lang="en">Flow sensor pulsmeter</name>

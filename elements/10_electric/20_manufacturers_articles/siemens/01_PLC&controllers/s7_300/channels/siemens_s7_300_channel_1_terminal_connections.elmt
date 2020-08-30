@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_y="38" type="element" hotspot_x="45" orientation="dyyy" version="0.51" height="80" width="90">
+<definition link_type="simple" hotspot_y="38" type="element" hotspot_x="45" version="0.51" height="80" width="90">
     <uuid uuid="{4edd35be-6691-4fdf-945f-b6ad8a35e0f1}"/>
     <names>
         <name lang="de">S7 300 Kanal 1 Klemme (Anschlüsse)</name>

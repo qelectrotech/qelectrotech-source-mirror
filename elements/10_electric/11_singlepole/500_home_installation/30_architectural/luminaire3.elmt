@@ -1,4 +1,4 @@
-<definition hotspot_x="5" hotspot_y="15" orientation="dyyy" height="30" type="element" link_type="simple" width="70" version="0.5">
+<definition hotspot_x="5" hotspot_y="15" height="30" type="element" link_type="simple" width="70" version="0.5">
     <uuid uuid="{c36a7cb4-e5c0-40fb-ad24-a6b556daa745}"/>
     <names>
         <name lang="fr">Luminaire à trois tubes fluorescents

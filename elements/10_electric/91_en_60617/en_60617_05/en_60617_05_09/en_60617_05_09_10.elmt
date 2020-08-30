@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" height="250" width="200" version="0.70" orientation="dyyy" hotspot_x="124" hotspot_y="245">
+<definition type="element" link_type="simple" height="250" width="200" version="0.70" hotspot_x="124" hotspot_y="245">
     <uuid uuid="{d4fe8ad5-05e2-46ab-8822-9ac7e2d23e72}"/>
     <names>
         <name lang="fr">Cavité résonnante, partiellement ou

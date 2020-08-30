@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="50" hotspot_y="12" orientation="dyyy" height="20" version="0.70" hotspot_x="37">
+<definition link_type="simple" type="element" width="50" hotspot_y="12" height="20" version="0.70" hotspot_x="37">
     <uuid uuid="{5b70bfd3-5afd-49e1-bef8-a710396932ca}"/>
     <names>
         <name lang="fr">Actionné par énergie hydraulique ou

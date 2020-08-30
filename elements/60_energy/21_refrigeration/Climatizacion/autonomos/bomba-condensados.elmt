@@ -1,4 +1,4 @@
-<definition hotspot_y="21" link_type="simple" width="80" version="0.80" type="element" height="30" orientation="dyyy" hotspot_x="38">
+<definition hotspot_y="21" link_type="simple" width="80" version="0.80" type="element" height="30" hotspot_x="38">
     <uuid uuid="{bd64fbeb-c097-4d32-be5e-8c435eea78c9}"/>
     <names>
         <name lang="fr">Pompe à condensats</name>

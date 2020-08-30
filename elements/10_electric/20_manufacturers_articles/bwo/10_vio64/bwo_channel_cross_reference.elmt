@@ -1,4 +1,4 @@
-<definition version="0.5" type="element" height="20" hotspot_y="4" link_type="next_report" width="60" orientation="dyyy" hotspot_x="30">
+<definition version="0.5" type="element" height="20" hotspot_y="4" link_type="next_report" width="60" hotspot_x="30">
 <uuid uuid="{FE63B6A1-3B47-4686-ABFA-7BA53A3055E7}"/><names>
         <name lang="fr">Canal (référence croisée)</name>
         <name lang="de">Kanal (Verweis)</name>

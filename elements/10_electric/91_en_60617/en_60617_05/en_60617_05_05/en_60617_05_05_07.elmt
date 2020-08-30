@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="35" hotspot_y="65" orientation="dyyy" type="element" height="70" width="50">
+<definition link_type="simple" version="0.70" hotspot_x="35" hotspot_y="65" type="element" height="70" width="50">
     <uuid uuid="{54549e6c-9610-47aa-a006-ebee6fd92631}"/>
     <names>
         <name lang="fr">Transistor PNIP avec connexion à la région

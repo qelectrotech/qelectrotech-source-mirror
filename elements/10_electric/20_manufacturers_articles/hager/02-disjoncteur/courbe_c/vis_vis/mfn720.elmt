@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="master" hotspot_y="40" height="70" orientation="dyyy" type="element" width="50" hotspot_x="18">
+<definition version="0.80" link_type="master" hotspot_y="40" height="70" type="element" width="50" hotspot_x="18">
     <uuid uuid="{cc81ef47-8c99-4a20-b1f2-31d77ce2c800}"/>
     <names>
         <name lang="fr">MFN720 20A</name>

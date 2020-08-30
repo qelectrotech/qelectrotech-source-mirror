@@ -1,4 +1,4 @@
-<definition type="element" width="410" hotspot_y="4" link_type="simple" hotspot_x="5" height="160" orientation="dyyy" version="0.80">
+<definition type="element" width="410" hotspot_y="4" link_type="simple" hotspot_x="5" height="160" version="0.80">
     <uuid uuid="{cda7b53f-89a5-49bb-91f6-587b7f7f9016}"/>
     <names>
         <name lang="fr">Carte 4 DO</name>

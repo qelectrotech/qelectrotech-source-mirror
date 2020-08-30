@@ -1,4 +1,4 @@
-<definition hotspot_y="72" type="element" link_type="simple" orientation="dyyy" hotspot_x="30" width="60" height="110" version="0.51">
+<definition hotspot_y="72" type="element" link_type="simple" hotspot_x="30" width="60" height="110" version="0.51">
     <uuid uuid="{0b23fd7f-8a56-4ba5-bdba-459e7920ff7d}"/>
     <names>
         <name lang="fr">Pompe verticale</name>

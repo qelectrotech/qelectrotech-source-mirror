@@ -1,4 +1,4 @@
-<definition width="50" orientation="dyyy" version="0.5" height="200" type="element" hotspot_y="30" link_type="simple" hotspot_x="15">
+<definition width="50" version="0.5" height="200" type="element" hotspot_y="30" link_type="simple" hotspot_x="15">
     <uuid uuid="{4b7576bf-ea58-4cc1-875b-741a794b2bbd}"/>
     <names>
         <name lang="en">ET200S 8DO FACE 6ES7132-4BF00-0AA0</name>

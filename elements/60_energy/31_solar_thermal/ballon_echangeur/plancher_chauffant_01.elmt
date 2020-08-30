@@ -1,4 +1,4 @@
-<definition width="110" hotspot_x="56" type="element" link_type="simple" orientation="dyyy" version="0.5" height="90" hotspot_y="44">
+<definition width="110" hotspot_x="56" type="element" link_type="simple" version="0.5" height="90" hotspot_y="44">
     <uuid uuid="{a0e7757b-6b85-4851-91ce-86e8b658d199}"/>
     <names>
         <name lang="cs">Podlahové topné těleso</name>

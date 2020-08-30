@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.5" type="element" link_type="simple" hotspot_x="5" hotspot_y="5" width="170" height="210">
+<definition version="0.5" type="element" link_type="simple" hotspot_x="5" hotspot_y="5" width="170" height="210">
     <uuid uuid="{3709c88d-825f-4fc2-9570-8032f631378e}"/>
     <names>
         <name lang="fr">ABB Sorties 4 voies</name>

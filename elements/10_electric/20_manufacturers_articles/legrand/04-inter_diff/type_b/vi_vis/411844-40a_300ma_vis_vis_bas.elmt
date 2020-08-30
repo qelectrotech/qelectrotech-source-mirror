@@ -1,4 +1,4 @@
-<definition height="90" width="110" hotspot_x="44" link_type="master" type="element" orientation="dyyy" hotspot_y="46" version="0.80">
+<definition height="90" width="110" hotspot_x="44" link_type="master" type="element" hotspot_y="46" version="0.80">
     <uuid uuid="{5d247639-a422-4a57-9308-b8812eda640b}"/>
     <names>
         <name lang="fr">411844 - Interrupteur différentiel B 40A 300mA Haut-Vis/Bas-Vis</name>

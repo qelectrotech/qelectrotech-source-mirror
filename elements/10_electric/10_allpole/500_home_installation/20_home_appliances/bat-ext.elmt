@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="5" link_type="simple" type="element" height="190" version="0.80" hotspot_y="186" width="130">
+<definition hotspot_x="5" link_type="simple" type="element" height="190" version="0.80" hotspot_y="186" width="130">
     <uuid uuid="{c3ed926c-4aca-41a3-868f-b1c75686558b}"/>
     <names>
         <name lang="pl">Budynek</name>

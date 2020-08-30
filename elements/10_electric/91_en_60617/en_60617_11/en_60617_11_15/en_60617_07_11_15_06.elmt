@@ -1,4 +1,4 @@
-<definition hotspot_x="25" type="element" height="20" version="0.80" width="60" orientation="dyyy" link_type="simple" hotspot_y="10">
+<definition hotspot_x="25" type="element" height="20" version="0.80" width="60" link_type="simple" hotspot_y="10">
     <uuid uuid="{ba9ac7ba-bd8f-4423-bc42-a3e03a1976b0}"/>
     <names>
         <name lang="de">Leuchte mit fünf Leuchtstofflampen</name>

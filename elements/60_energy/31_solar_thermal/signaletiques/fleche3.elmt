@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="15" type="element" link_type="simple" orientation="dyyy" version="0.5" height="70" hotspot_y="35">
+<definition width="30" hotspot_x="15" type="element" link_type="simple" version="0.5" height="70" hotspot_y="35">
     <uuid uuid="{62f145b5-1055-47be-89a8-a3c23ea39002}"/>
     <names>
         <name lang="cs">Směr 3</name>

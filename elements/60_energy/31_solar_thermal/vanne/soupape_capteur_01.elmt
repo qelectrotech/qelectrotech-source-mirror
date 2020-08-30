@@ -1,4 +1,4 @@
-<definition width="10" hotspot_x="4" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="17">
+<definition width="10" hotspot_x="4" type="element" link_type="simple" version="0.5" height="30" hotspot_y="17">
     <uuid uuid="{3c2c7edf-cfd7-4b1e-afc9-ea98da8b364d}"/>
     <names>
         <name lang="cs">Čidlo teploty uzávěru</name>

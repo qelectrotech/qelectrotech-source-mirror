@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" type="element" height="60" width="40" hotspot_y="34" version="0.80" hotspot_x="20">
+<definition link_type="simple" type="element" height="60" width="40" hotspot_y="34" version="0.80" hotspot_x="20">
     <uuid uuid="{16f99e07-33a7-4cb2-a354-cac04fc9c279}"/>
     <names>
         <name lang="ar">عدّاد طاقة فعّالة مع تجاوز قدرة</name>

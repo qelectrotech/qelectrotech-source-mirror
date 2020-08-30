@@ -1,4 +1,4 @@
-<definition width="50" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="15">
+<definition width="50" hotspot_x="14" type="element" link_type="simple" version="0.5" height="20" hotspot_y="15">
     <uuid uuid="{80bd0321-d828-4618-be41-f1ab7b7831f4}"/>
     <names>
         <name lang="cs">Ponořený vodič, mořský kabel</name>

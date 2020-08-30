@@ -1,4 +1,4 @@
-<definition hotspot_x="21" type="element" width="40" link_type="slave" hotspot_y="24" height="50" orientation="dyyy" version="0.5">
+<definition hotspot_x="21" type="element" width="40" link_type="slave" hotspot_y="24" height="50" version="0.5">
     <uuid uuid="{194877a5-8842-49cc-81a3-9f8fa0f400af}"/>
     <names>
         <name lang="fr">Contact simple (tempo repos)</name>

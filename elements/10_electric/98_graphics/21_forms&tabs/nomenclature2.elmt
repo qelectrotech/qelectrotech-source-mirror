@@ -1,4 +1,4 @@
-<definition width="980" link_type="simple" version="0.5" hotspot_x="5" orientation="dyyy" height="110" hotspot_y="25" type="element">
+<definition width="980" link_type="simple" version="0.5" hotspot_x="5" height="110" hotspot_y="25" type="element">
     <uuid uuid="{1f276053-db54-472d-9c97-41deb703433c}"/>
     <names>
         <name lang="de">Stückliste</name>

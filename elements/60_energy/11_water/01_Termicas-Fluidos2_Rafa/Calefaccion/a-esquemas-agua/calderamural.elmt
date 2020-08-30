@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" height="50" version="0.70" type="element" width="30" hotspot_x="14" hotspot_y="42">
+<definition link_type="simple" height="50" version="0.70" type="element" width="30" hotspot_x="14" hotspot_y="42">
     <uuid uuid="{e2dc029b-7bb9-4340-bbcb-b656d653021e}"/>
     <names>
         <name lang="es">Caldera Mural ACS</name>

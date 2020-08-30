@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.51" link_type="simple" hotspot_x="365" height="110" hotspot_y="55" width="730">
+<definition type="element" version="0.51" link_type="simple" hotspot_x="365" height="110" hotspot_y="55" width="730">
     <names>
         <name lang="de">787-2861/0100-0000</name>
         <name lang="en">787-2861/0100-0000</name>

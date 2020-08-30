@@ -1,4 +1,4 @@
-<definition width="80" version="0.4" hotspot_x="28" hotspot_y="30" height="60" type="element" ic="true" orientation="dyyy" link_type="master">
+<definition width="80" version="0.4" hotspot_x="28" hotspot_y="30" height="60" type="element" ic="true" link_type="master">
 <uuid uuid="{FCFBD19E-DA8E-47C2-A788-6E94A2826CFE}"/><names>
         <name lang="en">Relay Focus rest delayed withe external command</name>
         <name lang="de">Relais ansprechverzögert mit externer Steuerung</name>

@@ -1,4 +1,4 @@
-<definition hotspot_y="4" type="element" version="0.80" orientation="dyyy" link_type="simple" width="90" hotspot_x="5" height="210">
+<definition hotspot_y="4" type="element" version="0.80" link_type="simple" width="90" hotspot_x="5" height="210">
     <uuid uuid="{fe087a26-5f5d-42d7-9bcf-f0ef0402d1d1}"/>
     <names>
         <name lang="fr">410716 - Disjoncteur différentiel AC 32A 30mA Haut-Auto/Bas-Vis</name>

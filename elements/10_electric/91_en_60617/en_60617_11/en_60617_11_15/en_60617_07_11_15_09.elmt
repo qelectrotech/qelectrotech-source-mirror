@@ -1,4 +1,4 @@
-<definition hotspot_x="26" type="element" height="30" version="0.80" width="40" orientation="dyyy" link_type="simple" hotspot_y="25">
+<definition hotspot_x="26" type="element" height="30" version="0.80" width="40" link_type="simple" hotspot_y="25">
     <uuid uuid="{bcd41503-9aa6-4b05-a918-f3c6dc9a9fb6}"/>
     <names>
         <name lang="de">Flutlichtleuchte</name>

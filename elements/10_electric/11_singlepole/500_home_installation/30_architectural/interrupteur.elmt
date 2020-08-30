@@ -1,4 +1,4 @@
-<definition hotspot_x="8" hotspot_y="15" orientation="dyyy" height="30" type="element" link_type="simple" width="20" version="0.5">
+<definition hotspot_x="8" hotspot_y="15" height="30" type="element" link_type="simple" width="20" version="0.5">
     <uuid uuid="{df5f5a4a-4a6f-49fc-9bd9-c91f22eb7113}"/>
     <names>
         <name lang="fr">Interrupteur,</name>

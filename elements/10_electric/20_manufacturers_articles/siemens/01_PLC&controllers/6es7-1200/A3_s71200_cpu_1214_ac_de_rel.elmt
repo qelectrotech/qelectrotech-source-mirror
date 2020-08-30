@@ -1,4 +1,4 @@
-<definition hotspot_x="31" width="180" hotspot_y="60" version="0.5" orientation="dyyy" height="540" type="element" link_type="simple">
+<definition hotspot_x="31" width="180" hotspot_y="60" version="0.5" height="540" type="element" link_type="simple">
     <uuid uuid="{4d4ca4f7-a0ef-4a48-96e1-bace068c0d2c}"/>
     <names>
         <name lang="en">A3_S7-1200-cpu-1214-ac-dc-rel</name>

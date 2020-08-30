@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="110" height="50" hotspot_x="104" hotspot_y="45" orientation="dyyy" version="0.70">
+<definition link_type="simple" type="element" width="110" height="50" hotspot_x="104" hotspot_y="45" version="0.70">
     <uuid uuid="{4906f3db-a19d-4e31-971f-0c4501e238b9}"/>
     <names>
         <name lang="de">Neutralleiter (N),

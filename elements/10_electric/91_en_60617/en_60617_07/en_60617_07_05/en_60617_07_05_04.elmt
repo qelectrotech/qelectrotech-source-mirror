@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="60" hotspot_y="44" orientation="dyyy" height="70" version="0.70" hotspot_x="47">
+<definition link_type="simple" type="element" width="60" hotspot_y="44" height="70" version="0.70" hotspot_x="47">
     <uuid uuid="{950a4877-12f6-4540-b253-778e496407a7}"/>
     <names>
         <name lang="fr">Contact à ouverture, retardé, dispositif n'étant

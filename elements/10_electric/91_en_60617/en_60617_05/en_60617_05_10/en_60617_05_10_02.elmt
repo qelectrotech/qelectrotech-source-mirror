@@ -1,4 +1,4 @@
-<definition width="80" height="40" orientation="dyyy" hotspot_y="5" hotspot_x="45" link_type="simple" type="element" version="0.70">
+<definition width="80" height="40" hotspot_y="5" hotspot_x="45" link_type="simple" type="element" version="0.70">
     <uuid uuid="{559b3444-13b2-4b46-8c06-0a131ebf0dd9}"/>
     <names>
         <name lang="de">Triggerelektrode

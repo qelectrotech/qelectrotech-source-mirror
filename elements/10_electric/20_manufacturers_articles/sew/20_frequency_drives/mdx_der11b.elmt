@@ -1,4 +1,4 @@
-<definition type="element" version="0.5" hotspot_y="73" width="310" height="150" orientation="dyyy" link_type="simple" hotspot_x="153">
+<definition type="element" version="0.5" hotspot_y="73" width="310" height="150" link_type="simple" hotspot_x="153">
     <uuid uuid="{a5397caa-7230-426a-981e-d54117b0f7c8}"/>
     <names>
         <name lang="ar">MDX DER11B</name>

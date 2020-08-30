@@ -1,4 +1,4 @@
-<definition hotspot_x="65" type="element" width="70" hotspot_y="45" version="0.70" orientation="dyyy" height="50" link_type="simple">
+<definition hotspot_x="65" type="element" width="70" hotspot_y="45" version="0.70" height="50" link_type="simple">
     <uuid uuid="{884c18d0-a3a8-472b-8653-c210ae932381}"/>
     <names>
         <name lang="fr">Relais à manque de tension</name>

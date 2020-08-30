@@ -1,4 +1,4 @@
-<definition width="110" hotspot_x="45" hotspot_y="36" orientation="dyyy" link_type="master" version="0.80" type="element" height="90">
+<definition width="110" hotspot_x="45" hotspot_y="36" link_type="master" version="0.80" type="element" height="90">
     <uuid uuid="{d353f910-30ce-40cd-805b-26a116842351}"/>
     <names>
         <name lang="fr">411639 - Interrupteur différentiel A 63A 30mA Haut-Vis/Haut-Auto - 3 modules</name>

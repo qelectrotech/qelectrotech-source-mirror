@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" hotspot_y="34" width="190" hotspot_x="23" height="300" orientation="dyyy" version="0.80">
+<definition link_type="simple" type="element" hotspot_y="34" width="190" hotspot_x="23" height="300" version="0.80">
     <uuid uuid="{2c179810-2ef5-46e3-9fb1-98f2cc01e4b0}"/>
     <names>
         <name lang="nl">platte kabel LCD Arduino</name>

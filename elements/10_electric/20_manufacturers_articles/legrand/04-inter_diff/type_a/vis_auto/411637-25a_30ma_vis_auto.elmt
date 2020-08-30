@@ -1,4 +1,4 @@
-<definition width="110" hotspot_x="45" hotspot_y="36" orientation="dyyy" link_type="master" version="0.80" type="element" height="90">
+<definition width="110" hotspot_x="45" hotspot_y="36" link_type="master" version="0.80" type="element" height="90">
     <uuid uuid="{4453c200-b0e5-47d0-8fde-11cd7f4fa866}"/>
     <names>
         <name lang="fr">411637 - Interrupteur différentiel A 25A 30mA Haut-Vis/Haut-Auto</name>

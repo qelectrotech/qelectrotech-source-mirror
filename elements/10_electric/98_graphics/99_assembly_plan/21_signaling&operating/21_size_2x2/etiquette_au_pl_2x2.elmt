@@ -1,4 +1,4 @@
-<definition width="80" link_type="simple" version="0.5" hotspot_x="40" orientation="dyyy" height="80" hotspot_y="40" type="element">
+<definition width="80" link_type="simple" version="0.5" hotspot_x="40" height="80" hotspot_y="40" type="element">
     <uuid uuid="{f97bd69b-c5a3-481d-8fd5-2944734e48b0}"/>
     <names>
         <name lang="el">Στάση κινδύνου - Πολωνικά</name>

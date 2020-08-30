@@ -1,4 +1,4 @@
-<definition width="40" hotspot_x="19" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="21">
+<definition width="40" hotspot_x="19" type="element" link_type="simple" version="0.5" height="30" hotspot_y="21">
     <uuid uuid="{5d13bc2b-bc8c-41ad-90e1-120323c57ee5}"/>
     <names>
         <name lang="cs">Elektrický redukční ventil</name>

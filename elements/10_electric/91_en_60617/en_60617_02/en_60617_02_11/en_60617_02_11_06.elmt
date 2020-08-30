@@ -1,4 +1,4 @@
-<definition hotspot_x="25" version="0.70" orientation="dyyy" height="30" hotspot_y="15" width="50" type="element" link_type="simple">
+<definition hotspot_x="25" version="0.70" height="30" hotspot_y="15" width="50" type="element" link_type="simple">
     <uuid uuid="{6442efa5-38e1-454b-a502-879d5a03d501}"/>
     <names>
         <name lang="fr">Télécopie</name>

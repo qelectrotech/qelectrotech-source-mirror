@@ -1,4 +1,4 @@
-<definition width="100" hotspot_x="42" hotspot_y="34" orientation="dyyy" link_type="master" version="0.80" type="element" height="80">
+<definition width="100" hotspot_x="42" hotspot_y="34" link_type="master" version="0.80" type="element" height="80">
     <uuid uuid="{8ba97201-437d-4e13-a97f-4c5af87aea73}"/>
     <names>
         <name lang="fr">411616 - Interrupteur différentiel A 25A 30mA Haut-Vis/Haut-Vis</name>

@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="16" hotspot_y="24" width="70" orientation="dyyy" height="40" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="16" hotspot_y="24" width="70" height="40" link_type="simple" type="element">
     <uuid uuid="{89f9c25b-bb8b-4834-b341-384eee9d0412}"/>
     <names>
         <name lang="en">hydraulic cylinder 2</name>

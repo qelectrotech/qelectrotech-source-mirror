@@ -1,4 +1,4 @@
-<definition hotspot_x="31" width="80" hotspot_y="34" version="0.5" orientation="dyyy" height="70" type="element" link_type="simple">
+<definition hotspot_x="31" width="80" hotspot_y="34" version="0.5" height="70" type="element" link_type="simple">
     <uuid uuid="{1a078cff-9bce-4d10-aa88-f52dd3c38c45}"/>
     <names>
         <name lang="en">Logo-1x-relais-output/05</name>

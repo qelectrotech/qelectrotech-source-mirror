@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="25" version="0.5" hotspot_y="13" link_type="simple" width="50" orientation="dyyy" height="80">
+<definition type="element" hotspot_x="25" version="0.5" hotspot_y="13" link_type="simple" width="50" height="80">
     <uuid uuid="{236a4e50-2609-48c7-8cc2-6ca9996643c9}"/>
     <names>
         <name lang="de">Sprung</name>

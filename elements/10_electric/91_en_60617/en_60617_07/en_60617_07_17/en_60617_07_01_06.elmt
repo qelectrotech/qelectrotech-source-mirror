@@ -1,4 +1,4 @@
-<definition hotspot_x="65" hotspot_y="155" orientation="dyyy" height="160" link_type="simple" version="0.70" type="element" width="70">
+<definition hotspot_x="65" hotspot_y="155" height="160" link_type="simple" version="0.70" type="element" width="70">
     <uuid uuid="{a9436bd1-e03c-44c8-86da-2a5d4cd51f69}"/>
     <names>
         <name lang="de">Nullspannungsrelais</name>

@@ -1,4 +1,4 @@
-<definition type="element" hotspot_y="152" orientation="dyyy" link_type="simple" hotspot_x="155" version="0.80" height="250" width="330">
+<definition type="element" hotspot_y="152" link_type="simple" hotspot_x="155" version="0.80" height="250" width="330">
     <uuid uuid="{6b0e3663-1689-4e22-87be-42bdb6585ad6}"/>
     <names>
         <name lang="de">MT8150XE 15"</name>

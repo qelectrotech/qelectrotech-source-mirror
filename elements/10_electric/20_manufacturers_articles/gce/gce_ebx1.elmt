@@ -1,4 +1,4 @@
-<definition type="element" height="160" width="80" link_type="simple" hotspot_x="40" orientation="dyyy" hotspot_y="78" version="0.5">
+<definition type="element" height="160" width="80" link_type="simple" hotspot_x="40" hotspot_y="78" version="0.5">
     <uuid uuid="{6fcceea0-8b00-47f2-8392-7c3498d1b491}"/>
     <names>
         <name lang="es">EBX-1</name>

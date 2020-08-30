@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="495" hotspot_y="44" height="90" width="1010" orientation="dyyy" version="0.5" type="element">
+<definition link_type="simple" hotspot_x="495" hotspot_y="44" height="90" width="1010" version="0.5" type="element">
     <uuid uuid="{8833DB98-CD42-48EC-930B-87EC79B55C84}"/>
     <names>
         <name lang="fr">Cartes sorties M241 Schneider</name>

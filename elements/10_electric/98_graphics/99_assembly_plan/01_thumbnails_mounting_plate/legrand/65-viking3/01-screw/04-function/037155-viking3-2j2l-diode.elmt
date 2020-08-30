@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="simple" hotspot_x="3" hotspot_y="5" type="element" orientation="dyyy" width="20" height="180">
+<definition version="0.80" link_type="simple" hotspot_x="3" hotspot_y="5" type="element" width="20" height="180">
     <uuid uuid="{d1085772-6483-4bf0-8c92-4e8ee1fea770}"/>
     <names>
         <name lang="fr">037155 - Viking3 - 2 jonctions 2 étages Diode 4mm² pas 6mm Gris foncé</name>

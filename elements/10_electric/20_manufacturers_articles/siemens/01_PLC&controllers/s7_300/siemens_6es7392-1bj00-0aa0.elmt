@@ -1,4 +1,4 @@
-<definition height="30" orientation="dyyy" type="element" hotspot_x="15" link_type="simple" hotspot_y="15" version="0.51" width="30">
+<definition height="30" type="element" hotspot_x="15" link_type="simple" hotspot_y="15" version="0.51" width="30">
     <uuid uuid="{2e7ae1ec-a063-4528-bbb2-45ecce7fe4d8}"/>
     <names>
         <name lang="de">Siemens;6ES7392-1BJ00-0AA0;6ES7392-1BJ00-0AA0;Simatic S7 Frontstecker für Signalbaugruppen, Federklemmen, 20-polig;7080032</name>

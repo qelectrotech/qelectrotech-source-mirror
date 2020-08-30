@@ -1,4 +1,4 @@
-<definition hotspot_x="35" version="0.80" orientation="dyyy" link_type="simple" width="70" height="160" type="element" hotspot_y="10">
+<definition hotspot_x="35" version="0.80" link_type="simple" width="70" height="160" type="element" hotspot_y="10">
     <uuid uuid="{1ec5bd1e-7c62-4216-a203-f57725725084}"/>
     <names>
         <name lang="nl">ZMPT101B</name>

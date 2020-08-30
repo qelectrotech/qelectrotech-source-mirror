@@ -1,4 +1,4 @@
-<definition width="40" hotspot_x="20" type="element" link_type="simple" orientation="dyyy" version="0.5" height="50" hotspot_y="25">
+<definition width="40" hotspot_x="20" type="element" link_type="simple" version="0.5" height="50" hotspot_y="25">
     <uuid uuid="{0b6d7891-449a-4c71-8e01-fbafea04318a}"/>
     <names>
         <name lang="cs">Kohoutek</name>

@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="46" version="0.5" hotspot_y="40" link_type="simple" width="70" orientation="dyyy" height="80">
+<definition type="element" hotspot_x="46" version="0.5" hotspot_y="40" link_type="simple" width="70" height="80">
     <uuid uuid="{e0cd1669-95e5-413a-9435-8411fa77ad9d}"/>
     <names>
         <name lang="de">Ausgang</name>

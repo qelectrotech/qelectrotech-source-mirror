@@ -1,4 +1,4 @@
-<definition hotspot_x="38" height="60" hotspot_y="30" orientation="dyyy" link_type="slave" type="element" width="80" version="0.51">
+<definition hotspot_x="38" height="60" hotspot_y="30" link_type="slave" type="element" width="80" version="0.51">
     <uuid uuid="{e8858fcc-9341-40c7-976a-83a47a780c36}"/>
     <names>
         <name lang="pt">Interruptor de potência contactor</name>

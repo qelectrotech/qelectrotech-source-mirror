@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="5" orientation="dyyy" hotspot_y="8" type="element" height="70" width="170" version="0.5">
+<definition link_type="simple" hotspot_x="5" hotspot_y="8" type="element" height="70" width="170" version="0.5">
     <uuid uuid="{ebfc6647-71f5-47a9-bfb2-1dee714f5f3d}"/>
     <names>
         <name lang="pl">Regulator temperatury IC901</name>

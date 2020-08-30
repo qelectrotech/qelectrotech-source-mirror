@@ -1,4 +1,4 @@
-<definition height="110" orientation="dyyy" version="0.80" type="element" hotspot_y="50" width="690" hotspot_x="176" link_type="simple">
+<definition height="110" version="0.80" type="element" hotspot_y="50" width="690" hotspot_x="176" link_type="simple">
     <uuid uuid="{d945e88c-7110-4ac0-8fde-dc092a4fd261}"/>
     <names>
         <name lang="en">DVP14SS211T (outputs)</name>

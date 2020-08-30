@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="14" hotspot_y="20" width="50" orientation="dyyy" height="40" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="14" hotspot_y="20" width="50" height="40" link_type="simple" type="element">
     <uuid uuid="{d2b65b22-eab1-4242-9a2d-910eeb510ba4}"/>
     <names>
         <name lang="en">Valve - electromagnetic control</name>

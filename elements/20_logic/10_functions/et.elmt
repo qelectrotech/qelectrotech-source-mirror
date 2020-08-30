@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="44" version="0.5" hotspot_y="40" link_type="simple" width="90" orientation="dyyy" height="80">
+<definition type="element" hotspot_x="44" version="0.5" hotspot_y="40" link_type="simple" width="90" height="80">
     <uuid uuid="{3b794022-d58e-41c8-b4ba-38e787ab93f0}"/>
     <names>
         <name lang="de">UND</name>

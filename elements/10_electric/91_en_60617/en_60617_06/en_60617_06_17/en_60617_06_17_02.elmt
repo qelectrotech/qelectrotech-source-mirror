@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" height="50" width="70" version="0.70" orientation="dyyy" hotspot_x="55" hotspot_y="45">
+<definition type="element" link_type="simple" height="50" width="70" version="0.70" hotspot_x="55" hotspot_y="45">
     <uuid uuid="{9a5a0bc9-a50d-4cdc-8e03-12edb224adf3}"/>
     <names>
         <name lang="fr">Source de chaleur radioisotopique</name>

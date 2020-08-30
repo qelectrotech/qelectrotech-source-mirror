@@ -1,4 +1,4 @@
-<definition width="50" height="70" hotspot_x="18" hotspot_y="40" link_type="master" orientation="dyyy" version="0.80" type="element">
+<definition width="50" height="70" hotspot_x="18" hotspot_y="40" link_type="master" version="0.80" type="element">
     <uuid uuid="{a015522d-0072-4011-9e44-736f78f7794b}"/>
     <names>
         <name lang="fr">NGT725 25A</name>

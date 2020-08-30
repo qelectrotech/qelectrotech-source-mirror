@@ -1,4 +1,4 @@
-<definition width="180" link_type="simple" orientation="dyyy" hotspot_y="24" version="0.51" type="element" height="70" hotspot_x="39">
+<definition width="180" link_type="simple" hotspot_y="24" version="0.51" type="element" height="70" hotspot_x="39">
     <uuid uuid="{ea6390c4-9621-4534-91d2-62e8201ba496}"/>
     <names>
         <name lang="fr">Répartiteur 6 D</name>

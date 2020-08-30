@@ -1,4 +1,4 @@
-<definition hotspot_y="54" orientation="dyyy" version="0.80" hotspot_x="25" link_type="simple" height="60" type="element" width="50">
+<definition hotspot_y="54" version="0.80" hotspot_x="25" link_type="simple" height="60" type="element" width="50">
     <uuid uuid="{705c84d6-9892-406d-9b82-27a00107df36}"/>
     <names>
         <name lang="fr">Porte étiquette DEFAUT (NOIR)</name>

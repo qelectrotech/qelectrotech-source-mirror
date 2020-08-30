@@ -1,4 +1,4 @@
-<definition hotspot_y="25" height="50" width="50" version="0.5" orientation="dyyy" type="element" link_type="simple" hotspot_x="16">
+<definition hotspot_y="25" height="50" width="50" version="0.5" type="element" link_type="simple" hotspot_x="16">
 <uuid uuid="{B9144422-1828-49A6-9FFA-F963EE1669DC}"/><names>
         <name lang="it">Sirena esterna con lampeggiatore</name>
         <name lang="de">Hupe Aussenbereich mit Blitzlicht</name>

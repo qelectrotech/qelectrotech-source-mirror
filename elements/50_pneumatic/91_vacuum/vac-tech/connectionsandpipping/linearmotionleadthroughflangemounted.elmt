@@ -1,4 +1,4 @@
-<definition hotspot_x="24" height="40" type="element" orientation="dyyy" hotspot_y="20" version="0.80" link_type="simple" width="50">
+<definition hotspot_x="24" height="40" type="element" hotspot_y="20" version="0.80" link_type="simple" width="50">
     <uuid uuid="{83eb7ebf-f90c-4cea-a362-0f63d075cf0c}"/>
     <names>
         <name lang="en">Linear-motion leadthrough, flange-mounted</name>

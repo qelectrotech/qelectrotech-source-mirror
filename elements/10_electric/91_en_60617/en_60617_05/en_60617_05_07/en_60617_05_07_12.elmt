@@ -1,4 +1,4 @@
-<definition height="60" version="0.70" orientation="dyyy" width="30" hotspot_x="15" type="element" hotspot_y="53" link_type="simple">
+<definition height="60" version="0.70" width="30" hotspot_x="15" type="element" hotspot_y="53" link_type="simple">
     <uuid uuid="{79e50efd-f8bd-4984-8a8e-2e0264d8bce2}"/>
     <names>
         <name lang="fr">Anode fluorescente</name>

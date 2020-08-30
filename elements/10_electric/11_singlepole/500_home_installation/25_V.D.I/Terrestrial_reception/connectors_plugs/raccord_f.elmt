@@ -1,4 +1,4 @@
-<definition width="20" link_type="simple" orientation="dyyy" hotspot_y="7" version="0.51" type="element" height="30" hotspot_x="10">
+<definition width="20" link_type="simple" hotspot_y="7" version="0.51" type="element" height="30" hotspot_x="10">
     <uuid uuid="{599d2670-44e5-412e-9c91-f35030477de8}"/>
     <names>
         <name lang="fr">Raccord F mâle</name>

@@ -1,4 +1,4 @@
-<definition hotspot_x="34" height="40" type="element" orientation="dyyy" hotspot_y="19" version="0.80" link_type="simple" width="70">
+<definition hotspot_x="34" height="40" type="element" hotspot_y="19" version="0.80" link_type="simple" width="70">
     <uuid uuid="{a6963965-e7ed-43f0-852d-d9be112b7ee5}"/>
     <names>
         <name lang="en">Vacuum gauge with digital measured-value display</name>

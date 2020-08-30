@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.80" width="50" hotspot_x="5" hotspot_y="4" height="210" link_type="simple">
+<definition type="element" version="0.80" width="50" hotspot_x="5" hotspot_y="4" height="210" link_type="simple">
     <uuid uuid="{a8c49a75-4d91-44dd-82aa-57d426f1a224}"/>
     <names>
         <name lang="fr">406864 - Disjoncteur 4A C 6kA - Vis/Vis</name>

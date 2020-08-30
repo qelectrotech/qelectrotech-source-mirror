@@ -1,4 +1,4 @@
-<definition hotspot_x="34" width="90" hotspot_y="20" version="0.5" orientation="dyyy" height="70" type="element" link_type="simple">
+<definition hotspot_x="34" width="90" hotspot_y="20" version="0.5" height="70" type="element" link_type="simple">
     <uuid uuid="{e09f890c-2bc6-4eea-a089-5d5d7c47269a}"/>
     <names>
         <name lang="en">B1_S7-1200-switch-csm1277-24v-4x-rj45</name>

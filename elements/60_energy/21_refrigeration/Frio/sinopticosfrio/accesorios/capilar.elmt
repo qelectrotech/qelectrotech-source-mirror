@@ -1,4 +1,4 @@
-<definition width="50" orientation="dyyy" hotspot_y="11" link_type="simple" version="0.80" height="20" hotspot_x="26" type="element">
+<definition width="50" hotspot_y="11" link_type="simple" version="0.80" height="20" hotspot_x="26" type="element">
     <uuid uuid="{2a12b4f8-60e3-456d-bb12-1e6b47fee5f7}"/>
     <names>
         <name lang="fr">Capilaire d'expansion</name>

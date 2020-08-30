@@ -1,4 +1,4 @@
-<definition height="90" version="0.80" link_type="simple" width="50" hotspot_y="54" type="element" orientation="dyyy" hotspot_x="25">
+<definition height="90" version="0.80" link_type="simple" width="50" hotspot_y="54" type="element" hotspot_x="25">
     <uuid uuid="{38a4c1e3-578d-4074-adb5-375487750bad}"/>
     <names>
         <name lang="es">Caldera de muro ACS</name>

@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="110" height="50" hotspot_x="104" hotspot_y="45" orientation="dyyy" version="0.70">
+<definition link_type="simple" type="element" width="110" height="50" hotspot_x="104" hotspot_y="45" version="0.70">
     <uuid uuid="{4e142847-03e0-46ba-9a05-4fca7fbbd1eb}"/>
     <names>
         <name lang="de">Neutralleiter mit Schutzfunktion (PEN)</name>

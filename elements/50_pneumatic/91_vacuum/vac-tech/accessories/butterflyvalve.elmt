@@ -1,4 +1,4 @@
-<definition hotspot_x="29" height="30" type="element" orientation="dyyy" hotspot_y="15" version="0.80" link_type="simple" width="60">
+<definition hotspot_x="29" height="30" type="element" hotspot_y="15" version="0.80" link_type="simple" width="60">
     <uuid uuid="{8841446d-f2d3-4da5-996d-b215d954b8b2}"/>
     <names>
         <name lang="en">Butterflyvalve</name>

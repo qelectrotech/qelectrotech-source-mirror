@@ -1,4 +1,4 @@
-<definition width="20" link_type="simple" version="0.5" hotspot_x="10" orientation="dyyy" height="60" hotspot_y="29" type="element">
+<definition width="20" link_type="simple" version="0.5" hotspot_x="10" height="60" hotspot_y="29" type="element">
     <uuid uuid="{10c77f42-992b-49f3-b98d-9c4e664692dc}"/>
     <names>
         <name lang="pt">Terminal duplo</name>

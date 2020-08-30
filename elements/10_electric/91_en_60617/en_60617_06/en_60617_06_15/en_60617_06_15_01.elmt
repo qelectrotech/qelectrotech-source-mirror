@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" height="30" width="30" version="0.70" orientation="dyyy" hotspot_x="12" hotspot_y="15">
+<definition type="element" link_type="simple" height="30" width="30" version="0.70" hotspot_x="12" hotspot_y="15">
     <uuid uuid="{1e1da2c3-2f8d-4816-93ee-6470a1dd8215}"/>
     <names>
         <name lang="fr">Élément de pile,

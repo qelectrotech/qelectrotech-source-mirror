@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.51" width="300" height="310" type="element" hotspot_x="142" link_type="simple" hotspot_y="153">
+<definition version="0.51" width="300" height="310" type="element" hotspot_x="142" link_type="simple" hotspot_y="153">
     <uuid uuid="{d4ae2146-2c16-4d20-8864-d4c815389f22}"/>
     <names>
         <name lang="en">Siemens HT8 (6FC5403-0AA20-1AA1)</name>

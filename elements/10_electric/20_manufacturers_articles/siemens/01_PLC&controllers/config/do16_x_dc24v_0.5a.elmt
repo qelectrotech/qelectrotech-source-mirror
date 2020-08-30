@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" hotspot_y="35" height="260" version="0.5" width="90" hotspot_x="15" link_type="simple">
+<definition type="element" hotspot_y="35" height="260" version="0.5" width="90" hotspot_x="15" link_type="simple">
     <uuid uuid="{9fd9e4c2-6d7d-466f-b18d-814fc189eef3}"/>
     <names>
         <name lang="ar">SM322   DO 16 x DC24V/0,5A</name>

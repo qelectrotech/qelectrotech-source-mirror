@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.51" width="490" height="190" type="element" hotspot_x="244" link_type="simple" hotspot_y="119">
+<definition version="0.51" width="490" height="190" type="element" hotspot_x="244" link_type="simple" hotspot_y="119">
     <uuid uuid="{8fe91225-6dee-43ae-ba15-5d99fbbd9363}"/>
     <names>
         <name lang="en">Siemens MCP 483C PN (6FC5303-0AF22-0AA1)</name>

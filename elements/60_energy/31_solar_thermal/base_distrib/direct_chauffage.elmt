@@ -1,4 +1,4 @@
-<definition width="90" hotspot_x="45" type="element" link_type="simple" orientation="dyyy" version="0.5" height="70" hotspot_y="38">
+<definition width="90" hotspot_x="45" type="element" link_type="simple" version="0.5" height="70" hotspot_y="38">
     <uuid uuid="{f46a4b89-75dc-4630-8fda-1f20f3ab89a7}"/>
     <names>
         <name lang="cs">C přímý výměník</name>

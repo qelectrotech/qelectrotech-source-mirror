@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="383" link_type="simple" version="0.70" height="100" type="element" hotspot_y="52" width="750">
+<definition hotspot_x="383" link_type="simple" version="0.70" height="100" type="element" hotspot_y="52" width="750">
     <uuid uuid="{ff8e9dc0-7dfe-404a-b172-df8d9481c15c}"/>
     <names>
         <name lang="fr">STBDDI3725KC.B</name>

@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" height="250" width="160" version="0.70" orientation="dyyy" hotspot_x="125" hotspot_y="245">
+<definition type="element" link_type="simple" height="250" width="160" version="0.70" hotspot_x="125" hotspot_y="245">
     <uuid uuid="{19d35122-7ded-46f2-aac4-ce140e911cbe}"/>
     <names>
         <name lang="fr">Cavité résonnante faisant partie intégrante du

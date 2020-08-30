@@ -1,4 +1,4 @@
-<definition hotspot_y="77" hotspot_x="36" width="80" orientation="dyyy" type="element" version="0.60" link_type="simple" height="140">
+<definition hotspot_y="77" hotspot_x="36" width="80" type="element" version="0.60" link_type="simple" height="140">
     <uuid uuid="{b096f0a2-4194-49ea-a56c-99171521c60e}"/>
     <names>
         <name lang="nl">cRIO 9472 8 relais uitgangen 2A gescheiden</name>

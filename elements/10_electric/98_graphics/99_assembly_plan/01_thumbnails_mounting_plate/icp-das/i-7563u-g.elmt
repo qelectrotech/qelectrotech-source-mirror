@@ -1,4 +1,4 @@
-<definition hotspot_x="4" hotspot_y="31" link_type="simple" height="290" orientation="dyyy" type="element" width="170" version="0.80">
+<definition hotspot_x="4" hotspot_y="31" link_type="simple" height="290" type="element" width="170" version="0.80">
     <uuid uuid="{92ac8d4b-a63e-412f-acd1-b7766f65a303}"/>
     <names>
         <name lang="en">i-7563U-G - USB to 3 Channels 485 Converter</name>

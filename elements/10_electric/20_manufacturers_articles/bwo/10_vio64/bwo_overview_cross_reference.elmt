@@ -1,4 +1,4 @@
-<definition version="0.5" type="element" height="30" hotspot_y="15" link_type="previous_report" width="370" orientation="dyyy" hotspot_x="6">
+<definition version="0.5" type="element" height="30" hotspot_y="15" link_type="previous_report" width="370" hotspot_x="6">
 <uuid uuid="{CA224F08-A69D-449C-9D53-96B366DA0087}"/><names>
         <name lang="fr">Vue d'ensemble (référence croisée)</name>
         <name lang="de">Übersicht (Verweis)</name>

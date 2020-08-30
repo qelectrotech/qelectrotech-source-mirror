@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="9" hotspot_y="5" width="20" orientation="dyyy" height="20" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="9" hotspot_y="5" width="20" height="20" link_type="simple" type="element">
     <uuid uuid="{8b20ee89-11aa-4229-8d17-cc5e6e0b42d2}"/>
     <names>
         <name lang="en">Spring</name>

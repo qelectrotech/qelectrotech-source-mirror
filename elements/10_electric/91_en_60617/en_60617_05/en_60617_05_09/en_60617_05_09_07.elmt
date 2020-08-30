@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" height="90" width="70" version="0.70" orientation="dyyy" hotspot_x="27" hotspot_y="85">
+<definition type="element" link_type="simple" height="90" width="70" version="0.70" hotspot_x="27" hotspot_y="85">
     <uuid uuid="{a3708837-a579-44a1-a5f0-465f62cf71e5}"/>
     <names>
         <name lang="fr">Electrode unique de concentration

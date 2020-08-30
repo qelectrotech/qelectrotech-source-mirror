@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="40" version="0.5" hotspot_y="26" link_type="simple" width="80" orientation="dyyy" height="60">
+<definition type="element" hotspot_x="40" version="0.5" hotspot_y="26" link_type="simple" width="80" height="60">
     <uuid uuid="{80640d71-c5a4-480c-a8a2-a3ffdc5da459}"/>
     <names>
         <name lang="de">Initialisierungs Schritt</name>

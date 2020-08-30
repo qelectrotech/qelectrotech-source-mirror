@@ -1,4 +1,4 @@
-<definition hotspot_x="35" hotspot_y="136" orientation="dyyy" height="270" type="element" width="70" version="0.60" link_type="simple">
+<definition hotspot_x="35" hotspot_y="136" height="270" type="element" width="70" version="0.60" link_type="simple">
     <uuid uuid="{557ebb1f-3f48-4310-b4ed-fa390012c013}"/>
     <names>
         <name lang="en">REER M1</name>

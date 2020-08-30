@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="105" hotspot_y="105" orientation="dyyy" type="element" height="230" width="230">
+<definition link_type="simple" version="0.70" hotspot_x="105" hotspot_y="105" type="element" height="230" width="230">
     <uuid uuid="{d5d2ae27-8da0-48a8-b0d7-ebf9ced97267}"/>
     <names>
         <name lang="fr">Commutateur à tambour à six positions</name>

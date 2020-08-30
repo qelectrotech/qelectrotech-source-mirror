@@ -1,4 +1,4 @@
-<definition hotspot_x="28" hotspot_y="32" width="70" orientation="dyyy" version="0.5" type="element" height="70" link_type="simple">
+<definition hotspot_x="28" hotspot_y="32" width="70" version="0.5" type="element" height="70" link_type="simple">
 <uuid uuid="{C8C306DD-A100-424F-8C14-1FC2A6647D40}"/><names>
         <name lang="ar">محرّك ثلاثي الأوجه</name>
         <name lang="pl">Silnik trójfazowy</name>

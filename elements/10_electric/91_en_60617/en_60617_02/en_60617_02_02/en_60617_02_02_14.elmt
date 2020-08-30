@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.70" width="20" type="element" hotspot_y="5" link_type="simple" hotspot_x="10" height="10">
+<definition version="0.70" width="20" type="element" hotspot_y="5" link_type="simple" hotspot_x="10" height="10">
     <uuid uuid="{ad9f6a8e-0473-484e-a8a9-ca2ce4b45c67}"/>
     <names>
         <name lang="fr">Polarité négative</name>

@@ -1,4 +1,4 @@
-<definition width="50" hotspot_x="24" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="20">
+<definition width="50" hotspot_x="24" type="element" link_type="simple" version="0.5" height="40" hotspot_y="20">
     <uuid uuid="{8c58751e-0fdb-4f6e-b007-e4b32f3ebf2e}"/>
     <names>
         <name lang="cs">Pístový kompresor</name>

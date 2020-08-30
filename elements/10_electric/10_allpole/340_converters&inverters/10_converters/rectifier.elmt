@@ -1,4 +1,4 @@
-<definition hotspot_y="58" type="element" height="140" width="180" hotspot_x="113" orientation="dyyy" link_type="simple" version="0.5">
+<definition hotspot_y="58" type="element" height="140" width="180" hotspot_x="113" link_type="simple" version="0.5">
     <uuid uuid="{be202355-eff4-431d-9092-e9b760fdc23d}"/>
     <names>
         <name lang="cs">Usměrňovač</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="50" link_type="simple" height="40" hotspot_y="12" version="0.51" hotspot_x="23">
+<definition type="element" width="50" link_type="simple" height="40" hotspot_y="12" version="0.51" hotspot_x="23">
     <uuid uuid="{2265bcdd-1eb3-4b8b-8ec3-6b3cf1613498}"/>
     <names>
         <name lang="fr">Vanne à sphère MF NF</name>

@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="15" orientation="dyyy" hotspot_y="25" type="element" height="360" width="220" version="0.5">
+<definition link_type="simple" hotspot_x="15" hotspot_y="25" type="element" height="360" width="220" version="0.5">
     <uuid uuid="{5ec9ee61-02c1-47ee-8193-2af4dc3b9f44}"/>
     <names>
         <name lang="pl">DX9100 złącze COM i zasilanie</name>

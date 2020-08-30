@@ -1,4 +1,4 @@
-<definition width="20" hotspot_x="7" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="12">
+<definition width="20" hotspot_x="7" type="element" link_type="simple" version="0.5" height="20" hotspot_y="12">
     <uuid uuid="{5ccaf28d-8a00-4f50-9c19-8a6f4205babe}"/>
     <names>
         <name lang="cs">Spoj</name>

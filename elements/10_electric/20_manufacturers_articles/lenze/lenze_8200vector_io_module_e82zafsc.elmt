@@ -1,4 +1,4 @@
-<definition width="310" orientation="dyyy" version="0.5" height="100" type="element" hotspot_y="32" link_type="simple" hotspot_x="14">
+<definition width="310" version="0.5" height="100" type="element" hotspot_y="32" link_type="simple" hotspot_x="14">
     <uuid uuid="{36e18720-020d-4787-9ce1-cd1e2b5bcfd9}"/>
     <names>
         <name lang="it">8200 vector standard i/o module E82ZAFSC</name>

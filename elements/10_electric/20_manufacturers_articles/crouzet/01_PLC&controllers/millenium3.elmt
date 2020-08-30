@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="355" orientation="dyyy" hotspot_y="64" type="element" height="130" width="430" version="0.5">
+<definition link_type="simple" hotspot_x="355" hotspot_y="64" type="element" height="130" width="430" version="0.5">
     <uuid uuid="{86211763-6b87-4549-8f6f-d024751b1660}"/>
     <names>
         <name lang="fr">Crouzet M3</name>

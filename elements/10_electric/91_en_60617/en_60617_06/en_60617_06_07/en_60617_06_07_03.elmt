@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="64" hotspot_y="86" version="0.70" width="80" type="element" height="120">
+<definition link_type="simple" hotspot_x="64" hotspot_y="86" version="0.70" width="80" type="element" height="120">
     <uuid uuid="{9814a7a8-3860-48ee-a449-b596c681fd17}"/>
     <names>
         <name lang="fr">Alternateur synchrone, triphasé à induit monté

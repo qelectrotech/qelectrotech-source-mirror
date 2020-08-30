@@ -1,4 +1,4 @@
-<definition hotspot_x="190" version="0.80" orientation="dyyy" type="element" height="270" hotspot_y="164" width="380" link_type="simple">
+<definition hotspot_x="190" version="0.80" type="element" height="270" hotspot_y="164" width="380" link_type="simple">
     <uuid uuid="{4e193a8b-afa5-4c8a-a9f5-6ede8c3d5d4f}"/>
     <names>
         <name lang="en">HMI3GU</name>

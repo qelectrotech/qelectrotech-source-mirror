@@ -1,4 +1,4 @@
-<definition width="60" hotspot_x="29" hotspot_y="26" orientation="dyyy" link_type="simple" version="0.80" type="element" height="40">
+<definition width="60" hotspot_x="29" hotspot_y="26" link_type="simple" version="0.80" type="element" height="40">
     <uuid uuid="{26cd6a37-cbed-40f3-8fab-869e33eb7460}"/>
     <names>
         <name lang="fr">Té réduction</name>

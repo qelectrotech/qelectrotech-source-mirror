@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="15" version="0.5" hotspot_y="14" link_type="simple" width="110" orientation="dyyy" height="70">
+<definition type="element" hotspot_x="15" version="0.5" hotspot_y="14" link_type="simple" width="110" height="70">
     <uuid uuid="{4f308d28-f0dd-48cd-9012-1efe18ef59df}"/>
     <names>
         <name lang="el">Είσοδος/Έξοδος "2 γραμμές"</name>

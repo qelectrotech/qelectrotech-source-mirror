@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="8" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="11">
+<definition width="30" hotspot_x="8" type="element" link_type="simple" version="0.5" height="30" hotspot_y="11">
     <uuid uuid="{169da8ae-dd7b-4ac4-9efe-0f49730dafa0}"/>
     <names>
         <name lang="cs">Regulační uzávěr (levý)</name>

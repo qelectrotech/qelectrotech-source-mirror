@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="60" height="50" hotspot_y="24" hotspot_x="35" version="0.70" link_type="simple">
+<definition type="element" width="60" height="50" hotspot_y="24" hotspot_x="35" version="0.70" link_type="simple">
     <uuid uuid="{690ce956-6693-4d38-933e-989c7a5ff0a7}"/>
     <names>
         <name lang="de">elektromechanischer Antrieb mit

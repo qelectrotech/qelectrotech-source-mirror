@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="73" version="0.5" link_type="simple" type="element" hotspot_y="53" height="110" width="160">
+<definition hotspot_x="73" version="0.5" link_type="simple" type="element" hotspot_y="53" height="110" width="160">
     <uuid uuid="{78d6d2ac-1cd3-4005-bc64-e932cd68a708}"/>
     <names>
         <name lang="ar">Double Coil 4 Wire Pickup</name>

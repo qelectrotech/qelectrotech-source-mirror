@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="110" height="30" hotspot_x="106" hotspot_y="25" orientation="dyyy" version="0.70">
+<definition link_type="simple" type="element" width="110" height="30" hotspot_x="106" hotspot_y="25" version="0.70">
     <uuid uuid="{01ef6429-90d6-44b1-b975-64837da848c6}"/>
     <names>
         <name lang="de">Leitung, nach oben führend</name>

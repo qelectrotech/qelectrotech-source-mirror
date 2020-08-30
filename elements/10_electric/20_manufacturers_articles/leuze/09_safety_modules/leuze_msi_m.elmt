@@ -1,4 +1,4 @@
-<definition width="340" height="220" link_type="simple" orientation="dyyy" hotspot_x="165" version="0.5" hotspot_y="104" type="element">
+<definition width="340" height="220" link_type="simple" hotspot_x="165" version="0.5" hotspot_y="104" type="element">
     <uuid uuid="{8a649c1f-0ff9-4063-bb4a-89220e98d3c0}"/>
     <names>
         <name lang="it">MSI-m</name>

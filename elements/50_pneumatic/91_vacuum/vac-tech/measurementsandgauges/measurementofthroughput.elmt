@@ -1,4 +1,4 @@
-<definition hotspot_x="24" height="50" type="element" orientation="dyyy" hotspot_y="24" version="0.80" link_type="simple" width="50">
+<definition hotspot_x="24" height="50" type="element" hotspot_y="24" version="0.80" link_type="simple" width="50">
     <uuid uuid="{62001ef9-a95a-4f78-81ad-2aeb441b8323}"/>
     <names>
         <name lang="en">Measurement of throughput</name>

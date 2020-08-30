@@ -1,4 +1,4 @@
-<definition width="50" hotspot_x="15" type="element" link_type="simple" orientation="dyyy" version="0.5" height="90" hotspot_y="44">
+<definition width="50" hotspot_x="15" type="element" link_type="simple" version="0.5" height="90" hotspot_y="44">
     <uuid uuid="{f1dfdcee-59c6-4f6c-8f52-b545a9e24641}"/>
     <names>
         <name lang="cs">Hydraulický modul n°2</name>

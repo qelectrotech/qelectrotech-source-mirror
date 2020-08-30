@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="44" version="0.5" hotspot_y="40" link_type="simple" width="90" orientation="dyyy" height="80">
+<definition type="element" hotspot_x="44" version="0.5" hotspot_y="40" link_type="simple" width="90" height="80">
     <uuid uuid="{ca98fb0e-0acd-482b-89b4-8397bd2acbc1}"/>
     <names>
         <name lang="de">exklusives ODER-NICHT (XNOR)</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.5" type="element" link_type="simple" hotspot_x="5" hotspot_y="5" width="490" height="210">
+<definition version="0.5" type="element" link_type="simple" hotspot_x="5" hotspot_y="5" width="490" height="210">
     <uuid uuid="{370b4939-1e71-4b25-afda-e3e0bd41d2cb}"/>
     <names>
         <name lang="fr">ABB Sorties 12 voies</name>

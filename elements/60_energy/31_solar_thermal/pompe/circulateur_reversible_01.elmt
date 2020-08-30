@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="13">
+<definition width="30" hotspot_x="14" type="element" link_type="simple" version="0.5" height="30" hotspot_y="13">
     <uuid uuid="{53b2ec13-cbe6-4f5a-bbc6-5575e826c6ac}"/>
     <names>
         <name lang="cs">Cirkulační pumpa</name>

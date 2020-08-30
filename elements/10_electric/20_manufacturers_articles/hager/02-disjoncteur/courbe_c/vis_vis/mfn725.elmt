@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="master" hotspot_y="40" height="70" orientation="dyyy" type="element" width="50" hotspot_x="18">
+<definition version="0.80" link_type="master" hotspot_y="40" height="70" type="element" width="50" hotspot_x="18">
     <uuid uuid="{5cc54491-a772-4dd1-9879-3a36c5cc9aec}"/>
     <names>
         <name lang="fr">MFN725 25A</name>

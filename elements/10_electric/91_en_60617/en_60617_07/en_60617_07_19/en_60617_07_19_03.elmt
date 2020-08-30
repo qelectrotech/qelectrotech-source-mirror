@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="110" height="70" hotspot_y="55" hotspot_x="55" version="0.70" link_type="simple">
+<definition type="element" width="110" height="70" hotspot_y="55" hotspot_x="55" version="0.70" link_type="simple">
     <uuid uuid="{576a4416-e6ea-414e-b3bb-6e4d479897a7}"/>
     <names>
         <name lang="de">näherungsempfindliche Einrichtung, kapazitiv </name>

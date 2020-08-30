@@ -1,4 +1,4 @@
-<definition hotspot_x="30" orientation="dyyy" version="0.70" link_type="simple" height="60" hotspot_y="54" type="element" width="40">
+<definition hotspot_x="30" version="0.70" link_type="simple" height="60" hotspot_y="54" type="element" width="40">
     <uuid uuid="{8ad4403d-c696-4a89-94f2-6ebb383bba5c}"/>
     <names>
         <name lang="fr">Photorésistance

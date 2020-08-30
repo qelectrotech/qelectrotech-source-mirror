@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="20" hotspot_y="7" width="30" orientation="dyyy" height="20" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="20" hotspot_y="7" width="30" height="20" link_type="simple" type="element">
     <uuid uuid="{7af53d6c-e80b-46a8-ad97-dac13b2105b5}"/>
     <names>
         <name lang="en">Two-way button</name>

@@ -1,4 +1,4 @@
-<definition type="element" version="0.5" link_type="simple" hotspot_x="64" hotspot_y="106" orientation="dyyy" height="210" width="130">
+<definition type="element" version="0.5" link_type="simple" hotspot_x="64" hotspot_y="106" height="210" width="130">
     <uuid uuid="{dc85aee8-13f6-401a-a412-a54cf01d5875}"/>
     <names>
         <name lang="fr">GCE-X200PH</name>

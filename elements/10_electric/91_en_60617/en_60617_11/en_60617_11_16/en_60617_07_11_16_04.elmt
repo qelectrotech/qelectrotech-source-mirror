@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="30" link_type="simple" hotspot_x="65" width="70" hotspot_y="25">
+<definition type="element" version="0.70" height="30" link_type="simple" hotspot_x="65" width="70" hotspot_y="25">
     <uuid uuid="{bb26c66e-2918-4da7-9ff0-8eb4e4d28831}"/>
     <names>
         <name lang="de">Türöffner</name>

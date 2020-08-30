@@ -1,4 +1,4 @@
-<definition width="60" orientation="dyyy" hotspot_y="72" link_type="simple" version="0.80" height="90" hotspot_x="20" type="element">
+<definition width="60" hotspot_y="72" link_type="simple" version="0.80" height="90" hotspot_x="20" type="element">
     <uuid uuid="{73a3156d-e297-463d-a49f-e8a9f817cad5}"/>
     <names>
         <name lang="fr">Presostat Haut et Bas</name>

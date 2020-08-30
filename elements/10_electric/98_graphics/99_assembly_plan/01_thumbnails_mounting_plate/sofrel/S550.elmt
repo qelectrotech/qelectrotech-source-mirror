@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="slave" height="290" hotspot_y="145" width="830" orientation="dyyy" type="element" hotspot_x="408">
+<definition version="0.80" link_type="slave" height="290" hotspot_y="145" width="830" type="element" hotspot_x="408">
     <uuid uuid="{36dc8440-7eed-4bd0-8bd4-b25207802181}"/>
     <names>
         <name lang="pt">Unidade de telemetria S550</name>

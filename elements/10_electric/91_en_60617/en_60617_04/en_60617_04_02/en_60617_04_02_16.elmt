@@ -1,4 +1,4 @@
-<definition width="50" height="60" type="element" hotspot_x="27" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="20">
+<definition width="50" height="60" type="element" hotspot_x="27" version="0.70" link_type="simple" hotspot_y="20">
     <uuid uuid="{3c50bca2-c5b3-4268-af04-90e7d398ca19}"/>
     <names>
         <name lang="de">gepolter Kondensator, spannungsabhängig,

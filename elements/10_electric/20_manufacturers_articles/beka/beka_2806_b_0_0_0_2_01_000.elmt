@@ -1,4 +1,4 @@
-<definition height="100" version="0.51" type="element" hotspot_y="49" link_type="simple" orientation="dyyy" hotspot_x="102" width="150">
+<definition height="100" version="0.51" type="element" hotspot_y="49" link_type="simple" hotspot_x="102" width="150">
     <uuid uuid="{78d7b071-6d5d-4ab5-81f2-62f0a37906ea}"/>
     <names>
         <name lang="en">2806.B.0.0.0.2.01.000</name>

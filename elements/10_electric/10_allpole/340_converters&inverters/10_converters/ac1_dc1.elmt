@@ -1,4 +1,4 @@
-<definition hotspot_y="29" type="element" height="50" width="50" hotspot_x="28" orientation="dyyy" link_type="simple" version="0.5">
+<definition hotspot_y="29" type="element" height="50" width="50" hotspot_x="28" link_type="simple" version="0.5">
     <uuid uuid="{f19f2a12-0955-499b-aee0-b140e8a13d24}"/>
     <names>
         <name lang="cs">Usměrňovač - jednofázový střídavý proud > stejnosměrný proud</name>

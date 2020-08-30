@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="44" link_type="simple" height="250" width="70" type="element" hotspot_y="125" version="0.70">
+<definition hotspot_x="44" link_type="simple" height="250" width="70" type="element" hotspot_y="125" version="0.70">
     <uuid uuid="{38d97561-ccda-438d-8235-a499b1986e80}"/>
     <names>
         <name lang="en">BMXMSP0200</name>

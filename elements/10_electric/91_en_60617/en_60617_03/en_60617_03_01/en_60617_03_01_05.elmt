@@ -1,4 +1,4 @@
-<definition hotspot_x="44" version="0.70" orientation="dyyy" height="40" hotspot_y="34" width="90" type="element" link_type="simple">
+<definition hotspot_x="44" version="0.70" height="40" hotspot_y="34" width="90" type="element" link_type="simple">
     <uuid uuid="{87b78d60-87a4-4da3-b9cd-3bfeb98d9efc}"/>
     <names>
         <name lang="fr">Circuit à courant triphasé</name>

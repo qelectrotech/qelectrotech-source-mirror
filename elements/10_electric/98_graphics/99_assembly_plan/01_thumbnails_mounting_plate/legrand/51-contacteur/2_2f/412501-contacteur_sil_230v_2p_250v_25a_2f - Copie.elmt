@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.80" hotspot_x="5" type="element" height="210" width="50" orientation="dyyy" hotspot_y="4">
+<definition link_type="simple" version="0.80" hotspot_x="5" type="element" height="210" width="50" hotspot_y="4">
     <uuid uuid="{727704bb-ac95-47a2-a47b-62595fbf007a}"/>
     <names>
         <name lang="fr">412501 - Contacteur silencieux 230V - 2P 250V 25A 2F</name>

@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="50" hotspot_y="44" orientation="dyyy" height="70" version="0.70" hotspot_x="41">
+<definition link_type="simple" type="element" width="50" hotspot_y="44" height="70" version="0.70" hotspot_x="41">
     <uuid uuid="{96e93394-f77c-4152-9c12-09cff7279bf4}"/>
     <names>
         <name lang="fr">Interrupteur à bouton-poussoir à fermeture et à

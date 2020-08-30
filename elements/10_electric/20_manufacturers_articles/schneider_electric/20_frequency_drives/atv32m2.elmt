@@ -1,4 +1,4 @@
-<definition height="110" link_type="master" hotspot_x="245" orientation="dyyy" hotspot_y="54" width="450" type="element" version="0.5">
+<definition height="110" link_type="master" hotspot_x="245" hotspot_y="54" width="450" type="element" version="0.5">
     <uuid uuid="{5f9ca15c-283e-404f-b77b-f5fe3f2087fa}"/>
     <names>
         <name lang="nl">ATV32-M3</name>

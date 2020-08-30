@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="44" version="0.5" link_type="simple" type="element" hotspot_y="9" height="50" width="90">
+<definition hotspot_x="44" version="0.5" link_type="simple" type="element" hotspot_y="9" height="50" width="90">
     <uuid uuid="{fcf44d66-2633-4707-90a9-a56487735ce7}"/>
     <names>
         <name lang="en">Mylar Capacitor - Orange Drop</name>

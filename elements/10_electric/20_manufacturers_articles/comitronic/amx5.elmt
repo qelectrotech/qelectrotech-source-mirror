@@ -1,4 +1,4 @@
-<definition type="element" orientation="dyyy" height="160" link_type="simple" version="0.51" width="200" hotspot_y="107" hotspot_x="92">
+<definition type="element" height="160" link_type="simple" version="0.51" width="200" hotspot_y="107" hotspot_x="92">
     <uuid uuid="{885871f0-09b8-4008-b73f-ecc733bd2390}"/>
     <names>
         <name lang="fr">capteur securité porte AMX5 OX bti comitronic</name>

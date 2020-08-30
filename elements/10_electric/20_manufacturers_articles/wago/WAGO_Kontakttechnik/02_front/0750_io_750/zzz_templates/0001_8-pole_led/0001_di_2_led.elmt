@@ -1,4 +1,4 @@
-<definition hotspot_y="180" version="0.80" height="360" width="60" hotspot_x="29" orientation="dyyy" type="element" link_type="simple">
+<definition hotspot_y="180" version="0.80" height="360" width="60" hotspot_x="29" type="element" link_type="simple">
     <names>
         <name lang="fr">DI 2 LED</name>
         <name lang="de">DI 2 LED</name>

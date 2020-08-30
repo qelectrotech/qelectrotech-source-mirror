@@ -1,4 +1,4 @@
-<definition hotspot_x="65" hotspot_y="65" orientation="dyyy" height="70" link_type="simple" version="0.70" type="element" width="70">
+<definition hotspot_x="65" hotspot_y="65" height="70" link_type="simple" version="0.70" type="element" width="70">
     <uuid uuid="{8236b959-f71f-4ab4-8236-65bd9c6d30d0}"/>
     <names>
         <name lang="de">Überstromrelais mit zwei Meßgliedern</name>

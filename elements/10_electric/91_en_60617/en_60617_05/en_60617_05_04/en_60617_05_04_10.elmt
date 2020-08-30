@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="15" hotspot_y="49" orientation="dyyy" type="element" height="60" width="40">
+<definition link_type="simple" version="0.70" hotspot_x="15" hotspot_y="49" type="element" height="60" width="40">
     <uuid uuid="{7336663d-8f64-4409-8d95-f9bb2c61ce23}"/>
     <names>
         <name lang="fr">Thyristor tétrode bloqué en inverse</name>

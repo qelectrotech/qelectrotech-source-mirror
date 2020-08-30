@@ -1,4 +1,4 @@
-<definition height="60" type="element" width="90" orientation="dyyy" hotspot_x="45" link_type="simple" version="0.5" hotspot_y="23">
+<definition height="60" type="element" width="90" hotspot_x="45" link_type="simple" version="0.5" hotspot_y="23">
     <uuid uuid="{846ab7b5-3024-4c60-8e06-ead72711c300}"/>
     <names>
         <name lang="ar">خط مرشح</name>

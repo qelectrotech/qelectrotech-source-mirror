@@ -1,4 +1,4 @@
-<definition link_type="simple" height="240" width="130" hotspot_y="119" type="element" orientation="dyyy" version="0.5" hotspot_x="65">
+<definition link_type="simple" height="240" width="130" hotspot_y="119" type="element" version="0.5" hotspot_x="65">
     <uuid uuid="{7df5dfc1-b8d4-47cd-8ecf-7f59650c73a9}"/>
     <names>
         <name lang="en">EBC002</name>

@@ -1,4 +1,4 @@
-<definition hotspot_y="95" hotspot_x="37" width="80" orientation="dyyy" type="element" version="0.60" link_type="simple" height="160">
+<definition hotspot_y="95" hotspot_x="37" width="80" type="element" version="0.60" link_type="simple" height="160">
     <uuid uuid="{2206886e-c444-4f24-ae0a-d863dd5edc52}"/>
     <names>
         <name lang="nl">cRIO 9215</name>

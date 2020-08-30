@@ -1,4 +1,4 @@
-<definition height="40" version="0.5" link_type="simple" width="20" orientation="dyyy" hotspot_x="10" hotspot_y="24" type="element">
+<definition height="40" version="0.5" link_type="simple" width="20" hotspot_x="10" hotspot_y="24" type="element">
     <uuid uuid="{768ba318-9076-4164-acc8-69714dc0f3aa}"/>
     <names>
         <name lang="de">Unitunnel-Diode

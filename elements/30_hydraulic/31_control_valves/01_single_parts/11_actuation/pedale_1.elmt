@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="21" hotspot_y="14" width="30" orientation="dyyy" height="30" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="21" hotspot_y="14" width="30" height="30" link_type="simple" type="element">
     <uuid uuid="{5cb1418b-2d92-43be-a4a6-46193a7d028a}"/>
     <names>
         <name lang="en">Pedal</name>

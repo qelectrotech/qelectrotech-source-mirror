@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="25" hotspot_y="15" version="0.70" width="30" type="element" height="20">
+<definition link_type="simple" hotspot_x="25" hotspot_y="15" version="0.70" width="30" type="element" height="20">
     <uuid uuid="{0fcaa04f-371e-44fe-9792-234847b8962e}"/>
     <names>
         <name lang="fr">Enroulement triphasé, en triangle ouvert</name>

@@ -430,10 +430,6 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 	root.setAttribute("hotspot_y",   QString("%1").arg(
 				  -(qRound(size.y() - (ymargin/2)))));
 
-#pragma message("@TODO remove this code? the orientation for element")
-	// we keep the orientation for compatibility with previous version of qet
-	root.setAttribute("orientation", "dyyy");
-
 	root.setAttribute("version", QET::version);
 	root.setAttribute("link_type", m_elmt_type);
 

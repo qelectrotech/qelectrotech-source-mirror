@@ -1,4 +1,4 @@
-<definition link_type="slave" version="0.80" type="element" hotspot_x="5" orientation="dyyy" height="210" width="130" hotspot_y="5">
+<definition link_type="slave" version="0.80" type="element" hotspot_x="5" height="210" width="130" hotspot_y="5">
     <uuid uuid="{225fd55b-506e-4f8e-9a75-460f5a5191b6}"/>
     <names>
         <name lang="fr">Tywatt</name>

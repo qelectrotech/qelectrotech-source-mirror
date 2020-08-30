@@ -1,4 +1,4 @@
-<definition height="30" link_type="simple" type="element" orientation="dyyy" hotspot_y="15" version="0.5" hotspot_x="24" width="50">
+<definition height="30" link_type="simple" type="element" hotspot_y="15" version="0.5" hotspot_x="24" width="50">
     <uuid uuid="{ff28d5f8-a5cb-4c69-b469-38584a3af819}"/>
     <names>
         <name lang="fr">Pile 2 éléments</name>

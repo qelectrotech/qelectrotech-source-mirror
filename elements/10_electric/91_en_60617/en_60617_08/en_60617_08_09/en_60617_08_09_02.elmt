@@ -1,4 +1,4 @@
-<definition width="50" height="50" type="element" hotspot_x="25" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="45">
+<definition width="50" height="50" type="element" hotspot_x="25" version="0.70" link_type="simple" hotspot_y="45">
     <uuid uuid="{a51e69ce-47b0-48bd-b8a7-09c03a72a1e5}"/>
     <names>
         <name lang="de">Drehmelder </name>

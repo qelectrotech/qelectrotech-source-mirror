@@ -1,4 +1,4 @@
-<definition hotspot_x="24" version="0.70" orientation="dyyy" height="60" hotspot_y="31" width="50" type="element" link_type="simple">
+<definition hotspot_x="24" version="0.70" height="60" hotspot_y="31" width="50" type="element" link_type="simple">
     <uuid uuid="{b35a5396-5b58-42f8-9bc9-5c379238afbb}"/>
     <names>
         <name lang="fr">Dérivation nécessitant un outil spécial</name>

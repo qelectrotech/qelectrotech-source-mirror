@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="40" height="40" hotspot_y="20" hotspot_x="20" version="0.70" link_type="simple">
+<definition type="element" width="40" height="40" hotspot_y="20" hotspot_x="20" version="0.70" link_type="simple">
     <uuid uuid="{621e690c-d248-472c-9402-efe67e08c41a}"/>
     <names>
         <name lang="de">Auslöseeinrichtung</name>

@@ -1,4 +1,4 @@
-<definition hotspot_x="25" type="element" height="30" version="0.80" width="30" orientation="dyyy" link_type="simple" hotspot_y="25">
+<definition hotspot_x="25" type="element" height="30" version="0.80" width="30" link_type="simple" hotspot_y="25">
     <uuid uuid="{9d9c12bf-e44a-4b29-a517-3c0b2f5ff0cc}"/>
     <names>
         <name lang="de">Sicherheitsleuchte,

@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="14" hotspot_y="125" version="0.70" height="290" orientation="dyyy" type="element" width="60">
+<definition link_type="simple" hotspot_x="14" hotspot_y="125" version="0.70" height="290" type="element" width="60">
     <uuid uuid="{e35e0dfd-15c2-4d4c-bcd7-f6b51d21c2e2}"/>
     <names>
         <name lang="en">analog input stbaci1400K</name>

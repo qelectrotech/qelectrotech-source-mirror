@@ -1,4 +1,4 @@
-<definition type="element" orientation="dyyy" version="0.70" height="270" link_type="simple" hotspot_y="135" width="70" hotspot_x="35">
+<definition type="element" version="0.70" height="270" link_type="simple" hotspot_y="135" width="70" hotspot_x="35">
     <uuid uuid="{f7564600-3755-4e38-ba9a-1297d596844f}"/>
     <names>
         <name lang="fr">Bosch Rexroth SLC-3-XTDI80302 Safe Logic Compact, module à 8 entrées sécurisées</name>

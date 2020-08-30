@@ -1,4 +1,4 @@
-<definition width="30" link_type="simple" version="0.5" hotspot_x="15" orientation="dyyy" height="80" hotspot_y="40" type="element">
+<definition width="30" link_type="simple" version="0.5" hotspot_x="15" height="80" hotspot_y="40" type="element">
     <uuid uuid="{8bfb1790-0735-47d5-88a2-8b4d91aba2f1}"/>
     <names>
         <name lang="pt">Fonte tripolar + neutro</name>

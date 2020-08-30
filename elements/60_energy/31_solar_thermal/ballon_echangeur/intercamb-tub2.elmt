@@ -1,4 +1,4 @@
-<definition type="element" height="60" hotspot_x="38" orientation="dyyy" version="0.80" width="150" hotspot_y="44" link_type="simple">
+<definition type="element" height="60" hotspot_x="38" version="0.80" width="150" hotspot_y="44" link_type="simple">
     <uuid uuid="{defb50a3-51ca-43f1-9a23-bbd8cffe19f1}"/>
     <names>
         <name lang="en">Tubular exchanger</name>

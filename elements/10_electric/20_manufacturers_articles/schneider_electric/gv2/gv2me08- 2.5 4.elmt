@@ -1,4 +1,4 @@
-<definition height="100" link_type="master" width="90" version="0.80" type="element" orientation="dyyy" hotspot_x="56" hotspot_y="50">
+<definition height="100" link_type="master" width="90" version="0.80" type="element" hotspot_x="56" hotspot_y="50">
     <uuid uuid="{aba21137-1f4d-4577-b3fb-9924c4d9cdba}"/>
     <names>
         <name lang="fr">GV2ME08</name>

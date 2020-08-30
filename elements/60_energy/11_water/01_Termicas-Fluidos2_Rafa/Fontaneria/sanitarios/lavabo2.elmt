@@ -1,4 +1,4 @@
-<definition width="40" orientation="dyyy" hotspot_y="29" link_type="simple" version="0.80" height="60" hotspot_x="25" type="element">
+<definition width="40" hotspot_y="29" link_type="simple" version="0.80" height="60" hotspot_x="25" type="element">
     <uuid uuid="{073db41b-e7b2-43ef-85d0-d0761381329c}"/>
     <names>
         <name lang="fr">Lavabo</name>

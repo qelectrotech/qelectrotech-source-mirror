@@ -1,4 +1,4 @@
-<definition version="0.51" type="element" height="40" orientation="dyyy" link_type="simple" hotspot_x="24" width="50" hotspot_y="26">
+<definition version="0.51" type="element" height="40" link_type="simple" hotspot_x="24" width="50" hotspot_y="26">
     <uuid uuid="{13a0359b-f1e2-4f3c-b956-d846ef9f2566}"/>
     <names>
         <name lang="fr">Té CU n°130</name>

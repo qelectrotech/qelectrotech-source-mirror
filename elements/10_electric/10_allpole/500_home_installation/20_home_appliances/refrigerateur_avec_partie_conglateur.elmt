@@ -1,4 +1,4 @@
-<definition link_type="simple" height="50" version="0.80" orientation="dyyy" type="element" width="30" hotspot_x="14" hotspot_y="14">
+<definition link_type="simple" height="50" version="0.80" type="element" width="30" hotspot_x="14" hotspot_y="14">
     <uuid uuid="{4d0f626b-332d-4919-8caf-7a9de7b81eb6}"/>
     <names>
         <name lang="el">Ψυγειοκαταψύκτης</name>

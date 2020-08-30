@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="20" version="0.5" hotspot_y="9" link_type="simple" width="40" orientation="dyyy" height="20">
+<definition type="element" hotspot_x="20" version="0.5" hotspot_y="9" link_type="simple" width="40" height="20">
     <uuid uuid="{bc3fe91d-1989-4af2-89c5-09399a1d9582}"/>
     <names>
         <name lang="de">Übergang</name>

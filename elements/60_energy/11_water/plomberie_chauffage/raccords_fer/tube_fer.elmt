@@ -1,4 +1,4 @@
-<definition height="20" link_type="terminal" hotspot_x="25" hotspot_y="10" orientation="dyyy" version="0.51" type="element" width="40">
+<definition height="20" link_type="terminal" hotspot_x="25" hotspot_y="10" version="0.51" type="element" width="40">
     <uuid uuid="{da470249-5721-4298-ba22-77eb21de7bd9}"/>
     <names>
         <name lang="fr">Tube fer</name>

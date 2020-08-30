@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="25" hotspot_y="15" width="50" orientation="dyyy" height="30" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="25" hotspot_y="15" width="50" height="30" link_type="simple" type="element">
     <uuid uuid="{01f1f8da-59f4-4643-967c-a282dbab4bed}"/>
     <names>
         <name lang="en">Manual valve</name>

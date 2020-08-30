@@ -1,4 +1,4 @@
-<definition width="10" link_type="simple" version="0.5" hotspot_x="5" orientation="dyyy" height="90" hotspot_y="14" type="element">
+<definition width="10" link_type="simple" version="0.5" hotspot_x="5" height="90" hotspot_y="14" type="element">
     <uuid uuid="{c419294c-f582-48ff-ada2-d1129abb2939}"/>
     <names>
         <name lang="es">Terminal fusible</name>

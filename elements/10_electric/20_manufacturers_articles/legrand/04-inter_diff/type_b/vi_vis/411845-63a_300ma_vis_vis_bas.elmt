@@ -1,4 +1,4 @@
-<definition height="90" width="110" hotspot_x="44" link_type="simple" type="element" orientation="dyyy" hotspot_y="36" version="0.80">
+<definition height="90" width="110" hotspot_x="44" link_type="simple" type="element" hotspot_y="36" version="0.80">
     <uuid uuid="{6123b329-fbc1-4360-816b-406854ea3f62}"/>
     <names>
         <name lang="fr">411845 - Interrupteur différentiel B 63A 300mA Haut-Vis/Bas-Vis</name>

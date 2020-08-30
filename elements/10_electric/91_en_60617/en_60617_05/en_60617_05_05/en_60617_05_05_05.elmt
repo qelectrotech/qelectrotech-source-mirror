@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="15" hotspot_y="10" orientation="dyyy" type="element" height="40" width="50">
+<definition link_type="simple" version="0.70" hotspot_x="15" hotspot_y="10" type="element" height="40" width="50">
     <uuid uuid="{1cc8b6b7-81ce-4787-ab8d-2ec28e67b3a5}"/>
     <names>
         <name lang="fr">Transistor à jonction unique avec base de type

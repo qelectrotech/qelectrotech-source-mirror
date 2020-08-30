@@ -1,4 +1,4 @@
-<definition orientation="dyyy" width="90" height="30" hotspot_y="5" hotspot_x="40" version="0.80" type="element" link_type="simple">
+<definition width="90" height="30" hotspot_y="5" hotspot_x="40" version="0.80" type="element" link_type="simple">
     <uuid uuid="{e83e5059-7968-46b2-b36f-0218b050a96a}"/>
     <names>
         <name lang="fr">Borne automatique à ressorts 8 entrées (Wago)</name>

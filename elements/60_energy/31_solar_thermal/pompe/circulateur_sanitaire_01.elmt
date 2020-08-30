@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="13">
+<definition width="30" hotspot_x="14" type="element" link_type="simple" version="0.5" height="30" hotspot_y="13">
     <uuid uuid="{f3c033b4-3ec6-4de8-888f-08d617b9eca9}"/>
     <names>
         <name lang="cs">Sanitární cirkulační pumpa</name>

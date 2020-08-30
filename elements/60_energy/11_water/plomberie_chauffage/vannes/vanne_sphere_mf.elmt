@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="50" link_type="simple" height="40" hotspot_y="26" version="0.51" hotspot_x="22">
+<definition type="element" width="50" link_type="simple" height="40" hotspot_y="26" version="0.51" hotspot_x="22">
     <uuid uuid="{310387f5-c9c6-4528-b89f-c5676a68a443}"/>
     <names>
         <name lang="es">Valv bola 1/2H-H</name>

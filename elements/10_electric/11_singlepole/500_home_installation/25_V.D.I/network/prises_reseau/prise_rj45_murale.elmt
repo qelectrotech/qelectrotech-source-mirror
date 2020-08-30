@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" version="0.51" hotspot_x="35" orientation="dyyy" hotspot_y="41" height="70" width="70">
+<definition link_type="simple" type="element" version="0.51" hotspot_x="35" hotspot_y="41" height="70" width="70">
     <uuid uuid="{defce379-3063-4cfd-8aa2-e318fb40bcc9}"/>
     <names>
         <name lang="fr">Prise RJ45 Murale</name>

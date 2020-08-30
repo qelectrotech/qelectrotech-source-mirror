@@ -1,4 +1,4 @@
-<definition type="element" width="400" hotspot_y="114" link_type="simple" hotspot_x="284" height="210" orientation="dyyy" version="0.80">
+<definition type="element" width="400" hotspot_y="114" link_type="simple" hotspot_x="284" height="210" version="0.80">
     <uuid uuid="{9ad0f02a-4db1-45e4-be5a-2bf0554303ea}"/>
     <names>
         <name lang="fr">ECO RT2</name>

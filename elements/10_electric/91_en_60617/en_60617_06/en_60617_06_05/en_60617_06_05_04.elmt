@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="155" hotspot_y="85" version="0.70" width="190" type="element" height="90">
+<definition link_type="simple" hotspot_x="155" hotspot_y="85" version="0.70" width="190" type="element" height="90">
     <uuid uuid="{9f9fec3c-2609-41b8-9fa3-521e4201fdf8}"/>
     <names>
         <name lang="fr">Convertisseur rotatif, DC/DC avec excitation

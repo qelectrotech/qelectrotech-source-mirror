@@ -1,4 +1,4 @@
-<definition height="90" version="0.80" type="element" link_type="master" width="120" orientation="dyyy" hotspot_x="46" hotspot_y="36">
+<definition height="90" version="0.80" type="element" link_type="master" width="120" hotspot_x="46" hotspot_y="36">
     <uuid uuid="{09487824-615c-422e-9a9c-c937ec75f433}"/>
     <names>
         <name lang="fr">411505 - Interrupteur différentiel AC 40A 30mA Haut-Vis/Bas-Vis</name>

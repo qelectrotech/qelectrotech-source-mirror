@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.5" type="element" link_type="simple" hotspot_x="5" hotspot_y="5" width="330" height="210">
+<definition version="0.5" type="element" link_type="simple" hotspot_x="5" hotspot_y="5" width="330" height="210">
     <uuid uuid="{116c9778-5a2d-4788-923c-f528993fa944}"/>
     <names>
         <name lang="fr">ABB JRA/S2.230.5.1</name>

@@ -1,4 +1,4 @@
-<definition width="60" height="40" type="element" hotspot_x="24" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="20">
+<definition width="60" height="40" type="element" hotspot_x="24" version="0.70" link_type="simple" hotspot_y="20">
     <uuid uuid="{d78be7ce-4876-472a-82f9-69dc4888f7ee}"/>
     <names>
         <name lang="de">Kohle-Säulen-Widerstand</name>

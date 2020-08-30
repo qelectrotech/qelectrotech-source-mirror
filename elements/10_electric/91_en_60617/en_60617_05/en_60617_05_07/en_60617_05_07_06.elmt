@@ -1,4 +1,4 @@
-<definition height="80" version="0.70" orientation="dyyy" width="50" hotspot_x="45" type="element" hotspot_y="75" link_type="simple">
+<definition height="80" version="0.70" width="50" hotspot_x="45" type="element" hotspot_y="75" link_type="simple">
     <uuid uuid="{cf35f063-3c7c-449b-b985-1d65f5ceae53}"/>
     <names>
         <name lang="fr">Cathode chaude, à chauffage direct</name>

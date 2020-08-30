@@ -1,4 +1,4 @@
-<definition type="element" hotspot_y="10" orientation="dyyy" version="0.70" hotspot_x="55" width="110" height="20" link_type="simple">
+<definition type="element" hotspot_y="10" version="0.70" hotspot_x="55" width="110" height="20" link_type="simple">
     <uuid uuid="{50e0d3f3-9ed4-4375-9b83-5402bab274ac}"/>
     <names>
         <name lang="fr">Électrodes de concentration à diaphragme

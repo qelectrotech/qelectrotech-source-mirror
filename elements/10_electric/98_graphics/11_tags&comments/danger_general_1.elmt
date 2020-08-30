@@ -1,4 +1,4 @@
-<definition version="0.5" link_type="simple" type="element" hotspot_x="15" width="30" hotspot_y="15" orientation="dyyy" height="30">
+<definition version="0.5" link_type="simple" type="element" hotspot_x="15" width="30" hotspot_y="15" height="30">
     <uuid uuid="{f6a1a54c-f346-4846-b6bc-aaf93ace660f}"/>
     <names>
         <name lang="el">Κίνδυνος, γενικά</name>

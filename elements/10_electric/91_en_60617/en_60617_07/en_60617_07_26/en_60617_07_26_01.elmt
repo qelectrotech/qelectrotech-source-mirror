@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="100" height="50" hotspot_y="24" hotspot_x="25" version="0.70" link_type="simple">
+<definition type="element" width="100" height="50" hotspot_y="24" hotspot_x="25" version="0.70" link_type="simple">
     <uuid uuid="{a5b59f5c-97a2-4445-9a86-961c374bff6f}"/>
     <names>
         <name lang="de">elektronisches Relais, allgemein</name>

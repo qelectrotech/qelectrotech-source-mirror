@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" width="50" version="0.80" hotspot_y="5" type="element" height="210" hotspot_x="5">
+<definition link_type="simple" width="50" version="0.80" hotspot_y="5" type="element" height="210" hotspot_x="5">
     <uuid uuid="{5316fb08-d39d-43e5-9215-2d579f56856f}"/>
     <names>
         <name lang="fr">Disjoncteur 2A</name>

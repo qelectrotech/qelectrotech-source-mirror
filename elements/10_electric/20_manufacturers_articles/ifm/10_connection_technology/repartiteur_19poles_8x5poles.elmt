@@ -1,4 +1,4 @@
-<definition hotspot_y="205" type="element" orientation="dyyy" hotspot_x="117" version="0.5" height="390" width="240" link_type="simple">
+<definition hotspot_y="205" type="element" hotspot_x="117" version="0.5" height="390" width="240" link_type="simple">
     <uuid uuid="{d687b60f-7134-4512-87da-cbbc90282660}"/>
     <names>
         <name lang="fr">Répartiteur 19 pôles -> 8x5 pôles </name>

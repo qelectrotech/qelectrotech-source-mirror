@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.51" width="670" height="130" type="element" hotspot_x="335" link_type="simple" hotspot_y="61">
+<definition version="0.51" width="670" height="130" type="element" hotspot_x="335" link_type="simple" hotspot_y="61">
     <uuid uuid="{ff2438a3-4785-473d-b491-8894906a2ea5}"/>
     <names>
         <name lang="fr">Siemens;6AV6671-5AE11-0AX0;6AV6671-5AE11-0AX0;Boîtier PN Plus de raccordement pour consoles mobiles, interface Profinet;7080030</name>

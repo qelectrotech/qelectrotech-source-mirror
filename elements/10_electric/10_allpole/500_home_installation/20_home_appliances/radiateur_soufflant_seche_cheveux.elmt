@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" type="element" height="50" width="30" hotspot_y="14" version="0.80" hotspot_x="14">
+<definition link_type="simple" type="element" height="50" width="30" hotspot_y="14" version="0.80" hotspot_x="14">
     <uuid uuid="{89039a67-b9cd-42b3-9074-52ff08df22d7}"/>
     <names>
         <name lang="ar">مشعاع نافخ - مجفف شعر</name>

@@ -1,4 +1,4 @@
-<definition hotspot_x="5" type="element" orientation="dyyy" height="210" hotspot_y="4" version="0.80" width="90" link_type="slave">
+<definition hotspot_x="5" type="element" height="210" hotspot_y="4" version="0.80" width="90" link_type="slave">
     <uuid uuid="{f7322670-8be4-4857-8620-2a12bfb3933e}"/>
     <names>
         <name lang="fr">ADC 840F</name>

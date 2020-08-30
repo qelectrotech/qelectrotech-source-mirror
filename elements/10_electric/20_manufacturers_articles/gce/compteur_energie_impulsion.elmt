@@ -1,4 +1,4 @@
-<definition version="0.80" type="element" height="110" hotspot_x="10" orientation="dyyy" link_type="simple" width="40" hotspot_y="34">
+<definition version="0.80" type="element" height="110" hotspot_x="10" link_type="simple" width="40" hotspot_y="34">
     <uuid uuid="{2b41375d-7a44-41f4-85d4-da0d493cd4b8}"/>
     <names>
         <name lang="el">Μετρητής ενέργειας, Κιλοβατώρες (KWh)</name>

@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="35" hotspot_y="45" orientation="dyyy" type="element" height="50" width="50">
+<definition link_type="simple" version="0.70" hotspot_x="35" hotspot_y="45" type="element" height="50" width="50">
     <uuid uuid="{4f4a325a-acad-421e-a5f2-fcfb2eb46d0a}"/>
     <names>
         <name lang="fr">Transistor PNP</name>

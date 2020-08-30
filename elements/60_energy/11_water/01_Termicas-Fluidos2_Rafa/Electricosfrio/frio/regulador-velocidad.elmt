@@ -1,4 +1,4 @@
-<definition width="80" orientation="dyyy" hotspot_y="24" link_type="simple" version="0.80" height="60" hotspot_x="36" type="element">
+<definition width="80" hotspot_y="24" link_type="simple" version="0.80" height="60" hotspot_x="36" type="element">
     <uuid uuid="{4c8c391b-2b0f-4cd5-bb6d-620d5e6178fd}"/>
     <names>
         <name lang="fr">Régulateur de vitesse</name>

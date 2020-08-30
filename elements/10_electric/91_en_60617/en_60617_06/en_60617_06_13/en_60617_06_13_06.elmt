@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" hotspot_x="47" hotspot_y="70" version="0.70" orientation="dyyy" width="110" height="120">
+<definition link_type="simple" type="element" hotspot_x="47" hotspot_y="70" version="0.70" width="110" height="120">
     <uuid uuid="{175f441c-889b-4096-adb8-c2302814b9cf}"/>
     <names>
         <name lang="de">Stromwandler mit einer Sekundärwicklung. Die

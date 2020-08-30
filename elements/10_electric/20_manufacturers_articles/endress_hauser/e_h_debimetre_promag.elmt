@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="15" orientation="dyyy" hotspot_y="36" type="element" height="70" width="220" version="0.5">
+<definition link_type="simple" hotspot_x="15" hotspot_y="36" type="element" height="70" width="220" version="0.5">
     <uuid uuid="{bad78562-b2be-45d9-9d09-783507c0db18}"/>
     <names>
         <name lang="pl">Przepływomierz Promag 50</name>

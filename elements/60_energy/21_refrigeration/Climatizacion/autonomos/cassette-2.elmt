@@ -1,4 +1,4 @@
-<definition hotspot_y="33" link_type="simple" width="80" version="0.80" type="element" height="70" orientation="dyyy" hotspot_x="45">
+<definition hotspot_y="33" link_type="simple" width="80" version="0.80" type="element" height="70" hotspot_x="45">
     <uuid uuid="{9ccdfe8a-5376-4349-84eb-f069f533e64a}"/>
     <names>
         <name lang="fr">Casssette 2</name>

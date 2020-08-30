@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="master" type="element" height="170" width="130" hotspot_y="165" version="0.80" hotspot_x="5">
+<definition link_type="master" type="element" height="170" width="130" hotspot_y="165" version="0.80" hotspot_x="5">
     <uuid uuid="{d0eb35c4-e998-4653-9fdb-a1934ad675c5}"/>
     <names>
         <name lang="fr">V.D.I.</name>

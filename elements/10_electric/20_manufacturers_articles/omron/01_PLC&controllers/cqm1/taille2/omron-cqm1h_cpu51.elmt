@@ -1,4 +1,4 @@
-<definition width="410" height="360" link_type="simple" orientation="dyyy" hotspot_x="203" version="0.5" hotspot_y="173" type="element">
+<definition width="410" height="360" link_type="simple" hotspot_x="203" version="0.5" hotspot_y="173" type="element">
     <uuid uuid="{ef8a5662-bd1e-45a9-87f0-7e895d5ab9b0}"/>
     <names>
         <name lang="it">omron-cqm1h_cpu51</name>

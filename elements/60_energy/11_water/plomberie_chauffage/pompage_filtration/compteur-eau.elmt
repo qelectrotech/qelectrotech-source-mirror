@@ -1,4 +1,4 @@
-<definition hotspot_y="5" type="element" link_type="simple" orientation="dyyy" hotspot_x="24" width="50" height="30" version="0.51">
+<definition hotspot_y="5" type="element" link_type="simple" hotspot_x="24" width="50" height="30" version="0.51">
     <uuid uuid="{eda7409b-b43c-4188-9460-fba783b2a23a}"/>
     <names>
         <name lang="fr">Compteur eau</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="65" hotspot_y="84" version="0.70" width="110" type="element" height="110">
+<definition link_type="simple" hotspot_x="65" hotspot_y="84" version="0.70" width="110" type="element" height="110">
     <uuid uuid="{4fe3bf79-9c3a-4f59-a5cd-4b46aa6add23}"/>
     <names>
         <name lang="fr">Alternateur synchrone triphasé, à deux

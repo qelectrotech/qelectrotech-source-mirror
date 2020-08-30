@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.51" width="110" height="20" type="element" hotspot_x="55" link_type="simple" hotspot_y="13">
+<definition version="0.51" width="110" height="20" type="element" hotspot_x="55" link_type="simple" hotspot_y="13">
     <uuid uuid="{17db296d-b50e-47ea-9125-aa9c1837b523}"/>
     <names>
         <name lang="fr">Interruption bornier</name>

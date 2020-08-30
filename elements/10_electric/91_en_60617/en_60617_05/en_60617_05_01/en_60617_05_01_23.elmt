@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="12" hotspot_y="42" orientation="dyyy" type="element" height="50" width="20">
+<definition link_type="simple" version="0.70" hotspot_x="12" hotspot_y="42" type="element" height="50" width="20">
     <uuid uuid="{9d5e4e96-8407-49de-bba8-b78338376f2b}"/>
     <names>
         <name lang="fr">Région intrinsèque entre un collecteur et une

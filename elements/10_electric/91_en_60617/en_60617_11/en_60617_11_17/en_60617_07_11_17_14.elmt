@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="30" link_type="simple" hotspot_x="84" width="90" hotspot_y="25">
+<definition type="element" version="0.70" height="30" link_type="simple" hotspot_x="84" width="90" hotspot_y="25">
     <uuid uuid="{223fbe4e-3834-4949-9e8f-9843fcbac1a0}"/>
     <names>
         <name lang="de">Flexibler Elektro-Installationskanal</name>

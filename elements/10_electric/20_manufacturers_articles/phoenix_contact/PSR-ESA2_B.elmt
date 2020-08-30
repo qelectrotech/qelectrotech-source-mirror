@@ -1,4 +1,4 @@
-<definition type="element" width="260" version="0.70" orientation="dyyy" link_type="master" hotspot_y="39" hotspot_x="85" height="90">
+<definition type="element" width="260" version="0.70" link_type="master" hotspot_y="39" hotspot_x="85" height="90">
     <uuid uuid="{408c30dc-266f-4960-8444-93ce454075d3}"/>
     <names>
         <name lang="cs">PSR-ESA2_B</name>

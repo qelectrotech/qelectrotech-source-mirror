@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="20" hotspot_y="14" width="40" orientation="dyyy" height="30" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="20" hotspot_y="14" width="40" height="30" link_type="simple" type="element">
     <uuid uuid="{eeb69c49-4c27-402e-a4e1-6d5fabfe52f1}"/>
     <names>
         <name lang="en">Check valve</name>

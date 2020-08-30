@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="29" version="0.5" hotspot_y="15" link_type="simple" width="60" orientation="dyyy" height="30">
+<definition type="element" hotspot_x="29" version="0.5" hotspot_y="15" link_type="simple" width="60" height="30">
     <uuid uuid="{58f03172-a737-47f5-b887-5d4d3d10f6d7}"/>
     <names>
         <name lang="de">Eingang (steigende Flanke)</name>

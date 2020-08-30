@@ -1,4 +1,4 @@
-<definition type="element" orientation="dyyy" height="200" hotspot_y="98" version="0.70" width="90" hotspot_x="50" link_type="simple">
+<definition type="element" height="200" hotspot_y="98" version="0.70" width="90" hotspot_x="50" link_type="simple">
     <uuid uuid="{ed05e9b2-7e41-48c8-911c-b9deb67dcfac}"/>
     <names>
         <name lang="cs">Zásuvka s vypínačem Schurter</name>

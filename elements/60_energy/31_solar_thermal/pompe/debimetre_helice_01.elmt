@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="18">
+<definition width="30" hotspot_x="14" type="element" link_type="simple" version="0.5" height="40" hotspot_y="18">
     <uuid uuid="{401b7bc3-ffe1-460d-b43e-2ba1157cdbed}"/>
     <names>
         <name lang="cs">Točitý průtokoměr</name>

@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" hotspot_y="45" width="980" hotspot_x="27" height="130" orientation="dyyy" version="0.80">
+<definition link_type="simple" type="element" hotspot_y="45" width="980" hotspot_x="27" height="130" version="0.80">
     <uuid uuid="{55289d6d-a13d-44ef-90b6-12970100dec2}"/>
     <names>
         <name lang="cs">IDB3248_1</name>

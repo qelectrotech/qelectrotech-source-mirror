@@ -1,4 +1,4 @@
-<definition height="50" link_type="slave" hotspot_y="24" hotspot_x="26" width="30" type="element" orientation="dyyy" version="0.70">
+<definition height="50" link_type="slave" hotspot_y="24" hotspot_x="26" width="30" type="element" version="0.70">
     <uuid uuid="{fa856697-4b53-4292-b84b-a16ccfdfbb40}"/>
     <names>
         <name lang="en">timed switch work</name>

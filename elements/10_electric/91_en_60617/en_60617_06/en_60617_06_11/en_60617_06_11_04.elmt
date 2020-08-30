@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" orientation="dyyy" hotspot_x="93" height="100" width="120" hotspot_y="87" version="0.70">
+<definition link_type="simple" type="element" hotspot_x="93" height="100" width="120" hotspot_y="87" version="0.70">
     <uuid uuid="{e91f2955-0140-47a2-94bb-31e034240ea7}"/>
     <names>
         <name lang="de">Drehstrom-Spartransformator, Sternschaltung</name>

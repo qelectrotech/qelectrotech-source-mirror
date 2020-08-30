@@ -1,4 +1,4 @@
-<definition width="50" hotspot_x="15" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="15">
+<definition width="50" hotspot_x="15" type="element" link_type="simple" version="0.5" height="30" hotspot_y="15">
     <uuid uuid="{5680456e-ff4d-4ab3-9019-515d3bec9312}"/>
     <names>
         <name lang="cs">Klíč nedostupný, vstup nedovolen</name>

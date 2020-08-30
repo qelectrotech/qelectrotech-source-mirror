@@ -1,4 +1,4 @@
-<definition hotspot_x="4" link_type="simple" hotspot_y="31" height="290" width="170" orientation="dyyy" version="0.70" type="element">
+<definition hotspot_x="4" link_type="simple" hotspot_y="31" height="290" width="170" version="0.70" type="element">
     <uuid uuid="{c05247e0-7281-4008-95c9-87b304c1baa5}"/>
     <names>
         <name lang="en">ET-7042</name>

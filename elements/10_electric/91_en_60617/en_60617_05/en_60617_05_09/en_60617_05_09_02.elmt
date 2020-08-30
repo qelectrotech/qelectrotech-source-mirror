@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" height="80" width="70" version="0.70" orientation="dyyy" hotspot_x="65" hotspot_y="75">
+<definition type="element" link_type="simple" height="80" width="70" version="0.70" hotspot_x="65" hotspot_y="75">
     <uuid uuid="{b82aaae4-10b5-4109-8870-658f97683a89}"/>
     <names>
         <name lang="fr">Réflecteur</name>

@@ -1,4 +1,4 @@
-<definition width="70" hotspot_x="30" type="element" link_type="simple" orientation="dyyy" version="0.5" height="70" hotspot_y="35">
+<definition width="70" hotspot_x="30" type="element" link_type="simple" version="0.5" height="70" hotspot_y="35">
     <uuid uuid="{facb5b6c-d703-42dc-ba98-01bef421dd61}"/>
     <names>
         <name lang="cs">Deskový ohřívač ECS</name>

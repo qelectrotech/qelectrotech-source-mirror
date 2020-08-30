@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="15" hotspot_y="25" version="0.70" width="30" type="element" height="30">
+<definition link_type="simple" hotspot_x="15" hotspot_y="25" version="0.70" width="30" type="element" height="30">
     <uuid uuid="{f4e1ee28-8a22-4294-83f3-5c9e10b836d2}"/>
     <names>
         <name lang="fr">Enroulement hexaphasé, en double triangle</name>

@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="110" height="50" hotspot_x="45" hotspot_y="15" orientation="dyyy" version="0.70">
+<definition link_type="simple" type="element" width="110" height="50" hotspot_x="45" hotspot_y="15" version="0.70">
     <uuid uuid="{f6976491-e766-4cbe-94eb-5206024ea045}"/>
     <names>
         <name lang="de">Dämpfungsglied (zur Darstellung auf einem

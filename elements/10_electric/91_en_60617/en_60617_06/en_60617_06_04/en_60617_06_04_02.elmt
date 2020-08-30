@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="65" hotspot_y="65" version="0.70" width="70" type="element" height="70">
+<definition link_type="simple" hotspot_x="65" hotspot_y="65" version="0.70" width="70" type="element" height="70">
     <uuid uuid="{837f528f-c277-470b-bbea-a1b40318fba8}"/>
     <names>
         <name lang="fr">Moteur linéaire</name>

@@ -1,4 +1,4 @@
-<definition type="element" width="130" hotspot_y="66" link_type="simple" hotspot_x="58" height="140" orientation="dyyy" version="0.80">
+<definition type="element" width="130" hotspot_y="66" link_type="simple" hotspot_x="58" height="140" version="0.80">
     <uuid uuid="{519ee754-8140-4e07-9658-7a4c1f6226a0}"/>
     <names>
         <name lang="fr">WEMOS D1 </name>

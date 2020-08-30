@@ -1,4 +1,4 @@
-<definition width="70" height="40" type="element" hotspot_x="35" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="11">
+<definition width="70" height="40" type="element" hotspot_x="35" version="0.70" link_type="simple" hotspot_y="11">
     <uuid uuid="{add075bb-b875-44df-995f-95854164ee5c}"/>
     <names>
         <name lang="de">Durchführungskondensator</name>

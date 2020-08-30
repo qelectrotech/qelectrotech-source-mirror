@@ -1,4 +1,4 @@
-<definition hotspot_x="34" version="0.70" orientation="dyyy" height="50" hotspot_y="45" width="90" type="element" link_type="simple">
+<definition hotspot_x="34" version="0.70" height="50" hotspot_y="45" width="90" type="element" link_type="simple">
     <uuid uuid="{95cba153-8650-4c31-913c-ca1b046aff7e}"/>
     <names>
         <name lang="fr">Ensemble de connecteurs</name>

@@ -1,4 +1,4 @@
-<definition width="40" hotspot_x="23" hotspot_y="25" orientation="dyyy" link_type="master" version="0.80" type="element" height="50">
+<definition width="40" hotspot_x="23" hotspot_y="25" link_type="master" version="0.80" type="element" height="50">
     <uuid uuid="{c74b2030-9c83-465e-95c1-9d807a3cf22b}"/>
     <names>
         <name lang="en">Timer TMR48</name>

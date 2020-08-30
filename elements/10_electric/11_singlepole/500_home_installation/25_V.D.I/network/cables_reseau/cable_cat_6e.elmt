@@ -1,4 +1,4 @@
-<definition type="element" version="0.5" orientation="dyyy" width="140" height="40" link_type="simple" hotspot_x="75" hotspot_y="29">
+<definition type="element" version="0.5" width="140" height="40" link_type="simple" hotspot_x="75" hotspot_y="29">
     <uuid uuid="{098b5608-ea88-4b40-8ee3-ba32b8cadfcb}"/>
     <names>
         <name lang="fr">Câble Cat 6e</name>

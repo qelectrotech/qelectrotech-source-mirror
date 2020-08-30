@@ -1,4 +1,4 @@
-<definition hotspot_x="25" version="0.70" orientation="dyyy" height="20" hotspot_y="13" width="50" type="element" link_type="simple">
+<definition hotspot_x="25" version="0.70" height="20" hotspot_y="13" width="50" type="element" link_type="simple">
     <uuid uuid="{b6c089fe-38c8-49a9-95f8-1990dda9dc02}"/>
     <names>
         <name lang="fr">Embrayage

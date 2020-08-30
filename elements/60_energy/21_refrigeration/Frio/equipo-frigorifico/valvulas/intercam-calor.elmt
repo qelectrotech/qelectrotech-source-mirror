@@ -1,4 +1,4 @@
-<definition width="60" orientation="dyyy" hotspot_y="13" link_type="simple" version="0.80" height="20" hotspot_x="32" type="element">
+<definition width="60" hotspot_y="13" link_type="simple" version="0.80" height="20" hotspot_x="32" type="element">
     <uuid uuid="{477c0f9a-4a15-46af-8e31-705e1a3e5e21}"/>
     <names>
         <name lang="fr">echangeur de chaleur</name>

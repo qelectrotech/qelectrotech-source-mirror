@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="70" link_type="simple" hotspot_x="44" width="100" hotspot_y="42">
+<definition type="element" version="0.70" height="70" link_type="simple" hotspot_x="44" width="100" hotspot_y="42">
     <uuid uuid="{8003632c-52b3-47bb-850f-20b08469eccf}"/>
     <names>
         <name lang="de">Gerader Elektro-Installationskanal, bestehend

@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="40" hotspot_y="10" orientation="dyyy" height="20" version="0.70" hotspot_x="29">
+<definition link_type="simple" type="element" width="40" hotspot_y="10" height="20" version="0.70" hotspot_x="29">
     <uuid uuid="{fc21f89a-9c00-4106-8b5f-6d2e32191ab9}"/>
     <names>
         <name lang="fr">Commande par horloge électrique</name>

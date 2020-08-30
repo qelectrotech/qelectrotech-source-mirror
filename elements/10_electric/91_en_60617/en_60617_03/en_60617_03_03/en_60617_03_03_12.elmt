@@ -1,4 +1,4 @@
-<definition hotspot_x="84" version="0.70" orientation="dyyy" height="30" hotspot_y="24" width="90" type="element" link_type="simple">
+<definition hotspot_x="84" version="0.70" height="30" hotspot_y="24" width="90" type="element" link_type="simple">
     <uuid uuid="{28789836-4734-48f0-94b2-8a678eee20f5}"/>
     <names>
         <name lang="fr">Fiche et jack, bipolaires, type téléphone</name>

@@ -1,4 +1,4 @@
-<definition type="element" hotspot_y="132" orientation="dyyy" link_type="simple" hotspot_x="155" version="0.80" height="230" width="310">
+<definition type="element" hotspot_y="132" link_type="simple" hotspot_x="155" version="0.80" height="230" width="310">
     <uuid uuid="{adb56d21-1bdb-421f-9a99-438cf9950311}"/>
     <names>
         <name lang="de">MT8071IE 7"</name>

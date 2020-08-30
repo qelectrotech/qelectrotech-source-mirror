@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="7" hotspot_y="25" orientation="dyyy" type="element" height="30" width="10">
+<definition link_type="simple" version="0.70" hotspot_x="7" hotspot_y="25" type="element" height="30" width="10">
     <uuid uuid="{9d40ba2f-eba0-4859-88c5-503a7c4e310f}"/>
     <names>
         <name lang="fr">Effet tunnel</name>

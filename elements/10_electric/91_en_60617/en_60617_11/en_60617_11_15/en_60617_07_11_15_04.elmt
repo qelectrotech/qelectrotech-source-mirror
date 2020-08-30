@@ -1,4 +1,4 @@
-<definition hotspot_x="25" type="element" height="20" version="0.80" width="60" orientation="dyyy" link_type="simple" hotspot_y="10">
+<definition hotspot_x="25" type="element" height="20" version="0.80" width="60" link_type="simple" hotspot_y="10">
     <uuid uuid="{96f718a7-6fd3-4239-9127-e1b18335d9ae}"/>
     <names>
         <name lang="de">Leuchte für Leuchtstofflampe, allgemein</name>

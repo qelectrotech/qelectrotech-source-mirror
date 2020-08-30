@@ -1,4 +1,4 @@
-<definition hotspot_y="29" link_type="simple" hotspot_x="3" orientation="dyyy" version="0.80" width="70" height="100" type="element">
+<definition hotspot_y="29" link_type="simple" hotspot_x="3" version="0.80" width="70" height="100" type="element">
     <uuid uuid="{e807dcc6-487a-4e18-b94b-52f1affa4a34}"/>
     <names>
         <name lang="cs">Trafo 0703237</name>

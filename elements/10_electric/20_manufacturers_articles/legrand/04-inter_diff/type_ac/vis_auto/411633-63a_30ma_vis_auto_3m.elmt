@@ -1,4 +1,4 @@
-<definition height="90" width="120" hotspot_x="46" link_type="master" type="element" orientation="dyyy" hotspot_y="26" version="0.80">
+<definition height="90" width="120" hotspot_x="46" link_type="master" type="element" hotspot_y="26" version="0.80">
     <uuid uuid="{6882a91f-5118-4c19-8192-6ab8c9e22c81}"/>
     <names>
         <name lang="fr">411633 - Interrupteur différentiel AC 63A 30mA Haut-Vis/Haut-Auto - 3 modules</name>

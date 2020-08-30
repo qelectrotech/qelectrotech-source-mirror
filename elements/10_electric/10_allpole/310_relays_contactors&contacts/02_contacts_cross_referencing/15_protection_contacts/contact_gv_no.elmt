@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="50" height="60" link_type="slave" version="0.80" hotspot_x="42" hotspot_y="44">
+<definition type="element" width="50" height="60" link_type="slave" version="0.80" hotspot_x="42" hotspot_y="44">
     <uuid uuid="{9856a744-050c-4144-9743-a935fcd245ae}"/>
     <names>
         <name lang="es">Contacto de disyuntor termico magnetico NA</name>

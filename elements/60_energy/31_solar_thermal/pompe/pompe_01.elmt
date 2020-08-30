@@ -1,4 +1,4 @@
-<definition width="40" hotspot_x="19" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="13">
+<definition width="40" hotspot_x="19" type="element" link_type="simple" version="0.5" height="30" hotspot_y="13">
     <uuid uuid="{cfaa1659-de56-4627-9c1e-aec6562cb90f}"/>
     <names>
         <name lang="cs">Pumpa</name>

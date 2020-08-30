@@ -1,4 +1,4 @@
-<definition type="element" height="130" hotspot_x="146" version="0.70" width="320" orientation="dyyy" link_type="simple" hotspot_y="60">
+<definition type="element" height="130" hotspot_x="146" version="0.70" width="320" link_type="simple" hotspot_y="60">
     <uuid uuid="{c7d06cff-d4b1-4bc0-87ff-d0dcce46213c}"/>
     <names>
         <name lang="en">ABL 8PRP24100</name>

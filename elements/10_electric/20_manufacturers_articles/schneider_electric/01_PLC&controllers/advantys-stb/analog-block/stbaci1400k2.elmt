@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="375" link_type="simple" version="0.70" height="100" type="element" hotspot_y="42" width="750">
+<definition hotspot_x="375" link_type="simple" version="0.70" height="100" type="element" hotspot_y="42" width="750">
     <uuid uuid="{a229240f-2c09-4eab-8cc6-1dfbd8d17d24}"/>
     <names>
         <name lang="fr">STBAC1400K</name>

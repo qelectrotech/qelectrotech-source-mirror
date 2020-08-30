@@ -1,4 +1,4 @@
-<definition width="150" hotspot_x="70" type="element" link_type="simple" orientation="dyyy" version="0.5" height="200" hotspot_y="93">
+<definition width="150" hotspot_x="70" type="element" link_type="simple" version="0.5" height="200" hotspot_y="93">
     <uuid uuid="{aac22065-c441-4c0c-b772-3fea93c1d107}"/>
     <names>
         <name lang="cs">Sloup</name>

@@ -1,4 +1,4 @@
-<definition hotspot_x="135" hotspot_y="225" orientation="dyyy" type="element" version="0.70" height="280" link_type="simple" width="140">
+<definition hotspot_x="135" hotspot_y="225" type="element" version="0.70" height="280" link_type="simple" width="140">
     <uuid uuid="{912c0631-56c8-4482-9f44-76a35f06fa7c}"/>
     <names>
         <name lang="de">Rückwärtswellen-Oszillatorröhre, M-Typ

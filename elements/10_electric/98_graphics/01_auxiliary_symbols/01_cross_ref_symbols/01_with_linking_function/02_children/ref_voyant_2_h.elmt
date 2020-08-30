@@ -1,4 +1,4 @@
-<definition width="30" version="0.3" hotspot_x="14" hotspot_y="10" height="30" type="element" ic="true" orientation="dyyy" link_type="previous_report">
+<definition width="30" version="0.3" hotspot_x="14" hotspot_y="10" height="30" type="element" ic="true" link_type="previous_report">
 <uuid uuid="{96E2BD0D-C078-4372-AE11-24A6793072B4}"/><names>
         <name lang="ar">مرجع مُؤشر ضوئي (أفقي)</name>
         <name lang="en">Reference light (horizontal)</name>

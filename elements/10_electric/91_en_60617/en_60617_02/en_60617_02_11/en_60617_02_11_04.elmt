@@ -1,4 +1,4 @@
-<definition hotspot_x="25" version="0.70" orientation="dyyy" height="30" hotspot_y="15" width="50" type="element" link_type="simple">
+<definition hotspot_x="25" version="0.70" height="30" hotspot_y="15" width="50" type="element" link_type="simple">
     <uuid uuid="{85b1d9c4-659c-49de-abcc-b067e93a62b0}"/>
     <names>
         <name lang="fr">Impression sur page</name>

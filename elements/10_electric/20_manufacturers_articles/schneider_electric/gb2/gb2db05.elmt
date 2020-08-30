@@ -1,4 +1,4 @@
-<definition height="60" link_type="master" width="40" version="0.80" type="element" orientation="dyyy" hotspot_x="20" hotspot_y="34">
+<definition height="60" link_type="master" width="40" version="0.80" type="element" hotspot_x="20" hotspot_y="34">
     <uuid uuid="{a9e1650d-f894-4952-acd8-107682b7baa4}"/>
     <names>
         <name lang="fr">GB2DB05</name>

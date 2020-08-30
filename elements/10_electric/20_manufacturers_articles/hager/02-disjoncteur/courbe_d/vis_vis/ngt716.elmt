@@ -1,4 +1,4 @@
-<definition width="50" height="70" hotspot_x="18" hotspot_y="40" link_type="master" orientation="dyyy" version="0.80" type="element">
+<definition width="50" height="70" hotspot_x="18" hotspot_y="40" link_type="master" version="0.80" type="element">
     <uuid uuid="{03f68dcf-4587-4146-a901-31b62042f545}"/>
     <names>
         <name lang="fr">NGT716  16A</name>

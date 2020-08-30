@@ -1,4 +1,4 @@
-<definition width="60" hotspot_x="30" type="element" link_type="simple" orientation="dyyy" version="0.5" height="100" hotspot_y="50">
+<definition width="60" hotspot_x="30" type="element" link_type="simple" version="0.5" height="100" hotspot_y="50">
     <uuid uuid="{e6cbe175-495a-4875-81a6-4bc0474c0f4f}"/>
     <names>
         <name lang="cs">Elektrická jímka ECS</name>

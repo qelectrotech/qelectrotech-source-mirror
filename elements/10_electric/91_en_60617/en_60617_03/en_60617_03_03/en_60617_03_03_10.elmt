@@ -1,4 +1,4 @@
-<definition hotspot_x="36" version="0.70" orientation="dyyy" height="50" hotspot_y="45" width="50" type="element" link_type="simple">
+<definition hotspot_x="36" version="0.70" height="50" hotspot_y="45" width="50" type="element" link_type="simple">
     <uuid uuid="{9eab2b4a-0985-418f-8815-60caa4b2db71}"/>
     <names>
         <name lang="fr">Connecteur, partie mobile d'un ensemble</name>

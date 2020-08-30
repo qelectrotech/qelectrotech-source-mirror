@@ -1,4 +1,4 @@
-<definition version="0.70" hotspot_y="192" orientation="dyyy" hotspot_x="65" link_type="simple" width="310" height="460" type="element">
+<definition version="0.70" hotspot_y="192" hotspot_x="65" link_type="simple" width="310" height="460" type="element">
     <uuid uuid="{4ec4966a-5455-4a51-bc3e-4f01f14e11a3}"/>
     <names>
         <name lang="fr">Switch Ethernet managé standard </name>

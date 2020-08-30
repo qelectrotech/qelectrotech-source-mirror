@@ -1,4 +1,4 @@
-<definition hotspot_x="124" height="260" type="element" version="0.80" orientation="dyyy" link_type="simple" width="240" hotspot_y="120">
+<definition hotspot_x="124" height="260" type="element" version="0.80" link_type="simple" width="240" hotspot_y="120">
     <uuid uuid="{72d1c830-b817-4869-952e-7d6e0d9d73ed}"/>
     <names>
         <name lang="fr">Façade SG1000</name>

@@ -1,4 +1,4 @@
-<definition height="110" link_type="master" hotspot_x="245" orientation="dyyy" hotspot_y="54" width="450" type="element" version="0.5">
+<definition height="110" link_type="master" hotspot_x="245" hotspot_y="54" width="450" type="element" version="0.5">
     <uuid uuid="{00535a00-1d3c-4a7b-92db-52a844d5335b}"/>
     <names>
         <name lang="nl">ATV61...M3(X)/N4(C)</name>

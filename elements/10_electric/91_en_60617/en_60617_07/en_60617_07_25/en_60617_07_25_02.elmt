@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="30" height="50" hotspot_y="24" hotspot_x="15" version="0.70" link_type="simple">
+<definition type="element" width="30" height="50" hotspot_y="24" hotspot_x="15" version="0.70" link_type="simple">
     <uuid uuid="{3888e611-9879-4c0b-b754-c468828278f3}"/>
     <names>
         <name lang="de">elektronisches Schütz (Halbleiter)</name>

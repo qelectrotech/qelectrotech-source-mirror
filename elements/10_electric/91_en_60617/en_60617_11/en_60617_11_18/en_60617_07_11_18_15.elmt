@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="50" link_type="simple" hotspot_x="45" width="50" hotspot_y="45">
+<definition type="element" version="0.70" height="50" link_type="simple" hotspot_x="45" width="50" hotspot_y="45">
     <uuid uuid="{d2ed26e6-2457-4cc6-8a0e-ec22ce4e7a67}"/>
     <names>
         <name lang="de">Anfluggleitwinkelfeuer, weiss/rot, einseitig

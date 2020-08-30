@@ -1,4 +1,4 @@
-<definition height="100" version="0.70" orientation="dyyy" width="50" hotspot_x="45" type="element" hotspot_y="95" link_type="simple">
+<definition height="100" version="0.70" width="50" hotspot_x="45" type="element" hotspot_y="95" link_type="simple">
     <uuid uuid="{66ee22ab-6440-44fa-a180-4aa47911858e}"/>
     <names>
         <name lang="fr">Cathode photoélectrique</name>

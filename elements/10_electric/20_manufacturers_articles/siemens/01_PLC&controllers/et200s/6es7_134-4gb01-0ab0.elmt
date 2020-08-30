@@ -1,4 +1,4 @@
-<definition width="190" orientation="dyyy" version="0.5" height="90" type="element" hotspot_y="36" link_type="simple" hotspot_x="15">
+<definition width="190" version="0.5" height="90" type="element" hotspot_y="36" link_type="simple" hotspot_x="15">
     <uuid uuid="{c360b250-9281-46fc-aded-fc970ad0dceb}"/>
     <names>
         <name lang="en">ET 200S 2AI 6ES7134-4GB01-0AB0</name>

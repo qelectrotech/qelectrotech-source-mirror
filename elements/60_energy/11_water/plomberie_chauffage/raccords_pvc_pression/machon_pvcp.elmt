@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="19" orientation="dyyy" width="40" height="30" hotspot_y="15" link_type="simple" version="0.51">
+<definition type="element" hotspot_x="19" width="40" height="30" hotspot_y="15" link_type="simple" version="0.51">
     <uuid uuid="{bd9c5a8f-e5a0-4284-9b00-0658d4357685}"/>
     <names>
         <name lang="fr">Manchon PVC pression</name>

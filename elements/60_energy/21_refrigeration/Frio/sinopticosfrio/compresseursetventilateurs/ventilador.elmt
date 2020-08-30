@@ -1,4 +1,4 @@
-<definition hotspot_y="12" link_type="simple" width="30" version="0.80" type="element" height="30" orientation="dyyy" hotspot_x="14">
+<definition hotspot_y="12" link_type="simple" width="30" version="0.80" type="element" height="30" hotspot_x="14">
     <uuid uuid="{bf91b73c-c55c-49d4-a0a4-a592cc1cdebe}"/>
     <names>
         <name lang="fr">Ventilateur</name>

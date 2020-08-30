@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.70" type="element" hotspot_y="15" height="30" link_type="simple" width="50" hotspot_x="25">
+<definition version="0.70" type="element" hotspot_y="15" height="30" link_type="simple" width="50" hotspot_x="25">
     <uuid uuid="{63daa4b7-3a3a-4c23-acb5-6e38527cc7cd}"/>
     <names>
         <name lang="fr">Gyrateur idéal</name>

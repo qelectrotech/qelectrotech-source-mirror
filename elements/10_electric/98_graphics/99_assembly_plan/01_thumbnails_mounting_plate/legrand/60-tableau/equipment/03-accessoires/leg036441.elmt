@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="simple" height="50" hotspot_y="25" width="40" orientation="dyyy" type="element" hotspot_x="20">
+<definition version="0.80" link_type="simple" height="50" hotspot_y="25" width="40" type="element" hotspot_x="20">
     <uuid uuid="{a83ea543-e5dd-41f6-a7fd-09326d7f025c}"/>
     <names>
         <name lang="fr">Clips écrou M5</name>

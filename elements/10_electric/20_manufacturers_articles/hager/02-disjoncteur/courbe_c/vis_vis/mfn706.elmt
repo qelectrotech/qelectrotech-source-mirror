@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="master" hotspot_y="40" height="70" orientation="dyyy" type="element" width="50" hotspot_x="18">
+<definition version="0.80" link_type="master" hotspot_y="40" height="70" type="element" width="50" hotspot_x="18">
     <uuid uuid="{73cc4d65-b7f7-49ca-9aeb-bfd37d813318}"/>
     <names>
         <name lang="fr">MFN706  6A</name>

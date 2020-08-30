@@ -1,4 +1,4 @@
-<definition width="50" hotspot_x="24" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="14">
+<definition width="50" hotspot_x="24" type="element" link_type="simple" version="0.5" height="30" hotspot_y="14">
     <uuid uuid="{0356f3f4-a074-4ef9-8662-b312389aa5cc}"/>
     <names>
         <name lang="cs">Velká láhev</name>

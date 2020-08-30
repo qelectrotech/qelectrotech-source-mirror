@@ -1,4 +1,4 @@
-<definition height="110" orientation="dyyy" version="0.80" type="element" hotspot_y="50" width="700" hotspot_x="176" link_type="simple">
+<definition height="110" version="0.80" type="element" hotspot_y="50" width="700" hotspot_x="176" link_type="simple">
     <uuid uuid="{68eb690c-3b1e-4b5d-b6ed-5c6f10dbdfb8}"/>
     <names>
         <name lang="en">DVP12SE11R (outputs)</name>

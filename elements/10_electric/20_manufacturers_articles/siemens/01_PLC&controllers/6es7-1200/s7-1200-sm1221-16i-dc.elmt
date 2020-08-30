@@ -1,4 +1,4 @@
-<definition height="340" type="element" width="140" link_type="simple" hotspot_x="65" orientation="dyyy" version="0.70" hotspot_y="235">
+<definition height="340" type="element" width="140" link_type="simple" hotspot_x="65" version="0.70" hotspot_y="235">
     <uuid uuid="{bc87e6d1-3256-4eec-8e70-ee45c8d0879f}"/>
     <names>
         <name lang="en">S7-1200 modul sm1221 16I DC</name>

@@ -1,4 +1,4 @@
-<definition width="460" height="100" link_type="simple" orientation="dyyy" hotspot_x="25" version="0.5" hotspot_y="24" type="element">
+<definition width="460" height="100" link_type="simple" hotspot_x="25" version="0.5" hotspot_y="24" type="element">
     <uuid uuid="{a12a3bca-a002-4c32-85e9-211b538390b1}"/>
     <names>
         <name lang="it">V1000</name>

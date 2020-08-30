@@ -1,4 +1,4 @@
-<definition width="320" hotspot_x="15" orientation="dyyy" height="110" type="element" version="0.5" link_type="simple" hotspot_y="43">
+<definition width="320" hotspot_x="15" height="110" type="element" version="0.5" link_type="simple" hotspot_y="43">
     <uuid uuid="{93aac1e7-0d99-4111-89c6-f1c2b8f004de}"/>
     <names>
         <name lang="es">S7-1500 CPU 1511C-1P 6ES 7511-1CK00-0AB0</name>

@@ -1,4 +1,4 @@
-<definition hotspot_x="44" version="0.70" orientation="dyyy" height="30" hotspot_y="15" width="90" type="element" link_type="simple">
+<definition hotspot_x="44" version="0.70" height="30" hotspot_y="15" width="90" type="element" link_type="simple">
     <uuid uuid="{80f3020d-515f-4f85-98fd-bc621da82afd}"/>
     <names>
         <name lang="fr">Conducteur sous écran</name>

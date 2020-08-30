@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="master" width="100" version="0.80" hotspot_y="34" type="element" height="80" hotspot_x="42">
+<definition link_type="master" width="100" version="0.80" hotspot_y="34" type="element" height="80" hotspot_x="42">
     <uuid uuid="{8bb0ba6c-cdca-4b77-9ecc-f3fe070bcd34}"/>
     <names>
         <name lang="nl">Lastscheider 1P+N</name>

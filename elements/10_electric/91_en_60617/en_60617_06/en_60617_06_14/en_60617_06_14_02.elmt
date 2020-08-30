@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" height="50" width="50" version="0.70" orientation="dyyy" hotspot_x="45" hotspot_y="45">
+<definition type="element" link_type="simple" height="50" width="50" version="0.70" hotspot_x="45" hotspot_y="45">
     <uuid uuid="{4a5b5e80-0f0f-4074-92aa-1773fbb654b6}"/>
     <names>
         <name lang="fr">Convertisseur DC/DC</name>

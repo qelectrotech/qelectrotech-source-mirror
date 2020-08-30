@@ -1,4 +1,4 @@
-<definition hotspot_x="22" type="element" height="30" version="0.80" width="40" orientation="dyyy" link_type="simple" hotspot_y="25">
+<definition hotspot_x="22" type="element" height="30" version="0.80" width="40" link_type="simple" hotspot_y="25">
     <uuid uuid="{08474f58-42cd-4003-a413-03436f69e12d}"/>
     <names>
         <name lang="de">Punktleuchte</name>

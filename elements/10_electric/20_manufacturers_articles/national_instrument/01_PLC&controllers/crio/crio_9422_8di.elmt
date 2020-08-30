@@ -1,4 +1,4 @@
-<definition width="50" height="140" link_type="simple" orientation="dyyy" hotspot_x="24" version="0.5" hotspot_y="76" type="element">
+<definition width="50" height="140" link_type="simple" hotspot_x="24" version="0.5" hotspot_y="76" type="element">
     <uuid uuid="{07917e36-86a9-4305-a2c4-9e9a5023d5bf}"/>
     <names>
         <name lang="it">cRIO 9422 - modulo 8 ingressi digitali</name>

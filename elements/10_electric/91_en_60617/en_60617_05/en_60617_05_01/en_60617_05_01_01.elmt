@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="25" hotspot_y="25" orientation="dyyy" type="element" height="30" width="30">
+<definition link_type="simple" version="0.70" hotspot_x="25" hotspot_y="25" type="element" height="30" width="30">
     <uuid uuid="{c34b5cd3-b730-4144-b49f-2b074b07e5f2}"/>
     <names>
         <name lang="fr">Région de semiconducteur avec une connexion</name>

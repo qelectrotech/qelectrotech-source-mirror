@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="30" hotspot_y="5" width="40" orientation="dyyy" height="20" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="30" hotspot_y="5" width="40" height="20" link_type="simple" type="element">
     <uuid uuid="{73f935b1-4d27-4787-89c6-8df62fe7fd77}"/>
     <names>
         <name lang="en">Increase in air pressure</name>

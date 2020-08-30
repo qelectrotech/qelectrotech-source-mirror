@@ -1,4 +1,4 @@
-<definition hotspot_x="24" height="40" type="element" orientation="dyyy" hotspot_y="20" version="0.80" link_type="simple" width="50">
+<definition hotspot_x="24" height="40" type="element" hotspot_y="20" version="0.80" link_type="simple" width="50">
     <uuid uuid="{a9520694-f35a-4fd9-ba37-130ae95ee234}"/>
     <names>
         <name lang="en">Spigot-and-socket joint</name>

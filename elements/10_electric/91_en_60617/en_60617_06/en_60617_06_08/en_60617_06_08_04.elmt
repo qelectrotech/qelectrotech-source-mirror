@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="65" hotspot_y="86" version="0.70" width="70" type="element" height="90">
+<definition link_type="simple" hotspot_x="65" hotspot_y="86" version="0.70" width="70" type="element" height="90">
     <uuid uuid="{3d465650-9a80-49e5-aed3-7dce51aa680e}"/>
     <names>
         <name lang="fr">Moteur asynchrone, triphasé, à stator monté en

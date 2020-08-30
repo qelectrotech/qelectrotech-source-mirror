@@ -1,4 +1,4 @@
-<definition hotspot_x="44" width="220" hotspot_y="5" version="0.5" orientation="dyyy" height="380" type="element" link_type="simple">
+<definition hotspot_x="44" width="220" hotspot_y="5" version="0.5" height="380" type="element" link_type="simple">
     <uuid uuid="{6cf1bda2-fee6-441b-b9de-f0d39d9f4c79}"/>
     <names>
         <name lang="en">S7-1200-cpu-1211-ac-dc-rel/03</name>

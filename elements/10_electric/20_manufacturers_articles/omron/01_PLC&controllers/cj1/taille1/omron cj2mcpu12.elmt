@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.70" width="90" height="290" hotspot_x="85" link_type="simple" hotspot_y="280" type="element">
+<definition version="0.70" width="90" height="290" hotspot_x="85" link_type="simple" hotspot_y="280" type="element">
     <uuid uuid="{f1545d5a-a14e-40ef-a06a-6ad78aef7154}"/>
     <names>
         <name lang="en">omron cj2mcpu12</name>

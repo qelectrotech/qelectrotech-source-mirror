@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.70" width="30" type="element" hotspot_y="44" link_type="simple" hotspot_x="14" height="70">
+<definition version="0.70" width="30" type="element" hotspot_y="44" link_type="simple" hotspot_x="14" height="70">
     <uuid uuid="{cab8cba1-0908-4b67-a21e-ea3592c27d38}"/>
     <names>
         <name lang="fr">Contact à deux directions avec position

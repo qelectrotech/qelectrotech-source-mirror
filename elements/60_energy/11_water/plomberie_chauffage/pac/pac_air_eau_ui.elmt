@@ -1,4 +1,4 @@
-<definition hotspot_y="27" type="element" link_type="simple" orientation="dyyy" hotspot_x="33" width="50" height="70" version="0.51">
+<definition hotspot_y="27" type="element" link_type="simple" hotspot_x="33" width="50" height="70" version="0.51">
     <uuid uuid="{65c567a8-5e32-495f-8b29-f267333d0367}"/>
     <names>
         <name lang="fr">Unité Intérieure Air/Eau</name>

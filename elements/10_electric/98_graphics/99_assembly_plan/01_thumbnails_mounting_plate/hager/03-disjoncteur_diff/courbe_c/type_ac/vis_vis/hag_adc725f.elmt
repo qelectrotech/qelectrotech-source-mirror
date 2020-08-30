@@ -1,4 +1,4 @@
-<definition hotspot_x="5" hotspot_y="4" height="210" version="0.80" orientation="dyyy" type="element" link_type="slave" width="90">
+<definition hotspot_x="5" hotspot_y="4" height="210" version="0.80" type="element" link_type="slave" width="90">
     <uuid uuid="{81782a89-ab14-4f2f-a876-938370e5accb}"/>
     <names>
         <name lang="fr">ADC 725F</name>

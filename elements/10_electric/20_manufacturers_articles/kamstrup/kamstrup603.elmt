@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.70" height="250" hotspot_x="25" hotspot_y="105" width="210" type="element" link_type="simple">
+<definition version="0.70" height="250" hotspot_x="25" hotspot_y="105" width="210" type="element" link_type="simple">
     <uuid uuid="{612e691f-c052-4d6a-8a81-f50e11afa4f7}"/>
     <names>
         <name lang="ca">Multical 603</name>

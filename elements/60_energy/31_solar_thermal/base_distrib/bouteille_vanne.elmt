@@ -1,4 +1,4 @@
-<definition width="110" hotspot_x="49" type="element" link_type="simple" orientation="dyyy" version="0.5" height="80" hotspot_y="42">
+<definition width="110" hotspot_x="49" type="element" link_type="simple" version="0.5" height="80" hotspot_y="42">
     <uuid uuid="{5af3bd16-3b44-4921-8645-4767461f2899}"/>
     <names>
         <name lang="cs">E zásobníky s uzávěrem</name>

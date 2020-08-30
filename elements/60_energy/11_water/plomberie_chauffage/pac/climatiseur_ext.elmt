@@ -1,4 +1,4 @@
-<definition hotspot_y="24" type="element" link_type="simple" orientation="dyyy" hotspot_x="44" width="90" height="60" version="0.51">
+<definition hotspot_y="24" type="element" link_type="simple" hotspot_x="44" width="90" height="60" version="0.51">
     <uuid uuid="{a986c803-fab9-4af5-a8c9-6bd02a4a07e7}"/>
     <names>
         <name lang="fr">Unité Extérieure</name>

@@ -1,4 +1,4 @@
-<definition width="450" orientation="dyyy" version="0.5" height="130" type="element" hotspot_y="36" link_type="simple" hotspot_x="15">
+<definition width="450" version="0.5" height="130" type="element" hotspot_y="36" link_type="simple" hotspot_x="15">
     <uuid uuid="{aaae32f5-3bb2-4150-8da1-a2a5ccd56128}"/>
     <names>
         <name lang="en">SM1223 6ES7223-1BL30-0XB0 PART1</name>

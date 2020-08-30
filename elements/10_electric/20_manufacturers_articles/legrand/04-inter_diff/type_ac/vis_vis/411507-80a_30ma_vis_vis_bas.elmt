@@ -1,4 +1,4 @@
-<definition hotspot_x="46" link_type="master" hotspot_y="36" orientation="dyyy" width="120" height="90" type="element" version="0.80">
+<definition hotspot_x="46" link_type="master" hotspot_y="36" width="120" height="90" type="element" version="0.80">
     <uuid uuid="{2629a310-f70a-4ec3-bba2-bdbf7400395b}"/>
     <names>
         <name lang="fr">411507 - Interrupteur différentiel AC 80A 30mA Haut-Vis/Bas-Vis</name>

@@ -1,4 +1,4 @@
-<definition hotspot_x="15" hotspot_y="21" orientation="dyyy" height="50" type="element" link_type="simple" width="30" version="0.5">
+<definition hotspot_x="15" hotspot_y="21" height="50" type="element" link_type="simple" width="30" version="0.5">
     <uuid uuid="{a66164c7-7f58-417b-ab73-6fb41c3abe12}"/>
     <names>
         <name lang="fr">Appareil électroménager</name>

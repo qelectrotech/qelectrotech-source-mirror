@@ -1,4 +1,4 @@
-<definition hotspot_y="50" orientation="dyyy" version="0.51" hotspot_x="50" link_type="simple" width="100" type="element" height="100">
+<definition hotspot_y="50" version="0.51" hotspot_x="50" link_type="simple" width="100" type="element" height="100">
     <uuid uuid="{f33cc8e6-eb58-4bb0-8835-0079c654f5ab}"/>
     <names>
         <name lang="de">PM3200</name>

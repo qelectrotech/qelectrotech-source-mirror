@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="50" height="90" hotspot_x="45" hotspot_y="85" orientation="dyyy" version="0.70">
+<definition link_type="simple" type="element" width="50" height="90" hotspot_x="45" hotspot_y="85" version="0.70">
     <uuid uuid="{18354d1a-d5dc-421a-a8e5-9a177b6225c0}"/>
     <names>
         <name lang="de">Fernspeise-Netzgerät</name>

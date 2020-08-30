@@ -1,4 +1,4 @@
-<definition width="50" height="70" type="element" hotspot_x="25" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="65">
+<definition width="50" height="70" type="element" hotspot_x="25" version="0.70" link_type="simple" hotspot_y="65">
     <uuid uuid="{c9c3aaa0-347b-43c3-a9b7-e81e9215937e}"/>
     <names>
         <name lang="de">Amperestundenzähler </name>

@@ -1,4 +1,4 @@
-<definition width="410" orientation="dyyy" hotspot_y="46" link_type="master" version="0.80" height="100" hotspot_x="39" type="element">
+<definition width="410" hotspot_y="46" link_type="master" version="0.80" height="100" hotspot_x="39" type="element">
     <uuid uuid="{e9a62824-1208-4af6-9b93-5933efbb1091}"/>
     <names>
         <name lang="it">Modulo N512/21</name>

@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="4" width="570" height="570" orientation="dyyy" link_type="terminal" version="0.80" hotspot_y="4">
+<definition type="element" hotspot_x="4" width="570" height="570" link_type="terminal" version="0.80" hotspot_y="4">
     <uuid uuid="{856673ae-8f42-4d2a-bc51-b69e2d1fd508}"/>
     <names>
         <name lang="fr">GD113A - Coffret Gamma+ 13 - 1 rangée</name>

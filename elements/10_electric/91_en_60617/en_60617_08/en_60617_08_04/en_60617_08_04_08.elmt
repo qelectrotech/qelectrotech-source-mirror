@@ -1,4 +1,4 @@
-<definition width="50" height="90" type="element" hotspot_x="25" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="85">
+<definition width="50" height="90" type="element" hotspot_x="25" version="0.70" link_type="simple" hotspot_y="85">
     <uuid uuid="{bc918633-571d-4984-9b49-d9f50b00679d}"/>
     <names>
         <name lang="de">Mehrtarif-Wattstundenzähler </name>

@@ -1,4 +1,4 @@
-<definition version="0.60" orientation="dyyy" hotspot_x="5" type="element" width="920" link_type="simple" height="90" hotspot_y="6">
+<definition version="0.60" hotspot_x="5" type="element" width="920" link_type="simple" height="90" hotspot_y="6">
     <uuid uuid="{ec34352f-7c22-40a5-815c-2e3dfea17cec}"/>
     <names>
         <name lang="en">input modulesTM3DM24R  1/2 Schneider</name>

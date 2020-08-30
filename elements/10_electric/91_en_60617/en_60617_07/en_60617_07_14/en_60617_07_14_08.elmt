@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="50" height="60" hotspot_y="35" hotspot_x="25" version="0.70" link_type="simple">
+<definition type="element" width="50" height="60" hotspot_y="35" hotspot_x="25" version="0.70" link_type="simple">
     <uuid uuid="{79bbc091-ac80-4d4b-a08e-8e6424f22cff}"/>
     <names>
         <name lang="de">Anlasser mit Thyristoren, stetig veränderbar</name>

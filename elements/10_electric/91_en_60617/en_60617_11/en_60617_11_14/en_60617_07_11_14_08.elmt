@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="50" link_type="simple" hotspot_x="22" width="40" hotspot_y="47">
+<definition type="element" version="0.70" height="50" link_type="simple" hotspot_x="22" width="40" hotspot_y="47">
     <uuid uuid="{a43feb13-b380-46c3-baa4-fe2e6c223f58}"/>
     <names>
         <name lang="de">Dimmer</name>

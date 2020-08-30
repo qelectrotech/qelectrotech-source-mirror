@@ -1,4 +1,4 @@
-<definition hotspot_x="20" height="50" type="element" orientation="dyyy" hotspot_y="24" version="0.80" link_type="simple" width="40">
+<definition hotspot_x="20" height="50" type="element" hotspot_y="24" version="0.80" link_type="simple" width="40">
     <uuid uuid="{3a2880c6-a2fe-496b-9872-cff8d442e38b}"/>
     <names>
         <name lang="en">Sorption trap</name>

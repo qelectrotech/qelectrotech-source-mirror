@@ -1,4 +1,4 @@
-<definition type="element" version="0.70" height="250" hotspot_x="25" width="70" link_type="simple" orientation="dyyy" hotspot_y="126">
+<definition type="element" version="0.70" height="250" hotspot_x="25" width="70" link_type="simple" hotspot_y="126">
     <uuid uuid="{090e1023-ba82-416e-96b2-1cd3d17509a3}"/>
     <names>
         <name lang="en">PMXCDA 0400</name>

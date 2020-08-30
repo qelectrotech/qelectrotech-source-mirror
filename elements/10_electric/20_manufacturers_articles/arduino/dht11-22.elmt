@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" hotspot_y="30" width="60" hotspot_x="30" height="110" orientation="dyyy" version="0.80">
+<definition link_type="simple" type="element" hotspot_y="30" width="60" hotspot_x="30" height="110" version="0.80">
     <uuid uuid="{dfc77f95-af11-44ad-b42c-420c58453e7c}"/>
     <names>
         <name lang="cs">Čidlo DHT 11/22</name>

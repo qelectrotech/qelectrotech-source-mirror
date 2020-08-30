@@ -1,4 +1,4 @@
-<definition height="70" version="0.70" orientation="dyyy" width="30" hotspot_x="15" type="element" hotspot_y="65" link_type="simple">
+<definition height="70" version="0.70" width="30" hotspot_x="15" type="element" hotspot_y="65" link_type="simple">
     <uuid uuid="{0ca70ef9-61e0-4aa9-a0eb-7aea657cd3d0}"/>
     <names>
         <name lang="fr">Electrode servant indifféremment d'anode ou

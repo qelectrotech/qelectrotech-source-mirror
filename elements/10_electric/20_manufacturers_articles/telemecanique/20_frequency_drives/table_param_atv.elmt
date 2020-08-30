@@ -1,4 +1,4 @@
-<definition type="element" version="0.5" hotspot_y="42" width="210" height="190" orientation="dyyy" link_type="simple" hotspot_x="15">
+<definition type="element" version="0.5" hotspot_y="42" width="210" height="190" link_type="simple" hotspot_x="15">
     <uuid uuid="{6e50bcb3-19af-4458-8dca-2e424a2f6474}"/>
     <names>
         <name lang="pl">Parametry ATV11</name>

@@ -1,4 +1,4 @@
-<definition type="element" width="30" height="10" version="0.70" hotspot_x="15" hotspot_y="5" orientation="dyyy" link_type="simple">
+<definition type="element" width="30" height="10" version="0.70" hotspot_x="15" hotspot_y="5" link_type="simple">
     <uuid uuid="{29d30dbf-6a4f-4c7e-bf34-d5a25e863322}"/>
     <names>
         <name lang="fr">Propagation dans un seul sens Ecoulement dans un seul sens (énergie, signal, information)</name>

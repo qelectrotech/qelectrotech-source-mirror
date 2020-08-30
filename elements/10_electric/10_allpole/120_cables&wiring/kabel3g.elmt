@@ -1,4 +1,4 @@
-<definition width="70" hotspot_x="35" hotspot_y="5" orientation="dyyy" version="0.80" type="element" height="10" link_type="simple">
+<definition width="70" hotspot_x="35" hotspot_y="5" version="0.80" type="element" height="10" link_type="simple">
     <uuid uuid="{3cfdc90d-f114-4ecd-9ab2-37786c279287}"/>
     <names>
         <name lang="de">Kabel 3G</name>

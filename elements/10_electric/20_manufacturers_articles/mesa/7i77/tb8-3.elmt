@@ -1,4 +1,4 @@
-<definition hotspot_x="351" hotspot_y="45" type="element" orientation="dyyy" height="110" version="0.60" width="720" link_type="simple">
+<definition hotspot_x="351" hotspot_y="45" type="element" height="110" version="0.60" width="720" link_type="simple">
     <uuid uuid="{410f1733-1c0e-4b85-9cc6-04fc9969ef7f}"/>
     <names>
         <name lang="en">TB8_FIELD_IO Part 3</name>

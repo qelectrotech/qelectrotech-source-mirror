@@ -1,4 +1,4 @@
-<definition hotspot_y="27" version="0.51" width="100" height="40" type="element" orientation="dyyy" link_type="simple" hotspot_x="65">
+<definition hotspot_y="27" version="0.51" width="100" height="40" type="element" link_type="simple" hotspot_x="65">
     <uuid uuid="{7a3cb11c-51b9-4c39-a2f5-9dfc1ad26488}"/>
     <names>
         <name lang="fr">Vanne compteur PE</name>

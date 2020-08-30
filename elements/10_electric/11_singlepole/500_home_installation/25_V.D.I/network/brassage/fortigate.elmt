@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="215" link_type="simple" orientation="dyyy" version="0.80" hotspot_y="35" width="440" height="80">
+<definition type="element" hotspot_x="215" link_type="simple" version="0.80" hotspot_y="35" width="440" height="80">
     <uuid uuid="{c34e2a02-83f4-4262-9717-77ee772d242d}"/>
     <names>
         <name lang="fr">Fortigate 20C</name>

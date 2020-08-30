@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="15" hotspot_y="10" orientation="dyyy" type="element" height="20" width="30">
+<definition link_type="simple" version="0.70" hotspot_x="15" hotspot_y="10" type="element" height="20" width="30">
     <uuid uuid="{317298ee-bacd-4409-ac4a-58e3892426cc}"/>
     <names>
         <name lang="fr">Jonction influeçant une région semiconductrice

@@ -1,4 +1,4 @@
-<definition hotspot_x="54" version="0.70" orientation="dyyy" height="10" hotspot_y="5" width="100" type="element" link_type="simple">
+<definition hotspot_x="54" version="0.70" height="10" hotspot_y="5" width="100" type="element" link_type="simple">
     <uuid uuid="{c6c21005-e084-4e69-8b4c-a884149838ac}"/>
     <names>
         <name lang="fr">Connecteur par pression en bout</name>

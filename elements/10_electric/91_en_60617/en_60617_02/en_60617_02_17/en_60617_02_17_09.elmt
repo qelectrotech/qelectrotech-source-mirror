@@ -1,4 +1,4 @@
-<definition hotspot_x="10" version="0.70" orientation="dyyy" height="20" hotspot_y="10" width="20" type="element" link_type="simple">
+<definition hotspot_x="10" version="0.70" height="20" hotspot_y="10" width="20" type="element" link_type="simple">
     <uuid uuid="{e44ffa96-7f2a-4d6f-9566-4c35b31166a5}"/>
     <names>
         <name lang="fr">Numérique</name>

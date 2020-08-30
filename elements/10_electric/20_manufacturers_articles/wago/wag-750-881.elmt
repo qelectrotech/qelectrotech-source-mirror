@@ -1,4 +1,4 @@
-<definition width="240" orientation="dyyy" version="0.51" link_type="simple" hotspot_y="73" height="160" type="element" hotspot_x="115">
+<definition width="240" version="0.51" link_type="simple" hotspot_y="73" height="160" type="element" hotspot_x="115">
     <uuid uuid="{cbd1bd17-f3e6-4a2c-ba9c-0983a99deed1}"/>
     <names>
         <name lang="en">Wago 750-881</name>

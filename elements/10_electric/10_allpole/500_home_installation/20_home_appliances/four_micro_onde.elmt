@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="14" link_type="simple" type="element" height="50" version="0.80" hotspot_y="14" width="30">
+<definition hotspot_x="14" link_type="simple" type="element" height="50" version="0.80" hotspot_y="14" width="30">
     <uuid uuid="{1827eb12-85e8-41e0-9bdd-46c490787a10}"/>
     <names>
         <name lang="cs">Mikrovlnná trouba</name>

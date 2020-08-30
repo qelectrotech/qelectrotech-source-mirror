@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="92" version="0.5" link_type="simple" type="element" hotspot_y="7" height="20" width="140">
+<definition hotspot_x="92" version="0.5" link_type="simple" type="element" hotspot_y="7" height="20" width="140">
     <uuid uuid="{b2769ca2-e330-4c19-b526-b04142a42e65}"/>
     <names>
         <name lang="en">R1 470k ohm</name>

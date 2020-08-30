@@ -1,4 +1,4 @@
-<definition height="40" version="0.5" link_type="simple" width="30" orientation="dyyy" hotspot_x="11" hotspot_y="24" type="element">
+<definition height="40" version="0.5" link_type="simple" width="30" hotspot_x="11" hotspot_y="24" type="element">
     <uuid uuid="{fd2ecf22-be85-423e-a5e2-822e3e13bb1c}"/>
     <names>
         <name lang="de">Temperaturdiode</name>

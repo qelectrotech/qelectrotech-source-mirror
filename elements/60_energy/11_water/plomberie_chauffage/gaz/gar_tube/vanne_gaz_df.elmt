@@ -1,4 +1,4 @@
-<definition hotspot_y="26" type="element" link_type="simple" orientation="dyyy" hotspot_x="22" width="50" height="40" version="0.51">
+<definition hotspot_y="26" type="element" link_type="simple" hotspot_x="22" width="50" height="40" version="0.51">
     <uuid uuid="{a7afaedd-2218-4420-9e82-194603b9710f}"/>
     <names>
         <name lang="fr">Vanne à sphère DF Gaz</name>

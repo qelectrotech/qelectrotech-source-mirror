@@ -1,4 +1,4 @@
-<definition width="40" height="60" link_type="master" orientation="dyyy" hotspot_x="14" version="0.5" hotspot_y="29" type="element">
+<definition width="40" height="60" link_type="master" hotspot_x="14" version="0.5" hotspot_y="29" type="element">
     <uuid uuid="{3ca3b751-5530-4169-988f-039a72d2bde7}"/>
     <names>
         <name lang="de">HDE-M1</name>

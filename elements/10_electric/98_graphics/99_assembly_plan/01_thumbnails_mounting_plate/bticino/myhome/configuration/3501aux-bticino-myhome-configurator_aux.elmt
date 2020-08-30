@@ -1,4 +1,4 @@
-<definition version="0.70" link_type="simple" hotspot_x="5" hotspot_y="29" width="10" height="40" orientation="dyyy" type="element">
+<definition version="0.70" link_type="simple" hotspot_x="5" hotspot_y="29" width="10" height="40" type="element">
     <uuid uuid="{67dbe0d5-0bb7-4f1e-8c15-db7d1ed96bf3}"/>
     <names>
         <name lang="fr">3501/AUX - Configurateur AUX</name>

@@ -1,4 +1,4 @@
-<definition hotspot_x="25" version="0.70" orientation="dyyy" height="10" hotspot_y="2" width="50" type="element" link_type="simple">
+<definition hotspot_x="25" version="0.70" height="10" hotspot_y="2" width="50" type="element" link_type="simple">
     <uuid uuid="{53309852-85c4-4017-8404-e234fbc91b25}"/>
     <names>
         <name lang="fr">Crantage

@@ -1,4 +1,4 @@
-<definition width="20" hotspot_x="8" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="14">
+<definition width="20" hotspot_x="8" type="element" link_type="simple" version="0.5" height="30" hotspot_y="14">
     <uuid uuid="{09ad5005-734b-4dcf-8842-b5c5f78f19ae}"/>
     <names>
         <name lang="cs">Gravitační pojistný ventil</name>

@@ -1,4 +1,4 @@
-<definition width="100" hotspot_x="42" hotspot_y="34" orientation="dyyy" link_type="master" version="0.80" type="element" height="80">
+<definition width="100" hotspot_x="42" hotspot_y="34" link_type="master" version="0.80" type="element" height="80">
     <uuid uuid="{81f32780-d71a-432f-a792-9f5561531a11}"/>
     <names>
         <name lang="fr">411556 - Interrupteur différentiel A 63A 30mA Haut-Vis/Bas-Vis</name>

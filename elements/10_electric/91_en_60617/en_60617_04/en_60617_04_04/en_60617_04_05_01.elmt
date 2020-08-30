@@ -1,4 +1,4 @@
-<definition width="10" height="30" type="element" hotspot_x="4" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="6">
+<definition width="10" height="30" type="element" hotspot_x="4" version="0.70" link_type="simple" hotspot_y="6">
     <uuid uuid="{5ccda0b2-4501-4045-81b8-03f660abf741}"/>
     <names>
         <name lang="de">Magnetkern</name>

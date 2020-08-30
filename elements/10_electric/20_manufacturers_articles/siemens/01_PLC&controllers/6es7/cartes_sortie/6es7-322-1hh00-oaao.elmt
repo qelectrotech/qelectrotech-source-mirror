@@ -1,4 +1,4 @@
-<definition hotspot_x="5" width="1000" hotspot_y="9" version="0.5" orientation="dyyy" height="180" type="element" link_type="simple">
+<definition hotspot_x="5" width="1000" hotspot_y="9" version="0.5" height="180" type="element" link_type="simple">
     <uuid uuid="{f2c8dfaf-a1de-4bc0-9cdc-3f85afa5e15a}"/>
     <names>
         <name lang="pt">6ES7 322-1HH00-OAAO</name>

@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="40" hotspot_y="15" orientation="dyyy" height="30" version="0.70" hotspot_x="29">
+<definition link_type="simple" type="element" width="40" hotspot_y="15" height="30" version="0.70" hotspot_x="29">
     <uuid uuid="{801729e0-cd3c-4adc-b653-64a723360ad0}"/>
     <names>
         <name lang="fr">Commande par clef</name>

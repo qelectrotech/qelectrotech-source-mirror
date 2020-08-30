@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="50" height="60" hotspot_y="35" hotspot_x="25" version="0.70" link_type="simple">
+<definition type="element" width="50" height="60" hotspot_y="35" hotspot_x="25" version="0.70" link_type="simple">
     <uuid uuid="{bc16425d-e1ba-4506-a189-67760ecb95b2}"/>
     <names>
         <name lang="de">Anlasser (Blocksymbol), stetig veränderbar</name>

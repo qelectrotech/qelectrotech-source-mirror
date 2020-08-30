@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="35" hotspot_y="35" orientation="dyyy" type="element" height="80" width="60">
+<definition link_type="simple" version="0.70" hotspot_x="35" hotspot_y="35" type="element" height="80" width="60">
     <uuid uuid="{47aa7803-fc8f-4460-964a-0ba23095c3cd}"/>
     <names>
         <name lang="fr">Transistor IGBT de type à déplétion, canal N</name>

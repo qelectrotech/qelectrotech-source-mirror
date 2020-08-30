@@ -1,4 +1,4 @@
-<definition height="80" hotspot_x="5" link_type="simple" version="0.80" type="element" hotspot_y="5" orientation="dyyy" width="230">
+<definition height="80" hotspot_x="5" link_type="simple" version="0.80" type="element" hotspot_y="5" width="230">
     <uuid uuid="{4e1edf0f-faa5-4ef0-8b23-1d67c692e8f7}"/>
     <names>
         <name lang="fr">TA-SLIDER750</name>

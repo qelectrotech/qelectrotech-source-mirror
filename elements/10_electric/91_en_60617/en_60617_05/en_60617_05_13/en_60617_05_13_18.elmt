@@ -1,4 +1,4 @@
-<definition hotspot_x="95" hotspot_y="84" orientation="dyyy" type="element" version="0.70" height="110" link_type="simple" width="170">
+<definition hotspot_x="95" hotspot_y="84" type="element" version="0.70" height="110" link_type="simple" width="170">
     <uuid uuid="{527f8ec7-f0bc-4f7d-87ca-438d399172d4}"/>
     <names>
         <name lang="de">Magnetron mit Spannungsabstimmung

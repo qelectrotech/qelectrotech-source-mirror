@@ -1,4 +1,4 @@
-<definition width="50" hotspot_x="24" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="23">
+<definition width="50" hotspot_x="24" type="element" link_type="simple" version="0.5" height="40" hotspot_y="23">
     <uuid uuid="{a384520a-7cb0-40c6-a2cd-4d3eef74f50b}"/>
     <names>
         <name lang="cs">Zpětný tok</name>

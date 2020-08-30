@@ -1,4 +1,4 @@
-<definition hotspot_x="85" hotspot_y="316" height="600" version="0.80" orientation="dyyy" type="element" link_type="slave" width="810">
+<definition hotspot_x="85" hotspot_y="316" height="600" version="0.80" type="element" link_type="slave" width="810">
     <uuid uuid="{9d771d88-4b85-4c02-898c-0ee4ea94820a}"/>
     <names>
         <name lang="it">Frontale S510</name>

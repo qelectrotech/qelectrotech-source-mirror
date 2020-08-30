@@ -1,4 +1,4 @@
-<definition orientation="dyyy" height="150" link_type="master" width="690" hotspot_x="4" type="element" version="0.70" hotspot_y="9">
+<definition height="150" link_type="master" width="690" hotspot_x="4" type="element" version="0.70" hotspot_y="9">
     <uuid uuid="{50a29bd9-83e6-43c9-bd42-3b2db70d0436}"/>
     <names>
         <name lang="fr">SCHNEIDER ATV630U15N4</name>

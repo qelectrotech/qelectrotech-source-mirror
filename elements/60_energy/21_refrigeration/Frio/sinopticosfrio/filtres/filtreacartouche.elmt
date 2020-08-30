@@ -1,4 +1,4 @@
-<definition width="40" hotspot_x="26" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="14">
+<definition width="40" hotspot_x="26" type="element" link_type="simple" version="0.5" height="30" hotspot_y="14">
     <uuid uuid="{a75c1da4-4fd2-4495-b0c8-1ec4136e763f}"/>
     <names>
         <name lang="cs">Vložkový filtr</name>

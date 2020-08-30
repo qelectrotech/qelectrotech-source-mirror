@@ -1,4 +1,4 @@
-<definition width="50" height="140" link_type="simple" orientation="dyyy" hotspot_x="23" version="0.5" hotspot_y="76" type="element">
+<definition width="50" height="140" link_type="simple" hotspot_x="23" version="0.5" hotspot_y="76" type="element">
     <uuid uuid="{869ec3a0-d262-42e3-aeab-3d0bec27ec4c}"/>
     <names>
         <name lang="it">cRIO 9217 - modulo 4 ingressi analogici 100Ω</name>

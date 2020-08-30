@@ -1,4 +1,4 @@
-<definition hotspot_y="28" type="element" height="50" width="40" hotspot_x="19" orientation="dyyy" link_type="simple" version="0.5">
+<definition hotspot_y="28" type="element" height="50" width="40" hotspot_x="19" link_type="simple" version="0.5">
     <uuid uuid="{e8e1f7f1-95b7-4f25-bce5-5e32bff5a6da}"/>
     <names>
         <name lang="cs">Počítadlo varhodin</name>

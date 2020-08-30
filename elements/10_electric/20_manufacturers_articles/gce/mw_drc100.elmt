@@ -1,4 +1,4 @@
-<definition version="0.80" width="220" hotspot_x="50" height="150" orientation="dyyy" hotspot_y="5" link_type="terminal" type="element">
+<definition version="0.80" width="220" hotspot_x="50" height="150" hotspot_y="5" link_type="terminal" type="element">
     <uuid uuid="{1454d5c1-53d8-4d3c-8b36-6b7dd5a382dc}"/>
     <names>
         <name lang="fr">Alimentation 12V</name>

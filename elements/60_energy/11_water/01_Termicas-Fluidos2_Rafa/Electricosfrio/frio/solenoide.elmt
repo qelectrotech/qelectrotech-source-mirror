@@ -1,4 +1,4 @@
-<definition width="60" orientation="dyyy" hotspot_y="24" link_type="simple" version="0.80" height="50" hotspot_x="20" type="element">
+<definition width="60" hotspot_y="24" link_type="simple" version="0.80" height="50" hotspot_x="20" type="element">
     <uuid uuid="{bcc981a6-e475-4842-80dd-58dc66691d23}"/>
     <names>
         <name lang="fr">Solenoïde</name>

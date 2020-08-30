@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="47" version="0.5" link_type="simple" type="element" hotspot_y="31" height="60" width="150">
+<definition hotspot_x="47" version="0.5" link_type="simple" type="element" hotspot_y="31" height="60" width="150">
     <uuid uuid="{0f39208b-ceed-4189-927a-a1c269be19e7}"/>
     <names>
         <name lang="en">4PDT on-on-on</name>

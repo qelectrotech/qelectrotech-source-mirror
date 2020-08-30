@@ -1,4 +1,4 @@
-<definition width="160" hotspot_y="82" link_type="simple" height="90" hotspot_x="75" type="element" orientation="dyyy" version="0.70">
+<definition width="160" hotspot_y="82" link_type="simple" height="90" hotspot_x="75" type="element" version="0.70">
     <uuid uuid="{e5dc8b43-8f7f-4f7b-aa74-31b5588f127e}"/>
     <names>
         <name lang="cs">Tlakové čidlo Vegabar 52</name>

@@ -1,4 +1,4 @@
-<definition width="60" type="element" hotspot_x="12" version="0.5" orientation="dyyy" hotspot_y="43" link_type="simple" height="90">
+<definition width="60" type="element" hotspot_x="12" version="0.5" hotspot_y="43" link_type="simple" height="90">
     <uuid uuid="{4dde1974-122b-4400-91ad-feac6333f104}"/>
     <names>
         <name lang="fr">Disjoncteur tripolaire</name>

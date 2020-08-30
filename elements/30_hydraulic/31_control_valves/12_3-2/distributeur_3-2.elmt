@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="32" hotspot_y="25" width="70" orientation="dyyy" height="50" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="32" hotspot_y="25" width="70" height="50" link_type="simple" type="element">
     <uuid uuid="{40b5862f-66f0-4239-923a-57bde786772a}"/>
     <names>
         <name lang="en">Control valve 3-2</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="20" height="70" hotspot_y="44" hotspot_x="13" version="0.70" link_type="simple">
+<definition type="element" width="20" height="70" hotspot_y="44" hotspot_x="13" version="0.70" link_type="simple">
     <uuid uuid="{565a1bc3-2cb1-4087-9c06-1cd78210ffba}"/>
     <names>
         <name lang="de">Schütz,

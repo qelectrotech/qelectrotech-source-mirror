@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" width="90" version="0.80" hotspot_y="5" type="element" height="210" hotspot_x="5">
+<definition link_type="simple" width="90" version="0.80" hotspot_y="5" type="element" height="210" hotspot_x="5">
     <uuid uuid="{ef9c610f-c06a-4690-b882-bd31f6718a7f}"/>
     <names>
         <name lang="fr">30mA</name>

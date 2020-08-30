@@ -1,4 +1,4 @@
-<definition hotspot_x="45" version="0.70" orientation="dyyy" height="30" hotspot_y="15" width="70" type="element" link_type="simple">
+<definition hotspot_x="45" version="0.70" height="30" hotspot_y="15" width="70" type="element" link_type="simple">
     <uuid uuid="{f1297490-28ea-489e-8637-b7b5dfba9923}"/>
     <names>
         <name lang="fr">Frein desserré</name>

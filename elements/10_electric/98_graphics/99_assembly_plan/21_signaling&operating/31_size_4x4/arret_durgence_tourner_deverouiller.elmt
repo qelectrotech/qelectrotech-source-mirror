@@ -1,4 +1,4 @@
-<definition width="90" link_type="simple" version="0.5" hotspot_x="45" orientation="dyyy" height="90" hotspot_y="45" type="element">
+<definition width="90" link_type="simple" version="0.5" hotspot_x="45" height="90" hotspot_y="45" type="element">
     <uuid uuid="{3705af81-f07f-46ce-be6c-be035effb5b5}"/>
     <names>
         <name lang="nl">Knop Noodstop draai reset</name>

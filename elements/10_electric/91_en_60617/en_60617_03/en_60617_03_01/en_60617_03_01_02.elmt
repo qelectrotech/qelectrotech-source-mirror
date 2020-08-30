@@ -1,4 +1,4 @@
-<definition hotspot_x="44" version="0.70" orientation="dyyy" height="30" hotspot_y="15" width="90" type="element" link_type="simple">
+<definition hotspot_x="44" version="0.70" height="30" hotspot_y="15" width="90" type="element" link_type="simple">
     <uuid uuid="{81ea324b-c358-4a63-86ea-a9f5b443f403}"/>
     <names>
         <name lang="fr">Groupe de liaisons, pour exemple trois</name>

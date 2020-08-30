@@ -1,4 +1,4 @@
-<definition type="element" width="330" version="0.70" orientation="dyyy" link_type="simple" hotspot_y="57" hotspot_x="245" height="100">
+<definition type="element" width="330" version="0.70" link_type="simple" hotspot_y="57" hotspot_x="245" height="100">
     <uuid uuid="{2ad9456b-fc83-4f62-ab9b-e5a42a3034bc}"/>
     <names>
         <name lang="hu">Siemens MicroMaster 410</name>

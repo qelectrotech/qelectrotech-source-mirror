@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="15" hotspot_y="44" orientation="dyyy" type="element" height="50" width="30">
+<definition link_type="simple" version="0.70" hotspot_x="15" hotspot_y="44" type="element" height="50" width="30">
     <uuid uuid="{a80ff565-00bd-4407-9277-47c56cc6a95c}"/>
     <names>
         <name lang="fr">Diode, thyristor, bloqué en inverse</name>

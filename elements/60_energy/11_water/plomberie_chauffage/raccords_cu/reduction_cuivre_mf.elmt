@@ -1,4 +1,4 @@
-<definition version="0.51" type="element" height="20" orientation="dyyy" link_type="simple" hotspot_x="10" width="30" hotspot_y="10">
+<definition version="0.51" type="element" height="20" link_type="simple" hotspot_x="10" width="30" hotspot_y="10">
     <uuid uuid="{be83413f-19fd-4e9c-b821-82c5f774ca23}"/>
     <names>
         <name lang="fr">Réduction Cuivre MF</name>

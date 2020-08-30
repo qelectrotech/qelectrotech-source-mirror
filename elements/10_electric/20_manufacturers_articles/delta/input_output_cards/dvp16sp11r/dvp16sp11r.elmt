@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" height="110" version="0.80" link_type="simple" width="510" hotspot_y="55" hotspot_x="130">
+<definition type="element" height="110" version="0.80" link_type="simple" width="510" hotspot_y="55" hotspot_x="130">
     <uuid uuid="{d333466c-0c86-4243-bc95-faea98ec036b}"/>
     <names>
         <name lang="pl">DVP16SP11R</name>

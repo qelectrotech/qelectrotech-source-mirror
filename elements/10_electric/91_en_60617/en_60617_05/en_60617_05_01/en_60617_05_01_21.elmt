@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="6" hotspot_y="15" orientation="dyyy" type="element" height="50" width="20">
+<definition link_type="simple" version="0.70" hotspot_x="6" hotspot_y="15" type="element" height="50" width="20">
     <uuid uuid="{63d8795e-b021-43f6-b746-ffba8ad4f57b}"/>
     <names>
         <name lang="fr">Région intrinsèque entre deux régions de type

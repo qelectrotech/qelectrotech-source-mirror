@@ -1,4 +1,4 @@
-<definition height="90" version="0.5" link_type="simple" width="100" orientation="dyyy" hotspot_x="58" hotspot_y="45" type="element">
+<definition height="90" version="0.5" link_type="simple" width="100" hotspot_x="58" hotspot_y="45" type="element">
     <uuid uuid="{74b28c3e-f380-498f-ae87-3dbe44187236}"/>
     <names>
         <name lang="de">Operaționsverstärker 3 Anschlüsse</name>

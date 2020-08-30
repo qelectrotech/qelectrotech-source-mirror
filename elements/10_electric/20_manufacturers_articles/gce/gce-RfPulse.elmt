@@ -1,4 +1,4 @@
-<definition type="element" width="80" hotspot_y="74" link_type="terminal" hotspot_x="30" height="150" orientation="dyyy" version="0.80">
+<definition type="element" width="80" hotspot_y="74" link_type="terminal" hotspot_x="30" height="150" version="0.80">
     <uuid uuid="{464550d9-0cb5-45c0-8f16-8a8409d96296}"/>
     <names>
         <name lang="fr">RF pulse</name>

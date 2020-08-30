@@ -1,4 +1,4 @@
-<definition width="70" orientation="dyyy" version="0.5" height="60" type="element" hotspot_y="27" link_type="simple" hotspot_x="44">
+<definition width="70" version="0.5" height="60" type="element" hotspot_y="27" link_type="simple" hotspot_x="44">
     <uuid uuid="{90f11615-a2f2-4324-8d2c-c2a9b7377dfa}"/>
     <names>
         <name lang="it">Motore trifase PE + BRAKE</name>

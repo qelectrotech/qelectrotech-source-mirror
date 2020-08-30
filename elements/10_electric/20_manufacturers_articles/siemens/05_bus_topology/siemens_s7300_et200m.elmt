@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.51" width="290" height="130" type="element" hotspot_x="4" link_type="simple" hotspot_y="2">
+<definition version="0.51" width="290" height="130" type="element" hotspot_x="4" link_type="simple" hotspot_y="2">
     <uuid uuid="{62fa8fac-059f-4149-b128-504f4c4414b0}"/>
     <names>
         <name lang="en">Siemens S7-300 ET200M</name>

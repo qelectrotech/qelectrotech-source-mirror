@@ -1,4 +1,4 @@
-<definition hotspot_x="45" hotspot_y="45" orientation="dyyy" height="50" link_type="simple" version="0.70" type="element" width="50">
+<definition hotspot_x="45" hotspot_y="45" height="50" link_type="simple" version="0.70" type="element" width="50">
     <uuid uuid="{e30a6bef-5704-4fae-a50e-7667c04fd567}"/>
     <names>
         <name lang="de">Kraftwerk mit Erdwärme betrieben,

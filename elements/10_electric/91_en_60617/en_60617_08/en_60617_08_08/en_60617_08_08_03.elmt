@@ -1,4 +1,4 @@
-<definition width="50" height="50" type="element" hotspot_x="25" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="45">
+<definition width="50" height="50" type="element" hotspot_x="25" version="0.70" link_type="simple" hotspot_y="45">
     <uuid uuid="{7d2254db-7479-4730-b602-176bc1bd57b3}"/>
     <names>
         <name lang="de">Uhr mit Kontaktgebe</name>

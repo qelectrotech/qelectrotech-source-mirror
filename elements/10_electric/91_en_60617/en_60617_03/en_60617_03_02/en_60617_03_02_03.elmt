@@ -1,4 +1,4 @@
-<definition hotspot_x="65" version="0.70" orientation="dyyy" height="40" hotspot_y="35" width="130" type="element" link_type="simple">
+<definition hotspot_x="65" version="0.70" height="40" hotspot_y="35" width="130" type="element" link_type="simple">
     <uuid uuid="{7372c54a-66d5-45ea-8f13-42da864b65b5}"/>
     <names>
         <name lang="fr">Barrette à bornes</name>

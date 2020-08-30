@@ -1,4 +1,4 @@
-<definition type="element" orientation="dyyy" version="0.51" link_type="simple" hotspot_x="55" width="130" hotspot_y="36" height="70">
+<definition type="element" version="0.51" link_type="simple" hotspot_x="55" width="130" hotspot_y="36" height="70">
     <uuid uuid="{370ede7a-c391-4e65-b603-38928379a6bb}"/>
     <names>
         <name lang="en">DS-W-18 (042100300)</name>

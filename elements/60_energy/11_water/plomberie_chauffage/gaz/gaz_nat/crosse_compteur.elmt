@@ -1,4 +1,4 @@
-<definition height="50" hotspot_x="42" version="0.51" width="70" type="element" orientation="dyyy" link_type="simple" hotspot_y="12">
+<definition height="50" hotspot_x="42" version="0.51" width="70" type="element" link_type="simple" hotspot_y="12">
     <uuid uuid="{7065dcef-5111-4fa6-be5d-f8e59e760a03}"/>
     <names>
         <name lang="fr">Crosse Cu Compteur</name>

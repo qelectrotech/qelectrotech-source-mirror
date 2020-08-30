@@ -1,4 +1,4 @@
-<definition width="190" height="110" link_type="simple" orientation="dyyy" hotspot_x="85" version="0.5" hotspot_y="39" type="element">
+<definition width="190" height="110" link_type="simple" hotspot_x="85" version="0.5" hotspot_y="39" type="element">
     <uuid uuid="{7fa83c40-2876-415f-9aae-a45d1ca0dc1e}"/>
     <names>
         <name lang="it">SR202AM</name>

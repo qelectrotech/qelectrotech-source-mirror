@@ -1,4 +1,4 @@
-<definition type="element" width="290" version="0.70" orientation="dyyy" link_type="simple" hotspot_y="49" hotspot_x="85" height="100">
+<definition type="element" width="290" version="0.70" link_type="simple" hotspot_y="49" hotspot_x="85" height="100">
     <uuid uuid="{886589c0-3e96-46d4-a2d5-801404443156}"/>
     <names>
         <name lang="hu">TLS3 GD2 biztonsági ajtózár</name>

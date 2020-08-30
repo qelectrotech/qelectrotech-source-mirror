@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="75" orientation="dyyy" hotspot_y="74" type="element" height="300" width="150" version="0.5">
+<definition link_type="simple" hotspot_x="75" hotspot_y="74" type="element" height="300" width="150" version="0.5">
     <uuid uuid="{e2a03233-0c06-44c6-bf9f-b0b359dd8baa}"/>
     <names>
         <name lang="pl">Indumax CLS52</name>

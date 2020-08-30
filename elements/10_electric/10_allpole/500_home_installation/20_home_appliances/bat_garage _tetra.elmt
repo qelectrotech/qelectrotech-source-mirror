@@ -1,4 +1,4 @@
-<definition link_type="master" height="180" version="0.80" orientation="dyyy" type="element" width="130" hotspot_x="5" hotspot_y="175">
+<definition link_type="master" height="180" version="0.80" type="element" width="130" hotspot_x="5" hotspot_y="175">
     <uuid uuid="{4c4ea7f3-fbb1-49e7-b2f8-29861c4b1941}"/>
     <names>
         <name lang="fr">Garage tétra</name>

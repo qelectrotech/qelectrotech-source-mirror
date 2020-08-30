@@ -1,4 +1,4 @@
-<definition height="40" hotspot_x="17" orientation="dyyy" hotspot_y="20" version="0.51" link_type="simple" width="70" type="element">
+<definition height="40" hotspot_x="17" hotspot_y="20" version="0.51" link_type="simple" width="70" type="element">
     <uuid uuid="{2ab96ab3-84f9-4b6c-ae87-afa895dbf638}"/>
     <names>
         <name lang="fr">Raccord PE PP femelle</name>

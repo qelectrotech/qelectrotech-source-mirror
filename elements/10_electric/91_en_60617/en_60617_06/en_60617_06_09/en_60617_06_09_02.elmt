@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="51" hotspot_y="47" version="0.70" width="110" type="element" height="100">
+<definition link_type="simple" hotspot_x="51" hotspot_y="47" version="0.70" width="110" type="element" height="100">
     <uuid uuid="{fcd9ef78-a7fa-4fe2-a062-498b299e253f}"/>
     <names>
         <name lang="fr">Transformateur à deux enroulements</name>

@@ -1,4 +1,4 @@
-<definition hotspot_y="30" link_type="simple" width="50" version="0.80" type="element" height="60" orientation="dyyy" hotspot_x="22">
+<definition hotspot_y="30" link_type="simple" width="50" version="0.80" type="element" height="60" hotspot_x="22">
     <uuid uuid="{f69ca2bb-266c-4711-8a9b-44c5a701c784}"/>
     <names>
         <name lang="fr">Echangeur à plaques</name>

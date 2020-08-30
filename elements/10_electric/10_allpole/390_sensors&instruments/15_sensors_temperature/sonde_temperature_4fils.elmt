@@ -1,4 +1,4 @@
-<definition hotspot_x="24" orientation="dyyy" link_type="simple" width="60" version="0.70" type="element" hotspot_y="15" height="40">
+<definition hotspot_x="24" link_type="simple" width="60" version="0.70" type="element" hotspot_y="15" height="40">
     <uuid uuid="{ddfbbfd8-54dd-4078-adc4-6fba6b977894}"/>
     <names>
         <name lang="cs">Teplotní čidlo</name>

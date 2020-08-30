@@ -1,4 +1,4 @@
-<definition width="170" link_type="simple" orientation="dyyy" hotspot_y="44" version="0.51" type="element" height="90" hotspot_x="89">
+<definition width="170" link_type="simple" hotspot_y="44" version="0.51" type="element" height="90" hotspot_x="89">
     <uuid uuid="{93843820-16f2-4dbf-bf14-47102c795937}"/>
     <names>
         <name lang="fr">Aplificateur int</name>

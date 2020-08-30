@@ -1,4 +1,4 @@
-<definition hotspot_x="25" type="element" height="40" version="0.80" width="60" orientation="dyyy" link_type="simple" hotspot_y="10">
+<definition hotspot_x="25" type="element" height="40" version="0.80" width="60" link_type="simple" hotspot_y="10">
     <uuid uuid="{81b32e9c-b719-44dd-8a9b-e3970bc84afb}"/>
     <names>
         <name lang="de">Leuchte mit drei Leuchtstofflampen</name>

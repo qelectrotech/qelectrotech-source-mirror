@@ -1,4 +1,4 @@
-<definition hotspot_x="65" hotspot_y="45" orientation="dyyy" height="50" link_type="simple" version="0.70" type="element" width="70">
+<definition hotspot_x="65" hotspot_y="45" height="50" link_type="simple" version="0.70" type="element" width="70">
     <uuid uuid="{bdfa139d-fe88-4c0f-a84d-d7705bf13b82}"/>
     <names>
         <name lang="de">Heizkraftwerk (in Betrieb oder undefiniert)</name>

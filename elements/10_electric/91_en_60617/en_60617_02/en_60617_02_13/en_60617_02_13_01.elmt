@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="40" hotspot_y="10" orientation="dyyy" height="20" version="0.70" hotspot_x="27">
+<definition link_type="simple" type="element" width="40" hotspot_y="10" height="20" version="0.70" hotspot_x="27">
     <uuid uuid="{1dd720de-9d9a-4e84-8c2a-f41ad3e0acd2}"/>
     <names>
         <name lang="fr">Actionneur manuel, symbole général</name>

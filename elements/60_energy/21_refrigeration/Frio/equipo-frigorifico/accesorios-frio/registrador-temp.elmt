@@ -1,4 +1,4 @@
-<definition hotspot_y="18" link_type="simple" width="30" version="0.80" type="element" height="40" orientation="dyyy" hotspot_x="14">
+<definition hotspot_y="18" link_type="simple" width="30" version="0.80" type="element" height="40" hotspot_x="14">
     <uuid uuid="{e1a265bb-0511-469e-9903-6bdbc0b3df2c}"/>
     <names>
         <name lang="fr">Enregistreur de temperature</name>

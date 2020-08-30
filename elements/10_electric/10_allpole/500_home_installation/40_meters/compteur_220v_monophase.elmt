@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" type="element" height="60" width="40" hotspot_y="34" version="0.80" hotspot_x="20">
+<definition link_type="simple" type="element" height="60" width="40" hotspot_y="34" version="0.80" hotspot_x="20">
     <uuid uuid="{769aaeb6-8a51-4dff-8172-aa038eff3d1d}"/>
     <names>
         <name lang="ar">عدّاد أحادي الوجه 220V </name>

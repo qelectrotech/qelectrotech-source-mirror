@@ -1,4 +1,4 @@
-<definition type="element" width="150" version="0.70" hotspot_y="15" orientation="dyyy" height="30" link_type="simple" hotspot_x="144">
+<definition type="element" width="150" version="0.70" hotspot_y="15" height="30" link_type="simple" hotspot_x="144">
     <uuid uuid="{7739b932-b9c9-4a87-b88b-4a3e1d36fdf4}"/>
     <names>
         <name lang="fr">Ligne avec vanne d'arrêt de gaz ou d'huile</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="master" type="element" height="300" width="130" hotspot_y="295" version="0.80" hotspot_x="5">
+<definition link_type="master" type="element" height="300" width="130" hotspot_y="295" version="0.80" hotspot_x="5">
     <uuid uuid="{1c816307-fb32-46da-a431-b46bd8822492}"/>
     <names>
         <name lang="fr">Volet Roulant</name>

@@ -1,4 +1,4 @@
-<definition width="120" hotspot_x="58" type="element" link_type="simple" orientation="dyyy" version="0.5" height="90" hotspot_y="44">
+<definition width="120" hotspot_x="58" type="element" link_type="simple" version="0.5" height="90" hotspot_y="44">
     <uuid uuid="{e2d9759e-062f-4753-9688-cbd32b3d417e}"/>
     <names>
         <name lang="cs">Stěnový ohřev</name>

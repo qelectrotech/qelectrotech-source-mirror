@@ -1,4 +1,4 @@
-<definition height="20" link_type="simple" width="30" hotspot_y="10" version="0.51" type="element" orientation="dyyy" hotspot_x="11">
+<definition height="20" link_type="simple" width="30" hotspot_y="10" version="0.51" type="element" hotspot_x="11">
     <uuid uuid="{2707a844-0552-4acc-873e-8efb4600d7b1}"/>
     <names>
         <name lang="fr">Embout fileté mâle</name>

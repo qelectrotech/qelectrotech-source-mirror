@@ -1,4 +1,4 @@
-<definition type="element" hotspot_y="10" version="0.80" link_type="simple" orientation="dyyy" width="40" height="20" hotspot_x="16">
+<definition type="element" hotspot_y="10" version="0.80" link_type="simple" width="40" height="20" hotspot_x="16">
     <names>
         <name lang="fr">2000-433</name>
         <name lang="de">2000-433</name>

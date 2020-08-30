@@ -1,4 +1,4 @@
-<definition width="130" hotspot_x="65" type="element" link_type="simple" orientation="dyyy" version="0.5" height="250" hotspot_y="61">
+<definition width="130" hotspot_x="65" type="element" link_type="simple" version="0.5" height="250" hotspot_y="61">
     <uuid uuid="{1b695f32-6994-4af2-a0a0-893a4e1fddd6}"/>
     <names>
         <name lang="cs">Zásobník 1000L</name>

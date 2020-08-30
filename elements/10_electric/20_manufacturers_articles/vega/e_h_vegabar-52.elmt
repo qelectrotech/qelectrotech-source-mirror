@@ -1,4 +1,4 @@
-<definition type="element" version="0.5" hotspot_y="75" width="160" height="150" orientation="dyyy" link_type="simple" hotspot_x="75">
+<definition type="element" version="0.5" hotspot_y="75" width="160" height="150" link_type="simple" hotspot_x="75">
     <uuid uuid="{efd3e570-e8ec-4db3-9337-725582e827f9}"/>
     <names>
         <name lang="pl">Czujnik ciśnienia Vegabar 52</name>

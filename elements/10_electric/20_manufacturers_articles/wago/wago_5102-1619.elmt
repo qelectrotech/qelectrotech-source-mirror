@@ -1,4 +1,4 @@
-<definition type="element" version="0.5" hotspot_y="3" width="980" height="170" orientation="dyyy" link_type="simple" hotspot_x="3">
+<definition type="element" version="0.5" hotspot_y="3" width="980" height="170" link_type="simple" hotspot_x="3">
     <uuid uuid="{aed3d598-9b1e-4858-8de2-62e8eb90c910}"/>
     <names>
         <name lang="ar">WAGO_5102-1619</name>

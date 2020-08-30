@@ -1,4 +1,4 @@
-<definition width="40" hotspot_x="19" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="11">
+<definition width="40" hotspot_x="19" type="element" link_type="simple" version="0.5" height="20" hotspot_y="11">
     <uuid uuid="{f106e89a-0c30-48e0-ac6f-9457a5722889}"/>
     <names>
         <name lang="cs">Pružné potrubí</name>

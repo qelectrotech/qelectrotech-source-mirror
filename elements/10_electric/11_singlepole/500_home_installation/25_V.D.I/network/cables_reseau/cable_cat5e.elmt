@@ -1,4 +1,4 @@
-<definition type="element" version="0.5" orientation="dyyy" width="140" height="40" link_type="simple" hotspot_x="75" hotspot_y="29">
+<definition type="element" version="0.5" width="140" height="40" link_type="simple" hotspot_x="75" hotspot_y="29">
     <uuid uuid="{ef233e98-1776-4bf2-94d1-9898a228f535}"/>
     <names>
         <name lang="fr">Câble Cat 5e</name>

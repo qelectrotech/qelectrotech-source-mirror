@@ -1,4 +1,4 @@
-<definition version="0.80" width="220" hotspot_y="719" type="element" orientation="dyyy" height="1040" link_type="simple" hotspot_x="44">
+<definition version="0.80" width="220" hotspot_y="719" type="element" height="1040" link_type="simple" hotspot_x="44">
     <uuid uuid="{461855b9-a783-4302-a326-fa436f2d39fd}"/>
     <names>
         <name lang="fr">Vanne Ta-modulator</name>

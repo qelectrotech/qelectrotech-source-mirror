@@ -1,4 +1,4 @@
-<definition width="260" type="element" version="0.80" orientation="dyyy" link_type="simple" height="90" hotspot_x="35" hotspot_y="4">
+<definition width="260" type="element" version="0.80" link_type="simple" height="90" hotspot_x="35" hotspot_y="4">
     <uuid uuid="{e3e3f28c-eb2f-429e-becc-6dd9389b4f88}"/>
     <names>
         <name lang="fr">Compteur Energie</name>

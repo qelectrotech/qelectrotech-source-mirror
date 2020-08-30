@@ -1,4 +1,4 @@
-<definition type="element" version="0.5" hotspot_y="9" width="300" height="110" orientation="dyyy" link_type="simple" hotspot_x="9">
+<definition type="element" version="0.5" hotspot_y="9" width="300" height="110" link_type="simple" hotspot_x="9">
     <uuid uuid="{ee845e4e-7592-404c-89a7-26f39f3a4ebf}"/>
     <names>
         <name lang="ar">West Indicateur 8010+</name>

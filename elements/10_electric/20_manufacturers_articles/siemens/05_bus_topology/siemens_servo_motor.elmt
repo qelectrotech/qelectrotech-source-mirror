@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.51" width="490" height="260" type="element" hotspot_x="200" link_type="simple" hotspot_y="169">
+<definition version="0.51" width="490" height="260" type="element" hotspot_x="200" link_type="simple" hotspot_y="169">
     <uuid uuid="{1ff44b4b-09e4-456a-92fa-2936eabb59d2}"/>
     <names>
         <name lang="en">Siemens Servo Motor</name>

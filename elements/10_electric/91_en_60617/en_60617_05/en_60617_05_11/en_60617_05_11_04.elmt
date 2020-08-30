@@ -1,4 +1,4 @@
-<definition hotspot_x="75" hotspot_y="85" orientation="dyyy" type="element" version="0.70" height="230" link_type="simple" width="230">
+<definition hotspot_x="75" hotspot_y="85" type="element" version="0.70" height="230" link_type="simple" width="230">
     <uuid uuid="{426b7cb2-a26e-49f2-89d0-6cac1f3aae0d}"/>
     <names>
         <name lang="de">Triode/Hexode</name>

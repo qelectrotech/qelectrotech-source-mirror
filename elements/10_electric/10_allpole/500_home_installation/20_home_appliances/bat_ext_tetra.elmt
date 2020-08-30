@@ -1,4 +1,4 @@
-<definition link_type="master" height="180" version="0.80" orientation="dyyy" type="element" width="130" hotspot_x="5" hotspot_y="176">
+<definition link_type="master" height="180" version="0.80" type="element" width="130" hotspot_x="5" hotspot_y="176">
     <uuid uuid="{9527f307-9bab-4d23-87c3-4dde383da0b1}"/>
     <names>
         <name lang="fr">Bât Ext tétra</name>

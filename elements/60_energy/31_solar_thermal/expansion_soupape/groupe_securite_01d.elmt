@@ -1,4 +1,4 @@
-<definition width="40" hotspot_x="13" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="14">
+<definition width="40" hotspot_x="13" type="element" link_type="simple" version="0.5" height="40" hotspot_y="14">
     <uuid uuid="{906b3a6c-b06e-44a8-8640-f02e631ced6d}"/>
     <names>
         <name lang="cs">Bezpečnostní skupina (pravá)</name>

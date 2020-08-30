@@ -1,4 +1,4 @@
-<definition width="50" hotspot_x="24" type="element" link_type="simple" orientation="dyyy" version="0.5" height="10" hotspot_y="4">
+<definition width="50" hotspot_x="24" type="element" link_type="simple" version="0.5" height="10" hotspot_y="4">
     <uuid uuid="{a5f0ac59-f614-47eb-bacf-26e4cef53bf3}"/>
     <names>
         <name lang="cs">Pružný prvek</name>

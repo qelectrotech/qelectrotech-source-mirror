@@ -1,4 +1,4 @@
-<definition width="60" orientation="dyyy" hotspot_y="26" link_type="simple" version="0.80" height="70" hotspot_x="37" type="element">
+<definition width="60" hotspot_y="26" link_type="simple" version="0.80" height="70" hotspot_x="37" type="element">
     <uuid uuid="{aebbbc0a-b0f2-4169-b1ac-dd90bf83fb0c}"/>
     <names>
         <name lang="fr">Circuit géothermie</name>

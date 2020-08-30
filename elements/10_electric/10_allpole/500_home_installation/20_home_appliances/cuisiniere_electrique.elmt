@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="14" link_type="simple" type="element" height="50" version="0.80" hotspot_y="14" width="30">
+<definition hotspot_x="14" link_type="simple" type="element" height="50" version="0.80" hotspot_y="14" width="30">
     <uuid uuid="{396197c8-3a32-484a-820b-e26b8ceb926e}"/>
     <names>
         <name lang="cs">Elektrický sporák</name>

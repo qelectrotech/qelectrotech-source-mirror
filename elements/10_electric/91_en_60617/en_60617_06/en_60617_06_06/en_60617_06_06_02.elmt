@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="74" hotspot_y="86" version="0.70" width="90" type="element" height="100">
+<definition link_type="simple" hotspot_x="74" hotspot_y="86" version="0.70" width="90" type="element" height="100">
     <uuid uuid="{a92d8fc5-7b25-43f5-8b5e-0b855207fe1c}"/>
     <names>
         <name lang="fr">Moteur à répulsion, monophasé</name>

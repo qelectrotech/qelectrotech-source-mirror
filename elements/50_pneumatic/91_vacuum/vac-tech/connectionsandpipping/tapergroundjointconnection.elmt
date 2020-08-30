@@ -1,4 +1,4 @@
-<definition hotspot_x="24" height="40" type="element" orientation="dyyy" hotspot_y="20" version="0.80" link_type="simple" width="50">
+<definition hotspot_x="24" height="40" type="element" hotspot_y="20" version="0.80" link_type="simple" width="50">
     <uuid uuid="{c57006f9-4ae3-4b8b-8938-b3353a7623ca}"/>
     <names>
         <name lang="en">Taper ground joint connection</name>

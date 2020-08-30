@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="20" height="70" hotspot_y="34" hotspot_x="12" version="0.70" link_type="simple">
+<definition type="element" width="20" height="70" hotspot_y="34" hotspot_x="12" version="0.70" link_type="simple">
     <uuid uuid="{c6e3a6b0-bea1-4b90-bd28-508727ca9d95}"/>
     <names>
         <name lang="de">Sicherungs-Lasttrennschalter</name>

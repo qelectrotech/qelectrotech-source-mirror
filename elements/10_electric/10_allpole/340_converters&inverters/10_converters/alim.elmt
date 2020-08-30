@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" width="70" height="60" hotspot_y="49" orientation="dyyy" hotspot_x="36" version="0.70">
+<definition type="element" link_type="simple" width="70" height="60" hotspot_y="49" hotspot_x="36" version="0.70">
     <uuid uuid="{2bb4a252-1a7f-4893-b3bb-8a1c298d19a3}"/>
     <names>
         <name lang="pl">Zasilacz</name>

@@ -1,4 +1,4 @@
-<definition width="100" hotspot_x="30" type="element" link_type="simple" orientation="dyyy" version="0.5" height="70" hotspot_y="35">
+<definition width="100" hotspot_x="30" type="element" link_type="simple" version="0.5" height="70" hotspot_y="35">
     <uuid uuid="{7018bb20-31a7-43da-90ae-091006c43a63}"/>
     <names>
         <name lang="cs">Ohřívač s dvojitým pláštěm ECS</name>

@@ -1,4 +1,4 @@
-<definition height="20" version="0.5" link_type="simple" width="30" orientation="dyyy" hotspot_x="14" hotspot_y="4" type="element">
+<definition height="20" version="0.5" link_type="simple" width="30" hotspot_x="14" hotspot_y="4" type="element">
     <uuid uuid="{46e937f1-197f-4b97-b7ce-8c6fccb4591b}"/>
     <names>
         <name lang="de">Induktivität</name>

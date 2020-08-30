@@ -1,4 +1,4 @@
-<definition link_type="simple" height="110" width="90" orientation="dyyy" version="0.80" type="element" hotspot_y="54" hotspot_x="45">
+<definition link_type="simple" height="110" width="90" version="0.80" type="element" hotspot_y="54" hotspot_x="45">
     <uuid uuid="{80191a66-3b5f-465e-99b1-3479764a0b30}"/>
     <names>
         <name lang="cs">Převodník RS232/485 </name>

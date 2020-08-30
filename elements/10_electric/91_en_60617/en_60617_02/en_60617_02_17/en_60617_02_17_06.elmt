@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_y="25" type="element" width="50" height="50" hotspot_x="25" link_type="simple" version="0.70">
+<definition hotspot_y="25" type="element" width="50" height="50" hotspot_x="25" link_type="simple" version="0.70">
     <uuid uuid="{22bc3e68-0d9e-4450-b535-0c6dd03dc7ac}"/>
     <names>
         <name lang="fr">Convertisseur, par exemple:

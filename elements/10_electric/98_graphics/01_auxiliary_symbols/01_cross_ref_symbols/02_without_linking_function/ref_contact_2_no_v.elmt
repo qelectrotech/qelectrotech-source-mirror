@@ -1,4 +1,4 @@
-<definition height="10" hotspot_x="3" width="20" type="element" version="0.5" hotspot_y="-1" orientation="dyyy" link_type="simple">
+<definition height="10" hotspot_x="3" width="20" type="element" version="0.5" hotspot_y="-1" link_type="simple">
     <uuid uuid="{5008c762-23b8-4488-af14-ce0aeca5a8c0}"/>
     <names>
         <name lang="fr">Reference contact NO v</name>

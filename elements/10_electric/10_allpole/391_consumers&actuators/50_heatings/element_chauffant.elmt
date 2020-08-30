@@ -1,4 +1,4 @@
-<definition width="20" hotspot_x="10" type="element" link_type="simple" orientation="dyyy" version="0.5" height="60" hotspot_y="34">
+<definition width="20" hotspot_x="10" type="element" link_type="simple" version="0.5" height="60" hotspot_y="34">
     <uuid uuid="{2f8f1abc-ebce-4928-ba16-f96b18df4d14}"/>
     <names>
         <name lang="cs">Topný článek</name>

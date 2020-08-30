@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="44" version="0.5" hotspot_y="40" link_type="simple" width="90" orientation="dyyy" height="80">
+<definition type="element" hotspot_x="44" version="0.5" hotspot_y="40" link_type="simple" width="90" height="80">
     <uuid uuid="{f731c2f7-4c56-43a9-96da-af21ec67aec6}"/>
     <names>
         <name lang="de">SETZEN/RÜCKSETZEN</name>

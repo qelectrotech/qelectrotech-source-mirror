@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.51" width="310" height="500" type="element" hotspot_x="156" link_type="simple" hotspot_y="247">
+<definition version="0.51" width="310" height="500" type="element" hotspot_x="156" link_type="simple" hotspot_y="247">
     <uuid uuid="{91ce78a2-d06c-457e-8062-c4b9fb36c03c}"/>
     <names>
         <name lang="en">Siemens Smart Line Module (6SL3130-6TE23-6AA3)</name>

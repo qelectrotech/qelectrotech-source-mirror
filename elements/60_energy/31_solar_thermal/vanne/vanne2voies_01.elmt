@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="28">
+<definition width="30" hotspot_x="14" type="element" link_type="simple" version="0.5" height="40" hotspot_y="28">
     <uuid uuid="{dbad78fa-ce96-42a0-8e43-5446f31d9e8c}"/>
     <names>
         <name lang="cs">Dvoucestný ventil s pohonem</name>

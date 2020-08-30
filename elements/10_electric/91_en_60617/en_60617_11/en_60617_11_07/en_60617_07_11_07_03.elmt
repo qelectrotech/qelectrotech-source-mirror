@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="110" height="80" hotspot_x="105" hotspot_y="75" orientation="dyyy" version="0.70">
+<definition link_type="simple" type="element" width="110" height="80" hotspot_x="105" hotspot_y="75" version="0.70">
     <uuid uuid="{bb396f15-4981-4afd-bb7f-a1246635e4d3}"/>
     <names>
         <name lang="de">Richtungskoppler</name>

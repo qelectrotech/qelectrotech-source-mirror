@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="15" hotspot_y="44" orientation="dyyy" type="element" height="50" width="30">
+<definition link_type="simple" version="0.70" hotspot_x="15" hotspot_y="44" type="element" height="50" width="30">
     <uuid uuid="{a6cf6863-e4a7-4a33-bb6c-97d5dd32caa7}"/>
     <names>
         <name lang="fr">Diode tunnel

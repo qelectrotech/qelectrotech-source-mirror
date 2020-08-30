@@ -1,4 +1,4 @@
-<definition type="element" orientation="dyyy" height="50" hotspot_y="25" version="0.70" width="40" hotspot_x="23" link_type="master">
+<definition type="element" height="50" hotspot_y="25" version="0.70" width="40" hotspot_x="23" link_type="master">
     <uuid uuid="{45a179e7-866e-4756-965f-d2445ced8dd2}"/>
     <names>
         <name lang="cs">Časové relé</name>

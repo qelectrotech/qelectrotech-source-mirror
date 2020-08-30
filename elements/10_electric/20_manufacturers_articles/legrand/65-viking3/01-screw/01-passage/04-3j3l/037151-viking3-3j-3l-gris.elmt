@@ -1,4 +1,4 @@
-<definition type="element" hotspot_y="14" link_type="terminal" orientation="dyyy" width="10" height="30" hotspot_x="4" version="0.80">
+<definition type="element" hotspot_y="14" link_type="terminal" width="10" height="30" hotspot_x="4" version="0.80">
     <uuid uuid="{6b7612e5-5726-44bb-b0c7-a5e69037773d}"/>
     <names>
         <name lang="fr">037151 - Viking3 - 3 jonctions 3 étages 2,5mm² pas 5mm Gris</name>

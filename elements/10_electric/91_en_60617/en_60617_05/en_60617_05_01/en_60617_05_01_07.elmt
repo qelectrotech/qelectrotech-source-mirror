@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="25" hotspot_y="45" orientation="dyyy" type="element" height="50" width="30">
+<definition link_type="simple" version="0.70" hotspot_x="25" hotspot_y="45" type="element" height="50" width="30">
     <uuid uuid="{5ef7fd6d-95be-42b2-b956-a67d63adeade}"/>
     <names>
         <name lang="fr">Jonction redresseuse</name>

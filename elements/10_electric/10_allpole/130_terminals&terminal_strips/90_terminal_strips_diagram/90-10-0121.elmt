@@ -1,4 +1,4 @@
-<definition height="90" hotspot_y="44" hotspot_x="15" version="0.5" orientation="dyyy" width="30" link_type="simple" type="element">
+<definition height="90" hotspot_y="44" hotspot_x="15" version="0.5" width="30" link_type="simple" type="element">
     <uuid uuid="{da19301b-f6e7-478f-a6dd-eb72e497883b}"/>
     <names>
         <name lang="fr">Borne (terre)</name>

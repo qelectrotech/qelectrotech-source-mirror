@@ -1,4 +1,4 @@
-<definition hotspot_x="10" version="0.70" orientation="dyyy" height="20" hotspot_y="15" width="20" type="element" link_type="simple">
+<definition hotspot_x="10" version="0.70" height="20" hotspot_y="15" width="20" type="element" link_type="simple">
     <uuid uuid="{eb96dcaa-5801-465a-9212-619ae538bcd8}"/>
     <names>
         <name lang="fr">Analogique</name>

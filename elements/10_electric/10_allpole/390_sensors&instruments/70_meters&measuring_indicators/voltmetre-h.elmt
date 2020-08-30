@@ -1,4 +1,4 @@
-<definition hotspot_y="15" type="element" height="30" width="60" hotspot_x="29" orientation="dyyy" link_type="simple" version="0.5">
+<definition hotspot_y="15" type="element" height="30" width="60" hotspot_x="29" link_type="simple" version="0.5">
     <uuid uuid="{37112168-7375-4e19-b6af-fb5b00c41489}"/>
     <names>
         <name lang="cs">Voltmetr, vodorovný</name>

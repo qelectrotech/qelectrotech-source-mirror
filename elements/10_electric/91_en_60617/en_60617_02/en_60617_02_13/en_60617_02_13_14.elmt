@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="40" hotspot_y="5" orientation="dyyy" height="20" version="0.70" hotspot_x="29">
+<definition link_type="simple" type="element" width="40" hotspot_y="5" height="20" version="0.70" hotspot_x="29">
     <uuid uuid="{cd117373-801a-410d-bd10-948cf03d0f9e}"/>
     <names>
         <name lang="fr">Commande par manivelle</name>

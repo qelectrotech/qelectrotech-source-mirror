@@ -1,4 +1,4 @@
-<definition hotspot_x="44" height="250" version="0.70" width="170" link_type="simple" type="element" orientation="dyyy" hotspot_y="125">
+<definition hotspot_x="44" height="250" version="0.70" width="170" link_type="simple" type="element" hotspot_y="125">
     <uuid uuid="{910ec14e-097a-4b7f-9487-f906617d06f8}"/>
     <names>
         <name lang="fr">AC5209 (entrees)</name>

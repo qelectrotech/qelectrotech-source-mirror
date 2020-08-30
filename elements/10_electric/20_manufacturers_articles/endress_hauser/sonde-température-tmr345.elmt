@@ -1,4 +1,4 @@
-<definition width="200" orientation="dyyy" hotspot_y="55" link_type="simple" version="0.80" height="110" hotspot_x="34" type="element">
+<definition width="200" hotspot_y="55" link_type="simple" version="0.80" height="110" hotspot_x="34" type="element">
     <uuid uuid="{b97af216-3748-4e11-906f-d925b563b47a}"/>
     <names>
         <name lang="fr">Sonde Température TMR345</name>

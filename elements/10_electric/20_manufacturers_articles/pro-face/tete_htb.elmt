@@ -1,4 +1,4 @@
-<definition width="200" hotspot_y="125" height="250" type="element" hotspot_x="91" orientation="dyyy" version="0.5" link_type="simple">
+<definition width="200" hotspot_y="125" height="250" type="element" hotspot_x="91" version="0.5" link_type="simple">
     <uuid uuid="{d2e9164b-0e28-4f1d-acf6-d232e70b9eba}"/>
     <names>
         <name lang="nl">Module HTB Proface</name>

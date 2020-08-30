@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="25" hotspot_y="17" version="0.70" width="30" type="element" height="20">
+<definition link_type="simple" hotspot_x="25" hotspot_y="17" version="0.70" width="30" type="element" height="20">
     <uuid uuid="{cca21743-ea04-4eb8-aa7a-7f610afaa82f}"/>
     <names>
         <name lang="fr">Enroulement triphasé partiel, en V (60°)</name>

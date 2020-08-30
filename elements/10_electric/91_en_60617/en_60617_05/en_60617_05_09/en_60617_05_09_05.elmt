@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" height="90" width="60" version="0.70" orientation="dyyy" hotspot_x="45" hotspot_y="85">
+<definition type="element" link_type="simple" height="90" width="60" version="0.70" hotspot_x="45" hotspot_y="85">
     <uuid uuid="{34d79b3b-e54a-4fcf-9564-5cd2ec102aaa}"/>
     <names>
         <name lang="fr">Sole émissive</name>

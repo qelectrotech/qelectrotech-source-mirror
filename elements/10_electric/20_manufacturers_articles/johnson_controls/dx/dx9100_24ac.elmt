@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="24" orientation="dyyy" hotspot_y="25" type="element" height="80" width="90" version="0.5">
+<definition link_type="simple" hotspot_x="24" hotspot_y="25" type="element" height="80" width="90" version="0.5">
     <uuid uuid="{09c3787b-77d8-486a-9f28-f7cf226e13d8}"/>
     <names>
         <name lang="pl">DX9100 - zasilanie 24V AC</name>

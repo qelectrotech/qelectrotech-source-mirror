@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" hotspot_y="49" version="0.5" hotspot_x="45" height="100" width="90" link_type="simple">
+<definition type="element" hotspot_y="49" version="0.5" hotspot_x="45" height="100" width="90" link_type="simple">
     <uuid uuid="{30bb13bc-523a-4de7-b430-f34256ad27c2}"/>
     <names>
         <name lang="cs">Pump and fan monitor</name>

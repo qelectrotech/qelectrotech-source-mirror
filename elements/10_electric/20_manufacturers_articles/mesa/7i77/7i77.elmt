@@ -1,4 +1,4 @@
-<definition hotspot_x="45" hotspot_y="235" type="element" orientation="dyyy" height="290" version="0.60" width="480" link_type="terminal">
+<definition hotspot_x="45" hotspot_y="235" type="element" height="290" version="0.60" width="480" link_type="terminal">
     <uuid uuid="{c3747fee-c4bd-44e3-b2f3-b96b3496ccf4}"/>
     <names>
         <name lang="en">7i77_CONFIG</name>

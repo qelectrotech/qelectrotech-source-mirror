@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="15" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="20">
+<definition width="30" hotspot_x="15" type="element" link_type="simple" version="0.5" height="40" hotspot_y="20">
     <uuid uuid="{811404b7-c01b-4f71-99c2-2f4ee015195a}"/>
     <names>
         <name lang="cs">Vypouštěcí kohout</name>

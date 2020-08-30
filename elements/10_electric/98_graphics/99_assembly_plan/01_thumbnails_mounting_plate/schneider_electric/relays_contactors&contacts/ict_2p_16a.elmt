@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="simple" hotspot_y="5" orientation="dyyy" hotspot_x="5" width="50" type="element" height="210">
+<definition version="0.80" link_type="simple" hotspot_y="5" hotspot_x="5" width="50" type="element" height="210">
     <uuid uuid="{9cf929e3-c034-4f2b-89f5-9472d2825738}"/>
     <names>
         <name lang="it">Contattore ITC 2P 16A</name>

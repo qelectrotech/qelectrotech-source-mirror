@@ -1,4 +1,4 @@
-<definition width="40" hotspot_x="19" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="10">
+<definition width="40" hotspot_x="19" type="element" link_type="simple" version="0.5" height="20" hotspot_y="10">
     <uuid uuid="{d6a4fc14-9f04-4007-ab28-9f8e6c152ac7}"/>
     <names>
         <name lang="cs">Vodní pumpa</name>

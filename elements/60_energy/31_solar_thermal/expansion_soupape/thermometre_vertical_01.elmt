@@ -1,4 +1,4 @@
-<definition width="20" hotspot_x="10" type="element" link_type="simple" orientation="dyyy" version="0.5" height="60" hotspot_y="27">
+<definition width="20" hotspot_x="10" type="element" link_type="simple" version="0.5" height="60" hotspot_y="27">
     <uuid uuid="{589e5ac6-f22a-4b4d-9132-46e3ff6abb6d}"/>
     <names>
         <name lang="cs">Svislý teploměr</name>

@@ -1,4 +1,4 @@
-<definition width="20" orientation="dyyy" hotspot_y="19" link_type="simple" version="0.80" height="50" hotspot_x="10" type="element">
+<definition width="20" hotspot_y="19" link_type="simple" version="0.80" height="50" hotspot_x="10" type="element">
     <uuid uuid="{671a329e-ada0-4d2e-bdd9-2b84168b3123}"/>
     <names>
         <name lang="fr">Sonde d'humidité</name>

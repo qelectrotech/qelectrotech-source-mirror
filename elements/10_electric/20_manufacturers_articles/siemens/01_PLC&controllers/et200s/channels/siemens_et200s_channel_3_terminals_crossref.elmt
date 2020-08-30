@@ -1,4 +1,4 @@
-<definition width="90" hotspot_y="6" height="20" hotspot_x="45" type="element" orientation="dyyy" link_type="next_report" version="0.51">
+<definition width="90" hotspot_y="6" height="20" hotspot_x="45" type="element" link_type="next_report" version="0.51">
     <uuid uuid="{99a6bb33-2f6e-4f14-b43b-790d892d2743}"/>
     <names>
         <name lang="en">ET 200S channel 3 terminals (cross reference)</name>

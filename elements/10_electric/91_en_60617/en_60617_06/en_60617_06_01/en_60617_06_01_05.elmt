@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="2" hotspot_y="7" version="0.70" width="50" type="element" height="30">
+<definition link_type="simple" hotspot_x="2" hotspot_y="7" version="0.70" width="50" type="element" height="30">
     <uuid uuid="{a5d55be8-093c-4c72-a96a-f1815a267f1c}"/>
     <names>
         <name lang="fr">Enroulement polyphasé, à m phases séparées</name>

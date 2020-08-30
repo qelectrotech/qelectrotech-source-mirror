@@ -1,4 +1,4 @@
-<definition hotspot_x="65" type="element" width="70" hotspot_y="45" version="0.70" orientation="dyyy" height="50" link_type="simple">
+<definition hotspot_x="65" type="element" width="70" hotspot_y="45" version="0.70" height="50" link_type="simple">
     <uuid uuid="{5ae06185-8ac1-4ee6-973d-55e7512826b3}"/>
     <names>
         <name lang="fr">Relais de détection de défaillance de phase</name>

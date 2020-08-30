@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.70" width="20" type="element" hotspot_y="10" link_type="simple" hotspot_x="10" height="20">
+<definition version="0.70" width="20" type="element" hotspot_y="10" link_type="simple" hotspot_x="10" height="20">
     <uuid uuid="{1462fd0b-ff9e-43a4-848e-2644b39dee82}"/>
     <names>
         <name lang="fr">Effet ou dépendance de champ magnétique</name>

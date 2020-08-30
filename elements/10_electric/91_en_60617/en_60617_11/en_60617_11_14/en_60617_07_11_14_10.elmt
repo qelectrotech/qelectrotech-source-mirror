@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="30" link_type="simple" hotspot_x="25" width="30" hotspot_y="25">
+<definition type="element" version="0.70" height="30" link_type="simple" hotspot_x="25" width="30" hotspot_y="25">
     <uuid uuid="{ee2f2ead-9fa4-4ae6-afac-898c880ce51e}"/>
     <names>
         <name lang="de">Taster</name>

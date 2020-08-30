@@ -1,4 +1,4 @@
-<definition width="30" link_type="simple" version="0.5" hotspot_x="15" orientation="dyyy" height="20" hotspot_y="10" type="element">
+<definition width="30" link_type="simple" version="0.5" hotspot_x="15" height="20" hotspot_y="10" type="element">
     <uuid uuid="{b5ad2e41-804d-4745-99be-e8951cffdf98}"/>
     <names>
         <name lang="pt">Fonte de neutro</name>

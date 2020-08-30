@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" height="100" hotspot_x="66" orientation="dyyy" width="100" hotspot_y="50" version="0.51">
+<definition type="element" link_type="simple" height="100" hotspot_x="66" width="100" hotspot_y="50" version="0.51">
     <uuid uuid="{c4a413e6-42c9-4478-aee0-ca84e70ff2bc}"/>
     <names>
         <name lang="fr">Alimentation automatique</name>

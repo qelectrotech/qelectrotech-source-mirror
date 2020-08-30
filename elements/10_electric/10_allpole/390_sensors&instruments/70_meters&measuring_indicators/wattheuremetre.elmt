@@ -1,4 +1,4 @@
-<definition hotspot_y="4" type="element" height="60" width="40" hotspot_x="10" orientation="dyyy" link_type="simple" version="0.5">
+<definition hotspot_y="4" type="element" height="60" width="40" hotspot_x="10" link_type="simple" version="0.5">
     <uuid uuid="{2fd8a667-aea7-479c-aadd-2a0b91856e88}"/>
     <names>
         <name lang="cs">Počítadlo watthodin</name>

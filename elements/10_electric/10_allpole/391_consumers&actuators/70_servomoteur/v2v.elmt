@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" hotspot_y="16" orientation="dyyy" height="50" version="0.80" width="110" hotspot_x="55">
+<definition type="element" link_type="simple" hotspot_y="16" height="50" version="0.80" width="110" hotspot_x="55">
     <uuid uuid="{20417d14-a311-4d7a-b94f-a1eea7aed37c}"/>
     <names>
         <name lang="fr">Servomoteur V2V</name>

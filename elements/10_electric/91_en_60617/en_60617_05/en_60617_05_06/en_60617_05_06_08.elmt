@@ -1,4 +1,4 @@
-<definition height="80" version="0.70" orientation="dyyy" width="130" hotspot_x="94" type="element" hotspot_y="75" link_type="simple">
+<definition height="80" version="0.70" width="130" hotspot_x="94" type="element" hotspot_y="75" link_type="simple">
     <uuid uuid="{767338b2-3b1a-460d-a639-d149a1c4dbda}"/>
     <names>
         <name lang="fr">Coupleur optique

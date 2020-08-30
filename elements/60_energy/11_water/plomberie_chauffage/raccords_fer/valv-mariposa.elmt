@@ -1,4 +1,4 @@
-<definition hotspot_y="25" link_type="simple" width="40" version="0.80" type="element" height="40" orientation="dyyy" hotspot_x="12">
+<definition hotspot_y="25" link_type="simple" width="40" version="0.80" type="element" height="40" hotspot_x="12">
     <uuid uuid="{555c967f-cdb3-4e9c-90db-35f0655a0243}"/>
     <names>
         <name lang="fr">Vanne papillon</name>

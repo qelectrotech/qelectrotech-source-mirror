@@ -1,4 +1,4 @@
-<definition hotspot_x="20" height="60" type="element" orientation="dyyy" hotspot_y="29" version="0.80" link_type="simple" width="40">
+<definition hotspot_x="20" height="60" type="element" hotspot_y="29" version="0.80" link_type="simple" width="40">
     <uuid uuid="{b2bcaf2d-9525-4ac1-9c5d-cebe8d56058c}"/>
     <names>
         <name lang="en">Gas filter, general</name>

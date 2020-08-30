@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="25" orientation="dyyy" hotspot_y="35" type="element" height="540" width="220" version="0.5">
+<definition link_type="simple" hotspot_x="25" hotspot_y="35" type="element" height="540" width="220" version="0.5">
     <uuid uuid="{90e12e15-6f53-41b2-9c8b-c2cb417b38b4}"/>
     <names>
         <name lang="pl">DX9100 (dolne zaciski)</name>

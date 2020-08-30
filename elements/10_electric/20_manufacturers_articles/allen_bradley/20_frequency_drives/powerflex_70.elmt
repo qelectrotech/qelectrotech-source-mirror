@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="13" orientation="dyyy" hotspot_y="24" type="element" height="100" width="510" version="0.5">
+<definition link_type="simple" hotspot_x="13" hotspot_y="24" type="element" height="100" width="510" version="0.5">
     <uuid uuid="{1f6922a8-eb8d-48e8-973b-dc086a56d69d}"/>
     <names>
         <name lang="pl">POWERFLEX 70</name>

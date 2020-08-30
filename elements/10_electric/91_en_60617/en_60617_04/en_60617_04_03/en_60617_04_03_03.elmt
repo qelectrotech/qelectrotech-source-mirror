@@ -1,4 +1,4 @@
-<definition height="30" type="element" width="50" hotspot_y="25" orientation="dyyy" link_type="simple" version="0.70" hotspot_x="45">
+<definition height="30" type="element" width="50" hotspot_y="25" link_type="simple" version="0.70" hotspot_x="45">
     <uuid uuid="{a6bc24eb-d798-42cf-80d2-6ce19cef92e4}"/>
     <names>
         <name lang="fr">Inductance à noyau magnétique</name>

@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="70" height="50" hotspot_x="65" hotspot_y="45" orientation="dyyy" version="0.70">
+<definition link_type="simple" type="element" width="70" height="50" hotspot_x="65" hotspot_y="45" version="0.70">
     <uuid uuid="{64f52ef2-18a4-4037-9932-fff8209d5c8f}"/>
     <names>
         <name lang="de">Dreiwegverteiler </name>

@@ -1,4 +1,4 @@
-<definition hotspot_y="25" link_type="simple" width="50" version="0.80" type="element" height="50" orientation="dyyy" hotspot_x="22">
+<definition hotspot_y="25" link_type="simple" width="50" version="0.80" type="element" height="50" hotspot_x="22">
     <uuid uuid="{bac73a83-6b74-48d7-9ae5-073ee7427f84}"/>
     <names>
         <name lang="fr">Ventilateur hélicoïdale</name>

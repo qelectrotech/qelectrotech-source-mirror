@@ -1,4 +1,4 @@
-<definition width="20" link_type="simple" version="0.5" hotspot_x="10" orientation="dyyy" height="60" hotspot_y="29" type="element">
+<definition width="20" link_type="simple" version="0.5" hotspot_x="10" height="60" hotspot_y="29" type="element">
     <uuid uuid="{e1463f74-cad0-4ef6-a1f4-beedd55b7d41}"/>
     <names>
         <name lang="el">Μπάρα γείωσης</name>

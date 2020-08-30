@@ -1,4 +1,4 @@
-<definition type="element" width="50" height="50" orientation="dyyy" link_type="simple" hotspot_y="45" hotspot_x="25" version="0.70">
+<definition type="element" width="50" height="50" link_type="simple" hotspot_y="45" hotspot_x="25" version="0.70">
     <uuid uuid="{f97fae58-f9b8-4094-abcf-0e2f947375dc}"/>
     <names>
         <name lang="de">Oszilloskop</name>

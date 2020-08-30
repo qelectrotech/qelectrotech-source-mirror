@@ -1,4 +1,4 @@
-<definition hotspot_x="19" version="0.70" orientation="dyyy" height="40" hotspot_y="30" width="60" type="element" link_type="simple">
+<definition hotspot_x="19" version="0.70" height="40" hotspot_y="30" width="60" type="element" link_type="simple">
     <uuid uuid="{34375118-4069-4df2-aea2-e8912a5c75a5}"/>
     <names>
         <name lang="fr">Fiche et prise de connecteur, par exemple

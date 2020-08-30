@@ -1,4 +1,4 @@
-<definition width="50" height="50" type="element" hotspot_x="25" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="45">
+<definition width="50" height="50" type="element" hotspot_x="25" version="0.70" link_type="simple" hotspot_y="45">
     <uuid uuid="{050bae00-c0d6-4730-8e90-7f94521dfba7}"/>
     <names>
         <name lang="de">Kurvenschreiber</name>

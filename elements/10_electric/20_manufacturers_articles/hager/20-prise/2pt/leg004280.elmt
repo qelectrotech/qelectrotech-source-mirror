@@ -1,4 +1,4 @@
-<definition hotspot_x="20" type="element" orientation="dyyy" width="40" version="0.80" height="60" hotspot_y="28" link_type="simple">
+<definition hotspot_x="20" type="element" width="40" version="0.80" height="60" hotspot_y="28" link_type="simple">
     <uuid uuid="{35882c5a-be46-4d62-895f-46a21821a1fa}"/>
     <names>
         <name lang="ar">مقبس أحادي الوجه</name>

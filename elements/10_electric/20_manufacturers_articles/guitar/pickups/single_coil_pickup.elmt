@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="73" version="0.5" link_type="simple" type="element" hotspot_y="51" height="80" width="160">
+<definition hotspot_x="73" version="0.5" link_type="simple" type="element" hotspot_y="51" height="80" width="160">
     <uuid uuid="{54cc9df1-ac55-43ff-ab92-cb8fb06d9d3a}"/>
     <names>
         <name lang="ar">Single Coil Pickup</name>

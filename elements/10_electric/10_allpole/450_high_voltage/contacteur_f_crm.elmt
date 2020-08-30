@@ -1,4 +1,4 @@
-<definition width="50" hotspot_x="23" type="element" link_type="simple" orientation="dyyy" version="0.5" height="120" hotspot_y="24">
+<definition width="50" hotspot_x="23" type="element" link_type="simple" version="0.5" height="120" hotspot_y="24">
     <uuid uuid="{70d7c821-6366-4825-abaa-03b2d1aa5446}"/>
     <names>
         <name lang="cs">Stykač s pojistkou CRM</name>

@@ -1,4 +1,4 @@
-<definition type="element" hotspot_y="225" orientation="dyyy" version="0.70" hotspot_x="105" width="130" height="250" link_type="simple">
+<definition type="element" hotspot_y="225" version="0.70" hotspot_x="105" width="130" height="250" link_type="simple">
     <uuid uuid="{2f447c40-f858-4134-add7-a6608ff5a519}"/>
     <names>
         <name lang="fr">Tétrode solion</name>

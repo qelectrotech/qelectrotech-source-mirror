@@ -1,4 +1,4 @@
-<definition hotspot_y="275" width="140" orientation="dyyy" link_type="simple" hotspot_x="137" version="0.70" height="280" type="element">
+<definition hotspot_y="275" width="140" link_type="simple" hotspot_x="137" version="0.70" height="280" type="element">
     <uuid uuid="{0f9bdee8-82d1-4617-83fb-ef61ef03c5ac}"/>
     <names>
         <name lang="en">omron cj1wpa202</name>

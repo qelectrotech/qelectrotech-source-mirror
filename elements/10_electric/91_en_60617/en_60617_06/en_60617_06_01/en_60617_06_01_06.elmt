@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="2" hotspot_y="2" version="0.70" width="20" type="element" height="20">
+<definition link_type="simple" hotspot_x="2" hotspot_y="2" version="0.70" width="20" type="element" height="20">
     <uuid uuid="{f46391cc-dfb6-40e1-9513-4d136cf07c98}"/>
     <names>
         <name lang="fr">Enroulement diphasé, quatre fils</name>

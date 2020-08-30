@@ -1,4 +1,4 @@
-<definition hotspot_y="15" type="element" link_type="simple" orientation="dyyy" hotspot_x="17" width="40" height="30" version="0.51">
+<definition hotspot_y="15" type="element" link_type="simple" hotspot_x="17" width="40" height="30" version="0.51">
     <uuid uuid="{c6611681-345f-4315-b596-458c9cb74159}"/>
     <names>
         <name lang="fr">Raccord 359 GCU</name>

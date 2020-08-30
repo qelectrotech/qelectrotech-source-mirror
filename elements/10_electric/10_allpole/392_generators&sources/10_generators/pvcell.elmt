@@ -1,4 +1,4 @@
-<definition height="60" link_type="simple" type="element" orientation="dyyy" hotspot_y="34" version="0.5" hotspot_x="33" width="70">
+<definition height="60" link_type="simple" type="element" hotspot_y="34" version="0.5" hotspot_x="33" width="70">
     <uuid uuid="{f8261430-7ca8-43ec-a8f4-6cc2708a882e}"/>
     <names>
         <name lang="fr">Caisson solaire photovoltaïque</name>

@@ -1,4 +1,4 @@
-<definition hotspot_x="46" link_type="master" hotspot_y="26" orientation="dyyy" width="120" height="90" type="element" version="0.80">
+<definition hotspot_x="46" link_type="master" hotspot_y="26" width="120" height="90" type="element" version="0.80">
     <uuid uuid="{3a8aa16d-562f-4ac3-ba2d-07da87e25cf0}"/>
     <names>
         <name lang="fr">411611 - Interrupteur différentiel AC 40A 30mA Haut-Vis/Haut-Vis</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.5" width="310" link_type="simple" type="element" hotspot_x="145" height="170" hotspot_y="84">
+<definition version="0.5" width="310" link_type="simple" type="element" hotspot_x="145" height="170" hotspot_y="84">
     <uuid uuid="{68e28c80-6e98-410c-9ac5-c63bbe737c7c}"/>
     <names>
         <name lang="fr">Thyritop 30 Monophasé</name>

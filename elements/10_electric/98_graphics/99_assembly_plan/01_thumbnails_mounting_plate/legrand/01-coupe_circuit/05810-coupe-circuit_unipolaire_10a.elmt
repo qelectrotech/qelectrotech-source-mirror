@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="simple" hotspot_x="5" hotspot_y="4" orientation="dyyy" type="element" width="50" height="210">
+<definition version="0.80" link_type="simple" hotspot_x="5" hotspot_y="4" type="element" width="50" height="210">
     <uuid uuid="{132f981c-c800-4357-841d-cba0d1d895a2}"/>
     <names>
         <name lang="fr">05810 - Coupe-circuit unipolaire 10A</name>

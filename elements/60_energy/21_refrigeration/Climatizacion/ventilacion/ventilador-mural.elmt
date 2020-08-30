@@ -1,4 +1,4 @@
-<definition hotspot_y="26" link_type="simple" width="40" version="0.80" type="element" height="50" orientation="dyyy" hotspot_x="18">
+<definition hotspot_y="26" link_type="simple" width="40" version="0.80" type="element" height="50" hotspot_x="18">
     <uuid uuid="{4c2752c3-0155-45c4-8921-89f8fbde7521}"/>
     <names>
         <name lang="fr">Ventilateur mural</name>

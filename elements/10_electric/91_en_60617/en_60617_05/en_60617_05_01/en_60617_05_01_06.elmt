@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="15" hotspot_y="10" orientation="dyyy" type="element" height="40" width="30">
+<definition link_type="simple" version="0.70" hotspot_x="15" hotspot_y="10" type="element" height="40" width="30">
     <uuid uuid="{fee0508d-b69f-4f05-987d-e212bbaf2be9}"/>
     <names>
         <name lang="fr">Canal conducteur pour dispositifs à

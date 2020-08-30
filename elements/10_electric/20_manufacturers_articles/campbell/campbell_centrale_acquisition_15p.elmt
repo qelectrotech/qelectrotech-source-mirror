@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="15" orientation="dyyy" hotspot_y="36" type="element" height="90" width="320" version="0.5">
+<definition link_type="simple" hotspot_x="15" hotspot_y="36" type="element" height="90" width="320" version="0.5">
     <uuid uuid="{0ca9ca10-7177-4115-afc1-a6e0d8ba161b}"/>
     <names>
         <name lang="pl">Campbell - Rejestrator CR1000 (część 2/3)</name>

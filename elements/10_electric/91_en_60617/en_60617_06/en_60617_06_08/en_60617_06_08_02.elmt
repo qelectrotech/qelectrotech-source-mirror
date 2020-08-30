@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="65" hotspot_y="85" version="0.70" width="90" type="element" height="90">
+<definition link_type="simple" hotspot_x="65" hotspot_y="85" version="0.70" width="90" type="element" height="90">
     <uuid uuid="{c80a6bf5-9811-472e-9088-4f05cc7db35b}"/>
     <names>
         <name lang="fr">Moteur asynchrone monophasé, à rotor en

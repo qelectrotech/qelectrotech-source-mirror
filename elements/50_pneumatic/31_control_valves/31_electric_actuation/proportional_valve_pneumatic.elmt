@@ -1,4 +1,4 @@
-<definition width="110" height="90" orientation="dyyy" hotspot_y="73" hotspot_x="44" link_type="simple" type="element" version="0.70">
+<definition width="110" height="90" hotspot_y="73" hotspot_x="44" link_type="simple" type="element" version="0.70">
     <uuid uuid="{7aaebed7-b051-4464-88cc-9dd1f3aad574}"/>
     <names>
         <name lang="hu">Proporcionális szelep pneumatika</name>

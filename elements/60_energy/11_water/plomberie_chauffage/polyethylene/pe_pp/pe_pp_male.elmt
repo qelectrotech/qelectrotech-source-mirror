@@ -1,4 +1,4 @@
-<definition height="40" hotspot_x="14" orientation="dyyy" hotspot_y="20" version="0.51" link_type="simple" width="60" type="element">
+<definition height="40" hotspot_x="14" hotspot_y="20" version="0.51" link_type="simple" width="60" type="element">
     <uuid uuid="{884abbef-dbd5-400a-9877-846dedfb302b}"/>
     <names>
         <name lang="fr">Raccord PE PP mâle</name>

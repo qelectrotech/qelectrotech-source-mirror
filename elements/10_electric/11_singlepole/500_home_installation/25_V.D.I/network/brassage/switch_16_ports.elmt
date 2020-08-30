@@ -1,4 +1,4 @@
-<definition version="0.80" hotspot_x="45" link_type="simple" width="560" hotspot_y="25" orientation="dyyy" type="element" height="60">
+<definition version="0.80" hotspot_x="45" link_type="simple" width="560" hotspot_y="25" type="element" height="60">
     <uuid uuid="{bb99045f-46f1-482f-b6bd-0893fe567052}"/>
     <names>
         <name lang="fr">Switch 16 ports</name>

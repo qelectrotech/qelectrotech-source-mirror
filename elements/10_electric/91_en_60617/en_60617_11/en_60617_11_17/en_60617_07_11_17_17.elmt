@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="20" link_type="simple" hotspot_x="34" width="90" hotspot_y="0">
+<definition type="element" version="0.70" height="20" link_type="simple" hotspot_x="34" width="90" hotspot_y="0">
     <uuid uuid="{e65b87f3-1005-466e-ad91-619aae681490}"/>
     <names>
         <name lang="de">Phasenwender</name>

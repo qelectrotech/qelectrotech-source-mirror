@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="7" hotspot_y="34" width="50" orientation="dyyy" height="60" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="7" hotspot_y="34" width="50" height="60" link_type="simple" type="element">
     <uuid uuid="{0fd3a7ab-130a-437a-927c-07704dd331b1}"/>
     <names>
         <name lang="en">Hydraulic pump 2</name>

@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="100" height="40" hotspot_x="45" hotspot_y="10" orientation="dyyy" version="0.70">
+<definition link_type="simple" type="element" width="100" height="40" hotspot_x="45" hotspot_y="10" version="0.70">
     <uuid uuid="{96eb996a-389f-4d64-952d-3cde8d449988}"/>
     <names>
         <name lang="de">Verstärker mit Rückwärtskanal </name>

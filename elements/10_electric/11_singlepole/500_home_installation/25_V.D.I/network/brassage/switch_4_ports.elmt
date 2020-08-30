@@ -1,4 +1,4 @@
-<definition link_type="simple" orientation="dyyy" width="170" height="60" version="0.80" type="element" hotspot_x="45" hotspot_y="25">
+<definition link_type="simple" width="170" height="60" version="0.80" type="element" hotspot_x="45" hotspot_y="25">
     <uuid uuid="{fb180e97-f10f-48f0-92fb-26ea4c9f5ce9}"/>
     <names>
         <name lang="fr">Switch 4 ports</name>

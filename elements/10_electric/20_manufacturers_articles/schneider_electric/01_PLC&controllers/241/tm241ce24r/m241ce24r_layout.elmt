@@ -1,4 +1,4 @@
-<definition width="390" type="element" link_type="simple" version="0.60" orientation="dyyy" height="260" hotspot_x="8" hotspot_y="4">
+<definition width="390" type="element" link_type="simple" version="0.60" height="260" hotspot_x="8" hotspot_y="4">
     <uuid uuid="{63d050e3-35c0-482a-8f0a-a0320c8f308b}"/>
     <names>
         <name lang="en">PLC M241CE24R: layout</name>

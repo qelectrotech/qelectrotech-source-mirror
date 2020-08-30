@@ -1,4 +1,4 @@
-<definition height="90" version="0.80" type="element" link_type="master" width="120" orientation="dyyy" hotspot_x="46" hotspot_y="26">
+<definition height="90" version="0.80" type="element" link_type="master" width="120" hotspot_x="46" hotspot_y="26">
     <uuid uuid="{22ad8f5d-ef20-43ce-bf6f-9c916ccbe8d5}"/>
     <names>
         <name lang="fr">411506 - Interrupteur différentiel AC 63A 30mA Haut-Vis/Bas-Vis</name>

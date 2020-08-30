@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="simple" hotspot_x="3" hotspot_y="8" type="element" orientation="dyyy" width="40" height="130">
+<definition version="0.80" link_type="simple" hotspot_x="3" hotspot_y="8" type="element" width="40" height="130">
     <uuid uuid="{2683f5cf-13d1-467e-82cb-c084e6e61a44}"/>
     <names>
         <name lang="fr">037176 - Viking3 - 1 jonction 1 entrée 1 sortie 35mm² pas 15mm Nu</name>

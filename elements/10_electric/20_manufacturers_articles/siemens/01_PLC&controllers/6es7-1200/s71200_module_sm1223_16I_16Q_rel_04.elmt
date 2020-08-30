@@ -1,4 +1,4 @@
-<definition width="140" orientation="dyyy" hotspot_y="232" link_type="simple" version="0.80" height="470" hotspot_x="64" type="element">
+<definition width="140" hotspot_y="232" link_type="simple" version="0.80" height="470" hotspot_x="64" type="element">
     <uuid uuid="{cb44384e-6fc0-41a7-86ec-c1a38f9fbfef}"/>
     <names>
         <name lang="it">S7-1200 Modulo sm 1223-16I-16Q</name>

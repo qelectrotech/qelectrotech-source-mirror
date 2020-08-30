@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="40" hotspot_y="44" orientation="dyyy" height="70" version="0.70" hotspot_x="31">
+<definition link_type="simple" type="element" width="40" hotspot_y="44" height="70" version="0.70" hotspot_x="31">
     <uuid uuid="{a5a74fb6-fb97-4268-9614-defb30c73b27}"/>
     <names>
         <name lang="fr">Contact à fermeture, retardé, dispositif activé</name>

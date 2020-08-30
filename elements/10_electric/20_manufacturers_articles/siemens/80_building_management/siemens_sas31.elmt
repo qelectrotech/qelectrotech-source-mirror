@@ -1,4 +1,4 @@
-<definition type="element" width="150" hotspot_y="69" link_type="simple" hotspot_x="55" height="80" orientation="dyyy" version="0.80">
+<definition type="element" width="150" hotspot_y="69" link_type="simple" hotspot_x="55" height="80" version="0.80">
     <uuid uuid="{3b90cdf6-8d46-4b10-930e-ccb5964c922e}"/>
     <names>
         <name lang="fr">Servomoteur Siemens 230V 3 POINTS</name>

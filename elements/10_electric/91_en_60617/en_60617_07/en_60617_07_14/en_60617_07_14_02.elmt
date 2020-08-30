@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="50" height="50" hotspot_y="25" hotspot_x="25" version="0.70" link_type="simple">
+<definition type="element" width="50" height="50" hotspot_y="25" hotspot_x="25" version="0.70" link_type="simple">
     <uuid uuid="{7f748c57-b23d-4476-a490-0570592d3037}"/>
     <names>
         <name lang="de">Anlasser, Betätigung stufenweise</name>

@@ -1,4 +1,4 @@
-<definition height="60" version="0.70" orientation="dyyy" width="110" hotspot_x="45" type="element" hotspot_y="42" link_type="simple">
+<definition height="60" version="0.70" width="110" hotspot_x="45" type="element" hotspot_y="42" link_type="simple">
     <uuid uuid="{aab25bf6-776f-44cf-80b1-044325f98c5c}"/>
     <names>
         <name lang="fr">Électrode de division du faisceau, relié

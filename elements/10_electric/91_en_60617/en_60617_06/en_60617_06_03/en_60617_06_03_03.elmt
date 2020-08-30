@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="45" hotspot_y="10" version="0.70" width="50" type="element" height="20">
+<definition link_type="simple" hotspot_x="45" hotspot_y="10" version="0.70" width="50" type="element" height="20">
     <uuid uuid="{e9a91826-722d-490d-a54d-6958d7bc040a}"/>
     <names>
         <name lang="fr">Enroulement d'excitation en dérivation ou

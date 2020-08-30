@@ -1,4 +1,4 @@
-<definition height="40" version="0.5" link_type="simple" width="20" orientation="dyyy" hotspot_x="10" hotspot_y="24" type="element">
+<definition height="40" version="0.5" link_type="simple" width="20" hotspot_x="10" hotspot_y="24" type="element">
     <uuid uuid="{ef9f1837-af4d-417a-bbe2-10d7dc7b3473}"/>
     <names>
         <name lang="de">Tunneldiode

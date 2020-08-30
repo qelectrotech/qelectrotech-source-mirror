@@ -1,4 +1,4 @@
-<definition width="120" hotspot_y="43" height="90" type="element" hotspot_x="55" orientation="dyyy" version="0.5" link_type="simple">
+<definition width="120" hotspot_y="43" height="90" type="element" hotspot_x="55" version="0.5" link_type="simple">
     <uuid uuid="{055839a0-fd83-4664-becd-596642cce550}"/>
     <names>
         <name lang="el">PSEN 1.1p-10</name>

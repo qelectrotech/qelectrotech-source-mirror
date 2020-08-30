@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_y="4" height="210" width="50" orientation="dyyy" type="element" version="0.80" hotspot_x="5">
+<definition link_type="simple" hotspot_y="4" height="210" width="50" type="element" version="0.80" hotspot_x="5">
     <uuid uuid="{63ab0014-738c-4f49-963f-5bd56858d60a}"/>
     <names>
         <name lang="fr">412400 - Télérupteur silencieux 1P 16A 250V - 1F 230V</name>

@@ -1,4 +1,4 @@
-<definition width="370" height="210" type="element" link_type="simple" hotspot_x="185" hotspot_y="104" orientation="dyyy" version="0.5">
+<definition width="370" height="210" type="element" link_type="simple" hotspot_x="185" hotspot_y="104" version="0.5">
     <uuid uuid="{7500ea5d-c3b8-4ed6-ac25-e7f699efa4a9}"/>
     <names>
         <name lang="cs">X-PWM</name>

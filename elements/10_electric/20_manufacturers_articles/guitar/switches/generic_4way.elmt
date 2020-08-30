@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="30" version="0.5" link_type="simple" type="element" hotspot_y="14" height="30" width="60">
+<definition hotspot_x="30" version="0.5" link_type="simple" type="element" hotspot_y="14" height="30" width="60">
     <uuid uuid="{51fc3490-b6b0-44f6-a8d5-7c03310b5408}"/>
     <names>
         <name lang="en">4 Way Switch</name>

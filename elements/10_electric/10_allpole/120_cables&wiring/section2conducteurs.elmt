@@ -1,4 +1,4 @@
-<definition width="40" link_type="simple" version="0.5" hotspot_x="14" orientation="dyyy" height="10" hotspot_y="5" type="element">
+<definition width="40" link_type="simple" version="0.5" hotspot_x="14" height="10" hotspot_y="5" type="element">
     <uuid uuid="{c94d9e16-e3bb-4117-b037-466a15edcb14}"/>
     <names>
         <name lang="de">Verdrahtungsdefinition 2 Leiter</name>

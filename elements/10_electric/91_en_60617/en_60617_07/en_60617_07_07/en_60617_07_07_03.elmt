@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="50" hotspot_y="44" orientation="dyyy" height="70" version="0.70" hotspot_x="41">
+<definition link_type="simple" type="element" width="50" hotspot_y="44" height="70" version="0.70" hotspot_x="41">
     <uuid uuid="{749c5991-f402-401a-88c4-d4452110a8a8}"/>
     <names>
         <name lang="fr">Interrupteur à tirette à fermeture et à retour

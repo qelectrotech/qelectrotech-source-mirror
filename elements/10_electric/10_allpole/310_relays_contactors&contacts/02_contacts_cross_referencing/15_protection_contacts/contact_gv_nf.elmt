@@ -1,4 +1,4 @@
-<definition type="element" hotspot_y="44" version="0.60" hotspot_x="43" link_type="slave" orientation="dyyy" width="60" height="60">
+<definition type="element" hotspot_y="44" version="0.60" hotspot_x="43" link_type="slave" width="60" height="60">
     <uuid uuid="{9f95f940-7ebe-43df-9f35-c4c07eb2e047}"/>
     <names>
         <name lang="fr">Contact NF disjoncteur magnéto-thermique GV</name>

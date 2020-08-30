@@ -1,4 +1,4 @@
-<definition width="10" hotspot_x="4" type="element" link_type="simple" orientation="dyyy" version="0.5" height="60" hotspot_y="29">
+<definition width="10" hotspot_x="4" type="element" link_type="simple" version="0.5" height="60" hotspot_y="29">
     <uuid uuid="{01cc2a19-2d58-478f-b496-44d71f2cbcc9}"/>
     <names>
         <name lang="cs">Jednoduchý elektrický výboj</name>

@@ -1,4 +1,4 @@
-<definition width="180" link_type="simple" orientation="dyyy" hotspot_y="24" version="0.51" type="element" height="70" hotspot_x="39">
+<definition width="180" link_type="simple" hotspot_y="24" version="0.51" type="element" height="70" hotspot_x="39">
     <uuid uuid="{3f8e1895-602d-492e-9815-23851e985616}"/>
     <names>
         <name lang="fr">Répartiteur 8 D</name>

@@ -1,4 +1,4 @@
-<definition hotspot_y="4" height="20" hotspot_x="17" type="element" width="30" link_type="terminal" orientation="dyyy" version="0.70">
+<definition hotspot_y="4" height="20" hotspot_x="17" type="element" width="30" link_type="terminal" version="0.70">
     <uuid uuid="{9e88368e-1b20-4a56-8941-5d17a4cce2d4}"/>
     <names>
         <name lang="cs">Levé spojení</name>

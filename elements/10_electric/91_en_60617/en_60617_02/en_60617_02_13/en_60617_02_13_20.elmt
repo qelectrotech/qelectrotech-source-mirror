@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="40" hotspot_y="10" orientation="dyyy" height="20" version="0.70" hotspot_x="29">
+<definition link_type="simple" type="element" width="40" hotspot_y="10" height="20" version="0.70" hotspot_x="29">
     <uuid uuid="{849fc32d-4721-4b32-bc69-be997e6e39f5}"/>
     <names>
         <name lang="fr">Commande par accumulation d'énergie

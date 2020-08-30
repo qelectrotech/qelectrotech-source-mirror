@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="14" hotspot_y="15" width="50" orientation="dyyy" height="40" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="14" hotspot_y="15" width="50" height="40" link_type="simple" type="element">
     <uuid uuid="{5722be3f-c69d-41ad-9231-f40015f017b1}"/>
     <names>
         <name lang="en">Three-way valve - manual</name>

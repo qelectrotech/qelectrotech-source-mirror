@@ -1,4 +1,4 @@
-<definition hotspot_x="65" hotspot_y="65" orientation="dyyy" height="70" link_type="simple" version="0.70" type="element" width="70">
+<definition hotspot_x="65" hotspot_y="65" height="70" link_type="simple" version="0.70" type="element" width="70">
     <uuid uuid="{c6c7b458-424c-42d1-8dec-f91d9370e709}"/>
     <names>
         <name lang="de">Überstromrelais, verzögert</name>

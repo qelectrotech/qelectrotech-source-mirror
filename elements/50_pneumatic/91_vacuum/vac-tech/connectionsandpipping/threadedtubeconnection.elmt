@@ -1,4 +1,4 @@
-<definition hotspot_x="24" height="50" type="element" orientation="dyyy" hotspot_y="25" version="0.80" link_type="simple" width="50">
+<definition hotspot_x="24" height="50" type="element" hotspot_y="25" version="0.80" link_type="simple" width="50">
     <uuid uuid="{8f534c1c-3d9e-48c1-bcd2-da85929abd95}"/>
     <names>
         <name lang="en">Threaded tube connection</name>

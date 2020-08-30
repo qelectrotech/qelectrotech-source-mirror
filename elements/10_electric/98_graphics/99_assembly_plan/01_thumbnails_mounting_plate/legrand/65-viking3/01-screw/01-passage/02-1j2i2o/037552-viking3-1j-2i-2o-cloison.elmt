@@ -1,4 +1,4 @@
-<definition hotspot_x="-1" width="10" type="element" height="140" version="0.80" link_type="simple" orientation="dyyy" hotspot_y="66">
+<definition hotspot_x="-1" width="10" type="element" height="140" version="0.80" link_type="simple" hotspot_y="66">
     <uuid uuid="{9ac67efc-1e9f-4b4f-afd3-c5d0e3d9762b}"/>
     <names>
         <name lang="fr">037552 - Viking3- Cloison terminale pour blocs de jonction à vis Viking3 avec 2 entrées 2 sorties</name>

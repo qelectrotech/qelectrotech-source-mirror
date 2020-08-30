@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="8">
+<definition width="30" hotspot_x="14" type="element" link_type="simple" version="0.5" height="20" hotspot_y="8">
     <uuid uuid="{3dde898a-361b-4032-8e29-4c9e89083b06}"/>
     <names>
         <name lang="cs">Vlásečnicové trubky</name>

@@ -1,4 +1,4 @@
-<definition hotspot_x="351" hotspot_y="45" type="element" orientation="dyyy" height="110" version="0.60" width="720" link_type="simple">
+<definition hotspot_x="351" hotspot_y="45" type="element" height="110" version="0.60" width="720" link_type="simple">
     <uuid uuid="{366ad411-4659-488b-ad2d-f7ab7b31ff0d}"/>
     <names>
         <name lang="en">TB7_FIELD_IO Part 3</name>

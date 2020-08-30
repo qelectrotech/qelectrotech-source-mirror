@@ -1,4 +1,4 @@
-<definition orientation="dyyy" height="60" version="0.70" width="110" link_type="simple" type="element" hotspot_x="86" hotspot_y="41">
+<definition height="60" version="0.70" width="110" link_type="simple" type="element" hotspot_x="86" hotspot_y="41">
     <uuid uuid="{e629dcc2-5ed0-4892-bab1-34d96fad1bf2}"/>
     <names>
         <name lang="hu">5/2 kézi karos útváltó szelep</name>

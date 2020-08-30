@@ -1,4 +1,4 @@
-<definition height="50" hotspot_x="16" version="0.51" width="60" type="element" orientation="dyyy" link_type="simple" hotspot_y="12">
+<definition height="50" hotspot_x="16" version="0.51" width="60" type="element" link_type="simple" hotspot_y="12">
     <uuid uuid="{f45c217e-df60-4401-b5cf-ba11db33200b}"/>
     <names>
         <name lang="fr">Crosse Cu vanne</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="55" link_type="master" type="element" height="90" version="0.80" hotspot_y="37" width="110">
+<definition hotspot_x="55" link_type="master" type="element" height="90" version="0.80" hotspot_y="37" width="110">
     <uuid uuid="{ea4f7353-a0a1-4638-8be6-91f0f5aa5d0f}"/>
     <names>
         <name lang="fr">Double Flux</name>

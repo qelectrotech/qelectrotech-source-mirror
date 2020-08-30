@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="60" link_type="simple" hotspot_x="45" width="50" hotspot_y="55">
+<definition type="element" version="0.70" height="60" link_type="simple" hotspot_x="45" width="50" hotspot_y="55">
     <uuid uuid="{0f22441a-7a75-4388-a95e-aa07021d4152}"/>
     <names>
         <name lang="de">Schlüsselschalter,

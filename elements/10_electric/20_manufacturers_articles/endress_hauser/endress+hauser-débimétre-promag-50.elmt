@@ -1,4 +1,4 @@
-<definition width="220" orientation="dyyy" hotspot_y="30" link_type="simple" version="0.80" height="70" hotspot_x="15" type="element">
+<definition width="220" hotspot_y="30" link_type="simple" version="0.80" height="70" hotspot_x="15" type="element">
     <uuid uuid="{d887bb86-b81b-4a0e-b835-56ff8b7a386a}"/>
     <names>
         <name lang="it">Debimetro Endress+Hauser Promag 50</name>

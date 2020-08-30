@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="4" link_type="simple" orientation="dyyy" version="0.80" hotspot_y="4" width="110" height="110">
+<definition type="element" hotspot_x="4" link_type="simple" version="0.80" hotspot_y="4" width="110" height="110">
     <uuid uuid="{752ddd35-f414-4a80-ba61-75871adfaf61}"/>
     <names>
         <name lang="cs">Počítač PC</name>

@@ -1,4 +1,4 @@
-<definition height="50" width="110" type="element" hotspot_x="49" orientation="dyyy" version="0.80" link_type="simple" hotspot_y="30">
+<definition height="50" width="110" type="element" hotspot_x="49" version="0.80" link_type="simple" hotspot_y="30">
     <uuid uuid="{6ca0178d-d766-44a5-aeb0-f4f42a98bf4f}"/>
     <names>
         <name lang="en">I2C Level Shifter</name>

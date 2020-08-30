@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" height="50" width="70" version="0.70" orientation="dyyy" hotspot_x="55" hotspot_y="45">
+<definition type="element" link_type="simple" height="50" width="70" version="0.70" hotspot_x="55" hotspot_y="45">
     <uuid uuid="{9d8ac118-e354-489e-b590-25b7d2e73af8}"/>
     <names>
         <name lang="fr">Source de chaleur</name>

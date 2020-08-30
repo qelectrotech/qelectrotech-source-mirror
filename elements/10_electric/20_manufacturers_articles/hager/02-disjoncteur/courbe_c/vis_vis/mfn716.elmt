@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="master" hotspot_y="40" height="70" orientation="dyyy" type="element" width="50" hotspot_x="18">
+<definition version="0.80" link_type="master" hotspot_y="40" height="70" type="element" width="50" hotspot_x="18">
     <uuid uuid="{ff6fd0d2-95de-43c4-817b-9f434ec1c588}"/>
     <names>
         <name lang="fr">MFS716 16A</name>

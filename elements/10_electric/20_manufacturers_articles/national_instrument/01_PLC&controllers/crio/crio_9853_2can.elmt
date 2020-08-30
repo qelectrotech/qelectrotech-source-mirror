@@ -1,4 +1,4 @@
-<definition width="50" height="140" link_type="simple" orientation="dyyy" hotspot_x="25" version="0.5" hotspot_y="76" type="element">
+<definition width="50" height="140" link_type="simple" hotspot_x="25" version="0.5" hotspot_y="76" type="element">
     <uuid uuid="{c43fa0ba-a064-4922-b6f6-3dbc81f4bcba}"/>
     <names>
         <name lang="it">cRIO 9853 - modulo CAN-bus</name>

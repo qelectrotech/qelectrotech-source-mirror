@@ -1,4 +1,4 @@
-<definition hotspot_x="36" version="0.70" orientation="dyyy" height="50" hotspot_y="45" width="50" type="element" link_type="simple">
+<definition hotspot_x="36" version="0.70" height="50" hotspot_y="45" width="50" type="element" link_type="simple">
     <uuid uuid="{36d6ae1a-ae92-4504-a9c7-9383f1be8f26}"/>
     <names>
         <name lang="fr">Connecteur, partie fixe d'un ensemble</name>

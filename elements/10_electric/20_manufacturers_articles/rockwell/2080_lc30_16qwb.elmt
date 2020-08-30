@@ -1,4 +1,4 @@
-<definition height="240" hotspot_y="11" version="0.60" width="760" type="element" hotspot_x="6" orientation="dyyy" link_type="simple">
+<definition height="240" hotspot_y="11" version="0.60" width="760" type="element" hotspot_x="6" link_type="simple">
     <uuid uuid="{28baece1-a9d0-45c2-b014-0a959831425d}"/>
     <names>
         <name lang="fr">2080-LC30-16QWB</name>

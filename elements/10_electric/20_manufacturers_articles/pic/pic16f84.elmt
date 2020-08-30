@@ -1,4 +1,4 @@
-<definition width="80" orientation="dyyy" hotspot_y="94" link_type="simple" version="0.80" height="190" hotspot_x="44" type="element">
+<definition width="80" hotspot_y="94" link_type="simple" version="0.80" height="190" hotspot_x="44" type="element">
     <uuid uuid="{0f55e8e7-ddb7-4d76-aad2-94b3e0fa666f}"/>
     <names>
         <name lang="fr">pic16f84</name>

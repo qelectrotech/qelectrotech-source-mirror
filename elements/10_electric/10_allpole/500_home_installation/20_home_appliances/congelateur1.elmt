@@ -1,4 +1,4 @@
-<definition link_type="simple" height="190" version="0.80" orientation="dyyy" type="element" width="130" hotspot_x="5" hotspot_y="185">
+<definition link_type="simple" height="190" version="0.80" type="element" width="130" hotspot_x="5" hotspot_y="185">
     <uuid uuid="{735adfe1-fb12-46dd-9b00-2086aaeb92ba}"/>
     <names>
         <name lang="pl">Zamrażarka</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="120" height="110" hotspot_y="104" hotspot_x="95" version="0.70" link_type="simple">
+<definition type="element" width="120" height="110" hotspot_y="104" hotspot_x="95" version="0.70" link_type="simple">
     <uuid uuid="{3a26be64-7e0e-4bb2-af69-f99930a6a17e}"/>
     <names>
         <name lang="de">dreipoliger Schalter mit selbsttätiger Auslösung

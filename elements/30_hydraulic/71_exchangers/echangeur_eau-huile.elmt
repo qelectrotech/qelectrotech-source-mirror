@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="45" hotspot_y="35" width="90" orientation="dyyy" height="70" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="45" hotspot_y="35" width="90" height="70" link_type="simple" type="element">
     <uuid uuid="{38e88729-6d3b-4c67-aeba-169f3e44722c}"/>
     <names>
         <name lang="en">Water oil exchanger</name>

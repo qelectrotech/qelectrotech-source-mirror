@@ -1,4 +1,4 @@
-<definition hotspot_y="28" type="element" height="50" width="40" hotspot_x="20" orientation="dyyy" link_type="simple" version="0.5">
+<definition hotspot_y="28" type="element" height="50" width="40" hotspot_x="20" link_type="simple" version="0.5">
     <uuid uuid="{06087d5d-6b03-463e-b400-51ffcdf5c16d}"/>
     <names>
         <name lang="cs">Ampérmetr</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="20" height="20" hotspot_y="10" hotspot_x="10" version="0.70" link_type="simple">
+<definition type="element" width="20" height="20" hotspot_y="10" hotspot_x="10" version="0.70" link_type="simple">
     <uuid uuid="{e7bd7235-296d-4702-94af-25707a1b586a}"/>
     <names>
         <name lang="de">Funktion "nicht selbsttätiger Rückgang"</name>

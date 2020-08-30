@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="20" link_type="simple" type="element" height="50" version="0.80" hotspot_y="17" width="40">
+<definition hotspot_x="20" link_type="simple" type="element" height="50" version="0.80" hotspot_y="17" width="40">
     <uuid uuid="{6120eef2-bb1f-43e5-bdf2-ddbd1c034d6b}"/>
     <names>
         <name lang="es">Motormonofásico</name>

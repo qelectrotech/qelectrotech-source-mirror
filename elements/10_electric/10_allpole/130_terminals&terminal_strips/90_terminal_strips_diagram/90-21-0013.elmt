@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.51" width="30" height="80" type="element" hotspot_x="15" link_type="simple" hotspot_y="13">
+<definition version="0.51" width="30" height="80" type="element" hotspot_x="15" link_type="simple" hotspot_y="13">
     <uuid uuid="{4aea9d8c-0dc6-4be7-b988-7ee87ae439fc}"/>
     <names>
         <name lang="fr">Appareil (connexion en haut) - fin</name>

@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" orientation="dyyy" hotspot_x="77" height="200" width="110" hotspot_y="180" version="0.70">
+<definition link_type="simple" type="element" hotspot_x="77" height="200" width="110" hotspot_y="180" version="0.70">
     <uuid uuid="{d5d15e31-3175-480e-bfb7-86a807c921e3}"/>
     <names>
         <name lang="de">Drehstromeinheit aus

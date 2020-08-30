@@ -1,4 +1,4 @@
-<definition width="80" hotspot_x="25" type="element" link_type="simple" orientation="dyyy" version="0.5" height="100" hotspot_y="28">
+<definition width="80" hotspot_x="25" type="element" link_type="simple" version="0.5" height="100" hotspot_y="28">
     <uuid uuid="{d4bc558f-4d3e-4081-a721-153bacf64cea}"/>
     <names>
         <name lang="cs">Cirkulace, uzávěry 3 směry</name>

@@ -1,4 +1,4 @@
-<definition hotspot_x="35" type="element" width="50" hotspot_y="34" version="0.70" orientation="dyyy" height="50" link_type="simple">
+<definition hotspot_x="35" type="element" width="50" hotspot_y="34" version="0.70" height="50" link_type="simple">
     <uuid uuid="{29f8fb28-5cb1-4307-93bb-ad750fbdd6ce}"/>
     <names>
         <name lang="en">Bell</name>

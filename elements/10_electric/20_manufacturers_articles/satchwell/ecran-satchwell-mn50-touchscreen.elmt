@@ -1,4 +1,4 @@
-<definition width="470" hotspot_y="84" height="180" type="element" hotspot_x="235" orientation="dyyy" version="0.5" link_type="simple">
+<definition width="470" hotspot_y="84" height="180" type="element" hotspot_x="235" version="0.5" link_type="simple">
     <uuid uuid="{f01351f2-436d-4396-8556-b3b8edca64cb}"/>
     <names>
         <name lang="nl">Scherm MN 50 Aanraak</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_y="64" hotspot_x="124" link_type="simple" height="130" type="element" version="0.80" width="250">
+<definition hotspot_y="64" hotspot_x="124" link_type="simple" height="130" type="element" version="0.80" width="250">
     <uuid uuid="{323e399d-f815-4586-b1c3-5c9bd6d77a70}"/>
     <names>
         <name lang="fr">Pattes de fixation murale</name>

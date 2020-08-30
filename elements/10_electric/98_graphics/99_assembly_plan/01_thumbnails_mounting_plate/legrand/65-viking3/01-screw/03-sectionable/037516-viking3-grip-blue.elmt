@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="simple" hotspot_x="3" hotspot_y="55" type="element" orientation="dyyy" width="20" height="110">
+<definition version="0.80" link_type="simple" hotspot_x="3" hotspot_y="55" type="element" width="20" height="110">
     <uuid uuid="{5ca3a601-b17e-4590-ba90-96f17d825b29}"/>
     <names>
         <name lang="fr">037516 - Viking3 - Préhenseur neutre Bleu</name>

@@ -1,4 +1,4 @@
-<definition version="0.5" height="450" link_type="simple" type="element" width="260" orientation="dyyy" hotspot_x="5" hotspot_y="219">
+<definition version="0.5" height="450" link_type="simple" type="element" width="260" hotspot_x="5" hotspot_y="219">
     <uuid uuid="{afcd950a-8361-4dbb-9dc0-a5f14ebd16cb}"/>
     <names>
         <name lang="en">safety card TM3SAF5R</name>

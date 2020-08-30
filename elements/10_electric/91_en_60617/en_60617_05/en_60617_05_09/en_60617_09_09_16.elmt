@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" height="40" width="40" version="0.70" orientation="dyyy" hotspot_x="37" hotspot_y="35">
+<definition type="element" link_type="simple" height="40" width="40" version="0.70" hotspot_x="37" hotspot_y="35">
     <uuid uuid="{fc240473-6a93-474e-8a97-2e2e530fa9d2}"/>
     <names>
         <name lang="fr">Sole non émissive pour structure à retard

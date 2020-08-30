@@ -1,4 +1,4 @@
-<definition width="180" height="210" type="element" link_type="simple" hotspot_x="88" hotspot_y="104" orientation="dyyy" version="0.5">
+<definition width="180" height="210" type="element" link_type="simple" hotspot_x="88" hotspot_y="104" version="0.5">
     <uuid uuid="{45866cfb-87ce-4d56-bab0-d82e3f02f0b5}"/>
     <names>
         <name lang="cs">X-8D</name>

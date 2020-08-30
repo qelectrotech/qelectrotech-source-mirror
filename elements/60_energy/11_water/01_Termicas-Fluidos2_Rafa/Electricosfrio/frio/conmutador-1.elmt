@@ -1,4 +1,4 @@
-<definition width="30" orientation="dyyy" hotspot_y="25" link_type="simple" version="0.80" height="50" hotspot_x="21" type="element">
+<definition width="30" hotspot_y="25" link_type="simple" version="0.80" height="50" hotspot_x="21" type="element">
     <uuid uuid="{43eb43ee-8589-4589-beb8-4d0d04b1c7be}"/>
     <names>
         <name lang="fr">Commutateur</name>

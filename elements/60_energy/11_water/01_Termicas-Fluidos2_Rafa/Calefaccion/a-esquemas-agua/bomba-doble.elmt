@@ -1,4 +1,4 @@
-<definition version="0.80" height="50" orientation="dyyy" width="50" link_type="simple" hotspot_y="24" type="element" hotspot_x="24">
+<definition version="0.80" height="50" width="50" link_type="simple" hotspot_y="24" type="element" hotspot_x="24">
     <uuid uuid="{3faa7216-5f27-4a1a-a42f-5117cf0a6109}"/>
     <names>
         <name lang="ar">مضخة</name>

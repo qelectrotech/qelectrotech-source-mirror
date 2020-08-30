@@ -1,4 +1,4 @@
-<definition hotspot_x="5" width="90" version="0.80" height="210" type="element" hotspot_y="4" orientation="dyyy" link_type="slave">
+<definition hotspot_x="5" width="90" version="0.80" height="210" type="element" hotspot_y="4" link_type="slave">
     <uuid uuid="{59bad4a9-8a34-4985-9a9c-2f0364c1d23d}"/>
     <names>
         <name lang="fr">ADC 732F</name>

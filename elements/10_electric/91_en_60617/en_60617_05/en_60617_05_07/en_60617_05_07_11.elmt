@@ -1,4 +1,4 @@
-<definition height="50" version="0.70" orientation="dyyy" width="50" hotspot_x="25" type="element" hotspot_y="45" link_type="simple">
+<definition height="50" version="0.70" width="50" hotspot_x="25" type="element" hotspot_y="45" link_type="simple">
     <uuid uuid="{bdf4b351-096b-4d47-baed-c09505ef7e4d}"/>
     <names>
         <name lang="fr">Anode

@@ -1,4 +1,4 @@
-<definition height="40" type="element" width="60" orientation="dyyy" hotspot_x="29" link_type="simple" version="0.5" hotspot_y="25">
+<definition height="40" type="element" width="60" hotspot_x="29" link_type="simple" version="0.5" hotspot_y="25">
     <uuid uuid="{4e4778e2-689e-4547-8a02-d98dd34deb59}"/>
     <names>
         <name lang="ar">محول قياسات</name>

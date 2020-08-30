@@ -1,4 +1,4 @@
-<definition width="210" hotspot_x="113" type="element" link_type="simple" orientation="dyyy" version="0.5" height="130" hotspot_y="54">
+<definition width="210" hotspot_x="113" type="element" link_type="simple" version="0.5" height="130" hotspot_y="54">
     <uuid uuid="{f0ecb77e-0827-4b79-b6e5-5eda4157058a}"/>
     <names>
         <name lang="cs">Vodorovný zásobnik ECS</name>

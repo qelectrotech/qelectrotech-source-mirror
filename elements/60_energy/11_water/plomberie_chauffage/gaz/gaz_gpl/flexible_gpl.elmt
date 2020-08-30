@@ -1,4 +1,4 @@
-<definition hotspot_y="15" type="element" link_type="simple" orientation="dyyy" hotspot_x="15" width="60" height="30" version="0.51">
+<definition hotspot_y="15" type="element" link_type="simple" hotspot_x="15" width="60" height="30" version="0.51">
     <uuid uuid="{f21bc8fe-108e-4734-b34f-a34cfa991017}"/>
     <names>
         <name lang="fr">Flexible GPL</name>

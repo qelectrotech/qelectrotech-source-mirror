@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="65" orientation="dyyy" hotspot_y="75" type="element" height="150" width="160" version="0.5">
+<definition link_type="simple" hotspot_x="65" hotspot_y="75" type="element" height="150" width="160" version="0.5">
     <uuid uuid="{1f4daab3-6027-4905-b307-a20e24cdc1b7}"/>
     <names>
         <name lang="pl">Czujnik ciśnienia Deltapilot S</name>

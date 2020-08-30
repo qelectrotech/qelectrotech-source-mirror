@@ -1,4 +1,4 @@
-<definition version="0.70" hotspot_x="615" orientation="dyyy" height="90" width="830" hotspot_y="46" type="element" link_type="simple">
+<definition version="0.70" hotspot_x="615" height="90" width="830" hotspot_y="46" type="element" link_type="simple">
     <uuid uuid="{dbca985b-92d2-439e-b0a9-a498a601b657}"/>
     <names>
         <name lang="fr">Cartes 2 entrées analogiques Schneider TMC4AI2: détails</name>

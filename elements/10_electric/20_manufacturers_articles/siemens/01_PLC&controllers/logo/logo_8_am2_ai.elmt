@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_y="149" link_type="simple" height="300" version="0.70" width="140" hotspot_x="71" type="element">
+<definition hotspot_y="149" link_type="simple" height="300" version="0.70" width="140" hotspot_x="71" type="element">
     <uuid uuid="{ad8fe557-6103-450e-8262-000fde4f9f72}"/>
     <names>
         <name lang="fr">logo_8_am2_ai</name>

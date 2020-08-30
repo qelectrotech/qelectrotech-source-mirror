@@ -1,4 +1,4 @@
-<definition hotspot_x="13" hotspot_y="74" width="40" orientation="dyyy" type="element" height="160" link_type="simple" version="0.80">
+<definition hotspot_x="13" hotspot_y="74" width="40" type="element" height="160" link_type="simple" version="0.80">
     <names>
         <name lang="de">249-117 Endklammer 10mm</name>
         <name lang="en">249-117 End-Stop 10mm</name>

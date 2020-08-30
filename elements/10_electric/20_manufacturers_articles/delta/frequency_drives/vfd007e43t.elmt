@@ -1,4 +1,4 @@
-<definition hotspot_x="15" width="490" hotspot_y="24" version="0.60" height="100" orientation="dyyy" link_type="simple" type="element">
+<definition hotspot_x="15" width="490" hotspot_y="24" version="0.60" height="100" link_type="simple" type="element">
     <uuid uuid="{2ee5aafb-9501-4722-97f0-b25127132488}"/>
     <names>
         <name lang="ar">VFD-E</name>

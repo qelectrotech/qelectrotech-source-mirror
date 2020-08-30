@@ -1,4 +1,4 @@
-<definition width="60" orientation="dyyy" hotspot_y="44" link_type="simple" version="0.80" height="100" hotspot_x="39" type="element">
+<definition width="60" hotspot_y="44" link_type="simple" version="0.80" height="100" hotspot_x="39" type="element">
     <uuid uuid="{8485b6b5-43e9-41c8-bc08-71e2a071589e}"/>
     <names>
         <name lang="fr">Puit géothermique</name>

@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="terminal" height="30" hotspot_y="14" width="10" orientation="dyyy" type="element" hotspot_x="4">
+<definition version="0.80" link_type="terminal" height="30" hotspot_y="14" width="10" type="element" hotspot_x="4">
     <uuid uuid="{d1795c66-f538-4a75-859e-081b55464dc7}"/>
     <names>
         <name lang="pt">Terminal de combinação</name>

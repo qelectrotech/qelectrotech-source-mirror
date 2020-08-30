@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="110" height="30" hotspot_x="45" hotspot_y="5" orientation="dyyy" version="0.70">
+<definition link_type="simple" type="element" width="110" height="30" hotspot_x="45" hotspot_y="5" version="0.70">
     <uuid uuid="{4afe5652-ad3f-49a2-82fc-6006b0dea044}"/>
     <names>
         <name lang="de">Durchschleifdose</name>

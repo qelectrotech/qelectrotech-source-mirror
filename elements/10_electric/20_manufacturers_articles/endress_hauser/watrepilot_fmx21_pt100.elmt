@@ -1,4 +1,4 @@
-<definition version="0.70" hotspot_y="85" height="170" type="element" orientation="dyyy" width="170" hotspot_x="85" link_type="simple">
+<definition version="0.70" hotspot_y="85" height="170" type="element" width="170" hotspot_x="85" link_type="simple">
     <uuid uuid="{a7660776-8240-4677-995d-a2492a72b8d3}"/>
     <names>
         <name lang="fr">Waterpilot FMX21 + PT100</name>

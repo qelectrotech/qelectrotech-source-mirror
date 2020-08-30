@@ -1,4 +1,4 @@
-<definition width="110" hotspot_x="53" type="element" link_type="simple" orientation="dyyy" version="0.5" height="180" hotspot_y="87">
+<definition width="110" hotspot_x="53" type="element" link_type="simple" version="0.5" height="180" hotspot_y="87">
     <uuid uuid="{5a48f359-0b98-4e2a-bc86-338a963f5743}"/>
     <names>
         <name lang="cs">Elektrický zásobnik ECS</name>

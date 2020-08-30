@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="20" hotspot_y="7" width="30" orientation="dyyy" height="20" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="20" hotspot_y="7" width="30" height="20" link_type="simple" type="element">
     <uuid uuid="{972637df-035d-424c-980b-a0534995090f}"/>
     <names>
         <name lang="en">Pull button</name>

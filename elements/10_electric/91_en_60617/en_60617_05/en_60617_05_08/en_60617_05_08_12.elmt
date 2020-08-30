@@ -1,4 +1,4 @@
-<definition height="70" version="0.70" orientation="dyyy" width="60" hotspot_x="55" type="element" hotspot_y="55" link_type="simple">
+<definition height="70" version="0.70" width="60" hotspot_x="55" type="element" hotspot_y="55" link_type="simple">
     <uuid uuid="{ce9f128b-92d6-42bf-a137-b4e74aed49db}"/>
     <names>
         <name lang="fr">Anode à émission secondaire

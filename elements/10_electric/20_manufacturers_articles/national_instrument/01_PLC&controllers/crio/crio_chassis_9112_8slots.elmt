@@ -1,4 +1,4 @@
-<definition width="690" height="30" link_type="simple" orientation="dyyy" hotspot_x="85" version="0.5" hotspot_y="15" type="element">
+<definition width="690" height="30" link_type="simple" hotspot_x="85" version="0.5" hotspot_y="15" type="element">
     <uuid uuid="{c79c0e62-87a4-4e8e-b34d-5cbd8e81dbce}"/>
     <names>
         <name lang="it">cRIO 9112 - chassis a 8 slot</name>

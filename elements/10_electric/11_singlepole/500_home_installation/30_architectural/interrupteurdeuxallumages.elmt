@@ -1,4 +1,4 @@
-<definition hotspot_y="7" type="element" version="0.5" orientation="dyyy" height="30" width="40" link_type="simple" hotspot_x="10">
+<definition hotspot_y="7" type="element" version="0.5" height="30" width="40" link_type="simple" hotspot_x="10">
     <uuid uuid="{97120552-b8d9-43a1-9f4d-829adc76eaa6}"/>
     <names>
         <name lang="fr">interrupteur deux allumages</name>

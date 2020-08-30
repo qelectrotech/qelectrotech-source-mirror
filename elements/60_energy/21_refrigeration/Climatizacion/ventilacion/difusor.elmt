@@ -1,4 +1,4 @@
-<definition hotspot_y="26" link_type="simple" width="50" version="0.80" type="element" height="40" orientation="dyyy" hotspot_x="25">
+<definition hotspot_y="26" link_type="simple" width="50" version="0.80" type="element" height="40" hotspot_x="25">
     <uuid uuid="{0f966b5e-65c1-4dbc-9c74-ea9793cc7e96}"/>
     <names>
         <name lang="fr">diffuseur d'air</name>

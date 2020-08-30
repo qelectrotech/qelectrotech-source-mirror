@@ -1,4 +1,4 @@
-<definition orientation="dyyy" height="290" type="element" version="0.70" link_type="simple" hotspot_y="139" hotspot_x="25" width="60">
+<definition height="290" type="element" version="0.70" link_type="simple" hotspot_y="139" hotspot_x="25" width="60">
     <uuid uuid="{092954d7-7f9e-40ca-9fcd-e914a4a5c40e}"/>
     <names>
         <name lang="fr">omron ej1ceduanflk</name>

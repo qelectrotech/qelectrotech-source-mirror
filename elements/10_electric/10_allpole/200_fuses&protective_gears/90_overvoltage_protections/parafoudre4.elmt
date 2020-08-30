@@ -1,4 +1,4 @@
-<definition height="60" orientation="dyyy" hotspot_x="17" version="0.80" link_type="simple" type="element" width="40" hotspot_y="29">
+<definition height="60" hotspot_x="17" version="0.80" link_type="simple" type="element" width="40" hotspot_y="29">
     <uuid uuid="{be4fd303-d4a8-4222-ab41-18fff7abb2b9}"/>
     <names>
         <name lang="de">Blitz-/Überspannungsschutz</name>

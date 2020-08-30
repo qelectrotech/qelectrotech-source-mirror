@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="14" link_type="simple" type="element" height="50" version="0.80" hotspot_y="14" width="30">
+<definition hotspot_x="14" link_type="simple" type="element" height="50" version="0.80" hotspot_y="14" width="30">
     <uuid uuid="{883d8f55-8c00-4d25-9dd0-a0d5dffa0194}"/>
     <names>
         <name lang="ru">Эл. плита</name>

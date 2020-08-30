@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" height="100" version="0.70" type="element" width="30" hotspot_x="10" hotspot_y="48">
+<definition link_type="simple" height="100" version="0.70" type="element" width="30" hotspot_x="10" hotspot_y="48">
     <uuid uuid="{35230934-5390-40f0-b732-9782a2e6edd6}"/>
     <names>
         <name lang="es">Colector vertical</name>

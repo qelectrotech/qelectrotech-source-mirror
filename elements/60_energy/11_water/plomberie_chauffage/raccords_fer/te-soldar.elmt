@@ -1,4 +1,4 @@
-<definition hotspot_y="23" link_type="simple" width="50" version="0.80" type="element" height="40" orientation="dyyy" hotspot_x="24">
+<definition hotspot_y="23" link_type="simple" width="50" version="0.80" type="element" height="40" hotspot_x="24">
     <uuid uuid="{34f81f6d-cb50-4773-922e-52de6ff922fc}"/>
     <names>
         <name lang="fr">Té à souder</name>

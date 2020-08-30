@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.70" width="30" type="element" hotspot_y="21" link_type="simple" hotspot_x="15" height="40">
+<definition version="0.70" width="30" type="element" hotspot_y="21" link_type="simple" hotspot_x="15" height="40">
     <uuid uuid="{9b290419-a69f-47a5-8b22-b8753ee4adc6}"/>
     <names>
         <name lang="fr">Equipotentialité</name>

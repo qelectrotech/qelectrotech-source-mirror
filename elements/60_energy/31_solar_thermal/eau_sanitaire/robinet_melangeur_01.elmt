@@ -1,4 +1,4 @@
-<definition width="20" hotspot_x="10" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="16">
+<definition width="20" hotspot_x="10" type="element" link_type="simple" version="0.5" height="30" hotspot_y="16">
     <uuid uuid="{0a8dd16b-0fe5-428a-a645-605a2ff7cdcf}"/>
     <names>
         <name lang="cs">Směšovací baterie</name>

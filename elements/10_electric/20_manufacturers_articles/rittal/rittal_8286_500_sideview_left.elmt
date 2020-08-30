@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.51" width="630" height="1850" type="element" hotspot_x="24" link_type="simple" hotspot_y="1847">
+<definition version="0.51" width="630" height="1850" type="element" hotspot_x="24" link_type="simple" hotspot_y="1847">
     <uuid uuid="{cc9c1ac2-92f8-42e3-b8d4-1af58ddb9f9c}"/>
     <names>
         <name lang="en">Rittal 8286.500 (side view: left)</name>

@@ -1,4 +1,4 @@
-<definition width="40" link_type="simple" orientation="dyyy" hotspot_x="20" hotspot_y="28" type="element" version="0.80" height="60">
+<definition width="40" link_type="simple" hotspot_x="20" hotspot_y="28" type="element" version="0.80" height="60">
     <uuid uuid="{8e43c6eb-db2f-40c1-96dd-d97b1f82f336}"/>
     <names>
         <name lang="fr">Prise Plexo  16A</name>

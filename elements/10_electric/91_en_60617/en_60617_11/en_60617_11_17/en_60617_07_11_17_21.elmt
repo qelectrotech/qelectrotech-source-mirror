@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="70" link_type="simple" hotspot_x="14" width="50" hotspot_y="32">
+<definition type="element" version="0.70" height="70" link_type="simple" hotspot_x="14" width="50" hotspot_y="32">
     <uuid uuid="{799c2998-386c-4c6d-8d80-bbe204237bc6}"/>
     <names>
         <name lang="de">Mitteneinspeisung</name>

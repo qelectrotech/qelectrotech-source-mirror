@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.70" width="70" type="element" hotspot_y="10" link_type="simple" hotspot_x="10" height="20">
+<definition version="0.70" width="70" type="element" hotspot_y="10" link_type="simple" hotspot_x="10" height="20">
     <uuid uuid="{97725efd-2760-477f-88e1-21d0ecbaa24d}"/>
     <names>
         <name lang="fr">Courant alternatif</name>

@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="14">
+<definition width="30" hotspot_x="14" type="element" link_type="simple" version="0.5" height="30" hotspot_y="14">
     <uuid uuid="{6bbb4b6e-c7e8-47a9-bad1-cb89d81f2212}"/>
     <names>
         <name lang="cs">Malá láhev</name>

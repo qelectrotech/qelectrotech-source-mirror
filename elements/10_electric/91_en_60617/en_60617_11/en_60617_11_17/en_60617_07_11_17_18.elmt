@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="30" link_type="simple" hotspot_x="64" width="70" hotspot_y="25">
+<definition type="element" version="0.70" height="30" link_type="simple" hotspot_x="64" width="70" hotspot_y="25">
     <uuid uuid="{a29aad5e-2a43-471c-b02e-605db75196f2}"/>
     <names>
         <name lang="de">Geräte-Einbaukasten</name>

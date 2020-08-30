@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="40" hotspot_y="15" orientation="dyyy" height="30" version="0.70" hotspot_x="30">
+<definition link_type="simple" type="element" width="40" hotspot_y="15" height="30" version="0.70" hotspot_x="30">
     <uuid uuid="{c32d2f30-9896-4de4-9576-dc0b3a62d6d4}"/>
     <names>
         <name lang="fr">Commande par came</name>

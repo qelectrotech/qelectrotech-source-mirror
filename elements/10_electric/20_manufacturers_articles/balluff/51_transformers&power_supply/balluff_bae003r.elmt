@@ -1,4 +1,4 @@
-<definition width="180" orientation="dyyy" type="element" link_type="simple" height="80" hotspot_y="39" version="0.5" hotspot_x="69">
+<definition width="180" type="element" link_type="simple" height="80" hotspot_y="39" version="0.5" hotspot_x="69">
 <uuid uuid="{D161A70F-9677-41C2-A469-7294AD2EA50F}"/><names>
         <name lang="en">BAE PS-XA-3Y-24-400-010 (BAE003R)</name>
     </names>

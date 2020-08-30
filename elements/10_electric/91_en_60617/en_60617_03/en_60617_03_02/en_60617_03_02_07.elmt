@@ -1,4 +1,4 @@
-<definition hotspot_x="24" version="0.70" orientation="dyyy" height="50" hotspot_y="44" width="50" type="element" link_type="simple">
+<definition hotspot_x="24" version="0.70" height="50" hotspot_y="44" width="50" type="element" link_type="simple">
     <uuid uuid="{7113c1e0-de7b-40c5-97ab-1ac03a9e9b78}"/>
     <names>
         <name lang="fr">Double liaison en T</name>

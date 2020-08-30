@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="16" orientation="dyyy" width="40" height="30" hotspot_y="11" link_type="simple" version="0.51">
+<definition type="element" hotspot_x="16" width="40" height="30" hotspot_y="11" link_type="simple" version="0.51">
     <uuid uuid="{b24fccb1-6d43-4726-a042-6341ef335ee6}"/>
     <names>
         <name lang="fr">Coude 90° PVC pression</name>

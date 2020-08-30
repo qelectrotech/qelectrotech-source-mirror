@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="20" hotspot_y="14" width="40" orientation="dyyy" height="40" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="20" hotspot_y="14" width="40" height="40" link_type="simple" type="element">
     <uuid uuid="{5c2c11a0-50d2-4bf7-a755-0553039ef7bf}"/>
     <names>
         <name lang="en">2 ports close</name>

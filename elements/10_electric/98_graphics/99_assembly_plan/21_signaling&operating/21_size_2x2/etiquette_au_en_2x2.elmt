@@ -1,4 +1,4 @@
-<definition width="80" link_type="simple" version="0.5" hotspot_x="40" orientation="dyyy" height="90" hotspot_y="44" type="element">
+<definition width="80" link_type="simple" version="0.5" hotspot_x="40" height="90" hotspot_y="44" type="element">
     <uuid uuid="{cd1b6767-ea32-4b87-b202-6878882b4d4e}"/>
     <names>
         <name lang="el">Στάση κινδύνου -Αγγλικά</name>

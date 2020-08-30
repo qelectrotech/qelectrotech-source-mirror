@@ -1,4 +1,4 @@
-<definition type="element" width="150" version="0.70" hotspot_y="25" orientation="dyyy" height="50" link_type="simple" hotspot_x="144">
+<definition type="element" width="150" version="0.70" hotspot_y="25" height="50" link_type="simple" hotspot_x="144">
     <uuid uuid="{168f9d01-03f3-436a-a9f0-01b2eae39b74}"/>
     <names>
         <name lang="fr">Ligne passant à travers une chambre d'accès</name>

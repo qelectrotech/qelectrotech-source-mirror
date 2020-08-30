@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="50" height="50" hotspot_y="25" hotspot_x="25" version="0.70" link_type="simple">
+<definition type="element" width="50" height="50" hotspot_y="25" hotspot_x="25" version="0.70" link_type="simple">
     <uuid uuid="{366cf72b-d6b8-40d7-af2d-e0d12dad407c}"/>
     <names>
         <name lang="de">selbsttätige Wiedereinschalt-Einrichtung,

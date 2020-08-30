@@ -1,4 +1,4 @@
-<definition width="70" orientation="dyyy" version="0.5" height="60" type="element" hotspot_y="27" link_type="simple" hotspot_x="24">
+<definition width="70" version="0.5" height="60" type="element" hotspot_y="27" link_type="simple" hotspot_x="24">
     <uuid uuid="{dbafa441-1b92-4540-a129-d9d07100d4ad}"/>
     <names>
         <name lang="it">Motore trifase PE + TERM</name>

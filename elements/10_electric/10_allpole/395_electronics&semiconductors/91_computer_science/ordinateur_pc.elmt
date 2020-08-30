@@ -1,4 +1,4 @@
-<definition height="110" version="0.5" link_type="simple" width="110" orientation="dyyy" hotspot_x="4" hotspot_y="4" type="element">
+<definition height="110" version="0.5" link_type="simple" width="110" hotspot_x="4" hotspot_y="4" type="element">
     <uuid uuid="{86be32cd-c911-437a-aada-197a784198ae}"/>
     <names>
         <name lang="de">Rechner</name>

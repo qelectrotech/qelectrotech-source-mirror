@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="50" link_type="simple" hotspot_x="45" width="50" hotspot_y="45">
+<definition type="element" version="0.70" height="50" link_type="simple" hotspot_x="45" width="50" hotspot_y="45">
     <uuid uuid="{268f619d-235f-4d1f-a472-b49a4fb36a04}"/>
     <names>
         <name lang="de">Flugplatzfeuer, Unterflur, allgemein</name>

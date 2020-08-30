@@ -1,4 +1,4 @@
-<definition width="90" link_type="simple" version="0.5" hotspot_x="45" orientation="dyyy" height="90" hotspot_y="45" type="element">
+<definition width="90" link_type="simple" version="0.5" hotspot_x="45" height="90" hotspot_y="45" type="element">
     <uuid uuid="{1b545661-dca0-4dea-b753-1133fe76b94a}"/>
     <names>
         <name lang="nl">Knop Noodstop</name>

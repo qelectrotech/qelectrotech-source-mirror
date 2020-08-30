@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="60" height="50" hotspot_x="22" hotspot_y="20" orientation="dyyy" version="0.70">
+<definition link_type="simple" type="element" width="60" height="50" hotspot_x="22" hotspot_y="20" version="0.70">
     <uuid uuid="{b8c95e49-e409-4637-8a68-b1f170133f0b}"/>
     <names>
         <name lang="de">Endverstärker </name>

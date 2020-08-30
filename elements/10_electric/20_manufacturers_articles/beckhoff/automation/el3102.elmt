@@ -1,4 +1,4 @@
-<definition version="0.5" height="50" hotspot_y="11" orientation="dyyy" width="310" hotspot_x="113" type="element" link_type="simple">
+<definition version="0.5" height="50" hotspot_y="11" width="310" hotspot_x="113" type="element" link_type="simple">
     <uuid uuid="{1c75bc83-e95f-4b85-8831-8bf6578d2667}"/>
     <names>
         <name lang="nl">EL3102</name>

@@ -1,4 +1,4 @@
-<definition height="60" type="element" width="110" hotspot_y="52" orientation="dyyy" link_type="simple" version="0.70" hotspot_x="95">
+<definition height="60" type="element" width="110" hotspot_y="52" link_type="simple" version="0.70" hotspot_x="95">
     <uuid uuid="{543e9f39-420b-4954-b708-195e6f19ca2b}"/>
     <names>
         <name lang="fr">Ligne à retard, type à matière solide avec

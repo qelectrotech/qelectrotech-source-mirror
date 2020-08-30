@@ -1,4 +1,4 @@
-<definition height="40" link_type="simple" type="element" orientation="dyyy" hotspot_y="19" version="0.5" hotspot_x="15" width="30">
+<definition height="40" link_type="simple" type="element" hotspot_y="19" version="0.5" hotspot_x="15" width="30">
     <uuid uuid="{1d4b77ad-4422-48c7-9801-f6e5789e7f15}"/>
     <names>
         <name lang="fr">Sonnerie à un coup</name>

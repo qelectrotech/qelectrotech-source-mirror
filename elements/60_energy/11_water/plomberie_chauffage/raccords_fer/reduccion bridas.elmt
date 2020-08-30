@@ -1,4 +1,4 @@
-<definition hotspot_y="19" link_type="simple" width="50" version="0.80" type="element" height="40" orientation="dyyy" hotspot_x="24">
+<definition hotspot_y="19" link_type="simple" width="50" version="0.80" type="element" height="40" hotspot_x="24">
     <uuid uuid="{52d2a370-1ebc-4415-bbd9-5705356c7352}"/>
     <names>
         <name lang="fr">Réduction à brides</name>

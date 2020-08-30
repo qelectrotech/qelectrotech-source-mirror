@@ -1,4 +1,4 @@
-<definition hotspot_x="41" width="100" hotspot_y="19" version="0.5" orientation="dyyy" height="40" type="element" link_type="simple">
+<definition hotspot_x="41" width="100" hotspot_y="19" version="0.5" height="40" type="element" link_type="simple">
     <uuid uuid="{89ef6cdb-c129-498d-8e92-b7f5dffddcbf}"/>
     <names>
         <name lang="en">S7-1200-signalboard-sb1232-Out-1xanalog/3A</name>

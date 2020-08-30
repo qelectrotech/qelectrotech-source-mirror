@@ -1,4 +1,4 @@
-<definition width="50" hotspot_x="24" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="20">
+<definition width="50" hotspot_x="24" type="element" link_type="simple" version="0.5" height="40" hotspot_y="20">
     <uuid uuid="{3a743a92-9336-47aa-aabd-b55243645dd7}"/>
     <names>
         <name lang="cs">Ventilátor (obecný symbol)</name>

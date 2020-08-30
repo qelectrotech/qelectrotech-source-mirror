@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="5" orientation="dyyy" hotspot_y="6" type="element" height="50" width="810" version="0.5">
+<definition link_type="simple" hotspot_x="5" hotspot_y="6" type="element" height="50" width="810" version="0.5">
     <uuid uuid="{c59803ce-de60-4837-a2e3-71aa24226007}"/>
     <names>
         <name lang="pl">Karta wejść CD20 (powiększona)</name>

@@ -1,4 +1,4 @@
-<definition type="element" height="590" hotspot_x="34" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="57" width="190">
+<definition type="element" height="590" hotspot_x="34" version="0.70" link_type="simple" hotspot_y="57" width="190">
     <uuid uuid="{88c2b6a4-50cc-4c5c-b319-c56ef14806fd}"/>
     <names>
         <name lang="it">A3 S7-1200 cpu 1215C dc-dc rel</name>

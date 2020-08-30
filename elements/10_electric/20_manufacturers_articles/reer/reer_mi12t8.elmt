@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.70" hotspot_x="55" type="element" hotspot_y="54" link_type="master" height="100" width="250">
+<definition version="0.70" hotspot_x="55" type="element" hotspot_y="54" link_type="master" height="100" width="250">
     <uuid uuid="{171cdc3b-9c5d-4479-a9fb-350c5f3d211e}"/>
     <names>
         <name lang="fr">Reer_mi12t8</name>

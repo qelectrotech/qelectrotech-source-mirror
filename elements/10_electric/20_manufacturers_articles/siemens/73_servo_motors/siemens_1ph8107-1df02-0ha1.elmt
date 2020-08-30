@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.51" width="470" height="110" type="element" hotspot_x="196" link_type="simple" hotspot_y="56">
+<definition version="0.51" width="470" height="110" type="element" hotspot_x="196" link_type="simple" hotspot_y="56">
     <uuid uuid="{89be0023-032a-47e5-9e3f-d6b811d86934}"/>
     <names>
         <name lang="fr">Siemens;1PH8107-1DF02-0HA1;1PH8107-1DF02-0HA1;Simotics M-Kompakt moteur asynchrone 10kW@380VAC;8710028</name>

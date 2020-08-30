@@ -1,4 +1,4 @@
-<definition version="0.80" hotspot_y="165" height="170" type="element" link_type="master" hotspot_x="5" orientation="dyyy" width="130">
+<definition version="0.80" hotspot_y="165" height="170" type="element" link_type="master" hotspot_x="5" width="130">
     <uuid uuid="{204b5cda-6f5e-48e9-a142-157478825181}"/>
     <names>
         <name lang="fr">Divers tétra</name>

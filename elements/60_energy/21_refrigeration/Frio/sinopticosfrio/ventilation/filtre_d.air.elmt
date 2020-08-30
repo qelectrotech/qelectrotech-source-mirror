@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="50" hotspot_y="25">
+<definition width="30" hotspot_x="14" type="element" link_type="simple" version="0.5" height="50" hotspot_y="25">
     <uuid uuid="{13fb14cd-0028-4e4e-8e93-519612a0d906}"/>
     <names>
         <name lang="cs">Filtr vzduchu</name>

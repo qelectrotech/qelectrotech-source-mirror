@@ -1,4 +1,4 @@
-<definition height="20" link_type="terminal" width="40" hotspot_y="11" version="0.51" type="element" orientation="dyyy" hotspot_x="25">
+<definition height="20" link_type="terminal" width="40" hotspot_y="11" version="0.51" type="element" hotspot_x="25">
     <uuid uuid="{1f3cb2f4-3b05-4598-94fd-8d08fc38c7e6}"/>
     <names>
         <name lang="fr">Tube PE V.D.I.</name>

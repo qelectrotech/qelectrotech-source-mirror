@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="155" orientation="dyyy" hotspot_y="23" type="element" height="50" width="310" version="0.5">
+<definition link_type="simple" hotspot_x="155" hotspot_y="23" type="element" height="50" width="310" version="0.5">
     <uuid uuid="{6c82ae60-8868-4f0f-8f77-e2a4d807ea35}"/>
     <names>
         <name lang="pl">Karta wyjść CD12</name>

@@ -1,4 +1,4 @@
-<definition width="160" hotspot_x="59" type="element" link_type="simple" orientation="dyyy" version="0.5" height="90" hotspot_y="34">
+<definition width="160" hotspot_x="59" type="element" link_type="simple" version="0.5" height="90" hotspot_y="34">
     <uuid uuid="{3321bd6a-00dc-404d-ae16-2ba3426dd9b5}"/>
     <names>
         <name lang="cs">Sluneční panely</name>

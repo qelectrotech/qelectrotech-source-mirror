@@ -1,4 +1,4 @@
-<definition orientation="dyyy" width="80" hotspot_x="26" version="0.70" link_type="simple" type="element" height="250" hotspot_y="125">
+<definition width="80" hotspot_x="26" version="0.70" link_type="simple" type="element" height="250" hotspot_y="125">
     <uuid uuid="{5246183f-0781-41e3-bb53-9b1b511a6bd9}"/>
     <names>
         <name lang="en">BMXP342010</name>

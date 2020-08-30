@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="40" hotspot_y="10" orientation="dyyy" height="20" version="0.70" hotspot_x="27">
+<definition link_type="simple" type="element" width="40" hotspot_y="10" height="20" version="0.70" hotspot_x="27">
     <uuid uuid="{f0f4e724-d257-4420-91ab-51ad382fbd97}"/>
     <names>
         <name lang="fr">Commande rotative</name>

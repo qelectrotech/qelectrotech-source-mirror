@@ -1,4 +1,4 @@
-<definition hotspot_x="27" orientation="dyyy" version="0.70" link_type="simple" height="60" hotspot_y="55" type="element" width="40">
+<definition hotspot_x="27" version="0.70" link_type="simple" height="60" hotspot_y="55" type="element" width="40">
     <uuid uuid="{0778070b-9447-47ed-97ec-88d91beefeca}"/>
     <names>
         <name lang="fr">Phototransistor, type PNP</name>

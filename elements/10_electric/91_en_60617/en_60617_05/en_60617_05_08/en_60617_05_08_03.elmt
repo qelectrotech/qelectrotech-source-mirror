@@ -1,4 +1,4 @@
-<definition height="30" version="0.70" orientation="dyyy" width="70" hotspot_x="25" type="element" hotspot_y="5" link_type="simple">
+<definition height="30" version="0.70" width="70" hotspot_x="25" type="element" hotspot_y="5" link_type="simple">
     <uuid uuid="{bde6991e-1033-467b-9ce2-79e5921ec158}"/>
     <names>
         <name lang="fr">Électrode de modulation d'intensité</name>

@@ -1,4 +1,4 @@
-<definition height="40" orientation="dyyy" type="element" link_type="simple" width="30" hotspot_x="14" hotspot_y="24" version="0.80">
+<definition height="40" type="element" link_type="simple" width="30" hotspot_x="14" hotspot_y="24" version="0.80">
     <uuid uuid="{ec25f5fc-b94e-46b6-aa76-b3708cee7806}"/>
     <names>
         <name lang="es">Válvula motorizada de 3 vías</name>

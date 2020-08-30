@@ -1,4 +1,4 @@
-<definition hotspot_x="32" link_type="simple" height="50" orientation="dyyy" type="element" width="60" hotspot_y="20" version="0.51">
+<definition hotspot_x="32" link_type="simple" height="50" type="element" width="60" hotspot_y="20" version="0.51">
     <uuid uuid="{58180e56-8b05-4f1c-8cd7-a8bf85f6b86a}"/>
     <names>
         <name lang="fr">Filtre à tamis</name>

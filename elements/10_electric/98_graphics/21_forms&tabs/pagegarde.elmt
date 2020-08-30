@@ -1,4 +1,4 @@
-<definition width="430" link_type="simple" version="0.5" hotspot_x="4" orientation="dyyy" height="260" hotspot_y="25" type="element">
+<definition width="430" link_type="simple" version="0.5" hotspot_x="4" height="260" hotspot_y="25" type="element">
     <uuid uuid="{f61e2cac-0224-45db-a679-bba501d63eb5}"/>
     <names>
         <name lang="es">Cuadro de titulo de la pagina principal</name>

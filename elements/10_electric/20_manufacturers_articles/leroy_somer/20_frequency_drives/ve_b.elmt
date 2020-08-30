@@ -1,4 +1,4 @@
-<definition width="340" height="100" link_type="simple" orientation="dyyy" hotspot_x="25" version="0.5" hotspot_y="14" type="element">
+<definition width="340" height="100" link_type="simple" hotspot_x="25" version="0.5" hotspot_y="14" type="element">
     <uuid uuid="{a18e2407-8a64-424e-942c-6ee7316d26bc}"/>
     <names>
         <name lang="it">VE/B</name>

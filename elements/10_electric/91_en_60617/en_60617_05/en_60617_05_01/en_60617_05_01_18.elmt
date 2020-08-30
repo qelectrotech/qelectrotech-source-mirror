@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="25" hotspot_y="25" orientation="dyyy" type="element" height="30" width="30">
+<definition link_type="simple" version="0.70" hotspot_x="25" hotspot_y="25" type="element" height="30" width="30">
     <uuid uuid="{748a0561-64bd-4025-925f-985149c5ddd2}"/>
     <names>
         <name lang="fr">Collecteur sur une région dont le type de

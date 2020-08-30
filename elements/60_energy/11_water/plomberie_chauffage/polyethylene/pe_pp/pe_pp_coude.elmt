@@ -1,4 +1,4 @@
-<definition height="80" hotspot_x="60" orientation="dyyy" hotspot_y="40" version="0.51" link_type="simple" width="80" type="element">
+<definition height="80" hotspot_x="60" hotspot_y="40" version="0.51" link_type="simple" width="80" type="element">
     <uuid uuid="{5cba15c6-e84b-4e00-b758-98ee9f5ca658}"/>
     <names>
         <name lang="fr">PE PP Coude</name>

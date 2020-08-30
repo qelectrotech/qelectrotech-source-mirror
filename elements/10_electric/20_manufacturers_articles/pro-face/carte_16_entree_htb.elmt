@@ -1,4 +1,4 @@
-<definition width="100" hotspot_y="112" height="240" type="element" hotspot_x="50" orientation="dyyy" version="0.5" link_type="simple">
+<definition width="100" hotspot_y="112" height="240" type="element" hotspot_x="50" version="0.5" link_type="simple">
     <uuid uuid="{a7ce7c8b-4125-4f76-8108-7e5a4101d484}"/>
     <names>
         <name lang="nl">Module 16 digitaal ingang HTB</name>

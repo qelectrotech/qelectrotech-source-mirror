@@ -1,4 +1,4 @@
-<definition width="50" height="70" hotspot_x="18" hotspot_y="40" link_type="master" orientation="dyyy" version="0.80" type="element">
+<definition width="50" height="70" hotspot_x="18" hotspot_y="40" link_type="master" version="0.80" type="element">
     <uuid uuid="{619615e7-2e77-4785-970d-4f31f6d532db}"/>
     <names>
         <name lang="fr">NGT702  2A</name>

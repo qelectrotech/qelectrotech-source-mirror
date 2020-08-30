@@ -1,4 +1,4 @@
-<definition hotspot_y="33" type="element" link_type="simple" orientation="dyyy" hotspot_x="54" width="60" height="60" version="0.51">
+<definition hotspot_y="33" type="element" link_type="simple" hotspot_x="54" width="60" height="60" version="0.51">
     <uuid uuid="{0afc94d1-1f6a-43cf-b772-45a6dafacc10}"/>
     <names>
         <name lang="fr">Pompe doseuse Chlore</name>

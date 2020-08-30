@@ -1,4 +1,4 @@
-<definition height="70" width="110" link_type="simple" hotspot_x="55" version="0.80" orientation="dyyy" type="element" hotspot_y="36">
+<definition height="70" width="110" link_type="simple" hotspot_x="55" version="0.80" type="element" hotspot_y="36">
     <uuid uuid="{a99db29b-c987-4ef9-846f-9d21c621ce06}"/>
     <names>
         <name lang="en">PEV-1/4-B-M12 (395540)</name>

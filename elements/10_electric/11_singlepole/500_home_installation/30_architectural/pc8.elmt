@@ -1,4 +1,4 @@
-<definition hotspot_y="78" orientation="dyyy" version="0.51" hotspot_x="35" link_type="simple" width="70" type="element" height="110">
+<definition hotspot_y="78" version="0.51" hotspot_x="35" link_type="simple" width="70" type="element" height="110">
     <uuid uuid="{f06094c7-cee3-48a4-b1f2-098717559565}"/>
     <names>
         <name lang="de">Schutzkontaktsteckdose mit Abdeckung (EN 60617 11-13-0x)</name>

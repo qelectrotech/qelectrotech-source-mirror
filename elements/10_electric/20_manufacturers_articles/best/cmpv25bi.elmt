@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="550" hotspot_y="74" link_type="simple" height="150" hotspot_x="275" version="0.80">
+<definition type="element" width="550" hotspot_y="74" link_type="simple" height="150" hotspot_x="275" version="0.80">
     <uuid uuid="{be892904-6eed-49c9-8680-41c0c676cc95}"/>
     <names>
         <name lang="fr">Nom du nouvel élément</name>

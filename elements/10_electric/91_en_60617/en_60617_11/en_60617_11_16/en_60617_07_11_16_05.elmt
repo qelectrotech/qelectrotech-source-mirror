@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="40" link_type="simple" hotspot_x="46" width="60" hotspot_y="35">
+<definition type="element" version="0.70" height="40" link_type="simple" hotspot_x="46" width="60" hotspot_y="35">
     <uuid uuid="{cfd4f3d2-d079-4e93-998e-c26a5586e2cf}"/>
     <names>
         <name lang="de">Wechselsprechstelle, z.B. Haus- oder

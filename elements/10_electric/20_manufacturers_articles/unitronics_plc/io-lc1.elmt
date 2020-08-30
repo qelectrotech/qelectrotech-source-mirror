@@ -1,4 +1,4 @@
-<definition type="element" version="0.5" hotspot_y="52" width="750" height="110" orientation="dyyy" link_type="simple" hotspot_x="15">
+<definition type="element" version="0.5" hotspot_y="52" width="750" height="110" link_type="simple" hotspot_x="15">
     <uuid uuid="{dfa1f603-858c-45fe-ad21-ee035b5f484e}"/>
     <names>
         <name lang="en">IO-LC1</name>

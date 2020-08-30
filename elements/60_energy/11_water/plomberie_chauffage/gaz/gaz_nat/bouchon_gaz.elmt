@@ -1,4 +1,4 @@
-<definition hotspot_y="15" type="element" link_type="simple" orientation="dyyy" hotspot_x="15" width="20" height="30" version="0.51">
+<definition hotspot_y="15" type="element" link_type="simple" hotspot_x="15" width="20" height="30" version="0.51">
     <uuid uuid="{ed53d447-d072-4426-9185-d511fb42af7d}"/>
     <names>
         <name lang="fr">Bouchon Gaz</name>

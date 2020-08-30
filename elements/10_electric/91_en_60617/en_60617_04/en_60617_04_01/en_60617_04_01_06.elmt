@@ -1,4 +1,4 @@
-<definition width="60" height="40" type="element" hotspot_x="26" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="28">
+<definition width="60" height="40" type="element" hotspot_x="26" version="0.70" link_type="simple" hotspot_y="28">
     <uuid uuid="{0348620b-28df-457d-8a3d-de068cca8217}"/>
     <names>
         <name lang="de">Widerstand mit beweglichem Kontakt und

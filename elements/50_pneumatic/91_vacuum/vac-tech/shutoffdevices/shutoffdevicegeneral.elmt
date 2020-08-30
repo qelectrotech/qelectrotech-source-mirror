@@ -1,4 +1,4 @@
-<definition hotspot_x="24" height="30" type="element" orientation="dyyy" hotspot_y="15" version="0.80" link_type="simple" width="50">
+<definition hotspot_x="24" height="30" type="element" hotspot_y="15" version="0.80" link_type="simple" width="50">
     <uuid uuid="{ca9ca25a-960c-4619-a445-74c86e7fbb71}"/>
     <names>
         <name lang="en">Shut-off device, general</name>

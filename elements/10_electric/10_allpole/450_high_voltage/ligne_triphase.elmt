@@ -1,4 +1,4 @@
-<definition width="50" hotspot_x="24" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="10">
+<definition width="50" hotspot_x="24" type="element" link_type="simple" version="0.5" height="20" hotspot_y="10">
     <uuid uuid="{4d20cb6e-8fa2-4475-b930-4aa450285e5e}"/>
     <names>
         <name lang="cs">Třífázový vodič - typ 1</name>

@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="10" orientation="dyyy" hotspot_y="9" type="element" height="140" width="90" version="0.5">
+<definition link_type="simple" hotspot_x="10" hotspot_y="9" type="element" height="140" width="90" version="0.5">
     <uuid uuid="{3ade0648-4e99-4f3d-8b45-757e9b928281}"/>
     <names>
         <name lang="pl">Czujnik rezystancyjny Bamo STE</name>

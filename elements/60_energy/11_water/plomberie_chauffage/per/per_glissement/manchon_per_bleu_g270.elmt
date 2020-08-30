@@ -1,4 +1,4 @@
-<definition height="20" hotspot_x="26" orientation="dyyy" hotspot_y="10" version="0.51" link_type="terminal" width="50" type="element">
+<definition height="20" hotspot_x="26" hotspot_y="10" version="0.51" link_type="terminal" width="50" type="element">
     <uuid uuid="{9ca98d70-e608-48ab-8275-0810de18e27b}"/>
     <names>
         <name lang="fr">Manhon PER glissement </name>

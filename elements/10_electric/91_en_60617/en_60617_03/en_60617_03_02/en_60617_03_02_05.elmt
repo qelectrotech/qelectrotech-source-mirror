@@ -1,4 +1,4 @@
-<definition hotspot_x="24" version="0.70" orientation="dyyy" height="30" hotspot_y="24" width="50" type="element" link_type="simple">
+<definition hotspot_x="24" version="0.70" height="30" hotspot_y="24" width="50" type="element" link_type="simple">
     <uuid uuid="{4507f1b1-10ed-4482-84d6-4df67d63c0bb}"/>
     <names>
         <name lang="fr">Liaison en T</name>

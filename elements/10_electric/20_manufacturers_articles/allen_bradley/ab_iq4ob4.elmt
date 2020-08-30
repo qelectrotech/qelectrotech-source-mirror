@@ -1,4 +1,4 @@
-<definition version="0.80" orientation="dyyy" link_type="simple" height="120" hotspot_x="65" hotspot_y="59" type="element" width="130">
+<definition version="0.80" link_type="simple" height="120" hotspot_x="65" hotspot_y="59" type="element" width="130">
     <uuid uuid="{02940448-0d5c-4c0e-8441-b1026bc8369e}"/>
     <names>
         <name lang="cs">Micro800 -  IQ4OB4</name>

@@ -1,4 +1,4 @@
-<definition hotspot_x="45" type="element" orientation="dyyy" width="120" version="0.80" height="90" hotspot_y="37" link_type="master">
+<definition hotspot_x="45" type="element" width="120" version="0.80" height="90" hotspot_y="37" link_type="master">
     <uuid uuid="{495ada97-ec8f-492a-907b-2bad62e124b9}"/>
     <names>
         <name lang="fr">HDA245S- Disjoncteur de branchement différentiel 2P 15/45A 500mA sélectif</name>

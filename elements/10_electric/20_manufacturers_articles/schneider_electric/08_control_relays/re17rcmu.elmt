@@ -1,4 +1,4 @@
-<definition version="0.5" link_type="simple" type="element" orientation="dyyy" hotspot_y="24" width="120" hotspot_x="63" height="60">
+<definition version="0.5" link_type="simple" type="element" hotspot_y="24" width="120" hotspot_x="63" height="60">
     <uuid uuid="{5811171a-5c5b-4781-a4c9-da597a057b8b}"/>
     <names>
         <name lang="en">RE17RCMU</name>

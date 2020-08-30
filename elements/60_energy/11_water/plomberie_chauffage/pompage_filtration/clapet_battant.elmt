@@ -1,4 +1,4 @@
-<definition hotspot_x="19" link_type="simple" height="30" orientation="dyyy" type="element" width="40" hotspot_y="18" version="0.51">
+<definition hotspot_x="19" link_type="simple" height="30" type="element" width="40" hotspot_y="18" version="0.51">
     <uuid uuid="{8bff2c22-782c-4dd9-ab0e-5ced023e9b83}"/>
     <names>
         <name lang="fr">Clapet anti-retour</name>

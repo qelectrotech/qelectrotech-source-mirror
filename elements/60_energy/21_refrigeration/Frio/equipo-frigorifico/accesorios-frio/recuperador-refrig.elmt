@@ -1,4 +1,4 @@
-<definition hotspot_y="38" link_type="simple" width="80" version="0.80" type="element" height="80" orientation="dyyy" hotspot_x="14">
+<definition hotspot_y="38" link_type="simple" width="80" version="0.80" type="element" height="80" hotspot_x="14">
     <uuid uuid="{f04984ce-d9f1-4af1-b640-2fac0d1f382d}"/>
     <names>
         <name lang="fr">Pompe à vide</name>

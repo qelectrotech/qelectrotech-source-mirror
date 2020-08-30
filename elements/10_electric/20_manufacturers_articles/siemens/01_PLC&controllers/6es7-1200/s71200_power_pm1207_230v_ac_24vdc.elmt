@@ -1,4 +1,4 @@
-<definition hotspot_x="25" width="60" hotspot_y="34" version="0.5" orientation="dyyy" height="80" type="element" link_type="simple">
+<definition hotspot_x="25" width="60" hotspot_y="34" version="0.5" height="80" type="element" link_type="simple">
     <uuid uuid="{84bdbaea-4322-45e9-9cea-2ddf372ce4f4}"/>
     <names>
         <name lang="en">S7-1200-power-pm1207-230v-ac-24vdc</name>

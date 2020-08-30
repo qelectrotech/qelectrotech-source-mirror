@@ -1,4 +1,4 @@
-<definition height="40" orientation="dyyy" hotspot_x="10" hotspot_y="29" link_type="simple" type="element" version="0.70" width="20">
+<definition height="40" hotspot_x="10" hotspot_y="29" link_type="simple" type="element" version="0.70" width="20">
     <uuid uuid="{590a4683-cbaa-4b4c-82a5-f17d222ca1ad}"/>
     <names>
         <name lang="fr">3501/6 - Configurateur 6</name>

@@ -1,4 +1,4 @@
-<definition width="30" link_type="simple" version="0.5" hotspot_x="15" orientation="dyyy" height="30" hotspot_y="15" type="element">
+<definition width="30" link_type="simple" version="0.5" hotspot_x="15" height="30" hotspot_y="15" type="element">
     <uuid uuid="{5d000cf1-5350-4a1b-9417-dc5d56fb748b}"/>
     <names>
         <name lang="el">Περιστροφικός διακόπτης, δεξιά</name>

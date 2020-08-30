@@ -1,4 +1,4 @@
-<definition hotspot_x="44" version="0.70" orientation="dyyy" height="60" hotspot_y="30" width="110" type="element" link_type="simple">
+<definition hotspot_x="44" version="0.70" height="60" hotspot_y="30" width="110" type="element" link_type="simple">
     <uuid uuid="{3d1e99a2-c6bf-443f-85cb-da920139a5c3}"/>
     <names>
         <name lang="fr">Permutation des conducteurs

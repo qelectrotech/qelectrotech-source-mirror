@@ -1,4 +1,4 @@
-<definition hotspot_x="125" hotspot_y="285" orientation="dyyy" type="element" version="0.70" height="330" link_type="simple" width="130">
+<definition hotspot_x="125" hotspot_y="285" type="element" version="0.70" height="330" link_type="simple" width="130">
     <uuid uuid="{30e30afa-9406-4c28-859e-88537c8d296c}"/>
     <names>
         <name lang="de">Vorwärtswellen-Verstärkerröhre, O-Typ

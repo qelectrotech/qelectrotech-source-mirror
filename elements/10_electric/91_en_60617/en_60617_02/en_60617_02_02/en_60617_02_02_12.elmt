@@ -1,4 +1,4 @@
-<definition version="0.70" width="30" hotspot_x="15" type="element" link_type="simple" height="10" orientation="dyyy" hotspot_y="6">
+<definition version="0.70" width="30" hotspot_x="15" type="element" link_type="simple" height="10" hotspot_y="6">
     <uuid uuid="{c7d2cbe3-be61-4aca-b6a7-c1ef052aea58}"/>
     <names>
         <name lang="de">gleichgerichteter Strom </name>

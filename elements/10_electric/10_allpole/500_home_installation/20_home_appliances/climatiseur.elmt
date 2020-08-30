@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="5" link_type="simple" type="element" height="170" version="0.80" hotspot_y="165" width="130">
+<definition hotspot_x="5" link_type="simple" type="element" height="170" version="0.80" hotspot_y="165" width="130">
     <uuid uuid="{025e6dae-2241-4413-b228-c43061357843}"/>
     <names>
         <name lang="pl">Klimatyzator</name>

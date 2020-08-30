@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="50" hotspot_y="12" orientation="dyyy" height="20" version="0.70" hotspot_x="39">
+<definition link_type="simple" type="element" width="50" hotspot_y="12" height="20" version="0.70" hotspot_x="39">
     <uuid uuid="{1c0bf4c3-44c4-4bbe-a788-27b625e1eabd}"/>
     <names>
         <name lang="fr">Actionné par le niveau d'un liquide</name>

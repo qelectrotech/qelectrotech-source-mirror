@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="35" hotspot_y="45" orientation="dyyy" type="element" height="50" width="70">
+<definition link_type="simple" version="0.70" hotspot_x="35" hotspot_y="45" type="element" height="50" width="70">
     <uuid uuid="{50437c65-4169-4ad2-a0e3-405dbf88498b}"/>
     <names>
         <name lang="fr">Transistor avalanche NPN</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.80" hotspot_x="12" width="30" hotspot_y="74" link_type="simple" height="160">
+<definition type="element" version="0.80" hotspot_x="12" width="30" hotspot_y="74" link_type="simple" height="160">
     <names>
         <name lang="en">249-116 End-Stop 6mm</name>
         <name lang="fr">249-116 End-Stop 6mm</name>

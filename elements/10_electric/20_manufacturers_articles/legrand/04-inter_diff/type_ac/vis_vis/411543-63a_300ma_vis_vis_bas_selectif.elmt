@@ -1,4 +1,4 @@
-<definition hotspot_x="46" link_type="master" hotspot_y="26" orientation="dyyy" width="120" height="90" type="element" version="0.80">
+<definition hotspot_x="46" link_type="master" hotspot_y="26" width="120" height="90" type="element" version="0.80">
     <uuid uuid="{cef9c038-3a64-40c4-a13f-defb026b8ed5}"/>
     <names>
         <name lang="fr">411543 - Interrupteur différentiel AC 63A 300mA Sélectif Haut-Vis/Bas-Vis</name>

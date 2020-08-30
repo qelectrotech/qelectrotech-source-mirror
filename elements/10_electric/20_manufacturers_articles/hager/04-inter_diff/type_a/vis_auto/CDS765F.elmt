@@ -1,4 +1,4 @@
-<definition width="110" hotspot_y="37" hotspot_x="44" link_type="master" height="90" orientation="dyyy" version="0.80" type="element">
+<definition width="110" hotspot_y="37" hotspot_x="44" link_type="master" height="90" version="0.80" type="element">
     <uuid uuid="{3e7491a1-eaab-4697-bd95-2296a458f49c}"/>
     <names>
         <name lang="fr">CDS765F-Interrupteur différentiel 2P 63A 30mA typeA à bornes décalées SanVis</name>

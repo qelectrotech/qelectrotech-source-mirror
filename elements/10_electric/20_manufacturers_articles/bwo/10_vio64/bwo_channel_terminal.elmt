@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="30" hotspot_y="42" orientation="dyyy" width="60" height="50" type="element" version="0.5">
+<definition link_type="simple" hotspot_x="30" hotspot_y="42" width="60" height="50" type="element" version="0.5">
 <uuid uuid="{036B19AD-8549-4932-B8C2-CD13972E2EEB}"/><names>
         <name lang="fr">Canal borne</name>
         <name lang="de">Kanal Anschluss</name>

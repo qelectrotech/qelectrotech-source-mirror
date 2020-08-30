@@ -1,4 +1,4 @@
-<definition height="90" width="120" hotspot_x="46" link_type="master" type="element" orientation="dyyy" hotspot_y="26" version="0.80">
+<definition height="90" width="120" hotspot_x="46" link_type="master" type="element" hotspot_y="26" version="0.80">
     <uuid uuid="{7e13698a-5358-4a95-8950-81be0f290da0}"/>
     <names>
         <name lang="fr">411634 - Interrupteur différentiel AC 25A 300mA Haut-Vis/Haut-Auto</name>

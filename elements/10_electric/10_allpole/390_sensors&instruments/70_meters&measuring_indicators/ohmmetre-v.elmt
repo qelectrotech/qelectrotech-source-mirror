@@ -1,4 +1,4 @@
-<definition hotspot_y="29" type="element" height="60" width="30" hotspot_x="15" orientation="dyyy" link_type="simple" version="0.5">
+<definition hotspot_y="29" type="element" height="60" width="30" hotspot_x="15" link_type="simple" version="0.5">
     <uuid uuid="{8aa7d09a-e49e-43bd-84ac-3f9e891d6a0f}"/>
     <names>
         <name lang="cs">Ohmmetr, svislý</name>

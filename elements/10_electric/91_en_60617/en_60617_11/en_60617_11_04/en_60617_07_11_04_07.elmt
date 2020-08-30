@@ -1,4 +1,4 @@
-<definition type="element" width="110" version="0.70" hotspot_y="25" orientation="dyyy" height="50" link_type="simple" hotspot_x="104">
+<definition type="element" width="110" version="0.70" hotspot_y="25" height="50" link_type="simple" hotspot_x="104">
     <uuid uuid="{589d53b7-9609-49d8-8069-069b660bf40a}"/>
     <names>
         <name lang="fr">Chambre d'accès avec dispositif évitant le

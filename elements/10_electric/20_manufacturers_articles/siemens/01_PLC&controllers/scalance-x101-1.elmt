@@ -1,4 +1,4 @@
-<definition link_type="simple" orientation="dyyy" width="100" hotspot_y="155" type="element" height="320" hotspot_x="45" version="0.70">
+<definition link_type="simple" width="100" hotspot_y="155" type="element" height="320" hotspot_x="45" version="0.70">
     <uuid uuid="{f7fe5d32-14ec-456f-9c6d-c146631c735c}"/>
     <names>
         <name lang="fr">SCALANCE X101-1</name>

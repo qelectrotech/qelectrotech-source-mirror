@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="5" hotspot_y="7" orientation="dyyy" type="element" height="20" width="30">
+<definition link_type="simple" version="0.70" hotspot_x="5" hotspot_y="7" type="element" height="20" width="30">
     <uuid uuid="{f0bc1e6a-c85a-4ac5-9b03-6bf283ba6e51}"/>
     <names>
         <name lang="fr">Grille isolée</name>

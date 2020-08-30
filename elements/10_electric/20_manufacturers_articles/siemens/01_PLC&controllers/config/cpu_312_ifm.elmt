@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" hotspot_y="13" height="270" version="0.5" width="170" hotspot_x="3" link_type="simple">
+<definition type="element" hotspot_y="13" height="270" version="0.5" width="170" hotspot_x="3" link_type="simple">
     <uuid uuid="{84aa7b03-025a-4102-a0e7-30335b6a89d2}"/>
     <names>
         <name lang="ar">CPU 312 IFM   DI 10/DO 6xDC24V</name>

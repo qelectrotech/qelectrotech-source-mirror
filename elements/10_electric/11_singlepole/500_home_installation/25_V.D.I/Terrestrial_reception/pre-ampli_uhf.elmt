@@ -1,4 +1,4 @@
-<definition width="160" link_type="simple" orientation="dyyy" hotspot_y="73" version="0.51" type="element" height="150" hotspot_x="80">
+<definition width="160" link_type="simple" hotspot_y="73" version="0.51" type="element" height="150" hotspot_x="80">
     <uuid uuid="{04aa1826-2dba-421d-8eec-2fae8319cf8b}"/>
     <names>
         <name lang="fr">Pré-ampli UHF</name>

@@ -1,4 +1,4 @@
-<definition type="element" version="0.5" hotspot_y="55" width="290" height="150" orientation="dyyy" link_type="simple" hotspot_x="163">
+<definition type="element" version="0.5" hotspot_y="55" width="290" height="150" link_type="simple" hotspot_x="163">
     <uuid uuid="{03642713-0d94-48ce-892a-e7c10bd44b1f}"/>
     <names>
         <name lang="pl">Wit WLAN</name>

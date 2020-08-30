@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="15" orientation="dyyy" hotspot_y="24" type="element" height="100" width="420" version="0.5">
+<definition link_type="simple" hotspot_x="15" hotspot_y="24" type="element" height="100" width="420" version="0.5">
     <uuid uuid="{18e8cfbe-07e2-4e3f-a062-fb5d61a8cca7}"/>
     <names>
         <name lang="pl">ASTAT-XT</name>

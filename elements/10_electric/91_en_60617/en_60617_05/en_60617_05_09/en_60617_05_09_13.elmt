@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" height="100" width="120" version="0.70" orientation="dyyy" hotspot_x="115" hotspot_y="95">
+<definition type="element" link_type="simple" height="100" width="120" version="0.70" hotspot_x="115" hotspot_y="95">
     <uuid uuid="{e1ac2342-10d9-46c8-8b17-905426bebed3}"/>
     <names>
         <name lang="fr">Tétrapôle</name>

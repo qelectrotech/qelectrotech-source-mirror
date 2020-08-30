@@ -1,4 +1,4 @@
-<definition width="50" height="70" type="element" hotspot_x="17" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="54">
+<definition width="50" height="70" type="element" hotspot_x="17" version="0.70" link_type="simple" hotspot_y="54">
     <uuid uuid="{72e46066-f5ba-4035-ba12-7a7dfbf2c1b3}"/>
     <names>
         <name lang="de">Horn,

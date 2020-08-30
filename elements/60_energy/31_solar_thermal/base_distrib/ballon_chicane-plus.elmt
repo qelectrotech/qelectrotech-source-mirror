@@ -1,4 +1,4 @@
-<definition width="110" hotspot_x="49" type="element" link_type="simple" orientation="dyyy" version="0.5" height="80" hotspot_y="41">
+<definition width="110" hotspot_x="49" type="element" link_type="simple" version="0.5" height="80" hotspot_y="41">
     <uuid uuid="{39c0656b-76cb-45a8-8f6e-9c379d4f2f03}"/>
     <names>
         <name lang="cs">D dělený zásobník</name>

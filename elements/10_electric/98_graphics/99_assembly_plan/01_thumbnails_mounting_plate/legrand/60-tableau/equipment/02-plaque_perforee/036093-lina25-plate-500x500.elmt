@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="2" link_type="simple" orientation="dyyy" version="0.80" hotspot_y="2" width="1030" height="1030">
+<definition type="element" hotspot_x="2" link_type="simple" version="0.80" hotspot_y="2" width="1030" height="1030">
     <uuid uuid="{c3eb2059-a9bb-4e82-a047-2cd0417876a1}"/>
     <names>
         <name lang="fr">036093 - Plaque perforée Lina 25 500x500 Atlantic/Marina</name>

@@ -1,4 +1,4 @@
-<definition version="0.80" type="element" orientation="dyyy" height="190" width="650" link_type="simple" hotspot_x="565" hotspot_y="44">
+<definition version="0.80" type="element" height="190" width="650" link_type="simple" hotspot_x="565" hotspot_y="44">
     <uuid uuid="{6de8a900-bd5c-474f-8f0f-8c7e6a3907cb}"/>
     <names>
         <name lang="fr">Automate Schneider TM221CE16R</name>

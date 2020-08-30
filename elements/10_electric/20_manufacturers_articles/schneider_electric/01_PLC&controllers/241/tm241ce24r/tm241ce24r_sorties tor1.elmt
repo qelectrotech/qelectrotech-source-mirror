@@ -1,4 +1,4 @@
-<definition height="90" orientation="dyyy" hotspot_y="44" width="1010" type="element" version="0.70" hotspot_x="495" link_type="simple">
+<definition height="90" hotspot_y="44" width="1010" type="element" version="0.70" hotspot_x="495" link_type="simple">
     <uuid uuid="{3d0304ed-e2b1-40f9-8500-04cb081d7155}"/>
     <names>
         <name lang="fr">Cartes sorties M241CE24R Schneider 1/2</name>

@@ -1,4 +1,4 @@
-<definition height="90" width="120" hotspot_x="46" link_type="master" type="element" orientation="dyyy" hotspot_y="36" version="0.80">
+<definition height="90" width="120" hotspot_x="46" link_type="master" type="element" hotspot_y="36" version="0.80">
     <uuid uuid="{d42e97c4-62b3-4db8-aeb2-55d8c26a2332}"/>
     <names>
         <name lang="fr">411631 - Interrupteur différentiel AC 25A 30mA Haut-Vis/Haut-Auto</name>

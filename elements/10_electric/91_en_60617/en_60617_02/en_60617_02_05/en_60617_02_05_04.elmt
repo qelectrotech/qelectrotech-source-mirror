@@ -1,4 +1,4 @@
-<definition type="element" width="30" height="10" version="0.70" hotspot_x="15" hotspot_y="4" orientation="dyyy" link_type="simple">
+<definition type="element" width="30" height="10" version="0.70" hotspot_x="15" hotspot_y="4" link_type="simple">
     <uuid uuid="{27e6ed0b-2c94-468a-97a0-bde41ab792b4}"/>
     <names>
         <name lang="fr">Emission</name>

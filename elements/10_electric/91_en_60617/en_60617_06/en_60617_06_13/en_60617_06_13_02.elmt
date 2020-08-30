@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" hotspot_x="51" hotspot_y="70" version="0.70" orientation="dyyy" width="110" height="150">
+<definition link_type="simple" type="element" hotspot_x="51" hotspot_y="70" version="0.70" width="110" height="150">
     <uuid uuid="{48897634-544d-4e10-99c4-2962ae8e4861}"/>
     <names>
         <name lang="de">Stromwandler mit zwei Kernen und einer

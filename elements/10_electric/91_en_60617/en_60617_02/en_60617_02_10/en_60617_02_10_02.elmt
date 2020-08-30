@@ -1,4 +1,4 @@
-<definition hotspot_x="24" version="0.70" orientation="dyyy" height="30" hotspot_y="6" width="40" type="element" link_type="simple">
+<definition hotspot_x="24" version="0.70" height="30" hotspot_y="6" width="40" type="element" link_type="simple">
     <uuid uuid="{ab6ccfb1-ddc6-4dc0-a88a-361209e5d6c4}"/>
     <names>
         <name lang="fr">Impulsion négative</name>

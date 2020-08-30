@@ -1,4 +1,4 @@
-<definition hotspot_y="104" version="0.80" type="element" width="300" height="220" hotspot_x="142" orientation="dyyy" link_type="master">
+<definition hotspot_y="104" version="0.80" type="element" width="300" height="220" hotspot_x="142" link_type="master">
     <uuid uuid="{b4fec800-7d80-4da1-96ed-98ae0c3ea6d6}"/>
     <names>
         <name lang="de">SPS-Steuerung Eaton Easy E4-AC-12RC1(P)</name>

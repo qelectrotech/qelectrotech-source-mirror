@@ -1,4 +1,4 @@
-<definition hotspot_x="25" type="element" height="30" version="0.80" width="30" orientation="dyyy" link_type="simple" hotspot_y="25">
+<definition hotspot_x="25" type="element" height="30" version="0.80" width="30" link_type="simple" hotspot_y="25">
     <uuid uuid="{69a3ea96-3316-4f00-985e-036f3f4b7896}"/>
     <names>
         <name lang="de">Scheinwerfer, allgemein</name>

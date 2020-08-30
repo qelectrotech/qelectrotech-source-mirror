@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="14" hotspot_y="43" width="30" orientation="dyyy" height="100" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="14" hotspot_y="43" width="30" height="100" link_type="simple" type="element">
     <uuid uuid="{c1f30735-64eb-40c1-8d2d-e8b322852c11}"/>
     <names>
         <name lang="en">Hydraulic accumulator</name>

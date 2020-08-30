@@ -1,4 +1,4 @@
-<definition hotspot_y="8" width="70" type="element" version="0.5" height="240" orientation="dyyy" link_type="simple" hotspot_x="6">
+<definition hotspot_y="8" width="70" type="element" version="0.5" height="240" link_type="simple" hotspot_x="6">
     <uuid uuid="{da14a6f4-890f-4a39-bbcc-e234ddaa5815}"/>
     <names>
         <name lang="en">tor input TM3DI16: layout</name>

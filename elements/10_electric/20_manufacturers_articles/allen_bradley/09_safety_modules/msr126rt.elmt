@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="25" orientation="dyyy" hotspot_y="39" type="element" height="90" width="200" version="0.5">
+<definition link_type="simple" hotspot_x="25" hotspot_y="39" type="element" height="90" width="200" version="0.5">
     <uuid uuid="{1960fe2c-d285-4c3f-9fba-e04ff554c778}"/>
     <names>
         <name lang="pl">MSR126R/T</name>

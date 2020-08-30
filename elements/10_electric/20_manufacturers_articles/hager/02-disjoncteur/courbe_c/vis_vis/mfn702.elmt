@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="master" hotspot_y="40" height="70" orientation="dyyy" type="element" width="50" hotspot_x="18">
+<definition version="0.80" link_type="master" hotspot_y="40" height="70" type="element" width="50" hotspot_x="18">
     <uuid uuid="{f1461903-ebad-4fd6-929d-6b5f3f6c3974}"/>
     <names>
         <name lang="fr">MFN702 2A</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="14" link_type="simple" type="element" height="50" version="0.80" hotspot_y="14" width="30">
+<definition hotspot_x="14" link_type="simple" type="element" height="50" version="0.80" hotspot_y="14" width="30">
     <uuid uuid="{d127476d-ed64-4ffb-a4d4-f35decfc1903}"/>
     <names>
         <name lang="cs">Mraznička, mrazák, mrazicí skříň</name>

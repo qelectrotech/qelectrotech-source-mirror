@@ -1,4 +1,4 @@
-<definition version="0.5" height="190" type="element" width="50" link_type="simple" hotspot_x="19" orientation="dyyy" hotspot_y="94">
+<definition version="0.5" height="190" type="element" width="50" link_type="simple" hotspot_x="19" hotspot_y="94">
     <uuid uuid="{b1f078c9-b9ad-49ca-8c0c-b4aa3f5de9d2}"/>
     <names>
         <name lang="fr">Compteur 45A SGS</name>

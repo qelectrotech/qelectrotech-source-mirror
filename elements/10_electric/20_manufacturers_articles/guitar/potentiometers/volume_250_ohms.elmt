@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="35" version="0.5" link_type="simple" type="element" hotspot_y="53" height="100" width="70">
+<definition hotspot_x="35" version="0.5" link_type="simple" type="element" hotspot_y="53" height="100" width="70">
     <uuid uuid="{36a6d5c3-30ff-4e00-91c9-bcf0b1676fe9}"/>
     <names>
         <name lang="en">Volume 250k Ohmx</name>

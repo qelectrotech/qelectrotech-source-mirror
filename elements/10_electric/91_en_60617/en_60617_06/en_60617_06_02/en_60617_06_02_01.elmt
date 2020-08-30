@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="15" hotspot_y="15" version="0.70" width="20" type="element" height="20">
+<definition link_type="simple" hotspot_x="15" hotspot_y="15" version="0.70" width="20" type="element" height="20">
     <uuid uuid="{31e66726-5a72-4117-9120-ed34f625ba10}"/>
     <names>
         <name lang="fr">Enroulement diphasé</name>

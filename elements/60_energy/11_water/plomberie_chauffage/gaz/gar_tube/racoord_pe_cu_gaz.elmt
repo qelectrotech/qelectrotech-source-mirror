@@ -1,4 +1,4 @@
-<definition hotspot_y="15" type="element" link_type="simple" orientation="dyyy" hotspot_x="9" width="40" height="30" version="0.51">
+<definition hotspot_y="15" type="element" link_type="simple" hotspot_x="9" width="40" height="30" version="0.51">
     <uuid uuid="{f56c05df-2e03-43d2-9ad5-7aeb6186354f}"/>
     <names>
         <name lang="fr">Raccord Pe/Cu gaz</name>

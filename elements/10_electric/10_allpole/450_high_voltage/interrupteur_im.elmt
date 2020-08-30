@@ -1,4 +1,4 @@
-<definition width="40" hotspot_x="32" type="element" link_type="simple" orientation="dyyy" version="0.5" height="120" hotspot_y="44">
+<definition width="40" hotspot_x="32" type="element" link_type="simple" version="0.5" height="120" hotspot_y="44">
     <uuid uuid="{8f72dbe9-17ae-414e-8fbd-6c3b8c98eacd}"/>
     <names>
         <name lang="cs">Přerušovač IM</name>

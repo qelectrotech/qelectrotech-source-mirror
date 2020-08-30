@@ -1,4 +1,4 @@
-<definition hotspot_x="16" version="0.80" width="40" orientation="dyyy" type="element" height="120" hotspot_y="54" link_type="simple">
+<definition hotspot_x="16" version="0.80" width="40" type="element" height="120" hotspot_y="54" link_type="simple">
     <uuid uuid="{8af25449-c0d4-4cf1-a95e-73b48f21d1ed}"/>
     <names>
         <name lang="fr">039596 - Viking3 - Porte-étiquette transparent à inclinaison variable</name>

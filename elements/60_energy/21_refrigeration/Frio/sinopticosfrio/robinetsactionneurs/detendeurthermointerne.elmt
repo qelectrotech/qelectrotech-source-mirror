@@ -1,4 +1,4 @@
-<definition width="40" hotspot_x="19" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="22">
+<definition width="40" hotspot_x="19" type="element" link_type="simple" version="0.5" height="30" hotspot_y="22">
     <uuid uuid="{ca4fcdb5-644b-4655-8fe1-248e19a039fc}"/>
     <names>
         <name lang="cs">Vnitřní termostatický ventil</name>

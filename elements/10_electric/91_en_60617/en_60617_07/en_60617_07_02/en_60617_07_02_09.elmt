@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="30" hotspot_y="44" orientation="dyyy" height="70" version="0.70" hotspot_x="16">
+<definition link_type="simple" type="element" width="30" hotspot_y="44" height="70" version="0.70" hotspot_x="16">
     <uuid uuid="{be321620-2510-417d-a22e-1af476eb7dd0}"/>
     <names>
         <name lang="fr">Contact à deux ouvertures</name>

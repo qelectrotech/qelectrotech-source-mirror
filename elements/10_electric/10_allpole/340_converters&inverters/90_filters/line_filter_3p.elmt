@@ -1,4 +1,4 @@
-<definition height="70" type="element" link_type="simple" hotspot_x="40" hotspot_y="39" width="90" orientation="dyyy" version="0.5">
+<definition height="70" type="element" link_type="simple" hotspot_x="40" hotspot_y="39" width="90" version="0.5">
 <uuid uuid="{0AE64E73-A748-4868-8FB3-D2953F779C9A}"/><names>
         <name lang="de">Netzfilter 3P</name>
         <name lang="en">Line filter 3P</name>

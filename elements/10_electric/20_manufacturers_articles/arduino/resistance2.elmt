@@ -1,4 +1,4 @@
-<definition width="30" orientation="dyyy" link_type="simple" hotspot_x="13" version="0.80" type="element" height="70" hotspot_y="38">
+<definition width="30" link_type="simple" hotspot_x="13" version="0.80" type="element" height="70" hotspot_y="38">
     <uuid uuid="{3c707647-dce1-49f3-8c39-0e468ce1a771}"/>
     <names>
         <name lang="fr">Resistance 1w</name>

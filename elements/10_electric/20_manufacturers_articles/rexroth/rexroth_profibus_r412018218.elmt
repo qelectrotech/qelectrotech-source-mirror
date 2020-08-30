@@ -1,4 +1,4 @@
-<definition hotspot_x="33" orientation="dyyy" link_type="simple" width="90" height="170" version="0.80" type="element" hotspot_y="84">
+<definition hotspot_x="33" link_type="simple" width="90" height="170" version="0.80" type="element" hotspot_y="84">
     <uuid uuid="{73f9fc50-b0f3-4d64-98d9-d4581f32432e}"/>
     <names>
         <name lang="en">REXROTH R412018218</name>

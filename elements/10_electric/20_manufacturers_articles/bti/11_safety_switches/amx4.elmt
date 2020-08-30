@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="55" orientation="dyyy" hotspot_y="54" type="element" height="110" width="110" version="0.5">
+<definition link_type="simple" hotspot_x="55" hotspot_y="54" type="element" height="110" width="110" version="0.5">
     <uuid uuid="{10af832b-0ad1-4c67-ac89-48bcef108445}"/>
     <names>
         <name lang="pl">AMX4</name>

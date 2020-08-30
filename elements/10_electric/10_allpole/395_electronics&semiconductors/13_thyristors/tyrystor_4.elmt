@@ -1,4 +1,4 @@
-<definition height="30" version="0.5" link_type="simple" width="30" orientation="dyyy" hotspot_x="8" hotspot_y="24" type="element">
+<definition height="30" version="0.5" link_type="simple" width="30" hotspot_x="8" hotspot_y="24" type="element">
     <uuid uuid="{eab5b617-d47d-4b1a-adac-533a1d0dd415}"/>
     <names>
         <name lang="de">Thyristortriode</name>

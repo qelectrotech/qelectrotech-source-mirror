@@ -1,4 +1,4 @@
-<definition width="30" link_type="simple" version="0.5" hotspot_x="15" orientation="dyyy" height="40" hotspot_y="20" type="element">
+<definition width="30" link_type="simple" version="0.5" hotspot_x="15" height="40" hotspot_y="20" type="element">
     <uuid uuid="{457a0c01-871c-40fd-83d7-14033333fb95}"/>
     <names>
         <name lang="pt">Fonte unipolar + neutro</name>

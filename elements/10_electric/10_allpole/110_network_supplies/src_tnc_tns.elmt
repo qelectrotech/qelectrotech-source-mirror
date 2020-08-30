@@ -1,4 +1,4 @@
-<definition width="70" link_type="simple" version="0.5" hotspot_x="34" orientation="dyyy" height="100" hotspot_y="40" type="element">
+<definition width="70" link_type="simple" version="0.5" hotspot_x="34" height="100" hotspot_y="40" type="element">
     <uuid uuid="{4b9794cf-e7c0-4f59-aa0a-bb1fce4dfe48}"/>
     <names>
         <name lang="es">Punto de distribución TN-C > TN-S</name>

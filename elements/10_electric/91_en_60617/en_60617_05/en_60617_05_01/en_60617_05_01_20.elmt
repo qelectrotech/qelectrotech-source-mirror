@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="25" hotspot_y="25" orientation="dyyy" type="element" height="30" width="30">
+<definition link_type="simple" version="0.70" hotspot_x="25" hotspot_y="25" type="element" height="30" width="30">
     <uuid uuid="{036faf6d-96ac-4243-8401-0a19cd1c2530}"/>
     <names>
         <name lang="fr">Transition entre régions de types de

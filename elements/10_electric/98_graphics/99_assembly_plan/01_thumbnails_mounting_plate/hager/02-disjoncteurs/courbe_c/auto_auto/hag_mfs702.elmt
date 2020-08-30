@@ -1,4 +1,4 @@
-<definition width="50" height="210" hotspot_x="5" version="0.80" type="element" orientation="dyyy" link_type="slave" hotspot_y="4">
+<definition width="50" height="210" hotspot_x="5" version="0.80" type="element" link_type="slave" hotspot_y="4">
     <uuid uuid="{e008ef0a-9814-4315-b4c7-978532969ad3}"/>
     <names>
         <name lang="fr">MFS702</name>

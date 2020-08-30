@@ -1,4 +1,4 @@
-<definition width="100" hotspot_x="50" type="element" link_type="simple" orientation="dyyy" version="0.5" height="200" hotspot_y="99">
+<definition width="100" hotspot_x="50" type="element" link_type="simple" version="0.5" height="200" hotspot_y="99">
     <uuid uuid="{eb8281db-1f9c-4e62-99d3-0c736d3e2203}"/>
     <names>
         <name lang="cs">Kombinovaný zásobník SKSW ECS</name>

@@ -1,4 +1,4 @@
-<definition hotspot_x="4" hotspot_y="31" link_type="simple" height="290" orientation="dyyy" type="element" width="170" version="0.80">
+<definition hotspot_x="4" hotspot_y="31" link_type="simple" height="290" type="element" width="170" version="0.80">
     <uuid uuid="{c49da434-e33b-4eb6-af65-94c927bdd8fd}"/>
     <names>
         <name lang="en">i-7514U-G - 4CH Isolated RS-485 Hub</name>

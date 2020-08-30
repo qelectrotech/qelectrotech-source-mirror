@@ -1,4 +1,4 @@
-<definition width="130" hotspot_x="5" type="element" link_type="simple" orientation="dyyy" version="0.5" height="190" hotspot_y="185">
+<definition width="130" hotspot_x="5" type="element" link_type="simple" version="0.5" height="190" hotspot_y="185">
     <uuid uuid="{03c43e59-ebfa-44fc-8293-823c54a5f544}"/>
     <names>
         <name lang="cs">Pračka</name>

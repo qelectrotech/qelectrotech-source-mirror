@@ -1,4 +1,4 @@
-<definition type="element" orientation="dyyy" height="70" hotspot_x="34" hotspot_y="35" version="0.51" width="70" link_type="simple">
+<definition type="element" height="70" hotspot_x="34" hotspot_y="35" version="0.51" width="70" link_type="simple">
     <uuid uuid="{72a6b0ec-c662-457e-9166-3ab88cd94116}"/>
     <names>
         <name lang="fr">Mitigeur themostatiquie ECS</name>

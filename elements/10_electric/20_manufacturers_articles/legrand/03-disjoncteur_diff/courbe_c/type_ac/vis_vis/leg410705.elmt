@@ -1,4 +1,4 @@
-<definition type="element" height="80" hotspot_x="42" orientation="dyyy" version="0.80" width="100" hotspot_y="34" link_type="master">
+<definition type="element" height="80" hotspot_x="42" version="0.80" width="100" hotspot_y="34" link_type="master">
     <uuid uuid="{1034e885-33fd-467f-8abd-60adb8502d14}"/>
     <names>
         <name lang="en">Circuit-breaker</name>

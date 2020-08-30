@@ -1,4 +1,4 @@
-<definition hotspot_y="28" height="60" type="element" version="0.80" link_type="simple" width="40" orientation="dyyy" hotspot_x="20">
+<definition hotspot_y="28" height="60" type="element" version="0.80" link_type="simple" width="40" hotspot_x="20">
     <uuid uuid="{f0426e95-49c4-4015-9cd6-bebf20ad123e}"/>
     <names>
         <name lang="es">Toma corriente 3P</name>

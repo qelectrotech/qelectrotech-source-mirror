@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" height="70" width="90" version="0.70" orientation="dyyy" hotspot_x="35" hotspot_y="25">
+<definition type="element" link_type="simple" height="70" width="90" version="0.70" hotspot_x="35" hotspot_y="25">
     <uuid uuid="{23375386-e5ea-41fa-bbb5-88eed8b57809}"/>
     <names>
         <name lang="fr">Générateur photovoltaïque</name>

@@ -1,4 +1,4 @@
-<definition type="element" version="0.5" hotspot_y="44" width="470" height="100" orientation="dyyy" link_type="simple" hotspot_x="233">
+<definition type="element" version="0.5" hotspot_y="44" width="470" height="100" link_type="simple" hotspot_x="233">
     <uuid uuid="{5cbaf05f-c66f-4a7d-bc6c-8fc52668b94e}"/>
     <names>
         <name lang="ar">MOVITRAC 31C055</name>

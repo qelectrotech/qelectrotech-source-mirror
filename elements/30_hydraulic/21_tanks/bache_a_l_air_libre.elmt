@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="20" hotspot_y="14" width="40" orientation="dyyy" height="30" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="20" hotspot_y="14" width="40" height="30" link_type="simple" type="element">
     <uuid uuid="{31ba3ca6-d425-405a-be4c-0ff2e0c723a6}"/>
     <names>
         <name lang="en">Pipings under level</name>

@@ -1,4 +1,4 @@
-<definition version="0.70" hotspot_y="216" orientation="dyyy" hotspot_x="45" link_type="simple" width="100" height="450" type="element">
+<definition version="0.70" hotspot_y="216" hotspot_x="45" link_type="simple" width="100" height="450" type="element">
     <uuid uuid="{3511c2ec-b062-4f38-9d96-bf742a7ba392}"/>
     <names>
         <name lang="fr">EWON</name>

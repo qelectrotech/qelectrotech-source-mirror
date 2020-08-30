@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="50" height="50" hotspot_y="24" hotspot_x="25" version="0.70" link_type="simple">
+<definition type="element" width="50" height="50" hotspot_y="24" hotspot_x="25" version="0.70" link_type="simple">
     <uuid uuid="{45762eb4-db72-4022-b497-039a604746c0}"/>
     <names>
         <name lang="de">elektromagnetischer Antrieb, gegen

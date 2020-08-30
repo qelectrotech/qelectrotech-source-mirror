@@ -1,4 +1,4 @@
-<definition version="0.80" hotspot_y="175" height="180" type="element" link_type="master" hotspot_x="5" orientation="dyyy" width="130">
+<definition version="0.80" hotspot_y="175" height="180" type="element" link_type="master" hotspot_x="5" width="130">
     <uuid uuid="{c0006484-8eb7-4ea8-8b31-6bb9607ccd2f}"/>
     <names>
         <name lang="pl">Gniazdo wtyczkowe czterobiegunowe 3P+E</name>

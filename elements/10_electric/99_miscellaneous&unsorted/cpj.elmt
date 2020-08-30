@@ -1,4 +1,4 @@
-<definition width="220" link_type="simple" version="0.5" hotspot_x="96" orientation="dyyy" height="150" hotspot_y="70" type="element">
+<definition width="220" link_type="simple" version="0.5" hotspot_x="96" height="150" hotspot_y="70" type="element">
     <uuid uuid="{666d3c84-6159-4b55-82cd-dcba3d628c8a}"/>
     <names>
         <name lang="el">CPJ</name>

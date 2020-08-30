@@ -1,4 +1,4 @@
-<definition hotspot_y="24" link_type="simple" width="20" version="0.80" type="element" height="60" orientation="dyyy" hotspot_x="9">
+<definition hotspot_y="24" link_type="simple" width="20" version="0.80" type="element" height="60" hotspot_x="9">
     <uuid uuid="{62107baf-a602-4473-8efd-a0cce2b21884}"/>
     <names>
         <name lang="fr">Descente</name>

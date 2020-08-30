@@ -1,4 +1,4 @@
-<definition hotspot_y="6" hotspot_x="5" link_type="simple" type="element" version="0.80" orientation="dyyy" width="70" height="70">
+<definition hotspot_y="6" hotspot_x="5" link_type="simple" type="element" version="0.80" width="70" height="70">
     <uuid uuid="{5e7ef189-793c-4e73-a591-c1448f36dea2}"/>
     <names>
         <name lang="fr">Borne WIFI</name>

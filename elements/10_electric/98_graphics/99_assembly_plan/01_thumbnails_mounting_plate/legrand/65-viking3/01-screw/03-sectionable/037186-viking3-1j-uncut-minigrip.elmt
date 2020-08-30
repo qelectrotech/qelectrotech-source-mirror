@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="simple" hotspot_x="3" hotspot_y="4" type="element" orientation="dyyy" width="20" height="170">
+<definition version="0.80" link_type="simple" hotspot_x="3" hotspot_y="4" type="element" width="20" height="170">
     <uuid uuid="{1860c520-adc2-4b11-88df-ddba4f35d592}"/>
     <names>
         <name lang="fr">037186 - Viking3 - 1 jonction Circuit non coupé Mini-préhenseur 2,5mm² pas 6mm Orange</name>

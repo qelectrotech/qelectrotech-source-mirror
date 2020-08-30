@@ -1,4 +1,4 @@
-<definition hotspot_y="3" orientation="dyyy" version="0.51" hotspot_x="47" link_type="simple" width="100" type="element" height="20">
+<definition hotspot_y="3" version="0.51" hotspot_x="47" link_type="simple" width="100" type="element" height="20">
     <uuid uuid="{9923c1a5-b49a-4243-923e-cde9d916ea2b}"/>
     <names>
         <name lang="fr">Cable 5G</name>

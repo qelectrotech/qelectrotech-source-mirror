@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="89" hotspot_y="24" width="320" orientation="dyyy" height="50" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="89" hotspot_y="24" width="320" height="50" link_type="simple" type="element">
     <uuid uuid="{a84e91ef-e7cb-4403-b839-a12b13ad4dab}"/>
     <names>
         <name lang="en">Double acting cylinders -double ended piston rod</name>

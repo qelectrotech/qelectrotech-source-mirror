@@ -1,4 +1,4 @@
-<definition type="element" orientation="dyyy" link_type="simple" hotspot_x="15" hotspot_y="158" width="30" height="220" version="0.80">
+<definition type="element" link_type="simple" hotspot_x="15" hotspot_y="158" width="30" height="220" version="0.80">
     <names>
         <name lang="en">2002-1305</name>
         <name lang="de">2002-1305</name>

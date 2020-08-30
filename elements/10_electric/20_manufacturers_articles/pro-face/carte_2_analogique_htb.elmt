@@ -1,4 +1,4 @@
-<definition width="100" hotspot_y="112" height="240" type="element" hotspot_x="50" orientation="dyyy" version="0.5" link_type="simple">
+<definition width="100" hotspot_y="112" height="240" type="element" hotspot_x="50" version="0.5" link_type="simple">
     <uuid uuid="{b86ba578-7fe1-452a-8b37-7d4afa5d06d1}"/>
     <names>
         <name lang="nl">Module 2 Analoog Ingang HTB</name>

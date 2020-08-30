@@ -1,4 +1,4 @@
-<definition width="40" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="19">
+<definition width="40" hotspot_x="14" type="element" link_type="simple" version="0.5" height="30" hotspot_y="19">
     <uuid uuid="{d5b338f3-2c86-484c-8bf9-82c33aede773}"/>
     <names>
         <name lang="cs">Pojistný ventil s teplotním čidlem</name>

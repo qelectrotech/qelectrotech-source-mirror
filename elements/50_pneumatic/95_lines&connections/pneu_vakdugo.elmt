@@ -1,4 +1,4 @@
-<definition hotspot_x="15" version="0.70" hotspot_y="17" orientation="dyyy" width="30" link_type="simple" type="element" height="30">
+<definition hotspot_x="15" version="0.70" hotspot_y="17" width="30" link_type="simple" type="element" height="30">
     <uuid uuid="{50559354-2e8b-47ee-97a2-1bc1ce1a6b76}"/>
     <names>
         <name lang="fr">Bouchon pneumatique</name>

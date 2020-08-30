@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="41" hotspot_y="14" width="80" orientation="dyyy" height="40" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="41" hotspot_y="14" width="80" height="40" link_type="simple" type="element">
     <uuid uuid="{2bfb6b96-6d02-4621-8810-ffdeea8cf8b6}"/>
     <names>
         <name lang="en">Double acting cylinders left</name>

@@ -1,4 +1,4 @@
-<definition hotspot_x="65" type="element" width="70" hotspot_y="45" version="0.70" orientation="dyyy" height="50" link_type="simple">
+<definition hotspot_x="65" type="element" width="70" hotspot_y="45" version="0.70" height="50" link_type="simple">
     <uuid uuid="{2476da22-7dfb-4f4d-88f9-e21870c6402d}"/>
     <names>
         <name lang="fr">Relais de détection de coupure d'enroulement</name>

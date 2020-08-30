@@ -1,4 +1,4 @@
-<definition hotspot_x="44" version="0.70" orientation="dyyy" height="20" hotspot_y="10" width="90" type="element" link_type="simple">
+<definition hotspot_x="44" version="0.70" height="20" hotspot_y="10" width="90" type="element" link_type="simple">
     <uuid uuid="{077d5824-d80e-4e8b-9cb3-c27284613d71}"/>
     <names>
         <name lang="fr">Paire coaxiale</name>

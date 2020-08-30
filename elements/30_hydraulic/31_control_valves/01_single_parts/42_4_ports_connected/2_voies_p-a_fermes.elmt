@@ -1,4 +1,4 @@
-<definition version="0.5" hotspot_x="10" hotspot_y="34" width="40" orientation="dyyy" height="60" link_type="simple" type="element">
+<definition version="0.5" hotspot_x="10" hotspot_y="34" width="40" height="60" link_type="simple" type="element">
     <uuid uuid="{c664ca3c-d445-4db5-ac5a-dc8550c63846}"/>
     <names>
         <name lang="en">4 B -> T connected</name>

@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="110" height="50" hotspot_x="105" hotspot_y="45" orientation="dyyy" version="0.70">
+<definition link_type="simple" type="element" width="110" height="50" hotspot_x="105" hotspot_y="45" version="0.70">
     <uuid uuid="{33c7d857-0bd1-420a-af6d-0bb4ac3006ec}"/>
     <names>
         <name lang="de">Trennstelle</name>

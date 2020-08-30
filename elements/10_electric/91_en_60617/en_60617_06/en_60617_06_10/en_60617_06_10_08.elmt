@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="112" hotspot_y="217" version="0.70" width="120" type="element" height="220">
+<definition link_type="simple" hotspot_x="112" hotspot_y="217" version="0.70" width="120" type="element" height="220">
     <uuid uuid="{ca8e9d4c-a0c1-4701-b4d1-6ae5e8fdb7b1}"/>
     <names>
         <name lang="fr">Transformateur triphasé, couplage étoile-

@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="35" width="70" height="40" orientation="dyyy" link_type="simple" version="0.80" hotspot_y="21">
+<definition type="element" hotspot_x="35" width="70" height="40" link_type="simple" version="0.80" hotspot_y="21">
     <uuid uuid="{5a876f11-effc-4223-bd7b-3f1cebbb1634}"/>
     <names>
         <name lang="de">Heizung</name>

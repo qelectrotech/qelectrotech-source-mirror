@@ -1,4 +1,4 @@
-<definition height="40" type="element" width="40" orientation="dyyy" hotspot_x="16" link_type="simple" version="0.5" hotspot_y="22">
+<definition height="40" type="element" width="40" hotspot_x="16" link_type="simple" version="0.5" hotspot_y="22">
     <uuid uuid="{40b43d79-3a6f-41b2-8735-a810aec3b6f7}"/>
     <names>
         <name lang="ar">ملف حلقي قطب 1</name>

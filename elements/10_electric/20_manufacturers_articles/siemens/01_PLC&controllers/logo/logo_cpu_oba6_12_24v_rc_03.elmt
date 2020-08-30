@@ -1,4 +1,4 @@
-<definition hotspot_x="20" width="160" hotspot_y="5" version="0.5" orientation="dyyy" height="380" type="element" link_type="simple">
+<definition hotspot_x="20" width="160" hotspot_y="5" version="0.5" height="380" type="element" link_type="simple">
     <uuid uuid="{ea7084a1-5777-4a79-af39-2d56ec9970f4}"/>
     <names>
         <name lang="en">Logo-cpu-oba6-24V-rc/03</name>

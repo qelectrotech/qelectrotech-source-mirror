@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="25" orientation="dyyy" hotspot_y="25" type="element" height="220" width="140" version="0.5">
+<definition link_type="simple" hotspot_x="25" hotspot_y="25" type="element" height="220" width="140" version="0.5">
     <uuid uuid="{f9afad3b-2ea9-456c-b3dd-495112b61e89}"/>
     <names>
         <name lang="pl">Moduł XPx (nie oznaczony)</name>

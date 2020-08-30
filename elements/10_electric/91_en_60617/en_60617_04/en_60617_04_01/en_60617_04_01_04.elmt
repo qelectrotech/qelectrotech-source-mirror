@@ -1,4 +1,4 @@
-<definition width="60" height="50" type="element" hotspot_x="24" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="18">
+<definition width="60" height="50" type="element" hotspot_x="24" version="0.70" link_type="simple" hotspot_y="18">
     <uuid uuid="{e31fc5d4-1fe9-4f5f-90bc-6ac418037ecb}"/>
     <names>
         <name lang="de">Widerstand, spannungsabhängig

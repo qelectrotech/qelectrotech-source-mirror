@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="24">
+<definition width="30" hotspot_x="14" type="element" link_type="simple" version="0.5" height="40" hotspot_y="24">
     <uuid uuid="{1e3ecfb4-54d0-4e8b-b312-7341d851531d}"/>
     <names>
         <name lang="cs">Trojcestný ventil s pohonem</name>

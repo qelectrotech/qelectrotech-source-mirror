@@ -1,4 +1,4 @@
-<definition width="50" hotspot_x="24" hotspot_y="10" orientation="dyyy" link_type="simple" version="0.80" type="element" height="20">
+<definition width="50" hotspot_x="24" hotspot_y="10" link_type="simple" version="0.80" type="element" height="20">
     <uuid uuid="{ddd745d1-0110-46b4-976e-cdb79b759310}"/>
     <names>
         <name lang="fr">Réduction droite</name>

@@ -1,4 +1,4 @@
-<definition type="element" width="150" version="0.70" hotspot_y="24" orientation="dyyy" height="30" link_type="simple" hotspot_x="144">
+<definition type="element" width="150" version="0.70" hotspot_y="24" height="30" link_type="simple" hotspot_x="144">
     <uuid uuid="{558d7aec-b150-4f6c-bcbc-ca5ee574d906}"/>
     <names>
         <name lang="fr">Ligne avec point de raccordement enterré</name>

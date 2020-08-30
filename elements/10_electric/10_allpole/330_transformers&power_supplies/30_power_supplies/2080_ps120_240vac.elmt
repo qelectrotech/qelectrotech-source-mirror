@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" height="80" orientation="dyyy" width="100" hotspot_y="39" hotspot_x="50" version="0.60">
+<definition type="element" link_type="simple" height="80" width="100" hotspot_y="39" hotspot_x="50" version="0.60">
     <uuid uuid="{2b1d409f-9a77-4321-9ffc-d5c472b21bbe}"/>
     <names>
         <name lang="fr">Alimentation AC/DC 2080-PS120-240VAC</name>

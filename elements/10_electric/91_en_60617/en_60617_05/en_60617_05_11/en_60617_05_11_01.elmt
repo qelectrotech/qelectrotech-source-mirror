@@ -1,4 +1,4 @@
-<definition width="150" height="170" orientation="dyyy" hotspot_y="145" hotspot_x="85" link_type="simple" type="element" version="0.70">
+<definition width="150" height="170" hotspot_y="145" hotspot_x="85" link_type="simple" type="element" version="0.70">
     <uuid uuid="{7c1fd115-2b29-4df4-b4fc-610ae29b2329}"/>
     <names>
         <name lang="de">Triode, Kathode direkt geheizt</name>

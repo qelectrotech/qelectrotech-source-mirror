@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="60" link_type="simple" hotspot_x="45" width="50" hotspot_y="55">
+<definition type="element" version="0.70" height="60" link_type="simple" hotspot_x="45" width="50" hotspot_y="55">
     <uuid uuid="{10289caa-12eb-44fd-8a84-29b18c4a492f}"/>
     <names>
         <name lang="de">Zeiterfassungsgerät</name>

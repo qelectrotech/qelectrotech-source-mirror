@@ -1,4 +1,4 @@
-<definition width="60" version="0.70" type="element" hotspot_y="24" hotspot_x="33" orientation="dyyy" link_type="master" height="50">
+<definition width="60" version="0.70" type="element" hotspot_y="24" hotspot_x="33" link_type="master" height="50">
     <uuid uuid="{11c09304-97cd-40f4-825f-4329bdf7e5db}"/>
     <names>
         <name lang="pt">Disjunctor diferencial</name>

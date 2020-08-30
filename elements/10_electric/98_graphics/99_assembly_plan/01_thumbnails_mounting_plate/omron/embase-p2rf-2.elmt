@@ -1,4 +1,4 @@
-<definition width="20" height="90" link_type="simple" orientation="dyyy" hotspot_x="2" version="0.5" hotspot_y="52" type="element">
+<definition width="20" height="90" link_type="simple" hotspot_x="2" version="0.5" hotspot_y="52" type="element">
     <uuid uuid="{539ca8cf-7356-415f-9a54-c114d2139373}"/>
     <names>
         <name lang="it">Base P2RF 2</name>

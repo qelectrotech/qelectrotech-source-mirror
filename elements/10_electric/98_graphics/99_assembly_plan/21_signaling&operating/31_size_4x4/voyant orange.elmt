@@ -1,4 +1,4 @@
-<definition type="element" hotspot_y="25" orientation="dyyy" width="50" version="0.80" link_type="simple" hotspot_x="25" height="50">
+<definition type="element" hotspot_y="25" width="50" version="0.80" link_type="simple" hotspot_x="25" height="50">
     <uuid uuid="{d636a887-14a5-496b-94f3-cd0a95ddd4d7}"/>
     <names>
         <name lang="it">Lampada spia</name>

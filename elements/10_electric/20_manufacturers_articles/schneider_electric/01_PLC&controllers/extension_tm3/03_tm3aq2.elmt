@@ -1,4 +1,4 @@
-<definition hotspot_x="32" height="150" orientation="dyyy" version="0.70" hotspot_y="75" width="70" link_type="simple" type="element">
+<definition hotspot_x="32" height="150" version="0.70" hotspot_y="75" width="70" link_type="simple" type="element">
     <uuid uuid="{3d6a4adc-aef4-43a4-b63d-b44cbdc5b5e1}"/>
     <names>
         <name lang="fr">TM3AQ2</name>

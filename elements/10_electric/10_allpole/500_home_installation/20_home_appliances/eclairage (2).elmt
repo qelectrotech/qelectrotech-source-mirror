@@ -1,4 +1,4 @@
-<definition height="50" version="0.80" link_type="simple" width="40" hotspot_y="24" type="element" orientation="dyyy" hotspot_x="20">
+<definition height="50" version="0.80" link_type="simple" width="40" hotspot_y="24" type="element" hotspot_x="20">
     <uuid uuid="{26fe1324-1ec6-4b7c-b221-c3afdcf0caf4}"/>
     <names>
         <name lang="fr">Eclairage</name>

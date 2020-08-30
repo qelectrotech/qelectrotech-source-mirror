@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="40" link_type="simple" hotspot_x="44" width="100" hotspot_y="18">
+<definition type="element" version="0.70" height="40" link_type="simple" hotspot_x="44" width="100" hotspot_y="18">
     <uuid uuid="{8b64ea91-b2f1-49fe-99a0-0fd8adb58e81}"/>
     <names>
         <name lang="de">Ausdehnungsstück für Gehäuse</name>

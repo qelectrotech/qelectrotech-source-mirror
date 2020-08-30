@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" hotspot_x="30" hotspot_y="11" orientation="dyyy" version="0.5" width="50" height="20">
+<definition type="element" link_type="simple" hotspot_x="30" hotspot_y="11" version="0.5" width="50" height="20">
 <uuid uuid="{C98B8657-6899-47BC-A5E0-311F9F09986A}"/><names>
         <name lang="en">Connector, 4 pin</name>
         <name lang="es">Conexión 4 pines</name>

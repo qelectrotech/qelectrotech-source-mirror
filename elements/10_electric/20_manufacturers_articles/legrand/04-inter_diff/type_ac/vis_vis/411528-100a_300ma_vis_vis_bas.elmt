@@ -1,4 +1,4 @@
-<definition hotspot_x="46" link_type="master" hotspot_y="36" orientation="dyyy" width="120" height="90" type="element" version="0.80">
+<definition hotspot_x="46" link_type="master" hotspot_y="36" width="120" height="90" type="element" version="0.80">
     <uuid uuid="{f39dcf8a-4b4f-48f6-baf2-57ac43d63973}"/>
     <names>
         <name lang="fr">411528 - Interrupteur différentiel AC 100A 300mA Haut-Vis/Bas-Vis</name>

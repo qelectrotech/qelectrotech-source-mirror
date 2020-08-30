@@ -1,4 +1,4 @@
-<definition width="50" hotspot_x="24" type="element" link_type="simple" orientation="dyyy" version="0.5" height="120" hotspot_y="24">
+<definition width="50" hotspot_x="24" type="element" link_type="simple" version="0.5" height="120" hotspot_y="24">
     <uuid uuid="{40667f0c-bed9-46c3-a644-03227b4dc7c0}"/>
     <names>
         <name lang="cs">Přerušovač s pojistkou QM</name>

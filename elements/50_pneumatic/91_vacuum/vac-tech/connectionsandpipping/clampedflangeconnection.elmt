@@ -1,4 +1,4 @@
-<definition hotspot_x="24" height="50" type="element" orientation="dyyy" hotspot_y="25" version="0.80" link_type="simple" width="50">
+<definition hotspot_x="24" height="50" type="element" hotspot_y="25" version="0.80" link_type="simple" width="50">
     <uuid uuid="{32dd1edc-c5f1-4a08-8738-8b4fe3614044}"/>
     <names>
         <name lang="en">Clamped flange connection</name>

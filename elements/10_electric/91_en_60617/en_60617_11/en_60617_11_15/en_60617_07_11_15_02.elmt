@@ -1,4 +1,4 @@
-<definition hotspot_x="56" type="element" height="40" version="0.80" width="60" orientation="dyyy" link_type="simple" hotspot_y="30">
+<definition hotspot_x="56" type="element" height="40" version="0.80" width="60" link_type="simple" hotspot_y="30">
     <uuid uuid="{d9931344-8624-45cf-99f1-43c9cacf7b62}"/>
     <names>
         <name lang="de">Leuchtenauslaß auf Putz</name>

@@ -1,4 +1,4 @@
-<definition width="110" hotspot_x="44" hotspot_y="46" orientation="dyyy" link_type="master" version="0.80" type="element" height="90">
+<definition width="110" hotspot_x="44" hotspot_y="46" link_type="master" version="0.80" type="element" height="90">
     <uuid uuid="{4b2fe0c0-ba30-475d-9f9c-f0b5a132d409}"/>
     <names>
         <name lang="fr">411550 - Interrupteur différentiel A 16A 10mA Haut-Vis/Bas-Vis</name>

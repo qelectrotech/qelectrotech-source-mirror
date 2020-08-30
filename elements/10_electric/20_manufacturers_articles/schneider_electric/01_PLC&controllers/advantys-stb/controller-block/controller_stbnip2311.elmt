@@ -1,4 +1,4 @@
-<definition width="90" height="290" type="element" version="0.70" orientation="dyyy" link_type="simple" hotspot_x="44" hotspot_y="125">
+<definition width="90" height="290" type="element" version="0.70" link_type="simple" hotspot_x="44" hotspot_y="125">
     <uuid uuid="{4db4ce8f-dee7-4a30-abc3-2f78b1b3eded}"/>
     <names>
         <name lang="en">controller stbnip2311</name>

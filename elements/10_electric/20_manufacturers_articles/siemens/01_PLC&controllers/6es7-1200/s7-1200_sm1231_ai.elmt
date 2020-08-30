@@ -1,4 +1,4 @@
-<definition link_type="simple" orientation="dyyy" width="330" hotspot_y="245" type="element" height="270" hotspot_x="85" version="0.70">
+<definition link_type="simple" width="330" hotspot_y="245" type="element" height="270" hotspot_x="85" version="0.70">
     <uuid uuid="{4ce71fc0-2fd3-41e4-bb2f-86523cb63d68}"/>
     <names>
         <name lang="fr">S7-1200 SM1231 AI</name>

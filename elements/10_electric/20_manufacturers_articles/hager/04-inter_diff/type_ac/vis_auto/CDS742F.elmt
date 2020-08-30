@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.80" type="element" hotspot_x="46" link_type="master" height="90" width="120" hotspot_y="37">
+<definition version="0.80" type="element" hotspot_x="46" link_type="master" height="90" width="120" hotspot_y="37">
     <uuid uuid="{1b1f027b-413f-4c47-809a-5010ada0faa5}"/>
     <names>
         <name lang="fr">CDC722F-Interrupteur différentiel 2P 25A 30mA type AC à bornes décalées SanVis</name>

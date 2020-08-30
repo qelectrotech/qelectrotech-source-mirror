@@ -1,4 +1,4 @@
-<definition height="90" width="130" hotspot_x="44" link_type="master" type="element" orientation="dyyy" hotspot_y="36" version="0.80">
+<definition height="90" width="130" hotspot_x="44" link_type="master" type="element" hotspot_y="36" version="0.80">
     <uuid uuid="{e8840184-7f3e-4c91-b662-89d17e068e03}"/>
     <names>
         <name lang="fr">411590 - Interrupteur différentiel F/HPI 25A 30mA Haut-Vis/Bas-Vis</name>

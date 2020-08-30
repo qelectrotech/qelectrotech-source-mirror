@@ -1,4 +1,4 @@
-<definition hotspot_x="14" version="0.70" orientation="dyyy" height="10" hotspot_y="4" width="30" type="element" link_type="simple">
+<definition hotspot_x="14" version="0.70" height="10" hotspot_y="4" width="30" type="element" link_type="simple">
     <uuid uuid="{5efeb305-fbfc-4f1b-9f1c-af4d4650557d}"/>
     <names>
         <name lang="fr">Impression sur Bande</name>

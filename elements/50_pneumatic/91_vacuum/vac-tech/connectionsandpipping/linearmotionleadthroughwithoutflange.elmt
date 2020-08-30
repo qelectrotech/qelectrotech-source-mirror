@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="19" width="40" link_type="simple" height="40" version="0.80" orientation="dyyy" hotspot_y="17">
+<definition type="element" hotspot_x="19" width="40" link_type="simple" height="40" version="0.80" hotspot_y="17">
     <uuid uuid="{f73607c3-56d5-40a3-a246-a28193e9c18e}"/>
     <names>
         <name lang="fr">Traversé à mouvement linéaire, sans bride</name>

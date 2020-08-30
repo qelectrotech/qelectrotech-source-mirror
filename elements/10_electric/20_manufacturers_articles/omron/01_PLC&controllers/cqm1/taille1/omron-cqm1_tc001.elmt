@@ -1,4 +1,4 @@
-<definition width="40" height="130" link_type="simple" orientation="dyyy" hotspot_x="13" version="0.5" hotspot_y="63" type="element">
+<definition width="40" height="130" link_type="simple" hotspot_x="13" version="0.5" hotspot_y="63" type="element">
     <uuid uuid="{9c2405b8-daf9-4dfe-a8d1-dad75aae013f}"/>
     <names>
         <name lang="it">omron-cqm1_tc001</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="master" type="element" height="170" width="130" hotspot_y="165" version="0.80" hotspot_x="5">
+<definition link_type="master" type="element" height="170" width="130" hotspot_y="165" version="0.80" hotspot_x="5">
     <uuid uuid="{87c9a4d9-0c9e-4118-afa6-5740d4469de4}"/>
     <names>
         <name lang="fr">Climatiseur Unité Int</name>

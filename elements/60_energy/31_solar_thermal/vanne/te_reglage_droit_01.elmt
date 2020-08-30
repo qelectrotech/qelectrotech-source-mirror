@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="4" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="0">
+<definition width="30" hotspot_x="4" type="element" link_type="simple" version="0.5" height="20" hotspot_y="0">
     <uuid uuid="{f0a4482b-6518-404a-b4bc-449f6da563af}"/>
     <names>
         <name lang="cs">Regulační uzávěr (prostý)</name>

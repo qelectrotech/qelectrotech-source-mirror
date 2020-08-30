@@ -1,4 +1,4 @@
-<definition hotspot_x="14" version="0.70" orientation="dyyy" height="30" hotspot_y="14" width="30" type="element" link_type="simple">
+<definition hotspot_x="14" version="0.70" height="30" hotspot_y="14" width="30" type="element" link_type="simple">
     <uuid uuid="{bc6e4879-01cd-491a-8dd5-a025c953247e}"/>
     <names>
         <name lang="fr">Fonction échelon positive</name>

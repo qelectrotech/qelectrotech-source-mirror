@@ -1,4 +1,4 @@
-<definition hotspot_y="38" orientation="dyyy" link_type="simple" type="element" width="130" height="120" hotspot_x="16" version="0.51">
+<definition hotspot_y="38" link_type="simple" type="element" width="130" height="120" hotspot_x="16" version="0.51">
     <uuid uuid="{e6e34c42-1792-4400-a273-1ba8ecfc6cd9}"/>
     <names>
         <name lang="en">Printer</name>

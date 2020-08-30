@@ -1,4 +1,4 @@
-<definition height="60" link_type="simple" type="element" orientation="dyyy" hotspot_y="29" version="0.5" hotspot_x="15" width="30">
+<definition height="60" link_type="simple" type="element" hotspot_y="29" version="0.5" hotspot_x="15" width="30">
     <uuid uuid="{41cad2a6-e90a-4d04-90af-ff74e15e3031}"/>
     <names>
         <name lang="fr">Voyant flash</name>

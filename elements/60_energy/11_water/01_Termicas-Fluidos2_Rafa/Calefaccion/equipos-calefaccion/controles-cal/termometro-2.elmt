@@ -1,4 +1,4 @@
-<definition version="0.5" type="element" orientation="dyyy" hotspot_x="12" width="30" height="30" hotspot_y="14" link_type="simple">
+<definition version="0.5" type="element" hotspot_x="12" width="30" height="30" hotspot_y="14" link_type="simple">
 <uuid uuid="{6A8F3D99-C0B8-40E9-8680-29807D2A2CE7}"/><names>
         <name lang="es">Termómetro de reloj</name>
         <name lang="en">Clock thermometer</name>

@@ -1,4 +1,4 @@
-<definition hotspot_y="65" type="element" link_type="simple" orientation="dyyy" hotspot_x="44" width="90" height="130" version="0.51">
+<definition hotspot_y="65" type="element" link_type="simple" hotspot_x="44" width="90" height="130" version="0.51">
     <uuid uuid="{704bd575-bf5b-42ef-92ee-d3a2af3945a5}"/>
     <names>
         <name lang="fr">Chaudière Fioul</name>

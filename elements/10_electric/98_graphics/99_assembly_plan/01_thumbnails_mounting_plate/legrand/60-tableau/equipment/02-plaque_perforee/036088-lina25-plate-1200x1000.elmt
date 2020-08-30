@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_y="5" hotspot_x="5" link_type="simple" height="2610" type="element" version="0.80" width="2160">
+<definition hotspot_y="5" hotspot_x="5" link_type="simple" height="2610" type="element" version="0.80" width="2160">
     <uuid uuid="{8d869d2f-5709-466b-b3dd-489ff3aa900d}"/>
     <names>
         <name lang="fr">036088 - Plaque perforée 1200x1000 Atlantic/Marina</name>

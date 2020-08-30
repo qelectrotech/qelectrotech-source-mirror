@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="60" hotspot_y="44" orientation="dyyy" height="70" version="0.70" hotspot_x="47">
+<definition link_type="simple" type="element" width="60" hotspot_y="44" height="70" version="0.70" hotspot_x="47">
     <uuid uuid="{52762c32-647a-451a-87f2-5344d744f12c}"/>
     <names>
         <name lang="fr">Interrupteur d'arrêt d'urgence à manœuvre

@@ -1,4 +1,4 @@
-<definition width="150" hotspot_y="74" link_type="master" version="0.80" height="90" type="element" orientation="dyyy" hotspot_x="55">
+<definition width="150" hotspot_y="74" link_type="master" version="0.80" height="90" type="element" hotspot_x="55">
     <uuid uuid="{d39ff91e-0e2b-4526-8541-c467bbf2e829}"/>
     <names>
         <name lang="fr">Servomoteur Siemens 24V 0-10V</name>

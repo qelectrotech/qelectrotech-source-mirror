@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" width="60" height="70" hotspot_y="34" hotspot_x="51" version="0.70" link_type="simple">
+<definition type="element" width="60" height="70" hotspot_y="34" hotspot_x="51" version="0.70" link_type="simple">
     <uuid uuid="{5677fc79-b058-4eb3-92a5-da7e6dc71649}"/>
     <names>
         <name lang="de">Sicherung mit getrenntem Meldekontakt</name>

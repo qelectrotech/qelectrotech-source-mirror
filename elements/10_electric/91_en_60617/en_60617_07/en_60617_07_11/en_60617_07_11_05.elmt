@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="65" hotspot_y="65" orientation="dyyy" type="element" height="70" width="70">
+<definition link_type="simple" version="0.70" hotspot_x="65" hotspot_y="65" type="element" height="70" width="70">
     <uuid uuid="{ac24a1c2-4f3b-4d3a-887f-dfdcf542bd0b}"/>
     <names>
         <name lang="fr">Commutateur multipolaire à quatre directions</name>

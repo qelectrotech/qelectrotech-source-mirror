@@ -1,4 +1,4 @@
-<definition hotspot_x="34" version="0.70" orientation="dyyy" height="20" hotspot_y="15" width="50" type="element" link_type="simple">
+<definition hotspot_x="34" version="0.70" height="20" hotspot_y="15" width="50" type="element" link_type="simple">
     <uuid uuid="{f95c966e-5422-4655-a53d-e57d6012279d}"/>
     <names>
         <name lang="fr">Barrette de connexion, ouverte</name>

@@ -1,4 +1,4 @@
-<definition width="50" hotspot_x="22" type="element" link_type="simple" orientation="dyyy" version="0.5" height="130" hotspot_y="50">
+<definition width="50" hotspot_x="22" type="element" link_type="simple" version="0.5" height="130" hotspot_y="50">
     <uuid uuid="{3e86d752-7dcc-4bec-b6b0-1a02f9138551}"/>
     <names>
         <name lang="cs">Přerušovač IMB</name>

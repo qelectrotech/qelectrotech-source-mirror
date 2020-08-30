@@ -1,4 +1,4 @@
-<definition width="50" height="70" type="element" hotspot_x="25" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="65">
+<definition width="50" height="70" type="element" hotspot_x="25" version="0.70" link_type="simple" hotspot_y="65">
     <uuid uuid="{8339b4c4-ab38-4fd1-b971-17c3bc812b25}"/>
     <names>
         <name lang="de">Wattstundenzähler, der die Energie in beiden

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.70" width="30" type="element" hotspot_y="21" link_type="simple" hotspot_x="15" height="40">
+<definition version="0.70" width="30" type="element" hotspot_y="21" link_type="simple" hotspot_x="15" height="40">
     <uuid uuid="{05398aed-e651-4aa6-a8b7-7f2d2bc3e955}"/>
     <names>
         <name lang="fr">Terre, symbole général</name>

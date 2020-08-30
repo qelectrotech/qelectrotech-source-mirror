@@ -1,4 +1,4 @@
-<definition width="100" hotspot_x="50" type="element" link_type="simple" orientation="dyyy" version="0.5" height="70" hotspot_y="38">
+<definition width="100" hotspot_x="50" type="element" link_type="simple" version="0.5" height="70" hotspot_y="38">
     <uuid uuid="{75688444-eac1-4e8e-b41a-1f6b83be0a80}"/>
     <names>
         <name lang="cs">A nepřímý výměník/zásobník ECS</name>

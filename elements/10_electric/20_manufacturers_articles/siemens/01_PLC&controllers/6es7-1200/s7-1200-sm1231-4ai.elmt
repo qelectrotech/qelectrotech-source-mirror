@@ -1,4 +1,4 @@
-<definition hotspot_x="19" hotspot_y="69" width="170" orientation="dyyy" link_type="simple" version="0.70" height="390" type="element">
+<definition hotspot_x="19" hotspot_y="69" width="170" link_type="simple" version="0.70" height="390" type="element">
     <uuid uuid="{c43d9938-ba44-4057-994b-ef7ad1b77a20}"/>
     <names>
         <name lang="it">A3 S7-1200 SM1231 4AI</name>

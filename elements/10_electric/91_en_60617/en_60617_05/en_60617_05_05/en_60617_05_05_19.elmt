@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="35" hotspot_y="35" orientation="dyyy" type="element" height="80" width="60">
+<definition link_type="simple" version="0.70" hotspot_x="35" hotspot_y="35" type="element" height="80" width="60">
     <uuid uuid="{a2f2e603-ccd1-4406-b80f-8ca8d7375237}"/>
     <names>
         <name lang="fr">Transistor IGBT de type à enrichissement,

@@ -1,4 +1,4 @@
-<definition width="130" orientation="dyyy" hotspot_y="32" link_type="simple" version="0.80" height="50" hotspot_x="72" type="element">
+<definition width="130" hotspot_y="32" link_type="simple" version="0.80" height="50" hotspot_x="72" type="element">
     <uuid uuid="{87af480d-1311-44b1-8500-03f0c249995f}"/>
     <names>
         <name lang="fr">Controleur AKO 14223</name>

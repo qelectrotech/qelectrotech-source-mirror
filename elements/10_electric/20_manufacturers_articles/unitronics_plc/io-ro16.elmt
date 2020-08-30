@@ -1,4 +1,4 @@
-<definition type="element" version="0.5" hotspot_y="59" width="600" height="130" orientation="dyyy" link_type="simple" hotspot_x="15">
+<definition type="element" version="0.5" hotspot_y="59" width="600" height="130" link_type="simple" hotspot_x="15">
     <uuid uuid="{b01db059-a430-4e07-876f-e77814cef4a4}"/>
     <names>
         <name lang="en">IO-RO16</name>

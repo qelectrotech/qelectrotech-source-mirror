@@ -1,4 +1,4 @@
-<definition width="90" link_type="simple" version="0.5" hotspot_x="4" orientation="dyyy" height="30" hotspot_y="14" type="element">
+<definition width="90" link_type="simple" version="0.5" hotspot_x="4" height="30" hotspot_y="14" type="element">
     <uuid uuid="{4ac5789b-e219-4d64-a5ed-12d806afcb3a}"/>
     <names>
         <name lang="de">Klemmleiste 3P+N+PE</name>

@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="14" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="10">
+<definition width="30" hotspot_x="14" type="element" link_type="simple" version="0.5" height="20" hotspot_y="10">
     <uuid uuid="{ed107ff8-1f58-4c43-8ee3-1aca53689fac}"/>
     <names>
         <name lang="cs">Kulový uzávěr</name>

@@ -1,4 +1,4 @@
-<definition hotspot_x="4" height="40" type="element" version="0.80" orientation="dyyy" link_type="simple" width="50" hotspot_y="25">
+<definition hotspot_x="4" height="40" type="element" version="0.80" link_type="simple" width="50" hotspot_y="25">
     <uuid uuid="{f09cb4f3-8977-48d7-9996-e27c3cfc2414}"/>
     <names>
         <name lang="fr">Transformateur 230/400-12/24V</name>

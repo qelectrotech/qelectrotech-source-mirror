@@ -1,4 +1,4 @@
-<definition link_type="simple" type="element" width="20" hotspot_y="44" orientation="dyyy" height="70" version="0.70" hotspot_x="13">
+<definition link_type="simple" type="element" width="20" hotspot_y="44" height="70" version="0.70" hotspot_x="13">
     <uuid uuid="{7aca8cd4-b1b3-4794-9021-2e7532514e1d}"/>
     <names>
         <name lang="fr">Contact à fermeture (contact de travail)</name>

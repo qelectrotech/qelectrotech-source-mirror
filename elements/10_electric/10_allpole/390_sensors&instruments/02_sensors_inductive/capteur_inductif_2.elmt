@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="24" version="0.5" hotspot_y="34" link_type="simple" width="50" orientation="dyyy" height="70">
+<definition type="element" hotspot_x="24" version="0.5" hotspot_y="34" link_type="simple" width="50" height="70">
     <uuid uuid="{2eee3c4e-388c-4582-8b47-4f51159827bd}"/>
     <names>
         <name lang="el">Επαγωγικός αισθητήρας, 2 ακροδέκτες, ανοικτή επαφή</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="20" link_type="simple" type="element" height="60" version="0.80" hotspot_y="24" width="40">
+<definition hotspot_x="20" link_type="simple" type="element" height="60" version="0.80" hotspot_y="24" width="40">
     <uuid uuid="{98375536-f47c-4a20-9687-71aa4eaa94ff}"/>
     <names>
         <name lang="es">Lavavajillas</name>

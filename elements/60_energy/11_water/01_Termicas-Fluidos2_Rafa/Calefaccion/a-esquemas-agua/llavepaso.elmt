@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="19" link_type="simple" type="element" version="0.80" width="40" height="20" hotspot_y="12">
+<definition hotspot_x="19" link_type="simple" type="element" version="0.80" width="40" height="20" hotspot_y="12">
     <uuid uuid="{2c71ca90-d85b-4ab1-8346-17b6277dd6e9}"/>
     <names>
         <name lang="ca">Clau tall ràpid</name>

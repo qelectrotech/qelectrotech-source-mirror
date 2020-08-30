@@ -1,4 +1,4 @@
-<definition height="60" link_type="simple" type="element" orientation="dyyy" hotspot_y="29" version="0.5" hotspot_x="13" width="30">
+<definition height="60" link_type="simple" type="element" hotspot_y="29" version="0.5" hotspot_x="13" width="30">
     <uuid uuid="{5a60adde-9bf3-4aa6-9927-597956ad0db3}"/>
     <names>
         <name lang="fr">Lampe clignotante</name>

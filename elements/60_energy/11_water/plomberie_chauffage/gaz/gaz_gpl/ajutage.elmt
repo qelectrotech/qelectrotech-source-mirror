@@ -1,4 +1,4 @@
-<definition hotspot_y="15" type="element" link_type="simple" orientation="dyyy" hotspot_x="15" width="30" height="30" version="0.51">
+<definition hotspot_y="15" type="element" link_type="simple" hotspot_x="15" width="30" height="30" version="0.51">
     <uuid uuid="{4bdc0715-09ef-4533-b0ca-a1ced2cd807c}"/>
     <names>
         <name lang="fr">Ajutage GPL</name>

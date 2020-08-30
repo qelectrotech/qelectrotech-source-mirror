@@ -1,4 +1,4 @@
-<definition width="70" hotspot_x="37" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="19">
+<definition width="70" hotspot_x="37" type="element" link_type="simple" version="0.5" height="40" hotspot_y="19">
     <uuid uuid="{29c0a828-9b26-4578-a40d-5475fed4713e}"/>
     <names>
         <name lang="cs">Nádoba, otevřené ohřívání 01</name>

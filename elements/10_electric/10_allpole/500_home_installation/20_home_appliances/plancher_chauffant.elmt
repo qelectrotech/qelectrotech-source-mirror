@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" type="element" height="180" width="130" hotspot_y="85" version="0.80" hotspot_x="65">
+<definition link_type="simple" type="element" height="180" width="130" hotspot_y="85" version="0.80" hotspot_x="65">
     <uuid uuid="{87c26124-49c2-4a67-abfd-1952ab1a41d2}"/>
     <names>
         <name lang="fr">Plancher chauffant</name>

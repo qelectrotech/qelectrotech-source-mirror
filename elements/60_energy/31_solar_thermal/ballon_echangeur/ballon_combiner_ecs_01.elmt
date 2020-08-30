@@ -1,4 +1,4 @@
-<definition width="100" hotspot_x="50" type="element" link_type="simple" orientation="dyyy" version="0.5" height="200" hotspot_y="96">
+<definition width="100" hotspot_x="50" type="element" link_type="simple" version="0.5" height="200" hotspot_y="96">
     <uuid uuid="{5c58e3de-d8ec-44db-b023-31dbc0bd2775}"/>
     <names>
         <name lang="cs">Kombinovaný zásobnik ECS</name>

@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="6" orientation="dyyy" hotspot_y="55" type="element" height="210" width="100" version="0.5">
+<definition link_type="simple" hotspot_x="6" hotspot_y="55" type="element" height="210" width="100" version="0.5">
     <uuid uuid="{c132510c-d52c-4206-8ced-e16b0ab4aea0}"/>
     <names>
         <name lang="pl">MSR41 Micro 400 Controller</name>

@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="14" link_type="simple" type="element" height="50" version="0.80" hotspot_y="14" width="30">
+<definition hotspot_x="14" link_type="simple" type="element" height="50" version="0.80" hotspot_y="14" width="30">
     <uuid uuid="{7c96412d-f0f7-4c70-863f-5ae966f3dd96}"/>
     <names>
         <name lang="cs">Ohřívač vody</name>

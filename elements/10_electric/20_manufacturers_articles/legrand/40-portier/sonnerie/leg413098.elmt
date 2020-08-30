@@ -1,4 +1,4 @@
-<definition hotspot_y="44" orientation="dyyy" version="0.80" hotspot_x="18" link_type="simple" height="80" type="element" width="50">
+<definition hotspot_y="44" version="0.80" hotspot_x="18" link_type="simple" height="80" type="element" width="50">
     <uuid uuid="{c8c55ae6-c5e6-4d18-96c3-4cbab871c8a3}"/>
     <names>
         <name lang="es">Transformador monofásico Yyd 63VA</name>

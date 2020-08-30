@@ -1,4 +1,4 @@
-<definition type="element" version="0.80" orientation="dyyy" link_type="simple" width="50" hotspot_y="43" height="90" hotspot_x="22">
+<definition type="element" version="0.80" link_type="simple" width="50" hotspot_y="43" height="90" hotspot_x="22">
     <uuid uuid="{8e9e3d4e-8aa6-4752-a993-e23194393f6d}"/>
     <names>
         <name lang="en">LC1D</name>

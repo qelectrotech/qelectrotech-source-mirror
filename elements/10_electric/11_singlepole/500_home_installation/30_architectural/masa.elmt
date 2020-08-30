@@ -1,4 +1,4 @@
-<definition link_type="simple" height="30" hotspot_x="11" orientation="dyyy" type="element" width="20" version="0.51" hotspot_y="19">
+<definition link_type="simple" height="30" hotspot_x="11" type="element" width="20" version="0.51" hotspot_y="19">
     <uuid uuid="{60056520-2418-426b-8ac4-5ed4c55cfe16}"/>
     <names>
         <name lang="pl">Masa</name>

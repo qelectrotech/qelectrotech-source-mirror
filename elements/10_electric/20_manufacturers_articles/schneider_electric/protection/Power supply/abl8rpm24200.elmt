@@ -1,4 +1,4 @@
-<definition version="0.70" height="130" orientation="dyyy" hotspot_x="55" type="element" width="160" link_type="master" hotspot_y="98">
+<definition version="0.70" height="130" hotspot_x="55" type="element" width="160" link_type="master" hotspot_y="98">
     <uuid uuid="{8af5ea7e-3456-472b-a559-883d4b18ce74}"/>
     <names>
         <name lang="en">ABL 8RPM24200</name>

@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="35" width="70" height="40" orientation="dyyy" link_type="simple" version="0.80" hotspot_y="20">
+<definition type="element" hotspot_x="35" width="70" height="40" link_type="simple" version="0.80" hotspot_y="20">
     <uuid uuid="{3bbeaa20-0632-4b15-b56b-af9e11953efe}"/>
     <names>
         <name lang="de">Heizung mit Pufferspeicher</name>

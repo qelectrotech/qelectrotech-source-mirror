@@ -1,4 +1,4 @@
-<definition type="element" width="300" version="0.70" orientation="dyyy" link_type="simple" hotspot_y="65" hotspot_x="102" height="170">
+<definition type="element" width="300" version="0.70" link_type="simple" hotspot_y="65" hotspot_x="102" height="170">
     <uuid uuid="{ba48a6bc-bf9a-4655-b12d-582c503daa77}"/>
     <names>
         <name lang="hu">AB 440N-Z21SS2H RFID biztonsági kapcsoló</name>

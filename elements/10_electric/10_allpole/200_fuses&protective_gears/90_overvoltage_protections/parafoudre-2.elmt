@@ -1,4 +1,4 @@
-<definition height="60" hotspot_x="18" hotspot_y="30" orientation="dyyy" link_type="simple" type="element" version="0.80" width="40">
+<definition height="60" hotspot_x="18" hotspot_y="30" link_type="simple" type="element" version="0.80" width="40">
     <uuid uuid="{2aad9da5-665a-4189-9034-2bd6e1b00386}"/>
     <names>
         <name lang="it">Protez. alimentazione</name>

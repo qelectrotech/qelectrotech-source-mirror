@@ -1,4 +1,4 @@
-<definition width="390" height="100" link_type="simple" orientation="dyyy" hotspot_x="25" version="0.5" hotspot_y="24" type="element">
+<definition width="390" height="100" link_type="simple" hotspot_x="25" version="0.5" hotspot_y="24" type="element">
     <uuid uuid="{fe5d8044-5762-4298-b533-96206492cff2}"/>
     <names>
         <name lang="it">J7AZ</name>

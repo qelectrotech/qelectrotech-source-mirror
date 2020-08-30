@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="master" type="element" height="170" width="130" hotspot_y="165" version="0.80" hotspot_x="5">
+<definition link_type="master" type="element" height="170" width="130" hotspot_y="165" version="0.80" hotspot_x="5">
     <uuid uuid="{b39ee74f-6575-4a7f-8e50-a59505a36258}"/>
     <names>
         <name lang="ar">مشعاع</name>

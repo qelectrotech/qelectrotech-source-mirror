@@ -1,4 +1,4 @@
-<definition type="element" height="170" width="100" link_type="simple" hotspot_x="52" orientation="dyyy" hotspot_y="72" version="0.5">
+<definition type="element" height="170" width="100" link_type="simple" hotspot_x="52" hotspot_y="72" version="0.5">
     <uuid uuid="{b233c8fb-c9ce-4eb0-9a41-1485a4afb168}"/>
     <names>
         <name lang="es">X-BRIDGE</name>

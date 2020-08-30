@@ -1,4 +1,4 @@
-<definition width="40" orientation="dyyy" version="0.5" height="80" type="element" hotspot_y="34" link_type="simple" hotspot_x="5">
+<definition width="40" version="0.5" height="80" type="element" hotspot_y="34" link_type="simple" hotspot_x="5">
     <uuid uuid="{1cb3184a-7fc1-4f6e-8658-82ca424ff447}"/>
     <names>
         <name lang="en">Cabiner balast lamp</name>

@@ -1,4 +1,4 @@
-<definition width="80" orientation="dyyy" hotspot_y="23" link_type="simple" version="0.80" height="40" hotspot_x="33" type="element">
+<definition width="80" hotspot_y="23" link_type="simple" version="0.80" height="40" hotspot_x="33" type="element">
     <uuid uuid="{a2d9e8e9-987a-4109-a9e8-802b9c752752}"/>
     <names>
         <name lang="fr">Turbine Gaz</name>

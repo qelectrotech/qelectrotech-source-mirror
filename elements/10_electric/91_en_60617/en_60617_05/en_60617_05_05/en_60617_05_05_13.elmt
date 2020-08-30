@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="25" hotspot_y="15" orientation="dyyy" type="element" height="50" width="50">
+<definition link_type="simple" version="0.70" hotspot_x="25" hotspot_y="15" type="element" height="50" width="50">
     <uuid uuid="{fb8eccf2-ab2f-45d3-9d6d-a71ba1ea6df0}"/>
     <names>
         <name lang="fr">Transistor IGFET à enrichissement à une seule

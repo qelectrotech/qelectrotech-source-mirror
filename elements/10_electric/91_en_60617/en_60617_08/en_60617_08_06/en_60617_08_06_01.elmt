@@ -1,4 +1,4 @@
-<definition width="60" height="50" type="element" hotspot_x="30" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="44">
+<definition width="60" height="50" type="element" hotspot_x="30" version="0.70" link_type="simple" hotspot_y="44">
     <uuid uuid="{c93a13f4-799d-402c-87e6-61acf4c6be6f}"/>
     <names>
         <name lang="de">Thermoelement</name>

@@ -1,4 +1,4 @@
-<definition hotspot_y="15" type="element" height="30" width="60" hotspot_x="29" orientation="dyyy" link_type="simple" version="0.5">
+<definition hotspot_y="15" type="element" height="30" width="60" hotspot_x="29" link_type="simple" version="0.5">
     <uuid uuid="{7e69af84-b00f-4ffa-8ef1-48d63f966eb4}"/>
     <names>
         <name lang="cs">Ohmmetr, vodorovný</name>

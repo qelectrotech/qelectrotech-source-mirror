@@ -1,4 +1,4 @@
-<definition hotspot_x="65" type="element" width="70" hotspot_y="45" version="0.70" orientation="dyyy" height="50" link_type="simple">
+<definition hotspot_x="65" type="element" width="70" hotspot_y="45" version="0.70" height="50" link_type="simple">
     <uuid uuid="{bfa60c5b-9f75-4e82-a5eb-4c51ce86e38a}"/>
     <names>
         <name lang="fr">Relais à minimum de puissance active</name>

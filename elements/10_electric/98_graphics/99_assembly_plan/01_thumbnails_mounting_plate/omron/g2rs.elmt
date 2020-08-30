@@ -1,4 +1,4 @@
-<definition width="20" height="40" link_type="simple" orientation="dyyy" hotspot_x="12" version="0.5" hotspot_y="35" type="element">
+<definition width="20" height="40" link_type="simple" hotspot_x="12" version="0.5" hotspot_y="35" type="element">
     <uuid uuid="{3544be95-24c5-4eac-aef0-750796e782c9}"/>
     <names>
         <name lang="it">G2RS</name>

@@ -1,4 +1,4 @@
-<definition height="50" width="30" link_type="terminal" hotspot_x="16" version="0.80" orientation="dyyy" type="element" hotspot_y="29">
+<definition height="50" width="30" link_type="terminal" hotspot_x="16" version="0.80" type="element" hotspot_y="29">
     <uuid uuid="{a98ac40d-9055-4b9b-88ab-cffe6b08ed37}"/>
     <names>
         <name lang="ro">Masă</name>

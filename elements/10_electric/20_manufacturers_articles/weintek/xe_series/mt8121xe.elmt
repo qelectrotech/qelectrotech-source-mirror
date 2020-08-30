@@ -1,4 +1,4 @@
-<definition type="element" hotspot_y="152" orientation="dyyy" link_type="simple" hotspot_x="155" version="0.80" height="250" width="330">
+<definition type="element" hotspot_y="152" link_type="simple" hotspot_x="155" version="0.80" height="250" width="330">
     <uuid uuid="{137aa4be-cfa5-4bb9-a4a8-b1ea212187d8}"/>
     <names>
         <name lang="de">MT8121XE 12.1"</name>

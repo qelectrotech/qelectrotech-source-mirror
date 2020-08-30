@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="16" orientation="dyyy" hotspot_y="24" type="element" height="100" width="370" version="0.5">
+<definition link_type="simple" hotspot_x="16" hotspot_y="24" type="element" height="100" width="370" version="0.5">
     <uuid uuid="{ac2b2c63-89ca-4941-ae2b-c47d4ca264f4}"/>
     <names>
         <name lang="pl">CSXi</name>

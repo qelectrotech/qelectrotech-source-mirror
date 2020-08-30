@@ -1,4 +1,4 @@
-<definition version="0.80" link_type="simple" hotspot_x="3" hotspot_y="25" type="element" orientation="dyyy" width="20" height="50">
+<definition version="0.80" link_type="simple" hotspot_x="3" hotspot_y="25" type="element" width="20" height="50">
     <uuid uuid="{6354cc72-3bb9-412d-badd-633da7f69bdc}"/>
     <names>
         <name lang="fr">037525 - Viking3 - Témoin 110 à 250V~</name>

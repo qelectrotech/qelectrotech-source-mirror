@@ -1,4 +1,4 @@
-<definition hotspot_x="85" version="0.70" orientation="dyyy" height="90" hotspot_y="65" width="130" type="element" link_type="simple">
+<definition hotspot_x="85" version="0.70" height="90" hotspot_y="65" width="130" type="element" link_type="simple">
     <uuid uuid="{ba5a41ba-1e61-49a7-8369-a0f156e82929}"/>
     <names>
         <name lang="fr">Dispositif étanche de passage avec trois câbles</name>

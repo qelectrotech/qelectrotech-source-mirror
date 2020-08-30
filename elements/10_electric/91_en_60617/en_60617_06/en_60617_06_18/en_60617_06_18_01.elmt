@@ -1,4 +1,4 @@
-<definition type="element" link_type="simple" height="110" width="70" version="0.70" orientation="dyyy" hotspot_x="55" hotspot_y="105">
+<definition type="element" link_type="simple" height="110" width="70" version="0.70" hotspot_x="55" hotspot_y="105">
     <uuid uuid="{1ebbf930-bf4c-448d-9daa-c4857bff87cd}"/>
     <names>
         <name lang="fr">Générateur thermoélectrique, à source de

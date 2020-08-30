@@ -1,4 +1,4 @@
-<definition width="40" hotspot_x="19" type="element" link_type="simple" orientation="dyyy" version="0.5" height="20" hotspot_y="10">
+<definition width="40" hotspot_x="19" type="element" link_type="simple" version="0.5" height="20" hotspot_y="10">
     <uuid uuid="{4e669cec-9a34-4117-8272-dfc8590f7275}"/>
     <names>
         <name lang="cs">Izolační ventil</name>

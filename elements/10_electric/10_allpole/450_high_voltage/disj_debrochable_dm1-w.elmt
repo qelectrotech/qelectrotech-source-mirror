@@ -1,4 +1,4 @@
-<definition width="40" hotspot_x="21" type="element" link_type="simple" orientation="dyyy" version="0.5" height="120" hotspot_y="24">
+<definition width="40" hotspot_x="21" type="element" link_type="simple" version="0.5" height="120" hotspot_y="24">
     <uuid uuid="{d142401a-103c-4c45-9725-7a576e30d351}"/>
     <names>
         <name lang="cs">Snímatelný jistič DM-1W</name>

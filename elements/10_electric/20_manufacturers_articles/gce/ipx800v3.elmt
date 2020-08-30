@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="294" orientation="dyyy" hotspot_y="54" type="element" height="130" width="590" version="0.5">
+<definition link_type="simple" hotspot_x="294" hotspot_y="54" type="element" height="130" width="590" version="0.5">
     <uuid uuid="{2ca30f61-e6e8-4e64-9dc6-9fcfd166a225}"/>
     <names>
         <name lang="pl">IPX800 V3</name>

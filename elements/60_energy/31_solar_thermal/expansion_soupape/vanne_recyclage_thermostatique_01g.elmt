@@ -1,4 +1,4 @@
-<definition width="50" hotspot_x="34" type="element" link_type="simple" orientation="dyyy" version="0.5" height="40" hotspot_y="36">
+<definition width="50" hotspot_x="34" type="element" link_type="simple" version="0.5" height="40" hotspot_y="36">
     <uuid uuid="{f20be40d-db9a-4989-9304-dd5af5e22f1d}"/>
     <names>
         <name lang="cs">Termostatický uzávěr</name>

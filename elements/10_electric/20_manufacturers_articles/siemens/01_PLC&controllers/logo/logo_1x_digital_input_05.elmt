@@ -1,4 +1,4 @@
-<definition hotspot_x="41" width="80" hotspot_y="8" version="0.5" orientation="dyyy" height="70" type="element" link_type="simple">
+<definition hotspot_x="41" width="80" hotspot_y="8" version="0.5" height="70" type="element" link_type="simple">
     <uuid uuid="{7356b096-9b12-4404-b4eb-a7ab2a1f1b43}"/>
     <names>
         <name lang="en">Logo-1x-digital-input/05</name>

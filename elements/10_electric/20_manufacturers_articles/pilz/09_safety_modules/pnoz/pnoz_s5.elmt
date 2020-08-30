@@ -1,4 +1,4 @@
-<definition width="290" hotspot_y="69" height="150" type="element" hotspot_x="140" orientation="dyyy" version="0.5" link_type="simple">
+<definition width="290" hotspot_y="69" height="150" type="element" hotspot_x="140" version="0.5" link_type="simple">
     <uuid uuid="{f5afcdb6-8daa-4446-9ae3-93b1dd9f2f6c}"/>
     <names>
         <name lang="ru">PNOZ S5</name>

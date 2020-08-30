@@ -1,4 +1,4 @@
-<definition type="element" hotspot_y="5" orientation="dyyy" width="90" version="0.80" link_type="simple" hotspot_x="5" height="120">
+<definition type="element" hotspot_y="5" width="90" version="0.80" link_type="simple" hotspot_x="5" height="120">
     <uuid uuid="{7ab74ca0-c0df-43ec-bfaf-c670ea23dbf5}"/>
     <names>
         <name lang="fr">KMA-E08</name>

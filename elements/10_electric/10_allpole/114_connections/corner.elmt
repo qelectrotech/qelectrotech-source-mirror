@@ -1,4 +1,4 @@
-<definition hotspot_y="7" width="20" orientation="dyyy" type="element" height="20" version="0.70" hotspot_x="11" link_type="terminal">
+<definition hotspot_y="7" width="20" type="element" height="20" version="0.70" hotspot_x="11" link_type="terminal">
     <uuid uuid="{2d505b61-db0f-4784-9b9c-189366058272}"/>
     <names>
         <name lang="es">Esquina</name>

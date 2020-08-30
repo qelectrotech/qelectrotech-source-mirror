@@ -1,4 +1,4 @@
-<definition height="50" version="0.70" orientation="dyyy" width="70" hotspot_x="25" type="element" hotspot_y="15" link_type="simple">
+<definition height="50" version="0.70" width="70" hotspot_x="25" type="element" hotspot_y="15" link_type="simple">
     <uuid uuid="{5c788718-993a-4a75-8c8f-175ab12b69d3}"/>
     <names>
         <name lang="fr">Électrode cylindrique de concentration

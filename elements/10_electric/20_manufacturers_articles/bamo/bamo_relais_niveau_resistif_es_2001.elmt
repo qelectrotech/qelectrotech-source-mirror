@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="24" orientation="dyyy" hotspot_y="15" type="element" height="110" width="410" version="0.5">
+<definition link_type="simple" hotspot_x="24" hotspot_y="15" type="element" height="110" width="410" version="0.5">
     <uuid uuid="{f6a1d814-1120-47d2-bbe6-7cc69a0f24d2}"/>
     <names>
         <name lang="pl">Przekaźnik kontroli poziomu ES 2001Bamo</name>

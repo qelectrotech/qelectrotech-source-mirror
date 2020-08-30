@@ -1,4 +1,4 @@
-<definition width="50" orientation="dyyy" type="element" height="210" hotspot_y="5" version="0.80" link_type="simple" hotspot_x="5">
+<definition width="50" type="element" height="210" hotspot_y="5" version="0.80" link_type="simple" hotspot_x="5">
     <uuid uuid="{ab67f3c1-b591-4086-8246-cbc56e389a90}"/>
     <names>
         <name lang="fr"> DomA45 1P+N 10A </name>

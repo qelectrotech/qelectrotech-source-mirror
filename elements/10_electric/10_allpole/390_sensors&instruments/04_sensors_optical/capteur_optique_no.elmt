@@ -1,4 +1,4 @@
-<definition type="element" version="0.60" height="60" orientation="dyyy" width="60" hotspot_x="26" hotspot_y="25" link_type="simple">
+<definition type="element" version="0.60" height="60" width="60" hotspot_x="26" hotspot_y="25" link_type="simple">
     <uuid uuid="{9a1f680c-de47-4adb-b3e3-d93ccb6ba7e7}"/>
     <names>
         <name lang="en">Optic sensor (NO)</name>

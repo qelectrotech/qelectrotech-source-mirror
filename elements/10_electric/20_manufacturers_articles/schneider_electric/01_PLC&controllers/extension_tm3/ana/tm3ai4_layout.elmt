@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="34" hotspot_y="116" height="240" width="70" orientation="dyyy" version="0.5" type="element">
+<definition link_type="simple" hotspot_x="34" hotspot_y="116" height="240" width="70" version="0.5" type="element">
     <uuid uuid="{46052b42-0c56-4304-91ed-e4cb9a35e582}"/>
     <names>
 	<name lang="en">in ana TM3AI4: layout</name>

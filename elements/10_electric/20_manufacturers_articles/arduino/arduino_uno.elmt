@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="25" orientation="dyyy" hotspot_y="35" type="element" height="270" width="190" version="0.5">
+<definition link_type="simple" hotspot_x="25" hotspot_y="35" type="element" height="270" width="190" version="0.5">
     <uuid uuid="{adc899b2-6c00-4fcf-a605-6427cc667d01}"/>
     <names>
         <name lang="pl">Arduino Uno</name>

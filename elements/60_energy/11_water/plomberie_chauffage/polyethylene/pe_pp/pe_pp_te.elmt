@@ -1,4 +1,4 @@
-<definition height="70" hotspot_x="84" orientation="dyyy" hotspot_y="18" version="0.51" link_type="simple" width="110" type="element">
+<definition height="70" hotspot_x="84" hotspot_y="18" version="0.51" link_type="simple" width="110" type="element">
     <uuid uuid="{50963bc7-4b47-47f8-9cb6-f974d5b97bf2}"/>
     <names>
         <name lang="fr">PE PP Té</name>

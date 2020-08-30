@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="35" hotspot_y="10" version="0.70" width="40" type="element" height="20">
+<definition link_type="simple" hotspot_x="35" hotspot_y="10" version="0.70" width="40" type="element" height="20">
     <uuid uuid="{7d4454aa-3d66-40a5-bf11-784a5d276dbe}"/>
     <names>
         <name lang="fr">Enroulement série</name>

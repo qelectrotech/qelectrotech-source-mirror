@@ -1,4 +1,4 @@
-<definition hotspot_y="27" link_type="simple" width="90" version="0.80" type="element" height="50" orientation="dyyy" hotspot_x="31">
+<definition hotspot_y="27" link_type="simple" width="90" version="0.80" type="element" height="50" hotspot_x="31">
     <uuid uuid="{4b073672-d996-40c4-beba-d0a8a88ff0b9}"/>
     <names>
         <name lang="fr">Cassette </name>

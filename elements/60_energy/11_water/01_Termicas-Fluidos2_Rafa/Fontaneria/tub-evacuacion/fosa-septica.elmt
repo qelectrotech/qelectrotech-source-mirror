@@ -1,4 +1,4 @@
-<definition width="70" orientation="dyyy" hotspot_y="12" link_type="simple" version="0.80" height="40" hotspot_x="34" type="element">
+<definition width="70" hotspot_y="12" link_type="simple" version="0.80" height="40" hotspot_x="34" type="element">
     <uuid uuid="{bf83c5e4-2b93-41b0-8b52-3a17f9f9c135}"/>
     <names>
         <name lang="fr">Fosse septique</name>

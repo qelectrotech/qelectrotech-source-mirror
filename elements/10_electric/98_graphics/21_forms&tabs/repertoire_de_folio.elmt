@@ -1,4 +1,4 @@
-<definition width="600" link_type="simple" version="0.5" hotspot_x="15" orientation="dyyy" height="300" hotspot_y="39" type="element">
+<definition width="600" link_type="simple" version="0.5" hotspot_x="15" height="300" hotspot_y="39" type="element">
     <uuid uuid="{9455057a-951c-4187-b838-70b9507aff5c}"/>
     <names>
         <name lang="de">Inhaltsverzeichnis</name>

@@ -1,4 +1,4 @@
-<definition hotspot_x="26" version="0.70" height="250" type="element" width="80" link_type="simple" orientation="dyyy" hotspot_y="125">
+<definition hotspot_x="26" version="0.70" height="250" type="element" width="80" link_type="simple" hotspot_y="125">
     <uuid uuid="{99bb3aae-3651-4390-aacc-7daba07cbab3}"/>
     <names>
         <name lang="en">BMXPRA0100</name>

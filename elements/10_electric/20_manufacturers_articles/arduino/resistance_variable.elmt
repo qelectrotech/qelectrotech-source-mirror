@@ -1,4 +1,4 @@
-<definition orientation="dyyy" version="0.80" width="50" height="50" type="element" link_type="simple" hotspot_y="25" hotspot_x="11">
+<definition version="0.80" width="50" height="50" type="element" link_type="simple" hotspot_y="25" hotspot_x="11">
     <uuid uuid="{70806232-d519-4125-867d-48a87754e64b}"/>
     <names>
         <name lang="fr">Potar</name>

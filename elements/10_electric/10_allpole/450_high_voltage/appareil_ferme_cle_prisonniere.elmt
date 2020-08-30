@@ -1,4 +1,4 @@
-<definition width="30" hotspot_x="15" type="element" link_type="simple" orientation="dyyy" version="0.5" height="30" hotspot_y="15">
+<definition width="30" hotspot_x="15" type="element" link_type="simple" version="0.5" height="30" hotspot_y="15">
     <uuid uuid="{ce693bf4-d9c6-4170-982f-f94ad54ff90a}"/>
     <names>
         <name lang="cs">Zařízení zamknuto, klíč nedostupný</name>

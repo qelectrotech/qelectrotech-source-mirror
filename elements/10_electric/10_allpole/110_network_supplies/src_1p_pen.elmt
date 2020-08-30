@@ -1,4 +1,4 @@
-<definition width="40" link_type="simple" version="0.5" hotspot_x="22" orientation="dyyy" height="40" hotspot_y="20" type="element">
+<definition width="40" link_type="simple" version="0.5" hotspot_x="22" height="40" hotspot_y="20" type="element">
     <uuid uuid="{fd042050-e73b-4f95-b4c1-834aa403b07a}"/>
     <names>
         <name lang="es">Fuente unipolo + PEN</name>

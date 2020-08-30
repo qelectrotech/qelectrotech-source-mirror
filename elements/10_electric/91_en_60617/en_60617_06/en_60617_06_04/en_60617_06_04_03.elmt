@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="65" hotspot_y="65" version="0.70" width="70" type="element" height="70">
+<definition link_type="simple" hotspot_x="65" hotspot_y="65" version="0.70" width="70" type="element" height="70">
     <uuid uuid="{baf3b132-9f39-4ef0-bdfc-75ff16980ad5}"/>
     <names>
         <name lang="fr">Moteur pas à pas</name>

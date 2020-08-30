@@ -1,4 +1,4 @@
-<definition hotspot_y="8" width="70" type="element" version="0.5" height="240" orientation="dyyy" link_type="simple" hotspot_x="6">
+<definition hotspot_y="8" width="70" type="element" version="0.5" height="240" link_type="simple" hotspot_x="6">
     <uuid uuid="{f06ff506-23c9-4bfa-93d1-575b83827b5c}"/>
     <names>
         <name lang="en">ana input TM3TI4: layout</name>

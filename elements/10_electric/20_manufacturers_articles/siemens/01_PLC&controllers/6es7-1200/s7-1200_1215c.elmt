@@ -1,4 +1,4 @@
-<definition link_type="simple" orientation="dyyy" width="520" hotspot_y="245" type="element" height="270" hotspot_x="85" version="0.70">
+<definition link_type="simple" width="520" hotspot_y="245" type="element" height="270" hotspot_x="85" version="0.70">
     <uuid uuid="{8e87f5fa-03c2-4d50-aab4-a5ca5e4e7555}"/>
     <names>
         <name lang="fr">S7-1200 1215C DC/DC/RLY</name>

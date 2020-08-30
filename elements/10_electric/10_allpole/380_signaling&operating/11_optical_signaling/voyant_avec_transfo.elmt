@@ -1,4 +1,4 @@
-<definition height="60" link_type="simple" type="element" orientation="dyyy" hotspot_y="29" version="0.5" hotspot_x="16" width="50">
+<definition height="60" link_type="simple" type="element" hotspot_y="29" version="0.5" hotspot_x="16" width="50">
     <uuid uuid="{b023f4b0-b88f-4fb9-9aa1-49826bd42be1}"/>
     <names>
         <name lang="fr">Voyant avec transformateur</name>

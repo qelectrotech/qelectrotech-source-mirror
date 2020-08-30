@@ -1,4 +1,4 @@
-<definition width="90" height="210" hotspot_x="5" hotspot_y="4" link_type="slave" orientation="dyyy" version="0.80" type="element">
+<definition width="90" height="210" hotspot_x="5" hotspot_y="4" link_type="slave" version="0.80" type="element">
     <uuid uuid="{8bc0ed66-0e71-4c57-844a-48b6ad3cda65}"/>
     <names>
         <name lang="fr">CDS 764F</name>

@@ -1,4 +1,4 @@
-<definition height="170" link_type="simple" type="element" orientation="dyyy" hotspot_y="75" version="0.5" hotspot_x="95" width="190">
+<definition height="170" link_type="simple" type="element" hotspot_y="75" version="0.5" hotspot_x="95" width="190">
     <uuid uuid="{e8b19d52-137c-4cac-a884-76d245faaf2a}"/>
     <names>
         <name lang="fr">HMI TACTILE 2</name>

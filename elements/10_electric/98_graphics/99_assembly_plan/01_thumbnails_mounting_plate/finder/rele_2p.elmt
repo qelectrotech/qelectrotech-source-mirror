@@ -1,4 +1,4 @@
-<definition type="element" height="80" link_type="simple" hotspot_y="3" hotspot_x="6" width="30" orientation="dyyy" version="0.80">
+<definition type="element" height="80" link_type="simple" hotspot_y="3" hotspot_x="6" width="30" version="0.80">
     <uuid uuid="{ac9e0742-6882-4802-bbca-b7358ccb3865}"/>
     <names>
         <name lang="cs">Relé v patici 2p</name>

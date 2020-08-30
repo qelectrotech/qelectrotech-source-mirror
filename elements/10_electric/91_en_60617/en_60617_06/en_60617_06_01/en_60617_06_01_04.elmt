@@ -1,4 +1,4 @@
-<definition orientation="dyyy" link_type="simple" hotspot_x="12" hotspot_y="5" version="0.70" width="50" type="element" height="30">
+<definition link_type="simple" hotspot_x="12" hotspot_y="5" version="0.70" width="50" type="element" height="30">
     <uuid uuid="{86655d41-3e48-4c8a-8f6b-fcbf6c49c107}"/>
     <names>
         <name lang="fr">Enroulement triphasé, à phases séparées</name>

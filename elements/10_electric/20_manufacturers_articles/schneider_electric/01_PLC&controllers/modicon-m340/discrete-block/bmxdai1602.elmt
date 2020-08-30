@@ -1,4 +1,4 @@
-<definition hotspot_y="125" orientation="dyyy" width="70" height="250" hotspot_x="45" type="element" link_type="simple" version="0.70">
+<definition hotspot_y="125" width="70" height="250" hotspot_x="45" type="element" link_type="simple" version="0.70">
     <uuid uuid="{59620012-e8e5-4104-b772-129a46a30961}"/>
     <names>
         <name lang="en">BMXDAI1602</name>

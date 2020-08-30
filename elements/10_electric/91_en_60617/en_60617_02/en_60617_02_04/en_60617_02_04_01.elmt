@@ -1,4 +1,4 @@
-<definition version="0.70" width="20" hotspot_x="10" type="element" link_type="simple" height="10" orientation="dyyy" hotspot_y="5">
+<definition version="0.70" width="20" hotspot_x="10" type="element" link_type="simple" height="10" hotspot_y="5">
     <uuid uuid="{6e115e10-8487-4f56-af34-edc4f8f1a16d}"/>
     <names>
         <name lang="de">einfachgerichtete Kraft einfachgerichtete, geradlinige Bewegung</name>

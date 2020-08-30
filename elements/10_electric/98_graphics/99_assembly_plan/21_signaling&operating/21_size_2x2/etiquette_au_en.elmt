@@ -1,4 +1,4 @@
-<definition width="150" link_type="simple" version="0.5" hotspot_x="74" orientation="dyyy" height="150" hotspot_y="65" type="element">
+<definition width="150" link_type="simple" version="0.5" hotspot_x="74" height="150" hotspot_y="65" type="element">
     <uuid uuid="{5f44ec5b-8397-46a0-809f-17c72396c65e}"/>
     <names>
         <name lang="nl">Label Noodstop (en)</name>

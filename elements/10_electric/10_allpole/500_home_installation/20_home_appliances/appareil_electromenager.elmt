@@ -1,4 +1,4 @@
-<definition orientation="dyyy" hotspot_x="14" link_type="simple" type="element" height="50" version="0.80" hotspot_y="14" width="30">
+<definition hotspot_x="14" link_type="simple" type="element" height="50" version="0.80" hotspot_y="14" width="30">
     <uuid uuid="{d26a4699-c6af-4e2d-8f8c-a3f5f97f19d6}"/>
     <names>
         <name lang="cs">Elektrický spotřebič</name>

@@ -1,4 +1,4 @@
-<definition width="80" hotspot_x="40" type="element" link_type="simple" orientation="dyyy" version="0.5" height="70" hotspot_y="34">
+<definition width="80" hotspot_x="40" type="element" link_type="simple" version="0.5" height="70" hotspot_y="34">
     <uuid uuid="{93536c7f-6753-45e2-ac79-33362ec26f24}"/>
     <names>
         <name lang="cs">Průtokoměr</name>

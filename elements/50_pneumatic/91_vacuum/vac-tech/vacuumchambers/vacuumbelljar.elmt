@@ -1,4 +1,4 @@
-<definition hotspot_x="25" height="40" type="element" orientation="dyyy" hotspot_y="29" version="0.80" link_type="simple" width="50">
+<definition hotspot_x="25" height="40" type="element" hotspot_y="29" version="0.80" link_type="simple" width="50">
     <uuid uuid="{8fd8563c-c384-4a01-b9d1-b98895e53077}"/>
     <names>
         <name lang="en">Vacuum bell jar</name>

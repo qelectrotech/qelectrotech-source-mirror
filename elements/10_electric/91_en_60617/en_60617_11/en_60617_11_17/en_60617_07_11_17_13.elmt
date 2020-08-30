@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" version="0.70" height="50" link_type="simple" hotspot_x="44" width="100" hotspot_y="25">
+<definition type="element" version="0.70" height="50" link_type="simple" hotspot_x="44" width="100" hotspot_y="25">
     <uuid uuid="{d92cf0d4-a542-4163-9876-7d143cdd6934}"/>
     <names>
         <name lang="de">Ausdehnungsstück für Gehäuse und Leiter </name>

@@ -1,4 +1,4 @@
-<definition height="60" version="0.5" link_type="simple" width="20" orientation="dyyy" hotspot_x="9" hotspot_y="29" type="element">
+<definition height="60" version="0.5" link_type="simple" width="20" hotspot_x="9" hotspot_y="29" type="element">
     <uuid uuid="{b6508245-c8ec-4ba2-b898-5623bd9ff8c3}"/>
     <names>
         <name lang="ru">Индуктивность</name>

@@ -1,4 +1,4 @@
-<definition link_type="simple" version="0.70" hotspot_x="25" hotspot_y="44" orientation="dyyy" type="element" height="50" width="40">
+<definition link_type="simple" version="0.70" hotspot_x="25" hotspot_y="44" type="element" height="50" width="40">
     <uuid uuid="{5c708ab9-9011-4051-8577-fefa04e3a437}"/>
     <names>
         <name lang="fr">Thyristor triode bloqué en inverse, gâchette N

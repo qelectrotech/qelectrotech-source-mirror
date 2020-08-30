@@ -1,4 +1,4 @@
-<definition type="element" version="0.5" hotspot_y="79" width="110" height="160" orientation="dyyy" link_type="simple" hotspot_x="52">
+<definition type="element" version="0.5" hotspot_y="79" width="110" height="160" link_type="simple" hotspot_x="52">
     <uuid uuid="{3bb778b5-d47f-4873-8683-c27b57d5e293}"/>
     <names>
         <name lang="pl">FX3-CPU000000</name>

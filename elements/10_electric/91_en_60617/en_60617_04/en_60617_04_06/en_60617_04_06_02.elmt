@@ -1,4 +1,4 @@
-<definition width="130" height="100" type="element" hotspot_x="75" orientation="dyyy" version="0.70" link_type="simple" hotspot_y="95">
+<definition width="130" height="100" type="element" hotspot_x="75" version="0.70" link_type="simple" hotspot_y="95">
     <uuid uuid="{703bd10f-43ff-4b35-bc5f-102dee979641}"/>
     <names>
         <name lang="de">Magnetkern-Matrix aus magnetischen

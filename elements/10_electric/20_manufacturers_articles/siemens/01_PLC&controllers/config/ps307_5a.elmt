@@ -1,4 +1,4 @@
-<definition orientation="dyyy" type="element" hotspot_y="34" height="260" version="0.5" width="170" hotspot_x="15" link_type="simple">
+<definition type="element" hotspot_y="34" height="260" version="0.5" width="170" hotspot_x="15" link_type="simple">
     <uuid uuid="{beb32ec4-fb0e-4e39-b8e1-61443e35818f}"/>
     <names>
         <name lang="ar">PS 307   5A</name>

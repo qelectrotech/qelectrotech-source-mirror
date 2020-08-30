@@ -1,4 +1,4 @@
-<definition type="element" hotspot_y="14" link_type="terminal" orientation="dyyy" width="10" height="30" hotspot_x="4" version="0.80">
+<definition type="element" hotspot_y="14" link_type="terminal" width="10" height="30" hotspot_x="4" version="0.80">
     <uuid uuid="{2ad7261b-8aa3-4943-9131-a219831e05b7}"/>
     <names>
         <name lang="fr">037101 - Viking3 - 1 jonction 1 entrée 1 sortie 4mm² pas 6mm Bleu</name>

@@ -1,4 +1,4 @@
-<definition width="430" version="0.4" hotspot_x="39" hotspot_y="42" height="100" type="element" ic="true" orientation="dyyy" link_type="master">
+<definition width="430" version="0.4" hotspot_x="39" hotspot_y="42" height="100" type="element" ic="true" link_type="master">
 <uuid uuid="{C74ACC5C-527D-45D6-93EF-8EE43B409425}"/><names>
         <name lang="nl">N512/11 basis module (max 4 uitbreidingen)</name>
         <name lang="be">N512/11 basis module (max 4 uitbreidingen)</name>

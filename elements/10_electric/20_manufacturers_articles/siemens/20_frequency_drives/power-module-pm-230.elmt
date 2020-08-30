@@ -1,4 +1,4 @@
-<definition width="240" orientation="dyyy" link_type="simple" hotspot_x="117" hotspot_y="43" type="element" height="100" version="0.5">
+<definition width="240" link_type="simple" hotspot_x="117" hotspot_y="43" type="element" height="100" version="0.5">
     <uuid uuid="{e775bde7-5eee-412d-bdd4-e0151741de06}"/>
     <names>
         <name lang="en">PM 230</name>

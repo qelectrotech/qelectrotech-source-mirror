@@ -1,4 +1,4 @@
-<definition width="40" hotspot_x="23" hotspot_y="25" orientation="dyyy" link_type="master" version="0.80" type="element" height="50">
+<definition width="40" hotspot_x="23" hotspot_y="25" link_type="master" version="0.80" type="element" height="50">
     <uuid uuid="{431b440b-1fa0-4e9e-b5a6-07f189bdc1a7}"/>
     <names>
         <name lang="en">Timer T 816</name>

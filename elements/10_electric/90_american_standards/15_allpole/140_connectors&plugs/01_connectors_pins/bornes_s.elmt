@@ -1,4 +1,4 @@
-<definition width="20" link_type="simple" version="0.5" hotspot_x="10" orientation="dyyy" height="30" hotspot_y="4" type="element">
+<definition width="20" link_type="simple" version="0.5" hotspot_x="10" height="30" hotspot_y="4" type="element">
     <uuid uuid="{c7f07d5d-c604-414b-8e65-aa36655c8111}"/>
     <names>
         <name lang="pt">Terminal de saída</name>

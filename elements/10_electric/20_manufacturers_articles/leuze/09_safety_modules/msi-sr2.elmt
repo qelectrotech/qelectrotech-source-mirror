@@ -1,4 +1,4 @@
-<definition width="190" height="110" link_type="simple" orientation="dyyy" hotspot_x="65" version="0.5" hotspot_y="39" type="element">
+<definition width="190" height="110" link_type="simple" hotspot_x="65" version="0.5" hotspot_y="39" type="element">
     <uuid uuid="{892b074c-d03f-41b1-8fc0-cf13fecb49d0}"/>
     <names>
         <name lang="it">MSI-SR2</name>

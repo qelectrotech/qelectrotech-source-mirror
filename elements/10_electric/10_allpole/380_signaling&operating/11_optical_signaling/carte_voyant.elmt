@@ -1,4 +1,4 @@
-<definition version="0.70" orientation="dyyy" type="element" width="450" height="90" hotspot_y="44" hotspot_x="225" link_type="simple">
+<definition version="0.70" type="element" width="450" height="90" hotspot_y="44" hotspot_x="225" link_type="simple">
     <uuid uuid="{202b43e9-7b17-4df1-8a21-b0bbdd57c9ab}"/>
     <names>
         <name lang="fr">Carte à voyant</name>
