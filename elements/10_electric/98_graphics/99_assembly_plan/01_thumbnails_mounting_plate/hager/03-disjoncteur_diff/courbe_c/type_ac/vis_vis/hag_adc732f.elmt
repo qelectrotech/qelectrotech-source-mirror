@@ -8,7 +8,7 @@
         <kindInformation name="type" show="1">power</kindInformation>
         <kindInformation name="state" show="1">NO</kindInformation>
     </kindInformations>
-    <informations>Baboune41</informations>
+    <informations>S.Deffaux</informations>
     <description>
         <rect antialias="false" ry="0" width="80" style="line-style:normal;line-weight:thin;filling:white;color:black" y="0" height="200" rx="0" x="0"/>
         <circle antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" y="175" diameter="10" x="15"/>
