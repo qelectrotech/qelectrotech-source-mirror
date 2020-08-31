@@ -370,15 +370,10 @@ QStringList QETApp::elementInfoKeys()
 			  << "label"
 			  << "plant"
 			  << "location"
-			  
 			  << "comment"
 			  << "function"
-			  << "tension_protocol"
-			  << "conductor_color"
-			  << "conductor_section"
 			  << "auxiliary1"
 			  << "auxiliary2"
-			  
 			  << "description"
 			  << "designation"
 			  << "manufacturer"
@@ -406,9 +401,6 @@ QString QETApp::elementTranslatedInfoKey(const QString &info)
 	
 	else if (info == "comment") return tr("Commentaire");
 	else if (info == "function") return tr("Fonction");
-	else if (info == "tension_protocol") return tr("Tension / Protocole");
-	else if (info == "conductor_color") return tr("Couleur du fil");
-	else if (info == "conductor_section") return tr("Section du fil");
 	else if (info == "auxiliary1") return tr("Bloc auxiliaire 1");
 	else if (info == "auxiliary2") return tr("Bloc auxiliaire 2");
 	
