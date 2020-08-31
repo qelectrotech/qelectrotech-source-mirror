@@ -38,6 +38,7 @@ class AboutQETDialog : public QDialog
 		~AboutQETDialog();
 
 	private:
+		Ui::AboutQETDialog *ui;
 		void setAbout();
 		void setAuthors();
 		void setTranslators();
@@ -45,6 +46,7 @@ class AboutQETDialog : public QDialog
 		void setVersion();
 		void setLibraries();
 		void setLicence();
+		void setLoginfo();
 		void addAuthor(QLabel *label,
 			       const QString &name,
 			       const QString &email,
@@ -53,8 +55,8 @@ class AboutQETDialog : public QDialog
 				const QString &name,
 				const QString &link);
 
-	private:
-		Ui::AboutQETDialog *ui;
+private slots:
+	void on_m_log_comboBox_currentTextChanged(const QString &arg1);
 };
 
 #endif // ABOUTQETDIALOG_H

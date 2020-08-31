@@ -18,6 +18,7 @@
 #include "aboutqetdialog.h"
 #include "ui_aboutqetdialog.h"
 #include "qet.h"
+#include "qetapp.h"
 #include "machine_info.h"
 #include <QDate>
 
@@ -37,6 +38,7 @@ AboutQETDialog::AboutQETDialog(QWidget *parent) :
 	setVersion();
 	setLibraries();
 	setLicence();
+	setLoginfo();
 }
 
 /**
@@ -171,6 +173,24 @@ void AboutQETDialog::setLicence()
 }
 
 /**
+	@brief AboutQETDialog::setLoginfo
+	fills the m_log_comboBox with log files
+*/
+void AboutQETDialog::setLoginfo()
+{
+	const QString path = QETApp::configDir() + "/";
+	QString filter("%1%1%1%1%1%1%1%1.log"); // pattern
+	filter = filter.arg("[0123456789]"); // valid characters
+	Q_FOREACH (auto fileInfo,
+		   QDir(path).entryInfoList(
+			   QStringList(filter),
+			   QDir::Files))
+	{
+		ui->m_log_comboBox->addItem(fileInfo.absoluteFilePath());
+	}
+}
+
+/**
 	@brief AboutQETDialog::addAuthor
 	Adds a person to the list of authors
 	@param label : QLabel which will add the person
@@ -204,4 +224,13 @@ void AboutQETDialog::addLibrary(QLabel *label, const QString &name, const QStrin
 		// Add the function of the person
 	new_text += Library_template.arg(name).arg(link);
 	label->setText(new_text);
+}
+
+void AboutQETDialog::on_m_log_comboBox_currentTextChanged(const QString &arg1)
+{
+	QFile log_File(arg1);
+	if(log_File.open(QIODevice::ReadOnly)){
+		ui->m_log_textEdit->setPlainText(log_File.readAll());
+	}
+	log_File.close();
 }

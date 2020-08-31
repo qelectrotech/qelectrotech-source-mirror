@@ -79,7 +79,7 @@
             <x>0</x>
             <y>0</y>
             <width>676</width>
-            <height>409</height>
+            <height>423</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -159,7 +159,7 @@
             <x>0</x>
             <y>0</y>
             <width>676</width>
-            <height>409</height>
+            <height>423</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -242,7 +242,7 @@
             <x>0</x>
             <y>0</y>
             <width>676</width>
-            <height>409</height>
+            <height>423</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -374,7 +374,7 @@
             <x>0</x>
             <y>0</y>
             <width>676</width>
-            <height>409</height>
+            <height>423</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -441,6 +441,19 @@
           <bool>true</bool>
          </property>
         </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_8">
+      <attribute name="title">
+       <string>log</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QComboBox" name="m_log_comboBox"/>
+       </item>
+       <item>
+        <widget class="QTextEdit" name="m_log_textEdit"/>
        </item>
       </layout>
      </widget>
