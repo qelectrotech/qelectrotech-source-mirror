@@ -110,7 +110,6 @@ void myMessageOutput(QtMsgType type,
 		txt+=")\n";
 	}
 	QFile outFile(QETApp::configDir()
-		      +"/"
 		      +QDate::currentDate().toString("yyyyMMdd")
 		      +".log");
 	if(outFile.open(QIODevice::WriteOnly | QIODevice::Append))
