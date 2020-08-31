@@ -36,6 +36,7 @@
 #include <QDesktopServices>
 #include <QUrl>
 #include <QTimer>
+#include <QtGlobal>
 
 /**
 	@brief ElementsCollectionWidget::ElementsCollectionWidget
@@ -614,6 +615,7 @@ void ElementsCollectionWidget::dirProperties()
 */
 void ElementsCollectionWidget::reload()
 {
+	qInfo()<<"Elements collection reload";
 	m_progress_bar->show();
 	// Force to repaint now,
 	// else progress bar will be not displayed immediately
@@ -672,6 +674,8 @@ void ElementsCollectionWidget::loadingFinished()
 
 	m_progress_bar->hide();
 	m_tree_view->setEnabled(true);
+
+	qInfo()<<"Elements collection finished to be loaded";
 }
 
 /**
