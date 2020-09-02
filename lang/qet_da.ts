@@ -3415,7 +3415,7 @@ Her kan standardværdien angives for dette felt for de oprettede symboler:</tran
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="271"/>
         <source>Japonaise</source>
-        <translation type="unfinished"></translation>
+        <translation>Japansk</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="272"/>
@@ -3594,7 +3594,7 @@ Her kan standardværdien angives for dette felt for de oprettede symboler:</tran
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="234"/>
         <source>TextLabel</source>
-        <translation type="unfinished">Tekst etiket</translation>
+        <translation>Tekst etiket</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="250"/>
@@ -3696,7 +3696,8 @@ Her kan standardværdien angives for dette felt for de oprettede symboler:</tran
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="338"/>
         <source>&lt;center&gt;ATTENTION :&lt;/center&gt;
  il manque %1 lignes afin d&apos;afficher l&apos;intégralité des informations</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;center&gt;ADVARSEL:&lt;/center&gt;
+ der mangler %1 linjer for at vise al information</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="450"/>
@@ -4177,12 +4178,12 @@ Brug avanceret redigering til dette.</translation>
     <message>
         <location filename="../sources/machine_info.cpp" line="79"/>
         <source>Compilation : </source>
-        <translation type="unfinished">Kompilering: </translation>
+        <translation>Kompilering: </translation>
     </message>
     <message>
         <location filename="../sources/machine_info.cpp" line="282"/>
         <source>Compilation :   </source>
-        <translation type="unfinished"></translation>
+        <translation>Kompilering:   </translation>
     </message>
 </context>
 <context>
@@ -5142,7 +5143,7 @@ Sletningen kan ikke fortrydes.</translation>
         <location filename="../sources/qetapp.cpp" line="192"/>
         <source>LTR</source>
         <comment>Translate this string to RTL if you are translating 		 to a Right-to-Left language, else translate to LTR</comment>
-        <translation type="unfinished">LTR</translation>
+        <translation>LTR</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="402"/>
@@ -5215,13 +5216,13 @@ Sletningen kan ikke fortrydes.</translation>
         <location filename="../sources/qetapp.cpp" line="527"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates 					collection provided by QElectroTech</comment>
-        <translation type="unfinished">QET titelblokke</translation>
+        <translation>QET titelblokke</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="546"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s 					title block templates collection</comment>
-        <translation type="unfinished">Brugertilpasset titelblokke</translation>
+        <translation>Brugertilpasset titelblokke</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2010"/>
@@ -9002,7 +9003,7 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/editor/UndoCommand/pastepartscommand.cpp" line="42"/>
         <source>Coller</source>
-        <translation type="unfinished"></translation>
+        <translation>Indsæt</translation>
     </message>
 </context>
 <context>
@@ -9026,18 +9027,20 @@ Voulez-vous la remplacer ?</source>
         <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="105"/>
         <source>Les information à afficher sont supérieurs à la quantité maximal pouvant être affiché par les tableaux.
 Veuillez ajouter un nouveau tableau ou regler les tableaux existant afin d&apos;afficher l&apos;integralité des informations.</source>
-        <translation type="unfinished"></translation>
+        <translation>Oplysninger, der skal vises, er større end maksimal mængde, der kan vises i tabel.
+Tilføj ny tabel, eller juster eksisterende tabel for at vise alle oplysninger.</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="108"/>
         <source>Les information à afficher sont supérieurs à la quantité maximal pouvant être affiché par le tableau.
 Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;afficher l&apos;integralité des informations.</source>
-        <translation type="unfinished"></translation>
+        <translation>Oplysninger, der skal vises, er større end maksimal mængde, der kan vises i tabel.
+Tilføj ny tabel, eller juster eksisterende tabel for at vise alle oplysninger.</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="111"/>
         <source>Limitation de tableau</source>
-        <translation type="unfinished"></translation>
+        <translation>Tabel begrænsning</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="754"/>
@@ -10295,7 +10298,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="62"/>
         <source>Red : LightCoral</source>
         <comment>element part color</comment>
-        <translation type="unfinished">Rød : Lys koral</translation>
+        <translation>Rød : Lys koral</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="63"/>
@@ -10788,7 +10791,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="144"/>
         <source>Blue : MediumBlue</source>
         <comment>element part color</comment>
-        <translation type="unfinished">Blå : Mellelblå</translation>
+        <translation>Blå : Mellelblå</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="145"/>
