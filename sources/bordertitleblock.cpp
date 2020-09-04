@@ -651,6 +651,7 @@ void BorderTitleBlock::drawDxf(
 	// dessine la numerotation des colonnes
 	if (display_border_ &&
 		display_columns_) {
+        int offset = settings.value("border-columns_0", true).toBool() ? -1 : 0;
 		for (int i = 1 ; i <= columns_count_ ; ++ i) {
             double xCoord = diagram_rect_.topLeft().x() * Createdxf::xScale +
 					(rows_header_width_ + ((i - 1) *
@@ -662,11 +663,11 @@ void BorderTitleBlock::drawDxf(
 			double recHeight = columns_header_height_;
 			Createdxf::drawRectangle(file_path, xCoord, yCoord,
 						 recWidth, recHeight, color);
-			if (settings.value("border-columns_0", true).toBool()){
+
 			Createdxf::drawTextAligned(file_path,
-						   QString::number(i - 1),
+                           QString::number(i - offset),
                            xCoord+recWidth/4,
-                           yCoord + recHeight*0.2,
+                           yCoord + recHeight*0.5,
 						   recHeight*0.7,
 						   0,
 						   0,
@@ -676,22 +677,7 @@ void BorderTitleBlock::drawDxf(
                            1,
                            color,
 						   0);
-			}else{
-			Createdxf::drawTextAligned(file_path,
-						   QString::number(i),
-                           xCoord+recWidth/4,
-                           yCoord + recHeight*0.2,
-						   recHeight*0.7,
-						   0,
-						   0,
-						   1,
-						   2,
-                           xCoord+recWidth/2,
-                           1,
-                           color,
-						   0);
-			}
-		}
+        }
 	}
 
 	// draw line numbering

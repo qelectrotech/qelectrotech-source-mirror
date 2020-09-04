@@ -826,18 +826,23 @@ void Createdxf::drawTextAligned(const QString& fileName,
 			To_Dxf << text      << "\r\n";    // Text Value
 			To_Dxf << 50        << "\r\n";
 			To_Dxf << rotation  << "\r\n";    // Text Rotation
-			// If "Fit to width", then check if width of text < width specified then change it "center align or left align"
+#if 0
+            // If "Fit to width", then check if width of text < width specified then change it "center align or left align"
 			if (hAlign == 5) {
 				int xDiff = xAlign - x;
+                int len = text.length();
+                int t = xDiff/height;
 				if (text.length() < xDiff/height && !leftAlign) {
 					hAlign = 1;
-					xAlign = (x+xAlign) / 2;
+                    xAlign = x+ (xAlign / 2);
 				} else if (text.length() < xDiff/height && leftAlign) {
-					file.close();
-					return;
+                    hAlign = 0;
+                    xAlign = x;
+//					file.close();
+//					return;
 				}
 			}
-			
+#endif
 			To_Dxf << 51        << "\r\n";
 			To_Dxf << oblique   << "\r\n";    // Text Obliqueness
 			To_Dxf << 72        << "\r\n";            

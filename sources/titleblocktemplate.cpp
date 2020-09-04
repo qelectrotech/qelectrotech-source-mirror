@@ -1804,50 +1804,53 @@ void TitleBlockTemplate::renderTextCellDxf(QString &file_path,
 		textHeight = text_font.pixelSize();
 
 	qreal x2 = x + w;
+    qreal y1 = y;
 
 	int vAlign = 0;
 	int hAlign = 0;
-	bool hALigned = false;
+
+    x2 = x; // default
+
+    if ( cell.alignment & Qt::AlignTop ) {
+        vAlign = 3;
+        y1 = y + h - (textHeight*Createdxf::yScale / 8);
+    } else if ( cell.alignment & Qt::AlignVCenter ) {
+        vAlign = 2;
+        y1 = y + h/2;
+    } else if ( cell.alignment & Qt::AlignBottom ) {
+        y1 = y + (textHeight*Createdxf::yScale / 8);
+    }
 
 	if ( cell.alignment & Qt::AlignRight ) {
 		hAlign = 2;
-		hALigned = true;
+        x2 = x + w;
 	} else if ( cell.alignment & Qt::AlignHCenter ) {
 		hAlign = 1;
-		hALigned = true;
 		x2 = x + w/2;
-	} else if ( cell.alignment & Qt::AlignJustify ) {
+    } else if (cell.alignment & Qt::AlignJustify ) {
 		hAlign = 5;
-		hALigned = true;
+        vAlign = 0;
+        x2 = x + w;
+        y1 = y + textHeight*Createdxf::yScale / 8;
 	}
-
-	if ( cell.alignment & Qt::AlignTop ) {
-		vAlign = 3;
-		y += h - textHeight*Createdxf::yScale;
-		if (!hALigned)
-			x2 = x;
-	} else if ( cell.alignment & Qt::AlignVCenter ) {
-		vAlign = 2;
-		y += h/2;
-		if (!hALigned)
-			x2 = x;
-	} else if ( cell.alignment & Qt::AlignBottom ) {}
 
 	//painter.setFont(text_font);
     qreal ratio = 1.0;
-	if (cell.hadjust) {
+
+    if (cell.hadjust) {
         // Scale font width to fit string in cell width w
-        QFontMetricsF font_metrics(text_font);
-        qreal textw = font_metrics.width(text)*Createdxf::xScale;
-        if (textw > w) {
-            ratio = (w / textw) * 0.8; // Allow some space around text in cell
-		}
+        // As DXF font aspect ratio is implementation dependent we add a fudge-factor based on tests with AutoCAD
+        int len = text.length() * textHeight * Createdxf::xScale * 1.2;
+
+        if(len > w)
+            ratio = (w/len);
 	}
-    // x & y offset values below (1 & 3) currently set heuristically based on appearance...
+
+    // x offset value below currently set heuristically based on appearance...
 	Createdxf::drawTextAligned(file_path,
 				   text,
-                   x - 1*Createdxf::xScale,
-                   y - 3*Createdxf::yScale,
+                   x - 2*Createdxf::xScale,
+                   y1,
 				   textHeight*Createdxf::yScale,
 				   0,
 				   0,
@@ -1855,11 +1858,10 @@ void TitleBlockTemplate::renderTextCellDxf(QString &file_path,
 				   vAlign,
 				   x2,
                    ratio,
-				   color,
+                   color,
+                   cell.alignment & Qt::AlignLeft,
 				   0);
-
 }
-
 
 /**
 	@brief TitleBlockTemplate::forgetSpanning
