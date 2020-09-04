@@ -665,7 +665,7 @@ void BorderTitleBlock::drawDxf(
 						 recWidth, recHeight, color);
 
 			Createdxf::drawTextAligned(file_path,
-                           QString::number(i - offset),
+                           QString::number(i + offset),
                            xCoord+recWidth/4,
                            yCoord + recHeight*0.5,
 						   recHeight*0.7,
