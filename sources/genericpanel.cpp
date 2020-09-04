@@ -291,7 +291,7 @@ QTreeWidgetItem *GenericPanel::addDiagram(Diagram *diagram,
 							  &creation_required);
 	updateDiagramItem(diagram_qtwi, diagram, options, creation_required);
 	reparent(diagram_qtwi, parent_item);
-	fillDiagramItem(diagram_qtwi, diagram, options, creation_required);
+	fillDiagramItem(diagram_qtwi, options, creation_required);
 	
 	return(diagram_qtwi);
 }
@@ -394,16 +394,15 @@ QTreeWidgetItem *GenericPanel::updateDiagramItem(QTreeWidgetItem *diagram_qtwi,
 /**
 	@brief GenericPanel::fillDiagramItem
 	@param diagram_qtwi
-	@param diagram (unused)
 	@param options
 	@param freshly_created
 	@return fillItem(diagram_qtwi, options, freshly_created)
 */
-QTreeWidgetItem *GenericPanel::fillDiagramItem(QTreeWidgetItem *diagram_qtwi,
-					       Diagram *diagram,
-					       PanelOptions options,
-					       bool freshly_created) {
-	Q_UNUSED(diagram)
+QTreeWidgetItem *GenericPanel::fillDiagramItem(
+		QTreeWidgetItem *diagram_qtwi,
+		PanelOptions options,
+		bool freshly_created)
+{
 	return(fillItem(diagram_qtwi, options, freshly_created));
 }
 

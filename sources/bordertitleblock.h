@@ -47,7 +47,7 @@ class BorderTitleBlock : public QObject
 		//METHODS
 	public:	
 		void draw(QPainter *painter);
-		void drawDxf(int, int, bool, QString &, int);
+		void drawDxf(QString &, int);
 	
 		//METHODS TO GET DIMENSION
 		//COLUMNS

@@ -396,13 +396,11 @@ void ExportDialog::generateSvg(Diagram *diagram, int width, int height, bool kee
 	@param diagram Schema a exporter en DXF
 	@param width  Largeur de l'export DXF
 	@param height Hauteur de l'export DXF
-	@param keep_aspect_ratio True pour conserver le ratio, false sinon
 	@param file_path
 */
 void ExportDialog::generateDxf(Diagram *diagram,
 			       int width,
 			       int height,
-			       bool keep_aspect_ratio,
 			       QString &file_path) {
 	saveReloadDiagramParameters(diagram, true);
 
@@ -426,10 +424,7 @@ void ExportDialog::generateDxf(Diagram *diagram,
 					double(height)*Createdxf::yScale,
 					0);
 	}
-	diagram -> border_and_titleblock.drawDxf(width,
-						 height,
-						 keep_aspect_ratio,
-						 file_path,
+	diagram -> border_and_titleblock.drawDxf(file_path,
 						 0);
 
 	// Build the lists of elements.
@@ -800,7 +795,6 @@ void ExportDialog::exportDiagram(ExportDiagramLine *diagram_line) {
 			diagram_line -> diagram,
 			diagram_line -> width  -> value(),
 			diagram_line -> height -> value(),
-			diagram_line -> keep_ratio -> isChecked(),
 			diagram_path
 		);
 	} else {

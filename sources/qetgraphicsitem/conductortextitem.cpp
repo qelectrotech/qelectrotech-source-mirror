@@ -243,9 +243,10 @@ void ConductorTextItem::hoverEnterEvent(QGraphicsSceneHoverEvent *e) {
 	change m_mouse_hover to false(used in paint() function )
 	@param e  QGraphicsSceneHoverEvent
 */
-void ConductorTextItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *e) {
+void ConductorTextItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *e)
+{
 	Q_UNUSED(e);
-	//qDebug() << "Leave mouse over";
+	qDebug() << "Leave mouse over";
 	m_mouse_hover = false;
 	update();
 }
@@ -254,7 +255,7 @@ void ConductorTextItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *e) {
 	Do nothing default function .
 	@param e  QGraphicsSceneHoverEvent
 */
-void ConductorTextItem::hoverMoveEvent(QGraphicsSceneHoverEvent *e) {
-	Q_UNUSED(e);
-    QGraphicsTextItem::hoverMoveEvent(e);
+void ConductorTextItem::hoverMoveEvent(QGraphicsSceneHoverEvent *e)
+{
+	QGraphicsTextItem::hoverMoveEvent(e);
 }

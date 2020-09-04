@@ -55,7 +55,7 @@ class SingleLineProperties {
 	private:
 	unsigned short int phases;
 	void drawGround (QPainter *, QET::ConductorSegmentType, QPointF, qreal);
-	void drawNeutral(QPainter *, QET::ConductorSegmentType, QPointF, qreal);
+	void drawNeutral(QPainter *, QPointF, qreal);
 	void drawPen(QPainter *, QET::ConductorSegmentType, QPointF, qreal);
 };
 

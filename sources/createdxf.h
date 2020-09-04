@@ -98,9 +98,7 @@ class Createdxf
 					    int vAlign,
 					    double xAlign,
 					    double xScale,
-					    int colour,
-					    bool leftAlign = false,
-					    float scale = 0);
+					    int colour);
 
 
 		static int getcolorCode (const long red,

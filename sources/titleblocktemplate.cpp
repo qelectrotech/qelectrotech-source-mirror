@@ -1858,9 +1858,7 @@ void TitleBlockTemplate::renderTextCellDxf(QString &file_path,
 				   vAlign,
 				   x2,
                    ratio,
-                   color,
-                   cell.alignment & Qt::AlignLeft,
-				   0);
+		   color);
 }
 
 /**

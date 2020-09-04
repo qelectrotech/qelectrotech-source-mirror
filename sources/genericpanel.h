@@ -101,10 +101,10 @@ class GenericPanel : public QTreeWidget {
 						   Diagram *,
 						   PanelOptions = AddAllChild,
 						   bool = false);
-	virtual QTreeWidgetItem *fillDiagramItem  (QTreeWidgetItem *,
-						   Diagram *,
-						   PanelOptions = AddAllChild,
-						   bool = false);
+	virtual QTreeWidgetItem *fillDiagramItem(
+			QTreeWidgetItem *,
+			PanelOptions = AddAllChild,
+			bool = false);
 	
 	// title block templates collections methods
 	public:

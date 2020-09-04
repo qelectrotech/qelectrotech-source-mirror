@@ -295,9 +295,10 @@ QPainterPath QetShapeItem::shape() const
 	@param option
 	@param widget
 */
-void QetShapeItem::paint(QPainter *painter,
-			 const QStyleOptionGraphicsItem *option,
-			 QWidget *widget)
+void QetShapeItem::paint(
+		QPainter *painter,
+		const QStyleOptionGraphicsItem *option,
+		QWidget *widget)
 {
 	Q_UNUSED(option)
 	Q_UNUSED(widget)
@@ -425,17 +426,17 @@ bool QetShapeItem::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 			{
 				if(event->type() == QEvent::GraphicsSceneMousePress) //Click
 				{
-					handlerMousePressEvent(qghi, static_cast<QGraphicsSceneMouseEvent *>(event));
+					handlerMousePressEvent();
 					return true;
 				}
 				else if(event->type() == QEvent::GraphicsSceneMouseMove) //Move
 				{
-					handlerMouseMoveEvent(qghi, static_cast<QGraphicsSceneMouseEvent *>(event));
+					handlerMouseMoveEvent(static_cast<QGraphicsSceneMouseEvent *>(event));
 					return true;
 				}
 				else if (event->type() == QEvent::GraphicsSceneMouseRelease) //Release
 				{
-					handlerMouseReleaseEvent(qghi, static_cast<QGraphicsSceneMouseEvent *>(event));
+					handlerMouseReleaseEvent();
 					return true;
 				}
 			}
@@ -703,11 +704,8 @@ void QetShapeItem::removePoint()
 	@param qghi
 	@param event
 */
-void QetShapeItem::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
+void QetShapeItem::handlerMousePressEvent()
 {
-	Q_UNUSED(qghi)
-	Q_UNUSED(event)
-	
 	m_old_P1 = m_P1;
 	m_old_P2 = m_P2;
 	m_old_polygon = m_polygon;
@@ -720,13 +718,10 @@ void QetShapeItem::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphic
 
 /**
 	@brief QetShapeItem::handlerMouseMoveEvent
-	@param qghi
 	@param event
 */
-void QetShapeItem::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
+void QetShapeItem::handlerMouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
-	Q_UNUSED(qghi)
-	
 	QPointF new_pos = event->scenePos();
 	if (event->modifiers() != Qt::ControlModifier)
 		new_pos = Diagram::snapToGrid(event->scenePos());
@@ -787,11 +782,8 @@ void QetShapeItem::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphics
 	@param qghi
 	@param event
 */
-void QetShapeItem::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)
+void QetShapeItem::handlerMouseReleaseEvent()
 {
-	Q_UNUSED(qghi);
-	Q_UNUSED(event);
-	
 	m_modifie_radius_equaly = false;
 	
 	if (diagram())

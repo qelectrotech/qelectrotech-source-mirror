@@ -159,7 +159,7 @@ void ElementsPanelWidget::copyPathForSelectedItem() {
 */
 void ElementsPanelWidget::reloadAndFilter() {
 	// recharge tous les elements
-	elements_panel -> reload(true);
+	elements_panel -> reload();
 	// reapplique le filtre
 	if (!filter_textfield -> text().isEmpty()) {
 		elements_panel -> filter(filter_textfield -> text());
