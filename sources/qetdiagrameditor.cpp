@@ -2306,110 +2306,64 @@ void QETDiagramEditor::generateTerminalBlock()
 	}
 	
 #endif
-
-	if ( !success ) {
-	#if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
-		QMessageBox::warning(nullptr,
-							 tr("Error launching qet_tb_generator plugin"), 
-							 QObject::tr("To install the plugin qet_tb_generator"
-								 "<br>"
-								 "Visit :"
-								 "<br>"
-								 "<a href='https://pypi.python.org/pypi/qet-tb-generator'>qet-tb-generator</a>"
-								 "<br>"	
-								"Requires python 3.5 or above."
-								"<br>"
-								"<B>""<U>"
-								" First install on Windows"
-								"</B>""</U>"
-								 "<br>"
-								"1. Install, if required, python 3.5 or above"
-								 "<br>"
-								" Visit :"
-								 "<br>"
-								"<a href='https://www.python.org/downloads/'>python.org</a>"
-								 "<br>"
-								"2. pip install qet_tb_generator"
-								 "<br>"
-								 "<B>""<U>"
-								" Update on Windows"
-								"</B>""</U>"
-								 "<br>"
-								"python -m pip install --upgrade qet_tb_generator"
-								 "<br>"
-								">>user could launch in a terminal this script in this directory"
-								 "<br>"
-								" C:\\users\\XXXX\\AppData\\Local\\Programs\\Python\\Python36-32\\Scripts   "
-								 "<br>"
-								));
-	}
-}
+#if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
+	QString message=QObject::tr(
+		"To install the plugin qet_tb_generator"
+		"<br>Visit :"
+		"<br>"
+		"<a href='https://pypi.python.org/pypi/qet-tb-generator'>qet-tb-generator</a>"
+		"<br>Requires python 3.5 or above."
+		"<br><B><U> First install on Windows</B></U>"
+		"<br>1. Install, if required, python 3.5 or above"
+		"<br> Visit :"
+		"<br>"
+		"<a href='https://www.python.org/downloads/'>python.org</a>"
+		"<br>2. pip install qet_tb_generator"
+		"<br><B><U> Update on Windows</B></U>"
+		"<br>python -m pip install --upgrade qet_tb_generator"
+		"<br>"
+		">>user could launch in a terminal this script in this directory"
+		"<br>"
+		" C:\\users\\XXXX\\AppData\\Local\\Programs\\Python\\Python36-32\\Scripts   "
+		"<br>");
 #elif defined(Q_OS_MAC)
-		QMessageBox::warning(nullptr,
-							 QObject::tr("Error launching qet_tb_generator plugin"),
-							 QObject::tr("To install the plugin qet_tb_generator"
-							 "<br>"
-							 "Visit  :"
-							 "<br>"
-							 "<a href='https://pypi.python.org/pypi/qet-tb-generator'>qet-tb-generator</a>"
-							 "<br>"
-							 "<B>""<U>"
-								" First install on macOSX"
-							 "</B>""</U>"
-								"<br>"
-								"1. Install, if required, python 3.8 bundle only, because program use hardcoded PATH for localise qet-tb-generator plugin "
-								"<br>"
-								" Visit :"
-								"<br>"
-								"<a href='https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674'>howto</a>"
-								"<br>"
-								"2. pip3 install qet_tb_generator"
-								"<br>"
-								"<B>""<U>"
-								" Update on macOSX"
-								"</B>""</U>"
-								"<br>"
-								" pip3 install --upgrade qet_tb_generator"
-								"<br>"
-								));
-	}
-}
-
+	QString message=QObject::tr(
+		"To install the plugin qet_tb_generator"
+		"<br>Visit  :"
+		"<br>"
+		"<a href='https://pypi.python.org/pypi/qet-tb-generator'>qet-tb-generator</a>"
+		"<br><B><U> First install on macOSX</B></U>"
+		"<br>1. Install, if required, python 3.8 bundle only, "
+		"because program use hardcoded PATH for localise qet-tb-generator plugin "
+		"<br> Visit :"
+		"<br>"
+		"<a href='https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674'>howto</a>"
+		"<br>2. pip3 install qet_tb_generator"
+		"<br><B><U> Update on macOSX</B></U>"
+		"<br> pip3 install --upgrade qet_tb_generator"
+		"<br>");
 #else
+	QString message=QObject::tr(
+		"To install the plugin qet_tb_generator"
+		"<br>Visit :"
+		"<br>"
+		"<a href='https://pypi.python.org/pypi/qet-tb-generator'>qet-tb-generator</a>"
+		"<br>"
+		"<br>Requires python 3.5 or above."
+		"<br>"
+		"<br><B><U> First install on Linux</B>""</U>"
+		"<br>1. check you have pip3 installed: pip3 --version"
+		"<br>If not install with: sudo apt-get install python3-pip"
+		"<br>2. Install the program: sudo pip3 install qet_tb_generator"
+		"<br>3. Run the program: qet_tb_generator"
+		"<br>"
+		"<br><B>""<U> Update on Linux</B>""</U>"
+		"<br>sudo pip3 install --upgrade qet_tb_generator"
+		"<br>");
+#endif
+	if ( !success ) {
 		QMessageBox::warning(nullptr,
-							 QObject::tr("Error launching qet_tb_generator plugin"),
-							 QObject::tr("To install the plugin qet_tb_generator"
-								 "<br>"
-								 "Visit : "
-								 "<br>"
-								 "<a href='https://pypi.python.org/pypi/qet-tb-generator'>qet-tb-generator</a>"
-								 "<br>"	
-								 "<br>"
-								 "Requires python 3.5 or above."
-								 "<br>"
-								"<br>"
-								"<B>""<U>"
-								" First install on Linux"
-								"</B>""</U>"
-								"<br>"
-								"1. check you have pip3 installed: pip3 --version"
-								"<br>"
-								"If not install with: sudo apt-get install python3-pip"
-								"<br>"
-								"2. Install the program: sudo pip3 install qet_tb_generator"
-								"<br>"
-								"3. Run the program: qet_tb_generator"
-								"<br>"
-								"<br>"
-								"<B>""<U>"
-								" Update on Linux"
-								"</B>""</U>"
-								"<br>"
-								"sudo pip3 install --upgrade qet_tb_generator"
-								"<br>"
-								));
+				     QObject::tr("Error launching qet_tb_generator plugin"),
+				     message);
 	}
 }
-
-#endif
-
