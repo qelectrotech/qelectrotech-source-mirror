@@ -288,18 +288,16 @@ void ElementScene::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 	\~French Dessine l'arriere-plan de l'editeur, cad l'indicateur de hotspot.
 	\~ @param p : The QPainter to use for drawing
 	\~French Le QPainter a utiliser pour dessiner
-	\~ @param rect : The rectangle of the area to be drawn
-	\~French Le rectangle de la zone a dessiner
 */
-void ElementScene::drawForeground(QPainter *p, const QRectF &rect) {
-	Q_UNUSED(rect);
+void ElementScene::drawForeground(QPainter *p, const QRectF &)
+{
 	p -> save();
-	
+
 	// desactive tout antialiasing, sauf pour le texte
 	p -> setRenderHint(QPainter::Antialiasing, false);
 	p -> setRenderHint(QPainter::TextAntialiasing, true);
 	p -> setRenderHint(QPainter::SmoothPixmapTransform, false);
-	
+
 	QPen pen(Qt::red);
 	pen.setCosmetic(true);
 	p -> setPen(pen);

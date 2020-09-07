@@ -104,7 +104,7 @@ void SingleLineProperties::draw(QPainter *painter,
 			if (hasGround && i == 1) {
 				drawGround(painter, direction, symbol_p2, symbol_width * 2.0);
 			} else if (hasNeutral && ((i == 1 && !hasGround) || (i == 2 && hasGround))) {
-				drawNeutral(painter, direction, symbol_p2, symbol_width * 1.5);
+				drawNeutral(painter, symbol_p2, symbol_width * 1.5);
 			}
 		}
 	}
@@ -149,15 +149,14 @@ void SingleLineProperties::drawGround(QPainter *painter,
 /**
 	Dessine le cercle correspondant au symbole du neutre sur un conducteur unifilaire
 	@param painter QPainter a utiliser pour dessiner le segment
-	@param direction direction du segment sur lequel le symbole apparaitra
 	@param center centre du cercle
 	@param size diametre du cercle
 */
-void SingleLineProperties::drawNeutral(QPainter *painter,
-				       QET::ConductorSegmentType direction,
-				       QPointF center,
-				       qreal size) {
-	Q_UNUSED(direction);
+void SingleLineProperties::drawNeutral(
+		QPainter *painter,
+		QPointF center,
+		qreal size)
+{
 	painter -> save();
 	
 	// prepare le QPainter
@@ -199,7 +198,7 @@ void SingleLineProperties::drawPen(QPainter *painter,
 	//		QSizeF(size * 1.5, size * 1.5)
 	//	)
 	//);
-	drawNeutral(painter, direction, center, size * 1.5);
+	drawNeutral(painter, center, size * 1.5);
 	
 	int offset = (size * 1.5 / 2.0);
 	QPointF pos = center + (direction == QET::Horizontal ? QPointF(0.0, -offset - 0.5) : QPointF(offset + 0.5, 0.0));

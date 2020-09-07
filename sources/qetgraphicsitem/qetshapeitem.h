@@ -121,9 +121,9 @@ class QetShapeItem : public QetGraphicsItem
 		void insertPoint();
 		void removePoint();
 		
-		void handlerMousePressEvent   (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
-		void handlerMouseMoveEvent    (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
-		void handlerMouseReleaseEvent (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
+		void handlerMousePressEvent();
+		void handlerMouseMoveEvent(QGraphicsSceneMouseEvent *event);
+		void handlerMouseReleaseEvent();
 
 		///ATTRIBUTES
 	private:

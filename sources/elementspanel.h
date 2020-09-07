@@ -57,7 +57,7 @@ class ElementsPanel : public GenericPanel {
 	
 	public slots:
 	void slot_doubleClick(QTreeWidgetItem *, int);
-	void reload(bool = false);
+	void reload();
 	void filter(const QString &, QET::Filtering = QET::RegularFilter);
 	void projectWasOpened(QETProject *);
 	void projectWasClosed(QETProject *);

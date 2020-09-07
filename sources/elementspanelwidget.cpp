@@ -25,6 +25,13 @@
 #include "templatedeleter.h"
 
 /*
+	When the ENABLE_PANEL_WIDGET_DND_CHECKS flag is set, the panel
+	performs checks during drag'n drop of items and categories.
+	For example, it checks that a target category is writable
+	before authorizing the drop of an element.
+	Removing this flag allows you to test the behavior of management functions
+	items (copy, move, etc.).
+
 	Lorsque le flag ENABLE_PANEL_WIDGET_DND_CHECKS est defini, le panel
 	effectue des verifications lors des drag'n drop d'elements et categories.
 	Par exemple, il verifie qu'une categorie cible est accessible en ecriture
@@ -152,7 +159,7 @@ void ElementsPanelWidget::copyPathForSelectedItem() {
 */
 void ElementsPanelWidget::reloadAndFilter() {
 	// recharge tous les elements
-	elements_panel -> reload(true);
+	elements_panel -> reload();
 	// reapplique le filtre
 	if (!filter_textfield -> text().isEmpty()) {
 		elements_panel -> filter(filter_textfield -> text());

@@ -606,20 +606,13 @@ void BorderTitleBlock::draw(QPainter *painter)
 
 /**
 	@brief BorderTitleBlock::drawDxf
-	@param width
-	@param height
-	@param keep_aspect_ratio
 	@param file_path
 	@param color
 */
 void BorderTitleBlock::drawDxf(
-		int width,
-		int height,
-		bool keep_aspect_ratio,
 		QString &file_path,
-		int color) {
-	Q_UNUSED (width); Q_UNUSED (height); Q_UNUSED (keep_aspect_ratio);
-
+		int color)
+{
 	// Transform to DXF scale.
 	columns_header_height_ *= Createdxf::yScale;
 	rows_height_           *= Createdxf::yScale;
@@ -675,8 +668,7 @@ void BorderTitleBlock::drawDxf(
 						   2,
                            xCoord+recWidth/2,
                            1,
-                           color,
-						   0);
+			   color);
         }
 	}
 
@@ -710,8 +702,7 @@ void BorderTitleBlock::drawDxf(
 						   2,
 						   xCoord+recWidth/2,
                            1,
-                           color,
-						   0);
+			   color);
 			row_string = incrementLetters(row_string);
 		}
 	}

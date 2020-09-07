@@ -215,9 +215,8 @@ bool ElementsPanel::matchesFilter(const QTreeWidgetItem *item,
 	@param reload_collections :
 	true for read all collections since their sources (files, projects ...)
 */
-void ElementsPanel::reload(bool reload_collections) {
-	Q_UNUSED(reload_collections);
-	
+void ElementsPanel::reload()
+{
 	QIcon system_icon(":/ico/16x16/qet.png");
 	QIcon user_icon(":/ico/16x16/go-home.png");
 	
